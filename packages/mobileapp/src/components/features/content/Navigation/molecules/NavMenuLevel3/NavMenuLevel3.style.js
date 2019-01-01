@@ -14,8 +14,8 @@ export const HeadingView = styled.View`
 `;
 
 export const ArrowBackIcon = styled.Image`
-  width: 16px;
-  height: 24px;
+  width: 10px;
+  height: 18px;
 `;
 
 export const TouchableOpacityArrow = styled.TouchableOpacity`

@@ -1,6 +1,17 @@
 import styled from 'styled-components/native';
 import { getPixelRatio } from '@tcp/core/src/utils/utils.app';
 
+const setBackground = props => {
+  if (props.theme.isGymboree) {
+    return `
+    background-color: ${props.theme.colorPalette.primary.light};
+    `;
+  }
+  return `
+  background-color: ${props.theme.colorPalette.blue[50]};
+  `;
+};
+
 /**
  * getPromoBadgePadding
  * This method returns the padding according to devices ( Android & ISO) .
@@ -19,7 +30,7 @@ const getPromoBadgePadding = props => {
 };
 
 export const TitleContainer = styled.View`
-  background: ${props => props.theme.colorPalette.primary.light};
+  ${setBackground}
   padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
     ${props => props.theme.spacing.ELEM_SPACING.LRG}
     ${props => props.theme.gridDimensions.gridOffsetObj.small}px;
@@ -89,8 +100,8 @@ export const ArrowIcon = styled.Image`
 `;
 
 export const ArrowBackIcon = styled.Image`
-  width: 16px;
-  height: 24px;
+  width: 10px;
+  height: 18px;
 `;
 
 export const TouchableOpacityArrow = styled.TouchableOpacity`

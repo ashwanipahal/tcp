@@ -32,6 +32,7 @@ class ProductDetailView extends React.PureComponent {
       showCarousel: false,
       currentColorEntry: getMapSliceForColorProductId(colorFitsSizesMap, selectedColorProductId),
       currentGiftCardValue: currentProduct.offerPrice,
+      selectedColorProductId,
     };
   }
 
@@ -44,7 +45,8 @@ class ProductDetailView extends React.PureComponent {
     const {
       currentProduct: { colorFitsSizesMap },
     } = this.props;
-    this.setState({ currentColorEntry: getMapSliceForColor(colorFitsSizesMap, e) });
+    const currentColorEntry = getMapSliceForColor(colorFitsSizesMap, e);
+    this.setState({ currentColorEntry, selectedColorProductId: currentColorEntry.colorDisplayId });
   };
 
   onChangeSize = e => {
@@ -78,7 +80,6 @@ class ProductDetailView extends React.PureComponent {
     const {
       currentProduct,
       currentProduct: { colorFitsSizesMap },
-      selectedColorProductId,
       plpLabels,
       handleFormSubmit,
       navigation,
@@ -92,7 +93,7 @@ class ProductDetailView extends React.PureComponent {
       currency,
       currencyExchange,
     } = this.props;
-    const { currentColorEntry, currentGiftCardValue } = this.state;
+    const { currentColorEntry, currentGiftCardValue, selectedColorProductId } = this.state;
     let imageUrls = [];
     if (colorFitsSizesMap) {
       imageUrls = getImagesToDisplay({

@@ -41,6 +41,8 @@ export default css`
     }
   }
   .moduleL__tile-image {
+    display: flex;
+    align-items: center;
     max-width: 103px;
     max-height: 128px;
 

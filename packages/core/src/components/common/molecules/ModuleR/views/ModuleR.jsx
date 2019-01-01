@@ -23,7 +23,7 @@ class ModuleR extends React.PureComponent {
 
     this.state = {
       selectedCategoryId: null,
-      currentTabItem: {},
+      currentTabItem: [],
     };
   }
 
@@ -139,7 +139,11 @@ class ModuleR extends React.PureComponent {
   };
 
   getCurrentCTAButton() {
-    const { currentTabItem: { singleCTAButton: currentSingleCTAButton } = {} } = this.state;
+    const { currentTabItem } = this.state;
+    if (!currentTabItem || !currentTabItem.length) {
+      return null;
+    }
+    const { singleCTAButton: currentSingleCTAButton } = currentTabItem.length && currentTabItem[0];
 
     return currentSingleCTAButton ? (
       <Row centered>

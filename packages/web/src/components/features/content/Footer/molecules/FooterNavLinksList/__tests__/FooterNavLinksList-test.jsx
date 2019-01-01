@@ -17,18 +17,22 @@ describe('FooterNavLinksList component', () => {
           title: 'gift card',
           url: '',
           text: '',
+          action: '',
         },
         {
           title: 'gift card',
           url: '',
           text: '',
+          action: '',
         },
         {
           title: 'gift card',
           url: '',
           text: '',
+          action: '',
         },
       ],
+      linkConfig: {},
       colNum: 1,
     };
     const component = shallow(<FooterNavLinksListVanilla {...props} />);

@@ -12,7 +12,6 @@ const styles = css`
 
   .confirmation-item-count {
     color: ${props => props.theme.colorPalette.gray[900]};
-    width: 70px;
     line-height: 2.4;
     background: ${props => props.theme.colorPalette.white};
     position: absolute;
@@ -21,6 +20,7 @@ const styles = css`
     margin: 0 -50% 0 0;
     transform: translate(-50%, -50%);
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    padding-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 
   .confirmation-order-details-wrapper {

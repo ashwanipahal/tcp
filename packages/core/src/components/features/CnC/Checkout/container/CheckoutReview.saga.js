@@ -14,7 +14,10 @@ import selectors, { isGuest, isExpressCheckout } from './Checkout.selector';
 import utility from '../util/utility';
 import constants, { CHECKOUT_ROUTES } from '../Checkout.constants';
 import { validateAndSubmitEmailSignup, callPickupSubmitMethod } from './Checkout.saga.util';
-import { getAppliedCouponListState } from '../../common/organism/CouponAndPromos/container/Coupon.selectors';
+import {
+  getAppliedCouponListState,
+  isCouponApplied,
+} from '../../common/organism/CouponAndPromos/container/Coupon.selectors';
 import { isMobileApp } from '../../../../../utils';
 import { getUserEmail } from '../../../account/User/container/User.selectors';
 import {
@@ -27,7 +30,10 @@ import ConfirmationSelectors from '../../Confirmation/container/Confirmation.sel
 import BagPageSelectors from '../../BagPage/container/BagPage.selectors';
 import CHECKOUT_ACTIONS from './Checkout.action';
 import { resetAirmilesReducer } from '../../common/organism/AirmilesBanner/container/AirmilesBanner.actions';
-import { resetCouponReducer } from '../../common/organism/CouponAndPromos/container/Coupon.actions';
+import {
+  resetCouponReducer,
+  getCouponList,
+} from '../../common/organism/CouponAndPromos/container/Coupon.actions';
 import BagActions from '../../BagPage/container/BagPage.actions';
 import { updateVenmoPaymentInstruction } from './CheckoutBilling.saga';
 import { getGrandTotal } from '../../common/organism/OrderLedger/container/orderLedger.selector';
@@ -88,13 +94,16 @@ export function* loadPersonalizedCoupons(
 ) {
   const isCaSite = yield call(isCanada);
   const isUsSite = !isCaSite;
-  const couponList = yield select(getAppliedCouponListState);
+  let couponList = yield select(getAppliedCouponListState);
+  if (couponList && couponList.size > 0) {
+    couponList = couponList.map(val => ({ id: val.id }));
+  }
   const { US_LOCATION_ID, CA_LOCATION_ID } = constants;
   const { personalizedOffersResponse, orderResponse } = yield call(requestPersonalizedCoupons, {
     orderNumber,
     emailAddress,
     locationId: isUsSite ? US_LOCATION_ID : CA_LOCATION_ID,
-    couponList: couponList.map(val => ({ id: val.get('id') })),
+    couponList,
     isElectiveBonus,
     currencyCode,
     payments,
@@ -201,6 +210,12 @@ export function* expressCheckoutSubmit(formData) {
       cvv: billing.cvv, // the cvv entered by the user
     };
     yield call(updatePaymentOnOrder, requestData);
+  }
+}
+
+function* fetchCoupons(isCouponAppliedInOrder) {
+  if (isCouponAppliedInOrder) {
+    yield put(getCouponList({ ignoreCache: true }));
   }
 }
 
@@ -326,7 +341,6 @@ function* submitOrderForProcessing({ payload: { navigation, formData } }) {
     } else if (navigation) {
       navigation.navigate(constants.CHECKOUT_ROUTES_NAMES.CHECKOUT_CONFIRMATION);
     }
-
     yield call(loadPersonalizedCoupons, res, orderId);
     const cartItems = yield select(BagPageSelectors.getOrderItems);
     const email = res.userDetails ? res.userDetails.emailAddress : res.shipping.emailAddress;
@@ -336,14 +350,15 @@ function* submitOrderForProcessing({ payload: { navigation, formData } }) {
     if (isGuestUser && !isCaSite && email) {
       yield call(validateAndSubmitEmailSignup, email, 'us_guest_checkout');
     }
+    const isCouponAppliedInOrder = yield select(isCouponApplied);
     // const vendorId =
     //   cartItems.size > 0 && cartItems.getIn(['0', 'miscInfo', 'vendorColorDisplayId']);
-
     yield put(getSetOrderProductDetails(cartItems));
     yield put(CHECKOUT_ACTIONS.resetCheckoutReducer());
     yield put(resetAirmilesReducer());
     yield put(resetCouponReducer());
     yield put(BagActions.resetCartReducer());
+    yield call(fetchCoupons, isCouponAppliedInOrder);
     // getProductsOperator(this.store).loadProductRecommendations(
     //   RECOMMENDATIONS_SECTIONS.CHECKOUT,
     //   vendorId

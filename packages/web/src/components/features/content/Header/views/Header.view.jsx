@@ -85,6 +85,7 @@ class Header extends React.PureComponent {
       userPoints,
       userRewards,
       openOverlay,
+      isOpenOverlay,
       openTrackOrderOverlay,
       isLoggedIn,
       cartItemCount,
@@ -121,6 +122,7 @@ class Header extends React.PureComponent {
           userPoints={userPoints}
           userRewards={userRewards}
           openOverlay={openOverlay}
+          isOpenOverlay={isOpenOverlay}
           isLoggedIn={isLoggedIn}
           cartItemCount={cartItemCount}
           totalItems={totalItems}
@@ -174,6 +176,7 @@ Header.propTypes = {
   userPoints: PropTypes.string.isRequired,
   userRewards: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
+  isOpenOverlay: PropTypes.bool.isRequired,
   openTrackOrderOverlay: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool.isRequired,
   cartItemCount: PropTypes.func.isRequired,

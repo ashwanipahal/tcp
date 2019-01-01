@@ -12,7 +12,8 @@ import {
 
 const imageWidth = getScreenWidth() / 2;
 const keyExtractor = (_, index) => index.toString();
-const Icon = require('../../../../../../../../../core/src/assets/carrot-small-rights.png');
+
+const Icon = require('../../../../../../../../../core/src/assets/caret-large-right-black.png');
 
 /**
  * @function NavMenuLevel1 The Navigation menu level1 is created by this component
@@ -105,14 +106,7 @@ class NavMenuLevel1 extends React.PureComponent {
             numberOfLines={1}
             margin="0 60px 0 0"
           />
-          <Image
-            alt={name}
-            source={Icon}
-            maxWidth={16}
-            height={26}
-            position="absolute"
-            right={37}
-          />
+          <Image alt={name} source={Icon} width={13} height={26} position="absolute" right={37} />
         </L1TouchableOpacityNoImage>
       );
     }

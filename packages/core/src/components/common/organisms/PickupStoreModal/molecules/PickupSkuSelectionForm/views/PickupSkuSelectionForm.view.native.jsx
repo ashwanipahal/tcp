@@ -23,6 +23,7 @@ import {
   ProductDetailSummary,
   OfferPriceAndBadge3Container,
 } from '../styles/PickupSkuSelectionForm.style.native';
+import { getProductListToPathInMobileApp } from '../../../../../../features/browse/ProductListing/molecules/ProductList/utils/productsCommonUtils';
 
 const PickupSkuSelectionForm = props => {
   const onGoToPDPPage = (pdpUrl, selectedColorProductId) => {
@@ -31,7 +32,7 @@ const PickupSkuSelectionForm = props => {
     onCloseClick();
     navigation.navigate('ProductDetail', {
       title,
-      pdpUrl,
+      pdpUrl: getProductListToPathInMobileApp(pdpUrl),
       selectedColorProductId,
       reset: true,
     });

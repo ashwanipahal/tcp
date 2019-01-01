@@ -70,7 +70,7 @@ describe('CheckoutReview saga', () => {
     CheckoutReviewSaga.next(res);
     CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
-
+    CheckoutReviewSaga.next();
     expect(CheckoutReviewSaga.next().value).toEqual(put(getSetOrderProductDetails()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetCheckoutReducer()));
     expect(CheckoutReviewSaga.next().value).toEqual(put(resetAirmilesReducer()));
@@ -92,6 +92,7 @@ describe('CheckoutReview saga', () => {
     const res = { userDetails: { emailAddress } };
     CheckoutReviewSaga.next({ userDetails: { emailAddress } }, orderId);
     CheckoutReviewSaga.next(res);
+    CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
     CheckoutReviewSaga.next();
     expect(CheckoutReviewSaga.next().value).toEqual(put(getSetOrderProductDetails()));

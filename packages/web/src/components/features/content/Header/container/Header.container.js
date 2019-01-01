@@ -6,6 +6,8 @@ import {
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
 import { setTrackOrderModalMountedState } from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.actions';
 import { openOverlayModal } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.actions';
+import { getOpenState } from '@tcp/core/src/components/features/account/OverlayModal/container/OverlayModal.selectors';
+
 import { getFavoriteStoreActn } from '@tcp/core/src/components/features/storeLocator/StoreLanding/container/StoreLanding.actions';
 import {
   isPlccUser,
@@ -38,6 +40,7 @@ const mapStateToProps = state => {
     labels: state.Labels.global,
     favStore: state.User && state.User.get('defaultStore'),
     isPickupModalOpen: getIsPickupModalOpen(state),
+    isOpenOverlay: getOpenState(state),
   };
 };
 

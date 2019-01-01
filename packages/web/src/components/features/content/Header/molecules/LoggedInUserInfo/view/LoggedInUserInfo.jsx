@@ -11,8 +11,8 @@ const handleUserRewards = userRewards => {
   return userRewards % 1 ? userRewards : Math.floor(userRewards);
 };
 
-const handleCarrottoggle = userNameClick => {
-  return userNameClick ? 'carrot-down-icon' : 'carrot-up-icon';
+const handleCarrottoggle = (userNameClick, isOpenOverlay) => {
+  return userNameClick || !isOpenOverlay ? 'carrot-down-icon' : 'carrot-up-icon';
 };
 
 const LoggedInUserInfo = ({
@@ -21,6 +21,7 @@ const LoggedInUserInfo = ({
   userPoints,
   userRewards,
   openOverlay,
+  isOpenOverlay,
   userNameClick,
   onLinkClick,
   isDrawer,
@@ -37,7 +38,7 @@ const LoggedInUserInfo = ({
         {!isDrawer ? (
           <Image
             alt="user"
-            className={`account-info ${handleCarrottoggle(userNameClick)}`}
+            className={`account-info ${handleCarrottoggle(userNameClick, isOpenOverlay)}`}
             src={getIconPath('down_arrow_icon')}
             height="6px"
           />
@@ -61,6 +62,7 @@ LoggedInUserInfo.propTypes = {
   userPoints: PropTypes.string.isRequired,
   userRewards: PropTypes.string.isRequired,
   userNameClick: PropTypes.bool.isRequired,
+  isOpenOverlay: PropTypes.bool.isRequired,
   onLinkClick: PropTypes.func.isRequired,
   mainId: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
