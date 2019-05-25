@@ -1,0 +1,29 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "cleanup": "rm -rf ./yarn.lock rm -rf ./node_modules",
+    "lerna-clean": "npx lerna clean --y",
+    "clean": "yarn cleanup && yarn lerna-clean",
+    "clean-install":"yarn clean && yarn",
+    "start:web": "yarn workspace @tcp/web start",
+    "build:web": "yarn && cd packages/web && yarn build && yarn next-start",
+    "start:app": "cd packages/mobileapp && yarn start",
+    "lint": "lint-staged"
+  },
+  "devDependencies": {
+    "lerna": "^3.13.4",
+    "lint-staged": "^8.1.7"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": "eslint"
+  },
+  "workspaces": [
+    "packages/*"
+  ] 
+}
