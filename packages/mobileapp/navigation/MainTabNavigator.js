@@ -5,7 +5,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import Plp from '../screens/PLPScreen';
-import PlpDeltaSync from '../screens/PLPDeltaSyncScreen';
+//	import PlpDeltaSync from '../screens/PLPDeltaSyncScreen';
 
 import SettingsScreen from '../screens/SettingsScreen';
 
@@ -28,19 +28,16 @@ HomeStack.navigationOptions = {
 };
 
 const PlpStack = createStackNavigator({
-  Plp: Plp,
+  Plp,
 });
 
 PlpStack.navigationOptions = {
   tabBarLabel: 'PLP',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
-    />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
   ),
 };
-
+/* 
 const PlpDeltaSyncStack = createStackNavigator({
   PlpDeltaSync
 });
@@ -54,7 +51,7 @@ PlpDeltaSyncStack.navigationOptions = {
     />
   ),
 };
-
+ */
 const SettingsStack = createStackNavigator({
   Settings: SettingsScreen,
 });
@@ -62,10 +59,7 @@ const SettingsStack = createStackNavigator({
 SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
-    />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
   ),
 };
 
@@ -73,5 +67,4 @@ export default createBottomTabNavigator({
   HomeStack,
   PlpStack,
   SettingsStack,
-  PlpDeltaSyncStack
 });
