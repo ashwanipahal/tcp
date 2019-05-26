@@ -9,22 +9,49 @@
     "start:web": "yarn workspace @tcp/web start",
     "build:web": "yarn && cd packages/web && yarn build && yarn next-start",
     "start:app": "cd packages/mobileapp && yarn start",
-    "lint": "lint-staged"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "3.1.0",
+    "eslint-detailed-reporter": "^0.7.3",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.11.1",
+    "eslint-plugin-react-native": "^3.7.0",
+    "eslint-plugin-react-native-a11y": "^1.2.0",
+    "eslint-plugin-standard": "3.0.1",
     "husky": "^2.3.0",
+    "jest": "^24.8.0",
     "lerna": "^3.13.4",
-    "lint-staged": "^8.1.7"
+    "lint-staged": "^8.1.7",
+    "prettier": "1.17.1"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint"
+      "pre-commit": "lint-staged"
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": "eslint"
+    "*.{js,jsx,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{js,jsx}": [
+      "eslint",
+      "jest --bail --findRelatedTests"
+    ]
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "cross-env": "^5.2.0",
+    "dotenv": "^8.0.0"
+  }
 }
