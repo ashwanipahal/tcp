@@ -1,13 +1,13 @@
 import React from 'react';
 //	import PlpPage from "../inside_core/components/plpPage/views/plpPagecomponent"
-import PlpPage from '@tcp/core/src/components/features/browse/ProductListingPage';
+import PlpPage from '@tcp/core/src/components/features/browse/plpDeltaSync/plpPagecomponent';
 
-export default const Plp = props => {
+const Plp = props => {
+  return (
+    <React.Fragment>
+      <PlpPage />
+    </React.Fragment>
+  );
+};
 
-    return (
-      <React.Fragment>
-        <PlpPage />
-      </React.Fragment>
-    );
-  
-}
+export default Plp;

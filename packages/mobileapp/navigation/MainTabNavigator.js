@@ -5,7 +5,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import Plp from '../screens/PLPScreen';
-//	import PlpDeltaSync from '../screens/PLPDeltaSyncScreen';
+import PlpDeltaSync from '../screens/PLPDeltaSyncScreen';
 
 import SettingsScreen from '../screens/SettingsScreen';
 
@@ -37,21 +37,18 @@ PlpStack.navigationOptions = {
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
   ),
 };
-/* 
+
 const PlpDeltaSyncStack = createStackNavigator({
-  PlpDeltaSync
+  PlpDeltaSync,
 });
 
 PlpDeltaSyncStack.navigationOptions = {
   tabBarLabel: 'PLP-DeltaSync',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon
-      focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
-    />
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
   ),
 };
- */
+
 const SettingsStack = createStackNavigator({
   Settings: SettingsScreen,
 });
@@ -66,5 +63,6 @@ SettingsStack.navigationOptions = {
 export default createBottomTabNavigator({
   HomeStack,
   PlpStack,
+  PlpDeltaSyncStack,
   SettingsStack,
 });

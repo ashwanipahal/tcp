@@ -1,5 +1,4 @@
 import React from 'react';
-import ProductListingPageStyle from '../styles/ProductListingPage.style.native';
 import { Text, FlatList, Image, View } from 'react-native';
 
 const ProductTile = ({ item }) => {
@@ -11,19 +10,18 @@ const ProductTile = ({ item }) => {
     uri: url,
   };
   return (
-    <ProductListingPageStyle key={item.product_name} className="product-item">
+    <View key={item.id} className="product-item">
       <Text className="product-name"> Fetching from core</Text>
       <Text className="product-name">{item.product_name}</Text>
-      <Text className="product-disc-price">{item.min_offer_price}</Text>
-      <Text className="product-original-price">{`Was ${item.min_list_price}`}</Text>
-    </ProductListingPageStyle>
+      <Text className="product-disc-price">{item.price}</Text>
+    </View>
   );
 };
 
-export const ProductListView = ({ data }) => {
+export const ProductList = ({ data }) => {
   return (
     <React.Fragment>
-      <Text>PLP Page</Text>
+      <Text>PLP DeltaSync Page</Text>
       <FlatList className="product-wrapper" data={data} renderItem={ProductTile} />
     </React.Fragment>
   );
