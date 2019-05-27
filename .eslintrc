@@ -1,0 +1,35 @@
+{
+    "plugins": [
+      "react-native",
+      "react-native-a11y"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "env": {
+      "browser": true,
+      "node": true,
+      "mocha": true,
+      "es6": true
+    },
+    "rules": {
+      "one-var-declaration-per-line": 0,
+      "comma-dangle": 0,
+      "arrow-body-style": 0
+    },
+    "extends": [
+      "airbnb","plugin:react-native/all","plugin:react-native-a11y/recommended"
+    ],
+    "parser": "babel-eslint",
+    "globals": {
+      "describe": true,
+      "expect": true,
+      "it": true,
+      "jest": true,
+      "window": true
+    }
+  }
