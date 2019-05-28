@@ -9,6 +9,7 @@
 .*/.history/*
 .*/*.config.js/.*
 [include]
+./src
 [libs]
 flow-typed
 node_modules/styled-components/flow-typed/danger_v0.x.x.js
