@@ -1,3 +1,1 @@
-import HomePage from '../components/features/content/HomePage';
-
-export default HomePage;
+export { default } from '../components/features/content/HomePage';

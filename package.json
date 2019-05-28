@@ -2,24 +2,33 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "cleanup": "rm -rf ./yarn.lock rm -rf ./node_modules",
-    "lerna-clean": "npx lerna clean --y",
     "clean": "yarn cleanup && yarn lerna-clean",
+    "postinstall": "yarn flow:install",
     "clean-install": "yarn clean && yarn",
     "start:web": "yarn workspace @tcp/web start",
     "build:web": "yarn && cd packages/web && yarn build && yarn next-start",
-    "start:app": "cd packages/mobileapp && yarn start",
+    "start:mobileapp": "cd packages/mobileapp && yarn start",
+    "cleanup": "rm -rf ./yarn.lock rm -rf ./node_modules",
+    "lerna-clean": "npx lerna clean --y",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}"
+    "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}",
+    "flow": "flow",
+    "flow:install": "npx lerna exec flow-typed install",
+    "flow:coverage": "flow-coverage-report -i 'packages/*/src/**/*.js' -x 'packages/**/*.test.js' -t html -t json -t text -o reports/flow/ --threshold 70"
   },
   "devDependencies": {
+    "@babel/plugin-transform-flow-strip-types": "^7.0.0",
+    "@babel/preset-flow": "^7.0.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "3.1.0",
     "eslint-detailed-reporter": "^0.7.3",
+    "eslint-plugin-extra-rules": "0.0.0-development",
+    "eslint-plugin-flowtype": "^3.4.2",
     "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^22.3.2",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-node": "^5.2.0",
     "eslint-plugin-promise": "^3.5.0",
@@ -27,6 +36,11 @@
     "eslint-plugin-react-native": "^3.7.0",
     "eslint-plugin-react-native-a11y": "^1.2.0",
     "eslint-plugin-standard": "3.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "flow-bin": "^0.82.0",
+    "flow-coverage-report": "^0.6.0",
+    "flow-mono-cli": "^1.5.0",
+    "flow-typed": "^2.5.1",
     "husky": "^2.3.0",
     "jest": "^24.8.0",
     "lerna": "^3.13.4",
@@ -44,6 +58,7 @@
       "git add"
     ],
     "*.{js,jsx}": [
+      "yarn run flow focus-check",
       "eslint",
       "jest --bail --findRelatedTests"
     ]

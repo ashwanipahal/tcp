@@ -1,1 +1,1 @@
-// some code will come here
+// index.js
