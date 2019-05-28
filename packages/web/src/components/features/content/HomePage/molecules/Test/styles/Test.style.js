@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const StyledTest = styled.div`
-    background: red;
+  background: ${props => props.theme.colors.BRAND.PRIMARY};
 `;
 
 export default StyledTest;
