@@ -1,2 +1,1 @@
-import HomePageTemplate from './HomePage.template';
-export default HomePageTemplate;
+export { default } from './HomePage.template';

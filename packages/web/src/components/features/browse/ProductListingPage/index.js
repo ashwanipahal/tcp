@@ -1,2 +1,1 @@
-import ProductListingPageTemplate from './ProductListingPage.template';
-export default ProductListingPageTemplate;
+export { default } from './ProductListingPage.template';
