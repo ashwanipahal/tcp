@@ -32,7 +32,7 @@
     "react-axe": "^3.1.0"
   },
   "peerDependencies": {
-    "flow-typed": "^2.5.1",
-    "flow-bin": "^0.82.0"
+    "flow-bin": "^0.82.0",
+    "flow-typed": "^2.5.1"
   }
 }
