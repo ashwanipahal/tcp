@@ -3,8 +3,9 @@
   "private": true,
   "scripts": {
     "clean": "yarn cleanup && yarn lerna-clean",
-    "postinstall": "yarn flow:install",
+    "postinstall-local": "yarn flow:install",
     "clean-install": "yarn clean && yarn",
+    "start": "yarn build:web",
     "start:web": "yarn workspace @tcp/web start",
     "build:web": "yarn && cd packages/web && yarn build && yarn next-start",
     "start:mobileapp": "cd packages/mobileapp && yarn start",
