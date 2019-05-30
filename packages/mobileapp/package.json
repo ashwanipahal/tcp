@@ -1,5 +1,5 @@
 {
-  "name": "@tcp/app",
+  "name": "@tcp/mobileapp",
   "version": "0.1.0",
   "main": "__generated__/AppEntry.js",
   "private": true,
@@ -33,5 +33,9 @@
     "react-native-render-html": "^4.1.2",
     "react-native-webview": "^5.3.1",
     "schedule": "^0.4.0"
+  },
+  "peerDependencies": {
+    "flow-typed": "^2.5.1",
+    "flow-bin": "^0.82.0"
   }
 }

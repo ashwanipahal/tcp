@@ -1,2 +1,1 @@
-import ProductListingPage from '../components/features/browse/ProductListingPage';
-export default ProductListingPage;
+export { default } from '../components/features/browse/ProductListingPage';
