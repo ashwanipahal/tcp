@@ -1,19 +1,5 @@
 import styled, { css } from 'styled-components';
-import theme from '../../../../../Styles/theme';
-
-// ==============VARIABLES======================//
-
-/*
- * Breakpoint
- * @ Variables
- *
- */
-
-// mobile max
-const gridBreakPointsKeys = ['small', 'medium', 'large', 'xlarge'];
-
-const { columnWidthObj, columnGutterObj, availableMaxWidthObj } = theme.gridDimensions;
-
+// TODO - Revisit the function comments and change as per the project
 // ==============FUNCTIONS ====================== //
 
 /*
@@ -42,9 +28,9 @@ const calculateColumnWidth = (availableMaxWidth, columnWidth) => {
     i/p -
         breakpoint : breakpoint at which width needs to be calculated
 */
-const getGutter = breakpoint => {
-  const availableWidth = availableMaxWidthObj[breakpoint];
-  const columnGutter = columnGutterObj[breakpoint];
+const getGutter = (breakpoint, gridDimensions) => {
+  const availableWidth = gridDimensions.availableMaxWidthObj[breakpoint];
+  const columnGutter = gridDimensions.columnGutterObj[breakpoint];
   const gutter = `${(columnGutter / availableWidth) * 100}%`;
 
   return gutter;
@@ -58,25 +44,26 @@ const getGutter = breakpoint => {
         col-count : column no who's width has to be calculated
 */
 
-const getCoulmnWidth = (colCount, breakpoint) => {
+const getCoulmnWidth = (colCount, breakpoint, gridDimensions) => {
   const columnWidth = calculateColumnWidth(
-    availableMaxWidthObj[breakpoint],
-    columnWidthObj[breakpoint]
+    gridDimensions.availableMaxWidthObj[breakpoint],
+    gridDimensions.columnWidthObj[breakpoint]
   );
-  const columnGutter = getGutter(breakpoint);
-  return parseFloat(columnWidth) * colCount + parseFloat(columnGutter) * 2 * (colCount - 1);
+  const columnGutter = getGutter(breakpoint, gridDimensions);
+  return parseFloat(columnWidth) * colCount + parseFloat(columnGutter) * (colCount - 1);
 };
 
-const StyledGrid = styled.div`
+const StyledCol = styled.div`
   ${props => css`
-    ${gridBreakPointsKeys.map(
+    ${props.theme.gridDimensions.gridBreakPointsKeys.map(
       key => `
-      @media ${theme.MEDIA_QUERIES[key]} {
-          margin-right: ${columnGutterObj[key]}px;
-          width: ${getCoulmnWidth(props.config.colCount[key], key)}%
+      @media ${props.theme.mediaQueries[key]} {
+          ${props.isColInlineBlock ? 'display: inline-block;' : ''}
+          padding-right: ${getGutter(key, props.theme.gridDimensions)};
+          width: ${getCoulmnWidth(props.config.colCount[key], key, props.theme.gridDimensions)}%
       }`
     )}
   `}
 `;
 
-export default StyledGrid;
+export default StyledCol;

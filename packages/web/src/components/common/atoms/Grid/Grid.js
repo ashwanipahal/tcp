@@ -1,7 +1,11 @@
-// @flow
 import React from 'react';
+
 import StyledGrid from './Grid.style';
 
-const Grid = ({ className, children }) => <StyledGrid className={className}>{children}</StyledGrid>;
+const Grid = ({ children }) => (
+  <StyledGrid>
+    {children}
+  </StyledGrid>
+);
 
 export default Grid;
