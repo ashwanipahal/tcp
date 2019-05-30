@@ -5,31 +5,7 @@ import { ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
 import { configureStore } from '../reduxStore';
-import tcpTheme from '../../Styles/TCPTheme';
-
-// Here - import the gymboree theme as well and use the ENV
-// variable to understand which theme to pass on.
-const theme = {
-  ...tcpTheme,
-  flexboxgrid: {
-    // Defaults
-    gridSize: 12,
-    gutterWidth: 1,
-    outerMargin: 2,
-    mediaQuery: 'only screen',
-    container: {
-      sm: 46,
-      md: 61,
-      lg: 76,
-    },
-    breakpoints: {
-      xs: 0,
-      sm: 48,
-      md: 64,
-      lg: 75,
-    },
-  },
-};
+import theme from '../../Styles/theme';
 
 class TCPWebApp extends App {
   static async getInitialProps({ Component, ctx }) {

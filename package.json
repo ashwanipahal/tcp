@@ -15,6 +15,7 @@
     "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}"
   },
   "devDependencies": {
+    "@storybook/react": "^5.0.11",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "3.1.0",
@@ -52,7 +53,9 @@
     "packages/*"
   ],
   "dependencies": {
+    "@rebass/grid": "^6.0.0",
     "cross-env": "^5.2.0",
-    "dotenv": "^8.0.0"
+    "dotenv": "^8.0.0",
+    "yarn": "^1.16.0"
   }
 }
