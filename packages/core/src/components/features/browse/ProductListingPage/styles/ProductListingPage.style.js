@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
 export default styled.ul`
-  background-color: #yy;
+  background-color: blue;
 `;

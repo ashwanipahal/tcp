@@ -17,7 +17,6 @@
     "next-transpile-modules": "^2.0.0",
     "react": "latest",
     "react-dom": "latest",
-    "react-redux": "^6.0.1",
     "redux": "^4.0.1",
     "redux-saga": "^1.0.2",
     "styled-components": "^4.2.0"
