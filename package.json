@@ -7,9 +7,9 @@
     "clean-install": "yarn clean && yarn",
     "start": "yarn build:web",
     "start:web": "yarn workspace @tcp/web start",
-    "build:web": "yarn && cd packages/web && yarn build && yarn next-start",
+    "build:web": "yarn --production && cd packages/web && yarn build && yarn next-start",
     "start:mobileapp": "cd packages/mobileapp && yarn start",
-    "cleanup": "rm -rf ./yarn.lock rm -rf ./node_modules",
+    "cleanup": "rm -rf ./node_modules",
     "lerna-clean": "npx lerna clean --y",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -63,7 +63,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-push": "lint-staged"
     }
   },
   "lint-staged": {
@@ -84,7 +84,6 @@
   ],
   "dependencies": {
     "cross-env": "^5.2.0",
-    "dotenv": "^8.0.0",
-    "react-redux": "^6.0.1"
+    "dotenv": "^8.0.0"
   }
 }
