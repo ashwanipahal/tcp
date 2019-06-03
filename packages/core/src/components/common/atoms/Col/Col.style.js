@@ -31,7 +31,7 @@ const calculateColumnWidth = (availableMaxWidth, columnWidth) => {
 const getGutter = (breakpoint, gridDimensions) => {
   const availableWidth = gridDimensions.availableMaxWidthObj[breakpoint];
   const columnGutter = gridDimensions.columnGutterObj[breakpoint];
-  const gutter = `${(columnGutter / availableWidth) * 100}%`;
+  const gutter = `${(columnGutter / availableWidth) * 100}`;
 
   return gutter;
 };
@@ -53,14 +53,30 @@ const getCoulmnWidth = (colCount, breakpoint, gridDimensions) => {
   return parseFloat(columnWidth) * colCount + parseFloat(columnGutter) * (colCount - 1);
 };
 
+const calculateOffset = (colCount, breakpoint, gridDimensions) => {
+  return (
+    getCoulmnWidth(colCount, breakpoint, gridDimensions) + getGutter(breakpoint, gridDimensions) * 1
+  );
+};
+
 const StyledCol = styled.div`
   ${props => css`
     ${props.theme.gridDimensions.gridBreakPointsKeys.map(
       key => `
       @media ${props.theme.mediaQueries[key]} {
           ${props.isColInlineBlock ? 'display: inline-block;' : ''}
-          padding-right: ${getGutter(key, props.theme.gridDimensions)};
-          width: ${getCoulmnWidth(props.config.colCount[key], key, props.theme.gridDimensions)}%
+          padding-right: ${getGutter(key, props.theme.gridDimensions)}%;
+          margin-left: ${
+            props.config.colOffset[key]
+              ? calculateOffset(props.config.colOffset[key], key, props.theme.gridDimensions)
+              : ''
+          }%;
+          margin-right: ${
+            props.config.colOffset[key]
+              ? calculateOffset(props.config.colOffset[key], key, props.theme.gridDimensions)
+              : ''
+          }%;
+          width: ${getCoulmnWidth(props.config.colCount[key], key, props.theme.gridDimensions)}%;
       }`
     )}
   `}
