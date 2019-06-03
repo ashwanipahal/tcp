@@ -19,7 +19,7 @@ const GlobalCss = createGlobalStyle`
     content: '-';
     float: right;
     font-weight: bold;
-    font-size: ${theme.fonts.fontSize.nav}    
+    font-size: ${theme.fonts.fontSize.heading.large.h6}px    
 }
 
 .Collapsible__trigger.is-closed{
@@ -30,7 +30,7 @@ const GlobalCss = createGlobalStyle`
     content: '+';
     float: right;
     font-weight: bold;
-    font-size: ${theme.fonts.fontSize.nav}px
+    font-size: ${theme.fonts.fontSize.heading.large.h6}px
 }
 .Collapsible__contentInner{
     padding: 0 28px;
