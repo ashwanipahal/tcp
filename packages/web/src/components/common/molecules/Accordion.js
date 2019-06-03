@@ -3,61 +3,12 @@ import React, {Fragment} from 'react';
 // import {Link, Image, Text} from '../atoms/index';
 import Link from 'next/link';
 import Collapsible from 'react-collapsible';
-import {createGlobalStyle, css } from 'styled-components';
-import theme from '@tcp/web/Styles/themes/primary';
-
-const GlobalCss = createGlobalStyle`
-
-.Collapsible__trigger{
-    padding: 18px;  
-    display: block;
-    cursor: pointer;
-    font-family: ${theme.fonts.secondaryFontFamily};
-    font-size: ${theme.fonts.fontSize.body.large.secondary}px;
-    background-color: ${theme.colors.PRIMARY.LIGHTGRAY};    
-}
-.Collapsible__trigger.is-open{
-    background-color: ${theme.colors.PRIMARY.LIGHTGRAY};
-    transition: background 0.5s fade;
-}
-.Collapsible__trigger.is-open:after{
-    content: '-';
-    float: right;
-    font-weight: bold;
-    font-size: ${theme.fonts.fontSize.nav}    
-}
-
-.Collapsible__trigger.is-closed{
-    background-color: ${theme.colors.PRIMARY.PALEGRAY};
-}
-
-.Collapsible__trigger.is-closed:after{
-    content: '+';
-    float: right;
-    font-weight: bold;
-    font-size: ${theme.fonts.fontSize.nav}px
-}
-.Collapsible__contentInner{
-    padding: 0 28px;
-    background: ${theme.colors.WHITE};
-    font-family: ${theme.fonts.secondaryFontFamily};
-
-}
-.Collapsible__contentInner > p a{
-    font-family: ${theme.fonts.secondaryFontFamily};
-    font-size: ${theme.fonts.fontSize.body.large.secondary}px;
-    text-decoration: none;
-    color: ${theme.colors.BLACK};
-    display: block;
-    padding-bottom: 17px;
-    padding-top: 18px;
-
-}`;
+import AccordionStyle from './Accordion.style';
 
 
 const Accordion = () => (
     <Fragment>
-        <GlobalCss />
+        <AccordionStyle />
         <Collapsible trigger="My Place Rewards">
             <p>
                 <Link href="#"><a>Create An Account</a></Link>
