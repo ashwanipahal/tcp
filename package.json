@@ -12,6 +12,8 @@
     "cleanup": "rm -rf ./node_modules",
     "lerna-clean": "npx lerna clean --y",
     "test": "jest",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}",
@@ -28,6 +30,9 @@
   "devDependencies": {
     "@babel/plugin-transform-flow-strip-types": "^7.0.0",
     "@babel/preset-flow": "^7.0.0",
+    "@babel/core": "^7.4.4",
+    "babel-loader": "^8.0.6",
+    "babel-cli": "^6.26.0",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "3.1.0",
@@ -59,7 +64,11 @@
     "stylelint-config-recommended": "^2.2.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-formatter-pretty": "^1.0.3",
-    "stylelint-processor-styled-components": "^1.5.1"
+    "stylelint-processor-styled-components": "^1.5.1",
+    "@storybook/react": "^5.0.11",
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addon-links": "^5.0.11",
+    "@storybook/addons": "^5.0.11"
   },
   "husky": {
     "hooks": {
