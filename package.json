@@ -26,11 +26,22 @@
     "lint:web": "yarn run lint:web:js && yarn run lint:web:css"
   },
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
     "@babel/plugin-transform-flow-strip-types": "^7.0.0",
+    "@babel/preset-env": "^7.4.5",
     "@babel/preset-flow": "^7.0.0",
-    "@babel/core": "^7.4.4",
-    "babel-loader": "^8.0.6",
+    "@babel/preset-react": "^7.0.0",
+    "@types/enzyme": "^3.9.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^24.0.13",
+    "@types/node": "^12.0.4",
+    "@types/react": "^16.8.19",
     "babel-cli": "^6.26.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-loader": "^8.0.6",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.13.2",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "3.1.0",
@@ -41,28 +52,32 @@
     "eslint-plugin-jest": "^22.3.2",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-node": "^5.2.0",
+    "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-react-native": "^3.7.0",
     "eslint-plugin-react-native-a11y": "^1.2.0",
     "eslint-plugin-standard": "3.0.1",
-    "eslint-plugin-prettier": "^3.0.1",
     "flow-bin": "^0.82.0",
     "flow-coverage-report": "^0.6.0",
     "flow-mono-cli": "^1.5.0",
     "flow-typed": "^2.5.1",
     "husky": "^2.3.0",
     "jest": "^24.8.0",
+    "jest-styled-components": "^6.3.1",
     "lerna": "^3.13.4",
     "lint-staged": "^8.1.7",
     "prettier": "1.17.1",
+    "react": "^16.8.6",
+    "styled-components": "^4.2.1",
     "stylelint": "^9.10.1",
     "stylelint-config-css-modules": "^1.3.0",
     "stylelint-config-prettier": "^5.0.0",
     "stylelint-config-recommended": "^2.2.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-formatter-pretty": "^1.0.3",
-    "stylelint-processor-styled-components": "^1.5.1"
+    "stylelint-processor-styled-components": "^1.5.1",
+    "ts-jest": "^24.0.2"
   },
   "husky": {
     "hooks": {
@@ -88,5 +103,8 @@
   "dependencies": {
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0"
+  },
+  "resolutions": {
+    "babel-core": "^7.0.0-bridge.0"
   }
 }
