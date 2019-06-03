@@ -18,19 +18,11 @@ module.exports = api => {
           development: process.env.BABEL_ENV !== 'build',
         },
       ],
-      '@babel/preset-typescript',
     ],
     plugins: ['@babel/plugin-proposal-class-properties'],
     env: {
       build: {
-        ignore: [
-          '**/*.test.tsx',
-          '**/*.test.ts',
-          '**/*.story.tsx',
-          '__snapshots__',
-          '__tests__',
-          '__stories__',
-        ],
+        ignore: ['**/*.story.tsx', '__snapshots__', '__tests__', '__stories__'],
       },
     },
     ignore: ['node_modules'],
