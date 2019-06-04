@@ -12,7 +12,7 @@
     "cleanup": "rm -rf ./node_modules",
     "lerna-clean": "npx lerna clean --y",
     "test": "jest --config ./config/jest.config.js",
-    "test:staged": "jest --passWithNoTests --config ./config/jest.config.js",
+    "test:staged": "jest --bail --findRelatedTests --config ./config/jest.config.js",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}",
