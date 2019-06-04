@@ -1,4 +1,4 @@
-import {createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components';
 import theme from '@tcp/web/Styles/themes/primary';
 
 const GlobalCss = createGlobalStyle`

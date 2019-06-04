@@ -4,7 +4,7 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { PropTypes } from 'prop-types';
 import { NavBar, Test } from '../molecules';
-import Accordion from "@tcp/web/src/components/common/molecules/AccordionData";
+import Accordion from '@tcp/web/src/components/common/molecules/Accordion/Accordion';
 
 // colCount is the number of columns the component needs to cover in each of the viewport
 const colSize = {
@@ -49,7 +49,6 @@ const HomePageView = ({ links }) => (
     <NavBar links={links} />
     <Accordion />
     <Test className="test" />
-    
   </Fragment>
 );
 
