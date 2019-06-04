@@ -1,11 +1,12 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import withStyles from '../../hoc/withStyles';
 import StyledRow from './Row.style';
 
 const Row = ({ className, children, noFlex }) => (
-  <StyledRow className={className} noFlex={noFlex}>
+  <div className={className} noFlex={noFlex}>
     {children}
-  </StyledRow>
+  </div>
 );
 
 Row.propTypes = {
@@ -14,4 +15,5 @@ Row.propTypes = {
   noFlex: PropTypes.bool.isRequired,
 };
 
-export default Row;
+export default withStyles(Row, StyledRow);
+export { Row as RowVanilla };

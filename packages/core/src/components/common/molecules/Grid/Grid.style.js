@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import { css } from 'styled-components';
 
-const StyledGrid = styled.div`
+const StyledGrid = css`
     max-width: ${props => props.theme.breakpoints.xlarge}
     margin: 0 auto;
 `;

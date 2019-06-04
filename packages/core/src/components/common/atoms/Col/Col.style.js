@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import { css } from 'styled-components';
 // TODO - Revisit the function comments and change as per the project
 // ==============FUNCTIONS ====================== //
 
@@ -59,27 +59,26 @@ const calculateOffset = (colCount, breakpoint, gridDimensions) => {
   );
 };
 
-const StyledCol = styled.div`
-  ${props => css`
-    ${props.theme.gridDimensions.gridBreakPointsKeys.map(
+const StyledCol = css`
+  ${props =>
+    props.theme.gridDimensions.gridBreakPointsKeys.map(
       key => `
       @media ${props.theme.mediaQueries[key]} {
           ${props.isColInlineBlock ? 'display: inline-block;' : ''}
           padding-right: ${getGutter(key, props.theme.gridDimensions)}%;
           margin-left: ${
-            props.config.colOffset[key]
-              ? calculateOffset(props.config.colOffset[key], key, props.theme.gridDimensions)
-              : ''
+            props.offsetLeft && props.offsetLeft[key]
+              ? calculateOffset(props.offsetLeft[key], key, props.theme.gridDimensions)
+              : '0'
           }%;
           margin-right: ${
-            props.config.colOffset[key]
-              ? calculateOffset(props.config.colOffset[key], key, props.theme.gridDimensions)
-              : ''
+            props.offsetRight && props.offsetRight[key]
+              ? calculateOffset(props.offsetRight[key], key, props.theme.gridDimensions)
+              : '0'
           }%;
-          width: ${getCoulmnWidth(props.config.colCount[key], key, props.theme.gridDimensions)}%;
+          width: ${getCoulmnWidth(props.colSize[key], key, props.theme.gridDimensions)}%;
       }`
     )}
-  `}
 `;
 
 export default StyledCol;
