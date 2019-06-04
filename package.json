@@ -88,8 +88,8 @@
     "*.{js,jsx}": [
       "yarn run flow focus-check",
       "eslint",
-      "yarn test",
-      "yarn lint:web:css:fix"
+      "jest --bail --findRelatedTests",
+      "stylelint"
     ],
     "*.css": "stylelint"
   },
