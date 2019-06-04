@@ -36,6 +36,10 @@ const getGutter = (breakpoint, gridDimensions) => {
   return gutter;
 };
 
+/**
+ * Default colsize
+ */
+
 /*
     o/p -
         column width of desired column no in %
@@ -64,7 +68,7 @@ const StyledCol = css`
     props.theme.gridDimensions.gridBreakPointsKeys.map(
       key => `
       @media ${props.theme.mediaQueries[key]} {
-          ${props.isColInlineBlock ? 'display: inline-block;' : ''}
+          ${!props.isNotInlineBlock ? 'display: inline-block;' : ''}
           padding-right: ${getGutter(key, props.theme.gridDimensions)}%;
           margin-left: ${
             props.offsetLeft && props.offsetLeft[key]
