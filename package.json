@@ -22,7 +22,7 @@
     "lint:web:js": "yarn workspace @tcp/web eslint src/",
     "lint:web:js:fix": "yarn run lint:js --fix",
     "lint:web:css": " yarn workspace @tcp/web stylelint src/**/*.js",
-    "lint:web:css:fix": "yarn run lint:css --fix",
+    "lint:web:css:fix": "yarn run lint:web:css --fix",
     "lint:web": "yarn run lint:web:js && yarn run lint:web:css"
   },
   "devDependencies": {
@@ -88,8 +88,8 @@
     "*.{js,jsx}": [
       "yarn run flow focus-check",
       "eslint",
-      "jest --bail --findRelatedTests",
-      "stylelint"
+      "yarn test",
+      "yarn lint:web:css:fix"
     ],
     "*.css": "stylelint"
   },
@@ -98,6 +98,7 @@
   ],
   "dependencies": {
     "cross-env": "^5.2.0",
-    "dotenv": "^8.0.0"
+    "dotenv": "^8.0.0",
+    "react-slick": "^0.24.0"
   }
 }
