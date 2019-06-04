@@ -77,7 +77,4 @@ const HomePageView = ({ links }) => (
   </Fragment>
 );
 
-HomePageView.propTypes = {
-  links: PropTypes.string.isRequired,
-};
 export default HomePageView;

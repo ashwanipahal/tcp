@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
+import { Header, Footer } from '../components/common/organisms';
 import { configureStore } from '../reduxStore';
 import theme from '../../Styles/themes/primary';
 
@@ -40,7 +41,9 @@ class TCPWebApp extends App {
       <Container>
         <ThemeProvider theme={theme}>
           <Provider store={store}>
+            <Header />
             <Component {...pageProps} />
+            <Footer />
           </Provider>
         </ThemeProvider>
       </Container>
