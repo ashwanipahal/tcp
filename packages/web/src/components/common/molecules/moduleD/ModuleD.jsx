@@ -1,14 +1,10 @@
 // any molecule will come here
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import Row from '@tcp/core/src/components/common/atoms/Row';
-
-const ModuleDBorder = styled.div`
-  border: 1px solid #979797;
-`;
 
 const StyledH2 = styled.h2`
   font-family: 'Montserrat';
@@ -37,11 +33,6 @@ const StyledButton = styled.button`
   padding: 19px 80px;
 `;
 
-const StyledContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
-
 const colSize = {
   small: 3,
   medium: 2,
@@ -53,24 +44,24 @@ const ModuleD = ({ assets }) => (
   <Fragment>
     <Grid>
       <StyledH2>Mini me shop</StyledH2>
-      <Row>
+      <Row noflex={false}>
         {assets &&
-          assets.map((item, i) => (
-            <Col key={i} colSize={colSize}>
-              <img src={item.url} />
+          assets.map(item => (
+            <Col colSize={colSize} isColInlineBlock>
+              <img src={item.url} alt="mini me shop" />
               <StyledLink href="{item.link}">{item.text}</StyledLink>
             </Col>
           ))}
       </Row>
 
-      <Row>
+      <Row noflex={false}>
         <StyledButton>Shop all</StyledButton>
       </Row>
     </Grid>
   </Fragment>
 );
 ModuleD.propTypes = {
-  assets: PropTypes.array.isRequired,
+  assets: PropTypes.string.isRequired,
 };
 
 export default ModuleD;

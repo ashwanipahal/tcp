@@ -3,8 +3,8 @@ import { PropTypes } from 'prop-types';
 import withStyles from '../../hoc/withStyles';
 import StyledRow from './Row.style';
 
-const Row = ({ className, children, noFlex }) => (
-  <div className={className} noFlex={noFlex}>
+const Row = ({ className, children, noflex }) => (
+  <div className={className} noflex={noflex}>
     {children}
   </div>
 );
@@ -12,7 +12,7 @@ const Row = ({ className, children, noFlex }) => (
 Row.propTypes = {
   children: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
-  noFlex: PropTypes.bool.isRequired,
+  noflex: PropTypes.bool.isRequired,
 };
 
 export default withStyles(Row, StyledRow);
