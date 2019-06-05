@@ -1,11 +1,10 @@
 // any molecule will come here
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import Row from '@tcp/core/src/components/common/atoms/Row';
-import theme from '@tcp/web/Styles/themes/primary';
 
 const ModuleDBorder = styled.div`
   border: 1px solid #979797;
@@ -51,22 +50,24 @@ const colSize = {
 };
 
 const ModuleD = ({ assets }) => (
-  <Grid style={ModuleDBorder} theme={theme}>
-    <StyledH2>Mini me shop</StyledH2>
-    <Row>
-      {assets &&
-        assets.map((item, i) => (
-          <Col key={i} colSize={colSize}>
-            <img src={item.url} />
-            <StyledLink href="{item.link}">{item.text}</StyledLink>
-          </Col>
-        ))}
-    </Row>
+  <Fragment>
+    <Grid>
+      <StyledH2>Mini me shop</StyledH2>
+      <Row>
+        {assets &&
+          assets.map((item, i) => (
+            <Col key={i} colSize={colSize}>
+              <img src={item.url} />
+              <StyledLink href="{item.link}">{item.text}</StyledLink>
+            </Col>
+          ))}
+      </Row>
 
-    <Row>
-      <StyledButton>Shop all</StyledButton>
-    </Row>
-  </Grid>
+      <Row>
+        <StyledButton>Shop all</StyledButton>
+      </Row>
+    </Grid>
+  </Fragment>
 );
 ModuleD.propTypes = {
   assets: PropTypes.array.isRequired,
