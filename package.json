@@ -7,7 +7,7 @@
     "clean-install": "yarn clean && yarn",
     "start": "yarn build:web",
     "start:web": "yarn workspace @tcp/web start",
-    "build:web": "yarn --production && cd packages/web && yarn build && yarn next-start",
+    "build:web": "yarn && cd packages/web && yarn && yarn build && yarn next-start",
     "start:mobileapp": "cd packages/mobileapp && yarn start",
     "cleanup": "rm -rf ./node_modules",
     "lerna-clean": "npx lerna clean --y",
