@@ -44,7 +44,7 @@ const getGutter = (breakpoint, gridDimensions) => {
         col-count : column no who's width has to be calculated
 */
 
-const getCoulmnWidth = (colCount, breakpoint, gridDimensions) => {
+const getColumnWidth = (colCount, breakpoint, gridDimensions) => {
   const columnWidth = calculateColumnWidth(
     gridDimensions.availableMaxWidthObj[breakpoint],
     gridDimensions.columnWidthObj[breakpoint]
@@ -55,7 +55,7 @@ const getCoulmnWidth = (colCount, breakpoint, gridDimensions) => {
 
 const calculateOffset = (colCount, breakpoint, gridDimensions) => {
   return (
-    getCoulmnWidth(colCount, breakpoint, gridDimensions) + getGutter(breakpoint, gridDimensions) * 1
+    getColumnWidth(colCount, breakpoint, gridDimensions) + getGutter(breakpoint, gridDimensions) * 1
   );
 };
 
@@ -76,7 +76,7 @@ const StyledCol = css`
               ? calculateOffset(props.offsetRight[key], key, props.theme.gridDimensions)
               : '0'
           }%;
-          width: ${getCoulmnWidth(props.colSize[key], key, props.theme.gridDimensions)}%;
+          width: ${getColumnWidth(props.colSize[key], key, props.theme.gridDimensions)}%;
       }`
     )}
 `;

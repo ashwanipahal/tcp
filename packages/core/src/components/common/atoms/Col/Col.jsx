@@ -10,6 +10,20 @@ const Col = ({ children, className }) => <div className={className}>{children}</
 Col.propTypes = {
   children: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
+  colSize: PropTypes.shape({
+    small: PropTypes.number,
+    medium: PropTypes.number,
+    large: PropTypes.number,
+  }),
+};
+
+Col.defaultProps = {
+  colSize: {
+    small: 6,
+    medium: 8,
+    large: 12,
+    xlarge: 12,
+  },
 };
 
 export default withStyles(Col, styles);

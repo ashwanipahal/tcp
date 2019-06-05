@@ -50,6 +50,9 @@ const FONT_SIZE = {
     small: 11,
     large: 14,
   },
+  button: {
+    size: 14,
+  },
 };
 
 const FONT_WEIGHT = {
