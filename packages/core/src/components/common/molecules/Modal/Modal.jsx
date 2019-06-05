@@ -8,8 +8,6 @@ import React from 'react';
 import ReactModal from 'react-modal';
 import PropTypes from 'prop-types';
 
-ReactModal.setAppElement('#__next');
-
 const Modal = ({ children, ...otherProps }) => {
   return <ReactModal {...otherProps}>{children}</ReactModal>;
 };
