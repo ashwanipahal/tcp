@@ -11,14 +11,10 @@ import config from './config';
 
 const defaults = { ...config.CAROUSEL_DEFAULTS };
 
-class Carousel extends React.PureComponent {
-  render() {
-    const { options, children } = this.props;
-    const settings = { ...defaults, ...options };
-
-    return <Slider {...settings}>{!children ? null : children}</Slider>;
-  }
-}
+const Carousel = ({ options, children }) => {
+  const settings = { ...defaults, ...options };
+  return <Slider {...settings}>{!children ? null : children}</Slider>;
+};
 
 Carousel.propTypes = {
   children: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
