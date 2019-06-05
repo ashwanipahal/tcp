@@ -1,64 +1,40 @@
-/* eslint-disable */
-//TODO - Fix the eslint issues in this file
-import Link from 'next/link';
 import React from 'react';
+import { PropTypes } from 'prop-types';
+// import Link from 'next/link';
+import { buildUrl } from '@tcp/core/src/utils/url';
+
 import styles from './Anchor.style';
 import withStyles from '../../hoc/withStyles';
 
-const buildUrl = () => {
-  return 'abdc';
-};
-
-const Anchor = ({
-  children,
-  to,
-  as,
-  className,
-  inheritedClass,
-  noLink,
-  inheritedStyles,
-  handleLinkClick,
-  shallow,
-  scroll,
-  forceClick,
-  customStyle,
-  slnId,
-  ...other
-}) =>
+const Anchor = ({ children, to, as, className, scroll, noLink, handleLinkClick, ...other }) =>
   noLink ? (
-    <a
-      href={buildUrl(to)}
-      className={className}
-      onClick={handleLinkClick}
-      data-sln-id={slnId}
-      {...other}
-    >
+    <a href={buildUrl(to)} className={className} onClick={handleLinkClick} {...other}>
       {children}
     </a>
   ) : (
-    <Link href={to} as={as} shallow={shallow} scroll={scroll}>
-      {forceClick ? (
-        <div className={customStyle}>
-          <a
-            href={to}
-            className={className}
-            onClick={handleLinkClick}
-            data-sln-id={slnId}
-            {...other}
-          >
-            {children}
-          </a>
-        </div>
-      ) : (
-        <a href={as || buildUrl(to)} className={className} data-sln-id={slnId} {...other}>
-          {children}
-        </a>
-      )}
-    </Link>
+    /* <Link href={to} as={as} shallow={shallow} scroll={scroll}> */
+    <a href={as || buildUrl(to)} className={className} {...other}>
+      {children}
+    </a>
+    /* </Link> */
   );
 
-Anchor.defaultProps = {};
+Anchor.propTypes = {
+  children: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
+  as: PropTypes.string,
+  scroll: PropTypes.string,
+  className: PropTypes.string.isRequired,
+  noLink: PropTypes.bool,
+  handleLinkClick: PropTypes.func,
+};
+
+Anchor.defaultProps = {
+  as: '',
+  scroll: '',
+  noLink: true,
+  handleLinkClick: () => {},
+};
 
 export default withStyles(Anchor, styles);
-
 export { Anchor as AnchorVanilla };

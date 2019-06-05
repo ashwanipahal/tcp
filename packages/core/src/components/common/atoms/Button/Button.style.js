@@ -15,11 +15,12 @@ const ButtonStyles = css`
       min-width: 40px;
       background: ${props.theme.colors.BUTTON.NORMAL};
       color: ${props.theme.colors.BUTTON.TEXT};
-      font-family: ${props.theme.fonts.secondaryFontFamily};
+      font-family: Nunito-SemiBold;
       font-size: ${props.theme.fonts.fontSize.button.size}px;
       font-weight: ${props.theme.fonts.fontWeight.semiBold};
       border: 1px solid ${props.theme.colors.BUTTON.BORDER};
       padding: 16px 20px;
+      width: 100%;
     `
       : ''};
   ${props =>
@@ -41,14 +42,6 @@ const ButtonStyles = css`
       width: 100% ;
     `
       : ''};
-
-  &:focus {
-    outline: 1px dashed ${props => props.theme.colorOutline};
-  }
-
-  &:focus:not(.focus-visible) {
-    outline: none;
-  }
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

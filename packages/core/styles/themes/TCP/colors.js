@@ -52,7 +52,8 @@ export default {
     TEXT: '#4a4a4a',
   },
   ANCHOR: {
-    PRIMARY: '#2e6a91',
-    SECONDARY: '#c84747',
+    PRIMARY: '#1a1a1a',
+    SECONDARY: '#2e6a91',
+    TERTIARY: '#c84747',
   },
 };

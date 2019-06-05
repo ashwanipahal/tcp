@@ -14,19 +14,23 @@ const AnchorStyles = css`
     `
       : ''};
   ${props =>
-    props.fullWidth
+    props.anchorVariation === 'tertiary'
       ? `
-      width: 100% ;
+      color: ${props.theme.colors.ANCHOR.TERTIARY};
     `
       : ''};
-
-  &:focus {
-    outline: 1px dashed ${props => props.theme.colorOutline};
-  }
-
-  &:focus:not(.focus-visible) {
-    outline: none;
-  }
+  ${props =>
+    props.fullWidth
+      ? `
+      width: 100%;
+    `
+      : ''};
+  ${props =>
+    props.noUnderline
+      ? `
+      text-decoration: none;
+    `
+      : ''};
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

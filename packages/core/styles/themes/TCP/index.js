@@ -2,12 +2,12 @@ import colors from './colors';
 import fonts from './fonts';
 import zindex from './zindex';
 import gridDimensions from './gridDimensions';
-import { mediaQueries, breakpoints } from './mediaQuery';
+import { mediaQuery, breakpoints } from './mediaQuery';
 
 const theme = {
   colors,
   fonts,
-  mediaQueries,
+  mediaQuery,
   breakpoints,
   zindex,
   gridDimensions,

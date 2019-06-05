@@ -4,7 +4,7 @@ const StyledRow = css`
   ${props =>
     props.theme.gridDimensions.gridBreakPointsKeys.map(
       key => `
-    @media ${props.theme.mediaQueries[key]} {
+    @media ${props.theme.mediaQuery[key]} {
         ${!props.noFlex ? 'display: flex; flex-wrap: wrap;' : ''}
         margin-right: ${props.theme.gridDimensions.gridOffsetObj[key]}px;
         margin-left: ${props.theme.gridDimensions.gridOffsetObj[key]}px;

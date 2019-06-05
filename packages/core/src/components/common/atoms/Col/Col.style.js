@@ -63,7 +63,7 @@ const StyledCol = css`
   ${props =>
     props.theme.gridDimensions.gridBreakPointsKeys.map(
       key => `
-      @media ${props.theme.mediaQueries[key]} {
+      @media ${props.theme.mediaQuery[key]} {
           ${props.isColInlineBlock ? 'display: inline-block;' : ''}
           padding-right: ${getGutter(key, props.theme.gridDimensions)}%;
           margin-left: ${

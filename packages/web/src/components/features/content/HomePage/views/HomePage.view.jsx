@@ -4,6 +4,7 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import RichText from '@tcp/core/src/components/common/atoms/RichText';
 import { PropTypes } from 'prop-types';
 import { NavBar, Test } from '../molecules';
 
@@ -29,6 +30,7 @@ const colSize2 = {
   xlarge: 1,
 };
 
+const randomHTML = '<button class="asdfasdf" type="button">test133</button>';
 const HomePageView = ({ links }) => (
   <Fragment>
     <NavBar links={links} />
@@ -39,19 +41,21 @@ const HomePageView = ({ links }) => (
           <Button buttonVariation="fixed-width">test</Button>
         </Col>
         <Col colSize={colSize}>
-          <Button buttonVariation="variable-width">test</Button>
+          <Button buttonVariation="variable-width">test132323sdfsdfsdf</Button>
         </Col>
         <Col colSize={colSize}>
-          <Button buttonVariation="fixed-width">test</Button>
+          <Button buttonVariation="fixed-width" fullWidth>
+            test
+          </Button>
         </Col>
         <Col colSize={colSize1}>
-          <Anchor redirectTo="/to" anchorVariation="primary">
-            <a href="/test">sfdsdsd</a>
+          <Anchor redirectTo="/to" anchorVariation="primary" noLink noUnderline>
+            ABCD
           </Anchor>
         </Col>
         <Col colSize={colSize2}>Random line5 takes 1 col in desktop</Col>
         <Col colSize={colSize}>
-          <Button buttonVariation="fixed-width">test</Button>
+          <RichText richTextHtml={randomHTML} />
         </Col>
         <Col colSize={colSize}>
           <Button buttonVariation="fixed-width">test</Button>
