@@ -1,1 +1,3 @@
-// any molecule will come here
+import Modal from './Modal';
+
+export default { Modal };

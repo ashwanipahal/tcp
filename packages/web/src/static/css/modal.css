@@ -1,0 +1,39 @@
+.TCPModal__Overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.TCPModal__Content {
+  background: rgb(255, 255, 255);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  right: auto;
+  bottom: auto;
+  margin-right: -50%;
+  overflow: auto;
+  outline: none;
+  padding: 20px;
+  transform: translate(-50%, -50%);
+  width: 930px;
+}
+
+@media only screen and (max-width: 767px) {
+  .TCPModal__Content {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .TCPModal__Content {
+    width: 450px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .TCPModal__Content {
+    width: 930px;
+  }
+}
