@@ -1,4 +1,6 @@
 import NavBar from './NavBar';
+import SampleCarousel from './SampleCarousel';
 import Test from './Test';
+import Accordion from './Accordion';
 
-export { NavBar, Test }
+export { Accordion, NavBar, SampleCarousel, Test };

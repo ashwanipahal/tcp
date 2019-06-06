@@ -2,9 +2,9 @@ import React, { Fragment } from 'react';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
+import CarouselConfig from '@tcp/web/config';
 import { PropTypes } from 'prop-types';
-import { NavBar, Test } from '../molecules';
-import Accordion from '@tcp/web/src/components/common/molecules/Accordion/Accordion';
+import { Accordion, NavBar, SampleCarousel, Test } from '../molecules';
 
 // colCount is the number of columns the component needs to cover in each of the viewport
 const colSize = {
@@ -47,7 +47,7 @@ const offsetLeft2 = {
 const HomePageView = ({ links }) => (
   <Fragment>
     <NavBar links={links} />
-    <Accordion />
+    <Accordion className={'Collapsible'} children={'AAAA'} title={'test'} />
     <Test className="test" />
   </Fragment>
 );
@@ -56,23 +56,3 @@ HomePageView.propTypes = {
   links: PropTypes.array.isRequired,
 };
 export default HomePageView;
-
-// <Grid>
-//       <Row noFlex>
-//         <Col isColInlineBlock colSize={colSize} offsetRight={offsetRight}>
-//           Random line1 takes 3 col in desktop
-//         </Col>
-//         <Col isColInlineBlock colSize={colSize} offsetLeft={offsetRight}>
-//           Random line2 takes 3 col in desktop
-//         </Col>
-//         <Col isColInlineBlock colSize={colSize} offsetLeft={offsetRight}>
-//           Random line3 takes 3 col in desktop
-//         </Col>
-//         <Col isColInlineBlock colSize={colSize1} offsetLeft={offsetLeft1}>
-//           Random line4 takes 2 col in desktop
-//         </Col>
-//         <Col isColInlineBlock colSize={colSize2} offsetLeft={offsetLeft2}>
-//           Random line5 takes 1 col in desktop
-//         </Col>
-//       </Row>
-//     </Grid>
