@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
+import ModalCloseIcon from '@tcp/web/src/components/common/atoms/ModalCloseIcon';
 
 class SampleModal extends React.Component {
   constructor(props, context) {
@@ -36,6 +37,7 @@ class SampleModal extends React.Component {
           shouldCloseOnEsc
         >
           <div>
+            <ModalCloseIcon closeFunc={this.toggleModal} />
             <h2>Modal Title</h2>
             <p>Modal content goes here...</p>
             <form>

@@ -18,22 +18,4 @@
   outline: none;
   padding: 20px;
   transform: translate(-50%, -50%);
-  width: 930px;
-}
-
-@media only screen and (max-width: 767px) {
-  .TCPModal__Content {
-    width: 100%;
-  }
-}
-@media only screen and (min-width: 768px) {
-  .TCPModal__Content {
-    width: 450px;
-  }
-}
-
-@media only screen and (min-width: 1280px) {
-  .TCPModal__Content {
-    width: 930px;
-  }
 }
