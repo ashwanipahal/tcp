@@ -37,9 +37,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head>
-          <link rel="stylesheet" type="text/css" href="/static/css/carousel/slick.css" />
-        </Head>
+        <Head />
         <body className="custom_class">
           <Main />
           <NextScript />

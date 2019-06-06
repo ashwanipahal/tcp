@@ -35,7 +35,17 @@ const SampleCarousel = ({ props }) => (
 );
 
 SampleCarousel.propTypes = {
-  props: PropTypes.objectOf.isRequired,
+  props: PropTypes.shape({
+    autoplaySpeed: PropTypes.number,
+    speed: PropTypes.number,
+  }),
+};
+
+SampleCarousel.defaultProps = {
+  props: PropTypes.shape({
+    autoplaySpeed: PropTypes.number,
+    speed: PropTypes.number,
+  }),
 };
 
 export default SampleCarousel;

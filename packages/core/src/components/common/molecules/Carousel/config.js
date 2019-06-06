@@ -5,12 +5,14 @@
 const config = {
   CAROUSEL_DEFAULTS: {
     accessibility: true,
+    autoplaySpeed: 3000,
     arrows: false,
     dots: false,
     slidesToShow: 3,
+    speed: 300,
     responsive: [
       {
-        breakpoint: 480, // TODO: Breakpoint has to come from config
+        breakpoint: 767, // TODO: Breakpoint has to come from config
         settings: {
           autoplay: true,
           arrows: true,
@@ -20,7 +22,7 @@ const config = {
         },
       },
       {
-        breakpoint: 768, // TODO: Breakpoint has to come from config
+        breakpoint: 1023, // TODO: Breakpoint has to come from config
         settings: {
           autoplay: true,
           arrows: true,
