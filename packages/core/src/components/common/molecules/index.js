@@ -1,3 +1,4 @@
 import Modal from './Modal';
+import Carousel from './Carousel';
 
-export default { Modal };
+export default { Carousel, Modal };
