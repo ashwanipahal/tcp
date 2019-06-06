@@ -32,11 +32,13 @@
       "jest",
       "flowtype",
       "prettier",
-      "extra-rules"
+      "extra-rules",
+      "sonarjs"
       ],
     "extends": [
       "airbnb","plugin:react-native/all","plugin:react-native-a11y/recommended",
-      "plugin:flowtype/recommended", "prettier"
+      "plugin:flowtype/recommended", "prettier",
+      "plugin:sonarjs/recommended"
     ],
     "parser": "babel-eslint",
     "globals": {
