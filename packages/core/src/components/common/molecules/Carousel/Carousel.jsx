@@ -13,7 +13,11 @@ const defaults = { ...config.CAROUSEL_DEFAULTS };
 
 const Carousel = ({ options, children }) => {
   const settings = { ...defaults, ...options };
-  return <Slider {...settings}>{!children ? null : children}</Slider>;
+  return (
+    <Slider {...settings} className="TCP_Carousel">
+      {!children ? null : children}
+    </Slider>
+  );
 };
 
 Carousel.propTypes = {

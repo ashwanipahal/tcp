@@ -118,23 +118,28 @@
 }
 @media only screen and (max-width: 767px) {
   .slick-prev {
-    background: url('../../images/carousel-mobile-prev.svg') no-repeat center center;
+    background: url('../../images/carousel-prev.svg') no-repeat center center;
+    background-size: 6px auto;
   }
   .slick-next {
-    background: url('../../images/carousel-mobile-next.svg') no-repeat center center;
+    background: url('../../images/carousel-next.svg') no-repeat center center;
+    background-size: 6px auto;
   }
 }
 @media only screen and (min-width: 768px) {
   .slick-prev {
-    background: url('../../images/carousel-tablet-prev.svg') no-repeat center center;
+    background: url('../../images/carousel-prev.svg') no-repeat center center;
   }
   .slick-next {
-    background: url('../../images/carousel-tablet-next.svg') no-repeat center center;
+    background: url('../../images/carousel-next.svg') no-repeat center center;
   }
 }
 
 .slick-prev {
   left: -20px;
+  -webkit-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  transform: translate(-50%);
 }
 [dir='rtl'] .slick-prev {
   right: -20px;

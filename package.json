@@ -98,6 +98,7 @@
     "packages/*"
   ],
   "dependencies": {
+    "@svgr/webpack": "^4.3.0",
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
     "react-slick": "^0.24.0"

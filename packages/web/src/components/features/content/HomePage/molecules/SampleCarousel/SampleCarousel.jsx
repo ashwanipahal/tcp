@@ -15,9 +15,9 @@ const Item = styled.h3`
   margin: 10px;
 `;
 
-const SampleCarousel = ({ autoplaySpeed }) => (
+const SampleCarousel = ({ props }) => (
   <Fragment>
-    <Carousel options={{ autoplaySpeed }}>
+    <Carousel options={props}>
       <Row>
         <Item>Slide item 1</Item>
       </Row>
@@ -35,7 +35,7 @@ const SampleCarousel = ({ autoplaySpeed }) => (
 );
 
 SampleCarousel.propTypes = {
-  autoplaySpeed: PropTypes.number.isRequired,
+  props: PropTypes.objectOf.isRequired,
 };
 
 export default SampleCarousel;
