@@ -10,7 +10,7 @@ const Footer = ({ className }) => (
     <div className="footer-top">
       <Row>
         <Col
-          className="slot-1"
+          className="footer-top__slot--1"
           colSize={{
             large: 8,
             medium: 4,
@@ -20,7 +20,7 @@ const Footer = ({ className }) => (
           slot 1
         </Col>
         <Col
-          className="slot-2"
+          className="footer-top__slot--2"
           colSize={{
             large: 4,
             medium: 4,
@@ -33,7 +33,7 @@ const Footer = ({ className }) => (
     </div>
     <Row className="footer-middle">
       <Col
-        className="slot-1"
+        className="footer-middle__slot--1"
         colSize={{
           large: 2,
           medium: 8,
@@ -43,7 +43,7 @@ const Footer = ({ className }) => (
         slot 1
       </Col>
       <Col
-        className="slot-2"
+        className="footer-middle__slot--2"
         colSize={{
           large: 2,
           medium: 8,
@@ -53,7 +53,7 @@ const Footer = ({ className }) => (
         slot 2
       </Col>
       <Col
-        className="slot-2"
+        className="footer-middle__slot--3"
         colSize={{
           large: 8,
           medium: 8,
@@ -65,7 +65,7 @@ const Footer = ({ className }) => (
     </Row>
     <Row className="footer-bottom">
       <Col
-        className="slot-1"
+        className="footer-bottom__slot--1"
         colSize={{
           large: 4,
           medium: 8,
@@ -75,7 +75,7 @@ const Footer = ({ className }) => (
         slot 1
       </Col>
       <Col
-        className="slot-2"
+        className="footer-bottom__slot--2"
         colSize={{
           large: 6,
           medium: 8,
@@ -85,7 +85,7 @@ const Footer = ({ className }) => (
         slot 2
       </Col>
       <Col
-        className="slot-3"
+        className="footer-bottom__slot--3"
         colSize={{
           large: 2,
           medium: 8,
@@ -98,7 +98,7 @@ const Footer = ({ className }) => (
   </footer>
 );
 
-Footer.protoTypes = {
+Footer.propTypes = {
   className: PropTypes.string.isRequired,
 };
 

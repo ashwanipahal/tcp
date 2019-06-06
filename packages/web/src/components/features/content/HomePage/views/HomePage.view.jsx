@@ -1,11 +1,17 @@
 import React, { Fragment } from 'react';
-import { NavBar, Test } from '../molecules';
+import PropTypes from 'prop-types';
+import CarouselConfig from '@tcp/web/config';
+import { NavBar, SampleCarousel } from '../molecules';
 
 const HomePageView = ({ links }) => (
   <Fragment>
     <NavBar links={links} />
-    <Test className="test" />
+    <SampleCarousel props={CarouselConfig.CAROUSEL_OPTIONS} />
   </Fragment>
 );
+
+HomePageView.propTypes = {
+  links: PropTypes.arrayOf.isRequired,
+};
 
 export default HomePageView;

@@ -4,7 +4,7 @@ const StyledRow = css`
   ${props =>
     props.theme.gridDimensions.gridBreakPointsKeys.map(
       key => `
-    @media ${props.theme.mediaQueries[key]} {
+    @media ${props.theme.mediaQuery[key]} {
         ${
           !props.inline_block
             ? `
