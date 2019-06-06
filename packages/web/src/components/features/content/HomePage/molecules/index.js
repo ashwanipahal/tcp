@@ -1,4 +1,6 @@
 import NavBar from './NavBar';
+import SampleCarousel from './SampleCarousel';
 import Test from './Test';
+import ModuleD from './ModuleD';
 
-export { NavBar, Test }
+export { NavBar, SampleCarousel, Test, ModuleD };
