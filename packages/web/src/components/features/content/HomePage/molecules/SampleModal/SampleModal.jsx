@@ -2,6 +2,12 @@ import React from 'react';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import ModalCloseIcon from '@tcp/web/src/components/common/atoms/ModalCloseIcon';
 
+const colSize = {
+  small: 6,
+  medium: 6,
+  large: 8,
+};
+
 class SampleModal extends React.Component {
   constructor(props, context) {
     super(props, context);
@@ -29,6 +35,7 @@ class SampleModal extends React.Component {
           Open Modal
         </button>
         <Modal
+          colSet={colSize}
           isOpen={modalIsOpen}
           onRequestClose={this.toggleModal}
           contentLabel="Modal"
