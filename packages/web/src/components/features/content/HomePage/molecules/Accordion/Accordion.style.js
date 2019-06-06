@@ -2,7 +2,7 @@ import theme from '@tcp/web/Styles/themes/primary';
 import { css } from 'styled-components';
 
 const GlobalCss = css`
-.accordion > div{
+.accordionContents{
     padding: 0 28px;
     background: ${theme.colors.WHITE};
     font-family: ${theme.fonts.secondaryFontFamily};
@@ -13,47 +13,46 @@ const GlobalCss = css`
     font-size: ${theme.fonts.fontSize.body.large.secondary}px;
 
 }
-.accordion > a{
+.accordion  a{
     font-family: ${theme.fonts.secondaryFontFamily};
     font-size: ${theme.fonts.fontSize.body.large.secondary}px;
     text-decoration: none;
     color: ${theme.colors.BLACK};
-    
-
 }
-.head-icon {
-    cursor: pointer;
-    border: none;
-  }
 
-  .head {
-    padding: 18px;  
-    display: block;
-    cursor: pointer;
-    font-family: ${theme.fonts.secondaryFontFamily};
-    font-size: ${theme.fonts.fontSize.body.large.secondary}px;
-    background-color: ${theme.colors.PRIMARY.LIGHTGRAY};    
-  }
+.accordion p{
+    color: ${theme.colors.BLACK};
+    text-decoration: none;
+}
 
-  .head.active{
-    background-color: ${theme.colors.PRIMARY.PALEGRAY};
-    transition: background 0.5s fade;
-  }
+.head {
+  padding: 18px;  
+  display: block;
+  cursor: pointer;
+  font-family: ${theme.fonts.secondaryFontFamily};
+  font-size: ${theme.fonts.fontSize.body.large.secondary}px;
+  background-color: ${theme.colors.PRIMARY.LIGHTGRAY};    
+}
 
-  .active::after {
-    content: '+';
-    float: right;
-    font-weight: bold;
-    font-size: ${theme.fonts.fontSize.heading.large.h6}px
-    top: 9px;
-  }
+.head.active{
+  background-color: ${theme.colors.PRIMARY.PALEGRAY};
+  transition: background 0.5s fade;
+}
 
-  .inactive::after {
-    content: '+';
-    float: right;
-    font-weight: bold;
-    font-size: ${theme.fonts.fontSize.heading.large.h6}px
-  }
+.active::after {
+  content: '+';
+  float: right;
+  font-weight: bold;
+  font-size: ${theme.fonts.fontSize.heading.large.h6}px
+  top: 9px;
+}
+
+.inactive::after {
+  content: '-';
+  float: right;
+  font-weight: bold;
+  font-size: ${theme.fonts.fontSize.heading.large.h6}px
+}
 `;
 
 export default GlobalCss;
