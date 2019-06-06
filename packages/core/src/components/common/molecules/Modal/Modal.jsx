@@ -14,7 +14,7 @@ import ModalStyle from './ModalStyle';
 import Config from './config';
 
 function getParent() {
-  return document.querySelector('.TCPModal_Wrapper');
+  return document.querySelector('.TCPModal__Wrapper');
 }
 
 const Modal = ({ children, ...otherProps }) => {
@@ -22,7 +22,7 @@ const Modal = ({ children, ...otherProps }) => {
   const column = colSet || Config.MODAL_DEFAULTS;
 
   return (
-    <ModalStyle className="TCPModal_Wrapper">
+    <ModalStyle className="TCPModal__Wrapper">
       <ReactModal {...otherProps} parentSelector={getParent}>
         <Grid>
           <Row>
