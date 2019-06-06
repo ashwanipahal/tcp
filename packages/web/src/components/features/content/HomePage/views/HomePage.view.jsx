@@ -2,8 +2,9 @@ import React, { Fragment } from 'react';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
+import CarouselConfig from '@tcp/web/config';
 import { PropTypes } from 'prop-types';
-import { NavBar, Test } from '../molecules';
+import { NavBar, SampleCarousel, Test } from '../molecules';
 
 // colCount is the number of columns the component needs to cover in each of the viewport
 const colSize = {
@@ -66,6 +67,7 @@ const HomePageView = ({ links }) => (
         </Col>
       </Row>
     </Grid>
+    <SampleCarousel props={CarouselConfig.CAROUSEL_OPTIONS} />
   </Fragment>
 );
 
