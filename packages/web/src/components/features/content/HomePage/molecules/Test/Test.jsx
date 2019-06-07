@@ -6,6 +6,7 @@ import {
   Bodylargeprimary,
   Bodysmallprimary,
   Nav,
+  BodyText1,
 } from '@tcp/core/styles/globalStyles/typography';
 
 import theme from '@tcp/core/styles/themes/TCP';
@@ -13,12 +14,11 @@ import { ThemeProvider } from 'styled-components';
 
 const { colors, typoTheme } = theme;
 
-console.log(typeof fontstyle);
 const Test = () => {
   return (
     <ThemeProvider theme={typoTheme}>
       <div>
-        <HeadingLarge1 tag="h1" textStyle="underline" color={colors.TEXT.RED}>
+        <HeadingLarge1 fontSize="55px" tag="h1" textStyle="underline" color={colors.TEXT.RED}>
           ALL H1 TO H6 variation large dynamic tag
         </HeadingLarge1>
 
@@ -37,6 +37,9 @@ const Test = () => {
         <Nav tag="p" textStyle="underline" color={colors.TEXT.RED}>
           NAV LINK
         </Nav>
+        <BodyText1 fontWeight="bold" tag="p" color={colors.TEXT.BLUE}>
+          BodyText1 <br /> fontWeight="bold" need to pass for font weight
+        </BodyText1>
       </div>
     </ThemeProvider>
   );
