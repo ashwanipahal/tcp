@@ -1,4 +1,5 @@
 {
+    "parser": "babel-eslint",
     "parserOptions": {
       "ecmaVersion": 6,
       "sourceType": "module",
@@ -11,6 +12,13 @@
       "node": true,
       "mocha": true,
       "es6": true
+    },
+    "globals": {
+      "describe": true,
+      "expect": true,
+      "it": true,
+      "jest": true,
+      "window": true
     },
     "rules": {
       "one-var-declaration-per-line": 0,
@@ -37,13 +45,5 @@
     "extends": [
       "airbnb","plugin:react-native/all","plugin:react-native-a11y/recommended",
       "plugin:flowtype/recommended", "prettier"
-    ],
-    "parser": "babel-eslint",
-    "globals": {
-      "describe": true,
-      "expect": true,
-      "it": true,
-      "jest": true,
-      "window": true
-    }
+    ]
   }

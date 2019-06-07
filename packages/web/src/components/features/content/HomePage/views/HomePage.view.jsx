@@ -80,6 +80,7 @@ const HomePageView = ({ links }) => (
 );
 
 HomePageView.propTypes = {
-  links: PropTypes.string.isRequired,
+  links: PropTypes.arrayOf.isRequired,
 };
+
 export default HomePageView;
