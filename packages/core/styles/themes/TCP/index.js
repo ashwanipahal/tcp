@@ -4,6 +4,7 @@ import zindex from './zindex';
 import gridDimensions from './gridDimensions';
 import { mediaQuery, breakpoints } from './mediaQuery';
 import typoTheme from './typotheme';
+import opacity from './opacity';
 
 const theme = {
   colors,
@@ -12,7 +13,8 @@ const theme = {
   breakpoints,
   zindex,
   gridDimensions,
-  typoTheme
+  typoTheme,
+  opacity,
 };
 
 export default theme;

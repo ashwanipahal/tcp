@@ -41,7 +41,7 @@ const FONT_SIZE = {
       primary: 15,
       secondary: 12,
       tertiary: 10,
-    }
+    },
   },
   nav: 15,
   listmenu: {
@@ -58,6 +58,11 @@ const FONT_SIZE = {
   },
   button: {
     size: 14,
+  },
+  anchor: {
+    small: 10,
+    medium: 12,
+    large: 15,
   },
 };
 

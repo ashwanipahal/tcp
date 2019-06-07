@@ -1,8 +1,8 @@
 // Basic file for column in the grid structure
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import styles from './Col.style';
-import withStyles from '../../hoc/withStyles';
+import styles from '../Col.style';
+import withStyles from '../../../hoc/withStyles';
 
 // Passing on the colConfig to the style File and also the flag to add inline-block to the column
 const Col = ({ children, className }) => <div className={className}>{children}</div>;
@@ -22,7 +22,6 @@ Col.defaultProps = {
     small: 6,
     medium: 8,
     large: 12,
-    xlarge: 12,
   },
 };
 

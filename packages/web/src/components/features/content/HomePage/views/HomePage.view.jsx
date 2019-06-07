@@ -14,21 +14,18 @@ const colSize = {
   small: 1,
   medium: 1,
   large: 1,
-  xlarge: 1,
 };
 
 const colSize1 = {
   small: 1,
   medium: 1,
   large: 1,
-  xlarge: 1,
 };
 
 const colSize2 = {
   small: 1,
   medium: 1,
   large: 1,
-  xlarge: 1,
 };
 
 const randomHTML = '<button class="asdfasdf" type="button">test133</button>';
@@ -42,7 +39,7 @@ const HomePageView = ({ links }) => (
           <Button buttonVariation="fixed-width">test</Button>
         </Col>
         <Col colSize={colSize}>
-          <Button buttonVariation="variable-width">test132323sdfsdfsdf</Button>
+          <Button buttonVariation="variable-width">test1</Button>
         </Col>
         <Col colSize={colSize}>
           <Button buttonVariation="fixed-width" fullWidth>
@@ -50,7 +47,7 @@ const HomePageView = ({ links }) => (
           </Button>
         </Col>
         <Col colSize={colSize1}>
-          <Anchor redirectTo="/to" anchorVariation="primary" noLink noUnderline>
+          <Anchor to="/to" anchorVariation="primary" fontSizeVariation="large" noLink="false">
             ABCD
           </Anchor>
         </Col>
@@ -83,6 +80,7 @@ const HomePageView = ({ links }) => (
 );
 
 HomePageView.propTypes = {
-  links: PropTypes.string.isRequired,
+  links: PropTypes.arrayOf.isRequired,
 };
+
 export default HomePageView;

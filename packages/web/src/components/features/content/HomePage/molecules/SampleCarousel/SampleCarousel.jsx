@@ -2,10 +2,9 @@ import React, { Fragment } from 'react';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
-import style from '@tcp/core/styles/themes/TCP';
 
 const Row = styled.div`
-  background-color: ${style.colors.PRIMARY.BLUE};
+  background-color: ${props => props.theme.colors.PRIMARY.BLUE};
   text-align: center;
 `;
 const Item = styled.h3`
