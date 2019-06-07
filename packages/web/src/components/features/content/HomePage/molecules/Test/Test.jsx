@@ -1,12 +1,11 @@
 import React from 'react';
 
 import {
-  Heading1,
-  Heading2,
-  Heading3,
-  Heading4,
-  Heading5,
-  Heading6,
+  HeadingLarge1,
+  HeadingSmall1,
+  Bodylargeprimary,
+  Bodysmallprimary,
+  Nav,
 } from '@tcp/core/styles/globalStyles/typography';
 
 import theme from '@tcp/core/styles/themes/TCP';
@@ -19,34 +18,25 @@ const Test = () => {
   return (
     <ThemeProvider theme={typoTheme}>
       <div>
-        <Heading1 tag="h2" textStyle="underline" color={colors.TEXT.RED}>
-          {' '}
-          Dynamic comp 1{' '}
-        </Heading1>
-        <Heading2 tag="h3" textStyle="underline" color={colors.TEXT.RED}>
-          {' '}
-          Dynamic comp 2{' '}
-        </Heading2>
-        <Heading2 tag="h1" textStyle="underline" color={colors.TEXT.RED}>
-          {' '}
-          Dynamic comp h1{' '}
-        </Heading2>
-        <Heading3 tag="p" textStyle="underline" color={colors.TEXT.RED}>
-          {' '}
-          Dynamic comp 3{' '}
-        </Heading3>
-        <Heading4 tag="span" textStyle="underline" color={colors.TEXT.RED}>
-          {' '}
-          Dynamic comp 4{' '}
-        </Heading4>
-        <Heading5 tag="div" textStyle="underline" color={colors.TEXT.RED}>
-          {' '}
-          Dynamic comp 5{' '}
-        </Heading5>
-        <Heading6 tag="h4" textStyle="underline" color={colors.TEXT.RED}>
-          {' '}
-          Dynamic comp 6{' '}
-        </Heading6>
+        <HeadingLarge1 tag="h1" textStyle="underline" color={colors.TEXT.RED}>
+          ALL H1 TO H6 variation large dynamic tag
+        </HeadingLarge1>
+
+        <HeadingSmall1 tag="h1" textStyle="underline" color={colors.TEXT.RED}>
+          ALL H1 TO H6 variation small dynamic tag
+        </HeadingSmall1>
+
+        <Bodylargeprimary tag="p" textStyle="underline" color={colors.TEXT.RED}>
+          ALL body copy variation large dynamic tag
+        </Bodylargeprimary>
+
+        <Bodysmallprimary tag="p" textStyle="underline" color={colors.TEXT.RED}>
+          ALL body copy variation small dynamic tag
+        </Bodysmallprimary>
+
+        <Nav tag="p" textStyle="underline" color={colors.TEXT.RED}>
+          NAV LINK
+        </Nav>
       </div>
     </ThemeProvider>
   );
