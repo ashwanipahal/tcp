@@ -36,6 +36,12 @@ const FONT_SIZE = {
       secondary: 12,
       tertiary: 11,
     },
+
+    links: {
+      primary: 15,
+      secondary: 12,
+      tertiary: 10,
+    }
   },
   nav: 15,
   listmenu: {

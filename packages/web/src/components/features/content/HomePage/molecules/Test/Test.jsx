@@ -4,6 +4,7 @@ import {
   LargeLinkStyle,
   MediumLinkStyle,
   SmallLinkStyle,
+  HoneText
 } from '@tcp/core/styles/globalStyles/typography';
 import theme from '@tcp/core/styles/themes/TCP';
 
@@ -16,6 +17,7 @@ const Test = () => {
       <SmallLinkStyle textAlign="center" color={colors.PRIMARY.BLUE}>
         Dynamic comp
       </SmallLinkStyle>
+      <HoneText>H1 </HoneText>
     </div>
   );
 };
