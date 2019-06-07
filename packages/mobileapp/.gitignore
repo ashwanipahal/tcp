@@ -3,3 +3,4 @@
 dist/
 build/
 /flow-typed/
+.expo
