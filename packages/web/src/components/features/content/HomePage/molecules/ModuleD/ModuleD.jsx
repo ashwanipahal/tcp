@@ -44,17 +44,17 @@ const ModuleD = ({ assets }) => (
   <Fragment>
     <Grid>
       <StyledH2>Mini me shop</StyledH2>
-      <Row noflex={false}>
+      <Row>
         {assets &&
           assets.map(item => (
-            <Col colSize={colSize} isColInlineBlock>
-              <img src={item.url} alt="mini me shop" />
+            <Col colSize={colSize}>
+              <img src={item.url} alt={item.text} />
               <StyledLink href="{item.link}">{item.text}</StyledLink>
             </Col>
           ))}
       </Row>
 
-      <Row noflex={false}>
+      <Row>
         <StyledButton>Shop all</StyledButton>
       </Row>
     </Grid>
