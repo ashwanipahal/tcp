@@ -6,6 +6,7 @@ const strictRules = {
       severity: 'warning',
     },
   ],
+  'no-empty-source': null,
   'max-empty-lines': 2,
   'block-no-empty': true,
   'max-nesting-depth': 3,

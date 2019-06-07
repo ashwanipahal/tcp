@@ -1,1 +1,3 @@
-// any molecule will come here
+import Carousel from './Carousel';
+
+export default { Carousel };
