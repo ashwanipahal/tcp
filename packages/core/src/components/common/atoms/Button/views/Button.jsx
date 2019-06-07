@@ -1,7 +1,8 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import styles from './Button.style';
-import withStyles from '../../hoc/withStyles';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+
+import styles from '../Button.style';
 
 const Button = ({ children, className, ariaLabel, disabled, fullWidth }) => (
   <button

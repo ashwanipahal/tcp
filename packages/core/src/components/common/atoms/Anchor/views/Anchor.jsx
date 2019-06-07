@@ -3,9 +3,9 @@ import { PropTypes } from 'prop-types';
 // eslint-disable-next-line
 import Link from 'next/link';
 import { buildUrl } from '@tcp/core/src/utils/url';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 
-import styles from './Anchor.style';
-import withStyles from '../../hoc/withStyles';
+import styles from '../Anchor.style';
 
 const Anchor = ({
   children,

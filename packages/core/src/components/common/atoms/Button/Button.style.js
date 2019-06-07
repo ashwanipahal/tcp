@@ -31,6 +31,7 @@ const ButtonStyles = css`
       color: ${props.theme.colors.BUTTON.TEXT};
       font-family: ${props.theme.fonts.secondaryFontFamily};
       font-size: ${props.theme.fonts.fontSize.button.size}px;
+      font-weight: ${props.theme.fonts.fontWeight.black};
       border: 1px solid ${props.theme.colors.BUTTON.BORDER};
       padding: 12px 32px;
     `

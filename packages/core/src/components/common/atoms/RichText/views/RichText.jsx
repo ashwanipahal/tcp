@@ -1,8 +1,8 @@
-// Basic file for column in the grid structure
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import styles from './RichText.style';
-import withStyles from '../../hoc/withStyles';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+
+import styles from '../RichText.style';
 
 const RichText = ({ richTextHtml }) => (
   // eslint-disable-next-line
