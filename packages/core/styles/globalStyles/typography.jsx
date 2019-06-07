@@ -5,30 +5,35 @@ import DynamicComponent from './DynamicComponent';
 const { colors, fonts } = theme;
 
 const textStyle = {
-  largeLink: {
-    tag: 'a',
+  heading1: {
     fontSize: fonts.fontSize.body.links.primary,
     color: colors.PRIMARY.DARK,
   },
-  MediumLink: {
-    tag: 'a',
+  heading2: {
     fontSize: fonts.fontSize.body.links.secondary,
     color: colors.PRIMARY.DARK,
   },
-  SmallLink: {
-    tag: 'a',
+  heading3: {
     fontSize: fonts.fontSize.body.links.tertiary,
     color: colors.PRIMARY.DARK,
   },
-  honeText: {
-    tag: 'H1',
+  heading4: {
+    fontSize: fonts.fontSize.heading.large.h1,
+    color: colors.PRIMARY.DARK,
+  },
+  heading5: {
+    fontSize: fonts.fontSize.heading.large.h1,
+    color: colors.PRIMARY.DARK,
+  },
+  heading6: {
     fontSize: fonts.fontSize.heading.large.h1,
     color: colors.PRIMARY.DARK,
   },
 };
 
-export const MediumLinkStyle = props => <DynamicComponent {...textStyle.MediumLink} {...props} />;
-export const SmallLinkStyle = props => <DynamicComponent {...textStyle.SmallLink} {...props} />;
-export const LargeLinkStyle = props => <DynamicComponent {...textStyle.largeLink} {...props} />;
-
-export const HoneText = props => <DynamicComponent {...textStyle.honeText} {...props} />;
+export const Heading1 = props => <DynamicComponent {...textStyle.heading1} {...props} />;
+export const Heading2 = props => <DynamicComponent {...textStyle.heading2} {...props} />;
+export const Heading3 = props => <DynamicComponent {...textStyle.heading3} {...props} />;
+export const Heading4 = props => <DynamicComponent {...textStyle.heading4} {...props} />;
+export const Heading5 = props => <DynamicComponent {...textStyle.heading5} {...props} />;
+export const Heading6 = props => <DynamicComponent {...textStyle.heading6} {...props} />;
