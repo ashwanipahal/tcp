@@ -27,6 +27,10 @@ const Test = () => {
           {' '}
           Dynamic comp 2{' '}
         </Heading2>
+        <Heading2 tag="h1" textStyle="underline" color={colors.TEXT.RED}>
+          {' '}
+          Dynamic comp h1{' '}
+        </Heading2>
         <Heading3 tag="p" textStyle="underline" color={colors.TEXT.RED}>
           {' '}
           Dynamic comp 3{' '}

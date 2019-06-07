@@ -6,27 +6,27 @@ const { colors, fonts } = theme;
 
 const textStyle = {
   heading1: {
-    fontSize: fonts.fontSize.body.links.primary,
+    fontSize: fonts.fontSize.heading.large.h1,
     color: colors.PRIMARY.DARK,
   },
   heading2: {
-    fontSize: fonts.fontSize.body.links.secondary,
+    fontSize: fonts.fontSize.heading.large.h2,
     color: colors.PRIMARY.DARK,
   },
   heading3: {
-    fontSize: fonts.fontSize.body.links.tertiary,
+    fontSize: fonts.fontSize.heading.large.h3,
     color: colors.PRIMARY.DARK,
   },
   heading4: {
-    fontSize: fonts.fontSize.heading.large.h1,
+    fontSize: fonts.fontSize.heading.large.h4,
     color: colors.PRIMARY.DARK,
   },
   heading5: {
-    fontSize: fonts.fontSize.heading.large.h1,
+    fontSize: fonts.fontSize.heading.large.h5,
     color: colors.PRIMARY.DARK,
   },
   heading6: {
-    fontSize: fonts.fontSize.heading.large.h1,
+    fontSize: fonts.fontSize.heading.large.h6,
     color: colors.PRIMARY.DARK,
   },
 };
