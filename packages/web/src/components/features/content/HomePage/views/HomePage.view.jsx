@@ -47,7 +47,7 @@ const HomePageView = ({ links }) => (
           </Button>
         </Col>
         <Col colSize={colSize1}>
-          <Anchor to="/to" anchorVariation="primary">
+          <Anchor to="/to" anchorVariation="primary" fontSizeVariation="large" noLink="false">
             ABCD
           </Anchor>
         </Col>

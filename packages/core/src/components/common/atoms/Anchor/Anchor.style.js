@@ -23,19 +23,19 @@ const AnchorStyles = css`
   ${props =>
     props.fontSizeVariation === 'small'
       ? `
-      font-size: ${props.theme.fonts.anchor.small};
+      font-size: ${props.theme.fonts.fontSize.anchor.small}px;
     `
       : ''};
   ${props =>
     props.fontSizeVariation === 'medium'
       ? `
-      color: ${props.theme.fonts.anchor.medium};
+      font-size: ${props.theme.fonts.fontSize.anchor.medium}px;
     `
       : ''};
   ${props =>
     props.fontSizeVariation === 'large'
       ? `
-      color: ${props.theme.fonts.anchor.large};
+      font-size: ${props.theme.fonts.fontSize.anchor.large}px;
     `
       : ''};
   ${props =>

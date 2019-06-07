@@ -33,7 +33,7 @@ const Anchor = ({
     </a>
   ) : (
     <Link href={to} as={as} shallow={shallow} scroll={scroll}>
-      <a href={as || buildUrl(to)} className={className} title={title} {...other}>
+      <a href={as || buildUrl(to)} className={className} title={title}>
         {children}
       </a>
     </Link>
@@ -55,7 +55,7 @@ Anchor.propTypes = {
 Anchor.defaultProps = {
   as: '',
   scroll: '',
-  noLink: true,
+  noLink: false,
   handleLinkClick: () => {},
   shallow: false,
   title: '',
