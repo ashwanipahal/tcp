@@ -1,11 +1,22 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
-import StyledTest from './styles/Test.style';
 
-const Test = ({ className }) => <StyledTest className={className}>Testing 123...</StyledTest>;
+import {
+  LargeLinkStyle,
+  MediumLinkStyle,
+  SmallLinkStyle,
+} from '@tcp/core/styles/globalStyles/typography';
+import theme from '@tcp/core/styles/themes/TCP';
 
-Test.propTypes = {
-  className: PropTypes.string.isRequired,
+const { colors } = theme;
+const Test = () => {
+  return (
+    <div>
+      <LargeLinkStyle color={colors.TEXT.RED}> Dynamic comp 2 </LargeLinkStyle>
+      <MediumLinkStyle> Dyanmic </MediumLinkStyle>
+      <SmallLinkStyle textAlign="center" color={colors.PRIMARY.BLUE}>
+        Dynamic comp
+      </SmallLinkStyle>
+    </div>
+  );
 };
-
 export default Test;
