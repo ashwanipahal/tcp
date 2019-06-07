@@ -73,7 +73,7 @@ const HomePageView = ({ links }) => (
     <ModuleD assets={moduleDAssets} />
     <Test className="test" />
     <Grid>
-      <Row noFlex>
+      <Row noflex>
         <Col isColInlineBlock colSize={colSize} offsetRight={offsetRight}>
           Random line1 takes 3 col in desktop
         </Col>
