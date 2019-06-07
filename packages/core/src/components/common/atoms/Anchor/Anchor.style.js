@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 
 const AnchorStyles = css`
+  font-family: ${props => props.theme.fonts.secondaryFontFamily};
   ${props =>
     props.anchorVariation === 'primary'
       ? `
@@ -20,17 +21,35 @@ const AnchorStyles = css`
     `
       : ''};
   ${props =>
+    props.fontSizeVariation === 'small'
+      ? `
+      font-size: ${props.theme.fonts.anchor.small};
+    `
+      : ''};
+  ${props =>
+    props.fontSizeVariation === 'medium'
+      ? `
+      color: ${props.theme.fonts.anchor.medium};
+    `
+      : ''};
+  ${props =>
+    props.fontSizeVariation === 'large'
+      ? `
+      color: ${props.theme.fonts.anchor.large};
+    `
+      : ''};
+  ${props =>
     props.fullWidth
       ? `
       width: 100%;
     `
       : ''};
   ${props =>
-    props.noUnderline
+    props.underline
       ? `
-      text-decoration: none;
+      text-decoration: underline;
     `
-      : ''};
+      : 'text-decoration: none;'};
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

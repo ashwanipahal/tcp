@@ -22,7 +22,6 @@ Col.defaultProps = {
     small: 6,
     medium: 8,
     large: 12,
-    xlarge: 12,
   },
 };
 

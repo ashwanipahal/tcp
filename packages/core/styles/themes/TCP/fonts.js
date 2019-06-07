@@ -53,6 +53,11 @@ const FONT_SIZE = {
   button: {
     size: 14,
   },
+  anchor: {
+    small: 10,
+    medium: 12,
+    large: 15,
+  },
 };
 
 const FONT_WEIGHT = {
