@@ -7,7 +7,7 @@ import { mediaQueries, breakpoints } from './mediaQuery';
 const theme = {
   colors,
   fonts,
-  mediaQueries,
+  mediaQuery: mediaQueries,
   breakpoints,
   zindex,
   gridDimensions,

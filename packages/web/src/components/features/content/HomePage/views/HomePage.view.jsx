@@ -1,9 +1,6 @@
 import React, { Fragment } from 'react';
-import Row from '@tcp/core/src/components/common/atoms/Row';
-import Col from '@tcp/core/src/components/common/atoms/Col';
-import Grid from '@tcp/core/src/components/common/molecules/Grid';
+import PropTypes from 'prop-types';
 import CarouselConfig from '@tcp/web/config';
-import { PropTypes } from 'prop-types';
 import { Accordion, NavBar, SampleCarousel, Test } from '../molecules';
 
 // colCount is the number of columns the component needs to cover in each of the viewport
@@ -49,10 +46,12 @@ const HomePageView = ({ links }) => (
     <NavBar links={links} />
     <Accordion className={'Collapsible'} children={'AAAA'} title={'test'} />
     <Test className="test" />
+    <SampleCarousel props={CarouselConfig.CAROUSEL_OPTIONS} />
   </Fragment>
 );
 
 HomePageView.propTypes = {
-  links: PropTypes.array.isRequired,
+  links: PropTypes.arrayOf.isRequired,
 };
+
 export default HomePageView;
