@@ -2,13 +2,32 @@ import React from 'react';
 import styled from 'styled-components';
 import tag from 'clean-tag';
 import PropTypes from 'prop-types';
-import { fontSize, fontStyle, size, color } from 'styled-system';
+import {space,
+  lineHeight,
+  fontSize,
+  fontStyle,
+  size,
+  color,
+  colorStyle,
+  textStyle,
+  fontFamily,
+  fontWeight,
+  letterSpacing,
+  borderRadius} from 'styled-system';
 
 const StyledDynamicComponent = styled(tag)`
-  ${fontSize}
-  ${fontStyle}
-  ${color}
-  ${size}
+${space}
+${fontSize}
+${fontStyle}
+${color}
+${size}
+${colorStyle}
+${textStyle}
+${lineHeight}
+${letterSpacing}
+${fontFamily}
+${fontWeight}
+${borderRadius}
 `;
 
 const DynamicComponent = ({ tag = 'div', children, ...props }) => {
