@@ -76,7 +76,8 @@
     "stylelint-config-recommended": "^2.2.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-formatter-pretty": "^1.0.3",
-    "stylelint-processor-styled-components": "^1.5.1"
+    "stylelint-processor-styled-components": "^1.5.1",
+    "eslint-plugin-sonarjs": "^0.4.0"
   },
   "husky": {
     "hooks": {
