@@ -42,4 +42,11 @@ export default {
   BUTTON_HOVER: 'rgba(24, 24, 24, 0.8)',
   COUNT_ICON_DISABLE: 'rgba(0, 0, 0, 0.3)',
   EMPTY_CART_BOX: 'rgba(0, 0, 0, 0.07)',
+  TEXTBOX: {
+    COLOR: '#1a1a1a',
+    BACKGROUND: '#f2f2f2',
+    FOCUS_BORDER: '#439ad4',
+    ERROR_BORDER: '#c84747',
+    SUCCESS_BORDER: '#6dc927',
+  },
 };
