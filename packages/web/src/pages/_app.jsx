@@ -1,12 +1,19 @@
 import React from 'react';
 import App, { Container } from 'next/app';
 import { Provider } from 'react-redux';
-import { ThemeProvider } from 'styled-components';
+import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
+import theme from '@tcp/core/styles/themes/TCP';
+import commonStyles from '@tcp/core/styles/globalStyles/commonStyles';
+import commonFonts from '@tcp/core/styles/globalStyles/fonts';
 import { Header, Footer } from '../components/common/organisms';
 import { configureStore } from '../reduxStore';
-import theme from '../../Styles/themes/primary';
+
+const GlobalStyle = createGlobalStyle`
+  ${commonFonts}
+  ${commonStyles}
+`;
 
 class TCPWebApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -23,9 +30,10 @@ class TCPWebApp extends App {
   }
 
   static async loadComponentData(Component, { store, isServer }, pageProps) {
-    let compProps = {};
+    const compProps = {};
     if (Component.getInitialProps) {
-      compProps = await Component.getInitialProps({ store, isServer });
+      // eslint-disable-next-line no-param-reassign
+      pageProps = await Component.getInitialProps({ store, isServer });
     }
     if (isServer && Component.getInitActions) {
       const actions = Component.getInitActions();
@@ -41,6 +49,7 @@ class TCPWebApp extends App {
       <Container>
         <ThemeProvider theme={theme}>
           <Provider store={store}>
+            <GlobalStyle />
             <Header />
             <Component {...pageProps} />
             <Footer />

@@ -8,7 +8,7 @@ export const breakpoints = {
   xlarge: '1440px',
 };
 
-export const mediaQueries = {
+export const mediaQuery = {
   small: `(min-width: ${breakpoints.small})`,
   smallMax: `(max-width: ${breakpoints.smallMax})`,
   smallOnly: `
