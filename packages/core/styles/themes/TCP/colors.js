@@ -42,6 +42,20 @@ export default {
   BUTTON_HOVER: 'rgba(24, 24, 24, 0.8)',
   COUNT_ICON_DISABLE: 'rgba(0, 0, 0, 0.3)',
   EMPTY_CART_BOX: 'rgba(0, 0, 0, 0.07)',
+  BUTTON: {
+    NORMAL: '#ffffff',
+    BORDER: '#979797',
+    HOVER: '#f3f3f3',
+    FOCUS: '#d8d8d8',
+    ALT_HOVER: '#f2f9fe',
+    ALT_FOCUS: '#e2ecf3',
+    TEXT: '#4a4a4a',
+  },
+  ANCHOR: {
+    PRIMARY: '#1a1a1a',
+    SECONDARY: '#2e6a91',
+    TERTIARY: '#c84747',
+  },
   TEXTBOX: {
     COLOR: '#1a1a1a',
     BACKGROUND: '#f2f2f2',
