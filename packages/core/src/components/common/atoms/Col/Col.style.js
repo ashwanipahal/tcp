@@ -1,33 +1,22 @@
 import { css } from 'styled-components';
-// TODO - Revisit the function comments and change as per the project
-// ==============FUNCTIONS ====================== //
 
-/*
-    i/p -
-        available-maxwidth : maximum available width
-        column-width : width of 1 column
-        col-count : column no who's width has to be calculated
-    o/p -
-        column width of desired column no in %
-    example -
-        available-max-width = 13200 , column-width = 12
-        avl width = 1320px = 100%
-        width of 1px in % = 100 *(1 / 1320px)
-        1 col-width in % = col-width * width of 1px in %
-        86px(col-width) in % = 86 * (100 *(1 / 1320px)) = 6.51515%
-*/
+/**
+ * function calculateColumnWidth
+ * params - availableMaxWidth - maximum available width excluding the offset.
+ * params - columnWidth - width of 1 column at the breakpoint
+ * returns - singleColWidth - column width of desired column no in %
+ */
 
 const calculateColumnWidth = (availableMaxWidth, columnWidth) => {
   const singleColWidth = `${(columnWidth / availableMaxWidth) * 100}%`;
   return singleColWidth;
 };
 
-/*
-    o/p -
-        returns value of gutter for 1 column in % as per the viewport
-    i/p -
-        breakpoint : breakpoint at which width needs to be calculated
-*/
+/* function getGutter
+ * params - breakpoint -  breakpoint at which width needs to be calculated
+ * gridDimensions - The grid dimension object from the theme, contains all the hardcoded values of the grid.
+ * returns - value of gutter for 1 column in % as per the viewport
+ */
 const getGutter = (breakpoint, gridDimensions) => {
   const availableWidth = gridDimensions.availableMaxWidthObj[breakpoint];
   const columnGutter = gridDimensions.columnGutterObj[breakpoint];
@@ -37,16 +26,13 @@ const getGutter = (breakpoint, gridDimensions) => {
 };
 
 /**
- * Default colsize
+ * function getColumnWidth
+ * params - colCount - number of columns that it would occupy.
+ * params - breakpoint - viewport at which width needs to be calculated
+ * params  - gridDimensions - The grid dimension object from the theme,
+ * contains all the hardcoded values of the grid.
+ * returns - columnWidth - column width of desired column no in %
  */
-
-/*
-    o/p -
-        column width of desired column no in %
-    i/p -
-        breakpoint : viewport at which width needs to be calculated
-        col-count : column no who's width has to be calculated
-*/
 
 const getColumnWidth = (colCount, breakpoint, gridDimensions) => {
   const columnWidth = calculateColumnWidth(
@@ -57,6 +43,14 @@ const getColumnWidth = (colCount, breakpoint, gridDimensions) => {
   return parseFloat(columnWidth) * colCount + parseFloat(columnGutter) * (colCount - 1);
 };
 
+/**
+ * function calculateOffset
+ * params - colCount - number of columns that it would occupy.
+ * params - breakpoint - viewport at which width needs to be calculated
+ * params  - gridDimensions - The grid dimension object from the theme,
+ * contains all the hardcoded values of the grid.
+ * returns - offsetOfColumn - total width of the columns that needs to be left blank on left/right side.
+ */
 const calculateOffset = (colCount, breakpoint, gridDimensions) => {
   return (
     getColumnWidth(colCount, breakpoint, gridDimensions) + getGutter(breakpoint, gridDimensions) * 1
@@ -83,6 +77,7 @@ const StyledCol = css`
           width: ${getColumnWidth(props.colSize[key], key, props.theme.gridDimensions)}%;
       }`
     )}
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
 export default StyledCol;
