@@ -3,6 +3,11 @@ import { PropTypes } from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
 import StyledTextBox from '../TextBox.style';
 
+// The textbox also supports the icons in the front of the textbox.
+// The textIcon = icon-sms and icon-email are currently supported with natural fill.
+// The border styles for success and error are governed by isErrorState and isSuccessState props.
+// The prop disabled determines if the textbox needs to be disabled or not.
+
 const TextBox = ({
   className,
   id,
