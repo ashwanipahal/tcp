@@ -9,7 +9,7 @@ const textboxStyles = css`
   background-color: ${props => props.theme.colors.TEXTBOX.BACKGROUND};
   color: ${props => props.theme.colors.TEXTBOX.COLOR};
   border: 1px solid ${props => props.theme.colors.TEXTBOX.BACKGROUND};
-  width: 100%;
+  width: calc(100% - 40px);
   padding: 0 20px;
 
   ${props =>
@@ -24,7 +24,8 @@ const textboxStyles = css`
     background-position: left top;
     background-repeat: no-repeat;
     background-size: contain;
-    padding: 0 52px;`
+    padding: 0 52px;
+    width: calc(100% - 104px);`
       : ''};
 
   ${props =>
@@ -34,7 +35,8 @@ const textboxStyles = css`
     background-position: left top;
     background-repeat: no-repeat;
     background-size: contain;
-    padding: 0 52px;`
+    padding: 0 52px;
+    width: calc(100% - 104px)`
       : ''};
 
   ${props =>
