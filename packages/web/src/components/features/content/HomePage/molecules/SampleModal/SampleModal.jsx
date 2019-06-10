@@ -1,6 +1,5 @@
 import React from 'react';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
-import ModalCloseIcon from '@tcp/web/src/components/common/atoms/ModalCloseIcon';
 
 const colSize = {
   small: 6,
@@ -42,27 +41,24 @@ class SampleModal extends React.Component {
           overlayClassName="TCPModal__Overlay"
           className="TCPModal__Content"
           shouldCloseOnEsc
+          title="Modal Title"
         >
-          <div>
-            <ModalCloseIcon closeFunc={this.toggleModal} />
-            <h2>Modal Title</h2>
-            <p>Modal content goes here...</p>
-            <form>
-              <input type="input" placeholder="please start tabbing..." />
-              <br />
-              <br />
-              <button type="button">tab navigation</button>
-              <br />
-              <br />
-              <button type="button">stays</button>
-              <br />
-              <br />
-              <button type="button">inside</button>
-              <br />
-              <br />
-              <button type="button">the modal</button>
-            </form>
-          </div>
+          <p>Modal content goes here...</p>
+          <form>
+            <input type="input" placeholder="please start tabbing..." />
+            <br />
+            <br />
+            <button type="button">tab navigation</button>
+            <br />
+            <br />
+            <button type="button">stays</button>
+            <br />
+            <br />
+            <button type="button">inside</button>
+            <br />
+            <br />
+            <button type="button">the modal</button>
+          </form>
         </Modal>
       </div>
     );

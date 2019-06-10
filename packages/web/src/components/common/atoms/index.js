@@ -1,3 +1,1 @@
-import ModalCloseIcon from './ModalCloseIcon';
-
-export default { ModalCloseIcon };
+// atoms will go here

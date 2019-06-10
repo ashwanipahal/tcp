@@ -42,6 +42,7 @@ export default {
   BUTTON_HOVER: 'rgba(24, 24, 24, 0.8)',
   COUNT_ICON_DISABLE: 'rgba(0, 0, 0, 0.3)',
   EMPTY_CART_BOX: 'rgba(0, 0, 0, 0.07)',
+  MODAL_OVERLAY: 'rgba(0, 0, 0, 0.6)',
   BUTTON: {
     NORMAL: '#ffffff',
     BORDER: '#979797',

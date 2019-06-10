@@ -8,7 +8,7 @@ const ModalStyle = styled.div`
     left: 0px;
     right: 0px;
     bottom: 0px;
-    background-color: rgba(${theme.colors.BLACK}, 0.6);
+    background-color: ${theme.colors.MODAL_OVERLAY};
   }
   .TCPModal__InnerContent {
     background: ${theme.colors.WHITE};

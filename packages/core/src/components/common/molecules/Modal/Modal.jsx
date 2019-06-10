@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
+import ModalHeader from './ModalHeader';
 import ModalStyle from './ModalStyle';
 import Config from './config';
 
@@ -18,8 +19,8 @@ function getParent() {
 }
 
 const Modal = ({ children, ...otherProps }) => {
-  const { colSet } = otherProps;
-  const column = colSet || Config.MODAL_DEFAULTS;
+  const { colSet, onRequestClose, title } = otherProps;
+  const column = colSet || Config.MODAL_COL_DEFAULTS;
 
   return (
     <ModalStyle className="TCPModal__Wrapper">
@@ -27,6 +28,7 @@ const Modal = ({ children, ...otherProps }) => {
         <Grid>
           <Row>
             <Col colSize={column} className="TCPModal__InnerContent">
+              <ModalHeader closeFunc={onRequestClose} title={title} />
               {children}
             </Col>
           </Row>
