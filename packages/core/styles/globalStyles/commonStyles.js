@@ -10,6 +10,7 @@ export default css`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     width: 100%;
+    margin: 0;
   }
 
   input[type='text']::-ms-clear {

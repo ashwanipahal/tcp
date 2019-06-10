@@ -40,16 +40,18 @@ const colSize = {
   xlarge: 2,
 };
 
+const ignoreGutter = [{}, { small: true }, {}, {}];
+
 const ModuleD = ({ assets }) => (
   <Fragment>
     <Grid>
       <StyledH2 data-locator="moduleD_headerlink">Mini me shop</StyledH2>
       <Row>
         {assets &&
-          assets.map(item => (
-            <Col colSize={colSize}>
-              <img src={item.url} alt={item.text} data-locator="moduleD_image" />
-              <StyledLink data-locator="moduleD_textlink" href="{item.link}">
+          assets.map((item, index) => (
+            <Col colSize={colSize} isNotInlineBlock ignoreGutter={ignoreGutter[index]}>
+              <img src={item.url} alt={item.text} className="moduleD_image" />
+              <StyledLink className="moduleD_textlink" href="{item.link}">
                 {item.text}
               </StyledLink>
             </Col>
