@@ -5,9 +5,10 @@ import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import RichText from '@tcp/core/src/components/common/atoms/RichText';
+import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import CarouselConfig from '@tcp/web/config';
-import { Accordion, NavBar, SampleCarousel, Test } from '../molecules';
 import { PropTypes } from 'prop-types';
+import { Accordion, NavBar, SampleCarousel, Test } from '../molecules';
 
 // colCount is the number of columns the component needs to cover in each of the viewport
 const colSize = {
@@ -15,12 +16,6 @@ const colSize = {
   medium: 8,
   large: 3,
   xlarge: 3,
-};
-const offsetRight = {
-  small: 2,
-  medium: 2,
-  large: 4,
-  xlarge: 4,
 };
 
 const colSize1 = {
@@ -30,21 +25,11 @@ const colSize1 = {
   xlarge: 2,
 };
 
-const offsetLeft1 = {
-  large: 2,
-  xlarge: 2,
-};
-
 const colSize2 = {
   small: 2,
   medium: 8,
   large: 1,
   xlarge: 1,
-};
-
-const offsetLeft2 = {
-  small: 2,
-  medium: 2,
 };
 
 const randomHTML = '<button class="asdfasdf" type="button">test133</button>';
@@ -75,8 +60,14 @@ const HomePageView = ({ links }) => (
         <Col colSize={colSize}>
           <RichText richTextHtml={randomHTML} />
         </Col>
-        <Col colSize={colSize}>
-          <Button buttonVariation="fixed-width">test</Button>
+        <Col
+          colSize={{
+            small: 1,
+            medium: 1,
+            large: 3,
+          }}
+        >
+          <TextBox id="abcd" name="abcdee" textIcon="icon-sms" />
         </Col>
         <Col colSize={colSize}>
           <Button buttonVariation="fixed-width">test</Button>

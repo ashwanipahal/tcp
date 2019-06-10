@@ -18,9 +18,8 @@ module.exports = api => {
           development: process.env.BABEL_ENV !== 'build',
         },
       ],
-      ['@babel/preset-flow'],
     ],
-    plugins: ['@babel/plugin-proposal-class-properties'],
+    plugins: ['@babel/plugin-proposal-class-properties', 'transform-flow-strip-types'],
     env: {
       build: {
         ignore: ['**/*.story.tsx', '__snapshots__', '__tests__', '__stories__'],
