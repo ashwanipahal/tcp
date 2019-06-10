@@ -78,8 +78,7 @@
     "stylelint-formatter-pretty": "^1.0.3",
     "stylelint-processor-styled-components": "^1.5.1",
     "clean-tag": "^2.0.2",
-    "styled-system": "5.0.5",
-    "styled-components": "^4.1.2"
+    "styled-system": "5.0.5"
   },
   "husky": {
     "hooks": {
