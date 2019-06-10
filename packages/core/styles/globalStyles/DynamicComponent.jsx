@@ -1,8 +1,9 @@
+// @flow
 import React from 'react';
 import styled from 'styled-components';
 import tag from 'clean-tag';
-import PropTypes from 'prop-types';
-import {space,
+import {
+  space,
   lineHeight,
   fontSize,
   fontStyle,
@@ -13,7 +14,8 @@ import {space,
   fontFamily,
   fontWeight,
   letterSpacing,
-  borderRadius} from 'styled-system';
+  borderRadius,
+} from 'styled-system';
 
 const StyledDynamicComponent = styled(tag)`
 ${space}
@@ -35,8 +37,9 @@ const DynamicComponent = ({ tag = 'div', children, ...props }) => {
   return <WithComponent {...props}>{children}</WithComponent>;
 };
 
-DynamicComponent.propTypes = {
-  tag: PropTypes.string.isRequired,
-  children: PropTypes.string.isRequired,
+type Props = {
+  tag: number,
+  children?: string,
 };
+
 export default DynamicComponent;
