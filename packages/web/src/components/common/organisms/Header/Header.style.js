@@ -8,6 +8,10 @@ export default css`
   }
   .header-topnav__promo-area {
     text-align: center;
+
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      display: none;
+    }
   }
   .header-topnav__track-order {
     text-align: center;
@@ -26,6 +30,10 @@ export default css`
     justify-content: space-between;
     text-transform: uppercase;
     padding: 10px 0;
+
+    @media ${props => props.theme.mediaQuery.mediumMax} {
+      display: none;
+    }
   }
   .header-promo {
     background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
