@@ -41,12 +41,22 @@ const moduleDAssets = [
   },
   {
     url: 'https://via.placeholder.com/330',
-    text: 'mom & me tees 3',
+    text: 'mom & me tees 1',
     link: 'http://www.google.com',
   },
   {
     url: 'https://via.placeholder.com/330',
-    text: 'mom & me tees 4',
+    text: 'mom & me tees 2',
+    link: 'http://www.google.com',
+  },
+  {
+    url: 'https://via.placeholder.com/330',
+    text: 'mom & me tees 1',
+    link: 'http://www.google.com',
+  },
+  {
+    url: 'https://via.placeholder.com/330',
+    text: 'mom & me tees 2',
     link: 'http://www.google.com',
   },
 ];
