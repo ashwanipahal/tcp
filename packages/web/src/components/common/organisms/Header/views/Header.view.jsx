@@ -7,17 +7,40 @@ import style from '../Header.style';
 
 const Header = ({ className }) => (
   <header className={className}>
-    <Row>
-      <Col
-        colSize={{
-          large: 12,
-          medium: 8,
-          small: 6,
-        }}
-      >
-        Top header
-      </Col>
-    </Row>
+    <div className="header-topnav">
+      <Row>
+        <Col
+          className="header-topnav__brand-tabs"
+          colSize={{
+            large: 2,
+            medium: 2,
+            small: 3,
+          }}
+        >
+          Brand tabs
+        </Col>
+        <Col
+          className="header-topnav__promo-area"
+          colSize={{
+            large: 8,
+            medium: 4,
+            small: 3,
+          }}
+        >
+          Promo area
+        </Col>
+        <Col
+          className="header-topnav__track-order"
+          colSize={{
+            large: 2,
+            medium: 2,
+            small: 3,
+          }}
+        >
+          Track order
+        </Col>
+      </Row>
+    </div>
   </header>
 );
 
