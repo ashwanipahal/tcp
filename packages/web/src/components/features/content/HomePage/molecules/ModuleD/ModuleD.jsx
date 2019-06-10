@@ -43,19 +43,21 @@ const colSize = {
 const ModuleD = ({ assets }) => (
   <Fragment>
     <Grid>
-      <StyledH2>Mini me shop</StyledH2>
+      <StyledH2 className="respmodule_headerlink">Mini me shop</StyledH2>
       <Row>
         {assets &&
           assets.map(item => (
             <Col colSize={colSize}>
-              <img src={item.url} alt={item.text} />
-              <StyledLink href="{item.link}">{item.text}</StyledLink>
+              <img src={item.url} alt={item.text} className="cssselector_respmodule_image" />
+              <StyledLink className="cssselector_respmodule_textlink" href="{item.link}">
+                {item.text}
+              </StyledLink>
             </Col>
           ))}
       </Row>
 
       <Row>
-        <StyledButton>Shop all</StyledButton>
+        <StyledButton className="cssselector_respmodule_button">Shop all</StyledButton>
       </Row>
     </Grid>
   </Fragment>
