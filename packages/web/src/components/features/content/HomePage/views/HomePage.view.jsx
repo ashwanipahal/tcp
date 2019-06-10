@@ -6,9 +6,11 @@ import Button from '@tcp/core/src/components/common/atoms/Button';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import RichText from '@tcp/core/src/components/common/atoms/RichText';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
+import Accordion from '@tcp/core/src/components/common/molecules/Accordion';
+
 import CarouselConfig from '@tcp/web/config';
 import { PropTypes } from 'prop-types';
-import { Accordion, NavBar, SampleCarousel, Test } from '../molecules';
+import { NavBar, SampleCarousel, Test } from '../molecules';
 
 // colCount is the number of columns the component needs to cover in each of the viewport
 const colSize = {
