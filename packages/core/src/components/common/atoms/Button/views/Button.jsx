@@ -35,13 +35,15 @@ const Button = ({ children, className, ariaLabel, disabled, fullWidth }) => (
 Button.propTypes = {
   children: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
-  ariaLabel: PropTypes.string.isRequired,
-  disabled: PropTypes.bool.isRequired,
+  ariaLabel: PropTypes.string,
+  disabled: PropTypes.bool,
   fullWidth: PropTypes.bool,
 };
 
 Button.defaultProps = {
   fullWidth: true,
+  ariaLabel: '',
+  disabled: false,
 };
 
 export default withStyles(Button, styles);
