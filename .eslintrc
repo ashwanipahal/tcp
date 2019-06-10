@@ -32,7 +32,8 @@
       "max-len": 0,
       "complexity": ["error", { "max": 10 }],
       "extra-rules/no-commented-out-code": "error",
-      "react-native/no-raw-text": 0
+      "react-native/no-raw-text": 0,
+      "react/button-has-type": 0
     },
     "plugins": [
       "react-native",
@@ -40,10 +41,12 @@
       "jest",
       "flowtype",
       "prettier",
-      "extra-rules"
+      "extra-rules",
+      "sonarjs"
       ],
     "extends": [
       "airbnb","plugin:react-native/all","plugin:react-native-a11y/recommended",
-      "plugin:flowtype/recommended", "prettier"
+      "plugin:flowtype/recommended", "prettier",
+      "plugin:sonarjs/recommended"
     ]
   }

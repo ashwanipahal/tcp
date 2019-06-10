@@ -5,34 +5,35 @@ const StyledRow = css`
     props.theme.gridDimensions.gridBreakPointsKeys.map(
       key => `
     @media ${props.theme.mediaQuery[key]} {
-        ${
-          !props.inline_block
-            ? `
-          display: flex;
-          flex-wrap: wrap;
-          `
-            : ``
-        }
+      ${
+        !props.inline_block
+          ? `
+        display: flex;
+        flex-wrap: wrap;
+        `
+          : ``
+      }
+      ${
+        props.centered
+          ? `
+        justify-content: center;
+        `
+          : ``
+      }
+      ${
+        !props.fullBleed
+          ? `
         margin-right: ${props.theme.gridDimensions.gridOffsetObj[key]}px;
         margin-left: ${props.theme.gridDimensions.gridOffsetObj[key]}px;
         width: calc(100% - ${props.theme.gridDimensions.gridOffsetObj[key] * 2}px);
-        ${
-          props.centered
-            ? `
-          justify-content: center;
-          `
-            : ``
-        }
-        ${props.css ? props.css : ``}
-        
-    }`
+        `
+          : `width: 100%;`
+      }`
     )}
   div:last-child {
     padding-right: 0;
   }
-  div:first-child {
-    padding-left: 0;
-  }
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
 export default StyledRow;

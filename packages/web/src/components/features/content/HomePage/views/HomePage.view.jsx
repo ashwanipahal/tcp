@@ -8,6 +8,7 @@ import RichText from '@tcp/core/src/components/common/atoms/RichText';
 import CarouselConfig from '@tcp/web/config';
 import { PropTypes } from 'prop-types';
 import { NavBar, SampleCarousel, Test, ModuleD } from '../molecules';
+import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 
 // colCount is the number of columns the component needs to cover in each of the viewport
 const colSize = {
@@ -90,8 +91,14 @@ const HomePageView = ({ links }) => (
         <Col colSize={colSize}>
           <RichText richTextHtml={randomHTML} />
         </Col>
-        <Col colSize={colSize}>
-          <Button buttonVariation="fixed-width">test</Button>
+        <Col
+          colSize={{
+            small: 1,
+            medium: 1,
+            large: 3,
+          }}
+        >
+          <TextBox id="abcd" name="abcdee" textIcon="icon-sms" />
         </Col>
         <Col colSize={colSize}>
           <Button buttonVariation="fixed-width">test</Button>

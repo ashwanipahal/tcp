@@ -58,6 +58,7 @@ const FONT_SIZE = {
     medium: 12,
     large: 15,
   },
+  textbox: 13,
 };
 
 const FONT_WEIGHT = {
