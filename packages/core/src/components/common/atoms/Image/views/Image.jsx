@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { PropTypes } from 'prop-types';
 
 import styles from '../Image.style';
@@ -53,7 +53,5 @@ Image.defaultProps = {
   ref: () => {},
 };
 
-export default styled(Image)`
-  ${styles};
-`;
+export default withStyles(Image, styles);
 export { Image as ImageVanilla };

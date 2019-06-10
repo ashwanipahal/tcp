@@ -4,6 +4,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 
 import styles from '../RichText.style';
 
+// This accepts an HTML and inserts it wherever the component is added.
 const RichText = ({ richTextHtml }) => (
   // eslint-disable-next-line
   <div dangerouslySetInnerHTML={{ __html: richTextHtml }} />
