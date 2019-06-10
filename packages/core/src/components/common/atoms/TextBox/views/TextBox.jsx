@@ -1,12 +1,28 @@
+// @flow
 import React from 'react';
-import { PropTypes } from 'prop-types';
+import type { Node } from 'react';
 import withStyles from '../../../hoc/withStyles';
 import StyledTextBox from '../TextBox.style';
 
-// The textbox also supports the icons in the front of the textbox.
-// The textIcon = icon-sms and icon-email are currently supported with natural fill.
-// The border styles for success and error are governed by isErrorState and isSuccessState props.
-// The prop disabled determines if the textbox needs to be disabled or not.
+/**
+ * @param {object} props : Props for button
+ * @desc This is a Textbox component. The textbox also supports the icons in the front of the textbox.
+ * The textIcon = icon-sms and icon-email are currently supported with natural fill.
+ * The border styles for success and error are governed by isErrorState and isSuccessState props.
+ * The prop disabled determines if the textbox needs to be disabled or not.
+ */
+
+type Props = {
+  id?: string,
+  className: string,
+  ariaLabel?: string,
+  name?: string,
+  type?: string,
+  placeholder?: string,
+  isErrorState?: boolean,
+  isSuccessState?: boolean,
+  onChangeHandler?: func,
+};
 
 const TextBox = ({
   className,
@@ -18,7 +34,7 @@ const TextBox = ({
   isErrorState,
   isSuccessState,
   onChangeHandler,
-}) => (
+}: Props): Node => (
   <input
     id={id}
     aria-label={ariaLabel}
@@ -32,24 +48,14 @@ const TextBox = ({
   />
 );
 
-TextBox.propTypes = {
-  className: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  ariaLabel: PropTypes.string,
-  type: PropTypes.string,
-  name: PropTypes.string.isRequired,
-  placeholder: PropTypes.string,
-  isSuccessState: PropTypes.bool,
-  isErrorState: PropTypes.bool,
-  onChangeHandler: PropTypes.func,
-};
-
 TextBox.defaultProps = {
+  id: '',
   ariaLabel: '',
+  name: '',
   type: 'text',
   placeholder: '',
-  isSuccessState: false,
   isErrorState: false,
+  isSuccessState: false,
   onChangeHandler: () => {},
 };
 

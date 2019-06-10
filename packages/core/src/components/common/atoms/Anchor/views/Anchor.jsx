@@ -7,12 +7,15 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 
 import styles from '../Anchor.style';
 
-// The prop anchorVariation determines the color of the anchor.
-// The values supported for anchorVariation are : primary, secondary, tertiary.
-// The prop fontSizeVariation determines the font size of the anchor.
-// The value supported for fontSizeVariation are : small, medium, large.
-// The values of these are picked up from the theme.
-// An additional prop noLink is added to support simple anchor or next's Link conditionally.
+/**
+ * @param {object} props : Props for Anchor
+ * @desc This is an anchor component. The prop anchorVariation determines the color of the anchor.
+ * The values supported for anchorVariation are : primary, secondary, tertiary.
+ * The prop fontSizeVariation determines the font size of the anchor.
+ * The value supported for fontSizeVariation are : small, medium, large.
+ * The values of these are picked up from the theme.
+ * An additional prop noLink is added to support simple anchor or next's Link conditionally.
+ */
 
 const Anchor = ({
   children,

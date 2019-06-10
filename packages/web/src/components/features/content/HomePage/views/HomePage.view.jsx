@@ -57,8 +57,14 @@ const HomePageView = ({ links }) => (
         <Col colSize={colSize}>
           <RichText richTextHtml={randomHTML} />
         </Col>
-        <Col colSize={colSize}>
-          <TextBox id="abcd" name="abcdee" />
+        <Col
+          colSize={{
+            small: 1,
+            medium: 1,
+            large: 3,
+          }}
+        >
+          <TextBox id="abcd" name="abcdee" textIcon="icon-sms" />
         </Col>
         <Col colSize={colSize}>
           <Button buttonVariation="fixed-width">test</Button>
