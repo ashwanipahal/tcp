@@ -116,4 +116,4 @@ Header.propTypes = {
 };
 
 export default withStyles(Header, style);
-export { Header as FooterVanilla };
+export { Header as HeaderVanilla };
