@@ -5,7 +5,9 @@ import Accordion from '../Accordion';
 describe('Accordion component', () => {
   it('renders correctly', () => {
     const props = {
-      options: {},
+      className: 'class',
+      children: 'AAAA',
+      title: 'test',
     };
     const component = shallow(<Accordion {...props} />);
     expect(component).toMatchSnapshot();
