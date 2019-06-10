@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import theme from '@tcp/core/styles/themes/TCP';
 
 const ModalStyle = styled.div`
   .TCPModal__Overlay {
@@ -7,10 +8,10 @@ const ModalStyle = styled.div`
     left: 0px;
     right: 0px;
     bottom: 0px;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(${theme.colors.BLACK}, 0.6);
   }
   .TCPModal__InnerContent {
-    background: rgb(255, 255, 255);
+    background: ${theme.colors.WHITE};
     box-sizing: border-box;
     position: absolute;
     top: 50%;
