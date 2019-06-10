@@ -1,33 +1,49 @@
+// @flow
 import React from 'react';
-import { PropTypes } from 'prop-types';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import type { Node } from 'react';
+import withStyles from '../../../hoc/withStyles';
 
 import styles from '../Button.style';
 
-const Button = ({ children, className, ariaLabel, disabled, fullWidth }) => (
+type Props = {
+  children: Node,
+  className: string,
+  ariaLabel: string,
+  disabled: boolean,
+  fullWidth?: boolean,
+  type?: string,
+};
+
+/**
+ * @param {object} props : Props for button
+ * @desc This is a button component. The two variations of buttons are:
+ * 1. fixed-width: Takes the width of the column which it occupies.
+ * It has the fixed padding as per the zeplin.
+
+ * 2. variable-width: Takes the width of the text that is inside the button.
+ * It has fixed padding as per the zeplin. This variation needs to be mentioned in buttonVariation property.
+ * TODO - Not able to add these property here due to linting,
+ * need to find a way of doing it. Might be resolved with flow types.
+
+ * Additional button Prop:
+ * fullWidth: Additional property to mention 100% width of the button.
+ * disabled: to have disabled state of the button
+ */
+const Button = ({ children, className, ariaLabel, disabled, fullWidth, type }: Props): Node => (
   <button
     disabled={disabled}
     aria-label={ariaLabel}
     className={className}
-    type="button"
+    type={type}
     fullWidth={fullWidth}
   >
     {children}
   </button>
 );
 
-Button.propTypes = {
-  children: PropTypes.string.isRequired,
-  className: PropTypes.string.isRequired,
-  ariaLabel: PropTypes.string,
-  disabled: PropTypes.bool,
-  fullWidth: PropTypes.bool,
-};
-
 Button.defaultProps = {
   fullWidth: true,
-  ariaLabel: '',
-  disabled: false,
+  type: 'button',
 };
 
 export default withStyles(Button, styles);

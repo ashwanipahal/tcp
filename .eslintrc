@@ -32,7 +32,8 @@
       "max-len": 0,
       "complexity": ["error", { "max": 10 }],
       "extra-rules/no-commented-out-code": "error",
-      "react-native/no-raw-text": 0
+      "react-native/no-raw-text": 0,
+      "react/button-has-type": 0
     },
     "plugins": [
       "react-native",
