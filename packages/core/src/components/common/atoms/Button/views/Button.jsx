@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import type { Node } from 'react';
-import { oneOf } from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
 
 import styles from '../Button.style';
@@ -35,9 +34,6 @@ const Button = ({ children, className, ariaLabel, disabled, fullWidth, type }: P
     disabled={disabled}
     aria-label={ariaLabel}
     className={className}
-    // Type is hard coded to button for two reasons:
-    // 1. submit and reset type of button should be different from this component
-    // 2. type dynamic value is not allowed, it throws linting error.
     type={type}
     fullWidth={fullWidth}
   >
@@ -47,7 +43,7 @@ const Button = ({ children, className, ariaLabel, disabled, fullWidth, type }: P
 
 Button.defaultProps = {
   fullWidth: true,
-  type: oneOf(['button', 'submit', 'reset']),
+  type: 'button',
 };
 
 export default withStyles(Button, styles);
