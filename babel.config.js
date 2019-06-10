@@ -19,10 +19,7 @@ module.exports = api => {
         },
       ],
     ],
-    plugins: [
-      '@babel/plugin-proposal-class-properties',
-      ['styled-components', { ssr: false, displayName: true, preprocess: false }],
-    ],
+    plugins: ['@babel/plugin-proposal-class-properties'],
     env: {
       build: {
         ignore: ['**/*.story.tsx', '__snapshots__', '__tests__', '__stories__'],
