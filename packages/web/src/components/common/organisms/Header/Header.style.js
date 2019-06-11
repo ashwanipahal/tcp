@@ -34,7 +34,11 @@ const HeaderNav = styled.div`
 `;
 const DummyNav = styled.div`
   color: ${props => props.theme.colors.PRIMARY.DARK};
+  cursor: pointer;
   display: flex;
+  font-family: ${props => props.theme.fonts.secondaryFontFamily};
+  font-size: ${props => props.theme.fonts.fontSize.nav}px;
+  font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
