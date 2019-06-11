@@ -183,7 +183,7 @@ export default {
   },
   footer_bottom: {
     copyrights: {
-      text: '<p>@copy; 2019 The Childrens Place | Big Fashion, Little Prices.</p>',
+      text: '<p>&copy; 2019 The Childrens Place | Big Fashion, Little Prices.</p>',
     },
     legal_links: [
       {

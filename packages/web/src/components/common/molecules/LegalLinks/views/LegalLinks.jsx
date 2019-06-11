@@ -1,13 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import style from '../LegalLinks.style';
 
-const LegalLinks = ({ links }) => (
+const LegalLinks = ({ className, links }) => (
   <React.Fragment>
-    <ul>
+    <ul className={className}>
       {links.map(link => (
         <li>
-          <Anchor to={link.url}>{link.text}</Anchor>
+          <Anchor anchorVariation="primary" to={link.url}>
+            {link.text}
+          </Anchor>
         </li>
       ))}
     </ul>
@@ -16,10 +20,12 @@ const LegalLinks = ({ links }) => (
 
 LegalLinks.propTypes = {
   links: PropTypes.arrayOf,
+  className: PropTypes.string.isRequired,
 };
 
 LegalLinks.defaultProps = {
   links: [],
 };
 
-export default LegalLinks;
+export { LegalLinks };
+export default withStyles(LegalLinks, style);
