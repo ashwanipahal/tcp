@@ -65,7 +65,4 @@ export default {
     ERROR_BORDER: '#c84747',
     SUCCESS_BORDER: '#6dc927',
   },
-  BORDER: {
-    LIGHTGRAY: '#c3c3c3',
-  },
 };

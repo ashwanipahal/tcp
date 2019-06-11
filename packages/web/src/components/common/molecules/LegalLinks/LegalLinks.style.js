@@ -10,7 +10,7 @@ export default css`
 
   li {
     padding: 0 20px;
-    border-left: 1px solid ${props => props.theme.colors.BORDER.LIGHTGRAY};
+    border-left: 1px solid ${props => props.theme.colors.PRIMARY.PALEGRAY};
   }
 
   li:first-child {
