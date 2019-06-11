@@ -38,7 +38,9 @@ const randomHTML = '<button class="asdfasdf" type="button">test133</button>';
 const HomePageView = ({ links }) => (
   <Fragment>
     <NavBar links={links} />
-    <Accordion className={'Collapsible'} children={'AAAA'} title={'test'} />
+    <Accordion className="Collapsible" title="test">
+      AAAA
+    </Accordion>
     <Test className="test" />
     <Grid>
       <Row>

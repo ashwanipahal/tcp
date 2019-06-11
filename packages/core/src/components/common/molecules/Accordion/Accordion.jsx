@@ -1,13 +1,27 @@
+// @flow
+import type { Node } from 'react';
 import React, { Component } from 'react';
-import { PropTypes } from 'prop-types';
 import styles from './Accordion.style';
 import withStyles from '../../hoc/withStyles';
 import Anchor from '../../atoms/Anchor';
 
-class Accordion extends Component {
-  state = {
-    clicked: false,
-  };
+type Props = {
+  className: string,
+  children: Node,
+  title: string,
+};
+
+type State = {
+  clicked: boolean,
+};
+
+class Accordion extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      clicked: false,
+    };
+  }
 
   componentWillMount() {}
 
@@ -30,19 +44,8 @@ class Accordion extends Component {
     );
   }
 }
+
 Accordion.displayName = 'Accordion';
-
-Accordion.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.shape({})),
-  className: PropTypes.string,
-  title: PropTypes.string,
-};
-
-Accordion.defaultProps = {
-  children: PropTypes.arrayOf(PropTypes.shape({})),
-  className: 'accordion',
-  title: 'accordion',
-};
 
 export default withStyles(Accordion, styles);
 
