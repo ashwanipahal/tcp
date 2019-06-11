@@ -1,4 +1,4 @@
-export default (footer = {
+export default {
   footer_top: {
     email_sms_signup: {
       url: '/',
@@ -183,7 +183,7 @@ export default (footer = {
   },
   footer_bottom: {
     copyrights: {
-      text: '<p>@copy; 2019 The Childrens Place | Big Fashion, Little Prices.</p>',
+      text: '<p>&copy; 2019 The Childrens Place | Big Fashion, Little Prices.</p>',
     },
     legal_links: [
       {
@@ -200,4 +200,4 @@ export default (footer = {
       },
     ],
   },
-});
+};

@@ -12,7 +12,7 @@ import moduleDAbstractor from '../moduleD';
  *  -   Labels
  *  -   Module D
  */
-export default (bootstrap = async () => {
+export default async () => {
   const response = {};
   try {
     response.layout = await layoutAbstractor.getLayoutData();
@@ -21,6 +21,8 @@ export default (bootstrap = async () => {
     response.labels = await labelsAbstractor.getLabelsData();
     response.moduleD = await moduleDAbstractor.getModuleDData();
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(error);
   }
-});
+  return response;
+};

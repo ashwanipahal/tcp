@@ -33,7 +33,8 @@
       "complexity": ["error", { "max": 10 }],
       "extra-rules/no-commented-out-code": "error",
       "react-native/no-raw-text": 0,
-      "react/button-has-type": 0
+      "react/button-has-type": 0,
+      "sonarjs/no-small-switch": 0
     },
     "plugins": [
       "react-native",

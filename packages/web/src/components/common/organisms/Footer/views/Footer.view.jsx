@@ -1,11 +1,13 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../Footer.style';
+import LegalLinks from '../../../molecules/LegalLinks';
+import Copyright from '../../../molecules/Copyright';
 
-const Footer = ({ className }) => (
+const Footer = ({ className, copyrightText, legalLinks }) => (
   <footer className={className}>
     <div className="footer-top">
       <Row>
@@ -17,7 +19,7 @@ const Footer = ({ className }) => (
             small: 6,
           }}
         >
-          slot 1
+          EMAIL AND REFER A FRIEND
         </Col>
         <Col
           className="footer-top__slot--2"
@@ -27,7 +29,7 @@ const Footer = ({ className }) => (
             small: 6,
           }}
         >
-          slot 2
+          SOCIAL MEDIA LINKS
         </Col>
       </Row>
     </div>
@@ -40,7 +42,7 @@ const Footer = ({ className }) => (
           small: 6,
         }}
       >
-        slot 1
+        MPR AREA
       </Col>
       <Col
         className="footer-middle__slot--2"
@@ -50,7 +52,7 @@ const Footer = ({ className }) => (
           small: 6,
         }}
       >
-        slot 2
+        MPRCC AREA
       </Col>
       <Col
         className="footer-middle__slot--3"
@@ -60,7 +62,7 @@ const Footer = ({ className }) => (
           small: 6,
         }}
       >
-        slot 3
+        NAV LINKS
       </Col>
     </Row>
     <Row className="footer-bottom">
@@ -72,7 +74,7 @@ const Footer = ({ className }) => (
           small: 6,
         }}
       >
-        slot 1
+        <Copyright>{copyrightText}</Copyright>
       </Col>
       <Col
         className="footer-bottom__slot--2"
@@ -82,7 +84,7 @@ const Footer = ({ className }) => (
           small: 6,
         }}
       >
-        slot 2
+        <LegalLinks links={legalLinks} />
       </Col>
       <Col
         className="footer-bottom__slot--3"
@@ -92,7 +94,7 @@ const Footer = ({ className }) => (
           small: 6,
         }}
       >
-        slot 3
+        COUNTRY SELECTOR
       </Col>
     </Row>
   </footer>
@@ -100,6 +102,13 @@ const Footer = ({ className }) => (
 
 Footer.propTypes = {
   className: PropTypes.string.isRequired,
+  copyrightText: PropTypes.string,
+  legalLinks: PropTypes.arrayOf,
+};
+
+Footer.defaultProps = {
+  copyrightText: '',
+  legalLinks: [],
 };
 
 export default withStyles(Footer, style);

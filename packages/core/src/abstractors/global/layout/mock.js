@@ -1,4 +1,4 @@
-export default (layout = {
+export default {
   slot: {
     module: {
       name: 'modD',
@@ -7,4 +7,4 @@ export default (layout = {
   popups: {
     email_signup_popup: {},
   },
-});
+};

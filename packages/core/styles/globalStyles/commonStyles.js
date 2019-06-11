@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import theme from '@tcp/core/styles/themes/TCP';
+import theme from '../themes/TCP';
 
 const { fonts } = theme;
 export default css`
