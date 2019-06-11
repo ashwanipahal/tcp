@@ -6,11 +6,9 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import headerStyles from '../Header.style';
 import HomeLogo from './HomeLogo';
 
-const { HeaderTopnav, HeaderBrand, HeaderNav, DummyNav, HeaderPromo, HeaderLoyalty } = headerStyles;
-
 const Header = ({ className }) => (
   <header className={className}>
-    <HeaderTopnav className="header-topnav">
+    <div className="header-topnav">
       <Row>
         <Col
           className="header-topnav__brand-tabs"
@@ -43,8 +41,8 @@ const Header = ({ className }) => (
           Track order
         </Col>
       </Row>
-    </HeaderTopnav>
-    <HeaderBrand className="header-brand">
+    </div>
+    <div className="header-brand">
       <Row>
         <Col
           className="header-brand__home-logo"
@@ -63,8 +61,8 @@ const Header = ({ className }) => (
           />
         </Col>
       </Row>
-    </HeaderBrand>
-    <HeaderNav className="header-nav">
+    </div>
+    <div className="header-nav">
       <Row>
         <Col
           className="header-nav__nav-row"
@@ -74,7 +72,7 @@ const Header = ({ className }) => (
             small: 0,
           }}
         >
-          <DummyNav className="dummy-nav">
+          <div className="dummy-nav">
             <div>Girl</div>
             <div>Toddler Girl</div>
             <div>Boy</div>
@@ -85,11 +83,11 @@ const Header = ({ className }) => (
             <div>Trending</div>
             <div>Gift Cards</div>
             <div>Clearance</div>
-          </DummyNav>
+          </div>
         </Col>
       </Row>
-    </HeaderNav>
-    <HeaderPromo className="header-promo">
+    </div>
+    <div className="header-promo">
       <Row>
         <Col
           className="header-promo__promo-banner"
@@ -102,8 +100,8 @@ const Header = ({ className }) => (
           Promo banners
         </Col>
       </Row>
-    </HeaderPromo>
-    <HeaderLoyalty className="header-loyalty">
+    </div>
+    <div className="header-loyalty">
       <Row>
         <Col
           className="header-loyalty__promo-loyalty"
@@ -116,7 +114,7 @@ const Header = ({ className }) => (
           Loyalty Promo banners
         </Col>
       </Row>
-    </HeaderLoyalty>
+    </div>
   </header>
 );
 

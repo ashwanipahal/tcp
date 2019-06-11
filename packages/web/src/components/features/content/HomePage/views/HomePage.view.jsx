@@ -5,6 +5,7 @@ import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import RichText from '@tcp/core/src/components/common/atoms/RichText';
+import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
 import CarouselConfig from '@tcp/web/config';
 import { PropTypes } from 'prop-types';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
@@ -91,4 +92,4 @@ HomePageView.propTypes = {
   links: PropTypes.arrayOf.isRequired,
 };
 
-export default HomePageView;
+export default errorBoundary(HomePageView);
