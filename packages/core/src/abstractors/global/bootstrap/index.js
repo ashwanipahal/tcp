@@ -10,7 +10,7 @@ import footerAbstractor from '../footer';
  *  -   Footer
  *  -   Labels
  */
-export default (bootstrap = async () => {
+export default async () => {
   const response = {};
   try {
     response.layout = await layoutAbstractor.getLayoutData();
@@ -18,6 +18,8 @@ export default (bootstrap = async () => {
     response.footer = await footerAbstractor.getFooterData();
     response.labels = await labelsAbstractor.getLabelsData();
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(error);
   }
-});
+  return response;
+};
