@@ -43,22 +43,24 @@ class SampleModal extends React.Component {
           shouldCloseOnEsc
           title="Modal Title"
         >
-          <p>Modal content goes here...</p>
-          <form>
-            <input type="input" placeholder="please start tabbing..." />
-            <br />
-            <br />
-            <button type="button">tab navigation</button>
-            <br />
-            <br />
-            <button type="button">stays</button>
-            <br />
-            <br />
-            <button type="button">inside</button>
-            <br />
-            <br />
-            <button type="button">the modal</button>
-          </form>
+          <div>
+            <p>Modal content goes here...</p>
+            <form>
+              <input type="input" placeholder="please start tabbing..." />
+              <br />
+              <br />
+              <button type="button">tab navigation</button>
+              <br />
+              <br />
+              <button type="button">stays</button>
+              <br />
+              <br />
+              <button type="button">inside</button>
+              <br />
+              <br />
+              <button type="button">the modal</button>
+            </form>
+          </div>
         </Modal>
       </div>
     );
