@@ -20,10 +20,8 @@ class TCPWebApp extends App {
     };
   }
 
-  static loadGlobalData({ store, isServer }, pageProps) {
-    if (isServer) {
-      store.dispatch(bootstrapData());
-    }
+  static loadGlobalData({ store }, pageProps) {
+    store.dispatch(bootstrapData());
     return pageProps;
   }
 
@@ -33,7 +31,7 @@ class TCPWebApp extends App {
       // eslint-disable-next-line no-param-reassign
       pageProps = await Component.getInitialProps({ store, isServer });
     }
-    if (isServer && Component.getInitActions) {
+    if (Component.getInitActions) {
       const actions = Component.getInitActions();
       actions.forEach(action => store.dispatch(action));
     }
