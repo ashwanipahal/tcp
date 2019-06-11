@@ -27,6 +27,7 @@ export default {
     DARKGRAY: '#575757',
     GRAY: '#9b9b9b',
     LIGHTGRAY: '#d8d8d8',
+    DARKERGRAY: '#595959',
     BLUE: '#2e6a91',
     DARKERBLUE: '#439ad4',
     RED: '#c84747',
@@ -63,5 +64,8 @@ export default {
     FOCUS_BORDER: '#439ad4',
     ERROR_BORDER: '#c84747',
     SUCCESS_BORDER: '#6dc927',
+  },
+  BORDER: {
+    LIGHTGRAY: '#c3c3c3',
   },
 };
