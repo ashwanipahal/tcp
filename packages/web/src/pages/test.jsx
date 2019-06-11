@@ -9,7 +9,12 @@ import RichText from '@tcp/core/src/components/common/atoms/RichText';
 import CarouselConfig from '@tcp/web/config';
 import { PropTypes } from 'prop-types';
 import { initActions } from '../components/features/content/HomePage/container/HomePage.actions';
-import { NavBar, SampleCarousel, Test } from '../components/features/content/HomePage/molecules';
+import {
+  NavBar,
+  SampleCarousel,
+  Test,
+  SampleModal,
+} from '../components/features/content/HomePage/molecules';
 
 // colCount is the number of columns the component needs to cover in each of the viewport
 const colSize = {
@@ -35,6 +40,7 @@ const HomePageView = ({ links }) => (
   <Fragment>
     <NavBar links={links} />
     <Test className="test" />
+    <SampleModal />
     <Grid>
       <Row>
         <Col colSize={colSize}>
