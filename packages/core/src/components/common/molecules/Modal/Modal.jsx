@@ -10,6 +10,7 @@ import PropTypes from 'prop-types';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
+import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
 import ModalHeader from './ModalHeader';
 import ModalStyle from './ModalStyle';
 import Config from './config';
@@ -42,4 +43,4 @@ Modal.propTypes = {
   children: PropTypes.element.isRequired,
 };
 
-export default Modal;
+export default errorBoundary(Modal);
