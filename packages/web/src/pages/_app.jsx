@@ -7,6 +7,7 @@ import withReduxSaga from 'next-redux-saga';
 import theme from '@tcp/core/styles/themes/TCP';
 import commonStyles from '@tcp/core/styles/globalStyles/commonStyles';
 import commonFonts from '@tcp/core/styles/globalStyles/fonts';
+import ReactAxe from '../utils/react-axe';
 import { Header, Footer } from '../components/common/organisms';
 import { configureStore } from '../reduxStore';
 
@@ -23,6 +24,14 @@ class TCPWebApp extends App {
     return {
       pageProps,
     };
+  }
+
+  componentDidMount() {
+    ReactAxe.validateAccessibility();
+  }
+
+  componentDidUpdate() {
+    ReactAxe.validateAccessibility();
   }
 
   static loadGlobalData(ctx, pageProps) {
