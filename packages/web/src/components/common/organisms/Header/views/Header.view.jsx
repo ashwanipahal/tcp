@@ -55,11 +55,12 @@ const Header = ({ className }) => (
           }}
         >
           <HomeLogo
-            dataLocator="global_TCPlink"
+            dataLocator="global_TCPlink tcp-logo"
             imgSrc="/static/images/tcp-logo.svg"
             href="/"
             alt="The Children's Place"
             title="The Children's Place"
+            width="172px"
           />
         </Col>
       </Row>

@@ -27,6 +27,12 @@ const HeaderBrand = styled.div`
   height: 129px;
   padding-top: 31px;
   text-align: center;
+
+  @media ${props => props.theme.mediaQuery.mediumMax} {
+    .tcp-logo {
+      display: none;
+    }
+  }
 `;
 
 const HeaderNav = styled.div`

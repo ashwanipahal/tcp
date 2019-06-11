@@ -1,20 +1,12 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import Image from '@tcp/core/src/components/common/atoms/Image';
 
-const LogoImage = styled.img`
-  width: 172px;
-
-  @media ${props => props.theme.mediaQuery.mediumMax} {
-    display: none;
-  }
-`;
-
-const HomeLogo = ({ alt, dataLocator, href, imgSrc, title }) => (
+const HomeLogo = ({ alt, dataLocator, href, imgSrc, title, width }) => (
   <Fragment>
     <Anchor className={dataLocator} to={href} title={title}>
-      <LogoImage src={imgSrc} alt={alt} title={title} />
+      <Image src={imgSrc} alt={alt} title={title} width={width} />
     </Anchor>
   </Fragment>
 );
@@ -25,6 +17,7 @@ HomeLogo.propTypes = {
   imgSrc: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
+  width: PropTypes.string.isRequired,
 };
 
 export default HomeLogo;
