@@ -4,6 +4,7 @@ import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../Header.style';
+import HomeLogo from './HomeLogo';
 
 const Header = ({ className }) => (
   <header className={className}>
@@ -51,7 +52,13 @@ const Header = ({ className }) => (
             small: 6,
           }}
         >
-          BRAND HOME LOGO
+          <HomeLogo
+            dataLocator="global_TCPlink"
+            imgSrc="/static/images/tcp-logo.svg"
+            href="/"
+            alt="The Children's Place"
+            title="The Children's Place"
+          />
         </Col>
       </Row>
     </div>

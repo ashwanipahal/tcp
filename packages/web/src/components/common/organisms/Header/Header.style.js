@@ -14,12 +14,16 @@ export default css`
     }
   }
   .header-topnav__track-order {
-    text-align: center;
+    text-align: right;
+
+    @media ${props => props.theme.mediaQuery.mediumMax} {
+      padding-right: 0;
+    }
   }
   .header-brand {
     box-sizing: border-box;
     height: 129px;
-    padding: 50px 0px;
+    padding-top: 31px;
     text-align: center;
   }
   .dummy-nav {
