@@ -18,26 +18,16 @@ const Test = () => {
   return (
     <ThemeProvider theme={typoTheme}>
       <div>
-        <HeadingLarge1 fontSize="55px" tag="h1" textStyle="underline" color={colors.TEXT.RED}>
-          ALL H1 TO H6 variation large dynamic tag
-        </HeadingLarge1>
+        <HeadingLarge1 tag="h1">ALL H1 TO H6 variation large dynamic tag</HeadingLarge1>
 
-        <HeadingSmall1 tag="h1" textStyle="underline" color={colors.TEXT.RED}>
-          ALL H1 TO H6 variation small dynamic tag
-        </HeadingSmall1>
+        <HeadingSmall1 tag="h1">ALL H1 TO H6 variation small dynamic tag</HeadingSmall1>
 
-        <Bodylargeprimary tag="p" textStyle="underline" color={colors.TEXT.RED}>
-          ALL body copy variation large dynamic tag
-        </Bodylargeprimary>
+        <Bodylargeprimary tag="p">ALL body copy variation large dynamic tag</Bodylargeprimary>
 
-        <Bodysmallprimary tag="p" textStyle="underline" color={colors.TEXT.RED}>
-          ALL body copy variation small dynamic tag
-        </Bodysmallprimary>
+        <Bodysmallprimary tag="p">ALL body copy variation small dynamic tag</Bodysmallprimary>
 
-        <Nav tag="p" textStyle="underline" color={colors.TEXT.RED}>
-          NAV LINK
-        </Nav>
-        <BodyText1 fontWeight="bold" tag="p" color={colors.TEXT.BLUE}>
+        <Nav tag="p">NAV LINK</Nav>
+        <BodyText1 tag="p">
           BodyText1 <br /> fontWeight="bold" need to pass for font weight
         </BodyText1>
       </div>
