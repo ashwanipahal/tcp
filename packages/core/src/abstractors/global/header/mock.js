@@ -1,4 +1,4 @@
-export default (header = {
+export default {
   header_top_nav: {
     brand_tabs: [
       {
@@ -19,22 +19,22 @@ export default (header = {
     promo_message_wrapper: [
       {
         url: '/static/promo',
-        text: '<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required.',
-        title: 'FREE SHIPPING EVERY DAY! No minimum purchase required.',
+        text: '<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 1.',
+        title: 'FREE SHIPPING EVERY DAY! No minimum purchase required 1.',
         target: '_blank',
         class: 'promo_message',
       },
       {
         url: '/static/promo2',
-        text: '<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required.',
-        title: 'FREE SHIPPING EVERY DAY! No minimum purchase required.',
+        text: '<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 2.',
+        title: 'FREE SHIPPING EVERY DAY! No minimum purchase required 2.',
         target: '_blank',
         class: 'promo_message',
       },
       {
         url: '/static/promo3',
-        text: '<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required.',
-        title: 'FREE SHIPPING EVERY DAY! No minimum purchase required.',
+        text: '<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 3.',
+        title: 'FREE SHIPPING EVERY DAY! No minimum purchase required 3.',
         target: '_blank',
         class: 'promo_message',
       },
@@ -43,7 +43,7 @@ export default (header = {
   header_promo_area: {
     promo_text_banners: [
       {
-        url: '/banner/url',
+        url: '/banner/url1',
         promo_text: {
           primary: {
             text: '<b>NEED IT NOW?</b>',
@@ -59,7 +59,7 @@ export default (header = {
         class: 'promo_icon_clock',
       },
       {
-        url: '/banner/url',
+        url: '/banner/url2',
         promo_text: {
           primary: {
             text: '<b>EARN PLACE CASH!</b>',
@@ -112,4 +112,4 @@ export default (header = {
       },
     ],
   },
-});
+};

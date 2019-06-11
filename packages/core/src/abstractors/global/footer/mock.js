@@ -1,4 +1,4 @@
-export default (footer = {
+export default {
   footer_top: {
     email_sms_signup: {
       url: '/',
@@ -200,4 +200,4 @@ export default (footer = {
       },
     ],
   },
-});
+};
