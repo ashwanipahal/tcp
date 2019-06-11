@@ -1,1 +1,1 @@
-export default (header = {});
+export default {};

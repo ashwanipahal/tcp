@@ -1,14 +1,12 @@
 import React from 'react';
-import { ProductList } from './views/productListComponent';
-
 import { ApolloProvider, graphql } from 'react-apollo';
-import { awsConfig } from '@tcp/core/src/service/aws-cred-exports';
-import AWSAppSyncClient, { buildSync } from 'aws-appsync';
-import * as GQLQueries from '@tcp/core/src/service/Queries';
 import { Rehydrated } from 'aws-appsync-react';
+import { buildSync } from 'aws-appsync';
 import gql from 'graphql-tag';
+import { ProductList } from './views/productListComponent';
+import * as GQLQueries from '../../../../service/Queries';
 
-import AppSyncClient from '@tcp/core/src/service/AwsAPI';
+import AppSyncClient from '../../../../service/AwsAPI';
 
 const PlpPageComponent = graphql(gql(GQLQueries.getProductsInList), {
   options: {
@@ -49,9 +47,10 @@ export default class PlpDeltaSyncPage extends React.Component {
   }
 
   render() {
+    const { isRenderedOnClient } = this.state;
     return (
       <React.Fragment>
-        {this.state.isRenderedOnClient && (
+        {isRenderedOnClient && (
           <ApolloProvider client={this.client}>
             <Rehydrated>
               <PlpPageComponent />
