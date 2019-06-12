@@ -60,7 +60,6 @@ const StyledCol = css`
       key => `
       @media ${props.theme.mediaQuery[key]} {
           ${!props.isNotInlineBlock ? 'display: inline-block;' : ''}
-          padding-right: ${getGutter(key, props.theme.gridDimensions)}%;
           margin-left: ${
             props.offsetLeft && props.offsetLeft[key]
               ? calculateOffset(props.offsetLeft[key], key, props.theme.gridDimensions)

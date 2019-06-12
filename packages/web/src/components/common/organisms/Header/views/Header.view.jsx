@@ -2,7 +2,6 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import headerStyles from '../Header.style';
 import HomeLogo from './HomeLogo';
 
@@ -125,5 +124,5 @@ Header.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-export default withStyles(Header, headerStyles);
+export default Header;
 export { Header as HeaderVanilla };

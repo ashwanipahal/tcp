@@ -19,7 +19,12 @@ const LegalLinks = ({ className, links }) => (
 );
 
 LegalLinks.propTypes = {
-  links: PropTypes.arrayOf,
+  links: PropTypes.arrayOf(
+    PropTypes.shape({
+      url: PropTypes.string,
+      title: PropTypes.text,
+    })
+  ),
   className: PropTypes.string.isRequired,
 };
 
