@@ -10,6 +10,7 @@ describe('Modal Wrapper', () => {
         <div>Modal content</div>
       </Modal>
     );
-    expect(wrapper.find(ReactModal).length).toEqual(1);
+    const component = shallow(wrapper.get(0));
+    expect(component.find(ReactModal).length).toEqual(1);
   });
 });
