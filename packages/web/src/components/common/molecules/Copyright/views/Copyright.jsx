@@ -6,7 +6,7 @@ import style from '../Copyright.style';
 
 const Copyright = ({ className, children }) => (
   <React.Fragment>
-    <RichText className={className} richTextHtml={children} />
+    <RichText dataLocator="global_copyrighttext" className={className} richTextHtml={children} />
   </React.Fragment>
 );
 
