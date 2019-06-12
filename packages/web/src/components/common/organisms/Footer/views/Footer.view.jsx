@@ -54,7 +54,7 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks }) => (
         />
       </Col>
       <Col
-        className="footer-middle__slot--1"
+        className="footer-middle__slot--2"
         colSize={{
           large: 2,
           medium: 8,
@@ -67,7 +67,7 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks }) => (
         />
       </Col>
       <Col
-        className="footer-middle__slot--1 divider"
+        className="footer-middle__slot--3 divider"
         colSize={{
           large: 1,
           medium: 8,
@@ -75,7 +75,7 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks }) => (
         }}
       />
       <Col
-        className="footer-middle__slot--1"
+        className="footer-middle__slot--4"
         colSize={{
           large: 2,
           medium: 8,
@@ -85,7 +85,7 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks }) => (
         <FooterNavLinks navLinkItems={[{ header: navLinks[2].header, links: navLinks[2].links }]} />
       </Col>
       <Col
-        className="footer-middle__slot--1"
+        className="footer-middle__slot--5"
         colSize={{
           large: 2,
           medium: 8,
@@ -95,7 +95,7 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks }) => (
         <FooterNavLinks navLinkItems={[{ header: navLinks[3].header, links: navLinks[3].links }]} />
       </Col>
       <Col
-        className="footer-middle__slot--1"
+        className="footer-middle__slot--6"
         colSize={{
           large: 2,
           medium: 8,

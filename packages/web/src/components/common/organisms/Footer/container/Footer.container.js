@@ -14,6 +14,7 @@ const processFooterMiddle = footerMiddleObj => {
     }
   );
 
+  // eslint-disable-next-line
   for (let i = 0; i < footerMiddleObj.nav_links.length; i++) {
     formattedFooterMiddleObj.push({
       header: footerMiddleObj.nav_links[i].items[0],
