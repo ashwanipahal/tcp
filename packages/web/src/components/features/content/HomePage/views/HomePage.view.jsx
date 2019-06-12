@@ -8,6 +8,7 @@ import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import RichText from '@tcp/core/src/components/common/atoms/RichText';
 import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 import CarouselConfig from '@tcp/web/config';
+import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
 import { PropTypes } from 'prop-types';
 import { NavBar, SampleCarousel, Test } from '../molecules';
 
@@ -255,4 +256,4 @@ HomePageView.propTypes = {
   links: PropTypes.arrayOf.isRequired,
 };
 
-export default HomePageView;
+export default errorBoundary(HomePageView);
