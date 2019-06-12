@@ -1,4 +1,4 @@
-export default (moduleD = {
+export default {
   type: 'module',
   name: 'moduleD',
   contentID: '<uuid>',
@@ -93,4 +93,4 @@ export default (moduleD = {
       },
     },
   ],
-});
+};
