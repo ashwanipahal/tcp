@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
+import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
 
 const HomePageView = () => <Fragment>Home Page</Fragment>;
 
-export default HomePageView;
+export default errorBoundary(HomePageView);
