@@ -9,6 +9,9 @@ logs
 mock
 reports
 stories
+flow-typed
+packages/**/flow-typed/
+packages/**/node_modules/
 # Make sure to INCLUDE the following,
 # because eslint ignores hidden/dotfiles by default.
 .storybook
