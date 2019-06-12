@@ -7,6 +7,4 @@ export const loadModuleDData = payload => {
   };
 };
 
-export default {
-  loadModuleDData,
-};
+export const initActions = [loadModuleDData()];

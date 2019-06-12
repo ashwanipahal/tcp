@@ -66,18 +66,14 @@ const colSize6Elements = {
 const ignoreGutter = [{}, { small: true }, {}, { small: true }, {}, { small: true }];
 
 const ModuleD = ({ data }) => {
-  let assets = [],
-    title = '',
-    text = '',
-    titleUrl = '',
-    button = '';
-  if (data.value) {
-    console.log(data);
-    title = data.value[0].value.value.title;
-    text = data.value[0].value.value.text;
-    titleUrl = data.value[0].value.value.titleUrl;
-    assets = data.value[2].value;
-    button = data.value[3].value.value;
+  const mod = data.data.moduleD;
+  let assets = [];
+  let { title, text, titleUrl, button } = '';
+  if (mod.value) {
+    ({ title, text, titleUrl } = mod.value[0].value.value);
+
+    assets = mod.value[2].value; // TODO: there's a promotional banner in the CMS but not in the designs. ignoring
+    button = mod.value[3].value.value;
   }
 
   let colSize;
@@ -93,7 +89,7 @@ const ModuleD = ({ data }) => {
   return (
     <Fragment>
       <Grid inheritedStyles={containerStyle}>
-        <Anchor className="moduleD_textlink" href={titleUrl} inheritedStyles={titleStyle}>
+        <Anchor className="moduleD_textlink" to={titleUrl} inheritedStyles={titleStyle}>
           <h2 data-locator="moduleD_headerlink" title={title}>
             {text}
           </h2>
