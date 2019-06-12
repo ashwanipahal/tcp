@@ -63,18 +63,21 @@ const colSize6Elements = {
   xlarge: 2,
 };
 
-const ignoreGutter = [{}, { small: true }, {}, {}];
+const ignoreGutter = [{}, { small: true }, {}, { small: true }, {}, { small: true }];
 
 const ModuleD = ({ data }) => {
   const { title, text, titleUrl } = data.value[0].value.value;
   const assets = data.value[2].value;
   const button = data.value[3].value.value;
-  const colSize =
-    assets.length === 2
-      ? colSize2Elements
-      : assets.length === 4
-      ? colSize4Elements
-      : colSize6Elements;
+  let colSize;
+
+  if (assets.length === 2) {
+    colSize = colSize2Elements;
+  } else if (assets.length === 4) {
+    colSize = colSize4Elements;
+  } else {
+    colSize = colSize6Elements;
+  }
 
   return (
     <Fragment>
@@ -84,10 +87,10 @@ const ModuleD = ({ data }) => {
             {text}
           </h2>
         </Anchor>
-        <Row>
+        <Row centered>
           {assets &&
             assets.map((item, index) => (
-              <Col colSize={colSize} isNotInlineBlock ignoreGutter={ignoreGutter[index]}>
+              <Col colSize={colSize} ignoreGutter={ignoreGutter[index]}>
                 <div>
                   <Anchor className="moduleD_textlink" href="{item.value.url}">
                     <Image
