@@ -15,5 +15,5 @@ Copyright.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export { Copyright };
+export { Copyright as CopyrightVanilla };
 export default withStyles(Copyright, style);

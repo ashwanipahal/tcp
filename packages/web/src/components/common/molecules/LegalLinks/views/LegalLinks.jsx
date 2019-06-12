@@ -27,5 +27,5 @@ LegalLinks.defaultProps = {
   links: [],
 };
 
-export { LegalLinks };
+export { LegalLinks as LegalLinksVanilla };
 export default withStyles(LegalLinks, style);
