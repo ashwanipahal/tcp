@@ -1,6 +1,6 @@
 // @flow
 import React, { Fragment } from 'react';
-import FooterNavLinksList from '../../../features/footer/FooterNavLinksList';
+import type { Node } from 'react';
 import AccordionHeader from '../AccordionHeader';
 
 import styles from './Accordion.style';
@@ -12,9 +12,17 @@ type Props = {
   listArray: object[],
   updateAccordionState: func,
   index: number,
+  children: Node,
 };
 
-const Accordion = ({ className, titleText, listArray, updateAccordionState, index }: Props) => {
+const Accordion = ({
+  className,
+  titleText,
+  listArray,
+  updateAccordionState,
+  index,
+  children,
+}: Props) => {
   const activeClass = listArray && listArray.length ? 'inactive' : 'active';
 
   return (
@@ -25,7 +33,7 @@ const Accordion = ({ className, titleText, listArray, updateAccordionState, inde
         updateAccordionState={updateAccordionState}
         index={index}
       />
-      <FooterNavLinksList listArray={listArray} insideAcccordion />
+      {children}
     </Fragment>
   );
 };

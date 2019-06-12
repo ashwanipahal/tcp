@@ -1,10 +1,12 @@
 // @flow
 import React from 'react';
+import type { Node } from 'react';
 import Accordion from '../../Accordion';
 
 type Props = {
   accordionItems: Object[],
   className: string,
+  children: Node,
 };
 
 type State = {
@@ -55,26 +57,29 @@ export default class AccordionList extends React.Component<Props, State> {
 
   render() {
     const { elementClicked, isExpanded } = this.state;
-    const { accordionItems, className } = this.props;
+    const { accordionItems, className, children } = this.props;
 
     return (
       <div className={`${className} container-accordion`}>
-        {accordionItems.map((item, index) => (
+        {children.map((item, index) => (
           <div className="list-item">
             {index.toString() === elementClicked.toString() && !isExpanded ? (
               <Accordion
-                titleText={item.header.text}
-                listArray={item.links}
+                titleText={accordionItems[index].header.text}
+                listArray={accordionItems[index].links}
                 updateAccordionState={this.changeAccordianState}
                 index={index}
-              />
+              >
+                {item}
+              </Accordion>
             ) : (
               <Accordion
-                titleText={item.header.text}
-                listArray={[]}
+                titleText={accordionItems[index].header.text}
                 updateAccordionState={this.changeAccordianState}
                 index={index}
-              />
+              >
+                {``}
+              </Accordion>
             )}
           </div>
         ))}

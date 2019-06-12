@@ -143,8 +143,8 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks }) => (
 Footer.propTypes = {
   className: PropTypes.string.isRequired,
   copyrightText: PropTypes.string,
-  legalLinks: PropTypes.arrayOf,
-  navLinks: PropTypes.arrayOf,
+  legalLinks: PropTypes.shape({}),
+  navLinks: PropTypes.shape({}),
 };
 
 Footer.defaultProps = {

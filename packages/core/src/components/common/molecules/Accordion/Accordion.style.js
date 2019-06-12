@@ -17,13 +17,16 @@ const accordionStyles = css`
     float: right;
     font-weight: bold;
     font-size: ${props => props.theme.fonts.fontSize.heading.large.h6}px;
+    color: #9b9b9b;
   }
 
   &.inactive::after {
-    content: '-';
+    content: '';
     float: right;
-    font-weight: bold;
-    font-size: ${props => props.theme.fonts.fontSize.heading.large.h6}px;
+    background: #9b9b9b;
+    height: 2px;
+    width: 10px;
+    margin-top: 5px;
   }
 `;
 

@@ -29,7 +29,7 @@ const FooterNavLinks = ({
             titleObj={item.header}
             updateAccordionState={updateAccordionState}
           />
-          <FooterNavLinksList listArray={item.links} index={index} />
+          <FooterNavLinksList listArray={item.links} />
         </div>
       ))}
     </div>

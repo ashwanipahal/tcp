@@ -4,6 +4,7 @@ const GlobalCss = css`
   font-family: Nunito-SemiBold;
   font-size: 16px;
   color: #1a1a1a;
+  margin: 0;
   ::after {
     content: '';
     height: 1px;

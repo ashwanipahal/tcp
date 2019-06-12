@@ -1,32 +1,20 @@
 // @flow
-// TODO - fix the linting issue
-/* eslint-disable */
-import React, { Fragment } from 'react';
-import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
-import Image from '@tcp/core/src/components/common/atoms/Image';
+import React from 'react';
 import styles from '../AccordionHeader.style';
-import withStyles from '../../../../common/hoc/withStyles';
+import withStyles from '../../../hoc/withStyles';
 
 type Props = {
   className: string,
-  ariaLabel: string,
   updateAccordionState: func,
   index: number,
   titleText: string,
 };
 
-const FooterNavHeader = ({
-  className,
-  titleText,
-  ariaLabel,
-  updateAccordionState,
-  headerAsImage,
-  index,
-}: Props) => {
+const FooterNavHeader = ({ className, titleText, updateAccordionState, index }: Props) => {
   return (
+    // eslint-disable-next-line
     <h1
       className={className}
-      aria-label={ariaLabel}
       onClick={updateAccordionState}
       onKeyPress={updateAccordionState}
       data-index={index}
