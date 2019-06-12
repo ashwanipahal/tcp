@@ -7,14 +7,14 @@ export default css`
   list-style-type: none;
   margin: 0;
   padding: 16px 0 0 0;
-  border-top: 2px solid #d8d8d8;
+  border-top: 2px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
 
   li {
     padding: 0 0 16px 0;
   }
 
   a {
-    color: #9b9b9b;
+    color: ${props => props.theme.colors.PRIMARY.GRAY};
   }
 
   a:hover {
@@ -29,7 +29,7 @@ export default css`
 
     li {
       padding: 0 20px;
-      border-left: 1px solid #595959;
+      border-left: 1px solid ${props => props.theme.colors.TEXT.DARKERGRAY};
     }
 
     li:first-child {
