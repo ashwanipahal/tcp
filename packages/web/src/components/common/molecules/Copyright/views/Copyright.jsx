@@ -6,7 +6,7 @@ import style from '../Copyright.style';
 
 const Copyright = ({ className, children }) => (
   <React.Fragment>
-    <RichText className={className} richTextHtml={children} />
+    <RichText dataLocator="global_copyrighttext" className={className} richTextHtml={children} />
   </React.Fragment>
 );
 
@@ -15,5 +15,5 @@ Copyright.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export { Copyright };
+export { Copyright as CopyrightVanilla };
 export default withStyles(Copyright, style);

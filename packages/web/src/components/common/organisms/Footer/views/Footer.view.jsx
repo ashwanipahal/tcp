@@ -65,38 +65,40 @@ const Footer = ({ className, copyrightText, legalLinks }) => (
         NAV LINKS
       </Col>
     </Row>
-    <Row className="footer-bottom">
-      <Col
-        className="footer-bottom__slot--1"
-        colSize={{
-          large: 4,
-          medium: 8,
-          small: 6,
-        }}
-      >
-        <Copyright>{copyrightText}</Copyright>
-      </Col>
-      <Col
-        className="footer-bottom__slot--2"
-        colSize={{
-          large: 6,
-          medium: 8,
-          small: 6,
-        }}
-      >
-        <LegalLinks links={legalLinks} />
-      </Col>
-      <Col
-        className="footer-bottom__slot--3"
-        colSize={{
-          large: 2,
-          medium: 8,
-          small: 6,
-        }}
-      >
-        COUNTRY SELECTOR
-      </Col>
-    </Row>
+    <div className="footer-bottom">
+      <Row className="fullbleed-mobile">
+        <Col
+          className="footer-bottom__slot--1 default-offset"
+          colSize={{
+            large: 4,
+            medium: 8,
+            small: 6,
+          }}
+        >
+          <Copyright>{copyrightText}</Copyright>
+        </Col>
+        <Col
+          className="footer-bottom__slot--2 default-offset"
+          colSize={{
+            large: 6,
+            medium: 8,
+            small: 6,
+          }}
+        >
+          <LegalLinks links={legalLinks} />
+        </Col>
+        <Col
+          className="footer-bottom__slot--3 default-offset"
+          colSize={{
+            large: 2,
+            medium: 8,
+            small: 6,
+          }}
+        >
+          COUNTRY SELECTOR
+        </Col>
+      </Row>
+    </div>
   </footer>
 );
 

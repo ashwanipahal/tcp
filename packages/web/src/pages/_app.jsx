@@ -6,6 +6,7 @@ import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
 import GlobalStyle from '@tcp/core/styles/globalStyles';
 import theme from '@tcp/core/styles/themes/TCP';
+import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { Header, Footer } from '../components/common/organisms';
 import { bootstrapData } from '../reduxStore/actions';
 import { configureStore } from '../reduxStore';
@@ -46,9 +47,11 @@ class TCPWebApp extends App {
         <ThemeProvider theme={theme}>
           <Provider store={store}>
             <GlobalStyle />
-            <Header />
-            <Component {...pageProps} />
-            <Footer />
+            <Grid>
+              <Header />
+              <Component {...pageProps} />
+              <Footer />
+            </Grid>
           </Provider>
         </ThemeProvider>
       </Container>
