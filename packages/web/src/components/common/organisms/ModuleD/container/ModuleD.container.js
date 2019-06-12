@@ -3,7 +3,7 @@ import ModuleDView from '../views';
 
 const mapStateToProps = state => {
   return {
-    data: state.ModuleDReducer.data,
+    data: state.ModuleDReducer,
   };
 };
 
