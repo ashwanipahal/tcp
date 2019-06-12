@@ -1,37 +1,41 @@
 import React from 'react';
 
+import styled from 'styled-components';
 import {
   HeadingLarge1,
-  HeadingSmall1,
-  Bodylargeprimary,
-  Bodysmallprimary,
-  Nav,
+  HeadingLarge2,
+  HeadingLarge3,
+  HeadingLarge4,
+  HeadingLarge5,
+  HeadingLarge6,
+  Bodylarge3,
   BodyText1,
-} from '@tcp/core/styles/globalStyles/typography';
-
-import theme from '@tcp/core/styles/themes/TCP';
-import { ThemeProvider } from 'styled-components';
-
-const { colors, typoTheme } = theme;
+  Bodysmall1,
+} from '@tcp/core/styles/themes/TCP/typotheme';
 
 const Test = () => {
   return (
-    <ThemeProvider theme={typoTheme}>
-      <div>
-        <HeadingLarge1 tag="h1">ALL H1 TO H6 variation large dynamic tag</HeadingLarge1>
+    <div>
+      <HeadingLarge1 tag="h1">ALL H1 TO H6 variation large dynamic tag</HeadingLarge1>
 
-        <HeadingSmall1 tag="h1">ALL H1 TO H6 variation small dynamic tag</HeadingSmall1>
+      <HeadingLarge2 largeHeading="tertiary" tag="h4">
+        ALL H1 TO H6 variation large dynamic tag
+      </HeadingLarge2>
 
-        <Bodylargeprimary tag="p">ALL body copy variation large dynamic tag</Bodylargeprimary>
+      <HeadingLarge3 tag="h3">ALL H1 TO H6 variation large dynamic tag</HeadingLarge3>
 
-        <Bodysmallprimary tag="p">ALL body copy variation small dynamic tag</Bodysmallprimary>
+      <HeadingLarge4 tag="h1">ALL H1 TO H6 variation large dynamic tag</HeadingLarge4>
 
-        <Nav tag="p">NAV LINK</Nav>
-        <BodyText1 tag="p">
-          BodyText1 <br /> fontWeight="bold" need to pass for font weight
-        </BodyText1>
-      </div>
-    </ThemeProvider>
+      <HeadingLarge5 tag="h1">ALL H1 TO H6 variation large dynamic tag</HeadingLarge5>
+
+      <HeadingLarge6 tag="h1">ALL H1 TO H6 variation large dynamic tag</HeadingLarge6>
+
+      <Bodylarge3 tag="h1">bodylarge3</Bodylarge3>
+
+      <BodyText1 tag="h1">BodyText1</BodyText1>
+
+      <Bodysmall1 tag="h2">bodysmall1 </Bodysmall1>
+    </div>
   );
 };
 export default Test;
