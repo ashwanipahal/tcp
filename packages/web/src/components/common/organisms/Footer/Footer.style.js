@@ -20,7 +20,7 @@ export default css`
   }
   @media ${props => props.theme.mediaQuery.small} {
     .footer-middle.mobile {
-      display: block;
+      display: flex;
     }
     .footer-middle.desktop {
       display: none;
@@ -44,7 +44,11 @@ export default css`
       display: none;
     }
     .footer-middle.desktop {
-      display: block;
+      display: flex;
+      padding: 60px 0 64px;
+    }
+    .divider {
+      border-left: 1px solid #c3c3c3;
     }
   }
 `;

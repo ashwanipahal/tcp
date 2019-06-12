@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import AccordionList from '@tcp/core/src/components/common/molecules/AccordionList';
+import FooterMiddle from '@tcp/core/src/components/features/footer/FooterMiddle';
 import FooterNavLinks from '@tcp/core/src/components/features/footer/FooterNavLinks';
 
 import style from '../Footer.style';
@@ -37,16 +37,7 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks }) => (
       </Row>
     </div>
     <Row className="footer-middle mobile" fullBleed>
-      <Col
-        className="footer-middle__slot--1"
-        colSize={{
-          large: 12,
-          medium: 8,
-          small: 6,
-        }}
-      >
-        <AccordionList className={className} accordionItems={navLinks} />
-      </Col>
+      <FooterMiddle className={className} navLinkItems={navLinks} />
     </Row>
     <Row className="footer-middle desktop">
       <Col
@@ -57,7 +48,10 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks }) => (
           small: 6,
         }}
       >
-        <FooterNavLinks navLinkItems={[{ header: navLinks[0].header, links: navLinks[0].links }]} />
+        <FooterNavLinks
+          headerAsImage
+          navLinkItems={[{ header: navLinks[0].header, links: navLinks[0].links }]}
+        />
       </Col>
       <Col
         className="footer-middle__slot--1"
@@ -67,8 +61,19 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks }) => (
           small: 6,
         }}
       >
-        <FooterNavLinks navLinkItems={[{ header: navLinks[1].header, links: navLinks[1].links }]} />
+        <FooterNavLinks
+          headerAsImage
+          navLinkItems={[{ header: navLinks[1].header, links: navLinks[1].links }]}
+        />
       </Col>
+      <Col
+        className="footer-middle__slot--1 divider"
+        colSize={{
+          large: 1,
+          medium: 8,
+          small: 6,
+        }}
+      />
       <Col
         className="footer-middle__slot--1"
         colSize={{

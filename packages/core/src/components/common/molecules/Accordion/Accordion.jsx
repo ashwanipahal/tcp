@@ -1,7 +1,7 @@
 // @flow
 import React, { Fragment } from 'react';
 import FooterNavLinksList from '../../../features/footer/FooterNavLinksList';
-import FooterNavHeader from '../../../features/footer/FooterNavHeader';
+import AccordionHeader from '../AccordionHeader';
 
 import styles from './Accordion.style';
 import withStyles from '../../hoc/withStyles';
@@ -19,13 +19,13 @@ const Accordion = ({ className, titleText, listArray, updateAccordionState, inde
 
   return (
     <Fragment>
-      <FooterNavHeader
+      <AccordionHeader
         className={`${className} accordion ${activeClass}`}
         titleText={titleText}
         updateAccordionState={updateAccordionState}
         index={index}
       />
-      <FooterNavLinksList listArray={listArray} index={index} />
+      <FooterNavLinksList listArray={listArray} insideAcccordion />
     </Fragment>
   );
 };

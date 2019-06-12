@@ -10,15 +10,23 @@ type Props = {
   className: string,
   navLinkItems: object[],
   updateAccordionState: func,
+  headerAsImage: boolean,
 };
 
-const FooterNavLinks = ({ className, navLinkItems, updateAccordionState }: Props) => {
+const FooterNavLinks = ({
+  className,
+  navLinkItems,
+  updateAccordionState,
+  headerAsImage,
+}: Props) => {
   return (
     <div>
       {navLinkItems.map((item, index) => (
         <div className={`${className} container-nav-link`} key={item.id} data-index={index}>
           <FooterNavHeader
+            headerAsImage={headerAsImage}
             titleText={item.header.text}
+            titleObj={item.header}
             updateAccordionState={updateAccordionState}
           />
           <FooterNavLinksList listArray={item.links} index={index} />

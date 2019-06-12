@@ -1,38 +1,38 @@
 // @flow
-import React from 'react';
+// TODO - fix the linting issue
+/* eslint-disable */
+import React, { Fragment } from 'react';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import Image from '@tcp/core/src/components/common/atoms/Image';
-import styles from '../FooterNavHeader.style';
+import styles from '../AccordionHeader.style';
 import withStyles from '../../../../common/hoc/withStyles';
 
 type Props = {
   className: string,
   ariaLabel: string,
-  headerAsImage: boolean,
+  updateAccordionState: func,
   index: number,
   titleText: string,
-  titleObj: object,
 };
 
 const FooterNavHeader = ({
   className,
   titleText,
-  titleObj,
   ariaLabel,
+  updateAccordionState,
   headerAsImage,
   index,
 }: Props) => {
-  if (!headerAsImage) {
-    return (
-      <h1 className={className} aria-label={ariaLabel} data-index={index}>
-        {titleText}
-      </h1>
-    );
-  }
   return (
-    <Anchor to={titleObj.url}>
-      <Image alt src={`/static/images/${titleObj.image_url}`} />
-    </Anchor>
+    <h1
+      className={className}
+      aria-label={ariaLabel}
+      onClick={updateAccordionState}
+      onKeyPress={updateAccordionState}
+      data-index={index}
+    >
+      {titleText}
+    </h1>
   );
 };
 

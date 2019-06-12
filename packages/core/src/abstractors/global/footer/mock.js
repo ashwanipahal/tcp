@@ -44,7 +44,7 @@ export default {
       link: {
         url: '/',
         image_alt: 'My Place Rewards image',
-        image_url: '/',
+        image_url: 'mp-rewards-orange.png',
         title: 'My Place rewards title',
         text: 'My Place Rewards',
         target: '_blank',
@@ -74,7 +74,7 @@ export default {
       link: {
         url: '/',
         image_alt: 'My Place Rewards Credit Card image',
-        image_url: '/',
+        image_url: 'mp-rewards-blue.png',
         title: 'My Place rewards credit card title',
         text: 'My Place Rewards Credit Card',
         target: '_blank',

@@ -1,14 +1,18 @@
 import { css } from 'styled-components';
 
 const GlobalCss = css`
-  font-family: Nunito;
-  font-size: 13px;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: 1.15;
-  letter-spacing: normal;
+  font-family: Nunito-SemiBold;
+  font-size: 16px;
   color: #1a1a1a;
+  ::after {
+    content: '';
+    height: 1px;
+    width: 80px;
+    background: #439ad4;
+    border: 10px;
+    display: block;
+    margin-top: 26px;
+  }
 `;
 
 export default GlobalCss;
