@@ -2,9 +2,14 @@ import styled from 'styled-components';
 
 const HeaderTopnav = styled.div`
   background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
-  height: 45px;
-  line-height: 45px;
-  text-transform: uppercase;
+
+  & > div:first-child {
+    margin-left: 6px;
+  }
+
+  .header-topnav__brand-tabs {
+    padding-right: 0;
+  }
 
   .header-topnav__promo-area {
     text-align: center;

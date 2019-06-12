@@ -3,12 +3,13 @@ import { PropTypes } from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import BrandTabs from '@tcp/web/src/components/common/molecules/BrandTabs';
 import headerStyles from '../Header.style';
 import HomeLogo from './HomeLogo';
 
 const { HeaderTopnav, HeaderBrand, HeaderNav, DummyNav, HeaderPromo, HeaderLoyalty } = headerStyles;
 
-const Header = ({ className }) => (
+const Header = ({ className, headerData }) => (
   <header className={className}>
     <HeaderTopnav className="header-topnav">
       <Row>
@@ -20,7 +21,7 @@ const Header = ({ className }) => (
             small: 3,
           }}
         >
-          Brand tabs
+          <BrandTabs data={headerData.header_top_nav.brand_tabs} />
         </Col>
         <Col
           className="header-topnav__promo-area"
@@ -123,6 +124,8 @@ const Header = ({ className }) => (
 
 Header.propTypes = {
   className: PropTypes.string.isRequired,
+  headerData: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))
+    .isRequired,
 };
 
 export default withStyles(Header, headerStyles);
