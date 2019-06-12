@@ -2,8 +2,8 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import BrandTabs from '@tcp/web/src/components/common/molecules/BrandTabs';
+import utilMethods from '@tcp/web/src/utils/utilMethods';
 import headerStyles from '../Header.style';
 import HomeLogo from './HomeLogo';
 
@@ -18,7 +18,7 @@ const Header = ({ className, headerData }) => (
           colSize={{
             large: 3,
             medium: 3,
-            small: 3,
+            small: 4,
           }}
         >
           <BrandTabs data={headerData.header_top_nav.brand_tabs} />
@@ -38,7 +38,7 @@ const Header = ({ className, headerData }) => (
           colSize={{
             large: 3,
             medium: 2,
-            small: 3,
+            small: 2,
           }}
         >
           Track order
@@ -55,14 +55,27 @@ const Header = ({ className, headerData }) => (
             small: 6,
           }}
         >
-          <HomeLogo
-            dataLocator="global_TCPlink tcp-logo"
-            imgSrc="/static/images/tcp-logo.svg"
-            href="/"
-            alt="The Children's Place"
-            title="The Children's Place"
-            width="172px"
-          />
+          {utilMethods.isTCPApp() ? (
+            <HomeLogo
+              className="tcp-brand-logo"
+              dataLocator="global_TCPlink"
+              imgSrc="/static/images/tcp-logo.svg"
+              href="/"
+              alt="The Children's Place"
+              title="The Children's Place"
+              width="172px"
+            />
+          ) : (
+            <HomeLogo
+              className="gymboree-brand-logo"
+              dataLocator="global_Gymboreelink"
+              imgSrc="/static/images/gymboree-logo.svg"
+              href="/"
+              alt="Gymboree"
+              title="Gymboree"
+              width="172px"
+            />
+          )}
         </Col>
       </Row>
     </HeaderBrand>
@@ -128,5 +141,4 @@ Header.propTypes = {
     .isRequired,
 };
 
-export default withStyles(Header, headerStyles);
-export { Header as HeaderVanilla };
+export default Header;

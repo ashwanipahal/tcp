@@ -9,6 +9,10 @@ export default css`
     padding: 8px 16px;
     position: relative;
 
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      padding: 11px 15px;
+    }
+
     &.activeTab {
       background-color: ${props => props.theme.colors.WHITE};
     }
@@ -34,5 +38,9 @@ export default css`
 
   & > a > img {
     width: 70px;
+
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      width: 60px;
+    }
   }
 `;

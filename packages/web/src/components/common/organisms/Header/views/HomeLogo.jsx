@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import Image from '@tcp/core/src/components/common/atoms/Image';
 
-const HomeLogo = ({ alt, dataLocator, href, imgSrc, title, width }) => (
+const HomeLogo = ({ alt, className, dataLocator, href, imgSrc, title, width }) => (
   <Fragment>
-    <Anchor className={dataLocator} to={href} title={title}>
+    <Anchor className={className} to={href} title={title} data-locator={dataLocator}>
       <Image src={imgSrc} alt={alt} title={title} width={width} />
     </Anchor>
   </Fragment>
@@ -13,6 +13,7 @@ const HomeLogo = ({ alt, dataLocator, href, imgSrc, title, width }) => (
 
 HomeLogo.propTypes = {
   alt: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
   dataLocator: PropTypes.string.isRequired,
   imgSrc: PropTypes.string.isRequired,
   href: PropTypes.string.isRequired,

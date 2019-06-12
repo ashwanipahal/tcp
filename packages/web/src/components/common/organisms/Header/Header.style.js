@@ -34,7 +34,8 @@ const HeaderBrand = styled.div`
   text-align: center;
 
   @media ${props => props.theme.mediaQuery.mediumMax} {
-    .tcp-logo {
+    .tcp-brand-logo,
+    .gymboree-brand-logo {
       display: none;
     }
   }
