@@ -2,7 +2,6 @@ import React, { Fragment } from 'react';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
-import ModuleD from '@tcp/core/src/components/common/molecules/ModuleD';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import RichText from '@tcp/core/src/components/common/atoms/RichText';
@@ -31,174 +30,11 @@ const colSize2 = {
   large: 1,
 };
 
-const moduleDData = {
-  type: 'module',
-  name: 'moduleD',
-  contentID: '<uuid>',
-  value: [
-    {
-      type: 'composite',
-      name: 'header',
-      value: {
-        type: 'link',
-        name: 'headerLink',
-        value: {
-          url: '/node/pdp/<uuid>',
-          text: 'Mini Me Shop',
-          title: 'go to mini me shop',
-          target: '',
-          external: 0,
-          class: '',
-          view: 'link',
-        },
-      },
-    },
-    {
-      type: 'composite',
-      subtype: 'promoBanner',
-      value: {
-        type: 'link',
-        name: 'headerLink',
-        value: {
-          url: '/node/pdp/<uuid>',
-          text: 'this is a <strong>promo</strong> banner',
-          title: 'go to promo section',
-          target: '',
-          external: 0,
-          class: '',
-          view: 'link',
-        },
-      },
-    },
-    {
-      type: 'composite',
-      subtype: 'imageGallery',
-      value: [
-        {
-          type: 'imageLink',
-          name: 'imageLink1',
-          value: {
-            url: '/something',
-            text: 'Family tees',
-            target: '',
-            external: 0,
-            class: '',
-            view: 'link',
-            image: {
-              src: 'https://via.placeholder.com/690',
-              alt: '',
-            },
-          },
-        },
-        {
-          type: 'imageLink',
-          name: 'imageLink1',
-          value: {
-            url: '/something',
-            text: 'Family tees',
-            target: '',
-            external: 0,
-            class: '',
-            view: 'link',
-            image: {
-              src: 'https://via.placeholder.com/690',
-              alt: '',
-            },
-          },
-        },
-        {
-          type: 'imageLink',
-          name: 'imageLink1',
-          value: {
-            url: '/something',
-            text: 'Family tees',
-            target: '',
-            external: 0,
-            class: '',
-            view: 'link',
-            image: {
-              src: 'https://via.placeholder.com/690',
-              alt: '',
-            },
-          },
-        },
-        {
-          type: 'imageLink',
-          name: 'imageLink1',
-          value: {
-            url: '/something',
-            text: 'Family tees',
-            target: '',
-            external: 0,
-            class: '',
-            view: 'link',
-            image: {
-              src: 'https://via.placeholder.com/690',
-              alt: '',
-            },
-          },
-        },
-        {
-          type: 'imageLink',
-          name: 'imageLink1',
-          value: {
-            url: '/something',
-            text: 'Family tees',
-            target: '',
-            external: 0,
-            class: '',
-            view: 'link',
-            image: {
-              src: 'https://via.placeholder.com/690',
-              alt: '',
-            },
-          },
-        },
-
-        {
-          type: 'imageLink',
-          name: 'imageLink2',
-          value: {
-            url: '/something',
-            text: 'Mom and Me tees',
-            target: '',
-            external: 0,
-            class: '',
-            view: 'link',
-            image: {
-              src: 'https://via.placeholder.com/690',
-              alt: '',
-            },
-          },
-        },
-      ],
-    },
-    {
-      type: 'composite',
-      name: 'ctaButton',
-      value: {
-        type: 'link',
-        name: 'cta1',
-        value: {
-          url: '/node/pdp',
-          text: 'SHOP ALL',
-          title: 'shop all categories',
-          target: '',
-          external: 0,
-          class: '',
-          view: 'button',
-        },
-      },
-    },
-  ],
-};
-
 const randomHTML = '<button class="asdfasdf" type="button">test133</button>';
 
 const HomePageView = ({ links }) => (
   <Fragment>
     <NavBar links={links} />
-    <ModuleD data={moduleDData} />
     <Test className="test" />
     <Grid>
       <Row>

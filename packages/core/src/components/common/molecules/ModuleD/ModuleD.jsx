@@ -66,9 +66,20 @@ const colSize6Elements = {
 const ignoreGutter = [{}, { small: true }, {}, { small: true }, {}, { small: true }];
 
 const ModuleD = ({ data }) => {
-  const { title, text, titleUrl } = data.value[0].value.value;
-  const assets = data.value[2].value;
-  const button = data.value[3].value.value;
+  let assets = [],
+    title = '',
+    text = '',
+    titleUrl = '',
+    button = '';
+  if (data.value) {
+    console.log(data);
+    title = data.value[0].value.value.title;
+    text = data.value[0].value.value.text;
+    titleUrl = data.value[0].value.value.titleUrl;
+    assets = data.value[2].value;
+    button = data.value[3].value.value;
+  }
+
   let colSize;
 
   if (assets.length === 2) {
