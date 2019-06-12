@@ -18,6 +18,14 @@ export default css`
   .footer-bottom__slot--1 {
     background-color: ${props => props.theme.colors.BRAND.PRIMARY};
   }
+  @media ${props => props.theme.mediaQuery.small} {
+    .footer-middle.mobile {
+      display: block;
+    }
+    .footer-middle.desktop {
+      display: none;
+    }
+  }
   @media ${props => props.theme.mediaQuery.large} {
     .footer-top__slot--1 {
       order: 1;
@@ -31,6 +39,12 @@ export default css`
     }
     .footer-bottom__slot--1 {
       background-color: inherit;
+    }
+    .footer-middle.mobile {
+      display: none;
+    }
+    .footer-middle.desktop {
+      display: block;
     }
   }
 `;

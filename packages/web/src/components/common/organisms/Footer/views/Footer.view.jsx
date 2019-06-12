@@ -3,11 +3,14 @@ import PropTypes from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import AccordionList from '@tcp/core/src/components/common/molecules/AccordionList';
+import FooterNavLinks from '@tcp/core/src/components/features/footer/FooterNavLinks';
+
 import style from '../Footer.style';
 import LegalLinks from '../../../molecules/LegalLinks';
 import Copyright from '../../../molecules/Copyright';
 
-const Footer = ({ className, copyrightText, legalLinks }) => (
+const Footer = ({ className, copyrightText, legalLinks, navLinks }) => (
   <footer className={className}>
     <div className="footer-top">
       <Row>
@@ -33,7 +36,19 @@ const Footer = ({ className, copyrightText, legalLinks }) => (
         </Col>
       </Row>
     </div>
-    <Row className="footer-middle">
+    <Row className="footer-middle mobile" fullBleed>
+      <Col
+        className="footer-middle__slot--1"
+        colSize={{
+          large: 12,
+          medium: 8,
+          small: 6,
+        }}
+      >
+        <AccordionList className={className} accordionItems={navLinks} />
+      </Col>
+    </Row>
+    <Row className="footer-middle desktop">
       <Col
         className="footer-middle__slot--1"
         colSize={{
@@ -42,27 +57,47 @@ const Footer = ({ className, copyrightText, legalLinks }) => (
           small: 6,
         }}
       >
-        MPR AREA
+        <FooterNavLinks navLinkItems={[{ header: navLinks[0].header, links: navLinks[0].links }]} />
       </Col>
       <Col
-        className="footer-middle__slot--2"
+        className="footer-middle__slot--1"
         colSize={{
           large: 2,
           medium: 8,
           small: 6,
         }}
       >
-        MPRCC AREA
+        <FooterNavLinks navLinkItems={[{ header: navLinks[1].header, links: navLinks[1].links }]} />
       </Col>
       <Col
-        className="footer-middle__slot--3"
+        className="footer-middle__slot--1"
         colSize={{
-          large: 8,
+          large: 2,
           medium: 8,
           small: 6,
         }}
       >
-        NAV LINKS
+        <FooterNavLinks navLinkItems={[{ header: navLinks[2].header, links: navLinks[2].links }]} />
+      </Col>
+      <Col
+        className="footer-middle__slot--1"
+        colSize={{
+          large: 2,
+          medium: 8,
+          small: 6,
+        }}
+      >
+        <FooterNavLinks navLinkItems={[{ header: navLinks[3].header, links: navLinks[3].links }]} />
+      </Col>
+      <Col
+        className="footer-middle__slot--1"
+        colSize={{
+          large: 2,
+          medium: 8,
+          small: 6,
+        }}
+      >
+        <FooterNavLinks navLinkItems={[{ header: navLinks[4].header, links: navLinks[4].links }]} />
       </Col>
     </Row>
     <Row className="footer-bottom">
@@ -104,11 +139,13 @@ Footer.propTypes = {
   className: PropTypes.string.isRequired,
   copyrightText: PropTypes.string,
   legalLinks: PropTypes.arrayOf,
+  navLinks: PropTypes.arrayOf,
 };
 
 Footer.defaultProps = {
   copyrightText: '',
   legalLinks: [],
+  navLinks: [],
 };
 
 export default withStyles(Footer, style);

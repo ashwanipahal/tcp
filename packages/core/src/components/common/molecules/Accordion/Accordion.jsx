@@ -1,51 +1,34 @@
 // @flow
-import type { Node } from 'react';
-import React, { Component } from 'react';
+import React, { Fragment } from 'react';
+import FooterNavLinksList from '../../../features/footer/FooterNavLinksList';
+import FooterNavHeader from '../../../features/footer/FooterNavHeader';
+
 import styles from './Accordion.style';
 import withStyles from '../../hoc/withStyles';
-import Anchor from '../../atoms/Anchor';
 
 type Props = {
   className: string,
-  children: Node,
-  title: string,
+  titleText: string,
+  listArray: object[],
+  updateAccordionState: func,
+  index: number,
 };
 
-type State = {
-  clicked: boolean,
+const Accordion = ({ className, titleText, listArray, updateAccordionState, index }: Props) => {
+  const activeClass = listArray && listArray.length ? 'inactive' : 'active';
+
+  return (
+    <Fragment>
+      <FooterNavHeader
+        className={`${className} accordion ${activeClass}`}
+        titleText={titleText}
+        updateAccordionState={updateAccordionState}
+        index={index}
+      />
+      <FooterNavLinksList listArray={listArray} index={index} />
+    </Fragment>
+  );
 };
-
-class Accordion extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      clicked: false,
-    };
-  }
-
-  componentWillMount() {}
-
-  itemDetailClick = () => {
-    this.setState(prevstate => ({
-      clicked: !prevstate.clicked,
-    }));
-  };
-
-  render() {
-    const { className = '', children, title } = this.props;
-    const { clicked } = this.state;
-    return (
-      <div className={`${className} accordion`} aria-label="accordion">
-        <Anchor onClick={this.itemDetailClick} noLink>
-          <p className={clicked ? 'inactive head' : 'active head'}>{title}</p>
-        </Anchor>
-        <div className="accordionContents">{clicked ? children : ''}</div>
-      </div>
-    );
-  }
-}
-
-Accordion.displayName = 'Accordion';
 
 export default withStyles(Accordion, styles);
 
