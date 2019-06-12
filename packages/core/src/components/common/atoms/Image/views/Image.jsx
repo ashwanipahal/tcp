@@ -1,6 +1,6 @@
 import React from 'react';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { PropTypes } from 'prop-types';
+import withStyles from '../../../hoc/withStyles';
 
 import styles from '../Image.style';
 
