@@ -42,6 +42,10 @@ const titleStyle = `
   text-align: center;
 `;
 
+const imageStyle = `
+  width: 100%;
+`;
+
 const colSize2Elements = {
   small: 3,
   medium: 4,
@@ -51,7 +55,7 @@ const colSize2Elements = {
 
 const colSize4Elements = {
   small: 3,
-  medium: 2,
+  medium: 3,
   large: 3,
   xlarge: 3,
 };
@@ -69,6 +73,7 @@ const ModuleD = ({ data }) => {
   const mod = data.data.moduleD;
   let assets = [];
   let { title, text, titleUrl, button } = '';
+
   if (mod.value) {
     ({ title, text, titleUrl } = mod.value[0].value.value);
 
@@ -104,15 +109,18 @@ const ModuleD = ({ data }) => {
                       src={item.value.image.src}
                       alt={item.value.image.alt}
                       className="moduleD_image"
+                      inheritedStyles={imageStyle}
                     />
                   </Anchor>
                 </div>
                 <Anchor
+                  withCaret
+                  centered
                   className="moduleD_textlink"
                   href="{item.value.url}"
                   inheritedStyles={linkStyle}
                 >
-                  <Row centered>{item.value.text}</Row>
+                  {item.value.text}
                 </Anchor>
               </Col>
             ))}

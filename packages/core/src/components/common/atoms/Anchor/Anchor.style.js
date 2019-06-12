@@ -50,7 +50,21 @@ const AnchorStyles = css`
       text-decoration: underline;
     `
       : 'text-decoration: none;'};
-
+  ${props =>
+    props.withCaret
+      ? `
+      &:after {
+        content: "›";
+        margin-left: 5px;
+      }
+    `
+      : ''};
+  ${props =>
+    props.centered
+      ? `
+      text-align: center;
+    `
+      : ''};
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 

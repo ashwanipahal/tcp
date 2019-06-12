@@ -1,3 +1,4 @@
+const PLACEHOLDER_URL = 'https://via.placeholder.com/350';
 export default {
   moduleD: {
     type: 'module',
@@ -53,7 +54,7 @@ export default {
               class: '',
               view: 'link',
               image: {
-                src: '/test.png',
+                src: PLACEHOLDER_URL,
                 alt: '',
               },
             },
@@ -69,7 +70,39 @@ export default {
               class: '',
               view: 'link',
               image: {
-                src: '/test.png',
+                src: PLACEHOLDER_URL,
+                alt: '',
+              },
+            },
+          },
+          {
+            type: 'imageLink',
+            name: 'imageLink1',
+            value: {
+              url: '/something',
+              text: 'Family tees',
+              target: '',
+              external: 0,
+              class: '',
+              view: 'link',
+              image: {
+                src: PLACEHOLDER_URL,
+                alt: '',
+              },
+            },
+          },
+          {
+            type: 'imageLink',
+            name: 'imageLink1',
+            value: {
+              url: '/something',
+              text: 'Family tees',
+              target: '',
+              external: 0,
+              class: '',
+              view: 'link',
+              image: {
+                src: PLACEHOLDER_URL,
                 alt: '',
               },
             },
