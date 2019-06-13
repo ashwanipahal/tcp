@@ -6,7 +6,7 @@ const FooterNavLinksListCss = css`
     height: 34px;
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
-    line-height: 1.15;
+    line-height: ${props => props.theme.fonts.lineHeight.medium};
     letter-spacing: ${props => props.theme.fonts.letterSpacing.normal};
     color: ${props => props.theme.colors.ACCORDION.TEXT};
     :hover {

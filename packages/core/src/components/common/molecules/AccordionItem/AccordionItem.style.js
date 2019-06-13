@@ -14,7 +14,8 @@ const accordionStyles = css`
   }
   &.active::after {
     content: '+';
-    float: right;
+    right: 15px;
+    position: absolute;
     font-weight: bold;
     font-size: ${props => props.theme.fonts.fontSize.heading.large.h6}px;
     color: ${props => props.theme.colors.ACCORDION.COLLAPSE_EXPAND_ICON};
@@ -22,7 +23,8 @@ const accordionStyles = css`
 
   &.inactive::after {
     content: '';
-    float: right;
+    right: 15px;
+    position: absolute;
     background: ${props => props.theme.colors.ACCORDION.COLLAPSE_EXPAND_ICON};
     height: 2px;
     width: 10px;
