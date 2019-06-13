@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
-import theme from '@tcp/core/styles/themes/TCP';
+import theme from '../themes/TCP';
 
-const { fonts } = theme;
+const { fonts, breakpoints } = theme;
 export default css`
   body {
     font-family: ${fonts.primaryFontFamily};
@@ -10,6 +10,8 @@ export default css`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     width: 100%;
+    max-width: ${breakpoints.xlarge};
+    margin: 0 auto;
   }
 
   input[type='text']::-ms-clear {

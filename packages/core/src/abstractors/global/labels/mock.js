@@ -1,1 +1,1 @@
-export default (labels = {});
+export default {};

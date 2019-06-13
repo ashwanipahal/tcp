@@ -1,3 +1,4 @@
+// @flow
 // Basic file for column in the grid structure
 import React from 'react';
 import { PropTypes } from 'prop-types';
