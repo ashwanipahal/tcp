@@ -9,7 +9,7 @@ import style from '../SocialMediaLinks.style';
 const SocialMediaLinks = ({ className, connectWithUsLabel, links }) => (
   <React.Fragment>
     <div className={className}>
-      <span className="social-media-label" data-locator={getLocator('CONNECT_WITH_US_LABEL')}>
+      <span className="social-media-label" data-locator={getLocator('label-connect-with-us')}>
         {connectWithUsLabel}
       </span>
       <div className="social-media-pallete">

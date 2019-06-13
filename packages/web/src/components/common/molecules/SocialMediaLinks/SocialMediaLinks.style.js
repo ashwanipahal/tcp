@@ -3,44 +3,48 @@ import { css } from 'styled-components';
 export default css`
   font-family: ${props => props.theme.fonts.primaryFontBlackFamily};
   display: flex;
+  justify-content: space-between;
 
   .social-media-label {
     font-size: 12px;
     font-weight: ${props => props.theme.fonts.fontWeight.black};
     color: ${props => props.theme.colors.TEXT.DARKGRAY};
     padding: 12px 0;
-    justify-content: flex-start;
-    flex-grow: 1;
-  }
-  .social-media-pallete {
-    justify-content: flex-end;
-    flex-grow: 1;
   }
   .social-media-icon {
     width: 42px;
     height: 42px;
-    margin-left: 19px;
+  }
+  a {
+    margin-right: 19px;
+  }
+  a:last-child {
+    margin-right: 0;
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
+    .social-media-label {
+      font-size: 10.7px;
+    }
     .social-media-icon {
       width: 38px;
       height: 39px;
-      margin-left: 24px;
+    }
+    a {
+      margin-right: 24px;
     }
   }
 
   @media ${props => props.theme.mediaQuery.large} {
     .social-media-label {
-      line-height: 2.08;
-    }
-    .social-media-icon:not(:first) {
-      margin-left: 10px;
+      line-height: 2;
     }
     .social-media-icon {
       width: 50px;
       height: 50px;
-      margin-left: 32px;
+    }
+    a {
+      margin-right: 32px;
     }
   }
 `;
