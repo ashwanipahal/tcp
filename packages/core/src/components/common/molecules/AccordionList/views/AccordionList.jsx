@@ -1,12 +1,11 @@
 // @flow
 import React from 'react';
-import type { Node } from 'react';
 import Accordion from '../../Accordion';
 
 type Props = {
   accordionItems: Object[],
   className: string,
-  children: Node,
+  children: Object[],
 };
 
 type State = {
@@ -14,6 +13,14 @@ type State = {
   isExpanded: boolean,
 };
 
+/**
+ * @function AccordionList The accordion component will provide a list of accordion
+ * that is constructed from the children passed to the accordion list.
+ * @param {string} className The class name for the component
+ * @param {string} accordionItems The list of items in the accordion as config object
+ * @param {node} children The children node for accordionList will
+ * contain all the children that needs to be individual accordion items.
+ */
 export default class AccordionList extends React.Component<Props, State> {
   /**
    * Constructor of the class is defined which handles binding of the events to the elements, the
@@ -24,7 +31,7 @@ export default class AccordionList extends React.Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
-    this.changeAccordianState = this.changeAccordianState.bind(this);
+    (this: any).changeAccordianState = this.changeAccordianState.bind(this);
     this.state = {
       elementClicked: 0,
       isExpanded: false,
@@ -32,25 +39,25 @@ export default class AccordionList extends React.Component<Props, State> {
   }
 
   /**
-   * changeAccordianState function changes the state of the accordian. It detects the clicked element
+   * @function changeAccordianState function changes the state of the accordian. It detects the clicked element
    * and send the same to the child elements so that they can expand or collapse accordingly.
    * @param {[Object]} e [Event object of click].
    * @return {Void} function does not return anything.
    */
 
-  changeAccordianState(e: SyntheticEvent) {
+  changeAccordianState(e: SyntheticKeyboardEvent<*>) {
     // Checking if the click event has happend or a space bar or enter has been pressed.
     if (e.type === 'click' || (e.type === 'keypress' && (e.which === 13 || e.which === 32))) {
-      const clickedIndex = e.target.dataset.index;
+      const clickedIndex = e.currentTarget.dataset.index;
       this.setState({
         elementClicked: clickedIndex,
-        isExpanded: !!e.target.closest('.list-item').getElementsByTagName('a').length,
+        isExpanded: !!e.currentTarget.closest('.list-item').getElementsByTagName('a').length,
       });
     }
   }
 
   /**
-   * render  Used to render the JSX of the component
+   * @function render  Used to render the JSX of the component
    * @param    {[Void]} function does not accept anything.
    * @return   {[Object]} JSX of the component
    */
