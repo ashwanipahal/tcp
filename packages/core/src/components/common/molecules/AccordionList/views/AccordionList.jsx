@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import Accordion from '../../Accordion';
+import AccordionItem from '../../AccordionItem';
 
 type Props = {
   accordionItems: Object[],
@@ -71,22 +71,22 @@ export default class AccordionList extends React.Component<Props, State> {
         {children.map((item, index) => (
           <div className="list-item">
             {index.toString() === elementClicked.toString() && !isExpanded ? (
-              <Accordion
+              <AccordionItem
                 titleText={accordionItems[index].header.text}
                 listArray={accordionItems[index].links}
                 updateAccordionState={this.changeAccordianState}
                 index={index}
               >
                 {item}
-              </Accordion>
+              </AccordionItem>
             ) : (
-              <Accordion
+              <AccordionItem
                 titleText={accordionItems[index].header.text}
                 updateAccordionState={this.changeAccordianState}
                 index={index}
               >
                 {``}
-              </Accordion>
+              </AccordionItem>
             )}
           </div>
         ))}

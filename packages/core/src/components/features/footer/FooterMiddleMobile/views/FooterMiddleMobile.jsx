@@ -4,15 +4,12 @@ import FooterNavLinksList from '../../FooterNavLinksList';
 import AccordionList from '../../../../common/molecules/AccordionList';
 import Col from '../../../../common/atoms/Col';
 
-import styles from '../FooterMiddleMobile.style';
-import withStyles from '../../../../common/hoc/withStyles';
-
 type Props = {
   className: string,
-  navLinkItems: object[],
+  navLinkItems: Object[],
 };
 
-const FooterNavHeader = ({ className, navLinkItems }: Props) => {
+const FooterMiddleMobile = ({ className, navLinkItems }: Props) => {
   return (
     <Col
       className="footer-middle__slot--1"
@@ -34,6 +31,4 @@ const FooterNavHeader = ({ className, navLinkItems }: Props) => {
   );
 };
 
-export default withStyles(FooterNavHeader, styles);
-
-export { FooterNavHeader as FooterNavHeaderVanilla };
+export default FooterMiddleMobile;

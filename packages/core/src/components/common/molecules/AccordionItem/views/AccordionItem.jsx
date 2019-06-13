@@ -1,10 +1,10 @@
 // @flow
 import React, { Fragment } from 'react';
 import type { Node } from 'react';
-import AccordionHeader from '../AccordionHeader';
+import AccordionHeader from '../../AccordionHeader';
 
-import styles from './Accordion.style';
-import withStyles from '../../hoc/withStyles';
+import styles from '../AccordionItem.style';
+import withStyles from '../../../hoc/withStyles';
 
 type Props = {
   className: string,
@@ -16,7 +16,7 @@ type Props = {
 };
 
 /**
- * @function Accordion The accordion component accepts the header
+ * @function AccordionItem The accordion component accepts the header
  * title which would go in the accordion header and a body of the accordion
  * as is passed in the children of the accordion.
  * @param {string} className The class name for the component
@@ -25,7 +25,7 @@ type Props = {
  * @param {number} index The index of the accordion in the accordion list.
  * @param {node} children The children node for the accordion as passed on the accordionList.
  */
-const Accordion = ({
+const AccordionItem = ({
   className,
   titleText,
   listArray,
@@ -48,6 +48,5 @@ const Accordion = ({
   );
 };
 
-export default withStyles(Accordion, styles);
-
-export { Accordion as AccordionVanilla };
+export default withStyles(AccordionItem, styles);
+export { AccordionItem as AccordionVanilla };

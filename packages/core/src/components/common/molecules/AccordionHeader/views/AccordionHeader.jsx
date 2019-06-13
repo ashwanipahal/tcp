@@ -5,25 +5,25 @@ import withStyles from '../../../hoc/withStyles';
 
 type Props = {
   className: string,
-  updateAccordionState: func,
+  updateAccordionState: Function,
   index: number,
   titleText: string,
 };
 
-const FooterNavHeader = ({ className, titleText, updateAccordionState, index }: Props) => {
+const AccordionHeader = ({ className, titleText, updateAccordionState, index }: Props) => {
   return (
     // eslint-disable-next-line
-    <h1
+    <h4
       className={className}
       onClick={updateAccordionState}
       onKeyPress={updateAccordionState}
       data-index={index}
     >
       {titleText}
-    </h1>
+    </h4>
   );
 };
 
-export default withStyles(FooterNavHeader, styles);
+export default withStyles(AccordionHeader, styles);
 
-export { FooterNavHeader as FooterNavHeaderVanilla };
+export { AccordionHeader as AccordionHeaderVanilla };

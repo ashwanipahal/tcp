@@ -3,14 +3,11 @@ import React, { Fragment } from 'react';
 import FooterNavLinks from '../../FooterNavLinks';
 import Col from '../../../../common/atoms/Col';
 
-import styles from '../FooterMiddleDesktop.style';
-import withStyles from '../../../../common/hoc/withStyles';
-
 type Props = {
-  navLinks: object[],
+  navLinks: Object[],
 };
 
-const FooterNavHeader = ({ navLinks }: Props) => {
+const FooterMiddleDesktop = ({ navLinks }: Props) => {
   return (
     <Fragment>
       <Col
@@ -81,6 +78,4 @@ const FooterNavHeader = ({ navLinks }: Props) => {
   );
 };
 
-export default withStyles(FooterNavHeader, styles);
-
-export { FooterNavHeader as FooterNavHeaderVanilla };
+export default FooterMiddleDesktop;
