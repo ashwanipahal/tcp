@@ -22,11 +22,11 @@ export default css`
     margin: 0;
   }
   .default-offset {
-    padding: 0 14px;
+    padding: 0 ${props => props.theme.gridDimensions.gridOffsetObj.small}px;
   }
   @media ${props => props.theme.mediaQuery.medium} {
     .default-offset {
-      padding: 0 15px;
+      padding: 0 ${props => props.theme.gridDimensions.gridOffsetObj.medium}px;
     }
   }
   @media ${props => props.theme.mediaQuery.large} {
@@ -41,7 +41,7 @@ export default css`
     }
     .fullbleed-mobile {
       flex-direction: row;
-      margin: 0 15px;
+      margin: 0 ${props => props.theme.gridDimensions.gridOffsetObj.medium}px;
     }
     .default-offset {
       padding: 0;

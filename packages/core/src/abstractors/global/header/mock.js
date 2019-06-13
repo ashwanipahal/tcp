@@ -2,22 +2,27 @@ export default {
   header_top_nav: {
     brand_tabs: [
       {
+        id: '1',
         url: '/',
         alt: "The Children's Place",
         title: "The Children's Place",
         target: '',
-        class: 'tcp-logo-medium',
+        logoClass: 'tcp_logo_medium',
+        active: true,
       },
       {
+        id: '2',
         url: 'https://www.gymboree.com/',
         alt: 'Gymboree',
         title: 'Gymboree',
         target: '_blank',
-        logo_class: 'gymboree-logo-medium',
+        logoClass: 'gymboree_logo_medium',
+        active: false,
       },
     ],
     promo_message_wrapper: [
       {
+        id: '1',
         url: '/static/promo',
         text: '<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 1.',
         title: 'FREE SHIPPING EVERY DAY! No minimum purchase required 1.',
@@ -25,6 +30,7 @@ export default {
         class: 'promo_message',
       },
       {
+        id: '2',
         url: '/static/promo2',
         text: '<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 2.',
         title: 'FREE SHIPPING EVERY DAY! No minimum purchase required 2.',
@@ -32,6 +38,7 @@ export default {
         class: 'promo_message',
       },
       {
+        id: '3',
         url: '/static/promo3',
         text: '<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 3.',
         title: 'FREE SHIPPING EVERY DAY! No minimum purchase required 3.',
@@ -41,8 +48,9 @@ export default {
     ],
   },
   header_promo_area: {
-    promo_text_banners: [
+    promoTextBanners: [
       {
+        id: '1',
         url: '/banner/url1',
         promo_text: {
           primary: {
@@ -59,6 +67,7 @@ export default {
         class: 'promo_icon_clock',
       },
       {
+        id: '2',
         url: '/banner/url2',
         promo_text: {
           primary: {
@@ -75,6 +84,7 @@ export default {
         class: 'promo_icon_dollar',
       },
       {
+        id: '3',
         url: '/node/modal/rr1',
         promo_text: {
           primary: {
@@ -93,18 +103,20 @@ export default {
     ],
     promo_loyalty_banners: [
       {
+        id: '1',
         url: '/banner/url',
-        image_url: 'http://image1.sm/url',
-        image_alt: 'Banner Image 1 Alt text attribute val',
+        imageUrl: 'http://image1.sm/url',
+        imageAlt: 'Banner Image 1 Alt text attribute val',
         title: 'Banner Image 1 Title attribute val',
         text: '<b>Banner 1 Text val</b>',
         target: '',
         class: 'promo_loyalty_bonus',
       },
       {
+        id: '2',
         url: '/banner/url',
-        image_url: 'http://image2.sm/url',
-        image_alt: 'Banner Image 2 Alt text attribute val',
+        imageUrl: 'http://image2.sm/url',
+        imageAlt: 'Banner Image 2 Alt text attribute val',
         title: 'Banner Image 2 Title attribute val',
         text: '<b>Banner 2 Text val</b>',
         target: '',
