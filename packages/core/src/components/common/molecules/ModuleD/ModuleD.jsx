@@ -66,7 +66,7 @@ const ModuleD = ({ className, data }) => {
         {assets &&
           assets.map((item, index) => (
             <Col colSize={colSize} ignoreGutter={ignoreGutter[index]}>
-              <div>
+              <div className="moduleD__image-container">
                 <Anchor
                   className="moduleD_textlink"
                   to={item.value.url}
