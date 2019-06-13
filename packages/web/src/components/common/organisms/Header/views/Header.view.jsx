@@ -8,6 +8,7 @@ import HeaderTopNav from '@tcp/web/src/components/common/molecules/HeaderTopNav'
 import config from '../config';
 import headerStyles from '../Header.style';
 import HomeLogo from './HomeLogo';
+import Slider from 'react-slick';
 import { getIconPath } from '../../../../../utils';
 
 const {
@@ -25,6 +26,20 @@ const {
   HeaderPromoItemBold2,
 } = headerStyles;
 const brand = utilMethods.brand();
+
+const sliderSettings = {
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: false,
+  autoplaySpeed: 2000,
+  mobileFirst: true,
+  responsive: [
+    {
+      breakpoint: 767,
+      settings: 'unslick',
+    },
+  ],
+};
 
 const Header = ({ className, headerData }) => (
   <header className={className}>
@@ -86,7 +101,7 @@ const Header = ({ className, headerData }) => (
         >
           <HeaderPromoItem>
             <HeaderPromoItemIcon1 className="header-promo-item__icon">
-              <Image src={getIconPath('icon-clock')} />
+              <Image src={getIconPath('icon-clock')} alt="promotion" />
             </HeaderPromoItemIcon1>
             <HeaderPromoItemContents className="header-promo-item__contents">
               <HeaderPromoItemBold>Need it now?</HeaderPromoItemBold>
@@ -104,7 +119,7 @@ const Header = ({ className, headerData }) => (
         >
           <HeaderPromoItem>
             <HeaderPromoItemIcon2 className="header-promo-item__icon">
-              <Image src={getIconPath('icon-dollar')} />
+              <Image src={getIconPath('icon-dollar')} alt="promotion" />
             </HeaderPromoItemIcon2>
             <HeaderPromoItemContents className="header-promo-item__contents">
               <HeaderPromoItemBold2>Earn place cash!</HeaderPromoItemBold2>
@@ -122,7 +137,7 @@ const Header = ({ className, headerData }) => (
         >
           <HeaderPromoItem>
             <HeaderPromoItemIcon3 className="header-promo-item__icon">
-              <Image src={getIconPath('icon-at')} />
+              <Image src={getIconPath('icon-at')} alt="promotion" />
             </HeaderPromoItemIcon3>
             <HeaderPromoItemContents className="header-promo-item__contents">
               <HeaderPromoItemBold>Sign up and get $10 off!</HeaderPromoItemBold>
