@@ -22,11 +22,11 @@ class TCPWebApp extends App {
   }
 
   componentDidMount() {
-    ReactAxe.validateAccessibility();
+    ReactAxe.runAccessibility();
   }
 
   componentDidUpdate() {
-    ReactAxe.validateAccessibility();
+    ReactAxe.runAccessibility();
   }
 
   static loadGlobalData({ store }, pageProps) {

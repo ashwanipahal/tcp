@@ -1,4 +1,4 @@
-import { ENV_PRODUCTION } from '@tcp/core/src/constants';
+import { ENV_PRODUCTION } from '../constants/env.config';
 
 module.exports = {
   isProduction() {
