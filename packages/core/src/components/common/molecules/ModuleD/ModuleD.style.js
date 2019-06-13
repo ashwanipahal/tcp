@@ -35,4 +35,10 @@ export default css`
   img {
     width: 100%;
   }
+
+  .moduleD__image-container:nth-child(even) {
+    @media ${props => props.theme.mediaQuery.mediumMax} {
+      padding-right: 0;
+    }
+  }
 `;
