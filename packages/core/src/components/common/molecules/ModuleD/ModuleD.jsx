@@ -1,6 +1,5 @@
 // any molecule will come here
 import React, { Fragment } from 'react';
-// import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import Col from '@tcp/core/src/components/common/atoms/Col';
@@ -10,35 +9,35 @@ import Button from '@tcp/core/src/components/common/atoms/Button';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 
 const linkStyle = `
-   font-family: Nunito;
-   font-size: 15px;
-   color: #575757;
+   font-family: ${props => props.theme.fonts.secondaryFontFamily};
+   font-size: ${props => props.theme.fonts.fontSize.promo1.small};
+   color: ${props => props.theme.colors.TEXT.DARKGRAY};
    margin-top: 10px;
    display: block;
    text-align: center;
  `;
 
 const buttonStyle = `
-   font-family: 'Nunito';
-   font-weight: 600;
+   font-family: ${props => props.theme.fonts.secondaryFontFamily};
+   font-weight: ${props => props.theme.fonts.fontWeight.black};
    text-transform: uppercase;
-   font-size: 16px;
-   border: 1px solid #979797;
-   color: #575757;
+   font-size: ${props => props.theme.fonts.fontSize.heading.small.h6};
+   border: 1px solid ${props => props.theme.colors.BUTTON.BORDER};
+   color: ${props => props.theme.colors.TEXT.DARKGRAY};
    padding: 19px 80px;
    text-align: center;
    margin: 60px auto;
  `;
 
 const containerStyle = `
-   border: 1px solid #979797;
+   border: 1px solid ${props => props.theme.colors.BUTTON.BORDER};
 `;
 
 const titleStyle = `
-  font-family: 'Montserrat';
-  font-weight: 900;
+  font-family: ${props => props.theme.fonts.primaryFontFamily};
+  font-weight: ${props => props.theme.fonts.fontWeight.black};
   text-transform: uppercase;
-  font-size: 48px;
+  font-size: ${props => props.theme.fonts.fontSize.heading.small.h1};
   text-align: center;
 `;
 
@@ -142,6 +141,7 @@ const ModuleD = ({ data }) => {
     </Fragment>
   );
 };
+
 ModuleD.propTypes = {
   data: PropTypes.string,
 };

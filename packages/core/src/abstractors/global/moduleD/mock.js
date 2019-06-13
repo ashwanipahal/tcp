@@ -47,8 +47,8 @@ export default {
             type: 'imageLink',
             name: 'imageLink1',
             value: {
-              url: '/something',
-              text: 'Family tees',
+              url: '/something1',
+              text: 'Family tees1',
               target: '',
               external: 0,
               class: '',
@@ -63,7 +63,7 @@ export default {
             type: 'imageLink',
             name: 'imageLink2',
             value: {
-              url: '/something',
+              url: '/something2',
               text: 'Mom and Me tees',
               target: '',
               external: 0,
@@ -79,8 +79,8 @@ export default {
             type: 'imageLink',
             name: 'imageLink1',
             value: {
-              url: '/something',
-              text: 'Family tees',
+              url: '/something3',
+              text: 'Family tees3',
               target: '',
               external: 0,
               class: '',
@@ -95,8 +95,8 @@ export default {
             type: 'imageLink',
             name: 'imageLink1',
             value: {
-              url: '/something',
-              text: 'Family tees',
+              url: '/something4',
+              text: 'Family tees4',
               target: '',
               external: 0,
               class: '',
