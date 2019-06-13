@@ -2,17 +2,33 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
+import Image from '@tcp/core/src/components/common/atoms/Image';
 import utilMethods from '@tcp/core/src/utils/utilMethods';
 import HeaderTopNav from '@tcp/web/src/components/common/molecules/HeaderTopNav';
 import config from '../config';
 import headerStyles from '../Header.style';
 import HomeLogo from './HomeLogo';
+import { getIconPath } from '../../../../../utils';
 
-const { HeaderBrand, HeaderNav, DummyNav, HeaderPromo, HeaderLoyalty } = headerStyles;
+const {
+  HeaderBrand,
+  HeaderNav,
+  DummyNav,
+  HeaderPromo,
+  HeaderLoyalty,
+  HeaderPromoItem,
+  HeaderPromoItemIcon1,
+  HeaderPromoItemIcon2,
+  HeaderPromoItemIcon3,
+  HeaderPromoItemContents,
+  HeaderPromoItemBold,
+  HeaderPromoItemBold2,
+} = headerStyles;
 const brand = utilMethods.brand();
 
 const Header = ({ className, headerData }) => (
   <header className={className}>
+    <componentCss />
     <HeaderTopNav className="header-topnav" dataTopNav={headerData.header_top_nav} />
     <HeaderBrand className="header-brand">
       <Row>
@@ -61,14 +77,58 @@ const Header = ({ className, headerData }) => (
     <HeaderPromo className="header-promo">
       <Row>
         <Col
-          className="header-promo__promo-banner"
+          className="header-promo__promo-banner header-promo__promo-banner--slot1"
           colSize={{
-            large: 12,
+            large: 4,
             medium: 8,
             small: 6,
           }}
         >
-          Promo banners
+          <HeaderPromoItem>
+            <HeaderPromoItemIcon1 className="header-promo-item__icon">
+              <Image src={getIconPath('icon-clock')} />
+            </HeaderPromoItemIcon1>
+            <HeaderPromoItemContents className="header-promo-item__contents">
+              <HeaderPromoItemBold>Need it now?</HeaderPromoItemBold>
+              buy it online, pick up in store
+            </HeaderPromoItemContents>
+          </HeaderPromoItem>
+        </Col>
+        <Col
+          className="header-promo__promo-banner header-promo__promo-banner--slot2"
+          colSize={{
+            large: 4,
+            medium: 8,
+            small: 6,
+          }}
+        >
+          <HeaderPromoItem>
+            <HeaderPromoItemIcon2 className="header-promo-item__icon">
+              <Image src={getIconPath('icon-dollar')} />
+            </HeaderPromoItemIcon2>
+            <HeaderPromoItemContents className="header-promo-item__contents">
+              <HeaderPromoItemBold2>Earn place cash!</HeaderPromoItemBold2>
+              buy it online, pick up in store
+            </HeaderPromoItemContents>
+          </HeaderPromoItem>
+        </Col>
+        <Col
+          className="header-promo__promo-banner header-promo__promo-banner--slot3"
+          colSize={{
+            large: 4,
+            medium: 8,
+            small: 6,
+          }}
+        >
+          <HeaderPromoItem>
+            <HeaderPromoItemIcon3 className="header-promo-item__icon">
+              <Image src={getIconPath('icon-at')} />
+            </HeaderPromoItemIcon3>
+            <HeaderPromoItemContents className="header-promo-item__contents">
+              <HeaderPromoItemBold>Sign up and get $10 off!</HeaderPromoItemBold>
+              Enter email
+            </HeaderPromoItemContents>
+          </HeaderPromoItem>
         </Col>
       </Row>
     </HeaderPromo>
