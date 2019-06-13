@@ -24,6 +24,14 @@ export default css`
   .default-offset {
     padding: 0 ${props => props.theme.gridDimensions.gridOffsetObj.small}px;
   }
+  @media ${props => props.theme.mediaQuery.small} {
+    .footer-middle.mobile {
+      display: flex;
+    }
+    .footer-middle.desktop {
+      display: none;
+    }
+  }
   @media ${props => props.theme.mediaQuery.medium} {
     .default-offset {
       padding: 0 ${props => props.theme.gridDimensions.gridOffsetObj.medium}px;
@@ -51,6 +59,16 @@ export default css`
     }
     .footer-bottom__slot--1 {
       background-color: inherit;
+    }
+    .footer-middle.mobile {
+      display: none;
+    }
+    .footer-middle.desktop {
+      display: flex;
+      padding: 60px 0 64px;
+    }
+    .divider {
+      border-left: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
     }
   }
 `;
