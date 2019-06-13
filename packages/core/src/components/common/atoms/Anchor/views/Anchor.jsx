@@ -34,8 +34,8 @@ const Anchor = ({
     <a
       href={buildUrl(to)}
       className={className}
-      onClick={handleLinkClick}
       {...other}
+      onClick={handleLinkClick}
       title={title}
       target={target}
     >
