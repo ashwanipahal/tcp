@@ -20,9 +20,7 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks, socialMediaLin
             medium: 4,
             small: 6,
           }}
-        >
-          EMAIL AND REFER A FRIEND
-        </Col>
+        />
         <Col
           className="footer-top__slot--2"
           colSize={{
@@ -70,9 +68,7 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks, socialMediaLin
             medium: 8,
             small: 6,
           }}
-        >
-          COUNTRY SELECTOR
-        </Col>
+        />
       </Row>
     </div>
   </footer>

@@ -7,7 +7,7 @@ const HeaderBrand = styled.div`
   text-align: center;
 
   @media ${props => props.theme.mediaQuery.mediumMax} {
-    .brand-logo {
+    .header-brand__home-logo--brand {
       display: none;
     }
   }

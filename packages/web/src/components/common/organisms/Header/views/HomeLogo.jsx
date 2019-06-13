@@ -5,9 +5,9 @@ import Image from '@tcp/core/src/components/common/atoms/Image';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../HomeLogo.style';
 
-const HomeLogo = ({ className, alt, dataLocator, imgSrc, title }) => (
+const HomeLogo = ({ className, alt, dataLocator, imgSrc }) => (
   <div className={className}>
-    <Anchor to="/" data-locator={dataLocator} title={title}>
+    <Anchor to="/" data-locator={dataLocator}>
       <Image src={imgSrc} alt={alt} />
     </Anchor>
   </div>
@@ -18,7 +18,6 @@ HomeLogo.propTypes = {
   className: PropTypes.string.isRequired,
   dataLocator: PropTypes.string.isRequired,
   imgSrc: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
 };
 
 export default withStyles(HomeLogo, style);
