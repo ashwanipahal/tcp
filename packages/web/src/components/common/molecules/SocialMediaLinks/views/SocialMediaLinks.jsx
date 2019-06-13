@@ -47,4 +47,5 @@ SocialMediaLinks.defaultProps = {
   links: [],
 };
 
+export { SocialMediaLinks as SocialMediaLinksVanilla };
 export default withStyles(SocialMediaLinks, style);
