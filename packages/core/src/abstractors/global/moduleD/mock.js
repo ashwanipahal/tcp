@@ -1,4 +1,3 @@
-const PLACEHOLDER_URL = 'https://via.placeholder.com/350';
 export default {
   moduleD: {
     type: 'module',
@@ -54,7 +53,8 @@ export default {
               class: '',
               view: 'link',
               image: {
-                src: PLACEHOLDER_URL,
+                src:
+                  'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
                 alt: '',
               },
             },
@@ -70,7 +70,8 @@ export default {
               class: '',
               view: 'link',
               image: {
-                src: PLACEHOLDER_URL,
+                src:
+                  'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg',
                 alt: '',
               },
             },
@@ -86,7 +87,8 @@ export default {
               class: '',
               view: 'link',
               image: {
-                src: PLACEHOLDER_URL,
+                src:
+                  'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME4_iuzwmp.jpg',
                 alt: '',
               },
             },
@@ -102,7 +104,8 @@ export default {
               class: '',
               view: 'link',
               image: {
-                src: PLACEHOLDER_URL,
+                src:
+                  'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME2_uwtbdd.jpg',
                 alt: '',
               },
             },
