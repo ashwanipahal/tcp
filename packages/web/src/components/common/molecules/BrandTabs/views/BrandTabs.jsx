@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Image from '@tcp/core/src/components/common/atoms/Image';
-import config from '@tcp/web/config';
+import config from '../config';
 import style from '../BrandTabs.style';
 
 const BrandTabs = ({ className, data }) => (
@@ -13,7 +13,7 @@ const BrandTabs = ({ className, data }) => (
         const { active, alt, logoClass, target, title, url } = tabData;
         return (
           <Anchor
-            className={active ? 'activeTab' : ''}
+            className={active ? 'header-topnav__brand-tabs--activeTab' : ''}
             to={url}
             title={title}
             target={target}

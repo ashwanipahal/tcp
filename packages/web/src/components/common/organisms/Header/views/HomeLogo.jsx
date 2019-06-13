@@ -1,14 +1,16 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import Image from '@tcp/core/src/components/common/atoms/Image';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import style from '../HomeLogo.style';
 
-const HomeLogo = ({ alt, className, dataLocator, href, imgSrc, title, width }) => (
-  <Fragment>
-    <Anchor className={className} to={href} title={title} data-locator={dataLocator}>
-      <Image src={imgSrc} alt={alt} title={title} width={width} />
+const HomeLogo = ({ className, alt, dataLocator, imgSrc, title }) => (
+  <div className={className}>
+    <Anchor to="/" data-locator={dataLocator} title={title}>
+      <Image src={imgSrc} alt={alt} />
     </Anchor>
-  </Fragment>
+  </div>
 );
 
 HomeLogo.propTypes = {
@@ -16,9 +18,8 @@ HomeLogo.propTypes = {
   className: PropTypes.string.isRequired,
   dataLocator: PropTypes.string.isRequired,
   imgSrc: PropTypes.string.isRequired,
-  href: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  width: PropTypes.string.isRequired,
 };
 
-export default HomeLogo;
+export default withStyles(HomeLogo, style);
+export { HomeLogo as HomeLogoVanilla };

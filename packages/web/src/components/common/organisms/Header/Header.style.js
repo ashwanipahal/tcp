@@ -1,32 +1,5 @@
 import styled from 'styled-components';
 
-const HeaderTopnav = styled.div`
-  background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
-
-  & > div:first-child {
-    margin-left: 6px;
-  }
-
-  .header-topnav__brand-tabs {
-    padding-right: 0;
-  }
-
-  .header-topnav__promo-area {
-    text-align: center;
-
-    @media ${props => props.theme.mediaQuery.smallMax} {
-      display: none;
-    }
-  }
-  .header-topnav__track-order {
-    text-align: right;
-
-    @media ${props => props.theme.mediaQuery.mediumMax} {
-      padding-right: 0;
-    }
-  }
-`;
-
 const HeaderBrand = styled.div`
   box-sizing: border-box;
   height: 129px;
@@ -34,8 +7,7 @@ const HeaderBrand = styled.div`
   text-align: center;
 
   @media ${props => props.theme.mediaQuery.mediumMax} {
-    .tcp-brand-logo,
-    .gymboree-brand-logo {
+    .brand-logo {
       display: none;
     }
   }
@@ -80,7 +52,6 @@ const HeaderLoyalty = styled.div`
 `;
 
 const headerStyles = {
-  HeaderTopnav,
   HeaderBrand,
   HeaderNav,
   DummyNav,
