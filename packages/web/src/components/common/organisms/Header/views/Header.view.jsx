@@ -29,7 +29,6 @@ const Header = ({ className, headerData }) => (
             className="header-brand__home-logo--brand"
             dataLocator={config[brand].dataLocator}
             imgSrc={config[brand].imgSrc}
-            title={config[brand].title}
           />
         </Col>
       </Row>
