@@ -36,6 +36,9 @@ export default css`
     }
   }
   @media ${props => props.theme.mediaQuery.large} {
+    .footer-top {
+      padding-bottom: 46px;
+    }
     .footer-bottom {
       background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
     }
