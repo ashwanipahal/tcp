@@ -28,14 +28,14 @@ export default css`
     .default-offset {
       padding: 0 ${props => props.theme.gridDimensions.gridOffsetObj.medium}px;
     }
-  }
-  @media ${props => props.theme.mediaQuery.large} {
     .footer-top__slot--1 {
       order: 1;
     }
     .footer-top__slot--2 {
       order: 2;
     }
+  }
+  @media ${props => props.theme.mediaQuery.large} {
     .footer-bottom {
       background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
     }

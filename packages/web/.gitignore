@@ -4,3 +4,4 @@
 *.log
 dist/
 /flow-typed/
+.DS_Store
