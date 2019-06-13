@@ -16,6 +16,7 @@ const linkStyle = `
    margin-top: 10px;
    display: block;
    text-align: center;
+   cursor: pointer;
  `;
 
 const buttonStyle = `
@@ -28,6 +29,7 @@ const buttonStyle = `
    padding: 19px 80px;
    text-align: center;
    margin: 60px auto;
+   cursor: pointer;
  `;
 
 const containerStyle = `
@@ -40,10 +42,12 @@ const titleStyle = `
   text-transform: uppercase;
   font-size: 48px;
   text-align: center;
+  cursor: pointer;
 `;
 
 const imageStyle = `
   width: 100%;
+  cursor: pointer;
 `;
 
 const colSize2Elements = {
