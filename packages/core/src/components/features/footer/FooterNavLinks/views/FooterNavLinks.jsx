@@ -2,14 +2,11 @@
 import React from 'react';
 import FooterNavLinksList from '../../FooterNavLinksList';
 import FooterNavHeader from '../../FooterNavHeader';
-import withStyles from '../../../../common/hoc/withStyles';
-
-import styles from '../FooterNavLinks.style';
 
 type Props = {
   className: string,
-  navLinkItems: object[],
-  updateAccordionState: func,
+  navLinkItems: Object[],
+  updateAccordionState: Function,
   headerAsImage: boolean,
 };
 
@@ -36,5 +33,4 @@ const FooterNavLinks = ({
   );
 };
 
-export default withStyles(FooterNavLinks, styles);
-export { FooterNavLinks as FooterNavLinksVanilla };
+export default FooterNavLinks;
