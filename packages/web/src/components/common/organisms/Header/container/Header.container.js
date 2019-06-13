@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import HeaderView from '../views';
 
-const mapStateToProps = state => {
+const mapStateToProps = () => {
   return {};
 };
 
