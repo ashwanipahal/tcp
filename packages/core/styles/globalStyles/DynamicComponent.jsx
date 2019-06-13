@@ -8,7 +8,7 @@ const DynamicComponent = ({ tag = 'div', children, ...props }) => {
 };
 
 type Props = {
-  tag: number,
+  tag: string,
   children?: string,
 };
 

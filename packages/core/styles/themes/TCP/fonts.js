@@ -26,7 +26,7 @@ const FONT_SIZE = {
     },
   },
   body: {
-    fontsize: {
+    bodytext: {
       p1: 10,
       p2: 12,
       p3: 14,
@@ -51,12 +51,6 @@ const FONT_SIZE = {
       primary: 10,
       secondary: 12,
       tertiary: 11,
-    },
-
-    links: {
-      primary: 15,
-      secondary: 12,
-      tertiary: 10,
     },
   },
   nav: 15,
