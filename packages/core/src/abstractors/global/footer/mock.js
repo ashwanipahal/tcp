@@ -182,30 +182,6 @@ export default {
           },
         ],
       },
-      {
-        items: [
-          {
-            text: 'ABOUT US',
-            links: [
-              {
-                url: 'https://corporate.childrensplace.com/corporate-responsibility',
-                text: 'Public Relations',
-                title: 'Public Relations Title',
-              },
-              {
-                url: 'https://childrensplace.gcs-web.com',
-                text: 'Investor Relations',
-                title: 'Investor Relations Title',
-              },
-              {
-                url: 'https://corporate.childrensplace.com/careers',
-                text: 'Careers',
-                title: 'Careers Title',
-              },
-            ],
-          },
-        ],
-      },
     ],
   },
   footer_bottom: {
