@@ -28,11 +28,13 @@ const Anchor = ({
   shallow,
   title,
   target,
+  ...other
 }) =>
   noLink ? (
     <a
       href={buildUrl(to)}
       className={className}
+      {...other}
       onClick={handleLinkClick}
       title={title}
       target={target}

@@ -6,16 +6,22 @@ const FooterNavLinksListCss = css`
     height: 34px;
     font-family: Nunito;
     font-size: 13px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
     line-height: 1.15;
-    letter-spacing: normal;
-    color: #1a1a1a;
+    letter-spacing: ${props => props.theme.fonts.letterSpacing.normal};
+    color: ${props => props.theme.colors.ACCORDION.TEXT};
     :hover {
       text-decoration: underline;
     }
-    ${props => (props.insideAcccordion ? `padding: 18px 28px 0;` : `padding: 18px 0 0;`)}
+    ${props =>
+      props.insideAcccordion
+        ? `
+        padding: 18px 28px 0;
+        font-size: 13px;
+      `
+        : `
+        padding: 0 0 6px;
+        font-size: 14px;
+      `}
   }
 `;
 

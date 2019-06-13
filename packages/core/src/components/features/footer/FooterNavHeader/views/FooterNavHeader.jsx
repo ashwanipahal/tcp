@@ -30,7 +30,7 @@ const FooterNavHeader = ({
     );
   }
   return (
-    <Anchor to={titleObj.url}>
+    <Anchor to={titleObj.url} className={`${className} img-link`}>
       <Image alt src={`/static/images/${titleObj.image_url}`} />
     </Anchor>
   );

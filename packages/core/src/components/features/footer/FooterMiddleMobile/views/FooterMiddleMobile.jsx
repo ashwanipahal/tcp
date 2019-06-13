@@ -4,7 +4,7 @@ import FooterNavLinksList from '../../FooterNavLinksList';
 import AccordionList from '../../../../common/molecules/AccordionList';
 import Col from '../../../../common/atoms/Col';
 
-import styles from '../FooterMiddle.style';
+import styles from '../FooterMiddleMobile.style';
 import withStyles from '../../../../common/hoc/withStyles';
 
 type Props = {

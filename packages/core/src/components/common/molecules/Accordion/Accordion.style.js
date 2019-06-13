@@ -6,10 +6,10 @@ const accordionStyles = css`
     padding: 18px 15px 0;
     margin: 0;
     &.inactive {
-      background: #e5e5e5;
+      background: ${props => props.theme.colors.ACCORDION.INACTIVE_HEADER};
     }
     &.active {
-      background: #f7f7f7;
+      background: ${props => props.theme.colors.ACCORDION.ACTIVE_HEADER};
     }
   }
   &.active::after {
@@ -17,13 +17,13 @@ const accordionStyles = css`
     float: right;
     font-weight: bold;
     font-size: ${props => props.theme.fonts.fontSize.heading.large.h6}px;
-    color: #9b9b9b;
+    color: ${props => props.theme.colors.ACCORDION.COLLAPSE_EXPAND_ICON};
   }
 
   &.inactive::after {
     content: '';
     float: right;
-    background: #9b9b9b;
+    background: ${props => props.theme.colors.ACCORDION.COLLAPSE_EXPAND_ICON};
     height: 2px;
     width: 10px;
     margin-top: 5px;
