@@ -36,13 +36,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head>
-          <style>{`body { margin: 0 } /* custom! */`}</style>
-          <link
-            href="https://fonts.googleapis.com/css?family=Montserrat:400,900|Nunito:400,600&display=swap"
-            rel="stylesheet"
-          />
-        </Head>
+        <Head />
         <body className="custom_class">
           <Main />
           <NextScript />
