@@ -14,12 +14,15 @@ const FooterNavLinksList = ({ className, listArray }: Props) => {
     <div className={`${className} list`}>
       {listArray && listArray.length
         ? listArray.map(linkItems => (
+            // TODO - Resolve the prettier and eslint conflict here
+            // eslint-disable-next-line
             <Anchor
               className={className}
               noLink
               to={linkItems.url}
               anchorVariation="primary"
               fontSizeVariation="large"
+              data-locator={linkItems.url}
             >
               {linkItems.text}
             </Anchor>

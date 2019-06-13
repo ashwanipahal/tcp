@@ -84,9 +84,7 @@ export default class AccordionList extends React.Component<Props, State> {
                 titleText={accordionItems[index].header.text}
                 updateAccordionState={this.changeAccordianState}
                 index={index}
-              >
-                {``}
-              </AccordionItem>
+              />
             )}
           </div>
         ))}

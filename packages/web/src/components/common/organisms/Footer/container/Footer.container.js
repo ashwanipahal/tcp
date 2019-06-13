@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import FooterView from '../views';
 
 const processFooterMiddle = footerMiddleObj => {
-  const formattedFooterMiddleObj = [];
-  formattedFooterMiddleObj.push(
+  const formattedFooterMiddleArray = [];
+  formattedFooterMiddleArray.push(
     {
       header: footerMiddleObj.mpr.link,
       links: footerMiddleObj.mpr.sub_links,
@@ -16,12 +16,13 @@ const processFooterMiddle = footerMiddleObj => {
 
   // eslint-disable-next-line
   for (let i = 0; i < footerMiddleObj.nav_links.length; i++) {
-    formattedFooterMiddleObj.push({
+    formattedFooterMiddleArray.push({
       header: footerMiddleObj.nav_links[i].items[0],
       links: footerMiddleObj.nav_links[i].items[0].links,
+      isSubHeader: footerMiddleObj.nav_links[i].items[0].isSubHeader,
     });
   }
-  return formattedFooterMiddleObj;
+  return formattedFooterMiddleArray;
 };
 
 const mapStateToProps = state => {
