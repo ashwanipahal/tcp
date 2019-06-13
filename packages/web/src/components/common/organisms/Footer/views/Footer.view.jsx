@@ -4,10 +4,9 @@ import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../Footer.style';
-import LegalLinks from '../../../molecules/LegalLinks';
-import Copyright from '../../../molecules/Copyright';
+import { LegalLinks, Copyright, SocialMediaLinks } from '../../../molecules';
 
-const Footer = ({ className, copyrightText, legalLinks }) => (
+const Footer = ({ className, copyrightText, legalLinks, socialMediaLinks }) => (
   <footer className={className}>
     <div className="footer-top">
       <Row>
@@ -29,7 +28,7 @@ const Footer = ({ className, copyrightText, legalLinks }) => (
             small: 6,
           }}
         >
-          SOCIAL MEDIA LINKS
+          <SocialMediaLinks {...socialMediaLinks} />
         </Col>
       </Row>
     </div>
@@ -105,12 +104,22 @@ const Footer = ({ className, copyrightText, legalLinks }) => (
 Footer.propTypes = {
   className: PropTypes.string.isRequired,
   copyrightText: PropTypes.string,
-  legalLinks: PropTypes.arrayOf,
+  legalLinks: PropTypes.arrayOf(
+    PropTypes.shape({
+      url: PropTypes.string,
+      title: PropTypes.text,
+    })
+  ),
+  socialMediaLinks: PropTypes.shape({
+    icon_class: PropTypes.string,
+    title: PropTypes.string,
+  }),
 };
 
 Footer.defaultProps = {
   copyrightText: '',
   legalLinks: [],
+  socialMediaLinks: [],
 };
 
 export default withStyles(Footer, style);

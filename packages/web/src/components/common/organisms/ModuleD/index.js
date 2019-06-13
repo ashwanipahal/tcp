@@ -1,1 +1,1 @@
-export { ModuleDContainer } from './container';
+export { default } from './container';
