@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
-import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
-import Image from '@tcp/core/src/components/common/atoms/Image';
+import Anchor from '../../../../common/atoms/Anchor';
+import Image from '../../../../common/atoms/Image';
 import styles from '../FooterNavHeader.style';
 import withStyles from '../../../../common/hoc/withStyles';
 
@@ -11,7 +11,7 @@ type Props = {
   headerAsImage: boolean,
   index: number,
   titleText: string,
-  titleObj: object,
+  titleObj: Object,
 };
 
 const FooterNavHeader = ({
@@ -24,9 +24,9 @@ const FooterNavHeader = ({
 }: Props) => {
   if (!headerAsImage) {
     return (
-      <h1 className={className} aria-label={ariaLabel} data-index={index}>
+      <h4 className={className} aria-label={ariaLabel} data-index={index}>
         {titleText}
-      </h1>
+      </h4>
     );
   }
   return (
