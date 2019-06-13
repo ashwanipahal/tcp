@@ -94,8 +94,6 @@ const CarouselStyle = styled.div`
     width: 20px;
     height: 20px;
     padding: 0;
-    -webkit-transform: translate(0, -50%);
-    -ms-transform: translate(0, -50%);
     transform: translate(0, -50%);
     cursor: pointer;
     color: transparent;

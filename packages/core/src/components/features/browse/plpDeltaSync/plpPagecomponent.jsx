@@ -3,7 +3,7 @@ import { ApolloProvider, graphql } from 'react-apollo';
 import { Rehydrated } from 'aws-appsync-react';
 import { buildSync } from 'aws-appsync';
 import gql from 'graphql-tag';
-import { ProductList } from './views/productListComponent';
+import ProductList from './views/productListComponent';
 import * as GQLQueries from '../../../../service/Queries';
 
 import AppSyncClient from '../../../../service/AwsAPI';

@@ -1,6 +1,7 @@
 import React from 'react';
 
-export const ProductList = ({ data }) => {
+// eslint-disable-next-line
+const ProductList = ({ data }) => {
   return (
     <React.Fragment>
       <h1>PLP DeltaSync Page</h1>
@@ -16,3 +17,5 @@ export const ProductList = ({ data }) => {
     </React.Fragment>
   );
 };
+
+export default ProductList;
