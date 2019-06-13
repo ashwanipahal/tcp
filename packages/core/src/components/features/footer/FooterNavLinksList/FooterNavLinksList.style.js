@@ -4,8 +4,8 @@ const FooterNavLinksListCss = css`
   a {
     display: block;
     height: 34px;
-    font-family: Nunito;
-    font-size: 13px;
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
+    font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
     line-height: 1.15;
     letter-spacing: ${props => props.theme.fonts.letterSpacing.normal};
     color: ${props => props.theme.colors.ACCORDION.TEXT};
@@ -16,11 +16,11 @@ const FooterNavLinksListCss = css`
       props.insideAcccordion
         ? `
         padding: 18px 28px 0;
-        font-size: 13px;
+        font-size: ${props.theme.fonts.fontSize.body.large.secondary}px;
       `
         : `
         padding: 0 0 6px;
-        font-size: 14px;
+        font-size: ${props.theme.fonts.fontSize.listmenu.large}px;
       `}
   }
 `;

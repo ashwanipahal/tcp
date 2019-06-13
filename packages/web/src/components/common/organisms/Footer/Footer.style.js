@@ -65,7 +65,7 @@ export default css`
       padding: 60px 0 64px;
     }
     .divider {
-      border-left: 1px solid #c3c3c3;
+      border-left: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
     }
   }
 `;

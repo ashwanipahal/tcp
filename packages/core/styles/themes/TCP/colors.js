@@ -71,4 +71,7 @@ export default {
     COLLAPSE_EXPAND_ICON: '#9b9b9b',
     TEXT: '#1a1a1a',
   },
+  FOOTER: {
+    DIVIDER: '#c3c3c3',
+  },
 };
