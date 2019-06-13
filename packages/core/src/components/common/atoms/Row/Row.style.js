@@ -21,8 +21,10 @@ const StyledRow = css`
         width: calc(100% - ${props.theme.gridDimensions.gridOffsetObj[key] * 2}px);
         `
           : `width: 100%;`
-      }`
+      }
+    }`
     )}
+
   div:last-child {
     padding-right: 0;
   }

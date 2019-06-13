@@ -12,19 +12,19 @@
     "cleanup": "rm -rf ./node_modules",
     "lerna-clean": "npx lerna clean --y",
     "test": "jest --config ./config/jest.config.js",
+    "test:web": "jest --config ./config/jest.config.js",
     "test:staged": "jest --bail --findRelatedTests --config ./config/jest.config.js",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}",
     "flow": "flow",
+    "flow:web": "flow",
     "flow:install": "npx lerna exec flow-typed install",
     "flow:coverage": "flow-coverage-report -i 'packages/*/src/**/*.js' -x 'packages/**/*.test.js' -t html -t json -t text -o reports/flow/ --threshold 70",
     "pretty": "prettier --write **/*.{js,json,css}",
-    "lint:web:js": "yarn workspace @tcp/web eslint src/",
-    "lint:web:js:fix": "yarn run lint:js --fix",
-    "lint:web:css": " yarn workspace @tcp/web stylelint src/**/*.js",
-    "lint:web:css:fix": "yarn run lint:web:css --fix",
-    "lint:web": "yarn run lint:web:js && yarn run lint:web:css"
+    "eslint:web": "yarn workspace @tcp/web eslint src/ && yarn workspace @tcp/core eslint src/",
+    "stylelint:web": "yarn workspace @tcp/web stylelint src/**/*.js && yarn workspace @tcp/core stylelint src/**/*.js",
+    "lint:web": "yarn eslint:web && yarn stylelint:web"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -89,7 +89,7 @@
       "git add"
     ],
     "*.{js,jsx}": [
-      "yarn run flow focus-check",
+      "yarn flow focus-check",
       "eslint",
       "yarn test:staged",
       "stylelint"
@@ -100,7 +100,6 @@
     "packages/*"
   ],
   "dependencies": {
-    "@svgr/webpack": "^4.3.0",
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
     "react-redux": "^6.0.1",
