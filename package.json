@@ -1,30 +1,33 @@
 {
   "name": "root",
   "private": true,
+  "version": "0.1.0",
+  "description": "Adding sample description",
   "scripts": {
+    "stash": "rm -rf node_modules/ packages/*/node_modules/ packages/*/yarn.lock yarn.lock",
     "clean": "yarn cleanup && yarn lerna-clean",
     "postinstall-local": "yarn flow:install",
     "clean-install": "yarn clean && yarn",
     "start": "yarn build:web",
-    "start:web": "cross-env NODE_ENV=development yarn workspace @tcp/web start",
+    "start:web": "yarn workspace @tcp/web start",
     "build:web": "yarn && cd packages/web && yarn && yarn build && yarn next-start",
     "start:mobileapp": "cd packages/mobileapp && yarn start",
     "cleanup": "rm -rf ./node_modules",
     "lerna-clean": "npx lerna clean --y",
     "test": "jest --config ./config/jest.config.js",
-    "test:web": "jest --config ./config/jest.config.js",
     "test:staged": "jest --bail --findRelatedTests --config ./config/jest.config.js",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}",
     "flow": "flow",
-    "flow:web": "flow",
     "flow:install": "npx lerna exec flow-typed install",
     "flow:coverage": "flow-coverage-report -i 'packages/*/src/**/*.js' -x 'packages/**/*.test.js' -t html -t json -t text -o reports/flow/ --threshold 70",
     "pretty": "prettier --write **/*.{js,json,css}",
-    "eslint:web": "yarn workspace @tcp/web eslint src/ && yarn workspace @tcp/core eslint src/",
-    "stylelint:web": "yarn workspace @tcp/web stylelint src/**/*.js && yarn workspace @tcp/core stylelint src/**/*.js",
-    "lint:web": "yarn eslint:web && yarn stylelint:web"
+    "lint:web:js": "yarn workspace @tcp/web eslint src/",
+    "lint:web:js:fix": "yarn run lint:js --fix",
+    "lint:web:css": " yarn workspace @tcp/web stylelint src/**/*.js",
+    "lint:web:css:fix": "yarn run lint:web:css --fix",
+    "lint:web": "yarn run lint:web:js && yarn run lint:web:css"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -89,24 +92,58 @@
       "git add"
     ],
     "*.{js,jsx}": [
-      "yarn flow focus-check",
+      "yarn run flow focus-check",
       "eslint",
       "yarn test:staged",
       "stylelint"
     ],
     "*.css": "stylelint"
   },
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "mobileapp/react-native",
+      "mobileapp/react-native/**",
+      "mobileapp/react-redux",
+      "mobileapp/react-redux/**",
+      "mobileapp/redux",
+      "mobileapp/redux/**",
+      "mobileapp/redux-saga",
+      "mobileapp/redux-saga/**",
+      "mobileapp/styled-components",
+      "mobileapp/styled-components/**",
+      "mobileapp/react-native-gesture-handler",
+      "mobileapp/react-native-gesture-handler/**",
+      "mobileapp/react-navigation",
+      "mobileapp/react-navigation/**",
+      "mobileapp/react-native-render-html",
+      "mobileapp/react-native-render-html/**",
+      "mobileapp/react-apollo",
+      "mobileapp/react-apollo/**",
+      "mobileapp/aws-appsync",
+      "mobileapp/aws-appsync/**",
+      "mobileapp/aws-appsync-react",
+      "mobileapp/aws-appsync-react/**",
+      "mobileapp/graphql",
+      "mobileapp/graphql/**",
+      "mobileapp/graphql-tag",
+      "mobileapp/graphql-tag/**",
+      "mobileapp/apisauce",
+      "mobileapp/apisauce/**",
+      "mobileapp/apollo-client",
+      "mobileapp/apollo-client/**",
+      "core/superagent",
+      "core/superagent/**",
+      "mobileapp/superagent",
+      "mobileapp/superagent/**"
+    ]
+  },
   "dependencies": {
+    "@svgr/webpack": "^4.3.0",
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
-    "react-redux": "^6.0.1",
-    "react-modal": "^3.8.1",
-    "react-slick": "^0.24.0",
-    "redux": "^4.0.1",
-    "redux-saga": "^1.0.2",
-    "styled-components": "^4.2.0"
+    "react-slick": "^0.24.0"
   }
 }
