@@ -7,6 +7,7 @@ export default css`
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     font-size: ${props => props.theme.fonts.fontSize.nav}px;
     color: ${props => props.theme.colors.TEXT.DARKGRAY};
+    cursor: pointer;
     margin-top: 10px;
     display: block;
     text-align: center;

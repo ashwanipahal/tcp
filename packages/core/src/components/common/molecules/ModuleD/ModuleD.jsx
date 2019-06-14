@@ -36,10 +36,10 @@ const ignoreGutter = [{}, { small: true }, {}, { small: true }, {}, { small: tru
 const ModuleD = ({ className, data }) => {
   const mod = data.data.moduleD;
   let assets = [];
-  let { title, text, titleUrl, button } = '';
+  let { target, title, text, url, button } = '';
 
   if (mod.value) {
-    ({ title, text, titleUrl } = mod.value[0].value.value);
+    ({ target, title, text, url } = mod.value[0].value.value);
 
     assets = mod.value[2].value; // TODO: there's a promotional banner in the CMS but not in the designs. ignoring
     button = mod.value[3].value.value;
@@ -57,7 +57,7 @@ const ModuleD = ({ className, data }) => {
 
   return (
     <Grid className={className}>
-      <Anchor className="moduleD_textlink" to={titleUrl}>
+      <Anchor className="moduleD_textlink" to={url} target={target}>
         <h2 data-locator="moduleD_headerlink" title={title}>
           {text}
         </h2>
@@ -65,12 +65,13 @@ const ModuleD = ({ className, data }) => {
       <Row centered>
         {assets &&
           assets.map((item, index) => (
-            <Col colSize={colSize} ignoreGutter={ignoreGutter[index]}>
+            <Col key={item.value.name} colSize={colSize} ignoreGutter={ignoreGutter[index]}>
               <div className="moduleD__image-container">
                 <Anchor
                   className="moduleD_textlink"
                   to={item.value.url}
                   aria-label={item.value.text}
+                  target={item.value.target}
                 >
                   <Image
                     src={item.value.image.src}
@@ -79,7 +80,13 @@ const ModuleD = ({ className, data }) => {
                   />
                 </Anchor>
               </div>
-              <Anchor withCaret centered className="moduleD_textlink" to={item.value.url}>
+              <Anchor
+                withCaret
+                centered
+                className="moduleD_textlink"
+                to={item.value.url}
+                target={item.value.target}
+              >
                 {item.value.text}
               </Anchor>
             </Col>
@@ -87,7 +94,7 @@ const ModuleD = ({ className, data }) => {
       </Row>
 
       <Row centered>
-        <Anchor href={button.url}>
+        <Anchor href={button.url} target={button.target}>
           <Button
             buttonVariation="variable-width"
             className="moduleD_button"

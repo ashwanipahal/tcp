@@ -1,3 +1,5 @@
+const plpUrl =
+  'https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts';
 export default {
   moduleD: {
     type: 'module',
@@ -11,10 +13,10 @@ export default {
           type: 'link',
           name: 'headerLink',
           value: {
-            url: '/node/pdp/<uuid>',
+            url: { plpUrl },
             text: 'Mini Me Shop',
             title: 'go to mini me shop',
-            target: '',
+            target: '_blank',
             external: 0,
             class: '',
             view: 'link',
@@ -28,10 +30,10 @@ export default {
           type: 'link',
           name: 'headerLink',
           value: {
-            url: '/node/pdp/<uuid>',
+            url: { plpUrl },
             text: 'this is a <strong>promo</strong> banner',
             title: 'go to promo section',
-            target: '',
+            target: '_blank',
             external: 0,
             class: '',
             view: 'link',
@@ -46,9 +48,9 @@ export default {
             type: 'imageLink',
             name: 'imageLink1',
             value: {
-              url: '/something1',
+              url: { plpUrl },
               text: 'Family tees1',
-              target: '',
+              target: '_target',
               external: 0,
               class: '',
               view: 'link',
@@ -63,9 +65,9 @@ export default {
             type: 'imageLink',
             name: 'imageLink2',
             value: {
-              url: '/something2',
+              url: { plpUrl },
               text: 'Mom and Me tees',
-              target: '',
+              target: '_blank',
               external: 0,
               class: '',
               view: 'link',
@@ -80,9 +82,9 @@ export default {
             type: 'imageLink',
             name: 'imageLink1',
             value: {
-              url: '/something3',
+              url: { plpUrl },
               text: 'Family tees3',
-              target: '',
+              target: '_blank',
               external: 0,
               class: '',
               view: 'link',
@@ -97,9 +99,9 @@ export default {
             type: 'imageLink',
             name: 'imageLink1',
             value: {
-              url: '/something4',
+              url: { plpUrl },
               text: 'Family tees4',
-              target: '',
+              target: '_blank',
               external: 0,
               class: '',
               view: 'link',
@@ -119,10 +121,10 @@ export default {
           type: 'link',
           name: 'cta1',
           value: {
-            url: '/node/pdp',
+            url: { plpUrl },
             text: 'SHOP ALL',
             title: 'shop all categories',
-            target: '',
+            target: '_blank',
             external: 0,
             class: '',
             view: 'button',
