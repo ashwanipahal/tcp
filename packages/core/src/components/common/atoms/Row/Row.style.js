@@ -2,17 +2,16 @@ import { css } from 'styled-components';
 
 const StyledRow = css`
   ${props =>
+    !props.noFlex
+      ? `
+    display: flex;
+    flex-wrap: wrap;
+    `
+      : ``}
+  ${props =>
     props.theme.gridDimensions.gridBreakPointsKeys.map(
       key => `
     @media ${props.theme.mediaQuery[key]} {
-      ${
-        !props.noFlex
-          ? `
-        display: flex;
-        flex-wrap: wrap;
-        `
-          : ``
-      }
       ${
         !props.fullBleed
           ? `

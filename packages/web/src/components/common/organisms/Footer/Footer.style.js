@@ -4,10 +4,6 @@ export default css`
   .footer-top {
     border-bottom: 2px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
   }
-  .footer-bottom {
-    padding-top: 10px;
-    background: ${props => props.theme.colors.WHITE};
-  }
   .footer-top__slot--1 {
     order: 2;
   }
