@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import style from '../Footer.style';
-import LegalLinks from '../../../molecules/LegalLinks';
-import Copyright from '../../../molecules/Copyright';
+import FooterMiddleMobile from '@tcp/core/src/components/features/footer/FooterMiddleMobile';
+import FooterMiddleDesktop from '@tcp/core/src/components/features/footer/FooterMiddleDesktop/views';
 
-const Footer = ({ className, copyrightText, legalLinks }) => (
+import style from '../Footer.style';
+import { LegalLinks, Copyright, SocialMediaLinks } from '../../../molecules';
+
+const Footer = ({ className, copyrightText, legalLinks, navLinks, socialMediaLinks }) => (
   <footer className={className}>
     <div className="footer-top">
       <Row>
@@ -18,9 +20,7 @@ const Footer = ({ className, copyrightText, legalLinks }) => (
             medium: 4,
             small: 6,
           }}
-        >
-          EMAIL AND REFER A FRIEND
-        </Col>
+        />
         <Col
           className="footer-top__slot--2"
           colSize={{
@@ -29,41 +29,15 @@ const Footer = ({ className, copyrightText, legalLinks }) => (
             small: 6,
           }}
         >
-          SOCIAL MEDIA LINKS
+          <SocialMediaLinks {...socialMediaLinks} />
         </Col>
       </Row>
     </div>
-    <Row className="footer-middle">
-      <Col
-        className="footer-middle__slot--1"
-        colSize={{
-          large: 2,
-          medium: 8,
-          small: 6,
-        }}
-      >
-        MPR AREA
-      </Col>
-      <Col
-        className="footer-middle__slot--2"
-        colSize={{
-          large: 2,
-          medium: 8,
-          small: 6,
-        }}
-      >
-        MPRCC AREA
-      </Col>
-      <Col
-        className="footer-middle__slot--3"
-        colSize={{
-          large: 8,
-          medium: 8,
-          small: 6,
-        }}
-      >
-        NAV LINKS
-      </Col>
+    <Row className="footer-middle mobile" fullBleed>
+      <FooterMiddleMobile className={className} navLinkItems={navLinks} />
+    </Row>
+    <Row className="footer-middle desktop">
+      <FooterMiddleDesktop navLinks={navLinks} />
     </Row>
     <div className="footer-bottom">
       <Row className="fullbleed-mobile">
@@ -94,9 +68,7 @@ const Footer = ({ className, copyrightText, legalLinks }) => (
             medium: 8,
             small: 6,
           }}
-        >
-          COUNTRY SELECTOR
-        </Col>
+        />
       </Row>
     </div>
   </footer>
@@ -105,12 +77,24 @@ const Footer = ({ className, copyrightText, legalLinks }) => (
 Footer.propTypes = {
   className: PropTypes.string.isRequired,
   copyrightText: PropTypes.string,
-  legalLinks: PropTypes.arrayOf,
+  navLinks: PropTypes.shape({}),
+  legalLinks: PropTypes.arrayOf(
+    PropTypes.shape({
+      url: PropTypes.string,
+      title: PropTypes.text,
+    })
+  ),
+  socialMediaLinks: PropTypes.shape({
+    icon_class: PropTypes.string,
+    title: PropTypes.string,
+  }),
 };
 
 Footer.defaultProps = {
   copyrightText: '',
   legalLinks: [],
+  navLinks: [],
+  socialMediaLinks: [],
 };
 
 export default withStyles(Footer, style);

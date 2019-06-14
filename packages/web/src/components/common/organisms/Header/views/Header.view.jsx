@@ -2,48 +2,18 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import utilMethods from '@tcp/core/src/utils/utilMethods';
+import HeaderTopNav from '@tcp/web/src/components/common/molecules/HeaderTopNav';
+import config from '../config';
 import headerStyles from '../Header.style';
 import HomeLogo from './HomeLogo';
 
-const { HeaderTopnav, HeaderBrand, HeaderNav, DummyNav, HeaderPromo, HeaderLoyalty } = headerStyles;
+const { HeaderBrand, HeaderNav, DummyNav, HeaderPromo, HeaderLoyalty } = headerStyles;
+const brand = utilMethods.brand();
 
-const Header = ({ className }) => (
+const Header = ({ className, headerData }) => (
   <header className={className}>
-    <HeaderTopnav className="header-topnav">
-      <Row>
-        <Col
-          className="header-topnav__brand-tabs"
-          colSize={{
-            large: 2,
-            medium: 2,
-            small: 3,
-          }}
-        >
-          Brand tabs
-        </Col>
-        <Col
-          className="header-topnav__promo-area"
-          colSize={{
-            large: 8,
-            medium: 4,
-            small: 0,
-          }}
-        >
-          Promo area
-        </Col>
-        <Col
-          className="header-topnav__track-order"
-          colSize={{
-            large: 2,
-            medium: 2,
-            small: 3,
-          }}
-        >
-          Track order
-        </Col>
-      </Row>
-    </HeaderTopnav>
+    <HeaderTopNav className="header-topnav" dataTopNav={headerData.header_top_nav} />
     <HeaderBrand className="header-brand">
       <Row>
         <Col
@@ -55,12 +25,10 @@ const Header = ({ className }) => (
           }}
         >
           <HomeLogo
-            dataLocator="global_TCPlink tcp-logo"
-            imgSrc="/static/images/tcp-logo.svg"
-            href="/"
-            alt="The Children's Place"
-            title="The Children's Place"
-            width="172px"
+            alt={config[brand].alt}
+            className="header-brand__home-logo--brand"
+            dataLocator={config[brand].dataLocator}
+            imgSrc={config[brand].imgSrc}
           />
         </Col>
       </Row>
@@ -123,7 +91,8 @@ const Header = ({ className }) => (
 
 Header.propTypes = {
   className: PropTypes.string.isRequired,
+  headerData: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))
+    .isRequired,
 };
 
-export default withStyles(Header, headerStyles);
-export { Header as HeaderVanilla };
+export default Header;

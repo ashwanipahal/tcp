@@ -34,8 +34,8 @@ const Anchor = ({
     <a
       href={buildUrl(to)}
       className={className}
-      onClick={handleLinkClick}
       {...other}
+      onClick={handleLinkClick}
       title={title}
       target={target}
     >
@@ -43,7 +43,7 @@ const Anchor = ({
     </a>
   ) : (
     <Link href={to} as={as} shallow={shallow} scroll={scroll}>
-      <a href={as || buildUrl(to)} className={className} title={title}>
+      <a href={as || buildUrl(to)} className={className} title={title} target={target} {...other}>
         {children}
       </a>
     </Link>

@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../LegalLinks.style';
+import { getLocator } from '../../../../../utils';
 
 const LegalLinks = ({ className, links }) => (
   <React.Fragment>
     <ul className={className}>
       {links.map(link => (
-        <li data-locator={link.locator}>
+        <li data-locator={getLocator(link.name)}>
           <Anchor anchorVariation="primary" to={link.url}>
             {link.text}
           </Anchor>
@@ -19,7 +20,12 @@ const LegalLinks = ({ className, links }) => (
 );
 
 LegalLinks.propTypes = {
-  links: PropTypes.arrayOf,
+  links: PropTypes.arrayOf(
+    PropTypes.shape({
+      url: PropTypes.string,
+      title: PropTypes.text,
+    })
+  ),
   className: PropTypes.string.isRequired,
 };
 
