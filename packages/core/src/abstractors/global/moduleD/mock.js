@@ -13,7 +13,7 @@ export default {
           type: 'link',
           name: 'headerLink',
           value: {
-            url: { plpUrl },
+            url: plpUrl,
             text: 'Mini Me Shop',
             title: 'go to mini me shop',
             target: '_blank',
@@ -30,7 +30,7 @@ export default {
           type: 'link',
           name: 'headerLink',
           value: {
-            url: { plpUrl },
+            url: plpUrl,
             text: 'this is a <strong>promo</strong> banner',
             title: 'go to promo section',
             target: '_blank',
@@ -48,7 +48,7 @@ export default {
             type: 'imageLink',
             name: 'imageLink1',
             value: {
-              url: { plpUrl },
+              url: plpUrl,
               text: 'Family tees1',
               target: '_target',
               external: 0,
@@ -65,7 +65,7 @@ export default {
             type: 'imageLink',
             name: 'imageLink2',
             value: {
-              url: { plpUrl },
+              url: plpUrl,
               text: 'Mom and Me tees',
               target: '_blank',
               external: 0,
@@ -82,7 +82,7 @@ export default {
             type: 'imageLink',
             name: 'imageLink1',
             value: {
-              url: { plpUrl },
+              url: plpUrl,
               text: 'Family tees3',
               target: '_blank',
               external: 0,
@@ -99,7 +99,7 @@ export default {
             type: 'imageLink',
             name: 'imageLink1',
             value: {
-              url: { plpUrl },
+              url: plpUrl,
               text: 'Family tees4',
               target: '_blank',
               external: 0,
@@ -121,7 +121,7 @@ export default {
           type: 'link',
           name: 'cta1',
           value: {
-            url: { plpUrl },
+            url: plpUrl,
             text: 'SHOP ALL',
             title: 'shop all categories',
             target: '_blank',
