@@ -10,7 +10,7 @@ const LegalLinks = ({ className, links }) => (
     <ul className={className}>
       {links.map(link => (
         <li data-locator={getLocator(link.name)}>
-          <Anchor anchorVariation="primary" to={link.url}>
+          <Anchor anchorVariation="primary" to={link.url} target={link.target}>
             {link.text}
           </Anchor>
         </li>
