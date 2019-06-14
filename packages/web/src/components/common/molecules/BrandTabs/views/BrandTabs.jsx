@@ -10,12 +10,11 @@ const BrandTabs = ({ className, data }) => (
   <Fragment>
     <div className={className}>
       {data.map(tabData => {
-        const { active, alt, logoClass, target, title, url } = tabData;
+        const { active, alt, logoClass, target, url } = tabData;
         return (
           <Anchor
             className={active ? 'header-topnav__brand-tabs--activeTab' : ''}
             to={url}
-            title={title}
             target={target}
             key={tabData.id}
           >
@@ -23,7 +22,6 @@ const BrandTabs = ({ className, data }) => (
               alt={alt}
               className={logoClass}
               src={config.BRAND_TABS[logoClass]}
-              title={title}
               data-locator={config.BRAND_TABS.data_locator[logoClass]}
             />
           </Anchor>
