@@ -9,26 +9,26 @@ export const breakpoints = {
 };
 
 export const mediaQuery = {
-  small: `(min-width: ${breakpoints.small})`,
-  smallMax: `(max-width: ${breakpoints.smallMax})`,
+  small: `only screen and (min-width: ${breakpoints.small})`,
+  smallMax: `only screen and (max-width: ${breakpoints.smallMax})`,
   smallOnly: `
-    (min-width: ${breakpoints.small})
+  only screen and (min-width: ${breakpoints.small})
     and
     (max-width: ${breakpoints.smallMax})
   `,
-  medium: `(min-width: ${breakpoints.medium})`,
-  mediumMax: `(max-width: ${breakpoints.mediumMax})`,
+  medium: `only screen and (min-width: ${breakpoints.medium})`,
+  mediumMax: `only screen and (max-width: ${breakpoints.mediumMax})`,
   mediumOnly: `
-    (min-width: ${breakpoints.medium})
+  only screen and (min-width: ${breakpoints.medium})
     and
     (max-width: ${breakpoints.mediumMax})
   `,
-  large: `(min-width: ${breakpoints.large})`,
-  largeMax: `(max-width: ${breakpoints.largeMax})`,
+  large: `only screen and (min-width: ${breakpoints.large})`,
+  largeMax: `only screen and (max-width: ${breakpoints.largeMax})`,
   largeOnly: `
-    (min-width: ${breakpoints.large})
+  only screen and (min-width: ${breakpoints.large})
     and
     (max-width: ${breakpoints.largeMax})
   `,
-  xlarge: `(min-width: ${breakpoints.xlarge})`,
+  xlarge: `only screen and (min-width: ${breakpoints.xlarge})`,
 };
