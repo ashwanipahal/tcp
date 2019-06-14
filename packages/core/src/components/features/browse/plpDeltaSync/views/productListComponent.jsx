@@ -1,6 +1,6 @@
+/* eslint-disable */
 import React from 'react';
 
-// eslint-disable-next-line
 const ProductList = ({ data }) => {
   return (
     <React.Fragment>

@@ -1,7 +1,7 @@
+/* eslint-disable */
 import React from 'react';
 import { Text, FlatList, View } from 'react-native';
 
-// eslint-disable-next-line
 const ProductTile = ({ item }) => {
   return (
     <View key={item.id} className="product-item">
@@ -12,7 +12,6 @@ const ProductTile = ({ item }) => {
   );
 };
 
-// eslint-disable-next-line
 export const ProductList = ({ data }) => {
   return (
     <React.Fragment>
