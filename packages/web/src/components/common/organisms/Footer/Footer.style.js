@@ -24,13 +24,8 @@ export default css`
   .default-offset {
     padding: 0 ${props => props.theme.gridDimensions.gridOffsetObj.small}px;
   }
-  @media ${props => props.theme.mediaQuery.small} {
-    .footer-middle.mobile {
-      display: flex;
-    }
-    .footer-middle.desktop {
-      display: none;
-    }
+  .footer-middle.desktop {
+    display: none;
   }
   @media ${props => props.theme.mediaQuery.medium} {
     .default-offset {

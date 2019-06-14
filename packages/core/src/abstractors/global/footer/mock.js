@@ -1,3 +1,5 @@
+const accountLink = 'https://www.childrensplace.com/us/account';
+
 export default {
   footer_top: {
     email_sms_signup: {
@@ -51,13 +53,19 @@ export default {
       },
       sub_links: [
         {
-          url: 'https://www.childrensplace.com/us/account',
+          url: accountLink,
+          title: 'Create An Account title',
+          text: 'Create An Account',
+          target: '',
+        },
+        {
+          url: accountLink,
           title: 'Check Point Balance title',
           text: 'Check Point Balance',
           target: '',
         },
         {
-          url: 'https://www.childrensplace.com/us/account',
+          url: accountLink,
           title: 'Redeem rewards title',
           text: 'Redeem Rewards',
           target: '',
@@ -138,11 +146,6 @@ export default {
             text: 'SHOPPING',
             links: [
               {
-                url: '/',
-                text: 'Log Out',
-                title: 'Log Out Title',
-              },
-              {
                 url:
                   'https://www.childrensplace.com/us/content/childrens-place-coupons?icid=coupon_glft_cplp_txt_121914_null',
                 text: 'Coupons',
@@ -152,6 +155,31 @@ export default {
                 url: 'https://www.childrensplace.com/us/store-locator',
                 text: 'Store Locator',
                 title: 'Store Locator Title',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        items: [
+          {
+            // isSubHeader: true,
+            text: 'ABOUT US',
+            links: [
+              {
+                url: 'https://corporate.childrensplace.com/corporate-responsibility',
+                text: 'Public Relations',
+                title: 'Public Relations Title',
+              },
+              {
+                url: 'https://childrensplace.gcs-web.com',
+                text: 'Investor Relations',
+                title: 'Investor Relations Title',
+              },
+              {
+                url: 'https://corporate.childrensplace.com/careers',
+                text: 'Careers',
+                title: 'Careers Title',
               },
             ],
           },
@@ -194,35 +222,35 @@ export default {
         title: 'Terms and Conditions title',
         text: 'Terms and Conditions',
         name: 'terms_and_conditions',
-        target: '',
+        target: '_blank',
       },
       {
         url: 'https://www.childrensplace.com/us/help-center/#privacyPolicySectionli',
         title: 'Privacy Policy title',
         name: 'privacy_policy',
         text: 'Privacy Policy',
-        target: '',
+        target: '_blank',
       },
       {
         url: 'https://www.childrensplace.com/us/help-center/#cookiePolicySectionli',
         title: 'Cookie Policy title',
         name: 'cookie_policy',
         text: 'Cookie Policy',
-        target: '',
+        target: '_blank',
       },
       {
         url: 'https://www.childrensplace.com/us/content/supply-chain',
         title: 'California supply chain act title',
         name: 'california_supply_chain',
         text: 'California Supply Chains Act',
-        target: '',
+        target: '_blank',
       },
       {
         url: 'https://www.childrensplace.com/us/sitemap',
         title: 'Site Map title',
         name: 'site_map',
         text: 'Site Map',
-        target: '',
+        target: '_blank',
       },
     ],
   },
