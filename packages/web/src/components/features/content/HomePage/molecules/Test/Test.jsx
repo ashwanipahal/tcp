@@ -1,6 +1,5 @@
 import React from 'react';
 
-import styled from 'styled-components';
 import { Heading, BodyCopy } from '@tcp/core/styles/themes/TCP/typotheme';
 
 const Test = () => {
