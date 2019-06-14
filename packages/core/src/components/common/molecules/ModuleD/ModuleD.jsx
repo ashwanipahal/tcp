@@ -57,7 +57,7 @@ const ModuleD = ({ className, data }) => {
 
   return (
     <Grid className={className}>
-      <Anchor className="moduleD_textlink moduleD__title" to={titleUrl}>
+      <Anchor className="moduleD_textlink" to={titleUrl}>
         <h2 data-locator="moduleD_headerlink" title={title}>
           {text}
         </h2>

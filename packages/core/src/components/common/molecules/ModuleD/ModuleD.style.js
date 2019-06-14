@@ -24,8 +24,8 @@ export default css`
     margin: 60px auto;
   }
 
-  .moduleD__title {
-    font-family: ${props => props.theme.fonts.primaryFontFamily};
+  h2 {
+    font-family: ${props => props.theme.fonts.primaryFontBlackFamily};
     font-weight: ${props => props.theme.fonts.fontWeight.black};
     text-transform: uppercase;
     font-size: ${props => props.theme.fonts.fontSize.heading.small.h1}px;
