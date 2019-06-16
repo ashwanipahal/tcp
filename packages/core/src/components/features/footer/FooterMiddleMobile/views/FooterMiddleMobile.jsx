@@ -12,7 +12,6 @@ type Props = {
 const FooterMiddleMobile = ({ className, navLinkItems }: Props) => {
   return (
     <Col
-      className="footer-middle__slot--1"
       colSize={{
         large: 12,
         medium: 8,

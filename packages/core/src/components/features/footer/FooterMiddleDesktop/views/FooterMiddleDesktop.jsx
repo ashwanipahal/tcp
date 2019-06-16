@@ -21,7 +21,6 @@ const FooterMiddleDesktop = ({ navLinks, className }: Props) => {
       numberOfNavLinkCols -= 1;
       navLinkColumns.push(
         <Col
-          className="footer-middle__slot--"
           colSize={{
             large: 2,
             medium: 8,
@@ -43,7 +42,6 @@ const FooterMiddleDesktop = ({ navLinks, className }: Props) => {
     } else {
       navLinkColumns.push(
         <Col
-          className="footer-middle__slot--"
           colSize={{
             large: 2,
             medium: 8,
@@ -62,7 +60,6 @@ const FooterMiddleDesktop = ({ navLinks, className }: Props) => {
   return (
     <Fragment>
       <Col
-        className="footer-middle__slot--1"
         colSize={{
           large: 2,
           medium: 8,
@@ -76,7 +73,6 @@ const FooterMiddleDesktop = ({ navLinks, className }: Props) => {
         />
       </Col>
       <Col
-        className="footer-middle__slot--2"
         colSize={{
           large: 2,
           medium: 8,
@@ -91,7 +87,7 @@ const FooterMiddleDesktop = ({ navLinks, className }: Props) => {
       </Col>
       {numberOfNavLinkCols <= 5 ? (
         <Col
-          className="footer-middle__slot--3 divider"
+          className="divider"
           colSize={{
             large: 1,
             medium: 8,
