@@ -163,23 +163,39 @@ export default {
       {
         items: [
           {
-            // isSubHeader: true,
-            text: 'ABOUT US',
+            isSubHeader: true,
+            text: 'SECONDARY HEADER',
             links: [
               {
-                url: 'https://corporate.childrensplace.com/corporate-responsibility',
-                text: 'Public Relations',
-                title: 'Public Relations Title',
+                url: 'www.childrensplace.com/us/content/gift-options',
+                text: 'Gift Services',
+                title: 'Gift Services Title',
               },
               {
-                url: 'https://childrensplace.gcs-web.com',
-                text: 'Investor Relations',
-                title: 'Investor Relations Title',
+                url: 'https://childrensplace.com/us/favorites',
+                text: 'Favorites',
+                title: 'Favorites Title',
               },
               {
-                url: 'https://corporate.childrensplace.com/careers',
-                text: 'Careers',
-                title: 'Careers Title',
+                url: 'www.childrensplace.com/us/content/lookbook',
+                text: 'Personal Lookbooks',
+                title: 'Personal Lookbooks Title',
+              },
+              {
+                url: 'www.childrensplace.com/us/content/lookbook',
+                text: 'Personal Lookbooks',
+                title: 'Personal Lookbooks Title',
+              },
+              {
+                url:
+                  'www.childrensplace.com/us/content/mobile?icid=mbapp_glft_mbapplp_txt_070115_null',
+                text: 'Mobile App',
+                title: 'Mobile App Title',
+              },
+              {
+                url: '/',
+                text: 'Free Clothes',
+                title: 'Free Clothes Title',
               },
             ],
           },
