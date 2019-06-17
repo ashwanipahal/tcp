@@ -2,30 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
+import RichText from '@tcp/core/src/components/common/atoms/RichText';
 import config from '@tcp/web/config';
 import style from '../PromotionalArea.style';
 
-const renderPromotions = promotions => {
-  return promotions.map(item => {
-    return <div dangerouslySetInnerHTML={{ __html: item.text }} />;
-  });
-};
+const PromotionalArea = ({ className, data, mobile }) => {
+  const carouselConfig = mobile ? config.CAROUSEL_OPTIONS : config.CAROUSEL_FADE_OPTIONS;
+  const wrapperClass = mobile
+    ? 'header-topnav__promo-area--mobile'
+    : 'header-topnav__promo-area--tablet';
 
-const getMobilePomoArea = promotions => {
   return (
-    <div className="header-topnav__promo-area--mobile">
-      <Carousel options={config.CAROUSEL_OPTIONS}>{renderPromotions(promotions)}</Carousel>
+    <div className={className}>
+      <div className={wrapperClass}>
+        <Carousel options={carouselConfig}>
+          {data.map(promotion => {
+            return <RichText richTextHtml={promotion.text} dataLocator="global_promoareaimg" />;
+          })}
+        </Carousel>
+      </div>
     </div>
   );
 };
-
-const getDesktopPromoArea = promotions => {
-  return <div className="header-topnav__promo-area--tablet">{renderPromotions(promotions)}</div>;
-};
-
-const PromotionalArea = ({ className, data, mobile }) => (
-  <div className={className}>{mobile ? getMobilePomoArea(data) : getDesktopPromoArea(data)}</div>
-);
 
 PromotionalArea.propTypes = {
   className: PropTypes.string.isRequired,

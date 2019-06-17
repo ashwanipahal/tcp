@@ -39,9 +39,17 @@ export default css`
     transform: translate(0, -50%);
   }
 
-  @media ${props => props.theme.mediaQuery.smallMax} {
-    .header-topnav__promo-area--tablet {
+  .header-topnav__promo-area--tablet {
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
+    margin-top: 16px;
+
+    @media ${props => props.theme.mediaQuery.smallMax} {
       display: none;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-family: ${props => props.theme.fonts.secondaryFontSemilBoldFamily};
+      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy4}px;
     }
   }
 `;

@@ -14,6 +14,7 @@ const defaults = { ...config.CAROUSEL_DEFAULTS };
 
 const Carousel = ({ options, children }) => {
   const settings = { ...defaults, ...options };
+
   return (
     <CarouselStyle className="TCP_Carousel_Wrapper">
       <Slider {...settings} className="TCP_Carousel">
