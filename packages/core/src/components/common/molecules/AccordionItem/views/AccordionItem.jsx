@@ -9,10 +9,10 @@ import withStyles from '../../../hoc/withStyles';
 type Props = {
   className: string,
   titleText: string,
-  listArray: Object[],
   updateAccordionState: Function,
   index: number,
   children: Node,
+  activeClass: string,
 };
 
 /**
@@ -28,13 +28,11 @@ type Props = {
 const AccordionItem = ({
   className,
   titleText,
-  listArray,
   updateAccordionState,
   index,
   children,
+  activeClass,
 }: Props) => {
-  const activeClass = listArray && listArray.length ? 'inactive' : 'active';
-
   return (
     <Fragment>
       <AccordionHeader

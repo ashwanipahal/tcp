@@ -26,6 +26,22 @@ const FONT_SIZE = {
     },
   },
   body: {
+    bodytext: {
+      copy1: 10,
+      copy2: 12,
+      copy3: 14,
+      copy4: 16,
+      copy5: 18,
+      copy6: 20,
+      copy7: 22,
+      copy8: 24,
+      copy9: 28,
+      copy10: 32,
+      copy11: 36,
+      copy12: 42,
+      copy13: 48,
+    },
+
     large: {
       primary: 10,
       secondary: 13,

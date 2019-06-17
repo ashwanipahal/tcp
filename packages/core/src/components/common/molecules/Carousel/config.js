@@ -2,17 +2,20 @@
  * @description - Global config values
  */
 
+import theme from '@tcp/core/styles/themes/TCP';
+
+const { breakpoints } = theme;
 const config = {
   CAROUSEL_DEFAULTS: {
     accessibility: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 3000, // TODO: Has to come from CMS Config
     arrows: false,
     dots: false,
-    slidesToShow: 3,
-    speed: 300,
+    slidesToShow: 1,
+    speed: 300, // TODO: Has to come from CMS Config
     responsive: [
       {
-        breakpoint: 767, // TODO: Breakpoint has to come from config
+        breakpoint: parseInt(breakpoints.medium, 10) - 1,
         settings: {
           autoplay: true,
           arrows: true,
@@ -22,7 +25,7 @@ const config = {
         },
       },
       {
-        breakpoint: 1023, // TODO: Breakpoint has to come from config
+        breakpoint: parseInt(breakpoints.large, 10) - 1,
         settings: {
           autoplay: true,
           arrows: true,
@@ -32,10 +35,14 @@ const config = {
         },
       },
       {
-        breakpoint: 1024, // TODO: Breakpoint has to come from config
-        arrows: false,
-        autoplay: false,
-        settings: 'unslick',
+        breakpoint: parseInt(breakpoints.large, 10),
+        settings: {
+          autoplay: true,
+          arrows: true,
+          infinite: true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
       },
     ],
   },

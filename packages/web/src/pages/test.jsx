@@ -6,7 +6,7 @@ import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import RichText from '@tcp/core/src/components/common/atoms/RichText';
-import CarouselConfig from '@tcp/web/config';
+import CarouselConfig from '@tcp/web/src/config/carousel';
 import { PropTypes } from 'prop-types';
 import { initActions } from '../components/features/content/HomePage/container/HomePage.actions';
 import {

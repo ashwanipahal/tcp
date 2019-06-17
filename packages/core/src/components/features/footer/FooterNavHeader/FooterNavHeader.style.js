@@ -4,7 +4,7 @@ const GlobalCss = css`
   font-family: ${props => props.theme.fonts.secondaryFontSemilBoldFamily};
   font-size: ${props => props.theme.fonts.fontSize.heading.small.h6}px;
   color: ${props => props.theme.colors.ACCORDION.TEXT};
-  margin: 0 0 50px 0;
+  margin: 0 0 37px 0;
   ::after {
     content: '';
     height: 1px;
@@ -21,6 +21,9 @@ const GlobalCss = css`
     img {
       padding-bottom: 35px;
     }
+  }
+  &.subHeader {
+    margin-top: 24px;
   }
 `;
 

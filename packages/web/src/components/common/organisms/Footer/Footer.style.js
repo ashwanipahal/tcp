@@ -5,7 +5,6 @@ export default css`
     border-bottom: 2px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
   }
   .footer-bottom {
-    padding-top: 10px;
     background: ${props => props.theme.colors.WHITE};
   }
   .footer-top__slot--1 {
@@ -24,13 +23,8 @@ export default css`
   .default-offset {
     padding: 0 ${props => props.theme.gridDimensions.gridOffsetObj.small}px;
   }
-  @media ${props => props.theme.mediaQuery.small} {
-    .footer-middle.mobile {
-      display: flex;
-    }
-    .footer-middle.desktop {
-      display: none;
-    }
+  .footer-middle.desktop {
+    display: none;
   }
   @media ${props => props.theme.mediaQuery.medium} {
     .default-offset {
