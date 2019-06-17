@@ -1,11 +1,11 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
+import endpoints from '@tcp/core/src/service/endpoint';
+import fetchData from '@tcp/core/src/service/API';
 import { HOMEPAGE_CONSTANTS } from './homePage.constants';
 import { setHeaderlinks, setEspots } from './homePage.actions';
-import fetchData from '@tcp/core/src/service/API';
-import { endpoints } from '@tcp/core/src/service/endpoint';
 
-//TODO: Move it to _APP.js SAGA
-function* fetchTaxonomy(payload) {
+// TODO: Move it to _APP.js SAGA
+function* fetchTaxonomy() {
   console.log('fetchTaxonomy');
   try {
     const { baseURI, relURI, method } = endpoints.getTaxonomy;
