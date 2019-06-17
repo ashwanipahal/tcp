@@ -1,7 +1,7 @@
-/* eslint-disable */
 import React from 'react';
 import { WebView } from 'react-native';
 import fetchData from '@tcp/core/src/service/API';
+import { endpoints } from '@tcp/core/src/service/endpoint';
 import HTML from 'react-native-render-html';
 
 export class EspotContainer extends React.Component {
