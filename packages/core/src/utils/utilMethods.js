@@ -4,7 +4,4 @@ export default {
 
     return url.indexOf('thechildrensplace') > -1 ? 'tcp' : 'gymboree';
   },
-  stripPx(value) {
-    return value && value.replace('px', '');
-  },
 };

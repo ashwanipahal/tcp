@@ -3,7 +3,6 @@
  */
 
 import theme from '@tcp/core/styles/themes/TCP';
-import utilMethods from '@tcp/core/src/utils/utilMethods';
 
 const { breakpoints } = theme;
 const config = {
@@ -16,7 +15,7 @@ const config = {
     speed: 300, // TODO: Has to come from CMS Config
     responsive: [
       {
-        breakpoint: utilMethods.stripPx(breakpoints.medium) - 1,
+        breakpoint: parseInt(breakpoints.medium, 10) - 1,
         settings: {
           autoplay: true,
           arrows: true,
@@ -26,7 +25,7 @@ const config = {
         },
       },
       {
-        breakpoint: utilMethods.stripPx(breakpoints.large) - 1,
+        breakpoint: parseInt(breakpoints.large, 10) - 1,
         settings: {
           autoplay: true,
           arrows: true,
@@ -36,7 +35,7 @@ const config = {
         },
       },
       {
-        breakpoint: utilMethods.stripPx(breakpoints.large),
+        breakpoint: parseInt(breakpoints.large, 10),
         settings: {
           autoplay: true,
           arrows: true,
