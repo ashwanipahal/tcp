@@ -3,9 +3,9 @@ export default {
   'icon-twitter': '/static/images/twitter.svg',
   'icon-instagram': '/static/images/instagram.svg',
   'icon-pinterest': '/static/images/pinterest.svg',
-  'icon-at': '/static/images/at-icon.svg',
-  'icon-dollar': '/static/images/dollar-sign-icon.svg',
-  'icon-clock': '/static/images/clock-icon.svg',
+  promo_icon_at: '/static/images/at-icon.svg',
+  promo_icon_dollar: '/static/images/dollar-sign-icon.svg',
+  promo_icon_clock: '/static/images/clock-icon.svg',
   'icon-carrot-grey': '/static/images/carrot-icon-grey.svg',
   'icon-carrot-white': '/static/images/carrot-icon-white.svg',
 };
