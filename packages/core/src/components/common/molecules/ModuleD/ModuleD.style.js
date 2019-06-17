@@ -31,6 +31,10 @@ export default css`
     text-transform: uppercase;
     font-size: ${props => props.theme.fonts.fontSize.heading.small.h1}px;
     text-align: center;
+
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      font-size: ${props => props.theme.fonts.fontSize.heading.large.h3}px;
+    }
   }
 
   img {

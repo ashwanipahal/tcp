@@ -2,11 +2,8 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
-import Col from '@tcp/core/src/components/common/atoms/Col';
-import Row from '@tcp/core/src/components/common/atoms/Row';
-import Image from '@tcp/core/src/components/common/atoms/Image';
-import Button from '@tcp/core/src/components/common/atoms/Button';
-import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import { Anchor, Button, Col, Row, Image } from '@tcp/core/src/components/common/atoms';
+import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import style from './ModuleD.style';
 import withStyles from '../../hoc/withStyles';
 
@@ -58,9 +55,15 @@ const ModuleD = ({ className, data }) => {
   return (
     <Grid className={className}>
       <Anchor className="moduleD_textlink" to={url} target={target}>
-        <h2 data-locator="moduleD_headerlink" title={title}>
+        <Heading
+          HeadingLarge="two"
+          HeadingcolorSm="primary"
+          tag="h2"
+          data-locator="moduleD_headerlink"
+          title={title}
+        >
           {text}
-        </h2>
+        </Heading>
       </Anchor>
       <Row centered>
         {assets &&
@@ -95,12 +98,7 @@ const ModuleD = ({ className, data }) => {
 
       <Row centered>
         <Anchor href={button.url} target={button.target}>
-          <Button
-            buttonVariation="variable-width"
-            className="moduleD_button"
-            title={button.title}
-            // inheritedStyles={buttonStyle}
-          >
+          <Button buttonVariation="variable-width" className="moduleD_button" title={button.title}>
             {button.text}
           </Button>
         </Anchor>
