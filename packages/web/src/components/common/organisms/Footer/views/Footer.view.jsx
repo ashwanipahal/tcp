@@ -37,7 +37,7 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks, socialMediaLin
       <FooterMiddleMobile className={className} navLinkItems={navLinks} />
     </Row>
     <Row className="footer-middle desktop">
-      <FooterMiddleDesktop navLinks={navLinks} />
+      <FooterMiddleDesktop className={className} navLinks={navLinks} />
     </Row>
     <div className="footer-bottom">
       <Row className="fullbleed-mobile">
