@@ -11,9 +11,9 @@ type Props = {
 
 const FooterNavLinksList = ({ className, listArray }: Props) => {
   return (
-    <div className={`${className} list`}>
+    <ul className={`${className} list`}>
       {listArray.map(linkItems => (
-        <div className="achor-wrapper">
+        <li>
           <Anchor
             className={className}
             noLink
@@ -24,9 +24,9 @@ const FooterNavLinksList = ({ className, listArray }: Props) => {
           >
             {linkItems.text}
           </Anchor>
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 };
 

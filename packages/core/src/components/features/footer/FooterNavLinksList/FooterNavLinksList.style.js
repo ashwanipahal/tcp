@@ -1,7 +1,10 @@
 import { css } from 'styled-components';
 
 const FooterNavLinksListCss = css`
-  div {
+  list-style-type: none;
+  padding-inline-start: 0;
+  margin: 0;
+  li {
     height: 34px;
     ${props =>
       props.insideAcccordion
@@ -24,6 +27,9 @@ const FooterNavLinksListCss = css`
       border-bottom: 2px solid ${props => props.theme.colors.ANCHOR.SECONDARY};
       padding-bottom: 4px;
       text-decoration: none;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.fonts.fontSize.promo2.large}px;
     }
   }
 `;
