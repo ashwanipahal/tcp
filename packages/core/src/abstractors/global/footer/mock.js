@@ -181,9 +181,6 @@ export default {
           {
             text: 'SHOPPING',
             links: [
-              /**
-                The Mom Space
-                Blog */
               {
                 url: 'https://www.childrensplace.com/us/account',
                 text: 'Create an Account',

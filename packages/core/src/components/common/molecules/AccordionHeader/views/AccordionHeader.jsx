@@ -14,6 +14,9 @@ const AccordionHeader = ({ className, titleText, updateAccordionState, index }: 
   return (
     // eslint-disable-next-line
     <h4
+      data-locator={`accordion-${index}`}
+      // eslint-disable-next-line
+      tabIndex="0"
       className={className}
       onClick={updateAccordionState}
       onKeyPress={updateAccordionState}
