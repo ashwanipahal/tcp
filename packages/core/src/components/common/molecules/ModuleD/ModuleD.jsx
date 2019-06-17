@@ -28,7 +28,14 @@ const colSize6Elements = {
   xlarge: 2,
 };
 
-const ignoreGutter = [{}, { small: true }, {}, { small: true }, {}, { small: true }];
+const ignoreGutter = [
+  {},
+  { small: true, medium: true },
+  {},
+  { small: true, medium: true },
+  {},
+  { small: true, medium: true },
+];
 
 const ModuleD = ({ className, data }) => {
   const mod = data.data.moduleD;
