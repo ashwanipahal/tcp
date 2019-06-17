@@ -2,6 +2,10 @@
  * @description - Global config values
  */
 
+import theme from '@tcp/core/styles/themes/TCP';
+import utilMethods from '@tcp/core/src/utils/utilMethods';
+
+const { breakpoints } = theme;
 const config = {
   CAROUSEL_DEFAULTS: {
     accessibility: true,
@@ -12,7 +16,7 @@ const config = {
     speed: 300, // TODO: Has to come from CMS Config
     responsive: [
       {
-        breakpoint: 767, // TODO: Breakpoint has to come from CMS config
+        breakpoint: utilMethods.stripPx(breakpoints.medium) - 1,
         settings: {
           autoplay: true,
           arrows: true,
@@ -22,7 +26,7 @@ const config = {
         },
       },
       {
-        breakpoint: 1023, // TODO: Breakpoint has to come from CMS config
+        breakpoint: utilMethods.stripPx(breakpoints.large) - 1,
         settings: {
           autoplay: true,
           arrows: true,
@@ -32,7 +36,7 @@ const config = {
         },
       },
       {
-        breakpoint: 1024, // TODO: Breakpoint has to come from CMS config
+        breakpoint: utilMethods.stripPx(breakpoints.large),
         settings: {
           autoplay: true,
           arrows: true,

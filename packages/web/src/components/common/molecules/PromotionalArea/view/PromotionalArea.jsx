@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import RichText from '@tcp/core/src/components/common/atoms/RichText';
-import config from '@tcp/web/config';
+import CarouselConfig from '@tcp/web/src/config/carousel';
 import style from '../PromotionalArea.style';
 
 const PromotionalArea = ({ className, data, mobile }) => {
-  const carouselConfig = mobile ? config.CAROUSEL_OPTIONS : config.CAROUSEL_FADE_OPTIONS;
+  const carouselConfig = mobile
+    ? CarouselConfig.CAROUSEL_OPTIONS
+    : CarouselConfig.CAROUSEL_FADE_OPTIONS;
   const wrapperClass = mobile
     ? 'header-topnav__promo-area--mobile'
     : 'header-topnav__promo-area--tablet';
@@ -15,7 +17,7 @@ const PromotionalArea = ({ className, data, mobile }) => {
   return (
     <div className={className}>
       <div className={wrapperClass}>
-        <Carousel options={carouselConfig}>
+        <Carousel options={carouselConfig} theme="dark">
           {data.map(promotion => {
             return <RichText richTextHtml={promotion.text} dataLocator="global_promoareaimg" />;
           })}

@@ -9,14 +9,15 @@ import Slider from 'react-slick';
 import { PropTypes } from 'prop-types';
 import config from './config';
 import CarouselStyle from './CarouselStyle';
+import withStyles from '../../hoc/withStyles';
 
 const defaults = { ...config.CAROUSEL_DEFAULTS };
 
-const Carousel = ({ options, children }) => {
+const Carousel = ({ options, children, theme }) => {
   const settings = { ...defaults, ...options };
 
   return (
-    <CarouselStyle className="TCP_Carousel_Wrapper">
+    <CarouselStyle className="TCP_Carousel_Wrapper" theme={theme}>
       <Slider {...settings} className="TCP_Carousel">
         {!children ? null : children}
       </Slider>
@@ -30,6 +31,7 @@ Carousel.propTypes = {
     autoplaySpeed: PropTypes.number,
     speed: PropTypes.number,
   }),
+  theme: PropTypes.string,
 };
 
 Carousel.defaultProps = {
@@ -38,6 +40,8 @@ Carousel.defaultProps = {
     autoplaySpeed: PropTypes.number,
     speed: PropTypes.number,
   }),
+  theme: PropTypes.string,
 };
 
-export default Carousel;
+export default withStyles(Carousel, CarouselStyle);
+export { Carousel as CarouselVanilla };

@@ -5,11 +5,15 @@ export default css`
 
   .header-topnav__row {
     overflow: auto;
-    padding: 0 15px 0 6px;
+    padding: 0 14px;
     position: relative;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      padding: 0 16px;
+      padding: 0 15px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      padding: 0 15px 0 6px;
     }
   }
 
