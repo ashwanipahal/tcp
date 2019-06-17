@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import RichText from '@tcp/core/src/components/common/atoms/RichText/views/RichText';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLocator } from '@tcp/web/src/utils';
 import style from '../Copyright.style';
-import { getLocator } from '../../../../../utils';
 
 const Copyright = ({ className, children }) => (
   <React.Fragment>

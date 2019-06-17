@@ -13,11 +13,11 @@ import withStyles from '../../hoc/withStyles';
 
 const defaults = { ...config.CAROUSEL_DEFAULTS };
 
-const Carousel = ({ options, children, theme }) => {
+const Carousel = ({ options, children, carouselTheme }) => {
   const settings = { ...defaults, ...options };
 
   return (
-    <CarouselStyle className="TCP_Carousel_Wrapper" theme={theme}>
+    <CarouselStyle className="TCP_Carousel_Wrapper" carouselTheme={carouselTheme}>
       <Slider {...settings} className="TCP_Carousel">
         {!children ? null : children}
       </Slider>
@@ -31,7 +31,7 @@ Carousel.propTypes = {
     autoplaySpeed: PropTypes.number,
     speed: PropTypes.number,
   }),
-  theme: PropTypes.string,
+  carouselTheme: PropTypes.string,
 };
 
 Carousel.defaultProps = {
@@ -40,7 +40,7 @@ Carousel.defaultProps = {
     autoplaySpeed: PropTypes.number,
     speed: PropTypes.number,
   }),
-  theme: PropTypes.string,
+  carouselTheme: PropTypes.string,
 };
 
 export default withStyles(Carousel, CarouselStyle);

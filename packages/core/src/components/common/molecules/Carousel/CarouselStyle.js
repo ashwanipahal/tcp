@@ -1,7 +1,8 @@
 import styled from 'styled-components';
+import { getIconPath } from '@tcp/web/src/utils';
 
-const darkArrow = '/static/images/carrot-icon-grey.svg';
-const lightArrow = '/static/images/carrot-icon-white.svg';
+const darkArrow = getIconPath('icon-carrot-grey');
+const lightArrow = getIconPath('icon-carrot-white');
 const CarouselStyle = styled.div`
   .slick-slider {
     position: relative;
@@ -108,15 +109,15 @@ const CarouselStyle = styled.div`
   }
   @media only screen and (max-width: 767px) {
     .slick-prev {
-      background: url(${props => (props.theme === 'dark' ? lightArrow : darkArrow)}) no-repeat
-        center center;
+      background: url(${props => (props.carouselTheme === 'dark' ? lightArrow : darkArrow)})
+        no-repeat center center;
       background-size: 6px 10px;
       height: 10px;
       width: 6px;
     }
     .slick-next {
-      background: url(${props => (props.theme === 'dark' ? lightArrow : darkArrow)}) no-repeat
-        center center;
+      background: url(${props => (props.carouselTheme === 'dark' ? lightArrow : darkArrow)})
+        no-repeat center center;
       background-size: 6px 10px;
       height: 10px;
       width: 6px;
@@ -124,12 +125,12 @@ const CarouselStyle = styled.div`
   }
   @media only screen and (min-width: 768px) {
     .slick-prev {
-      background: url(${props => (props.theme === 'dark' ? lightArrow : darkArrow)}) no-repeat
-        center center;
+      background: url(${props => (props.carouselTheme === 'dark' ? lightArrow : darkArrow)})
+        no-repeat center center;
     }
     .slick-next {
-      background: url(${props => (props.theme === 'dark' ? lightArrow : darkArrow)}) no-repeat
-        center center;
+      background: url(${props => (props.carouselTheme === 'dark' ? lightArrow : darkArrow)})
+        no-repeat center center;
     }
   }
 

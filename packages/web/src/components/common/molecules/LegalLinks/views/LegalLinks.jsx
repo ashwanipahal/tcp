@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getLocator } from '@tcp/web/src/utils';
 import style from '../LegalLinks.style';
-import { getLocator } from '../../../../../utils';
 
 const LegalLinks = ({ className, links }) => (
   <React.Fragment>
