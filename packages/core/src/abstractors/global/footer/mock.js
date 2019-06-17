@@ -143,28 +143,8 @@ export default {
       {
         items: [
           {
-            text: 'SHOPPING',
-            links: [
-              {
-                url:
-                  'https://www.childrensplace.com/us/content/childrens-place-coupons?icid=coupon_glft_cplp_txt_121914_null',
-                text: 'Coupons',
-                title: 'Coupons Title',
-              },
-              {
-                url: 'https://www.childrensplace.com/us/store-locator',
-                text: 'Store Locator',
-                title: 'Store Locator Title',
-              },
-            ],
-          },
-        ],
-      },
-      {
-        items: [
-          {
-            isSubHeader: true,
-            text: 'SECONDARY HEADER',
+            // isSubHeader: true,
+            text: 'SECOND HEADER',
             links: [
               {
                 url: 'www.childrensplace.com/us/content/gift-options',
@@ -182,6 +162,65 @@ export default {
                 title: 'Personal Lookbooks Title',
               },
               {
+                url:
+                  'www.childrensplace.com/us/content/mobile?icid=mbapp_glft_mbapplp_txt_070115_null',
+                text: 'Mobile App',
+                title: 'Mobile App Title',
+              },
+              {
+                url: '/',
+                text: 'Free Clothes',
+                title: 'Free Clothes Title',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        items: [
+          {
+            text: 'SHOPPING',
+            links: [
+              /**
+                The Mom Space
+                Blog */
+              {
+                url: 'https://www.childrensplace.com/us/account',
+                text: 'Create an Account',
+                title: 'Create an Account Title',
+              },
+              {
+                url:
+                  'https://www.childrensplace.com/us/content/childrens-place-coupons?icid=coupon_glft_cplp_txt_121914_null',
+                text: 'Coupons',
+                title: 'Coupons Title',
+              },
+              {
+                url: 'https://www.childrensplace.com/us/store-locator',
+                text: 'Store Locator',
+                title: 'Store Locator Title',
+              },
+              {
+                url: 'https://www.childrensplace.com/us/content/size-chart',
+                text: 'Size Chart',
+                title: 'Size Chart Title',
+              },
+              {
+                url: 'https://thechildrensplace.thegiftcardshop.com/',
+                text: 'Gift Cards',
+                title: 'Gift Cards Title',
+              },
+              {
+                url: 'www.childrensplace.com/us/content/gift-options',
+                text: 'Gift Services',
+                title: 'Gift Services Title',
+              },
+              {
+                url: 'https://childrensplace.com/us/favorites',
+                text: 'Favorites',
+                title: 'Favorites Title',
+              },
+              {
                 url: 'www.childrensplace.com/us/content/lookbook',
                 text: 'Personal Lookbooks',
                 title: 'Personal Lookbooks Title',
@@ -193,9 +232,19 @@ export default {
                 title: 'Mobile App Title',
               },
               {
-                url: '/',
-                text: 'Free Clothes',
-                title: 'Free Clothes Title',
+                url: 'www.childrensplace.com/us/content/recall-information',
+                text: 'Recall Information',
+                title: 'Recall Information Title',
+              },
+              {
+                url: 'https://www.childrensplacemomspace.com/Portal/default.aspx',
+                text: 'The Mom Space',
+                title: 'The Mom Space Title',
+              },
+              {
+                url: 'https://www.childrensplace.com/blog/',
+                text: 'Blog',
+                title: 'Blog Title',
               },
             ],
           },
