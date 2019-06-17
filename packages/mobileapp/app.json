@@ -1,4 +1,31 @@
 {
-  "displayName": "mobileapp",
-  "name": "mobileapp"
+  "expo": {
+    "name": "React Native App",
+    "slug": "my-project",
+    "privacy": "public",
+    "sdkVersion": "32.0.0",
+    "platforms": ["ios", "android"],
+    "rnCliPath": "../../node_modules/react-native/local-cli/cli.js",
+    "nodeModulesPath": "../../",
+    "entryPoint": "./index.js",
+    "packagerOpts": {
+      "config": "./rn-cli.config.js"
+    },
+    "ignoreNodeModulesValidation": true,
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/icon.png",
+    "splash": {
+      "image": "./assets/images/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true
+    }
+  }
 }
