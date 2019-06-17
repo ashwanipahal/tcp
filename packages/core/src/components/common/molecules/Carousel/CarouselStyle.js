@@ -1,9 +1,15 @@
 import styled from 'styled-components';
+import { getIconPath } from '@tcp/web/src/utils';
 
+const darkArrow = getIconPath('icon-carrot-grey');
+const lightArrow = getIconPath('icon-carrot-white');
 const CarouselStyle = styled.div`
   .slick-slider {
     position: relative;
-    margin: 0 30px;
+    margin: 0 14px;
+    padding: 0 24px;
+    line-height: 14px;
+    text-align: center;
     display: block;
     box-sizing: border-box;
     user-select: none;
@@ -94,8 +100,6 @@ const CarouselStyle = styled.div`
     width: 20px;
     height: 20px;
     padding: 0;
-    -webkit-transform: translate(0, -50%);
-    -ms-transform: translate(0, -50%);
     transform: translate(0, -50%);
     cursor: pointer;
     color: transparent;
@@ -105,34 +109,41 @@ const CarouselStyle = styled.div`
   }
   @media only screen and (max-width: 767px) {
     .slick-prev {
-      background: url(/static/images/carousel-prev.svg) no-repeat center center;
-      background-size: 6px auto;
+      background: url(${props => (props.carouselTheme === 'dark' ? lightArrow : darkArrow)})
+        no-repeat center center;
+      background-size: 6px 10px;
+      height: 10px;
+      width: 6px;
     }
     .slick-next {
-      background: url(/static/images/carousel-next.svg) no-repeat center center;
-      background-size: 6px auto;
+      background: url(${props => (props.carouselTheme === 'dark' ? lightArrow : darkArrow)})
+        no-repeat center center;
+      background-size: 6px 10px;
+      height: 10px;
+      width: 6px;
     }
   }
   @media only screen and (min-width: 768px) {
     .slick-prev {
-      background: url(/static/images/carousel-prev.svg) no-repeat center center;
+      background: url(${props => (props.carouselTheme === 'dark' ? lightArrow : darkArrow)})
+        no-repeat center center;
     }
     .slick-next {
-      background: url(/static/images/carousel-next.svg) no-repeat center center;
+      background: url(${props => (props.carouselTheme === 'dark' ? lightArrow : darkArrow)})
+        no-repeat center center;
     }
   }
 
   .slick-prev {
-    left: -20px;
-    transform: translate(-50%);
+    left: 0;
+    transform: rotateY(180deg) translate(0, -50%);
   }
   [dir='rtl'] .slick-prev {
     right: -20px;
     left: auto;
   }
   .slick-next {
-    right: -20px;
-    transform: translate(50%);
+    right: 0;
   }
   [dir='rtl'] .slick-next {
     right: auto;

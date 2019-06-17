@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 export default css`
-  margin: 5px 0 0 6px;
+  margin-top: 5px;
 
   a {
     border-radius: 5px 5px 0px 0px;
