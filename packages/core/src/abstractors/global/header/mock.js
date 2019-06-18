@@ -3,7 +3,7 @@ export default {
     brand_tabs: [
       {
         id: '1',
-        url: '/',
+        url: '#',
         alt: "The Children's Place",
         title: "The Children's Place",
         target: '',
@@ -24,7 +24,8 @@ export default {
       {
         id: '1',
         url: '/static/promo',
-        text: '<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 1.',
+        text:
+          '<a href="https://www.childrensplace.com/us/home" target="_blank" style="text-decoration: none; color: #000;"><b>1 FREE SHIPPING EVERY DAY!</b> No minimum purchase required.</a>',
         title: 'FREE SHIPPING EVERY DAY! No minimum purchase required 1.',
         target: '_blank',
         class: 'promo_message',
@@ -32,7 +33,8 @@ export default {
       {
         id: '2',
         url: '/static/promo2',
-        text: '<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 2.',
+        text:
+          '<a href="https://www.childrensplace.com/us/home" target="_blank" style="text-decoration: none; color: #000;"><b>2 FREE SHIPPING EVERY DAY!</b> No minimum purchase required.</a>',
         title: 'FREE SHIPPING EVERY DAY! No minimum purchase required 2.',
         target: '_blank',
         class: 'promo_message',
@@ -40,7 +42,8 @@ export default {
       {
         id: '3',
         url: '/static/promo3',
-        text: '<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 3.',
+        text:
+          '<a href="https://www.childrensplace.com/us/home" target="_blank" style="text-decoration: none; color: #000;"><b>3 FREE SHIPPING EVERY DAY!</b> No minimum purchase required.</a>',
         title: 'FREE SHIPPING EVERY DAY! No minimum purchase required 3.',
         target: '_blank',
         class: 'promo_message',
