@@ -2,8 +2,8 @@ import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon } from 'expo';
 import AppNavigator from './navigation/AppNavigator';
-import { initializeStore } from "./ReduxStore/initializeStore";
-import { Provider } from "react-redux";
+import { initializeStore } from './ReduxStore/initializeStore';
+import { Provider } from 'react-redux';
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
@@ -60,8 +60,6 @@ export default class App extends React.Component {
     this.setState({ isLoadingComplete: true });
   };
 }
-
-
 
 const styles = StyleSheet.create({
   container: {

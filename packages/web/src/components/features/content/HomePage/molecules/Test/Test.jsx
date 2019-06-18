@@ -1,11 +1,17 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
-import StyledTest from './styles/Test.style';
 
-const Test = ({ className }) => <StyledTest className={className}>Testing 12345...</StyledTest>;
+import { Heading, BodyCopy } from '@tcp/core/styles/themes/TCP/typotheme';
 
-Test.propTypes = {
-  className: PropTypes.string.isRequired,
+const Test = () => {
+  return (
+    <div>
+      <Heading HeadingLarge="three" HeadingcolorLg="secondary" tag="h1">
+        ALL H1 TO H6 variation large dynamic tag
+      </Heading>
+      <BodyCopy bodySize="five" tag="p">
+        bodylarge3
+      </BodyCopy>
+    </div>
+  );
 };
-
 export default Test;

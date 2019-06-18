@@ -4,10 +4,7 @@
     "slug": "my-project",
     "privacy": "public",
     "sdkVersion": "32.0.0",
-    "platforms": [
-      "ios",
-      "android"
-    ],
+    "platforms": ["ios", "android"],
     "rnCliPath": "../../node_modules/react-native/local-cli/cli.js",
     "nodeModulesPath": "../../",
     "entryPoint": "./index.js",
@@ -26,9 +23,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     }

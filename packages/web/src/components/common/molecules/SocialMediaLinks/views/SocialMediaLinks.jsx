@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Image from '@tcp/core/src/components/common/atoms/Image';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getIconPath, getLocator } from '../../../../../utils';
+import { getIconPath, getLocator } from '@tcp/web/src/utils';
 import style from '../SocialMediaLinks.style';
 
 const SocialMediaLinks = ({ className, connectWithUsLabel, links }) => (
@@ -15,7 +15,7 @@ const SocialMediaLinks = ({ className, connectWithUsLabel, links }) => (
       <div className="social-media-pallete">
         {links.map(link => {
           return (
-            <Anchor to={link.url}>
+            <Anchor to={link.url} target={link.target}>
               <Image
                 className="social-media-icon"
                 data-locator={getLocator(link.iconClass)}

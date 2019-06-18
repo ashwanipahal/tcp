@@ -5,7 +5,6 @@ export default css`
     border-bottom: 2px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
   }
   .footer-bottom {
-    padding-top: 10px;
     background: ${props => props.theme.colors.WHITE};
   }
   .footer-top__slot--1 {
@@ -24,6 +23,9 @@ export default css`
   .default-offset {
     padding: 0 ${props => props.theme.gridDimensions.gridOffsetObj.small}px;
   }
+  .footer-middle.desktop {
+    display: none;
+  }
   @media ${props => props.theme.mediaQuery.medium} {
     .default-offset {
       padding: 0 ${props => props.theme.gridDimensions.gridOffsetObj.medium}px;
@@ -36,6 +38,9 @@ export default css`
     }
   }
   @media ${props => props.theme.mediaQuery.large} {
+    .footer-top {
+      padding-bottom: 46px;
+    }
     .footer-bottom {
       background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
     }
@@ -48,6 +53,16 @@ export default css`
     }
     .footer-bottom__slot--1 {
       background-color: inherit;
+    }
+    .footer-middle.mobile {
+      display: none;
+    }
+    .footer-middle.desktop {
+      display: flex;
+      padding: 60px 0 64px;
+    }
+    .divider {
+      border-left: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
     }
   }
 `;

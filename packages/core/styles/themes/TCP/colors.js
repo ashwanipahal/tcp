@@ -65,4 +65,13 @@ export default {
     ERROR_BORDER: '#c84747',
     SUCCESS_BORDER: '#6dc927',
   },
+  ACCORDION: {
+    INACTIVE_HEADER: '#e5e5e5',
+    ACTIVE_HEADER: '#f7f7f7',
+    COLLAPSE_EXPAND_ICON: '#9b9b9b',
+    TEXT: '#1a1a1a',
+  },
+  FOOTER: {
+    DIVIDER: '#c3c3c3',
+  },
 };

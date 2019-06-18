@@ -6,10 +6,17 @@ const StyledRow = css`
       key => `
     @media ${props.theme.mediaQuery[key]} {
       ${
-        !props.inline_block
+        !props.noFlex
           ? `
         display: flex;
         flex-wrap: wrap;
+        `
+          : ``
+      }
+      ${
+        props.centered
+          ? `
+        justify-content: center;
         `
           : ``
       }

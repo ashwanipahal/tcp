@@ -58,9 +58,16 @@ const StyledCol = css`
   ${props =>
     props.theme.gridDimensions.gridBreakPointsKeys.map(
       key => `
+      @media ${props.theme.mediaQuery[`${key}Only`]} {
+        ${props.hideCol && props.hideCol[key] ? 'display: none' : ''};
+      }
       @media ${props.theme.mediaQuery[key]} {
-          ${!props.isNotInlineBlock ? 'display: inline-block;' : ''}
-          padding-right: ${getGutter(key, props.theme.gridDimensions)}%;
+          ${!props.isNotInlineBlock ? 'display: inline-block' : ''};
+          ${
+            !(props.ignoreGutter && props.ignoreGutter[key])
+              ? `padding-right: ${getGutter(key, props.theme.gridDimensions)}%`
+              : ''
+          };
           margin-left: ${
             props.offsetLeft && props.offsetLeft[key]
               ? calculateOffset(props.offsetLeft[key], key, props.theme.gridDimensions)
