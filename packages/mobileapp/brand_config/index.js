@@ -10,4 +10,3 @@ const brandConfigs = {
 };
 
 export default { ...brandConfigs[Config.APP_PIN], ...Config };
-

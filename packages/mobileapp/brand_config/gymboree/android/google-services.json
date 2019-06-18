@@ -1,10 +1,7 @@
 {
   "project_info": {
-    "project_id": "tcp",
+    "project_id": "tcp"
   },
-  "client": [
-    {
-    }
-  ],
+  "client": [{}],
   "configuration_version": "1"
 }

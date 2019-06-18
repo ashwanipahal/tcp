@@ -1,13 +1,13 @@
-import React from "react";
-import { Platform, StatusBar, StyleSheet, View } from "react-native";
-import { Provider } from "react-redux";
-import AppNavigator from "./navigation/AppNavigator";
-import { initializeStore } from "./ReduxStore/initializeStore";
+import React from 'react';
+import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Provider } from 'react-redux';
+import AppNavigator from './navigation/AppNavigator';
+import { initializeStore } from './ReduxStore/initializeStore';
 
 // Config from './brand_config';
 export default class App extends React.Component {
   state = {
-    isLoadingComplete: false
+    isLoadingComplete: false,
   };
 
   componentWillMount() {
@@ -18,7 +18,7 @@ export default class App extends React.Component {
     return (
       <Provider store={this.store}>
         <View style={styles.container}>
-          {Platform.OS === "ios" && <StatusBar barStyle="default" />}
+          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
           <AppNavigator />
         </View>
       </Provider>
@@ -39,6 +39,6 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff"
-  }
+    backgroundColor: '#fff',
+  },
 });
