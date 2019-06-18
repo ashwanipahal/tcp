@@ -61,7 +61,12 @@ const Header = ({ className, headerData }) => (
       </Row>
     </HeaderNav>
     <HeaderPromo
-      className="header-promo"
+      mobile
+      className="header-promo-area--mobile"
+      dataPromo={headerData.header_promo_area.promoTextBanners}
+    />
+    <HeaderPromo
+      className="header-promo-area--desktop"
       dataPromo={headerData.header_promo_area.promoTextBanners}
     />
     <HeaderLoyalty className="header-loyalty">

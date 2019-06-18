@@ -51,10 +51,13 @@ const config = {
     autoplaySpeed: 3000, // TODO: Has to come from CMS Config
     mobileFirst: true,
     slidesToShow: 1,
+    rows: 0,
+    variableWidth: true,
+    arrows: true,
     speed: 300, // TODO: Has to come from CMS Config
     responsive: [
       {
-        breakpoint: parseInt(breakpoints.large, 10) - 1,
+        breakpoint: parseInt(breakpoints.medium, 10) - 1,
         settings: 'unslick',
       },
     ],

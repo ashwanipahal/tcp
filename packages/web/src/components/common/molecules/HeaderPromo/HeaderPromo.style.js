@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const HeaderPromoContainer = styled.div`
   background-color: ${props => props.theme.colors.WHITE};
@@ -7,40 +7,16 @@ const HeaderPromoContainer = styled.div`
   height: 60px;
   text-align: center;
   text-transform: uppercase;
+  position: relative;
 `;
 
+// Need important to override the react-slick behavior
 const HeaderPromoItem = styled.div`
   background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
   height: 60px;
-  display: flex;
+  display: flex !important;
   justify-content: left;
   align-items: center;
-`;
-
-const HeaderPromoItemIcon = css`
-  .header-promo-item__contents span:first-child {
-    margin-right: 5px;
-  }
-
-  .header-promo__promo-banner .header-promo-item__icon {
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .header-promo__promo-banner--slot1 .header-promo-item__icon {
-    background-color: ${props => props.theme.colors.BRAND.BOYS};
-  }
-
-  .header-promo__promo-banner--slot2 .header-promo-item__icon {
-    background-color: ${props => props.theme.colors.PRIMARY.GREEN};
-  }
-
-  .header-promo__promo-banner--slot3 .header-promo-item__icon {
-    background-color: ${props => props.theme.colors.BRAND.PRIMARY};
-  }
 `;
 
 const HeaderPromoItemContents = styled.div`
@@ -57,4 +33,3 @@ const headerPromoStyles = {
 };
 
 export default headerPromoStyles;
-export { HeaderPromoItemIcon as headerIconStyles };
