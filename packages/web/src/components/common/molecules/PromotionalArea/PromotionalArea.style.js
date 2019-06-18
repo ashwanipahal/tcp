@@ -30,6 +30,7 @@ export default css`
 
   a {
     color: ${props => props.theme.colors.WHITE};
+    text-decoration: none;
 
     @media ${props => props.theme.mediaQuery.medium} {
       color: ${props => props.theme.colors.BLACK};

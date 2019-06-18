@@ -25,7 +25,7 @@ export default {
         id: '1',
         url: '/static/promo',
         text:
-          '<a href="https://www.childrensplace.com/us/home" target="_blank" style="text-decoration: none;"><b>1 FREE SHIPPING EVERY DAY!</b> No minimum purchase required.</a>',
+          '<a href="https://www.childrensplace.com/us/home" target="_blank"><b>1 FREE SHIPPING EVERY DAY!</b> No minimum purchase required.</a>',
         title: 'FREE SHIPPING EVERY DAY! No minimum purchase required 1.',
         target: '_blank',
         class: 'promo_message',
@@ -34,7 +34,7 @@ export default {
         id: '2',
         url: '/static/promo2',
         text:
-          '<a href="https://www.childrensplace.com/us/home" target="_blank" style="text-decoration: none;"><b>2 FREE SHIPPING EVERY DAY!</b> No minimum purchase required.</a>',
+          '<a href="https://www.childrensplace.com/us/home" target="_blank"><b>2 FREE SHIPPING EVERY DAY!</b> No minimum purchase required.</a>',
         title: 'FREE SHIPPING EVERY DAY! No minimum purchase required 2.',
         target: '_blank',
         class: 'promo_message',
@@ -43,7 +43,7 @@ export default {
         id: '3',
         url: '/static/promo3',
         text:
-          '<a href="https://www.childrensplace.com/us/home" target="_blank" style="text-decoration: none;"><b>3 FREE SHIPPING EVERY DAY!</b> No minimum purchase required.</a>',
+          '<a href="https://www.childrensplace.com/us/home" target="_blank"><b>3 FREE SHIPPING EVERY DAY!</b> No minimum purchase required.</a>',
         title: 'FREE SHIPPING EVERY DAY! No minimum purchase required 3.',
         target: '_blank',
         class: 'promo_message',
