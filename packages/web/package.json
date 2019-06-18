@@ -31,5 +31,31 @@
   "peerDependencies": {
     "flow-bin": "^0.82.0",
     "flow-typed": "^2.5.1"
+  },
+  "workspaces": {
+    "nohoist": [
+      "**/@babel/runtime",
+      "**/@babel/runtime/**",
+      "**/@babel/runtime-corejs2",
+      "**/@babel/runtime-corejs2/**",
+      "**/next",
+      "**/next/**",
+      "**/next-redux-saga",
+      "**/next-redux-saga/**",
+      "**/next-redux-wrapper",
+      "**/next-redux-wrapper/**",
+      "**/next-transpile-modules",
+      "**/next-transpile-modules/**",
+      "**/react",
+      "**/react/**",
+      "**/react-redux",
+      "**/react-redux/**",
+      "**/redux",
+      "**/redux/**",
+      "**/redux-saga",
+      "**/redux-saga/**",
+      "**/styled-components",
+      "**/styled-components/**"
+    ]
   }
 }
