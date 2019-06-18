@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Fragment } from 'react';
 import Link from 'next/link';
 
@@ -17,8 +18,8 @@ const NavBar = ({ links }) => (
       {links &&
         links.map(link => (
           <li key={link.id} className="navigation-level-one">
-            <Link href={'/ProductListingPage'} as={'/ProductListingPage'}>
-              <a>{link.name} </a>
+            <Link href="/ProductListingPage" as="/ProductListingPage">
+              <a>{link.name}</a>
             </Link>
           </li>
         ))}
