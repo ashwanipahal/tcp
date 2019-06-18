@@ -2,14 +2,18 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const DynamicComponent = ({ tag = 'div', children, ...props }) => {
+type Props = {
+  tag: string,
+  children?: Node,
+};
+
+const DynamicComponent = ({ tag = 'div', children, ...props }: Props) => {
   const WithComponent = styled(tag)``.withComponent(tag);
   return <WithComponent {...props}>{children}</WithComponent>;
 };
 
-type Props = {
-  tag: string,
-  children?: string,
+DynamicComponent.defaultProps = {
+  children: '',
 };
 
 export default DynamicComponent;

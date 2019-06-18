@@ -9,6 +9,7 @@ import theme from '@tcp/core/styles/themes/TCP';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { Header, Footer } from '../components/common/organisms';
 import { bootstrapData } from '../reduxStore/actions';
+
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 
@@ -50,7 +51,6 @@ class TCPWebApp extends App {
 
   render() {
     const { Component, pageProps, store } = this.props;
-
     return (
       <Container>
         <ThemeProvider theme={theme}>

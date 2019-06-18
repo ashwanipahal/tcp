@@ -14,6 +14,13 @@ const StyledRow = css`
           : ``
       }
       ${
+        props.centered
+          ? `
+        justify-content: center;
+        `
+          : ``
+      }
+      ${
         !props.fullBleed
           ? `
         margin-right: ${props.theme.gridDimensions.gridOffsetObj[key]}px;

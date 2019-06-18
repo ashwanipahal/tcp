@@ -6,6 +6,7 @@ type Props = {
   accordionItems: Object[],
   className: string,
   children: Object[],
+  defaultOpenIndex: number,
 };
 
 type State = {
@@ -33,7 +34,7 @@ export default class AccordionList extends React.Component<Props, State> {
     super(props);
     (this: any).changeAccordianState = this.changeAccordianState.bind(this);
     this.state = {
-      elementClicked: 0,
+      elementClicked: props.defaultOpenIndex ? props.defaultOpenIndex : -1,
       isExpanded: false,
     };
   }
@@ -73,9 +74,9 @@ export default class AccordionList extends React.Component<Props, State> {
             {index.toString() === elementClicked.toString() && !isExpanded ? (
               <AccordionItem
                 titleText={accordionItems[index].header.text}
-                listArray={accordionItems[index].links}
                 updateAccordionState={this.changeAccordianState}
                 index={index}
+                activeClass="inactive"
               >
                 {item}
               </AccordionItem>
@@ -84,9 +85,8 @@ export default class AccordionList extends React.Component<Props, State> {
                 titleText={accordionItems[index].header.text}
                 updateAccordionState={this.changeAccordianState}
                 index={index}
-              >
-                {``}
-              </AccordionItem>
+                activeClass="active"
+              />
             )}
           </div>
         ))}

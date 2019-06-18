@@ -8,6 +8,7 @@ type Props = {
   navLinkItems: Object[],
   updateAccordionState: Function,
   headerAsImage: boolean,
+  isSubHeader: boolean,
 };
 
 const FooterNavLinks = ({
@@ -15,6 +16,7 @@ const FooterNavLinks = ({
   navLinkItems,
   updateAccordionState,
   headerAsImage,
+  isSubHeader,
 }: Props) => {
   return (
     <div>
@@ -25,6 +27,7 @@ const FooterNavLinks = ({
             titleText={item.header.text}
             titleObj={item.header}
             updateAccordionState={updateAccordionState}
+            isSubHeader={isSubHeader}
           />
           <FooterNavLinksList listArray={item.links} />
         </div>
