@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { Anchor, Button, Col, Row, Image } from '@tcp/core/src/components/common/atoms';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
+import { getLocator } from '@tcp/web/src/utils';
 import style from './ModuleD.style';
 import withStyles from '../../hoc/withStyles';
 
@@ -67,7 +68,7 @@ const ModuleD = ({ className, data }) => {
           HeadingLarge="two"
           HeadingcolorSm="primary"
           tag="h2"
-          data-locator="moduleD_headerlink"
+          data-locator={getLocator('moduleD_headerlink')}
           title={title}
         >
           {text}
@@ -88,7 +89,7 @@ const ModuleD = ({ className, data }) => {
                     src={item.value.image.src}
                     alt={item.value.image.alt}
                     className="moduleD_image"
-                    data-locator="moduleD_image"
+                    data-locator={getLocator('moduleD_image')}
                   />
                 </Anchor>
               </div>
@@ -96,7 +97,7 @@ const ModuleD = ({ className, data }) => {
                 withCaret
                 centered
                 className="moduleD_textlink"
-                data-locator="moduleD_textlink"
+                data-locator={getLocator('moduleD_textlink')}
                 to={item.value.url}
                 target={item.value.target}
               >
@@ -112,7 +113,7 @@ const ModuleD = ({ className, data }) => {
             buttonVariation="variable-width"
             className="moduleD_button"
             title={button.title}
-            data-locator="moduleD_button"
+            data-locator={getLocator('moduleD_button')}
           >
             {button.text}
           </Button>
