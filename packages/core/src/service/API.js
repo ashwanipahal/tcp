@@ -1,29 +1,33 @@
 import superagent from 'superagent';
 
-async function fetchData(baseURL, relURL, params={}, method) {
-  let requestType = method;
-  let requestUrl = baseURL + relURL;
+async function fetchData(baseURL, relURL, params = {}, method) {
+  const requestType = method;
+  const requestUrl = baseURL + relURL;
   let reqSetting = {};
 
   if (!params.unbxd) {
     reqSetting = {
-        ...reqSetting,
-        langId: params.langId,
-        storeId: params.storeId,
-        Pragma: 'no-cache',
-        Expires: 0,
-        catalogId: params.catalogId,
-        deviceType: params.isMobile ? 'mobile' : 'desktop',
-        'Cache-Control': 'no-store, must-revalidate'
-      };
+      ...reqSetting,
+      langId: params.langId,
+      storeId: params.storeId,
+      Pragma: 'no-cache',
+      Expires: 0,
+      catalogId: params.catalogId,
+      deviceType: params.isMobile ? 'mobile' : 'desktop',
+      'Cache-Control': 'no-store, must-revalidate',
+    };
   }
-  let request = superagent[requestType](requestUrl)
+  const request = superagent[requestType](requestUrl)
     .set(reqSetting)
     .accept('application/json');
   // .timeout(reqTimeout);
 
   if (params.header) {
     request.set(params.header);
+  }
+
+  if (params.payload) {
+    request.send(params.payload);
   }
 
   // if (!args.webService.unbxd) {
@@ -42,50 +46,51 @@ async function fetchData(baseURL, relURL, params={}, method) {
   // } else {
   //   request.send(args.body);
   // }
-  let result = new Promise((resolve, reject) => {
+  const result = new Promise((resolve, reject) => {
     request
-      .then((response) => {
-  //        console.log("resposne *************", response);
+      .then(response => {
+        //        console.log("resposne *************", response);
         resolve(response);
-  // eslint-disable-next-line prefer-rest-params
-  //      apiCacheManager.setCachedResult(cacheArgs, response);
-      //   webServiceSubscriber.notifyServiceResponse({
-      //     request: {
-      //       body: args.body,
-      //       header: args.header,
-      //       settings: reqSetting
-      //     },
-      //     response: response.body
-      //   }, args.webService.URI);
-      // })
-      // .catch((err) => {
+        // eslint-disable-next-line prefer-rest-params
+        //      apiCacheManager.setCachedResult(cacheArgs, response);
+        //   webServiceSubscriber.notifyServiceResponse({
+        //     request: {
+        //       body: args.body,
+        //       header: args.header,
+        //       settings: reqSetting
+        //     },
+        //     response: response.body
+        //   }, args.webService.URI);
+        // })
+        // .catch((err) => {
 
-      //   trackError({
-      //     error: err,
-      //     tags: { 
-      //       component: 'ApiHelper',
-      //       endpoint: args.webService.URI,
-      //       'trace-request-id': reqSetting['tcp-trace-request-id'],
-      //       'trace-session-id': reqSetting['tcp-trace-session-id']
-      //     },
-      //     extraData: {
-      //       ...args,
-      //       ...reqSetting
-      //     },
-      //     groupKeys: ['api-error', args.webService.URI]
-      //   });
+        //   trackError({
+        //     error: err,
+        //     tags: {
+        //       component: 'ApiHelper',
+        //       endpoint: args.webService.URI,
+        //       'trace-request-id': reqSetting['tcp-trace-request-id'],
+        //       'trace-session-id': reqSetting['tcp-trace-session-id']
+        //     },
+        //     extraData: {
+        //       ...args,
+        //       ...reqSetting
+        //     },
+        //     groupKeys: ['api-error', args.webService.URI]
+        //   });
 
-      //   reject(err);
+        //   reject(err);
 
-      //   webServiceSubscriber.notifyServiceResponse({
-      //     request: {
-      //       body: args.body,
-      //       header: args.header,
-      //       settings: reqSetting
-      //     },
-      //     response: err.response && err.response.body
-      //   }, args.webService.URI);
-      }).catch((e) => {
+        //   webServiceSubscriber.notifyServiceResponse({
+        //     request: {
+        //       body: args.body,
+        //       header: args.header,
+        //       settings: reqSetting
+        //     },
+        //     response: err.response && err.response.body
+        //   }, args.webService.URI);
+      })
+      .catch(e => {
         console.log(e);
       });
   });
@@ -94,4 +99,3 @@ async function fetchData(baseURL, relURL, params={}, method) {
 }
 
 export default fetchData;
-
