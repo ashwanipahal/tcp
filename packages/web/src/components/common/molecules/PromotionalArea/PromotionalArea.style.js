@@ -14,6 +14,15 @@ export default css`
     }
   }
 
+  .slick-slider {
+    padding: 0 38px;
+  }
+
+  .slick-arrow {
+    width: 38px;
+    height: 30px;
+  }
+
   .header-topnav__promo-area--tablet {
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     margin-top: 16px;

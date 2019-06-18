@@ -6,7 +6,6 @@ const lightArrow = getIconPath('icon-carrot-white');
 const CarouselStyle = styled.div`
   .slick-slider {
     position: relative;
-    margin: 0 14px;
     padding: 0 24px;
     line-height: 14px;
     text-align: center;
@@ -111,16 +110,10 @@ const CarouselStyle = styled.div`
     .slick-prev {
       background: url(${props => (props.carouselTheme === 'dark' ? lightArrow : darkArrow)})
         no-repeat center center;
-      background-size: 6px 10px;
-      height: 10px;
-      width: 6px;
     }
     .slick-next {
       background: url(${props => (props.carouselTheme === 'dark' ? lightArrow : darkArrow)})
         no-repeat center center;
-      background-size: 6px 10px;
-      height: 10px;
-      width: 6px;
     }
   }
   @media only screen and (min-width: 768px) {
