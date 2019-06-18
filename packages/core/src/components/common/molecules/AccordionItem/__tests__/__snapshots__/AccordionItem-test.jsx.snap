@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccordionItem component renders correctly 1`] = `
+Array [
+  .c1 {
+  font-family: Nunito,Arial,Helvetica,sans-serif;
+  color: #1a1a1a;
+  line-height: 1.15;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.c0.accordion {
+  height: 34px;
+  padding: 18px 15px 0;
+  margin: 0;
+}
+
+.c0.accordion.inactive {
+  background: #e5e5e5;
+}
+
+.c0.accordion.active {
+  background: #f7f7f7;
+}
+
+.c0.active::after {
+  content: '+';
+  right: 15px;
+  position: absolute;
+  font-weight: bold;
+  font-size: 16px;
+  color: #9b9b9b;
+}
+
+.c0.inactive::after {
+  content: '';
+  right: 15px;
+  position: absolute;
+  background: #9b9b9b;
+  height: 2px;
+  width: 10px;
+  margin-top: 5px;
+}
+
+<h4
+    className="accordion-list c0 accordion active c1"
+    data-index={1}
+    data-locator="accordion-1"
+    tabIndex="0"
+  >
+    Heading
+  </h4>,
+  "<div className=\\"abcd\\"></div>",
+]
+`;
+
+exports[`AccordionItem component renders correctly with no index 1`] = `
+Array [
+  .c1 {
+  font-family: Nunito,Arial,Helvetica,sans-serif;
+  color: #1a1a1a;
+  line-height: 1.15;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.c0.accordion {
+  height: 34px;
+  padding: 18px 15px 0;
+  margin: 0;
+}
+
+.c0.accordion.inactive {
+  background: #e5e5e5;
+}
+
+.c0.accordion.active {
+  background: #f7f7f7;
+}
+
+.c0.active::after {
+  content: '+';
+  right: 15px;
+  position: absolute;
+  font-weight: bold;
+  font-size: 16px;
+  color: #9b9b9b;
+}
+
+.c0.inactive::after {
+  content: '';
+  right: 15px;
+  position: absolute;
+  background: #9b9b9b;
+  height: 2px;
+  width: 10px;
+  margin-top: 5px;
+}
+
+<h4
+    className="accordion-list c0 accordion active c1"
+    data-index={0}
+    data-locator="accordion-0"
+    tabIndex="0"
+  >
+    Heading
+  </h4>,
+  "<div className=\\"abcd\\"></div>",
+]
+`;
