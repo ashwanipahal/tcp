@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getPlpProducts } from './ProductListingPage.actions';
 import { ProductListView } from '../views/ProductListingPage.view';
+import getExpensivePlpProducts from './ProductListingPage.storeview';
 
 class ProductListingPageContainer extends React.Component {
   componentDidMount() {
@@ -16,7 +17,7 @@ class ProductListingPageContainer extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    products: state.ProductListingPageReducer.products,
+    products: getExpensivePlpProducts(state),
   };
 }
 

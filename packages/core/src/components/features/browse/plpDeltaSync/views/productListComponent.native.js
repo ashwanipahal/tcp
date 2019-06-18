@@ -12,7 +12,7 @@ const ProductTile = ({ item }) => {
   );
 };
 
-export const ProductList = ({ data }) => {
+const ProductList = ({ data }) => {
   return (
     <React.Fragment>
       <Text>PLP DeltaSync Page</Text>
@@ -20,3 +20,5 @@ export const ProductList = ({ data }) => {
     </React.Fragment>
   );
 };
+
+export default ProductList;
