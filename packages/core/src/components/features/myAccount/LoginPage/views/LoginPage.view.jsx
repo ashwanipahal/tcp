@@ -2,6 +2,8 @@
  * These are temporary changes for a dummy login page
  */
 
+// @flow
+
 import React from 'react';
 import LoginPageStyle from '../styles/LoginPage.style';
 import TextBox from '../../../../common/atoms/TextBox';
@@ -10,7 +12,13 @@ import Grid from '../../../../common/molecules/Grid';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 
-class LoginView extends React.PureComponent {
+type Props = {
+  getUserInfo: () => void,
+  onSubmit: Object => void,
+  loginInfo: Object,
+};
+
+class LoginView extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
@@ -55,8 +63,9 @@ class LoginView extends React.PureComponent {
     });
   };
 
+  /* eslint-disable */
   render() {
-    const { onSubmit, loginInfo } = this.props;
+    const { loginInfo } = this.props;
 
     if (Object.keys(loginInfo).length === 0) {
       return null;

@@ -2,7 +2,7 @@
  * These are temporary changes for a dummy login page
  */
 
-import { LOGINPAGE_CONSTANTS } from '../LoginPage.constants';
+import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
 
 export const login = payload => {
   return {

@@ -1,14 +1,21 @@
 /**
  * These are temporary changes for a dummy login page
  */
+// @flow
 
 import React from 'react';
 import { connect } from 'react-redux';
-import { login, getUserInfo as getUserInfoAction } from './LoginPage.actions';
+import { login, getUserInfo } from './LoginPage.actions';
 import LoginView from '../views/LoginPage.view';
 
-const LoginPageContainer = ({ onSubmit, loginInfo, getUserInfo }) => (
-  <LoginView onSubmit={onSubmit} loginInfo={loginInfo} getUserInfo={getUserInfo} />
+type Props = {
+  onSubmit: (SyntheticEvent<>, Object) => void,
+  loginInfo: Object,
+  getUserInfoAction: void,
+};
+
+const LoginPageContainer = ({ onSubmit, loginInfo, getUserInfoAction }: Props) => (
+  <LoginView onSubmit={onSubmit} loginInfo={loginInfo} getUserInfo={getUserInfoAction} />
 );
 
 function mapDispatchToProps(dispatch) {
@@ -16,8 +23,8 @@ function mapDispatchToProps(dispatch) {
     onSubmit: payload => {
       dispatch(login(payload));
     },
-    getUserInfo: () => {
-      dispatch(getUserInfoAction());
+    getUserInfoAction: () => {
+      dispatch(getUserInfo());
     },
   };
 }

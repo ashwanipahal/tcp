@@ -3,10 +3,10 @@
  */
 
 import { call, takeLatest, put } from 'redux-saga/effects';
-import { LOGINPAGE_CONSTANTS } from '../LoginPage.constants';
+import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
 import fetchData from '../../../../../service/API';
 import { setLoginInfo, getUserInfo } from './LoginPage.actions';
-import { endpoints } from '../../../../../service/endpoint';
+import endpoints from '../../../../../service/endpoint';
 
 function* login(action) {
   try {
@@ -16,8 +16,10 @@ function* login(action) {
       baseURI,
       relURI,
       {
-        unbxd: true,
         payload: action.payload,
+        langId: -1,
+        catalogId: 10551,
+        storeId: 10151,
       },
       method
     );

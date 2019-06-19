@@ -17,12 +17,12 @@ const endpoints = {
   },
   login: {
     method: 'post',
-    baseURI: 'https://www.childrensplace.com',
+    baseURI: 'https://test2.childrensplace.com',
     relURI: '/api/v2/account/logon',
   },
   registeredUserInfo: {
     method: 'get',
-    baseURI: 'https://www.childrensplace.com',
+    baseURI: 'https://test2.childrensplace.com',
     relURI: '/api/v2/account/getRegisteredUserInfo',
   },
 };
