@@ -17,13 +17,14 @@ const endpoints = {
   },
   login: {
     method: 'post',
-    baseURI: 'https://test2.childrensplace.com',
     relURI: '/api/v2/account/logon',
   },
   registeredUserInfo: {
     method: 'get',
-    baseURI: 'https://test2.childrensplace.com',
     relURI: '/api/v2/account/getRegisteredUserInfo',
+  },
+  global: {
+    baseURI: 'https://test4.childrensplace.com',
   },
 };
 export default endpoints;

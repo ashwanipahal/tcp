@@ -10,7 +10,8 @@ import endpoints from '../../../../../service/endpoint';
 
 function* login(action) {
   try {
-    const { baseURI, relURI, method } = endpoints.login;
+    const { relURI, method } = endpoints.login;
+    const baseURI = endpoints.login.baseURI || endpoints.global.baseURI;
     const res = yield call(
       fetchData,
       baseURI,
@@ -36,7 +37,8 @@ function* login(action) {
 
 function* getUserInfoSaga() {
   try {
-    const { baseURI, relURI, method } = endpoints.registeredUserInfo;
+    const { relURI, method } = endpoints.registeredUserInfo;
+    const baseURI = endpoints.registeredUserInfo.baseURI || endpoints.global.baseURI;
     const res = yield call(
       fetchData,
       baseURI,
