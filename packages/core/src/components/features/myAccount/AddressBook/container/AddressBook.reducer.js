@@ -1,7 +1,7 @@
 import { SET_USER_ADDRESSES } from '../AddressBook.contants';
 
 const initialState = {
-  userAddresses: [],
+  userAddresses: {},
 };
 
 const AddressBookReducer = (state = initialState, action) => {

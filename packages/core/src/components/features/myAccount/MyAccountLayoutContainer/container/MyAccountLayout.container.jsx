@@ -1,8 +1,13 @@
+// @flow
 import React from 'react';
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import navData from '../MyAccountNavData';
 
-const MyAccountLayoutContainer = ({ mainContent }) => {
+type Props = {
+  mainContent: Function,
+};
+
+const MyAccountLayoutContainer = ({ mainContent }: Props) => {
   return <MyAccountLayout mainContent={mainContent} navData={navData} />;
 };
 

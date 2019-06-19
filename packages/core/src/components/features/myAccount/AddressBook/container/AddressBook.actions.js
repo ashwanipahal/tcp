@@ -1,9 +1,8 @@
 import { FETCH_USER_ADDRESSES, SET_USER_ADDRESSES } from '../AddressBook.contants';
 
-export const getUserAddresses = payload => {
+export const getUserAddresses = () => {
   return {
     type: FETCH_USER_ADDRESSES,
-    payload,
   };
 };
 

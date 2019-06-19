@@ -4,7 +4,7 @@ import { setUserAddresses } from './AddressBook.actions';
 import fetchData from '../../../../../service/API';
 import endpoints from '../../../../../service/endpoint';
 
-function* fetchUserAddresses(payload) {
+function* fetchUserAddresses() {
   try {
     const { baseURI, relURI, method } = endpoints.getUserAddresses;
     const res = yield call(

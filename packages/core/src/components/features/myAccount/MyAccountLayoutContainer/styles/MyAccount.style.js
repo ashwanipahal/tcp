@@ -1,23 +1,23 @@
 import styled from 'styled-components';
+import themes from '../../../../../../styles/themes/TCP';
 
 export default styled.ul`
   list-style-type: none;
   padding: 0;
   box-sizing: border-box;
-  border-right: 1px solid black;
+  border-right: 1px solid ${themes.colors.FOOTER.DIVIDER};
   li {
     padding: 12px 0;
 
     a {
       text-decoration: none;
+      font-size: ${themes.fonts.fontSize.listmenu.large}px;
+      color: ${themes.colors.PRIMARY.GRAY};
     }
 
     a.selected {
-      color: #1a1a1a;
-    }
-
-    a.default {
-      color: #9b9b9b;
+      color: ${themes.colors.PRIMARY.DARK};
+      font-weight: ${themes.fonts.fontWeight.bold};
     }
   }
 
