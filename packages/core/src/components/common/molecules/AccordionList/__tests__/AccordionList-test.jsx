@@ -1,8 +1,6 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
 import 'jest-styled-components';
-import theme from '@tcp/core/styles/themes/TCP';
-import { ThemeProvider } from 'styled-components';
+import ShallowRenderer from 'react-test-renderer/shallow';
 import AccordionList from '../views/AccordionList';
 
 describe('AccordionList component', () => {
@@ -24,13 +22,8 @@ describe('AccordionList component', () => {
       defaultOpenIndex: 1,
       children: ['<div className="abcd"></div>', '<div className="defg"></div>'],
     };
-    const component = renderer
-      .create(
-        <ThemeProvider theme={theme}>
-          <AccordionList {...props} />
-        </ThemeProvider>
-      )
-      .toJSON();
+    const rendererShallow = new ShallowRenderer();
+    const component = rendererShallow.render(<AccordionList {...props} />);
     expect(component).toMatchSnapshot();
   });
 
@@ -49,16 +42,10 @@ describe('AccordionList component', () => {
         },
       ],
       className: 'accordion-list',
-      defaultOpenIndex: -1,
       children: ['<div className="abcd"></div>', '<div className="defg"></div>'],
     };
-    const component = renderer
-      .create(
-        <ThemeProvider theme={theme}>
-          <AccordionList {...props} />
-        </ThemeProvider>
-      )
-      .toJSON();
+    const rendererShallow = new ShallowRenderer();
+    const component = rendererShallow.render(<AccordionList {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

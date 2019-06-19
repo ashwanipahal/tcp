@@ -1,154 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AccordionList component renders correctly with 1 accordion open 1`] = `
-.c1 {
-  font-family: Nunito,Arial,Helvetica,sans-serif;
-  color: #1a1a1a;
-  line-height: 1.15;
-  font-size: 13px;
-  font-weight: 400;
-}
-
-.c0.accordion {
-  height: 34px;
-  padding: 18px 15px 0;
-  margin: 0;
-}
-
-.c0.accordion.inactive {
-  background: #e5e5e5;
-}
-
-.c0.accordion.active {
-  background: #f7f7f7;
-}
-
-.c0.active::after {
-  content: '+';
-  right: 15px;
-  position: absolute;
-  font-weight: bold;
-  font-size: 16px;
-  color: #9b9b9b;
-}
-
-.c0.inactive::after {
-  content: '';
-  right: 15px;
-  position: absolute;
-  background: #9b9b9b;
-  height: 2px;
-  width: 10px;
-  margin-top: 5px;
-}
-
 <div
   className="accordion-list container-accordion"
 >
   <div
     className="list-item"
   >
-    <h4
-      className="c0 accordion active c1"
-      data-index={0}
-      data-locator="accordion-0"
-      onClick={[Function]}
-      onKeyPress={[Function]}
-      tabIndex="0"
-    >
-      list item 1
-    </h4>
+    <ForwardRef
+      activeClass="active"
+      index={0}
+      titleText="list item 1"
+      updateAccordionState={[Function]}
+    />
   </div>
   <div
     className="list-item"
   >
-    <h4
-      className="c0 accordion inactive c1"
-      data-index={1}
-      data-locator="accordion-1"
-      onClick={[Function]}
-      onKeyPress={[Function]}
-      tabIndex="0"
+    <ForwardRef
+      activeClass="inactive"
+      index={1}
+      titleText="list item 2"
+      updateAccordionState={[Function]}
     >
-      list item 2
-    </h4>
-    &lt;div className="defg"&gt;&lt;/div&gt;
+      &lt;div className="defg"&gt;&lt;/div&gt;
+    </ForwardRef>
   </div>
 </div>
 `;
 
 exports[`AccordionList component renders correctly with no accordion open 1`] = `
-.c1 {
-  font-family: Nunito,Arial,Helvetica,sans-serif;
-  color: #1a1a1a;
-  line-height: 1.15;
-  font-size: 13px;
-  font-weight: 400;
-}
-
-.c0.accordion {
-  height: 34px;
-  padding: 18px 15px 0;
-  margin: 0;
-}
-
-.c0.accordion.inactive {
-  background: #e5e5e5;
-}
-
-.c0.accordion.active {
-  background: #f7f7f7;
-}
-
-.c0.active::after {
-  content: '+';
-  right: 15px;
-  position: absolute;
-  font-weight: bold;
-  font-size: 16px;
-  color: #9b9b9b;
-}
-
-.c0.inactive::after {
-  content: '';
-  right: 15px;
-  position: absolute;
-  background: #9b9b9b;
-  height: 2px;
-  width: 10px;
-  margin-top: 5px;
-}
-
 <div
   className="accordion-list container-accordion"
 >
   <div
     className="list-item"
   >
-    <h4
-      className="c0 accordion active c1"
-      data-index={0}
-      data-locator="accordion-0"
-      onClick={[Function]}
-      onKeyPress={[Function]}
-      tabIndex="0"
-    >
-      list item 1
-    </h4>
+    <ForwardRef
+      activeClass="active"
+      index={0}
+      titleText="list item 1"
+      updateAccordionState={[Function]}
+    />
   </div>
   <div
     className="list-item"
   >
-    <h4
-      className="c0 accordion active c1"
-      data-index={1}
-      data-locator="accordion-1"
-      onClick={[Function]}
-      onKeyPress={[Function]}
-      tabIndex="0"
-    >
-      list item 2
-    </h4>
+    <ForwardRef
+      activeClass="active"
+      index={1}
+      titleText="list item 2"
+      updateAccordionState={[Function]}
+    />
   </div>
 </div>
 `;
