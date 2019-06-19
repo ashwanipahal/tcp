@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import fetchData from '@tcp/core/src/service/API';
-import { endpoints } from '@tcp/core/src/service/endpoint';
-import { HOMEPAGE_CONSTANTS } from '../HomePage.constants';
+import endpoints from '@tcp/core/src/service/endpoint';
+import HOMEPAGE_CONSTANTS from '../HomePage.constants';
 import { setHeaderlinks } from './HomePage.actions';
 
 function* fetchTaxonomy() {

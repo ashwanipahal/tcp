@@ -1,14 +1,10 @@
 import gql from 'graphql-tag';
 
-
-
-
 export const getItemsFromCMS = `query getItemsFromCMS {
   getCMSData {
     	title 
   }
 }`;
-
 
 export const getProductsAndCMSData = `query getProductsAndCMSData {
   getProductsCMS {
@@ -51,8 +47,6 @@ export const getAllProducts = `query getAllProducts {
 
 }
   }`;
-  
-
 
 export const getAllItemsByL1 = `query getAllItemsByL1 {
 listL1Categorys {
@@ -72,7 +66,7 @@ l2Category {
 }  
 }
 }
-}`
+}`;
 
 export const createUser = `mutation createUser {  
 createUser(input: {
@@ -80,7 +74,7 @@ title: "TCP"
 }) {
 id
 }
-}`
+}`;
 
 export const UpdateProductPrice = `mutation UpdateProductPrice {
   updateProduct(input: {
@@ -102,12 +96,7 @@ export const UpdateProductPrice = `mutation UpdateProductPrice {
   }
           
   }
-}`
-
-
-
-
-
+}`;
 
 export const UpdateProductName = `mutation UpdateProductName {
   updateProduct(input: {
@@ -129,9 +118,7 @@ export const UpdateProductName = `mutation UpdateProductName {
   }
           
   }
-}`
-
-
+}`;
 
 export const createL2Category = `mutation createL2Category {
 createL2Category(input: {
@@ -140,7 +127,7 @@ l1Category:"6e550db7-767a-4b9e-82d2-3d685a63482c"
 }) {
     id
 }
-}`
+}`;
 
 export const createProduct = `mutation createProduct {
 createProduct(input: {
@@ -154,7 +141,7 @@ createProduct(input: {
 }) {
     id
 }
-}`
+}`;
 
 export const getProductsInList = `query getProductsInList {
   getProductsInList {
@@ -174,8 +161,8 @@ export const getProductsInList = `query getProductsInList {
       }
   }`;
 
-//PTR:  Removed gql  from this 
-export const DeltaSubscription =`subscription Subscription {
+// PTR:  Removed gql  from this
+export const DeltaSubscription = `subscription Subscription {
   onDeltaProduct {
     aws_ds
     id
@@ -195,58 +182,53 @@ export const DeltaSubscription =`subscription Subscription {
   }
 }`;
 
-export const listDeltaProducts = gql`query Delta($lastSync: AWSTimestamp!) {
-  listProductsDelta(
-    lastSync: $lastSync
-  ) {
-    
-    id
-    product_name
-    color
-    price
-    l2Category {
-
-  title
-        l1Category 
-
-    {
+export const listDeltaProducts = gql`
+  query Delta($lastSync: AWSTimestamp!) {
+    listProductsDelta(lastSync: $lastSync) {
+      id
+      product_name
+      color
+      price
+      l2Category {
         title
+        l1Category {
+          title
         }
-}
+      }
+    }
   }
-}`;
+`;
 
-export const BaseQuery = gql`query Base {
-  listPosts {
-    id
-    title
-    author
-    content
+export const BaseQuery = gql`
+  query Base {
+    listPosts {
+      id
+      title
+      author
+      content
+    }
   }
-}`;
+`;
 
-export const Subscription = gql`subscription Subscription {
-  onDeltaPost {
-    id
-    title
-    author
-    content
+export const Subscription = gql`
+  subscription Subscription {
+    onDeltaPost {
+      id
+      title
+      author
+      content
+    }
   }
-}`;
+`;
 
-export const DeltaSync = gql`query Delta($lastSync: AWSTimestamp!) {
-  listPostsDelta(
-    lastSync: $lastSync
-  ) {
-    id
-    title
-    author
-    content
-    aws_ds
+export const DeltaSync = gql`
+  query Delta($lastSync: AWSTimestamp!) {
+    listPostsDelta(lastSync: $lastSync) {
+      id
+      title
+      author
+      content
+      aws_ds
+    }
   }
-}`
-
-
-
-
-
+`;

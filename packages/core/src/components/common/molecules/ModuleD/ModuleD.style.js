@@ -8,7 +8,6 @@ export default css`
     font-size: ${props => props.theme.fonts.fontSize.nav}px;
     color: ${props => props.theme.colors.TEXT.DARKGRAY};
     cursor: pointer;
-    margin-top: 10px;
     display: block;
     text-align: center;
   }
@@ -22,7 +21,11 @@ export default css`
     color: ${props => props.theme.colors.TEXT.DARKGRAY};
     padding: 19px 80px;
     text-align: center;
-    margin: 60px auto;
+    margin: 19px auto 32px;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      margin: 35px auto 48px;
+    }
   }
 
   h2 {

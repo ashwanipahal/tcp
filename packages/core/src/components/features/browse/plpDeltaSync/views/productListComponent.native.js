@@ -1,14 +1,8 @@
+/* eslint-disable */
 import React from 'react';
-import { Text, FlatList, Image, View } from 'react-native';
+import { Text, FlatList, View } from 'react-native';
 
 const ProductTile = ({ item }) => {
-  const url =
-    'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/' +
-    item.imagename +
-    '-6.jpg';
-  const pic = {
-    uri: url,
-  };
   return (
     <View key={item.id} className="product-item">
       <Text className="product-name"> Fetching from core</Text>
@@ -18,7 +12,7 @@ const ProductTile = ({ item }) => {
   );
 };
 
-export const ProductList = ({ data }) => {
+const ProductList = ({ data }) => {
   return (
     <React.Fragment>
       <Text>PLP DeltaSync Page</Text>
@@ -26,3 +20,5 @@ export const ProductList = ({ data }) => {
     </React.Fragment>
   );
 };
+
+export default ProductList;

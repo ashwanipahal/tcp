@@ -1,9 +1,10 @@
+/* eslint-disable */
 import React from 'react';
 
-export const ProductList = ({ data }) => {
+const ProductList = ({ data }) => {
   return (
     <React.Fragment>
-      <h1>PLP Delta Sync Page</h1>
+      <h1>PLP Delta-Sync Page</h1>
       <ul className="product-wrapper">
         {data &&
           data.map(item => (
@@ -16,3 +17,5 @@ export const ProductList = ({ data }) => {
     </React.Fragment>
   );
 };
+
+export default ProductList;

@@ -30,65 +30,10 @@ async function fetchData(baseURL, relURL, params = {}, method) {
     request.send(params.payload);
   }
 
-  // if (!args.webService.unbxd) {
-  //   request.withCredentials();
-  // }
-  // const cachedResult = apiCacheManager.getCachedResult(cacheArgs);
-  // if (cachedResult) {
-  //   return Promise.resolve(cachedResult);
-  // }
-  // make the api call
-  // if (requestType.toLowerCase() === 'get') {
-  //   request.query(args.body);
-  //   if (args.webService.unbxd && request._query && request._query.length > 0) {
-  //     request._query[0] = decodeURIComponent(request._query[0]);
-  //   }
-  // } else {
-  //   request.send(args.body);
-  // }
-  const result = new Promise((resolve, reject) => {
+  const result = new Promise(resolve => {
     request
       .then(response => {
-        //        console.log("resposne *************", response);
         resolve(response);
-        // eslint-disable-next-line prefer-rest-params
-        //      apiCacheManager.setCachedResult(cacheArgs, response);
-        //   webServiceSubscriber.notifyServiceResponse({
-        //     request: {
-        //       body: args.body,
-        //       header: args.header,
-        //       settings: reqSetting
-        //     },
-        //     response: response.body
-        //   }, args.webService.URI);
-        // })
-        // .catch((err) => {
-
-        //   trackError({
-        //     error: err,
-        //     tags: {
-        //       component: 'ApiHelper',
-        //       endpoint: args.webService.URI,
-        //       'trace-request-id': reqSetting['tcp-trace-request-id'],
-        //       'trace-session-id': reqSetting['tcp-trace-session-id']
-        //     },
-        //     extraData: {
-        //       ...args,
-        //       ...reqSetting
-        //     },
-        //     groupKeys: ['api-error', args.webService.URI]
-        //   });
-
-        //   reject(err);
-
-        //   webServiceSubscriber.notifyServiceResponse({
-        //     request: {
-        //       body: args.body,
-        //       header: args.header,
-        //       settings: reqSetting
-        //     },
-        //     response: err.response && err.response.body
-        //   }, args.webService.URI);
       })
       .catch(e => {
         console.log(e);

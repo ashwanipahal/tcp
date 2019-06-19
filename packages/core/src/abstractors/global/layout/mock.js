@@ -1,6 +1,8 @@
+const cid = 'c7022833-8671-4b5f-891b-d984617bac4c';
+
 export default {
   layout: {
-    cid: 'c7022833-8671-4b5f-891b-d984617bac4c',
+    cid,
     typ: 'page',
     sub: 'pageLayout',
     val: {
@@ -11,7 +13,7 @@ export default {
         description: 'TCP description',
       },
       layout: {
-        cid: 'c7022833-8671-4b5f-891b-d984617bac4c',
+        cid,
         typ: 'layout',
         sub: 'homepage',
         val: [
@@ -24,7 +26,7 @@ export default {
             typ: 'slot',
             sub: 'slot_02',
             val: {
-              cid: 'c7022833-8671-4b5f-891b-d984617bac4c',
+              cid,
               typ: 'module',
               sub: 'moduleD',
               val: '',
@@ -34,7 +36,7 @@ export default {
             typ: 'slot',
             sub: 'slot_03',
             val: {
-              cid: 'c7022833-8671-4b5f-891b-d984617bac4c',
+              cid,
               typ: 'module',
               sub: 'moduleB',
               val: '',
@@ -44,7 +46,7 @@ export default {
             typ: 'slot',
             sub: 'slot_04',
             val: {
-              cid: 'c7022833-8671-4b5f-891b-d984617bac4c',
+              cid,
               typ: 'module',
               sub: 'moduleK',
               val: '',

@@ -1,4 +1,4 @@
-export const endpoints = {
+const endpoints = {
   getPlpProducts: {
     method: 'get',
     baseURI: 'https://search.unbxd.io',
@@ -26,3 +26,4 @@ export const endpoints = {
     relURI: '/api/v2/account/getRegisteredUserInfo',
   },
 };
+export default endpoints;
