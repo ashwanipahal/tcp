@@ -18,7 +18,7 @@
     "test:coverage": "yarn test --coverage",
     "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}",
     "flow": "flow",
-    "flow:web": "flow",
+    "flow:web": "yarn eslint:web",
     "flow:install": "npx lerna exec flow-typed install",
     "flow:coverage": "flow-coverage-report -i 'packages/*/src/**/*.js' -x 'packages/**/*.test.js' -t html -t json -t text -o reports/flow/ --threshold 70",
     "pretty": "prettier --write **/*.{js,json,css}",
