@@ -9,14 +9,14 @@ const AddressBookHeaderComponent = styled.p`
   margin-bottom: 15px;
 `;
 
-const ColoredLine = styled.div`
+const ColoredLine = styled.hr`
   background-color: ${props => props.backgroundColor};
   height: 3px;
-  border-bottom: 1px solid black;
+  border: none;
 `;
 
-const CSS = css`
-  .button {
+const MyStyle = css`
+  .add-new-address-button {
     margin-top: 42px;
     background-color: #2e6a91;
   }
@@ -57,7 +57,7 @@ const AddressSpanComponent = styled.span`
 export {
   AddressBookHeaderComponent,
   ColoredLine,
-  CSS,
+  MyStyle,
   AddressItemsComponent,
   AddressItemContainerComponent,
   AddressDetailComponent,

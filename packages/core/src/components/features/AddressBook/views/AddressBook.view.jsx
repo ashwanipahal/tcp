@@ -1,21 +1,28 @@
 import React from 'react';
-import { AddressBookHeaderComponent, ColoredLine, CSS } from '../styles/AddressBook.style';
+import { ColoredLine, MyStyle } from '../styles/AddressBook.style';
 import Button from '../../../common/atoms/Button';
 import theme from '../../../../../styles/themes/TCP';
 import AddressBookTile from './AddressBookTile.view';
 import data from '../data';
-
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { Heading, BodyCopy } from '@tcp/core/styles/themes/TCP/typotheme';
 const { colors } = theme;
 
-const AddressBook = () => {
+const AddressBook = ({ className }) => {
   return (
-    <React.Fragment>
-      <AddressBookHeaderComponent>Address Book</AddressBookHeaderComponent>
+    <div className={className}>
+      <Heading
+        fontFamily="secondaryFontFamily"
+        className="add-new-address-button"
+        HeadingLarge="six"
+        tag="h4"
+      >
+        Address Book
+      </Heading>
       <ColoredLine backgroundColor={colors.BLACK} />
-      <Button className={CSS.button}>ADD NEW ADDRESS</Button>
+      <Button className="add-new-address-button">ADD NEW ADDRESS</Button>
       <AddressBookTile data={data} />
-    </React.Fragment>
+    </div>
   );
 };
-
-export default AddressBook;
+export default withStyles(AddressBook, MyStyle);
