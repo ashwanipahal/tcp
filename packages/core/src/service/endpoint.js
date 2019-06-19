@@ -15,5 +15,10 @@ const endpoints = {
     baseURI: 'https://test1.childrensplace.com',
     relURI: '/api/getESpot',
   },
+  getUserAddresses: {
+    method: 'get',
+    baseURI: 'https://www.childrensplace.com',
+    relURI: '/api/v2/account/getAddressFromBook',
+  },
 };
 export default endpoints;
