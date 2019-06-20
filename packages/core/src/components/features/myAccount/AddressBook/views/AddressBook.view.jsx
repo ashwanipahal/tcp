@@ -58,8 +58,8 @@ const AddressBook = props => {
         <br />
         <Row>
           <Col colSize={{ small: 1, medium: 1, large: 12 }}>
-            <Field name="employed" id="employed" component={TextBox} type="checkbox" />{' '}
-            <label htmlFor="employed">Employed</label>
+            <Field name="employed" id="employed" component={TextBox} type="checkbox" />
+            Set as default shipping addres
           </Col>
         </Row>
         <br />
