@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import MyAccountLayout from '../../MyAccountLayoutContainer/views/MyAccountLayout.view';
+import MyAccountLayout from '../../MyAccountLayoutContainer/container/MyAccountLayout.container';
 import AddressBook from '../views/AddressBook.view';
 import getUserAddressesSelector from './AddressBook.storeview';
 import { getUserAddresses } from './AddressBook.actions';
