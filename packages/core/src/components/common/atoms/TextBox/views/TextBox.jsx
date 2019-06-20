@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import type { Node } from 'react';
+import { BodyCopy } from '@tcp/core/styles/themes/TCP/typotheme';
 import withStyles from '../../../hoc/withStyles';
 import StyledTextBox from '../TextBox.style';
 
@@ -22,6 +23,7 @@ type Props = {
   isErrorState?: boolean,
   isSuccessState?: boolean,
   onChangeHandler?: func,
+  floatingLabel?: string,
 };
 
 const TextBox = ({
@@ -34,18 +36,24 @@ const TextBox = ({
   isErrorState,
   isSuccessState,
   onChangeHandler,
+  floatingLabel,
 }: Props): Node => (
-  <input
-    id={id}
-    aria-label={ariaLabel}
-    className={className}
-    name={name}
-    type={type}
-    placeholder={placeholder}
-    isErrorState={isErrorState}
-    isSuccessState={isSuccessState}
-    onChange={onChangeHandler}
-  />
+  <label tabIndex="-1">
+    <input
+      floatingLabel={floatingLabel}
+      id={id}
+      aria-label={ariaLabel}
+      className={className}
+      name={name}
+      type={type}
+      isErrorState={isErrorState}
+      isSuccessState={isSuccessState}
+      onChange={onChangeHandler}
+    />
+    <BodyCopy bodySize="two" FormVariation="float" BodycolorLg="primary" tag="p">
+      {placeholder}
+    </BodyCopy>
+  </label>
 );
 
 TextBox.defaultProps = {

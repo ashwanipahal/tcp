@@ -28,7 +28,6 @@ const Heading = styled(HeadingStyle)`
 `;
 
 const BodyCopy = styled(BodyStyle)`
-  font-size: ${fonts.fontSize.body.bodytext.p1}px;
   ${props => (props.bodySize === 'one' ? `font-size: ${bodySizeText.copy1}px` : '')};
   ${props => (props.bodySize === 'two' ? `font-size: ${bodySizeText.copy2}px` : '')};
   ${props => (props.bodySize === 'three' ? `font-size: ${bodySizeText.copy3}px` : '')};
@@ -49,7 +48,21 @@ const BodyCopy = styled(BodyStyle)`
   ${props =>
     props.bodySizeSm === 'three' ? `font-size: ${fonts.fontSize.body.small.tertiary}px` : ''};
 
-  color: ${colors.PRIMARY.BLUE};
+  ${props => (props.BodycolorLg === 'primary' ? `color: ${colors.PRIMARY.DARK};` : '')};
+  ${props => (props.BodycolorLg === 'secondary' ? `color: ${colors.PRIMARY.BLUE};` : '')};
+  ${props => (props.BodycolorLg === 'tertiary' ? `color: ${colors.PRIMARY.GREEN};` : '')};
+  ${props => (props.BodycolorLg === 'primary' ? `color: ${colors.PRIMARY.DARK};` : '')};
+  ${props => (props.BodycolorLg === 'secondary' ? `color: ${colors.PRIMARY.BLUE};` : '')};
+  ${props => (props.BodycolorLg === 'tertiary' ? `color: ${colors.PRIMARY.GREEN};` : '')};
+
+  ${props =>
+    props.FormVariation === 'float'
+      ? `   top: -30px;
+      opacity: .8;
+      position:relative;
+       margin: 0;
+      padding: 0;`
+      : ''};
 `;
 
 export { Heading, BodyCopy };
