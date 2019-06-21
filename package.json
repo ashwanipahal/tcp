@@ -2,7 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "stash": "rm -rf node_modules/ packages/*/node_modules/ packages/*/yarn.lock yarn.lock",
+    "stash": "rm -rf node_modules/ packages/*/node_modules/",
     "clean": "yarn cleanup && yarn lerna-clean",
     "postinstall-local": "yarn flow:install",
     "clean-install": "yarn clean && yarn",
