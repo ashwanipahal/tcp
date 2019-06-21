@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaymentGiftRewards View should render PaymentGiftRewards Correctly 1`] = `ShallowWrapper {}`;

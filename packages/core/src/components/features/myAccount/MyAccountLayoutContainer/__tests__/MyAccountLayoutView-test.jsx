@@ -47,13 +47,8 @@ describe('My Account Layout View', () => {
     const tree = shallow(
       <MyAccountLayoutView mainContent={mainContent} navData={data} router={router} />
     );
-    expect(tree.find('li')).toHaveLength(2);
-    expect(
-      tree
-        .find('li#myWallet a')
-        .first()
-        .text()
-    ).toEqual('My Wallet');
+    expect(tree.find('li')).toHaveLength(data.length);
+    tree.find('li a').map((node, index) => expect(node.text()).toEqual(data[index].displayName));
     expect(tree).toMatchSnapshot();
   });
 });

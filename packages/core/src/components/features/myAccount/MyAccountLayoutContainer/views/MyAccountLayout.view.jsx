@@ -27,8 +27,6 @@ type State = {
 export class MyAccountLayoutView extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
-    this.getNavLink = this.getNavLink.bind(this);
-    this.renderSubSections = this.renderSubSections.bind(this);
     const { router } = props;
     this.state = {
       selected: router.asPath,
@@ -44,13 +42,7 @@ export class MyAccountLayoutView extends React.PureComponent<Props, State> {
     const { selected } = this.state;
     const selectedNav = selected === nav.url;
     return (
-      <Link
-        as={nav.url}
-        href={`${nav.component}`}
-        anchorVariation="primary"
-        target="_self"
-        fontSizeVariation="small"
-      >
+      <Link as={nav.url} href={`${nav.component}`}>
         <a href={nav.url} className={selectedNav && 'selected'}>
           {nav.displayName}
         </a>

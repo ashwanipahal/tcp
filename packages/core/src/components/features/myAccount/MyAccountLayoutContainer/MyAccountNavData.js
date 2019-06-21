@@ -1,3 +1,8 @@
+/**
+ * The foloowing data is just for the purpose of painting the left nav in account section
+ * This will change once we integrate it with cms labels
+ */
+
 const navData = [
   {
     id: 'accountOverview',
@@ -13,7 +18,7 @@ const navData = [
     subSections: [
       {
         id: 'pointsHistory',
-        url: '/points-history',
+        url: '/pointsHistory',
         displayName: 'Points History',
         component: 'pointsHistoryPage',
       },

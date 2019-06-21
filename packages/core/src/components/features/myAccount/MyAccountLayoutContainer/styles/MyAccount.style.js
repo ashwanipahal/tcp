@@ -23,10 +23,10 @@ export default styled.ul`
 
   & & {
     padding-top: ${themes.variables.ELEMENT_SPACING.SM};
+    border: none;
     li {
       padding-bottom: 0;
       padding-left: ${themes.variables.ELEMENT_SPACING.LRG};
     }
-    border: none;
   }
 `;
