@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
+import Button from '@tcp/core/src/components/common/atoms/Button';
+import RichText from '@tcp/core/src/components/common/atoms/RichText/views/RichText';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import FooterMiddleMobile from '@tcp/core/src/components/features/footer/FooterMiddleMobile';
 import FooterMiddleDesktop from '@tcp/core/src/components/features/footer/FooterMiddleDesktop/views';
@@ -14,17 +16,50 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks, socialMediaLin
     <div className="footer-top">
       <Row>
         <Col
-          className="footer-top__slot--1"
+          className="footer-top__slots"
           colSize={{
-            large: 8,
+            large: 3,
             medium: 4,
             small: 6,
           }}
-        />
+        >
+          <Button customButton fullWidth>
+            <RichText richTextHtml="Get $10 off by signing up <br> for email offers!" />
+          </Button>
+        </Col>
+        <Col
+          className="footer-top__slots"
+          colSize={{
+            large: 3,
+            medium: 4,
+            small: 6,
+          }}
+          ignoreGutter={{
+            medium: true,
+          }}
+        >
+          <Button customButton fullWidth>
+            <RichText richTextHtml="Sign up for text alerts <br> and get $10 off!" />
+          </Button>
+        </Col>
+        <Col
+          className="footer-top__slots"
+          colSize={{
+            large: 3,
+            medium: 4,
+            small: 6,
+          }}
+        >
+          <span id="extole_zone_global_footer">
+            <Button customButton fullWidth>
+              <RichText richTextHtml='REFER A FRIEND AND EARN <br>ANOTHER <span style="color: green;">$10</span>' />
+            </Button>
+          </span>
+        </Col>
         <Col
           className="footer-top__slot--2"
           colSize={{
-            large: 4,
+            large: 3,
             medium: 4,
             small: 6,
           }}
@@ -69,6 +104,7 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks, socialMediaLin
             small: 6,
           }}
         />
+        <div className="copyright-and-legal-information">Reference ID:</div>
       </Row>
     </div>
   </footer>

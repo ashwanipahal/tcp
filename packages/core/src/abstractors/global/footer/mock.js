@@ -8,7 +8,7 @@ export default {
       text: 'GET <span class="l-color-primary">$10 OFF</span> BY SIGNING UP FOR EMAIL OR TEXT',
       target: 'email_signup_popup',
     },
-    refer_a_fried: {
+    refer_a_friend: {
       url: '/',
       title: 'Refer a friend and earn another $10',
       text: 'REFER A FRIEND AND EARN ANOTHER <span class="l-color-primary">$10</span>',
@@ -315,5 +315,8 @@ export default {
         target: '_blank',
       },
     ],
+    reference_id: {
+      title: 'Reference ID: ',
+    },
   },
 };

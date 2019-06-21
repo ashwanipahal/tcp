@@ -7,8 +7,8 @@ export default css`
   .footer-bottom {
     background: ${props => props.theme.colors.WHITE};
   }
-  .footer-top__slot--1 {
-    order: 2;
+  .footer-top__slots {
+    padding-bottom: 40px;
   }
   .footer-top__slot-2 {
     order: 1;

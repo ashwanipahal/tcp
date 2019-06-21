@@ -4,12 +4,14 @@ export default css`
   font-family: ${props => props.theme.fonts.primaryFontBlackFamily};
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
 
   .social-media-label {
     font-size: 12px;
     font-weight: ${props => props.theme.fonts.fontWeight.black};
     color: ${props => props.theme.colors.TEXT.DARKGRAY};
-    padding: 12px 0;
+    padding: 0 0 12px 0;
   }
   .social-media-icon {
     width: 42px;

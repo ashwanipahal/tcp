@@ -50,6 +50,23 @@ const ButtonStyles = css`
     background: ${props => props.theme.colors.BUTTON.FOCUS};
   }
 
+  ${props =>
+    props.customButton
+      ? `
+    background: #f3f3f3;
+    color: #6a6a6a;
+    border-radius: 10px;
+    text-transform: uppercase;
+    padding: 20px 30px;
+    border: 2px solid #9b9b9b;
+    box-shadow: 10px 10px white inset, 12px 12px #f3f3f3;
+    &:hover {
+      background: #f2f9fe;
+      box-shadow: 10px 10px white inset, 12px 12px #f2f9fe;
+    }
+    `
+      : ''}
+
   @media ${props => props.theme.mediaQuery.large} {
     ${props =>
       props.buttonVariation === 'fixed-width' ? 'min-height: 51px; padding: 16px 20px;' : ''};

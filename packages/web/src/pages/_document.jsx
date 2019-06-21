@@ -40,6 +40,10 @@ class MyDocument extends Document {
         <body className="custom_class">
           <Main />
           <NextScript />
+          <script
+            type="text/javascript"
+            src="//assets.adobedtm.com/429637684b76cf4b92fab22c24d35f7d9e89348a/satelliteLib-aba365057b3fb6edb76f4760f09ade697e571f92.js"
+          />
         </body>
       </Html>
     );
