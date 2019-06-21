@@ -89,7 +89,7 @@ export class MyAccountLayoutView extends React.PureComponent<Props, State> {
               {navData &&
                 navData.map(nav => {
                   return (
-                    <li key={nav.id}>
+                    <li id={nav.id} key={nav.id}>
                       {this.getNavLink({ nav, hasSubSections: nav.subSections })}
                       {nav.subSections && this.renderSubSections({ nav })}
                     </li>

@@ -48,6 +48,12 @@ describe('My Account Layout View', () => {
       <MyAccountLayoutView mainContent={mainContent} navData={data} router={router} />
     );
     expect(tree.find('li')).toHaveLength(2);
+    expect(
+      tree
+        .find('li#myWallet a')
+        .first()
+        .text()
+    ).toEqual('My Wallet');
     expect(tree).toMatchSnapshot();
   });
 });
