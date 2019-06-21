@@ -4,7 +4,7 @@ module.exports = {
   coverageDirectory: 'reports/coverage',
   roots: ['<rootDir>/packages'],
   moduleFileExtensions: ['js', 'jsx'],
-  moduleDirectories: ['node_modules'],
+  moduleDirectories: ['node_modules', './packages/web/node_modules'],
   transform: {
     '^.+\\.(js|jsx)$': 'babel-jest',
   },
