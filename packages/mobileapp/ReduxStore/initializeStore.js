@@ -1,7 +1,7 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import { ProductListingPageReducer } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.reducer';
 import createSagaMiddleware from 'redux-saga';
-import { homePageReducer } from './homePage/homePage.reducer';
+import { homePageReducer } from '../ReduxStore/homePage/homePage.reducer';
 import rootSaga from './sagas';
 
 let store;

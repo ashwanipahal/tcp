@@ -5,9 +5,9 @@ export default styled.ul`
   list-style-type: none;
   padding: 0;
   box-sizing: border-box;
-  border-right: 1px solid ${themes.colors.FOOTER.DIVIDER};
+  border-right: ${themes.variables.ELEMENT_SPACING.XXXS} solid ${themes.colors.FOOTER.DIVIDER};
   li {
-    padding: 12px 0;
+    padding: ${themes.variables.ELEMENT_SPACING.SM} 0;
 
     a {
       text-decoration: none;
@@ -22,10 +22,10 @@ export default styled.ul`
   }
 
   & & {
-    padding-top: 12px;
+    padding-top: ${themes.variables.ELEMENT_SPACING.SM};
     li {
       padding-bottom: 0;
-      padding-left: 25px;
+      padding-left: ${themes.variables.ELEMENT_SPACING.LRG};
     }
     border: none;
   }

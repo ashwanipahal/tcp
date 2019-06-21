@@ -15,10 +15,16 @@ const endpoints = {
     baseURI: 'https://test1.childrensplace.com',
     relURI: '/api/getESpot',
   },
-  getUserAddresses: {
+  login: {
+    method: 'post',
+    relURI: '/api/v2/account/logon',
+  },
+  registeredUserInfo: {
     method: 'get',
-    baseURI: 'https://www.childrensplace.com',
-    relURI: '/api/v2/account/getAddressFromBook',
+    relURI: '/api/v2/account/getRegisteredUserInfo',
+  },
+  global: {
+    baseURI: 'https://test4.childrensplace.com',
   },
 };
 export default endpoints;

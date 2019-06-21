@@ -26,7 +26,7 @@ type State = {
  * @param {navData} navData The list of links in the left nav as config object
  * @param {mainContent} mainContent The component to be rendered on the right side
  */
-class MyAccountLayoutView extends React.PureComponent<Props, State> {
+export class MyAccountLayoutView extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.getNavLink = this.getNavLink.bind(this);
@@ -51,7 +51,6 @@ class MyAccountLayoutView extends React.PureComponent<Props, State> {
         href={`${nav.component}`}
         anchorVariation="primary"
         target="_self"
-        scroll={false}
         fontSizeVariation="small"
       >
         <a href={nav.url} className={selectedNav && 'selected'}>
