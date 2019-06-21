@@ -1,12 +1,12 @@
+/* eslint-disable */
 import React from 'react';
-import ProductListingPageStyle from '../styles/ProductListingPage.style.native';
 import { Text, FlatList, Image, View } from 'react-native';
+import ProductListingPageStyle from '../styles/ProductListingPage.style.native';
 
 const ProductTile = ({ item }) => {
-  const url =
-    'https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/' +
-    item.imagename +
-    '-6.jpg';
+  const url = `https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/${
+    item.imagename
+  }-6.jpg`;
   const pic = {
     uri: url,
   };
