@@ -1,9 +1,7 @@
 import React from 'react';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import Link from 'next/link'; //eslint-disable-line
-// import Anchor from '../../../../common/atoms/Anchor';
 import MyAccountStyle from '../styles/MyAccount.style';
-// import Grid from '../../../../common/molecules/Grid';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 
