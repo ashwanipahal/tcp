@@ -5,7 +5,9 @@ export default styled.ul`
   list-style-type: none;
   padding: 0;
   box-sizing: border-box;
-  border-right: ${themes.variables.ELEMENT_SPACING.XXXS} solid ${themes.colors.FOOTER.DIVIDER};
+  @media ${themes.mediaQuery.large} {
+    border-right: ${themes.variables.ELEMENT_SPACING.XXXS} solid ${themes.colors.FOOTER.DIVIDER};
+  }
   li {
     padding: ${themes.variables.ELEMENT_SPACING.SM} 0;
 
