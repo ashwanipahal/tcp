@@ -2,7 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "stash": "rm -rf node_modules/ packages/*/node_modules/ packages/*/yarn.lock yarn.lock",
+    "stash": "rm -rf node_modules/ packages/*/node_modules",
     "clean": "yarn cleanup && yarn lerna-clean",
     "postinstall-local": "yarn flow:install",
     "clean-install": "yarn clean && yarn",
@@ -14,7 +14,7 @@
     "lerna-clean": "npx lerna clean --y",
     "test": "jest --config ./config/jest.config.js",
     "test:web": "yarn test --coverage",
-    "test:staged": "yarn test --bail --findRelatedTests",
+    "test:staged": "jest  --bail --findRelatedTests --config ./config/jest.config.js",
     "test:watch": "yarn test --watch",
     "test:coverage": "yarn test --coverage",
     "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}",
