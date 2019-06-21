@@ -57,12 +57,14 @@ const ButtonStyles = css`
     color: #6a6a6a;
     border-radius: 10px;
     text-transform: uppercase;
-    padding: 20px 30px;
-    border: 2px solid #9b9b9b;
+    padding: 11px 0;
+    border: 2px solid #d8d8d8;
     box-shadow: 10px 10px white inset, 12px 12px #f3f3f3;
+    width: calc(100% - 14px);
     &:hover {
       background: #f2f9fe;
       box-shadow: 10px 10px white inset, 12px 12px #f2f9fe;
+      border: 2px solid #9b9b9b;
     }
     `
       : ''}

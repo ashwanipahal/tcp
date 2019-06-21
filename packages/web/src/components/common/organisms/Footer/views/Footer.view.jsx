@@ -22,9 +22,12 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks, socialMediaLin
             medium: 4,
             small: 6,
           }}
+          ignoreGutter={{
+            small: true,
+          }}
         >
-          <Button customButton fullWidth>
-            <RichText richTextHtml="Get $10 off by signing up <br> for email offers!" />
+          <Button customButton>
+            <RichText richTextHtml='<div style="font-size: 15px; font-weight: 900; line-height: 1.67;color: #6a6a6a;">Get <span style="color: #4b9fdd;">$10 OFF</span> by signing <br>up for email offers!</div>' />
           </Button>
         </Col>
         <Col
@@ -35,11 +38,12 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks, socialMediaLin
             small: 6,
           }}
           ignoreGutter={{
+            small: true,
             medium: true,
           }}
         >
-          <Button customButton fullWidth>
-            <RichText richTextHtml="Sign up for text alerts <br> and get $10 off!" />
+          <Button customButton>
+            <RichText richTextHtml='<div style="font-size: 15px; font-weight: 900; line-height: 1.67;color: #6a6a6a;">Sign up for text alerts <br> and get <span style="color: #4b9fdd;">$10 off!</span>' />
           </Button>
         </Col>
         <Col
@@ -49,10 +53,13 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks, socialMediaLin
             medium: 4,
             small: 6,
           }}
+          ignoreGutter={{
+            small: true,
+          }}
         >
           <span id="extole_zone_global_footer">
-            <Button customButton fullWidth>
-              <RichText richTextHtml='REFER A FRIEND AND EARN <br>ANOTHER <span style="color: green;">$10</span>' />
+            <Button customButton>
+              <RichText richTextHtml='<div style="font-size: 15px; font-weight: 900; line-height: 1.67;color: #6a6a6a;">REFER A FRIEND<br>AND EARN ANOTHER <span style="color: #4b9fdd;">$10!</span></div>' />
             </Button>
           </span>
         </Col>
@@ -104,7 +111,6 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks, socialMediaLin
             small: 6,
           }}
         />
-        <div className="copyright-and-legal-information">Reference ID:</div>
       </Row>
     </div>
   </footer>
