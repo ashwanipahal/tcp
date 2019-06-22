@@ -17,6 +17,6 @@ module.exports = {
   collectCoverage: true,
   coverageDirectory: 'reports/coverage',
   collectCoverageFrom: ['**/*.js', '**/*.jsx', '!**/*.style.js'],
-  coveragePathIgnorePatterns: ['/node_modules/', 'enzyme.js', 'index.js'],
+  coveragePathIgnorePatterns: ['/node_modules/', 'enzyme.js', 'index.js', 'mock.js'],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],
 };
