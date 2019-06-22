@@ -16,7 +16,7 @@ module.exports = {
   setupFiles: ['<rootDir>/config/jest.setup.js'],
   collectCoverage: true,
   coverageDirectory: 'reports/coverage',
-  collectCoverageFrom: ['**/*.js', '**/*.jsx'],
-  coveragePathIgnorePatterns: ['/node_modules/', 'enzyme.js', '\\*.style.js', 'index.js'],
+  collectCoverageFrom: ['**/*.js', '**/*.jsx', '!**/*.style.js'],
+  coveragePathIgnorePatterns: ['/node_modules/', 'enzyme.js', 'index.js'],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],
 };
