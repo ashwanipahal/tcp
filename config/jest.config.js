@@ -1,7 +1,6 @@
 module.exports = {
   verbose: true,
   rootDir: '../',
-  coverageDirectory: 'reports/coverage',
   roots: ['<rootDir>/packages'],
   moduleFileExtensions: ['js', 'jsx'],
   moduleDirectories: ['node_modules', './packages/web/node_modules'],
@@ -14,7 +13,10 @@ module.exports = {
       extends: './babel.config.js',
     },
   },
-  coveragePathIgnorePatterns: ['/node_modules/', 'enzyme.js'],
   setupFiles: ['<rootDir>/config/jest.setup.js'],
+  collectCoverage: true,
+  coverageDirectory: 'reports/coverage',
+  collectCoverageFrom: ['**/*.js', '**/*.jsx', '!**/*.style.js'],
+  coveragePathIgnorePatterns: ['/node_modules/', 'enzyme.js', 'index.js'],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],
 };
