@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FooterNavLinksList component renders default footer correctly 1`] = `
+.c1 {
+  font-family: Nunito,Arial,Helvetica,sans-serif;
+  color: #1a1a1a;
+  font-size: 15px;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  list-style-type: none;
+  padding-inline-start: 0;
+  margin: 0;
+}
+
+.c0 li {
+  height: 34px;
+  padding: 0 0 6px;
+  font-size: 14px;
+}
+
+.c0 a {
+  font-family: Nunito,Arial,Helvetica,sans-serif;
+  font-size: 13px;
+  line-height: 1.15;
+  -webkit-letter-spacing: normal;
+  -moz-letter-spacing: normal;
+  -ms-letter-spacing: normal;
+  letter-spacing: normal;
+  color: #1a1a1a;
+}
+
+.c0 a:hover {
+  border-bottom: 2px solid #2e6a91;
+  padding-bottom: 4px;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+@media (min-width:1024px) {
+  .c0 a {
+    font-size: 14px;
+  }
+}
+
+<ul
+  className="footer-nav-header1 c0 list"
+>
+  <li>
+    <a
+      anchorVariation="primary"
+      className="footer-nav-header1 c0 c1"
+      data-locator=""
+      fontSizeVariation="large"
+      href=""
+      onClick={[Function]}
+      target=""
+      title=""
+    >
+      
+    </a>
+  </li>
+  <li>
+    <a
+      anchorVariation="primary"
+      className="footer-nav-header1 c0 c1"
+      data-locator=""
+      fontSizeVariation="large"
+      href=""
+      onClick={[Function]}
+      target=""
+      title=""
+    >
+      
+    </a>
+  </li>
+  <li>
+    <a
+      anchorVariation="primary"
+      className="footer-nav-header1 c0 c1"
+      data-locator=""
+      fontSizeVariation="large"
+      href=""
+      onClick={[Function]}
+      target=""
+      title=""
+    >
+      
+    </a>
+  </li>
+</ul>
+`;

@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FooterMiddleMobile component renders correctly 1`] = `
+<ForwardRef
+  colSize={
+    Object {
+      "large": 12,
+      "medium": 8,
+      "small": 6,
+    }
+  }
+  ignoreGutter={
+    Object {
+      "medium": true,
+      "small": true,
+    }
+  }
+>
+  <AccordionList
+    accordionItems={
+      Array [
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+      ]
+    }
+    className="footer-links"
+  >
+    <ForwardRef
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+    <ForwardRef
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+    <ForwardRef
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+    <ForwardRef
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+    <ForwardRef
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+    <ForwardRef
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+  </AccordionList>
+</ForwardRef>
+`;
+
+exports[`FooterMiddleMobile component renders correctly 2`] = `
+<ForwardRef
+  colSize={
+    Object {
+      "large": 12,
+      "medium": 8,
+      "small": 6,
+    }
+  }
+  ignoreGutter={
+    Object {
+      "medium": true,
+      "small": true,
+    }
+  }
+>
+  <AccordionList
+    accordionItems={
+      Array [
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+        Object {
+          "header": "",
+          "isSubHeader": true,
+          "links": Array [],
+          "title": "",
+        },
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+      ]
+    }
+    className="footer-links"
+  >
+    <ForwardRef
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+    <ForwardRef
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+    <ForwardRef
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+    <ForwardRef
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+    <ForwardRef
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+    <ForwardRef
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+  </AccordionList>
+</ForwardRef>
+`;

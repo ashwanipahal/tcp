@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FooterNavHeader component renders default footer correctly 1`] = `
+.c0 {
+  font-family: Nunito-SemiBold,Arial,Helvetica,sans-serif;
+  font-size: 16px;
+  color: #1a1a1a;
+  margin: 0 0 37px 0;
+}
+
+.c0::after {
+  content: '';
+  height: 1px;
+  width: 80px;
+  background: #439ad4;
+  border: 10px;
+  display: block;
+  margin-top: 26px;
+}
+
+.c0.img-link::after {
+  display: none;
+}
+
+.c0.img-link img {
+  padding-bottom: 35px;
+}
+
+.c0.subHeader {
+  margin-top: 24px;
+}
+
+<h4
+  aria-label="ABCD"
+  className="footer-nav-header1 c0"
+  data-index={2}
+>
+  Title
+</h4>
+`;
+
+exports[`FooterNavHeader component renders image in header variation correctly 1`] = `
+.c1 {
+  font-family: Nunito,Arial,Helvetica,sans-serif;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  font-family: Nunito-SemiBold,Arial,Helvetica,sans-serif;
+  font-size: 16px;
+  color: #1a1a1a;
+  margin: 0 0 37px 0;
+}
+
+.c0::after {
+  content: '';
+  height: 1px;
+  width: 80px;
+  background: #439ad4;
+  border: 10px;
+  display: block;
+  margin-top: 26px;
+}
+
+.c0.img-link::after {
+  display: none;
+}
+
+.c0.img-link img {
+  padding-bottom: 35px;
+}
+
+.c0.subHeader {
+  margin-top: 24px;
+}
+
+<a
+  className="footer-nav-header c0 img-link c1"
+  data-locator=""
+  href=""
+  onClick={[Function]}
+  target=""
+  title=""
+>
+  <img
+    className=""
+    onError={null}
+    sizes={null}
+    src="/static/images/undefined"
+    srcSet={null}
+  />
+</a>
+`;
+
+exports[`FooterNavHeader component renders subheader variation correctly 1`] = `
+.c0 {
+  font-family: Nunito-SemiBold,Arial,Helvetica,sans-serif;
+  font-size: 16px;
+  color: #1a1a1a;
+  margin: 0 0 37px 0;
+}
+
+.c0::after {
+  content: '';
+  height: 1px;
+  width: 80px;
+  background: #439ad4;
+  border: 10px;
+  display: block;
+  margin-top: 26px;
+}
+
+.c0.img-link::after {
+  display: none;
+}
+
+.c0.img-link img {
+  padding-bottom: 35px;
+}
+
+.c0.subHeader {
+  margin-top: 24px;
+}
+
+<h4
+  aria-label="ABCD"
+  className="footer-nav-header2 c0 subHeader"
+  data-index={4}
+>
+  Title
+</h4>
+`;

@@ -1,0 +1,137 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FooterNavLinks component renders default footer correctly 1`] = `
+.c1 {
+  list-style-type: none;
+  padding-inline-start: 0;
+  margin: 0;
+}
+
+.c1 li {
+  height: 34px;
+  padding: 0 0 6px;
+  font-size: 14px;
+}
+
+.c1 a {
+  font-family: Nunito,Arial,Helvetica,sans-serif;
+  font-size: 13px;
+  line-height: 1.15;
+  -webkit-letter-spacing: normal;
+  -moz-letter-spacing: normal;
+  -ms-letter-spacing: normal;
+  letter-spacing: normal;
+  color: #1a1a1a;
+}
+
+.c1 a:hover {
+  border-bottom: 2px solid #2e6a91;
+  padding-bottom: 4px;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c0 {
+  font-family: Nunito-SemiBold,Arial,Helvetica,sans-serif;
+  font-size: 16px;
+  color: #1a1a1a;
+  margin: 0 0 37px 0;
+}
+
+.c0::after {
+  content: '';
+  height: 1px;
+  width: 80px;
+  background: #439ad4;
+  border: 10px;
+  display: block;
+  margin-top: 26px;
+}
+
+.c0.img-link::after {
+  display: none;
+}
+
+.c0.img-link img {
+  padding-bottom: 35px;
+}
+
+.c0.subHeader {
+  margin-top: 24px;
+}
+
+@media (min-width:1024px) {
+  .c1 a {
+    font-size: 14px;
+  }
+}
+
+<div>
+  <div
+    className="footer-nav-header1 container-nav-link"
+    data-index={0}
+  >
+    <h4
+      className="c0"
+    />
+    <ul
+      className="c1 list"
+    />
+  </div>
+  <div
+    className="footer-nav-header1 container-nav-link"
+    data-index={1}
+  >
+    <h4
+      className="c0"
+    />
+    <ul
+      className="c1 list"
+    />
+  </div>
+  <div
+    className="footer-nav-header1 container-nav-link"
+    data-index={2}
+  >
+    <h4
+      className="c0"
+    />
+    <ul
+      className="c1 list"
+    />
+  </div>
+  <div
+    className="footer-nav-header1 container-nav-link"
+    data-index={3}
+  >
+    <h4
+      className="c0"
+    />
+    <ul
+      className="c1 list"
+    />
+  </div>
+  <div
+    className="footer-nav-header1 container-nav-link"
+    data-index={4}
+  >
+    <h4
+      className="c0"
+    />
+    <ul
+      className="c1 list"
+    />
+  </div>
+  <div
+    className="footer-nav-header1 container-nav-link"
+    data-index={5}
+  >
+    <h4
+      className="c0"
+    />
+    <ul
+      className="c1 list"
+    />
+  </div>
+</div>
+`;

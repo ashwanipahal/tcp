@@ -1,0 +1,269 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FooterMiddleDesktop component renders correctly 1`] = `
+<React.Fragment>
+  <ForwardRef
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      headerAsImage={true}
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </ForwardRef>
+  <ForwardRef
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      headerAsImage={true}
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </ForwardRef>
+  
+  <ForwardRef
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </ForwardRef>
+  <ForwardRef
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </ForwardRef>
+  <ForwardRef
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </ForwardRef>
+  <ForwardRef
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </ForwardRef>
+</React.Fragment>
+`;
+
+exports[`FooterMiddleDesktop component renders correctly 2`] = `
+<React.Fragment>
+  <ForwardRef
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      headerAsImage={true}
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </ForwardRef>
+  <ForwardRef
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      headerAsImage={true}
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </ForwardRef>
+  <ForwardRef
+    className="divider"
+    colSize={
+      Object {
+        "large": 1,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  />
+  <ForwardRef
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </ForwardRef>
+  <ForwardRef
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+    <FooterNavLinks
+      className="footer-links"
+      isSubHeader={true}
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </ForwardRef>
+  <ForwardRef
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </ForwardRef>
+</React.Fragment>
+`;
