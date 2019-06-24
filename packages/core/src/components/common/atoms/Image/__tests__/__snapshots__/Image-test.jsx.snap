@@ -1,3 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Image component renders correctly 1`] = `ShallowWrapper {}`;
+exports[`Image component renders correctly 1`] = `
+<img
+  alt="abcd"
+  className="sample-image"
+  onError={null}
+  sizes={null}
+  src="acdde.html"
+  srcSet={null}
+/>
+`;

@@ -1,9 +1,7 @@
 import React from 'react';
 import 'jest-styled-components';
-import renderer from 'react-test-renderer';
-import theme from '@tcp/core/styles/themes/TCP';
-import { ThemeProvider } from 'styled-components';
-import FooterNavHeader from '../views/FooterNavHeader';
+import { shallow } from 'enzyme';
+import { FooterNavHeaderVanilla } from '../views/FooterNavHeader';
 
 describe('FooterNavHeader component', () => {
   it('renders default footer correctly', () => {
@@ -14,11 +12,7 @@ describe('FooterNavHeader component', () => {
       isSubHeader: false,
       index: 2,
     };
-    const component = renderer.create(
-      <ThemeProvider theme={theme}>
-        <FooterNavHeader {...props} />
-      </ThemeProvider>
-    );
+    const component = shallow(<FooterNavHeaderVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 
@@ -30,11 +24,7 @@ describe('FooterNavHeader component', () => {
       isSubHeader: true,
       index: 4,
     };
-    const component = renderer.create(
-      <ThemeProvider theme={theme}>
-        <FooterNavHeader {...props} />
-      </ThemeProvider>
-    );
+    const component = shallow(<FooterNavHeaderVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 
@@ -51,11 +41,7 @@ describe('FooterNavHeader component', () => {
         url: '',
       },
     };
-    const component = renderer.create(
-      <ThemeProvider theme={theme}>
-        <FooterNavHeader {...props} />
-      </ThemeProvider>
-    );
+    const component = shallow(<FooterNavHeaderVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import ShallowRenderer from 'react-test-renderer/shallow';
+import { shallow } from 'enzyme';
 import 'jest-styled-components';
 import FooterMiddleDesktop from '../views/FooterMiddleDesktop';
 
@@ -34,8 +34,7 @@ describe('FooterMiddleDesktop component', () => {
         },
       ],
     };
-    const rendererShallow = new ShallowRenderer();
-    const component = rendererShallow.render(<FooterMiddleDesktop {...props} />);
+    const component = shallow(<FooterMiddleDesktop {...props} />);
     expect(component).toMatchSnapshot();
   });
   it('renders correctly', () => {
@@ -69,8 +68,7 @@ describe('FooterMiddleDesktop component', () => {
         },
       ],
     };
-    const rendererShallow = new ShallowRenderer();
-    const component = rendererShallow.render(<FooterMiddleDesktop {...props} />);
+    const component = shallow(<FooterMiddleDesktop {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

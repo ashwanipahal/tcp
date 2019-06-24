@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FooterMiddleMobile component renders correctly 1`] = `
-<ForwardRef
+<Styled(Col)
   colSize={
     Object {
       "large": 12,
@@ -53,36 +53,36 @@ exports[`FooterMiddleMobile component renders correctly 1`] = `
     }
     className="footer-links"
   >
-    <ForwardRef
+    <Styled(FooterNavLinksList)
       insideAcccordion={true}
       listArray={Array []}
     />
-    <ForwardRef
+    <Styled(FooterNavLinksList)
       insideAcccordion={true}
       listArray={Array []}
     />
-    <ForwardRef
+    <Styled(FooterNavLinksList)
       insideAcccordion={true}
       listArray={Array []}
     />
-    <ForwardRef
+    <Styled(FooterNavLinksList)
       insideAcccordion={true}
       listArray={Array []}
     />
-    <ForwardRef
+    <Styled(FooterNavLinksList)
       insideAcccordion={true}
       listArray={Array []}
     />
-    <ForwardRef
+    <Styled(FooterNavLinksList)
       insideAcccordion={true}
       listArray={Array []}
     />
   </AccordionList>
-</ForwardRef>
+</Styled(Col)>
 `;
 
 exports[`FooterMiddleMobile component renders correctly 2`] = `
-<ForwardRef
+<Styled(Col)
   colSize={
     Object {
       "large": 12,
@@ -135,30 +135,30 @@ exports[`FooterMiddleMobile component renders correctly 2`] = `
     }
     className="footer-links"
   >
-    <ForwardRef
+    <Styled(FooterNavLinksList)
       insideAcccordion={true}
       listArray={Array []}
     />
-    <ForwardRef
+    <Styled(FooterNavLinksList)
       insideAcccordion={true}
       listArray={Array []}
     />
-    <ForwardRef
+    <Styled(FooterNavLinksList)
       insideAcccordion={true}
       listArray={Array []}
     />
-    <ForwardRef
+    <Styled(FooterNavLinksList)
       insideAcccordion={true}
       listArray={Array []}
     />
-    <ForwardRef
+    <Styled(FooterNavLinksList)
       insideAcccordion={true}
       listArray={Array []}
     />
-    <ForwardRef
+    <Styled(FooterNavLinksList)
       insideAcccordion={true}
       listArray={Array []}
     />
   </AccordionList>
-</ForwardRef>
+</Styled(Col)>
 `;

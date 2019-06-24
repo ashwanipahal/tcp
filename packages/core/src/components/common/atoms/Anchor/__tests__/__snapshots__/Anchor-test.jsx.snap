@@ -1,3 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Anchor component renders correctly 1`] = `ShallowWrapper {}`;
+exports[`Anchor component renders correctly 1`] = `
+<Link
+  as=""
+  scroll=""
+  shallow={false}
+>
+  <a
+    className="sample-anchor"
+    target=""
+    title=""
+  >
+    Random anchor
+  </a>
+</Link>
+`;

@@ -1,22 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AccordionHeader component renders correctly 1`] = `
-.c0 {
-  font-family: Nunito,Arial,Helvetica,sans-serif;
-  color: #1a1a1a;
-  line-height: 1.15;
-  font-size: 13px;
-  font-weight: 400;
-}
-
-<h4
-  className="abcd c0"
-  data-index={1}
-  data-locator="accordion-1"
-  onClick={[Function]}
-  onKeyPress={[Function]}
-  tabIndex="0"
->
-  Sample Title
-</h4>
+<StyledComponent
+  className="abcd"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bdVaJa",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  font-family: ",
+          [Function],
+          ";
+  color: ",
+          [Function],
+          ";
+  line-height: ",
+          [Function],
+          ";
+  font-size: ",
+          [Function],
+          "px;
+  font-weight: ",
+          [Function],
+          ";
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(AccordionHeader)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bdVaJa",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  index={1}
+  titleText="Sample Title"
+  updateAccordionState={[Function]}
+/>
 `;

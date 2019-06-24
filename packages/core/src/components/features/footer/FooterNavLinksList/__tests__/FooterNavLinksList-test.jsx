@@ -1,9 +1,7 @@
 import React from 'react';
 import 'jest-styled-components';
-import renderer from 'react-test-renderer';
-import theme from '@tcp/core/styles/themes/TCP';
-import { ThemeProvider } from 'styled-components';
-import FooterNavLinksList from '../views/FooterNavLinksList';
+import { shallow } from 'enzyme';
+import { FooterNavLinksListVanilla } from '../views/FooterNavLinksList';
 
 describe('FooterNavLinksList component', () => {
   it('renders default footer correctly', () => {
@@ -29,11 +27,7 @@ describe('FooterNavLinksList component', () => {
         },
       ],
     };
-    const component = renderer.create(
-      <ThemeProvider theme={theme}>
-        <FooterNavLinksList {...props} />
-      </ThemeProvider>
-    );
+    const component = shallow(<FooterNavLinksListVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

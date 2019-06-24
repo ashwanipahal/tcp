@@ -1,8 +1,6 @@
 import React from 'react';
 import 'jest-styled-components';
-import renderer from 'react-test-renderer';
-import theme from '@tcp/core/styles/themes/TCP';
-import { ThemeProvider } from 'styled-components';
+import { shallow } from 'enzyme';
 import FooterNavLinks from '../views/FooterNavLinks';
 
 describe('FooterNavLinks component', () => {
@@ -48,11 +46,7 @@ describe('FooterNavLinks component', () => {
         },
       ],
     };
-    const component = renderer.create(
-      <ThemeProvider theme={theme}>
-        <FooterNavLinks {...props} />
-      </ThemeProvider>
-    );
+    const component = shallow(<FooterNavLinks {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

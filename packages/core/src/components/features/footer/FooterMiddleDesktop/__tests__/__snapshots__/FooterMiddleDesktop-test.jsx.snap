@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FooterMiddleDesktop component renders correctly 1`] = `
-<React.Fragment>
-  <ForwardRef
+<Fragment>
+  <Styled(Col)
     colSize={
       Object {
         "large": 2,
@@ -23,8 +23,8 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
         ]
       }
     />
-  </ForwardRef>
-  <ForwardRef
+  </Styled(Col)>
+  <Styled(Col)
     colSize={
       Object {
         "large": 2,
@@ -45,9 +45,8 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
         ]
       }
     />
-  </ForwardRef>
-  
-  <ForwardRef
+  </Styled(Col)>
+  <Styled(Col)
     colSize={
       Object {
         "large": 2,
@@ -67,8 +66,8 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
         ]
       }
     />
-  </ForwardRef>
-  <ForwardRef
+  </Styled(Col)>
+  <Styled(Col)
     colSize={
       Object {
         "large": 2,
@@ -88,8 +87,8 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
         ]
       }
     />
-  </ForwardRef>
-  <ForwardRef
+  </Styled(Col)>
+  <Styled(Col)
     colSize={
       Object {
         "large": 2,
@@ -109,8 +108,8 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
         ]
       }
     />
-  </ForwardRef>
-  <ForwardRef
+  </Styled(Col)>
+  <Styled(Col)
     colSize={
       Object {
         "large": 2,
@@ -130,13 +129,13 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
         ]
       }
     />
-  </ForwardRef>
-</React.Fragment>
+  </Styled(Col)>
+</Fragment>
 `;
 
 exports[`FooterMiddleDesktop component renders correctly 2`] = `
-<React.Fragment>
-  <ForwardRef
+<Fragment>
+  <Styled(Col)
     colSize={
       Object {
         "large": 2,
@@ -157,8 +156,8 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
         ]
       }
     />
-  </ForwardRef>
-  <ForwardRef
+  </Styled(Col)>
+  <Styled(Col)
     colSize={
       Object {
         "large": 2,
@@ -179,8 +178,8 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
         ]
       }
     />
-  </ForwardRef>
-  <ForwardRef
+  </Styled(Col)>
+  <Styled(Col)
     className="divider"
     colSize={
       Object {
@@ -190,7 +189,7 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
       }
     }
   />
-  <ForwardRef
+  <Styled(Col)
     colSize={
       Object {
         "large": 2,
@@ -210,8 +209,8 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
         ]
       }
     />
-  </ForwardRef>
-  <ForwardRef
+  </Styled(Col)>
+  <Styled(Col)
     colSize={
       Object {
         "large": 2,
@@ -243,8 +242,8 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
         ]
       }
     />
-  </ForwardRef>
-  <ForwardRef
+  </Styled(Col)>
+  <Styled(Col)
     colSize={
       Object {
         "large": 2,
@@ -264,6 +263,6 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
         ]
       }
     />
-  </ForwardRef>
-</React.Fragment>
+  </Styled(Col)>
+</Fragment>
 `;

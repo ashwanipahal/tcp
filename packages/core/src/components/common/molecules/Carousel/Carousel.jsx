@@ -8,7 +8,7 @@ import React from 'react';
 import Slider from 'react-slick';
 import { PropTypes } from 'prop-types';
 import config from './config';
-import CarouselStyle from './CarouselStyle';
+import CarouselStyle from './Carousel.style';
 import withStyles from '../../hoc/withStyles';
 
 const defaults = { ...config.CAROUSEL_DEFAULTS };
