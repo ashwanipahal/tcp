@@ -11,6 +11,5 @@ describe('Legal Links component', () => {
     };
     const component = shallow(<SocialMediaLinksVanilla {...props} />);
     expect(component).toMatchSnapshot();
-    expect(component.find('.test-socialMediaLinks img')).toHaveLength(4);
   });
 });

@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer component renders correctly 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-gqjmRU",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .footer-top {
+    border-bottom: 2px solid ",
+          [Function],
+          ";
+  }
+  .footer-bottom {
+    background: ",
+          [Function],
+          ";
+  }
+  .footer-top__slot--1 {
+    order: 2;
+  }
+  .footer-top__slot-2 {
+    order: 1;
+  }
+  .footer-bottom__slot--1 {
+    background-color: ",
+          [Function],
+          ";
+  }
+  .fullbleed-mobile {
+    flex-direction: column-reverse;
+    margin: 0;
+  }
+  .default-offset {
+    padding: 0 ",
+          [Function],
+          "px;
+  }
+  .footer-middle.desktop {
+    display: none;
+  }
+  @media ",
+          [Function],
+          " {
+    .default-offset {
+      padding: 0 ",
+          [Function],
+          "px;
+    }
+    .footer-top__slot--1 {
+      order: 1;
+    }
+    .footer-top__slot--2 {
+      order: 2;
+    }
+  }
+  @media ",
+          [Function],
+          " {
+    .footer-top {
+      padding-bottom: 46px;
+    }
+    .footer-bottom {
+      background-color: ",
+          [Function],
+          ";
+    }
+    .fullbleed-mobile {
+      flex-direction: row;
+      margin: 0 ",
+          [Function],
+          "px;
+    }
+    .default-offset {
+      padding: 0;
+    }
+    .footer-bottom__slot--1 {
+      background-color: inherit;
+    }
+    .footer-middle.mobile {
+      display: none;
+    }
+    .footer-middle.desktop {
+      display: flex;
+      padding: 60px 0 64px;
+    }
+    .divider {
+      border-left: 1px solid ",
+          [Function],
+          ";
+    }
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(Footer)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-gqjmRU",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;
