@@ -1,3 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Legal Links component renders correctly 1`] = `ShallowWrapper {}`;
+exports[`Legal Links component renders correctly 1`] = `
+<Fragment>
+  <ul
+    className="test-legalLinks"
+  >
+    <li>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        target=""
+        to="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
+      >
+        Terms and Conditions
+      </Styled(Anchor)>
+    </li>
+    <li>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        target=""
+        to="https://www.childrensplace.com/us/help-center/#privacyPolicySectionli"
+      >
+        Privacy Policy
+      </Styled(Anchor)>
+    </li>
+    <li>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        target=""
+        to="https://www.childrensplace.com/us/help-center/#cookiePolicySectionli"
+      >
+        Cookie Policy
+      </Styled(Anchor)>
+    </li>
+    <li>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        target=""
+        to="https://www.childrensplace.com/us/content/supply-chain"
+      >
+        California Supply Chains Act
+      </Styled(Anchor)>
+    </li>
+    <li>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        target=""
+        to="https://www.childrensplace.com/us/sitemap"
+      >
+        Site Map
+      </Styled(Anchor)>
+    </li>
+  </ul>
+</Fragment>
+`;
