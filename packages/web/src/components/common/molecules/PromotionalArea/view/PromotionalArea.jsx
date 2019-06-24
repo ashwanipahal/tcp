@@ -18,7 +18,7 @@ const PromotionalArea = ({ className, data, mobile }) => {
   return (
     <div className={className}>
       <div className={wrapperClass}>
-        <Carousel options={carouselConfig} carouselTheme="dark">
+        <Carousel options={carouselConfig} carouselConfig={{ type: 'dark', arrow: 'small' }}>
           {data.map(promotion => {
             return (
               <RichText
