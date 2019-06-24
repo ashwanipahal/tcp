@@ -3,6 +3,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { List } from 'immutable';
 import { getAddressList } from './AddressList.actions';
 import AddressBook from '../views/AddressBook.view';
 import getAddressListState from './AddressList.selectors';
@@ -21,7 +22,7 @@ class AddressListContainer extends React.PureComponent<Props> {
 
   render() {
     const { addressList } = this.props;
-    if (addressList) {
+    if (List.isList(addressList)) {
       return <AddressBook addresses={addressList} labels={labels} />;
     }
     return null;
