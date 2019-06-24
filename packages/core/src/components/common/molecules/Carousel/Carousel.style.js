@@ -6,8 +6,7 @@ const lightArrow = getIconPath('icon-carrot-white');
 const CarouselStyle = styled.div`
   .slick-slider {
     position: relative;
-    margin: 0 14px;
-    padding: 0 24px;
+    padding: ${props => (props.carouselConfig.arrow === 'small' ? '0 38px' : '0 24px')};
     line-height: 14px;
     text-align: center;
     display: block;
@@ -97,8 +96,8 @@ const CarouselStyle = styled.div`
     position: absolute;
     top: 50%;
     display: block;
-    width: 20px;
-    height: 20px;
+    width: ${props => (props.carouselConfig.arrow === 'small' ? '38px' : '20px')};
+    height: ${props => (props.carouselConfig.arrow === 'small' ? '30px' : '20px')};
     padding: 0;
     transform: translate(0, -50%);
     cursor: pointer;
@@ -109,27 +108,21 @@ const CarouselStyle = styled.div`
   }
   @media only screen and (max-width: 767px) {
     .slick-prev {
-      background: url(${props => (props.carouselTheme === 'dark' ? lightArrow : darkArrow)})
+      background: url(${props => (props.carouselConfig.type === 'dark' ? lightArrow : darkArrow)})
         no-repeat center center;
-      background-size: 6px 10px;
-      height: 10px;
-      width: 6px;
     }
     .slick-next {
-      background: url(${props => (props.carouselTheme === 'dark' ? lightArrow : darkArrow)})
+      background: url(${props => (props.carouselConfig.type === 'dark' ? lightArrow : darkArrow)})
         no-repeat center center;
-      background-size: 6px 10px;
-      height: 10px;
-      width: 6px;
     }
   }
   @media only screen and (min-width: 768px) {
     .slick-prev {
-      background: url(${props => (props.carouselTheme === 'dark' ? lightArrow : darkArrow)})
+      background: url(${props => (props.carouselConfig.type === 'dark' ? lightArrow : darkArrow)})
         no-repeat center center;
     }
     .slick-next {
-      background: url(${props => (props.carouselTheme === 'dark' ? lightArrow : darkArrow)})
+      background: url(${props => (props.carouselConfig.type === 'dark' ? lightArrow : darkArrow)})
         no-repeat center center;
     }
   }
