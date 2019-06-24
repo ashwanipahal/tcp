@@ -80,7 +80,7 @@ const ModuleD = ({ className, data }) => {
                 <Anchor
                   className="moduleD_textlink"
                   to={item.link.url}
-                  aria-label={item.link.text}
+                  aria-label={item.link.title}
                   target={item.link.target}
                 >
                   <Image src={item.image.url} alt={item.image.alt} className="moduleD_image" />
@@ -106,7 +106,7 @@ const ModuleD = ({ className, data }) => {
             className="moduleD_button"
             title={singleCTAButton.title}
           >
-            {singleCTAButton.text}
+            {singleCTAButton.title}
           </Button>
         </Anchor>
       </Row>

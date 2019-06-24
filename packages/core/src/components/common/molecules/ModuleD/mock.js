@@ -42,7 +42,6 @@ export default {
           {
             link: {
               url: plpUrl,
-              text: fmt,
               title: fmt,
               target: '',
               external: 0,
@@ -57,7 +56,6 @@ export default {
           {
             link: {
               url: plpUrl,
-              text: mmt,
               title: mmt,
               target: '',
               external: 0,
@@ -72,7 +70,6 @@ export default {
           {
             link: {
               url: plpUrl,
-              text: fmt,
               title: fmt,
               target: '',
               external: 0,
@@ -87,7 +84,6 @@ export default {
           {
             link: {
               url: plpUrl,
-              text: mmt,
               title: mmt,
               target: '',
               external: 0,
@@ -104,7 +100,6 @@ export default {
       singleCTAButton: {
         url: plpUrl,
         target: '',
-        text: 'SHOP ALL',
         title: 'SHOP ALL',
         external: 0,
       },
