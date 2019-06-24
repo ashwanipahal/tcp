@@ -1,16 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AccordionHeader component renders correctly 1`] = `
-.c0 {
-  font-family: Nunito,Arial,Helvetica,sans-serif;
-  color: #1a1a1a;
-  line-height: 1.15;
-  font-size: 13px;
-  font-weight: 400;
-}
-
 <h4
-  className="abcd c0"
+  className="abcd"
   data-index={1}
   data-locator="accordion-1"
   onClick={[Function]}

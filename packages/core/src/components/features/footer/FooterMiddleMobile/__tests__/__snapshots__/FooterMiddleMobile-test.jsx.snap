@@ -1,0 +1,164 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FooterMiddleMobile component renders correctly 1`] = `
+<Styled(Col)
+  colSize={
+    Object {
+      "large": 12,
+      "medium": 8,
+      "small": 6,
+    }
+  }
+  ignoreGutter={
+    Object {
+      "medium": true,
+      "small": true,
+    }
+  }
+>
+  <AccordionList
+    accordionItems={
+      Array [
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+      ]
+    }
+    className="footer-links"
+  >
+    <Styled(FooterNavLinksList)
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+    <Styled(FooterNavLinksList)
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+    <Styled(FooterNavLinksList)
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+    <Styled(FooterNavLinksList)
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+    <Styled(FooterNavLinksList)
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+    <Styled(FooterNavLinksList)
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+  </AccordionList>
+</Styled(Col)>
+`;
+
+exports[`FooterMiddleMobile component renders correctly 2`] = `
+<Styled(Col)
+  colSize={
+    Object {
+      "large": 12,
+      "medium": 8,
+      "small": 6,
+    }
+  }
+  ignoreGutter={
+    Object {
+      "medium": true,
+      "small": true,
+    }
+  }
+>
+  <AccordionList
+    accordionItems={
+      Array [
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+        Object {
+          "header": "",
+          "isSubHeader": true,
+          "links": Array [],
+          "title": "",
+        },
+        Object {
+          "header": "",
+          "links": Array [],
+          "title": "",
+        },
+      ]
+    }
+    className="footer-links"
+  >
+    <Styled(FooterNavLinksList)
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+    <Styled(FooterNavLinksList)
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+    <Styled(FooterNavLinksList)
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+    <Styled(FooterNavLinksList)
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+    <Styled(FooterNavLinksList)
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+    <Styled(FooterNavLinksList)
+      insideAcccordion={true}
+      listArray={Array []}
+    />
+  </AccordionList>
+</Styled(Col)>
+`;
