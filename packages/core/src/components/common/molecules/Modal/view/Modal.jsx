@@ -7,13 +7,13 @@
 import React from 'react';
 import ReactModal from 'react-modal';
 import PropTypes from 'prop-types';
-import Grid from '@tcp/core/src/components/common/molecules/Grid';
-import Row from '@tcp/core/src/components/common/atoms/Row';
-import Col from '@tcp/core/src/components/common/atoms/Col';
-import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
+import Grid from '../../Grid';
+import Row from '../../../atoms/Row';
+import Col from '../../../atoms/Col';
+import errorBoundary from '../../../hoc/errorBoundary';
 import ModalHeader from './ModalHeader';
-import ModalStyle from './ModalStyle';
-import Config from './config';
+import ModalStyle from '../ModalStyle';
+import Config from '../config';
 
 function getParent() {
   return document.querySelector('.TCPModal__Wrapper');

@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactModal from 'react-modal';
 import { shallow } from 'enzyme';
-import Modal from '../Modal';
+import Modal from '../view';
 
 describe('Modal Wrapper', () => {
   it('renders <ReactModal>', () => {
