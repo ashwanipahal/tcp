@@ -12,7 +12,7 @@
     "start:mobileapp": "cd packages/mobileapp && yarn start",
     "cleanup": "rm -rf ./node_modules",
     "lerna-clean": "npx lerna clean --y",
-    "test": "jest --config ./config/jest.config.js --coverage",
+    "test": "jest --config ./config/jest.config.js",
     "test:web": "yarn test ",
     "test:staged": "yarn test --bail --findRelatedTests",
     "test:watch": "yarn test --watch",
@@ -79,6 +79,7 @@
     "stylelint-formatter-pretty": "^1.0.3",
     "stylelint-processor-styled-components": "^1.5.1",
     "jest-styled-components": "^6.0.0",
+    "react-test-renderer": "^16.0.0",
     "enzyme-to-json": "^3.3.4"
   },
   "husky": {

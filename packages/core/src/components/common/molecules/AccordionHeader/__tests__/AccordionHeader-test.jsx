@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import 'jest-styled-components';
-import AccordionHeader from '../views/AccordionHeader';
+import { AccordionHeaderVanilla } from '../views/AccordionHeader';
 
 describe('AccordionHeader component', () => {
   it('renders correctly', () => {
@@ -11,7 +11,7 @@ describe('AccordionHeader component', () => {
       index: 1,
       titleText: 'Sample Title',
     };
-    const component = shallow(<AccordionHeader {...props} />);
+    const component = shallow(<AccordionHeaderVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

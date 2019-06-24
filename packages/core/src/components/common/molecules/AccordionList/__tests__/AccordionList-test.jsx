@@ -1,8 +1,6 @@
 import React from 'react';
 import 'jest-styled-components';
-import { shallow, mount } from 'enzyme';
-import theme from '@tcp/core/styles/themes/TCP';
-import { ThemeProvider } from 'styled-components';
+import { shallow } from 'enzyme';
 import AccordionList from '../views/AccordionList';
 
 describe('AccordionList component', () => {
@@ -68,30 +66,5 @@ describe('AccordionList component', () => {
     };
     const component = shallow(<AccordionList {...props} />);
     expect(component).toMatchSnapshot();
-  });
-
-  it('renders correctly with no accordion open', () => {
-    const props = {
-      accordionItems: [
-        {
-          header: {
-            text: 'list item 1',
-          },
-        },
-        {
-          header: {
-            text: 'list item 2',
-          },
-        },
-      ],
-      className: 'accordion-list',
-      children: ['<div className="abcd"></div>', '<div className="defg"></div>'],
-    };
-    const component = mount(
-      <ThemeProvider theme={theme}>
-        <AccordionList theme={theme} {...props} />
-      </ThemeProvider>
-    );
-    expect(component.find('h4')).toHaveLength(2);
   });
 });
