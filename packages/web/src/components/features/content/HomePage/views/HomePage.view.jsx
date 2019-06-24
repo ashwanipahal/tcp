@@ -1,24 +1,26 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
 import Image from '@tcp/core/src/components/common/atoms/Image';
-import ModuleD from '../../../../common/organisms/ModuleD';
+import ModuleD from '@tcp/core/src/components/common/molecules/ModuleD';
 
-const HomePageView = data => {
-  const layoutItems = data.layout.layout.val.layout;
-
+const HomePageView = props => {
+  const { slot_1: slot1 } = props;
   return (
     <Fragment>
       <Image src="/static/images/hero.png" />
-      {layoutItems.val.map(item => (
-        <Fragment>
-          {item.val.typ === 'module' && item.val.sub === 'moduleA' ? <div>module A</div> : ''}
-          {item.val.typ === 'module' && item.val.sub === 'moduleB' ? <div>module B</div> : ''}
-          {item.val.typ === 'module' && item.val.sub === 'moduleD' ? <ModuleD /> : ''}
-          {item.val.typ === 'module' && item.val.sub === 'moduleK' ? <div>module K</div> : ''}
-        </Fragment>
-      ))}
+      <ModuleD {...slot1} />
     </Fragment>
   );
+};
+
+HomePageView.propTypes = {
+  slot_1: PropTypes.shape({
+    composites: PropTypes.shape({}),
+    name: PropTypes.string,
+    type: PropTypes.string,
+    contentId: PropTypes.string,
+  }).isRequired,
 };
 
 export default errorBoundary(HomePageView);

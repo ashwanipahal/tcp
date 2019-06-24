@@ -7,6 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "reselect": "^4.0.0",
     "@tcp/core": "*",
     "apisauce": "^1.0.2",
     "apollo-client": "^2.6.2",
@@ -73,7 +74,9 @@
       "**/apollo-client",
       "**/apollo-client/**",
       "**/superagent",
-      "**/superagent/**"
+      "**/superagent/**",
+      "**/reselect",
+      "**/reselect/**"
     ]
   }
 }

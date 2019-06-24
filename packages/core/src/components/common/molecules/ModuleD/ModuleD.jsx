@@ -37,18 +37,17 @@ const ignoreGutter = [
   { small: true, medium: true },
 ];
 
-const ModuleD = ({ className, data }) => {
+const ModuleD = props => {
   const {
+    className,
     composites: { headerText, smallCompImage, singleCTAButton },
-  } = data.data.moduleD;
+  } = props;
+  const {
+    textLines: [{ text: headingText }],
+    link: { target, url },
+  } = headerText;
   let colSize;
   let assets = [];
-  let { headingText, target, url } = '';
-
-  if (headerText) {
-    headingText = headerText.textLines.text;
-    ({ target, url } = headerText.link);
-  }
 
   assets = smallCompImage ? smallCompImage.items : '';
 
@@ -116,7 +115,11 @@ const ModuleD = ({ className, data }) => {
 
 ModuleD.propTypes = {
   className: PropTypes.string.isRequired,
-  data: PropTypes.string.isRequired,
+  composites: PropTypes.shape({
+    headerText: PropTypes.shape({}),
+    smallCompImage: PropTypes.shape({}),
+    singleCTAButton: PropTypes.shape({}),
+  }).isRequired,
 };
 
 export default withStyles(ModuleD, style);

@@ -42,7 +42,6 @@ export default {
           {
             link: {
               url: plpUrl,
-              text: fmt,
               title: fmt,
               target: '',
               external: 0,
