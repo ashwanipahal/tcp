@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccordionList component renders correctly with 1 accordion open 1`] = `
+<div
+  className="accordion-list container-accordion"
+>
+  <div
+    className="list-item"
+  >
+    <ForwardRef
+      activeClass="active"
+      index={0}
+      titleText="list item 1"
+      updateAccordionState={[Function]}
+    />
+  </div>
+  <div
+    className="list-item"
+  >
+    <ForwardRef
+      activeClass="inactive"
+      index={1}
+      titleText="list item 2"
+      updateAccordionState={[Function]}
+    >
+      &lt;div className="defg"&gt;&lt;/div&gt;
+    </ForwardRef>
+  </div>
+</div>
+`;
+
+exports[`AccordionList component renders correctly with no accordion open 1`] = `
+<div
+  className="accordion-list container-accordion"
+>
+  <div
+    className="list-item"
+  >
+    <ForwardRef
+      activeClass="active"
+      index={0}
+      titleText="list item 1"
+      updateAccordionState={[Function]}
+    />
+  </div>
+  <div
+    className="list-item"
+  >
+    <ForwardRef
+      activeClass="active"
+      index={1}
+      titleText="list item 2"
+      updateAccordionState={[Function]}
+    />
+  </div>
+</div>
+`;

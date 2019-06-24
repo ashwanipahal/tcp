@@ -1,4 +1,4 @@
-import { HOMEPAGE_CONSTANTS } from '../HomePage.constants';
+import HOMEPAGE_CONSTANTS from '../HomePage.constants';
 
 export const getHeaderlinks = payload => {
   return {
