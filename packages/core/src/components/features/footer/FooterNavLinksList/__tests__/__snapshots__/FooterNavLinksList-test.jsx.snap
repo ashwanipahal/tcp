@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FooterNavLinksList component renders default footer correctly 1`] = `
+<ul
+  className="footer-nav-header1 list"
+>
+  <li>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      className="footer-nav-header1"
+      data-locator=""
+      fontSizeVariation="large"
+      noLink={true}
+      to=""
+    />
+  </li>
+  <li>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      className="footer-nav-header1"
+      data-locator=""
+      fontSizeVariation="large"
+      noLink={true}
+      to=""
+    />
+  </li>
+  <li>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      className="footer-nav-header1"
+      data-locator=""
+      fontSizeVariation="large"
+      noLink={true}
+      to=""
+    />
+  </li>
+</ul>
+`;

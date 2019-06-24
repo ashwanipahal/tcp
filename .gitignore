@@ -5,3 +5,4 @@ yarn.lock
 packages/**/.DS_Store
 packages/mobileapp/android
 packages/mobileapp/ios
+reports
