@@ -15,3 +15,14 @@ exports[`Anchor component renders correctly 1`] = `
   </a>
 </Link>
 `;
+
+exports[`Anchor component renders correctly with nolink variation 1`] = `
+<a
+  className="sample-anchor-nolink"
+  onClick={[Function]}
+  target=""
+  title=""
+>
+  Random anchor with no link component
+</a>
+`;
