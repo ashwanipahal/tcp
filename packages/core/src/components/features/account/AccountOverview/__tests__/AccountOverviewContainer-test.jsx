@@ -1,5 +1,3 @@
-// Boiler plate for furthur test cases to be written
-
 import { shallow } from 'enzyme';
 import React from 'react';
 import AccountOverview from '../container/AccountOverview.container';
