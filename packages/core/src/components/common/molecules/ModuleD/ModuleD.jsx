@@ -1,9 +1,9 @@
 // any molecule will come here
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { Anchor, Button, Col, Row, Image } from '../../atoms';
-import { Heading } from '../../../../../styles/themes/TCP/typotheme';
-import Grid from '../Grid';
+import Grid from '@tcp/core/src/components/common/molecules/Grid';
+import { Anchor, Button, Col, Row, Image } from '@tcp/core/src/components/common/atoms';
+import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import style from './ModuleD.style';
 import withStyles from '../../hoc/withStyles';
 
@@ -38,19 +38,18 @@ const ignoreGutter = [
 ];
 
 const ModuleD = ({ className, data }) => {
-  const {
-    composites: { headerText, smallCompImage, singleCTAButton },
-  } = data.data.moduleD;
-  let colSize;
+  const mod = data.data.moduleD;
   let assets = [];
-  let { headingText, target, url } = '';
+  let { target, title, text, url, button } = '';
 
-  if (headerText) {
-    headingText = headerText.textLines.text;
-    ({ target, url } = headerText.link);
+  if (mod.value) {
+    ({ target, title, text, url } = mod.value[0].value.value);
+
+    assets = mod.value[2].value; // TODO: there's a promotional banner in the CMS but not in the designs. ignoring
+    button = mod.value[3].value.value;
   }
 
-  assets = smallCompImage ? smallCompImage.items : '';
+  let colSize;
 
   if (assets.length === 2) {
     colSize = colSize2Elements;
@@ -68,45 +67,46 @@ const ModuleD = ({ className, data }) => {
           HeadingcolorSm="primary"
           tag="h2"
           data-locator="moduleD_headerlink"
+          title={title}
         >
-          {headingText}
+          {text}
         </Heading>
       </Anchor>
       <Row centered>
         {assets &&
           assets.map((item, index) => (
-            <Col key={item.title} colSize={colSize} ignoreGutter={ignoreGutter[index]}>
+            <Col key={item.value.name} colSize={colSize} ignoreGutter={ignoreGutter[index]}>
               <div className="moduleD__image-container">
                 <Anchor
                   className="moduleD_textlink"
-                  to={item.link.url}
-                  aria-label={item.link.title}
-                  target={item.link.target}
+                  to={item.value.url}
+                  aria-label={item.value.text}
+                  target={item.value.target}
                 >
-                  <Image src={item.image.url} alt={item.image.alt} className="moduleD_image" />
+                  <Image
+                    src={item.value.image.src}
+                    alt={item.value.image.alt}
+                    className="moduleD_image"
+                  />
                 </Anchor>
               </div>
               <Anchor
                 withCaret
                 centered
                 className="moduleD_textlink"
-                to={item.link.url}
-                target={item.link.target}
+                to={item.value.url}
+                target={item.value.target}
               >
-                {item.link.title}
+                {item.value.text}
               </Anchor>
             </Col>
           ))}
       </Row>
 
       <Row centered>
-        <Anchor href={singleCTAButton.url}>
-          <Button
-            buttonVariation="variable-width"
-            className="moduleD_button"
-            title={singleCTAButton.title}
-          >
-            {singleCTAButton.title}
+        <Anchor href={button.url} target={button.target}>
+          <Button buttonVariation="variable-width" className="moduleD_button" title={button.title}>
+            {button.text}
           </Button>
         </Anchor>
       </Row>
