@@ -103,6 +103,9 @@ const BodyCopy = styled(BodyStyle)`
   ${props => (props.fontWeight === 'bold' ? `font-weight: ${fonts.fontWeight.bold}` : '')};
   ${props => (props.fontWeight === 'black' ? `font-weight: ${fonts.fontWeight.black}` : '')};
 
-  color: ${colors.PRIMARY.BLUE};
+  ${props => (!props.color ? `color: ${colors.PRIMARY.DARK};` : '')};
+  ${props => (props.color === 'primary' ? `color: ${colors.PRIMARY.DARK};` : '')};
+  ${props => (props.color === 'secondary' ? `color: ${colors.PRIMARY.BLUE};` : '')};
+  ${props => (props.color === 'tertiary' ? `color: ${colors.PRIMARY.GREEN};` : '')};
 `;
 export { Heading, BodyCopy };

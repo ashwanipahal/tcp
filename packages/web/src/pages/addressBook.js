@@ -1,1 +1,1 @@
-export { default } from '@tcp/core/src/components/features/AddressBook';
+export { default } from '@tcp/core/src/components/features/myAccount/AddressList';
