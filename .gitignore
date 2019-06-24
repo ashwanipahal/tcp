@@ -3,6 +3,4 @@ yarn.lock
 /.DS_Store/
 .DS_Store
 packages/**/.DS_Store
-packages/mobileapp/android
-packages/mobileapp/ios
 reports
