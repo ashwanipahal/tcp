@@ -1,8 +1,9 @@
 import React from 'react';
 import pathOr from 'lodash/fp/pathOr';
 import { withRouter } from 'next/router'; //eslint-disable-line
-import MyAccountLayout from '../../MyAccountLayoutContainer/container/MyAccountLayout.container';
+import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentMapping from '../AccountComponentMapping';
+import navData from '../MyAccountNavData';
 
 // @flow
 type Props = {
@@ -49,6 +50,7 @@ export class Account extends React.PureComponent<Props, State> {
       <MyAccountLayout
         mainContent={AccountComponentMapping[component]}
         selectedComponent={component}
+        navData={navData}
       />
     );
   }

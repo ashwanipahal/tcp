@@ -50,6 +50,8 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
             anchorVariation="primary"
             asPath="/account"
             className="selected"
+            fontSizeVariation="large"
+            fontWeightVariation="bold"
             to="/account?id=accountOverview"
           >
             Account Overview
@@ -60,9 +62,11 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
           key="myPlaceRewards"
         >
           <Styled(Anchor)
-            anchorVariation="primary"
+            anchorVariation="disabled"
             asPath="/account/myPlaceRewards"
             className={false}
+            fontSizeVariation="large"
+            fontWeightVariation={false}
             to="/account?id=myPlaceRewards"
           >
             My Place Rewards
@@ -72,9 +76,11 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
               key="pointsHistory"
             >
               <Styled(Anchor)
-                anchorVariation="primary"
+                anchorVariation="disabled"
                 asPath="/account/myPlaceRewards/pointsHistory"
                 className={false}
+                fontSizeVariation="large"
+                fontWeightVariation={false}
                 to="/account?id=pointsHistoryPage"
               >
                 Points History
@@ -87,9 +93,11 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
           key="myWallet"
         >
           <Styled(Anchor)
-            anchorVariation="primary"
+            anchorVariation="disabled"
             asPath="/account/myWalletPage"
             className={false}
+            fontSizeVariation="large"
+            fontWeightVariation={false}
             to="/account?id=myWalletPage"
           >
             My Wallet
@@ -100,9 +108,11 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
           key="earnExtraPoints"
         >
           <Styled(Anchor)
-            anchorVariation="primary"
+            anchorVariation="disabled"
             asPath="/account/earnExtraPointsPage"
             className={false}
+            fontSizeVariation="large"
+            fontWeightVariation={false}
             to="/account?id=earnExtraPointsPage"
           >
             Earn Extra Points
@@ -113,9 +123,11 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
           key="profileInformation"
         >
           <Styled(Anchor)
-            anchorVariation="primary"
+            anchorVariation="disabled"
             asPath="/account/profileInformation"
             className={false}
+            fontSizeVariation="large"
+            fontWeightVariation={false}
             to="/account?id=profileInformation"
           >
             Profile Information
@@ -126,9 +138,11 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
           key="addressBook"
         >
           <Styled(Anchor)
-            anchorVariation="primary"
+            anchorVariation="disabled"
             asPath="/account/addressBook"
             className={false}
+            fontSizeVariation="large"
+            fontWeightVariation={false}
             to="/account?id=addressBook"
           >
             Address Book
@@ -139,9 +153,11 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
           key="paymentGiftCards"
         >
           <Styled(Anchor)
-            anchorVariation="primary"
+            anchorVariation="disabled"
             asPath="/account/paymentGiftCardsPage"
             className={false}
+            fontSizeVariation="large"
+            fontWeightVariation={false}
             to="/account?id=paymentGiftCardsPage"
           >
             Payment & Gift Cards
@@ -152,9 +168,11 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
           key="myPreferences"
         >
           <Styled(Anchor)
-            anchorVariation="primary"
+            anchorVariation="disabled"
             asPath="/account/myPreferencePage"
             className={false}
+            fontSizeVariation="large"
+            fontWeightVariation={false}
             to="/account?id=myPreferencePage"
           >
             My Preferences
@@ -165,9 +183,11 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
           key="myPlaceRewardsCC"
         >
           <Styled(Anchor)
-            anchorVariation="primary"
+            anchorVariation="disabled"
             asPath="/account/myPlaceRewardsCCPage"
             className={false}
+            fontSizeVariation="large"
+            fontWeightVariation={false}
             to="/account?id=myPlaceRewardsCCPage"
           >
             My Place Rewards Credit Card
@@ -208,9 +228,11 @@ exports[`My Account Layout View should render only 2  links if navData has 2 lin
           key="myWallet"
         >
           <Styled(Anchor)
-            anchorVariation="primary"
+            anchorVariation="disabled"
             asPath="/myWalletPage"
             className={false}
+            fontSizeVariation="large"
+            fontWeightVariation={false}
           >
             My Wallet
           </Styled(Anchor)>
@@ -220,9 +242,11 @@ exports[`My Account Layout View should render only 2  links if navData has 2 lin
           key="earnExtraPoints"
         >
           <Styled(Anchor)
-            anchorVariation="primary"
+            anchorVariation="disabled"
             asPath="/earnExtraPointsPage"
             className={false}
+            fontSizeVariation="large"
+            fontWeightVariation={false}
           >
             Earn Extra Points
           </Styled(Anchor)>
