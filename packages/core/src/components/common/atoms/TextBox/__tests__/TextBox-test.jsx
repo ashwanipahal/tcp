@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import TextBox from '../views/TextBox';
+import { TextBoxVanilla } from '../views/TextBox';
 
 describe('Textbox component', () => {
   it('renders correctly', () => {
@@ -9,7 +9,7 @@ describe('Textbox component', () => {
       id: 'abcd',
       className: 'asdfasdf',
     };
-    const component = shallow(<TextBox {...props} />);
+    const component = shallow(<TextBoxVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

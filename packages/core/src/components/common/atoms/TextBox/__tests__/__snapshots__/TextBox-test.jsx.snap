@@ -1,3 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Textbox component renders correctly 1`] = `ShallowWrapper {}`;
+exports[`Textbox component renders correctly 1`] = `
+<input
+  aria-label=""
+  className="asdfasdf"
+  id="abcd"
+  isErrorState={false}
+  isSuccessState={false}
+  name=""
+  onChange={[Function]}
+  placeholder=""
+  type="text"
+/>
+`;

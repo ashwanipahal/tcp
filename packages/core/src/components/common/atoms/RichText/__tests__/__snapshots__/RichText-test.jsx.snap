@@ -1,3 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Rich Text component renders correctly 1`] = `ShallowWrapper {}`;
+exports[`Rich Text component renders correctly 1`] = `
+<div
+  className="sample-richtext"
+  dangerouslySetInnerHTML={
+    Object {
+      "__html": "<button class=\\"asdfasdf\\" type=\\"button\\">test133</button>",
+    }
+  }
+  data-locator=""
+/>
+`;

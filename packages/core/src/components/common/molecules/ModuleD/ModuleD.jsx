@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { Anchor, Button, Col, Row, Image } from '@tcp/core/src/components/common/atoms';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
+import { getLocator } from '@tcp/web/src/utils';
 import style from './ModuleD.style';
 import withStyles from '../../hoc/withStyles';
 
@@ -63,10 +64,11 @@ const ModuleD = ({ className, data }) => {
     <Grid className={className}>
       <Anchor className="moduleD_textlink" to={url} target={target}>
         <Heading
+          className="moduleD_header"
           HeadingLarge="two"
           HeadingcolorSm="primary"
           tag="h2"
-          data-locator="moduleD_headerlink"
+          data-locator={getLocator('moduleD_headerlink')}
           title={title}
         >
           {text}
@@ -87,6 +89,7 @@ const ModuleD = ({ className, data }) => {
                     src={item.value.image.src}
                     alt={item.value.image.alt}
                     className="moduleD_image"
+                    data-locator={getLocator('moduleD_image')}
                   />
                 </Anchor>
               </div>
@@ -94,6 +97,7 @@ const ModuleD = ({ className, data }) => {
                 withCaret
                 centered
                 className="moduleD_textlink"
+                data-locator={getLocator('moduleD_textlink')}
                 to={item.value.url}
                 target={item.value.target}
               >
@@ -105,7 +109,12 @@ const ModuleD = ({ className, data }) => {
 
       <Row centered>
         <Anchor href={button.url} target={button.target}>
-          <Button buttonVariation="variable-width" className="moduleD_button" title={button.title}>
+          <Button
+            buttonVariation="variable-width"
+            className="moduleD_button"
+            title={button.title}
+            data-locator={getLocator('moduleD_button')}
+          >
             {button.text}
           </Button>
         </Anchor>
