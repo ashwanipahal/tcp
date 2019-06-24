@@ -6,33 +6,6 @@ const { colors, fonts } = theme;
 const HeadingFont = fonts.fontSize.heading;
 const bodySizeText = fonts.fontSize.body.bodytext;
 const Heading = styled(HeadingStyle)`
-  ${props =>
-    props.fontFamily === 'primaryFontFamily' ? `font-family: ${fonts.primaryFontFamily}` : ''};
-  ${props =>
-    props.fontFamily === 'secondaryFontFamily' ? `font-family: ${fonts.secondaryFontFamily}` : ''};
-  ${props =>
-    props.fontFamily === 'primaryFontSemilBoldFamily'
-      ? `font-family: ${fonts.primaryFontSemilBoldFamily}`
-      : ''};
-  ${props =>
-    props.fontFamily === 'secondaryFontSemilBoldFamily'
-      ? `font-family: ${fonts.secondaryFontSemilBoldFamily}`
-      : ''};
-  ${props =>
-    props.fontFamily === 'primaryFontBlackFamily'
-      ? `font-family: ${fonts.primaryFontBlackFamily}`
-      : ''};
-  ${props =>
-    props.fontFamily === 'secondaryFontBlackFamily'
-      ? `font-family: ${fonts.secondaryFontBlackFamily}`
-      : ''};
-  ${props => (props.fontWeight === 'light' ? `font-weight: ${fonts.fontWeight.light}` : '')};
-  ${props => (props.fontWeight === 'normal' ? `font-weight: ${fonts.fontWeight.normal}` : '')};
-  ${props => (props.fontWeight === 'medium' ? `font-weight: ${fonts.fontWeight.medium}` : '')};
-  ${props => (props.fontWeight === 'semiBold' ? `font-weight: ${fonts.fontWeight.semiBold}` : '')};
-  ${props => (props.fontWeight === 'bold' ? `font-weight: ${fonts.fontWeight.bold}` : '')};
-  ${props => (props.fontWeight === 'black' ? `font-weight: ${fonts.fontWeight.black}` : '')};
-
   ${props => (props.HeadingLarge === 'one' ? `font-size: ${HeadingFont.large.h1}px` : '')};
   ${props => (props.HeadingLarge === 'two' ? `font-size: ${HeadingFont.large.h2}px` : '')};
   ${props => (props.HeadingLarge === 'three' ? `font-size: ${HeadingFont.large.h3}px` : '')};
@@ -76,36 +49,10 @@ const BodyCopy = styled(BodyStyle)`
   ${props =>
     props.bodySizeSm === 'three' ? `font-size: ${fonts.fontSize.body.small.tertiary}px` : ''};
 
-  ${props =>
-    props.fontFamily === 'primaryFontFamily' ? `font-family: ${fonts.primaryFontFamily}` : ''};
-  ${props =>
-    props.fontFamily === 'secondaryFontFamily' ? `font-family: ${fonts.secondaryFontFamily}` : ''};
-  ${props =>
-    props.fontFamily === 'primaryFontSemilBoldFamily'
-      ? `font-family: ${fonts.primaryFontSemilBoldFamily}`
-      : ''};
-  ${props =>
-    props.fontFamily === 'secondaryFontSemilBoldFamily'
-      ? `font-family: ${fonts.secondaryFontSemilBoldFamily}`
-      : ''};
-  ${props =>
-    props.fontFamily === 'primaryFontBlackFamily'
-      ? `font-family: ${fonts.primaryFontBlackFamily}`
-      : ''};
-  ${props =>
-    props.fontFamily === 'secondaryFontBlackFamily'
-      ? `font-family: ${fonts.secondaryFontBlackFamily}`
-      : ''};
-  ${props => (props.fontWeight === 'light' ? `font-weight: ${fonts.fontWeight.light}` : '')};
-  ${props => (props.fontWeight === 'normal' ? `font-weight: ${fonts.fontWeight.normal}` : '')};
-  ${props => (props.fontWeight === 'medium' ? `font-weight: ${fonts.fontWeight.medium}` : '')};
-  ${props => (props.fontWeight === 'semiBold' ? `font-weight: ${fonts.fontWeight.semiBold}` : '')};
-  ${props => (props.fontWeight === 'bold' ? `font-weight: ${fonts.fontWeight.bold}` : '')};
-  ${props => (props.fontWeight === 'black' ? `font-weight: ${fonts.fontWeight.black}` : '')};
-
   ${props => (!props.color ? `color: ${colors.PRIMARY.DARK};` : '')};
   ${props => (props.color === 'primary' ? `color: ${colors.PRIMARY.DARK};` : '')};
   ${props => (props.color === 'secondary' ? `color: ${colors.PRIMARY.BLUE};` : '')};
   ${props => (props.color === 'tertiary' ? `color: ${colors.PRIMARY.GREEN};` : '')};
 `;
+
 export { Heading, BodyCopy };

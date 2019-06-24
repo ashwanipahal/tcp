@@ -43,7 +43,7 @@ const Header = ({ className, headerData }) => (
             small: 0,
           }}
         >
-          <DummyNav primaryFontBlackFamily>
+          <DummyNav className="dummy-nav">
             <div>Girl</div>
             <div>Toddler Girl</div>
             <div>Boy</div>
