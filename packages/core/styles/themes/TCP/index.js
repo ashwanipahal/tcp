@@ -1,7 +1,7 @@
 import colors from './colors';
 import fonts from './fonts';
 import zindex from './zindex';
-import variables from './variables';
+import spacing from './spacing';
 import gridDimensions from './gridDimensions';
 import { mediaQuery, breakpoints } from './mediaQuery';
 
@@ -15,7 +15,7 @@ const theme = {
   zindex,
   gridDimensions,
   opacity,
-  variables,
+  spacing,
 };
 
 export default theme;

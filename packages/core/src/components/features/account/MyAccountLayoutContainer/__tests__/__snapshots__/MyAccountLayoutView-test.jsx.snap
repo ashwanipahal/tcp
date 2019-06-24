@@ -1,0 +1,281 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`My Account Layout View should not render any links if navData is empty 1`] = `
+<Fragment>
+  <Styled(Row)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <styled.ul />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 10,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <mockConstructor />
+    </Styled(Col)>
+  </Styled(Row)>
+</Fragment>
+`;
+
+exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] = `
+<Fragment>
+  <Styled(Row)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <styled.ul>
+        <li
+          id="accountOverview"
+          key="accountOverview"
+        >
+          <Link
+            as="/account"
+            href="/account?id=accountOverview"
+          >
+            <a
+              className="selected"
+              href="/account"
+            >
+              Account Overview
+            </a>
+          </Link>
+        </li>
+        <li
+          id="myPlaceRewards"
+          key="myPlaceRewards"
+        >
+          <Link
+            as="/account/myPlaceRewards"
+            href="/account?id=myPlaceRewards"
+          >
+            <a
+              className={false}
+              href="/account/myPlaceRewards"
+            >
+              My Place Rewards
+            </a>
+          </Link>
+          <styled.ul>
+            <li
+              key="pointsHistory"
+            >
+              <Link
+                as="/account/myPlaceRewards/pointsHistory"
+                href="/account?id=pointsHistoryPage"
+              >
+                <a
+                  className={false}
+                  href="/account/myPlaceRewards/pointsHistory"
+                >
+                  Points History
+                </a>
+              </Link>
+            </li>
+          </styled.ul>
+        </li>
+        <li
+          id="myWallet"
+          key="myWallet"
+        >
+          <Link
+            as="/account/myWalletPage"
+            href="/account?id=myWalletPage"
+          >
+            <a
+              className={false}
+              href="/account/myWalletPage"
+            >
+              My Wallet
+            </a>
+          </Link>
+        </li>
+        <li
+          id="earnExtraPoints"
+          key="earnExtraPoints"
+        >
+          <Link
+            as="/account/earnExtraPointsPage"
+            href="/account?id=earnExtraPointsPage"
+          >
+            <a
+              className={false}
+              href="/account/earnExtraPointsPage"
+            >
+              Earn Extra Points
+            </a>
+          </Link>
+        </li>
+        <li
+          id="profileInformation"
+          key="profileInformation"
+        >
+          <Link
+            as="/account/profileInformation"
+            href="/account?id=profileInformation"
+          >
+            <a
+              className={false}
+              href="/account/profileInformation"
+            >
+              Profile Information
+            </a>
+          </Link>
+        </li>
+        <li
+          id="addressBook"
+          key="addressBook"
+        >
+          <Link
+            as="/account/addressBook"
+            href="/account?id=addressBook"
+          >
+            <a
+              className={false}
+              href="/account/addressBook"
+            >
+              Address Book
+            </a>
+          </Link>
+        </li>
+        <li
+          id="paymentGiftCards"
+          key="paymentGiftCards"
+        >
+          <Link
+            as="/account/paymentGiftCardsPage"
+            href="/account?id=paymentGiftCardsPage"
+          >
+            <a
+              className={false}
+              href="/account/paymentGiftCardsPage"
+            >
+              Payment & Gift Cards
+            </a>
+          </Link>
+        </li>
+        <li
+          id="myPreferences"
+          key="myPreferences"
+        >
+          <Link
+            as="/account/myPreferencePage"
+            href="/account?id=myPreferencePage"
+          >
+            <a
+              className={false}
+              href="/account/myPreferencePage"
+            >
+              My Preferences
+            </a>
+          </Link>
+        </li>
+        <li
+          id="myPlaceRewardsCC"
+          key="myPlaceRewardsCC"
+        >
+          <Link
+            as="/account/myPlaceRewardsCCPage"
+            href="/account?id=myPlaceRewardsCCPage"
+          >
+            <a
+              className={false}
+              href="/account/myPlaceRewardsCCPage"
+            >
+              My Place Rewards Credit Card
+            </a>
+          </Link>
+        </li>
+      </styled.ul>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 10,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <mockConstructor />
+    </Styled(Col)>
+  </Styled(Row)>
+</Fragment>
+`;
+
+exports[`My Account Layout View should render only 2  links if navData has 2 links 1`] = `
+<Fragment>
+  <Styled(Row)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <styled.ul>
+        <li
+          id="myWallet"
+          key="myWallet"
+        >
+          <Link
+            as="/myWalletPage"
+          >
+            <a
+              className={false}
+              href="/myWalletPage"
+            >
+              My Wallet
+            </a>
+          </Link>
+        </li>
+        <li
+          id="earnExtraPoints"
+          key="earnExtraPoints"
+        >
+          <Link
+            as="/earnExtraPointsPage"
+          >
+            <a
+              className={false}
+              href="/earnExtraPointsPage"
+            >
+              Earn Extra Points
+            </a>
+          </Link>
+        </li>
+      </styled.ul>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 10,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <mockConstructor />
+    </Styled(Col)>
+  </Styled(Row)>
+</Fragment>
+`;

@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Account View should render Account Correctly 1`] = `
+<MyAccountLayoutContainer
+  mainContent={[Function]}
+  selectedComponent="addressBook"
+/>
+`;

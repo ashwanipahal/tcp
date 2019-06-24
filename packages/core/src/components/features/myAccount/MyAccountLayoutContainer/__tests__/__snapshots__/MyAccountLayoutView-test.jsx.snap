@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`My Account Layout View should not render any links if navData is empty 1`] = `ShallowWrapper {}`;
-
-exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] = `ShallowWrapper {}`;
-
-exports[`My Account Layout View should render only 2  links if navData has 2 links 1`] = `ShallowWrapper {}`;
