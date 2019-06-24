@@ -42,5 +42,3 @@ mkdir -p $destinationL
 cp -Rf $sourceL $destinationL
 
 echo "Pre-build has executed successfully!"
-
-
