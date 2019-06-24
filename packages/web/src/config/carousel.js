@@ -2,7 +2,7 @@ import mediaQuery from '@tcp/core/styles/themes/TCP';
 
 export default {
   CAROUSEL_OPTIONS: {
-    autoplaySpeed: 3000,
+    autoplaySpeed: 6000,
     speed: 500,
   },
   CAROUSEL_FADE_OPTIONS: {

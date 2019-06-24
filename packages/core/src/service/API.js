@@ -26,6 +26,10 @@ async function fetchData(baseURL, relURL, params = {}, method) {
     request.set(params.header);
   }
 
+  if (params.payload) {
+    request.send(params.payload);
+  }
+
   const result = new Promise(resolve => {
     request
       .then(response => {
