@@ -10,17 +10,6 @@ export default styled.ul`
   }
   li {
     padding: ${themes.spacing.ELEMENT_SPACING.SM} 0;
-
-    a {
-      text-decoration: none;
-      font-size: ${themes.fonts.fontSize.listmenu.large}px;
-      color: ${themes.colors.PRIMARY.GRAY};
-    }
-
-    a.selected {
-      color: ${themes.colors.PRIMARY.DARK};
-      font-weight: ${themes.fonts.fontWeight.bold};
-    }
   }
 
   & & {

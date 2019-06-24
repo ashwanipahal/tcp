@@ -3,6 +3,7 @@ import Link from 'next/link'; //eslint-disable-line
 import MyAccountStyle from '../styles/MyAccountLayout.style';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
+import Anchor from '../../../../common/atoms/Anchor';
 
 // @flow
 type Props = {
@@ -31,11 +32,16 @@ class MyAccountLayoutView extends React.PureComponent<Props, State> {
   getNavLink = ({ nav, selectedComponent }) => {
     const selectedNav = selectedComponent === nav.component;
     return (
-      <Link as={nav.url} href={nav.href}>
-        <a href={nav.url} className={selectedNav && 'selected'}>
-          {nav.displayName}
-        </a>
-      </Link>
+      <Anchor
+        asPath={nav.url}
+        to={nav.href}
+        className={selectedNav && 'selected'}
+        anchorVariation={selectedNav ? 'primary' : 'disabled'}
+        fontSizeVariation="large"
+        fontWeightVariation={selectedNav && 'bold'}
+      >
+        {nav.displayName}
+      </Anchor>
     );
   };
 

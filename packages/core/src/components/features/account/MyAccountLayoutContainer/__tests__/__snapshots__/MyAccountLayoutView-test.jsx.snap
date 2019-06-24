@@ -46,48 +46,39 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
           id="accountOverview"
           key="accountOverview"
         >
-          <Link
-            as="/account"
-            href="/account?id=accountOverview"
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath="/account"
+            className="selected"
+            to="/account?id=accountOverview"
           >
-            <a
-              className="selected"
-              href="/account"
-            >
-              Account Overview
-            </a>
-          </Link>
+            Account Overview
+          </Styled(Anchor)>
         </li>
         <li
           id="myPlaceRewards"
           key="myPlaceRewards"
         >
-          <Link
-            as="/account/myPlaceRewards"
-            href="/account?id=myPlaceRewards"
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath="/account/myPlaceRewards"
+            className={false}
+            to="/account?id=myPlaceRewards"
           >
-            <a
-              className={false}
-              href="/account/myPlaceRewards"
-            >
-              My Place Rewards
-            </a>
-          </Link>
+            My Place Rewards
+          </Styled(Anchor)>
           <styled.ul>
             <li
               key="pointsHistory"
             >
-              <Link
-                as="/account/myPlaceRewards/pointsHistory"
-                href="/account?id=pointsHistoryPage"
+              <Styled(Anchor)
+                anchorVariation="primary"
+                asPath="/account/myPlaceRewards/pointsHistory"
+                className={false}
+                to="/account?id=pointsHistoryPage"
               >
-                <a
-                  className={false}
-                  href="/account/myPlaceRewards/pointsHistory"
-                >
-                  Points History
-                </a>
-              </Link>
+                Points History
+              </Styled(Anchor)>
             </li>
           </styled.ul>
         </li>
@@ -95,113 +86,92 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
           id="myWallet"
           key="myWallet"
         >
-          <Link
-            as="/account/myWalletPage"
-            href="/account?id=myWalletPage"
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath="/account/myWalletPage"
+            className={false}
+            to="/account?id=myWalletPage"
           >
-            <a
-              className={false}
-              href="/account/myWalletPage"
-            >
-              My Wallet
-            </a>
-          </Link>
+            My Wallet
+          </Styled(Anchor)>
         </li>
         <li
           id="earnExtraPoints"
           key="earnExtraPoints"
         >
-          <Link
-            as="/account/earnExtraPointsPage"
-            href="/account?id=earnExtraPointsPage"
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath="/account/earnExtraPointsPage"
+            className={false}
+            to="/account?id=earnExtraPointsPage"
           >
-            <a
-              className={false}
-              href="/account/earnExtraPointsPage"
-            >
-              Earn Extra Points
-            </a>
-          </Link>
+            Earn Extra Points
+          </Styled(Anchor)>
         </li>
         <li
           id="profileInformation"
           key="profileInformation"
         >
-          <Link
-            as="/account/profileInformation"
-            href="/account?id=profileInformation"
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath="/account/profileInformation"
+            className={false}
+            to="/account?id=profileInformation"
           >
-            <a
-              className={false}
-              href="/account/profileInformation"
-            >
-              Profile Information
-            </a>
-          </Link>
+            Profile Information
+          </Styled(Anchor)>
         </li>
         <li
           id="addressBook"
           key="addressBook"
         >
-          <Link
-            as="/account/addressBook"
-            href="/account?id=addressBook"
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath="/account/addressBook"
+            className={false}
+            to="/account?id=addressBook"
           >
-            <a
-              className={false}
-              href="/account/addressBook"
-            >
-              Address Book
-            </a>
-          </Link>
+            Address Book
+          </Styled(Anchor)>
         </li>
         <li
           id="paymentGiftCards"
           key="paymentGiftCards"
         >
-          <Link
-            as="/account/paymentGiftCardsPage"
-            href="/account?id=paymentGiftCardsPage"
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath="/account/paymentGiftCardsPage"
+            className={false}
+            to="/account?id=paymentGiftCardsPage"
           >
-            <a
-              className={false}
-              href="/account/paymentGiftCardsPage"
-            >
-              Payment & Gift Cards
-            </a>
-          </Link>
+            Payment & Gift Cards
+          </Styled(Anchor)>
         </li>
         <li
           id="myPreferences"
           key="myPreferences"
         >
-          <Link
-            as="/account/myPreferencePage"
-            href="/account?id=myPreferencePage"
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath="/account/myPreferencePage"
+            className={false}
+            to="/account?id=myPreferencePage"
           >
-            <a
-              className={false}
-              href="/account/myPreferencePage"
-            >
-              My Preferences
-            </a>
-          </Link>
+            My Preferences
+          </Styled(Anchor)>
         </li>
         <li
           id="myPlaceRewardsCC"
           key="myPlaceRewardsCC"
         >
-          <Link
-            as="/account/myPlaceRewardsCCPage"
-            href="/account?id=myPlaceRewardsCCPage"
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath="/account/myPlaceRewardsCCPage"
+            className={false}
+            to="/account?id=myPlaceRewardsCCPage"
           >
-            <a
-              className={false}
-              href="/account/myPlaceRewardsCCPage"
-            >
-              My Place Rewards Credit Card
-            </a>
-          </Link>
+            My Place Rewards Credit Card
+          </Styled(Anchor)>
         </li>
       </styled.ul>
     </Styled(Col)>
@@ -237,31 +207,25 @@ exports[`My Account Layout View should render only 2  links if navData has 2 lin
           id="myWallet"
           key="myWallet"
         >
-          <Link
-            as="/myWalletPage"
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath="/myWalletPage"
+            className={false}
           >
-            <a
-              className={false}
-              href="/myWalletPage"
-            >
-              My Wallet
-            </a>
-          </Link>
+            My Wallet
+          </Styled(Anchor)>
         </li>
         <li
           id="earnExtraPoints"
           key="earnExtraPoints"
         >
-          <Link
-            as="/earnExtraPointsPage"
+          <Styled(Anchor)
+            anchorVariation="primary"
+            asPath="/earnExtraPointsPage"
+            className={false}
           >
-            <a
-              className={false}
-              href="/earnExtraPointsPage"
-            >
-              Earn Extra Points
-            </a>
-          </Link>
+            Earn Extra Points
+          </Styled(Anchor)>
         </li>
       </styled.ul>
     </Styled(Col)>

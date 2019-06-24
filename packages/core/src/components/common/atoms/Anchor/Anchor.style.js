@@ -21,6 +21,12 @@ const AnchorStyles = css`
     `
       : ''};
   ${props =>
+    props.anchorVariation === 'disabled'
+      ? `
+      color: ${props.theme.colors.ANCHOR.DISABLED};
+    `
+      : ''};
+  ${props =>
     props.fontSizeVariation === 'small'
       ? `
       font-size: ${props.theme.fonts.fontSize.anchor.small}px;
@@ -36,6 +42,12 @@ const AnchorStyles = css`
     props.fontSizeVariation === 'large'
       ? `
       font-size: ${props.theme.fonts.fontSize.anchor.large}px;
+    `
+      : ''};
+  ${props =>
+    props.fontWeightVariation === 'bold'
+      ? `
+      font-weight: ${props.theme.fonts.fontWeight.bold};
     `
       : ''};
   ${props =>
