@@ -11,6 +11,5 @@ describe('BrandTabs component', () => {
     };
     const component = shallow(<BrandTabs {...props} />);
     expect(component).toMatchSnapshot();
-    expect(component.find('.brand-tabs').html()).toContain(1);
   });
 });
