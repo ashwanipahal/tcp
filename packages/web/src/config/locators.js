@@ -13,4 +13,11 @@ export default {
   'icon-twitter': 'global_twitterlink',
   'icon-instagram': 'global_instagramlink',
   'icon-pinterest': 'global_pinterestlink',
+  // Promotional Area
+  global_promoareaimg: 'global_promoareaimg',
+  // ModuleD
+  moduleD_headerlink: 'moduleD_headerlink',
+  moduleD_image: 'moduleD_image',
+  moduleD_textlink: 'moduleD_textlink',
+  moduleD_button: 'moduleD_button',
 };
