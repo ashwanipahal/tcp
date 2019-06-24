@@ -1,8 +1,7 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { shallow } from 'enzyme';
 import 'jest-styled-components';
-import theme from '@tcp/core/styles/themes/TCP';
-import AccordionHeader from '../views/AccordionHeader';
+import { AccordionHeaderVanilla } from '../views/AccordionHeader';
 
 describe('AccordionHeader component', () => {
   it('renders correctly', () => {
@@ -11,9 +10,8 @@ describe('AccordionHeader component', () => {
       updateAccordionState: () => {},
       index: 1,
       titleText: 'Sample Title',
-      theme,
     };
-    const component = renderer.create(<AccordionHeader {...props} />).toJSON();
+    const component = shallow(<AccordionHeaderVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

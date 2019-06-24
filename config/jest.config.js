@@ -41,4 +41,5 @@ module.exports = {
     ...ignorePsuedoCodeDir,
   ],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],
+  snapshotSerializers: ['enzyme-to-json/serializer'],
 };

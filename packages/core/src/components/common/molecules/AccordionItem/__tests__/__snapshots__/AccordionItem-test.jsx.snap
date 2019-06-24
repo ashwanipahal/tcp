@@ -1,133 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AccordionItem component renders correctly 1`] = `
-<StyledComponent
-  activeClass="active"
-  className="accordion-item"
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-bwzfXH",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  &.accordion {
-    height: 34px;
-    padding: 18px 15px 0;
-    margin: 0;
-    &.inactive {
-      background: ",
-          [Function],
-          ";
-    }
-    &.active {
-      background: ",
-          [Function],
-          ";
-    }
-  }
-  &.active::after {
-    content: '+';
-    right: 15px;
-    position: absolute;
-    font-weight: bold;
-    font-size: ",
-          [Function],
-          "px;
-    color: ",
-          [Function],
-          ";
-  }
-
-  &.inactive::after {
-    content: '';
-    right: 15px;
-    position: absolute;
-    background: ",
-          [Function],
-          ";
-    height: 2px;
-    width: 10px;
-    margin-top: 5px;
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(AccordionItem)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-bwzfXH",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  index={1}
-  titleText="Heading"
->
+<Fragment>
+  <Styled(AccordionHeader)
+    className="accordion-item accordion active"
+    index={1}
+    titleText="Heading"
+  />
   &lt;div className="abcd"&gt;Content1&lt;/div&gt;
-</StyledComponent>
+</Fragment>
 `;
 
 exports[`AccordionItem component renders correctly with no index 1`] = `
-Array [
-  .c1 {
-  font-family: Nunito,Arial,Helvetica,sans-serif;
-  color: #1a1a1a;
-  line-height: 1.15;
-  font-size: 13px;
-  font-weight: 400;
-}
-
-.c0.accordion {
-  height: 34px;
-  padding: 18px 15px 0;
-  margin: 0;
-}
-
-.c0.accordion.inactive {
-  background: #e5e5e5;
-}
-
-.c0.accordion.active {
-  background: #f7f7f7;
-}
-
-.c0.active::after {
-  content: '+';
-  right: 15px;
-  position: absolute;
-  font-weight: bold;
-  font-size: 16px;
-  color: #9b9b9b;
-}
-
-.c0.inactive::after {
-  content: '';
-  right: 15px;
-  position: absolute;
-  background: #9b9b9b;
-  height: 2px;
-  width: 10px;
-  margin-top: 5px;
-}
-
-<h4
-    className="accordion-item c0 accordion active c1"
-    data-index={0}
-    data-locator="accordion-0"
-    tabIndex="0"
-  >
-    Heading
-  </h4>,
-  "<div className=\\"abcd\\">Content2</div>",
-]
+<Fragment>
+  <Styled(AccordionHeader)
+    className="accordion-item accordion active"
+    index={0}
+    titleText="Heading"
+  />
+  &lt;div className="abcd"&gt;Content2&lt;/div&gt;
+</Fragment>
 `;

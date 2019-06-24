@@ -1,10 +1,7 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import ShallowRenderer from 'react-test-renderer/shallow';
+import { shallow } from 'enzyme';
 import 'jest-styled-components';
-import theme from '@tcp/core/styles/themes/TCP';
-import { ThemeProvider } from 'styled-components';
-import AccordionItem from '../views/AccordionItem';
+import { AccordionVanilla } from '../views/AccordionItem';
 
 describe('AccordionItem component', () => {
   it('renders correctly', () => {
@@ -15,8 +12,7 @@ describe('AccordionItem component', () => {
       activeClass: 'active',
       children: ['<div className="abcd">Content1</div>'],
     };
-    const rendererShallow = new ShallowRenderer();
-    const component = rendererShallow.render(<AccordionItem {...props} />);
+    const component = shallow(<AccordionVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 
@@ -28,11 +24,7 @@ describe('AccordionItem component', () => {
       activeClass: 'active',
       children: ['<div className="abcd">Content2</div>'],
     };
-    const component = renderer.create(
-      <ThemeProvider theme={theme}>
-        <AccordionItem {...props} />
-      </ThemeProvider>
-    );
+    const component = shallow(<AccordionVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });
