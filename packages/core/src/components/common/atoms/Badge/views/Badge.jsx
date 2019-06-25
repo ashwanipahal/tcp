@@ -6,15 +6,22 @@ import withStyles from '../../../hoc/withStyles';
 import styles from '../Badge.style';
 
 type Props = {
-  children: Node,
+  children: string,
   className: string,
   showCheckmark: boolean,
 };
 
 const Badge = ({ children, className, showCheckmark }: Props): Node => (
-  <BodyCopy className={className} bodySize="one" tag="div" fontWeight="bold" color="primary">
-    {showCheckmark && <span className="checkmark" />}
-    <span className="content">{children}</span>
+  <BodyCopy
+    className={className}
+    bodySize="one"
+    tag="div"
+    color="primary"
+    fontFamily="secondaryFontFamily"
+    fontWeight="bold"
+  >
+    {showCheckmark && <span className="badge__checkmark" />}
+    <span className="badge__content">{children}</span>
   </BodyCopy>
 );
 

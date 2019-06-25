@@ -1,31 +1,29 @@
 import { css } from 'styled-components';
 
 const BadgeStyles = css`
-  line-height: 18px;
-  padding: 0 4px;
-  color: ${props => props.theme.colors.WHITE};
+  align-items: baseline;
   background-color: ${props => props.theme.colors.TEXT.DARKERGRAY};
   border: 1px solid ${props => props.theme.colors.TEXT.DARKERGRAY};
+  color: ${props => props.theme.colors.WHITE};
   border-radius: 10px 0 0 10px;
-  margin-bottom: 6px;
+  display: flex;
+  margin-bottom: 8px;
+  padding: 0 4px;
 
-  .checkmark {
-    display: inline-block;
+  .badge__checkmark {
     width: 9px;
-    height: 6px;
+    height: 5px;
+    margin-left: 2px;
     position: relative;
-    top: -1px;
     transform: rotate(-45deg);
-    transform-origin: top;
+    transform-origin: left;
 
     &:before {
       content: '';
       position: absolute;
       width: 1px;
       height: 100%;
-      background-color: #fff;
-      left: 0;
-      top: 0;
+      background-color: ${props => props.theme.colors.WHITE};
     }
 
     &:after {
@@ -33,14 +31,13 @@ const BadgeStyles = css`
       position: absolute;
       width: 100%;
       height: 1px;
-      background-color: #fff;
-      left: 0;
+      background-color: ${props => props.theme.colors.WHITE};
       bottom: 0;
     }
   }
 
-  .content {
-    margin-left: ${props => (props.showCheckmark ? '5px' : '3px')};
+  .badge__content {
+    margin-left: ${props => (props.showCheckmark ? '2px' : '4px')};
   }
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};

@@ -3,15 +3,13 @@
 import React from 'react';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
-import { ColoredLine, AddNewAddressCTAContainer } from '../styles/AddressBook.style';
+import { AddNewAddressCTAContainer } from '../styles/AddressBook.style';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import Button from '../../../../common/atoms/Button';
-import theme from '../../../../../../styles/themes/TCP';
+import Separator from '../../../../common/atoms/Separator';
 import AddressList from './AddressList.view';
 import EmptyAddressList from './EmptyAddressList.view';
-
-const { colors } = theme;
 
 type Props = {
   addresses: Object,
@@ -21,15 +19,10 @@ type Props = {
 const AddressBook = ({ addresses, labels }: Props) => {
   return (
     <div>
-      <Heading
-        fontFamily="secondaryFontFamily"
-        className="add-new-address-button"
-        HeadingLarge="six"
-        tag="h4"
-      >
+      <Heading fontFamily="secondaryFontFamily" HeadingLarge="six" tag="h4">
         Address Book
       </Heading>
-      <ColoredLine backgroundColor={colors.BLACK} />
+      <Separator />
       {addresses.size === 0 && <EmptyAddressList labels={labels} />}
       <AddNewAddressCTAContainer>
         <Row fullBleed>
@@ -47,7 +40,7 @@ const AddressBook = ({ addresses, labels }: Props) => {
           </Col>
         </Row>
       </AddNewAddressCTAContainer>
-      <AddressList addresses={addresses} />
+      {addresses.size > 0 && <AddressList addresses={addresses} />}
     </div>
   );
 };
