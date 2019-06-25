@@ -16,6 +16,7 @@ export default {
       if (objRef[params[i]]) {
         objRef = objRef[params[i]];
       } else {
+        objRef = null;
         break;
       }
     }
