@@ -15,7 +15,9 @@ const textboxStyles = css`
   border-bottom: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
 
   ${props =>
-    props.isErrorState ? `border: 1px solid ${props.theme.colors.TEXTBOX.ERROR_BORDER};` : ''};
+    props.isErrorState === 'isErrorState'
+      ? `border: 1px solid ${props.theme.colors.TEXTBOX.ERROR_BORDER};`
+      : ''};
   ${props =>
     props.isSuccessState ? `border: 1px solid ${props.theme.colors.TEXTBOX.SUCCESS_BORDER};` : ''};
 
@@ -36,12 +38,6 @@ const textboxStyles = css`
       : ''};
 
   ${props =>
-    props.floatingLabel === 'float'
-      ? `
-     `
-      : ''};
-
-  ${props =>
     props.disabled
       ? `
       background-color: ${props.theme.fieldBackgroundDisabledColor};
@@ -51,6 +47,7 @@ const textboxStyles = css`
   &:focus + p {
     top: -50px;
   }
+
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 

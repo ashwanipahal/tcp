@@ -1,78 +1,18 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
-import Row from '@tcp/core/src/components/common/atoms/Row';
-import Col from '@tcp/core/src/components/common/atoms/Col';
+import { reduxForm } from 'redux-form';
+import { Provider } from 'react-redux';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
-import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
-import Button from '@tcp/core/src/components/common/atoms/Button';
+import store from './Form/store';
+import AddressValidationForm from './Form/FieldLevelValidationForm';
 
-const AddressBook = props => {
+const AddressBook = () => {
   return (
     <form>
       <Grid>
         <br />
-        <Row>
-          <Col colSize={{ small: 1, medium: 1, large: 6 }}>
-            <Field floatingLabel="float" placeholder="First Name" component={TextBox} />
-          </Col>
-          <Col colSize={{ small: 1, medium: 1, large: 6 }}>
-            <Field floatingLabel placeholder="Last Name" component={TextBox} />
-          </Col>
-        </Row>
-        <br />
-        <Row>
-          <Col colSize={{ small: 1, medium: 1, large: 6 }}>
-            <Field placeholder="Address Line 1" component={TextBox} />
-          </Col>
-          <Col colSize={{ small: 1, medium: 1, large: 6 }}>
-            <Field placeholder="Address Line 2( Optional )" component={TextBox} />
-          </Col>
-        </Row>
-        <br />
-        <Row>
-          <Col colSize={{ small: 1, medium: 1, large: 6 }}>
-            <Field placeholder="City" component={TextBox} />
-          </Col>
-          <Col colSize={{ small: 1, medium: 1, large: 3 }}>
-            <select>
-              <option value="" disabled>
-                dfdfdf fdfs fdsfs
-              </option>
-            </select>
-          </Col>
-          <Col colSize={{ small: 1, medium: 1, large: 3 }}>
-            <Field placeholder="Zip" component={TextBox} />
-          </Col>
-        </Row>
-        <br />
-        <Row>
-          <Col colSize={{ small: 1, medium: 1, large: 6 }}>
-            <select>
-              <option value="">dfdfdf fdfs fdsfs</option>
-            </select>
-          </Col>
-          <Col colSize={{ small: 1, medium: 1, large: 6 }}>
-            <Field placeholder="phone number" component={TextBox} />
-          </Col>
-        </Row>
-        <br />
-        <Row>
-          <Col colSize={{ small: 1, medium: 1, large: 12 }}>
-            <Field name="employed" id="employed" component={TextBox} type="checkbox" />
-            Set as default shipping addres
-          </Col>
-        </Row>
-        <br />
-        <Row>
-          <Col colSize={{ small: 1, medium: 1, large: 3 }}>
-            <Button buttonVariation="fixed-width">Cancel</Button>
-          </Col>
-          <Col colSize={{ small: 1, medium: 1, large: 3 }}>
-            <Button text="BLUE" buttonVariation="fixed-width">
-              Add Address
-            </Button>
-          </Col>
-        </Row>
+        <Provider store={store}>
+          <AddressValidationForm />
+        </Provider>
       </Grid>
     </form>
   );

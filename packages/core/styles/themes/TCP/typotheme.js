@@ -63,6 +63,13 @@ const BodyCopy = styled(BodyStyle)`
        margin: 0;
       padding: 0;`
       : ''};
+
+  ${props =>
+    props.ErrorMsg === 'error'
+      ? `
+    color:${colors.TEXTBOX.ERROR_BORDER};
+    `
+      : ''};
 `;
 
 export { Heading, BodyCopy };

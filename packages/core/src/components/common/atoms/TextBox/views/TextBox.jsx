@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import type { Node } from 'react';
-import { BodyCopy } from '@tcp/core/styles/themes/TCP/typotheme';
+import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
 import withStyles from '../../../hoc/withStyles';
 import StyledTextBox from '../TextBox.style';
 
@@ -22,8 +22,9 @@ type Props = {
   placeholder?: string,
   isErrorState?: boolean,
   isSuccessState?: boolean,
-  onChangeHandler?: func,
-  floatingLabel?: string,
+  onChangeHandler?: any,
+  meta: { touched: any, error: any, warning: any },
+  input: any,
 };
 
 const TextBox = ({
@@ -35,24 +36,42 @@ const TextBox = ({
   placeholder,
   isErrorState,
   isSuccessState,
-  onChangeHandler,
-  floatingLabel,
+  input,
+  meta: { touched, error, warning },
 }: Props): Node => (
-  <label tabIndex="-1">
+  <label htmlFor={name} tabIndex="-1">
     <input
-      floatingLabel={floatingLabel}
+      {...input}
       id={id}
       aria-label={ariaLabel}
       className={className}
       name={name}
       type={type}
-      isErrorState={isErrorState}
       isSuccessState={isSuccessState}
-      onChange={onChangeHandler}
+      isErrorState={isErrorState}
     />
-    <BodyCopy bodySize="two" FormVariation="float" BodycolorLg="primary" tag="p">
+    {/* commented onChange={onChangeHandler} */}
+    <BodyCopy
+      ErrorMsg={touched && error ? 'error' : ''}
+      bodySize="two"
+      FormVariation="float"
+      BodycolorLg="primary"
+      tag="p"
+    >
       {placeholder}
     </BodyCopy>
+    {touched &&
+      ((error && (
+        <BodyCopy ErrorMsg="error" bodySize="two" tag="span">
+          {error}
+          {placeholder}
+        </BodyCopy>
+      )) ||
+        (warning && (
+          <BodyCopy bodySize="two" tag="span">
+            {warning}
+          </BodyCopy>
+        )))}
   </label>
 );
 
