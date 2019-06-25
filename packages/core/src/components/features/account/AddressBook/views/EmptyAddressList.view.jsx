@@ -7,11 +7,12 @@ import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
 
 type Props = {
   labels: Object,
+  className: string,
 };
 
-export const EmptyAddressList = ({ labels }: Props) => {
+export const EmptyAddressList = ({ labels, className }: Props) => {
   return (
-    <div>
+    <div className={className}>
       <BodyCopy
         bodySize="three"
         tag="p"
