@@ -11,9 +11,9 @@ import HomeLogo from './HomeLogo';
 const { HeaderBrand, HeaderNav, DummyNav, HeaderPromo, HeaderLoyalty } = headerStyles;
 const brand = utilMethods.brand();
 
-const Header = ({ headerData }) => (
+const Header = ({ headerTopNav }) => (
   <header>
-    <HeaderTopNav className="header-topnav" dataTopNav={headerData.header_top_nav} />
+    <HeaderTopNav className="header-topnav" dataTopNav={headerTopNav} />
     <HeaderBrand className="header-brand">
       <Row>
         <Col
@@ -90,7 +90,7 @@ const Header = ({ headerData }) => (
 );
 
 Header.propTypes = {
-  headerData: PropTypes.objectOf(PropTypes.shape({})).isRequired,
+  headerTopNav: PropTypes.objectOf(PropTypes.shape({})).isRequired,
 };
 
 export default Header;

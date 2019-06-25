@@ -20,7 +20,7 @@ import styles from '../Anchor.style';
 const Anchor = ({
   children,
   to,
-  as,
+  asPath,
   className,
   scroll,
   noLink,
@@ -42,8 +42,8 @@ const Anchor = ({
       {children}
     </a>
   ) : (
-    <Link href={to} as={as} shallow={shallow} scroll={scroll}>
-      <a href={as || buildUrl(to)} className={className} title={title} target={target} {...other}>
+    <Link href={to} as={asPath} shallow={shallow} scroll={scroll}>
+      <a className={className} title={title} target={target} {...other}>
         {children}
       </a>
     </Link>
@@ -52,7 +52,7 @@ const Anchor = ({
 Anchor.propTypes = {
   children: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
-  as: PropTypes.string,
+  asPath: PropTypes.string,
   scroll: PropTypes.string,
   className: PropTypes.string.isRequired,
   noLink: PropTypes.bool,
@@ -63,7 +63,7 @@ Anchor.propTypes = {
 };
 
 Anchor.defaultProps = {
-  as: '',
+  asPath: '',
   scroll: '',
   noLink: false,
   handleLinkClick: () => {},
