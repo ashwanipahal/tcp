@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { ProductListingPageReducer } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.reducer';
 import LoginPageReducer from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.reducer';
-import AddressListReducer from '@tcp/core/src/components/features/myAccount/AddressList/container/AddressList.reducer';
+import AddressBookReducer from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.reducer';
 import HeaderReducer from '../../components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '../../components/common/organisms/Footer/container/Footer.reducer';
 import ModuleDReducer from '../../components/common/organisms/ModuleD/container/ModuleD.reducer';
@@ -16,5 +16,5 @@ export default combineReducers({
   HomePageReducer,
   ProductListingPageReducer,
   LoginPageReducer,
-  AddressListReducer,
+  AddressBookReducer,
 });

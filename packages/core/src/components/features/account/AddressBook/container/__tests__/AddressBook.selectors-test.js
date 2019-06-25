@@ -5,7 +5,7 @@ describe('#AddressBook selector', () => {
   it('#getAddressListState should return AddressListReduer state', () => {
     const AddressListState = List();
     const state = {
-      AddressListReducer: AddressListState,
+      AddressBookReducer: AddressListState,
     };
 
     expect(getAddressListState(state)).toEqual(AddressListState);

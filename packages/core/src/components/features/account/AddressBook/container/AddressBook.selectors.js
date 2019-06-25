@@ -1,3 +1,5 @@
-const getAddressListState = state => state.AddressListReducer;
+const getAddressListState = state => {
+  return state.AddressBookReducer;
+};
 
 export default getAddressListState;

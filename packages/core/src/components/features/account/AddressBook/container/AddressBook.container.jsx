@@ -11,7 +11,7 @@ import labels from './AddressBook.labels';
 
 type Props = {
   getAddressListAction: () => void,
-  addressList: Object[],
+  addressList: List<any>,
 };
 
 export class AddressBookContainer extends React.PureComponent<Props> {
