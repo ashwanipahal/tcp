@@ -29,11 +29,15 @@ exports[`AddressTile component should renders correctly 1`] = `
   </styled.div>
   <styled.div>
     <Styled(Anchor)
+      anchorVariation="primary"
       fontSizeVariation="medium"
+      to="/#"
       underline={true}
     />
     <Styled(Anchor)
+      anchorVariation="primary"
       fontSizeVariation="medium"
+      to="/#"
       underline={true}
     />
   </styled.div>

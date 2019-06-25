@@ -29,17 +29,17 @@ const AddressBookTile = ({ address, labels }: Props) => {
             <Badge>{labels.shipping}</Badge>
           )}
           {address.primary !== 'true' && (
-            <Anchor fontSizeVariation="small" underline>
+            <Anchor fontSizeVariation="small" underline to="/#" anchorVariation="primary">
               {labels.makeDefault}
             </Anchor>
           )}
         </div>
       </AddressTileContainerComponent>
       <AddressCTAContainerComponent>
-        <Anchor fontSizeVariation="medium" underline>
+        <Anchor fontSizeVariation="medium" underline to="/#" anchorVariation="primary">
           {labels.edit}
         </Anchor>
-        <Anchor fontSizeVariation="medium" underline>
+        <Anchor fontSizeVariation="medium" underline to="/#" anchorVariation="primary">
           {labels.delete}
         </Anchor>
       </AddressCTAContainerComponent>
