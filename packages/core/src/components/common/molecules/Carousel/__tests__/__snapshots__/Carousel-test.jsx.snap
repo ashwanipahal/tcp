@@ -2,7 +2,7 @@
 
 exports[`Carousel component renders correctly 1`] = `
 <styled.div
-  carouselTheme={[Function]}
+  carouselConfig={[Function]}
   className="TCP_Carousel_Wrapper"
 >
   <Slider

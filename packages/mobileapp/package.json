@@ -27,7 +27,8 @@
     "redux": "^4.0.1",
     "redux-saga": "^1.0.2",
     "styled-components": "^4.2.1",
-    "superagent": "^5.0.8"
+    "superagent": "^5.0.8",
+    "reselect": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -74,7 +75,9 @@
       "**/apollo-client",
       "**/apollo-client/**",
       "**/superagent",
-      "**/superagent/**"
+      "**/superagent/**",
+      "**/reselect",
+      "**/reselect/**"
     ]
   }
 }

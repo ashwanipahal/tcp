@@ -1,0 +1,119 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component renders correctly 1`] = `
+<header>
+  <Styled(HeaderTopNav)
+    className="header-topnav"
+  />
+  <styled.div
+    className="header-brand"
+  >
+    <Styled(Row)>
+      <Styled(Col)
+        className="header-brand__home-logo"
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(HomeLogo)
+          alt="The Children's Place"
+          className="header-brand__home-logo--brand"
+          dataLocator="global_TCPlink"
+          imgSrc="/static/images/tcp-logo.svg"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+  </styled.div>
+  <styled.div
+    className="header-nav"
+  >
+    <Styled(Row)>
+      <Styled(Col)
+        className="header-nav__nav-row"
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 0,
+            "small": 0,
+          }
+        }
+      >
+        <styled.div
+          className="dummy-nav"
+        >
+          <div>
+            Girl
+          </div>
+          <div>
+            Toddler Girl
+          </div>
+          <div>
+            Boy
+          </div>
+          <div>
+            Toddler Boy
+          </div>
+          <div>
+            Baby
+          </div>
+          <div>
+            Shoes
+          </div>
+          <div>
+            Accessories
+          </div>
+          <div>
+            Trending
+          </div>
+          <div>
+            Gift Cards
+          </div>
+          <div>
+            Clearance
+          </div>
+        </styled.div>
+      </Styled(Col)>
+    </Styled(Row)>
+  </styled.div>
+  <styled.div
+    className="header-promo"
+  >
+    <Styled(Row)>
+      <Styled(Col)
+        className="header-promo__promo-banner"
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        Promo banners
+      </Styled(Col)>
+    </Styled(Row)>
+  </styled.div>
+  <styled.div
+    className="header-loyalty"
+  >
+    <Styled(Row)>
+      <Styled(Col)
+        className="header-loyalty__promo-loyalty"
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        Loyalty Promo banners
+      </Styled(Col)>
+    </Styled(Row)>
+  </styled.div>
+</header>
+`;

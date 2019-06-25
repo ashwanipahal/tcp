@@ -1,9 +1,10 @@
 // any molecule will come here
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { Anchor, Button, Col, Row, Image } from '../../atoms';
-import { Heading } from '../../../../../styles/themes/TCP/typotheme';
-import Grid from '../Grid';
+import Grid from '@tcp/core/src/components/common/molecules/Grid';
+import { Anchor, Button, Col, Row, Image } from '@tcp/core/src/components/common/atoms';
+import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
+import { getLocator } from '@tcp/web/src/utils';
 import style from './ModuleD.style';
 import withStyles from '../../hoc/withStyles';
 
@@ -44,7 +45,7 @@ const ModuleD = props => {
   } = props;
   const {
     textLines: [{ text: headingText }],
-    link: { target, url },
+    link: { target, title, url },
   } = headerText;
   let colSize;
 
@@ -60,10 +61,12 @@ const ModuleD = props => {
     <Grid className={className}>
       <Anchor className="moduleD_textlink" to={url} target={target}>
         <Heading
+          className="moduleD_header"
           HeadingLarge="two"
           HeadingcolorSm="primary"
           tag="h2"
-          data-locator="moduleD_headerlink"
+          data-locator={getLocator('moduleD_headerlink')}
+          title={title}
         >
           {headingText}
         </Heading>
@@ -81,7 +84,12 @@ const ModuleD = props => {
                       aria-label={item.link.title}
                       target={item.link.target}
                     >
-                      <Image src={item.image.url} alt={item.image.alt} className="moduleD_image" />
+                      <Image
+                        data-locator={getLocator('moduleD_image')}
+                        src={item.image.url}
+                        alt={item.image.alt}
+                        className="moduleD_image"
+                      />
                     </Anchor>
                   </div>
                   <Anchor
@@ -105,6 +113,7 @@ const ModuleD = props => {
             buttonVariation="variable-width"
             className="moduleD_button"
             title={singleCTAButton.title}
+            data-locator={getLocator('moduleD_button')}
           >
             {singleCTAButton.title}
           </Button>
