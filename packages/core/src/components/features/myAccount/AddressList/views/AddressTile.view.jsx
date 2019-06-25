@@ -11,35 +11,36 @@ import Badge from '../../../../common/atoms/Badge';
 
 type Props = {
   address: Object,
+  labels: Object,
 };
 
-const AddressBookTile = ({ address }: Props) => {
+const AddressBookTile = ({ address, labels }: Props) => {
   return (
     <AddressTileComponent>
       <AddressTileContainerComponent>
         <Address address={address} />
         <div>
-          {address.primary === 'true' && <Badge showCheckmark>DEFAULT SHIPPING</Badge>}
+          {address.primary === 'true' && <Badge showCheckmark>{labels.defaultShipping}</Badge>}
           {address.xcont_isDefaultBilling === 'true' && (
-            <Badge showCheckmark>DEFAULT BILLING</Badge>
+            <Badge showCheckmark>{labels.defaultBilling}</Badge>
           )}
-          {address.xcont_isBillingAddress === 'true' && <Badge>BILLING</Badge>}
+          {address.xcont_isBillingAddress === 'true' && <Badge>{labels.billing}</Badge>}
           {address.primary !== 'true' && address.xcont_isShippingAddress === 'true' && (
-            <Badge>SHIPPING</Badge>
+            <Badge>{labels.shipping}</Badge>
           )}
           {address.primary !== 'true' && (
             <Anchor fontSizeVariation="small" underline>
-              Make Default
+              {labels.makeDefault}
             </Anchor>
           )}
         </div>
       </AddressTileContainerComponent>
       <AddressCTAContainerComponent>
         <Anchor fontSizeVariation="medium" underline>
-          Edit
+          {labels.edit}
         </Anchor>
         <Anchor fontSizeVariation="medium" underline>
-          Delete
+          {labels.delete}
         </Anchor>
       </AddressCTAContainerComponent>
     </AddressTileComponent>

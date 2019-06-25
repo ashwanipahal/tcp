@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddressTile component should renders correctly 1`] = `
+<styled.div>
+  <styled.div>
+    <Address
+      address={
+        Object {
+          "addressLine": Array [
+            "addressline 1",
+            "addressline 2",
+          ],
+          "city": "test city",
+          "country": "test country",
+          "firstName": "test",
+          "lastName": "test",
+          "phone1": "1234567890",
+          "primary": "true",
+        }
+      }
+    />
+    <div>
+      <Styled(Badge)
+        showCheckmark={true}
+      >
+        DEFAULT SHIPPING
+      </Styled(Badge)>
+    </div>
+  </styled.div>
+  <styled.div>
+    <Styled(Anchor)
+      fontSizeVariation="medium"
+      underline={true}
+    />
+    <Styled(Anchor)
+      fontSizeVariation="medium"
+      underline={true}
+    />
+  </styled.div>
+</styled.div>
+`;

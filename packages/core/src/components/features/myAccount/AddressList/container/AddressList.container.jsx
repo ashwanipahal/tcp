@@ -1,20 +1,20 @@
-// @flow
-
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { List } from 'immutable';
 import { getAddressList } from './AddressList.actions';
-import AddressBook from '../views/AddressBook.view';
+import AddressBookComponent from '../views/AddressBook.view';
 import getAddressListState from './AddressList.selectors';
 import labels from './AddressList.labels';
 
+// @flow
+
 type Props = {
   getAddressListAction: () => void,
-  addressList: Array,
+  addressList: Object[],
 };
 
-class AddressListContainer extends React.PureComponent<Props> {
+export class AddressListContainer extends React.PureComponent<Props> {
   componentDidMount() {
     const { getAddressListAction } = this.props;
     getAddressListAction();
@@ -23,19 +23,19 @@ class AddressListContainer extends React.PureComponent<Props> {
   render() {
     const { addressList } = this.props;
     if (List.isList(addressList)) {
-      return <AddressBook addresses={addressList} labels={labels} />;
+      return <AddressBookComponent addresses={addressList} labels={labels} />;
     }
     return null;
   }
 }
 
-function mapDispatchToProps(dispatch) {
+export const mapDispatchToProps = (dispatch: ({}) => void) => {
   return {
     getAddressListAction: () => {
       dispatch(getAddressList());
     },
   };
-}
+};
 
 const mapStateToProps = createStructuredSelector({
   addressList: getAddressListState,

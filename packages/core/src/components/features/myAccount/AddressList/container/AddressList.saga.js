@@ -4,7 +4,7 @@ import fetchData from '../../../../../service/API';
 import { setAddressList } from './AddressList.actions';
 import endpoints from '../../../../../service/endpoint';
 
-function* getAddressList() {
+export function* getAddressList() {
   try {
     const { relURI, method } = endpoints.getAddressList;
     const baseURI = endpoints.getAddressList.baseURI || endpoints.global.baseURI;
@@ -19,16 +19,16 @@ function* getAddressList() {
       },
       method
     );
-    if (res.body) {
+    if (res.body.contact) {
       yield put(setAddressList(res.body.contact));
     }
     yield null;
   } catch (err) {
-    console.log('Error in getting AddressList ', err);
+    yield null;
   }
 }
 
-function* AddressListSaga() {
+export function* AddressListSaga() {
   yield takeLatest(ADDRESS_LIST_CONSTANTS.GET_ADDRESS_LIST, getAddressList);
 }
 

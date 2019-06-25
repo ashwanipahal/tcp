@@ -1,6 +1,5 @@
-// @flow
-
 import React from 'react';
+import { List } from 'immutable';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import { AddNewAddressCTAContainer } from '../styles/AddressBook.style';
@@ -11,12 +10,16 @@ import Separator from '../../../../common/atoms/Separator';
 import AddressList from './AddressList.view';
 import EmptyAddressList from './EmptyAddressList.view';
 
+// @flow
+
 type Props = {
-  addresses: Object,
-  labels: Object,
+  addresses: List<{}>,
+  labels: {
+    addNewAddressCTA: string,
+  },
 };
 
-const AddressBook = ({ addresses, labels }: Props) => {
+export const AddressBook = ({ addresses, labels }: Props) => {
   return (
     <div>
       <Heading fontFamily="secondaryFontFamily" HeadingLarge="six" tag="h4">
@@ -40,7 +43,7 @@ const AddressBook = ({ addresses, labels }: Props) => {
           </Col>
         </Row>
       </AddNewAddressCTAContainer>
-      {addresses.size > 0 && <AddressList addresses={addresses} />}
+      {addresses.size > 0 && <AddressList addresses={addresses} labels={labels} />}
     </div>
   );
 };

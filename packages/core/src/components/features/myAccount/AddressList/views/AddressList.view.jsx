@@ -6,13 +6,15 @@ import Col from '../../../../common/atoms/Col';
 import AddressTile from './AddressTile.view';
 
 type Props = {
-  addresses: Array,
+  addresses: Object[],
+  labels: {},
 };
-const AddressList = ({ addresses }: Props) => {
+const AddressList = ({ addresses, labels }: Props) => {
   return (
     <Row fullBleed>
       {addresses.map((address, index) => (
         <Col
+          key={`container-${address.addressId}`}
           colSize={{ large: 3, medium: 4, small: 6 }}
           ignoreGutter={{
             large: (index + 1) % 3 === 0,
@@ -20,7 +22,7 @@ const AddressList = ({ addresses }: Props) => {
             small: true,
           }}
         >
-          <AddressTile address={address} key={address.addressId} />
+          <AddressTile address={address} key={address.addressId} labels={labels} />
         </Col>
       ))}
     </Row>
