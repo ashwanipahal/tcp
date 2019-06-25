@@ -8,12 +8,11 @@ export const HomePageReducer = 'HomePageReducer';
 
 // Login Page Reducer
 export const LoginPageReducer = 'LoginPageReducer';
-export const LoginPageActionPattern = 'Login';
+export const LoginPageActionPattern = '@@Login-';
 
 // ProductListing Page Reducer
 export const ProductListingPageReducer = 'ProductListingPageReducer';
-export const ProductListingPageActionPattern = 'PLP';
-export const filterProductListingPageReducer = action => action.type.match(/PLP/);
+export const ProductListingPageActionPattern = '@@PLP-';
 
 const REDUCER_CONFIG = [
   {
