@@ -26,14 +26,14 @@ export class Account extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      component: utilMethods.getObjectValue(props.router, 'accountOverview', 'query', 'id'),
+      component: utilMethods.getObjectValue(props.router, 'addressBook', 'query', 'id'),
     };
   }
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
     const nextComponent = utilMethods.getObjectValue(
       nextProps.router,
-      'accountOverview',
+      'addressBook',
       'query',
       'id'
     );
