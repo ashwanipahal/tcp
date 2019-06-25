@@ -28,7 +28,7 @@ BodyCopy.propTypes = {
   /* eslint-disable */
   kind: PropTypes.oneOf(['p1', 'p2']),
   size: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
-  weight: PropTypes.oneOf(['normal', 'semibbold', 'extrabold', 'bold']),
+  weight: PropTypes.oneOf(['normal', 'semibold', 'extrabold', 'bold']),
   color: PropTypes.oneOf([
     'primary',
     'secondary',

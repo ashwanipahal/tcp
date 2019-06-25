@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { PropTypes } from 'prop-types';
 
-// import { Heading, BodyCopy } from '@tcp/core/styles/themes/TCP/typotheme';
 import Heading from '@tcp/core/src/components/common/atoms/Heading';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Row from '@tcp/core/src/components/common/atoms/Row';
@@ -117,7 +116,7 @@ const Test = () => {
       <Row>
         <Col colSize={2}>{getBodyColm({ kind: 'p1' })}</Col>
         <Col colSize={2}>{getBodyColm({ kind: 'p1', align: 'center' })}</Col>
-
+        {/* TODO: Need extra bold font file */}
         <Col colSize={2}>{getBodyColm({ kind: 'p1', weight: 'semibold' })}</Col>
         <Col colSize={2}>{getBodyColm({ kind: 'p1', weight: 'semibold', align: 'center' })}</Col>
       </Row>
