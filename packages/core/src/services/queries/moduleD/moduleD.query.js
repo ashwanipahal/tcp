@@ -20,7 +20,6 @@ const buildQuery = ({ slot, contentId }) => `
       }
 
       promoBanner {
-        items {
           link {
             url
             title
@@ -32,11 +31,9 @@ const buildQuery = ({ slot, contentId }) => `
             alt
             title
           }
-        }
       }
 
       smallCompImage {
-        items {
           link {
             url
             title
@@ -48,7 +45,6 @@ const buildQuery = ({ slot, contentId }) => `
             title
             alt
           }
-        }
       }
 
       singleCTAButton {

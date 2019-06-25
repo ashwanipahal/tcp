@@ -74,9 +74,7 @@
       "**/apollo-client",
       "**/apollo-client/**",
       "**/superagent",
-      "**/superagent/**",
-      "**/reselect",
-      "**/reselect/**"
+      "**/superagent/**"
     ]
   }
 }

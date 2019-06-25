@@ -47,13 +47,10 @@ const ModuleD = props => {
     link: { target, url },
   } = headerText;
   let colSize;
-  let assets = [];
 
-  assets = smallCompImage ? smallCompImage.items : '';
-
-  if (assets.length === 2) {
+  if (smallCompImage && smallCompImage.length === 2) {
     colSize = colSize2Elements;
-  } else if (assets.length === 4) {
+  } else if (smallCompImage && smallCompImage.length === 4) {
     colSize = colSize4Elements;
   } else {
     colSize = colSize6Elements;
@@ -72,30 +69,34 @@ const ModuleD = props => {
         </Heading>
       </Anchor>
       <Row centered>
-        {assets &&
-          assets.map((item, index) => (
-            <Col key={item.title} colSize={colSize} ignoreGutter={ignoreGutter[index]}>
-              <div className="moduleD__image-container">
-                <Anchor
-                  className="moduleD_textlink"
-                  to={item.link.url}
-                  aria-label={item.link.title}
-                  target={item.link.target}
-                >
-                  <Image src={item.image.url} alt={item.image.alt} className="moduleD_image" />
-                </Anchor>
-              </div>
-              <Anchor
-                withCaret
-                centered
-                className="moduleD_textlink"
-                to={item.link.url}
-                target={item.link.target}
-              >
-                {item.link.title}
-              </Anchor>
-            </Col>
-          ))}
+        {smallCompImage &&
+          smallCompImage.map((item, index) => {
+            return (
+              item.link && (
+                <Col key={item.title} colSize={colSize} ignoreGutter={ignoreGutter[index]}>
+                  <div className="moduleD__image-container">
+                    <Anchor
+                      className="moduleD_textlink"
+                      to={item.link.url}
+                      aria-label={item.link.title}
+                      target={item.link.target}
+                    >
+                      <Image src={item.image.url} alt={item.image.alt} className="moduleD_image" />
+                    </Anchor>
+                  </div>
+                  <Anchor
+                    withCaret
+                    centered
+                    className="moduleD_textlink"
+                    to={item.link.url}
+                    target={item.link.target}
+                  >
+                    {item.link.title}
+                  </Anchor>
+                </Col>
+              )
+            );
+          })}
       </Row>
 
       <Row centered>

@@ -1,0 +1,46 @@
+import { css } from 'styled-components';
+
+export default css`
+  border: 1px solid ${props => props.theme.colors.BUTTON.BORDER};
+
+  a {
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
+    font-size: ${props => props.theme.fonts.fontSize.nav}px;
+    color: ${props => props.theme.colors.TEXT.DARKGRAY};
+    cursor: pointer;
+    display: block;
+    text-align: center;
+  }
+
+  button {
+    font-family: ${props => props.theme.fonts.secondaryFontFamily};
+    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
+    text-transform: uppercase;
+    font-size: ${props => props.theme.fonts.fontSize.heading.small.h6}px;
+    border: 1px solid ${props => props.theme.colors.BUTTON.BORDER};
+    color: ${props => props.theme.colors.TEXT.DARKGRAY};
+    padding: 19px 80px;
+    text-align: center;
+    margin: 19px auto 32px;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      margin: 35px auto 48px;
+    }
+  }
+
+  h2 {
+    font-family: ${props => props.theme.fonts.primaryFontBlackFamily};
+    font-weight: ${props => props.theme.fonts.fontWeight.black};
+    text-transform: uppercase;
+    font-size: ${props => props.theme.fonts.fontSize.heading.small.h1}px;
+    text-align: center;
+
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      font-size: ${props => props.theme.fonts.fontSize.heading.large.h3}px;
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+`;

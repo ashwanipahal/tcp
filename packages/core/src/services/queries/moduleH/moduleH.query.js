@@ -14,7 +14,6 @@ const buildQuery = ({ slot, contentId }) => `
       }
 
       divCTALinks {
-        items {
           link {
             url
             title
@@ -31,7 +30,6 @@ const buildQuery = ({ slot, contentId }) => `
             color
             style
           }
-        }
       }
     }
   }
