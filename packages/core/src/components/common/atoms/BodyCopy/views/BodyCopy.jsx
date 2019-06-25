@@ -2,33 +2,33 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 
 import withStyles from '../../../hoc/withStyles';
-import styles from '../Heading.style';
+import styles from '../BodyCopy.style';
 
-const headingTypes = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
-const Heading = ({ children, className, component, kind }) => {
-  const componentKind = headingTypes.indexOf(kind) !== -1 ? kind : 'h1';
-  const Component = component || componentKind;
+const BodyCopy = ({ children, className, component: Component }) => {
   return <Component className={className}>{children}</Component>;
 };
 
-Heading.defaultProps = {
-  component: null,
+BodyCopy.defaultProps = {
+  component: 'p',
   className: null,
   children: null,
-  kind: 'h1',
+  kind: 'p1',
   color: '#1a1a1a',
-  mode: 'light',
   inverted: false,
   align: 'left',
+  weight: 'normal',
+  size: 16,
 };
 
-Heading.propTypes = {
+BodyCopy.propTypes = {
   component: PropTypes.elementType,
   className: PropTypes.string,
   children: PropTypes.node,
-  kind: PropTypes.oneOf(headingTypes),
   // TODO: Need fix unused/proptypes eslint error
   /* eslint-disable */
+  kind: PropTypes.oneOf(['p1', 'p2']),
+  size: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
+  weight: PropTypes.oneOf(['normal', 'semibbold', 'extrabold', 'bold']),
   color: PropTypes.oneOf([
     'primary',
     'secondary',
@@ -38,14 +38,13 @@ Heading.propTypes = {
     'gray',
     'lightgray',
   ]),
-  mode: PropTypes.oneOf(['light', 'dark']),
   inverted: PropTypes.bool,
   align: PropTypes.oneOf(['left', 'right', 'center', 'justify']),
   /* eslint-enable */
 };
 
-const StyledHeading = withStyles(Heading, styles);
-StyledHeading.defaultProps = Heading.defaultProps;
+const StyledBodyCopy = withStyles(BodyCopy, styles);
+StyledBodyCopy.defaultProps = BodyCopy.defaultProps;
 
-export { Heading as HeadingVanilla };
-export default StyledHeading;
+export { BodyCopy as BodyCopyVanilla };
+export default StyledBodyCopy;

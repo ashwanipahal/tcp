@@ -32,14 +32,13 @@ const FONT_SIZE = {
       copy3: 14,
       copy4: 16,
       copy5: 18,
-      copy6: 20,
-      copy7: 22,
-      copy8: 24,
-      copy9: 28,
-      copy10: 32,
-      copy11: 36,
-      copy12: 42,
-      copy13: 48,
+      copy6: 22,
+      copy7: 24,
+      copy8: 28,
+      copy9: 32,
+      copy10: 36,
+      copy11: 42,
+      copy12: 48,
     },
 
     large: {
@@ -78,12 +77,10 @@ const FONT_SIZE = {
 };
 
 const FONT_WEIGHT = {
-  light: '300',
   normal: '400',
-  medium: '500',
-  semiBold: '600',
-  bold: '700',
-  black: '900',
+  semibold: '600',
+  extrabold: '700',
+  bold: '900',
 };
 
 const LINE_HEIGHT = {

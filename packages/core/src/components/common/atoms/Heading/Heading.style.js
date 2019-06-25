@@ -12,12 +12,12 @@ function getStyle(props) {
   const { TEXT: textColors } = colors;
 
   const fontKindMap = {
-    h1: { weight: fontWeight.black, family: primaryFontFamily },
-    h2: { weight: fontWeight.black, family: primaryFontFamily },
-    h3: { weight: fontWeight.black, family: primaryFontFamily },
-    h4: { weight: fontWeight.medium, family: primaryFontFamily },
+    h1: { weight: fontWeight.bold, family: primaryFontFamily },
+    h2: { weight: fontWeight.bold, family: primaryFontFamily },
+    h3: { weight: fontWeight.bold, family: primaryFontFamily },
+    h4: { weight: fontWeight.normal, family: primaryFontFamily },
     h5: { weight: fontWeight.normal, family: primaryFontFamily },
-    h6: { weight: fontWeight.semiBold, family: secondaryFontFamily },
+    h6: { weight: fontWeight.semibold, family: secondaryFontFamily },
   };
 
   const colorsMap = {
