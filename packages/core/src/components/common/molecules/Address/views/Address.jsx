@@ -3,7 +3,16 @@ import React from 'react';
 import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
 
 type Props = {
-  address: Object,
+  address: {
+    firstName: string,
+    lastName: string,
+    addressLine: string[],
+    city: ?string,
+    state: ?string,
+    zipCode: ?string,
+    country: ?string,
+    phone1: ?string,
+  },
   className: string,
 };
 const Address = ({ address, className }: Props) => (
@@ -23,14 +32,18 @@ const Address = ({ address, className }: Props) => (
       </BodyCopy>
     ))}
     <BodyCopy tag="p" noMargin>
-      {`${address.city} ${address.state} ${address.zipCode}`}
+      {`${address.city || ''} ${address.state || ''} ${address.zipCode || ''}`}
     </BodyCopy>
-    <BodyCopy tag="p" noMargin>
-      {address.country}
-    </BodyCopy>
-    <BodyCopy tag="p" noMargin>
-      {address.phone1}
-    </BodyCopy>
+    {address.country && (
+      <BodyCopy tag="p" noMargin>
+        {address.country}
+      </BodyCopy>
+    )}
+    {address.phone1 && (
+      <BodyCopy tag="p" noMargin>
+        {address.phone1}
+      </BodyCopy>
+    )}
   </BodyCopy>
 );
 

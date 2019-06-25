@@ -31,7 +31,7 @@ exports[`Address component should renders correctly 1`] = `
     noMargin={true}
     tag="p"
   >
-    test city undefined undefined
+    test city  111-111
   </Styled(BodyStyle)>
   <Styled(BodyStyle)
     noMargin={true}
@@ -44,6 +44,42 @@ exports[`Address component should renders correctly 1`] = `
     tag="p"
   >
     1234567890
+  </Styled(BodyStyle)>
+</Styled(BodyStyle)>
+`;
+
+exports[`Address component should renders correctly when optional fields are not present 1`] = `
+<Styled(BodyStyle)
+  bodySize="three"
+  className="sample-class"
+  color="primary"
+  fontFamily="secondaryFontFamily"
+  tag="div"
+>
+  <Styled(BodyStyle)
+    fontWeight="bold"
+    noMargin={true}
+    tag="p"
+  >
+    test test
+  </Styled(BodyStyle)>
+  <Styled(BodyStyle)
+    noMargin={true}
+    tag="p"
+  >
+    addressline 1
+  </Styled(BodyStyle)>
+  <Styled(BodyStyle)
+    noMargin={true}
+    tag="p"
+  >
+    addressline 2
+  </Styled(BodyStyle)>
+  <Styled(BodyStyle)
+    noMargin={true}
+    tag="p"
+  >
+      
   </Styled(BodyStyle)>
 </Styled(BodyStyle)>
 `;
