@@ -7,76 +7,11 @@ exports[`Account View should render Account Correctly 1`] = `
   navData={
     Array [
       Object {
-        "component": "accountOverview",
-        "displayName": "Account Overview",
-        "href": "/account?id=accountOverview",
-        "id": "accountOverview",
-        "url": "/account",
-      },
-      Object {
-        "component": "myPlaceRewards",
-        "displayName": "My Place Rewards",
-        "href": "/account?id=myPlaceRewards",
-        "id": "myPlaceRewards",
-        "subSections": Array [
-          Object {
-            "component": "pointsHistoryPage",
-            "displayName": "Points History",
-            "href": "/account?id=pointsHistoryPage",
-            "id": "pointsHistory",
-            "url": "/account/place-rewards/points-history",
-          },
-        ],
-        "url": "/account/place-rewards",
-      },
-      Object {
-        "component": "myWalletPage",
-        "displayName": "My Wallet",
-        "href": "/account?id=myWalletPage",
-        "id": "myWallet",
-        "url": "/account/wallet",
-      },
-      Object {
-        "component": "earnExtraPointsPage",
-        "displayName": "Earn Extra Points",
-        "href": "/account?id=earnExtraPointsPage",
-        "id": "earnExtraPoints",
-        "url": "/account/extra-points",
-      },
-      Object {
-        "component": "profileInformation",
-        "displayName": "Profile Information",
-        "href": "/account?id=profileInformation",
-        "id": "profileInformation",
-        "url": "/account/profile",
-      },
-      Object {
         "component": "addressBook",
         "displayName": "Address Book",
         "href": "/account?id=addressBook",
         "id": "addressBook",
         "url": "/account/address-book",
-      },
-      Object {
-        "component": "paymentGiftCardsPage",
-        "displayName": "Payment & Gift Cards",
-        "href": "/account?id=paymentGiftCardsPage",
-        "id": "paymentGiftCards",
-        "url": "/account/payment",
-      },
-      Object {
-        "component": "myPreferencePage",
-        "displayName": "My Preferences",
-        "href": "/account?id=myPreferencePage",
-        "id": "myPreferences",
-        "url": "/account/my-preference",
-      },
-      Object {
-        "component": "myPlaceRewardsCCPage",
-        "displayName": "My Place Rewards Credit Card",
-        "href": "/account?id=myPlaceRewardsCCPage",
-        "id": "myPlaceRewardsCC",
-        "url": "/account/rewardsCreditCard",
       },
     ]
   }
@@ -90,76 +25,11 @@ exports[`Account View should render AddressBook Correctly 1`] = `
   navData={
     Array [
       Object {
-        "component": "accountOverview",
-        "displayName": "Account Overview",
-        "href": "/account?id=accountOverview",
-        "id": "accountOverview",
-        "url": "/account",
-      },
-      Object {
-        "component": "myPlaceRewards",
-        "displayName": "My Place Rewards",
-        "href": "/account?id=myPlaceRewards",
-        "id": "myPlaceRewards",
-        "subSections": Array [
-          Object {
-            "component": "pointsHistoryPage",
-            "displayName": "Points History",
-            "href": "/account?id=pointsHistoryPage",
-            "id": "pointsHistory",
-            "url": "/account/place-rewards/points-history",
-          },
-        ],
-        "url": "/account/place-rewards",
-      },
-      Object {
-        "component": "myWalletPage",
-        "displayName": "My Wallet",
-        "href": "/account?id=myWalletPage",
-        "id": "myWallet",
-        "url": "/account/wallet",
-      },
-      Object {
-        "component": "earnExtraPointsPage",
-        "displayName": "Earn Extra Points",
-        "href": "/account?id=earnExtraPointsPage",
-        "id": "earnExtraPoints",
-        "url": "/account/extra-points",
-      },
-      Object {
-        "component": "profileInformation",
-        "displayName": "Profile Information",
-        "href": "/account?id=profileInformation",
-        "id": "profileInformation",
-        "url": "/account/profile",
-      },
-      Object {
         "component": "addressBook",
         "displayName": "Address Book",
         "href": "/account?id=addressBook",
         "id": "addressBook",
         "url": "/account/address-book",
-      },
-      Object {
-        "component": "paymentGiftCardsPage",
-        "displayName": "Payment & Gift Cards",
-        "href": "/account?id=paymentGiftCardsPage",
-        "id": "paymentGiftCards",
-        "url": "/account/payment",
-      },
-      Object {
-        "component": "myPreferencePage",
-        "displayName": "My Preferences",
-        "href": "/account?id=myPreferencePage",
-        "id": "myPreferences",
-        "url": "/account/my-preference",
-      },
-      Object {
-        "component": "myPlaceRewardsCCPage",
-        "displayName": "My Place Rewards Credit Card",
-        "href": "/account?id=myPlaceRewardsCCPage",
-        "id": "myPlaceRewardsCC",
-        "url": "/account/rewardsCreditCard",
       },
     ]
   }
