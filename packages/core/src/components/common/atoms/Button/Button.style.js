@@ -36,12 +36,6 @@ const ButtonStyles = css`
       padding: 12px 32px;
     `
       : ''};
-  ${props =>
-    props.fullWidth
-      ? `
-      width: 100% ;
-    `
-      : ''};
 
   &:hover {
     background: ${props => props.theme.colors.BUTTON.HOVER};
@@ -51,23 +45,37 @@ const ButtonStyles = css`
   }
 
   ${props =>
-    props.customButton
+    props.fullWidth
       ? `
-    background: #f3f3f3;
-    color: #6a6a6a;
-    border-radius: 10px;
-    text-transform: uppercase;
-    padding: 11px 0;
-    border: 2px solid #d8d8d8;
-    box-shadow: 10px 10px white inset, 12px 12px #f3f3f3;
-    width: calc(100% - 14px);
-    &:hover {
-      background: #f2f9fe;
-      box-shadow: 10px 10px white inset, 12px 12px #f2f9fe;
-      border: 2px solid #9b9b9b;
-    }
+      width: 100% ;
     `
-      : ''}
+      : ''};
+
+  ${props =>
+    props.customStyle === 'shadow-button'
+      ? `
+      background: ${props.theme.colors.PRIMARY.PALEGRAY};
+      border-radius: 10px;
+      padding: 4px 0;
+      
+      border: 2px solid ${props.theme.colors.PRIMARY.LIGHTGRAY};
+      box-shadow: 4px 4px white inset, 6px 6px ${props.theme.colors.PRIMARY.PALEGRAY};
+      width: calc(100% - 4px);
+      &:hover, &:focus {
+        background: ${props.theme.colors.PRIMARY.BLUE1};
+        box-shadow: 4px 4px white inset, 6px 6px ${props.theme.colors.PRIMARY.BLUE1};
+        border: 2px solid ${props.theme.colors.PRIMARY.GRAY};
+      }
+      @media ${props.theme.mediaQuery.large} {
+        padding: 11px 0;
+        box-shadow: 10px 10px white inset, 12px 12px ${props.theme.colors.PRIMARY.PALEGRAY};
+        width: calc(100% - 14px);
+        &:hover, &:focus {
+          box-shadow: 10px 10px white inset, 12px 12px ${props.theme.colors.PRIMARY.BLUE1};
+        }  
+      }
+    `
+      : ''};
 
   @media ${props => props.theme.mediaQuery.large} {
     ${props =>

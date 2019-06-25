@@ -2,13 +2,16 @@ import { css } from 'styled-components';
 
 export default css`
   .footer-top {
-    border-bottom: 2px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+    > div {
+      border-top: 2px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+      padding-top: 32px;
+    }
   }
   .footer-bottom {
     background: ${props => props.theme.colors.WHITE};
   }
   .footer-top__slots {
-    padding-bottom: 40px;
+    padding-bottom: 16px;
   }
   .footer-top__slot-2 {
     order: 1;
@@ -30,16 +33,14 @@ export default css`
     .default-offset {
       padding: 0 ${props => props.theme.gridDimensions.gridOffsetObj.medium}px;
     }
-    .footer-top__slot--1 {
-      order: 1;
-    }
-    .footer-top__slot--2 {
-      order: 2;
+    .footer-top {
+      padding-bottom: 20px;
     }
   }
   @media ${props => props.theme.mediaQuery.large} {
     .footer-top {
-      padding-bottom: 46px;
+      padding-bottom: 44px;
+      border-bottom: 2px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     }
     .footer-bottom {
       background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};

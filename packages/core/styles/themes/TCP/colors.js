@@ -21,6 +21,7 @@ export default {
     BLUE: '#2e6a91',
     NAVY: '#24465e',
     GREEN: '#7dc24c',
+    BLUE1: '#edf5fb',
   },
   TEXT: {
     DARK: '#1a1a1a',
@@ -74,4 +75,5 @@ export default {
   FOOTER: {
     DIVIDER: '#c3c3c3',
   },
+  TCP_BLUE_2: '#dbebf8',
 };

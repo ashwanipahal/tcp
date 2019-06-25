@@ -6,12 +6,13 @@ export default css`
   justify-content: space-between;
   flex-direction: row;
   text-align: center;
+  padding: 12px 0 20px;
 
   .social-media-label {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: ${props => props.theme.fonts.fontWeight.black};
     color: ${props => props.theme.colors.TEXT.DARKGRAY};
-    padding: 12px 0;
+    padding: 15px 0;
   }
   .social-media-icon {
     width: 42px;
@@ -25,11 +26,7 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
-    flex-direction: column;
-    .social-media-label {
-      font-size: 10.7px;
-      padding: 0 0 12px 0;
-    }
+    padding: 0;
     .social-media-icon {
       width: 38px;
       height: 39px;
@@ -40,9 +37,12 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.large} {
+    flex-direction: column;
+    padding: 0 0 5px 0;
     .social-media-label {
+      padding: 0 0 5px 0;
+      font-size: 12px;
       line-height: 2;
-      flex-direction: column;
     }
     .social-media-icon {
       width: 50px;

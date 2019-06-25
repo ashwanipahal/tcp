@@ -11,7 +11,16 @@ import FooterMiddleDesktop from '@tcp/core/src/components/features/footer/Footer
 import style from '../Footer.style';
 import { LegalLinks, Copyright, SocialMediaLinks } from '../../../molecules';
 
-const Footer = ({ className, copyrightText, legalLinks, navLinks, socialMediaLinks }) => (
+const Footer = ({
+  className,
+  copyrightText,
+  legalLinks,
+  navLinks,
+  socialMediaLinks,
+  emailSignup,
+  smsSignup,
+  referAFriend,
+}) => (
   <footer className={className}>
     <div className="footer-top">
       <Row>
@@ -26,8 +35,8 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks, socialMediaLin
             small: true,
           }}
         >
-          <Button customButton>
-            <RichText richTextHtml='<div style="font-size: 15px; font-weight: 900; line-height: 1.67;color: #6a6a6a;">Get <span style="color: #4b9fdd;">$10 OFF</span> by signing <br>up for email offers!</div>' />
+          <Button customStyle="shadow-button" title={emailSignup.title}>
+            <RichText richTextHtml={emailSignup.text} />
           </Button>
         </Col>
         <Col
@@ -42,8 +51,8 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks, socialMediaLin
             medium: true,
           }}
         >
-          <Button customButton>
-            <RichText richTextHtml='<div style="font-size: 15px; font-weight: 900; line-height: 1.67;color: #6a6a6a;">Sign up for text alerts <br> and get <span style="color: #4b9fdd;">$10 off!</span>' />
+          <Button customStyle="shadow-button" title={smsSignup.title}>
+            <RichText richTextHtml={smsSignup.text} />
           </Button>
         </Col>
         <Col
@@ -57,9 +66,9 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks, socialMediaLin
             small: true,
           }}
         >
-          <span id="extole_zone_global_footer">
-            <Button customButton>
-              <RichText richTextHtml='<div style="font-size: 15px; font-weight: 900; line-height: 1.67;color: #6a6a6a;">REFER A FRIEND<br>AND EARN ANOTHER <span style="color: #4b9fdd;">$10!</span></div>' />
+          <span id="extole_zone_global_footer" title={referAFriend.title}>
+            <Button customStyle="shadow-button">
+              <RichText richTextHtml={referAFriend.text} />
             </Button>
           </span>
         </Col>
@@ -130,6 +139,19 @@ Footer.propTypes = {
     icon_class: PropTypes.string,
     title: PropTypes.string,
   }),
+  emailSignup: PropTypes.shape({
+    title: PropTypes.string,
+    text: PropTypes.string,
+  }),
+  smsSignup: PropTypes.shape({
+    title: PropTypes.string,
+    text: PropTypes.string,
+  }),
+  referAFriend: PropTypes.shape({
+    title: PropTypes.string,
+    text: PropTypes.string,
+  }),
+  referenceID: PropTypes.string,
 };
 
 Footer.defaultProps = {
@@ -137,6 +159,10 @@ Footer.defaultProps = {
   legalLinks: [],
   navLinks: [],
   socialMediaLinks: [],
+  emailSignup: {},
+  smsSignup: {},
+  referAFriend: {},
+  referenceID: '',
 };
 
 export default withStyles(Footer, style);
