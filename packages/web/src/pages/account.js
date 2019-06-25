@@ -1,1 +1,1 @@
-export { default } from '../components/features/account/index';
+export { default } from '../components/features/account/Account/index';

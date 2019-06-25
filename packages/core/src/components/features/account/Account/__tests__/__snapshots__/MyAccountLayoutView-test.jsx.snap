@@ -1,34 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`My Account Layout View should not render any links if navData is empty 1`] = `
-<Fragment>
-  <Styled(Row)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 2,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    >
-      <styled.ul />
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 10,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    >
-      <mockConstructor />
-    </Styled(Col)>
-  </Styled(Row)>
-</Fragment>
-`;
-
 exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] = `
 <Fragment>
   <Styled(Row)>
@@ -41,217 +12,84 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
         }
       }
     >
-      <styled.ul>
-        <li
-          id="accountOverview"
-          key="accountOverview"
-        >
-          <Styled(Anchor)
-            anchorVariation="primary"
-            asPath="/account"
-            className="selected"
-            fontSizeVariation="large"
-            fontWeightVariation="bold"
-            to="/account?id=accountOverview"
-          >
-            Account Overview
-          </Styled(Anchor)>
-        </li>
-        <li
-          id="myPlaceRewards"
-          key="myPlaceRewards"
-        >
-          <Styled(Anchor)
-            anchorVariation="disabled"
-            asPath="/account/myPlaceRewards"
-            className={false}
-            fontSizeVariation="large"
-            fontWeightVariation={false}
-            to="/account?id=myPlaceRewards"
-          >
-            My Place Rewards
-          </Styled(Anchor)>
-          <styled.ul>
-            <li
-              key="pointsHistory"
-            >
-              <Styled(Anchor)
-                anchorVariation="disabled"
-                asPath="/account/myPlaceRewards/pointsHistory"
-                className={false}
-                fontSizeVariation="large"
-                fontWeightVariation={false}
-                to="/account?id=pointsHistoryPage"
-              >
-                Points History
-              </Styled(Anchor)>
-            </li>
-          </styled.ul>
-        </li>
-        <li
-          id="myWallet"
-          key="myWallet"
-        >
-          <Styled(Anchor)
-            anchorVariation="disabled"
-            asPath="/account/myWalletPage"
-            className={false}
-            fontSizeVariation="large"
-            fontWeightVariation={false}
-            to="/account?id=myWalletPage"
-          >
-            My Wallet
-          </Styled(Anchor)>
-        </li>
-        <li
-          id="earnExtraPoints"
-          key="earnExtraPoints"
-        >
-          <Styled(Anchor)
-            anchorVariation="disabled"
-            asPath="/account/earnExtraPointsPage"
-            className={false}
-            fontSizeVariation="large"
-            fontWeightVariation={false}
-            to="/account?id=earnExtraPointsPage"
-          >
-            Earn Extra Points
-          </Styled(Anchor)>
-        </li>
-        <li
-          id="profileInformation"
-          key="profileInformation"
-        >
-          <Styled(Anchor)
-            anchorVariation="disabled"
-            asPath="/account/profileInformation"
-            className={false}
-            fontSizeVariation="large"
-            fontWeightVariation={false}
-            to="/account?id=profileInformation"
-          >
-            Profile Information
-          </Styled(Anchor)>
-        </li>
-        <li
-          id="addressBook"
-          key="addressBook"
-        >
-          <Styled(Anchor)
-            anchorVariation="disabled"
-            asPath="/account/addressBook"
-            className={false}
-            fontSizeVariation="large"
-            fontWeightVariation={false}
-            to="/account?id=addressBook"
-          >
-            Address Book
-          </Styled(Anchor)>
-        </li>
-        <li
-          id="paymentGiftCards"
-          key="paymentGiftCards"
-        >
-          <Styled(Anchor)
-            anchorVariation="disabled"
-            asPath="/account/paymentGiftCardsPage"
-            className={false}
-            fontSizeVariation="large"
-            fontWeightVariation={false}
-            to="/account?id=paymentGiftCardsPage"
-          >
-            Payment & Gift Cards
-          </Styled(Anchor)>
-        </li>
-        <li
-          id="myPreferences"
-          key="myPreferences"
-        >
-          <Styled(Anchor)
-            anchorVariation="disabled"
-            asPath="/account/myPreferencePage"
-            className={false}
-            fontSizeVariation="large"
-            fontWeightVariation={false}
-            to="/account?id=myPreferencePage"
-          >
-            My Preferences
-          </Styled(Anchor)>
-        </li>
-        <li
-          id="myPlaceRewardsCC"
-          key="myPlaceRewardsCC"
-        >
-          <Styled(Anchor)
-            anchorVariation="disabled"
-            asPath="/account/myPlaceRewardsCCPage"
-            className={false}
-            fontSizeVariation="large"
-            fontWeightVariation={false}
-            to="/account?id=myPlaceRewardsCCPage"
-          >
-            My Place Rewards Credit Card
-          </Styled(Anchor)>
-        </li>
-      </styled.ul>
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 10,
-          "medium": 8,
-          "small": 6,
+      <Styled(MyAccountLeftNav)
+        navData={
+          Array [
+            Object {
+              "component": "accountOverview",
+              "displayName": "Account Overview",
+              "href": "/account?id=accountOverview",
+              "id": "accountOverview",
+              "url": "/account",
+            },
+            Object {
+              "component": "myPlaceRewards",
+              "displayName": "My Place Rewards",
+              "href": "/account?id=myPlaceRewards",
+              "id": "myPlaceRewards",
+              "subSections": Array [
+                Object {
+                  "component": "pointsHistoryPage",
+                  "displayName": "Points History",
+                  "href": "/account?id=pointsHistoryPage",
+                  "id": "pointsHistory",
+                  "url": "/account/place-rewards/points-history",
+                },
+              ],
+              "url": "/account/place-rewards",
+            },
+            Object {
+              "component": "myWalletPage",
+              "displayName": "My Wallet",
+              "href": "/account?id=myWalletPage",
+              "id": "myWallet",
+              "url": "/account/wallet",
+            },
+            Object {
+              "component": "earnExtraPointsPage",
+              "displayName": "Earn Extra Points",
+              "href": "/account?id=earnExtraPointsPage",
+              "id": "earnExtraPoints",
+              "url": "/account/extra-points",
+            },
+            Object {
+              "component": "profileInformation",
+              "displayName": "Profile Information",
+              "href": "/account?id=profileInformation",
+              "id": "profileInformation",
+              "url": "/account/profile",
+            },
+            Object {
+              "component": "addressBook",
+              "displayName": "Address Book",
+              "href": "/account?id=addressBook",
+              "id": "addressBook",
+              "url": "/account/address-book",
+            },
+            Object {
+              "component": "paymentGiftCardsPage",
+              "displayName": "Payment & Gift Cards",
+              "href": "/account?id=paymentGiftCardsPage",
+              "id": "paymentGiftCards",
+              "url": "/account/payment",
+            },
+            Object {
+              "component": "myPreferencePage",
+              "displayName": "My Preferences",
+              "href": "/account?id=myPreferencePage",
+              "id": "myPreferences",
+              "url": "/account/my-preference",
+            },
+            Object {
+              "component": "myPlaceRewardsCCPage",
+              "displayName": "My Place Rewards Credit Card",
+              "href": "/account?id=myPlaceRewardsCCPage",
+              "id": "myPlaceRewardsCC",
+              "url": "/account/rewardsCreditCard",
+            },
+          ]
         }
-      }
-    >
-      <mockConstructor />
-    </Styled(Col)>
-  </Styled(Row)>
-</Fragment>
-`;
-
-exports[`My Account Layout View should render only 2  links if navData has 2 links 1`] = `
-<Fragment>
-  <Styled(Row)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 2,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    >
-      <styled.ul>
-        <li
-          id="myWallet"
-          key="myWallet"
-        >
-          <Styled(Anchor)
-            anchorVariation="disabled"
-            asPath="/myWalletPage"
-            className={false}
-            fontSizeVariation="large"
-            fontWeightVariation={false}
-          >
-            My Wallet
-          </Styled(Anchor)>
-        </li>
-        <li
-          id="earnExtraPoints"
-          key="earnExtraPoints"
-        >
-          <Styled(Anchor)
-            anchorVariation="disabled"
-            asPath="/earnExtraPointsPage"
-            className={false}
-            fontSizeVariation="large"
-            fontWeightVariation={false}
-          >
-            Earn Extra Points
-          </Styled(Anchor)>
-        </li>
-      </styled.ul>
+      />
     </Styled(Col)>
     <Styled(Col)
       colSize={

@@ -21,9 +21,9 @@ const AnchorStyles = css`
     `
       : ''};
   ${props =>
-    props.anchorVariation === 'disabled'
+    props.anchorVariation === 'grayed'
       ? `
-      color: ${props.theme.colors.ANCHOR.DISABLED};
+      color: ${props.theme.colors.ANCHOR.GRAYED};
     `
       : ''};
   ${props =>
@@ -45,7 +45,7 @@ const AnchorStyles = css`
     `
       : ''};
   ${props =>
-    props.fontWeightVariation === 'bold'
+    props.fontWeightVariation === 'active'
       ? `
       font-weight: ${props.theme.fonts.fontWeight.bold};
     `

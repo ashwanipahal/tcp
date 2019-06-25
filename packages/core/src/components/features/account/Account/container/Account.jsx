@@ -1,9 +1,9 @@
 import React from 'react';
-import pathOr from 'lodash/fp/pathOr';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentMapping from '../AccountComponentMapping';
-import navData from '../MyAccountNavData';
+import navData from '../MyAccountRoute.config';
+import utilMethods from '../../../../../utils/utilMethods';
 
 // @flow
 type Props = {
@@ -26,13 +26,18 @@ export class Account extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      component: pathOr('accountOverview', 'query.id', props.router),
+      component: utilMethods.getObjectValue(props.router, 'accountOverview', 'query', 'id'),
     };
   }
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
-    const nextComponent = pathOr('accountOverview', 'query.id', nextProps.router);
-    const prevComponent = pathOr('accountOverview', 'component', prevState);
+    const nextComponent = utilMethods.getObjectValue(
+      nextProps.router,
+      'accountOverview',
+      'query',
+      'id'
+    );
+    const prevComponent = prevState.component;
     if (nextComponent !== prevComponent) {
       return { component: nextComponent };
     }
@@ -49,7 +54,7 @@ export class Account extends React.PureComponent<Props, State> {
     return (
       <MyAccountLayout
         mainContent={AccountComponentMapping[component]}
-        selectedComponent={component}
+        active={component}
         navData={navData}
       />
     );

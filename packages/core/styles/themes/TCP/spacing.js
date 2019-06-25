@@ -1,6 +1,6 @@
 export default {
   // SPACING
-  // ELEMENT_SPACING - This spacing is defined from the mininum to maximum that can be used inside an individual
+  // ELEM_SPACING - This spacing is defined from the mininum to maximum that can be used inside an individual
   // component for both padding and margin.
 
   // LAYOUT_SPACING - TThe layout scale is used for arranging components and other UI parts into a full page layout.
@@ -13,7 +13,7 @@ export default {
   // to be added to the stylesheet. Please speak to a designer first before adding here and
   // PLEASE DO NOT JUST ADD SPACING BELOW BECAUSE IT'S IN A DESIGN :)
 
-  ELEMENT_SPACING: {
+  ELEM_SPACING: {
     XXXS: '2px',
     XXS: '4px',
     XS: '8px',
