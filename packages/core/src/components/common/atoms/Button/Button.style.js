@@ -62,8 +62,8 @@ const ButtonStyles = css`
       box-shadow: 4px 4px white inset, 6px 6px ${props.theme.colors.PRIMARY.PALEGRAY};
       width: calc(100% - 4px);
       &:hover, &:focus {
-        background: ${props.theme.colors.PRIMARY.BLUE1};
-        box-shadow: 4px 4px white inset, 6px 6px ${props.theme.colors.PRIMARY.BLUE1};
+        background: ${props.theme.colors.PRIMARY.COLOR1};
+        box-shadow: 4px 4px white inset, 6px 6px ${props.theme.colors.PRIMARY.COLOR1};
         border: 2px solid ${props.theme.colors.PRIMARY.GRAY};
       }
       @media ${props.theme.mediaQuery.large} {
@@ -71,7 +71,7 @@ const ButtonStyles = css`
         box-shadow: 10px 10px white inset, 12px 12px ${props.theme.colors.PRIMARY.PALEGRAY};
         width: calc(100% - 14px);
         &:hover, &:focus {
-          box-shadow: 10px 10px white inset, 12px 12px ${props.theme.colors.PRIMARY.BLUE1};
+          box-shadow: 10px 10px white inset, 12px 12px ${props.theme.colors.PRIMARY.COLOR1};
         }  
       }
     `
