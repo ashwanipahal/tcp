@@ -3,12 +3,10 @@ import ADDRESS_BOOK_CONSTANTS from '../AddressList.constants';
 
 const initialState = List();
 
-/* eslint-disable */
 const AddressListReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADDRESS_BOOK_CONSTANTS.SET_ADDRESS_LIST:
-      const addressListState = List(action.addressList);
-      return addressListState;
+      return List(action.addressList);
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Array) {
