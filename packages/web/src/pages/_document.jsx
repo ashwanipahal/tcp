@@ -42,7 +42,7 @@ class MyDocument extends Document {
           <NextScript />
           <script
             type="text/javascript"
-            src="//assets.adobedtm.com/launch-EN5ad6c56a7b2548f596814b9c8aef81f8.min.js"
+            src="//assets.adobedtm.com/launch-EN35cf63837e524037bc099142d8051c4b-development.min.js"
           />
         </body>
       </Html>

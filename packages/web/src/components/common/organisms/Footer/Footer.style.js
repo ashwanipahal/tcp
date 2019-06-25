@@ -65,5 +65,8 @@ export default css`
     .divider {
       border-left: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
     }
+    .reference-id {
+      text-align: center;
+    }
   }
 `;

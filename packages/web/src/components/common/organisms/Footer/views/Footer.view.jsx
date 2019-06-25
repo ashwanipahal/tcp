@@ -20,6 +20,7 @@ const Footer = ({
   emailSignup,
   smsSignup,
   referAFriend,
+  referenceID,
 }) => (
   <footer className={className}>
     <div className="footer-top">
@@ -120,6 +121,17 @@ const Footer = ({
             small: 6,
           }}
         />
+      </Row>
+      <Row>
+        <Col
+          colSize={{
+            large: 12,
+            medium: 8,
+            small: 6,
+          }}
+        >
+          <div className="reference-id copyright-and-legal-information">{referenceID}</div>
+        </Col>
       </Row>
     </div>
   </footer>
