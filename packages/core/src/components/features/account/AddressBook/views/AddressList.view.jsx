@@ -1,21 +1,25 @@
-// @flow
-
 import React from 'react';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import AddressTile from './AddressTile.view';
+import styles from '../styles/AddressList.style';
+
+// @flow
 
 type Props = {
   addresses: Object[],
   labels: {},
+  className: string,
 };
-const AddressList = ({ addresses, labels }: Props) => {
+export const AddressList = ({ addresses, labels, className }: Props) => {
   return (
-    <Row fullBleed>
+    <Row fullBleed className={className}>
       {addresses.map((address, index) => (
         <Col
+          className="addressList__col"
           key={`container-${address.addressId}`}
-          colSize={{ large: 3, medium: 4, small: 6 }}
+          colSize={{ large: 4, medium: 4, small: 6 }}
           ignoreGutter={{
             large: (index + 1) % 3 === 0,
             medium: (index + 1) % 2 === 0,
@@ -28,4 +32,4 @@ const AddressList = ({ addresses, labels }: Props) => {
     </Row>
   );
 };
-export default AddressList;
+export default withStyles(AddressList, styles);

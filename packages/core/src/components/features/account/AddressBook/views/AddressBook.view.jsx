@@ -2,13 +2,12 @@ import React from 'react';
 import { List } from 'immutable';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
-import { AddNewAddressCTAContainer } from '../styles/AddressBook.style';
+import styles from '../styles/AddressBook.style';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import Button from '../../../../common/atoms/Button';
-import Separator from '../../../../common/atoms/Separator';
-import AddressList from './AddressList.view';
-import EmptyAddressList from './EmptyAddressList.view';
+import AddressListComponent from './AddressList.view';
+import EmptyAddressListComponent from './EmptyAddressList.view';
 
 // @flow
 
@@ -17,34 +16,37 @@ type Props = {
   labels: {
     addNewAddressCTA: string,
   },
+  className: string,
 };
 
-export const AddressBook = ({ addresses, labels }: Props) => {
+export const AddressBook = ({ addresses, labels, className }: Props) => {
   return (
-    <div>
-      <Heading fontFamily="secondaryFontFamily" HeadingLarge="six" tag="h4">
+    <div className={className}>
+      <Heading
+        fontFamily="secondaryFontFamily"
+        HeadingLarge="six"
+        tag="h4"
+        className="addressBook__separator"
+      >
         Address Book
       </Heading>
-      <Separator />
-      {addresses.size === 0 && <EmptyAddressList labels={labels} />}
-      <AddNewAddressCTAContainer>
-        <Row fullBleed>
-          <Col
-            colSize={{
-              small: 4,
-              large: 2,
-              medium: 3,
-            }}
-            offsetLeft={{
-              small: 1,
-            }}
-          >
-            <Button buttonVariation="fixed-width">{labels.addNewAddressCTA}</Button>
-          </Col>
-        </Row>
-      </AddNewAddressCTAContainer>
-      {addresses.size > 0 && <AddressList addresses={addresses} labels={labels} />}
+      {addresses.size === 0 && <EmptyAddressListComponent labels={labels} />}
+      <Row fullBleed className="addressBook__row--marginBottom">
+        <Col
+          colSize={{
+            small: 5,
+            large: 10,
+            medium: 8,
+          }}
+          offsetLeft={{
+            small: 1,
+          }}
+        >
+          <Button buttonVariation="variable-width">{labels.addNewAddressCTA}</Button>
+        </Col>
+      </Row>
+      {addresses.size > 0 && <AddressListComponent addresses={addresses} labels={labels} />}
     </div>
   );
 };
-export default withStyles(AddressBook);
+export default withStyles(AddressBook, styles);

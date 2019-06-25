@@ -1,23 +1,22 @@
-// @flow
 import React from 'react';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Anchor from '../../../../common/atoms/Anchor';
 import Address from '../../../../common/molecules/Address';
-import {
-  AddressTileComponent,
-  AddressTileContainerComponent,
-  AddressCTAContainerComponent,
-} from '../styles/AddressBook.style';
+import styles from '../styles/AddressTile.style';
 import Badge from '../../../../common/atoms/Badge';
+
+// @flow
 
 type Props = {
   address: Object,
   labels: Object,
+  className: string,
 };
 
-const AddressBookTile = ({ address, labels }: Props) => {
+export const AddressBookTile = ({ address, labels, className }: Props) => {
   return (
-    <AddressTileComponent>
-      <AddressTileContainerComponent>
+    <div className={className}>
+      <div className="addressTile__row--twoCol">
         <Address address={address} />
         <div>
           {address.primary === 'true' && <Badge showCheckmark>{labels.defaultShipping}</Badge>}
@@ -34,17 +33,17 @@ const AddressBookTile = ({ address, labels }: Props) => {
             </Anchor>
           )}
         </div>
-      </AddressTileContainerComponent>
-      <AddressCTAContainerComponent>
+      </div>
+      <div className="addressTile__row--oneCol">
         <Anchor fontSizeVariation="medium" underline to="/#" anchorVariation="primary">
           {labels.edit}
         </Anchor>
         <Anchor fontSizeVariation="medium" underline to="/#" anchorVariation="primary">
           {labels.delete}
         </Anchor>
-      </AddressCTAContainerComponent>
-    </AddressTileComponent>
+      </div>
+    </div>
   );
 };
 
-export default AddressBookTile;
+export default withStyles(AddressBookTile, styles);

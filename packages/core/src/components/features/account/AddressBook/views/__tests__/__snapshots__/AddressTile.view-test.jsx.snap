@@ -1,8 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AddressTile component should renders correctly 1`] = `
-<styled.div>
-  <styled.div>
+<div>
+  <div
+    className="addressTile__row--twoCol"
+  >
     <Address
       address={
         Object {
@@ -26,8 +28,10 @@ exports[`AddressTile component should renders correctly 1`] = `
         DEFAULT SHIPPING
       </Styled(Badge)>
     </div>
-  </styled.div>
-  <styled.div>
+  </div>
+  <div
+    className="addressTile__row--oneCol"
+  >
     <Styled(Anchor)
       anchorVariation="primary"
       fontSizeVariation="medium"
@@ -40,6 +44,6 @@ exports[`AddressTile component should renders correctly 1`] = `
       to="/#"
       underline={true}
     />
-  </styled.div>
-</styled.div>
+  </div>
+</div>
 `;

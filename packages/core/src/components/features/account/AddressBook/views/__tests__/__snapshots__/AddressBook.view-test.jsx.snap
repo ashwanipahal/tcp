@@ -4,39 +4,38 @@ exports[`AddressBook component should renders correctly when addresses are not p
 <div>
   <Styled(HeadingStyle)
     HeadingLarge="six"
+    className="addressBook__separator"
     fontFamily="secondaryFontFamily"
     tag="h4"
   >
     Address Book
   </Styled(HeadingStyle)>
-  <Styled(Separator) />
-  <EmptyAddressList
+  <Styled(EmptyAddressList)
     labels={Object {}}
   />
-  <styled.div>
-    <Styled(Row)
-      fullBleed={true}
+  <Styled(Row)
+    className="addressBook__row--marginBottom"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 10,
+          "medium": 8,
+          "small": 5,
+        }
+      }
+      offsetLeft={
+        Object {
+          "small": 1,
+        }
+      }
     >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 2,
-            "medium": 3,
-            "small": 4,
-          }
-        }
-        offsetLeft={
-          Object {
-            "small": 1,
-          }
-        }
-      >
-        <Styled(Button)
-          buttonVariation="fixed-width"
-        />
-      </Styled(Col)>
-    </Styled(Row)>
-  </styled.div>
+      <Styled(Button)
+        buttonVariation="variable-width"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
 </div>
 `;
 
@@ -44,37 +43,36 @@ exports[`AddressBook component should renders correctly when addresses are prese
 <div>
   <Styled(HeadingStyle)
     HeadingLarge="six"
+    className="addressBook__separator"
     fontFamily="secondaryFontFamily"
     tag="h4"
   >
     Address Book
   </Styled(HeadingStyle)>
-  <Styled(Separator) />
-  <styled.div>
-    <Styled(Row)
-      fullBleed={true}
+  <Styled(Row)
+    className="addressBook__row--marginBottom"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 10,
+          "medium": 8,
+          "small": 5,
+        }
+      }
+      offsetLeft={
+        Object {
+          "small": 1,
+        }
+      }
     >
-      <Styled(Col)
-        colSize={
-          Object {
-            "large": 2,
-            "medium": 3,
-            "small": 4,
-          }
-        }
-        offsetLeft={
-          Object {
-            "small": 1,
-          }
-        }
-      >
-        <Styled(Button)
-          buttonVariation="fixed-width"
-        />
-      </Styled(Col)>
-    </Styled(Row)>
-  </styled.div>
-  <AddressList
+      <Styled(Button)
+        buttonVariation="variable-width"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(AddressList)
     addresses={
       Immutable.List [
         Object {

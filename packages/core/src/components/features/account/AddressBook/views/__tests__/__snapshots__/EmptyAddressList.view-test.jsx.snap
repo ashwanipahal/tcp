@@ -1,15 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`EmptyAddressList component should renders correctly 1`] = `
-<styled.div>
-  <Styled(Styled(BodyStyle))
+<div>
+  <Styled(BodyStyle)
     bodySize="three"
+    className="emptyAddressList__row--marginBottom"
     fontWeight="bold"
     tag="p"
   />
-  <Styled(Styled(BodyStyle))
+  <Styled(BodyStyle)
     bodySize="three"
+    className="emptyAddressList__row--marginBottom"
     tag="p"
   />
-</styled.div>
+</div>
 `;

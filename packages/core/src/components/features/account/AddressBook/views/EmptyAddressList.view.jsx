@@ -1,23 +1,30 @@
-// @flow
-
 import React from 'react';
-import { AddNewAddressCTAContainer, EmptyAddressRow } from '../styles/AddressBook.style';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import styles from '../styles/EmptyAddressList.style';
+import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
+
+// @flow
 
 type Props = {
   labels: Object,
 };
 
-const EmptyAddressList = ({ labels }: Props) => {
+export const EmptyAddressList = ({ labels }: Props) => {
   return (
-    <AddNewAddressCTAContainer>
-      <EmptyAddressRow bodySize="three" tag="p" fontWeight="bold">
+    <div>
+      <BodyCopy
+        bodySize="three"
+        tag="p"
+        fontWeight="bold"
+        className="emptyAddressList__row--marginBottom"
+      >
         {labels.createAddressBookMsg}
-      </EmptyAddressRow>
-      <EmptyAddressRow bodySize="three" tag="p">
+      </BodyCopy>
+      <BodyCopy bodySize="three" tag="p" className="emptyAddressList__row--marginBottom">
         {labels.createAddressBookBenefitMsg}
-      </EmptyAddressRow>
-    </AddNewAddressCTAContainer>
+      </BodyCopy>
+    </div>
   );
 };
 
-export default EmptyAddressList;
+export default withStyles(EmptyAddressList, styles);

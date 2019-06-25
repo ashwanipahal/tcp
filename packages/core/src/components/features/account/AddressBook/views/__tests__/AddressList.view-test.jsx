@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { List } from 'immutable';
-import AddressList from '../AddressList.view';
+import { AddressList } from '../AddressList.view';
 import AddressTile from '../AddressTile.view';
 
 const addresses = [

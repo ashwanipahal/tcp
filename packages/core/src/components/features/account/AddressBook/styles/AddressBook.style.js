@@ -1,37 +1,15 @@
-import styled from 'styled-components';
-import { BodyCopy } from '@tcp/core/styles/themes/TCP/typotheme';
+import { css } from 'styled-components';
 
-const AddressTileComponent = styled.div`
-  border: solid 1px ${props => props.theme.colors.BORDER.NORMAL};
-  padding: 16px 16px 12px 16px;
-  margin-bottom: 20px;
-`;
+const styles = css`
+  .addressBook__separator {
+    border-bottom: 3px solid ${props => props.theme.colors.BLACK};
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  }
 
-const AddressTileContainerComponent = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const EmptyAddressRow = styled(BodyCopy)`
-  margin-bottom: 16px;
-`;
-
-const AddressCTAContainerComponent = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  a {
-    margin-left: 16px;
+  .addressBook__row--marginBottom {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 `;
 
-const AddNewAddressCTAContainer = styled.div`
-  margin-bottom: 36px;
-`;
-
-export {
-  AddressTileComponent,
-  AddressTileContainerComponent,
-  AddressCTAContainerComponent,
-  EmptyAddressRow,
-  AddNewAddressCTAContainer,
-};
+export default styles;

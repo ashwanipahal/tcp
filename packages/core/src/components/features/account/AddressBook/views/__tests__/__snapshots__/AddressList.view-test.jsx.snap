@@ -5,9 +5,10 @@ exports[`AddressList component should renders correctly 1`] = `
   fullBleed={true}
 >
   <Styled(Col)
+    className="addressList__col"
     colSize={
       Object {
-        "large": 3,
+        "large": 4,
         "medium": 4,
         "small": 6,
       }
@@ -21,7 +22,7 @@ exports[`AddressList component should renders correctly 1`] = `
     }
     key="container-undefined"
   >
-    <AddressBookTile
+    <Styled(AddressBookTile)
       address={
         Object {
           "addressLine": Array [
@@ -39,9 +40,10 @@ exports[`AddressList component should renders correctly 1`] = `
     />
   </Styled(Col)>
   <Styled(Col)
+    className="addressList__col"
     colSize={
       Object {
-        "large": 3,
+        "large": 4,
         "medium": 4,
         "small": 6,
       }
@@ -55,7 +57,7 @@ exports[`AddressList component should renders correctly 1`] = `
     }
     key="container-undefined"
   >
-    <AddressBookTile
+    <Styled(AddressBookTile)
       address={
         Object {
           "addressLine": Array [

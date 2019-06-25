@@ -2,8 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { List } from 'immutable';
 import { AddressBook } from '../AddressBook.view';
-import EmptyAddressList from '../EmptyAddressList.view';
-import AddressList from '../AddressList.view';
+import EmptyAddressListComponent from '../EmptyAddressList.view';
+import AddressListComponent from '../AddressList.view';
 
 describe('AddressBook component', () => {
   it('should renders correctly when addresses are not present', () => {
@@ -39,7 +39,7 @@ describe('AddressBook component', () => {
       labels: {},
     };
     const component = shallow(<AddressBook {...props} />);
-    expect(component.find(EmptyAddressList)).toHaveLength(1);
+    expect(component.find(EmptyAddressListComponent)).toHaveLength(1);
   });
 
   it('should renders AddressList when addresses are present', () => {
@@ -57,6 +57,6 @@ describe('AddressBook component', () => {
       labels: {},
     };
     const component = shallow(<AddressBook {...props} />);
-    expect(component.find(AddressList)).toHaveLength(1);
+    expect(component.find(AddressListComponent)).toHaveLength(1);
   });
 });
