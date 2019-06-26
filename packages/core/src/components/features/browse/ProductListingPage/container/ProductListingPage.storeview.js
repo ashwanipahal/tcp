@@ -1,6 +1,9 @@
 import { createSelector } from 'reselect';
+import { PRODUCTLISTINGPAGE_REDUCER_KEY } from '../../../../../constants/reducer';
 
-const getPlpProducts = state => state.ProductListingPageReducer.products;
+const getReducer = state => state[PRODUCTLISTINGPAGE_REDUCER_KEY];
+
+const getPlpProducts = state => getReducer(state).products;
 
 const getExpensivePlpProducts = createSelector(
   [getPlpProducts],
