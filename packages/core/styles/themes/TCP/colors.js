@@ -75,4 +75,8 @@ export default {
   FOOTER: {
     DIVIDER: '#c3c3c3',
   },
+  NOTIFICATION: {
+    SUCCESS: '#26762c',
+    ERROR: '#c8102e',
+  },
 };

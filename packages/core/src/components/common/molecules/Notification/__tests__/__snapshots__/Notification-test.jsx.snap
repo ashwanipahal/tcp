@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notification Component should render notification component with status error 1`] = `
+<Styled(Col)
+  colSize={
+    Object {
+      "large": 10,
+      "medium": 8,
+      "small": 6,
+    }
+  }
+>
+  <Styled(BodyStyle)
+    bodyColor="white"
+    bodySize="five"
+    className="notification"
+  />
+</Styled(Col)>
+`;
+
+exports[`Notification Component should render notification component with status success 1`] = `
+<Styled(Col)
+  colSize={
+    Object {
+      "large": 10,
+      "medium": 8,
+      "small": 6,
+    }
+  }
+>
+  <Styled(BodyStyle)
+    bodyColor="darkGray"
+    bodySize="five"
+    className="notification"
+  />
+</Styled(Col)>
+`;
