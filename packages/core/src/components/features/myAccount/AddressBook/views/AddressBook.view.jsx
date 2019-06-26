@@ -5,13 +5,13 @@ import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import store from './Form/store';
 import AddressValidationForm from './Form/FieldLevelValidationForm';
 
-const AddressBook = () => {
+const AddressBook = handleSubmit => {
   return (
     <form>
       <Grid>
         <br />
         <Provider store={store}>
-          <AddressValidationForm />
+          <AddressValidationForm handleSubmit={handleSubmit} />
         </Provider>
       </Grid>
     </form>

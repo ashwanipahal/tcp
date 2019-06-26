@@ -1,11 +1,6 @@
-import {
-  SET_USER_ADDRESSES,
-  ADD_USER_ADDRESS_SUCCESS,
-  ADD_USER_ADDRESS_FAIL,
-} from '../AddressBook.contants';
+import { ADD_USER_ADDRESS_SUCCESS, ADD_USER_ADDRESS_FAIL } from '../../AddressBook.contants';
 
 const initialState = {
-  userAddresses: [],
   addAddressSuccess: [],
   addAddressFail: [],
 };

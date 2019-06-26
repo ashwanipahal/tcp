@@ -20,6 +20,11 @@ const endpoints = {
     baseURI: 'https://www.childrensplace.com',
     relURI: '/api/v2/account/getAddressFromBook',
   },
+  addAddress: {
+    method: 'POST',
+    baseURI: 'https://www.childrensplace.com',
+    URI: 'v2/account/addAddress',
+  },
   login: {
     method: 'post',
     relURI: '/api/v2/account/logon',

@@ -15,7 +15,7 @@ const textboxStyles = css`
   border-bottom: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
 
   ${props =>
-    props.isErrorState === 'isErrorState'
+    props.meta.touched && props.meta.error
       ? `border: 1px solid ${props.theme.colors.TEXTBOX.ERROR_BORDER};`
       : ''};
   ${props =>

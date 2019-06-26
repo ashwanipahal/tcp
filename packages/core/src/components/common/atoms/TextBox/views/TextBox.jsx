@@ -25,6 +25,7 @@ type Props = {
   onChangeHandler?: any,
   meta: { touched: any, error: any, warning: any },
   input: any,
+  Value: any,
 };
 
 const TextBox = ({
@@ -37,6 +38,7 @@ const TextBox = ({
   isErrorState,
   isSuccessState,
   input,
+  Value,
   meta: { touched, error, warning },
 }: Props): Node => (
   <label htmlFor={name} tabIndex="-1">
@@ -48,7 +50,7 @@ const TextBox = ({
       name={name}
       type={type}
       isSuccessState={isSuccessState}
-      isErrorState={isErrorState}
+      value={Value}
     />
     {/* commented onChange={onChangeHandler} */}
     <BodyCopy
