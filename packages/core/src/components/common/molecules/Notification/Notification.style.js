@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+// TODO: change LAYOUT_SPACING to LAYOUT
 
 const NotificationStyle = css`
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
