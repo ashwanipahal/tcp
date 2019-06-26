@@ -7,9 +7,6 @@ export default css`
       padding-top: 32px;
     }
   }
-  .footer-bottom {
-    background: ${props => props.theme.colors.WHITE};
-  }
   .footer-top__slots {
     padding-bottom: 16px;
   }
@@ -21,6 +18,7 @@ export default css`
   }
   .fullbleed-mobile {
     flex-direction: column-reverse;
+    display: flex;
     margin: 0;
   }
   .default-offset {
@@ -28,6 +26,14 @@ export default css`
   }
   .footer-middle.desktop {
     display: none;
+  }
+  .reference-id {
+    background-color: ${props => props.theme.colors.BRAND.PRIMARY};
+    font-size: 11px;
+    padding: 0 15px 24px;
+    margin: 0;
+    color: ${props => props.theme.colors.WHITE};
+    font-family: ${props => props.theme.secondaryFontFamily};
   }
   @media ${props => props.theme.mediaQuery.medium} {
     .default-offset {
@@ -67,6 +73,10 @@ export default css`
     }
     .reference-id {
       text-align: center;
+      background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
+      font-size: 12px;
+      padding: 11px 0 24px;
+      color: ${props => props.theme.colors.TEXT.DARKERGRAY};
     }
   }
 `;

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import Button from '@tcp/core/src/components/common/atoms/Button';
+import { BodyCopy } from '@tcp/core/styles/themes/TCP/typotheme';
 import RichText from '@tcp/core/src/components/common/atoms/RichText/views/RichText';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import FooterMiddleMobile from '@tcp/core/src/components/features/footer/FooterMiddleMobile';
@@ -122,7 +123,7 @@ const Footer = ({
           }}
         />
       </Row>
-      <Row>
+      <Row fullBleed>
         <Col
           colSize={{
             large: 12,
@@ -130,7 +131,13 @@ const Footer = ({
             small: 6,
           }}
         >
-          <div className="reference-id copyright-and-legal-information">{referenceID}</div>
+          <BodyCopy
+            className="reference-id copyright-and-legal-information"
+            bodySize="five"
+            tag="p"
+          >
+            {referenceID}
+          </BodyCopy>
         </Col>
       </Row>
     </div>

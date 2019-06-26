@@ -9,7 +9,7 @@ export default css`
   padding: 12px 0 20px;
 
   .social-media-label {
-    font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy1};
+    font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy1}px;
     font-weight: ${props => props.theme.fonts.fontWeight.black};
     color: ${props => props.theme.colors.TEXT.DARKGRAY};
     padding: 15px 0;
@@ -41,7 +41,7 @@ export default css`
     padding: 0 0 5px 0;
     .social-media-label {
       padding: 0 0 5px 0;
-      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy2};
+      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy2}px;
       line-height: 2;
     }
     .social-media-icon {

@@ -23,7 +23,7 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.large} {
-    padding: 24px 0;
+    padding: 24px 0 12px;
     display: flex;
     border-top: 0;
 
