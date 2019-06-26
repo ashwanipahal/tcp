@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import 'jest-styled-components';
 import FooterMiddleMobile from '../views/FooterMiddleMobile';
 
 describe('FooterMiddleMobile component', () => {
