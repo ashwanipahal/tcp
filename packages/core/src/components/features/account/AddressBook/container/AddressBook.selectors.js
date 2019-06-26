@@ -1,5 +1,7 @@
-const getAddressListState = state => {
-  return state.AddressBookReducer;
+export const getAddressListState = state => {
+  return state.AddressBookReducer.get('list');
 };
 
-export default getAddressListState;
+export const getFetchingState = state => {
+  return state.AddressBookReducer.get('isFetching');
+};

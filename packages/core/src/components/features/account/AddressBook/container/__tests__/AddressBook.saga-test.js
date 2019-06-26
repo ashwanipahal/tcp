@@ -21,11 +21,9 @@ describe('AddressList saga', () => {
       expect(putDescriptor).toEqual(put(setAddressList(response.body.contact)));
     });
 
-    it('should not dispatch setAddressList action if response contact is null', () => {
+    it('should not dispatch setAddressList action if response is null', () => {
       const response = {
-        body: {
-          contact: null,
-        },
+        body: null,
       };
       const putDescriptor = addressListGen.next(response).value;
       expect(putDescriptor).toBeNull();

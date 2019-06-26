@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
 import { List } from 'immutable';
 import { getAddressList } from './AddressBook.actions';
 import AddressBookComponent from '../views/AddressBook.view';
-import getAddressListState from './AddressBook.selectors';
+import { getAddressListState, getFetchingState } from './AddressBook.selectors';
 import labels from './AddressBook.labels';
 
 // @flow
@@ -12,16 +11,20 @@ import labels from './AddressBook.labels';
 type Props = {
   getAddressListAction: () => void,
   addressList: List<any>,
+  isFetching: boolean,
 };
 
-export class AddressBookContainer extends React.PureComponent<Props> {
+export class AddressBookContainer extends React.Component<Props> {
   componentDidMount() {
     const { getAddressListAction } = this.props;
     getAddressListAction();
   }
 
   render() {
-    const { addressList } = this.props;
+    const { addressList, isFetching } = this.props;
+    if (isFetching) {
+      return <p>Loading...</p>;
+    }
     if (List.isList(addressList)) {
       return <AddressBookComponent addresses={addressList} labels={labels} />;
     }
@@ -37,9 +40,12 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
   };
 };
 
-const mapStateToProps = createStructuredSelector({
-  addressList: getAddressListState,
-});
+const mapStateToProps = state => {
+  return {
+    addressList: getAddressListState(state),
+    isFetching: getFetchingState(state),
+  };
+};
 
 export default connect(
   mapStateToProps,

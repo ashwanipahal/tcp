@@ -4,13 +4,13 @@ exports[`EmptyAddressList component should renders correctly 1`] = `
 <div>
   <Styled(BodyStyle)
     bodySize="three"
-    className="emptyAddressList__row--marginBottom"
+    className="emptyAddressList__row"
     fontWeight="bold"
     tag="p"
   />
   <Styled(BodyStyle)
     bodySize="three"
-    className="emptyAddressList__row--marginBottom"
+    className="emptyAddressList__row"
     tag="p"
   />
 </div>

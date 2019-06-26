@@ -13,15 +13,10 @@ type Props = {
 export const EmptyAddressList = ({ labels, className }: Props) => {
   return (
     <div className={className}>
-      <BodyCopy
-        bodySize="three"
-        tag="p"
-        fontWeight="bold"
-        className="emptyAddressList__row--marginBottom"
-      >
+      <BodyCopy bodySize="three" tag="p" fontWeight="bold" className="emptyAddressList__row">
         {labels.createAddressBookMsg}
       </BodyCopy>
-      <BodyCopy bodySize="three" tag="p" className="emptyAddressList__row--marginBottom">
+      <BodyCopy bodySize="three" tag="p" className="emptyAddressList__row">
         {labels.createAddressBookBenefitMsg}
       </BodyCopy>
     </div>

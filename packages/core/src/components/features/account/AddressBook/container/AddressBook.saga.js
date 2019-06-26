@@ -19,8 +19,8 @@ export function* getAddressList() {
       },
       method
     );
-    if (res.body.contact) {
-      yield put(setAddressList(res.body.contact));
+    if (res.body) {
+      yield put(setAddressList(res.body.contact || []));
     }
     yield null;
   } catch (err) {

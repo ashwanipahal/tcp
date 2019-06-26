@@ -1,3 +1,4 @@
+// this is temporary file and will be removed once label integration done
 const labels = {
   addNewAddressCTA: 'ADD NEW ADDRESS',
   createAddressBookMsg: 'Create an Address Book to check out faster!',

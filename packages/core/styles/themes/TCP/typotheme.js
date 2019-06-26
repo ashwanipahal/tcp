@@ -72,7 +72,6 @@ const BodyCopy = styled(BodyStyle)`
   ${props => (props.color === 'primary' ? `color: ${colors.PRIMARY.DARK};` : '')};
   ${props => (props.color === 'secondary' ? `color: ${colors.PRIMARY.BLUE};` : '')};
   ${props => (props.color === 'tertiary' ? `color: ${colors.PRIMARY.GREEN};` : '')};
-  ${props => (props.noMargin ? `margin: 0;` : '')};
 `;
 
 export { Heading, BodyCopy };

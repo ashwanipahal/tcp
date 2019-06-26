@@ -15,6 +15,13 @@ type Props = {
   },
   className: string,
 };
+
+/**
+ * @function Address The address component will render an address
+ * that is constructed from the address prop passed.
+ * @param {string} className The class name for the component
+ * @param {object} address address object
+ */
 const Address = ({ address, className }: Props) => (
   <BodyCopy
     tag="div"
@@ -23,27 +30,17 @@ const Address = ({ address, className }: Props) => (
     fontFamily="secondaryFontFamily"
     className={className}
   >
-    <BodyCopy tag="p" fontWeight="bold" noMargin>
+    <BodyCopy tag="p" fontWeight="bold">
       {`${address.firstName} ${address.lastName}`}
     </BodyCopy>
     {address.addressLine.map(addressLine => (
-      <BodyCopy tag="p" noMargin>
-        {addressLine}
-      </BodyCopy>
+      <BodyCopy tag="p">{addressLine}</BodyCopy>
     ))}
-    <BodyCopy tag="p" noMargin>
+    <BodyCopy tag="p">
       {`${address.city || ''} ${address.state || ''} ${address.zipCode || ''}`}
     </BodyCopy>
-    {address.country && (
-      <BodyCopy tag="p" noMargin>
-        {address.country}
-      </BodyCopy>
-    )}
-    {address.phone1 && (
-      <BodyCopy tag="p" noMargin>
-        {address.phone1}
-      </BodyCopy>
-    )}
+    {address.country && <BodyCopy tag="p">{address.country}</BodyCopy>}
+    {address.phone1 && <BodyCopy tag="p">{address.phone1}</BodyCopy>}
   </BodyCopy>
 );
 
