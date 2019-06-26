@@ -38,10 +38,7 @@ class ModuleH extends React.Component {
   render() {
     const { className, data } = this.props;
     const {
-      composites: {
-        divCTALinks,
-        headerText: { textLines },
-      },
+      composites: { divCTALinks, headerText },
     } = data.moduleH;
     const carouselConfig = config.CAROUSEL_OPTIONS;
     carouselConfig.beforeChange = (current, next) => {
@@ -52,7 +49,7 @@ class ModuleH extends React.Component {
     return (
       <Row fullBleed={fullBleed} className={`${className} moduleH`}>
         <Col colSize={colSize} offsetLeft={offsetLeft} className="moduleH__header--wrapper">
-          <ModuleHHeader headerText={textLines} />
+          <ModuleHHeader headerText={headerText} />
           <ModuleHCTALinks dataCTALinks={divCTALinks} currentIndex={{ current, next }} />
         </Col>
         <Col colSize={colSize}>

@@ -47,14 +47,29 @@ export default css`
     }
   }
 
+  .moduleH__header-link {
+    color: ${props => props.theme.colors.WHITE};
+    font-family: ${props => props.theme.fonts.primaryFontBlackFamily};
+  }
+
+  .moduleH__CTALink-wrapper {
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+  }
+
   .moduleH__CTALink {
     color: ${props => props.theme.colors.WHITE};
-    display: block;
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy6}px;
     letter-spacing: -0.1px;
     line-height: 20px;
     opacity: 0.8;
+
+    &:hover {
+      font-family: ${props => props.theme.fonts.secondaryFontBlackFamily};
+      opacity: 1;
+    }
   }
 
   .moduleH__CTALink--partial {

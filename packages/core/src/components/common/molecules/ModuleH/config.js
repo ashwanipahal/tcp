@@ -18,4 +18,7 @@ export default {
       },
     ],
   },
+  MODULE_H_CTALINKS: {
+    maxLimit: 6,
+  },
 };

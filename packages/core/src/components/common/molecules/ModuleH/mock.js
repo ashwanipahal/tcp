@@ -8,20 +8,24 @@ export default {
         textLines: [
           {
             text: 'New arrivals',
-            color: 'color1',
-            style: 'style1',
+            style: 'moduleH__Header',
           },
           {
             text: 'New adventures',
-            color: 'color1',
-            style: 'style1',
+            style: 'moduleH__Header',
           },
         ],
+        link: {
+          url: 'https://www.childrensplace.com/us/c/girls-new-arrivals',
+          title: '',
+          target: '',
+          external: 0,
+        },
       },
       divCTALinks: [
         {
           link: {
-            url: '/toddler',
+            url: 'https://www.childrensplace.com/us/c/toddler-girl-clothes',
             title: '',
             target: '',
             external: 0,
@@ -29,18 +33,17 @@ export default {
           image: {
             url:
               'https://res.cloudinary.com/tcp-dam-test/image/upload/c_crop,g_face:center,h_541,w_1440/v1555526246/samples/landscapes/nature-mountains.jpg',
-            title: 'Toddler girl',
-            alt: 'Toddler girl',
+            title: 'Toddler girl title',
+            alt: 'Toddler girl alt',
           },
           styled: {
             text: 'Toddler Girl',
-            color: 'color1',
             style: 'style1',
           },
         },
         {
           link: {
-            url: '/girl',
+            url: 'https://www.childrensplace.com/us/c/girls-clothing',
             title: '',
             target: '',
             external: 0,
@@ -48,18 +51,17 @@ export default {
           image: {
             url:
               'https://res.cloudinary.com/tcp-dam-test/image/upload/c_fill,g_face,h_541,w_1440/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-            title: 'Girl',
-            alt: 'Girl',
+            title: 'Girl title',
+            alt: 'Girl alt',
           },
           styled: {
             text: 'Girl',
-            color: 'color2',
             style: 'style2',
           },
         },
         {
           link: {
-            url: '/toddler-boy',
+            url: 'https://www.childrensplace.com/us/c/toddler-boy-clothes',
             title: '',
             target: '',
             external: 0,
@@ -67,18 +69,17 @@ export default {
           image: {
             url:
               'https://res.cloudinary.com/tcp-dam-test/image/upload/c_fill,g_west,h_541,w_1440/v1555526244/samples/ecommerce/leather-bag-gray.jpg',
-            title: 'Toddler boy',
-            alt: 'Toddler boy',
+            title: 'Toddler boy title',
+            alt: 'Toddler boy alt',
           },
           styled: {
-            text: 'Toddler boy style',
-            color: 'color3',
+            text: 'Toddler boy',
             style: 'style3',
           },
         },
         {
           link: {
-            url: '/boy',
+            url: 'https://www.childrensplace.com/us/c/boys-clothing',
             title: '',
             target: '',
             external: 0,
@@ -86,18 +87,17 @@ export default {
           image: {
             url:
               'https://res.cloudinary.com/tcp-dam-test/image/upload/c_crop,g_north_west,h_541,w_1440/v1555526245/samples/food/spices.jpg',
-            title: 'Boy',
-            alt: 'Boy',
+            title: 'Boy title',
+            alt: 'Boy alt',
           },
           styled: {
             text: 'Boy',
-            color: 'color4',
             style: 'style4',
           },
         },
         {
           link: {
-            url: '/baby',
+            url: 'https://www.childrensplace.com/us/c/baby-clothes',
             title: '',
             target: '',
             external: 0,
@@ -105,12 +105,11 @@ export default {
           image: {
             url:
               'https://res.cloudinary.com/tcp-dam-test/image/upload/c_scale,h_541,w_1440/v1555526249/samples/landscapes/landscape-panorama.jpg',
-            title: 'Baby',
-            alt: 'Baby',
+            title: 'Baby title',
+            alt: 'Baby alt',
           },
           styled: {
             text: 'Baby',
-            color: 'color4',
             style: 'style5',
           },
         },

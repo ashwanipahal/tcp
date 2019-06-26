@@ -77,11 +77,25 @@ exports[`ModuleH component renders correctly 1`] = `
     }
   }
 
+  .moduleH__header-link {
+    color: ",
+          [Function],
+          ";
+    font-family: ",
+          [Function],
+          ";
+  }
+
+  .moduleH__CTALink-wrapper {
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+  }
+
   .moduleH__CTALink {
     color: ",
           [Function],
           ";
-    display: block;
     font-family: ",
           [Function],
           ";
@@ -91,6 +105,13 @@ exports[`ModuleH component renders correctly 1`] = `
     letter-spacing: -0.1px;
     line-height: 20px;
     opacity: 0.8;
+
+    &:hover {
+      font-family: ",
+          [Function],
+          ";
+      opacity: 1;
+    }
   }
 
   .moduleH__CTALink--partial {
