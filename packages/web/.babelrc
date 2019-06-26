@@ -3,6 +3,7 @@
         "next/babel"
     ],
     "plugins": [
-        "@babel/transform-flow-strip-types"
+        "@babel/transform-flow-strip-types",
+        "@babel/plugin-syntax-dynamic-import"
     ]
 }

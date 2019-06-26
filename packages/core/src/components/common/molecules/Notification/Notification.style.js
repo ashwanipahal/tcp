@@ -18,8 +18,7 @@ const NotificationStyle = css`
     border-radius: ${props.theme.spacing.ELEM_SPACING.XXXS};
     color: ${props.theme.colors.TEXT.DARKGRAY};
     background-color: ${props.theme.colors.WHITE};
-    padding: ${props.theme.spacing.ELEM_SPACING.XXS} 0 ${props.theme.spacing.ELEM_SPACING.XS} ${
-      props.theme.spacing.ELEM_SPACING.XXS
+    padding: ${props.theme.spacing.ELEM_SPACING.XS}
     };
   `}
   ${props =>

@@ -80,4 +80,8 @@ export default css`
   li {
     list-style-type: none;
   }
+
+  p {
+    margin: 0;
+  }
 `;

@@ -66,7 +66,7 @@ const StyledCol = css`
           ${
             !(props.ignoreGutter && props.ignoreGutter[key])
               ? `padding-right: ${getGutter(key, props.theme.gridDimensions)}%`
-              : ''
+              : 'padding-right:0'
           };
           margin-left: ${
             props.offsetLeft && props.offsetLeft[key]
