@@ -14,7 +14,7 @@ function getHeadingColm(props) {
   return (
     <>
       {[1, 2, 3, 4, 5, 6].map(i => (
-        <Heading {...props} kind={`h${i}`}>{`H${i}`}</Heading>
+        <Heading {...props} variant={`h${i}`}>{`H${i}`}</Heading>
       ))}
     </>
   );

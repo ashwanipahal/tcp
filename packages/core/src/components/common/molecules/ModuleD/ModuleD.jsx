@@ -3,7 +3,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { Anchor, Button, Col, Row, Image } from '@tcp/core/src/components/common/atoms';
-import Heading from '@tcp/core/src/components/common/atoms/Heading';
+import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import style from './ModuleD.style';
 import withStyles from '../../hoc/withStyles';
 

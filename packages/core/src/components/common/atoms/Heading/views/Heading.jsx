@@ -4,10 +4,10 @@ import { PropTypes } from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../Heading.style';
 
-const headingTypes = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
-const Heading = ({ children, className, component, kind }) => {
-  const componentKind = headingTypes.indexOf(kind) !== -1 ? kind : 'h1';
-  const Component = component || componentKind;
+const headingVariants = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+const Heading = ({ children, className, component, variant }) => {
+  const componentVariant = headingVariants.indexOf(variant) !== -1 ? variant : 'h1';
+  const Component = component || componentVariant;
   return <Component className={className}>{children}</Component>;
 };
 
@@ -15,32 +15,24 @@ Heading.defaultProps = {
   component: null,
   className: null,
   children: null,
-  kind: 'h1',
-  color: '#1a1a1a',
+  variant: 'h1',
+  color: 'primary',
   mode: 'light',
   inverted: false,
-  align: 'left',
+  textAlign: 'left',
 };
 
 Heading.propTypes = {
   component: PropTypes.elementType,
   className: PropTypes.string,
   children: PropTypes.node,
-  kind: PropTypes.oneOf(headingTypes),
+  variant: PropTypes.oneOf(headingVariants),
   // TODO: Need fix unused/proptypes eslint error
   /* eslint-disable */
-  color: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'tertiary',
-    'red',
-    'darkgray',
-    'gray',
-    'lightgray',
-  ]),
+  color: PropTypes.oneOf(['primary', 'secondary', 'disabled']),
   mode: PropTypes.oneOf(['light', 'dark']),
   inverted: PropTypes.bool,
-  align: PropTypes.oneOf(['left', 'right', 'center', 'justify']),
+  textAlign: PropTypes.oneOf(['left', 'center']),
   /* eslint-enable */
 };
 

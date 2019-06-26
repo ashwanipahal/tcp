@@ -23,7 +23,7 @@ function createThemeTypography(theme = {}) {
 
   const baseBody = {
     fontFamily: fonts.primary,
-    fontSize: fontSizes[0],
+    fontSize: `${fontSizes[0]}px`,
     fontWeight: fontWeights.bold,
     letterSpacing: '',
     lineHeight: 1,
@@ -32,27 +32,27 @@ function createThemeTypography(theme = {}) {
   const {
     h1 = {
       ...baseHeading,
-      fontSize: [fontSizes[0], fontSizes[1]],
+      fontSize: [`${fontSizes[0]}px`, `${fontSizes[1]}px`],
     },
     h2 = {
       ...baseHeading,
-      fontSize: [fontSizes[1], fontSizes[2]],
+      fontSize: [`${fontSizes[1]}px`, `${fontSizes[2]}px`],
     },
     h3 = {
       ...baseHeading,
-      fontSize: [fontSizes[3], fontSizes[9]],
+      fontSize: [`${fontSizes[3]}px`, `${fontSizes[9]}px`],
     },
     h4 = {
       ...baseHeading,
-      fontSize: [fontSizes[4], fontSizes[9]],
+      fontSize: [`${fontSizes[4]}px`, `${fontSizes[9]}px`],
     },
     h5 = {
       ...baseHeading,
-      fontSize: [fontSizes[6], fontSizes[11]],
+      fontSize: [`${fontSizes[6]}px`, `${fontSizes[11]}px`],
     },
     h6 = {
       ...baseHeading,
-      fontSize: [fontSizes[11], fontSizes[11]],
+      fontSize: [`${fontSizes[11]}px`, `${fontSizes[11]}px`],
       fontFamily: fonts.secondary,
     },
     body1 = {
