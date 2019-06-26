@@ -11,6 +11,8 @@ const labels = {
   edit: 'Edit',
   delete: 'Delete',
   defaultBilling: 'DEFAULT BILLING',
+  defaultShippingSuccessMessage: 'Your account has been updated',
+  defaultShippingSuccessFail: '',
 };
 
 export default labels;

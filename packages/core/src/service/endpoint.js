@@ -30,5 +30,10 @@ const endpoints = {
   global: {
     baseURI: 'https://test4.childrensplace.com',
   },
+  setDefaultShippingAddress: {
+    method: 'put',
+    baseURI: 'https://test4.childrensplace.com',
+    relURI: '/api/v2/wallet/updateAddress',
+  },
 };
 export default endpoints;

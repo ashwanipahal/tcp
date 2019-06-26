@@ -11,8 +11,14 @@ type Props = {
   addresses: Object[],
   labels: {},
   className: string,
+  onDefaultShippingAddressClick: Object,
 };
-export const AddressList = ({ addresses, labels, className }: Props) => {
+export const AddressList = ({
+  addresses,
+  labels,
+  className,
+  onDefaultShippingAddressClick,
+}: Props) => {
   return (
     <Row fullBleed className={className}>
       {addresses.map((address, index) => (
@@ -26,7 +32,12 @@ export const AddressList = ({ addresses, labels, className }: Props) => {
             small: true,
           }}
         >
-          <AddressTile address={address} key={address.addressId} labels={labels} />
+          <AddressTile
+            address={address}
+            key={address.addressId}
+            labels={labels}
+            onDefaultShippingAddressClick={onDefaultShippingAddressClick}
+          />
         </Col>
       ))}
     </Row>

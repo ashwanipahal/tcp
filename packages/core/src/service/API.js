@@ -16,6 +16,10 @@ async function fetchData(baseURL, relURL, params = {}, method) {
       deviceType: params.isMobile ? 'mobile' : 'desktop',
       'Cache-Control': 'no-store, must-revalidate',
     };
+
+    if (params.nickName) {
+      reqSetting.nickName = params.nickName;
+    }
   }
   const request = superagent[requestType](requestUrl)
     .set(reqSetting)
