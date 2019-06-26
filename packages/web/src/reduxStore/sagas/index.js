@@ -6,6 +6,11 @@ import BootstrapSaga from './bootstrap';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
 export default function* rootSaga() {
-  yield all([BootstrapSaga(), HomePageSaga(), ProductListingPageSaga(), AddressBookSaga()]);
-  yield all([BootstrapSaga(), HomePageSaga(), ProductListingPageSaga(), LoginPageSaga()]);
+  yield all([
+    BootstrapSaga(),
+    HomePageSaga(),
+    ProductListingPageSaga(),
+    LoginPageSaga(),
+    AddressBookSaga(),
+  ]);
 }

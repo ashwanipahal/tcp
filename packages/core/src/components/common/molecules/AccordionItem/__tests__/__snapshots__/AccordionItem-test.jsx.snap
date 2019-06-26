@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccordionItem component renders correctly 1`] = `
+<Fragment>
+  <Styled(AccordionHeader)
+    className="accordion-item accordion active"
+    index={1}
+    titleText="Heading"
+  />
+  &lt;div className="abcd"&gt;Content1&lt;/div&gt;
+</Fragment>
+`;
+
+exports[`AccordionItem component renders correctly with no index 1`] = `
+<Fragment>
+  <Styled(AccordionHeader)
+    className="accordion-item accordion active"
+    index={0}
+    titleText="Heading"
+  />
+  &lt;div className="abcd"&gt;Content2&lt;/div&gt;
+</Fragment>
+`;

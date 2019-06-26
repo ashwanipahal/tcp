@@ -143,6 +143,31 @@ export default {
       {
         items: [
           {
+            text: 'HELP SUBHEADER',
+            isSubHeader: true,
+            links: [
+              {
+                url: 'https://www.childrensplace.com/us/help-center/#faq',
+                text: 'FAQ',
+                title: 'Frequently Asked Questions',
+              },
+              {
+                url: 'https://www.childrensplace.com/us/account/orders',
+                text: 'Track Order Link',
+                title: 'Track Order Title',
+              },
+              {
+                url: 'https://www.childrensplace.com/us/help-center/#returnExchangePolicyli',
+                text: 'Return Policy Link',
+                title: 'Return Policy Title',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        items: [
+          {
             // isSubHeader: true,
             text: 'SECOND HEADER',
             links: [

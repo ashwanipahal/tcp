@@ -13,7 +13,7 @@ const HeaderTopNav = ({ className, dataTopNav }) => (
         <BrandTabs data={dataTopNav.brand_tabs} />
       </div>
       <div className="header-topnav__promo-area">
-        <PromotionalArea data={dataTopNav.promo_message_wrapper} />
+        <PromotionalArea mobile={false} data={dataTopNav.promo_message_wrapper} />
       </div>
       <div className="header-topnav__track-order">Track order</div>
     </div>
@@ -22,8 +22,11 @@ const HeaderTopNav = ({ className, dataTopNav }) => (
 
 HeaderTopNav.propTypes = {
   className: PropTypes.string.isRequired,
-  dataTopNav: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))
-    .isRequired,
+  dataTopNav: PropTypes.shape({
+    brand_tabs: PropTypes.arrayOf(
+      PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]))
+    ),
+  }).isRequired,
 };
 
 export default withStyles(HeaderTopNav, HeaderTopNavStyle);

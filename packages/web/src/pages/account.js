@@ -1,1 +1,1 @@
-export { default } from '@tcp/core/src/components/features/myAccount/AccountOverview';
+export { default } from '../components/features/account/Account/index';
