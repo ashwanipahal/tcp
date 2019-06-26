@@ -1,8 +1,9 @@
 import HomePageLayout from '../../../abstractors/global/layout/mock';
 import ModuleDMock from '../../../abstractors/common/moduleD/mock';
-import ModuleHMock from '../../../abstractors/common/moduleH/mock';
 import QueryBuilder from '../../queries/queryBuilder';
 import { fetchDataFromGraphQL, executeGraphQLQuery } from '../handler';
+import endpoints from '../../endpoints';
+import { awsAppSync as config } from '../../config';
 
 jest.mock('../../../utils/utils');
 jest.mock('../awsAppSync/awsAppSync');
@@ -41,6 +42,12 @@ it('service handler | executeGraphQLQuery | ModuleH', () => {
     },
   });
   executeGraphQLQuery(query).then(data => {
-    expect(data).toMatchObject(ModuleHMock);
+    expect(data).toMatchObject(ModuleDMock);
+  });
+});
+
+it('endpoints', () => {
+  expect(endpoints).toMatchObject({
+    graphQL: config.aws_appsync_graphqlEndpoint,
   });
 });

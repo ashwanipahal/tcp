@@ -27,6 +27,9 @@ const QueryBuilder = {
       if (module === 'moduleD') {
         sendResponse(ModuleDQuery.getQuery(), resolve);
       }
+      if (module === 'moduleH') {
+        sendResponse(ModuleHQuery.getQuery(), resolve);
+      }
     });
   },
   wrapQuery: query => {
