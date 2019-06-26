@@ -11,9 +11,13 @@ const styles = css`
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
 
-  @media ${props => props.theme.mediaQuery.smallOnly} {
+  .addressBook__addNewCtaContainer {
+    text-align: center;
+  }
+
+  @media ${props => props.theme.mediaQuery.medium} {
     .addressBook__addNewCtaContainer {
-      text-align: center;
+      text-align: left;
     }
   }
 `;
