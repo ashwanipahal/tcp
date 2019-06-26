@@ -52,12 +52,12 @@ export const executeGraphQLQuery = query => {
  * @param {*} moduleName Module for which query needs to be executed
  * @returns {Promise} Resolves with data or rejects with error object
  */
-export const fetchDataFromGraphQL = async modules => {
+export const fetchModuleDataFromGraphQL = async modules => {
   const query = await QueryBuilder.getQuery(modules);
   return executeGraphQLQuery(query).catch(errorHandler);
 };
 
 export default {
-  fetchDataFromGraphQL,
+  fetchModuleDataFromGraphQL,
   executeGraphQLQuery,
 };
