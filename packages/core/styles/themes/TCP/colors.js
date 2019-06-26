@@ -77,4 +77,7 @@ export default {
   FOOTER: {
     DIVIDER: '#c3c3c3',
   },
+  BORDER: {
+    NORMAL: '#979797',
+  },
 };
