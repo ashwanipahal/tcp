@@ -67,6 +67,9 @@ const BodyCopy = styled(BodyStyle)`
     props.bodySizeSm === 'two' ? `font-size: ${fonts.fontSize.body.small.secondary}px` : ''};
   ${props =>
     props.bodySizeSm === 'three' ? `font-size: ${fonts.fontSize.body.small.tertiary}px` : ''};
+  ${props => (props.bodyColor === 'white' ? `color: ${colors.WHITE};` : '')};
+  ${props => (props.bodyColor === 'darkGray' ? `color: ${colors.TEXT.DARKGRAY};` : '')};
+  ${props => !props.bodyColor && `color: ${colors.PRIMARY.BLUE};`};
 
   ${props => (!props.color ? `color: ${colors.PRIMARY.DARK};` : '')};
   ${props => (props.color === 'primary' ? `color: ${colors.PRIMARY.DARK};` : '')};
