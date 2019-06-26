@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor } from '../../../atoms';
 
-const ModuleHCTALinks = ({ className, currentIndex, dataCTALinks }) => {
+const ModuleHCTALinks = ({ currentIndex, dataCTALinks }) => {
   const CTALinks = dataCTALinks.length < 6 ? 'moduleH__CTALink--partial' : 'moduleH__CTALink--full';
   return (
-    <div className={className}>
+    <div className="moduleH__CTALink--wrapper">
       {dataCTALinks.map((item, index) => {
         return (
           <Anchor
@@ -24,8 +24,7 @@ const ModuleHCTALinks = ({ className, currentIndex, dataCTALinks }) => {
 };
 
 ModuleHCTALinks.propTypes = {
-  className: PropTypes.string.isRequired,
-  currentIndex: PropTypes.objectOf(PropTypes.oneOfType(PropTypes.number)).isRequired,
+  currentIndex: PropTypes.shape({}).isRequired,
   dataCTALinks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
