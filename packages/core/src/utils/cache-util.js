@@ -1,6 +1,7 @@
 import { checkCacheValid, generateCacheTTL } from 'redux-cache';
 import { select } from 'redux-saga/effects';
 import { getReducerKeyByAction } from './redux-util';
+import { DEFAULT_REDUX_TTL_TIME } from '../config/site-config';
 
 /*
    Redux cache is a library used to prevent api calls when correct data exists in redux already.
@@ -30,12 +31,10 @@ function* validateCache(action, args) {
 /*
     setCacheTTL is over-riding generateCacheTTL to override default ttl.
     arguments:
-    ttl - time to live which is by default DEFAULT_TTL_TIME
+    ttl - time to live which is by default DEFAULT_REDUX_TTL_TIME
 */
 
-const DEFAULT_TTL_TIME = 10 * 60 * 1000; // ttl is 10 mins by default
-
-function setCacheTTL(ttl = DEFAULT_TTL_TIME) {
+function setCacheTTL(ttl = DEFAULT_REDUX_TTL_TIME) {
   return generateCacheTTL(ttl);
 }
 

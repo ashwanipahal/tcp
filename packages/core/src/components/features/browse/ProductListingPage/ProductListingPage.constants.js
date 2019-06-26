@@ -1,8 +1,8 @@
 /* eslint-disable */
-import { ProductListingPageActionPattern } from '../../../../utils/redux-util';
+import { PRODUCTLISTINGPAGE_ACTION_PATTERN } from '../../../../constants/reducer';
 
-const SET_PRODUCTS = ProductListingPageActionPattern + 'SET_PLP_PRODUCTS';
-const FETCH_PRODUCTS = ProductListingPageActionPattern + 'PLP_FETCH_REQUESTED';
+const SET_PRODUCTS = PRODUCTLISTINGPAGE_ACTION_PATTERN + 'SET_PLP_PRODUCTS';
+const FETCH_PRODUCTS = PRODUCTLISTINGPAGE_ACTION_PATTERN + 'PLP_FETCH_REQUESTED';
 
 export const PRODUCTLISTINGPAGE_CONSTANTS = {
   SET_PRODUCTS,
