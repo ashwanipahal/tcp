@@ -5,7 +5,6 @@ import { createFilteredReducer } from '@tcp/core/src/utils/redux-util';
 import {
   HEADER_REDUCER_KEY,
   FOOTER_REDUCER_KEY,
-  MODULED_REDUCER_KEY,
   GLOBAL_REDUCER_KEY,
   HOMEPAGE_REDUCER_KEY,
   LOGINPAGE_REDUCER_KEY,
@@ -13,7 +12,6 @@ import {
 } from '@tcp/core/src/constants/reducer';
 import HeaderReducer from '../../components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '../../components/common/organisms/Footer/container/Footer.reducer';
-import ModuleDReducer from '../../components/common/organisms/ModuleD/container/ModuleD.reducer';
 import GlobalReducers from './global';
 import HomePageReducer from '../../components/features/content/HomePage/container/HomePage.reducer';
 
@@ -26,7 +24,6 @@ const filteredProductListingPageReducer = createFilteredReducer(
 export default combineReducers({
   [HEADER_REDUCER_KEY]: HeaderReducer,
   [FOOTER_REDUCER_KEY]: FooterReducer,
-  [MODULED_REDUCER_KEY]: ModuleDReducer,
   [GLOBAL_REDUCER_KEY]: GlobalReducers,
   [HOMEPAGE_REDUCER_KEY]: HomePageReducer,
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,

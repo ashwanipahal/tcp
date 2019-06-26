@@ -40,7 +40,7 @@ function setCacheTTL(ttl = DEFAULT_REDUX_TTL_TIME) {
 
 export { setCacheTTL, validateCache };
 export {
-  invalidateCache as invalidateReducerCache,
+  invalidateCache as invalidateReduxCache,
   cacheEnhancer as cacheEnhancerMiddleware,
   DEFAULT_KEY as DEFAULT_REDUCER_KEY,
 } from 'redux-cache';

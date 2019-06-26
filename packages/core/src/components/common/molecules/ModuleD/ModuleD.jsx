@@ -38,23 +38,20 @@ const ignoreGutter = [
   { small: true, medium: true },
 ];
 
-const ModuleD = ({ className, data }) => {
-  const mod = data.data.moduleD;
-  let assets = [];
-  let { target, title, text, url, button } = '';
-
-  if (mod.value) {
-    ({ target, title, text, url } = mod.value[0].value.value);
-
-    assets = mod.value[2].value; // TODO: there's a promotional banner in the CMS but not in the designs. ignoring
-    button = mod.value[3].value.value;
-  }
-
+const ModuleD = props => {
+  const {
+    className,
+    composites: { headerText, smallCompImage, singleCTAButton },
+  } = props;
+  const {
+    textLines: [{ text: headingText }],
+    link: { target, title, url },
+  } = headerText;
   let colSize;
 
-  if (assets.length === 2) {
+  if (smallCompImage && smallCompImage.length === 2) {
     colSize = colSize2Elements;
-  } else if (assets.length === 4) {
+  } else if (smallCompImage && smallCompImage.length === 4) {
     colSize = colSize4Elements;
   } else {
     colSize = colSize6Elements;
@@ -71,51 +68,54 @@ const ModuleD = ({ className, data }) => {
           data-locator={getLocator('moduleD_headerlink')}
           title={title}
         >
-          {text}
+          {headingText}
         </Heading>
       </Anchor>
       <Row centered>
-        {assets &&
-          assets.map((item, index) => (
-            <Col key={item.value.name} colSize={colSize} ignoreGutter={ignoreGutter[index]}>
-              <div className="moduleD__image-container">
-                <Anchor
-                  className="moduleD_textlink"
-                  to={item.value.url}
-                  aria-label={item.value.text}
-                  target={item.value.target}
-                >
-                  <Image
-                    src={item.value.image.src}
-                    alt={item.value.image.alt}
-                    className="moduleD_image"
-                    data-locator={getLocator('moduleD_image')}
-                  />
-                </Anchor>
-              </div>
-              <Anchor
-                withCaret
-                centered
-                className="moduleD_textlink"
-                data-locator={getLocator('moduleD_textlink')}
-                to={item.value.url}
-                target={item.value.target}
-              >
-                {item.value.text}
-              </Anchor>
-            </Col>
-          ))}
+        {smallCompImage &&
+          smallCompImage.map((item, index) => {
+            return (
+              item.link && (
+                <Col key={item.title} colSize={colSize} ignoreGutter={ignoreGutter[index]}>
+                  <div className="moduleD__image-container">
+                    <Anchor
+                      className="moduleD_textlink"
+                      to={item.link.url}
+                      aria-label={item.link.title}
+                      target={item.link.target}
+                    >
+                      <Image
+                        data-locator={getLocator('moduleD_image')}
+                        src={item.image.url}
+                        alt={item.image.alt}
+                        className="moduleD_image"
+                      />
+                    </Anchor>
+                  </div>
+                  <Anchor
+                    withCaret
+                    centered
+                    className="moduleD_textlink"
+                    to={item.link.url}
+                    target={item.link.target}
+                  >
+                    {item.link.title}
+                  </Anchor>
+                </Col>
+              )
+            );
+          })}
       </Row>
 
       <Row centered>
-        <Anchor href={button.url} target={button.target}>
+        <Anchor href={singleCTAButton.url}>
           <Button
             buttonVariation="variable-width"
             className="moduleD_button"
-            title={button.title}
+            title={singleCTAButton.title}
             data-locator={getLocator('moduleD_button')}
           >
-            {button.text}
+            {singleCTAButton.title}
           </Button>
         </Anchor>
       </Row>
@@ -125,7 +125,11 @@ const ModuleD = ({ className, data }) => {
 
 ModuleD.propTypes = {
   className: PropTypes.string.isRequired,
-  data: PropTypes.string.isRequired,
+  composites: PropTypes.shape({
+    headerText: PropTypes.shape({}),
+    smallCompImage: PropTypes.shape({}),
+    singleCTAButton: PropTypes.shape({}),
+  }).isRequired,
 };
 
 export default withStyles(ModuleD, style);
