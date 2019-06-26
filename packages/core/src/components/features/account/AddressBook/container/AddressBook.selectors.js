@@ -5,3 +5,7 @@ export const getAddressListState = state => {
 export const getFetchingState = state => {
   return state.AddressBookReducer.get('isFetching');
 };
+
+export const showDefaultShippingSuccessMsg = state => {
+  return state.AddressBookReducer.get('showDefaultShippingSuccessMsg');
+};

@@ -17,9 +17,16 @@ type Props = {
     addNewAddressCTA: string,
   },
   className: string,
+  onDefaultShippingAddressClick: Object,
 };
 
-export const AddressBook = ({ addresses, labels, className }: Props) => {
+export const AddressBook = ({
+  addresses,
+  labels,
+  className,
+  onDefaultShippingAddressClick,
+  showDefaultShippingSuccessMsg,
+}: Props) => {
   return (
     <div className={className}>
       <Heading
@@ -45,7 +52,14 @@ export const AddressBook = ({ addresses, labels, className }: Props) => {
           <Button buttonVariation="variable-width">{labels.addNewAddressCTA}</Button>
         </Col>
       </Row>
-      {addresses.size > 0 && <AddressListComponent addresses={addresses} labels={labels} />}
+      {showDefaultShippingSuccessMsg && <div>success</div>}
+      {addresses.size > 0 && (
+        <AddressListComponent
+          addresses={addresses}
+          labels={labels}
+          onDefaultShippingAddressClick={onDefaultShippingAddressClick}
+        />
+      )}
     </div>
   );
 };
