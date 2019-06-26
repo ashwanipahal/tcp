@@ -16,11 +16,19 @@ const errorHandler = e => {
   console.log(e);
 };
 
+/**
+ * Executes query on GraphQL Client
+ * @param {*} query
+ * @param {*} graphQLInterface
+ */
 const executeQuery = (query, graphQLInterface) => {
   const client = graphQLInterface.getClient();
   return client.executeQuery(query);
 };
 
+/**
+ * Loads GraphQL client interface
+ */
 const loadGraphQLInterface = () => {
   const clientName = graphQLClient;
   return importGraphQLClientDynamically(clientName).then(

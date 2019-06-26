@@ -10,6 +10,12 @@ import footerAbstractor from './footer';
  *  -   Footer
  *  -   Labels
  */
+
+/**
+ * Processes data to create an array of content IDs with slot information
+ * @param {*} items
+ * @param {*} moduleIds
+ */
 const processLayoutData = (items, moduleIds) => {
   items.forEach(({ layout: { slots } }) => {
     slots.forEach(slot =>
@@ -25,14 +31,31 @@ const processLayoutData = (items, moduleIds) => {
   return moduleIds;
 };
 
+/**
+ * Asynchronous function to fetch data from service for given array of moduleIds
+ * @param {Array} moduleIds
+ */
 const fetchModules = async moduleIds => {
   return layoutAbstractor.getModulesData(moduleIds);
 };
 
+/**
+ * Asynchronous function to fetch data from service for given array of moduleIds
+ * @param {String} page Page name to be loaded, needs to be in sync with GraphQL query
+ */
 const fetchLayout = async page => {
   return layoutAbstractor.getLayoutData(page);
 };
 
+/**
+ * Responsible for making all the http requests that need to be resolved before loading the application
+ *  -   Layout
+ *      -   Modules
+ *  -   Header
+ *  -   Footer
+ *  -   Labels
+ * @param {Array} pages
+ */
 const bootstrap = async pages => {
   const response = {};
   let moduleIds = [];

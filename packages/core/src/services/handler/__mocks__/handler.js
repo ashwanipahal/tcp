@@ -11,9 +11,6 @@ const sendResponse = (data, resolve, reject) =>
  * @param {*} modules
  */
 export const fetchDataFromGraphQL = async modules => {
-  // const query = await QueryBuilder.getQuery(modules);
-  // return executeGraphQLQuery(query).catch(errorHandler);
-
   return new Promise((resolve, reject) => {
     if (modules.length) {
       const response = {
