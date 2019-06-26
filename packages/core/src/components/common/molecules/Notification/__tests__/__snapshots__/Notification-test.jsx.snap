@@ -10,10 +10,6 @@ exports[`Notification Component should render notification component with status
     }
   }
 >
-  <img
-    alt="error icon"
-    src=""
-  />
   <Styled(BodyStyle)
     bodyColor="white"
     bodySize="five"

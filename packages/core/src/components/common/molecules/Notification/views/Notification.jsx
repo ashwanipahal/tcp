@@ -20,10 +20,7 @@ const Notification = ({ colSize, className, status, message }: Props) => {
   const successIcon = getIconPath('icon-done');
   return (
     <Col colSize={colSize} className={className}>
-      <img
-        alt={status === 'success' ? 'success icon' : 'error icon'}
-        src={status === 'success' ? successIcon : ''}
-      />
+      {status === 'success' && <img alt="success icon" src={successIcon} />}
       <BodyCopy
         bodySize="five"
         bodyColor={status === 'success' ? 'darkGray' : 'white'}

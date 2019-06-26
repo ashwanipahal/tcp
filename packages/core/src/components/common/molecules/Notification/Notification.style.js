@@ -5,6 +5,8 @@ const NotificationStyle = css`
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
   .notification {
     font-weight: ${props => props.theme.fonts.fontWeight.bold};
+    color: ${props =>
+      props.status === 'success' ? props.theme.colors.TEXT.DARKGRAY : props.theme.colors.WHITE};
   }
   img {
     vertical-align: middle;
@@ -17,7 +19,6 @@ const NotificationStyle = css`
     border: ${props.theme.spacing.ELEM_SPACING.XXXS} solid ${
       props.theme.colors.NOTIFICATION.SUCCESS
     };
-    color: ${props.theme.colors.TEXT.DARKGRAY};
     background-color: ${props.theme.colors.WHITE};
     padding: ${props.theme.spacing.ELEM_SPACING.XS}
     };
@@ -25,7 +26,6 @@ const NotificationStyle = css`
   ${props =>
     props.status === 'error' &&
     `
-    color: ${props.theme.colors.WHITE};
     background-color: ${props.theme.colors.NOTIFICATION.ERROR};
     padding: ${props.theme.spacing.ELEM_SPACING.XS} 0 ${props.theme.spacing.ELEM_SPACING.SM} ${
       props.theme.spacing.ELEM_SPACING.SM
