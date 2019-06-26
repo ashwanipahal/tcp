@@ -6,6 +6,7 @@ import { ServerStyleSheet } from 'styled-components';
 
 // ./pages/_document.js
 import Document, { Html, Head, Main, NextScript } from 'next/document';
+import StaticScripts from '../config/scripts';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -40,10 +41,7 @@ class MyDocument extends Document {
         <body className="custom_class">
           <Main />
           <NextScript />
-          <script
-            type="text/javascript"
-            src="//assets.adobedtm.com/launch-EN35cf63837e524037bc099142d8051c4b-development.min.js"
-          />
+          <StaticScripts />
         </body>
       </Html>
     );
