@@ -33,7 +33,14 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks, socialMediaLin
         </Col>
       </Row>
     </div>
-    <Row className="footer-middle mobile" fullBleed>
+    <Row
+      className="footer-middle mobile"
+      fullBleed={{
+        large: true,
+        medium: true,
+        small: true,
+      }}
+    >
       <FooterMiddleMobile className={className} navLinkItems={navLinks} />
     </Row>
     <Row className="footer-middle desktop">

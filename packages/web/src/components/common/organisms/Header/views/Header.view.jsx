@@ -90,7 +90,14 @@ const Header = ({ headerTopNav }) => (
 );
 
 Header.propTypes = {
-  headerTopNav: PropTypes.objectOf(PropTypes.shape({})).isRequired,
+  headerTopNav: PropTypes.shape({
+    brand_tabs: PropTypes.arrayOf(
+      PropTypes.objectOf(PropTypes.oneOfType(PropTypes.string, PropTypes.number, PropTypes.bool))
+    ),
+    promo_message_wrapper: PropTypes.arrayOf(
+      PropTypes.objectOf(PropTypes.oneOfType(PropTypes.string, PropTypes.number))
+    ),
+  }).isRequired,
 };
 
 export default Header;

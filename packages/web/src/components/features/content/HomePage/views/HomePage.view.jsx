@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
 import Image from '@tcp/core/src/components/common/atoms/Image';
+import { ModuleH } from '@tcp/core/src/components/common/molecules';
+import mock from '@tcp/core/src/components/common/molecules/ModuleH/mock';
 import ModuleD from '../../../../common/organisms/ModuleD';
 
 const HomePageView = data => {
@@ -9,6 +11,7 @@ const HomePageView = data => {
   return (
     <Fragment>
       <Image src="/static/images/hero.png" />
+      <ModuleH data={mock} />
       {layoutItems.val.map(item => (
         <Fragment>
           {item.val.typ === 'module' && item.val.sub === 'moduleA' ? <div>module A</div> : ''}

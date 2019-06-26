@@ -5,13 +5,6 @@ import Carousel from './Carousel';
 import Grid from './Grid';
 import Modal from './Modal';
 import ModuleD from './ModuleD';
+import ModuleH from './ModuleH';
 
-export default {
-  AccordionHeader,
-  AccrodionItem,
-  AccordionList,
-  Carousel,
-  Grid,
-  Modal,
-  ModuleD,
-};
+export { AccordionHeader, AccrodionItem, AccordionList, Carousel, Grid, Modal, ModuleD, ModuleH };
