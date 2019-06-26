@@ -1,7 +1,7 @@
 import { checkCacheValid, generateCacheTTL } from 'redux-cache';
 import { select } from 'redux-saga/effects';
 import { getReducerKeyByAction } from './redux-util';
-import { DEFAULT_REDUX_TTL_TIME } from '../config/site-config';
+import { DEFAULT_REDUX_TTL_TIME } from '../config/site.config';
 
 /*
    Redux cache is a library used to prevent api calls when correct data exists in redux already.
@@ -29,6 +29,27 @@ function* validateCache(action, args) {
 }
 
 /*
+    validateReduxCache is higher order function which limits to run the saga method only when cache in redux expires.
+    This helps to prevent unnecessary API calls in SPA while switching between pages. For more info refer to Redux-Cache.
+
+    To forcefully execute the method, ignoreCache should be passed in payload of that action.
+    arguments:
+    sagaMethod - Function - Saga function which is used to request data from API - It needs to run only when data in redux expires
+*/
+
+function validateReduxCache(sagaMethod) {
+  function* cachedSagaMethod(action) {
+    const isCacheValid = yield validateCache(action);
+    const ignoreCacheValidity = action.payload && action.payload.ignoreCache;
+    if (isCacheValid && !ignoreCacheValidity) {
+      return null;
+    }
+    return yield sagaMethod();
+  }
+  return cachedSagaMethod;
+}
+
+/*
     setCacheTTL is over-riding generateCacheTTL to override default ttl.
     arguments:
     ttl - time to live which is by default DEFAULT_REDUX_TTL_TIME
@@ -38,7 +59,7 @@ function setCacheTTL(ttl = DEFAULT_REDUX_TTL_TIME) {
   return generateCacheTTL(ttl);
 }
 
-export { setCacheTTL, validateCache };
+export { setCacheTTL, validateReduxCache };
 export {
   invalidateCache as invalidateReduxCache,
   cacheEnhancer as cacheEnhancerMiddleware,
