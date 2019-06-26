@@ -58,39 +58,6 @@ function createThemeTypography(theme = {}) {
     body1 = {
       ...baseBody,
     },
-    body2 = {
-      ...baseBody,
-    },
-    body3 = {
-      ...baseBody,
-    },
-    body4 = {
-      ...baseBody,
-    },
-    body5 = {
-      ...baseBody,
-    },
-    body6 = {
-      ...baseBody,
-    },
-    body7 = {
-      ...baseBody,
-    },
-    body8 = {
-      ...baseBody,
-    },
-    body9 = {
-      ...baseBody,
-    },
-    body10 = {
-      ...baseBody,
-    },
-    body11 = {
-      ...baseBody,
-    },
-    body12 = {
-      ...baseBody,
-    },
   } = typography;
 
   return {
@@ -104,17 +71,6 @@ function createThemeTypography(theme = {}) {
     h5,
     h6,
     body1,
-    body2,
-    body3,
-    body4,
-    body5,
-    body6,
-    body7,
-    body8,
-    body9,
-    body10,
-    body11,
-    body12,
   };
 }
 
