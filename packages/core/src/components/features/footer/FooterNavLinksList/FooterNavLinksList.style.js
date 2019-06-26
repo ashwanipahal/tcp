@@ -19,7 +19,6 @@ const FooterNavLinksListCss = css`
   }
   a {
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
-    font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
     line-height: ${props => props.theme.fonts.lineHeight.medium};
     letter-spacing: ${props => props.theme.fonts.letterSpacing.normal};
     color: ${props => props.theme.colors.ACCORDION.TEXT};

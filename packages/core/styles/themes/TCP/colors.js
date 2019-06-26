@@ -21,6 +21,8 @@ export default {
     BLUE: '#2e6a91',
     NAVY: '#24465e',
     GREEN: '#7dc24c',
+    COLOR1: '#edf5fb',
+    COLOR2: '#dbebf8',
   },
   TEXT: {
     DARK: '#1a1a1a',

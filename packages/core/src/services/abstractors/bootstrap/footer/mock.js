@@ -2,16 +2,25 @@ const accountLink = 'https://www.childrensplace.com/us/account';
 
 export default {
   footer_top: {
-    email_sms_signup: {
+    email_signup: {
       url: '/',
-      title: 'Get $10 off by signing up for email or text',
-      text: 'GET <span class="l-color-primary">$10 OFF</span> BY SIGNING UP FOR EMAIL OR TEXT',
+      title: 'Get $10 off by signing up for email',
+      text:
+        '<div id="email-signup-text" style="font-weight: 900; line-height: 1.67;color: #6a6a6a;">Get <span style="color: #4b9fdd;">$10 OFF</span> by signing <br>up for email offers!</div><style>@media (max-width: 1023px) {#email-signup-text {font-size: 10px;} #email-signup-text br {display: none;}} @media (min-width: 1024px) {#email-signup-text {font-size: 15px;} #email-signup-text br {display: block;}}</style>',
       target: 'email_signup_popup',
     },
-    refer_a_fried: {
+    sms_signup: {
+      url: '/',
+      title: 'Get $10 off by signing up for text message',
+      text:
+        '<div id="sms-signup-text" style="font-weight: 900; line-height: 1.67;color: #6a6a6a;">Sign up for text alerts <br> and get <span style="color: #4b9fdd;">$10 off!</span></div><style>@media (max-width: 1023px) {#sms-signup-text {font-size: 10px;} #sms-signup-text br {display: none;}} @media (min-width: 1024px) {#sms-signup-text {font-size: 15px;} #sms-signup-text br {display: block;}}</style>',
+      target: 'sms_signup_popup',
+    },
+    refer_a_friend: {
       url: '/',
       title: 'Refer a friend and earn another $10',
-      text: 'REFER A FRIEND AND EARN ANOTHER <span class="l-color-primary">$10</span>',
+      text:
+        '<div id="refer-friend-text" style="font-weight: 900; line-height: 1.67;color: #6a6a6a;">REFER A FRIEND<br>AND EARN ANOTHER <span style="color: #4b9fdd;">$10!</span></div><style>@media (max-width: 1023px) {#refer-friend-text {font-size: 10px;} #refer-friend-text br {display: none;}} @media (min-width: 1024px) {#refer-friend-text {font-size: 15px;} #refer-friend-text br {display: block;}}</style>',
       target: '',
     },
     social_media_links: [
