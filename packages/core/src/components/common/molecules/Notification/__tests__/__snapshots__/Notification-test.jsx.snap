@@ -11,7 +11,7 @@ exports[`Notification Component should render notification component with status
   }
 >
   <img
-    alt="errorIcon"
+    alt="error icon"
     src=""
   />
   <Styled(BodyStyle)
@@ -34,7 +34,7 @@ exports[`Notification Component should render notification component with status
   }
 >
   <img
-    alt="successIcon"
+    alt="success icon"
     src="/static/images/done.svg"
   />
   <Styled(BodyStyle)

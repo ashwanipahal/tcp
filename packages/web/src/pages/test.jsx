@@ -39,8 +39,8 @@ const colSize2 = {
 const randomHTML = '<button class="asdfasdf" type="button">test133</button>';
 const HomePageView = ({ links }) => (
   <Fragment>
-    <Notification status="success" colSize={{ large: 10, medium: 8, small: 6 }} message="success" />
-    <Notification status="error" colSize={{ large: 10, medium: 8, small: 6 }} message="error" />
+    <Notification status="success" colSize={{ large: 12, medium: 8, small: 6 }} message="success" />
+    <Notification status="error" colSize={{ large: 12, medium: 8, small: 6 }} message="error" />
 
     <NavBar links={links} />
     <Test className="test" />

@@ -15,13 +15,13 @@ type Props = {
 };
 
 // Notification component will be modified after Body Copy component is changed
-// Will add error icon when available
+// TODO: Will add error icon when available
 const Notification = ({ colSize, className, status, message }: Props) => {
   const successIcon = getIconPath('icon-done');
   return (
     <Col colSize={colSize} className={className}>
       <img
-        alt={status === 'success' ? 'successIcon' : 'errorIcon'}
+        alt={status === 'success' ? 'success icon' : 'error icon'}
         src={status === 'success' ? successIcon : ''}
       />
       <BodyCopy
