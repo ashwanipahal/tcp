@@ -6,6 +6,6 @@ export const getFetchingState = state => {
   return state.AddressBookReducer.get('isFetching');
 };
 
-export const showDefaultShippingSuccessMsg = state => {
-  return state.AddressBookReducer.get('showDefaultShippingSuccessMsg');
+export const showDefaultShippingUpdatedMsg = state => {
+  return state.AddressBookReducer.get('showDefaultShippingUpdatedMsg');
 };
