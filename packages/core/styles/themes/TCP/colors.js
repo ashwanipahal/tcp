@@ -59,6 +59,7 @@ export default {
     PRIMARY: '#1a1a1a',
     SECONDARY: '#2e6a91',
     TERTIARY: '#c84747',
+    GRAYED: '#9b9b9b',
   },
   TEXTBOX: {
     COLOR: '#1a1a1a',

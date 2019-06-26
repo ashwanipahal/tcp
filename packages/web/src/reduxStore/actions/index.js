@@ -1,8 +1,9 @@
 import GLOBAL_CONSTANTS from '../constants';
 
-export const loadLayoutData = payload => {
+export const loadLayoutData = (payload, layoutName) => {
   return {
     payload,
+    layoutName,
     type: GLOBAL_CONSTANTS.LOAD_LAYOUT_DATA,
   };
 };
@@ -14,9 +15,10 @@ export const loadLabelsData = payload => {
   };
 };
 
-export const bootstrapData = () => {
+export const bootstrapData = pageInfo => {
   return {
     type: GLOBAL_CONSTANTS.BOOTSTRAP_API,
+    pageInfo,
   };
 };
 
