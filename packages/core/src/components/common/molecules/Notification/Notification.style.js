@@ -5,6 +5,10 @@ const NotificationStyle = css`
   .notification {
     font-weight: ${props => props.theme.fonts.fontWeight.bold};
   }
+  img {
+    vertical-align: middle;
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  }
   ${props =>
     props.status === 'success' &&
     `
