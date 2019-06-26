@@ -7,13 +7,13 @@ const BadgeStyles = css`
   color: ${props => props.theme.colors.WHITE};
   border-radius: 10px 0 0 10px;
   display: flex;
-  margin-bottom: 8px;
-  padding: 0 4px;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS};
 
   .badge__checkmark {
     width: 9px;
     height: 5px;
-    margin-left: 2px;
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
     position: relative;
     transform: rotate(-45deg);
     transform-origin: left;
@@ -37,7 +37,10 @@ const BadgeStyles = css`
   }
 
   .badge__content {
-    margin-left: ${props => (props.showCheckmark ? '2px' : '4px')};
+    margin-left: ${props =>
+      props.showCheckmark
+        ? props.theme.spacing.ELEM_SPACING.XXXS
+        : props.theme.spacing.ELEM_SPACING.XXS};
   }
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
