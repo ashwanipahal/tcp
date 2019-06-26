@@ -29,7 +29,7 @@ export default css`
   }
   .reference-id {
     background-color: ${props => props.theme.colors.BRAND.PRIMARY};
-    font-size: 11px;
+    font-size: ${props => props.theme.fonts.fontSize.body.small.tertiary}px;
     padding: 0 15px 24px;
     margin: 0;
     color: ${props => props.theme.colors.WHITE};
@@ -74,7 +74,7 @@ export default css`
     .reference-id {
       text-align: center;
       background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
-      font-size: 12px;
+      font-size: ${props => props.theme.fonts.fontSize.body.small.secondary};
       padding: 11px 0 24px;
       color: ${props => props.theme.colors.TEXT.DARKERGRAY};
     }

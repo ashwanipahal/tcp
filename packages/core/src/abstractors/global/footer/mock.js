@@ -6,7 +6,7 @@ export default {
       url: '/',
       title: 'Get $10 off by signing up for email',
       text:
-        '<div id="email-signup-text" style="font-weight: 900; line-height: 1.67;color: #6a6a6a;">Get <span style="color: #4b9fdd;">$10 OFF</span> by signing <br>up for email offers!</div><style>@media (max-width: 1023px) {#email-signup-text {font-size: 10px;} #sms-signup-text br {display: none;}} @media (min-width: 1024px) {#email-signup-text {font-size: 15px;} #email-signup-text br {display: block;}}</style>',
+        '<div id="email-signup-text" style="font-weight: 900; line-height: 1.67;color: #6a6a6a;">Get <span style="color: #4b9fdd;">$10 OFF</span> by signing <br>up for email offers!</div><style>@media (max-width: 1023px) {#email-signup-text {font-size: 10px;} #email-signup-text br {display: none;}} @media (min-width: 1024px) {#email-signup-text {font-size: 15px;} #email-signup-text br {display: block;}}</style>',
       target: 'email_signup_popup',
     },
     sms_signup: {
@@ -20,7 +20,7 @@ export default {
       url: '/',
       title: 'Refer a friend and earn another $10',
       text:
-        '<div id="refer-friend-text" style="font-weight: 900; line-height: 1.67;color: #6a6a6a;">REFER A FRIEND<br>AND EARN ANOTHER <span style="color: #4b9fdd;">$10!</span></div><style>@media (max-width: 1023px) {#email-signup-text {font-size: 10px;} #sms-signup-text br {display: none;}} @media (min-width: 1024px) {#refer-friend-text {font-size: 15px;} #refer-friend-text br {display: block;}}</style>',
+        '<div id="refer-friend-text" style="font-weight: 900; line-height: 1.67;color: #6a6a6a;">REFER A FRIEND<br>AND EARN ANOTHER <span style="color: #4b9fdd;">$10!</span></div><style>@media (max-width: 1023px) {#refer-friend-text {font-size: 10px;} #refer-friend-text br {display: none;}} @media (min-width: 1024px) {#refer-friend-text {font-size: 15px;} #refer-friend-text br {display: block;}}</style>',
       target: '',
     },
     social_media_links: [

@@ -131,11 +131,7 @@ const Footer = ({
             small: 6,
           }}
         >
-          <BodyCopy
-            className="reference-id copyright-and-legal-information"
-            bodySize="five"
-            tag="p"
-          >
+          <BodyCopy className="reference-id" bodySize="five" tag="p">
             {referenceID}
           </BodyCopy>
         </Col>
