@@ -1,5 +1,5 @@
 import mock from './mock';
-import handler from '../../../services/handler';
+import handler from '../../../handler';
 
 /**
  * Abstractor layer for loading data from API for Layout

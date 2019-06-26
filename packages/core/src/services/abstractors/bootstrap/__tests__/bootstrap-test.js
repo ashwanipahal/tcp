@@ -1,11 +1,11 @@
 import bootstrap from '../bootstrap';
-import ModuleDMock from '../../../common/moduleD/mock';
-import ModuleHMock from '../../../common/moduleH/mock';
-import labelsMock from '../../labels/mock';
-import headerMock from '../../header/mock';
-import footerMock from '../../footer/mock';
+import ModuleDMock from '../../common/moduleD/mock';
+import ModuleHMock from '../../common/moduleH/mock';
+import labelsMock from '../labels/mock';
+import headerMock from '../header/mock';
+import footerMock from '../footer/mock';
 
-jest.mock('../../layout/layout');
+jest.mock('../layout/layout');
 
 it('abstractor - bootstrap', () => {
   return bootstrap(['homepage']).then(data => {

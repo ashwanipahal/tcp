@@ -3,7 +3,7 @@ export const importGraphQLClientDynamically = module => {
 };
 
 export const importGraphQLQueriesDynamically = query => {
-  return import(`../services/queries/${query}`);
+  return import(`../services/handler/graphQL/queries/${query}`);
 };
 
 export default {

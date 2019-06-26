@@ -1,4 +1,4 @@
-import handler from '../../../services/handler';
+import handler from '../../../handler';
 import mock from './mock';
 
 /**

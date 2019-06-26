@@ -1,15 +1,15 @@
-import awsAppSync from '../../services/handler/awsAppSync/awsAppSync';
-import LayoutQuery from '../../services/queries/layout/layout.query';
+import graphQLClient from '../../services/handler/graphQL/graphQLClient';
+import LayoutQuery from '../../services/handler/graphQL/queries/layout/layout.query';
 
 const sendResponse = (data, resolve, reject) =>
   process.nextTick(() => (data ? resolve(data) : reject()));
 
 export const importGraphQLClientDynamically = module => {
   return new Promise(resolve => {
-    if (module === 'awsAppSync') {
+    if (module === 'graphQLClient') {
       sendResponse(
         {
-          default: awsAppSync,
+          default: graphQLClient,
         },
         resolve
       );

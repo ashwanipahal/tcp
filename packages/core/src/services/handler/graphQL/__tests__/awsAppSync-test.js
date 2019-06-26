@@ -1,9 +1,9 @@
 import gql from 'graphql-tag';
 import fetch from 'node-fetch';
-import awsAppSync from '../awsAppSync';
+import graphQLClient from '../graphQLClient';
 import { awsAppSync as config } from '../../../config';
-import ModuleDQuery from '../../../queries/moduleD/moduleD.query';
-import ModuleDMock from '../../../../abstractors/common/moduleD/mock';
+import ModuleDQuery from '../queries/moduleD/moduleD.query';
+import ModuleDMock from '../../../abstractors/common/moduleD/mock';
 
 if (!process.browser) {
   global.fetch = fetch;
@@ -33,17 +33,17 @@ const testClientOptions = {
 };
 
 it('awsAppSync client | getClient', () => {
-  const client = awsAppSync.getClient();
+  const client = graphQLClient.getClient();
   expect(client).toHaveProperty('executeQuery');
 });
 
 it('awsAppSync client | clientOptions', () => {
-  const options = awsAppSync.clientOptions();
+  const options = graphQLClient.clientOptions();
   expect(options).toMatchObject(testClientOptions);
 });
 
 it('awsAppSync client | executeQuery', () => {
-  const client = awsAppSync.getClient();
+  const client = graphQLClient.getClient();
   client.executeQuery(testGqlQuery).then(data => {
     expect(data).toMatchObject(ModuleDMock);
   });

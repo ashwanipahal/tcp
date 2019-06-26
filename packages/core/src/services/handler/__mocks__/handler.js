@@ -1,7 +1,7 @@
-import HomePageLayout from '../../../abstractors/global/layout/mock';
-import ModuleDMock from '../../../abstractors/common/moduleD/mock';
-import ModuleHMock from '../../../abstractors/common/moduleH/mock';
-import ModuleDQuery from '../../queries/moduleD';
+import HomePageLayout from '../../abstractors/bootstrap/layout/mock';
+import ModuleDMock from '../../abstractors/common/moduleD/mock';
+import ModuleHMock from '../../abstractors/common/moduleH/mock';
+import ModuleDQuery from '../graphQL/queries/moduleD/moduleD.query';
 
 const sendResponse = (data, resolve, reject) =>
   process.nextTick(() => (data ? resolve(data) : reject()));

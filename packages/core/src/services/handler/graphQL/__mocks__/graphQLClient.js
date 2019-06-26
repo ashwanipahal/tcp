@@ -1,5 +1,5 @@
 import { awsAppSync as config } from '../../../config';
-import ModuleDMock from '../../../../abstractors/common/moduleD/mock';
+import ModuleDMock from '../../../abstractors/common/moduleD/mock';
 
 const sendResponse = (data, resolve, reject) =>
   process.nextTick(() => (data ? resolve(data) : reject()));

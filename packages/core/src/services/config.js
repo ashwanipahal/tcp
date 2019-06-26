@@ -12,7 +12,7 @@ export const awsAppSync = {
   aws_appsync_graphqlEndpoint: endpoints.graphQL,
 };
 
-export const graphQLClient = 'awsAppSync';
+export const graphQLClient = 'graphQL';
 
 export default {
   awsAppSync,

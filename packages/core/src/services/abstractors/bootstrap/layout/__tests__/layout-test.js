@@ -3,7 +3,7 @@ import HomePageLayout from '../mock';
 import ModuleDMock from '../../../common/moduleD/mock';
 import ModuleHMock from '../../../common/moduleH/mock';
 
-jest.mock('../../../../services/handler/handler');
+jest.mock('../../../../handler/handler');
 
 it('abstractor - layout | getLayoutData', () => {
   return layoutAbstractor.getLayoutData('homepage').then(data => {

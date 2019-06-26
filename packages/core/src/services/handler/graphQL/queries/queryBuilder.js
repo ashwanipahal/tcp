@@ -1,5 +1,5 @@
 import gql from 'graphql-tag';
-import { importGraphQLQueriesDynamically } from '../../utils';
+import { importGraphQLQueriesDynamically } from '../../../../utils';
 
 const QueryBuilder = {
   getQuery: async modules => {
