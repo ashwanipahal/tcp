@@ -8,7 +8,13 @@ const styles = css`
   }
 
   .addressBook__row--marginBottom {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  }
+
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    .addressBook__addNewCtaContainer {
+      text-align: center;
+    }
   }
 `;
 

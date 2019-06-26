@@ -34,15 +34,15 @@ export const AddressBook = ({ addresses, labels, className }: Props) => {
       <Row fullBleed className="addressBook__row--marginBottom">
         <Col
           colSize={{
-            small: 5,
+            small: 6,
             large: 10,
             medium: 8,
           }}
-          offsetLeft={{
-            small: 1,
-          }}
+          className="addressBook__addNewCtaContainer"
         >
-          <Button buttonVariation="variable-width">{labels.addNewAddressCTA}</Button>
+          <Button buttonVariation="variable-width" fill="BLUE">
+            {labels.addNewAddressCTA}
+          </Button>
         </Col>
       </Row>
       {addresses.size > 0 && <AddressListComponent addresses={addresses} labels={labels} />}
