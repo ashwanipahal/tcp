@@ -6,7 +6,7 @@ import AddressBookComponent from '../views/AddressBook.view';
 import {
   getAddressListState,
   getFetchingState,
-  showDefaultShippingSuccessMsg,
+  showDefaultShippingUpdatedMsg,
 } from './AddressBook.selectors';
 import labels from './AddressBook.labels';
 import { setDefaultShippingAddressRequest } from './DefaultShippingAddress.actions';
@@ -31,7 +31,7 @@ export class AddressBookContainer extends React.Component<Props> {
       addressList,
       isFetching,
       onDefaultShippingAddressClick,
-      showDefaultShippingSuccessMsg,
+      showDefaultShippingUpdatedMsg,
     } = this.props;
     if (isFetching) {
       return <p>Loading...</p>;
@@ -42,7 +42,7 @@ export class AddressBookContainer extends React.Component<Props> {
           addresses={addressList}
           labels={labels}
           onDefaultShippingAddressClick={onDefaultShippingAddressClick}
-          showDefaultShippingSuccessMsg={showDefaultShippingSuccessMsg}
+          showDefaultShippingUpdatedMsg={showDefaultShippingUpdatedMsg}
         />
       );
     }
@@ -65,7 +65,7 @@ const mapStateToProps = state => {
   return {
     addressList: getAddressListState(state),
     isFetching: getFetchingState(state),
-    showDefaultShippingSuccessMsg: showDefaultShippingSuccessMsg(state),
+    showDefaultShippingUpdatedMsg: showDefaultShippingUpdatedMsg(state),
   };
 };
 

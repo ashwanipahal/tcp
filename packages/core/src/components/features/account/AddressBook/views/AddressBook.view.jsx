@@ -8,6 +8,7 @@ import Col from '../../../../common/atoms/Col';
 import Button from '../../../../common/atoms/Button';
 import AddressListComponent from './AddressList.view';
 import EmptyAddressListComponent from './EmptyAddressList.view';
+import Notification from '../../../../common/molecules/Notification';
 
 // @flow
 
@@ -25,7 +26,7 @@ export const AddressBook = ({
   labels,
   className,
   onDefaultShippingAddressClick,
-  showDefaultShippingSuccessMsg,
+  showDefaultShippingUpdatedMsg,
 }: Props) => {
   return (
     <div className={className}>
@@ -52,7 +53,17 @@ export const AddressBook = ({
           <Button buttonVariation="variable-width">{labels.addNewAddressCTA}</Button>
         </Col>
       </Row>
-      {showDefaultShippingSuccessMsg && <div>success</div>}
+      {showDefaultShippingUpdatedMsg !== null && (
+        <Notification
+          status={showDefaultShippingUpdatedMsg ? 'success' : 'error'}
+          colSize={{ large: 12, medium: 8, small: 6 }}
+          message={
+            showDefaultShippingUpdatedMsg
+              ? labels.defaultShippingSuccessMessage
+              : labels.defaultShippingSuccessFail
+          }
+        />
+      )}
       {addresses.size > 0 && (
         <AddressListComponent
           addresses={addresses}
