@@ -11,7 +11,7 @@ const LayoutAbstractor = {
    */
   getLayoutData: page => {
     return handler
-      .fetchDataFromGraphQL({
+      .fetchModuleDataFromGraphQL({
         name: 'layout',
         data: {
           path: page,
@@ -32,7 +32,7 @@ const LayoutAbstractor = {
    *
    */
   getModulesData: modules => {
-    return handler.fetchDataFromGraphQL(modules);
+    return handler.fetchModuleDataFromGraphQL(modules);
   },
   /**
    * Return mock for Layout response

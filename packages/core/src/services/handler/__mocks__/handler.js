@@ -10,7 +10,7 @@ const sendResponse = (data, resolve, reject) =>
  *
  * @param {*} modules
  */
-export const fetchDataFromGraphQL = async modules => {
+export const fetchModuleDataFromGraphQL = async modules => {
   return new Promise((resolve, reject) => {
     if (modules.length) {
       const response = {
@@ -56,6 +56,6 @@ export const executeGraphQLQuery = query => {
 };
 
 export default {
-  fetchDataFromGraphQL,
+  fetchModuleDataFromGraphQL,
   executeGraphQLQuery,
 };
