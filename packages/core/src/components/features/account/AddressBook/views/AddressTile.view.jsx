@@ -70,7 +70,7 @@ class AddressBookTile extends React.Component<Props> {
             )}
           </div>
         </div>
-        <div className="addressTile__row--oneCol">
+        <div className="addressTile__row">
           <Anchor fontSizeVariation="medium" underline to="/#" anchorVariation="primary">
             {labels.edit}
           </Anchor>

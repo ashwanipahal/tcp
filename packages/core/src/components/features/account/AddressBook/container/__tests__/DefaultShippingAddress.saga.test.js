@@ -9,7 +9,7 @@ import {
   setDefaultShippingAddressFailure,
 } from '../DefaultShippingAddress.actions';
 import fetchData from '../../../../../../service/API';
-import SHIPPING_ADDRESS_CONSTANTS from '../../DefaultShippingAddress.constants';
+import ADDRESS_BOOK_CONSTANTS from '../../AddressBook.constants';
 
 describe('Default shipping address saga', () => {
   let gen;
@@ -31,7 +31,9 @@ describe('Default shipping address saga', () => {
       },
     };
 
-    const { baseURI, relURI, method } = endpoints.setDefaultShippingAddress;
+    const { relURI, method } = endpoints.setDefaultShippingAddress;
+    const baseURI = endpoints.setDefaultShippingAddress.baseURI || endpoints.global.baseURI;
+
     const langId = -1;
     const catalogId = 10551;
     const storeId = 10151;
@@ -58,7 +60,7 @@ describe('Default shipping address saga', () => {
     gen = SetDefaultShippingAddressSaga();
     expect(gen.next().value).toEqual(
       takeLatest(
-        SHIPPING_ADDRESS_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_REQUEST,
+        ADDRESS_BOOK_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_REQUEST,
         updateDefaultShippingAddress
       )
     );

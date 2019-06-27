@@ -1,7 +1,7 @@
 import { Map, fromJS, List } from 'immutable';
 import AddressBookReducer from '../AddressBook.reducer';
 import { setAddressList } from '../AddressBook.actions';
-import SHIPPING_ADDRESS_CONSTANTS from '../../DefaultShippingAddress.constants';
+import ADDRESS_BOOK_CONSTANTS from '../../AddressBook.constants';
 
 let addressList = [{}];
 
@@ -42,7 +42,7 @@ describe('Address List reducer', () => {
 
     expect(
       AddressBookReducer(initialState, {
-        type: SHIPPING_ADDRESS_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_SUCCESS,
+        type: ADDRESS_BOOK_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_SUCCESS,
         body: payload,
       })
     ).toEqual(
@@ -62,7 +62,7 @@ describe('Address List reducer', () => {
     });
     expect(
       AddressBookReducer(initialState, {
-        type: SHIPPING_ADDRESS_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_FAILED,
+        type: ADDRESS_BOOK_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_FAILED,
         error,
       })
     ).toEqual(

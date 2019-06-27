@@ -5,8 +5,8 @@ import { getAddressList } from './AddressBook.actions';
 import AddressBookComponent from '../views/AddressBook.view';
 import {
   getAddressListState,
-  getFetchingState,
-  showDefaultShippingUpdatedMsg,
+  getAddressListFetchingState,
+  showDefaultShippingUpdatedState,
 } from './AddressBook.selectors';
 import labels from './AddressBook.labels';
 import { setDefaultShippingAddressRequest } from './DefaultShippingAddress.actions';
@@ -18,6 +18,7 @@ type Props = {
   addressList: List<any>,
   isFetching: boolean,
   onDefaultShippingAddressClick: () => void,
+  showDefaultShippingUpdatedMsg: any,
 };
 
 export class AddressBookContainer extends React.Component<Props> {
@@ -64,8 +65,8 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
 const mapStateToProps = state => {
   return {
     addressList: getAddressListState(state),
-    isFetching: getFetchingState(state),
-    showDefaultShippingUpdatedMsg: showDefaultShippingUpdatedMsg(state),
+    isFetching: getAddressListFetchingState(state),
+    showDefaultShippingUpdatedMsg: showDefaultShippingUpdatedState(state),
   };
 };
 
