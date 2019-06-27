@@ -13,12 +13,12 @@ const ButtonStyles = css`
     props.buttonVariation === 'fixed-width'
       ? `
       min-width: 40px;
-      background: ${props.theme.colors.BUTTON.NORMAL};
-      color: ${props.theme.colors.BUTTON.TEXT};
+      background: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].NORMAL};
+      color: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
       font-family: ${props.theme.fonts.secondaryFontSemilBoldFamily};
       font-size: ${props.theme.fonts.fontSize.button.size}px;
       font-weight: ${props.theme.fonts.fontWeight.semiBold};
-      border: 1px solid ${props.theme.colors.BUTTON.BORDER};
+      border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
       padding: 12px 20px;
       width: 100%;
     `
@@ -27,21 +27,21 @@ const ButtonStyles = css`
     props.buttonVariation === 'variable-width'
       ? `
       min-width: 64px;
-      background: ${props.theme.colors.BUTTON.NORMAL};
-      color: ${props.theme.colors.BUTTON.TEXT};
+      background: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].NORMAL};
+      color: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
       font-family: ${props.theme.fonts.secondaryFontFamily};
       font-size: ${props.theme.fonts.fontSize.button.size}px;
       font-weight: ${props.theme.fonts.fontWeight.black};
-      border: 1px solid ${props.theme.colors.BUTTON.BORDER};
+      border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
       padding: 12px 32px;
     `
       : ''};
 
   &:hover {
-    background: ${props => props.theme.colors.BUTTON.HOVER};
+    background: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].HOVER};
   }
   &:focus {
-    background: ${props => props.theme.colors.BUTTON.FOCUS};
+    background: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].FOCUS};
   }
 
   ${props =>
@@ -57,7 +57,7 @@ const ButtonStyles = css`
       background: ${props.theme.colors.PRIMARY.PALEGRAY};
       border-radius: 10px;
       padding: 4px 0;
-      
+
       border: 2px solid ${props.theme.colors.PRIMARY.LIGHTGRAY};
       box-shadow: 4px 4px white inset, 6px 6px ${props.theme.colors.PRIMARY.PALEGRAY};
       width: calc(100% - 6px);
@@ -72,7 +72,7 @@ const ButtonStyles = css`
         width: calc(100% - 12px);
         &:hover, &:focus {
           box-shadow: 10px 10px white inset, 12px 12px ${props.theme.colors.PRIMARY.COLOR1};
-        }  
+        }
       }
     `
       : ''};

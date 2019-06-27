@@ -86,6 +86,20 @@ const HomePageView = ({ links }) => (
           <Button buttonVariation="fixed-width">test</Button>
         </Col>
       </Row>
+      <Row>
+        <Col
+          colSize={{
+            small: 6,
+            medium: 8,
+            large: 12,
+          }}
+        >
+          <Button buttonVariation="variable-width" fill="BLUE">
+            Button with Blue Fill
+          </Button>
+          <Button buttonVariation="variable-width">Button with No Fill</Button>
+        </Col>
+      </Row>
     </Grid>
     <SampleCarousel props={CarouselConfig.CAROUSEL_OPTIONS} />
   </Fragment>
