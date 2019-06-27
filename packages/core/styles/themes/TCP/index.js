@@ -4,6 +4,7 @@ import colors from './colors';
 import green from '../colors/green';
 import fonts from './fonts';
 import zindex from './zindex';
+import spacing from './spacing';
 import gridDimensions from './gridDimensions';
 import { mediaQuery, breakpoints } from './mediaQuery';
 
@@ -27,6 +28,7 @@ const theme = {
   zindex,
   gridDimensions,
   opacity,
+  spacing,
 };
 
 export default theme;

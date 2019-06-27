@@ -33,7 +33,9 @@ const BrandTabs = ({ className, data }) => (
 
 BrandTabs.propTypes = {
   className: PropTypes.string.isRequired,
-  data: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])).isRequired,
+  data: PropTypes.arrayOf(
+    PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.bool]))
+  ).isRequired,
 };
 
 export default withStyles(BrandTabs, style);

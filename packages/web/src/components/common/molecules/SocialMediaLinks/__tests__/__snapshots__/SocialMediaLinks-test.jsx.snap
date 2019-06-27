@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Legal Links component renders correctly 1`] = `
+<Fragment>
+  <div
+    className="test-socialMediaLinks"
+  >
+    <span
+      className="social-media-label"
+      data-locator="global_connectwithustext"
+    />
+    <div
+      className="social-media-pallete"
+    >
+      <Styled(Anchor)
+        target="_blank"
+        to="http://facebook.com/childrensplace"
+      >
+        <Styled(Image)
+          alt="Facebook"
+          className="social-media-icon"
+          data-locator="global_facebooklink"
+          src="/static/images/facebook.svg"
+        />
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        target="_blank"
+        to="http://twitter.com/childrensplace"
+      >
+        <Styled(Image)
+          alt="Twitter"
+          className="social-media-icon"
+          data-locator="global_twitterlink"
+          src="/static/images/twitter.svg"
+        />
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        target="_blank"
+        to="http://instagram.com/childrensplace"
+      >
+        <Styled(Image)
+          alt="Instagram"
+          className="social-media-icon"
+          data-locator="global_instagramlink"
+          src="/static/images/instagram.svg"
+        />
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        target="_blank"
+        to="http://pinterest.com/childrensplace"
+      >
+        <Styled(Image)
+          alt="Pinterest"
+          className="social-media-icon"
+          data-locator="global_pinterestlink"
+          src="/static/images/pinterest.svg"
+        />
+      </Styled(Anchor)>
+    </div>
+  </div>
+</Fragment>
+`;

@@ -2,7 +2,7 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "stash": "rm -rf node_modules/ packages/*/node_modules/ packages/*/yarn.lock yarn.lock",
+    "stash": "rm -rf node_modules/ packages/*/node_modules/",
     "clean": "yarn cleanup && yarn lerna-clean",
     "postinstall-local": "yarn flow:install",
     "clean-install": "yarn clean && yarn",
@@ -13,10 +13,10 @@
     "cleanup": "rm -rf ./node_modules",
     "lerna-clean": "npx lerna clean --y",
     "test": "jest --config ./config/jest.config.js",
-    "test:web": "yarn test --coverage",
+    "test:web": "yarn test ",
     "test:staged": "yarn test --bail --findRelatedTests",
     "test:watch": "yarn test --watch",
-    "test:coverage": "yarn test --coverage",
+    "test:coverage": "yarn test",
     "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}",
     "flow": "flow",
     "flow:web": "yarn eslint:web",
@@ -77,7 +77,9 @@
     "stylelint-config-recommended": "^2.2.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-formatter-pretty": "^1.0.3",
-    "stylelint-processor-styled-components": "^1.5.1"
+    "stylelint-processor-styled-components": "^1.5.1",
+    "react-test-renderer": "^16.0.0",
+    "enzyme-to-json": "^3.3.4"
   },
   "husky": {
     "hooks": {

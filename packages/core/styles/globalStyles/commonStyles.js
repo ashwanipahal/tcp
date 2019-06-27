@@ -76,4 +76,12 @@ export default css`
   .margin-none {
     margin: 0;
   }
+
+  li {
+    list-style-type: none;
+  }
+
+  p {
+    margin: 0;
+  }
 `;

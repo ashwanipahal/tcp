@@ -29,13 +29,22 @@ type Props = {
  * fullWidth: Additional property to mention 100% width of the button.
  * disabled: to have disabled state of the button
  */
-const Button = ({ children, className, ariaLabel, disabled, fullWidth, type }: Props): Node => (
+const Button = ({
+  children,
+  className,
+  ariaLabel,
+  disabled,
+  fullWidth,
+  type,
+  ...otherProps
+}: Props): Node => (
   <button
     disabled={disabled}
     aria-label={ariaLabel}
     className={className}
     type={type}
     fullWidth={fullWidth}
+    {...otherProps}
   >
     {children}
   </button>

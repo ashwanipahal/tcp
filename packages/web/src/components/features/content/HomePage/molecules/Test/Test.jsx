@@ -17,52 +17,48 @@ function getHeadingColm(props) {
   );
 }
 
-function getBodyColm({ kind, ...others }, bodyExampleType = 'P1') {
+function getBodyColm(props, bodyExampleType = 'P1') {
   return (
     <>
-      <BodyCopy {...others} fontSize={2} kind={kind}>
+      <BodyCopy {...props} fontSize={2}>
         {`${bodyExampleType} - 10`}
       </BodyCopy>
-      <BodyCopy {...others} fontSize={3} kind={kind}>
+      <BodyCopy {...props} fontSize={3}>
         {`${bodyExampleType} - 12`}
       </BodyCopy>
-      <BodyCopy {...others} fontSize={5} kind={kind}>
+      <BodyCopy {...props} fontSize={5}>
         {`${bodyExampleType} - 14`}
       </BodyCopy>
-      <BodyCopy {...others} fontSize={6} kind={kind}>
+      <BodyCopy {...props} fontSize={6}>
         {`${bodyExampleType} - 16`}
       </BodyCopy>
-      <BodyCopy {...others} fontSize={7} kind={kind}>
+      <BodyCopy {...props} fontSize={7}>
         {`${bodyExampleType} - 18`}
       </BodyCopy>
-      <BodyCopy {...others} fontSize={8} kind={kind}>
+      <BodyCopy {...props} fontSize={8}>
         {`${bodyExampleType} - 22`}
       </BodyCopy>
-      <BodyCopy {...others} fontSize={9} kind={kind}>
+      <BodyCopy {...props} fontSize={9}>
         {`${bodyExampleType} - 24`}
       </BodyCopy>
-      <BodyCopy {...others} fontSize={11} kind={kind}>
+      <BodyCopy {...props} fontSize={11}>
         {`${bodyExampleType} - 28`}
       </BodyCopy>
-      <BodyCopy {...others} fontSize={12} kind={kind}>
+      <BodyCopy {...props} fontSize={12}>
         {`${bodyExampleType} - 32`}
       </BodyCopy>
-      <BodyCopy {...others} fontSize={13} kind={kind}>
+      <BodyCopy {...props} fontSize={13}>
         {`${bodyExampleType} - 36`}
       </BodyCopy>
-      <BodyCopy {...others} fontSize={15} kind={kind}>
+      <BodyCopy {...props} fontSize={15}>
         {`${bodyExampleType} - 42`}
       </BodyCopy>
-      <BodyCopy {...others} fontSize={16} kind={kind}>
+      <BodyCopy {...props} fontSize={16}>
         {`${bodyExampleType} - 48`}
       </BodyCopy>
     </>
   );
 }
-
-getBodyColm.propTypes = {
-  kind: PropTypes.string.isRequired,
-};
 
 const BlackCol = styled(Col)`
   background-color: black;

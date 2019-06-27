@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccordionHeader component renders correctly 1`] = `
+<h4
+  className="abcd"
+  data-index={1}
+  data-locator="accordion-1"
+  onClick={[Function]}
+  onKeyPress={[Function]}
+  tabIndex="0"
+>
+  Sample Title
+</h4>
+`;
