@@ -6,7 +6,7 @@ const buildQuery = ({ type, brand, country, channel }) => `
     channel: "${channel}"
   ) {
     submodules {
-      footer_top: footerTop {
+      footerTop {
         composites {
           buttonGroup {
             url
@@ -23,7 +23,7 @@ const buildQuery = ({ type, brand, country, channel }) => `
           }
         }
       }
-      footer_middle: footerMiddle {
+      footerMiddle {
         composites {
           mprWrapper {
             linkClass {
@@ -53,7 +53,7 @@ const buildQuery = ({ type, brand, country, channel }) => `
           }
         }
       }
-      footer_bottom: footerBottom {
+      footerBottom {
         composites {
           linkList {
             url
