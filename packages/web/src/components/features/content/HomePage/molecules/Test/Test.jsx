@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PropTypes } from 'prop-types';
 
 import Heading from '@tcp/core/src/components/common/atoms/Heading';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
@@ -21,40 +20,40 @@ function getBodyColm(props, bodyExampleType = 'P1') {
   return (
     <>
       <BodyCopy {...props} fontSize={2}>
-        {`${bodyExampleType} - 10`}
+        {`${bodyExampleType} - 48`}
       </BodyCopy>
       <BodyCopy {...props} fontSize={3}>
-        {`${bodyExampleType} - 12`}
-      </BodyCopy>
-      <BodyCopy {...props} fontSize={5}>
-        {`${bodyExampleType} - 14`}
-      </BodyCopy>
-      <BodyCopy {...props} fontSize={6}>
-        {`${bodyExampleType} - 16`}
-      </BodyCopy>
-      <BodyCopy {...props} fontSize={7}>
-        {`${bodyExampleType} - 18`}
-      </BodyCopy>
-      <BodyCopy {...props} fontSize={8}>
-        {`${bodyExampleType} - 22`}
-      </BodyCopy>
-      <BodyCopy {...props} fontSize={9}>
-        {`${bodyExampleType} - 24`}
-      </BodyCopy>
-      <BodyCopy {...props} fontSize={11}>
-        {`${bodyExampleType} - 28`}
-      </BodyCopy>
-      <BodyCopy {...props} fontSize={12}>
-        {`${bodyExampleType} - 32`}
-      </BodyCopy>
-      <BodyCopy {...props} fontSize={13}>
-        {`${bodyExampleType} - 36`}
-      </BodyCopy>
-      <BodyCopy {...props} fontSize={15}>
         {`${bodyExampleType} - 42`}
       </BodyCopy>
+      <BodyCopy {...props} fontSize={5}>
+        {`${bodyExampleType} - 36`}
+      </BodyCopy>
+      <BodyCopy {...props} fontSize={6}>
+        {`${bodyExampleType} - 32`}
+      </BodyCopy>
+      <BodyCopy {...props} fontSize={7}>
+        {`${bodyExampleType} - 28`}
+      </BodyCopy>
+      <BodyCopy {...props} fontSize={8}>
+        {`${bodyExampleType} - 24`}
+      </BodyCopy>
+      <BodyCopy {...props} fontSize={9}>
+        {`${bodyExampleType} - 22`}
+      </BodyCopy>
+      <BodyCopy {...props} fontSize={11}>
+        {`${bodyExampleType} - 18`}
+      </BodyCopy>
+      <BodyCopy {...props} fontSize={12}>
+        {`${bodyExampleType} - 16`}
+      </BodyCopy>
+      <BodyCopy {...props} fontSize={13}>
+        {`${bodyExampleType} - 14`}
+      </BodyCopy>
+      <BodyCopy {...props} fontSize={15}>
+        {`${bodyExampleType} - 12`}
+      </BodyCopy>
       <BodyCopy {...props} fontSize={16}>
-        {`${bodyExampleType} - 48`}
+        {`${bodyExampleType} - 10`}
       </BodyCopy>
     </>
   );

@@ -4,7 +4,7 @@ import green from './colors/green';
 import red from './colors/red';
 import common from './colors/common';
 
-function createThemeColors(colors = {}) {
+function createThemeColorPalette(colors = {}) {
   const { primary = { light: blue[300], main: blue[500], dark: blue[700] } } = colors;
   const { secondary = { light: red[100], main: red[300], dark: red[300] } } = colors;
   const {
@@ -25,4 +25,4 @@ function createThemeColors(colors = {}) {
   };
 }
 
-export default createThemeColors;
+export default createThemeColorPalette;

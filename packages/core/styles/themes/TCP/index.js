@@ -1,4 +1,4 @@
-import createThemeColors from '../createThemeColors';
+import createThemeColorPalette from '../createThemeColorPalette';
 import createThemeTypography from '../createThemeTypography';
 import colors from './colors';
 import green from '../colors/green';
@@ -10,7 +10,7 @@ import { mediaQuery, breakpoints } from './mediaQuery';
 
 import opacity from './opacity';
 
-const colorPalette = createThemeColors();
+const colorPalette = createThemeColorPalette();
 const typography = createThemeTypography();
 
 const theme = {

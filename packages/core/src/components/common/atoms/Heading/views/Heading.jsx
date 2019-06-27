@@ -16,7 +16,7 @@ Heading.defaultProps = {
   className: null,
   children: null,
   variant: 'h1',
-  color: 'primary',
+  color: 'text.primary',
   textAlign: 'left',
 };
 
