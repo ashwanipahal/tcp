@@ -4,6 +4,8 @@ export const MODULED_REDUCER_KEY = 'ModuleDReducer';
 export const GLOBAL_REDUCER_KEY = 'GlobalReducers';
 export const HOMEPAGE_REDUCER_KEY = 'HomePageReducer';
 
+// Don't Add "Reducer" in the Key - it should be LoginPage, not LoginPageReducer
+
 // Login Page Reducer
 export const LOGINPAGE_REDUCER_KEY = 'LoginPageReducer';
 export const ADDRESSBOOK_REDUCER_KEY = 'AddressBookReducer';

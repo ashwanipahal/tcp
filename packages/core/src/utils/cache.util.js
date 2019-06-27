@@ -1,6 +1,6 @@
 import { checkCacheValid, generateCacheTTL } from 'redux-cache';
 import { select } from 'redux-saga/effects';
-import { getReducerKeyByAction } from './redux-util';
+import { getReducerKeyByAction } from './redux.util';
 import { DEFAULT_REDUX_TTL_TIME } from '../config/site.config';
 
 /*
