@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import SHIPPING_ADDRESS_CONSTANTS from '../DefaultShippingAddress.constants';
+import ADDRESS_BOOK_CONSTANTS from '../AddressBook.constants';
 import {
   setDefaultShippingAddressSuccess,
   setDefaultShippingAddressFailure,
@@ -9,7 +9,8 @@ import endpoints from '../../../../../service/endpoint';
 
 export function* updateDefaultShippingAddress({ payload }) {
   try {
-    const { baseURI, relURI, method } = endpoints.setDefaultShippingAddress;
+    const { relURI, method } = endpoints.setDefaultShippingAddress;
+    const baseURI = endpoints.setDefaultShippingAddress.baseURI || endpoints.global.baseURI;
     const res = yield call(
       fetchData,
       baseURI,
@@ -31,7 +32,7 @@ export function* updateDefaultShippingAddress({ payload }) {
 
 export function* SetDefaultShippingAddressSaga() {
   yield takeLatest(
-    SHIPPING_ADDRESS_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_REQUEST,
+    ADDRESS_BOOK_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_REQUEST,
     updateDefaultShippingAddress
   );
 }

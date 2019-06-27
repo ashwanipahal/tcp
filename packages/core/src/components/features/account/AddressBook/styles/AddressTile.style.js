@@ -14,7 +14,7 @@ const styles = css`
     justify-content: space-between;
   }
 
-  .addressTile__row--oneCol {
+  .addressTile__row {
     display: flex;
     justify-content: flex-end;
     a {

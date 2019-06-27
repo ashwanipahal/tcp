@@ -1,5 +1,5 @@
 import * as actions from '../DefaultShippingAddress.actions';
-import SHIPPING_ADDRESS_CONSTANTS from '../../DefaultShippingAddress.constants';
+import ADDRESS_BOOK_CONSTANTS from '../../AddressBook.constants';
 
 describe('Default shipping address actions', () => {
   it('should create an action to set the default shipping address', () => {
@@ -8,7 +8,7 @@ describe('Default shipping address actions', () => {
     };
 
     const expectedAction = {
-      type: SHIPPING_ADDRESS_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_REQUEST,
+      type: ADDRESS_BOOK_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_REQUEST,
       payload,
     };
     expect(actions.setDefaultShippingAddressRequest(payload)).toEqual(expectedAction);
@@ -20,7 +20,7 @@ describe('Default shipping address actions', () => {
       nickName: 'sb_2019-06-24 02:23:29.134',
     };
     const expectedAction = {
-      type: SHIPPING_ADDRESS_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_SUCCESS,
+      type: ADDRESS_BOOK_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_SUCCESS,
       body,
     };
     expect(actions.setDefaultShippingAddressSuccess(body)).toEqual(expectedAction);
@@ -32,7 +32,7 @@ describe('Default shipping address actions', () => {
       message: 'Object not found',
     };
     const expectedAction = {
-      type: SHIPPING_ADDRESS_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_FAILED,
+      type: ADDRESS_BOOK_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_FAILED,
       error,
     };
     expect(actions.setDefaultShippingAddressFailure(error)).toEqual(expectedAction);

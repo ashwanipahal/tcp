@@ -2,10 +2,10 @@ export const getAddressListState = state => {
   return state.AddressBookReducer.get('list');
 };
 
-export const getFetchingState = state => {
+export const getAddressListFetchingState = state => {
   return state.AddressBookReducer.get('isFetching');
 };
 
-export const showDefaultShippingUpdatedMsg = state => {
+export const showDefaultShippingUpdatedState = state => {
   return state.AddressBookReducer.get('showDefaultShippingUpdatedMsg');
 };
