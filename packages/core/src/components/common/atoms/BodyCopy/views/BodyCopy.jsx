@@ -12,12 +12,13 @@ BodyCopy.defaultProps = {
   component: 'p',
   className: null,
   children: null,
-  kind: 'p1',
-  color: '#1a1a1a',
-  inverted: false,
-  align: 'left',
-  weight: 'normal',
-  size: 16,
+  fontFamily: 'primary',
+  fontSize: 12,
+  fontWeight: 'normal',
+  lineHeight: 'normal',
+  letterSpacing: 'normal',
+  textAlign: 'left',
+  color: 'text.primary',
 };
 
 BodyCopy.propTypes = {
@@ -26,20 +27,13 @@ BodyCopy.propTypes = {
   children: PropTypes.node,
   // TODO: Need fix unused/proptypes eslint error
   /* eslint-disable */
-  kind: PropTypes.oneOf(['p1', 'p2']),
-  size: PropTypes.oneOf([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]),
-  weight: PropTypes.oneOf(['normal', 'semibold', 'extrabold', 'bold']),
-  color: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'tertiary',
-    'red',
-    'darkgray',
-    'gray',
-    'lightgray',
-  ]),
-  inverted: PropTypes.bool,
-  align: PropTypes.oneOf(['left', 'right', 'center', 'justify']),
+  fontFamily: PropTypes.oneOf(['primary', 'secondary']),
+  fontSize: PropTypes.oneOf([2, 3, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16]),
+  fontWeight: PropTypes.oneOf(['normal', 'semibold', 'extrabold', 'bold']),
+  lineHeight: PropTypes.oneOf(['normal']),
+  letterSpacing: PropTypes.oneOf([1, 2, 3, 4, 'normal']),
+  textAlign: PropTypes.oneOf(['left', 'center']),
+  color: PropTypes.oneOf(['text.primary', 'text.secondary', 'text.hint', 'text.disabled', 'white']),
   /* eslint-enable */
 };
 

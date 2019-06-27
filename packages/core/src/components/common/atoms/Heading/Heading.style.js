@@ -1,19 +1,23 @@
 import { css } from 'styled-components';
-import createTypographyStyle from '@tcp/core/styles/createTypographyStyle';
+import {
+  typography as typographyStyleSystem,
+  color as colorStyleSystem,
+} from '@tcp/core/styles/rwdStyleSystem';
 
-function getStyle(props) {
-  const { theme, variant, color, inverted, textAlign } = props;
-  const { colorPallete, typography, breakpoints } = theme;
-  const fontColor = inverted ? colorPallete.white : colorPallete.text[color] || color;
+function getHeadingStyle(props) {
+  const {
+    theme: { typography },
+    variant,
+  } = props;
 
   return `
-    ${createTypographyStyle({ breakpoints, textAlign, ...typography[variant] })}
-    color: ${fontColor};
+   ${typographyStyleSystem({ ...props, ...typography[variant] })}
   `;
 }
 
 const HeadingStyles = css`
-  ${getStyle}
+  ${getHeadingStyle}
+  ${colorStyleSystem}
 `;
 
 export default HeadingStyles;

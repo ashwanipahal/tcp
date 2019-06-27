@@ -29,9 +29,8 @@ Heading.propTypes = {
   variant: PropTypes.oneOf(headingVariants),
   // TODO: Need fix unused/proptypes eslint error
   /* eslint-disable */
-  color: PropTypes.oneOf(['primary', 'secondary', 'disabled']),
+  color: PropTypes.string,
   mode: PropTypes.oneOf(['light', 'dark']),
-  inverted: PropTypes.bool,
   textAlign: PropTypes.oneOf(['left', 'center']),
   /* eslint-enable */
 };
