@@ -37,7 +37,7 @@ const Address = ({ address, className }: Props) => (
       <BodyCopy tag="p">{addressLine}</BodyCopy>
     ))}
     <BodyCopy tag="p">
-      {`${address.city || ''} ${address.state || ''} ${address.zipCode || ''}`}
+      {`${address.city || ''}, ${address.state || ''} ${address.zipCode || ''}`}
     </BodyCopy>
     {address.country && <BodyCopy tag="p">{address.country}</BodyCopy>}
     {address.phone1 && <BodyCopy tag="p">{address.phone1}</BodyCopy>}

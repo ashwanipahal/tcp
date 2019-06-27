@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { PRODUCTLISTINGPAGE_REDUCER_KEY } from '../../../../../constants/reducer';
+import { PRODUCTLISTINGPAGE_REDUCER_KEY } from '../../../../../constants/reducer.constants';
 
 const getReducer = state => state[PRODUCTLISTINGPAGE_REDUCER_KEY];
 

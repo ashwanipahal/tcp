@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { ProductListingPageReducer } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.reducer';
 import LoginPageReducer from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.reducer';
 import AddressBookReducer from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.reducer';
-import { createFilteredReducer } from '@tcp/core/src/utils/redux-util';
+import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
 import {
   HEADER_REDUCER_KEY,
   FOOTER_REDUCER_KEY,
@@ -11,7 +11,7 @@ import {
   LOGINPAGE_REDUCER_KEY,
   PRODUCTLISTINGPAGE_REDUCER_KEY,
   ADDRESSBOOK_REDUCER_KEY,
-} from '@tcp/core/src/constants/reducer';
+} from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '../../components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '../../components/common/organisms/Footer/container/Footer.reducer';
 import GlobalReducers from './global';

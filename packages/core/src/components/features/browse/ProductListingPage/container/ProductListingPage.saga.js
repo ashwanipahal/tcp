@@ -4,7 +4,7 @@ import { PRODUCTLISTINGPAGE_CONSTANTS } from '../ProductListingPage.constants';
 import { setPlpProducts } from './ProductListingPage.actions';
 import fetchData from '../../../../../service/API';
 import endpoints from '../../../../../service/endpoint';
-import { validateReduxCache } from '../../../../../utils/cache-util';
+import { validateReduxCache } from '../../../../../utils/cache.util';
 
 function* fetchProducts(action) {
   try {

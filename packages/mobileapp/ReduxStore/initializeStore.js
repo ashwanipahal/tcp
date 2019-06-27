@@ -1,12 +1,12 @@
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import { ProductListingPageReducer } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.reducer';
 import createSagaMiddleware from 'redux-saga';
-import { cacheEnhancerMiddleware } from '@tcp/core/src/utils/cache-util';
+import { cacheEnhancerMiddleware } from '@tcp/core/src/utils/cache.util';
 import {
   HOMEPAGE_REDUCER_KEY,
   PRODUCTLISTINGPAGE_REDUCER_KEY,
-} from '@tcp/core/src/constants/reducer';
-import { createFilteredReducer } from '@tcp/core/src/utils/redux-util';
+} from '@tcp/core/src/constants/reducer.constants';
+import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
 import { homePageReducer } from './homePage/homePage.reducer';
 
 import rootSaga from './sagas';

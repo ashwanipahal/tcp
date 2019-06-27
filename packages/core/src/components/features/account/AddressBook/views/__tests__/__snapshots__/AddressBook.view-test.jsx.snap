@@ -18,21 +18,18 @@ exports[`AddressBook component should renders correctly when addresses are not p
     fullBleed={true}
   >
     <Styled(Col)
+      className="addressBook__addNewCtaContainer"
       colSize={
         Object {
           "large": 10,
           "medium": 8,
-          "small": 5,
-        }
-      }
-      offsetLeft={
-        Object {
-          "small": 1,
+          "small": 6,
         }
       }
     >
       <Styled(Button)
         buttonVariation="variable-width"
+        fill="BLUE"
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -54,21 +51,18 @@ exports[`AddressBook component should renders correctly when addresses are prese
     fullBleed={true}
   >
     <Styled(Col)
+      className="addressBook__addNewCtaContainer"
       colSize={
         Object {
           "large": 10,
           "medium": 8,
-          "small": 5,
-        }
-      }
-      offsetLeft={
-        Object {
-          "small": 1,
+          "small": 6,
         }
       }
     >
       <Styled(Button)
         buttonVariation="variable-width"
+        fill="BLUE"
       />
     </Styled(Col)>
   </Styled(Row)>
