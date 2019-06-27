@@ -36,6 +36,16 @@ exports[`AddressBook component should renders correctly when addresses are not p
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Styled(Notification)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    status="error"
+  />
 </div>
 `;
 
@@ -72,6 +82,16 @@ exports[`AddressBook component should renders correctly when addresses are prese
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Styled(Notification)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    status="error"
+  />
   <Styled(AddressList)
     addresses={
       Immutable.List [
