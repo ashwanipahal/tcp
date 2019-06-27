@@ -8,6 +8,7 @@ import Col from '../../../../common/atoms/Col';
 import Button from '../../../../common/atoms/Button';
 import AddressListComponent from './AddressList.view';
 import EmptyAddressListComponent from './EmptyAddressList.view';
+import AddressModal from '../../AccountModal';
 
 // @flow
 
@@ -19,7 +20,7 @@ type Props = {
   className: string,
 };
 
-export const AddressBook = ({ addresses, labels, className }: Props) => {
+export const AddressBook = ({ addresses, labels, className, openAccountModalComponent }: Props) => {
   return (
     <div className={className}>
       <Heading
@@ -45,7 +46,14 @@ export const AddressBook = ({ addresses, labels, className }: Props) => {
           </Button>
         </Col>
       </Row>
-      {addresses.size > 0 && <AddressListComponent addresses={addresses} labels={labels} />}
+      {addresses.length > 0 && (
+        <AddressListComponent
+          addresses={addresses}
+          labels={labels}
+          openAccountModalComponent={openAccountModalComponent}
+        />
+      )}
+      <AddressModal />
     </div>
   );
 };
