@@ -43,7 +43,7 @@ describe('Address List reducer', () => {
     expect(
       AddressBookReducer(initialState, {
         type: ADDRESS_BOOK_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_SUCCESS,
-        body: payload,
+        payload,
       })
     ).toEqual(
       fromJS({
@@ -63,7 +63,7 @@ describe('Address List reducer', () => {
     expect(
       AddressBookReducer(initialState, {
         type: ADDRESS_BOOK_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_FAILED,
-        error,
+        payload: error,
       })
     ).toEqual(
       fromJS({
