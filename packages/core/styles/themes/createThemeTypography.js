@@ -9,7 +9,7 @@ import {
 
 const BASE_HEADING_TYPOGRAPHY = {
   fontFamily: 'primary',
-  fontSize: ['fs48', 'fs64'],
+  fontSize: ['fs48', 'fs48', 'fs64'],
   fontWeight: 'black',
   letterSpacing: 'normal',
   lineHeight: 'normal',
@@ -30,26 +30,26 @@ function createThemeTypography(theme = {}) {
   const {
     h1 = {
       ...BASE_HEADING_TYPOGRAPHY,
-      fontSize: ['fs48', 'fs64'],
+      fontSize: ['fs48', 'fs48', 'fs64'],
     },
     h2 = {
       ...BASE_HEADING_TYPOGRAPHY,
-      fontSize: ['fs42', 'fs48'],
+      fontSize: ['fs42', 'fs42', 'fs48'],
     },
     h3 = {
       ...BASE_HEADING_TYPOGRAPHY,
-      fontSize: ['fs20', 'fs38'],
-      letterSpacing: ['ls167', 'ls271'],
+      fontSize: ['fs20', 'fs20', 'fs38'],
+      letterSpacing: ['ls167', 'ls167', 'ls271'],
     },
     h4 = {
       ...BASE_HEADING_TYPOGRAPHY,
-      fontSize: ['fs20', 'fs36'],
+      fontSize: ['fs20', 'fs20', 'fs36'],
       fontWeight: 'semibold',
-      letterSpacing: ['ls222', 'ls257'],
+      letterSpacing: ['ls222', 'ls222', 'ls257'],
     },
     h5 = {
       ...BASE_HEADING_TYPOGRAPHY,
-      fontSize: ['fs16', 'fs28'],
+      fontSize: ['fs16', 'fs16', 'fs28'],
       fontWeight: 'normal',
     },
     h6 = {
@@ -69,14 +69,14 @@ function createThemeTypography(theme = {}) {
       fontSize: 'fs14',
       fontFamily: 'secondary',
       fontWeight: 'semibold',
-      lineHeight: ['lh115', 'lh107'],
+      lineHeight: ['lh115', 'lh115', 'lh107'],
     },
     navMinified = {
       ...BASE_HEADING_TYPOGRAPHY,
       fontSize: 'fs13',
       fontFamily: 'secondary',
       fontWeight: 'semibold',
-      lineHeight: ['lh115', 'lh107'],
+      lineHeight: ['lh115', 'lh115', 'lh107'],
     },
   } = typography;
 
