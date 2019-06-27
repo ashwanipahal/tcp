@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { PRODUCTLISTINGPAGE_CONSTANTS } from '../ProductListingPage.constants';
-import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../utils/cache-util';
+import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../utils/cache.util';
 
 const initialState = {
   [DEFAULT_REDUCER_KEY]: null,
