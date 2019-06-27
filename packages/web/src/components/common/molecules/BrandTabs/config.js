@@ -1,10 +1,10 @@
 export default {
   BRAND_TABS: {
-    tcp_logo_medium: '/static/images/tcp-logo.svg',
-    gymboree_logo_medium: '/static/images/gymboree-logo.svg',
+    'header__brand-tab--tcp': '/static/images/tcp-logo.svg',
+    'header__brand-tab-gymboree': '/static/images/gymboree-logo.svg',
     data_locator: {
-      tcp_logo_medium: 'global_TCPimg',
-      gymboree_logo_medium: 'global_Gymboreeimg',
+      'header__brand-tab--tcp': 'global_TCPimg',
+      'header__brand-tab-gymboree': 'global_Gymboreeimg',
     },
   },
 };
