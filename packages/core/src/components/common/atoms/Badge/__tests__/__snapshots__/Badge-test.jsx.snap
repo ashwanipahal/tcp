@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge component renders correctly with showCheckmark as false 1`] = `
+<Styled(BodyStyle)
+  bodySize="one"
+  className="sample-badge"
+  color="primary"
+  fontFamily="secondaryFontFamily"
+  fontWeight="bold"
+  tag="div"
+>
+  <span
+    className="badge__content"
+  >
+    Shipping
+  </span>
+</Styled(BodyStyle)>
+`;
+
+exports[`Badge component renders correctly with showCheckmark as true 1`] = `
+<Styled(BodyStyle)
+  bodySize="one"
+  className="sample-badge"
+  color="primary"
+  fontFamily="secondaryFontFamily"
+  fontWeight="bold"
+  tag="div"
+>
+  <span
+    className="badge__checkmark"
+  />
+  <span
+    className="badge__content"
+  >
+    Shipping
+  </span>
+</Styled(BodyStyle)>
+`;

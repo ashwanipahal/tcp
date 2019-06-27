@@ -4,14 +4,10 @@ import { PRODUCTLISTINGPAGE_CONSTANTS } from '../ProductListingPage.constants';
 import { setPlpProducts } from './ProductListingPage.actions';
 import fetchData from '../../../../../service/API';
 import endpoints from '../../../../../service/endpoint';
-import { validateCache } from '../../../../../utils/cache-util';
+import { validateReduxCache } from '../../../../../utils/cache-util';
 
 function* fetchProducts(action) {
   try {
-    const isCacheValid = yield validateCache(action);
-    if (isCacheValid) {
-      return null;
-    }
     const { baseURI, relURI, method } = endpoints.getPlpProducts;
     const res = yield call(
       fetchData,
@@ -30,7 +26,9 @@ function* fetchProducts(action) {
 }
 
 function* ProductListingPageSaga() {
-  yield takeLatest(PRODUCTLISTINGPAGE_CONSTANTS.FETCH_PRODUCTS, fetchProducts);
+  // A HOF which prevents calling fetchProducts when data in redux exists (within ttl)
+  const cachedFetchProducts = validateReduxCache(fetchProducts);
+  yield takeLatest(PRODUCTLISTINGPAGE_CONSTANTS.FETCH_PRODUCTS, cachedFetchProducts);
 }
 
 export default ProductListingPageSaga;

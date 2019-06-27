@@ -34,6 +34,10 @@ const mapStateToProps = state => {
       connectWithUsLabel: state.GlobalReducers.labels.connect_with_us,
       links: state.FooterReducer.footer_top.social_media_links,
     },
+    emailSignup: state.FooterReducer.footer_top.email_signup,
+    smsSignup: state.FooterReducer.footer_top.sms_signup,
+    referAFriend: state.FooterReducer.footer_top.refer_a_friend,
+    referenceID: state.GlobalReducers.labels.reference_id,
   };
 };
 
