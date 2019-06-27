@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Anchor } from '../../../atoms';
+import errorBoundary from '../../../hoc/errorBoundary';
 import { Heading } from '../../../../../../styles/themes/TCP/typotheme';
 
 const moduleHHeader = ({ headerText }) => {
@@ -17,7 +18,7 @@ const moduleHHeader = ({ headerText }) => {
             HeadingcolorSm="primary"
             tag="h2"
           >
-            {link.url !== '' ? (
+            {link && link.url !== '' ? (
               <Anchor className="moduleH__header-link" to={link.url} target={link.target}>
                 {textLine.text}
               </Anchor>
@@ -35,4 +36,4 @@ moduleHHeader.propTypes = {
   headerText: PropTypes.shape({}).isRequired,
 };
 
-export default moduleHHeader;
+export default errorBoundary(moduleHHeader);

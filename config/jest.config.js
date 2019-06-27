@@ -30,6 +30,8 @@ module.exports = {
     '!**/*.style.js',
     '!**/*.constants.js',
     '!**/*.config.js',
+    '!**/core/styles/**',
+    '!**/*.action.js',
   ],
   coveragePathIgnorePatterns: [
     '/node_modules/',

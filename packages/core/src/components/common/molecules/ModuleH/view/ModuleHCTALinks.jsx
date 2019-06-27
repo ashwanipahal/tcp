@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor } from '../../../atoms';
+import errorBoundary from '../../../hoc/errorBoundary';
 import config from '../config';
 
 const ModuleHCTALinks = ({ currentIndex, dataCTALinks }) => {
@@ -34,4 +35,4 @@ ModuleHCTALinks.propTypes = {
   dataCTALinks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
-export default ModuleHCTALinks;
+export default errorBoundary(ModuleHCTALinks);

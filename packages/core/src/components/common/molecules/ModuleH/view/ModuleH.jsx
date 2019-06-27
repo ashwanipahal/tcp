@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
+import errorBoundary from '../../../hoc/errorBoundary';
 import { Col, Image, Row } from '../../../atoms';
 import { Carousel } from '../..';
 import ModuleHHeader from './ModuleHHeader';
@@ -36,10 +37,10 @@ class ModuleH extends React.Component {
   }
 
   render() {
-    const { className, data } = this.props;
     const {
+      className,
       composites: { divCTALinks, headerText },
-    } = data.moduleH;
+    } = this.props;
     const carouselConfig = config.CAROUSEL_OPTIONS;
     carouselConfig.beforeChange = (current, next) => {
       this.setState({ current, next });
@@ -66,23 +67,19 @@ class ModuleH extends React.Component {
 
 ModuleH.propTypes = {
   className: PropTypes.string.isRequired,
-  data: PropTypes.shape({
-    moduleH: PropTypes.shape({
-      composites: PropTypes.shape({
-        divCTALinks: PropTypes.arrayOf(
-          PropTypes.objectOf(
-            PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.shape({})])
-          )
-        ),
-        headerText: PropTypes.shape({
-          textLines: PropTypes.arrayOf(
-            PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))
-          ),
-        }),
-      }),
+  composites: PropTypes.shape({
+    divCTALinks: PropTypes.arrayOf(
+      PropTypes.objectOf(
+        PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.shape({})])
+      )
+    ),
+    headerText: PropTypes.shape({
+      textLines: PropTypes.arrayOf(
+        PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))
+      ),
     }),
   }).isRequired,
 };
 
-export default withStyles(ModuleH, style);
+export default errorBoundary(withStyles(ModuleH, style));
 export { ModuleH as ModuleHVanilla };
