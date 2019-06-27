@@ -8,16 +8,16 @@ export const setDefaultShippingAddressRequest = (payload: {}) => {
   };
 };
 
-export const setDefaultShippingAddressSuccess = (body: {}) => {
+export const setDefaultShippingAddressSuccess = (payload: {}) => {
   return {
     type: ADDRESS_BOOK_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_SUCCESS,
-    body,
+    payload,
   };
 };
 
-export const setDefaultShippingAddressFailure = (error: {}) => {
+export const setDefaultShippingAddressFailure = (payload: {}) => {
   return {
     type: ADDRESS_BOOK_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_FAILED,
-    error,
+    payload,
   };
 };
