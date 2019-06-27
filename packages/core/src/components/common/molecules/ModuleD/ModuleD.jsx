@@ -7,6 +7,7 @@ import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import { getLocator } from '@tcp/web/src/utils';
 import style from './ModuleD.style';
 import withStyles from '../../hoc/withStyles';
+import errorBoundary from '../../hoc/errorBoundary';
 
 const colSize2Elements = {
   small: 3,
@@ -106,19 +107,20 @@ const ModuleD = props => {
             );
           })}
       </Row>
-
-      <Row centered>
-        <Anchor href={singleCTAButton.url}>
-          <Button
-            buttonVariation="variable-width"
-            className="moduleD_button"
-            title={singleCTAButton.title}
-            data-locator={getLocator('moduleD_button')}
-          >
-            {singleCTAButton.title}
-          </Button>
-        </Anchor>
-      </Row>
+      {singleCTAButton && (
+        <Row centered>
+          <Anchor href={singleCTAButton.url}>
+            <Button
+              buttonVariation="variable-width"
+              className="moduleD_button"
+              title={singleCTAButton.title}
+              data-locator={getLocator('moduleD_button')}
+            >
+              {singleCTAButton.title}
+            </Button>
+          </Anchor>
+        </Row>
+      )}
     </Grid>
   );
 };
@@ -132,5 +134,5 @@ ModuleD.propTypes = {
   }).isRequired,
 };
 
-export default withStyles(ModuleD, style);
+export default errorBoundary(withStyles(ModuleD, style));
 export { ModuleD as ModuleDVanilla };
