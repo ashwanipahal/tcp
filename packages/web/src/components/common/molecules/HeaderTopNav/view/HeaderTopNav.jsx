@@ -5,20 +5,23 @@ import PromotionalArea from '@tcp/web/src/components/common/molecules/Promotiona
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import HeaderTopNavStyle from '../HeaderTopNav.style';
 
-const HeaderTopNav = ({ className, dataTopNav }) => (
-  <div className={className}>
-    <PromotionalArea mobile data={dataTopNav.promo_message_wrapper} />
-    <div className="header-topnav__row">
-      <div className="header-topnav__brand-tabs">
-        <BrandTabs data={dataTopNav.brand_tabs} />
+const HeaderTopNav = ({ className, dataTopNav }) => {
+  const { composites } = dataTopNav;
+  return (
+    <div className={className}>
+      <PromotionalArea mobile data={composites.promo_message_wrapper} />
+      <div className="header-topnav__row">
+        <div className="header-topnav__brand-tabs">
+          <BrandTabs data={composites.brand_tabs} />
+        </div>
+        <div className="header-topnav__promo-area">
+          <PromotionalArea mobile={false} data={composites.promo_message_wrapper} />
+        </div>
+        <div className="header-topnav__track-order">Track order</div>
       </div>
-      <div className="header-topnav__promo-area">
-        <PromotionalArea mobile={false} data={dataTopNav.promo_message_wrapper} />
-      </div>
-      <div className="header-topnav__track-order">Track order</div>
     </div>
-  </div>
-);
+  );
+};
 
 HeaderTopNav.propTypes = {
   className: PropTypes.string.isRequired,

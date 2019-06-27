@@ -86,12 +86,12 @@ const Footer = ({
         </Col>
       </Row>
     </div>
-    <Row className="footer-middle mobile" fullBleed>
+    {/* <Row className="footer-middle mobile" fullBleed>
       <FooterMiddleMobile className={className} navLinkItems={navLinks} />
     </Row>
     <Row className="footer-middle desktop">
       <FooterMiddleDesktop className={className} navLinks={navLinks} />
-    </Row>
+    </Row> */}
     <div className="footer-bottom">
       <Row className="fullbleed-mobile">
         <Col

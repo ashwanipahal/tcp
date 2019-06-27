@@ -6,4 +6,5 @@ export default {
   getFooterData: async () => {
     return mock;
   },
+  processData: data => data,
 };

@@ -26,18 +26,24 @@ const processFooterMiddle = footerMiddleObj => {
 };
 
 const mapStateToProps = state => {
+  const {
+    submodules: { footer_top: footerTop, footer_middle: footerMiddle, footer_bottom: footerBottom },
+  } = state.FooterReducer;
   return {
-    copyrightText: state.FooterReducer.footer_bottom.copyrights.text,
-    legalLinks: state.FooterReducer.footer_bottom.legal_links,
-    navLinks: processFooterMiddle(state.FooterReducer.footer_middle),
-    socialMediaLinks: {
-      connectWithUsLabel: state.GlobalReducers.labels.connect_with_us,
-      links: state.FooterReducer.footer_top.social_media_links,
-    },
-    emailSignup: state.FooterReducer.footer_top.email_signup,
-    smsSignup: state.FooterReducer.footer_top.sms_signup,
-    referAFriend: state.FooterReducer.footer_top.refer_a_friend,
-    referenceID: state.GlobalReducers.labels.reference_id,
+    footer_top: footerTop,
+    footer_middle: footerMiddle,
+    footer_bottom: footerBottom,
+    // copyrightText: state.FooterReducer.footer_bottom.copyrights.text,
+    // legalLinks: state.FooterReducer.footer_bottom.legal_links,
+    // navLinks: processFooterMiddle(footerMiddle),
+    // socialMediaLinks: {
+    //   connectWithUsLabel: state.GlobalReducers.labels.connect_with_us,
+    //   links: state.FooterReducer.footer_top.social_media_links,
+    // },
+    // emailSignup: state.FooterReducer.footer_top.email_signup,
+    // smsSignup: state.FooterReducer.footer_top.sms_signup,
+    // referAFriend: state.FooterReducer.footer_top.refer_a_friend,
+    // referenceID: state.GlobalReducers.labels.reference_id,
   };
 };
 

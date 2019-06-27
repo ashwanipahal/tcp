@@ -6,4 +6,5 @@ export default {
   getLabelsData: async () => {
     return mock;
   },
+  processData: data => data,
 };

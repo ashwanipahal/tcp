@@ -6,4 +6,5 @@ export default {
   getHeaderData: async () => {
     return mock;
   },
+  processData: data => data,
 };
