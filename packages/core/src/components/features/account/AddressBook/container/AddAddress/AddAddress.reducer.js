@@ -1,17 +1,17 @@
-import { ADD_USER_ADDRESS_SUCCESS, ADD_USER_ADDRESS_FAIL } from '../../AddressBook.contants';
+import ADD_ADDRESS_CONSTANTS from './AddAddress.constants';
 
 const initialState = {
   addAddressSuccess: [],
   addAddressFail: [],
 };
 
-const AddressBookReducer = (state = initialState, action) => {
+const AddAddressReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_USER_ADDRESS_SUCCESS:
+    case ADD_ADDRESS_CONSTANTS.ADD_USER_ADDRESS_SUCCESS:
       return Object.assign({}, state, {
         addAddressSuccess: action.payload,
       });
-    case ADD_USER_ADDRESS_FAIL:
+    case ADD_ADDRESS_CONSTANTS.ADD_USER_ADDRESS_FAIL:
       return Object.assign({}, state, {
         addAddressFail: action.payload,
       });
@@ -21,4 +21,4 @@ const AddressBookReducer = (state = initialState, action) => {
   }
 };
 
-export default AddressBookReducer;
+export default AddAddressReducer;

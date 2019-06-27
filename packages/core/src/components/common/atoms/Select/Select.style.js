@@ -4,8 +4,9 @@ const textboxStyles = css`
   &.active p {
     top: -50px;
   }
-  .inputField {
-    margin: 0;
+  .selectField {
+    margin: 10px 0 0 0;
+    height: 35px;
     outline: 0;
     line-height: 44px;
     font-size: ${props => props.theme.fonts.fontSize.textbox}px;
@@ -50,11 +51,11 @@ const textboxStyles = css`
       border-color: ${props.theme.fieldBorderDisabledColor};
     `
         : ''};
-
     &:focus + p {
       top: -50px;
     }
   }
+
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 

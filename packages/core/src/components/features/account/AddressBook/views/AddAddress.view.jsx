@@ -5,13 +5,17 @@ import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import store from './Form/store';
 import AddressValidationForm from './Form/FieldLevelValidationForm';
 
-const AddressBook = handleSubmit => {
+const onSubmitForm = props => {
+  alert('hi');
+};
+
+const AddAddress = ({ onSubmit }) => {
   return (
     <form>
       <Grid>
         <br />
         <Provider store={store}>
-          <AddressValidationForm handleSubmit={handleSubmit} />
+          <AddressValidationForm onSubmit={onSubmitForm} />
         </Provider>
       </Grid>
     </form>
@@ -20,4 +24,4 @@ const AddressBook = handleSubmit => {
 
 export default reduxForm({
   form: 'addressinfo', // a unique identifier for this form
-})(AddressBook);
+})(AddAddress);

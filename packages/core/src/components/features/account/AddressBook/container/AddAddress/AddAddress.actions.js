@@ -1,25 +1,21 @@
-import {
-  ADD_USER_ADDRESS_REQ,
-  ADD_USER_ADDRESS_SUCCESS,
-  ADD_USER_ADDRESS_FAIL,
-} from './AddressBook.contants';
+import ADD_ADDRESS_CONSTANTS from './AddAddress.constants';
 
 export const addAddressReq = payload => {
   return {
-    type: ADD_USER_ADDRESS_REQ,
+    type: ADD_ADDRESS_CONSTANTS.ADD_USER_ADDRESS_REQ,
     payload,
   };
 };
 
 export const addAddressSuccess = payload => {
   return {
-    type: ADD_USER_ADDRESS_SUCCESS,
+    type: ADD_ADDRESS_CONSTANTS.ADD_USER_ADDRESS_SUCCESS,
     payload,
   };
 };
 export const addAddressFail = payload => {
   return {
-    type: ADD_USER_ADDRESS_FAIL,
+    type: ADD_ADDRESS_CONSTANTS.ADD_USER_ADDRESS_FAIL,
     payload,
   };
 };

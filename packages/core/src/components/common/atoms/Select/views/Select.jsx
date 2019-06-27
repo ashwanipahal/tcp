@@ -3,7 +3,7 @@ import React from 'react';
 import type { Node } from 'react';
 import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
 import withStyles from '../../../hoc/withStyles';
-import StyledTextBox from '../TextBox.style';
+import StyledTextBox from '../Select.style';
 
 /**
  * @param {object} props : Props for button
@@ -26,55 +26,60 @@ type Props = {
   meta: { touched: any, error: any, warning: any },
   input: any,
   Value: any,
+  options: any,
 };
-
-const TextBox = ({
+const SelectBox = ({
   className,
   id,
   ariaLabel,
   name,
-  type,
   placeholder,
   isErrorState,
   isSuccessState,
   input,
   Value,
+  options,
   meta: { touched, error, warning },
-}: Props): Node => {
-  const elemValue = input.value;
-  return (
-    <label htmlFor={name} tabIndex="-1" className={className}>
-      <input
-        {...input}
-        id={id}
-        aria-label={ariaLabel}
-        className="inputField"
-        name={name}
-        type={type}
-        isSuccessState={isSuccessState}
-        value={Value}
-      />
-      {/* commented onChange={onChangeHandler} */}
-      <BodyCopy bodySize="two" FormVariation="float" BodycolorLg="primary" tag="p" className="">
-        {placeholder}
-      </BodyCopy>
-      {touched &&
-        ((error && (
-          <BodyCopy ErrorMsg="error" bodySize="two" tag="span">
-            {error}
-            {!elemValue && placeholder}
+}: Props): Node => (
+  <label htmlFor={name} tabIndex="-1" className={className}>
+    <select
+      {...input}
+      id={id}
+      aria-label={ariaLabel}
+      className="selectField"
+      name={name}
+      isSuccessState={isSuccessState}
+      value={Value}
+    >
+      {options &&
+        options.map(option => {
+          return (
+            <option value={option.id} id={option.id} key={option.id} className="nav-link-wrapper">
+              {option.displayName}
+            </option>
+          );
+        })}
+    </select>
+    {/* commented onChange={onChangeHandler} */}
+    <BodyCopy bodySize="two" FormVariation="float" BodycolorLg="primary" tag="p">
+      {placeholder}
+    </BodyCopy>
+    {touched &&
+      ((error && (
+        <BodyCopy ErrorMsg="error" bodySize="two" tag="span">
+          {error}
+          {placeholder}
+        </BodyCopy>
+      )) ||
+        (warning && (
+          <BodyCopy bodySize="two" tag="span">
+            {warning}
           </BodyCopy>
-        )) ||
-          (warning && (
-            <BodyCopy bodySize="two" tag="span">
-              {warning}
-            </BodyCopy>
-          )))}
-    </label>
-  );
-};
+        )))}
+  </label>
+);
 
-TextBox.defaultProps = {
+SelectBox.defaultProps = {
   id: '',
   ariaLabel: '',
   name: '',
@@ -85,5 +90,5 @@ TextBox.defaultProps = {
   onChangeHandler: () => {},
 };
 
-export default withStyles(TextBox, StyledTextBox);
-export { TextBox as TextBoxVanilla };
+export default withStyles(SelectBox, StyledTextBox);
+export { SelectBox as SelectBoxVanilla };
