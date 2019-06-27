@@ -2,8 +2,8 @@ import { css } from 'styled-components';
 
 export default css`
   height: 425px;
-  margin-bottom: 32px;
-  margin-top: 32px;
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
   overflow: hidden;
   position: relative;
 
@@ -17,8 +17,8 @@ export default css`
 
   @media ${props => props.theme.mediaQuery.large} {
     height: 541px;
-    margin-bottom: 48px;
-    margin-top: 48px;
+    margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+    margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
   }
 
   .moduleH__header--wrapper {
@@ -31,7 +31,7 @@ export default css`
     }
 
     @media ${props => props.theme.mediaQuery.medium} {
-      margin-top: 26px;
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }
 
