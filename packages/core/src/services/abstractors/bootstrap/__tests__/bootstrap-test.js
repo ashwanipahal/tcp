@@ -6,6 +6,7 @@ import headerMock from '../header/mock';
 import footerMock from '../footer/mock';
 
 jest.mock('../layout/layout');
+jest.mock('../../../handler/handler');
 
 it('abstractor - bootstrap', () => {
   return bootstrap(['homepage']).then(data => {
