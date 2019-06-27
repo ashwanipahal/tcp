@@ -210,6 +210,11 @@ const CarouselStyle = styled.div`
   .slick-dots li button:focus:before {
     opacity: 1;
   }
+  .button {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+  }
 `;
 
 export default CarouselStyle;

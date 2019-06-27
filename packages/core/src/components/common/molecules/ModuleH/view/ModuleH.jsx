@@ -54,7 +54,14 @@ class ModuleH extends React.Component {
           <ModuleHCTALinks dataCTALinks={divCTALinks} currentIndex={{ current, next }} />
         </Col>
         <Col colSize={colSize}>
-          <Carousel options={carouselConfig} carouselConfig={{ type: 'light', arrow: 'none' }}>
+          <Carousel
+            options={carouselConfig}
+            autoplay
+            carouselConfig={{
+              type: 'light',
+              arrow: 'none',
+            }}
+          >
             {divCTALinks.map((item, index) => {
               return <Image key={index.toString()} alt={item.image.alt} src={item.image.url} />;
             })}

@@ -13,17 +13,58 @@ import withStyles from '../../hoc/withStyles';
 
 const defaults = { ...config.CAROUSEL_DEFAULTS };
 
-const Carousel = ({ options, children, carouselConfig }) => {
-  const settings = { ...defaults, ...options };
+class Carousel extends React.Component {
+  constructor(props) {
+    super(props);
+    this.slider = null;
+    this.getSlider = this.getSlider.bind(this);
+    this.play = this.play.bind(this);
+    this.pause = this.pause.bind(this);
+    this.toggleAutoplay = this.toggleAutoplay.bind(this);
+    this.state = {
+      play: true,
+    };
+  }
 
-  return (
-    <CarouselStyle className="TCP_Carousel_Wrapper" carouselConfig={carouselConfig}>
-      <Slider {...settings} className="TCP_Carousel">
-        {!children ? null : children}
-      </Slider>
-    </CarouselStyle>
-  );
-};
+  getSlider(element) {
+    this.slider = element;
+  }
+
+  play() {
+    this.slider.slickPlay();
+  }
+
+  pause() {
+    this.slider.slickPause();
+  }
+
+  toggleAutoplay() {
+    const { play } = this.state;
+    if (play) {
+      this.play();
+    } else {
+      this.pause();
+    }
+  }
+
+  render() {
+    const { autoplay, options, children, carouselConfig } = this.props;
+    const settings = { ...defaults, ...options };
+    const { play } = this.state;
+    return (
+      <CarouselStyle className="TCP_Carousel_Wrapper" carouselConfig={carouselConfig}>
+        <Slider className="TCP_Carousel" ref={this.getSlider} {...settings}>
+          {!children ? null : children}
+        </Slider>
+        {autoplay ? (
+          <button className="button" onClick={this.toggleAutoplay}>
+            {play ? 'Pause' : 'Play'}
+          </button>
+        ) : null}
+      </CarouselStyle>
+    );
+  }
+}
 
 Carousel.propTypes = {
   children: PropTypes.arrayOf(PropTypes.shape({})),
@@ -31,6 +72,7 @@ Carousel.propTypes = {
     autoplaySpeed: PropTypes.number,
     speed: PropTypes.number,
   }),
+  autoplay: PropTypes.bool,
   carouselConfig: PropTypes.objectOf(PropTypes.string),
 };
 
@@ -40,6 +82,7 @@ Carousel.defaultProps = {
     autoplaySpeed: PropTypes.number,
     speed: PropTypes.number,
   }),
+  autoplay: PropTypes.bool,
   carouselConfig: PropTypes.objectOf(PropTypes.string),
 };
 

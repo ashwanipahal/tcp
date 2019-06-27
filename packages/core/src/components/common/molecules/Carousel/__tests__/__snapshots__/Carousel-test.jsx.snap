@@ -50,5 +50,11 @@ exports[`Carousel component renders correctly 1`] = `
   >
     <Component />
   </Slider>
+  <button
+    className="button"
+    onClick={[Function]}
+  >
+    Pause
+  </button>
 </styled.div>
 `;
