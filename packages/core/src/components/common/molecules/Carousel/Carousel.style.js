@@ -6,8 +6,14 @@ const lightArrow = getIconPath('icon-carrot-white');
 const CarouselStyle = styled.div`
   .slick-slider {
     position: relative;
-    ${props => (props.carouselConfig.arrow === 'small' ? 'padding: 0 38px' : 'padding: 0 24px')};
-    ${props => (props.carouselConfig.arrow === 'none' ? 'padding: 0px' : 'padding: 0 24px')};
+    ${props =>
+      props.carouselConfig.arrow === 'small'
+        ? 'padding: 0 38px'
+        : `padding: 0 ${props.theme.spacing.ELEM_SPACING.LRG}`};
+    ${props =>
+      props.carouselConfig.arrow === 'none'
+        ? 'padding: 0px'
+        : `padding: 0 ${props.theme.spacing.ELEM_SPACING.LRG}`};
     line-height: 14px;
     text-align: center;
     display: block;

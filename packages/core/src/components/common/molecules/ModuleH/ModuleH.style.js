@@ -24,7 +24,7 @@ export default css`
   .moduleH__header--wrapper {
     margin-top: 38px;
     position: absolute;
-    z-index: ${props => props.theme.zindex.zindex.zDrawer};
+    z-index: ${props => props.theme.zindex.zDrawer};
 
     @media ${props => props.theme.mediaQuery.smallMax} {
       margin: 18px 0 0 11px;
