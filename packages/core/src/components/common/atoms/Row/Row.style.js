@@ -32,7 +32,7 @@ const StyledRow = css`
     }`
     )}
 
-  div:last-child {
+  > div:last-child {
     padding-right: 0;
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};

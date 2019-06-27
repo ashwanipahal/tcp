@@ -5,4 +5,5 @@ export default {
   'icon-pinterest': '/static/images/pinterest.svg',
   'icon-carrot-grey': '/static/images/carrot-icon-grey.svg',
   'icon-carrot-white': '/static/images/carrot-icon-white.svg',
+  'icon-done': '/static/images/done.svg',
 };

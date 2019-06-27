@@ -1,9 +1,9 @@
 import { filterActions } from 'redux-ignore';
-import { REDUCER_ACTION_MAPPING } from '../constants/reducer';
+import { REDUCER_ACTION_MAPPING } from '../constants/reducer.constants';
 
 /*
 getReducerKeyByAction is used to get the key of reducer in redux-state by name of Action dispatched.
-This is being used in cache-util to automatically derive which reducer will be validated for caching.
+This is being used in cache.util to automatically derive which reducer will be validated for caching.
 arguments:
 actionName - string - Name of the action dispatched
 */

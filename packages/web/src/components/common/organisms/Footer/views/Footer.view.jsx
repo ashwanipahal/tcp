@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
+import Button from '@tcp/core/src/components/common/atoms/Button';
+import { BodyCopy } from '@tcp/core/styles/themes/TCP/typotheme';
+import RichText from '@tcp/core/src/components/common/atoms/RichText/views/RichText';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import FooterMiddleMobile from '@tcp/core/src/components/features/footer/FooterMiddleMobile';
 import FooterMiddleDesktop from '@tcp/core/src/components/features/footer/FooterMiddleDesktop/views';
@@ -9,22 +12,72 @@ import FooterMiddleDesktop from '@tcp/core/src/components/features/footer/Footer
 import style from '../Footer.style';
 import { LegalLinks, Copyright, SocialMediaLinks } from '../../../molecules';
 
-const Footer = ({ className, copyrightText, legalLinks, navLinks, socialMediaLinks }) => (
+const Footer = ({
+  className,
+  copyrightText,
+  legalLinks,
+  navLinks,
+  socialMediaLinks,
+  emailSignup,
+  smsSignup,
+  referAFriend,
+  referenceID,
+}) => (
   <footer className={className}>
     <div className="footer-top">
       <Row>
         <Col
-          className="footer-top__slot--1"
+          className="footer-top__slots"
           colSize={{
-            large: 8,
+            large: 3,
             medium: 4,
             small: 6,
           }}
-        />
+          ignoreGutter={{
+            small: true,
+          }}
+        >
+          <Button customStyle="shadow-button" title={emailSignup.title}>
+            <RichText richTextHtml={emailSignup.text} />
+          </Button>
+        </Col>
+        <Col
+          className="footer-top__slots"
+          colSize={{
+            large: 3,
+            medium: 4,
+            small: 6,
+          }}
+          ignoreGutter={{
+            small: true,
+            medium: true,
+          }}
+        >
+          <Button customStyle="shadow-button" title={smsSignup.title}>
+            <RichText richTextHtml={smsSignup.text} />
+          </Button>
+        </Col>
+        <Col
+          className="footer-top__slots"
+          colSize={{
+            large: 3,
+            medium: 4,
+            small: 6,
+          }}
+          ignoreGutter={{
+            small: true,
+          }}
+        >
+          <span id="extole_zone_global_footer" title={referAFriend.title}>
+            <Button customStyle="shadow-button">
+              <RichText richTextHtml={referAFriend.text} />
+            </Button>
+          </span>
+        </Col>
         <Col
           className="footer-top__slot--2"
           colSize={{
-            large: 4,
+            large: 3,
             medium: 4,
             small: 6,
           }}
@@ -77,6 +130,19 @@ const Footer = ({ className, copyrightText, legalLinks, navLinks, socialMediaLin
           }}
         />
       </Row>
+      <Row fullBleed>
+        <Col
+          colSize={{
+            large: 12,
+            medium: 8,
+            small: 6,
+          }}
+        >
+          <BodyCopy className="reference-id" bodySize="five" tag="p">
+            {referenceID}
+          </BodyCopy>
+        </Col>
+      </Row>
     </div>
   </footer>
 );
@@ -95,6 +161,19 @@ Footer.propTypes = {
     icon_class: PropTypes.string,
     title: PropTypes.string,
   }),
+  emailSignup: PropTypes.shape({
+    title: PropTypes.string,
+    text: PropTypes.string,
+  }),
+  smsSignup: PropTypes.shape({
+    title: PropTypes.string,
+    text: PropTypes.string,
+  }),
+  referAFriend: PropTypes.shape({
+    title: PropTypes.string,
+    text: PropTypes.string,
+  }),
+  referenceID: PropTypes.string,
 };
 
 Footer.defaultProps = {
@@ -102,6 +181,10 @@ Footer.defaultProps = {
   legalLinks: [],
   navLinks: [],
   socialMediaLinks: [],
+  emailSignup: {},
+  smsSignup: {},
+  referAFriend: {},
+  referenceID: '',
 };
 
 export default withStyles(Footer, style);
