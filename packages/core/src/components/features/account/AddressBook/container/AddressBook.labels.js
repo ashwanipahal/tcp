@@ -12,7 +12,7 @@ const labels = {
   delete: 'Delete',
   defaultBilling: 'DEFAULT BILLING',
   defaultShippingSuccessMessage: 'Your account has been updated',
-  defaultShippingSuccessFail: 'Request failed, Please try again.',
+  defaultShippingSuccessFail: 'Your action could not be completed due to a system error',
 };
 
 export default labels;
