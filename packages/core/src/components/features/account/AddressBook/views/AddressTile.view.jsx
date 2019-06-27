@@ -84,3 +84,4 @@ class AddressBookTile extends React.Component<Props> {
 }
 
 export default withStyles(AddressBookTile, styles);
+export { AddressBookTile as AddressBookTileVanilla };

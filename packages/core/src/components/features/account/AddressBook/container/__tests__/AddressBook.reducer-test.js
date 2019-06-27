@@ -26,62 +26,14 @@ describe('Address List reducer', () => {
     };
     addressList = [
       {
-        addressId: '158247',
-        addressLine: ['1234 Market St', '', ''],
-        addressType: 'ShippingAndBilling',
-        attributes: [
-          {
-            key: 'addressField2',
-            value: '2',
-          },
-          {
-            key: 'addressField3',
-            value: '19107',
-          },
-        ],
-        city: 'Philadelphia',
-        country: 'US',
-        email1: 'NAMAN.JAIN@PUBLICISSAPIENT.COM',
-        firstName: 'naman',
-        lastName: 'jain',
-        nickName: 'sb_2019-06-21 01:23:49.834',
-        phone1: '2025551011',
-        phone1Publish: 'false',
+        nickName: payload.nickName,
         primary: 'false',
-        state: 'PA',
-        xcont_isBillingAddress: 'false',
-        xcont_isShippingAddress: 'true',
-        zipCode: '19107',
       },
     ];
     const addreListWithTrue = List([
       {
-        addressId: '158247',
-        addressLine: ['1234 Market St', '', ''],
-        addressType: 'ShippingAndBilling',
-        attributes: [
-          {
-            key: 'addressField2',
-            value: '2',
-          },
-          {
-            key: 'addressField3',
-            value: '19107',
-          },
-        ],
-        city: 'Philadelphia',
-        country: 'US',
-        email1: 'NAMAN.JAIN@PUBLICISSAPIENT.COM',
-        firstName: 'naman',
-        lastName: 'jain',
-        nickName: 'sb_2019-06-21 01:23:49.834',
-        phone1: '2025551011',
-        phone1Publish: 'false',
+        nickName: payload.nickName,
         primary: 'true',
-        state: 'PA',
-        xcont_isBillingAddress: 'false',
-        xcont_isShippingAddress: 'true',
-        zipCode: '19107',
       },
     ]);
     const initialState = fromJS({
@@ -101,14 +53,13 @@ describe('Address List reducer', () => {
     );
   });
   it('should handle failure default shipping address', () => {
-    const error = {
+    const error = fromJS({
       statusCode: 400,
       message: 'Object not found',
-    };
-    const initialState = {
+    });
+    const initialState = fromJS({
       error: {},
-      list: List([{}]),
-    };
+    });
     expect(
       AddressBookReducer(initialState, {
         type: SHIPPING_ADDRESS_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_FAILED,
