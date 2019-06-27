@@ -13,7 +13,17 @@ type Props = {
   className: string,
 };
 
-export const AddressBookTile = ({ address, labels, className }: Props) => {
+const onDeleteAddressClick = (e, address, openAccountModalComponent) => {
+  e.preventDefault();
+  openAccountModalComponent('delete', address);
+};
+
+export const AddressBookTile = ({
+  address,
+  labels,
+  className,
+  openAccountModalComponent,
+}: Props) => {
   return (
     <div className={className}>
       <div className="addressTile__row--twoCol">
@@ -38,7 +48,13 @@ export const AddressBookTile = ({ address, labels, className }: Props) => {
         <Anchor fontSizeVariation="medium" underline to="/#" anchorVariation="primary">
           {labels.edit}
         </Anchor>
-        <Anchor fontSizeVariation="medium" underline to="/#" anchorVariation="primary">
+        <Anchor
+          fontSizeVariation="medium"
+          underline
+          to="/#"
+          anchorVariation="primary"
+          onClick={e => onDeleteAddressClick(e, address, openAccountModalComponent)}
+        >
           {labels.delete}
         </Anchor>
       </div>
