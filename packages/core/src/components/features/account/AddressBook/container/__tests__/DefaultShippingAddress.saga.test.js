@@ -1,4 +1,3 @@
-// @flow
 import { call, put, takeLatest } from 'redux-saga/effects';
 import {
   updateDefaultShippingAddress,

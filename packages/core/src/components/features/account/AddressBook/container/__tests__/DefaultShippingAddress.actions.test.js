@@ -1,4 +1,3 @@
-// @flow
 import * as actions from '../DefaultShippingAddress.actions';
 import SHIPPING_ADDRESS_CONSTANTS from '../../DefaultShippingAddress.constants';
 

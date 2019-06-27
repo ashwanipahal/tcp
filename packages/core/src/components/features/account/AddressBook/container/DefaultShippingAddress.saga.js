@@ -1,6 +1,4 @@
-// @flow
 import { call, put, takeLatest } from 'redux-saga/effects';
-import type { Saga } from 'redux-saga';
 import SHIPPING_ADDRESS_CONSTANTS from '../DefaultShippingAddress.constants';
 import {
   setDefaultShippingAddressSuccess,
@@ -9,7 +7,7 @@ import {
 import fetchData from '../../../../../service/API';
 import endpoints from '../../../../../service/endpoint';
 
-export function* updateDefaultShippingAddress({ payload }): Saga<Void> {
+export function* updateDefaultShippingAddress({ payload }) {
   try {
     const { baseURI, relURI, method } = endpoints.setDefaultShippingAddress;
     const res = yield call(
@@ -31,7 +29,7 @@ export function* updateDefaultShippingAddress({ payload }): Saga<Void> {
   }
 }
 
-export function* SetDefaultShippingAddressSaga(): Saga<void> {
+export function* SetDefaultShippingAddressSaga() {
   yield takeLatest(
     SHIPPING_ADDRESS_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_REQUEST,
     updateDefaultShippingAddress
