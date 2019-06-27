@@ -12,6 +12,12 @@ function getHeadingColm(props) {
       {[1, 2, 3, 4, 5, 6].map(i => (
         <Heading {...props} key={i} variant={`h${i}`}>{`H${i}`}</Heading>
       ))}
+      <Heading {...props} variant="nav">
+        NAV
+      </Heading>
+      <Heading {...props} variant="listMenu">
+        List-menu
+      </Heading>
     </>
   );
 }
@@ -19,41 +25,41 @@ function getHeadingColm(props) {
 function getBodyColm(props, bodyExampleType = 'P1') {
   return (
     <>
-      <BodyCopy {...props} fontSize={2}>
-        {`${bodyExampleType} - 48`}
+      <BodyCopy {...props} fontSize="fs10">
+        {`${bodyExampleType} - 10`}
       </BodyCopy>
-      <BodyCopy {...props} fontSize={3}>
-        {`${bodyExampleType} - 42`}
-      </BodyCopy>
-      <BodyCopy {...props} fontSize={5}>
-        {`${bodyExampleType} - 36`}
-      </BodyCopy>
-      <BodyCopy {...props} fontSize={6}>
-        {`${bodyExampleType} - 32`}
-      </BodyCopy>
-      <BodyCopy {...props} fontSize={7}>
-        {`${bodyExampleType} - 28`}
-      </BodyCopy>
-      <BodyCopy {...props} fontSize={8}>
-        {`${bodyExampleType} - 24`}
-      </BodyCopy>
-      <BodyCopy {...props} fontSize={9}>
-        {`${bodyExampleType} - 22`}
-      </BodyCopy>
-      <BodyCopy {...props} fontSize={11}>
-        {`${bodyExampleType} - 18`}
-      </BodyCopy>
-      <BodyCopy {...props} fontSize={12}>
-        {`${bodyExampleType} - 16`}
-      </BodyCopy>
-      <BodyCopy {...props} fontSize={13}>
-        {`${bodyExampleType} - 14`}
-      </BodyCopy>
-      <BodyCopy {...props} fontSize={15}>
+      <BodyCopy {...props} fontSize="fs12">
         {`${bodyExampleType} - 12`}
       </BodyCopy>
-      <BodyCopy {...props} fontSize={16}>
-        {`${bodyExampleType} - 10`}
+      <BodyCopy {...props} fontSize="fs14">
+        {`${bodyExampleType} - 14`}
+      </BodyCopy>
+      <BodyCopy {...props} fontSize="fs16">
+        {`${bodyExampleType} - 16`}
+      </BodyCopy>
+      <BodyCopy {...props} fontSize="fs18">
+        {`${bodyExampleType} - 18`}
+      </BodyCopy>
+      <BodyCopy {...props} fontSize="fs22">
+        {`${bodyExampleType} - 22`}
+      </BodyCopy>
+      <BodyCopy {...props} fontSize="fs24">
+        {`${bodyExampleType} - 24`}
+      </BodyCopy>
+      <BodyCopy {...props} fontSize="fs28">
+        {`${bodyExampleType} - 28`}
+      </BodyCopy>
+      <BodyCopy {...props} fontSize="fs32">
+        {`${bodyExampleType} - 32`}
+      </BodyCopy>
+      <BodyCopy {...props} fontSize="fs36">
+        {`${bodyExampleType} - 36`}
+      </BodyCopy>
+      <BodyCopy {...props} fontSize="fs42">
+        {`${bodyExampleType} - 42`}
+      </BodyCopy>
+      <BodyCopy {...props} fontSize="fs48">
+        {`${bodyExampleType} - 48`}
       </BodyCopy>
     </>
   );
@@ -117,14 +123,14 @@ const Test = () => {
         <Col colSize={2}>{getBodyColm({ textAlign: 'center' })}</Col>
         {/* TODO: Need extra bold font file */}
         <Col colSize={2}>{getBodyColm({ fontWeight: 'semibold' })}</Col>
-        <Col colSize={2}>{getBodyColm({ fontWeight: 'semibold', textAlign: 'center' })}</Col>
+        <Col colSize={2}>{getBodyColm({ fontWeight: 'black', textAlign: 'center' })}</Col>
       </Row>
 
       <Row>
         <Col colSize={2}>{getBodyColm({ color: secondaryTextColor })}</Col>
         <Col colSize={2}>{getBodyColm({ color: hintTextColor })}</Col>
         <Col colSize={2}>{getBodyColm({ color: disabledTextColor })}</Col>
-        <BlackCol colSize={2}>{getBodyColm({ color: 'white', fontWeight: 'bold' })}</BlackCol>
+        <BlackCol colSize={2}>{getBodyColm({ color: 'white', fontWeight: 'black' })}</BlackCol>
       </Row>
 
       <Row>
@@ -155,7 +161,7 @@ const Test = () => {
             {
               fontFamily: 'secondary',
               color: 'white',
-              fontWeight: 'bold',
+              fontWeight: 'black',
             },
             'P2'
           )}

@@ -4,9 +4,10 @@ import { PropTypes } from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../Heading.style';
 
-const headingVariants = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+const headingVariants = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'nav', 'listMenu'];
 const Heading = ({ children, className, component, variant }) => {
-  const componentVariant = headingVariants.indexOf(variant) !== -1 ? variant : 'h1';
+  let componentVariant = headingVariants.indexOf(variant) !== -1 ? variant : 'h1';
+  componentVariant = componentVariant === 'listMenu' ? 'li' : componentVariant;
   const Component = component || componentVariant;
   return <Component className={className}>{children}</Component>;
 };

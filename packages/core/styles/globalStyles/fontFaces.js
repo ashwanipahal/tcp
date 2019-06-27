@@ -23,7 +23,7 @@ export default css`
   @font-face {
     font-family: 'Nunito';
     src: url('/static/fonts/Nunito-ExtraBold.ttf') format('truetype');
-    font-weight: 700;
+    font-weight: 800;
     font-style: normal;
   }
   @font-face {
@@ -54,7 +54,7 @@ export default css`
   @font-face {
     font-family: 'Montserrat';
     src: url('/static/fonts/Montserrat-ExtraBold.ttf') format('truetype');
-    font-weight: 700;
+    font-weight: 800;
     font-style: normal;
   }
   @font-face {
