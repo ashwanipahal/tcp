@@ -3,15 +3,27 @@ import ADD_ADDRESS_CONSTANTS from './AddAddress.constants';
 import { addAddressReq, addAddressSuccess, addAddressFail } from './AddAddress.actions';
 import fetchData from '../../../../../../service/API';
 import endpoints from '../../../../../../service/endpoint';
+import { objectToQueryString } from '../../../../../../../../web/src/utils/utils';
 
 function* addAddressGet(payload) {
   try {
     const { baseURI, relURI, method } = endpoints.addAddress;
+    const { payload: formData } = payload;
+
+    const queryDataObject = {
+      a1: formData.address1,
+      city: formData.city,
+      state: formData.state,
+      postal: formData.zip,
+      ctry: formData.country === 'Canada' ? 'CA' : 'US',
+    };
+
+    const fullRelURI = `${relURI}${objectToQueryString(queryDataObject)}`;
 
     const res = yield call(
       fetchData,
       baseURI,
-      relURI,
+      fullRelURI,
       {
         langId: -1,
         catalogId: 10551,

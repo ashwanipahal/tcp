@@ -57,9 +57,9 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
   }
 
   validatezip = country => {
-    debugger;
     return country === 'Canada' ? zipcodeCA : zipcodeUS;
   };
+
   handleBlur = e => {
     e.target.value
       ? e.target.parentElement.classList.add('active')
@@ -107,24 +107,6 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
     this.props.dispatch(change('AddressValidationForm', 'country', address.country));
     this.props.dispatch(change('AddressValidationForm', 'street', address.street));
   }
-
-  // handleSubmit = (props) => {
-  // debugger
-  //   const { FirstName,city,zip,state,country,street } = props;
-  //   const { email, password } = this.state;
-  //   return {
-  //     id: '63987687',
-  //     format: 'json',
-  //     act: 'Check',
-  //     cols: 'Plus4,DeliveryIndicator',
-  //     a1: street,
-  //     city: city,
-  //     state: state,
-  //     postal: zip,
-  //     ctry: country
-
-  //   };
-  // };
 
   render() {
     const { handleSubmit, pristine, reset, submitting } = this.props;

@@ -5,21 +5,7 @@ import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import store from './Form/store';
 import AddressValidationForm from './Form/FieldLevelValidationForm';
 
-const onSubmitForm = mydata => {
-  // submitInfo({
-  //       id: '63987687',
-  //     format: 'json',
-  //     act: 'Check',
-  //     cols: 'Plus4,DeliveryIndicator',
-  //     a1: street,
-  //     city: city,
-  //     state: state,
-  //     postal: zip,
-  //     ctry: country,
-  // })
-};
-
-const AddAddress = ({ onSubmit, submitAddAddressForm }) => {
+const AddAddress = ({ submitAddAddressForm }: Props) => {
   return (
     <form>
       <Grid>

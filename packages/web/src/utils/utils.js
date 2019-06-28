@@ -17,6 +17,12 @@ export const getLocator = locator => {
   return locators[locator];
 };
 
+export const objectToQueryString = params => {
+  return Object.keys(params)
+    .map(key => `${key}=${params[key]}`)
+    .join('&');
+};
+
 export default {
   getIconPath,
   getLocator,

@@ -18,8 +18,7 @@ const endpoints = {
   addAddress: {
     method: 'get',
     baseURI: 'https://personator.melissadata.net/v3/WEB/ContactVerify/doContactVerify',
-    relURI:
-      '?id=63987687&format=json&act=Check&cols=Plus4%2CDeliveryIndicator&a1=2303%20Morgan%20Street&city=Irving&state=TX&postal=75062&ctry=US',
+    relURI: '?id=63987687&format=json&act=Check&cols=Plus4%2CDeliveryIndicator&',
   },
   login: {
     method: 'post',

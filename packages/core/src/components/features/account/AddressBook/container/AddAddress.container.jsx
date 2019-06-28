@@ -10,7 +10,7 @@ import AddAddress from '../views/AddAddress.view';
  */
 
 type Props = {
-  onSubmit: (SyntheticEvent<>, Object) => void,
+  submitAddAddressForm: any,
 };
 
 const AddaddressContainer = ({ submitAddAddressForm }: Props) => {
