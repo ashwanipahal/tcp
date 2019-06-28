@@ -12,6 +12,6 @@ it('Footer Abstractor | ', () => {
       channel: 'Desktop',
     })
     .then(data => {
-      expect(data).toMatchObject(FooterMock);
+      expect(data).toMatchObject(footer.processData(FooterMock));
     });
 });

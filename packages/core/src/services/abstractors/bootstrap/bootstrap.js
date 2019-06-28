@@ -18,6 +18,9 @@ const bootstrapModules = ['labels', 'header', 'footer'];
  * @param {String} page Page name to be loaded, needs to be in sync with GraphQL query
  */
 const fetchBootstrapData = async ({ pages, labels, brand, country, channel }) => {
+  /**
+   * Sets up query params for page requests
+   */
   const pageBootstrapParams = pages.map(page => ({
     name: 'layout',
     data: {
@@ -25,6 +28,9 @@ const fetchBootstrapData = async ({ pages, labels, brand, country, channel }) =>
     },
   }));
 
+  /**
+   * Sets up query params for modules requests
+   */
   const modulesBootstrapParams = bootstrapModules.map(module => {
     let data = {};
     switch (module) {

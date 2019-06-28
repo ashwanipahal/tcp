@@ -20,4 +20,7 @@ export default {
   moduleD_image: 'moduleD_image',
   moduleD_textlink: 'moduleD_textlink',
   moduleD_button: 'moduleD_button',
+  // Brand Tabs
+  'header__brand-tab--tcp': 'global_TCPimg',
+  'header__brand-tab-gymboree': 'global_Gymboreeimg',
 };

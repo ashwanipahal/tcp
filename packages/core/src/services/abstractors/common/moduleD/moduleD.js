@@ -9,11 +9,14 @@ const Abstractor = {
     return handler
       .fetchModuleDataFromGraphQL({ name: module, data })
       .then(response => response.data)
-      .then(Abstractor.processData);
+      .then(Abstractor.processData)
+      .catch(Abstractor.handleError);
   },
   getMock: () => {
     return mock;
   },
   processData: data => data,
+  // eslint-disable-next-line no-console
+  handleError: e => console.log(e),
 };
 export default Abstractor;

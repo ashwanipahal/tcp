@@ -8,4 +8,6 @@ export default {
   'icon-done': '/static/images/done.svg',
   'footer__mpr-container--col1': '/static/images/mp-rewards-orange.png',
   'footer__mpr-container--col2': '/static/images/mp-rewards-blue.png',
+  'header__brand-tab--tcp': '/static/images/tcp-logo.svg',
+  'header__brand-tab-gymboree': '/static/images/gymboree-logo.svg',
 };
