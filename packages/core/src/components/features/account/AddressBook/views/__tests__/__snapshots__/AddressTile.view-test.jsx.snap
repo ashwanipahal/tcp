@@ -30,7 +30,7 @@ exports[`AddressTile component should renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="addressTile__row--oneCol"
+    className="addressTile__row"
   >
     <Styled(Anchor)
       anchorVariation="primary"

@@ -9,6 +9,7 @@ import Button from '../../../../common/atoms/Button';
 import AddressListComponent from './AddressList.view';
 import EmptyAddressListComponent from './EmptyAddressList.view';
 import AddressModal from '../../AccountModal';
+import Notification from '../../../../common/molecules/Notification';
 
 // @flow
 
@@ -18,9 +19,17 @@ type Props = {
     addNewAddressCTA: string,
   },
   className: string,
+  onDefaultShippingAddressClick: Object,
 };
 
-export const AddressBook = ({ addresses, labels, className, openAccountModalComponent }: Props) => {
+export const AddressBook = ({
+  addresses,
+  labels,
+  className,
+  onDefaultShippingAddressClick,
+  showDefaultShippingUpdatedMsg,
+  openAccountModalComponent,
+}: Props) => {
   return (
     <div className={className}>
       <Heading
@@ -51,6 +60,7 @@ export const AddressBook = ({ addresses, labels, className, openAccountModalComp
           addresses={addresses}
           labels={labels}
           openAccountModalComponent={openAccountModalComponent}
+          onDefaultShippingAddressClick={onDefaultShippingAddressClick}
         />
       )}
       <AddressModal />
