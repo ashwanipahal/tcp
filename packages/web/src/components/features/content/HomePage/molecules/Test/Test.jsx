@@ -73,74 +73,112 @@ const Test = () => {
   const secondaryTextColor = 'text.secondary';
   const disabledTextColor = 'text.disabled';
   const hintTextColor = 'text.hint';
+  const colSizeConfig = { small: 2, medium: 2, large: 2 };
   return (
     <div>
       <Row>
-        <Col colSize={2}>{getHeadingColm({})}</Col>
-        <Col colSize={2}>{getHeadingColm({ textAlign: 'center' })}</Col>
+        <BodyCopy
+          component="p"
+          fontFamily={['primary', 'secondary']}
+          fontSize={['fs36', 'fs42', 'fs48']}
+          lineHeight="normal"
+          letterSpacing={['ls167', 'ls257']}
+          textAlign={['left', 'center']}
+          color={[disabledTextColor, 'text.primary']}
+        >
+          This is an example of a responsive BodyCopy text;
+        </BodyCopy>
+      </Row>
+      <Row>
+        <Col colSize={colSizeConfig}>{getHeadingColm({})}</Col>
+        <Col colSize={colSizeConfig}>{getHeadingColm({ textAlign: 'center' })}</Col>
 
-        <Col colSize={2}>{getHeadingColm({ color: secondaryTextColor })}</Col>
-        <Col colSize={2}>{getHeadingColm({ color: secondaryTextColor, textAlign: 'center' })}</Col>
+        <Col colSize={colSizeConfig}>{getHeadingColm({ color: secondaryTextColor })}</Col>
+        <Col colSize={colSizeConfig}>
+          {getHeadingColm({ color: secondaryTextColor, textAlign: 'center' })}
+        </Col>
 
-        <Col colSize={2}>{getHeadingColm({ color: hintTextColor })}</Col>
-        <Col colSize={2}>{getHeadingColm({ color: hintTextColor, textAlign: 'center' })}</Col>
+        <Col colSize={colSizeConfig}>{getHeadingColm({ color: hintTextColor })}</Col>
+        <Col colSize={colSizeConfig}>
+          {getHeadingColm({ color: hintTextColor, textAlign: 'center' })}
+        </Col>
 
         <Col colSize={6}>{getHeadingColm({ color: disabledTextColor })}</Col>
         <Col colSize={6}>{getHeadingColm({ color: disabledTextColor, textAlign: 'center' })}</Col>
       </Row>
       <Row>
-        <Col colSize={2}>{getHeadingColm({ color: 'primary.main' })}</Col>
-        <Col colSize={2}>{getHeadingColm({ color: 'primary.main', textAlign: 'center' })}</Col>
+        <Col colSize={colSizeConfig}>{getHeadingColm({ color: 'primary.main' })}</Col>
+        <Col colSize={colSizeConfig}>
+          {getHeadingColm({ color: 'primary.main', textAlign: 'center' })}
+        </Col>
 
-        <Col colSize={2}>{getHeadingColm({ color: 'primary.dark' })}</Col>
-        <Col colSize={2}>{getHeadingColm({ color: 'primary.dark', textAlign: 'center' })}</Col>
+        <Col colSize={colSizeConfig}>{getHeadingColm({ color: 'primary.dark' })}</Col>
+        <Col colSize={colSizeConfig}>
+          {getHeadingColm({ color: 'primary.dark', textAlign: 'center' })}
+        </Col>
 
-        <Col colSize={2}>{getHeadingColm({ color: 'secondary.main' })}</Col>
-        <Col colSize={2}>{getHeadingColm({ color: 'secondary.main', textAlign: 'center' })}</Col>
+        <Col colSize={colSizeConfig}>{getHeadingColm({ color: 'secondary.main' })}</Col>
+        <Col colSize={colSizeConfig}>
+          {getHeadingColm({ color: 'secondary.main', textAlign: 'center' })}
+        </Col>
 
-        <Col colSize={2}>{getHeadingColm({ color: 'secondary.light' })}</Col>
-        <Col colSize={2}>{getHeadingColm({ color: 'secondary.light', textAlign: 'center' })}</Col>
+        <Col colSize={colSizeConfig}>{getHeadingColm({ color: 'secondary.light' })}</Col>
+        <Col colSize={colSizeConfig}>
+          {getHeadingColm({ color: 'secondary.light', textAlign: 'center' })}
+        </Col>
       </Row>
       <Row>
-        <Col colSize={2}>{getHeadingColm({ color: 'green.300' })}</Col>
-        <Col colSize={2}>{getHeadingColm({ color: 'green.300', textAlign: 'center' })}</Col>
+        <Col colSize={colSizeConfig}>{getHeadingColm({ color: 'green.300' })}</Col>
+        <Col colSize={colSizeConfig}>
+          {getHeadingColm({ color: 'green.300', textAlign: 'center' })}
+        </Col>
 
-        <BlackCol colSize={2}>{getHeadingColm({ color: 'white' })}</BlackCol>
-        <BlackCol colSize={2}>{getHeadingColm({ textAlign: 'center', color: 'white' })}</BlackCol>
+        <BlackCol colSize={colSizeConfig}>{getHeadingColm({ color: 'white' })}</BlackCol>
+        <BlackCol colSize={colSizeConfig}>
+          {getHeadingColm({ textAlign: 'center', color: 'white' })}
+        </BlackCol>
       </Row>
       <Row>
         <h3>Heading with div tag</h3>
       </Row>
       <Row>
-        <Col colSize={2}>{getHeadingColm({ color: 'green.300', component: 'div' })}</Col>
-        <Col colSize={2}>
+        <Col colSize={colSizeConfig}>
+          {getHeadingColm({ color: 'green.300', component: 'div' })}
+        </Col>
+        <Col colSize={colSizeConfig}>
           {getHeadingColm({ textAlign: 'center', color: 'green.300', component: 'div' })}
         </Col>
       </Row>
 
       <Row>
-        <Col colSize={2}>{getBodyColm({})}</Col>
-        <Col colSize={2}>{getBodyColm({ textAlign: 'center' })}</Col>
+        <Col colSize={colSizeConfig}>{getBodyColm({})}</Col>
+        <Col colSize={colSizeConfig}>{getBodyColm({ textAlign: 'center' })}</Col>
         {/* TODO: Need extra bold font file */}
-        <Col colSize={2}>{getBodyColm({ fontWeight: 'semibold' })}</Col>
-        <Col colSize={2}>{getBodyColm({ fontWeight: 'black', textAlign: 'center' })}</Col>
+        <Col colSize={colSizeConfig}>{getBodyColm({ fontWeight: 'semibold' })}</Col>
+        <Col colSize={colSizeConfig}>
+          {getBodyColm({ fontWeight: 'black', textAlign: 'center' })}
+        </Col>
       </Row>
 
       <Row>
-        <Col colSize={2}>{getBodyColm({ color: secondaryTextColor })}</Col>
-        <Col colSize={2}>{getBodyColm({ color: hintTextColor })}</Col>
-        <Col colSize={2}>{getBodyColm({ color: disabledTextColor })}</Col>
-        <BlackCol colSize={2}>{getBodyColm({ color: 'white', fontWeight: 'black' })}</BlackCol>
+        <Col colSize={colSizeConfig}>{getBodyColm({ color: secondaryTextColor })}</Col>
+        <Col colSize={colSizeConfig}>{getBodyColm({ color: hintTextColor })}</Col>
+        <Col colSize={colSizeConfig}>{getBodyColm({ color: disabledTextColor })}</Col>
+        <BlackCol colSize={colSizeConfig}>
+          {getBodyColm({ color: 'white', fontWeight: 'black' })}
+        </BlackCol>
       </Row>
 
       <Row>
-        <Col colSize={2}>{getBodyColm({ fontFamily: 'secondary' }, 'P2')}</Col>
-        <Col colSize={2}>{getBodyColm({ fontFamily: 'secondary', textAlign: 'center' }, 'P2')}</Col>
+        <Col colSize={colSizeConfig}>{getBodyColm({ fontFamily: 'secondary' }, 'P2')}</Col>
+        <Col colSize={colSizeConfig}>
+          {getBodyColm({ fontFamily: 'secondary', textAlign: 'center' }, 'P2')}
+        </Col>
 
-        <Col colSize={2}>
+        <Col colSize={colSizeConfig}>
           {getBodyColm({ fontFamily: 'secondary', fontWeight: 'semibold' }, 'P2')}
         </Col>
-        <Col colSize={2}>
+        <Col colSize={colSizeConfig}>
           {getBodyColm(
             { fontFamily: 'secondary', fontWeight: 'semibold', textAlign: 'center' },
             'P2'
@@ -149,14 +187,16 @@ const Test = () => {
       </Row>
 
       <Row>
-        <Col colSize={2}>
+        <Col colSize={colSizeConfig}>
           {getBodyColm({ fontFamily: 'secondary', color: 'text.secondary' }, 'P2')}
         </Col>
-        <Col colSize={2}>{getBodyColm({ fontFamily: 'secondary', color: 'text.hint' }, 'P2')}</Col>
-        <Col colSize={2}>
-          {getBodyColm({ fontFamily: 'secondary', color: 'text.disabled' }, 'P2')}
+        <Col colSize={colSizeConfig}>
+          {getBodyColm({ fontFamily: 'secondary', color: 'text.hint' }, 'P2')}
         </Col>
-        <BlackCol colSize={2}>
+        <Col colSize={colSizeConfig}>
+          {getBodyColm({ fontFamily: 'secondary', color: disabledTextColor }, 'P2')}
+        </Col>
+        <BlackCol colSize={colSizeConfig}>
           {getBodyColm(
             {
               fontFamily: 'secondary',
@@ -170,7 +210,7 @@ const Test = () => {
 
       <Row>Body text with another tag (div)</Row>
       <Row>
-        <Col colSize={2}>
+        <Col colSize={colSizeConfig}>
           {getBodyColm({ component: 'div', fontFamily: 'secondary', textAlign: 'center' }, 'P2')}
         </Col>
       </Row>
