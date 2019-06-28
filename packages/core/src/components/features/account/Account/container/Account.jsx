@@ -3,7 +3,7 @@ import { withRouter } from 'next/router'; //eslint-disable-line
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentMapping from '../AccountComponentMapping';
 import navData from '../MyAccountRoute.config';
-import utilMethods from '../../../../../utils/utilMethods';
+import utils from '../../../../../utils';
 
 // @flow
 type Props = {
@@ -26,17 +26,12 @@ export class Account extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      component: utilMethods.getObjectValue(props.router, 'addressBook', 'query', 'id'),
+      component: utils.getObjectValue(props.router, 'addressBook', 'query', 'id'),
     };
   }
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
-    const nextComponent = utilMethods.getObjectValue(
-      nextProps.router,
-      'addressBook',
-      'query',
-      'id'
-    );
+    const nextComponent = utils.getObjectValue(nextProps.router, 'addressBook', 'query', 'id');
     const prevComponent = prevState.component;
     if (nextComponent !== prevComponent) {
       return { component: nextComponent };
