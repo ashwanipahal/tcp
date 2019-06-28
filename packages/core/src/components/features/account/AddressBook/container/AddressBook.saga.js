@@ -16,6 +16,7 @@ export function* getAddressList() {
         langId: -1,
         catalogId: 10551,
         storeId: 10151,
+        fromPage: 'checkout',
       },
       method
     );
