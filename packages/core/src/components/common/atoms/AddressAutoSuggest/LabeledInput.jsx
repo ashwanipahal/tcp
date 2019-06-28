@@ -36,7 +36,7 @@ const LabeledInput = ({
   inputRef,
   meta: { touched, error, warning },
 }: Props): Node => (
-  <label htmlFor={placeholder} className={className} tabIndex="-1">
+  <div className={className}>
     <input
       placeholder=""
       {...input}
@@ -54,7 +54,7 @@ const LabeledInput = ({
     </BodyCopy>
     {touched &&
       ((error && (
-        <BodyCopy ErrorMsg="error" bodySize="two" tag="span">
+        <BodyCopy clearFloat ErrorMsg="error" bodySize="two" tag="div">
           {error}
           {placeholder}
         </BodyCopy>
@@ -64,7 +64,7 @@ const LabeledInput = ({
             {warning}
           </BodyCopy>
         )))}
-  </label>
+  </div>
 );
 
 export default withStyles(LabeledInput, StyledTextBox);

@@ -4,6 +4,15 @@ const specialChar = value =>
     ? 'Field should not contain any special characters'
     : undefined;
 
+const zipcodeUS = value =>
+  value && /^\d{5}-\d{4}$|^\d{5}$/.test(value) && value.substr(0, 5) !== '00000'
+    ? ''
+    : 'Please enter a valid zip code';
+const zipcodeCA = value =>
+  value && /^[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1} *\d{1}[A-Z]{1}\d{1}$/.test(value)
+    ? ''
+    : 'Please enter your postal code';
+
 const maxLength = max => value =>
   value && value.length > max ? `Must be ${max} characters or less` : undefined;
 const maxLength50 = maxLength(50);
@@ -28,4 +37,6 @@ export {
   minValue,
   minValue18,
   email,
+  zipcodeCA,
+  zipcodeUS,
 };

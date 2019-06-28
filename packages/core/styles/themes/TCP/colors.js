@@ -52,6 +52,8 @@ export default {
     ALT_HOVER: '#f2f9fe',
     ALT_FOCUS: '#e2ecf3',
     TEXT: '#4a4a4a',
+    PRIMARY: '#2e6a91',
+    PRIMARY_HOVER: '#1f4862',
   },
   ANCHOR: {
     PRIMARY: '#1a1a1a',

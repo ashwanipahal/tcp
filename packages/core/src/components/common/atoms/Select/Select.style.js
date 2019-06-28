@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 const textboxStyles = css`
   &.active p {
-    top: -50px;
+    top: -65px;
   }
   .selectField {
     margin: 10px 0 0 0;
@@ -16,8 +16,8 @@ const textboxStyles = css`
     background-position: left top;
     background-repeat: no-repeat;
     background-size: contain;
-    border: 0 solid transparent;
-    border-bottom: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
+    background: none;
+    border: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
 
     ${props =>
       props.meta.touched && props.meta.error
@@ -52,7 +52,7 @@ const textboxStyles = css`
     `
         : ''};
     &:focus + p {
-      top: -50px;
+      top: -65px;
     }
   }
 

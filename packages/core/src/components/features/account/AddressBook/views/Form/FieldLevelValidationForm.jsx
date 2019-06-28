@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
-import { Field, reduxForm, FormSection, submit, Form } from 'redux-form';
+import { connect } from 'react-redux';
+import { Field, reduxForm, FormSection, submit, Form, change } from 'redux-form';
 import TextBox from '../../../../../common/atoms/TextBox';
 import SelectBox from '../../../../../common/atoms/Select';
 import Row from '../../../../../common/atoms/Row';
@@ -12,6 +13,8 @@ import {
   maxLength30,
   specialChar,
   number,
+  zipcodeUS,
+  zipcodeCA,
 } from '../../../../../common/hoc/formsValidation/FormValidation';
 import { LabeledInputGoogleAutoComplete } from '../../../../../common/atoms/AddressAutoSuggest/LabeledInputGoogleAutoComplete';
 import {
@@ -49,22 +52,24 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
       zip: '',
       country: '',
       state: '',
+      street: '',
     };
   }
+
+  validatezip = country => {
+    debugger;
+    return country === 'Canada' ? zipcodeCA : zipcodeUS;
+  };
   handleBlur = e => {
     e.target.value
       ? e.target.parentElement.classList.add('active')
       : e.target.parentElement.classList.remove('active');
-
-    // notify our listeners that this component is blured
-    // if (this.props.input && this.props.input.onBlur) this.props.input.onBlur(event);
   };
 
   StateCountryChange = e => {
     this.setState({
       country: e.target.value ? e.target.value : '',
     });
-    console.log(e.target.value);
   };
   // handles focus events of the input element of this component
   handleFocus(event) {
@@ -85,23 +90,8 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
 
     // notify our listeners that this component is blured
   }
-  mapValuesToStateProps(values) {
-    let statesOptionsMap = values.country
-      ? this.props.countriesStatesTable[values.country] || EMPTY_MAP
-      : EMPTY_MAP;
-
-    return {
-      optionsMap: statesOptionsMap,
-      title: values.country === 'US' ? 'State' : 'Province',
-
-      // reset state if country changed.
-      // null indicates to validation that the user should select a state
-      // '' indicates to validation that there are no states associated with this country
-    };
-  }
 
   handlePlaceSelected(place, inputValue) {
-    debugger;
     let address = LabeledInputGoogleAutoComplete.getAddressFromPlace(place, inputValue);
     this.addressSet = true;
     this.setState({
@@ -109,7 +99,13 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
       zip: address.zip,
       state: address.state,
       country: address.country,
+      street: address.street,
     });
+    this.props.dispatch(change('AddressValidationForm', 'city', address.city));
+    this.props.dispatch(change('AddressValidationForm', 'zip', address.zip));
+    this.props.dispatch(change('AddressValidationForm', 'state', address.state));
+    this.props.dispatch(change('AddressValidationForm', 'country', address.country));
+    this.props.dispatch(change('AddressValidationForm', 'street', address.street));
   }
 
   handleSubmit = e => {
@@ -144,7 +140,7 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
     return (
       <form onSubmit={handleSubmit}>
         <Row>
-          <Col colSize={{ small: 1, medium: 1, large: 6 }}>
+          <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
               placeholder="First Name"
               name="First-Name"
@@ -156,7 +152,7 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
               onFocus={this.handleFocus}
             />
           </Col>
-          <Col colSize={{ small: 1, medium: 1, large: 6 }}>
+          <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
               placeholder="Last Name"
               name="Last-Name"
@@ -168,7 +164,7 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
         </Row>
         <br />
         <Row>
-          <Col colSize={{ small: 1, medium: 1, large: 6 }}>
+          <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
               id="addressField"
               placeholder="Address Line 1"
@@ -180,7 +176,7 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
               onFocus={this.handleFocus}
             />
           </Col>
-          <Col colSize={{ small: 1, medium: 1, large: 6 }}>
+          <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
               placeholder="Address Line 2( Optional )"
               name="address-2"
@@ -191,26 +187,25 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
         </Row>
         <br />
         <Row>
-          <Col colSize={{ small: 1, medium: 1, large: 6 }}>
+          <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
               id="city"
               placeholder="City"
               name="city"
               component={TextBox}
-              validate={[required, specialChar]}
+              validate={[required]}
               Value={this.state.city}
               onBlur={this.handleBlur}
               onFocus={this.handleFocus}
               onChange={this.handleChange}
             />
           </Col>
-          <Col colSize={{ small: 1, medium: 1, large: 3 }}>
+          <Col colSize={{ small: 6, medium: 1, large: 3 }}>
             <Field
               defaultValue={this.state.state}
               placeholder={this.state.country === 'Canada' ? 'Province' : 'State'}
               name="state"
               validate={[required]}
-              value={this.state.state}
               component={SelectBox}
               onBlur={this.handleBlur}
               options={
@@ -218,21 +213,24 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
               }
             />
           </Col>
-          <Col colSize={{ small: 1, medium: 1, large: 3 }}>
+          <Col colSize={{ small: 6, medium: 1, large: 3 }}>
             <Field
               placeholder={this.state.country === 'Canada' ? 'Postal Code' : 'Zip Code'}
-              id="Zip"
+              Value={this.state.zip}
+              id="zip"
               name="zip"
               component={TextBox}
-              validate={[required, number]}
+              validate={[required, this.validatezip(this.state.country)]}
               onBlur={this.handleBlur}
-              Value={this.state.zip}
+              onFocus={this.handleFocus}
+              onChange={this.handleChange}
+              maxLength={this.state.country === 'Canada' ? 7 : 5}
             />
           </Col>
         </Row>
         <br />
         <Row>
-          <Col colSize={{ small: 1, medium: 1, large: 6 }}>
+          <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
               onChange={this.StateCountryChange}
               placeholder="country"
@@ -245,7 +243,7 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
               options={countriesOptionsMap}
             />
           </Col>
-          <Col colSize={{ small: 1, medium: 1, large: 6 }}>
+          <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
               placeholder="phone number"
               name="phone-number"
@@ -257,14 +255,14 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
         </Row>
         <br />
         <Row>
-          <Col colSize={{ small: 1, medium: 1, large: 12 }}>
+          <Col colSize={{ small: 6, medium: 1, large: 12 }}>
             <Field name="default-ship" id="default-ship" component={TextBox} type="checkbox" />
             Set as default shipping addres
           </Col>
         </Row>
         <br />
         <Row>
-          <Col colSize={{ small: 1, medium: 1, large: 3 }}>
+          <Col colSize={{ small: 6, medium: 1, large: 3 }}>
             <Button
               buttonVariation="fixed-width"
               type="button"
@@ -274,8 +272,8 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
               Cancel
             </Button>
           </Col>
-          <Col colSize={{ small: 1, medium: 1, large: 3 }}>
-            <Button type="submit" text="BLUE" buttonVariation="fixed-width">
+          <Col colSize={{ small: 6, medium: 1, large: 3 }}>
+            <Button ButtonColor="BLUE" type="submit" text="BLUE" buttonVariation="fixed-width">
               Add Address
             </Button>
           </Col>
@@ -288,7 +286,11 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
 AddressValidationForm.defaultProps = {
   submitting: true,
 };
-
+// const mapDispatchToProps = (dispatch)=> {
+// return binda
+// }
 export default reduxForm({
   form: 'AddressValidationForm', // a unique identifier for this form
 })(AddressValidationForm);
+
+// export default connect()(AddressValidationForm);

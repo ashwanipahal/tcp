@@ -11,13 +11,15 @@ const textboxStyles = css`
     font-size: ${props => props.theme.fonts.fontSize.textbox}px;
     color: ${props => props.theme.colors.TEXTBOX.COLOR};
     width: calc(100% - 40px);
-    padding: 0 20px;
+    padding: 0 10px;
     background-position: left top;
     background-repeat: no-repeat;
     background-size: contain;
     border: 0 solid transparent;
     border-bottom: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
-
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      width: 100%;
+    }
     ${props =>
       props.meta.touched && props.meta.error
         ? `border-bottom: 1px solid ${props.theme.colors.TEXTBOX.ERROR_BORDER};`

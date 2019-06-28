@@ -27,6 +27,7 @@ type Props = {
   input: any,
   Value: any,
   options: any,
+  defaultValue: any,
 };
 const SelectBox = ({
   className,
@@ -36,12 +37,13 @@ const SelectBox = ({
   placeholder,
   isErrorState,
   isSuccessState,
+  defaultValue,
   input,
   Value,
   options,
   meta: { touched, error, warning },
 }: Props): Node => (
-  <label htmlFor={name} tabIndex="-1" className={className}>
+  <div className={`${className} ${input.value ? 'active' : ''}`}>
     <select
       {...input}
       id={id}
@@ -50,11 +52,13 @@ const SelectBox = ({
       name={name}
       isSuccessState={isSuccessState}
       value={Value}
+      defaultValue={defaultValue}
     >
       {options &&
         options.map(option => {
+          const selected = option.displayName === defaultValue ? `selected` : '';
           return (
-            <option value={option.id} id={option.id} key={option.id} className="nav-link-wrapper">
+            <option value={option.displayName} selected={selected} id={option.id} key={option.id}>
               {option.displayName}
             </option>
           );
@@ -66,17 +70,17 @@ const SelectBox = ({
     </BodyCopy>
     {touched &&
       ((error && (
-        <BodyCopy ErrorMsg="error" bodySize="two" tag="span">
+        <BodyCopy clearFloat ErrorMsg="error" bodySize="two" tag="div">
           {error}
           {placeholder}
         </BodyCopy>
       )) ||
         (warning && (
-          <BodyCopy bodySize="two" tag="span">
+          <BodyCopy bodySize="two" tag="div">
             {warning}
           </BodyCopy>
         )))}
-  </label>
+  </div>
 );
 
 SelectBox.defaultProps = {

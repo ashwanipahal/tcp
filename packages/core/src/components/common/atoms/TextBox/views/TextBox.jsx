@@ -26,6 +26,7 @@ type Props = {
   meta: { touched: any, error: any, warning: any },
   input: any,
   Value: any,
+  maxLength: any,
 };
 
 const TextBox = ({
@@ -37,13 +38,14 @@ const TextBox = ({
   placeholder,
   isErrorState,
   isSuccessState,
+  maxLength,
   input,
   Value,
   meta: { touched, error, warning },
 }: Props): Node => {
-  const elemValue = input.value;
+  let elemValue = input.value;
   return (
-    <label htmlFor={name} tabIndex="-1" className={className}>
+    <div className={`${className} ${elemValue ? 'active' : ''}`}>
       <input
         {...input}
         id={id}
@@ -52,25 +54,27 @@ const TextBox = ({
         name={name}
         type={type}
         isSuccessState={isSuccessState}
-        value={Value}
+        maxLength={maxLength}
+        Value={elemValue}
       />
+
       {/* commented onChange={onChangeHandler} */}
       <BodyCopy bodySize="two" FormVariation="float" BodycolorLg="primary" tag="p" className="">
         {placeholder}
       </BodyCopy>
       {touched &&
         ((error && (
-          <BodyCopy ErrorMsg="error" bodySize="two" tag="span">
+          <BodyCopy clearFloat ErrorMsg="error" bodySize="two" tag="div">
             {error}
             {!elemValue && placeholder}
           </BodyCopy>
         )) ||
           (warning && (
-            <BodyCopy bodySize="two" tag="span">
+            <BodyCopy bodySize="two" tag="div">
               {warning}
             </BodyCopy>
           )))}
-    </label>
+    </div>
   );
 };
 

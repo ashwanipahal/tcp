@@ -49,7 +49,15 @@ const ButtonStyles = css`
   &:focus {
     background: ${props => props.theme.colors.BUTTON.FOCUS};
   }
-
+  ${props =>
+    props.ButtonColor === 'BLUE'
+      ? ` background: ${props.theme.colors.BUTTON.PRIMARY};
+            color:${props.theme.colors.BUTTON.NORMAL};
+            &:hover {
+    background: ${props.theme.colors.BUTTON.PRIMARY_HOVER};
+  }
+        `
+      : ''};
   @media ${props => props.theme.mediaQuery.large} {
     ${props =>
       props.buttonVariation === 'fixed-width' ? 'min-height: 51px; padding: 16px 20px;' : ''};

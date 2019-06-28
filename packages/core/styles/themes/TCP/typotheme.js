@@ -61,13 +61,22 @@ const BodyCopy = styled(BodyStyle)`
       opacity: .8;
       position:relative;
        margin: 0;
-      padding: 0;`
+       float:left;
+       padding: 5px 0px 5px 10px`
       : ''};
 
   ${props =>
     props.ErrorMsg === 'error'
       ? `
     color:${colors.TEXTBOX.ERROR_BORDER};
+    `
+      : ''};
+  ${props =>
+    props.clearFloat
+      ? `
+    clear:both;
+    top: -10px;
+    position: relative;
     `
       : ''};
 `;
