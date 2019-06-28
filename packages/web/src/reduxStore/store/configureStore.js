@@ -1,5 +1,6 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import createSagaMiddleware from 'redux-saga';
+import { cacheEnhancerMiddleware } from '@tcp/core/src/utils/cache.util';
 import globalReducers from '../reducers';
 import globalSagas from '../sagas';
 
@@ -15,7 +16,14 @@ const configureStore = preloadedState => {
    * `preloadedState` when creating the store.
    */
 
-  const store = createStore(globalReducers, preloadedState, applyMiddleware(sagaMiddleware));
+  const store = createStore(
+    globalReducers,
+    preloadedState,
+    compose(
+      applyMiddleware(sagaMiddleware),
+      cacheEnhancerMiddleware()
+    )
+  );
 
   /**
    * next-redux-saga depends on `sagaTask` being attached to the store.

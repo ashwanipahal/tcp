@@ -19,7 +19,11 @@ module.exports = api => {
         },
       ],
     ],
-    plugins: ['@babel/plugin-proposal-class-properties', '@babel/transform-flow-strip-types'],
+    plugins: [
+      '@babel/plugin-proposal-class-properties',
+      '@babel/transform-flow-strip-types',
+      '@babel/plugin-syntax-dynamic-import',
+    ],
     env: {
       build: {
         ignore: ['**/*.story.tsx', '__snapshots__', '__tests__', '__stories__'],

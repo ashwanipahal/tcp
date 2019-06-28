@@ -1,8 +1,9 @@
-// @flow
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
 import StyledRow from '../Row.style';
+
+// @flow
 
 // An additonal prop 'fullBleed' is added.
 // This property ignores the offset of the row and spans across the space of the grid.
