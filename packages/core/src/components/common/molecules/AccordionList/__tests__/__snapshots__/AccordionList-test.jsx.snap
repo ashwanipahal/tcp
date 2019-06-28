@@ -2,54 +2,54 @@
 
 exports[`AccordionList component renders correctly with 1 accordion open 1`] = `
 <div
-  className="accordion-list container-accordion"
+  className="accordion-list1 container-accordion"
 >
   <div
     className="list-item"
   >
-    <ForwardRef
+    <Styled(AccordionItem)
       activeClass="active"
       index={0}
-      titleText="list item 1"
+      titleText="list item 11"
       updateAccordionState={[Function]}
     />
   </div>
   <div
     className="list-item"
   >
-    <ForwardRef
+    <Styled(AccordionItem)
       activeClass="inactive"
       index={1}
-      titleText="list item 2"
+      titleText="list item 1"
       updateAccordionState={[Function]}
     >
-      &lt;div className="defg"&gt;&lt;/div&gt;
-    </ForwardRef>
+      &lt;div className="defg1"&gt;&lt;/div&gt;
+    </Styled(AccordionItem)>
   </div>
 </div>
 `;
 
 exports[`AccordionList component renders correctly with no accordion open 1`] = `
 <div
-  className="accordion-list container-accordion"
+  className="accordion-list2 container-accordion"
 >
   <div
     className="list-item"
   >
-    <ForwardRef
+    <Styled(AccordionItem)
       activeClass="active"
       index={0}
-      titleText="list item 1"
+      titleText="list item 12"
       updateAccordionState={[Function]}
     />
   </div>
   <div
     className="list-item"
   >
-    <ForwardRef
+    <Styled(AccordionItem)
       activeClass="active"
       index={1}
-      titleText="list item 2"
+      titleText="list item 23"
       updateAccordionState={[Function]}
     />
   </div>

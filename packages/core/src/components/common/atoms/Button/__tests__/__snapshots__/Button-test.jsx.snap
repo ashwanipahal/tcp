@@ -1,5 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button component renders correctly 1`] = `ShallowWrapper {}`;
+exports[`Button component renders correctly 1`] = `
+<button
+  buttonVariation="fixed-width"
+  className="sample-button"
+  fullWidth={true}
+  type="button"
+>
+  ABCD
+</button>
+`;
 
-exports[`Button component renders disabled button correctly 1`] = `ShallowWrapper {}`;
+exports[`Button component renders disabled button correctly 1`] = `
+<button
+  buttonVariation="fixed-width"
+  className="sample-button"
+  disabled={true}
+  fullWidth={true}
+  type="button"
+>
+  ABCD
+</button>
+`;

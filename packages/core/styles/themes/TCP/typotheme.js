@@ -1,3 +1,7 @@
+/* THIS COMPONENT HAS BEEN DEPRECATED AND WILL BE REMOVED ON FUTURE RELEASE.
+   PLEASE USE Heading, and BodyCopy from the core Atoms
+*/
+
 import styled from 'styled-components';
 import { HeadingStyle, BodyStyle } from '@tcp/core/styles/globalStyles/typography';
 import theme from '@tcp/core/styles/themes/TCP';
@@ -5,7 +9,24 @@ import theme from '@tcp/core/styles/themes/TCP';
 const { colors, fonts } = theme;
 const HeadingFont = fonts.fontSize.heading;
 const bodySizeText = fonts.fontSize.body.bodytext;
+
+const getFontFamily = fontFamilyProp => {
+  if (fontFamilyProp) {
+    return fonts[fontFamilyProp];
+  }
+  return '';
+};
+
+const getFontWeight = fontWeightProp => {
+  if (fontWeightProp) {
+    return fonts.fontWeight[fontWeightProp];
+  }
+  return '';
+};
+
 const Heading = styled(HeadingStyle)`
+  ${props => (props.fontFamily ? `font-family: ${getFontFamily(props.fontFamily)}` : '')};
+  ${props => (props.fontWeight ? `font-weight: ${getFontWeight(props.fontWeight)}` : '')};
   ${props => (props.HeadingLarge === 'one' ? `font-size: ${HeadingFont.large.h1}px` : '')};
   ${props => (props.HeadingLarge === 'two' ? `font-size: ${HeadingFont.large.h2}px` : '')};
   ${props => (props.HeadingLarge === 'three' ? `font-size: ${HeadingFont.large.h3}px` : '')};
@@ -28,7 +49,8 @@ const Heading = styled(HeadingStyle)`
 `;
 
 const BodyCopy = styled(BodyStyle)`
-  font-size: ${fonts.fontSize.body.bodytext.p1}px;
+  ${props => (props.fontFamily ? `font-family: ${getFontFamily(props.fontFamily)}` : '')};
+  ${props => (props.fontWeight ? `font-weight: ${getFontWeight(props.fontWeight)}` : '')};
   ${props => (props.bodySize === 'one' ? `font-size: ${bodySizeText.copy1}px` : '')};
   ${props => (props.bodySize === 'two' ? `font-size: ${bodySizeText.copy2}px` : '')};
   ${props => (props.bodySize === 'three' ? `font-size: ${bodySizeText.copy3}px` : '')};
@@ -42,14 +64,21 @@ const BodyCopy = styled(BodyStyle)`
   ${props => (props.bodySize === 'eleven' ? `font-size: ${bodySizeText.copy11}px` : '')};
   ${props => (props.bodySize === 'twelve' ? `font-size: ${bodySizeText.copy12}px` : '')};
   ${props => (props.bodySize === 'thirteen' ? `font-size: ${bodySizeText.copy13}px` : '')};
+  ${props => (!props.bodySize ? `font-size: ${bodySizeText.copy3}px` : '')};
   ${props =>
     props.bodySizeSm === 'one' ? `font-size: ${fonts.fontSize.body.small.primary}px` : ''};
   ${props =>
     props.bodySizeSm === 'two' ? `font-size: ${fonts.fontSize.body.small.secondary}px` : ''};
   ${props =>
     props.bodySizeSm === 'three' ? `font-size: ${fonts.fontSize.body.small.tertiary}px` : ''};
+  ${props => (props.bodyColor === 'white' ? `color: ${colors.WHITE};` : '')};
+  ${props => (props.bodyColor === 'darkGray' ? `color: ${colors.TEXT.DARKGRAY};` : '')};
+  ${props => !props.bodyColor && `color: ${colors.PRIMARY.BLUE};`};
 
-  color: ${colors.PRIMARY.BLUE};
+  ${props => (!props.color ? `color: ${colors.PRIMARY.DARK};` : '')};
+  ${props => (props.color === 'primary' ? `color: ${colors.PRIMARY.DARK};` : '')};
+  ${props => (props.color === 'secondary' ? `color: ${colors.PRIMARY.BLUE};` : '')};
+  ${props => (props.color === 'tertiary' ? `color: ${colors.PRIMARY.GREEN};` : '')};
 `;
 
 export { Heading, BodyCopy };

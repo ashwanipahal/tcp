@@ -78,8 +78,8 @@
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-formatter-pretty": "^1.0.3",
     "stylelint-processor-styled-components": "^1.5.1",
-    "jest-styled-components": "^6.0.0",
-    "react-test-renderer": "^16.0.0"
+    "react-test-renderer": "^16.0.0",
+    "enzyme-to-json": "^3.3.4"
   },
   "husky": {
     "hooks": {

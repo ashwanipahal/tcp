@@ -1,3 +1,11 @@
+const ignorePsuedoCodeDir = [
+  '/ProductListingPage/',
+  '/plpDeltaSync/',
+  '/mobileapp/',
+  '/LoginPage/',
+  '/server/',
+];
+
 module.exports = {
   verbose: true,
   rootDir: '../',
@@ -16,7 +24,24 @@ module.exports = {
   setupFiles: ['<rootDir>/config/jest.setup.js'],
   collectCoverage: true,
   coverageDirectory: 'reports/coverage',
-  collectCoverageFrom: ['**/*.js', '**/*.jsx', '!**/*.style.js'],
-  coveragePathIgnorePatterns: ['/node_modules/', 'enzyme.js', 'index.js', 'mock.js'],
+  collectCoverageFrom: [
+    '**/*.js',
+    '**/*.jsx',
+    '!**/*.style.js',
+    '!**/*.constants.js',
+    '!**/*.config.js',
+    '!**/core/styles/**',
+    '!**/*.action.js',
+  ],
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    'enzyme.js',
+    'index.js',
+    'mock.js',
+    '/flow-typed/',
+    '/pages/',
+    ...ignorePsuedoCodeDir,
+  ],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],
+  snapshotSerializers: ['enzyme-to-json/serializer'],
 };

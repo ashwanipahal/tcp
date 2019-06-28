@@ -2,13 +2,13 @@ import { css } from 'styled-components';
 
 export default css`
   .footer-top {
-    border-bottom: 2px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+    > div {
+      border-top: 2px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+      padding-top: 32px;
+    }
   }
-  .footer-bottom {
-    background: ${props => props.theme.colors.WHITE};
-  }
-  .footer-top__slot--1 {
-    order: 2;
+  .footer-top__slots {
+    padding-bottom: 16px;
   }
   .footer-top__slot-2 {
     order: 1;
@@ -18,6 +18,7 @@ export default css`
   }
   .fullbleed-mobile {
     flex-direction: column-reverse;
+    display: flex;
     margin: 0;
   }
   .default-offset {
@@ -26,20 +27,26 @@ export default css`
   .footer-middle.desktop {
     display: none;
   }
+  .reference-id {
+    background-color: ${props => props.theme.colors.BRAND.PRIMARY};
+    font-size: ${props => props.theme.fonts.fontSize.body.small.tertiary}px;
+    padding: 0 15px 24px;
+    margin: 0;
+    color: ${props => props.theme.colors.WHITE};
+    font-family: ${props => props.theme.secondaryFontFamily};
+  }
   @media ${props => props.theme.mediaQuery.medium} {
     .default-offset {
       padding: 0 ${props => props.theme.gridDimensions.gridOffsetObj.medium}px;
     }
-    .footer-top__slot--1 {
-      order: 1;
-    }
-    .footer-top__slot--2 {
-      order: 2;
+    .footer-top {
+      padding-bottom: 20px;
     }
   }
   @media ${props => props.theme.mediaQuery.large} {
     .footer-top {
-      padding-bottom: 46px;
+      padding-bottom: 44px;
+      border-bottom: 2px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
     }
     .footer-bottom {
       background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
@@ -63,6 +70,13 @@ export default css`
     }
     .divider {
       border-left: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
+    }
+    .reference-id {
+      text-align: center;
+      background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
+      font-size: ${props => props.theme.fonts.fontSize.body.small.secondary};
+      padding: 11px 0 24px;
+      color: ${props => props.theme.colors.TEXT.DARKERGRAY};
     }
   }
 `;

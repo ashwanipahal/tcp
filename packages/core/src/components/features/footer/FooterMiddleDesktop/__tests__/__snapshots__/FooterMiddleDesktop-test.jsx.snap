@@ -1,0 +1,268 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FooterMiddleDesktop component renders correctly 1`] = `
+<Fragment>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      headerAsImage={true}
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </Styled(Col)>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      headerAsImage={true}
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </Styled(Col)>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </Styled(Col)>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </Styled(Col)>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </Styled(Col)>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </Styled(Col)>
+</Fragment>
+`;
+
+exports[`FooterMiddleDesktop component renders correctly 2`] = `
+<Fragment>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      headerAsImage={true}
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </Styled(Col)>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      headerAsImage={true}
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </Styled(Col)>
+  <Styled(Col)
+    className="divider"
+    colSize={
+      Object {
+        "large": 1,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  />
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </Styled(Col)>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+    <FooterNavLinks
+      className="footer-links"
+      isSubHeader={true}
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </Styled(Col)>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <FooterNavLinks
+      className="footer-links"
+      navLinkItems={
+        Array [
+          Object {
+            "header": "",
+            "links": undefined,
+          },
+        ]
+      }
+    />
+  </Styled(Col)>
+</Fragment>
+`;
