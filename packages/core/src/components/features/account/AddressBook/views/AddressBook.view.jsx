@@ -46,7 +46,7 @@ export const AddressBook = ({ addresses, labels, className, openAccountModalComp
           </Button>
         </Col>
       </Row>
-      {addresses.length > 0 && (
+      {addresses.size > 0 && (
         <AddressListComponent
           addresses={addresses}
           labels={labels}
