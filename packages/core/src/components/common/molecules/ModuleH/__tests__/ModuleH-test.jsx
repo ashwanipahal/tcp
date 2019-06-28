@@ -3,8 +3,8 @@ import { shallow } from 'enzyme';
 import Carousel from '../../Carousel';
 import { Image } from '../../../atoms';
 import ModuleH from '../view';
-import ModuleHHeader from '../view/ModuleHHeader';
-import ModuleHCTALinks from '../view/ModuleHCTALinks';
+import ModuleHHeader from '../view/ModuleH.Header';
+import ModuleHCTALinks from '../view/ModuleHCTA.Links';
 import mock from '../mock';
 
 describe('ModuleH component', () => {
@@ -18,8 +18,7 @@ describe('ModuleH component', () => {
     const props = {
       data: mock.moduleH.composites.headerText,
     };
-    const wrapper = shallow(<ModuleHHeader headerText={props.data} />).get(0);
-    const moduleHHeaderComp = shallow(wrapper);
+    const moduleHHeaderComp = shallow(<ModuleHHeader headerText={props.data} />);
     expect(moduleHHeaderComp.find('.moduleH__header')).toHaveLength(2);
   });
 
@@ -31,10 +30,9 @@ describe('ModuleH component', () => {
       current: 0,
       next: 1,
     };
-    const wrapper = shallow(
+    const ModuleHCTALinksComp = shallow(
       <ModuleHCTALinks dataCTALinks={props.data} currentIndex={currentIndex} />
-    ).get(0);
-    const ModuleHCTALinksComp = shallow(wrapper);
+    );
     expect(ModuleHCTALinksComp.find('.moduleH__CTALink')).toHaveLength(5);
   });
 

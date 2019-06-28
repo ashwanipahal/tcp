@@ -11,7 +11,7 @@ export default {
     speed: 1000,
     responsive: [
       {
-        breakpoint: parseInt(breakpoints.medium, 10) - 1,
+        breakpoint: parseInt(breakpoints.smallMax, 10),
         settings: {
           arrows: false,
         },
@@ -20,5 +20,23 @@ export default {
   },
   MODULE_H_CTALINKS: {
     maxLimit: 6,
+  },
+  FULL_BLEED: {
+    small: true,
+    medium: false,
+    large: false,
+  },
+  COL_SIZE: {
+    small: 6,
+    medium: 8,
+    large: 12,
+  },
+  OFFSET_LEFT: {
+    small: 0,
+    medium: 1,
+    large: 1,
+  },
+  MODULE_STYLE: {
+    height: 425,
   },
 };

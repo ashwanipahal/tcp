@@ -13,7 +13,9 @@ exports[`ModuleH component renders correctly 1`] = `
           "
   ",
           "
-  height: 425px;
+  height: ",
+          "425",
+          "px;
   margin-bottom: ",
           [Function],
           ";
@@ -96,12 +98,6 @@ exports[`ModuleH component renders correctly 1`] = `
           ";
   }
 
-  .moduleH__CTALink-wrapper {
-    padding: 0px;
-    margin: 0px;
-    list-style-type: none;
-  }
-
   .moduleH__CTALink {
     color: ",
           [Function],
@@ -124,11 +120,11 @@ exports[`ModuleH component renders correctly 1`] = `
     }
   }
 
-  .moduleH__CTALink--partial {
+  .moduleH__listItem-partial {
     margin-top: 38px;
   }
 
-  .moduleH__CTALink--full {
+  .moduleH__listItem-full {
     margin-top: 22px;
   }
 

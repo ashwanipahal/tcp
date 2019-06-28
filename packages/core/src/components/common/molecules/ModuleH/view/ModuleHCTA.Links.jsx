@@ -1,13 +1,18 @@
+// @flow
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor } from '../../../atoms';
-import errorBoundary from '../../../hoc/errorBoundary';
 import config from '../config';
 
-const ModuleHCTALinks = ({ currentIndex, dataCTALinks }) => {
+type Props = {
+  currentIndex: Object,
+  dataCTALinks: Object,
+};
+
+const ModuleHCTALinks = ({ currentIndex, dataCTALinks }: Props) => {
   const { maxLimit } = config.MODULE_H_CTALINKS;
   const CTALinks =
-    dataCTALinks.length < maxLimit ? 'moduleH__CTALink--partial' : 'moduleH__CTALink--full';
+    dataCTALinks.length < maxLimit ? 'moduleH__listItem-partial' : 'moduleH__listItem-full';
   return (
     <ul className="moduleH__CTALink-wrapper">
       {dataCTALinks.map((item, index) => {
@@ -17,7 +22,6 @@ const ModuleHCTALinks = ({ currentIndex, dataCTALinks }) => {
               className={`moduleH__CTALink ${
                 currentIndex.next === index ? `moduleH__CTALink--active` : ''
               }`}
-              key={`modHCTALink${index.toString()}`}
               to={item.link.url}
               target={item.link.target}
             >
@@ -35,4 +39,4 @@ ModuleHCTALinks.propTypes = {
   dataCTALinks: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
-export default errorBoundary(ModuleHCTALinks);
+export default ModuleHCTALinks;

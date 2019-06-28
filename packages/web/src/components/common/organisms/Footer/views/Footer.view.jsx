@@ -86,14 +86,7 @@ const Footer = ({
         </Col>
       </Row>
     </div>
-    <Row
-      className="footer-middle mobile"
-      fullBleed={{
-        large: true,
-        medium: true,
-        small: true,
-      }}
-    >
+    <Row className="footer-middle mobile" fullBleed>
       <FooterMiddleMobile className={className} navLinkItems={navLinks} />
     </Row>
     <Row className="footer-middle desktop">
