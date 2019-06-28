@@ -7,7 +7,6 @@ export default {
     arrows: false,
     autoplaySpeed: 4000,
     fade: true,
-    infinite: true,
     speed: 1000,
     responsive: [
       {
