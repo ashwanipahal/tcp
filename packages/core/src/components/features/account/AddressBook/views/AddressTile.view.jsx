@@ -15,7 +15,7 @@ type Props = {
 
 const onDeleteAddressClick = (e, address, openAccountModalComponent) => {
   e.preventDefault();
-  openAccountModalComponent('delete', address);
+  openAccountModalComponent({ modalToOpen: 'delete', message: address });
 };
 
 export const AddressBookTile = ({

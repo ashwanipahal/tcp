@@ -102,8 +102,8 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     getAddressListAction: () => {
       dispatch(getAddressList());
     },
-    openAccountModalComponent: (modalToOpen, message) => {
-      dispatch(openAccountModal(modalToOpen, message));
+    openAccountModalComponent: ({ modalToOpen, message }) => {
+      dispatch(openAccountModal({ modalToOpen, message }));
     },
   };
 };

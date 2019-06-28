@@ -1,11 +1,15 @@
 import ACCOUNT_MODAL_CONSTANTS from '../AccountModal.constants';
 
-export const openAccountModal = (modalToOpen, address) => ({
+export const openAccountModal = payload => ({
   type: ACCOUNT_MODAL_CONSTANTS.OPEN_MODAL,
-  modalToOpen,
-  address,
+  payload,
 });
 
 export const closeModal = () => ({
   type: ACCOUNT_MODAL_CONSTANTS.CLOSE_MODAL,
+});
+
+export const deleteAddress = payload => ({
+  type: ACCOUNT_MODAL_CONSTANTS.DELETE_ADDRESS,
+  payload,
 });

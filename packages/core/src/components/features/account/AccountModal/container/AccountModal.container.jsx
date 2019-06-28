@@ -2,14 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import AccountModal from '../views/AccountModal.view';
 import { getModalComponent, getOpenState, getMessage } from './AccountModal.selectors';
-import { closeModal } from './AccountModal.actions';
+import { closeModal, deleteAddress } from './AccountModal.actions';
 
 const getSpecificDataForModal = (modalToOpen, message) => {
   switch (modalToOpen) {
     case 'delete':
       return {
         heading: 'Are you sure you want to delete this address?',
-        body: message,
+        description: message,
         buttons: {
           cancel: 'No, Dont Cancel',
           confirm: 'Yes Delete',
@@ -21,7 +21,13 @@ const getSpecificDataForModal = (modalToOpen, message) => {
   }
 };
 
-const AccountModalContainer = ({ openState, modalToOpen, message, closeModalComponent }) => {
+const AccountModalContainer = ({
+  openState,
+  modalToOpen,
+  message,
+  closeModalComponent,
+  onDeleteAddress,
+}) => {
   const data = getSpecificDataForModal(modalToOpen, message);
   if (Object.keys(data).length) {
     return (
@@ -30,6 +36,7 @@ const AccountModalContainer = ({ openState, modalToOpen, message, closeModalComp
         modalToOpen={modalToOpen}
         data={data}
         closeModalComponent={closeModalComponent}
+        onDeleteAddress={onDeleteAddress}
       />
     );
   }
@@ -48,6 +55,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
   return {
     closeModalComponent: () => {
       dispatch(closeModal());
+    },
+    onDeleteAddress: ({ nickName }) => {
+      dispatch(deleteAddress({ nickName }));
     },
   };
 };
