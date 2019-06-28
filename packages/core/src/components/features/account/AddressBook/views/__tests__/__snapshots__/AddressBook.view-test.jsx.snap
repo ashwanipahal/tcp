@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddressBook component should renders correctly when addresses are not present 1`] = `
+<div>
+  <Styled(HeadingStyle)
+    HeadingLarge="six"
+    className="addressBook__separator"
+    fontFamily="secondaryFontFamily"
+    tag="h4"
+  >
+    Address Book
+  </Styled(HeadingStyle)>
+  <Styled(EmptyAddressList)
+    labels={Object {}}
+  />
+  <Styled(Row)
+    className="addressBook__row--marginBottom"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="addressBook__addNewCtaContainer"
+      colSize={
+        Object {
+          "large": 10,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="variable-width"
+        fill="BLUE"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Notification)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    status="error"
+  />
+</div>
+`;
+
+exports[`AddressBook component should renders correctly when addresses are present 1`] = `
+<div>
+  <Styled(HeadingStyle)
+    HeadingLarge="six"
+    className="addressBook__separator"
+    fontFamily="secondaryFontFamily"
+    tag="h4"
+  >
+    Address Book
+  </Styled(HeadingStyle)>
+  <Styled(Row)
+    className="addressBook__row--marginBottom"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="addressBook__addNewCtaContainer"
+      colSize={
+        Object {
+          "large": 10,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="variable-width"
+        fill="BLUE"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Notification)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    status="error"
+  />
+  <Styled(AddressList)
+    addresses={
+      Immutable.List [
+        Object {
+          "addressLine": Array [
+            "addressline 1",
+            "addressline 2",
+          ],
+          "city": "test city",
+          "country": "test country",
+          "firstName": "test",
+          "lastName": "test",
+          "phone1": "1234567890",
+        },
+      ]
+    }
+    labels={Object {}}
+  />
+</div>
+`;

@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddressList component should renders correctly 1`] = `
+<Styled(Row)
+  fullBleed={true}
+>
+  <Styled(Col)
+    className="addressList__col"
+    colSize={
+      Object {
+        "large": 4,
+        "medium": 4,
+        "small": 6,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "large": false,
+        "medium": false,
+        "small": true,
+      }
+    }
+    key="container-undefined"
+  >
+    <Styled(AddressBookTile)
+      address={
+        Object {
+          "addressLine": Array [
+            "addressline 1",
+            "addressline 2",
+          ],
+          "city": "test city",
+          "country": "test country",
+          "firstName": "test",
+          "lastName": "test",
+          "phone1": "1234567890",
+        }
+      }
+      labels={Object {}}
+    />
+  </Styled(Col)>
+  <Styled(Col)
+    className="addressList__col"
+    colSize={
+      Object {
+        "large": 4,
+        "medium": 4,
+        "small": 6,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "large": false,
+        "medium": true,
+        "small": true,
+      }
+    }
+    key="container-undefined"
+  >
+    <Styled(AddressBookTile)
+      address={
+        Object {
+          "addressLine": Array [
+            "addressline 1",
+            "addressline 2",
+          ],
+          "city": "test city",
+          "country": "test country",
+          "firstName": "test1",
+          "lastName": "test1",
+          "phone1": "1234567890",
+        }
+      }
+      labels={Object {}}
+    />
+  </Styled(Col)>
+</Styled(Row)>
+`;

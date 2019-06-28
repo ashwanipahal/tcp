@@ -21,6 +21,8 @@ export default {
     BLUE: '#2e6a91',
     NAVY: '#24465e',
     GREEN: '#7dc24c',
+    COLOR1: '#edf5fb',
+    COLOR2: '#dbebf8',
   },
   TEXT: {
     DARK: '#1a1a1a',
@@ -54,6 +56,24 @@ export default {
     TEXT: '#4a4a4a',
     PRIMARY: '#2e6a91',
     PRIMARY_HOVER: '#1f4862',
+    WHITE: {
+      NORMAL: '#ffffff',
+      BORDER: '#979797',
+      HOVER: '#f3f3f3',
+      FOCUS: '#d8d8d8',
+      ALT_HOVER: '#f2f9fe',
+      ALT_FOCUS: '#e2ecf3',
+      TEXT: '#4a4a4a',
+    },
+    BLUE: {
+      NORMAL: '#2e6a91',
+      BORDER: '#2e6a91',
+      HOVER: '#1f4862',
+      FOCUS: '#1f4862',
+      ALT_HOVER: '#1f4862',
+      ALT_FOCUS: '#1f4862',
+      TEXT: '#fff',
+    },
   },
   ANCHOR: {
     PRIMARY: '#1a1a1a',
@@ -76,5 +96,12 @@ export default {
   },
   FOOTER: {
     DIVIDER: '#c3c3c3',
+  },
+  NOTIFICATION: {
+    SUCCESS: '#26762c',
+    ERROR: '#c8102e',
+  },
+  BORDER: {
+    NORMAL: '#979797',
   },
 };
