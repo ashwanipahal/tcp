@@ -1,2 +1,2 @@
-const CHECK_OUT_PAGE = 'checkout';
-export default CHECK_OUT_PAGE;
+const CHECKOUT_PAGE = 'checkout';
+export default CHECKOUT_PAGE;
