@@ -31,6 +31,10 @@ const endpoints = {
     method: 'delete',
     relURI: '/api/v2/account/deleteAddressDetails',
   },
+  verifyAddress: {
+    method: 'post',
+    relURI: '/api/v2/account/addAddress',
+  },
   global: {
     baseURI: 'https://test1.childrensplace.com',
   },

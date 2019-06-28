@@ -13,3 +13,8 @@ export const deleteAddress = payload => ({
   type: ACCOUNT_MODAL_CONSTANTS.DELETE_ADDRESS,
   payload,
 });
+
+export const verifyAddressRequest = payload => ({
+  type: ACCOUNT_MODAL_CONSTANTS.VERIFY_ADDRESS,
+  payload,
+});

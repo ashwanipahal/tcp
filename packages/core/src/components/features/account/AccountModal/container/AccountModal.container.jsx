@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import AccountModal from '../views/AccountModal.view';
 import { getModalComponent, getOpenState, getMessage } from './AccountModal.selectors';
-import { closeModal, deleteAddress } from './AccountModal.actions';
+import { closeModal, deleteAddress, verifyAddressRequest } from './AccountModal.actions';
 
 const getSpecificDataForModal = (modalToOpen, message) => {
   switch (modalToOpen) {
@@ -27,18 +27,24 @@ const AccountModalContainer = ({
   message,
   closeModalComponent,
   onDeleteAddress,
+  onVerifyAddress,
 }) => {
   const data = getSpecificDataForModal(modalToOpen, message);
-  if (Object.keys(data).length) {
-    return (
-      <AccountModal
-        openState={openState}
-        modalToOpen={modalToOpen}
-        data={data}
-        closeModalComponent={closeModalComponent}
-        onDeleteAddress={onDeleteAddress}
-      />
-    );
+  if (modalToOpen === 'delete') {
+    if (Object.keys(data).length) {
+      return (
+        <AccountModal
+          openState={openState}
+          modalToOpen={modalToOpen}
+          data={data}
+          closeModalComponent={closeModalComponent}
+          onDeleteAddress={onDeleteAddress}
+          onVerifyAddress={onVerifyAddress}
+        />
+      );
+    }
+  } else if (modalToOpen === 'verify') {
+    // write verify
   }
   return null;
 };
@@ -58,6 +64,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     },
     onDeleteAddress: ({ nickName }) => {
       dispatch(deleteAddress({ nickName }));
+    },
+    onVerifyAddress: payload => {
+      dispatch(verifyAddressRequest(payload));
     },
   };
 };
