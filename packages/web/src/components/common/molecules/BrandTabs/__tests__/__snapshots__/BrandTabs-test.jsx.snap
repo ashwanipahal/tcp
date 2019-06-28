@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BrandTabs component renders correctly 1`] = `
+<StyledComponent
+  className="brand-tabs"
+  data={
+    Array [
+      Object {
+        "active": true,
+        "alt": "The Children's Place",
+        "id": "1",
+        "logoClass": "tcp_logo_medium",
+        "target": "",
+        "title": "The Children's Place",
+        "url": "/",
+      },
+      Object {
+        "active": false,
+        "alt": "Gymboree",
+        "id": "2",
+        "logoClass": "gymboree_logo_medium",
+        "target": "_blank",
+        "title": "Gymboree",
+        "url": "https://www.gymboree.com/",
+      },
+    ]
+  }
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-htpNat",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  margin-top: 5px;
+
+  a {
+    border-radius: 5px 5px 0px 0px;
+    display: inline-block;
+    padding: 11px 15px;
+    position: relative;
+
+    @media ",
+          [Function],
+          " {
+      padding: 8px 16px;
+    }
+
+    &.header-topnav__brand-tabs--activeTab {
+      background-color: ",
+          [Function],
+          ";
+    }
+
+    &.header-topnav__brand-tabs--activeTab:before,
+    &.header-topnav__brand-tabs--activeTab:after {
+      content: '';
+      position: absolute;
+      height: 10px;
+      width: 20px;
+      bottom: 0;
+    }
+
+    &.header-topnav__brand-tabs--activeTab:after {
+      right: -20px;
+      border-radius: 0 0 0 10px;
+      box-shadow: -10px 0 0 0 ",
+          [Function],
+          ";
+    }
+
+    &.header-topnav__brand-tabs--activeTab:before {
+      left: -20px;
+      border-radius: 0 0 10px 0;
+      box-shadow: 10px 0 0 0 ",
+          [Function],
+          ";
+    }
+
+    img {
+      width: 60px;
+
+      @media ",
+          [Function],
+          " {
+        width: 70px;
+      }
+    }
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(BrandTabs)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-htpNat",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;

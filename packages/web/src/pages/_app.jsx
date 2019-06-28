@@ -16,7 +16,7 @@ import ReactAxe from '../utils/react-axe';
 class TCPWebApp extends App {
   static async getInitialProps({ Component, ctx }) {
     const compProps = TCPWebApp.loadComponentData(Component, ctx, {});
-    const pageProps = TCPWebApp.loadGlobalData(ctx, compProps);
+    const pageProps = TCPWebApp.loadGlobalData(Component, ctx, compProps);
 
     return {
       pageProps,
@@ -31,8 +31,8 @@ class TCPWebApp extends App {
     ReactAxe.runAccessibility();
   }
 
-  static loadGlobalData({ store }, pageProps) {
-    store.dispatch(bootstrapData());
+  static loadGlobalData(Component, { store }, pageProps) {
+    store.dispatch(bootstrapData(Component.pageInfo));
     return pageProps;
   }
 

@@ -5,6 +5,7 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import utilMethods from '@tcp/core/src/utils/utilMethods';
 import HeaderTopNav from '@tcp/web/src/components/common/molecules/HeaderTopNav';
 import HeaderPromo from '@tcp/web/src/components/common/molecules/HeaderPromo';
+import HeaderMock from '@tcp/core/src/services/abstractors/bootstrap/header/mock';
 import config from '../config';
 import headerStyles from '../Header.style';
 import HomeLogo from './HomeLogo';
@@ -13,9 +14,9 @@ const { HeaderBrand, HeaderNav, DummyNav, HeaderLoyalty } = headerStyles;
 
 const brand = utilMethods.brand();
 
-const Header = ({ className, headerData }) => (
-  <header className={className}>
-    <HeaderTopNav className="header-topnav" dataTopNav={headerData.header_top_nav} />
+const Header = ({ headerTopNav }) => (
+  <header>
+    <HeaderTopNav className="header-topnav" dataTopNav={headerTopNav} />
     <HeaderBrand className="header-brand">
       <Row centered>
         <Col
@@ -63,11 +64,11 @@ const Header = ({ className, headerData }) => (
     <HeaderPromo
       mobile
       className="header-promo-area--mobile"
-      dataPromo={headerData.header_promo_area.promoTextBanners}
+      dataPromo={HeaderMock.header_promo_area.promoTextBanners}
     />
     <HeaderPromo
       className="header-promo-area--desktop"
-      dataPromo={headerData.header_promo_area.promoTextBanners}
+      dataPromo={HeaderMock.header_promo_area.promoTextBanners}
     />
     <HeaderLoyalty className="header-loyalty">
       <Row>
@@ -87,9 +88,7 @@ const Header = ({ className, headerData }) => (
 );
 
 Header.propTypes = {
-  className: PropTypes.string.isRequired,
-  headerData: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))
-    .isRequired,
+  headerTopNav: PropTypes.objectOf(PropTypes.shape({})).isRequired,
 };
 
 export default Header;

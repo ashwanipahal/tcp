@@ -8,4 +8,5 @@ export default {
   promo_icon_clock: '/static/images/clock-icon.svg',
   'icon-carrot-grey': '/static/images/carrot-icon-grey.svg',
   'icon-carrot-white': '/static/images/carrot-icon-white.svg',
+  'icon-done': '/static/images/done.svg',
 };

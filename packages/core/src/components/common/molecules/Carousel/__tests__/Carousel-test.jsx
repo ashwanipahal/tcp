@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Carousel from '../Carousel';
+import { CarouselVanilla } from '../Carousel';
 
 describe('Carousel component', () => {
   it('renders correctly', () => {
@@ -11,7 +11,7 @@ describe('Carousel component', () => {
         dots: false,
       },
     };
-    const component = shallow(<Carousel {...props} />);
+    const component = shallow(<CarouselVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

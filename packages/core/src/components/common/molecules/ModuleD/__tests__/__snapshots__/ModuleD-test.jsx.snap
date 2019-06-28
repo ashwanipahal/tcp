@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleD component renders correctly 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-iwsKbI",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  border: 1px solid ",
+          [Function],
+          ";
+
+  a {
+    color: ",
+          [Function],
+          ";
+  }
+
+  .moduleD_button {
+    margin: 19px auto 32px;
+    padding: 12px 45px;
+
+    @media ",
+          [Function],
+          " {
+      margin: 35px auto 48px;
+      padding: 16px 65px;
+    }
+  }
+
+  .moduleD_header {
+    font-family: ",
+          [Function],
+          ";
+    font-weight: ",
+          [Function],
+          ";
+    text-transform: uppercase;
+    text-align: center;
+
+    @media ",
+          [Function],
+          " {
+      font-size: ",
+          [Function],
+          "px;
+    }
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(ModuleD)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-iwsKbI",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;

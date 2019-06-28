@@ -126,5 +126,11 @@ export default css`
     @media ${props => props.theme.mediaQuery.large} {
       display: block;
     }
+  li {
+    list-style-type: none;
+  }
+
+  p {
+    margin: 0;
   }
 `;

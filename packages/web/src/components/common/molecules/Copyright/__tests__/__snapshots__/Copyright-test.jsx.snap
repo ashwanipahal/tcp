@@ -1,3 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Copyright component renders correctly 1`] = `ShallowWrapper {}`;
+exports[`Copyright component renders correctly 1`] = `
+<Fragment>
+  <Styled(RichText)
+    className="test-copyright"
+    dataLocator="global_copyrighttext"
+    richTextHtml="<p>&copy; 2019 The Children's Place | Big fashion, little prices</p>"
+  />
+</Fragment>
+`;
