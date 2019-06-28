@@ -20,7 +20,7 @@ function* addAddressGet(payload) {
       method
     );
     if (res) {
-      debugger;
+      yield put(addAddressSuccess());
     }
   } catch (err) {
     console.log('Error in API');

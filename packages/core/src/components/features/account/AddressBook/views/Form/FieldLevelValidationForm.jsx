@@ -45,7 +45,7 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
     this.handleBlur = this.handleBlur.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    //this.handleSubmit = this.handleSubmit.bind(this);
     this.addressSet = false;
     this.state = {
       city: '',
@@ -108,32 +108,23 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
     this.props.dispatch(change('AddressValidationForm', 'street', address.street));
   }
 
-  handleSubmit = e => {
-    debugger;
-    e.preventDefault();
-    console.log(e);
-    // const { onSubmit } = this.props;
-    // const { email, password } = this.state;
-    // onSubmit({
-    //   storeId: '10151',
-    //   logonId1: email,
-    //   logonPassword1: password,
-    //   rememberCheck: true,
-    //   rememberMe: true,
-    //   requesttype: 'ajax',
-    //   reLogonURL: 'TCPAjaxLogonErrorView',
-    //   URL: 'TCPAjaxLogonSuccessView',
-    //   registryAccessPreference: 'Public',
-    //   calculationUsageId: -1,
-    //   createIfEmpty: 1,
-    //   deleteIfEmpty: '*',
-    //   fromOrderId: '*',
-    //   toOrderId: '.',
-    //   updatePrices: 0,
-    //   xCreditCardId: '',
-    //   userId: '-1002',
-    // });
-  };
+  // handleSubmit = (props) => {
+  // debugger
+  //   const { FirstName,city,zip,state,country,street } = props;
+  //   const { email, password } = this.state;
+  //   return {
+  //     id: '63987687',
+  //     format: 'json',
+  //     act: 'Check',
+  //     cols: 'Plus4,DeliveryIndicator',
+  //     a1: street,
+  //     city: city,
+  //     state: state,
+  //     postal: zip,
+  //     ctry: country
+
+  //   };
+  // };
 
   render() {
     const { handleSubmit, pristine, reset, submitting } = this.props;
@@ -143,7 +134,7 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
               placeholder="First Name"
-              name="First-Name"
+              name="FirstName"
               type="text"
               component={TextBox}
               label="First-Nam"
@@ -155,7 +146,7 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
               placeholder="Last Name"
-              name="Last-Name"
+              name="LastName"
               component={TextBox}
               validate={[required, maxLength50, specialChar]}
               onBlur={this.handleBlur}
@@ -169,7 +160,7 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
               id="addressField"
               placeholder="Address Line 1"
               component={LabeledInputGoogleAutoComplete}
-              name="address-1"
+              name="address1"
               validate={[required]}
               onPlaceSelected={this.handlePlaceSelected}
               onBlur={this.handleBlur}

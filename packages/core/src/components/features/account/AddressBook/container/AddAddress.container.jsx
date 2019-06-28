@@ -1,11 +1,7 @@
 // @flow
 import React from 'react';
 import { connect } from 'react-redux';
-import {
-  addAddressReq,
-  addAddressSuccess,
-  addAddressFail,
-} from '../container/AddAddress/AddAddress.actions';
+import { addAddressReq, addAddressSuccess, addAddressFail } from './AddAddress/AddAddress.actions';
 import AddAddress from '../views/AddAddress.view';
 
 /**
@@ -17,13 +13,13 @@ type Props = {
   onSubmit: (SyntheticEvent<>, Object) => void,
 };
 
-const AddaddressContainer = ({ onSubmit }: Props) => {
-  return <AddAddress onSubmit={onSubmit} />;
+const AddaddressContainer = ({ submitAddAddressForm }: Props) => {
+  return <AddAddress submitAddAddressForm={submitAddAddressForm} />;
 };
 
 function mapDispatchToProps(dispatch) {
   return {
-    onSubmit: payload => {
+    submitAddAddressForm: payload => {
       dispatch(addAddressReq(payload));
     },
   };
