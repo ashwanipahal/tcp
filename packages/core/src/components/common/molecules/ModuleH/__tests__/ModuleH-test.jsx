@@ -3,8 +3,6 @@ import { shallow } from 'enzyme';
 import Carousel from '../../Carousel';
 import { Image } from '../../../atoms';
 import ModuleH from '../view';
-import ModuleHHeader from '../view/ModuleH.Header';
-import ModuleHCTALinks from '../view/ModuleHCTA.Links';
 import mock from '../mock';
 
 describe('ModuleH component', () => {
@@ -12,28 +10,6 @@ describe('ModuleH component', () => {
     const wrapper = shallow(<ModuleH />).get(0);
     const moduleHComp = shallow(wrapper);
     expect(moduleHComp).toMatchSnapshot();
-  });
-
-  it('renders heading correctly', () => {
-    const props = {
-      data: mock.moduleH.composites.headerText,
-    };
-    const moduleHHeaderComp = shallow(<ModuleHHeader headerText={props.data} />);
-    expect(moduleHHeaderComp.find('.moduleH__header')).toHaveLength(2);
-  });
-
-  it('renders CTA links correctly', () => {
-    const props = {
-      data: mock.moduleH.composites.divCTALinks,
-    };
-    const currentIndex = {
-      current: 0,
-      next: 1,
-    };
-    const ModuleHCTALinksComp = shallow(
-      <ModuleHCTALinks dataCTALinks={props.data} currentIndex={currentIndex} />
-    );
-    expect(ModuleHCTALinksComp.find('.moduleH__CTALink')).toHaveLength(5);
   });
 
   it('has Carousel wrapper', () => {

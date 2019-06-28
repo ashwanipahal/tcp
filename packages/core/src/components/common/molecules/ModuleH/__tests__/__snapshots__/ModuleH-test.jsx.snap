@@ -108,7 +108,6 @@ exports[`ModuleH component renders correctly 1`] = `
     font-size: ",
           [Function],
           "px;
-    letter-spacing: -0.1px;
     line-height: 20px;
     opacity: 0.8;
 

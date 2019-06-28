@@ -6,7 +6,7 @@ import errorBoundary from '../../../hoc/errorBoundary';
 import { Col, Image, Row } from '../../../atoms';
 import { Carousel } from '../..';
 import ModuleHHeader from './ModuleH.Header';
-import ModuleHCTALinks from './ModuleHCTA.Links';
+import ModuleHCTALinks from './ModuleH.Links';
 import style from '../ModuleH.style';
 import config from '../config';
 

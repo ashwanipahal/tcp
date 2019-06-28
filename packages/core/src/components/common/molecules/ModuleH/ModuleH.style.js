@@ -57,7 +57,6 @@ export default css`
     color: ${props => props.theme.colors.WHITE};
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy6}px;
-    letter-spacing: -0.1px;
     line-height: 20px;
     opacity: 0.8;
 

@@ -19,6 +19,7 @@ export default {
     ],
   },
   MODULE_H_CTALINKS: {
+    minLimit: 4,
     maxLimit: 6,
   },
   FULL_BLEED: {
