@@ -10,10 +10,6 @@ class AccountModalView extends React.Component {
     this.onConfirm = this.onConfirm.bind(this);
   }
 
-  componentDidMount() {
-    console.log('modal mounted');
-  }
-
   onCloseModal() {
     const { closeModalComponent } = this.props;
     closeModalComponent();
@@ -42,10 +38,12 @@ class AccountModalView extends React.Component {
       const { confirm, cancel } = buttons;
       return (
         <Modal
-          colSize={{ large: 4, medium: 6, small: 6 }}
+          colSet={{ large: 4, medium: 8, small: 6 }}
           isOpen={openState}
           onRequestClose={this.onCloseModal}
           title={heading}
+          overlayClassName="TCPModal__Overlay"
+          className="TCPModal__Content"
         >
           <Address address={description} />
           <Button buttonVariation="variable-width" fill="BLUE" onClick={this.onConfirm}>

@@ -21,6 +21,8 @@ function getParent() {
 
 const Modal = ({ children, ...otherProps }) => {
   const { colSet, onRequestClose, title } = otherProps;
+  console.log(colSet);
+
   const column = colSet || Config.MODAL_COL_DEFAULTS;
 
   return (
