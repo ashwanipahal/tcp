@@ -194,7 +194,10 @@ const Test = () => {
           {getBodyColm({ fontFamily: 'secondary', color: 'text.hint' }, 'P2')}
         </Col>
         <Col colSize={colSizeConfig}>
-          {getBodyColm({ fontFamily: 'secondary', color: disabledTextColor }, 'P2')}
+          {getBodyColm(
+            { fontFamily: 'secondary', fontWeight: 'extrabold', color: disabledTextColor },
+            'P2'
+          )}
         </Col>
         <BlackCol colSize={colSizeConfig}>
           {getBodyColm(

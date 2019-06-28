@@ -27,26 +27,38 @@ BodyCopy.propTypes = {
   children: PropTypes.node,
   // TODO: Need fix unused/proptypes eslint error
   /* eslint-disable */
-  fontFamily: PropTypes.oneOf(['primary', 'secondary']),
-  fontSize: PropTypes.oneOf([
-    'fs48',
-    'fs42',
-    'fs36',
-    'fs32',
-    'fs28',
-    'fs24',
-    'fs22',
-    'fs18',
-    'fs16',
-    'fs14',
-    'fs12',
-    'fs10',
+  fontFamily: PropTypes.oneOfType([PropTypes.Array, PropTypes.oneOf(['primary', 'secondary'])]),
+  fontSize: PropTypes.oneOfType([
+    PropTypes.Array,
+    PropTypes.oneOf([
+      'fs48',
+      'fs42',
+      'fs36',
+      'fs32',
+      'fs28',
+      'fs24',
+      'fs22',
+      'fs18',
+      'fs16',
+      'fs14',
+      'fs12',
+      'fs10',
+    ]),
   ]),
-  fontWeight: PropTypes.oneOf(['regular', 'semibold', 'extrabold', 'black']),
+  fontWeight: PropTypes.oneOfType([
+    PropTypes.Array,
+    PropTypes.oneOf(['regular', 'semibold', 'extrabold', 'black']),
+  ]),
   lineHeight: PropTypes.oneOf(['normal']),
-  letterSpacing: PropTypes.oneOf(['ls271', 'ls257', 'ls222', 'ls167', 'normal']),
-  textAlign: PropTypes.oneOf(['left', 'center']),
-  color: PropTypes.oneOf(['text.primary', 'text.secondary', 'text.hint', 'text.disabled', 'white']),
+  letterSpacing: PropTypes.oneOfType([
+    PropTypes.Array,
+    PropTypes.oneOf(['ls271', 'ls257', 'ls222', 'ls167', 'normal']),
+  ]),
+  textAlign: PropTypes.oneOfType([PropTypes.Array, PropTypes.oneOf(['left', 'center'])]),
+  color: PropTypes.oneOfType([
+    PropTypes.Array,
+    PropTypes.oneOf(['text.primary', 'text.secondary', 'text.hint', 'text.disabled', 'white']),
+  ]),
   /* eslint-enable */
 };
 
