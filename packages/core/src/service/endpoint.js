@@ -27,6 +27,10 @@ const endpoints = {
     method: 'get',
     relURI: '/api/v2/account/getAddressFromBook',
   },
+  deleteAddress: {
+    method: 'delete',
+    relURI: '/api/v2/account/deleteAddressDetails',
+  },
   global: {
     baseURI: 'https://test4.childrensplace.com',
   },

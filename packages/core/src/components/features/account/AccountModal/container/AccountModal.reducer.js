@@ -12,9 +12,9 @@ const AccountModalReducer = (state = initialState, action) => {
     case ACCOUNT_MODAL_CONSTANTS.OPEN_MODAL:
       return {
         ...state,
-        modalToOpen: action.modalToOpen,
+        modalToOpen: action.payload.modalToOpen,
         openState: true,
-        message: action.address,
+        message: action.payload.message,
       };
     case ACCOUNT_MODAL_CONSTANTS.CLOSE_MODAL:
       return { ...state, openState: false };

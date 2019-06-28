@@ -7,6 +7,7 @@ class AccountModalView extends React.Component {
   constructor(props) {
     super(props);
     this.onCloseModal = this.onCloseModal.bind(this);
+    this.onConfirm = this.onConfirm.bind(this);
   }
 
   componentDidMount() {
@@ -18,10 +19,26 @@ class AccountModalView extends React.Component {
     closeModalComponent();
   }
 
+  onConfirm() {
+    const { modalToOpen, data } = this.props;
+    const { description } = data;
+    switch (modalToOpen) {
+      case 'delete':
+        return this.deleteAddress({ description });
+      default:
+        return null;
+    }
+  }
+
+  deleteAddress({ description }) {
+    const { onDeleteAddress } = this.props;
+    onDeleteAddress({ nickName: description.nickName });
+  }
+
   render() {
     const { openState, modalToOpen, data } = this.props;
     if (Object.keys(data).length) {
-      const { heading, body, buttons } = data;
+      const { heading, description, buttons } = data;
       const { confirm, cancel } = buttons;
       return (
         <Modal
@@ -30,8 +47,8 @@ class AccountModalView extends React.Component {
           onRequestClose={this.onCloseModal}
           title={heading}
         >
-          <Address address={body} />
-          <Button buttonVariation="variable-width" fill="BLUE">
+          <Address address={description} />
+          <Button buttonVariation="variable-width" fill="BLUE" onClick={this.onConfirm}>
             {confirm}
           </Button>
           <Button buttonVariation="variable-width" onClick={this.onCloseModal} fill="RED">
