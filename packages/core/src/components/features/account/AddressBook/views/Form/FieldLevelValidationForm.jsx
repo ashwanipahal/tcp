@@ -222,17 +222,18 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
         <br />
         <Row className="button_wrapper">
           <Col className="cancel" colSize={{ small: 6, medium: 1, large: 3 }}>
-            <Button
-              buttonVariation="fixed-width"
-              type="button"
-              disabled={pristine || submitting}
-              onClick={reset}
-            >
+            <Button buttonVariation="fixed-width" type="button" onClick={reset}>
               Cancel
             </Button>
           </Col>
           <Col className="submit" colSize={{ small: 6, medium: 1, large: 3 }}>
-            <Button ButtonColor="BLUE" type="submit" text="BLUE" buttonVariation="fixed-width">
+            <Button
+              ButtonColor="BLUE"
+              disabled={pristine || submitting}
+              type="submit"
+              text="BLUE"
+              buttonVariation="fixed-width"
+            >
               Add Address
             </Button>
           </Col>

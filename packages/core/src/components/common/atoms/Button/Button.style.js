@@ -6,7 +6,7 @@ const ButtonStyles = css`
   background: none;
   position: relative;
   cursor: ${props => (props.disabled ? 'none' : 'pointer')};
-  opacity: ${props => (props.disabled ? props.theme.opacity.medium : '1')};
+  opacity: ${props => (props.disabled ? props.theme.opacity.opacity.medium : '1')};
   text-transform: uppercase;
   min-height: 42px;
   ${props =>
