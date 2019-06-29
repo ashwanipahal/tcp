@@ -1,3 +1,3 @@
 export const showMessageForAddAddress = state => {
-  return state.AddressBookReducer.get('showMessageForAddAddressMsg');
+  return state.AddAddressReducer.get('showMessageForAddAddressMsg');
 };

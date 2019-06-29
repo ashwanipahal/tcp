@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addAddressReq } from './AddAddress/AddAddress.actions';
 import AddAddress from '../views/AddAddress.view';
+import {showMessageForAddAddress}  from './AddAddress/AddAddress.selectors';
 
 /**
  * @function AddAddressContainer The AddressBook container is responsible for fetching the user addresses
@@ -15,6 +16,10 @@ type Props = {
 };
 
 export class AddaddressContainer extends React.Component<Props> {
+  componentDidMount(){
+    this.props.submitAddAddressForm();
+  }
+
   render() {
     const { submitAddAddressForm, showMessageForAddAddressMsg } = this.props;
     return (
@@ -39,9 +44,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  debugger;
   return {
     loginInfo: state.LoginPageReducer.loginInfo,
+    showMessageForAddAddressMsg: showMessageForAddAddress(state),
   };
 }
 export default connect(

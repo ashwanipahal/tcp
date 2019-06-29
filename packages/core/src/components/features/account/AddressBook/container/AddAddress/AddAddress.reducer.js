@@ -15,7 +15,7 @@ const AddAddressReducer = (state = initialState, action) => {
       //   addAddressSuccess: action.payload,
       // });
     case ADD_ADDRESS_CONSTANTS.ADD_USER_ADDRESS_FAIL:
-    return state.set('showMessageForAddAddressMsg', false);
+    return state.set('showMessageForAddAddressMsg', true);
       // return Object.assign({}, state, {
       //   addAddressFail: action.payload,
       // });
