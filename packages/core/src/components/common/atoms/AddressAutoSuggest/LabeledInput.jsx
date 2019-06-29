@@ -34,7 +34,7 @@ const LabeledInput = ({
   inputRef,
   meta: { touched, error, warning },
 }: Props): Node => (
-  <div className={className}>
+  <label className={className}>
     <input
       placeholder=""
       {...input}
@@ -62,7 +62,7 @@ const LabeledInput = ({
             {warning}
           </BodyCopy>
         )))}
-  </div>
+  </label>
 );
 LabeledInput.defaultProps = {
   id: '',

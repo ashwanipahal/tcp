@@ -41,7 +41,7 @@ type State = {
 };
 // const AddressValidationForm = ({ handleSubmit, pristine, reset, submitting }: Props): Node => (
 
-class AddressValidationForm extends React.Component<Props, State> {
+class AddressValidationForm extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.handleBlur = this.handleBlur.bind(this);
