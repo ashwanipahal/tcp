@@ -4,12 +4,20 @@ const textboxStyles = css`
   &.active p {
     top: -50px;
   }
-  &.checkbox-align {
-    float: left;
-    margin: 5px;
+  input.inputField[type='checkbox'] {
+    width: auto;
   }
-  &.input-fields-wrapper {
-    overflow: hidden;
+  @media ${props => props.theme.mediaQuery.smallMax} {
+    &.checkbox-align {
+      float: left;
+      margin: 5px;
+    }
+    &.input-fields-wrapper {
+      overflow: hidden;
+    }
+    &div:last-child {
+      padding-right: auto;
+    }
   }
   .inputField {
     margin: 0;

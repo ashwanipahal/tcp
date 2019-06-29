@@ -45,7 +45,7 @@ const TextBox = ({
 }: Props): Node => {
   let elemValue = input.value;
   return (
-    <div className={`${className} ${elemValue ? 'active' : ''} input-fields-wrapper`}>
+    <label className={`${className} ${elemValue ? 'active' : ''} input-fields-wrapper`}>
       <input
         {...input}
         id={id}
@@ -74,7 +74,7 @@ const TextBox = ({
               {warning}
             </BodyCopy>
           )))}
-    </div>
+    </label>
   );
 };
 

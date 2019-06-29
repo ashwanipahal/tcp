@@ -11,7 +11,7 @@ const textboxStyles = css`
     line-height: 44px;
     font-size: ${props => props.theme.fonts.fontSize.textbox}px;
     color: ${props => props.theme.colors.TEXTBOX.COLOR};
-    width: calc(100% - 40px);
+    width: 100%;
     padding: 0 20px;
     background-position: left top;
     background-repeat: no-repeat;

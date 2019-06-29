@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addAddressReq } from './AddAddress/AddAddress.actions';
 import AddAddress from '../views/AddAddress.view';
-
+import { showMessageForAddAddress } from './AddAddress/AddAddress.selectors';
 /**
  * @function AddAddressContainer The AddressBook container is responsible for fetching the user addresses
  * and paint the right panel for addresses
@@ -42,6 +42,7 @@ function mapStateToProps(state) {
   debugger;
   return {
     loginInfo: state.LoginPageReducer.loginInfo,
+    showMessageForAddAddressMsg: showMessageForAddAddress(state),
   };
 }
 export default connect(

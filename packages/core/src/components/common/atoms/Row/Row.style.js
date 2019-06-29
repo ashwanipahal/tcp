@@ -26,6 +26,7 @@ const StyledRow = css`
         margin-right: ${props.theme.gridDimensions.gridOffsetObj[key]}px;
         margin-left: ${props.theme.gridDimensions.gridOffsetObj[key]}px;
         width: calc(100% - ${props.theme.gridDimensions.gridOffsetObj[key] * 2}px);
+        overflow:hidden;
         `
           : `width: 100%;`
       }

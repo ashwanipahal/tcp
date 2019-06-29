@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm, FormSection, submit, Form, change } from 'redux-form';
-import { Heading, BodyCopy } from '@tcp/core/styles/themes/TCP/typotheme';
+import { BodyCopy } from '@tcp/core/styles/themes/TCP/typotheme';
 import TextBox from '../../../../../common/atoms/TextBox';
 import SelectBox from '../../../../../common/atoms/Select';
 import Row from '../../../../../common/atoms/Row';
@@ -32,6 +32,7 @@ type Props = {
   reset: any,
   submitting?: any,
   showDefaultShippingUpdatedMsg: any,
+  className: any,
 };
 
 type State = {
@@ -112,9 +113,9 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const { handleSubmit, pristine, reset, submitting } = this.props;
+    const { handleSubmit, pristine, reset, submitting, className } = this.props;
     return (
-      <form onSubmit={handleSubmit}>
+      <form className={className} onSubmit={handleSubmit}>
         <Row>
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
@@ -176,7 +177,7 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
               onChange={this.handleChange}
             />
           </Col>
-          <Col colSize={{ small: 6, medium: 1, large: 3 }}>
+          <Col colSize={{ small: 3, medium: 1, large: 3 }}>
             <Field
               defaultValue={this.state.state}
               placeholder={this.state.country === 'Canada' ? 'Province' : 'State'}
@@ -189,7 +190,7 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
               }
             />
           </Col>
-          <Col colSize={{ small: 6, medium: 1, large: 3 }}>
+          <Col colSize={{ small: 3, medium: 1, large: 3 }}>
             <Field
               placeholder={this.state.country === 'Canada' ? 'Postal Code' : 'Zip Code'}
               Value={this.state.zip}
@@ -245,8 +246,8 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
           </Col>
         </Row>
         <br />
-        <Row>
-          <Col colSize={{ small: 4, medium: 1, large: 3 }}>
+        <Row className="button_wrapper">
+          <Col className="cancel" colSize={{ small: 6, medium: 1, large: 3 }}>
             <Button
               buttonVariation="fixed-width"
               type="button"
@@ -256,12 +257,13 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
               Cancel
             </Button>
           </Col>
-          <Col colSize={{ small: 4, medium: 1, large: 3 }}>
+          <Col className="submit" colSize={{ small: 6, medium: 1, large: 3 }}>
             <Button ButtonColor="BLUE" type="submit" text="BLUE" buttonVariation="fixed-width">
               Add Address
             </Button>
           </Col>
         </Row>
+        <br />
       </form>
     );
   }

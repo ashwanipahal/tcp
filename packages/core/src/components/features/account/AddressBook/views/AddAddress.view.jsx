@@ -16,7 +16,7 @@ type Props = {
 
 class AddAddress extends React.Component<Props> {
   render() {
-    const { className, submitAddAddressForm, showDefaultShippingUpdatedMsg } = this.props;
+    const { className, submitAddAddressForm, showMessageForAddAddressMsg } = this.props;
     return (
       <div className={className}>
         <Heading
@@ -25,7 +25,7 @@ class AddAddress extends React.Component<Props> {
           tag="h4"
           className="addAddress__separator"
         >
-          Add New Shipping Address showDefaultShippingUpdatedMsg : {showDefaultShippingUpdatedMsg}
+          Add New Shipping Address showMessageForAddAddressMsg : {showMessageForAddAddressMsg}
         </Heading>
         <form>
           <Grid>

@@ -6,13 +6,20 @@ const styles = css`
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
   }
-
-  .addressBook__row--marginBottom {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  .button_wrapper {
+    display: inline-block;
+    text-align: right;
+    display: block;
   }
-
-  .addressBook__addNewCtaContainer {
-    text-align: center;
+  @media ${props => props.theme.mediaQuery.smallMax} {
+    .button_wrapper {
+      margin: 0 auto;
+      width: 60%;
+      .cancel {
+        padding-right: 0;
+        margin: 10px 0;
+      }
+    }
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
