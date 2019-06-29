@@ -1,6 +1,6 @@
 const required = value => (value ? '' : 'Please enter a ');
 const specialChar = value =>
-  value && !/^[a-zA-Z0-9!@#\$%\^\&*\)\(+=._-]+$/g.test(value)
+  value && !/^[a-zA-Z0-9 ]+$/i.test(value)
     ? 'Field should not contain any special characters'
     : undefined;
 

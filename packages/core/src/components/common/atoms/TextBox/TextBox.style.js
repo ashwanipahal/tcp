@@ -7,6 +7,9 @@ const textboxStyles = css`
   input.inputField[type='checkbox'] {
     width: auto;
   }
+  &.input-fields-wrapper + span {
+    padding-left: 5px;
+  }
   @media ${props => props.theme.mediaQuery.smallMax} {
     &.checkbox-align {
       float: left;
@@ -15,6 +18,7 @@ const textboxStyles = css`
     &.input-fields-wrapper {
       overflow: hidden;
     }
+
     &div:last-child {
       padding-right: auto;
     }

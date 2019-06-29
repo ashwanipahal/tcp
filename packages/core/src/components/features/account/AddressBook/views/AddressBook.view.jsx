@@ -20,14 +20,10 @@ type Props = {
   className: string,
   onDefaultShippingAddressClick: Object,
   showDefaultShippingUpdatedMsg: any,
-  onAddNNewAddressClick: any,
+  addAddressLoaded: any,
 };
 
 export class AddressBook extends React.Component<Props> {
-  openAddNewAddressComponent = onAddNNewAddressClick => {
-    return onAddNNewAddressClick({ state: true });
-  };
-
   render() {
     const {
       addresses,
@@ -35,7 +31,7 @@ export class AddressBook extends React.Component<Props> {
       className,
       onDefaultShippingAddressClick,
       showDefaultShippingUpdatedMsg,
-      onAddNNewAddressClick,
+      addAddressLoaded,
     } = this.props;
     return (
       <div className={className}>
@@ -57,13 +53,9 @@ export class AddressBook extends React.Component<Props> {
             }}
             className="addressBook__addNewCtaContainer"
           >
-            <Button
-              onClick={this.openAddNewAddressComponent(onAddNNewAddressClick)}
-              buttonVariation="variable-width"
-              fill="BLUE"
-            >
+            <button onClick={addAddressLoaded} buttonVariation="variable-width" fill="BLUE">
               {labels.addNewAddressCTA}
-            </Button>
+            </button>
           </Col>
         </Row>
         {showDefaultShippingUpdatedMsg !== null && (

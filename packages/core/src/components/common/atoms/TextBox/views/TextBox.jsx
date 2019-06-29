@@ -65,7 +65,7 @@ const TextBox = ({
       </BodyCopy>
       {touched &&
         ((error && (
-          <BodyCopy clearFloat ErrorMsg="error" bodySize="two" tag="p">
+          <BodyCopy clearFloat ErrorMsg="error" bodySize="two" tag="div">
             {error}
             {!elemValue && placeholder}
           </BodyCopy>
