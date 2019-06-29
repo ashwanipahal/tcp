@@ -18,8 +18,7 @@ const endpoints = {
   addAddress: {
     method: 'geta',
     baseURI: 'https://personator.melissadata.net/v3/WEB/ContactVerify/doContactVerify',
-    relURI:
-      '',
+    relURI: '?id=63987687&format=json&act=Check&cols=Plus4%2CDeliveryIndicator&',
   },
   login: {
     method: 'post',

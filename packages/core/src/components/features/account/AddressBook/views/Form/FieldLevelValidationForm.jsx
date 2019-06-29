@@ -2,12 +2,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm, FormSection, submit, Form, change } from 'redux-form';
+import { Heading, BodyCopy } from '@tcp/core/styles/themes/TCP/typotheme';
 import TextBox from '../../../../../common/atoms/TextBox';
 import SelectBox from '../../../../../common/atoms/Select';
 import Row from '../../../../../common/atoms/Row';
 import Col from '../../../../../common/atoms/Col';
 import Button from '../../../../../common/atoms/Button';
-import Notification from '../../../../../common/molecules/Notification';
+
 import {
   required,
   maxLength50,
@@ -30,7 +31,7 @@ type Props = {
   pristine: any,
   reset: any,
   submitting?: any,
-  showDefaultShippingUpdatedMsg: any
+  showDefaultShippingUpdatedMsg: any,
 };
 
 type State = {
@@ -61,6 +62,7 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
   validatezip = country => {
     return country === 'Canada' ? zipcodeCA : zipcodeUS;
   };
+
   handleBlur = e => {
     e.target.value
       ? e.target.parentElement.classList.add('active')
@@ -109,31 +111,10 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
     this.props.dispatch(change('AddressValidationForm', 'street', address.street));
   }
 
-  // handleSubmit = (props) => {
-  // debugger
-  //   const { FirstName,city,zip,state,country,street } = props;
-  //   const { email, password } = this.state;
-  //   return {
-  //     id: '63987687',
-  //     format: 'json',
-  //     act: 'Check',
-  //     cols: 'Plus4,DeliveryIndicator',
-  //     a1: street,
-  //     city: city,
-  //     state: state,
-  //     postal: zip,
-  //     ctry: country
-
-  //   };
-  // };
-
   render() {
-    const { handleSubmit, pristine, reset, submitting,showDefaultShippingUpdatedMsg } = this.props;
+    const { handleSubmit, pristine, reset, submitting } = this.props;
     return (
-      
       <form onSubmit={handleSubmit}>
-       showDefaultShippingUpdatedMsg =  {showDefaultShippingUpdatedMsg}
-        <Notification status="error" colSize={{ large: 12, medium: 8, small: 6 }} message="error" />
         <Row>
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
@@ -250,14 +231,22 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
         </Row>
         <br />
         <Row>
-          <Col colSize={{ small: 6, medium: 1, large: 12 }}>
-            <Field name="default-ship" id="default-ship" component={TextBox} type="checkbox" />
-            Set as default shipping addres
+          <Col colSize={{ small: 6, medium: 1, large: 6 }}>
+            <BodyCopy tag="label">
+              <Field
+                className="checkbox-align"
+                name="default-ship"
+                id="default-ship"
+                component={TextBox}
+                type="checkbox"
+              />{' '}
+              <BodyCopy tag="span">Set as default shipping addres</BodyCopy>
+            </BodyCopy>
           </Col>
         </Row>
         <br />
         <Row>
-          <Col colSize={{ small: 6, medium: 1, large: 3 }}>
+          <Col colSize={{ small: 4, medium: 1, large: 3 }}>
             <Button
               buttonVariation="fixed-width"
               type="button"
@@ -267,7 +256,7 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
               Cancel
             </Button>
           </Col>
-          <Col colSize={{ small: 6, medium: 1, large: 3 }}>
+          <Col colSize={{ small: 4, medium: 1, large: 3 }}>
             <Button ButtonColor="BLUE" type="submit" text="BLUE" buttonVariation="fixed-width">
               Add Address
             </Button>

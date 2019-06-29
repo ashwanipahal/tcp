@@ -4,6 +4,13 @@ const textboxStyles = css`
   &.active p {
     top: -50px;
   }
+  &.checkbox-align {
+    float: left;
+    margin: 5px;
+  }
+  &.input-fields-wrapper {
+    overflow: hidden;
+  }
   .inputField {
     margin: 0;
     outline: 0;
@@ -19,6 +26,7 @@ const textboxStyles = css`
     border-bottom: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
     @media ${props => props.theme.mediaQuery.smallMax} {
       width: 100%;
+      overflow: hidden;
     }
     ${props =>
       props.meta.touched && props.meta.error

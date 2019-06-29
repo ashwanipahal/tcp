@@ -92,12 +92,6 @@ const BodyCopy = styled(BodyStyle)`
       : ''};
 
   ${props =>
-    props.ErrorMsg === 'error'
-      ? `
-    color:${colors.TEXTBOX.ERROR_BORDER};
-    `
-      : ''};
-  ${props =>
     props.clearFloat
       ? `
     clear:both;
@@ -109,6 +103,12 @@ const BodyCopy = styled(BodyStyle)`
   ${props => (props.color === 'primary' ? `color: ${colors.PRIMARY.DARK};` : '')};
   ${props => (props.color === 'secondary' ? `color: ${colors.PRIMARY.BLUE};` : '')};
   ${props => (props.color === 'tertiary' ? `color: ${colors.PRIMARY.GREEN};` : '')};
+  ${props =>
+    props.ErrorMsg === 'error'
+      ? `
+    color:${colors.TEXTBOX.ERROR_BORDER};
+    `
+      : ''};
 `;
 
 export { Heading, BodyCopy };

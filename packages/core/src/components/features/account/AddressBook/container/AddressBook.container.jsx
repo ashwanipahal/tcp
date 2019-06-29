@@ -7,12 +7,12 @@ import {
   getAddressListState,
   getAddressListFetchingState,
   showDefaultShippingUpdatedState,
-  showAddAddressComponent
+  showAddAddressComponent,
 } from './AddressBook.selectors';
 import labels from './AddressBook.labels';
 import { setDefaultShippingAddressRequest } from './DefaultShippingAddress.actions';
 import AddAddressContainer from './AddAddress.container';
-
+import { showMessageForAddAddress } from './AddAddress/AddAddress.selectors';
 // @flow
 
 type Props = {
@@ -35,6 +35,7 @@ export class AddressBookContainer extends React.Component<Props> {
       isFetching,
       onDefaultShippingAddressClick,
       showDefaultShippingUpdatedMsg,
+      showMessageForAddAddressMsg,
       onAddNNewAddressClick,
       addAddressLoaded,
     } = this.props;
@@ -52,8 +53,8 @@ export class AddressBookContainer extends React.Component<Props> {
     //     />
     //   );
     // }
-    if(true){
-      return <AddAddressContainer/>
+    if (true) {
+      return <AddAddressContainer showMessageForAddAddressMsg={showMessageForAddAddressMsg} />;
     }
     return null;
   }
@@ -67,8 +68,8 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     onDefaultShippingAddressClick: payload => {
       dispatch(setDefaultShippingAddressRequest(payload));
     },
-    onAddNNewAddressClick : ({state}) => {
-      dispatch(loadAddAddressComponent({state}))
+    onAddNNewAddressClick: ({ state }) => {
+      dispatch(loadAddAddressComponent({ state }));
     },
   };
 };
@@ -78,6 +79,7 @@ const mapStateToProps = state => {
     addressList: getAddressListState(state),
     isFetching: getAddressListFetchingState(state),
     showDefaultShippingUpdatedMsg: showDefaultShippingUpdatedState(state),
+    showMessageForAddAddressMsg: showMessageForAddAddress(state),
     addAddressLoaded: showAddAddressComponent(state),
   };
 };

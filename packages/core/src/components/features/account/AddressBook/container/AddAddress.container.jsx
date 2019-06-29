@@ -1,12 +1,7 @@
 // @flow
 import React from 'react';
 import { connect } from 'react-redux';
-import { addAddressReq, addAddressSuccess, addAddressFail } from './AddAddress/AddAddress.actions';
-import {
- 
-  showMessageForAddAddress,
-
-} from './AddAddress/AddAddress.selectors';
+import { addAddressReq } from './AddAddress/AddAddress.actions';
 import AddAddress from '../views/AddAddress.view';
 
 /**
@@ -15,19 +10,19 @@ import AddAddress from '../views/AddAddress.view';
  */
 
 type Props = {
-  onSubmit: (SyntheticEvent<>, Object) => void,
-    showMessageForAddAddressMsg: any,
+  submitAddAddressForm: any,
+  showMessageForAddAddressMsg: any,
 };
 
 export class AddaddressContainer extends React.Component<Props> {
   render() {
-    const {
-      submitAddAddressForm,
-      showMessageForAddAddressMsg,
-    } = this.props;
+    const { submitAddAddressForm, showMessageForAddAddressMsg } = this.props;
     return (
-      <AddAddress showMessageForAddAddressMsg={showMessageForAddAddressMsg}  submitAddAddressForm={submitAddAddressForm} />
-    )
+      <AddAddress
+        showMessageForAddAddressMsg={showMessageForAddAddressMsg}
+        submitAddAddressForm={submitAddAddressForm}
+      />
+    );
   }
 }
 
@@ -44,10 +39,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  debugger
+  debugger;
   return {
     loginInfo: state.LoginPageReducer.loginInfo,
-    showMessageForAddAddressMsg: showMessageForAddAddress(state),
   };
 }
 export default connect(

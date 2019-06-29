@@ -45,7 +45,7 @@ const TextBox = ({
 }: Props): Node => {
   let elemValue = input.value;
   return (
-    <div className={`${className} ${elemValue ? 'active' : ''}`}>
+    <div className={`${className} ${elemValue ? 'active' : ''} input-fields-wrapper`}>
       <input
         {...input}
         id={id}
@@ -64,7 +64,7 @@ const TextBox = ({
       </BodyCopy>
       {touched &&
         ((error && (
-          <BodyCopy clearFloat ErrorMsg="error" bodySize="two" tag="div">
+          <BodyCopy clearFloat ErrorMsg="error" bodySize="two" tag="p">
             {error}
             {!elemValue && placeholder}
           </BodyCopy>
