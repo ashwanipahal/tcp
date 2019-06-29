@@ -12,6 +12,7 @@ import {
   required,
   maxLength50,
   maxLength30,
+  minValue10,
   specialChar,
   number,
   zipcodeUS,
@@ -198,7 +199,8 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
               name="phone-number"
               component={TextBox}
               onBlur={this.handleBlur}
-              validate={[required, number]}
+              validate={[required, number, minValue10]}
+              maxLength={10}
             />
           </Col>
         </Row>

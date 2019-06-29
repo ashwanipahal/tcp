@@ -18,8 +18,11 @@ const maxLength = max => value =>
 const maxLength50 = maxLength(50);
 const maxLength30 = maxLength(30);
 const maxLength20 = maxLength(20);
-const number = value => (value && isNaN(Number(value)) ? 'Must be a number' : undefined);
-const minValue = min => value => (value && value < min ? `Must be at least ${min}` : undefined);
+const number = value =>
+  value && isNaN(Number(value)) ? 'Please enter a valid phone number' : undefined;
+const minValue = min => value =>
+  value && value.length < min ? `Please enter a valid phone number` : undefined;
+const minValue10 = minValue(10);
 const minValue18 = minValue(18);
 const email = value =>
   value && !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)
@@ -33,6 +36,7 @@ export {
   maxLength50,
   maxLength30,
   maxLength20,
+  minValue10,
   number,
   minValue,
   minValue18,
