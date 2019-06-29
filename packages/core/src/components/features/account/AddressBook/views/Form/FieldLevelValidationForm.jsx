@@ -17,7 +17,7 @@ import {
   number,
   zipcodeUS,
   zipcodeCA,
-} from '../../../../../../utils/FormValidation';
+} from '../../../../../common/hoc/formsValidation/FormValidation';
 import { LabeledInputGoogleAutoComplete } from '../../../../../common/atoms/AddressAutoSuggest/LabeledInputGoogleAutoComplete';
 import {
   countriesOptionsMap,
@@ -125,7 +125,7 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
               placeholder="Address Line 1"
               component={LabeledInputGoogleAutoComplete}
               name="address1"
-              validate={[required, maxLength30, specialChar]}
+              validate={[required]}
               onPlaceSelected={this.handlePlaceSelected}
               onBlur={this.handleBlur}
             />

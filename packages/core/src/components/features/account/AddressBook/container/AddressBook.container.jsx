@@ -21,7 +21,7 @@ type Props = {
   isFetching: boolean,
   onDefaultShippingAddressClick: () => void,
   showDefaultShippingUpdatedMsg: any,
-  addAddressNotification: any,
+  showMessageForAddAddressMsg: any,
   addAddressLoaded: any,
   onAddNNewAddressClick: any,
 };
@@ -38,7 +38,7 @@ export class AddressBookContainer extends React.Component<Props> {
       isFetching,
       onDefaultShippingAddressClick,
       showDefaultShippingUpdatedMsg,
-      addAddressNotification,
+      showMessageForAddAddressMsg,
       onAddNNewAddressClick,
       addAddressLoaded,
     } = this.props;
@@ -61,7 +61,7 @@ export class AddressBookContainer extends React.Component<Props> {
       return (
         <AddAddressContainer
           AddAddresslabels={AddAddresslabels}
-          addAddressNotification={addAddressNotification}
+          showMessageForAddAddressMsg={showMessageForAddAddressMsg}
         />
       );
     }

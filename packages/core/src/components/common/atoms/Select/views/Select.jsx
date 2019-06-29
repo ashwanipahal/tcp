@@ -47,7 +47,7 @@ const SelectBox = ({
       {...input}
       id={id}
       aria-label={ariaLabel}
-      className="SelectBox__select"
+      className="selectField"
       name={name}
       isSuccessState={isSuccessState}
       value={Value}

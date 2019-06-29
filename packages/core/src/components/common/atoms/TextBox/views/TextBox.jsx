@@ -51,7 +51,7 @@ const TextBox = ({
         {...input}
         id={id}
         aria-label={ariaLabel}
-        className="TextBox__input"
+        className="inputField"
         name={name}
         type={type}
         isSuccessState={isSuccessState}

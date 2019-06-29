@@ -62,7 +62,7 @@ const ButtonStyles = css`
       ? ` background: ${props.theme.colors.BUTTON.PRIMARY};
             color:${props.theme.colors.BUTTON.NORMAL};
             &:hover {
-            background: ${props.theme.colors.BUTTON.PRIMARY_HOVER};
+    background: ${props.theme.colors.BUTTON.PRIMARY_HOVER};
   }
         `
       : ''};

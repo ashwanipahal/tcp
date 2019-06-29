@@ -4,7 +4,7 @@ import ADD_ADDRESS_CONSTANTS from './AddAddress.constants';
 const initialState = fromJS({
   addAddressSuccess: false,
   error: {},
-  addAddressNotification: false,
+  showMessageForAddAddressMsg: false,
 });
 
 const AddAddressReducer = (state = initialState, action) => {
@@ -12,7 +12,7 @@ const AddAddressReducer = (state = initialState, action) => {
     case ADD_ADDRESS_CONSTANTS.ADD_USER_ADDRESS_SUCCESS:
       return state.set('success', action.payload).set('showMelisaCallSuccess', true);
     case ADD_ADDRESS_CONSTANTS.ADD_USER_ADDRESS_FAIL:
-      return state.set('addAddressNotification', true);
+      return state.set('showMessageForAddAddressMsg', true);
 
     default:
       if (state instanceof Object) {

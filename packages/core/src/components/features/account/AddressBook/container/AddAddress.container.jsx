@@ -7,19 +7,19 @@ import showMessageForAddAddress from './AddAddress/AddAddress.selectors';
 
 type Props = {
   submitAddAddressForm: any,
-  addAddressNotification: any,
+  showMessageForAddAddressMsg: any,
   AddAddresslabels: any,
 };
 
 const AddaddressContainer = ({
   submitAddAddressForm,
-  addAddressNotification,
+  showMessageForAddAddressMsg,
   AddAddresslabels,
 }: Props) => {
   return (
     <AddAddress
       AddAddresslabels={AddAddresslabels}
-      addAddressNotification={addAddressNotification}
+      showMessageForAddAddressMsg={showMessageForAddAddressMsg}
       submitAddAddressForm={submitAddAddressForm}
     />
   );
@@ -35,7 +35,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    addAddressNotification: showMessageForAddAddress(state),
+    loginInfo: state.LoginPageReducer.loginInfo,
+    showMessageForAddAddressMsg: showMessageForAddAddress(state),
   };
 }
 

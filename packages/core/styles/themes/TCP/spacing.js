@@ -19,7 +19,6 @@ export default {
     XS: '8px',
     SM: '12px',
     MED: '16px',
-    MEDLRG: '20px',
     LRG: '24px',
     XL: '32px',
     XXL: '40px',

@@ -13,16 +13,16 @@ import styles from '../styles/AddAddress.style';
 type Props = {
   className: string,
   submitAddAddressForm: any,
-  addAddressNotification: any,
+  showMessageForAddAddressMsg: any,
   AddAddresslabels: any,
 };
 const AddAddress = ({
   className,
   submitAddAddressForm,
-  addAddressNotification,
+  showMessageForAddAddressMsg,
   AddAddresslabels,
 }: Props) => {
-  const msgInfo = JSON.parse(`${addAddressNotification}`);
+  const msgInfo = JSON.parse(`${showMessageForAddAddressMsg}`);
   return (
     <div className={className}>
       <Heading
@@ -41,11 +41,13 @@ const AddAddress = ({
               status={msgInfo ? 'error' : 'success'}
               colSize={{ large: 12, medium: 8, small: 6 }}
               message={
-                msgInfo ? AddAddresslabels.addAddressFail : AddAddresslabels.addAddressSuccess
+                msgInfo ? AddAddresslabels.addAddressFail : AddAddresslabels.addAddressFailSuccess
               }
             />
           )}
-          <AddressValidationForm onSubmit={submitAddAddressForm} />
+          <Provider store={store}>
+            <AddressValidationForm onSubmit={submitAddAddressForm} />
+          </Provider>
         </Grid>
       </form>
     </div>
