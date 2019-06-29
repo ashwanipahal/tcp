@@ -3,12 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { addAddressReq } from './AddAddress/AddAddress.actions';
 import AddAddress from '../views/AddAddress.view';
-import { showMessageForAddAddress } from './AddAddress/AddAddress.selectors';
-import AddAddresslabels from './AddAddress/AddAddress.labels';
-/**
- * @function AddAddressContainer The AddressBook container is responsible for fetching the user addresses
- * and paint the right panel for addresses
- */
+import showMessageForAddAddress from './AddAddress/AddAddress.selectors';
 
 type Props = {
   submitAddAddressForm: any,
@@ -16,22 +11,19 @@ type Props = {
   AddAddresslabels: any,
 };
 
-export class AddaddressContainer extends React.Component<Props> {
-  render() {
-    const { submitAddAddressForm, showMessageForAddAddressMsg, AddAddresslabels } = this.props;
-    return (
-      <AddAddress
-        AddAddresslabels={AddAddresslabels}
-        showMessageForAddAddressMsg={showMessageForAddAddressMsg}
-        submitAddAddressForm={submitAddAddressForm}
-      />
-    );
-  }
-}
-
-// const AddaddressContainer = ({ submitAddAddressForm }: Props) => {
-//   return <AddAddress submitAddAddressForm={submitAddAddressForm} />;
-// };
+const AddaddressContainer = ({
+  submitAddAddressForm,
+  showMessageForAddAddressMsg,
+  AddAddresslabels,
+}: Props) => {
+  return (
+    <AddAddress
+      AddAddresslabels={AddAddresslabels}
+      showMessageForAddAddressMsg={showMessageForAddAddressMsg}
+      submitAddAddressForm={submitAddAddressForm}
+    />
+  );
+};
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -47,6 +39,7 @@ function mapStateToProps(state) {
     showMessageForAddAddressMsg: showMessageForAddAddress(state),
   };
 }
+
 export default connect(
   mapStateToProps,
   mapDispatchToProps

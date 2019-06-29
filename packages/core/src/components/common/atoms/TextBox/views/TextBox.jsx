@@ -36,16 +36,17 @@ const TextBox = ({
   name,
   type,
   placeholder,
-  isErrorState,
   isSuccessState,
   maxLength,
   input,
-  Value,
   meta: { touched, error, warning },
 }: Props): Node => {
-  let elemValue = input.value;
+  const elemValue = input.value;
   return (
-    <label className={`${className} ${elemValue ? 'active' : ''} input-fields-wrapper`}>
+    <label
+      htmlFor={name}
+      className={`${className} ${elemValue ? 'active' : ''} input-fields-wrapper`}
+    >
       <input
         {...input}
         id={id}

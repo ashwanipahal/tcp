@@ -12,49 +12,47 @@ import styles from '../styles/AddAddress.style';
 // @flow
 type Props = {
   className: string,
+  submitAddAddressForm: any,
+  showMessageForAddAddressMsg: any,
+  AddAddresslabels: any,
 };
-
-class AddAddress extends React.Component<Props> {
-  render() {
-    const {
-      className,
-      submitAddAddressForm,
-      showMessageForAddAddressMsg,
-      AddAddresslabels,
-    } = this.props;
-    const msgInfo = JSON.parse(`${showMessageForAddAddressMsg}`);
-    return (
-      <div className={className}>
-        <Heading
-          fontFamily="secondaryFontFamily"
-          HeadingLarge="six"
-          tag="h4"
-          className="addAddress__separator"
-        >
-          Add New Shipping Address
-        </Heading>
-        <form>
-          <Grid>
-            <br />
-            {msgInfo && (
-              <Notification
-                status={msgInfo ? 'error' : 'success'}
-                colSize={{ large: 12, medium: 8, small: 6 }}
-                message={
-                  msgInfo ? AddAddresslabels.addAddressFail : AddAddresslabels.addAddressFailSuccess
-                }
-              />
-            )}
-            <Provider store={store}>
-              <AddressValidationForm onSubmit={submitAddAddressForm} />
-            </Provider>
-          </Grid>
-        </form>
-      </div>
-    );
-  }
-}
-
+const AddAddress = ({
+  className,
+  submitAddAddressForm,
+  showMessageForAddAddressMsg,
+  AddAddresslabels,
+}: Props) => {
+  const msgInfo = JSON.parse(`${showMessageForAddAddressMsg}`);
+  return (
+    <div className={className}>
+      <Heading
+        fontFamily="secondaryFontFamily"
+        HeadingLarge="six"
+        tag="h4"
+        className="addAddress__separator"
+      >
+        Add New Shipping Address
+      </Heading>
+      <form>
+        <Grid>
+          <br />
+          {msgInfo && (
+            <Notification
+              status={msgInfo ? 'error' : 'success'}
+              colSize={{ large: 12, medium: 8, small: 6 }}
+              message={
+                msgInfo ? AddAddresslabels.addAddressFail : AddAddresslabels.addAddressFailSuccess
+              }
+            />
+          )}
+          <Provider store={store}>
+            <AddressValidationForm onSubmit={submitAddAddressForm} />
+          </Provider>
+        </Grid>
+      </form>
+    </div>
+  );
+};
 // const AddAddress = ({ onSubmit, submitAddAddressForm }) => {
 //   return (
 

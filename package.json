@@ -107,7 +107,6 @@
     "dotenv": "^8.0.0",
     "immutable": "^4.0.0-rc.12",
     "little-loader": "^0.2.0",
-    "react-google-autocomplete": "^1.1.0",
     "react-modal": "^3.8.1",
     "react-redux": "^6.0.1",
     "react-slick": "^0.24.0",

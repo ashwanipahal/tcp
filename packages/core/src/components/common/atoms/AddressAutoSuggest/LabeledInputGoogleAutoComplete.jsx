@@ -1,14 +1,3 @@
-/** @module GoogleAutoCompleteAddressInput
- * @summary a LabeledInput element that provides an address auto completion hook using
- *  the Google places API (https://developers.google.com/maps/documentation/javascript/places-autocomplete)
- *
- * Any extra props (i.e., other than <code>onPlaceSelected, types, componentRestrictions, bounds/code>),
- * e.g., <code>name, title, showErrorIfUntouched, meta</code>, passed to this component (either directly or by a wrapping HOC)
- * will be passed along to the rendered <code>LabeledInput</code> element.
- *
- * @author Ben
- */
-
 import React from 'react';
 import { requireNamedOnlineModule } from './resourceLoader';
 import LabeledInput from './LabeledInput'; // this comment prevents linting errors
@@ -19,14 +8,9 @@ import LabeledInput from './LabeledInput'; // this comment prevents linting erro
     return new Promise((resolve, reject) => {
       geocoder.geocode({ address }, (results, status) => {
         if (status === 'OK') {
-          let country = results[0].address_components.find(component => {
-            return component.types && component.types.find(type => type === 'country');
-          });
-          const timeStamp = new Date().getTime();
           const storeDataObject = {
             lat: results[0].geometry.location.lat(),
             lng: results[0].geometry.location.lng(),
-            country: country && country.short_name,
           };
           resolve(storeDataObject);
         } else {
@@ -43,10 +27,6 @@ export class LabeledInputGoogleAutoComplete extends React.Component {
     componentRestrictions: {},
   };
 
-  /** An object that describes how the place parts returned by Google are mapped to fields in the returned value of
-   * the method getAddressFromPlace().
-   * @see {@link https://developers.google.com/maps/documentation/javascript/reference#PlaceResult}.
-   */
   static GOOGLE_PLACE_PARTS = {
     street_number: 'short_name',
     route: 'long_name',
@@ -57,27 +37,14 @@ export class LabeledInputGoogleAutoComplete extends React.Component {
     postal_code: 'short_name',
   };
 
-  /**
-   * A method that parses the place result returned by Google auto complete to address fields.
-   *
-   * @param  {object} place  a place object to parses.
-   * @see {@link https://developers.google.com/maps/documentation/javascript/reference#PlaceResult.
-   *
-   * @return  a plain object with the address, or undefined if autocomplete cannot provide an address for this place.
-   * See the static property GOOGLE_PLACE_PARTS for the structure of the returned object.
-   */
   static getAddressFromPlace(place, inputValue) {
-    let address = { street: '', city: '', state: '', country: '', zip: '' };
+    const address = { street: '', city: '', state: '', country: '', zip: '' };
     let streetNumber = '';
     let streetName = '';
 
     if (typeof place.address_components === 'undefined') {
-      // FIXME: see http://stackoverflow.com/questions/26622160/google-map-places-api-getplace-only-return-name-attribute-for-some-addresses
-      // on ideas how to handle addresses that only contain a name
       return address;
     }
-
-    // Open Issue: for some address google returns wrong city, refer to https://productforums.google.com/forum/#!topic/websearch/8E0TZuSv5fw;context-place=forum/websearch
     for (let i = 0; i < place.address_components.length; i++) {
       let addressType = place.address_components[i].types[0];
       if (LabeledInputGoogleAutoComplete.GOOGLE_PLACE_PARTS[addressType]) {
@@ -97,7 +64,7 @@ export class LabeledInputGoogleAutoComplete extends React.Component {
             break;
           case 'sublocality_level_1':
             address.city = val;
-            break; // DT-31306 not all cities are under locality
+            break;
           case 'administrative_area_level_1':
             address.state = val;
             break;
@@ -111,10 +78,7 @@ export class LabeledInputGoogleAutoComplete extends React.Component {
       }
     }
 
-    // DT-31167: For some addresses google does not return the street number, so we need to inject the value from the input
-    // https://stackoverflow.com/questions/17936689/google-places-autocomplete-suggestions-with-unit-no-subpremise-is-not-coming-in
     if (!streetNumber) {
-      // get all the user entered values before a match with the first word from the Google result
       let regex = RegExp('^(.*)' + streetName.split(' ', 1)[0]);
       let result = regex.exec(inputValue);
       let inputNum = Array.isArray(result) && result[1] && Number(result[1]);
@@ -137,7 +101,6 @@ export class LabeledInputGoogleAutoComplete extends React.Component {
 
     this.attachToInputRef = this.attachToInputRef.bind(this);
     this.handleOnPlaceSelected = this.handleOnPlaceSelected.bind(this);
-    // this.handleOnChange = this.handleOnChange.bind(this); // unused / undefined?
   }
 
   componentWillUpdate(nextProps) {
@@ -154,12 +117,6 @@ export class LabeledInputGoogleAutoComplete extends React.Component {
       if (nextProps.componentRestrictions) {
         this.googleAutocomplete.setComponentRestrictions(nextProps.componentRestrictions);
       } else {
-        // no country restriction
-        //  setComponentRestrictions() cannot remove all restrictions. Thus, we must use a new autoComplete object
-        //  (and stop using the old one).
-        //  We do this by changing the key we will use for the LabeledInput in the next render
-        //  changing the key forces a dismount from the DOM, and thus a new LabeledInput with a new ref,
-        //  and thus a new call to this.attachToInputRef(), and a new autoComplete object
         this.inputElementKey = this.inputElementKey === '0' ? '1' : '0';
       }
     }
@@ -186,9 +143,6 @@ export class LabeledInputGoogleAutoComplete extends React.Component {
     let { types, bounds } = props;
     let componentRestrictions = props.componentRestrictions;
     return componentRestrictions ? { types, bounds, componentRestrictions } : { types, bounds };
-    // return {
-    //   types: props.types
-    // };
   }
 
   attachToInputRef(refToInputElement) {
@@ -222,18 +176,9 @@ export class LabeledInputGoogleAutoComplete extends React.Component {
 
   handleOnPlaceSelected() {
     let inputValue = this.refToInputElement != null && this.refToInputElement.value;
-
-    // the following onChange dispatch is needed because when the user selects a place from
-    // the google drop-down the input field is updated by google but no onChange event is fired (and
-    // thus handleOnChange does not handle this change).
     this.refToInputElement != null &&
       this.props.input &&
       this.props.input.onChange(this.refToInputElement.value);
-
-    // notify our listeners that the selected place has changed
-    // Note that this event must fire after the onChange event (called above) so that we can, for example,
-    // have a listener store the place information and clear it whenever the onChange event fires,
-    // (if the user just types, and does not select any suggestion, the stored place is no longer relevant).
     this.props.onPlaceSelected(this.googleAutocomplete.getPlace(), inputValue);
   }
 

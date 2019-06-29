@@ -3,14 +3,8 @@ const countriesOptionsMap = [
     id: '',
     displayName: '',
   },
-  {
-    id: 'US',
-    displayName: 'United States',
-  },
-  {
-    id: 'CA',
-    displayName: 'Canada',
-  },
+  { id: 'US', displayName: 'United States' },
+  { id: 'CA', displayName: 'Canada' },
 ];
 
 const CAcountriesStatesTable = [

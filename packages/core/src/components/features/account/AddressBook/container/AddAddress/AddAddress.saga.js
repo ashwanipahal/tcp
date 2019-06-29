@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import ADD_ADDRESS_CONSTANTS from './AddAddress.constants';
-import { addAddressReq, addAddressSuccess, addAddressFail } from './AddAddress.actions';
+import { addAddressSuccess, addAddressFail } from './AddAddress.actions';
 import fetchData from '../../../../../../service/API';
 import endpoints from '../../../../../../service/endpoint';
 import { objectToQueryString } from '../../../../../../../../web/src/utils/utils';

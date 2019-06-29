@@ -35,7 +35,6 @@ const SelectBox = ({
   ariaLabel,
   name,
   placeholder,
-  isErrorState,
   isSuccessState,
   defaultValue,
   input,

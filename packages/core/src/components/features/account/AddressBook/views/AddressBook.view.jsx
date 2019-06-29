@@ -19,68 +19,73 @@ type Props = {
   },
   className: string,
   onDefaultShippingAddressClick: Object,
+  showDefaultShippingUpdatedMsg: any,
+  onAddNNewAddressClick: any,
 };
-
 
 export class AddressBook extends React.Component<Props> {
-  openAddNewAddressComponent = (onAddNNewAddressClick) => {
-    return onAddNNewAddressClick({state:true})
-   }
-   
-  render(){
-  const {
-  addresses,
-  labels,
-  className,
-  onDefaultShippingAddressClick,
-  showDefaultShippingUpdatedMsg,
-  onAddNNewAddressClick,
-} = this.props
-  return (
-    <div className={className}>
-      <Heading
-        fontFamily="secondaryFontFamily"
-        HeadingLarge="six"
-        tag="h4"
-        className="addressBook__separator"
-      >
-        Address Book
-      </Heading>
-      {addresses.size === 0 && <EmptyAddressListComponent labels={labels} />}
-      <Row fullBleed className="addressBook__row--marginBottom">
-        <Col
-          colSize={{
-            small: 6,
-            large: 10,
-            medium: 8,
-          }}
-          className="addressBook__addNewCtaContainer"
+  openAddNewAddressComponent = onAddNNewAddressClick => {
+    return onAddNNewAddressClick({ state: true });
+  };
+
+  render() {
+    const {
+      addresses,
+      labels,
+      className,
+      onDefaultShippingAddressClick,
+      showDefaultShippingUpdatedMsg,
+      onAddNNewAddressClick,
+    } = this.props;
+    return (
+      <div className={className}>
+        <Heading
+          fontFamily="secondaryFontFamily"
+          HeadingLarge="six"
+          tag="h4"
+          className="addressBook__separator"
         >
-          <Button onClick={this.openAddNewAddressComponent(onAddNNewAddressClick)} buttonVariation="variable-width" fill="BLUE">
-            {labels.addNewAddressCTA}
-          </Button>
-        </Col>
-      </Row>
-      {showDefaultShippingUpdatedMsg !== null && (
-        <Notification
-          status={showDefaultShippingUpdatedMsg ? 'success' : 'error'}
-          colSize={{ large: 12, medium: 8, small: 6 }}
-          message={
-            showDefaultShippingUpdatedMsg
-              ? labels.defaultShippingSuccessMessage
-              : labels.defaultShippingSuccessFail
-          }
-        />
-      )}
-      {addresses.size > 0 && (
-        <AddressListComponent
-          addresses={addresses}
-          labels={labels}
-          onDefaultShippingAddressClick={onDefaultShippingAddressClick}
-        />
-      )}
-    </div>
-  );
-};
+          Address Book
+        </Heading>
+        {addresses.size === 0 && <EmptyAddressListComponent labels={labels} />}
+        <Row fullBleed className="addressBook__row--marginBottom">
+          <Col
+            colSize={{
+              small: 6,
+              large: 10,
+              medium: 8,
+            }}
+            className="addressBook__addNewCtaContainer"
+          >
+            <Button
+              onClick={this.openAddNewAddressComponent(onAddNNewAddressClick)}
+              buttonVariation="variable-width"
+              fill="BLUE"
+            >
+              {labels.addNewAddressCTA}
+            </Button>
+          </Col>
+        </Row>
+        {showDefaultShippingUpdatedMsg !== null && (
+          <Notification
+            status={showDefaultShippingUpdatedMsg ? 'success' : 'error'}
+            colSize={{ large: 12, medium: 8, small: 6 }}
+            message={
+              showDefaultShippingUpdatedMsg
+                ? labels.defaultShippingSuccessMessage
+                : labels.defaultShippingSuccessFail
+            }
+          />
+        )}
+        {addresses.size > 0 && (
+          <AddressListComponent
+            addresses={addresses}
+            labels={labels}
+            onDefaultShippingAddressClick={onDefaultShippingAddressClick}
+          />
+        )}
+      </div>
+    );
   }
+}
 export default withStyles(AddressBook, styles);

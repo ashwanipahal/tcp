@@ -21,6 +21,9 @@ type Props = {
   isFetching: boolean,
   onDefaultShippingAddressClick: () => void,
   showDefaultShippingUpdatedMsg: any,
+  showMessageForAddAddressMsg: any,
+  onAddNNewAddressClick: any,
+  addAddressLoaded: any,
 };
 
 export class AddressBookContainer extends React.Component<Props> {
@@ -39,21 +42,21 @@ export class AddressBookContainer extends React.Component<Props> {
       onAddNNewAddressClick,
       addAddressLoaded,
     } = this.props;
-    // if (isFetching) {
-    //   return <p>Loading...</p>;
-    // }
-    // if (List.isList(addressList) && !addAddressLoaded) {
-    //   return (
-    //     <AddressBookComponent
-    //       addresses={addressList}
-    //       labels={labels}
-    //       onDefaultShippingAddressClick={onDefaultShippingAddressClick}
-    //       showDefaultShippingUpdatedMsg={showDefaultShippingUpdatedMsg}
-    //       onAddNNewAddressClick={onAddNNewAddressClick}
-    //     />
-    //   );
-    // }
-    if (true) {
+    if (isFetching) {
+      return <p>Loading...</p>;
+    }
+    if (List.isList(addressList) && !addAddressLoaded) {
+      return (
+        <AddressBookComponent
+          addresses={addressList}
+          labels={labels}
+          onDefaultShippingAddressClick={onDefaultShippingAddressClick}
+          showDefaultShippingUpdatedMsg={showDefaultShippingUpdatedMsg}
+          onAddNNewAddressClick={onAddNNewAddressClick}
+        />
+      );
+    }
+    if (addAddressLoaded) {
       return (
         <AddAddressContainer
           AddAddresslabels={AddAddresslabels}

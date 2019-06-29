@@ -14,7 +14,6 @@ type Props = {
   name?: string,
   type?: string,
   placeholder?: string,
-  isErrorState?: boolean,
   isSuccessState?: boolean,
   onChangeHandler?: any,
   meta: { touched: any, error: any, warning: any },
@@ -29,7 +28,6 @@ const LabeledInput = ({
   name,
   type,
   placeholder,
-  isErrorState,
   isSuccessState,
   input,
   Value,
@@ -66,6 +64,14 @@ const LabeledInput = ({
         )))}
   </div>
 );
-
+LabeledInput.defaultProps = {
+  id: '',
+  ariaLabel: '',
+  name: '',
+  type: '',
+  placeholder: '',
+  isSuccessState: false,
+  onChangeHandler: '',
+};
 export default withStyles(LabeledInput, StyledTextBox);
 export { LabeledInput as LabeledInputVanilla };
