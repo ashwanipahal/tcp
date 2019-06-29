@@ -16,7 +16,13 @@ type Props = {
 
 class AddAddress extends React.Component<Props> {
   render() {
-    const { className, submitAddAddressForm, showMessageForAddAddressMsg } = this.props;
+    const {
+      className,
+      submitAddAddressForm,
+      showMessageForAddAddressMsg,
+      AddAddresslabels,
+    } = this.props;
+    const msgInfo = JSON.parse(`${showMessageForAddAddressMsg}`);
     return (
       <div className={className}>
         <Heading
@@ -25,16 +31,20 @@ class AddAddress extends React.Component<Props> {
           tag="h4"
           className="addAddress__separator"
         >
-          Add New Shipping Address showMessageForAddAddressMsg : {showMessageForAddAddressMsg}
+          Add New Shipping Address
         </Heading>
         <form>
           <Grid>
             <br />
-            <Notification
-              status="error"
-              colSize={{ large: 12, medium: 8, small: 6 }}
-              message="error"
-            />
+            {msgInfo && (
+              <Notification
+                status={msgInfo ? 'error' : 'success'}
+                colSize={{ large: 12, medium: 8, small: 6 }}
+                message={
+                  msgInfo ? AddAddresslabels.addAddressFail : AddAddresslabels.addAddressFailSuccess
+                }
+              />
+            )}
             <Provider store={store}>
               <AddressValidationForm onSubmit={submitAddAddressForm} />
             </Provider>
@@ -50,4 +60,6 @@ class AddAddress extends React.Component<Props> {
 
 //   );
 // };
-export default withStyles(AddAddress, styles);
+export default reduxForm({
+  form: 'addressinfo', // a unique identifier for this form
+})(withStyles(AddAddress, styles));

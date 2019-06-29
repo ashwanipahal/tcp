@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { addAddressReq } from './AddAddress/AddAddress.actions';
 import AddAddress from '../views/AddAddress.view';
 import { showMessageForAddAddress } from './AddAddress/AddAddress.selectors';
+import AddAddresslabels from './AddAddress/AddAddress.labels';
 /**
  * @function AddAddressContainer The AddressBook container is responsible for fetching the user addresses
  * and paint the right panel for addresses
@@ -12,13 +13,15 @@ import { showMessageForAddAddress } from './AddAddress/AddAddress.selectors';
 type Props = {
   submitAddAddressForm: any,
   showMessageForAddAddressMsg: any,
+  AddAddresslabels: any,
 };
 
 export class AddaddressContainer extends React.Component<Props> {
   render() {
-    const { submitAddAddressForm, showMessageForAddAddressMsg } = this.props;
+    const { submitAddAddressForm, showMessageForAddAddressMsg, AddAddresslabels } = this.props;
     return (
       <AddAddress
+        AddAddresslabels={AddAddresslabels}
         showMessageForAddAddressMsg={showMessageForAddAddressMsg}
         submitAddAddressForm={submitAddAddressForm}
       />
@@ -39,7 +42,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
-  debugger;
   return {
     loginInfo: state.LoginPageReducer.loginInfo,
     showMessageForAddAddressMsg: showMessageForAddAddress(state),

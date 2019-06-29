@@ -4,7 +4,7 @@ const styles = css`
   .addAddress__separator {
     border-bottom: 3px solid ${props => props.theme.colors.BLACK};
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    margin-bottom: 0;
   }
   .button_wrapper {
     display: inline-block;

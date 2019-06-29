@@ -10,9 +10,9 @@ import {
   showAddAddressComponent,
 } from './AddressBook.selectors';
 import labels from './AddressBook.labels';
+import AddAddresslabels from './AddAddress/AddAddress.labels';
 import { setDefaultShippingAddressRequest } from './DefaultShippingAddress.actions';
 import AddAddressContainer from './AddAddress.container';
-import { showMessageForAddAddress } from './AddAddress/AddAddress.selectors';
 // @flow
 
 type Props = {
@@ -54,7 +54,12 @@ export class AddressBookContainer extends React.Component<Props> {
     //   );
     // }
     if (true) {
-      return <AddAddressContainer showMessageForAddAddressMsg={showMessageForAddAddressMsg} />;
+      return (
+        <AddAddressContainer
+          AddAddresslabels={AddAddresslabels}
+          showMessageForAddAddressMsg={showMessageForAddAddressMsg}
+        />
+      );
     }
     return null;
   }
@@ -79,7 +84,6 @@ const mapStateToProps = state => {
     addressList: getAddressListState(state),
     isFetching: getAddressListFetchingState(state),
     showDefaultShippingUpdatedMsg: showDefaultShippingUpdatedState(state),
-    showMessageForAddAddressMsg: showMessageForAddAddress(state),
     addAddressLoaded: showAddAddressComponent(state),
   };
 };
