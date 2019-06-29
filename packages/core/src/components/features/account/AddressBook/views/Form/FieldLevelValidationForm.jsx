@@ -7,6 +7,7 @@ import SelectBox from '../../../../../common/atoms/Select';
 import Row from '../../../../../common/atoms/Row';
 import Col from '../../../../../common/atoms/Col';
 import Button from '../../../../../common/atoms/Button';
+import Notification from '../../../../../common/molecules/Notification';
 import {
   required,
   maxLength50,
@@ -29,6 +30,7 @@ type Props = {
   pristine: any,
   reset: any,
   submitting?: any,
+  showDefaultShippingUpdatedMsg: any
 };
 
 type State = {
@@ -57,7 +59,6 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
   }
 
   validatezip = country => {
-    debugger;
     return country === 'Canada' ? zipcodeCA : zipcodeUS;
   };
   handleBlur = e => {
@@ -127,9 +128,12 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
   // };
 
   render() {
-    const { handleSubmit, pristine, reset, submitting } = this.props;
+    const { handleSubmit, pristine, reset, submitting,showDefaultShippingUpdatedMsg } = this.props;
     return (
+      
       <form onSubmit={handleSubmit}>
+       showDefaultShippingUpdatedMsg =  {showDefaultShippingUpdatedMsg}
+        <Notification status="error" colSize={{ large: 12, medium: 8, small: 6 }} message="error" />
         <Row>
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field

@@ -1,3 +1,4 @@
+// @flow
 import ADD_ADDRESS_CONSTANTS from './AddAddress.constants';
 
 export const addAddressReq = payload => {
@@ -13,7 +14,8 @@ export const addAddressSuccess = payload => {
     payload,
   };
 };
-export const addAddressFail = payload => {
+export const addAddressFail = (payload: {})  => {
+  debugger
   return {
     type: ADD_ADDRESS_CONSTANTS.ADD_USER_ADDRESS_FAIL,
     payload,

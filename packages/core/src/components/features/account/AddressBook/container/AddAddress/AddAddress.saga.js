@@ -4,7 +4,7 @@ import { addAddressReq, addAddressSuccess, addAddressFail } from './AddAddress.a
 import fetchData from '../../../../../../service/API';
 import endpoints from '../../../../../../service/endpoint';
 
-function* addAddressGet(payload) {
+function* addAddressGet({payload}) {
   try {
     const { baseURI, relURI, method } = endpoints.addAddress;
 
@@ -12,7 +12,7 @@ function* addAddressGet(payload) {
       fetchData,
       baseURI,
       relURI,
-      {
+      { payload,
         langId: -1,
         catalogId: 10551,
         storeId: 10151,
@@ -23,8 +23,7 @@ function* addAddressGet(payload) {
       yield put(addAddressSuccess());
     }
   } catch (err) {
-    console.log('Error in API');
-    console.log(err);
+    yield put(addAddressFail(err));
   }
 }
 

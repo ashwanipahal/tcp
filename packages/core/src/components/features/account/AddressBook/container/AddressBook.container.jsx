@@ -1,15 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { List } from 'immutable';
-import { getAddressList } from './AddressBook.actions';
+import { getAddressList, loadAddAddressComponent } from './AddressBook.actions';
 import AddressBookComponent from '../views/AddressBook.view';
 import {
   getAddressListState,
   getAddressListFetchingState,
   showDefaultShippingUpdatedState,
+  showAddAddressComponent
 } from './AddressBook.selectors';
 import labels from './AddressBook.labels';
 import { setDefaultShippingAddressRequest } from './DefaultShippingAddress.actions';
+import AddAddressContainer from './AddAddress.container';
 
 // @flow
 
@@ -33,19 +35,25 @@ export class AddressBookContainer extends React.Component<Props> {
       isFetching,
       onDefaultShippingAddressClick,
       showDefaultShippingUpdatedMsg,
+      onAddNNewAddressClick,
+      addAddressLoaded,
     } = this.props;
-    if (isFetching) {
-      return <p>Loading...</p>;
-    }
-    if (List.isList(addressList)) {
-      return (
-        <AddressBookComponent
-          addresses={addressList}
-          labels={labels}
-          onDefaultShippingAddressClick={onDefaultShippingAddressClick}
-          showDefaultShippingUpdatedMsg={showDefaultShippingUpdatedMsg}
-        />
-      );
+    // if (isFetching) {
+    //   return <p>Loading...</p>;
+    // }
+    // if (List.isList(addressList) && !addAddressLoaded) {
+    //   return (
+    //     <AddressBookComponent
+    //       addresses={addressList}
+    //       labels={labels}
+    //       onDefaultShippingAddressClick={onDefaultShippingAddressClick}
+    //       showDefaultShippingUpdatedMsg={showDefaultShippingUpdatedMsg}
+    //       onAddNNewAddressClick={onAddNNewAddressClick}
+    //     />
+    //   );
+    // }
+    if(true){
+      return <AddAddressContainer/>
     }
     return null;
   }
@@ -59,6 +67,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     onDefaultShippingAddressClick: payload => {
       dispatch(setDefaultShippingAddressRequest(payload));
     },
+    onAddNNewAddressClick : ({state}) => {
+      dispatch(loadAddAddressComponent({state}))
+    },
   };
 };
 
@@ -67,6 +78,7 @@ const mapStateToProps = state => {
     addressList: getAddressListState(state),
     isFetching: getAddressListFetchingState(state),
     showDefaultShippingUpdatedMsg: showDefaultShippingUpdatedState(state),
+    addAddressLoaded: showAddAddressComponent(state),
   };
 };
 

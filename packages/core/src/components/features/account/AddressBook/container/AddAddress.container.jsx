@@ -2,6 +2,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addAddressReq, addAddressSuccess, addAddressFail } from './AddAddress/AddAddress.actions';
+import {
+ 
+  showMessageForAddAddress,
+
+} from './AddAddress/AddAddress.selectors';
 import AddAddress from '../views/AddAddress.view';
 
 /**
@@ -11,11 +16,24 @@ import AddAddress from '../views/AddAddress.view';
 
 type Props = {
   onSubmit: (SyntheticEvent<>, Object) => void,
+    showMessageForAddAddressMsg: any,
 };
 
-const AddaddressContainer = ({ submitAddAddressForm }: Props) => {
-  return <AddAddress submitAddAddressForm={submitAddAddressForm} />;
-};
+export class AddaddressContainer extends React.Component<Props> {
+  render() {
+    const {
+      submitAddAddressForm,
+      showMessageForAddAddressMsg,
+    } = this.props;
+    return (
+      <AddAddress showMessageForAddAddressMsg={showMessageForAddAddressMsg}  submitAddAddressForm={submitAddAddressForm} />
+    )
+  }
+}
+
+// const AddaddressContainer = ({ submitAddAddressForm }: Props) => {
+//   return <AddAddress submitAddAddressForm={submitAddAddressForm} />;
+// };
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -26,8 +44,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state) {
+  debugger
   return {
     loginInfo: state.LoginPageReducer.loginInfo,
+    showMessageForAddAddressMsg: showMessageForAddAddress(state),
   };
 }
 export default connect(
