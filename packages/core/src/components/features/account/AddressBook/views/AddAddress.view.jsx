@@ -6,7 +6,7 @@ import Notification from '@tcp/core/src/components/common/molecules/Notification
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import store from './Form/store';
-import AddressValidationForm from './Form/FieldLevelValidationForm';
+import AddressValidationForm from './Form/AddressValidationForm';
 import styles from '../styles/AddAddress.style';
 
 // @flow

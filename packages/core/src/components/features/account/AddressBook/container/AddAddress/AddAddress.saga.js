@@ -7,7 +7,7 @@ import { objectToQueryString } from '../../../../../../../../web/src/utils/utils
 
 function* addAddressGet({ payload }) {
   try {
-    const { baseURI, relURI, method } = endpoints.addAddress;
+    const { baseURI, relURI, method } = endpoints.verifyAddress;
     const { payload: formData } = payload;
 
     const queryDataObject = {
