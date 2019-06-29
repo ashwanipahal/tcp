@@ -31,7 +31,7 @@ export class AddressBook extends React.Component<Props> {
       className,
       onDefaultShippingAddressClick,
       showDefaultShippingUpdatedMsg,
-      addAddressLoaded,
+      onAddNNewAddressClick,
     } = this.props;
     return (
       <div className={className}>
@@ -53,9 +53,9 @@ export class AddressBook extends React.Component<Props> {
             }}
             className="addressBook__addNewCtaContainer"
           >
-            <button onClick={addAddressLoaded} buttonVariation="variable-width" fill="BLUE">
+            <Button onClick={onAddNNewAddressClick} buttonVariation="variable-width" fill="BLUE">
               {labels.addNewAddressCTA}
-            </button>
+            </Button>
           </Col>
         </Row>
         {showDefaultShippingUpdatedMsg !== null && (

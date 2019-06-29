@@ -82,11 +82,11 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
       state: address.state,
       country: address.country,
     });
-    dispatch(change('AddressValidationForm', 'city', address.city));
-    dispatch(change('AddressValidationForm', 'zip', address.zip));
-    dispatch(change('AddressValidationForm', 'state', address.state));
-    dispatch(change('AddressValidationForm', 'country', address.country));
-    dispatch(change('AddressValidationForm', 'street', address.street));
+    this.props.dispatch(change('AddressValidationForm', 'city', address.city));
+    this.props.dispatch(change('AddressValidationForm', 'zip', address.zip));
+    this.props.dispatch(change('AddressValidationForm', 'state', address.state));
+    this.props.dispatch(change('AddressValidationForm', 'country', address.country));
+    this.props.dispatch(change('AddressValidationForm', 'street', address.street));
   };
 
   render() {

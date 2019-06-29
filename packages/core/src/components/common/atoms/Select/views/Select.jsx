@@ -64,7 +64,7 @@ const SelectBox = ({
         })}
     </select>
     {/* commented onChange={onChangeHandler} */}
-    <BodyCopy bodySize="two" FormVariation="float" BodycolorLg="primary" tag="label">
+    <BodyCopy bodySize="two" FormVariation="float" BodycolorLg="primary" tag="div">
       {placeholder}
     </BodyCopy>
     {touched &&

@@ -22,6 +22,7 @@ type Props = {
   onDefaultShippingAddressClick: () => void,
   showDefaultShippingUpdatedMsg: any,
   showMessageForAddAddressMsg: any,
+  addAddressLoaded: any,
   onAddNNewAddressClick: any,
 };
 
@@ -39,11 +40,12 @@ export class AddressBookContainer extends React.Component<Props> {
       showDefaultShippingUpdatedMsg,
       showMessageForAddAddressMsg,
       onAddNNewAddressClick,
+      addAddressLoaded,
     } = this.props;
     if (isFetching) {
       return <p>Loading...</p>;
     }
-    if (List.isList(addressList) && !true) {
+    if (List.isList(addressList) && !addAddressLoaded) {
       return (
         <AddressBookComponent
           addresses={addressList}
@@ -54,7 +56,8 @@ export class AddressBookContainer extends React.Component<Props> {
         />
       );
     }
-    if (true) {
+
+    if (addAddressLoaded) {
       return (
         <AddAddressContainer
           AddAddresslabels={AddAddresslabels}
@@ -75,7 +78,6 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
       dispatch(setDefaultShippingAddressRequest(payload));
     },
     onAddNNewAddressClick: ({ state }) => {
-      debugger;
       dispatch(loadAddAddressComponent({ state }));
     },
   };

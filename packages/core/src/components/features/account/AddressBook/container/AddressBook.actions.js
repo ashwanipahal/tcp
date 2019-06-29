@@ -9,7 +9,7 @@ export const setAddressList = addressList => ({
   addressList,
 });
 
-export const loadAddAddressComponent = ({state}) => ({
+export const loadAddAddressComponent = state => ({
   type: ADDRESS_BOOK_CONSTANTS.LOAD_ADD_ADDRESS_COMPONENT,
   state,
 });

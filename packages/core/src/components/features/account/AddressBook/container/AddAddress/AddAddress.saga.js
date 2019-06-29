@@ -11,11 +11,11 @@ function* addAddressGet({ payload }) {
     const { payload: formData } = payload;
 
     const queryDataObject = {
-      a1: formData.address1,
-      city: formData.city,
-      state: formData.state,
-      postal: formData.zip,
-      ctry: formData.country === 'Canada' ? 'CA' : 'US',
+      a1: payload.address1,
+      city: payload.city,
+      state: payload.state,
+      postal: payload.zip,
+      ctry: payload.country === 'Canada' ? 'CA' : 'US',
     };
 
     const fullRelURI = `${relURI}${objectToQueryString(queryDataObject)}`;

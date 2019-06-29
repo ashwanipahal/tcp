@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 const textboxStyles = css`
-  &.active p {
+  &.active div {
     top: -65px;
   }
   .selectField {
