@@ -4,7 +4,7 @@ const textboxStyles = css`
   &.active p {
     top: -50px;
   }
-  input.inputField[type='checkbox'] {
+  input.TextBox__input[type='checkbox'] {
     width: auto;
   }
   &.input-fields-wrapper + span {
@@ -23,7 +23,7 @@ const textboxStyles = css`
       padding-right: auto;
     }
   }
-  .inputField {
+  .TextBox__input {
     margin: 0;
     outline: 0;
     line-height: 44px;

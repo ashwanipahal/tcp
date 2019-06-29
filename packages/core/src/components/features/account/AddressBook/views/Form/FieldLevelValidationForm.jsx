@@ -125,7 +125,7 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
               placeholder="Address Line 1"
               component={LabeledInputGoogleAutoComplete}
               name="address1"
-              validate={[required]}
+              validate={[required, maxLength30, specialChar]}
               onPlaceSelected={this.handlePlaceSelected}
               onBlur={this.handleBlur}
             />

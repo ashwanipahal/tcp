@@ -15,10 +15,9 @@ type Props = {
   type?: string,
   placeholder?: string,
   isSuccessState?: boolean,
-  onChangeHandler?: any,
   meta: { touched: any, error: any, warning: any },
   input: any,
-  Value: any,
+  Value: string,
 };
 
 const LabeledInput = ({
@@ -30,40 +29,45 @@ const LabeledInput = ({
   placeholder,
   isSuccessState,
   input,
-  Value,
   inputRef,
   meta: { touched, error, warning },
-}: Props): Node => (
-  <label className={className}>
-    <input
-      placeholder=""
-      {...input}
-      id={id}
-      aria-label={ariaLabel}
-      className="inputField"
-      name={name}
-      type={type}
-      isSuccessState={isSuccessState}
-      value={Value}
-      ref={inputRef}
-    />
-    <BodyCopy bodySize="two" FormVariation="float" BodycolorLg="primary" tag="p">
-      {placeholder}
-    </BodyCopy>
-    {touched &&
-      ((error && (
-        <BodyCopy clearFloat ErrorMsg="error" bodySize="two" tag="div">
-          {error}
-          {placeholder}
-        </BodyCopy>
-      )) ||
-        (warning && (
-          <BodyCopy bodySize="two" tag="span">
-            {warning}
+}: Props): Node => {
+  const elemValue = input.value;
+  return (
+    <label
+      htmlFor={name}
+      className={`${className} ${elemValue ? 'active' : ''} input-fields-wrapper`}
+    >
+      <input
+        placeholder=""
+        {...input}
+        id={id}
+        aria-label={ariaLabel}
+        className="TextBox__input"
+        name={name}
+        type={type}
+        isSuccessState={isSuccessState}
+        value={elemValue}
+        ref={inputRef}
+      />
+      <BodyCopy bodySize="two" FormVariation="float" BodycolorLg="primary" tag="p">
+        {placeholder}
+      </BodyCopy>
+      {touched &&
+        ((error && (
+          <BodyCopy clearFloat ErrorMsg="error" bodySize="two" tag="div">
+            {error}
+            {!elemValue && placeholder}
           </BodyCopy>
-        )))}
-  </label>
-);
+        )) ||
+          (warning && (
+            <BodyCopy bodySize="two" tag="span">
+              {warning}
+            </BodyCopy>
+          )))}
+    </label>
+  );
+};
 LabeledInput.defaultProps = {
   id: '',
   ariaLabel: '',
@@ -71,7 +75,6 @@ LabeledInput.defaultProps = {
   type: '',
   placeholder: '',
   isSuccessState: false,
-  onChangeHandler: '',
 };
 export default withStyles(LabeledInput, StyledTextBox);
 export { LabeledInput as LabeledInputVanilla };
