@@ -13,16 +13,16 @@ import styles from '../styles/AddAddress.style';
 type Props = {
   className: string,
   submitAddAddressForm: any,
-  showMessageForAddAddressMsg: any,
+  addAddressNotification: any,
   AddAddresslabels: any,
 };
 const AddAddress = ({
   className,
   submitAddAddressForm,
-  showMessageForAddAddressMsg,
+  addAddressNotification,
   AddAddresslabels,
 }: Props) => {
-  const msgInfo = JSON.parse(`${showMessageForAddAddressMsg}`);
+  const msgInfo = JSON.parse(`${addAddressNotification}`);
   return (
     <div className={className}>
       <Heading

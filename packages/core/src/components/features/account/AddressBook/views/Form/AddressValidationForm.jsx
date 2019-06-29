@@ -32,6 +32,7 @@ type Props = {
   submitting?: any,
   className: any,
   dispatch: Function,
+  onAddNNewAddressClick: any,
 };
 
 type State = {
@@ -83,15 +84,22 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
       state: address.state,
       country: address.country,
     });
-    this.props.dispatch(change('AddressValidationForm', 'city', address.city));
-    this.props.dispatch(change('AddressValidationForm', 'zip', address.zip));
-    this.props.dispatch(change('AddressValidationForm', 'state', address.state));
-    this.props.dispatch(change('AddressValidationForm', 'country', address.country));
-    this.props.dispatch(change('AddressValidationForm', 'street', address.street));
+    dispatch(change('AddressValidationForm', 'city', address.city));
+    dispatch(change('AddressValidationForm', 'zip', address.zip));
+    dispatch(change('AddressValidationForm', 'state', address.state));
+    dispatch(change('AddressValidationForm', 'country', address.country));
+    dispatch(change('AddressValidationForm', 'street', address.street));
   };
 
   render() {
-    const { handleSubmit, pristine, reset, submitting, className } = this.props;
+    const {
+      handleSubmit,
+      pristine,
+      reset,
+      submitting,
+      className,
+      onAddNNewAddressClick,
+    } = this.props;
     const { city, zip, state, country } = this.state;
     return (
       <form className={className} onSubmit={handleSubmit}>
@@ -222,7 +230,12 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
         <br />
         <Row className="button_wrapper">
           <Col className="cancel" colSize={{ small: 6, medium: 1, large: 3 }}>
-            <Button buttonVariation="fixed-width" type="button" onClick={reset}>
+            <Button
+              onClick={onAddNNewAddressClick}
+              buttonVariation="fixed-width"
+              type="button"
+              onClick={reset}
+            >
               Cancel
             </Button>
           </Col>
