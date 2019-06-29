@@ -16,7 +16,7 @@ const endpoints = {
     relURI: '/api/getESpot',
   },
   addAddress: {
-    method: 'post',
+    method: 'posta',
     baseURI: 'https://personator.melissadata.net/v3/WEB/ContactVerify/doContactVerify',
     relURI: '?id=63987687&format=json&act=Check&cols=Plus4%2CDeliveryIndicator&',
   },

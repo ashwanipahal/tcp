@@ -4,15 +4,15 @@ const textboxStyles = css`
   &.active div {
     top: -65px;
   }
-  .selectField {
-    margin: 10px 0 0 0;
+  .SelectBox__select {
+    margin: ${props => props.theme.spacing.ELEM_SPACING.XS} 0 0 0;
     height: 35px;
     outline: 0;
     line-height: 44px;
     font-size: ${props => props.theme.fonts.fontSize.textbox}px;
     color: ${props => props.theme.colors.TEXTBOX.COLOR};
     width: 100%;
-    padding: 0 20px;
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.MEDLRG};
     background-position: left top;
     background-repeat: no-repeat;
     background-size: contain;
@@ -26,22 +26,6 @@ const textboxStyles = css`
     ${props =>
       props.isSuccessState
         ? `border: 1px solid ${props.theme.colors.TEXTBOX.SUCCESS_BORDER};`
-        : ''};
-
-    ${props =>
-      props.textIcon === 'icon-email'
-        ? `
-    background-image: url(/static/images/email.svg);
-    padding: 0 20px 0 52px;
-    width: calc(100% - 72px);`
-        : ''};
-
-    ${props =>
-      props.textIcon === 'icon-sms'
-        ? `
-    background-image: url(/static/images/chat.svg);
-    padding: 0 20px 0 52px;
-    width: calc(100% - 72px)`
         : ''};
 
     ${props =>
