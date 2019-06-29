@@ -3,6 +3,7 @@ import ADDRESS_BOOK_CONSTANTS from '../AddressBook.constants';
 import fetchData from '../../../../../service/API';
 import { setAddressList } from './AddressBook.actions';
 import endpoints from '../../../../../service/endpoint';
+import CHECKOUT_PAGE from '../../../../../constants/pages.constants';
 
 export function* getAddressList() {
   try {
@@ -16,6 +17,7 @@ export function* getAddressList() {
         langId: -1,
         catalogId: 10551,
         storeId: 10151,
+        fromPage: CHECKOUT_PAGE,
       },
       method
     );

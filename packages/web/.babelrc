@@ -1,9 +1,4 @@
 {
-    "presets": [
-        "next/babel"
-    ],
-    "plugins": [
-        "@babel/transform-flow-strip-types",
-        "@babel/plugin-syntax-dynamic-import"
-    ]
+  "presets": ["next/babel"],
+  "plugins": ["@babel/transform-flow-strip-types", "@babel/plugin-syntax-dynamic-import"]
 }
