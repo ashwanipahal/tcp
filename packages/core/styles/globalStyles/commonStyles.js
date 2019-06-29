@@ -77,7 +77,16 @@ export default css`
     margin: 0;
   }
 
+  ul {
+    padding: 0px;
+    margin: 0px;
+  }
+
   li {
     list-style-type: none;
+  }
+
+  p {
+    margin: 0;
   }
 `;

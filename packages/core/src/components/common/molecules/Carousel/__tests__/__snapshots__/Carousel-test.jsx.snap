@@ -2,7 +2,12 @@
 
 exports[`Carousel component renders correctly 1`] = `
 <styled.div
-  carouselConfig={[Function]}
+  carouselConfig={
+    Object {
+      "arrow": "none",
+      "type": "light",
+    }
+  }
   className="TCP_Carousel_Wrapper"
 >
   <Slider
@@ -50,11 +55,5 @@ exports[`Carousel component renders correctly 1`] = `
   >
     <Component />
   </Slider>
-  <button
-    className="button"
-    onClick={[Function]}
-  >
-    Pause
-  </button>
 </styled.div>
 `;

@@ -7,24 +7,22 @@ exports[`Footer component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-gqjmRU",
+        "componentId": "sc-kGXeez",
         "isStatic": false,
         "rules": Array [
           "
   ",
           "
   .footer-top {
-    border-bottom: 2px solid ",
+    > div {
+      border-top: 2px solid ",
           [Function],
           ";
+      padding-top: 32px;
+    }
   }
-  .footer-bottom {
-    background: ",
-          [Function],
-          ";
-  }
-  .footer-top__slot--1 {
-    order: 2;
+  .footer-top__slots {
+    padding-bottom: 16px;
   }
   .footer-top__slot-2 {
     order: 1;
@@ -36,6 +34,7 @@ exports[`Footer component renders correctly 1`] = `
   }
   .fullbleed-mobile {
     flex-direction: column-reverse;
+    display: flex;
     margin: 0;
   }
   .default-offset {
@@ -46,6 +45,22 @@ exports[`Footer component renders correctly 1`] = `
   .footer-middle.desktop {
     display: none;
   }
+  .reference-id {
+    background-color: ",
+          [Function],
+          ";
+    font-size: ",
+          [Function],
+          "px;
+    padding: 0 15px 24px;
+    margin: 0;
+    color: ",
+          [Function],
+          ";
+    font-family: ",
+          [Function],
+          ";
+  }
   @media ",
           [Function],
           " {
@@ -54,18 +69,18 @@ exports[`Footer component renders correctly 1`] = `
           [Function],
           "px;
     }
-    .footer-top__slot--1 {
-      order: 1;
-    }
-    .footer-top__slot--2 {
-      order: 2;
+    .footer-top {
+      padding-bottom: 20px;
     }
   }
   @media ",
           [Function],
           " {
     .footer-top {
-      padding-bottom: 46px;
+      padding-bottom: 44px;
+      border-bottom: 2px solid ",
+          [Function],
+          ";
     }
     .footer-bottom {
       background-color: ",
@@ -96,6 +111,19 @@ exports[`Footer component renders correctly 1`] = `
           [Function],
           ";
     }
+    .reference-id {
+      text-align: center;
+      background-color: ",
+          [Function],
+          ";
+      font-size: ",
+          [Function],
+          ";
+      padding: 11px 0 24px;
+      color: ",
+          [Function],
+          ";
+    }
   }
 ",
           ";
@@ -105,7 +133,7 @@ exports[`Footer component renders correctly 1`] = `
       "displayName": "Styled(Footer)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-gqjmRU",
+      "styledComponentId": "sc-kGXeez",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

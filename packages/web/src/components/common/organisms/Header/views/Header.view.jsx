@@ -1,15 +1,15 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import Row from '@tcp/core/src/components/common/atoms/Row';
-import Col from '@tcp/core/src/components/common/atoms/Col';
-import utilMethods from '@tcp/core/src/utils/utilMethods';
-import HeaderTopNav from '@tcp/web/src/components/common/molecules/HeaderTopNav';
+import { Col, Row } from '@tcp/core/src/components/common/atoms';
+import { brand } from '@tcp/core/src/utils';
+
+import { HeaderTopNav } from '../../../molecules';
 import config from '../config';
 import headerStyles from '../Header.style';
 import HomeLogo from './HomeLogo';
 
 const { HeaderBrand, HeaderNav, DummyNav, HeaderPromo, HeaderLoyalty } = headerStyles;
-const brand = utilMethods.brand();
+const brandName = brand();
 
 const Header = ({ headerTopNav }) => (
   <header>
@@ -25,10 +25,10 @@ const Header = ({ headerTopNav }) => (
           }}
         >
           <HomeLogo
-            alt={config[brand].alt}
+            alt={config[brandName].alt}
             className="header-brand__home-logo--brand"
-            dataLocator={config[brand].dataLocator}
-            imgSrc={config[brand].imgSrc}
+            dataLocator={config[brandName].dataLocator}
+            imgSrc={config[brandName].imgSrc}
           />
         </Col>
       </Row>

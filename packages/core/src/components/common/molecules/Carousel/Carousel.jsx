@@ -10,6 +10,7 @@ import { PropTypes } from 'prop-types';
 import config from './config';
 import CarouselStyle from './Carousel.style';
 import withStyles from '../../hoc/withStyles';
+import errorBoundary from '../../hoc/errorBoundary';
 
 const defaults = { ...config.CAROUSEL_DEFAULTS };
 
@@ -20,9 +21,8 @@ class Carousel extends React.Component {
     this.getSlider = this.getSlider.bind(this);
     this.play = this.play.bind(this);
     this.pause = this.pause.bind(this);
-    this.toggleAutoplay = this.toggleAutoplay.bind(this);
     this.state = {
-      play: true,
+      autoplay: true,
     };
   }
 
@@ -32,33 +32,35 @@ class Carousel extends React.Component {
 
   play() {
     this.slider.slickPlay();
+    this.updateState();
   }
 
   pause() {
     this.slider.slickPause();
+    this.updateState();
   }
 
-  toggleAutoplay() {
-    const { play } = this.state;
-    if (play) {
-      this.play();
-    } else {
-      this.pause();
-    }
+  updateState() {
+    const { autoplay } = this.state;
+    this.setState({ autoplay: !autoplay });
   }
 
   render() {
-    const { autoplay, options, children, carouselConfig } = this.props;
+    const { options, children, carouselConfig } = this.props;
     const settings = { ...defaults, ...options };
-    const { play } = this.state;
+    const { autoplay } = this.state;
     return (
       <CarouselStyle className="TCP_Carousel_Wrapper" carouselConfig={carouselConfig}>
         <Slider className="TCP_Carousel" ref={this.getSlider} {...settings}>
           {!children ? null : children}
         </Slider>
-        {autoplay ? (
-          <button className="button" onClick={this.toggleAutoplay}>
-            {play ? 'Pause' : 'Play'}
+        {carouselConfig.autoplay ? (
+          <button
+            className="button"
+            data-locator={carouselConfig.dataLocator}
+            onClick={autoplay ? this.pause : this.play}
+          >
+            {autoplay ? 'Pause' : 'Play'}
           </button>
         ) : null}
       </CarouselStyle>
@@ -72,8 +74,7 @@ Carousel.propTypes = {
     autoplaySpeed: PropTypes.number,
     speed: PropTypes.number,
   }),
-  autoplay: PropTypes.bool,
-  carouselConfig: PropTypes.objectOf(PropTypes.string),
+  carouselConfig: PropTypes.objectOf(PropTypes.object),
 };
 
 Carousel.defaultProps = {
@@ -82,9 +83,8 @@ Carousel.defaultProps = {
     autoplaySpeed: PropTypes.number,
     speed: PropTypes.number,
   }),
-  autoplay: PropTypes.bool,
-  carouselConfig: PropTypes.objectOf(PropTypes.string),
+  carouselConfig: { type: 'light', arrow: 'none' },
 };
 
-export default withStyles(Carousel, CarouselStyle);
+export default errorBoundary(withStyles(Carousel, CarouselStyle));
 export { Carousel as CarouselVanilla };

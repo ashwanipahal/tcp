@@ -13,9 +13,15 @@ exports[`ModuleH component renders correctly 1`] = `
           "
   ",
           "
-  height: 425px;
-  margin-bottom: 32px;
-  margin-top: 32px;
+  height: ",
+          "425",
+          "px;
+  margin-bottom: ",
+          [Function],
+          ";
+  margin-top: ",
+          [Function],
+          ";
   overflow: hidden;
   position: relative;
 
@@ -33,8 +39,12 @@ exports[`ModuleH component renders correctly 1`] = `
           [Function],
           " {
     height: 541px;
-    margin-bottom: 48px;
-    margin-top: 48px;
+    margin-bottom: ",
+          [Function],
+          ";
+    margin-top: ",
+          [Function],
+          ";
   }
 
   .moduleH__header--wrapper {
@@ -53,7 +63,9 @@ exports[`ModuleH component renders correctly 1`] = `
     @media ",
           [Function],
           " {
-      margin-top: 26px;
+      margin-top: ",
+          [Function],
+          ";
     }
   }
 
@@ -86,12 +98,6 @@ exports[`ModuleH component renders correctly 1`] = `
           ";
   }
 
-  .moduleH__CTALink-wrapper {
-    padding: 0px;
-    margin: 0px;
-    list-style-type: none;
-  }
-
   .moduleH__CTALink {
     color: ",
           [Function],
@@ -102,7 +108,6 @@ exports[`ModuleH component renders correctly 1`] = `
     font-size: ",
           [Function],
           "px;
-    letter-spacing: -0.1px;
     line-height: 20px;
     opacity: 0.8;
 
@@ -114,11 +119,11 @@ exports[`ModuleH component renders correctly 1`] = `
     }
   }
 
-  .moduleH__CTALink--partial {
+  .moduleH__listItem-partial {
     margin-top: 38px;
   }
 
-  .moduleH__CTALink--full {
+  .moduleH__listItem-full {
     margin-top: 22px;
   }
 

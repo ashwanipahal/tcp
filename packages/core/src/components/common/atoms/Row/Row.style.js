@@ -21,7 +21,7 @@ const StyledRow = css`
           : ``
       }
       ${
-        props.fullBleed && !props.fullBleed[key]
+        !props.fullBleed || !props.fullBleed[key]
           ? `
         margin-right: ${props.theme.gridDimensions.gridOffsetObj[key]}px;
         margin-left: ${props.theme.gridDimensions.gridOffsetObj[key]}px;
@@ -32,7 +32,7 @@ const StyledRow = css`
     }`
     )}
 
-  div:last-child {
+  > div:last-child {
     padding-right: 0;
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};

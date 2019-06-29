@@ -4,7 +4,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import RichText from '@tcp/core/src/components/common/atoms/RichText';
 import CarouselConfig from '@tcp/web/src/config/carousel';
-import { getLocator } from '@tcp/web/src/utils';
+import { getLocator } from '@tcp/core/src/utils';
 import style from '../PromotionalArea.style';
 
 const PromotionalArea = ({ className, data, mobile }) => {

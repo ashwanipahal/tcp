@@ -1,34 +1,34 @@
+// @flow
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/errorBoundary';
 import { Col, Image, Row } from '../../../atoms';
+import { getLocator } from '../../../../../utils';
 import { Carousel } from '../..';
-import ModuleHHeader from './ModuleHHeader';
-import ModuleHCTALinks from './ModuleHCTALinks';
+import ModuleHHeader from './ModuleH.Header';
+import ModuleHCTALinks from './ModuleH.Links';
 import style from '../ModuleH.style';
 import config from '../config';
 
-const fullBleed = {
-  small: true,
-  medium: false,
-  large: false,
+type Props = {
+  className: string,
+  composites: Object,
 };
 
-const colSize = {
-  small: 6,
-  medium: 8,
-  large: 12,
+type State = {
+  current: number,
+  next: number,
 };
 
-const offsetLeft = {
-  small: 0,
-  medium: 1,
-  large: 1,
-};
-
-class ModuleH extends React.Component {
-  constructor(props) {
+/**
+ * @class ModuleH - global reusable component will provide featured content module
+ * with a composite background image and 2-6 CTAs
+ * This component is plug and play at any given slot in layout by passing required data
+ * @param {composites} composites the list of data for header texts, links and images for component
+ */
+class ModuleH extends React.PureComponent<Props, State> {
+  constructor(props: Object) {
     super(props);
     this.state = {
       current: 0,
@@ -41,29 +41,36 @@ class ModuleH extends React.Component {
       className,
       composites: { divCTALinks, headerText },
     } = this.props;
-    const carouselConfig = config.CAROUSEL_OPTIONS;
-    carouselConfig.beforeChange = (current, next) => {
+    const { CAROUSEL_OPTIONS, COL_SIZE, FULL_BLEED, OFFSET_LEFT } = config;
+    CAROUSEL_OPTIONS.beforeChange = (current, next) => {
       this.setState({ current, next });
     };
     const { current, next } = this.state;
 
     return (
-      <Row fullBleed={fullBleed} className={`${className} moduleH`}>
-        <Col colSize={colSize} offsetLeft={offsetLeft} className="moduleH__header--wrapper">
+      <Row fullBleed={FULL_BLEED} className={`${className} moduleH`}>
+        <Col colSize={COL_SIZE} offsetLeft={OFFSET_LEFT} className="moduleH__header--wrapper">
           <ModuleHHeader headerText={headerText} />
           <ModuleHCTALinks dataCTALinks={divCTALinks} currentIndex={{ current, next }} />
         </Col>
-        <Col colSize={colSize}>
+        <Col colSize={COL_SIZE}>
           <Carousel
-            options={carouselConfig}
-            autoplay
+            options={CAROUSEL_OPTIONS}
             carouselConfig={{
+              autoplay: true,
+              dataLocator: getLocator('moduleH_play_button'),
               type: 'light',
-              arrow: 'none',
             }}
           >
             {divCTALinks.map((item, index) => {
-              return <Image key={index.toString()} alt={item.image.alt} src={item.image.url} />;
+              return (
+                <Image
+                  key={index.toString()}
+                  alt={item.image.alt}
+                  data-locator={getLocator('moduleH_composite_image')}
+                  src={item.image.url}
+                />
+              );
             })}
           </Carousel>
         </Col>

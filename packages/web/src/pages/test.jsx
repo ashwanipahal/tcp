@@ -6,6 +6,7 @@ import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import RichText from '@tcp/core/src/components/common/atoms/RichText';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import CarouselConfig from '@tcp/web/src/config/carousel';
 import { PropTypes } from 'prop-types';
 import { initActions } from '../components/features/content/HomePage/container/HomePage.actions';
@@ -38,6 +39,9 @@ const colSize2 = {
 const randomHTML = '<button class="asdfasdf" type="button">test133</button>';
 const HomePageView = ({ links }) => (
   <Fragment>
+    <Notification status="success" colSize={{ large: 12, medium: 8, small: 6 }} message="success" />
+    <Notification status="error" colSize={{ large: 12, medium: 8, small: 6 }} message="error" />
+
     <NavBar links={links} />
     <Test className="test" />
     <SampleModal />
@@ -80,6 +84,20 @@ const HomePageView = ({ links }) => (
         </Col>
         <Col colSize={colSize}>
           <Button buttonVariation="fixed-width">test</Button>
+        </Col>
+      </Row>
+      <Row>
+        <Col
+          colSize={{
+            small: 6,
+            medium: 8,
+            large: 12,
+          }}
+        >
+          <Button buttonVariation="variable-width" fill="BLUE">
+            Button with Blue Fill
+          </Button>
+          <Button buttonVariation="variable-width">Button with No Fill</Button>
         </Col>
       </Row>
     </Grid>
