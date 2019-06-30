@@ -40,6 +40,7 @@ type State = {
   zip: string,
   country: string,
   state: string,
+  backToAddressBookClick: any,
 };
 // const AddressValidationForm = ({ handleSubmit, pristine, reset, submitting }: Props): Node => (
 
@@ -92,14 +93,7 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const {
-      handleSubmit,
-      pristine,
-      reset,
-      submitting,
-      className,
-      onAddNNewAddressClick,
-    } = this.props;
+    const { handleSubmit, pristine, submitting, className, backToAddressBookClick } = this.props;
     const { city, zip, state, country } = this.state;
     return (
       <form className={className} onSubmit={handleSubmit}>
@@ -230,12 +224,7 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
         <br />
         <Row className="button_wrapper">
           <Col className="cancel" colSize={{ small: 6, medium: 1, large: 3 }}>
-            <Button
-              onClick={onAddNNewAddressClick}
-              buttonVariation="fixed-width"
-              type="button"
-              onClick={reset}
-            >
+            <Button onClick={backToAddressBookClick} buttonVariation="fixed-width" type="button">
               Cancel
             </Button>
           </Col>

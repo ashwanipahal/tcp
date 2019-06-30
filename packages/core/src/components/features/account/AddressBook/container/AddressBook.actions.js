@@ -13,3 +13,8 @@ export const loadAddAddressComponent = state => ({
   type: ADDRESS_BOOK_CONSTANTS.LOAD_ADD_ADDRESS_COMPONENT,
   state,
 });
+
+export const loadAddressBookComponent = state => ({
+  type: ADDRESS_BOOK_CONSTANTS.LOAD_ADDRESSBOOK_COMPONENT,
+  state,
+});

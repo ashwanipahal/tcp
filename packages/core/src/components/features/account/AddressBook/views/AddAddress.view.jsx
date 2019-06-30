@@ -15,12 +15,14 @@ type Props = {
   submitAddAddressForm: any,
   addAddressNotification: any,
   AddAddresslabels: any,
+  backToAddressBookClick: any,
 };
 const AddAddress = ({
   className,
   submitAddAddressForm,
   addAddressNotification,
   AddAddresslabels,
+  backToAddressBookClick,
 }: Props) => {
   const msgInfo = JSON.parse(`${addAddressNotification}`);
   return (
@@ -46,7 +48,10 @@ const AddAddress = ({
             />
           )}
           <Provider store={store}>
-            <AddressValidationForm onSubmit={submitAddAddressForm} />
+            <AddressValidationForm
+              backToAddressBookClick={backToAddressBookClick}
+              onSubmit={submitAddAddressForm}
+            />
           </Provider>
         </Grid>
       </form>

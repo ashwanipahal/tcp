@@ -1,7 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { List } from 'immutable';
-import { getAddressList, loadAddAddressComponent } from './AddressBook.actions';
+import {
+  getAddressList,
+  loadAddAddressComponent,
+  loadAddressBookComponent,
+} from './AddressBook.actions';
 import AddressBookComponent from '../views/AddressBook.view';
 import {
   getAddressListState,
@@ -24,6 +28,7 @@ type Props = {
   addAddressNotification: any,
   addAddressLoaded: any,
   onAddNNewAddressClick: any,
+  backToAddressBookClick: any,
 };
 
 export class AddressBookContainer extends React.Component<Props> {
@@ -41,6 +46,7 @@ export class AddressBookContainer extends React.Component<Props> {
       addAddressNotification,
       onAddNNewAddressClick,
       addAddressLoaded,
+      backToAddressBookClick,
     } = this.props;
     if (isFetching) {
       return <p>Loading...</p>;
@@ -62,7 +68,7 @@ export class AddressBookContainer extends React.Component<Props> {
         <AddAddressContainer
           AddAddresslabels={AddAddresslabels}
           addAddressNotification={addAddressNotification}
-          onAddNNewAddressClick={onAddNNewAddressClick}
+          backToAddressBookClick={backToAddressBookClick}
         />
       );
     }
@@ -81,6 +87,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     onAddNNewAddressClick: ({ state }) => {
       dispatch(loadAddAddressComponent({ state }));
     },
+    backToAddressBookClick: ({ state }) => {
+      dispatch(loadAddressBookComponent({ state }));
+    },
   };
 };
 
@@ -90,6 +99,7 @@ const mapStateToProps = state => {
     isFetching: getAddressListFetchingState(state),
     showDefaultShippingUpdatedMsg: showDefaultShippingUpdatedState(state),
     addAddressLoaded: showAddAddressComponent(state),
+    backToAddressBookClick: showAddAddressComponent(state),
   };
 };
 

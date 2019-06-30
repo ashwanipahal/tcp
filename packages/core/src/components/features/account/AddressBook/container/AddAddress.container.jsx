@@ -9,15 +9,18 @@ type Props = {
   submitAddAddressForm: any,
   addAddressNotification: any,
   AddAddresslabels: any,
+  backToAddressBookClick: any,
 };
 
 const AddaddressContainer = ({
   submitAddAddressForm,
   addAddressNotification,
   AddAddresslabels,
+  backToAddressBookClick,
 }: Props) => {
   return (
     <AddAddress
+      backToAddressBookClick={backToAddressBookClick}
       AddAddresslabels={AddAddresslabels}
       addAddressNotification={addAddressNotification}
       submitAddAddressForm={submitAddAddressForm}
