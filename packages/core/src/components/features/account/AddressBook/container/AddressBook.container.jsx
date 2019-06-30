@@ -16,7 +16,7 @@ import {
 import labels from './AddressBook.labels';
 import AddAddresslabels from './AddAddress/AddAddress.labels';
 import { setDefaultShippingAddressRequest } from './DefaultShippingAddress.actions';
-import AddAddressContainer from './AddAddress/AddAddress.container';
+import AddAddressContainer from './AddAddress.container';
 // @flow
 
 type Props = {

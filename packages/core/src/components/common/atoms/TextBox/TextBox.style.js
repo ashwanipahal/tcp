@@ -10,13 +10,6 @@ const textboxStyles = css`
     position: relative;
     top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
   }
-  &.input-fields-wrapper {
-    position: relative;
-    div {
-      position: absolute;
-      top: 45px;
-    }
-  }
   &.input-fields-wrapper + span {
     padding-left: 5px;
   }

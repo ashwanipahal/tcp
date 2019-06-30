@@ -1,9 +1,9 @@
 // @flow
 import React from 'react';
 import { connect } from 'react-redux';
-import { addAddressReq } from './AddAddress.actions';
-import AddAddress from '../../views/AddAddress.view';
-import showMessageForAddAddress from './AddAddress.selectors';
+import { addAddressReq } from './AddAddress/AddAddress.actions';
+import AddAddress from '../views/AddAddress.view';
+import showMessageForAddAddress from './AddAddress/AddAddress.selectors';
 
 type Props = {
   submitAddAddressForm: any,
@@ -28,19 +28,19 @@ const AddaddressContainer = ({
   );
 };
 
-export const mapDispatchToProps = (dispatch: ({}) => void) => {
+function mapDispatchToProps(dispatch) {
   return {
     submitAddAddressForm: payload => {
       dispatch(addAddressReq(payload));
     },
   };
-};
+}
 
-const mapStateToProps = state => {
+function mapStateToProps(state) {
   return {
     addAddressNotification: showMessageForAddAddress(state),
   };
-};
+}
 
 export default connect(
   mapStateToProps,
