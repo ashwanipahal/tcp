@@ -6,6 +6,9 @@ const textboxStyles = css`
   }
   input.TextBox__input[type='checkbox'] {
     width: auto;
+    zoom: 2;
+    position: relative;
+    top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
   }
   &.input-fields-wrapper + span {
     padding-left: 5px;

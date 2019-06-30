@@ -207,16 +207,14 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
         <br />
         <Row>
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
-            <BodyCopy tag="label">
-              <Field
-                className="checkbox-align"
-                name="default-ship"
-                id="default-ship"
-                component={TextBox}
-                type="checkbox"
-              />
-              <BodyCopy tag="span">Set as default shipping addres</BodyCopy>
-            </BodyCopy>
+            <Field
+              className="checkbox-align"
+              name="default-ship"
+              id="default-ship"
+              component={TextBox}
+              type="checkbox"
+            />
+            <BodyCopy tag="span">Set as default shipping addres</BodyCopy>
           </Col>
         </Row>
         <br />
