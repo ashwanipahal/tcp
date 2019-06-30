@@ -12,6 +12,7 @@ type Props = {
   labels: {},
   className: string,
   onDefaultShippingAddressClick: Object,
+  openAccountModalComponent: Function,
 };
 export const AddressList = ({
   addresses,

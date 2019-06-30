@@ -19,6 +19,7 @@ type Props = {
   isFetching: boolean,
   onDefaultShippingAddressClick: () => void,
   showDefaultShippingUpdatedMsg: any,
+  openAccountModalComponent: Function,
 };
 
 export class AddressBookContainer extends React.Component<Props> {
@@ -58,8 +59,8 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     getAddressListAction: () => {
       dispatch(getAddressList());
     },
-    openAccountModalComponent: ({ modalToOpen, message }) => {
-      dispatch(openAccountModal({ modalToOpen, message }));
+    openAccountModalComponent: payload => {
+      dispatch(openAccountModal(payload));
     },
     onDefaultShippingAddressClick: payload => {
       dispatch(setDefaultShippingAddressRequest(payload));

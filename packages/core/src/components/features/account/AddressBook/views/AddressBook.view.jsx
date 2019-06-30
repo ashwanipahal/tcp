@@ -20,6 +20,8 @@ type Props = {
   },
   className: string,
   onDefaultShippingAddressClick: Object,
+  showDefaultShippingUpdatedMsg: any,
+  openAccountModalComponent: Function,
 };
 
 export const AddressBook = ({
@@ -55,6 +57,17 @@ export const AddressBook = ({
           </Button>
         </Col>
       </Row>
+      {showDefaultShippingUpdatedMsg !== null && (
+        <Notification
+          status={showDefaultShippingUpdatedMsg ? 'success' : 'error'}
+          colSize={{ large: 12, medium: 8, small: 6 }}
+          message={
+            showDefaultShippingUpdatedMsg
+              ? labels.defaultShippingSuccessMessage
+              : labels.defaultShippingSuccessFail
+          }
+        />
+      )}
       {addresses.size > 0 && (
         <AddressListComponent
           addresses={addresses}

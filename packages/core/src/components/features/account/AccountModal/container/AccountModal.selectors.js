@@ -1,5 +1,5 @@
 export const getModalComponent = state => {
-  return state.AccountModalReducer.modalToOpen;
+  return state.AccountModalReducer.modalType;
 };
 
 export const getOpenState = state => {

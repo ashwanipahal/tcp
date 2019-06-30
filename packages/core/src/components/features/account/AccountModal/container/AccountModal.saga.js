@@ -1,7 +1,12 @@
-import { call, takeLatest } from 'redux-saga/effects';
+import { call, takeLatest, put } from 'redux-saga/effects';
 import ACCOUNT_MODAL_CONSTANTS from '../AccountModal.constants';
 import fetchData from '../../../../../service/API';
 import endpoints from '../../../../../service/endpoint';
+import {
+  updateAddressListOnDelete,
+  updateAddressListOnDeleteErr,
+} from '../../AddressBook/container/AddressBook.actions';
+import { closeModal } from './AccountModal.actions';
 
 function* deleteAddress({ payload }) {
   try {
@@ -19,12 +24,14 @@ function* deleteAddress({ payload }) {
       },
       method
     );
-    if (res.body) {
-      // yield put(setAddressList(res.body.contact || []));
+    if (res.statusCode === 200) {
+      yield put(updateAddressListOnDelete(res.body || ''));
+    } else {
+      yield put(updateAddressListOnDeleteErr(res.error));
     }
-    yield null;
+    yield put(closeModal());
   } catch (err) {
-    yield null;
+    yield put(updateAddressListOnDeleteErr(err));
   }
 }
 

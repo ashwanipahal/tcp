@@ -16,9 +16,37 @@ const ModalStyle = styled.div`
     position: absolute;
     top: 50%;
     left: 50%;
-    padding: 20px;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     transform: translate(-50%, -50%);
-    ${props => props.theme.zindex.zindex.zModal}
+    ${props => props.theme.zindex.zindex.zModal};
+    width: 100%;
+    height: 100%;
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: auto;
+      height: auto;
+      min-width: 460px;
+      min-height: 500px;
+    }
+  }
+  .Modal_Heading {
+    border-bottom: 3px solid ${props => props.theme.colors.BLACK};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+    margin-top: -10px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: none;
+    }
+  }
+  .Modal_Title {
+    text-align: center;
+    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin: ${props => props.theme.spacing.ELEM_SPACING.MED}
+        ${props => props.theme.spacing.LAYOUT_SPACING.XL}
+        ${props => props.theme.spacing.ELEM_SPACING.XL};
+      padding: 0;
+      text-align: initial;
+    }
   }
 `;
 export default ModalStyle;

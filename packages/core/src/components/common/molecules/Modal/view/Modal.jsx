@@ -1,7 +1,7 @@
 /** @module Modal
  *  @summary Wrapper component for react-modal.
  *  Accepts modal content as children and
- *  Other properties of modal to funtion.
+ *  Other properties of modal to function.
  */
 
 import React from 'react';
@@ -20,9 +20,7 @@ function getParent() {
 }
 
 const Modal = ({ children, ...otherProps }) => {
-  const { colSet, onRequestClose, title } = otherProps;
-  console.log(colSet);
-
+  const { colSet, onRequestClose, title, heading } = otherProps;
   const column = colSet || Config.MODAL_COL_DEFAULTS;
 
   return (
@@ -31,7 +29,7 @@ const Modal = ({ children, ...otherProps }) => {
         <Grid>
           <Row>
             <Col colSize={column} className="TCPModal__InnerContent">
-              <ModalHeader closeFunc={onRequestClose} title={title} />
+              <ModalHeader closeFunc={onRequestClose} title={title} heading={heading} />
               {children}
             </Col>
           </Row>
