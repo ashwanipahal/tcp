@@ -45,7 +45,7 @@ const HeaderPromo = styled.div`
 `;
 
 const HeaderLoyalty = styled.div`
-  background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+  background-color: ${props => props.theme.colors.WHITE};
   padding: 36px 0;
   text-align: center;
   text-transform: uppercase;

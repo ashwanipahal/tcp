@@ -5,6 +5,7 @@ import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import Anchor from '../../../../common/atoms/Anchor';
 import store from './Form/store';
 import AddressValidationForm from './Form/AddressValidationForm';
 import styles from '../styles/AddAddress.style';
@@ -27,6 +28,15 @@ const AddAddress = ({
   const msgInfo = JSON.parse(`${addAddressNotification}`);
   return (
     <div className={className}>
+      <Anchor
+        className="addAddress__anchor__back"
+        fontSizeVariation="xlarge"
+        anchorVariation="secondary"
+        handleLinkClick={backToAddressBookClick}
+        noLink
+      >
+        Back
+      </Anchor>
       <Heading
         fontFamily="secondaryFontFamily"
         HeadingLarge="six"

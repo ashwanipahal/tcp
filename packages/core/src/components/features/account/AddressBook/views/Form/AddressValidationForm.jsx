@@ -28,11 +28,10 @@ import {
 type Props = {
   handleSubmit: any,
   pristine: any,
-  reset: any,
   submitting?: any,
   className: any,
   dispatch: Function,
-  onAddNNewAddressClick: any,
+  backToAddressBookClick: any,
 };
 
 type State = {
@@ -40,7 +39,6 @@ type State = {
   zip: string,
   country: string,
   state: string,
-  backToAddressBookClick: any,
 };
 // const AddressValidationForm = ({ handleSubmit, pristine, reset, submitting }: Props): Node => (
 
