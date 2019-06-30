@@ -5,11 +5,9 @@ import fetchData from '../../../../../../service/API';
 import endpoints from '../../../../../../service/endpoint';
 import { objectToQueryString } from '../../../../../../../../web/src/utils/utils';
 
-function* addAddressGet({ payload }) {
+export function* addAddressGet({ payload }) {
   try {
     const { baseURI, relURI, method } = endpoints.verifyAddress;
-    const { payload: formData } = payload;
-
     const queryDataObject = {
       a1: payload.address1,
       city: payload.city,
@@ -39,7 +37,7 @@ function* addAddressGet({ payload }) {
   }
 }
 
-function* AddAddressSaga() {
+export function* AddAddressSaga() {
   yield takeLatest(ADD_ADDRESS_CONSTANTS.ADD_USER_ADDRESS_REQ, addAddressGet);
 }
 
