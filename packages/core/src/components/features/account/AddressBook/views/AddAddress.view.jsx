@@ -41,7 +41,7 @@ const AddAddress = ({
               status={msgInfo ? 'error' : 'success'}
               colSize={{ large: 12, medium: 8, small: 6 }}
               message={
-                msgInfo ? AddAddresslabels.addAddressFail : AddAddresslabels.addAddressFailSuccess
+                msgInfo ? AddAddresslabels.addAddressFail : AddAddresslabels.addAddressSuccessLbl
               }
             />
           )}

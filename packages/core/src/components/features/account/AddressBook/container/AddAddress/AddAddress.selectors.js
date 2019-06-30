@@ -1,5 +1,5 @@
 const showMessageForAddAddress = state => {
-  return state.AddAddressReducer.get('showMessageForAddAddressMsg');
+  return state.AddAddressReducer.get('addAddressNotification');
 };
 
 export default showMessageForAddAddress;

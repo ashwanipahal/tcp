@@ -3,7 +3,6 @@ import ADD_ADDRESS_CONSTANTS from './AddAddress.constants';
 
 const initialState = fromJS({
   addAddressSuccess: false,
-  error: {},
   addAddressNotification: false,
 });
 

@@ -35,7 +35,6 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    loginInfo: state.LoginPageReducer.loginInfo,
     addAddressNotification: showMessageForAddAddress(state),
   };
 }

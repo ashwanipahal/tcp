@@ -6,10 +6,9 @@ import withStyles from '../../hoc/withStyles';
 import StyledTextBox from '../TextBox/TextBox.style';
 
 type Props = {
-  className: any,
+  className: string,
   inputRef: any,
   id?: string,
-  className: string,
   ariaLabel?: string,
   name?: string,
   type?: string,

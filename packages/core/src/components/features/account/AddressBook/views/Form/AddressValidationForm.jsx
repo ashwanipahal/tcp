@@ -17,7 +17,7 @@ import {
   number,
   zipcodeUS,
   zipcodeCA,
-} from '../../../../../common/hoc/formsValidation/FormValidation';
+} from '../../../../../../utils/FormValidation';
 import { LabeledInputGoogleAutoComplete } from '../../../../../common/atoms/AddressAutoSuggest/LabeledInputGoogleAutoComplete';
 import {
   countriesOptionsMap,
