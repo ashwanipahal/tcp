@@ -1,9 +1,11 @@
 import { css } from 'styled-components';
 
+const ICON_SIZE = '60px';
+
 const HeaderPromoStyles = css`
   background: ${props => props.theme.colors.PRIMARY.PALEGRAY};
   @media ${props => props.theme.mediaQuery.large} {
-    background: white;
+    background: ${props => props.theme.colors.WHITE};
   }
   &.header-promo-area--mobile {
     @media ${props => props.theme.mediaQuery.large} {
@@ -23,12 +25,13 @@ const HeaderPromoStyles = css`
     align-items: center;
     height: 42px;
     @media ${props => props.theme.mediaQuery.medium} {
-      height: 60px;
+      height: ${ICON_SIZE};
+      justify-content: center;
     }
   }
 
   .styled-text {
-    margin-right: 8px;
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 
   .header-promo-item__content {
@@ -36,31 +39,32 @@ const HeaderPromoStyles = css`
     width: 100%;
     text-align: center;
     @media ${props => props.theme.mediaQuery.medium} {
-      width: calc(100% - 60px);
+      width: auto;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      width: calc(100% - ${ICON_SIZE});
     }
   }
 
   .header-promo-item__icon {
-    height: 60px;
-    width: 60px;
+    height: ${ICON_SIZE};
+    width: ${ICON_SIZE};
     align-items: center;
     justify-content: center;
     display: none;
     @media ${props => props.theme.mediaQuery.medium} {
       display: flex;
+      margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
     }
-  }
-
-  .header-promo-item__icon--slot1 {
-    background-color: ${props => props.theme.colors.BRAND.BOYS};
-  }
-
-  .header-promo-item__icon--slot2 {
-    background-color: ${props => props.theme.colors.PRIMARY.GREEN};
-  }
-
-  .header-promo-item__icon--slot3 {
-    background-color: ${props => props.theme.colors.BRAND.PRIMARY};
+    &[class*='orange-'] {
+      background-color: ${props => props.theme.colors.BRAND.BOYS};
+    }
+    &[class*='green-'] {
+      background-color: ${props => props.theme.colors.PRIMARY.GREEN};
+    }
+    &[class*='blue-'] {
+      background-color: ${props => props.theme.colors.BRAND.PRIMARY};
+    }
   }
 `;
 

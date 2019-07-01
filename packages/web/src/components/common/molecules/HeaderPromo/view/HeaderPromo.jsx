@@ -18,9 +18,9 @@ const HeaderPromo = ({ className, dataPromo, mobile }) => {
     <div className={`header-promo__container ${className}`}>
       {mobile && (
         <Carousel options={carouselConfig} carouselTheme="dark" className={wrapperClass}>
-          {dataPromo.map((promoItem, idx) => (
+          {dataPromo.map(promoItem => (
             <div className="header-promo__item">
-              <div className={`header-promo-item__icon header-promo-item__icon--slot${idx + 1}`}>
+              <div className={`header-promo-item__icon ${promoItem.linkClass.class}`}>
                 <Image src={getIconPath(promoItem.linkClass.class)} alt="promotion" />
               </div>
               <div className="header-promo-item__content">
@@ -41,7 +41,7 @@ const HeaderPromo = ({ className, dataPromo, mobile }) => {
       )}
       {!mobile && (
         <Row centered className={wrapperClass}>
-          {dataPromo.map((promoItem, idx) => (
+          {dataPromo.map(promoItem => (
             <Col
               colSize={{
                 large: 4,
@@ -50,7 +50,7 @@ const HeaderPromo = ({ className, dataPromo, mobile }) => {
               }}
             >
               <div className="header-promo__item">
-                <div className={`header-promo-item__icon header-promo-item__icon--slot${idx + 1}`}>
+                <div className={`header-promo-item__icon ${promoItem.linkClass.class}`}>
                   <Image src={getIconPath(promoItem.linkClass.class)} alt="promotion" />
                 </div>
                 <div className="header-promo-item__content">
