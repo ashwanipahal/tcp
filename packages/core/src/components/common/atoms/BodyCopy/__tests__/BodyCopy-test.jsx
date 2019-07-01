@@ -16,5 +16,6 @@ describe('Body component', () => {
     const component = shallow(<BodyCopyVanilla {...props}>Body Copy with props</BodyCopyVanilla>);
     expect(component).toMatchSnapshot();
     expect(component.find('.body-copy')).toHaveLength(1);
+    expect(component.find('p')).toHaveLength(1);
   });
 });
