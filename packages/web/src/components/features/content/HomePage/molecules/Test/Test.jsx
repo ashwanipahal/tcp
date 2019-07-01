@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { CloudinaryImage } from '@tcp/core/src/components/common/atoms/Image';
 import Heading from '@tcp/core/src/components/common/atoms/Heading';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Row from '@tcp/core/src/components/common/atoms/Row';
@@ -76,6 +77,9 @@ const Test = () => {
   const colSizeConfig = { small: 2, medium: 2, large: 2 };
   return (
     <div>
+      <div>
+        <CloudinaryImage imgPath="v1561401513/ecom/assets/content/tcp/us/home/transform/home_modh_sample_qtylh0.png" />
+      </div>
       <Row>
         <BodyCopy
           component="p"
