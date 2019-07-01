@@ -17,7 +17,17 @@ export const getLocator = locator => {
   return locators[locator];
 };
 
+/**
+ * This function identifies current brand either TCP or GYMBOREE
+ */
+export const identifyBrand = () => {
+  const url = 'http://www.thechildrensplace.com/';
+
+  return url.indexOf('thechildrensplace') > -1 ? 'tcp' : 'gymboree';
+};
+
 export default {
   getIconPath,
   getLocator,
+  identifyBrand,
 };

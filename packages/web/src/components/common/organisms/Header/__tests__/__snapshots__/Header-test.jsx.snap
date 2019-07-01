@@ -8,9 +8,7 @@ exports[`Header component renders correctly 1`] = `
   <styled.div
     className="header-brand"
   >
-    <Styled(Row)
-      centered={true}
-    >
+    <Styled(Row)>
       <Styled(Col)
         className="header-brand__home-logo"
         colSize={

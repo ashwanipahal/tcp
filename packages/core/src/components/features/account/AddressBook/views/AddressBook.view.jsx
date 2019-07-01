@@ -8,6 +8,7 @@ import Col from '../../../../common/atoms/Col';
 import Button from '../../../../common/atoms/Button';
 import AddressListComponent from './AddressList.view';
 import EmptyAddressListComponent from './EmptyAddressList.view';
+import Notification from '../../../../common/molecules/Notification';
 
 // @flow
 
@@ -17,9 +18,17 @@ type Props = {
     addNewAddressCTA: string,
   },
   className: string,
+  onDefaultShippingAddressClick: Object,
+  showDefaultShippingUpdatedMsg: Boolean,
 };
 
-export const AddressBook = ({ addresses, labels, className }: Props) => {
+export const AddressBook = ({
+  addresses,
+  labels,
+  className,
+  onDefaultShippingAddressClick,
+  showDefaultShippingUpdatedMsg,
+}: Props) => {
   return (
     <div className={className}>
       <Heading
@@ -45,7 +54,24 @@ export const AddressBook = ({ addresses, labels, className }: Props) => {
           </Button>
         </Col>
       </Row>
-      {addresses.size > 0 && <AddressListComponent addresses={addresses} labels={labels} />}
+      {showDefaultShippingUpdatedMsg !== null && (
+        <Notification
+          status={showDefaultShippingUpdatedMsg ? 'success' : 'error'}
+          colSize={{ large: 12, medium: 8, small: 6 }}
+          message={
+            showDefaultShippingUpdatedMsg
+              ? labels.defaultShippingSuccessMessage
+              : labels.defaultShippingSuccessFail
+          }
+        />
+      )}
+      {addresses.size > 0 && (
+        <AddressListComponent
+          addresses={addresses}
+          labels={labels}
+          onDefaultShippingAddressClick={onDefaultShippingAddressClick}
+        />
+      )}
     </div>
   );
 };

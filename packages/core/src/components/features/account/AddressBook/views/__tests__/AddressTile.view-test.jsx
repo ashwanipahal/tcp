@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { AddressBookTile } from '../AddressTile.view';
+import { AddressBookTileVanilla } from '../AddressTile.view';
 import Badge from '../../../../../common/atoms/Badge';
 import Anchor from '../../../../../common/atoms/Anchor';
 
@@ -28,7 +28,7 @@ describe('AddressTile component', () => {
       address,
       labels,
     };
-    const component = shallow(<AddressBookTile {...props} />);
+    const component = shallow(<AddressBookTileVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 
@@ -37,7 +37,7 @@ describe('AddressTile component', () => {
       address,
       labels,
     };
-    const component = shallow(<AddressBookTile {...props} />);
+    const component = shallow(<AddressBookTileVanilla {...props} />);
     expect(component.find(Badge).text()).toBe(labels.defaultShipping);
   });
 
@@ -50,7 +50,7 @@ describe('AddressTile component', () => {
       address: newAddress,
       labels,
     };
-    const component = shallow(<AddressBookTile {...props} />);
+    const component = shallow(<AddressBookTileVanilla {...props} />);
     expect(component.find(Badge).text()).toBe(labels.defaultBilling);
   });
 
@@ -63,7 +63,7 @@ describe('AddressTile component', () => {
       address: newAddress,
       labels,
     };
-    const component = shallow(<AddressBookTile {...props} />);
+    const component = shallow(<AddressBookTileVanilla {...props} />);
     expect(component.find(Badge).text()).toBe(labels.shipping);
   });
 
@@ -76,7 +76,7 @@ describe('AddressTile component', () => {
       address: newAddress,
       labels,
     };
-    const component = shallow(<AddressBookTile {...props} />);
+    const component = shallow(<AddressBookTileVanilla {...props} />);
     expect(component.find(Badge).text()).toBe(labels.billing);
   });
 
@@ -88,7 +88,7 @@ describe('AddressTile component', () => {
       address: newAddress,
       labels,
     };
-    const component = shallow(<AddressBookTile {...props} />);
+    const component = shallow(<AddressBookTileVanilla {...props} />);
     expect(
       component
         .find(Anchor)

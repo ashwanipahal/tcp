@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleH Links Component renders correctly 1`] = `
+<ul
+  className="moduleH__CTALink-wrapper"
+>
+  <li
+    className="moduleH__listItem-partial"
+    key="modHList0"
+  >
+    <Styled(Anchor)
+      className="moduleH__CTALink "
+      target=""
+      to="https://www.childrensplace.com/us/c/toddler-girl-clothes"
+    >
+      Toddler Girl
+    </Styled(Anchor)>
+  </li>
+  <li
+    className="moduleH__listItem-partial"
+    key="modHList1"
+  >
+    <Styled(Anchor)
+      className="moduleH__CTALink moduleH__CTALink--active"
+      target=""
+      to="https://www.childrensplace.com/us/c/girls-clothing"
+    >
+      Girl
+    </Styled(Anchor)>
+  </li>
+  <li
+    className="moduleH__listItem-partial"
+    key="modHList2"
+  >
+    <Styled(Anchor)
+      className="moduleH__CTALink "
+      target=""
+      to="https://www.childrensplace.com/us/c/toddler-boy-clothes"
+    >
+      Toddler boy
+    </Styled(Anchor)>
+  </li>
+  <li
+    className="moduleH__listItem-partial"
+    key="modHList3"
+  >
+    <Styled(Anchor)
+      className="moduleH__CTALink "
+      target=""
+      to="https://www.childrensplace.com/us/c/boys-clothing"
+    >
+      Boy
+    </Styled(Anchor)>
+  </li>
+  <li
+    className="moduleH__listItem-partial"
+    key="modHList4"
+  >
+    <Styled(Anchor)
+      className="moduleH__CTALink "
+      target=""
+      to="https://www.childrensplace.com/us/c/baby-clothes"
+    >
+      Baby
+    </Styled(Anchor)>
+  </li>
+</ul>
+`;
