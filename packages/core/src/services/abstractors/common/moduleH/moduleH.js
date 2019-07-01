@@ -1,15 +1,19 @@
+import mock from './mock';
 import handler from '../../../handler';
 
 /**
- * Abstractor layer for loading data from API for Labels
+ * Abstractor layer for loading data from API for ModuleH related components
  */
 const Abstractor = {
-  getData: (module, contentId) => {
-    return handler.fetchDataFromGraphQL(module, contentId).then(Abstractor.processData);
+  getData: (module, data) => {
+    return handler
+      .fetchModuleDataFromGraphQL({ name: module, data })
+      .then(response => response.data)
+      .then(Abstractor.processData);
   },
-  processData: data => {
-    return data;
+  getMock: () => {
+    return mock;
   },
+  processData: data => data,
 };
-
 export default Abstractor;

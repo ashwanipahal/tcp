@@ -73,7 +73,7 @@ export default class AccordionList extends React.Component<Props, State> {
           <div className="list-item">
             {index.toString() === elementClicked.toString() && !isExpanded ? (
               <AccordionItem
-                titleText={accordionItems[index].header.text}
+                titleText={accordionItems[index].header.text || accordionItems[index].header.title}
                 updateAccordionState={this.changeAccordianState}
                 index={index}
                 activeClass="inactive"
@@ -82,7 +82,7 @@ export default class AccordionList extends React.Component<Props, State> {
               </AccordionItem>
             ) : (
               <AccordionItem
-                titleText={accordionItems[index].header.text}
+                titleText={accordionItems[index].header.text || accordionItems[index].header.title}
                 updateAccordionState={this.changeAccordianState}
                 index={index}
                 activeClass="active"

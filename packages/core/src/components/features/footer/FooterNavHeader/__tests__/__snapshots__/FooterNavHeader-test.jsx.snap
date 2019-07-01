@@ -16,9 +16,7 @@ exports[`FooterNavHeader component renders image in header variation correctly 1
   data-locator=""
   to=""
 >
-  <Styled(Image)
-    src="/static/images/undefined"
-  />
+  <Styled(Image) />
 </Styled(Anchor)>
 `;
 

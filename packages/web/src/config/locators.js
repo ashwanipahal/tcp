@@ -25,4 +25,7 @@ export default {
   moduleH_cta_links: 'moduleH_cta_links',
   moduleH_composite_image: 'moduleH_composite_image',
   moduleH_play_button: 'moduleH_play_button',
+  // Brand Tabs
+  'header__brand-tab--tcp': 'global_TCPimg',
+  'header__brand-tab-gymboree': 'global_Gymboreeimg',
 };
