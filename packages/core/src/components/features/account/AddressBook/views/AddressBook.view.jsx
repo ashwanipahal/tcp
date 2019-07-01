@@ -37,7 +37,7 @@ export const AddressBook = ({
         tag="h4"
         className="addressBook__separator"
       >
-        Address Book
+        {labels.addressBookHeading}
       </Heading>
       {addresses.size === 0 && <EmptyAddressListComponent labels={labels} />}
       <Row fullBleed className="addressBook__row--marginBottom">

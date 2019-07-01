@@ -7,9 +7,7 @@ exports[`AddressBook component should renders correctly when addresses are not p
     className="addressBook__separator"
     fontFamily="secondaryFontFamily"
     tag="h4"
-  >
-    Address Book
-  </Styled(HeadingStyle)>
+  />
   <Styled(EmptyAddressList)
     labels={Object {}}
   />
@@ -53,9 +51,7 @@ exports[`AddressBook component should renders correctly when addresses are prese
     className="addressBook__separator"
     fontFamily="secondaryFontFamily"
     tag="h4"
-  >
-    Address Book
-  </Styled(HeadingStyle)>
+  />
   <Styled(Row)
     className="addressBook__row--marginBottom"
     fullBleed={true}
