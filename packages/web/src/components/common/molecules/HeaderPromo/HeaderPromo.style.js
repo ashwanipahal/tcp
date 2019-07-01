@@ -34,16 +34,16 @@ const HeaderPromoStyles = css`
     }
   }
   .styled-text {
-    font-weight: 900;
+    font-weight: ${props => props.theme.fonts.fontWeight.black};
   }
 
   .styled-text,
   .styled-text-line {
-    font-size: 12px;
+    font-size: ${props => props.theme.fonts.fontSize.body.bodyText.copy2};
     display: inline;
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: 14px;
+      font-size: ${props => props.theme.fonts.fontSize.body.bodyText.copy3};
     }
     /* TODO - Remove the style1, style2, style3 when the styles start coming up from CMS */
     &.style1,
