@@ -63,11 +63,11 @@ const Header = ({ headerTopNav, headerPromoArea }) => {
       </HeaderNav>
       <HeaderPromo
         mobileMarkup
-        className="header-promo-area--mobile"
+        className="header__promo-area--mobile"
         dataPromo={headerPromoArea.composites.promoTextBanner}
       />
       <HeaderPromo
-        className="header-promo-area--desktop"
+        className="header__promo-area--desktop"
         dataPromo={headerPromoArea.composites.promoTextBanner}
       />
       <HeaderLoyalty className="header-loyalty">

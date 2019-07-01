@@ -6,7 +6,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
 >
   <Styled(Row)
     centered={true}
-    className="header-promo-area--desktop"
+    className="header__promo-area--desktop"
   >
     <Styled(Col)
       colSize={
@@ -24,7 +24,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
           className="header-promo-item__icon orange-schedule"
         >
           <Styled(Image)
-            alt="promotion"
+            alt=""
             src="/static/images/clock-icon.svg"
           />
         </div>
@@ -58,7 +58,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
           className="header-promo-item__icon green-dollar"
         >
           <Styled(Image)
-            alt="promotion"
+            alt=""
             src="/static/images/dollar-sign-icon.svg"
           />
         </div>
@@ -92,7 +92,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
           className="header-promo-item__icon blue-email"
         >
           <Styled(Image)
-            alt="promotion"
+            alt=""
             src="/static/images/at-icon.svg"
           />
         </div>
@@ -126,7 +126,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
       }
     }
     carouselTheme="dark"
-    className="header-promo-area--mobile"
+    className="header__promo-area--mobile"
     options={
       Object {
         "CAROUSEL_FADE_OPTIONS": Object {
@@ -161,7 +161,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
         className="header-promo-item__icon orange-schedule"
       >
         <Styled(Image)
-          alt="promotion"
+          alt=""
           src="/static/images/clock-icon.svg"
         />
       </div>
@@ -185,7 +185,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
         className="header-promo-item__icon green-dollar"
       >
         <Styled(Image)
-          alt="promotion"
+          alt=""
           src="/static/images/dollar-sign-icon.svg"
         />
       </div>
@@ -209,7 +209,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
         className="header-promo-item__icon blue-email"
       >
         <Styled(Image)
-          alt="promotion"
+          alt=""
           src="/static/images/at-icon.svg"
         />
       </div>

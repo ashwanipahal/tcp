@@ -11,12 +11,12 @@ const HeaderPromoStyles = css`
   @media ${props => props.theme.mediaQuery.large} {
     background: ${props => props.theme.colors.WHITE};
   }
-  &.header-promo-area--mobile {
+  &.header__promo-area--mobile {
     @media ${props => props.theme.mediaQuery.large} {
       display: none;
     }
   }
-  &.header-promo-area--desktop {
+  &.header__promo-area--desktop {
     display: none;
     @media ${props => props.theme.mediaQuery.large} {
       display: block;
@@ -39,11 +39,11 @@ const HeaderPromoStyles = css`
 
   .styled-text,
   .styled-text-line {
-    font-size: ${props => props.theme.fonts.fontSize.body.bodyText.copy2};
+    font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy2}px;
     display: inline;
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: ${props => props.theme.fonts.fontSize.body.bodyText.copy3};
+      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy3}px;
     }
     /* TODO - Remove the style1, style2, style3 when the styles start coming up from CMS */
     &.style1,
