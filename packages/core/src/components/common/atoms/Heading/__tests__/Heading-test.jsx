@@ -19,5 +19,6 @@ describe('Heading component', () => {
     );
     expect(component).toMatchSnapshot();
     expect(component.find('.heading')).toHaveLength(1);
+    expect(component.find('h4')).toHaveLength(1);
   });
 });
