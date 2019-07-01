@@ -56,17 +56,24 @@ class DeleteAddressModal extends React.Component<Props> {
     return (
       <div className={className}>
         <Address address={description} className="deleteAddressModal_deleteAddress" />
-        <Button
-          buttonVariation="fixed-width"
-          fill="BLUE"
-          onClick={this.onConfirm}
-          className="deleteAddressModal_deleteConfirm"
-        >
-          {confirm}
-        </Button>
-        <Button buttonVariation="fixed-width" onClick={this.onClose} fill="RED">
-          {cancel}
-        </Button>
+        <div className="deleteAddressModal_btnWrapper">
+          <Button
+            buttonVariation="variable-width"
+            fill="BLUE"
+            onClick={this.onConfirm}
+            className="deleteAddressModal_deleteConfirm deleteAddressModal_btn"
+          >
+            {confirm}
+          </Button>
+          <Button
+            buttonVariation="variable-width"
+            onClick={this.onClose}
+            fill="RED"
+            className="deleteAddressModal_btn"
+          >
+            {cancel}
+          </Button>
+        </div>
       </div>
     );
   }

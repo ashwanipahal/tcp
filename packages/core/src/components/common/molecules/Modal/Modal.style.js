@@ -10,7 +10,7 @@ const ModalStyle = styled.div`
     background-color: ${props => props.theme.colors.MODAL_OVERLAY};
     z-index: ${props => props.theme.zindex.zOverlay};
   }
-  .TCPModal__InnerContent {
+  div.TCPModal__InnerContent {
     background: ${props => props.theme.colors.WHITE};
     box-sizing: border-box;
     position: absolute;
@@ -21,17 +21,19 @@ const ModalStyle = styled.div`
     ${props => props.theme.zindex.zModal};
     width: 100%;
     height: 100%;
+    overflow: scroll;
     @media ${props => props.theme.mediaQuery.medium} {
       width: auto;
       height: auto;
-      min-width: 460px;
+      max-width: 460px;
       min-height: 500px;
     }
   }
   .Modal_Heading {
     border-bottom: 3px solid ${props => props.theme.colors.BLACK};
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
-    margin-top: -10px;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    margin-top: 0;
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     @media ${props => props.theme.mediaQuery.medium} {
       display: none;
     }
@@ -42,7 +44,7 @@ const ModalStyle = styled.div`
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     @media ${props => props.theme.mediaQuery.medium} {
       margin: ${props => props.theme.spacing.ELEM_SPACING.MED}
-        ${props => props.theme.spacing.LAYOUT_SPACING.XL}
+        ${props => props.theme.spacing.ELEM_SPACING.XXXL}
         ${props => props.theme.spacing.ELEM_SPACING.XL};
       padding: 0;
       text-align: initial;

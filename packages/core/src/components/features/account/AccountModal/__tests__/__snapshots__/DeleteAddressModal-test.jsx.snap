@@ -15,20 +15,25 @@ exports[`Delete Address Modal should render correctly 1`] = `
     }
     className="deleteAddressModal_deleteAddress"
   />
-  <Styled(Button)
-    buttonVariation="fixed-width"
-    className="deleteAddressModal_deleteConfirm"
-    fill="BLUE"
-    onClick={[Function]}
+  <div
+    className="deleteAddressModal_btnWrapper"
   >
-    Yes Delete
-  </Styled(Button)>
-  <Styled(Button)
-    buttonVariation="fixed-width"
-    fill="RED"
-    onClick={[Function]}
-  >
-    No, Dont Cancel
-  </Styled(Button)>
+    <Styled(Button)
+      buttonVariation="variable-width"
+      className="deleteAddressModal_deleteConfirm deleteAddressModal_btn"
+      fill="BLUE"
+      onClick={[Function]}
+    >
+      Yes Delete
+    </Styled(Button)>
+    <Styled(Button)
+      buttonVariation="variable-width"
+      className="deleteAddressModal_btn"
+      fill="RED"
+      onClick={[Function]}
+    >
+      No, Dont Cancel
+    </Styled(Button)>
+  </div>
 </div>
 `;
