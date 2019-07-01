@@ -1,5 +1,6 @@
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import { ProductListingPageReducer } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.reducer';
+import LoginPageReducer from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.reducer';
 import createSagaMiddleware from 'redux-saga';
 import { cacheEnhancerMiddleware } from '@tcp/core/src/utils/cache.util';
 import {
@@ -23,6 +24,7 @@ export const initializeStore = initialState => {
   const AppReducers = combineReducers({
     [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
     [HOMEPAGE_REDUCER_KEY]: homePageReducer,
+    LoginPageReducer,
   });
   const rootReducer = (state, action) => {
     return AppReducers(state, action);
