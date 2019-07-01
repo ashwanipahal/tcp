@@ -4,23 +4,41 @@ const textboxStyles = css`
   &.active p {
     top: -50px;
   }
+  &.input-fields-wrapper .Error__clearFloat {
+    clear: both;
+    top: -10px;
+    position: relative;
+  }
+  &.input-fields-wrapper p {
+    top: -30px;
+    opacity: 0.8;
+    position: relative;
+    margin: 0;
+    float: left;
+    padding: 5px 0px 5px 10px;
+  }
+
   input.TextBox__input[type='checkbox'] {
     width: auto;
     position: relative;
-    top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+    top: 0;
     appearance: none;
     outline: 0;
     border: 0;
     display: inline-block;
     height: 23px;
     width: 23px;
+    @media ${props => props.theme.mediaQuery.large} {
+      top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    }
   }
+
   input.TextBox__input[type='checkbox']:before {
     content: '';
     font-size: 20px;
     position: absolute;
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
     left: 0;
     box-shadow: inset 0 0 0 0.6px #575757;
   }
@@ -71,6 +89,14 @@ const textboxStyles = css`
       width: 100%;
       overflow: hidden;
     }
+    ${props =>
+      props.meta.touched && props.meta.error
+        ? `border-bottom: 1px solid ${props.theme.colors.TEXTBOX.ERROR_BORDER};`
+        : ''};
+    ${props =>
+      props.isSuccessState
+        ? `border: 1px solid ${props.theme.colors.TEXTBOX.SUCCESS_BORDER};`
+        : ''};
 
     ${props =>
       props.textIcon === 'icon-email'

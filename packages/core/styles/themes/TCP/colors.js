@@ -47,13 +47,6 @@ export default {
   EMPTY_CART_BOX: 'rgba(0, 0, 0, 0.07)',
   MODAL_OVERLAY: 'rgba(0, 0, 0, 0.6)',
   BUTTON: {
-    NORMAL: '#ffffff',
-    BORDER: '#979797',
-    HOVER: '#f3f3f3',
-    FOCUS: '#d8d8d8',
-    ALT_HOVER: '#f2f9fe',
-    ALT_FOCUS: '#e2ecf3',
-    TEXT: '#4a4a4a',
     PRIMARY: '#2e6a91',
     PRIMARY_HOVER: '#1f4862',
     WHITE: {

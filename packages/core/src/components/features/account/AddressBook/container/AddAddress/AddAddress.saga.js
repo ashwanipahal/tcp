@@ -45,14 +45,13 @@ function* addAddressGet({ payload }) {
       langId: -1,
       catalogId: 10551,
       storeId: 10151,
-      nickName: payload.nickName,
     },
     method
   );
   if (res) {
     yield put(addAddressSuccess());
   } else {
-    yield put(addAddressFail(err));
+    yield put(addAddressFail());
   }
 }
 

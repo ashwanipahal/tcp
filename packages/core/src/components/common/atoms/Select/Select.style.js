@@ -4,6 +4,19 @@ const textboxStyles = css`
   &.active div {
     top: -65px;
   }
+  &.select-fields-wrapper .Error__clearFloat {
+    clear: both;
+    top: -10px;
+    position: relative;
+  }
+  &.select-fields-wrapper p {
+    top: -30px;
+    opacity: 0.8;
+    position: relative;
+    margin: 0;
+    float: left;
+    padding: 5px 0px 5px 10px;
+  }
   .selectField {
     margin: ${props => props.theme.spacing.ELEM_SPACING.XS} 0 0 0;
     height: 35px;

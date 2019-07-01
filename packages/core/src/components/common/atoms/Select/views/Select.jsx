@@ -42,7 +42,10 @@ const SelectBox = ({
   options,
   meta: { touched, error, warning },
 }: Props): Node => (
-  <label htmlFor={name} className={`${className} ${input.value ? 'active' : ''}`}>
+  <label
+    htmlFor={name}
+    className={`${className} ${input.value ? 'active' : ''} select-fields-wrapper`}
+  >
     <select
       {...input}
       id={id}
@@ -64,7 +67,7 @@ const SelectBox = ({
         })}
     </select>
     {/* commented onChange={onChangeHandler} */}
-    <BodyCopy bodySize="two" FormVariation="float" BodycolorLg="primary" tag="div">
+    <BodyCopy bodySize="two" FormVariation="float" BodycolorLg="primary" tag="p">
       {placeholder}
     </BodyCopy>
     {touched &&

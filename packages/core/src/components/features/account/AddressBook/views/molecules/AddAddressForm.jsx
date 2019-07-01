@@ -18,7 +18,7 @@ import {
   zipcodeUS,
   zipcodeCA,
 } from '../../../../../../utils/FormValidation';
-import { LabeledInputGoogleAutoComplete } from '../../../../../common/atoms/GoogleAutoSuggest/LabeledInputGoogleAutoComplete';
+import { AutoCompleteComponent } from '../../../../../common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import {
   countriesOptionsMap,
   CAcountriesStatesTable,
@@ -42,7 +42,7 @@ type State = {
 };
 // const AddressValidationForm = ({ handleSubmit, pristine, reset, submitting }: Props): Node => (
 
-class AddressValidationForm extends React.PureComponent<Props, State> {
+class AddAddressForm extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.handleBlur = this.handleBlur.bind(this);
@@ -75,7 +75,7 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
   };
 
   handlePlaceSelected = (place, inputValue) => {
-    const address = LabeledInputGoogleAutoComplete.getAddressFromPlace(place, inputValue);
+    const address = AutoCompleteComponent.getAddressFromPlace(place, inputValue);
     const { dispatch } = this.props;
     this.setState({
       city: address.city,
@@ -83,11 +83,11 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
       state: address.state,
       country: address.country,
     });
-    dispatch(change('AddressValidationForm', 'city', address.city));
-    dispatch(change('AddressValidationForm', 'zip', address.zip));
-    dispatch(change('AddressValidationForm', 'state', address.state));
-    dispatch(change('AddressValidationForm', 'country', address.country));
-    dispatch(change('AddressValidationForm', 'street', address.street));
+    dispatch(change('AddAddressForm', 'city', address.city));
+    dispatch(change('AddAddressForm', 'zip', address.zip));
+    dispatch(change('AddAddressForm', 'state', address.state));
+    dispatch(change('AddAddressForm', 'country', address.country));
+    dispatch(change('AddAddressForm', 'street', address.street));
   };
 
   render() {
@@ -123,11 +123,12 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
             <Field
               id="addressField"
               placeholder="Address Line 1"
-              component={LabeledInputGoogleAutoComplete}
+              component={AutoCompleteComponent}
               name="address1"
-              validate={[required, maxLength30, specialChar]}
+              validate={[required, maxLength30]}
               onPlaceSelected={this.handlePlaceSelected}
               onBlur={this.handleBlur}
+              maxLength={30}
             />
           </Col>
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
@@ -242,9 +243,9 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
   }
 }
 
-AddressValidationForm.defaultProps = {
+AddAddressForm.defaultProps = {
   submitting: true,
 };
 export default reduxForm({
-  form: 'AddressValidationForm', // a unique identifier for this form
-})(AddressValidationForm);
+  form: 'AddAddressForm', // a unique identifier for this form
+})(AddAddressForm);
