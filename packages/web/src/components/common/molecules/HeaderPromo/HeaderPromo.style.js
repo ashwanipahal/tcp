@@ -4,6 +4,10 @@ const ICON_SIZE = '60px';
 
 const HeaderPromoStyles = css`
   background: ${props => props.theme.colors.PRIMARY.PALEGRAY};
+  .slick-prev,
+  .slick-next {
+    z-index: 1;
+  }
   @media ${props => props.theme.mediaQuery.large} {
     background: ${props => props.theme.colors.WHITE};
   }
@@ -29,13 +33,33 @@ const HeaderPromoStyles = css`
       justify-content: center;
     }
   }
-
   .styled-text {
+    font-weight: 900;
+  }
+
+  .styled-text,
+  .styled-text-line {
+    font-size: 12px;
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: 14px;
+    }
+    /* TODO - Remove the style1, style2, style3 when the styles start coming up from CMS */
+    &.style1,
+    &[class*='orange-'] {
+      color: ${props => props.theme.colors.BRAND.BOYS};
+    }
+    &.style2,
+    &[class*='green-'] {
+      color: ${props => props.theme.colors.PRIMARY.GREEN};
+    }
+    &.style3,
+    &[class*='blue-'] {
+      color: ${props => props.theme.colors.BRAND.PRIMARY};
+    }
   }
 
   .header-promo-item__content {
-    font-size: 12px;
     width: 100%;
     text-align: center;
     @media ${props => props.theme.mediaQuery.medium} {
@@ -55,6 +79,9 @@ const HeaderPromoStyles = css`
     @media ${props => props.theme.mediaQuery.medium} {
       display: flex;
       margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    }
+    &[class*='header__promo-text-banner'] {
+      background-color: ${props => props.theme.colors.BRAND.BOYS};
     }
     &[class*='orange-'] {
       background-color: ${props => props.theme.colors.BRAND.BOYS};

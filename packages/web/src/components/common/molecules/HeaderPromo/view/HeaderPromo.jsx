@@ -25,13 +25,12 @@ const HeaderPromo = ({ className, dataPromo, mobile }) => {
               </div>
               <div className="header-promo-item__content">
                 <span
-                  className="styled-text"
-                  style={{ color: promoItem.textLines[0].color }}
+                  className={`styled-text ${promoItem.textLines[0].style}`}
                   contentEditable="true"
                   dangerouslySetInnerHTML={{ __html: promoItem.textLines[0].text }}
                 />
                 <span
-                  style={{ color: promoItem.textLines[1].color }}
+                  className={`styled-text-line ${promoItem.textLines[1].style}`}
                   dangerouslySetInnerHTML={{ __html: promoItem.textLines[1].text }}
                 />
               </div>
@@ -55,13 +54,12 @@ const HeaderPromo = ({ className, dataPromo, mobile }) => {
                 </div>
                 <div className="header-promo-item__content">
                   <span
-                    className="styled-text"
-                    style={{ color: promoItem.textLines[0].color }}
+                    className={`styled-text ${promoItem.textLines[0].style}`}
                     contentEditable="true"
                     dangerouslySetInnerHTML={{ __html: promoItem.textLines[0].text }}
                   />
                   <span
-                    style={{ color: promoItem.textLines[1].color }}
+                    className={`styled-text-line ${promoItem.textLines[1].style}`}
                     dangerouslySetInnerHTML={{ __html: promoItem.textLines[1].text }}
                   />
                 </div>

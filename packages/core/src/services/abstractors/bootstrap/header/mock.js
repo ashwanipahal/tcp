@@ -66,7 +66,7 @@ export default {
             textLines: [
               {
                 text: 'NEED IT NOW?',
-                style: 'style1',
+                style: 'black-bold',
                 color: 'color1',
                 __typename: 'StyledText',
               },
@@ -91,14 +91,12 @@ export default {
             textLines: [
               {
                 text: 'EARN PLACE CASH!',
-                style: 'style1',
-                color: 'color1',
+                style: 'green-bold',
                 __typename: 'StyledText',
               },
               {
                 text: 'Get 10$ for every 20$ spent today.',
                 style: 'style2',
-                color: 'color2',
                 __typename: 'StyledText',
               },
             ],
@@ -116,8 +114,7 @@ export default {
             textLines: [
               {
                 text: 'SIGN UP AND GET 10$ OFF!',
-                style: 'style1',
-                color: 'color1',
+                style: 'black-bold',
                 __typename: 'StyledText',
               },
               {

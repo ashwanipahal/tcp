@@ -3,7 +3,6 @@ import { PropTypes } from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import utilMethods from '@tcp/core/src/utils';
-import HeaderMock from '@tcp/core/src/services/abstractors/bootstrap/header/mock';
 import HeaderTopNav from '@tcp/web/src/components/common/molecules/HeaderTopNav';
 import HeaderPromo from '../../../molecules/HeaderPromo';
 import config from '../config';
@@ -14,7 +13,7 @@ const { HeaderBrand, HeaderNav, DummyNav, HeaderLoyalty } = headerStyles;
 
 const brand = utilMethods.brand();
 
-const Header = ({ headerTopNav }) => {
+const Header = ({ headerTopNav, headerPromoArea }) => {
   return (
     <header>
       <HeaderTopNav className="header-topnav" dataTopNav={headerTopNav} />
@@ -65,11 +64,11 @@ const Header = ({ headerTopNav }) => {
       <HeaderPromo
         mobile
         className="header-promo-area--mobile"
-        dataPromo={HeaderMock.header_promo_area.promoTextBannerCarousel.composites.promoTextBanner}
+        dataPromo={headerPromoArea.composites.promoTextBanner}
       />
       <HeaderPromo
         className="header-promo-area--desktop"
-        dataPromo={HeaderMock.header_promo_area.promoTextBannerCarousel.composites.promoTextBanner}
+        dataPromo={headerPromoArea.composites.promoTextBanner}
       />
       <HeaderLoyalty className="header-loyalty">
         <Row>
@@ -91,6 +90,11 @@ const Header = ({ headerTopNav }) => {
 
 Header.propTypes = {
   headerTopNav: PropTypes.shape({}).isRequired,
+  headerPromoArea: PropTypes.shape({
+    composites: PropTypes.shape({
+      promoTextBanner: PropTypes.shape({}),
+    }),
+  }).isRequired,
 };
 
 export default Header;
