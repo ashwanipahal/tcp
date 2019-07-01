@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleH Header Component renders correctly 1`] = `
+<Fragment>
+  <Styled(HeadingStyle)
+    HeadingLarge="three"
+    HeadingcolorSm="primary"
+    className="moduleH__header"
+    key="0"
+    tag="h2"
+  >
+    <Styled(Anchor)
+      className="moduleH__header-link"
+      target=""
+      to="https://www.childrensplace.com/us/c/girls-new-arrivals"
+    >
+      New arrivals
+    </Styled(Anchor)>
+  </Styled(HeadingStyle)>
+  <Styled(HeadingStyle)
+    HeadingLarge="three"
+    HeadingcolorSm="primary"
+    className="moduleH__header"
+    key="1"
+    tag="h2"
+  >
+    <Styled(Anchor)
+      className="moduleH__header-link"
+      target=""
+      to="https://www.childrensplace.com/us/c/girls-new-arrivals"
+    >
+      New adventures
+    </Styled(Anchor)>
+  </Styled(HeadingStyle)>
+</Fragment>
+`;

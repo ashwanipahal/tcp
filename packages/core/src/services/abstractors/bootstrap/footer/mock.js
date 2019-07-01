@@ -1,353 +1,216 @@
-const accountLink = 'https://www.childrensplace.com/us/account';
-
 export default {
-  footer_top: {
-    email_signup: {
-      url: '/',
-      title: 'Get $10 off by signing up for email',
-      text:
-        '<div id="email-signup-text" style="font-weight: 900; line-height: 1.67;color: #6a6a6a;">Get <span style="color: #4b9fdd;">$10 OFF</span> by signing <br>up for email offers!</div><style>@media (max-width: 1023px) {#email-signup-text {font-size: 10px;} #email-signup-text br {display: none;}} @media (min-width: 1024px) {#email-signup-text {font-size: 15px;} #email-signup-text br {display: block;}}</style>',
-      target: 'email_signup_popup',
-    },
-    sms_signup: {
-      url: '/',
-      title: 'Get $10 off by signing up for text message',
-      text:
-        '<div id="sms-signup-text" style="font-weight: 900; line-height: 1.67;color: #6a6a6a;">Sign up for text alerts <br> and get <span style="color: #4b9fdd;">$10 off!</span></div><style>@media (max-width: 1023px) {#sms-signup-text {font-size: 10px;} #sms-signup-text br {display: none;}} @media (min-width: 1024px) {#sms-signup-text {font-size: 15px;} #sms-signup-text br {display: block;}}</style>',
-      target: 'sms_signup_popup',
-    },
-    refer_a_friend: {
-      url: '/',
-      title: 'Refer a friend and earn another $10',
-      text:
-        '<div id="refer-friend-text" style="font-weight: 900; line-height: 1.67;color: #6a6a6a;">REFER A FRIEND<br>AND EARN ANOTHER <span style="color: #4b9fdd;">$10!</span></div><style>@media (max-width: 1023px) {#refer-friend-text {font-size: 10px;} #refer-friend-text br {display: none;}} @media (min-width: 1024px) {#refer-friend-text {font-size: 15px;} #refer-friend-text br {display: block;}}</style>',
-      target: '',
-    },
-    social_media_links: [
-      {
-        url: 'http://facebook.com/childrensplace',
-        title: 'Facebook',
-        target: '_blank',
-        iconClass: 'icon-facebook',
-      },
-      {
-        url: 'http://twitter.com/childrensplace',
-        title: 'Twitter',
-        target: '_blank',
-        iconClass: 'icon-twitter',
-      },
-      {
-        url: 'http://instagram.com/childrensplace',
-        title: 'Instagram',
-        target: '_blank',
-        iconClass: 'icon-instagram',
-      },
-      {
-        url: 'http://pinterest.com/childrensplace',
-        title: 'Pinterest',
-        target: '_blank',
-        iconClass: 'icon-pinterest',
-      },
-    ],
-  },
-  footer_middle: {
-    mpr: {
-      link: {
-        url: 'https://www.childrensplace.com/us/content/myplace-rewards-page',
-        image_alt: 'My Place Rewards image',
-        image_url: 'mp-rewards-orange.png',
-        title: 'My Place rewards title',
-        text: 'My Place Rewards',
-        target: '_blank',
-      },
-      sub_links: [
-        {
-          url: accountLink,
-          title: 'Create An Account title',
-          text: 'Create An Account',
-          target: '',
-        },
-        {
-          url: accountLink,
-          title: 'Check Point Balance title',
-          text: 'Check Point Balance',
-          target: '',
-        },
-        {
-          url: accountLink,
-          title: 'Redeem rewards title',
-          text: 'Redeem Rewards',
-          target: '',
-        },
-        {
-          url:
-            'https://www.childrensplace.com/us/content/myplace-rewards-page?ecid=mpr_txt_learn_glft_100916',
-          title: 'Member benefits title',
-          text: 'Member Benefits',
-          target: '',
-        },
-      ],
-    },
-    mpr_cc: {
-      link: {
-        url: 'https://www.childrensplace.com/us/place-card/?ecid=mprcc_txt_learn_glft_100916',
-        image_alt: 'My Place Rewards Credit Card image',
-        image_url: 'mp-rewards-blue.png',
-        title: 'My Place rewards credit card title',
-        text: 'My Place Rewards Credit Card',
-        target: '_blank',
-      },
-      sub_links: [
-        {
-          url: 'https://www.childrensplace.com/us/place-card/?ecid=mprcc_txt_learn_glft_100916',
-          title: 'Learn more title',
-          text: 'Learn More',
-          target: '',
-        },
-        {
-          url: 'https://www.childrensplace.com/us/place-card/application',
-          title: 'Apply now title',
-          text: 'Apply Now',
-          target: '',
-        },
-        {
-          url: 'https://d.comenity.net/childrensplace/?ecid=paybill',
-          title: 'Pay your bill title',
-          text: 'Pay Your Bill',
-          target: '',
-        },
-        {
-          url: 'https://d.comenity.net/childrensplace/?ecid=manageacct',
-          title: 'Manage your account title',
-          text: 'Manage Your Account',
-          target: '',
-        },
-      ],
-    },
-    nav_links: [
-      {
-        items: [
+  submodules: {
+    footerTop: {
+      composites: {
+        buttonGroup: [
           {
-            text: 'HELP CENTER',
-            links: [
+            url: '/node/modal/ttt1',
+            text: null,
+            title:
+              "<div id='email-signup-text' style='font-weight: 900; line-height: 1.67;color: #6a6a6a;'>Get <span style='color: #4b9fdd;'>$10 OFF</span> by signing <br>up for email offers!</div>",
+            external: 0,
+            target: '',
+          },
+          {
+            url: '/node/modal/ttt22',
+            text: null,
+            title:
+              "<div id='sms-signup-text' style='font-weight: 900; line-height: 1.67;color: #6a6a6a;'>Sign up for text alerts <br> and get <span style='color: #4b9fdd;'>$10 off!</span></div> ",
+            external: 0,
+            target: '',
+          },
+          {
+            url: '/dummy',
+            text: null,
+            title:
+              "<div id='refer-friend-text' style='font-weight: 900; line-height: 1.67;color: #6a6a6a;'>REFER A FRIEND<br>AND EARN ANOTHER <span style='color: #4b9fdd;'>$10!</span></div>",
+            external: 0,
+            target: '',
+          },
+        ],
+        socialLinks: [
+          {
+            url: 'http://facebook.com/childrensplace',
+            title: 'Facebook',
+            target: '_blank',
+            external: 0,
+            class: 'footer__social-link--fb',
+          },
+          {
+            url: 'http://twitter.com/childrensplace',
+            title: 'Twitter',
+            target: '_blank',
+            external: 0,
+            class: 'footer__social-link--tw',
+          },
+          {
+            url: 'http://instagram.com/childrensplace',
+            title: 'Instagram',
+            target: '_blank',
+            external: 0,
+            class: 'footer__social-link--ig',
+          },
+          {
+            url: 'http://pinterest.com/childrensplace',
+            title: 'Pinterest',
+            target: '_blank',
+            external: 0,
+            class: 'footer__social-link--pt',
+          },
+        ],
+      },
+    },
+    footerMiddle: {
+      composites: {
+        mprWrapper: [
+          {
+            linkClass: {
+              url: '/static/rewards',
+              title: 'My Place Rewards',
+              target: '',
+              external: 0,
+              class: 'footer__mpr-container--col1',
+            },
+            linkList: [
               {
-                url: 'https://www.childrensplace.com/us/help-center/#faq',
-                text: 'FAQs',
-                title: 'Frequently Asked Questions',
+                url: '/static/balance',
+                target: '',
+                title: 'Check Point Balance',
+                external: 0,
               },
               {
-                url: 'https://www.childrensplace.com/us/account/orders',
-                text: 'Track Order',
-                title: 'Track Order Title',
+                url: '/static/rewards',
+                target: '',
+                title: 'Redeem Rewards',
+                external: 0,
               },
               {
-                url: 'https://www.childrensplace.com/us/help-center/#returnExchangePolicyli',
-                text: 'Return Policy',
-                title: 'Return Policy Title',
+                url: '/static/benefits',
+                target: '',
+                title: 'Member Benefits',
+                external: 0,
+              },
+            ],
+          },
+          {
+            linkClass: {
+              url: '/static/rewards/cc',
+              title: 'My Place Rewards Credit Card',
+              target: '',
+              external: 0,
+              class: 'footer__mpr-container--col2',
+            },
+            linkList: [
+              {
+                url: '/static/learn-more',
+                target: '',
+                title: 'Learn More',
+                external: 0,
+              },
+              {
+                url: '/static/apply-now',
+                target: '',
+                title: 'Apply Now',
+                external: 0,
+              },
+              {
+                url: '/static/pay',
+                target: '',
+                title: 'Pay Your Bill',
+                external: 0,
+              },
+            ],
+          },
+        ],
+        linkColumns: [
+          {
+            text: {
+              text: 'Help center',
+            },
+            linkList: [
+              {
+                url: '/static/faq',
+                target: '',
+                title: 'FAQs',
+                external: 0,
+              },
+              {
+                url: 'https://track-order.com/tttt1',
+                target: '_blank',
+                title: 'Track Order',
+                external: 0,
+              },
+              {
+                url: '/static/return-policy',
+                target: '',
+                title: 'Return Policy',
+                external: 0,
+              },
+            ],
+          },
+          {
+            text: {
+              text: 'Shopping',
+            },
+            linkList: [
+              {
+                url: '/static/log-out',
+                target: '',
+                title: 'Log Out',
+                external: 0,
+              },
+              {
+                url: '/static/coupons',
+                target: '',
+                title: 'Coupons',
+                external: 0,
+              },
+            ],
+          },
+          {
+            text: {
+              text: 'About Us',
+            },
+            linkList: [
+              {
+                url: '/static/public-relations',
+                target: '',
+                title: 'Public Relations',
+                external: 0,
+              },
+              {
+                url: '/static/investor-relations',
+                target: '',
+                title: 'Investor Relations',
+                external: 0,
               },
             ],
           },
         ],
       },
-      {
-        items: [
-          {
-            text: 'HELP SUBHEADER',
-            isSubHeader: true,
-            links: [
-              {
-                url: 'https://www.childrensplace.com/us/help-center/#faq',
-                text: 'FAQ',
-                title: 'Frequently Asked Questions',
-              },
-              {
-                url: 'https://www.childrensplace.com/us/account/orders',
-                text: 'Track Order Link',
-                title: 'Track Order Title',
-              },
-              {
-                url: 'https://www.childrensplace.com/us/help-center/#returnExchangePolicyli',
-                text: 'Return Policy Link',
-                title: 'Return Policy Title',
-              },
-            ],
-          },
-        ],
-      },
-      {
-        items: [
-          {
-            // isSubHeader: true,
-            text: 'SECOND HEADER',
-            links: [
-              {
-                url: 'www.childrensplace.com/us/content/gift-options',
-                text: 'Gift Services',
-                title: 'Gift Services Title',
-              },
-              {
-                url: 'https://childrensplace.com/us/favorites',
-                text: 'Favorites',
-                title: 'Favorites Title',
-              },
-              {
-                url: 'www.childrensplace.com/us/content/lookbook',
-                text: 'Personal Lookbooks',
-                title: 'Personal Lookbooks Title',
-              },
-              {
-                url:
-                  'www.childrensplace.com/us/content/mobile?icid=mbapp_glft_mbapplp_txt_070115_null',
-                text: 'Mobile App',
-                title: 'Mobile App Title',
-              },
-              {
-                url: '/',
-                text: 'Free Clothes',
-                title: 'Free Clothes Title',
-              },
-            ],
-          },
-        ],
-      },
-      {
-        items: [
-          {
-            text: 'SHOPPING',
-            links: [
-              {
-                url: 'https://www.childrensplace.com/us/account',
-                text: 'Create an Account',
-                title: 'Create an Account Title',
-              },
-              {
-                url:
-                  'https://www.childrensplace.com/us/content/childrens-place-coupons?icid=coupon_glft_cplp_txt_121914_null',
-                text: 'Coupons',
-                title: 'Coupons Title',
-              },
-              {
-                url: 'https://www.childrensplace.com/us/store-locator',
-                text: 'Store Locator',
-                title: 'Store Locator Title',
-              },
-              {
-                url: 'https://www.childrensplace.com/us/content/size-chart',
-                text: 'Size Chart',
-                title: 'Size Chart Title',
-              },
-              {
-                url: 'https://thechildrensplace.thegiftcardshop.com/',
-                text: 'Gift Cards',
-                title: 'Gift Cards Title',
-              },
-              {
-                url: 'www.childrensplace.com/us/content/gift-options',
-                text: 'Gift Services',
-                title: 'Gift Services Title',
-              },
-              {
-                url: 'https://childrensplace.com/us/favorites',
-                text: 'Favorites',
-                title: 'Favorites Title',
-              },
-              {
-                url: 'www.childrensplace.com/us/content/lookbook',
-                text: 'Personal Lookbooks',
-                title: 'Personal Lookbooks Title',
-              },
-              {
-                url:
-                  'www.childrensplace.com/us/content/mobile?icid=mbapp_glft_mbapplp_txt_070115_null',
-                text: 'Mobile App',
-                title: 'Mobile App Title',
-              },
-              {
-                url: 'www.childrensplace.com/us/content/recall-information',
-                text: 'Recall Information',
-                title: 'Recall Information Title',
-              },
-              {
-                url: 'https://www.childrensplacemomspace.com/Portal/default.aspx',
-                text: 'The Mom Space',
-                title: 'The Mom Space Title',
-              },
-              {
-                url: 'https://www.childrensplace.com/blog/',
-                text: 'Blog',
-                title: 'Blog Title',
-              },
-            ],
-          },
-        ],
-      },
-      {
-        items: [
-          {
-            // isSubHeader: true,
-            text: 'ABOUT US',
-            links: [
-              {
-                url: 'https://corporate.childrensplace.com/corporate-responsibility',
-                text: 'Public Relations',
-                title: 'Public Relations Title',
-              },
-              {
-                url: 'https://childrensplace.gcs-web.com',
-                text: 'Investor Relations',
-                title: 'Investor Relations Title',
-              },
-              {
-                url: 'https://corporate.childrensplace.com/careers',
-                text: 'Careers',
-                title: 'Careers Title',
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-  footer_bottom: {
-    copyrights: {
-      text: "<p>&copy; 2019 The Children's Place | Big fashion, little prices</p>",
     },
-    legal_links: [
-      {
-        url: 'https://www.childrensplace.com/us/help-center/#termsAndConditionsli',
-        title: 'Terms and Conditions title',
-        text: 'Terms and Conditions',
-        name: 'terms_and_conditions',
-        target: '',
+    footerBottom: {
+      composites: {
+        linkList: [
+          {
+            url: '/static/terms-and-conditions',
+            target: '',
+            title: 'Terms and Conditions',
+            external: 0,
+          },
+          {
+            url: '/static/privacy-policy',
+            target: '',
+            title: 'Privacy Policy',
+            external: 0,
+          },
+        ],
+        richTextGroup: [
+          {
+            text: '<p>@copy; 2019 The Childrens Place | Big Fashion, Little Prices.</p>',
+          },
+        ],
       },
-      {
-        url: 'https://www.childrensplace.com/us/help-center/#privacyPolicySectionli',
-        title: 'Privacy Policy title',
-        name: 'privacy_policy',
-        text: 'Privacy Policy',
-        target: '',
-      },
-      {
-        url: 'https://www.childrensplace.com/us/help-center/#cookiePolicySectionli',
-        title: 'Cookie Policy title',
-        name: 'cookie_policy',
-        text: 'Cookie Policy',
-        target: '',
-      },
-      {
-        url: 'https://www.childrensplace.com/us/content/supply-chain',
-        title: 'California supply chain act title',
-        name: 'california_supply_chain',
-        text: 'California Supply Chains Act',
-        target: '',
-      },
-      {
-        url: 'https://www.childrensplace.com/us/sitemap',
-        title: 'Site Map title',
-        name: 'site_map',
-        text: 'Site Map',
-        target: '_blank',
-      },
-    ],
+    },
   },
 };

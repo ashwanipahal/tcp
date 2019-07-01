@@ -9,7 +9,7 @@ const LayoutAbstractor = {
    * This function loads data from graphQL service
    * @param {String} page
    */
-  getLayoutData: page => {
+  getLayoutData: async page => {
     return handler
       .fetchModuleDataFromGraphQL({
         name: 'layout',
@@ -31,8 +31,37 @@ const LayoutAbstractor = {
       }
    *
    */
-  getModulesData: modules => {
+  getModulesData: async modules => {
     return handler.fetchModuleDataFromGraphQL(modules);
+  },
+  /**
+   * Asynchronous function to process data from service for layouts
+   * @param {Object} data Response object for layout query
+   */
+  processData: async data => {
+    const moduleObjects = LayoutAbstractor.collateModuleObject(data.items);
+    return LayoutAbstractor.getModulesData(moduleObjects).then(response => {
+      return response.data;
+    });
+  },
+  /**
+   * Processes data to create an array of content IDs with slot information
+   * @param {*} items
+   */
+  collateModuleObject: items => {
+    const moduleIds = [];
+    items.forEach(({ layout: { slots } }) => {
+      slots.forEach(slot =>
+        moduleIds.push({
+          name: slot.moduleName,
+          data: {
+            contentId: slot.contentId,
+            slot: slot.name,
+          },
+        })
+      );
+    });
+    return moduleIds;
   },
   /**
    * Return mock for Layout response

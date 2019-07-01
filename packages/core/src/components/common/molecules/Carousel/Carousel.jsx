@@ -31,7 +31,7 @@ Carousel.propTypes = {
     autoplaySpeed: PropTypes.number,
     speed: PropTypes.number,
   }),
-  carouselConfig: PropTypes.objectOf(PropTypes.object),
+  carouselConfig: PropTypes.objectOf(PropTypes.shape({})),
 };
 
 Carousel.defaultProps = {
@@ -40,7 +40,7 @@ Carousel.defaultProps = {
     autoplaySpeed: PropTypes.number,
     speed: PropTypes.number,
   }),
-  carouselConfig: PropTypes.objectOf(PropTypes.object),
+  carouselConfig: { type: 'light', arrow: 'none' },
 };
 
 export default withStyles(Carousel, CarouselStyle);

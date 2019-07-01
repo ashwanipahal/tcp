@@ -1,19 +1,22 @@
-import handler from '../../../handler';
 import mock from './mock';
+import handler from '../../../handler';
 
 /**
- * Abstractor layer for loading data from API for Labels
+ * Abstractor layer for loading data from API for ModuleD related components
  */
 const Abstractor = {
-  getData: (module, contentId) => {
-    return handler.fetchDataFromGraphQL(module, contentId).then(Abstractor.processData);
+  getData: (module, data) => {
+    return handler
+      .fetchModuleDataFromGraphQL({ name: module, data })
+      .then(response => response.data)
+      .then(Abstractor.processData)
+      .catch(Abstractor.handleError);
   },
   getMock: () => {
     return mock;
   },
-  processData: data => {
-    return data;
-  },
+  processData: data => data,
+  // eslint-disable-next-line no-console
+  handleError: e => console.log(e),
 };
-
 export default Abstractor;
