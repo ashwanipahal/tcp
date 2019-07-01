@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleH component renders correctly 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-cSHVUG",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  height: ",
+          "425",
+          "px;
+  margin-bottom: ",
+          [Function],
+          ";
+  margin-top: ",
+          [Function],
+          ";
+  overflow: hidden;
+  position: relative;
+
+  img {
+    height: 425px;
+
+    @media ",
+          [Function],
+          " {
+      height: 541px;
+    }
+  }
+
+  @media ",
+          [Function],
+          " {
+    height: 541px;
+    margin-bottom: ",
+          [Function],
+          ";
+    margin-top: ",
+          [Function],
+          ";
+  }
+
+  .moduleH__header--wrapper {
+    margin-top: 38px;
+    position: absolute;
+    z-index: ",
+          [Function],
+          ";
+
+    @media ",
+          [Function],
+          " {
+      margin: 18px 0 0 11px;
+    }
+
+    @media ",
+          [Function],
+          " {
+      margin-top: ",
+          [Function],
+          ";
+    }
+  }
+
+  .moduleH__header {
+    color: ",
+          [Function],
+          ";
+    font-family: ",
+          [Function],
+          ";
+    line-height: 34px;
+    margin: 0px;
+
+    @media ",
+          [Function],
+          " {
+      font-size: ",
+          [Function],
+          "px;
+      line-height: 52px;
+    }
+  }
+
+  .moduleH__header-link {
+    color: ",
+          [Function],
+          ";
+    font-family: ",
+          [Function],
+          ";
+  }
+
+  .moduleH__CTALink {
+    color: ",
+          [Function],
+          ";
+    font-family: ",
+          [Function],
+          ";
+    font-size: ",
+          [Function],
+          "px;
+    line-height: 20px;
+    opacity: 0.8;
+
+    &:hover {
+      font-family: ",
+          [Function],
+          ";
+      opacity: 1;
+    }
+  }
+
+  .moduleH__listItem-partial {
+    margin-top: 38px;
+  }
+
+  .moduleH__listItem-full {
+    margin-top: 22px;
+  }
+
+  .moduleH__CTALink--active {
+    font-family: ",
+          [Function],
+          ";
+    opacity: 1;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(ModuleH)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-cSHVUG",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+/>
+`;

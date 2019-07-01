@@ -21,7 +21,7 @@ const StyledRow = css`
           : ``
       }
       ${
-        !props.fullBleed
+        !props.fullBleed || !props.fullBleed[key]
           ? `
         margin-right: ${props.theme.gridDimensions.gridOffsetObj[key]}px;
         margin-left: ${props.theme.gridDimensions.gridOffsetObj[key]}px;

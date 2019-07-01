@@ -11,6 +11,12 @@ const buildQuery = ({ slot, contentId }) => `
           color
           style
         }
+        link {
+          url
+          title
+          target
+          external
+        }
       }
 
       divCTALinks {

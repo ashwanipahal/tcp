@@ -1,4 +1,7 @@
 import HomePageLayout from '../../abstractors/bootstrap/layout/mock';
+import HeaderMock from '../../abstractors/bootstrap/header/mock';
+import FooterMock from '../../abstractors/bootstrap/footer/mock';
+import LabelsMock from '../../abstractors/bootstrap/labels/mock';
 import ModuleDMock from '../../abstractors/common/moduleD/mock';
 import ModuleHMock from '../../abstractors/common/moduleH/mock';
 import ModuleDQuery from '../graphQL/queries/moduleD/moduleD.query';
@@ -6,10 +9,33 @@ import ModuleDQuery from '../graphQL/queries/moduleD/moduleD.query';
 const sendResponse = (data, resolve, reject) =>
   process.nextTick(() => (data ? resolve(data) : reject()));
 
-/**
- *
- * @param {*} modules
- */
+const processResponse = name => {
+  let response = {};
+  switch (name) {
+    case 'moduleD':
+      response = ModuleDMock;
+      break;
+    case 'moduleH':
+      response = ModuleHMock;
+      break;
+    case 'layout':
+      response = HomePageLayout;
+      break;
+    case 'header':
+      response = HeaderMock;
+      break;
+    case 'footer':
+      response = FooterMock;
+      break;
+    case 'labels':
+      response = LabelsMock;
+      break;
+    default:
+      break;
+  }
+  return response;
+};
+
 export const fetchModuleDataFromGraphQL = async modules => {
   return new Promise((resolve, reject) => {
     if (modules.length) {
@@ -19,24 +45,17 @@ export const fetchModuleDataFromGraphQL = async modules => {
 
       for (let i = 0; i < modules.length; i += 1) {
         const module = modules[i];
-        switch (module.name) {
-          case 'moduleD':
-            response.data.moduleD = ModuleDMock;
-            break;
-          case 'moduleH':
-            response.data.moduleH = ModuleHMock;
-            break;
-          default:
-            break;
+        if (module.name !== 'layout') {
+          response.data[module.name] = processResponse(module.name);
+        } else {
+          response.data[module.data.path] = processResponse(module.name)[module.data.path];
         }
       }
 
       sendResponse(response, resolve, reject);
-    }
-
-    if (modules.name === 'layout') {
+    } else {
       const response = {
-        data: HomePageLayout,
+        data: processResponse(modules.name),
       };
       sendResponse(response, resolve, reject);
     }
