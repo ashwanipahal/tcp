@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/errorBoundary';
 import { Col, Image, Row } from '../../../atoms';
@@ -78,22 +77,6 @@ class ModuleH extends React.PureComponent<Props, State> {
     );
   }
 }
-
-ModuleH.propTypes = {
-  className: PropTypes.string.isRequired,
-  composites: PropTypes.shape({
-    divCTALinks: PropTypes.arrayOf(
-      PropTypes.objectOf(
-        PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.shape({})])
-      )
-    ),
-    headerText: PropTypes.shape({
-      textLines: PropTypes.arrayOf(
-        PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))
-      ),
-    }),
-  }).isRequired,
-};
 
 export default errorBoundary(withStyles(ModuleH, style));
 export { ModuleH as ModuleHVanilla };
