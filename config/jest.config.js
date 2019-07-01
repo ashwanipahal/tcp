@@ -32,6 +32,7 @@ module.exports = {
     '!**/*.config.js',
     '!**/core/styles/**',
     '!**/*.action.js',
+    '!**/*.query.js',
   ],
   coveragePathIgnorePatterns: [
     '/node_modules/',
