@@ -8,6 +8,8 @@ import React from 'react';
 import Slider from 'react-slick';
 import { PropTypes } from 'prop-types';
 import config from './config';
+import { Image } from '../../atoms';
+import { getIconPath } from '../../../../utils';
 import CarouselStyle from './Carousel.style';
 import withStyles from '../../hoc/withStyles';
 import errorBoundary from '../../hoc/errorBoundary';
@@ -55,13 +57,12 @@ class Carousel extends React.Component {
           {!children ? null : children}
         </Slider>
         {carouselConfig.autoplay ? (
-          <button
-            className="button"
+          <Image
+            className="TCP_Carousel__play"
             data-locator={carouselConfig.dataLocator}
+            src={getIconPath(autoplay ? 'icon-pause' : 'icon-play')}
             onClick={autoplay ? this.pause : this.play}
-          >
-            {autoplay ? 'Pause' : 'Play'}
-          </button>
+          />
         ) : null}
       </CarouselStyle>
     );

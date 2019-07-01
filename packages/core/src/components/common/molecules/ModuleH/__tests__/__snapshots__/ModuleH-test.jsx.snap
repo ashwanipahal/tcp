@@ -25,16 +25,6 @@ exports[`ModuleH component renders correctly 1`] = `
   overflow: hidden;
   position: relative;
 
-  img {
-    height: 425px;
-
-    @media ",
-          [Function],
-          " {
-      height: 541px;
-    }
-  }
-
   @media ",
           [Function],
           " {

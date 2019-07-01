@@ -19,7 +19,7 @@ const SocialMediaLinks = ({ className, connectWithUsLabel, links }) => (
               <Image
                 className="social-media-icon"
                 data-locator={getLocator(link.iconClass)}
-                src={getIconPath(link.iconClass)}
+                src={getIconPath(link.class)}
                 alt={link.title}
               />
             </Anchor>

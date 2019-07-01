@@ -33,6 +33,7 @@ module.exports = {
     '!**/core/styles/**',
     '!**/*.action.js',
     '!**/*.query.js',
+    '!**/__mocks__/**',
   ],
   coveragePathIgnorePatterns: [
     '/node_modules/',

@@ -35,7 +35,7 @@ const Footer = ({
           }}
         >
           <Button customStyle="shadow-button" title={emailSignup.title}>
-            <RichText richTextHtml={emailSignup.text} />
+            <RichText richTextHtml={emailSignup.title} />
           </Button>
         </Col>
         <Col
@@ -51,7 +51,7 @@ const Footer = ({
           }}
         >
           <Button customStyle="shadow-button" title={smsSignup.title}>
-            <RichText richTextHtml={smsSignup.text} />
+            <RichText richTextHtml={smsSignup.title} />
           </Button>
         </Col>
         <Col
@@ -67,7 +67,7 @@ const Footer = ({
         >
           <span id="extole_zone_global_footer" title={referAFriend.title}>
             <Button customStyle="shadow-button">
-              <RichText richTextHtml={referAFriend.text} />
+              <RichText richTextHtml={referAFriend.title} />
             </Button>
           </span>
         </Col>

@@ -209,11 +209,17 @@ const CarouselStyle = styled.div`
   .slick-dots li button:focus:before {
     opacity: 1;
   }
-  .button {
+  .TCP_Carousel__play {
+    background: ${props => props.theme.colors.WHITE};
+    border: 0px;
+    border-radius: 50%;
+    cursor: pointer;
     position: absolute;
     bottom: 12px;
     left: 50%;
     transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
   }
 `;
 

@@ -11,7 +11,7 @@ const LegalLinks = ({ className, links }) => (
       {links.map(link => (
         <li data-locator={getLocator(link.name)}>
           <Anchor anchorVariation="primary" to={link.url} target={link.target}>
-            {link.text}
+            {link.title}
           </Anchor>
         </li>
       ))}

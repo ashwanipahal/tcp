@@ -18,8 +18,9 @@ export const isDevelopment = () => {
   return process.env.NODE_ENV === ENV_DEVELOPMENT;
 };
 
-export const brand = () => {
+export const identifyBrand = () => {
   const url = 'http://www.thechildrensplace.com/';
+
   return url.indexOf('thechildrensplace') > -1 ? 'tcp' : 'gymboree';
 };
 
@@ -85,7 +86,7 @@ export default {
   importGraphQLQueriesDynamically,
   isProduction,
   isDevelopment,
-  brand,
+  identifyBrand,
   getObjectValue,
   getIconPath,
   getLocator,
