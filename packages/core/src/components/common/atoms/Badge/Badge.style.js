@@ -8,7 +8,8 @@ const BadgeStyles = css`
   border-radius: 10px 0 0 10px;
   display: flex;
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  padding: ${props => props.theme.spacing.ELEM_SPACING.XXXS}
+    ${props => props.theme.spacing.ELEM_SPACING.XXS};
 
   .badge__checkmark {
     width: 9px;
