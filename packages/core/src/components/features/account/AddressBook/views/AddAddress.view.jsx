@@ -57,12 +57,10 @@ const AddAddress = ({
               }
             />
           )}
-          <Provider store={store}>
-            <AddAddressForm
-              backToAddressBookClick={backToAddressBookClick}
-              onSubmit={submitAddAddressForm}
-            />
-          </Provider>
+          <AddAddressForm
+            backToAddressBookClick={backToAddressBookClick}
+            onSubmit={submitAddAddressForm}
+          />
         </Grid>
       </form>
     </div>

@@ -9,14 +9,6 @@ const textboxStyles = css`
     top: -10px;
     position: relative;
   }
-  &.input-fields-wrapper p {
-    top: -30px;
-    opacity: 0.8;
-    position: relative;
-    margin: 0;
-    float: left;
-    padding: 5px 0px 5px 10px;
-  }
 
   input.TextBox__input[type='checkbox'] {
     width: auto;

@@ -50,6 +50,8 @@ export class AutoCompleteComponent extends React.Component {
     for (let i = 0; i < place.address_components.length; i++) {
       let addressType = place.address_components[i].types[0];
       if (AutoCompleteComponent.GOOGLE_PLACE_PARTS[addressType]) {
+        let val =
+          place.address_components[i][AutoCompleteComponent.GOOGLE_PLACE_PARTS[addressType]];
         switch (addressType) {
           case 'street_number':
             streetNumber = val;

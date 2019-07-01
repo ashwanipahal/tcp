@@ -39,6 +39,7 @@ type State = {
   zip: string,
   country: string,
   state: string,
+  street: string,
 };
 // const AddressValidationForm = ({ handleSubmit, pristine, reset, submitting }: Props): Node => (
 
@@ -51,6 +52,7 @@ class AddAddressForm extends React.PureComponent<Props, State> {
       zip: '',
       country: '',
       state: '',
+      street: '',
     };
   }
 
@@ -75,6 +77,7 @@ class AddAddressForm extends React.PureComponent<Props, State> {
   };
 
   handlePlaceSelected = (place, inputValue) => {
+    debugger;
     const address = AutoCompleteComponent.getAddressFromPlace(place, inputValue);
     const { dispatch } = this.props;
     this.setState({
@@ -82,6 +85,7 @@ class AddAddressForm extends React.PureComponent<Props, State> {
       zip: address.zip,
       state: address.state,
       country: address.country,
+      street: address.street,
     });
     dispatch(change('AddAddressForm', 'city', address.city));
     dispatch(change('AddAddressForm', 'zip', address.zip));
