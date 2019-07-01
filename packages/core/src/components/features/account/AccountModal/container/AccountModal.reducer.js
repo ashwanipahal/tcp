@@ -2,7 +2,7 @@ import { fromJS } from 'immutable';
 import ACCOUNT_MODAL_CONSTANTS from '../AccountModal.constants';
 
 const initialState = fromJS({
-  modalType: false,
+  modalType: null,
   openState: false,
   message: {},
 });
@@ -17,7 +17,7 @@ const AccountModalReducer = (state = initialState, action) => {
         message: action.payload.message,
       };
     case ACCOUNT_MODAL_CONSTANTS.CLOSE_MODAL:
-      return { ...state, openState: false };
+      return { ...state, openState: false, message: {}, modalType: null };
     default:
       return state;
   }

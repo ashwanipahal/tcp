@@ -1,6 +1,7 @@
 import React from 'react';
 import Modal from '../../../../common/molecules/Modal';
 import DeleteAddressModal from './DeleteAddressModal.view';
+import Notification from '../../../../common/molecules/Notification';
 
 // @flow
 
@@ -10,6 +11,8 @@ type Props = {
   data: Object,
   onDeleteAddress: Function,
   closeModalComponent: Function,
+  showUpdatedNotificationOnModal: Boolean,
+  labels: Object,
 };
 
 /**
@@ -22,21 +25,15 @@ type Props = {
  * @param {onDeleteAddress} onDeleteAddress function to delete the address from the modal
  */
 class AccountModalView extends React.Component<Props> {
-  constructor(props) {
-    super(props);
-    this.onCloseModal = this.onCloseModal.bind(this);
-    this.renderModal = this.renderModal.bind(this);
-  }
-
   /**
    * @function onCloseModal  Used to render the JSX of the component
    * @param {closeModalComponent} closeModalComponent function to close the modal.
    * @return {[Function]} function called
    */
-  onCloseModal() {
+  onCloseModal = () => {
     const { closeModalComponent } = this.props;
     return closeModalComponent();
-  }
+  };
 
   /**
    * @function renderModal  Used to render the JSX of the component
@@ -46,10 +43,10 @@ class AccountModalView extends React.Component<Props> {
    * @param {closeModalComponent} closeModalComponent function to close the modal
    * @return {[Object]} JSX of the component
    */
-  renderModal() {
+  renderModal = () => {
     const { modalType, data, onDeleteAddress, closeModalComponent } = this.props;
     switch (modalType) {
-      case 'delete':
+      case 'deleteAddress':
         return (
           <DeleteAddressModal
             data={data}
@@ -60,10 +57,10 @@ class AccountModalView extends React.Component<Props> {
       default:
         return null;
     }
-  }
+  };
 
   render() {
-    const { openState, data } = this.props;
+    const { openState, data, showUpdatedNotificationOnModal, labels } = this.props;
     if (Object.keys(data).length) {
       const { heading, title } = data;
       return (
@@ -76,6 +73,13 @@ class AccountModalView extends React.Component<Props> {
           overlayClassName="TCPModal__Overlay"
           className="TCPModal__Content"
         >
+          {showUpdatedNotificationOnModal !== null && (
+            <Notification
+              status={showUpdatedNotificationOnModal}
+              colSize={{ large: 11, medium: 7, small: 6 }}
+              message={labels.errorMessage}
+            />
+          )}
           {this.renderModal()}
         </Modal>
       );

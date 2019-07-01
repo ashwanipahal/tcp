@@ -22,21 +22,15 @@ type Props = {
  * @param {className} className css to apply
  */
 class DeleteAddressModal extends React.Component<Props> {
-  constructor() {
-    super();
-    this.onConfirm = this.onConfirm.bind(this);
-    this.onClose = this.onClose.bind(this);
-  }
-
   /**
    * @function onCloseModal  Used to render the JSX of the component
    * @param {closeModalComponent} closeModalComponent function to close the modal.
    * @return {[Function]} function called
    */
-  onClose() {
+  onClose = () => {
     const { closeModalComponent } = this.props;
     closeModalComponent();
-  }
+  };
 
   /**
    * @function onCloseModal  Used to render the JSX of the component
@@ -44,11 +38,11 @@ class DeleteAddressModal extends React.Component<Props> {
    * @param {data} data object with details to render in modal
    * @return {[Function]} function called
    */
-  onConfirm() {
+  onConfirm = () => {
     const { data, onDeleteAddress } = this.props;
     const { description } = data;
     onDeleteAddress({ nickName: description.nickName });
-  }
+  };
 
   /**
    * @function render  Used to render the JSX of the component
@@ -61,12 +55,12 @@ class DeleteAddressModal extends React.Component<Props> {
     const { confirm, cancel } = buttons;
     return (
       <div className={className}>
-        <Address address={description} className="address_to_delete" />
+        <Address address={description} className="deleteAddressModal_deleteAddress" />
         <Button
           buttonVariation="fixed-width"
           fill="BLUE"
           onClick={this.onConfirm}
-          className="delete_confirm"
+          className="deleteAddressModal_deleteConfirm"
         >
           {confirm}
         </Button>
@@ -79,3 +73,4 @@ class DeleteAddressModal extends React.Component<Props> {
 }
 
 export default withStyles(DeleteAddressModal, styles);
+export { DeleteAddressModal as DeleteAddressModalVanilla };

@@ -20,7 +20,7 @@ type Props = {
   },
   className: string,
   onDefaultShippingAddressClick: Object,
-  showDefaultShippingUpdatedMsg: any,
+  showUpdatedNotification: any,
   openAccountModalComponent: Function,
 };
 
@@ -29,7 +29,7 @@ export const AddressBook = ({
   labels,
   className,
   onDefaultShippingAddressClick,
-  showDefaultShippingUpdatedMsg,
+  showUpdatedNotification,
   openAccountModalComponent,
 }: Props) => {
   return (
@@ -57,14 +57,12 @@ export const AddressBook = ({
           </Button>
         </Col>
       </Row>
-      {showDefaultShippingUpdatedMsg !== null && (
+      {showUpdatedNotification !== null && (
         <Notification
-          status={showDefaultShippingUpdatedMsg ? 'success' : 'error'}
+          status={showUpdatedNotification}
           colSize={{ large: 12, medium: 8, small: 6 }}
           message={
-            showDefaultShippingUpdatedMsg
-              ? labels.defaultShippingSuccessMessage
-              : labels.defaultShippingSuccessFail
+            showUpdatedNotification === 'success' ? labels.successMessage : labels.errorMessage
           }
         />
       )}

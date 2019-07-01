@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import AccountModal from '../views/AccountModal.view';
 import { getModalComponent, getOpenState, getMessage } from './AccountModal.selectors';
 import { closeModal, deleteAddress } from './AccountModal.actions';
+import { showUpdatedNotificationOnModalState } from '../../AddressBook/container/AddressBook.selectors';
+import labels from '../../AddressBook/container/AddressBook.labels';
 
 // @flow
 
@@ -12,6 +14,7 @@ type Props = {
   message: any,
   closeModalComponent: Function,
   onDeleteAddress: Function,
+  showUpdatedNotificationOnModal: boolean,
 };
 
 /**
@@ -22,14 +25,14 @@ type Props = {
  */
 const getSpecificDataForModal = (modalType, message) => {
   switch (modalType) {
-    case 'delete':
+    case 'deleteAddress':
       return {
-        heading: 'DELETE ADDRESS',
-        title: 'Are you sure you want to delete this address?',
+        heading: labels.deleteAddressHeading,
+        title: labels.deleteAddressTitle,
         description: message,
         buttons: {
-          cancel: 'No, Dont Cancel',
-          confirm: 'Yes Delete',
+          cancel: labels.cancel,
+          confirm: labels.deleteConfirm,
         },
       };
     default:
@@ -47,12 +50,13 @@ const getSpecificDataForModal = (modalType, message) => {
  * @param {closeModalComponent} closeModalComponent function to close the modal
  * @param {onDeleteAddress} onDeleteAddress function to delete the address from the modal
  */
-const AccountModalContainer = ({
+export const AccountModalContainer = ({
   openState,
   modalType,
   message,
   closeModalComponent,
   onDeleteAddress,
+  showUpdatedNotificationOnModal,
 }: Props) => {
   const data = getSpecificDataForModal(modalType, message);
   if (Object.keys(data).length) {
@@ -63,6 +67,8 @@ const AccountModalContainer = ({
         data={data}
         closeModalComponent={closeModalComponent}
         onDeleteAddress={onDeleteAddress}
+        showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
+        labels={labels}
       />
     );
   }
@@ -74,6 +80,7 @@ const mapStateToProps = state => {
     modalType: getModalComponent(state),
     openState: getOpenState(state),
     message: getMessage(state),
+    showUpdatedNotificationOnModal: showUpdatedNotificationOnModalState(state),
   };
 };
 

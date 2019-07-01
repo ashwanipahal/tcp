@@ -44,7 +44,7 @@ class AddressBookTile extends React.Component<Props> {
 
   onDeleteAddressClick = (e, address, openAccountModalComponent) => {
     e.preventDefault();
-    openAccountModalComponent({ modalType: 'delete', message: address });
+    openAccountModalComponent({ modalType: 'deleteAddress', message: address });
   };
 
   render() {

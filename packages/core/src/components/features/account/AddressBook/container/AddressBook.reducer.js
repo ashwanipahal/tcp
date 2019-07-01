@@ -5,7 +5,8 @@ const initialState = fromJS({
   isFetching: false,
   list: null,
   error: {},
-  showDefaultShippingUpdatedMsg: null,
+  showUpdatedNotification: null,
+  showUpdatedNotificationOnModal: null,
 });
 
 const updateAddressList = (state, action) => {
@@ -13,6 +14,7 @@ const updateAddressList = (state, action) => {
   updatedAddressList = updatedAddressList.filter(item => {
     return item.addressId !== action.payload.addressId[0];
   });
+  /* istanbul ignore else */
   if (updatedAddressList.size === 1) {
     let addressObject = updatedAddressList.get(0);
     addressObject = Object.assign({}, addressObject, {
@@ -45,13 +47,18 @@ const AddressBookReducer = (state = initialState, action) => {
             })
           )
         )
-        .set('showDefaultShippingUpdatedMsg', true);
+        .set('showUpdatedNotification', 'success');
     case ADDRESS_BOOK_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_FAILED:
-      return state.set('error', action.payload).set('showDefaultShippingUpdatedMsg', false);
+      return state.set('error', action.payload).set('showUpdatedNotification', 'error');
     case ADDRESS_BOOK_CONSTANTS.UPDATE_ADDRESS_LIST_ON_DELETE:
-      return state.set('list', updateAddressList(state, action));
+      return state
+        .set('list', updateAddressList(state, action))
+        .set('showUpdatedNotification', 'success');
     case ADDRESS_BOOK_CONSTANTS.UPDATE_ADDRESS_LIST_ON_DELETE_ERR:
-      return state.set('error', action.payload);
+      return state
+        .set('error', action.payload)
+        .set('showUpdatedNotification', null)
+        .set('showUpdatedNotificationOnModal', 'error');
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {

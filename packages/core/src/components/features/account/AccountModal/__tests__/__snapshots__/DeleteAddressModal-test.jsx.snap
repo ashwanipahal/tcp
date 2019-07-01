@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Delete Address Modal should render correctly 1`] = `
+<div>
+  <Address
+    address={
+      Object {
+        "addressLine": Array [
+          "addressline 1",
+          "addressline 2",
+        ],
+        "firstName": "test",
+        "lastName": "test",
+      }
+    }
+    className="deleteAddressModal_deleteAddress"
+  />
+  <Styled(Button)
+    buttonVariation="fixed-width"
+    className="deleteAddressModal_deleteConfirm"
+    fill="BLUE"
+    onClick={[Function]}
+  >
+    Yes Delete
+  </Styled(Button)>
+  <Styled(Button)
+    buttonVariation="fixed-width"
+    fill="RED"
+    onClick={[Function]}
+  >
+    No, Dont Cancel
+  </Styled(Button)>
+</div>
+`;

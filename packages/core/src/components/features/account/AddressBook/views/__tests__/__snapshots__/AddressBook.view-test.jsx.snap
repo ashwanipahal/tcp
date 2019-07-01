@@ -41,8 +41,8 @@ exports[`AddressBook component should renders correctly when addresses are not p
         "small": 6,
       }
     }
-    status="error"
   />
+  <Connect(AccountModalContainer) />
 </div>
 `;
 
@@ -84,7 +84,6 @@ exports[`AddressBook component should renders correctly when addresses are prese
         "small": 6,
       }
     }
-    status="error"
   />
   <Styled(AddressList)
     addresses={
@@ -104,5 +103,6 @@ exports[`AddressBook component should renders correctly when addresses are prese
     }
     labels={Object {}}
   />
+  <Connect(AccountModalContainer) />
 </div>
 `;

@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccountModalContainer  should not render AccountModal Correctly 1`] = `""`;
+
+exports[`AccountModalContainer  should render AccountModal Correctly 1`] = `
+<AccountModalView
+  data={
+    Object {
+      "buttons": Object {
+        "cancel": "No, Dont Cancel",
+        "confirm": "Yes Delete",
+      },
+      "description": "message",
+      "heading": "DELETE ADDRESS",
+      "title": "Are you sure you want to delete this address?",
+    }
+  }
+  labels={
+    Object {
+      "addNewAddressCTA": "ADD NEW ADDRESS",
+      "billing": "BILLING",
+      "cancel": "No, Dont Cancel",
+      "createAddressBookBenefitMsg": "Add and save up to 5 shipping addresses so you can speed through the checkout process the next time you shop",
+      "createAddressBookMsg": "Create an Address Book to check out faster!",
+      "defaultBilling": "DEFAULT BILLING",
+      "defaultShipping": "DEFAULT SHIPPING",
+      "delete": "Delete",
+      "deleteAddressHeading": "DELETE ADDRESS",
+      "deleteAddressTitle": "Are you sure you want to delete this address?",
+      "deleteConfirm": "Yes Delete",
+      "edit": "Edit",
+      "errorMessage": "Your action could not be completed due to a system error",
+      "makeDefault": "Make Default",
+      "shipping": "SHIPPING",
+      "successMessage": "Your account has been updated",
+    }
+  }
+  modalType="deleteAddress"
+/>
+`;

@@ -8,7 +8,7 @@ import {
 } from '../../AddressBook/container/AddressBook.actions';
 import { closeModal } from './AccountModal.actions';
 
-function* deleteAddress({ payload }) {
+export function* deleteAddress({ payload }) {
   try {
     const { relURI, method } = endpoints.deleteAddress;
     const baseURI = endpoints.deleteAddress.baseURI || endpoints.global.baseURI;
@@ -26,10 +26,10 @@ function* deleteAddress({ payload }) {
     );
     if (res.statusCode === 200) {
       yield put(updateAddressListOnDelete(res.body || ''));
+      yield put(closeModal());
     } else {
       yield put(updateAddressListOnDeleteErr(res.error));
     }
-    yield put(closeModal());
   } catch (err) {
     yield put(updateAddressListOnDeleteErr(err));
   }

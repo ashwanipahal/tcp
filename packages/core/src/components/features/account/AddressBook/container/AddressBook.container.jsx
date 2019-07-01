@@ -6,7 +6,7 @@ import AddressBookComponent from '../views/AddressBook.view';
 import {
   getAddressListState,
   getAddressListFetchingState,
-  showDefaultShippingUpdatedState,
+  showUpdatedNotificationState,
 } from './AddressBook.selectors';
 import labels from './AddressBook.labels';
 import { openAccountModal } from '../../AccountModal/container/AccountModal.actions';
@@ -18,7 +18,7 @@ type Props = {
   addressList: List<any>,
   isFetching: boolean,
   onDefaultShippingAddressClick: () => void,
-  showDefaultShippingUpdatedMsg: any,
+  showUpdatedNotification: any,
   openAccountModalComponent: Function,
 };
 
@@ -33,7 +33,7 @@ export class AddressBookContainer extends React.Component<Props> {
       addressList,
       isFetching,
       onDefaultShippingAddressClick,
-      showDefaultShippingUpdatedMsg,
+      showUpdatedNotification,
       openAccountModalComponent,
     } = this.props;
     if (isFetching) {
@@ -46,7 +46,7 @@ export class AddressBookContainer extends React.Component<Props> {
           labels={labels}
           openAccountModalComponent={openAccountModalComponent}
           onDefaultShippingAddressClick={onDefaultShippingAddressClick}
-          showDefaultShippingUpdatedMsg={showDefaultShippingUpdatedMsg}
+          showUpdatedNotification={showUpdatedNotification}
         />
       );
     }
@@ -72,7 +72,7 @@ const mapStateToProps = state => {
   return {
     addressList: getAddressListState(state),
     isFetching: getAddressListFetchingState(state),
-    showDefaultShippingUpdatedMsg: showDefaultShippingUpdatedState(state),
+    showUpdatedNotification: showUpdatedNotificationState(state),
   };
 };
 

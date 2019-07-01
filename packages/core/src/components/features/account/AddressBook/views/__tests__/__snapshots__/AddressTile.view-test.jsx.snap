@@ -41,6 +41,7 @@ exports[`AddressTile component should renders correctly 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       fontSizeVariation="medium"
+      onClick={[Function]}
       to="/#"
       underline={true}
     />

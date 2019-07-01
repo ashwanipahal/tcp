@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Account Modal View should call close modal function 1`] = `
+<errorBoundaryComponent
+  className="TCPModal__Content"
+  colSet={
+    Object {
+      "large": 2,
+      "medium": 8,
+      "small": 6,
+    }
+  }
+  heading="DELETE ADDRESS"
+  isOpen={true}
+  onRequestClose={[Function]}
+  overlayClassName="TCPModal__Overlay"
+  title="Are you sure you want to delete this address?"
+>
+  <Styled(DeleteAddressModal)
+    closeModalComponent={[MockFunction]}
+    data={
+      Object {
+        "buttons": Object {
+          "cancel": "No, Dont Cancel",
+          "confirm": "Yes Delete",
+        },
+        "description": "hi",
+        "heading": "DELETE ADDRESS",
+        "title": "Are you sure you want to delete this address?",
+      }
+    }
+  />
+</errorBoundaryComponent>
+`;
+
+exports[`Account Modal View should not render AccountModal Correctly 1`] = `""`;
+
+exports[`Account Modal View should render AccountModalView Correctly 1`] = `
+<errorBoundaryComponent
+  className="TCPModal__Content"
+  colSet={
+    Object {
+      "large": 2,
+      "medium": 8,
+      "small": 6,
+    }
+  }
+  heading="DELETE ADDRESS"
+  isOpen={true}
+  onRequestClose={[Function]}
+  overlayClassName="TCPModal__Overlay"
+  title="Are you sure you want to delete this address?"
+>
+  <Styled(DeleteAddressModal)
+    data={
+      Object {
+        "buttons": Object {
+          "cancel": "No, Dont Cancel",
+          "confirm": "Yes Delete",
+        },
+        "description": "hi",
+        "heading": "DELETE ADDRESS",
+        "title": "Are you sure you want to delete this address?",
+      }
+    }
+  />
+</errorBoundaryComponent>
+`;
+
+exports[`Account Modal View should render AccountModalView Correctly but delete address should not get mounted 1`] = `
+<errorBoundaryComponent
+  className="TCPModal__Content"
+  colSet={
+    Object {
+      "large": 2,
+      "medium": 8,
+      "small": 6,
+    }
+  }
+  heading="DELETE ADDRESS"
+  isOpen={true}
+  onRequestClose={[Function]}
+  overlayClassName="TCPModal__Overlay"
+  title="Are you sure you want to delete this address?"
+/>
+`;
+
+exports[`Account Modal View should render Notification with error 1`] = `
+<errorBoundaryComponent
+  className="TCPModal__Content"
+  colSet={
+    Object {
+      "large": 2,
+      "medium": 8,
+      "small": 6,
+    }
+  }
+  heading="DELETE ADDRESS"
+  isOpen={true}
+  onRequestClose={[Function]}
+  overlayClassName="TCPModal__Overlay"
+  title="Are you sure you want to delete this address?"
+>
+  <Styled(Notification)
+    colSize={
+      Object {
+        "large": 11,
+        "medium": 7,
+        "small": 6,
+      }
+    }
+    message="error"
+    status="error"
+  />
+</errorBoundaryComponent>
+`;
