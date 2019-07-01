@@ -19,6 +19,10 @@ export const awsAppSync = {
 
 export const graphQLClient = 'graphQL';
 
+export const defaultCountry = 'USA';
+export const defaultBrand = 'TCP';
+export const defaultChannel = 'Desktop';
+
 export default {
   awsAppSync,
   graphQLClient,

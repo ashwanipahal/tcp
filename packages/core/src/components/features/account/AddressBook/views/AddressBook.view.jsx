@@ -19,8 +19,12 @@ type Props = {
   },
   className: string,
   onDefaultShippingAddressClick: Object,
+<<<<<<< HEAD
   showDefaultShippingUpdatedMsg: any,
   addAddressLoaded: any,
+=======
+  showDefaultShippingUpdatedMsg: Boolean,
+>>>>>>> 7c27189bba289fcda4e4a507155af41b137d96ee
 };
 
 export class AddressBook extends React.Component<Props> {

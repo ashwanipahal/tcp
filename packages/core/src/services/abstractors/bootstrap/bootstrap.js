@@ -2,55 +2,79 @@ import layoutAbstractor from './layout';
 import labelsAbstractor from './labels';
 import headerAbstractor from './header';
 import footerAbstractor from './footer';
+import handler from '../../handler';
+import { defaultBrand, defaultChannel, defaultCountry } from '../../config';
 
 /**
- * Responsible for making all the http requests that need to be resolved before loading the application
- *  -   Layout
+ * Config Responsible for making all the http requests that need to be resolved before loading the application
  *  -   Header
  *  -   Footer
  *  -   Labels
  */
-
-/**
- * Processes data to create an array of content IDs with slot information
- * @param {*} items
- * @param {*} moduleIds
- */
-const processLayoutData = (items, moduleIds) => {
-  items.forEach(({ layout: { slots } }) => {
-    slots.forEach(slot =>
-      moduleIds.push({
-        name: slot.moduleName,
-        data: {
-          contentId: slot.contentId,
-          slot: slot.name,
-        },
-      })
-    );
-  });
-  return moduleIds;
-};
-
-/**
- * Asynchronous function to fetch data from service for given array of moduleIds
- * @param {Array} moduleIds
- */
-const fetchModules = async moduleIds => {
-  return layoutAbstractor.getModulesData(moduleIds);
-};
+const bootstrapModules = ['labels', 'header', 'footer'];
 
 /**
  * Asynchronous function to fetch data from service for given array of moduleIds
  * @param {String} page Page name to be loaded, needs to be in sync with GraphQL query
  */
-const fetchLayout = async page => {
-  return layoutAbstractor.getLayoutData(page);
+const fetchBootstrapData = async ({ pages, labels, brand, country, channel }) => {
+  /**
+   * Sets up query params for page requests
+   */
+  const pageBootstrapParams = pages.map(page => ({
+    name: 'layout',
+    data: {
+      path: page,
+    },
+  }));
+
+  /**
+   * Sets up query params for modules requests
+   */
+  const modulesBootstrapParams = bootstrapModules.map(module => {
+    let data = {};
+    switch (module) {
+      case 'labels':
+        data = {
+          category: labels.category,
+          subCategory: labels.subCategory,
+          brand,
+          country,
+          channel,
+        };
+        break;
+      case 'header':
+        data = {
+          type: 'header',
+          brand,
+          country,
+          channel,
+        };
+        break;
+      case 'footer':
+        data = {
+          type: 'footer',
+          brand,
+          country,
+          channel,
+        };
+        break;
+      default:
+        data = pages;
+    }
+
+    return {
+      name: module,
+      data,
+    };
+  });
+  const bootstrapParams = [...pageBootstrapParams, ...modulesBootstrapParams];
+  return handler.fetchModuleDataFromGraphQL(bootstrapParams).then(response => response.data);
 };
 
 /**
  * Responsible for making all the http requests that need to be resolved before loading the application
  *  -   Layout
- *      -   Modules
  *  -   Header
  *  -   Footer
  *  -   Labels
@@ -58,20 +82,25 @@ const fetchLayout = async page => {
  */
 const bootstrap = async pages => {
   const response = {};
-  let moduleIds = [];
+
+  const bootstrapParams = {
+    pages,
+    labels: {},
+    brand: defaultBrand,
+    channel: defaultChannel,
+    country: defaultCountry,
+  };
+
   try {
+    const bootstrapData = await fetchBootstrapData(bootstrapParams);
     for (let i = 0; i < pages.length; i += 1) {
       const page = pages[i];
       // eslint-disable-next-line no-await-in-loop
-      const layout = await fetchLayout(page);
-      moduleIds = processLayoutData(layout, moduleIds);
-      // eslint-disable-next-line no-await-in-loop
-      const moduleData = await fetchModules(moduleIds);
-      response[`${page}`] = moduleData.data;
+      response[page] = await layoutAbstractor.processData(bootstrapData[page]);
     }
-    response.header = await headerAbstractor.getHeaderData();
-    response.footer = await footerAbstractor.getFooterData();
-    response.labels = await labelsAbstractor.getLabelsData();
+    response.header = await headerAbstractor.processData(bootstrapData.header);
+    response.footer = await footerAbstractor.processData(bootstrapData.footer);
+    response.labels = await labelsAbstractor.processData(bootstrapData.labels);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error(error);

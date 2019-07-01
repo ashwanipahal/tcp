@@ -42,6 +42,27 @@ const LayoutAbstractor = {
       }
     });
   },
+  processData: data => {
+    const moduleObjects = LayoutAbstractor.collateModuleObject(data.items);
+    return LayoutAbstractor.getModulesData(moduleObjects).then(response => {
+      return response.data;
+    });
+  },
+  collateModuleObject: items => {
+    const moduleIds = [];
+    items.forEach(({ layout: { slots } }) => {
+      slots.forEach(slot =>
+        moduleIds.push({
+          name: slot.moduleName,
+          data: {
+            contentId: slot.contentId,
+            slot: slot.name,
+          },
+        })
+      );
+    });
+    return moduleIds;
+  },
   getMock: () => {
     return mock;
   },
