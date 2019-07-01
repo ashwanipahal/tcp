@@ -8,7 +8,9 @@ exports[`Header component renders correctly 1`] = `
   <styled.div
     className="header-brand"
   >
-    <Styled(Row)>
+    <Styled(Row)
+      centered={true}
+    >
       <Styled(Col)
         className="header-brand__home-logo"
         colSize={
@@ -79,24 +81,171 @@ exports[`Header component renders correctly 1`] = `
       </Styled(Col)>
     </Styled(Row)>
   </styled.div>
-  <styled.div
-    className="header-promo"
-  >
-    <Styled(Row)>
-      <Styled(Col)
-        className="header-promo__promo-banner"
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-      >
-        Promo banners
-      </Styled(Col)>
-    </Styled(Row)>
-  </styled.div>
+  <Styled(HeaderPromo)
+    className="header-promo-area--mobile"
+    dataPromo={
+      Array [
+        Object {
+          "__typename": "PromoTextBanner",
+          "linkClass": Object {
+            "__typename": "LinkClass",
+            "class": "orange-schedule",
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "/banner/url1",
+          },
+          "textLines": Array [
+            Object {
+              "__typename": "StyledText",
+              "color": "color1",
+              "style": "style1",
+              "text": "NEED IT NOW?",
+            },
+            Object {
+              "__typename": "StyledText",
+              "color": "color2",
+              "style": "style2",
+              "text": "Buy online, pickup in store.",
+            },
+          ],
+        },
+        Object {
+          "__typename": "PromoTextBanner",
+          "linkClass": Object {
+            "__typename": "LinkClass",
+            "class": "green-dollar",
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "/banner/url2",
+          },
+          "textLines": Array [
+            Object {
+              "__typename": "StyledText",
+              "color": "color1",
+              "style": "style1",
+              "text": "EARN PLACE CASH!",
+            },
+            Object {
+              "__typename": "StyledText",
+              "color": "color2",
+              "style": "style2",
+              "text": "Get 10$ for every 20$ spent today.",
+            },
+          ],
+        },
+        Object {
+          "__typename": "PromoTextBanner",
+          "linkClass": Object {
+            "__typename": "LinkClass",
+            "class": "blue-email",
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "/node/modal/rr1",
+          },
+          "textLines": Array [
+            Object {
+              "__typename": "StyledText",
+              "color": "color1",
+              "style": "style1",
+              "text": "SIGN UP AND GET 10$ OFF!",
+            },
+            Object {
+              "__typename": "StyledText",
+              "color": "color2",
+              "style": "style2",
+              "text": "<u>ENTER YOUR EMAIL</u>.",
+            },
+          ],
+        },
+      ]
+    }
+    mobile={true}
+  />
+  <Styled(HeaderPromo)
+    className="header-promo-area--desktop"
+    dataPromo={
+      Array [
+        Object {
+          "__typename": "PromoTextBanner",
+          "linkClass": Object {
+            "__typename": "LinkClass",
+            "class": "orange-schedule",
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "/banner/url1",
+          },
+          "textLines": Array [
+            Object {
+              "__typename": "StyledText",
+              "color": "color1",
+              "style": "style1",
+              "text": "NEED IT NOW?",
+            },
+            Object {
+              "__typename": "StyledText",
+              "color": "color2",
+              "style": "style2",
+              "text": "Buy online, pickup in store.",
+            },
+          ],
+        },
+        Object {
+          "__typename": "PromoTextBanner",
+          "linkClass": Object {
+            "__typename": "LinkClass",
+            "class": "green-dollar",
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "/banner/url2",
+          },
+          "textLines": Array [
+            Object {
+              "__typename": "StyledText",
+              "color": "color1",
+              "style": "style1",
+              "text": "EARN PLACE CASH!",
+            },
+            Object {
+              "__typename": "StyledText",
+              "color": "color2",
+              "style": "style2",
+              "text": "Get 10$ for every 20$ spent today.",
+            },
+          ],
+        },
+        Object {
+          "__typename": "PromoTextBanner",
+          "linkClass": Object {
+            "__typename": "LinkClass",
+            "class": "blue-email",
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "/node/modal/rr1",
+          },
+          "textLines": Array [
+            Object {
+              "__typename": "StyledText",
+              "color": "color1",
+              "style": "style1",
+              "text": "SIGN UP AND GET 10$ OFF!",
+            },
+            Object {
+              "__typename": "StyledText",
+              "color": "color2",
+              "style": "style2",
+              "text": "<u>ENTER YOUR EMAIL</u>.",
+            },
+          ],
+        },
+      ]
+    }
+  />
   <styled.div
     className="header-loyalty"
   >

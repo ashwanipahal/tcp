@@ -3,9 +3,9 @@ import { PropTypes } from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import utilMethods from '@tcp/core/src/utils/utilMethods';
-import HeaderTopNav from '@tcp/web/src/components/common/molecules/HeaderTopNav';
-import HeaderPromo from '@tcp/web/src/components/common/molecules/HeaderPromo';
 import HeaderMock from '@tcp/core/src/services/abstractors/bootstrap/header/mock';
+import HeaderTopNav from '../../../molecules/HeaderTopNav';
+import HeaderPromo from '../../../molecules/HeaderPromo';
 import config from '../config';
 import headerStyles from '../Header.style';
 import HomeLogo from './HomeLogo';
@@ -64,11 +64,11 @@ const Header = ({ headerTopNav }) => (
     <HeaderPromo
       mobile
       className="header-promo-area--mobile"
-      dataPromo={HeaderMock.header_promo_area.promoTextBanners}
+      dataPromo={HeaderMock.header_promo_area.promoTextBannerCarousel.composites.promoTextBanner}
     />
     <HeaderPromo
       className="header-promo-area--desktop"
-      dataPromo={HeaderMock.header_promo_area.promoTextBanners}
+      dataPromo={HeaderMock.header_promo_area.promoTextBannerCarousel.composites.promoTextBanner}
     />
     <HeaderLoyalty className="header-loyalty">
       <Row>

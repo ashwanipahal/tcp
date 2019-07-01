@@ -5,39 +5,37 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import Image from '@tcp/core/src/components/common/atoms/Image';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import CarouselConfig from '@tcp/web/src/config/carousel';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import headerPromoStyles from '../HeaderPromo.style';
-
 import { getIconPath } from '../../../../../utils';
 
 const carouselConfig = CarouselConfig.PROMO_AREA_DEFAULTS;
-
-const { HeaderPromoContainer, HeaderPromoItem, HeaderPromoItemContents } = headerPromoStyles;
 
 const HeaderPromo = ({ className, dataPromo, mobile }) => {
   const wrapperClass = mobile ? 'header-promo-area--mobile' : 'header-promo-area--desktop';
 
   return (
-    <HeaderPromoContainer className={className}>
-      <headerIconStyles />
+    <div className={`header-promo__container ${className}`}>
       {mobile && (
         <Carousel options={carouselConfig} carouselTheme="dark" className={wrapperClass}>
           {dataPromo.map((promoItem, idx) => (
-            <HeaderPromoItem>
+            <div className="header-promo__item">
               <div className={`header-promo-item__icon header-promo-item__icon--slot${idx + 1}`}>
-                <Image src={getIconPath(promoItem.class)} alt="promotion" />
+                <Image src={getIconPath(promoItem.linkClass.class)} alt="promotion" />
               </div>
-              <HeaderPromoItemContents className="header-promo-item__contents">
+              <div className="header-promo-item__content">
                 <span
-                  style={{ color: promoItem.promo_text.primary.color }}
+                  className="styled-text"
+                  style={{ color: promoItem.textLines[0].color }}
                   contentEditable="true"
-                  dangerouslySetInnerHTML={{ __html: promoItem.promo_text.primary.text }}
+                  dangerouslySetInnerHTML={{ __html: promoItem.textLines[0].text }}
                 />
                 <span
-                  style={{ color: promoItem.promo_text.secondary.color }}
-                  dangerouslySetInnerHTML={{ __html: promoItem.promo_text.secondary.text }}
+                  style={{ color: promoItem.textLines[1].color }}
+                  dangerouslySetInnerHTML={{ __html: promoItem.textLines[1].text }}
                 />
-              </HeaderPromoItemContents>
-            </HeaderPromoItem>
+              </div>
+            </div>
           ))}
         </Carousel>
       )}
@@ -51,27 +49,28 @@ const HeaderPromo = ({ className, dataPromo, mobile }) => {
                 small: 6,
               }}
             >
-              <HeaderPromoItem>
+              <div className="header-promo__item">
                 <div className={`header-promo-item__icon header-promo-item__icon--slot${idx + 1}`}>
-                  <Image src={getIconPath(promoItem.class)} alt="promotion" />
+                  <Image src={getIconPath(promoItem.linkClass.class)} alt="promotion" />
                 </div>
-                <HeaderPromoItemContents className="header-promo-item__contents">
+                <div className="header-promo-item__content">
                   <span
-                    style={{ color: promoItem.promo_text.primary.color }}
+                    className="styled-text"
+                    style={{ color: promoItem.textLines[0].color }}
                     contentEditable="true"
-                    dangerouslySetInnerHTML={{ __html: promoItem.promo_text.primary.text }}
+                    dangerouslySetInnerHTML={{ __html: promoItem.textLines[0].text }}
                   />
                   <span
-                    style={{ color: promoItem.promo_text.secondary.color }}
-                    dangerouslySetInnerHTML={{ __html: promoItem.promo_text.secondary.text }}
+                    style={{ color: promoItem.textLines[1].color }}
+                    dangerouslySetInnerHTML={{ __html: promoItem.textLines[1].text }}
                   />
-                </HeaderPromoItemContents>
-              </HeaderPromoItem>
+                </div>
+              </div>
             </Col>
           ))}
         </Row>
       )}
-    </HeaderPromoContainer>
+    </div>
   );
 };
 
@@ -82,5 +81,5 @@ HeaderPromo.propTypes = {
   mobile: PropTypes.bool.isRequired,
 };
 
-export default HeaderPromo;
+export default withStyles(HeaderPromo, headerPromoStyles);
 export { HeaderPromo as HeaderPromoVanilla };

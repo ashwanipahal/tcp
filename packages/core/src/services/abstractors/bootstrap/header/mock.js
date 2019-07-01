@@ -51,59 +51,89 @@ export default {
     ],
   },
   header_promo_area: {
-    promoTextBanners: [
-      {
-        id: '1',
-        url: '/banner/url1',
-        promo_text: {
-          primary: {
-            text: '<b>NEED IT NOW?</b>',
-            color: '#1a1a1a',
+    promoTextBannerCarousel: {
+      composites: {
+        promoTextBanner: [
+          {
+            linkClass: {
+              url: '/banner/url1',
+              title: '',
+              target: '',
+              external: 0,
+              class: 'orange-schedule',
+              __typename: 'LinkClass',
+            },
+            textLines: [
+              {
+                text: 'NEED IT NOW?',
+                style: 'style1',
+                color: 'color1',
+                __typename: 'StyledText',
+              },
+              {
+                text: 'Buy online, pickup in store.',
+                style: 'style2',
+                color: 'color2',
+                __typename: 'StyledText',
+              },
+            ],
+            __typename: 'PromoTextBanner',
           },
-          secondary: {
-            text: 'Buy online, pickup in store.',
-            color: '#1a1a1a',
+          {
+            linkClass: {
+              url: '/banner/url2',
+              title: '',
+              target: '',
+              external: 0,
+              class: 'green-dollar',
+              __typename: 'LinkClass',
+            },
+            textLines: [
+              {
+                text: 'EARN PLACE CASH!',
+                style: 'style1',
+                color: 'color1',
+                __typename: 'StyledText',
+              },
+              {
+                text: 'Get 10$ for every 20$ spent today.',
+                style: 'style2',
+                color: 'color2',
+                __typename: 'StyledText',
+              },
+            ],
+            __typename: 'PromoTextBanner',
           },
-        },
-        title: 'NEED IT NOW? Buy online, pickup in store.',
-        target: '',
-        class: 'promo_icon_clock',
+          {
+            linkClass: {
+              url: '/node/modal/rr1',
+              title: '',
+              target: '',
+              external: 0,
+              class: 'blue-email',
+              __typename: 'LinkClass',
+            },
+            textLines: [
+              {
+                text: 'SIGN UP AND GET 10$ OFF!',
+                style: 'style1',
+                color: 'color1',
+                __typename: 'StyledText',
+              },
+              {
+                text: '<u>ENTER YOUR EMAIL</u>.',
+                style: 'style2',
+                color: 'color2',
+                __typename: 'StyledText',
+              },
+            ],
+            __typename: 'PromoTextBanner',
+          },
+        ],
+        __typename: 'Composite',
       },
-      {
-        id: '2',
-        url: '/banner/url2',
-        promo_text: {
-          primary: {
-            text: '<b>EARN PLACE CASH!</b>',
-            color: '#7dc24c',
-          },
-          secondary: {
-            text: 'Get 10$ for every 20$ spent today.',
-            color: '#1a1a1a',
-          },
-        },
-        title: 'EARN PLACE CASH! Get 10$ for every 20$ spent today.',
-        target: '',
-        class: 'promo_icon_dollar',
-      },
-      {
-        id: '3',
-        url: '/node/modal/rr1',
-        promo_text: {
-          primary: {
-            text: '<b>SIGN UP AND GET 10$ OFF!</b>',
-            color: '#1a1a1a',
-          },
-          secondary: {
-            text: '<u>ENTER YOUR EMAIL.</u>',
-            color: '#1a1a1a',
-          },
-        },
-        title: 'SIGN UP AND GET 10$ OFF! ENTER YOUR EMAIL.',
-        target: '',
-        class: 'promo_icon_at',
-      },
-    ],
+      __typename: 'SubmoduleComposite',
+    },
     promo_loyalty_banners: [
       {
         id: '1',

@@ -77,55 +77,6 @@ export default css`
     margin: 0;
   }
 
-  .header-promo-item__contents span:first-child {
-    margin-right: 5px;
-  }
-
-  .header-promo-area--mobile {
-    display: block;
-    @media ${props => props.theme.mediaQuery.large} {
-      display: none;
-    }
-
-    & .slick-slider {
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-
-    & .slick-prev {
-      z-index: 20;
-    }
-
-    & .slick-next {
-      z-index: 20;
-    }
-  }
-
-  .header-promo-item__icon {
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .header-promo-item__icon--slot1 {
-    background-color: ${props => props.theme.colors.BRAND.BOYS};
-  }
-
-  .header-promo-item__icon--slot2 {
-    background-color: ${props => props.theme.colors.PRIMARY.GREEN};
-  }
-
-  .header-promo-item__icon--slot3 {
-    background-color: ${props => props.theme.colors.BRAND.PRIMARY};
-  }
-
-  .header-promo-area--desktop {
-    display: none;
-    @media ${props => props.theme.mediaQuery.large} {
-      display: block;
-    }
   li {
     list-style-type: none;
   }
