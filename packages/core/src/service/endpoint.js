@@ -32,8 +32,10 @@ const endpoints = {
     relURI: '/api/v2/account/deleteAddressDetails',
   },
   verifyAddress: {
-    method: 'post',
-    relURI: '/api/v2/account/addAddress',
+    method: 'get',
+    relURI:
+      '/v3/WEB/ContactVerify/doContactVerify?id=63987687&format=json&act=Check&cols=Plus4%2CDeliveryIndicator&',
+    baseURI: 'https://personator.melissadata.net',
   },
   global: {
     baseURI: 'https://test1.childrensplace.com',

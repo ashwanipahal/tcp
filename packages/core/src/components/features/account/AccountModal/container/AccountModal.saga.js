@@ -28,34 +28,8 @@ function* deleteAddress({ payload }) {
   }
 }
 
-function* verifyAddress({ payload }) {
-  try {
-    const { relURI, method } = endpoints.verifyAddress;
-    const baseURI = endpoints.verifyAddress.baseURI || endpoints.global.baseURI;
-    const res = yield call(
-      fetchData,
-      baseURI,
-      relURI,
-      {
-        payload,
-        langId: -1,
-        catalogId: 10551,
-        storeId: 10151,
-      },
-      method
-    );
-    if (res.body) {
-      // yield put(setAddressList(res.body.contact || []));
-    }
-    yield null;
-  } catch (err) {
-    yield null;
-  }
-}
-
 export function* AccountModalSaga() {
   yield takeLatest(ACCOUNT_MODAL_CONSTANTS.DELETE_ADDRESS, deleteAddress);
-  yield takeLatest(ACCOUNT_MODAL_CONSTANTS.VERIFY_ADDRESS, verifyAddress);
 }
 
 export default AccountModalSaga;

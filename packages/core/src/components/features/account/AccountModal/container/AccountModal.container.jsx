@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import AccountModal,VerifyAddressModalView from '../views/AccountModal.view';
+import AccountModal from '../views/AccountModal.view';
 import { getModalComponent, getOpenState, getMessage } from './AccountModal.selectors';
 import { closeModal, deleteAddress, verifyAddressRequest } from './AccountModal.actions';
 
@@ -15,7 +15,6 @@ const getSpecificDataForModal = (modalToOpen, message) => {
           confirm: 'Yes Delete',
         },
       };
-      break;
     default:
       return {};
   }
@@ -46,13 +45,13 @@ const AccountModalContainer = ({
   } else if (modalToOpen === 'verifyAddress') {
     // write verify
     <VerifyAddressModalView
-          openState={openState}
-          modalToOpen={modalToOpen}
-          data={data}
-          closeModalComponent={closeModalComponent}
-          onDeleteAddress={onDeleteAddress}
-          onVerifyAddress={onVerifyAddress}
-        />
+      openState={openState}
+      modalToOpen={modalToOpen}
+      data={data}
+      closeModalComponent={closeModalComponent}
+      onDeleteAddress={onDeleteAddress}
+      onVerifyAddress={onVerifyAddress}
+    />;
   }
   return null;
 };

@@ -1,0 +1,14 @@
+const ADDRESS_VERIFICATION_CONSTANTS = {
+  verifyAddressStateKey: 'addressVerification',
+  VERIFY_ADDRESS: 'VERIFY_ADDRESS',
+  VERIFY_ADDRESS_SUCCESS: 'VERIFY_ADDRESS_SUCCESS',
+  RESET_VERIFY_ADDRESS: 'RESET_VERIFY_ADDRESS',
+  VERIFY_ADDRESS_RESULT: {
+    NO_MODAL: 'noModal',
+    TRADITIONAL_MODAL: 'traditionalModal',
+    ADDRESS_LINE_2_MODAL: 'addressLine2Modal',
+    COLORED_COPY_MODAL: 'coloredCopyModal',
+  },
+};
+
+export default ADDRESS_VERIFICATION_CONSTANTS;
