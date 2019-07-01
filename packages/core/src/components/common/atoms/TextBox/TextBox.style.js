@@ -6,17 +6,45 @@ const textboxStyles = css`
   }
   input.TextBox__input[type='checkbox'] {
     width: auto;
-    zoom: 2;
     position: relative;
     top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+    appearance: none;
+    outline: 0;
+    border: 0;
+    display: inline-block;
+    height: 23px;
+    width: 23px;
+  }
+  input.TextBox__input[type='checkbox']:before {
+    content: '';
+    font-size: 20px;
+    position: absolute;
+    height: 25px;
+    width: 25px;
+    left: 0;
+    box-shadow: inset 0 0 0 0.6px #575757;
+  }
+  &.active input.TextBox__input[type='checkbox']:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px inset #333;
+    font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy2}px;
+    width: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    height: 10px;
+    float: left;
+    border-right: 0;
+    border-bottom: 0;
+    left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    position: absolute;
   }
   &.input-fields-wrapper + span {
-    padding-left: 5px;
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
   @media ${props => props.theme.mediaQuery.smallMax} {
     &.checkbox-align {
       float: left;
-      margin: 5px;
+      margin: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     }
     &.input-fields-wrapper {
       overflow: hidden;
@@ -43,14 +71,6 @@ const textboxStyles = css`
       width: 100%;
       overflow: hidden;
     }
-    ${props =>
-      props.meta.touched && props.meta.error
-        ? `border-bottom: 1px solid ${props.theme.colors.TEXTBOX.ERROR_BORDER};`
-        : ''};
-    ${props =>
-      props.isSuccessState
-        ? `border: 1px solid ${props.theme.colors.TEXTBOX.SUCCESS_BORDER};`
-        : ''};
 
     ${props =>
       props.textIcon === 'icon-email'

@@ -18,7 +18,7 @@ import {
   zipcodeUS,
   zipcodeCA,
 } from '../../../../../../utils/FormValidation';
-import { LabeledInputGoogleAutoComplete } from '../../../../../common/atoms/AddressAutoSuggest/LabeledInputGoogleAutoComplete';
+import { LabeledInputGoogleAutoComplete } from '../../../../../common/atoms/GoogleAutoSuggest/LabeledInputGoogleAutoComplete';
 import {
   countriesOptionsMap,
   CAcountriesStatesTable,
@@ -196,7 +196,7 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
               placeholder="phone number"
-              name="phone-number"
+              name="phoneNumber"
               component={TextBox}
               onBlur={this.handleBlur}
               validate={[required, number, minValue10]}

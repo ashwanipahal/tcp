@@ -5,6 +5,8 @@ import { BodyCopy } from '../../../../../styles/themes/TCP/typotheme';
 import withStyles from '../../hoc/withStyles';
 import StyledTextBox from '../TextBox/TextBox.style';
 
+/* @desc This is a Label input component. This input is specifically for the google auto suggest
+, i am keeping this seprate from other input atom because , any changes happen in input might impact auto suggest */
 type Props = {
   className: string,
   inputRef: any,

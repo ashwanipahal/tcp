@@ -3,38 +3,55 @@ import ADD_ADDRESS_CONSTANTS from './AddAddress.constants';
 import { addAddressSuccess, addAddressFail } from './AddAddress.actions';
 import fetchData from '../../../../../../service/API';
 import endpoints from '../../../../../../service/endpoint';
-import { objectToQueryString } from '../../../../../../../../web/src/utils/utils';
 
 function* addAddressGet({ payload }) {
-  try {
-    const { baseURI, relURI, method } = endpoints.verifyAddress;
-    const { payload: formData } = payload;
-
-    const queryDataObject = {
-      a1: payload.address1,
-      city: payload.city,
-      state: payload.state,
-      postal: payload.zip,
-      ctry: payload.country === 'Canada' ? 'CA' : 'US',
-    };
-
-    const fullRelURI = `${relURI}${objectToQueryString(queryDataObject)}`;
-
-    const res = yield call(
-      fetchData,
-      baseURI,
-      fullRelURI,
+  const { baseURI, relURI, method } = endpoints.addAddress;
+  const addressKey = Date.now().toString();
+  const payloadParam = {
+    contact: [
       {
-        langId: -1,
-        catalogId: 10551,
-        storeId: 10151,
+        addressLine: [payload.address1 || '', payload.address2 || '', ''],
+        attributes: [
+          {
+            key: 'addressField3',
+            value: payload.zip || '',
+          },
+        ],
+        addressType: 'ShippingAndBilling',
+        city: payload.city,
+        country: payload.country === 'United States' ? 'US' : 'CA',
+        firstName: payload.FirstName,
+        lastName: payload.LastName,
+        nickName: addressKey,
+        phone1: payload.phoneNumber || '',
+        phone1Publish: 'false',
+        primary: 'false', // as string
+        state: payload.state,
+        zipCode: payload.zip,
+        xcont_addressField2: payload.isCommercialAddress ? '2' : '1',
+        email1: '11OCTRAWAL@GMAIL.COM',
+        xcont_addressField3: payload.zip,
+        fromPage: payload.applyToOrder ? 'checkout' : '',
       },
-      method
-    );
-    if (res) {
-      yield put(addAddressSuccess());
-    }
-  } catch (err) {
+    ],
+  };
+  const fullRelURI = `${relURI}`;
+  const res = yield call(
+    fetchData,
+    baseURI,
+    fullRelURI,
+    {
+      payload: payloadParam,
+      langId: -1,
+      catalogId: 10551,
+      storeId: 10151,
+      nickName: payload.nickName,
+    },
+    method
+  );
+  if (res) {
+    yield put(addAddressSuccess());
+  } else {
     yield put(addAddressFail(err));
   }
 }
