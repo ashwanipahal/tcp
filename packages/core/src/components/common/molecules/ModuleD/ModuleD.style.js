@@ -1,8 +1,6 @@
 import { css } from 'styled-components';
 
 export default css`
-  border: 1px solid ${props => props.theme.colors.BUTTON.WHITE.BORDER};
-
   a {
     color: ${props => props.theme.colors.TEXT.DARKGRAY};
   }
