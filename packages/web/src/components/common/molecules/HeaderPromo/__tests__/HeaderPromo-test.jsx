@@ -12,6 +12,7 @@ describe('HeaderPromo component', () => {
     };
     const component = shallow(<HeaderPromoVanilla {...props} />);
     expect(component).toMatchSnapshot();
+    expect(component.find('.header-promo-area--mobile')).toHaveLength(1);
   });
 
   it('renders correctly for desktop', () => {
@@ -21,5 +22,6 @@ describe('HeaderPromo component', () => {
     };
     const component = shallow(<HeaderPromoVanilla {...props} />);
     expect(component).toMatchSnapshot();
+    expect(component.find('.header-promo-area--desktop')).toHaveLength(1);
   });
 });
