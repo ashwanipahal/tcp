@@ -21,13 +21,13 @@ const StyledRow = css`
           : ``
       }
       ${
-        !props.fullBleed || !props.fullBleed[key]
-          ? `
-        margin-right: ${props.theme.gridDimensions.gridOffsetObj[key]}px;
-        margin-left: ${props.theme.gridDimensions.gridOffsetObj[key]}px;
-        width: calc(100% - ${props.theme.gridDimensions.gridOffsetObj[key] * 2}px);
-        `
-          : `width: 100%;`
+        props.fullBleed === true || (props.fullBleed && props.fullBleed[key])
+          ? `width: 100%;`
+          : `
+          margin-right: ${props.theme.gridDimensions.gridOffsetObj[key]}px;
+          margin-left: ${props.theme.gridDimensions.gridOffsetObj[key]}px;
+          width: calc(100% - ${props.theme.gridDimensions.gridOffsetObj[key] * 2}px);
+          `
       }
     }`
     )}
