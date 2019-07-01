@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getPlpProducts } from './ProductListingPage.actions';
 import { ProductListView } from '../views/ProductListingPage.view';
-import getExpensivePlpProducts from './ProductListingPage.storeview';
+import getExpensivePlpProducts from './ProductListingPage.selectors';
 
 class ProductListingPageContainer extends React.Component {
   componentDidMount() {

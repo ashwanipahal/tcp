@@ -13,7 +13,7 @@ import Col from '../../../atoms/Col';
 import errorBoundary from '../../../hoc/errorBoundary';
 import ModalHeader from './ModalHeader';
 import ModalStyle from '../Modal.style';
-import Config from '../config';
+import Config from '../Modal.config';
 
 function getParent() {
   return document.querySelector('.TCPModal__Wrapper');
