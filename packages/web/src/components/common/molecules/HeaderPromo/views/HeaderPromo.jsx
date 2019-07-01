@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
+import RichText from '@tcp/core/src/components/common/atoms/RichText';
 import Image from '@tcp/core/src/components/common/atoms/Image';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import CarouselConfig from '@tcp/web/src/config/carousel';
@@ -24,14 +25,14 @@ const HeaderPromo = ({ className, dataPromo, mobile }) => {
                 <Image src={getIconPath(promoItem.linkClass.class)} alt="promotion" />
               </div>
               <div className="header-promo-item__content">
-                <span
+                <RichText
                   className={`styled-text ${promoItem.textLines[0].style}`}
-                  contentEditable="true"
-                  dangerouslySetInnerHTML={{ __html: promoItem.textLines[0].text }}
+                  richTextHtml={promoItem.textLines[0].text}
                 />
-                <span
+
+                <RichText
                   className={`styled-text-line ${promoItem.textLines[1].style}`}
-                  dangerouslySetInnerHTML={{ __html: promoItem.textLines[1].text }}
+                  richTextHtml={promoItem.textLines[1].text}
                 />
               </div>
             </div>
@@ -53,14 +54,13 @@ const HeaderPromo = ({ className, dataPromo, mobile }) => {
                   <Image src={getIconPath(promoItem.linkClass.class)} alt="promotion" />
                 </div>
                 <div className="header-promo-item__content">
-                  <span
+                  <RichText
                     className={`styled-text ${promoItem.textLines[0].style}`}
-                    contentEditable="true"
-                    dangerouslySetInnerHTML={{ __html: promoItem.textLines[0].text }}
+                    richTextHtml={promoItem.textLines[0].text}
                   />
-                  <span
+                  <RichText
                     className={`styled-text-line ${promoItem.textLines[1].style}`}
-                    dangerouslySetInnerHTML={{ __html: promoItem.textLines[1].text }}
+                    richTextHtml={promoItem.textLines[1].text}
                   />
                 </div>
               </div>

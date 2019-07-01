@@ -40,6 +40,7 @@ const HeaderPromoStyles = css`
   .styled-text,
   .styled-text-line {
     font-size: 12px;
+    display: inline;
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
     @media ${props => props.theme.mediaQuery.large} {
       font-size: 14px;

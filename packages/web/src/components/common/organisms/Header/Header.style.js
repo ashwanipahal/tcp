@@ -15,6 +15,9 @@ const HeaderBrand = styled.div`
 
 const HeaderNav = styled.div`
   position: relative;
+  @media ${props => props.theme.mediaQuery.large} {
+    border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+  }
 `;
 
 const DummyNav = styled.div`
