@@ -5,20 +5,23 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import RichText from '@tcp/core/src/components/common/atoms/RichText';
 import Image from '@tcp/core/src/components/common/atoms/Image';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
-import CarouselConfig from '@tcp/web/src/config/carousel';
+import carouselConfig from '@tcp/web/src/config/carousel';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import headerPromoStyles from '../HeaderPromo.style';
 import { getIconPath } from '../../../../../utils';
 
-const carouselConfig = CarouselConfig.PROMO_AREA_DEFAULTS;
-
-const HeaderPromo = ({ className, dataPromo, mobile }) => {
-  const wrapperClass = mobile ? 'header-promo-area--mobile' : 'header-promo-area--desktop';
+const HeaderPromo = ({ className, dataPromo, mobileMarkup }) => {
+  const wrapperClass = mobileMarkup ? 'header-promo-area--mobile' : 'header-promo-area--desktop';
 
   return (
     <div className={`header-promo__container ${className}`}>
-      {mobile && (
-        <Carousel options={carouselConfig} carouselTheme="dark" className={wrapperClass}>
+      {mobileMarkup && (
+        <Carousel
+          options={carouselConfig}
+          carouselConfig={{ type: 'light', arrow: 'small' }}
+          carouselTheme="dark"
+          className={wrapperClass}
+        >
           {dataPromo.map(promoItem => (
             <div className="header-promo__item">
               <div className={`header-promo-item__icon ${promoItem.linkClass.class}`}>
@@ -39,7 +42,7 @@ const HeaderPromo = ({ className, dataPromo, mobile }) => {
           ))}
         </Carousel>
       )}
-      {!mobile && (
+      {!mobileMarkup && (
         <Row centered className={wrapperClass}>
           {dataPromo.map(promoItem => (
             <Col
@@ -73,10 +76,15 @@ const HeaderPromo = ({ className, dataPromo, mobile }) => {
 };
 
 HeaderPromo.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
   dataPromo: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number]))
     .isRequired,
-  mobile: PropTypes.bool.isRequired,
+  mobileMarkup: PropTypes.bool,
+};
+
+HeaderPromo.defaultProps = {
+  className: '',
+  mobileMarkup: false,
 };
 
 export default withStyles(HeaderPromo, headerPromoStyles);

@@ -8,7 +8,7 @@ describe('HeaderPromo component', () => {
     const props = {
       className: 'header-promo-mobile',
       dataPromo: mockData.dataPromo.promoTextBanner,
-      mobile: true,
+      mobileMarkup: true,
     };
     const component = shallow(<HeaderPromoVanilla {...props} />);
     expect(component).toMatchSnapshot();

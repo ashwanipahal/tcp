@@ -119,8 +119,40 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
   className="header-promo__container header-promo-mobile"
 >
   <Styled(Carousel)
+    carouselConfig={
+      Object {
+        "arrow": "small",
+        "type": "light",
+      }
+    }
     carouselTheme="dark"
     className="header-promo-area--mobile"
+    options={
+      Object {
+        "CAROUSEL_FADE_OPTIONS": Object {
+          "arrows": false,
+          "autoplay": true,
+          "autoplaySpeed": 3000,
+          "fade": true,
+          "infinite": true,
+          "responsive": Array [
+            Object {
+              "breakpoint": NaN,
+              "settings": Object {
+                "arrows": false,
+              },
+            },
+          ],
+          "slidesToScroll": 1,
+          "slidesToShow": 1,
+          "speed": 1000,
+        },
+        "CAROUSEL_OPTIONS": Object {
+          "autoplaySpeed": 6000,
+          "speed": 500,
+        },
+      }
+    }
   >
     <div
       className="header-promo__item"

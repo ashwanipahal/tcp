@@ -62,7 +62,7 @@ const Header = ({ headerTopNav, headerPromoArea }) => {
         </Row>
       </HeaderNav>
       <HeaderPromo
-        mobile
+        mobileMarkup
         className="header-promo-area--mobile"
         dataPromo={headerPromoArea.composites.promoTextBanner}
       />
