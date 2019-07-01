@@ -90,7 +90,7 @@ const Header = ({ headerTopNav }) => (
 );
 
 Header.propTypes = {
-  headerTopNav: PropTypes.objectOf(PropTypes.shape({})).isRequired,
+  headerTopNav: PropTypes.shape({}).isRequired,
 };
 
 export default Header;
