@@ -1,8 +1,11 @@
+const PRIMARY_FONT_FAMILY = 'Montserrat-SemiBold';
+const SECONDARY_FONT_FAMILY = 'Nunito-SemiBold';
+
 const FALLBACK_FONT = 'Arial, Helvetica, sans-serif';
 const PRIMARY_FONT = `Montserrat, ${FALLBACK_FONT}`;
 const SECONDARY_FONT = `Nunito, ${FALLBACK_FONT}`;
-const PRIMARY_FONT_SEMIBOLD = `Montserrat-SemiBold, ${FALLBACK_FONT}`;
-const SECONDARY_FONT_SEMIBOLD = `Nunito-SemiBold, ${FALLBACK_FONT}`;
+const PRIMARY_FONT_SEMIBOLD = `${PRIMARY_FONT_FAMILY}, ${FALLBACK_FONT}`;
+const SECONDARY_FONT_SEMIBOLD = `${SECONDARY_FONT_FAMILY}, ${FALLBACK_FONT}`;
 const PRIMARY_FONT_BLACK = `Montserrat-Black, ${FALLBACK_FONT}`;
 const SECONDARY_FONT_BLACK = `Nunito-Black, ${FALLBACK_FONT}`;
 
@@ -110,4 +113,6 @@ export default {
   fontSize: FONT_SIZE,
   lineHeight: LINE_HEIGHT,
   letterSpacing: LETTER_SPACING,
+  mobilePrimaryFontFamily: PRIMARY_FONT_FAMILY,
+  mobileSecondaryFontFamily: SECONDARY_FONT_FAMILY,
 };
