@@ -18,7 +18,6 @@ export const AddressList = ({
   labels,
   className,
   onDefaultShippingAddressClick,
-  openAccountModalComponent,
 }: Props) => {
   return (
     <Row fullBleed className={className}>
@@ -37,7 +36,6 @@ export const AddressList = ({
             address={address}
             key={address.addressId}
             labels={labels}
-            openAccountModalComponent={openAccountModalComponent}
             onDefaultShippingAddressClick={onDefaultShippingAddressClick}
           />
         </Col>

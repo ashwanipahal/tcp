@@ -41,11 +41,6 @@ class AddressBookTile extends React.Component<Props> {
     onDefaultShippingAddressClick(setDefaultShippingAddressJSON);
   };
 
-  onDeleteAddressClick = (e, address, openAccountModalComponent) => {
-    e.preventDefault();
-    openAccountModalComponent({ modalToOpen: 'delete', message: address });
-  };
-
   render() {
     const { address, labels, className } = this.props;
     return (
@@ -79,13 +74,7 @@ class AddressBookTile extends React.Component<Props> {
           <Anchor fontSizeVariation="medium" underline to="/#" anchorVariation="primary">
             {labels.edit}
           </Anchor>
-          <Anchor
-            fontSizeVariation="medium"
-            underline
-            to="/#"
-            anchorVariation="primary"
-            onClick={e => this.onDeleteAddressClick(e, address, openAccountModalComponent)}
-          >
+          <Anchor fontSizeVariation="medium" underline to="/#" anchorVariation="primary">
             {labels.delete}
           </Anchor>
         </div>

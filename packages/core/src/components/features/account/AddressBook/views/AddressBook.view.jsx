@@ -8,7 +8,6 @@ import Col from '../../../../common/atoms/Col';
 import Button from '../../../../common/atoms/Button';
 import AddressListComponent from './AddressList.view';
 import EmptyAddressListComponent from './EmptyAddressList.view';
-import AddressModal from '../../AccountModal';
 import Notification from '../../../../common/molecules/Notification';
 
 // @flow
@@ -20,6 +19,7 @@ type Props = {
   },
   className: string,
   onDefaultShippingAddressClick: Object,
+  showDefaultShippingUpdatedMsg: Boolean,
 };
 
 export const AddressBook = ({
@@ -28,7 +28,6 @@ export const AddressBook = ({
   className,
   onDefaultShippingAddressClick,
   showDefaultShippingUpdatedMsg,
-  openAccountModalComponent,
 }: Props) => {
   return (
     <div className={className}>
@@ -55,15 +54,24 @@ export const AddressBook = ({
           </Button>
         </Col>
       </Row>
+      {showDefaultShippingUpdatedMsg !== null && (
+        <Notification
+          status={showDefaultShippingUpdatedMsg ? 'success' : 'error'}
+          colSize={{ large: 12, medium: 8, small: 6 }}
+          message={
+            showDefaultShippingUpdatedMsg
+              ? labels.defaultShippingSuccessMessage
+              : labels.defaultShippingSuccessFail
+          }
+        />
+      )}
       {addresses.size > 0 && (
         <AddressListComponent
           addresses={addresses}
           labels={labels}
-          openAccountModalComponent={openAccountModalComponent}
           onDefaultShippingAddressClick={onDefaultShippingAddressClick}
         />
       )}
-      <AddressModal />
     </div>
   );
 };
