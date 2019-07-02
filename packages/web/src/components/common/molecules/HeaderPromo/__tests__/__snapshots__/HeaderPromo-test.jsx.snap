@@ -17,8 +17,10 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
         }
       }
     >
-      <div
+      <Styled(Anchor)
         className="header-promo__item"
+        target=""
+        to="/banner/url1"
       >
         <div
           className="header-promo-item__icon orange-schedule"
@@ -40,7 +42,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
             richTextHtml="Buy online, pickup in store."
           />
         </div>
-      </div>
+      </Styled(Anchor)>
     </Styled(Col)>
     <Styled(Col)
       colSize={
@@ -51,8 +53,10 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
         }
       }
     >
-      <div
+      <Styled(Anchor)
         className="header-promo__item"
+        target=""
+        to="/banner/url2"
       >
         <div
           className="header-promo-item__icon green-dollar"
@@ -74,7 +78,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
             richTextHtml="Get 10$ for every 20$ spent today."
           />
         </div>
-      </div>
+      </Styled(Anchor)>
     </Styled(Col)>
     <Styled(Col)
       colSize={
@@ -85,8 +89,10 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
         }
       }
     >
-      <div
+      <Styled(Anchor)
         className="header-promo__item"
+        target=""
+        to="/node/modal/rr1"
       >
         <div
           className="header-promo-item__icon blue-email"
@@ -108,7 +114,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
             richTextHtml="<u>ENTER YOUR EMAIL</u>."
           />
         </div>
-      </div>
+      </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
 </div>
@@ -154,8 +160,10 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
       }
     }
   >
-    <div
+    <Styled(Anchor)
       className="header-promo__item"
+      target=""
+      to="/banner/url1"
     >
       <div
         className="header-promo-item__icon orange-schedule"
@@ -177,9 +185,11 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
           richTextHtml="Buy online, pickup in store."
         />
       </div>
-    </div>
-    <div
+    </Styled(Anchor)>
+    <Styled(Anchor)
       className="header-promo__item"
+      target=""
+      to="/banner/url2"
     >
       <div
         className="header-promo-item__icon green-dollar"
@@ -201,9 +211,11 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
           richTextHtml="Get 10$ for every 20$ spent today."
         />
       </div>
-    </div>
-    <div
+    </Styled(Anchor)>
+    <Styled(Anchor)
       className="header-promo__item"
+      target=""
+      to="/node/modal/rr1"
     >
       <div
         className="header-promo-item__icon blue-email"
@@ -225,7 +237,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
           richTextHtml="<u>ENTER YOUR EMAIL</u>."
         />
       </div>
-    </div>
+    </Styled(Anchor)>
   </errorBoundaryComponent>
 </div>
 `;

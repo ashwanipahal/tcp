@@ -24,7 +24,7 @@ type State = {
  * @function Carousel component that creates carousel using
  * third party 'react-slick'
  */
-class Carousel extends React.Component<Props, State> {
+class Carousel extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     (this: any).slider = null;

@@ -45,6 +45,7 @@ const HeaderPromoStyles = css`
     @media ${props => props.theme.mediaQuery.large} {
       font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy3}px;
     }
+    color: ${props => props.theme.colors.PRIMARY.DARK};
     /* TODO - Remove the style1, style2, style3 when the styles start coming up from CMS */
     &.style1,
     &[class*='orange-'] {
