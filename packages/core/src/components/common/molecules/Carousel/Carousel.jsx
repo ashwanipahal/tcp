@@ -30,6 +30,7 @@ class Carousel extends React.Component {
 
   getSlider(element) {
     this.slider = element;
+    return this.slider;
   }
 
   play() {

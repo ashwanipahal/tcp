@@ -109,7 +109,7 @@ const ModuleD = props => {
       </Row>
       {singleCTAButton && (
         <Row centered>
-          <Anchor href={singleCTAButton.url}>
+          <Anchor href={singleCTAButton.url} target={singleCTAButton.target}>
             <Button
               buttonVariation="variable-width"
               className="moduleD_button"

@@ -19,7 +19,7 @@ type Props = {
   },
   className: string,
   onDefaultShippingAddressClick: Object,
-  showDefaultShippingUpdatedMsg: any,
+  showDefaultShippingUpdatedMsg: Boolean,
 };
 
 export const AddressBook = ({
