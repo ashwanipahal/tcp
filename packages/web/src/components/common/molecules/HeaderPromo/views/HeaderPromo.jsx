@@ -4,6 +4,7 @@ import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import RichText from '@tcp/core/src/components/common/atoms/RichText';
 import Image from '@tcp/core/src/components/common/atoms/Image';
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import carouselConfig from '@tcp/web/src/config/carousel';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -19,7 +20,11 @@ const renderMobileMarkup = (dataPromo, className) => {
       className={className}
     >
       {dataPromo.map(promoItem => (
-        <div className="header-promo__item">
+        <Anchor
+          className="header-promo__item"
+          to={promoItem.linkClass.url}
+          target={promoItem.linkClass.target}
+        >
           <div className={`header-promo-item__icon ${promoItem.linkClass.class}`}>
             <Image src={getIconPath(promoItem.linkClass.class)} alt={promoItem.linkClass.title} />
           </div>
@@ -34,7 +39,7 @@ const renderMobileMarkup = (dataPromo, className) => {
               richTextHtml={promoItem.textLines[1].text}
             />
           </div>
-        </div>
+        </Anchor>
       ))}
     </Carousel>
   );
@@ -51,7 +56,11 @@ const renderDesktopMarkup = (dataPromo, className) => {
             small: 6,
           }}
         >
-          <div className="header-promo__item">
+          <Anchor
+            className="header-promo__item"
+            to={promoItem.linkClass.url}
+            target={promoItem.linkClass.target}
+          >
             <div className={`header-promo-item__icon ${promoItem.linkClass.class}`}>
               <Image src={getIconPath(promoItem.linkClass.class)} alt={promoItem.linkClass.title} />
             </div>
@@ -65,7 +74,7 @@ const renderDesktopMarkup = (dataPromo, className) => {
                 richTextHtml={promoItem.textLines[1].text}
               />
             </div>
-          </div>
+          </Anchor>
         </Col>
       ))}
     </Row>
