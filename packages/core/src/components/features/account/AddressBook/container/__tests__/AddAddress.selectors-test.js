@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import showMessageForAddAddress from '../../AddAddress/AddAddress.selectors';
+import showMessageForAddAddress from '../AddAddress/AddAddress.selectors';
 
 describe('#AddAddressMessage selector', () => {
   it('#showMessageForAddAddress should return addAddressReduer state', () => {
@@ -7,9 +7,9 @@ describe('#AddAddressMessage selector', () => {
       addAddressNotification: false,
     });
     const state = {
-      addAddressReduer: AddressMsgState,
+      AddAddressReducer: AddressMsgState,
     };
 
-    expect(showMessageForAddAddress(state)).toEqual(AddressMsgState.get(true));
+    expect(showMessageForAddAddress(state)).toEqual(AddressMsgState.get('addAddressNotification'));
   });
 });

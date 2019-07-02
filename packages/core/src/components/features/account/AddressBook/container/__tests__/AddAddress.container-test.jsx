@@ -1,13 +1,12 @@
 // @flow
 import React from 'react';
 import { shallow } from 'enzyme';
-import AddAddress from '../../../views/AddAddress.view';
-import { mapDispatchToProps } from '../../AddAddress/AddAddress.container';
+import { mapDispatchToProps, AddaddressContainer } from '../AddAddress/AddAddress.container';
 
 describe('<AddaddressContainer>', () => {
-  it('should render nothing if AddaddressContainer prop is not defined', () => {
-    const component = shallow(<AddAddress submitAddAddressForm={() => {}} />);
-    expect(component.isEmptyRender()).toBeTruthy();
+  it('should render correctly', () => {
+    const component = shallow(<AddaddressContainer submitAddAddressForm={() => {}} />);
+    expect(component).toMatchSnapshot();
   });
 });
 describe('#mapDispatchToProps', () => {

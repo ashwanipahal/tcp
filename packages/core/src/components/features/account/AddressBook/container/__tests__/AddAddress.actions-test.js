@@ -1,5 +1,5 @@
-import ADD_ADDRESS_CONSTANTS from '../../AddAddress/AddAddress.constants';
-import { addAddressSuccess, addAddressFail } from '../../AddAddress/AddAddress.actions';
+import ADD_ADDRESS_CONSTANTS from '../AddAddress/AddAddress.constants';
+import { addAddressSuccess, addAddressFail } from '../AddAddress/AddAddress.actions';
 
 describe('Add address action actions', () => {
   it('addAddressSuccess should return action type as ADD_USER_ADDRESS_SUCCESS', () => {
