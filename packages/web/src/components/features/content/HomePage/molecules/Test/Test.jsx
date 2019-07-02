@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { CloudinaryImage } from '@tcp/core/src/components/common/atoms/Image';
+import DamImage from '@tcp/core/src/components/common/atoms/DamImage';
 import Heading from '@tcp/core/src/components/common/atoms/Heading';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Row from '@tcp/core/src/components/common/atoms/Row';
@@ -78,7 +78,7 @@ const Test = () => {
   return (
     <div>
       <div>
-        <CloudinaryImage imgPath="v1561401513/ecom/assets/content/tcp/us/home/transform/home_modh_sample_qtylh0.png" />
+        <DamImage imgPath="v1561401513/ecom/assets/content/tcp/us/home/transform/home_modh_sample_qtylh0.png" />
       </div>
       <Row>
         <BodyCopy
