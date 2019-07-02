@@ -2,7 +2,8 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { identifyBrand, getIconPath, getLocator } from '../../../../../utils';
+import { identifyBrand, getIconPath, getLocator } from '@tcp/core/src/utils';
+
 import { brand } from '../../../../../constants';
 import style from '../BrandTabs.style';
 

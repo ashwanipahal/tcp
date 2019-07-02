@@ -3,6 +3,7 @@ import React from 'react';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/errorBoundary';
 import { Col, Row } from '../../../atoms';
+import { getLocator } from '../../../../../utils';
 import { Carousel } from '../..';
 import theme from '../../../../../../styles/themes/TCP';
 import ModuleHHeader from './ModuleH.Header';
@@ -79,7 +80,14 @@ class ModuleH extends React.PureComponent<Props, State> {
           <ModuleHCTALinks dataCTALinks={divCTALinks} currentIndex={{ current, next }} />
         </Col>
         <Col colSize={COL_SIZE}>
-          <Carousel options={CAROUSEL_OPTIONS} carouselConfig={{ type: 'light' }}>
+          <Carousel
+            options={CAROUSEL_OPTIONS}
+            carouselConfig={{
+              autoplay: true,
+              dataLocator: getLocator('moduleH_play_button'),
+              type: 'light',
+            }}
+          >
             {divCTALinks.map((item, index) => {
               return (
                 <img

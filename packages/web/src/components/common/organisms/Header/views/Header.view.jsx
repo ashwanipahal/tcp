@@ -1,17 +1,16 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import Row from '@tcp/core/src/components/common/atoms/Row';
-import Col from '@tcp/core/src/components/common/atoms/Col';
-import utilMethods from '@tcp/core/src/utils';
-import HeaderTopNav from '@tcp/web/src/components/common/molecules/HeaderTopNav';
+import { Col, Row } from '@tcp/core/src/components/common/atoms';
+import { identifyBrand } from '@tcp/core/src/utils';
+
+import { HeaderTopNav } from '../../../molecules';
 import HeaderPromo from '../../../molecules/HeaderPromo';
 import config from '../config';
 import headerStyles from '../Header.style';
 import HomeLogo from './HomeLogo';
 
 const { HeaderBrand, HeaderNav, DummyNav, HeaderLoyalty } = headerStyles;
-
-const brand = utilMethods.brand();
+const brand = identifyBrand();
 
 const Header = ({ headerTopNav, headerPromoArea }) => {
   return (

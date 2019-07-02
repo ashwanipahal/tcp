@@ -8,8 +8,9 @@ import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import carouselConfig from '@tcp/web/src/config/carousel';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getIconPath } from '@tcp/core/src/utils';
+
 import headerPromoStyles from '../HeaderPromo.style';
-import { getIconPath } from '../../../../../utils';
 
 const renderMobileMarkup = (dataPromo, className) => {
   return (
