@@ -35,7 +35,7 @@ exports[`PromotionalArea component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-dnqmqq",
+        "componentId": "sc-gZMcBi",
         "isStatic": false,
         "rules": Array [
           "
@@ -110,7 +110,7 @@ exports[`PromotionalArea component renders correctly 1`] = `
       "displayName": "Styled(PromotionalArea)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-dnqmqq",
+      "styledComponentId": "sc-gZMcBi",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

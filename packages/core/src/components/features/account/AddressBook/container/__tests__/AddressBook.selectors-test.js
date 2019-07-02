@@ -1,5 +1,9 @@
 import { fromJS } from 'immutable';
-import { getAddressListState, showDefaultShippingUpdatedState } from '../AddressBook.selectors';
+import {
+  getAddressListState,
+  showDefaultShippingUpdatedState,
+  showAddAddressComponent,
+} from '../AddressBook.selectors';
 
 describe('#AddressBook selector', () => {
   it('#getAddressListState should return AddressListReduer state', () => {
@@ -25,5 +29,16 @@ describe('#AddressBook selector', () => {
     expect(showDefaultShippingUpdatedState(state)).toEqual(
       AddressListState.get('showDefaultShippingUpdatedMsg')
     );
+  });
+
+  it('#showAddAddressComponent should return AddressListReduer state', () => {
+    const AddressListState = fromJS({
+      showAddAddressComponent,
+    });
+    const state = {
+      AddressBookReducer: AddressListState,
+    };
+
+    expect(showAddAddressComponent(state)).toEqual(AddressListState.get('addAddressLoaded'));
   });
 });

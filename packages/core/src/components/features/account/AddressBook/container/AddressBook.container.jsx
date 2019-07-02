@@ -84,11 +84,11 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     onDefaultShippingAddressClick: payload => {
       dispatch(setDefaultShippingAddressRequest(payload));
     },
-    onAddNNewAddressClick: ({ state }) => {
-      dispatch(loadAddAddressComponent({ state }));
+    onAddNNewAddressClick: () => {
+      dispatch(loadAddAddressComponent());
     },
-    backToAddressBookClick: ({ state }) => {
-      dispatch(loadAddressBookComponent({ state }));
+    backToAddressBookClick: () => {
+      dispatch(loadAddressBookComponent());
     },
   };
 };

@@ -1,4 +1,7 @@
-const required = value => (value ? '' : 'REQUIRED_FIELD');
+const required = value => {
+  console.log(value);
+  return value ? '' : 'REQUIRED_FIELD';
+};
 const isSpecialChar = value =>
   value && !/^[a-zA-Z0-9 ]+$/i.test(value) ? 'SPECIAL_CHARACTER' : undefined;
 

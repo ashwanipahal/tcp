@@ -30,7 +30,7 @@ exports[`BrandTabs component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-gzVnrw",
+        "componentId": "sc-dnqmqq",
         "isStatic": false,
         "rules": Array [
           "
@@ -99,7 +99,7 @@ exports[`BrandTabs component renders correctly 1`] = `
       "displayName": "Styled(BrandTabs)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-gzVnrw",
+      "styledComponentId": "sc-dnqmqq",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
