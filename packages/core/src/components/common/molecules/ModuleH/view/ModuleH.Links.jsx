@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor } from '../../../atoms';
+import { getLocator } from '../../../../../utils';
 import config from '../config';
 
 type Props = {
@@ -9,6 +10,11 @@ type Props = {
   dataCTALinks: Object,
 };
 
+/**
+ * @function ModuleHCTALinks This function renders header of Module H
+ * @param {currentIndex} currentIndex Current and next index of carousel autoplay
+ * @param {dataCTALinks} dataCTALinks This list of CTA links data to display
+ */
 const ModuleHCTALinks = ({ currentIndex, dataCTALinks }: Props) => {
   const { maxLimit } = config.MODULE_H_CTALINKS;
   const CTALinks =
@@ -22,6 +28,7 @@ const ModuleHCTALinks = ({ currentIndex, dataCTALinks }: Props) => {
               className={`moduleH__CTALink ${
                 currentIndex.next === index ? `moduleH__CTALink--active` : ''
               }`}
+              data-locator={getLocator('moduleH_cta_links')}
               to={item.link.url}
               target={item.link.target}
             >

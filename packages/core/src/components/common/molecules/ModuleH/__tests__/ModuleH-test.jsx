@@ -27,7 +27,7 @@ describe('ModuleH component', () => {
     expect(moduleHComp.find(Carousel)).toHaveLength(1);
   });
 
-  it('renders images correctly', () => {
+  it('should renders 5 images correctly', () => {
     const props = {
       data: mock.moduleH.composites.divCTALinks,
     };

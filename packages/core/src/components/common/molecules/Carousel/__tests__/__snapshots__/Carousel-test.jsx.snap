@@ -4,18 +4,18 @@ exports[`Carousel component renders correctly 1`] = `
 <styled.div
   carouselConfig={
     Object {
-      "arrow": "none",
-      "type": "light",
+      "autoplay": true,
     }
   }
-  className="TCP_Carousel_Wrapper"
+  className="tcp_carousel_wrapper"
 >
   <Slider
     accessibility={true}
     arrows={false}
     autoplaySpeed={3000}
-    className="TCP_Carousel"
+    className="tcp_carousel"
     dots={false}
+    lazyLoad={true}
     responsive={
       Array [
         Object {
@@ -52,8 +52,11 @@ exports[`Carousel component renders correctly 1`] = `
     }
     slidesToShow={1}
     speed={300}
-  >
-    <Component />
-  </Slider>
+  />
+  <Styled(Image)
+    className="tcp_carousel__play"
+    onClick={[Function]}
+    src="/static/images/pause.svg"
+  />
 </styled.div>
 `;

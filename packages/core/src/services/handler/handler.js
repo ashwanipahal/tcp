@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import { graphQLClient } from '../config';
 import QueryBuilder from './graphQL/queries/queryBuilder';
-import { importGraphQLClientDynamically } from '../../utils/utils';
+import { importGraphQLClientDynamically } from '../../utils';
 
 if (!process.browser) {
   global.fetch = fetch;

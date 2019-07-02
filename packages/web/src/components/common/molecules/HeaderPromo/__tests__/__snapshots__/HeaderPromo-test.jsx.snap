@@ -127,7 +127,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
 <div
   className="header-promo__container header-promo-mobile"
 >
-  <Styled(Carousel)
+  <errorBoundaryComponent
     carouselConfig={
       Object {
         "arrow": "small",
@@ -244,6 +244,6 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
         />
       </div>
     </Styled(Anchor)>
-  </Styled(Carousel)>
+  </errorBoundaryComponent>
 </div>
 `;

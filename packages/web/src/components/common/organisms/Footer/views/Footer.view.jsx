@@ -1,14 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Row from '@tcp/core/src/components/common/atoms/Row';
-import Col from '@tcp/core/src/components/common/atoms/Col';
-import Button from '@tcp/core/src/components/common/atoms/Button';
+import { Button, Col, RichText, Row } from '@tcp/core/src/components/common/atoms';
 import { BodyCopy } from '@tcp/core/styles/themes/TCP/typotheme';
-import RichText from '@tcp/core/src/components/common/atoms/RichText/views/RichText';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import FooterMiddleMobile from '@tcp/core/src/components/features/footer/FooterMiddleMobile';
 import FooterMiddleDesktop from '@tcp/core/src/components/features/footer/FooterMiddleDesktop/views';
-import { getLocator } from '../../../../../utils';
+import { getLocator } from '@tcp/core/src/utils';
 
 import style from '../Footer.style';
 import { LegalLinks, Copyright, SocialMediaLinks } from '../../../molecules';
