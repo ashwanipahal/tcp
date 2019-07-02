@@ -212,7 +212,7 @@ const CarouselStyle = styled.div`
   .slick-dots li button:focus:before {
     opacity: 1;
   }
-  .TCP_Carousel__play {
+  .tcp_carousel__play {
     background: ${props => props.theme.colors.WHITE};
     border: 0px;
     border-radius: 50%;

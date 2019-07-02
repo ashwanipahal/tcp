@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { CarouselVanilla } from '../Carousel';
 
-const playButton = '.TCP_Carousel__play';
+const playButton = '.tcp_carousel__play';
 describe('Carousel component', () => {
   it('renders correctly', () => {
     const props = {

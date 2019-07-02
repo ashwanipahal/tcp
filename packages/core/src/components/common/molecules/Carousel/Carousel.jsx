@@ -29,6 +29,7 @@ class Carousel extends React.PureComponent<Props, State> {
     super(props);
     (this: any).slider = null;
     (this: any).getSlider = this.getSlider.bind(this);
+    (this: any).getPlayButton = this.getPlayButton.bind(this);
     (this: any).play = this.play.bind(this);
     (this: any).pause = this.pause.bind(this);
     this.state = {
@@ -47,12 +48,36 @@ class Carousel extends React.PureComponent<Props, State> {
   }
 
   /**
+   * @function getPlayComponent function gets DOM reference of slider component.
+   * @param {[Object]} element [Event object of click].
+   * @return {node} function returns slider element.
+   */
+  getPlayButton(wrapperConfig: Object) {
+    const { autoplay } = this.state;
+    return autoplay ? (
+      <Image
+        className="tcp_carousel__play"
+        data-locator={wrapperConfig.dataLocator}
+        src={getIconPath('icon-pause')}
+        onClick={this.pause}
+      />
+    ) : (
+      <Image
+        className="tcp_carousel__play"
+        data-locator={wrapperConfig.dataLocator}
+        src={getIconPath('icon-play')}
+        onClick={this.play}
+      />
+    );
+  }
+
+  /**
    * @function play function enable autoplay for carousel
    * also update component state.
    */
   play() {
     (this: any).slider.slickPlay();
-    this.updateState();
+    this.togglePlay();
   }
 
   /**
@@ -61,14 +86,14 @@ class Carousel extends React.PureComponent<Props, State> {
    */
   pause() {
     (this: any).slider.slickPause();
-    this.updateState();
+    this.togglePlay();
   }
 
   /**
    * @function updateState function updates component state
    * after each click on play pause button.
    */
-  updateState() {
+  togglePlay() {
     const { autoplay } = this.state;
     this.setState({ autoplay: !autoplay });
   }
@@ -83,20 +108,13 @@ class Carousel extends React.PureComponent<Props, State> {
   render() {
     const { options, children, carouselConfig } = this.props;
     const settings = { ...defaults, ...options };
-    const { autoplay } = this.state;
+
     return (
-      <CarouselStyle className="TCP_Carousel_Wrapper" carouselConfig={carouselConfig}>
-        <Slider className="TCP_Carousel" ref={this.getSlider} {...settings}>
+      <CarouselStyle className="tcp_carousel_wrapper" carouselConfig={carouselConfig}>
+        <Slider className="tcp_carousel" ref={this.getSlider} {...settings}>
           {!children ? null : children}
         </Slider>
-        {carouselConfig.autoplay ? (
-          <Image
-            className="TCP_Carousel__play"
-            data-locator={carouselConfig.dataLocator}
-            src={getIconPath(autoplay ? 'icon-pause' : 'icon-play')}
-            onClick={autoplay ? this.pause : this.play}
-          />
-        ) : null}
+        {carouselConfig.autoplay && this.getPlayButton(carouselConfig)}
       </CarouselStyle>
     );
   }
