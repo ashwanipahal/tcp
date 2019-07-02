@@ -21,6 +21,9 @@ type State = {
   next: number,
 };
 
+/**
+ * @function getSrcSet - prepare srcset images for moduleH
+ */
 const getSrcSet = url => {
   const crops = {
     crop_m: 'c_fill,g_center,h_425,w_512',
