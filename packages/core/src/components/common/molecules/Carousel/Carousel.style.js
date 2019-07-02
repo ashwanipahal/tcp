@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { getIconPath } from '../../../../utils';
 
-const darkArrow = getIconPath('icon-carrot-grey');
+const darkArrow = getIconPath('icon-carrot-black-small');
+const darkArrowLarge = getIconPath('icon-carrot-grey-large');
 const lightArrow = getIconPath('icon-carrot-white');
 const CarouselStyle = styled.div`
   .slick-slider {
@@ -118,11 +119,13 @@ const CarouselStyle = styled.div`
   }
   @media only screen and (min-width: 768px) {
     .slick-prev {
-      background: url(${props => (props.carouselConfig.type === 'dark' ? lightArrow : darkArrow)})
+      background: url(${props =>
+          props.carouselConfig.type === 'dark' ? lightArrow : darkArrowLarge})
         no-repeat center center;
     }
     .slick-next {
-      background: url(${props => (props.carouselConfig.type === 'dark' ? lightArrow : darkArrow)})
+      background: url(${props =>
+          props.carouselConfig.type === 'dark' ? lightArrow : darkArrowLarge})
         no-repeat center center;
     }
   }

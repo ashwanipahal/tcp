@@ -8,6 +8,14 @@ export default css`
   overflow: hidden;
   position: relative;
 
+  img {
+    height: 425px;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      height: 541px;
+    }
+  }
+
   @media ${props => props.theme.mediaQuery.large} {
     height: 541px;
     margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED};

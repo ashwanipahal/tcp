@@ -1,0 +1,231 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderPromo component renders correctly for desktop 1`] = `
+<div
+  className="header-promo__container header-promo-desktop"
+>
+  <Styled(Row)
+    centered={true}
+    className="header__promo-area--desktop"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="header-promo__item"
+      >
+        <div
+          className="header-promo-item__icon orange-schedule"
+        >
+          <Styled(Image)
+            alt=""
+            src="/static/images/clock-icon.svg"
+          />
+        </div>
+        <div
+          className="header-promo-item__content"
+        >
+          <Styled(RichText)
+            className="styled-text black-bold"
+            richTextHtml="NEED IT NOW?"
+          />
+          <Styled(RichText)
+            className="styled-text-line style2"
+            richTextHtml="Buy online, pickup in store."
+          />
+        </div>
+      </div>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="header-promo__item"
+      >
+        <div
+          className="header-promo-item__icon green-dollar"
+        >
+          <Styled(Image)
+            alt=""
+            src="/static/images/dollar-sign-icon.svg"
+          />
+        </div>
+        <div
+          className="header-promo-item__content"
+        >
+          <Styled(RichText)
+            className="styled-text green-bold"
+            richTextHtml="EARN PLACE CASH!"
+          />
+          <Styled(RichText)
+            className="styled-text-line style2"
+            richTextHtml="Get 10$ for every 20$ spent today."
+          />
+        </div>
+      </div>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="header-promo__item"
+      >
+        <div
+          className="header-promo-item__icon blue-email"
+        >
+          <Styled(Image)
+            alt=""
+            src="/static/images/at-icon.svg"
+          />
+        </div>
+        <div
+          className="header-promo-item__content"
+        >
+          <Styled(RichText)
+            className="styled-text black-bold"
+            richTextHtml="SIGN UP AND GET 10$ OFF!"
+          />
+          <Styled(RichText)
+            className="styled-text-line style2"
+            richTextHtml="<u>ENTER YOUR EMAIL</u>."
+          />
+        </div>
+      </div>
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;
+
+exports[`HeaderPromo component renders correctly for mobile 1`] = `
+<div
+  className="header-promo__container header-promo-mobile"
+>
+  <errorBoundaryComponent
+    carouselConfig={
+      Object {
+        "arrow": "small",
+        "type": "light",
+      }
+    }
+    carouselTheme="dark"
+    className="header__promo-area--mobile"
+    options={
+      Object {
+        "CAROUSEL_FADE_OPTIONS": Object {
+          "arrows": false,
+          "autoplay": true,
+          "autoplaySpeed": 3000,
+          "fade": true,
+          "infinite": true,
+          "responsive": Array [
+            Object {
+              "breakpoint": NaN,
+              "settings": Object {
+                "arrows": false,
+              },
+            },
+          ],
+          "slidesToScroll": 1,
+          "slidesToShow": 1,
+          "speed": 1000,
+        },
+        "CAROUSEL_OPTIONS": Object {
+          "autoplaySpeed": 6000,
+          "speed": 500,
+        },
+      }
+    }
+  >
+    <div
+      className="header-promo__item"
+    >
+      <div
+        className="header-promo-item__icon orange-schedule"
+      >
+        <Styled(Image)
+          alt=""
+          src="/static/images/clock-icon.svg"
+        />
+      </div>
+      <div
+        className="header-promo-item__content"
+      >
+        <Styled(RichText)
+          className="styled-text black-bold"
+          richTextHtml="NEED IT NOW?"
+        />
+        <Styled(RichText)
+          className="styled-text-line style2"
+          richTextHtml="Buy online, pickup in store."
+        />
+      </div>
+    </div>
+    <div
+      className="header-promo__item"
+    >
+      <div
+        className="header-promo-item__icon green-dollar"
+      >
+        <Styled(Image)
+          alt=""
+          src="/static/images/dollar-sign-icon.svg"
+        />
+      </div>
+      <div
+        className="header-promo-item__content"
+      >
+        <Styled(RichText)
+          className="styled-text green-bold"
+          richTextHtml="EARN PLACE CASH!"
+        />
+        <Styled(RichText)
+          className="styled-text-line style2"
+          richTextHtml="Get 10$ for every 20$ spent today."
+        />
+      </div>
+    </div>
+    <div
+      className="header-promo__item"
+    >
+      <div
+        className="header-promo-item__icon blue-email"
+      >
+        <Styled(Image)
+          alt=""
+          src="/static/images/at-icon.svg"
+        />
+      </div>
+      <div
+        className="header-promo-item__content"
+      >
+        <Styled(RichText)
+          className="styled-text black-bold"
+          richTextHtml="SIGN UP AND GET 10$ OFF!"
+        />
+        <Styled(RichText)
+          className="styled-text-line style2"
+          richTextHtml="<u>ENTER YOUR EMAIL</u>."
+        />
+      </div>
+    </div>
+  </errorBoundaryComponent>
+</div>
+`;
