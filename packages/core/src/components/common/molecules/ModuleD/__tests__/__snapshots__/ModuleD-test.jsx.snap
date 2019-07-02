@@ -13,10 +13,6 @@ exports[`ModuleD component renders correctly 1`] = `
           "
   ",
           "
-  border: 1px solid ",
-          [Function],
-          ";
-
   a {
     color: ",
           [Function],
