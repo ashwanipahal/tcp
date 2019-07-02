@@ -11,7 +11,7 @@ import Button from '../../../../../common/atoms/Button';
 import {
   required,
   minValue10,
-  specialChar,
+  isSpecialChar,
   number,
   zipcodeUS,
   zipcodeCA,
@@ -103,7 +103,7 @@ class AddAddressForm extends React.PureComponent<Props, State> {
               type="text"
               component={TextBox}
               label="First-Nam"
-              validate={[required, specialChar]}
+              validate={[required, isSpecialChar]}
               onBlur={this.handleBlur}
               maxLength={50}
             />
@@ -113,7 +113,7 @@ class AddAddressForm extends React.PureComponent<Props, State> {
               placeholder="Last Name"
               name="LastName"
               component={TextBox}
-              validate={[required, specialChar]}
+              validate={[required, isSpecialChar]}
               onBlur={this.handleBlur}
               maxLength={50}
             />
@@ -138,7 +138,7 @@ class AddAddressForm extends React.PureComponent<Props, State> {
               placeholder="Address Line 2( Optional )"
               name="address-2"
               component={TextBox}
-              validate={[specialChar]}
+              validate={[isSpecialChar]}
               maxLength={30}
             />
           </Col>

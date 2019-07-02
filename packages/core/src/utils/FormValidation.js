@@ -1,5 +1,5 @@
 const required = value => (value ? '' : 'Please enter a ');
-const specialChar = value =>
+const isSpecialChar = value =>
   value && !/^[a-zA-Z0-9 ]+$/i.test(value)
     ? 'Field should not contain any special characters'
     : undefined;
@@ -30,7 +30,7 @@ const email = value =>
 export {
   required,
   maxLength,
-  specialChar,
+  isSpecialChar,
   minValue10,
   number,
   minValue,

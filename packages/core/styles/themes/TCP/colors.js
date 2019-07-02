@@ -47,8 +47,6 @@ export default {
   EMPTY_CART_BOX: 'rgba(0, 0, 0, 0.07)',
   MODAL_OVERLAY: 'rgba(0, 0, 0, 0.6)',
   BUTTON: {
-    PRIMARY: '#2e6a91',
-    PRIMARY_HOVER: '#1f4862',
     WHITE: {
       NORMAL: '#ffffff',
       BORDER: '#979797',

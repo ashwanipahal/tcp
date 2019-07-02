@@ -66,11 +66,6 @@ const AddAddress = ({
     </div>
   );
 };
-// const AddAddress = ({ onSubmit, submitAddAddressForm }) => {
-//   return (
-
-//   );
-// };
 export default reduxForm({
   form: 'addressinfo', // a unique identifier for this form
 })(withStyles(AddAddress, styles));
