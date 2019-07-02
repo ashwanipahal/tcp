@@ -11,6 +11,7 @@ const config = {
     autoplaySpeed: 3000, // TODO: Has to come from CMS Config
     arrows: false,
     dots: false,
+    lazyLoad: true,
     slidesToShow: 1,
     speed: 300, // TODO: Has to come from CMS Config
     responsive: [

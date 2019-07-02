@@ -15,6 +15,7 @@ exports[`Carousel component renders correctly 1`] = `
     autoplaySpeed={3000}
     className="tcp_carousel"
     dots={false}
+    lazyLoad={true}
     responsive={
       Array [
         Object {
