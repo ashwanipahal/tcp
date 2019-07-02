@@ -2,8 +2,6 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
 
-import withStyles from '../../../hoc/withStyles';
-import styles from '../DamImage.style';
 import Image from '../../Image';
 
 function DamImage(props) {
@@ -15,11 +13,18 @@ function DamImage(props) {
     ...other
   } = props;
 
+  /*
+    Based on breakpoints defined on theme, it will create the srcset according to
+    the breakpoints; If user only send the Cloudinary imgPath, it add the
+    configuration according to the breakpoints; For ony adding width property;
+    If width found on imgConfig (cloudinary config) then it will use to create srcset;
+  */
   const srcSetConfig = breakpoints.keys.reduce(
     (config, breakpointKey, breakpointKeyIndex) => {
       const breakpointValue = breakpoints.values[breakpointKey];
       let cloudinaryImgConfig = imgConfig[breakpointKeyIndex] || '';
       let imgSize = breakpointKeyIndex === 0 && breakpointValue === 0 ? 468 : breakpointValue;
+      const breakpointWidth = imgSize;
 
       if (cloudinaryImgConfig) {
         imgSize = cloudinaryImgConfig.match(/w_(\d+)/);
@@ -28,7 +33,7 @@ function DamImage(props) {
         cloudinaryImgConfig = `w_${imgSize}`;
       }
 
-      const src = `${path}/${cloudinaryImgConfig}/${imgPath} ${imgSize}w`;
+      const src = `${path}/${cloudinaryImgConfig}/${imgPath} ${breakpointWidth}w`;
       const size = `(min-width: ${breakpointValue}px) ${breakpointValue + 60}px`;
       config.srcSet.push(src);
       config.sizes.push(size);
@@ -37,7 +42,7 @@ function DamImage(props) {
     { srcSet: [], sizes: [] }
   );
 
-  return <Image srcSet={srcSetConfig.srcSet.join(',')} {...other} />;
+  return <Image src={srcSetConfig.srcSet[1]} srcSet={srcSetConfig.srcSet.join(',')} {...other} />;
 }
 
 DamImage.defaultProps = {
@@ -70,5 +75,5 @@ DamImage.propTypes = {
   imgConfig: PropTypes.arrayOf(PropTypes.string),
 };
 
-export default withStyles(withTheme(DamImage), styles);
+export default withTheme(DamImage);
 export { DamImage as DamImageVanilla };
