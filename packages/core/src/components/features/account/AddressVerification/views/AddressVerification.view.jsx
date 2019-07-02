@@ -20,7 +20,7 @@ type Props = {
   onSuccess: () => void,
 };
 
-class AddressVerification extends React.Component<Props> {
+export class AddressVerification extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
