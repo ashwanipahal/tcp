@@ -52,15 +52,6 @@ const ButtonStyles = css`
       : ''};
 
   ${props =>
-    props.ButtonColor === 'BLUE'
-      ? ` background: ${props.theme.colors.BUTTON.BLUE.NORMAL};
-            color:${props.theme.colors.BUTTON.BLUE.TEXT};
-            &:hover {
-    background: ${props.theme.colors.BUTTON.BLUE.ALT_HOVER};
-  }
-        `
-      : ''};
-  ${props =>
     props.customStyle === 'shadow-button'
       ? `
       background: ${props.theme.colors.PRIMARY.PALEGRAY};

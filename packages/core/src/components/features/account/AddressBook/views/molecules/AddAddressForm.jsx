@@ -7,7 +7,7 @@ import SelectBox from '../../../../../common/atoms/Select';
 import Row from '../../../../../common/atoms/Row';
 import Col from '../../../../../common/atoms/Col';
 import Button from '../../../../../common/atoms/Button';
-
+import errors from '../../../../../../utils/errorsMsg';
 import {
   required,
   minValue10,
@@ -21,7 +21,7 @@ import {
   countriesOptionsMap,
   CAcountriesStatesTable,
   UScountriesStatesTable,
-} from './CountriesAndStates';
+} from './CountriesAndStates.constants';
 
 type Props = {
   handleSubmit: any,
@@ -98,6 +98,7 @@ class AddAddressForm extends React.PureComponent<Props, State> {
         <Row>
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
+              errors={errors}
               placeholder="First Name"
               name="FirstName"
               type="text"
@@ -230,10 +231,9 @@ class AddAddressForm extends React.PureComponent<Props, State> {
           </Col>
           <Col className="submit" colSize={{ small: 6, medium: 1, large: 3 }}>
             <Button
-              ButtonColor="BLUE"
+              fill="BLUE"
               disabled={pristine || submitting}
               type="submit"
-              text="BLUE"
               buttonVariation="fixed-width"
             >
               Add Address
