@@ -4,6 +4,7 @@ import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/errorBoundary';
 import { Col, Row } from '../../../atoms';
 import { Carousel } from '../..';
+import theme from '../../../../../../styles/themes/TCP';
 import ModuleHHeader from './ModuleH.Header';
 import ModuleHCTALinks from './ModuleH.Links';
 import style from '../ModuleH.style';
@@ -26,12 +27,19 @@ const getSrcSet = url => {
     crop_d: 'c_fill,g_auto:face,h_541,w_1440',
   };
   const srcSet = [];
+  const { breakpoints } = theme;
 
-  Object.keys(crops).forEach(item => {
-    const crop = crops[item];
-    let w = crop.split(',');
-    w = w[w.length - 1].replace('w_', '');
-    const imageUrl = `${url.replace('upload/', `upload/${crop}/`)} ${w}w`;
+  Object.keys(crops).forEach(channel => {
+    const crop = crops[channel];
+    let vw;
+    if (channel === 'crop_m') {
+      vw = parseInt(breakpoints.smallMax, 10);
+    } else if (channel === 'crop_t') {
+      vw = parseInt(breakpoints.large, 10);
+    } else {
+      vw = parseInt(breakpoints.xlarge, 10);
+    }
+    const imageUrl = `${url.replace('upload/', `upload/${crop}/`)} ${vw}w`;
     srcSet.push(imageUrl);
   });
 
