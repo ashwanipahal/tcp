@@ -107,13 +107,6 @@ class AddAddressForm extends React.PureComponent<Props, State> {
               onBlur={this.handleBlur}
               maxLength={50}
             />
-            <Errors
-              model="user.email"
-              messages={{
-                isRequired: 'Please provide an email address.',
-                isEmail: val => `${val} is not a valid email.`,
-              }}
-            />
           </Col>
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
