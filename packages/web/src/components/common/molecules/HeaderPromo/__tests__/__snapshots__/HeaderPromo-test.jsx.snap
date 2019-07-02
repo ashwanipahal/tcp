@@ -19,6 +19,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
     >
       <Styled(Anchor)
         className="header-promo__item"
+        data-locator="global_promobannerimg"
         target=""
         to="/banner/url1"
       >
@@ -55,6 +56,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
     >
       <Styled(Anchor)
         className="header-promo__item"
+        data-locator="global_promobannerimg"
         target=""
         to="/banner/url2"
       >
@@ -91,6 +93,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
     >
       <Styled(Anchor)
         className="header-promo__item"
+        data-locator="global_promobannerimg"
         target=""
         to="/node/modal/rr1"
       >
@@ -162,6 +165,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
   >
     <Styled(Anchor)
       className="header-promo__item"
+      data-locator="global_promobannerimg"
       target=""
       to="/banner/url1"
     >
@@ -188,6 +192,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
     </Styled(Anchor)>
     <Styled(Anchor)
       className="header-promo__item"
+      data-locator="global_promobannerimg"
       target=""
       to="/banner/url2"
     >
@@ -214,6 +219,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
     </Styled(Anchor)>
     <Styled(Anchor)
       className="header-promo__item"
+      data-locator="global_promobannerimg"
       target=""
       to="/node/modal/rr1"
     >

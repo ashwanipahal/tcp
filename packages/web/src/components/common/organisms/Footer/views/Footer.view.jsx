@@ -5,6 +5,7 @@ import { BodyCopy } from '@tcp/core/styles/themes/TCP/typotheme';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import FooterMiddleMobile from '@tcp/core/src/components/features/footer/FooterMiddleMobile';
 import FooterMiddleDesktop from '@tcp/core/src/components/features/footer/FooterMiddleDesktop/views';
+import { getLocator } from '@tcp/core/src/utils';
 
 import style from '../Footer.style';
 import { LegalLinks, Copyright, SocialMediaLinks } from '../../../molecules';
@@ -66,7 +67,7 @@ const Footer = ({
           }}
         >
           <span id="extole_zone_global_footer" title={referAFriend.title}>
-            <Button customStyle="shadow-button">
+            <Button customStyle="shadow-button" data-locator={getLocator('refer_friend')}>
               <RichText richTextHtml={referAFriend.title} />
             </Button>
           </span>

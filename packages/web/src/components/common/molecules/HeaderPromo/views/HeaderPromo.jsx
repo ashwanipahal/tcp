@@ -8,7 +8,7 @@ import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import carouselConfig from '@tcp/web/src/config/carousel';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getIconPath } from '@tcp/core/src/utils';
+import { getIconPath, getLocator } from '@tcp/core/src/utils';
 
 import headerPromoStyles from '../HeaderPromo.style';
 
@@ -22,6 +22,7 @@ const renderMobileMarkup = (dataPromo, className) => {
     >
       {dataPromo.map(promoItem => (
         <Anchor
+          data-locator={getLocator('promo_item')}
           className="header-promo__item"
           to={promoItem.linkClass.url}
           target={promoItem.linkClass.target}
@@ -58,6 +59,7 @@ const renderDesktopMarkup = (dataPromo, className) => {
           }}
         >
           <Anchor
+            data-locator={getLocator('promo_item')}
             className="header-promo__item"
             to={promoItem.linkClass.url}
             target={promoItem.linkClass.target}
