@@ -84,4 +84,8 @@ export default css`
   p {
     margin: 0;
   }
+
+  .textCenter {
+    text-align: center;
+  }
 `;

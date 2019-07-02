@@ -15,25 +15,54 @@ const getSuggestedAddress = (response, userAddress) => {
     addressLine: [suggestedAddress.AddressLine1, suggestedAddress.AddressLine2 || ''],
     city: suggestedAddress.City,
     state: suggestedAddress.State,
-    zipCode: suggestedAddress.postalCode,
+    zipCode: suggestedAddress.PostalCode,
+    phone1: suggestedAddress.PhoneNumber,
+    isCommercialAddress: suggestedAddress.DeliveryIndicator === 'B',
   });
 };
 
 const getResultType = response => {
   const result = response.Records[0].Results.split(',');
 
-  if (result[0] === 'AE11') {
-    return ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS_RESULT.COLORED_COPY_MODAL;
-  }
-  if (result[0] === 'AE09') {
-    return ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS_RESULT.ADDRESS_LINE_2_MODAL;
-  }
-
   if (result.length === 1 && result[0] === 'AS01') {
-    return ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS_RESULT.NO_MODAL;
+    return {
+      result: ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS_RESULT.VALID,
+      status: 'AS01',
+    };
   }
 
-  return ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS_RESULT.TRADITIONAL_MODAL;
+  if (result[0] === 'AE09') {
+    return {
+      result: ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS_RESULT.APARTMENT_MISSING,
+      status: 'AE09',
+    };
+  }
+
+  if (result.length === 1 && result[0] === 'AE10') {
+    return {
+      result: ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS_RESULT.INVALID_ERROR,
+      status: 'AE10',
+    };
+  }
+
+  if (result.indexOf('AE11') > -1) {
+    return {
+      result: ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS_RESULT.INVALID_ERROR,
+      status: 'AE11',
+    };
+  }
+
+  if (result.indexOf('AE12') > -1) {
+    return {
+      result: ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS_RESULT.INVALID_ERROR,
+      status: 'AE12',
+    };
+  }
+
+  return {
+    result: ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS_RESULT.INVALID,
+    status: 'DEFAULT',
+  };
 };
 
 function* verifyAddress({ payload }) {
