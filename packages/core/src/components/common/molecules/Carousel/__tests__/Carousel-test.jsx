@@ -11,6 +11,9 @@ describe('Carousel component', () => {
         autoplaySpeed: 3000,
         dots: false,
       },
+      carouselConfig: {
+        autoplay: true,
+      },
     };
     const component = shallow(<CarouselVanilla {...props} />);
     expect(component).toMatchSnapshot();
