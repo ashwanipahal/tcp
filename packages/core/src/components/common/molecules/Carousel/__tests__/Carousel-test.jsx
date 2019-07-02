@@ -4,19 +4,13 @@ import { CarouselVanilla } from '../Carousel';
 
 const playButton = '.tcp_carousel__play';
 describe('Carousel component', () => {
+  const CarouselTest = new CarouselVanilla();
+  beforeEach(() => {
+    CarouselTest.setState = jest.fn();
+  });
+
   it('renders correctly', () => {
-    const props = {
-      options: {
-        accessibility: true,
-        autoplaySpeed: 3000,
-        dots: false,
-      },
-      carouselConfig: {
-        autoplay: true,
-      },
-    };
-    const component = shallow(<CarouselVanilla {...props} />);
-    expect(component).toMatchSnapshot();
+    expect(CarouselTest).toMatchSnapshot();
   });
 
   it('show play button if autoplay: true prop is passed', () => {
@@ -30,11 +24,11 @@ describe('Carousel component', () => {
         autoplay: true,
       },
     };
-    const component = shallow(<CarouselVanilla {...props} />);
-    expect(component.find(playButton)).toHaveLength(1);
+    const wrapper = shallow(<CarouselVanilla {...props} />);
+    expect(wrapper.find(playButton)).toHaveLength(1);
   });
 
-  it('do not show play button if autoplay: false prop is passed', () => {
+  it('show play button if autoplay: true prop is passed', () => {
     const props = {
       options: {
         accessibility: true,
@@ -45,7 +39,12 @@ describe('Carousel component', () => {
         autoplay: false,
       },
     };
-    const component = shallow(<CarouselVanilla {...props} />);
-    expect(component.find(playButton)).toHaveLength(0);
+    const wrapper = shallow(<CarouselVanilla {...props} />);
+    expect(wrapper.find(playButton)).toHaveLength(0);
+  });
+
+  it('togglePlay function working properly', () => {
+    CarouselTest.togglePlay();
+    expect(CarouselTest.setState.mock.calls.length).toBe(1);
   });
 });
