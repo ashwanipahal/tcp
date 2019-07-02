@@ -11,7 +11,6 @@ const textboxStyles = css`
   }
 
   input.TextBox__input[type='checkbox'] {
-    width: auto;
     position: relative;
     top: 0;
     appearance: none;

@@ -10,8 +10,6 @@ import Button from '../../../../../common/atoms/Button';
 
 import {
   required,
-  maxLength50,
-  maxLength30,
   minValue10,
   specialChar,
   number,
@@ -59,7 +57,6 @@ class AddAddressForm extends React.PureComponent<Props, State> {
   validatezip = country => {
     return country === 'Canada' ? zipcodeCA : zipcodeUS;
   };
-
   handleBlur = e => {
     if (e.target.value) {
       e.target.parentElement.classList.add('active');
@@ -77,7 +74,6 @@ class AddAddressForm extends React.PureComponent<Props, State> {
   };
 
   handlePlaceSelected = (place, inputValue) => {
-    debugger;
     const address = AutoCompleteComponent.getAddressFromPlace(place, inputValue);
     const { dispatch } = this.props;
     this.setState({
@@ -107,8 +103,16 @@ class AddAddressForm extends React.PureComponent<Props, State> {
               type="text"
               component={TextBox}
               label="First-Nam"
-              validate={[required, maxLength50, specialChar]}
+              validate={[required, specialChar]}
               onBlur={this.handleBlur}
+              maxLength={50}
+            />
+            <Errors
+              model="user.email"
+              messages={{
+                isRequired: 'Please provide an email address.',
+                isEmail: val => `${val} is not a valid email.`,
+              }}
             />
           </Col>
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
@@ -116,8 +120,9 @@ class AddAddressForm extends React.PureComponent<Props, State> {
               placeholder="Last Name"
               name="LastName"
               component={TextBox}
-              validate={[required, maxLength50, specialChar]}
+              validate={[required, specialChar]}
               onBlur={this.handleBlur}
+              maxLength={50}
             />
           </Col>
         </Row>
@@ -129,7 +134,7 @@ class AddAddressForm extends React.PureComponent<Props, State> {
               placeholder="Address Line 1"
               component={AutoCompleteComponent}
               name="address1"
-              validate={[required, maxLength30]}
+              validate={[required]}
               onPlaceSelected={this.handlePlaceSelected}
               onBlur={this.handleBlur}
               maxLength={30}
@@ -140,7 +145,8 @@ class AddAddressForm extends React.PureComponent<Props, State> {
               placeholder="Address Line 2( Optional )"
               name="address-2"
               component={TextBox}
-              validate={[specialChar, maxLength30]}
+              validate={[specialChar]}
+              maxLength={30}
             />
           </Col>
         </Row>

@@ -13,13 +13,11 @@ const zipcodeCA = value =>
     ? ''
     : 'Please enter your postal code';
 
-const maxLength = max => value =>
+const maxLength = max => (value, allValues, props) => {
   value && value.length > max ? `Must be ${max} characters or less` : undefined;
-const maxLength50 = maxLength(50);
-const maxLength30 = maxLength(30);
-const maxLength20 = maxLength(20);
+};
 const number = value =>
-  value && isNaN(Number(value)) ? 'Please enter a valid phone number' : undefined;
+  value && !/^\d+$/.test(value) ? 'Please enter a valid phone number' : undefined;
 const minValue = min => value =>
   value && value.length < min ? `Please enter a valid phone number` : undefined;
 const minValue10 = minValue(10);
@@ -33,9 +31,6 @@ export {
   required,
   maxLength,
   specialChar,
-  maxLength50,
-  maxLength30,
-  maxLength20,
   minValue10,
   number,
   minValue,
