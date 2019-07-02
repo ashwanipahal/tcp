@@ -59,10 +59,10 @@ const ButtonStyles = css`
   }
   ${props =>
     props.ButtonColor === 'BLUE'
-      ? ` background: ${props.theme.colors.BUTTON.PRIMARY};
-            color:${props.theme.colors.BUTTON.NORMAL};
+      ? ` background: ${props.theme.colors.BUTTON.BLUE.NORMAL};
+            color:${props.theme.colors.BUTTON.BLUE.TEXT};
             &:hover {
-    background: ${props.theme.colors.BUTTON.PRIMARY_HOVER};
+    background: ${props.theme.colors.BUTTON.BLUE.ALT_HOVER};
   }
         `
       : ''};

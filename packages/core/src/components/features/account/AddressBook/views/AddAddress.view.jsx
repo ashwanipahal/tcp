@@ -6,8 +6,8 @@ import Notification from '@tcp/core/src/components/common/molecules/Notification
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Anchor from '../../../../common/atoms/Anchor';
-import store from './Form/store';
-import AddressValidationForm from './Form/AddressValidationForm';
+import store from './molecules/store';
+import AddAddressForm from './molecules/AddAddressForm';
 import styles from '../styles/AddAddress.style';
 
 // @flow
@@ -57,12 +57,10 @@ const AddAddress = ({
               }
             />
           )}
-          <Provider store={store}>
-            <AddressValidationForm
-              backToAddressBookClick={backToAddressBookClick}
-              onSubmit={submitAddAddressForm}
-            />
-          </Provider>
+          <AddAddressForm
+            backToAddressBookClick={backToAddressBookClick}
+            onSubmit={submitAddAddressForm}
+          />
         </Grid>
       </form>
     </div>

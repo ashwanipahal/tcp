@@ -20,7 +20,6 @@ exports[`Legal Links component renders correctly 1`] = `
           alt="Facebook"
           className="social-media-icon"
           data-locator="global_facebooklink"
-          src="/static/images/facebook.svg"
         />
       </Styled(Anchor)>
       <Styled(Anchor)
@@ -31,7 +30,6 @@ exports[`Legal Links component renders correctly 1`] = `
           alt="Twitter"
           className="social-media-icon"
           data-locator="global_twitterlink"
-          src="/static/images/twitter.svg"
         />
       </Styled(Anchor)>
       <Styled(Anchor)
@@ -42,7 +40,6 @@ exports[`Legal Links component renders correctly 1`] = `
           alt="Instagram"
           className="social-media-icon"
           data-locator="global_instagramlink"
-          src="/static/images/instagram.svg"
         />
       </Styled(Anchor)>
       <Styled(Anchor)
@@ -53,7 +50,6 @@ exports[`Legal Links component renders correctly 1`] = `
           alt="Pinterest"
           className="social-media-icon"
           data-locator="global_pinterestlink"
-          src="/static/images/pinterest.svg"
         />
       </Styled(Anchor)>
     </div>

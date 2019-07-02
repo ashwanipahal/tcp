@@ -4,6 +4,7 @@ const ignorePsuedoCodeDir = [
   '/mobileapp/',
   '/LoginPage/',
   '/server/',
+  '/service/',
 ];
 
 module.exports = {
@@ -31,7 +32,9 @@ module.exports = {
     '!**/*.constants.js',
     '!**/*.config.js',
     '!**/core/styles/**',
-    '!**/*.action.js',
+    '!**/*.actions.js',
+    '!**/*.query.js',
+    '!**/__mocks__/**',
   ],
   coveragePathIgnorePatterns: [
     '/node_modules/',

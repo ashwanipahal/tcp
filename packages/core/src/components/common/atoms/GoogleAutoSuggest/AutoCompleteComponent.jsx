@@ -1,8 +1,10 @@
 import React from 'react';
 import { requireNamedOnlineModule } from './resourceLoader';
-import LabeledInput from './LabeledInput'; // this comment prevents linting errors
+import TextBox from '../TextBox'; // this comment prevents linting errors
 
-/* global google */ export function getAddressLocationInfo(address) {
+/* global google  - getAddressLocationInfo this componet is used for get the address suggestion */
+
+export function getAddressLocationInfo(address) {
   return requireNamedOnlineModule('google.maps').then(() => {
     const geocoder = new google.maps.Geocoder();
     return new Promise((resolve, reject) => {
@@ -21,7 +23,7 @@ import LabeledInput from './LabeledInput'; // this comment prevents linting erro
   });
 }
 
-export class LabeledInputGoogleAutoComplete extends React.Component {
+export class AutoCompleteComponent extends React.Component {
   static defaultProps = {
     types: ['address'],
     componentRestrictions: {},
@@ -47,11 +49,9 @@ export class LabeledInputGoogleAutoComplete extends React.Component {
     }
     for (let i = 0; i < place.address_components.length; i++) {
       let addressType = place.address_components[i].types[0];
-      if (LabeledInputGoogleAutoComplete.GOOGLE_PLACE_PARTS[addressType]) {
+      if (AutoCompleteComponent.GOOGLE_PLACE_PARTS[addressType]) {
         let val =
-          place.address_components[i][
-            LabeledInputGoogleAutoComplete.GOOGLE_PLACE_PARTS[addressType]
-          ];
+          place.address_components[i][AutoCompleteComponent.GOOGLE_PLACE_PARTS[addressType]];
         switch (addressType) {
           case 'street_number':
             streetNumber = val;
@@ -132,9 +132,7 @@ export class LabeledInputGoogleAutoComplete extends React.Component {
       ...otherProps
     } = this.props;
 
-    return (
-      <LabeledInput {...otherProps} inputRef={this.attachToInputRef} key={this.inputElementKey} />
-    );
+    return <TextBox {...otherProps} inputRef={this.attachToInputRef} key={this.inputElementKey} />;
   }
 
   // --------------- private methods --------------- //

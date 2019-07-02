@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as reduxFormReducer } from 'redux-form';
 import { ProductListingPageReducer } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.reducer';
 import LoginPageReducer from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.reducer';
 import AddressBookReducer from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.reducer';
@@ -33,5 +34,6 @@ export default combineReducers({
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
   [LOGINPAGE_REDUCER_KEY]: LoginPageReducer,
   [ADDRESSBOOK_REDUCER_KEY]: AddressBookReducer,
-  [ADDADDRESS_REDUCER_KEY]:AddAddressReducer
+  [ADDADDRESS_REDUCER_KEY]: AddAddressReducer,
+  form: reduxFormReducer,
 });

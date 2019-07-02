@@ -27,6 +27,7 @@ type Props = {
   input: any,
   Value: any,
   maxLength: any,
+  inputRef: any,
 };
 
 const TextBox = ({
@@ -39,6 +40,7 @@ const TextBox = ({
   isSuccessState,
   maxLength,
   input,
+  inputRef,
   meta: { touched, error, warning },
 }: Props): Node => {
   const elemValue = input.value;
@@ -57,6 +59,8 @@ const TextBox = ({
         isSuccessState={isSuccessState}
         maxLength={maxLength}
         Value={elemValue}
+        ref={inputRef}
+        placeholder=""
       />
 
       {/* commented onChange={onChangeHandler} */}

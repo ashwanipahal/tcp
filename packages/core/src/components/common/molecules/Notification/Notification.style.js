@@ -2,6 +2,7 @@ import { css } from 'styled-components';
 // TODO: change LAYOUT_SPACING to LAYOUT
 
 const NotificationStyle = css`
+  box-sizing: border-box;
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
   .notification {
     font-weight: ${props => props.theme.fonts.fontWeight.bold};

@@ -11,7 +11,7 @@ exports[`Legal Links component renders correctly 1`] = `
         target=""
         to="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
       >
-        Terms and Conditions
+        Terms and Conditions title
       </Styled(Anchor)>
     </li>
     <li>
@@ -20,7 +20,7 @@ exports[`Legal Links component renders correctly 1`] = `
         target=""
         to="https://www.childrensplace.com/us/help-center/#privacyPolicySectionli"
       >
-        Privacy Policy
+        Privacy Policy title
       </Styled(Anchor)>
     </li>
     <li>
@@ -29,7 +29,7 @@ exports[`Legal Links component renders correctly 1`] = `
         target=""
         to="https://www.childrensplace.com/us/help-center/#cookiePolicySectionli"
       >
-        Cookie Policy
+        Cookie Policy title
       </Styled(Anchor)>
     </li>
     <li>
@@ -38,7 +38,7 @@ exports[`Legal Links component renders correctly 1`] = `
         target=""
         to="https://www.childrensplace.com/us/content/supply-chain"
       >
-        California Supply Chains Act
+        California supply chain act title
       </Styled(Anchor)>
     </li>
     <li>
@@ -47,7 +47,7 @@ exports[`Legal Links component renders correctly 1`] = `
         target=""
         to="https://www.childrensplace.com/us/sitemap"
       >
-        Site Map
+        Site Map title
       </Styled(Anchor)>
     </li>
   </ul>
