@@ -41,7 +41,6 @@ describe('AddressBook component', () => {
     const component = shallow(<AddressBook {...props} />);
     expect(component.find(EmptyAddressListComponent)).toHaveLength(1);
   });
-
   it('should renders AddressList when addresses are present', () => {
     const props = {
       addresses: new List([

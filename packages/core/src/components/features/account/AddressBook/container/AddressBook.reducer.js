@@ -7,6 +7,7 @@ const initialState = fromJS({
   error: {},
   showUpdatedNotification: null,
   showUpdatedNotificationOnModal: null,
+  deleteModalMountedState: false,
 });
 
 const updateAddressList = (state, action) => {
@@ -59,6 +60,8 @@ const AddressBookReducer = (state = initialState, action) => {
         .set('error', action.payload)
         .set('showUpdatedNotification', null)
         .set('showUpdatedNotificationOnModal', 'error');
+    case ADDRESS_BOOK_CONSTANTS.DELETE_MODAL_MOUNTED_STATE:
+      return state.set('deleteModalMountedState', action.payload.state);
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {

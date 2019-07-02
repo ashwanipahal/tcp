@@ -101,10 +101,12 @@ describe('AddressTile component', () => {
       primary: 'false',
     });
     const mockedOpenAccountModalComponent = jest.fn();
+    const mockedSetSelectedAddress = jest.fn();
     const props = {
       address: newAddress,
       labels,
-      openAccountModalComponent: mockedOpenAccountModalComponent,
+      setDeleteModalMountState: mockedOpenAccountModalComponent,
+      setSelectedAddress: mockedSetSelectedAddress,
     };
     const component = shallow(<AddressBookTileVanilla {...props} />);
     component
@@ -112,5 +114,6 @@ describe('AddressTile component', () => {
       .at(2)
       .simulate('click', { preventDefault: jest.fn() });
     expect(mockedOpenAccountModalComponent).toHaveBeenCalled();
+    expect(mockedSetSelectedAddress).toHaveBeenCalled();
   });
 });

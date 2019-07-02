@@ -3,7 +3,6 @@ import { ProductListingPageReducer } from '@tcp/core/src/components/features/bro
 import LoginPageReducer from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.reducer';
 import AddressBookReducer from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.reducer';
 import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
-import AccountModalReducer from '@tcp/core/src/components/features/account/AccountModal/container/AccountModal.reducer';
 import {
   HEADER_REDUCER_KEY,
   FOOTER_REDUCER_KEY,
@@ -12,7 +11,6 @@ import {
   LOGINPAGE_REDUCER_KEY,
   PRODUCTLISTINGPAGE_REDUCER_KEY,
   ADDRESSBOOK_REDUCER_KEY,
-  ACCOUNT_MODAL_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '../../components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '../../components/common/organisms/Footer/container/Footer.reducer';
@@ -33,5 +31,4 @@ export default combineReducers({
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
   [LOGINPAGE_REDUCER_KEY]: LoginPageReducer,
   [ADDRESSBOOK_REDUCER_KEY]: AddressBookReducer,
-  [ACCOUNT_MODAL_REDUCER_KEY]: AccountModalReducer,
 });

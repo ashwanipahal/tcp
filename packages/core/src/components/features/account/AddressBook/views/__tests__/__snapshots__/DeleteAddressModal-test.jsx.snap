@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Delete Address Modal should render correctly 1`] = `
+<Styled(Modal)
+  className="TCPModal__Content, undefined"
+  fixedWidth={true}
+  heading="DELETE ADDRESS"
+  maxWidth="460px"
+  minHeight="500px"
+  onRequestClose={[Function]}
+  overlayClassName="TCPModal__Overlay"
+>
+  <div>
+    <Styled(BodyStyle)
+      bodySize="seven"
+      className="deleteAddressModal_modalTitle"
+      fontFamily="secondaryFontFamily"
+      fontWeight="bold"
+    >
+      Are you sure you want to delete this address?
+    </Styled(BodyStyle)>
+    <Address
+      address={
+        Object {
+          "addressLine": Array [
+            "addressline 1",
+            "addressline 2",
+          ],
+          "firstName": "test",
+          "lastName": "test",
+        }
+      }
+      className="deleteAddressModal_deleteAddress"
+    />
+    <div
+      className="deleteAddressModal_btnWrapper"
+    >
+      <Styled(Button)
+        buttonVariation="variable-width"
+        className="deleteAddressModal_deleteConfirm deleteAddressModal_btn"
+        fill="BLUE"
+        onClick={[Function]}
+      >
+        Yes Delete
+      </Styled(Button)>
+      <Styled(Button)
+        buttonVariation="variable-width"
+        className="deleteAddressModal_btn"
+        fill="RED"
+        onClick={[Function]}
+      >
+        No, Dont Cancel
+      </Styled(Button)>
+    </div>
+  </div>
+</Styled(Modal)>
+`;

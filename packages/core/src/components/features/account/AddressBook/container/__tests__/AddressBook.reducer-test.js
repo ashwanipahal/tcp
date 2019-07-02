@@ -143,4 +143,22 @@ describe('Address List reducer', () => {
       })
     );
   });
+  it('should handle modal mounted state', () => {
+    const payload = {
+      state: true,
+    };
+    const initialState = fromJS({
+      deleteModalMountedState: false,
+    });
+    expect(
+      AddressBookReducer(initialState, {
+        type: ADDRESS_BOOK_CONSTANTS.DELETE_MODAL_MOUNTED_STATE,
+        payload,
+      })
+    ).toEqual(
+      fromJS({
+        deleteModalMountedState: true,
+      })
+    );
+  });
 });

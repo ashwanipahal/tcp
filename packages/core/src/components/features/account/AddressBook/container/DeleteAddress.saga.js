@@ -1,12 +1,12 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
-import ACCOUNT_MODAL_CONSTANTS from '../AccountModal.constants';
+import ADDRESS_BOOK_CONSTANTS from '../AddressBook.constants';
 import fetchData from '../../../../../service/API';
 import endpoints from '../../../../../service/endpoint';
 import {
   updateAddressListOnDelete,
   updateAddressListOnDeleteErr,
-} from '../../AddressBook/container/AddressBook.actions';
-import { closeModal } from './AccountModal.actions';
+  setDeleteModalMountedState,
+} from './AddressBook.actions';
 
 export function* deleteAddress({ payload }) {
   try {
@@ -26,7 +26,7 @@ export function* deleteAddress({ payload }) {
     );
     if (res.statusCode === 200) {
       yield put(updateAddressListOnDelete(res.body || ''));
-      yield put(closeModal());
+      yield put(setDeleteModalMountedState({ state: false }));
     } else {
       yield put(updateAddressListOnDeleteErr(res.error));
     }
@@ -35,8 +35,8 @@ export function* deleteAddress({ payload }) {
   }
 }
 
-export function* AccountModalSaga() {
-  yield takeLatest(ACCOUNT_MODAL_CONSTANTS.DELETE_ADDRESS, deleteAddress);
+export function* DeleteAddressSaga() {
+  yield takeLatest(ADDRESS_BOOK_CONSTANTS.DELETE_ADDRESS, deleteAddress);
 }
 
-export default AccountModalSaga;
+export default DeleteAddressSaga;

@@ -1,8 +1,9 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import { DeleteAddressModalVanilla } from '../views/DeleteAddressModal.view';
-import Address from '../../../../common/molecules/Address';
-import Button from '../../../../common/atoms/Button';
+import { DeleteAddressModalVanilla } from '../DeleteAddressModal.view';
+import Address from '../../../../../common/molecules/Address';
+import Button from '../../../../../common/atoms/Button';
+import Notification from '../../../../../common/molecules/Notification';
 
 describe('Delete Address Modal', () => {
   const data = {
@@ -27,7 +28,7 @@ describe('Delete Address Modal', () => {
   it('should call Cancel Button Correctly', () => {
     const mockedCloseModal = jest.fn();
     const tree = shallow(
-      <DeleteAddressModalVanilla data={data} closeModalComponent={mockedCloseModal} />
+      <DeleteAddressModalVanilla data={data} setDeleteModalMountState={mockedCloseModal} />
     );
     tree
       .find(Button)
@@ -45,5 +46,15 @@ describe('Delete Address Modal', () => {
       .at(0)
       .simulate('click');
     expect(mockedOnConfirm).toHaveBeenCalled();
+  });
+  it('should show notification on error', () => {
+    const tree = shallow(
+      <DeleteAddressModalVanilla
+        data={data}
+        showUpdatedNotificationOnModal
+        labels={{ errorMessage: 'error' }}
+      />
+    );
+    expect(tree.find(Notification)).toHaveLength(1);
   });
 });

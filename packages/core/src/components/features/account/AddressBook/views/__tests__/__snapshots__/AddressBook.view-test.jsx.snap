@@ -42,7 +42,20 @@ exports[`AddressBook component should renders correctly when addresses are not p
       }
     }
   />
-  <Connect(AccountModalContainer) />
+  <Styled(DeleteAddressModal)
+    data={
+      Object {
+        "buttons": Object {
+          "cancel": undefined,
+          "confirm": undefined,
+        },
+        "description": Object {},
+        "heading": undefined,
+        "title": undefined,
+      }
+    }
+    labels={Object {}}
+  />
 </div>
 `;
 
@@ -102,7 +115,21 @@ exports[`AddressBook component should renders correctly when addresses are prese
       ]
     }
     labels={Object {}}
+    setSelectedAddress={[Function]}
   />
-  <Connect(AccountModalContainer) />
+  <Styled(DeleteAddressModal)
+    data={
+      Object {
+        "buttons": Object {
+          "cancel": undefined,
+          "confirm": undefined,
+        },
+        "description": Object {},
+        "heading": undefined,
+        "title": undefined,
+      }
+    }
+    labels={Object {}}
+  />
 </div>
 `;

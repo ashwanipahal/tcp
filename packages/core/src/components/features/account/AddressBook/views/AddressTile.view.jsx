@@ -12,7 +12,8 @@ type Props = {
   labels: Object,
   className: string,
   onDefaultShippingAddressClick(address: {}): Object,
-  openAccountModalComponent: Function,
+  setSelectedAddress: Function,
+  setDeleteModalMountState: Function,
 };
 
 class AddressBookTile extends React.Component<Props> {
@@ -42,13 +43,15 @@ class AddressBookTile extends React.Component<Props> {
     onDefaultShippingAddressClick(setDefaultShippingAddressJSON);
   };
 
-  onDeleteAddressClick = (e, address, openAccountModalComponent) => {
+  onDeleteAddressClick = e => {
+    const { address, setDeleteModalMountState, setSelectedAddress } = this.props;
     e.preventDefault();
-    openAccountModalComponent({ modalType: 'deleteAddress', message: address });
+    setSelectedAddress(address);
+    setDeleteModalMountState({ state: true });
   };
 
   render() {
-    const { address, labels, className, openAccountModalComponent } = this.props;
+    const { address, labels, className } = this.props;
     return (
       <div className={className}>
         <div className="addressTile__row--twoCol">
@@ -85,7 +88,7 @@ class AddressBookTile extends React.Component<Props> {
             underline
             to="/#"
             anchorVariation="primary"
-            onClick={e => this.onDeleteAddressClick(e, address, openAccountModalComponent)}
+            onClick={e => this.onDeleteAddressClick(e)}
           >
             {labels.delete}
           </Anchor>

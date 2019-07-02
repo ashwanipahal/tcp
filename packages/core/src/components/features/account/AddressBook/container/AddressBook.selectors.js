@@ -13,3 +13,7 @@ export const showUpdatedNotificationState = state => {
 export const showUpdatedNotificationOnModalState = state => {
   return state.AddressBookReducer.get('showUpdatedNotificationOnModal');
 };
+
+export const deleteModalOpenState = state => {
+  return state.AddressBookReducer.get('deleteModalMountedState');
+};

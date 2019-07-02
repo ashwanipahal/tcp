@@ -3,6 +3,7 @@ import {
   getAddressListState,
   showUpdatedNotificationState,
   showUpdatedNotificationOnModalState,
+  deleteModalOpenState,
 } from '../AddressBook.selectors';
 
 describe('#AddressBook selector', () => {
@@ -41,5 +42,15 @@ describe('#AddressBook selector', () => {
     expect(showUpdatedNotificationOnModalState(state)).toEqual(
       AddressListState.get('showUpdatedNotificationOnModal')
     );
+  });
+  it('#deleteModalMountedState should return AddressListReduer state', () => {
+    const AddressListState = fromJS({
+      deleteModalMountedState: false,
+    });
+    const state = {
+      AddressBookReducer: AddressListState,
+    };
+
+    expect(deleteModalOpenState(state)).toEqual(AddressListState.get('deleteModalMountedState'));
   });
 });
