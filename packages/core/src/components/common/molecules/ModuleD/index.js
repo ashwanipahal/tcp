@@ -1,1 +1,1 @@
-export { default } from './ModuleD';
+export { default } from './view';

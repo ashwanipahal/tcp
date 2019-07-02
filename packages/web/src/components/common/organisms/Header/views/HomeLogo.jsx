@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
-import Image from '@tcp/core/src/components/common/atoms/Image';
+import { Anchor, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from '../HomeLogo.style';
 

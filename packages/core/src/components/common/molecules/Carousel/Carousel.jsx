@@ -1,47 +1,124 @@
-/**
- * @module Carousel
- * @description - component that creates
- * carousel using third party 'react-slick'
- */
-
+// @flow
 import React from 'react';
 import Slider from 'react-slick';
-import { PropTypes } from 'prop-types';
 import config from './config';
+import { Image } from '../../atoms';
+import { getIconPath } from '../../../../utils';
 import CarouselStyle from './Carousel.style';
 import withStyles from '../../hoc/withStyles';
+import errorBoundary from '../../hoc/errorBoundary';
 
 const defaults = { ...config.CAROUSEL_DEFAULTS };
 
-const Carousel = ({ options, children, carouselConfig }) => {
-  const settings = { ...defaults, ...options };
-
-  return (
-    <CarouselStyle className="TCP_Carousel_Wrapper" carouselConfig={carouselConfig}>
-      <Slider {...settings} className="TCP_Carousel">
-        {!children ? null : children}
-      </Slider>
-    </CarouselStyle>
-  );
+type Props = {
+  options: Object,
+  children: any,
+  carouselConfig: Object,
 };
 
-Carousel.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.shape({})),
-  options: PropTypes.shape({
-    autoplaySpeed: PropTypes.number,
-    speed: PropTypes.number,
-  }),
-  carouselConfig: PropTypes.objectOf(PropTypes.shape({})),
+type State = {
+  autoplay: boolean,
 };
 
-Carousel.defaultProps = {
-  children: PropTypes.arrayOf(PropTypes.shape({})),
-  options: PropTypes.shape({
-    autoplaySpeed: PropTypes.number,
-    speed: PropTypes.number,
-  }),
-  carouselConfig: { type: 'light', arrow: 'none' },
-};
+/**
+ * @function Carousel component that creates carousel using
+ * third party 'react-slick'
+ */
+class Carousel extends React.PureComponent<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    (this: any).slider = null;
+    (this: any).getSlider = this.getSlider.bind(this);
+    (this: any).getPlayButton = this.getPlayButton.bind(this);
+    (this: any).play = this.play.bind(this);
+    (this: any).pause = this.pause.bind(this);
+    this.state = {
+      autoplay: true,
+    };
+  }
 
-export default withStyles(Carousel, CarouselStyle);
+  /**
+   * @function getSlider function gets DOM reference of slider component.
+   * @param {[Object]} element [Event object of click].
+   * @return {node} function returns slider element.
+   */
+  getSlider(element: SyntheticKeyboardEvent<*>) {
+    (this: any).slider = element;
+    return (this: any).slider;
+  }
+
+  /**
+   * @function getPlayComponent function gets DOM reference of slider component.
+   * @param {[Object]} element [Event object of click].
+   * @return {node} function returns slider element.
+   */
+  getPlayButton(wrapperConfig: Object) {
+    const { autoplay } = this.state;
+    return autoplay ? (
+      <Image
+        className="tcp_carousel__play"
+        data-locator={wrapperConfig.dataLocator}
+        src={getIconPath('icon-pause')}
+        onClick={this.pause}
+      />
+    ) : (
+      <Image
+        className="tcp_carousel__play"
+        data-locator={wrapperConfig.dataLocator}
+        src={getIconPath('icon-play')}
+        onClick={this.play}
+      />
+    );
+  }
+
+  /**
+   * @function play function enable autoplay for carousel
+   * also update component state.
+   */
+  play() {
+    (this: any).slider.slickPlay();
+    this.togglePlay();
+  }
+
+  /**
+   * @function pause function stops/pause autoplay for carousel
+   * also update component state.
+   */
+  pause() {
+    (this: any).slider.slickPause();
+    this.togglePlay();
+  }
+
+  /**
+   * @function updateState function updates component state
+   * after each click on play pause button.
+   */
+  togglePlay() {
+    const { autoplay } = this.state;
+    this.setState({ autoplay: !autoplay });
+  }
+
+  /**
+   * @function render  Used to render the JSX of the component
+   * @param {object} options Customized caroused configs from parent wrapper
+   * @param {node} children address object
+   * @param {object} carouselConfig Carousel wrapper config to enable customization
+   * of functionalities like play pause, change carousel theme etc.
+   */
+  render() {
+    const { options, children, carouselConfig } = this.props;
+    const settings = { ...defaults, ...options };
+
+    return (
+      <CarouselStyle className="tcp_carousel_wrapper" carouselConfig={carouselConfig}>
+        <Slider className="tcp_carousel" ref={this.getSlider} {...settings}>
+          {!children ? null : children}
+        </Slider>
+        {carouselConfig.autoplay && this.getPlayButton(carouselConfig)}
+      </CarouselStyle>
+    );
+  }
+}
+
+export default errorBoundary(withStyles(Carousel, CarouselStyle));
 export { Carousel as CarouselVanilla };

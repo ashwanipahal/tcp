@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { getIconPath } from '@tcp/web/src/utils';
+import { getIconPath } from '../../../../../utils';
 import Anchor from '../../../../common/atoms/Anchor';
 import Image from '../../../../common/atoms/Image';
 import styles from '../FooterNavHeader.style';

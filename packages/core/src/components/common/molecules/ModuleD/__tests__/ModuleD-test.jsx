@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ModuleD from '../ModuleD';
+import ModuleD from '../view/ModuleD';
 
 describe('ModuleD component', () => {
   it('renders correctly', () => {

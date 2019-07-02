@@ -12,7 +12,7 @@ import Row from '../../../atoms/Row';
 import Col from '../../../atoms/Col';
 import ModalHeader from './ModalHeader';
 import styles from '../Modal.style';
-import Config from '../config';
+import Config from '../Modal.config';
 import withStyles from '../../../hoc/withStyles';
 
 function getParent() {
