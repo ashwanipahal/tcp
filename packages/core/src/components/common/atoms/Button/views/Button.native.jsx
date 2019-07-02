@@ -42,7 +42,7 @@ Button.defaultProps = {
   color: 'red',
   border: '0.5px',
   margin: '40px',
-  id: '',
+  id: 'btn',
 };
 
 export default Button;
