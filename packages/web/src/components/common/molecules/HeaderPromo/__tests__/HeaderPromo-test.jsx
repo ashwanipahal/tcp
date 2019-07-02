@@ -13,6 +13,10 @@ describe('HeaderPromo component', () => {
     const component = shallow(<HeaderPromoVanilla {...props} />);
     expect(component).toMatchSnapshot();
     expect(component.find('.header__promo-area--mobile')).toHaveLength(1);
+    expect(component.find('.header__promo-area--desktop')).toHaveLength(0);
+    expect(component.find('.orange-schedule')).toHaveLength(1);
+    expect(component.find('.blue-email')).toHaveLength(1);
+    expect(component.find('.green-dollar')).toHaveLength(1);
   });
 
   it('renders correctly for desktop', () => {
@@ -23,5 +27,9 @@ describe('HeaderPromo component', () => {
     const component = shallow(<HeaderPromoVanilla {...props} />);
     expect(component).toMatchSnapshot();
     expect(component.find('.header__promo-area--desktop')).toHaveLength(1);
+    expect(component.find('.header__promo-area--mobile')).toHaveLength(0);
+    expect(component.find('.orange-schedule')).toHaveLength(1);
+    expect(component.find('.blue-email')).toHaveLength(1);
+    expect(component.find('.green-dollar')).toHaveLength(1);
   });
 });
