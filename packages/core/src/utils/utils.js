@@ -1,4 +1,6 @@
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
+import icons from '../config/icons';
+import locators from '../config/locators';
 
 export const importGraphQLClientDynamically = module => {
   return import(`../services/handler/${module}`);
@@ -16,13 +18,16 @@ export const isDevelopment = () => {
   return process.env.NODE_ENV === ENV_DEVELOPMENT;
 };
 
-export const brand = () => {
+export const identifyBrand = () => {
   const url = 'http://www.thechildrensplace.com/';
+
   return url.indexOf('thechildrensplace') > -1 ? 'tcp' : 'gymboree';
 };
 
-// This common function works for finding key in an object.
-// Please refer Account.jsx in core/src/components/features/account/Account/Account.jsx
+/**
+ * This common function works for finding key in an object.
+ * Please refer Account.jsx in core/src/components/features/account/Account/Account.jsx
+ */
 export const getObjectValue = (obj, defaultVal, ...params) => {
   if (!obj) return defaultVal;
 
@@ -60,13 +65,31 @@ export const buildUrl = options => {
   return options;
 };
 
+/**
+ * This function returns the path of icons in static/images folder
+ * @param {*} icon | String - Identifier for icons in assets
+ */
+export const getIconPath = icon => {
+  return icons[icon];
+};
+
+/**
+ * This function returns the path of icons in static/images folder
+ * @param {*} icon | String - Identifier for icons in assets
+ */
+export const getLocator = locator => {
+  return locators[locator];
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
   isProduction,
   isDevelopment,
-  brand,
+  identifyBrand,
   getObjectValue,
+  getIconPath,
+  getLocator,
   createUrlSearchParams,
   buildUrl,
 };

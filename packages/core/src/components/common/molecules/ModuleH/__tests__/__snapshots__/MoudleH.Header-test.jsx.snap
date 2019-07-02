@@ -6,6 +6,7 @@ exports[`ModuleH Header Component renders correctly 1`] = `
     HeadingLarge="three"
     HeadingcolorSm="primary"
     className="moduleH__header"
+    data-locator="moduleH_header_text"
     key="0"
     tag="h2"
   >
@@ -21,6 +22,7 @@ exports[`ModuleH Header Component renders correctly 1`] = `
     HeadingLarge="three"
     HeadingcolorSm="primary"
     className="moduleH__header"
+    data-locator="moduleH_header_text"
     key="1"
     tag="h2"
   >

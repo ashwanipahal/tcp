@@ -4,8 +4,10 @@ export {
   importGraphQLQueriesDynamically,
   isProduction,
   isDevelopment,
-  brand,
+  identifyBrand,
   getObjectValue,
+  getIconPath,
+  getLocator,
   createUrlSearchParams,
   buildUrl,
 } from './utils';

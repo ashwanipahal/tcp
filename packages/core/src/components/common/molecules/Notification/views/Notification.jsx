@@ -1,5 +1,5 @@
 import React from 'react';
-import { getIconPath } from '@tcp/web/src/utils'; //eslint-disable-line
+import { getIconPath } from '../../../../../utils';
 import Col from '../../../atoms/Col';
 import styles from '../Notification.style';
 import withStyles from '../../../hoc/withStyles';

@@ -16,4 +16,6 @@ export default {
   'footer__mpr-container--col2': '/static/images/mp-rewards-blue.png',
   'header__brand-tab--tcp': '/static/images/tcp-logo.svg',
   'header__brand-tab-gymboree': '/static/images/gymboree-logo.svg',
+  'icon-play': '/static/images/play.svg',
+  'icon-pause': '/static/images/pause.svg',
 };

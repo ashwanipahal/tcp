@@ -28,4 +28,7 @@ export default {
   // Brand Tabs
   'header__brand-tab--tcp': 'global_TCPimg',
   'header__brand-tab-gymboree': 'global_Gymboreeimg',
+  // Promotional Banner
+  promo_item: 'global_promobannerimg',
+  refer_friend: 'global_referfriend',
 };
