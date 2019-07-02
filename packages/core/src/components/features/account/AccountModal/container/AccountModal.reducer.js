@@ -15,10 +15,7 @@ const AccountModalReducer = (state = initialState, action) => {
         .set('openState', true)
         .set('message', action.payload.message);
     case ACCOUNT_MODAL_CONSTANTS.CLOSE_MODAL:
-      return state
-        .set('openState', false)
-        .set('message', null)
-        .set('modalType', null);
+      return state.set('openState', false).set('modalType', null);
     default:
       if (state instanceof Object) {
         return fromJS(state);

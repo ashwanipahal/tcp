@@ -4,23 +4,14 @@ import ModalCloseIcon from './ModalCloseIcon';
 import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
 
 type Props = {
-  heading: String,
+  heading: string,
   closeFunc: Function,
-  title: String,
 };
-const ModalHeader = ({ closeFunc, title, heading }: Props) => (
+const ModalHeader = ({ closeFunc, heading }: Props) => (
   <Fragment>
     <ModalCloseIcon closeFunc={closeFunc} />
     <BodyCopy bodySize="five" fontWeight="black" tag="h2" className="Modal_Heading">
       {heading}
-    </BodyCopy>
-    <BodyCopy
-      bodySize="seven"
-      fontWeight="bold"
-      fontFamily="secondaryFontFamily"
-      className="Modal_Title"
-    >
-      {title}
     </BodyCopy>
   </Fragment>
 );

@@ -10,32 +10,42 @@ import PropTypes from 'prop-types';
 import Grid from '../../Grid';
 import Row from '../../../atoms/Row';
 import Col from '../../../atoms/Col';
-import errorBoundary from '../../../hoc/errorBoundary';
 import ModalHeader from './ModalHeader';
-import ModalStyle from '../Modal.style';
+import styles from '../Modal.style';
 import Config from '../config';
+import withStyles from '../../../hoc/withStyles';
 
 function getParent() {
   return document.querySelector('.TCPModal__Wrapper');
 }
 
 const Modal = ({ children, ...otherProps }) => {
-  const { colSet, onRequestClose, title, heading } = otherProps;
+  const { colSet, onRequestClose, title, heading, fixedWidth, className } = otherProps;
   const column = colSet || Config.MODAL_COL_DEFAULTS;
 
   return (
-    <ModalStyle className="TCPModal__Wrapper">
-      <ReactModal {...otherProps} parentSelector={getParent}>
-        <Grid>
-          <Row>
-            <Col colSize={column} className="TCPModal__InnerContent">
+    <div className={className}>
+      <div className="TCPModal__Wrapper">
+        <ReactModal {...otherProps} parentSelector={getParent}>
+          {!fixedWidth && (
+            <Grid>
+              <Row>
+                <Col colSize={column} className="TCPModal__InnerContent">
+                  <ModalHeader closeFunc={onRequestClose} title={title} heading={heading} />
+                  {children}
+                </Col>
+              </Row>
+            </Grid>
+          )}
+          {fixedWidth && (
+            <div className="TCPModal__InnerContent">
               <ModalHeader closeFunc={onRequestClose} title={title} heading={heading} />
               {children}
-            </Col>
-          </Row>
-        </Grid>
-      </ReactModal>
-    </ModalStyle>
+            </div>
+          )}
+        </ReactModal>
+      </div>
+    </div>
   );
 };
 
@@ -43,4 +53,5 @@ Modal.propTypes = {
   children: PropTypes.element.isRequired,
 };
 
-export default errorBoundary(Modal);
+export default withStyles(Modal, styles);
+export { Modal as ModalVanilla };

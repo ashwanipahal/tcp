@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AccountModalContainer  should not render AccountModal Correctly 1`] = `""`;
-
 exports[`AccountModalContainer  should render AccountModal Correctly 1`] = `
 <AccountModalView
   data={

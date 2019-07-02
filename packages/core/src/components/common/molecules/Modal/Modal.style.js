@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import { css } from 'styled-components';
 
-const ModalStyle = styled.div`
+const ModalStyle = css`
   .TCPModal__Overlay {
     position: fixed;
     top: 0px;
@@ -19,14 +19,13 @@ const ModalStyle = styled.div`
     padding: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     transform: translate(-50%, -50%);
     ${props => props.theme.zindex.zModal};
-    width: 100%;
-    height: 100%;
     overflow: scroll;
+    height: 100%;
+    width: 100%;
     @media ${props => props.theme.mediaQuery.medium} {
-      width: auto;
       height: auto;
-      max-width: 460px;
-      min-height: 500px;
+      max-width: ${props => (props.fixedWidth ? props.maxWidth : '')};
+      min-height: ${props => (props.fixedWidth ? props.minHeight : '')};
     }
   }
   .Modal_Heading {
@@ -36,18 +35,6 @@ const ModalStyle = styled.div`
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     @media ${props => props.theme.mediaQuery.medium} {
       display: none;
-    }
-  }
-  .Modal_Title {
-    text-align: center;
-    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXL};
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin: ${props => props.theme.spacing.ELEM_SPACING.MED}
-        ${props => props.theme.spacing.ELEM_SPACING.XXXL}
-        ${props => props.theme.spacing.ELEM_SPACING.XL};
-      padding: 0;
-      text-align: initial;
     }
   }
 `;

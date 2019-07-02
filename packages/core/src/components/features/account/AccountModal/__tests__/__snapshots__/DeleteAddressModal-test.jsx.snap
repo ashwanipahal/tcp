@@ -2,6 +2,14 @@
 
 exports[`Delete Address Modal should render correctly 1`] = `
 <div>
+  <Styled(BodyStyle)
+    bodySize="seven"
+    className="deleteAddressModal_modalTitle"
+    fontFamily="secondaryFontFamily"
+    fontWeight="bold"
+  >
+    Are you sure you want to delete this address?
+  </Styled(BodyStyle)>
   <Address
     address={
       Object {

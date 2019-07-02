@@ -9,11 +9,6 @@ describe('AccountModalContainer ', () => {
     expect(tree).toMatchSnapshot();
     expect(tree.find(AccountModalView)).toHaveLength(1);
   });
-  it('should not render AccountModal Correctly', () => {
-    const tree = shallow(<AccountModalContainer modalType="random" message="message" />);
-    expect(tree).toMatchSnapshot();
-    expect(tree.isEmptyRender()).toBeTruthy();
-  });
   describe('#mapDispatchToProps', () => {
     it('should return an action closeModalComponent which will call dispatch function on execution', () => {
       const dispatch = jest.fn();

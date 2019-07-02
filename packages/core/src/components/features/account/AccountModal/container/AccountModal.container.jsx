@@ -10,7 +10,7 @@ import labels from '../../AddressBook/container/AddressBook.labels';
 
 type Props = {
   openState: boolean,
-  modalType: String,
+  modalType: null,
   message: any,
   closeModalComponent: Function,
   onDeleteAddress: Function,
@@ -24,20 +24,15 @@ type Props = {
  * @return S{[Object]} object on the basis of modal type.
  */
 const getSpecificDataForModal = (modalType, message) => {
-  switch (modalType) {
-    case 'deleteAddress':
-      return {
-        heading: labels.deleteAddressHeading,
-        title: labels.deleteAddressTitle,
-        description: message,
-        buttons: {
-          cancel: labels.cancel,
-          confirm: labels.deleteConfirm,
-        },
-      };
-    default:
-      return {};
-  }
+  return {
+    heading: labels.deleteAddressHeading,
+    title: labels.deleteAddressTitle,
+    description: message,
+    buttons: {
+      cancel: labels.cancel,
+      confirm: labels.deleteConfirm,
+    },
+  };
 };
 
 /**

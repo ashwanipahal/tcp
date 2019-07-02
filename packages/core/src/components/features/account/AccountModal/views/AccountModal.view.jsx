@@ -1,18 +1,18 @@
 import React from 'react';
-import Modal from '../../../../common/molecules/Modal';
+import Modal from '../../../../common/molecules/Modal/view/Modal';
 import DeleteAddressModal from './DeleteAddressModal.view';
 import Notification from '../../../../common/molecules/Notification';
 
 // @flow
 
 type Props = {
-  openState: Boolean,
-  modalType: String,
-  data: Object,
+  openState: boolean,
+  data: object,
   onDeleteAddress: Function,
   closeModalComponent: Function,
-  showUpdatedNotificationOnModal: Boolean,
+  showUpdatedNotificationOnModal: boolean,
   labels: Object,
+  className: string,
 };
 
 /**
@@ -44,34 +44,30 @@ class AccountModalView extends React.Component<Props> {
    * @return {[Object]} JSX of the component
    */
   renderModal = () => {
-    const { modalType, data, onDeleteAddress, closeModalComponent } = this.props;
-    switch (modalType) {
-      case 'deleteAddress':
-        return (
-          <DeleteAddressModal
-            data={data}
-            onDeleteAddress={onDeleteAddress}
-            closeModalComponent={closeModalComponent}
-          />
-        );
-      default:
-        return null;
-    }
+    const { data, onDeleteAddress, closeModalComponent } = this.props;
+    return (
+      <DeleteAddressModal
+        data={data}
+        onDeleteAddress={onDeleteAddress}
+        closeModalComponent={closeModalComponent}
+      />
+    );
   };
 
   render() {
-    const { openState, data, showUpdatedNotificationOnModal, labels } = this.props;
+    const { openState, data, showUpdatedNotificationOnModal, labels, className } = this.props;
     if (Object.keys(data).length) {
-      const { heading, title } = data;
+      const { heading } = data;
       return (
         <Modal
-          colSet={{ large: 2, medium: 8, small: 6 }}
+          fixedWidth
           isOpen={openState}
           onRequestClose={this.onCloseModal}
-          title={title}
           heading={heading}
           overlayClassName="TCPModal__Overlay"
-          className="TCPModal__Content"
+          className={`TCPModal__Content, ${className}`}
+          maxWidth="460px"
+          minHeight="500px"
         >
           {showUpdatedNotificationOnModal !== null && (
             <Notification
@@ -80,6 +76,7 @@ class AccountModalView extends React.Component<Props> {
               message={labels.errorMessage}
             />
           )}
+
           {this.renderModal()}
         </Modal>
       );

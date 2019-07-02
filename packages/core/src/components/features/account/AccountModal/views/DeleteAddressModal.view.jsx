@@ -3,12 +3,13 @@ import Address from '../../../../common/molecules/Address';
 import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/DeleteAddressModal.style';
+import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
 
 // @flow
 
 type Props = {
   data: Object,
-  className: String,
+  className: string,
   onDeleteAddress: Function,
   closeModalComponent: Function,
 };
@@ -51,10 +52,18 @@ class DeleteAddressModal extends React.Component<Props> {
    */
   render() {
     const { className, data } = this.props;
-    const { buttons, description } = data;
+    const { buttons, description, title } = data;
     const { confirm, cancel } = buttons;
     return (
       <div className={className}>
+        <BodyCopy
+          bodySize="seven"
+          fontWeight="bold"
+          fontFamily="secondaryFontFamily"
+          className="deleteAddressModal_modalTitle"
+        >
+          {title}
+        </BodyCopy>
         <Address address={description} className="deleteAddressModal_deleteAddress" />
         <div className="deleteAddressModal_btnWrapper">
           <Button
