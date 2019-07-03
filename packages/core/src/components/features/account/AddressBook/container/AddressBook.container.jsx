@@ -8,6 +8,7 @@ import {
   getAddressListFetchingState,
   showUpdatedNotificationState,
   deleteModalOpenState,
+  showUpdatedNotificationOnModalState,
 } from './AddressBook.selectors';
 import labels from './AddressBook.labels';
 import { setDefaultShippingAddressRequest } from './DefaultShippingAddress.actions';
@@ -22,6 +23,7 @@ type Props = {
   onDeleteAddress: Function,
   deleteModalMountedState: boolean,
   setDeleteModalMountState: Function,
+  showUpdatedNotificationOnModal: any,
 };
 
 export class AddressBookContainer extends React.Component<Props> {
@@ -39,6 +41,7 @@ export class AddressBookContainer extends React.Component<Props> {
       onDeleteAddress,
       deleteModalMountedState,
       setDeleteModalMountState,
+      showUpdatedNotificationOnModal,
     } = this.props;
     if (isFetching) {
       return <p>Loading...</p>;
@@ -53,6 +56,7 @@ export class AddressBookContainer extends React.Component<Props> {
           onDeleteAddress={onDeleteAddress}
           deleteModalMountedState={deleteModalMountedState}
           setDeleteModalMountState={setDeleteModalMountState}
+          showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
         />
       );
     }
@@ -82,6 +86,7 @@ const mapStateToProps = state => {
     addressList: getAddressListState(state),
     isFetching: getAddressListFetchingState(state),
     showUpdatedNotification: showUpdatedNotificationState(state),
+    showUpdatedNotificationOnModal: showUpdatedNotificationOnModalState(state),
     deleteModalMountedState: deleteModalOpenState(state),
   };
 };

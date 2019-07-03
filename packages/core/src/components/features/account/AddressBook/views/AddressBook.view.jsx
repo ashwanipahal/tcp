@@ -21,6 +21,7 @@ type Props = {
   className: string,
   onDefaultShippingAddressClick: Object,
   showUpdatedNotification: any,
+  showUpdatedNotificationOnModal: any,
   onDeleteAddress: Function,
   deleteModalMountedState: false,
   setDeleteModalMountState: Function,
@@ -48,6 +49,7 @@ export class AddressBook extends React.PureComponent<Props> {
       onDeleteAddress,
       deleteModalMountedState,
       setDeleteModalMountState,
+      showUpdatedNotificationOnModal,
     } = this.props;
     const { selectedAddress } = this.state;
 
@@ -120,6 +122,7 @@ export class AddressBook extends React.PureComponent<Props> {
           setDeleteModalMountState={setDeleteModalMountState}
           labels={labels}
           onDeleteAddress={onDeleteAddress}
+          showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
         />
       </div>
     );
