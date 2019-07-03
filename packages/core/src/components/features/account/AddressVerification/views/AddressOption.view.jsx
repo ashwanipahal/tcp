@@ -11,17 +11,37 @@ type Props = {
   address: object,
   onChange: ?() => void,
   isSelected: ?boolean,
-}
-const AddressOption = ({ className, value, name, showInput, address, onChange, isSelected }: Props) => {
-  if(showInput) {
+};
+const AddressOption = ({
+  className,
+  value,
+  name,
+  showInput,
+  address,
+  onChange,
+  isSelected,
+}: Props) => {
+  if (showInput) {
     return (
       <label className={className} htmlFor={value}>
-        <input type="radio" name={name} checked={isSelected} onChange={onChange} />
+        <input
+          id={value}
+          value={value}
+          type="radio"
+          name={name}
+          checked={isSelected}
+          onChange={onChange}
+          className="elem--mr__MED"
+        />
         <Address address={address} />
       </label>
-    )
+    );
   }
-  return <Address address={address} className={className} />
-}
+  return (
+    <div className={className}>
+      <Address address={address} />
+    </div>
+  );
+};
 
 export default AddressOption;

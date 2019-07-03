@@ -2,8 +2,6 @@ import { css } from 'styled-components';
 
 const styles = css`
   .addressVerification {
-    width: 80%;
-    margin: 0 auto;
   }
 
   .addressVerification__input {
@@ -11,8 +9,6 @@ const styles = css`
   }
 
   .addressVerification__section {
-    padding-bottom: 20px;
-    margin-bottom: 20px;
     border-bottom: 1px solid;
   }
 

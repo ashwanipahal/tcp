@@ -90,7 +90,50 @@ export default css`
     margin: 0;
   }
 
-  .textCenter {
-    text-align: center;
-  }
+  ${props => {
+    return Object.keys(props.theme.spacing.ELEM_SPACING).map(key => {
+      return `.elem--mr__${key} {
+        margin-right: ${props.theme.spacing.ELEM_SPACING[key]}
+      }
+      .elem--mb__${key} {
+        margin-bottom: ${props.theme.spacing.ELEM_SPACING[key]}
+      }
+      .elem--ml__${key} {
+        margin-left: ${props.theme.spacing.ELEM_SPACING[key]}
+      }
+      .elem--mt__${key} {
+        margin-top: ${props.theme.spacing.ELEM_SPACING[key]}
+      }
+      .elem--pr__${key} {
+        padding-right: ${props.theme.spacing.ELEM_SPACING[key]}
+      }
+      .elem--pb__${key} {
+        padding-bottom: ${props.theme.spacing.ELEM_SPACING[key]}
+      }
+      .elem--pl__${key} {
+        padding-left: ${props.theme.spacing.ELEM_SPACING[key]}
+      }
+      .elem--pt__${key} {
+        padding-top: ${props.theme.spacing.ELEM_SPACING[key]}
+      }`;
+    });
+  }}
+
+  ${props => {
+    return Object.keys(props.theme.spacing.LAYOUT_SPACING).map(key => {
+      return `
+      .layout--pr__${key} {
+        padding-right: ${props.theme.spacing.LAYOUT_SPACING[key]}
+      }
+      .layout--pb__${key} {
+        padding-bottom: ${props.theme.spacing.LAYOUT_SPACING[key]}
+      }
+      .layout--pl__${key} {
+        padding-left: ${props.theme.spacing.LAYOUT_SPACING[key]}
+      }
+      .layout--pt__${key} {
+        padding-top: ${props.theme.spacing.LAYOUT_SPACING[key]}
+      }`;
+    });
+  }}
 `;

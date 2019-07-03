@@ -4,7 +4,7 @@ import ADDRESS_VERIFICATION_CONSTANTS from '../AddressVerification.constants';
 const initialState = fromJS({
   userAddress: null,
   suggestedAddress: null,
-  result: '',
+  resultType: '',
 });
 
 const AddressVerificationReducer = (state = initialState, action) => {
@@ -12,7 +12,7 @@ const AddressVerificationReducer = (state = initialState, action) => {
     case ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS:
       return state
         .set('userAddress', action.payload)
-        .set('resultType', null)
+        .set('resultType', '')
         .set('suggestedAddress', '');
     case ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS_SUCCESS:
       return state

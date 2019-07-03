@@ -3,11 +3,10 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Modal from '../../../../common/molecules/Modal';
 import Button from '../../../../common/atoms/Button';
 import TextBox from '../../../../common/atoms/TextBox';
-import CONSTANTS from '../AddressVerification.constants';
+import BodyCopy from '../../../../common/atoms/BodyCopy';
 import AddressOption from './AddressOption.view';
 import styles from '../styles/AddressVerification.style';
-
-import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
+import CONSTANTS from '../AddressVerification.constants';
 
 // @flow
 
@@ -26,7 +25,7 @@ export class AddressVerification extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      selectedAddress: 'suggestedAddress',
+      selectAddress: 'suggestedAddress',
       optionalAddressLine: '',
     };
 
@@ -37,7 +36,7 @@ export class AddressVerification extends React.Component<Props> {
   }
 
   componentDidUpdate() {
-    if(this.isValidAddress) {
+    if (this.isValidAddress) {
       this.onConfirm();
     }
   }
@@ -72,12 +71,19 @@ export class AddressVerification extends React.Component<Props> {
   });
 
   updateDisplayFlag = (verificationResult, userAddress, suggestedAddress) => {
-    if(verificationResult) {
+    if (verificationResult) {
       const status = CONSTANTS.VERIFY_ADDRESS_STATUS_MAP[verificationResult];
-      this.showOptionalAddressLine = (status === CONSTANTS.VERIFY_ADDRESS_RESULT.APARTMENT_MISSING) || false;
-      this.isValidAddress = (status === CONSTANTS.VERIFY_ADDRESS_RESULT.VALID) || false;
-      this.showInput =  (suggestedAddress && !this.isValidAddress && !this.showOptionalAddressLine) || false;
+      this.showOptionalAddressLine =
+        status === CONSTANTS.VERIFY_ADDRESS_RESULT.APARTMENT_MISSING || false;
+      this.isValidAddress = status === CONSTANTS.VERIFY_ADDRESS_RESULT.VALID || false;
+      this.showInput =
+        (suggestedAddress && !this.isValidAddress && !this.showOptionalAddressLine) || false;
       this.showVerifyModal = !this.isValidAddress || false;
+    } else {
+      this.showOptionalAddressLine = false;
+      this.isValidAddress = false;
+      this.showVerifyModal = false;
+      this.showInput = false;
     }
   };
 
@@ -85,14 +91,16 @@ export class AddressVerification extends React.Component<Props> {
     const { labels } = this.props;
     return (
       <BodyCopy
-        tag="p"
-        bodySize="three"
-        className="textCenter"
+        component="p"
+        fontSize="fs14"
+        textAlign="center"
         color={
-          CONSTANTS.VERIFY_ADDRESS_STATUS_MAP[verificationResult] === CONSTANTS.VERIFY_ADDRESS_RESULT.INVALID_ERROR
-            ? 'tertiary'
+          CONSTANTS.VERIFY_ADDRESS_STATUS_MAP[verificationResult] ===
+          CONSTANTS.VERIFY_ADDRESS_RESULT.INVALID_ERROR
+            ? 'secondary'
             : 'primary'
         }
+        className="elem--mb__XXXL"
       >
         {labels[`verifyStatus${verificationResult}`]}
       </BodyCopy>
@@ -100,13 +108,13 @@ export class AddressVerification extends React.Component<Props> {
   };
 
   onConfirm = () => {
-    const { selectedAddress, optionalAddressLine } = this.state;
+    const { selectAddress, optionalAddressLine } = this.state;
     const { onSuccess, userAddress, suggestedAddress } = this.props;
     let addressPayload;
 
     if (suggestedAddress) {
       addressPayload =
-        selectedAddress === 'userAddress'
+        selectAddress === 'userAddress'
           ? Object.assign({}, userAddress)
           : Object.assign({}, suggestedAddress);
     } else {
@@ -132,18 +140,25 @@ export class AddressVerification extends React.Component<Props> {
 
   renderUserAddress = (verificationResult, userAddress) => {
     const { labels } = this.props;
-    const { selectedAddress } = this.state;
+    const { selectAddress } = this.state;
     return (
-      <div className="addressVerification__section">
-        <BodyCopy tag="p" fontFamily="secondaryFontSemilBoldFamily">
+      <div className="addressVerification__section layout--pl__LRG layout--pr__LRG elem--mb__XL">
+        <BodyCopy
+          component="p"
+          fontFamily="secondary"
+          fontWeight="extrabold"
+          fontSize="fs14"
+          className="elem--mb__SM"
+        >
           {labels.userAddressHeading}
         </BodyCopy>
-        <div className="addressVerification__input">
+        <div className="elem--mb__XL">
           <AddressOption
+            className="addressVerification__input"
             address={userAddress}
-            name='selectAddress'
-            value='userAddress'
-            isSelected={selectedAddress === 'userAddress'}
+            name="selectAddress"
+            value="userAddress"
+            isSelected={selectAddress === 'userAddress'}
             onChange={this.handleChange}
             showInput={this.showInput}
           />
@@ -154,19 +169,26 @@ export class AddressVerification extends React.Component<Props> {
 
   renderSuggestedAddress = (verificationResult, suggestedAddress) => {
     if (this.showInput) {
-      const { selectedAddress } = this.state;
+      const { selectAddress } = this.state;
       const { labels } = this.props;
       return (
-        <div className="addressVerification__section addressVerification__section--noBorder">
-          <BodyCopy tag="p" fontFamily="secondaryFontSemilBoldFamily">
+        <div className="addressVerification__section addressVerification__section--noBorder layout--pl__LRG layout--pr__LRG">
+          <BodyCopy
+            component="p"
+            fontFamily="secondary"
+            fontWeight="extrabold"
+            fontSize="fs14"
+            className="elem--mb__SM"
+          >
             {labels.suggestedAddressHeading}
           </BodyCopy>
-          <div className="addressVerification__input">
+          <div className="elem--mb__XL">
             <AddressOption
+              className="addressVerification__input"
               address={suggestedAddress}
-              name='selectAddress'
-              value='suggestedAddress'
-              isSelected={selectedAddress === 'suggestedAddress'}
+              name="selectAddress"
+              value="suggestedAddress"
+              isSelected={selectAddress === 'suggestedAddress'}
               onChange={this.handleChange}
               showInput
             />
@@ -177,7 +199,7 @@ export class AddressVerification extends React.Component<Props> {
     if (this.showOptionalAddressLine) {
       const { optionalAddressLine } = this.state;
       return (
-        <div>
+        <div className="elem--mb__XL layout--pl__LRG">
           <TextBox
             type="text"
             name="optionalAddressLine"
@@ -193,7 +215,7 @@ export class AddressVerification extends React.Component<Props> {
   };
 
   render() {
-    const { className, heading, verificationResult, userAddress, suggestedAddress, labels } = this.props;
+    const { className, verificationResult, userAddress, suggestedAddress, labels } = this.props;
     this.updateDisplayFlag(verificationResult, userAddress, suggestedAddress);
     if (this.showVerifyModal) {
       return (
@@ -201,16 +223,23 @@ export class AddressVerification extends React.Component<Props> {
           colSet={{ large: 4, medium: 8, small: 6 }}
           isOpen
           onRequestClose={this.onCloseModal}
-          title={heading}
           overlayClassName="TCPModal__Overlay"
           className={`${className} TCPModal__Content`}
         >
-          <div className="addressVerification">
-            <h3 className="textCenter">Verify your Address</h3>
+          <div className="addressVerification layout--pl__XS layout--pr__XS">
+            <BodyCopy
+              component="p"
+              fontSize="fs22"
+              fontWeight="semibold"
+              textAlign="center"
+              className="elem--mb__LRG"
+            >
+              {labels.verifyYourAddressHeading}
+            </BodyCopy>
             {this.getMessage(verificationResult, suggestedAddress)}
             {this.renderUserAddress(verificationResult, userAddress, suggestedAddress)}
             {this.renderSuggestedAddress(verificationResult, suggestedAddress)}
-            <div>
+            <div className="layout--pl__XL layout--pr__XL">
               <Button
                 className="addressVerification__cta"
                 buttonVariation="variable-width"
