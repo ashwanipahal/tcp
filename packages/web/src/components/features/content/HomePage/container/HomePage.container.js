@@ -9,8 +9,8 @@ HomePageView.getInitActions = () => initActions;
 
 const mapStateToProps = state => {
   return {
-    slot_1: state.GlobalReducers.homepage.slot_1,
-    slot_2: state.GlobalReducers.homepage.slot_2,
+    slot_1: state.layouts.slot_1,
+    slot_2: state.layouts.slot_2,
     links: state.HomePageReducer.links,
   };
 };
