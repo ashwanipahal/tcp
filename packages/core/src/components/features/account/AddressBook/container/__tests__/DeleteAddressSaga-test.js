@@ -7,7 +7,7 @@ import {
   setDeleteModalMountedState,
 } from '../AddressBook.actions';
 
-describe('DeleteModalSaga', () => {
+describe('DeleteAddressSaga', () => {
   describe('deleteAddress', () => {
     let deleteAddressGen;
     const payload = {
