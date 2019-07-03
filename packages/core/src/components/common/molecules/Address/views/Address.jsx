@@ -33,15 +33,17 @@ const Address = ({ address, className, dataLocatorPrefix }: Props) => (
     >
       {`${address.firstName} ${address.lastName}`}
     </BodyCopy>
-    {address.addressLine.map((addressLine, index) => (
-      <BodyCopy
-        component="p"
-        dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressl${index}` : ''}
-        fontFamily="secondary"
-      >
-        {addressLine}
-      </BodyCopy>
-    ))}
+    {address.addressLine
+      .filter(al => al.trim() !== '')
+      .map((addressLine, index) => (
+        <BodyCopy
+          component="p"
+          dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressl${index}` : ''}
+          fontFamily="secondary"
+        >
+          {addressLine}
+        </BodyCopy>
+      ))}
     <BodyCopy
       component="p"
       dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-cityfullname` : ''}
