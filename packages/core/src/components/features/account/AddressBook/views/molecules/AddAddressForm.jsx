@@ -7,7 +7,7 @@ import SelectBox from '../../../../../common/atoms/Select';
 import Row from '../../../../../common/atoms/Row';
 import Col from '../../../../../common/atoms/Col';
 import Button from '../../../../../common/atoms/Button';
-import errors from '../../../../../../utils/errorsMsg';
+
 import {
   required,
   minValue10,
@@ -41,7 +41,7 @@ type State = {
 };
 // const AddressValidationForm = ({ handleSubmit, pristine, reset, submitting }: Props): Node => (
 
-export class AddAddressForm extends React.PureComponent<Props, State> {
+class AddAddressForm extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.handleBlur = this.handleBlur.bind(this);
@@ -98,7 +98,6 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
         <Row>
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
-              errors={errors}
               placeholder="First Name"
               name="FirstName"
               type="text"
@@ -139,7 +138,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               placeholder="Address Line 2( Optional )"
               name="address-2"
               component={TextBox}
-              validate={[isSpecialChar]}
+              validate={[specialChar]}
               maxLength={30}
             />
           </Col>
@@ -231,9 +230,10 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
           </Col>
           <Col className="submit" colSize={{ small: 6, medium: 1, large: 3 }}>
             <Button
-              fill="BLUE"
+              ButtonColor="BLUE"
               disabled={pristine || submitting}
               type="submit"
+              text="BLUE"
               buttonVariation="fixed-width"
             >
               Add Address

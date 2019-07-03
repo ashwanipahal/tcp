@@ -52,8 +52,9 @@ export function* addAddressGet({ payload }) {
     if (res) {
       return yield put(addAddressSuccess());
     }
+    return yield put(addAddressFail());
   } catch (err) {
-    yield put(addAddressFail(err));
+    return yield put(addAddressFail(err));
   }
 }
 
