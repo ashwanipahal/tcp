@@ -6,7 +6,7 @@ exports[`Textbox component renders correctly 1`] = `
   htmlFor=""
 >
   <input
-    Value="hello"
+    Value="hello sonar"
     aria-label=""
     className="TextBox__input"
     id="abcd"
@@ -14,7 +14,7 @@ exports[`Textbox component renders correctly 1`] = `
     name=""
     placeholder=""
     type="text"
-    value="hello"
+    value="hello sonar"
   />
   <Styled(BodyStyle)
     BodycolorLg="primary"
