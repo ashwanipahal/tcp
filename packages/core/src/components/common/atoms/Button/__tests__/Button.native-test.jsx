@@ -3,16 +3,10 @@ import { shallow } from 'enzyme';
 import Button from '../views/Button.native';
 
 describe('Button', () => {
-  const props = {
-    id: 'btn',
-    name: 'button test',
-    buttonVariation: 'fixed-width',
-  };
-
-  let component = null;
+  let component;
 
   beforeEach(() => {
-    component = shallow(<Button {...props} />);
+    component = shallow(<Button />);
   });
 
   it('should be defined', () => {
