@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
-import RichText from '@tcp/core/src/components/common/atoms/RichText';
+import { Anchor, RichText } from '@tcp/core/src/components/common/atoms';
 import CarouselConfig from '@tcp/web/src/config/carousel';
-import { getLocator } from '@tcp/web/src/utils';
+import { getLocator } from '@tcp/core/src/utils';
 import style from '../PromotionalArea.style';
 
 const PromotionalArea = ({ className, data, mobile }) => {
@@ -20,12 +20,18 @@ const PromotionalArea = ({ className, data, mobile }) => {
       <div className={wrapperClass}>
         <Carousel options={carouselConfig} carouselConfig={{ type: 'dark', arrow: 'small' }}>
           {data.map(promotion => {
+            const {
+              richText: { text, __typename },
+              link: { url, target },
+            } = promotion;
             return (
-              <RichText
-                key={promotion.id}
-                richTextHtml={promotion.text}
-                dataLocator={getLocator('global_promoareaimg')}
-              />
+              <Anchor to={url} target={target}>
+                <RichText
+                  key={__typename}
+                  richTextHtml={text}
+                  dataLocator={getLocator('global_promoareaimg')}
+                />
+              </Anchor>
             );
           })}
         </Carousel>

@@ -4,7 +4,12 @@ import Header from '../views';
 
 describe('Header component', () => {
   it('renders correctly', () => {
-    const component = shallow(<Header />);
+    const component = shallow(
+      <Header
+        headerTopNav={{ composites: {} }}
+        headerPromoArea={{ composites: { promoTextBanner: {} } }}
+      />
+    );
     expect(component).toMatchSnapshot();
   });
 });

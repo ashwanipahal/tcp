@@ -1,3 +1,7 @@
+/* THIS COMPONENT HAS BEEN DEPRECATED AND WILL BE REMOVED ON FUTURE RELEASE.
+   PLEASE USE Heading, and BodyCopy from the core Atoms
+*/
+
 import styled from 'styled-components';
 import { HeadingStyle, BodyStyle } from '@tcp/core/styles/globalStyles/typography';
 import theme from '@tcp/core/styles/themes/TCP';

@@ -4,6 +4,7 @@ const ignorePsuedoCodeDir = [
   '/mobileapp/',
   '/LoginPage/',
   '/server/',
+  '/service/',
 ];
 
 module.exports = {
@@ -31,7 +32,9 @@ module.exports = {
     '!**/*.constants.js',
     '!**/*.config.js',
     '!**/core/styles/**',
-    '!**/*.action.js',
+    '!**/*.actions.js',
+    '!**/*.query.js',
+    '!**/__mocks__/**',
   ],
   coveragePathIgnorePatterns: [
     '/node_modules/',
@@ -40,6 +43,7 @@ module.exports = {
     'mock.js',
     '/flow-typed/',
     '/pages/',
+    'Carousel.jsx',
     ...ignorePsuedoCodeDir,
   ],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],

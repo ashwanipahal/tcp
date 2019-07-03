@@ -16,7 +16,7 @@ const Item = styled.h3`
 
 const SampleCarousel = ({ props }) => (
   <Fragment>
-    <Carousel options={props}>
+    <Carousel options={props} carouselConfig={{ type: 'light', arrow: 'small' }}>
       <Row>
         <Item>Slide item 1</Item>
       </Row>

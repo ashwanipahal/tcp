@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getLocator } from '@tcp/web/src/utils';
+import { getLocator } from '@tcp/core/src/utils';
 import style from '../LegalLinks.style';
 
 const LegalLinks = ({ className, links }) => (
@@ -11,7 +11,7 @@ const LegalLinks = ({ className, links }) => (
       {links.map(link => (
         <li data-locator={getLocator(link.name)}>
           <Anchor anchorVariation="primary" to={link.url} target={link.target}>
-            {link.text}
+            {link.title}
           </Anchor>
         </li>
       ))}

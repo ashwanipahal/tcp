@@ -20,6 +20,10 @@ async function fetchData(baseURL, relURL, params = {}, method) {
     if (params.nickName) {
       reqSetting.nickName = params.nickName;
     }
+
+    if (params.fromPage) {
+      reqSetting.fromPage = params.fromPage;
+    }
   }
   const request = superagent[requestType](requestUrl)
     .set(reqSetting)
@@ -40,6 +44,7 @@ async function fetchData(baseURL, relURL, params = {}, method) {
         resolve(response);
       })
       .catch(e => {
+        // eslint-disable-next-line no-console
         console.log(e);
       });
   });

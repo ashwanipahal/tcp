@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import { getIconPath } from '../../../../../utils';
 import Anchor from '../../../../common/atoms/Anchor';
 import Image from '../../../../common/atoms/Image';
 import styles from '../FooterNavHeader.style';
@@ -37,7 +38,7 @@ const FooterNavHeader = ({
   }
   return (
     <Anchor to={titleObj.url} className={`${className} img-link`} data-locator={titleObj.url}>
-      <Image alt={titleObj.image_alt} src={`/static/images/${titleObj.image_url}`} />
+      <Image alt={titleObj.image_alt} src={getIconPath(titleObj.class)} />
     </Anchor>
   );
 };

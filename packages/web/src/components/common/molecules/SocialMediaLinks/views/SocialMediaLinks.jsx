@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Image from '@tcp/core/src/components/common/atoms/Image';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getIconPath, getLocator } from '@tcp/web/src/utils';
+import { getIconPath, getLocator } from '@tcp/core/src/utils';
 import style from '../SocialMediaLinks.style';
 
 const SocialMediaLinks = ({ className, connectWithUsLabel, links }) => (
@@ -19,7 +19,7 @@ const SocialMediaLinks = ({ className, connectWithUsLabel, links }) => (
               <Image
                 className="social-media-icon"
                 data-locator={getLocator(link.iconClass)}
-                src={getIconPath(link.iconClass)}
+                src={getIconPath(link.class)}
                 alt={link.title}
               />
             </Anchor>

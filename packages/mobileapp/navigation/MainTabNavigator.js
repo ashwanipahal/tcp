@@ -8,6 +8,7 @@ import Plp from '../screens/PLPScreen';
 import PlpDeltaSync from '../screens/PLPDeltaSyncScreen';
 
 import SettingsScreen from '../screens/SettingsScreen';
+import LoginSync from '../screens/LoginSync';
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -49,6 +50,17 @@ PlpDeltaSyncStack.navigationOptions = {
   ),
 };
 
+const Login = createStackNavigator({
+  LoginSync,
+});
+
+Login.navigationOptions = {
+  tabBarLabel: 'Login',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+  ),
+};
+
 const SettingsStack = createStackNavigator({
   Settings: SettingsScreen,
 });
@@ -65,4 +77,5 @@ export default createBottomTabNavigator({
   PlpStack,
   PlpDeltaSyncStack,
   SettingsStack,
+  Login,
 });
