@@ -7,8 +7,8 @@ const CloseButton = styled.button`
   border: none;
   cursor: pointer;
   position: absolute;
-  right: 25px;
-  top: 25px;
+  right: 15px;
+  top: 15px;
   height: 15px;
   width: 15px;
 `;
