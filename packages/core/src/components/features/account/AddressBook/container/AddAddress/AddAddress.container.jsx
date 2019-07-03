@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { connect } from 'react-redux';
-import { addAddressReq } from './AddAddress.actions';
+import { addAddressReq, updateAddressReq } from './AddAddress.actions';
 import AddAddress from '../../views/AddAddress.view';
 import showMessageForAddAddress from './AddAddress.selectors';
 
@@ -11,6 +11,8 @@ type Props = {
   AddAddresslabels: any,
   backToAddressBookClick: any,
   initialValues: any,
+  isEditingAddress: boolean,
+  submitUpdateAddressForm: () => void,
 };
 
 export const AddaddressContainer = ({
@@ -19,14 +21,17 @@ export const AddaddressContainer = ({
   AddAddresslabels,
   backToAddressBookClick,
   initialValues,
+  isEditingAddress,
+  submitUpdateAddressForm,
 }: Props) => {
   return (
     <AddAddress
       backToAddressBookClick={backToAddressBookClick}
       AddAddresslabels={AddAddresslabels}
       addAddressNotification={addAddressNotification}
-      submitAddAddressForm={submitAddAddressForm}
+      submitAddAddressForm={!isEditingAddress ? submitAddAddressForm : submitUpdateAddressForm}
       initialValues={initialValues}
+      isEditingAddress={isEditingAddress}
     />
   );
 };
@@ -35,6 +40,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
   return {
     submitAddAddressForm: payload => {
       dispatch(addAddressReq(payload));
+    },
+    submitUpdateAddressForm: payload => {
+      dispatch(updateAddressReq(payload));
     },
   };
 };

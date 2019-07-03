@@ -16,6 +16,7 @@ type Props = {
   AddAddresslabels: any,
   backToAddressBookClick: any,
   initialValues: any,
+  isEditingAddress: boolean,
 };
 const AddAddress = ({
   className,
@@ -24,6 +25,7 @@ const AddAddress = ({
   AddAddresslabels,
   backToAddressBookClick,
   initialValues,
+  isEditingAddress,
 }: Props) => {
   const msgInfo = JSON.parse(`${addAddressNotification}`);
   return (
@@ -61,6 +63,7 @@ const AddAddress = ({
             backToAddressBookClick={backToAddressBookClick}
             onSubmit={submitAddAddressForm}
             initialValues={initialValues}
+            isEditingAddress={isEditingAddress}
           />
         </Grid>
       </form>

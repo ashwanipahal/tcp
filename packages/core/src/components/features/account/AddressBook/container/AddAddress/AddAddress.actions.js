@@ -19,3 +19,10 @@ export const addAddressFail = () => {
     type: ADD_ADDRESS_CONSTANTS.ADD_USER_ADDRESS_FAIL,
   };
 };
+
+export const updateAddressReq = (payload: {}) => {
+  return {
+    type: ADD_ADDRESS_CONSTANTS.UPDATE_USER_ADDRESS_REQ,
+    payload,
+  };
+};

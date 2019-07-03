@@ -17,3 +17,7 @@ export const showAddAddressComponent = state => {
 export const getEditAddressItem = state => {
   return state.AddressBookReducer.get('editAddressItem');
 };
+
+export const getEditAddressActive = state => {
+  return state.AddressBookReducer.get('isEditingAddress');
+};

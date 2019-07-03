@@ -30,6 +30,7 @@ type Props = {
   className: any,
   dispatch: Function,
   backToAddressBookClick: any,
+  isEditingAddress: boolean,
 };
 
 type State = {
@@ -91,7 +92,14 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { handleSubmit, pristine, submitting, className, backToAddressBookClick } = this.props;
+    const {
+      handleSubmit,
+      pristine,
+      submitting,
+      className,
+      backToAddressBookClick,
+      isEditingAddress,
+    } = this.props;
     const { city, zip, state, country } = this.state;
     return (
       <form className={className} onSubmit={handleSubmit}>
@@ -100,7 +108,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
             <Field
               errors={errors}
               placeholder="First Name"
-              name="FirstName"
+              name="firstName"
               type="text"
               component={TextBox}
               label="First-Nam"
@@ -112,7 +120,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
               placeholder="Last Name"
-              name="LastName"
+              name="lastName"
               component={TextBox}
               validate={[required, isSpecialChar]}
               onBlur={this.handleBlur}
@@ -127,7 +135,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               id="addressField"
               placeholder="Address Line 1"
               component={AutoCompleteComponent}
-              name="address1"
+              name="addressLine1"
               validate={[required]}
               onPlaceSelected={this.handlePlaceSelected}
               onBlur={this.handleBlur}
@@ -137,7 +145,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
               placeholder="Address Line 2( Optional )"
-              name="address-2"
+              name="addressLine2"
               component={TextBox}
               validate={[isSpecialChar]}
               maxLength={30}
@@ -213,12 +221,12 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
               className="checkbox-align"
-              name="default-ship"
+              name="defaultShip"
               id="default-ship"
               component={TextBox}
               type="checkbox"
             />
-            <BodyCopy tag="span">Set as default shipping addres</BodyCopy>
+            <BodyCopy tag="span">Set as default shipping address</BodyCopy>
           </Col>
         </Row>
         <br />
@@ -235,7 +243,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               type="submit"
               buttonVariation="fixed-width"
             >
-              Add Address
+              {isEditingAddress ? 'Update Address' : 'Add Address'}
             </Button>
           </Col>
         </Row>

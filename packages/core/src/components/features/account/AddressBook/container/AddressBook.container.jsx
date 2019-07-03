@@ -14,6 +14,7 @@ import {
   showDefaultShippingUpdatedState,
   showAddAddressComponent,
   getEditAddressItem,
+  getEditAddressActive,
 } from './AddressBook.selectors';
 import labels from './AddressBook.labels';
 import AddAddresslabels from './AddAddress/AddAddress.labels';
@@ -33,6 +34,7 @@ type Props = {
   backToAddressBookClick: any,
   editAddress: any,
   onEditAddressClick: () => void,
+  isEditingAddress: boolean,
 };
 
 export class AddressBookContainer extends React.Component<Props> {
@@ -53,20 +55,21 @@ export class AddressBookContainer extends React.Component<Props> {
       backToAddressBookClick,
       onEditAddressClick,
       editAddress,
+      isEditingAddress,
     } = this.props;
     let formInitialValue = {};
-    if (editAddress.hasOwnProperty('firstName')) {
+    if (isEditingAddress) {
       formInitialValue = {
-        FirstName: editAddress.firstName,
-        LastName: editAddress.lastName,
-        address1: editAddress.addressLine.join(' '),
-        'address-2': '',
+        firstName: editAddress.firstName,
+        lastName: editAddress.lastName,
+        addressLine1: editAddress.addressLine.join(' '),
+        addressLine2: '',
         city: editAddress.city,
         state: editAddress.state,
         zip: editAddress.zipCode,
         country: editAddress.country === 'US' ? 'United States' : 'Canada',
-        'phone-number': editAddress.phone1,
-        'default-ship': editAddress.addressType !== 'ShippingAndBilling',
+        phoneNumber: editAddress.phone1,
+        defaultShip: editAddress.primary === 'true',
       };
     }
 
@@ -86,13 +89,14 @@ export class AddressBookContainer extends React.Component<Props> {
       );
     }
 
-    if (addAddressLoaded || editAddress.hasOwnProperty('firstName')) {
+    if (addAddressLoaded || isEditingAddress) {
       return (
         <AddAddressContainer
           AddAddresslabels={AddAddresslabels}
           addAddressNotification={addAddressNotification}
           backToAddressBookClick={backToAddressBookClick}
           initialValues={formInitialValue}
+          isEditingAddress={isEditingAddress}
         />
       );
     }
@@ -128,6 +132,7 @@ const mapStateToProps = state => {
     addAddressLoaded: showAddAddressComponent(state),
     backToAddressBookClick: showAddAddressComponent(state),
     editAddress: getEditAddressItem(state),
+    isEditingAddress: getEditAddressActive(state),
   };
 };
 
