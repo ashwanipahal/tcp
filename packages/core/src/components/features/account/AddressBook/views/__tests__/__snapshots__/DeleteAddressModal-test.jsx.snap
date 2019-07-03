@@ -30,7 +30,7 @@ exports[`Delete Address Modal should render correctly 1`] = `
           "lastName": "test",
         }
       }
-      className="deleteAddressModal_deleteAddress"
+      className="deleteAddressModal_addressToDelete"
     />
     <div
       className="deleteAddressModal_btnWrapper"

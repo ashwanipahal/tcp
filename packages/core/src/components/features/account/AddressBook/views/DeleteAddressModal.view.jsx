@@ -72,7 +72,7 @@ class DeleteAddressModal extends React.Component<Props> {
         >
           {title}
         </BodyCopy>
-        <Address address={description} className="deleteAddressModal_deleteAddress" />
+        <Address address={description} className="deleteAddressModal_addressToDelete" />
         <div className="deleteAddressModal_btnWrapper">
           <Button
             buttonVariation="variable-width"

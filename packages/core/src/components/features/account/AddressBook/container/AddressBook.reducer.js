@@ -23,7 +23,7 @@ const updateAddressList = (state, action) => {
     });
     updatedAddressList = updatedAddressList.set(0, addressObject);
   }
-  return List(updatedAddressList);
+  return updatedAddressList;
 };
 
 const AddressBookReducer = (state = initialState, action) => {

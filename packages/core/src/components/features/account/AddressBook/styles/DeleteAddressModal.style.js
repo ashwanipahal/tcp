@@ -13,7 +13,7 @@ const DeleteAddressModalStyle = css`
       width: 100%;
     }
   }
-  .deleteAddressModal_deleteAddress {
+  .deleteAddressModal_addressToDelete {
     margin: 0 ${props => props.theme.spacing.LAYOUT_SPACING.XL}
       ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
     display: block;
