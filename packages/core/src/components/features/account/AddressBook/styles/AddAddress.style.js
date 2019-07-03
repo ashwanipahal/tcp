@@ -19,6 +19,7 @@ const styles = css`
     .button_wrapper {
       margin: 0 auto;
       width: 60%;
+      display: block;
       .cancel {
         padding-right: 0;
         margin: 10px 0;

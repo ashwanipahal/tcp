@@ -27,7 +27,6 @@ const StyledRow = css`
           margin-right: ${props.theme.gridDimensions.gridOffsetObj[key]}px;
           margin-left: ${props.theme.gridDimensions.gridOffsetObj[key]}px;
           width: calc(100% - ${props.theme.gridDimensions.gridOffsetObj[key] * 2}px);
-          overflow: hidden;
           `
       }
     }`
@@ -37,9 +36,6 @@ const StyledRow = css`
     padding-right: 0;
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
-  @media ${props => props.theme.mediaQuery.large} {
-    overflow: unset;
-  }
 `;
 
 export default StyledRow;

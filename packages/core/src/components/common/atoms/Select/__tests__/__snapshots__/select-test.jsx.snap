@@ -1,9 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Selectbox component renders correctly 1`] = `
-<label
+<div
   className="asdfasdf active select-fields-wrapper"
-  htmlFor=""
 >
   <select
     aria-label=""
@@ -14,11 +13,13 @@ exports[`Selectbox component renders correctly 1`] = `
     value="hi"
   >
     <option
-      id=""
-      key=""
+      id="US"
+      key="US"
       selected=""
-      value=""
-    />
+      value="United States"
+    >
+      United States
+    </option>
     <option
       id="CA"
       key="CA"
@@ -36,13 +37,12 @@ exports[`Selectbox component renders correctly 1`] = `
   >
     placeholder
   </Styled(BodyStyle)>
-</label>
+</div>
 `;
 
 exports[`Selectbox component renders correctly with touched and error 1`] = `
-<label
+<div
   className="asdfasdf  select-fields-wrapper"
-  htmlFor=""
 >
   <select
     aria-label=""
@@ -53,33 +53,44 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
     name=""
   >
     <option
-      id=""
-      key=""
+      id="US"
+      key="US"
+      selected="selected"
+      value="United States"
+    >
+      United States
+    </option>
+    <option
+      id="CA"
+      key="CA"
       selected=""
-      value=""
-    />
+      value="Canada"
+    >
+      Canada
+    </option>
   </select>
   <Styled(BodyStyle)
     BodycolorLg="primary"
     FormVariation="float"
     bodySize="two"
     tag="div"
-  />
+  >
+    first name
+  </Styled(BodyStyle)>
   <Styled(BodyStyle)
     ErrorMsg="error"
     bodySize="two"
     clearFloat={true}
     tag="div"
   >
-    this is an error
+    Please enter a first name
   </Styled(BodyStyle)>
-</label>
+</div>
 `;
 
 exports[`Selectbox component renders correctly with touched and warning 1`] = `
-<label
+<div
   className="asdfasdf  select-fields-wrapper"
-  htmlFor=""
 >
   <select
     aria-label=""
@@ -90,11 +101,13 @@ exports[`Selectbox component renders correctly with touched and warning 1`] = `
     name=""
   >
     <option
-      id=""
-      key=""
-      selected=""
-      value=""
-    />
+      id="US"
+      key="US"
+      selected="selected"
+      value="United States"
+    >
+      United States
+    </option>
     <option
       id="CA"
       key="CA"
@@ -116,5 +129,5 @@ exports[`Selectbox component renders correctly with touched and warning 1`] = `
   >
     this is a warning
   </Styled(BodyStyle)>
-</label>
+</div>
 `;
