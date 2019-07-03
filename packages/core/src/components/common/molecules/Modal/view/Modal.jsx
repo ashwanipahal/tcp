@@ -14,6 +14,7 @@ import ModalHeader from './ModalHeader';
 import styles from '../Modal.style';
 import Config from '../Modal.config';
 import withStyles from '../../../hoc/withStyles';
+import errorBoundary from '../../../hoc/errorBoundary';
 
 function getParent() {
   return document.querySelector('.TCPModal__Wrapper');
@@ -53,5 +54,5 @@ Modal.propTypes = {
   children: PropTypes.element.isRequired,
 };
 
-export default withStyles(Modal, styles);
+export default errorBoundary(withStyles(Modal, styles));
 export { Modal as ModalVanilla };
