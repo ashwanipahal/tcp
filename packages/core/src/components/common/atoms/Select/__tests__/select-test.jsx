@@ -5,6 +5,9 @@ import { SelectBoxVanilla } from '../views/Select';
 describe('Selectbox component', () => {
   it('renders correctly', () => {
     const props = {
+      name: '',
+      placeholder: 'placeholder',
+      Value: 'hi',
       type: 'text',
       id: 'abcd',
       className: 'asdfasdf',
@@ -13,7 +16,6 @@ describe('Selectbox component', () => {
           id: '',
           displayName: '',
         },
-        { id: 'US', displayName: 'United States' },
         { id: 'CA', displayName: 'Canada' },
       ],
       meta: {
@@ -38,8 +40,6 @@ describe('Selectbox component', () => {
           id: '',
           displayName: '',
         },
-        { id: 'US', displayName: 'United States' },
-        { id: 'CA', displayName: 'Canada' },
       ],
       meta: {
         touched: true,
@@ -62,7 +62,6 @@ describe('Selectbox component', () => {
           id: '',
           displayName: '',
         },
-        { id: 'US', displayName: 'United States' },
         { id: 'CA', displayName: 'Canada' },
       ],
       meta: {
