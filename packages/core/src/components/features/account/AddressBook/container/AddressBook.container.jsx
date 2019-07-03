@@ -1,24 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { List } from 'immutable';
-import { getAddressList } from './AddressBook.actions';
+import { getAddressList, deleteAddress, setDeleteModalMountedState } from './AddressBook.actions';
 import AddressBookComponent from '../views/AddressBook.view';
 import {
   getAddressListState,
   getAddressListFetchingState,
-  showDefaultShippingUpdatedState,
+  showUpdatedNotificationState,
+  deleteModalOpenState,
+  showUpdatedNotificationOnModalState,
 } from './AddressBook.selectors';
 import labels from './AddressBook.labels';
 import { setDefaultShippingAddressRequest } from './DefaultShippingAddress.actions';
 
 // @flow
-
 type Props = {
   getAddressListAction: () => void,
   addressList: List<any>,
   isFetching: boolean,
   onDefaultShippingAddressClick: () => void,
-  showDefaultShippingUpdatedMsg: any,
+  showUpdatedNotification: any,
+  onDeleteAddress: Function,
+  deleteModalMountedState: boolean,
+  setDeleteModalMountState: Function,
+  showUpdatedNotificationOnModal: any,
 };
 
 export class AddressBookContainer extends React.Component<Props> {
@@ -32,7 +37,11 @@ export class AddressBookContainer extends React.Component<Props> {
       addressList,
       isFetching,
       onDefaultShippingAddressClick,
-      showDefaultShippingUpdatedMsg,
+      showUpdatedNotification,
+      onDeleteAddress,
+      deleteModalMountedState,
+      setDeleteModalMountState,
+      showUpdatedNotificationOnModal,
     } = this.props;
     if (isFetching) {
       return <p>Loading...</p>;
@@ -43,7 +52,11 @@ export class AddressBookContainer extends React.Component<Props> {
           addresses={addressList}
           labels={labels}
           onDefaultShippingAddressClick={onDefaultShippingAddressClick}
-          showDefaultShippingUpdatedMsg={showDefaultShippingUpdatedMsg}
+          showUpdatedNotification={showUpdatedNotification}
+          onDeleteAddress={onDeleteAddress}
+          deleteModalMountedState={deleteModalMountedState}
+          setDeleteModalMountState={setDeleteModalMountState}
+          showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
         />
       );
     }
@@ -59,6 +72,12 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     onDefaultShippingAddressClick: payload => {
       dispatch(setDefaultShippingAddressRequest(payload));
     },
+    onDeleteAddress: payload => {
+      dispatch(deleteAddress(payload));
+    },
+    setDeleteModalMountState: payload => {
+      dispatch(setDeleteModalMountedState(payload));
+    },
   };
 };
 
@@ -66,7 +85,9 @@ const mapStateToProps = state => {
   return {
     addressList: getAddressListState(state),
     isFetching: getAddressListFetchingState(state),
-    showDefaultShippingUpdatedMsg: showDefaultShippingUpdatedState(state),
+    showUpdatedNotification: showUpdatedNotificationState(state),
+    showUpdatedNotificationOnModal: showUpdatedNotificationOnModalState(state),
+    deleteModalMountedState: deleteModalOpenState(state),
   };
 };
 

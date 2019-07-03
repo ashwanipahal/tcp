@@ -8,6 +8,7 @@ import Col from '../../../../common/atoms/Col';
 import Button from '../../../../common/atoms/Button';
 import AddressListComponent from './AddressList.view';
 import EmptyAddressListComponent from './EmptyAddressList.view';
+import DeleteAddressModal from './DeleteAddressModal.view';
 import Notification from '../../../../common/molecules/Notification';
 
 // @flow
@@ -19,71 +20,112 @@ type Props = {
   },
   className: string,
   onDefaultShippingAddressClick: Object,
-  showDefaultShippingUpdatedMsg: Boolean,
+  showUpdatedNotification: any,
+  showUpdatedNotificationOnModal: any,
+  onDeleteAddress: Function,
+  deleteModalMountedState: false,
+  setDeleteModalMountState: Function,
 };
 
-export const AddressBook = ({
-  addresses,
-  labels,
-  className,
-  onDefaultShippingAddressClick,
-  showDefaultShippingUpdatedMsg,
-}: Props) => {
-  return (
-    <div className={className}>
-      <Row fullBleed>
-        <Col
-          colSize={{
-            small: 6,
-            large: 12,
-            medium: 8,
-          }}
-        >
-          <Heading
-            fontFamily="secondaryFontFamily"
-            HeadingLarge="six"
-            tag="h4"
-            className="addressBook__separator"
+export class AddressBook extends React.PureComponent<Props> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      selectedAddress: {},
+    };
+  }
+
+  setSelectedAddress = address => {
+    this.setState({ selectedAddress: address });
+  };
+
+  render() {
+    const {
+      addresses,
+      labels,
+      className,
+      onDefaultShippingAddressClick,
+      showUpdatedNotification,
+      onDeleteAddress,
+      deleteModalMountedState,
+      setDeleteModalMountState,
+      showUpdatedNotificationOnModal,
+    } = this.props;
+    const { selectedAddress } = this.state;
+
+    return (
+      <div className={className}>
+        <Row fullBleed>
+          <Col
+            colSize={{
+              small: 6,
+              large: 12,
+              medium: 8,
+            }}
           >
-            {labels.addressBookHeading}
-          </Heading>
-          {addresses.size === 0 && <EmptyAddressListComponent labels={labels} />}
-        </Col>
-      </Row>
+            <Heading
+              fontFamily="secondaryFontFamily"
+              HeadingLarge="six"
+              tag="h4"
+              className="addressBook__separator"
+            >
+              {labels.addressBookHeading}
+            </Heading>
+            {addresses.size === 0 && <EmptyAddressListComponent labels={labels} />}
+          </Col>
+        </Row>
 
-      <Row fullBleed className="addressBook__row--marginBottom">
-        <Col
-          colSize={{
-            small: 6,
-            large: 10,
-            medium: 8,
+        <Row fullBleed className="addressBook__row--marginBottom">
+          <Col
+            colSize={{
+              small: 6,
+              large: 10,
+              medium: 8,
+            }}
+            className="addressBook__addNewCtaContainer"
+          >
+            <Button buttonVariation="variable-width" fill="BLUE">
+              {labels.addNewAddressCTA}
+            </Button>
+          </Col>
+        </Row>
+        {showUpdatedNotification !== null && (
+          <Notification
+            status={showUpdatedNotification}
+            colSize={{ large: 12, medium: 8, small: 6 }}
+            message={
+              showUpdatedNotification === 'success' ? labels.successMessage : labels.errorMessage
+            }
+          />
+        )}
+        {addresses.size > 0 && (
+          <AddressListComponent
+            addresses={addresses}
+            labels={labels}
+            deleteModalMountedState={deleteModalMountedState}
+            setSelectedAddress={this.setSelectedAddress}
+            onDefaultShippingAddressClick={onDefaultShippingAddressClick}
+            setDeleteModalMountState={setDeleteModalMountState}
+          />
+        )}
+        <DeleteAddressModal
+          openState={deleteModalMountedState}
+          data={{
+            heading: labels.deleteAddressHeading,
+            title: labels.deleteAddressTitle,
+            description: selectedAddress,
+            buttons: {
+              cancel: labels.cancel,
+              confirm: labels.deleteConfirm,
+            },
           }}
-          className="addressBook__addNewCtaContainer"
-        >
-          <Button buttonVariation="variable-width" fill="BLUE">
-            {labels.addNewAddressCTA}
-          </Button>
-        </Col>
-      </Row>
-      {showDefaultShippingUpdatedMsg !== null && (
-        <Notification
-          status={showDefaultShippingUpdatedMsg ? 'success' : 'error'}
-          colSize={{ large: 12, medium: 8, small: 6 }}
-          message={
-            showDefaultShippingUpdatedMsg
-              ? labels.defaultShippingSuccessMessage
-              : labels.defaultShippingSuccessFail
-          }
-        />
-      )}
-      {addresses.size > 0 && (
-        <AddressListComponent
-          addresses={addresses}
+          setDeleteModalMountState={setDeleteModalMountState}
           labels={labels}
-          onDefaultShippingAddressClick={onDefaultShippingAddressClick}
+          onDeleteAddress={onDeleteAddress}
+          showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
         />
-      )}
-    </div>
-  );
-};
+      </div>
+    );
+  }
+}
 export default withStyles(AddressBook, styles);

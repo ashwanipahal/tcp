@@ -28,12 +28,24 @@ describe('Address List reducer', () => {
       {
         nickName: payload.nickName,
         primary: 'false',
+        addressId: '158245',
+      },
+      {
+        nickName: '123456788',
+        primary: 'false',
+        addressId: '158246',
       },
     ];
     const addreListWithTrue = List([
       {
         nickName: payload.nickName,
         primary: 'true',
+        addressId: '158247',
+      },
+      {
+        nickName: '123456788',
+        primary: 'false',
+        addressId: '158246',
       },
     ]);
     const initialState = fromJS({
@@ -48,7 +60,7 @@ describe('Address List reducer', () => {
     ).toEqual(
       fromJS({
         list: addreListWithTrue,
-        showDefaultShippingUpdatedMsg: true,
+        showUpdatedNotification: 'success',
       })
     );
   });
@@ -68,7 +80,84 @@ describe('Address List reducer', () => {
     ).toEqual(
       fromJS({
         error,
-        showDefaultShippingUpdatedMsg: false,
+        showUpdatedNotification: 'error',
+      })
+    );
+  });
+  it('should update address on delete', () => {
+    const payload = {
+      addressId: ['158247'],
+    };
+    addressList = [
+      {
+        nickName: '987654321',
+        primary: 'false',
+        addressId: '158247',
+      },
+      {
+        nickName: '123456788',
+        primary: 'false',
+        addressId: '158246',
+      },
+    ];
+    const updatedAddressList = List([
+      {
+        nickName: '123456788',
+        primary: 'true',
+        addressId: '158246',
+      },
+    ]);
+    const initialState = fromJS({
+      list: List(addressList),
+    });
+    expect(
+      AddressBookReducer(initialState, {
+        type: ADDRESS_BOOK_CONSTANTS.UPDATE_ADDRESS_LIST_ON_DELETE,
+        payload,
+      })
+    ).toEqual(
+      fromJS({
+        list: updatedAddressList,
+        showUpdatedNotification: 'success',
+      })
+    );
+  });
+  it('should handle failure delete address', () => {
+    const error = fromJS({
+      statusCode: 400,
+      message: 'Object not found',
+    });
+    const initialState = fromJS({
+      error: {},
+    });
+    expect(
+      AddressBookReducer(initialState, {
+        type: ADDRESS_BOOK_CONSTANTS.UPDATE_ADDRESS_LIST_ON_DELETE_ERR,
+        payload: error,
+      })
+    ).toEqual(
+      fromJS({
+        error,
+        showUpdatedNotificationOnModal: 'error',
+        showUpdatedNotification: null,
+      })
+    );
+  });
+  it('should handle modal mounted state', () => {
+    const payload = {
+      state: true,
+    };
+    const initialState = fromJS({
+      deleteModalMountedState: false,
+    });
+    expect(
+      AddressBookReducer(initialState, {
+        type: ADDRESS_BOOK_CONSTANTS.DELETE_MODAL_MOUNTED_STATE,
+        payload,
+      })
+    ).toEqual(
+      fromJS({
+        deleteModalMountedState: true,
       })
     );
   });
