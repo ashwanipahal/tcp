@@ -17,6 +17,7 @@ const DeleteAddressModalStyle = css`
     margin: 0 ${props => props.theme.spacing.LAYOUT_SPACING.XL}
       ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
     display: block;
+    word-break: break-word;
     @media ${props => props.theme.mediaQuery.medium} {
       margin-left: 0;
       margin-right: 0;
