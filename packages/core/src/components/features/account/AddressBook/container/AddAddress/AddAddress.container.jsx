@@ -10,6 +10,7 @@ type Props = {
   addAddressNotification: any,
   AddAddresslabels: any,
   backToAddressBookClick: any,
+  initialValues: any,
 };
 
 const AddaddressContainer = ({
@@ -17,6 +18,7 @@ const AddaddressContainer = ({
   addAddressNotification,
   AddAddresslabels,
   backToAddressBookClick,
+  initialValues,
 }: Props) => {
   return (
     <AddAddress
@@ -24,6 +26,7 @@ const AddaddressContainer = ({
       AddAddresslabels={AddAddresslabels}
       addAddressNotification={addAddressNotification}
       submitAddAddressForm={submitAddAddressForm}
+      initialValues={initialValues}
     />
   );
 };

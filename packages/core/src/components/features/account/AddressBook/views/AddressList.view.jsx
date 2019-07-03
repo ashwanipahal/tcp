@@ -12,12 +12,16 @@ type Props = {
   labels: {},
   className: string,
   onDefaultShippingAddressClick: Object,
+  onEditAddressClick: Object,
+  onAddNNewAddressClick: Object,
 };
 export const AddressList = ({
   addresses,
   labels,
   className,
   onDefaultShippingAddressClick,
+  onEditAddressClick,
+  onAddNNewAddressClick,
 }: Props) => {
   return (
     <Row fullBleed className={className}>
@@ -36,7 +40,9 @@ export const AddressList = ({
             address={address}
             key={address.addressId}
             labels={labels}
+            onEditAddressClick={onEditAddressClick}
             onDefaultShippingAddressClick={onDefaultShippingAddressClick}
+            onAddNNewAddressClick={onAddNNewAddressClick}
           />
         </Col>
       ))}

@@ -1,3 +1,4 @@
+// @flow
 import ADDRESS_BOOK_CONSTANTS from '../AddressBook.constants';
 
 export const getAddressList = () => ({
@@ -9,12 +10,18 @@ export const setAddressList = addressList => ({
   addressList,
 });
 
-export const loadAddAddressComponent = state => ({
+export const loadAddAddressComponent = () => ({
   type: ADDRESS_BOOK_CONSTANTS.LOAD_ADD_ADDRESS_COMPONENT,
-  state,
 });
 
 export const loadAddressBookComponent = state => ({
   type: ADDRESS_BOOK_CONSTANTS.LOAD_ADDRESSBOOK_COMPONENT,
   state,
 });
+
+export const setEditAddress = (payload: {}) => {
+  return {
+    type: ADDRESS_BOOK_CONSTANTS.SET_EDIT_ADDRESS_ITEM,
+    payload,
+  };
+};

@@ -33,7 +33,7 @@ const endpoints = {
     relURI: '/api/v2/account/getAddressFromBook',
   },
   global: {
-    baseURI: 'https://test4.childrensplace.com',
+    baseURI: 'https://www.childrensplace.com',
   },
   setDefaultShippingAddress: {
     method: 'put',

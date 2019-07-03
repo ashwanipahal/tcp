@@ -19,12 +19,9 @@ type Props = {
   },
   className: string,
   onDefaultShippingAddressClick: Object,
-<<<<<<< HEAD
-  showDefaultShippingUpdatedMsg: any,
   addAddressLoaded: any,
-=======
   showDefaultShippingUpdatedMsg: Boolean,
->>>>>>> 7c27189bba289fcda4e4a507155af41b137d96ee
+  onEditAddressClick: Object,
 };
 
 export class AddressBook extends React.Component<Props> {
@@ -36,6 +33,7 @@ export class AddressBook extends React.Component<Props> {
       onDefaultShippingAddressClick,
       showDefaultShippingUpdatedMsg,
       onAddNNewAddressClick,
+      onEditAddressClick,
     } = this.props;
     return (
       <div className={className}>
@@ -77,7 +75,9 @@ export class AddressBook extends React.Component<Props> {
           <AddressListComponent
             addresses={addresses}
             labels={labels}
+            onEditAddressClick={onEditAddressClick}
             onDefaultShippingAddressClick={onDefaultShippingAddressClick}
+            onAddNNewAddressClick={onAddNNewAddressClick}
           />
         )}
       </div>

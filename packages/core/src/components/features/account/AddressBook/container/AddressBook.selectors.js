@@ -13,3 +13,7 @@ export const showDefaultShippingUpdatedState = state => {
 export const showAddAddressComponent = state => {
   return state.AddressBookReducer.get('addAddressLoaded');
 };
+
+export const getEditAddressItem = state => {
+  return state.AddressBookReducer.get('editAddressItem');
+};

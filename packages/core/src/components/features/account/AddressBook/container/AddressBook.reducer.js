@@ -7,6 +7,7 @@ const initialState = fromJS({
   error: {},
   showDefaultShippingUpdatedMsg: null,
   addAddressLoaded: false,
+  editAddressItem: {},
 });
 
 const AddressBookReducer = (state = initialState, action) => {
@@ -34,6 +35,8 @@ const AddressBookReducer = (state = initialState, action) => {
       return state.set('addAddressLoaded', true);
     case ADDRESS_BOOK_CONSTANTS.LOAD_ADDRESSBOOK_COMPONENT:
       return state.set('addAddressLoaded', false);
+    case ADDRESS_BOOK_CONSTANTS.SET_EDIT_ADDRESS_ITEM:
+      return state.set('editAddressItem', action.payload);
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {

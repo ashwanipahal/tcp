@@ -5,6 +5,7 @@ import {
   getAddressList,
   loadAddAddressComponent,
   loadAddressBookComponent,
+  setEditAddress,
 } from './AddressBook.actions';
 import AddressBookComponent from '../views/AddressBook.view';
 import {
@@ -12,6 +13,7 @@ import {
   getAddressListFetchingState,
   showDefaultShippingUpdatedState,
   showAddAddressComponent,
+  getEditAddressItem,
 } from './AddressBook.selectors';
 import labels from './AddressBook.labels';
 import AddAddresslabels from './AddAddress/AddAddress.labels';
@@ -29,6 +31,8 @@ type Props = {
   addAddressLoaded: any,
   onAddNNewAddressClick: any,
   backToAddressBookClick: any,
+  editAddress: any,
+  onEditAddressClick: () => void,
 };
 
 export class AddressBookContainer extends React.Component<Props> {
@@ -47,7 +51,25 @@ export class AddressBookContainer extends React.Component<Props> {
       onAddNNewAddressClick,
       addAddressLoaded,
       backToAddressBookClick,
+      onEditAddressClick,
+      editAddress,
     } = this.props;
+    let formInitialValue = {};
+    if (editAddress.hasOwnProperty('firstName')) {
+      formInitialValue = {
+        FirstName: editAddress.firstName,
+        LastName: editAddress.lastName,
+        address1: editAddress.addressLine.join(' '),
+        'address-2': '',
+        city: editAddress.city,
+        state: editAddress.state,
+        zip: editAddress.zipCode,
+        country: editAddress.country === 'US' ? 'United States' : 'Canada',
+        'phone-number': editAddress.phone1,
+        'default-ship': editAddress.addressType !== 'ShippingAndBilling',
+      };
+    }
+
     if (isFetching) {
       return <p>Loading...</p>;
     }
@@ -59,16 +81,18 @@ export class AddressBookContainer extends React.Component<Props> {
           onDefaultShippingAddressClick={onDefaultShippingAddressClick}
           showDefaultShippingUpdatedMsg={showDefaultShippingUpdatedMsg}
           onAddNNewAddressClick={onAddNNewAddressClick}
+          onEditAddressClick={onEditAddressClick}
         />
       );
     }
 
-    if (addAddressLoaded) {
+    if (addAddressLoaded || editAddress.hasOwnProperty('firstName')) {
       return (
         <AddAddressContainer
           AddAddresslabels={AddAddresslabels}
           addAddressNotification={addAddressNotification}
           backToAddressBookClick={backToAddressBookClick}
+          initialValues={formInitialValue}
         />
       );
     }
@@ -84,11 +108,14 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     onDefaultShippingAddressClick: payload => {
       dispatch(setDefaultShippingAddressRequest(payload));
     },
-    onAddNNewAddressClick: ({ state }) => {
-      dispatch(loadAddAddressComponent({ state }));
+    onAddNNewAddressClick: () => {
+      dispatch(loadAddAddressComponent());
     },
     backToAddressBookClick: ({ state }) => {
       dispatch(loadAddressBookComponent({ state }));
+    },
+    onEditAddressClick: payload => {
+      dispatch(setEditAddress(payload));
     },
   };
 };
@@ -100,6 +127,7 @@ const mapStateToProps = state => {
     showDefaultShippingUpdatedMsg: showDefaultShippingUpdatedState(state),
     addAddressLoaded: showAddAddressComponent(state),
     backToAddressBookClick: showAddAddressComponent(state),
+    editAddress: getEditAddressItem(state),
   };
 };
 

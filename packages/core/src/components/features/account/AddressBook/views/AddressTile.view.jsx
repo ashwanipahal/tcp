@@ -12,6 +12,8 @@ type Props = {
   labels: Object,
   className: string,
   onDefaultShippingAddressClick(address: {}): Object,
+  onEditAddressClick(addressId: string): Object,
+  onAddNNewAddressClick: Object,
 };
 
 class AddressBookTile extends React.Component<Props> {
@@ -39,6 +41,13 @@ class AddressBookTile extends React.Component<Props> {
     };
 
     onDefaultShippingAddressClick(setDefaultShippingAddressJSON);
+  };
+
+  handleEditAddressClick = event => {
+    event.preventDefault();
+    const { onEditAddressClick, address, onAddNNewAddressClick } = this.props;
+    onEditAddressClick(address);
+    onAddNNewAddressClick();
   };
 
   render() {
@@ -71,9 +80,17 @@ class AddressBookTile extends React.Component<Props> {
           </div>
         </div>
         <div className="addressTile__row">
-          <Anchor fontSizeVariation="medium" underline to="/#" anchorVariation="primary">
+          <Anchor
+            fontSizeVariation="medium"
+            handleLinkClick={this.handleEditAddressClick}
+            underline
+            noLink
+            to=""
+            anchorVariation="primary"
+          >
             {labels.edit}
           </Anchor>
+
           <Anchor fontSizeVariation="medium" underline to="/#" anchorVariation="primary">
             {labels.delete}
           </Anchor>

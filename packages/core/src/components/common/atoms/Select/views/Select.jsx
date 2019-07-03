@@ -50,7 +50,7 @@ const SelectBox = ({
       className="selectField"
       name={name}
       isSuccessState={isSuccessState}
-      value={Value}
+      value={input.value}
       defaultValue={defaultValue}
     >
       {options &&

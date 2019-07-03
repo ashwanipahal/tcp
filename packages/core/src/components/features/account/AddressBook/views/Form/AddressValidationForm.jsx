@@ -188,7 +188,6 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
               validate={[required]}
               onBlur={this.handleBlur}
               defaultValue={country}
-              value={country}
               component={SelectBox}
               options={countriesOptionsMap}
             />
@@ -247,4 +246,5 @@ AddressValidationForm.defaultProps = {
 };
 export default reduxForm({
   form: 'AddressValidationForm', // a unique identifier for this form
+  updateUnregisteredFields: true,
 })(AddressValidationForm);
