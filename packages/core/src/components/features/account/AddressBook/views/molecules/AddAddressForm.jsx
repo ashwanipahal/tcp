@@ -1,4 +1,3 @@
-// @flow
 import React from 'react';
 import { Field, reduxForm, change } from 'redux-form';
 import { BodyCopy } from '../../../../../../../styles/themes/TCP/typotheme';
@@ -22,11 +21,10 @@ import {
   CAcountriesStatesTable,
   UScountriesStatesTable,
 } from './CountriesAndStates.constants';
-
+// @flow
 type Props = {
   handleSubmit: any,
   pristine: any,
-  submitting?: any,
   className: any,
   dispatch: Function,
   backToAddressBookClick: any,
@@ -50,30 +48,30 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
       zip: '',
       country: '',
       state: '',
-      street: '',
     };
   }
 
-  validatezip = country => {
+  validatezip = (country: string) => {
     return country === 'Canada' ? zipcodeCA : zipcodeUS;
   };
-  handleBlur = e => {
+
+  handleBlur = (e: Object) => {
     if (e.target.value) {
       e.target.parentElement.classList.add('active');
     } else e.target.parentElement.classList.remove('active');
   };
 
-  StateCountryChange = e => {
+  StateCountryChange = (e: Object) => {
     this.setState({
       country: e.target.value ? e.target.value : '',
     });
   };
 
-  handleChange = event => {
+  handleChange = (event: Object) => {
     this.setState({ [event.target.id]: event.target.value });
   };
 
-  handlePlaceSelected = (place, inputValue) => {
+  handlePlaceSelected = (place: Object, inputValue: string) => {
     const address = AutoCompleteComponent.getAddressFromPlace(place, inputValue);
     const { dispatch } = this.props;
     this.setState({
@@ -81,7 +79,6 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
       zip: address.zip,
       state: address.state,
       country: address.country,
-      street: address.street,
     });
     dispatch(change('AddAddressForm', 'city', address.city));
     dispatch(change('AddAddressForm', 'zip', address.zip));
@@ -91,7 +88,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { handleSubmit, pristine, submitting, className, backToAddressBookClick } = this.props;
+    const { handleSubmit, pristine, className, backToAddressBookClick } = this.props;
     const { city, zip, state, country } = this.state;
     return (
       <form className={className} onSubmit={handleSubmit}>
@@ -231,7 +228,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
           <Col className="submit" colSize={{ small: 6, medium: 1, large: 3 }}>
             <Button
               fill="BLUE"
-              disabled={pristine || submitting}
+              disabled={pristine}
               type="submit"
               text="BLUE"
               buttonVariation="fixed-width"
@@ -246,9 +243,6 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
   }
 }
 
-AddAddressForm.defaultProps = {
-  submitting: true,
-};
 export default reduxForm({
   form: 'AddAddressForm', // a unique identifier for this form
 })(AddAddressForm);
