@@ -20,27 +20,23 @@ import { ButtonStyles, ViewWrapper } from '../Button.style';
  */
 
 type Props = {
+  id?: string,
   buttonVariation?: string,
   fullWidth?: string,
-  color?: string,
-  border?: string,
-  margin?: string,
-  id?: string,
+  customStyle?: string,
 };
 
-const Button = (props: Props) => (
+const Button = ({ id, buttonVariation, fullWidth, customStyle, ...otherProps }: Props) => (
   <ViewWrapper>
-    <ButtonStyles {...props} />
+    <ButtonStyles id={id} buttonVariation={buttonVariation} fullWidth={fullWidth} {...otherProps} />
   </ViewWrapper>
 );
 
 Button.defaultProps = {
-  buttonVariation: 'fixed-width',
-  fullWidth: '100%',
-  color: 'black',
-  border: '0px',
-  margin: '40px',
   id: 'btn',
+  fullWidth: '',
+  buttonVariation: '',
+  customStyle: '',
 };
 
 export default Button;
