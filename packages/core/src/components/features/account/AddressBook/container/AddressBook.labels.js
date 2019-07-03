@@ -17,6 +17,7 @@ const labels = {
   deleteAddressTitle: 'Are you sure you want to delete this address?',
   cancel: 'No, Dont Cancel',
   deleteConfirm: 'Yes Delete',
+  addressBookHeading: 'ADDRESS BOOK',
 };
 
 export default labels;

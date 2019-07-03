@@ -34,13 +34,13 @@ exports[`AddressTile component should renders correctly 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
-      fontSizeVariation="medium"
+      fontSizeVariation="large"
       to="/#"
       underline={true}
     />
     <Styled(Anchor)
       anchorVariation="primary"
-      fontSizeVariation="medium"
+      fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}

@@ -61,30 +61,33 @@ class AddressBookTile extends React.Component<Props> {
             {address.xcont_isDefaultBilling === 'true' && (
               <Badge showCheckmark>{labels.defaultBilling}</Badge>
             )}
-            {address.xcont_isBillingAddress === 'true' && <Badge>{labels.billing}</Badge>}
+            {address.xcont_isDefaultBilling !== 'true' &&
+              address.xcont_isBillingAddress === 'true' && <Badge>{labels.billing}</Badge>}
             {address.primary !== 'true' && address.xcont_isShippingAddress === 'true' && (
               <Badge>{labels.shipping}</Badge>
             )}
             {address.primary !== 'true' && (
-              <Anchor
-                fontSizeVariation="small"
-                underline
-                anchorVariation="primary"
-                handleLinkClick={this.handleDefaultLinkClick}
-                noLink
-                to=""
-              >
-                {labels.makeDefault}
-              </Anchor>
+              <div className="textRight">
+                <Anchor
+                  fontSizeVariation="small"
+                  underline
+                  anchorVariation="primary"
+                  handleLinkClick={this.handleDefaultLinkClick}
+                  noLink
+                  to=""
+                >
+                  {labels.makeDefault}
+                </Anchor>
+              </div>
             )}
           </div>
         </div>
         <div className="addressTile__row">
-          <Anchor fontSizeVariation="medium" underline to="/#" anchorVariation="primary">
+          <Anchor fontSizeVariation="large" underline to="/#" anchorVariation="primary">
             {labels.edit}
           </Anchor>
           <Anchor
-            fontSizeVariation="medium"
+            fontSizeVariation="large"
             underline
             to="/#"
             anchorVariation="primary"
