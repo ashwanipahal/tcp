@@ -3,7 +3,8 @@ import HeaderView from '../views';
 
 const mapStateToProps = state => {
   return {
-    headerTopNav: state.HeaderReducer.submodules.topNavWrapper,
+    headerTopNav: state.HeaderReducer.topNavWrapper,
+    headerPromoArea: state.HeaderReducer.promoTextBannerCarousel,
   };
 };
 

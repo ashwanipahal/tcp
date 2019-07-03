@@ -4,6 +4,11 @@ exports[`Header component renders correctly 1`] = `
 <header>
   <Styled(HeaderTopNav)
     className="header-topnav"
+    dataTopNav={
+      Object {
+        "composites": Object {},
+      }
+    }
   />
   <styled.div
     className="header-brand"
@@ -79,24 +84,15 @@ exports[`Header component renders correctly 1`] = `
       </Styled(Col)>
     </Styled(Row)>
   </styled.div>
-  <styled.div
-    className="header-promo"
-  >
-    <Styled(Row)>
-      <Styled(Col)
-        className="header-promo__promo-banner"
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-      >
-        Promo banners
-      </Styled(Col)>
-    </Styled(Row)>
-  </styled.div>
+  <Styled(HeaderPromo)
+    className="header__promo-area--mobile"
+    dataPromo={Object {}}
+    mobileMarkup={true}
+  />
+  <Styled(HeaderPromo)
+    className="header__promo-area--desktop"
+    dataPromo={Object {}}
+  />
   <styled.div
     className="header-loyalty"
   >

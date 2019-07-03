@@ -41,19 +41,6 @@ describe('AddressTile component', () => {
     expect(component.find(Badge).text()).toBe(labels.defaultShipping);
   });
 
-  it('should renders default Billing badge if xcont_isDefaultBilling is true', () => {
-    const newAddress = Object.assign({}, address, {
-      primary: 'false',
-      xcont_isDefaultBilling: 'true',
-    });
-    const props = {
-      address: newAddress,
-      labels,
-    };
-    const component = shallow(<AddressBookTileVanilla {...props} />);
-    expect(component.find(Badge).text()).toBe(labels.defaultBilling);
-  });
-
   it('should renders shipping badge if xcont_isShippingAddress is true and address is not primary', () => {
     const newAddress = Object.assign({}, address, {
       primary: 'false',
@@ -67,9 +54,37 @@ describe('AddressTile component', () => {
     expect(component.find(Badge).text()).toBe(labels.shipping);
   });
 
-  it('should renders billing badge if xcont_isBillingAddress is true and address is not default ', () => {
+  it('should render default shipping badge only if xcont_isShippingAddress is true and address is also primary', () => {
+    const newAddress = Object.assign({}, address, {
+      primary: 'true',
+      xcont_isShippingAddress: 'true',
+    });
+    const props = {
+      address: newAddress,
+      labels,
+    };
+    const component = shallow(<AddressBookTileVanilla {...props} />);
+    expect(component.find(Badge)).toHaveLength(1);
+    expect(component.find(Badge).text()).toBe(labels.defaultShipping);
+  });
+
+  it('should renders default Billing badge if xcont_isDefaultBilling is true', () => {
     const newAddress = Object.assign({}, address, {
       primary: 'false',
+      xcont_isDefaultBilling: 'true',
+    });
+    const props = {
+      address: newAddress,
+      labels,
+    };
+    const component = shallow(<AddressBookTileVanilla {...props} />);
+    expect(component.find(Badge).text()).toBe(labels.defaultBilling);
+  });
+
+  it('should not render default Billing badge only if xcont_isDefaultBilling is true and xcont_isBillingAddress is also true', () => {
+    const newAddress = Object.assign({}, address, {
+      primary: 'false',
+      xcont_isDefaultBilling: 'true',
       xcont_isBillingAddress: 'true',
     });
     const props = {
@@ -77,7 +92,23 @@ describe('AddressTile component', () => {
       labels,
     };
     const component = shallow(<AddressBookTileVanilla {...props} />);
-    expect(component.find(Badge).text()).toBe(labels.billing);
+    expect(component.find(Badge)).toHaveLength(1);
+    expect(component.find(Badge).text()).toBe(labels.defaultBilling);
+  });
+
+  it('should renders billing badge if xcont_isBillingAddress is true and address is not default ', () => {
+    const newAddress = Object.assign({}, address, {
+      xcont_isDefaultBilling: 'false',
+      xcont_isBillingAddress: 'true',
+    });
+    const props = {
+      address: newAddress,
+      labels,
+    };
+    const component = shallow(<AddressBookTileVanilla {...props} />);
+    expect(component.findWhere(com => com.is(Badge) && com.text() === labels.billing)).toHaveLength(
+      1
+    );
   });
 
   it('should renders make default link if address is not primary', () => {
@@ -95,5 +126,25 @@ describe('AddressTile component', () => {
         .first()
         .text()
     ).toBe(labels.makeDefault);
+  });
+  it('should call delete address click', () => {
+    const newAddress = Object.assign({}, address, {
+      primary: 'false',
+    });
+    const mockedOpenAccountModalComponent = jest.fn();
+    const mockedSetSelectedAddress = jest.fn();
+    const props = {
+      address: newAddress,
+      labels,
+      setDeleteModalMountState: mockedOpenAccountModalComponent,
+      setSelectedAddress: mockedSetSelectedAddress,
+    };
+    const component = shallow(<AddressBookTileVanilla {...props} />);
+    component
+      .find(Anchor)
+      .at(2)
+      .simulate('click', { preventDefault: jest.fn() });
+    expect(mockedOpenAccountModalComponent).toHaveBeenCalled();
+    expect(mockedSetSelectedAddress).toHaveBeenCalled();
   });
 });

@@ -7,7 +7,7 @@ exports[`Footer component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-fjdhpX",
+        "componentId": "sc-kGXeez",
         "isStatic": false,
         "rules": Array [
           "
@@ -133,7 +133,7 @@ exports[`Footer component renders correctly 1`] = `
       "displayName": "Styled(Footer)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-fjdhpX",
+      "styledComponentId": "sc-kGXeez",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

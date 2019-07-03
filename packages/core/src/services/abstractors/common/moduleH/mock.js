@@ -17,6 +17,12 @@ export default {
             style: 'style1',
           },
         ],
+        link: {
+          url: '/toddler',
+          title: '',
+          target: '',
+          external: 0,
+        },
       },
       divCTALinks: [
         {

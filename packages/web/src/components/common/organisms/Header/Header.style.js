@@ -15,7 +15,11 @@ const HeaderBrand = styled.div`
 
 const HeaderNav = styled.div`
   position: relative;
+  @media ${props => props.theme.mediaQuery.large} {
+    border-bottom: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+  }
 `;
+
 const DummyNav = styled.div`
   color: ${props => props.theme.colors.PRIMARY.DARK};
   cursor: pointer;
@@ -34,16 +38,6 @@ const DummyNav = styled.div`
   }
 `;
 
-const HeaderPromo = styled.div`
-  background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
-  border-top: 1px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
-  box-sizing: border-box;
-  height: 60px;
-  padding: 20px 0;
-  text-align: center;
-  text-transform: uppercase;
-`;
-
 const HeaderLoyalty = styled.div`
   background-color: ${props => props.theme.colors.WHITE};
   padding: 36px 0;
@@ -55,7 +49,6 @@ const headerStyles = {
   HeaderBrand,
   HeaderNav,
   DummyNav,
-  HeaderPromo,
   HeaderLoyalty,
 };
 
