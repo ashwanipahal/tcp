@@ -5,7 +5,7 @@ const LayoutReducer = (state = {}, action) => {
     case GLOBAL_CONSTANTS.LOAD_LAYOUT_DATA:
       return {
         ...state,
-        ...action.payload,
+        [action.layoutName]: { ...action.payload },
       };
     default:
       return state;
