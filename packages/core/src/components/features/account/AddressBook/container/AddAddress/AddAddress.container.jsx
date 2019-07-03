@@ -12,7 +12,7 @@ type Props = {
   backToAddressBookClick: any,
 };
 
-const AddaddressContainer = ({
+export const AddaddressContainer = ({
   submitAddAddressForm,
   addAddressNotification,
   AddAddresslabels,
