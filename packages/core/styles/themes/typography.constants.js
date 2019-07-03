@@ -5,6 +5,11 @@ export const FONTS = {
   secondary: `Nunito, ${fallbackFonts}`,
 };
 
+export const MOBILE_FONTS = {
+  primary: `Montserrat`,
+  secondary: `Nunito`,
+};
+
 export const LETTER_SPACINGS = {
   ls271: '2.71px',
   ls257: '2.57px',

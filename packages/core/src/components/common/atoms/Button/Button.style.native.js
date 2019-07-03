@@ -6,11 +6,11 @@ const ButtonStyles = styled.Button`
       ? `
     width: 40px;
     height: 100px;
-    color: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
-    font-size: ${props.theme.fonts.fontSize.button.size}px;
-    font-family: ${props.theme.fonts.mobilesecondaryFontSemilBoldFamily};
-    font-weight: ${props.theme.fonts.fontWeight.semiBold};
-    border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
+    color: ${props.theme.colorPalette.white};
+    font-size: ${props.theme.typography.fontSizes.fs16};
+    font-family: ${props.theme.typography.mobileFonts.primary};
+    font-weight: ${props.theme.typography.fontWeights.semibold};
+    border: 1px solid ${props.theme.colorPalette.black};
     padding: 12px 20px;
     width: 100%;
    `
@@ -22,12 +22,12 @@ const ButtonStyles = styled.Button`
    width: ${props.width};
    height: ${props.width};
    min-width: 64px;
-   background: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].NORMAL};
-   color: ${props.theme.colors.BUTTON[props.fill || 'WHITE'].TEXT};
-   font-family: ${props.theme.fonts.mobileSecondaryFontFamily};
-   font-size: ${props.theme.fonts.fontSize.button.size}px;
-   font-weight: ${props.theme.fonts.fontWeight.black};
-   border: 1px solid ${props.theme.colors.BUTTON[props.fill || 'WHITE'].BORDER};
+   background: ${props.theme.colorPalette.white};
+   color: ${props.theme.colorPalette.black};
+   font-family: ${props.theme.typography.mobileFonts.primary};
+   font-size: ${props.theme.typography.fontSizes.fs14};
+   font-weight: ${props.theme.typography.fontWeights.black};
+   border: 1px solid ${props.theme.colorPalette.black};
    padding: 12px 32px;
   `
       : ''};

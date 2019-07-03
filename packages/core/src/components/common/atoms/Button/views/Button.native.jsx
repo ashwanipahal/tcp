@@ -22,7 +22,6 @@ import { ButtonStyles, ViewWrapper } from '../Button.style';
 type Props = {
   buttonVariation?: string,
   fullWidth?: string,
-  type?: string,
   color?: string,
   border?: string,
   margin?: string,
@@ -38,9 +37,8 @@ const Button = (props: Props) => (
 Button.defaultProps = {
   buttonVariation: 'fixed-width',
   fullWidth: '100%',
-  type: 'button',
-  color: 'red',
-  border: '0.5px',
+  color: 'black',
+  border: '0px',
   margin: '40px',
   id: 'btn',
 };

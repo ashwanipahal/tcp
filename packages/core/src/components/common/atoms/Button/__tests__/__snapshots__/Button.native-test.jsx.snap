@@ -3,14 +3,13 @@
 exports[`Button should render correctly 1`] = `
 <Component>
   <Component
-    border="0.5px"
+    border="0px"
     buttonVariation="fixed-width"
-    color="red"
+    color="black"
     fullWidth="100%"
-    id=""
+    id="btn"
     margin="40px"
     name="button test"
-    type="button"
   />
 </Component>
 `;
