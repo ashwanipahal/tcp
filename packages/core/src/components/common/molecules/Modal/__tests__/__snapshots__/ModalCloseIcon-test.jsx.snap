@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Modal Close Icon renders correctly with props 1`] = `
-<styled.button
+<button
+  className="modal-close-button"
   onClick={[Function]}
 />
 `;
