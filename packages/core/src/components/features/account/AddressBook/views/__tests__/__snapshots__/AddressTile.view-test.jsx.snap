@@ -37,14 +37,14 @@ exports[`AddressTile component should renders correctly 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       data-locator="addressbook-edit"
-      fontSizeVariation="medium"
+      fontSizeVariation="large"
       to="/#"
       underline={true}
     />
     <Styled(Anchor)
       anchorVariation="primary"
       data-locator="addressbook-delete"
-      fontSizeVariation="medium"
+      fontSizeVariation="large"
       to="/#"
       underline={true}
     />

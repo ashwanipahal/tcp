@@ -58,30 +58,33 @@ class AddressBookTile extends React.Component<Props> {
                 {labels.defaultBilling}
               </Badge>
             )}
-            {address.xcont_isBillingAddress === 'true' && (
-              <Badge dataLocator="addressbook-billinglabel">{labels.billing}</Badge>
-            )}
+            {address.xcont_isDefaultBilling !== 'true' &&
+              address.xcont_isBillingAddress === 'true' && (
+                <Badge dataLocator="addressbook-billinglabel">{labels.billing}</Badge>
+              )}
             {address.primary !== 'true' && address.xcont_isShippingAddress === 'true' && (
               <Badge dataLocator="addressbook-shippinglabel">{labels.shipping}</Badge>
             )}
             {address.primary !== 'true' && (
-              <Anchor
-                fontSizeVariation="small"
-                underline
-                anchorVariation="primary"
-                handleLinkClick={this.handleDefaultLinkClick}
-                noLink
-                to=""
-                data-locator="addressbook-makedefault"
-              >
-                {labels.makeDefault}
-              </Anchor>
+              <div className="textRight">
+                <Anchor
+                  fontSizeVariation="small"
+                  underline
+                  anchorVariation="primary"
+                  handleLinkClick={this.handleDefaultLinkClick}
+                  noLink
+                  to=""
+                  data-locator="addressbook-makedefault"
+                >
+                  {labels.makeDefault}
+                </Anchor>
+              </div>
             )}
           </div>
         </div>
         <div className="addressTile__row">
           <Anchor
-            fontSizeVariation="medium"
+            fontSizeVariation="large"
             underline
             to="/#"
             anchorVariation="primary"
@@ -90,7 +93,7 @@ class AddressBookTile extends React.Component<Props> {
             {labels.edit}
           </Anchor>
           <Anchor
-            fontSizeVariation="medium"
+            fontSizeVariation="large"
             underline
             to="/#"
             anchorVariation="primary"

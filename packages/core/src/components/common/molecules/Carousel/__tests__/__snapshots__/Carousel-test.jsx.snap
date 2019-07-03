@@ -1,59 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Carousel component renders correctly 1`] = `
-<styled.div
-  carouselConfig={
-    Object {
-      "arrow": "none",
-      "type": "light",
-    }
-  }
-  className="TCP_Carousel_Wrapper"
->
-  <Slider
-    accessibility={true}
-    arrows={false}
-    autoplaySpeed={3000}
-    className="TCP_Carousel"
-    dots={false}
-    responsive={
-      Array [
-        Object {
-          "breakpoint": 767,
-          "settings": Object {
-            "arrows": true,
-            "autoplay": true,
-            "infinite": true,
-            "slidesToScroll": 1,
-            "slidesToShow": 1,
-          },
-        },
-        Object {
-          "breakpoint": 1023,
-          "settings": Object {
-            "arrows": true,
-            "autoplay": true,
-            "infinite": true,
-            "slidesToScroll": 1,
-            "slidesToShow": 1,
-          },
-        },
-        Object {
-          "breakpoint": 1024,
-          "settings": Object {
-            "arrows": true,
-            "autoplay": true,
-            "infinite": true,
-            "slidesToScroll": 1,
-            "slidesToShow": 1,
-          },
-        },
-      ]
-    }
-    slidesToShow={1}
-    speed={300}
-  >
-    <Component />
-  </Slider>
-</styled.div>
+Carousel {
+  "context": undefined,
+  "getPlayButton": [Function],
+  "getSlider": [Function],
+  "pause": [Function],
+  "play": [Function],
+  "props": undefined,
+  "refs": Object {},
+  "setState": [MockFunction],
+  "slider": null,
+  "state": Object {
+    "autoplay": true,
+  },
+  "updater": Object {
+    "enqueueForceUpdate": [Function],
+    "enqueueReplaceState": [Function],
+    "enqueueSetState": [Function],
+    "isMounted": [Function],
+  },
+}
 `;

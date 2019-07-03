@@ -31,15 +31,26 @@ export const AddressBook = ({
 }: Props) => {
   return (
     <div className={className}>
-      <Heading
-        fontFamily="secondaryFontFamily"
-        HeadingLarge="six"
-        tag="h4"
-        className="addressBook__separator"
-      >
-        Address Book
-      </Heading>
-      {addresses.size === 0 && <EmptyAddressListComponent labels={labels} />}
+      <Row fullBleed>
+        <Col
+          colSize={{
+            small: 6,
+            large: 12,
+            medium: 8,
+          }}
+        >
+          <Heading
+            fontFamily="secondaryFontFamily"
+            HeadingLarge="six"
+            tag="h4"
+            className="addressBook__separator"
+          >
+            {labels.addressBookHeading}
+          </Heading>
+          {addresses.size === 0 && <EmptyAddressListComponent labels={labels} />}
+        </Col>
+      </Row>
+
       <Row fullBleed className="addressBook__row--marginBottom">
         <Col
           colSize={{

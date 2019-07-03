@@ -4,10 +4,10 @@ import { PropTypes } from 'prop-types';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { Anchor, Button, Col, Row, Image } from '@tcp/core/src/components/common/atoms';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
-import { getLocator } from '@tcp/web/src/utils';
-import style from './ModuleD.style';
-import withStyles from '../../hoc/withStyles';
-import errorBoundary from '../../hoc/errorBoundary';
+import { getLocator } from '../../../../../utils';
+import style from '../ModuleD.style';
+import withStyles from '../../../hoc/withStyles';
+import errorBoundary from '../../../hoc/errorBoundary';
 
 const colSize2Elements = {
   small: 3,
