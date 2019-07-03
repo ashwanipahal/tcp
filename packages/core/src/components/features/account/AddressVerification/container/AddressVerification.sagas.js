@@ -25,44 +25,26 @@ const getResultType = response => {
   const result = response.Records[0].Results.split(',');
 
   if (result.length === 1 && result[0] === 'AS01') {
-    return {
-      result: ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS_RESULT.VALID,
-      status: 'AS01',
-    };
+    return 'AS01';
   }
 
   if (result[0] === 'AE09') {
-    return {
-      result: ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS_RESULT.APARTMENT_MISSING,
-      status: 'AE09',
-    };
+    return 'AE09';
   }
 
   if (result.length === 1 && result[0] === 'AE10') {
-    return {
-      result: ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS_RESULT.INVALID_ERROR,
-      status: 'AE10',
-    };
+    return 'AE10';
   }
 
   if (result.indexOf('AE11') > -1) {
-    return {
-      result: ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS_RESULT.INVALID_ERROR,
-      status: 'AE11',
-    };
+    return 'AE11';
   }
 
   if (result.indexOf('AE12') > -1) {
-    return {
-      result: ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS_RESULT.INVALID_ERROR,
-      status: 'AE12',
-    };
+    return 'AE12';
   }
 
-  return {
-    result: ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS_RESULT.INVALID,
-    status: 'DEFAULT',
-  };
+  return 'DEFAULT';
 };
 
 function* verifyAddress({ payload }) {

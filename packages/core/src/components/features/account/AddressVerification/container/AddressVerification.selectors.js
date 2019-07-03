@@ -17,10 +17,6 @@ export const getSuggestedAddress = createSelector(
 
 export const getVerificationResult = createSelector(
   getAddressVerificationState,
-  state => state.get('result')
+  state => state.get('resultType')
 );
 
-export const getAddressAttrs = createSelector(
-  getAddressVerificationState,
-  state => state.get('attrs')
-);

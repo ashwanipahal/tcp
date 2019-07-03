@@ -3,9 +3,8 @@ import {
   getUserAddress,
   getSuggestedAddress,
   getVerificationResult,
-  getAddressAttrs,
 } from './AddressVerification.selectors';
-import AddressVerification from '../views/AddressVerification.view';
+import AddressVerificationComponent from '../views/AddressVerification.view';
 import { resetVerifyAddress } from './AddressVerification.actions';
 
 const mapStateToProps = state => {
@@ -13,7 +12,6 @@ const mapStateToProps = state => {
     userAddress: getUserAddress(state),
     suggestedAddress: getSuggestedAddress(state),
     verificationResult: getVerificationResult(state),
-    attrs: getAddressAttrs(state),
   };
 };
 
@@ -26,4 +24,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(AddressVerification);
+)(AddressVerificationComponent);
