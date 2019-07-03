@@ -41,7 +41,7 @@ type State = {
 };
 // const AddressValidationForm = ({ handleSubmit, pristine, reset, submitting }: Props): Node => (
 
-class AddAddressForm extends React.PureComponent<Props, State> {
+export class AddAddressForm extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.handleBlur = this.handleBlur.bind(this);
@@ -138,7 +138,7 @@ class AddAddressForm extends React.PureComponent<Props, State> {
               placeholder="Address Line 2( Optional )"
               name="address-2"
               component={TextBox}
-              validate={[specialChar]}
+              validate={[isSpecialChar]}
               maxLength={30}
             />
           </Col>
@@ -230,7 +230,7 @@ class AddAddressForm extends React.PureComponent<Props, State> {
           </Col>
           <Col className="submit" colSize={{ small: 6, medium: 1, large: 3 }}>
             <Button
-              ButtonColor="BLUE"
+              fill="BLUE"
               disabled={pristine || submitting}
               type="submit"
               text="BLUE"
