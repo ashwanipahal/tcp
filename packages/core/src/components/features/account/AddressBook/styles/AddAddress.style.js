@@ -14,7 +14,6 @@ const styles = css`
   .button_wrapper {
     display: inline-block;
     text-align: right;
-    display: block;
   }
   @media ${props => props.theme.mediaQuery.smallMax} {
     .button_wrapper {

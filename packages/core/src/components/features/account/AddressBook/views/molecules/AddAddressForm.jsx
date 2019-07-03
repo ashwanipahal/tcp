@@ -7,23 +7,21 @@ import SelectBox from '../../../../../common/atoms/Select';
 import Row from '../../../../../common/atoms/Row';
 import Col from '../../../../../common/atoms/Col';
 import Button from '../../../../../common/atoms/Button';
-
+import errors from '../../../../../../utils/errorsMsg';
 import {
   required,
-  maxLength50,
-  maxLength30,
   minValue10,
-  specialChar,
+  isSpecialChar,
   number,
   zipcodeUS,
   zipcodeCA,
 } from '../../../../../../utils/FormValidation';
-import { LabeledInputGoogleAutoComplete } from '../../../../../common/atoms/AddressAutoSuggest/LabeledInputGoogleAutoComplete';
+import { AutoCompleteComponent } from '../../../../../common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import {
   countriesOptionsMap,
   CAcountriesStatesTable,
   UScountriesStatesTable,
-} from './CountriesAndStates';
+} from './CountriesAndStates.constants';
 
 type Props = {
   handleSubmit: any,
@@ -39,10 +37,11 @@ type State = {
   zip: string,
   country: string,
   state: string,
+  street: string,
 };
 // const AddressValidationForm = ({ handleSubmit, pristine, reset, submitting }: Props): Node => (
 
-class AddressValidationForm extends React.PureComponent<Props, State> {
+export class AddAddressForm extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.handleBlur = this.handleBlur.bind(this);
@@ -51,13 +50,13 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
       zip: '',
       country: '',
       state: '',
+      street: '',
     };
   }
 
   validatezip = country => {
     return country === 'Canada' ? zipcodeCA : zipcodeUS;
   };
-
   handleBlur = e => {
     if (e.target.value) {
       e.target.parentElement.classList.add('active');
@@ -75,19 +74,20 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
   };
 
   handlePlaceSelected = (place, inputValue) => {
-    const address = LabeledInputGoogleAutoComplete.getAddressFromPlace(place, inputValue);
+    const address = AutoCompleteComponent.getAddressFromPlace(place, inputValue);
     const { dispatch } = this.props;
     this.setState({
       city: address.city,
       zip: address.zip,
       state: address.state,
       country: address.country,
+      street: address.street,
     });
-    dispatch(change('AddressValidationForm', 'city', address.city));
-    dispatch(change('AddressValidationForm', 'zip', address.zip));
-    dispatch(change('AddressValidationForm', 'state', address.state));
-    dispatch(change('AddressValidationForm', 'country', address.country));
-    dispatch(change('AddressValidationForm', 'street', address.street));
+    dispatch(change('AddAddressForm', 'city', address.city));
+    dispatch(change('AddAddressForm', 'zip', address.zip));
+    dispatch(change('AddAddressForm', 'state', address.state));
+    dispatch(change('AddAddressForm', 'country', address.country));
+    dispatch(change('AddAddressForm', 'street', address.street));
   };
 
   render() {
@@ -98,13 +98,15 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
         <Row>
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
+              errors={errors}
               placeholder="First Name"
               name="FirstName"
               type="text"
               component={TextBox}
               label="First-Nam"
-              validate={[required, maxLength50, specialChar]}
+              validate={[required, isSpecialChar]}
               onBlur={this.handleBlur}
+              maxLength={50}
             />
           </Col>
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
@@ -112,8 +114,9 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
               placeholder="Last Name"
               name="LastName"
               component={TextBox}
-              validate={[required, maxLength50, specialChar]}
+              validate={[required, isSpecialChar]}
               onBlur={this.handleBlur}
+              maxLength={50}
             />
           </Col>
         </Row>
@@ -123,11 +126,12 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
             <Field
               id="addressField"
               placeholder="Address Line 1"
-              component={LabeledInputGoogleAutoComplete}
+              component={AutoCompleteComponent}
               name="address1"
-              validate={[required, maxLength30, specialChar]}
+              validate={[required]}
               onPlaceSelected={this.handlePlaceSelected}
               onBlur={this.handleBlur}
+              maxLength={30}
             />
           </Col>
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
@@ -135,7 +139,8 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
               placeholder="Address Line 2( Optional )"
               name="address-2"
               component={TextBox}
-              validate={[specialChar, maxLength30]}
+              validate={[isSpecialChar]}
+              maxLength={30}
             />
           </Col>
         </Row>
@@ -195,7 +200,7 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
               placeholder="phone number"
-              name="phone-number"
+              name="phoneNumber"
               component={TextBox}
               onBlur={this.handleBlur}
               validate={[required, number, minValue10]}
@@ -225,10 +230,9 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
           </Col>
           <Col className="submit" colSize={{ small: 6, medium: 1, large: 3 }}>
             <Button
-              ButtonColor="BLUE"
+              fill="BLUE"
               disabled={pristine || submitting}
               type="submit"
-              text="BLUE"
               buttonVariation="fixed-width"
             >
               Add Address
@@ -241,10 +245,9 @@ class AddressValidationForm extends React.PureComponent<Props, State> {
   }
 }
 
-AddressValidationForm.defaultProps = {
+AddAddressForm.defaultProps = {
   submitting: true,
 };
 export default reduxForm({
-  form: 'AddressValidationForm', // a unique identifier for this form
-  updateUnregisteredFields: true,
-})(AddressValidationForm);
+  form: 'AddAddressForm', // a unique identifier for this form
+})(AddAddressForm);

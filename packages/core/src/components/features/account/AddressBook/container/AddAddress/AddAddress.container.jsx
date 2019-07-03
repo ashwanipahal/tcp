@@ -13,7 +13,7 @@ type Props = {
   initialValues: any,
 };
 
-const AddaddressContainer = ({
+export const AddaddressContainer = ({
   submitAddAddressForm,
   addAddressNotification,
   AddAddresslabels,

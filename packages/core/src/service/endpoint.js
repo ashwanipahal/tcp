@@ -15,10 +15,10 @@ const endpoints = {
     baseURI: 'https://test1.childrensplace.com',
     relURI: '/api/getESpot',
   },
-  verifyAddress: {
+  addAddress: {
     method: 'post',
-    baseURI: 'https://personator.melissadata.net/v3/WEB/ContactVerify/doContactVerify',
-    relURI: '?id=63987687&format=json&act=Check&cols=Plus4%2CDeliveryIndicator&',
+    baseURI: 'https://www.childrensplace.com',
+    relURI: '/api/v2/account/addAddress',
   },
   login: {
     method: 'post',

@@ -3,6 +3,7 @@ import React from 'react';
 import type { Node } from 'react';
 import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
 import withStyles from '../../../hoc/withStyles';
+import errors from '../../../../../utils/errorsMsg';
 import StyledTextBox from '../TextBox.style';
 
 /**
@@ -12,7 +13,6 @@ import StyledTextBox from '../TextBox.style';
  * The border styles for success and error are governed by isErrorState and isSuccessState props.
  * The prop disabled determines if the textbox needs to be disabled or not.
  */
-
 type Props = {
   id?: string,
   className: string,
@@ -27,6 +27,10 @@ type Props = {
   input: any,
   Value: any,
   maxLength: any,
+  inputRef: any,
+};
+const getErroMsg = (value, placeholder) => {
+  return value.replace('@@LABEL@@', placeholder);
 };
 
 const TextBox = ({
@@ -39,6 +43,7 @@ const TextBox = ({
   isSuccessState,
   maxLength,
   input,
+  inputRef,
   meta: { touched, error, warning },
 }: Props): Node => {
   const elemValue = input.value;
@@ -57,6 +62,8 @@ const TextBox = ({
         isSuccessState={isSuccessState}
         maxLength={maxLength}
         Value={elemValue}
+        ref={inputRef}
+        placeholder=""
       />
 
       {/* commented onChange={onChangeHandler} */}
@@ -66,8 +73,7 @@ const TextBox = ({
       {touched &&
         ((error && (
           <BodyCopy clearFloat ErrorMsg="error" bodySize="two" tag="div">
-            {error}
-            {!elemValue && placeholder}
+            {getErroMsg(errors[error], placeholder)}
           </BodyCopy>
         )) ||
           (warning && (

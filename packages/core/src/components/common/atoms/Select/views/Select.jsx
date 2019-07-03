@@ -42,7 +42,10 @@ const SelectBox = ({
   options,
   meta: { touched, error, warning },
 }: Props): Node => (
-  <label htmlFor={name} className={`${className} ${input.value ? 'active' : ''}`}>
+  <label
+    htmlFor={name}
+    className={`${className} ${input.value ? 'active' : ''} select-fields-wrapper`}
+  >
     <select
       {...input}
       id={id}

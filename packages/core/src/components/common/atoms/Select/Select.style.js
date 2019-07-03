@@ -4,6 +4,19 @@ const textboxStyles = css`
   &.active div {
     top: -65px;
   }
+  &.select-fields-wrapper .Error__clearFloat {
+    clear: both;
+    top: -10px;
+    position: relative;
+  }
+  &.select-fields-wrapper p {
+    top: -30px;
+    opacity: 0.8;
+    position: relative;
+    margin: 0;
+    float: left;
+    padding: 5px 0px 5px 10px;
+  }
   .selectField {
     margin: ${props => props.theme.spacing.ELEM_SPACING.XS} 0 0 0;
     height: 35px;
@@ -13,11 +26,12 @@ const textboxStyles = css`
     color: ${props => props.theme.colors.TEXTBOX.COLOR};
     width: 100%;
     padding: 0 ${props => props.theme.spacing.ELEM_SPACING.MEDLRG};
-    background-position: left top;
-    background-repeat: no-repeat;
     background-size: contain;
-    background: none;
     border: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
+      no-repeat;
+    background-position: right 8px center;
+    -webkit-appearance: none;
 
     ${props =>
       props.meta.touched && props.meta.error

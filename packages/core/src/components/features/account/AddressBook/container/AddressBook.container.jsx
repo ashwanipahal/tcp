@@ -111,8 +111,8 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     onAddNNewAddressClick: () => {
       dispatch(loadAddAddressComponent());
     },
-    backToAddressBookClick: ({ state }) => {
-      dispatch(loadAddressBookComponent({ state }));
+    backToAddressBookClick: () => {
+      dispatch(loadAddressBookComponent());
     },
     onEditAddressClick: payload => {
       dispatch(setEditAddress(payload));

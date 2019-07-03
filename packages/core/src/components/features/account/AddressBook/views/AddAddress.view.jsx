@@ -1,13 +1,11 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
-import { Provider } from 'react-redux';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Anchor from '../../../../common/atoms/Anchor';
-import store from './Form/store';
-import AddressValidationForm from './Form/AddressValidationForm';
+import { AddAddressForm } from './molecules/AddAddressForm';
 import styles from '../styles/AddAddress.style';
 
 // @flow
@@ -59,23 +57,16 @@ const AddAddress = ({
               }
             />
           )}
-          <Provider store={store}>
-            <AddressValidationForm
-              backToAddressBookClick={backToAddressBookClick}
-              onSubmit={submitAddAddressForm}
-              initialValues={initialValues}
-            />
-          </Provider>
+          <AddAddressForm
+            backToAddressBookClick={backToAddressBookClick}
+            onSubmit={submitAddAddressForm}
+            initialValues={initialValues}
+          />
         </Grid>
       </form>
     </div>
   );
 };
-// const AddAddress = ({ onSubmit, submitAddAddressForm }) => {
-//   return (
-
-//   );
-// };
 export default reduxForm({
   form: 'addressinfo', // a unique identifier for this form
 })(withStyles(AddAddress, styles));

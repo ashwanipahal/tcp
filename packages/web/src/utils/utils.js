@@ -22,7 +22,6 @@ export const objectToQueryString = params => {
     .map(key => `${key}=${params[key]}`)
     .join('&');
 };
-
 /**
  * This function identifies current brand either TCP or GYMBOREE
  */

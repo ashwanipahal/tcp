@@ -8,6 +8,7 @@ describe('Textbox component', () => {
       type: 'text',
       id: 'abcd',
       className: 'asdfasdf',
+      meta: 'sdfdsf',
     };
     const component = shallow(<TextBoxVanilla {...props} />);
     expect(component).toMatchSnapshot();
