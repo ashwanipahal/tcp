@@ -1,33 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BrandTabs component renders correctly 1`] = `
-<Fragment>
-  <div
-    className="brand-tabs"
-  >
-    <Styled(Anchor)
-      className=""
-      target=""
-      to="/"
-    >
-      <Styled(Image)
-        alt="The Children's Place"
-      />
-    </Styled(Anchor)>
-    <Styled(Anchor)
-      className=""
-      target="_blank"
-      to="https://www.gymboree.com/"
-    >
-      <Styled(Image)
-        alt="Gymboree"
-      />
-    </Styled(Anchor)>
-  </div>
-</Fragment>
-`;
-
-exports[`BrandTabs component renders correctly with tcp logoClass 1`] = `
+exports[`BrandTabs component renders correctly with brand-tabs className 1`] = `
 <Fragment>
   <div
     className="brand-tabs"
