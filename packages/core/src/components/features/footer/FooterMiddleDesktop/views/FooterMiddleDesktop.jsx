@@ -29,12 +29,14 @@ const FooterMiddleDesktop = ({ navLinks, className }: Props) => {
         >
           <FooterNavLinks
             className={className}
-            navLinkItems={[{ header: navLinks[i].header, links: navLinks[i].links }]}
+            navLinkItems={{ header: navLinks[i].header, links: navLinks[i].links }}
+            colNum={i}
           />
           <FooterNavLinks
             className={className}
             isSubHeader
-            navLinkItems={[{ header: navLinks[i + 1].header, links: navLinks[i + 1].links }]}
+            navLinkItems={{ header: navLinks[i + 1].header, links: navLinks[i + 1].links }}
+            colNum={i + 1}
           />
         </Col>
       );
@@ -50,7 +52,8 @@ const FooterMiddleDesktop = ({ navLinks, className }: Props) => {
         >
           <FooterNavLinks
             className={className}
-            navLinkItems={[{ header: navLinks[i].header, links: navLinks[i].links }]}
+            navLinkItems={{ header: navLinks[i].header, links: navLinks[i].links }}
+            colNum={i}
           />
         </Col>
       );
@@ -69,7 +72,8 @@ const FooterMiddleDesktop = ({ navLinks, className }: Props) => {
         <FooterNavLinks
           headerAsImage
           className={className}
-          navLinkItems={[{ header: navLinks[0].header, links: navLinks[0].links }]}
+          navLinkItems={{ header: navLinks[0].header, links: navLinks[0].links }}
+          colNum={0}
         />
       </Col>
       <Col
@@ -82,7 +86,8 @@ const FooterMiddleDesktop = ({ navLinks, className }: Props) => {
         <FooterNavLinks
           headerAsImage
           className={className}
-          navLinkItems={[{ header: navLinks[1].header, links: navLinks[1].links }]}
+          navLinkItems={{ header: navLinks[1].header, links: navLinks[1].links }}
+          colNum={1}
         />
       </Col>
       {numberOfNavLinkCols <= 5 ? (

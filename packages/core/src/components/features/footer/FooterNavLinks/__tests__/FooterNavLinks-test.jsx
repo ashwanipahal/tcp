@@ -11,39 +11,13 @@ describe('FooterNavLinks component', () => {
       isSubHeader: false,
       headerAsImage: false,
       updateAccordionState: () => {},
-      navLinkItems: [
-        {
-          header: '',
-          title: '',
-          links: [],
+      navLinkItems: {
+        header: {
+          text: '',
         },
-        {
-          header: '',
-          title: '',
-          links: [],
-        },
-        {
-          header: '',
-          title: '',
-          links: [],
-        },
-        {
-          header: '',
-          title: '',
-          links: [],
-        },
-        {
-          header: '',
-          title: '',
-          isSubHeader: true,
-          links: [],
-        },
-        {
-          header: '',
-          title: '',
-          links: [],
-        },
-      ],
+        title: '',
+        links: [],
+      },
     };
     const component = shallow(<FooterNavLinks {...props} />);
     expect(component).toMatchSnapshot();

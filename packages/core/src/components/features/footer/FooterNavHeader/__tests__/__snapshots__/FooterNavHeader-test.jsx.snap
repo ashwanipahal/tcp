@@ -4,7 +4,7 @@ exports[`FooterNavHeader component renders default footer correctly 1`] = `
 <h4
   aria-label="ABCD"
   className="footer-nav-header1"
-  data-index={2}
+  data-locator="col_heading_undefined"
 >
   Title
 </h4>
@@ -13,7 +13,7 @@ exports[`FooterNavHeader component renders default footer correctly 1`] = `
 exports[`FooterNavHeader component renders image in header variation correctly 1`] = `
 <Styled(Anchor)
   className="footer-nav-header img-link"
-  data-locator=""
+  data-locator="col_heading_undefined"
   to=""
 >
   <Styled(Image) />
@@ -24,7 +24,7 @@ exports[`FooterNavHeader component renders subheader variation correctly 1`] = `
 <h4
   aria-label="ABCD"
   className="footer-nav-header2 subHeader"
-  data-index={4}
+  data-locator="col_heading_undefined"
 >
   Title
 </h4>
