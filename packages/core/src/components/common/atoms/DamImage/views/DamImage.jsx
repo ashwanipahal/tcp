@@ -4,22 +4,17 @@ import { withTheme } from 'styled-components';
 
 import Image from '../../Image';
 
-function DamImage(props) {
-  const {
-    theme: { breakpoints },
-    path,
-    imgPath,
-    imgConfig,
-    ...other
-  } = props;
+/*
+  Based on breakpoints defined on theme, it will create the srcset according to
+  the breakpoints; If user only send the Cloudinary imgPath, it add the
+  configuration according to the breakpoints; For ony adding width property;
+  If width found on imgConfig (cloudinary config) then it will use to create srcset;
+*/
 
-  /*
-    Based on breakpoints defined on theme, it will create the srcset according to
-    the breakpoints; If user only send the Cloudinary imgPath, it add the
-    configuration according to the breakpoints; For ony adding width property;
-    If width found on imgConfig (cloudinary config) then it will use to create srcset;
-  */
-  const srcSetConfig = breakpoints.keys.reduce(
+const getSrcSetConfig = props => {
+  const { breakpoints, path, imgPath, imgConfig } = props;
+
+  return breakpoints.keys.reduce(
     (config, breakpointKey, breakpointKeyIndex) => {
       const breakpointValue = breakpoints.values[breakpointKey];
       let cloudinaryImgConfig = imgConfig[breakpointKeyIndex] || '';
@@ -41,9 +36,21 @@ function DamImage(props) {
     },
     { srcSet: [], sizes: [] }
   );
+};
 
+const DamImage = props => {
+  const {
+    theme: { breakpoints },
+    path,
+    imgPath,
+    imgConfig,
+    ...other
+  } = props;
+
+  const srcSetConfig = getSrcSetConfig({ breakpoints, path, imgPath, imgConfig });
+  // TODO: sizes need to be added;
   return <Image src={srcSetConfig.srcSet[1]} srcSet={srcSetConfig.srcSet.join(',')} {...other} />;
-}
+};
 
 DamImage.defaultProps = {
   theme: {},
@@ -53,7 +60,7 @@ DamImage.defaultProps = {
 
 DamImage.propTypes = {
   /* StyleComponent theme, will come from context */
-  theme: PropTypes.shape({}),
+  theme: PropTypes.shape({ breakpoints: PropTypes.object }),
 
   /* Image path which will be appended after the cloudinary configuration */
   imgPath: PropTypes.string.isRequired,
