@@ -15,11 +15,19 @@ const Abstractor = {
     return mock;
   },
   processData: data => {
-    return {
-      brandTabs: data.submodules.topNavWrapper.composites.brand_tabs,
-      promoMessageWrapper: data.submodules.topNavWrapper.composites.promo_message_wrapper,
-      promoTextBannerCarousel: data.submodules.promoTextBannerCarousel.composites.promoTextBanner,
-    };
+    try {
+      return {
+        brandTabs: data.submodules.topNavWrapper.composites.brand_tabs,
+        promoMessageWrapper: data.submodules.topNavWrapper.composites.promo_message_wrapper,
+        promoTextBannerCarousel: data.submodules.promoTextBannerCarousel.composites.promoTextBanner,
+      };
+    } catch (e) {
+      return {
+        brandTabs: [],
+        promoMessageWrapper: [],
+        promoTextBannerCarousel: [],
+      };
+    }
   },
 };
 export default Abstractor;
