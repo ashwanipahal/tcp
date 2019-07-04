@@ -2,6 +2,7 @@ import { all } from 'redux-saga/effects';
 import ProductListingPageSaga from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.saga';
 import LoginPageSaga from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.saga';
 import AddressBookSaga from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.saga';
+import AccountModalSagaSaga from '@tcp/core/src/components/features/account/AddressBook/container/DeleteAddress.saga';
 import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
 import AddressVerificationSaga from '@tcp/core/src/components/features/account/AddressVerification/container/AddressVerification.sagas';
 import BootstrapSaga from './bootstrap';
@@ -14,6 +15,7 @@ export default function* rootSaga() {
     ProductListingPageSaga(),
     LoginPageSaga(),
     AddressBookSaga(),
+    AccountModalSagaSaga(),
     SetDefaultShippingAddressSaga(),
     AddressVerificationSaga(),
   ]);

@@ -28,6 +28,13 @@ const labels = {
   comfirmBtnLabel: 'CONFIRM',
   editBtnLabel: 'EDIT ADDRESS',
   verifyYourAddressHeading: 'VERIFY YOUR ADDRESS',
+  successMessage: 'Your account has been updated',
+  errorMessage: 'Your action could not be completed due to a system error',
+  deleteAddressHeading: 'DELETE ADDRESS',
+  deleteAddressTitle: 'Are you sure you want to delete this address?',
+  cancel: 'No, Dont Cancel',
+  deleteConfirm: 'Yes Delete',
+  addressBookHeading: 'ADDRESS BOOK',
 };
 
 export default labels;

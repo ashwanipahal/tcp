@@ -7,7 +7,8 @@ import AddressVerificationReducer from '@tcp/core/src/components/features/accoun
 import {
   HEADER_REDUCER_KEY,
   FOOTER_REDUCER_KEY,
-  GLOBAL_REDUCER_KEY,
+  LABEL_REDUCER_KEY,
+  LAYOUT_REDUCER_KEY,
   HOMEPAGE_REDUCER_KEY,
   LOGINPAGE_REDUCER_KEY,
   PRODUCTLISTINGPAGE_REDUCER_KEY,
@@ -16,7 +17,8 @@ import {
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '../../components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '../../components/common/organisms/Footer/container/Footer.reducer';
-import GlobalReducers from './global';
+import LabelReducer from './labels';
+import LayoutReducer from './layout';
 import HomePageReducer from '../../components/features/content/HomePage/container/HomePage.reducer';
 
 // A higher order reducer to filter out actions not matching a certain action name pattern.
@@ -28,7 +30,8 @@ const filteredProductListingPageReducer = createFilteredReducer(
 export default combineReducers({
   [HEADER_REDUCER_KEY]: HeaderReducer,
   [FOOTER_REDUCER_KEY]: FooterReducer,
-  [GLOBAL_REDUCER_KEY]: GlobalReducers,
+  [LABEL_REDUCER_KEY]: LabelReducer,
+  [LAYOUT_REDUCER_KEY]: LayoutReducer,
   [HOMEPAGE_REDUCER_KEY]: HomePageReducer,
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
   [LOGINPAGE_REDUCER_KEY]: LoginPageReducer,

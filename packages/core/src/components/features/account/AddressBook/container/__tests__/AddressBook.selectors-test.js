@@ -1,5 +1,10 @@
 import { fromJS } from 'immutable';
-import { getAddressListState, showDefaultShippingUpdatedState } from '../AddressBook.selectors';
+import {
+  getAddressListState,
+  showUpdatedNotificationState,
+  showUpdatedNotificationOnModalState,
+  deleteModalOpenState,
+} from '../AddressBook.selectors';
 
 describe('#AddressBook selector', () => {
   it('#getAddressListState should return AddressListReduer state', () => {
@@ -14,16 +19,38 @@ describe('#AddressBook selector', () => {
     expect(getAddressListState(state)).toEqual(AddressListState.get('list'));
   });
 
-  it('#showDefaultShippingUpdatedState should return AddressListReduer state', () => {
+  it('#showUpdatedNotificationState should return AddressListReduer state', () => {
     const AddressListState = fromJS({
-      showDefaultShippingUpdatedState,
+      showUpdatedNotificationState,
     });
     const state = {
       AddressBookReducer: AddressListState,
     };
 
-    expect(showDefaultShippingUpdatedState(state)).toEqual(
-      AddressListState.get('showDefaultShippingUpdatedMsg')
+    expect(showUpdatedNotificationState(state)).toEqual(
+      AddressListState.get('showUpdatedNotification')
     );
+  });
+  it('#showUpdatedNotificationState should return AddressListReduer state', () => {
+    const AddressListState = fromJS({
+      showUpdatedNotificationOnModalState,
+    });
+    const state = {
+      AddressBookReducer: AddressListState,
+    };
+
+    expect(showUpdatedNotificationOnModalState(state)).toEqual(
+      AddressListState.get('showUpdatedNotificationOnModal')
+    );
+  });
+  it('#deleteModalMountedState should return AddressListReduer state', () => {
+    const AddressListState = fromJS({
+      deleteModalMountedState: false,
+    });
+    const state = {
+      AddressBookReducer: AddressListState,
+    };
+
+    expect(deleteModalOpenState(state)).toEqual(AddressListState.get('deleteModalMountedState'));
   });
 });

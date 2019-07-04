@@ -11,8 +11,8 @@ import CONSTANTS from '../AddressVerification.constants';
 // @flow
 
 type Props = {
-  className: string,
   heading: string,
+  className: string,
   verificationResult: string,
   userAddress: object,
   suggestedAddress: object,
@@ -215,7 +215,7 @@ export class AddressVerification extends React.Component<Props> {
   };
 
   render() {
-    const { className, verificationResult, userAddress, suggestedAddress, labels } = this.props;
+    const { className, verificationResult, userAddress, suggestedAddress, labels, heading } = this.props;
     this.updateDisplayFlag(verificationResult, userAddress, suggestedAddress);
     if (this.showVerifyModal) {
       return (
@@ -225,6 +225,7 @@ export class AddressVerification extends React.Component<Props> {
           onRequestClose={this.onCloseModal}
           overlayClassName="TCPModal__Overlay"
           className={`${className} TCPModal__Content`}
+          heading={heading}
         >
           <div className="addressVerification layout--pl__XS layout--pr__XS">
             <BodyCopy

@@ -38,14 +38,14 @@ async function fetchData(baseURL, relURL, params = {}, method) {
     request.send(params.payload);
   }
 
-  const result = new Promise(resolve => {
+  const result = new Promise((resolve, reject) => {
     request
       .then(response => {
         resolve(response);
       })
       .catch(e => {
         // eslint-disable-next-line no-console
-        console.log(e);
+        reject(e);
       });
   });
   result.abort = () => request.abort(); // allow callers to cancel the request by calling abort on the returned object.
