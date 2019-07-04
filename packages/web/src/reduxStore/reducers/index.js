@@ -2,6 +2,8 @@ import { combineReducers } from 'redux';
 import { ProductListingPageReducer } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.reducer';
 import LoginPageReducer from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.reducer';
 import AddressBookReducer from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.reducer';
+import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
+import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
 import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
 import {
   HEADER_REDUCER_KEY,
@@ -13,10 +15,8 @@ import {
   PRODUCTLISTINGPAGE_REDUCER_KEY,
   ADDRESSBOOK_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
-import HeaderReducer from '../../components/common/organisms/Header/container/Header.reducer';
-import FooterReducer from '../../components/common/organisms/Footer/container/Footer.reducer';
-import LabelReducer from './labels';
-import LayoutReducer from './layout';
+import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
+import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
 import HomePageReducer from '../../components/features/content/HomePage/container/HomePage.reducer';
 
 // A higher order reducer to filter out actions not matching a certain action name pattern.
