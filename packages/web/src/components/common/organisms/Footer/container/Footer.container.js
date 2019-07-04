@@ -3,18 +3,23 @@ import FooterView from '../views';
 
 const mapStateToProps = state => {
   const { footer } = state.FooterReducer;
+  const {
+    global: {
+      footerDefault: { CONNECT_WITH_US: connectWithUsLabel, REFERENCE_ID: referenceID },
+    },
+  } = state.labels;
   return {
     legalLinks: footer.legalLinks,
     navLinks: footer.navLinks,
     socialMediaLinks: {
-      connectWithUsLabel: state.GlobalReducers.labels.connect_with_us,
+      connectWithUsLabel,
       links: footer.socialLinks,
     },
     emailSignup: footer.emailSignupBtn,
     smsSignup: footer.smsSignupBtn,
     referAFriend: footer.referFriendBtn,
-    referenceID: state.GlobalReducers.labels.reference_id,
     copyrightText: footer.copyrightText,
+    referenceID,
   };
 };
 
