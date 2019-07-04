@@ -1,6 +1,24 @@
 import mock from './mock';
 import handler from '../../../handler';
 
+const processFooterTop = footerTop => {
+  try {
+    return {
+      emailSignupBtn: footerTop.composites.buttonGroup[0],
+      smsSignupBtn: footerTop.composites.buttonGroup[1],
+      referFriendBtn: footerTop.composites.buttonGroup[2],
+      socialLinks: footerTop.composites.socialLinks,
+    };
+  } catch (e) {
+    return {
+      emailSignupBtn: {},
+      smsSignupBtn: {},
+      referFriendBtn: {},
+      socialLinks: [],
+    };
+  }
+};
+
 const processFooterMiddle = footerMiddleObj => {
   try {
     const formattedFooterMiddleArray = [];
@@ -29,19 +47,6 @@ const processFooterMiddle = footerMiddleObj => {
   }
 };
 
-const processFooterTop = footerTop => {
-  try {
-    return {
-      emailSignupBtn: footerTop.composites.buttonGroup[0],
-      smsSignupBtn: footerTop.composites.buttonGroup[1],
-      referFriendBtn: footerTop.composites.buttonGroup[2],
-      socialLinks: footerTop.composites.socialLinks,
-    };
-  } catch (e) {
-    return {};
-  }
-};
-
 const processFooterBottom = footerBottom => {
   try {
     return {
@@ -49,7 +54,10 @@ const processFooterBottom = footerBottom => {
       legalLinks: footerBottom.composites.linkList,
     };
   } catch (e) {
-    return {};
+    return {
+      copyrightText: '',
+      legalLinks: [],
+    };
   }
 };
 
