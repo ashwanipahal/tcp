@@ -4,6 +4,7 @@ import {
   showUpdatedNotificationState,
   showUpdatedNotificationOnModalState,
   deleteModalOpenState,
+  showAddAddressComponent,
 } from '../AddressBook.selectors';
 
 describe('#AddressBook selector', () => {
@@ -30,6 +31,16 @@ describe('#AddressBook selector', () => {
     expect(showUpdatedNotificationState(state)).toEqual(
       AddressListState.get('showUpdatedNotification')
     );
+  });
+
+  it('#showAddAddressComponent should return AddressListReduer state', () => {
+    const AddressListState = fromJS({
+      showAddAddressComponent,
+    });
+    const state = {
+      AddressBookReducer: AddressListState,
+    };
+    expect(showAddAddressComponent(state)).toEqual(AddressListState.get('addAddressLoaded'));
   });
   it('#showUpdatedNotificationState should return AddressListReduer state', () => {
     const AddressListState = fromJS({
