@@ -91,7 +91,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
     const { handleSubmit, pristine, className, backToAddressBookClick } = this.props;
     const { city, zip, state, country } = this.state;
     return (
-      <form className={className} onSubmit={handleSubmit}>
+      <form className={className} onSubmit={handleSubmit} noValidate>
         <Row fullBleed>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
@@ -116,7 +116,6 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
             />
           </Col>
         </Row>
-        <br />
         <Row fullBleed>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
@@ -140,7 +139,6 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
             />
           </Col>
         </Row>
-        <br />
         <Row fullBleed>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
@@ -180,7 +178,6 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
             />
           </Col>
         </Row>
-        <br />
         <Row fullBleed>
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
@@ -207,7 +204,6 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
             />
           </Col>
         </Row>
-        <br />
         <Row fullBleed>
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
@@ -220,7 +216,6 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
             <BodyCopy tag="span">Set as default shipping addres</BodyCopy>
           </Col>
         </Row>
-        <br />
         <Row className="button_wrapper">
           <Col className="cancel" colSize={{ small: 6, medium: 1, large: 3 }}>
             <Button onClick={backToAddressBookClick} buttonVariation="fixed-width" type="button">
@@ -239,7 +234,6 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
             </Button>
           </Col>
         </Row>
-        <br />
       </form>
     );
   }

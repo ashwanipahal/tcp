@@ -1,11 +1,11 @@
 import React from 'react';
-import { reduxForm } from 'redux-form';
+import Router from 'next/router'; //eslint-disable-line
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Anchor from '../../../../common/atoms/Anchor';
-import AddAddressForm from './molecules/AddAddressForm';
+import AddAddressFormComponent from './molecules/AddAddressForm';
 import styles from '../styles/AddAddress.style';
 
 // @flow
@@ -14,24 +14,26 @@ type Props = {
   submitAddAddressForm: any,
   addAddressNotification: any,
   AddAddresslabels: any,
-  backToAddressBookClick: any,
 };
+
+const backToAddressBookClick = () => {
+  Router.push('/account');
+}
+
 const AddAddress = ({
   className,
   submitAddAddressForm,
   addAddressNotification,
   AddAddresslabels,
-  backToAddressBookClick,
 }: Props) => {
-  const msgInfo = JSON.parse(`${addAddressNotification}`);
+  const msgInfo = addAddressNotification;
   return (
     <div className={className}>
       <Anchor
         className="addAddress__anchor__back"
         fontSizeVariation="xlarge"
         anchorVariation="secondary"
-        handleLinkClick={backToAddressBookClick}
-        noLink
+        to="/account"
       >
         Back
       </Anchor>
@@ -43,27 +45,22 @@ const AddAddress = ({
       >
         Add New Shipping Address
       </Heading>
-      <form>
-        <Grid>
-          <br />
-          {msgInfo && (
-            <Notification
-              status={msgInfo ? 'error' : 'success'}
-              colSize={{ large: 12, medium: 8, small: 6 }}
-              message={
+      <Grid>
+        {msgInfo && (
+        <Notification
+          status={msgInfo ? 'error' : 'success'}
+          colSize={{ large: 12, medium: 8, small: 6 }}
+          message={
                 msgInfo ? AddAddresslabels.addAddressFail : AddAddresslabels.addAddressSuccessLbl
               }
-            />
+        />
           )}
-          <AddAddressForm
-            backToAddressBookClick={backToAddressBookClick}
-            onSubmit={submitAddAddressForm}
-          />
-        </Grid>
-      </form>
+        <AddAddressFormComponent
+          backToAddressBookClick={backToAddressBookClick}
+          onSubmit={submitAddAddressForm}
+        />
+      </Grid>
     </div>
   );
 };
-export default reduxForm({
-  form: 'addressinfo', // a unique identifier for this form
-})(withStyles(AddAddress, styles));
+export default withStyles(AddAddress, styles);

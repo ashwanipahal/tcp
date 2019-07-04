@@ -27,7 +27,6 @@ type Props = {
   input: any,
   Value: any,
   maxLength: any,
-  inputRef: any,
 };
 const getErroMsg = (value, placeholder) => {
   return value.replace('@@LABEL@@', placeholder);
@@ -43,8 +42,7 @@ const TextBox = ({
   isSuccessState,
   maxLength,
   input,
-  inputRef,
-  meta: { touched, error, warning },
+  meta: { touched, error },
 }: Props): Node => {
   const elemValue = input.value;
   return (
@@ -62,7 +60,6 @@ const TextBox = ({
         isSuccessState={isSuccessState}
         maxLength={maxLength}
         Value={elemValue}
-        ref={inputRef}
         placeholder=""
       />
 
@@ -70,17 +67,11 @@ const TextBox = ({
       <BodyCopy bodySize="two" FormVariation="float" BodycolorLg="primary" tag="p" className="">
         {placeholder}
       </BodyCopy>
-      {touched &&
-        ((error && (
-          <BodyCopy clearFloat ErrorMsg="error" bodySize="two" tag="div">
-            {getErroMsg(errors[error], placeholder)}
-          </BodyCopy>
-        )) ||
-          (warning && (
-            <BodyCopy bodySize="two" tag="div">
-              {warning}
-            </BodyCopy>
-          )))}
+      {touched && error && (
+      <BodyCopy clearFloat ErrorMsg="error" bodySize="two" tag="div">
+        {getErroMsg(errors[error], placeholder)}
+      </BodyCopy>
+        )}
     </label>
   );
 };

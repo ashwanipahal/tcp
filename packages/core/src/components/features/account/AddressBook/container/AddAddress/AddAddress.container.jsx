@@ -4,23 +4,19 @@ import { connect } from 'react-redux';
 import { addAddressReq } from './AddAddress.actions';
 import AddAddress from '../../views/AddAddress.view';
 import showMessageForAddAddress from './AddAddress.selectors';
+import AddAddresslabels from './AddAddress.labels';
 
 type Props = {
   submitAddAddressForm: any,
   addAddressNotification: any,
-  AddAddresslabels: any,
-  backToAddressBookClick: any,
 };
 
 export const AddaddressContainer = ({
   submitAddAddressForm,
   addAddressNotification,
-  AddAddresslabels,
-  backToAddressBookClick,
 }: Props) => {
   return (
     <AddAddress
-      backToAddressBookClick={backToAddressBookClick}
       AddAddresslabels={AddAddresslabels}
       addAddressNotification={addAddressNotification}
       submitAddAddressForm={submitAddAddressForm}
