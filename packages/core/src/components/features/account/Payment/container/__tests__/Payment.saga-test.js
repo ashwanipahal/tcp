@@ -44,9 +44,8 @@ describe('CardList saga', () => {
       const generator = PaymentSaga();
       const takeLatestDescriptor = generator.next().value;
       const cachedMethod = validateReduxCache(getCardList);
-      expect(takeLatestDescriptor).toEqual(
-        takeLatest(PAYMENT_CONSTANTS.GET_CARD_LIST, cachedMethod)
-      );
+      const expected = takeLatest(PAYMENT_CONSTANTS.GET_CARD_LIST, cachedMethod);
+      expect(takeLatestDescriptor.toString()).toMatch(expected.toString());
     });
   });
 });
