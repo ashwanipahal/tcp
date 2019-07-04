@@ -11,7 +11,7 @@ export function* addAddressGet({ payload }) {
     const payloadParam = {
       contact: [
         {
-          addressLine: [payload.address1 || '', payload.address2 || '', ''],
+          addressLine: [payload.addressLine || '', payload.addressLine2 || '', ''],
           attributes: [
             {
               key: 'addressField3',
@@ -21,8 +21,8 @@ export function* addAddressGet({ payload }) {
           addressType: 'ShippingAndBilling',
           city: payload.city,
           country: payload.country === 'United States' ? 'US' : 'CA',
-          firstName: payload.FirstName,
-          lastName: payload.LastName,
+          firstName: payload.firstName,
+          lastName: payload.lastName,
           nickName: addressKey,
           phone1: payload.phoneNumber || '',
           phone1Publish: 'false',
