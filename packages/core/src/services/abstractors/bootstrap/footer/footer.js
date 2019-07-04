@@ -25,6 +25,22 @@ const processFooterMiddle = footerMiddleObj => {
   return formattedFooterMiddleArray;
 };
 
+const processFooterTop = footerTop => {
+  return {
+    emailSignupBtn: footerTop.composites.buttonGroup[0],
+    smsSignupBtn: footerTop.composites.buttonGroup[1],
+    referFriendBtn: footerTop.composites.buttonGroup[2],
+    legalLinks: footerTop.composites.legalLinks,
+  };
+};
+
+const processFooterBottom = footerBottom => {
+  return {
+    copyrightText: footerBottom.composites.richTextGroup[0].text,
+    legalLinks: footerBottom.composites.linkList,
+  };
+};
+
 /**
  * Abstractor layer for loading data from API for Footer related components
  */
@@ -39,10 +55,10 @@ const Abstractor = {
     return mock;
   },
   processData: data => ({
-    submodules: {
-      footerTop: data.submodules.footerTop,
-      footerMiddle: processFooterMiddle(data.submodules.footerMiddle.composites),
-      footerBottom: data.submodules.footerBottom,
+    footer: {
+      ...processFooterTop(data.submodules.footerTop),
+      navLinks: processFooterMiddle(data.submodules.footerMiddle.composites) || {},
+      ...processFooterBottom(data.submodules.footerBottom),
     },
   }),
 };
