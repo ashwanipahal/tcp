@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import FooterView from '../views';
 
 const mapStateToProps = state => {
-  const { footer } = state.FooterReducer;
+  const { footer } = state;
   const {
     global: {
       footerDefault: { CONNECT_WITH_US: connectWithUsLabel, REFERENCE_ID: referenceID },

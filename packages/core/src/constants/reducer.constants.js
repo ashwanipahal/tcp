@@ -1,5 +1,5 @@
-export const HEADER_REDUCER_KEY = 'HeaderReducer';
-export const FOOTER_REDUCER_KEY = 'FooterReducer';
+export const HEADER_REDUCER_KEY = 'header';
+export const FOOTER_REDUCER_KEY = 'footer';
 export const LABEL_REDUCER_KEY = 'labels';
 export const LAYOUT_REDUCER_KEY = 'layouts';
 export const HOMEPAGE_REDUCER_KEY = 'HomePageReducer';
