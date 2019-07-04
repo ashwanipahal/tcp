@@ -14,9 +14,12 @@ const Abstractor = {
   getMock: () => {
     return mock;
   },
-  processData: data => ({
-    topNavWrapper: data.submodules.topNavWrapper,
-    promoTextBannerCarousel: data.submodules.promoTextBannerCarousel,
-  }),
+  processData: data => {
+    return {
+      brandTabs: data.submodules.topNavWrapper.composites.brand_tabs,
+      promoMessageWrapper: data.submodules.topNavWrapper.composites.promo_message_wrapper,
+      promoTextBannerCarousel: data.submodules.promoTextBannerCarousel.composites.promoTextBanner,
+    };
+  },
 };
 export default Abstractor;

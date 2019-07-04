@@ -4,7 +4,8 @@ import HeaderView from '../views';
 const mapStateToProps = state => {
   const { header } = state;
   return {
-    headerTopNav: header.topNavWrapper,
+    brandTabs: header.brandTabs,
+    promoMessageWrapper: header.promoMessageWrapper,
     headerPromoArea: header.promoTextBannerCarousel,
   };
 };

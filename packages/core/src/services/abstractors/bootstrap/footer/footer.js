@@ -35,7 +35,7 @@ const processFooterTop = footerTop => {
       emailSignupBtn: footerTop.composites.buttonGroup[0],
       smsSignupBtn: footerTop.composites.buttonGroup[1],
       referFriendBtn: footerTop.composites.buttonGroup[2],
-      legalLinks: footerTop.composites.legalLinks,
+      socialLinks: footerTop.composites.socialLinks,
     };
   } catch (e) {
     return {};
