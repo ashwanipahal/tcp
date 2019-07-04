@@ -75,7 +75,7 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
     bodySize="two"
     tag="div"
   >
-    first name
+    first name for user
   </Styled(BodyStyle)>
   <Styled(BodyStyle)
     ErrorMsg="error"
@@ -83,7 +83,7 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
     clearFloat={true}
     tag="div"
   >
-    Please enter a first name
+    Please enter a first name for user
   </Styled(BodyStyle)>
 </div>
 `;

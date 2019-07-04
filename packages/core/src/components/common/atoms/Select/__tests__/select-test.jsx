@@ -46,7 +46,7 @@ describe('Selectbox component', () => {
       },
       input: {},
       defaultValue: countryUS,
-      placeholder: 'first name',
+      placeholder: 'first name for user',
     };
     const component = shallow(<SelectBoxVanilla {...props} />);
     expect(component).toMatchSnapshot();
