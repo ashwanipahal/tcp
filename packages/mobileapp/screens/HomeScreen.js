@@ -1,12 +1,6 @@
 import React from 'react';
-import {
-  Image,
-  Platform,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
-import { EspotContainer } from "../components/espotContainerComponent";
+import { Image, Platform, StyleSheet, Text, View, Button } from 'react-native';
+import { EspotContainer } from '../components/espotContainerComponent';
 import styled from 'styled-components';
 
 const StyledText = styled.Text`
@@ -14,15 +8,20 @@ const StyledText = styled.Text`
 `;
 
 export default class HomeScreen extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   static navigationOptions = {
     header: null,
   };
 
   render() {
+    console.log('props are .....', this.props);
     return (
       <View className="">
+        <Button onPress={() => this.props.navigation.navigate('SecondScreen')} title="Navigate" />
         <StyledText>This is test text</StyledText>
-        <EspotContainer></EspotContainer>
+        <EspotContainer />
       </View>
     );
   }

@@ -11,7 +11,9 @@ import SettingsScreen from '../screens/SettingsScreen';
 import LoginSync from '../screens/LoginSync';
 
 const HomeStack = createStackNavigator({
-  Home: HomeScreen,
+  Home: {
+    screen: props => <HomeScreen {...props} />,
+  },
 });
 
 HomeStack.navigationOptions = {
