@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RichText should render correctly 1`] = `
+<
+  ,props => props.inheritedStyles ? props.inheritedStyles : '',;
+
+  id="RichText"
+/>
+`;
