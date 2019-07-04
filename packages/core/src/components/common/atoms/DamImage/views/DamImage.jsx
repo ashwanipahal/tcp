@@ -2,8 +2,6 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
 
-import Image from '../../Image';
-
 /*
   Based on breakpoints defined on theme, it will create the srcset according to
   the breakpoints; If user only send the Cloudinary imgPath, it add the
@@ -19,16 +17,19 @@ const getSrcSetConfig = props => {
       const breakpointValue = breakpoints.values[breakpointKey];
       let cloudinaryImgConfig = imgConfig[breakpointKeyIndex] || '';
       let imgSize = breakpointKeyIndex === 0 && breakpointValue === 0 ? 468 : breakpointValue;
-      const breakpointWidth = imgSize;
+      // const breakpointWidth = imgSize;
 
       if (cloudinaryImgConfig) {
         imgSize = cloudinaryImgConfig.match(/w_(\d+)/);
         imgSize = imgSize && imgSize[1];
       } else {
-        cloudinaryImgConfig = `w_${imgSize}`;
+        // +20 just to get better image quality
+        cloudinaryImgConfig = `w_${imgSize + 20}`;
       }
 
-      const src = `${path}/${cloudinaryImgConfig}/${imgPath} ${breakpointWidth}w`;
+      // const size = `(min-width: ${breakpointValue}px) ${breakpointValue + 60}px`;
+      // const src = `${path}/${cloudinaryImgConfig}/${imgPath} ${breakpointWidth}w`;
+      const src = `${path}/${cloudinaryImgConfig}/${imgPath}`;
       const size = `(min-width: ${breakpointValue}px) ${breakpointValue + 60}px`;
       config.srcSet.push(src);
       config.sizes.push(size);
@@ -44,12 +45,25 @@ const DamImage = props => {
     path,
     imgPath,
     imgConfig,
+    alt,
     ...other
   } = props;
 
   const srcSetConfig = getSrcSetConfig({ breakpoints, path, imgPath, imgConfig });
-  // TODO: sizes need to be added;
-  return <Image src={srcSetConfig.srcSet[1]} srcSet={srcSetConfig.srcSet.join(',')} {...other} />;
+  return (
+    <picture>
+      {breakpoints.keys.reverse().map((bpKey, i) => {
+        const breakpointValue = breakpoints.values[bpKey];
+        return (
+          <source
+            media={`(min-width: ${breakpointValue}px)`}
+            srcSet={srcSetConfig.srcSet[breakpoints.keys.length - i - 1]}
+          />
+        );
+      })}
+      <img src={srcSetConfig.srcSet[1]} alt={alt} {...other} />
+    </picture>
+  );
 };
 
 DamImage.defaultProps = {
@@ -80,6 +94,9 @@ DamImage.propTypes = {
     ]
   */
   imgConfig: PropTypes.arrayOf(PropTypes.string),
+
+  /* Description of the image */
+  alt: PropTypes.string.isRequired,
 };
 
 export default withTheme(DamImage);

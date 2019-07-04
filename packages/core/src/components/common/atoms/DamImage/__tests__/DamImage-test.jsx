@@ -2,7 +2,6 @@ import React from 'react';
 import { mount } from 'enzyme';
 
 import { ThemeProvider } from 'styled-components';
-import Image from '@tcp/core/src/components/common/atoms/Image';
 
 import DamImage from '../views/DamImage';
 
@@ -15,8 +14,11 @@ const themeMock = {
 
 describe('DamImage component', () => {
   it('Should create correct srcset only with imgLocation', () => {
-    const srcset =
-      'https://res.cloudinary.com/tcp-dam-test/image/upload/w_468/v1561401513/ecom/assets/content/tcp/us/home/transform/dancing-girl.png 468w,https://res.cloudinary.com/tcp-dam-test/image/upload/w_768/v1561401513/ecom/assets/content/tcp/us/home/transform/dancing-girl.png 768w,https://res.cloudinary.com/tcp-dam-test/image/upload/w_1024/v1561401513/ecom/assets/content/tcp/us/home/transform/dancing-girl.png 1024w';
+    const srcSets = [
+      'https://res.cloudinary.com/tcp-dam-test/image/upload/w_1044/v1561401513/ecom/assets/content/tcp/us/home/transform/dancing-girl.png',
+      'https://res.cloudinary.com/tcp-dam-test/image/upload/w_788/v1561401513/ecom/assets/content/tcp/us/home/transform/dancing-girl.png',
+      'https://res.cloudinary.com/tcp-dam-test/image/upload/w_488/v1561401513/ecom/assets/content/tcp/us/home/transform/dancing-girl.png',
+    ];
 
     const component = mount(
       <ThemeProvider theme={themeMock}>
@@ -27,12 +29,17 @@ describe('DamImage component', () => {
       </ThemeProvider>
     );
 
-    expect(component.find(Image).prop('srcSet')).toEqual(srcset);
+    expect(component.find('source').get(0).props.srcSet).toEqual(srcSets[0]);
+    expect(component.find('source').get(1).props.srcSet).toEqual(srcSets[1]);
+    expect(component.find('source').get(2).props.srcSet).toEqual(srcSets[2]);
   });
 
   it('Should create correct srcset with imgLocation and cloudinary configuration', () => {
-    const srcset =
-      'https://res.cloudinary.com/tcp-dam-test/image/upload/g_face:center,q_auto:best,w_470/dancing-boy.png 468w,https://res.cloudinary.com/tcp-dam-test/image/upload/c_fill,g_face:center,q_auto:best,w_780/dancing-boy.png 768w,https://res.cloudinary.com/tcp-dam-test/image/upload/c_crop,g_face:auto,q_auto:best,w_1100/dancing-boy.png 1024w';
+    const srcSets = [
+      'https://res.cloudinary.com/tcp-dam-test/image/upload/c_crop,g_face:auto,q_auto:best,w_1100/dancing-boy.png',
+      'https://res.cloudinary.com/tcp-dam-test/image/upload/c_fill,g_face:center,q_auto:best,w_780/dancing-boy.png',
+      'https://res.cloudinary.com/tcp-dam-test/image/upload/g_face:center,q_auto:best,w_470/dancing-boy.png',
+    ];
 
     const component = mount(
       <ThemeProvider theme={themeMock}>
@@ -48,13 +55,17 @@ describe('DamImage component', () => {
       </ThemeProvider>
     );
 
-    expect(component.find(Image).prop('srcSet')).toEqual(srcset);
+    expect(component.find('source').get(0).props.srcSet).toEqual(srcSets[0]);
+    expect(component.find('source').get(1).props.srcSet).toEqual(srcSets[1]);
+    expect(component.find('source').get(2).props.srcSet).toEqual(srcSets[2]);
   });
 
   it('Should create correct srcset with imgPath', () => {
-    const srcset =
-      'https://www.tcp.com/c_crop,g_face:center,q_auto:best,w_470/dancing-boy.png 468w,https://www.tcp.com/c_fill,g_face:center,q_auto:best,w_780/dancing-boy.png 768w,https://www.tcp.com/c_crop,g_face:center,q_auto:best,w_1100/dancing-boy.png 1024w';
-
+    const srcSets = [
+      'https://www.tcp.com/c_crop,g_face:center,q_auto:best,w_1100/dancing-boy.png',
+      'https://www.tcp.com/c_fill,g_face:center,q_auto:best,w_780/dancing-boy.png',
+      'https://www.tcp.com/c_crop,g_face:center,q_auto:best,w_470/dancing-boy.png',
+    ];
     const component = mount(
       <ThemeProvider theme={themeMock}>
         <DamImage
@@ -70,13 +81,17 @@ describe('DamImage component', () => {
       </ThemeProvider>
     );
 
-    expect(component.find(Image).prop('srcSet')).toEqual(srcset);
+    expect(component.find('source').get(0).props.srcSet).toEqual(srcSets[0]);
+    expect(component.find('source').get(1).props.srcSet).toEqual(srcSets[1]);
+    expect(component.find('source').get(2).props.srcSet).toEqual(srcSets[2]);
   });
 
   it('Should create correct srcset with cloudinary presets', () => {
-    const srcset =
-      'https://www.tcp.com/c_crop,g_face:center,q_auto:best,w_470/dancing-boy.png 468w,https://www.tcp.com/test_image_presets/dancing-boy.png 768w,https://www.tcp.com/c_crop,g_face:center,q_auto:best,w_1100/dancing-boy.png 1024w';
-
+    const srcSets = [
+      'https://www.tcp.com/c_crop,g_face:center,q_auto:best,w_1100/dancing-boy.png',
+      'https://www.tcp.com/test_image_presets/dancing-boy.png',
+      'https://www.tcp.com/c_crop,g_face:center,q_auto:best,w_470/dancing-boy.png',
+    ];
     const component = mount(
       <ThemeProvider theme={themeMock}>
         <DamImage
@@ -92,6 +107,8 @@ describe('DamImage component', () => {
       </ThemeProvider>
     );
 
-    expect(component.find(Image).prop('srcSet')).toEqual(srcset);
+    expect(component.find('source').get(0).props.srcSet).toEqual(srcSets[0]);
+    expect(component.find('source').get(1).props.srcSet).toEqual(srcSets[1]);
+    expect(component.find('source').get(2).props.srcSet).toEqual(srcSets[2]);
   });
 });
