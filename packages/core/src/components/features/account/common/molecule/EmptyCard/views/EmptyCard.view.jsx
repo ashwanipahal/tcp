@@ -92,3 +92,4 @@ const EmptyCard = ({ heading, description, className, icon, alt }: Props) => {
 };
 
 export default withStyles(EmptyCard, styles);
+export { EmptyCard as EmptyCardVanilla };

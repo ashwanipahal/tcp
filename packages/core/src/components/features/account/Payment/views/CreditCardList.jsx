@@ -44,3 +44,4 @@ const CreditCardList = ({ labels, creditCardList, className }: Props) => {
 };
 
 export default withStyles(CreditCardList, styles);
+export { CreditCardList as CreditCardListVanilla };

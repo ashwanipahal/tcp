@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreditCardList Component should render correctly 1`] = `
+<div
+  className="abc"
+>
+  <Styled(Heading)
+    className="creditCardList__heading"
+    color="text.primary"
+    component={null}
+    textAlign="left"
+    variant="h6"
+  >
+    heading
+  </Styled(Heading)>
+  <Styled(EmptyCard)
+    alt="card icon"
+    icon="credit-card"
+  />
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 3,
+        "medium": 3,
+        "small": 6,
+      }
+    }
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="creditCardList__ccAddCta"
+      fill="BLUE"
+    />
+  </Styled(Col)>
+</div>
+`;
+
+exports[`CreditCardList Component should render correctly if list is present 1`] = `
+<div
+  className="abc"
+>
+  <Styled(Heading)
+    className="creditCardList__heading"
+    color="text.primary"
+    component={null}
+    textAlign="left"
+    variant="h6"
+  >
+    heading
+  </Styled(Heading)>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 3,
+        "medium": 3,
+        "small": 6,
+      }
+    }
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="creditCardList__ccAddCta"
+      fill="BLUE"
+    />
+  </Styled(Col)>
+</div>
+`;

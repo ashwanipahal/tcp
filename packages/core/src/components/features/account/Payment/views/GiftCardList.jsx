@@ -47,3 +47,4 @@ const GiftCardList = ({ labels, giftCardList, className }: Props) => {
 };
 
 export default withStyles(GiftCardList, styles);
+export { GiftCardList as GiftCardListVanilla };
