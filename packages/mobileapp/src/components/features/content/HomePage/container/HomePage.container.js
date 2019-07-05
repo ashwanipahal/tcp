@@ -4,7 +4,7 @@ import HomePageView from '../views';
 
 const mapStateToProps = state => {
   // eslint-disable-next-line no-console
-  console.log(state.layouts);
+  console.log(state);
   return {};
 };
 
