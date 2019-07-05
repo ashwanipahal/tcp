@@ -30,6 +30,10 @@ export default css`
     clear: both;
   }
 
+  .textRight {
+    text-align: right;
+  }
+
   &.focus-styling {
     &:focus {
       outline: 1px dashed black;

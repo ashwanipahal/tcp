@@ -3,19 +3,23 @@ import { shallow } from 'enzyme';
 import { SelectBoxVanilla } from '../views/Select';
 
 describe('Selectbox component', () => {
+  const countryUS = 'United States';
+  const displayValue = [
+    {
+      id: 'US',
+      displayName: countryUS,
+    },
+    { id: 'CA', displayName: 'Canada' },
+  ];
   it('renders correctly', () => {
     const props = {
+      name: '',
+      placeholder: 'placeholder',
+      Value: 'hi',
       type: 'text',
       id: 'abcd',
       className: 'asdfasdf',
-      options: [
-        {
-          id: '',
-          displayName: '',
-        },
-        { id: 'US', displayName: 'United States' },
-        { id: 'CA', displayName: 'Canada' },
-      ],
+      options: displayValue,
       meta: {
         touched: '',
         error: '',
@@ -29,25 +33,20 @@ describe('Selectbox component', () => {
     expect(component).toMatchSnapshot();
   });
   it('renders correctly with touched and error', () => {
+    const valueInfo = 'some string @@LABEL@@';
     const props = {
-      type: 'text',
       id: 'abcd',
       className: 'asdfasdf',
-      options: [
-        {
-          id: '',
-          displayName: '',
-        },
-        { id: 'US', displayName: 'United States' },
-        { id: 'CA', displayName: 'Canada' },
-      ],
+      options: displayValue,
+      value: valueInfo,
       meta: {
         touched: true,
-        error: 'this is an error',
+        error: 'REQUIRED_FIELD',
         warning: '',
       },
       input: {},
-      defaultValue: 'United States',
+      defaultValue: countryUS,
+      placeholder: 'first name for user',
     };
     const component = shallow(<SelectBoxVanilla {...props} />);
     expect(component).toMatchSnapshot();
@@ -57,21 +56,14 @@ describe('Selectbox component', () => {
       type: 'text',
       id: 'abcd',
       className: 'asdfasdf',
-      options: [
-        {
-          id: '',
-          displayName: '',
-        },
-        { id: 'US', displayName: 'United States' },
-        { id: 'CA', displayName: 'Canada' },
-      ],
+      options: displayValue,
       meta: {
         touched: true,
         error: null,
         warning: 'this is a warning',
       },
       input: {},
-      defaultValue: 'United States',
+      defaultValue: countryUS,
     };
     const component = shallow(<SelectBoxVanilla {...props} />);
     expect(component).toMatchSnapshot();

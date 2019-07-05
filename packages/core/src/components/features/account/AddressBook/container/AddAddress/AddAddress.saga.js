@@ -11,7 +11,7 @@ export function* addAddressGet({ payload }) {
     const payloadParam = {
       contact: [
         {
-          addressLine: [payload.addressLine || '', payload.addressLine2 || '', ''],
+          addressLine: [payload.addressLine1 || '', payload.addressLine2 || '', ''],
           attributes: [
             {
               key: 'addressField3',

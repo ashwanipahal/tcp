@@ -15,6 +15,7 @@ const strictRules = {
   'font-family-no-missing-generic-family-keyword': null,
   'comment-empty-line-before': null,
   'declaration-empty-line-before': null,
+  'property-no-vendor-prefix': null,
 };
 
 module.exports = {

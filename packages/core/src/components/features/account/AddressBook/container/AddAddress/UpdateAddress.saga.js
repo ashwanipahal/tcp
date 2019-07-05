@@ -7,7 +7,6 @@ import endpoints from '../../../../../../service/endpoint';
 export function* updateAddressPut({ payload }) {
   try {
     const { baseURI, relURI, method } = endpoints.updateAddress;
-    const addressKey = Date.now().toString();
     const payloadParam = {
       addressLine: [payload.addressLine1 || '', payload.addressLine2 || '', ''],
       attributes: [
@@ -21,14 +20,13 @@ export function* updateAddressPut({ payload }) {
       country: payload.country === 'United States' ? 'US' : 'CA',
       firstName: payload.firstName,
       lastName: payload.lastName,
-      nickName: addressKey,
       phone1: payload.phoneNumber || '',
       phone1Publish: 'false',
       primary: 'false', // as string
       state: payload.state,
       zipCode: payload.zip,
       xcont_addressField2: payload.isCommercialAddress ? '2' : '1',
-      email1: '',
+      email1: payload.email,
       xcont_addressField3: payload.zip,
       fromPage: payload.applyToOrder ? 'checkout' : '',
     };
@@ -42,6 +40,7 @@ export function* updateAddressPut({ payload }) {
         langId: -1,
         catalogId: 10551,
         storeId: 10151,
+        nickName: payload.nickName,
       },
       method
     );

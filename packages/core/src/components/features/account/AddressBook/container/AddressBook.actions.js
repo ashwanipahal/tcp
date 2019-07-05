@@ -24,3 +24,22 @@ export const setEditAddress = (payload: {}) => {
     payload,
   };
 };
+export const updateAddressListOnDelete = payload => ({
+  type: ADDRESS_BOOK_CONSTANTS.UPDATE_ADDRESS_LIST_ON_DELETE,
+  payload,
+});
+
+export const updateAddressListOnDeleteErr = payload => ({
+  type: ADDRESS_BOOK_CONSTANTS.UPDATE_ADDRESS_LIST_ON_DELETE_ERR,
+  payload,
+});
+
+export const deleteAddress = payload => ({
+  type: ADDRESS_BOOK_CONSTANTS.DELETE_ADDRESS,
+  payload,
+});
+
+export const setDeleteModalMountedState = payload => ({
+  type: ADDRESS_BOOK_CONSTANTS.DELETE_MODAL_MOUNTED_STATE,
+  payload,
+});

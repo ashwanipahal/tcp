@@ -8,6 +8,7 @@ import Col from '../../../../common/atoms/Col';
 import Button from '../../../../common/atoms/Button';
 import AddressListComponent from './AddressList.view';
 import EmptyAddressListComponent from './EmptyAddressList.view';
+import DeleteAddressModal from './DeleteAddressModal.view';
 import Notification from '../../../../common/molecules/Notification';
 
 // @flow
@@ -22,30 +23,64 @@ type Props = {
   addAddressLoaded: any,
   showDefaultShippingUpdatedMsg: Boolean,
   onEditAddressClick: Object,
+  showUpdatedNotification: any,
+  showUpdatedNotificationOnModal: any,
+  onDeleteAddress: Function,
+  deleteModalMountedState: false,
+  setDeleteModalMountState: Function,
+  onAddNNewAddressClick: any,
 };
 
-export class AddressBook extends React.Component<Props> {
+export class AddressBook extends React.PureComponent<Props> {
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      selectedAddress: {},
+    };
+  }
+
+  setSelectedAddress = address => {
+    this.setState({ selectedAddress: address });
+  };
+
   render() {
     const {
       addresses,
       labels,
       className,
       onDefaultShippingAddressClick,
-      showDefaultShippingUpdatedMsg,
+      showUpdatedNotification,
+      onDeleteAddress,
+      deleteModalMountedState,
+      setDeleteModalMountState,
+      showUpdatedNotificationOnModal,
       onAddNNewAddressClick,
       onEditAddressClick,
     } = this.props;
+    const { selectedAddress } = this.state;
+
     return (
       <div className={className}>
-        <Heading
-          fontFamily="secondaryFontFamily"
-          HeadingLarge="six"
-          tag="h4"
-          className="addressBook__separator"
-        >
-          Address Book
-        </Heading>
-        {addresses.size === 0 && <EmptyAddressListComponent labels={labels} />}
+        <Row fullBleed>
+          <Col
+            colSize={{
+              small: 6,
+              large: 12,
+              medium: 8,
+            }}
+          >
+            <Heading
+              fontFamily="secondaryFontFamily"
+              HeadingLarge="six"
+              tag="h4"
+              className="addressBook__separator"
+            >
+              {labels.addressBookHeading}
+            </Heading>
+            {addresses.size === 0 && <EmptyAddressListComponent labels={labels} />}
+          </Col>
+        </Row>
+
         <Row fullBleed className="addressBook__row--marginBottom">
           <Col
             colSize={{
@@ -60,14 +95,12 @@ export class AddressBook extends React.Component<Props> {
             </Button>
           </Col>
         </Row>
-        {showDefaultShippingUpdatedMsg !== null && (
+        {showUpdatedNotification !== null && (
           <Notification
-            status={showDefaultShippingUpdatedMsg ? 'success' : 'error'}
+            status={showUpdatedNotification}
             colSize={{ large: 12, medium: 8, small: 6 }}
             message={
-              showDefaultShippingUpdatedMsg
-                ? labels.defaultShippingSuccessMessage
-                : labels.defaultShippingSuccessFail
+              showUpdatedNotification === 'success' ? labels.successMessage : labels.errorMessage
             }
           />
         )}
@@ -78,8 +111,27 @@ export class AddressBook extends React.Component<Props> {
             onEditAddressClick={onEditAddressClick}
             onDefaultShippingAddressClick={onDefaultShippingAddressClick}
             onAddNNewAddressClick={onAddNNewAddressClick}
+            deleteModalMountedState={deleteModalMountedState}
+            setSelectedAddress={this.setSelectedAddress}
+            setDeleteModalMountState={setDeleteModalMountState}
           />
         )}
+        <DeleteAddressModal
+          openState={deleteModalMountedState}
+          data={{
+            heading: labels.deleteAddressHeading,
+            title: labels.deleteAddressTitle,
+            description: selectedAddress,
+            buttons: {
+              cancel: labels.cancel,
+              confirm: labels.deleteConfirm,
+            },
+          }}
+          setDeleteModalMountState={setDeleteModalMountState}
+          labels={labels}
+          onDeleteAddress={onDeleteAddress}
+          showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
+        />
       </div>
     );
   }

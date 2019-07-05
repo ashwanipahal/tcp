@@ -10,6 +10,10 @@ describe('AddressList container', () => {
     const component = shallow(<AddressBookContainer getAddressListAction={() => {}} />);
     expect(component.isEmptyRender()).toBeTruthy();
   });
+  it('should render loader', () => {
+    const component = shallow(<AddressBookContainer isFetching getAddressListAction={() => {}} />);
+    expect(component.find('p').text()).toBe('Loading...');
+  });
 
   it('should render AddressBookComponent if addressList prop is of List type', () => {
     const addressList = List();
@@ -53,6 +57,20 @@ describe('AddressList container', () => {
       const dispatch = jest.fn();
       const dispatchProps = mapDispatchToProps(dispatch);
       dispatchProps.onDefaultShippingAddressClick();
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
+
+    it('should return an action onDeleteAddress which will call dispatch function on execution', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.onDeleteAddress();
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
+
+    it('should return an action setDeleteModalMountState which will call dispatch function on execution', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.setDeleteModalMountState();
       expect(dispatch.mock.calls).toHaveLength(1);
     });
   });

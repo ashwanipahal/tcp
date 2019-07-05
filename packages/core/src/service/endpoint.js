@@ -17,12 +17,12 @@ const endpoints = {
   },
   addAddress: {
     method: 'post',
-    baseURI: 'https://www.childrensplace.com',
+    baseURI: 'https://test1.childrensplace.com',
     relURI: '/api/v2/account/addAddress',
   },
   updateAddress: {
     method: 'put',
-    baseURI: 'https://www.childrensplace.com',
+    baseURI: 'https://test1.childrensplace.com',
     relURI: '/api/v2/wallet/updateAddress',
   },
   login: {
@@ -37,8 +37,12 @@ const endpoints = {
     method: 'get',
     relURI: '/api/v2/account/getAddressFromBook',
   },
+  deleteAddress: {
+    method: 'delete',
+    relURI: '/api/v2/account/deleteAddressDetails',
+  },
   global: {
-    baseURI: 'https://www.childrensplace.com',
+    baseURI: 'https://test1.childrensplace.com',
   },
   setDefaultShippingAddress: {
     method: 'put',

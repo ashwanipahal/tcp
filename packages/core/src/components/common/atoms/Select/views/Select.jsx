@@ -3,6 +3,7 @@ import React from 'react';
 import type { Node } from 'react';
 import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
 import withStyles from '../../../hoc/withStyles';
+import errors from '../../../../../utils/errorsMsg';
 import StyledTextBox from '../Select.style';
 
 /**
@@ -22,13 +23,17 @@ type Props = {
   placeholder?: string,
   isErrorState?: boolean,
   isSuccessState?: boolean,
-  onChangeHandler?: any,
   meta: { touched: any, error: any, warning: any },
   input: any,
   Value: any,
   options: any,
   defaultValue: any,
 };
+
+const getErroMsg = (value, placeholder) => {
+  return value.replace('@@LABEL@@', placeholder);
+};
+
 const SelectBox = ({
   className,
   id,
@@ -41,49 +46,47 @@ const SelectBox = ({
   Value,
   options,
   meta: { touched, error, warning },
-}: Props): Node => (
-  <label
-    htmlFor={name}
-    className={`${className} ${input.value ? 'active' : ''} select-fields-wrapper`}
-  >
-    <select
-      {...input}
-      id={id}
-      aria-label={ariaLabel}
-      className="selectField"
-      name={name}
-      isSuccessState={isSuccessState}
-      value={input.value}
-      defaultValue={defaultValue}
-    >
-      {options &&
-        options.map(option => {
-          const selected = option.displayName === defaultValue ? `selected` : '';
-          return (
-            <option value={option.displayName} selected={selected} id={option.id} key={option.id}>
-              {option.displayName}
-            </option>
-          );
-        })}
-    </select>
-    {/* commented onChange={onChangeHandler} */}
-    <BodyCopy bodySize="two" FormVariation="float" BodycolorLg="primary" tag="div">
-      {placeholder}
-    </BodyCopy>
-    {touched &&
-      ((error && (
-        <BodyCopy clearFloat ErrorMsg="error" bodySize="two" tag="div">
-          {error}
-          {placeholder}
-        </BodyCopy>
-      )) ||
-        (warning && (
-          <BodyCopy bodySize="two" tag="div">
-            {warning}
+}: Props): Node => {
+  return (
+    <div className={`${className} ${input.value ? 'active' : ''} select-fields-wrapper`}>
+      <select
+        {...input}
+        id={id}
+        aria-label={ariaLabel}
+        className="selectField"
+        name={name}
+        isSuccessState={isSuccessState}
+        value={input.value}
+        defaultValue={defaultValue}
+      >
+        {options &&
+          options.map(option => {
+            const selected = option.displayName === defaultValue ? `selected` : '';
+            return (
+              <option value={option.displayName} selected={selected} id={option.id} key={option.id}>
+                {option.displayName}
+              </option>
+            );
+          })}
+      </select>
+      {/* commented onChange={onChangeHandler} */}
+      <BodyCopy bodySize="two" FormVariation="float" BodycolorLg="primary" tag="div">
+        {placeholder}
+      </BodyCopy>
+      {touched &&
+        ((error && (
+          <BodyCopy clearFloat ErrorMsg="error" bodySize="two" tag="div">
+            {getErroMsg(errors[error], placeholder)}
           </BodyCopy>
-        )))}
-  </label>
-);
+        )) ||
+          (warning && (
+            <BodyCopy bodySize="two" tag="div">
+              {warning}
+            </BodyCopy>
+          )))}
+    </div>
+  );
+};
 
 SelectBox.defaultProps = {
   id: '',
@@ -93,7 +96,6 @@ SelectBox.defaultProps = {
   placeholder: '',
   isErrorState: false,
   isSuccessState: false,
-  onChangeHandler: () => {},
 };
 
 export default withStyles(SelectBox, StyledTextBox);

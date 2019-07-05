@@ -4,6 +4,7 @@ import LoginPageSaga from '@tcp/core/src/components/features/account/LoginPage/c
 import AddAddressSaga from '@tcp/core/src/components/features/account/AddressBook/container/AddAddress/AddAddress.saga';
 import UpdateAddressSaga from '@tcp/core/src/components/features/account/AddressBook/container/AddAddress/UpdateAddress.saga';
 import AddressBookSaga from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.saga';
+import AccountModalSagaSaga from '@tcp/core/src/components/features/account/AddressBook/container/DeleteAddress.saga';
 import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
 import BootstrapSaga from './bootstrap';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
@@ -17,6 +18,7 @@ export default function* rootSaga() {
     AddAddressSaga(),
     UpdateAddressSaga(),
     AddressBookSaga(),
+    AccountModalSagaSaga(),
     SetDefaultShippingAddressSaga(),
   ]);
 }

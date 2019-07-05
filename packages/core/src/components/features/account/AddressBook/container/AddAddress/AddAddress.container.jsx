@@ -38,10 +38,10 @@ export const AddaddressContainer = ({
 
 export const mapDispatchToProps = (dispatch: ({}) => void) => {
   return {
-    submitAddAddressForm: payload => {
+    submitAddAddressForm: (payload: Object) => {
       dispatch(addAddressReq(payload));
     },
-    submitUpdateAddressForm: payload => {
+    submitUpdateAddressForm: (payload: Object) => {
       dispatch(updateAddressReq(payload));
     },
   };
