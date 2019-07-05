@@ -2,9 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getCardList } from './Payment.actions';
 import {
-  getCardListState,
+  getCreditDebitCards,
   getCardListFetchingState,
   getShowNotificationState,
+  getGiftCards,
+  getVenmoCards,
+  getCardListState,
 } from './Payment.selectors';
 import labels from './Payment.labels';
 import PaymentView from '../views/Payment.view';
@@ -12,9 +15,12 @@ import PaymentView from '../views/Payment.view';
 // @flow
 type Props = {
   getCardListAction: Function,
-  cardList: List<any>,
+  creditCardList: List<any>,
+  venmoCardList: List<any>,
+  giftCardList: List<any>,
   showNotification: any,
   isFetching: boolean,
+  cardList: List<any>,
 };
 
 export class PaymentContainer extends React.Component<Props> {
@@ -24,10 +30,25 @@ export class PaymentContainer extends React.Component<Props> {
   }
 
   render() {
-    const { cardList, isFetching, showNotification } = this.props;
-    console.log('cardList', cardList);
+    const {
+      creditCardList,
+      giftCardList,
+      venmoCardList,
+      isFetching,
+      showNotification,
+      cardList,
+    } = this.props;
     if (isFetching) return <p>Loading...</p>;
-    return <PaymentView labels={labels} showNotification={showNotification} />;
+    return (
+      <PaymentView
+        labels={labels}
+        showNotification={showNotification}
+        creditCardList={creditCardList}
+        giftCardList={giftCardList}
+        venmoCardList={venmoCardList}
+        cardList={cardList}
+      />
+    );
   }
 }
 
@@ -42,6 +63,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
 const mapStateToProps = state => {
   return {
     cardList: getCardListState(state),
+    creditCardList: getCreditDebitCards(state),
+    giftCardList: getGiftCards(state),
+    venmoCardList: getVenmoCards(state),
     isFetching: getCardListFetchingState(state),
     showNotification: getShowNotificationState(state),
   };

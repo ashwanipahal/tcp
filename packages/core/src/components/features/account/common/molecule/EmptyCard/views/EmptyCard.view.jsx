@@ -1,0 +1,94 @@
+import React from 'react';
+import Row from '../../../../../../common/atoms/Row';
+import Col from '../../../../../../common/atoms/Col';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import withStyles from '../../../../../../common/hoc/withStyles';
+import styles from '../EmptyCard.style';
+import { getIconPath } from '../../../../../../../utils';
+
+// @flow
+type Props = {
+  heading: string,
+  description: string,
+  className: string,
+  icon: string,
+  alt: string,
+};
+
+const EmptyCard = ({ heading, description, className, icon, alt }: Props) => {
+  const cardIcon = getIconPath(icon);
+  return (
+    <div className={className}>
+      <Row fullBleed>
+        <Col
+          colSize={{
+            small: 1,
+            large: 1,
+            medium: 1,
+          }}
+          className="emptyCard__imgWrapper"
+        >
+          <img className="emptyCard__img" alt={alt} src={cardIcon} />
+        </Col>
+        <Col
+          colSize={{
+            small: 5,
+            large: 11,
+            medium: 7,
+          }}
+          ignoreGutter={{
+            small: true,
+            medium: false,
+            large: false,
+          }}
+          className="emptyCard__body"
+        >
+          <BodyCopy
+            tag="p"
+            fontSize="fs14"
+            font="secondary"
+            fontWeight="semibold"
+            lineHeight="ls107"
+            className="emptyCard__heading"
+          >
+            {heading}
+          </BodyCopy>
+          <BodyCopy
+            tag="p"
+            fontSize="fs14"
+            font="secondary"
+            lineHeight="lh115"
+            className="emptyCard__description--desktop"
+          >
+            {description}
+          </BodyCopy>
+        </Col>
+        <Col
+          colSize={{
+            small: 6,
+            large: 11,
+            medium: 7,
+          }}
+          ignoreGutter={{
+            small: true,
+            medium: false,
+            large: false,
+          }}
+          className="emptyCard__description--mobile"
+        >
+          <BodyCopy
+            tag="p"
+            fontSize="fs14"
+            font="secondary"
+            lineHeight="lh115"
+            className="emptyCard__description--mobile"
+          >
+            {description}
+          </BodyCopy>
+        </Col>
+      </Row>
+    </div>
+  );
+};
+
+export default withStyles(EmptyCard, styles);

@@ -17,7 +17,7 @@ exports[`Payment View should render correctly 1`] = `
       }
     >
       <Styled(BodyCopy)
-        className="payment__separator"
+        className="payment__heading"
         color="text.primary"
         component="h4"
         fontFamily="secondary"
@@ -30,19 +30,6 @@ exports[`Payment View should render correctly 1`] = `
         Payment
       </Styled(BodyCopy)>
     </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    />
   </Styled(Row)>
 </div>
 `;
@@ -64,7 +51,7 @@ exports[`Payment View should render correctly with error 1`] = `
       }
     >
       <Styled(BodyCopy)
-        className="payment__separator"
+        className="payment__heading"
         color="text.primary"
         component="h4"
         fontFamily="secondary"
@@ -122,7 +109,7 @@ exports[`Payment View should render correctly with success 1`] = `
       }
     >
       <Styled(BodyCopy)
-        className="payment__separator"
+        className="payment__heading"
         color="text.primary"
         component="h4"
         fontFamily="secondary"
