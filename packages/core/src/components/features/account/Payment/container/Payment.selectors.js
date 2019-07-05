@@ -9,3 +9,7 @@ export const getCardListFetchingState = state => {
 export const getShowNotificationState = state => {
   return state.PaymentReducer.get('showNotification');
 };
+
+export const deleteModalOpenState = state => {
+  return state.PaymentReducer.get('deleteModalMountedState');
+};

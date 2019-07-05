@@ -1,10 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getCardList } from './Payment.actions';
+import { getCardList, setDeleteModalMountedState } from './Payment.actions';
 import {
   getCardListState,
   getCardListFetchingState,
   getShowNotificationState,
+  deleteModalOpenState,
 } from './Payment.selectors';
 import labels from './Payment.labels';
 import PaymentView from '../views/Payment.view';
@@ -12,9 +13,10 @@ import PaymentView from '../views/Payment.view';
 // @flow
 type Props = {
   getCardListAction: Function,
-  cardList: List<any>,
   showNotification: any,
   isFetching: boolean,
+  deleteModalMountedState: boolean,
+  setDeleteModalMountState: Function,
 };
 
 export class PaymentContainer extends React.Component<Props> {
@@ -24,10 +26,21 @@ export class PaymentContainer extends React.Component<Props> {
   }
 
   render() {
-    const { cardList, isFetching, showNotification } = this.props;
-    console.log('cardList', cardList);
+    const {
+      isFetching,
+      showNotification,
+      setDeleteModalMountState,
+      deleteModalMountedState,
+    } = this.props;
     if (isFetching) return <p>Loading...</p>;
-    return <PaymentView labels={labels} showNotification={showNotification} />;
+    return (
+      <PaymentView
+        deleteModalMountedState={deleteModalMountedState}
+        labels={labels}
+        setDeleteModalMountState={setDeleteModalMountState}
+        showNotification={showNotification}
+      />
+    );
   }
 }
 
@@ -35,6 +48,10 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
   return {
     getCardListAction: () => {
       dispatch(getCardList());
+    },
+
+    setDeleteModalMountState: payload => {
+      dispatch(setDeleteModalMountedState(payload));
     },
   };
 };
@@ -44,6 +61,7 @@ const mapStateToProps = state => {
     cardList: getCardListState(state),
     isFetching: getCardListFetchingState(state),
     showNotification: getShowNotificationState(state),
+    deleteModalMountedState: deleteModalOpenState(state),
   };
 };
 

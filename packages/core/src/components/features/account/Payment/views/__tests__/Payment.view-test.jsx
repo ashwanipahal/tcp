@@ -6,19 +6,13 @@ import BodyCopy from '../../../../../common/atoms/BodyCopy';
 
 describe('Payment View', () => {
   it('should render correctly', () => {
-    const tree = shallow(
-      <PaymentViewVanilla labels={{ paymentHeading: 'Payment' }} className="" />
-    );
+    const tree = shallow(<PaymentViewVanilla labels={{ giftCard: 'Payment' }} className="" />);
     expect(tree).toMatchSnapshot();
     expect(tree.find(BodyCopy)).toHaveLength(1);
   });
   it('should render correctly with error', () => {
     const tree = shallow(
-      <PaymentViewVanilla
-        labels={{ paymentHeading: 'Payment' }}
-        className=""
-        showNotification="error"
-      />
+      <PaymentViewVanilla labels={{ giftCard: 'Payment' }} className="" showNotification="error" />
     );
     expect(tree).toMatchSnapshot();
     expect(tree.find(Notification)).toHaveLength(1);
@@ -26,7 +20,7 @@ describe('Payment View', () => {
   it('should render correctly with success', () => {
     const tree = shallow(
       <PaymentViewVanilla
-        labels={{ paymentHeading: 'Payment' }}
+        labels={{ giftCard: 'Payment' }}
         className=""
         showNotification="success"
       />

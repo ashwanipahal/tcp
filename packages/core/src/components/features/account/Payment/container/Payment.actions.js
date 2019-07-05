@@ -13,3 +13,8 @@ export const getCardListErr = err => ({
   type: PAYMENT_CONSTANTS.GET_CARD_LIST_ERR,
   err,
 });
+
+export const setDeleteModalMountedState = payload => ({
+  type: PAYMENT_CONSTANTS.DELETE_MODAL_MOUNT_STATE,
+  payload,
+});

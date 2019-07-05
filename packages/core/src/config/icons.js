@@ -18,4 +18,5 @@ export default {
   'header__brand-tab-gymboree': '/static/images/gymboree-logo.svg',
   'icon-play': '/static/images/play.svg',
   'icon-pause': '/static/images/pause.svg',
+  'gift-card': '/static/images/gift-card-small.png',
 };

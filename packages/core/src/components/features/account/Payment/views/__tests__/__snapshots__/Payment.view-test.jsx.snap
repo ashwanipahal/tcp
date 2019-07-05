@@ -26,9 +26,7 @@ exports[`Payment View should render correctly 1`] = `
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
-      >
-        Payment
-      </Styled(BodyCopy)>
+      />
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -43,6 +41,33 @@ exports[`Payment View should render correctly 1`] = `
         }
       }
     />
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <GiftCardList />
+      <Styled(deleteGiftModal)
+        data={
+          Object {
+            "buttons": Object {
+              "cancel": undefined,
+              "confirm": undefined,
+            },
+            "heading": undefined,
+          }
+        }
+        labels={
+          Object {
+            "giftCard": "Payment",
+          }
+        }
+      />
+    </Styled(Col)>
   </Styled(Row)>
 </div>
 `;
@@ -73,9 +98,7 @@ exports[`Payment View should render correctly with error 1`] = `
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
-      >
-        Payment
-      </Styled(BodyCopy)>
+      />
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -99,6 +122,33 @@ exports[`Payment View should render correctly with error 1`] = `
           }
         }
         status="error"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <GiftCardList />
+      <Styled(deleteGiftModal)
+        data={
+          Object {
+            "buttons": Object {
+              "cancel": undefined,
+              "confirm": undefined,
+            },
+            "heading": undefined,
+          }
+        }
+        labels={
+          Object {
+            "giftCard": "Payment",
+          }
+        }
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -131,9 +181,7 @@ exports[`Payment View should render correctly with success 1`] = `
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
-      >
-        Payment
-      </Styled(BodyCopy)>
+      />
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -157,6 +205,33 @@ exports[`Payment View should render correctly with success 1`] = `
           }
         }
         status="success"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <GiftCardList />
+      <Styled(deleteGiftModal)
+        data={
+          Object {
+            "buttons": Object {
+              "cancel": undefined,
+              "confirm": undefined,
+            },
+            "heading": undefined,
+          }
+        }
+        labels={
+          Object {
+            "giftCard": "Payment",
+          }
+        }
       />
     </Styled(Col)>
   </Styled(Row)>
