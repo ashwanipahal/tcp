@@ -103,7 +103,13 @@ class LoginView extends React.PureComponent<Props> {
                         }}
                       >
                         <label htmlFor="email">Email Id</label>
-                        <input type="email" id="email" name="email" />
+                        <input
+                          type="email"
+                          id="email"
+                          name="email"
+                          value={this.state.email}
+                          onChange={this.changeHandler}
+                        />
                       </Col>
                     </Row>
                     <Row className="marginBottom">
@@ -115,7 +121,13 @@ class LoginView extends React.PureComponent<Props> {
                         }}
                       >
                         <label htmlFor="password">Password</label>
-                        <input type="password" id="password" name="password" />
+                        <input
+                          type="password"
+                          id="password"
+                          name="password"
+                          value={this.state.password}
+                          onChange={this.changeHandler}
+                        />
                       </Col>
                     </Row>
                     <Row className="marginBottom">
