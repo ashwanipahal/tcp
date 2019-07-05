@@ -1,4 +1,4 @@
-import HEADER_CONSTANTS from '../Header.constants';
+import HEADER_CONSTANTS from './Header.constants';
 
 export const loadHeaderData = payload => {
   return {

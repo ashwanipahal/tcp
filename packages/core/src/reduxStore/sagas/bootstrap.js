@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import bootstrapAbstractor from '@tcp/core/src/services/abstractors/bootstrap';
+import bootstrapAbstractor from '../../services/abstractors/bootstrap';
 import { loadLayoutData, loadLabelsData } from '../actions';
 import { loadHeaderData } from '../../components/common/organisms/Header/container/Header.actions';
 import { loadFooterData } from '../../components/common/organisms/Footer/container/Footer.actions';

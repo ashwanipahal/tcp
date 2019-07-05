@@ -1,4 +1,4 @@
-import HEADER_CONSTANTS from '../Header.constants';
+import HEADER_CONSTANTS from './Header.constants';
 
 const HeaderReducer = (state = {}, action) => {
   switch (action.type) {

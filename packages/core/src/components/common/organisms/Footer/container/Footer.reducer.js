@@ -1,4 +1,4 @@
-import FOOTER_CONSTANTS from '../Footer.constants';
+import FOOTER_CONSTANTS from './Footer.constants';
 
 const FooterReducer = (state = {}, action) => {
   switch (action.type) {

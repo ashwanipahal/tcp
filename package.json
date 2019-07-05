@@ -92,7 +92,6 @@
       "git add"
     ],
     "*.{js,jsx}": [
-      "yarn flow focus-check",
       "eslint",
       "yarn test:staged",
       "stylelint"
