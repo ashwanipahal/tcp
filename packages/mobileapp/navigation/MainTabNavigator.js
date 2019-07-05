@@ -3,7 +3,7 @@ import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import HomeScreen from '../screens/HomeScreen';
+import HomeScreen from '../ReduxStore/homePage/views/HomePage.view';
 import Plp from '../screens/PLPScreen';
 import PlpDeltaSync from '../screens/PLPDeltaSyncScreen';
 

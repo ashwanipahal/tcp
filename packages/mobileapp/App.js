@@ -2,7 +2,7 @@ import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { Provider } from 'react-redux';
 import AppNavigator from './navigation/AppNavigator';
-import { initializeStore } from './ReduxStore/initializeStore';
+import { initializeStore } from './ReduxStore/store/initializeStore';
 
 // Config from './brand_config';
 export default class App extends React.Component {
