@@ -1,14 +1,15 @@
 import React from 'react';
+import { List } from 'immutable';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import styles from '../styles/Payment.style';
 import Notification from '../../../../common/molecules/Notification';
-import DeleteGiftCardModal from './DeleteGiftCardModal.view';
-import { GiftCardList } from './GiftCardList.view';
+import { GiftCardView } from './GiftCard.view';
 // @flow
 type Props = {
+  giftCard: List<{}>,
   labels: object,
   className: string,
   showNotification: boolean,
@@ -60,30 +61,11 @@ const PaymentView = ({
             />
           )}
         </Col>
-        <Col
-          colSize={{
-            small: 6,
-            large: 12,
-            medium: 8,
-          }}
-        >
-          <GiftCardList
-            deleteModalMountedState={deleteModalMountedState}
-            setDeleteModalMountState={setDeleteModalMountState}
-          />
-          <DeleteGiftCardModal
-            openState={deleteModalMountedState}
-            data={{
-              heading: labels.giftCard.heading,
-              buttons: {
-                cancel: labels.giftCard.cancel,
-                confirm: labels.giftCard.confirm,
-              },
-            }}
-            labels={labels}
-            setDeleteModalMountState={setDeleteModalMountState}
-          />
-        </Col>
+        <GiftCardView
+          labels={labels}
+          deleteModalMountedState={deleteModalMountedState}
+          setDeleteModalMountState={setDeleteModalMountState}
+        />
       </Row>
     </div>
   );

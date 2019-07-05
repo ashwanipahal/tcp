@@ -12,18 +12,18 @@ import { Image } from '../../../../common/atoms';
 type Props = {
   data: Object,
   className: string,
-  onDeleteAddress: Function,
   setDeleteModalMountState: Function,
   openState: boolean,
   showUpdatedNotificationOnModal: boolean,
   labels: Object,
+  onDeleteCard: Function,
 };
 
 /**
  * @function deleteGiftModal The deleteGiftModal component shows the address to delete.
  * This component includes the adress view, and confirm and cancel buttons
  * @param {data} data object with details to render in modal
- * @param {onDeleteAddress} onDeleteAddress function to delete the address from the modal
+ * @param {onDeleteAddress} onDeleteCards function to delete the address from the modal
  * @param {closeModalComponent} closeModalComponent function to close the modal
  * @param {className} className css to apply
  */
@@ -40,14 +40,17 @@ class deleteGiftModal extends React.Component<Props> {
 
   /**
    * @function onCloseModal  Used to render the JSX of the component
-   * @param {onDeleteAddress} onDeleteAddress function to delete the address.
+   * @param {onDeleteCards} onDeleteCards function to delete the address.
    * @param {data} data object with details to render in modal
    * @return {[Function]} function called
    */
   onConfirm = () => {
-    const { data, onDeleteAddress } = this.props;
+    const { data, onDeleteCard } = this.props;
     const { description } = data;
-    onDeleteAddress({ nickName: description.nickName });
+    debugger;
+    // creditCardId,
+    // action: 'D'
+    onDeleteCard({ creditCardId: description.creditCardId });
   };
 
   /**
@@ -60,6 +63,7 @@ class deleteGiftModal extends React.Component<Props> {
    */
   renderModal = () => {
     const { data, className } = this.props;
+    debugger;
     return (
       <div className={className}>
         <BodyCopy
@@ -77,6 +81,9 @@ class deleteGiftModal extends React.Component<Props> {
             src={getIconPath('gift-card')}
             onClick={this.pause}
           />
+          Card ending in
+          {data.description.accountNo}
+          Expire on {data.description.expMonth}/{data.description.expYear}
         </div>
         <div className="deleteGiftModal_btnWrapper">
           <Button

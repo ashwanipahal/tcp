@@ -18,3 +18,17 @@ export const setDeleteModalMountedState = payload => ({
   type: PAYMENT_CONSTANTS.DELETE_MODAL_MOUNT_STATE,
   payload,
 });
+
+export const deleteCard = payload => ({
+  type: PAYMENT_CONSTANTS.DELETE_CARD,
+  payload,
+});
+
+export const updateCardCardListonDelete = payload => ({
+  type: PAYMENT_CONSTANTS.DELETE_GIFTCARD,
+  payload,
+});
+export const updateCardListonDeleteErr = payload => ({
+  type: PAYMENT_CONSTANTS.DELETE_GIFTCARD,
+  payload,
+});

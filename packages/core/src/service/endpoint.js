@@ -17,7 +17,7 @@ const endpoints = {
   },
   addAddress: {
     method: 'post',
-    baseURI: 'https://www.childrensplace.com',
+    baseURI: 'https://test3.childrensplace.com',
     relURI: '/api/v2/account/addAddress',
   },
   login: {
@@ -40,8 +40,12 @@ const endpoints = {
     method: 'delete',
     relURI: '/api/v2/account/deleteAddressDetails',
   },
+  deleteCreditCardOnAccount: {
+    method: 'POST',
+    URI: '/api/v2/account/deleteCreditCardDetails',
+  },
   global: {
-    baseURI: 'https://www.childrensplace.com',
+    baseURI: 'https://test3.childrensplace.com',
   },
   setDefaultShippingAddress: {
     method: 'put',

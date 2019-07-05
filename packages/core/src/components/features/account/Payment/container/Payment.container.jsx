@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getCardList, setDeleteModalMountedState } from './Payment.actions';
+import { getCardList, setDeleteModalMountedState, deleteCard } from './Payment.actions';
 import {
   getCardListState,
   getCardListFetchingState,
@@ -17,6 +17,7 @@ type Props = {
   isFetching: boolean,
   deleteModalMountedState: boolean,
   setDeleteModalMountState: Function,
+  onDeleteCard: Function,
 };
 
 export class PaymentContainer extends React.Component<Props> {
@@ -31,6 +32,7 @@ export class PaymentContainer extends React.Component<Props> {
       showNotification,
       setDeleteModalMountState,
       deleteModalMountedState,
+      onDeleteCard,
     } = this.props;
     if (isFetching) return <p>Loading...</p>;
     return (
@@ -39,6 +41,7 @@ export class PaymentContainer extends React.Component<Props> {
         labels={labels}
         setDeleteModalMountState={setDeleteModalMountState}
         showNotification={showNotification}
+        onDeleteCard={onDeleteCard}
       />
     );
   }
@@ -49,9 +52,11 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     getCardListAction: () => {
       dispatch(getCardList());
     },
-
     setDeleteModalMountState: payload => {
       dispatch(setDeleteModalMountedState(payload));
+    },
+    onDeleteCard: payload => {
+      dispatch(deleteCard(payload));
     },
   };
 };

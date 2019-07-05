@@ -6,12 +6,15 @@ import Anchor from '../../../../common/atoms/Anchor';
 type Props = {
   className: string,
   setDeleteModalMountState: Function,
+  setSelectedGiftCard: Function,
+  giftcard: Object,
 };
 
-class GiftardTile extends React.Component<Props> {
+class GiftCardTile extends React.Component<Props> {
   onDeletegiftardClick = e => {
-    const { setDeleteModalMountState } = this.props;
+    const { giftcard, setDeleteModalMountState, setSelectedGiftCard } = this.props;
     e.preventDefault();
+    setSelectedGiftCard(giftcard);
     setDeleteModalMountState({ state: true });
   };
 
@@ -35,4 +38,4 @@ class GiftardTile extends React.Component<Props> {
   }
 }
 
-export default GiftardTile;
+export default GiftCardTile;
