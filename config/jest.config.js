@@ -43,8 +43,6 @@ module.exports = {
     'mock.js',
     '/flow-typed/',
     '/pages/',
-    'Carousel.jsx',
-    'AddAddressForm.jsx',
     ...ignorePsuedoCodeDir,
   ],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],
