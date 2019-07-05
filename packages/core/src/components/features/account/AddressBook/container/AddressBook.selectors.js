@@ -17,3 +17,7 @@ export const showUpdatedNotificationOnModalState = state => {
 export const deleteModalOpenState = state => {
   return state.AddressBookReducer.get('deleteModalMountedState');
 };
+
+export const showAddAddressComponent = state => {
+  return state.AddressBookReducer.get('addAddressLoaded');
+};
