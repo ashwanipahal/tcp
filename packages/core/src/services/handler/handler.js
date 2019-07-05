@@ -1,7 +1,8 @@
 import fetch from 'node-fetch';
-import { graphQLClient } from '../config';
+// import { graphQLClient } from '../config';
 import QueryBuilder from './graphQL/queries/queryBuilder';
-import { importGraphQLClientDynamically } from '../../utils';
+// import { importGraphQLClientDynamically } from '../../utils';
+import AwsAppSyncClient from './graphQL/graphQLClient';
 
 if (!process.browser) {
   global.fetch = fetch;
@@ -30,10 +31,8 @@ const executeQuery = (query, graphQLInterface) => {
  * Loads GraphQL client interface
  */
 const loadGraphQLInterface = () => {
-  const clientName = graphQLClient;
-  return importGraphQLClientDynamically(clientName).then(
-    ({ default: graphQLInterface }) => graphQLInterface
-  );
+  // const clientName = graphQLClient;
+  return AwsAppSyncClient().then(({ default: graphQLInterface }) => graphQLInterface);
 };
 
 /**
