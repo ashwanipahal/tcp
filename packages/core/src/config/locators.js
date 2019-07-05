@@ -1,10 +1,6 @@
 export default {
   // Legal Links
-  terms_and_conditions: 'global_T&Clink',
-  privacy_policy: 'global_privacypolicylink',
-  cookie_policy: 'global_cookiepolicylink',
-  california_supply_chain: 'global_californiaSCAlink',
-  site_map: 'global_siteMaplink',
+  legal_links: 'legal_links_',
   // Copyright
   'content-copyright': 'global_copyrighttext',
   // Social Media Links

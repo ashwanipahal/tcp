@@ -13,14 +13,13 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
   >
     <FooterNavLinks
       className="footer-links"
+      colNum={0}
       headerAsImage={true}
       navLinkItems={
-        Array [
-          Object {
-            "header": "",
-            "links": undefined,
-          },
-        ]
+        Object {
+          "header": "",
+          "links": Array [],
+        }
       }
     />
   </Styled(Col)>
@@ -35,14 +34,13 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
   >
     <FooterNavLinks
       className="footer-links"
+      colNum={1}
       headerAsImage={true}
       navLinkItems={
-        Array [
-          Object {
-            "header": "",
-            "links": undefined,
-          },
-        ]
+        Object {
+          "header": "",
+          "links": Array [],
+        }
       }
     />
   </Styled(Col)>
@@ -57,13 +55,12 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
   >
     <FooterNavLinks
       className="footer-links"
+      colNum={2}
       navLinkItems={
-        Array [
-          Object {
-            "header": "",
-            "links": undefined,
-          },
-        ]
+        Object {
+          "header": "",
+          "links": Array [],
+        }
       }
     />
   </Styled(Col)>
@@ -78,13 +75,12 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
   >
     <FooterNavLinks
       className="footer-links"
+      colNum={3}
       navLinkItems={
-        Array [
-          Object {
-            "header": "",
-            "links": undefined,
-          },
-        ]
+        Object {
+          "header": "",
+          "links": Array [],
+        }
       }
     />
   </Styled(Col)>
@@ -99,13 +95,12 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
   >
     <FooterNavLinks
       className="footer-links"
+      colNum={4}
       navLinkItems={
-        Array [
-          Object {
-            "header": "",
-            "links": undefined,
-          },
-        ]
+        Object {
+          "header": "",
+          "links": Array [],
+        }
       }
     />
   </Styled(Col)>
@@ -120,13 +115,12 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
   >
     <FooterNavLinks
       className="footer-links"
+      colNum={5}
       navLinkItems={
-        Array [
-          Object {
-            "header": "",
-            "links": undefined,
-          },
-        ]
+        Object {
+          "header": "",
+          "links": Array [],
+        }
       }
     />
   </Styled(Col)>
@@ -146,14 +140,13 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
   >
     <FooterNavLinks
       className="footer-links"
+      colNum={0}
       headerAsImage={true}
       navLinkItems={
-        Array [
-          Object {
-            "header": "",
-            "links": undefined,
-          },
-        ]
+        Object {
+          "header": "",
+          "links": Array [],
+        }
       }
     />
   </Styled(Col)>
@@ -168,14 +161,13 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
   >
     <FooterNavLinks
       className="footer-links"
+      colNum={1}
       headerAsImage={true}
       navLinkItems={
-        Array [
-          Object {
-            "header": "",
-            "links": undefined,
-          },
-        ]
+        Object {
+          "header": "",
+          "links": Array [],
+        }
       }
     />
   </Styled(Col)>
@@ -200,13 +192,12 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
   >
     <FooterNavLinks
       className="footer-links"
+      colNum={2}
       navLinkItems={
-        Array [
-          Object {
-            "header": "",
-            "links": undefined,
-          },
-        ]
+        Object {
+          "header": "",
+          "links": Array [],
+        }
       }
     />
   </Styled(Col)>
@@ -221,25 +212,23 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
   >
     <FooterNavLinks
       className="footer-links"
+      colNum={3}
       navLinkItems={
-        Array [
-          Object {
-            "header": "",
-            "links": undefined,
-          },
-        ]
+        Object {
+          "header": "",
+          "links": Array [],
+        }
       }
     />
     <FooterNavLinks
       className="footer-links"
+      colNum={4}
       isSubHeader={true}
       navLinkItems={
-        Array [
-          Object {
-            "header": "",
-            "links": undefined,
-          },
-        ]
+        Object {
+          "header": "",
+          "links": Array [],
+        }
       }
     />
   </Styled(Col)>
@@ -254,13 +243,12 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
   >
     <FooterNavLinks
       className="footer-links"
+      colNum={5}
       navLinkItems={
-        Array [
-          Object {
-            "header": "",
-            "links": undefined,
-          },
-        ]
+        Object {
+          "header": "",
+          "links": Array [],
+        }
       }
     />
   </Styled(Col)>

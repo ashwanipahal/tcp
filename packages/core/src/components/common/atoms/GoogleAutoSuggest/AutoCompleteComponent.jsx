@@ -6,6 +6,7 @@ import TextBox from '../TextBox'; // this comment prevents linting errors
 /*
  * global google  - getAddressLocationInfo this componet is used for get the address suggestion
  */
+
 export function getAddressLocationInfo(address) {
   return requireNamedOnlineModule('google.maps').then(() => {
     const geocoder = new google.maps.Geocoder();
@@ -75,8 +76,6 @@ export class AutoCompleteComponent extends React.Component {
             break;
           case 'postal_code':
             address.zip = val;
-            break;
-          default:
             break;
         }
       }

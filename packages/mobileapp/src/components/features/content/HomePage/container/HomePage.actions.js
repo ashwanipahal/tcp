@@ -27,5 +27,3 @@ export const setEspots = payload => {
     type: HOMEPAGE_CONSTANTS.SET_ESPOST,
   };
 };
-
-export const initActions = [getHeaderlinks()];
