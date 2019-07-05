@@ -20,3 +20,5 @@ export const getEspots = payload => {
     type: HOMEPAGE_CONSTANTS.FETCH_ESPOT,
   };
 };
+
+export const initActions = [getHeaderlinks()];
