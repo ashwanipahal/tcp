@@ -5,10 +5,11 @@ import FooterNavHeader from '../../FooterNavHeader';
 
 type Props = {
   className: string,
-  navLinkItems: Object[],
+  navLinkItems: Object,
   updateAccordionState: Function,
   headerAsImage: boolean,
   isSubHeader: boolean,
+  colNum: number,
 };
 
 const FooterNavLinks = ({
@@ -17,21 +18,19 @@ const FooterNavLinks = ({
   updateAccordionState,
   headerAsImage,
   isSubHeader,
+  colNum,
 }: Props) => {
   return (
-    <div>
-      {navLinkItems.map((item, index) => (
-        <div className={`${className} container-nav-link`} key={item.id} data-index={index}>
-          <FooterNavHeader
-            headerAsImage={headerAsImage}
-            titleText={item.header.text}
-            titleObj={item.header}
-            updateAccordionState={updateAccordionState}
-            isSubHeader={isSubHeader}
-          />
-          <FooterNavLinksList listArray={item.links} />
-        </div>
-      ))}
+    <div className={`${className} container-nav-link`} key={navLinkItems.id} data-index={colNum}>
+      <FooterNavHeader
+        headerAsImage={headerAsImage}
+        titleText={navLinkItems.header.text}
+        titleObj={navLinkItems.header}
+        updateAccordionState={updateAccordionState}
+        isSubHeader={isSubHeader}
+        colNum={colNum}
+      />
+      <FooterNavLinksList listArray={navLinkItems.links} colNum={colNum} />
     </div>
   );
 };
