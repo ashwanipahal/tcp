@@ -3,6 +3,7 @@ import { Field, reduxForm, change } from 'redux-form';
 import { BodyCopy } from '../../../../../../../styles/themes/TCP/typotheme';
 import TextBox from '../../../../../common/atoms/TextBox';
 import SelectBox from '../../../../../common/atoms/Select';
+import InputCheckbox from '../../../../../common/atoms/InputCheckbox';
 import Row from '../../../../../common/atoms/Row';
 import Col from '../../../../../common/atoms/Col';
 import Button from '../../../../../common/atoms/Button';
@@ -207,13 +208,11 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
         <Row fullBleed>
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
-              className="checkbox-align"
               name="default-ship"
-              id="default-ship"
-              component={TextBox}
-              type="checkbox"
+              component={InputCheckbox}
+              label="Set as default shipping addres"
+              validate={[required]}
             />
-            <BodyCopy tag="span">Set as default shipping addres</BodyCopy>
           </Col>
         </Row>
         <Row className="button_wrapper">
