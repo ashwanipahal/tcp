@@ -6,8 +6,10 @@ import { cacheEnhancerMiddleware } from '@tcp/core/src/utils/cache.util';
 import {
   HOMEPAGE_REDUCER_KEY,
   PRODUCTLISTINGPAGE_REDUCER_KEY,
+  ADDRESSBOOK_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
+import AddressBookReducer from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.reducer';
 import HomePageReducer from '../components/features/content/HomePage/container/HomePage.reducer';
 
 import rootSaga from './sagas';
@@ -25,6 +27,7 @@ export const initializeStore = initialState => {
     [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
     [HOMEPAGE_REDUCER_KEY]: HomePageReducer,
     LoginPageReducer,
+    [ADDRESSBOOK_REDUCER_KEY]: AddressBookReducer,
   });
   const rootReducer = (state, action) => {
     return AppReducers(state, action);
