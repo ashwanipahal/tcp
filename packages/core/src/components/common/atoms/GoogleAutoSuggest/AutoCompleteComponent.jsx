@@ -181,14 +181,7 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
   }
 
   render() {
-    const {
-      //  not used, but here to prevent inclusion in ...otherProps
-      onPlaceSelected,
-      types,
-      componentRestrictions,
-      bounds, // eslint-disable-line no-unused-vars
-      ...otherProps
-    } = this.props;
+    const { ...otherProps } = this.props;
 
     return <TextBox {...otherProps} inputRef={this.attachToInputRef} key={this.inputElementKey} />;
   }
