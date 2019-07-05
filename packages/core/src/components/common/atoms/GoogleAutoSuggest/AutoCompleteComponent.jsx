@@ -2,11 +2,19 @@ import React from 'react';
 import { requireNamedOnlineModule } from './resourceLoader';
 import TextBox from '../TextBox'; // this comment prevents linting errors
 
-/* global google  - getAddressLocationInfo this componet is used for get the address suggestion */
+// @flow
+type Props = {
+  types: ['address'],
+  componentRestrictions: any,
+  bounds: any,
+  apiFields: any,
+  input: any,
+  onPlaceSelected: any,
+};
 
 export function getAddressLocationInfo(address) {
   return requireNamedOnlineModule('google.maps').then(() => {
-    const geocoder = new google.maps.Geocoder();
+    const geocoder = new google.maps.Geocoder(); // eslint-disable-line no-undef
     return new Promise((resolve, reject) => {
       geocoder.geocode({ address }, (results, status) => {
         if (status === 'OK') {
@@ -22,13 +30,7 @@ export function getAddressLocationInfo(address) {
     });
   });
 }
-
-export class AutoCompleteComponent extends React.Component {
-  static defaultProps = {
-    types: ['address'],
-    componentRestrictions: {},
-  };
-
+export class AutoCompleteComponent extends React.PureComponent<Props> {
   static GOOGLE_PLACE_PARTS = {
     street_number: 'short_name',
     route: 'long_name',
@@ -40,6 +42,7 @@ export class AutoCompleteComponent extends React.Component {
   };
 
   static getAddressFromPlace(place, inputValue) {
+    /* eslint complexity: ["error", 16] */
     const address = { street: '', city: '', state: '', country: '', zip: '' };
     let streetNumber = '';
     let streetName = '';
@@ -47,10 +50,10 @@ export class AutoCompleteComponent extends React.Component {
     if (typeof place.address_components === 'undefined') {
       return address;
     }
-    for (let i = 0; i < place.address_components.length; i++) {
-      let addressType = place.address_components[i].types[0];
+    for (let i = 0; i < place.address_components.length; i += 1) {
+      const addressType = place.address_components[i].types[0];
       if (AutoCompleteComponent.GOOGLE_PLACE_PARTS[addressType]) {
-        let val =
+        const val =
           place.address_components[i][AutoCompleteComponent.GOOGLE_PLACE_PARTS[addressType]];
         switch (addressType) {
           case 'street_number':
@@ -74,16 +77,18 @@ export class AutoCompleteComponent extends React.Component {
           case 'postal_code':
             address.zip = val;
             break;
+          default:
+            address.zip = val;
         }
       }
     }
 
     if (!streetNumber) {
-      let regex = RegExp('^(.*)' + streetName.split(' ', 1)[0]);
-      let result = regex.exec(inputValue);
-      let inputNum = Array.isArray(result) && result[1] && Number(result[1]);
+      const regex = RegExp('^(.*)'`${streetName.split(' ', 1)[0]}`);
+      const result = regex.exec(inputValue);
+      const inputNum = Array.isArray(result) && result[1] && Number(result[1]);
 
-      if (!isNaN(inputNum) && parseInt(inputNum, 10) === inputNum) {
+      if (!Number(inputNum) && parseInt(inputNum, 10) === inputNum) {
         streetNumber = inputNum;
       }
     }
@@ -104,16 +109,22 @@ export class AutoCompleteComponent extends React.Component {
   }
 
   componentWillUpdate(nextProps) {
+    const {
+      //  not used, but here to prevent inclusion in ...otherProps
+      types,
+      componentRestrictions,
+      bounds, // eslint-disable-line no-unused-vars
+    } = this.props;
     if (!this.googleAutocomplete) return;
 
-    if (this.props.types !== nextProps.types) {
+    if (types !== nextProps.types) {
       this.googleAutocomplete.setTypes(nextProps.types);
     }
-    if (this.props.bounds !== nextProps.bounds) {
+    if (bounds !== nextProps.bounds) {
       this.googleAutocomplete.setBounds(nextProps.bounds);
     }
 
-    if (this.props.componentRestrictions !== nextProps.componentRestrictions) {
+    if (componentRestrictions !== nextProps.componentRestrictions) {
       if (nextProps.componentRestrictions) {
         this.googleAutocomplete.setComponentRestrictions(nextProps.componentRestrictions);
       } else {
@@ -122,24 +133,10 @@ export class AutoCompleteComponent extends React.Component {
     }
   }
 
-  render() {
-    let {
-      //  not used, but here to prevent inclusion in ...otherProps
-      onPlaceSelected,
-      types,
-      componentRestrictions,
-      bounds, // eslint-disable-line no-unused-vars
-      ...otherProps
-    } = this.props;
-
-    return <TextBox {...otherProps} inputRef={this.attachToInputRef} key={this.inputElementKey} />;
-  }
-
   // --------------- private methods --------------- //
 
-  getAutoCompleteConfigObject(props) {
-    let { types, bounds } = props;
-    let componentRestrictions = props.componentRestrictions;
+  getAutoCompleteConfigObject() {
+    const { types, bounds, componentRestrictions } = this.props;
     return componentRestrictions ? { types, bounds, componentRestrictions } : { types, bounds };
   }
 
@@ -153,18 +150,18 @@ export class AutoCompleteComponent extends React.Component {
         // if the googleAutocomplete object was not created
         requireNamedOnlineModule('google.maps')
           .then(() => {
-            this.googleAutocomplete = new google.maps.places.Autocomplete(
+            this.googleAutocomplete = new google.maps.places.Autocomplete( // eslint-disable-line no-undef
               refToInputElement,
-              this.getAutoCompleteConfigObject(this.props)
+              this.getAutoCompleteConfigObject()
             );
             this.googleAutocomplete.setFields(apiFieldsArray);
             this.googleAutocomplete.addListener('place_changed', this.handleOnPlaceSelected);
           })
           .catch(() => null /* do nothing if unable to load googleAutocomplete */);
       } else {
-        this.googleAutocomplete = new google.maps.places.Autocomplete(
+        this.googleAutocomplete = new google.maps.places.Autocomplete( // eslint-disable-line no-undef
           refToInputElement,
-          this.getAutoCompleteConfigObject(this.props)
+          this.getAutoCompleteConfigObject()
         );
         this.googleAutocomplete.setFields(apiFieldsArray);
         this.googleAutocomplete.addListener('place_changed', this.handleOnPlaceSelected);
@@ -173,11 +170,27 @@ export class AutoCompleteComponent extends React.Component {
   }
 
   handleOnPlaceSelected() {
-    let inputValue = this.refToInputElement != null && this.refToInputElement.value;
+    const { input, onPlaceSelected } = this.props;
+    const inputValue = this.refToInputElement != null && this.refToInputElement.value;
     this.refToInputElement != null &&
-      this.props.input &&
-      this.props.input.onChange(this.refToInputElement.value);
-    this.props.onPlaceSelected(this.googleAutocomplete.getPlace(), inputValue);
+      input &&
+      input.onChange(
+        this.refToInputElement.value
+      ); /* eslint no-unused-expressions: [2, { allowShortCircuit: true }] */
+    onPlaceSelected(this.googleAutocomplete.getPlace(), inputValue);
+  }
+
+  render() {
+    const {
+      //  not used, but here to prevent inclusion in ...otherProps
+      onPlaceSelected,
+      types,
+      componentRestrictions,
+      bounds, // eslint-disable-line no-unused-vars
+      ...otherProps
+    } = this.props;
+
+    return <TextBox {...otherProps} inputRef={this.attachToInputRef} key={this.inputElementKey} />;
   }
 
   // --------------- end of private methods --------------- //
