@@ -1,42 +1,34 @@
 import { css } from 'styled-components';
 
 const textboxStyles = css`
-  &.active div {
-    top: -65px;
-  }
-  &.select-fields-wrapper .Error__clearFloat {
-    clear: both;
-    top: -10px;
+  &.select-fields-wrapper {
     position: relative;
-  }
-  &.select-fields-wrapper p {
-    top: -30px;
-    opacity: 0.8;
-    position: relative;
-    margin: 0;
-    float: left;
-    padding: 5px 0px 5px 10px;
+    display: block;
+    height: 70px;
   }
   .selectField {
-    margin: ${props => props.theme.spacing.ELEM_SPACING.XS} 0 0 0;
-    height: 35px;
+    margin: 0;
     outline: 0;
-    line-height: 44px;
-    font-size: ${props => props.theme.fonts.fontSize.textbox}px;
+    border: 0;
+    border-bottom: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
+    border-radius: 0;
+    font-size: ${props => props.theme.fonts.fontSize.textbox_input}px;
     color: ${props => props.theme.colors.TEXTBOX.COLOR};
     width: 100%;
-    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.MEDLRG};
-    border: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 0
+      ${props => props.theme.spacing.ELEM_SPACING.XS};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-      no-repeat right 8px center;
+      no-repeat right 0px bottom 6px;
     -webkit-appearance: none;
+
     ${props =>
       props.meta.touched && props.meta.error
         ? `border-bottom: 1px solid ${props.theme.colors.TEXTBOX.ERROR_BORDER};`
         : ''};
     ${props =>
       props.isSuccessState
-        ? `border: 1px solid ${props.theme.colors.TEXTBOX.SUCCESS_BORDER};`
+        ? `border-bottom: 1px solid ${props.theme.colors.TEXTBOX.SUCCESS_BORDER};`
         : ''};
 
     ${props =>
@@ -46,9 +38,22 @@ const textboxStyles = css`
       border-color: ${props.theme.fieldBorderDisabledColor};
     `
         : ''};
-    &:focus + p {
-      top: -65px;
+    &:focus + .selectField__label {
+      font-size: ${props => props.theme.fonts.fontSize.body.small.primary}px;
+      top: 0;
     }
+  }
+
+  .selectField__label {
+    font-size: ${props => props.theme.fonts.fontSize.textbox}px;
+    padding: 0;
+    position: absolute;
+    top: 16px;
+  }
+
+  &.active .selectField__label {
+    font-size: ${props => props.theme.fonts.fontSize.body.small.primary}px;
+    top: 0;
   }
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};

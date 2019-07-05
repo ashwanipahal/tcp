@@ -76,6 +76,7 @@ const FONT_SIZE = {
     xlarge: 16,
   },
   textbox: 13,
+  textbox_input: 16,
 };
 
 const FONT_WEIGHT = {

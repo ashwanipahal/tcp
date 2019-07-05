@@ -12,7 +12,6 @@ import EmptyAddressListComponent from './EmptyAddressList.view';
 import DeleteAddressModal from './DeleteAddressModal.view';
 import Notification from '../../../../common/molecules/Notification';
 
-
 // @flow
 
 type Props = {
@@ -42,7 +41,7 @@ export class AddressBook extends React.PureComponent<Props> {
   };
 
   onAddNNewAddressClick = () => {
-    Router.push('/account?id=add-new-address');
+    Router.push('/account?id=add-new-address', '/account/address-book/add-new-address');
   };
 
   render() {
@@ -90,7 +89,11 @@ export class AddressBook extends React.PureComponent<Props> {
             }}
             className="addressBook__addNewCtaContainer"
           >
-            <Button onClick={this.onAddNNewAddressClick} buttonVariation="variable-width" fill="BLUE">
+            <Button
+              onClick={this.onAddNNewAddressClick}
+              buttonVariation="variable-width"
+              fill="BLUE"
+            >
               {labels.addNewAddressCTA}
             </Button>
           </Col>

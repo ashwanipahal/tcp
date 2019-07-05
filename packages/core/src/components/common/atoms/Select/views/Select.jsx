@@ -69,13 +69,12 @@ const SelectBox = ({
             );
           })}
       </select>
-      {/* commented onChange={onChangeHandler} */}
-      <BodyCopy bodySize="two" FormVariation="float" BodycolorLg="primary" tag="div">
+      <BodyCopy bodySize="two" BodycolorLg="primary" tag="p" className="selectField__label">
         {placeholder}
       </BodyCopy>
       {touched &&
         ((error && (
-          <BodyCopy clearFloat ErrorMsg="error" bodySize="two" tag="div">
+          <BodyCopy ErrorMsg="error" bodySize="two" tag="div">
             {getErroMsg(errors[error], placeholder)}
           </BodyCopy>
         )) ||

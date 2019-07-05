@@ -183,7 +183,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
             <Field
               id="country"
               onChange={this.StateCountryChange}
-              placeholder="country"
+              placeholder="Country"
               name="country"
               validate={[required]}
               onBlur={this.handleBlur}
@@ -195,7 +195,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
           </Col>
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
             <Field
-              placeholder="phone number"
+              placeholder="Mobile Number"
               name="phoneNumber"
               component={TextBox}
               onBlur={this.handleBlur}

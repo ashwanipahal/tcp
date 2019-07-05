@@ -42,7 +42,7 @@ const TextBox = ({
   isSuccessState,
   maxLength,
   input,
-  meta: { touched, error },
+  meta = {},
 }: Props): Node => {
   const elemValue = input.value;
   return (
@@ -62,16 +62,14 @@ const TextBox = ({
         Value={elemValue}
         placeholder=""
       />
-
-      {/* commented onChange={onChangeHandler} */}
-      <BodyCopy bodySize="two" FormVariation="float" BodycolorLg="primary" tag="p" className="">
+      <BodyCopy bodySize="two" BodycolorLg="primary" tag="p" className="TextBox__label">
         {placeholder}
       </BodyCopy>
-      {touched && error && (
-      <BodyCopy clearFloat ErrorMsg="error" bodySize="two" tag="div">
-        {getErroMsg(errors[error], placeholder)}
-      </BodyCopy>
-        )}
+      {meta.touched && meta.error && (
+        <BodyCopy ErrorMsg="error" bodySize="two" tag="div">
+          {getErroMsg(errors[meta.error], placeholder)}
+        </BodyCopy>
+      )}
     </label>
   );
 };

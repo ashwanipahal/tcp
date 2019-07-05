@@ -1,13 +1,10 @@
 import { css } from 'styled-components';
 
 const textboxStyles = css`
-  &.active p {
-    top: -50px;
-  }
-  &.input-fields-wrapper .Error__clearFloat {
-    clear: both;
-    top: -10px;
+  &.input-fields-wrapper {
     position: relative;
+    display: block;
+    height: 70px;
   }
 
   input.TextBox__input[type='checkbox'] {
@@ -66,21 +63,22 @@ const textboxStyles = css`
   .TextBox__input {
     margin: 0;
     outline: 0;
-    line-height: 44px;
-    font-size: ${props => props.theme.fonts.fontSize.textbox}px;
+    font-size: ${props => props.theme.fonts.fontSize.textbox_input}px;
     color: ${props => props.theme.colors.TEXTBOX.COLOR};
-    width: calc(100% - 20px);
-    padding: 0 10px;
+    width: 100%;
     background-position: left top;
     background-repeat: no-repeat;
     background-size: contain;
     border: 0 solid transparent;
     border-bottom: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
     @media ${props => props.theme.mediaQuery.smallMax} {
       overflow: hidden;
     }
     ${props =>
-      props.meta.touched && props.meta.error
+      props.meta && props.meta.touched && props.meta.error
         ? `border-bottom: 1px solid ${props.theme.colors.TEXTBOX.ERROR_BORDER};`
         : ''};
     ${props =>
@@ -112,10 +110,24 @@ const textboxStyles = css`
     `
         : ''};
 
-    &:focus + p {
-      top: -50px;
+    &:focus + .TextBox__label {
+      font-size: ${props => props.theme.fonts.fontSize.body.small.primary}px;
+      top: 0;
     }
   }
+
+  .TextBox__label {
+    font-size: ${props => props.theme.fonts.fontSize.textbox}px;
+    padding: 0;
+    position: absolute;
+    top: 16px;
+  }
+
+  &.active .TextBox__label {
+    font-size: ${props => props.theme.fonts.fontSize.body.small.primary}px;
+    top: 0;
+  }
+
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
