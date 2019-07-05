@@ -1,15 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Textbox component renders correctly 1`] = `
-<input
-  aria-label=""
-  className="asdfasdf"
-  id="abcd"
-  isErrorState={false}
-  isSuccessState={false}
-  name=""
-  onChange={[Function]}
-  placeholder=""
-  type="text"
-/>
+<label
+  className="asdfasdf active input-fields-wrapper"
+  htmlFor=""
+>
+  <input
+    Value="hello sonar"
+    aria-label=""
+    className="TextBox__input"
+    id="abcd"
+    isSuccessState={false}
+    name=""
+    placeholder=""
+    type="text"
+    value="hello sonar"
+  />
+  <Styled(BodyStyle)
+    BodycolorLg="primary"
+    FormVariation="float"
+    bodySize="two"
+    className=""
+    tag="p"
+  />
+</label>
 `;

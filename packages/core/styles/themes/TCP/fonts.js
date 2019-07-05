@@ -73,6 +73,7 @@ const FONT_SIZE = {
     small: 10,
     medium: 12,
     large: 14,
+    xlarge: 16,
   },
   textbox: 13,
 };

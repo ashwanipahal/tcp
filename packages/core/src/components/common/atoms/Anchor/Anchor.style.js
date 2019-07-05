@@ -45,6 +45,12 @@ const AnchorStyles = css`
     `
       : ''};
   ${props =>
+    props.fontSizeVariation === 'xlarge'
+      ? `
+          font-size: ${props.theme.fonts.fontSize.anchor.xlarge}px;
+        `
+      : ''};
+  ${props =>
     props.fontWeightVariation === 'active'
       ? `
       font-weight: ${props.theme.fonts.fontWeight.bold};
