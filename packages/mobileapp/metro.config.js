@@ -1,6 +1,6 @@
-const path = require('path');
+const path = require("path");
 
-const watchFolders = [path.join(__dirname, '/../core/')];
+const watchFolders = [path.join(__dirname, "/../core/")];
 
 const extraNodeModules = new Proxy(
   /* First argument in Proxy constructor is passed as
@@ -9,15 +9,15 @@ const extraNodeModules = new Proxy(
    * module as they would be imported when the module is actually used.
    */
   {
-    '@tcp/core': path.join(__dirname, '/../core/'),
+    "@tcp/core": path.join(__dirname, "/../core/")
   },
   {
     get: (target, name) => {
-      if (target.hasOwnProperty.call(name)) {
+      if (target.hasOwnProperty(name)) {
         return target[name];
       }
       return path.join(__dirname, `node_modules/${name}`);
-    },
+    }
   }
 );
 
@@ -30,7 +30,7 @@ module.exports = {
      * app's node_modules directory.
      */
     extraNodeModules,
-    sourceExts: ['jsx', 'js'],
+    sourceExts: ["jsx", "js"]
   },
-  watchFolders,
+  watchFolders
 };
