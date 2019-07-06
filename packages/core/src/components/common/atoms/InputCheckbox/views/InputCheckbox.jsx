@@ -1,9 +1,11 @@
-// @flow
+
 import React from 'react';
 import type { Node } from 'react';
 import withStyles from '../../../hoc/withStyles';
 import errors from '../../../../../utils/errorsMsg';
 import BodyCopy from '../../BodyCopy';
+
+// @flow
 
 import styles from '../InputCheckbox.style';
 
@@ -16,7 +18,6 @@ type Props = {
   meta: object,
   label: string,
   input: any,
-  isSuccessState: boolean,
   name: string,
 };
 
@@ -28,7 +29,6 @@ const InputCheckbox = ({
   label,
   meta,
   input,
-  isSuccessState,
   name,
   ...otherProps
 }: Props): Node => (

@@ -38,14 +38,11 @@ const textboxStyles = css`
       border-color: ${props.theme.fieldBorderDisabledColor};
     `
         : ''};
-    &:focus + .selectField__label {
-      font-size: ${props => props.theme.fonts.fontSize.body.small.primary}px;
-      top: 0;
-    }
   }
 
   .selectField__label {
-    font-size: ${props => props.theme.fonts.fontSize.textbox}px;
+    font-size: ${props => props.theme.fonts.fontSize.body.small.primary}px;
+    font-weight: ${props => props.theme.fonts.fontWeight.bold};
     padding: 0;
     position: absolute;
     top: 0;

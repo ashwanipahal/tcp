@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import type { Node } from 'react';
-import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
+import BodyCopy from '../../BodyCopy';
 import withStyles from '../../../hoc/withStyles';
 import errors from '../../../../../utils/errorsMsg';
 import StyledTextBox from '../Select.style';
@@ -37,13 +37,16 @@ const SelectBox = ({
   ariaLabel,
   name,
   placeholder,
-  defaultValue,
   input,
   options,
   meta: { touched, error },
 }: Props): Node => {
+  const isError = touched && error;
   return (
-    <div className={`${className} ${input.value ? 'active' : ''} select-fields-wrapper`}>
+    <div className={`${className} ${input.value ? 'active' : ''} ${
+      isError ? 'error' : ''
+    } select-fields-wrapper`}
+    >
       <select
         {...input}
         id={id}
@@ -54,19 +57,18 @@ const SelectBox = ({
       >
         {options &&
           options.map(option => {
-            const selected = option.displayName === defaultValue ? `selected` : '';
             return (
-              <option value={option.displayName} selected={selected} id={option.id} key={option.id}>
+              <option value={option.displayName} id={option.id} key={option.id}>
                 {option.displayName}
               </option>
             );
           })}
       </select>
-      <BodyCopy bodySize="two" BodycolorLg="primary" tag="p" className="selectField__label">
+      <BodyCopy fontSize="fs12" fontFamily="secondary" className="selectField__label">
         {placeholder}
       </BodyCopy>
       {touched && error && (
-        <BodyCopy ErrorMsg="error" bodySize="two" tag="div">
+        <BodyCopy fontSize="fs12" fontFamily="secondary" component="div" color="error">
           {getErroMsg(errors[error], placeholder)}
         </BodyCopy>
       )}

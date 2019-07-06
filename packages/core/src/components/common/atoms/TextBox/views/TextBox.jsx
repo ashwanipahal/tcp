@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import type { Node } from 'react';
-import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
+import BodyCopy from '../../BodyCopy';
 import withStyles from '../../../hoc/withStyles';
 import errors from '../../../../../utils/errorsMsg';
 import StyledTextBox from '../TextBox.style';
@@ -63,11 +63,11 @@ const TextBox = ({
         ref={inputRef}
         placeholder=""
       />
-      <BodyCopy bodySize="two" BodycolorLg="primary" tag="p" className="TextBox__label">
+      <BodyCopy className="TextBox__label" fontFamily="secondary" fontSize="fs12">
         {placeholder}
       </BodyCopy>
       {touched && error && (
-        <BodyCopy ErrorMsg="error" bodySize="two" tag="div">
+        <BodyCopy color="error" component="div" fontSize="fs12" fontFamily="secondary">
           {getErroMsg(errors[error], placeholder)}
         </BodyCopy>
       )}

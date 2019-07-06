@@ -88,7 +88,7 @@ const BodyCopy = styled(BodyStyle)`
   ${props =>
     props.ErrorMsg === 'error'
       ? `
-    color:${colors.TEXTBOX.ERROR_BORDER};
+    color:${colors.NOTIFICATION.ERROR};
     `
       : ''};
 `;

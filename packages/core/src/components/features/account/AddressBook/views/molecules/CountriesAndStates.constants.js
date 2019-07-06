@@ -77,7 +77,7 @@ const CAcountriesStatesTable = [
 
 const UScountriesStatesTable = [
   {
-    displayName: '',
+    displayName: 'Select',
     id: '',
   },
   {

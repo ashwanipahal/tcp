@@ -67,11 +67,8 @@ const textboxStyles = css`
 
     &:focus + .TextBox__label {
       font-size: ${props => props.theme.fonts.fontSize.body.small.primary}px;
+      font-weight: ${props => props.theme.fonts.fontWeight.bold};
       top: 0;
-    }
-
-    &.error + .TextBox__input {
-      border-bottom: 1px solid ${props => props.theme.colors.TEXTBOX.ERROR_BORDER};
     }
   }
 
@@ -84,7 +81,12 @@ const textboxStyles = css`
 
   &.active .TextBox__label {
     font-size: ${props => props.theme.fonts.fontSize.body.small.primary}px;
+    font-weight: ${props => props.theme.fonts.fontWeight.bold};
     top: 0;
+  }
+
+  &.error .TextBox__input {
+    border-bottom: 1px solid ${props => props.theme.colors.NOTIFICATION.ERROR};
   }
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
