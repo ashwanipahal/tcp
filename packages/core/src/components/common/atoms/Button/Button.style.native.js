@@ -1,6 +1,6 @@
-import styled from 'styled-components';
+import { css } from 'styled-components/native';
 
-const ButtonStyles = styled.Button`
+const style = css`
   ${props =>
     props.buttonVariation === 'fixed-width'
       ? `
@@ -14,22 +14,22 @@ const ButtonStyles = styled.Button`
     padding: 12px 20px;
     width: 100%;
     margin : 40px
-   `
+  `
       : ''};
 
   ${props =>
     props.buttonVariation === 'variable-width'
       ? `
-   width: ${props.width};
-   height: ${props.width};
-   min-width: 64px;
-   background: ${props.theme.colorPalette.white};
-   color: ${props.theme.colorPalette.black};
-   font-family: ${props.theme.typography.mobileFonts.primary};
-   font-size: ${props.theme.typography.fontSizes.fs14};
-   font-weight: ${props.theme.typography.fontWeights.black};
-   border: 1px solid ${props.theme.colorPalette.black};
-   padding: 12px 32px;
+  width: ${props.width};
+  height: ${props.width};
+  min-width: 64px;
+  background: ${props.theme.colorPalette.white};
+  color: ${props.theme.colorPalette.black};
+  font-family: ${props.theme.typography.mobileFonts.primary};
+  font-size: ${props.theme.typography.fontSizes.fs14};
+  font-weight: ${props.theme.typography.fontWeights.black};
+  border: 1px solid ${props.theme.colorPalette.black};
+  padding: 12px 32px;
   `
       : ''};
 
@@ -62,10 +62,4 @@ const ButtonStyles = styled.Button`
       : ''};
 `;
 
-const ViewWrapper = styled.View`
-  margin: ${props => props.margin || '40px'};
-  border: ${props => props.border || '0.5px'};
-  background: transparent;
-`;
-
-export { ButtonStyles, ViewWrapper };
+export default style;

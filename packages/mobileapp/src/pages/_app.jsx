@@ -1,5 +1,7 @@
 import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { ThemeProvider } from 'styled-components/native';
+import theme from '@tcp/core/styles/themes/TCP';
 import { Provider } from 'react-redux';
 import AppNavigator from '../navigation/AppNavigator';
 import { initializeStore } from '../reduxStore/initializeStore';
@@ -35,12 +37,14 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <Provider store={this.store}>
-        <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <AppNavigator />
-        </View>
-      </Provider>
+      <ThemeProvider theme={theme}>
+        <Provider store={this.store}>
+          <View style={styles.container}>
+            {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+            <AppNavigator />
+          </View>
+        </Provider>
+      </ThemeProvider>
     );
   }
 }

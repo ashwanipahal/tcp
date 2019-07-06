@@ -17,6 +17,7 @@ module.exports = {
     '^.+\\.(js|jsx)$': 'babel-jest',
   },
   testMatch: ['**/__tests__/*-test.+(js|jsx)', '**/*.test.+(js|jsx)'],
+
   globals: {
     'babel-jest': {
       extends: './babel.config.js',
@@ -44,6 +45,8 @@ module.exports = {
     '/flow-typed/',
     '/pages/',
     'Carousel.jsx',
+    'Image.native.jsx',
+    'Button.native.jsx',
     ...ignorePsuedoCodeDir,
   ],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],

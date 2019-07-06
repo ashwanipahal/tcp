@@ -1,5 +1,5 @@
-import styled from 'styled-components/native';
+import { css } from 'styled-components/native';
 
-const WebViewStyled = styled.WebView``;
+const WebViewStyled = css``;
 
 export default WebViewStyled;

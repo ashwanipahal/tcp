@@ -10,7 +10,7 @@ import { mediaQuery, breakpoints } from './mediaQuery';
 
 import opacity from './opacity';
 
-const colorPalette = createThemeColorPalette();
+const colorPalette = createThemeColorPalette({ fonts: { primary: 'mono' } });
 const typography = createThemeTypography();
 
 const theme = {

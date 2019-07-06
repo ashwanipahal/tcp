@@ -1,7 +1,9 @@
 // @flow
 import React from 'react';
+import { Button, View } from 'react-native';
+import withStyles from '../../../hoc/withStyles.native';
 // eslint-disable-next-line import/named
-import { ButtonStyles, ViewWrapper } from '../Button.style';
+import style from '../Button.style.native';
 
 /**
  * @param {object} props : Props for button
@@ -24,19 +26,36 @@ type Props = {
   buttonVariation?: string,
   fullWidth?: string,
   customStyle?: string,
+  title?: string,
 };
 
-const Button = ({ id, buttonVariation, fullWidth, customStyle, ...otherProps }: Props) => (
-  <ViewWrapper>
-    <ButtonStyles id={id} buttonVariation={buttonVariation} fullWidth={fullWidth} {...otherProps} />
-  </ViewWrapper>
-);
+// const Button = ({ id, buttonVariation, fullWidth, customStyle, ...otherProps }: Props) => (
+//   <ViewWrapper>
+//     <ButtonStyles id={id} buttonVariation={buttonVariation} fullWidth={fullWidth} {...otherProps} />
+//   </ViewWrapper>
+// );
 
-Button.defaultProps = {
+const CustomButton = (props: Props) => {
+  const { title, id, buttonVariation, fullWidth, customStyle, ...otherProps } = props;
+  return (
+    <View {...props}>
+      <Button
+        title={title}
+        fullWidth={fullWidth}
+        buttonVariation={buttonVariation}
+        id={id}
+        {...otherProps}
+      />
+    </View>
+  );
+};
+
+CustomButton.defaultProps = {
   id: 'btn',
   fullWidth: '',
-  buttonVariation: '',
+  buttonVariation: 'fixed-width',
   customStyle: '',
+  title: '',
 };
 
-export default Button;
+export default withStyles(CustomButton, style);

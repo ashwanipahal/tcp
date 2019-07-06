@@ -1,7 +1,6 @@
-import React from 'react';
-// eslint-disable-next-line import/named
 // @flow
-import WebViewStyled from '../RichText.style';
+import React from 'react';
+import { WebView } from 'react-native';
 
 /**
  * @param {object} props : Props for RichText
@@ -10,12 +9,12 @@ import WebViewStyled from '../RichText.style';
  * Note that static HTML will require setting originWhitelist to ["*"]
  */
 
-const RichText = ({ dataLocator, ...otherProps }: Props) => (
-  <WebViewStyled testID={dataLocator} {...otherProps} />
-);
+type Props = {
+  source: string,
+};
 
-RichText.defaultProps = {
-  dataLocator: '',
+const RichText = (props: Props) => {
+  return <WebView {...props} />;
 };
 
 export default RichText;
