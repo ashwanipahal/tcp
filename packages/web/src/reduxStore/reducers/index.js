@@ -15,11 +15,13 @@ import {
   PRODUCTLISTINGPAGE_REDUCER_KEY,
   ADDRESSBOOK_REDUCER_KEY,
   ADDADDRESS_REDUCER_KEY,
+  MODULES_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '../../components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '../../components/common/organisms/Footer/container/Footer.reducer';
 import LabelReducer from './labels';
 import LayoutReducer from './layout';
+import ModulesReducer from './modules';
 import HomePageReducer from '../../components/features/content/HomePage/container/HomePage.reducer';
 
 // A higher order reducer to filter out actions not matching a certain action name pattern.
@@ -33,6 +35,7 @@ export default combineReducers({
   [FOOTER_REDUCER_KEY]: FooterReducer,
   [LABEL_REDUCER_KEY]: LabelReducer,
   [LAYOUT_REDUCER_KEY]: LayoutReducer,
+  [MODULES_REDUCER_KEY]: ModulesReducer,
   [HOMEPAGE_REDUCER_KEY]: HomePageReducer,
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
   [LOGINPAGE_REDUCER_KEY]: LoginPageReducer,

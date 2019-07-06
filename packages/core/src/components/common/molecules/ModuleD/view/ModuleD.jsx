@@ -40,10 +40,7 @@ const ignoreGutter = [
 ];
 
 const ModuleD = props => {
-  const {
-    className,
-    composites: { headerText, smallCompImage, singleCTAButton },
-  } = props;
+  const { className, headerText, smallCompImage, singleCTAButton } = props;
   const {
     textLines: [{ text: headingText }],
     link: { target, title, url },
@@ -128,11 +125,9 @@ const ModuleD = props => {
 
 ModuleD.propTypes = {
   className: PropTypes.string.isRequired,
-  composites: PropTypes.shape({
-    headerText: PropTypes.shape({}),
-    smallCompImage: PropTypes.shape({}),
-    singleCTAButton: PropTypes.shape({}),
-  }).isRequired,
+  headerText: PropTypes.shape({}).isRequired,
+  smallCompImage: PropTypes.shape({}).isRequired,
+  singleCTAButton: PropTypes.shape({}).isRequired,
 };
 
 export default errorBoundary(withStyles(ModuleD, style));

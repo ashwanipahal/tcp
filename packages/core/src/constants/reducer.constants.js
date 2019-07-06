@@ -2,6 +2,7 @@ export const HEADER_REDUCER_KEY = 'HeaderReducer';
 export const FOOTER_REDUCER_KEY = 'FooterReducer';
 export const LABEL_REDUCER_KEY = 'labels';
 export const LAYOUT_REDUCER_KEY = 'layouts';
+export const MODULES_REDUCER_KEY = 'modules';
 export const HOMEPAGE_REDUCER_KEY = 'HomePageReducer';
 
 // Don't Add "Reducer" in the Key - it should be LoginPage, not LoginPageReducer
