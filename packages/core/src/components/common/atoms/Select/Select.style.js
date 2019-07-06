@@ -48,11 +48,6 @@ const textboxStyles = css`
     font-size: ${props => props.theme.fonts.fontSize.textbox}px;
     padding: 0;
     position: absolute;
-    top: 16px;
-  }
-
-  &.active .selectField__label {
-    font-size: ${props => props.theme.fonts.fontSize.body.small.primary}px;
     top: 0;
   }
 

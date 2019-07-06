@@ -21,11 +21,8 @@ type Props = {
   name?: string,
   type?: string,
   placeholder?: string,
-  isErrorState?: boolean,
-  isSuccessState?: boolean,
   meta: { touched: any, error: any, warning: any },
   input: any,
-  Value: any,
   options: any,
   defaultValue: any,
 };
@@ -40,12 +37,10 @@ const SelectBox = ({
   ariaLabel,
   name,
   placeholder,
-  isSuccessState,
   defaultValue,
   input,
-  Value,
   options,
-  meta: { touched, error, warning },
+  meta: { touched, error },
 }: Props): Node => {
   return (
     <div className={`${className} ${input.value ? 'active' : ''} select-fields-wrapper`}>
@@ -55,9 +50,7 @@ const SelectBox = ({
         aria-label={ariaLabel}
         className="selectField"
         name={name}
-        isSuccessState={isSuccessState}
-        value={Value}
-        defaultValue={defaultValue}
+        value={input.value}
       >
         {options &&
           options.map(option => {
@@ -72,17 +65,11 @@ const SelectBox = ({
       <BodyCopy bodySize="two" BodycolorLg="primary" tag="p" className="selectField__label">
         {placeholder}
       </BodyCopy>
-      {touched &&
-        ((error && (
-          <BodyCopy ErrorMsg="error" bodySize="two" tag="div">
-            {getErroMsg(errors[error], placeholder)}
-          </BodyCopy>
-        )) ||
-          (warning && (
-            <BodyCopy bodySize="two" tag="div">
-              {warning}
-            </BodyCopy>
-          )))}
+      {touched && error && (
+        <BodyCopy ErrorMsg="error" bodySize="two" tag="div">
+          {getErroMsg(errors[error], placeholder)}
+        </BodyCopy>
+      )}
     </div>
   );
 };
@@ -93,8 +80,6 @@ SelectBox.defaultProps = {
   name: '',
   type: 'text',
   placeholder: '',
-  isErrorState: false,
-  isSuccessState: false,
 };
 
 export default withStyles(SelectBox, StyledTextBox);

@@ -41,8 +41,7 @@ const InputCheckbox = ({
         className="CheckBox__input"
         name={name}
         type="checkbox"
-        isSuccessState={isSuccessState}
-        Value={input.value}
+        value={input.value}
         {...otherProps}
       />
       <BodyCopy fontSize="fs12" fontFamily="secondary">

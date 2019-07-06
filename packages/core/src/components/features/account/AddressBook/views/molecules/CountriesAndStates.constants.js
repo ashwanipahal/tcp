@@ -1,8 +1,4 @@
 const countriesOptionsMap = [
-  {
-    id: '',
-    displayName: '',
-  },
   { id: 'US', displayName: 'United States' },
   { id: 'CA', displayName: 'Canada' },
 ];
@@ -10,7 +6,7 @@ const idInfo = '1';
 const CAcountriesStatesTable = [
   {
     id: '',
-    displayName: '',
+    displayName: 'Select',
   },
   {
     id: `BC${idInfo}`,

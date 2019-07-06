@@ -1,11 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { List } from 'immutable';
-import {
-  getAddressList,
-  deleteAddress,
-  setDeleteModalMountedState,
-} from './AddressBook.actions';
+import { getAddressList, deleteAddress, setDeleteModalMountedState } from './AddressBook.actions';
+import { getUserInfo } from '../../LoginPage/container/LoginPage.actions';
 import AddressBookComponent from '../views/AddressBook.view';
 import {
   getAddressListState,
@@ -16,9 +13,11 @@ import {
 } from './AddressBook.selectors';
 import labels from './AddressBook.labels';
 import { setDefaultShippingAddressRequest } from './DefaultShippingAddress.actions';
+
 // @flow
 type Props = {
   getAddressListAction: () => void,
+  getUserInfoAction: () => void,
   addressList: List<any>,
   isFetching: boolean,
   onDefaultShippingAddressClick: () => void,
@@ -31,7 +30,8 @@ type Props = {
 
 export class AddressBookContainer extends React.Component<Props> {
   componentDidMount() {
-    const { getAddressListAction } = this.props;
+    const { getAddressListAction, getUserInfoAction } = this.props;
+    getUserInfoAction();
     getAddressListAction();
   }
 
@@ -80,6 +80,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     },
     setDeleteModalMountState: payload => {
       dispatch(setDeleteModalMountedState(payload));
+    },
+    getUserInfoAction: () => {
+      dispatch(getUserInfo());
     },
   };
 };

@@ -6,16 +6,17 @@ import endpoints from '../../../../../../service/endpoint';
 
 export function* addAddressGet({ payload }) {
   try {
-    const { baseURI, relURI, method } = endpoints.addAddress;
+    const { relURI, method } = endpoints.addAddress;
+    const baseURI = endpoints.addAddress.baseURI || endpoints.global.baseURI;
     const addressKey = Date.now().toString();
     const payloadParam = {
       contact: [
         {
-          addressLine: [payload.address1 || '', payload.address2 || '', ''],
+          addressLine: [payload.address1, payload.address2, ''],
           attributes: [
             {
               key: 'addressField3',
-              value: payload.zip || '',
+              value: payload.zip,
             },
           ],
           addressType: 'ShippingAndBilling',
@@ -24,15 +25,15 @@ export function* addAddressGet({ payload }) {
           firstName: payload.FirstName,
           lastName: payload.LastName,
           nickName: addressKey,
-          phone1: payload.phoneNumber || '',
+          phone1: payload.phoneNumber,
           phone1Publish: 'false',
-          primary: 'false', // as string
+          primary: payload.primary, // as string
           state: payload.state,
           zipCode: payload.zip,
           xcont_addressField2: payload.isCommercialAddress ? '2' : '1',
-          email1: '11OCTRAWAL@GMAIL.COM',
+          email1: payload.email,
           xcont_addressField3: payload.zip,
-          fromPage: payload.applyToOrder ? 'checkout' : '',
+          fromPage: '',
         },
       ],
     };
@@ -50,11 +51,15 @@ export function* addAddressGet({ payload }) {
       method
     );
     if (res) {
-      return yield put(addAddressSuccess());
+      return yield put(addAddressSuccess(res.body));
     }
-    return yield put(addAddressFail());
+    return yield put(addAddressFail(res.body));
   } catch (err) {
-    return yield put(addAddressFail(err));
+    let error = {};
+    if (err instanceof Error) {
+      error = err.response.body;
+    }
+    return yield put(addAddressFail(error));
   }
 }
 

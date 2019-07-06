@@ -20,13 +20,11 @@ type Props = {
   name?: string,
   type?: string,
   placeholder?: string,
-  isErrorState?: boolean,
-  isSuccessState?: boolean,
   onChangeHandler?: any,
   meta: { touched: any, error: any, warning: any },
   input: any,
-  Value: any,
   maxLength: any,
+  inputRef: any,
 };
 const getErroMsg = (value, placeholder) => {
   return value.replace('@@LABEL@@', placeholder);
@@ -39,16 +37,19 @@ const TextBox = ({
   name,
   type,
   placeholder,
-  isSuccessState,
   maxLength,
   input,
-  meta = {},
+  inputRef,
+  meta: { touched, error },
 }: Props): Node => {
   const elemValue = input.value;
+  const isError = touched && error;
   return (
     <label
       htmlFor={name}
-      className={`${className} ${elemValue ? 'active' : ''} input-fields-wrapper`}
+      className={`${className} ${elemValue ? 'active' : ''} ${
+        isError ? 'error' : ''
+      } input-fields-wrapper`}
     >
       <input
         {...input}
@@ -57,17 +58,17 @@ const TextBox = ({
         className="TextBox__input"
         name={name}
         type={type}
-        isSuccessState={isSuccessState}
         maxLength={maxLength}
-        Value={elemValue}
+        value={elemValue}
+        ref={inputRef}
         placeholder=""
       />
       <BodyCopy bodySize="two" BodycolorLg="primary" tag="p" className="TextBox__label">
         {placeholder}
       </BodyCopy>
-      {meta.touched && meta.error && (
+      {touched && error && (
         <BodyCopy ErrorMsg="error" bodySize="two" tag="div">
-          {getErroMsg(errors[meta.error], placeholder)}
+          {getErroMsg(errors[error], placeholder)}
         </BodyCopy>
       )}
     </label>
@@ -80,8 +81,6 @@ TextBox.defaultProps = {
   name: '',
   type: 'text',
   placeholder: '',
-  isErrorState: false,
-  isSuccessState: false,
   onChangeHandler: () => {},
 };
 

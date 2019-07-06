@@ -37,10 +37,6 @@ const textboxStyles = css`
       overflow: hidden;
     }
     ${props =>
-      props.meta && props.meta.touched && props.meta.error
-        ? `border-bottom: 1px solid ${props.theme.colors.TEXTBOX.ERROR_BORDER};`
-        : ''};
-    ${props =>
       props.isSuccessState
         ? `border: 1px solid ${props.theme.colors.TEXTBOX.SUCCESS_BORDER};`
         : ''};
@@ -72,6 +68,10 @@ const textboxStyles = css`
     &:focus + .TextBox__label {
       font-size: ${props => props.theme.fonts.fontSize.body.small.primary}px;
       top: 0;
+    }
+
+    &.error + .TextBox__input {
+      border-bottom: 1px solid ${props => props.theme.colors.TEXTBOX.ERROR_BORDER};
     }
   }
 
