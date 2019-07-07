@@ -7,7 +7,7 @@ import PaymentSaga from '@tcp/core/src/components/features/account/Payment/conta
 import DeleteCardSaga from '@tcp/core/src/components/features/account/Payment/container/DeleteCard.saga';
 import DeleteAddressSaga from '@tcp/core/src/components/features/account/AddressBook/container/DeleteAddress.saga';
 import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
-import BootstrapSaga from './bootstrap';
+import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
 export default function* rootSaga() {

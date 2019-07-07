@@ -2,7 +2,7 @@ import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { Provider } from 'react-redux';
 import AppNavigator from '../navigation/AppNavigator';
-import { initializeStore } from '../reduxStore/initializeStore';
+import { initializeStore } from '../reduxStore/store/initializeStore';
 
 const styles = StyleSheet.create({
   // eslint-disable-next-line react-native/no-color-literals

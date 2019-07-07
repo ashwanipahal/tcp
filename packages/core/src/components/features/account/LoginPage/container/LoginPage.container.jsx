@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { login, getUserInfo } from './LoginPage.actions';
 import LoginView from '../views/LoginPage.view';
 // @flow
+
 type Props = {
   onSubmit: (SyntheticEvent<>, Object) => void,
   loginInfo: Object,

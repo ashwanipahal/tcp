@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { requireNamedOnlineModule } from './resourceLoader';
 import TextBox from '../TextBox'; // this comment prevents linting errors
