@@ -1,20 +1,22 @@
 // @flow
+import React from 'react';
 // eslint-disable-next-line import/no-unresolved
-import { Text } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import withStyles from '../../../hoc/withStyles.native';
 import AnchorStyles from '../Anchor.style.native';
 
 type Props = {
-  id?: string,
   anchorVariation?: string,
 };
 
-const Anchor = ({ id, anchorVariation, ...otherProps }: Props) => (
-    <Text anchorVariation={anchorVariation}{...otherProps} />
+const Anchor = ({ anchorVariation, ...otherProps }: Props) => (
+  // eslint-disable-next-line react-native-a11y/has-accessibility-props
+  <TouchableOpacity>
+    <Text anchorVariation={anchorVariation} {...otherProps} />
+  </TouchableOpacity>
 );
 
 Anchor.defaultProps = {
-  id: 'btn',
   anchorVariation: '',
 };
 

@@ -1,11 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+import { Anchor } from '@tcp/core/src/components/common/atoms';
 import { View } from 'react-native';
-import EspotContainer from '../../../../common/atoms/EspotContainer/EspotContainer';
-
-const StyledText = styled.Text`
-  color: palevioletred;
-`;
+import UrlHandler from '@tcp/core/src/components/common/atoms/Anchor/AnchorHandler';
 
 export default class HomePage extends React.Component {
   static navigationOptions = {
@@ -14,9 +10,14 @@ export default class HomePage extends React.Component {
 
   render() {
     return (
-      <View className="">
-        <StyledText>This is test text</StyledText>
-        <EspotContainer />
+      <View>
+        <Anchor
+          centered="centered"
+          underline="underline"
+          fontSizeVariation="small"
+          anchorVariation="tertiary"
+          onPress={() => UrlHandler('https://www.google.com')}
+        />
       </View>
     );
   }
