@@ -41,33 +41,13 @@ exports[`Payment View should render correctly 1`] = `
         }
       }
     />
-    <Styled(Col)
-      colSize={
+    <CardView
+      labels={
         Object {
-          "large": 12,
-          "medium": 8,
-          "small": 6,
+          "giftCard": "Payment",
         }
       }
-    >
-      <GiftCardList />
-      <Styled(deleteGiftModal)
-        data={
-          Object {
-            "buttons": Object {
-              "cancel": undefined,
-              "confirm": undefined,
-            },
-            "heading": undefined,
-          }
-        }
-        labels={
-          Object {
-            "giftCard": "Payment",
-          }
-        }
-      />
-    </Styled(Col)>
+    />
   </Styled(Row)>
 </div>
 `;
@@ -124,33 +104,13 @@ exports[`Payment View should render correctly with error 1`] = `
         status="error"
       />
     </Styled(Col)>
-    <Styled(Col)
-      colSize={
+    <CardView
+      labels={
         Object {
-          "large": 12,
-          "medium": 8,
-          "small": 6,
+          "giftCard": "Payment",
         }
       }
-    >
-      <GiftCardList />
-      <Styled(deleteGiftModal)
-        data={
-          Object {
-            "buttons": Object {
-              "cancel": undefined,
-              "confirm": undefined,
-            },
-            "heading": undefined,
-          }
-        }
-        labels={
-          Object {
-            "giftCard": "Payment",
-          }
-        }
-      />
-    </Styled(Col)>
+    />
   </Styled(Row)>
 </div>
 `;
@@ -207,33 +167,13 @@ exports[`Payment View should render correctly with success 1`] = `
         status="success"
       />
     </Styled(Col)>
-    <Styled(Col)
-      colSize={
+    <CardView
+      labels={
         Object {
-          "large": 12,
-          "medium": 8,
-          "small": 6,
+          "giftCard": "Payment",
         }
       }
-    >
-      <GiftCardList />
-      <Styled(deleteGiftModal)
-        data={
-          Object {
-            "buttons": Object {
-              "cancel": undefined,
-              "confirm": undefined,
-            },
-            "heading": undefined,
-          }
-        }
-        labels={
-          Object {
-            "giftCard": "Payment",
-          }
-        }
-      />
-    </Styled(Col)>
+    />
   </Styled(Row)>
 </div>
 `;

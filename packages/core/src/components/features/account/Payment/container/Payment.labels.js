@@ -7,6 +7,8 @@ const labels = {
     heading: 'Are you sure you want to delete this gift card?',
     cancel: "No, Don't Delete",
     confirm: 'Yes, Delete',
+    cardEnd: 'Card ending in ',
+    expire: ' Expire on ',
   },
 };
 

@@ -25,10 +25,10 @@ export const deleteCard = payload => ({
 });
 
 export const updateCardCardListonDelete = payload => ({
-  type: PAYMENT_CONSTANTS.DELETE_GIFTCARD,
+  type: PAYMENT_CONSTANTS.DELETE_CARD,
   payload,
 });
 export const updateCardListonDeleteErr = payload => ({
-  type: PAYMENT_CONSTANTS.DELETE_GIFTCARD,
+  type: PAYMENT_CONSTANTS.UPDATE_CARD_LIST_ON_DELETE_ERR,
   payload,
 });

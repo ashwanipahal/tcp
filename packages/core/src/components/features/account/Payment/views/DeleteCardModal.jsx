@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
-import styles from '../styles/DeleteGiftModal.style';
+import styles from '../styles/DeleteCardModal.style';
 import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
 import Modal from '../../../../common/molecules/Modal';
 import Notification from '../../../../common/molecules/Notification';
@@ -20,14 +20,14 @@ type Props = {
 };
 
 /**
- * @function deleteGiftModal The deleteGiftModal component shows the address to delete.
+ * @function deleteCardModal The deleteCardModal component shows the address to delete.
  * This component includes the adress view, and confirm and cancel buttons
  * @param {data} data object with details to render in modal
  * @param {onDeleteAddress} onDeleteCards function to delete the address from the modal
  * @param {closeModalComponent} closeModalComponent function to close the modal
  * @param {className} className css to apply
  */
-class deleteGiftModal extends React.Component<Props> {
+class DeleteCardModal extends React.Component<Props> {
   /**
    * @function onCloseModal  Used to render the JSX of the component
    * @param {closeModalComponent} closeModalComponent function to close the modal.
@@ -47,9 +47,6 @@ class deleteGiftModal extends React.Component<Props> {
   onConfirm = () => {
     const { data, onDeleteCard } = this.props;
     const { description } = data;
-    debugger;
-    // creditCardId,
-    // action: 'D'
     onDeleteCard({ creditCardId: description.creditCardId });
   };
 
@@ -63,34 +60,52 @@ class deleteGiftModal extends React.Component<Props> {
    */
   renderModal = () => {
     const { data, className } = this.props;
-    debugger;
+    const getAccNumbr = `${data.description.accountNo}`.slice(-4);
+    const TotalExp = `${data.description.expMonth}/${data.description.expYear} `;
     return (
       <div className={className}>
         <BodyCopy
           bodySize="seven"
           fontWeight="bold"
           fontFamily="secondaryFontFamily"
-          className="deleteGiftModal_modalTitle"
+          className="deleteCardModal_modalTitle"
         >
           {data.heading}
         </BodyCopy>
-        <div className="deleteGiftModal_desc">
+        <BodyCopy className="deleteCardModal_desc">
           {' '}
           <Image
-            className="deleteGiftModal_img"
+            className="deleteCardModal_img"
             src={getIconPath('gift-card')}
             onClick={this.pause}
           />
-          Card ending in
-          {data.description.accountNo}
-          Expire on {data.description.expMonth}/{data.description.expYear}
-        </div>
-        <div className="deleteGiftModal_btnWrapper">
+          <BodyCopy className="deleteCardModal_cardInfo" bodySize="three">
+            <BodyCopy
+              fontWeight="bold"
+              fontFamily="secondaryFontFamily"
+              className="deleteCardModal_card"
+              tag="span"
+            >
+              {data.cardText.cardEnd}
+              {getAccNumbr}
+            </BodyCopy>
+            <BodyCopy
+              fontWeight="normal"
+              fontFamily="secondaryFontFamily"
+              className="deleteCardModal_expiry"
+              tag="span"
+            >
+              {data.cardText.expire}
+              {TotalExp}
+            </BodyCopy>
+          </BodyCopy>
+        </BodyCopy>
+        <div className="deleteCardModal_btnWrapper">
           <Button
             buttonVariation="variable-width"
             fill="BLUE"
             onClick={this.onConfirm}
-            className="deleteGiftModal_deleteConfirm deleteGiftModal_btn"
+            className="deleteCardModal_deleteConfirm deleteCardModal_btn"
           >
             {data.buttons.confirm}
           </Button>
@@ -98,7 +113,7 @@ class deleteGiftModal extends React.Component<Props> {
             buttonVariation="variable-width"
             onClick={this.onClose}
             fill="RED"
-            className="deleteGiftModal_btn deleteGiftModal_deleteCancel"
+            className="deleteCardModal_btn deleteCardModal_deleteCancel"
           >
             {data.buttons.cancel}
           </Button>
@@ -140,5 +155,5 @@ class deleteGiftModal extends React.Component<Props> {
   }
 }
 
-export default withStyles(deleteGiftModal, styles);
-export { deleteGiftModal as deleteGiftModalVanilla };
+export default withStyles(DeleteCardModal, styles);
+export { DeleteCardModal as DeleteCardModalVanilla };

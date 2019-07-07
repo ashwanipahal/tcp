@@ -9,7 +9,6 @@ import {
 } from './Payment.actions';
 
 export function* deleteCard({ payload }) {
-  debugger;
   try {
     const { relURI, method } = endpoints.deleteCreditCardOnAccount;
     const baseURI = endpoints.deleteAddress.baseURI || endpoints.global.baseURI;
@@ -38,7 +37,6 @@ export function* deleteCard({ payload }) {
 }
 
 export function* DeleteCardSaga() {
-  debugger;
   yield takeLatest(PAYMENT_CONSTANTS.DELETE_CARD, deleteCard);
 }
 

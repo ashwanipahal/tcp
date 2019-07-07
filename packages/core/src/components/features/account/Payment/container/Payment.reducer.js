@@ -7,6 +7,7 @@ const initialState = fromJS({
   cardList: null,
   isFetching: false,
   showNotification: null,
+  showUpdatedNotificationOnModal: null,
 });
 
 const PaymentReducer = (state = initialState, action) => {
@@ -21,7 +22,15 @@ const PaymentReducer = (state = initialState, action) => {
     case PAYMENT_CONSTANTS.GET_CARD_LIST_ERR:
       return state.set('showNotification', 'error').set('isFetching', false);
     case PAYMENT_CONSTANTS.DELETE_MODAL_MOUNT_STATE:
-      return state.set('deleteModalMountedState', action.payload.state);
+      return state
+        .set('deleteModalMountedState', action.payload.state)
+        .set('showUpdatedNotificationOnModal', null);
+
+    case PAYMENT_CONSTANTS.UPDATE_CARD_LIST_ON_DELETE_ERR:
+      return state
+        .set('error', action.payload)
+        .set('showUpdatedNotification', null)
+        .set('showUpdatedNotificationOnModal', 'error');
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {

@@ -1,26 +1,37 @@
 import { css } from 'styled-components';
 
-const deleteGiftModalStyle = css`
+const deleteCardModalStyle = css`
   @media ${props => props.theme.mediaQuery.medium} {
     margin: 0 80px;
   }
-  .deleteGiftModal_btnWrapper {
-    button.deleteGiftModal_btn {
+  .deleteCardModal_cardInfo {
+    float: left;
+    width: 80%;
+    padding-left: 20px;
+  }
+  .deleteCardModal_expiry {
+    float: right;
+  }
+  .deleteCardModal_btnWrapper {
+    padding-top: 80px;
+    clear: both;
+    button.deleteCardModal_btn {
       display: inline-block;
       font-weight: ${props => props.theme.fonts.fontWeight.normal};
       float: right;
+      width: 40%;
     }
-    button.deleteGiftModal_deleteCancel {
+    button.deleteCardModal_deleteCancel {
       float: left;
     }
   }
-  .deleteGiftModal_desc {
-    margin: 30px 0 60px 0;
-    .deleteGiftModal_img {
+  .deleteCardModal_desc {
+    .deleteCardModal_img {
       width: 15%;
+      float: left;
     }
   }
-  .deleteGiftModal_addressToDelete {
+  .deleteCardModal_addressToDelete {
     margin: 0 ${props => props.theme.spacing.LAYOUT_SPACING.XL}
       ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
     display: block;
@@ -31,10 +42,10 @@ const deleteGiftModalStyle = css`
       padding-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     }
   }
-  .deleteGiftModal_deleteConfirm {
+  .deleteCardModal_deleteConfirm {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
-  .deleteGiftModal_modalTitle {
+  .deleteCardModal_modalTitle {
     text-align: center;
     padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXL};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
@@ -47,4 +58,4 @@ const deleteGiftModalStyle = css`
   }
 `;
 
-export default deleteGiftModalStyle;
+export default deleteCardModalStyle;

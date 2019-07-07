@@ -10,7 +10,7 @@ type Props = {
   giftcard: Object,
 };
 
-class GiftCardTile extends React.Component<Props> {
+class CardTile extends React.Component<Props> {
   onDeletegiftardClick = e => {
     const { giftcard, setDeleteModalMountState, setSelectedGiftCard } = this.props;
     e.preventDefault();
@@ -38,4 +38,4 @@ class GiftCardTile extends React.Component<Props> {
   }
 }
 
-export default GiftCardTile;
+export default CardTile;

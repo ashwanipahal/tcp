@@ -13,3 +13,7 @@ export const getShowNotificationState = state => {
 export const deleteModalOpenState = state => {
   return state.PaymentReducer.get('deleteModalMountedState');
 };
+
+export const showUpdatedNotificationOnModalState = state => {
+  return state.PaymentReducer.get('showUpdatedNotificationOnModal');
+};

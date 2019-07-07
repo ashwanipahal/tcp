@@ -41,8 +41,8 @@ const endpoints = {
     relURI: '/api/v2/account/deleteAddressDetails',
   },
   deleteCreditCardOnAccount: {
-    method: 'POST',
-    URI: '/api/v2/account/deleteCreditCardDetails',
+    method: 'post',
+    relURI: '/api/v2/account/deleteCreditCardDetails',
   },
   global: {
     baseURI: 'https://test3.childrensplace.com',

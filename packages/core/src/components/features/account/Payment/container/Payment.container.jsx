@@ -6,6 +6,7 @@ import {
   getCardListFetchingState,
   getShowNotificationState,
   deleteModalOpenState,
+  showUpdatedNotificationOnModalState,
 } from './Payment.selectors';
 import labels from './Payment.labels';
 import PaymentView from '../views/Payment.view';
@@ -18,6 +19,7 @@ type Props = {
   deleteModalMountedState: boolean,
   setDeleteModalMountState: Function,
   onDeleteCard: Function,
+  showUpdatedNotificationOnModal: any,
 };
 
 export class PaymentContainer extends React.Component<Props> {
@@ -33,6 +35,7 @@ export class PaymentContainer extends React.Component<Props> {
       setDeleteModalMountState,
       deleteModalMountedState,
       onDeleteCard,
+      showUpdatedNotificationOnModal,
     } = this.props;
     if (isFetching) return <p>Loading...</p>;
     return (
@@ -42,6 +45,7 @@ export class PaymentContainer extends React.Component<Props> {
         setDeleteModalMountState={setDeleteModalMountState}
         showNotification={showNotification}
         onDeleteCard={onDeleteCard}
+        showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
       />
     );
   }
@@ -67,6 +71,7 @@ const mapStateToProps = state => {
     isFetching: getCardListFetchingState(state),
     showNotification: getShowNotificationState(state),
     deleteModalMountedState: deleteModalOpenState(state),
+    showUpdatedNotificationOnModal: showUpdatedNotificationOnModalState(state),
   };
 };
 
