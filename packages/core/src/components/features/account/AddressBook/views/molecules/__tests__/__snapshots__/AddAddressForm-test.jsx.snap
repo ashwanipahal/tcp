@@ -3,6 +3,7 @@
 exports[`AddAddressForm component should renders correctly 1`] = `
 <form
   className="any"
+  noValidate={true}
   onSubmit={[MockFunction]}
 >
   <Styled(Row)
@@ -12,7 +13,7 @@ exports[`AddAddressForm component should renders correctly 1`] = `
       colSize={
         Object {
           "large": 6,
-          "medium": 1,
+          "medium": 4,
           "small": 6,
         }
       }
@@ -28,104 +29,40 @@ exports[`AddAddressForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bwzfXH",
               "isStatic": false,
               "rules": Array [
                 "
   ",
                 "
-  &.active p {
-    top: -50px;
-  }
-  &.input-fields-wrapper .Error__clearFloat {
-    clear: both;
-    top: -10px;
-    position: relative;
-  }
+  position: relative;
+  display: block;
+  height: 70px;
 
-  input.TextBox__input[type='checkbox'] {
-    position: relative;
-    top: 0;
-    appearance: none;
-    outline: 0;
-    border: 0;
-    display: inline-block;
-    height: 23px;
-    width: 23px;
-    @media ",
-                [Function],
-                " {
-      top: ",
-                [Function],
-                ";
-    }
-  }
-
-  input.TextBox__input[type='checkbox']:before {
-    content: '';
-    font-size: 20px;
-    position: absolute;
-    height: 20px;
-    width: 20px;
-    left: 0;
-    box-shadow: inset 0 0 0 0.6px #575757;
-  }
-  &.active input.TextBox__input[type='checkbox']:after {
-    transform: rotate(225deg);
-    content: '';
-    border: 2px inset #333;
+  .TextBox__label {
     font-size: ",
                 [Function],
                 "px;
-    width: ",
-                [Function],
-                ";
-    height: 10px;
-    float: left;
-    border-right: 0;
-    border-bottom: 0;
-    left: ",
-                [Function],
-                ";
+    padding: 0;
+    position: absolute;
     top: ",
                 [Function],
                 ";
-    position: absolute;
+    ",
+                [Function],
+                "
   }
-  &.input-fields-wrapper + span {
-    padding-left: ",
-                [Function],
-                ";
-  }
-  @media ",
-                [Function],
-                " {
-    &.checkbox-align {
-      float: left;
-      margin: ",
-                [Function],
-                ";
-    }
-    &.input-fields-wrapper {
-      overflow: hidden;
-    }
 
-    &div:last-child {
-      padding-right: auto;
-    }
-  }
   .TextBox__input {
     margin: 0;
     outline: 0;
-    line-height: 44px;
     font-size: ",
                 [Function],
                 "px;
     color: ",
                 [Function],
                 ";
-    width: calc(100% - 20px);
-    padding: 0 10px;
+    width: 100%;
     background-position: left top;
     background-repeat: no-repeat;
     background-size: contain;
@@ -133,17 +70,19 @@ exports[`AddAddressForm component should renders correctly 1`] = `
     border-bottom: 1px solid ",
                 [Function],
                 ";
-    @media ",
-                [Function],
-                " {
-      overflow: hidden;
-    }
-    ",
+    padding-bottom: ",
                 [Function],
                 ";
-    ",
+    margin-bottom: ",
                 [Function],
                 ";
+    padding-top: ",
+                [Function],
+                ";
+
+    ",
+                [Function],
+                "
 
     ",
                 [Function],
@@ -157,10 +96,21 @@ exports[`AddAddressForm component should renders correctly 1`] = `
                 [Function],
                 ";
 
-    &:focus + p {
-      top: -50px;
+    ",
+                [Function],
+                ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                [Function],
+                "px;
+      font-weight: ",
+                [Function],
+                ";
+      top: 0;
     }
   }
+
   ",
                 [Function],
                 ";
@@ -172,17 +122,16 @@ exports[`AddAddressForm component should renders correctly 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bwzfXH",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
         }
-        label="First-Nam"
+        id="firstName"
         maxLength={50}
-        name="FirstName"
-        onBlur={[Function]}
+        name="firstName"
         placeholder="First Name"
         type="text"
         validate={
@@ -197,7 +146,7 @@ exports[`AddAddressForm component should renders correctly 1`] = `
       colSize={
         Object {
           "large": 6,
-          "medium": 1,
+          "medium": 4,
           "small": 6,
         }
       }
@@ -208,104 +157,40 @@ exports[`AddAddressForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bwzfXH",
               "isStatic": false,
               "rules": Array [
                 "
   ",
                 "
-  &.active p {
-    top: -50px;
-  }
-  &.input-fields-wrapper .Error__clearFloat {
-    clear: both;
-    top: -10px;
-    position: relative;
-  }
+  position: relative;
+  display: block;
+  height: 70px;
 
-  input.TextBox__input[type='checkbox'] {
-    position: relative;
-    top: 0;
-    appearance: none;
-    outline: 0;
-    border: 0;
-    display: inline-block;
-    height: 23px;
-    width: 23px;
-    @media ",
-                [Function],
-                " {
-      top: ",
-                [Function],
-                ";
-    }
-  }
-
-  input.TextBox__input[type='checkbox']:before {
-    content: '';
-    font-size: 20px;
-    position: absolute;
-    height: 20px;
-    width: 20px;
-    left: 0;
-    box-shadow: inset 0 0 0 0.6px #575757;
-  }
-  &.active input.TextBox__input[type='checkbox']:after {
-    transform: rotate(225deg);
-    content: '';
-    border: 2px inset #333;
+  .TextBox__label {
     font-size: ",
                 [Function],
                 "px;
-    width: ",
-                [Function],
-                ";
-    height: 10px;
-    float: left;
-    border-right: 0;
-    border-bottom: 0;
-    left: ",
-                [Function],
-                ";
+    padding: 0;
+    position: absolute;
     top: ",
                 [Function],
                 ";
-    position: absolute;
+    ",
+                [Function],
+                "
   }
-  &.input-fields-wrapper + span {
-    padding-left: ",
-                [Function],
-                ";
-  }
-  @media ",
-                [Function],
-                " {
-    &.checkbox-align {
-      float: left;
-      margin: ",
-                [Function],
-                ";
-    }
-    &.input-fields-wrapper {
-      overflow: hidden;
-    }
 
-    &div:last-child {
-      padding-right: auto;
-    }
-  }
   .TextBox__input {
     margin: 0;
     outline: 0;
-    line-height: 44px;
     font-size: ",
                 [Function],
                 "px;
     color: ",
                 [Function],
                 ";
-    width: calc(100% - 20px);
-    padding: 0 10px;
+    width: 100%;
     background-position: left top;
     background-repeat: no-repeat;
     background-size: contain;
@@ -313,17 +198,19 @@ exports[`AddAddressForm component should renders correctly 1`] = `
     border-bottom: 1px solid ",
                 [Function],
                 ";
-    @media ",
-                [Function],
-                " {
-      overflow: hidden;
-    }
-    ",
+    padding-bottom: ",
                 [Function],
                 ";
-    ",
+    margin-bottom: ",
                 [Function],
                 ";
+    padding-top: ",
+                [Function],
+                ";
+
+    ",
+                [Function],
+                "
 
     ",
                 [Function],
@@ -337,10 +224,21 @@ exports[`AddAddressForm component should renders correctly 1`] = `
                 [Function],
                 ";
 
-    &:focus + p {
-      top: -50px;
+    ",
+                [Function],
+                ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                [Function],
+                "px;
+      font-weight: ",
+                [Function],
+                ";
+      top: 0;
     }
   }
+
   ",
                 [Function],
                 ";
@@ -352,16 +250,16 @@ exports[`AddAddressForm component should renders correctly 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bwzfXH",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
         }
+        id="lastName"
         maxLength={50}
-        name="LastName"
-        onBlur={[Function]}
+        name="lastName"
         placeholder="Last Name"
         validate={
           Array [
@@ -372,7 +270,6 @@ exports[`AddAddressForm component should renders correctly 1`] = `
       />
     </Styled(Col)>
   </Styled(Row)>
-  <br />
   <Styled(Row)
     fullBleed={true}
   >
@@ -380,7 +277,7 @@ exports[`AddAddressForm component should renders correctly 1`] = `
       colSize={
         Object {
           "large": 6,
-          "medium": 1,
+          "medium": 4,
           "small": 6,
         }
       }
@@ -392,10 +289,16 @@ exports[`AddAddressForm component should renders correctly 1`] = `
     >
       <Field
         component={[Function]}
-        id="addressField"
+        componentRestrictions={
+          Object {
+            "country": Array [
+              "US",
+            ],
+          }
+        }
+        id="address1"
         maxLength={30}
         name="address1"
-        onBlur={[Function]}
         onPlaceSelected={[Function]}
         placeholder="Address Line 1"
         validate={
@@ -409,7 +312,7 @@ exports[`AddAddressForm component should renders correctly 1`] = `
       colSize={
         Object {
           "large": 6,
-          "medium": 1,
+          "medium": 4,
           "small": 6,
         }
       }
@@ -420,104 +323,40 @@ exports[`AddAddressForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bwzfXH",
               "isStatic": false,
               "rules": Array [
                 "
   ",
                 "
-  &.active p {
-    top: -50px;
-  }
-  &.input-fields-wrapper .Error__clearFloat {
-    clear: both;
-    top: -10px;
-    position: relative;
-  }
+  position: relative;
+  display: block;
+  height: 70px;
 
-  input.TextBox__input[type='checkbox'] {
-    position: relative;
-    top: 0;
-    appearance: none;
-    outline: 0;
-    border: 0;
-    display: inline-block;
-    height: 23px;
-    width: 23px;
-    @media ",
-                [Function],
-                " {
-      top: ",
-                [Function],
-                ";
-    }
-  }
-
-  input.TextBox__input[type='checkbox']:before {
-    content: '';
-    font-size: 20px;
-    position: absolute;
-    height: 20px;
-    width: 20px;
-    left: 0;
-    box-shadow: inset 0 0 0 0.6px #575757;
-  }
-  &.active input.TextBox__input[type='checkbox']:after {
-    transform: rotate(225deg);
-    content: '';
-    border: 2px inset #333;
+  .TextBox__label {
     font-size: ",
                 [Function],
                 "px;
-    width: ",
-                [Function],
-                ";
-    height: 10px;
-    float: left;
-    border-right: 0;
-    border-bottom: 0;
-    left: ",
-                [Function],
-                ";
+    padding: 0;
+    position: absolute;
     top: ",
                 [Function],
                 ";
-    position: absolute;
+    ",
+                [Function],
+                "
   }
-  &.input-fields-wrapper + span {
-    padding-left: ",
-                [Function],
-                ";
-  }
-  @media ",
-                [Function],
-                " {
-    &.checkbox-align {
-      float: left;
-      margin: ",
-                [Function],
-                ";
-    }
-    &.input-fields-wrapper {
-      overflow: hidden;
-    }
 
-    &div:last-child {
-      padding-right: auto;
-    }
-  }
   .TextBox__input {
     margin: 0;
     outline: 0;
-    line-height: 44px;
     font-size: ",
                 [Function],
                 "px;
     color: ",
                 [Function],
                 ";
-    width: calc(100% - 20px);
-    padding: 0 10px;
+    width: 100%;
     background-position: left top;
     background-repeat: no-repeat;
     background-size: contain;
@@ -525,17 +364,19 @@ exports[`AddAddressForm component should renders correctly 1`] = `
     border-bottom: 1px solid ",
                 [Function],
                 ";
-    @media ",
-                [Function],
-                " {
-      overflow: hidden;
-    }
-    ",
+    padding-bottom: ",
                 [Function],
                 ";
-    ",
+    margin-bottom: ",
                 [Function],
                 ";
+    padding-top: ",
+                [Function],
+                ";
+
+    ",
+                [Function],
+                "
 
     ",
                 [Function],
@@ -549,10 +390,21 @@ exports[`AddAddressForm component should renders correctly 1`] = `
                 [Function],
                 ";
 
-    &:focus + p {
-      top: -50px;
+    ",
+                [Function],
+                ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                [Function],
+                "px;
+      font-weight: ",
+                [Function],
+                ";
+      top: 0;
     }
   }
+
   ",
                 [Function],
                 ";
@@ -564,15 +416,16 @@ exports[`AddAddressForm component should renders correctly 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bwzfXH",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
         }
+        id="address2"
         maxLength={30}
-        name="address-2"
+        name="address2"
         placeholder="Address Line 2( Optional )"
         validate={
           Array [
@@ -582,7 +435,6 @@ exports[`AddAddressForm component should renders correctly 1`] = `
       />
     </Styled(Col)>
   </Styled(Row)>
-  <br />
   <Styled(Row)
     fullBleed={true}
   >
@@ -590,7 +442,7 @@ exports[`AddAddressForm component should renders correctly 1`] = `
       colSize={
         Object {
           "large": 6,
-          "medium": 1,
+          "medium": 4,
           "small": 6,
         }
       }
@@ -601,110 +453,45 @@ exports[`AddAddressForm component should renders correctly 1`] = `
       }
     >
       <Field
-        Value=""
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bwzfXH",
               "isStatic": false,
               "rules": Array [
                 "
   ",
                 "
-  &.active p {
-    top: -50px;
-  }
-  &.input-fields-wrapper .Error__clearFloat {
-    clear: both;
-    top: -10px;
-    position: relative;
-  }
+  position: relative;
+  display: block;
+  height: 70px;
 
-  input.TextBox__input[type='checkbox'] {
-    position: relative;
-    top: 0;
-    appearance: none;
-    outline: 0;
-    border: 0;
-    display: inline-block;
-    height: 23px;
-    width: 23px;
-    @media ",
-                [Function],
-                " {
-      top: ",
-                [Function],
-                ";
-    }
-  }
-
-  input.TextBox__input[type='checkbox']:before {
-    content: '';
-    font-size: 20px;
-    position: absolute;
-    height: 20px;
-    width: 20px;
-    left: 0;
-    box-shadow: inset 0 0 0 0.6px #575757;
-  }
-  &.active input.TextBox__input[type='checkbox']:after {
-    transform: rotate(225deg);
-    content: '';
-    border: 2px inset #333;
+  .TextBox__label {
     font-size: ",
                 [Function],
                 "px;
-    width: ",
-                [Function],
-                ";
-    height: 10px;
-    float: left;
-    border-right: 0;
-    border-bottom: 0;
-    left: ",
-                [Function],
-                ";
+    padding: 0;
+    position: absolute;
     top: ",
                 [Function],
                 ";
-    position: absolute;
+    ",
+                [Function],
+                "
   }
-  &.input-fields-wrapper + span {
-    padding-left: ",
-                [Function],
-                ";
-  }
-  @media ",
-                [Function],
-                " {
-    &.checkbox-align {
-      float: left;
-      margin: ",
-                [Function],
-                ";
-    }
-    &.input-fields-wrapper {
-      overflow: hidden;
-    }
 
-    &div:last-child {
-      padding-right: auto;
-    }
-  }
   .TextBox__input {
     margin: 0;
     outline: 0;
-    line-height: 44px;
     font-size: ",
                 [Function],
                 "px;
     color: ",
                 [Function],
                 ";
-    width: calc(100% - 20px);
-    padding: 0 10px;
+    width: 100%;
     background-position: left top;
     background-repeat: no-repeat;
     background-size: contain;
@@ -712,17 +499,19 @@ exports[`AddAddressForm component should renders correctly 1`] = `
     border-bottom: 1px solid ",
                 [Function],
                 ";
-    @media ",
-                [Function],
-                " {
-      overflow: hidden;
-    }
-    ",
+    padding-bottom: ",
                 [Function],
                 ";
-    ",
+    margin-bottom: ",
                 [Function],
                 ";
+    padding-top: ",
+                [Function],
+                ";
+
+    ",
+                [Function],
+                "
 
     ",
                 [Function],
@@ -736,10 +525,21 @@ exports[`AddAddressForm component should renders correctly 1`] = `
                 [Function],
                 ";
 
-    &:focus + p {
-      top: -50px;
+    ",
+                [Function],
+                ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                [Function],
+                "px;
+      font-weight: ",
+                [Function],
+                ";
+      top: 0;
     }
   }
+
   ",
                 [Function],
                 ";
@@ -751,7 +551,7 @@ exports[`AddAddressForm component should renders correctly 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bwzfXH",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -760,8 +560,6 @@ exports[`AddAddressForm component should renders correctly 1`] = `
         }
         id="city"
         name="city"
-        onBlur={[Function]}
-        onChange={[Function]}
         placeholder="City"
         validate={
           Array [
@@ -774,7 +572,7 @@ exports[`AddAddressForm component should renders correctly 1`] = `
       colSize={
         Object {
           "large": 3,
-          "medium": 1,
+          "medium": 2,
           "small": 3,
         }
       }
@@ -785,64 +583,62 @@ exports[`AddAddressForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-bxivhb",
+              "componentId": "sc-htpNat",
               "isStatic": false,
               "rules": Array [
                 "
   ",
                 "
-  &.active div {
-    top: -65px;
-  }
-  &.select-fields-wrapper .Error__clearFloat {
-    clear: both;
-    top: -10px;
-    position: relative;
-  }
-  &.select-fields-wrapper p {
-    top: -30px;
-    opacity: 0.8;
-    position: relative;
-    margin: 0;
-    float: left;
-    padding: 5px 0px 5px 10px;
-  }
-  .selectField {
-    margin: ",
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .select__input {
+    appearance: none;
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
+      no-repeat right 0px bottom 6px;
+    border: 0;
+    border-bottom: 1px solid ",
                 [Function],
-                " 0 0 0;
-    height: 35px;
-    outline: 0;
-    line-height: 44px;
-    font-size: ",
+                ";
+    ",
                 [Function],
-                "px;
+                ";
+    border-radius: 0;
     color: ",
                 [Function],
                 ";
+    font-size: ",
+                [Function],
+                "px;
+    margin: 0;
+    margin-bottom: ",
+                [Function],
+                ";
+    outline: 0;
+    padding: ",
+                [Function],
+                " 0
+      ",
+                [Function],
+                ";
     width: 100%;
-    padding: 0 ",
-                [Function],
-                ";
-    border: 1px solid ",
-                [Function],
-                ";
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-      no-repeat right 8px center;
-    -webkit-appearance: none;
-    ",
-                [Function],
-                ";
-    ",
-                [Function],
-                ";
 
     ",
                 [Function],
                 ";
-    &:focus + p {
-      top: -65px;
-    }
+  }
+
+  .select__label {
+    font-size: ",
+                [Function],
+                "px;
+    font-weight: ",
+                [Function],
+                ";
+    padding: 0;
+    position: absolute;
+    top: 0;
   }
 
   ",
@@ -856,332 +652,330 @@ exports[`AddAddressForm component should renders correctly 1`] = `
             "displayName": "Styled(SelectBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-bxivhb",
+            "styledComponentId": "sc-htpNat",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
         }
-        defaultValue=""
         id="state"
         name="state"
-        onBlur={[Function]}
         options={
           Array [
             Object {
-              "displayName": "",
+              "displayName": "Select",
               "id": "",
             },
             Object {
               "displayName": "AL",
               "fullName": "Alabama",
-              "id": "AL1",
+              "id": "AL",
             },
             Object {
               "displayName": "AK",
               "fullName": "Alaska",
-              "id": "AK1",
+              "id": "AK",
             },
             Object {
               "displayName": "AS",
               "fullName": "American Samoa",
-              "id": "AS1",
+              "id": "AS",
             },
             Object {
               "displayName": "AZ",
               "fullName": "Arizona",
-              "id": "AZ1",
+              "id": "AZ",
             },
             Object {
               "displayName": "AR",
               "fullName": "Arkansas",
-              "id": "AR1",
+              "id": "AR",
             },
             Object {
               "displayName": "AA",
               "fullName": "",
-              "id": "AA1",
+              "id": "AA",
             },
             Object {
               "displayName": "AE",
               "fullName": "",
-              "id": "AE1",
+              "id": "AE",
             },
             Object {
               "displayName": "AP",
               "fullName": "",
-              "id": "AP1",
+              "id": "AP",
             },
             Object {
               "displayName": "CA",
               "fullName": "California",
-              "id": "CA1",
+              "id": "CA",
             },
             Object {
               "displayName": "CO",
               "fullName": "Colorado",
-              "id": "CO1",
+              "id": "CO",
             },
             Object {
               "displayName": "CT",
               "fullName": "Connecticut",
-              "id": "CT1",
+              "id": "CT",
             },
             Object {
               "displayName": "DE",
               "fullName": "Delaware",
-              "id": "DE1",
+              "id": "DE",
             },
             Object {
               "displayName": "DC",
               "fullName": "Dist. of Columbia",
-              "id": "DC1",
+              "id": "DC",
             },
             Object {
               "displayName": "FM",
               "fullName": "",
-              "id": "FM1",
+              "id": "FM",
             },
             Object {
               "displayName": "FL",
               "fullName": "Florida",
-              "id": "FL1",
+              "id": "FL",
             },
             Object {
               "displayName": "GA",
               "fullName": "Georgia",
-              "id": "GA1",
+              "id": "GA",
             },
             Object {
               "displayName": "GU",
               "fullName": "Guam",
-              "id": "GU1",
+              "id": "GU",
             },
             Object {
               "displayName": "HI",
               "fullName": "Hawaii",
-              "id": "HI1",
+              "id": "HI",
             },
             Object {
               "displayName": "ID",
               "fullName": "Idaho",
-              "id": "ID1",
+              "id": "ID",
             },
             Object {
               "displayName": "IL",
               "fullName": "Illinois",
-              "id": "IL1",
+              "id": "IL",
             },
             Object {
               "displayName": "IN",
               "fullName": "Indiana",
-              "id": "IN1",
+              "id": "IN",
             },
             Object {
               "displayName": "IA",
               "fullName": "Iowa",
-              "id": "IA1",
+              "id": "IA",
             },
             Object {
               "displayName": "KS",
               "fullName": "Kansas",
-              "id": "KS1",
+              "id": "KS",
             },
             Object {
               "displayName": "KY",
               "fullName": "Kentucky",
-              "id": "KY1",
+              "id": "KY",
             },
             Object {
               "displayName": "LA",
               "fullName": "Louisiana",
-              "id": "LA1",
+              "id": "LA",
             },
             Object {
               "displayName": "ME",
               "fullName": "Maine",
-              "id": "ME1",
+              "id": "ME",
             },
             Object {
               "displayName": "MH",
               "fullName": "Marshall Islands",
-              "id": "MH1",
+              "id": "MH",
             },
             Object {
               "displayName": "MD",
               "fullName": "Maryland",
-              "id": "MD1",
+              "id": "MD",
             },
             Object {
               "displayName": "MA",
               "fullName": "Massachusetts",
-              "id": "MA1",
+              "id": "MA",
             },
             Object {
               "displayName": "MI",
               "fullName": "Michigan",
-              "id": "MI1",
+              "id": "MI",
             },
             Object {
               "displayName": "MN",
               "fullName": "Minnesota",
-              "id": "MN1",
+              "id": "MN",
             },
             Object {
               "displayName": "MS",
               "fullName": "Mississippi",
-              "id": "MS1",
+              "id": "MS",
             },
             Object {
               "displayName": "MO",
               "fullName": "Missouri",
-              "id": "MO1",
+              "id": "MO",
             },
             Object {
               "displayName": "MT",
               "fullName": "Montana",
-              "id": "MT1",
+              "id": "MT",
             },
             Object {
               "displayName": "NE",
               "fullName": "Nebraska",
-              "id": "NE1",
+              "id": "NE",
             },
             Object {
               "displayName": "NV",
               "fullName": "Nevada",
-              "id": "NV1",
+              "id": "NV",
             },
             Object {
               "displayName": "NH",
               "fullName": "New Hampshire",
-              "id": "NH1",
+              "id": "NH",
             },
             Object {
               "displayName": "NJ",
               "fullName": "New Jersey",
-              "id": "NJ1",
+              "id": "NJ",
             },
             Object {
               "displayName": "NM",
               "fullName": "New Mexico",
-              "id": "NM1",
+              "id": "NM",
             },
             Object {
               "displayName": "NY",
               "fullName": "New York",
-              "id": "NY1",
+              "id": "NY",
             },
             Object {
               "displayName": "NC",
               "fullName": "North Carolina",
-              "id": "NC1",
+              "id": "NC",
             },
             Object {
               "displayName": "ND",
               "fullName": "North Dakota",
-              "id": "ND1",
+              "id": "ND",
             },
             Object {
               "displayName": "MP",
               "fullName": "Northern Marianas",
-              "id": "MP1",
+              "id": "MP",
             },
             Object {
               "displayName": "OH",
               "fullName": "Ohio",
-              "id": "OH1",
+              "id": "OH",
             },
             Object {
               "displayName": "OK",
               "fullName": "Oklahoma",
-              "id": "OK1",
+              "id": "OK",
             },
             Object {
               "displayName": "OR",
               "fullName": "Oregon",
-              "id": "OR1",
+              "id": "OR",
             },
             Object {
               "displayName": "PW",
               "fullName": "Palau",
-              "id": "PW1",
+              "id": "PW",
             },
             Object {
               "displayName": "PA",
               "fullName": "Pennsylvania",
-              "id": "PA1",
+              "id": "PA",
             },
             Object {
               "displayName": "PR",
               "fullName": "Puerto Rico",
-              "id": "PR1",
+              "id": "PR",
             },
             Object {
               "displayName": "RI",
               "fullName": "Rhode Island",
-              "id": "RI1",
+              "id": "RI",
             },
             Object {
               "displayName": "SC",
               "fullName": "South Carolina",
-              "id": "SC1",
+              "id": "SC",
             },
             Object {
               "displayName": "SD",
               "fullName": "South Dakota",
-              "id": "SD1",
+              "id": "SD",
             },
             Object {
               "displayName": "TN",
               "fullName": "Tennessee",
-              "id": "TN1",
+              "id": "TN",
             },
             Object {
               "displayName": "TX",
               "fullName": "Texas",
-              "id": "TX1",
+              "id": "TX",
             },
             Object {
               "displayName": "UT",
               "fullName": "Utah",
-              "id": "UT1",
+              "id": "UT",
             },
             Object {
               "displayName": "VT",
               "fullName": "Vermont",
-              "id": "VT1",
+              "id": "VT",
             },
             Object {
               "displayName": "VI",
               "fullName": "Virginia",
-              "id": "VI1",
+              "id": "VI",
             },
             Object {
               "displayName": "VA",
               "fullName": "Virgin Islands",
-              "id": "VA1",
+              "id": "VA",
             },
             Object {
               "displayName": "WA",
               "fullName": "Washington",
-              "id": "WA1",
+              "id": "WA",
             },
             Object {
               "displayName": "WV",
               "fullName": "West Virginia",
-              "id": "WV1",
+              "id": "WV",
             },
             Object {
               "displayName": "WI",
               "fullName": "Wisconsin",
-              "id": "WI1",
+              "id": "WI",
             },
             Object {
               "displayName": "WY",
               "fullName": "Wyoming",
-              "id": "WY1",
+              "id": "WY",
             },
           ]
         }
@@ -1197,116 +991,51 @@ exports[`AddAddressForm component should renders correctly 1`] = `
       colSize={
         Object {
           "large": 3,
-          "medium": 1,
+          "medium": 2,
           "small": 3,
         }
       }
     >
       <Field
-        Value=""
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bwzfXH",
               "isStatic": false,
               "rules": Array [
                 "
   ",
                 "
-  &.active p {
-    top: -50px;
-  }
-  &.input-fields-wrapper .Error__clearFloat {
-    clear: both;
-    top: -10px;
-    position: relative;
-  }
+  position: relative;
+  display: block;
+  height: 70px;
 
-  input.TextBox__input[type='checkbox'] {
-    position: relative;
-    top: 0;
-    appearance: none;
-    outline: 0;
-    border: 0;
-    display: inline-block;
-    height: 23px;
-    width: 23px;
-    @media ",
-                [Function],
-                " {
-      top: ",
-                [Function],
-                ";
-    }
-  }
-
-  input.TextBox__input[type='checkbox']:before {
-    content: '';
-    font-size: 20px;
-    position: absolute;
-    height: 20px;
-    width: 20px;
-    left: 0;
-    box-shadow: inset 0 0 0 0.6px #575757;
-  }
-  &.active input.TextBox__input[type='checkbox']:after {
-    transform: rotate(225deg);
-    content: '';
-    border: 2px inset #333;
+  .TextBox__label {
     font-size: ",
                 [Function],
                 "px;
-    width: ",
-                [Function],
-                ";
-    height: 10px;
-    float: left;
-    border-right: 0;
-    border-bottom: 0;
-    left: ",
-                [Function],
-                ";
+    padding: 0;
+    position: absolute;
     top: ",
                 [Function],
                 ";
-    position: absolute;
+    ",
+                [Function],
+                "
   }
-  &.input-fields-wrapper + span {
-    padding-left: ",
-                [Function],
-                ";
-  }
-  @media ",
-                [Function],
-                " {
-    &.checkbox-align {
-      float: left;
-      margin: ",
-                [Function],
-                ";
-    }
-    &.input-fields-wrapper {
-      overflow: hidden;
-    }
 
-    &div:last-child {
-      padding-right: auto;
-    }
-  }
   .TextBox__input {
     margin: 0;
     outline: 0;
-    line-height: 44px;
     font-size: ",
                 [Function],
                 "px;
     color: ",
                 [Function],
                 ";
-    width: calc(100% - 20px);
-    padding: 0 10px;
+    width: 100%;
     background-position: left top;
     background-repeat: no-repeat;
     background-size: contain;
@@ -1314,17 +1043,19 @@ exports[`AddAddressForm component should renders correctly 1`] = `
     border-bottom: 1px solid ",
                 [Function],
                 ";
-    @media ",
-                [Function],
-                " {
-      overflow: hidden;
-    }
-    ",
+    padding-bottom: ",
                 [Function],
                 ";
-    ",
+    margin-bottom: ",
                 [Function],
                 ";
+    padding-top: ",
+                [Function],
+                ";
+
+    ",
+                [Function],
+                "
 
     ",
                 [Function],
@@ -1338,10 +1069,21 @@ exports[`AddAddressForm component should renders correctly 1`] = `
                 [Function],
                 ";
 
-    &:focus + p {
-      top: -50px;
+    ",
+                [Function],
+                ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                [Function],
+                "px;
+      font-weight: ",
+                [Function],
+                ";
+      top: 0;
     }
   }
+
   ",
                 [Function],
                 ";
@@ -1353,7 +1095,7 @@ exports[`AddAddressForm component should renders correctly 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bwzfXH",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -1363,8 +1105,6 @@ exports[`AddAddressForm component should renders correctly 1`] = `
         id="zip"
         maxLength={5}
         name="zip"
-        onBlur={[Function]}
-        onChange={[Function]}
         placeholder="Zip Code"
         validate={
           Array [
@@ -1375,7 +1115,6 @@ exports[`AddAddressForm component should renders correctly 1`] = `
       />
     </Styled(Col)>
   </Styled(Row)>
-  <br />
   <Styled(Row)
     fullBleed={true}
   >
@@ -1383,8 +1122,264 @@ exports[`AddAddressForm component should renders correctly 1`] = `
       colSize={
         Object {
           "large": 6,
-          "medium": 1,
+          "medium": 4,
           "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-htpNat",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .select__input {
+    appearance: none;
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
+      no-repeat right 0px bottom 6px;
+    border: 0;
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+    ",
+                [Function],
+                ";
+    border-radius: 0;
+    color: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    margin: 0;
+    margin-bottom: ",
+                [Function],
+                ";
+    outline: 0;
+    padding: ",
+                [Function],
+                " 0
+      ",
+                [Function],
+                ";
+    width: 100%;
+
+    ",
+                [Function],
+                ";
+  }
+
+  .select__label {
+    font-size: ",
+                [Function],
+                "px;
+    font-weight: ",
+                [Function],
+                ";
+    padding: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  ",
+                [Function],
+                ";
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(SelectBox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-htpNat",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        id="country"
+        name="country"
+        onChange={[Function]}
+        options={
+          Array [
+            Object {
+              "displayName": "United States",
+              "id": "US",
+            },
+            Object {
+              "displayName": "Canada",
+              "id": "CA",
+            },
+          ]
+        }
+        placeholder="Country"
+        validate={
+          Array [
+            [Function],
+          ]
+        }
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bwzfXH",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .TextBox__label {
+    font-size: ",
+                [Function],
+                "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                [Function],
+                ";
+    ",
+                [Function],
+                "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                [Function],
+                "px;
+    color: ",
+                [Function],
+                ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+    padding-bottom: ",
+                [Function],
+                ";
+    margin-bottom: ",
+                [Function],
+                ";
+    padding-top: ",
+                [Function],
+                ";
+
+    ",
+                [Function],
+                "
+
+    ",
+                [Function],
+                ";
+
+    ",
+                [Function],
+                ";
+
+    ",
+                [Function],
+                ";
+
+    ",
+                [Function],
+                ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                [Function],
+                "px;
+      font-weight: ",
+                [Function],
+                ";
+      top: 0;
+    }
+  }
+
+  ",
+                [Function],
+                ";
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(TextBox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bwzfXH",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        id="phoneNumber"
+        maxLength={10}
+        name="phoneNumber"
+        placeholder="Mobile Number"
+        validate={
+          Array [
+            [Function],
+            [Function],
+            [Function],
+          ]
+        }
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 4,
+        }
+      }
+      offsetLeft={
+        Object {
+          "small": 1,
         }
       }
     >
@@ -1400,69 +1395,57 @@ exports[`AddAddressForm component should renders correctly 1`] = `
                 "
   ",
                 "
-  &.active div {
-    top: -65px;
-  }
-  &.select-fields-wrapper .Error__clearFloat {
-    clear: both;
-    top: -10px;
+  display: flex;
+  align-items: center;
+  height: 50px;
+
+  input[type='checkbox'] {
     position: relative;
-  }
-  &.select-fields-wrapper p {
-    top: -30px;
-    opacity: 0.8;
-    position: relative;
-    margin: 0;
-    float: left;
-    padding: 5px 0px 5px 10px;
-  }
-  .selectField {
-    margin: ",
-                [Function],
-                " 0 0 0;
-    height: 35px;
+    top: 0;
+    appearance: none;
     outline: 0;
-    line-height: 44px;
+    border: 0;
+    height: 25px;
+    width: 25px;
+    margin: 0;
+    margin-right: ",
+                [Function],
+                ";
+  }
+
+  input[type='checkbox']:before {
+    content: '';
+    font-size: 20px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    box-shadow: inset 0 0 0 0.6px #575757;
+  }
+
+  input[type='checkbox']:checked:after {
+    transform: rotate(225deg);
+    content: '';
+    border: 2px inset #333;
     font-size: ",
                 [Function],
                 "px;
-    color: ",
+    width: ",
                 [Function],
                 ";
-    width: 100%;
-    padding: 0 ",
-                [Function],
-                ";
-    border: 1px solid ",
-                [Function],
-                ";
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-      no-repeat right 8px center;
-    -webkit-appearance: none;
-    ",
-                [Function],
-                ";
-    ",
-                [Function],
-                ";
-
-    ",
-                [Function],
-                ";
-    &:focus + p {
-      top: -65px;
-    }
+    height: 10px;
+    border-right: 0;
+    border-bottom: 0;
+    left: 10px;
+    top: 5px;
+    position: absolute;
   }
-
-  ",
-                [Function],
-                ";
 ",
                 ";
 ",
               ],
             },
-            "displayName": "Styled(SelectBox)",
+            "displayName": "Styled(InputCheckbox)",
             "foldedComponentIds": Array [],
             "render": [Function],
             "styledComponentId": "sc-bxivhb",
@@ -1472,409 +1455,30 @@ exports[`AddAddressForm component should renders correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        defaultValue=""
-        id="country"
-        name="country"
-        onBlur={[Function]}
-        onChange={[Function]}
-        options={
-          Array [
-            Object {
-              "displayName": "",
-              "id": "",
-            },
-            Object {
-              "displayName": "United States",
-              "id": "US",
-            },
-            Object {
-              "displayName": "Canada",
-              "id": "CA",
-            },
-          ]
-        }
-        placeholder="country"
-        validate={
-          Array [
-            [Function],
-          ]
-        }
-        value=""
-      />
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 6,
-          "medium": 1,
-          "small": 6,
-        }
-      }
-    >
-      <Field
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  &.active p {
-    top: -50px;
-  }
-  &.input-fields-wrapper .Error__clearFloat {
-    clear: both;
-    top: -10px;
-    position: relative;
-  }
-
-  input.TextBox__input[type='checkbox'] {
-    position: relative;
-    top: 0;
-    appearance: none;
-    outline: 0;
-    border: 0;
-    display: inline-block;
-    height: 23px;
-    width: 23px;
-    @media ",
-                [Function],
-                " {
-      top: ",
-                [Function],
-                ";
-    }
-  }
-
-  input.TextBox__input[type='checkbox']:before {
-    content: '';
-    font-size: 20px;
-    position: absolute;
-    height: 20px;
-    width: 20px;
-    left: 0;
-    box-shadow: inset 0 0 0 0.6px #575757;
-  }
-  &.active input.TextBox__input[type='checkbox']:after {
-    transform: rotate(225deg);
-    content: '';
-    border: 2px inset #333;
-    font-size: ",
-                [Function],
-                "px;
-    width: ",
-                [Function],
-                ";
-    height: 10px;
-    float: left;
-    border-right: 0;
-    border-bottom: 0;
-    left: ",
-                [Function],
-                ";
-    top: ",
-                [Function],
-                ";
-    position: absolute;
-  }
-  &.input-fields-wrapper + span {
-    padding-left: ",
-                [Function],
-                ";
-  }
-  @media ",
-                [Function],
-                " {
-    &.checkbox-align {
-      float: left;
-      margin: ",
-                [Function],
-                ";
-    }
-    &.input-fields-wrapper {
-      overflow: hidden;
-    }
-
-    &div:last-child {
-      padding-right: auto;
-    }
-  }
-  .TextBox__input {
-    margin: 0;
-    outline: 0;
-    line-height: 44px;
-    font-size: ",
-                [Function],
-                "px;
-    color: ",
-                [Function],
-                ";
-    width: calc(100% - 20px);
-    padding: 0 10px;
-    background-position: left top;
-    background-repeat: no-repeat;
-    background-size: contain;
-    border: 0 solid transparent;
-    border-bottom: 1px solid ",
-                [Function],
-                ";
-    @media ",
-                [Function],
-                " {
-      overflow: hidden;
-    }
-    ",
-                [Function],
-                ";
-    ",
-                [Function],
-                ";
-
-    ",
-                [Function],
-                ";
-
-    ",
-                [Function],
-                ";
-
-    ",
-                [Function],
-                ";
-
-    &:focus + p {
-      top: -50px;
-    }
-  }
-  ",
-                [Function],
-                ";
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(TextBox)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-htpNat",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
-        maxLength={10}
-        name="phoneNumber"
-        onBlur={[Function]}
-        placeholder="phone number"
-        validate={
-          Array [
-            [Function],
-            [Function],
-            [Function],
-          ]
-        }
-      />
+        name="primary"
+      >
+        Set as default shipping address
+      </Field>
     </Styled(Col)>
   </Styled(Row)>
-  <br />
   <Styled(Row)
+    className="AddAddressForm__ctaContainer"
     fullBleed={true}
   >
     <Styled(Col)
-      colSize={
-        Object {
-          "large": 6,
-          "medium": 1,
-          "small": 6,
-        }
-      }
-    >
-      <Field
-        className="checkbox-align"
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  &.active p {
-    top: -50px;
-  }
-  &.input-fields-wrapper .Error__clearFloat {
-    clear: both;
-    top: -10px;
-    position: relative;
-  }
-
-  input.TextBox__input[type='checkbox'] {
-    position: relative;
-    top: 0;
-    appearance: none;
-    outline: 0;
-    border: 0;
-    display: inline-block;
-    height: 23px;
-    width: 23px;
-    @media ",
-                [Function],
-                " {
-      top: ",
-                [Function],
-                ";
-    }
-  }
-
-  input.TextBox__input[type='checkbox']:before {
-    content: '';
-    font-size: 20px;
-    position: absolute;
-    height: 20px;
-    width: 20px;
-    left: 0;
-    box-shadow: inset 0 0 0 0.6px #575757;
-  }
-  &.active input.TextBox__input[type='checkbox']:after {
-    transform: rotate(225deg);
-    content: '';
-    border: 2px inset #333;
-    font-size: ",
-                [Function],
-                "px;
-    width: ",
-                [Function],
-                ";
-    height: 10px;
-    float: left;
-    border-right: 0;
-    border-bottom: 0;
-    left: ",
-                [Function],
-                ";
-    top: ",
-                [Function],
-                ";
-    position: absolute;
-  }
-  &.input-fields-wrapper + span {
-    padding-left: ",
-                [Function],
-                ";
-  }
-  @media ",
-                [Function],
-                " {
-    &.checkbox-align {
-      float: left;
-      margin: ",
-                [Function],
-                ";
-    }
-    &.input-fields-wrapper {
-      overflow: hidden;
-    }
-
-    &div:last-child {
-      padding-right: auto;
-    }
-  }
-  .TextBox__input {
-    margin: 0;
-    outline: 0;
-    line-height: 44px;
-    font-size: ",
-                [Function],
-                "px;
-    color: ",
-                [Function],
-                ";
-    width: calc(100% - 20px);
-    padding: 0 10px;
-    background-position: left top;
-    background-repeat: no-repeat;
-    background-size: contain;
-    border: 0 solid transparent;
-    border-bottom: 1px solid ",
-                [Function],
-                ";
-    @media ",
-                [Function],
-                " {
-      overflow: hidden;
-    }
-    ",
-                [Function],
-                ";
-    ",
-                [Function],
-                ";
-
-    ",
-                [Function],
-                ";
-
-    ",
-                [Function],
-                ";
-
-    ",
-                [Function],
-                ";
-
-    &:focus + p {
-      top: -50px;
-    }
-  }
-  ",
-                [Function],
-                ";
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(TextBox)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-htpNat",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
-        id="default-ship"
-        name="default-ship"
-        type="checkbox"
-      />
-      <Styled(BodyStyle)
-        tag="span"
-      >
-        Set as default shipping addres
-      </Styled(BodyStyle)>
-    </Styled(Col)>
-  </Styled(Row)>
-  <br />
-  <Styled(Row)
-    className="button_wrapper"
-  >
-    <Styled(Col)
-      className="cancel"
+      className="AddAddressForm__cancel"
       colSize={
         Object {
           "large": 3,
+          "medium": 3,
+          "small": 4,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 6,
           "medium": 1,
-          "small": 6,
+          "small": 1,
         }
       }
     >
@@ -1887,25 +1491,28 @@ exports[`AddAddressForm component should renders correctly 1`] = `
       </Styled(Button)>
     </Styled(Col)>
     <Styled(Col)
-      className="submit"
+      className="AddAddressForm__submit"
       colSize={
         Object {
           "large": 3,
-          "medium": 1,
-          "small": 6,
+          "medium": 3,
+          "small": 4,
+        }
+      }
+      offsetLeft={
+        Object {
+          "small": 1,
         }
       }
     >
       <Styled(Button)
         buttonVariation="fixed-width"
         fill="BLUE"
-        text="BLUE"
         type="submit"
       >
         Add Address
       </Styled(Button)>
     </Styled(Col)>
   </Styled(Row)>
-  <br />
 </form>
 `;

@@ -1,24 +1,26 @@
 import { css } from 'styled-components';
 
 const textboxStyles = css`
-  &.input-fields-wrapper {
-    position: relative;
-    display: block;
-    height: 70px;
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .TextBox__label {
+    font-size: ${props =>
+      props.input && props.input.value
+        ? props.theme.fonts.fontSize.body.small.primary
+        : props.theme.fonts.fontSize.textbox}px;
+    padding: 0;
+    position: absolute;
+    top: ${props => (props.input && props.input.value ? 0 : '16px')};
+    ${props =>
+      props.input &&
+      props.input.value &&
+      `
+      font-weight: ${props.theme.fonts.fontWeight.bold};
+    `}
   }
 
-  &.input-fields-wrapper + span {
-    padding-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-  }
-  @media ${props => props.theme.mediaQuery.smallMax} {
-    &.input-fields-wrapper {
-      overflow: hidden;
-    }
-
-    &div:last-child {
-      padding-right: auto;
-    }
-  }
   .TextBox__input {
     margin: 0;
     outline: 0;
@@ -33,9 +35,14 @@ const textboxStyles = css`
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    @media ${props => props.theme.mediaQuery.smallMax} {
-      overflow: hidden;
-    }
+
+    ${props =>
+      props.meta &&
+      props.meta.invalid &&
+      `
+      border-bottom: 1px solid ${props.theme.colors.NOTIFICATION.ERROR};
+    `}
+
     ${props =>
       props.isSuccessState
         ? `border: 1px solid ${props.theme.colors.TEXTBOX.SUCCESS_BORDER};`
@@ -44,17 +51,17 @@ const textboxStyles = css`
     ${props =>
       props.textIcon === 'icon-email'
         ? `
-    background-image: url(/static/images/email.svg);
-    padding: 0 20px 0 52px;
-    width: calc(100% - 72px);`
+            background-image: url(/static/images/email.svg);
+            padding: 0 20px 0 52px;
+            width: calc(100% - 72px);`
         : ''};
 
     ${props =>
       props.textIcon === 'icon-sms'
         ? `
-    background-image: url(/static/images/chat.svg);
-    padding: 0 20px 0 52px;
-    width: calc(100% - 72px)`
+          background-image: url(/static/images/chat.svg);
+          padding: 0 20px 0 52px;
+          width: calc(100% - 72px)`
         : ''};
 
     ${props =>
@@ -70,23 +77,6 @@ const textboxStyles = css`
       font-weight: ${props => props.theme.fonts.fontWeight.bold};
       top: 0;
     }
-  }
-
-  .TextBox__label {
-    font-size: ${props => props.theme.fonts.fontSize.textbox}px;
-    padding: 0;
-    position: absolute;
-    top: 16px;
-  }
-
-  &.active .TextBox__label {
-    font-size: ${props => props.theme.fonts.fontSize.body.small.primary}px;
-    font-weight: ${props => props.theme.fonts.fontWeight.bold};
-    top: 0;
-  }
-
-  &.error .TextBox__input {
-    border-bottom: 1px solid ${props => props.theme.colors.NOTIFICATION.ERROR};
   }
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};

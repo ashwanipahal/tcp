@@ -1,35 +1,29 @@
 import { css } from 'styled-components';
 
-const textboxStyles = css`
-  &.select-fields-wrapper {
-    position: relative;
-    display: block;
-    height: 70px;
-  }
-  .selectField {
-    margin: 0;
-    outline: 0;
-    border: 0;
-    border-bottom: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
-    border-radius: 0;
-    font-size: ${props => props.theme.fonts.fontSize.textbox_input}px;
-    color: ${props => props.theme.colors.TEXTBOX.COLOR};
-    width: 100%;
-    padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 0
-      ${props => props.theme.spacing.ELEM_SPACING.XS};
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+const selectStyles = css`
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .select__input {
+    appearance: none;
     background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
       no-repeat right 0px bottom 6px;
-    -webkit-appearance: none;
-
+    border: 0;
+    border-bottom: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
     ${props =>
       props.meta.touched && props.meta.error
         ? `border-bottom: 1px solid ${props.theme.colors.TEXTBOX.ERROR_BORDER};`
         : ''};
-    ${props =>
-      props.isSuccessState
-        ? `border-bottom: 1px solid ${props.theme.colors.TEXTBOX.SUCCESS_BORDER};`
-        : ''};
+    border-radius: 0;
+    color: ${props => props.theme.colors.TEXTBOX.COLOR};
+    font-size: ${props => props.theme.fonts.fontSize.textbox_input}px;
+    margin: 0;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    outline: 0;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 0
+      ${props => props.theme.spacing.ELEM_SPACING.XS};
+    width: 100%;
 
     ${props =>
       props.disabled
@@ -40,7 +34,7 @@ const textboxStyles = css`
         : ''};
   }
 
-  .selectField__label {
+  .select__label {
     font-size: ${props => props.theme.fonts.fontSize.body.small.primary}px;
     font-weight: ${props => props.theme.fonts.fontWeight.bold};
     padding: 0;
@@ -51,4 +45,4 @@ const textboxStyles = css`
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
-export default textboxStyles;
+export default selectStyles;

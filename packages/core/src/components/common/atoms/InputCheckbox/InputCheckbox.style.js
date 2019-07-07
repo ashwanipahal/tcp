@@ -1,13 +1,9 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  display: block
+  display: flex;
+  align-items: center;
   height: 50px;
-
-  .inputWrapper {
-    display: flex;
-    align-items: center;
-  }
 
   input[type='checkbox'] {
     position: relative;
@@ -15,21 +11,23 @@ const styles = css`
     appearance: none;
     outline: 0;
     border: 0;
-    display: inline-block;
-    height: 23px;
-    width: 23px;
+    height: 25px;
+    width: 25px;
+    margin: 0;
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 
   input[type='checkbox']:before {
     content: '';
     font-size: 20px;
     position: absolute;
-    height: 20px;
-    width: 20px;
+    height: 100%;
+    width: 100%;
     left: 0;
     box-shadow: inset 0 0 0 0.6px #575757;
   }
-  &.active input[type='checkbox']:after {
+
+  input[type='checkbox']:checked:after {
     transform: rotate(225deg);
     content: '';
     border: 2px inset #333;
@@ -38,8 +36,8 @@ const styles = css`
     height: 10px;
     border-right: 0;
     border-bottom: 0;
-    left: ${props => props.theme.spacing.ELEM_SPACING.XS};
-    top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    left: 10px;
+    top: 5px;
     position: absolute;
   }
 `;

@@ -41,18 +41,13 @@ const SelectBox = ({
   options,
   meta: { touched, error },
 }: Props): Node => {
-  const isError = touched && error;
   return (
-    <div
-      className={`${className} ${input.value ? 'active' : ''} ${
-        isError ? 'error' : ''
-      } select-fields-wrapper`}
-    >
+    <div className={className}>
       <select
         {...input}
         id={id}
         aria-label={ariaLabel}
-        className="selectField"
+        className="select__input"
         name={name}
         value={input.value}
       >
@@ -65,7 +60,7 @@ const SelectBox = ({
             );
           })}
       </select>
-      <BodyCopy fontSize="fs12" fontFamily="secondary" className="selectField__label">
+      <BodyCopy fontSize="fs12" fontFamily="secondary" className="select__label">
         {placeholder}
       </BodyCopy>
       {touched && error && (

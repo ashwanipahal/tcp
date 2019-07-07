@@ -4,20 +4,25 @@ import ADD_ADDRESS_CONSTANTS from '../AddAddress/AddAddress.constants';
 
 describe('AddAddressReducer reducer', () => {
   it('should return  default state', () => {
-    expect(AddAddressReducer(undefined, {}).get('addAddressNotification')).toEqual(false);
+    expect(AddAddressReducer(undefined, {})).toBeNull();
   });
   it('should handle failure addAddressFail', () => {
-    const initialState = fromJS({
-      addAddressNotification: false,
-    });
+    const initialState = null;
     expect(
       AddAddressReducer(initialState, {
         type: ADD_ADDRESS_CONSTANTS.ADD_USER_ADDRESS_FAIL,
+        payload: {},
       })
-    ).toEqual(
-      fromJS({
-        addAddressNotification: true,
+    ).toEqual(fromJS({}));
+  });
+
+  it('should handle success addAddressSuccess', () => {
+    const initialState = null;
+    expect(
+      AddAddressReducer(initialState, {
+        type: ADD_ADDRESS_CONSTANTS.ADD_USER_ADDRESS_SUCCESS,
+        payload: {},
       })
-    );
+    ).toEqual(fromJS({}));
   });
 });

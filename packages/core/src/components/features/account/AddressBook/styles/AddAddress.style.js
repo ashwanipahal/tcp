@@ -11,19 +11,17 @@ const styles = css`
     top: -15px;
     cursor: pointer;
   }
-  .button_wrapper {
-    display: inline-block;
-    text-align: right;
+  .AddAddressForm__ctaContainer {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
   @media ${props => props.theme.mediaQuery.smallMax} {
-    .button_wrapper {
-      margin: 0 auto;
-      width: 60%;
-      display: block;
-      .cancel {
-        padding-right: 0;
-        margin: 10px 0;
-      }
+    .AddAddressForm__cancel {
+      order: 2;
+    }
+
+    .AddAddressForm__submit {
+      order: 1;
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
 

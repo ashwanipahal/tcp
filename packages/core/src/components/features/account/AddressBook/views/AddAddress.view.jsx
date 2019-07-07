@@ -10,16 +10,16 @@ import styles from '../styles/AddAddress.style';
 
 // @flow
 type Props = {
-  className: string,
+  className: ?string,
   submitAddAddressFormAction: any,
   addAddressResponse: any,
   userEmail: string,
 };
 
-class AddAddress extends React.PureComponent<Props> {
+export class AddAddress extends React.PureComponent<Props> {
   submitAddAddressForm = payload => {
     const { submitAddAddressFormAction, userEmail } = this.props;
-    const formattedPayload = { ...payload, ...{ primary: !!payload.primary, email: userEmail } };
+    const formattedPayload = { ...payload, ...{ email: userEmail } };
     submitAddAddressFormAction(formattedPayload);
   };
 

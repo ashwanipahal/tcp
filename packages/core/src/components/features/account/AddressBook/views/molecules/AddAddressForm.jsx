@@ -66,7 +66,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
     return (
       <form className={className} onSubmit={handleSubmit} noValidate>
         <Row fullBleed>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 1, large: 6 }}>
+          <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
               placeholder="First Name"
               name="firstName"
@@ -77,7 +77,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               maxLength={50}
             />
           </Col>
-          <Col colSize={{ small: 6, medium: 1, large: 6 }}>
+          <Col colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
               placeholder="Last Name"
               name="lastName"
@@ -89,7 +89,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
           </Col>
         </Row>
         <Row fullBleed>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 1, large: 6 }}>
+          <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
               id="address1"
               placeholder="Address Line 1"
@@ -101,7 +101,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               componentRestrictions={Object.assign({}, { country: [country] })}
             />
           </Col>
-          <Col colSize={{ small: 6, medium: 1, large: 6 }}>
+          <Col colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
               placeholder="Address Line 2( Optional )"
               name="address2"
@@ -113,7 +113,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
           </Col>
         </Row>
         <Row fullBleed>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 1, large: 6 }}>
+          <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
               id="city"
               placeholder="City"
@@ -122,7 +122,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               validate={[required]}
             />
           </Col>
-          <Col colSize={{ small: 3, medium: 1, large: 3 }}>
+          <Col colSize={{ small: 3, medium: 2, large: 3 }}>
             <Field
               id="state"
               placeholder={country === 'CA' ? 'Province' : 'State'}
@@ -132,7 +132,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               options={country === 'CA' ? CAcountriesStatesTable : UScountriesStatesTable}
             />
           </Col>
-          <Col colSize={{ small: 3, medium: 1, large: 3 }}>
+          <Col colSize={{ small: 3, medium: 2, large: 3 }}>
             <Field
               placeholder={country === 'CA' ? 'Postal Code' : 'Zip Code'}
               id="zip"
@@ -144,7 +144,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
           </Col>
         </Row>
         <Row fullBleed>
-          <Col colSize={{ small: 6, medium: 1, large: 6 }}>
+          <Col colSize={{ small: 6, medium: 4, large: 6 }} ignoreGutter={{ small: true }}>
             <Field
               id="country"
               placeholder="Country"
@@ -155,7 +155,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               onChange={this.StateCountryChange}
             />
           </Col>
-          <Col colSize={{ small: 6, medium: 1, large: 6 }}>
+          <Col colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
               placeholder="Mobile Number"
               name="phoneNumber"
@@ -167,21 +167,27 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
           </Col>
         </Row>
         <Row fullBleed>
-          <Col colSize={{ small: 6, medium: 1, large: 6 }}>
-            <Field
-              name="primary"
-              component={InputCheckbox}
-              label="Set as default shipping address"
-            />
+          <Col colSize={{ small: 4, medium: 4, large: 6 }} offsetLeft={{ small: 1 }}>
+            <Field name="primary" component={InputCheckbox}>
+              Set as default shipping address
+            </Field>
           </Col>
         </Row>
-        <Row className="button_wrapper">
-          <Col className="cancel" colSize={{ small: 6, medium: 1, large: 3 }}>
+        <Row fullBleed className="AddAddressForm__ctaContainer">
+          <Col
+            className="AddAddressForm__cancel"
+            colSize={{ small: 4, medium: 3, large: 3 }}
+            offsetLeft={{ small: 1, medium: 1, large: 6 }}
+          >
             <Button onClick={backToAddressBookClick} buttonVariation="fixed-width" type="button">
               Cancel
             </Button>
           </Col>
-          <Col className="submit" colSize={{ small: 6, medium: 1, large: 3 }}>
+          <Col
+            className="AddAddressForm__submit"
+            colSize={{ small: 4, medium: 3, large: 3 }}
+            offsetLeft={{ small: 1 }}
+          >
             <Button fill="BLUE" disabled={pristine} type="submit" buttonVariation="fixed-width">
               Add Address
             </Button>

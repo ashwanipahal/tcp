@@ -1,10 +1,11 @@
-// @flow
 import React from 'react';
 import { connect } from 'react-redux';
 import { addAddressReq } from './AddAddress.actions';
-import AddAddress from '../../views/AddAddress.view';
+import AddAddressComponent from '../../views/AddAddress.view';
 import { getAddAddressResponse, getUserEmail } from './AddAddress.selectors';
 import AddAddresslabels from './AddAddress.labels';
+
+// @flow
 
 type Props = {
   submitAddAddressFormAction: any,
@@ -18,7 +19,7 @@ export const AddaddressContainer = ({
   userEmail,
 }: Props) => {
   return (
-    <AddAddress
+    <AddAddressComponent
       AddAddresslabels={AddAddresslabels}
       addAddressResponse={addAddressResponse}
       submitAddAddressFormAction={submitAddAddressFormAction}
@@ -29,7 +30,7 @@ export const AddaddressContainer = ({
 
 export const mapDispatchToProps = (dispatch: ({}) => void) => {
   return {
-    submitAddAddressFormAction: payload => {
+    submitAddAddressFormAction: (payload: {}) => {
       dispatch(addAddressReq(payload));
     },
   };
