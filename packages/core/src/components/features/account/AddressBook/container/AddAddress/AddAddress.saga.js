@@ -21,7 +21,8 @@ export function* addAddressGet({ payload }) {
           ],
           addressType: 'ShippingAndBilling',
           city: payload.city,
-          country: payload.country === 'United States' ? 'US' : 'CA',
+          country: payload.country,
+
           firstName: payload.firstName,
           lastName: payload.lastName,
           nickName: addressKey,

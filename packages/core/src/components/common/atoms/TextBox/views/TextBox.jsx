@@ -17,7 +17,6 @@ type Props = {
   id?: string,
   className: string,
   ariaLabel?: string,
-  name?: string,
   type?: string,
   placeholder?: string,
   onChangeHandler?: any,
@@ -34,7 +33,6 @@ const TextBox = ({
   className,
   id,
   ariaLabel,
-  name,
   type,
   placeholder,
   maxLength,
@@ -46,7 +44,7 @@ const TextBox = ({
   const isError = touched && error;
   return (
     <label
-      htmlFor={name}
+      htmlFor={input.name}
       className={`${className} ${elemValue ? 'active' : ''} ${
         isError ? 'error' : ''
       } input-fields-wrapper`}
@@ -56,7 +54,7 @@ const TextBox = ({
         id={id}
         aria-label={ariaLabel}
         className="TextBox__input"
-        name={name}
+        name={input.name}
         type={type}
         maxLength={maxLength}
         value={elemValue}
@@ -78,7 +76,6 @@ const TextBox = ({
 TextBox.defaultProps = {
   id: '',
   ariaLabel: '',
-  name: '',
   type: 'text',
   placeholder: '',
   onChangeHandler: () => {},

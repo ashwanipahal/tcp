@@ -43,9 +43,10 @@ const SelectBox = ({
 }: Props): Node => {
   const isError = touched && error;
   return (
-    <div className={`${className} ${input.value ? 'active' : ''} ${
-      isError ? 'error' : ''
-    } select-fields-wrapper`}
+    <div
+      className={`${className} ${input.value ? 'active' : ''} ${
+        isError ? 'error' : ''
+      } select-fields-wrapper`}
     >
       <select
         {...input}
@@ -58,7 +59,7 @@ const SelectBox = ({
         {options &&
           options.map(option => {
             return (
-              <option value={option.displayName} id={option.id} key={option.id}>
+              <option value={option.id} id={option.id} key={option.id}>
                 {option.displayName}
               </option>
             );

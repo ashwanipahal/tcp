@@ -27,7 +27,7 @@ type Props = {
   pristine: any,
   className: any,
   backToAddressBookClick: any,
-  dispatch: any
+  dispatch: any,
 };
 
 type State = {
@@ -37,12 +37,12 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
-      country: 'United States',
+      country: 'US',
     };
   }
 
   validatezip = (country: string) => {
-    return country === 'Canada' ? zipcodeCA : zipcodeUS;
+    return country === 'CA' ? zipcodeCA : zipcodeUS;
   };
 
   StateCountryChange = (e: Object) => {
@@ -63,7 +63,6 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
   render() {
     const { handleSubmit, pristine, className, backToAddressBookClick } = this.props;
     const { country } = this.state;
-    const selectedCountry = country === 'United States' ? 'US' : 'CA';
     return (
       <form className={className} onSubmit={handleSubmit} noValidate>
         <Row fullBleed>
@@ -99,7 +98,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               validate={[required]}
               onPlaceSelected={this.handlePlaceSelected}
               maxLength={30}
-              componentRestrictions={Object.assign({}, { country: [selectedCountry] })}
+              componentRestrictions={Object.assign({}, { country: [country] })}
             />
           </Col>
           <Col colSize={{ small: 6, medium: 1, large: 6 }}>
@@ -126,21 +125,21 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
           <Col colSize={{ small: 3, medium: 1, large: 3 }}>
             <Field
               id="state"
-              placeholder={country === 'Canada' ? 'Province' : 'State'}
+              placeholder={country === 'CA' ? 'Province' : 'State'}
               name="state"
               validate={[required]}
               component={SelectBox}
-              options={country === 'Canada' ? CAcountriesStatesTable : UScountriesStatesTable}
+              options={country === 'CA' ? CAcountriesStatesTable : UScountriesStatesTable}
             />
           </Col>
           <Col colSize={{ small: 3, medium: 1, large: 3 }}>
             <Field
-              placeholder={country === 'Canada' ? 'Postal Code' : 'Zip Code'}
+              placeholder={country === 'CA' ? 'Postal Code' : 'Zip Code'}
               id="zip"
               name="zip"
               component={TextBox}
               validate={[required, this.validatezip(country)]}
-              maxLength={country === 'Canada' ? 7 : 5}
+              maxLength={country === 'CA' ? 6 : 5}
             />
           </Col>
         </Row>
@@ -152,7 +151,6 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               name="country"
               validate={[required]}
               component={SelectBox}
-              defaultValue={country}
               options={countriesOptionsMap}
               onChange={this.StateCountryChange}
             />
@@ -184,12 +182,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
             </Button>
           </Col>
           <Col className="submit" colSize={{ small: 6, medium: 1, large: 3 }}>
-            <Button
-              fill="BLUE"
-              disabled={pristine}
-              type="submit"
-              buttonVariation="fixed-width"
-            >
+            <Button fill="BLUE" disabled={pristine} type="submit" buttonVariation="fixed-width">
               Add Address
             </Button>
           </Col>
@@ -201,4 +194,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
 
 export default reduxForm({
   form: 'AddAddressForm', // a unique identifier for this form
+  initialValues: {
+    country: 'US',
+  },
 })(AddAddressForm);
