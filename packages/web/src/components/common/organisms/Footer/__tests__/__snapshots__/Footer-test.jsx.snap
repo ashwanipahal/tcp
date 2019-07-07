@@ -1,145 +1,345 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Footer component renders correctly 1`] = `
-<StyledComponent
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-kpOJdX",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  .footer-top {
-    > div {
-      border-top: 2px solid ",
-          [Function],
-          ";
-      padding-top: 32px;
-    }
-  }
-  .footer-top__slots {
-    padding-bottom: 16px;
-  }
-  .footer-top__slot-2 {
-    order: 1;
-  }
-  .footer-bottom__slot--1 {
-    background-color: ",
-          [Function],
-          ";
-  }
-  .fullbleed-mobile {
-    flex-direction: column-reverse;
-    display: flex;
-    margin: 0;
-  }
-  .default-offset {
-    padding: 0 ",
-          [Function],
-          "px;
-  }
-  .footer-middle.desktop {
-    display: none;
-  }
-  .reference-id {
-    background-color: ",
-          [Function],
-          ";
-    font-size: ",
-          [Function],
-          "px;
-    padding: 0 15px 24px;
-    margin: 0;
-    color: ",
-          [Function],
-          ";
-    font-family: ",
-          [Function],
-          ";
-  }
-  @media ",
-          [Function],
-          " {
-    .default-offset {
-      padding: 0 ",
-          [Function],
-          "px;
-    }
-    .footer-top {
-      padding-bottom: 20px;
-    }
-  }
-  @media ",
-          [Function],
-          " {
-    .footer-top {
-      padding-bottom: 44px;
-      border-bottom: 2px solid ",
-          [Function],
-          ";
-    }
-    .footer-bottom {
-      background-color: ",
-          [Function],
-          ";
-    }
-    .fullbleed-mobile {
-      flex-direction: row;
-      margin: 0 ",
-          [Function],
-          "px;
-    }
-    .default-offset {
-      padding: 0;
-    }
-    .footer-bottom__slot--1 {
-      background-color: inherit;
-    }
-    .footer-middle.mobile {
-      display: none;
-    }
-    .footer-middle.desktop {
-      display: flex;
-      padding: 60px 0 64px;
-    }
-    .divider {
-      border-left: 1px solid ",
-          [Function],
-          ";
-    }
-    .reference-id {
-      text-align: center;
-      background-color: ",
-          [Function],
-          ";
-      font-size: ",
-          [Function],
-          ";
-      padding: 11px 0 24px;
-      color: ",
-          [Function],
-          ";
-    }
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(Footer)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-kpOJdX",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-/>
+exports[`Footer component Footer component renders correctly with props 1`] = `
+<footer
+  className="footer-class"
+>
+  <div
+    className="footer-top"
+  >
+    <Styled(Row)>
+      <Styled(Col)
+        className="footer-top__slots"
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <Styled(Button)
+          customStyle="shadow-button"
+        >
+          <Styled(RichText) />
+        </Styled(Button)>
+      </Styled(Col)>
+      <Styled(Col)
+        className="footer-top__slots"
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "medium": true,
+            "small": true,
+          }
+        }
+      >
+        <Styled(Button)
+          customStyle="shadow-button"
+        >
+          <Styled(RichText) />
+        </Styled(Button)>
+      </Styled(Col)>
+      <Styled(Col)
+        className="footer-top__slots"
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <span
+          id="extole_zone_global_footer"
+        >
+          <Styled(Button)
+            customStyle="shadow-button"
+            data-locator="global_referfriend"
+          >
+            <Styled(RichText) />
+          </Styled(Button)>
+        </span>
+      </Styled(Col)>
+      <Styled(Col)
+        className="footer-top__slot--2"
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(SocialMediaLinks) />
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
+  <Styled(Row)
+    className="footer-middle mobile"
+    fullBleed={true}
+  >
+    <FooterMiddleMobile
+      className="footer-class"
+      navLinkItems={Array []}
+    />
+  </Styled(Row)>
+  <Styled(Row)
+    className="footer-middle desktop"
+  >
+    <FooterMiddleDesktop
+      className="footer-class"
+      navLinks={Array []}
+    />
+  </Styled(Row)>
+  <div
+    className="footer-bottom"
+  >
+    <Styled(Row)
+      className="fullbleed-mobile"
+    >
+      <Styled(Col)
+        className="footer-bottom__slot--1 default-offset"
+        colSize={
+          Object {
+            "large": 4,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(Copyright) />
+      </Styled(Col)>
+      <Styled(Col)
+        className="footer-bottom__slot--2 default-offset"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(LegalLinks)
+          links={Array []}
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        className="footer-bottom__slot--3 default-offset"
+        colSize={
+          Object {
+            "large": 2,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      />
+    </Styled(Row)>
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(BodyStyle)
+          bodySize="five"
+          className="reference-id"
+          tag="p"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
+</footer>
+`;
+
+exports[`Footer component Footer component renders correctly without props 1`] = `
+<footer>
+  <div
+    className="footer-top"
+  >
+    <Styled(Row)>
+      <Styled(Col)
+        className="footer-top__slots"
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <Styled(Button)
+          customStyle="shadow-button"
+        >
+          <Styled(RichText) />
+        </Styled(Button)>
+      </Styled(Col)>
+      <Styled(Col)
+        className="footer-top__slots"
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "medium": true,
+            "small": true,
+          }
+        }
+      >
+        <Styled(Button)
+          customStyle="shadow-button"
+        >
+          <Styled(RichText) />
+        </Styled(Button)>
+      </Styled(Col)>
+      <Styled(Col)
+        className="footer-top__slots"
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <span
+          id="extole_zone_global_footer"
+        >
+          <Styled(Button)
+            customStyle="shadow-button"
+            data-locator="global_referfriend"
+          >
+            <Styled(RichText) />
+          </Styled(Button)>
+        </span>
+      </Styled(Col)>
+      <Styled(Col)
+        className="footer-top__slot--2"
+        colSize={
+          Object {
+            "large": 3,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(SocialMediaLinks) />
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
+  <Styled(Row)
+    className="footer-middle mobile"
+    fullBleed={true}
+  >
+    <FooterMiddleMobile
+      navLinkItems={Array []}
+    />
+  </Styled(Row)>
+  <Styled(Row)
+    className="footer-middle desktop"
+  >
+    <FooterMiddleDesktop
+      navLinks={Array []}
+    />
+  </Styled(Row)>
+  <div
+    className="footer-bottom"
+  >
+    <Styled(Row)
+      className="fullbleed-mobile"
+    >
+      <Styled(Col)
+        className="footer-bottom__slot--1 default-offset"
+        colSize={
+          Object {
+            "large": 4,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(Copyright) />
+      </Styled(Col)>
+      <Styled(Col)
+        className="footer-bottom__slot--2 default-offset"
+        colSize={
+          Object {
+            "large": 6,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(LegalLinks)
+          links={Array []}
+        />
+      </Styled(Col)>
+      <Styled(Col)
+        className="footer-bottom__slot--3 default-offset"
+        colSize={
+          Object {
+            "large": 2,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      />
+    </Styled(Row)>
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        <Styled(BodyStyle)
+          bodySize="five"
+          className="reference-id"
+          tag="p"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+  </div>
+</footer>
 `;

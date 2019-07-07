@@ -2,8 +2,8 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import { cacheEnhancerMiddleware } from '@tcp/core/src/utils/cache.util';
-import globalReducers from '../reducers';
 import globalSagas from '../sagas';
+import globalReducers from '../reducers';
 
 const configureStore = preloadedState => {
   /**

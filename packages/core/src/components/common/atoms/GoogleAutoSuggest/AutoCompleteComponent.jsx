@@ -1,8 +1,11 @@
+/* eslint-disable */
 import React from 'react';
 import { requireNamedOnlineModule } from './resourceLoader';
 import TextBox from '../TextBox'; // this comment prevents linting errors
 
-/* global google  - getAddressLocationInfo this componet is used for get the address suggestion */
+/*
+ * global google  - getAddressLocationInfo this componet is used for get the address suggestion
+ */
 
 export function getAddressLocationInfo(address) {
   return requireNamedOnlineModule('google.maps').then(() => {
