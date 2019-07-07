@@ -5,6 +5,8 @@ const initialState = fromJS({
   isFetching: false,
   list: null,
   error: {},
+  showDefaultShippingUpdatedMsg: null,
+  addAddressLoaded: false,
   showUpdatedNotification: null,
   showUpdatedNotificationOnModal: null,
   deleteModalMountedState: false,
@@ -24,6 +26,21 @@ const updateAddressList = (state, action) => {
     updatedAddressList = updatedAddressList.set(0, addressObject);
   }
   return updatedAddressList;
+};
+
+const reudcerAddressBook = (state = initialState, action) => {
+  switch (action.type) {
+    case ADDRESS_BOOK_CONSTANTS.LOAD_ADD_ADDRESS_COMPONENT:
+      return state.set('addAddressLoaded', true);
+    case ADDRESS_BOOK_CONSTANTS.LOAD_ADDRESSBOOK_COMPONENT:
+      return state.set('addAddressLoaded', false);
+    default:
+      // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
+      if (state instanceof Object) {
+        return fromJS(state);
+      }
+      return state;
+  }
 };
 
 const AddressBookReducer = (state = initialState, action) => {
@@ -51,6 +68,7 @@ const AddressBookReducer = (state = initialState, action) => {
         .set('showUpdatedNotification', 'success');
     case ADDRESS_BOOK_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_FAILED:
       return state.set('error', action.payload).set('showUpdatedNotification', 'error');
+
     case ADDRESS_BOOK_CONSTANTS.UPDATE_ADDRESS_LIST_ON_DELETE:
       return state
         .set('list', updateAddressList(state, action))
@@ -63,11 +81,7 @@ const AddressBookReducer = (state = initialState, action) => {
     case ADDRESS_BOOK_CONSTANTS.DELETE_MODAL_MOUNTED_STATE:
       return state.set('deleteModalMountedState', action.payload.state);
     default:
-      // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
-      if (state instanceof Object) {
-        return fromJS(state);
-      }
-      return state;
+      return reudcerAddressBook(state, action);
   }
 };
 

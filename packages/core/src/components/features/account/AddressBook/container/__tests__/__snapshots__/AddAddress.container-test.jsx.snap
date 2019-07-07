@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AddaddressContainer> should render correctly 1`] = `
+<ReduxForm
+  destroyOnUnmount={true}
+  enableReinitialize={false}
+  forceUnregisterOnUnmount={false}
+  form="addressinfo"
+  getFormState={[Function]}
+  keepDirtyOnReinitialize={false}
+  persistentSubmitErrors={false}
+  pure={true}
+  shouldAsyncValidate={[Function]}
+  shouldError={[Function]}
+  shouldValidate={[Function]}
+  shouldWarn={[Function]}
+  submitAddAddressForm={[Function]}
+  submitAsSideEffect={false}
+  touchOnBlur={true}
+  touchOnChange={false}
+  updateUnregisteredFields={false}
+/>
+`;

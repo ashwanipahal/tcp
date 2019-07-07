@@ -1,90 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FooterNavLinks component renders default footer correctly 1`] = `
-<div>
-  <div
-    className="footer-nav-header1 container-nav-link"
-    data-index={0}
-  >
-    <Styled(FooterNavHeader)
-      headerAsImage={false}
-      isSubHeader={false}
-      titleObj=""
-      updateAccordionState={[Function]}
-    />
-    <Styled(FooterNavLinksList)
-      listArray={Array []}
-    />
-  </div>
-  <div
-    className="footer-nav-header1 container-nav-link"
-    data-index={1}
-  >
-    <Styled(FooterNavHeader)
-      headerAsImage={false}
-      isSubHeader={false}
-      titleObj=""
-      updateAccordionState={[Function]}
-    />
-    <Styled(FooterNavLinksList)
-      listArray={Array []}
-    />
-  </div>
-  <div
-    className="footer-nav-header1 container-nav-link"
-    data-index={2}
-  >
-    <Styled(FooterNavHeader)
-      headerAsImage={false}
-      isSubHeader={false}
-      titleObj=""
-      updateAccordionState={[Function]}
-    />
-    <Styled(FooterNavLinksList)
-      listArray={Array []}
-    />
-  </div>
-  <div
-    className="footer-nav-header1 container-nav-link"
-    data-index={3}
-  >
-    <Styled(FooterNavHeader)
-      headerAsImage={false}
-      isSubHeader={false}
-      titleObj=""
-      updateAccordionState={[Function]}
-    />
-    <Styled(FooterNavLinksList)
-      listArray={Array []}
-    />
-  </div>
-  <div
-    className="footer-nav-header1 container-nav-link"
-    data-index={4}
-  >
-    <Styled(FooterNavHeader)
-      headerAsImage={false}
-      isSubHeader={false}
-      titleObj=""
-      updateAccordionState={[Function]}
-    />
-    <Styled(FooterNavLinksList)
-      listArray={Array []}
-    />
-  </div>
-  <div
-    className="footer-nav-header1 container-nav-link"
-    data-index={5}
-  >
-    <Styled(FooterNavHeader)
-      headerAsImage={false}
-      isSubHeader={false}
-      titleObj=""
-      updateAccordionState={[Function]}
-    />
-    <Styled(FooterNavLinksList)
-      listArray={Array []}
-    />
-  </div>
+<div
+  className="footer-nav-header1 container-nav-link"
+>
+  <Styled(FooterNavHeader)
+    headerAsImage={false}
+    isSubHeader={false}
+    titleObj={
+      Object {
+        "text": "",
+      }
+    }
+    titleText=""
+    updateAccordionState={[Function]}
+  />
+  <Styled(FooterNavLinksList)
+    listArray={Array []}
+  />
 </div>
 `;

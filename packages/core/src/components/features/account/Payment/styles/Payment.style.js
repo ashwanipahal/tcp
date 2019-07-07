@@ -15,7 +15,7 @@ const styles = css`
       margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
     }
   }
-  .payment_offers {
+  .payment__offers {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     @media ${props => props.theme.mediaQuery.medium} {
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};

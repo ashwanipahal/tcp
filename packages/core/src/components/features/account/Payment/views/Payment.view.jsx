@@ -74,7 +74,7 @@ const PaymentView = ({
               medium: 8,
             }}
           >
-            <Offers labels={labels} className="payment_offers" />
+            <Offers labels={labels} className="payment__offers" />
           </Col>
         </Row>
       )}

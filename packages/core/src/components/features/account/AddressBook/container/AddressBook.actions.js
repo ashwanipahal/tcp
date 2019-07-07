@@ -9,6 +9,14 @@ export const setAddressList = addressList => ({
   addressList,
 });
 
+export const loadAddAddressComponent = () => ({
+  type: ADDRESS_BOOK_CONSTANTS.LOAD_ADD_ADDRESS_COMPONENT,
+});
+
+export const loadAddressBookComponent = () => ({
+  type: ADDRESS_BOOK_CONSTANTS.LOAD_ADDRESSBOOK_COMPONENT,
+});
+
 export const updateAddressListOnDelete = payload => ({
   type: ADDRESS_BOOK_CONSTANTS.UPDATE_ADDRESS_LIST_ON_DELETE,
   payload,

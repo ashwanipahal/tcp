@@ -12,6 +12,10 @@ export const ADDRESSBOOK_REDUCER_KEY = 'AddressBookReducer';
 export const PAYMENT_REDUCER_KEY = 'PaymentReducer';
 export const LOGINPAGE_ACTION_PATTERN = '@@Login-';
 
+// Add address page reducer
+export const ADDADDRESS_REDUCER_KEY = 'AddAddressReducer';
+export const ADDADDRESS_ACTION_PATTERN = '@@Address-';
+
 // ProductListing Page Reducer
 export const PRODUCTLISTINGPAGE_REDUCER_KEY = 'ProductListingPage';
 export const PRODUCTLISTINGPAGE_ACTION_PATTERN = '@@PLP-';

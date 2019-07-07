@@ -31,8 +31,8 @@ export function* getCardList() {
 }
 
 export function* PaymentSaga() {
-  const cachedGetCardList = validateReduxCache(getCardList);
-  yield takeLatest(PAYMENT_CONSTANTS.GET_CARD_LIST, cachedGetCardList);
+  const cachedCardList = validateReduxCache(getCardList);
+  yield takeLatest(PAYMENT_CONSTANTS.GET_CARD_LIST, cachedCardList);
 }
 
 export default PaymentSaga;

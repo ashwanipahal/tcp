@@ -9,7 +9,7 @@ describe('FooterNavHeader component', () => {
       titleText: 'Title',
       ariaLabel: 'ABCD',
       isSubHeader: false,
-      index: 2,
+      colNum: 2,
     };
     const component = shallow(<FooterNavHeaderVanilla {...props} />);
     expect(component).toMatchSnapshot();
@@ -21,7 +21,7 @@ describe('FooterNavHeader component', () => {
       titleText: 'Title',
       ariaLabel: 'ABCD',
       isSubHeader: true,
-      index: 4,
+      colNum: 4,
     };
     const component = shallow(<FooterNavHeaderVanilla {...props} />);
     expect(component).toMatchSnapshot();
@@ -34,7 +34,7 @@ describe('FooterNavHeader component', () => {
       ariaLabel: 'ABCD',
       isSubHeader: false,
       headerAsImage: true,
-      index: 3,
+      colNum: 3,
       titleObj: {
         text: '',
         url: '',
