@@ -13,6 +13,7 @@ exports[`AddAddressForm component should renders correctly 1`] = `
   handleSubmit={[MockFunction]}
   initialValues={
     Object {
+      "address2": "",
       "country": "US",
     }
   }

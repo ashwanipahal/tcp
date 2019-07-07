@@ -202,5 +202,6 @@ export default reduxForm({
   form: 'AddAddressForm', // a unique identifier for this form
   initialValues: {
     country: 'US',
+    address2: '',
   },
 })(AddAddressForm);

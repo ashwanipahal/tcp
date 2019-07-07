@@ -38,7 +38,8 @@ const textboxStyles = css`
 
     ${props =>
       props.meta &&
-      props.meta.invalid &&
+      props.meta.touched &&
+      props.meta.error &&
       `
       border-bottom: 1px solid ${props.theme.colors.NOTIFICATION.ERROR};
     `}
