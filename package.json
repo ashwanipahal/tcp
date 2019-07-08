@@ -27,6 +27,7 @@
     "eslint:web": "yarn workspace @tcp/web eslint src/ --ext .js,.jsx && yarn eslint:core",
     "eslint:app": "yarn workspace mobileapp eslint src/ --ext .js,.jsx && yarn eslint:core",
     "stylelint:web": "yarn workspace @tcp/web stylelint src/**/*.js && yarn workspace @tcp/core stylelint src/**/*.js",
+    "stylelint:app": "yarn workspace mobileapp stylelint src/**/*.js && yarn workspace @tcp/core stylelint src/**/*.js",
     "lint:web": "yarn eslint:web && yarn stylelint:web",
     "lint:app": "yarn eslint:app && yarn stylelint:app"
   },
