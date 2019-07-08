@@ -145,7 +145,7 @@ class DeleteCardModal extends React.Component<Props> {
           <Notification
             status={showUpdatedNotificationOnModal}
             colSize={{ large: 11, medium: 7, small: 6 }}
-            message={labels.errorMessage}
+            message={labels.ACC_LBL_ERROR_MSG}
           />
         )}
 

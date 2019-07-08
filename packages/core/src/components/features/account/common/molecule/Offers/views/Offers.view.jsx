@@ -34,7 +34,7 @@ const Offers = ({ labels, className }: Props) => {
             medium: 7,
           }}
         >
-          <RichText richTextHtml={labels.offersMessage} />
+          <RichText richTextHtml={labels.ACC_LBL_OFFERS_MESSAGE} />
         </Col>
       </Row>
     </div>

@@ -30,9 +30,7 @@ exports[`Offers Component should render correctly 1`] = `
         }
       }
     >
-      <Styled(RichText)
-        richTextHtml="<p>offers</p>"
-      />
+      <Styled(RichText) />
     </Styled(Col)>
   </Styled(Row)>
 </div>

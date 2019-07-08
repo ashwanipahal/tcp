@@ -10,12 +10,16 @@ exports[`CreditCardList Component should render correctly 1`] = `
     component={null}
     textAlign="left"
     variant="h6"
-  >
-    heading
-  </Styled(Heading)>
+  />
   <Styled(EmptyCard)
     alt="card icon"
     icon="credit-card"
+    labels={
+      Object {
+        "creditCardHeading": "heading",
+      }
+    }
+    prefix="CC"
   />
   <Styled(Col)
     colSize={
@@ -29,6 +33,7 @@ exports[`CreditCardList Component should render correctly 1`] = `
     <Styled(Button)
       buttonVariation="fixed-width"
       className="creditCardList__ccAddCta"
+      dataLocator="payment-addcreditcard"
       fill="BLUE"
     />
   </Styled(Col)>
@@ -45,9 +50,7 @@ exports[`CreditCardList Component should render correctly if list is present 1`]
     component={null}
     textAlign="left"
     variant="h6"
-  >
-    heading
-  </Styled(Heading)>
+  />
   <Styled(Col)
     colSize={
       Object {
@@ -60,6 +63,7 @@ exports[`CreditCardList Component should render correctly if list is present 1`]
     <Styled(Button)
       buttonVariation="fixed-width"
       className="creditCardList__ccAddCta"
+      dataLocator="payment-addcreditcard"
       fill="BLUE"
     />
   </Styled(Col)>

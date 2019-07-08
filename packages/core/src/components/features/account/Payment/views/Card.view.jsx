@@ -50,15 +50,15 @@ export class CardView extends React.PureComponent<Props> {
         <DeleteCardModal
           openState={deleteModalMountedState}
           data={{
-            heading: labels.giftCard.heading,
+            heading: labels.ACC_LBL_MODAL_GC_HEADING,
             description: selectedGiftCard,
             buttons: {
-              cancel: labels.giftCard.cancel,
-              confirm: labels.giftCard.confirm,
+              cancel: labels.ACC_LBL_MODAL_GC_CANCEL,
+              confirm: labels.ACC_LBL_MODAL_GC_CONFIRM,
             },
             cardText: {
-              cardEnd: labels.giftCard.cardEnd,
-              expire: labels.giftCard.expire,
+              cardEnd: labels.ACC_LBL_MODAL_GC_CARDEND,
+              expire: labels.ACC_LBL_MODAL_GC_EXPIRE,
             },
           }}
           labels={labels}

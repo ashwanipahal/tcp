@@ -48,19 +48,16 @@ exports[`Payment View should render correctly with cardList 1`] = `
         }
       }
     >
-      <Styled(BodyCopy)
-        className="payment__heading"
-        color="text.primary"
-        component="h4"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
-      >
-        Payment
-      </Styled(BodyCopy)>
+      <Styled(Notification)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        status="success"
+      />
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -75,15 +72,16 @@ exports[`Payment View should render correctly with cardList 1`] = `
         }
       }
     >
-      <Styled(Notification)
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-        status="success"
+      <Styled(BodyCopy)
+        className="payment__heading"
+        color="text.primary"
+        component="h4"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -137,6 +135,11 @@ exports[`Payment View should render correctly with cardList 1`] = `
           "properties": null,
         },
       ]
+    }
+    labels={
+      Object {
+        "paymentHeading": "Payment",
+      }
     }
     showNotification="success"
   />
@@ -195,16 +198,15 @@ exports[`Payment View should render correctly with error 1`] = `
         }
       }
     >
-      <Styled(BodyCopy)
-        className="payment__heading"
-        color="text.primary"
-        component="h4"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
+      <Styled(Notification)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        status="error"
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -220,15 +222,16 @@ exports[`Payment View should render correctly with error 1`] = `
         }
       }
     >
-      <Styled(Notification)
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-        status="error"
+      <Styled(BodyCopy)
+        className="payment__heading"
+        color="text.primary"
+        component="h4"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -251,16 +254,15 @@ exports[`Payment View should render correctly with success 1`] = `
         }
       }
     >
-      <Styled(BodyCopy)
-        className="payment__heading"
-        color="text.primary"
-        component="h4"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
+      <Styled(Notification)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        status="success"
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -276,15 +278,16 @@ exports[`Payment View should render correctly with success 1`] = `
         }
       }
     >
-      <Styled(Notification)
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-        status="success"
+      <Styled(BodyCopy)
+        className="payment__heading"
+        color="text.primary"
+        component="h4"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
       />
     </Styled(Col)>
   </Styled(Row)>

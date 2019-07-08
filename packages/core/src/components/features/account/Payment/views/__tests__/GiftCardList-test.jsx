@@ -1,7 +1,7 @@
 import React from 'react';
 import { List } from 'immutable';
 import { shallow } from 'enzyme';
-import { GiftCardListVanilla } from '../GiftCardList';
+import { GiftCardListVanilla } from '../GiftCardList.view';
 
 describe('GiftCardList Component', () => {
   it('should render correctly', () => {

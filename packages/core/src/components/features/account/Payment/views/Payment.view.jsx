@@ -6,8 +6,8 @@ import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import styles from '../styles/Payment.style';
 import Notification from '../../../../common/molecules/Notification';
-import CreditCardList from './CreditCardList';
-import GiftCardList from './GiftCardList';
+import CreditCardList from './CreditCardList.view';
+import GiftCardList from './GiftCardList.view';
 import Offers from '../../common/molecule/Offers/views/Offers.view';
 
 // @flow
@@ -41,6 +41,27 @@ const PaymentView = ({
 }: Props) => {
   return (
     <div className={className}>
+      {showNotification && (
+        <Row fullBleed>
+          <Col
+            colSize={{
+              small: 6,
+              large: 12,
+              medium: 8,
+            }}
+          >
+            <Notification
+              status={showNotification}
+              colSize={{ large: 12, medium: 8, small: 6 }}
+              message={
+                showNotification === 'success'
+                  ? labels.ACC_LBL_SUCCESS_MSG
+                  : labels.ACC_LBL_ERROR_MSG
+              }
+            />
+          </Col>
+        </Row>
+      )}
       <Row fullBleed>
         <Col
           colSize={{
@@ -56,27 +77,10 @@ const PaymentView = ({
             component="h4"
             className="payment__heading"
           >
-            {labels.paymentHeading}
+            {labels.ACC_LBL_PAYMENT_HEADING}
           </BodyCopy>
         </Col>
       </Row>
-      {showNotification && (
-        <Row fullBleed>
-          <Col
-            colSize={{
-              small: 6,
-              large: 12,
-              medium: 8,
-            }}
-          >
-            <Notification
-              status={showNotification}
-              colSize={{ large: 12, medium: 8, small: 6 }}
-              message={showNotification === 'success' ? labels.successMessage : labels.errorMessage}
-            />
-          </Col>
-        </Row>
-      )}
       {cardList && (
         <Row fullBleed>
           <Col
@@ -92,7 +96,7 @@ const PaymentView = ({
       )}
       {creditCardList && (
         <CreditCardList
-          labels={labels.creditCard}
+          labels={labels}
           creditCardList={creditCardList}
           className="payment__creditCard"
           deleteModalMountedState={deleteModalMountedState}
