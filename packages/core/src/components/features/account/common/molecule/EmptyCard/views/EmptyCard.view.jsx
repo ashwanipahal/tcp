@@ -8,14 +8,16 @@ import { getIconPath } from '../../../../../../../utils';
 
 // @flow
 type Props = {
-  heading: string,
-  description: string,
+  labels: object,
   className: string,
   icon: string,
   alt: string,
+  prefix: string,
 };
 
-const EmptyCard = ({ heading, description, className, icon, alt }: Props) => {
+const EmptyCard = ({ labels, className, icon, alt, prefix }: Props) => {
+  const heading = labels[`ACC_LBL_${prefix}_EMPTY_HEADING`];
+  const desc = labels[`ACC_LBL_${prefix}_EMPTY_DESC`];
   const cardIcon = getIconPath(icon);
   return (
     <div className={className}>
@@ -60,7 +62,7 @@ const EmptyCard = ({ heading, description, className, icon, alt }: Props) => {
             lineHeight="lh115"
             className="emptyCard__description--desktop"
           >
-            {description}
+            {desc}
           </BodyCopy>
         </Col>
         <Col
@@ -83,7 +85,7 @@ const EmptyCard = ({ heading, description, className, icon, alt }: Props) => {
             lineHeight="lh115"
             className="emptyCard__description--mobile"
           >
-            {description}
+            {desc}
           </BodyCopy>
         </Col>
       </Row>

@@ -26,9 +26,7 @@ exports[`Payment View should render correctly 1`] = `
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
-      >
-        Payment
-      </Styled(BodyCopy)>
+      />
     </Styled(Col)>
   </Styled(Row)>
 </div>
@@ -38,6 +36,30 @@ exports[`Payment View should render correctly with cardList 1`] = `
 <div
   className=""
 >
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Notification)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        status="success"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
   <Styled(Row)
     fullBleed={true}
   >
@@ -60,32 +82,6 @@ exports[`Payment View should render correctly with cardList 1`] = `
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
-      >
-        Payment
-      </Styled(BodyCopy)>
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    >
-      <Styled(Notification)
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-        status="success"
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -140,6 +136,11 @@ exports[`Payment View should render correctly with cardList 1`] = `
         },
       ]
     }
+    labels={
+      Object {
+        "paymentHeading": "Payment",
+      }
+    }
   />
   <Styled(GiftCardList)
     className="payment__giftCard"
@@ -170,6 +171,11 @@ exports[`Payment View should render correctly with cardList 1`] = `
         },
       ]
     }
+    labels={
+      Object {
+        "paymentHeading": "Payment",
+      }
+    }
   />
 </div>
 `;
@@ -178,33 +184,6 @@ exports[`Payment View should render correctly with error 1`] = `
 <div
   className=""
 >
-  <Styled(Row)
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    >
-      <Styled(BodyCopy)
-        className="payment__heading"
-        color="text.primary"
-        component="h4"
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="extrabold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
-      >
-        Payment
-      </Styled(BodyCopy)>
-    </Styled(Col)>
-  </Styled(Row)>
   <Styled(Row)
     fullBleed={true}
   >
@@ -229,13 +208,6 @@ exports[`Payment View should render correctly with error 1`] = `
       />
     </Styled(Col)>
   </Styled(Row)>
-</div>
-`;
-
-exports[`Payment View should render correctly with success 1`] = `
-<div
-  className=""
->
   <Styled(Row)
     fullBleed={true}
   >
@@ -258,11 +230,16 @@ exports[`Payment View should render correctly with success 1`] = `
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
-      >
-        Payment
-      </Styled(BodyCopy)>
+      />
     </Styled(Col)>
   </Styled(Row)>
+</div>
+`;
+
+exports[`Payment View should render correctly with success 1`] = `
+<div
+  className=""
+>
   <Styled(Row)
     fullBleed={true}
   >
@@ -284,6 +261,31 @@ exports[`Payment View should render correctly with success 1`] = `
           }
         }
         status="success"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="payment__heading"
+        color="text.primary"
+        component="h4"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
       />
     </Styled(Col)>
   </Styled(Row)>

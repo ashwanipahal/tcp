@@ -19,15 +19,10 @@ const GiftCardList = ({ labels, giftCardList, className }: Props) => {
   return (
     <div className={className}>
       <Heading variant="h6" className="creditCardList__heading">
-        {labels.giftCardHeading}
+        {labels.ACC_LBL_GC_HEADING}
       </Heading>
       {giftCardList.size === 0 && (
-        <EmptyCard
-          heading={labels.emptyCardHeading}
-          description={labels.emptyCardDesc}
-          icon="gift-card"
-          alt="gift card icon"
-        />
+        <EmptyCard labels={labels} icon="gift-card" alt="gift card icon" prefix="GC" />
       )}
       <Row fullBleed>
         <Col
@@ -38,7 +33,7 @@ const GiftCardList = ({ labels, giftCardList, className }: Props) => {
           }}
         >
           <Button buttonVariation="fixed-width" fill="BLUE">
-            {giftCardList.size === 0 ? labels.giftCardCta : labels.ccAddCta}
+            {giftCardList.size === 0 ? labels.ACC_LBL_GC_EMPTY_ADD_BTN : labels.ACC_LBL_ADD_BTN}
           </Button>
         </Col>
       </Row>

@@ -10,12 +10,16 @@ exports[`GiftCardList Component should render correctly 1`] = `
     component={null}
     textAlign="left"
     variant="h6"
-  >
-    heading
-  </Styled(Heading)>
+  />
   <Styled(EmptyCard)
     alt="gift card icon"
     icon="gift-card"
+    labels={
+      Object {
+        "giftCardHeading": "heading",
+      }
+    }
+    prefix="GC"
   />
   <Styled(Row)
     fullBleed={true}
@@ -48,9 +52,7 @@ exports[`GiftCardList Component should render correctly if list is present 1`] =
     component={null}
     textAlign="left"
     variant="h6"
-  >
-    heading
-  </Styled(Heading)>
+  />
   <Styled(Row)
     fullBleed={true}
   >

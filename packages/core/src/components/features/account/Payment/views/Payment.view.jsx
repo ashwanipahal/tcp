@@ -29,6 +29,27 @@ const PaymentView = ({
 }: Props) => {
   return (
     <div className={className}>
+      {showNotification && (
+        <Row fullBleed>
+          <Col
+            colSize={{
+              small: 6,
+              large: 12,
+              medium: 8,
+            }}
+          >
+            <Notification
+              status={showNotification}
+              colSize={{ large: 12, medium: 8, small: 6 }}
+              message={
+                showNotification === 'success'
+                  ? labels.ACC_LBL_SUCCESS_MSG
+                  : labels.ACC_LBL_ERROR_MSG
+              }
+            />
+          </Col>
+        </Row>
+      )}
       <Row fullBleed>
         <Col
           colSize={{
@@ -44,27 +65,10 @@ const PaymentView = ({
             component="h4"
             className="payment__heading"
           >
-            {labels.paymentHeading}
+            {labels.ACC_LBL_PAYMENT_HEADING}
           </BodyCopy>
         </Col>
       </Row>
-      {showNotification && (
-        <Row fullBleed>
-          <Col
-            colSize={{
-              small: 6,
-              large: 12,
-              medium: 8,
-            }}
-          >
-            <Notification
-              status={showNotification}
-              colSize={{ large: 12, medium: 8, small: 6 }}
-              message={showNotification === 'success' ? labels.successMessage : labels.errorMessage}
-            />
-          </Col>
-        </Row>
-      )}
       {cardList && (
         <Row fullBleed>
           <Col
@@ -80,17 +84,13 @@ const PaymentView = ({
       )}
       {creditCardList && (
         <CreditCardList
-          labels={labels.creditCard}
+          labels={labels}
           creditCardList={creditCardList}
           className="payment__creditCard"
         />
       )}
       {giftCardList && (
-        <GiftCardList
-          labels={labels.giftCard}
-          giftCardList={giftCardList}
-          className="payment__giftCard"
-        />
+        <GiftCardList labels={labels} giftCardList={giftCardList} className="payment__giftCard" />
       )}
     </div>
   );

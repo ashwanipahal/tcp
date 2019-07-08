@@ -18,15 +18,10 @@ const CreditCardList = ({ labels, creditCardList, className }: Props) => {
   return (
     <div className={className}>
       <Heading variant="h6" className="creditCardList__heading">
-        {labels.creditCardHeading}
+        {labels.ACC_LBL_CC_HEADING}
       </Heading>
       {creditCardList.size === 0 && (
-        <EmptyCard
-          heading={labels.emptyCardHeading}
-          description={labels.emptyCardDesc}
-          icon="credit-card"
-          alt="card icon"
-        />
+        <EmptyCard labels={labels} icon="credit-card" alt="card icon" prefix="CC" />
       )}
       <Col
         colSize={{
@@ -36,7 +31,7 @@ const CreditCardList = ({ labels, creditCardList, className }: Props) => {
         }}
       >
         <Button buttonVariation="fixed-width" fill="BLUE" className="creditCardList__ccAddCta">
-          {creditCardList.size === 0 ? labels.emptyCCAddCta : labels.ccAddCta}
+          {creditCardList.size === 0 ? labels.ACC_LBL_CC_EMPTY_ADD_BTN : labels.ACC_LBL_ADD_BTN}
         </Button>
       </Col>
     </div>
