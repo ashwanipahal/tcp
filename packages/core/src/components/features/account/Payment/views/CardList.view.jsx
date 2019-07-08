@@ -3,6 +3,7 @@ import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import CardTile from './CardTile.view';
 import giftCards from './mock';
+
 // @flow
 
 type Props = {
@@ -17,7 +18,7 @@ export const CardList = ({ setSelectedGiftCard, className, setDeleteModalMountSt
     <div>
       {giftCards.map(
         giftcard =>
-          giftcard.ccBrand !== 'GC' && (
+          giftcard.ccBrand === 'GC' && (
             <Row fullBleed className={className}>
               <Col className="giftcardList__col" colSize={{ large: 4, medium: 4, small: 6 }}>
                 <CardTile

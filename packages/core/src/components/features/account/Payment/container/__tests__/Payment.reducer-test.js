@@ -3,7 +3,7 @@ import PaymentReducer from '../Payment.reducer';
 import { setCardList } from '../Payment.actions';
 import PAYMENT_CONSTANTS from '../../Payment.constants';
 
-const cardList = [{}];
+const payload = [{}];
 
 describe('Payment Reducer', () => {
   it('should return empty cardList as default state', () => {
@@ -11,7 +11,7 @@ describe('Payment Reducer', () => {
   });
 
   it('should return cardList object for the cardList', () => {
-    expect(PaymentReducer(undefined, setCardList(cardList)).get('cardList').size).toBe(1);
+    expect(PaymentReducer(undefined, setCardList(payload)).get('cardList').size).toBe(1);
   });
 
   it('should return cardList object for the cardList if state is passed as an array', () => {
@@ -41,7 +41,7 @@ describe('Payment Reducer', () => {
     expect(
       PaymentReducer(initialState, {
         type: PAYMENT_CONSTANTS.GET_CARD_LIST_ERR,
-        err,
+        payload: err,
       })
     ).toEqual(fromJS({ showNotification: 'error', isFetching: false }));
   });

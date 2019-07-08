@@ -12,16 +12,19 @@ export function* deleteCard({ payload }) {
   try {
     const { relURI, method } = endpoints.deleteCreditCardOnAccount;
     const baseURI = endpoints.deleteAddress.baseURI || endpoints.global.baseURI;
+    const payloadParam = {
+      creditCardId: payload.creditCardId,
+      action: 'D',
+    };
     const res = yield call(
       fetchData,
       baseURI,
       relURI,
       {
+        payload: payloadParam,
         langId: -1,
         catalogId: 10551,
         storeId: 10151,
-        creditCardId: payload.creditCardId,
-        action: 'D',
       },
       method
     );

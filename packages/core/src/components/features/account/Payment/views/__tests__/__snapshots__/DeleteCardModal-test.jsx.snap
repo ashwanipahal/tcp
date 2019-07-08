@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Delete card Modal should render correctly 1`] = `
+<errorBoundaryComponent
+  className="TCPModal__Content, undefined"
+  fixedWidth={true}
+  heading="DELETE ADDRESS"
+  maxWidth="690px"
+  minHeight="340px"
+  onRequestClose={[Function]}
+  overlayClassName="TCPModal__Overlay"
+>
+  <div>
+    <Styled(BodyStyle)
+      bodySize="seven"
+      className="deleteCardModal_modalTitle"
+      fontFamily="secondaryFontFamily"
+      fontWeight="bold"
+    >
+      DELETE ADDRESS
+    </Styled(BodyStyle)>
+    <Styled(BodyStyle)
+      className="deleteCardModal_desc"
+    >
+       
+      <Styled(Image)
+        className="deleteCardModal_img"
+        src="/static/images/gift-card.png"
+      />
+      <Styled(BodyStyle)
+        bodySize="three"
+        className="deleteCardModal_cardInfo"
+      >
+        <Styled(BodyStyle)
+          className="deleteCardModal_card"
+          fontFamily="secondaryFontFamily"
+          fontWeight="bold"
+          tag="span"
+        >
+          Card ending in 
+          ined
+        </Styled(BodyStyle)>
+        <Styled(BodyStyle)
+          className="deleteCardModal_expiry"
+          fontFamily="secondaryFontFamily"
+          fontWeight="normal"
+          tag="span"
+        >
+           Expire on 
+          undefined/undefined 
+        </Styled(BodyStyle)>
+      </Styled(BodyStyle)>
+    </Styled(BodyStyle)>
+    <div
+      className="deleteCardModal_btnWrapper"
+    >
+      <Styled(Button)
+        buttonVariation="variable-width"
+        className="deleteCardModal_deleteConfirm deleteCardModal_btn"
+        fill="BLUE"
+        onClick={[Function]}
+      >
+        Yes Delete
+      </Styled(Button)>
+      <Styled(Button)
+        buttonVariation="variable-width"
+        className="deleteCardModal_btn deleteCardModal_deleteCancel"
+        fill="RED"
+        onClick={[Function]}
+      >
+        No, Dont Cancel
+      </Styled(Button)>
+    </div>
+  </div>
+</errorBoundaryComponent>
+`;

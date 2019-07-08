@@ -45,7 +45,7 @@ const endpoints = {
     relURI: '/api/v2/account/deleteCreditCardDetails',
   },
   global: {
-    baseURI: 'https://test4.childrensplace.com',
+    baseURI: 'https://test3.childrensplace.com',
   },
   setDefaultShippingAddress: {
     method: 'put',

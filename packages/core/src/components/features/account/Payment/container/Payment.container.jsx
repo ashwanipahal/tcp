@@ -2,11 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { getCardList, setDeleteModalMountedState, deleteCard } from './Payment.actions';
 import {
-  getCardListState,
+  getCreditDebitCards,
   getCardListFetchingState,
   getShowNotificationState,
   deleteModalOpenState,
   showUpdatedNotificationOnModalState,
+  getGiftCards,
+  getVenmoCards,
+  getCardListState,
 } from './Payment.selectors';
 import labels from './Payment.labels';
 import PaymentView from '../views/Payment.view';
@@ -20,6 +23,10 @@ type Props = {
   setDeleteModalMountState: Function,
   onDeleteCard: Function,
   showUpdatedNotificationOnModal: any,
+  creditCardList: List<any>,
+  venmoCardList: List<any>,
+  giftCardList: List<any>,
+  cardList: List<any>,
 };
 
 export class PaymentContainer extends React.Component<Props> {
@@ -36,16 +43,24 @@ export class PaymentContainer extends React.Component<Props> {
       deleteModalMountedState,
       onDeleteCard,
       showUpdatedNotificationOnModal,
+      creditCardList,
+      giftCardList,
+      venmoCardList,
+      cardList,
     } = this.props;
     if (isFetching) return <p>Loading...</p>;
     return (
       <PaymentView
         deleteModalMountedState={deleteModalMountedState}
-        labels={labels}
         setDeleteModalMountState={setDeleteModalMountState}
         showNotification={showNotification}
         onDeleteCard={onDeleteCard}
         showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
+        labels={labels}
+        creditCardList={creditCardList}
+        giftCardList={giftCardList}
+        venmoCardList={venmoCardList}
+        cardList={cardList}
       />
     );
   }
@@ -68,6 +83,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
 const mapStateToProps = state => {
   return {
     cardList: getCardListState(state),
+    creditCardList: getCreditDebitCards(state),
+    giftCardList: getGiftCards(state),
+    venmoCardList: getVenmoCards(state),
     isFetching: getCardListFetchingState(state),
     showNotification: getShowNotificationState(state),
     deleteModalMountedState: deleteModalOpenState(state),

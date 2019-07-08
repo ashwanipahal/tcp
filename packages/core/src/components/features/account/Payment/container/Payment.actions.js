@@ -4,14 +4,14 @@ export const getCardList = () => ({
   type: PAYMENT_CONSTANTS.GET_CARD_LIST,
 });
 
-export const setCardList = cardList => ({
+export const setCardList = payload => ({
   type: PAYMENT_CONSTANTS.SET_CARD_LIST,
-  cardList,
+  payload,
 });
 
-export const getCardListErr = err => ({
+export const getCardListErr = payload => ({
   type: PAYMENT_CONSTANTS.GET_CARD_LIST_ERR,
-  err,
+  payload,
 });
 
 export const setDeleteModalMountedState = payload => ({

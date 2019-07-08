@@ -17,7 +17,7 @@ const PaymentReducer = (state = initialState, action) => {
     case PAYMENT_CONSTANTS.SET_CARD_LIST:
       return state
         .set([DEFAULT_REDUCER_KEY], setCacheTTL())
-        .set('cardList', List(action.cardList))
+        .set('cardList', List(action.payload))
         .set('isFetching', false);
     case PAYMENT_CONSTANTS.GET_CARD_LIST_ERR:
       return state.set('showNotification', 'error').set('isFetching', false);
