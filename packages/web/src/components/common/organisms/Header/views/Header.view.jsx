@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Col, Row } from '@tcp/core/src/components/common/atoms';
 import { identifyBrand } from '@tcp/core/src/utils';
-
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import { HeaderTopNav } from '../../../molecules';
 import HeaderPromo from '../../../molecules/HeaderPromo';
 import config from '../config';
@@ -46,7 +46,11 @@ const Header = ({ headerTopNav, headerPromoArea }) => {
             }}
           >
             <DummyNav className="dummy-nav">
-              <div>Girl</div>
+              <div>
+                <Anchor asPath="/ProductListingPage" to="/ProductListingPage">
+                  GIRL
+                </Anchor>
+              </div>
               <div>Toddler Girl</div>
               <div>Boy</div>
               <div>Toddler Boy</div>

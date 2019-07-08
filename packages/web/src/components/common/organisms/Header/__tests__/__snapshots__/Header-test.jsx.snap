@@ -51,7 +51,12 @@ exports[`Header component renders correctly 1`] = `
           className="dummy-nav"
         >
           <div>
-            Girl
+            <Styled(Anchor)
+              asPath="/ProductListingPage"
+              to="/ProductListingPage"
+            >
+              GIRL
+            </Styled(Anchor)>
           </div>
           <div>
             Toddler Girl
