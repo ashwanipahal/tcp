@@ -33,8 +33,9 @@ export default class App extends Component {
           onPress={() => this.changePosition()}
           style={{
             flex: 1,
+            marginRight: -70,
             justifyContent: this.state.openSwitch ? 'center' : 'flex-end',
-            alignItems: this.state.openSwitch ? 'flex-start' : 'flex-end',
+            alignItems: this.state.openSwitch ? 'center' : 'flex-end',
           }}
         >
           <Image source={jake} style={{ height: 70, width: 70 }} />
@@ -45,7 +46,7 @@ export default class App extends Component {
             styles.secondIcon,
             {
               flex: 1,
-              backgroundColor: this.state.openSwitch ? '#00000070' : '#ff00ff',
+            //   backgroundColor: this.state.openSwitch ? '#00000070' : '#ff00ff',
               justifyContent: this.state.openSwitch ? 'center' : 'flex-end',
               alignItems: this.state.openSwitch ? 'center' : 'flex-start',
             },
@@ -72,12 +73,11 @@ const styles = StyleSheet.create({
     height: 200,
     position: 'absolute',
     bottom: 0,
-    backgroundColor: '#F00',
+    // backgroundColor: '#F00',
     width: '100%',
   },
   secondIcon: {
-    flex: 1,
-    // alignItems: "flex-end",
+    flex: 1
   },
   buttonsContainer: {
     flexDirection: 'row',
