@@ -7,7 +7,7 @@ import {
 import AddressVerificationComponent from '../views/AddressVerification.view';
 import { resetVerifyAddress } from './AddressVerification.actions';
 
-const mapStateToProps = state => {
+export const mapStateToProps = state => {
   return {
     userAddress: getUserAddress(state),
     suggestedAddress: getSuggestedAddress(state),
@@ -15,7 +15,7 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   resetVerifyAddressAction: () => {
     dispatch(resetVerifyAddress());
   },

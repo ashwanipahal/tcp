@@ -21,7 +21,7 @@ const getSuggestedAddress = (response, userAddress) => {
   });
 };
 
-const getResultType = response => {
+export const getResultType = response => {
   const result = response.Records[0].Results.split(',');
 
   if (result.length === 1 && result[0] === 'AS01') {
@@ -47,7 +47,7 @@ const getResultType = response => {
   return 'DEFAULT';
 };
 
-function* verifyAddress({ payload }) {
+export function* verifyAddress({ payload }) {
   try {
     const { baseURI, relURI, method } = endpoints.verifyAddress;
 
@@ -73,7 +73,7 @@ function* verifyAddress({ payload }) {
       },
       method
     );
-    if (res) {
+    if (res && res.body && res.body.Records) {
       const suggestedAddress = getSuggestedAddress(res.body, payload);
       const resultType = getResultType(res.body);
       return yield put(verifyAddressSuccess(suggestedAddress, resultType));
@@ -84,7 +84,7 @@ function* verifyAddress({ payload }) {
   }
 }
 
-function* verifyAddressSaga() {
+export function* verifyAddressSaga() {
   yield takeLatest(ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS, verifyAddress);
 }
 

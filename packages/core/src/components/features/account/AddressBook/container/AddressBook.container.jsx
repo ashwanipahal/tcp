@@ -22,7 +22,6 @@ import AddAddresslabels from './AddAddress/AddAddress.labels';
 import { setDefaultShippingAddressRequest } from './DefaultShippingAddress.actions';
 import AddAddressContainer from './AddAddress/AddAddress.container';
 // @flow
-
 type Props = {
   getAddressListAction: () => void,
   addressList: List<any>,

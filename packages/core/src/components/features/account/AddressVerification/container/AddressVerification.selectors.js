@@ -1,9 +1,7 @@
 import { createSelector } from 'reselect';
+import { ADDRESS_VERIFICATION_REDUCER_KEY } from '../../../../../constants/reducer.constants';
 
-import ADDRESS_VERIFICATION_CONSTANTS from '../AddressVerification.constants';
-
-export const getAddressVerificationState = state =>
-  state[ADDRESS_VERIFICATION_CONSTANTS.verifyAddressStateKey];
+export const getAddressVerificationState = state => state[ADDRESS_VERIFICATION_REDUCER_KEY];
 
 export const getUserAddress = createSelector(
   getAddressVerificationState,
@@ -19,4 +17,3 @@ export const getVerificationResult = createSelector(
   getAddressVerificationState,
   state => state.get('resultType')
 );
-

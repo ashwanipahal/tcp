@@ -12,8 +12,8 @@ const AddressVerificationReducer = (state = initialState, action) => {
     case ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS:
       return state
         .set('userAddress', action.payload)
-        .set('resultType', null)
-        .set('suggestedAddress', '');
+        .set('resultType', '')
+        .set('suggestedAddress', null);
     case ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS_SUCCESS:
       return state
         .set('suggestedAddress', action.suggestedAddress)
