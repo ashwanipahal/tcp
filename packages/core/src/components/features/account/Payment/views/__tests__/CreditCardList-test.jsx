@@ -1,7 +1,7 @@
 import React from 'react';
 import { List } from 'immutable';
 import { shallow } from 'enzyme';
-import { CreditCardListVanilla } from '../CreditCardList';
+import { CreditCardListVanilla } from '../CreditCardList.view';
 
 describe('CreditCardList Component', () => {
   it('should render correctly', () => {

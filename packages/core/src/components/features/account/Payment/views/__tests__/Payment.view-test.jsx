@@ -5,8 +5,8 @@ import { PaymentViewVanilla } from '../Payment.view';
 import Notification from '../../../../../common/molecules/Notification';
 import BodyCopy from '../../../../../common/atoms/BodyCopy';
 import Offers from '../../../common/molecule/Offers/views/Offers.view';
-import GiftCardList from '../GiftCardList';
-import CreditCardList from '../CreditCardList';
+import GiftCardList from '../GiftCardList.view';
+import CreditCardList from '../CreditCardList.view';
 
 describe('Payment View', () => {
   it('should render correctly', () => {
