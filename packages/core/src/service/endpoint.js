@@ -31,6 +31,14 @@ const endpoints = {
     method: 'get',
     relURI: '/api/v2/account/getAddressFromBook',
   },
+  getCardList: {
+    method: 'get',
+    relURI: '/api/v2/account/getCreditCardDetails',
+  },
+  deleteAddress: {
+    method: 'delete',
+    relURI: '/api/v2/account/deleteAddressDetails',
+  },
   verifyAddress: {
     method: 'get',
     relURI:
