@@ -1,24 +1,21 @@
+// @flow
 import React, { Fragment } from 'react';
-import styled from 'styled-components';
-import PropTypes from 'prop-types';
 import ModalCloseIcon from './ModalCloseIcon';
+import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
 
-const Title = styled.h2`
-  margin: 0px;
-  font-size: ${props => props.theme.fonts.fontSize.heading.large.h2}px;
-  font-weight: ${props => props.theme.fonts.fontWeight.black};
-`;
-
-const ModalHeader = ({ closeFunc, title }) => (
+type Props = {
+  heading: string,
+  closeFunc: Function,
+};
+const ModalHeader = ({ closeFunc, heading }: Props) => (
   <Fragment>
     <ModalCloseIcon closeFunc={closeFunc} />
-    <Title>{title}</Title>
+    {heading && (
+      <BodyCopy bodySize="five" fontWeight="black" tag="h2" className="Modal_Heading">
+        {heading}
+      </BodyCopy>
+    )}
   </Fragment>
 );
-
-ModalHeader.propTypes = {
-  closeFunc: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
-};
 
 export default ModalHeader;

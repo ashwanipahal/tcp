@@ -45,6 +45,7 @@
     "babel-loader": "^8.0.6",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.2",
+    "enzyme-to-json": "^3.3.4",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "3.1.0",
@@ -71,15 +72,14 @@
     "lerna": "^3.13.4",
     "lint-staged": "^8.1.7",
     "prettier": "1.17.1",
+    "react-test-renderer": "^16.0.0",
     "stylelint": "^9.10.1",
     "stylelint-config-css-modules": "^1.3.0",
     "stylelint-config-prettier": "^5.0.0",
     "stylelint-config-recommended": "^2.2.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-formatter-pretty": "^1.0.3",
-    "stylelint-processor-styled-components": "^1.5.1",
-    "react-test-renderer": "^16.0.0",
-    "enzyme-to-json": "^3.3.4"
+    "stylelint-processor-styled-components": "^1.5.1"
   },
   "husky": {
     "hooks": {
@@ -92,7 +92,6 @@
       "git add"
     ],
     "*.{js,jsx}": [
-      "yarn flow focus-check",
       "eslint",
       "yarn test:staged",
       "stylelint"
@@ -106,10 +105,13 @@
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
     "immutable": "^4.0.0-rc.12",
+    "little-loader": "^0.2.0",
     "react-modal": "^3.8.1",
     "react-redux": "^6.0.1",
     "react-slick": "^0.24.0",
     "redux": "^4.0.1",
+    "redux-form": "^8.2.4",
+    "redux-devtools-extension": "^2.13.8",
     "redux-immutable": "^4.0.0",
     "redux-saga": "^1.0.2",
     "reselect": "^4.0.0",

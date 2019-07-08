@@ -10,7 +10,7 @@ type Props = {
   className: string,
   ariaLabel: string,
   headerAsImage: boolean,
-  index: number,
+  colNum: number,
   titleText: string,
   titleObj: Object,
   isSubHeader: boolean,
@@ -23,21 +23,26 @@ const FooterNavHeader = ({
   ariaLabel,
   headerAsImage,
   isSubHeader,
-  index,
+  colNum,
 }: Props) => {
   if (!headerAsImage) {
     return (
       <h4
         className={!isSubHeader ? className : `${className} subHeader`}
         aria-label={ariaLabel}
-        data-index={index}
+        data-index={colNum}
+        data-locator={`col_heading_${colNum}`}
       >
         {titleText}
       </h4>
     );
   }
   return (
-    <Anchor to={titleObj.url} className={`${className} img-link`} data-locator={titleObj.url}>
+    <Anchor
+      to={titleObj.url}
+      className={`${className} img-link`}
+      data-locator={`col_heading_${colNum}`}
+    >
       <Image alt={titleObj.image_alt} src={getIconPath(titleObj.class)} />
     </Anchor>
   );

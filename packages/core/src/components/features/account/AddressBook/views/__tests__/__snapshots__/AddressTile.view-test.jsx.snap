@@ -45,6 +45,7 @@ exports[`AddressTile component should renders correctly 1`] = `
       anchorVariation="primary"
       data-locator="addressbook-delete"
       fontSizeVariation="large"
+      onClick={[Function]}
       to="/#"
       underline={true}
     />

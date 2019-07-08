@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactModal from 'react-modal';
 import { shallow } from 'enzyme';
-import Modal from '../view';
+import { ModalVanilla } from '../view/Modal';
 
 describe('Modal Wrapper', () => {
   it('renders <ReactModal>', () => {
     const wrapper = shallow(
-      <Modal>
+      <ModalVanilla>
         <div>Modal content</div>
-      </Modal>
+      </ModalVanilla>
     );
     const component = shallow(wrapper.get(0));
     expect(component.find(ReactModal).length).toEqual(1);

@@ -53,7 +53,20 @@ exports[`AddressBook component should renders correctly when addresses are not p
         "small": 6,
       }
     }
-    status="error"
+  />
+  <Styled(DeleteAddressModal)
+    data={
+      Object {
+        "buttons": Object {
+          "cancel": undefined,
+          "confirm": undefined,
+        },
+        "description": Object {},
+        "heading": undefined,
+        "title": undefined,
+      }
+    }
+    labels={Object {}}
   />
 </div>
 `;
@@ -108,7 +121,6 @@ exports[`AddressBook component should renders correctly when addresses are prese
         "small": 6,
       }
     }
-    status="error"
   />
   <Styled(AddressList)
     addresses={
@@ -125,6 +137,21 @@ exports[`AddressBook component should renders correctly when addresses are prese
           "phone1": "1234567890",
         },
       ]
+    }
+    labels={Object {}}
+    setSelectedAddress={[Function]}
+  />
+  <Styled(DeleteAddressModal)
+    data={
+      Object {
+        "buttons": Object {
+          "cancel": undefined,
+          "confirm": undefined,
+        },
+        "description": Object {},
+        "heading": undefined,
+        "title": undefined,
+      }
     }
     labels={Object {}}
   />

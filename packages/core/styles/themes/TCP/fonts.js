@@ -1,7 +1,7 @@
 const FALLBACK_FONT = 'Arial, Helvetica, sans-serif';
 const PRIMARY_FONT = `Montserrat, ${FALLBACK_FONT}`;
 const SECONDARY_FONT = `Nunito, ${FALLBACK_FONT}`;
-const PRIMARY_FONT_SEMIBOLD = `Montserrat-SemiBold, ${FALLBACK_FONT}`;
+const PRIMARY_FONT_SEMIBOLD = `Montserrat-SemiBold , ${FALLBACK_FONT}`;
 const SECONDARY_FONT_SEMIBOLD = `Nunito-SemiBold, ${FALLBACK_FONT}`;
 const PRIMARY_FONT_BLACK = `Montserrat-Black, ${FALLBACK_FONT}`;
 const SECONDARY_FONT_BLACK = `Nunito-Black, ${FALLBACK_FONT}`;
@@ -73,6 +73,7 @@ const FONT_SIZE = {
     small: 10,
     medium: 12,
     large: 14,
+    xlarge: 16,
   },
   textbox: 13,
 };

@@ -12,12 +12,16 @@ type Props = {
   labels: {},
   className: string,
   onDefaultShippingAddressClick: Object,
+  setDeleteModalMountState: Function,
+  setSelectedAddress: Function,
 };
 export const AddressList = ({
   addresses,
   labels,
   className,
   onDefaultShippingAddressClick,
+  setDeleteModalMountState,
+  setSelectedAddress,
 }: Props) => {
   return (
     <Row fullBleed className={className}>
@@ -36,6 +40,8 @@ export const AddressList = ({
             address={address}
             key={address.addressId}
             labels={labels}
+            setDeleteModalMountState={setDeleteModalMountState}
+            setSelectedAddress={setSelectedAddress}
             onDefaultShippingAddressClick={onDefaultShippingAddressClick}
           />
         </Col>

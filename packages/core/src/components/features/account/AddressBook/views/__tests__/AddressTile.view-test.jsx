@@ -127,4 +127,24 @@ describe('AddressTile component', () => {
         .text()
     ).toBe(labels.makeDefault);
   });
+  it('should call delete address click', () => {
+    const newAddress = Object.assign({}, address, {
+      primary: 'false',
+    });
+    const mockedOpenAccountModalComponent = jest.fn();
+    const mockedSetSelectedAddress = jest.fn();
+    const props = {
+      address: newAddress,
+      labels,
+      setDeleteModalMountState: mockedOpenAccountModalComponent,
+      setSelectedAddress: mockedSetSelectedAddress,
+    };
+    const component = shallow(<AddressBookTileVanilla {...props} />);
+    component
+      .find(Anchor)
+      .at(2)
+      .simulate('click', { preventDefault: jest.fn() });
+    expect(mockedOpenAccountModalComponent).toHaveBeenCalled();
+    expect(mockedSetSelectedAddress).toHaveBeenCalled();
+  });
 });

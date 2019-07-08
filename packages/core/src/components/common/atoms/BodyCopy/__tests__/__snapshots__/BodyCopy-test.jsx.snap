@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Body component renders correctly with props 1`] = `
+<p
+  className="body-copy"
+  data-locator=""
+>
+  Body Copy with props
+</p>
+`;
+
+exports[`Body component renders correctly without props 1`] = `
+<p
+  className={null}
+  data-locator=""
+>
+  Body Copy
+</p>
+`;

@@ -14,6 +14,23 @@ const Abstractor = {
   getMock: () => {
     return mock;
   },
-  processData: data => data,
+  processData: data => {
+    const result = {};
+    data.map(labelData => {
+      const { name: category, subcategories } = labelData;
+      result[category] = {};
+      subcategories.map(({ name: subcategory, labels }) => {
+        result[category][subcategory] = {};
+        labels.map(({ key, value }) => {
+          result[category][subcategory][key] = value;
+          return value;
+        });
+        return subcategory;
+      });
+      return labelData;
+    });
+
+    return result;
+  },
 };
 export default Abstractor;
