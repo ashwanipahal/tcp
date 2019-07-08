@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+// eslint-disable-next-line import/no-unresolved
 import { WebView } from 'react-native';
 
 /**

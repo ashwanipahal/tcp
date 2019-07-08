@@ -29,12 +29,6 @@ type Props = {
   title?: string,
 };
 
-// const Button = ({ id, buttonVariation, fullWidth, customStyle, ...otherProps }: Props) => (
-//   <ViewWrapper>
-//     <ButtonStyles id={id} buttonVariation={buttonVariation} fullWidth={fullWidth} {...otherProps} />
-//   </ViewWrapper>
-// );
-
 const CustomButton = (props: Props) => {
   const { title, id, buttonVariation, fullWidth, customStyle, ...otherProps } = props;
   return (
