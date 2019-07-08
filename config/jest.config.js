@@ -33,6 +33,7 @@ module.exports = {
     '!**/*.config.js',
     '!**/core/styles/**',
     '!**/*.actions.js',
+    '!**/*.container.js',
     '!**/*.query.js',
     '!**/__mocks__/**',
   ],
