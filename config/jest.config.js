@@ -29,6 +29,7 @@ module.exports = {
     '**/*.js',
     '**/*.jsx',
     '!**/*.style.js',
+    '!**/*.style.native.js',
     '!**/*.constants.js',
     '!**/*.config.js',
     '!**/core/styles/**',
@@ -36,6 +37,8 @@ module.exports = {
     '!**/*.container.js',
     '!**/*.query.js',
     '!**/__mocks__/**',
+    '!**/*.native.js',
+    '!**/*.native.jsx',
   ],
   coveragePathIgnorePatterns: [
     '/node_modules/',
