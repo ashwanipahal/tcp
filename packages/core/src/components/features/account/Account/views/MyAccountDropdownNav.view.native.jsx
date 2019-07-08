@@ -1,6 +1,6 @@
 import React from 'react'; //eslint-disable-line
 import { View, Text } from 'react-native'; //eslint-disable-line
-import { StylePickerWrapper, StyledPicker } from '../styles/MyAccountLayout.style.native';
+import { StylePickerWrapper, StyledPicker } from '../styles/MyAccountLayout.style';
 
 // @flow
 type Props = {
