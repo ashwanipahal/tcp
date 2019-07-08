@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
-import HEADER_CONSTANTS from '../Header.constants';
-import HeaderReducer from '../container/Header.reducer';
+import HEADER_CONSTANTS from '@tcp/core/src/components/common/organisms/Header/container/Header.constants';
+import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 
 describe('Header Reducer', () => {
   let state = '';

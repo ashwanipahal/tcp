@@ -19,9 +19,9 @@ const ModalStyle = css`
     padding: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     transform: translate(-50%, -50%);
     ${props => props.theme.zindex.zModal};
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 100%;
-    width: 100%;
+    width: ${props => (props.fixedWidth ? '100%' : '')};
     @media ${props => props.theme.mediaQuery.medium} {
       height: auto;
       max-width: ${props => (props.fixedWidth ? props.maxWidth : '')};

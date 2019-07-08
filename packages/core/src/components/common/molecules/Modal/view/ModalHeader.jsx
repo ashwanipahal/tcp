@@ -10,9 +10,11 @@ type Props = {
 const ModalHeader = ({ closeFunc, heading }: Props) => (
   <Fragment>
     <ModalCloseIcon closeFunc={closeFunc} />
-    <BodyCopy bodySize="five" fontWeight="black" tag="h2" className="Modal_Heading">
-      {heading}
-    </BodyCopy>
+    {heading && (
+      <BodyCopy bodySize="five" fontWeight="black" tag="h2" className="Modal_Heading">
+        {heading}
+      </BodyCopy>
+    )}
   </Fragment>
 );
 

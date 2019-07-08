@@ -17,7 +17,6 @@ const endpoints = {
   },
   addAddress: {
     method: 'post',
-    baseURI: 'https://test1.childrensplace.com',
     relURI: '/api/v2/account/addAddress',
   },
   updateAddress: {
@@ -42,7 +41,7 @@ const endpoints = {
     relURI: '/api/v2/account/deleteAddressDetails',
   },
   global: {
-    baseURI: 'https://test1.childrensplace.com',
+    baseURI: 'https://test4.childrensplace.com',
   },
   setDefaultShippingAddress: {
     method: 'put',

@@ -10,26 +10,32 @@ describe('FooterMiddleDesktop component', () => {
         {
           header: '',
           title: '',
+          links: [],
         },
         {
           header: '',
           title: '',
+          links: [],
         },
         {
           header: '',
           title: '',
+          links: [],
         },
         {
           header: '',
           title: '',
+          links: [],
         },
         {
           header: '',
           title: '',
+          links: [],
         },
         {
           header: '',
           title: '',
+          links: [],
         },
       ],
     };
@@ -43,27 +49,33 @@ describe('FooterMiddleDesktop component', () => {
         {
           header: '',
           title: '',
+          links: [],
         },
         {
           header: '',
           title: '',
+          links: [],
         },
         {
           header: '',
           title: '',
+          links: [],
         },
         {
           header: '',
           title: '',
+          links: [],
         },
         {
           header: '',
           title: '',
+          links: [],
           isSubHeader: true,
         },
         {
           header: '',
           title: '',
+          links: [],
         },
       ],
     };
