@@ -1,6 +1,6 @@
 /* eslint-disable */
 import React from 'react';
-import { Text, FlatList, Image } from 'react-native';
+import { Text, FlatList, Image, View } from 'react-native';
 import ProductListingPageStyle from '../styles/ProductListingPage.style.native';
 
 const ProductTile = ({ item }) => {
