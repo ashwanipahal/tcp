@@ -5,7 +5,8 @@ import Notification from '@tcp/core/src/components/common/molecules/Notification
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Anchor from '../../../../common/atoms/Anchor';
-import AddAddressForm from './molecules/AddAddressForm'; // eslint import/no-named-as-default
+// eslint-disable-next-line import/no-named-as-default
+import AddAddressForm from './molecules/AddAddressForm';
 import styles from '../styles/AddAddress.style';
 
 // @flow

@@ -12,6 +12,7 @@ stories
 flow-typed
 packages/**/flow-typed/
 packages/**/node_modules/
+packages/web/server/
 # Make sure to INCLUDE the following,
 # because eslint ignores hidden/dotfiles by default.
 .storybook

@@ -34,8 +34,7 @@
       "extra-rules/no-commented-out-code": "error",
       "react-native/no-raw-text": 0,
       "react/button-has-type": 0,
-      "sonarjs/no-small-switch": 0,
-      "import/no-named-as-default": 0
+      "sonarjs/no-small-switch": 0
     },
     "plugins": [
       "react-native",

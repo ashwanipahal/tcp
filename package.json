@@ -23,9 +23,11 @@
     "flow:install": "npx lerna exec flow-typed install",
     "flow:coverage": "flow-coverage-report -i 'packages/*/src/**/*.js' -x 'packages/**/*.test.js' -t html -t json -t text -o reports/flow/ --threshold 70",
     "pretty": "prettier --write **/*.{js,json,css}",
-    "eslint:web": "yarn workspace @tcp/web eslint src/ && yarn workspace @tcp/core eslint src/",
+    "eslint:web": "yarn workspace @tcp/web eslint src/ --ext .js,.jsx && yarn workspace @tcp/core eslint src/ --ext .js,.jsx",
+    "eslint:app": "yarn workspace mobileapp eslint src/ --ext .js,.jsx && yarn workspace @tcp/core eslint src/ --ext .js,.jsx",
     "stylelint:web": "yarn workspace @tcp/web stylelint src/**/*.js && yarn workspace @tcp/core stylelint src/**/*.js",
-    "lint:web": "yarn eslint:web && yarn stylelint:web"
+    "lint:web": "yarn eslint:web && yarn stylelint:web",
+    "lint:app": "yarn eslint:app && yarn stylelint:app"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -110,11 +112,12 @@
     "react-redux": "^6.0.1",
     "react-slick": "^0.24.0",
     "redux": "^4.0.1",
-    "redux-form": "^8.2.4",
     "redux-devtools-extension": "^2.13.8",
+    "redux-form": "^8.2.4",
     "redux-immutable": "^4.0.0",
     "redux-saga": "^1.0.2",
     "reselect": "^4.0.0",
-    "styled-components": "^4.2.0"
+    "styled-components": "^4.2.0",
+    "yarn": "^1.16.0"
   }
 }
