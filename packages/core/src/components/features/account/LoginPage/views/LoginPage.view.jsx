@@ -2,15 +2,14 @@
  * These are temporary changes for a dummy login page
  */
 
-// @flow
-
 import React from 'react';
 import LoginPageStyle from '../styles/LoginPage.style';
-import TextBox from '../../../../common/atoms/TextBox';
 import Button from '../../../../common/atoms/Button';
 import Grid from '../../../../common/molecules/Grid';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
+
+// @flow
 
 type Props = {
   getUserInfo: () => void,
@@ -104,11 +103,12 @@ class LoginView extends React.PureComponent<Props> {
                         }}
                       >
                         <label htmlFor="email">Email Id</label>
-                        <TextBox
+                        <input
                           type="email"
                           id="email"
                           name="email"
-                          onChangeHandler={this.changeHandler}
+                          value={this.state.email}
+                          onChange={this.changeHandler}
                         />
                       </Col>
                     </Row>
@@ -121,11 +121,12 @@ class LoginView extends React.PureComponent<Props> {
                         }}
                       >
                         <label htmlFor="password">Password</label>
-                        <TextBox
+                        <input
                           type="password"
                           id="password"
                           name="password"
-                          onChangeHandler={this.changeHandler}
+                          value={this.state.password}
+                          onChange={this.changeHandler}
                         />
                       </Col>
                     </Row>

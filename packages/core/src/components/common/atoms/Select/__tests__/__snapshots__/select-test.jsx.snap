@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Selectbox component renders correctly 1`] = `
+<div
+  className="asdfasdf active select-fields-wrapper"
+>
+  <select
+    aria-label=""
+    className="selectField"
+    id="abcd"
+    isSuccessState={false}
+    name=""
+    value="hi"
+  >
+    <option
+      id="US"
+      key="US"
+      selected=""
+      value="United States"
+    >
+      United States
+    </option>
+    <option
+      id="CA"
+      key="CA"
+      selected=""
+      value="Canada"
+    >
+      Canada
+    </option>
+  </select>
+  <Styled(BodyStyle)
+    BodycolorLg="primary"
+    FormVariation="float"
+    bodySize="two"
+    tag="div"
+  >
+    placeholder
+  </Styled(BodyStyle)>
+</div>
+`;
+
+exports[`Selectbox component renders correctly with touched and error 1`] = `
+<div
+  className="asdfasdf  select-fields-wrapper"
+>
+  <select
+    aria-label=""
+    className="selectField"
+    defaultValue="United States"
+    id="abcd"
+    isSuccessState={false}
+    name=""
+  >
+    <option
+      id="US"
+      key="US"
+      selected="selected"
+      value="United States"
+    >
+      United States
+    </option>
+    <option
+      id="CA"
+      key="CA"
+      selected=""
+      value="Canada"
+    >
+      Canada
+    </option>
+  </select>
+  <Styled(BodyStyle)
+    BodycolorLg="primary"
+    FormVariation="float"
+    bodySize="two"
+    tag="div"
+  >
+    first name for user
+  </Styled(BodyStyle)>
+  <Styled(BodyStyle)
+    ErrorMsg="error"
+    bodySize="two"
+    clearFloat={true}
+    tag="div"
+  >
+    Please enter a first name for user
+  </Styled(BodyStyle)>
+</div>
+`;
+
+exports[`Selectbox component renders correctly with touched and warning 1`] = `
+<div
+  className="asdfasdf  select-fields-wrapper"
+>
+  <select
+    aria-label=""
+    className="selectField"
+    defaultValue="United States"
+    id="abcd"
+    isSuccessState={false}
+    name=""
+  >
+    <option
+      id="US"
+      key="US"
+      selected="selected"
+      value="United States"
+    >
+      United States
+    </option>
+    <option
+      id="CA"
+      key="CA"
+      selected=""
+      value="Canada"
+    >
+      Canada
+    </option>
+  </select>
+  <Styled(BodyStyle)
+    BodycolorLg="primary"
+    FormVariation="float"
+    bodySize="two"
+    tag="div"
+  />
+  <Styled(BodyStyle)
+    bodySize="two"
+    tag="div"
+  >
+    this is a warning
+  </Styled(BodyStyle)>
+</div>
+`;

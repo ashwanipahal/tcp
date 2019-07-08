@@ -25,6 +25,7 @@ type Props = {
   onDeleteAddress: Function,
   deleteModalMountedState: false,
   setDeleteModalMountState: Function,
+  onAddNNewAddressClick: any,
 };
 
 export class AddressBook extends React.PureComponent<Props> {
@@ -50,6 +51,7 @@ export class AddressBook extends React.PureComponent<Props> {
       deleteModalMountedState,
       setDeleteModalMountState,
       showUpdatedNotificationOnModal,
+      onAddNNewAddressClick,
     } = this.props;
     const { selectedAddress } = this.state;
 
@@ -84,7 +86,7 @@ export class AddressBook extends React.PureComponent<Props> {
             }}
             className="addressBook__addNewCtaContainer"
           >
-            <Button buttonVariation="variable-width" fill="BLUE">
+            <Button onClick={onAddNNewAddressClick} buttonVariation="variable-width" fill="BLUE">
               {labels.addNewAddressCTA}
             </Button>
           </Col>
