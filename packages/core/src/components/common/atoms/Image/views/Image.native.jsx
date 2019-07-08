@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { View, Image } from 'react-native';
+import { Image } from 'react-native';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../Image.style';
 
@@ -10,11 +10,7 @@ type Props = {
 
 const ImageComp = (props: Props) => {
   const { source } = props;
-  return (
-    <View>
-      <Image source={source} {...props} />
-    </View>
-  );
+  return <Image source={source} {...props} />;
 };
 
 export default withStyles(ImageComp, style);
