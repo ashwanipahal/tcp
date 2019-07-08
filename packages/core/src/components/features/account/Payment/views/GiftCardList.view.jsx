@@ -48,13 +48,16 @@ const GiftCardList = ({
             {giftCardList.size === 0 ? labels.ACC_LBL_GC_EMPTY_ADD_BTN : labels.ACC_LBL_ADD_BTN}
           </Button>
 
-          <CardView
-            labels={labels}
-            deleteModalMountedState={deleteModalMountedState}
-            setDeleteModalMountState={setDeleteModalMountState}
-            onDeleteCard={onDeleteCard}
-            showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
-          />
+          {giftCardList.size !== 0 && (
+            <CardView
+              labels={labels}
+              deleteModalMountedState={deleteModalMountedState}
+              setDeleteModalMountState={setDeleteModalMountState}
+              onDeleteCard={onDeleteCard}
+              showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
+              giftCardList={giftCardList}
+            />
+          )}
         </Col>
       </Row>
     </div>
