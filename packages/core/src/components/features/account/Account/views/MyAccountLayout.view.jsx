@@ -7,7 +7,7 @@ import MyAccountLeftNav from './MyAccountLeftNav.view';
 type Props = {
   navData: Array<Object>,
   mainContent: Function,
-  active: String,
+  active: string,
 };
 
 /**

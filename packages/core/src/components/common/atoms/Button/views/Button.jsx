@@ -12,6 +12,7 @@ type Props = {
   disabled: boolean,
   fullWidth?: boolean,
   type?: string,
+  dataLocator?: string,
 };
 
 /**
@@ -35,6 +36,7 @@ const Button = ({
   ariaLabel,
   disabled,
   fullWidth,
+  dataLocator,
   type,
   ...otherProps
 }: Props): Node => (
@@ -44,6 +46,7 @@ const Button = ({
     className={className}
     type={type}
     fullWidth={fullWidth}
+    data-locator={dataLocator}
     {...otherProps}
   >
     {children}
@@ -53,6 +56,7 @@ const Button = ({
 Button.defaultProps = {
   fullWidth: true,
   type: 'button',
+  dataLocator: 'btn',
 };
 
 export default withStyles(Button, styles);

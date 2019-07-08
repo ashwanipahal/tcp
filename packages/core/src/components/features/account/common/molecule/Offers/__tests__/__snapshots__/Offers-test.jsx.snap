@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Offers Component should render correctly 1`] = `
+<div
+  className="abc"
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 1,
+          "medium": 1,
+          "small": 1,
+        }
+      }
+    >
+      <img
+        alt="card Icon"
+        src="/static/images/card-smile.png"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 11,
+          "medium": 7,
+          "small": 5,
+        }
+      }
+    >
+      <Styled(RichText) />
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;
