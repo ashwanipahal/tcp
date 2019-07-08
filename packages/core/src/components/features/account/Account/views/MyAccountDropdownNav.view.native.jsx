@@ -1,6 +1,6 @@
-import React, { Component } from 'react'; //eslint-disable-line
-import { View, Text, Picker } from 'react-native'; //eslint-disable-line
-import { StyledPicker } from '../styles/MyAccountLayout.style.native';
+import React from 'react'; //eslint-disable-line
+import { View, Text } from 'react-native'; //eslint-disable-line
+import { StylePickerWrapper, StyledPicker } from '../styles/MyAccountLayout.style.native';
 
 // @flow
 type Props = {
@@ -11,7 +11,6 @@ type Props = {
 type State = {
   dropDownItem: String,
 };
-
 /**
  * @function MyAccountLayoutView The AccountLayout component will provide a list of left
  * navigationLinks and the component associated with it
@@ -32,20 +31,23 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
     const { dropDownItem } = this.state;
     return (
       <View>
-        <StyledPicker
-          selectedValue={dropDownItem}
-          onValueChange={itemValue => {
-            this.setState({ dropDownItem: itemValue });
-            handleComponentChange(itemValue);
-          }}
-        >
-          {navData &&
-            navData.map(nav => {
-              return (
-                <StyledPicker.Item key={nav.id} label={nav.displayName} value={nav.component} />
-              );
-            })}
-        </StyledPicker>
+        <StylePickerWrapper>
+          <StyledPicker
+            selectedValue={dropDownItem}
+            onValueChange={itemValue => {
+              this.setState({ dropDownItem: itemValue });
+              handleComponentChange(itemValue);
+            }}
+            mode="dropdown"
+          >
+            {navData &&
+              navData.map(nav => {
+                return (
+                  <StyledPicker.Item key={nav.id} label={nav.displayName} value={nav.component} />
+                );
+              })}
+          </StyledPicker>
+        </StylePickerWrapper>
       </View>
     );
   }
