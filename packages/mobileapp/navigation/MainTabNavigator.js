@@ -4,6 +4,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
+import AnimationIconPage from '../screens/AnimationIconPage';
 import Plp from '../screens/PLPScreen';
 import PlpDeltaSync from '../screens/PLPDeltaSyncScreen';
 
@@ -12,7 +13,7 @@ import LoginSync from '../screens/LoginSync';
 
 const HomeStack = createStackNavigator({
   Home: {
-    screen: props => <HomeScreen {...props} />,
+    screen: props => <AnimationIconPage {...props} />,
   },
 });
 
