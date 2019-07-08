@@ -5,7 +5,7 @@ const styles = css`
   align-items: center;
   height: 50px;
 
-  input[type='checkbox'] {
+  & .CheckBox__input {
     position: relative;
     top: 0;
     appearance: none;
@@ -17,20 +17,25 @@ const styles = css`
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 
-  input[type='checkbox']:before {
+  & .CheckBox__input:before {
     content: '';
     font-size: 20px;
     position: absolute;
     height: 100%;
     width: 100%;
     left: 0;
-    box-shadow: inset 0 0 0 0.6px #575757;
+    box-shadow: inset 0 0 0 0.6px ${props => props.theme.colors.CHECKBOX.BORDER};
   }
 
-  input[type='checkbox']:checked:after {
+  & .CheckBox__input:checked:before {
+    background: ${props => props.theme.colors.CHECKBOX.CHECKED_BORDER};
+    box-shadow: inset 0 0 0 0.6px ${props => props.theme.colors.CHECKBOX.CHECKED_BORDER};
+  }
+
+  & .CheckBox__input:checked:after {
     transform: rotate(225deg);
     content: '';
-    border: 2px inset #333;
+    border: 2px solid ${props => props.theme.colors.CHECKBOX.TICK_COLOR};
     font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy2}px;
     width: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     height: 10px;

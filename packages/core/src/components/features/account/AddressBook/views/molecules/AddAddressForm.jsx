@@ -75,6 +75,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               component={TextBox}
               validate={[required, isSpecialChar]}
               maxLength={50}
+              dataLocator="addnewaddress-firstname"
             />
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 6 }}>
@@ -85,6 +86,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               component={TextBox}
               validate={[required, isSpecialChar]}
               maxLength={50}
+              dataLocator="addnewaddress-lastname"
             />
           </Col>
         </Row>
@@ -99,6 +101,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               onPlaceSelected={this.handlePlaceSelected}
               maxLength={30}
               componentRestrictions={Object.assign({}, { country: [country] })}
+              dataLocator="addnewaddress-addressl1"
             />
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 6 }}>
@@ -109,6 +112,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               component={TextBox}
               validate={[isSpecialChar]}
               maxLength={30}
+              dataLocator="addnewaddress-addressl2"
             />
           </Col>
         </Row>
@@ -120,6 +124,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               name="city"
               component={TextBox}
               validate={[required]}
+              dataLocator="addnewaddress-city"
             />
           </Col>
           <Col colSize={{ small: 3, medium: 2, large: 3 }}>
@@ -130,6 +135,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               validate={[required]}
               component={SelectBox}
               options={country === 'CA' ? CAcountriesStatesTable : UScountriesStatesTable}
+              dataLocator="addnewaddress-state"
             />
           </Col>
           <Col colSize={{ small: 3, medium: 2, large: 3 }}>
@@ -140,6 +146,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               component={TextBox}
               validate={[required, this.validatezip(country)]}
               maxLength={country === 'CA' ? 6 : 5}
+              dataLocator="addnewaddress-zipcode"
             />
           </Col>
         </Row>
@@ -153,6 +160,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               component={SelectBox}
               options={countriesOptionsMap}
               onChange={this.StateCountryChange}
+              dataLocator="addnewaddress-country"
             />
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 6 }}>
@@ -163,12 +171,17 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               component={TextBox}
               validate={[required, number, minValue10]}
               maxLength={10}
+              dataLocator="addnewaddress-phnumber"
             />
           </Col>
         </Row>
         <Row fullBleed>
           <Col colSize={{ small: 4, medium: 4, large: 6 }} offsetLeft={{ small: 1 }}>
-            <Field name="primary" component={InputCheckbox}>
+            <Field
+              name="primary"
+              component={InputCheckbox}
+              dataLocator="addnewaddress-setdefaddress"
+            >
               Set as default shipping address
             </Field>
           </Col>
@@ -179,7 +192,12 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
             colSize={{ small: 4, medium: 3, large: 3 }}
             offsetLeft={{ small: 1, medium: 1, large: 6 }}
           >
-            <Button onClick={backToAddressBookClick} buttonVariation="fixed-width" type="button">
+            <Button
+              onClick={backToAddressBookClick}
+              buttonVariation="fixed-width"
+              type="button"
+              data-locator="addnewaddress-cancel"
+            >
               Cancel
             </Button>
           </Col>
@@ -188,7 +206,13 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
             colSize={{ small: 4, medium: 3, large: 3 }}
             offsetLeft={{ small: 1 }}
           >
-            <Button fill="BLUE" disabled={pristine} type="submit" buttonVariation="fixed-width">
+            <Button
+              fill="BLUE"
+              disabled={pristine}
+              type="submit"
+              buttonVariation="fixed-width"
+              data-locator="addnewaddress-addaddress"
+            >
               Add Address
             </Button>
           </Col>

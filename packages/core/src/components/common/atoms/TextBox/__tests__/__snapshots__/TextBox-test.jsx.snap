@@ -7,6 +7,7 @@ exports[`Textbox component renders correctly 1`] = `
   <input
     aria-label=""
     className="TextBox__input"
+    data-locator=""
     id="abcd"
     placeholder=""
     type="text"

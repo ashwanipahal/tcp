@@ -1,10 +1,11 @@
-// @flow
 import React from 'react';
 import type { Node } from 'react';
 import BodyCopy from '../../BodyCopy';
 import withStyles from '../../../hoc/withStyles';
 import errors from '../../../../../utils/errorsMsg';
 import StyledTextBox from '../TextBox.style';
+
+// @flow
 
 /**
  * @param {object} props : Props for button
@@ -24,6 +25,7 @@ type Props = {
   input: any,
   maxLength: any,
   inputRef: any,
+  dataLocator?: string,
 };
 const getErroMsg = (value, placeholder) => {
   return value.replace('@@LABEL@@', placeholder);
@@ -39,6 +41,7 @@ const TextBox = ({
   input,
   inputRef,
   meta: { touched, error },
+  dataLocator,
 }: Props): Node => {
   const elemValue = input.value;
   const isError = touched && error;
@@ -60,6 +63,7 @@ const TextBox = ({
         value={elemValue}
         ref={inputRef}
         placeholder=""
+        data-locator={dataLocator}
       />
       <BodyCopy className="TextBox__label" fontFamily="secondary" fontSize="fs12">
         {placeholder}
@@ -79,6 +83,7 @@ TextBox.defaultProps = {
   type: 'text',
   placeholder: '',
   onChangeHandler: () => {},
+  dataLocator: '',
 };
 
 export default withStyles(TextBox, StyledTextBox);

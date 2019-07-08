@@ -7,6 +7,7 @@ exports[`Selectbox component renders correctly 1`] = `
   <select
     aria-label=""
     className="select__input"
+    data-locator=""
     id="abcd"
     name=""
     value="hello"
@@ -49,6 +50,7 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
   <select
     aria-label=""
     className="select__input"
+    data-locator=""
     id="abcd"
     name=""
   >
@@ -103,6 +105,7 @@ exports[`Selectbox component renders correctly with touched and warning 1`] = `
   <select
     aria-label=""
     className="select__input"
+    data-locator=""
     id="abcd"
     name=""
   >

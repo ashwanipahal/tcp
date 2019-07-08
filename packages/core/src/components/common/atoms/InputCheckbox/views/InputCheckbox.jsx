@@ -8,28 +8,34 @@ import styles from '../InputCheckbox.style';
 
 type Props = {
   children: Node,
-  className: ?string,
-  ariaLabel: ?string,
+  className: string,
+  ariaLabel?: string,
   disabled: ?boolean,
-  input: any,
-  name: ?string,
+  input?: any,
+  dataLocator?: string,
 };
 
-const InputCheckbox = ({ children, className, ariaLabel, input, name }: Props): Node => (
-  <label htmlFor={name} className={className}>
+const InputCheckbox = ({ children, className, ariaLabel, input, dataLocator }: Props): Node => (
+  <label htmlFor={input.name} className={className}>
     <input
-      id={name}
+      id={input.name}
       aria-label={ariaLabel}
       className="CheckBox__input"
-      name={name}
       type="checkbox"
       {...input}
+      data-locator={dataLocator}
     />
     <BodyCopy fontSize="fs12" fontFamily="secondary">
       {children}
     </BodyCopy>
   </label>
 );
+
+InputCheckbox.defaultProps = {
+  ariaLabel: '',
+  dataLocator: '',
+  input: {},
+};
 
 export default withStyles(InputCheckbox, styles);
 export { InputCheckbox as InputCheckboxVanilla };

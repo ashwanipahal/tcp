@@ -3,12 +3,11 @@
 exports[`InputCheckbox component should render correctly 1`] = `
 <label
   className="sample-class"
-  htmlFor="inputCheckbox"
 >
   <input
+    aria-label=""
     className="CheckBox__input"
-    id="inputCheckbox"
-    name="inputCheckbox"
+    data-locator=""
     type="checkbox"
   />
   <Styled(BodyCopy)

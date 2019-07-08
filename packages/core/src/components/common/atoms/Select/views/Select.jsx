@@ -25,6 +25,7 @@ type Props = {
   input: any,
   options: any,
   defaultValue: any,
+  dataLocator?: string,
 };
 
 const getErroMsg = (value, placeholder) => {
@@ -40,6 +41,7 @@ const SelectBox = ({
   input,
   options,
   meta: { touched, error },
+  dataLocator,
 }: Props): Node => {
   return (
     <div className={className}>
@@ -50,6 +52,7 @@ const SelectBox = ({
         className="select__input"
         name={name}
         value={input.value}
+        data-locator={dataLocator}
       >
         {options &&
           options.map(option => {
@@ -78,6 +81,7 @@ SelectBox.defaultProps = {
   name: '',
   type: 'text',
   placeholder: '',
+  dataLocator: '',
 };
 
 export default withStyles(SelectBox, StyledTextBox);

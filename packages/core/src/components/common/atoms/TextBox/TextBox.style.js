@@ -12,7 +12,7 @@ const textboxStyles = css`
         : props.theme.fonts.fontSize.textbox}px;
     padding: 0;
     position: absolute;
-    top: ${props => (props.input && props.input.value ? 0 : '16px')};
+    top: ${props => (props.input && props.input.value ? 0 : props.theme.spacing.ELEM_SPACING.MED)};
     ${props =>
       props.input &&
       props.input.value &&
