@@ -11,7 +11,7 @@ function* bootstrap({ pageInfo = { name: 'homepage' } }) {
     const result = yield call(bootstrapAbstractor, pagesList);
     yield put(loadLayoutData(result[pageInfo.name].items[0].layout, pageInfo.name));
     yield put(loadLabelsData(result.labels));
-    yield put(loadHeaderData(result.header.submodules));
+    yield put(loadHeaderData(result.header));
     yield put(loadFooterData(result.footer));
     yield put(loadModulesData(result.modules));
   } catch (err) {

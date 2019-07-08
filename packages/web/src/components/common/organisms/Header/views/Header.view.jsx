@@ -12,10 +12,14 @@ import HomeLogo from './HomeLogo';
 const { HeaderBrand, HeaderNav, DummyNav, HeaderLoyalty } = headerStyles;
 const brand = identifyBrand();
 
-const Header = ({ headerTopNav, headerPromoArea }) => {
+const Header = ({ brandTabs, promoMessageWrapper, headerPromoArea }) => {
   return (
     <header>
-      <HeaderTopNav className="header-topnav" dataTopNav={headerTopNav} />
+      <HeaderTopNav
+        className="header-topnav"
+        brandTabs={brandTabs}
+        promoMessageWrapper={promoMessageWrapper}
+      />
       <HeaderBrand className="header-brand">
         <Row>
           <Col
@@ -63,12 +67,9 @@ const Header = ({ headerTopNav, headerPromoArea }) => {
       <HeaderPromo
         mobileMarkup
         className="header__promo-area--mobile"
-        dataPromo={headerPromoArea.composites.promoTextBanner}
+        dataPromo={headerPromoArea}
       />
-      <HeaderPromo
-        className="header__promo-area--desktop"
-        dataPromo={headerPromoArea.composites.promoTextBanner}
-      />
+      <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
       <HeaderLoyalty className="header-loyalty">
         <Row>
           <Col
@@ -88,12 +89,9 @@ const Header = ({ headerTopNav, headerPromoArea }) => {
 };
 
 Header.propTypes = {
-  headerTopNav: PropTypes.shape({}).isRequired,
-  headerPromoArea: PropTypes.shape({
-    composites: PropTypes.shape({
-      promoTextBanner: PropTypes.shape({}),
-    }),
-  }).isRequired,
+  brandTabs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  promoMessageWrapper: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  headerPromoArea: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default Header;
