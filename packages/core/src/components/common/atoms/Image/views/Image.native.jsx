@@ -8,9 +8,9 @@ type Props = {
   source: string,
 };
 
-const ImageComp = (props: Props) => {
-  const { source } = props;
-  return <Image source={source} {...props} />;
+const ImageComp = (otherProps: Props) => {
+  const { source } = otherProps;
+  return <Image source={source} {...otherProps} />;
 };
 
 export default withStyles(ImageComp, style);
