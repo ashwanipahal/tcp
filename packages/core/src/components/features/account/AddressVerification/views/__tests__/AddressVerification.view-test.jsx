@@ -1,26 +1,36 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { AddressVerification } from '../AddressVerification.view';
+import Modal from '../../../../../common/molecules/Modal';
+import AddressOption from '../AddressOption.view';
+
+const userAddress = {
+  firstName: 'test',
+  lastName: 'test',
+  address1: 'test line 1',
+  address2: '',
+  city: 'test city',
+  state: 'test state',
+  zip: '11111',
+};
+
+const suggestedAddress = Object.assign({}, userAddress, {
+  address1: 'suggested line 1',
+  isCommercialAddress: false,
+});
+
+const heading = 'Add Address';
 
 describe('AddressVerification component', () => {
   describe('for valid address', () => {
     let component;
     let onSuccessSpy;
     let resetVerifyAddressActionSpy;
-    const userAddress = {
-      firstName: 'test',
-      lastName: 'test',
-      addressLine: ['test line 1', 'test line 2', ''],
-      city: 'test city',
-      state: 'test state',
-      zipCode: '11111',
-    };
-
     beforeEach(() => {
       onSuccessSpy = jest.fn();
       resetVerifyAddressActionSpy = jest.fn();
       const props = {
-        heading: 'Add Address',
+        heading,
         userAddress,
         suggestedAddress: userAddress,
         verificationResult: '',
@@ -44,6 +54,105 @@ describe('AddressVerification component', () => {
 
     it('should call resetVerifyAddressAction props', () => {
       expect(resetVerifyAddressActionSpy).toBeCalled();
+    });
+  });
+
+  describe('for invalid address', () => {
+    let component;
+    let onSuccessSpy;
+    let resetVerifyAddressActionSpy;
+
+    beforeEach(() => {
+      onSuccessSpy = jest.fn();
+      resetVerifyAddressActionSpy = jest.fn();
+      const props = {
+        heading,
+        userAddress,
+        suggestedAddress,
+        verificationResult: '',
+        labels: {},
+        onSuccess: onSuccessSpy,
+        resetVerifyAddressAction: resetVerifyAddressActionSpy,
+      };
+      component = shallow(<AddressVerification {...props} />);
+      component.setProps({
+        verificationResult: 'AE10',
+      });
+    });
+
+    it('should render Modal component', () => {
+      expect(component.is(Modal)).toBeTruthy();
+    });
+
+    it('should show both user address and suggested address', () => {
+      expect(component.find(AddressOption)).toHaveLength(2);
+    });
+  });
+
+  describe('for address with apartment missing', () => {
+    let component;
+    let onSuccessSpy;
+    let resetVerifyAddressActionSpy;
+
+    beforeEach(() => {
+      onSuccessSpy = jest.fn();
+      resetVerifyAddressActionSpy = jest.fn();
+      const props = {
+        heading,
+        userAddress,
+        suggestedAddress,
+        verificationResult: '',
+        labels: {},
+        onSuccess: onSuccessSpy,
+        resetVerifyAddressAction: resetVerifyAddressActionSpy,
+      };
+      component = shallow(<AddressVerification {...props} />);
+      component.setProps({
+        verificationResult: 'AE09',
+      });
+    });
+
+    it('should render Modal', () => {
+      expect(component.is(Modal)).toBeTruthy();
+    });
+
+    it('should show user address', () => {
+      expect(component.find(AddressOption)).toHaveLength(1);
+    });
+  });
+
+  describe('for invalid address with no suggestion', () => {
+    let component;
+    let onSuccessSpy;
+    let resetVerifyAddressActionSpy;
+
+    beforeEach(() => {
+      onSuccessSpy = jest.fn();
+      resetVerifyAddressActionSpy = jest.fn();
+      const props = {
+        heading,
+        userAddress,
+        verificationResult: '',
+        labels: {},
+        onSuccess: onSuccessSpy,
+        resetVerifyAddressAction: resetVerifyAddressActionSpy,
+      };
+      component = shallow(<AddressVerification {...props} />);
+      component.setProps({
+        verificationResult: 'AE',
+      });
+    });
+
+    it('should render Modal', () => {
+      expect(component.is(Modal)).toBeTruthy();
+    });
+
+    it('should show only user address', () => {
+      expect(component.find(AddressOption)).toHaveLength(1);
+    });
+
+    it('should not show input radio', () => {
+      expect(component.instance().showInput).toEqual(false);
     });
   });
 });
