@@ -14,7 +14,7 @@ type Props = {
 
 export function getAddressLocationInfo(address) {
   return requireNamedOnlineModule('google.maps').then(() => {
-    const geocoder = new google.maps.Geocoder(); // eslint-disable-line no-undef
+    const geocoder = new window.google.maps.Geocoder();
     return new Promise((resolve, reject) => {
       geocoder.geocode({ address }, (results, status) => {
         if (status === 'OK') {
@@ -113,7 +113,7 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
       //  not used, but here to prevent inclusion in ...otherProps
       types,
       componentRestrictions,
-      bounds, // eslint-disable-line no-unused-vars
+      bounds,
     } = this.props;
     if (!this.googleAutocomplete) return;
 
@@ -150,7 +150,7 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
         // if the googleAutocomplete object was not created
         requireNamedOnlineModule('google.maps')
           .then(() => {
-            this.googleAutocomplete = new google.maps.places.Autocomplete( // eslint-disable-line no-undef
+            this.googleAutocomplete = new window.google.maps.places.Autocomplete(
               refToInputElement,
               this.getAutoCompleteConfigObject()
             );
@@ -159,7 +159,7 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
           })
           .catch(() => null /* do nothing if unable to load googleAutocomplete */);
       } else {
-        this.googleAutocomplete = new google.maps.places.Autocomplete( // eslint-disable-line no-undef
+        this.googleAutocomplete = new window.google.maps.places.Autocomplete( // eslint-disable-line no-undef
           refToInputElement,
           this.getAutoCompleteConfigObject()
         );
@@ -172,11 +172,9 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
   handleOnPlaceSelected() {
     const { input, onPlaceSelected } = this.props;
     const inputValue = this.refToInputElement != null && this.refToInputElement.value;
-    this.refToInputElement != null &&
-      input &&
-      input.onChange(
-        this.refToInputElement.value
-      ); /* eslint no-unused-expressions: [2, { allowShortCircuit: true }] */
+    if (this.refToInputElement != null && input) {
+      input.onChange(this.refToInputElement.value);
+    }
     onPlaceSelected(this.googleAutocomplete.getPlace(), inputValue);
   }
 
