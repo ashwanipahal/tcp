@@ -13,7 +13,7 @@ export function* deleteCard({ payload }) {
     const { relURI, method } = endpoints.deleteCreditCardOnAccount;
     const baseURI = endpoints.deleteAddress.baseURI || endpoints.global.baseURI;
     const payloadParam = {
-      creditCardId: payload.creditCardId,
+      creditCardId: payload.creditCardId.toString(),
       action: 'D',
     };
     const res = yield call(

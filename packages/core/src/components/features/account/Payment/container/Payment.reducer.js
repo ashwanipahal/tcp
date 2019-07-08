@@ -10,6 +10,13 @@ const initialState = fromJS({
   showUpdatedNotificationOnModal: null,
 });
 
+const updateCardList = (state, action) => {
+  let updatedCardList = state.get('cardList');
+  updatedCardList = updatedCardList.filter(item => {
+    return item.creditCardId.toString() !== action.payload.creditCardId;
+  });
+  return updatedCardList;
+};
 const PaymentReducer = (state = initialState, action) => {
   switch (action.type) {
     case PAYMENT_CONSTANTS.GET_CARD_LIST:
@@ -25,7 +32,10 @@ const PaymentReducer = (state = initialState, action) => {
       return state
         .set('deleteModalMountedState', action.payload.state)
         .set('showUpdatedNotificationOnModal', null);
-
+    case PAYMENT_CONSTANTS.UPDATE_CARD_LIST_ON_DELETE:
+      return state
+        .set('cardList', updateCardList(state, action))
+        .set('showUpdatedNotification', 'success');
     case PAYMENT_CONSTANTS.UPDATE_CARD_LIST_ON_DELETE_ERR:
       return state
         .set('error', action.payload)
