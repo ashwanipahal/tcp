@@ -30,7 +30,12 @@ const CreditCardList = ({ labels, creditCardList, className }: Props) => {
           small: 6,
         }}
       >
-        <Button buttonVariation="fixed-width" fill="BLUE" className="creditCardList__ccAddCta">
+        <Button
+          buttonVariation="fixed-width"
+          fill="BLUE"
+          className="creditCardList__ccAddCta"
+          dataLocator="payment-addcreditcard"
+        >
           {creditCardList.size === 0 ? labels.ACC_LBL_CC_EMPTY_ADD_BTN : labels.ACC_LBL_ADD_BTN}
         </Button>
       </Col>

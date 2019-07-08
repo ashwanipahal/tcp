@@ -35,6 +35,7 @@ exports[`GiftCardList Component should render correctly 1`] = `
     >
       <Styled(Button)
         buttonVariation="fixed-width"
+        dataLocator="payment-addagiftcard "
         fill="BLUE"
       />
     </Styled(Col)>
@@ -67,6 +68,7 @@ exports[`GiftCardList Component should render correctly if list is present 1`] =
     >
       <Styled(Button)
         buttonVariation="fixed-width"
+        dataLocator="payment-addagiftcard "
         fill="BLUE"
       />
     </Styled(Col)>

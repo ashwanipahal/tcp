@@ -32,7 +32,7 @@ const GiftCardList = ({ labels, giftCardList, className }: Props) => {
             small: 6,
           }}
         >
-          <Button buttonVariation="fixed-width" fill="BLUE">
+          <Button buttonVariation="fixed-width" fill="BLUE" dataLocator="payment-addagiftcard ">
             {giftCardList.size === 0 ? labels.ACC_LBL_GC_EMPTY_ADD_BTN : labels.ACC_LBL_ADD_BTN}
           </Button>
         </Col>
