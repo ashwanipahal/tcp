@@ -1,0 +1,213 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyCard Component should render correctly 1`] = `
+<div>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="emptyCard__imgWrapper"
+      colSize={
+        Object {
+          "large": 1,
+          "medium": 1,
+          "small": 1,
+        }
+      }
+    >
+      <img
+        alt="credit card icon"
+        className="emptyCard__img"
+        src="/static/images/credit-card.png"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="emptyCard__body"
+      colSize={
+        Object {
+          "large": 11,
+          "medium": 7,
+          "small": 5,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "large": false,
+          "medium": false,
+          "small": true,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="emptyCard__heading"
+        color="text.primary"
+        component="p"
+        font="secondary"
+        fontFamily="primary"
+        fontSize="fs14"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="ls107"
+        tag="p"
+        textAlign="left"
+      >
+        Add a gift card and/or merchandise cards!
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="emptyCard__description--desktop"
+        color="text.primary"
+        component="p"
+        font="secondary"
+        fontFamily="primary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="lh115"
+        tag="p"
+        textAlign="left"
+      >
+        Save up to 5 gift cards and/or merchandise cards to use the next time you shop.
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      className="emptyCard__description--mobile"
+      colSize={
+        Object {
+          "large": 11,
+          "medium": 7,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "large": false,
+          "medium": false,
+          "small": true,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="emptyCard__description--mobile"
+        color="text.primary"
+        component="p"
+        font="secondary"
+        fontFamily="primary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="lh115"
+        tag="p"
+        textAlign="left"
+      >
+        Save up to 5 gift cards and/or merchandise cards to use the next time you shop.
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;
+
+exports[`EmptyCard Component should render correctly with credit card 1`] = `
+<div>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="emptyCard__imgWrapper"
+      colSize={
+        Object {
+          "large": 1,
+          "medium": 1,
+          "small": 1,
+        }
+      }
+    >
+      <img
+        alt="credit card icon"
+        className="emptyCard__img"
+        src="/static/images/credit-card.png"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="emptyCard__body"
+      colSize={
+        Object {
+          "large": 11,
+          "medium": 7,
+          "small": 5,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "large": false,
+          "medium": false,
+          "small": true,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="emptyCard__heading"
+        color="text.primary"
+        component="p"
+        font="secondary"
+        fontFamily="primary"
+        fontSize="fs14"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="ls107"
+        tag="p"
+        textAlign="left"
+      >
+        Add a credit or debit card to check out faster!
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="emptyCard__description--desktop"
+        color="text.primary"
+        component="p"
+        font="secondary"
+        fontFamily="primary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="lh115"
+        tag="p"
+        textAlign="left"
+      >
+        Securely save your credit card, and/or My Place Rewards Card information so you can check out even faster!
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      className="emptyCard__description--mobile"
+      colSize={
+        Object {
+          "large": 11,
+          "medium": 7,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "large": false,
+          "medium": false,
+          "small": true,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="emptyCard__description--mobile"
+        color="text.primary"
+        component="p"
+        font="secondary"
+        fontFamily="primary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="lh115"
+        tag="p"
+        textAlign="left"
+      >
+        Securely save your credit card, and/or My Place Rewards Card information so you can check out even faster!
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;
