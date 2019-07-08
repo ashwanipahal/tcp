@@ -12,7 +12,7 @@ const AddressVerificationReducer = (state = initialState, action) => {
     case ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS:
       return state
         .set('userAddress', action.payload)
-        .set('resultType', '')
+        .set('resultType', null)
         .set('suggestedAddress', '');
     case ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS_SUCCESS:
       return state
@@ -23,6 +23,11 @@ const AddressVerificationReducer = (state = initialState, action) => {
         .set('userAddress', null)
         .set('suggestedAddress', null)
         .set('resultType', '');
+    case ADDRESS_VERIFICATION_CONSTANTS.VERIFY_ADDRESS_ERROR:
+      return state
+        .set('userAddress', null)
+        .set('suggestedAddress', null)
+        .set('resultType', 'ERROR');
     default:
       if (state instanceof Object) {
         return fromJS(state);

@@ -11,6 +11,11 @@ export const verifyAddressSuccess = (suggestedAddress, resultType) => ({
   resultType,
 });
 
+export const verifyAddressError = resultType => ({
+  type: constants.VERIFY_ADDRESS_ERROR,
+  resultType,
+});
+
 export const resetVerifyAddress = () => ({
   type: constants.RESET_VERIFY_ADDRESS,
 });

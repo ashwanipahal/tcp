@@ -12,12 +12,13 @@ import CONSTANTS from '../AddressVerification.constants';
 
 type Props = {
   heading: string,
-  className: string,
+  className: ?string,
   verificationResult: string,
   userAddress: object,
   suggestedAddress: object,
   resetVerifyAddressAction: () => void,
   onSuccess: () => void,
+  onError: () => void,
   labels: object,
 };
 
@@ -38,52 +39,39 @@ export class AddressVerification extends React.Component<Props> {
   componentDidUpdate() {
     if (this.isValidAddress) {
       this.onConfirm();
+    } else if (this.isError) {
+      const { onError, userAddress } = this.props;
+      onError(userAddress);
+      this.onCloseModal();
     }
   }
 
-  formatAddressPayload = address => ({
-    contact: [
-      {
-        addressLine: address.addressLine,
-        attributes: [
-          {
-            key: 'addressField3',
-            value: address.zipCode || '',
-          },
-        ],
-        addressType: CONSTANTS.SHIPPINGANDBILLING,
-        city: address.city,
-        country: address.country,
-        firstName: address.firstName,
-        lastName: address.lastName,
-        nickName: Date.now().toString(),
-        phone1: address.phone1,
-        email1: address.email1 || '',
-        phone1Publish: 'true',
-        primary: 'false',
-        state: address.state,
-        zipCode: address.zipCode,
-        xcont_addressField2: address.isCommercialAddress ? '2' : '1',
-        xcont_addressField3: address.zipCode,
-        fromPage: '',
-      },
-    ],
+  formatAddress = address => ({
+    firstName: address.firstName,
+    lastName: address.lastName,
+    addressLine: [address.address1, address.address2 || ''],
+    city: address.city,
+    state: address.state,
+    country: address.country,
+    zipCode: address.zip,
+    phone1: address.phoneNumber,
   });
 
   updateDisplayFlag = (verificationResult, userAddress, suggestedAddress) => {
     if (verificationResult) {
       const status = CONSTANTS.VERIFY_ADDRESS_STATUS_MAP[verificationResult];
-      this.showOptionalAddressLine =
-        status === CONSTANTS.VERIFY_ADDRESS_RESULT.APARTMENT_MISSING || false;
-      this.isValidAddress = status === CONSTANTS.VERIFY_ADDRESS_RESULT.VALID || false;
+      this.showOptionalAddressLine = status === CONSTANTS.VERIFY_ADDRESS_RESULT.APARTMENT_MISSING;
+      this.isValidAddress = status === CONSTANTS.VERIFY_ADDRESS_RESULT.VALID;
       this.showInput =
         (suggestedAddress && !this.isValidAddress && !this.showOptionalAddressLine) || false;
       this.showVerifyModal = !this.isValidAddress || false;
+      this.isError = status === CONSTANTS.VERIFY_ADDRESS_RESULT.ERROR;
     } else {
       this.showOptionalAddressLine = false;
       this.isValidAddress = false;
       this.showVerifyModal = false;
       this.showInput = false;
+      this.isError = false;
     }
   };
 
@@ -101,6 +89,7 @@ export class AddressVerification extends React.Component<Props> {
             : 'primary'
         }
         className="elem--mb__XXXL"
+        fontFamily="secondary"
       >
         {labels[`verifyStatus${verificationResult}`]}
       </BodyCopy>
@@ -121,9 +110,9 @@ export class AddressVerification extends React.Component<Props> {
       addressPayload = Object.assign({}, userAddress);
     }
     if (optionalAddressLine) {
-      addressPayload.addressLine[1] = optionalAddressLine;
+      addressPayload.address2 = optionalAddressLine;
     }
-    onSuccess(this.formatAddressPayload(addressPayload));
+    onSuccess(addressPayload);
     this.onCloseModal();
   };
 
@@ -155,7 +144,7 @@ export class AddressVerification extends React.Component<Props> {
         <div className="elem--mb__XL">
           <AddressOption
             className="addressVerification__input"
-            address={userAddress}
+            address={this.formatAddress(userAddress)}
             name="selectAddress"
             value="userAddress"
             isSelected={selectAddress === 'userAddress'}
@@ -185,7 +174,7 @@ export class AddressVerification extends React.Component<Props> {
           <div className="elem--mb__XL">
             <AddressOption
               className="addressVerification__input"
-              address={suggestedAddress}
+              address={this.formatAddress(suggestedAddress)}
               name="selectAddress"
               value="suggestedAddress"
               isSelected={selectAddress === 'suggestedAddress'}
@@ -201,11 +190,11 @@ export class AddressVerification extends React.Component<Props> {
       return (
         <div className="elem--mb__XL layout--pl__LRG">
           <TextBox
-            type="text"
-            name="optionalAddressLine"
-            value={optionalAddressLine}
-            onChangeHandler={this.handleChange}
+            input={{ value: optionalAddressLine, onChange: this.handleChange }}
             placeholder="Apartment or suite number"
+            id="optionalAddressLine"
+            name="optionalAddressLine"
+            meta={{}}
           />
         </div>
       );
@@ -215,7 +204,14 @@ export class AddressVerification extends React.Component<Props> {
   };
 
   render() {
-    const { className, verificationResult, userAddress, suggestedAddress, labels, heading } = this.props;
+    const {
+      className,
+      verificationResult,
+      userAddress,
+      suggestedAddress,
+      labels,
+      heading,
+    } = this.props;
     this.updateDisplayFlag(verificationResult, userAddress, suggestedAddress);
     if (this.showVerifyModal) {
       return (
@@ -226,14 +222,17 @@ export class AddressVerification extends React.Component<Props> {
           overlayClassName="TCPModal__Overlay"
           className={`${className} TCPModal__Content`}
           heading={heading}
+          fixedWidth
+          maxWidth="458px"
         >
-          <div className="addressVerification layout--pl__XS layout--pr__XS">
+          <div className="addressVerification">
             <BodyCopy
               component="p"
               fontSize="fs22"
               fontWeight="semibold"
+              fontFamily="secondary"
               textAlign="center"
-              className="elem--mb__LRG"
+              className="elem--mb__MED"
             >
               {labels.verifyYourAddressHeading}
             </BodyCopy>

@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import ADDRESS_VERIFICATION_CONSTANTS from '../AddressVerification.constants';
-import { verifyAddressSuccess } from './AddressVerification.actions';
+import { verifyAddressSuccess, verifyAddressError } from './AddressVerification.actions';
 import fetchData from '../../../../../service/API';
 import endpoints from '../../../../../service/endpoint';
 
@@ -12,11 +12,11 @@ const objectToQueryString = params => {
 const getSuggestedAddress = (response, userAddress) => {
   const suggestedAddress = response.Records[0];
   return Object.assign({}, userAddress, {
-    addressLine: [suggestedAddress.AddressLine1, suggestedAddress.AddressLine2 || ''],
+    address1: suggestedAddress.AddressLine1,
+    address2: suggestedAddress.AddressLine2,
     city: suggestedAddress.City,
     state: suggestedAddress.State,
-    zipCode: suggestedAddress.PostalCode,
-    phone1: suggestedAddress.PhoneNumber,
+    zip: suggestedAddress.PostalCode,
     isCommercialAddress: suggestedAddress.DeliveryIndicator === 'B',
   });
 };
@@ -52,12 +52,12 @@ function* verifyAddress({ payload }) {
     const { baseURI, relURI, method } = endpoints.verifyAddress;
 
     const queryDataObject = {
-      a1: payload.addressLine[0],
-      a2: payload.addressLine[1] || '',
+      a1: payload.address1,
+      a2: payload.address2 || '',
       city: payload.city,
       state: payload.state,
-      postal: payload.zipCode,
-      ctry: payload.country === 'Canada' ? 'CA' : 'US',
+      postal: payload.zip,
+      ctry: payload.country,
     };
 
     const fullRelURI = `${relURI}${objectToQueryString(queryDataObject)}`;
@@ -76,11 +76,11 @@ function* verifyAddress({ payload }) {
     if (res) {
       const suggestedAddress = getSuggestedAddress(res.body, payload);
       const resultType = getResultType(res.body);
-      yield put(verifyAddressSuccess(suggestedAddress, resultType));
+      return yield put(verifyAddressSuccess(suggestedAddress, resultType));
     }
-    return null;
+    return yield put(verifyAddressError('ERROR'));
   } catch (err) {
-    return null;
+    return yield put(verifyAddressError('ERROR'));
   }
 }
 

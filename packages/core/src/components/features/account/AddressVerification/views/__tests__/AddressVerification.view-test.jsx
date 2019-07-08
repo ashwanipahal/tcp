@@ -38,8 +38,8 @@ describe('AddressVerification component', () => {
       expect(component.isEmptyRender()).toBeTruthy();
     });
 
-    it('should call onSuccess prop with formatted payload', () => {
-      expect(onSuccessSpy.mock.calls[0][0].contact).toHaveLength(1);
+    it('should call onSuccess prop with user address', () => {
+      expect(onSuccessSpy.mock.calls[0][0]).toEqual(userAddress);
     });
 
     it('should call resetVerifyAddressAction props', () => {
