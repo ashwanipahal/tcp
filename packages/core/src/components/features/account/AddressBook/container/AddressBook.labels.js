@@ -15,8 +15,8 @@ const labels = {
   errorMessage: 'Your action could not be completed due to a system error',
   deleteAddressHeading: 'DELETE ADDRESS',
   deleteAddressTitle: 'Are you sure you want to delete this address?',
-  cancel: 'No, Dont Cancel',
-  deleteConfirm: 'Yes Delete',
+  cancel: "No, Don't Delete",
+  deleteConfirm: 'Yes, Delete',
   addressBookHeading: 'ADDRESS BOOK',
 };
 
