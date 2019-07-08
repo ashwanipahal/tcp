@@ -1,9 +1,7 @@
 // @flow
 import React from 'react';
-// eslint-disable-next-line
 import { Button, View } from 'react-native';
 import withStyles from '../../../hoc/withStyles.native';
-// eslint-disable-next-line import/named
 import style from '../Button.style.native';
 
 /**

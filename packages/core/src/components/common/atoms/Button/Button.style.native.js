@@ -8,7 +8,7 @@ const style = css`
     height: 100px;
     color: ${props.theme.colorPalette.white};
     font-size: ${props.theme.typography.fontSizes.fs16};
-    font-family: ${props.theme.typography.mobileFonts.primary};
+    font-family: ${props.theme.typography.mobileFonts.semibold};
     font-weight: ${props.theme.typography.fontWeights.semibold};
     border: 1px solid ${props.theme.colorPalette.black};
     padding: 12px 20px;
@@ -38,13 +38,11 @@ const style = css`
   ${props =>
     props.customStyle === 'shadow-button'
       ? `
-      background: ${props.theme.colorPalette.PALEGRAY};
+      background: ${props.theme.colors.PRIMARY.PALEGRAY};
       border-radius: 10px;
       padding: 4px 0;
-
       border: 2px solid ${props.theme.colors.PRIMARY.LIGHTGRAY};
-      box-shadow: 4px 4px white inset, 6px 6px ${props.theme.colors.PRIMARY.PALEGRAY};
-      width: calc(100% - 6px);
+      width: 100%;
       &:hover, &:focus {
         background: ${props.theme.colors.PRIMARY.COLOR1};
         box-shadow: 4px 4px white inset, 6px 6px ${props.theme.colors.PRIMARY.COLOR1};
