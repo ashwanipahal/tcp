@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-// eslint-disable-next-line import/no-unresolved
 import { WebView } from 'react-native';
 
 /**
@@ -11,11 +10,23 @@ import { WebView } from 'react-native';
  */
 
 type Props = {
-  source: string,
+  source?: string,
 };
 
 const RichText = (props: Props) => {
-  return <WebView {...props} />;
+  return (
+    <WebView
+      originWhitelist={['*']}
+      javaScriptEnabled={false}
+      domStorageEnabled={false}
+      thirdPartyCookiesEnabled={false}
+      {...props}
+    />
+  );
+};
+
+RichText.defaultProps = {
+  source: '',
 };
 
 export default RichText;
