@@ -11,9 +11,15 @@ describe('AddAddressReducer reducer', () => {
     expect(
       AddAddressReducer(initialState, {
         type: ADD_ADDRESS_CONSTANTS.ADD_USER_ADDRESS_FAIL,
-        payload: {},
+        payload: {
+          error: 'test error',
+        },
       })
-    ).toEqual(fromJS({}));
+    ).toEqual(
+      fromJS({
+        error: 'test error',
+      })
+    );
   });
 
   it('should handle success addAddressSuccess', () => {
@@ -21,8 +27,14 @@ describe('AddAddressReducer reducer', () => {
     expect(
       AddAddressReducer(initialState, {
         type: ADD_ADDRESS_CONSTANTS.ADD_USER_ADDRESS_SUCCESS,
-        payload: {},
+        payload: {
+          addressId: '12345',
+        },
       })
-    ).toEqual(fromJS({}));
+    ).toEqual(
+      fromJS({
+        addressId: '12345',
+      })
+    );
   });
 });

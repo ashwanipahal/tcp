@@ -85,12 +85,6 @@ const BodyCopy = styled(BodyStyle)`
   ${props => (props.color === 'primary' ? `color: ${colors.PRIMARY.DARK};` : '')};
   ${props => (props.color === 'secondary' ? `color: ${colors.PRIMARY.BLUE};` : '')};
   ${props => (props.color === 'tertiary' ? `color: ${colors.PRIMARY.GREEN};` : '')};
-  ${props =>
-    props.ErrorMsg === 'error'
-      ? `
-    color:${colors.NOTIFICATION.ERROR};
-    `
-      : ''};
 `;
 
 export { Heading, BodyCopy };

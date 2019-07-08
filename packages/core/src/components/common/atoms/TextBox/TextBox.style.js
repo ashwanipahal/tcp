@@ -45,27 +45,6 @@ const textboxStyles = css`
     `}
 
     ${props =>
-      props.isSuccessState
-        ? `border: 1px solid ${props.theme.colors.TEXTBOX.SUCCESS_BORDER};`
-        : ''};
-
-    ${props =>
-      props.textIcon === 'icon-email'
-        ? `
-            background-image: url(/static/images/email.svg);
-            padding: 0 20px 0 52px;
-            width: calc(100% - 72px);`
-        : ''};
-
-    ${props =>
-      props.textIcon === 'icon-sms'
-        ? `
-          background-image: url(/static/images/chat.svg);
-          padding: 0 20px 0 52px;
-          width: calc(100% - 72px)`
-        : ''};
-
-    ${props =>
       props.disabled
         ? `
       background-color: ${props.theme.fieldBackgroundDisabledColor};

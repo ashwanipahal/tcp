@@ -48,8 +48,8 @@ const TextBox = ({
   return (
     <label
       htmlFor={input.name}
-      className={`${className} ${elemValue ? 'active' : ''} ${
-        isError ? 'error' : ''
+      className={`${className}${elemValue ? ' active' : ''}${
+        isError ? ' error' : ''
       } input-fields-wrapper`}
     >
       <input
