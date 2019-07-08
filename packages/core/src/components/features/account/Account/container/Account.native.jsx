@@ -1,6 +1,6 @@
 import React from 'react';
 import MyAccountLayout from '../views/MyAccountLayout.view.native';
-import AccountComponentMapping from '../AccountComponentMapping';
+import AccountComponentNativeMapping from '../AccountComponentMapping.native';
 import navData from '../MyAccountRoute.config.native';
 
 // @flow
@@ -51,7 +51,7 @@ export default class Account extends React.PureComponent<Props, State> {
     return (
       <MyAccountLayout
         navData={navData}
-        mainContent={AccountComponentMapping[component]}
+        mainContent={AccountComponentNativeMapping[component]}
         handleComponentChange={this.handleComponentChange}
       />
     );
