@@ -1,4 +1,4 @@
-import FOOTER_CONSTANTS from '../Footer.constants';
+import FOOTER_CONSTANTS from './Footer.constants';
 
 export const loadFooterData = payload => {
   return {

@@ -1,7 +1,8 @@
+/* eslint-disable */
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { AddAddressForm } from '../AddAddressForm';
+import AddAddressForm from '../AddAddressForm';
 
 // const AddressValidationForm = ({ handleSubmit, pristine, reset, submitting }: Props): Node => (
 

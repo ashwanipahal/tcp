@@ -13,12 +13,12 @@ const SocialMediaLinks = ({ className, connectWithUsLabel, links }) => (
         {connectWithUsLabel}
       </span>
       <div className="social-media-pallete">
-        {links.map(link => {
+        {links.map((link, index) => {
           return (
             <Anchor to={link.url} target={link.target}>
               <Image
                 className="social-media-icon"
-                data-locator={getLocator(link.iconClass)}
+                data-locator={`${getLocator('social_media_links')}${index}`}
                 src={getIconPath(link.class)}
                 alt={link.title}
               />

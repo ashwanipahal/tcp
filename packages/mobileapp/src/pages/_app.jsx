@@ -4,7 +4,7 @@ import { ThemeProvider } from 'styled-components/native';
 import theme from '@tcp/core/styles/themes/TCP';
 import { Provider } from 'react-redux';
 import AppNavigator from '../navigation/AppNavigator';
-import { initializeStore } from '../reduxStore/initializeStore';
+import { initializeStore } from '../reduxStore/store/initializeStore';
 
 const styles = StyleSheet.create({
   // eslint-disable-next-line react-native/no-color-literals

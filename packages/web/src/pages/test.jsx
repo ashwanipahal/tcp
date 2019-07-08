@@ -7,15 +7,9 @@ import Button from '@tcp/core/src/components/common/atoms/Button';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import RichText from '@tcp/core/src/components/common/atoms/RichText';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
-import CarouselConfig from '@tcp/web/src/config/carousel';
 import { PropTypes } from 'prop-types';
 import { initActions } from '../components/features/content/HomePage/container/HomePage.actions';
-import {
-  NavBar,
-  SampleCarousel,
-  Test,
-  SampleModal,
-} from '../components/features/content/HomePage/molecules';
+import { NavBar, Test } from '../components/features/content/HomePage/molecules';
 
 // colCount is the number of columns the component needs to cover in each of the viewport
 const colSize = {
@@ -44,7 +38,6 @@ const HomePageView = ({ links }) => (
 
     <NavBar links={links} />
     <Test className="test" />
-    <SampleModal />
     <Grid>
       <Row>
         <Col colSize={colSize}>
@@ -101,7 +94,6 @@ const HomePageView = ({ links }) => (
         </Col>
       </Row>
     </Grid>
-    <SampleCarousel props={CarouselConfig.CAROUSEL_OPTIONS} />
   </Fragment>
 );
 
