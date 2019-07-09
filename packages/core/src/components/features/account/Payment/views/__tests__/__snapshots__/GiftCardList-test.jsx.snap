@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GiftCardList Component should render correctly 1`] = `
+<div
+  className="abc"
+>
+  <Styled(Heading)
+    className="creditCardList__heading"
+    color="text.primary"
+    component={null}
+    textAlign="left"
+    variant="h6"
+  />
+  <Styled(EmptyCard)
+    alt="gift card icon"
+    icon="gift-card"
+    labels={
+      Object {
+        "giftCardHeading": "heading",
+      }
+    }
+    prefix="GC"
+  />
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 3,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        dataLocator="payment-addagiftcard "
+        fill="BLUE"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;
+
+exports[`GiftCardList Component should render correctly if list is present 1`] = `
+<div
+  className="abc"
+>
+  <Styled(Heading)
+    className="creditCardList__heading"
+    color="text.primary"
+    component={null}
+    textAlign="left"
+    variant="h6"
+  />
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 3,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        dataLocator="payment-addagiftcard "
+        fill="BLUE"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;
