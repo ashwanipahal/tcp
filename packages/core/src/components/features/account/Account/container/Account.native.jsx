@@ -1,7 +1,7 @@
 import React from 'react';
 import MyAccountLayout from '../views/MyAccountLayout.view.native';
-import AccountComponentNativeMapping from '../AccountComponentMapping.native';
-import navData from '../MyAccountRoute.config.native';
+import AccountComponentNativeMapping from '../AccountComponentMapping';
+import navDataMobile from '../MyAccountRoute.config';
 
 // @flow
 type Props = {
@@ -50,7 +50,7 @@ export default class Account extends React.PureComponent<Props, State> {
     const { component } = this.state;
     return (
       <MyAccountLayout
-        navData={navData}
+        navData={navDataMobile}
         mainContent={AccountComponentNativeMapping[component]}
         handleComponentChange={this.handleComponentChange}
       />

@@ -1,6 +1,6 @@
-import React from 'react'; //eslint-disable-line
-import MyAccountDropdownNav from './MyAccountDropdownNav.view.native';
-import { ParentContainer } from '../styles/MyAccountLayout.style.native';
+import React from 'react';
+import MyAccountDropdownNav from './MyAccountDropdownNav.view';
+import { ParentContainer } from '../styles/MyAccountLayout.style';
 // @flow
 type Props = {
   navData: Array<Object>,

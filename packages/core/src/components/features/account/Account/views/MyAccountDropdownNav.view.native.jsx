@@ -1,5 +1,5 @@
-import React from 'react'; //eslint-disable-line
-import { Text, Picker } from 'react-native'; //eslint-disable-line
+import React from 'react';
+import { Picker } from 'react-native';
 import { StylePickerWrapper } from '../styles/MyAccountLayout.style';
 
 // @flow
