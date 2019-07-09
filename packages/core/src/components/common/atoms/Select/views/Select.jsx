@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import type { Node } from 'react';
-import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
+import BodyCopy from '../../BodyCopy';
 import withStyles from '../../../hoc/withStyles';
 import errors from '../../../../../utils/errorsMsg';
 import StyledTextBox from '../Select.style';
@@ -21,13 +21,11 @@ type Props = {
   name?: string,
   type?: string,
   placeholder?: string,
-  isErrorState?: boolean,
-  isSuccessState?: boolean,
   meta: { touched: any, error: any, warning: any },
   input: any,
-  Value: any,
   options: any,
   defaultValue: any,
+  dataLocator?: string,
 };
 
 const getErroMsg = (value, placeholder) => {
@@ -40,50 +38,39 @@ const SelectBox = ({
   ariaLabel,
   name,
   placeholder,
-  isSuccessState,
-  defaultValue,
   input,
-  Value,
   options,
-  meta: { touched, error, warning },
+  meta: { touched, error },
+  dataLocator,
 }: Props): Node => {
   return (
-    <div className={`${className} ${input.value ? 'active' : ''} select-fields-wrapper`}>
+    <div className={className}>
       <select
         {...input}
         id={id}
         aria-label={ariaLabel}
-        className="selectField"
+        className="select__input"
         name={name}
-        isSuccessState={isSuccessState}
-        value={Value}
-        defaultValue={defaultValue}
+        value={input.value}
+        data-locator={dataLocator}
       >
         {options &&
           options.map(option => {
-            const selected = option.displayName === defaultValue ? `selected` : '';
             return (
-              <option value={option.displayName} selected={selected} id={option.id} key={option.id}>
+              <option value={option.id} id={option.id} key={option.id}>
                 {option.displayName}
               </option>
             );
           })}
       </select>
-      {/* commented onChange={onChangeHandler} */}
-      <BodyCopy bodySize="two" FormVariation="float" BodycolorLg="primary" tag="div">
+      <BodyCopy fontSize="fs12" fontFamily="secondary" className="select__label">
         {placeholder}
       </BodyCopy>
-      {touched &&
-        ((error && (
-          <BodyCopy clearFloat ErrorMsg="error" bodySize="two" tag="div">
-            {getErroMsg(errors[error], placeholder)}
-          </BodyCopy>
-        )) ||
-          (warning && (
-            <BodyCopy bodySize="two" tag="div">
-              {warning}
-            </BodyCopy>
-          )))}
+      {touched && error && (
+        <BodyCopy fontSize="fs12" fontFamily="secondary" component="div" color="error">
+          {getErroMsg(errors[error], placeholder)}
+        </BodyCopy>
+      )}
     </div>
   );
 };
@@ -94,8 +81,7 @@ SelectBox.defaultProps = {
   name: '',
   type: 'text',
   placeholder: '',
-  isErrorState: false,
-  isSuccessState: false,
+  dataLocator: '',
 };
 
 export default withStyles(SelectBox, StyledTextBox);

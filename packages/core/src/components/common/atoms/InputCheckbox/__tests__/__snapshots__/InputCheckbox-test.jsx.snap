@@ -1,20 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Textbox component renders correctly 1`] = `
+exports[`InputCheckbox component should render correctly 1`] = `
 <label
-  className="asdfasdf active input-fields-wrapper"
+  className="sample-class"
 >
   <input
     aria-label=""
-    className="TextBox__input"
+    className="CheckBox__input"
     data-locator=""
-    id="abcd"
-    placeholder=""
-    type="text"
-    value="hello sonar"
+    type="checkbox"
   />
   <Styled(BodyCopy)
-    className="TextBox__label"
+    className={null}
     color="text.primary"
     component="p"
     dataLocator=""
@@ -24,6 +21,8 @@ exports[`Textbox component renders correctly 1`] = `
     letterSpacing="normal"
     lineHeight="normal"
     textAlign="left"
-  />
+  >
+    This is sample checkbox
+  </Styled(BodyCopy)>
 </label>
 `;

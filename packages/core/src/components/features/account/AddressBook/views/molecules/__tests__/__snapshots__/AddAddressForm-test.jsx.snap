@@ -11,6 +11,12 @@ exports[`AddAddressForm component should renders correctly 1`] = `
   forwardedRef={null}
   getFormState={[Function]}
   handleSubmit={[MockFunction]}
+  initialValues={
+    Object {
+      "address2": "",
+      "country": "US",
+    }
+  }
   keepDirtyOnReinitialize={false}
   persistentSubmitErrors={false}
   pure={true}
