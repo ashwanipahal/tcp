@@ -1,5 +1,5 @@
 import React from 'react';
-import { Picker } from 'react-native';
+import { Picker, StyleSheet } from 'react-native';
 import { StylePickerWrapper } from '../styles/MyAccountLayout.style';
 
 // @flow
@@ -11,6 +11,16 @@ type Props = {
 type State = {
   dropDownItem: String,
 };
+
+const styles = StyleSheet.create({
+  pickerHeight: {
+    height: 48,
+  },
+  pickerItemHeight: {
+    height: 48,
+  },
+});
+
 /**
  * @function MyAccountLayoutView The AccountLayout component will provide a list of left
  * navigationLinks and the component associated with it
@@ -38,8 +48,8 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
             handleComponentChange(itemValue);
           }}
           mode="dropdown"
-          style={{ height: 48 }}
-          itemStyle={{ height: 48 }} //TODO - This is temporary which need to be fixed when styled component works in native.
+          style={styles.pickerHeight}
+          itemStyle={styles.pickerItemHeight}
         >
           {navData &&
             navData.map(nav => {
