@@ -11,15 +11,19 @@ import { WebView } from 'react-native';
 
 type Props = {
   source?: string,
+  javaScriptEnabled?: boolean,
+  domStorageEnabled?: boolean,
+  thirdPartyCookiesEnabled?: boolean,
 };
 
 const RichText = (props: Props) => {
+  const { javaScriptEnabled, domStorageEnabled, thirdPartyCookiesEnabled } = props;
   return (
     <WebView
       originWhitelist={['*']}
-      javaScriptEnabled={false}
-      domStorageEnabled={false}
-      thirdPartyCookiesEnabled={false}
+      javaScriptEnabled={javaScriptEnabled}
+      domStorageEnabled={domStorageEnabled}
+      thirdPartyCookiesEnabled={thirdPartyCookiesEnabled}
       {...props}
     />
   );
@@ -27,6 +31,9 @@ const RichText = (props: Props) => {
 
 RichText.defaultProps = {
   source: '',
+  javaScriptEnabled: false,
+  domStorageEnabled: false,
+  thirdPartyCookiesEnabled: false,
 };
 
 export default RichText;
