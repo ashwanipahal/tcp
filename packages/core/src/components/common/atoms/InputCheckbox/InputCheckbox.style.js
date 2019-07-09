@@ -19,7 +19,6 @@ const styles = css`
 
   & .CheckBox__input:before {
     content: '';
-    font-size: 20px;
     position: absolute;
     height: 100%;
     width: 100%;

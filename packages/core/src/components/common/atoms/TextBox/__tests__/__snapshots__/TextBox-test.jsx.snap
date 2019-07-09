@@ -17,6 +17,7 @@ exports[`Textbox component renders correctly 1`] = `
     className="TextBox__label"
     color="text.primary"
     component="p"
+    dataLocator=""
     fontFamily="secondary"
     fontSize="fs12"
     fontWeight="regular"
