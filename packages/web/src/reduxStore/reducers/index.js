@@ -3,6 +3,7 @@ import { reducer as reduxFormReducer } from 'redux-form';
 import { ProductListingPageReducer } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.reducer';
 import LoginPageReducer from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.reducer';
 import AddressBookReducer from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.reducer';
+import PaymentReducer from '@tcp/core/src/components/features/account/Payment/container/Payment.reducer';
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
 import AddAddressReducer from '@tcp/core/src/components/features/account/AddressBook/container/AddAddress/AddAddress.reducer';
@@ -16,6 +17,7 @@ import {
   LOGINPAGE_REDUCER_KEY,
   PRODUCTLISTINGPAGE_REDUCER_KEY,
   ADDRESSBOOK_REDUCER_KEY,
+  PAYMENT_REDUCER_KEY,
   ADDADDRESS_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
@@ -37,6 +39,7 @@ export default combineReducers({
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
   [LOGINPAGE_REDUCER_KEY]: LoginPageReducer,
   [ADDRESSBOOK_REDUCER_KEY]: AddressBookReducer,
+  [PAYMENT_REDUCER_KEY]: PaymentReducer,
   [ADDADDRESS_REDUCER_KEY]: AddAddressReducer,
   form: reduxFormReducer,
 });
