@@ -113,12 +113,7 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
   }
 
   componentWillUpdate(nextProps) {
-    const {
-      //  not used, but here to prevent inclusion in ...otherProps
-      types,
-      componentRestrictions,
-      bounds,
-    } = this.props;
+    const { types, componentRestrictions, bounds } = this.props;
     if (!this.googleAutocomplete) return;
 
     if (types !== nextProps.types) {
