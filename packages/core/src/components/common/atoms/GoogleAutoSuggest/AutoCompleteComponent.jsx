@@ -165,7 +165,7 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
           })
           .catch(() => null /* do nothing if unable to load googleAutocomplete */);
       } else {
-        this.googleAutocomplete = new window.google.maps.places.Autocomplete( // eslint-disable-line no-undef
+        this.googleAutocomplete = new window.google.maps.places.Autocomplete(
           refToInputElement,
           this.getAutoCompleteConfigObject()
         );
