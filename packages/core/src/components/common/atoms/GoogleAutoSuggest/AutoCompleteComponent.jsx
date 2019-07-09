@@ -42,7 +42,7 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
   };
 
   static getAddressFromPlace(place, inputValue) {
-    const address = { street: '', city: '', state: '', country: '', zip: '' };
+    let address = { street: '', city: '', state: '', country: '', zip: '' };
     let streetNumber = '';
     const streetName = '';
 
@@ -59,11 +59,10 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
             streetNumber = val;
             break;
           default:
-            AutoCompleteComponent.returngetAddress(addressType, val, streetName, address);
+            address = AutoCompleteComponent.returngetAddress(addressType, val, streetName, address);
         }
       }
     }
-
     if (!streetNumber) {
       const regex = RegExp('^(.*)'`${streetName.split(' ', 1)[0]}`);
       const result = regex.exec(inputValue);
@@ -80,26 +79,27 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
   }
 
   static returngetAddress = (addressType, val, streetName, address) => {
-    const getaddress = address;
+    const addressRef = Object.assign({}, address);
     switch (addressType) {
       case 'locality':
-        getaddress.city = val;
+        addressRef.city = val;
         break;
       case 'sublocality_level_1':
-        getaddress.city = val;
+        addressRef.city = val;
         break;
       case 'administrative_area_level_1':
-        getaddress.state = val;
+        addressRef.state = val;
         break;
       case 'country':
-        getaddress.country = val;
+        addressRef.country = val;
         break;
       case 'postal_code':
-        getaddress.zip = val;
+        addressRef.zip = val;
         break;
       default:
-        getaddress.zip = val;
+        addressRef.zip = val;
     }
+    return addressRef;
   };
 
   constructor(props) {
