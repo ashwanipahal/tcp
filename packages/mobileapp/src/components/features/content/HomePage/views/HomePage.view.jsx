@@ -10,7 +10,7 @@ class HomePageView extends React.Component {
   }
 
   render() {
-    return <Text>Hello App.</Text>;
+    return <Text>Home Page</Text>;
   }
 }
 

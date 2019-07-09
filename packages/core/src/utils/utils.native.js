@@ -1,3 +1,5 @@
+import icons from '../config/icons';
+
 export const importGraphQLClientDynamically = module => {
   return new Promise((resolve, reject) => {
     switch (module) {
@@ -44,4 +46,12 @@ export const importGraphQLQueriesDynamically = query => {
         break;
     }
   });
+};
+
+/**
+ * This function returns the path of icons in static/images folder
+ * @param {*} icon | String - Identifier for icons in assets
+ */
+export const getIconPath = icon => {
+  return icons[icon];
 };
