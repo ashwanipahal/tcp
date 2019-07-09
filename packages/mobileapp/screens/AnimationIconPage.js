@@ -16,7 +16,7 @@ import gymboreeLogo from '../../mobileapp/brand_config/gymboree/config/logo.png'
 UIManager.setLayoutAnimationEnabledExperimental &&
   UIManager.setLayoutAnimationEnabledExperimental(true);
 
-export default class AnimationIconPage extends Component {
+export default class AnimatedBrandChangeIcon extends Component {
   constructor(props) {
     super(props);
     this.state = { openSwitch: false };

@@ -4,7 +4,7 @@ import { createStackNavigator, createBottomTabNavigator } from 'react-navigation
 
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import AnimationIconPage from '../screens/AnimationIconPage';
+import AnimatedBrandChangeIcon from '../screens/AnimationIconPage';
 import Plp from '../screens/PLPScreen';
 import PlpDeltaSync from '../screens/PLPDeltaSyncScreen';
 
@@ -50,7 +50,7 @@ PlpDeltaSyncStack.navigationOptions = {
   // tabBarLabel: 'PLP-DeltaSync',
   tabBarIcon: ({ focused }) => (
     // <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
-    <AnimationIconPage />
+    <AnimatedBrandChangeIcon />
   ),
 };
 
