@@ -1,7 +1,7 @@
 import React from 'react';
-import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
+import ModuleD from '@tcp/core/src/components/common/molecules/ModuleD/view/ModuleD.native';
 
 class HomePageView extends React.Component {
   componentDidMount() {
@@ -10,11 +10,14 @@ class HomePageView extends React.Component {
   }
 
   render() {
-    return <Text>Hello App.</Text>;
+    const { moduleD: data } = this.props;
+
+    return <ModuleD {...data} />;
   }
 }
 
 HomePageView.propTypes = {
+  moduleD: PropTypes.shape({}).isRequired,
   getBootstrapData: PropTypes.func.isRequired,
 };
 
