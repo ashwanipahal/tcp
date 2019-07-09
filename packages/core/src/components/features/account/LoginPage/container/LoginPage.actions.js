@@ -23,3 +23,10 @@ export const getUserInfo = () => {
     type: LOGINPAGE_CONSTANTS.GET_USER_INFO,
   };
 };
+
+export const getOrderDetail = payload => {
+  return {
+    type: 'GET_ORDER_DETAIL',
+    payload,
+  };
+};
