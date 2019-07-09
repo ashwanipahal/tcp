@@ -2,10 +2,10 @@ import { css } from 'styled-components';
 
 const styles = css`
   margin: 0;
-  .offers_msg--blue {
+  .offers__msg {
     color: ${props => props.theme.colorPalette.primary.main};
   }
-  .offers_link {
+  .offers__link {
     color: ${props => props.theme.colorPalette.black};
     font-size: ${props => props.theme.typography.fontSizes.fs12};
     font-weight: ${props => props.theme.typography.fontWeights.semibold};
