@@ -18,13 +18,16 @@ export const Heading = styled.Text`
 
 export const ModuleDWrapper = styled.View`
   display: flex;
-  padding-left: 14px;
-  padding-right: 14px;
+  padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
 export const Tile = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-  ${props => (props.tileIndex % 2 === 0 ? 'margin-right: 10px' : 'margin-left: 10px')};
+  ${props =>
+    props.tileIndex % 2 === 0
+      ? `margin-right: ${props.theme.spacing.ELEM_SPACING.XS}`
+      : `margin-left: ${props.theme.spacing.ELEM_SPACING.XS}`};
   width: 50%;
 `;
 

@@ -4,6 +4,8 @@ import withStyles from '../../../hoc/withStyles.native';
 import { Anchor, Button, Image } from '../../../atoms';
 import { UrlHandler } from '../../../../../utils/utils.native';
 import { ButtonWrapper, Heading, ModuleDWrapper, Tile } from '../ModuleD.style.native';
+import colors from '../../../../../../styles/themes/TCP/colors';
+import spacing from '../../../../../../styles/themes/TCP/spacing';
 
 // @flow
 
@@ -26,7 +28,7 @@ type Props = {
 const keyExtractor = (item, index) => index.toString();
 
 const getDimention = () => {
-  return parseInt((Dimensions.get('screen').width - 48) / 2, 10);
+  return parseInt((Dimensions.get('screen').width - 32) / 2, 10);
 };
 
 const getUrlWithCrop = url => {
@@ -42,6 +44,7 @@ const renderItem = item => (
         source={{ uri: getUrlWithCrop(item.item.image.url) }}
         style={{
           height: getDimention(),
+          marginBottom: parseInt(spacing.ELEM_SPACING.XS, 10),
           width: getDimention(),
         }}
       />
@@ -87,7 +90,7 @@ const ModuleD = (props: Props) => {
       {singleCTAButton && (
         <ButtonWrapper>
           <Button
-            color="#4a4a4a"
+            color={colors.BUTTON.WHITE.TEXT}
             title={singleCTAButton.title}
             accessibilityLabel={singleCTAButton.title}
             buttonVariation="variable-width"
