@@ -100,8 +100,6 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
       default:
         getaddress.zip = val;
     }
-
-    return getaddress;
   };
 
   constructor(props) {
