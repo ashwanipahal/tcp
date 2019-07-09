@@ -99,6 +99,7 @@ class ModuleH extends React.PureComponent<Props, State> {
                   srcSet={getSrcSet(item.image.url)}
                   src={item.image.url}
                   alt={item.image.alt}
+                  data-locator={`${getLocator('moduleH_composite_image')}_${index + 1}`}
                 />
               );
             })}

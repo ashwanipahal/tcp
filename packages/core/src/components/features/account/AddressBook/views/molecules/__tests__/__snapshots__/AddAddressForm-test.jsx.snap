@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddAddressForm component should renders correctly 1`] = `
+<Hoc
+  backToAddressBookClick={[MockFunction]}
+  className="any"
+  destroyOnUnmount={true}
+  enableReinitialize={false}
+  forceUnregisterOnUnmount={false}
+  form="AddAddressForm"
+  forwardedRef={null}
+  getFormState={[Function]}
+  handleSubmit={[MockFunction]}
+  initialValues={
+    Object {
+      "address2": "",
+      "country": "US",
+    }
+  }
+  keepDirtyOnReinitialize={false}
+  persistentSubmitErrors={false}
+  pure={true}
+  shouldAsyncValidate={[Function]}
+  shouldError={[Function]}
+  shouldValidate={[Function]}
+  shouldWarn={[Function]}
+  submitAsSideEffect={false}
+  touchOnBlur={true}
+  touchOnChange={false}
+  updateUnregisteredFields={false}
+/>
+`;

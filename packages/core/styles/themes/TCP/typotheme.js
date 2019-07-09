@@ -74,6 +74,12 @@ const BodyCopy = styled(BodyStyle)`
   ${props => (props.bodyColor === 'white' ? `color: ${colors.WHITE};` : '')};
   ${props => (props.bodyColor === 'darkGray' ? `color: ${colors.TEXT.DARKGRAY};` : '')};
   ${props => !props.bodyColor && `color: ${colors.PRIMARY.BLUE};`};
+  ${props => (props.BodycolorLg === 'primary' ? `color: ${colors.PRIMARY.DARK};` : '')};
+  ${props => (props.BodycolorLg === 'secondary' ? `color: ${colors.PRIMARY.BLUE};` : '')};
+  ${props => (props.BodycolorLg === 'tertiary' ? `color: ${colors.PRIMARY.GREEN};` : '')};
+  ${props => (props.BodycolorLg === 'primary' ? `color: ${colors.PRIMARY.DARK};` : '')};
+  ${props => (props.BodycolorLg === 'secondary' ? `color: ${colors.PRIMARY.BLUE};` : '')};
+  ${props => (props.BodycolorLg === 'tertiary' ? `color: ${colors.PRIMARY.GREEN};` : '')};
 
   ${props => (!props.color ? `color: ${colors.PRIMARY.DARK};` : '')};
   ${props => (props.color === 'primary' ? `color: ${colors.PRIMARY.DARK};` : '')};

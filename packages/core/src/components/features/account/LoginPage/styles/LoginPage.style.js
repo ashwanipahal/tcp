@@ -11,4 +11,11 @@ export default styled.div`
   & .marginBottom {
     margin-bottom: 20px;
   }
+
+  input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d3d3d3;
+  }
 `;

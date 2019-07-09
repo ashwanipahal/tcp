@@ -86,7 +86,7 @@ const ModuleD = props => {
                       target={item.link.target}
                     >
                       <Image
-                        data-locator={getLocator('moduleD_image')}
+                        data-locator={`${getLocator('moduleD_image')}_${index + 1}`}
                         src={item.image.url}
                         alt={item.image.alt}
                         className="moduleD_image"
@@ -99,6 +99,7 @@ const ModuleD = props => {
                     className="moduleD_textlink"
                     to={item.link.url}
                     target={item.link.target}
+                    data-locator={`${getLocator('moduleD_textlink')}_${index + 1}`}
                   >
                     {item.link.title}
                   </Anchor>

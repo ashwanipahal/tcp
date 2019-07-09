@@ -1,8 +1,11 @@
-// @flow
 import React from 'react';
 import type { Node } from 'react';
+import BodyCopy from '../../BodyCopy';
 import withStyles from '../../../hoc/withStyles';
+import errors from '../../../../../utils/errorsMsg';
 import StyledTextBox from '../TextBox.style';
+
+// @flow
 
 /**
  * @param {object} props : Props for button
@@ -11,52 +14,76 @@ import StyledTextBox from '../TextBox.style';
  * The border styles for success and error are governed by isErrorState and isSuccessState props.
  * The prop disabled determines if the textbox needs to be disabled or not.
  */
-
 type Props = {
   id?: string,
   className: string,
   ariaLabel?: string,
-  name?: string,
   type?: string,
   placeholder?: string,
-  isErrorState?: boolean,
-  isSuccessState?: boolean,
-  onChangeHandler?: func,
+  onChangeHandler?: any,
+  meta: { touched: any, error: any, warning: any },
+  input: any,
+  maxLength: any,
+  inputRef: any,
+  dataLocator?: string,
+};
+const getErroMsg = (value, placeholder) => {
+  return value.replace('@@LABEL@@', placeholder);
 };
 
 const TextBox = ({
   className,
   id,
   ariaLabel,
-  name,
   type,
   placeholder,
-  isErrorState,
-  isSuccessState,
-  onChangeHandler,
-}: Props): Node => (
-  <input
-    id={id}
-    aria-label={ariaLabel}
-    className={className}
-    name={name}
-    type={type}
-    placeholder={placeholder}
-    isErrorState={isErrorState}
-    isSuccessState={isSuccessState}
-    onChange={onChangeHandler}
-  />
-);
+  maxLength,
+  input,
+  inputRef,
+  meta: { touched, error },
+  dataLocator,
+}: Props): Node => {
+  const elemValue = input.value;
+  const isError = touched && error;
+  return (
+    <label
+      htmlFor={input.name}
+      className={`${className}${elemValue ? ' active' : ''}${
+        isError ? ' error' : ''
+      } input-fields-wrapper`}
+    >
+      <input
+        {...input}
+        id={id}
+        aria-label={ariaLabel}
+        className="TextBox__input"
+        name={input.name}
+        type={type}
+        maxLength={maxLength}
+        value={elemValue}
+        ref={inputRef}
+        placeholder=""
+        data-locator={dataLocator}
+      />
+      <BodyCopy className="TextBox__label" fontFamily="secondary" fontSize="fs12">
+        {placeholder}
+      </BodyCopy>
+      {touched && error && (
+        <BodyCopy color="error" component="div" fontSize="fs12" fontFamily="secondary">
+          {getErroMsg(errors[error], placeholder)}
+        </BodyCopy>
+      )}
+    </label>
+  );
+};
 
 TextBox.defaultProps = {
   id: '',
   ariaLabel: '',
-  name: '',
   type: 'text',
   placeholder: '',
-  isErrorState: false,
-  isSuccessState: false,
   onChangeHandler: () => {},
+  dataLocator: '',
 };
 
 export default withStyles(TextBox, StyledTextBox);

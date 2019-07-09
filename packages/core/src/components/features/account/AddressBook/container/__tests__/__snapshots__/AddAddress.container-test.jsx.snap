@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AddaddressContainer> should render correctly 1`] = `
+<Styled(AddAddress)
+  AddAddresslabels={
+    Object {
+      "addAddressFail": "Your action could not be completed due to a system error",
+      "addAddressSuccessLbl": "Your account has been updated",
+    }
+  }
+  submitAddAddressFormAction={[Function]}
+/>
+`;

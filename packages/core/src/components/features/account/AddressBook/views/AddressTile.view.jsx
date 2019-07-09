@@ -55,16 +55,24 @@ class AddressBookTile extends React.Component<Props> {
     return (
       <div className={className}>
         <div className="addressTile__row--twoCol">
-          <Address address={address} />
+          <Address address={address} dataLocatorPrefix="addressbook" />
           <div>
-            {address.primary === 'true' && <Badge showCheckmark>{labels.defaultShipping}</Badge>}
+            {address.primary === 'true' && (
+              <Badge showCheckmark dataLocator="addressbook-defshippinglabel">
+                {labels.defaultShipping}
+              </Badge>
+            )}
             {address.xcont_isDefaultBilling === 'true' && (
-              <Badge showCheckmark>{labels.defaultBilling}</Badge>
+              <Badge showCheckmark dataLocator="addressbook-defbillinglabel">
+                {labels.defaultBilling}
+              </Badge>
             )}
             {address.xcont_isDefaultBilling !== 'true' &&
-              address.xcont_isBillingAddress === 'true' && <Badge>{labels.billing}</Badge>}
+              address.xcont_isBillingAddress === 'true' && (
+                <Badge dataLocator="addressbook-billinglabel">{labels.billing}</Badge>
+              )}
             {address.primary !== 'true' && address.xcont_isShippingAddress === 'true' && (
-              <Badge>{labels.shipping}</Badge>
+              <Badge dataLocator="addressbook-shippinglabel">{labels.shipping}</Badge>
             )}
             {address.primary !== 'true' && (
               <div className="textRight">
@@ -75,6 +83,7 @@ class AddressBookTile extends React.Component<Props> {
                   handleLinkClick={this.handleDefaultLinkClick}
                   noLink
                   to=""
+                  data-locator="addressbook-makedefault"
                 >
                   {labels.makeDefault}
                 </Anchor>
@@ -83,7 +92,13 @@ class AddressBookTile extends React.Component<Props> {
           </div>
         </div>
         <div className="addressTile__row">
-          <Anchor fontSizeVariation="large" underline to="/#" anchorVariation="primary">
+          <Anchor
+            fontSizeVariation="large"
+            underline
+            to="/#"
+            anchorVariation="primary"
+            data-locator="addressbook-edit"
+          >
             {labels.edit}
           </Anchor>
           <Anchor
@@ -91,6 +106,7 @@ class AddressBookTile extends React.Component<Props> {
             underline
             to="/#"
             anchorVariation="primary"
+            data-locator="addressbook-delete"
             onClick={e => this.onDeleteAddressClick(e)}
           >
             {labels.delete}

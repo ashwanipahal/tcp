@@ -1,4 +1,5 @@
 import React from 'react';
+import Router from 'next/router'; //eslint-disable-line
 import { List } from 'immutable';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
@@ -37,6 +38,10 @@ export class AddressBook extends React.PureComponent<Props> {
 
   setSelectedAddress = address => {
     this.setState({ selectedAddress: address });
+  };
+
+  onAddNNewAddressClick = () => {
+    Router.push('/account?id=add-new-address', '/account/address-book/add-new-address');
   };
 
   render() {
@@ -84,7 +89,11 @@ export class AddressBook extends React.PureComponent<Props> {
             }}
             className="addressBook__addNewCtaContainer"
           >
-            <Button buttonVariation="variable-width" fill="BLUE">
+            <Button
+              onClick={this.onAddNNewAddressClick}
+              buttonVariation="variable-width"
+              fill="BLUE"
+            >
               {labels.addNewAddressCTA}
             </Button>
           </Col>

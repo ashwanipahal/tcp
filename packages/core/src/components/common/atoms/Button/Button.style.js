@@ -6,7 +6,7 @@ const ButtonStyles = css`
   background: none;
   position: relative;
   cursor: ${props => (props.disabled ? 'none' : 'pointer')};
-  opacity: ${props => (props.disabled ? props.theme.opacity.medium : '1')};
+  opacity: ${props => (props.disabled ? props.theme.opacity.opacity.medium : '1')};
   text-transform: uppercase;
   min-height: 42px;
   ${props =>
@@ -59,7 +59,7 @@ const ButtonStyles = css`
       padding: 4px 0;
 
       border: 2px solid ${props.theme.colors.PRIMARY.LIGHTGRAY};
-      box-shadow: 4px 4px white inset, 6px 6px ${props.theme.colors.PRIMARY.PALEGRAY};
+      box-shadow: 4px 4px white inset, 6px 6px ${props.theme.colors.PRIMARY.PALEBLUE};
       width: calc(100% - 6px);
       &:hover, &:focus {
         background: ${props.theme.colors.PRIMARY.COLOR1};
