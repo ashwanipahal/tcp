@@ -1,10 +1,11 @@
-// @flow
 import React from 'react';
 import type { Node } from 'react';
-import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
+import BodyCopy from '../../BodyCopy';
 import withStyles from '../../../hoc/withStyles';
 import errors from '../../../../../utils/errorsMsg';
 import StyledTextBox from '../TextBox.style';
+
+// @flow
 
 /**
  * @param {object} props : Props for button
@@ -17,17 +18,14 @@ type Props = {
   id?: string,
   className: string,
   ariaLabel?: string,
-  name?: string,
   type?: string,
   placeholder?: string,
-  isErrorState?: boolean,
-  isSuccessState?: boolean,
   onChangeHandler?: any,
-  meta: { touched: any, error: any, warning: any },
+  meta?: { touched: any, error: any, warning: any },
   input: any,
-  Value: any,
   maxLength: any,
   inputRef: any,
+  dataLocator?: string,
 };
 const getErroMsg = (value, placeholder) => {
   return value.replace('@@LABEL@@', placeholder);
@@ -37,50 +35,38 @@ const TextBox = ({
   className,
   id,
   ariaLabel,
-  name,
   type,
   placeholder,
-  isSuccessState,
   maxLength,
   input,
   inputRef,
-  meta: { touched, error, warning },
+  meta: { touched, error },
+  dataLocator,
 }: Props): Node => {
   const elemValue = input.value;
   return (
-    <label
-      htmlFor={name}
-      className={`${className} ${elemValue ? 'active' : ''} input-fields-wrapper`}
-    >
+    <label htmlFor={input.name} className={className}>
       <input
         {...input}
         id={id}
         aria-label={ariaLabel}
         className="TextBox__input"
-        name={name}
+        name={input.name}
         type={type}
-        isSuccessState={isSuccessState}
         maxLength={maxLength}
-        Value={elemValue}
+        value={elemValue}
         ref={inputRef}
         placeholder=""
+        data-locator={dataLocator}
       />
-
-      {/* commented onChange={onChangeHandler} */}
-      <BodyCopy bodySize="two" FormVariation="float" BodycolorLg="primary" tag="p" className="">
+      <BodyCopy className="TextBox__label" fontFamily="secondary" fontSize="fs12">
         {placeholder}
       </BodyCopy>
-      {touched &&
-        ((error && (
-          <BodyCopy clearFloat ErrorMsg="error" bodySize="two" tag="div">
-            {getErroMsg(errors[error], placeholder)}
-          </BodyCopy>
-        )) ||
-          (warning && (
-            <BodyCopy bodySize="two" tag="div">
-              {warning}
-            </BodyCopy>
-          )))}
+      {touched && error && (
+        <BodyCopy color="error" component="div" fontSize="fs12" fontFamily="secondary">
+          {getErroMsg(errors[error], placeholder)}
+        </BodyCopy>
+      )}
     </label>
   );
 };
@@ -88,12 +74,11 @@ const TextBox = ({
 TextBox.defaultProps = {
   id: '',
   ariaLabel: '',
-  name: '',
   type: 'text',
   placeholder: '',
-  isErrorState: false,
-  isSuccessState: false,
   onChangeHandler: () => {},
+  dataLocator: '',
+  meta: {},
 };
 
 export default withStyles(TextBox, StyledTextBox);

@@ -81,34 +81,10 @@ const BodyCopy = styled(BodyStyle)`
   ${props => (props.BodycolorLg === 'secondary' ? `color: ${colors.PRIMARY.BLUE};` : '')};
   ${props => (props.BodycolorLg === 'tertiary' ? `color: ${colors.PRIMARY.GREEN};` : '')};
 
-  ${props =>
-    props.FormVariation === 'float'
-      ? `   top: -30px;
-      opacity: .8;
-      position:relative;
-       margin: 0;
-       float:left;
-       padding: 5px 0px 5px 10px`
-      : ''};
-
-  ${props =>
-    props.clearFloat
-      ? `
-    clear:both;
-    top: -10px;
-    position: relative;
-    `
-      : ''};
   ${props => (!props.color ? `color: ${colors.PRIMARY.DARK};` : '')};
   ${props => (props.color === 'primary' ? `color: ${colors.PRIMARY.DARK};` : '')};
   ${props => (props.color === 'secondary' ? `color: ${colors.PRIMARY.BLUE};` : '')};
   ${props => (props.color === 'tertiary' ? `color: ${colors.PRIMARY.GREEN};` : '')};
-  ${props =>
-    props.ErrorMsg === 'error'
-      ? `
-    color:${colors.TEXTBOX.ERROR_BORDER};
-    `
-      : ''};
 `;
 
 export { Heading, BodyCopy };

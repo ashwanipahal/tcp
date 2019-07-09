@@ -1,44 +1,52 @@
-// @flow
 import React from 'react';
 import { connect } from 'react-redux';
 import { addAddressReq } from './AddAddress.actions';
-import AddAddress from '../../views/AddAddress.view';
-import showMessageForAddAddress from './AddAddress.selectors';
+import AddAddressComponent from '../../views/AddAddress.view';
+import { getAddAddressResponse, getUserEmail } from './AddAddress.selectors';
+import { verifyAddress } from '../../../AddressVerification/container/AddressVerification.actions';
+import AddAddresslabels from './AddAddress.labels';
+
+// @flow
 
 type Props = {
-  submitAddAddressForm: any,
-  addAddressNotification: any,
-  AddAddresslabels: any,
-  backToAddressBookClick: any,
+  submitAddAddressFormAction: any,
+  verifyAddressAction: ({}) => void,
+  addAddressResponse: any,
+  userEmail: string,
 };
 
 export const AddaddressContainer = ({
-  submitAddAddressForm,
-  addAddressNotification,
-  AddAddresslabels,
-  backToAddressBookClick,
+  submitAddAddressFormAction,
+  verifyAddressAction,
+  addAddressResponse,
+  userEmail,
 }: Props) => {
   return (
-    <AddAddress
-      backToAddressBookClick={backToAddressBookClick}
+    <AddAddressComponent
       AddAddresslabels={AddAddresslabels}
-      addAddressNotification={addAddressNotification}
-      submitAddAddressForm={submitAddAddressForm}
+      addAddressResponse={addAddressResponse}
+      submitAddAddressFormAction={submitAddAddressFormAction}
+      verifyAddressAction={verifyAddressAction}
+      userEmail={userEmail}
     />
   );
 };
 
 export const mapDispatchToProps = (dispatch: ({}) => void) => {
   return {
-    submitAddAddressForm: payload => {
+    submitAddAddressFormAction: (payload: {}) => {
       dispatch(addAddressReq(payload));
+    },
+    verifyAddressAction: (payload: {}) => {
+      dispatch(verifyAddress(payload));
     },
   };
 };
 
 const mapStateToProps = state => {
   return {
-    addAddressNotification: showMessageForAddAddress(state),
+    addAddressResponse: getAddAddressResponse(state),
+    userEmail: getUserEmail(state),
   };
 };
 

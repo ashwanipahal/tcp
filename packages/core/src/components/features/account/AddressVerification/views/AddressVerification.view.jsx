@@ -190,11 +190,13 @@ export class AddressVerification extends React.Component<Props> {
       return (
         <div className="elem--mb__XL layout--pl__LRG">
           <TextBox
-            input={{ value: optionalAddressLine, onChange: this.handleChange }}
+            input={{
+              value: optionalAddressLine,
+              onChange: this.handleChange,
+              name: 'optionalAddressLine',
+            }}
             placeholder="Apartment or suite number"
             id="optionalAddressLine"
-            name="optionalAddressLine"
-            meta={{}}
           />
         </div>
       );

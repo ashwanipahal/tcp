@@ -1,0 +1,184 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddressBook component should renders correctly when errors are present 1`] = `
+<div>
+  <Styled(Anchor)
+    anchorVariation="secondary"
+    className="addAddress__anchor__back"
+    fontSizeVariation="xlarge"
+    to="/account"
+  >
+    Back
+  </Styled(Anchor)>
+  <Styled(HeadingStyle)
+    HeadingLarge="six"
+    className="addAddress__separator"
+    fontFamily="secondaryFontFamily"
+    tag="h4"
+  >
+    Add New Shipping Address
+  </Styled(HeadingStyle)>
+  <Styled(Grid)>
+    <Styled(Notification)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      message="error"
+      status="error"
+    />
+    <Connect(Styled(AddressVerification))
+      heading="Add Address"
+      labels={
+        Object {
+          "addNewAddressCTA": "ADD NEW ADDRESS",
+          "addressBookHeading": "ADDRESS BOOK",
+          "billing": "BILLING",
+          "cancel": "No, Don't Delete",
+          "comfirmBtnLabel": "CONFIRM",
+          "createAddressBookBenefitMsg": "Add and save up to 5 shipping addresses so you can speed through the checkout process the next time you shop",
+          "createAddressBookMsg": "Create an Address Book to check out faster!",
+          "defaultBilling": "DEFAULT BILLING",
+          "defaultShipping": "DEFAULT SHIPPING",
+          "defaultShippingSuccessFail": "Your action could not be completed due to a system error",
+          "defaultShippingSuccessMessage": "Your account has been updated",
+          "delete": "Delete",
+          "deleteAddressHeading": "DELETE ADDRESS",
+          "deleteAddressTitle": "Are you sure you want to delete this address?",
+          "deleteConfirm": "Yes, Delete",
+          "edit": "Edit",
+          "editBtnLabel": "EDIT ADDRESS",
+          "errorMessage": "Your action could not be completed due to a system error",
+          "makeDefault": "Make Default",
+          "shipping": "SHIPPING",
+          "successMessage": "Your account has been updated",
+          "suggestedAddressHeading": "WE SUGGEST",
+          "userAddressHeading": "YOU ENTERED",
+          "verifyStatusAE09": "There may be an issue with your address as entered. Please double check it, or if you believe the address is correct you can continue to the next step.",
+          "verifyStatusAE10": "The house / building number is not valid. Please review and confirm your address.",
+          "verifyStatusAE11": "The house / building number is missing from your address. Please review and confirm your address.",
+          "verifyStatusAE12": "The house / building number is not valid. Please review and confirm your address.",
+          "verifyStatusDEFAULT": "There may be an issue with your address as entered. Please double check it, or select from the below.",
+          "verifyYourAddressHeading": "VERIFY YOUR ADDRESS",
+        }
+      }
+      onError={[Function]}
+      onSuccess={[Function]}
+    />
+    <ReduxForm
+      backToAddressBookClick={[Function]}
+      destroyOnUnmount={true}
+      enableReinitialize={false}
+      forceUnregisterOnUnmount={false}
+      form="AddAddressForm"
+      getFormState={[Function]}
+      initialValues={
+        Object {
+          "address2": "",
+          "country": "US",
+        }
+      }
+      keepDirtyOnReinitialize={false}
+      persistentSubmitErrors={false}
+      pure={true}
+      shouldAsyncValidate={[Function]}
+      shouldError={[Function]}
+      shouldValidate={[Function]}
+      shouldWarn={[Function]}
+      submitAsSideEffect={false}
+      touchOnBlur={true}
+      touchOnChange={false}
+      updateUnregisteredFields={false}
+    />
+  </Styled(Grid)>
+</div>
+`;
+
+exports[`AddressBook component should renders correctly without any error 1`] = `
+<div>
+  <Styled(Anchor)
+    anchorVariation="secondary"
+    className="addAddress__anchor__back"
+    fontSizeVariation="xlarge"
+    to="/account"
+  >
+    Back
+  </Styled(Anchor)>
+  <Styled(HeadingStyle)
+    HeadingLarge="six"
+    className="addAddress__separator"
+    fontFamily="secondaryFontFamily"
+    tag="h4"
+  >
+    Add New Shipping Address
+  </Styled(HeadingStyle)>
+  <Styled(Grid)>
+    <Connect(Styled(AddressVerification))
+      heading="Add Address"
+      labels={
+        Object {
+          "addNewAddressCTA": "ADD NEW ADDRESS",
+          "addressBookHeading": "ADDRESS BOOK",
+          "billing": "BILLING",
+          "cancel": "No, Don't Delete",
+          "comfirmBtnLabel": "CONFIRM",
+          "createAddressBookBenefitMsg": "Add and save up to 5 shipping addresses so you can speed through the checkout process the next time you shop",
+          "createAddressBookMsg": "Create an Address Book to check out faster!",
+          "defaultBilling": "DEFAULT BILLING",
+          "defaultShipping": "DEFAULT SHIPPING",
+          "defaultShippingSuccessFail": "Your action could not be completed due to a system error",
+          "defaultShippingSuccessMessage": "Your account has been updated",
+          "delete": "Delete",
+          "deleteAddressHeading": "DELETE ADDRESS",
+          "deleteAddressTitle": "Are you sure you want to delete this address?",
+          "deleteConfirm": "Yes, Delete",
+          "edit": "Edit",
+          "editBtnLabel": "EDIT ADDRESS",
+          "errorMessage": "Your action could not be completed due to a system error",
+          "makeDefault": "Make Default",
+          "shipping": "SHIPPING",
+          "successMessage": "Your account has been updated",
+          "suggestedAddressHeading": "WE SUGGEST",
+          "userAddressHeading": "YOU ENTERED",
+          "verifyStatusAE09": "There may be an issue with your address as entered. Please double check it, or if you believe the address is correct you can continue to the next step.",
+          "verifyStatusAE10": "The house / building number is not valid. Please review and confirm your address.",
+          "verifyStatusAE11": "The house / building number is missing from your address. Please review and confirm your address.",
+          "verifyStatusAE12": "The house / building number is not valid. Please review and confirm your address.",
+          "verifyStatusDEFAULT": "There may be an issue with your address as entered. Please double check it, or select from the below.",
+          "verifyYourAddressHeading": "VERIFY YOUR ADDRESS",
+        }
+      }
+      onError={[Function]}
+      onSuccess={[Function]}
+    />
+    <ReduxForm
+      backToAddressBookClick={[Function]}
+      destroyOnUnmount={true}
+      enableReinitialize={false}
+      forceUnregisterOnUnmount={false}
+      form="AddAddressForm"
+      getFormState={[Function]}
+      initialValues={
+        Object {
+          "address2": "",
+          "country": "US",
+        }
+      }
+      keepDirtyOnReinitialize={false}
+      persistentSubmitErrors={false}
+      pure={true}
+      shouldAsyncValidate={[Function]}
+      shouldError={[Function]}
+      shouldValidate={[Function]}
+      shouldWarn={[Function]}
+      submitAsSideEffect={false}
+      touchOnBlur={true}
+      touchOnChange={false}
+      updateUnregisteredFields={false}
+    />
+  </Styled(Grid)>
+</div>
+`;

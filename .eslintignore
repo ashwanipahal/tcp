@@ -10,6 +10,7 @@ mock
 reports
 stories
 flow-typed
+**/server/
 packages/**/flow-typed/
 packages/**/node_modules/
 # Make sure to INCLUDE the following,

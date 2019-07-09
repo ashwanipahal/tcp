@@ -1,69 +1,82 @@
 import React from 'react';
-import { reduxForm } from 'redux-form';
+import Router from 'next/router'; //eslint-disable-line
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Anchor from '../../../../common/atoms/Anchor';
 import AddAddressFormComponent from './molecules/AddAddressForm';
+import AddressVerification from '../../AddressVerification/container/AddressVerification.container';
+import labels from '../container/AddressBook.labels';
 import styles from '../styles/AddAddress.style';
 
 // @flow
 type Props = {
-  className: string,
-  submitAddAddressForm: any,
-  addAddressNotification: any,
-  AddAddresslabels: any,
-  backToAddressBookClick: any,
+  className: ?string,
+  submitAddAddressFormAction: any,
+  verifyAddressAction: ({}) => void,
+  addAddressResponse: any,
+  userEmail: string,
 };
-const AddAddress = ({
-  className,
-  submitAddAddressForm,
-  addAddressNotification,
-  AddAddresslabels,
-  backToAddressBookClick,
-}: Props) => {
-  const msgInfo = JSON.parse(`${addAddressNotification}`);
-  return (
-    <div className={className}>
-      <Anchor
-        className="addAddress__anchor__back"
-        fontSizeVariation="xlarge"
-        anchorVariation="secondary"
-        handleLinkClick={backToAddressBookClick}
-        noLink
-      >
-        Back
-      </Anchor>
-      <Heading
-        fontFamily="secondaryFontFamily"
-        HeadingLarge="six"
-        tag="h4"
-        className="addAddress__separator"
-      >
-        Add New Shipping Address
-      </Heading>
-      <form>
+
+export class AddAddress extends React.PureComponent<Props> {
+  submitAddAddressForm = payload => {
+    const { submitAddAddressFormAction, userEmail } = this.props;
+    const formattedPayload = { ...payload, ...{ email: userEmail } };
+    submitAddAddressFormAction(formattedPayload);
+  };
+
+  backToAddressBookClick = () => {
+    Router.push('/account');
+  };
+
+  render() {
+    const { className, addAddressResponse, verifyAddressAction } = this.props;
+    const isSuccess = addAddressResponse && addAddressResponse.get('addressId');
+    const errorObject = addAddressResponse && addAddressResponse.get('errors');
+    if (isSuccess) {
+      Router.push('/account');
+    }
+    return (
+      <div className={className}>
+        <Anchor
+          className="addAddress__anchor__back"
+          fontSizeVariation="xlarge"
+          anchorVariation="secondary"
+          to="/account"
+        >
+          Back
+        </Anchor>
+        <Heading
+          fontFamily="secondaryFontFamily"
+          HeadingLarge="six"
+          tag="h4"
+          className="addAddress__separator"
+        >
+          Add New Shipping Address
+        </Heading>
         <Grid>
-          <br />
-          {msgInfo && (
+          {errorObject && (
             <Notification
-              status={msgInfo ? 'error' : 'success'}
+              status="error"
               colSize={{ large: 12, medium: 8, small: 6 }}
-              message={
-                msgInfo ? AddAddresslabels.addAddressFail : AddAddresslabels.addAddressSuccessLbl
-              }
+              message={errorObject.getIn(['0', 'errorKey'])}
             />
           )}
+          <AddressVerification
+            onSuccess={this.submitAddAddressForm}
+            heading="Add Address"
+            labels={labels}
+            onError={this.submitAddAddressForm}
+          />
           <AddAddressFormComponent
-            backToAddressBookClick={backToAddressBookClick}
-            onSubmit={submitAddAddressForm}
+            backToAddressBookClick={this.backToAddressBookClick}
+            onSubmit={verifyAddressAction}
           />
         </Grid>
-      </form>
-    </div>
-  );
-};
-export default reduxForm({
-  form: 'addressinfo', // a unique identifier for this form
-})(withStyles(AddAddress, styles));
+      </div>
+    );
+  }
+}
+
+export default withStyles(AddAddress, styles);
