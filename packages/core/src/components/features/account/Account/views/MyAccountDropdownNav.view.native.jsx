@@ -1,6 +1,6 @@
 import React from 'react'; //eslint-disable-line
-import { View, Text } from 'react-native'; //eslint-disable-line
-import { StylePickerWrapper, StyledPicker } from '../styles/MyAccountLayout.style';
+import { Text, Picker } from 'react-native'; //eslint-disable-line
+import { StylePickerWrapper } from '../styles/MyAccountLayout.style';
 
 // @flow
 type Props = {
@@ -30,25 +30,23 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
     const { navData, handleComponentChange } = this.props;
     const { dropDownItem } = this.state;
     return (
-      <View>
-        <StylePickerWrapper>
-          <StyledPicker
-            selectedValue={dropDownItem}
-            onValueChange={itemValue => {
-              this.setState({ dropDownItem: itemValue });
-              handleComponentChange(itemValue);
-            }}
-            mode="dropdown"
-          >
-            {navData &&
-              navData.map(nav => {
-                return (
-                  <StyledPicker.Item key={nav.id} label={nav.displayName} value={nav.component} />
-                );
-              })}
-          </StyledPicker>
-        </StylePickerWrapper>
-      </View>
+      <StylePickerWrapper>
+        <Picker
+          selectedValue={dropDownItem}
+          onValueChange={itemValue => {
+            this.setState({ dropDownItem: itemValue });
+            handleComponentChange(itemValue);
+          }}
+          mode="dropdown"
+          style={{ height: 48 }}
+          itemStyle={{ height: 48 }} //TODO - This is temporary which need to be fixed when styled component works in native.
+        >
+          {navData &&
+            navData.map(nav => {
+              return <Picker.Item key={nav.id} label={nav.displayName} value={nav.component} />;
+            })}
+        </Picker>
+      </StylePickerWrapper>
     );
   }
 }

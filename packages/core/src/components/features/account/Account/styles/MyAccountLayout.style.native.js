@@ -12,8 +12,4 @@ const StylePickerWrapper = styled.View`
   background-color: #eeeeee;
 `;
 
-const StyledPicker = styled.Picker`
-  border: solid 1px #9c9c9c;
-`;
-
-export { ParentContainer, StylePickerWrapper, StyledPicker };
+export { ParentContainer, StylePickerWrapper };

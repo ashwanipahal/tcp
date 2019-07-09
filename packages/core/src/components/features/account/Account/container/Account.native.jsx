@@ -16,7 +16,7 @@ type State = {
  * @function Account The Account component is the main container for the account section
  * This component includes the layout view, it passes the MyAccountLayout with the mainContent to be rendered
  * on th right side.
- * NOTE: Which ever new component that gets added for left nav, needs an entry in AccountComponentMapping file.
+ * NOTE: Which ever new component that gets added for drop down nav, needs an entry in AccountComponentMappingNative file.
  */
 
 export default class Account extends React.PureComponent<Props, State> {
