@@ -36,14 +36,6 @@
       "react/button-has-type": 0,
       "sonarjs/no-small-switch": 0
     },
-    "overrides": [
-      {
-       "files": ["core/*.native.js","core/*.native.jsx"],
-          "rules": {
-             "import/no-unresolved": "off"
-          }
-      }
-     ],
     "plugins": [
       "react-native",
       "react-native-a11y",
