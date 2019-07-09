@@ -1,5 +1,5 @@
 import React from 'react';
-import MyAccountLayout from '../views/MyAccountLayout.view.native';
+import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentNativeMapping from '../AccountComponentMapping';
 import navDataMobile from '../MyAccountRoute.config';
 
