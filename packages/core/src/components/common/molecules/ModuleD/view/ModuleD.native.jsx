@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  Dimensions,
-  FlatList,
-  TouchableOpacity,
-  // eslint-disable-next-line import/no-unresolved
-} from 'react-native';
+import { Dimensions, FlatList, TouchableOpacity } from 'react-native';
 import withStyles from '../../../hoc/withStyles.native';
 import { Anchor, Button, Image } from '../../../atoms';
 import { UrlHandler } from '../../../../../utils/utils.native';
@@ -30,10 +25,13 @@ type Props = {
 
 const keyExtractor = (item, index) => index.toString();
 
+const getDimention = () => {
+  return parseInt((Dimensions.get('screen').width - 48) / 2, 10);
+};
+
 const getUrlWithCrop = url => {
-  const viewport = Dimensions.get('screen').width;
-  const imageWidth = parseInt((viewport - 48) / 2, 10);
-  return url.replace('h_650,w_650', `h_${imageWidth},w_${imageWidth}`);
+  const dimension = getDimention();
+  return url.replace('h_650,w_650', `h_${dimension},w_${dimension}`);
 };
 
 const renderItem = item => (
@@ -43,8 +41,8 @@ const renderItem = item => (
         alt={item.item.image.alt}
         source={{ uri: getUrlWithCrop(item.item.image.url) }}
         style={{
-          height: parseInt((Dimensions.get('screen').width - 48) / 2, 10),
-          width: parseInt((Dimensions.get('screen').width - 48) / 2, 10),
+          height: getDimention(),
+          width: getDimention(),
         }}
       />
     </TouchableOpacity>
