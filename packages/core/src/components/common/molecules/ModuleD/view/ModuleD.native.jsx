@@ -67,11 +67,13 @@ const keyExtractor = (item, index) => index.toString();
 
 const getUrlWithCrop = url => {
   const viewport = Dimensions.get('screen').width;
-  console.log((viewport - 48) / 2);
+  const imageWidth = parseInt((viewport - 48) / 2, 10);
 
-  console.log(url);
+  Image.getSize(url, (width, height) => {
+    console.log('image dimensions', width, height);
+  });
 
-  return url;
+  return url.replace('h_650,w_650', `h_${imageWidth},w_${imageWidth}`);
 };
 
 const renderItem = item => (
