@@ -1,9 +1,6 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  .addressVerification {
-  }
-
   .addressVerification__input {
     display: flex;
   }
