@@ -13,7 +13,7 @@ import LoginSync from '../screens/LoginSync';
 
 const HomeStack = createStackNavigator({
   Home: {
-    screen: props => <AnimationIconPage {...props} />,
+    screen: props => <HomeScreen {...props} />,
   },
 });
 
@@ -47,9 +47,10 @@ const PlpDeltaSyncStack = createStackNavigator({
 });
 
 PlpDeltaSyncStack.navigationOptions = {
-  tabBarLabel: 'PLP-DeltaSync',
+  // tabBarLabel: 'PLP-DeltaSync',
   tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    // <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+    <AnimationIconPage />
   ),
 };
 

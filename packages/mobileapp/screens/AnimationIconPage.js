@@ -7,13 +7,16 @@ import {
   Image,
   View,
   TouchableOpacity,
+  Dimensions,
+  Text,
 } from 'react-native';
-import jake from './jake.png';
+import tcpLogo from '../../mobileapp/brand_config/gymboree/config/logo.png';
+import gymboreeLogo from '../../mobileapp/brand_config/gymboree/config/logo.png';
 
 UIManager.setLayoutAnimationEnabledExperimental &&
   UIManager.setLayoutAnimationEnabledExperimental(true);
 
-export default class App extends Component {
+export default class AnimationIconPage extends Component {
   constructor(props) {
     super(props);
     this.state = { openSwitch: false };
@@ -31,34 +34,26 @@ export default class App extends Component {
       <View style={styles.container}>
         <TouchableOpacity
           onPress={() => this.changePosition()}
-          style={{
-            flex: 1,
-            marginRight: -70,
-            justifyContent: this.state.openSwitch ? 'center' : 'flex-end',
-            alignItems: this.state.openSwitch ? 'center' : 'flex-end',
-          }}
+          style={this.state.openSwitch ? styles.firstIconFinalState : styles.firstIconInitialState}
         >
-          <Image source={jake} style={{ height: 70, width: 70 }} />
+          <Image source={tcpLogo} style={styles.logo} />
         </TouchableOpacity>
         <TouchableOpacity
           onPress={() => this.changePosition()}
-          style={[
-            styles.secondIcon,
-            {
-              flex: 1,
-            //   backgroundColor: this.state.openSwitch ? '#00000070' : '#ff00ff',
-              justifyContent: this.state.openSwitch ? 'center' : 'flex-end',
-              alignItems: this.state.openSwitch ? 'center' : 'flex-start',
-            },
-          ]}
+          style={
+            this.state.openSwitch ? styles.secondIconFinalState : styles.secondIconInitialState
+          }
         >
           <Image
-            source={jake}
-            style={{
-              height: this.state.openSwitch ? 70 : 0,
-              width: this.state.openSwitch ? 70 : 0,
-            }}
+            source={gymboreeLogo}
+            style={this.state.openSwitch ? styles.logo : styles.logoHidden}
           />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => this.changePosition()}
+          style={this.state.openSwitch ? styles.crossIconFinalState : styles.logoHidden}
+        >
+          <Text>X</Text>
         </TouchableOpacity>
       </View>
     );
@@ -67,26 +62,46 @@ export default class App extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    display: 'flex',
-    flex: 1,
-    flexDirection: 'row',
-    height: 200,
     position: 'absolute',
     bottom: 0,
-    // backgroundColor: '#F00',
-    width: '100%',
+    left: 0,
   },
-  secondIcon: {
-    flex: 1
+  logo: {
+    height: 70,
+    width: 70,
+    borderRadius: 35,
   },
-  buttonsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-evenly',
+  logoHidden: {
+    height: 0,
+    width: 0,
+  },
+  crossIconFinalState: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#EFEFE5',
+    height: 70,
+    width: 70,
+    borderRadius: 35,
+  },
+  firstIconInitialState: {
     position: 'absolute',
-    bottom: 16,
-    width: '100%',
+    bottom: 0,
+    left: 0,
   },
-  button: {
-    width: 100,
+  firstIconFinalState: {
+    position: 'absolute',
+    left: -Dimensions.get('window').width / 6,
+    bottom: 70,
+  },
+  secondIconInitialState: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+  },
+  secondIconFinalState: {
+    position: 'absolute',
+    right: -Dimensions.get('window').width / 6,
+    bottom: 70,
   },
 });
