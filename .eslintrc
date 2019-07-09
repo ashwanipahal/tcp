@@ -38,7 +38,7 @@
     },
     "overrides": [
       {
-       "files": ["*.native.js","*.native.jsx"],
+       "files": ["packages/core/**/*.native.js","packages/core/**/*.native.jsx"],
           "rules": {
              "import/no-unresolved": "off"
           }
