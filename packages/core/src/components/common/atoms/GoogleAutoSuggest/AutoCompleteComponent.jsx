@@ -42,10 +42,9 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
   };
 
   static getAddressFromPlace(place, inputValue) {
-    /* eslint complexity: ["error", 16] */
     const address = { street: '', city: '', state: '', country: '', zip: '' };
     let streetNumber = '';
-    let streetName = '';
+    const streetName = '';
 
     if (typeof place.address_components === 'undefined') {
       return address;
@@ -59,26 +58,8 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
           case 'street_number':
             streetNumber = val;
             break;
-          case 'route':
-            streetName = val;
-            break;
-          case 'locality':
-            address.city = val;
-            break;
-          case 'sublocality_level_1':
-            address.city = val;
-            break;
-          case 'administrative_area_level_1':
-            address.state = val;
-            break;
-          case 'country':
-            address.country = val;
-            break;
-          case 'postal_code':
-            address.zip = val;
-            break;
           default:
-            address.zip = val;
+            AutoCompleteComponent.returngetAddress(addressType, val, streetName, address);
         }
       }
     }
@@ -97,6 +78,31 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
 
     return address;
   }
+
+  static returngetAddress = (addressType, val, streetName, address) => {
+    const getaddress = address;
+    switch (addressType) {
+      case 'locality':
+        getaddress.city = val;
+        break;
+      case 'sublocality_level_1':
+        getaddress.city = val;
+        break;
+      case 'administrative_area_level_1':
+        getaddress.state = val;
+        break;
+      case 'country':
+        getaddress.country = val;
+        break;
+      case 'postal_code':
+        getaddress.zip = val;
+        break;
+      default:
+        getaddress.zip = val;
+    }
+
+    return getaddress;
+  };
 
   constructor(props) {
     super(props);
