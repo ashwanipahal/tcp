@@ -23,12 +23,12 @@ const styles = css`
     height: 100%;
     width: 100%;
     left: 0;
-    box-shadow: inset 0 0 0 0.6px ${props => props.theme.colors.CHECKBOX.BORDER};
+    border: 1px solid ${props => props.theme.colors.CHECKBOX.BORDER};
   }
 
   & .CheckBox__input:checked:before {
     background: ${props => props.theme.colors.CHECKBOX.CHECKED_BORDER};
-    box-shadow: inset 0 0 0 0.6px ${props => props.theme.colors.CHECKBOX.CHECKED_BORDER};
+    border: 1px solid ${props => props.theme.colors.CHECKBOX.CHECKED_BORDER};
   }
 
   & .CheckBox__input:checked:after {
