@@ -60,8 +60,8 @@ const navData = [
     id: 'paymentGiftCards',
     url: '/account/payment',
     displayName: 'Payment & Gift Cards',
-    component: 'paymentGiftCardsPage',
-    href,
+    component: 'payment',
+    href: '/account?id=payment',
   },
   {
     id: 'myPreferences',

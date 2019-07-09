@@ -1,4 +1,4 @@
-import icons from '../config/icons';
+import { Linking } from 'react-native';
 
 export const importGraphQLClientDynamically = module => {
   return new Promise((resolve, reject) => {
@@ -48,10 +48,10 @@ export const importGraphQLQueriesDynamically = query => {
   });
 };
 
-/**
- * This function returns the path of icons in static/images folder
- * @param {*} icon | String - Identifier for icons in assets
- */
-export const getIconPath = icon => {
-  return icons[icon];
+export const UrlHandler = url => {
+  Linking.canOpenURL(url).then(supported => {
+    if (supported) {
+      Linking.openURL(url);
+    }
+  });
 };

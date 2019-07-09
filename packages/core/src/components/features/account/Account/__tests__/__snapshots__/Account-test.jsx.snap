@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Account View should render Account Correctly 1`] = `
-<MyAccountLayoutView
+<Styled(MyAccountLayoutView)
   active="accountOverview"
   mainContent={[Function]}
   navData={
@@ -58,9 +58,9 @@ exports[`Account View should render Account Correctly 1`] = `
         "url": "/account/address-book",
       },
       Object {
-        "component": "paymentGiftCardsPage",
+        "component": "payment",
         "displayName": "Payment & Gift Cards",
-        "href": "/account?id=accountOverview",
+        "href": "/account?id=payment",
         "id": "paymentGiftCards",
         "url": "/account/payment",
       },
@@ -84,7 +84,7 @@ exports[`Account View should render Account Correctly 1`] = `
 `;
 
 exports[`Account View should render AddressBook Correctly 1`] = `
-<MyAccountLayoutView
+<Styled(MyAccountLayoutView)
   active="addressBook"
   mainContent={[Function]}
   navData={
@@ -141,9 +141,9 @@ exports[`Account View should render AddressBook Correctly 1`] = `
         "url": "/account/address-book",
       },
       Object {
-        "component": "paymentGiftCardsPage",
+        "component": "payment",
         "displayName": "Payment & Gift Cards",
-        "href": "/account?id=accountOverview",
+        "href": "/account?id=payment",
         "id": "paymentGiftCards",
         "url": "/account/payment",
       },
