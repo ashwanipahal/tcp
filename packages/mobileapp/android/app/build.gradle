@@ -102,7 +102,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.childrensplace.tcp"
+        applicationId "com.mobileapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

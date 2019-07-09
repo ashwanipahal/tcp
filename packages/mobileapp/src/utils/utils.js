@@ -18,3 +18,7 @@ export const getIcon = icon => {
       return require('../assets/images/user-icon.png');
   }
 };
+
+export default {
+  getIcon,
+};
