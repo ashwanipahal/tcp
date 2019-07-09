@@ -1,5 +1,4 @@
 const required = value => {
-  console.log(value);
   return value ? '' : 'REQUIRED_FIELD';
 };
 const isSpecialChar = value =>

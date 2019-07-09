@@ -1,23 +1,21 @@
 import React from 'react';
-import styled from 'styled-components';
-import { View } from 'react-native';
-import EspotContainer from '../../../../common/atoms/EspotContainer/EspotContainer';
+import { Text } from 'react-native';
+import PropTypes from 'prop-types';
+import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
 
-const StyledText = styled.Text`
-  color: palevioletred;
-`;
-
-export default class HomePage extends React.Component {
-  static navigationOptions = {
-    header: null,
-  };
+class HomePageView extends React.Component {
+  componentDidMount() {
+    const { getBootstrapData } = this.props;
+    getBootstrapData({ name: 'homepage' });
+  }
 
   render() {
-    return (
-      <View className="">
-        <StyledText>This is test text</StyledText>
-        <EspotContainer />
-      </View>
-    );
+    return <Text>Hello App.</Text>;
   }
 }
+
+HomePageView.propTypes = {
+  getBootstrapData: PropTypes.func.isRequired,
+};
+
+export default errorBoundary(HomePageView);
