@@ -1,16 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Button from '../views/Button.native';
+import CustomButton from '../views/Button.native';
 
-describe('Button', () => {
+describe('CustomButton', () => {
   let component;
 
   beforeEach(() => {
-    component = shallow(<Button />);
+    component = shallow(<CustomButton id="btn" />);
   });
 
   it('should be defined', () => {
-    expect(Button).toBeDefined();
+    expect(CustomButton).toBeDefined();
   });
 
   it('should render correctly', () => {
