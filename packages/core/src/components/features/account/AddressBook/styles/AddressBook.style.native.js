@@ -9,4 +9,9 @@ const ParentContainer = styled.View`
   border: 1px solid black;
   height: 100px;
 `;
-export default ParentContainer;
+
+const StyledText = styled.Text`
+  padding: 8px;
+`;
+
+export { ParentContainer, StyledText };
