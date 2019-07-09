@@ -1,16 +1,14 @@
 import React from 'react';
 import {
-  Alert,
-  Button,
   Dimensions,
   FlatList,
-  Image,
-  StyleSheet,
-  Text,
   TouchableOpacity,
-  View,
   // eslint-disable-next-line import/no-unresolved
 } from 'react-native';
+import withStyles from '../../../hoc/withStyles.native';
+import { Anchor, Button, Image } from '../../../atoms';
+import { UrlHandler } from '../../../../../utils/utils.native';
+import { ButtonWrapper, Heading, ModuleDWrapper, Tile } from '../ModuleD.style.native';
 
 // @flow
 
@@ -30,66 +28,37 @@ type Props = {
   composites: Object,
 };
 
-const styles = StyleSheet.create({
-  // eslint-disable-next-line react-native/no-color-literals
-  heading: {
-    color: '#1a1a1a',
-    fontSize: 36,
-    fontWeight: 'bold',
-    marginBottom: 20,
-    marginTop: 30,
-    textAlign: 'center',
-    textTransform: 'uppercase',
-  },
-  image: {
-    height: 164,
-    width: '100%',
-  },
-  item: {
-    width: '50%',
-  },
-  itemEven: {
-    marginRight: 10,
-  },
-  itemOdd: {
-    marginLeft: 10,
-  },
-  wrapper: {
-    display: 'flex',
-    paddingLeft: 14,
-    paddingRight: 14,
-  },
-});
-
-const checkIndex = index => (index % 2 === 0 ? styles.itemEven : styles.itemOdd);
-
 const keyExtractor = (item, index) => index.toString();
 
 const getUrlWithCrop = url => {
   const viewport = Dimensions.get('screen').width;
   const imageWidth = parseInt((viewport - 48) / 2, 10);
-
-  Image.getSize(url, (width, height) => {
-    console.log('image dimensions', width, height);
-  });
-
   return url.replace('h_650,w_650', `h_${imageWidth},w_${imageWidth}`);
 };
 
 const renderItem = item => (
-  <View style={[styles.item, checkIndex(item.index)]}>
-    <Image
-      alt={item.item.image.alt}
-      source={{ uri: getUrlWithCrop(item.item.image.url) }}
-      style={styles.image}
-    />
-    <Text>{item.item.link.title}</Text>
-  </View>
+  <Tile tileIndex={item.index}>
+    <TouchableOpacity accessibilityRole="button" onPress={() => UrlHandler(item.item.link.url)}>
+      <Image
+        alt={item.item.image.alt}
+        source={{ uri: getUrlWithCrop(item.item.image.url) }}
+        style={{
+          height: parseInt((Dimensions.get('screen').width - 48) / 2, 10),
+          width: parseInt((Dimensions.get('screen').width - 48) / 2, 10),
+        }}
+      />
+    </TouchableOpacity>
+    <Anchor
+      centered="centered"
+      fontSizeVariation="large"
+      onPress={() => {
+        UrlHandler(item.item.link.url);
+      }}
+    >
+      {item.item.link.title}
+    </Anchor>
+  </Tile>
 );
-
-const handlePress = url => {
-  Alert.alert(`Tapped. below url received. \n ${url}`);
-};
 
 const ModuleD = (props: Props) => {
   let { headingText, url } = {};
@@ -103,10 +72,10 @@ const ModuleD = (props: Props) => {
   }
 
   return (
-    <View style={styles.wrapper}>
+    <ModuleDWrapper>
       {headingText && (
-        <TouchableOpacity accessibilityRole="button" onPress={() => handlePress(url)}>
-          <Text style={styles.heading}>{headingText}</Text>
+        <TouchableOpacity accessibilityRole="button" onPress={() => UrlHandler(url)}>
+          <Heading>{headingText}</Heading>
         </TouchableOpacity>
       )}
       {smallCompImage && (
@@ -118,10 +87,20 @@ const ModuleD = (props: Props) => {
         />
       )}
       {singleCTAButton && (
-        <Button title={singleCTAButton.title} accessibilityLabel={singleCTAButton.title} />
+        <ButtonWrapper>
+          <Button
+            color="#4a4a4a"
+            title={singleCTAButton.title}
+            accessibilityLabel={singleCTAButton.title}
+            buttonVariation="variable-width"
+            onPress={() => {
+              UrlHandler(singleCTAButton.url);
+            }}
+          />
+        </ButtonWrapper>
       )}
-    </View>
+    </ModuleDWrapper>
   );
 };
 
-export default ModuleD;
+export default withStyles(ModuleD);
