@@ -9,8 +9,7 @@ type Props = {
 };
 
 const Anchor = ({ anchorVariation, ...otherProps }: Props) => (
-  // eslint-disable-next-line react-native-a11y/has-accessibility-props
-  <TouchableOpacity {...otherProps}>
+  <TouchableOpacity accessibilityRole="button">
     <Text anchorVariation={anchorVariation} {...otherProps} />
   </TouchableOpacity>
 );

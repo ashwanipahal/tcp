@@ -1,6 +1,5 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-// eslint-disable-next-line import/named
 import CustomButton from '../views/Button.native';
 
 describe('CustomButton', () => {

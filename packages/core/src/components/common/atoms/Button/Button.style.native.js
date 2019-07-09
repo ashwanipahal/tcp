@@ -8,7 +8,7 @@ const style = css`
     height: 100px;
     color: ${props.theme.colorPalette.white};
     font-size: ${props.theme.typography.fontSizes.fs16};
-    font-family: ${props.theme.typography.mobileFonts.semibold};
+    font-family: ${props.theme.typography.mobileFonts.primary};
     font-weight: ${props.theme.typography.fontWeights.semibold};
     border: 1px solid ${props.theme.colorPalette.black};
     padding: 12px 20px;
