@@ -35,7 +35,7 @@ const PaymentReducer = (state = initialState, action) => {
     case PAYMENT_CONSTANTS.UPDATE_CARD_LIST_ON_DELETE:
       return state
         .set('cardList', updateCardList(state, action))
-        .set('showUpdatedNotification', 'success');
+        .set('showNotification', 'success');
     case PAYMENT_CONSTANTS.UPDATE_CARD_LIST_ON_DELETE_ERR:
       return state
         .set('error', action.payload)
