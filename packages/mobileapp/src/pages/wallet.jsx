@@ -11,7 +11,9 @@ const WalletStack = createStackNavigator({
 
 WalletStack.navigationOptions = {
   tabBarLabel: 'wallet',
-  tabBarIcon: props => <NavBarIcon iconActive="wallet" iconInactive="wallet" {...props} />,
+  tabBarIcon: props => (
+    <NavBarIcon iconActive="wallet-active" iconInactive="wallet-inactive" {...props} />
+  ),
 };
 
 export default WalletStack;

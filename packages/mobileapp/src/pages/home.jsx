@@ -10,7 +10,9 @@ const HomeStack = createStackNavigator({
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'home',
-  tabBarIcon: props => <NavBarIcon iconActive="shop" iconInactive="shop" {...props} />,
+  tabBarIcon: props => (
+    <NavBarIcon iconActive="home-active" iconInactive="home-inactive" {...props} />
+  ),
 };
 
 export default HomeStack;

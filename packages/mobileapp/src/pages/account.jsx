@@ -11,7 +11,9 @@ const AccountStack = createStackNavigator({
 
 AccountStack.navigationOptions = {
   tabBarLabel: 'account',
-  tabBarIcon: () => <NavBarIcon iconActive="user-icon" iconInactive="user-icon" />,
+  tabBarIcon: props => (
+    <NavBarIcon iconActive="account-active" iconInactive="account-inactive" {...props} />
+  ),
 };
 
 export default AccountStack;

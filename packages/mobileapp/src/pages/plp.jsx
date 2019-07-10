@@ -11,7 +11,9 @@ const PlpStack = createStackNavigator({
 
 PlpStack.navigationOptions = {
   tabBarLabel: 'shop',
-  tabBarIcon: props => <NavBarIcon iconActive="shop" iconInactive="shop" {...props} />,
+  tabBarIcon: props => (
+    <NavBarIcon iconActive="shop-active" iconInactive="shop-inactive" {...props} />
+  ),
 };
 
 export default PlpStack;
