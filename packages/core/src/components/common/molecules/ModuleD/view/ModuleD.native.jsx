@@ -1,6 +1,6 @@
 import React from 'react';
 import { Dimensions, FlatList, TouchableOpacity } from 'react-native';
-import withStyles from '../../../hoc/withStyles.native';
+import withStyles from '../../../hoc/withStyles';
 import { Anchor, Button, Image } from '../../../atoms';
 import { UrlHandler } from '../../../../../utils/utils.native';
 import { ButtonWrapper, Heading, ModuleDWrapper, Tile } from '../ModuleD.style.native';
@@ -25,41 +25,46 @@ type Props = {
   composites: Object,
 };
 
-const keyExtractor = (item, index) => index.toString();
+const keyExtractor = (_, index) => index.toString();
 
-const getDimention = () => {
+const getDimension = () => {
   return parseInt((Dimensions.get('screen').width - 32) / 2, 10);
 };
 
 const getUrlWithCrop = url => {
-  const dimension = getDimention();
+  const dimension = getDimension();
   return url.replace('h_650,w_650', `h_${dimension},w_${dimension}`);
 };
 
-const renderItem = item => (
-  <Tile tileIndex={item.index}>
-    <TouchableOpacity accessibilityRole="button" onPress={() => UrlHandler(item.item.link.url)}>
-      <Image
-        alt={item.item.image.alt}
-        source={{ uri: getUrlWithCrop(item.item.image.url) }}
-        style={{
-          height: getDimention(),
-          marginBottom: parseInt(spacing.ELEM_SPACING.XS, 10),
-          width: getDimention(),
+const renderItem = item => {
+  const {
+    item: { image, link },
+  } = item;
+  return (
+    <Tile tileIndex={item.index}>
+      <TouchableOpacity accessibilityRole="button" onPress={() => UrlHandler(link.url)}>
+        <Image
+          alt={image.alt}
+          source={{ uri: getUrlWithCrop(image.url) }}
+          style={{
+            height: getDimension(),
+            marginBottom: parseInt(spacing.ELEM_SPACING.XS, 10),
+            width: getDimension(),
+          }}
+        />
+      </TouchableOpacity>
+      <Anchor
+        centered="centered"
+        fontSizeVariation="large"
+        onPress={() => {
+          UrlHandler(link.url);
         }}
-      />
-    </TouchableOpacity>
-    <Anchor
-      centered="centered"
-      fontSizeVariation="large"
-      onPress={() => {
-        UrlHandler(item.item.link.url);
-      }}
-    >
-      {item.item.link.title}
-    </Anchor>
-  </Tile>
-);
+      >
+        {link.title}
+      </Anchor>
+    </Tile>
+  );
+};
 
 const ModuleD = (props: Props) => {
   let { headingText, url } = {};

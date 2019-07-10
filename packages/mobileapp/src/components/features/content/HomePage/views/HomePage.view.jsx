@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
-import ModuleD from '@tcp/core/src/components/common/molecules/ModuleD/view/ModuleD.native';
+import ModuleD from '@tcp/core/src/components/common/molecules';
 
 class HomePageView extends React.Component {
   componentDidMount() {
