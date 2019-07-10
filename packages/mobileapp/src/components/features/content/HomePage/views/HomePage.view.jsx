@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
 import ModuleD from '@tcp/core/src/components/common/molecules/ModuleD/view/ModuleD.native';
@@ -12,7 +13,13 @@ class HomePageView extends React.Component {
   render() {
     const { moduleD: data } = this.props;
 
-    return <ModuleD {...data} />;
+    return (
+      <ScrollView>
+        <React.Fragment>
+          <ModuleD {...data} />
+        </React.Fragment>
+      </ScrollView>
+    );
   }
 }
 
