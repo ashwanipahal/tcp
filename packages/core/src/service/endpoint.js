@@ -40,7 +40,7 @@ const endpoints = {
     relURI: '/api/v2/account/deleteAddressDetails',
   },
   global: {
-    baseURI: 'https://www.childrensplace.com',
+    baseURI: 'https://test4.childrensplace.com',
   },
   setDefaultShippingAddress: {
     method: 'put',
