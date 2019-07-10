@@ -1,0 +1,110 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddressBook component should renders correctly when errors are present 1`] = `
+<div>
+  <Styled(Anchor)
+    anchorVariation="secondary"
+    className="addAddress__anchor__back"
+    fontSizeVariation="xlarge"
+    to="/account"
+  >
+    Back
+  </Styled(Anchor)>
+  <Styled(HeadingStyle)
+    HeadingLarge="six"
+    className="addAddress__separator"
+    fontFamily="secondaryFontFamily"
+    tag="h4"
+  >
+    Add New Shipping Address
+  </Styled(HeadingStyle)>
+  <Styled(Grid)>
+    <Styled(Notification)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      message="error"
+      status="error"
+    />
+    <ReduxForm
+      backToAddressBookClick={[Function]}
+      destroyOnUnmount={true}
+      enableReinitialize={false}
+      forceUnregisterOnUnmount={false}
+      form="AddAddressForm"
+      getFormState={[Function]}
+      initialValues={
+        Object {
+          "address2": "",
+          "country": "US",
+        }
+      }
+      keepDirtyOnReinitialize={false}
+      onSubmit={[Function]}
+      persistentSubmitErrors={false}
+      pure={true}
+      shouldAsyncValidate={[Function]}
+      shouldError={[Function]}
+      shouldValidate={[Function]}
+      shouldWarn={[Function]}
+      submitAsSideEffect={false}
+      touchOnBlur={true}
+      touchOnChange={false}
+      updateUnregisteredFields={false}
+    />
+  </Styled(Grid)>
+</div>
+`;
+
+exports[`AddressBook component should renders correctly without any error 1`] = `
+<div>
+  <Styled(Anchor)
+    anchorVariation="secondary"
+    className="addAddress__anchor__back"
+    fontSizeVariation="xlarge"
+    to="/account"
+  >
+    Back
+  </Styled(Anchor)>
+  <Styled(HeadingStyle)
+    HeadingLarge="six"
+    className="addAddress__separator"
+    fontFamily="secondaryFontFamily"
+    tag="h4"
+  >
+    Add New Shipping Address
+  </Styled(HeadingStyle)>
+  <Styled(Grid)>
+    <ReduxForm
+      backToAddressBookClick={[Function]}
+      destroyOnUnmount={true}
+      enableReinitialize={false}
+      forceUnregisterOnUnmount={false}
+      form="AddAddressForm"
+      getFormState={[Function]}
+      initialValues={
+        Object {
+          "address2": "",
+          "country": "US",
+        }
+      }
+      keepDirtyOnReinitialize={false}
+      onSubmit={[Function]}
+      persistentSubmitErrors={false}
+      pure={true}
+      shouldAsyncValidate={[Function]}
+      shouldError={[Function]}
+      shouldValidate={[Function]}
+      shouldWarn={[Function]}
+      submitAsSideEffect={false}
+      touchOnBlur={true}
+      touchOnChange={false}
+      updateUnregisteredFields={false}
+    />
+  </Styled(Grid)>
+</div>
+`;

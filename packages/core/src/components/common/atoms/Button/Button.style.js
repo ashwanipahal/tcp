@@ -59,7 +59,7 @@ const ButtonStyles = css`
       padding: 4px 0;
 
       border: 2px solid ${props.theme.colors.PRIMARY.LIGHTGRAY};
-      box-shadow: 4px 4px white inset, 6px 6px ${props.theme.colors.PRIMARY.PALEGRAY};
+      box-shadow: 4px 4px white inset, 6px 6px ${props.theme.colors.PRIMARY.PALEBLUE};
       width: calc(100% - 6px);
       &:hover, &:focus {
         background: ${props.theme.colors.PRIMARY.COLOR1};
