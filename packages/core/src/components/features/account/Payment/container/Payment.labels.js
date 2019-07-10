@@ -16,6 +16,17 @@ const labels = {
     'Save up to 5 gift cards and/or merchandise cards to use the next time you shop.',
   ACC_LBL_OFFERS_MESSAGE:
     '<b>SAVE 30% TODAY WHEN YOU OPEN AND USE A <span> MY PLACE REWARDS CREDIT CARD! </span></b> <a href="#">DETAILS</a>',
+  ACC_LBL_DEFAULT_CARD_NAME: 'Credit Card',
+  ACC_LBL_CARD_NUM: 'Card ending in ',
+  ACC_LBL_EXP_DATE: 'Expires on ',
+  ACC_LBL_EDIT: 'Edit',
+  ACC_LBL_DELETE: 'Delete',
+  ACC_LBL_VENMO_ACCOUNT: 'Your Venmo Account',
+  ACC_LBL_GIFT_CARD: 'Gift Card Name',
+  ACC_LBL_REM_BAL: 'Remaining balance',
+  ACC_LBL_MAKE_DEFAULT: 'Make Default',
+  ACC_LBL_DEFAULT_PAYMENT: 'DEFAULT PAYMENT',
+  ACC_LBL_PLCC_CARD: 'My Place Rewards Credit Card',
 };
 
 export default labels;

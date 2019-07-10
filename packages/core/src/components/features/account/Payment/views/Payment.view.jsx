@@ -17,6 +17,7 @@ type Props = {
   creditCardList: Array<object>,
   giftCardList: Array<object>,
   cardList: Array<object>,
+  setDefaultPaymentMethod: Function
 };
 
 const PaymentView = ({
@@ -26,6 +27,7 @@ const PaymentView = ({
   creditCardList,
   giftCardList,
   cardList,
+  setDefaultPaymentMethod,
 }: Props) => {
   return (
     <div className={className}>
@@ -87,6 +89,7 @@ const PaymentView = ({
           labels={labels}
           creditCardList={creditCardList}
           className="payment__creditCard"
+          setDefaultPaymentMethod={setDefaultPaymentMethod}
         />
       )}
       {giftCardList && (

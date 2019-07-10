@@ -48,7 +48,7 @@ const EmptyCard = ({ labels, className, icon, alt, prefix }: Props) => {
           <BodyCopy
             tag="p"
             fontSize="fs14"
-            font="secondary"
+            fontFamily="secondary"
             fontWeight="semibold"
             lineHeight="ls107"
             className="emptyCard__heading"
@@ -58,7 +58,7 @@ const EmptyCard = ({ labels, className, icon, alt, prefix }: Props) => {
           <BodyCopy
             tag="p"
             fontSize="fs14"
-            font="secondary"
+            fontFamily="secondary"
             lineHeight="lh115"
             className="emptyCard__description--desktop"
           >
@@ -81,7 +81,7 @@ const EmptyCard = ({ labels, className, icon, alt, prefix }: Props) => {
           <BodyCopy
             tag="p"
             fontSize="fs14"
-            font="secondary"
+            fontFamily="secondary"
             lineHeight="lh115"
             className="emptyCard__description--mobile"
           >

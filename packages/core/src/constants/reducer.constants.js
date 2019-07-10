@@ -9,7 +9,9 @@ export const HOMEPAGE_REDUCER_KEY = 'HomePageReducer';
 // Login Page Reducer
 export const LOGINPAGE_REDUCER_KEY = 'LoginPageReducer';
 export const ADDRESSBOOK_REDUCER_KEY = 'AddressBookReducer';
+export const ADDRESSBOOK_ACTION_PATTERN = '@@AddressBook-';
 export const PAYMENT_REDUCER_KEY = 'PaymentReducer';
+export const PAYMENT_ACTION_PATTERN = '@@payment-';
 export const LOGINPAGE_ACTION_PATTERN = '@@Login-';
 
 // Add address page reducer
@@ -26,4 +28,6 @@ export const ACCOUNT_MODAL_REDUCER_KEY = 'AccountModalReducer';
 export const REDUCER_ACTION_MAPPING = {
   [LOGINPAGE_REDUCER_KEY]: LOGINPAGE_ACTION_PATTERN,
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: PRODUCTLISTINGPAGE_ACTION_PATTERN,
+  [ADDRESSBOOK_REDUCER_KEY]: ADDRESSBOOK_ACTION_PATTERN,
+  [PAYMENT_REDUCER_KEY]: PAYMENT_ACTION_PATTERN,
 };
