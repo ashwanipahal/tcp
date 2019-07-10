@@ -1,6 +1,9 @@
 import React from 'react';
+import { View } from 'react-native';
 import MyAccountDropdownNav from './MyAccountDropdownNav.view';
-import { ParentContainer } from '../styles/MyAccountLayout.style'; // eslint-disable-line
+import { ParentContainer } from '../styles/MyAccountLayout.style.native';
+import withStyles from '../../../../common/hoc/withStyles';
+
 // @flow
 type Props = {
   navData: Array<Object>,
@@ -16,17 +19,15 @@ type Props = {
  * @param {mainContent} mainContent The component to be rendered on the below side
  */
 
-const MyAccountLayoutView = ({
-  navData,
-  mainContent: MainContent,
-  handleComponentChange,
-}: Props) => {
+const MyAccountLayoutView = (props: Props) => {
+  const { navData, mainContent: MainContent, handleComponentChange } = props;
   return (
-    <ParentContainer>
+    <View {...props}>
       <MyAccountDropdownNav navData={navData} handleComponentChange={handleComponentChange} />
       <MainContent />
-    </ParentContainer>
+    </View>
   );
 };
 
-export default MyAccountLayoutView;
+export default withStyles(MyAccountLayoutView, ParentContainer);
+export { MyAccountLayoutView as MyAccountLayoutViewVanilla };

@@ -1,6 +1,6 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
-const ParentContainer = styled.View`
+const ParentContainer = css`
   display: flex;
   margin-top: 19px;
   margin-right: 14px;
@@ -8,7 +8,7 @@ const ParentContainer = styled.View`
   margin-left: 14px;
 `;
 
-const StylePickerWrapper = styled.View`
+const StylePickerWrapper = css`
   background-color: #eeeeee;
 `;
 
