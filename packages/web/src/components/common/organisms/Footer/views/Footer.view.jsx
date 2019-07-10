@@ -6,6 +6,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import FooterMiddleMobile from '@tcp/core/src/components/features/footer/FooterMiddleMobile';
 import FooterMiddleDesktop from '@tcp/core/src/components/features/footer/FooterMiddleDesktop/views';
 import { getLocator } from '@tcp/core/src/utils';
+import SignupWrapper from '../../../molecules/SignupModal/container';
 
 import style from '../Footer.style';
 import { LegalLinks, Copyright, SocialMediaLinks } from '../../../molecules';
@@ -35,9 +36,10 @@ const Footer = ({
             small: true,
           }}
         >
-          <Button customStyle="shadow-button" title={emailSignup.title}>
+          <SignupWrapper buttonConfig={emailSignup} />
+          {/* <Button customStyle="shadow-button" title={emailSignup.title}>
             <RichText richTextHtml={emailSignup.title} />
-          </Button>
+          </Button> */}
         </Col>
         <Col
           className="footer-top__slots"
@@ -51,9 +53,10 @@ const Footer = ({
             medium: true,
           }}
         >
-          <Button customStyle="shadow-button" title={smsSignup.title}>
+          <SignupWrapper buttonConfig={smsSignup} />
+          {/* <Button customStyle="shadow-button" title={smsSignup.title}>
             <RichText richTextHtml={smsSignup.title} />
-          </Button>
+          </Button> */}
         </Col>
         <Col
           className="footer-top__slots"
