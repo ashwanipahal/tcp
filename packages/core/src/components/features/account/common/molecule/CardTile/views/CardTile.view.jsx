@@ -6,7 +6,6 @@ import Anchor from '../../../../../../common/atoms/Anchor';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../CardTile.style';
 import { getIconPath } from '../../../../../../../utils';
-import PAYMENT_CONSTANTS from '../../../../Payment/Payment.constants';
 
 // @flow
 type Props = {
@@ -27,7 +26,6 @@ class CardTile extends React.Component<Props> {
       GC: 'gift-card-small',
       'PLACE CARD': 'place-card-small',
     };
-    this.paymentMethodId = PAYMENT_CONSTANTS.CREDIT_CARDS_PAYMETHODID;
     this.handleDefaultLinkClick = this.handleDefaultLinkClick.bind(this);
     this.getMakeDefaultBadge = this.getMakeDefaultBadge.bind(this);
     this.getAddressDetails = this.getAddressDetails.bind(this);
@@ -139,31 +137,7 @@ class CardTile extends React.Component<Props> {
   handleDefaultLinkClick(event) {
     const { card, setDefaultPaymentMethod } = this.props;
     event.preventDefault();
-
-    const setDefaultPaymentJSON = {
-      action: 'U',
-      isDefault: 'true',
-      addressId: card.addressId || '',
-      creditCardId: card.creditCardId,
-      billing_firstName: card.addressDetails.firstName,
-      billing_lastName: card.addressDetails.lastName,
-      billing_phone1: card.addressDetails.phone1 || '',
-      billing_address1: card.addressDetails.addressLine1,
-      billing_address2: card.addressDetails.addressLine2,
-      billing_city: card.addressDetails.city,
-      billing_state: card.addressDetails.state,
-      billing_addressField3: card.addressDetails.zipCode,
-      billing_zipCode: card.addressDetails.zipCode,
-      billing_country: card.addressDetails.country,
-      billing_nickName: `Billing_10151_${new Date().getTime().toString()}`,
-      pay_account: card.accountNo,
-      pay_expire_month: (card.expMonth || '').toString(), // on PLCC it's null
-      payMethodId: this.paymentMethodId[card.ccBrand.toUpperCase()],
-      pay_expire_year: (card.expYear || '').toString(), // on PLCC it's null
-      redirecturl: 'AjaxLogonForm',
-      viewTaskName: 'RedirectView',
-    };
-    setDefaultPaymentMethod(setDefaultPaymentJSON);
+    setDefaultPaymentMethod(card);
   }
 
   render() {

@@ -9,9 +9,27 @@ describe('DefaultPayment saga', () => {
   describe('setDefaultPayment', () => {
     let defaultPaymentGen;
     const payload = {
-      blahBlah: 'blah blah',
-      fooFoo: 'foo foo',
-      nickName: 'foo',
+      accountNo: '************6765',
+      billingAddressId: 75446663,
+      addressDetails: {
+        addressLine1: 'Yucca Street',
+        addressLine2: '',
+        city: 'Los Angeles',
+        country: 'US',
+        firstName: 'six',
+        lastName: 'test',
+        phone1: '3214567890',
+        state: 'CA',
+        zipCode: '90028',
+      },
+      ccBrand: 'DISC',
+      ccType: 'COMPASSDISCOVER',
+      creditCardId: 8977328,
+      defaultInd: false,
+      expMonth: '10',
+      expYear: '2025',
+      nameOnAccount: '.',
+      properties: null,
     };
     beforeEach(() => {
       defaultPaymentGen = setDefaultPayment({ payload });
