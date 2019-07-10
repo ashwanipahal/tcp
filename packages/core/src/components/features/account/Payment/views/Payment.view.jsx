@@ -61,7 +61,7 @@ const PaymentView = ({
           }}
         >
           <BodyCopy
-            fontFamily="secondary"
+            fontFamily="primary"
             fontSize="fs16"
             fontWeight="extrabold"
             component="h4"
