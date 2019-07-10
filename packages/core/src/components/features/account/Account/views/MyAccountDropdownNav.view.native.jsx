@@ -1,5 +1,5 @@
 import React from 'react';
-import { StylePicker, StylePickerWrapper } from '../styles/MyAccountLayout.style';
+import { StylePicker, StylePickerWrapper } from '../styles/MyAccountLayout.style'; // eslint-disable-line
 
 // @flow
 type Props = {
