@@ -47,7 +47,7 @@ exports[`EmptyCard Component should render correctly 1`] = `
         fontSize="fs14"
         fontWeight="semibold"
         letterSpacing="normal"
-        lineHeight="ls107"
+        lineHeight="lh107"
         tag="p"
         textAlign="left"
       >
@@ -153,7 +153,7 @@ exports[`EmptyCard Component should render correctly with credit card 1`] = `
         fontSize="fs14"
         fontWeight="semibold"
         letterSpacing="normal"
-        lineHeight="ls107"
+        lineHeight="lh107"
         tag="p"
         textAlign="left"
       >
