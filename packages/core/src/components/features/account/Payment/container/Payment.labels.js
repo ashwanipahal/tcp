@@ -15,7 +15,8 @@ const labels = {
   ACC_LBL_GC_EMPTY_DESC:
     'Save up to 5 gift cards and/or merchandise cards to use the next time you shop.',
   ACC_LBL_OFFERS_MESSAGE:
-    '<b>SAVE 30% TODAY WHEN YOU OPEN AND USE A <span> MY PLACE REWARDS CREDIT CARD! </span></b> <a href="#">DETAILS</a>',
+    '<b>SAVE 30% TODAY WHEN YOU OPEN AND USE A <span> MY PLACE REWARDS CREDIT CARD! </span></b>',
+  ACC_LBL_OFFERS_DETAILS: '<a class="offers__link" href="#">DETAILS</a>',
   ACC_LBL_DEFAULT_CARD_NAME: 'Credit Card',
   ACC_LBL_CARD_NUM: 'Card ending in ',
   ACC_LBL_EXP_DATE: 'Expires on ',
