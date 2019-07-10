@@ -8,6 +8,7 @@ const initialState = fromJS({
   isFetching: false,
   showNotification: null,
   showUpdatedNotificationOnModal: null,
+  giftcardBalance: {},
 });
 
 const updateCardList = (state, action) => {
@@ -36,6 +37,8 @@ const PaymentReducer = (state = initialState, action) => {
       return state
         .set('cardList', updateCardList(state, action))
         .set('showNotification', 'success');
+    case PAYMENT_CONSTANTS.SET_CHECK_BALANCE:
+      return state.set('giftcardBalance', action.payload);
     case PAYMENT_CONSTANTS.UPDATE_CARD_LIST_ON_DELETE_ERR:
       return state
         .set('error', action.payload)

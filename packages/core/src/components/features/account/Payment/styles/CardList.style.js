@@ -8,6 +8,9 @@ const styles = css`
   .creditCardList__ccAddCta {
     font-weight: ${props => props.theme.typography.fontWeights.semibold};
   }
+  .giftcardList__col {
+    width: 100%;
+  }
 `;
 
 export default styles;

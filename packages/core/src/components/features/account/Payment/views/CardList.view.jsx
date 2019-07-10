@@ -11,22 +11,29 @@ type Props = {
   setDeleteModalMountState: Function,
   setSelectedGiftCard: Function,
   giftCardList: Array<object>,
+  onGetBalanceCard: Function,
+  checkbalanceValueInfo: any,
 }; // giftCards comment for time being
 export const CardList = ({
   setSelectedGiftCard,
   className,
   setDeleteModalMountState,
   giftCardList,
+  onGetBalanceCard,
+  checkbalanceValueInfo,
 }: Props) => {
   return (
     <div>
       {giftCardList.map(giftcard => (
-        <Row fullBleed className={className}>
+        <Row key={giftcard.creditCardId} fullBleed className={className}>
           <Col className="giftcardList__col" colSize={{ large: 4, medium: 4, small: 6 }}>
             <CardTile
               giftcard={giftcard}
               setSelectedGiftCard={setSelectedGiftCard}
               setDeleteModalMountState={setDeleteModalMountState}
+              onGetBalanceCard={onGetBalanceCard}
+              checkbalanceValueInfo={checkbalanceValueInfo}
+              key={giftcard.creditCardId}
             />
           </Col>
         </Row>

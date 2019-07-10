@@ -1,6 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getCardList, setDeleteModalMountedState, deleteCard } from './Payment.actions';
+import {
+  getCardList,
+  setDeleteModalMountedState,
+  deleteCard,
+  checkBalance,
+} from './Payment.actions';
 import {
   getCreditDebitCards,
   getCardListFetchingState,
@@ -10,6 +15,7 @@ import {
   getGiftCards,
   getVenmoCards,
   getCardListState,
+  checkbalanceValue,
 } from './Payment.selectors';
 import labels from './Payment.labels';
 import PaymentView from '../views/Payment.view';
@@ -27,6 +33,8 @@ type Props = {
   venmoCardList: List<any>,
   giftCardList: List<any>,
   cardList: List<any>,
+  onGetBalanceCard: Function,
+  checkbalanceValueInfo: any,
 };
 
 export class PaymentContainer extends React.Component<Props> {
@@ -47,6 +55,8 @@ export class PaymentContainer extends React.Component<Props> {
       giftCardList,
       venmoCardList,
       cardList,
+      onGetBalanceCard,
+      checkbalanceValueInfo,
     } = this.props;
     if (isFetching) return <p>Loading...</p>;
     return (
@@ -61,6 +71,8 @@ export class PaymentContainer extends React.Component<Props> {
         giftCardList={giftCardList}
         venmoCardList={venmoCardList}
         cardList={cardList}
+        onGetBalanceCard={onGetBalanceCard}
+        checkbalanceValueInfo={checkbalanceValueInfo}
       />
     );
   }
@@ -77,6 +89,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     onDeleteCard: payload => {
       dispatch(deleteCard(payload));
     },
+    onGetBalanceCard: payload => {
+      dispatch(checkBalance(payload));
+    },
   };
 };
 
@@ -90,6 +105,7 @@ const mapStateToProps = state => {
     showNotification: getShowNotificationState(state),
     deleteModalMountedState: deleteModalOpenState(state),
     showUpdatedNotificationOnModal: showUpdatedNotificationOnModalState(state),
+    checkbalanceValueInfo: checkbalanceValue(state),
   };
 };
 

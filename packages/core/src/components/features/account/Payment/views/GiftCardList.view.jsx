@@ -17,6 +17,8 @@ type Props = {
   deleteModalMountedState: false,
   onDeleteCard: Function,
   showUpdatedNotificationOnModal: any,
+  onGetBalanceCard: Function,
+  checkbalanceValueInfo: any,
 };
 
 const GiftCardList = ({
@@ -27,6 +29,8 @@ const GiftCardList = ({
   deleteModalMountedState,
   onDeleteCard,
   showUpdatedNotificationOnModal,
+  onGetBalanceCard,
+  checkbalanceValueInfo,
 }: Props) => {
   return (
     <div className={className}>
@@ -56,6 +60,8 @@ const GiftCardList = ({
               onDeleteCard={onDeleteCard}
               showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
               giftCardList={giftCardList}
+              onGetBalanceCard={onGetBalanceCard}
+              checkbalanceValueInfo={checkbalanceValueInfo}
             />
           )}
         </Col>

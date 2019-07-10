@@ -16,6 +16,8 @@ type Props = {
   onDeleteCard: Function,
   showUpdatedNotificationOnModal: any,
   giftCardList: Array<object>,
+  onGetBalanceCard: Function,
+  checkbalanceValueInfo: any,
 };
 
 export class CardView extends React.PureComponent<Props> {
@@ -38,6 +40,8 @@ export class CardView extends React.PureComponent<Props> {
       deleteModalMountedState,
       onDeleteCard,
       giftCardList,
+      onGetBalanceCard,
+      checkbalanceValueInfo,
       // giftCards, = we need this when we use real api instead of mock
       showUpdatedNotificationOnModal,
     } = this.props;
@@ -49,6 +53,8 @@ export class CardView extends React.PureComponent<Props> {
           setDeleteModalMountState={setDeleteModalMountState}
           setSelectedGiftCard={this.setSelectedGiftCard}
           giftCardList={giftCardList}
+          onGetBalanceCard={onGetBalanceCard}
+          checkbalanceValueInfo={checkbalanceValueInfo}
         />
         <DeleteCardModal
           openState={deleteModalMountedState}

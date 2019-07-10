@@ -36,3 +36,7 @@ export const deleteModalOpenState = state => {
 export const showUpdatedNotificationOnModalState = state => {
   return state.PaymentReducer.get('showUpdatedNotificationOnModal');
 };
+
+export const checkbalanceValue = state => {
+  return state.PaymentReducer.get('giftcardBalance');
+};

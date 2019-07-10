@@ -32,3 +32,13 @@ export const updateCardListonDeleteErr = payload => ({
   type: PAYMENT_CONSTANTS.UPDATE_CARD_LIST_ON_DELETE_ERR,
   payload,
 });
+
+export const checkBalance = payload => ({
+  type: PAYMENT_CONSTANTS.CHECK_BALANCE,
+  payload,
+});
+
+export const setcheckBalance = payload => ({
+  type: PAYMENT_CONSTANTS.SET_CHECK_BALANCE,
+  payload,
+});

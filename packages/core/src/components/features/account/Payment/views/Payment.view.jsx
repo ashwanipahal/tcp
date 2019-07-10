@@ -24,6 +24,8 @@ type Props = {
   giftCardList: Array<object>,
   cardList: Array<object>,
   setSelectedGiftCard: any,
+  onGetBalanceCard: Function,
+  checkbalanceValueInfo: any,
 };
 
 const PaymentView = ({
@@ -38,6 +40,8 @@ const PaymentView = ({
   creditCardList,
   giftCardList,
   cardList,
+  onGetBalanceCard,
+  checkbalanceValueInfo,
 }: Props) => {
   return (
     <div className={className}>
@@ -118,6 +122,8 @@ const PaymentView = ({
           showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
           showNotification={showNotification}
           setSelectedGiftCard={setSelectedGiftCard}
+          onGetBalanceCard={onGetBalanceCard}
+          checkbalanceValueInfo={checkbalanceValueInfo}
         />
       )}
     </div>

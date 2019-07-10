@@ -51,5 +51,9 @@ const endpoints = {
     method: 'put',
     relURI: '/api/v2/wallet/updateAddress',
   },
+  getGifCardBalance: {
+    method: 'post',
+    relURI: '/api/v2/wallet/getGiftCardBalance',
+  },
 };
 export default endpoints;
