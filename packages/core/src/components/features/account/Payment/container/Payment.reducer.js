@@ -11,7 +11,7 @@ const initialState = fromJS({
 
 const PaymentReducer = (state = initialState, action) => {
   switch (action.type) {
-    case PAYMENT_CONSTANTS.GET_CARD_LIST:
+    case PAYMENT_CONSTANTS.SET_LOADER:
       return state.set('isFetching', true);
     case PAYMENT_CONSTANTS.SET_CARD_LIST:
       return state

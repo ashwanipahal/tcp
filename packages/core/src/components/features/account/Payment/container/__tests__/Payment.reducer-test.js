@@ -25,7 +25,7 @@ describe('Payment Reducer', () => {
     });
     expect(
       PaymentReducer(initialState, {
-        type: PAYMENT_CONSTANTS.GET_CARD_LIST,
+        type: PAYMENT_CONSTANTS.SET_LOADER,
       })
     ).toEqual(fromJS({ isFetching: true }));
   });
@@ -44,5 +44,35 @@ describe('Payment Reducer', () => {
         payload: err,
       })
     ).toEqual(fromJS({ showNotification: 'error', isFetching: false }));
+  });
+  it('should return showNotification as success if error occurs', () => {
+    const err = fromJS({
+      statusCode: 400,
+      message: 'error',
+    });
+    const initialState = fromJS({
+      showNotification: null,
+    });
+    expect(
+      PaymentReducer(initialState, {
+        type: PAYMENT_CONSTANTS.SET_DEFAULT_PAYMENT_SUCCESS,
+        payload: err,
+      })
+    ).toEqual(fromJS({ showNotification: 'success' }));
+  });
+  it('should return showNotification as error if error occurs', () => {
+    const err = fromJS({
+      statusCode: 400,
+      message: 'Object not found',
+    });
+    const initialState = fromJS({
+      showNotification: null,
+    });
+    expect(
+      PaymentReducer(initialState, {
+        type: PAYMENT_CONSTANTS.SET_DEFAULT_PAYMENT_ERROR,
+        payload: err,
+      })
+    ).toEqual(fromJS({ showNotification: 'error' }));
   });
 });

@@ -20,13 +20,11 @@ import { DEFAULT_REDUX_TTL_TIME } from '../config/site.config';
     accessStrategy - function - default: (state, reducerKey, cacheKey) => state[reducerKey][cacheKey]. Use this to overide the way in which the cacheKey is checked. This allows for greater configurability for applying the caching strategy to nested items in your reducer.
 */
 
-function* validateCache(action, args) {
+function* validateCache(action) {
   const state = yield select();
   const getState = () => state;
   const reducerKey = getReducerKeyByAction(action.type);
-  console.log(reducerKey);
   if (!reducerKey) return false;
-  console.log(state, reducerKey, args);
   return checkCacheValid(getState, reducerKey, {
     accessStrategy: (s, rKey, cacheKey) => s[rKey].get(cacheKey),
   });
@@ -41,9 +39,9 @@ function* validateCache(action, args) {
     sagaMethod - Function - Saga function which is used to request data from API - It needs to run only when data in redux expires
 */
 
-function validateReduxCache(sagaMethod, args) {
+function validateReduxCache(sagaMethod) {
   function* cachedSagaMethod(action) {
-    const isCacheValid = yield validateCache(action, args);
+    const isCacheValid = yield validateCache(action);
     const ignoreCacheValidity = action.payload && action.payload.ignoreCache;
 
     if (isCacheValid && !ignoreCacheValidity) {

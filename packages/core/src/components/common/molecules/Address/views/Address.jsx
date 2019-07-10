@@ -20,6 +20,34 @@ type Props = {
   showCountry?: boolean,
 };
 
+type GetAddressLineProps = {
+  address: {
+    firstName: string,
+    lastName: string,
+    addressLine1: string[],
+    addressLine2: string[],
+    city: string,
+    state: string,
+    zipCode: string,
+    country: ?string,
+    phone1: ?string,
+  },
+  dataLocatorPrefix: ?string,
+};
+
+const getAddressLine = ({ address, dataLocatorPrefix }: GetAddressLineProps) => {
+  return (
+    <React.Fragment>
+      <BodyCopy tag="p" dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline1` : ''}>
+        {address.addressLine1}
+      </BodyCopy>
+      <BodyCopy tag="p" dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline2` : ''}>
+        {address.addressLine2}
+      </BodyCopy>
+    </React.Fragment>
+  );
+};
+
 /**
  * @function Address The address component will render an address
  * that is constructed from the address prop passed.
@@ -27,7 +55,14 @@ type Props = {
  * @param {object} address address object
  */
 
-const Address = ({ address, className, dataLocatorPrefix, fontWeight, showPhone, showCountry  }: Props) => (
+const Address = ({
+  address,
+  className,
+  dataLocatorPrefix,
+  fontWeight,
+  showPhone,
+  showCountry,
+}: Props) => (
   <BodyCopy component="div" fontSize="fs14" color="text.primary" className={className}>
     <BodyCopy
       component="p"
@@ -37,25 +72,20 @@ const Address = ({ address, className, dataLocatorPrefix, fontWeight, showPhone,
     >
       {`${address.firstName} ${address.lastName}`}
     </BodyCopy>
-    {address.addressLine ?  address.addressLine
-      .filter(al => al.trim() !== '')
-      .map((addressLine, index) => (
-        <BodyCopy
-          component="p"
-          dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressl${index}` : ''}
-          fontFamily="secondary"
-        >
-          {addressLine}
-        </BodyCopy>
-      )): null}
-    {!address.addressLine &&
-      (
-      <React.Fragment>
-        <BodyCopy tag="p">{address.addressLine1}</BodyCopy>
-        <BodyCopy tag="p">{address.addressLine2}</BodyCopy>
-      </React.Fragment>
-      )
-    }
+    {address.addressLine
+      ? address.addressLine
+          .filter(al => al.trim() !== '')
+          .map((addressLine, index) => (
+            <BodyCopy
+              component="p"
+              dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressl${index}` : ''}
+              fontFamily="secondary"
+            >
+              {addressLine}
+            </BodyCopy>
+          ))
+      : null}
+    {!address.addressLine && getAddressLine({ address, dataLocatorPrefix })}
     <BodyCopy
       component="p"
       dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-cityfullname` : ''}
@@ -79,6 +109,6 @@ const Address = ({ address, className, dataLocatorPrefix, fontWeight, showPhone,
 Address.defaultProps = {
   showPhone: true,
   showCountry: true,
-}
+};
 
 export default Address;

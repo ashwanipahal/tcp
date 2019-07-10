@@ -66,6 +66,7 @@ const PaymentView = ({
             fontWeight="extrabold"
             component="h4"
             className="payment__heading"
+            dataLocator="payment-payment&gcheader"
           >
             {labels.ACC_LBL_PAYMENT_HEADING}
           </BodyCopy>

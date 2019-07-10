@@ -39,18 +39,17 @@ class CardTile extends React.Component<Props> {
   getMakeDefaultBadge() {
     const { card, labels } = this.props;
     return card.defaultInd ? (
-      <Badge showCheckmark dataLocator="payment-defpaymentlabel">
+      <Badge showCheckmark dataLocator="payment-carddefaultpaymentbadge">
         {labels.ACC_LBL_DEFAULT_PAYMENT}
       </Badge>
     ) : (
       <Anchor
         fontSizeVariation="small"
-        noLink
         underline
         to="/#"
         anchorVariation="primary"
         dataLocator="payment-makedefault"
-        handleLinkClick={this.handleDefaultLinkClick}
+        onClick={this.handleDefaultLinkClick}
       >
         {labels.ACC_LBL_MAKE_DEFAULT}
       </Anchor>
@@ -66,7 +65,7 @@ class CardTile extends React.Component<Props> {
           fontWeight="normal"
           showCountry={false}
           showPhone={false}
-          dataLocatorPrefix="payment"
+          dataLocatorPrefix="payment-creditcard"
         />
       )
     );
@@ -102,6 +101,7 @@ class CardTile extends React.Component<Props> {
           fontWeight="black"
           className="cardTile__number"
           lineHeights="lh107"
+          dataLocator="payment-creditcardendingtext"
         >
           {cardNum}
         </BodyCopy>
@@ -113,6 +113,7 @@ class CardTile extends React.Component<Props> {
             fontWeight="semibold"
             className="cardTile__expiry"
             lineHeights="lh115"
+            dataLocator="payment-creditcardexpiretext"
           >
             {expDate}
           </BodyCopy>
@@ -181,6 +182,7 @@ class CardTile extends React.Component<Props> {
               fontFamily="secondary"
               fontWeight="normal"
               className="cardTile__heading"
+              dataLocator="payment-creditcardnametitle"
             >
               {cardName}
             </BodyCopy>
@@ -189,7 +191,12 @@ class CardTile extends React.Component<Props> {
           </div>
           <div className="cardTile__defaultSection">
             {isCreditCard ? this.getMakeDefaultBadge() : null}
-            <img className="cardTile__img" alt="" src={cardIcon} />
+            <img
+              className="cardTile__img"
+              alt={card.ccBrand}
+              src={cardIcon}
+              data-locator="payment-cardImage"
+            />
           </div>
         </div>
         <div className="cardTile__ctaLinks">
@@ -199,7 +206,7 @@ class CardTile extends React.Component<Props> {
               underline
               to="/#"
               anchorVariation="primary"
-              dataLocator="payment-edit"
+              dataLocator="payment-cardeditlink"
             >
               {labels.ACC_LBL_EDIT}
             </Anchor>
@@ -209,7 +216,7 @@ class CardTile extends React.Component<Props> {
             underline
             to="/#"
             anchorVariation="primary"
-            dataLocator="payment-delete"
+            dataLocator="payment-carddeletelink"
           >
             {labels.ACC_LBL_DELETE}
           </Anchor>
@@ -220,3 +227,4 @@ class CardTile extends React.Component<Props> {
 }
 
 export default withStyles(CardTile, styles);
+export { CardTile as CardTileVanilla };
