@@ -6,6 +6,7 @@ import AddressBookSaga from '@tcp/core/src/components/features/account/AddressBo
 import PaymentSaga from '@tcp/core/src/components/features/account/Payment/container/Payment.saga';
 import DeleteCardSaga from '@tcp/core/src/components/features/account/Payment/container/DeleteCard.saga';
 import GiftCardBalanceSaga from '@tcp/core/src/components/features/account/Payment/container/GetCardBalance.saga';
+import DefaultPaymentSaga from '@tcp/core/src/components/features/account/Payment/container/DefaultPayment.saga';
 import DeleteAddressSaga from '@tcp/core/src/components/features/account/AddressBook/container/DeleteAddress.saga';
 import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
 import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
@@ -24,5 +25,6 @@ export default function* rootSaga() {
     PaymentSaga(),
     DeleteCardSaga(),
     GiftCardBalanceSaga(),
+    DefaultPaymentSaga(),
   ]);
 }

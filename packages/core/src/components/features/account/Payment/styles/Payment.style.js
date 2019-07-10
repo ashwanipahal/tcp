@@ -10,9 +10,11 @@ const styles = css`
     }
   }
   .payment__creditCard {
-    margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+    margin-bottom: ${props =>
+      props.cardList && props.cardList.size === 0 && props.theme.spacing.LAYOUT_SPACING.SM};
     @media ${props => props.theme.mediaQuery.medium} {
-      margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+      margin-bottom: ${props =>
+        props.cardList && props.cardList.size === 0 && props.theme.spacing.LAYOUT_SPACING.LRG};
     }
   }
   .payment__offers {

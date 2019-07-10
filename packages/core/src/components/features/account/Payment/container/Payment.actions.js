@@ -1,7 +1,8 @@
 import PAYMENT_CONSTANTS from '../Payment.constants';
 
-export const getCardList = () => ({
+export const getCardList = payload => ({
   type: PAYMENT_CONSTANTS.GET_CARD_LIST,
+  payload,
 });
 
 export const setCardList = payload => ({
@@ -41,4 +42,17 @@ export const checkBalance = payload => ({
 export const setcheckBalance = payload => ({
   type: PAYMENT_CONSTANTS.SET_CHECK_BALANCE,
   payload,
+});
+
+export const setDefaultPayment = payload => ({
+  type: PAYMENT_CONSTANTS.SET_DEFAULT_PAYMENT,
+  payload,
+});
+
+export const setDefaultPaymentSuccess = () => ({
+  type: PAYMENT_CONSTANTS.SET_DEFAULT_PAYMENT_SUCCESS,
+});
+
+export const setDefaultPaymentError = () => ({
+  type: PAYMENT_CONSTANTS.SET_DEFAULT_PAYMENT_ERROR,
 });

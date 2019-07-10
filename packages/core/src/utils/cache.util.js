@@ -24,8 +24,12 @@ function* validateCache(action, args) {
   const state = yield select();
   const getState = () => state;
   const reducerKey = getReducerKeyByAction(action.type);
+  console.log(reducerKey);
   if (!reducerKey) return false;
-  return checkCacheValid(getState, reducerKey, args);
+  console.log(state, reducerKey, args);
+  return checkCacheValid(getState, reducerKey, {
+    accessStrategy: (s, rKey, cacheKey) => s[rKey].get(cacheKey),
+  });
 }
 
 /*
@@ -37,10 +41,11 @@ function* validateCache(action, args) {
     sagaMethod - Function - Saga function which is used to request data from API - It needs to run only when data in redux expires
 */
 
-function validateReduxCache(sagaMethod) {
+function validateReduxCache(sagaMethod, args) {
   function* cachedSagaMethod(action) {
-    const isCacheValid = yield validateCache(action);
+    const isCacheValid = yield validateCache(action, args);
     const ignoreCacheValidity = action.payload && action.payload.ignoreCache;
+
     if (isCacheValid && !ignoreCacheValidity) {
       return null;
     }

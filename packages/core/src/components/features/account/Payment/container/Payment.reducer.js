@@ -24,7 +24,7 @@ const PaymentReducer = (state = initialState, action) => {
       return state.set('isFetching', true);
     case PAYMENT_CONSTANTS.SET_CARD_LIST:
       return state
-        .set([DEFAULT_REDUCER_KEY], setCacheTTL())
+        .set(DEFAULT_REDUCER_KEY, setCacheTTL())
         .set('cardList', List(action.payload))
         .set('isFetching', false);
     case PAYMENT_CONSTANTS.GET_CARD_LIST_ERR:
@@ -44,6 +44,10 @@ const PaymentReducer = (state = initialState, action) => {
         .set('error', action.payload)
         .set('showUpdatedNotification', null)
         .set('showUpdatedNotificationOnModal', 'error');
+    case PAYMENT_CONSTANTS.SET_DEFAULT_PAYMENT_SUCCESS:
+      return state.set('showNotification', 'success');
+    case PAYMENT_CONSTANTS.SET_DEFAULT_PAYMENT_ERROR:
+      return state.set('showNotification', 'error');
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {

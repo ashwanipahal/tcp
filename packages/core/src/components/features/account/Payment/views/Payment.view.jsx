@@ -26,6 +26,7 @@ type Props = {
   setSelectedGiftCard: any,
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
+  setDefaultPaymentMethod: Function,
 };
 
 const PaymentView = ({
@@ -42,6 +43,7 @@ const PaymentView = ({
   cardList,
   onGetBalanceCard,
   checkbalanceValueInfo,
+  setDefaultPaymentMethod,
 }: Props) => {
   return (
     <div className={className}>
@@ -109,6 +111,7 @@ const PaymentView = ({
           showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
           showNotification={showNotification}
           setSelectedGiftCard={setSelectedGiftCard}
+          setDefaultPaymentMethod={setDefaultPaymentMethod}
         />
       )}
       {giftCardList && (

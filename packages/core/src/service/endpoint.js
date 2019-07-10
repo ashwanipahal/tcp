@@ -55,5 +55,9 @@ const endpoints = {
     method: 'post',
     relURI: '/api/v2/wallet/getGiftCardBalance',
   },
+  setDefaultPayment: {
+    method: 'post',
+    relURI: '/api/v2/account/modifyCreditCardDetails',
+  },
 };
 export default endpoints;

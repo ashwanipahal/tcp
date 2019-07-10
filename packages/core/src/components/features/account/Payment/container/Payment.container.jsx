@@ -5,6 +5,7 @@ import {
   setDeleteModalMountedState,
   deleteCard,
   checkBalance,
+  setDefaultPayment,
 } from './Payment.actions';
 import {
   getCreditDebitCards,
@@ -35,6 +36,7 @@ type Props = {
   cardList: List<any>,
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
+  setDefaultPaymentMethod: Function,
 };
 
 export class PaymentContainer extends React.Component<Props> {
@@ -57,6 +59,7 @@ export class PaymentContainer extends React.Component<Props> {
       cardList,
       onGetBalanceCard,
       checkbalanceValueInfo,
+      setDefaultPaymentMethod,
     } = this.props;
     if (isFetching) return <p>Loading...</p>;
     return (
@@ -73,6 +76,7 @@ export class PaymentContainer extends React.Component<Props> {
         cardList={cardList}
         onGetBalanceCard={onGetBalanceCard}
         checkbalanceValueInfo={checkbalanceValueInfo}
+        setDefaultPaymentMethod={setDefaultPaymentMethod}
       />
     );
   }
@@ -91,6 +95,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     },
     onGetBalanceCard: payload => {
       dispatch(checkBalance(payload));
+    },
+    setDefaultPaymentMethod: payload => {
+      dispatch(setDefaultPayment(payload));
     },
   };
 };

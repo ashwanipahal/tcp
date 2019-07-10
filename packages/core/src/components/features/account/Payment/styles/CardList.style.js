@@ -1,12 +1,16 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  .creditCardList__heading {
+  .cardList__heading {
     margin-top: 0;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
-  .creditCardList__ccAddCta {
+  .cardList__col {
+    margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
+  }
+  .cardList__ccAddCta {
     font-weight: ${props => props.theme.typography.fontWeights.semibold};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
   .giftcardList__col {
     width: 100%;
