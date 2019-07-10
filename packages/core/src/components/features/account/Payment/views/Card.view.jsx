@@ -55,6 +55,7 @@ export class CardView extends React.PureComponent<Props> {
           giftCardList={giftCardList}
           onGetBalanceCard={onGetBalanceCard}
           checkbalanceValueInfo={checkbalanceValueInfo}
+          labels={labels}
         />
         <DeleteCardModal
           openState={deleteModalMountedState}

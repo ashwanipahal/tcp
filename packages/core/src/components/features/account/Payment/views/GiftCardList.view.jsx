@@ -7,6 +7,7 @@ import styles from '../styles/CardList.style';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import { CardView } from './Card.view';
+
 // @flow
 
 type Props = {
@@ -34,7 +35,7 @@ const GiftCardList = ({
 }: Props) => {
   return (
     <div className={className}>
-      <Heading variant="h6" className="creditCardList__heading">
+      <Heading variant="h6" className="cardList__heading">
         {labels.ACC_LBL_GC_HEADING}
       </Heading>
       {giftCardList.size === 0 && (
@@ -48,23 +49,29 @@ const GiftCardList = ({
             small: 6,
           }}
         >
-          <Button buttonVariation="fixed-width" fill="BLUE" dataLocator="payment-addagiftcard ">
+          <Button
+            buttonVariation="fixed-width"
+            fill="BLUE"
+            dataLocator="payment-addagiftcard"
+            className="cardList__ccAddCta"
+          >
             {giftCardList.size === 0 ? labels.ACC_LBL_GC_EMPTY_ADD_BTN : labels.ACC_LBL_ADD_BTN}
           </Button>
-
-          {giftCardList.size !== 0 && (
-            <CardView
-              labels={labels}
-              deleteModalMountedState={deleteModalMountedState}
-              setDeleteModalMountState={setDeleteModalMountState}
-              onDeleteCard={onDeleteCard}
-              showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
-              giftCardList={giftCardList}
-              onGetBalanceCard={onGetBalanceCard}
-              checkbalanceValueInfo={checkbalanceValueInfo}
-            />
-          )}
         </Col>
+      </Row>
+      <Row fullBleed>
+        {giftCardList.size !== 0 && (
+          <CardView
+            labels={labels}
+            deleteModalMountedState={deleteModalMountedState}
+            setDeleteModalMountState={setDeleteModalMountState}
+            onDeleteCard={onDeleteCard}
+            showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
+            giftCardList={giftCardList}
+            onGetBalanceCard={onGetBalanceCard}
+            checkbalanceValueInfo={checkbalanceValueInfo}
+          />
+        )}
       </Row>
     </div>
   );

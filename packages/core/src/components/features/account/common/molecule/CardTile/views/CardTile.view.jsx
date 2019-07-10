@@ -1,4 +1,5 @@
 import React from 'react';
+import { Field, reduxForm } from 'redux-form';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Badge from '../../../../../../common/atoms/Badge';
 import Address from '../../../../../../common/molecules/Address';
@@ -7,6 +8,10 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../CardTile.style';
 import { getIconPath } from '../../../../../../../utils';
 import PAYMENT_CONSTANTS from '../../../../Payment/Payment.constants';
+import Recaptcha from '../../../../../../common/molecules/recaptcha/recaptcha';
+import TextBox from '../../../../../../common/atoms/TextBox';
+import Button from '../../../../../../common/atoms/Button';
+import { required } from '../../../../../../../utils/FormValidation';
 
 // @flow
 type Props = {
@@ -14,6 +19,12 @@ type Props = {
   className: string,
   labels: object,
   setDefaultPaymentMethod: Function,
+  setDeleteModalMountState: Function,
+  setSelectedGiftCard: Function,
+  change: any,
+  handleSubmit: any,
+  onGetBalanceCard: Function,
+  checkbalanceValueInfo: any,
 };
 
 class CardTile extends React.Component<Props> {
@@ -34,6 +45,11 @@ class CardTile extends React.Component<Props> {
     this.getVenmoUserName = this.getVenmoUserName.bind(this);
     this.getCardDetails = this.getCardDetails.bind(this);
     this.getCardName = this.getCardName.bind(this);
+    this.state = {
+      isTokenDirty: false,
+      HideCaptchaBtn: false,
+    };
+    this.handleCheckBalanceClick = this.handleCheckBalanceClick.bind(this);
   }
 
   getMakeDefaultBadge() {
@@ -135,6 +151,55 @@ class CardTile extends React.Component<Props> {
     }
   }
 
+  onDeletegiftardClick = e => {
+    const { card, setDeleteModalMountState, setSelectedGiftCard } = this.props;
+    e.preventDefault();
+    setSelectedGiftCard(card);
+    setDeleteModalMountState({ state: true });
+  };
+
+  handleRecaptchaVerify = token => {
+    const { change } = this.props;
+
+    change('recaptchaToken', token);
+
+    this.setState({
+      isTokenDirty: false,
+    });
+  };
+
+  handleRecaptchaExpired = () => {
+    const { change } = this.props;
+    change('recaptchaToken', '');
+  };
+
+  attachReCaptchaRef = ref => {
+    this.recaptcha = ref;
+  };
+
+  handleCheckBalanceClick(e) {
+    const { isTokenDirty } = this.state;
+    const { change, handleSubmit, card } = this.props;
+    e.preventDefault();
+
+    if (isTokenDirty) {
+      change('recaptchaToken', '');
+      this.setState({
+        isTokenDirty: false,
+      });
+      return;
+    }
+
+    handleSubmit(formData => {
+      const { onGetBalanceCard } = this.props;
+
+      onGetBalanceCard({ formData, card });
+      this.setState({
+        HideCaptchaBtn: true,
+      });
+    })();
+  }
+
   handleDefaultLinkClick(event) {
     const { card, setDefaultPaymentMethod } = this.props;
     event.preventDefault();
@@ -167,6 +232,8 @@ class CardTile extends React.Component<Props> {
 
   render() {
     const { card, className, labels } = this.props;
+    const { checkbalanceValueInfo } = this.props;
+    const { HideCaptchaBtn } = this.state;
     const isCreditCard = card.ccType !== 'GiftCard' && card.ccType !== 'VENMO';
     const isVenmo = card.ccType === 'VENMO';
     const cardName = this.getCardName();
@@ -192,32 +259,95 @@ class CardTile extends React.Component<Props> {
             <img className="cardTile__img" alt="" src={cardIcon} />
           </div>
         </div>
-        <div className="cardTile__ctaLinks">
-          {!isVenmo && (
-            <Anchor
-              fontSizeVariation="large"
-              underline
-              to="/#"
-              anchorVariation="primary"
-              dataLocator="payment-edit"
+        <form onSubmit={this.handleSubmit} autoComplete="off">
+          <div className="giftcardTile__row">
+            {!HideCaptchaBtn && (
+              <Recaptcha
+                ref={this.attachReCaptchaRef}
+                onloadCallback={this.handleRecaptchaOnload}
+                verifyCallback={this.handleRecaptchaVerify}
+                expiredCallback={this.handleRecaptchaExpired}
+              />
+            )}
+            {HideCaptchaBtn && (
+              <BodyCopy
+                tag="span"
+                fontSize="fs14"
+                fontFamily="secondary"
+                fontWeight="semibold"
+                className=""
+                lineHeights="lh115"
+              >
+                Remaining balance
+              </BodyCopy>
+            )}
+            <BodyCopy
+              tag="span"
+              fontSize="fs28"
+              fontFamily="secondary"
+              fontWeight="bold"
+              className=""
+              lineHeights="lh115"
             >
-              {labels.ACC_LBL_EDIT}
-            </Anchor>
-          )}
-          <Anchor
-            fontSizeVariation="large"
-            underline
-            to="/#"
-            anchorVariation="primary"
-            dataLocator="payment-delete"
-            onClick={e => this.onDeletegiftardClick(e)}
-          >
-            {labels.ACC_LBL_DELETE}
-          </Anchor>
-        </div>
+              {checkbalanceValueInfo.giftCardAuthorizedAmt}
+            </BodyCopy>
+            <Field
+              component={TextBox}
+              title=""
+              type="hidden"
+              placeholder="recaptcha value"
+              validate={[required]}
+              name="recaptchaToken"
+            />
+            {!HideCaptchaBtn && (
+              <Button
+                onClick={this.handleCheckBalanceClick}
+                buttonVariation="variable-width"
+                type="submit"
+                data-locator="cardtile-checkbalance"
+                fill="BLUE"
+              >
+                Check Balance
+              </Button>
+            )}
+            <div className="cardTile__ctaLinks">
+              {isCreditCard && (
+                <Anchor
+                  fontSizeVariation="large"
+                  underline
+                  to="/#"
+                  anchorVariation="primary"
+                  dataLocator="payment-edit"
+                >
+                  {labels.ACC_LBL_EDIT}
+                </Anchor>
+              )}
+
+              {
+                <Anchor
+                  fontSizeVariation="large"
+                  underline
+                  to="/#"
+                  anchorVariation="primary"
+                  dataLocator="payment-delete"
+                  onClick={e => this.onDeletegiftardClick(e)}
+                >
+                  delete
+                </Anchor>
+              }
+            </div>
+          </div>
+        </form>
       </div>
     );
   }
 }
 
-export default withStyles(CardTile, styles);
+// export default withStyles(CardTile, styles);
+
+export default withStyles(
+  reduxForm({
+    form: 'CardTile', // a unique identifier for this form
+  })(CardTile),
+  styles
+);

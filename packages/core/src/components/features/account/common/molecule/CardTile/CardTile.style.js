@@ -6,9 +6,23 @@ const styles = css`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
   padding: ${props => props.theme.spacing.ELEM_SPACING.LRG}
     ${props => props.theme.spacing.ELEM_SPACING.MED};
+  & .recaptcha {
+    webkit-transform: scale(0.6);
+    transform: scale(0.6);
+    position: relative;
+    left: -60px;
+  }
+  & .giftcardTile__row {
+    .input-fields-wrapper {
+      padding: 4px;
+      height: auto;
+    }
+    .TextBox__label {
+      display: none;
+    }
+  }
   .cardTile {
     display: flex;
     justify-content: space-between;
@@ -39,7 +53,8 @@ const styles = css`
   }
   .cardTile__ctaLinks {
     display: flex;
-    justify-content: flex-end;
+    margin-top: 35px;
+    float: right;
     a {
       margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
     }

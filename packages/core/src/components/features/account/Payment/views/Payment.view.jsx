@@ -29,7 +29,7 @@ type Props = {
   setDefaultPaymentMethod: Function,
 };
 
-const PaymentView = ({
+export const PaymentView = ({
   labels,
   className,
   showNotification,

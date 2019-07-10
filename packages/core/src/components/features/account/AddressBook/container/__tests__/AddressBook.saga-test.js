@@ -1,6 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import { getAddressList, AddressBookSaga } from '../AddressBook.saga';
 import { setAddressList } from '../AddressBook.actions';
+import { validateReduxCache } from '../../../../../../utils/cache.util';
 import ADDRESS_BOOK_CONSTANTS from '../../AddressBook.constants';
 
 describe('AddressList saga', () => {
@@ -39,10 +40,10 @@ describe('AddressList saga', () => {
   describe('AddressListSaga', () => {
     it('should return correct takeLatest effect', () => {
       const generator = AddressBookSaga();
+      const cachedMethod = validateReduxCache(getAddressList);
       const takeLatestDescriptor = generator.next().value;
-      expect(takeLatestDescriptor).toEqual(
-        takeLatest(ADDRESS_BOOK_CONSTANTS.GET_ADDRESS_LIST, getAddressList)
-      );
+      const expected = takeLatest(ADDRESS_BOOK_CONSTANTS.GET_ADDRESS_LIST, cachedMethod);
+      expect(takeLatestDescriptor.toString()).toMatch(expected.toString());
     });
   });
 });

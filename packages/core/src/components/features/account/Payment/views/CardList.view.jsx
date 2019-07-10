@@ -1,8 +1,9 @@
 import React from 'react';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
-import CardTile from './CardTile.view';
-import giftCards from './mock';
+import CardTile from '../../common/molecule/CardTile/views/CardTile.view';
+import withStyles from '../../../../common/hoc/withStyles';
+import styles from '../styles/CardList.style';
 
 // @flow
 
@@ -13,7 +14,7 @@ type Props = {
   setSelectedGiftCard: Function,
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
-
+  giftCardList: Array<object>,
   // giftCards: Object,
 }; // giftCards comment for time being
 export const CardList = ({
@@ -22,24 +23,38 @@ export const CardList = ({
   setDeleteModalMountState,
   onGetBalanceCard,
   checkbalanceValueInfo,
+  labels,
+  giftCardList,
 }: Props) => {
   return (
     <div>
-      {giftCards.map(giftcard => (
-        <Row key={giftcard.creditCardId} fullBleed className={className}>
-          <Col className="giftcardList__col" colSize={{ large: 4, medium: 4, small: 6 }}>
+      <Row fullBleed className={className}>
+        {giftCardList.map((card, index) => (
+          <Col
+            className="cardList__col"
+            key={`container-${card.creditCardId}`}
+            colSize={{ large: 6, medium: 4, small: 6 }}
+            ignoreGutter={{
+              large: (index + 2) % 3 === 0,
+              medium: (index + 2) % 2 === 0,
+              small: true,
+            }}
+          >
             <CardTile
-              giftcard={giftcard}
+              card={card}
               setSelectedGiftCard={setSelectedGiftCard}
               setDeleteModalMountState={setDeleteModalMountState}
               onGetBalanceCard={onGetBalanceCard}
               checkbalanceValueInfo={checkbalanceValueInfo}
-              key={giftcard.creditCardId}
+              key={card.creditCardId}
+              labels={labels}
             />
           </Col>
-        </Row>
-      ))}
+        ))}
+      </Row>
     </div>
   );
 };
-export default CardList;
+
+export default withStyles(CardList, styles);
+export { CardList as CardListVanilla };

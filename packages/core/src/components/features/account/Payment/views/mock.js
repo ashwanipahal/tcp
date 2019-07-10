@@ -13,7 +13,7 @@ const giftCards = [
     properties: null,
   },
   {
-    accountNo: '***************2525',
+    accountNo: '***************25266',
     billingAddressId: null,
     addressDetails: null,
     ccBrand: 'GC',
