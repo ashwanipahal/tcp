@@ -1,6 +1,5 @@
 import React from 'react';
-import { Picker, StyleSheet } from 'react-native';
-import { StylePickerWrapper } from '../styles/MyAccountLayout.style';
+import { StylePicker, StylePickerWrapper } from '../styles/MyAccountLayout.style';
 
 // @flow
 type Props = {
@@ -11,15 +10,6 @@ type Props = {
 type State = {
   dropDownItem: String,
 };
-
-const styles = StyleSheet.create({
-  pickerHeight: {
-    height: 48,
-  },
-  pickerItemHeight: {
-    height: 48,
-  },
-});
 
 /**
  * @function MyAccountLayoutView The AccountLayout component will provide a list of left
@@ -41,21 +31,21 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
     const { dropDownItem } = this.state;
     return (
       <StylePickerWrapper>
-        <Picker
+        <StylePicker
           selectedValue={dropDownItem}
           onValueChange={itemValue => {
             this.setState({ dropDownItem: itemValue });
             handleComponentChange(itemValue);
           }}
           mode="dropdown"
-          style={styles.pickerHeight}
-          itemStyle={styles.pickerItemHeight}
         >
           {navData &&
             navData.map(nav => {
-              return <Picker.Item key={nav.id} label={nav.displayName} value={nav.component} />;
+              return (
+                <StylePicker.Item key={nav.id} label={nav.displayName} value={nav.component} />
+              );
             })}
-        </Picker>
+        </StylePicker>
       </StylePickerWrapper>
     );
   }

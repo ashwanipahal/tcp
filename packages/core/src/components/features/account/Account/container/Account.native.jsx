@@ -26,8 +26,6 @@ export default class Account extends React.PureComponent<Props, State> {
     this.state = {
       component,
     };
-
-    this.handleComponentChange = this.handleComponentChange.bind(this);
   }
 
   handleComponentChange = (component: String) => {

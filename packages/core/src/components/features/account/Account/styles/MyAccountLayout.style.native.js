@@ -12,4 +12,8 @@ const StylePickerWrapper = styled.View`
   background-color: #eeeeee;
 `;
 
-export { ParentContainer, StylePickerWrapper };
+const StylePicker = styled.Picker.attrs(() => ({ itemStyle: { height: 48 } }))`
+  height: 48px;
+`;
+
+export { ParentContainer, StylePickerWrapper, StylePicker };
