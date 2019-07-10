@@ -1,8 +1,9 @@
 import endpoints from './endpoints';
 
 const graphQLAPIKey = {
-  dev: 'da2-vg7nle5r3vbafbeh3ntt7tkkrm',
-  uat: 'da2-sjg3l2hlijggnhsjd73i7qu3e4',
+  dev: 'da2-q6pibqnepna67cdl3dr4xt7muq',
+  uat: 'da2-4epdnjdh7zhp7fvoux3eu7cgxe',
+  perf: 'da2-kj4nwpz22bbaxnhx6dyxm7o3ci',
 };
 
 export const awsAppSync = {

@@ -20,7 +20,8 @@ const labels = {
   ACC_LBL_MODAL_GC_CARDEND: 'Card ending in ',
   ACC_LBL_MODAL_GC_EXPIRE: ' Expire on ',
   ACC_LBL_OFFERS_MESSAGE:
-    '<b>SAVE 30% TODAY WHEN YOU OPEN AND USE A <span> MY PLACE REWARDS CREDIT CARD! </span></b> <a href="#">DETAILS</a>',
+    '<b>SAVE 30% TODAY WHEN YOU OPEN AND USE A <span class="offers__msg"> MY PLACE REWARDS CREDIT CARD! </span></b>',
+  ACC_LBL_OFFERS_DETAILS: '<a class="offers__link" href="#">DETAILS</a>',
 };
 
 export default labels;

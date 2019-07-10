@@ -3,25 +3,27 @@
 exports[`Textbox component renders correctly 1`] = `
 <label
   className="asdfasdf active input-fields-wrapper"
-  htmlFor=""
 >
   <input
-    Value="hello sonar"
     aria-label=""
     className="TextBox__input"
+    data-locator=""
     id="abcd"
-    isSuccessState={false}
-    name=""
     placeholder=""
     type="text"
     value="hello sonar"
   />
-  <Styled(BodyStyle)
-    BodycolorLg="primary"
-    FormVariation="float"
-    bodySize="two"
-    className=""
-    tag="p"
+  <Styled(BodyCopy)
+    className="TextBox__label"
+    color="text.primary"
+    component="p"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
   />
 </label>
 `;

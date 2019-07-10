@@ -1,3 +1,5 @@
+import { Linking } from 'react-native';
+
 export const importGraphQLClientDynamically = module => {
   return new Promise((resolve, reject) => {
     switch (module) {
@@ -42,6 +44,14 @@ export const importGraphQLQueriesDynamically = query => {
       default:
         reject();
         break;
+    }
+  });
+};
+
+export const UrlHandler = url => {
+  Linking.canOpenURL(url).then(supported => {
+    if (supported) {
+      Linking.openURL(url);
     }
   });
 };
