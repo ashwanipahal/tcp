@@ -5,6 +5,8 @@ export {
   isProduction,
   isDevelopment,
   identifyBrand,
+  isServer,
+  isClient,
   getObjectValue,
   getIconPath,
   getLocator,

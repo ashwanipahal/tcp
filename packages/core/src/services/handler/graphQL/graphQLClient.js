@@ -1,5 +1,11 @@
 import AWSAppSync from 'aws-appsync';
+import fetch from 'node-fetch';
 import { awsAppSync as config } from '../../config';
+import { isServer } from '../../../utils';
+
+if (isServer()) {
+  global.fetch = fetch;
+}
 
 const singleton = Symbol('singleton class');
 const singletonEnforcer = Symbol('forces singleton class instance');

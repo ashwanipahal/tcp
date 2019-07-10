@@ -1,11 +1,9 @@
-import fetch from 'node-fetch';
 import { graphQLClient } from '../config';
 import QueryBuilder from './graphQL/queries/queryBuilder';
 import { importGraphQLClientDynamically } from '../../utils';
+import webServiceCall from './statefull/statefullClient';
 
-if (!process.browser) {
-  global.fetch = fetch;
-}
+let apiConfig = null;
 
 /**
  * Logs error
@@ -55,6 +53,37 @@ export const executeGraphQLQuery = query => {
 export const fetchModuleDataFromGraphQL = async modules => {
   const query = await QueryBuilder.getQuery(modules);
   return executeGraphQLQuery(query).catch(errorHandler);
+};
+
+export const createAPIConfig = () => {
+  apiConfig = {
+    traceIdCount: 0,
+    proto: 'https',
+    MELISSA_KEY: '63987687',
+    storeId: '10151',
+    catalogId: '10551',
+    isUSStore: true,
+    langId: '-1',
+    siteId: 'us',
+    countryKey: '_US',
+    assetHost: 'https://test1.childrensplace.com',
+    domain: '://test1.childrensplace.com/api/',
+    unbxd: '://search.unbxd.io',
+    cookie: null,
+    isMobile: false,
+  };
+};
+
+export const getAPIConfig = () => {
+  if (!apiConfig) {
+    createAPIConfig();
+  }
+  return apiConfig;
+};
+
+export const executeWebServiceCall = reqObj => {
+  const apiConfigObj = getAPIConfig();
+  return webServiceCall(apiConfigObj, reqObj).catch(errorHandler);
 };
 
 export default {

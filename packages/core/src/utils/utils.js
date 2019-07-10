@@ -10,6 +10,14 @@ export const importGraphQLQueriesDynamically = query => {
   return import(`../services/handler/graphQL/queries/${query}`);
 };
 
+export const isServer = () => {
+  return typeof window === 'undefined';
+};
+
+export function isClient() {
+  return typeof window !== 'undefined';
+}
+
 export const isProduction = () => {
   return process.env.NODE_ENV === ENV_PRODUCTION;
 };
