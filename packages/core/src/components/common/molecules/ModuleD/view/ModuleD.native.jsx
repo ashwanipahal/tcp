@@ -1,41 +1,39 @@
 import React from 'react';
-import { Dimensions, FlatList, TouchableOpacity } from 'react-native';
-import withStyles from '../../../hoc/withStyles';
+import { FlatList, TouchableOpacity } from 'react-native';
 import { Anchor, Button, Image } from '../../../atoms';
-import { UrlHandler } from '../../../../../utils/utils.native';
+import { getScreenWidth, UrlHandler } from '../../../../../utils/utils.native';
 import { ButtonWrapper, Heading, ModuleDWrapper, Tile } from '../ModuleD.style.native';
 import colors from '../../../../../../styles/themes/TCP/colors';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
 
 // @flow
 
-/**
- * @param {object} props : Props for Module D multi grid banner.
- * @desc This is Module D global component. It has capability to display
- * featured content module with 2, 4, or 6 images tiles and a CTA.
- * Author can surface teaser content leading to corresponding pages.
- *
- * Props: Includes composites of headerText, smallCompImage and singleCTAButton.
- * @prop {object} headerText: Data for header text and link.
- * @prop {object} smallCompImage: Data for images and their links.
- * @prop {object} singleCTAButton: Data for CTA button and its target.
- */
-
 type Props = {
   composites: Object,
 };
 
+const imageSize = parseInt((getScreenWidth() - 32) / 2, 10);
 const keyExtractor = (_, index) => index.toString();
 
-const getDimension = () => {
-  return parseInt((Dimensions.get('screen').width - 32) / 2, 10);
-};
-
+/**
+ * @function getUrlWithCrop : Return updated image URL.
+ * @desc Returns updated image URL with crop details.
+ *
+ * @param {String} url : Image URL received from CMS.
+ * @return {String} function returns updated image URL as a string.
+ */
 const getUrlWithCrop = url => {
-  const dimension = getDimension();
+  const dimension = imageSize;
   return url.replace('h_650,w_650', `h_${dimension},w_${dimension}`);
 };
 
+/**
+ * @function renderItem : Render method for Flatlist.
+ * @desc This method is rendering Module D items.
+ *
+ * @param {Object} item : Single object to render inside Flatlist.
+ * @return {node} function returns module D single element item.
+ */
 const renderItem = item => {
   const {
     item: { image, link },
@@ -47,9 +45,9 @@ const renderItem = item => {
           alt={image.alt}
           source={{ uri: getUrlWithCrop(image.url) }}
           style={{
-            height: getDimension(),
+            height: imageSize,
             marginBottom: parseInt(spacing.ELEM_SPACING.XS, 10),
-            width: getDimension(),
+            width: imageSize,
           }}
         />
       </TouchableOpacity>
@@ -65,6 +63,18 @@ const renderItem = item => {
     </Tile>
   );
 };
+
+/**
+ * @param {object} props : Props for Module D multi grid banner.
+ * @desc This is Module D global component. It has capability to display
+ * featured content module with 2, 4, or 6 images tiles and a CTA.
+ * Author can surface teaser content leading to corresponding pages.
+ *
+ * Props: Includes composites of headerText, smallCompImage and singleCTAButton.
+ * @prop {object} headerText: Data for header text and link.
+ * @prop {object} smallCompImage: Data for images and their links.
+ * @prop {object} singleCTAButton: Data for CTA button and its target.
+ */
 
 const ModuleD = (props: Props) => {
   let { headingText, url } = {};
@@ -111,4 +121,4 @@ const ModuleD = (props: Props) => {
   );
 };
 
-export default withStyles(ModuleD);
+export default ModuleD;
