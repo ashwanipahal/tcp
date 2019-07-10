@@ -1,7 +1,6 @@
 const ignorePsuedoCodeDir = [
   '/ProductListingPage/',
   '/plpDeltaSync/',
-  '/mobileapp/',
   '/LoginPage/',
   '/server/',
   '/service/',
