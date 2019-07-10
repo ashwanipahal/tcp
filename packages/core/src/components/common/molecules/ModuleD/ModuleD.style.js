@@ -7,11 +7,17 @@ export default css`
 
   .moduleD_button {
     margin: 19px auto 32px;
-    padding: 12px 45px;
+    padding: 12px 0;
+    width: 225px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: 162px;
+    }
 
     @media ${props => props.theme.mediaQuery.large} {
       margin: 35px auto 48px;
-      padding: 16px 65px;
+      padding: 16px 0;
+      width: 210px;
     }
   }
 
@@ -24,5 +30,11 @@ export default css`
     @media ${props => props.theme.mediaQuery.smallMax} {
       font-size: ${props => props.theme.fonts.fontSize.heading.large.h3}px;
     }
+  }
+  .moduleD_tile {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  }
+  .moduleD_link {
+    text-align: center;
   }
 `;

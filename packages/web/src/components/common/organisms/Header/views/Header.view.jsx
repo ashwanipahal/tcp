@@ -9,7 +9,7 @@ import config from '../config';
 import headerStyles from '../Header.style';
 import HomeLogo from './HomeLogo';
 
-const { HeaderBrand, HeaderNav, DummyNav, HeaderLoyalty } = headerStyles;
+const { HeaderBrand, HeaderLoyalty } = headerStyles;
 const brand = identifyBrand();
 
 const Header = ({ headerTopNav, headerPromoArea }) => {
@@ -35,31 +35,6 @@ const Header = ({ headerTopNav, headerPromoArea }) => {
           </Col>
         </Row>
       </HeaderBrand>
-      <HeaderNav className="header-nav">
-        <Row>
-          <Col
-            className="header-nav__nav-row"
-            colSize={{
-              large: 12,
-              medium: 0,
-              small: 0,
-            }}
-          >
-            <DummyNav className="dummy-nav">
-              <div>Girl</div>
-              <div>Toddler Girl</div>
-              <div>Boy</div>
-              <div>Toddler Boy</div>
-              <div>Baby</div>
-              <div>Shoes</div>
-              <div>Accessories</div>
-              <div>Trending</div>
-              <div>Gift Cards</div>
-              <div>Clearance</div>
-            </DummyNav>
-          </Col>
-        </Row>
-      </HeaderNav>
       <HeaderPromo
         mobileMarkup
         className="header__promo-area--mobile"
