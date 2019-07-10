@@ -45,6 +45,11 @@
   "jest": {
     "preset": "react-native"
   },
+  "rnpm": {
+    "assets": [
+      "./packages/mobileapp/assets/fonts/"
+    ]
+  },
   "workspaces": {
     "nohoist": [
       "**/react-native",
