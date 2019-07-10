@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 import { Text } from 'react-native';
@@ -11,12 +10,12 @@ const BrandSwitchStack = createStackNavigator({
 });
 
 BrandSwitchStack.navigationOptions = {
-  title: 'tcp',
+  title: 'brand_logo',
   showLabel: false,
   tabBarIcon: props => (
     <NavBarIcon
-      iconActive="tcp"
-      iconInactive="tcp"
+      iconActive="brand-logo"
+      iconInactive="brand-logo"
       {...props}
       style={{
         wrapper: {

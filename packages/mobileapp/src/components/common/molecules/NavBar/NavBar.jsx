@@ -1,23 +1,20 @@
-/* eslint-disable react-native/no-color-literals */
-/* eslint-disable react/prop-types */
-/* eslint-disable react-native-a11y/has-accessibility-props */
-/* eslint-disable react/no-array-index-key */
+// @flow
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
+import style from './NavBar.style';
 
-const S = StyleSheet.create({
-  container: {
-    borderTopColor: '#d8d8d8',
-    borderTopWidth: 1,
-    elevation: 2,
-    flexDirection: 'row',
-    height: 55,
-  },
-  logoStyle: { paddingLeft: 10, paddingRight: 10, position: 'relative', top: -20 },
-  tabButton: { alignItems: 'center', flex: 1, justifyContent: 'center' },
-  textStyle: { color: '#9b9b9b', fontSize: 8, marginTop: 6 },
-});
+type Props = {
+  renderIcon: Function,
+  getLabelText: Function,
+  activeBackgroundColor: String,
+  inactiveBackgroundColor: String,
+  onTabPress: Function,
+  onTabLongPress: Function,
+  getAccessibilityLabel: Function,
+  navigation: Object,
+  labels: Object,
+};
 
 const getDefaultLabels = label => {
   const labels = {
@@ -25,12 +22,12 @@ const getDefaultLabels = label => {
     shop: 'SHOP',
     account: 'ACCOUNT',
     wallet: 'WALLET',
-    tcp: '',
+    brand_logo: '',
   };
   return labels[label];
 };
 
-const NavBar = props => {
+const NavBar = (props: Props) => {
   const {
     renderIcon,
     getLabelText,
@@ -46,12 +43,12 @@ const NavBar = props => {
   const { routes, index: activeRouteIndex } = navigation.state;
 
   return (
-    <View style={S.container}>
+    <View style={style.container}>
       {routes.map((route, routeIndex) => {
         const isRouteActive = routeIndex === activeRouteIndex;
         const backgroundColor = isRouteActive ? activeBackgroundColor : inactiveBackgroundColor;
         let label;
-        let style = S.tabButton;
+        let buttonStyle = style.tabButton;
 
         if (labels) {
           label = labels[getLabelText({ route })];
@@ -60,28 +57,30 @@ const NavBar = props => {
         }
 
         if (isRouteActive) {
-          S.textStyle.color = activeBackgroundColor;
+          style.textStyle.color = activeBackgroundColor;
         }
 
         if (!label) {
-          style = S.logoStyle;
+          buttonStyle = style.logoStyle;
         }
 
         return (
           <TouchableOpacity
-            key={routeIndex}
-            style={style}
+            // eslint-disable-next-line react/no-array-index-key
+            key={`nav-bar_${routeIndex}`}
+            style={buttonStyle}
             onPress={() => {
               onTabPress({ route });
             }}
             onLongPress={() => {
               onTabLongPress({ route });
             }}
+            accessibilityRole="link"
             accessibilityLabel={getAccessibilityLabel({ route })}
           >
             {renderIcon({ route, focused: isRouteActive, tintColor: backgroundColor })}
 
-            <Text style={S.textStyle}>{label}</Text>
+            <Text style={style.textStyle}>{label}</Text>
           </TouchableOpacity>
         );
       })}

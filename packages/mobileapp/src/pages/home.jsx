@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 import Home from '../components/features/content/HomePage';
