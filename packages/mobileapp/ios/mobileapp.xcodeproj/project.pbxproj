@@ -39,6 +39,14 @@
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		A39FE9F1DE394B51A832B506 /* libRNGestureHandler-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B9C86F0D507E46B3AA37AB71 /* libRNGestureHandler-tvOS.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
+		D9A62DDF22D5CD3500F379D9 /* Montserrat-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9A62DD722D5CD3500F379D9 /* Montserrat-Light.ttf */; };
+		D9A62DE022D5CD3500F379D9 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9A62DD822D5CD3500F379D9 /* Nunito-Bold.ttf */; };
+		D9A62DE122D5CD3500F379D9 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9A62DD922D5CD3500F379D9 /* Montserrat-Bold.ttf */; };
+		D9A62DE222D5CD3500F379D9 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9A62DDA22D5CD3500F379D9 /* Nunito-Regular.ttf */; };
+		D9A62DE322D5CD3500F379D9 /* Nunito-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9A62DDB22D5CD3500F379D9 /* Nunito-SemiBold.ttf */; };
+		D9A62DE422D5CD3500F379D9 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9A62DDC22D5CD3500F379D9 /* Montserrat-SemiBold.ttf */; };
+		D9A62DE522D5CD3500F379D9 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9A62DDD22D5CD3500F379D9 /* Montserrat-Black.ttf */; };
+		D9A62DE622D5CD3500F379D9 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D9A62DDE22D5CD3500F379D9 /* Montserrat-Regular.ttf */; };
 		ECA9863B3E004048A680216B /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 13AC52E32AE04B1A8348407B /* libRNGestureHandler.a */; };
 		ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		ED2971652150620600B7C4FE /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED2971642150620600B7C4FE /* JavaScriptCore.framework */; };
@@ -364,6 +372,14 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		B9C86F0D507E46B3AA37AB71 /* libRNGestureHandler-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNGestureHandler-tvOS.a"; sourceTree = "<group>"; };
+		D9A62DD722D5CD3500F379D9 /* Montserrat-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Light.ttf"; sourceTree = "<group>"; };
+		D9A62DD822D5CD3500F379D9 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		D9A62DD922D5CD3500F379D9 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		D9A62DDA22D5CD3500F379D9 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		D9A62DDB22D5CD3500F379D9 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
+		D9A62DDC22D5CD3500F379D9 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		D9A62DDD22D5CD3500F379D9 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
+		D9A62DDE22D5CD3500F379D9 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
@@ -602,6 +618,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				D9A62DD622D5CD3500F379D9 /* fonts */,
 				13B07FAE1A68108700A75B9A /* mobileapp */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* mobileappTests */,
@@ -650,6 +667,22 @@
 				2D16E6721FA4F8DC00B85C8A /* libRCTBlob-tvOS.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D9A62DD622D5CD3500F379D9 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				D9A62DD722D5CD3500F379D9 /* Montserrat-Light.ttf */,
+				D9A62DD822D5CD3500F379D9 /* Nunito-Bold.ttf */,
+				D9A62DD922D5CD3500F379D9 /* Montserrat-Bold.ttf */,
+				D9A62DDA22D5CD3500F379D9 /* Nunito-Regular.ttf */,
+				D9A62DDB22D5CD3500F379D9 /* Nunito-SemiBold.ttf */,
+				D9A62DDC22D5CD3500F379D9 /* Montserrat-SemiBold.ttf */,
+				D9A62DDD22D5CD3500F379D9 /* Montserrat-Black.ttf */,
+				D9A62DDE22D5CD3500F379D9 /* Montserrat-Regular.ttf */,
+			);
+			name = fonts;
+			path = ../assets/fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1119,8 +1152,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9A62DE322D5CD3500F379D9 /* Nunito-SemiBold.ttf in Resources */,
+				D9A62DE122D5CD3500F379D9 /* Montserrat-Bold.ttf in Resources */,
+				D9A62DE222D5CD3500F379D9 /* Nunito-Regular.ttf in Resources */,
+				D9A62DDF22D5CD3500F379D9 /* Montserrat-Light.ttf in Resources */,
+				D9A62DE022D5CD3500F379D9 /* Nunito-Bold.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				D9A62DE422D5CD3500F379D9 /* Montserrat-SemiBold.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				D9A62DE622D5CD3500F379D9 /* Montserrat-Regular.ttf in Resources */,
+				D9A62DE522D5CD3500F379D9 /* Montserrat-Black.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1154,7 +1195,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
