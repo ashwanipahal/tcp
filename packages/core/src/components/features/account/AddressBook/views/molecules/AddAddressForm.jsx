@@ -28,6 +28,7 @@ type Props = {
   className: any,
   backToAddressBookClick: any,
   dispatch: any,
+  labels: object,
 };
 
 type State = {
@@ -61,14 +62,14 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { handleSubmit, pristine, className, backToAddressBookClick } = this.props;
+    const { handleSubmit, pristine, className, backToAddressBookClick, labels } = this.props;
     const { country } = this.state;
     return (
       <form className={className} onSubmit={handleSubmit} noValidate>
         <Row fullBleed>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
-              placeholder="First Name"
+              placeholder={labels.acc_lbl_first_name}
               name="firstName"
               id="firstName"
               type="text"
@@ -80,7 +81,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
-              placeholder="Last Name"
+              placeholder={labels.acc_lbl_last_name}
               name="lastName"
               id="lastName"
               component={TextBox}
@@ -94,7 +95,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
               id="address1"
-              placeholder="Address Line 1"
+              placeholder={labels.acc_lbl_address_line1}
               component={AutoCompleteComponent}
               name="address1"
               validate={[required]}
@@ -106,7 +107,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
-              placeholder="Address Line 2( Optional )"
+              placeholder={labels.acc_lbl_address_line2}
               name="address2"
               id="address2"
               component={TextBox}
@@ -120,7 +121,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
               id="city"
-              placeholder="City"
+              placeholder={labels.acc_lbl_city}
               name="city"
               component={TextBox}
               validate={[required]}
@@ -130,7 +131,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
           <Col colSize={{ small: 3, medium: 2, large: 3 }}>
             <Field
               id="state"
-              placeholder={country === 'CA' ? 'Province' : 'State'}
+              placeholder={country === 'CA' ? labels.acc_lbl_province : labels.acc_lbl_state}
               name="state"
               validate={[required]}
               component={SelectBox}
@@ -140,7 +141,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
           </Col>
           <Col colSize={{ small: 3, medium: 2, large: 3 }}>
             <Field
-              placeholder={country === 'CA' ? 'Postal Code' : 'Zip Code'}
+              placeholder={country === 'CA' ? labels.acc_lbl_postal_code : labels.acc_lbl_zip_code}
               id="zip"
               name="zip"
               component={TextBox}
@@ -154,7 +155,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
           <Col colSize={{ small: 6, medium: 4, large: 6 }} ignoreGutter={{ small: true }}>
             <Field
               id="country"
-              placeholder="Country"
+              placeholder={labels.acc_lbl_country}
               name="country"
               validate={[required]}
               component={SelectBox}
@@ -165,7 +166,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
-              placeholder="Mobile Number"
+              placeholder={labels.acc_lbl_phone_number}
               name="phoneNumber"
               id="phoneNumber"
               component={TextBox}
@@ -182,7 +183,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               component={InputCheckbox}
               dataLocator="addnewaddress-setdefaddress"
             >
-              Set as default shipping address
+              {labels.acc_lbl_set_default}
             </Field>
           </Col>
         </Row>
@@ -198,7 +199,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               type="button"
               data-locator="addnewaddress-cancel"
             >
-              Cancel
+              {labels.acc_lbl_cancel_cta}
             </Button>
           </Col>
           <Col
@@ -213,7 +214,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               buttonVariation="fixed-width"
               data-locator="addnewaddress-addaddress"
             >
-              Add Address
+              {labels.acc_lbl_add_address_cta}
             </Button>
           </Col>
         </Row>

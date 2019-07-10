@@ -91,7 +91,7 @@ export class AddressVerification extends React.Component<Props> {
         className="elem--mb__XXXL"
         fontFamily="secondary"
       >
-        {labels[`verifyStatus${verificationResult}`]}
+        {labels[`acc_label_verify_your_address_${verificationResult}`]}
       </BodyCopy>
     );
   };
@@ -139,7 +139,7 @@ export class AddressVerification extends React.Component<Props> {
           fontSize="fs14"
           className="elem--mb__SM"
         >
-          {labels.userAddressHeading}
+          {labels.acc_lbl_you_entered}
         </BodyCopy>
         <div className="elem--mb__XL">
           <AddressOption
@@ -157,9 +157,9 @@ export class AddressVerification extends React.Component<Props> {
   };
 
   renderSuggestedAddress = (verificationResult, suggestedAddress) => {
+    const { labels } = this.props;
     if (this.showInput) {
       const { selectAddress } = this.state;
-      const { labels } = this.props;
       return (
         <div className="addressVerification__section addressVerification__section--noBorder layout--pl__LRG layout--pr__LRG">
           <BodyCopy
@@ -169,7 +169,7 @@ export class AddressVerification extends React.Component<Props> {
             fontSize="fs14"
             className="elem--mb__SM"
           >
-            {labels.suggestedAddressHeading}
+            {labels.acc_lbl_we_suggest}
           </BodyCopy>
           <div className="elem--mb__XL">
             <AddressOption
@@ -195,7 +195,7 @@ export class AddressVerification extends React.Component<Props> {
               onChange: this.handleChange,
               name: 'optionalAddressLine',
             }}
-            placeholder="Apartment or suite number"
+            placeholder={labels.acc_lbl_optional_address_line}
             id="optionalAddressLine"
           />
         </div>
@@ -236,7 +236,7 @@ export class AddressVerification extends React.Component<Props> {
               textAlign="center"
               className="elem--mb__MED"
             >
-              {labels.verifyYourAddressHeading}
+              {labels.acc_lbl_verify_your_address_header}
             </BodyCopy>
             {this.getMessage(verificationResult, suggestedAddress)}
             {this.renderUserAddress(verificationResult, userAddress, suggestedAddress)}
@@ -248,7 +248,7 @@ export class AddressVerification extends React.Component<Props> {
                 fill="BLUE"
                 onClick={this.onConfirm}
               >
-                {labels.comfirmBtnLabel}
+                {labels.acc_lbl_continue_cta}
               </Button>
               <Button
                 className="addressVerification__cta"
