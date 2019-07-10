@@ -17,7 +17,7 @@ type Props = {
   creditCardList: Array<object>,
   giftCardList: Array<object>,
   cardList: Array<object>,
-  setDefaultPaymentMethod: Function
+  setDefaultPaymentMethod: Function,
 };
 
 const PaymentView = ({

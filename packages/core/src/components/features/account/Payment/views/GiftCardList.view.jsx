@@ -33,27 +33,32 @@ const GiftCardList = ({ labels, giftCardList, className }: Props) => {
             small: 6,
           }}
         >
-          <Button buttonVariation="fixed-width" fill="BLUE" dataLocator="payment-addagiftcard" className="cardList__ccAddCta">
+          <Button
+            buttonVariation="fixed-width"
+            fill="BLUE"
+            dataLocator="payment-addagiftcard"
+            className="cardList__ccAddCta"
+          >
             {giftCardList.size === 0 ? labels.ACC_LBL_GC_EMPTY_ADD_BTN : labels.ACC_LBL_ADD_BTN}
           </Button>
         </Col>
       </Row>
       <Row fullBleed>
-        {giftCardList.size !== 0 && giftCardList.map((card, index) =>(
-          <Col
-            className="cardList__col"
-            key={`container-${card.creditCardId}`}
-            colSize={{ large: 4, medium: 4, small: 6 }}
-            ignoreGutter={{
-              large: (index + 1) % 3 === 0,
-              medium: (index + 1) % 2 === 0,
-              small: true,
-            }}
-          >
-            <CardTile card={card} labels={labels} />
-          </Col>
-        ))
-        }
+        {giftCardList.size !== 0 &&
+          giftCardList.map((card, index) => (
+            <Col
+              className="cardList__col"
+              key={`container-${card.creditCardId}`}
+              colSize={{ large: 4, medium: 4, small: 6 }}
+              ignoreGutter={{
+                large: (index + 1) % 3 === 0,
+                medium: (index + 1) % 2 === 0,
+                small: true,
+              }}
+            >
+              <CardTile card={card} labels={labels} />
+            </Col>
+          ))}
       </Row>
     </div>
   );

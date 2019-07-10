@@ -14,7 +14,7 @@ type Props = {
   labels: object,
   creditCardList: Array<object>,
   className: string,
-  setDefaultPaymentMethod: Function
+  setDefaultPaymentMethod: Function,
 };
 
 const CreditCardList = ({ labels, creditCardList, className, setDefaultPaymentMethod }: Props) => {
@@ -45,21 +45,25 @@ const CreditCardList = ({ labels, creditCardList, className, setDefaultPaymentMe
         </Col>
       </Row>
       <Row fullBleed>
-        {creditCardList.size !== 0 && creditCardList.map((card, index) =>(
-          <Col
-            className="cardList__col"
-            key={`container-${card.creditCardId}`}
-            colSize={{ large: 4, medium: 4, small: 6 }}
-            ignoreGutter={{
-              large: (index + 1) % 3 === 0,
-              medium: (index + 1) % 2 === 0,
-              small: true,
-            }}
-          >
-            <CardTile card={card} labels={labels} setDefaultPaymentMethod={setDefaultPaymentMethod} />
-          </Col>
-        ))
-        }
+        {creditCardList.size !== 0 &&
+          creditCardList.map((card, index) => (
+            <Col
+              className="cardList__col"
+              key={`container-${card.creditCardId}`}
+              colSize={{ large: 4, medium: 4, small: 6 }}
+              ignoreGutter={{
+                large: (index + 1) % 3 === 0,
+                medium: (index + 1) % 2 === 0,
+                small: true,
+              }}
+            >
+              <CardTile
+                card={card}
+                labels={labels}
+                setDefaultPaymentMethod={setDefaultPaymentMethod}
+              />
+            </Col>
+          ))}
       </Row>
     </div>
   );

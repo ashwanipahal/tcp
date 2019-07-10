@@ -26,5 +26,5 @@ export default {
   'amex-small': '/static/images/amex-small.png',
   'place-card-small': '/static/images/place-card-small.png',
   'visa-small': '/static/images/visa-small.png',
-  'gift-card-small': '/static/images/gift-card-small.png'
+  'gift-card-small': '/static/images/gift-card-small.png',
 };

@@ -26,9 +26,9 @@ function* validateCache(action, args) {
   const reducerKey = getReducerKeyByAction(action.type);
   console.log(reducerKey);
   if (!reducerKey) return false;
-  console.log(state, reducerKey, args)
+  console.log(state, reducerKey, args);
   return checkCacheValid(getState, reducerKey, {
-    accessStrategy: (s, rKey, cacheKey) => s[rKey].get(cacheKey)
+    accessStrategy: (s, rKey, cacheKey) => s[rKey].get(cacheKey),
   });
 }
 
