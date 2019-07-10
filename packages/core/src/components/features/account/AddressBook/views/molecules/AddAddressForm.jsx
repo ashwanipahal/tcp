@@ -97,7 +97,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               placeholder="Address Line 1"
               component={AutoCompleteComponent}
               name="address1"
-              validate={[required]}
+              validate={[required, isSpecialChar]}
               onPlaceSelected={this.handlePlaceSelected}
               maxLength={30}
               componentRestrictions={Object.assign({}, { country: [country] })}
@@ -123,7 +123,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               placeholder="City"
               name="city"
               component={TextBox}
-              validate={[required]}
+              validate={[required, isSpecialChar]}
               dataLocator="addnewaddress-city"
             />
           </Col>
@@ -224,8 +224,5 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
 
 export default reduxForm({
   form: 'AddAddressForm', // a unique identifier for this form
-  initialValues: {
-    country: 'US',
-    address2: '',
-  },
+  enableReinitialize: true,
 })(AddAddressForm);

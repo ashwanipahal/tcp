@@ -78,6 +78,8 @@ const AddressBookReducer = (state = initialState, action) => {
         .set('error', action.payload)
         .set('showUpdatedNotification', null)
         .set('showUpdatedNotificationOnModal', 'error');
+    case ADDRESS_BOOK_CONSTANTS.ADDRESS_LIST_UPDATED:
+      return state.set('showUpdatedNotification', 'success');
     case ADDRESS_BOOK_CONSTANTS.DELETE_MODAL_MOUNTED_STATE:
       return state.set('deleteModalMountedState', action.payload.state);
     default:
