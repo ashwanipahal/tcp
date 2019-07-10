@@ -64,6 +64,7 @@ const renderItem = item => (
 const ModuleD = (props: Props) => {
   let { headingText, url } = {};
   const { composites: { headerText, smallCompImage, singleCTAButton } = {} } = props;
+  const buttonWidth = { width: 225 };
 
   if (headerText) {
     ({
@@ -94,6 +95,7 @@ const ModuleD = (props: Props) => {
             title={singleCTAButton.title}
             accessibilityLabel={singleCTAButton.title}
             buttonVariation="variable-width"
+            style={buttonWidth}
             onPress={() => {
               UrlHandler(singleCTAButton.url);
             }}

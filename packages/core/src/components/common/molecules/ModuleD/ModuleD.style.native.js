@@ -3,7 +3,6 @@ import styled from 'styled-components/native';
 export const ButtonWrapper = styled.View`
   align-items: center;
   display: flex;
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
 export const Heading = styled.Text`

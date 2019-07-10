@@ -29,7 +29,7 @@ const style = css`
   font-size: ${props.theme.typography.fontSizes.fs14};
   font-weight: ${props.theme.typography.fontWeights.black};
   border: 1px solid ${props.theme.colorPalette.black};
-  padding: 4px 32px;
+  padding: 2px 32px;
   `
       : ''};
 
