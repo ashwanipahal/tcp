@@ -24,6 +24,7 @@ class CardTile extends React.Component<Props> {
     super(props);
     this.state = {
       isTokenDirty: false,
+      HideCaptchaBtn: false,
     };
     this.handleCheckBalanceClick = this.handleCheckBalanceClick.bind(this);
   }
@@ -37,6 +38,7 @@ class CardTile extends React.Component<Props> {
 
   handleRecaptchaVerify = token => {
     const { change } = this.props;
+
     change('recaptchaToken', token);
 
     this.setState({
@@ -70,28 +72,37 @@ class CardTile extends React.Component<Props> {
       const { onGetBalanceCard } = this.props;
 
       onGetBalanceCard({ formData, giftcard });
+      this.setState({
+        HideCaptchaBtn: true,
+      });
     })();
   }
 
   render() {
-    const { className, checkbalanceValueInfo, giftcard } = this.props;
+    const { className, checkbalanceValueInfo } = this.props;
+    const { HideCaptchaBtn } = this.state;
     return (
       <div className={className}>
-        <form onSubmit={this.handleSubmit} autoComplete="off">
+        <form
+          Form={checkbalanceValueInfo.giftCardNbr}
+          onSubmit={this.handleSubmit}
+          autoComplete="off"
+        >
           <div className="giftardTile__row">
-            <Recaptcha
-              ref={this.attachReCaptchaRef}
-              onloadCallback={this.handleRecaptchaOnload}
-              verifyCallback={this.handleRecaptchaVerify}
-              expiredCallback={this.handleRecaptchaExpired}
-            />
-            {giftcard.accountNo === checkbalanceValueInfo.giftCardNbr &&
-              checkbalanceValueInfo.giftCardAuthorizedAmt && (
-                <div>
-                  <span>{checkbalanceValueInfo.giftCardAuthorizedAmt}</span>
-                  <span>{checkbalanceValueInfo.giftCardNbr}</span>
-                </div>
-              )}
+            {!HideCaptchaBtn && (
+              <Recaptcha
+                ref={this.attachReCaptchaRef}
+                onloadCallback={this.handleRecaptchaOnload}
+                verifyCallback={this.handleRecaptchaVerify}
+                expiredCallback={this.handleRecaptchaExpired}
+              />
+            )}
+            {HideCaptchaBtn && (
+              <div>
+                <span>{checkbalanceValueInfo.giftCardAuthorizedAmt}</span>
+                <span>{checkbalanceValueInfo.giftCardNbr}</span>
+              </div>
+            )}
 
             <Field
               component={TextBox}
@@ -101,13 +112,15 @@ class CardTile extends React.Component<Props> {
               validate={[required]}
               name="recaptchaToken"
             />
-            <button
-              type="submit"
-              onClick={this.handleCheckBalanceClick}
-              className="gift-card-balance button-tertiary"
-            >
-              Check Balance
-            </button>
+            {!HideCaptchaBtn && (
+              <button
+                type="submit"
+                onClick={this.handleCheckBalanceClick}
+                className="gift-card-balance button-tertiary"
+              >
+                Check Balance
+              </button>
+            )}
             <Anchor
               fontSizeVariation="large"
               underline
@@ -130,4 +143,6 @@ export default withStyles(
   })(CardTile),
   styles
 );
-export { CardTile as CardTileTileVanilla };
+
+// export default withStyles(CardTile, styles);
+// export { CardTile as CardTileTileVanilla };
