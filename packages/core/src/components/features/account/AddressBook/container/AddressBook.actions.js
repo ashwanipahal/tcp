@@ -37,6 +37,7 @@ export const setDeleteModalMountedState = payload => ({
   payload,
 });
 
-export const addressListUpdated = () => ({
-  type: ADDRESS_BOOK_CONSTANTS.ADDRESS_LIST_UPDATED,
+export const setAddressBookNotification = payload => ({
+  type: ADDRESS_BOOK_CONSTANTS.SET_ADDRESS_BOOK_NOTIFICATION,
+  payload,
 });

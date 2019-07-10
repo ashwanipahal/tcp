@@ -1,7 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import ADD_ADDRESS_CONSTANTS from './AddAddress.constants';
 import { addAddressSuccess, addAddressFail } from './AddAddress.actions';
-import { addressListUpdated } from '../AddressBook.actions';
+import { setAddressBookNotification } from '../AddressBook.actions';
 import fetchData from '../../../../../../service/API';
 import endpoints from '../../../../../../service/endpoint';
 
@@ -53,7 +53,11 @@ export function* addAddressGet({ payload }) {
       method
     );
     if (res) {
-      yield put(addressListUpdated());
+      yield put(
+        setAddressBookNotification({
+          status: 'success',
+        })
+      );
       return yield put(addAddressSuccess(res.body));
     }
     return yield put(addAddressFail(res.body));

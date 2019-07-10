@@ -21,7 +21,17 @@ type Props = {
 export class AddAddress extends React.PureComponent<Props> {
   submitAddAddressForm = payload => {
     const { submitAddAddressFormAction, userEmail } = this.props;
-    const formattedPayload = { ...payload, ...{ email: userEmail } };
+    const { addressLine1, addressLine2, zipCode, primary, ...otherPayload } = payload;
+    const formattedPayload = {
+      ...otherPayload,
+      ...{
+        email: userEmail,
+        address1: addressLine1,
+        address2: addressLine2,
+        zip: zipCode,
+        primary: primary ? 'true' : 'false',
+      },
+    };
     submitAddAddressFormAction(formattedPayload);
   };
 
@@ -68,7 +78,7 @@ export class AddAddress extends React.PureComponent<Props> {
             initialValues={{
               primary: addressList.size === 0,
               country: 'US',
-              address2: '',
+              addressLine2: '',
             }}
           />
         </Grid>

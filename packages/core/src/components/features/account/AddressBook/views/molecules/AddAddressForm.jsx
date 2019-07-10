@@ -6,15 +6,8 @@ import InputCheckbox from '../../../../../common/atoms/InputCheckbox';
 import Row from '../../../../../common/atoms/Row';
 import Col from '../../../../../common/atoms/Col';
 import Button from '../../../../../common/atoms/Button';
-
-import {
-  required,
-  minValue10,
-  isSpecialChar,
-  number,
-  zipcodeUS,
-  zipcodeCA,
-} from '../../../../../../utils/FormValidation';
+import createValidateMethod from '../../../../../../utils/formValidation/createValidateMethod';
+import getStandardConfig from '../../../../../../utils/formValidation/validatorStandardConfig';
 import { AutoCompleteComponent } from '../../../../../common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import {
   countriesOptionsMap,
@@ -41,10 +34,6 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
     };
   }
 
-  validatezip = (country: string) => {
-    return country === 'CA' ? zipcodeCA : zipcodeUS;
-  };
-
   StateCountryChange = (e: Object) => {
     this.setState({
       country: e.target.value ? e.target.value : '',
@@ -55,9 +44,9 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
     const { dispatch } = this.props;
     const address = AutoCompleteComponent.getAddressFromPlace(place, inputValue);
     dispatch(change('AddAddressForm', 'city', address.city));
-    dispatch(change('AddAddressForm', 'zip', address.zip));
+    dispatch(change('AddAddressForm', 'zipCode', address.zip));
     dispatch(change('AddAddressForm', 'state', address.state));
-    dispatch(change('AddAddressForm', 'address1', address.street));
+    dispatch(change('AddAddressForm', 'addressLine1', address.street));
   };
 
   render() {
@@ -73,8 +62,6 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               id="firstName"
               type="text"
               component={TextBox}
-              validate={[required, isSpecialChar]}
-              maxLength={50}
               dataLocator="addnewaddress-firstname"
             />
           </Col>
@@ -84,8 +71,6 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               name="lastName"
               id="lastName"
               component={TextBox}
-              validate={[required, isSpecialChar]}
-              maxLength={50}
               dataLocator="addnewaddress-lastname"
             />
           </Col>
@@ -93,13 +78,11 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
         <Row fullBleed>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
-              id="address1"
+              id="addressLine1"
               placeholder="Address Line 1"
               component={AutoCompleteComponent}
-              name="address1"
-              validate={[required, isSpecialChar]}
+              name="addressLine1"
               onPlaceSelected={this.handlePlaceSelected}
-              maxLength={30}
               componentRestrictions={Object.assign({}, { country: [country] })}
               dataLocator="addnewaddress-addressl1"
             />
@@ -107,11 +90,9 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
           <Col colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
               placeholder="Address Line 2( Optional )"
-              name="address2"
-              id="address2"
+              name="addressLine2"
+              id="addressLine2"
               component={TextBox}
-              validate={[isSpecialChar]}
-              maxLength={30}
               dataLocator="addnewaddress-addressl2"
             />
           </Col>
@@ -123,7 +104,6 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               placeholder="City"
               name="city"
               component={TextBox}
-              validate={[required, isSpecialChar]}
               dataLocator="addnewaddress-city"
             />
           </Col>
@@ -132,7 +112,6 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               id="state"
               placeholder={country === 'CA' ? 'Province' : 'State'}
               name="state"
-              validate={[required]}
               component={SelectBox}
               options={country === 'CA' ? CAcountriesStatesTable : UScountriesStatesTable}
               dataLocator="addnewaddress-state"
@@ -141,11 +120,10 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
           <Col colSize={{ small: 3, medium: 2, large: 3 }}>
             <Field
               placeholder={country === 'CA' ? 'Postal Code' : 'Zip Code'}
-              id="zip"
-              name="zip"
-              component={TextBox}
-              validate={[required, this.validatezip(country)]}
+              id="zipCode"
+              name="zipCode"
               maxLength={country === 'CA' ? 6 : 5}
+              component={TextBox}
               dataLocator="addnewaddress-zipcode"
             />
           </Col>
@@ -156,7 +134,6 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               id="country"
               placeholder="Country"
               name="country"
-              validate={[required]}
               component={SelectBox}
               options={countriesOptionsMap}
               onChange={this.StateCountryChange}
@@ -169,8 +146,6 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               name="phoneNumber"
               id="phoneNumber"
               component={TextBox}
-              validate={[required, number, minValue10]}
-              maxLength={10}
               dataLocator="addnewaddress-phnumber"
             />
           </Col>
@@ -222,7 +197,22 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
   }
 }
 
+const validateMethod = createValidateMethod(
+  getStandardConfig([
+    'firstName',
+    'lastName',
+    'addressLine1',
+    'addressLine2',
+    'city',
+    'state',
+    'zipCode',
+    'country',
+    'phoneNumber',
+  ])
+);
+
 export default reduxForm({
   form: 'AddAddressForm', // a unique identifier for this form
   enableReinitialize: true,
+  ...validateMethod,
 })(AddAddressForm);
