@@ -11,7 +11,7 @@ const style = css`
     font-family: ${props.theme.typography.mobileFonts.primary};
     font-weight: ${props.theme.typography.fontWeights.semibold};
     border: 1px solid ${props.theme.colorPalette.black};
-    padding: 12px 20px;
+    padding: 4px 20px;
     width: 100%;
     margin : 40px
   `
@@ -29,7 +29,7 @@ const style = css`
   font-size: ${props.theme.typography.fontSizes.fs14};
   font-weight: ${props.theme.typography.fontWeights.black};
   border: 1px solid ${props.theme.colorPalette.black};
-  padding: 12px 32px;
+  padding: 2px 32px;
   `
       : ''};
 

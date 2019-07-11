@@ -9,17 +9,29 @@ import AddAddressFormComponent from './molecules/AddAddressForm';
 import styles from '../styles/AddAddress.style';
 
 // @flow
+
 type Props = {
   className: ?string,
   submitAddAddressFormAction: any,
   addAddressResponse: any,
   userEmail: string,
+  addressList: List<{}>,
 };
 
 export class AddAddress extends React.PureComponent<Props> {
   submitAddAddressForm = payload => {
     const { submitAddAddressFormAction, userEmail } = this.props;
-    const formattedPayload = { ...payload, ...{ email: userEmail } };
+    const { addressLine1, addressLine2, zipCode, primary, ...otherPayload } = payload;
+    const formattedPayload = {
+      ...otherPayload,
+      ...{
+        email: userEmail,
+        address1: addressLine1,
+        address2: addressLine2,
+        zip: zipCode,
+        primary: primary ? 'true' : 'false',
+      },
+    };
     submitAddAddressFormAction(formattedPayload);
   };
 
@@ -28,7 +40,7 @@ export class AddAddress extends React.PureComponent<Props> {
   };
 
   render() {
-    const { className, addAddressResponse } = this.props;
+    const { className, addAddressResponse, addressList } = this.props;
     const isSuccess = addAddressResponse && addAddressResponse.get('addressId');
     const errorObject = addAddressResponse && addAddressResponse.get('errors');
     if (isSuccess) {
@@ -63,6 +75,11 @@ export class AddAddress extends React.PureComponent<Props> {
           <AddAddressFormComponent
             backToAddressBookClick={this.backToAddressBookClick}
             onSubmit={this.submitAddAddressForm}
+            initialValues={{
+              primary: addressList.size === 0,
+              country: 'US',
+              addressLine2: '',
+            }}
           />
         </Grid>
       </div>

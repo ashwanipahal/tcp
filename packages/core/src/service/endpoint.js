@@ -46,5 +46,9 @@ const endpoints = {
     method: 'put',
     relURI: '/api/v2/wallet/updateAddress',
   },
+  setDefaultPayment: {
+    method: 'post',
+    relURI: '/api/v2/account/modifyCreditCardDetails',
+  },
 };
 export default endpoints;

@@ -6,7 +6,7 @@ const { paleWhite } = colors;
 const styles = StyleSheet.create({
   container: {
     bottom: 0,
-    left: 0,
+    left: -20,
     position: 'absolute',
   },
   crossIconFinalState: {
@@ -14,12 +14,12 @@ const styles = StyleSheet.create({
     backgroundColor: paleWhite,
     borderRadius: 35,
     display: 'flex',
-    height: 70,
+    height: 66,
     justifyContent: 'center',
-    width: 70,
+    width: 66,
   },
   firstIconFinalState: {
-    bottom: 70,
+    bottom: 66,
     left: -Dimensions.get('window').width / 6,
     position: 'absolute',
   },
@@ -30,15 +30,16 @@ const styles = StyleSheet.create({
   },
   logo: {
     borderRadius: 35,
-    height: 70,
-    width: 70,
+    height: 66,
+    width: 66,
   },
   logoHidden: {
+    borderRadius: 35,
     height: 0,
     width: 0,
   },
   secondIconFinalState: {
-    bottom: 70,
+    bottom: 66,
     position: 'absolute',
     right: -Dimensions.get('window').width / 6,
   },

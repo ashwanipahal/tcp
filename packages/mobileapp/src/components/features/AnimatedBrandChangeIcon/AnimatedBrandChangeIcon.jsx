@@ -21,7 +21,7 @@ export default class AnimatedBrandChangeIcon extends Component {
   }
 
   changePosition = () => {
-    LayoutAnimation.spring();
+    LayoutAnimation.easeInEaseOut();
     const { openSwitch } = this.state;
     this.setState({
       openSwitch: !openSwitch,
