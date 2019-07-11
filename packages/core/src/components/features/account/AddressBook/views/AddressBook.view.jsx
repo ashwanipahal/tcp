@@ -1,4 +1,5 @@
 import React from 'react';
+import Router from 'next/router'; //eslint-disable-line
 import { List } from 'immutable';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
@@ -20,15 +21,11 @@ type Props = {
   },
   className: string,
   onDefaultShippingAddressClick: Object,
-  addAddressLoaded: any,
-  showDefaultShippingUpdatedMsg: Boolean,
-  onEditAddressClick: Object,
   showUpdatedNotification: any,
   showUpdatedNotificationOnModal: any,
   onDeleteAddress: Function,
   deleteModalMountedState: false,
   setDeleteModalMountState: Function,
-  onAddNNewAddressClick: any,
 };
 
 export class AddressBook extends React.PureComponent<Props> {
@@ -43,6 +40,10 @@ export class AddressBook extends React.PureComponent<Props> {
     this.setState({ selectedAddress: address });
   };
 
+  onAddNNewAddressClick = () => {
+    Router.push('/account?id=add-new-address', '/account/address-book/add-new-address');
+  };
+
   render() {
     const {
       addresses,
@@ -54,8 +55,6 @@ export class AddressBook extends React.PureComponent<Props> {
       deleteModalMountedState,
       setDeleteModalMountState,
       showUpdatedNotificationOnModal,
-      onAddNNewAddressClick,
-      onEditAddressClick,
     } = this.props;
     const { selectedAddress } = this.state;
 
@@ -90,7 +89,11 @@ export class AddressBook extends React.PureComponent<Props> {
             }}
             className="addressBook__addNewCtaContainer"
           >
-            <Button onClick={onAddNNewAddressClick} buttonVariation="variable-width" fill="BLUE">
+            <Button
+              onClick={this.onAddNNewAddressClick}
+              buttonVariation="variable-width"
+              fill="BLUE"
+            >
               {labels.addNewAddressCTA}
             </Button>
           </Col>
@@ -108,11 +111,9 @@ export class AddressBook extends React.PureComponent<Props> {
           <AddressListComponent
             addresses={addresses}
             labels={labels}
-            onEditAddressClick={onEditAddressClick}
-            onDefaultShippingAddressClick={onDefaultShippingAddressClick}
-            onAddNNewAddressClick={onAddNNewAddressClick}
             deleteModalMountedState={deleteModalMountedState}
             setSelectedAddress={this.setSelectedAddress}
+            onDefaultShippingAddressClick={onDefaultShippingAddressClick}
             setDeleteModalMountState={setDeleteModalMountState}
           />
         )}

@@ -12,8 +12,6 @@ type Props = {
   labels: {},
   className: string,
   onDefaultShippingAddressClick: Object,
-  onEditAddressClick: Object,
-  onAddNNewAddressClick: Object,
   setDeleteModalMountState: Function,
   setSelectedAddress: Function,
 };
@@ -22,8 +20,6 @@ export const AddressList = ({
   labels,
   className,
   onDefaultShippingAddressClick,
-  onEditAddressClick,
-  onAddNNewAddressClick,
   setDeleteModalMountState,
   setSelectedAddress,
 }: Props) => {
@@ -44,11 +40,9 @@ export const AddressList = ({
             address={address}
             key={address.addressId}
             labels={labels}
-            onEditAddressClick={onEditAddressClick}
             setDeleteModalMountState={setDeleteModalMountState}
             setSelectedAddress={setSelectedAddress}
             onDefaultShippingAddressClick={onDefaultShippingAddressClick}
-            onAddNNewAddressClick={onAddNNewAddressClick}
           />
         </Col>
       ))}
