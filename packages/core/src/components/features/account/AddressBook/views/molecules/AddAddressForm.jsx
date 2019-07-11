@@ -148,6 +148,7 @@ export class AddAddressForm extends React.PureComponent<Props, State> {
               id="phoneNumber"
               component={TextBox}
               dataLocator="addnewaddress-phnumber"
+              type="tel"
             />
           </Col>
         </Row>

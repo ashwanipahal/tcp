@@ -27,6 +27,7 @@ const styles = css`
   .addressVerification__cta {
     width: 100%;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    font-weight: ${props => props.theme.fonts.fontWeight.normal};
   }
 `;
 
