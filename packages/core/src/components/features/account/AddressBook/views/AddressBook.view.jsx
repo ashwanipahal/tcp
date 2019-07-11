@@ -1,4 +1,5 @@
 import React from 'react';
+import Router from 'next/router'; //eslint-disable-line
 import { List } from 'immutable';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
@@ -25,7 +26,6 @@ type Props = {
   onDeleteAddress: Function,
   deleteModalMountedState: false,
   setDeleteModalMountState: Function,
-  onAddNNewAddressClick: any,
 };
 
 export class AddressBook extends React.PureComponent<Props> {
@@ -40,6 +40,10 @@ export class AddressBook extends React.PureComponent<Props> {
     this.setState({ selectedAddress: address });
   };
 
+  onAddNNewAddressClick = () => {
+    Router.push('/account?id=add-new-address', '/account/address-book/add-new-address');
+  };
+
   render() {
     const {
       addresses,
@@ -51,7 +55,6 @@ export class AddressBook extends React.PureComponent<Props> {
       deleteModalMountedState,
       setDeleteModalMountState,
       showUpdatedNotificationOnModal,
-      onAddNNewAddressClick,
     } = this.props;
     const { selectedAddress } = this.state;
 
@@ -86,7 +89,11 @@ export class AddressBook extends React.PureComponent<Props> {
             }}
             className="addressBook__addNewCtaContainer"
           >
-            <Button onClick={onAddNNewAddressClick} buttonVariation="variable-width" fill="BLUE">
+            <Button
+              onClick={this.onAddNNewAddressClick}
+              buttonVariation="variable-width"
+              fill="BLUE"
+            >
               {labels.addNewAddressCTA}
             </Button>
           </Col>

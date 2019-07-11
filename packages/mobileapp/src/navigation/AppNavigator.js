@@ -5,9 +5,9 @@ import {
 } from 'react-navigation';
 import HomeStack from '../pages/home';
 import PlpStack from '../pages/plp';
-import PlpDeltaSyncStack from '../pages/plpDeltaSync';
 import SettingsStack from '../pages/settings';
 import Login from '../pages/login';
+import AccountStack from '../pages/account';
 
 export default createAppContainer(
   createSwitchNavigator({
@@ -16,7 +16,7 @@ export default createAppContainer(
     Main: createBottomTabNavigator({
       HomeStack,
       PlpStack,
-      PlpDeltaSyncStack,
+      AccountStack,
       SettingsStack,
       Login,
     }),

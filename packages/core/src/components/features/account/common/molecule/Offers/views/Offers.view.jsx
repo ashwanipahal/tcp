@@ -35,6 +35,7 @@ const Offers = ({ labels, className }: Props) => {
           }}
         >
           <RichText richTextHtml={labels.ACC_LBL_OFFERS_MESSAGE} />
+          <RichText richTextHtml={labels.ACC_LBL_OFFERS_DETAILS} />
         </Col>
       </Row>
     </div>
