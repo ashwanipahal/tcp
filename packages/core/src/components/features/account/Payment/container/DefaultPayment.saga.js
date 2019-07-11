@@ -3,7 +3,7 @@ import PAYMENT_CONSTANTS from '../Payment.constants';
 import fetchData from '../../../../../service/API';
 import endpoints from '../../../../../service/endpoint';
 import { getCardList, setDefaultPaymentSuccess, setDefaultPaymentError } from './Payment.actions';
-import { clearGetAddressListTTl } from '../../AddressBook/container/AddressBook.actions';
+import { clearGetAddressListTTL } from '../../AddressBook/container/AddressBook.actions';
 
 function getModifiedPayload({ payload }) {
   return {
@@ -51,7 +51,7 @@ export function* setDefaultPayment({ payload }) {
     );
     if (res.body) {
       yield put(getCardList({ ignoreCache: true }));
-      yield put(clearGetAddressListTTl());
+      yield put(clearGetAddressListTTL());
       yield put(setDefaultPaymentSuccess());
     } else yield put(setDefaultPaymentError());
   } catch (err) {

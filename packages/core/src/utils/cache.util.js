@@ -1,5 +1,6 @@
 import { checkCacheValid, generateCacheTTL } from 'redux-cache';
 import { select } from 'redux-saga/effects';
+import { Map } from 'immutable';
 import { getReducerKeyByAction } from './redux.util';
 import { DEFAULT_REDUX_TTL_TIME } from '../config/site.config';
 
@@ -26,7 +27,8 @@ function* validateCache(action) {
   const reducerKey = getReducerKeyByAction(action.type);
   if (!reducerKey) return false;
   return checkCacheValid(getState, reducerKey, {
-    accessStrategy: (s, rKey, cacheKey) => s[rKey].get(cacheKey),
+    accessStrategy: (s, rKey, cacheKey) =>
+      s[rKey] instanceof Map ? s[rKey].get(cacheKey) : s[rKey][cacheKey],
   });
 }
 

@@ -25,6 +25,7 @@ class CardTile extends React.Component<Props> {
       Visa: 'visa-small',
       GC: 'gift-card-small',
       'PLACE CARD': 'place-card-small',
+      VENMO: 'venmo-blue-acceptance-mark',
     };
     this.handleDefaultLinkClick = this.handleDefaultLinkClick.bind(this);
     this.getMakeDefaultBadge = this.getMakeDefaultBadge.bind(this);
@@ -75,10 +76,11 @@ class CardTile extends React.Component<Props> {
       card.properties && (
         <BodyCopy
           tag="span"
-          fontSize="fs16"
+          fontSize="fs14"
           fontFamily="secondary"
-          fontWeight="normal"
+          fontWeight="extrabold"
           className="cardTile__heading"
+          lineHeights="lh107"
         >
           {card.properties.venmoUserId}
         </BodyCopy>
@@ -165,12 +167,14 @@ class CardTile extends React.Component<Props> {
           </div>
           <div className="cardTile__defaultSection">
             {isCreditCard ? this.getMakeDefaultBadge() : null}
-            <img
-              className="cardTile__img"
-              alt={card.ccBrand}
-              src={cardIcon}
-              data-locator="payment-cardImage"
-            />
+            <div className="cardTile__img_wrapper">
+              <img
+                className="cardTile__img"
+                alt={card.ccBrand}
+                src={cardIcon}
+                data-locator="payment-cardImage"
+              />
+            </div>
           </div>
         </div>
         <div className="cardTile__ctaLinks">

@@ -80,12 +80,16 @@ exports[`CardTile should render correctly with amex card 1`] = `
         dataLocator="payment-carddefaultpaymentbadge"
         showCheckmark={true}
       />
-      <img
-        alt="Amex"
-        className="cardTile__img"
-        data-locator="payment-cardImage"
-        src="/static/images/amex-small.png"
-      />
+      <div
+        className="cardTile__img_wrapper"
+      >
+        <img
+          alt="Amex"
+          className="cardTile__img"
+          data-locator="payment-cardImage"
+          src="/static/images/amex-small.png"
+        />
+      </div>
     </div>
   </div>
   <div
@@ -193,12 +197,16 @@ exports[`CardTile should render correctly with discover card 1`] = `
         to="/#"
         underline={true}
       />
-      <img
-        alt="DISC"
-        className="cardTile__img"
-        data-locator="payment-cardImage"
-        src="/static/images/disc-small.png"
-      />
+      <div
+        className="cardTile__img_wrapper"
+      >
+        <img
+          alt="DISC"
+          className="cardTile__img"
+          data-locator="payment-cardImage"
+          src="/static/images/disc-small.png"
+        />
+      </div>
     </div>
   </div>
   <div
@@ -279,12 +287,16 @@ exports[`CardTile should render correctly with gift card 1`] = `
     <div
       className="cardTile__defaultSection"
     >
-      <img
-        alt="GC"
-        className="cardTile__img"
-        data-locator="payment-cardImage"
-        src="/static/images/gift-card-small.png"
-      />
+      <div
+        className="cardTile__img_wrapper"
+      >
+        <img
+          alt="GC"
+          className="cardTile__img"
+          data-locator="payment-cardImage"
+          src="/static/images/gift-card-small.png"
+        />
+      </div>
     </div>
   </div>
   <div
@@ -392,12 +404,16 @@ exports[`CardTile should render correctly with master card 1`] = `
         to="/#"
         underline={true}
       />
-      <img
-        alt="MC"
-        className="cardTile__img"
-        data-locator="payment-cardImage"
-        src="/static/images/mc-small.png"
-      />
+      <div
+        className="cardTile__img_wrapper"
+      >
+        <img
+          alt="MC"
+          className="cardTile__img"
+          data-locator="payment-cardImage"
+          src="/static/images/mc-small.png"
+        />
+      </div>
     </div>
   </div>
   <div
@@ -489,12 +505,16 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         to="/#"
         underline={true}
       />
-      <img
-        alt="PLACE CARD"
-        className="cardTile__img"
-        data-locator="payment-cardImage"
-        src="/static/images/place-card-small.png"
-      />
+      <div
+        className="cardTile__img_wrapper"
+      >
+        <img
+          alt="PLACE CARD"
+          className="cardTile__img"
+          data-locator="payment-cardImage"
+          src="/static/images/place-card-small.png"
+        />
+      </div>
     </div>
   </div>
   <div
@@ -545,10 +565,11 @@ exports[`CardTile should render correctly with venmocard 1`] = `
         component="p"
         dataLocator=""
         fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="normal"
+        fontSize="fs14"
+        fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        lineHeights="lh107"
         tag="span"
         textAlign="left"
       >
@@ -558,11 +579,16 @@ exports[`CardTile should render correctly with venmocard 1`] = `
     <div
       className="cardTile__defaultSection"
     >
-      <img
-        alt="VENMO"
-        className="cardTile__img"
-        data-locator="payment-cardImage"
-      />
+      <div
+        className="cardTile__img_wrapper"
+      >
+        <img
+          alt="VENMO"
+          className="cardTile__img"
+          data-locator="payment-cardImage"
+          src="/static/images/venmo-blue-acceptance-mark.svg"
+        />
+      </div>
     </div>
   </div>
   <div
@@ -663,12 +689,16 @@ exports[`CardTile should render correctly with visa card 1`] = `
         to="/#"
         underline={true}
       />
-      <img
-        alt="Visa"
-        className="cardTile__img"
-        data-locator="payment-cardImage"
-        src="/static/images/visa-small.png"
-      />
+      <div
+        className="cardTile__img_wrapper"
+      >
+        <img
+          alt="Visa"
+          className="cardTile__img"
+          data-locator="payment-cardImage"
+          src="/static/images/visa-small.png"
+        />
+      </div>
     </div>
   </div>
   <div

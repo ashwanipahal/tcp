@@ -28,6 +28,7 @@ const labels = {
   ACC_LBL_MAKE_DEFAULT: 'Make Default',
   ACC_LBL_DEFAULT_PAYMENT: 'DEFAULT PAYMENT',
   ACC_LBL_PLCC_CARD: 'My Place Rewards Credit Card',
+  ACC_LBL_VENMO_HEADING: 'VENMO',
 };
 
 export default labels;

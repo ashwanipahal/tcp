@@ -23,6 +23,11 @@ const styles = css`
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
   }
+  .payment__venmoCard {
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: none;
+    }
+  }
 `;
 
 export default styles;

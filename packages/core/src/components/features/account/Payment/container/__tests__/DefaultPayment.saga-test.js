@@ -3,7 +3,7 @@ import { validateReduxCache } from '../../../../../../utils/cache.util';
 import { setDefaultPayment, DefaultPaymentSaga } from '../DefaultPayment.saga';
 import { getCardList, setDefaultPaymentSuccess, setDefaultPaymentError } from '../Payment.actions';
 import PAYMENT_CONSTANTS from '../../Payment.constants';
-import { clearGetAddressListTTl } from '../../../AddressBook/container/AddressBook.actions';
+import { clearGetAddressListTTL } from '../../../AddressBook/container/AddressBook.actions';
 
 describe('DefaultPayment saga', () => {
   describe('setDefaultPayment', () => {
@@ -45,7 +45,7 @@ describe('DefaultPayment saga', () => {
       const putDescriptor = defaultPaymentGen.next(response).value;
       expect(putDescriptor).toEqual(put(getCardList({ ignoreCache: true })));
     });
-    it('should dispatch clearGetAddressListTTl action for success response', () => {
+    it('should dispatch clearGetAddressListTTL action for success response', () => {
       const response = {
         body: {
           contact: [],
@@ -53,7 +53,7 @@ describe('DefaultPayment saga', () => {
       };
       let putDescriptor = defaultPaymentGen.next(response).value;
       putDescriptor = defaultPaymentGen.next(response).value;
-      expect(putDescriptor).toEqual(put(clearGetAddressListTTl()));
+      expect(putDescriptor).toEqual(put(clearGetAddressListTTL()));
     });
     it('should dispatch setDefaultPaymentSuccess action for success response', () => {
       const response = {

@@ -35,7 +35,7 @@ type GetAddressLineProps = {
   dataLocatorPrefix: ?string,
 };
 
-const getAddressLine = ({ address, dataLocatorPrefix }: GetAddressLineProps) => {
+const getAddressfromDiffLines = ({ address, dataLocatorPrefix }: GetAddressLineProps) => {
   return (
     <React.Fragment>
       <BodyCopy tag="p" dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline1` : ''}>
@@ -46,6 +46,20 @@ const getAddressLine = ({ address, dataLocatorPrefix }: GetAddressLineProps) => 
       </BodyCopy>
     </React.Fragment>
   );
+};
+
+const getAddessLines = ({ address, dataLocatorPrefix }) => {
+  return address.addressLine
+    .filter(al => al.trim() !== '')
+    .map((addressLine, index) => (
+      <BodyCopy
+        component="p"
+        dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressl${index}` : ''}
+        fontFamily="secondary"
+      >
+        {addressLine}
+      </BodyCopy>
+    ));
 };
 
 /**
@@ -62,49 +76,39 @@ const Address = ({
   fontWeight,
   showPhone,
   showCountry,
-}: Props) => (
-  <BodyCopy component="div" fontSize="fs14" color="text.primary" className={className}>
-    <BodyCopy
-      component="p"
-      fontWeight={fontWeight}
-      fontFamily="secondary"
-      dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-fullname` : ''}
-    >
-      {`${address.firstName} ${address.lastName}`}
-    </BodyCopy>
-    {address.addressLine
-      ? address.addressLine
-          .filter(al => al.trim() !== '')
-          .map((addressLine, index) => (
-            <BodyCopy
-              component="p"
-              dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressl${index}` : ''}
-              fontFamily="secondary"
-            >
-              {addressLine}
-            </BodyCopy>
-          ))
-      : null}
-    {!address.addressLine && getAddressLine({ address, dataLocatorPrefix })}
-    <BodyCopy
-      component="p"
-      dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-cityfullname` : ''}
-      fontFamily="secondary"
-    >
-      {`${address.city}, ${address.state} ${address.zipCode}`}
-    </BodyCopy>
-    {showCountry && address.country && (
-      <BodyCopy component="p" fontFamily="secondary">
-        {address.country}
+}: Props) =>
+  address && (
+    <BodyCopy component="div" fontSize="fs14" color="text.primary" className={className}>
+      <BodyCopy
+        component="p"
+        fontWeight={fontWeight}
+        fontFamily="secondary"
+        dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-fullname` : ''}
+      >
+        {`${address.firstName} ${address.lastName}`}
       </BodyCopy>
-    )}
-    {showPhone && address.phone1 && (
-      <BodyCopy component="p" fontFamily="secondary">
-        {address.phone1}
+      {address.addressLine
+        ? getAddessLines({ address, dataLocatorPrefix })
+        : getAddressfromDiffLines({ address, dataLocatorPrefix })}
+      <BodyCopy
+        component="p"
+        dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-cityfullname` : ''}
+        fontFamily="secondary"
+      >
+        {`${address.city}, ${address.state} ${address.zipCode}`}
       </BodyCopy>
-    )}
-  </BodyCopy>
-);
+      {showCountry && address.country && (
+        <BodyCopy component="p" fontFamily="secondary">
+          {address.country}
+        </BodyCopy>
+      )}
+      {showPhone && address.phone1 && (
+        <BodyCopy component="p" fontFamily="secondary">
+          {address.phone1}
+        </BodyCopy>
+      )}
+    </BodyCopy>
+  );
 
 Address.defaultProps = {
   showPhone: true,
