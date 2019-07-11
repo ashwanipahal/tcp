@@ -59,6 +59,28 @@ function* getUserInfoSaga() {
   }
 }
 
+function* getUserInfoPOCSaga() {
+  try {
+    const { relURI, method } = endpoints.registeredUserInfoPOC;
+    const baseURI = endpoints.registeredUserInfoPOC.baseURI || endpoints.global.baseURI;
+    const res = yield call(
+      fetchData,
+      baseURI,
+      relURI,
+      {
+        langId: -1,
+        catalogId: 10551,
+        storeId: 10151,
+      },
+      method
+    );
+    yield put(setLoginInfo(res.body));
+  } catch (err) {
+    console.log(errorLabel);
+    console.log(err);
+  }
+}
+
 function* getOrderDetailSaga() {
   try {
     const { relURI, method } = endpoints.getOrderDetails;
@@ -86,6 +108,7 @@ function* LoginPageSaga() {
   yield takeLatest(LOGINPAGE_CONSTANTS.LOGIN, login);
   yield takeLatest(LOGINPAGE_CONSTANTS.GET_USER_INFO, getUserInfoSaga);
   yield takeLatest('GET_ORDER_DETAIL', getOrderDetailSaga);
+  yield takeLatest('GET_USER_DETAIL_POC', getUserInfoPOCSaga);
 }
 
 export default LoginPageSaga;

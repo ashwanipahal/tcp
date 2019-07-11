@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import {
-  getUserInfo,
+  getUserInfoPOC,
   getOrderDetail,
 } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.actions';
 import FooterView from '../views';
@@ -34,7 +34,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getUserInfoAction: () => {
-      dispatch(getUserInfo());
+      dispatch(getUserInfoPOC());
     },
     getOrderDetailAction: () => {
       dispatch(getOrderDetail());

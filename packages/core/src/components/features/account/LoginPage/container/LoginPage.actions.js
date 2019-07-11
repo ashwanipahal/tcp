@@ -24,6 +24,12 @@ export const getUserInfo = () => {
   };
 };
 
+export const getUserInfoPOC = () => {
+  return {
+    type: 'GET_USER_DETAIL_POC',
+  };
+};
+
 export const getOrderDetail = () => {
   return {
     type: 'GET_ORDER_DETAIL',
