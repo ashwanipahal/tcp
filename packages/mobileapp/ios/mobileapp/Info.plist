@@ -47,11 +47,11 @@
 	<array>
 		<string>Montserrat-Black.ttf</string>
 		<string>Montserrat-Bold.ttf</string>
-		<string>Montserrat-Light.ttf</string>
-		<string>Montserrat-Regular.ttf</string>
+		<string>Montserrat.ttf</string>
+		<string>Montserrat.ttf</string>
 		<string>Montserrat-SemiBold.ttf</string>
-		<string>Nunito-Bold.ttf</string>
-		<string>Nunito-Regular.ttf</string>
+		<string>Nunito-Black.ttf</string>
+		<string>Nunito.ttf</string>
 		<string>Nunito-SemiBold.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
