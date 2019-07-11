@@ -2,7 +2,7 @@
 
 exports[`Textbox component renders correctly 1`] = `
 <label
-  className="asdfasdf active input-fields-wrapper"
+  className="asdfasdf"
 >
   <input
     aria-label=""
