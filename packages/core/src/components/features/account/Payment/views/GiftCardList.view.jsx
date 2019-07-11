@@ -20,6 +20,7 @@ type Props = {
   showUpdatedNotificationOnModal: any,
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
+  showNotification: boolean,
 };
 
 const GiftCardList = ({
@@ -32,6 +33,7 @@ const GiftCardList = ({
   showUpdatedNotificationOnModal,
   onGetBalanceCard,
   checkbalanceValueInfo,
+  showNotification,
 }: Props) => {
   return (
     <div className={className}>
@@ -69,6 +71,7 @@ const GiftCardList = ({
           giftCardList={giftCardList}
           onGetBalanceCard={onGetBalanceCard}
           checkbalanceValueInfo={checkbalanceValueInfo}
+          showNotification={showNotification}
         />
       )}
     </div>

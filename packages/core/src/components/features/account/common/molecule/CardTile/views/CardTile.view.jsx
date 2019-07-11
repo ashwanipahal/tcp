@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Badge from '../../../../../../common/atoms/Badge';
 import Address from '../../../../../../common/molecules/Address';
@@ -25,7 +26,7 @@ type Props = {
   handleSubmit: any,
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
-  form: any,
+  showNotification: any,
 };
 
 class CardTile extends React.Component<Props> {
@@ -183,7 +184,7 @@ class CardTile extends React.Component<Props> {
     const { HideCaptchaBtn } = this.state;
     return (
       <React.Fragment>
-        {HideCaptchaBtn && checkbalanceValueInfo.giftCardNbr === card.accountNo && (
+        {checkbalanceValueInfo.giftCardNbr === card.accountNo && (
           <BodyCopy
             tag="span"
             fontSize="fs14"
@@ -195,7 +196,7 @@ class CardTile extends React.Component<Props> {
             Remaining balance
           </BodyCopy>
         )}
-        {HideCaptchaBtn && checkbalanceValueInfo.giftCardNbr === card.accountNo && (
+        {checkbalanceValueInfo.giftCardNbr === card.accountNo && (
           <BodyCopy
             tag="span"
             fontSize="fs28"
@@ -206,6 +207,17 @@ class CardTile extends React.Component<Props> {
           >
             {checkbalanceValueInfo.giftCardAuthorizedAmt}
           </BodyCopy>
+        )}
+        {!HideCaptchaBtn && (
+          <Button
+            onClick={this.handleCheckBalanceClick}
+            buttonVariation="variable-width"
+            type="submit"
+            data-locator="cardtile-checkbalance"
+            fill="BLUE"
+          >
+            Check Balance
+          </Button>
         )}
       </React.Fragment>
     );
@@ -264,7 +276,7 @@ class CardTile extends React.Component<Props> {
   }
 
   render() {
-    const { card, className, labels, form } = this.props;
+    const { card, className, checkbalanceValueInfo, labels, showNotification } = this.props;
     const { HideCaptchaBtn } = this.state;
     const isCreditCard = card.ccType !== 'GiftCard' && card.ccType !== 'VENMO';
     const isVenmo = card.ccType === 'VENMO';
@@ -272,6 +284,13 @@ class CardTile extends React.Component<Props> {
     const cardIcon = getIconPath(this.cardIconMapping[card.ccBrand]);
     return (
       <div className={className}>
+        {showNotification && (
+          <Notification
+            status="error"
+            colSize={{ large: 12, medium: 8, small: 6 }}
+            message="INVLAID CAPTCHA"
+          />
+        )}
         <div className="cardTile">
           <div className="cardTile__cardDetails">
             <BodyCopy
@@ -311,17 +330,19 @@ class CardTile extends React.Component<Props> {
                 validate={[required]}
                 name="recaptchaToken"
               />
-              {!HideCaptchaBtn && (
-                <Button
-                  onClick={this.handleCheckBalanceClick}
-                  buttonVariation="variable-width"
-                  type="submit"
-                  data-locator="cardtile-checkbalance"
-                  fill="BLUE"
+              {HideCaptchaBtn && !checkbalanceValueInfo.giftCardNbr && (
+                <BodyCopy
+                  tag="span"
+                  fontSize="fs24"
+                  fontFamily="secondary"
+                  fontWeight="extrabold"
+                  className=""
+                  lineHeights="lh115"
                 >
-                  Check Balance
-                </Button>
+                  lOADING...
+                </BodyCopy>
               )}
+
               {this.remainBalance()}
             </div>
           </form>
@@ -338,7 +359,6 @@ class CardTile extends React.Component<Props> {
                 {labels.ACC_LBL_EDIT}
               </Anchor>
             )}
-
             {
               <Anchor
                 className="cardTile__anchor"
