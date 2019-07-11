@@ -1,7 +1,8 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import ADDRESS_BOOK_CONSTANTS from '../AddressBook.constants';
+import { validateReduxCache } from '../../../../../utils/cache.util';
 import fetchData from '../../../../../service/API';
-import { setAddressList } from './AddressBook.actions';
+import { setAddressList, setLoader } from './AddressBook.actions';
 import endpoints from '../../../../../service/endpoint';
 import CHECKOUT_PAGE from '../../../../../constants/pages.constants';
 
@@ -9,6 +10,7 @@ export function* getAddressList() {
   try {
     const { relURI, method } = endpoints.getAddressList;
     const baseURI = endpoints.getAddressList.baseURI || endpoints.global.baseURI;
+    yield put(setLoader());
     const res = yield call(
       fetchData,
       baseURI,
@@ -31,7 +33,8 @@ export function* getAddressList() {
 }
 
 export function* AddressBookSaga() {
-  yield takeLatest(ADDRESS_BOOK_CONSTANTS.GET_ADDRESS_LIST, getAddressList);
+  const cachedAddressList = validateReduxCache(getAddressList);
+  yield takeLatest(ADDRESS_BOOK_CONSTANTS.GET_ADDRESS_LIST, cachedAddressList);
 }
 
 export default AddressBookSaga;

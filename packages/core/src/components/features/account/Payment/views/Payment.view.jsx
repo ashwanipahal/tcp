@@ -7,6 +7,7 @@ import styles from '../styles/Payment.style';
 import Notification from '../../../../common/molecules/Notification';
 import CreditCardList from './CreditCardList.view';
 import GiftCardList from './GiftCardList.view';
+import VenmoCardList from './VenmoCardList.view';
 import Offers from '../../common/molecule/Offers/views/Offers.view';
 
 // @flow
@@ -17,6 +18,8 @@ type Props = {
   creditCardList: Array<object>,
   giftCardList: Array<object>,
   cardList: Array<object>,
+  setDefaultPaymentMethod: Function,
+  venmoCardList: Array<object>,
 };
 
 const PaymentView = ({
@@ -26,6 +29,8 @@ const PaymentView = ({
   creditCardList,
   giftCardList,
   cardList,
+  setDefaultPaymentMethod,
+  venmoCardList,
 }: Props) => {
   return (
     <div className={className}>
@@ -59,11 +64,12 @@ const PaymentView = ({
           }}
         >
           <BodyCopy
-            fontFamily="secondary"
+            fontFamily="primary"
             fontSize="fs16"
             fontWeight="extrabold"
             component="h4"
             className="payment__heading"
+            dataLocator="payment-payment&gcheader"
           >
             {labels.ACC_LBL_PAYMENT_HEADING}
           </BodyCopy>
@@ -87,6 +93,14 @@ const PaymentView = ({
           labels={labels}
           creditCardList={creditCardList}
           className="payment__creditCard"
+          setDefaultPaymentMethod={setDefaultPaymentMethod}
+        />
+      )}
+      {venmoCardList && venmoCardList.size > 0 && (
+        <VenmoCardList
+          labels={labels}
+          venmoCardList={venmoCardList}
+          className="payment__venmoCard"
         />
       )}
       {giftCardList && (

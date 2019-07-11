@@ -1,0 +1,723 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardTile should render correctly with amex card 1`] = `
+<div>
+  <div
+    className="cardTile"
+  >
+    <div
+      className="cardTile__cardDetails"
+    >
+      <Styled(BodyCopy)
+        className="cardTile__heading"
+        color="text.primary"
+        component="p"
+        dataLocator="payment-creditcardnametitle"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="normal"
+        letterSpacing="normal"
+        lineHeight="normal"
+        tag="span"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="cardTile__number"
+        color="text.primary"
+        component="p"
+        dataLocator="payment-creditcardendingtext"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        lineHeights="lh107"
+        tag="span"
+        textAlign="left"
+      >
+        undefined6765
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="cardTile__expiry"
+        color="text.primary"
+        component="p"
+        dataLocator="payment-creditcardexpiretext"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        lineHeights="lh115"
+        tag="span"
+        textAlign="left"
+      >
+        undefined10/2025
+      </Styled(BodyCopy)>
+      <Address
+        address={
+          Object {
+            "addressLine1": "Yucca Street",
+            "addressLine2": "",
+            "city": "Los Angeles",
+            "country": "US",
+            "firstName": "six",
+            "lastName": "test",
+            "phone1": "3214567890",
+            "state": "CA",
+            "zipCode": "90028",
+          }
+        }
+        dataLocatorPrefix="payment-creditcard"
+        fontWeight="normal"
+        showCountry={false}
+        showPhone={false}
+      />
+    </div>
+    <div
+      className="cardTile__defaultSection"
+    >
+      <Styled(Badge)
+        dataLocator="payment-carddefaultpaymentbadge"
+        showCheckmark={true}
+      />
+      <div
+        className="cardTile__img_wrapper"
+      >
+        <img
+          alt="Amex"
+          className="cardTile__img"
+          data-locator="payment-cardImage"
+          src="/static/images/amex-small.png"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="cardTile__ctaLinks"
+  >
+    <Styled(Anchor)
+      anchorVariation="primary"
+      dataLocator="payment-cardeditlink"
+      fontSizeVariation="large"
+      to="/#"
+      underline={true}
+    />
+    <Styled(Anchor)
+      anchorVariation="primary"
+      dataLocator="payment-carddeletelink"
+      fontSizeVariation="large"
+      to="/#"
+      underline={true}
+    />
+  </div>
+</div>
+`;
+
+exports[`CardTile should render correctly with discover card 1`] = `
+<div>
+  <div
+    className="cardTile"
+  >
+    <div
+      className="cardTile__cardDetails"
+    >
+      <Styled(BodyCopy)
+        className="cardTile__heading"
+        color="text.primary"
+        component="p"
+        dataLocator="payment-creditcardnametitle"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="normal"
+        letterSpacing="normal"
+        lineHeight="normal"
+        tag="span"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="cardTile__number"
+        color="text.primary"
+        component="p"
+        dataLocator="payment-creditcardendingtext"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        lineHeights="lh107"
+        tag="span"
+        textAlign="left"
+      >
+        undefined6765
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="cardTile__expiry"
+        color="text.primary"
+        component="p"
+        dataLocator="payment-creditcardexpiretext"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        lineHeights="lh115"
+        tag="span"
+        textAlign="left"
+      >
+        undefined10/2025
+      </Styled(BodyCopy)>
+      <Address
+        address={
+          Object {
+            "addressLine1": "Yucca Street",
+            "addressLine2": "",
+            "city": "Los Angeles",
+            "country": "US",
+            "firstName": "six",
+            "lastName": "test",
+            "phone1": "3214567890",
+            "state": "CA",
+            "zipCode": "90028",
+          }
+        }
+        dataLocatorPrefix="payment-creditcard"
+        fontWeight="normal"
+        showCountry={false}
+        showPhone={false}
+      />
+    </div>
+    <div
+      className="cardTile__defaultSection"
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="payment-makedefault"
+        fontSizeVariation="small"
+        onClick={[Function]}
+        to="/#"
+        underline={true}
+      />
+      <div
+        className="cardTile__img_wrapper"
+      >
+        <img
+          alt="DISC"
+          className="cardTile__img"
+          data-locator="payment-cardImage"
+          src="/static/images/disc-small.png"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="cardTile__ctaLinks"
+  >
+    <Styled(Anchor)
+      anchorVariation="primary"
+      dataLocator="payment-cardeditlink"
+      fontSizeVariation="large"
+      to="/#"
+      underline={true}
+    />
+    <Styled(Anchor)
+      anchorVariation="primary"
+      dataLocator="payment-carddeletelink"
+      fontSizeVariation="large"
+      to="/#"
+      underline={true}
+    />
+  </div>
+</div>
+`;
+
+exports[`CardTile should render correctly with gift card 1`] = `
+<div>
+  <div
+    className="cardTile"
+  >
+    <div
+      className="cardTile__cardDetails"
+    >
+      <Styled(BodyCopy)
+        className="cardTile__heading"
+        color="text.primary"
+        component="p"
+        dataLocator="payment-creditcardnametitle"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="normal"
+        letterSpacing="normal"
+        lineHeight="normal"
+        tag="span"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="cardTile__number"
+        color="text.primary"
+        component="p"
+        dataLocator="payment-creditcardendingtext"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        lineHeights="lh107"
+        tag="span"
+        textAlign="left"
+      >
+        undefined6765
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="cardTile__expiry"
+        color="text.primary"
+        component="p"
+        dataLocator="payment-creditcardexpiretext"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        lineHeights="lh115"
+        tag="span"
+        textAlign="left"
+      >
+        undefined10/2025
+      </Styled(BodyCopy)>
+    </div>
+    <div
+      className="cardTile__defaultSection"
+    >
+      <div
+        className="cardTile__img_wrapper"
+      >
+        <img
+          alt="GC"
+          className="cardTile__img"
+          data-locator="payment-cardImage"
+          src="/static/images/gift-card-small.png"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="cardTile__ctaLinks"
+  >
+    <Styled(Anchor)
+      anchorVariation="primary"
+      dataLocator="payment-cardeditlink"
+      fontSizeVariation="large"
+      to="/#"
+      underline={true}
+    />
+    <Styled(Anchor)
+      anchorVariation="primary"
+      dataLocator="payment-carddeletelink"
+      fontSizeVariation="large"
+      to="/#"
+      underline={true}
+    />
+  </div>
+</div>
+`;
+
+exports[`CardTile should render correctly with master card 1`] = `
+<div>
+  <div
+    className="cardTile"
+  >
+    <div
+      className="cardTile__cardDetails"
+    >
+      <Styled(BodyCopy)
+        className="cardTile__heading"
+        color="text.primary"
+        component="p"
+        dataLocator="payment-creditcardnametitle"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="normal"
+        letterSpacing="normal"
+        lineHeight="normal"
+        tag="span"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="cardTile__number"
+        color="text.primary"
+        component="p"
+        dataLocator="payment-creditcardendingtext"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        lineHeights="lh107"
+        tag="span"
+        textAlign="left"
+      >
+        undefined6765
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="cardTile__expiry"
+        color="text.primary"
+        component="p"
+        dataLocator="payment-creditcardexpiretext"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        lineHeights="lh115"
+        tag="span"
+        textAlign="left"
+      >
+        undefined10/2025
+      </Styled(BodyCopy)>
+      <Address
+        address={
+          Object {
+            "addressLine1": "Yucca Street",
+            "addressLine2": "",
+            "city": "Los Angeles",
+            "country": "US",
+            "firstName": "six",
+            "lastName": "test",
+            "phone1": "3214567890",
+            "state": "CA",
+            "zipCode": "90028",
+          }
+        }
+        dataLocatorPrefix="payment-creditcard"
+        fontWeight="normal"
+        showCountry={false}
+        showPhone={false}
+      />
+    </div>
+    <div
+      className="cardTile__defaultSection"
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="payment-makedefault"
+        fontSizeVariation="small"
+        onClick={[Function]}
+        to="/#"
+        underline={true}
+      />
+      <div
+        className="cardTile__img_wrapper"
+      >
+        <img
+          alt="MC"
+          className="cardTile__img"
+          data-locator="payment-cardImage"
+          src="/static/images/mc-small.png"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="cardTile__ctaLinks"
+  >
+    <Styled(Anchor)
+      anchorVariation="primary"
+      dataLocator="payment-cardeditlink"
+      fontSizeVariation="large"
+      to="/#"
+      underline={true}
+    />
+    <Styled(Anchor)
+      anchorVariation="primary"
+      dataLocator="payment-carddeletelink"
+      fontSizeVariation="large"
+      to="/#"
+      underline={true}
+    />
+  </div>
+</div>
+`;
+
+exports[`CardTile should render correctly with plcc card 1`] = `
+<div>
+  <div
+    className="cardTile"
+  >
+    <div
+      className="cardTile__cardDetails"
+    >
+      <Styled(BodyCopy)
+        className="cardTile__heading"
+        color="text.primary"
+        component="p"
+        dataLocator="payment-creditcardnametitle"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="normal"
+        letterSpacing="normal"
+        lineHeight="normal"
+        tag="span"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="cardTile__number"
+        color="text.primary"
+        component="p"
+        dataLocator="payment-creditcardendingtext"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        lineHeights="lh107"
+        tag="span"
+        textAlign="left"
+      >
+        undefined6765
+      </Styled(BodyCopy)>
+      <Address
+        address={
+          Object {
+            "addressLine1": "Yucca Street",
+            "addressLine2": "",
+            "city": "Los Angeles",
+            "country": "US",
+            "firstName": "six",
+            "lastName": "test",
+            "phone1": "3214567890",
+            "state": "CA",
+            "zipCode": "90028",
+          }
+        }
+        dataLocatorPrefix="payment-creditcard"
+        fontWeight="normal"
+        showCountry={false}
+        showPhone={false}
+      />
+    </div>
+    <div
+      className="cardTile__defaultSection"
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="payment-makedefault"
+        fontSizeVariation="small"
+        onClick={[Function]}
+        to="/#"
+        underline={true}
+      />
+      <div
+        className="cardTile__img_wrapper"
+      >
+        <img
+          alt="PLACE CARD"
+          className="cardTile__img"
+          data-locator="payment-cardImage"
+          src="/static/images/place-card-small.png"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="cardTile__ctaLinks"
+  >
+    <Styled(Anchor)
+      anchorVariation="primary"
+      dataLocator="payment-cardeditlink"
+      fontSizeVariation="large"
+      to="/#"
+      underline={true}
+    />
+    <Styled(Anchor)
+      anchorVariation="primary"
+      dataLocator="payment-carddeletelink"
+      fontSizeVariation="large"
+      to="/#"
+      underline={true}
+    />
+  </div>
+</div>
+`;
+
+exports[`CardTile should render correctly with venmocard 1`] = `
+<div>
+  <div
+    className="cardTile"
+  >
+    <div
+      className="cardTile__cardDetails"
+    >
+      <Styled(BodyCopy)
+        className="cardTile__heading"
+        color="text.primary"
+        component="p"
+        dataLocator="payment-creditcardnametitle"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="normal"
+        letterSpacing="normal"
+        lineHeight="normal"
+        tag="span"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="cardTile__heading"
+        color="text.primary"
+        component="p"
+        dataLocator=""
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        lineHeights="lh107"
+        tag="span"
+        textAlign="left"
+      >
+        1234
+      </Styled(BodyCopy)>
+    </div>
+    <div
+      className="cardTile__defaultSection"
+    >
+      <div
+        className="cardTile__img_wrapper"
+      >
+        <img
+          alt="VENMO"
+          className="cardTile__img"
+          data-locator="payment-cardImage"
+          src="/static/images/venmo-blue-acceptance-mark.svg"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="cardTile__ctaLinks"
+  >
+    <Styled(Anchor)
+      anchorVariation="primary"
+      dataLocator="payment-carddeletelink"
+      fontSizeVariation="large"
+      to="/#"
+      underline={true}
+    />
+  </div>
+</div>
+`;
+
+exports[`CardTile should render correctly with visa card 1`] = `
+<div>
+  <div
+    className="cardTile"
+  >
+    <div
+      className="cardTile__cardDetails"
+    >
+      <Styled(BodyCopy)
+        className="cardTile__heading"
+        color="text.primary"
+        component="p"
+        dataLocator="payment-creditcardnametitle"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="normal"
+        letterSpacing="normal"
+        lineHeight="normal"
+        tag="span"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="cardTile__number"
+        color="text.primary"
+        component="p"
+        dataLocator="payment-creditcardendingtext"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        lineHeights="lh107"
+        tag="span"
+        textAlign="left"
+      >
+        undefined6765
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className="cardTile__expiry"
+        color="text.primary"
+        component="p"
+        dataLocator="payment-creditcardexpiretext"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        lineHeights="lh115"
+        tag="span"
+        textAlign="left"
+      >
+        undefined10/2025
+      </Styled(BodyCopy)>
+      <Address
+        address={
+          Object {
+            "addressLine1": "Yucca Street",
+            "addressLine2": "",
+            "city": "Los Angeles",
+            "country": "US",
+            "firstName": "six",
+            "lastName": "test",
+            "phone1": "3214567890",
+            "state": "CA",
+            "zipCode": "90028",
+          }
+        }
+        dataLocatorPrefix="payment-creditcard"
+        fontWeight="normal"
+        showCountry={false}
+        showPhone={false}
+      />
+    </div>
+    <div
+      className="cardTile__defaultSection"
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        dataLocator="payment-makedefault"
+        fontSizeVariation="small"
+        onClick={[Function]}
+        to="/#"
+        underline={true}
+      />
+      <div
+        className="cardTile__img_wrapper"
+      >
+        <img
+          alt="Visa"
+          className="cardTile__img"
+          data-locator="payment-cardImage"
+          src="/static/images/visa-small.png"
+        />
+      </div>
+    </div>
+  </div>
+  <div
+    className="cardTile__ctaLinks"
+  >
+    <Styled(Anchor)
+      anchorVariation="primary"
+      dataLocator="payment-cardeditlink"
+      fontSizeVariation="large"
+      to="/#"
+      underline={true}
+    />
+    <Styled(Anchor)
+      anchorVariation="primary"
+      dataLocator="payment-carddeletelink"
+      fontSizeVariation="large"
+      to="/#"
+      underline={true}
+    />
+  </div>
+</div>
+`;

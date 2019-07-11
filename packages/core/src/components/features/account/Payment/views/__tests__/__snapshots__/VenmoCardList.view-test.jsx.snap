@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CreditCardList Component should render correctly 1`] = `
+exports[`VenmoCardList Component should render correctly 1`] = `
 <div
   className="abc"
 >
@@ -8,47 +8,17 @@ exports[`CreditCardList Component should render correctly 1`] = `
     className="cardList__heading"
     color="text.primary"
     component={null}
-    dataLocator="payment-creditcardtile"
+    dataLocator="payment-venmocardtile"
     textAlign="left"
     variant="h6"
   />
-  <Styled(EmptyCard)
-    alt="card icon"
-    icon="credit-card"
-    labels={
-      Object {
-        "creditCardHeading": "heading",
-      }
-    }
-    prefix="CC"
-  />
-  <Styled(Row)
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 3,
-          "small": 6,
-        }
-      }
-    >
-      <Styled(Button)
-        buttonVariation="fixed-width"
-        className="cardList__ccAddCta"
-        dataLocator="payment-addcreditcard"
-        fill="BLUE"
-      />
-    </Styled(Col)>
-  </Styled(Row)>
   <Styled(Row)
     fullBleed={true}
   />
 </div>
 `;
 
-exports[`CreditCardList Component should render correctly if list is present 1`] = `
+exports[`VenmoCardList Component should render correctly if list is present 1`] = `
 <div
   className="abc"
 >
@@ -56,30 +26,10 @@ exports[`CreditCardList Component should render correctly if list is present 1`]
     className="cardList__heading"
     color="text.primary"
     component={null}
-    dataLocator="payment-creditcardtile"
+    dataLocator="payment-venmocardtile"
     textAlign="left"
     variant="h6"
   />
-  <Styled(Row)
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 3,
-          "small": 6,
-        }
-      }
-    >
-      <Styled(Button)
-        buttonVariation="fixed-width"
-        className="cardList__ccAddCta"
-        dataLocator="payment-addcreditcard"
-        fill="BLUE"
-      />
-    </Styled(Col)>
-  </Styled(Row)>
   <Styled(Row)
     fullBleed={true}
   >
@@ -117,19 +67,21 @@ exports[`CreditCardList Component should render correctly if list is present 1`]
               "zipCode": "10003",
             },
             "billingAddressId": 160685,
-            "ccBrand": "Visa",
-            "ccType": "COMPASSVISA",
+            "ccBrand": "VENMO",
+            "ccType": "VENMO",
             "creditCardId": 73501,
             "defaultInd": false,
             "expMonth": "5 ",
             "expYear": "2024",
             "nameOnAccount": ".",
-            "properties": null,
+            "properties": Object {
+              "venmoUserId": "1234",
+            },
           }
         }
         labels={
           Object {
-            "creditCardHeading": "heading",
+            "VenmoCardHeading": "heading",
           }
         }
       />

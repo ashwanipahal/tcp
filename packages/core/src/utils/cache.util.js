@@ -1,5 +1,6 @@
 import { checkCacheValid, generateCacheTTL } from 'redux-cache';
 import { select } from 'redux-saga/effects';
+import { Map } from 'immutable';
 import { getReducerKeyByAction } from './redux.util';
 import { DEFAULT_REDUX_TTL_TIME } from '../config/site.config';
 
@@ -20,12 +21,15 @@ import { DEFAULT_REDUX_TTL_TIME } from '../config/site.config';
     accessStrategy - function - default: (state, reducerKey, cacheKey) => state[reducerKey][cacheKey]. Use this to overide the way in which the cacheKey is checked. This allows for greater configurability for applying the caching strategy to nested items in your reducer.
 */
 
-function* validateCache(action, args) {
+function* validateCache(action) {
   const state = yield select();
   const getState = () => state;
   const reducerKey = getReducerKeyByAction(action.type);
   if (!reducerKey) return false;
-  return checkCacheValid(getState, reducerKey, args);
+  return checkCacheValid(getState, reducerKey, {
+    accessStrategy: (s, rKey, cacheKey) =>
+      s[rKey] instanceof Map ? s[rKey].get(cacheKey) : s[rKey][cacheKey],
+  });
 }
 
 /*
@@ -41,6 +45,7 @@ function validateReduxCache(sagaMethod) {
   function* cachedSagaMethod(action) {
     const isCacheValid = yield validateCache(action);
     const ignoreCacheValidity = action.payload && action.payload.ignoreCache;
+
     if (isCacheValid && !ignoreCacheValidity) {
       return null;
     }

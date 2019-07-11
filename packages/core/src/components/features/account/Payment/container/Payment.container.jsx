@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getCardList } from './Payment.actions';
+import { getCardList, setDefaultPayment } from './Payment.actions';
 import {
   getCreditDebitCards,
   getCardListFetchingState,
@@ -21,6 +21,7 @@ type Props = {
   showNotification: any,
   isFetching: boolean,
   cardList: List<any>,
+  setDefaultPaymentMethod: Function,
 };
 
 export class PaymentContainer extends React.Component<Props> {
@@ -37,6 +38,7 @@ export class PaymentContainer extends React.Component<Props> {
       isFetching,
       showNotification,
       cardList,
+      setDefaultPaymentMethod,
     } = this.props;
     if (isFetching) return <p>Loading...</p>;
     return (
@@ -47,6 +49,7 @@ export class PaymentContainer extends React.Component<Props> {
         giftCardList={giftCardList}
         venmoCardList={venmoCardList}
         cardList={cardList}
+        setDefaultPaymentMethod={setDefaultPaymentMethod}
       />
     );
   }
@@ -57,6 +60,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     getCardListAction: () => {
       dispatch(getCardList());
     },
+    setDefaultPaymentMethod: payload => {
+      dispatch(setDefaultPayment(payload));
+    }
   };
 };
 

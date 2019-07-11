@@ -28,6 +28,7 @@ const Anchor = ({
   shallow,
   title,
   target,
+  dataLocator,
   ...other
 }) =>
   noLink ? (
@@ -38,12 +39,13 @@ const Anchor = ({
       onClick={handleLinkClick}
       title={title}
       target={target}
+      data-locator={dataLocator}
     >
       {children}
     </a>
   ) : (
     <Link href={to} as={asPath} shallow={shallow} scroll={scroll}>
-      <a className={className} title={title} target={target} {...other}>
+      <a className={className} title={title} target={target} {...other} data-locator={dataLocator}>
         {children}
       </a>
     </Link>
@@ -60,6 +62,7 @@ Anchor.propTypes = {
   shallow: PropTypes.bool,
   title: PropTypes.string,
   target: PropTypes.string,
+  dataLocator: PropTypes.string,
 };
 
 Anchor.defaultProps = {
@@ -70,6 +73,7 @@ Anchor.defaultProps = {
   shallow: false,
   title: '',
   target: '',
+  dataLocator: ''
 };
 
 export default withStyles(Anchor, styles);
