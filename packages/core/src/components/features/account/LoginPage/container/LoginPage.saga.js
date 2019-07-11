@@ -60,9 +60,8 @@ function* getUserInfoSaga() {
   }
 }
 
-function* getOrderDetailSaga({ payload }) {
+function* getOrderDetailSaga() {
   try {
-    console.log('>>', payload);
     const { relURI, method } = endpoints.getOrderDetails;
     const baseURI = endpoints.getOrderDetails.baseURI || endpoints.global.baseURI;
     const res = yield call(
@@ -73,7 +72,6 @@ function* getOrderDetailSaga({ payload }) {
         langId: -1,
         catalogId: 10551,
         storeId: 10151,
-        orderId: payload,
         pageName: 'fullOrderInfo',
       },
       method

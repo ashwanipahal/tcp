@@ -1,1 +1,1 @@
-export { default } from '../components/features/account/LoginPage';
+export { default } from '../components/features/content/HomePage';

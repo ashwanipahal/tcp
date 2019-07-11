@@ -24,9 +24,8 @@ export const getUserInfo = () => {
   };
 };
 
-export const getOrderDetail = payload => {
+export const getOrderDetail = () => {
   return {
     type: 'GET_ORDER_DETAIL',
-    payload,
   };
 };
