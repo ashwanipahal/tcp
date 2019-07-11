@@ -5,7 +5,7 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
 import fetchData from '../../../../../service/API';
-import { setLoginInfo } from './LoginPage.actions';
+import { setLoginInfo, getUserInfo } from './LoginPage.actions';
 import endpoints from '../../../../../service/endpoint';
 
 const errorLabel = 'Error in API';
@@ -26,12 +26,11 @@ function* login(action) {
       },
       method
     );
-    // if (res.body.responseCode === 'LoginSuccess') {
-    //   yield put(getUserInfo());
-    // } else {
-    //   yield put(setLoginInfo(res.body));
-    // }
-    console.log('respone', res);
+    if (res.body.responseCode === 'LoginSuccess') {
+      yield put(getUserInfo());
+    } else {
+      yield put(setLoginInfo(res.body));
+    }
   } catch (err) {
     console.log(errorLabel);
     console.log(err);
