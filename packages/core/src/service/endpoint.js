@@ -52,6 +52,16 @@ const endpoints = {
     method: 'put',
     relURI: '/api/v2/wallet/updateAddress',
   },
+  getOrderDetails: {
+    method: 'get',
+    baseURI: 'http://test1.gymboree.com',
+    relURI: '/api/v2/checkout/getOrderDetails',
+  },
+  registeredUserInfoPOC: {
+    method: 'get',
+    baseURI: 'http://test1.gymboree.com',
+    relURI: '/api/v2/account/getRegisteredUserInfo',
+  },
   setDefaultPayment: {
     method: 'post',
     relURI: '/api/v2/account/modifyCreditCardDetails',

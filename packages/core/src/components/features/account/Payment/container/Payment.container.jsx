@@ -62,7 +62,7 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     },
     setDefaultPaymentMethod: payload => {
       dispatch(setDefaultPayment(payload));
-    }
+    },
   };
 };
 
