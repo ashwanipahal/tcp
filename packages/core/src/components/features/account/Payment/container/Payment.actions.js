@@ -28,6 +28,6 @@ export const setDefaultPaymentError = () => ({
   type: PAYMENT_CONSTANTS.SET_DEFAULT_PAYMENT_ERROR,
 });
 
-export const setLoader = () => ({
-  type: PAYMENT_CONSTANTS.SET_LOADER,
+export const showLoader = () => ({
+  type: PAYMENT_CONSTANTS.SHOW_LOADER,
 });

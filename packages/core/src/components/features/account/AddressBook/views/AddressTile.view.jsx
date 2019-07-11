@@ -106,7 +106,7 @@ class AddressBookTile extends React.Component<Props> {
             underline
             to="/#"
             anchorVariation="primary"
-            data-locator="addressbook-delete"
+            data-locator="addressbook-deletelink"
             onClick={e => this.onDeleteAddressClick(e)}
           >
             {labels.delete}

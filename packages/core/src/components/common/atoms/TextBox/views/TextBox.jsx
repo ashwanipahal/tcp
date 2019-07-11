@@ -20,7 +20,7 @@ type Props = {
   type?: string,
   placeholder?: string,
   onChangeHandler?: any,
-  meta: { touched: any, error: any, warning: any },
+  meta?: { touched: any, error: any, warning: any },
   input: any,
   maxLength: any,
   inputRef: any,
@@ -40,14 +40,8 @@ const TextBox = ({
   dataLocator,
 }: Props): Node => {
   const elemValue = input.value;
-  const isError = touched && error;
   return (
-    <label
-      htmlFor={input.name}
-      className={`${className}${elemValue ? ' active' : ''}${
-        isError ? ' error' : ''
-      } input-fields-wrapper`}
-    >
+    <label htmlFor={input.name} className={className}>
       <input
         {...input}
         id={id}
@@ -80,6 +74,7 @@ TextBox.defaultProps = {
   placeholder: '',
   onChangeHandler: () => {},
   dataLocator: '',
+  meta: {},
 };
 
 export default withStyles(TextBox, StyledTextBox);

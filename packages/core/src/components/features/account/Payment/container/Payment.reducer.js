@@ -11,11 +11,11 @@ const initialState = fromJS({
 
 const PaymentReducer = (state = initialState, action) => {
   switch (action.type) {
-    case PAYMENT_CONSTANTS.SET_LOADER:
+    case PAYMENT_CONSTANTS.SHOW_LOADER:
       return state.set('isFetching', true);
     case PAYMENT_CONSTANTS.SET_CARD_LIST:
       return state
-        .set(DEFAULT_REDUCER_KEY, setCacheTTL())
+        .set(DEFAULT_REDUCER_KEY, setCacheTTL(PAYMENT_CONSTANTS.GET_CARD_LIST_TTL))
         .set('cardList', List(action.payload))
         .set('isFetching', false);
     case PAYMENT_CONSTANTS.GET_CARD_LIST_ERR:

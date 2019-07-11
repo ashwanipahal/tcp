@@ -8,7 +8,7 @@ exports[`CreditCardList Component should render correctly 1`] = `
     className="cardList__heading"
     color="text.primary"
     component={null}
-    dataLocator="payment-creditcardtile"
+    dataLocator="payment-creditAndDebitCardsLabel"
     textAlign="left"
     variant="h6"
   />
@@ -56,7 +56,7 @@ exports[`CreditCardList Component should render correctly if list is present 1`]
     className="cardList__heading"
     color="text.primary"
     component={null}
-    dataLocator="payment-creditcardtile"
+    dataLocator="payment-creditAndDebitCardsLabel"
     textAlign="left"
     variant="h6"
   />

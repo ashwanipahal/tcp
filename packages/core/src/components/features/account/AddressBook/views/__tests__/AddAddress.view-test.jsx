@@ -40,7 +40,7 @@ describe('AddressBook component', () => {
       primary: true,
     };
     const component = shallow(<AddAddress {...props} />);
-    component.instance().submitAddAddressForm(payload);
+    component.instance().submitAddAddressForm(component.instance().formatPayload(payload));
     expect(props.submitAddAddressFormAction).toBeCalledWith({
       firstName: 'test',
       email: userEmail,
