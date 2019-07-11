@@ -1,7 +1,8 @@
 // @flow
 
 import React from 'react';
-import { Image, View } from 'react-native';
+import { View } from 'react-native';
+import Image from '@tcp/core/src/components/common/atoms/Image/index';
 import { getIcon } from '../../../../utils/utils';
 
 type Props = {
@@ -11,6 +12,10 @@ type Props = {
   style?: Object,
 };
 
+/**
+ * This component creates icon used in Bottom Nav Bar
+ * @param {*} props Props passed from Stack navigator screen
+ */
 const NavBarIcon = (props: Props) => {
   const { iconActive, iconInactive, style, focused } = props;
   const icon = focused ? iconActive : iconInactive;

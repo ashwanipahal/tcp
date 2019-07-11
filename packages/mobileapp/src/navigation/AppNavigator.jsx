@@ -24,10 +24,6 @@ export default createAppContainer(
       },
       {
         tabBarComponent: NavBar,
-        tabBarOptions: {
-          activeBackgroundColor: '#1a1a1a',
-          inactiveBackgroundColor: '#4F4F4F',
-        },
       }
     ),
   })

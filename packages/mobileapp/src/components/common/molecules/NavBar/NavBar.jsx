@@ -7,15 +7,16 @@ import style from './NavBar.style';
 type Props = {
   renderIcon: Function,
   getLabelText: Function,
-  activeBackgroundColor: String,
-  inactiveBackgroundColor: String,
   onTabPress: Function,
   onTabLongPress: Function,
-  getAccessibilityLabel: Function,
   navigation: Object,
   labels: Object,
 };
 
+/**
+ * This function returns default label for specific route in Nav Bar
+ * @param {*} label
+ */
 const getDefaultLabels = label => {
   const labels = {
     home: 'HOME',
@@ -27,18 +28,12 @@ const getDefaultLabels = label => {
   return labels[label];
 };
 
+/**
+ * This Component creates custom Bottom Nav Bar for the app
+ * @param {*} props Props passed from BottomTabNavigator react native feature
+ */
 const NavBar = (props: Props) => {
-  const {
-    renderIcon,
-    getLabelText,
-    activeBackgroundColor,
-    inactiveBackgroundColor,
-    onTabPress,
-    onTabLongPress,
-    getAccessibilityLabel,
-    navigation,
-    labels,
-  } = props;
+  const { renderIcon, getLabelText, onTabPress, onTabLongPress, navigation, labels } = props;
 
   const { routes, index: activeRouteIndex } = navigation.state;
 
@@ -46,9 +41,9 @@ const NavBar = (props: Props) => {
     <View style={style.container}>
       {routes.map((route, routeIndex) => {
         const isRouteActive = routeIndex === activeRouteIndex;
-        const backgroundColor = isRouteActive ? activeBackgroundColor : inactiveBackgroundColor;
         let label;
         let buttonStyle = style.tabButton;
+        let txtStyle = style.textStyle;
 
         if (labels) {
           label = labels[getLabelText({ route })];
@@ -57,7 +52,7 @@ const NavBar = (props: Props) => {
         }
 
         if (isRouteActive) {
-          style.textStyle.color = activeBackgroundColor;
+          txtStyle = style.highlightedTextStyle;
         }
 
         if (!label) {
@@ -76,11 +71,11 @@ const NavBar = (props: Props) => {
               onTabLongPress({ route });
             }}
             accessibilityRole="link"
-            accessibilityLabel={getAccessibilityLabel({ route })}
+            accessibilityLabel={label}
           >
-            {renderIcon({ route, focused: isRouteActive, tintColor: backgroundColor })}
+            {renderIcon({ route, focused: isRouteActive })}
 
-            <Text style={style.textStyle}>{label}</Text>
+            <Text style={txtStyle}>{label}</Text>
           </TouchableOpacity>
         );
       })}
