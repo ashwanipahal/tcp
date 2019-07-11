@@ -6,7 +6,10 @@ const styles = css`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: ${props => props.theme.spacing.ELEM_SPACING.LRG}
+  height: 100%;
+  word-break: break-word;
+  min-height: ${props => (props.card && props.card.ccType === 'VENMO' ? '173px' : '')};
+  padding: ${props => props.theme.spacing.ELEM_SPACING.MED}
     ${props => props.theme.spacing.ELEM_SPACING.MED};
 
   .recaptcha {
@@ -20,7 +23,7 @@ const styles = css`
     align-items: flex-end;
   }
   & form {
-    width: 90%;
+    width: 88%;
   }
   & .input-fields-wrapper {
     height: auto;
@@ -75,9 +78,6 @@ const styles = css`
     display: flex;
     margin-top: 35px;
     float: right;
-  }
-  .cardTile__anchor {
-    margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   }
 `;
 

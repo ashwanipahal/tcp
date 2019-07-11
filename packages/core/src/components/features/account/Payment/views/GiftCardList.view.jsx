@@ -37,7 +37,11 @@ const GiftCardList = ({
 }: Props) => {
   return (
     <div className={className}>
-      <Heading variant="h6" className="cardList__heading">
+      <Heading
+        variant="h6"
+        className="cardList__heading"
+        dataLocator="payment-gcAndMerchandiseCards"
+      >
         {labels.ACC_LBL_GC_HEADING}
       </Heading>
       {giftCardList.size === 0 && (

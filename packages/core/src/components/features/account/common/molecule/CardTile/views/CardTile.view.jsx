@@ -14,7 +14,6 @@ import TextBox from '../../../../../../common/atoms/TextBox';
 import Button from '../../../../../../common/atoms/Button';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
-
 // @flow
 type Props = {
   card: object,
@@ -101,6 +100,8 @@ class CardTile extends React.Component<Props> {
           fontFamily="secondary"
           fontWeight="normal"
           className="cardTile__heading"
+          lineHeights="lh107"
+          dataLocator="payment-venmoid"
         >
           {card.properties.venmoUserId}
         </BodyCopy>
@@ -108,7 +109,7 @@ class CardTile extends React.Component<Props> {
     );
   }
 
-  getCardDetails() {
+  getCardDetails(dataLocatorPrefix) {
     const { card, labels } = this.props;
     const cardNum = `${labels.ACC_LBL_CARD_NUM}${card.accountNo.slice(-4)}`;
     const expDate = `${labels.ACC_LBL_EXP_DATE}${card.expMonth.trim()}/${card.expYear}`;
@@ -121,6 +122,7 @@ class CardTile extends React.Component<Props> {
           fontWeight="black"
           className="cardTile__number"
           lineHeights="lh107"
+          dataLocator={`payment-${dataLocatorPrefix}endingtext`}
         >
           {cardNum}
         </BodyCopy>
@@ -132,6 +134,7 @@ class CardTile extends React.Component<Props> {
             fontWeight="semibold"
             className="cardTile__expiry"
             lineHeights="lh115"
+            dataLocator={`payment-${dataLocatorPrefix}expiretext`}
           >
             {expDate}
           </BodyCopy>
@@ -161,11 +164,21 @@ class CardTile extends React.Component<Props> {
     setDeleteModalMountState({ state: true });
   };
 
+  getDataLocatorPrefix() {
+    const { card } = this.props;
+    switch (card.ccType) {
+      case 'GiftCard':
+        return 'giftcard';
+      case 'VENMO':
+        return 'venmo';
+      default:
+        return 'creditdebit';
+    }
+  }
+
   handleRecaptchaVerify = token => {
     const { change } = this.props;
-
     change('recaptchaToken', token);
-
     this.setState({
       isTokenDirty: false,
     });
@@ -250,7 +263,6 @@ class CardTile extends React.Component<Props> {
   handleDefaultLinkClick(event) {
     const { card, setDefaultPaymentMethod } = this.props;
     event.preventDefault();
-
     const setDefaultPaymentJSON = {
       action: 'U',
       isDefault: 'true',
@@ -284,6 +296,7 @@ class CardTile extends React.Component<Props> {
     const isVenmo = card.ccType === 'VENMO';
     const cardName = this.getCardName();
     const cardIcon = getIconPath(this.cardIconMapping[card.ccBrand]);
+    const dataLocatorPrefix = this.getDataLocatorPrefix();
     return (
       <div className={className}>
         {showNotification && (
@@ -301,10 +314,11 @@ class CardTile extends React.Component<Props> {
               fontFamily="secondary"
               fontWeight="normal"
               className="cardTile__heading"
+              dataLocator={`payment-${dataLocatorPrefix}nametitle`}
             >
               {cardName}
             </BodyCopy>
-            {isVenmo ? this.getVenmoUserName() : this.getCardDetails()}
+            {isVenmo ? this.getVenmoUserName() : this.getCardDetails(dataLocatorPrefix)}
             {isCreditCard ? this.getAddressDetails() : null}
           </div>
           <div className="cardTile__defaultSection">
@@ -323,7 +337,6 @@ class CardTile extends React.Component<Props> {
                   expiredCallback={this.handleRecaptchaExpired}
                 />
               )}
-
               <Field
                 component={TextBox}
                 title=""
@@ -344,7 +357,6 @@ class CardTile extends React.Component<Props> {
                   {labels.ACC_LBL_LOADING}
                 </BodyCopy>
               )}
-
               {this.remainBalance()}
             </div>
           </form>
@@ -355,7 +367,7 @@ class CardTile extends React.Component<Props> {
                 underline
                 to="/#"
                 anchorVariation="primary"
-                dataLocator="payment-edit"
+                dataLocator={`payment-${dataLocatorPrefix}editlink`}
                 className="cardTile__anchor"
               >
                 {labels.ACC_LBL_EDIT}
@@ -368,7 +380,7 @@ class CardTile extends React.Component<Props> {
                 underline
                 to="/#"
                 anchorVariation="primary"
-                dataLocator="payment-delete"
+                dataLocator={`payment-${dataLocatorPrefix}deletelink`}
                 onClick={e => this.onDeletegiftardClick(e)}
               >
                 {labels.ACC_LBL_DELETE}
@@ -380,15 +392,8 @@ class CardTile extends React.Component<Props> {
     );
   }
 }
-
 const validateMethod = createValidateMethod(getStandardConfig(['recaptchaToken']));
-// export default withStyles(CardTile, styles);
-
 export default withStyles(
-  reduxForm({
-    form: 'CardTile',
-    enableReinitialize: true,
-    ...validateMethod,
-  })(CardTile),
+  reduxForm({ form: 'CardTile', enableReinitialize: true, ...validateMethod })(CardTile),
   styles
 );

@@ -49,6 +49,11 @@ exports[`CardTile should render correctly with amex card 1`] = `
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
+  word-break: break-word;
+  min-height: ",
+          [Function],
+          ";
   padding: ",
           [Function],
           "
@@ -67,7 +72,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
     align-items: flex-end;
   }
   & form {
-    width: 90%;
+    width: 88%;
   }
   & .input-fields-wrapper {
     height: auto;
@@ -138,11 +143,6 @@ exports[`CardTile should render correctly with amex card 1`] = `
     display: flex;
     margin-top: 35px;
     float: right;
-  }
-  .cardTile__anchor {
-    margin-right: ",
-          [Function],
-          ";
   }
 ",
           ";
@@ -219,12 +219,14 @@ exports[`CardTile should render correctly with amex card 1`] = `
       "DELETE_MODAL_MOUNT_STATE": "@@payment-DELETE_MODAL_MOUNT_STATE",
       "GET_CARD_LIST": "@@payment-GET_CARD_DETAILS",
       "GET_CARD_LIST_ERR": "@@payment-GET_CARD_DETAILS_ERROR",
+      "GET_CARD_LIST_TTL": 21600000,
       "SET_CARD_LIST": "@@payment-SET_CARD_DETAILS",
       "SET_CHECK_BALANCE": "@@payment-SET_CHECK_BALANCE",
       "SET_DEFAULT_PAYMENT": "@@payment-SET_DEFAULT_PAYMENT",
       "SET_DEFAULT_PAYMENT_ERROR": "@@payment-SET_DEFAULT_PAYMENT_ERROR",
       "SET_DEFAULT_PAYMENT_SUCCESS": "@@payment-SET_DEFAULT_PAYMENT_SUCCESS",
       "SET_LOADER": "@@payment-SET_LOADER",
+      "SHOW_LOADER": "@@payment-SHOW_LOADER",
       "UPDATE_CARD_LIST_ON_DELETE": "@@payment-UPDATE_CARD_LIST_ON_DELETE",
       "UPDATE_CARD_LIST_ON_DELETE_ERR": "@@payment-UPDATE_CARD_LIST_ON_DELETE_ERR",
     }
@@ -292,6 +294,11 @@ exports[`CardTile should render correctly with discover card 1`] = `
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
+  word-break: break-word;
+  min-height: ",
+          [Function],
+          ";
   padding: ",
           [Function],
           "
@@ -310,7 +317,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
     align-items: flex-end;
   }
   & form {
-    width: 90%;
+    width: 88%;
   }
   & .input-fields-wrapper {
     height: auto;
@@ -381,11 +388,6 @@ exports[`CardTile should render correctly with discover card 1`] = `
     display: flex;
     margin-top: 35px;
     float: right;
-  }
-  .cardTile__anchor {
-    margin-right: ",
-          [Function],
-          ";
   }
 ",
           ";
@@ -462,12 +464,14 @@ exports[`CardTile should render correctly with discover card 1`] = `
       "DELETE_MODAL_MOUNT_STATE": "@@payment-DELETE_MODAL_MOUNT_STATE",
       "GET_CARD_LIST": "@@payment-GET_CARD_DETAILS",
       "GET_CARD_LIST_ERR": "@@payment-GET_CARD_DETAILS_ERROR",
+      "GET_CARD_LIST_TTL": 21600000,
       "SET_CARD_LIST": "@@payment-SET_CARD_DETAILS",
       "SET_CHECK_BALANCE": "@@payment-SET_CHECK_BALANCE",
       "SET_DEFAULT_PAYMENT": "@@payment-SET_DEFAULT_PAYMENT",
       "SET_DEFAULT_PAYMENT_ERROR": "@@payment-SET_DEFAULT_PAYMENT_ERROR",
       "SET_DEFAULT_PAYMENT_SUCCESS": "@@payment-SET_DEFAULT_PAYMENT_SUCCESS",
       "SET_LOADER": "@@payment-SET_LOADER",
+      "SHOW_LOADER": "@@payment-SHOW_LOADER",
       "UPDATE_CARD_LIST_ON_DELETE": "@@payment-UPDATE_CARD_LIST_ON_DELETE",
       "UPDATE_CARD_LIST_ON_DELETE_ERR": "@@payment-UPDATE_CARD_LIST_ON_DELETE_ERR",
     }
@@ -535,6 +539,11 @@ exports[`CardTile should render correctly with gift card 1`] = `
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
+  word-break: break-word;
+  min-height: ",
+          [Function],
+          ";
   padding: ",
           [Function],
           "
@@ -553,7 +562,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
     align-items: flex-end;
   }
   & form {
-    width: 90%;
+    width: 88%;
   }
   & .input-fields-wrapper {
     height: auto;
@@ -624,11 +633,6 @@ exports[`CardTile should render correctly with gift card 1`] = `
     display: flex;
     margin-top: 35px;
     float: right;
-  }
-  .cardTile__anchor {
-    margin-right: ",
-          [Function],
-          ";
   }
 ",
           ";
@@ -705,12 +709,14 @@ exports[`CardTile should render correctly with gift card 1`] = `
       "DELETE_MODAL_MOUNT_STATE": "@@payment-DELETE_MODAL_MOUNT_STATE",
       "GET_CARD_LIST": "@@payment-GET_CARD_DETAILS",
       "GET_CARD_LIST_ERR": "@@payment-GET_CARD_DETAILS_ERROR",
+      "GET_CARD_LIST_TTL": 21600000,
       "SET_CARD_LIST": "@@payment-SET_CARD_DETAILS",
       "SET_CHECK_BALANCE": "@@payment-SET_CHECK_BALANCE",
       "SET_DEFAULT_PAYMENT": "@@payment-SET_DEFAULT_PAYMENT",
       "SET_DEFAULT_PAYMENT_ERROR": "@@payment-SET_DEFAULT_PAYMENT_ERROR",
       "SET_DEFAULT_PAYMENT_SUCCESS": "@@payment-SET_DEFAULT_PAYMENT_SUCCESS",
       "SET_LOADER": "@@payment-SET_LOADER",
+      "SHOW_LOADER": "@@payment-SHOW_LOADER",
       "UPDATE_CARD_LIST_ON_DELETE": "@@payment-UPDATE_CARD_LIST_ON_DELETE",
       "UPDATE_CARD_LIST_ON_DELETE_ERR": "@@payment-UPDATE_CARD_LIST_ON_DELETE_ERR",
     }
@@ -778,6 +784,11 @@ exports[`CardTile should render correctly with master card 1`] = `
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
+  word-break: break-word;
+  min-height: ",
+          [Function],
+          ";
   padding: ",
           [Function],
           "
@@ -796,7 +807,7 @@ exports[`CardTile should render correctly with master card 1`] = `
     align-items: flex-end;
   }
   & form {
-    width: 90%;
+    width: 88%;
   }
   & .input-fields-wrapper {
     height: auto;
@@ -867,11 +878,6 @@ exports[`CardTile should render correctly with master card 1`] = `
     display: flex;
     margin-top: 35px;
     float: right;
-  }
-  .cardTile__anchor {
-    margin-right: ",
-          [Function],
-          ";
   }
 ",
           ";
@@ -948,12 +954,14 @@ exports[`CardTile should render correctly with master card 1`] = `
       "DELETE_MODAL_MOUNT_STATE": "@@payment-DELETE_MODAL_MOUNT_STATE",
       "GET_CARD_LIST": "@@payment-GET_CARD_DETAILS",
       "GET_CARD_LIST_ERR": "@@payment-GET_CARD_DETAILS_ERROR",
+      "GET_CARD_LIST_TTL": 21600000,
       "SET_CARD_LIST": "@@payment-SET_CARD_DETAILS",
       "SET_CHECK_BALANCE": "@@payment-SET_CHECK_BALANCE",
       "SET_DEFAULT_PAYMENT": "@@payment-SET_DEFAULT_PAYMENT",
       "SET_DEFAULT_PAYMENT_ERROR": "@@payment-SET_DEFAULT_PAYMENT_ERROR",
       "SET_DEFAULT_PAYMENT_SUCCESS": "@@payment-SET_DEFAULT_PAYMENT_SUCCESS",
       "SET_LOADER": "@@payment-SET_LOADER",
+      "SHOW_LOADER": "@@payment-SHOW_LOADER",
       "UPDATE_CARD_LIST_ON_DELETE": "@@payment-UPDATE_CARD_LIST_ON_DELETE",
       "UPDATE_CARD_LIST_ON_DELETE_ERR": "@@payment-UPDATE_CARD_LIST_ON_DELETE_ERR",
     }
@@ -1021,6 +1029,11 @@ exports[`CardTile should render correctly with plcc card 1`] = `
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
+  word-break: break-word;
+  min-height: ",
+          [Function],
+          ";
   padding: ",
           [Function],
           "
@@ -1039,7 +1052,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
     align-items: flex-end;
   }
   & form {
-    width: 90%;
+    width: 88%;
   }
   & .input-fields-wrapper {
     height: auto;
@@ -1110,11 +1123,6 @@ exports[`CardTile should render correctly with plcc card 1`] = `
     display: flex;
     margin-top: 35px;
     float: right;
-  }
-  .cardTile__anchor {
-    margin-right: ",
-          [Function],
-          ";
   }
 ",
           ";
@@ -1191,12 +1199,14 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       "DELETE_MODAL_MOUNT_STATE": "@@payment-DELETE_MODAL_MOUNT_STATE",
       "GET_CARD_LIST": "@@payment-GET_CARD_DETAILS",
       "GET_CARD_LIST_ERR": "@@payment-GET_CARD_DETAILS_ERROR",
+      "GET_CARD_LIST_TTL": 21600000,
       "SET_CARD_LIST": "@@payment-SET_CARD_DETAILS",
       "SET_CHECK_BALANCE": "@@payment-SET_CHECK_BALANCE",
       "SET_DEFAULT_PAYMENT": "@@payment-SET_DEFAULT_PAYMENT",
       "SET_DEFAULT_PAYMENT_ERROR": "@@payment-SET_DEFAULT_PAYMENT_ERROR",
       "SET_DEFAULT_PAYMENT_SUCCESS": "@@payment-SET_DEFAULT_PAYMENT_SUCCESS",
       "SET_LOADER": "@@payment-SET_LOADER",
+      "SHOW_LOADER": "@@payment-SHOW_LOADER",
       "UPDATE_CARD_LIST_ON_DELETE": "@@payment-UPDATE_CARD_LIST_ON_DELETE",
       "UPDATE_CARD_LIST_ON_DELETE_ERR": "@@payment-UPDATE_CARD_LIST_ON_DELETE_ERR",
     }
@@ -1267,6 +1277,11 @@ exports[`CardTile should render correctly with venmocard 1`] = `
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
+  word-break: break-word;
+  min-height: ",
+          [Function],
+          ";
   padding: ",
           [Function],
           "
@@ -1285,7 +1300,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
     align-items: flex-end;
   }
   & form {
-    width: 90%;
+    width: 88%;
   }
   & .input-fields-wrapper {
     height: auto;
@@ -1356,11 +1371,6 @@ exports[`CardTile should render correctly with venmocard 1`] = `
     display: flex;
     margin-top: 35px;
     float: right;
-  }
-  .cardTile__anchor {
-    margin-right: ",
-          [Function],
-          ";
   }
 ",
           ";
@@ -1437,12 +1447,14 @@ exports[`CardTile should render correctly with venmocard 1`] = `
       "DELETE_MODAL_MOUNT_STATE": "@@payment-DELETE_MODAL_MOUNT_STATE",
       "GET_CARD_LIST": "@@payment-GET_CARD_DETAILS",
       "GET_CARD_LIST_ERR": "@@payment-GET_CARD_DETAILS_ERROR",
+      "GET_CARD_LIST_TTL": 21600000,
       "SET_CARD_LIST": "@@payment-SET_CARD_DETAILS",
       "SET_CHECK_BALANCE": "@@payment-SET_CHECK_BALANCE",
       "SET_DEFAULT_PAYMENT": "@@payment-SET_DEFAULT_PAYMENT",
       "SET_DEFAULT_PAYMENT_ERROR": "@@payment-SET_DEFAULT_PAYMENT_ERROR",
       "SET_DEFAULT_PAYMENT_SUCCESS": "@@payment-SET_DEFAULT_PAYMENT_SUCCESS",
       "SET_LOADER": "@@payment-SET_LOADER",
+      "SHOW_LOADER": "@@payment-SHOW_LOADER",
       "UPDATE_CARD_LIST_ON_DELETE": "@@payment-UPDATE_CARD_LIST_ON_DELETE",
       "UPDATE_CARD_LIST_ON_DELETE_ERR": "@@payment-UPDATE_CARD_LIST_ON_DELETE_ERR",
     }
@@ -1510,6 +1522,11 @@ exports[`CardTile should render correctly with visa card 1`] = `
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
+  word-break: break-word;
+  min-height: ",
+          [Function],
+          ";
   padding: ",
           [Function],
           "
@@ -1528,7 +1545,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
     align-items: flex-end;
   }
   & form {
-    width: 90%;
+    width: 88%;
   }
   & .input-fields-wrapper {
     height: auto;
@@ -1599,11 +1616,6 @@ exports[`CardTile should render correctly with visa card 1`] = `
     display: flex;
     margin-top: 35px;
     float: right;
-  }
-  .cardTile__anchor {
-    margin-right: ",
-          [Function],
-          ";
   }
 ",
           ";
@@ -1680,12 +1692,14 @@ exports[`CardTile should render correctly with visa card 1`] = `
       "DELETE_MODAL_MOUNT_STATE": "@@payment-DELETE_MODAL_MOUNT_STATE",
       "GET_CARD_LIST": "@@payment-GET_CARD_DETAILS",
       "GET_CARD_LIST_ERR": "@@payment-GET_CARD_DETAILS_ERROR",
+      "GET_CARD_LIST_TTL": 21600000,
       "SET_CARD_LIST": "@@payment-SET_CARD_DETAILS",
       "SET_CHECK_BALANCE": "@@payment-SET_CHECK_BALANCE",
       "SET_DEFAULT_PAYMENT": "@@payment-SET_DEFAULT_PAYMENT",
       "SET_DEFAULT_PAYMENT_ERROR": "@@payment-SET_DEFAULT_PAYMENT_ERROR",
       "SET_DEFAULT_PAYMENT_SUCCESS": "@@payment-SET_DEFAULT_PAYMENT_SUCCESS",
       "SET_LOADER": "@@payment-SET_LOADER",
+      "SHOW_LOADER": "@@payment-SHOW_LOADER",
       "UPDATE_CARD_LIST_ON_DELETE": "@@payment-UPDATE_CARD_LIST_ON_DELETE",
       "UPDATE_CARD_LIST_ON_DELETE_ERR": "@@payment-UPDATE_CARD_LIST_ON_DELETE_ERR",
     }

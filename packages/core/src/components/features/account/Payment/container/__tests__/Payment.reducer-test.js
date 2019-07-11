@@ -25,7 +25,7 @@ describe('Payment Reducer', () => {
     });
     expect(
       PaymentReducer(initialState, {
-        type: PAYMENT_CONSTANTS.SET_LOADER,
+        type: PAYMENT_CONSTANTS.SHOW_LOADER,
       })
     ).toEqual(fromJS({ isFetching: true }));
   });
