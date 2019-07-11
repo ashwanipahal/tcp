@@ -81,6 +81,7 @@ class CardTile extends React.Component<Props> {
           fontWeight="extrabold"
           className="cardTile__heading"
           lineHeights="lh107"
+          dataLocator="payment-venmoid"
         >
           {card.properties.venmoUserId}
         </BodyCopy>
@@ -88,7 +89,7 @@ class CardTile extends React.Component<Props> {
     );
   }
 
-  getCardDetails() {
+  getCardDetails(dataLocatorPrefix) {
     const { card, labels } = this.props;
     const cardNum = `${labels.ACC_LBL_CARD_NUM}${card.accountNo.slice(-4)}`;
     const expDate = `${labels.ACC_LBL_EXP_DATE}${card.expMonth.trim()}/${card.expYear}`;
@@ -101,7 +102,7 @@ class CardTile extends React.Component<Props> {
           fontWeight="black"
           className="cardTile__number"
           lineHeights="lh107"
-          dataLocator="payment-creditcardendingtext"
+          dataLocator={`payment-${dataLocatorPrefix}endingtext`}
         >
           {cardNum}
         </BodyCopy>
@@ -113,7 +114,7 @@ class CardTile extends React.Component<Props> {
             fontWeight="semibold"
             className="cardTile__expiry"
             lineHeights="lh115"
-            dataLocator="payment-creditcardexpiretext"
+            dataLocator={`payment-${dataLocatorPrefix}expiretext`}
           >
             {expDate}
           </BodyCopy>
@@ -136,6 +137,18 @@ class CardTile extends React.Component<Props> {
     }
   }
 
+  getDataLocatorPrefix() {
+    const { card } = this.props;
+    switch (card.ccType) {
+      case 'GiftCard':
+        return 'giftcard';
+      case 'VENMO':
+        return 'venmo';
+      default:
+        return 'creditdebit';
+    }
+  }
+
   handleDefaultLinkClick(event) {
     const { card, setDefaultPaymentMethod } = this.props;
     event.preventDefault();
@@ -148,6 +161,7 @@ class CardTile extends React.Component<Props> {
     const isVenmo = card.ccType === 'VENMO';
     const cardName = this.getCardName();
     const cardIcon = getIconPath(this.cardIconMapping[card.ccBrand]);
+    const dataLocatorPrefix = this.getDataLocatorPrefix();
     return (
       <div className={className}>
         <div className="cardTile">
@@ -158,11 +172,11 @@ class CardTile extends React.Component<Props> {
               fontFamily="secondary"
               fontWeight="normal"
               className="cardTile__heading"
-              dataLocator="payment-creditcardnametitle"
+              dataLocator={`payment-${dataLocatorPrefix}nametitle`}
             >
               {cardName}
             </BodyCopy>
-            {isVenmo ? this.getVenmoUserName() : this.getCardDetails()}
+            {isVenmo ? this.getVenmoUserName() : this.getCardDetails(dataLocatorPrefix)}
             {isCreditCard ? this.getAddressDetails() : null}
           </div>
           <div className="cardTile__defaultSection">
@@ -184,7 +198,7 @@ class CardTile extends React.Component<Props> {
               underline
               to="/#"
               anchorVariation="primary"
-              dataLocator="payment-cardeditlink"
+              dataLocator={`payment-${dataLocatorPrefix}editlink`}
             >
               {labels.ACC_LBL_EDIT}
             </Anchor>
@@ -194,7 +208,7 @@ class CardTile extends React.Component<Props> {
             underline
             to="/#"
             anchorVariation="primary"
-            dataLocator="payment-carddeletelink"
+            dataLocator={`payment-${dataLocatorPrefix}deletelink`}
           >
             {labels.ACC_LBL_DELETE}
           </Anchor>

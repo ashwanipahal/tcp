@@ -7,6 +7,7 @@ const styles = css`
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+  word-break: break-word;
   min-height: ${props => (props.card && props.card.ccType === 'VENMO' ? '173px' : '')};
   padding: ${props => props.theme.spacing.ELEM_SPACING.MED}
     ${props => props.theme.spacing.ELEM_SPACING.MED};
