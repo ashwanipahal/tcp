@@ -1,6 +1,5 @@
 // @flow
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
 import { connect } from 'react-redux';
 import style from './NavBar.style';
 
@@ -37,13 +36,15 @@ const NavBar = (props: Props) => {
 
   const { routes, index: activeRouteIndex } = navigation.state;
 
+  const StyledView = style.container;
+
   return (
-    <View style={style.container}>
+    <StyledView>
       {routes.map((route, routeIndex) => {
         const isRouteActive = routeIndex === activeRouteIndex;
         let label;
-        let buttonStyle = style.tabButton;
-        let txtStyle = style.textStyle;
+        let StyledTouchableOpacity = style.tabButton;
+        let StyledText = style.textStyle;
 
         if (labels) {
           label = labels[getLabelText({ route })];
@@ -52,18 +53,17 @@ const NavBar = (props: Props) => {
         }
 
         if (isRouteActive) {
-          txtStyle = style.highlightedTextStyle;
+          StyledText = style.highlightedTextStyle;
         }
 
         if (!label) {
-          buttonStyle = style.logoStyle;
+          StyledTouchableOpacity = style.logoStyle;
         }
 
         return (
-          <TouchableOpacity
+          <StyledTouchableOpacity
             // eslint-disable-next-line react/no-array-index-key
             key={`nav-bar_${routeIndex}`}
-            style={buttonStyle}
             onPress={() => {
               onTabPress({ route });
             }}
@@ -75,11 +75,11 @@ const NavBar = (props: Props) => {
           >
             {renderIcon({ route, focused: isRouteActive })}
 
-            <Text style={txtStyle}>{label}</Text>
-          </TouchableOpacity>
+            <StyledText>{label}</StyledText>
+          </StyledTouchableOpacity>
         );
       })}
-    </View>
+    </StyledView>
   );
 };
 
