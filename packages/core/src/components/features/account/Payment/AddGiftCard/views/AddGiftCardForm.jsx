@@ -45,12 +45,13 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
               <RichText richTextHtml={labels.ACC_LBL_GIFT_CARD_MESSAGE} />
             </div>
           </Col>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 1, medium: 1, large: 1 }} />
 
           <Col
             ignoreGutter={{ small: true }}
             colSize={{ small: 4, medium: 3, large: 2 }}
             className="add-gift-card__first-button-container"
+            offsetLeft={{ small: 1, medium: 1, large: 1 }}
+            offsetRight={{ small: 1, medium: 0, large: 0 }}
           >
             <Button buttonVariation="fixed-width" type="button" data-locator="gift-card-cancelbtn">
               {labels.ACC_LBL_CANCEL_CARD}
@@ -61,6 +62,8 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
             ignoreGutter={{ small: true }}
             colSize={{ small: 4, medium: 3, large: 2 }}
             className="add-gift-card__second-button-container"
+            offsetLeft={{ small: 1, medium: 0, large: 0 }}
+            offsetRight={{ small: 1, medium: 0, large: 0 }}
           >
             <Button
               buttonVariation="fixed-width"
