@@ -3,7 +3,6 @@ import React from 'react';
 import type { Node } from 'react';
 import BodyCopy from '../../BodyCopy';
 import withStyles from '../../../hoc/withStyles';
-import errors from '../../../../../utils/errorsMsg';
 import StyledTextBox from '../Select.style';
 
 /**
@@ -26,10 +25,6 @@ type Props = {
   options: any,
   defaultValue: any,
   dataLocator?: string,
-};
-
-const getErroMsg = (value, placeholder) => {
-  return value.replace('@@LABEL@@', placeholder);
 };
 
 const SelectBox = ({
@@ -68,7 +63,7 @@ const SelectBox = ({
       </BodyCopy>
       {touched && error && (
         <BodyCopy fontSize="fs12" fontFamily="secondary" component="div" color="error">
-          {getErroMsg(errors[error], placeholder)}
+          {error}
         </BodyCopy>
       )}
     </div>

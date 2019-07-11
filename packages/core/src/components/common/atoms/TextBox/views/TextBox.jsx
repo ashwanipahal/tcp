@@ -2,7 +2,6 @@ import React from 'react';
 import type { Node } from 'react';
 import BodyCopy from '../../BodyCopy';
 import withStyles from '../../../hoc/withStyles';
-import errors from '../../../../../utils/errorsMsg';
 import StyledTextBox from '../TextBox.style';
 
 // @flow
@@ -26,9 +25,6 @@ type Props = {
   maxLength: any,
   inputRef: any,
   dataLocator?: string,
-};
-const getErroMsg = (value, placeholder) => {
-  return value.replace('@@LABEL@@', placeholder);
 };
 
 const TextBox = ({
@@ -70,7 +66,7 @@ const TextBox = ({
       </BodyCopy>
       {touched && error && (
         <BodyCopy color="error" component="div" fontSize="fs12" fontFamily="secondary">
-          {getErroMsg(errors[error], placeholder)}
+          {error}
         </BodyCopy>
       )}
     </label>

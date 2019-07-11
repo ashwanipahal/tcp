@@ -50,5 +50,9 @@ const endpoints = {
     method: 'get',
     relURI: '/api/v2/checkout/getOrderDetails',
   },
+  setDefaultPayment: {
+    method: 'post',
+    relURI: '/api/v2/account/modifyCreditCardDetails',
+  },
 };
 export default endpoints;
