@@ -14,9 +14,10 @@ export const addAddressSuccess = (payload: {}) => {
     payload,
   };
 };
-export const addAddressFail = () => {
+export const addAddressFail = (payload: {}) => {
   return {
     type: ADD_ADDRESS_CONSTANTS.ADD_USER_ADDRESS_FAIL,
+    payload,
   };
 };
 

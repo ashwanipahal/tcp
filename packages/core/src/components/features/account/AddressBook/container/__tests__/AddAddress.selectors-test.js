@@ -1,15 +1,27 @@
 import { fromJS } from 'immutable';
-import showMessageForAddAddress from '../AddAddress/AddAddress.selectors';
+import { getAddAddressResponse, getUserEmail } from '../AddAddress/AddAddress.selectors';
 
-describe('#AddAddressMessage selector', () => {
-  it('#showMessageForAddAddress should return addAddressReduer state', () => {
-    const AddressMsgState = fromJS({
-      addAddressNotification: false,
+describe('#AddAddress selector', () => {
+  it('#getAddAddressResponse should return addAddressReduer state', () => {
+    const addAddressResponse = fromJS({
+      status: false,
     });
     const state = {
-      AddAddressReducer: AddressMsgState,
+      AddAddressReducer: addAddressResponse,
     };
 
-    expect(showMessageForAddAddress(state)).toEqual(AddressMsgState.get('addAddressNotification'));
+    expect(getAddAddressResponse(state)).toEqual(addAddressResponse);
+  });
+
+  it('#getUserEmail should return user email', () => {
+    const state = {
+      LoginPageReducer: {
+        loginInfo: {
+          email1: 'user@user.com',
+        },
+      },
+    };
+
+    expect(getUserEmail(state)).toEqual('user@user.com');
   });
 });

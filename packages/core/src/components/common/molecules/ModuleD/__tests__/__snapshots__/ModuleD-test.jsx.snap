@@ -7,7 +7,7 @@ exports[`ModuleD component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-iwsKbI",
+        "componentId": "sc-kAzzGY",
         "isStatic": false,
         "rules": Array [
           "
@@ -21,13 +21,21 @@ exports[`ModuleD component renders correctly 1`] = `
 
   .moduleD_button {
     margin: 19px auto 32px;
-    padding: 12px 45px;
+    padding: 12px 0;
+    width: 225px;
+
+    @media ",
+          [Function],
+          " {
+      width: 162px;
+    }
 
     @media ",
           [Function],
           " {
       margin: 35px auto 48px;
-      padding: 16px 65px;
+      padding: 16px 0;
+      width: 210px;
     }
   }
 
@@ -49,6 +57,14 @@ exports[`ModuleD component renders correctly 1`] = `
           "px;
     }
   }
+  .moduleD_tile {
+    margin-bottom: ",
+          [Function],
+          ";
+  }
+  .moduleD_link {
+    text-align: center;
+  }
 ",
           ";
 ",
@@ -57,7 +73,7 @@ exports[`ModuleD component renders correctly 1`] = `
       "displayName": "Styled(ModuleD)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-iwsKbI",
+      "styledComponentId": "sc-kAzzGY",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

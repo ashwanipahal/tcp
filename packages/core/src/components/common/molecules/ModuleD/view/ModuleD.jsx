@@ -1,13 +1,17 @@
-// any molecule will come here
+// @flow
 import React from 'react';
-import { PropTypes } from 'prop-types';
-import Grid from '@tcp/core/src/components/common/molecules/Grid';
-import { Anchor, Button, Col, Row, Image } from '@tcp/core/src/components/common/atoms';
-import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
+import { Anchor, Button, Col, Row, Image } from '../../../atoms';
+import { Grid } from '../..';
+import { Heading } from '../../../../../../styles/themes/TCP/typotheme';
 import { getLocator } from '../../../../../utils';
 import style from '../ModuleD.style';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/errorBoundary';
+
+type Props = {
+  className: String,
+  composites: Object,
+};
 
 const colSize2Elements = {
   small: 3,
@@ -18,7 +22,7 @@ const colSize2Elements = {
 
 const colSize4Elements = {
   small: 3,
-  medium: 3,
+  medium: 2,
   large: 3,
   xlarge: 3,
 };
@@ -32,14 +36,14 @@ const colSize6Elements = {
 
 const ignoreGutter = [
   {},
-  { small: true, medium: true },
+  { small: true },
   {},
   { small: true, medium: true },
   {},
   { small: true, medium: true },
 ];
 
-const ModuleD = props => {
+const ModuleD = (props: Props) => {
   const {
     className,
     composites: { headerText, smallCompImage, singleCTAButton },
@@ -77,7 +81,12 @@ const ModuleD = props => {
           smallCompImage.map((item, index) => {
             return (
               item.link && (
-                <Col key={item.title} colSize={colSize} ignoreGutter={ignoreGutter[index]}>
+                <Col
+                  key={index.toString()}
+                  colSize={colSize}
+                  ignoreGutter={ignoreGutter[index]}
+                  className="moduleD_tile"
+                >
                   <div className="moduleD__image-container">
                     <Anchor
                       className="moduleD_textlink"
@@ -93,16 +102,18 @@ const ModuleD = props => {
                       />
                     </Anchor>
                   </div>
-                  <Anchor
-                    withCaret
-                    centered
-                    className="moduleD_textlink"
-                    to={item.link.url}
-                    target={item.link.target}
-                    data-locator={`${getLocator('moduleD_textlink')}_${index + 1}`}
-                  >
-                    {item.link.title}
-                  </Anchor>
+                  <div className="moduleD_link">
+                    <Anchor
+                      withCaret
+                      centered
+                      className="moduleD_textlink"
+                      to={item.link.url}
+                      target={item.link.target}
+                      data-locator={`${getLocator('moduleD_textlink')}_${index + 1}`}
+                    >
+                      {item.link.title}
+                    </Anchor>
+                  </div>
                 </Col>
               )
             );
@@ -124,15 +135,6 @@ const ModuleD = props => {
       )}
     </Grid>
   );
-};
-
-ModuleD.propTypes = {
-  className: PropTypes.string.isRequired,
-  composites: PropTypes.shape({
-    headerText: PropTypes.shape({}),
-    smallCompImage: PropTypes.shape({}),
-    singleCTAButton: PropTypes.shape({}),
-  }).isRequired,
 };
 
 export default errorBoundary(withStyles(ModuleD, style));
