@@ -9,14 +9,13 @@ const ignorePsuedoCodeDir = [
 module.exports = {
   verbose: true,
   rootDir: '../',
-  roots: ['<rootDir>/packages'],
+  roots: ['<rootDir>/packages/web', '<rootDir>/packages/core'],
   moduleFileExtensions: ['js', 'jsx'],
   moduleDirectories: ['node_modules', './packages/web/node_modules'],
   transform: {
     '^.+\\.(js|jsx)$': 'babel-jest',
   },
   testMatch: ['**/__tests__/*-test.+(js|jsx)', '**/*.test.+(js|jsx)'],
-
   globals: {
     'babel-jest': {
       extends: './babel.config.js',
