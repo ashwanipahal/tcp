@@ -209,13 +209,14 @@ class CardTile extends React.Component<Props> {
             {checkbalanceValueInfo.giftCardAuthorizedAmt}
           </BodyCopy>
         )}
-        {!HideCaptchaBtn && (
+        {!checkbalanceValueInfo.giftCardNbr && (
           <Button
             onClick={this.handleCheckBalanceClick}
             buttonVariation="variable-width"
             type="submit"
             data-locator="cardtile-checkbalance"
             fill="BLUE"
+            disabled={HideCaptchaBtn && !checkbalanceValueInfo.giftCardNbr}
           >
             {labels.ACC_LBL_CHECK_BALANCE}
           </Button>
