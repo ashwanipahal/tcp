@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react';
-import { Field, reduxForm, reset } from 'redux-form';
+import { Field, reduxForm, reset, touch } from 'redux-form';
 import PropTypes from 'prop-types';
 import { Button, RichText, Col, Row, Image, TextBox } from '@tcp/core/src/components/common/atoms';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { Grid, Modal } from '@tcp/core/src/components/common/molecules';
-
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import errors from '@tcp/core/src/utils/errorsMsg';
+
 import signupWrapperStyle from '../SignupModal.style';
 
 class SignupWrapper extends React.PureComponent {
@@ -15,6 +16,8 @@ class SignupWrapper extends React.PureComponent {
     this.state = {
       isOpen: false,
       disableSubmitButton: false,
+      showAsyncError: '',
+      validInput: false
     };
   }
 
@@ -24,41 +27,104 @@ class SignupWrapper extends React.PureComponent {
     this.setState({ isOpen: !isOpen });
   };
 
-  onFormSubmit = e => {
-    console.log('onFormSubmit');
-    e.preventDefault();
-    const { signup } = this.state;
-    const { submitEmailSubscription, subscriptionType, submitSmsSubscription } = this.props;
-    if (subscriptionType === 'sms') {
-      submitSmsSubscription(signup);
+  onSignUpInputBlur = e => {
+    const fieldValue = e.target.value;
+    const { subscriptionType, verifyEmailAddress } = this.props;
+    if (subscriptionType === 'email') {
+      verifyEmailAddress(e.target.value);
     } else {
-      submitEmailSubscription(signup);
+      const isPhoneNumberValid = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/i.test(fieldValue);
+      console.log(isPhoneNumberValid);
+      if (!isPhoneNumberValid) {
+        this.setState({
+          showAsyncError: true,
+          validInput: false
+        });
+      }
     }
   };
 
-  onSignupInputBlur = () => {
-    console.log('on input blur');
+  onFormSubmit = e => {
+    try {
+      console.log('onFormSubmit');
+      e.preventDefault();
+      const { signup } = this.state;
+      const {
+        submitEmailSubscription,
+        subscriptionType,
+        submitSmsSubscription,
+        isSubscriptionValid,
+        isEmailValid,
+      } = this.props;
+      if (subscriptionType === 'sms') {
+        submitSmsSubscription(signup);
+      } else {
+        submitEmailSubscription(signup);
+      }
+      if (!isSubscriptionValid) {
+        this.setState({
+          showAsyncError: true,
+          validInput: false
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   onSignUpInputChange = e => {
+    const { subscriptionType, pristine, anyTouched } = this.props;
+    const fieldValue = e.target.value;
+    console.log('pristine', pristine);
+    console.log('touched', anyTouched);
+
     console.log('on input change');
     this.setState({
-      [e.target.name]: e.target.value,
+      [e.target.name]: fieldValue,
     });
+    if (subscriptionType === 'sms') {
+      const isPhoneNumberValid = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/i.test(fieldValue);
+      console.log(isPhoneNumberValid);
+      if (!isPhoneNumberValid) {
+        this.setState({
+          validInput: false
+        });
+      } else {
+        this.setState({
+          validInput: true
+        });
+      }
+      if (!isPhoneNumberValid && anyTouched) {
+        this.setState({
+          showAsyncError: true,
+        });
+      } else {
+        this.setState({
+          showAsyncError: false,
+        });
+      }
+    }
   };
 
   closeModal = () => {
     console.log('on close modal');
     const { isOpen } = this.state;
     const { clearForm, dispatch } = this.props;
-    this.setState({ isOpen: !isOpen });
+    this.setState({ isOpen: !isOpen, showAsyncError: false });
     dispatch(reset('SignupWrapper'));
     clearForm();
   };
 
   render() {
-    const { isOpen, disableSubmitButton } = this.state;
-    const { buttonConfig, className, formViewConfig, isEmailSubscriptionValid } = this.props;
+    const { isOpen, disableSubmitButton, showAsyncError, validInput } = this.state;
+    const {
+      buttonConfig,
+      className,
+      formViewConfig,
+      isSubscriptionValid,
+      pristine,
+      anyTouched,
+    } = this.props;
     return (
       <Fragment>
         {isOpen && (
@@ -69,7 +135,7 @@ class SignupWrapper extends React.PureComponent {
             overlayClassName="TCPModal__Overlay"
             onRequestClose={this.closeModal}
           >
-            {isEmailSubscriptionValid ? (
+            {isSubscriptionValid ? (
               <Grid>
                 <Row fullBleed>
                   <Col
@@ -87,10 +153,16 @@ class SignupWrapper extends React.PureComponent {
                       fontFamily="primary"
                       fontWeight="black"
                       textAlign="center"
+                      className="thank-you__label"
                     >
                       {formViewConfig.thankYouTextLabel}
                     </BodyCopy>
-                    <BodyCopy fontSize="fs18" fontFamily="secondary" textAlign="center">
+                    <BodyCopy
+                      fontSize="fs18"
+                      fontFamily="secondary"
+                      textAlign="center"
+                      className="confirmation__label"
+                    >
                       {formViewConfig.joiningTextLabel}
                     </BodyCopy>
                     <BodyCopy
@@ -98,6 +170,7 @@ class SignupWrapper extends React.PureComponent {
                       fontFamily="secondary"
                       textAlign="center"
                       fontWeight="semibold"
+                      color="primary.main"
                     >
                       {formViewConfig.confirmationMsgReceiveLabel}
                     </BodyCopy>
@@ -156,7 +229,12 @@ class SignupWrapper extends React.PureComponent {
                         >
                           {formViewConfig.offerTypeLabel}
                         </BodyCopy>
-                        <BodyCopy fontFamily="primary" className="flash-text" textAlign="center">
+                        <BodyCopy
+                          fontFamily="primary"
+                          className="flash-text"
+                          textAlign="center"
+                          component="div"
+                        >
                           <BodyCopy fontSize="fs48" component="span" className="get-text">
                             {formViewConfig.getTextLabel}
                           </BodyCopy>
@@ -203,8 +281,14 @@ class SignupWrapper extends React.PureComponent {
                           maxLength={50}
                           dataLocator="signup_textbox"
                           onChange={this.onSignUpInputChange}
-                          onBlur={this.onSignupInputBlur}
+                          onBlur={this.onSignUpInputBlur}
+                          className={showAsyncError ? 'async-error' : ''}
                         />
+                        {showAsyncError && (
+                          <BodyCopy fontSize="fs12" fontFamily="secondary" color="secondary.dark">
+                            {errors.VALID_PHONE}
+                          </BodyCopy>
+                        )}
                         <BodyCopy fontSize="fs12" fontFamily="secondary">
                           {formViewConfig.termsTextLabel}
                         </BodyCopy>
@@ -215,7 +299,8 @@ class SignupWrapper extends React.PureComponent {
                         className="button-wrapper__large"
                       >
                         <Button
-                          disabled={disableSubmitButton}
+                          disabled={showAsyncError || !validInput || pristine}
+                          // disabled={showAsyncError || pristine}
                           fullWidth
                           buttonVariation="fixed-width"
                           fill="BLUE"
@@ -256,24 +341,24 @@ class SignupWrapper extends React.PureComponent {
 
 SignupWrapper.propTypes = {
   buttonConfig: PropTypes.shape({}),
-  // verifyEmailAddress: PropTypes.func,
+  verifyEmailAddress: PropTypes.func,
   submitEmailSubscription: PropTypes.func,
   className: PropTypes.string,
   formViewConfig: PropTypes.shape({}).isRequired,
   confirmationViewConfig: PropTypes.shape({}).isRequired,
   clearForm: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func.isRequired,
-  isEmailSubscriptionValid: PropTypes.bool,
+  isSubscriptionValid: PropTypes.bool,
   submitSmsSubscription: PropTypes.func,
   subscriptionType: PropTypes.string.isRequired,
 };
 
 SignupWrapper.defaultProps = {
   buttonConfig: {},
-  // verifyEmailAddress: () => {},
+  verifyEmailAddress: () => {},
   submitEmailSubscription: () => {},
   className: '',
-  isEmailSubscriptionValid: false,
+  isSubscriptionValid: false,
   submitSmsSubscription: () => {},
 };
 

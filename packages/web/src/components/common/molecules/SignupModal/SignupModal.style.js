@@ -8,7 +8,11 @@ const EmailSignupModalStyle = css`
   .sign-up__label {
     padding: 109px 0 4px;
   }
-  .offer-type__label {
+  .thank-you__label {
+    padding: 219px 0 4px;
+  }
+  .offer-type__label,
+  .confirmation__label {
     ::after {
       content: '';
       height: 2px;
@@ -17,6 +21,9 @@ const EmailSignupModalStyle = css`
       margin: 19px auto 60px;
       display: block;
     }
+  }
+  .confirmation__label {
+    margin: 19px auto 60px;
   }
   .flash-text {
     span,
@@ -50,6 +57,9 @@ const EmailSignupModalStyle = css`
   .join-button {
     margin: 21px auto;
     width: 66.66%;
+  }
+  .async-error input {
+    border-bottom: 1px solid #c8102e;
   }
   @media ${props => props.theme.mediaQuery.medium} {
     .TCPModal__InnerContent {

@@ -30,6 +30,9 @@ function* bootstrap({ pageInfo = { name: 'homepage' } }) {
       extraMessageLabel: 'Don’t forget to open it and redeem your offer!',
       footerTextLabel:
         'You may withdraw your consent at any time. Contact Us. The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com.',
+      imageSrc:
+        'https://res.cloudinary.com/tcp-dam-test/image/upload/v1562398149/Test/sign-up-thank-you_1_nhhhwh.png',
+      imageAlt: 'Email image alt test',
     };
     result.labels.global.subscribeSms = {
       signUpForLabel: 'Sign Up For',
@@ -50,6 +53,9 @@ function* bootstrap({ pageInfo = { name: 'homepage' } }) {
       confirmationMsgReceiveLabel: 'A Text Is On It’s Way',
       extraMessageLabel: 'Don’t forget to open it and redeem your offer!',
       footerTextLabel: '',
+      imageSrc:
+        'https://res.cloudinary.com/tcp-dam-test/image/upload/w_378/v1562359106/Test/signup-offer-image_1_qib7ug.png',
+      imageAlt: 'SMS image alt test',
     };
     yield put(loadLabelsData(result.labels));
     yield put(loadHeaderData(result.header.submodules));

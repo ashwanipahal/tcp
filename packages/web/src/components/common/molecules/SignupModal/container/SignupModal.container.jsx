@@ -1,7 +1,7 @@
-// @flow
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+
 import {
   submitEmailSignup,
   validateEmail,
@@ -10,27 +10,23 @@ import {
 } from './SignupModal.actions';
 import SignupModalView from '../views/SignupModal.view';
 
-type Props = {
-  verifyEmailAddress: any,
-};
-
 export const EmailSignupWrapperContainer = ({
   verifyEmailAddress,
   buttonConfig,
   submitEmailSubscription,
   formViewConfig,
-  isEmailSubscriptionValid,
+  isSubscriptionValid,
   clearFormStoreInfo,
   subscriptionType,
   submitSmsSubscription,
-}: Props) => {
+}) => {
   return (
     <SignupModalView
       buttonConfig={buttonConfig}
       formViewConfig={formViewConfig}
       verifyEmailAddress={verifyEmailAddress}
       submitEmailSubscription={submitEmailSubscription}
-      isEmailSubscriptionValid={isEmailSubscriptionValid}
+      isSubscriptionValid={isSubscriptionValid}
       clearForm={clearFormStoreInfo}
       submitSmsSubscription={submitSmsSubscription}
       subscriptionType={subscriptionType}
@@ -43,7 +39,7 @@ EmailSignupWrapperContainer.propTypes = {
   submitEmailSubscription: PropTypes.func,
   buttonConfig: PropTypes.shape({}),
   formViewConfig: PropTypes.shape({}),
-  isEmailSubscriptionValid: PropTypes.bool,
+  isSubscriptionValid: PropTypes.bool,
   clearFormStoreInfo: PropTypes.func,
   subscriptionType: PropTypes.string.isRequired,
   submitSmsSubscription: PropTypes.func,
@@ -54,12 +50,12 @@ EmailSignupWrapperContainer.defaultProps = {
   formViewConfig: {},
   verifyEmailAddress: () => {},
   submitEmailSubscription: () => {},
-  isEmailSubscriptionValid: false,
+  isSubscriptionValid: false,
   clearFormStoreInfo: () => {},
   submitSmsSubscription: () => {},
 };
 
-export const mapDispatchToProps = (dispatch: ({}) => void) => {
+export const mapDispatchToProps = dispatch => {
   return {
     verifyEmailAddress: payload => {
       console.log('verifyEmailAddress');
@@ -85,18 +81,12 @@ const mapStateToProps = (state, props) => {
   let subscriptionType;
   if (props.buttonConfig.url === '/EMAIL_SIGNUP_MODAL') {
     formViewConfig = {
-      imageSrc:
-        'https://res.cloudinary.com/tcp-dam-test/image/upload/v1562398149/Test/sign-up-thank-you_1_nhhhwh.png',
-      imageAlt: 'Email Image Alt text',
       ...state.labels.global.subscribeEmail,
     };
     subscriptionType = 'email';
   }
   if (props.buttonConfig.url === '/SMS_SIGNUP_MODAL') {
     formViewConfig = {
-      imageSrc:
-        'https://res.cloudinary.com/tcp-dam-test/image/upload/w_378/v1562359106/Test/signup-offer-image_1_qib7ug.png',
-      imageAlt: 'SMS Image Alt text',
       ...state.labels.global.subscribeSms,
     };
     subscriptionType = 'sms';
@@ -104,7 +94,8 @@ const mapStateToProps = (state, props) => {
   return {
     subscriptionType,
     formViewConfig,
-    isEmailSubscriptionValid: (state.SignUp && state.SignUp.signupSuccess) || false,
+    isSubscriptionValid: state.SignUp && state.SignUp.signupSuccess,
+    isEmailValid: state.SignUp && state.SignUp.validEmail,
   };
 };
 
