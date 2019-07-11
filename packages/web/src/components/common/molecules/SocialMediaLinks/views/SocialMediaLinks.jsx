@@ -3,15 +3,26 @@ import PropTypes from 'prop-types';
 import Image from '@tcp/core/src/components/common/atoms/Image';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { getIconPath, getLocator } from '@tcp/core/src/utils';
 import style from '../SocialMediaLinks.style';
 
 const SocialMediaLinks = ({ className, connectWithUsLabel, links }) => (
   <React.Fragment>
     <div className={className}>
-      <span className="social-media-label" data-locator={getLocator('label-connect-with-us')}>
+      <BodyCopy
+        data-locator={getLocator('label-connect-with-us')}
+        component="span"
+        fontFamily={['secondary', 'primary']}
+        fontSize={['fs12', 'fs10', 'fs12']}
+        fontWeight={['normal', 'black']}
+        lineHeight="normal"
+        letterSpacing="normal"
+        textAlign="center"
+        color="text.secondary"
+      >
         {connectWithUsLabel}
-      </span>
+      </BodyCopy>
       <div className="social-media-pallete">
         {links.map((link, index) => {
           return (

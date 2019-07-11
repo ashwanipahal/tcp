@@ -5,9 +5,34 @@ exports[`Legal Links component renders correctly 1`] = `
   <div
     className="test-socialMediaLinks"
   >
-    <span
-      className="social-media-label"
+    <Styled(BodyCopy)
+      className={null}
+      color="text.secondary"
+      component="span"
       data-locator="global_connectwithustext"
+      dataLocator=""
+      fontFamily={
+        Array [
+          "secondary",
+          "primary",
+        ]
+      }
+      fontSize={
+        Array [
+          "fs12",
+          "fs10",
+          "fs12",
+        ]
+      }
+      fontWeight={
+        Array [
+          "normal",
+          "black",
+        ]
+      }
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
     />
     <div
       className="social-media-pallete"
