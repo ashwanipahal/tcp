@@ -8,6 +8,7 @@ exports[`GiftCardList Component should render correctly 1`] = `
     className="cardList__heading"
     color="text.primary"
     component={null}
+    dataLocator=""
     textAlign="left"
     variant="h6"
   />
@@ -52,6 +53,7 @@ exports[`GiftCardList Component should render correctly if list is present 1`] =
     className="cardList__heading"
     color="text.primary"
     component={null}
+    dataLocator=""
     textAlign="left"
     variant="h6"
   />

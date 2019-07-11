@@ -5,9 +5,10 @@ exports[`CreditCardList Component should render correctly 1`] = `
   className="abc"
 >
   <Styled(Heading)
-    className="creditCardList__heading"
+    className="cardList__heading"
     color="text.primary"
     component={null}
+    dataLocator="payment-creditcardtile"
     textAlign="left"
     variant="h6"
   />
@@ -45,9 +46,10 @@ exports[`CreditCardList Component should render correctly if list is present 1`]
   className="abc"
 >
   <Styled(Heading)
-    className="creditCardList__heading"
+    className="cardList__heading"
     color="text.primary"
     component={null}
+    dataLocator="payment-creditcardtile"
     textAlign="left"
     variant="h6"
   />

@@ -21,6 +21,13 @@ const updateCardList = (state, action) => {
 
 const returnPaymentReducer = (state = initialState, action) => {
   switch (action.type) {
+    case PAYMENT_CONSTANTS.SET_LOADER:
+      return state.set('isFetching', true);
+    case PAYMENT_CONSTANTS.SET_CARD_LIST:
+      return state
+        .set(DEFAULT_REDUCER_KEY, setCacheTTL())
+        .set('cardList', List(action.payload))
+        .set('isFetching', false);
     case PAYMENT_CONSTANTS.DELETE_MODAL_MOUNT_STATE:
       return state
         .set('deleteModalMountedState', action.payload.state)

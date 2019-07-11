@@ -56,3 +56,7 @@ export const setDefaultPaymentSuccess = () => ({
 export const setDefaultPaymentError = () => ({
   type: PAYMENT_CONSTANTS.SET_DEFAULT_PAYMENT_ERROR,
 });
+
+export const setLoader = () => ({
+  type: PAYMENT_CONSTANTS.SET_LOADER,
+});

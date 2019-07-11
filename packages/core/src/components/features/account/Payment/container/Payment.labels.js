@@ -20,7 +20,8 @@ const labels = {
   ACC_LBL_MODAL_GC_CARDEND: 'Card ending in ',
   ACC_LBL_MODAL_GC_EXPIRE: ' Expire on ',
   ACC_LBL_OFFERS_MESSAGE:
-    '<b>SAVE 30% TODAY WHEN YOU OPEN AND USE A <span> MY PLACE REWARDS CREDIT CARD! </span></b> <a href="#">DETAILS</a>',
+    '<b>SAVE 30% TODAY WHEN YOU OPEN AND USE A <span class="offers__msg"> MY PLACE REWARDS CREDIT CARD! </span></b>',
+  ACC_LBL_OFFERS_DETAILS: '<a class="offers__link" href="#">DETAILS</a>',
   ACC_LBL_DEFAULT_CARD_NAME: 'Credit Card',
   ACC_LBL_CARD_NUM: 'Card ending in ',
   ACC_LBL_EXP_DATE: 'Expires on ',
@@ -32,6 +33,10 @@ const labels = {
   ACC_LBL_MAKE_DEFAULT: 'Make Default',
   ACC_LBL_DEFAULT_PAYMENT: 'DEFAULT PAYMENT',
   ACC_LBL_PLCC_CARD: 'My Place Rewards Credit Card',
+  ACC_LBL_VENMO_HEADING: 'VENMO',
+  ACC_LBL_LOADING: 'lOADING...',
+  ACC_LBL_CHECK_BALANCE: ' Check Balance',
+  ACC_LBL_REMAINING_BALANCE: 'Remaining balance',
 };
 
 export default labels;

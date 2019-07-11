@@ -17,7 +17,7 @@ type Props = {
 const CreditCardList = ({ labels, creditCardList, className }: Props) => {
   return (
     <div className={className}>
-      <Heading variant="h6" className="creditCardList__heading">
+      <Heading variant="h6" className="cardList__heading" dataLocator="payment-creditcardtile">
         {labels.ACC_LBL_CC_HEADING}
       </Heading>
       {creditCardList.size === 0 && (

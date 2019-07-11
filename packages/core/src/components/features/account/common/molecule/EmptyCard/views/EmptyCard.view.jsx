@@ -50,7 +50,7 @@ const EmptyCard = ({ labels, className, icon, alt, prefix }: Props) => {
             fontSize="fs14"
             fontFamily="secondary"
             fontWeight="semibold"
-            lineHeight="ls107"
+            lineHeight="lh107"
             className="emptyCard__heading"
           >
             {heading}

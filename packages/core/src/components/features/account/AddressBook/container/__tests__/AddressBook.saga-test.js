@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import { getAddressList, AddressBookSaga } from '../AddressBook.saga';
-import { setAddressList } from '../AddressBook.actions';
 import { validateReduxCache } from '../../../../../../utils/cache.util';
+import { setAddressList } from '../AddressBook.actions';
 import ADDRESS_BOOK_CONSTANTS from '../../AddressBook.constants';
 
 describe('AddressList saga', () => {
@@ -9,6 +9,7 @@ describe('AddressList saga', () => {
     let addressListGen;
     beforeEach(() => {
       addressListGen = getAddressList();
+      addressListGen.next();
       addressListGen.next();
     });
 

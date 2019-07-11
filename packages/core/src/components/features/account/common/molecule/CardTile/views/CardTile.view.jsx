@@ -12,7 +12,8 @@ import PAYMENT_CONSTANTS from '../../../../Payment/Payment.constants';
 import Recaptcha from '../../../../../../common/molecules/recaptcha/recaptcha';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import Button from '../../../../../../common/atoms/Button';
-import { required } from '../../../../../../../utils/FormValidation';
+import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
+import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 
 // @flow
 type Props = {
@@ -180,7 +181,7 @@ class CardTile extends React.Component<Props> {
   };
 
   remainBalance() {
-    const { card, checkbalanceValueInfo } = this.props;
+    const { card, checkbalanceValueInfo, labels } = this.props;
     const { HideCaptchaBtn } = this.state;
     return (
       <React.Fragment>
@@ -193,7 +194,7 @@ class CardTile extends React.Component<Props> {
             className=""
             lineHeights="lh115"
           >
-            Remaining balance
+            {labels.ACC_LBL_REMAINING_BALANCE}
           </BodyCopy>
         )}
         {checkbalanceValueInfo.giftCardNbr === card.accountNo && (
@@ -216,7 +217,7 @@ class CardTile extends React.Component<Props> {
             data-locator="cardtile-checkbalance"
             fill="BLUE"
           >
-            Check Balance
+            {labels.ACC_LBL_CHECK_BALANCE}
           </Button>
         )}
       </React.Fragment>
@@ -311,7 +312,7 @@ class CardTile extends React.Component<Props> {
           </div>
         </div>
         <div className="giftcardTile__wrapper">
-          <form onSubmit={this.handleSubmit} autoComplete="off">
+          <form onSubmit={this.handleSubmit} autoComplete="off" noValidate>
             <div className="giftcardTile__row">
               {!HideCaptchaBtn && (
                 <Recaptcha
@@ -327,8 +328,8 @@ class CardTile extends React.Component<Props> {
                 title=""
                 type="hidden"
                 placeholder="recaptcha value"
-                validate={[required]}
                 name="recaptchaToken"
+                id="recaptchaToken"
               />
               {HideCaptchaBtn && !checkbalanceValueInfo.giftCardNbr && (
                 <BodyCopy
@@ -339,7 +340,7 @@ class CardTile extends React.Component<Props> {
                   className=""
                   lineHeights="lh115"
                 >
-                  lOADING...
+                  {labels.ACC_LBL_LOADING}
                 </BodyCopy>
               )}
 
@@ -369,7 +370,7 @@ class CardTile extends React.Component<Props> {
                 dataLocator="payment-delete"
                 onClick={e => this.onDeletegiftardClick(e)}
               >
-                delete
+                {labels.ACC_LBL_DELETE}
               </Anchor>
             }
           </div>
@@ -379,11 +380,14 @@ class CardTile extends React.Component<Props> {
   }
 }
 
+const validateMethod = createValidateMethod(getStandardConfig(['recaptchaToken']));
 // export default withStyles(CardTile, styles);
 
 export default withStyles(
   reduxForm({
     form: 'CardTile',
+    enableReinitialize: true,
+    ...validateMethod,
   })(CardTile),
   styles
 );
