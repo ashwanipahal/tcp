@@ -5,7 +5,7 @@ const DeleteAddressModalStyle = css`
     margin: 0 80px;
   }
   .deleteAddressModal_btnWrapper {
-    width: 210px;
+    width: 170px;
     margin: 0 auto;
     button.deleteAddressModal_btn {
       display: block;

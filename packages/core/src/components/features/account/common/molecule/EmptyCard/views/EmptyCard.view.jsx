@@ -30,7 +30,12 @@ const EmptyCard = ({ labels, className, icon, alt, prefix }: Props) => {
           }}
           className="emptyCard__imgWrapper"
         >
-          <img className="emptyCard__img" alt={alt} src={cardIcon} />
+          <img
+            className="emptyCard__img"
+            alt={alt}
+            src={cardIcon}
+            data-locator={`payment-${prefix}-Icon`}
+          />
         </Col>
         <Col
           colSize={{
@@ -48,9 +53,9 @@ const EmptyCard = ({ labels, className, icon, alt, prefix }: Props) => {
           <BodyCopy
             tag="p"
             fontSize="fs14"
-            font="secondary"
+            fontFamily="secondary"
             fontWeight="semibold"
-            lineHeight="ls107"
+            lineHeight="lh107"
             className="emptyCard__heading"
           >
             {heading}
@@ -58,7 +63,7 @@ const EmptyCard = ({ labels, className, icon, alt, prefix }: Props) => {
           <BodyCopy
             tag="p"
             fontSize="fs14"
-            font="secondary"
+            fontFamily="secondary"
             lineHeight="lh115"
             className="emptyCard__description--desktop"
           >
@@ -81,7 +86,7 @@ const EmptyCard = ({ labels, className, icon, alt, prefix }: Props) => {
           <BodyCopy
             tag="p"
             fontSize="fs14"
-            font="secondary"
+            fontFamily="secondary"
             lineHeight="lh115"
             className="emptyCard__description--mobile"
           >

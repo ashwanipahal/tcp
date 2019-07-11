@@ -8,6 +8,7 @@ import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
 import AddAddressReducer from '@tcp/core/src/components/features/account/AddressBook/container/AddAddress/AddAddress.reducer';
 import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
+import AddressVerificationReducer from '@tcp/core/src/components/features/account/AddressVerification/container/AddressVerification.reducer';
 import {
   HEADER_REDUCER_KEY,
   FOOTER_REDUCER_KEY,
@@ -17,6 +18,7 @@ import {
   LOGINPAGE_REDUCER_KEY,
   PRODUCTLISTINGPAGE_REDUCER_KEY,
   ADDRESSBOOK_REDUCER_KEY,
+  ADDRESS_VERIFICATION_REDUCER_KEY,
   PAYMENT_REDUCER_KEY,
   ADDADDRESS_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
@@ -39,6 +41,7 @@ export default combineReducers({
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
   [LOGINPAGE_REDUCER_KEY]: LoginPageReducer,
   [ADDRESSBOOK_REDUCER_KEY]: AddressBookReducer,
+  [ADDRESS_VERIFICATION_REDUCER_KEY]: AddressVerificationReducer,
   [PAYMENT_REDUCER_KEY]: PaymentReducer,
   [ADDADDRESS_REDUCER_KEY]: AddAddressReducer,
   form: reduxFormReducer,

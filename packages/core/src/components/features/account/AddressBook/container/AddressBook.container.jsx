@@ -1,7 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { List } from 'immutable';
-import { getAddressList, deleteAddress, setDeleteModalMountedState } from './AddressBook.actions';
+import {
+  getAddressList,
+  deleteAddress,
+  setDeleteModalMountedState,
+  setAddressBookNotification,
+} from './AddressBook.actions';
 import { getUserInfo } from '../../LoginPage/container/LoginPage.actions';
 import AddressBookComponent from '../views/AddressBook.view';
 import {
@@ -26,6 +31,7 @@ type Props = {
   deleteModalMountedState: boolean,
   setDeleteModalMountState: Function,
   showUpdatedNotificationOnModal: any,
+  clearAddressBookNotification: () => void,
 };
 
 export class AddressBookContainer extends React.Component<Props> {
@@ -33,6 +39,11 @@ export class AddressBookContainer extends React.Component<Props> {
     const { getAddressListAction, getUserInfoAction } = this.props;
     getUserInfoAction();
     getAddressListAction();
+  }
+
+  componentWillUnmount() {
+    const { clearAddressBookNotification } = this.props;
+    clearAddressBookNotification();
   }
 
   render() {
@@ -83,6 +94,13 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     },
     getUserInfoAction: () => {
       dispatch(getUserInfo());
+    },
+    clearAddressBookNotification: () => {
+      dispatch(
+        setAddressBookNotification({
+          status: '',
+        })
+      );
     },
   };
 };

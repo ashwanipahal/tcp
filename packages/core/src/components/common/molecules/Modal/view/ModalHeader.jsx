@@ -6,10 +6,11 @@ import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
 type Props = {
   heading: string,
   closeFunc: Function,
+  closeIconDataLocator: string,
 };
-const ModalHeader = ({ closeFunc, heading }: Props) => (
+const ModalHeader = ({ closeFunc, heading, closeIconDataLocator }: Props) => (
   <Fragment>
-    <ModalCloseIcon closeFunc={closeFunc} />
+    <ModalCloseIcon closeFunc={closeFunc} closeIconDataLocator={closeIconDataLocator} />
     {heading && (
       <BodyCopy bodySize="five" fontWeight="black" tag="h2" className="Modal_Heading">
         {heading}

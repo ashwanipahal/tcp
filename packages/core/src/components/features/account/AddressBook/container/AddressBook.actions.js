@@ -43,3 +43,16 @@ export const setDeleteModalMountedState = payload => ({
   type: ADDRESS_BOOK_CONSTANTS.DELETE_MODAL_MOUNTED_STATE,
   payload,
 });
+
+export const clearGetAddressListTTL = () => ({
+  type: ADDRESS_BOOK_CONSTANTS.CLEAR_GET_ADDRESS_LIST_TTL,
+});
+
+export const showLoader = () => ({
+  type: ADDRESS_BOOK_CONSTANTS.SHOW_LOADER,
+});
+
+export const setAddressBookNotification = payload => ({
+  type: ADDRESS_BOOK_CONSTANTS.SET_ADDRESS_BOOK_NOTIFICATION,
+  payload,
+});

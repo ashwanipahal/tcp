@@ -1,3 +1,4 @@
+// @flow
 // Basic file for column in the grid structure
 import React from 'react';
 import { PropTypes } from 'prop-types';
@@ -5,9 +6,7 @@ import styles from '../Col.style';
 import withStyles from '../../../hoc/withStyles';
 
 // Passing on the colConfig to the style File and also the flag to add inline-block to the column
-const Col = ({ children, className, tagName: CustomTag }) => {
-  return <CustomTag className={className}>{children}</CustomTag>;
-};
+const Col = ({ children, className }) => <div className={className}>{children}</div>;
 
 Col.propTypes = {
   children: PropTypes.string.isRequired,
@@ -22,7 +21,6 @@ Col.propTypes = {
     medium: PropTypes.bool,
     large: PropTypes.bool,
   }),
-  tagName: PropTypes.string,
 };
 
 Col.defaultProps = {
@@ -36,7 +34,6 @@ Col.defaultProps = {
     medium: false,
     large: false,
   },
-  tagName: 'div',
 };
 
 export default withStyles(Col, styles);
