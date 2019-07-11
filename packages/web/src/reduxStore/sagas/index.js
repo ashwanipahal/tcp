@@ -8,6 +8,7 @@ import DeleteAddressSaga from '@tcp/core/src/components/features/account/Address
 import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
 import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
+import EmailSignupSaga from '../../components/common/molecules/SignupModal/container/SignupModal.saga';
 
 export default function* rootSaga() {
   yield all([
@@ -20,5 +21,6 @@ export default function* rootSaga() {
     DeleteAddressSaga(),
     SetDefaultShippingAddressSaga(),
     PaymentSaga(),
+    EmailSignupSaga(),
   ]);
 }

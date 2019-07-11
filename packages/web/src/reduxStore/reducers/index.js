@@ -19,10 +19,12 @@ import {
   ADDRESSBOOK_REDUCER_KEY,
   PAYMENT_REDUCER_KEY,
   ADDADDRESS_REDUCER_KEY,
+  SIGNUP_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
 import HomePageReducer from '../../components/features/content/HomePage/container/HomePage.reducer';
+import EmailSignupReducer from '../../components/common/molecules/SignupModal/container/SignupModal.reducer';
 
 // A higher order reducer to filter out actions not matching a certain action name pattern.
 const filteredProductListingPageReducer = createFilteredReducer(
@@ -42,4 +44,5 @@ export default combineReducers({
   [PAYMENT_REDUCER_KEY]: PaymentReducer,
   [ADDADDRESS_REDUCER_KEY]: AddAddressReducer,
   form: reduxFormReducer,
+  [SIGNUP_REDUCER_KEY]: EmailSignupReducer,
 });

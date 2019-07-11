@@ -7,7 +7,7 @@ export const validateEmail = payload => {
   };
 };
 
-export const addSignup = payload => {
+export const setEmailValidationStatus = payload => {
   return {
     payload,
     type: EMAIL_SIGNUP_CONSTANTS.EMAIL_VALIDATION_STATUS,
@@ -15,6 +15,7 @@ export const addSignup = payload => {
 };
 
 export const submitEmailSignup = payload => {
+  console.log('submitEmailSignup', payload);
   return {
     payload,
     type: EMAIL_SIGNUP_CONSTANTS.EMAIL_SUBSCRIPTION_SUBMIT,
@@ -27,7 +28,36 @@ export const emailSignupStatus = payload => {
     type: EMAIL_SIGNUP_CONSTANTS.EMAIL_SUBSCRIPTION_STATUS,
   };
 };
+
+export const clearForm = payload => {
+  return {
+    payload,
+    type: EMAIL_SIGNUP_CONSTANTS.CLEAR_SUBSCRIPTION_FORM,
+  };
+};
+
+export const submitSmsSignup = payload => {
+  console.log('submitSmsSignup', payload);
+  return {
+    payload,
+    type: EMAIL_SIGNUP_CONSTANTS.SMS_SUBSCRIPTION_SUBMIT,
+  };
+};
+
+export const smsSignupStatus = payload => {
+  console.log('payload in smsSignupStatus', payload);
+  return {
+    payload,
+    type: EMAIL_SIGNUP_CONSTANTS.SMS_SUBSCRIPTION_STATUS,
+  };
+};
+
 export default {
   validateEmail,
-  addSignup,
+  setEmailValidationStatus,
+  submitEmailSignup,
+  emailSignupStatus,
+  clearForm,
+  submitSmsSignup,
+  smsSignupStatus,
 };

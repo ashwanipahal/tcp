@@ -56,5 +56,10 @@ const endpoints = {
     baseURI: 'https://test1.childrensplace.com',
     relURI: '/api/v2/store/addSignUpEmail',
   },
+  addSmsSignup: {
+    method: 'post',
+    baseURI: 'https://test2.childrensplace.com',
+    relURI: '/api/v2/vibes/smsSignUp',
+  },
 };
 export default endpoints;

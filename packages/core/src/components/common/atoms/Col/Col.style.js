@@ -58,9 +58,6 @@ const StyledCol = css`
   ${props =>
     props.theme.gridDimensions.gridBreakPointsKeys.map(
       key => `
-      @media ${props.theme.mediaQuery[`${key}Only`]} {
-        ${props.hideCol && props.hideCol[key] ? 'display: none' : ''};
-      }
       @media ${props.theme.mediaQuery[key]} {
           ${!props.isNotInlineBlock ? 'display: inline-block' : ''};
           ${
@@ -79,6 +76,9 @@ const StyledCol = css`
               : '0'
           }%;
           width: ${getColumnWidth(props.colSize[key], key, props.theme.gridDimensions)}%;
+      }
+      @media ${props.theme.mediaQuery[`${key}Only`]} {
+        ${props.hideCol && props.hideCol[key] ? 'display: none' : ''};
       }`
     )}
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
