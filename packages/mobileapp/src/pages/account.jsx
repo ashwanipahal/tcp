@@ -1,9 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation';
-import { Text } from 'react-native';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
-
-const Account = () => <Text>Accounts Page</Text>;
+import Account from '../components/features/account/account';
 
 const AccountStack = createStackNavigator({
   Account,

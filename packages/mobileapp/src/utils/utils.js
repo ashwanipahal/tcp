@@ -2,6 +2,11 @@ import icons from './icons';
 
 const brandName = 'tcp';
 
+/**
+ * This function returns icon based on brand
+ * @param {*} icon Icon name
+ * @param {*} brand Brand
+ */
 export const getIconByBrand = (icon, brand) => {
   switch (icon) {
     case 'home-active':
@@ -23,6 +28,10 @@ export const getIconByBrand = (icon, brand) => {
   }
 };
 
+/**
+ * Returns icon based on icon name, if not found will search for icon in current selected brand
+ * @param {*} icon
+ */
 export const getIcon = icon => {
   switch (icon) {
     case 'home-inactive':
