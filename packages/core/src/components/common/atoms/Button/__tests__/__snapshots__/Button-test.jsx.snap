@@ -4,6 +4,7 @@ exports[`Button component renders correctly 1`] = `
 <button
   buttonVariation="fixed-width"
   className="sample-button"
+  data-locator="btn"
   fullWidth={true}
   type="button"
 >
@@ -15,6 +16,7 @@ exports[`Button component renders disabled button correctly 1`] = `
 <button
   buttonVariation="fixed-width"
   className="sample-button"
+  data-locator="btn"
   disabled={true}
   fullWidth={true}
   type="button"

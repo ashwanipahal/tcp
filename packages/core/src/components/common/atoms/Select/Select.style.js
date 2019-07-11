@@ -1,43 +1,29 @@
 import { css } from 'styled-components';
 
-const textboxStyles = css`
-  &.active div {
-    top: -65px;
-  }
-  &.select-fields-wrapper .Error__clearFloat {
-    clear: both;
-    top: -10px;
-    position: relative;
-  }
-  &.select-fields-wrapper p {
-    top: -30px;
-    opacity: 0.8;
-    position: relative;
-    margin: 0;
-    float: left;
-    padding: 5px 0px 5px 10px;
-  }
-  .selectField {
-    margin: ${props => props.theme.spacing.ELEM_SPACING.XS} 0 0 0;
-    height: 35px;
-    outline: 0;
-    line-height: 44px;
-    font-size: ${props => props.theme.fonts.fontSize.textbox}px;
-    color: ${props => props.theme.colors.TEXTBOX.COLOR};
-    width: 100%;
-    padding: 0 ${props => props.theme.spacing.ELEM_SPACING.MEDLRG};
-    border: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
+const selectStyles = css`
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .select__input {
+    appearance: none;
     background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-      no-repeat right 8px center;
-    -webkit-appearance: none;
+      no-repeat right 0px bottom 6px;
+    border: 0;
+    border-bottom: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
     ${props =>
       props.meta.touched && props.meta.error
         ? `border-bottom: 1px solid ${props.theme.colors.TEXTBOX.ERROR_BORDER};`
         : ''};
-    ${props =>
-      props.isSuccessState
-        ? `border: 1px solid ${props.theme.colors.TEXTBOX.SUCCESS_BORDER};`
-        : ''};
+    border-radius: 0;
+    color: ${props => props.theme.colors.TEXTBOX.COLOR};
+    font-size: ${props => props.theme.fonts.fontSize.textbox_input}px;
+    margin: 0;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    outline: 0;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 0
+      ${props => props.theme.spacing.ELEM_SPACING.XS};
+    width: 100%;
 
     ${props =>
       props.disabled
@@ -46,12 +32,17 @@ const textboxStyles = css`
       border-color: ${props.theme.fieldBorderDisabledColor};
     `
         : ''};
-    &:focus + p {
-      top: -65px;
-    }
+  }
+
+  .select__label {
+    font-size: ${props => props.theme.fonts.fontSize.body.small.primary}px;
+    font-weight: ${props => props.theme.fonts.fontWeight.bold};
+    padding: 0;
+    position: absolute;
+    top: 0;
   }
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
-export default textboxStyles;
+export default selectStyles;

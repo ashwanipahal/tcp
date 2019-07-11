@@ -14,6 +14,7 @@ describe('Address component', () => {
         country: 'test country',
         phone1: '1234567890',
         zipCode: '111-111',
+        state: 'test state',
       },
     };
     const component = shallow(<Address {...props} />);
@@ -27,6 +28,9 @@ describe('Address component', () => {
         firstName: 'test',
         lastName: 'test',
         addressLine: ['addressline 1', 'addressline 2'],
+        city: 'test city',
+        state: 'test state',
+        zipCode: '111-111',
       },
     };
     const component = shallow(<Address {...props} />);

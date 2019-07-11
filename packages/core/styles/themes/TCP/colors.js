@@ -104,4 +104,9 @@ export default {
   BORDER: {
     NORMAL: '#979797',
   },
+  CHECKBOX: {
+    BORDER: '#575757',
+    CHECKED_BORDER: '#2e6a91',
+    TICK_COLOR: '#fff',
+  },
 };

@@ -1,7 +1,6 @@
 const ignorePsuedoCodeDir = [
   '/ProductListingPage/',
   '/plpDeltaSync/',
-  '/mobileapp/',
   '/LoginPage/',
   '/server/',
   '/service/',
@@ -17,6 +16,7 @@ module.exports = {
     '^.+\\.(js|jsx)$': 'babel-jest',
   },
   testMatch: ['**/__tests__/*-test.+(js|jsx)', '**/*.test.+(js|jsx)'],
+
   globals: {
     'babel-jest': {
       extends: './babel.config.js',
@@ -29,12 +29,16 @@ module.exports = {
     '**/*.js',
     '**/*.jsx',
     '!**/*.style.js',
+    '!**/*.style.native.js',
     '!**/*.constants.js',
     '!**/*.config.js',
     '!**/core/styles/**',
     '!**/*.actions.js',
+    '!**/*.container.js',
     '!**/*.query.js',
     '!**/__mocks__/**',
+    '!**/*.native.js',
+    '!**/*.native.jsx',
   ],
   coveragePathIgnorePatterns: [
     '/node_modules/',
@@ -43,7 +47,6 @@ module.exports = {
     'mock.js',
     '/flow-typed/',
     '/pages/',
-    'Carousel.jsx',
     ...ignorePsuedoCodeDir,
   ],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],

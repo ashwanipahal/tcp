@@ -2,12 +2,15 @@ import React from 'react'; //eslint-disable-line
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import MyAccountLeftNav from './MyAccountLeftNav.view';
+import withStyles from '../../../../common/hoc/withStyles';
+import styles from '../styles/MyAccountContainer.style';
 
 // @flow
 type Props = {
   navData: Array<Object>,
   mainContent: Function,
-  active: String,
+  active: string,
+  className: string,
 };
 
 /**
@@ -17,9 +20,9 @@ type Props = {
  * @param {navData} navData The list of links in the left nav as config object
  * @param {mainContent} mainContent The component to be rendered on the right side
  */
-const MyAccountLayoutView = ({ navData, mainContent: MainContent, active }: Props) => {
+const MyAccountLayoutView = ({ navData, mainContent: MainContent, active, className }: Props) => {
   return (
-    <React.Fragment>
+    <div className={className}>
       <Row>
         <Col colSize={{ large: 2, medium: 8, small: 6 }}>
           <MyAccountLeftNav navData={navData} active={active} />
@@ -28,8 +31,9 @@ const MyAccountLayoutView = ({ navData, mainContent: MainContent, active }: Prop
           <MainContent />
         </Col>
       </Row>
-    </React.Fragment>
+    </div>
   );
 };
 
-export default MyAccountLayoutView;
+export default withStyles(MyAccountLayoutView, styles);
+export { MyAccountLayoutView as MyAccountLayoutViewVanilla };

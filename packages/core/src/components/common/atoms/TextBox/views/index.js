@@ -1,1 +1,1 @@
-export { default } from './TextBox';
+export { default, TextBoxVanilla } from './TextBox';
