@@ -18,23 +18,9 @@ BrandSwitchStack.navigationOptions = {
       iconInactive="brand-logo"
       {...props}
       style={{
-        wrapper: {
-          borderLeftWidth: 1,
-          borderRightWidth: 1,
-          borderTopWidth: 1,
-          borderColor: '#d8d8d8',
-          width: 100,
-          height: 42,
-          borderTopLeftRadius: 75,
-          borderTopRightRadius: 75,
-          backgroundColor: 'white',
-        },
         icon: {
-          width: 67,
-          height: 24,
-          position: 'relative',
-          top: 25,
-          left: 15,
+          width: 100,
+          height: 71,
         },
       }}
     />

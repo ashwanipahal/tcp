@@ -21,7 +21,7 @@ const NavBarIcon = (props: Props) => {
   const icon = focused ? iconActive : iconInactive;
 
   return (
-    <View style={style.wrapper}>
+    <View>
       <Image source={getIcon(icon)} style={style.icon} />
     </View>
   );
@@ -29,7 +29,6 @@ const NavBarIcon = (props: Props) => {
 
 NavBarIcon.defaultProps = {
   style: {
-    wrapper: {},
     icon: {
       width: 26,
       height: 26,
