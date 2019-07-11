@@ -2,13 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import {
-  submitEmailSignup,
-  validateEmail,
-  submitSmsSignup,
-  clearForm,
-} from './SignupModal.actions';
-import SignupModalView from '../views/SignupModal.view';
+import { submitEmailSignup, validateEmail, clearForm } from './EmailSignupModal.actions';
+import SignupModalView from '../views/EmailSignupModal.view';
 
 export const EmailSignupWrapperContainer = ({
   verifyEmailAddress,
@@ -18,7 +13,7 @@ export const EmailSignupWrapperContainer = ({
   isSubscriptionValid,
   clearFormStoreInfo,
   subscriptionType,
-  submitSmsSubscription,
+  isEmailValid,
 }) => {
   return (
     <SignupModalView
@@ -28,8 +23,8 @@ export const EmailSignupWrapperContainer = ({
       submitEmailSubscription={submitEmailSubscription}
       isSubscriptionValid={isSubscriptionValid}
       clearForm={clearFormStoreInfo}
-      submitSmsSubscription={submitSmsSubscription}
       subscriptionType={subscriptionType}
+      isEmailValid={isEmailValid}
     />
   );
 };
@@ -42,7 +37,7 @@ EmailSignupWrapperContainer.propTypes = {
   isSubscriptionValid: PropTypes.bool,
   clearFormStoreInfo: PropTypes.func,
   subscriptionType: PropTypes.string.isRequired,
-  submitSmsSubscription: PropTypes.func,
+  isEmailValid: PropTypes.bool,
 };
 
 EmailSignupWrapperContainer.defaultProps = {
@@ -52,7 +47,7 @@ EmailSignupWrapperContainer.defaultProps = {
   submitEmailSubscription: () => {},
   isSubscriptionValid: false,
   clearFormStoreInfo: () => {},
-  submitSmsSubscription: () => {},
+  isEmailValid: false,
 };
 
 export const mapDispatchToProps = dispatch => {
@@ -64,10 +59,6 @@ export const mapDispatchToProps = dispatch => {
     submitEmailSubscription: payload => {
       console.log('signup email func');
       dispatch(submitEmailSignup(payload));
-    },
-    submitSmsSubscription: payload => {
-      console.log('signup sms func');
-      dispatch(submitSmsSignup(payload));
     },
     clearFormStoreInfo: () => {
       console.log('clearForm');
@@ -94,8 +85,8 @@ const mapStateToProps = (state, props) => {
   return {
     subscriptionType,
     formViewConfig,
-    isSubscriptionValid: state.SignUp && state.SignUp.signupSuccess,
-    isEmailValid: state.SignUp && state.SignUp.validEmail,
+    isSubscriptionValid: state.EmailSignUp && state.EmailSignUp.signupSuccess,
+    isEmailValid: state.EmailSignUp && state.EmailSignUp.validEmail,
   };
 };
 

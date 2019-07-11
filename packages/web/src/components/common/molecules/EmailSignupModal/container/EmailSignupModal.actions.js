@@ -1,4 +1,4 @@
-import EMAIL_SIGNUP_CONSTANTS from './SignupModal.constants';
+import EMAIL_SIGNUP_CONSTANTS from './EmailSignupModal.constants';
 
 export const validateEmail = payload => {
   console.log('in the validate email action');
@@ -37,28 +37,10 @@ export const clearForm = payload => {
   };
 };
 
-export const submitSmsSignup = payload => {
-  console.log('submitSmsSignup', payload);
-  return {
-    payload,
-    type: EMAIL_SIGNUP_CONSTANTS.SMS_SUBSCRIPTION_SUBMIT,
-  };
-};
-
-export const smsSignupStatus = payload => {
-  console.log('payload in smsSignupStatus', payload);
-  return {
-    payload,
-    type: EMAIL_SIGNUP_CONSTANTS.SMS_SUBSCRIPTION_STATUS,
-  };
-};
-
 export default {
   validateEmail,
   setEmailValidationStatus,
   submitEmailSignup,
   emailSignupStatus,
   clearForm,
-  submitSmsSignup,
-  smsSignupStatus,
 };

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Field, reduxForm, reset, touch } from 'redux-form';
+import { Field, reduxForm, reset } from 'redux-form';
 import PropTypes from 'prop-types';
 import { Button, RichText, Col, Row, Image, TextBox } from '@tcp/core/src/components/common/atoms';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
@@ -7,7 +7,7 @@ import { Grid, Modal } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errors from '@tcp/core/src/utils/errorsMsg';
 
-import signupWrapperStyle from '../SignupModal.style';
+import signupWrapperStyle from '../SmsSignupModal.style';
 
 class SignupWrapper extends React.PureComponent {
   constructor(props) {
@@ -17,7 +17,7 @@ class SignupWrapper extends React.PureComponent {
       isOpen: false,
       disableSubmitButton: false,
       showAsyncError: '',
-      validInput: false
+      validInput: false,
     };
   }
 
@@ -29,18 +29,13 @@ class SignupWrapper extends React.PureComponent {
 
   onSignUpInputBlur = e => {
     const fieldValue = e.target.value;
-    const { subscriptionType, verifyEmailAddress } = this.props;
-    if (subscriptionType === 'email') {
-      verifyEmailAddress(e.target.value);
-    } else {
-      const isPhoneNumberValid = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/i.test(fieldValue);
-      console.log(isPhoneNumberValid);
-      if (!isPhoneNumberValid) {
-        this.setState({
-          showAsyncError: true,
-          validInput: false
-        });
-      }
+    const isPhoneNumberValid = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/i.test(fieldValue);
+    console.log(isPhoneNumberValid);
+    if (!isPhoneNumberValid) {
+      this.setState({
+        showAsyncError: true,
+        validInput: false,
+      });
     }
   };
 
@@ -54,7 +49,6 @@ class SignupWrapper extends React.PureComponent {
         subscriptionType,
         submitSmsSubscription,
         isSubscriptionValid,
-        isEmailValid,
       } = this.props;
       if (subscriptionType === 'sms') {
         submitSmsSubscription(signup);
@@ -64,7 +58,7 @@ class SignupWrapper extends React.PureComponent {
       if (!isSubscriptionValid) {
         this.setState({
           showAsyncError: true,
-          validInput: false
+          validInput: false,
         });
       }
     } catch (error) {
@@ -87,11 +81,11 @@ class SignupWrapper extends React.PureComponent {
       console.log(isPhoneNumberValid);
       if (!isPhoneNumberValid) {
         this.setState({
-          validInput: false
+          validInput: false,
         });
       } else {
         this.setState({
-          validInput: true
+          validInput: true,
         });
       }
       if (!isPhoneNumberValid && anyTouched) {
@@ -117,14 +111,8 @@ class SignupWrapper extends React.PureComponent {
 
   render() {
     const { isOpen, disableSubmitButton, showAsyncError, validInput } = this.state;
-    const {
-      buttonConfig,
-      className,
-      formViewConfig,
-      isSubscriptionValid,
-      pristine,
-      anyTouched,
-    } = this.props;
+    const { buttonConfig, className, formViewConfig, isSubscriptionValid, pristine } = this.props;
+
     return (
       <Fragment>
         {isOpen && (
@@ -341,7 +329,6 @@ class SignupWrapper extends React.PureComponent {
 
 SignupWrapper.propTypes = {
   buttonConfig: PropTypes.shape({}),
-  verifyEmailAddress: PropTypes.func,
   submitEmailSubscription: PropTypes.func,
   className: PropTypes.string,
   formViewConfig: PropTypes.shape({}).isRequired,
@@ -351,11 +338,12 @@ SignupWrapper.propTypes = {
   isSubscriptionValid: PropTypes.bool,
   submitSmsSubscription: PropTypes.func,
   subscriptionType: PropTypes.string.isRequired,
+  pristine: PropTypes.bool.isRequired,
+  anyTouched: PropTypes.bool.isRequired,
 };
 
 SignupWrapper.defaultProps = {
   buttonConfig: {},
-  verifyEmailAddress: () => {},
   submitEmailSubscription: () => {},
   className: '',
   isSubscriptionValid: false,

@@ -24,7 +24,8 @@ export const PRODUCTLISTINGPAGE_ACTION_PATTERN = '@@PLP-';
 export const ACCOUNT_MODAL_REDUCER_KEY = 'AccountModalReducer';
 
 // Email signup reducer
-export const SIGNUP_REDUCER_KEY = 'SignUp';
+export const EMAIL_SIGNUP_REDUCER_KEY = 'EmailSignUp';
+export const SMS_SIGNUP_REDUCER_KEY = 'SmsSignUp';
 
 export const REDUCER_ACTION_MAPPING = {
   [LOGINPAGE_REDUCER_KEY]: LOGINPAGE_ACTION_PATTERN,
