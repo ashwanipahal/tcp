@@ -20,7 +20,9 @@ type Props = {
  * @param {navData} navData The list of links in the left nav as config object
  * @param {mainContent} mainContent The component to be rendered on the right side
  */
-const MyAccountLayoutView = ({ navData, mainContent: MainContent, active, className }: Props) => {
+const MyAccountLayoutView = (props: Props) => {
+  console.log('-----------props are-------', props);
+  const { navData, mainContent: MainContent, active, className } = props;
   return (
     <div className={className}>
       <Row>

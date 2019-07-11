@@ -7,6 +7,7 @@ const AccountComponentMapping = {
   addressBook: AddressBook,
   accountOverview: AccountOverviewContainer,
   'add-new-address': AddNewAddress,
+  'edit-address': AddNewAddress,
   payment: Payment,
 };
 
