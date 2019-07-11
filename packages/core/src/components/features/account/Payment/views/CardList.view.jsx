@@ -33,7 +33,7 @@ export const CardList = ({
           <Col
             className="cardList__col"
             key={`container-${card.creditCardId}`}
-            colSize={{ large: 6, medium: 4, small: 6 }}
+            colSize={{ large: 4, medium: 4, small: 6 }}
             ignoreGutter={{
               large: (index + 2) % 3 === 0,
               medium: (index + 2) % 2 === 0,
@@ -48,6 +48,7 @@ export const CardList = ({
               checkbalanceValueInfo={checkbalanceValueInfo}
               key={card.creditCardId}
               labels={labels}
+              form={card.creditCardId}
             />
           </Col>
         ))}

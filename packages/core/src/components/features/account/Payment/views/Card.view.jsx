@@ -47,7 +47,7 @@ export class CardView extends React.PureComponent<Props> {
     } = this.props;
     const { selectedGiftCard } = this.state;
     return (
-      <div className={className}>
+      <React.Fragment>
         <CardList
           deleteModalMountedState={deleteModalMountedState}
           setDeleteModalMountState={setDeleteModalMountState}
@@ -76,7 +76,7 @@ export class CardView extends React.PureComponent<Props> {
           setDeleteModalMountState={setDeleteModalMountState}
           showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
         />
-      </div>
+      </React.Fragment>
     );
   }
 }

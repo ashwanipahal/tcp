@@ -9,15 +9,24 @@ const styles = css`
   padding: ${props => props.theme.spacing.ELEM_SPACING.LRG}
     ${props => props.theme.spacing.ELEM_SPACING.MED};
   & .recaptcha {
-    webkit-transform: scale(0.6);
-    transform: scale(0.6);
+    webkit-transform: scale(0.7);
+    transform: scale(0.7);
     position: relative;
-    left: -60px;
+    left: -45px;
+  }
+  & .giftcardTile__wrapper {
+    display: flex;
+    align-items: flex-end;
+    form {
+      width: 90%;
+    }
   }
   & .giftcardTile__row {
     .input-fields-wrapper {
-      padding: 4px;
       height: auto;
+      div {
+        padding-bottom: 10px;
+      }
     }
     .TextBox__label {
       display: none;
@@ -56,7 +65,7 @@ const styles = css`
     margin-top: 35px;
     float: right;
     a {
-      margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+      margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
     }
   }
 `;
