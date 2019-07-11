@@ -1,5 +1,4 @@
 import React from 'react';
-// import { List } from 'immutable'; we will use this once we remove mock
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/Payment.style';
 import DeleteCardModal from './DeleteCardModal';
@@ -8,11 +7,9 @@ import { CardList } from './CardList.view';
 // @flow
 
 type Props = {
-  className: string,
   labels: object,
   setDeleteModalMountState: Function,
   deleteModalMountedState: false,
-  // giftCards: List<{}>, we will use this once we remove mock
   onDeleteCard: Function,
   showUpdatedNotificationOnModal: any,
   giftCardList: Array<object>,
@@ -34,7 +31,6 @@ export class CardView extends React.PureComponent<Props> {
 
   render() {
     const {
-      className,
       labels,
       setDeleteModalMountState,
       deleteModalMountedState,
@@ -42,12 +38,11 @@ export class CardView extends React.PureComponent<Props> {
       giftCardList,
       onGetBalanceCard,
       checkbalanceValueInfo,
-      // giftCards, = we need this when we use real api instead of mock
       showUpdatedNotificationOnModal,
     } = this.props;
     const { selectedGiftCard } = this.state;
     return (
-      <div className={className}>
+      <React.Fragment>
         <CardList
           deleteModalMountedState={deleteModalMountedState}
           setDeleteModalMountState={setDeleteModalMountState}
@@ -76,7 +71,7 @@ export class CardView extends React.PureComponent<Props> {
           setDeleteModalMountState={setDeleteModalMountState}
           showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
         />
-      </div>
+      </React.Fragment>
     );
   }
 }

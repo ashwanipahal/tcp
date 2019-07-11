@@ -9,19 +9,27 @@ const styles = css`
   padding: ${props => props.theme.spacing.ELEM_SPACING.LRG}
     ${props => props.theme.spacing.ELEM_SPACING.MED};
   & .recaptcha {
-    webkit-transform: scale(0.6);
-    transform: scale(0.6);
+    webkit-transform: scale(0.7);
+    transform: scale(0.7);
     position: relative;
-    left: -60px;
+    left: -45px;
   }
-  & .giftcardTile__row {
-    .input-fields-wrapper {
-      padding: 4px;
-      height: auto;
-    }
-    .TextBox__label {
-      display: none;
-    }
+  & .giftcardTile__wrapper {
+    display: flex;
+    align-items: flex-end;
+  }
+  & form {
+    width: 90%;
+  }
+  & .input-fields-wrapper {
+    height: auto;
+  }
+  & .TextBox__error {
+    padding-bottom: 10px;
+  }
+
+  & .TextBox__label {
+    display: none;
   }
   .cardTile {
     display: flex;
@@ -55,9 +63,9 @@ const styles = css`
     display: flex;
     margin-top: 35px;
     float: right;
-    a {
-      margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-    }
+  }
+  .cardTile__anchor {
+    margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   }
 `;
 

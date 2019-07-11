@@ -69,7 +69,13 @@ const TextBox = ({
         {placeholder}
       </BodyCopy>
       {touched && error && (
-        <BodyCopy color="error" component="div" fontSize="fs12" fontFamily="secondary">
+        <BodyCopy
+          className="TextBox__error"
+          color="error"
+          component="div"
+          fontSize="fs12"
+          fontFamily="secondary"
+        >
           {getErroMsg(errors[error], placeholder)}
         </BodyCopy>
       )}

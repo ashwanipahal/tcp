@@ -16,6 +16,7 @@ const strictRules = {
   'comment-empty-line-before': null,
   'declaration-empty-line-before': null,
   'property-no-vendor-prefix': null,
+  'property-no-unknown': null,
 };
 
 module.exports = {
