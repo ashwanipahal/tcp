@@ -28,57 +28,6 @@ exports[`Header component renders correctly 1`] = `
       </Styled(Col)>
     </Styled(Row)>
   </styled.div>
-  <styled.div
-    className="header-nav"
-  >
-    <Styled(Row)>
-      <Styled(Col)
-        className="header-nav__nav-row"
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 0,
-            "small": 0,
-          }
-        }
-      >
-        <styled.div
-          className="dummy-nav"
-        >
-          <div>
-            Girl
-          </div>
-          <div>
-            Toddler Girl
-          </div>
-          <div>
-            Boy
-          </div>
-          <div>
-            Toddler Boy
-          </div>
-          <div>
-            Baby
-          </div>
-          <div>
-            Shoes
-          </div>
-          <div>
-            Accessories
-          </div>
-          <div>
-            Trending
-          </div>
-          <div>
-            Gift Cards
-          </div>
-          <div>
-            Clearance
-          </div>
-        </styled.div>
-      </Styled(Col)>
-    </Styled(Row)>
-  </styled.div>
   <Styled(HeaderPromo)
     className="header__promo-area--mobile"
     dataPromo={

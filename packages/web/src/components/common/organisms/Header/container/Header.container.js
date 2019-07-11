@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 import HeaderView from '../views';
 
 const mapStateToProps = state => {
-  const { header } = state;
+  const { Header } = state;
   return {
-    brandTabs: header.brandTabs,
-    promoMessageWrapper: header.promoMessageWrapper,
-    headerPromoArea: header.promoTextBannerCarousel,
+    brandTabs: Header.brandTabs,
+    promoMessageWrapper: Header.promoMessageWrapper,
+    headerPromoArea: Header.promoTextBannerCarousel,
   };
 };
 

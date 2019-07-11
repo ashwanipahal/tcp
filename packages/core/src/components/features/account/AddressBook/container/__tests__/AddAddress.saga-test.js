@@ -24,9 +24,14 @@ describe('addAddressGet saga', () => {
     });
 
     it('should dispatch addAddressFail action if response is fail', () => {
-      const error = new Error();
+      const errorBody = {};
+      const error = {
+        response: {
+          body: errorBody,
+        },
+      };
       const putDescriptor = addAddressGetGeneration.throw(error).value;
-      expect(putDescriptor).toEqual(put(addAddressFail()));
+      expect(putDescriptor).toEqual(put(addAddressFail(errorBody)));
     });
   });
 

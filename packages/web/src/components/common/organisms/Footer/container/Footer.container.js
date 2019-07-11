@@ -2,23 +2,23 @@ import { connect } from 'react-redux';
 import FooterView from '../views';
 
 const mapStateToProps = state => {
-  const { footer } = state;
+  const { Footer } = state;
   const {
     global: {
       footerDefault: { CONNECT_WITH_US: connectWithUsLabel, REFERENCE_ID: referenceID },
     },
-  } = state.labels;
+  } = state.Labels;
   return {
-    legalLinks: footer.legalLinks,
-    navLinks: footer.navLinks,
+    legalLinks: Footer.legalLinks,
+    navLinks: Footer.navLinks,
     socialMediaLinks: {
       connectWithUsLabel,
-      links: footer.socialLinks,
+      links: Footer.socialLinks,
     },
-    emailSignup: footer.emailSignupBtn,
-    smsSignup: footer.smsSignupBtn,
-    referAFriend: footer.referFriendBtn,
-    copyrightText: footer.copyrightText,
+    emailSignup: Footer.emailSignupBtn,
+    smsSignup: Footer.smsSignupBtn,
+    referAFriend: Footer.referFriendBtn,
+    copyrightText: Footer.copyrightText,
     referenceID,
   };
 };

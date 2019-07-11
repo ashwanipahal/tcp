@@ -105,7 +105,7 @@ HomePageView.getInitActions = () => initActions;
 
 const mapStateToProps = state => {
   return {
-    links: state.HomePageReducer.links,
+    links: state.HomePage.links,
   };
 };
 
