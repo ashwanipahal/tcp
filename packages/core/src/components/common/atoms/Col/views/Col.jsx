@@ -5,8 +5,7 @@ import styles from '../Col.style';
 import withStyles from '../../../hoc/withStyles';
 
 // Passing on the colConfig to the style File and also the flag to add inline-block to the column
-const Col = ({ children, className, tagName }) => {
-  const CustomTag = `${tagName}`;
+const Col = ({ children, className, tagName: CustomTag }) => {
   return <CustomTag className={className}>{children}</CustomTag>;
 };
 
