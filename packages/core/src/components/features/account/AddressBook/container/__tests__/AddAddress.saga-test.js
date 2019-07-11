@@ -19,7 +19,8 @@ describe('addAddressGet saga', () => {
         addressId: '75400543',
         nickName: 'sb_2019-07-02 02:33:01.433',
       };
-      const putDescriptor = addAddressGetGeneration.next(response).value;
+      addAddressGetGeneration.next(response);
+      const putDescriptor = addAddressGetGeneration.next().value;
       expect(putDescriptor).toEqual(put(addAddressSuccess()));
     });
 

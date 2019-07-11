@@ -1,6 +1,6 @@
 import { Map, fromJS, List } from 'immutable';
 import AddressBookReducer from '../AddressBook.reducer';
-import { setAddressList } from '../AddressBook.actions';
+import { setAddressList, setAddressBookNotification } from '../AddressBook.actions';
 import ADDRESS_BOOK_CONSTANTS from '../../AddressBook.constants';
 
 let addressList = [{}];
@@ -186,6 +186,23 @@ describe('Address List reducer', () => {
     ).toEqual(
       fromJS({
         addAddressLoaded: false,
+      })
+    );
+  });
+  it('should handle setAddressBookNotification action', () => {
+    const initialState = fromJS({
+      showUpdatedNotification: null,
+    });
+    expect(
+      AddressBookReducer(
+        initialState,
+        setAddressBookNotification({
+          status: 'success',
+        })
+      )
+    ).toEqual(
+      fromJS({
+        showUpdatedNotification: 'success',
       })
     );
   });

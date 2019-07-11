@@ -2,7 +2,6 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Col, Row } from '@tcp/core/src/components/common/atoms';
 import { identifyBrand } from '@tcp/core/src/utils';
-
 import { HeaderTopNav } from '../../../molecules';
 import HeaderPromo from '../../../molecules/HeaderPromo';
 import config from '../config';

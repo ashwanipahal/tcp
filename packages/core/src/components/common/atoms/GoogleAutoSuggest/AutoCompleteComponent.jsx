@@ -42,10 +42,15 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
   };
 
   static getAddressFromPlace(place, inputValue) {
-    let address = { street: '', city: '', state: '', country: '', zip: '' };
-    let streetNumber = '';
-    const streetName = '';
-
+    let address = {
+      street: '',
+      city: '',
+      state: '',
+      country: '',
+      zip: '',
+      steet_number: '',
+      street_name: '',
+    };
     if (typeof place.address_components === 'undefined') {
       return address;
     }
@@ -54,33 +59,33 @@ export class AutoCompleteComponent extends React.PureComponent<Props> {
       if (AutoCompleteComponent.GOOGLE_PLACE_PARTS[addressType]) {
         const val =
           place.address_components[i][AutoCompleteComponent.GOOGLE_PLACE_PARTS[addressType]];
-        switch (addressType) {
-          case 'street_number':
-            streetNumber = val;
-            break;
-          default:
-            address = AutoCompleteComponent.returngetAddress(addressType, val, streetName, address);
-        }
+        address = AutoCompleteComponent.returngetAddress(addressType, val, address);
       }
     }
-    if (!streetNumber) {
-      const regex = RegExp('^(.*)'`${streetName.split(' ', 1)[0]}`);
+    if (!address.street_number) {
+      const regex = RegExp('^(.*)'`${address.street_name.split(' ', 1)[0]}`);
       const result = regex.exec(inputValue);
       const inputNum = Array.isArray(result) && result[1] && Number(result[1]);
 
       if (!Number(inputNum) && parseInt(inputNum, 10) === inputNum) {
-        streetNumber = inputNum;
+        address.street_number = inputNum;
       }
     }
 
-    address.street = `${streetNumber} ${streetName}`;
+    address.street = `${address.street_number} ${address.street_name}`;
 
     return address;
   }
 
-  static returngetAddress = (addressType, val, streetName, address) => {
+  static returngetAddress = (addressType, val, address) => {
     const addressRef = Object.assign({}, address);
     switch (addressType) {
+      case 'street_number':
+        addressRef.street_number = val;
+        break;
+      case 'route':
+        addressRef.street_name = val;
+        break;
       case 'locality':
         addressRef.city = val;
         break;
