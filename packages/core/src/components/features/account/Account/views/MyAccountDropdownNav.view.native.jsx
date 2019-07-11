@@ -1,6 +1,7 @@
-import React from 'react'; //eslint-disable-line
-import { View, Text } from 'react-native'; //eslint-disable-line
-import { StylePickerWrapper, StyledPicker } from '../styles/MyAccountLayout.style';
+import React from 'react';
+import { View } from 'react-native';
+import { StylePicker, StylePickerWrapper } from '../styles/MyAccountLayout.style.native';
+import withStyles from '../../../../common/hoc/withStyles';
 
 // @flow
 type Props = {
@@ -30,27 +31,26 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
     const { navData, handleComponentChange } = this.props;
     const { dropDownItem } = this.state;
     return (
-      <View>
-        <StylePickerWrapper>
-          <StyledPicker
-            selectedValue={dropDownItem}
-            onValueChange={itemValue => {
-              this.setState({ dropDownItem: itemValue });
-              handleComponentChange(itemValue);
-            }}
-            mode="dropdown"
-          >
-            {navData &&
-              navData.map(nav => {
-                return (
-                  <StyledPicker.Item key={nav.id} label={nav.displayName} value={nav.component} />
-                );
-              })}
-          </StyledPicker>
-        </StylePickerWrapper>
+      <View {...this.props}>
+        <StylePicker
+          selectedValue={dropDownItem}
+          onValueChange={itemValue => {
+            this.setState({ dropDownItem: itemValue });
+            handleComponentChange(itemValue);
+          }}
+          mode="dropdown"
+        >
+          {navData &&
+            navData.map(nav => {
+              return (
+                <StylePicker.Item key={nav.id} label={nav.displayName} value={nav.component} />
+              );
+            })}
+        </StylePicker>
       </View>
     );
   }
 }
 
-export default MyAccountDropdownNav;
+export default withStyles(MyAccountDropdownNav, StylePickerWrapper);
+export { MyAccountDropdownNav as MyAccountDropdownNavVanilla };

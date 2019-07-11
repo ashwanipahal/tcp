@@ -1,7 +1,7 @@
 import React from 'react';
-import MyAccountLayout from '../views/MyAccountLayout.view.native';
-import AccountComponentNativeMapping from '../AccountComponentMapping.native';
-import navData from '../MyAccountRoute.config.native';
+import MyAccountLayout from '../views/MyAccountLayout.view';
+import AccountComponentNativeMapping from '../AccountComponentMapping';
+import navDataMobile from '../MyAccountRoute.config';
 
 // @flow
 type Props = {
@@ -16,7 +16,7 @@ type State = {
  * @function Account The Account component is the main container for the account section
  * This component includes the layout view, it passes the MyAccountLayout with the mainContent to be rendered
  * on th right side.
- * NOTE: Which ever new component that gets added for left nav, needs an entry in AccountComponentMapping file.
+ * NOTE: Which ever new component that gets added for drop down nav, needs an entry in AccountComponentMappingNative file.
  */
 
 export default class Account extends React.PureComponent<Props, State> {
@@ -26,8 +26,6 @@ export default class Account extends React.PureComponent<Props, State> {
     this.state = {
       component,
     };
-
-    this.handleComponentChange = this.handleComponentChange.bind(this);
   }
 
   handleComponentChange = (component: String) => {
@@ -50,7 +48,7 @@ export default class Account extends React.PureComponent<Props, State> {
     const { component } = this.state;
     return (
       <MyAccountLayout
-        navData={navData}
+        navData={navDataMobile}
         mainContent={AccountComponentNativeMapping[component]}
         handleComponentChange={this.handleComponentChange}
       />

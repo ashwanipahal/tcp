@@ -1,4 +1,4 @@
-import AddressBookMobile from '../AddressBook/container/AddressBook.container.native';
+import AddressBookMobile from '../AddressBook/container/AddressBook.container';
 
 const AccountComponentNativeMapping = {
   addressBookMobile: AddressBookMobile,

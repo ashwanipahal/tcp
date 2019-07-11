@@ -3,7 +3,7 @@
  * This will change once we integrate it with cms labels
  */
 // will uncomment once we have nav data story in place
-const navData = [
+const navDataMobile = [
   {
     id: 'accountOverview',
     displayName: 'Account Overview',
@@ -51,4 +51,4 @@ const navData = [
   },
 ];
 
-export default navData;
+export default navDataMobile;
