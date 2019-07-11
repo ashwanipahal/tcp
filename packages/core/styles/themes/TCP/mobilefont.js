@@ -1,5 +1,5 @@
-const PRIMARY_FONT = 'Montserrat-Regular';
-const SECONDARY_FONT = `Nunito-Regular`;
+const PRIMARY_FONT = 'Montserrat';
+const SECONDARY_FONT = `Nunito`;
 const PRIMARY_FONT_SEMIBOLD = 'Montserrat-SemiBold';
 const SECONDARY_FONT_SEMIBOLD = 'Nunito-SemiBold';
 const PRIMARY_FONT_BLACK = 'Montserrat-Black';
