@@ -57,17 +57,13 @@ const calculateOffset = (colCount, breakpoint, gridDimensions) => {
 const StyledCol = css`
   ${props =>
     props.theme.gridDimensions.gridBreakPointsKeys.map(
+      // eslint-disable-next-line complexity
       key => `
-      @media ${props.theme.mediaQuery[`${key}Only`]} {
+      ${key !== 'small' ? `@media ${props.theme.mediaQuery[`${key}Only`]} {` : ''}
         ${props.hideCol && props.hideCol[key] ? 'display: none' : ''};
-      }
-      @media ${props.theme.mediaQuery[key]} {
+      ${key !== 'small' ? `}` : ''}
+      ${key !== 'small' ? `@media ${props.theme.mediaQuery[key]} {` : ''}
           ${!props.isNotInlineBlock ? 'display: inline-block' : ''};
-          ${
-            !(props.ignoreGutter && props.ignoreGutter[key])
-              ? `padding-right: ${getGutter(key, props.theme.gridDimensions)}%`
-              : 'padding-right:0'
-          };
           margin-left: ${
             props.offsetLeft && props.offsetLeft[key]
               ? calculateOffset(props.offsetLeft[key], key, props.theme.gridDimensions)
@@ -78,8 +74,13 @@ const StyledCol = css`
               ? calculateOffset(props.offsetRight[key], key, props.theme.gridDimensions)
               : '0'
           }%;
+          ${
+            !(props.ignoreGutter && props.ignoreGutter[key])
+              ? `margin-right: ${getGutter(key, props.theme.gridDimensions)}%`
+              : ''
+          };
           width: ${getColumnWidth(props.colSize[key], key, props.theme.gridDimensions)}%;
-      }`
+        ${key !== 'small' ? `}` : ''}`
     )}
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
