@@ -31,7 +31,8 @@
     "redux-cache": "^0.3.0",
     "redux-ignore": "^1.2.5",
     "little-loader": "^0.2.0",
-    "redux-form": "^8.2.4"
+    "redux-form": "^8.2.4",
+    "immutable": "^4.0.0-rc.12"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -89,7 +90,9 @@
       "**/redux-cache",
       "**/redux-cache/**",
       "**/redux-ignore",
-      "**/redux-ignore/**"
+      "**/redux-ignore/**",
+      "**/immutable",
+      "**/immutable/**"
     ]
   }
 }

@@ -1,6 +1,7 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import ADD_ADDRESS_CONSTANTS from './AddAddress.constants';
 import { addAddressSuccess, addAddressFail } from './AddAddress.actions';
+import { setAddressBookNotification } from '../AddressBook.actions';
 import fetchData from '../../../../../../service/API';
 import endpoints from '../../../../../../service/endpoint';
 
@@ -28,7 +29,7 @@ export function* addAddressGet({ payload }) {
           nickName: addressKey,
           phone1: payload.phoneNumber,
           phone1Publish: 'false',
-          primary: payload.primary, // as string
+          primary: payload.primary ? 'true' : 'false', // as string
           state: payload.state,
           zipCode: payload.zip,
           xcont_addressField2: payload.isCommercialAddress ? '2' : '1',
@@ -52,6 +53,11 @@ export function* addAddressGet({ payload }) {
       method
     );
     if (res) {
+      yield put(
+        setAddressBookNotification({
+          status: 'success',
+        })
+      );
       return yield put(addAddressSuccess(res.body));
     }
     return yield put(addAddressFail(res.body));

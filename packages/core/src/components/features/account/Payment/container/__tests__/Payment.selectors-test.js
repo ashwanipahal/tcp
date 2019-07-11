@@ -51,7 +51,7 @@ describe('#Payment Selectors', () => {
         },
         {
           accountNo: '2222',
-          ccType: 'VenmoCard',
+          ccType: 'VENMO',
         },
         {
           accountNo: '3333',
@@ -82,7 +82,7 @@ describe('#Payment Selectors', () => {
         },
         {
           accountNo: '2222',
-          ccType: 'VenmoCard',
+          ccType: 'VENMO',
         },
         {
           accountNo: '3333',
@@ -113,7 +113,7 @@ describe('#Payment Selectors', () => {
         },
         {
           accountNo: '2222',
-          ccType: 'VenmoCard',
+          ccType: 'VENMO',
         },
         {
           accountNo: '3333',
@@ -130,7 +130,7 @@ describe('#Payment Selectors', () => {
       List([
         {
           accountNo: '2222',
-          ccType: 'VenmoCard',
+          ccType: 'VENMO',
         },
       ])
     );

@@ -96,7 +96,7 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
     lineHeight="normal"
     textAlign="left"
   >
-    Please enter a first name for user
+    REQUIRED_FIELD
   </Styled(BodyCopy)>
 </div>
 `;

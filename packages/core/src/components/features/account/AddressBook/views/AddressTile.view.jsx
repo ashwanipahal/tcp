@@ -55,7 +55,7 @@ class AddressBookTile extends React.Component<Props> {
     return (
       <div className={className}>
         <div className="addressTile__row--twoCol">
-          <Address address={address} dataLocatorPrefix="addressbook" />
+          <Address address={address} dataLocatorPrefix="addressbook" fontWeight="bold" />
           <div>
             {address.primary === 'true' && (
               <Badge showCheckmark dataLocator="addressbook-defshippinglabel">
