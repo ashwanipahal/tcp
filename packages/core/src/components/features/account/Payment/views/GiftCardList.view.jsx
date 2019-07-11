@@ -59,18 +59,20 @@ const GiftCardList = ({
           </Button>
         </Col>
       </Row>
-      {giftCardList.size !== 0 && (
-        <CardView
-          labels={labels}
-          deleteModalMountedState={deleteModalMountedState}
-          setDeleteModalMountState={setDeleteModalMountState}
-          onDeleteCard={onDeleteCard}
-          showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
-          giftCardList={giftCardList}
-          onGetBalanceCard={onGetBalanceCard}
-          checkbalanceValueInfo={checkbalanceValueInfo}
-        />
-      )}
+      <Row fullBleed>
+        {giftCardList.size !== 0 && (
+          <CardView
+            labels={labels}
+            deleteModalMountedState={deleteModalMountedState}
+            setDeleteModalMountState={setDeleteModalMountState}
+            onDeleteCard={onDeleteCard}
+            showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
+            giftCardList={giftCardList}
+            onGetBalanceCard={onGetBalanceCard}
+            checkbalanceValueInfo={checkbalanceValueInfo}
+          />
+        )}
+      </Row>
     </div>
   );
 };
