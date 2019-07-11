@@ -4,9 +4,10 @@ import Modal from '../../../../common/molecules/Modal';
 import Button from '../../../../common/atoms/Button';
 import TextBox from '../../../../common/atoms/TextBox';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
-import AddressOption from './AddressOption.view';
+import AddressOption from '../../common/molecule/AddressOption';
 import styles from '../styles/AddressVerification.style';
 import CONSTANTS from '../AddressVerification.constants';
+import spacing from '../../../../../../styles/themes/TCP/spacing';
 
 // @flow
 
@@ -99,15 +100,15 @@ export class AddressVerification extends React.Component<Props> {
   onConfirm = () => {
     const { selectAddress, optionalAddressLine } = this.state;
     const { onSuccess, userAddress, suggestedAddress } = this.props;
-    let addressPayload;
+    let addressPayload = {};
 
     if (suggestedAddress) {
       addressPayload =
         selectAddress === 'userAddress'
-          ? Object.assign({}, userAddress)
-          : Object.assign({}, suggestedAddress);
+          ? Object.assign(addressPayload, userAddress)
+          : Object.assign(addressPayload, suggestedAddress);
     } else {
-      addressPayload = Object.assign({}, userAddress);
+      addressPayload = Object.assign(addressPayload, userAddress);
     }
     if (optionalAddressLine) {
       addressPayload.address2 = optionalAddressLine;
@@ -229,7 +230,7 @@ export class AddressVerification extends React.Component<Props> {
           className={`${className} TCPModal__Content`}
           heading={heading}
           fixedWidth
-          maxWidth="458px"
+          maxWidth={spacing.MODAL_WIDTH.SMALL}
         >
           <div className="addressVerification">
             <BodyCopy

@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { AddressVerification } from '../AddressVerification.view';
 import Modal from '../../../../../common/molecules/Modal';
-import AddressOption from '../AddressOption.view';
+import AddressOption from '../../../common/molecule/AddressOption';
 
 const userAddress = {
   firstName: 'test',

@@ -1,5 +1,5 @@
 import React from 'react';
-import Address from '../../../../common/molecules/Address';
+import Address from '../../../../../../common/molecules/Address';
 
 // @flow
 
