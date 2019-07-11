@@ -5,15 +5,15 @@ export const verifyAddress = payload => ({
   payload,
 });
 
-export const verifyAddressSuccess = (suggestedAddress, resultType) => ({
+export const verifyAddressSuccess = payload => ({
   type: constants.VERIFY_ADDRESS_SUCCESS,
-  suggestedAddress,
-  resultType,
+  suggestedAddress: payload.suggestedAddress,
+  resultType: payload.resultType,
 });
 
-export const verifyAddressError = resultType => ({
+export const verifyAddressError = payload => ({
   type: constants.VERIFY_ADDRESS_ERROR,
-  resultType,
+  resultType: payload.resultType,
 });
 
 export const resetVerifyAddress = () => ({

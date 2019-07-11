@@ -72,6 +72,7 @@ export class AddAddress extends React.PureComponent<Props> {
           <AddAddressFormComponent
             backToAddressBookClick={this.backToAddressBookClick}
             onSubmit={verifyAddressAction}
+            labels={labels}
           />
         </Grid>
       </div>

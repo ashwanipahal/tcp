@@ -96,28 +96,28 @@ export default css`
 
   ${props => {
     return Object.keys(props.theme.spacing.ELEM_SPACING).map(key => {
-      return `.elem--mr__${key} {
+      return `.elem-mr-${key} {
         margin-right: ${props.theme.spacing.ELEM_SPACING[key]}
       }
-      .elem--mb__${key} {
+      .elem-mb-${key} {
         margin-bottom: ${props.theme.spacing.ELEM_SPACING[key]}
       }
-      .elem--ml__${key} {
+      .elem-ml-${key} {
         margin-left: ${props.theme.spacing.ELEM_SPACING[key]}
       }
-      .elem--mt__${key} {
+      .elem-mt-${key} {
         margin-top: ${props.theme.spacing.ELEM_SPACING[key]}
       }
-      .elem--pr__${key} {
+      .elem-pr-${key} {
         padding-right: ${props.theme.spacing.ELEM_SPACING[key]}
       }
-      .elem--pb__${key} {
+      .elem-pb-${key} {
         padding-bottom: ${props.theme.spacing.ELEM_SPACING[key]}
       }
-      .elem--pl__${key} {
+      .elem-pl-${key} {
         padding-left: ${props.theme.spacing.ELEM_SPACING[key]}
       }
-      .elem--pt__${key} {
+      .elem-pt-${key} {
         padding-top: ${props.theme.spacing.ELEM_SPACING[key]}
       }`;
     });
@@ -126,16 +126,16 @@ export default css`
   ${props => {
     return Object.keys(props.theme.spacing.LAYOUT_SPACING).map(key => {
       return `
-      .layout--pr__${key} {
+      .layout-pr-${key} {
         padding-right: ${props.theme.spacing.LAYOUT_SPACING[key]}
       }
-      .layout--pb__${key} {
+      .layout-pb-${key} {
         padding-bottom: ${props.theme.spacing.LAYOUT_SPACING[key]}
       }
-      .layout--pl__${key} {
+      .layout-pl-${key} {
         padding-left: ${props.theme.spacing.LAYOUT_SPACING[key]}
       }
-      .layout--pt__${key} {
+      .layout-pt-${key} {
         padding-top: ${props.theme.spacing.LAYOUT_SPACING[key]}
       }`;
     });

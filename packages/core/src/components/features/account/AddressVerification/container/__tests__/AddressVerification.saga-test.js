@@ -1,5 +1,5 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import { verifyAddress, verifyAddressSaga, getResultType } from '../AddressVerification.sagas';
+import { verifyAddress, verifyAddressSaga, getResultType } from '../AddressVerification.saga';
 import { verifyAddressError, verifyAddressSuccess } from '../AddressVerification.actions';
 import CONSTANTS from '../../AddressVerification.constants';
 
@@ -25,10 +25,14 @@ describe('AddressVerification saga', () => {
       const putDescriptor = verifyAddressGen.next(response).value;
       expect(putDescriptor).toEqual(
         put(
-          verifyAddressSuccess(
-            { firstName: 'test', address1: 'test address', isCommercialAddress: false },
-            'AS01'
-          )
+          verifyAddressSuccess({
+            suggestedAddress: {
+              firstName: 'test',
+              address1: 'test address',
+              isCommercialAddress: false,
+            },
+            resultType: 'AS01',
+          })
         )
       );
     });
@@ -38,7 +42,7 @@ describe('AddressVerification saga', () => {
         body: null,
       };
       const putDescriptor = verifyAddressGen.next(response).value;
-      expect(putDescriptor).toEqual(put(verifyAddressError('ERROR')));
+      expect(putDescriptor).toEqual(put(verifyAddressError({ resultType: 'ERROR' })));
     });
   });
 

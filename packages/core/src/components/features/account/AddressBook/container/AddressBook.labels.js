@@ -34,31 +34,6 @@ const labels = {
   acc_lbl_cancel_cta: 'CANCEL',
   acc_lbl_add_address_cta: 'ADD ADDRESS',
   acc_lbl_set_default: 'Set as default shipping address',
-
-  acc_lbl_empty_error_msg: 'Please enter a @@key@@',
-  acc_lbl_invalid_error_msg: 'Please enter a valid @@key@@',
-  acc_lbl_empty_select_error_msg: 'Please select a @@key@@',
-  acc_lbl_invalid_chars_error_msg: '@@key@@ field should not contain any special characters',
-  acc_lbl_contain_invalid_chars_error_msg: 'The value entered in the @@key@@ has special character',
-
-  acc_lbl_invalid_first_name_error_msg: 'Please enter a first name',
-  acc_lbl_invalid_last_name_error_msg: 'Please enter a last name',
-  acc_lbl_invalid_address_line_error_msg: 'Please enter a valid street address',
-  acc_lbl_invalid_city_error_msg: 'Please enter a valid city',
-  acc_lbl_invalid_state_error_msg: 'Please select a state',
-  acc_lbl_empty_zip_code_error_msg: 'Please enter your zip code',
-  acc_lbl_invalid_zip_code_error_msg: 'Please enter a valid zip code',
-  acc_lbl_empty_phone_number_error_msg: 'Please enter your phone number',
-  acc_lbl_invalid_phone_number_error_msg: 'Please enter a valid phone number',
-  acc_lbl_invalid_chars_first_name_error_msg:
-    'First name field should not contain any special characters',
-  acc_lbl_invalid_chars_last_name_error_msg:
-    'Last name field should not contain any special characters',
-  acc_lbl_char_limit_exceeded_address_line_error_msg: 'Please shorten the street address',
-  acc_lbl_invalid_chars_address_line_error_msg:
-    'The value entered in the street address has special character',
-  acc_lbl_invalid_chars_city_error_msg: 'The value entered in the city has special character',
-
   acc_lbl_verify_your_address_header: 'Verify Your Address',
   acc_label_verify_your_address_AE09:
     'There may be an issue with your address as entered. Please double check it, or if you believe the address is correct you can continue to the next step.',

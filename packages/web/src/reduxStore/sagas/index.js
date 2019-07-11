@@ -6,7 +6,7 @@ import AddressBookSaga from '@tcp/core/src/components/features/account/AddressBo
 import PaymentSaga from '@tcp/core/src/components/features/account/Payment/container/Payment.saga';
 import DeleteAddressSaga from '@tcp/core/src/components/features/account/AddressBook/container/DeleteAddress.saga';
 import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
-import AddressVerificationSaga from '@tcp/core/src/components/features/account/AddressVerification/container/AddressVerification.sagas';
+import AddressVerificationSaga from '@tcp/core/src/components/features/account/AddressVerification/container/AddressVerification.saga';
 import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 

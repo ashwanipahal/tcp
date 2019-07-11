@@ -32,15 +32,18 @@ describe('AddressVerification reducer', () => {
       .set('suggestedAddress', suggestedAddress)
       .set('resultType', 'AS01');
     expect(
-      addressVerificationReducer(initialState, verifyAddressSuccess(suggestedAddress, 'AS01'))
+      addressVerificationReducer(
+        initialState,
+        verifyAddressSuccess({ suggestedAddress, resultType: 'AS01' })
+      )
     ).toEqual(expectedState);
   });
 
   it('should handle verifyAddressError action correctly', () => {
     const expectedState = initialState.set('resultType', 'ERROR');
-    expect(addressVerificationReducer(initialState, verifyAddressError('ERROR'))).toEqual(
-      expectedState
-    );
+    expect(
+      addressVerificationReducer(initialState, verifyAddressError({ resultType: 'ERROR' }))
+    ).toEqual(expectedState);
   });
 
   it('should handle resetVerifyAddress action correctly', () => {

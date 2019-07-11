@@ -76,11 +76,11 @@ export function* verifyAddress({ payload }) {
     if (res && res.body && res.body.Records) {
       const suggestedAddress = getSuggestedAddress(res.body, payload);
       const resultType = getResultType(res.body);
-      return yield put(verifyAddressSuccess(suggestedAddress, resultType));
+      return yield put(verifyAddressSuccess({ suggestedAddress, resultType }));
     }
-    return yield put(verifyAddressError('ERROR'));
+    return yield put(verifyAddressError({ resultType: 'ERROR' }));
   } catch (err) {
-    return yield put(verifyAddressError('ERROR'));
+    return yield put(verifyAddressError({ resultType: 'ERROR' }));
   }
 }
 

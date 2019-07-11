@@ -85,10 +85,10 @@ export class AddressVerification extends React.Component<Props> {
         color={
           CONSTANTS.VERIFY_ADDRESS_STATUS_MAP[verificationResult] ===
           CONSTANTS.VERIFY_ADDRESS_RESULT.INVALID_ERROR
-            ? 'secondary'
-            : 'primary'
+            ? 'error'
+            : 'text.primary'
         }
-        className="elem--mb__XXXL"
+        className="elem-mb-XXXL"
         fontFamily="secondary"
       >
         {labels[`acc_label_verify_your_address_${verificationResult}`]}
@@ -131,17 +131,21 @@ export class AddressVerification extends React.Component<Props> {
     const { labels } = this.props;
     const { selectAddress } = this.state;
     return (
-      <div className="addressVerification__section layout--pl__LRG layout--pr__LRG elem--mb__XL">
+      <div
+        className={`addressVerification__section layout-pr-LRG elem-mb-XL ${
+          this.showInput ? 'layout-pl-LRG' : 'layout-pl-XL'
+        }`}
+      >
         <BodyCopy
           component="p"
           fontFamily="secondary"
           fontWeight="extrabold"
           fontSize="fs14"
-          className="elem--mb__SM"
+          className="elem-mb-SM"
         >
           {labels.acc_lbl_you_entered}
         </BodyCopy>
-        <div className="elem--mb__XL">
+        <div className="elem-mb-XL">
           <AddressOption
             className="addressVerification__input"
             address={this.formatAddress(userAddress)}
@@ -161,17 +165,17 @@ export class AddressVerification extends React.Component<Props> {
     if (this.showInput) {
       const { selectAddress } = this.state;
       return (
-        <div className="addressVerification__section addressVerification__section--noBorder layout--pl__LRG layout--pr__LRG">
+        <div className="addressVerification__section addressVerification__section--noBorder layout-pl-LRG layout-pr-LRG">
           <BodyCopy
             component="p"
             fontFamily="secondary"
             fontWeight="extrabold"
             fontSize="fs14"
-            className="elem--mb__SM"
+            className="elem-mb-SM"
           >
             {labels.acc_lbl_we_suggest}
           </BodyCopy>
-          <div className="elem--mb__XL">
+          <div className="elem-mb-XL">
             <AddressOption
               className="addressVerification__input"
               address={this.formatAddress(suggestedAddress)}
@@ -188,14 +192,14 @@ export class AddressVerification extends React.Component<Props> {
     if (this.showOptionalAddressLine) {
       const { optionalAddressLine } = this.state;
       return (
-        <div className="elem--mb__XL layout--pl__LRG">
+        <div className="addressVerification__section addressVerification__section--noBorder elem-mb-XL layout-pl-XL">
           <TextBox
             input={{
               value: optionalAddressLine,
               onChange: this.handleChange,
               name: 'optionalAddressLine',
             }}
-            placeholder={labels.acc_lbl_optional_address_line}
+            placeholder={labels.acc_lbl_address_line2}
             id="optionalAddressLine"
           />
         </div>
@@ -234,14 +238,14 @@ export class AddressVerification extends React.Component<Props> {
               fontWeight="semibold"
               fontFamily="secondary"
               textAlign="center"
-              className="elem--mb__MED"
+              className="elem-mb-MED"
             >
               {labels.acc_lbl_verify_your_address_header}
             </BodyCopy>
             {this.getMessage(verificationResult, suggestedAddress)}
             {this.renderUserAddress(verificationResult, userAddress, suggestedAddress)}
             {this.renderSuggestedAddress(verificationResult, suggestedAddress)}
-            <div className="layout--pl__XL layout--pr__XL">
+            <div className="addressVerification__ctaContainer">
               <Button
                 className="addressVerification__cta"
                 buttonVariation="variable-width"
@@ -256,7 +260,7 @@ export class AddressVerification extends React.Component<Props> {
                 onClick={this.onCloseModal}
                 fill="RED"
               >
-                {labels.editBtnLabel}
+                {labels.acc_lbl_edit_address_cta}
               </Button>
             </div>
           </div>

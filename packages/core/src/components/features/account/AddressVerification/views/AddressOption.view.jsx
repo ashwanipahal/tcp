@@ -31,7 +31,7 @@ const AddressOption = ({
           name={name}
           checked={isSelected}
           onChange={onChange}
-          className="elem--mr__MED"
+          className="elem-mr-MED"
         />
         <Address address={address} />
       </label>
