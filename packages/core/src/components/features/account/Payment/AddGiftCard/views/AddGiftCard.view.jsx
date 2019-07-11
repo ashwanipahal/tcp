@@ -28,7 +28,7 @@ class AddGiftCard extends React.PureComponent<Props> {
           fontFamily="secondaryFontFamily"
           HeadingLarge="six"
           tag="h4"
-          className="addGiftCard__separator"
+          className="add-gift-card__separator"
           dataLocator="gift-card-addcardheader"
         >
           {labels.ACC_LBL_ADD_GIFT_CARD}

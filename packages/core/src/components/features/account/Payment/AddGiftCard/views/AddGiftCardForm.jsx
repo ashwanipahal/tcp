@@ -39,19 +39,29 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
             />
           </Col>
         </Row>
-        <Row fullBleed className="addGiftCard_row">
+        <Row fullBleed className="add-gift-card__row">
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 8, large: 5 }}>
-            <div className="addGiftCard__row__message__container">
+            <div className="add-gift-card__row__message__container">
               <RichText richTextHtml={labels.ACC_LBL_GIFT_CARD_MESSAGE} />
             </div>
           </Col>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 1, medium: 1, large: 1 }} />
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 4, medium: 3, large: 2 }}>
+
+          <Col
+            ignoreGutter={{ small: true }}
+            colSize={{ small: 4, medium: 3, large: 2 }}
+            className="add-gift-card__first-button-container"
+          >
             <Button buttonVariation="fixed-width" type="button" data-locator="gift-card-cancelbtn">
               {labels.ACC_LBL_CANCEL_CARD}
             </Button>
           </Col>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 4, medium: 3, large: 2 }}>
+
+          <Col
+            ignoreGutter={{ small: true }}
+            colSize={{ small: 4, medium: 3, large: 2 }}
+            className="add-gift-card__second-button-container"
+          >
             <Button
               buttonVariation="fixed-width"
               fill="BLUE"

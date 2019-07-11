@@ -39,6 +39,7 @@ exports[`GiftCardList Component should render correctly 1`] = `
         className="cardList__ccAddCta"
         dataLocator="payment-addagiftcard"
         fill="BLUE"
+        onClick={[Function]}
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -74,6 +75,7 @@ exports[`GiftCardList Component should render correctly if list is present 1`] =
         className="cardList__ccAddCta"
         dataLocator="payment-addagiftcard"
         fill="BLUE"
+        onClick={[Function]}
       />
     </Styled(Col)>
   </Styled(Row)>
