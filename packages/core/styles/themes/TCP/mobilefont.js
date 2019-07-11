@@ -83,15 +83,21 @@ const FONT_WEIGHT = {
   normal: 'normal',
   medium: '500',
   semiBold: '600',
-  bold: 'bold',
+  bold: '800',
   black: '900',
 };
 
+// value not working
 const LINE_HEIGHT = {
   snug: 1,
   tight: 1.07,
   medium: 1.15,
   normal: 'normal',
+  lineHeight_10: 10,
+  lineHeight_20: 20,
+  lineHeight_30: 30,
+  lineHeight_40: 40,
+  lineHeight_50: 50,
 };
 
 const LETTER_SPACING = {
