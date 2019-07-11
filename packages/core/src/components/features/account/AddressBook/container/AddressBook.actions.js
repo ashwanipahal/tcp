@@ -44,3 +44,8 @@ export const clearGetAddressListTTL = () => ({
 export const setLoader = () => ({
   type: ADDRESS_BOOK_CONSTANTS.SET_LOADER,
 });
+
+export const setAddressBookNotification = payload => ({
+  type: ADDRESS_BOOK_CONSTANTS.SET_ADDRESS_BOOK_NOTIFICATION,
+  payload,
+});

@@ -31,7 +31,7 @@ exports[`PromotionalArea component renders correctly with mobile check false for
           ],
           "slidesToScroll": 1,
           "slidesToShow": 1,
-          "speed": 1000,
+          "speed": 500,
         }
       }
     >

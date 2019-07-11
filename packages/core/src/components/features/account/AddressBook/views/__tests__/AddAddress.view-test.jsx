@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { fromJS } from 'immutable';
+import { fromJS, List } from 'immutable';
 import { AddAddress } from '../AddAddress.view';
 
 const userEmail = 'test@abc.com';
@@ -9,6 +9,7 @@ describe('AddressBook component', () => {
     const props = {
       submitAddAddressFormAction: () => {},
       userEmail,
+      addressList: List(),
     };
     const component = shallow(<AddAddress {...props} />);
     expect(component).toMatchSnapshot();
@@ -19,6 +20,7 @@ describe('AddressBook component', () => {
       submitAddAddressFormAction: () => {},
       userEmail,
       addAddressResponse: fromJS({ errors: [{ errorKey: 'error' }] }),
+      addressList: List(),
     };
     const component = shallow(<AddAddress {...props} />);
     expect(component).toMatchSnapshot();
@@ -28,15 +30,24 @@ describe('AddressBook component', () => {
     const props = {
       submitAddAddressFormAction: jest.fn(),
       userEmail,
+      addressList: List(),
     };
     const payload = {
       firstName: 'test',
+      addressLine1: 'test',
+      addressLine2: '',
+      zipCode: '12345',
+      primary: true,
     };
     const component = shallow(<AddAddress {...props} />);
     component.instance().submitAddAddressForm(payload);
     expect(props.submitAddAddressFormAction).toBeCalledWith({
-      ...payload,
-      ...{ email: userEmail },
+      firstName: 'test',
+      email: userEmail,
+      address1: payload.addressLine1,
+      address2: payload.addressLine2,
+      zip: payload.zipCode,
+      primary: 'true',
     });
   });
 });

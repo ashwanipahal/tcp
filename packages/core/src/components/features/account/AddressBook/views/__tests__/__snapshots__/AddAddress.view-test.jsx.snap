@@ -33,14 +33,15 @@ exports[`AddressBook component should renders correctly when errors are present 
     <ReduxForm
       backToAddressBookClick={[Function]}
       destroyOnUnmount={true}
-      enableReinitialize={false}
+      enableReinitialize={true}
       forceUnregisterOnUnmount={false}
       form="AddAddressForm"
       getFormState={[Function]}
       initialValues={
         Object {
-          "address2": "",
+          "addressLine2": "",
           "country": "US",
+          "primary": true,
         }
       }
       keepDirtyOnReinitialize={false}
@@ -55,6 +56,7 @@ exports[`AddressBook component should renders correctly when errors are present 
       touchOnBlur={true}
       touchOnChange={false}
       updateUnregisteredFields={false}
+      validate={[Function]}
     />
   </Styled(Grid)>
 </div>
@@ -82,14 +84,15 @@ exports[`AddressBook component should renders correctly without any error 1`] = 
     <ReduxForm
       backToAddressBookClick={[Function]}
       destroyOnUnmount={true}
-      enableReinitialize={false}
+      enableReinitialize={true}
       forceUnregisterOnUnmount={false}
       form="AddAddressForm"
       getFormState={[Function]}
       initialValues={
         Object {
-          "address2": "",
+          "addressLine2": "",
           "country": "US",
+          "primary": true,
         }
       }
       keepDirtyOnReinitialize={false}
@@ -104,6 +107,7 @@ exports[`AddressBook component should renders correctly without any error 1`] = 
       touchOnBlur={true}
       touchOnChange={false}
       updateUnregisteredFields={false}
+      validate={[Function]}
     />
   </Styled(Grid)>
 </div>

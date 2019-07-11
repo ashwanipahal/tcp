@@ -18,12 +18,13 @@ type Props = {
 const InputCheckbox = ({ children, className, ariaLabel, input, dataLocator }: Props): Node => (
   <label htmlFor={input.name} className={className}>
     <input
+      {...input}
       id={input.name}
       aria-label={ariaLabel}
       className="CheckBox__input"
       type="checkbox"
-      {...input}
       data-locator={dataLocator}
+      checked={input.value}
     />
     <BodyCopy fontSize="fs12" fontFamily="secondary">
       {children}
