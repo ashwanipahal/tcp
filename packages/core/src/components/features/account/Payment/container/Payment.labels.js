@@ -17,6 +17,18 @@ const labels = {
   ACC_LBL_OFFERS_MESSAGE:
     '<b>SAVE 30% TODAY WHEN YOU OPEN AND USE A <span class="offers__msg"> MY PLACE REWARDS CREDIT CARD! </span></b>',
   ACC_LBL_OFFERS_DETAILS: '<a class="offers__link" href="#">DETAILS</a>',
+  ACC_LBL_DEFAULT_CARD_NAME: 'Credit Card',
+  ACC_LBL_CARD_NUM: 'Card ending in ',
+  ACC_LBL_EXP_DATE: 'Expires on ',
+  ACC_LBL_EDIT: 'Edit',
+  ACC_LBL_DELETE: 'Delete',
+  ACC_LBL_VENMO_ACCOUNT: 'Your Venmo Account',
+  ACC_LBL_GIFT_CARD: 'Gift Card Name',
+  ACC_LBL_REM_BAL: 'Remaining balance',
+  ACC_LBL_MAKE_DEFAULT: 'Make Default',
+  ACC_LBL_DEFAULT_PAYMENT: 'DEFAULT PAYMENT',
+  ACC_LBL_PLCC_CARD: 'My Place Rewards Credit Card',
+  ACC_LBL_VENMO_HEADING: 'VENMO',
 };
 
 export default labels;

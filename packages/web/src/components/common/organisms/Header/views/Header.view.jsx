@@ -9,13 +9,17 @@ import config from '../config';
 import headerStyles from '../Header.style';
 import HomeLogo from './HomeLogo';
 
-const { HeaderBrand, HeaderNav, DummyNav, HeaderLoyalty } = headerStyles;
+const { HeaderBrand, HeaderLoyalty } = headerStyles;
 const brand = identifyBrand();
 
-const Header = ({ headerTopNav, headerPromoArea }) => {
+const Header = ({ brandTabs, promoMessageWrapper, headerPromoArea }) => {
   return (
     <header>
-      <HeaderTopNav className="header-topnav" dataTopNav={headerTopNav} />
+      <HeaderTopNav
+        className="header-topnav"
+        brandTabs={brandTabs}
+        promoMessageWrapper={promoMessageWrapper}
+      />
       <HeaderBrand className="header-brand">
         <Row>
           <Col
@@ -35,40 +39,12 @@ const Header = ({ headerTopNav, headerPromoArea }) => {
           </Col>
         </Row>
       </HeaderBrand>
-      <HeaderNav className="header-nav">
-        <Row>
-          <Col
-            className="header-nav__nav-row"
-            colSize={{
-              large: 12,
-              medium: 0,
-              small: 0,
-            }}
-          >
-            <DummyNav className="dummy-nav">
-              <div>Girl</div>
-              <div>Toddler Girl</div>
-              <div>Boy</div>
-              <div>Toddler Boy</div>
-              <div>Baby</div>
-              <div>Shoes</div>
-              <div>Accessories</div>
-              <div>Trending</div>
-              <div>Gift Cards</div>
-              <div>Clearance</div>
-            </DummyNav>
-          </Col>
-        </Row>
-      </HeaderNav>
       <HeaderPromo
         mobileMarkup
         className="header__promo-area--mobile"
-        dataPromo={headerPromoArea.composites.promoTextBanner}
+        dataPromo={headerPromoArea}
       />
-      <HeaderPromo
-        className="header__promo-area--desktop"
-        dataPromo={headerPromoArea.composites.promoTextBanner}
-      />
+      <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
       <HeaderLoyalty className="header-loyalty">
         <Row>
           <Col
@@ -88,12 +64,9 @@ const Header = ({ headerTopNav, headerPromoArea }) => {
 };
 
 Header.propTypes = {
-  headerTopNav: PropTypes.shape({}).isRequired,
-  headerPromoArea: PropTypes.shape({
-    composites: PropTypes.shape({
-      promoTextBanner: PropTypes.shape({}),
-    }),
-  }).isRequired,
+  brandTabs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  promoMessageWrapper: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  headerPromoArea: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default Header;

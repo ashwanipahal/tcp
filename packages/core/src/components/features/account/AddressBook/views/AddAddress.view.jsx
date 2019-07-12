@@ -6,21 +6,46 @@ import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Anchor from '../../../../common/atoms/Anchor';
 import AddAddressFormComponent from './molecules/AddAddressForm';
+import AddressVerification from '../../AddressVerification/container/AddressVerification.container';
+import labels from '../container/AddressBook.labels';
 import styles from '../styles/AddAddress.style';
 
 // @flow
+
 type Props = {
   className: ?string,
   submitAddAddressFormAction: any,
+  verifyAddressAction: ({}) => void,
   addAddressResponse: any,
   userEmail: string,
+  addressList: List<{}>,
 };
 
 export class AddAddress extends React.PureComponent<Props> {
-  submitAddAddressForm = payload => {
+  verifyAddress = payload => {
+    const { verifyAddressAction } = this.props;
+    verifyAddressAction(this.formatPayload(payload));
+  };
+
+  formatPayload = payload => {
+    const { addressLine1, addressLine2, zipCode, primary, ...otherPayload } = payload;
+    return {
+      ...otherPayload,
+      ...{
+        address1: addressLine1,
+        address2: addressLine2,
+        zip: zipCode,
+        primary: primary ? 'true' : 'false',
+      },
+    };
+  };
+
+  submitAddAddressForm = payloadParam => {
     const { submitAddAddressFormAction, userEmail } = this.props;
-    const formattedPayload = { ...payload, ...{ email: userEmail } };
-    submitAddAddressFormAction(formattedPayload);
+    const payload = Object.assign(payloadParam, {
+      email: userEmail,
+    });
+    submitAddAddressFormAction(payload);
   };
 
   backToAddressBookClick = () => {
@@ -28,7 +53,7 @@ export class AddAddress extends React.PureComponent<Props> {
   };
 
   render() {
-    const { className, addAddressResponse } = this.props;
+    const { className, addAddressResponse, addressList } = this.props;
     const isSuccess = addAddressResponse && addAddressResponse.get('addressId');
     const errorObject = addAddressResponse && addAddressResponse.get('errors');
     if (isSuccess) {
@@ -60,9 +85,21 @@ export class AddAddress extends React.PureComponent<Props> {
               message={errorObject.getIn(['0', 'errorKey'])}
             />
           )}
+          <AddressVerification
+            onSuccess={this.submitAddAddressForm}
+            heading="Add Address"
+            labels={labels}
+            onError={this.submitAddAddressForm}
+          />
           <AddAddressFormComponent
             backToAddressBookClick={this.backToAddressBookClick}
-            onSubmit={this.submitAddAddressForm}
+            onSubmit={this.verifyAddress}
+            labels={labels}
+            initialValues={{
+              primary: addressList.size === 0,
+              country: 'US',
+              addressLine2: '',
+            }}
           />
         </Grid>
       </div>

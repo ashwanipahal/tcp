@@ -3,6 +3,7 @@
 exports[`Delete Address Modal should render correctly 1`] = `
 <errorBoundaryComponent
   className="TCPModal__Content, undefined"
+  closeIconDataLocator="addressdeletemodalcrossicon"
   fixedWidth={true}
   heading="DELETE ADDRESS"
   maxWidth="460px"
@@ -14,6 +15,7 @@ exports[`Delete Address Modal should render correctly 1`] = `
     <Styled(BodyStyle)
       bodySize="seven"
       className="deleteAddressModal_modalTitle"
+      dataLocator="addressdeletemodalconfirmtext"
       fontFamily="secondaryFontFamily"
       fontWeight="bold"
     >
@@ -31,21 +33,27 @@ exports[`Delete Address Modal should render correctly 1`] = `
         }
       }
       className="deleteAddressModal_addressToDelete"
+      dataLocatorPrefix="address-delete-modal"
+      fontWeight="bold"
+      showCountry={true}
+      showPhone={true}
     />
     <div
       className="deleteAddressModal_btnWrapper"
     >
       <Styled(Button)
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         className="deleteAddressModal_deleteConfirm deleteAddressModal_btn"
+        dataLocator="addressdeletemodalyesdeletebtn"
         fill="BLUE"
         onClick={[Function]}
       >
         Yes Delete
       </Styled(Button)>
       <Styled(Button)
-        buttonVariation="variable-width"
+        buttonVariation="fixed-width"
         className="deleteAddressModal_btn"
+        dataLocator="addressdeletemodalnodontdeletebtn"
         fill="RED"
         onClick={[Function]}
       >

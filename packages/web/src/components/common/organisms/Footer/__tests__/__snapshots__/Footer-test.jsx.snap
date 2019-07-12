@@ -121,6 +121,16 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
         }
       >
         <Styled(Copyright) />
+        <div
+          className="poc-hide"
+        >
+          <Styled(Button)>
+            Get Registered User Info
+          </Styled(Button)>
+          <Styled(Button)>
+            Get Order detail
+          </Styled(Button)>
+        </div>
       </Styled(Col)>
       <Styled(Col)
         className="footer-bottom__slot--2 default-offset"
@@ -287,6 +297,16 @@ exports[`Footer component Footer component renders correctly without props 1`] =
         }
       >
         <Styled(Copyright) />
+        <div
+          className="poc-hide"
+        >
+          <Styled(Button)>
+            Get Registered User Info
+          </Styled(Button)>
+          <Styled(Button)>
+            Get Order detail
+          </Styled(Button)>
+        </div>
       </Styled(Col)>
       <Styled(Col)
         className="footer-bottom__slot--2 default-offset"

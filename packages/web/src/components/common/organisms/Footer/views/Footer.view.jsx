@@ -22,6 +22,8 @@ const Footer = ({
   smsSignup,
   referAFriend,
   referenceID,
+  getUserInfoAction,
+  getOrderDetailAction,
 }) => (
   <footer className={className}>
     <div className="footer-top">
@@ -105,6 +107,10 @@ const Footer = ({
           }}
         >
           <Copyright>{copyrightText}</Copyright>
+          <div className="poc-hide">
+            <Button onClick={getUserInfoAction}>Get Registered User Info</Button>
+            <Button onClick={getOrderDetailAction}>Get Order detail</Button>
+          </div>
         </Col>
         <Col
           className="footer-bottom__slot--2 default-offset"
@@ -169,6 +175,8 @@ Footer.propTypes = {
     text: PropTypes.string,
   }),
   referenceID: PropTypes.string,
+  getUserInfoAction: PropTypes.func.isRequired,
+  getOrderDetailAction: PropTypes.func.isRequired,
 };
 
 Footer.defaultProps = {

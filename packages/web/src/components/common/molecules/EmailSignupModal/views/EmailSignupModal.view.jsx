@@ -5,7 +5,6 @@ import { Button, RichText, Col, Row, Image, TextBox } from '@tcp/core/src/compon
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { Grid, Modal } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import errors from '@tcp/core/src/utils/errorsMsg';
 
 import SignupConfirm from '../../SignupConfirm';
 import SignupFormIntro from '../../SignupFormIntro';
@@ -155,7 +154,7 @@ class SignupWrapper extends React.PureComponent {
                         />
                         {showAsyncError && (
                           <BodyCopy fontSize="fs12" fontFamily="secondary" color="secondary.dark">
-                            {errors.VALID_PHONE}
+                            {formViewConfig.validationErrorLabel}
                           </BodyCopy>
                         )}
                         <BodyCopy fontSize="fs12" fontFamily="secondary" className="terms-label">

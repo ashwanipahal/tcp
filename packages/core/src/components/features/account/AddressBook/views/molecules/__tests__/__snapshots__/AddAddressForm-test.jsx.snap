@@ -5,18 +5,12 @@ exports[`AddAddressForm component should renders correctly 1`] = `
   backToAddressBookClick={[MockFunction]}
   className="any"
   destroyOnUnmount={true}
-  enableReinitialize={false}
+  enableReinitialize={true}
   forceUnregisterOnUnmount={false}
   form="AddAddressForm"
   forwardedRef={null}
   getFormState={[Function]}
   handleSubmit={[MockFunction]}
-  initialValues={
-    Object {
-      "address2": "",
-      "country": "US",
-    }
-  }
   keepDirtyOnReinitialize={false}
   persistentSubmitErrors={false}
   pure={true}
@@ -28,5 +22,6 @@ exports[`AddAddressForm component should renders correctly 1`] = `
   touchOnBlur={true}
   touchOnChange={false}
   updateUnregisteredFields={false}
+  validate={[Function]}
 />
 `;

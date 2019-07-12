@@ -11,7 +11,7 @@ export default {
     autoplaySpeed: 3000,
     fade: true,
     infinite: true,
-    speed: 1000,
+    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     responsive: [
