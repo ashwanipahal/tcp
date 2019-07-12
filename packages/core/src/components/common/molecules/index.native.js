@@ -1,3 +1,5 @@
+import Carousel from './Carousel';
 import ModuleD from './ModuleD';
+import ModuleH from './ModuleH';
 
-export default ModuleD;
+export { Carousel, ModuleD, ModuleH };

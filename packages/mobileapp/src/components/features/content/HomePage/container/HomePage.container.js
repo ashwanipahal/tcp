@@ -3,9 +3,12 @@ import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
 import HomePageView from '../views';
 
 const mapStateToProps = state => {
-  const moduleD = state.layouts.homepage ? state.layouts.homepage.slot_1 : {};
+  const slot1 = state.layouts.homepage ? state.layouts.homepage.slot_1 : {};
+  const slot2 = state.layouts.homepage ? state.layouts.homepage.slot_2 : {};
+
   return {
-    moduleD,
+    slot_1: slot1,
+    slot_2: slot2,
   };
 };
 

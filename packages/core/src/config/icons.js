@@ -21,4 +21,6 @@ export default {
   'icon-card-smile': '/static/images/card-smile.png',
   'credit-card': '/static/images/credit-card.png',
   'gift-card': '/static/images/gift-card.png',
+  // Mobile
+  play: '/assets/images/robot-dev.png',
 };

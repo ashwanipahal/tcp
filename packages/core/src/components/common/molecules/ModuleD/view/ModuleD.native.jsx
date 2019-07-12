@@ -1,12 +1,11 @@
+// @flow
 import React from 'react';
 import { FlatList, TouchableOpacity } from 'react-native';
 import { Anchor, Button, Image } from '../../../atoms';
 import { getScreenWidth, UrlHandler } from '../../../../../utils/utils.native';
-import { ButtonWrapper, Heading, ModuleDWrapper, Tile } from '../ModuleD.style.native';
+import { ButtonWrapper, Heading, Wrapper, Tile } from '../ModuleD.style.native';
 import colors from '../../../../../../styles/themes/TCP/colors';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
-
-// @flow
 
 type Props = {
   composites: Object,
@@ -44,11 +43,9 @@ const renderItem = item => {
         <Image
           alt={image.alt}
           source={{ uri: getUrlWithCrop(image.url) }}
-          style={{
-            height: imageSize,
-            marginBottom: parseInt(spacing.ELEM_SPACING.XS, 10),
-            width: imageSize,
-          }}
+          height={imageSize}
+          marginBottom={parseInt(spacing.ELEM_SPACING.XS, 10)}
+          width={imageSize}
         />
       </TouchableOpacity>
       <Anchor
@@ -89,7 +86,7 @@ const ModuleD = (props: Props) => {
   }
 
   return (
-    <ModuleDWrapper>
+    <Wrapper>
       {headingText && (
         <TouchableOpacity accessibilityRole="button" onPress={() => UrlHandler(url)}>
           <Heading>{headingText}</Heading>
@@ -117,7 +114,7 @@ const ModuleD = (props: Props) => {
           />
         </ButtonWrapper>
       )}
-    </ModuleDWrapper>
+    </Wrapper>
   );
 };
 
