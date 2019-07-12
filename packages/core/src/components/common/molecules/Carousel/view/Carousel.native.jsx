@@ -5,6 +5,10 @@ import { Image } from '../../../atoms';
 import config from '../config';
 import theme from '../../../../../../styles/themes/TCP';
 
+/**
+ * Import play pause image icons.
+ * Note: React native imports images using require.
+ */
 const playIcon = require('../../../../../../assets/play.png');
 const pauseIcon = require('../../../../../../assets/pause.png');
 
