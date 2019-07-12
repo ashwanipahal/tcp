@@ -1,10 +1,13 @@
 import superagent from 'superagent';
-import { STATEFULL_API_REQUEST_TIMEOUT } from '../../config';
+import { STATEFUL_API_REQUEST_TIMEOUT } from '../../config';
 import { isClient } from '../../../utils';
 import { readCookie } from '../../../utils/cookie.util';
 
 /**
  * @summary this is meant to generate a new UID on each API call
+ * @param {string} apiConfig - Api config to be utilized for brand/channel/locale config
+ * @returns {string} returns generated traceId of User or else not-found string value
+
  */
 const generateTraceId = apiConfig => {
   const apiConfigObj = apiConfig;
@@ -23,6 +26,8 @@ const generateTraceId = apiConfig => {
 
 /**
  * @summary this is ONLY used for tieing back logs to a user, this value should not be used for any other application use
+ * @param {string} apiConfig - Api config to be utilized for brand/channel/locale config
+ * @returns {string} returns derived QuantumMetricSessionID from cookie or else not-found string value
  */
 const generateSessionId = apiConfig => {
   const sessionCookies = ['QuantumMetricSessionID'];
@@ -38,78 +43,59 @@ const generateSessionId = apiConfig => {
   return encodeURIComponent(cookie || 'not-found');
 };
 
-const setRequestCookies = (apiConfig, reqSetting) => {
-  const reqSettingObj = reqSetting;
-  if (apiConfig.cookie && !isClient()) {
-    reqSettingObj.Cookie = apiConfig.cookie;
-  }
-  return reqSettingObj;
-};
-
-const deriveRequestParams = (apiConfig, args) => {
+/**
+ * @summary This is to set the request params and generate the request URL.
+ * @param {string} apiConfig - Api config to be utilized for brand/channel/locale config
+ * @param {Object} reqObj - request param with endpoints and payload
+ * @returns {Object} returns derived request object and request url
+ */
+const getRequestParams = (apiConfig, reqObj) => {
   const { proto, domain, catalogId, storeId, langId, isMobile } = apiConfig;
-
   const deviceType = isMobile ? 'mobile' : 'desktop';
-
-  // TODO: Unbxd API Keys - Custom/Domain Mapping Keys
-  const tcpApi = `${proto}${domain}${args.webService.URI}`;
-  const requestUrl = tcpApi; // for Unbxd or TCP API
-
-  let reqSetting = {};
-  if (!args.webService.unbxd) {
-    reqSetting = {
-      langId,
-      storeId,
-      Pragma: 'no-cache',
-      Expires: 0,
-      catalogId,
-      deviceType,
-      'Cache-Control': 'no-store, must-revalidate',
-      'tcp-trace-request-id': generateTraceId(apiConfig),
-      'tcp-trace-session-id': generateSessionId(apiConfig),
-    };
+  const requestUrl = `${proto}${domain}${reqObj.webService.URI}`;
+  const reqSetting = {
+    langId,
+    storeId,
+    Pragma: 'no-cache',
+    Expires: 0,
+    catalogId,
+    deviceType,
+    'Cache-Control': 'no-store, must-revalidate',
+    'tcp-trace-request-id': generateTraceId(apiConfig),
+    'tcp-trace-session-id': generateSessionId(apiConfig),
+  };
+  if (apiConfig.cookie && !isClient()) {
+    reqSetting.Cookie = apiConfig.cookie;
   }
-  reqSetting = setRequestCookies(apiConfig, reqSetting);
   return {
     requestUrl,
     reqSetting,
   };
 };
 
-const webServiceCall = (apiConfig, reqObj) => {
-  const args = reqObj;
-  if (!args.webService) {
-    return null;
-  }
-
-  const { requestUrl, reqSetting } = deriveRequestParams(apiConfig, args);
-  const reqTimeout = STATEFULL_API_REQUEST_TIMEOUT;
-  const requestType = args.webService.method.toLowerCase();
+/**
+ * @summary This is to initialise superagent client to consume the stateful data.
+ * @param {string} apiConfig - Api config to be utilized for brand/channel/locale config
+ * @param {Object} reqObj - request param with endpoints and payload
+ * @returns {Promise} Resolves with promise to consume the stateful api or reject in case of error
+ */
+const statefulAPICall = (apiConfig, reqObj) => {
+  const { requestUrl, reqSetting } = getRequestParams(apiConfig, reqObj);
+  const reqTimeout = STATEFUL_API_REQUEST_TIMEOUT;
+  const requestType = reqObj.webService.method.toLowerCase();
   const request = superagent[requestType](requestUrl)
     .set(reqSetting)
     .accept('application/json')
     .timeout(reqTimeout);
-
-  if (args.header) {
-    request.set(args.header);
+  if (reqObj.header) {
+    request.set(reqObj.header);
   }
-
-  if (!args.webService.unbxd) {
-    request.withCredentials();
-  }
-
-  // make the api call
+  request.withCredentials();
   if (requestType === 'get') {
-    request.query(args.body);
-    // eslint-disable-next-line no-underscore-dangle
-    if (args.webService.unbxd && request._query && request._query.length > 0) {
-      // eslint-disable-next-line no-underscore-dangle
-      request._query[0] = decodeURIComponent(request._query[0]);
-    }
+    request.query(reqObj.body);
   } else {
-    request.send(args.body);
+    request.send(reqObj.body);
   }
-
   const result = new Promise((resolve, reject) => {
     request
       .then(response => {
@@ -123,4 +109,4 @@ const webServiceCall = (apiConfig, reqObj) => {
   return result;
 };
 
-export default webServiceCall;
+export default statefulAPICall;

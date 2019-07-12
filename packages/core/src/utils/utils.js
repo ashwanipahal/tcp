@@ -10,6 +10,10 @@ export const importGraphQLQueriesDynamically = query => {
   return import(`../services/handler/graphQL/queries/${query}`);
 };
 
+export const isMobileApp = () => {
+  return typeof window === 'undefined';
+};
+
 export const isServer = () => {
   return typeof window === 'undefined';
 };

@@ -1,7 +1,8 @@
 import { graphQLClient } from '../config';
 import QueryBuilder from './graphQL/queries/queryBuilder';
 import { importGraphQLClientDynamically } from '../../utils';
-import webServiceCall from './statefull/statefullClient';
+import statefulAPICall from './stateful/statefulClient';
+import unbxdAPICall from './graphQL/graphQLClient';
 
 let apiConfig = null;
 
@@ -55,7 +56,10 @@ export const fetchModuleDataFromGraphQL = async modules => {
   return executeGraphQLQuery(query).catch(errorHandler);
 };
 
-export const createAPIConfig = () => {
+/**
+ * @summary Creates the API config object and set it to global constant to be used across
+ */
+const createAPIConfig = () => {
   apiConfig = {
     traceIdCount: 0,
     proto: 'https',
@@ -74,16 +78,29 @@ export const createAPIConfig = () => {
   };
 };
 
-export const getAPIConfig = () => {
+/**
+ * @summary Get the api config if already created or else creates one.
+ * @returns {Object} apiConfig - Api config to be utilized for brand/channel/locale config
+ */
+const getAPIConfig = () => {
   if (!apiConfig) {
     createAPIConfig();
   }
   return apiConfig;
 };
 
+/**
+ * @summary Fetches Queries based on passed module, then executes the query and returns a promise for query execution
+ * @param {Object} reqObj request param with endpoints and payload
+ * @returns {Promise} Resolves with unbxd or stateful client based on request object or returns null
+ */
 export const executeWebServiceCall = reqObj => {
+  if (!reqObj.webService) {
+    return null;
+  }
   const apiConfigObj = getAPIConfig();
-  return webServiceCall(apiConfigObj, reqObj).catch(errorHandler);
+  const apiClient = reqObj.webService.unbxd ? unbxdAPICall : statefulAPICall;
+  return apiClient(apiConfigObj, reqObj).catch(errorHandler);
 };
 
 export default {

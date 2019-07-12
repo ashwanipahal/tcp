@@ -24,7 +24,7 @@ export const defaultCountry = 'USA';
 export const defaultBrand = 'TCP';
 export const defaultChannel = 'Desktop';
 
-export const STATEFULL_API_REQUEST_TIMEOUT = {
+export const STATEFUL_API_REQUEST_TIMEOUT = {
   response: 30000,
   deadline: 40000,
 };
@@ -32,5 +32,5 @@ export const STATEFULL_API_REQUEST_TIMEOUT = {
 export default {
   awsAppSync,
   graphQLClient,
-  STATEFULL_API_REQUEST_TIMEOUT,
+  STATEFUL_API_REQUEST_TIMEOUT,
 };

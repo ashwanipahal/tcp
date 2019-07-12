@@ -1,6 +1,21 @@
-import { isClient } from './utils';
+import { isClient, isMobileApp } from './utils';
 
-export const readCookie = (key, cookieString) => {
+/**
+ * @summary This is to read cookie from a Mobile App.
+ * @returns {null} for now but will eventually resolve with the key of cookie to return the value or null in case key does not match
+ */
+const readCookieMobileApp = () => {
+  // TODO - work on it to get cookie from Mobile APP
+  return null;
+};
+
+/**
+ * @summary This is to read cookie from a browser. In case of node, we pass the cookie in string.
+ * @param {string} key - Cookie key/name
+ * @param {string} cookieString - Cookie value in string to be used in case of Node
+ * @returns {string} Resolves with the key of cookie to return the value or null in case key does not match
+ */
+const readCookieWeb = (key, cookieString) => {
   try {
     if (isClient() || cookieString) {
       const name = `${key}=`;
@@ -24,7 +39,20 @@ export const readCookie = (key, cookieString) => {
 };
 
 /**
- * Remove cookie
+ * @summary This is a wrapper to read cookie from mobile app.
+ * @param {string} key - Cookie key/name
+ * @param {string} cookieString - Cookie value in string to be used in case of Node
+ */
+export const readCookie = (key, cookieString) => {
+  if (isMobileApp) {
+    readCookieMobileApp();
+  } else {
+    readCookieWeb(key, cookieString);
+  }
+};
+
+/**
+ * Remove cookie in browser based on the key
  * @param {string} key - Cookie key/name
  */
 export const removeCookie = key => {
