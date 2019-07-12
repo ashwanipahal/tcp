@@ -32,7 +32,7 @@ type Props = {
   showNotificationCaptcha: boolean,
 };
 
-export const PaymentView = ({
+const PaymentView = ({
   labels,
   className,
   showNotification,

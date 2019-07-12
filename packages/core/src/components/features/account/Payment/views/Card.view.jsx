@@ -1,6 +1,4 @@
 import React from 'react';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import styles from '../styles/Payment.style';
 import DeleteCardModal from './DeleteCardModal';
 import { CardList } from './CardList.view';
 
@@ -17,6 +15,7 @@ type Props = {
   checkbalanceValueInfo: any,
   showNotification: boolean,
   showNotificationCaptcha: boolean,
+  className: string,
 };
 
 export class CardView extends React.PureComponent<Props> {
@@ -43,10 +42,11 @@ export class CardView extends React.PureComponent<Props> {
       showUpdatedNotificationOnModal,
       showNotification,
       showNotificationCaptcha,
+      className,
     } = this.props;
     const { selectedGiftCard } = this.state;
     return (
-      <React.Fragment>
+      <div className={className}>
         <CardList
           deleteModalMountedState={deleteModalMountedState}
           setDeleteModalMountState={setDeleteModalMountState}
@@ -77,8 +77,8 @@ export class CardView extends React.PureComponent<Props> {
           setDeleteModalMountState={setDeleteModalMountState}
           showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
         />
-      </React.Fragment>
+      </div>
     );
   }
 }
-export default withStyles(CardView, styles);
+export default CardView;

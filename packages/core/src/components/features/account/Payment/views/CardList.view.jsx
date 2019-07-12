@@ -30,8 +30,8 @@ export const CardList = ({
   showNotificationCaptcha,
 }: Props) => {
   return (
-    <div>
-      <Row fullBleed className={className}>
+    <div className={className}>
+      <Row fullBleed>
         {giftCardList.map((card, index) => (
           <Col
             className="cardList__col"
