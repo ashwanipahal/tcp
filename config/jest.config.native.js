@@ -31,7 +31,14 @@ module.exports = {
     '!**/*.query.js',
     '!**/__mocks__/**',
   ],
-  coveragePathIgnorePatterns: ['/node_modules/', 'index.native.js', 'index.js'],
+  coveragePathIgnorePatterns: [
+    '/node_modules/',
+    'index.native.js',
+    'index.js',
+    'mock.js',
+    '/flow-typed/',
+    '/pages/',
+  ],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],
   snapshotSerializers: ['enzyme-to-json/serializer'],
 };
