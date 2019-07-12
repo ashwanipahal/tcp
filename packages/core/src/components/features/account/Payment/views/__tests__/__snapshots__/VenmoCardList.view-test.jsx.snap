@@ -51,7 +51,7 @@ exports[`VenmoCardList Component should render correctly if list is present 1`] 
       }
       key="container-73501"
     >
-      <Styled(ReduxForm)
+      <ReduxForm
         card={
           Object {
             "accountNo": "************1111",
@@ -79,10 +79,9 @@ exports[`VenmoCardList Component should render correctly if list is present 1`] 
             },
           }
         }
-        destroyOnUnmount={true}
+        destroyOnUnmount={false}
         enableReinitialize={true}
         forceUnregisterOnUnmount={false}
-        form="CardTile"
         getFormState={[Function]}
         keepDirtyOnReinitialize={false}
         labels={

@@ -17,6 +17,7 @@ import {
   getVenmoCards,
   getCardListState,
   checkbalanceValue,
+  getShowNotificationCaptchaState,
 } from './Payment.selectors';
 import labels from './Payment.labels';
 import { PaymentView } from '../views/Payment.view';
@@ -37,6 +38,7 @@ type Props = {
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
   setDefaultPaymentMethod: Function,
+  showNotificationCaptcha: boolean,
 };
 
 export class PaymentContainer extends React.Component<Props> {
@@ -60,6 +62,7 @@ export class PaymentContainer extends React.Component<Props> {
       onGetBalanceCard,
       checkbalanceValueInfo,
       setDefaultPaymentMethod,
+      showNotificationCaptcha,
     } = this.props;
     if (isFetching) return <p>Loading...</p>;
     return (
@@ -67,6 +70,7 @@ export class PaymentContainer extends React.Component<Props> {
         deleteModalMountedState={deleteModalMountedState}
         setDeleteModalMountState={setDeleteModalMountState}
         showNotification={showNotification}
+        showNotificationCaptcha={showNotificationCaptcha}
         onDeleteCard={onDeleteCard}
         showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
         labels={labels}
@@ -110,6 +114,7 @@ const mapStateToProps = state => {
     venmoCardList: getVenmoCards(state),
     isFetching: getCardListFetchingState(state),
     showNotification: getShowNotificationState(state),
+    showNotificationCaptcha: getShowNotificationCaptchaState(state),
     deleteModalMountedState: deleteModalOpenState(state),
     showUpdatedNotificationOnModal: showUpdatedNotificationOnModalState(state),
     checkbalanceValueInfo: checkbalanceValue(state),

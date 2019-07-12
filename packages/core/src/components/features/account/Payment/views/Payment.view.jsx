@@ -29,6 +29,7 @@ type Props = {
   checkbalanceValueInfo: any,
   setDefaultPaymentMethod: Function,
   venmoCardList: Array<object>,
+  showNotificationCaptcha: boolean,
 };
 
 export const PaymentView = ({
@@ -47,6 +48,7 @@ export const PaymentView = ({
   checkbalanceValueInfo,
   setDefaultPaymentMethod,
   venmoCardList,
+  showNotificationCaptcha,
 }: Props) => {
   return (
     <div className={className}>
@@ -138,6 +140,7 @@ export const PaymentView = ({
           setSelectedGiftCard={setSelectedGiftCard}
           onGetBalanceCard={onGetBalanceCard}
           checkbalanceValueInfo={checkbalanceValueInfo}
+          showNotificationCaptcha={showNotificationCaptcha}
         />
       )}
     </div>

@@ -21,6 +21,7 @@ type Props = {
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
   showNotification: boolean,
+  showNotificationCaptcha: boolean,
 };
 
 const GiftCardList = ({
@@ -34,6 +35,7 @@ const GiftCardList = ({
   onGetBalanceCard,
   checkbalanceValueInfo,
   showNotification,
+  showNotificationCaptcha,
 }: Props) => {
   return (
     <div className={className}>
@@ -76,6 +78,7 @@ const GiftCardList = ({
           onGetBalanceCard={onGetBalanceCard}
           checkbalanceValueInfo={checkbalanceValueInfo}
           showNotification={showNotification}
+          showNotificationCaptcha={showNotificationCaptcha}
         />
       )}
     </div>

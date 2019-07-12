@@ -44,6 +44,11 @@ export const setcheckBalance = payload => ({
   payload,
 });
 
+export const setcheckBalanceError = payload => ({
+  type: PAYMENT_CONSTANTS.SET_CHECK_BALANCE_ERROR,
+  payload,
+});
+
 export const setDefaultPayment = payload => ({
   type: PAYMENT_CONSTANTS.SET_DEFAULT_PAYMENT,
   payload,

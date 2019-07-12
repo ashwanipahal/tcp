@@ -16,6 +16,7 @@ type Props = {
   checkbalanceValueInfo: any,
   giftCardList: Array<object>,
   showNotification: boolean,
+  showNotificationCaptcha: boolean,
 }; // giftCards comment for time being
 export const CardList = ({
   setSelectedGiftCard,
@@ -26,6 +27,7 @@ export const CardList = ({
   labels,
   giftCardList,
   showNotification,
+  showNotificationCaptcha,
 }: Props) => {
   return (
     <div>
@@ -48,8 +50,10 @@ export const CardList = ({
               onGetBalanceCard={onGetBalanceCard}
               checkbalanceValueInfo={checkbalanceValueInfo}
               key={card.creditCardId}
+              form={card.creditCardId}
               labels={labels}
               showNotification={showNotification}
+              showNotificationCaptcha={showNotificationCaptcha}
             />
           </Col>
         ))}

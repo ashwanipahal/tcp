@@ -69,18 +69,21 @@ export default class Recaptcha extends React.Component<Props> {
   }
 
   reset() {
-    const { widget } = this.state;
-    window.grecaptcha.reset(widget);
+    const { ready, widget } = this.state;
+    if (ready) {
+      window.grecaptcha.reset(widget);
+    }
   }
 
   renderGrecaptcha() {
     const { sitekey, onloadCallback } = this.props;
-    this.state.widget = window.grecaptcha.render(this.refToContainer, {
+    const widget = window.grecaptcha.render(this.refToContainer, {
       sitekey: [sitekey], // eslint object-shorthand
       callback: this.handleVerify,
 
       'expired-callback': this.handleExpired,
     });
+    this.setState({ widget });
     if (onloadCallback) onloadCallback();
   }
 

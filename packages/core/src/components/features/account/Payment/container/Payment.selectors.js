@@ -29,6 +29,10 @@ export const getShowNotificationState = state => {
   return state.PaymentReducer.get('showNotification');
 };
 
+export const getShowNotificationCaptchaState = state => {
+  return state.PaymentReducer.get('showNotificationCaptcha');
+};
+
 export const deleteModalOpenState = state => {
   return state.PaymentReducer.get('deleteModalMountedState');
 };

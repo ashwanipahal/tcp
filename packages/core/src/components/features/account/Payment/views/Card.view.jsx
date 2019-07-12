@@ -16,6 +16,7 @@ type Props = {
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
   showNotification: boolean,
+  showNotificationCaptcha: boolean,
 };
 
 export class CardView extends React.PureComponent<Props> {
@@ -41,6 +42,7 @@ export class CardView extends React.PureComponent<Props> {
       checkbalanceValueInfo,
       showUpdatedNotificationOnModal,
       showNotification,
+      showNotificationCaptcha,
     } = this.props;
     const { selectedGiftCard } = this.state;
     return (
@@ -54,6 +56,7 @@ export class CardView extends React.PureComponent<Props> {
           checkbalanceValueInfo={checkbalanceValueInfo}
           labels={labels}
           showNotification={showNotification}
+          showNotificationCaptcha={showNotificationCaptcha}
         />
         <DeleteCardModal
           openState={deleteModalMountedState}
