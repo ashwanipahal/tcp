@@ -3,6 +3,7 @@
 exports[`Heading component renders correctly with props with different variant 1`] = `
 <h4
   className="heading"
+  data-locator=""
 >
   Heading with different variant check
 </h4>
@@ -11,6 +12,7 @@ exports[`Heading component renders correctly with props with different variant 1
 exports[`Heading component renders correctly without props 1`] = `
 <h1
   className={null}
+  data-locator=""
 >
   Heading
 </h1>

@@ -93,4 +93,51 @@ export default css`
   p {
     margin: 0;
   }
+
+  ${props => {
+    return Object.keys(props.theme.spacing.ELEM_SPACING).map(key => {
+      return `.elem-mr-${key} {
+        margin-right: ${props.theme.spacing.ELEM_SPACING[key]}
+      }
+      .elem-mb-${key} {
+        margin-bottom: ${props.theme.spacing.ELEM_SPACING[key]}
+      }
+      .elem-ml-${key} {
+        margin-left: ${props.theme.spacing.ELEM_SPACING[key]}
+      }
+      .elem-mt-${key} {
+        margin-top: ${props.theme.spacing.ELEM_SPACING[key]}
+      }
+      .elem-pr-${key} {
+        padding-right: ${props.theme.spacing.ELEM_SPACING[key]}
+      }
+      .elem-pb-${key} {
+        padding-bottom: ${props.theme.spacing.ELEM_SPACING[key]}
+      }
+      .elem-pl-${key} {
+        padding-left: ${props.theme.spacing.ELEM_SPACING[key]}
+      }
+      .elem-pt-${key} {
+        padding-top: ${props.theme.spacing.ELEM_SPACING[key]}
+      }`;
+    });
+  }}
+
+  ${props => {
+    return Object.keys(props.theme.spacing.LAYOUT_SPACING).map(key => {
+      return `
+      .layout-pr-${key} {
+        padding-right: ${props.theme.spacing.LAYOUT_SPACING[key]}
+      }
+      .layout-pb-${key} {
+        padding-bottom: ${props.theme.spacing.LAYOUT_SPACING[key]}
+      }
+      .layout-pl-${key} {
+        padding-left: ${props.theme.spacing.LAYOUT_SPACING[key]}
+      }
+      .layout-pt-${key} {
+        padding-top: ${props.theme.spacing.LAYOUT_SPACING[key]}
+      }`;
+    });
+  }}
 `;
