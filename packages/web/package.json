@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "next ./src",
+    "start": "node server.js",
     "build": "next build ./src",
     "next-start": "next start ./src -p 8081"
   },
@@ -12,6 +12,7 @@
     "@babel/runtime-corejs2": "^7.4.3",
     "@svgr/webpack": "^4.3.0",
     "@tcp/core": "*",
+    "express": "^4.17.1",
     "next": "latest",
     "next-redux-saga": "4.0.0",
     "next-redux-wrapper": "^3.0.0-alpha.2",
