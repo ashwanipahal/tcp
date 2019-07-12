@@ -14,15 +14,6 @@ type Props = {
 export default class Recaptcha extends React.Component<Props> {
   constructor(props) {
     super(props);
-    this.renderGrecaptcha = this.renderGrecaptcha.bind(this);
-
-    this.checkReady = this.checkReady.bind(this); // recaptcha base includes other js we need to wait before initializing anything
-
-    this.handleExpired = this.handleExpired.bind(this);
-    this.handleVerify = this.handleVerify.bind(this);
-    this.attachToRef = this.attachToRef.bind(this);
-    this.reset = this.reset.bind(this);
-
     this.state = {
       ready: false,
       widget: null,
@@ -46,46 +37,44 @@ export default class Recaptcha extends React.Component<Props> {
     }
   };
 
-  attachToRef(refToContainer) {
-    this.refToContainer = refToContainer;
-    const { widget } = this.state;
-
-    if (refToContainer !== null && !widget) {
-      // can be null for example when React unmounts this components
-      requireNamedOnlineModule('recaptcha').then(this.checkReady);
-    }
-  }
-
-  handleVerify(response) {
+  handleVerify = response => {
     const { verifyCallback } = this.props;
     if (verifyCallback) verifyCallback(response);
-  }
+  };
 
-  handleExpired() {
+  handleExpired = () => {
     // TODO: need to show an error on top of recaptcha
     this.reset();
     const { expiredCallback } = this.props;
     if (expiredCallback) expiredCallback();
-  }
+  };
 
-  reset() {
+  attachToRef = refToContainer => {
+    this.refToContainer = refToContainer;
+    const { widget } = this.state;
+
+    if (refToContainer !== null && !widget) {
+      requireNamedOnlineModule('recaptcha').then(this.checkReady);
+    }
+  };
+
+  reset = () => {
     const { ready, widget } = this.state;
     if (ready) {
       window.grecaptcha.reset(widget);
     }
-  }
+  };
 
-  renderGrecaptcha() {
+  renderGrecaptcha = () => {
     const { sitekey, onloadCallback } = this.props;
     const widget = window.grecaptcha.render(this.refToContainer, {
-      sitekey: [sitekey], // eslint object-shorthand
+      sitekey: [sitekey],
       callback: this.handleVerify,
-
       'expired-callback': this.handleExpired,
     });
     this.setState({ widget });
     if (onloadCallback) onloadCallback();
-  }
+  };
 
   render() {
     const { className, sitekey } = this.props;

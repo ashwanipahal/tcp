@@ -9,7 +9,7 @@ const deleteCardModalStyle = css`
       display: block;
     }
   }
-  .deleteCardModal_cardInfo {
+  .deleteCardModal__cardInfo {
     float: left;
     width: 80%;
     padding-left: 20px;
@@ -17,17 +17,17 @@ const deleteCardModalStyle = css`
       width: 75%;
     }
   }
-  .deleteCardModal_expiry {
+  .deleteCardModal__expiry {
     float: right;
     @media ${props => props.theme.mediaQuery.smallOnly} {
       float: none;
     }
   }
-  .deleteCardModal_btnWrapper {
+  .deleteCardModal__btnWrapper {
     text-align: center;
     padding-top: 80px;
     clear: both;
-    button.deleteCardModal_btn {
+    button.deleteCardModal__btn {
       display: inline-block;
       font-weight: ${props => props.theme.fonts.fontWeight.normal};
       float: none;
@@ -37,24 +37,24 @@ const deleteCardModalStyle = css`
         width: 40%;
       }
     }
-    button.deleteCardModal_deleteCancel {
+    button.deleteCardModal__deleteCancel {
       float: none;
       @media ${props => props.theme.mediaQuery.medium} {
         float: left;
       }
     }
   }
-  .deleteCardModal_desc {
+  .deleteCardModal__desc {
     @media ${props => props.theme.mediaQuery.smallOnly} {
       margin: 0 auto;
       width: 75%;
     }
-    .deleteCardModal_img {
+    .deleteCardModal__img {
       width: 15%;
       float: left;
     }
   }
-  .deleteCardModal_addressToDelete {
+  .deleteCardModal__addressToDelete {
     margin: 0 ${props => props.theme.spacing.LAYOUT_SPACING.XL}
       ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
     display: block;
@@ -65,10 +65,10 @@ const deleteCardModalStyle = css`
       padding-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     }
   }
-  .deleteCardModal_deleteConfirm {
+  .deleteCardModal__deleteConfirm {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
-  .deleteCardModal_modalTitle {
+  .deleteCardModal__modalTitle {
     text-align: center;
     padding: 0 ${props => props.theme.spacing.ELEM_SPACING.XXL};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};

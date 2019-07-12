@@ -13,26 +13,26 @@ exports[`Delete card Modal should render correctly 1`] = `
   <div>
     <Styled(BodyStyle)
       bodySize="seven"
-      className="deleteCardModal_modalTitle"
+      className="deleteCardModal__modalTitle"
       fontFamily="secondaryFontFamily"
       fontWeight="bold"
     >
       DELETE ADDRESS
     </Styled(BodyStyle)>
     <Styled(BodyStyle)
-      className="deleteCardModal_desc"
+      className="deleteCardModal__desc"
     >
        
       <Styled(Image)
-        className="deleteCardModal_img"
+        className="deleteCardModal__img"
         src="/static/images/gift-card.png"
       />
       <Styled(BodyStyle)
         bodySize="three"
-        className="deleteCardModal_cardInfo"
+        className="deleteCardModal__cardInfo"
       >
         <Styled(BodyStyle)
-          className="deleteCardModal_card"
+          className="deleteCardModal__card"
           fontFamily="secondaryFontFamily"
           fontWeight="bold"
           tag="span"
@@ -41,7 +41,7 @@ exports[`Delete card Modal should render correctly 1`] = `
           ined
         </Styled(BodyStyle)>
         <Styled(BodyStyle)
-          className="deleteCardModal_expiry"
+          className="deleteCardModal__expiry"
           fontFamily="secondaryFontFamily"
           fontWeight="normal"
           tag="span"
@@ -52,11 +52,11 @@ exports[`Delete card Modal should render correctly 1`] = `
       </Styled(BodyStyle)>
     </Styled(BodyStyle)>
     <div
-      className="deleteCardModal_btnWrapper"
+      className="deleteCardModal__btnWrapper"
     >
       <Styled(Button)
         buttonVariation="variable-width"
-        className="deleteCardModal_deleteConfirm deleteCardModal_btn"
+        className="deleteCardModal__deleteConfirm deleteCardModal_btn"
         fill="BLUE"
         onClick={[Function]}
       >
@@ -64,7 +64,7 @@ exports[`Delete card Modal should render correctly 1`] = `
       </Styled(Button)>
       <Styled(Button)
         buttonVariation="variable-width"
-        className="deleteCardModal_btn deleteCardModal_deleteCancel"
+        className="deleteCardModal__btn deleteCardModal_deleteCancel"
         fill="RED"
         onClick={[Function]}
       >

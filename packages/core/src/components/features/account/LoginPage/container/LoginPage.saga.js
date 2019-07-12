@@ -32,7 +32,7 @@ function* login(action) {
       yield put(setLoginInfo(res.body));
     }
   } catch (err) {
-    console.log(err); // es-lint no-console
+    console.log(err);
   }
 }
 

@@ -68,22 +68,22 @@ class DeleteCardModal extends React.Component<Props> {
           bodySize="seven"
           fontWeight="bold"
           fontFamily="secondaryFontFamily"
-          className="deleteCardModal_modalTitle"
+          className="deleteCardModal__modalTitle"
         >
           {data.heading}
         </BodyCopy>
-        <BodyCopy className="deleteCardModal_desc">
+        <BodyCopy className="deleteCardModal__desc">
           {' '}
           <Image
-            className="deleteCardModal_img"
+            className="deleteCardModal__img"
             src={getIconPath('gift-card')}
             onClick={this.pause}
           />
-          <BodyCopy className="deleteCardModal_cardInfo" bodySize="three">
+          <BodyCopy className="deleteCardModal__cardInfo" bodySize="three">
             <BodyCopy
               fontWeight="bold"
               fontFamily="secondaryFontFamily"
-              className="deleteCardModal_card"
+              className="deleteCardModal__card"
               tag="span"
             >
               {data.cardText.cardEnd}
@@ -92,7 +92,7 @@ class DeleteCardModal extends React.Component<Props> {
             <BodyCopy
               fontWeight="normal"
               fontFamily="secondaryFontFamily"
-              className="deleteCardModal_expiry"
+              className="deleteCardModal__expiry"
               tag="span"
             >
               {data.cardText.expire}
@@ -100,12 +100,12 @@ class DeleteCardModal extends React.Component<Props> {
             </BodyCopy>
           </BodyCopy>
         </BodyCopy>
-        <div className="deleteCardModal_btnWrapper">
+        <div className="deleteCardModal__btnWrapper">
           <Button
             buttonVariation="variable-width"
             fill="BLUE"
             onClick={this.onConfirm}
-            className="deleteCardModal_deleteConfirm deleteCardModal_btn"
+            className="deleteCardModal__deleteConfirm deleteCardModal_btn"
           >
             {data.buttons.confirm}
           </Button>
@@ -113,7 +113,7 @@ class DeleteCardModal extends React.Component<Props> {
             buttonVariation="variable-width"
             onClick={this.onClose}
             fill="RED"
-            className="deleteCardModal_btn deleteCardModal_deleteCancel"
+            className="deleteCardModal__btn deleteCardModal_deleteCancel"
           >
             {data.buttons.cancel}
           </Button>
