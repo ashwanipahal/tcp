@@ -2,18 +2,18 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import AddAddressForm from '../AddAddressForm';
+import AddressForm from '../AddressForm';
 
 // const AddressValidationForm = ({ handleSubmit, pristine, reset, submitting }: Props): Node => (
 
-describe('AddAddressForm component', () => {
+describe('AddressForm component', () => {
   it('should renders correctly', () => {
     const props = {
       handleSubmit: jest.fn(),
       className: 'any',
       backToAddressBookClick: jest.fn(),
     };
-    const component = shallow(<AddAddressForm {...props} />);
+    const component = shallow(<AddressForm {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

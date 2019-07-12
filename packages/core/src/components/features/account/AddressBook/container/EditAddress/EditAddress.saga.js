@@ -1,34 +1,35 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import ADD_ADDRESS_CONSTANTS from './AddAddress.constants';
-import { addAddressSuccess, addAddressFail } from './AddAddress.actions';
+import constants from './EditAddress.constants';
+import { editAddressSuccess, editAddressFail } from './EditAddress.actions';
 import fetchData from '../../../../../../service/API';
 import endpoints from '../../../../../../service/endpoint';
 
 export function* updateAddressPut({ payload }) {
   try {
-    const { baseURI, relURI, method } = endpoints.updateAddress;
+    const { relURI, method } = endpoints.updateAddress;
+    const baseURI = endpoints.updateAddress.baseURI || endpoints.global.baseURI;
     const payloadParam = {
-      addressLine: [payload.addressLine1 || '', payload.addressLine2 || '', ''],
+      addressLine: [payload.address1, payload.address2, ''],
       attributes: [
         {
           key: 'addressField3',
-          value: payload.zip || '',
+          value: payload.zip,
         },
       ],
       addressType: 'ShippingAndBilling',
       city: payload.city,
-      country: payload.country === 'United States' ? 'US' : 'CA',
+      country: payload.country,
       firstName: payload.firstName,
       lastName: payload.lastName,
-      phone1: payload.phoneNumber || '',
+      phone1: payload.phoneNumber,
       phone1Publish: 'false',
-      primary: 'false', // as string
+      primary: payload.primary,
       state: payload.state,
       zipCode: payload.zip,
       xcont_addressField2: payload.isCommercialAddress ? '2' : '1',
       email1: payload.email,
       xcont_addressField3: payload.zip,
-      fromPage: payload.applyToOrder ? 'checkout' : '',
+      fromPage: '',
     };
     const fullRelURI = `${relURI}`;
     const res = yield call(
@@ -45,16 +46,16 @@ export function* updateAddressPut({ payload }) {
       method
     );
     if (res) {
-      return yield put(addAddressSuccess());
+      return yield put(editAddressSuccess());
     }
-    return yield put(addAddressFail());
+    return yield put(editAddressFail());
   } catch (err) {
-    return yield put(addAddressFail(err));
+    return yield put(editAddressFail(err));
   }
 }
 
-export function* UpdateAddressSaga() {
-  yield takeLatest(ADD_ADDRESS_CONSTANTS.UPDATE_USER_ADDRESS_REQ, updateAddressPut);
+export function* EditAddressSaga() {
+  yield takeLatest(constants.EDIT_USER_ADDRESS_REQ, updateAddressPut);
 }
 
-export default UpdateAddressSaga;
+export default EditAddressSaga;

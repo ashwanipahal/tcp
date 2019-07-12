@@ -5,10 +5,10 @@ import Notification from '@tcp/core/src/components/common/molecules/Notification
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Anchor from '../../../../common/atoms/Anchor';
-import AddressFormComponent from './molecules/AddressForm';
+import AddressFormComponent from '../../common/organism/AddressForm/AddressForm';
 import AddressVerification from '../../AddressVerification/container/AddressVerification.container';
-import labels from '../container/AddressBook.labels';
-import styles from '../styles/AddAddress.style';
+import labels from '../../AddressBook/container/AddressBook.labels';
+import styles from '../styles/AddEditAddress.style';
 
 // @flow
 
@@ -21,28 +21,7 @@ type Props = {
   initialValues?: object,
 };
 
-export class AddAddress extends React.PureComponent<Props> {
-  verifyAddress = payload => {
-    const { verifyAddressAction, initialValues } = this.props;
-    const formattedFormPayload = Object.assign(initialValues, payload);
-    const formattedPayload = this.formatPayload(formattedFormPayload);
-
-    verifyAddressAction(formattedPayload);
-  };
-
-  formatPayload = payload => {
-    const { addressLine1, addressLine2, zipCode, primary, ...otherPayload } = payload;
-    return {
-      ...otherPayload,
-      ...{
-        address1: addressLine1,
-        address2: addressLine2,
-        zip: zipCode,
-        primary: primary ? 'true' : 'false',
-      },
-    };
-  };
-
+export class AddEditAddress extends React.PureComponent<Props> {
   submitAddAddressForm = payloadParam => {
     const { submitAddressFormAction, userEmail } = this.props;
     const payload = Object.assign(payloadParam, {
@@ -107,8 +86,8 @@ export class AddAddress extends React.PureComponent<Props> {
   }
 }
 
-AddAddress.defaultProps = {
+AddEditAddress.defaultProps = {
   initialValues: {},
 };
 
-export default withStyles(AddAddress, styles);
+export default withStyles(AddEditAddress, styles);

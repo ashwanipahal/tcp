@@ -27,7 +27,7 @@ type Props = {
 type State = {
   country: string,
 };
-export class AddAddressForm extends React.PureComponent<Props, State> {
+export class AddressForm extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -214,7 +214,7 @@ const validateMethod = createValidateMethod(
 );
 
 export default reduxForm({
-  form: 'AddAddressForm', // a unique identifier for this form
+  form: 'AddressForm', // a unique identifier for this form
   enableReinitialize: true,
   ...validateMethod,
-})(AddAddressForm);
+})(AddressForm);

@@ -21,7 +21,6 @@ const endpoints = {
   },
   updateAddress: {
     method: 'put',
-    baseURI: 'https://test1.childrensplace.com',
     relURI: '/api/v2/wallet/updateAddress',
   },
   login: {
