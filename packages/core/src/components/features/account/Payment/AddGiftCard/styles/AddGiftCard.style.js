@@ -22,7 +22,7 @@ const styles = css`
     font-stretch: normal;
   }
 
-  .add-gift-card__message_title {
+  .add-gift-card__message__title {
     font-size: ${props => props.theme.typography.fontSizes.fs14};
     font-weight: ${props => props.theme.typography.fontWeights.extrabold};
     line-height: ${props => props.theme.typography.lineHeights.lh107};
