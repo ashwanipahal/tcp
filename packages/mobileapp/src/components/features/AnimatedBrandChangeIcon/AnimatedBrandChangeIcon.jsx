@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { LayoutAnimation, Image, View, TouchableOpacity, Text } from 'react-native';
+import { PropTypes } from 'prop-types';
 import styles from './AnimatedBrandChangeIcon.style';
 import tcpLogo from '../../../brand_config/gymboree/config/logo.png';
 
 const {
   container,
+  containerAnimated,
   logo,
   logoHidden,
   crossIconFinalState,
@@ -14,7 +16,7 @@ const {
 } = styles;
 
 // kindly use this component only for the bottom tab at the center of the tab
-export default class AnimatedBrandChangeIcon extends Component {
+class AnimatedBrandChangeIcon extends Component {
   constructor(props) {
     super(props);
     this.state = { openSwitch: false };
@@ -28,11 +30,18 @@ export default class AnimatedBrandChangeIcon extends Component {
     });
   };
 
-  render() {
-    // it has 2 icons i.e. product icons
-    const { openSwitch } = this.state;
+  animatedComponent = (openSwitch, children) => {
     return (
-      <View style={container}>
+      <View style={openSwitch ? containerAnimated : container}>
+        {/* children component that is made clickable */}
+        <TouchableOpacity
+          accessibilityTraits="none"
+          accessibilityComponentType="none"
+          onPress={this.changePosition}
+          style={openSwitch ? logoHidden : logo}
+        >
+          {openSwitch ? null : children}
+        </TouchableOpacity>
         <TouchableOpacity
           accessibilityTraits="none"
           accessibilityComponentType="none"
@@ -40,7 +49,7 @@ export default class AnimatedBrandChangeIcon extends Component {
           style={openSwitch ? firstIconFinalState : iconInitialState}
         >
           {/* first icon for brand 1 */}
-          <Image source={tcpLogo} style={logo} />
+          <Image source={tcpLogo} style={openSwitch ? logo : logoHidden} />
         </TouchableOpacity>
         <TouchableOpacity
           accessibilityTraits="none"
@@ -62,5 +71,18 @@ export default class AnimatedBrandChangeIcon extends Component {
         </TouchableOpacity>
       </View>
     );
+  };
+
+  render() {
+    // it has 2 icons i.e. product icons
+    const { openSwitch } = this.state;
+    const { children } = this.props;
+    return this.animatedComponent(openSwitch, children);
   }
 }
+
+AnimatedBrandChangeIcon.propTypes = {
+  children: PropTypes.element.isRequired,
+};
+
+export default AnimatedBrandChangeIcon;

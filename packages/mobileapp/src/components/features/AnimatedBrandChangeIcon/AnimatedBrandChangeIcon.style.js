@@ -5,6 +5,9 @@ const { paleWhite } = colors;
 
 const styles = StyleSheet.create({
   container: {
+    left: -20,
+  },
+  containerAnimated: {
     bottom: 0,
     left: -20,
     position: 'absolute',

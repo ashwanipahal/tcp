@@ -13,17 +13,20 @@ const BrandSwitchStack = createStackNavigator({
 BrandSwitchStack.navigationOptions = {
   title: 'brand_logo',
   showLabel: false,
-  tabBarIcon: (
-    <NavBarIcon
-      brandChangeAnimator
-      animatedComponent={<AnimatedBrandChangeIcon />}
-      style={{
-        icon: {
-          width: 100,
-          height: 71,
-        },
-      }}
-    />
+  tabBarIcon: props => (
+    <AnimatedBrandChangeIcon>
+      <NavBarIcon
+        iconActive="brand-logo"
+        iconInactive="brand-logo"
+        {...props}
+        style={{
+          icon: {
+            width: 100,
+            height: 71,
+          },
+        }}
+      />
+    </AnimatedBrandChangeIcon>
   ),
 };
 
