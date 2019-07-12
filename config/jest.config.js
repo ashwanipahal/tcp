@@ -8,7 +8,7 @@ const ignorePsuedoCodeDir = [
 
 module.exports = {
   verbose: true,
-  rootDir: '../../',
+  rootDir: '../',
   roots: ['<rootDir>/packages/web', '<rootDir>/packages/core'],
   moduleFileExtensions: ['js', 'jsx'],
   moduleDirectories: ['node_modules', './packages/web/node_modules'],
@@ -21,9 +21,9 @@ module.exports = {
       extends: './babel.config.js',
     },
   },
-  setupFiles: ['<rootDir>/config/web/jest.setup.js'],
+  setupFiles: ['<rootDir>/config/jest.setup.js'],
   collectCoverage: true,
-  coverageDirectory: 'reports/coverage',
+  coverageDirectory: 'reports/web/coverage',
   collectCoverageFrom: [
     '**/*.js',
     '**/*.jsx',

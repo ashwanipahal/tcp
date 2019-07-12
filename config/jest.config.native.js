@@ -1,5 +1,5 @@
 module.exports = {
-  rootDir: '../../',
+  rootDir: '../',
   preset: './packages/mobileapp/node_modules/react-native/jest-preset.js',
   verbose: true,
   roots: ['<rootDir>/packages/core', '<rootDir>/packages/mobileapp'],
@@ -13,7 +13,7 @@ module.exports = {
   transform: {
     '^.+\\.jsx?$': '<rootDir>/packages/mobileapp/node_modules/react-native/jest/preprocessor.js',
   },
-  setupFiles: ['<rootDir>/config/app/mobile.setup.js'],
+  setupFiles: ['<rootDir>/config/jest.setup.native.js'],
   collectCoverage: true,
   coverageDirectory: 'reports/mobile/coverage',
   collectCoverageFrom: [
