@@ -7,17 +7,17 @@ import { Grid, Modal } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import errors from '@tcp/core/src/utils/errorsMsg';
 
+import SignupConfirm from '../../SignupConfirm';
+import SignupFormIntro from '../../SignupFormIntro';
+
 import signupWrapperStyle from '../EmailSignupModal.style';
 
 class SignupWrapper extends React.PureComponent {
   constructor(props) {
     super(props);
-
     this.state = {
       isOpen: false,
-      disableSubmitButton: false,
       showAsyncError: '',
-      validInput: false,
     };
   }
 
@@ -28,81 +28,28 @@ class SignupWrapper extends React.PureComponent {
   };
 
   onSignUpInputBlur = e => {
-    const fieldValue = e.target.value;
-    const { subscriptionType, verifyEmailAddress } = this.props;
-    if (subscriptionType === 'email') {
-      verifyEmailAddress(e.target.value);
-    } else {
-      const isPhoneNumberValid = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/i.test(fieldValue);
-      console.log(isPhoneNumberValid);
-      if (!isPhoneNumberValid) {
-        this.setState({
-          showAsyncError: true,
-          validInput: false,
-        });
-      }
-    }
+    const { verifyEmailAddress } = this.props;
+    verifyEmailAddress(e.target.value);
   };
 
   onFormSubmit = e => {
     try {
-      console.log('onFormSubmit');
       e.preventDefault();
       const { signup } = this.state;
-      const {
-        submitEmailSubscription,
-        subscriptionType,
-        submitSmsSubscription,
-        isSubscriptionValid,
-      } = this.props;
-      if (subscriptionType === 'sms') {
-        submitSmsSubscription(signup);
-      } else {
-        submitEmailSubscription(signup);
-      }
-      if (!isSubscriptionValid) {
-        this.setState({
-          showAsyncError: true,
-          validInput: false,
-        });
-      }
+      const { submitEmailSubscription } = this.props;
+      submitEmailSubscription(signup);
     } catch (error) {
       console.log(error);
     }
   };
 
   onSignUpInputChange = e => {
-    const { subscriptionType, pristine, anyTouched } = this.props;
+    const { clearForm } = this.props;
     const fieldValue = e.target.value;
-    console.log('pristine', pristine);
-    console.log('touched', anyTouched);
-
-    console.log('on input change');
     this.setState({
       [e.target.name]: fieldValue,
     });
-    if (subscriptionType === 'sms') {
-      const isPhoneNumberValid = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/i.test(fieldValue);
-      console.log(isPhoneNumberValid);
-      if (!isPhoneNumberValid) {
-        this.setState({
-          validInput: false,
-        });
-      } else {
-        this.setState({
-          validInput: true,
-        });
-      }
-      if (!isPhoneNumberValid && anyTouched) {
-        this.setState({
-          showAsyncError: true,
-        });
-      } else {
-        this.setState({
-          showAsyncError: false,
-        });
-      }
-    }
+    clearForm();
   };
 
   closeModal = () => {
@@ -115,22 +62,30 @@ class SignupWrapper extends React.PureComponent {
   };
 
   render() {
-    const { isOpen, disableSubmitButton, showAsyncError, validInput } = this.state;
+    const { isOpen, showAsyncError } = this.state;
     const {
       buttonConfig,
       className,
       formViewConfig,
       isSubscriptionValid,
-      pristine,
-      subscriptionType,
       isEmailValid,
     } = this.props;
 
-    if (subscriptionType === 'email' && isEmailValid) {
+    let validationClass = '';
+    console.log('isEmailValid', isEmailValid);
+    if (isEmailValid === 'invalid') {
       this.setState({
-        validInput: true,
+        showAsyncError: true,
       });
+      validationClass = 'async-error';
     }
+    if (isEmailValid === 'valid') {
+      this.setState({
+        showAsyncError: false,
+      });
+      validationClass = 'async-success';
+    }
+
     return (
       <Fragment>
         {isOpen && (
@@ -153,52 +108,19 @@ class SignupWrapper extends React.PureComponent {
                   <Col
                     colSize={{ small: 4, medium: 6, large: 8 }}
                     offsetLeft={{ small: 1, medium: 1, large: 0 }}
+                    ignoreGutter={{ large: true }}
                   >
-                    <BodyCopy
-                      fontSize="fs28"
-                      fontFamily="primary"
-                      fontWeight="black"
-                      textAlign="center"
-                      className="thank-you__label"
+                    <SignupConfirm formViewConfig={formViewConfig} />
+                    <Button
+                      fullWidth
+                      buttonVariation="variable-width"
+                      fill="BLUE"
+                      type="submit"
+                      onClick={this.closeModal}
+                      className="shop-button"
                     >
-                      {formViewConfig.thankYouTextLabel}
-                    </BodyCopy>
-                    <BodyCopy
-                      fontSize="fs18"
-                      fontFamily="secondary"
-                      textAlign="center"
-                      className="confirmation__label"
-                    >
-                      {formViewConfig.joiningTextLabel}
-                    </BodyCopy>
-                    <BodyCopy
-                      fontSize="fs22"
-                      fontFamily="secondary"
-                      textAlign="center"
-                      fontWeight="semibold"
-                      color="primary.main"
-                    >
-                      {formViewConfig.confirmationMsgReceiveLabel}
-                    </BodyCopy>
-                    <BodyCopy fontSize="fs16" fontFamily="secondary" textAlign="center">
-                      {formViewConfig.extraMessageLabel}
-                    </BodyCopy>
-                    <BodyCopy fontSize="fs12" fontFamily="secondary" textAlign="center">
-                      {formViewConfig.footerTextLabel}
-                    </BodyCopy>
-                    <form onSubmit={this.onFormSubmit}>
-                      <Button
-                        disabled={disableSubmitButton}
-                        fullWidth
-                        buttonVariation="variable-width"
-                        fill="BLUE"
-                        type="submit"
-                        onClick={this.closeModal}
-                        className="join-button"
-                      >
-                        {formViewConfig.shopNowLabel}
-                      </Button>
-                    </form>
+                      {formViewConfig.shopNowLabel}
+                    </Button>
                   </Col>
                 </Row>
               </Grid>
@@ -213,66 +135,7 @@ class SignupWrapper extends React.PureComponent {
                       <Image alt={formViewConfig.imageAltText} src={formViewConfig.imageSrc} />
                     </Col>
                     <Col colSize={{ small: 6, medium: 8, large: 8 }}>
-                      <Col
-                        colSize={{ small: 4, medium: 6, large: 8 }}
-                        offsetLeft={{ small: 1, medium: 1, large: 1 }}
-                        ignoreGutter={{ large: true }}
-                      >
-                        <BodyCopy
-                          fontSize="fs18"
-                          fontFamily="secondary"
-                          textAlign="center"
-                          className="sign-up__label"
-                        >
-                          {formViewConfig.signUpForLabel}
-                        </BodyCopy>
-                        <BodyCopy
-                          fontSize="fs28"
-                          fontFamily="primary"
-                          fontWeight="black"
-                          textAlign="center"
-                          className="offer-type__label"
-                        >
-                          {formViewConfig.offerTypeLabel}
-                        </BodyCopy>
-                        <BodyCopy
-                          fontFamily="primary"
-                          className="flash-text"
-                          textAlign="center"
-                          component="div"
-                        >
-                          <BodyCopy fontSize="fs48" component="span" className="get-text">
-                            {formViewConfig.getTextLabel}
-                          </BodyCopy>
-                          <BodyCopy
-                            fontSize="fs36"
-                            component="span"
-                            fontWeight="black"
-                            className="dollar-text"
-                          >
-                            {formViewConfig.dollarTextLabel}
-                          </BodyCopy>
-                          <BodyCopy
-                            fontSize="fs48"
-                            component="span"
-                            fontWeight="black"
-                            className="ten-text"
-                          >
-                            {formViewConfig.tenTextLabel}
-                          </BodyCopy>
-                          <BodyCopy fontSize="fs48" textAlign="center">
-                            {formViewConfig.offTextLabel}
-                          </BodyCopy>
-                        </BodyCopy>
-                        <BodyCopy
-                          fontSize="fs22"
-                          fontFamily="primary"
-                          fontWeight="semibold"
-                          textAlign="center"
-                        >
-                          {formViewConfig.nextPurchaseLabel}
-                        </BodyCopy>
-                      </Col>
+                      <SignupFormIntro formViewConfig={formViewConfig} />
                       <Col
                         colSize={{ small: 6, medium: 6, large: 10 }}
                         offsetLeft={{ small: 0, medium: 1, large: 1 }}
@@ -288,14 +151,14 @@ class SignupWrapper extends React.PureComponent {
                           dataLocator="signup_textbox"
                           onChange={this.onSignUpInputChange}
                           onBlur={this.onSignUpInputBlur}
-                          className={showAsyncError ? 'async-error' : ''}
+                          className={validationClass}
                         />
                         {showAsyncError && (
                           <BodyCopy fontSize="fs12" fontFamily="secondary" color="secondary.dark">
                             {errors.VALID_PHONE}
                           </BodyCopy>
                         )}
-                        <BodyCopy fontSize="fs12" fontFamily="secondary">
+                        <BodyCopy fontSize="fs12" fontFamily="secondary" className="terms-label">
                           {formViewConfig.termsTextLabel}
                         </BodyCopy>
                       </Col>
@@ -305,8 +168,7 @@ class SignupWrapper extends React.PureComponent {
                         className="button-wrapper__large"
                       >
                         <Button
-                          disabled={showAsyncError || !validInput || pristine}
-                          // disabled={showAsyncError || pristine}
+                          disabled={isEmailValid !== 'valid'}
                           fullWidth
                           buttonVariation="fixed-width"
                           fill="BLUE"
@@ -321,12 +183,12 @@ class SignupWrapper extends React.PureComponent {
                   <Row className="button-row" fullBleed>
                     <Col colSize={{ small: 6, medium: 8, large: 0 }} className="button-wrapper">
                       <Button
-                        disabled={disableSubmitButton}
                         fullWidth
                         buttonVariation="fixed-width"
                         fill="BLUE"
                         type="submit"
                         className="join-button"
+                        disabled={isEmailValid !== 'valid'}
                       >
                         {formViewConfig.joinButtonLabel}
                       </Button>
@@ -355,11 +217,7 @@ SignupWrapper.propTypes = {
   clearForm: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func.isRequired,
   isSubscriptionValid: PropTypes.bool,
-  submitSmsSubscription: PropTypes.func,
-  subscriptionType: PropTypes.string.isRequired,
-  pristine: PropTypes.bool.isRequired,
-  anyTouched: PropTypes.bool.isRequired,
-  isEmailValid: PropTypes.bool,
+  isEmailValid: PropTypes.string,
 };
 
 SignupWrapper.defaultProps = {
@@ -368,8 +226,7 @@ SignupWrapper.defaultProps = {
   submitEmailSubscription: () => {},
   className: '',
   isSubscriptionValid: false,
-  submitSmsSubscription: () => {},
-  isEmailValid: false,
+  isEmailValid: '',
 };
 
 export default withStyles(
@@ -381,3 +238,5 @@ export default withStyles(
   })(SignupWrapper),
   signupWrapperStyle
 );
+
+export { SignupWrapper as SignupWrapperVanilla };

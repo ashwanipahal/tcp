@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmailSignupModal component renders correctly 1`] = `
+<Fragment>
+  <Styled(Button)
+    customStyle="shadow-button"
+    onClick={[Function]}
+  >
+    <Styled(RichText) />
+  </Styled(Button)>
+</Fragment>
+`;

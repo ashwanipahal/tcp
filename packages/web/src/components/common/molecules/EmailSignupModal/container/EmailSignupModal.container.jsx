@@ -12,7 +12,6 @@ export const EmailSignupWrapperContainer = ({
   formViewConfig,
   isSubscriptionValid,
   clearFormStoreInfo,
-  subscriptionType,
   isEmailValid,
 }) => {
   return (
@@ -23,7 +22,6 @@ export const EmailSignupWrapperContainer = ({
       submitEmailSubscription={submitEmailSubscription}
       isSubscriptionValid={isSubscriptionValid}
       clearForm={clearFormStoreInfo}
-      subscriptionType={subscriptionType}
       isEmailValid={isEmailValid}
     />
   );
@@ -36,7 +34,6 @@ EmailSignupWrapperContainer.propTypes = {
   formViewConfig: PropTypes.shape({}),
   isSubscriptionValid: PropTypes.bool,
   clearFormStoreInfo: PropTypes.func,
-  subscriptionType: PropTypes.string.isRequired,
   isEmailValid: PropTypes.bool,
 };
 
@@ -47,7 +44,7 @@ EmailSignupWrapperContainer.defaultProps = {
   submitEmailSubscription: () => {},
   isSubscriptionValid: false,
   clearFormStoreInfo: () => {},
-  isEmailValid: false,
+  isEmailValid: '',
 };
 
 export const mapDispatchToProps = dispatch => {
@@ -69,21 +66,13 @@ export const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = (state, props) => {
   let formViewConfig = {};
-  let subscriptionType;
   if (props.buttonConfig.url === '/EMAIL_SIGNUP_MODAL') {
     formViewConfig = {
-      ...state.labels.global.subscribeEmail,
+      ...state.labels.global.emailSignup,
     };
-    subscriptionType = 'email';
   }
-  if (props.buttonConfig.url === '/SMS_SIGNUP_MODAL') {
-    formViewConfig = {
-      ...state.labels.global.subscribeSms,
-    };
-    subscriptionType = 'sms';
-  }
+
   return {
-    subscriptionType,
     formViewConfig,
     isSubscriptionValid: state.EmailSignUp && state.EmailSignUp.signupSuccess,
     isEmailValid: state.EmailSignUp && state.EmailSignUp.validEmail,

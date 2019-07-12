@@ -36,14 +36,14 @@ function* verifyEmail({ payload }) {
     const { baseURI, relURI, method } = endpoints.emailVerfication;
     const newRelURI = `${relURI}&address=${payload}`;
     const params = {};
-    const isEmailValid = yield call(
+    const emailValidationState = yield call(
       emailSignupAbstractor.verifyEmail,
       baseURI,
       newRelURI,
       params,
       method
     );
-    yield put(setEmailValidationStatus({ validEmail: isEmailValid }));
+    yield put(setEmailValidationStatus({ validEmail: emailValidationState }));
   } catch (err) {
     // eslint-disable-next-line no-console
     console.log(err);

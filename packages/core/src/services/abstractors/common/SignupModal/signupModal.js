@@ -42,14 +42,14 @@ const Abstractor = {
   },
   processData: res => {
     if (res.body && (res.body.status === 'valid' || res.body.status === 'accept_all')) {
-      return true;
+      return 'valid';
     }
-    return false;
+    return 'invalid';
   },
   // eslint-disable-next-line no-console
   handleError: e => {
     console.log(e);
-    return false;
+    return 'invalid';
   },
 };
 export default Abstractor;
