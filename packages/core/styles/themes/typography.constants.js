@@ -1,14 +1,7 @@
-const fallbackFonts = 'Arial, Helvetica, sans-serif';
-
 const PRIMARY_FONTS = 'Montserrat';
 const SECONDARY_FONTS = 'Nunito';
 
 export const FONTS = {
-  primary: `Montserrat, ${fallbackFonts}`,
-  secondary: `Nunito, ${fallbackFonts}`,
-};
-
-export const MOBILE_FONTS = {
   primary: PRIMARY_FONTS,
   secondary: SECONDARY_FONTS,
 };

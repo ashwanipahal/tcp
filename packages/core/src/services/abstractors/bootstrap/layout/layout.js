@@ -41,7 +41,7 @@ const LayoutAbstractor = {
   processData: async data => {
     const moduleObjects = LayoutAbstractor.collateModuleObject(data.items);
     return LayoutAbstractor.getModulesData(moduleObjects).then(response => {
-      return response.data;
+      return LayoutAbstractor.processModuleData(response.data);
     });
   },
   /**
@@ -62,6 +62,15 @@ const LayoutAbstractor = {
       );
     });
     return moduleIds;
+  },
+  processModuleData: moduleData => {
+    const modulesObject = {};
+    Object.keys(moduleData).forEach(slotKey => {
+      modulesObject[moduleData[slotKey].contentId] = {
+        ...moduleData[slotKey].composites,
+      };
+    });
+    return modulesObject;
   },
   /**
    * Return mock for Layout response
