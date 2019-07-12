@@ -15,6 +15,7 @@ async function fetchData(baseURL, relURL, params = {}, method) {
       catalogId: params.catalogId,
       deviceType: params.isMobile ? 'mobile' : 'desktop',
       'Cache-Control': 'no-store, must-revalidate',
+      'Content-Type': 'application/json',
     };
 
     if (params.nickName) {
