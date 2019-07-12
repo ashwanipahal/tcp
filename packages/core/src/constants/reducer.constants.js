@@ -1,8 +1,9 @@
-export const HEADER_REDUCER_KEY = 'HeaderReducer';
-export const FOOTER_REDUCER_KEY = 'FooterReducer';
-export const LABEL_REDUCER_KEY = 'labels';
-export const LAYOUT_REDUCER_KEY = 'layouts';
-export const HOMEPAGE_REDUCER_KEY = 'HomePageReducer';
+export const HEADER_REDUCER_KEY = 'Header';
+export const FOOTER_REDUCER_KEY = 'Footer';
+export const LABEL_REDUCER_KEY = 'Labels';
+export const LAYOUT_REDUCER_KEY = 'Layouts';
+export const MODULES_REDUCER_KEY = 'Modules';
+export const HOMEPAGE_REDUCER_KEY = 'HomePage';
 
 // Don't Add "Reducer" in the Key - it should be LoginPage, not LoginPageReducer
 
