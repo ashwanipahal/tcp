@@ -5,7 +5,6 @@ import EMAIL_SIGNUP_CONSTANTS from './EmailSignupModal.constants';
 import { emailSignupStatus, setEmailValidationStatus } from './EmailSignupModal.actions';
 
 function* subscribeEmail(email, status) {
-  console.log('in generator function');
   try {
     const { baseURI, relURI, method } = endpoints.addEmailSignup;
     const params = {
@@ -23,10 +22,8 @@ function* subscribeEmail(email, status) {
       catalogId: 10551,
     };
     const res = yield call(emailSignupAbstractor.subscribeEmail, baseURI, relURI, params, method);
-    console.log('res', res);
     yield put(emailSignupStatus({ signupSuccess: res }));
   } catch (err) {
-    // eslint-disable-next-line no-console
     console.log(err);
   }
 }
@@ -45,7 +42,6 @@ function* verifyEmail({ payload }) {
     );
     yield put(setEmailValidationStatus({ validEmail: emailValidationState }));
   } catch (err) {
-    // eslint-disable-next-line no-console
     console.log(err);
   }
 }

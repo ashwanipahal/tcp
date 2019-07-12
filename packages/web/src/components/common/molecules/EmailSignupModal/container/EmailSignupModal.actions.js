@@ -1,7 +1,6 @@
 import EMAIL_SIGNUP_CONSTANTS from './EmailSignupModal.constants';
 
 export const validateEmail = payload => {
-  console.log('in the validate email action');
   return {
     payload,
     type: EMAIL_SIGNUP_CONSTANTS.VALIDATE_EMAIL,
@@ -16,7 +15,6 @@ export const setEmailValidationStatus = payload => {
 };
 
 export const submitEmailSignup = payload => {
-  console.log('submitEmailSignup', payload);
   return {
     payload,
     type: EMAIL_SIGNUP_CONSTANTS.EMAIL_SUBSCRIPTION_SUBMIT,

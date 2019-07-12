@@ -7,7 +7,6 @@ const EmailSignupReducer = (state = {}, action) => {
     case EMAIL_SIGNUP_CONSTANTS.EMAIL_VALIDATION_STATUS:
       return { ...state, ...action.payload };
     case EMAIL_SIGNUP_CONSTANTS.CLEAR_SUBSCRIPTION_FORM:
-      console.log('comes here to clear the form');
       return {};
     default:
       return state;

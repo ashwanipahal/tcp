@@ -5,7 +5,6 @@ import EMAIL_SIGNUP_CONSTANTS from './SmsSignupModal.constants';
 import { smsSignupStatus } from './SmsSignupModal.actions';
 
 function* subscribeSms({ payload }) {
-  console.log('in generator function subscribeSms');
   try {
     const { baseURI, relURI, method } = endpoints.addSmsSignup;
     const params = {
@@ -24,7 +23,6 @@ function* subscribeSms({ payload }) {
       catalogId: 10551,
     };
     const res = yield call(emailSignupAbstractor.subscribeSms, baseURI, relURI, params, method);
-    console.log('res', res);
     yield put(smsSignupStatus({ signupSuccess: res }));
   } catch (err) {
     // eslint-disable-next-line no-console

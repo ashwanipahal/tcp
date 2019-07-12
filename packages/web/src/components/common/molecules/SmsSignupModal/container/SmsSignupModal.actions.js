@@ -8,7 +8,6 @@ export const clearForm = payload => {
 };
 
 export const submitSmsSignup = payload => {
-  console.log('submitSmsSignup', payload);
   return {
     payload,
     type: EMAIL_SIGNUP_CONSTANTS.SMS_SUBSCRIPTION_SUBMIT,
@@ -16,7 +15,6 @@ export const submitSmsSignup = payload => {
 };
 
 export const smsSignupStatus = payload => {
-  console.log('payload in smsSignupStatus', payload);
   return {
     payload,
     type: EMAIL_SIGNUP_CONSTANTS.SMS_SUBSCRIPTION_STATUS,

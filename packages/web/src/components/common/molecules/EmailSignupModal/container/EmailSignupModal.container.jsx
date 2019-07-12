@@ -50,15 +50,12 @@ EmailSignupWrapperContainer.defaultProps = {
 export const mapDispatchToProps = dispatch => {
   return {
     verifyEmailAddress: payload => {
-      console.log('verifyEmailAddress');
       dispatch(validateEmail(payload));
     },
     submitEmailSubscription: payload => {
-      console.log('signup email func');
       dispatch(submitEmailSignup(payload));
     },
     clearFormStoreInfo: () => {
-      console.log('clearForm');
       dispatch(clearForm());
     },
   };

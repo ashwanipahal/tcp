@@ -23,7 +23,6 @@ class SignupWrapper extends React.PureComponent {
   }
 
   onButtonClick = () => {
-    console.log('onButtonClick');
     const { isOpen } = this.state;
     this.setState({ isOpen: !isOpen });
   };
@@ -31,7 +30,6 @@ class SignupWrapper extends React.PureComponent {
   onSignUpInputBlur = e => {
     const fieldValue = e.target.value;
     const isPhoneNumberValid = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/i.test(fieldValue);
-    console.log(isPhoneNumberValid);
     if (!isPhoneNumberValid) {
       this.setState({
         showAsyncError: true,
@@ -42,7 +40,6 @@ class SignupWrapper extends React.PureComponent {
 
   onFormSubmit = e => {
     try {
-      console.log('onFormSubmit');
       e.preventDefault();
       const { signup } = this.state;
       const { submitSmsSubscription, isSubscriptionValid } = this.props;
@@ -59,17 +56,12 @@ class SignupWrapper extends React.PureComponent {
   };
 
   onSignUpInputChange = e => {
-    const { pristine, anyTouched } = this.props;
+    const { anyTouched } = this.props;
     const fieldValue = e.target.value;
-    console.log('pristine', pristine);
-    console.log('touched', anyTouched);
-
-    console.log('on input change');
     this.setState({
       [e.target.name]: fieldValue,
     });
     const isPhoneNumberValid = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/i.test(fieldValue);
-    console.log(isPhoneNumberValid);
     if (!isPhoneNumberValid) {
       this.setState({
         validInput: false,
@@ -91,7 +83,6 @@ class SignupWrapper extends React.PureComponent {
   };
 
   closeModal = () => {
-    console.log('on close modal');
     const { isOpen } = this.state;
     const { clearForm, dispatch } = this.props;
     this.setState({ isOpen: !isOpen, showAsyncError: false });

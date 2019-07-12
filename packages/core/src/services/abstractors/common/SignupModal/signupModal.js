@@ -34,7 +34,6 @@ const Abstractor = {
     return false;
   },
   processSmsSubscriptionData: res => {
-    console.log('processSmsSubscriptionData', res);
     if (res.errors) {
       return false;
     }
@@ -46,7 +45,7 @@ const Abstractor = {
     }
     return 'invalid';
   },
-  // eslint-disable-next-line no-console
+
   handleError: e => {
     console.log(e);
     return 'invalid';

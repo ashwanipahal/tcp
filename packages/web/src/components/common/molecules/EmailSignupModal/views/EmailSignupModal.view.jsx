@@ -21,7 +21,6 @@ class SignupWrapper extends React.PureComponent {
   }
 
   onButtonClick = () => {
-    console.log('onButtonClick');
     const { isOpen } = this.state;
     this.setState({ isOpen: !isOpen });
   };
@@ -52,7 +51,6 @@ class SignupWrapper extends React.PureComponent {
   };
 
   closeModal = () => {
-    console.log('on close modal');
     const { isOpen } = this.state;
     const { clearForm, dispatch } = this.props;
     this.setState({ isOpen: !isOpen, showAsyncError: false });
@@ -71,7 +69,6 @@ class SignupWrapper extends React.PureComponent {
     } = this.props;
 
     let validationClass = '';
-    console.log('isEmailValid', isEmailValid);
     if (isEmailValid === 'invalid') {
       this.setState({
         showAsyncError: true,
