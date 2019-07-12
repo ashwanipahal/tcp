@@ -21,6 +21,11 @@ export default {
   'icon-card-smile': '/static/images/card-smile.png',
   'credit-card': '/static/images/credit-card.png',
   'gift-card': '/static/images/gift-card.png',
-  // Mobile
-  play: '/assets/images/robot-dev.png',
+  'disc-small': '/static/images/disc-small.png',
+  'mc-small': '/static/images/mc-small.png',
+  'amex-small': '/static/images/amex-small.png',
+  'place-card-small': '/static/images/place-card-small.png',
+  'visa-small': '/static/images/visa-small.png',
+  'gift-card-small': '/static/images/gift-card-small.png',
+  'venmo-blue-acceptance-mark': '/static/images/venmo-blue-acceptance-mark.svg',
 };

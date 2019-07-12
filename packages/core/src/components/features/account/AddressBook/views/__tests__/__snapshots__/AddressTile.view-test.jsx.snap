@@ -21,6 +21,9 @@ exports[`AddressTile component should renders correctly 1`] = `
         }
       }
       dataLocatorPrefix="addressbook"
+      fontWeight="bold"
+      showCountry={true}
+      showPhone={true}
     />
     <div>
       <Styled(Badge)
@@ -43,7 +46,7 @@ exports[`AddressTile component should renders correctly 1`] = `
     />
     <Styled(Anchor)
       anchorVariation="primary"
-      data-locator="addressbook-delete"
+      data-locator="addressbook-deletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"

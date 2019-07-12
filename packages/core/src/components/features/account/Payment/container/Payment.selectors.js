@@ -8,7 +8,7 @@ export const getCreditDebitCards = createSelector(
   [getCardListState],
   creditCardList =>
     creditCardList &&
-    creditCardList.filter(card => card.ccType !== 'GiftCard' && card.ccType !== 'VenmoCard')
+    creditCardList.filter(card => card.ccType !== 'GiftCard' && card.ccType !== 'VENMO')
 );
 
 export const getGiftCards = createSelector(
@@ -18,7 +18,7 @@ export const getGiftCards = createSelector(
 
 export const getVenmoCards = createSelector(
   [getCardListState],
-  creditCardList => creditCardList && creditCardList.filter(card => card.ccType === 'VenmoCard')
+  creditCardList => creditCardList && creditCardList.filter(card => card.ccType === 'VENMO')
 );
 
 export const getCardListFetchingState = state => {

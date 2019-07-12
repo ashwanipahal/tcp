@@ -33,4 +33,7 @@ export default {
     XL: '96px',
     XXL: '160px',
   },
+  MODAL_WIDTH: {
+    SMALL: '458px',
+  },
 };

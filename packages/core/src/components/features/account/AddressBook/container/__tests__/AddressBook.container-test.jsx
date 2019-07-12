@@ -34,6 +34,21 @@ describe('AddressList container', () => {
     expect(component.is(AddressBookComponent)).toBeTruthy();
   });
 
+  it('should call clearAddressBookNotification on unmounting of addressBook container', () => {
+    const addressList = List();
+    const clearAddressBookNotification = jest.fn();
+    const component = shallow(
+      <AddressBookContainer
+        addressList={addressList}
+        getAddressListAction={() => {}}
+        getUserInfoAction={() => {}}
+        clearAddressBookNotification={clearAddressBookNotification}
+      />
+    );
+    component.unmount();
+    expect(clearAddressBookNotification).toBeCalled();
+  });
+
   describe('#mapDispatchToProps', () => {
     it('should return an action getAddressListAction which will call dispatch function on execution', () => {
       const dispatch = jest.fn();
@@ -66,6 +81,13 @@ describe('AddressList container', () => {
       const dispatch = jest.fn();
       const dispatchProps = mapDispatchToProps(dispatch);
       dispatchProps.getUserInfoAction();
+      expect(dispatch.mock.calls).toHaveLength(1);
+    });
+
+    it('should return an action clearAddressBookNotification which will call dispatch function on execution', () => {
+      const dispatch = jest.fn();
+      const dispatchProps = mapDispatchToProps(dispatch);
+      dispatchProps.clearAddressBookNotification();
       expect(dispatch.mock.calls).toHaveLength(1);
     });
   });

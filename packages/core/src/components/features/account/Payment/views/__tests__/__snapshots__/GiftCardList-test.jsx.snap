@@ -5,9 +5,10 @@ exports[`GiftCardList Component should render correctly 1`] = `
   className="abc"
 >
   <Styled(Heading)
-    className="creditCardList__heading"
+    className="cardList__heading"
     color="text.primary"
     component={null}
+    dataLocator="payment-gcAndMerchandiseCards"
     textAlign="left"
     variant="h6"
   />
@@ -35,11 +36,15 @@ exports[`GiftCardList Component should render correctly 1`] = `
     >
       <Styled(Button)
         buttonVariation="fixed-width"
-        dataLocator="payment-addagiftcard "
+        className="cardList__ccAddCta"
+        dataLocator="payment-addagiftcard"
         fill="BLUE"
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  />
 </div>
 `;
 
@@ -48,9 +53,10 @@ exports[`GiftCardList Component should render correctly if list is present 1`] =
   className="abc"
 >
   <Styled(Heading)
-    className="creditCardList__heading"
+    className="cardList__heading"
     color="text.primary"
     component={null}
+    dataLocator="payment-gcAndMerchandiseCards"
     textAlign="left"
     variant="h6"
   />
@@ -68,8 +74,64 @@ exports[`GiftCardList Component should render correctly if list is present 1`] =
     >
       <Styled(Button)
         buttonVariation="fixed-width"
-        dataLocator="payment-addagiftcard "
+        className="cardList__ccAddCta"
+        dataLocator="payment-addagiftcard"
         fill="BLUE"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="cardList__col"
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "large": false,
+          "medium": false,
+          "small": true,
+        }
+      }
+      key="container-73501"
+    >
+      <Styled(CardTile)
+        card={
+          Object {
+            "accountNo": "************1111",
+            "addressDetails": Object {
+              "addressLine1": "111 3rd Ave",
+              "addressLine2": "",
+              "city": "New York",
+              "country": "US",
+              "firstName": "new",
+              "lastName": "address",
+              "phone1": "9878909876",
+              "state": "NY",
+              "zipCode": "10003",
+            },
+            "billingAddressId": 160685,
+            "ccBrand": "Visa",
+            "ccType": "COMPASSVISA",
+            "creditCardId": 73501,
+            "defaultInd": false,
+            "expMonth": "5 ",
+            "expYear": "2024",
+            "nameOnAccount": ".",
+            "properties": null,
+          }
+        }
+        labels={
+          Object {
+            "giftCardHeading": "heading",
+          }
+        }
       />
     </Styled(Col)>
   </Styled(Row)>
