@@ -5,10 +5,6 @@ const typographyConfig = {
     prop: 'font-family',
     themeProp: 'typography.fonts',
   },
-  mobilefontFamily: {
-    prop: 'font-family',
-    themeProp: 'typography.mobileFonts',
-  },
   fontSize: {
     prop: 'font-size',
     themeProp: 'typography.fontSizes',
