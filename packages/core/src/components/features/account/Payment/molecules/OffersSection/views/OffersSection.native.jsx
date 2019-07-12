@@ -1,5 +1,5 @@
-// @flow
 import React from 'react';
+import { View } from 'react-native';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   ParentContainerStyle,
@@ -8,8 +8,6 @@ import {
   ImageStyle,
   RichTextStyle,
 } from '../OffersSection.style.native';
-// import { getIconPath } from '../../../../../../../utils';
-import { View, Text, Image } from 'react-native'; //eslint-disable-line
 import RichText from '../../../../../../common/atoms/RichText';
 
 // @flow
@@ -19,14 +17,8 @@ type Props = {
 
 const OffersSection = (props: Props) => {
   const { labels } = props;
-  // const OffersSection = () => {
-  // const cardIcon = getIconPath('icon-card-smile');
   return (
     <View {...props}>
-      {/* <Image
-        style={{ width: 50, height: 50 }}
-        source={{ uri: cardIcon }}
-      /> */}
       <WrapperStyle>
         <ImgWrapper>
           <ImageStyle

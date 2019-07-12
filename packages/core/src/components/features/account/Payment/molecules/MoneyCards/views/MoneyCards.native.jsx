@@ -1,8 +1,7 @@
-// @flow
 import React from 'react';
+import { View } from 'react-native';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
-  ParentContainerStyle,
   HeadingTextStyle,
   WrapperStyle,
   ImageStyle,
@@ -10,7 +9,6 @@ import {
   DescriptionEmptyCCStyle,
   ButtonWrapperStyle,
 } from '../MoneyCards.style.native';
-import { View, Text, Image } from 'react-native'; //eslint-disable-line
 import CustomButton from '../../../../../../common/atoms/Button';
 
 // @flow
@@ -38,5 +36,5 @@ const MoneyCards = (props: Props) => {
   );
 };
 
-export default withStyles(MoneyCards, ParentContainerStyle);
+export default withStyles(MoneyCards);
 export { MoneyCards as MoneyCardsVanilla };

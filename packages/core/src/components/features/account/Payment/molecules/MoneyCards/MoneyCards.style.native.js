@@ -1,6 +1,4 @@
-import styled, { css } from 'styled-components/native';
-
-const ParentContainerStyle = css``;
+import styled from 'styled-components/native';
 
 const HeadingTextStyle = styled.Text`
   height: 44px;
@@ -32,7 +30,6 @@ const ButtonWrapperStyle = styled.View`
 `;
 
 export {
-  ParentContainerStyle,
   HeadingTextStyle,
   WrapperStyle,
   ImageStyle,
