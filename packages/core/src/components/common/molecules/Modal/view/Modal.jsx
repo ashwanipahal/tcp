@@ -21,9 +21,16 @@ function getParent() {
 }
 
 const Modal = ({ children, ...otherProps }) => {
-  const { colSet, onRequestClose, title, heading, fixedWidth, className } = otherProps;
+  const {
+    colSet,
+    onRequestClose,
+    title,
+    heading,
+    fixedWidth,
+    className,
+    closeIconDataLocator,
+  } = otherProps;
   const column = colSet || Config.MODAL_COL_DEFAULTS;
-
   return (
     <div className={className}>
       <div className="TCPModal__Wrapper">
@@ -32,7 +39,12 @@ const Modal = ({ children, ...otherProps }) => {
             <Grid>
               <Row>
                 <Col colSize={column} className="TCPModal__InnerContent">
-                  <ModalHeader closeFunc={onRequestClose} title={title} heading={heading} />
+                  <ModalHeader
+                    closeFunc={onRequestClose}
+                    title={title}
+                    heading={heading}
+                    closeIconDataLocator={closeIconDataLocator}
+                  />
                   {children}
                 </Col>
               </Row>
@@ -40,7 +52,12 @@ const Modal = ({ children, ...otherProps }) => {
           )}
           {fixedWidth && (
             <div className="TCPModal__InnerContent">
-              <ModalHeader closeFunc={onRequestClose} title={title} heading={heading} />
+              <ModalHeader
+                closeFunc={onRequestClose}
+                title={title}
+                heading={heading}
+                closeIconDataLocator={closeIconDataLocator}
+              />
               {children}
             </div>
           )}

@@ -1,18 +1,18 @@
 import React from 'react';
-import { Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
-import Plp from '../screens/PLPScreen';
-import TabBarIcon from '../components/common/atoms/TabBarIcon';
+import { Text } from 'react-native';
+import NavBarIcon from '../components/common/atoms/NavBarIcon';
+
+const Plp = () => <Text>PLP Page</Text>;
 
 const PlpStack = createStackNavigator({
   Plp,
 });
 
 PlpStack.navigationOptions = {
-  tabBarLabel: 'PLP',
-  // eslint-disable-next-line react/prop-types
-  tabBarIcon: ({ focused }) => (
-    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+  tabBarLabel: 'shop',
+  tabBarIcon: props => (
+    <NavBarIcon iconActive="shop-active" iconInactive="shop-inactive" {...props} />
   ),
 };
 

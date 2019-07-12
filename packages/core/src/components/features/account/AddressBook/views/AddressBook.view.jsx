@@ -93,6 +93,7 @@ export class AddressBook extends React.PureComponent<Props> {
               onClick={this.onAddNNewAddressClick}
               buttonVariation="variable-width"
               fill="BLUE"
+              data-locator="addressbook-addnewaddress"
             >
               {labels.addNewAddressCTA}
             </Button>

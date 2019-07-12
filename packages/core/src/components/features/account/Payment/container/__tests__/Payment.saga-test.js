@@ -10,6 +10,7 @@ describe('CardList saga', () => {
     beforeEach(() => {
       cardListGen = getCardList();
       cardListGen.next();
+      cardListGen.next();
     });
 
     it('should dispatch setcardList action for success resposnse', () => {

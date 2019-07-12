@@ -1,9 +1,13 @@
 import { executeWebServiceCall } from '../../../handler';
 import endpoints from '../../../endpoints';
+import CHECKOUT_PAGE from '../../../../constants/pages.constants';
 
 export function getAddressListData() {
   const payload = {
     webService: endpoints.getAddressList,
+    header: {
+      fromPage: CHECKOUT_PAGE,
+    },
   };
   return executeWebServiceCall(payload).then(res => {
     if (!res.body) {
