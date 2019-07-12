@@ -11,7 +11,7 @@ export const importGraphQLQueriesDynamically = query => {
 };
 
 export const isMobileApp = () => {
-  return typeof window === 'undefined';
+  return typeof navigator !== 'undefined' && navigator.product === 'ReactNative';
 };
 
 export const isServer = () => {
