@@ -6,7 +6,7 @@ exports[`Legal Links component renders correctly 1`] = `
     className="test-socialMediaLinks"
   >
     <Styled(BodyCopy)
-      className={null}
+      className="social-media-label"
       color="text.secondary"
       component="span"
       data-locator="global_connectwithustext"

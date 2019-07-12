@@ -11,6 +11,7 @@ const SocialMediaLinks = ({ className, connectWithUsLabel, links }) => (
   <React.Fragment>
     <div className={className}>
       <BodyCopy
+        className="social-media-label"
         data-locator={getLocator('label-connect-with-us')}
         component="span"
         fontFamily={['secondary', 'primary']}
