@@ -40,9 +40,6 @@ const Footer = ({
           }}
         >
           <EmailSignupWrapper buttonConfig={emailSignup} />
-          {/* <Button customStyle="shadow-button" title={emailSignup.title}>
-            <RichText richTextHtml={emailSignup.title} />
-          </Button> */}
         </Col>
         <Col
           className="footer-top__slots"
@@ -57,9 +54,6 @@ const Footer = ({
           }}
         >
           <SmsSignupWrapper buttonConfig={smsSignup} />
-          {/* <Button customStyle="shadow-button" title={smsSignup.title}>
-            <RichText richTextHtml={smsSignup.title} />
-          </Button> */}
         </Col>
         <Col
           className="footer-top__slots"

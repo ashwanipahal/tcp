@@ -1,0 +1,126 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignupFormIntro component renders correctly 1`] = `
+<Fragment>
+  <Styled(Col)
+    className=""
+    colSize={
+      Object {
+        "large": 8,
+        "medium": 6,
+        "small": 4,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "large": true,
+      }
+    }
+    offsetLeft={
+      Object {
+        "large": 1,
+        "medium": 1,
+        "small": 1,
+      }
+    }
+  >
+    <Styled(BodyCopy)
+      className="sign-up__label"
+      color="text.primary"
+      component="p"
+      dataLocator=""
+      fontFamily="secondary"
+      fontSize="fs18"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    />
+    <Styled(BodyCopy)
+      className="offer-type__label"
+      color="text.primary"
+      component="p"
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs28"
+      fontWeight="black"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    />
+    <Styled(BodyCopy)
+      className="flash-text"
+      color="text.primary"
+      component="div"
+      dataLocator=""
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    >
+      <Styled(BodyCopy)
+        className="get-text"
+        color="primary.main"
+        component="span"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs48"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="dollar-text"
+        color="primary.main"
+        component="span"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs36"
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="ten-text"
+        color="primary.main"
+        component="span"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs48"
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <Styled(BodyCopy)
+        className="off-text"
+        color="primary.main"
+        component="p"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize="fs48"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="center"
+      />
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      dataLocator=""
+      fontFamily="primary"
+      fontSize="fs22"
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
+    />
+  </Styled(Col)>
+</Fragment>
+`;

@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmailSignupModal component renders correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(BodyCopy)
+    className="thank-you__label"
+    color="text.primary"
+    component="p"
+    dataLocator=""
+    fontFamily="primary"
+    fontSize="fs28"
+    fontWeight="black"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="center"
+  />
+  <Styled(BodyCopy)
+    className="confirmation__label"
+    color="text.primary"
+    component="p"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs18"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="center"
+  />
+  <Styled(BodyCopy)
+    className={null}
+    color="primary.main"
+    component="p"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs22"
+    fontWeight="semibold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="center"
+  />
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs16"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="center"
+  />
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="center"
+  />
+</div>
+`;
