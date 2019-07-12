@@ -25,7 +25,7 @@ export const deleteCard = payload => ({
   payload,
 });
 
-export const updateCardCardListonDelete = payload => ({
+export const updateCardListonDelete = payload => ({
   type: PAYMENT_CONSTANTS.UPDATE_CARD_LIST_ON_DELETE,
   payload,
 });

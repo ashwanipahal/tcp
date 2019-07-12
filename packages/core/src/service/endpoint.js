@@ -17,7 +17,6 @@ const endpoints = {
   },
   addAddress: {
     method: 'post',
-    baseURI: 'https://test3.childrensplace.com',
     relURI: '/api/v2/account/addAddress',
   },
   login: {

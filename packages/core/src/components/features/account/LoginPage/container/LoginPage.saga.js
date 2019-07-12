@@ -11,28 +11,24 @@ import endpoints from '../../../../../service/endpoint';
 const errorLabel = 'Error in API';
 
 function* login(action) {
-  try {
-    const { relURI, method } = endpoints.login;
-    const baseURI = endpoints.login.baseURI || endpoints.global.baseURI;
-    const res = yield call(
-      fetchData,
-      baseURI,
-      relURI,
-      {
-        payload: action.payload,
-        langId: -1,
-        catalogId: 10551,
-        storeId: 10151,
-      },
-      method
-    );
-    if (res.body.responseCode === 'LoginSuccess') {
-      yield put(getUserInfo());
-    } else {
-      yield put(setLoginInfo(res.body));
-    }
-  } catch (err) {
-    console.log(err);
+  const { relURI, method } = endpoints.login;
+  const baseURI = endpoints.login.baseURI || endpoints.global.baseURI;
+  const res = yield call(
+    fetchData,
+    baseURI,
+    relURI,
+    {
+      payload: action.payload,
+      langId: -1,
+      catalogId: 10551,
+      storeId: 10151,
+    },
+    method
+  );
+  if (res.body.responseCode === 'LoginSuccess') {
+    yield put(getUserInfo());
+  } else {
+    yield put(setLoginInfo(res.body));
   }
 }
 

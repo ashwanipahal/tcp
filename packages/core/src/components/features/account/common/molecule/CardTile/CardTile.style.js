@@ -22,13 +22,13 @@ const styles = css`
     align-items: flex-end;
   }
   & form {
-    width: 88%;
+    width: 70%;
   }
   & .input-fields-wrapper {
     height: auto;
   }
   & .TextBox__error {
-    padding-bottom: 10px;
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 
   & .TextBox__label {
@@ -74,9 +74,13 @@ const styles = css`
     width: 100%;
   }
   .cardTile__ctaLinks {
-    display: flex;
-    margin-top: 35px;
-    float: right;
+    display: block;
+    margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+    width: 30%;
+    text-align: right;
+  }
+  .cardTile__anchor {
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 `;
 

@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/DeleteCardModal.style';
-import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
+import BodyCopy from '../../../../common/atoms/BodyCopy';
 import Modal from '../../../../common/molecules/Modal';
 import Notification from '../../../../common/molecules/Notification';
 import { getIconPath } from '../../../../../utils';
@@ -65,35 +65,33 @@ class DeleteCardModal extends React.Component<Props> {
     return (
       <div className={className}>
         <BodyCopy
-          bodySize="seven"
-          fontWeight="bold"
-          fontFamily="secondaryFontFamily"
           className="deleteCardModal__modalTitle"
+          fontFamily="primary"
+          fontSize={['fs18']}
+          fontWeight="extrabold"
+          component="div"
         >
           {data.heading}
         </BodyCopy>
         <BodyCopy className="deleteCardModal__desc">
-          {' '}
-          <Image
-            className="deleteCardModal__img"
-            src={getIconPath('gift-card')}
-            onClick={this.pause}
-          />
+          <Image className="deleteCardModal__img" src={getIconPath('gift-card-small')} />
           <BodyCopy className="deleteCardModal__cardInfo" bodySize="three">
             <BodyCopy
-              fontWeight="bold"
-              fontFamily="secondaryFontFamily"
               className="deleteCardModal__card"
-              tag="span"
+              fontFamily="secondary"
+              fontSize="fs14"
+              fontWeight="extrabold"
+              component="span"
             >
               {data.cardText.cardEnd}
               {getAccNumbr}
             </BodyCopy>
             <BodyCopy
               fontWeight="normal"
-              fontFamily="secondaryFontFamily"
+              fontSize="fs14"
+              fontFamily="secondary"
               className="deleteCardModal__expiry"
-              tag="span"
+              component="span"
             >
               {data.cardText.expire}
               {TotalExp}
@@ -105,7 +103,7 @@ class DeleteCardModal extends React.Component<Props> {
             buttonVariation="variable-width"
             fill="BLUE"
             onClick={this.onConfirm}
-            className="deleteCardModal__deleteConfirm deleteCardModal_btn"
+            className="deleteCardModal__deleteConfirm deleteCardModal__btn"
           >
             {data.buttons.confirm}
           </Button>
@@ -113,7 +111,7 @@ class DeleteCardModal extends React.Component<Props> {
             buttonVariation="variable-width"
             onClick={this.onClose}
             fill="RED"
-            className="deleteCardModal__btn deleteCardModal_deleteCancel"
+            className="deleteCardModal__btn deleteCardModal__deleteCancel"
           >
             {data.buttons.cancel}
           </Button>

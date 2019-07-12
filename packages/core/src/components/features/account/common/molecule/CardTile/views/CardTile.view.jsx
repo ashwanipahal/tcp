@@ -27,7 +27,7 @@ type Props = {
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
   showNotificationCaptcha: any,
-  key: any,
+  form: any,
 };
 
 class CardTile extends React.Component<Props> {
@@ -42,10 +42,7 @@ class CardTile extends React.Component<Props> {
       'PLACE CARD': 'place-card-small',
     };
     this.paymentMethodId = PAYMENT_CONSTANTS.CREDIT_CARDS_PAYMETHODID;
-    this.state = {
-      isTokenDirty: false,
-      HideCaptchaBtn: false,
-    };
+    this.state = { isTokenDirty: false, HideCaptchaBtn: false };
     this.handleCheckBalanceClick = this.handleCheckBalanceClick.bind(this);
   }
 
@@ -174,9 +171,7 @@ class CardTile extends React.Component<Props> {
   handleRecaptchaVerify = token => {
     const { change } = this.props;
     change('recaptchaToken', token);
-    this.setState({
-      isTokenDirty: false,
-    });
+    this.setState({ isTokenDirty: false });
   };
 
   handleRecaptchaExpired = () => {
@@ -191,6 +186,8 @@ class CardTile extends React.Component<Props> {
   remainBalance = () => {
     const { card, checkbalanceValueInfo, labels } = this.props;
     const { HideCaptchaBtn } = this.state;
+    const isCreditCard = card.ccType !== 'GiftCard' && card.ccType !== 'VENMO';
+    const isVenmo = card.ccType === 'VENMO';
     return (
       <React.Fragment>
         {HideCaptchaBtn && checkbalanceValueInfo.giftCardNbr === card.accountNo && (
@@ -217,7 +214,7 @@ class CardTile extends React.Component<Props> {
             {checkbalanceValueInfo.giftCardAuthorizedAmt}
           </BodyCopy>
         )}
-        {!HideCaptchaBtn && (
+        {!HideCaptchaBtn && !isVenmo && !isCreditCard && (
           <Button
             onClick={this.handleCheckBalanceClick}
             buttonVariation="variable-width"
@@ -283,15 +280,29 @@ class CardTile extends React.Component<Props> {
     setDefaultPaymentMethod(setDefaultPaymentJSON);
   };
 
+  loading = () => {
+    const { checkbalanceValueInfo, labels } = this.props;
+    const { HideCaptchaBtn } = this.state;
+    return (
+      <React.Fragment>
+        {HideCaptchaBtn && !checkbalanceValueInfo.giftCardNbr && (
+          <BodyCopy
+            tag="span"
+            fontSize="fs24"
+            fontFamily="secondary"
+            fontWeight="extrabold"
+            className=""
+            lineHeights="lh115"
+          >
+            {labels.ACC_LBL_LOADING}
+          </BodyCopy>
+        )}
+      </React.Fragment>
+    );
+  };
+
   render() {
-    const {
-      card,
-      className,
-      checkbalanceValueInfo,
-      labels,
-      showNotificationCaptcha,
-      key,
-    } = this.props;
+    const { card, className, labels, showNotificationCaptcha, form } = this.props;
     const { HideCaptchaBtn } = this.state;
     const isCreditCard = card.ccType !== 'GiftCard' && card.ccType !== 'VENMO';
     const isVenmo = card.ccType === 'VENMO';
@@ -328,9 +339,9 @@ class CardTile extends React.Component<Props> {
           </div>
         </div>
         <div className="giftcardTile__wrapper">
-          <form name={key} onSubmit={this.handleSubmit} autoComplete="off" noValidate>
+          <form name={form} onSubmit={this.handleSubmit} autoComplete="off" noValidate>
             <div className="giftcardTile__row">
-              {!HideCaptchaBtn && (
+              {!HideCaptchaBtn && !isVenmo && !isCreditCard && (
                 <Recaptcha
                   ref={this.attachReCaptchaRef}
                   onloadCallback={this.handleRecaptchaOnload}
@@ -346,18 +357,7 @@ class CardTile extends React.Component<Props> {
                 name="recaptchaToken"
                 id="recaptchaToken"
               />
-              {HideCaptchaBtn && !checkbalanceValueInfo.giftCardNbr && (
-                <BodyCopy
-                  tag="span"
-                  fontSize="fs24"
-                  fontFamily="secondary"
-                  fontWeight="extrabold"
-                  className=""
-                  lineHeights="lh115"
-                >
-                  {labels.ACC_LBL_LOADING}
-                </BodyCopy>
-              )}
+              {this.loading()}
               {this.remainBalance()}
             </div>
           </form>

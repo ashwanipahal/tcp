@@ -38,8 +38,8 @@ export const CardList = ({
             key={`container-${card.creditCardId}`}
             colSize={{ large: 4, medium: 4, small: 6 }}
             ignoreGutter={{
-              large: (index + 2) % 3 === 0,
-              medium: (index + 2) % 2 === 0,
+              large: (index + 1) % 3 === 0,
+              medium: (index + 1) % 2 === 0,
               small: true,
             }}
           >
@@ -49,8 +49,7 @@ export const CardList = ({
               setDeleteModalMountState={setDeleteModalMountState}
               onGetBalanceCard={onGetBalanceCard}
               checkbalanceValueInfo={checkbalanceValueInfo}
-              key={card.creditCardId}
-              form={card.creditCardId}
+              form={`giftcardBalance-${card.creditCardId}`}
               labels={labels}
               showNotification={showNotification}
               showNotificationCaptcha={showNotificationCaptcha}

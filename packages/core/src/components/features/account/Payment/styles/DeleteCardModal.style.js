@@ -5,16 +5,16 @@ const deleteCardModalStyle = css`
     margin: 0 80px;
   }
   @media ${props => props.theme.mediaQuery.smallOnly} {
-    .deleteCardModal_card {
+    .deleteCardModal__card {
       display: block;
     }
   }
   .deleteCardModal__cardInfo {
     float: left;
-    width: 80%;
-    padding-left: 20px;
+    width: 70%;
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
     @media ${props => props.theme.mediaQuery.smallOnly} {
-      width: 75%;
+      width: 60%;
     }
   }
   .deleteCardModal__expiry {
@@ -24,24 +24,24 @@ const deleteCardModalStyle = css`
     }
   }
   .deleteCardModal__btnWrapper {
-    text-align: center;
     padding-top: 80px;
     clear: both;
-    button.deleteCardModal__btn {
-      display: inline-block;
-      font-weight: ${props => props.theme.fonts.fontWeight.normal};
-      float: none;
-      width: 60%;
-      @media ${props => props.theme.mediaQuery.medium} {
-        float: right;
-        width: 40%;
-      }
+    text-align: center;
+  }
+  .deleteCardModal__btn {
+    display: inline-block;
+    font-weight: ${props => props.theme.fonts.fontWeight.normal};
+    float: none;
+    width: 60%;
+    @media ${props => props.theme.mediaQuery.medium} {
+      float: right;
+      width: 40%;
     }
-    button.deleteCardModal__deleteCancel {
-      float: none;
-      @media ${props => props.theme.mediaQuery.medium} {
-        float: left;
-      }
+  }
+  .deleteCardModal__deleteCancel {
+    float: none;
+    @media ${props => props.theme.mediaQuery.medium} {
+      float: left;
     }
   }
   .deleteCardModal__desc {
@@ -49,10 +49,10 @@ const deleteCardModalStyle = css`
       margin: 0 auto;
       width: 75%;
     }
-    .deleteCardModal__img {
-      width: 15%;
-      float: left;
-    }
+  }
+  .deleteCardModal__img {
+    width: 15%;
+    float: left;
   }
   .deleteCardModal__addressToDelete {
     margin: 0 ${props => props.theme.spacing.LAYOUT_SPACING.XL}
