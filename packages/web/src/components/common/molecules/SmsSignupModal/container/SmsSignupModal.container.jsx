@@ -62,7 +62,7 @@ const mapStateToProps = (state, props) => {
   let formViewConfig = {};
   if (props.buttonConfig.url === '/SMS_SIGNUP_MODAL') {
     formViewConfig = {
-      ...state.labels.global.smsSignup,
+      ...state.Labels.global.smsSignup,
     };
   }
   return {

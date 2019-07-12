@@ -65,7 +65,7 @@ const mapStateToProps = (state, props) => {
   let formViewConfig = {};
   if (props.buttonConfig.url === '/EMAIL_SIGNUP_MODAL') {
     formViewConfig = {
-      ...state.labels.global.emailSignup,
+      ...state.Labels.global.emailSignup,
     };
   }
 

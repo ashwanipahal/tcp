@@ -2,7 +2,7 @@ import fetchData from '@tcp/core/src/service/API';
 import mock from './mock';
 
 /**
- * Abstractor layer for loading data from API for ModuleD related components
+ * Abstractor layer for loading data from API for SMS and Email Signup
  */
 const Abstractor = {
   subscribeEmail: (baseURI, relURI, params = {}, method) => {

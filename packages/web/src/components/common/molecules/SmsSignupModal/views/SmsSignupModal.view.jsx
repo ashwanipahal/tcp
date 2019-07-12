@@ -245,3 +245,4 @@ export default withStyles(
   })(SignupWrapper),
   signupWrapperStyle
 );
+export { SignupWrapper as SmsSignupModalVanilla };
