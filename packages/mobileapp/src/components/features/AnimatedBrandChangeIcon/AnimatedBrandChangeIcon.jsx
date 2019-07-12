@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { LayoutAnimation, Image, View, TouchableOpacity, Text } from 'react-native';
 import { PropTypes } from 'prop-types';
 import styles from './AnimatedBrandChangeIcon.style';
-import tcpLogo from '../../../brand_config/gymboree/config/logo.png';
+import tcpLogo from '../../../brand_config/main/config/tcp.png';
+import gymboreeLogo from '../../../brand_config/gymboree/config/gymboree.png';
 
 const {
   container,
@@ -58,7 +59,7 @@ class AnimatedBrandChangeIcon extends Component {
           style={openSwitch ? secondIconFinalState : iconInitialState}
         >
           {/* second icon for brand 2 which remains hidden in initial state */}
-          <Image source={tcpLogo} style={openSwitch ? logo : logoHidden} />
+          <Image source={gymboreeLogo} style={openSwitch ? logo : logoHidden} />
         </TouchableOpacity>
         <TouchableOpacity
           accessibilityTraits="none"
