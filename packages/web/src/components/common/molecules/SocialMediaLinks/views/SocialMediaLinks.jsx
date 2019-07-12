@@ -16,7 +16,7 @@ const SocialMediaLinks = ({ className, connectWithUsLabel, links }) => (
         component="span"
         fontFamily={['secondary', 'primary']}
         fontSize={['fs12', 'fs10', 'fs12']}
-        fontWeight={['normal', 'black']}
+        fontWeight={['regular', 'black']}
         lineHeight="normal"
         letterSpacing="normal"
         textAlign="center"
