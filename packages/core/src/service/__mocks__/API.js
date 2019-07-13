@@ -3,7 +3,6 @@ async function fetchData(baseURL, relURL, params = {}) {
     let result = {};
     try {
       if (params.payload && params.payload.indexOf('URL') !== -1) {
-        console.log('in the promise email subscription');
         // for email subscription
         result = {
           body: {
@@ -11,7 +10,6 @@ async function fetchData(baseURL, relURL, params = {}) {
           },
         };
       } else if (params.payload && params.payload.indexOf('address=') !== -1) {
-        console.log('in the promise email verification');
         // for email verification
         result = {
           body: {

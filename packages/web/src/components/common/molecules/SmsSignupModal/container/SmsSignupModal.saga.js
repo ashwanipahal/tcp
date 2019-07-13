@@ -4,7 +4,7 @@ import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/Sig
 import EMAIL_SIGNUP_CONSTANTS from './SmsSignupModal.constants';
 import { smsSignupStatus } from './SmsSignupModal.actions';
 
-function* subscribeSms({ payload }) {
+export function* subscribeSms({ payload }) {
   try {
     const { baseURI, relURI, method } = endpoints.addSmsSignup;
     const params = {

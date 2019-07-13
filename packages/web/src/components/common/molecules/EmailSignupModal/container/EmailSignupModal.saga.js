@@ -4,7 +4,7 @@ import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/Sig
 import EMAIL_SIGNUP_CONSTANTS from './EmailSignupModal.constants';
 import { emailSignupStatus, setEmailValidationStatus } from './EmailSignupModal.actions';
 
-function* subscribeEmail(email, status) {
+export function* subscribeEmail(email, status) {
   try {
     const { baseURI, relURI, method } = endpoints.addEmailSignup;
     const params = {
@@ -28,7 +28,7 @@ function* subscribeEmail(email, status) {
   }
 }
 
-function* verifyEmail({ payload }) {
+export function* verifyEmail({ payload }) {
   try {
     const { baseURI, relURI, method } = endpoints.emailVerfication;
     const newRelURI = `${relURI}&address=${payload}`;
