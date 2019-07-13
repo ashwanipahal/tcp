@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
-import AddAddressReducer from '../AddAddress/AddAddress.reducer';
-import ADD_ADDRESS_CONSTANTS from '../AddAddress/AddAddress.constants';
+import AddAddressReducer from '../AddEditAddress.reducer';
+import constants from '../AddEditAddress.constants';
 
 describe('AddAddressReducer reducer', () => {
   it('should return  default state', () => {
@@ -10,7 +10,7 @@ describe('AddAddressReducer reducer', () => {
     const initialState = null;
     expect(
       AddAddressReducer(initialState, {
-        type: ADD_ADDRESS_CONSTANTS.ADD_USER_ADDRESS_FAIL,
+        type: constants.ADD_USER_ADDRESS_FAIL,
         payload: {
           error: 'test error',
         },
@@ -26,7 +26,7 @@ describe('AddAddressReducer reducer', () => {
     const initialState = null;
     expect(
       AddAddressReducer(initialState, {
-        type: ADD_ADDRESS_CONSTANTS.ADD_USER_ADDRESS_SUCCESS,
+        type: constants.ADD_USER_ADDRESS_SUCCESS,
         payload: {
           addressId: '12345',
         },

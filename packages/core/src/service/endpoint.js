@@ -19,6 +19,10 @@ const endpoints = {
     method: 'post',
     relURI: '/api/v2/account/addAddress',
   },
+  updateAddress: {
+    method: 'put',
+    relURI: '/api/v2/wallet/updateAddress',
+  },
   login: {
     method: 'post',
     relURI: '/api/v2/account/logon',

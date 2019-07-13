@@ -33,8 +33,11 @@ const labels = {
   acc_lbl_phone_number: 'Phone Number',
   acc_lbl_cancel_cta: 'CANCEL',
   acc_lbl_add_address_cta: 'ADD ADDRESS',
+  acc_lbl_update_address_cta: 'UPDATE',
   acc_lbl_set_default: 'Set as default shipping address',
   acc_lbl_verify_your_address_header: 'Verify Your Address',
+  acc_lbl_verify_your_address_heading_add: 'Add Address',
+  acc_lbl_verify_your_address_heading_edit: 'EDIT ADDRESS',
   acc_label_verify_your_address_AE09:
     'There may be an issue with your address as entered. Please double check it, or if you believe the address is correct you can continue to the next step.',
   acc_label_verify_your_address_AE10:
@@ -50,6 +53,8 @@ const labels = {
   acc_lbl_optional_address_line: 'Apartment or suite number',
   acc_lbl_continue_cta: 'CONTINUE',
   acc_lbl_edit_address_cta: 'EDIT ADDRESS',
+  acc_lbl_add_address_form_heading: 'Add New Shipping Address',
+  acc_lbl_edit_address_form_heading: 'EDIT SHIPPING ADDRESS',
 };
 
 export default labels;

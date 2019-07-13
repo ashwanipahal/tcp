@@ -279,7 +279,6 @@ function evaluateAllSyncRules(
       }
     });
   });
-  console.log('---------------errors are ', errors);
   return errors;
 }
 
