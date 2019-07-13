@@ -26,6 +26,87 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
     onRequestClose={[Function]}
     overlayClassName="TCPModal__Overlay"
   >
+    <Styled(Grid)>
+      <Styled(Row)
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 4,
+              "small": 4,
+            }
+          }
+          hideCol={
+            Object {
+              "medium": true,
+              "small": true,
+            }
+          }
+        >
+          <Styled(Image) />
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 8,
+              "medium": 6,
+              "small": 4,
+            }
+          }
+          ignoreGutter={
+            Object {
+              "large": true,
+            }
+          }
+          offsetLeft={
+            Object {
+              "large": 0,
+              "medium": 1,
+              "small": 1,
+            }
+          }
+        >
+          <Styled(SignupConfirm)
+            formViewConfig={Object {}}
+          />
+          <Styled(Button)
+            buttonVariation="variable-width"
+            className="shop-button"
+            fill="BLUE"
+            fullWidth={true}
+            onClick={[Function]}
+            type="submit"
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(Grid)>
+  </errorBoundaryComponent>
+  <Styled(Button)
+    customStyle="shadow-button"
+    onClick={[Function]}
+  >
+    <Styled(RichText) />
+  </Styled(Button)>
+</Fragment>
+`;
+
+exports[`EmailSignupModal component renders correctly when button is clicked 2`] = `
+<Fragment>
+  <errorBoundaryComponent
+    className=""
+    colSet={
+      Object {
+        "large": 8,
+        "medium": 6,
+        "small": 6,
+      }
+    }
+    isOpen={true}
+    onRequestClose={[Function]}
+    overlayClassName="TCPModal__Overlay"
+  >
     <form
       onSubmit={[Function]}
     >
@@ -87,7 +168,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
               }
             >
               <Field
-                className=""
+                className="async-success"
                 component={
                   Object {
                     "$$typeof": Symbol(react.forward_ref),
@@ -221,7 +302,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
               <Styled(Button)
                 buttonVariation="fixed-width"
                 className="join-button"
-                disabled={true}
+                disabled={false}
                 fill="BLUE"
                 fullWidth={true}
                 type="submit"
@@ -246,7 +327,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
             <Styled(Button)
               buttonVariation="fixed-width"
               className="join-button"
-              disabled={true}
+              disabled={false}
               fill="BLUE"
               fullWidth={true}
               type="submit"

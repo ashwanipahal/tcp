@@ -1,5 +1,4 @@
 import fetchData from '@tcp/core/src/service/API';
-import mock from './mock';
 
 /**
  * Abstractor layer for loading data from API for SMS and Email Signup
@@ -19,9 +18,6 @@ const Abstractor = {
     return fetchData(baseURI, relURI, params, method)
       .then(Abstractor.processData)
       .catch(Abstractor.handleError);
-  },
-  getMock: () => {
-    return mock;
   },
   processSubscriptionData: res => {
     if (

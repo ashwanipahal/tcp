@@ -20,8 +20,21 @@ describe('EmailSignupModal component', () => {
       buttonConfig: {},
       className: '',
       formViewConfig: {},
+      isSubscriptionValid: true,
+      isEmailValid: 'invalid',
+    };
+    const component = shallow(<SignupWrapperVanilla {...props} />);
+    component.setState({ isOpen: true });
+    expect(component).toMatchSnapshot();
+  });
+
+  it('renders correctly when button is clicked', () => {
+    const props = {
+      buttonConfig: {},
+      className: '',
+      formViewConfig: {},
       isSubscriptionValid: false,
-      isEmailValid: true,
+      isEmailValid: 'valid',
     };
     const component = shallow(<SignupWrapperVanilla {...props} />);
     component.setState({ isOpen: true });

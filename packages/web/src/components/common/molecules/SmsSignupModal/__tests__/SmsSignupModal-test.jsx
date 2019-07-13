@@ -20,6 +20,19 @@ describe('EmailSignupModal component', () => {
       buttonConfig: {},
       className: '',
       formViewConfig: {},
+      isSubscriptionValid: true,
+      isEmailValid: true,
+    };
+    const component = shallow(<SmsSignupModalVanilla {...props} />);
+    component.setState({ isOpen: true });
+    expect(component).toMatchSnapshot();
+  });
+
+  it('renders correctly when button is clicked', () => {
+    const props = {
+      buttonConfig: {},
+      className: '',
+      formViewConfig: {},
       isSubscriptionValid: false,
       isEmailValid: true,
     };
