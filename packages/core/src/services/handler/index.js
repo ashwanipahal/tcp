@@ -1,1 +1,1 @@
-export { default, executeWebServiceCall } from './handler';
+export { default, executeStatefulAPICall, executeUnbxdAPICall } from './handler';

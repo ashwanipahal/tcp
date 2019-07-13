@@ -20,7 +20,6 @@ const readCookieWeb = (key, cookieString) => {
     if (isClient() || cookieString) {
       const name = `${key}=`;
       const decodedCookie = decodeURIComponent(cookieString || document.cookie).split(';');
-
       for (let i = 0; i < decodedCookie.length; i += 1) {
         let c = decodedCookie[i];
         while (c.charAt(0) === ' ') {
@@ -44,11 +43,10 @@ const readCookieWeb = (key, cookieString) => {
  * @param {string} cookieString - Cookie value in string to be used in case of Node
  */
 export const readCookie = (key, cookieString) => {
-  if (isMobileApp) {
-    readCookieMobileApp();
-  } else {
-    readCookieWeb(key, cookieString);
+  if (isMobileApp()) {
+    return readCookieMobileApp();
   }
+  return readCookieWeb(key, cookieString);
 };
 
 /**

@@ -15,11 +15,11 @@ export const isMobileApp = () => {
 };
 
 export const isServer = () => {
-  return typeof window === 'undefined';
+  return typeof window === 'undefined' && !isMobileApp();
 };
 
 export function isClient() {
-  return typeof window !== 'undefined';
+  return typeof window !== 'undefined' && !isMobileApp();
 }
 
 export const isProduction = () => {

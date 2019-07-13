@@ -1,9 +1,9 @@
 import superagent from 'superagent';
-import { STATEFUL_API_REQUEST_TIMEOUT } from '../../config';
+import { API_CONFIG } from '../../config';
 import { isClient } from '../../../utils';
 
 /**
- * @summary This is to set the request params and generate the request URL.
+ * @summary This is to generate and return both the request params and the request URL.
  * @param {string} apiConfig - Api config to be utilized for brand/channel/locale config
  * @param {Object} reqObj - request param with endpoints and payload
  * @returns {Object} returns derived request object and request url
@@ -11,14 +11,15 @@ import { isClient } from '../../../utils';
 const getRequestParams = (apiConfig, reqObj) => {
   const { proto, domain } = apiConfig;
   const tcpApi = `${proto}${domain}${reqObj.webService.URI}`;
-  const requestUrl = tcpApi; // TODO - for Unbxd or TCP API
-  const reqSetting = {};
+  const requestUrl = tcpApi; // TODO - configure it for Unbxd
+  const reqHeaders = {};
+  // TODO - Check if it works in Mobile app as well or else change it to isServer check
   if (apiConfig.cookie && !isClient()) {
-    reqSetting.Cookie = apiConfig.cookie;
+    reqHeaders.Cookie = apiConfig.cookie;
   }
   return {
     requestUrl,
-    reqSetting,
+    reqHeaders,
   };
 };
 
@@ -28,13 +29,13 @@ const getRequestParams = (apiConfig, reqObj) => {
  * @param {Object} reqObj - request param with endpoints and payload
  * @returns {Promise} Resolves with promise to consume the unbxd api or reject in case of error
  */
-const unbxdAPICall = (apiConfig, reqObj) => {
-  const { requestUrl, reqSetting } = getRequestParams(apiConfig, reqObj);
-  const reqTimeout = STATEFUL_API_REQUEST_TIMEOUT;
+const unbxdAPIClient = (apiConfig, reqObj) => {
+  const { requestUrl, reqHeaders } = getRequestParams(apiConfig, reqObj);
+  const reqTimeout = API_CONFIG.apiRequestTimeout;
   const requestType = reqObj.webService.method.toLowerCase();
   const request = superagent[requestType](requestUrl)
-    .set(reqSetting)
-    .accept('application/json')
+    .set(reqHeaders)
+    .accept(API_CONFIG.apiContentType)
     .timeout(reqTimeout);
 
   if (reqObj.header) {
@@ -66,4 +67,4 @@ const unbxdAPICall = (apiConfig, reqObj) => {
   return result;
 };
 
-export default unbxdAPICall;
+export default unbxdAPIClient;

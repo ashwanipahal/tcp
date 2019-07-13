@@ -7,6 +7,7 @@ export {
   identifyBrand,
   isServer,
   isClient,
+  isMobileApp,
   getObjectValue,
   getIconPath,
   getLocator,

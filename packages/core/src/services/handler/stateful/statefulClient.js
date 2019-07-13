@@ -1,6 +1,6 @@
 import superagent from 'superagent';
-import { STATEFUL_API_REQUEST_TIMEOUT } from '../../config';
-import { isClient } from '../../../utils';
+import { API_CONFIG } from '../../config';
+import { isClient, isMobileApp } from '../../../utils';
 import { readCookie } from '../../../utils/cookie.util';
 
 /**
@@ -11,7 +11,16 @@ import { readCookie } from '../../../utils/cookie.util';
  */
 const generateTraceId = apiConfig => {
   const apiConfigObj = apiConfig;
-  const prefix = isClient() ? 'CLIENT' : 'NODE';
+  let prefix;
+
+  // Setting prefix of trace-id based on platform of user i.e. either mobile, browser, Node
+  if (isMobileApp()) {
+    prefix = 'MOBILE';
+  } else if (isClient()) {
+    prefix = 'CLIENT';
+  } else {
+    prefix = 'NODE';
+  }
   const timeStamp = new Date().valueOf().toString();
 
   // On the Node Server traceIdCount can grow to Infinity, so we will reset it at 10000
@@ -30,21 +39,14 @@ const generateTraceId = apiConfig => {
  * @returns {string} returns derived QuantumMetricSessionID from cookie or else not-found string value
  */
 const generateSessionId = apiConfig => {
-  const sessionCookies = ['QuantumMetricSessionID'];
-  let cookie = '';
-  for (let index = 0; index < sessionCookies.length; index += 1) {
-    const sessionCookieKey = sessionCookies[index];
-    const cookieValue = readCookie(sessionCookieKey, !isClient() ? apiConfig.cookie : null);
-    if (cookieValue) {
-      cookie = cookieValue;
-      break;
-    }
-  }
-  return encodeURIComponent(cookie || 'not-found');
+  const { sessionCookieKey } = API_CONFIG;
+  // TODO - Check if it works in Mobile app as well or else change it to isServer check
+  const cookieValue = readCookie(sessionCookieKey, !isClient() ? apiConfig.cookie : null);
+  return encodeURIComponent(cookieValue || 'not-found');
 };
 
 /**
- * @summary This is to set the request params and generate the request URL.
+ * @summary This is to generate and return both the request params and the request URL.
  * @param {string} apiConfig - Api config to be utilized for brand/channel/locale config
  * @param {Object} reqObj - request param with endpoints and payload
  * @returns {Object} returns derived request object and request url
@@ -53,7 +55,7 @@ const getRequestParams = (apiConfig, reqObj) => {
   const { proto, domain, catalogId, storeId, langId, isMobile } = apiConfig;
   const deviceType = isMobile ? 'mobile' : 'desktop';
   const requestUrl = `${proto}${domain}${reqObj.webService.URI}`;
-  const reqSetting = {
+  const reqHeaders = {
     langId,
     storeId,
     Pragma: 'no-cache',
@@ -64,12 +66,13 @@ const getRequestParams = (apiConfig, reqObj) => {
     'tcp-trace-request-id': generateTraceId(apiConfig),
     'tcp-trace-session-id': generateSessionId(apiConfig),
   };
+  // TODO - Check if it works in Mobile app as well or else change it to isServer check
   if (apiConfig.cookie && !isClient()) {
-    reqSetting.Cookie = apiConfig.cookie;
+    reqHeaders.Cookie = apiConfig.cookie;
   }
   return {
     requestUrl,
-    reqSetting,
+    reqHeaders,
   };
 };
 
@@ -79,13 +82,13 @@ const getRequestParams = (apiConfig, reqObj) => {
  * @param {Object} reqObj - request param with endpoints and payload
  * @returns {Promise} Resolves with promise to consume the stateful api or reject in case of error
  */
-const statefulAPICall = (apiConfig, reqObj) => {
-  const { requestUrl, reqSetting } = getRequestParams(apiConfig, reqObj);
-  const reqTimeout = STATEFUL_API_REQUEST_TIMEOUT;
+const statefulAPIClient = (apiConfig, reqObj) => {
+  const { requestUrl, reqHeaders } = getRequestParams(apiConfig, reqObj);
+  const reqTimeout = API_CONFIG.apiRequestTimeout;
   const requestType = reqObj.webService.method.toLowerCase();
   const request = superagent[requestType](requestUrl)
-    .set(reqSetting)
-    .accept('application/json')
+    .set(reqHeaders)
+    .accept(API_CONFIG.apiContentType)
     .timeout(reqTimeout);
   if (reqObj.header) {
     request.set(reqObj.header);
@@ -109,4 +112,4 @@ const statefulAPICall = (apiConfig, reqObj) => {
   return result;
 };
 
-export default statefulAPICall;
+export default statefulAPIClient;
