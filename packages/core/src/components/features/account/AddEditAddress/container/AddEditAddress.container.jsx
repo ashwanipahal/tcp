@@ -1,10 +1,12 @@
 import React from 'react';
+import Router from 'next/router'; //eslint-disable-line
 import { connect } from 'react-redux';
 import { addAddressReq, updateAddressReq } from './AddEditAddress.actions';
-import AddAddressComponent from '../../common/organism/AddressForm';
+import AddAddressComponent from '../views/AddEditAddress.view';
 import { getAddressResponse, getUserEmail, getAddressById } from './AddEditAddress.selectors';
 import { verifyAddress } from '../../AddressVerification/container/AddressVerification.actions';
 import { getAddressListState } from '../../AddressBook/container/AddressBook.selectors';
+import labels from '../../AddressBook/container/AddressBook.labels';
 
 // @flow
 
@@ -22,6 +24,14 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.initialValues = null;
+  }
+
+  componentDidUpdate() {
+    const { addressResponse } = this.props;
+    const isSuccess = addressResponse && addressResponse.get('addressId');
+    if (isSuccess) {
+      this.backToAddressBookClick();
+    }
   }
 
   getInitialValues = (addressList, address) => {
@@ -42,7 +52,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
       zipCode: address.zipCode,
       country: address.country,
       phoneNumber: address.phone1,
-      primary: address.primary,
+      primary: address.primary === 'true',
       nickName: address.nickName,
     };
   };
@@ -55,8 +65,12 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     verifyAddressAction(formattedPayload);
   };
 
-  submitAddressForm = payload => {
+  submitAddressForm = payloadParam => {
     const { submitEditAddressFormAction, submitNewAddressFormAction, address } = this.props;
+    const { userEmail } = this.props;
+    const payload = Object.assign(payloadParam, {
+      email: userEmail,
+    });
     if (address) {
       submitEditAddressFormAction(payload);
     } else {
@@ -77,18 +91,24 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     };
   };
 
+  backToAddressBookClick = () => {
+    Router.push('/account');
+  };
+
   render() {
-    const { verifyAddressAction, addressResponse, userEmail, addressList, address } = this.props;
+    const { addressResponse, addressList, address } = this.props;
     this.initialValues = this.getInitialValues(addressList, address);
-    const isMakeDefaultDisabled = addressList.size === 1;
+    const isMakeDefaultDisabled = address ? addressList.size === 1 : addressList.size === 0;
     return (
       <AddAddressComponent
         addressResponse={addressResponse}
         submitAddressFormAction={this.submitAddressForm}
-        verifyAddressAction={verifyAddressAction}
-        userEmail={userEmail}
+        verifyAddressAction={this.verifyAddress}
         isMakeDefaultDisabled={isMakeDefaultDisabled}
         initialValues={this.initialValues}
+        backToAddressBookClick={this.backToAddressBookClick}
+        isEdit={!!address}
+        labels={labels}
       />
     );
   }

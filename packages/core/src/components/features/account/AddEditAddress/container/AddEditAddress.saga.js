@@ -1,9 +1,12 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import constants from './AddAddress.constants';
-import { addAddressSuccess, addAddressFail } from './AddAddress.actions';
-import { setAddressBookNotification } from '../AddressBook.actions';
-import fetchData from '../../../../../../service/API';
-import endpoints from '../../../../../../service/endpoint';
+import constants from './AddEditAddress.constants';
+import { addAddressSuccess, addAddressFail } from './AddEditAddress.actions';
+import {
+  setAddressBookNotification,
+  clearGetAddressListTTL,
+} from '../../AddressBook/container/AddressBook.actions';
+import fetchData from '../../../../../service/API';
+import endpoints from '../../../../../service/endpoint';
 
 export function* addAddressGet({ payload }) {
   try {
@@ -57,6 +60,7 @@ export function* addAddressGet({ payload }) {
           status: 'success',
         })
       );
+      yield put(clearGetAddressListTTL());
       return yield put(addAddressSuccess(res.body));
     }
     return yield put(addAddressFail(res.body));
@@ -111,17 +115,27 @@ export function* updateAddressPut({ payload }) {
       method
     );
     if (res) {
-      return yield put(editAddressSuccess());
+      yield put(
+        setAddressBookNotification({
+          status: 'success',
+        })
+      );
+      yield put(clearGetAddressListTTL());
+      return yield put(addAddressSuccess(res.body));
     }
-    return yield put(editAddressFail());
+    return yield put(addAddressFail(res.body));
   } catch (err) {
-    return yield put(editAddressFail(err));
+    let error = {};
+    if (err instanceof Error) {
+      error = err.response.body;
+    }
+    return yield put(addAddressFail(error));
   }
 }
 
-export function* AddAddressSaga() {
+export function* AddEditAddressSaga() {
   yield takeLatest(constants.ADD_USER_ADDRESS_REQ, addAddressGet);
   yield takeLatest(constants.UPDATE_USER_ADDRESS_REQ, updateAddressPut);
 }
 
-export default AddAddressSaga;
+export default AddEditAddressSaga;

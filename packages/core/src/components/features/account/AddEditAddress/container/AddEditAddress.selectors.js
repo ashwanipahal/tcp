@@ -3,7 +3,7 @@ import { LOGINPAGE_REDUCER_KEY } from '../../../../../constants/reducer.constant
 import { getAddressListState } from '../../AddressBook/container/AddressBook.selectors';
 
 export const getAddressResponse = state => {
-  return state.AddAddressReducer;
+  return state.AddEditAddressReducer;
 };
 
 export const getUserEmail = state => {

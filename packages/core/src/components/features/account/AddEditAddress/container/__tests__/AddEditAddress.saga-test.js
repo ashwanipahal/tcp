@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import { addAddressGet, AddAddressSaga } from '../AddAddress/AddAddress.saga';
-import { addAddressSuccess, addAddressFail } from '../AddAddress/AddAddress.actions';
-import ADD_ADDRESS_CONSTANTS from '../AddAddress/AddAddress.constants';
+import { addAddressGet, AddEditAddressSaga } from '../AddEditAddress.saga';
+import { addAddressSuccess, addAddressFail } from '../AddEditAddress.actions';
+import constants from '../AddEditAddress.constants';
 
 describe('addAddressGet saga', () => {
   describe('addAddressGet', () => {
@@ -20,6 +20,7 @@ describe('addAddressGet saga', () => {
         nickName: 'sb_2019-07-02 02:33:01.433',
       };
       addAddressGetGeneration.next(response);
+      addAddressGetGeneration.next();
       const putDescriptor = addAddressGetGeneration.next().value;
       expect(putDescriptor).toEqual(put(addAddressSuccess()));
     });
@@ -36,12 +37,12 @@ describe('addAddressGet saga', () => {
     });
   });
 
-  describe('AddAddressSaga', () => {
+  describe('AddEditAddressSaga', () => {
     it('should return correct takeLatest effect', () => {
-      const generator = AddAddressSaga();
+      const generator = AddEditAddressSaga();
       const takeLatestDescriptor = generator.next().value;
       expect(takeLatestDescriptor).toEqual(
-        takeLatest(ADD_ADDRESS_CONSTANTS.ADD_USER_ADDRESS_REQ, addAddressGet)
+        takeLatest(constants.ADD_USER_ADDRESS_REQ, addAddressGet)
       );
     });
   });

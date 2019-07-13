@@ -22,6 +22,8 @@ type Props = {
   backToAddressBookClick: any,
   dispatch: any,
   labels: object,
+  isEdit?: boolean,
+  isMakeDefaultDisabled?: boolean,
 };
 
 type State = {
@@ -44,14 +46,22 @@ export class AddressForm extends React.PureComponent<Props, State> {
   handlePlaceSelected = (place: Object, inputValue: string) => {
     const { dispatch } = this.props;
     const address = AutoCompleteComponent.getAddressFromPlace(place, inputValue);
-    dispatch(change('AddAddressForm', 'city', address.city));
-    dispatch(change('AddAddressForm', 'zipCode', address.zip));
-    dispatch(change('AddAddressForm', 'state', address.state));
-    dispatch(change('AddAddressForm', 'addressLine1', address.street));
+    dispatch(change('AddressForm', 'city', address.city));
+    dispatch(change('AddressForm', 'zipCode', address.zip));
+    dispatch(change('AddressForm', 'state', address.state));
+    dispatch(change('AddressForm', 'addressLine1', address.street));
   };
 
   render() {
-    const { handleSubmit, pristine, className, backToAddressBookClick, labels } = this.props;
+    const {
+      handleSubmit,
+      pristine,
+      className,
+      backToAddressBookClick,
+      labels,
+      isEdit,
+      isMakeDefaultDisabled,
+    } = this.props;
     const { country } = this.state;
     return (
       <form className={className} onSubmit={handleSubmit} noValidate>
@@ -158,6 +168,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
               name="primary"
               component={InputCheckbox}
               dataLocator="addnewaddress-setdefaddress"
+              disabled={isMakeDefaultDisabled}
             >
               {labels.acc_lbl_set_default}
             </Field>
@@ -190,7 +201,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
               buttonVariation="fixed-width"
               data-locator="addnewaddress-addaddress"
             >
-              {labels.acc_lbl_add_address_cta}
+              {isEdit ? labels.acc_lbl_edit_address_cta : labels.acc_lbl_add_address_cta}
             </Button>
           </Col>
         </Row>
@@ -198,6 +209,11 @@ export class AddressForm extends React.PureComponent<Props, State> {
     );
   }
 }
+
+AddressForm.defaultProps = {
+  isEdit: false,
+  isMakeDefaultDisabled: false,
+};
 
 const validateMethod = createValidateMethod(
   getStandardConfig([
