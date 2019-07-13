@@ -90,7 +90,7 @@ class CardTile extends React.Component<Props> {
           tag="span"
           fontSize="fs14"
           fontFamily="secondary"
-          fontWeight="normal"
+          fontWeight="extrabold"
           className="cardTile__heading"
           lineHeights="lh107"
           dataLocator="payment-venmoid"

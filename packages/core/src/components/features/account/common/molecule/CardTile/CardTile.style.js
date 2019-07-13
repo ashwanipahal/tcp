@@ -77,8 +77,7 @@ const styles = css`
   .cardTile__ctaLinks {
     display: flex;
     justify-content: flex-end;
-    position: ${props => (props.card && props.card.ccType === 'GiftCard' ? 'relative' : 'static')};
-    top: ${props => (props.card && props.card.ccType === 'GiftCard' ? '-15px' : 'auto')};
+    margin-top: ${props => (props.card && props.card.ccType === 'GiftCard' ? '-15px' : 'auto')};
   }
   .cardTile__anchor {
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
