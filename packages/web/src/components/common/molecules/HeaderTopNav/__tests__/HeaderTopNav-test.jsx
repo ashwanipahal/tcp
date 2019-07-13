@@ -7,7 +7,8 @@ describe('Footer component', () => {
   it('HeaderTopNav component renders correctly to match snapshot', () => {
     const props = {
       className: 'header-top-nav',
-      dataTopNav: mockData.dataTopNav,
+      brandTabs: mockData.dataTopNav.composites.brand_tabs,
+      promoMessageWrapper: mockData.dataTopNav.composites.promo_message_wrapper,
     };
     const component = shallow(<HeaderTopNavVanilla {...props} />);
     expect(component).toMatchSnapshot();
@@ -16,7 +17,8 @@ describe('Footer component', () => {
   it('HeaderTopNav component renders correctly with props', () => {
     const props = {
       className: 'header-top-nav',
-      dataTopNav: mockData.dataTopNav,
+      brandTabs: mockData.dataTopNav.composites.brand_tabs,
+      promoMessageWrapper: mockData.dataTopNav.composites.promo_message_wrapper,
     };
     const component = shallow(<HeaderTopNavVanilla {...props} />);
     expect(component).toMatchSnapshot();
