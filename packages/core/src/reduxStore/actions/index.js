@@ -22,8 +22,16 @@ export const bootstrapData = pageInfo => {
   };
 };
 
+export const loadModulesData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.LOAD_MODULES_DATA,
+  };
+};
+
 export default {
   loadLayoutData,
   loadLabelsData,
   bootstrapData,
+  loadModulesData,
 };
