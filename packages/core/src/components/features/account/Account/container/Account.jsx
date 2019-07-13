@@ -46,11 +46,13 @@ export class Account extends React.PureComponent<Props, State> {
    */
   render() {
     const { component } = this.state;
+    const { router } = this.props;
     return (
       <MyAccountLayout
         mainContent={AccountComponentMapping[component]}
         active={component}
         navData={navData}
+        router={router}
       />
     );
   }
