@@ -7,13 +7,14 @@ const styles = css`
   flex-direction: column;
   justify-content: space-between;
   word-break: break-word;
+  height: ${props => (props.card && props.card.ccType === 'GiftCard' ? 'auto' : '100%')};
   min-height: ${props => (props.card && props.card.ccType === 'VENMO' ? '173px' : '')};
   padding: ${props => props.theme.spacing.ELEM_SPACING.MED}
     ${props => props.theme.spacing.ELEM_SPACING.MED};
 
   .recaptcha {
-    webkit-transform: scale(0.7);
-    transform: scale(0.7);
+    webkit-transform: scale(0.6);
+    transform: scale(0.6);
     position: relative;
     left: -45px;
   }
@@ -42,26 +43,26 @@ const styles = css`
         ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
-  & .cardTile {
+  .cardTile {
     display: flex;
     justify-content: space-between;
   }
-  & .cardTile__heading {
+  .cardTile__heading {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
-  & .cardTile__number {
+  .cardTile__number {
     margin-bottom: ${props =>
       props.card.ccType === 'PLACE CARD' ? props.theme.spacing.ELEM_SPACING.XL : ''};
   }
-  & .cardTile__expiry {
+  .cardTile__expiry {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
-  & .cardTile__defaultSection {
+  .cardTile__defaultSection {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
   }
-  & .cardTile__img_wrapper {
+  .cardTile__img_wrapper {
     width: 90px;
     height: 56px;
     margin-bottom: auto;
@@ -74,10 +75,10 @@ const styles = css`
     width: 100%;
   }
   .cardTile__ctaLinks {
-    display: block;
-    margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
-    width: 30%;
-    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    position: ${props => (props.card && props.card.ccType === 'GiftCard' ? 'relative' : 'static')};
+    top: ${props => (props.card && props.card.ccType === 'GiftCard' ? '-15px' : 'auto')};
   }
   .cardTile__anchor {
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};

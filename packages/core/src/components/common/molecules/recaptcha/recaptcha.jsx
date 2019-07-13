@@ -39,6 +39,7 @@ export default class Recaptcha extends React.Component<Props> {
 
   handleVerify = response => {
     const { verifyCallback } = this.props;
+    /* istanbul ignore else */
     if (verifyCallback) verifyCallback(response);
   };
 
@@ -46,13 +47,14 @@ export default class Recaptcha extends React.Component<Props> {
     // TODO: need to show an error on top of recaptcha
     this.reset();
     const { expiredCallback } = this.props;
+    /* istanbul ignore else */
     if (expiredCallback) expiredCallback();
   };
 
   attachToRef = refToContainer => {
     this.refToContainer = refToContainer;
     const { widget } = this.state;
-
+    /* istanbul ignore else */
     if (refToContainer !== null && !widget) {
       requireNamedOnlineModule('recaptcha').then(this.checkReady);
     }
@@ -60,6 +62,7 @@ export default class Recaptcha extends React.Component<Props> {
 
   reset = () => {
     const { ready, widget } = this.state;
+    /* istanbul ignore else */
     if (ready) {
       window.grecaptcha.reset(widget);
     }
@@ -73,6 +76,7 @@ export default class Recaptcha extends React.Component<Props> {
       'expired-callback': this.handleExpired,
     });
     this.setState({ widget });
+    /* istanbul ignore else */
     if (onloadCallback) onloadCallback();
   };
 
