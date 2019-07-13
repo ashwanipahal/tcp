@@ -340,7 +340,7 @@ class CardTile extends React.Component<Props> {
               tag="span"
               fontSize="fs16"
               fontFamily="secondary"
-              fontWeight="extrabold"
+              fontWeight="normal"
               className="cardTile__heading"
               dataLocator={`payment-${dataLocatorPrefix}nametitle`}
             >
