@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<AddaddressContainer> should render correctly 1`] = `
+exports[`AddEditAddressContainer should render correctly 1`] = `
 <Styled(AddEditAddress)
   addressResponse={Object {}}
   backToAddressBookClick={[Function]}
