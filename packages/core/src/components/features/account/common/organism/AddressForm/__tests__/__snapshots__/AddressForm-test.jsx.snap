@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AddAddressForm component should renders correctly 1`] = `
+exports[`AddressForm component should renders correctly 1`] = `
 <Hoc
   backToAddressBookClick={[MockFunction]}
   className="any"
   destroyOnUnmount={true}
   enableReinitialize={true}
   forceUnregisterOnUnmount={false}
-  form="AddAddressForm"
+  form="AddressForm"
   forwardedRef={null}
   getFormState={[Function]}
   handleSubmit={[MockFunction]}
