@@ -2,7 +2,7 @@ import EmailSignupReducer from '../container/EmailSignupModal.reducer';
 import {
   setEmailValidationStatus,
   emailSignupStatus,
-  clearForm,
+  clearEmailSignupForm,
 } from '../container/EmailSignupModal.actions';
 
 describe('EmailSignup reducer', () => {
@@ -23,6 +23,6 @@ describe('EmailSignup reducer', () => {
   });
 
   it('should return empty object even though the state existed', () => {
-    expect(EmailSignupReducer({ validEmail: 'valid' }, clearForm({}))).toEqual({});
+    expect(EmailSignupReducer({ validEmail: 'valid' }, clearEmailSignupForm({}))).toEqual({});
   });
 });

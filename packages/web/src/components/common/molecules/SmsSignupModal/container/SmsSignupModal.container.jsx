@@ -2,13 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { submitSmsSignup, clearForm } from './SmsSignupModal.actions';
+import { submitSmsSignup, clearSmsSignupForm } from './SmsSignupModal.actions';
 import SignupModalView from '../views/SmsSignupModal.view';
 
 export const EmailSignupWrapperContainer = ({
-  verifyEmailAddress,
   buttonConfig,
-  submitEmailSubscription,
   formViewConfig,
   isSubscriptionValid,
   clearFormStoreInfo,
@@ -18,33 +16,26 @@ export const EmailSignupWrapperContainer = ({
     <SignupModalView
       buttonConfig={buttonConfig}
       formViewConfig={formViewConfig}
-      verifyEmailAddress={verifyEmailAddress}
-      submitEmailSubscription={submitEmailSubscription}
       isSubscriptionValid={isSubscriptionValid}
-      clearForm={clearFormStoreInfo}
+      clearSmsSignupForm={clearFormStoreInfo}
       submitSmsSubscription={submitSmsSubscription}
     />
   );
 };
 
 EmailSignupWrapperContainer.propTypes = {
-  verifyEmailAddress: PropTypes.func,
-  submitEmailSubscription: PropTypes.func,
   buttonConfig: PropTypes.shape({}),
   formViewConfig: PropTypes.shape({}),
   isSubscriptionValid: PropTypes.bool,
   clearFormStoreInfo: PropTypes.func,
-  submitSmsSubscription: PropTypes.func,
+  submitSmsSubscription: PropTypes.func.isRequired,
 };
 
 EmailSignupWrapperContainer.defaultProps = {
   buttonConfig: {},
   formViewConfig: {},
-  verifyEmailAddress: () => {},
-  submitEmailSubscription: () => {},
   isSubscriptionValid: false,
   clearFormStoreInfo: () => {},
-  submitSmsSubscription: () => {},
 };
 
 export const mapDispatchToProps = dispatch => {
@@ -53,7 +44,7 @@ export const mapDispatchToProps = dispatch => {
       dispatch(submitSmsSignup(payload));
     },
     clearFormStoreInfo: () => {
-      dispatch(clearForm());
+      dispatch(clearSmsSignupForm());
     },
   };
 };
@@ -68,7 +59,6 @@ const mapStateToProps = (state, props) => {
   return {
     formViewConfig,
     isSubscriptionValid: state.SmsSignUp && state.SmsSignUp.signupSuccess,
-    isEmailValid: state.SmsSignUp && state.SmsSignUp.validEmail,
   };
 };
 

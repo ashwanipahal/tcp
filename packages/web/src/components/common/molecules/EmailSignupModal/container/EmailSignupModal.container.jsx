@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { submitEmailSignup, validateEmail, clearForm } from './EmailSignupModal.actions';
+import { submitEmailSignup, validateEmail, clearEmailSignupForm } from './EmailSignupModal.actions';
 import SignupModalView from '../views/EmailSignupModal.view';
 
 export const EmailSignupWrapperContainer = ({
@@ -21,29 +21,26 @@ export const EmailSignupWrapperContainer = ({
       verifyEmailAddress={verifyEmailAddress}
       submitEmailSubscription={submitEmailSubscription}
       isSubscriptionValid={isSubscriptionValid}
-      clearForm={clearFormStoreInfo}
+      clearEmailSignupForm={clearFormStoreInfo}
       isEmailValid={isEmailValid}
     />
   );
 };
 
 EmailSignupWrapperContainer.propTypes = {
-  verifyEmailAddress: PropTypes.func,
-  submitEmailSubscription: PropTypes.func,
+  verifyEmailAddress: PropTypes.func.isRequired,
+  submitEmailSubscription: PropTypes.func.isRequired,
   buttonConfig: PropTypes.shape({}),
   formViewConfig: PropTypes.shape({}),
   isSubscriptionValid: PropTypes.bool,
-  clearFormStoreInfo: PropTypes.func,
+  clearFormStoreInfo: PropTypes.func.isRequired,
   isEmailValid: PropTypes.bool,
 };
 
 EmailSignupWrapperContainer.defaultProps = {
   buttonConfig: {},
   formViewConfig: {},
-  verifyEmailAddress: () => {},
-  submitEmailSubscription: () => {},
   isSubscriptionValid: false,
-  clearFormStoreInfo: () => {},
   isEmailValid: '',
 };
 
@@ -56,7 +53,7 @@ export const mapDispatchToProps = dispatch => {
       dispatch(submitEmailSignup(payload));
     },
     clearFormStoreInfo: () => {
-      dispatch(clearForm());
+      dispatch(clearEmailSignupForm());
     },
   };
 };

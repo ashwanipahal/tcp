@@ -1,6 +1,6 @@
 import EMAIL_SIGNUP_CONSTANTS from './SmsSignupModal.constants';
 
-export const clearForm = payload => {
+export const clearSmsSignupForm = payload => {
   return {
     payload,
     type: EMAIL_SIGNUP_CONSTANTS.CLEAR_SUBSCRIPTION_FORM,
@@ -22,7 +22,7 @@ export const smsSignupStatus = payload => {
 };
 
 export default {
-  clearForm,
+  clearSmsSignupForm,
   submitSmsSignup,
   smsSignupStatus,
 };

@@ -9,7 +9,7 @@ const SignupFormIntro = ({ className, formViewConfig }) => (
   <Fragment>
     <Col
       colSize={{ small: 4, medium: 6, large: 8 }}
-      offsetLeft={{ small: 1, medium: 1, large: 1 }}
+      offsetLeft={{ small: 1, medium: 1, large: 2 }}
       ignoreGutter={{ large: true }}
       className={className}
     >

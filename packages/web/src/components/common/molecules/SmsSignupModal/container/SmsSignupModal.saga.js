@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import endpoints from '@tcp/core/src/service/endpoint';
-import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/SignupModal';
+import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/EmailSmsSignup';
 import EMAIL_SIGNUP_CONSTANTS from './SmsSignupModal.constants';
 import { smsSignupStatus } from './SmsSignupModal.actions';
 

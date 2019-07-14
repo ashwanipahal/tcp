@@ -3,8 +3,6 @@ import { css } from 'styled-components';
 const SmsSignupModalStyle = css`
   .TCPModal__InnerContent {
     width: 375px;
-    height: auto;
-    padding: 0;
   }
   .field-container {
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
@@ -12,24 +10,31 @@ const SmsSignupModalStyle = css`
       height: 40px;
     }
   }
-  .button-wrapper {
-    margin-top: 89px;
-    background: #e2ecf3;
-  }
-  .join-button {
-    margin: 21px auto;
-    width: 66.66%;
+  .button-wrapper,
+  .button-wrapper-form {
+    background: ${props => props.theme.colors.BUTTON.WHITE.ALT_FOCUS};
+    margin: 89px -15px 0 0;
+    width: 375px;
     display: flex;
     justify-content: center;
+    padding: 21px 0;
+  }
+  .button-wrapper-form {
+    margin: 89px -15px 0;
+  }
+  .async-error input {
+    border-bottom: 1px solid ${props => props.theme.colors.NOTIFICATION.ERROR};
+  }
+  .async-success input {
+    border-bottom: 1px solid ${props => props.theme.colors.TEXTBOX.SUCCESS_BORDER};
   }
   .terms-label {
     margin-top: 52px;
   }
-  .async-error input {
-    border-bottom: 1px solid #c8102e;
-  }
   @media ${props => props.theme.mediaQuery.medium} {
-    .TCPModal__InnerContent {
+    .TCPModal__InnerContent,
+    .button-wrapper,
+    .button-wrapper-form {
       width: 458px;
     }
   }
@@ -40,15 +45,23 @@ const SmsSignupModalStyle = css`
     .field-container {
       padding-top: 0;
     }
-    .button-row {
-      display: none;
+    .button-wrapper,
+    .button-wrapper-form {
+      margin: 24px auto 20px;
+      background: none;
+      padding: 0;
     }
-    .join-button {
-      margin: 24px auto;
-      width: 30%;
-    }
-    .button-wrapper__large {
+    .img-wrapper {
       display: flex;
+    }
+    .button-container {
+      position: absolute;
+      bottom: 24px;
+    }
+    .shop-button {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
     }
   }
 `;

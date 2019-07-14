@@ -1,4 +1,4 @@
-import SignupModalAbstractor from '../signupModal';
+import SignupModalAbstractor from '../EmailSmsSignup';
 
 jest.mock('../../../../../service/API');
 
@@ -21,7 +21,7 @@ describe('SignupModalAbstractor', () => {
       { payload: 'mobile_phone' },
       'post'
     ).then(data => {
-      expect(data).toEqual(true);
+      expect(data).toEqual('valid');
     });
   });
 

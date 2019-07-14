@@ -42,20 +42,37 @@ class SignupWrapper extends React.PureComponent {
   };
 
   onSignUpInputChange = e => {
-    const { clearForm } = this.props;
+    const { clearEmailSignupForm } = this.props;
     const fieldValue = e.target.value;
     this.setState({
       [e.target.name]: fieldValue,
     });
-    clearForm();
+    clearEmailSignupForm();
   };
 
   closeModal = () => {
     const { isOpen } = this.state;
-    const { clearForm, dispatch } = this.props;
+    const { clearEmailSignupForm, dispatch } = this.props;
     this.setState({ isOpen: !isOpen, showAsyncError: false });
     dispatch(reset('SignupWrapper'));
-    clearForm();
+    clearEmailSignupForm();
+  };
+
+  getValidationClass = isEmailValid => {
+    let validationClass = '';
+    if (isEmailValid === 'invalid') {
+      this.setState({
+        showAsyncError: true,
+      });
+      validationClass = 'field-label async-error';
+    }
+    if (isEmailValid === 'valid') {
+      this.setState({
+        showAsyncError: false,
+      });
+      validationClass = 'field-label async-success';
+    }
+    return validationClass;
   };
 
   render() {
@@ -68,19 +85,7 @@ class SignupWrapper extends React.PureComponent {
       isEmailValid,
     } = this.props;
 
-    let validationClass = '';
-    if (isEmailValid === 'invalid') {
-      this.setState({
-        showAsyncError: true,
-      });
-      validationClass = 'async-error';
-    }
-    if (isEmailValid === 'valid') {
-      this.setState({
-        showAsyncError: false,
-      });
-      validationClass = 'async-success';
-    }
+    const validationClass = this.getValidationClass(isEmailValid);
 
     return (
       <Fragment>
@@ -91,42 +96,47 @@ class SignupWrapper extends React.PureComponent {
             className={className}
             overlayClassName="TCPModal__Overlay"
             onRequestClose={this.closeModal}
+            noPadding
           >
             {isSubscriptionValid ? (
               <Grid>
                 <Row fullBleed>
                   <Col
+                    isNotInlineBlock
                     colSize={{ small: 4, medium: 4, large: 4 }}
                     hideCol={{ small: true, medium: true }}
+                    className="img-wrapper"
                   >
                     <Image alt={formViewConfig.imageAltText} src={formViewConfig.imageSrc} />
                   </Col>
-                  <Col
-                    colSize={{ small: 4, medium: 6, large: 8 }}
-                    offsetLeft={{ small: 1, medium: 1, large: 0 }}
-                    ignoreGutter={{ large: true }}
-                  >
-                    <SignupConfirm formViewConfig={formViewConfig} />
-                    <Button
-                      fullWidth
-                      buttonVariation="variable-width"
-                      fill="BLUE"
-                      type="submit"
-                      onClick={this.closeModal}
-                      className="shop-button"
-                    >
-                      {formViewConfig.shopNowLabel}
-                    </Button>
+                  <Col colSize={{ small: 6, medium: 8, large: 8 }} ignoreGutter={{ large: true }}>
+                    <SignupConfirm formViewConfig={formViewConfig} susbscriptionType="email" />
+                    <Row className="button-wrapper" fullBleed>
+                      <Col colSize={{ small: 4, medium: 4, large: 4 }} className="button-container">
+                        <Button
+                          fullWidth
+                          buttonVariation="fixed-width"
+                          fill="BLUE"
+                          type="submit"
+                          className="shop-button"
+                          onClick={this.closeModal}
+                        >
+                          {formViewConfig.shopNowLabel}
+                        </Button>
+                      </Col>
+                    </Row>
                   </Col>
                 </Row>
               </Grid>
             ) : (
               <form onSubmit={this.onFormSubmit}>
                 <Grid>
-                  <Row fullBleed={{ small: false, medium: false, large: true }} className="wrapper">
+                  <Row fullBleed={{ large: true }} className="wrapper">
                     <Col
+                      isNotInlineBlock
                       colSize={{ small: 4, medium: 4, large: 4 }}
                       hideCol={{ small: true, medium: true }}
+                      className="img-wrapper"
                     >
                       <Image alt={formViewConfig.imageAltText} src={formViewConfig.imageSrc} />
                     </Col>
@@ -148,6 +158,7 @@ class SignupWrapper extends React.PureComponent {
                           onChange={this.onSignUpInputChange}
                           onBlur={this.onSignUpInputBlur}
                           className={validationClass}
+                          showSuccessCheck={validationClass === 'async-success'}
                         />
                         {showAsyncError && (
                           <BodyCopy fontSize="fs12" fontFamily="secondary" color="secondary.dark">
@@ -158,36 +169,20 @@ class SignupWrapper extends React.PureComponent {
                           {formViewConfig.termsTextLabel}
                         </BodyCopy>
                       </Col>
-                      <Col
-                        colSize={{ small: 6, medium: 8, large: 12 }}
-                        hideCol={{ small: true, medium: true }}
-                        className="button-wrapper__large"
-                      >
-                        <Button
-                          disabled={isEmailValid !== 'valid'}
-                          fullWidth
-                          buttonVariation="fixed-width"
-                          fill="BLUE"
-                          type="submit"
-                          className="join-button"
-                        >
-                          {formViewConfig.joinButtonLabel}
-                        </Button>
-                      </Col>
-                    </Col>
-                  </Row>
-                  <Row className="button-row" fullBleed>
-                    <Col colSize={{ small: 6, medium: 8, large: 0 }} className="button-wrapper">
-                      <Button
-                        fullWidth
-                        buttonVariation="fixed-width"
-                        fill="BLUE"
-                        type="submit"
-                        className="join-button"
-                        disabled={isEmailValid !== 'valid'}
-                      >
-                        {formViewConfig.joinButtonLabel}
-                      </Button>
+                      <Row className="button-wrapper-form" fullBleed>
+                        <Col colSize={{ small: 4, medium: 4, large: 6 }}>
+                          <Button
+                            disabled={isEmailValid !== 'valid'}
+                            fullWidth
+                            buttonVariation="fixed-width"
+                            fill="BLUE"
+                            type="submit"
+                            className="join-button"
+                          >
+                            {formViewConfig.joinButtonLabel}
+                          </Button>
+                        </Col>
+                      </Row>
                     </Col>
                   </Row>
                 </Grid>
@@ -210,7 +205,7 @@ SignupWrapper.propTypes = {
   className: PropTypes.string,
   formViewConfig: PropTypes.shape({}).isRequired,
   confirmationViewConfig: PropTypes.shape({}).isRequired,
-  clearForm: PropTypes.shape({}).isRequired,
+  clearEmailSignupForm: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func.isRequired,
   isSubscriptionValid: PropTypes.bool,
   isEmailValid: PropTypes.string,

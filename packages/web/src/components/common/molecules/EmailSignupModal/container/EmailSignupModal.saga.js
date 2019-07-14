@@ -1,6 +1,6 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import endpoints from '@tcp/core/src/service/endpoint';
-import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/SignupModal';
+import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/EmailSmsSignup';
 import EMAIL_SIGNUP_CONSTANTS from './EmailSignupModal.constants';
 import { emailSignupStatus, setEmailValidationStatus } from './EmailSignupModal.actions';
 
@@ -30,7 +30,7 @@ export function* subscribeEmail(email, status) {
 
 export function* verifyEmail({ payload }) {
   try {
-    const { baseURI, relURI, method } = endpoints.emailVerfication;
+    const { baseURI, relURI, method } = endpoints.emailVerification;
     const newRelURI = `${relURI}&address=${payload}`;
     const params = {};
     const emailValidationState = yield call(

@@ -28,7 +28,7 @@ export const emailSignupStatus = payload => {
   };
 };
 
-export const clearForm = payload => {
+export const clearEmailSignupForm = payload => {
   return {
     payload,
     type: EMAIL_SIGNUP_CONSTANTS.CLEAR_SUBSCRIPTION_FORM,
@@ -40,5 +40,5 @@ export default {
   setEmailValidationStatus,
   submitEmailSignup,
   emailSignupStatus,
-  clearForm,
+  clearEmailSignupForm,
 };

@@ -16,7 +16,6 @@ class SignupWrapper extends React.PureComponent {
 
     this.state = {
       isOpen: false,
-      disableSubmitButton: false,
       showAsyncError: '',
       validInput: false,
     };
@@ -27,9 +26,13 @@ class SignupWrapper extends React.PureComponent {
     this.setState({ isOpen: !isOpen });
   };
 
+  validatePhoneNumber = fieldValue => {
+    return /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/i.test(fieldValue);
+  };
+
   onSignUpInputBlur = e => {
     const fieldValue = e.target.value;
-    const isPhoneNumberValid = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/i.test(fieldValue);
+    const isPhoneNumberValid = this.validatePhoneNumber(fieldValue);
     if (!isPhoneNumberValid) {
       this.setState({
         showAsyncError: true,
@@ -42,26 +45,26 @@ class SignupWrapper extends React.PureComponent {
     try {
       e.preventDefault();
       const { signup } = this.state;
-      const { submitSmsSubscription, isSubscriptionValid } = this.props;
+      const { submitSmsSubscription } = this.props;
       submitSmsSubscription(signup);
-      if (!isSubscriptionValid) {
-        this.setState({
-          showAsyncError: true,
-          validInput: false,
-        });
-      }
     } catch (error) {
       console.log(error);
     }
   };
 
   onSignUpInputChange = e => {
+    const { clearSmsSignupForm, isSubscriptionValid } = this.props;
     const { anyTouched } = this.props;
     const fieldValue = e.target.value;
     this.setState({
       [e.target.name]: fieldValue,
     });
-    const isPhoneNumberValid = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/i.test(fieldValue);
+    if (isSubscriptionValid) {
+      clearSmsSignupForm();
+    }
+    const isPhoneNumberValid = this.validatePhoneNumber(fieldValue);
+    // Based on the input, set the validInput state but only
+    // if the field is touched (blurred atleast once) show error state
     if (!isPhoneNumberValid) {
       this.setState({
         validInput: false,
@@ -84,16 +87,24 @@ class SignupWrapper extends React.PureComponent {
 
   closeModal = () => {
     const { isOpen } = this.state;
-    const { clearForm, dispatch } = this.props;
+    const { clearSmsSignupForm, dispatch } = this.props;
     this.setState({ isOpen: !isOpen, showAsyncError: false });
     dispatch(reset('SignupWrapper'));
-    clearForm();
+    clearSmsSignupForm();
   };
 
   render() {
-    const { isOpen, disableSubmitButton, showAsyncError, validInput } = this.state;
+    const { isOpen, showAsyncError, validInput } = this.state;
     const { buttonConfig, className, formViewConfig, isSubscriptionValid, pristine } = this.props;
 
+    if (isSubscriptionValid === 'invalid') {
+      this.setState({
+        showAsyncError: true,
+        validInput: false,
+      });
+    }
+
+    const notValidPhone = showAsyncError || !validInput || pristine;
     return (
       <Fragment>
         {isOpen && (
@@ -103,43 +114,47 @@ class SignupWrapper extends React.PureComponent {
             className={className}
             overlayClassName="TCPModal__Overlay"
             onRequestClose={this.closeModal}
+            noPadding
           >
-            {isSubscriptionValid ? (
+            {isSubscriptionValid === 'valid' ? (
               <Grid>
                 <Row fullBleed>
                   <Col
+                    isNotInlineBlock
                     colSize={{ small: 4, medium: 4, large: 4 }}
                     hideCol={{ small: true, medium: true }}
+                    className="img-wrapper"
                   >
                     <Image alt={formViewConfig.imageAltText} src={formViewConfig.imageSrc} />
                   </Col>
-                  <Col
-                    colSize={{ small: 4, medium: 6, large: 8 }}
-                    offsetLeft={{ small: 1, medium: 1, large: 0 }}
-                    ignoreGutter={{ large: true }}
-                  >
-                    <SignupConfirm formViewConfig={formViewConfig} />
-                    <Button
-                      disabled={disableSubmitButton}
-                      fullWidth
-                      buttonVariation="variable-width"
-                      fill="BLUE"
-                      type="submit"
-                      onClick={this.closeModal}
-                      className="shop-button"
-                    >
-                      {formViewConfig.shopNowLabel}
-                    </Button>
+                  <Col colSize={{ small: 6, medium: 8, large: 8 }} ignoreGutter={{ large: true }}>
+                    <SignupConfirm formViewConfig={formViewConfig} susbscriptionType="sms" />
+                    <Row className="button-wrapper" fullBleed>
+                      <Col colSize={{ small: 4, medium: 4, large: 4 }} className="button-container">
+                        <Button
+                          fullWidth
+                          buttonVariation="fixed-width"
+                          fill="BLUE"
+                          type="submit"
+                          className="shop-button"
+                          onClick={this.closeModal}
+                        >
+                          {formViewConfig.shopNowLabel}
+                        </Button>
+                      </Col>
+                    </Row>
                   </Col>
                 </Row>
               </Grid>
             ) : (
               <form onSubmit={this.onFormSubmit}>
                 <Grid>
-                  <Row fullBleed={{ small: false, medium: false, large: true }} className="wrapper">
+                  <Row fullBleed={{ large: true }} className="wrapper">
                     <Col
+                      isNotInlineBlock
                       colSize={{ small: 4, medium: 4, large: 4 }}
                       hideCol={{ small: true, medium: true }}
+                      className="img-wrapper"
                     >
                       <Image alt={formViewConfig.imageAltText} src={formViewConfig.imageSrc} />
                     </Col>
@@ -161,6 +176,7 @@ class SignupWrapper extends React.PureComponent {
                           onChange={this.onSignUpInputChange}
                           onBlur={this.onSignUpInputBlur}
                           className={showAsyncError ? 'async-error' : ''}
+                          showSuccessCheck={!notValidPhone}
                         />
                         {showAsyncError && (
                           <BodyCopy fontSize="fs12" fontFamily="secondary" color="secondary.dark">
@@ -171,36 +187,20 @@ class SignupWrapper extends React.PureComponent {
                           {formViewConfig.termsTextLabel}
                         </BodyCopy>
                       </Col>
-                      <Col
-                        colSize={{ small: 6, medium: 8, large: 12 }}
-                        hideCol={{ small: true, medium: true }}
-                        className="button-wrapper__large"
-                      >
-                        <Button
-                          disabled={showAsyncError || !validInput || pristine}
-                          fullWidth
-                          buttonVariation="fixed-width"
-                          fill="BLUE"
-                          type="submit"
-                          className="join-button"
-                        >
-                          {formViewConfig.joinButtonLabel}
-                        </Button>
-                      </Col>
-                    </Col>
-                  </Row>
-                  <Row className="button-row" fullBleed>
-                    <Col colSize={{ small: 6, medium: 8, large: 0 }} className="button-wrapper">
-                      <Button
-                        disabled={showAsyncError || !validInput || pristine}
-                        fullWidth
-                        buttonVariation="fixed-width"
-                        fill="BLUE"
-                        type="submit"
-                        className="join-button"
-                      >
-                        {formViewConfig.joinButtonLabel}
-                      </Button>
+                      <Row className="button-wrapper-form" fullBleed>
+                        <Col colSize={{ small: 4, medium: 4, large: 6 }}>
+                          <Button
+                            disabled={notValidPhone}
+                            fullWidth
+                            buttonVariation="fixed-width"
+                            fill="BLUE"
+                            type="submit"
+                            className="join-button"
+                          >
+                            {formViewConfig.joinButtonLabel}
+                          </Button>
+                        </Col>
+                      </Row>
                     </Col>
                   </Row>
                 </Grid>
@@ -221,7 +221,7 @@ SignupWrapper.propTypes = {
   className: PropTypes.string,
   formViewConfig: PropTypes.shape({}).isRequired,
   confirmationViewConfig: PropTypes.shape({}).isRequired,
-  clearForm: PropTypes.shape({}).isRequired,
+  clearSmsSignupForm: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func.isRequired,
   isSubscriptionValid: PropTypes.bool,
   submitSmsSubscription: PropTypes.func,

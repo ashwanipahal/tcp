@@ -10,55 +10,84 @@ exports[`EmailSignupModal component renders correctly 1`] = `
     component="p"
     dataLocator=""
     fontFamily="primary"
-    fontSize="fs28"
+    fontSize={
+      Array [
+        "fs28",
+        "fs28",
+        "fs38",
+      ]
+    }
     fontWeight="black"
     letterSpacing="normal"
     lineHeight="normal"
     textAlign="center"
   />
   <Styled(BodyCopy)
-    className="confirmation__label"
+    className="confirmation-label"
     color="text.primary"
     component="p"
     dataLocator=""
     fontFamily="secondary"
-    fontSize="fs18"
+    fontSize={
+      Array [
+        "fs18",
+        "fs18",
+        "fs22",
+      ]
+    }
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
     textAlign="center"
   />
+  <Styled(Image)
+    alt="undefined-icon"
+    className="confirmation-image"
+    src="/static/images/chat.svg"
+  />
   <Styled(BodyCopy)
-    className={null}
+    className="first-label"
     color="primary.main"
     component="p"
     dataLocator=""
     fontFamily="secondary"
-    fontSize="fs22"
+    fontSize={
+      Array [
+        "fs22",
+        "fs22",
+        "fs28",
+      ]
+    }
     fontWeight="semibold"
     letterSpacing="normal"
     lineHeight="normal"
     textAlign="center"
   />
   <Styled(BodyCopy)
-    className={null}
+    className="redeem-label"
     color="text.primary"
     component="p"
     dataLocator=""
     fontFamily="secondary"
-    fontSize="fs16"
+    fontSize={
+      Array [
+        "fs16",
+        "f16",
+        "fs18",
+      ]
+    }
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
     textAlign="center"
   />
   <Styled(BodyCopy)
-    className={null}
+    className="tnc-label"
     color="text.primary"
     component="p"
     dataLocator=""
     fontFamily="secondary"
-    fontSize="fs12"
+    fontSize="fs10"
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
