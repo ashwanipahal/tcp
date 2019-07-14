@@ -69,16 +69,23 @@ class DeleteAddressModal extends React.Component<Props> {
           fontWeight="bold"
           fontFamily="secondaryFontFamily"
           className="deleteAddressModal_modalTitle"
+          dataLocator="addressdeletemodalconfirmtext"
         >
           {title}
         </BodyCopy>
-        <Address address={description} className="deleteAddressModal_addressToDelete" fontWeight="bold" />
+        <Address
+          address={description}
+          className="deleteAddressModal_addressToDelete"
+          fontWeight="bold"
+          dataLocatorPrefix="address-delete-modal"
+        />
         <div className="deleteAddressModal_btnWrapper">
           <Button
             buttonVariation="fixed-width"
             fill="BLUE"
             onClick={this.onConfirm}
             className="deleteAddressModal_deleteConfirm deleteAddressModal_btn"
+            dataLocator="addressdeletemodalyesdeletebtn"
           >
             {confirm}
           </Button>
@@ -87,6 +94,7 @@ class DeleteAddressModal extends React.Component<Props> {
             onClick={this.onClose}
             fill="RED"
             className="deleteAddressModal_btn"
+            dataLocator="addressdeletemodalnodontdeletebtn"
           >
             {cancel}
           </Button>
@@ -113,6 +121,7 @@ class DeleteAddressModal extends React.Component<Props> {
         className={`TCPModal__Content, ${className}`}
         maxWidth="460px"
         minHeight="500px"
+        closeIconDataLocator="addressdeletemodalcrossicon"
       >
         {showUpdatedNotificationOnModal && (
           <Notification

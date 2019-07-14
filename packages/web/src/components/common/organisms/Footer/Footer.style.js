@@ -1,6 +1,9 @@
 import { css } from 'styled-components';
 
 export default css`
+  .poc-hide {
+    display: none;
+  }
   .footer-top {
     > div {
       border-top: 2px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};

@@ -15,7 +15,7 @@ describe('Payment Reducer', () => {
   });
 
   it('should return cardList object for the cardList if state is passed as an array', () => {
-    const state = PaymentReducer({}, {});
+    const state = PaymentReducer(fromJS({}), {});
     expect(Map.isMap(state)).toBeTruthy();
   });
 
@@ -25,7 +25,7 @@ describe('Payment Reducer', () => {
     });
     expect(
       PaymentReducer(initialState, {
-        type: PAYMENT_CONSTANTS.SET_LOADER,
+        type: PAYMENT_CONSTANTS.SHOW_LOADER,
       })
     ).toEqual(fromJS({ isFetching: true }));
   });
@@ -74,5 +74,21 @@ describe('Payment Reducer', () => {
         payload: err,
       })
     ).toEqual(fromJS({ showNotification: 'error' }));
+  });
+
+  it('should return showNotificationCaptcha as error if error occurs', () => {
+    const err = fromJS({
+      statusCode: 400,
+      message: 'Object not found inn res',
+    });
+    const initialState = fromJS({
+      showNotificationCaptcha: null,
+    });
+    expect(
+      PaymentReducer(initialState, {
+        type: PAYMENT_CONSTANTS.SET_CHECK_BALANCE_ERROR,
+        payload: err,
+      })
+    ).toEqual(fromJS({ showNotificationCaptcha: 'error' }));
   });
 });

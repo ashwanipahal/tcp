@@ -30,7 +30,12 @@ const EmptyCard = ({ labels, className, icon, alt, prefix }: Props) => {
           }}
           className="emptyCard__imgWrapper"
         >
-          <img className="emptyCard__img" alt={alt} src={cardIcon} />
+          <img
+            className="emptyCard__img"
+            alt={alt}
+            src={cardIcon}
+            data-locator={`payment-${prefix}-Icon`}
+          />
         </Col>
         <Col
           colSize={{

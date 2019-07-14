@@ -14,13 +14,18 @@ const CloseButtonStyle = css`
   width: 15px;
 `;
 
-const ModalCloseIcon = ({ className, closeFunc }) => (
-  <button className={className} onClick={e => closeFunc(e)} />
+const ModalCloseIcon = ({ className, closeFunc, closeIconDataLocator }) => (
+  <button className={className} onClick={e => closeFunc(e)} data-locator={closeIconDataLocator} />
 );
 
 ModalCloseIcon.propTypes = {
   className: PropTypes.string.isRequired,
   closeFunc: PropTypes.func.isRequired,
+  closeIconDataLocator: PropTypes.string,
+};
+
+ModalCloseIcon.defaultProps = {
+  closeIconDataLocator: 'close',
 };
 
 export default withStyles(ModalCloseIcon, CloseButtonStyle);

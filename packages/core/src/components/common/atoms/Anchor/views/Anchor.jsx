@@ -73,7 +73,7 @@ Anchor.defaultProps = {
   shallow: false,
   title: '',
   target: '',
-  dataLocator: ''
+  dataLocator: '',
 };
 
 export default withStyles(Anchor, styles);

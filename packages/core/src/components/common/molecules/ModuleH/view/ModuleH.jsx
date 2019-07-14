@@ -13,7 +13,8 @@ import config from '../config';
 
 type Props = {
   className: string,
-  composites: Object,
+  divCTALinks: Object[],
+  headerText: Object[],
 };
 
 type State = {
@@ -66,10 +67,7 @@ class ModuleH extends React.PureComponent<Props, State> {
   }
 
   render() {
-    const {
-      className,
-      composites: { divCTALinks, headerText },
-    } = this.props;
+    const { className, divCTALinks, headerText } = this.props;
     const { CAROUSEL_OPTIONS, COL_SIZE, FULL_BLEED, OFFSET_LEFT } = config;
     CAROUSEL_OPTIONS.beforeChange = (current, next) => {
       this.setState({ current, next });

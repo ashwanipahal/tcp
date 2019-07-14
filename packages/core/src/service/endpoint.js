@@ -19,6 +19,10 @@ const endpoints = {
     method: 'post',
     relURI: '/api/v2/account/addAddress',
   },
+  updateAddress: {
+    method: 'put',
+    relURI: '/api/v2/wallet/updateAddress',
+  },
   login: {
     method: 'post',
     relURI: '/api/v2/account/logon',
@@ -39,12 +43,36 @@ const endpoints = {
     method: 'delete',
     relURI: '/api/v2/account/deleteAddressDetails',
   },
+  deleteCreditCardOnAccount: {
+    method: 'post',
+    relURI: '/api/v2/account/deleteCreditCardDetails',
+  },
+  verifyAddress: {
+    method: 'get',
+    relURI:
+      '/v3/WEB/ContactVerify/doContactVerify?id=63987687&format=json&act=Check&cols=Plus4%2CDeliveryIndicator&',
+    baseURI: 'https://personator.melissadata.net',
+  },
   global: {
     baseURI: 'https://test4.childrensplace.com',
   },
   setDefaultShippingAddress: {
     method: 'put',
     relURI: '/api/v2/wallet/updateAddress',
+  },
+  getGifCardBalance: {
+    method: 'post',
+    relURI: '/api/v2/wallet/getGiftCardBalance',
+  },
+  getOrderDetails: {
+    method: 'get',
+    baseURI: 'http://test1.gymboree.com',
+    relURI: '/api/v2/checkout/getOrderDetails',
+  },
+  registeredUserInfoPOC: {
+    method: 'get',
+    baseURI: 'http://test1.gymboree.com',
+    relURI: '/api/v2/account/getRegisteredUserInfo',
   },
   setDefaultPayment: {
     method: 'post',
