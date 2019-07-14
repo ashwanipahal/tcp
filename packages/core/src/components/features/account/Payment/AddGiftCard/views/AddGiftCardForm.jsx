@@ -8,21 +8,39 @@ import RichText from '../../../../../common/atoms/RichText';
 import labels from '../container/AddGiftCard.labels';
 import Button from '../../../../../common/atoms/Button';
 
+const exactLength = length => value =>
+  !(value && value.length === length) ? 'Please enter a valid gift card number' : undefined;
+
+const exactLength19 = exactLength(19);
+
 class AddGiftCardForm extends React.PureComponent<Props, State> {
-  handleSubmit = () => {};
+  handleSubmit = data => {
+    const { onAddGiftCardClick } = this.props;
+    const { giftCardNumber, pin } = data;
+    const requestPayload = {
+      cc_brand: 'GC',
+      payMethodId: 'GiftCard',
+      account_pin: pin,
+      pay_account: giftCardNumber,
+      recapchaResponse:
+        '03AOLTBLQRIFMtJinipk42VHLv1v254N96ahPXPCaD4haQViLagJ9xdGGeAi1LLDla1vf9Du6SHGxiZJb78bj05BXmxQ_TapgFOY-DWYpjZsTVmpWgT4HlJQcZoS3wm20wTygBdougXY1SysFKgaAPJRbnz0xN2t36VNMdtPh8MXEACAkE9upD0TRe7SyR2BU1n3xLFF_hoIgi-sBrMknfVNZ5pR815lPlmt_wax8QV7hVqnecnoMk3Lc57_TpjjgHXhBQvFRu2pQ7o_bc4ecX3dNyi-cvoYRHCEtg9v5sh7IDwhs6npiLydTY78hLPFprvTBEXkQVgMmSEXVU7Eux02YDyS4VfWgg-Q',
+    };
+    onAddGiftCardClick(requestPayload);
+  };
 
   render() {
+    const { handleSubmit } = this.props;
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={handleSubmit(this.handleSubmit.bind(this))}>
         <Row fullBleed>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 4 }}>
             <Field
               placeholder="Gift Card"
-              name="giftCard"
+              name="giftCardNumber"
               id="giftCardNumber"
               type="tel"
               component={TextBox}
-              validate={[required]}
+              validate={[required, exactLength19]}
               maxLength={50}
               dataLocator="gift-card-cardnumberfield"
             />
@@ -68,7 +86,7 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
             <Button
               buttonVariation="fixed-width"
               fill="BLUE"
-              type="button"
+              type="submit"
               data-locator="gift-card-addcardbtn"
             >
               {labels.ACC_LBL_ADD_CARD}

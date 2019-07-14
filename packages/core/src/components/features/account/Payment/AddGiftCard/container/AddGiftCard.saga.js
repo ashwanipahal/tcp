@@ -6,7 +6,7 @@ import ADD_GIFT_CARD_CONSTANTS from '../AddGiftCard.constants';
 import fetchData from '../../../../../../service/API';
 import { addGiftCardSuccess, addGiftCardFailure } from './AddGiftCard.actions';
 
-export function* addGiftCard(payload: {}): Saga<void> {
+export function* addGiftCard({ payload }: { payload: {} }): Saga<void> {
   try {
     const { relURI, method } = endpoints.addGiftCard;
     const baseURI = endpoints.addGiftCard.baseURI || endpoints.global.baseURI;

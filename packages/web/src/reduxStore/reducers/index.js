@@ -8,6 +8,7 @@ import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
 import AddEditAddressReducer from '@tcp/core/src/components/features/account/AddEditAddress/container/AddEditAddress.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
+import AddGiftCardReducer from '@tcp/core/src/components/features/account/Payment/AddGiftCard/container/AddGiftCard.reducer';
 import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
 import AddressVerificationReducer from '@tcp/core/src/components/features/account/AddressVerification/container/AddressVerification.reducer';
 import {
@@ -54,4 +55,5 @@ export default combineReducers({
   form: reduxFormReducer,
   [EMAIL_SIGNUP_REDUCER_KEY]: EmailSignupReducer,
   [SMS_SIGNUP_REDUCER_KEY]: SmsSignupReducer,
+  AddGiftCardReducer,
 });

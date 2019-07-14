@@ -9,11 +9,12 @@ import labels from '../container/AddGiftCard.labels';
 // @flow
 type Props = {
   className: String,
+  onAddGiftCardClick: Function,
 };
 
 class AddGiftCard extends React.PureComponent<Props> {
   render() {
-    const { className } = this.props;
+    const { onAddGiftCardClick, className } = this.props;
     return (
       <div className={className}>
         <Anchor
@@ -33,7 +34,7 @@ class AddGiftCard extends React.PureComponent<Props> {
         >
           {labels.ACC_LBL_ADD_GIFT_CARD}
         </Heading>
-        <AddGiftCardForm />
+        <AddGiftCardForm onAddGiftCardClick={onAddGiftCardClick} />
       </div>
     );
   }
