@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Delete card Modal should render correctly 1`] = `
+<errorBoundaryComponent
+  className="TCPModal__Content, undefined"
+  fixedWidth={true}
+  heading="DELETE ADDRESS"
+  maxWidth="690px"
+  minHeight="340px"
+  onRequestClose={[Function]}
+  overlayClassName="TCPModal__Overlay"
+>
+  <div>
+    <Styled(BodyCopy)
+      className="deleteCardModal__modalTitle"
+      color="text.primary"
+      component="div"
+      dataLocator=""
+      fontFamily="primary"
+      fontSize={
+        Array [
+          "fs18",
+        ]
+      }
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      DELETE ADDRESS
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="deleteCardModal__desc"
+      color="text.primary"
+      component="p"
+      dataLocator=""
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      <Styled(Image)
+        className="deleteCardModal__img"
+        src="/static/images/gift-card-small.png"
+      />
+      <Styled(BodyCopy)
+        bodySize="three"
+        className="deleteCardModal__cardInfo"
+        color="text.primary"
+        component="p"
+        dataLocator=""
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <Styled(BodyCopy)
+          className="deleteCardModal__card"
+          color="text.primary"
+          component="span"
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          Card ending in 
+          ined
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
+          className="deleteCardModal__expiry"
+          color="text.primary"
+          component="span"
+          dataLocator=""
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="normal"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+           Expire on 
+          undefined/undefined 
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+    </Styled(BodyCopy)>
+    <div
+      className="deleteCardModal__btnWrapper"
+    >
+      <Styled(Button)
+        buttonVariation="variable-width"
+        className="deleteCardModal__deleteConfirm deleteCardModal__btn"
+        fill="BLUE"
+        onClick={[Function]}
+      >
+        Yes Delete
+      </Styled(Button)>
+      <Styled(Button)
+        buttonVariation="variable-width"
+        className="deleteCardModal__btn deleteCardModal__deleteCancel"
+        fill="RED"
+        onClick={[Function]}
+      >
+        No, Dont Cancel
+      </Styled(Button)>
+    </div>
+  </div>
+</errorBoundaryComponent>
+`;
