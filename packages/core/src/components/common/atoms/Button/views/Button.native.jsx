@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { Button, View } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../Button.style.native';
 
@@ -31,15 +31,15 @@ type Props = {
 const CustomButton = (props: Props) => {
   const { title, id, buttonVariation, fullWidth, customStyle, ...otherProps } = props;
   return (
-    <View {...props}>
-      <Button
+    <TouchableOpacity accessibilityRole="none">
+      <Text
         title={title}
         fullWidth={fullWidth}
         buttonVariation={buttonVariation}
         id={id}
         {...otherProps}
       />
-    </View>
+    </TouchableOpacity>
   );
 };
 

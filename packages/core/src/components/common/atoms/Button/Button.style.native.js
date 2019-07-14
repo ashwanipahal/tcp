@@ -1,12 +1,19 @@
 import { css } from 'styled-components/native';
 
 const style = css`
+  border: none;
+  border-radius: 0;
+  position: relative;
+  opacity: ${props => (props.disabled ? props.theme.opacity.opacity.medium : '1')};
+  text-transform: uppercase;
+  min-height: 42px;
+  text-align: center;
   ${props =>
     props.buttonVariation === 'fixed-width'
       ? `
     width: 40px;
     height: 100px;
-    color: ${props.theme.colorPalette.white};
+    color: ${props.theme.colorPalette.black};
     font-size: ${props.theme.fonts.fontSize.button.size}px
     font-family: ${props.theme.typography.fonts.primary};
     font-weight: ${props.theme.typography.fontWeights.semibold};
@@ -25,13 +32,20 @@ const style = css`
   min-width: 64px;
   background: ${props.theme.colorPalette.white};
   color: ${props.theme.colorPalette.black};
-  font-family: ${props.theme.typography.fonts.primary};
-  font-size: ${props.theme.typography.fontSizes.fs14};
+  font-family: ${props.theme.typography.fonts.secondary};
+  font-size: ${props.theme.fonts.fontSize.button.size}px;
   font-weight: ${props.theme.typography.fontWeights.black};
   border: 1px solid ${props.theme.colorPalette.black};
-  padding: 2px 32px;
+  padding: 12px 32px;
   `
       : ''};
+
+  &:hover {
+    background: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].HOVER};
+  }
+  &:focus {
+    background: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].FOCUS};
+  }
 
   ${props => (props.fullWidth ? ` width: 100% ; ` : '')};
 
