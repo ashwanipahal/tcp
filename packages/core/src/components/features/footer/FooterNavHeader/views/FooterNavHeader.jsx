@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { getIconPath } from '../../../../../utils';
 import Anchor from '../../../../common/atoms/Anchor';
 import Image from '../../../../common/atoms/Image';
@@ -37,8 +37,6 @@ const FooterNavHeader = ({
         fontFamily="secondary"
         fontWeight="semibold"
         fontSize="fs16"
-        lineHeight="normal"
-        letterSpacing="normal"
         color="text.primary"
       >
         {titleText}
