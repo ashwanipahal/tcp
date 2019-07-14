@@ -5,13 +5,21 @@ import { connect } from 'react-redux';
 import AddGiftCardComponent from '../views/AddGiftCard.view';
 import { addGiftCardRequest } from './AddGiftCard.actions';
 import getAddGiftCardResponse from './AddGiftCard.selector';
+import labels from './AddGiftCard.labels';
 
 type Props = {
   onAddGiftCardClick: Function,
+  addGiftCardResponse: String,
 };
 
-const AddGiftCardContainer = ({ onAddGiftCardClick }: Props) => {
-  return <AddGiftCardComponent onAddGiftCardClick={onAddGiftCardClick} />;
+const AddGiftCardContainer = ({ onAddGiftCardClick, addGiftCardResponse }: Props) => {
+  return (
+    <AddGiftCardComponent
+      onAddGiftCardClick={onAddGiftCardClick}
+      labels={labels}
+      addGiftCardResponse={addGiftCardResponse}
+    />
+  );
 };
 
 const mapDispatchToProps = (dispatch: ({}) => void) => {

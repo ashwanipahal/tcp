@@ -1,26 +1,28 @@
 import React from 'react';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
+import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import withStyles from '../../../../../common/hoc/withStyles';
 import styles from '../styles/AddGiftCard.style';
 import Anchor from '../../../../../common/atoms/Anchor';
 import AddGiftCardForm from './AddGiftCardForm';
-import labels from '../container/AddGiftCard.labels';
 
 // @flow
 type Props = {
   className: String,
   onAddGiftCardClick: Function,
+  addGiftCardResponse: String,
+  labels: Object,
 };
 
 class AddGiftCard extends React.PureComponent<Props> {
   render() {
-    const { onAddGiftCardClick, className } = this.props;
+    const { onAddGiftCardClick, className, addGiftCardResponse, labels } = this.props;
     return (
       <div className={className}>
         <Anchor
           fontSizeVariation="xlarge"
           anchorVariation="secondary"
-          to="/account/payment/"
+          to="/account/payment"
           dataLocator="gift-card-addcardbacklink"
         >
           Back
@@ -34,7 +36,18 @@ class AddGiftCard extends React.PureComponent<Props> {
         >
           {labels.ACC_LBL_ADD_GIFT_CARD}
         </Heading>
-        <AddGiftCardForm onAddGiftCardClick={onAddGiftCardClick} />
+        {addGiftCardResponse && (
+          <Notification
+            status={addGiftCardResponse}
+            colSize={{ large: 12, medium: 8, small: 6 }}
+            message={
+              addGiftCardResponse === 'success'
+                ? labels.ACC_LBL_OP_SUCCESS
+                : labels.ACC_LBL_OP_FAILURE
+            }
+          />
+        )}
+        <AddGiftCardForm onAddGiftCardClick={onAddGiftCardClick} labels={labels} />
       </div>
     );
   }

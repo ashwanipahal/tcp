@@ -1,6 +1,5 @@
-const getAddGiftCardResponse = () => {
-  // return state.AddGiftCardReducer.get('addGiftCardResponse');
-  return null;
+const getAddGiftCardResponse = state => {
+  return state.AddGiftCardReducer.get('showUpdatedNotification');
 };
 
 export default getAddGiftCardResponse;

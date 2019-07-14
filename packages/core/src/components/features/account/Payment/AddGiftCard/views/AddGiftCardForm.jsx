@@ -1,17 +1,12 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import TextBox from '../../../../../common/atoms/TextBox';
-import { required } from '../../../../../../utils/FormValidation';
 import Row from '../../../../../common/atoms/Row';
 import Col from '../../../../../common/atoms/Col';
 import RichText from '../../../../../common/atoms/RichText';
-import labels from '../container/AddGiftCard.labels';
 import Button from '../../../../../common/atoms/Button';
-
-const exactLength = length => value =>
-  !(value && value.length === length) ? 'Please enter a valid gift card number' : undefined;
-
-const exactLength19 = exactLength(19);
+import createValidateMethod from '../../../../../../utils/formValidation/createValidateMethod';
+import getStandardConfig from '../../../../../../utils/formValidation/validatorStandardConfig';
 
 class AddGiftCardForm extends React.PureComponent<Props, State> {
   handleSubmit = data => {
@@ -29,7 +24,7 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, labels } = this.props;
     return (
       <form onSubmit={handleSubmit(this.handleSubmit.bind(this))}>
         <Row fullBleed>
@@ -37,10 +32,8 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
             <Field
               placeholder="Gift Card"
               name="giftCardNumber"
-              id="giftCardNumber"
               type="tel"
               component={TextBox}
-              validate={[required, exactLength19]}
               maxLength={50}
               dataLocator="gift-card-cardnumberfield"
             />
@@ -48,11 +41,9 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 2, large: 3 }}>
             <Field
               placeholder="Pin"
-              name="pin"
-              id="giftCardPin"
+              name="cardPin"
               type="tel"
               component={TextBox}
-              validate={[required]}
               dataLocator="gift-card-pinnumberfield"
             />
           </Col>
@@ -98,6 +89,10 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
   }
 }
 
+const validateMethod = createValidateMethod(getStandardConfig(['giftCardNumber', 'cardPin']));
+
 export default reduxForm({
   form: 'AddGiftCardForm', // a unique identifier for this form
+  ...validateMethod,
+  enableReinitialize: true,
 })(AddGiftCardForm);

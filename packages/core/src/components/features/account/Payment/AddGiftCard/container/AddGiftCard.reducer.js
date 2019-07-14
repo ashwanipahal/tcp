@@ -5,6 +5,7 @@ import ADD_GIFT_CARD_CONSTANTS from '../AddGiftCard.constants';
 const initialState = fromJS({
   addGiftCardResponse: {},
   error: {},
+  showUpdatedNotification: null,
 });
 
 type Action = {

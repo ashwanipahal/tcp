@@ -4,7 +4,7 @@ const styles = css`
   .add-gift-card__separator {
     border-bottom: 3px solid ${props => props.theme.colors.BLACK};
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
   }
   .add-gift-card__row {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
