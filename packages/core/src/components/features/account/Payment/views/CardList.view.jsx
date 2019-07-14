@@ -14,7 +14,7 @@ type Props = {
   setSelectedGiftCard: Function,
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
-  giftCardList: Array<object>,
+  cardList: Array<object>,
   showNotification: boolean,
   showNotificationCaptcha: boolean,
 }; // giftCards comment for time being
@@ -25,14 +25,14 @@ export const CardList = ({
   onGetBalanceCard,
   checkbalanceValueInfo,
   labels,
-  giftCardList,
+  cardList,
   showNotification,
   showNotificationCaptcha,
 }: Props) => {
   return (
-    <div className={className}>
-      <Row fullBleed>
-        {giftCardList.map((card, index) => (
+    <div>
+      <Row fullBleed className={className}>
+        {cardList.map((card, index) => (
           <Col
             className="cardList__col"
             key={`container-${card.creditCardId}`}

@@ -1,40 +1,59 @@
 import React from 'react';
-import CardTile from '../../common/molecule/CardTile/views/CardTile.view';
-import Col from '../../../../common/atoms/Col';
-import Row from '../../../../common/atoms/Row';
 import Heading from '../../../../common/atoms/Heading';
 import styles from '../styles/CardList.style';
 import withStyles from '../../../../common/hoc/withStyles';
+import { CardView } from './Card.view';
 
 // @flow
 type Props = {
   labels: object,
   venmoCardList: object,
   className: string,
+  setDeleteModalMountState: Function,
+  deleteModalMountedState: false,
+  onDeleteCard: Function,
+  showUpdatedNotificationOnModal: any,
+  onGetBalanceCard: Function,
+  checkbalanceValueInfo: any,
+  showNotification: boolean,
+  showNotificationCaptcha: boolean,
+  setSelectedCard: string,
 };
 
-const VenmoCardList = ({ labels, venmoCardList, className }: Props) => {
+const VenmoCardList = ({
+  labels,
+  venmoCardList,
+  className,
+  setDeleteModalMountState,
+  deleteModalMountedState,
+  onDeleteCard,
+  showUpdatedNotificationOnModal,
+  onGetBalanceCard,
+  checkbalanceValueInfo,
+  showNotification,
+  showNotificationCaptcha,
+  setSelectedCard,
+}: Props) => {
   return (
     <div className={className}>
       <Heading variant="h6" className="cardList__heading" dataLocator="payment-venmocardtile">
         {labels.ACC_LBL_VENMO_HEADING}
       </Heading>
-      <Row fullBleed>
-        {venmoCardList.map((card, index) => (
-          <Col
-            className="cardList__col"
-            key={`container-${card.creditCardId}`}
-            colSize={{ large: 4, medium: 4, small: 6 }}
-            ignoreGutter={{
-              large: (index + 1) % 3 === 0,
-              medium: (index + 1) % 2 === 0,
-              small: true,
-            }}
-          >
-            <CardTile card={card} labels={labels} />
-          </Col>
-        ))}
-      </Row>
+      {venmoCardList.size !== 0 && (
+        <CardView
+          labels={labels}
+          deleteModalMountedState={deleteModalMountedState}
+          setDeleteModalMountState={setDeleteModalMountState}
+          onDeleteCard={onDeleteCard}
+          showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
+          cardList={venmoCardList}
+          onGetBalanceCard={onGetBalanceCard}
+          checkbalanceValueInfo={checkbalanceValueInfo}
+          showNotification={showNotification}
+          showNotificationCaptcha={showNotificationCaptcha}
+          setSelectedCard={setSelectedCard}
+        />
+      )}
     </div>
   );
 };
