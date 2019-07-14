@@ -13,7 +13,9 @@ const styles = css`
     ${props => props.theme.spacing.ELEM_SPACING.MED};
 
   .recaptcha {
-    webkit-transform: scale(0.6);
+    -webkit-transform: scale(0.6);
+    -ms-transform: scale(0.6);
+    -moz-transform: scale(0.6);
     transform: scale(0.6);
     position: relative;
     left: -45px;
