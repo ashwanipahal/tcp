@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
@@ -27,9 +28,7 @@ type Props = {
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
   showNotificationCaptcha: any,
-  form: any,
 };
-
 class CardTile extends React.Component<Props> {
   constructor(props) {
     super(props);
@@ -196,11 +195,21 @@ class CardTile extends React.Component<Props> {
   remainBalance = () => {
     const { card, checkbalanceValueInfo, labels } = this.props;
     const { HideCaptchaBtn, balance } = this.state;
-    const isCreditCard = card.ccType !== 'GiftCard' && card.ccType !== 'VENMO';
-    const isVenmo = card.ccType === 'VENMO';
     return (
       <React.Fragment>
-        {HideCaptchaBtn && (
+        {HideCaptchaBtn && !checkbalanceValueInfo.giftCardNbr && (
+          <BodyCopy
+            tag="span"
+            fontSize="fs24"
+            fontFamily="secondary"
+            fontWeight="extrabold"
+            className=""
+            lineHeights="lh115"
+          >
+            {labels.ACC_LBL_LOADING}
+          </BodyCopy>
+        )}
+        {HideCaptchaBtn && checkbalanceValueInfo.giftCardNbr === card.accountNo && (
           <BodyCopy
             tag="span"
             fontSize="fs14"
@@ -223,18 +232,6 @@ class CardTile extends React.Component<Props> {
           >
             {balance}
           </BodyCopy>
-        )}
-        {!HideCaptchaBtn && !isVenmo && !isCreditCard && (
-          <Button
-            onClick={this.handleCheckBalanceClick}
-            buttonVariation="variable-width"
-            type="submit"
-            data-locator="cardtile-checkbalance"
-            fill="BLUE"
-            disabled={HideCaptchaBtn && !checkbalanceValueInfo.giftCardNbr}
-          >
-            {labels.ACC_LBL_CHECK_BALANCE}
-          </Button>
         )}
       </React.Fragment>
     );
@@ -317,8 +314,49 @@ class CardTile extends React.Component<Props> {
     );
   };
 
+  renderRecaptcha = ({ className, HideCaptchaBtn }) => {
+    const { card, checkbalanceValueInfo, labels } = this.props;
+    const isCreditCard = card.ccType !== 'GiftCard' && card.ccType !== 'VENMO';
+    const isVenmo = card.ccType === 'VENMO';
+    return (
+      <form name={className} onSubmit={this.handleSubmit} autoComplete="off" noValidate>
+        <div className="giftcardTile__row">
+          {!HideCaptchaBtn && !isVenmo && (
+            <Recaptcha
+              ref={this.attachReCaptchaRef}
+              onloadCallback={this.handleRecaptchaOnload}
+              verifyCallback={this.handleRecaptchaVerify}
+              expiredCallback={this.handleRecaptchaExpired}
+            />
+          )}
+          <Field
+            component={TextBox}
+            title=""
+            type="hidden"
+            placeholder="recaptcha value"
+            name="recaptchaToken"
+            id="recaptchaToken"
+          />
+          {this.remainBalance()}
+          {!HideCaptchaBtn && !isVenmo && !isCreditCard && (
+            <Button
+              onClick={this.handleCheckBalanceClick}
+              buttonVariation="variable-width"
+              type="submit"
+              data-locator="cardtile-checkbalance"
+              fill="BLUE"
+              disabled={HideCaptchaBtn && !checkbalanceValueInfo.giftCardNbr}
+            >
+              {labels.ACC_LBL_CHECK_BALANCE}
+            </Button>
+          )}
+        </div>
+      </form>
+    );
+  };
+
   render() {
-    const { card, className, showNotificationCaptcha, form } = this.props;
+    const { card, className, showNotificationCaptcha } = this.props;
     const { HideCaptchaBtn } = this.state;
     const isCreditCard = card.ccType !== 'GiftCard' && card.ccType !== 'VENMO';
     const isVenmo = card.ccType === 'VENMO';
@@ -351,19 +389,15 @@ class CardTile extends React.Component<Props> {
           </div>
           <div className="cardTile__defaultSection">
             {isCreditCard ? this.getMakeDefaultBadge() : null}
-            <div className="cardTile__img_wrapper">
-              <img
-                className="cardTile__img"
-                alt={card.ccBrand}
-                src={cardIcon}
-                data-locator="payment-cardImage"
-              />
-            </div>
+            <img className="cardTile__img" alt="" src={cardIcon} />
           </div>
+        </div>
+        <div className="giftcardTile__wrapper">
+          {this.renderRecaptcha(className, HideCaptchaBtn, isVenmo)}
         </div>
         {card.ccType === 'GiftCard' && (
           <div className="giftcardTile__wrapper">
-            <form name={form} onSubmit={this.handleSubmit} autoComplete="off" noValidate>
+            <form name={className} onSubmit={this.handleSubmit} autoComplete="off" noValidate>
               <div className="giftcardTile__row">
                 {!HideCaptchaBtn && !isVenmo && !isCreditCard && (
                   <Recaptcha
@@ -392,6 +426,7 @@ class CardTile extends React.Component<Props> {
     );
   }
 }
+
 const validateMethod = createValidateMethod(getStandardConfig(['recaptchaToken']));
 export default reduxForm({ destroyOnUnmount: false, enableReinitialize: true, ...validateMethod })(
   withStyles(CardTile, styles)

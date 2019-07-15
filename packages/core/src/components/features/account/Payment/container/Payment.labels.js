@@ -34,6 +34,7 @@ const labels = {
   ACC_LBL_DEFAULT_PAYMENT: 'DEFAULT PAYMENT',
   ACC_LBL_PLCC_CARD: 'My Place Rewards Credit Card',
   ACC_LBL_VENMO_HEADING: 'VENMO',
+  ACC_LBL_MODAL_VENMO_DELETE_HEADING: 'Are you sure you want to delete this saved Venmo payment?',
   ACC_LBL_LOADING: 'LOADING...',
   ACC_LBL_CHECK_BALANCE: ' Check Balance',
   ACC_LBL_REMAINING_BALANCE: 'Remaining balance',
