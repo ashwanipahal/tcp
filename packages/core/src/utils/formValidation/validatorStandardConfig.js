@@ -40,6 +40,9 @@ export const formValidationMessages = {
     required: 'Please enter your zip code',
     zipcode: 'Please enter a valid zip code',
   },
+  recaptchaToken: {
+    required: 'Please check the reCaptcha value',
+  },
 };
 
 export const formValidationRules = {
@@ -85,6 +88,9 @@ export const formValidationRules = {
     zipcode: {
       linkedFields: ['country'],
     },
+  },
+  recaptchaToken: {
+    required: true,
   },
 };
 

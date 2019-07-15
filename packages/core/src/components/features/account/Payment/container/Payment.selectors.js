@@ -28,3 +28,19 @@ export const getCardListFetchingState = state => {
 export const getShowNotificationState = state => {
   return state.PaymentReducer.get('showNotification');
 };
+
+export const getShowNotificationCaptchaState = state => {
+  return state.PaymentReducer.get('showNotificationCaptcha');
+};
+
+export const deleteModalOpenState = state => {
+  return state.PaymentReducer.get('deleteModalMountedState');
+};
+
+export const showUpdatedNotificationOnModalState = state => {
+  return state.PaymentReducer.get('showUpdatedNotificationOnModal');
+};
+
+export const checkbalanceValue = state => {
+  return state.PaymentReducer.get('giftcardBalance');
+};

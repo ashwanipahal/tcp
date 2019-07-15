@@ -12,23 +12,18 @@ describe('AddressList saga', () => {
       addressListGen.next();
       addressListGen.next();
     });
-
+    // TODO - Rewrite Test cases to include Integration testing of Saga and Abstractor
     it('should dispatch setAddressList action for success resposnse', () => {
       const response = {
         body: {
           contact: [],
         },
       };
-      const putDescriptor = addressListGen.next(response).value;
+      const {
+        body: { contact },
+      } = response;
+      const putDescriptor = addressListGen.next(contact).value;
       expect(putDescriptor).toEqual(put(setAddressList(response.body.contact)));
-    });
-
-    it('should not dispatch setAddressList action if response is null', () => {
-      const response = {
-        body: null,
-      };
-      const putDescriptor = addressListGen.next(response).value;
-      expect(putDescriptor).toBeNull();
     });
 
     it('should not dispatch setAddressList action for error', () => {
@@ -41,8 +36,8 @@ describe('AddressList saga', () => {
   describe('AddressListSaga', () => {
     it('should return correct takeLatest effect', () => {
       const generator = AddressBookSaga();
-      const takeLatestDescriptor = generator.next().value;
       const cachedMethod = validateReduxCache(getAddressList);
+      const takeLatestDescriptor = generator.next().value;
       const expected = takeLatest(ADDRESS_BOOK_CONSTANTS.GET_ADDRESS_LIST, cachedMethod);
       expect(takeLatestDescriptor.toString()).toMatch(expected.toString());
     });

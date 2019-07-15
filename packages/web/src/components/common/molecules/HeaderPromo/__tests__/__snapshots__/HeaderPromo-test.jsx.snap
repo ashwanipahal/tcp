@@ -34,14 +34,44 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
         <div
           className="header-promo-item__content"
         >
-          <Styled(RichText)
+          <Styled(BodyCopy)
             className="styled-text black-bold"
-            richTextHtml="NEED IT NOW?"
-          />
-          <Styled(RichText)
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize={
+              Array [
+                "fs12",
+                "fs12",
+                "fs14",
+              ]
+            }
+            fontWeight="black"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="center"
+          >
+            NEED IT NOW?
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
             className="styled-text-line style2"
-            richTextHtml="Buy online, pickup in store."
-          />
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize={
+              Array [
+                "fs12",
+                "fs12",
+                "fs14",
+              ]
+            }
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="center"
+          >
+            Buy online, pickup in store.
+          </Styled(BodyCopy)>
         </div>
       </Styled(Anchor)>
     </Styled(Col)>
@@ -71,14 +101,44 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
         <div
           className="header-promo-item__content"
         >
-          <Styled(RichText)
+          <Styled(BodyCopy)
             className="styled-text green-bold"
-            richTextHtml="EARN PLACE CASH!"
-          />
-          <Styled(RichText)
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize={
+              Array [
+                "fs12",
+                "fs12",
+                "fs14",
+              ]
+            }
+            fontWeight="black"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="center"
+          >
+            EARN PLACE CASH!
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
             className="styled-text-line style2"
-            richTextHtml="Get 10$ for every 20$ spent today."
-          />
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize={
+              Array [
+                "fs12",
+                "fs12",
+                "fs14",
+              ]
+            }
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="center"
+          >
+            Get 10$ for every 20$ spent today.
+          </Styled(BodyCopy)>
         </div>
       </Styled(Anchor)>
     </Styled(Col)>
@@ -108,14 +168,44 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
         <div
           className="header-promo-item__content"
         >
-          <Styled(RichText)
+          <Styled(BodyCopy)
             className="styled-text black-bold"
-            richTextHtml="SIGN UP AND GET 10$ OFF!"
-          />
-          <Styled(RichText)
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize={
+              Array [
+                "fs12",
+                "fs12",
+                "fs14",
+              ]
+            }
+            fontWeight="black"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="center"
+          >
+            SIGN UP AND GET 10$ OFF!
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
             className="styled-text-line style2"
-            richTextHtml="<u>ENTER YOUR EMAIL</u>."
-          />
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize={
+              Array [
+                "fs12",
+                "fs12",
+                "fs14",
+              ]
+            }
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="center"
+          >
+            &lt;u&gt;ENTER YOUR EMAIL&lt;/u&gt;.
+          </Styled(BodyCopy)>
         </div>
       </Styled(Anchor)>
     </Styled(Col)>
@@ -180,14 +270,44 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
       <div
         className="header-promo-item__content"
       >
-        <Styled(RichText)
+        <Styled(BodyCopy)
           className="styled-text black-bold"
-          richTextHtml="NEED IT NOW?"
-        />
-        <Styled(RichText)
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize={
+            Array [
+              "fs12",
+              "fs12",
+              "fs14",
+            ]
+          }
+          fontWeight="black"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="center"
+        >
+          NEED IT NOW?
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
           className="styled-text-line style2"
-          richTextHtml="Buy online, pickup in store."
-        />
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize={
+            Array [
+              "fs12",
+              "fs12",
+              "fs14",
+            ]
+          }
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="center"
+        >
+          Buy online, pickup in store.
+        </Styled(BodyCopy)>
       </div>
     </Styled(Anchor)>
     <Styled(Anchor)
@@ -207,14 +327,44 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
       <div
         className="header-promo-item__content"
       >
-        <Styled(RichText)
+        <Styled(BodyCopy)
           className="styled-text green-bold"
-          richTextHtml="EARN PLACE CASH!"
-        />
-        <Styled(RichText)
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize={
+            Array [
+              "fs12",
+              "fs12",
+              "fs14",
+            ]
+          }
+          fontWeight="black"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="center"
+        >
+          EARN PLACE CASH!
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
           className="styled-text-line style2"
-          richTextHtml="Get 10$ for every 20$ spent today."
-        />
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize={
+            Array [
+              "fs12",
+              "fs12",
+              "fs14",
+            ]
+          }
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="center"
+        >
+          Get 10$ for every 20$ spent today.
+        </Styled(BodyCopy)>
       </div>
     </Styled(Anchor)>
     <Styled(Anchor)
@@ -234,14 +384,44 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
       <div
         className="header-promo-item__content"
       >
-        <Styled(RichText)
+        <Styled(BodyCopy)
           className="styled-text black-bold"
-          richTextHtml="SIGN UP AND GET 10$ OFF!"
-        />
-        <Styled(RichText)
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize={
+            Array [
+              "fs12",
+              "fs12",
+              "fs14",
+            ]
+          }
+          fontWeight="black"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="center"
+        >
+          SIGN UP AND GET 10$ OFF!
+        </Styled(BodyCopy)>
+        <Styled(BodyCopy)
           className="styled-text-line style2"
-          richTextHtml="<u>ENTER YOUR EMAIL</u>."
-        />
+          color="text.primary"
+          component="p"
+          fontFamily="secondary"
+          fontSize={
+            Array [
+              "fs12",
+              "fs12",
+              "fs14",
+            ]
+          }
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="center"
+        >
+          &lt;u&gt;ENTER YOUR EMAIL&lt;/u&gt;.
+        </Styled(BodyCopy)>
       </div>
     </Styled(Anchor)>
   </errorBoundaryComponent>

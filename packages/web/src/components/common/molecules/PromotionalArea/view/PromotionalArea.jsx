@@ -42,9 +42,7 @@ const PromotionalArea = ({ className, data, mobile }) => {
 
 PromotionalArea.propTypes = {
   className: PropTypes.string.isRequired,
-  data: PropTypes.arrayOf(
-    PropTypes.objectOf(PropTypes.oneOfType([PropTypes.number, PropTypes.string]))
-  ).isRequired,
+  data: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   mobile: PropTypes.bool,
 };
 

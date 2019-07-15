@@ -8,7 +8,6 @@ const initialState = fromJS({
   list: null,
   error: {},
   showDefaultShippingUpdatedMsg: null,
-  addAddressLoaded: false,
   showUpdatedNotification: null,
   showUpdatedNotificationOnModal: null,
   deleteModalMountedState: false,
@@ -30,30 +29,23 @@ const updateAddressList = (state, action) => {
   return updatedAddressList;
 };
 
-const reudcerAddressBook = (state = initialState, action) => {
-  switch (action.type) {
-    case ADDRESS_BOOK_CONSTANTS.LOAD_ADD_ADDRESS_COMPONENT:
-      return state.set('addAddressLoaded', true);
-    case ADDRESS_BOOK_CONSTANTS.LOAD_ADDRESSBOOK_COMPONENT:
-      return state.set('addAddressLoaded', false);
-    default:
-      // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
-      if (state instanceof Object) {
-        return fromJS(state);
-      }
-      return state;
+const getDefaultState = state => {
+  // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
+  if (state instanceof Object) {
+    return fromJS(state);
   }
+  return state;
 };
 
 const AddressBookReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADDRESS_BOOK_CONSTANTS.SET_LOADER:
+    case ADDRESS_BOOK_CONSTANTS.SHOW_LOADER:
       return state.set('isFetching', true);
     case ADDRESS_BOOK_CONSTANTS.SET_ADDRESS_LIST:
       return state
         .set('isFetching', false)
         .set('list', List(action.addressList))
-        .set(DEFAULT_REDUCER_KEY, setCacheTTL());
+        .set(DEFAULT_REDUCER_KEY, setCacheTTL(ADDRESS_BOOK_CONSTANTS.GET_ADDRESS_LIST_TTL));
     case ADDRESS_BOOK_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_SUCCESS:
       return state
         .set(
@@ -73,7 +65,6 @@ const AddressBookReducer = (state = initialState, action) => {
         .set('showUpdatedNotification', 'success');
     case ADDRESS_BOOK_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_FAILED:
       return state.set('error', action.payload).set('showUpdatedNotification', 'error');
-
     case ADDRESS_BOOK_CONSTANTS.UPDATE_ADDRESS_LIST_ON_DELETE:
       return state
         .set('list', updateAddressList(state, action))
@@ -90,7 +81,7 @@ const AddressBookReducer = (state = initialState, action) => {
     case ADDRESS_BOOK_CONSTANTS.CLEAR_GET_ADDRESS_LIST_TTL:
       return state.set(DEFAULT_REDUCER_KEY, null);
     default:
-      return reudcerAddressBook(state, action);
+      return getDefaultState(state);
   }
 };
 

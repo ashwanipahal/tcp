@@ -10,7 +10,9 @@ import errorBoundary from '../../../hoc/errorBoundary';
 
 type Props = {
   className: String,
-  composites: Object,
+  headerText: Object,
+  smallCompImage: Object,
+  singleCTAButton: Object,
 };
 
 const colSize2Elements = {
@@ -44,10 +46,7 @@ const ignoreGutter = [
 ];
 
 const ModuleD = (props: Props) => {
-  const {
-    className,
-    composites: { headerText, smallCompImage, singleCTAButton },
-  } = props;
+  const { className, headerText, smallCompImage, singleCTAButton } = props;
   const {
     textLines: [{ text: headingText }],
     link: { target, title, url },
