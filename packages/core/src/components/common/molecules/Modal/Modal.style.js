@@ -28,7 +28,7 @@ const ModalStyle = css`
       min-height: ${props => (props.fixedWidth ? props.minHeight : '')};
       width: ${props => (props.widthConfig ? props.widthConfig.medium : '')};
     }
-    @media ${props => props.theme.mediaQuery.medium} {
+    @media ${props => props.theme.mediaQuery.large} {
       width: ${props => (props.widthConfig ? props.widthConfig.large : '')};
     }
   }
