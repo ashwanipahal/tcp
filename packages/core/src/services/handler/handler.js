@@ -1,11 +1,10 @@
-import fetch from 'node-fetch';
-import { graphQLClient } from '../config';
+import { graphQLClient } from '../api.constants';
 import QueryBuilder from './graphQL/queries/queryBuilder';
 import { importGraphQLClientDynamically } from '../../utils';
+import statefulAPIClient from './stateful/statefulClient';
+import unbxdAPIClient from './unbxd/unbxdClient';
 
-if (!process.browser) {
-  global.fetch = fetch;
-}
+let apiConfig = null;
 
 /**
  * Logs error
@@ -55,6 +54,61 @@ export const executeGraphQLQuery = query => {
 export const fetchModuleDataFromGraphQL = async modules => {
   const query = await QueryBuilder.getQuery(modules);
   return executeGraphQLQuery(query).catch(errorHandler);
+};
+
+/**
+ * @summary Creates the API config object and set it to global constant to be used across
+ */
+const createAPIConfig = () => {
+  // TODO - Get data from env config
+  apiConfig = {
+    traceIdCount: 0,
+    proto: 'https',
+    MELISSA_KEY: '63987687',
+    storeId: '10151',
+    catalogId: '10551',
+    isUSStore: true,
+    langId: '-1',
+    siteId: 'us',
+    countryKey: '_US',
+    assetHost: 'https://test1.childrensplace.com',
+    domain: '://test1.childrensplace.com/api/',
+    unbxd: '://search.unbxd.io',
+    cookie: null,
+    isMobile: false,
+  };
+};
+
+/**
+ * @summary Get the api config if already created or else creates one.
+ * @returns {Object} apiConfig - Api config to be utilized for brand/channel/locale config
+ */
+const getAPIConfig = () => {
+  if (!apiConfig) {
+    createAPIConfig();
+  }
+  return apiConfig;
+};
+
+/**
+ * @summary Fetches Queries based on passed module, then executes the query and returns a promise for query execution
+ * @param {Object} reqObj request param with endpoints and payload
+ * @returns {Promise} Resolves with unbxd or stateful client based on request object or returns null
+ */
+export const executeStatefulAPICall = reqObj => {
+  if (!reqObj.webService) {
+    return null;
+  }
+  const apiConfigObj = getAPIConfig();
+  return statefulAPIClient(apiConfigObj, reqObj).catch(errorHandler);
+};
+
+export const executeUnbxdAPICall = reqObj => {
+  if (!reqObj.webService) {
+    return null;
+  }
+  const apiConfigObj = getAPIConfig();
+  return unbxdAPIClient(apiConfigObj, reqObj).catch(errorHandler);
 };
 
 export default {

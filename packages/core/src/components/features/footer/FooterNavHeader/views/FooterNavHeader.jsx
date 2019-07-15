@@ -1,5 +1,6 @@
 // @flow
 import React from 'react';
+import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { getIconPath } from '../../../../../utils';
 import Anchor from '../../../../common/atoms/Anchor';
 import Image from '../../../../common/atoms/Image';
@@ -27,14 +28,19 @@ const FooterNavHeader = ({
 }: Props) => {
   if (!headerAsImage) {
     return (
-      <h4
+      <BodyCopy
         className={!isSubHeader ? className : `${className} subHeader`}
         aria-label={ariaLabel}
         data-index={colNum}
         data-locator={`col_heading_${colNum}`}
+        component="p"
+        fontFamily="secondary"
+        fontWeight="semibold"
+        fontSize="fs16"
+        color="text.primary"
       >
         {titleText}
-      </h4>
+      </BodyCopy>
     );
   }
   return (
