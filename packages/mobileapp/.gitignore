@@ -4,5 +4,6 @@ dist/
 build/
 /flow-typed/
 .expo
-android
-ios
+release_tcp
+release_gymboree
+

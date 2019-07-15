@@ -118,10 +118,31 @@ android {
     }
     buildTypes {
         release {
+
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
     }
+
+    // Specifies one flavor dimension.
+    flavorDimensions "version"
+    productFlavors {
+        release_tcp {
+            // Assigns this product flavor to the "version" flavor dimension.
+            // This property is optional if you are using only one dimension.
+            dimension "version"
+            applicationIdSuffix ".tcp"
+            versionNameSuffix "-tcp"
+            versionName = 'MyPlace'
+        }
+        release_gymboree {
+            dimension "version"
+            applicationIdSuffix ".gymboree"
+            versionNameSuffix "-gymboree"
+            versionName = 'Gymboree'
+        }
+    }
+
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
