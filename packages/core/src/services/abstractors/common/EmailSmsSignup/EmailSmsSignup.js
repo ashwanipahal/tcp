@@ -1,4 +1,6 @@
 import fetchData from '../../../../service/API';
+import { executeExternalAPICall } from '../../../handler';
+import endpoints from '../../../endpoints';
 
 /**
  * Abstractor layer for loading data from API for SMS and Email Signup
@@ -14,8 +16,14 @@ const Abstractor = {
       .then(Abstractor.processSmsSubscriptionData)
       .catch(Abstractor.handleValidationError);
   },
-  verifyEmail: (baseURI, relURI, params = {}, method) => {
-    return fetchData(baseURI, relURI, params, method)
+  verifyEmail: emailAddress => {
+    const payload = {
+      webService: endpoints.emailVerification,
+      body: {
+        address: emailAddress,
+      },
+    };
+    return executeExternalAPICall(payload)
       .then(Abstractor.processData)
       .catch(Abstractor.handleValidationError);
   },

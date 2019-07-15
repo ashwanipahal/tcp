@@ -30,16 +30,7 @@ export function* subscribeEmail(email, status) {
 
 export function* verifyEmail({ payload }) {
   try {
-    const { baseURI, relURI, method } = endpoints.emailVerification;
-    const newRelURI = `${relURI}&address=${payload}`;
-    const params = {};
-    const emailValidationState = yield call(
-      emailSignupAbstractor.verifyEmail,
-      baseURI,
-      newRelURI,
-      params,
-      method
-    );
+    const emailValidationState = yield call(emailSignupAbstractor.verifyEmail, payload);
     yield put(setEmailValidationStatus({ validEmail: emailValidationState }));
   } catch (err) {
     console.log(err);
