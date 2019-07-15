@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ModuleHHeader from '../view/ModuleH.Header';
+import ModuleHHeader from '../views/ModuleH.Header';
 import mock from '../mock';
 
 describe('ModuleH Header Component', () => {

@@ -1,4 +1,6 @@
 import { Dimensions, Linking } from 'react-native';
+import icons from '../config/icons';
+import locators from '../config/locators';
 
 export const importGraphQLClientDynamically = module => {
   return new Promise((resolve, reject) => {
@@ -62,4 +64,20 @@ export const UrlHandler = url => {
  */
 export const getScreenWidth = () => {
   return parseInt(Dimensions.get('screen').width, 10);
+};
+
+/**
+ * This function returns the path of icons in static/images folder
+ * @param {*} icon | String - Identifier for icons in assets
+ */
+export const getIconPath = icon => {
+  return icons[icon];
+};
+
+/**
+ * This function returns the path of icons in static/images folder
+ * @param {*} icon | String - Identifier for icons in assets
+ */
+export const getLocator = locator => {
+  return locators[locator];
 };

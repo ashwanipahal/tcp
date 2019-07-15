@@ -3,10 +3,18 @@ import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
 import HomePageView from '../views';
 
 const mapStateToProps = state => {
-  const moduleDSlotID = state.Layouts.homepage ? state.Layouts.homepage.slots[0].contentId : '';
-  const moduleD = state.Modules[moduleDSlotID] ? state.Modules[moduleDSlotID] : {};
+  const homepageSlots = state.Layouts.homepage ? state.Layouts.homepage.slots : '';
+  const modules = state.Modules ? state.Modules : '';
+  const moduleSlots = {};
+  if (homepageSlots && Object.keys(modules).length) {
+    homepageSlots.forEach(slotItem => {
+      moduleSlots[slotItem.name] = modules[slotItem.contentId];
+      moduleSlots[slotItem.name].name = slotItem.moduleName;
+      return moduleSlots;
+    });
+  }
   return {
-    moduleD,
+    ...moduleSlots,
   };
 };
 
