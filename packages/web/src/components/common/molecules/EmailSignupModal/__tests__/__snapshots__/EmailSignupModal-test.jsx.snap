@@ -182,7 +182,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
               }
             >
               <Field
-                className="field-label async-success"
+                className=""
                 component={
                   Object {
                     "$$typeof": Symbol(react.forward_ref),

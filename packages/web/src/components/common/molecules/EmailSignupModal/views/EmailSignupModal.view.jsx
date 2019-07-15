@@ -16,13 +16,27 @@ class SignupWrapper extends React.PureComponent {
     super(props);
     this.state = {
       isOpen: false,
-      showAsyncError: '',
     };
+  }
+
+  componentDidUpdate() {
+    if (this.pendingEmailFormSubmit && this.checkEmailValid()) {
+      const { signup } = this.state;
+      const { submitEmailSubscription } = this.props;
+      this.pendingEmailFormSubmit = false;
+      submitEmailSubscription(signup);
+    } else {
+      this.pendingEmailFormSubmit = false;
+    }
   }
 
   onButtonClick = () => {
     const { isOpen } = this.state;
-    this.setState({ isOpen: !isOpen });
+    let { signup } = this.state;
+    if (!isOpen) {
+      signup = '';
+    }
+    this.setState({ isOpen: !isOpen, signup });
   };
 
   onSignUpInputBlur = e => {
@@ -31,14 +45,15 @@ class SignupWrapper extends React.PureComponent {
   };
 
   onFormSubmit = e => {
-    console.info('called');
-    try {
-      e.preventDefault();
-      const { signup } = this.state;
-      const { submitEmailSubscription } = this.props;
+    e.preventDefault();
+    const { signup } = this.state;
+    const { submitEmailSubscription, verifyEmailAddress } = this.props;
+
+    if (this.checkEmailValid()) {
       submitEmailSubscription(signup);
-    } catch (error) {
-      console.log(error);
+    } else {
+      this.pendingEmailFormSubmit = true;
+      verifyEmailAddress(signup);
     }
   };
 
@@ -51,33 +66,35 @@ class SignupWrapper extends React.PureComponent {
     clearEmailSignupForm();
   };
 
+  getValidationClass() {
+    let validationClass = '';
+    const { signup = '' } = this.state;
+    const { isEmailValid } = this.props;
+
+    if (isEmailValid && signup.length && !this.checkEmailValid()) {
+      validationClass = 'field-label async-error';
+    }
+    if (isEmailValid && signup.length && this.checkEmailValid()) {
+      validationClass = 'field-label async-success';
+    }
+    return validationClass;
+  }
+
   closeModal = () => {
     const { isOpen } = this.state;
     const { clearEmailSignupForm, dispatch } = this.props;
-    this.setState({ isOpen: !isOpen, showAsyncError: false });
+    this.setState({ isOpen: !isOpen });
     dispatch(reset('SignupWrapper'));
     clearEmailSignupForm();
   };
 
-  getValidationClass = isEmailValid => {
-    let validationClass = '';
-    if (isEmailValid === 'invalid') {
-      this.setState({
-        showAsyncError: true,
-      });
-      validationClass = 'field-label async-error';
-    }
-    if (isEmailValid === 'valid') {
-      this.setState({
-        showAsyncError: false,
-      });
-      validationClass = 'field-label async-success';
-    }
-    return validationClass;
-  };
+  checkEmailValid() {
+    const { isEmailValid } = this.props;
+    return isEmailValid === 'valid';
+  }
 
   render() {
-    const { isOpen, showAsyncError, signup = '' } = this.state;
+    const { isOpen, signup = '' } = this.state;
     const {
       buttonConfig,
       className,
@@ -161,7 +178,7 @@ class SignupWrapper extends React.PureComponent {
                           className={validationClass}
                           showSuccessCheck={validationClass === 'async-success'}
                         />
-                        {showAsyncError && (
+                        {isEmailValid && !this.checkEmailValid() && signup.length > 0 && (
                           <BodyCopy fontSize="fs12" fontFamily="secondary" color="secondary.dark">
                             {formViewConfig.validationErrorLabel}
                           </BodyCopy>
