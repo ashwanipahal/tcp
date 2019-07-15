@@ -3,7 +3,13 @@
 exports[`Body component renders correctly with props 1`] = `
 <p
   className="body-copy"
-  data-locator=""
+  color="text.primary"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
 >
   Body Copy with props
 </p>
@@ -12,7 +18,13 @@ exports[`Body component renders correctly with props 1`] = `
 exports[`Body component renders correctly without props 1`] = `
 <p
   className={null}
-  data-locator=""
+  color="text.primary"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
 >
   Body Copy
 </p>
