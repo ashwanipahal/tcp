@@ -26,7 +26,7 @@ export const EmailSignupWrapperContainer = ({
 EmailSignupWrapperContainer.propTypes = {
   buttonConfig: PropTypes.shape({}),
   formViewConfig: PropTypes.shape({}),
-  isSubscriptionValid: PropTypes.bool,
+  isSubscriptionValid: PropTypes.string,
   clearFormStoreInfo: PropTypes.func,
   submitSmsSubscription: PropTypes.func.isRequired,
 };
@@ -34,7 +34,7 @@ EmailSignupWrapperContainer.propTypes = {
 EmailSignupWrapperContainer.defaultProps = {
   buttonConfig: {},
   formViewConfig: {},
-  isSubscriptionValid: false,
+  isSubscriptionValid: '',
   clearFormStoreInfo: () => {},
 };
 

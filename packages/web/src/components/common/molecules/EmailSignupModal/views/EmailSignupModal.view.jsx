@@ -97,6 +97,7 @@ class SignupWrapper extends React.PureComponent {
             overlayClassName="TCPModal__Overlay"
             onRequestClose={this.closeModal}
             noPadding
+            widthConfig={{ small: '375px', medium: '458px', large: '851px' }}
           >
             {isSubscriptionValid ? (
               <Grid>
@@ -158,7 +159,7 @@ class SignupWrapper extends React.PureComponent {
                           onChange={this.onSignUpInputChange}
                           onBlur={this.onSignUpInputBlur}
                           className={validationClass}
-                          showSuccessCheck={validationClass === 'async-success'}
+                          showSuccessCheck={isEmailValid === 'valid'}
                         />
                         {showAsyncError && (
                           <BodyCopy fontSize="fs12" fontFamily="secondary" color="secondary.dark">
