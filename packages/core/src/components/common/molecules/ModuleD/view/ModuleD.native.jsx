@@ -125,7 +125,9 @@ const ModuleD = (props: Props) => {
             buttonVariation="variable-width"
             style={buttonWidth}
             text={singleCTAButton.title}
-            url={singleCTAButton.url}
+            onPress={() => {
+              UrlHandler(singleCTAButton.url);
+            }}
           />
         </ButtonWrapper>
       )}

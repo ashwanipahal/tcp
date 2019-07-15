@@ -3,7 +3,6 @@ import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../Button.style.native';
-import { UrlHandler } from '../../../../../utils/utils.native';
 
 /**
  * @param {object} props : Props for button
@@ -34,12 +33,7 @@ const CustomButton = (props: Props) => {
   const { text, url, id, buttonVariation, fullWidth, customStyle, ...otherProps } = props;
   const myText = text || '';
   return (
-    <TouchableOpacity
-      accessibilityRole="button"
-      onPress={() => {
-        UrlHandler(url);
-      }}
-    >
+    <TouchableOpacity accessibilityRole="button">
       <Text fullWidth={fullWidth} buttonVariation={buttonVariation} id={id} {...otherProps}>
         {myText}
       </Text>
