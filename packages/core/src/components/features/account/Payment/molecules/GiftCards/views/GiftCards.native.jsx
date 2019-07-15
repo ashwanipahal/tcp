@@ -12,30 +12,41 @@ import {
   DescriptionEmptyCCStyle,
   ButtonWrapperStyle,
 } from '../GiftCards.style.native';
+import CardTile from '../../../../common/molecule/CardTile/views/CardTile.view.native';
 
 // @flow
 type Props = {
   labels: string,
+  giftCardList: object,
 };
 
 const GiftCards = (props: Props) => {
-  const { labels } = props;
+  const { labels, giftCardList } = props;
   return (
     <View {...props}>
       <HeadingTextStyle>{labels.ACC_LBL_GC_HEADING}</HeadingTextStyle>
-      <WrapperStyle>
-        <ImgWrapper>
-          <ImageStyle
-            // eslint-disable-next-line global-require
-            source={require('../../../../../../../../../mobileapp/src/assets/images/gift-card.png')}
-          />
-        </ImgWrapper>
-        <EmptyCCLabelStyle>{labels.ACC_LBL_GC_EMPTY_HEADING}</EmptyCCLabelStyle>
-      </WrapperStyle>
-      <DescriptionEmptyCCStyle>{labels.ACC_LBL_GC_EMPTY_DESC}</DescriptionEmptyCCStyle>
-      <ButtonWrapperStyle>
-        <CustomButton title={labels.ACC_LBL_GC_EMPTY_ADD_BTN} buttonVariation="variable-width" />
-      </ButtonWrapperStyle>
+      {giftCardList.size === 0 && (
+        <React.Fragment>
+          <WrapperStyle>
+            <ImgWrapper>
+              <ImageStyle
+                // eslint-disable-next-line global-require
+                source={require('../../../../../../../../../mobileapp/src/assets/images/gift-card.png')}
+              />
+            </ImgWrapper>
+            <EmptyCCLabelStyle>{labels.ACC_LBL_GC_EMPTY_HEADING}</EmptyCCLabelStyle>
+          </WrapperStyle>
+          <DescriptionEmptyCCStyle>{labels.ACC_LBL_GC_EMPTY_DESC}</DescriptionEmptyCCStyle>
+          <ButtonWrapperStyle>
+            <CustomButton
+              title={labels.ACC_LBL_GC_EMPTY_ADD_BTN}
+              buttonVariation="variable-width"
+            />
+          </ButtonWrapperStyle>
+        </React.Fragment>
+      )}
+      {giftCardList.size > 0 &&
+        giftCardList.map(cardItem => <CardTile card={cardItem} labels={labels} />)}
     </View>
   );
 };

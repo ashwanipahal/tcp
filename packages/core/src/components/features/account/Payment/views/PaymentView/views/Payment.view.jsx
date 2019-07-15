@@ -1,16 +1,15 @@
 import React from 'react';
-// import { List } from 'immutable';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import BodyCopy from '../../../../common/atoms/BodyCopy';
-import Row from '../../../../common/atoms/Row';
-import Col from '../../../../common/atoms/Col';
-import styles from '../styles/Payment.style';
-import Notification from '../../../../common/molecules/Notification';
-import CreditCardList from './CreditCardList.view';
-import GiftCardList from './GiftCardList.view';
-import VenmoCardList from './VenmoCardList.view';
-import Offers from '../../common/molecule/Offers/views/Offers.view';
-import DeleteCardModal from './DeleteCardModal';
+import withStyles from '../../../../../../common/hoc/withStyles';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import Row from '../../../../../../common/atoms/Row';
+import Col from '../../../../../../common/atoms/Col';
+import styles from '../../../styles/Payment.style';
+import Notification from '../../../../../../common/molecules/Notification';
+import CreditCardList from '../../CreditCardList.view';
+import GiftCardList from '../../GiftCardList.view';
+import VenmoCardList from '../../VenmoCardList.view';
+import Offers from '../../../../common/molecule/Offers/views/Offers.view';
+import DeleteCardModal from '../../DeleteCardModal';
 
 // @flow
 type Props = {
