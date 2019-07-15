@@ -101,7 +101,7 @@ exports[`CreditCardList Component should render correctly if list is present 1`]
       }
       key="container-73501"
     >
-      <Styled(CardTile)
+      <ReduxForm
         card={
           Object {
             "accountNo": "************1111",
@@ -127,11 +127,27 @@ exports[`CreditCardList Component should render correctly if list is present 1`]
             "properties": null,
           }
         }
+        destroyOnUnmount={false}
+        enableReinitialize={true}
+        forceUnregisterOnUnmount={false}
+        getFormState={[Function]}
+        keepDirtyOnReinitialize={false}
         labels={
           Object {
             "creditCardHeading": "heading",
           }
         }
+        persistentSubmitErrors={false}
+        pure={true}
+        shouldAsyncValidate={[Function]}
+        shouldError={[Function]}
+        shouldValidate={[Function]}
+        shouldWarn={[Function]}
+        submitAsSideEffect={false}
+        touchOnBlur={true}
+        touchOnChange={false}
+        updateUnregisteredFields={false}
+        validate={[Function]}
       />
     </Styled(Col)>
   </Styled(Row)>

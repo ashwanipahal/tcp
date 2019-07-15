@@ -1,5 +1,6 @@
 import React from 'react';
-import withStyles from '../../../../common/hoc/withStyles';
+// import { List } from 'immutable';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
@@ -12,25 +13,42 @@ import Offers from '../../common/molecule/Offers/views/Offers.view';
 
 // @flow
 type Props = {
+  // giftCard: List<{}>,
   labels: object,
   className: string,
   showNotification: boolean,
+  setDeleteModalMountState: Function,
+  deleteModalMountedState: false,
+  onDeleteCard: Function,
+  showUpdatedNotificationOnModal: any,
   creditCardList: Array<object>,
   giftCardList: Array<object>,
   cardList: Array<object>,
+  setSelectedGiftCard: any,
+  onGetBalanceCard: Function,
+  checkbalanceValueInfo: any,
   setDefaultPaymentMethod: Function,
   venmoCardList: Array<object>,
+  showNotificationCaptcha: boolean,
 };
 
 const PaymentView = ({
   labels,
   className,
   showNotification,
+  setDeleteModalMountState,
+  deleteModalMountedState,
+  onDeleteCard,
+  showUpdatedNotificationOnModal,
+  setSelectedGiftCard,
   creditCardList,
   giftCardList,
   cardList,
+  onGetBalanceCard,
+  checkbalanceValueInfo,
   setDefaultPaymentMethod,
   venmoCardList,
+  showNotificationCaptcha,
 }: Props) => {
   return (
     <div className={className}>
@@ -93,6 +111,12 @@ const PaymentView = ({
           labels={labels}
           creditCardList={creditCardList}
           className="payment__creditCard"
+          deleteModalMountedState={deleteModalMountedState}
+          setDeleteModalMountState={setDeleteModalMountState}
+          onDeleteCard={onDeleteCard}
+          showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
+          showNotification={showNotification}
+          setSelectedGiftCard={setSelectedGiftCard}
           setDefaultPaymentMethod={setDefaultPaymentMethod}
         />
       )}
@@ -104,7 +128,20 @@ const PaymentView = ({
         />
       )}
       {giftCardList && (
-        <GiftCardList labels={labels} giftCardList={giftCardList} className="payment__giftCard" />
+        <GiftCardList
+          labels={labels}
+          giftCardList={giftCardList}
+          className="payment__giftCard"
+          deleteModalMountedState={deleteModalMountedState}
+          setDeleteModalMountState={setDeleteModalMountState}
+          onDeleteCard={onDeleteCard}
+          showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
+          showNotification={showNotification}
+          setSelectedGiftCard={setSelectedGiftCard}
+          onGetBalanceCard={onGetBalanceCard}
+          checkbalanceValueInfo={checkbalanceValueInfo}
+          showNotificationCaptcha={showNotificationCaptcha}
+        />
       )}
     </div>
   );

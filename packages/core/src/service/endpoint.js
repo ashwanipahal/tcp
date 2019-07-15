@@ -19,6 +19,10 @@ const endpoints = {
     method: 'post',
     relURI: '/api/v2/account/addAddress',
   },
+  updateAddress: {
+    method: 'put',
+    relURI: '/api/v2/wallet/updateAddress',
+  },
   login: {
     method: 'post',
     relURI: '/api/v2/account/logon',
@@ -39,6 +43,10 @@ const endpoints = {
     method: 'delete',
     relURI: '/api/v2/account/deleteAddressDetails',
   },
+  deleteCreditCardOnAccount: {
+    method: 'post',
+    relURI: '/api/v2/account/deleteCreditCardDetails',
+  },
   verifyAddress: {
     method: 'get',
     relURI:
@@ -51,6 +59,10 @@ const endpoints = {
   setDefaultShippingAddress: {
     method: 'put',
     relURI: '/api/v2/wallet/updateAddress',
+  },
+  getGifCardBalance: {
+    method: 'post',
+    relURI: '/api/v2/wallet/getGiftCardBalance',
   },
   getOrderDetails: {
     method: 'get',

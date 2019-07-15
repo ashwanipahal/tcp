@@ -10,8 +10,10 @@ import {
   LAYOUT_REDUCER_KEY,
   LOGINPAGE_REDUCER_KEY,
   PRODUCTLISTINGPAGE_REDUCER_KEY,
+  MODULES_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
+import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
 
 const filteredProductListingPageReducer = createFilteredReducer(
   ProductListingPageReducer,
@@ -24,4 +26,5 @@ export default combineReducers({
   [LAYOUT_REDUCER_KEY]: LayoutReducer,
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
   [LOGINPAGE_REDUCER_KEY]: LoginPageReducer,
+  [MODULES_REDUCER_KEY]: ModulesReducer,
 });
