@@ -14,6 +14,7 @@
     "lerna-clean": "npx lerna clean --y",
     "test": "jest --config ./config/jest.config.js",
     "test:web": "yarn test ",
+    "test:app": "jest --config ./config/jest.config.native.js",
     "test:staged": "yarn test --bail --findRelatedTests",
     "test:watch": "yarn test --watch",
     "test:coverage": "yarn test",

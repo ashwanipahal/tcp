@@ -18,6 +18,7 @@ exports[`EmptyCard Component should render correctly 1`] = `
       <img
         alt="credit card icon"
         className="emptyCard__img"
+        data-locator="payment-GC-Icon"
         src="/static/images/credit-card.png"
       />
     </Styled(Col)>
@@ -42,7 +43,6 @@ exports[`EmptyCard Component should render correctly 1`] = `
         className="emptyCard__heading"
         color="text.primary"
         component="p"
-        dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="semibold"
@@ -57,7 +57,6 @@ exports[`EmptyCard Component should render correctly 1`] = `
         className="emptyCard__description--desktop"
         color="text.primary"
         component="p"
-        dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="regular"
@@ -90,7 +89,6 @@ exports[`EmptyCard Component should render correctly 1`] = `
         className="emptyCard__description--mobile"
         color="text.primary"
         component="p"
-        dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="regular"
@@ -124,6 +122,7 @@ exports[`EmptyCard Component should render correctly with credit card 1`] = `
       <img
         alt="credit card icon"
         className="emptyCard__img"
+        data-locator="payment-CC-Icon"
         src="/static/images/credit-card.png"
       />
     </Styled(Col)>
@@ -148,7 +147,6 @@ exports[`EmptyCard Component should render correctly with credit card 1`] = `
         className="emptyCard__heading"
         color="text.primary"
         component="p"
-        dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="semibold"
@@ -163,7 +161,6 @@ exports[`EmptyCard Component should render correctly with credit card 1`] = `
         className="emptyCard__description--desktop"
         color="text.primary"
         component="p"
-        dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="regular"
@@ -196,7 +193,6 @@ exports[`EmptyCard Component should render correctly with credit card 1`] = `
         className="emptyCard__description--mobile"
         color="text.primary"
         component="p"
-        dataLocator=""
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="regular"

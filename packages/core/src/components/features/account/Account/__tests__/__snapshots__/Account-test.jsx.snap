@@ -80,6 +80,13 @@ exports[`Account View should render Account Correctly 1`] = `
       },
     ]
   }
+  router={
+    Object {
+      "query": Object {
+        "id": "accountOverview",
+      },
+    }
+  }
 />
 `;
 
@@ -162,6 +169,13 @@ exports[`Account View should render AddressBook Correctly 1`] = `
         "url": "/account/rewardsCreditCard",
       },
     ]
+  }
+  router={
+    Object {
+      "query": Object {
+        "id": "addressBook",
+      },
+    }
   }
 />
 `;

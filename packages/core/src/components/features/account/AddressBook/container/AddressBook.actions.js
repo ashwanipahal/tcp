@@ -1,3 +1,4 @@
+// @flow
 import ADDRESS_BOOK_CONSTANTS from '../AddressBook.constants';
 
 export const getAddressList = () => ({
@@ -17,6 +18,12 @@ export const loadAddressBookComponent = () => ({
   type: ADDRESS_BOOK_CONSTANTS.LOAD_ADDRESSBOOK_COMPONENT,
 });
 
+export const setEditAddress = (payload: {}) => {
+  return {
+    type: ADDRESS_BOOK_CONSTANTS.SET_EDIT_ADDRESS_ITEM,
+    payload,
+  };
+};
 export const updateAddressListOnDelete = payload => ({
   type: ADDRESS_BOOK_CONSTANTS.UPDATE_ADDRESS_LIST_ON_DELETE,
   payload,
@@ -41,8 +48,8 @@ export const clearGetAddressListTTL = () => ({
   type: ADDRESS_BOOK_CONSTANTS.CLEAR_GET_ADDRESS_LIST_TTL,
 });
 
-export const setLoader = () => ({
-  type: ADDRESS_BOOK_CONSTANTS.SET_LOADER,
+export const showLoader = () => ({
+  type: ADDRESS_BOOK_CONSTANTS.SHOW_LOADER,
 });
 
 export const setAddressBookNotification = payload => ({

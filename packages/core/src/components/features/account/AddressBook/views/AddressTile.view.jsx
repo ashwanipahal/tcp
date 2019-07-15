@@ -1,4 +1,5 @@
 import React from 'react';
+import Router from 'next/router'; //eslint-disable-line
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Anchor from '../../../../common/atoms/Anchor';
 import Address from '../../../../common/molecules/Address';
@@ -50,6 +51,15 @@ class AddressBookTile extends React.Component<Props> {
     setDeleteModalMountState({ state: true });
   };
 
+  onEditAddressClick = e => {
+    e.preventDefault();
+    const { address } = this.props;
+    Router.push(
+      `/account?id=edit-address&addressId=${address.addressId}`,
+      `/account/address-book/edit-address/${address.addressId}`
+    );
+  };
+
   render() {
     const { address, labels, className } = this.props;
     return (
@@ -98,6 +108,7 @@ class AddressBookTile extends React.Component<Props> {
             to="/#"
             anchorVariation="primary"
             data-locator="addressbook-edit"
+            onClick={this.onEditAddressClick}
           >
             {labels.edit}
           </Anchor>
@@ -106,7 +117,7 @@ class AddressBookTile extends React.Component<Props> {
             underline
             to="/#"
             anchorVariation="primary"
-            data-locator="addressbook-delete"
+            data-locator="addressbook-deletelink"
             onClick={e => this.onDeleteAddressClick(e)}
           >
             {labels.delete}
