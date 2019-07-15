@@ -14,7 +14,6 @@ exports[`InputCheckbox component should render correctly 1`] = `
     className={null}
     color="text.primary"
     component="p"
-    dataLocator=""
     fontFamily="secondary"
     fontSize="fs12"
     fontWeight="regular"

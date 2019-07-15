@@ -12,6 +12,9 @@ const styles = css`
     font-weight: ${props => props.theme.typography.fontWeights.semibold};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
+  .giftcardList__col {
+    width: 100%;
+  }
 `;
 
 export default styles;

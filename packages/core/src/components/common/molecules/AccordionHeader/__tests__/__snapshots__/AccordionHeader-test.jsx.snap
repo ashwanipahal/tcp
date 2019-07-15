@@ -1,14 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AccordionHeader component renders correctly 1`] = `
-<h4
+<Styled(BodyCopy)
   className="abcd"
+  color="text.primary"
+  component="p"
   data-index={1}
   data-locator="accordion-1"
+  fontFamily="secondary"
+  fontSize="fs13"
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="lh115"
   onClick={[Function]}
   onKeyPress={[Function]}
   tabIndex="0"
+  textAlign="left"
 >
   Sample Title
-</h4>
+</Styled(BodyCopy)>
 `;
