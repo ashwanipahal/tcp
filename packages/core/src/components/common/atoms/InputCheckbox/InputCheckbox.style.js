@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  display: flex;
+  display: inline-flex;
   align-items: center;
   height: 50px;
 

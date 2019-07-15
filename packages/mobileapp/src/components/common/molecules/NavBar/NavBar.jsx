@@ -85,7 +85,7 @@ const NavBar = (props: Props) => {
 
 const mapStateToProps = state => {
   return {
-    labels: state.labels.MobileApp && state.labels.MobileApp.navigation,
+    labels: state.Labels.MobileApp && state.Labels.MobileApp.navigation,
   };
 };
 

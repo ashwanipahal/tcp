@@ -9,7 +9,8 @@ import { Header, HeaderWrapper, LinksWrapper } from '../ModuleH.style.native';
 
 // @flow
 type Props = {
-  composites: Object,
+  divCTALinks: Array<Object>,
+  headerText: Object,
 };
 
 type State = {
@@ -113,7 +114,7 @@ class ModuleH extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { composites: { divCTALinks, headerText: { link, textLines } = {} } = {} } = this.props;
+    const { divCTALinks, headerText: { link, textLines } = {} } = this.props;
 
     return (
       <View>

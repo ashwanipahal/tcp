@@ -8,7 +8,9 @@ import colors from '../../../../../../styles/themes/TCP/colors';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
 
 type Props = {
-  composites: Object,
+  headerText: Object,
+  smallCompImage: Object,
+  singleCTAButton: Object,
 };
 
 const imageSize = parseInt((getScreenWidth() - 32) / 2, 10);
@@ -75,7 +77,7 @@ const renderItem = item => {
 
 const ModuleD = (props: Props) => {
   let { headingText, url } = {};
-  const { composites: { headerText, smallCompImage, singleCTAButton } = {} } = props;
+  const { headerText, smallCompImage, singleCTAButton } = props;
   const buttonWidth = { width: 225 };
 
   if (headerText) {
