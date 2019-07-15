@@ -48,7 +48,7 @@ export const getIcon = icon => {
 };
 
 export const getIconCard = icon => {
-  switch(icon) {
+  switch (icon) {
     case 'disc-small':
       return icons.dicoveryCard;
     case 'mc-small':
@@ -66,7 +66,7 @@ export const getIconCard = icon => {
     default:
       return icons.visaSmall;
   }
-}
+};
 
 export default {
   getIcon,
