@@ -1,7 +1,7 @@
 import React from 'react';
+import { View } from 'react-native';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import { StyledHeading, UnderlineStyle } from '../PaymentSection.style.native';
-import { View, Text, Image } from 'react-native'; //eslint-disable-line
 import OffersSection from '../../../molecules/OffersSection';
 import MoneyCards from '../../../molecules/MoneyCards';
 import GiftCards from '../../../molecules/GiftCards';

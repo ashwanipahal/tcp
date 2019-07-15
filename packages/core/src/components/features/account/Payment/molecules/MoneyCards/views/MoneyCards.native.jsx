@@ -4,6 +4,7 @@ import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   HeadingTextStyle,
   WrapperStyle,
+  ImgWrapper,
   ImageStyle,
   EmptyCCLabelStyle,
   DescriptionEmptyCCStyle,
@@ -22,10 +23,13 @@ const MoneyCards = (props: Props) => {
     <View {...props}>
       <HeadingTextStyle>{labels.ACC_LBL_CC_HEADING}</HeadingTextStyle>
       <WrapperStyle>
-        <ImageStyle
-          // eslint-disable-next-line global-require
-          source={require('../../../../../../../../../mobileapp/src/assets/images/credit-card.png')}
-        />
+        <ImgWrapper>
+          <ImageStyle
+            // eslint-disable-next-line global-require
+            source={require('../../../../../../../../../mobileapp/src/assets/images/credit-card.png')}
+          />
+        </ImgWrapper>
+
         <EmptyCCLabelStyle>{labels.ACC_LBL_CC_EMPTY_HEADING}</EmptyCCLabelStyle>
       </WrapperStyle>
       <DescriptionEmptyCCStyle>{labels.ACC_LBL_CC_EMPTY_DESC}</DescriptionEmptyCCStyle>

@@ -12,6 +12,7 @@ type Props = {
 type State = {
   dropDownItem: String,
 };
+
 /**
  * @function MyAccountLayoutView The AccountLayout component will provide a list of left
  * navigationLinks and the component associated with it
