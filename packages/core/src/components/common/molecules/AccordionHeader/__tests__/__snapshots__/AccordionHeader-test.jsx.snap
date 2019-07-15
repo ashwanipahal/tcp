@@ -7,7 +7,6 @@ exports[`AccordionHeader component renders correctly 1`] = `
   component="p"
   data-index={1}
   data-locator="accordion-1"
-  dataLocator=""
   fontFamily="secondary"
   fontSize="fs13"
   fontWeight="regular"

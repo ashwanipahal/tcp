@@ -10,7 +10,6 @@ exports[`Legal Links component renders correctly 1`] = `
       color="text.secondary"
       component="span"
       data-locator="global_connectwithustext"
-      dataLocator=""
       fontFamily={
         Array [
           "secondary",

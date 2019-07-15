@@ -1,8 +1,6 @@
 // @flow
 import React from 'react';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import styles from '../AccordionHeader.style';
-import withStyles from '../../../hoc/withStyles';
+import BodyCopy from '../../../atoms/BodyCopy';
 
 type Props = {
   className: string,
@@ -25,9 +23,7 @@ const AccordionHeader = ({ className, titleText, updateAccordionState, index }: 
       component="p"
       fontFamily="secondary"
       fontSize="fs13"
-      fontWeight="regular"
       lineHeight="lh115"
-      letterSpacing="normal"
       color="text.primary"
     >
       {titleText}
@@ -35,6 +31,4 @@ const AccordionHeader = ({ className, titleText, updateAccordionState, index }: 
   );
 };
 
-export default withStyles(AccordionHeader, styles);
-
-export { AccordionHeader as AccordionHeaderVanilla };
+export default AccordionHeader;
