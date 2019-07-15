@@ -93,6 +93,27 @@ export const getLocator = locator => {
   return locators[locator];
 };
 
+export const getIconCard = icon => {
+  switch (icon) {
+    case 'disc-small':
+      return icons.dicoveryCard;
+    case 'mc-small':
+      return icons.masterCard;
+    case 'amex-small':
+      return icons.amexCard;
+    case 'visa-small':
+      return icons.visaSmall;
+    case 'gift-card-small':
+      return icons.giftCardSmall;
+    case 'place-card-small':
+      return icons.plccCard;
+    case 'venmo-blue-acceptance-mark':
+      return icons.venmoCard;
+    default:
+      return icons.visaSmall;
+  }
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,

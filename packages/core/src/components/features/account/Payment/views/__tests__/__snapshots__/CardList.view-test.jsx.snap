@@ -1,10 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CardView component should render correctly 1`] = `
-<div
-  className="abc"
->
+<div>
   <Styled(Row)
+    className="abc"
     fullBleed={true}
   />
 </div>
