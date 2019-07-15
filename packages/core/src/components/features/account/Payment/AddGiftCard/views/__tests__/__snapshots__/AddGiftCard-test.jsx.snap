@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add gift card component should render component correctly if add gift is failure 1`] = `
+<div>
+  <Styled(Anchor)
+    anchorVariation="secondary"
+    asPath="/account/payment"
+    dataLocator="gift-card-addcardbacklink"
+    fontSizeVariation="xlarge"
+    to="/account?id=payment"
+  >
+    Back
+  </Styled(Anchor)>
+  <Styled(HeadingStyle)
+    HeadingLarge="six"
+    className="add-gift-card__separator"
+    dataLocator="gift-card-addcardheader"
+    fontFamily="secondaryFontFamily"
+    tag="h4"
+  />
+  <Styled(Notification)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    status="failure"
+  />
+  <ReduxForm
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="AddGiftCardForm"
+    getFormState={[Function]}
+    keepDirtyOnReinitialize={false}
+    labels={Object {}}
+    onAddGiftCardClick={[MockFunction]}
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    validate={[Function]}
+  />
+</div>
+`;
+
+exports[`Add gift card component should render component correctly if add gift is successful 1`] = `
+<div>
+  <Styled(Anchor)
+    anchorVariation="secondary"
+    asPath="/account/payment"
+    dataLocator="gift-card-addcardbacklink"
+    fontSizeVariation="xlarge"
+    to="/account?id=payment"
+  >
+    Back
+  </Styled(Anchor)>
+  <Styled(HeadingStyle)
+    HeadingLarge="six"
+    className="add-gift-card__separator"
+    dataLocator="gift-card-addcardheader"
+    fontFamily="secondaryFontFamily"
+    tag="h4"
+  />
+  <Styled(Notification)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    status="success"
+  />
+  <ReduxForm
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="AddGiftCardForm"
+    getFormState={[Function]}
+    keepDirtyOnReinitialize={false}
+    labels={Object {}}
+    onAddGiftCardClick={[MockFunction]}
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    validate={[Function]}
+  />
+</div>
+`;

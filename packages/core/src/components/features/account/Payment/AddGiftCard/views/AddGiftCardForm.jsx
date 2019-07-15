@@ -7,20 +7,74 @@ import RichText from '../../../../../common/atoms/RichText';
 import Button from '../../../../../common/atoms/Button';
 import createValidateMethod from '../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../utils/formValidation/validatorStandardConfig';
+import Recaptcha from '../../../../../common/molecules/recaptcha/recaptcha';
+
+// @flow
+
+type State = {
+  isTokenDirty: boolean,
+};
+
+type Props = {
+  onAddGiftCardClick: Function,
+  labels: {
+    ACC_LBL_CANCEL_CARD: string,
+    ACC_LBL_GIFT_CARD_MESSAGE: string,
+    ACC_LBL_ADD_CARD: string,
+  },
+  handleSubmit: Function,
+  change: Function,
+};
 
 class AddGiftCardForm extends React.PureComponent<Props, State> {
-  handleSubmit = data => {
+  constructor(props: Props) {
+    super(props);
+    this.recaptcha = null;
+    this.state = {
+      isTokenDirty: false,
+    };
+  }
+
+  handleSubmit = (data: { giftCardNumber: string, cardPin: string, recaptchaToken: string }) => {
+    const { isTokenDirty } = this.state;
+    const { change } = this.props;
+    if (isTokenDirty) {
+      change('recaptchaToken', '');
+      this.setState({
+        isTokenDirty: false,
+      });
+      return;
+    }
+
     const { onAddGiftCardClick } = this.props;
-    const { giftCardNumber, cardPin } = data;
+    const { giftCardNumber, cardPin, recaptchaToken } = data;
     const requestPayload = {
       cc_brand: 'GC',
       payMethodId: 'GiftCard',
       account_pin: cardPin,
       pay_account: giftCardNumber,
-      recapchaResponse:
-        '03AOLTBLSLq4GhhbIqhhXs146f-rApMcK66mtP0fl7rbsRBBtCl6beJbNrpuxKLwBmEe3OhK06l2GX0WRjj98Nmb3rslVOmq6_hvYvo2MGiiDSnkxo74_ukltum6Qav0nHTNJyGu2hjrp2mfSh40b0MWWo1hv2eXTzB2fsuKVD460FqX-S4r6QmGKgnevsJEpDXfqOIbd06TWA1LjPpz7bOTpgscdXH2xATxz90kRXYlwWtUDpkpTNk60WtLYneRQcdK-fcqqK8EyTgWIZRXb3SRsIle12QmI90P0wDOiwgkGviOD7hXRj0_2ft4xzbtNDNda7OZRykZUQAODQPkDlQj8JnZpsK9RZvA',
+      recapchaResponse: recaptchaToken,
     };
+
     onAddGiftCardClick(requestPayload);
+  };
+
+  handleRecaptchaVerify = (token: string) => {
+    const { change } = this.props;
+    change('recaptchaToken', token);
+
+    this.setState({
+      isTokenDirty: false,
+    });
+  };
+
+  handleRecaptchaExpired = () => {
+    const { change } = this.props;
+    change('recaptchaToken', '');
+  };
+
+  attachReCaptchaRef = (ref: any) => {
+    this.recaptcha = ref;
   };
 
   render() {
@@ -48,6 +102,25 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
             />
           </Col>
         </Row>
+
+        <Row fullBleed>
+          <Col ignoreGutter={{ small: true }} colSize={{ small: 4, medium: 2, large: 2 }}>
+            <Recaptcha
+              ref={this.attachReCaptchaRef}
+              className="giftcards-recaptcha"
+              theme="light"
+              type="image"
+              size="normal"
+              tabindex="0"
+              verifyCallback={this.handleRecaptchaVerify}
+              expiredCallback={this.handleRecaptchaExpired}
+            />
+          </Col>
+          <Col ignoreGutter={{ small: true }} colSize={{ small: 4, medium: 2, large: 2 }}>
+            <Field component={TextBox} title="" type="hidden" name="recaptchaToken" />
+          </Col>
+        </Row>
+
         <Row fullBleed className="add-gift-card__row">
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 8, large: 5 }}>
             <div className="add-gift-card__row__message__container">

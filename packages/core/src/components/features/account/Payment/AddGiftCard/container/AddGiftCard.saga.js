@@ -25,7 +25,11 @@ export function* addGiftCard({ payload }: { payload: {} }): Saga<void> {
     );
     yield put(addGiftCardSuccess(response));
   } catch (err) {
-    yield put(addGiftCardFailure(err));
+    let error = {};
+    if (err instanceof Error) {
+      error = err.response.body;
+    }
+    yield put(addGiftCardFailure(error));
   }
 }
 
