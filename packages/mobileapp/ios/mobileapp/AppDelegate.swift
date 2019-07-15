@@ -19,12 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // Get current app environment from info.plist and send it as initial property to react-native code
     var props: [String: Any]? = nil
-    if let appName = Bundle.main.infoDictionary?["CFBundleDisplayName"] {
+    if let appName = Bundle.main.infoDictionary?["AppType"] {
       props = ["appType": appName]
     }
-    
-    print("appName")
-    
+        
     // Override point for customization after application launch.
     guard let jsCodeLocation = RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index", fallbackResource:nil) else {
       return false

@@ -93,6 +93,14 @@ def enableSeparateBuildPerCPUArchitecture = false
  */
 def enableProguardInReleaseBuilds = false
 
+def getTCPAppType() {
+    return "tcp";
+}
+
+def getGymboreeAppType() {
+    return "gymboree";
+}
+
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
 
@@ -134,12 +142,14 @@ android {
             applicationIdSuffix ".tcp"
             versionNameSuffix "-tcp"
             versionName = 'MyPlace'
+            buildConfigField "String", "APP_TYPE", "\""+getTCPAppType()+"\""
         }
         gymboree {
             dimension "version"
             applicationIdSuffix ".gymboree"
             versionNameSuffix "-gymboree"
             versionName = 'Gymboree'
+            buildConfigField "String", "APP_TYPE", "\""+getGymboreeAppType()+"\""
         }
     }
 
