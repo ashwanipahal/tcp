@@ -109,7 +109,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
         data-locator="payment-cardImage"
         source={
           Object {
-            "testUri": "../../../src/assets/images/amex-small.png",
+            "testUri": "../../../../core/src/assets/amex-small.png",
           }
         }
       />
@@ -133,7 +133,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
-        dataLocator="payment-creditdebiteditlink"
+        data-locator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         to="/#"
         underline={true}
@@ -141,7 +141,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
-      dataLocator="payment-creditdebitdeletelink"
+      data-locator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       to="/#"
       underline={true}
@@ -195,7 +195,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
     </Styled(Text)>
     <Styled(Anchor)
       anchorVariation="primary"
-      dataLocator="payment-makedefault"
+      data-locator="payment-makedefault"
       fontSizeVariation="small"
       onPress={[Function]}
       to="/#"
@@ -254,7 +254,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
         data-locator="payment-cardImage"
         source={
           Object {
-            "testUri": "../../../src/assets/images/disc-small.png",
+            "testUri": "../../../../core/src/assets/disc-small.png",
           }
         }
       />
@@ -278,7 +278,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
-        dataLocator="payment-creditdebiteditlink"
+        data-locator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         to="/#"
         underline={true}
@@ -286,7 +286,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
-      dataLocator="payment-creditdebitdeletelink"
+      data-locator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       to="/#"
       underline={true}
@@ -391,7 +391,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
         data-locator="payment-cardImage"
         source={
           Object {
-            "testUri": "../../../src/assets/images/gift-card-small.png",
+            "testUri": "../../../../core/src/assets/gift-card-small.png",
           }
         }
       />
@@ -401,7 +401,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
-        dataLocator="payment-giftcardeditlink"
+        data-locator="payment-giftcardeditlink"
         fontSizeVariation="large"
         to="/#"
         underline={true}
@@ -409,7 +409,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
-      dataLocator="payment-giftcarddeletelink"
+      data-locator="payment-giftcarddeletelink"
       fontSizeVariation="large"
       to="/#"
       underline={true}
@@ -463,7 +463,7 @@ exports[`CardTile should render correctly with master card 1`] = `
     </Styled(Text)>
     <Styled(Anchor)
       anchorVariation="primary"
-      dataLocator="payment-makedefault"
+      data-locator="payment-makedefault"
       fontSizeVariation="small"
       onPress={[Function]}
       to="/#"
@@ -522,7 +522,7 @@ exports[`CardTile should render correctly with master card 1`] = `
         data-locator="payment-cardImage"
         source={
           Object {
-            "testUri": "../../../src/assets/images/mc-small.png",
+            "testUri": "../../../../core/src/assets/mc-small.png",
           }
         }
       />
@@ -546,7 +546,7 @@ exports[`CardTile should render correctly with master card 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
-        dataLocator="payment-creditdebiteditlink"
+        data-locator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         to="/#"
         underline={true}
@@ -554,7 +554,7 @@ exports[`CardTile should render correctly with master card 1`] = `
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
-      dataLocator="payment-creditdebitdeletelink"
+      data-locator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       to="/#"
       underline={true}
@@ -659,7 +659,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         data-locator="payment-cardImage"
         source={
           Object {
-            "testUri": "../../../src/assets/images/gift-card-small.png",
+            "testUri": "../../../../core/src/assets/gift-card-small.png",
           }
         }
       />
@@ -669,7 +669,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
-        dataLocator="payment-giftcardeditlink"
+        data-locator="payment-giftcardeditlink"
         fontSizeVariation="large"
         to="/#"
         underline={true}
@@ -677,7 +677,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
-      dataLocator="payment-giftcarddeletelink"
+      data-locator="payment-giftcarddeletelink"
       fontSizeVariation="large"
       to="/#"
       underline={true}
@@ -731,7 +731,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
     </Styled(Text)>
     <Styled(Anchor)
       anchorVariation="primary"
-      dataLocator="payment-makedefault"
+      data-locator="payment-makedefault"
       fontSizeVariation="small"
       onPress={[Function]}
       to="/#"
@@ -781,7 +781,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         data-locator="payment-cardImage"
         source={
           Object {
-            "testUri": "../../../src/assets/images/place-card-small.png",
+            "testUri": "../../../../core/src/assets/place-card-small.png",
           }
         }
       />
@@ -805,7 +805,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
-        dataLocator="payment-creditdebiteditlink"
+        data-locator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         to="/#"
         underline={true}
@@ -813,7 +813,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
-      dataLocator="payment-creditdebitdeletelink"
+      data-locator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       to="/#"
       underline={true}
@@ -914,7 +914,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
         data-locator="payment-cardImage"
         source={
           Object {
-            "testUri": "../../../src/assets/images/venmo-blue-acceptance-mark.svg",
+            "testUri": "../../../../core/src/assets/venmo-blue-acceptance-mark.svg",
           }
         }
       />
@@ -924,7 +924,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
     <Styled(View) />
     <Styled(Anchor)
       anchorVariation="primary"
-      dataLocator="payment-venmodeletelink"
+      data-locator="payment-venmodeletelink"
       fontSizeVariation="large"
       to="/#"
       underline={true}
@@ -978,7 +978,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
     </Styled(Text)>
     <Styled(Anchor)
       anchorVariation="primary"
-      dataLocator="payment-makedefault"
+      data-locator="payment-makedefault"
       fontSizeVariation="small"
       onPress={[Function]}
       to="/#"
@@ -1037,7 +1037,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
         data-locator="payment-cardImage"
         source={
           Object {
-            "testUri": "../../../src/assets/images/visa-small.png",
+            "testUri": "../../../../core/src/assets/visa-small.png",
           }
         }
       />
@@ -1061,7 +1061,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
-        dataLocator="payment-creditdebiteditlink"
+        data-locator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         to="/#"
         underline={true}
@@ -1069,7 +1069,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
-      dataLocator="payment-creditdebitdeletelink"
+      data-locator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       to="/#"
       underline={true}

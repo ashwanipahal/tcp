@@ -22,7 +22,6 @@ const ImageStyle = styled.Image`
 const RichTextStyle = styled.View`
   width: 270px;
   height: 55px;
-  top: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 const UnderlineStyle = styled.View`

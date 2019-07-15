@@ -26,7 +26,6 @@ import PaymentView from '../views/PaymentView';
 type Props = {
   getCardListAction: Function,
   showNotification: any,
-  isFetching: boolean,
   deleteModalMountedState: boolean,
   setDeleteModalMountState: Function,
   onDeleteCard: Function,
@@ -49,7 +48,6 @@ export class PaymentContainer extends React.Component<Props> {
 
   render() {
     const {
-      isFetching,
       showNotification,
       setDeleteModalMountState,
       deleteModalMountedState,
@@ -64,7 +62,6 @@ export class PaymentContainer extends React.Component<Props> {
       setDefaultPaymentMethod,
       showNotificationCaptcha,
     } = this.props;
-    if (isFetching) return <p>Loading...</p>;
     return (
       <PaymentView
         deleteModalMountedState={deleteModalMountedState}

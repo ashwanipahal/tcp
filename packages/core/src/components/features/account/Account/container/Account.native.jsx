@@ -1,5 +1,4 @@
 import React from 'react';
-import { ScrollView } from 'react-native';
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentNativeMapping from '../AccountComponentMapping';
 import navDataMobile from '../MyAccountRoute.config';
@@ -50,13 +49,11 @@ export default class Account extends React.PureComponent<Props, State> {
   render() {
     const { component } = this.state;
     return (
-      <ScrollView>
-        <MyAccountLayout
-          navData={navDataMobile}
-          mainContent={AccountComponentNativeMapping[component]}
-          handleComponentChange={this.handleComponentChange}
-        />
-      </ScrollView>
+      <MyAccountLayout
+        navData={navDataMobile}
+        mainContent={AccountComponentNativeMapping[component]}
+        handleComponentChange={this.handleComponentChange}
+      />
     );
   }
 }

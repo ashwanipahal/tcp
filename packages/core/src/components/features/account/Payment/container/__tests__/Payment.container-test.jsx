@@ -8,10 +8,6 @@ describe('Payment & Gift Cards', () => {
     const tree = shallow(<PaymentContainer getCardListAction={jest.fn()} />);
     expect(tree.is(PaymentView)).toBeTruthy();
   });
-  it('should render loading section', () => {
-    const tree = shallow(<PaymentContainer isFetching getCardListAction={jest.fn()} />);
-    expect(tree.find('p').text()).toBe('Loading...');
-  });
   describe('#mapDispatchToProps', () => {
     it('should return an action getCardListAction which will call dispatch function on execution', () => {
       const dispatch = jest.fn();
