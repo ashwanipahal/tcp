@@ -1,8 +1,6 @@
 import React from 'react';
 import { mount } from 'enzyme';
 
-import { ThemeProvider } from 'styled-components';
-
 import DamImage from '../views/DamImage';
 
 const themeMock = {
@@ -21,12 +19,11 @@ describe('DamImage component', () => {
     ];
 
     const component = mount(
-      <ThemeProvider theme={themeMock}>
-        <DamImage
-          alt="Dancing Baby"
-          imgPath="v1561401513/ecom/assets/content/tcp/us/home/transform/dancing-girl.png"
-        />
-      </ThemeProvider>
+      <DamImage
+        theme={themeMock}
+        alt="Dancing Baby"
+        imgPath="v1561401513/ecom/assets/content/tcp/us/home/transform/dancing-girl.png"
+      />
     );
 
     expect(component.find('source').get(0).props.srcSet).toEqual(srcSets[0]);
@@ -42,17 +39,16 @@ describe('DamImage component', () => {
     ];
 
     const component = mount(
-      <ThemeProvider theme={themeMock}>
-        <DamImage
-          alt="Dancing Boy"
-          imgPath="dancing-boy.png"
-          imgConfig={[
-            'g_face:center,q_auto:best,w_470',
-            'c_fill,g_face:center,q_auto:best,w_780',
-            'c_crop,g_face:auto,q_auto:best,w_1100',
-          ]}
-        />
-      </ThemeProvider>
+      <DamImage
+        theme={themeMock}
+        alt="Dancing Boy"
+        imgPath="dancing-boy.png"
+        imgConfig={[
+          'g_face:center,q_auto:best,w_470',
+          'c_fill,g_face:center,q_auto:best,w_780',
+          'c_crop,g_face:auto,q_auto:best,w_1100',
+        ]}
+      />
     );
 
     expect(component.find('source').get(0).props.srcSet).toEqual(srcSets[0]);
@@ -67,18 +63,17 @@ describe('DamImage component', () => {
       'https://www.tcp.com/c_crop,g_face:center,q_auto:best,w_470/dancing-boy.png',
     ];
     const component = mount(
-      <ThemeProvider theme={themeMock}>
-        <DamImage
-          alt="Dancing Boy"
-          path="https://www.tcp.com"
-          imgPath="dancing-boy.png"
-          imgConfig={[
-            'c_crop,g_face:center,q_auto:best,w_470',
-            'c_fill,g_face:center,q_auto:best,w_780',
-            'c_crop,g_face:center,q_auto:best,w_1100',
-          ]}
-        />
-      </ThemeProvider>
+      <DamImage
+        theme={themeMock}
+        alt="Dancing Boy"
+        path="https://www.tcp.com"
+        imgPath="dancing-boy.png"
+        imgConfig={[
+          'c_crop,g_face:center,q_auto:best,w_470',
+          'c_fill,g_face:center,q_auto:best,w_780',
+          'c_crop,g_face:center,q_auto:best,w_1100',
+        ]}
+      />
     );
 
     expect(component.find('source').get(0).props.srcSet).toEqual(srcSets[0]);
@@ -93,18 +88,17 @@ describe('DamImage component', () => {
       'https://www.tcp.com/c_crop,g_face:center,q_auto:best,w_470/dancing-boy.png',
     ];
     const component = mount(
-      <ThemeProvider theme={themeMock}>
-        <DamImage
-          alt="Dancing Boy"
-          path="https://www.tcp.com"
-          imgPath="dancing-boy.png"
-          imgConfig={[
-            'c_crop,g_face:center,q_auto:best,w_470',
-            'test_image_presets',
-            'c_crop,g_face:center,q_auto:best,w_1100',
-          ]}
-        />
-      </ThemeProvider>
+      <DamImage
+        theme={themeMock}
+        alt="Dancing Boy"
+        path="https://www.tcp.com"
+        imgPath="dancing-boy.png"
+        imgConfig={[
+          'c_crop,g_face:center,q_auto:best,w_470',
+          'test_image_presets',
+          'c_crop,g_face:center,q_auto:best,w_1100',
+        ]}
+      />
     );
 
     expect(component.find('source').get(0).props.srcSet).toEqual(srcSets[0]);
