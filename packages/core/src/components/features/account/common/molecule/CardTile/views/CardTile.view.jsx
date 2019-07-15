@@ -11,7 +11,6 @@ import { getIconPath } from '../../../../../../../utils';
 import PAYMENT_CONSTANTS from '../../../../Payment/Payment.constants';
 import Recaptcha from '../../../../../../common/molecules/recaptcha/recaptcha';
 import TextBox from '../../../../../../common/atoms/TextBox';
-import Button from '../../../../../../common/atoms/Button';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import { getDataLocatorPrefix, getCardName, cardIconMapping } from './CardTile.utils';
@@ -49,7 +48,7 @@ class CardTile extends React.Component<Props> {
         underline
         to="/#"
         anchorVariation="primary"
-        dataLocator="payment-makedefault"
+        data-locator="payment-makedefault"
         onClick={this.handleDefaultLinkClick}
       >
         {labels.ACC_LBL_MAKE_DEFAULT}
@@ -258,7 +257,7 @@ class CardTile extends React.Component<Props> {
             underline
             to="/#"
             anchorVariation="primary"
-            dataLocator={`payment-${dataLocatorPrefix}editlink`}
+            data-locator={`payment-${dataLocatorPrefix}editlink`}
             className="cardTile__anchor"
           >
             {labels.ACC_LBL_EDIT}
@@ -270,53 +269,12 @@ class CardTile extends React.Component<Props> {
           underline
           to="/#"
           anchorVariation="primary"
-          dataLocator={`payment-${dataLocatorPrefix}deletelink`}
+          data-locator={`payment-${dataLocatorPrefix}deletelink`}
           onClick={e => this.onDeletegiftardClick(e)}
         >
           {labels.ACC_LBL_DELETE}
         </Anchor>
       </div>
-    );
-  };
-
-  renderRecaptcha = ({ className, HideCaptchaBtn }) => {
-    const { card, checkbalanceValueInfo, labels } = this.props;
-    const isCreditCard = card.ccType !== 'GiftCard' && card.ccType !== 'VENMO';
-    const isVenmo = card.ccType === 'VENMO';
-    return (
-      <form name={className} onSubmit={this.handleSubmit} autoComplete="off" noValidate>
-        <div className="giftcardTile__row">
-          {!HideCaptchaBtn && !isVenmo && (
-            <Recaptcha
-              ref={this.attachReCaptchaRef}
-              onloadCallback={this.handleRecaptchaOnload}
-              verifyCallback={this.handleRecaptchaVerify}
-              expiredCallback={this.handleRecaptchaExpired}
-            />
-          )}
-          <Field
-            component={TextBox}
-            title=""
-            type="hidden"
-            placeholder="recaptcha value"
-            name="recaptchaToken"
-            id="recaptchaToken"
-          />
-          {this.remainBalance()}
-          {!HideCaptchaBtn && !isVenmo && !isCreditCard && (
-            <Button
-              onClick={this.handleCheckBalanceClick}
-              buttonVariation="variable-width"
-              type="submit"
-              data-locator="cardtile-checkbalance"
-              fill="BLUE"
-              disabled={HideCaptchaBtn && !checkbalanceValueInfo.giftCardNbr}
-            >
-              {labels.ACC_LBL_CHECK_BALANCE}
-            </Button>
-          )}
-        </div>
-      </form>
     );
   };
 
@@ -354,11 +312,10 @@ class CardTile extends React.Component<Props> {
           </div>
           <div className="cardTile__defaultSection">
             {isCreditCard ? this.getMakeDefaultBadge() : null}
-            <img className="cardTile__img" alt="" src={cardIcon} />
+            <div className="cardTile__img_wrapper">
+              <img className="cardTile__img" alt="" src={cardIcon} />
+            </div>
           </div>
-        </div>
-        <div className="giftcardTile__wrapper">
-          {this.renderRecaptcha({ className, HideCaptchaBtn, isVenmo })}
         </div>
         {card.ccType === 'GiftCard' && (
           <div className="giftcardTile__wrapper">
