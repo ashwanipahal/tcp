@@ -10,6 +10,18 @@ export const importGraphQLQueriesDynamically = query => {
   return import(`../services/handler/graphQL/queries/${query}`);
 };
 
+export const isMobileApp = () => {
+  return typeof navigator !== 'undefined' && navigator.product === 'ReactNative';
+};
+
+export const isServer = () => {
+  return typeof window === 'undefined' && !isMobileApp();
+};
+
+export function isClient() {
+  return typeof window !== 'undefined' && !isMobileApp();
+}
+
 export const isProduction = () => {
   return process.env.NODE_ENV === ENV_PRODUCTION;
 };
