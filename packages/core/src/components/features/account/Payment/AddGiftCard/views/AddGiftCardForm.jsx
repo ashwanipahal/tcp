@@ -11,14 +11,14 @@ import getStandardConfig from '../../../../../../utils/formValidation/validatorS
 class AddGiftCardForm extends React.PureComponent<Props, State> {
   handleSubmit = data => {
     const { onAddGiftCardClick } = this.props;
-    const { giftCardNumber, pin } = data;
+    const { giftCardNumber, cardPin } = data;
     const requestPayload = {
       cc_brand: 'GC',
       payMethodId: 'GiftCard',
-      account_pin: pin,
+      account_pin: cardPin,
       pay_account: giftCardNumber,
       recapchaResponse:
-        '03AOLTBLQRIFMtJinipk42VHLv1v254N96ahPXPCaD4haQViLagJ9xdGGeAi1LLDla1vf9Du6SHGxiZJb78bj05BXmxQ_TapgFOY-DWYpjZsTVmpWgT4HlJQcZoS3wm20wTygBdougXY1SysFKgaAPJRbnz0xN2t36VNMdtPh8MXEACAkE9upD0TRe7SyR2BU1n3xLFF_hoIgi-sBrMknfVNZ5pR815lPlmt_wax8QV7hVqnecnoMk3Lc57_TpjjgHXhBQvFRu2pQ7o_bc4ecX3dNyi-cvoYRHCEtg9v5sh7IDwhs6npiLydTY78hLPFprvTBEXkQVgMmSEXVU7Eux02YDyS4VfWgg-Q',
+        '03AOLTBLSLq4GhhbIqhhXs146f-rApMcK66mtP0fl7rbsRBBtCl6beJbNrpuxKLwBmEe3OhK06l2GX0WRjj98Nmb3rslVOmq6_hvYvo2MGiiDSnkxo74_ukltum6Qav0nHTNJyGu2hjrp2mfSh40b0MWWo1hv2eXTzB2fsuKVD460FqX-S4r6QmGKgnevsJEpDXfqOIbd06TWA1LjPpz7bOTpgscdXH2xATxz90kRXYlwWtUDpkpTNk60WtLYneRQcdK-fcqqK8EyTgWIZRXb3SRsIle12QmI90P0wDOiwgkGviOD7hXRj0_2ft4xzbtNDNda7OZRykZUQAODQPkDlQj8JnZpsK9RZvA',
     };
     onAddGiftCardClick(requestPayload);
   };
@@ -96,3 +96,5 @@ export default reduxForm({
   ...validateMethod,
   enableReinitialize: true,
 })(AddGiftCardForm);
+
+export { AddGiftCardForm as AddGiftCardFormVanilla };

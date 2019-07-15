@@ -22,8 +22,9 @@ class AddGiftCard extends React.PureComponent<Props> {
         <Anchor
           fontSizeVariation="xlarge"
           anchorVariation="secondary"
-          to="/account/payment"
+          to="/account?id=payment"
           dataLocator="gift-card-addcardbacklink"
+          asPath="/account/payment"
         >
           Back
         </Anchor>

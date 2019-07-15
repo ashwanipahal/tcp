@@ -1,0 +1,335 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add gift card form component should render component correctly 1`] = `
+<form>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bwzfXH",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .TextBox__label {
+    font-size: ",
+                [Function],
+                "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                [Function],
+                ";
+    ",
+                [Function],
+                "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                [Function],
+                "px;
+    color: ",
+                [Function],
+                ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+    padding-bottom: ",
+                [Function],
+                ";
+    margin-bottom: ",
+                [Function],
+                ";
+    padding-top: ",
+                [Function],
+                ";
+
+    ",
+                [Function],
+                "
+
+    ",
+                [Function],
+                ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                [Function],
+                "px;
+      font-weight: ",
+                [Function],
+                ";
+      top: 0;
+    }
+  }
+
+  ",
+                [Function],
+                ";
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(TextBox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bwzfXH",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="gift-card-cardnumberfield"
+        maxLength={50}
+        name="giftCardNumber"
+        placeholder="Gift Card"
+        type="tel"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bwzfXH",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .TextBox__label {
+    font-size: ",
+                [Function],
+                "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                [Function],
+                ";
+    ",
+                [Function],
+                "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                [Function],
+                "px;
+    color: ",
+                [Function],
+                ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+    padding-bottom: ",
+                [Function],
+                ";
+    margin-bottom: ",
+                [Function],
+                ";
+    padding-top: ",
+                [Function],
+                ";
+
+    ",
+                [Function],
+                "
+
+    ",
+                [Function],
+                ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                [Function],
+                "px;
+      font-weight: ",
+                [Function],
+                ";
+      top: 0;
+    }
+  }
+
+  ",
+                [Function],
+                ";
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(TextBox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bwzfXH",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="gift-card-pinnumberfield"
+        name="cardPin"
+        placeholder="Pin"
+        type="tel"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="add-gift-card__row"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+    >
+      <div
+        className="add-gift-card__row__message__container"
+      >
+        <Styled(RichText) />
+      </div>
+    </Styled(Col)>
+    <Styled(Col)
+      className="add-gift-card__first-button-container"
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 3,
+          "small": 4,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 1,
+          "medium": 1,
+          "small": 1,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 0,
+          "medium": 0,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        data-locator="gift-card-cancelbtn"
+        type="button"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="add-gift-card__second-button-container"
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 3,
+          "small": 4,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 0,
+          "medium": 0,
+          "small": 1,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 0,
+          "medium": 0,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        data-locator="gift-card-addcardbtn"
+        fill="BLUE"
+        type="submit"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</form>
+`;
