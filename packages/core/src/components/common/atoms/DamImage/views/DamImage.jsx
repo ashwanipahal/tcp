@@ -54,12 +54,8 @@ const DamImage = props => {
     <picture>
       {breakpoints.keys.reverse().map((bpKey, i) => {
         const breakpointValue = breakpoints.values[bpKey];
-        return (
-          <source
-            media={`(min-width: ${breakpointValue}px)`}
-            srcSet={srcSetConfig.srcSet[breakpoints.keys.length - i - 1]}
-          />
-        );
+        const url = srcSetConfig.srcSet[breakpoints.keys.length - i - 1];
+        return <source media={`(min-width: ${breakpointValue}px)`} srcSet={url} key={url} />;
       })}
       <img src={srcSetConfig.srcSet[1]} alt={alt} {...other} />
     </picture>
