@@ -127,7 +127,7 @@ android {
     // Specifies one flavor dimension.
     flavorDimensions "version"
     productFlavors {
-        release_tcp {
+        tcp {
             // Assigns this product flavor to the "version" flavor dimension.
             // This property is optional if you are using only one dimension.
             dimension "version"
@@ -135,7 +135,7 @@ android {
             versionNameSuffix "-tcp"
             versionName = 'MyPlace'
         }
-        release_gymboree {
+        gymboree {
             dimension "version"
             applicationIdSuffix ".gymboree"
             versionNameSuffix "-gymboree"

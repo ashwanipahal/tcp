@@ -35,3 +35,5 @@ build/
 .gradle
 local.properties
 *.iml
+release_tcp
+release_gymboree

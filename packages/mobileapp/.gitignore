@@ -4,6 +4,4 @@ dist/
 build/
 /flow-typed/
 .expo
-release_tcp
-release_gymboree
 
