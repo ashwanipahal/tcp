@@ -14,32 +14,30 @@ type Props = {
   setSelectedCard: string,
 };
 
-export class CardView extends React.PureComponent<Props> {
-  render() {
-    const {
-      labels,
-      setDeleteModalMountState,
-      cardList,
-      onGetBalanceCard,
-      checkbalanceValueInfo,
-      showNotification,
-      showNotificationCaptcha,
-      setSelectedCard,
-    } = this.props;
-    return (
-      <React.Fragment>
-        <CardList
-          setDeleteModalMountState={setDeleteModalMountState}
-          setSelectedGiftCard={setSelectedCard}
-          cardList={cardList}
-          onGetBalanceCard={onGetBalanceCard}
-          checkbalanceValueInfo={checkbalanceValueInfo}
-          labels={labels}
-          showNotification={showNotification}
-          showNotificationCaptcha={showNotificationCaptcha}
-        />
-      </React.Fragment>
-    );
-  }
-}
+export const CardView = ({
+  labels,
+  setDeleteModalMountState,
+  cardList,
+  onGetBalanceCard,
+  checkbalanceValueInfo,
+  showNotification,
+  showNotificationCaptcha,
+  setSelectedCard,
+}: Props) => {
+  return (
+    <React.Fragment>
+      <CardList
+        setDeleteModalMountState={setDeleteModalMountState}
+        setSelectedGiftCard={setSelectedCard}
+        cardList={cardList}
+        onGetBalanceCard={onGetBalanceCard}
+        checkbalanceValueInfo={checkbalanceValueInfo}
+        labels={labels}
+        showNotification={showNotification}
+        showNotificationCaptcha={showNotificationCaptcha}
+      />
+    </React.Fragment>
+  );
+};
+
 export default CardView;
