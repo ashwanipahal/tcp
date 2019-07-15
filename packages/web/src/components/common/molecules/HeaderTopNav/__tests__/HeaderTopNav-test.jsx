@@ -4,7 +4,7 @@ import { HeaderTopNavVanilla } from '../view/HeaderTopNav';
 import mockData from '../mock';
 
 describe('Footer component', () => {
-  it('HeaderTopNav component renders correctly to match snapshot', () => {
+  it('HeaderTopNav component renders correctly to match snapshots', () => {
     const props = {
       className: 'header-top-nav',
       brandTabs: mockData.dataTopNav.composites.brand_tabs,
