@@ -348,7 +348,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                 <Styled(Button)
                   buttonVariation="fixed-width"
                   className="join-button"
-                  disabled={false}
+                  disabled={true}
                   fill="BLUE"
                   fullWidth={true}
                   type="submit"

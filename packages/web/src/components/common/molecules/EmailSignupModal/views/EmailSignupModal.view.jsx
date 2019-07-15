@@ -31,6 +31,7 @@ class SignupWrapper extends React.PureComponent {
   };
 
   onFormSubmit = e => {
+    console.info('called');
     try {
       e.preventDefault();
       const { signup } = this.state;
@@ -43,9 +44,9 @@ class SignupWrapper extends React.PureComponent {
 
   onSignUpInputChange = e => {
     const { clearEmailSignupForm } = this.props;
-    const fieldValue = e.target.value;
+    const { name, value } = e.target;
     this.setState({
-      [e.target.name]: fieldValue,
+      [name]: value,
     });
     clearEmailSignupForm();
   };
@@ -76,7 +77,7 @@ class SignupWrapper extends React.PureComponent {
   };
 
   render() {
-    const { isOpen, showAsyncError } = this.state;
+    const { isOpen, showAsyncError, signup = '' } = this.state;
     const {
       buttonConfig,
       className,
@@ -172,7 +173,7 @@ class SignupWrapper extends React.PureComponent {
                       <Row className="button-wrapper-form" fullBleed>
                         <Col colSize={{ small: 4, medium: 4, large: 6 }}>
                           <Button
-                            disabled={isEmailValid !== 'valid'}
+                            disabled={signup.length === 0}
                             fullWidth
                             buttonVariation="fixed-width"
                             fill="BLUE"
@@ -222,7 +223,7 @@ SignupWrapper.defaultProps = {
 
 export default withStyles(
   reduxForm({
-    form: 'SignupWrapper', // a unique identifier for this form
+    form: 'EmailSignupFormWrapper', // a unique identifier for this form
     initialValues: {
       signup: '',
     },
