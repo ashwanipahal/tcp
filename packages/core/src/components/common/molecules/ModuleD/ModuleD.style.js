@@ -22,14 +22,7 @@ export default css`
   }
 
   .moduleD_header {
-    font-family: ${props => props.theme.fonts.primaryFontBlackFamily};
-    font-weight: ${props => props.theme.fonts.fontWeight.black};
     text-transform: uppercase;
-    text-align: center;
-
-    @media ${props => props.theme.mediaQuery.smallMax} {
-      font-size: ${props => props.theme.fonts.fontSize.heading.large.h3}px;
-    }
   }
   .moduleD_tile {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};

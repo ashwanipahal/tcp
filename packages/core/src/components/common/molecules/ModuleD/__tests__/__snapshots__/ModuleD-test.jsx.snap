@@ -7,7 +7,7 @@ exports[`ModuleD component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-cSHVUG",
+        "componentId": "sc-kAzzGY",
         "isStatic": false,
         "rules": Array [
           "
@@ -40,22 +40,7 @@ exports[`ModuleD component renders correctly 1`] = `
   }
 
   .moduleD_header {
-    font-family: ",
-          [Function],
-          ";
-    font-weight: ",
-          [Function],
-          ";
     text-transform: uppercase;
-    text-align: center;
-
-    @media ",
-          [Function],
-          " {
-      font-size: ",
-          [Function],
-          "px;
-    }
   }
   .moduleD_tile {
     margin-bottom: ",
@@ -73,7 +58,7 @@ exports[`ModuleD component renders correctly 1`] = `
       "displayName": "Styled(ModuleD)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-cSHVUG",
+      "styledComponentId": "sc-kAzzGY",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
