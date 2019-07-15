@@ -14,7 +14,7 @@ const SignupFormIntro = ({ className, formViewConfig }) => (
       className={className}
     >
       <BodyCopy
-        fontSize="fs18"
+        fontSize={['fs18', 'fs18', 'fs22']}
         fontFamily="secondary"
         textAlign="center"
         className="sign-up__label"
@@ -22,7 +22,7 @@ const SignupFormIntro = ({ className, formViewConfig }) => (
         {formViewConfig.signUpForLabel}
       </BodyCopy>
       <BodyCopy
-        fontSize="fs28"
+        fontSize={['fs28', 'fs28', 'fs38']}
         fontFamily="primary"
         fontWeight="black"
         textAlign="center"

@@ -29,7 +29,13 @@ exports[`SignupFormIntro component renders correctly 1`] = `
       color="text.primary"
       component="p"
       fontFamily="secondary"
-      fontSize="fs18"
+      fontSize={
+        Array [
+          "fs18",
+          "fs18",
+          "fs22",
+        ]
+      }
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
@@ -40,7 +46,13 @@ exports[`SignupFormIntro component renders correctly 1`] = `
       color="text.primary"
       component="p"
       fontFamily="primary"
-      fontSize="fs28"
+      fontSize={
+        Array [
+          "fs28",
+          "fs28",
+          "fs38",
+        ]
+      }
       fontWeight="black"
       letterSpacing="normal"
       lineHeight="normal"
