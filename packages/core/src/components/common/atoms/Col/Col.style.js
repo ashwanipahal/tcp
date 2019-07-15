@@ -59,8 +59,6 @@ const StyledCol = css`
     props.theme.gridDimensions.gridBreakPointsKeys.map(
       // eslint-disable-next-line complexity
       key => `
-      ${key !== 'small' ? `@media ${props.theme.mediaQuery[`${key}Only`]} {` : ''}
-        ${props.hideCol && props.hideCol[key] ? 'display: none' : ''};
       ${key !== 'small' ? `}` : ''}
       ${key !== 'small' ? `@media ${props.theme.mediaQuery[key]} {` : ''}
           ${!props.isNotInlineBlock ? 'display: inline-block' : ''};
@@ -80,7 +78,10 @@ const StyledCol = css`
               : ''
           };
           width: ${getColumnWidth(props.colSize[key], key, props.theme.gridDimensions)}%;
-        ${key !== 'small' ? `}` : ''}`
+        ${key !== 'small' ? `}` : ''}
+        ${key !== 'small' ? `@media ${props.theme.mediaQuery[`${key}Only`]} {` : ''}
+        ${props.hideCol && props.hideCol[key] ? 'display: none' : ''};
+      `
     )}
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

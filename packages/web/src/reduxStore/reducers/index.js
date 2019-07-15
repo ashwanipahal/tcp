@@ -22,11 +22,15 @@ import {
   ADDRESS_VERIFICATION_REDUCER_KEY,
   PAYMENT_REDUCER_KEY,
   ADDEDITADDRESS_REDUCER_KEY,
+  EMAIL_SIGNUP_REDUCER_KEY,
+  SMS_SIGNUP_REDUCER_KEY,
   MODULES_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
 import HomePageReducer from '../../components/features/content/HomePage/container/HomePage.reducer';
+import EmailSignupReducer from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.reducer';
+import SmsSignupReducer from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.reducer';
 
 // A higher order reducer to filter out actions not matching a certain action name pattern.
 const filteredProductListingPageReducer = createFilteredReducer(
@@ -48,4 +52,6 @@ export default combineReducers({
   [PAYMENT_REDUCER_KEY]: PaymentReducer,
   [ADDEDITADDRESS_REDUCER_KEY]: AddEditAddressReducer,
   form: reduxFormReducer,
+  [EMAIL_SIGNUP_REDUCER_KEY]: EmailSignupReducer,
+  [SMS_SIGNUP_REDUCER_KEY]: SmsSignupReducer,
 });

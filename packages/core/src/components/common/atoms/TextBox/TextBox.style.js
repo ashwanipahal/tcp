@@ -59,6 +59,34 @@ const textboxStyles = css`
     }
   }
 
+  .success__checkmark {
+    width: 15px;
+    height: 8px;
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ${props => props.theme.colors.TEXTBOX.SUCCESS_BORDER};
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ${props => props.theme.colors.TEXTBOX.SUCCESS_BORDER};
+      bottom: 0;
+    }
+  }
+
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 

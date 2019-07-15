@@ -12,6 +12,8 @@ import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features
 import AddressVerificationSaga from '@tcp/core/src/components/features/account/AddressVerification/container/AddressVerification.saga';
 import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
+import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
+import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.saga';
 
 export default function* rootSaga() {
   yield all([
@@ -25,6 +27,8 @@ export default function* rootSaga() {
     SetDefaultShippingAddressSaga(),
     AddressVerificationSaga(),
     PaymentSaga(),
+    EmailSignupSaga(),
+    SmsSignupSaga(),
     DeleteCardSaga(),
     GiftCardBalanceSaga(),
     DefaultPaymentSaga(),

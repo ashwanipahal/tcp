@@ -25,6 +25,7 @@ type Props = {
   maxLength: any,
   inputRef: any,
   dataLocator?: string,
+  showSuccessCheck?: boolean,
 };
 
 const TextBox = ({
@@ -38,6 +39,7 @@ const TextBox = ({
   inputRef,
   meta: { touched, error },
   dataLocator,
+  showSuccessCheck,
 }: Props): Node => {
   const elemValue = input.value;
   return (
@@ -69,6 +71,7 @@ const TextBox = ({
           {error}
         </BodyCopy>
       )}
+      {showSuccessCheck && <div className="success__checkmark" />}
     </label>
   );
 };
@@ -81,6 +84,7 @@ TextBox.defaultProps = {
   onChangeHandler: () => {},
   dataLocator: '',
   meta: {},
+  showSuccessCheck: false,
 };
 
 export default withStyles(TextBox, StyledTextBox);
