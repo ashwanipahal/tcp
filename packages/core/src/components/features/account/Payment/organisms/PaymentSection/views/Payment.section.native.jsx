@@ -1,25 +1,32 @@
 import React from 'react';
+import { View } from 'react-native';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import { StyledHeading, UnderlineStyle } from '../PaymentSection.style.native';
-import { View, Text, Image } from 'react-native'; //eslint-disable-line
 import OffersSection from '../../../molecules/OffersSection';
 import MoneyCards from '../../../molecules/MoneyCards';
 import GiftCards from '../../../molecules/GiftCards';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 
 // @flow
 type Props = {
   labels: Object,
+  creditCardList: object,
+  setDefaultPaymentMethod: Function,
+  giftCardList: object,
+  cardList: object,
 };
 
 const PaymentView = (props: Props) => {
-  const { labels } = props;
+  const { labels, creditCardList,
+    giftCardList,
+    cardList,setDefaultPaymentMethod  } = props;
   return (
     <View {...props}>
-      <StyledHeading>{labels.ACC_LBL_PAYMENT_HEADING}</StyledHeading>
+      <StyledHeading><BodyCopy fontSize='fs16' fontWeight='extrabold'>{labels.ACC_LBL_PAYMENT_HEADING}</BodyCopy></StyledHeading>
       <UnderlineStyle />
-      <OffersSection labels={labels} />
-      <MoneyCards labels={labels} />
-      <GiftCards labels={labels} />
+      {cardList && <OffersSection labels={labels} />}
+      {creditCardList && <MoneyCards labels={labels} creditCardList={creditCardList} setDefaultPaymentMethod={setDefaultPaymentMethod} />}
+      {giftCardList && <GiftCards labels={labels} giftCardList={giftCardList} />}
     </View>
   );
 };

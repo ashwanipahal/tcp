@@ -1,0 +1,95 @@
+import styled from 'styled-components/native';
+
+const CardTileWrapper = styled.View`
+  display: flex;
+  border: 1px solid ${props => props.theme.colorPalette.gray[600]};
+  padding: ${props => props.theme.spacing.ELEM_SPACING.MED}
+    ${props => props.theme.spacing.ELEM_SPACING.MED};
+  min-height: ${props => (props.card && props.card.ccType === 'VENMO' ? '173px' : 0)};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+`
+const CardTileContext = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: ${props=> props.defaultPayment ? 'flex-start' :'baseline'};
+}
+`
+const CardTileHeading = styled.Text`
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  flex-basis: 60%;
+`;
+
+const CardTileDefaultSection = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+`;
+
+const CardTileImgWrapper = styled.View`
+  width: 90px;
+  height: 56px;
+  margin-bottom: auto;
+`;
+
+const CardTileImg = styled.Image`
+  width: 100%;
+  height:100%;
+`;
+
+const DefaultBadgeWrapper = styled.View`
+  background-color: ${props => props.theme.colorPalette.gray[800]};
+  border: 1px solid ${props => props.theme.colorPalette.gray[800]};
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
+  display: flex;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  padding: ${props => props.theme.spacing.ELEM_SPACING.XXXS}
+    ${props => props.theme.spacing.ELEM_SPACING.XXS};
+`;
+
+const BadgeContent = styled.Text`
+  color: ${props => props.theme.colorPalette.white};
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+}
+`;
+
+const VenmoCardTileHeading = styled.Text`
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+`;
+
+const CardTileExpiry = styled.Text`
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+`;
+
+const CardAddress = styled.View`
+  flex-wrap: wrap;
+  font-size: ${props => props.theme.typography.fontSizes.fs14};
+`;
+
+const CardCtaLinks = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+`;
+
+const CardCtaLinkLeftMargin = styled.View`
+  margin-right: 8px;
+`;
+
+export {
+  CardTileWrapper,
+  CardTileHeading,
+  CardTileContext,
+  BadgeContent,
+  VenmoCardTileHeading,
+  CardTileExpiry,
+  CardTileDefaultSection,
+  CardTileImgWrapper,
+  CardTileImg,
+  DefaultBadgeWrapper,
+  CardAddress,
+  CardCtaLinks,
+  CardCtaLinkLeftMargin
+}
