@@ -12,7 +12,9 @@ export const LOGINPAGE_REDUCER_KEY = 'LoginPageReducer';
 export const ADDRESSBOOK_REDUCER_KEY = 'AddressBookReducer';
 export const ADDRESSBOOK_ACTION_PATTERN = '@@AddressBook-';
 export const PAYMENT_REDUCER_KEY = 'PaymentReducer';
+export const ADD_GIFT_CARD_REDUCER_KEY = 'AddGiftCardReducer';
 export const PAYMENT_ACTION_PATTERN = '@@payment-';
+export const ADD_GIFT_CARD_ACTION_PATTERN = '@@AddGiftCard-';
 export const LOGINPAGE_ACTION_PATTERN = '@@Login-';
 
 // Add address page reducer
@@ -32,6 +34,7 @@ export const REDUCER_ACTION_MAPPING = {
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: PRODUCTLISTINGPAGE_ACTION_PATTERN,
   [ADDRESSBOOK_REDUCER_KEY]: ADDRESSBOOK_ACTION_PATTERN,
   [PAYMENT_REDUCER_KEY]: PAYMENT_ACTION_PATTERN,
+  [ADD_GIFT_CARD_REDUCER_KEY]: ADD_GIFT_CARD_ACTION_PATTERN,
 };
 
 export const ADDRESS_VERIFICATION_REDUCER_KEY = 'addressVerification';

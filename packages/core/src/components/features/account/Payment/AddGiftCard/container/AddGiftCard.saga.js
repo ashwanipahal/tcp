@@ -4,7 +4,11 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import endpoints from '../../../../../../service/endpoint';
 import ADD_GIFT_CARD_CONSTANTS from '../AddGiftCard.constants';
 import fetchData from '../../../../../../service/API';
-import { addGiftCardSuccess, addGiftCardFailure } from './AddGiftCard.actions';
+import {
+  addGiftCardFailure,
+  addGiftCardSuccess as addGiftCardSuccessAction,
+} from './AddGiftCard.actions';
+import { addGiftCardSuccess, getCardList } from '../../container/Payment.actions';
 
 export function* addGiftCard({ payload }: { payload: {} }): Saga<void> {
   try {
@@ -24,6 +28,8 @@ export function* addGiftCard({ payload }: { payload: {} }): Saga<void> {
       method
     );
     yield put(addGiftCardSuccess(response));
+    yield put(addGiftCardSuccessAction(response));
+    yield put(getCardList({ ignoreCache: true }));
   } catch (err) {
     let error = {};
     if (err instanceof Error) {

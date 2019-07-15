@@ -8,16 +8,16 @@ export const addGiftCardRequest = (payload: {}) => {
   };
 };
 
-export const addGiftCardSuccess = (payload: {}) => {
+export const addGiftCardFailure = (payload: {}) => {
   return {
-    type: ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_SUCCESS,
+    type: ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_FAILED,
     payload,
   };
 };
 
-export const addGiftCardFailure = (payload: {}) => {
+export const addGiftCardSuccess = payload => {
   return {
-    type: ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_FAILED,
+    type: ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_SUCCESS,
     payload,
   };
 };

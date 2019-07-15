@@ -16,9 +16,7 @@ type Action = {
 const AddGiftCardReducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_SUCCESS:
-      return state
-        .set('addGiftCardResponse', action.payload)
-        .set('showUpdatedNotification', 'success');
+      return state.set('showUpdatedNotification', 'success');
     case ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_FAILED:
       return state.set('error', action.payload).set('showUpdatedNotification', 'error');
     default:

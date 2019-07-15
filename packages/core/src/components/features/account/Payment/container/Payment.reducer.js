@@ -70,6 +70,8 @@ const PaymentReducer = (state = initialState, action) => {
       return state
         .set('showNotificationCaptcha', 'error')
         .deleteIn(['giftcardBalance', action.payload.card.accountNo]);
+    case PAYMENT_CONSTANTS.ADD_GIFT_CARD_SUCCESS:
+      return state.set('showUpdatedNotification', 'success');
     default:
       return returnPaymentReducer(state, action);
   }
