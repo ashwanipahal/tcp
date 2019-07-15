@@ -11,7 +11,7 @@ describe('AddressVerification saga', () => {
       verifyAddressGen.next();
     });
 
-    it('should dispatch verifyAddressSuccess action for success resposnse', () => {
+    it('should dispatch verifyAddressSuccess action for success resposnse ', () => {
       const response = {
         suggestedAddress: {
           firstName: 'test',
