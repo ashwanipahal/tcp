@@ -6,14 +6,44 @@ const styles = css`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
   word-break: break-word;
+  height: ${props => (props.card && props.card.ccType === 'GiftCard' ? 'auto' : '100%')};
   min-height: ${props => (props.card && props.card.ccType === 'VENMO' ? '173px' : '')};
   padding: ${props => props.theme.spacing.ELEM_SPACING.MED}
     ${props => props.theme.spacing.ELEM_SPACING.MED};
-  @media ${props => props.theme.mediaQuery.medium} {
-    padding: ${props => props.theme.spacing.ELEM_SPACING.LRG}
+
+  .recaptcha {
+    -webkit-transform: scale(0.6);
+    -ms-transform: scale(0.6);
+    -moz-transform: scale(0.6);
+    transform: scale(0.6);
+    position: relative;
+    left: -45px;
+  }
+  & .giftcardTile__wrapper {
+    display: flex;
+    align-items: flex-end;
+  }
+  & form {
+    width: 70%;
+  }
+  & .input-fields-wrapper {
+    height: auto;
+  }
+  & .TextBox__error {
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  }
+
+  & .TextBox__label {
+    display: none;
+    height: 100%;
+    min-height: ${props => (props.card && props.card.ccType === 'VENMO' ? '173px' : '')};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.MED}
       ${props => props.theme.spacing.ELEM_SPACING.MED};
+    @media ${props => props.theme.mediaQuery.medium} {
+      padding: ${props => props.theme.spacing.ELEM_SPACING.LRG}
+        ${props => props.theme.spacing.ELEM_SPACING.MED};
+    }
   }
   .cardTile {
     display: flex;
@@ -49,9 +79,10 @@ const styles = css`
   .cardTile__ctaLinks {
     display: flex;
     justify-content: flex-end;
-    a {
-      margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-    }
+    margin-top: ${props => (props.card && props.card.ccType === 'GiftCard' ? '-15px' : 'auto')};
+  }
+  .cardTile__anchor {
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
 `;
 

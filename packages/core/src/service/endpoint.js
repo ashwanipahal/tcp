@@ -43,6 +43,10 @@ const endpoints = {
     method: 'delete',
     relURI: '/api/v2/account/deleteAddressDetails',
   },
+  deleteCreditCardOnAccount: {
+    method: 'post',
+    relURI: '/api/v2/account/deleteCreditCardDetails',
+  },
   verifyAddress: {
     method: 'get',
     relURI:
@@ -50,11 +54,15 @@ const endpoints = {
     baseURI: 'https://personator.melissadata.net',
   },
   global: {
-    baseURI: 'https://test4.childrensplace.com',
+    baseURI: 'https://test3.childrensplace.com',
   },
   setDefaultShippingAddress: {
     method: 'put',
     relURI: '/api/v2/wallet/updateAddress',
+  },
+  getGifCardBalance: {
+    method: 'post',
+    relURI: '/api/v2/wallet/getGiftCardBalance',
   },
   getOrderDetails: {
     method: 'get',

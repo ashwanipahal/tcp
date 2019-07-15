@@ -43,7 +43,7 @@ const TextBox = ({
 }: Props): Node => {
   const elemValue = input.value;
   return (
-    <label htmlFor={input.name} className={className}>
+    <label htmlFor={input.name} className={`${className} input-fields-wrapper`}>
       <input
         {...input}
         id={id}
@@ -61,7 +61,13 @@ const TextBox = ({
         {placeholder}
       </BodyCopy>
       {touched && error && (
-        <BodyCopy color="error" component="div" fontSize="fs12" fontFamily="secondary">
+        <BodyCopy
+          className="TextBox__error"
+          color="error"
+          component="div"
+          fontSize="fs12"
+          fontFamily="secondary"
+        >
           {error}
         </BodyCopy>
       )}
