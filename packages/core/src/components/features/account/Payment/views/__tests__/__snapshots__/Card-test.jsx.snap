@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardView component should renders correctly when Card are not present 1`] = `
+<Fragment>
+  <CardList
+    labels={Object {}}
+  />
+</Fragment>
+`;

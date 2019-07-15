@@ -12,9 +12,6 @@ exports[`VenmoCardList Component should render correctly 1`] = `
     textAlign="left"
     variant="h6"
   />
-  <Styled(Row)
-    fullBleed={true}
-  />
 </div>
 `;
 
@@ -30,62 +27,41 @@ exports[`VenmoCardList Component should render correctly if list is present 1`] 
     textAlign="left"
     variant="h6"
   />
-  <Styled(Row)
-    fullBleed={true}
-  >
-    <Styled(Col)
-      className="cardList__col"
-      colSize={
+  <CardView
+    cardList={
+      Immutable.List [
         Object {
-          "large": 4,
-          "medium": 4,
-          "small": 6,
-        }
+          "accountNo": "************1111",
+          "addressDetails": Object {
+            "addressLine1": "111 3rd Ave",
+            "addressLine2": "",
+            "city": "New York",
+            "country": "US",
+            "firstName": "new",
+            "lastName": "address",
+            "phone1": "9878909876",
+            "state": "NY",
+            "zipCode": "10003",
+          },
+          "billingAddressId": 160685,
+          "ccBrand": "VENMO",
+          "ccType": "VENMO",
+          "creditCardId": 73501,
+          "defaultInd": false,
+          "expMonth": "5 ",
+          "expYear": "2024",
+          "nameOnAccount": ".",
+          "properties": Object {
+            "venmoUserId": "1234",
+          },
+        },
+      ]
+    }
+    labels={
+      Object {
+        "VenmoCardHeading": "heading",
       }
-      ignoreGutter={
-        Object {
-          "large": false,
-          "medium": false,
-          "small": true,
-        }
-      }
-      key="container-73501"
-    >
-      <Styled(CardTile)
-        card={
-          Object {
-            "accountNo": "************1111",
-            "addressDetails": Object {
-              "addressLine1": "111 3rd Ave",
-              "addressLine2": "",
-              "city": "New York",
-              "country": "US",
-              "firstName": "new",
-              "lastName": "address",
-              "phone1": "9878909876",
-              "state": "NY",
-              "zipCode": "10003",
-            },
-            "billingAddressId": 160685,
-            "ccBrand": "VENMO",
-            "ccType": "VENMO",
-            "creditCardId": 73501,
-            "defaultInd": false,
-            "expMonth": "5 ",
-            "expYear": "2024",
-            "nameOnAccount": ".",
-            "properties": Object {
-              "venmoUserId": "1234",
-            },
-          }
-        }
-        labels={
-          Object {
-            "VenmoCardHeading": "heading",
-          }
-        }
-      />
-    </Styled(Col)>
-  </Styled(Row)>
+    }
+  />
 </div>
 `;
