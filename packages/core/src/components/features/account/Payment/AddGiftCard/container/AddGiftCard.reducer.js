@@ -10,10 +10,11 @@ const initialState = fromJS({
 
 type Action = {
   payload: {},
+  type: string,
 };
 
 const AddGiftCardReducer = (state = initialState, action: Action) => {
-  switch (action) {
+  switch (action.type) {
     case ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_SUCCESS:
       return state
         .set('addGiftCardResponse', action.payload)
