@@ -18,7 +18,6 @@ function getHeadingStyle(props) {
 const HeadingStyles = css`
   ${getHeadingStyle}
   ${colorStyleSystem}
-  text-transform: ${props => props.textTransform || 'uppercase'};
 `;
 
 export default HeadingStyles;

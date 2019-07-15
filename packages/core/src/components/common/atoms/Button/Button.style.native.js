@@ -40,13 +40,6 @@ const style = css`
   `
       : ''};
 
-  &:hover {
-    background: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].HOVER};
-  }
-  &:focus {
-    background: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].FOCUS};
-  }
-
   ${props => (props.fullWidth ? ` width: 100% ; ` : '')};
 
   ${props =>

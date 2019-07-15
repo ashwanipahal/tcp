@@ -40,6 +40,7 @@ const renderItem = item => {
   const {
     item: { image, link },
   } = item;
+
   return (
     <Tile tileIndex={item.index}>
       <TouchableOpacity accessibilityRole="button" onPress={() => UrlHandler(link.url)}>
@@ -103,9 +104,8 @@ const ModuleD = (props: Props) => {
               color={['text.primary']}
               fontWeight="extrabold"
               text-transform="uppercase"
-            >
-              {headingText}
-            </Heading>
+              text={headingText}
+            />
           </HeadingWrapper>
         </TouchableOpacity>
       )}
@@ -124,12 +124,9 @@ const ModuleD = (props: Props) => {
             accessibilityLabel={singleCTAButton.title}
             buttonVariation="variable-width"
             style={buttonWidth}
-            onPress={() => {
-              UrlHandler(singleCTAButton.url);
-            }}
-          >
-            {singleCTAButton.title}
-          </Button>
+            text={singleCTAButton.title}
+            url={singleCTAButton.url}
+          />
         </ButtonWrapper>
       )}
     </ModuleDWrapper>

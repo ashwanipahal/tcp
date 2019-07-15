@@ -3,6 +3,7 @@ import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../Button.style.native';
+import { UrlHandler } from '../../../../../utils/utils.native';
 
 /**
  * @param {object} props : Props for button
@@ -25,20 +26,23 @@ type Props = {
   buttonVariation?: string,
   fullWidth?: string,
   customStyle?: string,
-  title?: string,
+  text?: string,
+  url?: string,
 };
 
 const CustomButton = (props: Props) => {
-  const { title, id, buttonVariation, fullWidth, customStyle, ...otherProps } = props;
+  const { text, url, id, buttonVariation, fullWidth, customStyle, ...otherProps } = props;
+  const myText = text || '';
   return (
-    <TouchableOpacity accessibilityRole="button">
-      <Text
-        title={title}
-        fullWidth={fullWidth}
-        buttonVariation={buttonVariation}
-        id={id}
-        {...otherProps}
-      />
+    <TouchableOpacity
+      accessibilityRole="button"
+      onPress={() => {
+        UrlHandler(url);
+      }}
+    >
+      <Text fullWidth={fullWidth} buttonVariation={buttonVariation} id={id} {...otherProps}>
+        {myText}
+      </Text>
     </TouchableOpacity>
   );
 };
@@ -48,7 +52,8 @@ CustomButton.defaultProps = {
   fullWidth: '',
   buttonVariation: 'fixed-width',
   customStyle: '',
-  title: '',
+  text: '',
+  url: '',
 };
 
 export default withStyles(CustomButton, style);
