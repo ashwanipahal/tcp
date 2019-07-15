@@ -1,7 +1,7 @@
 import React from 'react';
 import { FlatList, TouchableOpacity } from 'react-native';
-import { Heading, Anchor, Button, Image } from '../../../atoms';
 import { getScreenWidth, UrlHandler } from '../../../../../utils/utils.native';
+import { Heading, Anchor, Button, Image } from '../../../atoms';
 import { ButtonWrapper, ModuleDWrapper, Tile, HeadingWrapper } from '../ModuleD.style.native';
 import colors from '../../../../../../styles/themes/TCP/colors';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
