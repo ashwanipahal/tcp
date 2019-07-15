@@ -14,6 +14,7 @@ import TextBox from '../../../../../../common/atoms/TextBox';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import { getDataLocatorPrefix, getCardName, cardIconMapping } from './CardTile.utils';
+import Button from '../../../../../../common/atoms/Button';
 // @flow
 type Props = {
   card: object,
@@ -156,6 +157,40 @@ class CardTile extends React.Component<Props> {
     this.recaptcha = ref;
   };
 
+  renderBalance = ({ HideCaptchaBtn, balance, labels }) => {
+    const { card, checkbalanceValueInfo } = this.props;
+    const isCreditCard = card.ccType !== 'GiftCard' && card.ccType !== 'VENMO';
+    const isVenmo = card.ccType === 'VENMO';
+    return (
+      <React.Fragment>
+        {HideCaptchaBtn && (
+          <BodyCopy
+            tag="span"
+            fontSize="fs28"
+            fontFamily="secondary"
+            fontWeight="extrabold"
+            className=""
+            lineHeights="lh115"
+          >
+            {balance}
+          </BodyCopy>
+        )}
+        {!HideCaptchaBtn && !isVenmo && !isCreditCard && (
+          <Button
+            onClick={this.handleCheckBalanceClick}
+            buttonVariation="variable-width"
+            type="submit"
+            data-locator="cardtile-checkbalance"
+            fill="BLUE"
+            disabled={HideCaptchaBtn && !checkbalanceValueInfo.giftCardNbr}
+          >
+            {labels.ACC_LBL_CHECK_BALANCE}
+          </Button>
+        )}
+      </React.Fragment>
+    );
+  };
+
   remainBalance = () => {
     const { card, checkbalanceValueInfo, labels } = this.props;
     const { HideCaptchaBtn, balance } = this.state;
@@ -185,18 +220,7 @@ class CardTile extends React.Component<Props> {
             {balance && labels.ACC_LBL_REMAINING_BALANCE}
           </BodyCopy>
         )}
-        {HideCaptchaBtn && (
-          <BodyCopy
-            tag="span"
-            fontSize="fs28"
-            fontFamily="secondary"
-            fontWeight="extrabold"
-            className=""
-            lineHeights="lh115"
-          >
-            {balance}
-          </BodyCopy>
-        )}
+        {this.renderBalance({ HideCaptchaBtn, balance, labels })}
       </React.Fragment>
     );
   };

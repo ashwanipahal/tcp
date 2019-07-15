@@ -546,6 +546,16 @@ exports[`CardTile should render correctly with gift card 1`] = `
           title=""
           type="hidden"
         />
+        <Styled(Button)
+          buttonVariation="variable-width"
+          data-locator="cardtile-checkbalance"
+          disabled={false}
+          fill="BLUE"
+          onClick={[Function]}
+          type="submit"
+        >
+           Check Balance
+        </Styled(Button)>
       </div>
     </form>
   </div>
@@ -890,6 +900,16 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
           title=""
           type="hidden"
         />
+        <Styled(Button)
+          buttonVariation="variable-width"
+          data-locator="cardtile-checkbalance"
+          disabled={false}
+          fill="BLUE"
+          onClick={[Function]}
+          type="submit"
+        >
+           Check Balance
+        </Styled(Button)>
       </div>
     </form>
   </div>
