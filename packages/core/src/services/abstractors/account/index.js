@@ -1,1 +1,2 @@
-export { default, getAddressListData } from './AddressBook';
+export { getAddressListData } from './AddressBook';
+export { verifyAddressData } from './AddressVerification';

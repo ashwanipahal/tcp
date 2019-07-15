@@ -49,7 +49,6 @@ const endpoints = {
   },
   verifyAddress: {
     method: 'get',
-    // TODO - Use MELISSA_KEY from config file
     relURI:
       '/v3/WEB/ContactVerify/doContactVerify?id=63987687&format=json&act=Check&cols=Plus4%2CDeliveryIndicator&',
     baseURI: 'https://personator.melissadata.net',
