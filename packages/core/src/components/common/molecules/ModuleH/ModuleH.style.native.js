@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 
+export const Wrapper = styled.View`
+  margin: ${props => props.theme.spacing.LAYOUT_SPACING.SM} 0;
+`;
+
 export const HeaderWrapper = styled.View`
   position: absolute;
-  top: 25px;
-  left: 11px;
+  top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  left: ${props => props.theme.spacing.ELEM_SPACING.SM};
   z-index: ${props => props.theme.zindex.zOverlay};
 `;
 
@@ -16,7 +20,6 @@ export const Header = styled.Text`
 `;
 
 export const LinksWrapper = styled.View`
-  background: transparent;
   position: absolute;
   top: 86px;
   left: 11px;
@@ -27,4 +30,5 @@ export default {
   Header,
   HeaderWrapper,
   LinksWrapper,
+  Wrapper,
 };

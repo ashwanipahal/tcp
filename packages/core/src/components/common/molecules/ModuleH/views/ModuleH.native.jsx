@@ -1,11 +1,12 @@
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { Anchor, Image } from '../../../atoms';
-import { getScreenWidth, UrlHandler } from '../../../../../utils/utils.native';
+import { getLocator, getScreenWidth, UrlHandler } from '../../../../../utils/utils.native';
 import { Carousel } from '../..';
 import config from '../config';
-import theme from '../../../../../../styles/themes/TCP';
-import { Header, HeaderWrapper, LinksWrapper } from '../ModuleH.style.native';
+import colors from '../../../../../../styles/themes/colors/common';
+import fonts from '../../../../../../styles/themes/TCP/fonts';
+import { Header, HeaderWrapper, LinksWrapper, Wrapper } from '../ModuleH.style.native';
 
 // @flow
 type Props = {
@@ -29,9 +30,8 @@ const MODULE_WIDTH = getScreenWidth();
  * TODO: Link style has to be updated
  * as per gymboree styleguide in future.
  */
-const { colors, fonts } = theme;
 const linkStyle = {
-  color: colors.WHITE,
+  color: colors.white,
   fontSize: fonts.fontSize.body.bodytext.copy6,
   lineHeight: 20,
   marginTop: 28,
@@ -71,12 +71,12 @@ class ModuleH extends React.PureComponent<Props, State> {
    */
   renderItem = ({ item, index }) => {
     const { image } = item;
-
     return (
       <Image
         key={index.toString()}
         alt={image.alt}
         source={{ uri: this.getUrlWithCrop(image.url) }}
+        data-locator={`${getLocator('moduleH_composite_image')}_${index + 1}`}
         height={MODULE_HEIGHT}
         width={MODULE_WIDTH}
       />
@@ -98,6 +98,7 @@ class ModuleH extends React.PureComponent<Props, State> {
         <Anchor
           key={index.toString()}
           fontWeightVariation={currentIndex === index ? 'active' : null}
+          data-locator={`${getLocator('moduleH_cta_links')}_${index + 1}`}
           onPress={() => {
             UrlHandler(link.url);
           }}
@@ -117,17 +118,22 @@ class ModuleH extends React.PureComponent<Props, State> {
     const { divCTALinks, headerText: { link, textLines } = {} } = this.props;
 
     return (
-      <View>
+      <Wrapper>
         {textLines &&
           textLines.map((textLine, index) => {
             return (
               <HeaderWrapper key={index.toString()}>
                 {link ? (
                   <TouchableOpacity accessibilityRole="link" onPress={() => UrlHandler(link.url)}>
-                    <Header lineOrder={index}>{textLine.text}</Header>
+                    <Header
+                      lineOrder={index}
+                      data-locator={`${getLocator('moduleH_header_text')}_${index + 1}`}
+                    >
+                      {textLine.text}
+                    </Header>
                   </TouchableOpacity>
                 ) : (
-                  <Header>{textLine.text}</Header>
+                  <Header data-locator={getLocator('moduleH_header_text')}>{textLine.text}</Header>
                 )}
               </HeaderWrapper>
             );
@@ -145,7 +151,7 @@ class ModuleH extends React.PureComponent<Props, State> {
             }}
           />
         )}
-      </View>
+      </Wrapper>
     );
   }
 }

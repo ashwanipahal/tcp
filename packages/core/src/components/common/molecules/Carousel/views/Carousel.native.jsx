@@ -1,16 +1,16 @@
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { View } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import { Image } from '../../../atoms';
 import config from '../config';
-import theme from '../../../../../../styles/themes/TCP';
+import { Touchable } from '../Carousel.native.style';
 
 /**
  * Import play pause image icons.
  * Note: React native imports images using require.
  */
-const playIcon = require('../../../../../../assets/play.png');
-const pauseIcon = require('../../../../../../assets/pause.png');
+const playIcon = require('../../../../../assets/play.png');
+const pauseIcon = require('../../../../../assets/pause.png');
 
 // @flow
 type Props = {
@@ -35,23 +35,7 @@ const defaults = { ...config.CAROUSEL_MOBILE_DEFAULTS };
 /**
  * Style for play pause icons.
  */
-const { colors, zindex } = theme;
 const { playIconHeight, playIconWidth } = config.CAROUSEL_MOBILE_CONFIG;
-const touchableStyle = {
-  backgroundColor: colors.WHITE,
-  borderRadius: 15,
-  position: 'absolute',
-  bottom: 12,
-  left: '50%',
-  height: playIconHeight,
-  width: playIconWidth,
-  transform: [
-    {
-      translateX: -15,
-    },
-  ],
-  zIndex: zindex.zOverlay,
-};
 
 /**
  * @function Carousel component that creates carousel using
@@ -76,13 +60,13 @@ class SnapCarousel extends React.PureComponent<Props, State> {
   getPlayButton() {
     const { autoplay } = this.state;
     return autoplay ? (
-      <TouchableOpacity accessibilityRole="button" onPress={this.pause} style={touchableStyle}>
+      <Touchable accessibilityRole="button" onPress={this.pause}>
         <Image source={pauseIcon} height={playIconHeight} width={playIconWidth} />
-      </TouchableOpacity>
+      </Touchable>
     ) : (
-      <TouchableOpacity accessibilityRole="button" onPress={this.play} style={touchableStyle}>
+      <Touchable accessibilityRole="button" onPress={this.play}>
         <Image source={playIcon} height={playIconHeight} width={playIconWidth} />
-      </TouchableOpacity>
+      </Touchable>
     );
   }
 
