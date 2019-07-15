@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text} from 'react-native';
+import { Text } from 'react-native';
 import { connect } from 'react-redux';
 import PaymentView from '../views/PaymentView';
 import { getCardList, setDefaultPayment } from './Payment.actions';
@@ -23,64 +23,62 @@ type Props = {
   showNotification: string,
   cardList: object,
   setDefaultPaymentMethod: Function,
-}
+};
 
-class PaymentViewContainer extends React.Component<Props> {
-    componentDidMount() {
-      const { getCardListAction } = this.props;
-      getCardListAction();
-      console.log('action called');
-    }
-
-    render() {
-      const {
-        creditCardList,
-        giftCardList,
-        venmoCardList,
-        isFetching,
-        showNotification,
-        cardList,
-        setDefaultPaymentMethod,
-      } = this.props;
-      if (isFetching) return <Text>Loading...</Text>;
-      return (
-        <PaymentView
-          labels={labels}
-          showNotification={showNotification}
-          creditCardList={creditCardList}
-          giftCardList={giftCardList}
-          venmoCardList={venmoCardList}
-          cardList={cardList}
-          setDefaultPaymentMethod={setDefaultPaymentMethod}
-        />
-      );
-    }
+export class PaymentViewContainer extends React.Component<Props> {
+  componentDidMount() {
+    const { getCardListAction } = this.props;
+    getCardListAction();
   }
 
-  export const mapDispatchToProps = (dispatch: ({}) => void) => {
-    return {
-      getCardListAction: () => {
-        dispatch(getCardList());
-      },
-      setDefaultPaymentMethod: payload => {
-        dispatch(setDefaultPayment(payload));
-      },
-    };
-  };
+  render() {
+    const {
+      creditCardList,
+      giftCardList,
+      venmoCardList,
+      isFetching,
+      showNotification,
+      cardList,
+      setDefaultPaymentMethod,
+    } = this.props;
+    if (isFetching) return <Text>Loading...</Text>;
+    return (
+      <PaymentView
+        labels={labels}
+        showNotification={showNotification}
+        creditCardList={creditCardList}
+        giftCardList={giftCardList}
+        venmoCardList={venmoCardList}
+        cardList={cardList}
+        setDefaultPaymentMethod={setDefaultPaymentMethod}
+      />
+    );
+  }
+}
 
-  const mapStateToProps = state => {
-    return {
-      cardList: getCardListState(state),
-      creditCardList: getCreditDebitCards(state),
-      giftCardList: getGiftCards(state),
-      venmoCardList: getVenmoCards(state),
-      isFetching: getCardListFetchingState(state),
-      showNotification: getShowNotificationState(state),
-    };
+export const mapDispatchToProps = (dispatch: ({}) => void) => {
+  return {
+    getCardListAction: () => {
+      dispatch(getCardList());
+    },
+    setDefaultPaymentMethod: payload => {
+      dispatch(setDefaultPayment(payload));
+    },
   };
+};
+
+const mapStateToProps = state => {
+  return {
+    cardList: getCardListState(state),
+    creditCardList: getCreditDebitCards(state),
+    giftCardList: getGiftCards(state),
+    venmoCardList: getVenmoCards(state),
+    isFetching: getCardListFetchingState(state),
+    showNotification: getShowNotificationState(state),
+  };
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(PaymentViewContainer);
-

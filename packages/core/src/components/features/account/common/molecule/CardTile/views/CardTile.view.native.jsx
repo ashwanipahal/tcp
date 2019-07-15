@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import { View, Text } from 'react-native';
 import Anchor from '../../../../../../common/atoms/Anchor';
-import {CardTileWrapper,
+import {
+  CardTileWrapper,
   CardTileHeading,
   CardTileContext,
   VenmoCardTileHeading,
@@ -13,8 +14,9 @@ import {CardTileWrapper,
   BadgeContent,
   CardAddress,
   CardCtaLinkLeftMargin,
-  CardCtaLinks} from '../CardTile.style.native';
-import { getIconCard } from '../../../../../../../../../mobileapp/src/utils/utils';
+  CardCtaLinks,
+} from '../CardTile.style.native';
+import { getIconCard } from '../../../../../../../utils/utils.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 
 // @flow
@@ -35,10 +37,9 @@ const getCardName = ({ card, labels }) => {
     default:
       return labels.ACC_LBL_DEFAULT_CARD_NAME;
   }
-}
+};
 
-
-const getDataLocatorPrefix = ({card}) => {
+const getDataLocatorPrefix = ({ card }) => {
   switch (card.ccType) {
     case 'GiftCard':
       return 'giftcard';
@@ -47,28 +48,24 @@ const getDataLocatorPrefix = ({card}) => {
     default:
       return 'creditdebit';
   }
-}
+};
 
-const  handleDefaultLinkClick = (e, card, setDefaultPaymentMethod) => {
+const handleDefaultLinkClick = (e, card, setDefaultPaymentMethod) => {
   e.preventDefault();
   setDefaultPaymentMethod(card);
-}
+};
 
 type MakeDefaultProps = {
   card: object,
   labels: object,
   setDefaultPaymentMethod: Function,
-}
+};
 
-const  getMakeDefaultBadge = ({ card, labels, setDefaultPaymentMethod }: MakeDefaultProps) => {
+const getMakeDefaultBadge = ({ card, labels, setDefaultPaymentMethod }: MakeDefaultProps) => {
   return card.defaultInd ? (
     <DefaultBadgeWrapper>
       <BadgeContent>
-        <BodyCopy
-          mobilefontFamily={['secondary']}
-          fontWeight="semibold"
-          fontSize="fs10"
-        >
+        <BodyCopy mobilefontFamily={['secondary']} fontWeight="semibold" fontSize="fs10">
           {labels.ACC_LBL_DEFAULT_PAYMENT}
         </BodyCopy>
       </BadgeContent>
@@ -85,7 +82,7 @@ const  getMakeDefaultBadge = ({ card, labels, setDefaultPaymentMethod }: MakeDef
       {labels.ACC_LBL_MAKE_DEFAULT}
     </Anchor>
   );
-}
+};
 
 const cardIconMapping = {
   DISC: 'disc-small',
@@ -95,39 +92,34 @@ const cardIconMapping = {
   GC: 'gift-card-small',
   'PLACE CARD': 'place-card-small',
   VENMO: 'venmo-blue-acceptance-mark',
-}
+};
 
 const getVenmoUserName = ({ card }) => {
   return (
     card.properties && (
-      <VenmoCardTileHeading
-        dataLocator="payment-venmoid"
-      >
-        <BodyCopy
-          fontSize='fs14'
-          fontWeight='extrabold'
-        >
+      <VenmoCardTileHeading dataLocator="payment-venmoid">
+        <BodyCopy fontSize="fs14" fontWeight="extrabold">
           {card.properties.venmoUserId}
         </BodyCopy>
       </VenmoCardTileHeading>
     )
   );
-}
+};
 
 type GetCardDetailsProps = {
   dataLocatorPrefix: string,
   card: object,
   labels: object,
-}
+};
 
-const getCardDetails = ({dataLocatorPrefix, card, labels }: GetCardDetailsProps) =>{
+const getCardDetails = ({ dataLocatorPrefix, card, labels }: GetCardDetailsProps) => {
   const cardNum = `${labels.ACC_LBL_CARD_NUM}${card.accountNo.slice(-4)}`;
   const expDate = `${labels.ACC_LBL_EXP_DATE}${card.expMonth.trim()}/${card.expYear}`;
   return (
     <View>
       <BodyCopy
-        fontSize='fs14'
-        fontWeight='black'
+        fontSize="fs14"
+        fontWeight="black"
         dataLocator={`payment-${dataLocatorPrefix}endingtext`}
       >
         {cardNum}
@@ -135,8 +127,8 @@ const getCardDetails = ({dataLocatorPrefix, card, labels }: GetCardDetailsProps)
       {card.ccType !== 'PLACE CARD' && (
         <CardTileExpiry>
           <BodyCopy
-            fontSize='fs14'
-            fontWeight='semibold'
+            fontSize="fs14"
+            fontWeight="semibold"
             dataLocator={`payment-${dataLocatorPrefix}expiretext`}
           >
             {expDate}
@@ -145,28 +137,28 @@ const getCardDetails = ({dataLocatorPrefix, card, labels }: GetCardDetailsProps)
       )}
     </View>
   );
-}
+};
 
-  const  getAddressDetails = ({ card }) => {
-    const {addressDetails} = card
-    return (
-      addressDetails && (
-        <CardAddress>
-          <Text>{`${addressDetails.firstName} ${addressDetails.lastName}`}</Text>
-          <Text>{addressDetails.addressLine1}</Text>
-          {addressDetails.addressLine2 ? <Text>{addressDetails.addressLine2}</Text> : null}
-          <Text>{`${addressDetails.city}, ${addressDetails.state} ${addressDetails.zipCode}`}</Text>
-        </CardAddress>
-      )
-    );
-  }
+const getAddressDetails = ({ card }) => {
+  const { addressDetails } = card;
+  return (
+    addressDetails && (
+      <CardAddress>
+        <Text>{`${addressDetails.firstName} ${addressDetails.lastName}`}</Text>
+        <Text>{addressDetails.addressLine1}</Text>
+        {addressDetails.addressLine2 ? <Text>{addressDetails.addressLine2}</Text> : null}
+        <Text>{`${addressDetails.city}, ${addressDetails.state} ${addressDetails.zipCode}`}</Text>
+      </CardAddress>
+    )
+  );
+};
 
-const CardTile = ({ card,labels, setDefaultPaymentMethod }: Props) =>  {
+const CardTile = ({ card, labels, setDefaultPaymentMethod }: Props) => {
   const isCreditCard = card.ccType !== 'GiftCard' && card.ccType !== 'VENMO';
   const isVenmo = card.ccType === 'VENMO';
   const cardName = getCardName({ card, labels });
   const cardIcon = getIconCard(cardIconMapping[card.ccBrand]);
-  const dataLocatorPrefix = getDataLocatorPrefix({card});
+  const dataLocatorPrefix = getDataLocatorPrefix({ card });
   return (
     <CardTileWrapper card={card}>
       <CardTileContext defaultPayment={card.defaultInd}>
@@ -183,7 +175,7 @@ const CardTile = ({ card,labels, setDefaultPaymentMethod }: Props) =>  {
         {isCreditCard ? getMakeDefaultBadge({ card, labels, setDefaultPaymentMethod }) : null}
       </CardTileContext>
       <CardTileDefaultSection>
-        {isVenmo ? getVenmoUserName({card}) : getCardDetails({dataLocatorPrefix, card, labels})}
+        {isVenmo ? getVenmoUserName({ card }) : getCardDetails({ dataLocatorPrefix, card, labels })}
         <CardTileImgWrapper card={card}>
           <CardTileImg
             className="cardTile__img"
@@ -193,7 +185,7 @@ const CardTile = ({ card,labels, setDefaultPaymentMethod }: Props) =>  {
           />
         </CardTileImgWrapper>
       </CardTileDefaultSection>
-      {isCreditCard ? getAddressDetails({card}) : null}
+      {isCreditCard ? getAddressDetails({ card }) : null}
       <CardCtaLinks>
         <CardCtaLinkLeftMargin>
           {!isVenmo && (
@@ -220,6 +212,6 @@ const CardTile = ({ card,labels, setDefaultPaymentMethod }: Props) =>  {
       </CardCtaLinks>
     </CardTileWrapper>
   );
-  }
+};
 
- export default CardTile;
+export default CardTile;

@@ -1,16 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { PaymentContainer, mapDispatchToProps } from '../Payment.container';
-import PaymentView from '../../views/PaymentView';
+import { PaymentViewContainer, mapDispatchToProps } from '../Payment.container.native';
+import PaymentView from '../../views/PaymentView/views/Payment.view.native';
 
 describe('Payment & Gift Cards', () => {
   it('should render payment view section', () => {
-    const tree = shallow(<PaymentContainer getCardListAction={jest.fn()} />);
+    const tree = shallow(<PaymentViewContainer getCardListAction={jest.fn()} />);
     expect(tree.is(PaymentView)).toBeTruthy();
   });
   it('should render loading section', () => {
-    const tree = shallow(<PaymentContainer isFetching getCardListAction={jest.fn()} />);
-    expect(tree.find('p').text()).toBe('Loading...');
+    const tree = shallow(<PaymentViewContainer isFetching getCardListAction={jest.fn()} />);
+    expect(tree.find('Text')).toHaveLength(1);
   });
   describe('#mapDispatchToProps', () => {
     it('should return an action getCardListAction which will call dispatch function on execution', () => {

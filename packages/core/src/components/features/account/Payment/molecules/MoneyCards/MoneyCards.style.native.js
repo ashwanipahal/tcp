@@ -1,8 +1,8 @@
 import styled from 'styled-components/native';
 
 const HeadingTextStyle = styled.Text`
-  height: 44px;
-  top: 15px;
+  height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+  top: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 const WrapperStyle = styled.View`
@@ -23,15 +23,15 @@ const ImageStyle = styled.Image`
 const EmptyCCLabelStyle = styled.Text`
   width: 270px;
   height: 55px;
-  top: 10px;
+  top: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 const DescriptionEmptyCCStyle = styled.Text`
-  padding-top: 5px;
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
 const ButtonWrapperStyle = styled.View`
-  padding-top: 5px;
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
 export {

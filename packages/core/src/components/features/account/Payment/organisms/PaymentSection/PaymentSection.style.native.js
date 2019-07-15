@@ -1,11 +1,12 @@
 import styled from 'styled-components/native';
 
 const StyledHeading = styled.Text`
-  padding: 30px 0 10px;
+  padding: ${props => props.theme.spacing.ELEM_SPACING.XL} 0
+    ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 const UnderlineStyle = styled.View`
   height: 3px;
-  background-color: black;
+  background-color: ${props => props.theme.colorPalette.black};
 `;
 
 export { StyledHeading, UnderlineStyle };

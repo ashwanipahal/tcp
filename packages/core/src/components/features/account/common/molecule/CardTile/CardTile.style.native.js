@@ -7,14 +7,15 @@ const CardTileWrapper = styled.View`
     ${props => props.theme.spacing.ELEM_SPACING.MED};
   min-height: ${props => (props.card && props.card.ccType === 'VENMO' ? '173px' : 0)};
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
-`
+`;
+
 const CardTileContext = styled.View`
   display: flex;
   flex-direction: row;
+  align-items: ${props => (props.defaultPayment ? 'flex-start' : 'baseline')};
   justify-content: space-between;
-  align-items: ${props=> props.defaultPayment ? 'flex-start' :'baseline'};
-}
-`
+`;
+
 const CardTileHeading = styled.Text`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
   flex-basis: 60%;
@@ -35,14 +36,14 @@ const CardTileImgWrapper = styled.View`
 
 const CardTileImg = styled.Image`
   width: 100%;
-  height:100%;
+  height: 100%;
 `;
 
 const DefaultBadgeWrapper = styled.View`
   background-color: ${props => props.theme.colorPalette.gray[800]};
   border: 1px solid ${props => props.theme.colorPalette.gray[800]};
-  border-top-left-radius: 12px;
-  border-bottom-left-radius: 12px;
+  border-top-left-radius: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  border-bottom-left-radius: ${props => props.theme.spacing.ELEM_SPACING.SM};
   display: flex;
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
   padding: ${props => props.theme.spacing.ELEM_SPACING.XXXS}
@@ -50,9 +51,8 @@ const DefaultBadgeWrapper = styled.View`
 `;
 
 const BadgeContent = styled.Text`
-  color: ${props => props.theme.colorPalette.white};
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
-}
+  color: ${props => props.theme.colorPalette.white};
 `;
 
 const VenmoCardTileHeading = styled.Text`
@@ -75,7 +75,7 @@ const CardCtaLinks = styled.View`
 `;
 
 const CardCtaLinkLeftMargin = styled.View`
-  margin-right: 8px;
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 export {
@@ -91,5 +91,5 @@ export {
   DefaultBadgeWrapper,
   CardAddress,
   CardCtaLinks,
-  CardCtaLinkLeftMargin
-}
+  CardCtaLinkLeftMargin,
+};

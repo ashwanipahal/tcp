@@ -2,13 +2,6 @@ import homeInactive from '../assets/images/icon-home-normal.png';
 import shopInactive from '../assets/images/icon-shop-normal.png';
 import accountInactive from '../assets/images/icon-user-normal.png';
 import walletInactive from '../assets/images/icon-wallet-normal.png';
-import amexCard from '../assets/images/amex-small.png';
-import dicoveryCard from '../assets/images/disc-small.png';
-import giftCardSmall from '../assets/images/gift-card-small.png';
-import masterCard from '../assets/images/mc-small.png';
-import plccCard from '../assets/images/place-card-small.png';
-import venmoCard from '../assets/images/venmo-blue-acceptance-mark.svg';
-import visaSmall from '../assets/images/visa-small.png';
 
 import tcpHomeActive from '../assets/images/tcp/icon-home-active.png';
 import tcpBrandLogo from '../assets/images/tcp/brand-logo.png';
@@ -27,13 +20,6 @@ export default {
   shopInactive,
   accountInactive,
   walletInactive,
-  amexCard,
-  dicoveryCard,
-  giftCardSmall,
-  masterCard,
-  plccCard,
-  venmoCard,
-  visaSmall,
   tcp: {
     homeActive: tcpHomeActive,
     brandLogo: tcpBrandLogo,
