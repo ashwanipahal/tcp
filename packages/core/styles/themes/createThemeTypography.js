@@ -5,7 +5,6 @@ import {
   TEXT_ALIGNS,
   FONT_WEIGHTS,
   FONT_SIZES,
-  MOBILE_FONTS,
 } from './typography.constants';
 
 const BASE_HEADING_TYPOGRAPHY = {
@@ -26,7 +25,6 @@ function createThemeTypography(theme = {}) {
     textAligns = TEXT_ALIGNS,
     fontWeights = FONT_WEIGHTS,
     fontSizes = FONT_SIZES,
-    mobileFonts = MOBILE_FONTS,
   } = typography;
 
   const {
@@ -98,7 +96,6 @@ function createThemeTypography(theme = {}) {
     nav,
     listMenu,
     navMinified,
-    mobileFonts,
   };
 }
 

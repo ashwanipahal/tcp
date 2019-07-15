@@ -11,6 +11,7 @@ type Props = {
   mainContent: Function,
   active: string,
   className: string,
+  router: object,
 };
 
 /**
@@ -20,7 +21,8 @@ type Props = {
  * @param {navData} navData The list of links in the left nav as config object
  * @param {mainContent} mainContent The component to be rendered on the right side
  */
-const MyAccountLayoutView = ({ navData, mainContent: MainContent, active, className }: Props) => {
+const MyAccountLayoutView = (props: Props) => {
+  const { navData, mainContent: MainContent, active, className, router } = props;
   return (
     <div className={className}>
       <Row>
@@ -28,7 +30,7 @@ const MyAccountLayoutView = ({ navData, mainContent: MainContent, active, classN
           <MyAccountLeftNav navData={navData} active={active} />
         </Col>
         <Col colSize={{ large: 10, medium: 8, small: 6 }}>
-          <MainContent />
+          <MainContent router={router} />
         </Col>
       </Row>
     </div>
