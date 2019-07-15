@@ -1,19 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CustomButton from '../views/Button.native';
+import ImageComp from '../views/Image.native';
 
-describe('CustomButton', () => {
+describe('ImageComp', () => {
   let component;
-  const props = {
-    id: 'btn',
-  };
 
   beforeEach(() => {
-    component = shallow(<CustomButton {...props} />);
+    component = shallow(<ImageComp id="ImageComp" />);
   });
 
   it('should be defined', () => {
-    expect(CustomButton).toBeDefined();
+    expect(ImageComp).toBeDefined();
   });
 
   it('should render correctly', () => {
@@ -21,6 +18,6 @@ describe('CustomButton', () => {
   });
 
   it('should return abc component value one', () => {
-    expect(component.find('#btn')).toHaveLength(1);
+    expect(component.find('#ImageComp')).toHaveLength(1);
   });
 });
