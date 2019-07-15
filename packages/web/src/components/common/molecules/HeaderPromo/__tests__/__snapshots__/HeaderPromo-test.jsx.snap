@@ -38,7 +38,6 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
             className="styled-text black-bold"
             color="text.primary"
             component="p"
-            dataLocator=""
             fontFamily="secondary"
             fontSize={
               Array [
@@ -58,7 +57,6 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
             className="styled-text-line style2"
             color="text.primary"
             component="p"
-            dataLocator=""
             fontFamily="secondary"
             fontSize={
               Array [
@@ -107,7 +105,6 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
             className="styled-text green-bold"
             color="text.primary"
             component="p"
-            dataLocator=""
             fontFamily="secondary"
             fontSize={
               Array [
@@ -127,7 +124,6 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
             className="styled-text-line style2"
             color="text.primary"
             component="p"
-            dataLocator=""
             fontFamily="secondary"
             fontSize={
               Array [
@@ -176,7 +172,6 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
             className="styled-text black-bold"
             color="text.primary"
             component="p"
-            dataLocator=""
             fontFamily="secondary"
             fontSize={
               Array [
@@ -196,7 +191,6 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
             className="styled-text-line style2"
             color="text.primary"
             component="p"
-            dataLocator=""
             fontFamily="secondary"
             fontSize={
               Array [
@@ -280,7 +274,6 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
           className="styled-text black-bold"
           color="text.primary"
           component="p"
-          dataLocator=""
           fontFamily="secondary"
           fontSize={
             Array [
@@ -300,7 +293,6 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
           className="styled-text-line style2"
           color="text.primary"
           component="p"
-          dataLocator=""
           fontFamily="secondary"
           fontSize={
             Array [
@@ -339,7 +331,6 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
           className="styled-text green-bold"
           color="text.primary"
           component="p"
-          dataLocator=""
           fontFamily="secondary"
           fontSize={
             Array [
@@ -359,7 +350,6 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
           className="styled-text-line style2"
           color="text.primary"
           component="p"
-          dataLocator=""
           fontFamily="secondary"
           fontSize={
             Array [
@@ -398,7 +388,6 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
           className="styled-text black-bold"
           color="text.primary"
           component="p"
-          dataLocator=""
           fontFamily="secondary"
           fontSize={
             Array [
@@ -418,7 +407,6 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
           className="styled-text-line style2"
           color="text.primary"
           component="p"
-          dataLocator=""
           fontFamily="secondary"
           fontSize={
             Array [
