@@ -1,7 +1,4 @@
 import React from 'react';
-// import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-// import styles from '../styles/Payment.style';
-// import DeleteCardModal from './DeleteCardModal';
 import { CardList } from './CardList.view';
 
 // @flow
@@ -9,9 +6,6 @@ import { CardList } from './CardList.view';
 type Props = {
   labels: object,
   setDeleteModalMountState: Function,
-  // deleteModalMountedState: false,
-  // onDeleteCard: Function,
-  // showUpdatedNotificationOnModal: any,
   cardList: Array<object>,
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
