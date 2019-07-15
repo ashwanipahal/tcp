@@ -1,4 +1,5 @@
 import superagent from 'superagent';
+import jsonp from 'superagent-jsonp';
 import { API_CONFIG } from '../../config';
 
 /**
@@ -13,9 +14,16 @@ const externalAPIClient = (apiConfig, reqObj) => {
   const requestUrl = webService.URI;
   const reqTimeout = API_CONFIG.apiRequestTimeout;
   const requestType = webService.method.toLowerCase();
-  const request = superagent[requestType](requestUrl)
-    .accept(API_CONFIG.apiContentType)
-    .timeout(reqTimeout);
+  let request = null;
+  if (webService.jsonP) {
+    request = superagent[requestType](requestUrl).use(jsonp);
+    // .end((err, res) => {
+    // });
+  } else {
+    request = superagent[requestType](requestUrl)
+      .accept(API_CONFIG.apiContentType)
+      .timeout(reqTimeout);
+  }
   if (reqObj.header) {
     request.set(reqObj.header);
   }
