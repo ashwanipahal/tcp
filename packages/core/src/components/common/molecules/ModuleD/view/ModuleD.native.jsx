@@ -1,8 +1,8 @@
 import React from 'react';
 import { FlatList, TouchableOpacity } from 'react-native';
-import { Anchor, Button, Image } from '../../../atoms';
+import { Heading, Anchor, Button, Image } from '../../../atoms';
 import { getScreenWidth, UrlHandler } from '../../../../../utils/utils.native';
-import { ButtonWrapper, Heading, ModuleDWrapper, Tile } from '../ModuleD.style.native';
+import { ButtonWrapper, ModuleDWrapper, Tile, HeadingWrapper } from '../ModuleD.style.native';
 import colors from '../../../../../../styles/themes/TCP/colors';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
 
@@ -21,7 +21,7 @@ const keyExtractor = (_, index) => index.toString();
  * @function getUrlWithCrop : Return updated image URL.
  * @desc Returns updated image URL with crop details.
  *
- * @param {String} url : Image URL received from CMS.
+ * @param {String} url : Image URL received from CMS.a
  * @return {String} function returns updated image URL as a string.
  */
 const getUrlWithCrop = url => {
@@ -53,8 +53,8 @@ const renderItem = item => {
           }}
         />
       </TouchableOpacity>
+
       <Anchor
-        centered="centered"
         fontSizeVariation="large"
         onPress={() => {
           UrlHandler(link.url);
@@ -94,7 +94,19 @@ const ModuleD = (props: Props) => {
     <ModuleDWrapper>
       {headingText && (
         <TouchableOpacity accessibilityRole="button" onPress={() => UrlHandler(url)}>
-          <Heading>{headingText}</Heading>
+          <HeadingWrapper>
+            <Heading
+              fontFamily={['primary']}
+              fontSize={['fs36', 'fs42', 'fs48']}
+              letterSpacing={['ls167', 'ls257']}
+              textAlign={['center', 'center']}
+              color={['text.primary']}
+              fontWeight="extrabold"
+              text-transform="uppercase"
+            >
+              {headingText}
+            </Heading>
+          </HeadingWrapper>
         </TouchableOpacity>
       )}
       {smallCompImage && (
@@ -109,14 +121,15 @@ const ModuleD = (props: Props) => {
         <ButtonWrapper>
           <Button
             color={colors.BUTTON.WHITE.TEXT}
-            title={singleCTAButton.title}
             accessibilityLabel={singleCTAButton.title}
             buttonVariation="variable-width"
             style={buttonWidth}
             onPress={() => {
               UrlHandler(singleCTAButton.url);
             }}
-          />
+          >
+            {singleCTAButton.title}
+          </Button>
         </ButtonWrapper>
       )}
     </ModuleDWrapper>

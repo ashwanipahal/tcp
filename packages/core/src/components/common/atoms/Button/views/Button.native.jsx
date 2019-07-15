@@ -31,7 +31,7 @@ type Props = {
 const CustomButton = (props: Props) => {
   const { title, id, buttonVariation, fullWidth, customStyle, ...otherProps } = props;
   return (
-    <TouchableOpacity accessibilityRole="none">
+    <TouchableOpacity accessibilityRole="button">
       <Text
         title={title}
         fullWidth={fullWidth}
