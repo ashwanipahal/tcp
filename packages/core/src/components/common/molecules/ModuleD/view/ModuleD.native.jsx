@@ -103,7 +103,6 @@ const ModuleD = (props: Props) => {
               textAlign={['center', 'center']}
               color={['text.primary']}
               fontWeight="extrabold"
-              text-transform="uppercase"
               text={headingText}
             />
           </HeadingWrapper>
