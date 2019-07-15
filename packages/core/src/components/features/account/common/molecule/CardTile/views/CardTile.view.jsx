@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, reset } from 'redux-form';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Badge from '../../../../../../common/atoms/Badge';
@@ -28,6 +28,8 @@ type Props = {
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
   showNotificationCaptcha: any,
+  form: any,
+  dispatch: Function,
 };
 class CardTile extends React.Component<Props> {
   constructor(props) {
@@ -35,6 +37,11 @@ class CardTile extends React.Component<Props> {
     this.paymentMethodId = PAYMENT_CONSTANTS.CREDIT_CARDS_PAYMETHODID;
     this.state = { isTokenDirty: false, HideCaptchaBtn: false, balance: null };
     this.handleCheckBalanceClick = this.handleCheckBalanceClick.bind(this);
+  }
+
+  componentWillUnmount() {
+    const { form, dispatch } = this.props;
+    dispatch(reset(form));
   }
 
   getMakeDefaultBadge = () => {
@@ -303,7 +310,7 @@ class CardTile extends React.Component<Props> {
   };
 
   render() {
-    const { card, className, showNotificationCaptcha, labels } = this.props;
+    const { card, className, showNotificationCaptcha, labels, form } = this.props;
     const { HideCaptchaBtn } = this.state;
     const isCreditCard = card.ccType !== 'GiftCard' && card.ccType !== 'VENMO';
     const isVenmo = card.ccType === 'VENMO';
@@ -343,7 +350,7 @@ class CardTile extends React.Component<Props> {
         </div>
         {card.ccType === 'GiftCard' && (
           <div className="giftcardTile__wrapper">
-            <form name={className} onSubmit={this.handleSubmit} autoComplete="off" noValidate>
+            <form name={form} onSubmit={this.handleSubmit} autoComplete="off" noValidate>
               <div className="giftcardTile__row">
                 {!HideCaptchaBtn && !isVenmo && !isCreditCard && (
                   <Recaptcha
