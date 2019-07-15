@@ -4,7 +4,7 @@ const StyledRow = css`
   ${props =>
     props.theme.gridDimensions.gridBreakPointsKeys.map(
       key => `
-    @media ${props.theme.mediaQuery[key]} {
+      ${key !== 'small' ? `@media ${props.theme.mediaQuery[key]} {` : ''}
       ${
         !props.noFlex
           ? `
@@ -29,11 +29,11 @@ const StyledRow = css`
           width: calc(100% - ${props.theme.gridDimensions.gridOffsetObj[key] * 2}px);
           `
       }
-    }`
+      ${key !== 'small' ? `}` : ''}`
     )}
 
-  > div:last-child {
-    padding-right: 0;
+  > *:last-child {
+    margin-right: 0;
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

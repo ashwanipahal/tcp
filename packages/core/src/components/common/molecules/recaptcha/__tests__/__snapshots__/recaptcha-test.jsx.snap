@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Recaptcha should call set time out for check ready 1`] = `
+<div
+  className="recaptcha"
+>
+  <div
+    data-sitekey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+  />
+</div>
+`;
+
+exports[`Recaptcha should render correctly 1`] = `
+<div
+  className="recaptcha"
+>
+  <div
+    data-sitekey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+  />
+</div>
+`;

@@ -15,6 +15,10 @@ const namedModulesMap = {
       'https://maps.googleapis.com/maps/api/js?v=3.27&client=gme-thechildrensplace&libraries=places,geometry',
     loadPromise: null,
   },
+  recaptcha: {
+    url: 'https://www.google.com/recaptcha/api.js',
+    loadPromise: null,
+  },
 };
 export function requireUrlScript(url) {
   return new Promise((resolve, reject) => {

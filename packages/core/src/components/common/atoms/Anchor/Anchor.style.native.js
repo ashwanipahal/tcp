@@ -1,7 +1,6 @@
 import { css } from 'styled-components/native';
 
 const AnchorStyles = css`
-  background: ${props => props.theme.colorPalette.white};
   ${props =>
     props.anchorVariation === 'primary'
       ? `

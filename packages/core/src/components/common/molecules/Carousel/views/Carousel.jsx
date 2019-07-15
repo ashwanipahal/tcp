@@ -1,12 +1,12 @@
 // @flow
 import React from 'react';
 import Slider from 'react-slick';
-import config from './config';
-import { Image } from '../../atoms';
-import { getIconPath } from '../../../../utils';
-import CarouselStyle from './Carousel.style';
-import withStyles from '../../hoc/withStyles';
-import errorBoundary from '../../hoc/errorBoundary';
+import config from '../config';
+import { Image } from '../../../atoms';
+import { getIconPath } from '../../../../../utils';
+import CarouselStyle from '../Carousel.style';
+import withStyles from '../../../hoc/withStyles';
+import errorBoundary from '../../../hoc/errorBoundary';
 
 const defaults = { ...config.CAROUSEL_DEFAULTS };
 

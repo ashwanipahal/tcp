@@ -2,7 +2,7 @@
 
 exports[`AccordionItem component renders correctly 1`] = `
 <Fragment>
-  <Styled(AccordionHeader)
+  <AccordionHeader
     className="accordion-item accordion active"
     index={1}
     titleText="Heading"
@@ -13,7 +13,7 @@ exports[`AccordionItem component renders correctly 1`] = `
 
 exports[`AccordionItem component renders correctly with no index 1`] = `
 <Fragment>
-  <Styled(AccordionHeader)
+  <AccordionHeader
     className="accordion-item accordion active"
     index={0}
     titleText="Heading"

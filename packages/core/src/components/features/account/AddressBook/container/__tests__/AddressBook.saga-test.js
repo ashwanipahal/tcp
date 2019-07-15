@@ -36,8 +36,8 @@ describe('AddressList saga', () => {
   describe('AddressListSaga', () => {
     it('should return correct takeLatest effect', () => {
       const generator = AddressBookSaga();
-      const takeLatestDescriptor = generator.next().value;
       const cachedMethod = validateReduxCache(getAddressList);
+      const takeLatestDescriptor = generator.next().value;
       const expected = takeLatest(ADDRESS_BOOK_CONSTANTS.GET_ADDRESS_LIST, cachedMethod);
       expect(takeLatestDescriptor.toString()).toMatch(expected.toString());
     });

@@ -4,9 +4,9 @@ import { PropTypes } from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../BodyCopy.style';
 
-const BodyCopy = ({ children, className, component: Component, dataLocator }) => {
+const BodyCopy = ({ children, className, component: Component, ...others }) => {
   return (
-    <Component className={className} data-locator={dataLocator}>
+    <Component className={className} {...others}>
       {children}
     </Component>
   );
@@ -23,7 +23,6 @@ BodyCopy.defaultProps = {
   letterSpacing: 'normal',
   textAlign: 'left',
   color: 'text.primary',
-  dataLocator: '',
 };
 
 BodyCopy.propTypes = {
