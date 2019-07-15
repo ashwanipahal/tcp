@@ -5,6 +5,15 @@ export const ButtonWrapper = styled.View`
   display: flex;
 `;
 
+export const ViewWrapper = styled.View`
+  align-items: center;
+`;
+
+export const HeadingWrapper = styled.View`
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+`;
+
 export const Heading = styled.Text`
   color: ${props => props.theme.colors.PRIMARY.DARK};
   font-size: ${props => props.theme.fonts.fontSize.heading.large.h3}px;
@@ -35,4 +44,6 @@ export default {
   Heading,
   ModuleDWrapper,
   Tile,
+  HeadingWrapper,
+  ViewWrapper,
 };
