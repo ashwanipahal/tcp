@@ -7,7 +7,6 @@ import CreditCardStyles from '../styles/CreditCardModalInfo.style';
 import Address from '../../../../common/molecules/Address';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
-import Button from '../../../../common/atoms/Button';
 
 // @flow
 type Props = {
@@ -98,7 +97,7 @@ class CreditCardModalInfo extends React.Component<Props> {
             </BodyCopy>
           </Col>
         </Row>
-        <Row fullBleed>
+        <Row fullBleed className="CreditCardAddress">
           <Col
             colSize={{
               small: 6,

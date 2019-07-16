@@ -20,7 +20,7 @@ import {
   getShowNotificationCaptchaState,
 } from './Payment.selectors';
 import labels from './Payment.labels';
-import { PaymentView } from '../views/PaymentView/views/Payment.view';
+import PaymentView from '../views/PaymentView';
 
 // @flow
 type Props = {
