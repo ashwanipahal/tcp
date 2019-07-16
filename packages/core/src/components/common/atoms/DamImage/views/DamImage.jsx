@@ -3,36 +3,52 @@ import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
 
 /*
-  Based on imgSizes passed on props, it will create the srcset accordingly;
-  If user only send the Cloudinary imgPath, it add the configuration according to the imgSizes;
-  If width found on imgConfigs (Cloudinary config) then it will use to create srcset;
+  Based on breakpoints defined on theme, it will create the srcset according to
+  the breakpoints; If user only send the Cloudinary imgPath, it add the
+  configuration according to the breakpoints; For ony adding width property;
+  If width found on imgConfigs (cloudinary config) then it will use to create srcset;
 */
 
 const getSrcSetConfig = props => {
-  const { imgSizes, path, imgPath, imgConfigs, imgQualityPlus } = props;
+  const { breakpoints, path, imgPath, imgConfigs } = props;
 
-  return imgSizes.map((imgSize, i) => {
-    let cloudinaryImgConfig = imgConfigs[i] || '';
+  return breakpoints.keys
+    .map((breakpointKey, breakpointKeyIndex) => {
+      const breakpointValue = breakpoints.values[breakpointKey];
+      let cloudinaryImgConfig = imgConfigs[breakpointKeyIndex] || '';
 
-    if (!cloudinaryImgConfig) {
-      cloudinaryImgConfig = `w_${imgSize + imgQualityPlus}`;
-    }
+      if (!cloudinaryImgConfig) {
+        cloudinaryImgConfig = breakpointValue ? `w_${breakpointValue}` : null;
+      }
 
-    return { url: `${path}/${cloudinaryImgConfig}/${imgPath}`, imgSize };
-  });
+      return cloudinaryImgConfig
+        ? { url: `${path}/${cloudinaryImgConfig}/${imgPath}`, size: breakpointValue }
+        : null;
+    })
+    .filter(val => val);
 };
 
 const DamImage = props => {
-  const { theme, imgQualityPlus, imgSizes, path, imgPath, imgConfigs, alt, ...other } = props;
+  const {
+    theme: { breakpoints },
+    path,
+    imgPath,
+    imgConfigs,
+    alt,
+    ...other
+  } = props;
 
-  const srcSetConfigs = getSrcSetConfig(props);
+  const srcSetConfigs = getSrcSetConfig({ breakpoints, path, imgPath, imgConfigs });
   return (
     <picture>
-      {srcSetConfigs.map(config => {
-        const { url, imgSize } = config;
-        return <source media={`(max-width: ${imgSize}px)`} srcSet={url} key={url} />;
-      })}
-      <img src={srcSetConfigs[srcSetConfigs.length - 1].url} alt={alt} {...other} />
+      {srcSetConfigs
+        .slice(0)
+        .reverse()
+        .map(config => {
+          const { url, size } = config;
+          return size ? <source media={`(min-width: ${size}px)`} srcSet={url} key={url} /> : null;
+        })}
+      <img src={srcSetConfigs[0].url} alt={alt} title={alt} {...other} />
     </picture>
   );
 };
@@ -40,8 +56,6 @@ const DamImage = props => {
 DamImage.defaultProps = {
   theme: {},
   imgConfigs: [],
-  imgSizes: [468, 768, 1024],
-  imgQualityPlus: 20,
   path: 'https://res.cloudinary.com/tcp-dam-test/image/upload',
 };
 
@@ -57,21 +71,16 @@ DamImage.propTypes = {
 
   /*
     Configuration of the cloudinary image for the responsive images;
-    The configuration should be passed according to the imgSizes props; Based on
-    that the configuration will be added.
+    The configuration should be passed as a mobile first approach;
+    For instance in following, First element is mobile(default) and
+    then further breakpoints
     [
-      'c_crop,g_face:center,q_auto:best,w_1024',
-      'c_crop,g_face:center,q_auto:best,w_768',
       'c_crop,g_face:center,q_auto:best,w_468',
+      'c_crop,g_face:center,q_auto:best,w_768',
+      'c_crop,g_face:center,q_auto:best,w_1024',
     ]
   */
   imgConfigs: PropTypes.arrayOf(PropTypes.string),
-
-  /* Based on this configuration the picture source elements will be created. */
-  imgSizes: PropTypes.arrayOf(PropTypes.number),
-
-  /* Following pixel will be added on the default imageSizes props */
-  imgQualityPlus: PropTypes.number,
 
   /* Description of the image */
   alt: PropTypes.string.isRequired,

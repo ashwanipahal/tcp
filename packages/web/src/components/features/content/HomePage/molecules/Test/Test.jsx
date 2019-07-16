@@ -78,7 +78,22 @@ const Test = () => {
   return (
     <div>
       <div>
-        <DamImage imgPath="v1561401513/ecom/assets/content/tcp/us/home/transform/home_modh_sample_qtylh0.png" />
+        <DamImage
+          alt="Dancing Boy"
+          imgPath="v1561401513/ecom/assets/content/tcp/us/home/transform/home_modh_sample_qtylh0.png"
+        />
+      </div>
+      <div>
+        <Heading variant="h2">Dam Image with image configs</Heading>
+        <DamImage
+          alt="Dancing Boy"
+          imgConfigs={[
+            'q_auto:best,w_470',
+            'c_fill,g_face:center,q_auto:best,w_780',
+            'c_crop,g_face:auto,q_auto:best,w_1100',
+          ]}
+          imgPath="v1561401513/ecom/assets/content/tcp/us/home/transform/home_modh_sample_qtylh0.png"
+        />
       </div>
       <Row>
         <BodyCopy
