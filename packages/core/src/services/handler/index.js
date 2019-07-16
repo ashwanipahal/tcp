@@ -1,1 +1,7 @@
-export { default, executeStatefulAPICall, executeUnbxdAPICall } from './handler';
+export {
+  default,
+  executeStatefulAPICall,
+  executeUnbxdAPICall,
+  executeExternalAPICall,
+  getAPIConfig,
+} from './handler';

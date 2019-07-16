@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmailSignupModal component renders correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(BodyCopy)
+    className="thank-you__label"
+    color="text.primary"
+    component="p"
+    fontFamily="primary"
+    fontSize={
+      Array [
+        "fs28",
+        "fs28",
+        "fs38",
+      ]
+    }
+    fontWeight="black"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="center"
+  />
+  <Styled(BodyCopy)
+    className="confirmation-label"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize={
+      Array [
+        "fs18",
+        "fs18",
+        "fs22",
+      ]
+    }
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="center"
+  />
+  <Styled(Image)
+    alt="undefined-icon"
+    className="confirmation-image"
+    src="/static/images/chat.svg"
+  />
+  <Styled(BodyCopy)
+    className="first-label"
+    color="primary.main"
+    component="p"
+    fontFamily="secondary"
+    fontSize={
+      Array [
+        "fs22",
+        "fs22",
+        "fs28",
+      ]
+    }
+    fontWeight="semibold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="center"
+  />
+  <Styled(BodyCopy)
+    className="redeem-label"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize={
+      Array [
+        "fs16",
+        "f16",
+        "fs18",
+      ]
+    }
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="center"
+  />
+  <Styled(BodyCopy)
+    className="tnc-label"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs10"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="center"
+  />
+</div>
+`;
