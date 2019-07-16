@@ -2,7 +2,7 @@ import homeInactive from '../assets/images/icon-home-normal.png';
 import shopInactive from '../assets/images/icon-shop-normal.png';
 import accountInactive from '../assets/images/icon-user-normal.png';
 import walletInactive from '../assets/images/icon-wallet-normal.png';
-import closeIcon from '../assets/images/mobile-close.png';
+// import closeIcon from '../assets/images/mobile-close.png';
 
 import tcpHomeActive from '../assets/images/tcp/icon-home-active.png';
 import tcpBrandLogo from '../assets/images/tcp/brand-logo.png';
@@ -21,7 +21,7 @@ export default {
   shopInactive,
   accountInactive,
   walletInactive,
-  closeIcon,
+  // closeIcon,
   tcp: {
     homeActive: tcpHomeActive,
     brandLogo: tcpBrandLogo,
