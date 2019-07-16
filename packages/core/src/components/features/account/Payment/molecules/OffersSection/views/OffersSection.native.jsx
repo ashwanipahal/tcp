@@ -26,7 +26,6 @@ const OffersSection = (props: Props) => {
             source={require('../../../../../../../../../mobileapp/src/assets/images/card-smile.png')}
           />
         </ImgWrapper>
-
         <RichTextStyle>
           <RichText source={{ html: labels.ACC_LBL_OFFERS_MESSAGE_MOBILE }} />
         </RichTextStyle>

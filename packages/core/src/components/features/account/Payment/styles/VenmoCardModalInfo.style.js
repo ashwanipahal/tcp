@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-const deleteCardModalStyle = css`
+const VenmoCardModalInfoStyle = css`
   @media ${props => props.theme.mediaQuery.medium} {
     margin: 0 80px;
   }
@@ -8,9 +8,6 @@ const deleteCardModalStyle = css`
     .deleteCardModal__card {
       display: block;
     }
-  }
-  .deleteCardModal__venmo_card {
-    padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
   .deleteCardModal__cardInfo {
     float: left;
@@ -53,10 +50,6 @@ const deleteCardModalStyle = css`
       width: 75%;
     }
   }
-  .deleteCardModal__venmo_desc {
-    display: flex;
-    justify-content: center;
-  }
   .deleteCardModal__img {
     width: 15%;
     float: left;
@@ -88,4 +81,4 @@ const deleteCardModalStyle = css`
   }
 `;
 
-export default deleteCardModalStyle;
+export default VenmoCardModalInfoStyle;
