@@ -42,14 +42,13 @@ class SignupWrapper extends React.PureComponent {
 
   onFormSubmit = e => {
     e.preventDefault();
-    const { signup } = this.state;
-    const { submitEmailSubscription, verifyEmailAddress } = this.props;
+    this.submitForm();
+  };
 
-    if (this.checkEmailValid()) {
-      submitEmailSubscription(signup);
-    } else {
-      this.pendingEmailFormSubmit = true;
-      verifyEmailAddress(signup);
+  onSignUpInputKeyUp = e => {
+    const key = e.keyCode || e.which;
+    if (key === 13) {
+      this.submitForm();
     }
   };
 
@@ -68,10 +67,10 @@ class SignupWrapper extends React.PureComponent {
     const { isEmailValid } = this.props;
 
     if (isEmailValid && signup.length && !this.checkEmailValid()) {
-      validationClass = 'field-label async-error';
+      validationClass = 'async-error';
     }
     if (isEmailValid && signup.length && this.checkEmailValid()) {
-      validationClass = 'field-label async-success';
+      validationClass = 'async-success';
     }
     return validationClass;
   }
@@ -83,6 +82,18 @@ class SignupWrapper extends React.PureComponent {
     dispatch(reset('SignupWrapper'));
     clearEmailSignupForm();
   };
+
+  submitForm() {
+    const { signup } = this.state;
+    const { submitEmailSubscription, verifyEmailAddress } = this.props;
+
+    if (this.checkEmailValid()) {
+      submitEmailSubscription(signup);
+    } else {
+      this.pendingEmailFormSubmit = true;
+      verifyEmailAddress(signup);
+    }
+  }
 
   checkEmailValid() {
     const { isEmailValid } = this.props;
@@ -175,21 +186,24 @@ class SignupWrapper extends React.PureComponent {
                           maxLength={50}
                           dataLocator="signup_textbox"
                           onChange={this.onSignUpInputChange}
+                          onKeyPress={this.onSignUpInputKeyUp}
                           onBlur={this.onSignUpInputBlur}
-                          className={validationClass}
+                          className={`field-label ${validationClass}`}
                           showSuccessCheck={this.checkEmailValid()}
                           isRequired
                         />
-                        {isEmailValid && !this.checkEmailValid() && signup.length > 0 && (
-                          <BodyCopy
-                            aria-live="assertive"
-                            fontSize="fs12"
-                            fontFamily="secondary"
-                            color="secondary.dark"
-                          >
-                            {formViewConfig.validationErrorLabel}
-                          </BodyCopy>
-                        )}
+
+                        <BodyCopy
+                          aria-live="assertive"
+                          fontSize="fs12"
+                          fontFamily="secondary"
+                          color="secondary.dark"
+                        >
+                          {isEmailValid && !this.checkEmailValid() && signup.length > 0
+                            ? formViewConfig.validationErrorLabel
+                            : null}
+                        </BodyCopy>
+
                         <BodyCopy fontSize="fs12" fontFamily="secondary" className="terms-label">
                           {formViewConfig.termsTextLabel}
                         </BodyCopy>

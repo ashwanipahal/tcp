@@ -42,11 +42,13 @@ const TextBox = ({
   dataLocator,
   showSuccessCheck,
   isRequired,
+  ...others
 }: Props): Node => {
   const elemValue = input.value;
   return (
     <label htmlFor={input.name} className={`${className} input-fields-wrapper`}>
       <input
+        {...others}
         {...input}
         id={id}
         aria-label={ariaLabel}

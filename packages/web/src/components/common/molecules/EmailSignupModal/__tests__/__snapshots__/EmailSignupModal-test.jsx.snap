@@ -198,7 +198,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
               }
             >
               <Field
-                className=""
+                className="field-label "
                 component={
                   Object {
                     "$$typeof": Symbol(react.forward_ref),
@@ -342,8 +342,21 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                 name="signup"
                 onBlur={[Function]}
                 onChange={[Function]}
+                onKeyPress={[Function]}
                 showSuccessCheck={true}
                 type="text"
+              />
+              <Styled(BodyCopy)
+                aria-live="assertive"
+                className={null}
+                color="secondary.dark"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                textAlign="left"
               />
               <Styled(BodyCopy)
                 className="terms-label"
