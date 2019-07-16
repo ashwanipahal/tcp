@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
-import { LayoutAnimation, Image, View, TouchableOpacity, Text } from 'react-native';
+import { LayoutAnimation, Image, View, TouchableOpacity } from 'react-native';
 import { PropTypes } from 'prop-types';
 import styles from './AnimatedBrandChangeIcon.style';
 import tcpLogo from '../../../brand_config/main/config/tcp.png';
 import gymboreeLogo from '../../../brand_config/gymboree/config/gymboree.png';
+import NavBarIcon from '../../common/atoms/NavBarIcon';
 
 const {
   container,
-  containerAnimated,
   logo,
   logoHidden,
-  crossIconFinalState,
   iconInitialState,
   firstIconFinalState,
   secondIconFinalState,
@@ -20,9 +19,13 @@ const {
 class AnimatedBrandChangeIcon extends Component {
   constructor(props) {
     super(props);
-    this.state = { openSwitch: false };
+    this.state = { openSwitch: true };
   }
 
+  /**
+   * To change the state of position of logos before and
+   * after the animation it behaves like a toggle.
+   */
   changePosition = () => {
     LayoutAnimation.easeInEaseOut();
     const { openSwitch } = this.state;
@@ -31,17 +34,35 @@ class AnimatedBrandChangeIcon extends Component {
     });
   };
 
+  /**
+   * A Higher Order Component function that returns the child
+   * or the cancel button along with two brand logos.
+   * openSwitch is a flag and children is the child component.
+   */
   animatedComponent = (openSwitch, children) => {
     return (
-      <View style={openSwitch ? containerAnimated : container}>
+      <View style={container}>
         {/* children component that is made clickable */}
         <TouchableOpacity
           accessibilityTraits="none"
           accessibilityComponentType="none"
           onPress={this.changePosition}
-          style={openSwitch ? logoHidden : logo}
+          style={logo}
         >
-          {openSwitch ? null : children}
+          {openSwitch ? (
+            <NavBarIcon
+              iconActive="brand-logo"
+              iconInactive="brand-logo"
+              style={{
+                icon: {
+                  width: 100,
+                  height: 71,
+                },
+              }}
+            />
+          ) : (
+            children
+          )}
         </TouchableOpacity>
         <TouchableOpacity
           accessibilityTraits="none"
@@ -60,15 +81,6 @@ class AnimatedBrandChangeIcon extends Component {
         >
           {/* second icon for brand 2 which remains hidden in initial state */}
           <Image source={gymboreeLogo} style={openSwitch ? logo : logoHidden} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          accessibilityTraits="none"
-          accessibilityComponentType="none"
-          onPress={this.changePosition}
-          style={openSwitch ? crossIconFinalState : logoHidden}
-        >
-          {/* third icon for cancel button */}
-          <Text>X</Text>
         </TouchableOpacity>
       </View>
     );

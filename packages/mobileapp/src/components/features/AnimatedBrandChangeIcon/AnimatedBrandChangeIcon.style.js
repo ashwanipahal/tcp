@@ -1,28 +1,11 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import colors from '../../../../../core/styles/themes/colors/common';
-
-const { paleWhite } = colors;
 
 const styles = StyleSheet.create({
   container: {
     left: -20,
   },
-  containerAnimated: {
-    bottom: 0,
-    left: -20,
-    position: 'absolute',
-  },
-  crossIconFinalState: {
-    alignItems: 'center',
-    backgroundColor: paleWhite,
-    borderRadius: 35,
-    display: 'flex',
-    height: 66,
-    justifyContent: 'center',
-    width: 66,
-  },
   firstIconFinalState: {
-    bottom: 66,
+    bottom: 90,
     left: -Dimensions.get('window').width / 6,
     position: 'absolute',
   },
@@ -42,9 +25,9 @@ const styles = StyleSheet.create({
     width: 0,
   },
   secondIconFinalState: {
-    bottom: 66,
+    bottom: 90,
     position: 'absolute',
-    right: -Dimensions.get('window').width / 6,
+    right: -Dimensions.get('window').width / 5,
   },
 });
 
