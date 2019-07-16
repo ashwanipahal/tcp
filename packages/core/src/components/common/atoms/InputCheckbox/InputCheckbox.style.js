@@ -44,6 +44,10 @@ const styles = css`
     top: 5px;
     position: absolute;
   }
+
+  & .disabled {
+    opacity: 0.5;
+  }
 `;
 
 export default styles;

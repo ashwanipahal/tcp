@@ -400,22 +400,6 @@ exports[`CardTile should render correctly with gift card 1`] = `
       >
         Card ending in 6765
       </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__expiry"
-        color="text.primary"
-        component="p"
-        dataLocator="payment-giftcardexpiretext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh115"
-        tag="span"
-        textAlign="left"
-      >
-        Expires on 10/2025
-      </Styled(BodyCopy)>
     </div>
     <div
       className="cardTile__defaultSection"
@@ -583,7 +567,6 @@ exports[`CardTile should render correctly with gift card 1`] = `
         <Styled(Button)
           buttonVariation="variable-width"
           data-locator="gift-card-recaptchcb"
-          disabled={false}
           fill="BLUE"
           onClick={[Function]}
           type="submit"
@@ -788,22 +771,6 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       >
         Card ending in 6765
       </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__expiry"
-        color="text.primary"
-        component="p"
-        dataLocator="payment-giftcardexpiretext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh115"
-        tag="span"
-        textAlign="left"
-      >
-        Expires on 10/2025
-      </Styled(BodyCopy)>
     </div>
     <div
       className="cardTile__defaultSection"
@@ -971,7 +938,6 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         <Styled(Button)
           buttonVariation="variable-width"
           data-locator="gift-card-recaptchcb"
-          disabled={false}
           fill="BLUE"
           onClick={[Function]}
           type="submit"
@@ -1348,22 +1314,6 @@ exports[`CardTile should show loading 1`] = `
       >
         Card ending in 6765
       </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__expiry"
-        color="text.primary"
-        component="p"
-        dataLocator="payment-giftcardexpiretext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh115"
-        tag="span"
-        textAlign="left"
-      >
-        Expires on 10/2025
-      </Styled(BodyCopy)>
     </div>
     <div
       className="cardTile__defaultSection"
@@ -1538,34 +1488,6 @@ exports[`CardTile should show loading 1`] = `
         >
           LOADING...
         </Styled(BodyCopy)>
-        <Styled(BodyCopy)
-          className=""
-          color="text.primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs24"
-          fontWeight="extrabold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          lineHeights="lh115"
-          tag="span"
-          textAlign="left"
-        >
-          LOADING...
-        </Styled(BodyCopy)>
-        <Styled(BodyCopy)
-          className=""
-          color="text.primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs28"
-          fontWeight="extrabold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          lineHeights="lh115"
-          tag="span"
-          textAlign="left"
-        />
       </div>
     </form>
   </div>
@@ -1626,22 +1548,6 @@ exports[`CardTile should show remining balance 1`] = `
       >
         Card ending in 6765
       </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__expiry"
-        color="text.primary"
-        component="p"
-        dataLocator="payment-giftcardexpiretext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh115"
-        tag="span"
-        textAlign="left"
-      >
-        Expires on 10/2025
-      </Styled(BodyCopy)>
     </div>
     <div
       className="cardTile__defaultSection"
@@ -1806,21 +1712,6 @@ exports[`CardTile should show remining balance 1`] = `
           color="text.primary"
           component="p"
           fontFamily="secondary"
-          fontSize="fs24"
-          fontWeight="extrabold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          lineHeights="lh115"
-          tag="span"
-          textAlign="left"
-        >
-          LOADING...
-        </Styled(BodyCopy)>
-        <Styled(BodyCopy)
-          className=""
-          color="text.primary"
-          component="p"
-          fontFamily="secondary"
           fontSize="fs14"
           fontWeight="semibold"
           letterSpacing="normal"
@@ -1828,7 +1719,9 @@ exports[`CardTile should show remining balance 1`] = `
           lineHeights="lh115"
           tag="span"
           textAlign="left"
-        />
+        >
+          Remaining balance
+        </Styled(BodyCopy)>
         <Styled(BodyCopy)
           className=""
           color="text.primary"
@@ -1841,7 +1734,9 @@ exports[`CardTile should show remining balance 1`] = `
           lineHeights="lh115"
           tag="span"
           textAlign="left"
-        />
+        >
+          0
+        </Styled(BodyCopy)>
       </div>
     </form>
   </div>

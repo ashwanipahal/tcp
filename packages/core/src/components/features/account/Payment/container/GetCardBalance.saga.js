@@ -28,9 +28,9 @@ export function* getGiftCardBalance({ payload }) {
     if (res.statusCode === 200) {
       return yield put(setcheckBalance(res.body || ''));
     }
-    return yield put(setcheckBalanceError());
+    return yield put(setcheckBalanceError({ card: payload.card }));
   } catch (err) {
-    return yield put(setcheckBalanceError(err));
+    return yield put(setcheckBalanceError({ card: payload.card }));
   }
 }
 
