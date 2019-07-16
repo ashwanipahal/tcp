@@ -32,10 +32,6 @@ const returnPaymentReducer = (state = initialState, action) => {
       return state
         .set('cardList', updateCardList(state, action))
         .set('showNotification', 'success');
-    case PAYMENT_CONSTANTS.SET_CHECK_BALANCE:
-      return state.set('giftcardBalance', action.payload);
-    case PAYMENT_CONSTANTS.SET_CHECK_BALANCE_ERROR:
-      return state.set('showNotificationCaptcha', 'error');
     case PAYMENT_CONSTANTS.UPDATE_CARD_LIST_ON_DELETE_ERR:
       return state
         .set('error', action.payload)
@@ -63,7 +59,17 @@ const PaymentReducer = (state = initialState, action) => {
         .set('isFetching', false);
     case PAYMENT_CONSTANTS.GET_CARD_LIST_ERR:
       return state.set('showNotification', 'error').set('isFetching', false);
-
+    case PAYMENT_CONSTANTS.CHECK_BALANCE:
+      return state.setIn(['giftcardBalance', action.payload.card.accountNo], null);
+    case PAYMENT_CONSTANTS.SET_CHECK_BALANCE:
+      return state.setIn(
+        ['giftcardBalance', action.payload.giftCardNbr],
+        action.payload.giftCardAuthorizedAmt
+      );
+    case PAYMENT_CONSTANTS.SET_CHECK_BALANCE_ERROR:
+      return state
+        .set('showNotificationCaptcha', 'error')
+        .deleteIn(['giftcardBalance', action.payload.card.accountNo]);
     default:
       return returnPaymentReducer(state, action);
   }

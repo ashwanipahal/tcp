@@ -12,7 +12,7 @@ exports[`Delete card Modal should render correctly 1`] = `
 >
   <div>
     <div
-      className="deleteCardModal_btnWrapper"
+      className="deleteCardModal__btnWrapper"
     >
       <Styled(Button)
         buttonVariation="variable-width"

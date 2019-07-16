@@ -61,8 +61,10 @@ export class PaymentView extends React.Component<Props> {
         data={{
           heading:
             selectedCard.ccType === 'VENMO'
-              ? labels.ACC_LBL_MODAL_Venmo_Delete_HEADING
+              ? labels.ACC_LBL_MODAL_VENMO_DELETE
               : labels.ACC_LBL_MODAL_GC_HEADING,
+          subHeading:
+            selectedCard.ccType === 'VENMO' ? labels.ACC_LBL_MODAL_VENMO_DELETE_HEADING : '',
           description: selectedCard,
           buttons: {
             cancel: labels.ACC_LBL_MODAL_GC_CANCEL,

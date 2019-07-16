@@ -4,7 +4,7 @@ import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/Ema
 import EMAIL_SIGNUP_CONSTANTS from './EmailSignupModal.constants';
 import { emailSignupStatus, setEmailValidationStatus } from './EmailSignupModal.actions';
 
-export function* subscribeEmail(email, status) {
+export function* subscribeEmail(emailObj, status) {
   try {
     const { baseURI, relURI, method } = endpoints.addEmailSignup;
     const params = {
@@ -12,7 +12,7 @@ export function* subscribeEmail(email, status) {
         storeId: 10151,
         catalogId: 10551,
         langId: '-1',
-        emailaddr: email,
+        emailaddr: emailObj.payload,
         URL: 'email-confirmation',
         response: `${status}:::false:false`,
         registrationType: '10',
@@ -30,16 +30,7 @@ export function* subscribeEmail(email, status) {
 
 export function* verifyEmail({ payload }) {
   try {
-    const { baseURI, relURI, method } = endpoints.emailVerification;
-    const newRelURI = `${relURI}&address=${payload}`;
-    const params = {};
-    const emailValidationState = yield call(
-      emailSignupAbstractor.verifyEmail,
-      baseURI,
-      newRelURI,
-      params,
-      method
-    );
+    const emailValidationState = yield call(emailSignupAbstractor.verifyEmail, payload);
     yield put(setEmailValidationStatus({ validEmail: emailValidationState }));
   } catch (err) {
     console.log(err);
