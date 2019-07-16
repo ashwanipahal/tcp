@@ -89,7 +89,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
         className="cardTile__img_wrapper elem-mt-XS"
       >
         <img
-          alt=""
+          alt="COMPASSAMEX"
           className="cardTile__img"
           src="/static/images/amex-small.png"
         />
@@ -200,7 +200,7 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
         className="cardTile__img_wrapper elem-mt-MED"
       >
         <img
-          alt=""
+          alt="PLACE CARD"
           className="cardTile__img"
           src="/static/images/place-card-small.png"
         />
@@ -327,7 +327,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
         className="cardTile__img_wrapper elem-mt-MED"
       >
         <img
-          alt=""
+          alt="COMPASSDISCOVER"
           className="cardTile__img"
           src="/static/images/disc-small.png"
         />
@@ -425,7 +425,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
         className="cardTile__img_wrapper elem-mt-XL"
       >
         <img
-          alt=""
+          alt="GiftCard"
           className="cardTile__img"
           src="/static/images/gift-card-small.png"
         />
@@ -704,7 +704,7 @@ exports[`CardTile should render correctly with master card 1`] = `
         className="cardTile__img_wrapper elem-mt-MED"
       >
         <img
-          alt=""
+          alt="COMPASSMASTERCARD"
           className="cardTile__img"
           src="/static/images/mc-small.png"
         />
@@ -813,7 +813,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         className="cardTile__img_wrapper elem-mt-XL"
       >
         <img
-          alt=""
+          alt="GiftCard"
           className="cardTile__img"
           src="/static/images/gift-card-small.png"
         />
@@ -1076,7 +1076,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         className="cardTile__img_wrapper elem-mt-MED"
       >
         <img
-          alt=""
+          alt="PLACE CARD"
           className="cardTile__img"
           src="/static/images/place-card-small.png"
         />
@@ -1158,7 +1158,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
         className="cardTile__img_wrapper elem-mt-XL"
       >
         <img
-          alt=""
+          alt="VENMO"
           className="cardTile__img"
           src="/static/images/venmo-blue-acceptance-mark.svg"
         />
@@ -1275,7 +1275,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
         className="cardTile__img_wrapper elem-mt-MED"
       >
         <img
-          alt=""
+          alt="COMPASSVISA"
           className="cardTile__img"
           src="/static/images/visa-small.png"
         />
@@ -1373,7 +1373,7 @@ exports[`CardTile should show loading 1`] = `
         className="cardTile__img_wrapper elem-mt-XL"
       >
         <img
-          alt=""
+          alt="GiftCard"
           className="cardTile__img"
           src="/static/images/gift-card-small.png"
         />
@@ -1651,7 +1651,7 @@ exports[`CardTile should show remining balance 1`] = `
         className="cardTile__img_wrapper elem-mt-XL"
       >
         <img
-          alt=""
+          alt="GiftCard"
           className="cardTile__img"
           src="/static/images/gift-card-small.png"
         />

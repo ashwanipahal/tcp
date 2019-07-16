@@ -311,7 +311,7 @@ class CardTile extends React.Component<Props> {
     }
     return (
       <div className={`cardTile__img_wrapper ${cardTopMargin}`}>
-        <img className="cardTile__img" alt="" src={cardIcon} />
+        <img className="cardTile__img" alt={card.ccType} src={cardIcon} />
       </div>
     );
   };
