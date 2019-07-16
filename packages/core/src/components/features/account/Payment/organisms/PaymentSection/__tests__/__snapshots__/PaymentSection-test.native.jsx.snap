@@ -1,14 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Payment View should render correctly 1`] = `
-<ScrollViewMock>
-  <View
-    className=""
-    labels={
-      Object {
-        "giftCard": "Payment",
-      }
+<View
+  className=""
+  labels={
+    Object {
+      "giftCard": "Payment",
     }
+  }
+>
+  <ScrollViewMock
+    showsVerticalScrollIndicator={false}
   >
     <Styled(Text)>
       <Styled(BodyCopy)
@@ -17,101 +19,103 @@ exports[`Payment View should render correctly 1`] = `
       />
     </Styled(Text)>
     <Styled(View) />
-  </View>
-</ScrollViewMock>
+  </ScrollViewMock>
+</View>
 `;
 
 exports[`Payment View should render correctly with cardList 1`] = `
-<ScrollViewMock>
-  <View
-    cardList={
-      Immutable.List [
-        Object {
-          "accountNo": "************1111",
-          "addressDetails": Object {
-            "addressLine1": "111 3rd Ave",
-            "addressLine2": "",
-            "city": "New York",
-            "country": "US",
-            "firstName": "new",
-            "lastName": "address",
-            "phone1": "9878909876",
-            "state": "NY",
-            "zipCode": "10003",
-          },
-          "billingAddressId": 160685,
-          "ccBrand": "Visa",
-          "ccType": "COMPASSVISA",
-          "creditCardId": 73501,
-          "defaultInd": false,
-          "expMonth": "5 ",
-          "expYear": "2024",
-          "nameOnAccount": ".",
-          "properties": null,
-        },
-      ]
-    }
-    className=""
-    creditCardList={
-      Immutable.List [
-        Object {
-          "accountNo": "************1111",
-          "addressDetails": Object {
-            "addressLine1": "111 3rd Ave",
-            "addressLine2": "",
-            "city": "New York",
-            "country": "US",
-            "firstName": "new",
-            "lastName": "address",
-            "phone1": "9878909876",
-            "state": "NY",
-            "zipCode": "10003",
-          },
-          "billingAddressId": 160685,
-          "ccBrand": "Visa",
-          "ccType": "COMPASSVISA",
-          "creditCardId": 73501,
-          "defaultInd": false,
-          "expMonth": "5 ",
-          "expYear": "2024",
-          "nameOnAccount": ".",
-          "properties": null,
-        },
-      ]
-    }
-    giftCardList={
-      Immutable.List [
-        Object {
-          "accountNo": "************1111",
-          "addressDetails": Object {
-            "addressLine1": "111 3rd Ave",
-            "addressLine2": "",
-            "city": "New York",
-            "country": "US",
-            "firstName": "new",
-            "lastName": "address",
-            "phone1": "9878909876",
-            "state": "NY",
-            "zipCode": "10003",
-          },
-          "billingAddressId": 160685,
-          "ccBrand": "Visa",
-          "ccType": "COMPASSVISA",
-          "creditCardId": 73501,
-          "defaultInd": false,
-          "expMonth": "5 ",
-          "expYear": "2024",
-          "nameOnAccount": ".",
-          "properties": null,
-        },
-      ]
-    }
-    labels={
+<View
+  cardList={
+    Immutable.List [
       Object {
-        "paymentHeading": "Payment",
-      }
+        "accountNo": "************1111",
+        "addressDetails": Object {
+          "addressLine1": "111 3rd Ave",
+          "addressLine2": "",
+          "city": "New York",
+          "country": "US",
+          "firstName": "new",
+          "lastName": "address",
+          "phone1": "9878909876",
+          "state": "NY",
+          "zipCode": "10003",
+        },
+        "billingAddressId": 160685,
+        "ccBrand": "Visa",
+        "ccType": "COMPASSVISA",
+        "creditCardId": 73501,
+        "defaultInd": false,
+        "expMonth": "5 ",
+        "expYear": "2024",
+        "nameOnAccount": ".",
+        "properties": null,
+      },
+    ]
+  }
+  className=""
+  creditCardList={
+    Immutable.List [
+      Object {
+        "accountNo": "************1111",
+        "addressDetails": Object {
+          "addressLine1": "111 3rd Ave",
+          "addressLine2": "",
+          "city": "New York",
+          "country": "US",
+          "firstName": "new",
+          "lastName": "address",
+          "phone1": "9878909876",
+          "state": "NY",
+          "zipCode": "10003",
+        },
+        "billingAddressId": 160685,
+        "ccBrand": "Visa",
+        "ccType": "COMPASSVISA",
+        "creditCardId": 73501,
+        "defaultInd": false,
+        "expMonth": "5 ",
+        "expYear": "2024",
+        "nameOnAccount": ".",
+        "properties": null,
+      },
+    ]
+  }
+  giftCardList={
+    Immutable.List [
+      Object {
+        "accountNo": "************1111",
+        "addressDetails": Object {
+          "addressLine1": "111 3rd Ave",
+          "addressLine2": "",
+          "city": "New York",
+          "country": "US",
+          "firstName": "new",
+          "lastName": "address",
+          "phone1": "9878909876",
+          "state": "NY",
+          "zipCode": "10003",
+        },
+        "billingAddressId": 160685,
+        "ccBrand": "Visa",
+        "ccType": "COMPASSVISA",
+        "creditCardId": 73501,
+        "defaultInd": false,
+        "expMonth": "5 ",
+        "expYear": "2024",
+        "nameOnAccount": ".",
+        "properties": null,
+      },
+    ]
+  }
+  labels={
+    Object {
+      "paymentHeading": "Payment",
     }
-    showNotification="success"
+  }
+  showNotification="success"
+>
+  <ScrollViewMock
+    showsVerticalScrollIndicator={false}
   >
     <Styled(Text)>
       <Styled(BodyCopy)
@@ -195,6 +199,6 @@ exports[`Payment View should render correctly with cardList 1`] = `
         }
       }
     />
-  </View>
-</ScrollViewMock>
+  </ScrollViewMock>
+</View>
 `;
