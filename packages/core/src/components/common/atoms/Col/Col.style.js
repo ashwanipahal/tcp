@@ -1,3 +1,5 @@
+/* eslint-disable complexity */
+/* eslint-disable sonarjs/cognitive-complexity */
 import { css } from 'styled-components';
 
 /**
@@ -54,26 +56,31 @@ const calculateOffset = (colCount, breakpoint, gridDimensions) => {
   );
 };
 
-const calculateNthChild = (viewport, col) => {
-  switch (viewport) {
-    case 'small':
-      return 6 % col === 0 ? 6 / col : '';
-    case 'medium':
-      return 8 % col === 0 ? 8 / col : '';
-    case 'large':
-      return 12 % col === 0 ? 12 / col : '';
-    default:
-      return '';
-  }
+/**
+ * @function calculateNthChild
+ * @param {String} viewport - small|medium|large
+ * @param {Number} col - number of columns passed in props
+ * @param {object} gridDimensions - The grid dimension object from the theme,
+ * contains all the hardcoded values of the grid.
+ */
+const calculateNthChild = (viewport, col, gridDimensions) => {
+  return gridDimensions.numberOfColumnsObj[viewport] % col === 0
+    ? gridDimensions.numberOfColumnsObj[viewport] / col
+    : '';
 };
 
-const colLength = ({ colSize, offsetLeft, offsetRight }, key) => {
-  let length = colSize[key];
-  if (offsetLeft && offsetLeft[key]) {
-    length += offsetLeft[key];
+/**
+ * Calculates effective col length with all offsets
+ * @param {Object} {colSize} Object, {offsetLeft} Object, {offsetRight} Object
+ * @param {*} viewport small|medium|large
+ */
+const colLength = ({ colSize, offsetLeft, offsetRight }, viewport) => {
+  let length = colSize[viewport];
+  if (offsetLeft && offsetLeft[viewport]) {
+    length += offsetLeft[viewport];
   }
-  if (offsetRight && offsetRight[key]) {
-    length += offsetRight[key];
+  if (offsetRight && offsetRight[viewport]) {
+    length += offsetRight[viewport];
   }
   return length;
 };
@@ -81,11 +88,14 @@ const colLength = ({ colSize, offsetLeft, offsetRight }, key) => {
 const StyledCol = css`
   ${props =>
     props.theme.gridDimensions.gridBreakPointsKeys.map(
-      // eslint-disable-next-line complexity
       key => `
       @media ${props.theme.mediaQuery[`${key}Only`]} {
-        ${calculateNthChild(key, colLength(props, key)) &&
-          `&:nth-child(${calculateNthChild(key, colLength(props, key))}) {
+        ${calculateNthChild(key, colLength(props, key), props.theme.gridDimensions) &&
+          `&:nth-child(${calculateNthChild(
+            key,
+            colLength(props, key),
+            props.theme.gridDimensions
+          )}) {
             margin-right: 0;
           }`}
       }
@@ -110,7 +120,10 @@ const StyledCol = css`
               : ''
           };
           width: ${getColumnWidth(props.colSize[key], key, props.theme.gridDimensions)}%;
-        ${key !== 'small' ? `}` : ''}`
+        ${key !== 'small' ? `}` : ''}
+        ${key !== 'small' ? `@media ${props.theme.mediaQuery[`${key}Only`]} {` : ''}
+        ${props.hideCol && props.hideCol[key] ? 'display: none' : ''};
+      `
     )}
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

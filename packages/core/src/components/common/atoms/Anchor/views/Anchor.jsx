@@ -41,7 +41,6 @@ const Anchor = ({
       onClick={handleLinkClick}
       title={title}
       target={target}
-      data-locator={dataLocator}
     >
       {children}
     </a>

@@ -119,6 +119,13 @@ export class AddressVerification extends React.Component<Props> {
 
   onCloseModal = () => {
     const { resetVerifyAddressAction } = this.props;
+    const { optionalAddressLine } = this.state;
+    if (optionalAddressLine) {
+      this.setState({
+        optionalAddressLine: '',
+      });
+    }
+
     resetVerifyAddressAction();
   };
 

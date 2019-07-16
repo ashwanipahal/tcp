@@ -1,21 +1,20 @@
 import React from 'react';
-import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/DeleteCardModal.style';
-import BodyCopy from '../../../../common/atoms/BodyCopy';
 import Modal from '../../../../common/molecules/Modal';
 import Notification from '../../../../common/molecules/Notification';
-import { getIconPath } from '../../../../../utils';
-import { Image } from '../../../../common/atoms';
+import GiftCardModalInfo from './GiftCardModalInfo.view';
+import VenmoCardModalInfo from './VenmoCardModalInfo.view';
+import Button from '../../../../common/atoms/Button';
 // @flow
 
 type Props = {
   data: Object,
   className: string,
-  setDeleteModalMountState: Function,
   openState: boolean,
   showUpdatedNotificationOnModal: boolean,
   labels: Object,
+  setDeleteModalMountState: Function,
   onDeleteCard: Function,
 };
 
@@ -60,45 +59,28 @@ class DeleteCardModal extends React.Component<Props> {
    */
   renderModal = () => {
     const { data, className } = this.props;
+    const ccType = data && data.description && data.description.ccType;
     const getAccNumbr = `${data.description.accountNo}`.slice(-4);
     const TotalExp = `${data.description.expMonth}/${data.description.expYear} `;
     return (
       <div className={className}>
-        <BodyCopy
-          className="deleteCardModal__modalTitle"
-          fontFamily="primary"
-          fontSize={['fs18']}
-          fontWeight="extrabold"
-          component="div"
-        >
-          {data.heading}
-        </BodyCopy>
-        <BodyCopy className="deleteCardModal__desc">
-          <Image className="deleteCardModal__img" src={getIconPath('gift-card-small')} />
-          <BodyCopy className="deleteCardModal__cardInfo" bodySize="three">
-            <BodyCopy
-              className="deleteCardModal__card"
-              fontFamily="secondary"
-              fontSize="fs14"
-              fontWeight="extrabold"
-              component="span"
-            >
-              {data.cardText.cardEnd}
-              {getAccNumbr}
-            </BodyCopy>
-            <BodyCopy
-              fontWeight="normal"
-              fontSize="fs14"
-              fontFamily="secondary"
-              className="deleteCardModal__expiry"
-              component="span"
-            >
-              {data.cardText.expire}
-              {TotalExp}
-            </BodyCopy>
-          </BodyCopy>
-        </BodyCopy>
-        <div className="deleteCardModal__btnWrapper">
+        {ccType === 'GiftCard' && (
+          <GiftCardModalInfo
+            getAccNumbr={getAccNumbr}
+            TotalExp={TotalExp}
+            data={data}
+            {...this.props}
+          />
+        )}
+        {ccType === 'VENMO' && (
+          <VenmoCardModalInfo
+            getAccNumbr={getAccNumbr}
+            TotalExp={TotalExp}
+            data={data}
+            {...this.props}
+          />
+        )}
+        <div className="deleteCardModal_btnWrapper">
           <Button
             buttonVariation="variable-width"
             fill="BLUE"

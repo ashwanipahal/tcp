@@ -3,6 +3,7 @@ import QueryBuilder from './graphQL/queries/queryBuilder';
 import { importGraphQLClientDynamically } from '../../utils';
 import statefulAPIClient from './stateful/statefulClient';
 import unbxdAPIClient from './unbxd/unbxdClient';
+import externalAPIClient from './external/externalClient';
 
 let apiConfig = null;
 
@@ -71,8 +72,8 @@ const createAPIConfig = () => {
     langId: '-1',
     siteId: 'us',
     countryKey: '_US',
-    assetHost: 'https://test1.childrensplace.com',
-    domain: '://test1.childrensplace.com/api/',
+    assetHost: 'https://test3.childrensplace.com',
+    domain: '://test3.childrensplace.com/api/',
     unbxd: '://search.unbxd.io',
     cookie: null,
     isMobile: false,
@@ -83,7 +84,7 @@ const createAPIConfig = () => {
  * @summary Get the api config if already created or else creates one.
  * @returns {Object} apiConfig - Api config to be utilized for brand/channel/locale config
  */
-const getAPIConfig = () => {
+export const getAPIConfig = () => {
   if (!apiConfig) {
     createAPIConfig();
   }
@@ -109,6 +110,14 @@ export const executeUnbxdAPICall = reqObj => {
   }
   const apiConfigObj = getAPIConfig();
   return unbxdAPIClient(apiConfigObj, reqObj).catch(errorHandler);
+};
+
+export const executeExternalAPICall = reqObj => {
+  if (!reqObj.webService) {
+    return null;
+  }
+  const apiConfigObj = getAPIConfig();
+  return externalAPIClient(apiConfigObj, reqObj).catch(errorHandler);
 };
 
 export default {

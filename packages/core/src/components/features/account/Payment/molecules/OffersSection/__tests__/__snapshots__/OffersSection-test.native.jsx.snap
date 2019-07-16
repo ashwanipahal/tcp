@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Offers Component should render correctly 1`] = `
+<View
+  className="abc"
+  labels={
+    Object {
+      "offersMessage": "<p>offers</p>",
+    }
+  }
+>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Image)
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/card-smile.png",
+          }
+        }
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <RichText
+        domStorageEnabled={false}
+        javaScriptEnabled={false}
+        source={
+          Object {
+            "html": undefined,
+          }
+        }
+        thirdPartyCookiesEnabled={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+</View>
+`;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { CardTileVanilla } from '../views/CardTile.view';
-import labels from '../../../../Payment/Payment.constants';
+import labels from '../../../../Payment/container/Payment.labels';
 import Anchor from '../../../../../../common/atoms/Anchor';
 
 describe('CardTile', () => {
