@@ -1,7 +1,7 @@
 import React from 'react';
 // import { List } from 'immutable';
 import { shallow } from 'enzyme';
-import { CreditCardModalInfoVanilla } from '../CreditCardModalInfo.view';
+import CreditCardModalInfo from '../CreditCardModalInfo.view';
 
 describe('CreditCardModalInfo Component', () => {
   it('should render correctly', () => {
@@ -26,7 +26,7 @@ describe('CreditCardModalInfo Component', () => {
         getAccNumbr: 'www',
       },
     };
-    const tree = shallow(<CreditCardModalInfoVanilla {...props} />);
+    const tree = shallow(<CreditCardModalInfo {...props} />);
     expect(tree).toMatchSnapshot();
   });
 });

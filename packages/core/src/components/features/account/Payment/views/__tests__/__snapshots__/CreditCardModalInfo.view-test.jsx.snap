@@ -3,7 +3,7 @@
 exports[`CreditCardModalInfo Component should render correctly 1`] = `
 <div>
   <Styled(Row)
-    className="CreditCardHeading"
+    className="elem-mb-MED"
     fullBleed={true}
   >
     <Styled(Col)
@@ -25,7 +25,7 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="CreditCardInfo"
+    className="elem-mb-MED"
     fullBleed={true}
   >
     <Styled(Col)
@@ -106,7 +106,7 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="CreditCardAddress"
+    className="elem-mb-MED"
     fullBleed={true}
   >
     <Styled(Col)

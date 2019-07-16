@@ -11,7 +11,7 @@ exports[`Delete card Modal should render correctly 1`] = `
   overlayClassName="TCPModal__Overlay"
 >
   <div>
-    <Styled(CreditCardModalInfo)
+    <CreditCardModalInfo
       TotalExp="undefined/undefined "
       address={null}
       data={
