@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 const HeadingTextStyle = styled.Text`
   height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  font-size: 16px;
+  font-size: ${props => props.theme.typography.fontSizes.fs16};
   font-weight: 600;
 `;
 
@@ -24,7 +24,7 @@ const ImageStyle = styled.Image`
 
 const EmptyCCLabelStyle = styled.Text`
   flex-basis: 80%;
-  font-size: 14px;
+  font-size: ${props => props.theme.typography.fontSizes.fs14};
   font-weight: bold;
   top: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
