@@ -20,7 +20,9 @@ exports[`CardTile should render correctly with amex card 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      />
+      >
+        Credit Card
+      </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
@@ -35,7 +37,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
         tag="span"
         textAlign="left"
       >
-        undefined6765
+        Card ending in 6765
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="cardTile__expiry"
@@ -51,7 +53,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
         tag="span"
         textAlign="left"
       >
-        undefined10/2025
+        Expires on 10/2025
       </Styled(BodyCopy)>
       <Address
         address={
@@ -78,15 +80,17 @@ exports[`CardTile should render correctly with amex card 1`] = `
     >
       <Styled(Badge)
         dataLocator="payment-carddefaultpaymentbadge"
+        noMargin={true}
         showCheckmark={true}
-      />
+      >
+        DEFAULT PAYMENT
+      </Styled(Badge)>
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-XS"
       >
         <img
-          alt="Amex"
+          alt="COMPASSAMEX"
           className="cardTile__img"
-          data-locator="payment-cardImage"
           src="/static/images/amex-small.png"
         />
       </div>
@@ -98,20 +102,24 @@ exports[`CardTile should render correctly with amex card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
-      dataLocator="payment-creditdebiteditlink"
+      data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
       to="/#"
       underline={true}
-    />
+    >
+      Edit
+    </Styled(Anchor)>
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
-      dataLocator="payment-creditdebitdeletelink"
+      data-locator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      Delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -136,7 +144,9 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      />
+      >
+        My Place Rewards Credit Card
+      </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
@@ -151,7 +161,7 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
         tag="span"
         textAlign="left"
       >
-        undefined6765
+        Card ending in 6765
       </Styled(BodyCopy)>
       <Address
         address={
@@ -178,19 +188,20 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
     >
       <Styled(Anchor)
         anchorVariation="primary"
-        dataLocator="payment-makedefault"
+        data-locator="payment-makedefault"
         fontSizeVariation="small"
         onClick={[Function]}
         to="/#"
         underline={true}
-      />
+      >
+        Make Default
+      </Styled(Anchor)>
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-MED"
       >
         <img
           alt="PLACE CARD"
           className="cardTile__img"
-          data-locator="payment-cardImage"
           src="/static/images/place-card-small.png"
         />
       </div>
@@ -202,20 +213,24 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
-      dataLocator="payment-creditdebiteditlink"
+      data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
       to="/#"
       underline={true}
-    />
+    >
+      Edit
+    </Styled(Anchor)>
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
-      dataLocator="payment-creditdebitdeletelink"
+      data-locator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      Delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -240,7 +255,9 @@ exports[`CardTile should render correctly with discover card 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      />
+      >
+        Credit Card
+      </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
@@ -255,7 +272,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
         tag="span"
         textAlign="left"
       >
-        undefined6765
+        Card ending in 6765
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="cardTile__expiry"
@@ -271,7 +288,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
         tag="span"
         textAlign="left"
       >
-        undefined10/2025
+        Expires on 10/2025
       </Styled(BodyCopy)>
       <Address
         address={
@@ -298,19 +315,20 @@ exports[`CardTile should render correctly with discover card 1`] = `
     >
       <Styled(Anchor)
         anchorVariation="primary"
-        dataLocator="payment-makedefault"
+        data-locator="payment-makedefault"
         fontSizeVariation="small"
         onClick={[Function]}
         to="/#"
         underline={true}
-      />
+      >
+        Make Default
+      </Styled(Anchor)>
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-MED"
       >
         <img
-          alt="DISC"
+          alt="COMPASSDISCOVER"
           className="cardTile__img"
-          data-locator="payment-cardImage"
           src="/static/images/disc-small.png"
         />
       </div>
@@ -322,20 +340,24 @@ exports[`CardTile should render correctly with discover card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
-      dataLocator="payment-creditdebiteditlink"
+      data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
       to="/#"
       underline={true}
-    />
+    >
+      Edit
+    </Styled(Anchor)>
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
-      dataLocator="payment-creditdebitdeletelink"
+      data-locator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      Delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -360,7 +382,9 @@ exports[`CardTile should render correctly with gift card 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      />
+      >
+        Gift Card Name
+      </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
@@ -375,35 +399,18 @@ exports[`CardTile should render correctly with gift card 1`] = `
         tag="span"
         textAlign="left"
       >
-        undefined6765
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__expiry"
-        color="text.primary"
-        component="p"
-        dataLocator="payment-giftcardexpiretext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh115"
-        tag="span"
-        textAlign="left"
-      >
-        undefined10/2025
+        Card ending in 6765
       </Styled(BodyCopy)>
     </div>
     <div
       className="cardTile__defaultSection"
     >
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-XL"
       >
         <img
-          alt="GC"
+          alt="GiftCard"
           className="cardTile__img"
-          data-locator="payment-cardImage"
           src="/static/images/gift-card-small.png"
         />
       </div>
@@ -560,12 +567,13 @@ exports[`CardTile should render correctly with gift card 1`] = `
         />
         <Styled(Button)
           buttonVariation="variable-width"
-          data-locator="cardtile-checkbalance"
-          disabled={false}
+          data-locator="gift-card-recaptchcb"
           fill="BLUE"
           onClick={[Function]}
           type="submit"
-        />
+        >
+           Check Balance
+        </Styled(Button)>
       </div>
     </form>
   </div>
@@ -575,12 +583,14 @@ exports[`CardTile should render correctly with gift card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
-      dataLocator="payment-giftcarddeletelink"
+      data-locator="payment-giftcarddeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      Delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -605,7 +615,9 @@ exports[`CardTile should render correctly with master card 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      />
+      >
+        Credit Card
+      </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
@@ -620,7 +632,7 @@ exports[`CardTile should render correctly with master card 1`] = `
         tag="span"
         textAlign="left"
       >
-        undefined6765
+        Card ending in 6765
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="cardTile__expiry"
@@ -636,7 +648,7 @@ exports[`CardTile should render correctly with master card 1`] = `
         tag="span"
         textAlign="left"
       >
-        undefined10/2025
+        Expires on 10/2025
       </Styled(BodyCopy)>
       <Address
         address={
@@ -663,19 +675,20 @@ exports[`CardTile should render correctly with master card 1`] = `
     >
       <Styled(Anchor)
         anchorVariation="primary"
-        dataLocator="payment-makedefault"
+        data-locator="payment-makedefault"
         fontSizeVariation="small"
         onClick={[Function]}
         to="/#"
         underline={true}
-      />
+      >
+        Make Default
+      </Styled(Anchor)>
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-MED"
       >
         <img
-          alt="MC"
+          alt="COMPASSMASTERCARD"
           className="cardTile__img"
-          data-locator="payment-cardImage"
           src="/static/images/mc-small.png"
         />
       </div>
@@ -687,20 +700,24 @@ exports[`CardTile should render correctly with master card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
-      dataLocator="payment-creditdebiteditlink"
+      data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
       to="/#"
       underline={true}
-    />
+    >
+      Edit
+    </Styled(Anchor)>
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
-      dataLocator="payment-creditdebitdeletelink"
+      data-locator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      Delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -736,7 +753,9 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      />
+      >
+        Gift Card Name
+      </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
@@ -751,35 +770,18 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         tag="span"
         textAlign="left"
       >
-        undefined6765
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__expiry"
-        color="text.primary"
-        component="p"
-        dataLocator="payment-giftcardexpiretext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh115"
-        tag="span"
-        textAlign="left"
-      >
-        undefined10/2025
+        Card ending in 6765
       </Styled(BodyCopy)>
     </div>
     <div
       className="cardTile__defaultSection"
     >
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-XL"
       >
         <img
-          alt="GC"
+          alt="GiftCard"
           className="cardTile__img"
-          data-locator="payment-cardImage"
           src="/static/images/gift-card-small.png"
         />
       </div>
@@ -936,12 +938,13 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         />
         <Styled(Button)
           buttonVariation="variable-width"
-          data-locator="cardtile-checkbalance"
-          disabled={false}
+          data-locator="gift-card-recaptchcb"
           fill="BLUE"
           onClick={[Function]}
           type="submit"
-        />
+        >
+           Check Balance
+        </Styled(Button)>
       </div>
     </form>
   </div>
@@ -951,12 +954,14 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
-      dataLocator="payment-giftcarddeletelink"
+      data-locator="payment-giftcarddeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      Delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -981,7 +986,9 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      />
+      >
+        My Place Rewards Credit Card
+      </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
@@ -996,7 +1003,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         tag="span"
         textAlign="left"
       >
-        undefined6765
+        Card ending in 6765
       </Styled(BodyCopy)>
       <Address
         address={
@@ -1023,19 +1030,20 @@ exports[`CardTile should render correctly with plcc card 1`] = `
     >
       <Styled(Anchor)
         anchorVariation="primary"
-        dataLocator="payment-makedefault"
+        data-locator="payment-makedefault"
         fontSizeVariation="small"
         onClick={[Function]}
         to="/#"
         underline={true}
-      />
+      >
+        Make Default
+      </Styled(Anchor)>
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-MED"
       >
         <img
           alt="PLACE CARD"
           className="cardTile__img"
-          data-locator="payment-cardImage"
           src="/static/images/place-card-small.png"
         />
       </div>
@@ -1047,20 +1055,24 @@ exports[`CardTile should render correctly with plcc card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
-      dataLocator="payment-creditdebiteditlink"
+      data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
       to="/#"
       underline={true}
-    />
+    >
+      Edit
+    </Styled(Anchor)>
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
-      dataLocator="payment-creditdebitdeletelink"
+      data-locator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      Delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -1085,7 +1097,9 @@ exports[`CardTile should render correctly with venmocard 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      />
+      >
+        Your Venmo Account
+      </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="cardTile__heading"
         color="text.primary"
@@ -1107,12 +1121,11 @@ exports[`CardTile should render correctly with venmocard 1`] = `
       className="cardTile__defaultSection"
     >
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-XL"
       >
         <img
           alt="VENMO"
           className="cardTile__img"
-          data-locator="payment-cardImage"
           src="/static/images/venmo-blue-acceptance-mark.svg"
         />
       </div>
@@ -1124,12 +1137,14 @@ exports[`CardTile should render correctly with venmocard 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
-      dataLocator="payment-venmodeletelink"
+      data-locator="payment-venmodeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      Delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -1154,7 +1169,9 @@ exports[`CardTile should render correctly with visa card 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      />
+      >
+        Credit Card
+      </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
@@ -1169,7 +1186,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
         tag="span"
         textAlign="left"
       >
-        undefined6765
+        Card ending in 6765
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="cardTile__expiry"
@@ -1185,7 +1202,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
         tag="span"
         textAlign="left"
       >
-        undefined10/2025
+        Expires on 10/2025
       </Styled(BodyCopy)>
       <Address
         address={
@@ -1212,19 +1229,20 @@ exports[`CardTile should render correctly with visa card 1`] = `
     >
       <Styled(Anchor)
         anchorVariation="primary"
-        dataLocator="payment-makedefault"
+        data-locator="payment-makedefault"
         fontSizeVariation="small"
         onClick={[Function]}
         to="/#"
         underline={true}
-      />
+      >
+        Make Default
+      </Styled(Anchor)>
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-MED"
       >
         <img
-          alt="Visa"
+          alt="COMPASSVISA"
           className="cardTile__img"
-          data-locator="payment-cardImage"
           src="/static/images/visa-small.png"
         />
       </div>
@@ -1236,20 +1254,24 @@ exports[`CardTile should render correctly with visa card 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
-      dataLocator="payment-creditdebiteditlink"
+      data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
       to="/#"
       underline={true}
-    />
+    >
+      Edit
+    </Styled(Anchor)>
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
-      dataLocator="payment-creditdebitdeletelink"
+      data-locator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      Delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -1274,7 +1296,9 @@ exports[`CardTile should show loading 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      />
+      >
+        Gift Card Name
+      </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
@@ -1289,35 +1313,18 @@ exports[`CardTile should show loading 1`] = `
         tag="span"
         textAlign="left"
       >
-        undefined6765
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__expiry"
-        color="text.primary"
-        component="p"
-        dataLocator="payment-giftcardexpiretext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh115"
-        tag="span"
-        textAlign="left"
-      >
-        undefined10/2025
+        Card ending in 6765
       </Styled(BodyCopy)>
     </div>
     <div
       className="cardTile__defaultSection"
     >
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-XL"
       >
         <img
-          alt="GC"
+          alt="GiftCard"
           className="cardTile__img"
-          data-locator="payment-cardImage"
           src="/static/images/gift-card-small.png"
         />
       </div>
@@ -1479,33 +1486,9 @@ exports[`CardTile should show loading 1`] = `
           lineHeights="lh115"
           tag="span"
           textAlign="left"
-        />
-        <Styled(BodyCopy)
-          className=""
-          color="text.primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs14"
-          fontWeight="semibold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          lineHeights="lh115"
-          tag="span"
-          textAlign="left"
-        />
-        <Styled(BodyCopy)
-          className=""
-          color="text.primary"
-          component="p"
-          fontFamily="secondary"
-          fontSize="fs28"
-          fontWeight="extrabold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          lineHeights="lh115"
-          tag="span"
-          textAlign="left"
-        />
+        >
+          LOADING...
+        </Styled(BodyCopy)>
       </div>
     </form>
   </div>
@@ -1515,12 +1498,14 @@ exports[`CardTile should show loading 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
-      dataLocator="payment-giftcarddeletelink"
+      data-locator="payment-giftcarddeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      Delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;
@@ -1545,7 +1530,9 @@ exports[`CardTile should show remining balance 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      />
+      >
+        Gift Card Name
+      </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
@@ -1560,35 +1547,18 @@ exports[`CardTile should show remining balance 1`] = `
         tag="span"
         textAlign="left"
       >
-        undefined6765
-      </Styled(BodyCopy)>
-      <Styled(BodyCopy)
-        className="cardTile__expiry"
-        color="text.primary"
-        component="p"
-        dataLocator="payment-giftcardexpiretext"
-        fontFamily="secondary"
-        fontSize="fs14"
-        fontWeight="semibold"
-        letterSpacing="normal"
-        lineHeight="normal"
-        lineHeights="lh115"
-        tag="span"
-        textAlign="left"
-      >
-        undefined10/2025
+        Card ending in 6765
       </Styled(BodyCopy)>
     </div>
     <div
       className="cardTile__defaultSection"
     >
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-XL"
       >
         <img
-          alt="GC"
+          alt="GiftCard"
           className="cardTile__img"
-          data-locator="payment-cardImage"
           src="/static/images/gift-card-small.png"
         />
       </div>
@@ -1743,19 +1713,6 @@ exports[`CardTile should show remining balance 1`] = `
           color="text.primary"
           component="p"
           fontFamily="secondary"
-          fontSize="fs24"
-          fontWeight="extrabold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          lineHeights="lh115"
-          tag="span"
-          textAlign="left"
-        />
-        <Styled(BodyCopy)
-          className=""
-          color="text.primary"
-          component="p"
-          fontFamily="secondary"
           fontSize="fs14"
           fontWeight="semibold"
           letterSpacing="normal"
@@ -1763,7 +1720,9 @@ exports[`CardTile should show remining balance 1`] = `
           lineHeights="lh115"
           tag="span"
           textAlign="left"
-        />
+        >
+          Remaining balance
+        </Styled(BodyCopy)>
         <Styled(BodyCopy)
           className=""
           color="text.primary"
@@ -1776,7 +1735,9 @@ exports[`CardTile should show remining balance 1`] = `
           lineHeights="lh115"
           tag="span"
           textAlign="left"
-        />
+        >
+          0
+        </Styled(BodyCopy)>
       </div>
     </form>
   </div>
@@ -1786,12 +1747,14 @@ exports[`CardTile should show remining balance 1`] = `
     <Styled(Anchor)
       anchorVariation="primary"
       className="cardTile__anchor"
-      dataLocator="payment-giftcarddeletelink"
+      data-locator="payment-giftcarddeletelink"
       fontSizeVariation="large"
       onClick={[Function]}
       to="/#"
       underline={true}
-    />
+    >
+      Delete
+    </Styled(Anchor)>
   </div>
 </div>
 `;

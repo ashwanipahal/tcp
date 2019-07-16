@@ -50,6 +50,35 @@ export const importGraphQLQueriesDynamically = query => {
   });
 };
 
+const discSmall = require('../assets/disc-small.png');
+const masterCard = require('../assets/mc-small.png');
+const amexCard = require('../assets/amex-small.png');
+const visaSmall = require('../assets/visa-small.png');
+const placeCard = require('../assets/place-card-small.png');
+const giftCardSmall = require('../assets/gift-card-small.png');
+const venmoCard = require('../assets/venmo-blue-acceptance-mark.svg');
+
+export const getIconCard = icon => {
+  switch (icon) {
+    case 'disc-small':
+      return discSmall;
+    case 'mc-small':
+      return masterCard;
+    case 'amex-small':
+      return amexCard;
+    case 'visa-small':
+      return visaSmall;
+    case 'gift-card-small':
+      return giftCardSmall;
+    case 'place-card-small':
+      return placeCard;
+    case 'venmo-blue-acceptance-mark':
+      return venmoCard;
+    default:
+      return visaSmall;
+  }
+};
+
 export const UrlHandler = url => {
   Linking.canOpenURL(url).then(supported => {
     if (supported) {

@@ -31,7 +31,9 @@ export default class Account extends React.PureComponent<Props, State> {
   handleComponentChange = (component: String) => {
     /** This handling is for temporary purpose, need to remove later once we have all containers */
     let componentName = component;
-    if (componentName !== 'addressBookMobile') {
+    if (componentName === 'paymentGiftCardsPageMobile') {
+      componentName = 'paymentGiftCardsPageMobile';
+    } else if (componentName !== 'addressBookMobile') {
       componentName = 'addressBookMobile';
     }
     this.setState({
