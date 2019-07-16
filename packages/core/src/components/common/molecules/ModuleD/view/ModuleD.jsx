@@ -69,7 +69,7 @@ const ModuleD = (props: Props) => {
           variant="h2"
           data-locator={getLocator('moduleD_headerlink')}
           textAlign="center"
-          color={['text.primary']}
+          color="text.primary"
           title={title}
         >
           {headingText}
