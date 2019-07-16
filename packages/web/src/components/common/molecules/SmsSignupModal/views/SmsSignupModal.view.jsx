@@ -38,6 +38,11 @@ class SignupWrapper extends React.PureComponent {
         showAsyncError: true,
         validInput: false,
       });
+    } else {
+      this.setState({
+        showAsyncError: false,
+        validInput: true,
+      });
     }
   };
 
@@ -77,7 +82,7 @@ class SignupWrapper extends React.PureComponent {
   };
 
   render() {
-    const { isOpen, showAsyncError, validInput, signup = '' } = this.state;
+    const { isOpen, showAsyncError, validInput } = this.state;
     const { buttonConfig, className, formViewConfig, isSubscriptionValid, pristine } = this.props;
 
     if (isSubscriptionValid === 'invalid') {
@@ -174,7 +179,7 @@ class SignupWrapper extends React.PureComponent {
                       <Row className="button-wrapper-form" fullBleed>
                         <Col colSize={{ small: 4, medium: 4, large: 6 }}>
                           <Button
-                            disabled={signup.length === 0}
+                            disabled={notValidPhone}
                             fullWidth
                             buttonVariation="fixed-width"
                             fill="BLUE"

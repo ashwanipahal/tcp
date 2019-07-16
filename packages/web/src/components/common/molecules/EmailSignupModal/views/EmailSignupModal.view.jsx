@@ -187,7 +187,7 @@ class SignupWrapper extends React.PureComponent {
                       <Row className="button-wrapper-form" fullBleed>
                         <Col colSize={{ small: 4, medium: 4, large: 6 }}>
                           <Button
-                            disabled={signup.length === 0}
+                            disabled={!this.checkEmailValid()}
                             fullWidth
                             buttonVariation="fixed-width"
                             fill="BLUE"
