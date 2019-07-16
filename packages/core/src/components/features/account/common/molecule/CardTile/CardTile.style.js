@@ -68,10 +68,6 @@ const styles = css`
     width: 90px;
     height: 56px;
     margin-bottom: auto;
-    margin-top: ${props =>
-      props.card && props.card.ccType !== 'GiftCard' && props.card.ccType !== 'VENMO'
-        ? props.theme.spacing.ELEM_SPACING.MED
-        : props.theme.spacing.ELEM_SPACING.XL};
   }
   .cardTile__img {
     width: 100%;

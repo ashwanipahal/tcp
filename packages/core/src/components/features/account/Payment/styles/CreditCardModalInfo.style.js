@@ -12,7 +12,11 @@ const deleteCreditCardModalStyle = css`
 }
 .CreditCardAddress{
   margin-left: 50px;
-  padding: 10px;
+  margin-top: 15px;
+  @media ${props => props.theme.mediaQuery.medium} {
+    width: 100%;
+    text-align: center;
+  }
 }
 `;
 

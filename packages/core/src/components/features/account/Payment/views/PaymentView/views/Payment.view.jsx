@@ -62,7 +62,7 @@ export class PaymentView extends React.Component<Props> {
       CardHeading = labels.ACC_LBL_MODAL_CREDIT_CARD_HEADING;
     } else {
       CardHeading = isVenmo
-        ? labels.ACC_LBL_MODAL_Venmo_Delete_HEADING
+        ? labels.ACC_LBL_MODAL_VENMO_DELETE
         : labels.ACC_LBL_MODAL_GC_HEADING;
     }
     return (
@@ -70,6 +70,8 @@ export class PaymentView extends React.Component<Props> {
         openState={deleteModalMountedState}
         data={{
           heading: CardHeading,
+          subHeading:
+            selectedCard.ccType === 'VENMO' ? labels.ACC_LBL_MODAL_VENMO_DELETE_HEADING : '',
           description: selectedCard,
           buttons: {
             cancel: labels.ACC_LBL_MODAL_GC_CANCEL,

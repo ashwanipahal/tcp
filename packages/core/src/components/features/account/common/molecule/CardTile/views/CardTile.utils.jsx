@@ -50,10 +50,10 @@ const getAddressDetails = ({ card }) => {
   );
 };
 
-const loading = (labels, HideCaptchaBtn, balance) => {
+const loading = (isGiftCardBalanceRequested, labels, balance) => {
   return (
     <React.Fragment>
-      {HideCaptchaBtn && !balance && (
+      {isGiftCardBalanceRequested && !balance && (
         <BodyCopy
           tag="span"
           fontSize="fs24"

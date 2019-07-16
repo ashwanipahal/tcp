@@ -56,8 +56,8 @@ class CreditCardModalInfo extends React.Component<Props> {
         <Row fullBleed className="CreditCardInfo">
           <Col
             colSize={{
-              small: 6,
-              large: 2,
+              small: 2,
+              large: 6,
               medium: 8,
             }}
           >
