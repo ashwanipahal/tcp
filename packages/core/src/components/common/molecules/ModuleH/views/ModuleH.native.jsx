@@ -119,25 +119,20 @@ class ModuleH extends React.PureComponent<Props, State> {
 
     return (
       <Wrapper>
-        {textLines &&
-          textLines.map((textLine, index) => {
-            return (
-              <HeaderWrapper key={index.toString()}>
-                {link ? (
-                  <TouchableOpacity accessibilityRole="link" onPress={() => UrlHandler(link.url)}>
-                    <Header
-                      lineOrder={index}
-                      data-locator={`${getLocator('moduleH_header_text')}_${index + 1}`}
-                    >
-                      {textLine.text}
-                    </Header>
-                  </TouchableOpacity>
-                ) : (
-                  <Header data-locator={getLocator('moduleH_header_text')}>{textLine.text}</Header>
-                )}
-              </HeaderWrapper>
-            );
-          })}
+        <HeaderWrapper>
+          {textLines &&
+            textLines.map((textLine, index) => {
+              return link ? (
+                <TouchableOpacity accessibilityRole="link" onPress={() => UrlHandler(link.url)}>
+                  <Header data-locator={`${getLocator('moduleH_header_text')}_${index + 1}`}>
+                    {textLine.text}
+                  </Header>
+                </TouchableOpacity>
+              ) : (
+                <Header data-locator={getLocator('moduleH_header_text')}>{textLine.text}</Header>
+              );
+            })}
+        </HeaderWrapper>
         {divCTALinks ? <LinksWrapper>{this.renderLinks(divCTALinks)}</LinksWrapper> : null}
         {divCTALinks && (
           <Carousel
