@@ -335,6 +335,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                 }
                 dataLocator="signup_textbox"
                 id="signup"
+                isRequired={true}
                 maxLength={50}
                 name="signup"
                 onBlur={[Function]}

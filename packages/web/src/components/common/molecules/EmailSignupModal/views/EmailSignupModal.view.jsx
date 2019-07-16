@@ -174,6 +174,7 @@ class SignupWrapper extends React.PureComponent {
                           onBlur={this.onSignUpInputBlur}
                           className={validationClass}
                           showSuccessCheck={this.checkEmailValid()}
+                          isRequired
                         />
                         {isEmailValid && !this.checkEmailValid() && signup.length > 0 && (
                           <BodyCopy
