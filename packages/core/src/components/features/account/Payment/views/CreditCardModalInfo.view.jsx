@@ -43,11 +43,7 @@ class CreditCardModalInfo extends React.Component<Props> {
               medium: 12,
             }}
           >
-            <BodyCopy
-              bodySize="five"
-              fontWeight="bold"
-              fontFamily="secondaryFontFamily"
-            >
+            <BodyCopy bodySize="five" fontWeight="bold" fontFamily="secondaryFontFamily">
               {data.heading}
             </BodyCopy>
           </Col>
@@ -57,8 +53,11 @@ class CreditCardModalInfo extends React.Component<Props> {
           <Col
             colSize={{
               small: 2,
-              large: 6,
+              large: 2,
               medium: 8,
+            }}
+            offsetLeft={{
+              medium: 2,
             }}
           >
             <BodyCopy>
@@ -70,39 +69,56 @@ class CreditCardModalInfo extends React.Component<Props> {
           </Col>
           <Col
             colSize={{
-              small: 6,
-              large: 5,
+              small: 4,
+              large: 10,
               medium: 8,
             }}
           >
-            <BodyCopy fontWeight="bold" fontFamily="secondaryFontFamily" tag="span">
-              {data.cardText.cardEnd}
-              {getAccNumbr}
-            </BodyCopy>
-          </Col>
-          <Col
-            colSize={{
-              small: 6,
-              large: 5,
-              medium: 8,
-            }}
-          >
-            <BodyCopy
-              fontWeight="normal"
-              fontFamily="secondaryFontFamily"
-              tag="span"
-            >
-              {data.cardText.expire}
-              {TotalExp}
-            </BodyCopy>
+            <Row fullBleed>
+              <Col
+                colSize={{
+                  small: 6,
+                  large: 6,
+                  medium: 8,
+                }}
+                offsetLeft={{
+                  medium: 2,
+                }}
+              >
+                <BodyCopy fontWeight="bold" fontFamily="secondaryFontFamily" tag="span">
+                  {data.cardText.cardEnd}
+                  {getAccNumbr}
+                </BodyCopy>
+              </Col>
+              <Col
+                colSize={{
+                  small: 6,
+                  large: 6,
+                  medium: 8,
+                }}
+                offsetLeft={{
+                  medium: 2,
+                }}
+              >
+                <BodyCopy fontWeight="normal" fontFamily="secondaryFontFamily" tag="span">
+                  {data.cardText.expire}
+                  {TotalExp}
+                </BodyCopy>
+              </Col>
+            </Row>
           </Col>
         </Row>
         <Row fullBleed className="CreditCardAddress">
           <Col
             colSize={{
-              small: 6,
+              small: 4,
               large: 10,
               medium: 8,
+            }}
+            offsetLeft={{
+              small: 2,
+              medium: 2,
+              large: 2,
             }}
           >
             <BodyCopy bodySize="three">

@@ -31,9 +31,14 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 6,
+          "large": 2,
           "medium": 8,
           "small": 2,
+        }
+      }
+      offsetLeft={
+        Object {
+          "medium": 2,
         }
       }
     >
@@ -44,36 +49,60 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 5,
+          "large": 10,
           "medium": 8,
-          "small": 6,
+          "small": 4,
         }
       }
     >
-      <Styled(BodyStyle)
-        fontFamily="secondaryFontFamily"
-        fontWeight="bold"
-        tag="span"
+      <Styled(Row)
+        fullBleed={true}
       >
-        111
-      </Styled(BodyStyle)>
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 5,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    >
-      <Styled(BodyStyle)
-        fontFamily="secondaryFontFamily"
-        fontWeight="normal"
-        tag="span"
-      >
-        fgh
-      </Styled(BodyStyle)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+          offsetLeft={
+            Object {
+              "medium": 2,
+            }
+          }
+        >
+          <Styled(BodyStyle)
+            fontFamily="secondaryFontFamily"
+            fontWeight="bold"
+            tag="span"
+          >
+            111
+          </Styled(BodyStyle)>
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+          offsetLeft={
+            Object {
+              "medium": 2,
+            }
+          }
+        >
+          <Styled(BodyStyle)
+            fontFamily="secondaryFontFamily"
+            fontWeight="normal"
+            tag="span"
+          >
+            fgh
+          </Styled(BodyStyle)>
+        </Styled(Col)>
+      </Styled(Row)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -85,7 +114,14 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
         Object {
           "large": 10,
           "medium": 8,
-          "small": 6,
+          "small": 4,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 2,
+          "medium": 2,
+          "small": 2,
         }
       }
     >
