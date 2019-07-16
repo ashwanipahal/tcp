@@ -19,7 +19,7 @@ const {
 class AnimatedBrandChangeIcon extends Component {
   constructor(props) {
     super(props);
-    this.state = { openSwitch: true };
+    this.state = { openSwitch: false };
   }
 
   /**
