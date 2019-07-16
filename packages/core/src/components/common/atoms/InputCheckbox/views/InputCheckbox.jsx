@@ -15,7 +15,14 @@ type Props = {
   dataLocator?: string,
 };
 
-const InputCheckbox = ({ children, className, ariaLabel, input, dataLocator }: Props): Node => (
+const InputCheckbox = ({
+  children,
+  className,
+  ariaLabel,
+  input,
+  disabled,
+  dataLocator,
+}: Props): Node => (
   <label htmlFor={input.name} className={className}>
     <input
       {...input}
@@ -25,8 +32,9 @@ const InputCheckbox = ({ children, className, ariaLabel, input, dataLocator }: P
       type="checkbox"
       data-locator={dataLocator}
       checked={input.value}
+      disabled={disabled}
     />
-    <BodyCopy fontSize="fs12" fontFamily="secondary">
+    <BodyCopy fontSize="fs12" fontFamily="secondary" className={disabled ? 'disabled' : ''}>
       {children}
     </BodyCopy>
   </label>

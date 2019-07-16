@@ -161,34 +161,6 @@ describe('Address List reducer', () => {
       })
     );
   });
-  it('should load add address component', () => {
-    const initialState = fromJS({
-      addAddressLoaded: false,
-    });
-    expect(
-      AddressBookReducer(initialState, {
-        type: ADDRESS_BOOK_CONSTANTS.LOAD_ADD_ADDRESS_COMPONENT,
-      })
-    ).toEqual(
-      fromJS({
-        addAddressLoaded: true,
-      })
-    );
-  });
-  it('should load add address component', () => {
-    const initialState = fromJS({
-      addAddressLoaded: true,
-    });
-    expect(
-      AddressBookReducer(initialState, {
-        type: ADDRESS_BOOK_CONSTANTS.LOAD_ADDRESSBOOK_COMPONENT,
-      })
-    ).toEqual(
-      fromJS({
-        addAddressLoaded: false,
-      })
-    );
-  });
   it('should handle setAddressBookNotification action', () => {
     const initialState = fromJS({
       showUpdatedNotification: null,

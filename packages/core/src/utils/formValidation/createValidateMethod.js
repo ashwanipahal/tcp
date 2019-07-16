@@ -268,7 +268,8 @@ function evaluateAllSyncRules(
           );
       }
 
-      if (isFieldInvalid) {
+      if (isFieldInvalid && !errors[fieldName]) {
+        // we need only first error
         errors[fieldName] = getErrorMessage(
           messages,
           fieldName,
@@ -279,7 +280,6 @@ function evaluateAllSyncRules(
       }
     });
   });
-  console.log('---------------errors are ', errors);
   return errors;
 }
 

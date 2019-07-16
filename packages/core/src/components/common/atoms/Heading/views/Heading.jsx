@@ -34,7 +34,6 @@ Heading.propTypes = {
   // TODO: Need fix unused/proptypes eslint error
   /* eslint-disable */
   color: PropTypes.string,
-  mode: PropTypes.oneOf(['light', 'dark']),
   textAlign: PropTypes.oneOf(['left', 'center']),
   dataLocator: PropTypes.string,
   /* eslint-enable */

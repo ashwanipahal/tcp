@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GiftCardModalInfo Component should render correctly 1`] = `
+<div>
+  <Styled(BodyStyle)
+    bodySize="seven"
+    className="deleteCardModal_modalTitle"
+    fontFamily="secondaryFontFamily"
+    fontWeight="bold"
+  >
+    abc
+  </Styled(BodyStyle)>
+  <Styled(BodyStyle)
+    className="deleteCardModal_desc"
+  >
+     
+    <Styled(Image)
+      className="deleteCardModal_img"
+      src="/static/images/gift-card.png"
+    />
+    <Styled(BodyStyle)
+      bodySize="three"
+      className="deleteCardModal_cardInfo layout-pb-LRG"
+    >
+      <Styled(BodyStyle)
+        className="deleteCardModal_card"
+        fontFamily="secondaryFontFamily"
+        fontWeight="bold"
+        tag="span"
+      >
+        111
+      </Styled(BodyStyle)>
+    </Styled(BodyStyle)>
+  </Styled(BodyStyle)>
+</div>
+`;

@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Delete card Modal should render correctly 1`] = `
+<errorBoundaryComponent
+  className="TCPModal__Content, undefined"
+  fixedWidth={true}
+  heading="DELETE ADDRESS"
+  maxWidth="690px"
+  minHeight="340px"
+  onRequestClose={[Function]}
+  overlayClassName="TCPModal__Overlay"
+>
+  <div>
+    <div
+      className="deleteCardModal__btnWrapper"
+    >
+      <Styled(Button)
+        buttonVariation="variable-width"
+        className="deleteCardModal__deleteConfirm deleteCardModal__btn"
+        fill="BLUE"
+        onClick={[Function]}
+      >
+        Yes Delete
+      </Styled(Button)>
+      <Styled(Button)
+        buttonVariation="variable-width"
+        className="deleteCardModal__btn deleteCardModal__deleteCancel"
+        fill="RED"
+        onClick={[Function]}
+      >
+        No, Dont Cancel
+      </Styled(Button)>
+    </div>
+  </div>
+</errorBoundaryComponent>
+`;

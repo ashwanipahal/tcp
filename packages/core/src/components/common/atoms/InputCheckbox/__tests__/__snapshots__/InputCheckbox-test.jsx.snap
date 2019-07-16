@@ -11,10 +11,9 @@ exports[`InputCheckbox component should render correctly 1`] = `
     type="checkbox"
   />
   <Styled(BodyCopy)
-    className={null}
+    className=""
     color="text.primary"
     component="p"
-    dataLocator=""
     fontFamily="secondary"
     fontSize="fs12"
     fontWeight="regular"

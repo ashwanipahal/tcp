@@ -15,7 +15,7 @@ describe('Payment Reducer', () => {
   });
 
   it('should return cardList object for the cardList if state is passed as an array', () => {
-    const state = PaymentReducer({}, {});
+    const state = PaymentReducer(fromJS({}), {});
     expect(Map.isMap(state)).toBeTruthy();
   });
 
@@ -74,5 +74,25 @@ describe('Payment Reducer', () => {
         payload: err,
       })
     ).toEqual(fromJS({ showNotification: 'error' }));
+  });
+
+  it('should return showNotificationCaptcha as error if error occurs', () => {
+    const initialState = fromJS({
+      showNotificationCaptcha: null,
+      giftcardBalance: {},
+    });
+    const updatedState = initialState
+      .set('showNotificationCaptcha', 'error')
+      .deleteIn(['giftcardBalance', '1234']);
+    expect(
+      PaymentReducer(initialState, {
+        type: PAYMENT_CONSTANTS.SET_CHECK_BALANCE_ERROR,
+        payload: {
+          card: {
+            accountNo: '1234',
+          },
+        },
+      })
+    ).toEqual(updatedState);
   });
 });

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardView component should render correctly 1`] = `
+<div>
+  <Styled(Row)
+    className="abc"
+    fullBleed={true}
+  />
+</div>
+`;
+
+exports[`CardView component should renders correctly when Card are not present 1`] = `
+<div>
+  <Styled(Row)
+    fullBleed={true}
+  />
+</div>
+`;

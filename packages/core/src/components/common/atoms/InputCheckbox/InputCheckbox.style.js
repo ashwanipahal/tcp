@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  display: flex;
+  display: inline-flex;
   align-items: center;
   height: 50px;
 
@@ -43,6 +43,10 @@ const styles = css`
     left: 10px;
     top: 5px;
     position: absolute;
+  }
+
+  & .disabled {
+    opacity: ${props => props.theme.opacity.opacity.medium};
   }
 `;
 

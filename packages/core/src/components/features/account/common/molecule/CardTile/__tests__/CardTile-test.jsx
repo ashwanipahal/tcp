@@ -1,7 +1,8 @@
 import React from 'react';
+import { fromJS } from 'immutable';
 import { shallow } from 'enzyme';
 import { CardTileVanilla } from '../views/CardTile.view';
-import labels from '../../../../Payment/Payment.constants';
+import labels from '../../../../Payment/container/Payment.labels';
 import Anchor from '../../../../../../common/atoms/Anchor';
 
 describe('CardTile', () => {
@@ -28,6 +29,7 @@ describe('CardTile', () => {
     nameOnAccount: '.',
     properties: null,
   };
+  const placeCard = 'PLACE CARD';
   it('should render correctly with discover card', () => {
     const tree = shallow(<CardTileVanilla labels={labels} card={cardList} />);
     expect(tree).toMatchSnapshot();
@@ -78,8 +80,8 @@ describe('CardTile', () => {
   });
   it('should render correctly with plcc card', () => {
     const plcc = Object.assign({}, cardList, {
-      ccBrand: 'PLACE CARD',
-      ccType: 'PLACE CARD',
+      ccBrand: placeCard,
+      ccType: placeCard,
     });
     const mockedSetDefaultPaymentMethod = jest.fn();
     const tree = shallow(
@@ -96,5 +98,69 @@ describe('CardTile', () => {
       .at(0)
       .simulate('click', { preventDefault: jest.fn() });
     expect(mockedSetDefaultPaymentMethod).toHaveBeenCalled();
+  });
+  it('should render correctly with notification  gift card', () => {
+    const giftCard = Object.assign({}, cardList, {
+      ccBrand: 'GC',
+      ccType: 'GiftCard',
+    });
+    const tree = shallow(
+      <CardTileVanilla labels={labels} card={giftCard} showNotificationCaptcha />
+    );
+    expect(tree).toMatchSnapshot();
+  });
+  it('should render correctly with delete gift  card', () => {
+    const plcc = Object.assign({}, cardList, {
+      ccBrand: placeCard,
+      ccType: placeCard,
+    });
+    const mockedSetSelectedGiftCard = jest.fn();
+    const mockedSetDeleteModalMountState = jest.fn();
+    const tree = shallow(
+      <CardTileVanilla
+        labels={labels}
+        card={plcc}
+        setSelectedGiftCard={mockedSetSelectedGiftCard}
+        setDeleteModalMountState={mockedSetDeleteModalMountState}
+      />
+    );
+    expect(tree).toMatchSnapshot();
+    expect(tree.find(Anchor).at(2)).toHaveLength(1);
+    tree
+      .find(Anchor)
+      .at(2)
+      .simulate('click', { preventDefault: jest.fn() });
+    expect(mockedSetSelectedGiftCard).toHaveBeenCalled();
+    expect(mockedSetDeleteModalMountState).toHaveBeenCalled();
+  });
+  it('should show remining balance', () => {
+    const plcc = Object.assign({}, cardList, {
+      ccBrand: 'GC',
+      ccType: 'GiftCard',
+    });
+    const checkbalanceValueInfo = fromJS({
+      '************6765': '0',
+    });
+
+    const tree = shallow(
+      <CardTileVanilla labels={labels} card={plcc} checkbalanceValueInfo={checkbalanceValueInfo} />
+    );
+    tree.setState({ HideCaptchaBtn: true });
+    expect(tree).toMatchSnapshot();
+  });
+  it('should show loading', () => {
+    const plcc = Object.assign({}, cardList, {
+      ccBrand: 'GC',
+      ccType: 'GiftCard',
+    });
+    const checkbalanceValueInfo = fromJS({
+      '************6765': null,
+    });
+
+    const tree = shallow(
+      <CardTileVanilla labels={labels} card={plcc} checkbalanceValueInfo={checkbalanceValueInfo} />
+    );
+    tree.setState({ HideCaptchaBtn: true });
+    expect(tree).toMatchSnapshot();
   });
 });

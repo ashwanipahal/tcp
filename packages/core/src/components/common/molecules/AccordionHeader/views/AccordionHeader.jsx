@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
-import styles from '../AccordionHeader.style';
-import withStyles from '../../../hoc/withStyles';
+import BodyCopy from '../../../atoms/BodyCopy';
 
 type Props = {
   className: string,
@@ -13,7 +12,7 @@ type Props = {
 const AccordionHeader = ({ className, titleText, updateAccordionState, index }: Props) => {
   return (
     // eslint-disable-next-line
-    <h4
+    <BodyCopy
       data-locator={`accordion-${index}`}
       // eslint-disable-next-line
       tabIndex="0"
@@ -21,12 +20,15 @@ const AccordionHeader = ({ className, titleText, updateAccordionState, index }: 
       onClick={updateAccordionState}
       onKeyPress={updateAccordionState}
       data-index={index}
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs13"
+      lineHeight="lh115"
+      color="text.primary"
     >
       {titleText}
-    </h4>
+    </BodyCopy>
   );
 };
 
-export default withStyles(AccordionHeader, styles);
-
-export { AccordionHeader as AccordionHeaderVanilla };
+export default AccordionHeader;
