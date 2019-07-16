@@ -20,8 +20,8 @@ exports[`MoneyCards Component should render correctly 1`] = `
           }
         }
       />
-      <Styled(Text) />
     </Styled(View)>
+    <Styled(Text) />
   </Styled(View)>
   <Styled(Text) />
   <Styled(View)>

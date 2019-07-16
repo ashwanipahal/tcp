@@ -80,7 +80,7 @@ class DeleteCardModal extends React.Component<Props> {
             {...this.props}
           />
         )}
-        <div className="deleteCardModal_btnWrapper">
+        <div className="deleteCardModal__btnWrapper">
           <Button
             buttonVariation="variable-width"
             fill="BLUE"

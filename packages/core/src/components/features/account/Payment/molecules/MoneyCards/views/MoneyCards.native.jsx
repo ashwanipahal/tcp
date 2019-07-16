@@ -33,8 +33,8 @@ const MoneyCards = (props: Props) => {
                 // eslint-disable-next-line global-require
                 source={require('../../../../../../../../../mobileapp/src/assets/images/credit-card.png')}
               />
-              <EmptyCCLabelStyle>{labels.ACC_LBL_CC_EMPTY_HEADING}</EmptyCCLabelStyle>
             </ImgWrapper>
+            <EmptyCCLabelStyle>{labels.ACC_LBL_CC_EMPTY_HEADING}</EmptyCCLabelStyle>
           </WrapperStyle>
           <DescriptionEmptyCCStyle>{labels.ACC_LBL_CC_EMPTY_DESC}</DescriptionEmptyCCStyle>
           <ButtonWrapperStyle>

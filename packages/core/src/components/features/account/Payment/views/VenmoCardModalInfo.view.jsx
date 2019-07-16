@@ -7,25 +7,34 @@ import styles from '../styles/DeleteCardModal.style';
 
 // @flow
 type Props = {
+  className: string,
   data: object,
 };
 
 class VenmoCardModalInfo extends React.Component<Props> {
   render() {
-    const { data } = this.props;
+    const { data, className } = this.props;
     return (
-      <div>
-        <BodyCopy className="deleteCardModal_desc">
+      <div className={className}>
+        <BodyCopy
+          bodySize="seven"
+          fontWeight="bold"
+          fontFamily="secondaryFontFamily"
+          className="deleteCardModal__modalTitle"
+        >
+          {data.subHeading}
+        </BodyCopy>
+        <BodyCopy className="deleteCardModal__venmoDesc">
           {' '}
           <Image
-            className="deleteCardModal_img"
+            className="deleteCardModal__img"
             src={getIconPath('venmo-blue-acceptance-mark')}
             onClick={this.pause}
           />
           <BodyCopy
             fontWeight="bold"
             fontFamily="secondaryFontFamily"
-            className="deleteCardModal_card"
+            className="deleteCardModal__card deleteCardModal__venmoDesc"
             tag="span"
           >
             {data.description.properties.venmoUserId}
