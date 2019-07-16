@@ -57,6 +57,10 @@ const EmailSignupModalStyle = css`
       width: 100%;
     }
   }
+
+  .email-modal-signup-image {
+    width: 300px;
+  }
 `;
 
 export default EmailSignupModalStyle;

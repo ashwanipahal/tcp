@@ -164,7 +164,9 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
             }
             isNotInlineBlock={true}
           >
-            <Styled(Image) />
+            <Styled(Image)
+              className="email-modal-signup-image"
+            />
           </Styled(Col)>
           <Styled(Col)
             colSize={

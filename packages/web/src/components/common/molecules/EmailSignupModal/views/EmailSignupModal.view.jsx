@@ -153,7 +153,11 @@ class SignupWrapper extends React.PureComponent {
                       hideCol={{ small: true, medium: true }}
                       className="img-wrapper"
                     >
-                      <Image alt={formViewConfig.imageAltText} src={formViewConfig.imageSrc} />
+                      <Image
+                        className="email-modal-signup-image"
+                        alt={formViewConfig.imageAltText}
+                        src={formViewConfig.imageSrc}
+                      />
                     </Col>
                     <Col colSize={{ small: 6, medium: 8, large: 8 }}>
                       <SignupFormIntro formViewConfig={formViewConfig} />
