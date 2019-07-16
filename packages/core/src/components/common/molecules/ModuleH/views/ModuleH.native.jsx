@@ -133,7 +133,6 @@ class ModuleH extends React.PureComponent<Props, State> {
               );
             })}
         </HeaderWrapper>
-        {divCTALinks ? <LinksWrapper>{this.renderLinks(divCTALinks)}</LinksWrapper> : null}
         {divCTALinks && (
           <Carousel
             onSnapToItem={this.updateCurrentIndex}
@@ -146,6 +145,7 @@ class ModuleH extends React.PureComponent<Props, State> {
             }}
           />
         )}
+        {divCTALinks ? <LinksWrapper>{this.renderLinks(divCTALinks)}</LinksWrapper> : null}
       </Wrapper>
     );
   }
