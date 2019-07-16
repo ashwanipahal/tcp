@@ -5,6 +5,9 @@ import { Image } from '../../../../common/atoms';
 import withStyles from '../../../../common/hoc/withStyles';
 import CreditCardStyles from '../styles/CreditCardModalInfo.style';
 import Address from '../../../../common/molecules/Address';
+import Row from '../../../../common/atoms/Row';
+import Col from '../../../../common/atoms/Col';
+import Button from '../../../../common/atoms/Button';
 
 // @flow
 type Props = {
@@ -33,47 +36,90 @@ class CreditCardModalInfo extends React.Component<Props> {
     const { TotalExp, getAccNumbr, data, address, className } = this.props;
     return (
       <div className={className}>
-        <BodyCopy
-          bodySize="five"
-          fontWeight="bold"
-          fontFamily="secondaryFontFamily"
-          className="deleteCreditCardModal__modalTitle"
-        >
-          {data.heading}
-        </BodyCopy>
-        <BodyCopy className="deleteCreditCardModal__desc">
-          <Image
-            className="deleteCreditCardModal__img"
-            src={getIconPath(this.cardIconMapping[data.description.ccBrand])}
-            onClick={this.pause}
-          />
-          <BodyCopy className="deleteCreditCardModal__cardInfo" bodySize="three">
+        <Row fullBleed className="CreditCardHeading">
+          <Col
+            colSize={{
+              small: 12,
+              large: 12,
+              medium: 12,
+            }}
+          >
+            <BodyCopy
+              bodySize="five"
+              fontWeight="bold"
+              fontFamily="secondaryFontFamily"
+            >
+              {data.heading}
+            </BodyCopy>
+          </Col>
+        </Row>
+
+        <Row fullBleed className="CreditCardInfo">
+          <Col
+            colSize={{
+              small: 6,
+              large: 2,
+              medium: 8,
+            }}
+          >
+            <BodyCopy>
+              <Image
+                src={getIconPath(this.cardIconMapping[data.description.ccBrand])}
+                onClick={this.pause}
+              />
+            </BodyCopy>
+          </Col>
+          <Col
+            colSize={{
+              small: 6,
+              large: 5,
+              medium: 8,
+            }}
+          >
             <BodyCopy fontWeight="bold" fontFamily="secondaryFontFamily" tag="span">
               {data.cardText.cardEnd}
               {getAccNumbr}
             </BodyCopy>
+          </Col>
+          <Col
+            colSize={{
+              small: 6,
+              large: 5,
+              medium: 8,
+            }}
+          >
             <BodyCopy
               fontWeight="normal"
               fontFamily="secondaryFontFamily"
-              className="deleteCreditCardModal__expiry"
               tag="span"
             >
               {data.cardText.expire}
               {TotalExp}
             </BodyCopy>
-          </BodyCopy>
-          <Address
-            address={address}
-            fontWeight="normal"
-            showCountry={false}
-            showPhone={false}
-            className="DeleteCreditCardAddress is-visible"
-          />
-        </BodyCopy>
+          </Col>
+        </Row>
+        <Row fullBleed>
+          <Col
+            colSize={{
+              small: 6,
+              large: 10,
+              medium: 8,
+            }}
+          >
+            <BodyCopy bodySize="three">
+              <Address
+                address={address}
+                fontWeight="normal"
+                showCountry={false}
+                showPhone={false}
+              />
+            </BodyCopy>
+          </Col>
+        </Row>
       </div>
     );
   }
 }
 
 export default withStyles(CreditCardModalInfo, CreditCardStyles);
-export { CreditCardModalInfo as GiftCardModalInfoVanilla };
+export { CreditCardModalInfo as CreditCardModalInfoVanilla };
