@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 const styles = css`
   .emptyCard__body {
-    padding-right: 0;
+    margin-right: 0;
   }
   .emptyCard__description--desktop {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};

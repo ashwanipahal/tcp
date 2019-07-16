@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { List } from 'immutable';
-import { PaymentViewVanilla } from '../Payment.view';
+import { PaymentViewVanilla } from '../PaymentView/views/Payment.view';
 import Notification from '../../../../../common/molecules/Notification';
 import BodyCopy from '../../../../../common/atoms/BodyCopy';
 import Offers from '../../../common/molecule/Offers/views/Offers.view';

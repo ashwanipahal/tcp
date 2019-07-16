@@ -111,6 +111,7 @@ class SignupWrapper extends React.PureComponent {
             overlayClassName="TCPModal__Overlay"
             onRequestClose={this.closeModal}
             noPadding
+            widthConfig={{ small: '375px', medium: '458px', large: '851px' }}
           >
             {isSubscriptionValid ? (
               <Grid>

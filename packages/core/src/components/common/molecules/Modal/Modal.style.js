@@ -21,10 +21,15 @@ const ModalStyle = css`
     overflow-y: auto;
     height: 100%;
     width: ${props => (props.fixedWidth ? '100%' : '')};
+    width: ${props => (props.widthConfig ? props.widthConfig.small : '')};
     @media ${props => props.theme.mediaQuery.medium} {
       height: auto;
       max-width: ${props => (props.fixedWidth ? props.maxWidth : '')};
       min-height: ${props => (props.fixedWidth ? props.minHeight : '')};
+      width: ${props => (props.widthConfig ? props.widthConfig.medium : '')};
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      width: ${props => (props.widthConfig ? props.widthConfig.large : '')};
     }
   }
   .Modal_Heading {

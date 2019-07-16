@@ -1,9 +1,6 @@
 import { css } from 'styled-components';
 
 const EmailSignupModalStyle = css`
-  .TCPModal__InnerContent {
-    width: 375px;
-  }
   .field-container {
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
   }
@@ -32,16 +29,12 @@ const EmailSignupModalStyle = css`
     margin-top: 52px;
   }
   @media ${props => props.theme.mediaQuery.medium} {
-    .TCPModal__InnerContent,
     .button-wrapper,
     .button-wrapper-form {
       width: 458px;
     }
   }
   @media ${props => props.theme.mediaQuery.large} {
-    .TCPModal__InnerContent {
-      width: 851px;
-    }
     .field-container {
       padding-top: 0;
     }

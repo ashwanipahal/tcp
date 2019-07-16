@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Carousel from '../../Carousel';
 import { Image } from '../../../atoms';
-import ModuleH from '../view';
+import ModuleH from '../views';
 import mock from '../mock';
 
 describe('ModuleH component', () => {

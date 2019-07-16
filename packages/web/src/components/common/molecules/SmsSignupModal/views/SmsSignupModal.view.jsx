@@ -98,6 +98,7 @@ class SignupWrapper extends React.PureComponent {
             overlayClassName="TCPModal__Overlay"
             onRequestClose={this.closeModal}
             noPadding
+            widthConfig={{ small: '375px', medium: '458px', large: '851px' }}
           >
             {isSubscriptionValid === 'valid' ? (
               <Grid>
@@ -206,7 +207,7 @@ SignupWrapper.propTypes = {
   confirmationViewConfig: PropTypes.shape({}).isRequired,
   clearSmsSignupForm: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func.isRequired,
-  isSubscriptionValid: PropTypes.bool,
+  isSubscriptionValid: PropTypes.string,
   submitSmsSubscription: PropTypes.func,
   pristine: PropTypes.bool.isRequired,
 };
@@ -214,7 +215,7 @@ SignupWrapper.propTypes = {
 SignupWrapper.defaultProps = {
   buttonConfig: {},
   className: '',
-  isSubscriptionValid: false,
+  isSubscriptionValid: '',
   submitSmsSubscription: () => {},
 };
 

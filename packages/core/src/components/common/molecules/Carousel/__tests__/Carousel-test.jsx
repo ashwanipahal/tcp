@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CarouselVanilla } from '../Carousel';
+import { CarouselVanilla } from '../views/Carousel';
 
 const playButton = '.tcp_carousel__play';
 describe('Carousel component', () => {

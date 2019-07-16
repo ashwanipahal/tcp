@@ -22,6 +22,7 @@ type Props = {
   checkbalanceValueInfo: any,
   showNotification: boolean,
   showNotificationCaptcha: boolean,
+  setSelectedCard: string,
 };
 
 const GiftCardList = ({
@@ -36,6 +37,7 @@ const GiftCardList = ({
   checkbalanceValueInfo,
   showNotification,
   showNotificationCaptcha,
+  setSelectedCard,
 }: Props) => {
   return (
     <div className={className}>
@@ -74,11 +76,12 @@ const GiftCardList = ({
           setDeleteModalMountState={setDeleteModalMountState}
           onDeleteCard={onDeleteCard}
           showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
-          giftCardList={giftCardList}
+          cardList={giftCardList}
           onGetBalanceCard={onGetBalanceCard}
           checkbalanceValueInfo={checkbalanceValueInfo}
           showNotification={showNotification}
           showNotificationCaptcha={showNotificationCaptcha}
+          setSelectedCard={setSelectedCard}
         />
       )}
     </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, reset } from 'redux-form';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Badge from '../../../../../../common/atoms/Badge';
@@ -11,9 +11,10 @@ import { getIconPath } from '../../../../../../../utils';
 import PAYMENT_CONSTANTS from '../../../../Payment/Payment.constants';
 import Recaptcha from '../../../../../../common/molecules/recaptcha/recaptcha';
 import TextBox from '../../../../../../common/atoms/TextBox';
-import Button from '../../../../../../common/atoms/Button';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import { getDataLocatorPrefix, getCardName, cardIconMapping } from './CardTile.utils';
+import Button from '../../../../../../common/atoms/Button';
 // @flow
 type Props = {
   card: object,
@@ -28,23 +29,19 @@ type Props = {
   checkbalanceValueInfo: any,
   showNotificationCaptcha: any,
   form: any,
+  dispatch: Function,
 };
-
 class CardTile extends React.Component<Props> {
   constructor(props) {
     super(props);
-    this.cardIconMapping = {
-      DISC: 'disc-small',
-      MC: 'mc-small',
-      Amex: 'amex-small',
-      Visa: 'visa-small',
-      GC: 'gift-card-small',
-      'PLACE CARD': 'place-card-small',
-      VENMO: 'venmo-blue-acceptance-mark',
-    };
     this.paymentMethodId = PAYMENT_CONSTANTS.CREDIT_CARDS_PAYMETHODID;
     this.state = { isTokenDirty: false, HideCaptchaBtn: false, balance: null };
     this.handleCheckBalanceClick = this.handleCheckBalanceClick.bind(this);
+  }
+
+  componentWillUnmount() {
+    const { form, dispatch } = this.props;
+    dispatch(reset(form));
   }
 
   getMakeDefaultBadge = () => {
@@ -59,7 +56,7 @@ class CardTile extends React.Component<Props> {
         underline
         to="/#"
         anchorVariation="primary"
-        dataLocator="payment-makedefault"
+        data-locator="payment-makedefault"
         onClick={this.handleDefaultLinkClick}
       >
         {labels.ACC_LBL_MAKE_DEFAULT}
@@ -135,37 +132,11 @@ class CardTile extends React.Component<Props> {
     );
   };
 
-  getCardName = () => {
-    const { card, labels } = this.props;
-    switch (card.ccType) {
-      case 'GiftCard':
-        return labels.ACC_LBL_GIFT_CARD;
-      case 'PLACE CARD':
-        return labels.ACC_LBL_PLCC_CARD;
-      case 'VENMO':
-        return labels.ACC_LBL_VENMO_ACCOUNT;
-      default:
-        return labels.ACC_LBL_DEFAULT_CARD_NAME;
-    }
-  };
-
   onDeletegiftardClick = e => {
     const { card, setDeleteModalMountState, setSelectedGiftCard } = this.props;
     e.preventDefault();
     setSelectedGiftCard(card);
     setDeleteModalMountState({ state: true });
-  };
-
-  getDataLocatorPrefix = () => {
-    const { card } = this.props;
-    switch (card.ccType) {
-      case 'GiftCard':
-        return 'giftcard';
-      case 'VENMO':
-        return 'venmo';
-      default:
-        return 'creditdebit';
-    }
   };
 
   static getDerivedStateFromProps(prevProps) {
@@ -193,25 +164,12 @@ class CardTile extends React.Component<Props> {
     this.recaptcha = ref;
   };
 
-  remainBalance = () => {
-    const { card, checkbalanceValueInfo, labels } = this.props;
-    const { HideCaptchaBtn, balance } = this.state;
+  renderBalance = ({ HideCaptchaBtn, balance, labels }) => {
+    const { card, checkbalanceValueInfo } = this.props;
     const isCreditCard = card.ccType !== 'GiftCard' && card.ccType !== 'VENMO';
     const isVenmo = card.ccType === 'VENMO';
     return (
       <React.Fragment>
-        {HideCaptchaBtn && (
-          <BodyCopy
-            tag="span"
-            fontSize="fs14"
-            fontFamily="secondary"
-            fontWeight="semibold"
-            className=""
-            lineHeights="lh115"
-          >
-            {balance && labels.ACC_LBL_REMAINING_BALANCE}
-          </BodyCopy>
-        )}
         {HideCaptchaBtn && (
           <BodyCopy
             tag="span"
@@ -229,13 +187,47 @@ class CardTile extends React.Component<Props> {
             onClick={this.handleCheckBalanceClick}
             buttonVariation="variable-width"
             type="submit"
-            data-locator="cardtile-checkbalance"
+            data-locator="gift-card-recaptchcb"
             fill="BLUE"
             disabled={HideCaptchaBtn && !checkbalanceValueInfo.giftCardNbr}
           >
             {labels.ACC_LBL_CHECK_BALANCE}
           </Button>
         )}
+      </React.Fragment>
+    );
+  };
+
+  remainBalance = () => {
+    const { card, checkbalanceValueInfo, labels } = this.props;
+    const { HideCaptchaBtn, balance } = this.state;
+    return (
+      <React.Fragment>
+        {HideCaptchaBtn && !checkbalanceValueInfo.giftCardNbr && (
+          <BodyCopy
+            tag="span"
+            fontSize="fs24"
+            fontFamily="secondary"
+            fontWeight="extrabold"
+            className=""
+            lineHeights="lh115"
+          >
+            {labels.ACC_LBL_LOADING}
+          </BodyCopy>
+        )}
+        {HideCaptchaBtn && checkbalanceValueInfo.giftCardNbr === card.accountNo && (
+          <BodyCopy
+            tag="span"
+            fontSize="fs14"
+            fontFamily="secondary"
+            fontWeight="semibold"
+            className=""
+            lineHeights="lh115"
+          >
+            {balance && labels.ACC_LBL_REMAINING_BALANCE}
+          </BodyCopy>
+        )}
+        {this.renderBalance({ HideCaptchaBtn, balance, labels })}
       </React.Fragment>
     );
   };
@@ -296,7 +288,7 @@ class CardTile extends React.Component<Props> {
             underline
             to="/#"
             anchorVariation="primary"
-            dataLocator={`payment-${dataLocatorPrefix}editlink`}
+            data-locator={`payment-${dataLocatorPrefix}editlink`}
             className="cardTile__anchor"
           >
             {labels.ACC_LBL_EDIT}
@@ -308,7 +300,7 @@ class CardTile extends React.Component<Props> {
           underline
           to="/#"
           anchorVariation="primary"
-          dataLocator={`payment-${dataLocatorPrefix}deletelink`}
+          data-locator={`payment-${dataLocatorPrefix}deletelink`}
           onClick={e => this.onDeletegiftardClick(e)}
         >
           {labels.ACC_LBL_DELETE}
@@ -318,13 +310,13 @@ class CardTile extends React.Component<Props> {
   };
 
   render() {
-    const { card, className, showNotificationCaptcha, form } = this.props;
+    const { card, className, showNotificationCaptcha, labels, form } = this.props;
     const { HideCaptchaBtn } = this.state;
     const isCreditCard = card.ccType !== 'GiftCard' && card.ccType !== 'VENMO';
     const isVenmo = card.ccType === 'VENMO';
-    const cardName = this.getCardName();
-    const cardIcon = getIconPath(this.cardIconMapping[card.ccBrand]);
-    const dataLocatorPrefix = this.getDataLocatorPrefix();
+    const cardName = getCardName({ card, labels });
+    const cardIcon = getIconPath(cardIconMapping[card.ccBrand]);
+    const dataLocatorPrefix = getDataLocatorPrefix({ card });
     return (
       <div className={className}>
         {showNotificationCaptcha && (
@@ -352,12 +344,7 @@ class CardTile extends React.Component<Props> {
           <div className="cardTile__defaultSection">
             {isCreditCard ? this.getMakeDefaultBadge() : null}
             <div className="cardTile__img_wrapper">
-              <img
-                className="cardTile__img"
-                alt={card.ccBrand}
-                src={cardIcon}
-                data-locator="payment-cardImage"
-              />
+              <img className="cardTile__img" alt="" src={cardIcon} />
             </div>
           </div>
         </div>

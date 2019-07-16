@@ -26,6 +26,13 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
     noPadding={true}
     onRequestClose={[Function]}
     overlayClassName="TCPModal__Overlay"
+    widthConfig={
+      Object {
+        "large": "851px",
+        "medium": "458px",
+        "small": "375px",
+      }
+    }
   >
     <form
       onSubmit={[Function]}
@@ -229,7 +236,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
                 className="terms-label"
                 color="text.primary"
                 component="p"
-                dataLocator=""
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="regular"
@@ -290,6 +296,13 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
     noPadding={true}
     onRequestClose={[Function]}
     overlayClassName="TCPModal__Overlay"
+    widthConfig={
+      Object {
+        "large": "851px",
+        "medium": "458px",
+        "small": "375px",
+      }
+    }
   >
     <form
       onSubmit={[Function]}
@@ -493,7 +506,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                 className="terms-label"
                 color="text.primary"
                 component="p"
-                dataLocator=""
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="regular"
