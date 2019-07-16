@@ -59,7 +59,7 @@ const EmailSignupModalStyle = css`
   }
 
   .email-modal-signup-image {
-    width: 300px;
+    max-width: 300px;
   }
 `;
 
