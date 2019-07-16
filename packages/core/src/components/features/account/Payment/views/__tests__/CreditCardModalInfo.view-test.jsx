@@ -7,6 +7,7 @@ describe('CreditCardModalInfo Component', () => {
   it('should render correctly', () => {
     const props = {
       data: {
+        description: { ccBrand: 'dfg' },
         heading: 'abc',
         cardText: {
           expire: 'fgh',

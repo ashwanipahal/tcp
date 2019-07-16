@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreditCardModalInfo Component should render correctly 1`] = `
+<div>
+  <Styled(Row)
+    className="CreditCardHeading"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 12,
+          "small": 12,
+        }
+      }
+    >
+      <Styled(BodyStyle)
+        bodySize="five"
+        fontFamily="secondaryFontFamily"
+        fontWeight="bold"
+      >
+        abc
+      </Styled(BodyStyle)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="CreditCardInfo"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 8,
+          "small": 2,
+        }
+      }
+    >
+      <Styled(BodyStyle)>
+        <Styled(Image) />
+      </Styled(BodyStyle)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyStyle)
+        fontFamily="secondaryFontFamily"
+        fontWeight="bold"
+        tag="span"
+      >
+        111
+      </Styled(BodyStyle)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyStyle)
+        fontFamily="secondaryFontFamily"
+        fontWeight="normal"
+        tag="span"
+      >
+        fgh
+      </Styled(BodyStyle)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="CreditCardAddress"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 10,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyStyle)
+        bodySize="three"
+      >
+        <Address
+          fontWeight="normal"
+          showCountry={false}
+          showPhone={false}
+        />
+      </Styled(BodyStyle)>
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;
