@@ -1,4 +1,5 @@
 import React from 'react';
+import { fromJS } from 'immutable';
 import { shallow } from 'enzyme';
 import { CardTileVanilla } from '../views/CardTile.view';
 import labels from '../../../../Payment/container/Payment.labels';
@@ -137,9 +138,9 @@ describe('CardTile', () => {
       ccBrand: 'GC',
       ccType: 'GiftCard',
     });
-    const checkbalanceValueInfo = {
-      giftCardNbr: '************6765',
-    };
+    const checkbalanceValueInfo = fromJS({
+      '************6765': '0',
+    });
 
     const tree = shallow(
       <CardTileVanilla labels={labels} card={plcc} checkbalanceValueInfo={checkbalanceValueInfo} />
@@ -152,7 +153,9 @@ describe('CardTile', () => {
       ccBrand: 'GC',
       ccType: 'GiftCard',
     });
-    const checkbalanceValueInfo = {};
+    const checkbalanceValueInfo = fromJS({
+      '************6765': null,
+    });
 
     const tree = shallow(
       <CardTileVanilla labels={labels} card={plcc} checkbalanceValueInfo={checkbalanceValueInfo} />

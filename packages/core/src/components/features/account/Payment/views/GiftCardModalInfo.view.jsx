@@ -7,14 +7,13 @@ import styles from '../styles/DeleteCardModal.style';
 
 // @flow
 type Props = {
-  TotalExp: object,
   getAccNumbr: object,
   data: object,
 };
 
 class GiftCardModalInfo extends React.Component<Props> {
   render() {
-    const { TotalExp, getAccNumbr, data } = this.props;
+    const { getAccNumbr, data } = this.props;
     return (
       <div>
         <BodyCopy
@@ -32,7 +31,7 @@ class GiftCardModalInfo extends React.Component<Props> {
             src={getIconPath('gift-card')}
             onClick={this.pause}
           />
-          <BodyCopy className="deleteCardModal_cardInfo" bodySize="three">
+          <BodyCopy className="deleteCardModal_cardInfo layout-pb-LRG" bodySize="three">
             <BodyCopy
               fontWeight="bold"
               fontFamily="secondaryFontFamily"
@@ -41,15 +40,6 @@ class GiftCardModalInfo extends React.Component<Props> {
             >
               {data.cardText.cardEnd}
               {getAccNumbr}
-            </BodyCopy>
-            <BodyCopy
-              fontWeight="normal"
-              fontFamily="secondaryFontFamily"
-              className="deleteCardModal_expiry"
-              tag="span"
-            >
-              {data.cardText.expire}
-              {TotalExp}
             </BodyCopy>
           </BodyCopy>
         </BodyCopy>
