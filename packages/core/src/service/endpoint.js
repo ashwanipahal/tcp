@@ -66,12 +66,12 @@ const endpoints = {
   },
   getOrderDetails: {
     method: 'get',
-    baseURI: 'http://test1.gymboree.com',
+    baseURI: 'https://test1.gymboree.com',
     relURI: '/api/v2/checkout/getOrderDetails',
   },
   registeredUserInfoPOC: {
     method: 'get',
-    baseURI: 'http://test1.gymboree.com',
+    baseURI: 'https://test1.gymboree.com',
     relURI: '/api/v2/account/getRegisteredUserInfo',
   },
   setDefaultPayment: {
