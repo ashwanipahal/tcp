@@ -28,3 +28,4 @@ Anchor.defaultProps = {
 };
 
 export default withStyles(Anchor, AnchorStyles);
+export { Anchor as AnchorVanilla };

@@ -21,7 +21,6 @@ import style from '../Button.style.native';
  */
 
 type Props = {
-  id?: string,
   buttonVariation?: string,
   fullWidth?: string,
   customStyle?: string,
@@ -30,11 +29,11 @@ type Props = {
 };
 
 const CustomButton = (props: Props) => {
-  const { text, url, id, buttonVariation, fullWidth, customStyle, ...otherProps } = props;
+  const { text, url, buttonVariation, fullWidth, customStyle, ...otherProps } = props;
   const textValue = text || '';
   return (
     <TouchableOpacity accessibilityRole="button">
-      <Text fullWidth={fullWidth} buttonVariation={buttonVariation} id={id} {...otherProps}>
+      <Text fullWidth={fullWidth} buttonVariation={buttonVariation} {...otherProps}>
         {textValue}
       </Text>
     </TouchableOpacity>
@@ -42,7 +41,6 @@ const CustomButton = (props: Props) => {
 };
 
 CustomButton.defaultProps = {
-  id: 'btn',
   fullWidth: '',
   buttonVariation: 'fixed-width',
   customStyle: '',
@@ -51,3 +49,4 @@ CustomButton.defaultProps = {
 };
 
 export default withStyles(CustomButton, style);
+export { CustomButton as CustomButtonVanilla };

@@ -1,19 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CustomButton from '../views/Button.native';
+import { CustomButtonVanilla } from '../views/Button.native';
 
 describe('CustomButton', () => {
   let component;
-  const props = {
-    id: 'btn',
-  };
 
   beforeEach(() => {
-    component = shallow(<CustomButton {...props} />);
+    component = shallow(<CustomButtonVanilla />);
   });
 
   it('should be defined', () => {
-    expect(CustomButton).toBeDefined();
+    expect(component).toBeDefined();
   });
 
   it('should render correctly', () => {
@@ -21,6 +18,6 @@ describe('CustomButton', () => {
   });
 
   it('should return abc component value one', () => {
-    expect(component.find('#btn')).toHaveLength(1);
+    expect(component.find('TouchableOpacity')).toHaveLength(1);
   });
 });

@@ -18,3 +18,4 @@ Heading.defaultProps = {
 };
 
 export default withStyles(Heading, HeadingStyles);
+export { Heading as HeadingVanilla };

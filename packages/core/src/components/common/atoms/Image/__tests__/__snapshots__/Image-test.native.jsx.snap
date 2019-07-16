@@ -1,35 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ImageComp should render correctly 1`] = `
-<StyledNativeComponent
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "displayName": "Styled(ImageComp)",
-      "inlineStyle": InlineStyle {
-        "rules": Array [
-          "
-  ",
-          "
-  width: ",
-          [Function],
-          ";
-  height: ",
-          [Function],
-          ";
-",
-          ";
-",
-        ],
-      },
-      "render": [Function],
-      "styledComponentId": "StyledNativeComponent",
-      "target": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  id="ImageComp"
-/>
-`;
+exports[`ImageCompVanilla should render correctly 1`] = `<Image />`;

@@ -1,53 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CustomButton should render correctly 1`] = `
-<StyledNativeComponent
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "displayName": "Styled(CustomButton)",
-      "inlineStyle": InlineStyle {
-        "rules": Array [
-          "
-  ",
-          "
-  border: none;
-  border-radius: 0;
-  position: relative;
-  opacity: ",
-          [Function],
-          ";
-  text-transform: uppercase;
-  min-height: 42px;
-  text-align: center;
-  ",
-          [Function],
-          ";
-
-  ",
-          [Function],
-          ";
-
-  ",
-          [Function],
-          ";
-
-  ",
-          [Function],
-          ";
-",
-          ";
-",
-        ],
-      },
-      "render": [Function],
-      "styledComponentId": "StyledNativeComponent",
-      "target": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  id="btn"
-/>
+<TouchableOpacity
+  accessibilityRole="button"
+  activeOpacity={0.2}
+>
+  <Text
+    background="white"
+    buttonVariation="fixed-width"
+    fullWidth=""
+    name="name"
+  />
+</TouchableOpacity>
 `;

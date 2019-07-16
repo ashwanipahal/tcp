@@ -1,12 +1,7 @@
 import { css } from 'styled-components/native';
 
 const style = css`
-  border: none;
-  border-radius: 0;
-  position: relative;
-  opacity: ${props => (props.disabled ? props.theme.opacity.opacity.medium : '1')};
   text-transform: uppercase;
-  min-height: 42px;
   text-align: center;
   ${props =>
     props.buttonVariation === 'fixed-width'

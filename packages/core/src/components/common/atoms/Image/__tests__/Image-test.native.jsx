@@ -1,16 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ImageComp from '../views/Image.native';
+import { ImageCompVanilla } from '../views/Image.native';
 
-describe('ImageComp', () => {
+describe('ImageCompVanilla', () => {
   let component;
 
   beforeEach(() => {
-    component = shallow(<ImageComp id="ImageComp" />);
+    component = shallow(<ImageCompVanilla />);
   });
 
   it('should be defined', () => {
-    expect(ImageComp).toBeDefined();
+    expect(component).toBeDefined();
   });
 
   it('should render correctly', () => {
@@ -18,6 +18,6 @@ describe('ImageComp', () => {
   });
 
   it('should return abc component value one', () => {
-    expect(component.find('#ImageComp')).toHaveLength(1);
+    expect(component.find('Image')).toHaveLength(1);
   });
 });

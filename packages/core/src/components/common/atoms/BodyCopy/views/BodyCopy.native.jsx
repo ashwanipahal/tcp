@@ -18,3 +18,4 @@ BodyCopy.defaultProps = {
 };
 
 export default withStyles(BodyCopy, BodyCopyStyles);
+export { BodyCopy as BodyCopyVanilla };
