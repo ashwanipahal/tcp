@@ -4,7 +4,7 @@ const StyledRow = css`
   ${props =>
     props.theme.gridDimensions.gridBreakPointsKeys.map(
       key => `
-    @media ${props.theme.mediaQuery[key]} {
+      ${key !== 'small' ? `@media ${props.theme.mediaQuery[key]} {` : ''}
       ${
         !props.noFlex
           ? `
@@ -22,18 +22,21 @@ const StyledRow = css`
       }
       ${
         props.fullBleed === true || (props.fullBleed && props.fullBleed[key])
-          ? `width: 100%;`
+          ? `width: 100%;
+            margin-right: 0;
+            margin-left: 0;
+          `
           : `
           margin-right: ${props.theme.gridDimensions.gridOffsetObj[key]}px;
           margin-left: ${props.theme.gridDimensions.gridOffsetObj[key]}px;
           width: calc(100% - ${props.theme.gridDimensions.gridOffsetObj[key] * 2}px);
           `
       }
-    }`
+      ${key !== 'small' ? `}` : ''}`
     )}
 
-  > div:last-child {
-    padding-right: 0;
+  > *:last-child {
+    margin-right: 0;
   }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

@@ -78,7 +78,7 @@ exports[`GiftCardList Component should render correctly if list is present 1`] =
     </Styled(Col)>
   </Styled(Row)>
   <CardView
-    giftCardList={
+    cardList={
       Immutable.List [
         Object {
           "accountNo": "************1111",

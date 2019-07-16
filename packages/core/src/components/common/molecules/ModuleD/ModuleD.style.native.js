@@ -15,7 +15,7 @@ export const Heading = styled.Text`
   text-transform: uppercase;
 `;
 
-export const ModuleDWrapper = styled.View`
+export const Wrapper = styled.View`
   display: flex;
   padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
@@ -33,6 +33,6 @@ export const Tile = styled.View`
 export default {
   ButtonWrapper,
   Heading,
-  ModuleDWrapper,
+  Wrapper,
   Tile,
 };
