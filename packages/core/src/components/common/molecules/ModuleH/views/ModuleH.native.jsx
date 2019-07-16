@@ -1,12 +1,13 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { Anchor, Image } from '../../../atoms';
+import { Image, BodyCopy, Heading } from '../../../atoms';
 import { getLocator, getScreenWidth, UrlHandler } from '../../../../../utils/utils.native';
 import { Carousel } from '../..';
 import config from '../config';
 import colors from '../../../../../../styles/themes/colors/common';
 import fonts from '../../../../../../styles/themes/TCP/fonts';
-import { Header, HeaderWrapper, LinksWrapper, Wrapper } from '../ModuleH.style.native';
+import spacing from '../../../../../../styles/themes/TCP/spacing';
+import { HeaderWrapper, LinksWrapper, Wrapper } from '../ModuleH.style.native';
 
 // @flow
 type Props = {
@@ -95,17 +96,19 @@ class ModuleH extends React.PureComponent<Props, State> {
     return linksData.map((item, index) => {
       const { link, styled } = item;
       return (
-        <Anchor
-          key={index.toString()}
-          fontWeightVariation={currentIndex === index ? 'active' : null}
-          data-locator={`${getLocator('moduleH_cta_links')}_${index + 1}`}
+        <BodyCopy
+          fontFamily={['secondary']}
+          fontSize={['fs20', 'fs42', 'fs48']}
+          letterSpacing={['ls167', 'ls257']}
+          textAlign={['left', 'center']}
+          color={['white']}
+          fontWeight={currentIndex === index ? 'extrabold' : null}
+          text={styled.text}
           onPress={() => {
             UrlHandler(link.url);
           }}
           style={linksData.length < maxLimit ? lessThanSixLinkStyle : linkStyle}
-        >
-          {styled.text}
-        </Anchor>
+        />
       );
     });
   };
@@ -121,19 +124,38 @@ class ModuleH extends React.PureComponent<Props, State> {
       <Wrapper>
         {textLines &&
           textLines.map((textLine, index) => {
+            const headingStyle = {
+              marginTop: index > 0 ? parseInt(spacing.ELEM_SPACING.XL, 10) : 0,
+            };
             return (
               <HeaderWrapper key={index.toString()}>
                 {link ? (
                   <TouchableOpacity accessibilityRole="link" onPress={() => UrlHandler(link.url)}>
-                    <Header
+                    <Heading
+                      fontFamily={['primary']}
+                      fontSize={['fs36', 'fs42', 'fs48']}
+                      letterSpacing={['ls167', 'ls257']}
+                      textAlign={['left', 'center']}
+                      color={['white']}
+                      fontWeight="black"
+                      text={textLine.text}
                       lineOrder={index}
                       data-locator={`${getLocator('moduleH_header_text')}_${index + 1}`}
-                    >
-                      {textLine.text}
-                    </Header>
+                      style={headingStyle}
+                    />
                   </TouchableOpacity>
                 ) : (
-                  <Header data-locator={getLocator('moduleH_header_text')}>{textLine.text}</Header>
+                  <Heading
+                    fontFamily={['primary']}
+                    fontSize={['fs36', 'fs42', 'fs48']}
+                    letterSpacing={['ls167', 'ls257']}
+                    textAlign={['left', 'center']}
+                    color={['white']}
+                    fontWeight="black"
+                    text={textLine.text}
+                    lineOrder={index}
+                    data-locator={`${getLocator('moduleH_header_text')}_${index + 1}`}
+                  />
                 )}
               </HeaderWrapper>
             );
