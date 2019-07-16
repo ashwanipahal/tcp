@@ -9,7 +9,7 @@ const deleteCardModalStyle = css`
       display: block;
     }
   }
-  .deleteCardModal__venmo_card {
+  .deleteCardModal__venmoDesc {
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
   .deleteCardModal__cardInfo {

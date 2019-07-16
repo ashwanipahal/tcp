@@ -9,7 +9,7 @@ exports[`VenmoCardModalInfo Component should render correctly 1`] = `
     fontWeight="bold"
   />
   <Styled(BodyStyle)
-    className="deleteCardModal__venmo_desc"
+    className="deleteCardModal__venmoDesc"
   >
      
     <Styled(Image)
@@ -17,7 +17,7 @@ exports[`VenmoCardModalInfo Component should render correctly 1`] = `
       src="/static/images/venmo-blue-acceptance-mark.svg"
     />
     <Styled(BodyStyle)
-      className="deleteCardModal__card deleteCardModal__venmo_card"
+      className="deleteCardModal__card deleteCardModal__venmoDesc"
       fontFamily="secondaryFontFamily"
       fontWeight="bold"
       tag="span"

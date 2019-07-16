@@ -24,7 +24,7 @@ class VenmoCardModalInfo extends React.Component<Props> {
         >
           {data.subHeading}
         </BodyCopy>
-        <BodyCopy className="deleteCardModal__venmo_desc">
+        <BodyCopy className="deleteCardModal__venmoDesc">
           {' '}
           <Image
             className="deleteCardModal__img"
@@ -34,7 +34,7 @@ class VenmoCardModalInfo extends React.Component<Props> {
           <BodyCopy
             fontWeight="bold"
             fontFamily="secondaryFontFamily"
-            className="deleteCardModal__card deleteCardModal__venmo_card"
+            className="deleteCardModal__card deleteCardModal__venmoDesc"
             tag="span"
           >
             {data.description.properties.venmoUserId}
