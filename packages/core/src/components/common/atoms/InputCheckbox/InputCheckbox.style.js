@@ -46,7 +46,7 @@ const styles = css`
   }
 
   & .disabled {
-    opacity: 0.5;
+    opacity: ${props => props.theme.opacity.opacity.medium};
   }
 `;
 
