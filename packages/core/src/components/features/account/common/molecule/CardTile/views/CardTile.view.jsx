@@ -180,7 +180,7 @@ class CardTile extends React.Component<Props> {
             onClick={this.handleCheckBalanceClick}
             buttonVariation="variable-width"
             type="submit"
-            data-locator="cardtile-checkbalance"
+            data-locator="gift-card-recaptchcb"
             fill="BLUE"
             disabled={HideCaptchaBtn && !checkbalanceValueInfo.giftCardNbr}
           >
