@@ -34,7 +34,11 @@ const InputCheckbox = ({
       checked={input.value}
       disabled={disabled}
     />
-    <BodyCopy fontSize="fs12" fontFamily="secondary">
+    <BodyCopy
+      fontSize="fs12"
+      fontFamily="secondary"
+      color={disabled ? 'text.disabled' : 'text.primary'}
+    >
       {children}
     </BodyCopy>
   </label>

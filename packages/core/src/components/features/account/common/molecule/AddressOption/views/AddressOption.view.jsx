@@ -33,13 +33,13 @@ const AddressOption = ({
           onChange={onChange}
           className="elem-mr-MED"
         />
-        <Address address={address} />
+        <Address address={address} showPhone={false} showCountry={false} />
       </label>
     );
   }
   return (
     <div className={className}>
-      <Address address={address} />
+      <Address address={address} showPhone={false} showCountry={false} />
     </div>
   );
 };
