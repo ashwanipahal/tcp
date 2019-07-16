@@ -79,7 +79,7 @@ class SignupWrapper extends React.PureComponent {
   closeModal = () => {
     const { isOpen } = this.state;
     const { clearEmailSignupForm, dispatch } = this.props;
-    this.setState({ isOpen: !isOpen });
+    this.setState({ isOpen: !isOpen, signup: '' });
     dispatch(reset('SignupWrapper'));
     clearEmailSignupForm();
   };
