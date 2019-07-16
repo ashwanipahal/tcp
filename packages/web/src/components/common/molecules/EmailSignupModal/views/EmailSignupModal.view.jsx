@@ -32,11 +32,7 @@ class SignupWrapper extends React.PureComponent {
 
   onButtonClick = () => {
     const { isOpen } = this.state;
-    let { signup } = this.state;
-    if (!isOpen) {
-      signup = '';
-    }
-    this.setState({ isOpen: !isOpen, signup });
+    this.setState({ isOpen: !isOpen });
   };
 
   onSignUpInputBlur = e => {
@@ -240,7 +236,7 @@ SignupWrapper.defaultProps = {
 
 export default withStyles(
   reduxForm({
-    form: 'EmailSignupFormWrapper', // a unique identifier for this form
+    form: 'SignupWrapper', // a unique identifier for this form
     initialValues: {
       signup: '',
     },
