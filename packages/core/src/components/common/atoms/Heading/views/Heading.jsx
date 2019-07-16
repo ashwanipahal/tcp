@@ -22,7 +22,6 @@ Heading.defaultProps = {
   children: null,
   variant: 'h1',
   color: 'text.primary',
-  textAlign: 'left',
 };
 
 Heading.propTypes = {

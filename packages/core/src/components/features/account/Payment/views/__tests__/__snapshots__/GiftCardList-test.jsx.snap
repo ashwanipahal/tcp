@@ -9,7 +9,6 @@ exports[`GiftCardList Component should render correctly 1`] = `
     color="text.primary"
     component={null}
     dataLocator="payment-gcAndMerchandiseCards"
-    textAlign="left"
     variant="h6"
   />
   <Styled(EmptyCard)
@@ -54,7 +53,6 @@ exports[`GiftCardList Component should render correctly if list is present 1`] =
     color="text.primary"
     component={null}
     dataLocator="payment-gcAndMerchandiseCards"
-    textAlign="left"
     variant="h6"
   />
   <Styled(Row)
