@@ -17,11 +17,10 @@ describe('Add Gift Card saga', () => {
     gen = addGiftCard({ payload });
   });
 
-  it('should update default shipping address', () => {
+  it('should add gift card address', () => {
     const res = {
       body: {
-        addressId: '75066941',
-        nickName: 'sb_2019-06-24 02:23:29.134',
+        id: '75066941',
       },
     };
 
@@ -40,7 +39,7 @@ describe('Add Gift Card saga', () => {
     expect(gen.next().done).toBeTruthy();
   });
 
-  it('should fail default shipping address', () => {
+  it('should fail add gift card', () => {
     const err = {
       statusCode: 400,
       message: 'Object not found',

@@ -253,7 +253,6 @@ exports[`Add gift card form component should render component correctly 1`] = `
       }
     >
       <Recaptcha
-        className="giftcards-recaptcha"
         dataLocator="gift-card-addcardrecaptchacheckbox"
         expiredCallback={[Function]}
         sitekey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"

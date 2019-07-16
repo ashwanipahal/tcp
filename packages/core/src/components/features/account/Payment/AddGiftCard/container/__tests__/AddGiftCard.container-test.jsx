@@ -18,7 +18,7 @@ describe('Payment & Gift Cards', () => {
   });
 
   describe('#mapDispatchToProps', () => {
-    it('should return an action getCardListAction which will call dispatch function on execution', () => {
+    it('should return an action onAddGiftCardClick which will call dispatch function on execution', () => {
       const dispatch = jest.fn();
       const dispatchProps = mapDispatchToProps(dispatch);
       dispatchProps.onAddGiftCardClick();

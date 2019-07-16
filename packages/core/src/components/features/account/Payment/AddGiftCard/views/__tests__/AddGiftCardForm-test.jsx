@@ -7,6 +7,7 @@ describe('Add gift card form component', () => {
     labels: {},
     onAddGiftCardClick: jest.fn(),
     handleSubmit: jest.fn(),
+    change: jest.fn(),
   };
 
   it('should render component correctly', () => {
@@ -14,8 +15,19 @@ describe('Add gift card form component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('simulate add gift card button', () => {
+  it('simulate add gift card button ', () => {
     const component = shallow(<AddGiftCardFormVanilla {...props} />);
+    component.instance().handleSubmit({
+      cardPin: 'foo',
+      giftCardNumber: 'foo',
+    });
+    expect(props.onAddGiftCardClick).toHaveBeenCalled();
+  });
+
+  it('simulate add gift card button with dirty state true', () => {
+    props.change = jest.fn();
+    const component = shallow(<AddGiftCardFormVanilla {...props} />);
+    component.setState({ isTokenDirty: true });
     component.instance().handleSubmit({
       cardPin: 'foo',
       giftCardNumber: 'foo',

@@ -73,10 +73,6 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
     change('recaptchaToken', '');
   };
 
-  attachReCaptchaRef = (ref: any) => {
-    this.recaptcha = ref;
-  };
-
   render() {
     const { handleSubmit, labels } = this.props;
     return (
@@ -106,8 +102,6 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
         <Row fullBleed>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 4, medium: 2, large: 2 }}>
             <Recaptcha
-              ref={this.attachReCaptchaRef}
-              className="giftcards-recaptcha"
               theme="light"
               type="image"
               size="normal"
