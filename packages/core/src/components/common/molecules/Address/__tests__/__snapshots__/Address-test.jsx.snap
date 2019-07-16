@@ -1,75 +1,169 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Address component should renders correctly 1`] = `
-<Styled(BodyStyle)
-  bodySize="three"
+<Styled(BodyCopy)
   className="sample-class"
-  color="primary"
-  fontFamily="secondaryFontFamily"
-  tag="div"
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize="fs14"
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
 >
-  <Styled(BodyStyle)
-    fontWeight="bold"
-    tag="p"
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
   >
     test test
-  </Styled(BodyStyle)>
-  <Styled(BodyStyle)
-    tag="p"
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
   >
     addressline 1
-  </Styled(BodyStyle)>
-  <Styled(BodyStyle)
-    tag="p"
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
   >
     addressline 2
-  </Styled(BodyStyle)>
-  <Styled(BodyStyle)
-    tag="p"
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
   >
-    test city,  111-111
-  </Styled(BodyStyle)>
-  <Styled(BodyStyle)
-    tag="p"
+    test city, test state 111-111
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
   >
     test country
-  </Styled(BodyStyle)>
-  <Styled(BodyStyle)
-    tag="p"
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
   >
     1234567890
-  </Styled(BodyStyle)>
-</Styled(BodyStyle)>
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
 `;
 
 exports[`Address component should renders correctly when optional fields are not present 1`] = `
-<Styled(BodyStyle)
-  bodySize="three"
+<Styled(BodyCopy)
   className="sample-class"
-  color="primary"
-  fontFamily="secondaryFontFamily"
-  tag="div"
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize="fs14"
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
 >
-  <Styled(BodyStyle)
-    fontWeight="bold"
-    tag="p"
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
   >
     test test
-  </Styled(BodyStyle)>
-  <Styled(BodyStyle)
-    tag="p"
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
   >
     addressline 1
-  </Styled(BodyStyle)>
-  <Styled(BodyStyle)
-    tag="p"
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
   >
     addressline 2
-  </Styled(BodyStyle)>
-  <Styled(BodyStyle)
-    tag="p"
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
   >
-    ,  
-  </Styled(BodyStyle)>
-</Styled(BodyStyle)>
+    test city, test state 111-111
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
 `;

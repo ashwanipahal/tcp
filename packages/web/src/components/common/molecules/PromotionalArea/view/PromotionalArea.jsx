@@ -4,7 +4,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
 import { Anchor, RichText } from '@tcp/core/src/components/common/atoms';
 import CarouselConfig from '@tcp/web/src/config/carousel';
-import { getLocator } from '@tcp/web/src/utils';
+import { getLocator } from '@tcp/core/src/utils';
 import style from '../PromotionalArea.style';
 
 const PromotionalArea = ({ className, data, mobile }) => {
@@ -42,9 +42,7 @@ const PromotionalArea = ({ className, data, mobile }) => {
 
 PromotionalArea.propTypes = {
   className: PropTypes.string.isRequired,
-  data: PropTypes.arrayOf(
-    PropTypes.objectOf(PropTypes.oneOfType([PropTypes.number, PropTypes.string]))
-  ).isRequired,
+  data: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   mobile: PropTypes.bool,
 };
 

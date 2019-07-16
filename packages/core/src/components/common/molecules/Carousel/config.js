@@ -11,6 +11,7 @@ const config = {
     autoplaySpeed: 3000, // TODO: Has to come from CMS Config
     arrows: false,
     dots: false,
+    lazyLoad: true,
     slidesToShow: 1,
     speed: 300, // TODO: Has to come from CMS Config
     responsive: [
@@ -45,6 +46,17 @@ const config = {
         },
       },
     ],
+  },
+  CAROUSEL_MOBILE_DEFAULTS: {
+    autoplay: true,
+    loop: true,
+    vertical: true,
+    autoplayDelay: 1000,
+    autoplayInterval: 3000,
+  },
+  CAROUSEL_MOBILE_CONFIG: {
+    playIconHeight: 30,
+    playIconWidth: 30,
   },
 };
 

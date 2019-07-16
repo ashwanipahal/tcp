@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Carousel from '../../Carousel';
 import { Image } from '../../../atoms';
-import ModuleH from '../view';
+import ModuleH from '../views';
 import mock from '../mock';
 
 describe('ModuleH component', () => {
@@ -27,7 +27,7 @@ describe('ModuleH component', () => {
     expect(moduleHComp.find(Carousel)).toHaveLength(1);
   });
 
-  it('renders images correctly', () => {
+  it('should renders 5 images correctly', () => {
     const props = {
       data: mock.moduleH.composites.divCTALinks,
     };

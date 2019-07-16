@@ -1,7 +1,7 @@
 /** @module Modal
  *  @summary Wrapper component for react-modal.
  *  Accepts modal content as children and
- *  Other properties of modal to funtion.
+ *  Other properties of modal to function.
  */
 
 import React from 'react';
@@ -10,32 +10,60 @@ import PropTypes from 'prop-types';
 import Grid from '../../Grid';
 import Row from '../../../atoms/Row';
 import Col from '../../../atoms/Col';
-import errorBoundary from '../../../hoc/errorBoundary';
 import ModalHeader from './ModalHeader';
-import ModalStyle from '../Modal.style';
-import Config from '../config';
+import styles from '../Modal.style';
+import Config from '../Modal.config';
+import withStyles from '../../../hoc/withStyles';
+import errorBoundary from '../../../hoc/errorBoundary';
 
 function getParent() {
   return document.querySelector('.TCPModal__Wrapper');
 }
 
 const Modal = ({ children, ...otherProps }) => {
-  const { colSet, onRequestClose, title } = otherProps;
+  const {
+    colSet,
+    onRequestClose,
+    title,
+    heading,
+    fixedWidth,
+    className,
+    closeIconDataLocator,
+  } = otherProps;
   const column = colSet || Config.MODAL_COL_DEFAULTS;
-
   return (
-    <ModalStyle className="TCPModal__Wrapper">
-      <ReactModal {...otherProps} parentSelector={getParent}>
-        <Grid>
-          <Row>
-            <Col colSize={column} className="TCPModal__InnerContent">
-              <ModalHeader closeFunc={onRequestClose} title={title} />
+    <div className={className}>
+      <div className="TCPModal__Wrapper">
+        <ReactModal {...otherProps} parentSelector={getParent}>
+          {!fixedWidth && (
+            <Grid>
+              <Row>
+                <Col colSize={column} className="TCPModal__InnerContent">
+                  <ModalHeader
+                    closeFunc={onRequestClose}
+                    title={title}
+                    heading={heading}
+                    closeIconDataLocator={closeIconDataLocator}
+                  />
+                  {children}
+                </Col>
+              </Row>
+            </Grid>
+          )}
+          {fixedWidth && (
+            <div className="TCPModal__InnerContent">
+              <ModalHeader
+                closeFunc={onRequestClose}
+                title={title}
+                heading={heading}
+                closeIconDataLocator={closeIconDataLocator}
+              />
               {children}
-            </Col>
-          </Row>
-        </Grid>
-      </ReactModal>
-    </ModalStyle>
+            </div>
+          )}
+        </ReactModal>
+      </div>
+    </div>
   );
 };
 
@@ -43,4 +71,5 @@ Modal.propTypes = {
   children: PropTypes.element.isRequired,
 };
 
-export default errorBoundary(Modal);
+export default errorBoundary(withStyles(Modal, styles));
+export { Modal as ModalVanilla };

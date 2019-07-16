@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getLocator } from '@tcp/web/src/utils';
+import { getLocator } from '@tcp/core/src/utils';
 import style from '../LegalLinks.style';
 
 const LegalLinks = ({ className, links }) => (
   <React.Fragment>
     <ul className={className}>
-      {links.map(link => (
-        <li data-locator={getLocator(link.name)}>
+      {links.map((link, index) => (
+        <li data-locator={`${getLocator('legal_links')}${index}`}>
           <Anchor anchorVariation="primary" to={link.url} target={link.target}>
             {link.title}
           </Anchor>

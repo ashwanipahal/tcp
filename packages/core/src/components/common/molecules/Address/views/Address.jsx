@@ -1,19 +1,65 @@
 // @flow
 import React from 'react';
-import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
+import BodyCopy from '../../../atoms/BodyCopy';
 
 type Props = {
   address: {
     firstName: string,
     lastName: string,
     addressLine: string[],
-    city: ?string,
-    state: ?string,
-    zipCode: ?string,
+    city: string,
+    state: string,
+    zipCode: string,
     country: ?string,
     phone1: ?string,
   },
+  dataLocatorPrefix: ?string,
   className: string,
+  fontWeight: string,
+  showPhone?: boolean,
+  showCountry?: boolean,
+};
+
+type GetAddressLineProps = {
+  address: {
+    firstName: string,
+    lastName: string,
+    addressLine1: string[],
+    addressLine2: string[],
+    city: string,
+    state: string,
+    zipCode: string,
+    country: ?string,
+    phone1: ?string,
+  },
+  dataLocatorPrefix: ?string,
+};
+
+const getAddressfromDiffLines = ({ address, dataLocatorPrefix }: GetAddressLineProps) => {
+  return (
+    <React.Fragment>
+      <BodyCopy tag="p" dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline1` : ''}>
+        {address.addressLine1}
+      </BodyCopy>
+      <BodyCopy tag="p" dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline2` : ''}>
+        {address.addressLine2}
+      </BodyCopy>
+    </React.Fragment>
+  );
+};
+
+const getAddessLines = ({ address, dataLocatorPrefix }) => {
+  return address.addressLine
+    .filter(al => al.trim() !== '')
+    .map((addressLine, index) => (
+      <BodyCopy
+        component="p"
+        dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressl${index}` : ''}
+        fontFamily="secondary"
+      >
+        {addressLine}
+      </BodyCopy>
+    ));
 };
 
 /**
@@ -22,26 +68,51 @@ type Props = {
  * @param {string} className The class name for the component
  * @param {object} address address object
  */
-const Address = ({ address, className }: Props) => (
-  <BodyCopy
-    tag="div"
-    bodySize="three"
-    color="primary"
-    fontFamily="secondaryFontFamily"
-    className={className}
-  >
-    <BodyCopy tag="p" fontWeight="bold">
-      {`${address.firstName} ${address.lastName}`}
+
+const Address = ({
+  address,
+  className,
+  dataLocatorPrefix,
+  fontWeight,
+  showPhone,
+  showCountry,
+}: Props) =>
+  address && (
+    <BodyCopy component="div" fontSize="fs14" color="text.primary" className={className}>
+      <BodyCopy
+        component="p"
+        fontWeight={fontWeight}
+        fontFamily="secondary"
+        dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-fullname` : ''}
+      >
+        {`${address.firstName} ${address.lastName}`}
+      </BodyCopy>
+      {address.addressLine
+        ? getAddessLines({ address, dataLocatorPrefix })
+        : getAddressfromDiffLines({ address, dataLocatorPrefix })}
+      <BodyCopy
+        component="p"
+        dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-cityfullname` : ''}
+        fontFamily="secondary"
+      >
+        {`${address.city}, ${address.state} ${address.zipCode}`}
+      </BodyCopy>
+      {showCountry && address.country && (
+        <BodyCopy component="p" fontFamily="secondary">
+          {address.country}
+        </BodyCopy>
+      )}
+      {showPhone && address.phone1 && (
+        <BodyCopy component="p" fontFamily="secondary">
+          {address.phone1}
+        </BodyCopy>
+      )}
     </BodyCopy>
-    {address.addressLine.map(addressLine => (
-      <BodyCopy tag="p">{addressLine}</BodyCopy>
-    ))}
-    <BodyCopy tag="p">
-      {`${address.city || ''}, ${address.state || ''} ${address.zipCode || ''}`}
-    </BodyCopy>
-    {address.country && <BodyCopy tag="p">{address.country}</BodyCopy>}
-    {address.phone1 && <BodyCopy tag="p">{address.phone1}</BodyCopy>}
-  </BodyCopy>
-);
+  );
+
+Address.defaultProps = {
+  showPhone: true,
+  showCountry: true,
+};
 
 export default Address;

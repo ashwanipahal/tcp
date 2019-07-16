@@ -1,19 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FooterNavHeader component renders default footer correctly 1`] = `
-<h4
+<Styled(BodyCopy)
   aria-label="ABCD"
   className="footer-nav-header1"
+  color="text.primary"
+  component="p"
   data-index={2}
+  data-locator="col_heading_2"
+  fontFamily="secondary"
+  fontSize="fs16"
+  fontWeight="semibold"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
 >
   Title
-</h4>
+</Styled(BodyCopy)>
 `;
 
 exports[`FooterNavHeader component renders image in header variation correctly 1`] = `
 <Styled(Anchor)
   className="footer-nav-header img-link"
-  data-locator=""
+  data-locator="col_heading_3"
   to=""
 >
   <Styled(Image) />
@@ -21,11 +30,20 @@ exports[`FooterNavHeader component renders image in header variation correctly 1
 `;
 
 exports[`FooterNavHeader component renders subheader variation correctly 1`] = `
-<h4
+<Styled(BodyCopy)
   aria-label="ABCD"
   className="footer-nav-header2 subHeader"
+  color="text.primary"
+  component="p"
   data-index={4}
+  data-locator="col_heading_4"
+  fontFamily="secondary"
+  fontSize="fs16"
+  fontWeight="semibold"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
 >
   Title
-</h4>
+</Styled(BodyCopy)>
 `;

@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputCheckbox component should render correctly 1`] = `
+<label
+  className="sample-class"
+>
+  <input
+    aria-label=""
+    className="CheckBox__input"
+    data-locator=""
+    type="checkbox"
+  />
+  <Styled(BodyCopy)
+    className={null}
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    This is sample checkbox
+  </Styled(BodyCopy)>
+</label>
+`;

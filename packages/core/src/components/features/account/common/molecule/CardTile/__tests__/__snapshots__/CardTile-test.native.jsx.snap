@@ -1,0 +1,1079 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardTile should render correctly with amex card 1`] = `
+<Styled(View)
+  card={
+    Object {
+      "accountNo": "************6765",
+      "addressDetails": Object {
+        "addressLine1": "Yucca Street",
+        "addressLine2": "Yucca Street",
+        "city": "Los Angeles",
+        "country": "US",
+        "firstName": "six",
+        "lastName": "test",
+        "phone1": "3214567890",
+        "state": "CA",
+        "zipCode": "90028",
+      },
+      "billingAddressId": 75446663,
+      "ccBrand": "Amex",
+      "ccType": "COMPASSAMEX",
+      "creditCardId": 8977328,
+      "defaultInd": true,
+      "expMonth": "10",
+      "expYear": "2025",
+      "nameOnAccount": ".",
+      "properties": null,
+    }
+  }
+>
+  <Styled(View)
+    defaultPayment={true}
+  >
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        dataLocator="payment-creditdebitnametitle"
+        fontSize="fs16"
+        fontWeight="regular"
+        mobilefontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+      />
+    </Styled(Text)>
+    <Styled(View)>
+      <Styled(Text)>
+        <Styled(BodyCopy)
+          fontSize="fs10"
+          fontWeight="semibold"
+          mobilefontFamily={
+            Array [
+              "secondary",
+            ]
+          }
+        />
+      </Styled(Text)>
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <View>
+      <Styled(BodyCopy)
+        dataLocator="payment-creditdebitendingtext"
+        fontSize="fs14"
+        fontWeight="black"
+      >
+        undefined6765
+      </Styled(BodyCopy)>
+      <Styled(Text)>
+        <Styled(BodyCopy)
+          dataLocator="payment-creditdebitexpiretext"
+          fontSize="fs14"
+          fontWeight="semibold"
+        >
+          undefined10/2025
+        </Styled(BodyCopy)>
+      </Styled(Text)>
+    </View>
+    <Styled(View)
+      card={
+        Object {
+          "accountNo": "************6765",
+          "addressDetails": Object {
+            "addressLine1": "Yucca Street",
+            "addressLine2": "Yucca Street",
+            "city": "Los Angeles",
+            "country": "US",
+            "firstName": "six",
+            "lastName": "test",
+            "phone1": "3214567890",
+            "state": "CA",
+            "zipCode": "90028",
+          },
+          "billingAddressId": 75446663,
+          "ccBrand": "Amex",
+          "ccType": "COMPASSAMEX",
+          "creditCardId": 8977328,
+          "defaultInd": true,
+          "expMonth": "10",
+          "expYear": "2025",
+          "nameOnAccount": ".",
+          "properties": null,
+        }
+      }
+    >
+      <Styled(Image)
+        alt="Amex"
+        className="cardTile__img"
+        data-locator="payment-cardImage"
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/amex-small.png",
+          }
+        }
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Text>
+      six test
+    </Text>
+    <Text>
+      Yucca Street
+    </Text>
+    <Text>
+      Yucca Street
+    </Text>
+    <Text>
+      Los Angeles, CA 90028
+    </Text>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        data-locator="payment-creditdebiteditlink"
+        fontSizeVariation="large"
+        to="/#"
+        underline={true}
+      />
+    </Styled(View)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      data-locator="payment-creditdebitdeletelink"
+      fontSizeVariation="large"
+      to="/#"
+      underline={true}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`CardTile should render correctly with discover card 1`] = `
+<Styled(View)
+  card={
+    Object {
+      "accountNo": "************6765",
+      "addressDetails": Object {
+        "addressLine1": "Yucca Street",
+        "addressLine2": "Yucca Street",
+        "city": "Los Angeles",
+        "country": "US",
+        "firstName": "six",
+        "lastName": "test",
+        "phone1": "3214567890",
+        "state": "CA",
+        "zipCode": "90028",
+      },
+      "billingAddressId": 75446663,
+      "ccBrand": "DISC",
+      "ccType": "COMPASSDISCOVER",
+      "creditCardId": 8977328,
+      "defaultInd": false,
+      "expMonth": "10",
+      "expYear": "2025",
+      "nameOnAccount": ".",
+      "properties": null,
+    }
+  }
+>
+  <Styled(View)
+    defaultPayment={false}
+  >
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        dataLocator="payment-creditdebitnametitle"
+        fontSize="fs16"
+        fontWeight="regular"
+        mobilefontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+      />
+    </Styled(Text)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      data-locator="payment-makedefault"
+      fontSizeVariation="small"
+      onPress={[Function]}
+      to="/#"
+      underline={true}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <View>
+      <Styled(BodyCopy)
+        dataLocator="payment-creditdebitendingtext"
+        fontSize="fs14"
+        fontWeight="black"
+      >
+        undefined6765
+      </Styled(BodyCopy)>
+      <Styled(Text)>
+        <Styled(BodyCopy)
+          dataLocator="payment-creditdebitexpiretext"
+          fontSize="fs14"
+          fontWeight="semibold"
+        >
+          undefined10/2025
+        </Styled(BodyCopy)>
+      </Styled(Text)>
+    </View>
+    <Styled(View)
+      card={
+        Object {
+          "accountNo": "************6765",
+          "addressDetails": Object {
+            "addressLine1": "Yucca Street",
+            "addressLine2": "Yucca Street",
+            "city": "Los Angeles",
+            "country": "US",
+            "firstName": "six",
+            "lastName": "test",
+            "phone1": "3214567890",
+            "state": "CA",
+            "zipCode": "90028",
+          },
+          "billingAddressId": 75446663,
+          "ccBrand": "DISC",
+          "ccType": "COMPASSDISCOVER",
+          "creditCardId": 8977328,
+          "defaultInd": false,
+          "expMonth": "10",
+          "expYear": "2025",
+          "nameOnAccount": ".",
+          "properties": null,
+        }
+      }
+    >
+      <Styled(Image)
+        alt="DISC"
+        className="cardTile__img"
+        data-locator="payment-cardImage"
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/disc-small.png",
+          }
+        }
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Text>
+      six test
+    </Text>
+    <Text>
+      Yucca Street
+    </Text>
+    <Text>
+      Yucca Street
+    </Text>
+    <Text>
+      Los Angeles, CA 90028
+    </Text>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        data-locator="payment-creditdebiteditlink"
+        fontSizeVariation="large"
+        to="/#"
+        underline={true}
+      />
+    </Styled(View)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      data-locator="payment-creditdebitdeletelink"
+      fontSizeVariation="large"
+      to="/#"
+      underline={true}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`CardTile should render correctly with gift card 1`] = `
+<Styled(View)
+  card={
+    Object {
+      "accountNo": "************6765",
+      "addressDetails": Object {
+        "addressLine1": "Yucca Street",
+        "addressLine2": "Yucca Street",
+        "city": "Los Angeles",
+        "country": "US",
+        "firstName": "six",
+        "lastName": "test",
+        "phone1": "3214567890",
+        "state": "CA",
+        "zipCode": "90028",
+      },
+      "billingAddressId": 75446663,
+      "ccBrand": "GC",
+      "ccType": "GiftCard",
+      "creditCardId": 8977328,
+      "defaultInd": false,
+      "expMonth": "10",
+      "expYear": "2025",
+      "nameOnAccount": ".",
+      "properties": null,
+    }
+  }
+>
+  <Styled(View)
+    defaultPayment={false}
+  >
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        dataLocator="payment-giftcardnametitle"
+        fontSize="fs16"
+        fontWeight="regular"
+        mobilefontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+      />
+    </Styled(Text)>
+  </Styled(View)>
+  <Styled(View)>
+    <View>
+      <Styled(BodyCopy)
+        dataLocator="payment-giftcardendingtext"
+        fontSize="fs14"
+        fontWeight="black"
+      >
+        undefined6765
+      </Styled(BodyCopy)>
+      <Styled(Text)>
+        <Styled(BodyCopy)
+          dataLocator="payment-giftcardexpiretext"
+          fontSize="fs14"
+          fontWeight="semibold"
+        >
+          undefined10/2025
+        </Styled(BodyCopy)>
+      </Styled(Text)>
+    </View>
+    <Styled(View)
+      card={
+        Object {
+          "accountNo": "************6765",
+          "addressDetails": Object {
+            "addressLine1": "Yucca Street",
+            "addressLine2": "Yucca Street",
+            "city": "Los Angeles",
+            "country": "US",
+            "firstName": "six",
+            "lastName": "test",
+            "phone1": "3214567890",
+            "state": "CA",
+            "zipCode": "90028",
+          },
+          "billingAddressId": 75446663,
+          "ccBrand": "GC",
+          "ccType": "GiftCard",
+          "creditCardId": 8977328,
+          "defaultInd": false,
+          "expMonth": "10",
+          "expYear": "2025",
+          "nameOnAccount": ".",
+          "properties": null,
+        }
+      }
+    >
+      <Styled(Image)
+        alt="GC"
+        className="cardTile__img"
+        data-locator="payment-cardImage"
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/gift-card-small.png",
+          }
+        }
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        data-locator="payment-giftcardeditlink"
+        fontSizeVariation="large"
+        to="/#"
+        underline={true}
+      />
+    </Styled(View)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      data-locator="payment-giftcarddeletelink"
+      fontSizeVariation="large"
+      to="/#"
+      underline={true}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`CardTile should render correctly with master card 1`] = `
+<Styled(View)
+  card={
+    Object {
+      "accountNo": "************6765",
+      "addressDetails": Object {
+        "addressLine1": "Yucca Street",
+        "addressLine2": "Yucca Street",
+        "city": "Los Angeles",
+        "country": "US",
+        "firstName": "six",
+        "lastName": "test",
+        "phone1": "3214567890",
+        "state": "CA",
+        "zipCode": "90028",
+      },
+      "billingAddressId": 75446663,
+      "ccBrand": "MC",
+      "ccType": "COMPASSMASTERCARD",
+      "creditCardId": 8977328,
+      "defaultInd": false,
+      "expMonth": "10",
+      "expYear": "2025",
+      "nameOnAccount": ".",
+      "properties": null,
+    }
+  }
+>
+  <Styled(View)
+    defaultPayment={false}
+  >
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        dataLocator="payment-creditdebitnametitle"
+        fontSize="fs16"
+        fontWeight="regular"
+        mobilefontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+      />
+    </Styled(Text)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      data-locator="payment-makedefault"
+      fontSizeVariation="small"
+      onPress={[Function]}
+      to="/#"
+      underline={true}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <View>
+      <Styled(BodyCopy)
+        dataLocator="payment-creditdebitendingtext"
+        fontSize="fs14"
+        fontWeight="black"
+      >
+        undefined6765
+      </Styled(BodyCopy)>
+      <Styled(Text)>
+        <Styled(BodyCopy)
+          dataLocator="payment-creditdebitexpiretext"
+          fontSize="fs14"
+          fontWeight="semibold"
+        >
+          undefined10/2025
+        </Styled(BodyCopy)>
+      </Styled(Text)>
+    </View>
+    <Styled(View)
+      card={
+        Object {
+          "accountNo": "************6765",
+          "addressDetails": Object {
+            "addressLine1": "Yucca Street",
+            "addressLine2": "Yucca Street",
+            "city": "Los Angeles",
+            "country": "US",
+            "firstName": "six",
+            "lastName": "test",
+            "phone1": "3214567890",
+            "state": "CA",
+            "zipCode": "90028",
+          },
+          "billingAddressId": 75446663,
+          "ccBrand": "MC",
+          "ccType": "COMPASSMASTERCARD",
+          "creditCardId": 8977328,
+          "defaultInd": false,
+          "expMonth": "10",
+          "expYear": "2025",
+          "nameOnAccount": ".",
+          "properties": null,
+        }
+      }
+    >
+      <Styled(Image)
+        alt="MC"
+        className="cardTile__img"
+        data-locator="payment-cardImage"
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/mc-small.png",
+          }
+        }
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Text>
+      six test
+    </Text>
+    <Text>
+      Yucca Street
+    </Text>
+    <Text>
+      Yucca Street
+    </Text>
+    <Text>
+      Los Angeles, CA 90028
+    </Text>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        data-locator="payment-creditdebiteditlink"
+        fontSizeVariation="large"
+        to="/#"
+        underline={true}
+      />
+    </Styled(View)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      data-locator="payment-creditdebitdeletelink"
+      fontSizeVariation="large"
+      to="/#"
+      underline={true}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`CardTile should render correctly with notification  gift card 1`] = `
+<Styled(View)
+  card={
+    Object {
+      "accountNo": "************6765",
+      "addressDetails": Object {
+        "addressLine1": "Yucca Street",
+        "addressLine2": "Yucca Street",
+        "city": "Los Angeles",
+        "country": "US",
+        "firstName": "six",
+        "lastName": "test",
+        "phone1": "3214567890",
+        "state": "CA",
+        "zipCode": "90028",
+      },
+      "billingAddressId": 75446663,
+      "ccBrand": "GC",
+      "ccType": "GiftCard",
+      "creditCardId": 8977328,
+      "defaultInd": false,
+      "expMonth": "10",
+      "expYear": "2025",
+      "nameOnAccount": ".",
+      "properties": null,
+    }
+  }
+>
+  <Styled(View)
+    defaultPayment={false}
+  >
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        dataLocator="payment-giftcardnametitle"
+        fontSize="fs16"
+        fontWeight="regular"
+        mobilefontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+      />
+    </Styled(Text)>
+  </Styled(View)>
+  <Styled(View)>
+    <View>
+      <Styled(BodyCopy)
+        dataLocator="payment-giftcardendingtext"
+        fontSize="fs14"
+        fontWeight="black"
+      >
+        undefined6765
+      </Styled(BodyCopy)>
+      <Styled(Text)>
+        <Styled(BodyCopy)
+          dataLocator="payment-giftcardexpiretext"
+          fontSize="fs14"
+          fontWeight="semibold"
+        >
+          undefined10/2025
+        </Styled(BodyCopy)>
+      </Styled(Text)>
+    </View>
+    <Styled(View)
+      card={
+        Object {
+          "accountNo": "************6765",
+          "addressDetails": Object {
+            "addressLine1": "Yucca Street",
+            "addressLine2": "Yucca Street",
+            "city": "Los Angeles",
+            "country": "US",
+            "firstName": "six",
+            "lastName": "test",
+            "phone1": "3214567890",
+            "state": "CA",
+            "zipCode": "90028",
+          },
+          "billingAddressId": 75446663,
+          "ccBrand": "GC",
+          "ccType": "GiftCard",
+          "creditCardId": 8977328,
+          "defaultInd": false,
+          "expMonth": "10",
+          "expYear": "2025",
+          "nameOnAccount": ".",
+          "properties": null,
+        }
+      }
+    >
+      <Styled(Image)
+        alt="GC"
+        className="cardTile__img"
+        data-locator="payment-cardImage"
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/gift-card-small.png",
+          }
+        }
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        data-locator="payment-giftcardeditlink"
+        fontSizeVariation="large"
+        to="/#"
+        underline={true}
+      />
+    </Styled(View)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      data-locator="payment-giftcarddeletelink"
+      fontSizeVariation="large"
+      to="/#"
+      underline={true}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`CardTile should render correctly with plcc card 1`] = `
+<Styled(View)
+  card={
+    Object {
+      "accountNo": "************6765",
+      "addressDetails": Object {
+        "addressLine1": "Yucca Street",
+        "addressLine2": "Yucca Street",
+        "city": "Los Angeles",
+        "country": "US",
+        "firstName": "six",
+        "lastName": "test",
+        "phone1": "3214567890",
+        "state": "CA",
+        "zipCode": "90028",
+      },
+      "billingAddressId": 75446663,
+      "ccBrand": "PLACE CARD",
+      "ccType": "PLACE CARD",
+      "creditCardId": 8977328,
+      "defaultInd": false,
+      "expMonth": "10",
+      "expYear": "2025",
+      "nameOnAccount": ".",
+      "properties": null,
+    }
+  }
+>
+  <Styled(View)
+    defaultPayment={false}
+  >
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        dataLocator="payment-creditdebitnametitle"
+        fontSize="fs16"
+        fontWeight="regular"
+        mobilefontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+      />
+    </Styled(Text)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      data-locator="payment-makedefault"
+      fontSizeVariation="small"
+      onPress={[Function]}
+      to="/#"
+      underline={true}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <View>
+      <Styled(BodyCopy)
+        dataLocator="payment-creditdebitendingtext"
+        fontSize="fs14"
+        fontWeight="black"
+      >
+        undefined6765
+      </Styled(BodyCopy)>
+    </View>
+    <Styled(View)
+      card={
+        Object {
+          "accountNo": "************6765",
+          "addressDetails": Object {
+            "addressLine1": "Yucca Street",
+            "addressLine2": "Yucca Street",
+            "city": "Los Angeles",
+            "country": "US",
+            "firstName": "six",
+            "lastName": "test",
+            "phone1": "3214567890",
+            "state": "CA",
+            "zipCode": "90028",
+          },
+          "billingAddressId": 75446663,
+          "ccBrand": "PLACE CARD",
+          "ccType": "PLACE CARD",
+          "creditCardId": 8977328,
+          "defaultInd": false,
+          "expMonth": "10",
+          "expYear": "2025",
+          "nameOnAccount": ".",
+          "properties": null,
+        }
+      }
+    >
+      <Styled(Image)
+        alt="PLACE CARD"
+        className="cardTile__img"
+        data-locator="payment-cardImage"
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/place-card-small.png",
+          }
+        }
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Text>
+      six test
+    </Text>
+    <Text>
+      Yucca Street
+    </Text>
+    <Text>
+      Yucca Street
+    </Text>
+    <Text>
+      Los Angeles, CA 90028
+    </Text>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        data-locator="payment-creditdebiteditlink"
+        fontSizeVariation="large"
+        to="/#"
+        underline={true}
+      />
+    </Styled(View)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      data-locator="payment-creditdebitdeletelink"
+      fontSizeVariation="large"
+      to="/#"
+      underline={true}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`CardTile should render correctly with venmocard 1`] = `
+<Styled(View)
+  card={
+    Object {
+      "accountNo": "************6765",
+      "addressDetails": Object {
+        "addressLine1": "Yucca Street",
+        "addressLine2": "Yucca Street",
+        "city": "Los Angeles",
+        "country": "US",
+        "firstName": "six",
+        "lastName": "test",
+        "phone1": "3214567890",
+        "state": "CA",
+        "zipCode": "90028",
+      },
+      "billingAddressId": 75446663,
+      "ccBrand": "VENMO",
+      "ccType": "VENMO",
+      "creditCardId": 8977328,
+      "defaultInd": false,
+      "expMonth": "10",
+      "expYear": "2025",
+      "nameOnAccount": ".",
+      "properties": Object {
+        "venmoUserId": "1234",
+      },
+    }
+  }
+>
+  <Styled(View)
+    defaultPayment={false}
+  >
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        dataLocator="payment-venmonametitle"
+        fontSize="fs16"
+        fontWeight="regular"
+        mobilefontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+      />
+    </Styled(Text)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Text)
+      dataLocator="payment-venmoid"
+    >
+      <Styled(BodyCopy)
+        fontSize="fs14"
+        fontWeight="extrabold"
+      >
+        1234
+      </Styled(BodyCopy)>
+    </Styled(Text)>
+    <Styled(View)
+      card={
+        Object {
+          "accountNo": "************6765",
+          "addressDetails": Object {
+            "addressLine1": "Yucca Street",
+            "addressLine2": "Yucca Street",
+            "city": "Los Angeles",
+            "country": "US",
+            "firstName": "six",
+            "lastName": "test",
+            "phone1": "3214567890",
+            "state": "CA",
+            "zipCode": "90028",
+          },
+          "billingAddressId": 75446663,
+          "ccBrand": "VENMO",
+          "ccType": "VENMO",
+          "creditCardId": 8977328,
+          "defaultInd": false,
+          "expMonth": "10",
+          "expYear": "2025",
+          "nameOnAccount": ".",
+          "properties": Object {
+            "venmoUserId": "1234",
+          },
+        }
+      }
+    >
+      <Styled(Image)
+        alt="VENMO"
+        className="cardTile__img"
+        data-locator="payment-cardImage"
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/venmo-blue-acceptance-mark.svg",
+          }
+        }
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View) />
+    <Styled(Anchor)
+      anchorVariation="primary"
+      data-locator="payment-venmodeletelink"
+      fontSizeVariation="large"
+      to="/#"
+      underline={true}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`CardTile should render correctly with visa card 1`] = `
+<Styled(View)
+  card={
+    Object {
+      "accountNo": "************6765",
+      "addressDetails": Object {
+        "addressLine1": "Yucca Street",
+        "addressLine2": "Yucca Street",
+        "city": "Los Angeles",
+        "country": "US",
+        "firstName": "six",
+        "lastName": "test",
+        "phone1": "3214567890",
+        "state": "CA",
+        "zipCode": "90028",
+      },
+      "billingAddressId": 75446663,
+      "ccBrand": "Visa",
+      "ccType": "COMPASSVISA",
+      "creditCardId": 8977328,
+      "defaultInd": false,
+      "expMonth": "10",
+      "expYear": "2025",
+      "nameOnAccount": ".",
+      "properties": null,
+    }
+  }
+>
+  <Styled(View)
+    defaultPayment={false}
+  >
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        dataLocator="payment-creditdebitnametitle"
+        fontSize="fs16"
+        fontWeight="regular"
+        mobilefontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+      />
+    </Styled(Text)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      data-locator="payment-makedefault"
+      fontSizeVariation="small"
+      onPress={[Function]}
+      to="/#"
+      underline={true}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <View>
+      <Styled(BodyCopy)
+        dataLocator="payment-creditdebitendingtext"
+        fontSize="fs14"
+        fontWeight="black"
+      >
+        undefined6765
+      </Styled(BodyCopy)>
+      <Styled(Text)>
+        <Styled(BodyCopy)
+          dataLocator="payment-creditdebitexpiretext"
+          fontSize="fs14"
+          fontWeight="semibold"
+        >
+          undefined10/2025
+        </Styled(BodyCopy)>
+      </Styled(Text)>
+    </View>
+    <Styled(View)
+      card={
+        Object {
+          "accountNo": "************6765",
+          "addressDetails": Object {
+            "addressLine1": "Yucca Street",
+            "addressLine2": "Yucca Street",
+            "city": "Los Angeles",
+            "country": "US",
+            "firstName": "six",
+            "lastName": "test",
+            "phone1": "3214567890",
+            "state": "CA",
+            "zipCode": "90028",
+          },
+          "billingAddressId": 75446663,
+          "ccBrand": "Visa",
+          "ccType": "COMPASSVISA",
+          "creditCardId": 8977328,
+          "defaultInd": false,
+          "expMonth": "10",
+          "expYear": "2025",
+          "nameOnAccount": ".",
+          "properties": null,
+        }
+      }
+    >
+      <Styled(Image)
+        alt="Visa"
+        className="cardTile__img"
+        data-locator="payment-cardImage"
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/visa-small.png",
+          }
+        }
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Text>
+      six test
+    </Text>
+    <Text>
+      Yucca Street
+    </Text>
+    <Text>
+      Yucca Street
+    </Text>
+    <Text>
+      Los Angeles, CA 90028
+    </Text>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        data-locator="payment-creditdebiteditlink"
+        fontSizeVariation="large"
+        to="/#"
+        underline={true}
+      />
+    </Styled(View)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      data-locator="payment-creditdebitdeletelink"
+      fontSizeVariation="large"
+      to="/#"
+      underline={true}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

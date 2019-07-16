@@ -15,6 +15,7 @@ async function fetchData(baseURL, relURL, params = {}, method) {
       catalogId: params.catalogId,
       deviceType: params.isMobile ? 'mobile' : 'desktop',
       'Cache-Control': 'no-store, must-revalidate',
+      'Content-Type': 'application/json',
     };
 
     if (params.nickName) {
@@ -23,6 +24,9 @@ async function fetchData(baseURL, relURL, params = {}, method) {
 
     if (params.fromPage) {
       reqSetting.fromPage = params.fromPage;
+    }
+    if (params.isRest) {
+      reqSetting.isRest = params.isRest;
     }
   }
   const request = superagent[requestType](requestUrl)
@@ -38,14 +42,14 @@ async function fetchData(baseURL, relURL, params = {}, method) {
     request.send(params.payload);
   }
 
-  const result = new Promise(resolve => {
+  const result = new Promise((resolve, reject) => {
     request
       .then(response => {
         resolve(response);
       })
       .catch(e => {
         // eslint-disable-next-line no-console
-        console.log(e);
+        reject(e);
       });
   });
   result.abort = () => request.abort(); // allow callers to cancel the request by calling abort on the returned object.

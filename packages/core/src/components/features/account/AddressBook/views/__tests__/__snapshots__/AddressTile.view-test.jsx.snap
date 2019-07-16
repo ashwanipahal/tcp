@@ -20,9 +20,14 @@ exports[`AddressTile component should renders correctly 1`] = `
           "primary": "true",
         }
       }
+      dataLocatorPrefix="addressbook"
+      fontWeight="bold"
+      showCountry={true}
+      showPhone={true}
     />
     <div>
       <Styled(Badge)
+        dataLocator="addressbook-defshippinglabel"
         showCheckmark={true}
       >
         DEFAULT SHIPPING
@@ -34,13 +39,17 @@ exports[`AddressTile component should renders correctly 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
-      fontSizeVariation="medium"
+      data-locator="addressbook-edit"
+      fontSizeVariation="large"
+      onClick={[Function]}
       to="/#"
       underline={true}
     />
     <Styled(Anchor)
       anchorVariation="primary"
-      fontSizeVariation="medium"
+      data-locator="addressbook-deletelink"
+      fontSizeVariation="large"
+      onClick={[Function]}
       to="/#"
       underline={true}
     />

@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { getIconPath } from '@tcp/web/src/utils';
+import { getIconPath } from '../../../../utils';
 
-const darkArrow = getIconPath('icon-carrot-grey');
+const darkArrow = getIconPath('icon-carrot-black-small');
+const darkArrowLarge = getIconPath('icon-carrot-grey-large');
 const lightArrow = getIconPath('icon-carrot-white');
 const CarouselStyle = styled.div`
   .slick-slider {
@@ -118,11 +119,13 @@ const CarouselStyle = styled.div`
   }
   @media only screen and (min-width: 768px) {
     .slick-prev {
-      background: url(${props => (props.carouselConfig.type === 'dark' ? lightArrow : darkArrow)})
+      background: url(${props =>
+          props.carouselConfig.type === 'dark' ? lightArrow : darkArrowLarge})
         no-repeat center center;
     }
     .slick-next {
-      background: url(${props => (props.carouselConfig.type === 'dark' ? lightArrow : darkArrow)})
+      background: url(${props =>
+          props.carouselConfig.type === 'dark' ? lightArrow : darkArrowLarge})
         no-repeat center center;
     }
   }
@@ -208,6 +211,18 @@ const CarouselStyle = styled.div`
   .slick-dots li button:hover:before,
   .slick-dots li button:focus:before {
     opacity: 1;
+  }
+  .tcp_carousel__play {
+    background: ${props => props.theme.colors.WHITE};
+    border: 0px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
   }
 `;
 

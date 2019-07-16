@@ -15,6 +15,14 @@ const endpoints = {
     baseURI: 'https://test1.childrensplace.com',
     relURI: '/api/getESpot',
   },
+  addAddress: {
+    method: 'post',
+    relURI: '/api/v2/account/addAddress',
+  },
+  updateAddress: {
+    method: 'put',
+    relURI: '/api/v2/wallet/updateAddress',
+  },
   login: {
     method: 'post',
     relURI: '/api/v2/account/logon',
@@ -27,12 +35,63 @@ const endpoints = {
     method: 'get',
     relURI: '/api/v2/account/getAddressFromBook',
   },
+  getCardList: {
+    method: 'get',
+    relURI: '/api/v2/account/getCreditCardDetails',
+  },
+  deleteAddress: {
+    method: 'delete',
+    relURI: '/api/v2/account/deleteAddressDetails',
+  },
+  deleteCreditCardOnAccount: {
+    method: 'post',
+    relURI: '/api/v2/account/deleteCreditCardDetails',
+  },
+  verifyAddress: {
+    method: 'get',
+    relURI:
+      '/v3/WEB/ContactVerify/doContactVerify?id=63987687&format=json&act=Check&cols=Plus4%2CDeliveryIndicator&',
+    baseURI: 'https://personator.melissadata.net',
+  },
   global: {
-    baseURI: 'https://test4.childrensplace.com',
+    baseURI: 'https://test3.childrensplace.com',
   },
   setDefaultShippingAddress: {
     method: 'put',
     relURI: '/api/v2/wallet/updateAddress',
+  },
+  getGifCardBalance: {
+    method: 'post',
+    relURI: '/api/v2/wallet/getGiftCardBalance',
+  },
+  getOrderDetails: {
+    method: 'get',
+    baseURI: 'http://test1.gymboree.com',
+    relURI: '/api/v2/checkout/getOrderDetails',
+  },
+  registeredUserInfoPOC: {
+    method: 'get',
+    baseURI: 'http://test1.gymboree.com',
+    relURI: '/api/v2/account/getRegisteredUserInfo',
+  },
+  setDefaultPayment: {
+    method: 'post',
+    relURI: '/api/v2/account/modifyCreditCardDetails',
+  },
+  emailVerification: {
+    method: 'get',
+    baseURI: '',
+    relURI: 'https://bpi.briteverify.com/emails.json?apikey=e50ab0a9-ac0b-436b-9932-2a74b9486436',
+  },
+  addEmailSignup: {
+    method: 'post',
+    baseURI: 'https://test1.childrensplace.com',
+    relURI: '/api/v2/store/addSignUpEmail',
+  },
+  addSmsSignup: {
+    method: 'post',
+    baseURI: 'https://test2.childrensplace.com',
+    relURI: '/api/v2/vibes/smsSignUp',
   },
 };
 export default endpoints;

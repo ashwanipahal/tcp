@@ -1,8 +1,9 @@
-const fallbackFonts = 'Arial, Helvetica, sans-serif';
+const PRIMARY_FONTS = 'Montserrat';
+const SECONDARY_FONTS = 'Nunito';
 
 export const FONTS = {
-  primary: `Montserrat, ${fallbackFonts}`,
-  secondary: `Nunito, ${fallbackFonts}`,
+  primary: PRIMARY_FONTS,
+  secondary: SECONDARY_FONTS,
 };
 
 export const LETTER_SPACINGS = {

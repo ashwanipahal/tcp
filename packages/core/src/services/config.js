@@ -1,8 +1,9 @@
 import endpoints from './endpoints';
 
 const graphQLAPIKey = {
-  dev: 'da2-vg7nle5r3vbafbeh3ntt7tkkrm',
-  uat: 'da2-sjg3l2hlijggnhsjd73i7qu3e4',
+  dev: 'da2-q6pibqnepna67cdl3dr4xt7muq',
+  uat: 'da2-4epdnjdh7zhp7fvoux3eu7cgxe',
+  perf: 'da2-kj4nwpz22bbaxnhx6dyxm7o3ci',
 };
 
 export const awsAppSync = {
@@ -17,13 +18,39 @@ export const awsAppSync = {
   aws_appsync_graphqlEndpoint: endpoints.graphQL.uat,
 };
 
-export const graphQLClient = 'graphQL';
-
-export const defaultCountry = 'USA';
-export const defaultBrand = 'TCP';
-export const defaultChannel = 'Desktop';
+// TODO - to move it in env config file
+export const API_CONFIG = {
+  sitesInfo: {
+    proto: 'https',
+    storeIdCA: '10152',
+    storeIdUS: '10151',
+    catalogIdCA: '10552',
+    catalogIdUS: '10551',
+    langId: '-1',
+  },
+  siteIds: {
+    // the values here are the strings that make up the siteId protion of the sites' urls (i.e., it is the 'us' in the path ( /us/favorites)
+    us: 'us',
+    ca: 'ca',
+  },
+  companyIds: {
+    us: '1',
+    ca: '2',
+  },
+  MELISSA_KEY: '63987687',
+  /* --------- UNBXD ------- */
+  version: 'V2',
+  pagetype: 'boolean',
+  variantcount: '100',
+  apiRequestTimeout: {
+    response: 30000,
+    deadline: 40000,
+  },
+  sessionCookieKey: 'QuantumMetricSessionID',
+  apiContentType: 'application/json',
+};
 
 export default {
   awsAppSync,
-  graphQLClient,
+  API_CONFIG,
 };

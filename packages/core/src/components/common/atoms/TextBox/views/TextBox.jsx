@@ -1,8 +1,10 @@
-// @flow
 import React from 'react';
 import type { Node } from 'react';
+import BodyCopy from '../../BodyCopy';
 import withStyles from '../../../hoc/withStyles';
 import StyledTextBox from '../TextBox.style';
+
+// @flow
 
 /**
  * @param {object} props : Props for button
@@ -11,52 +13,78 @@ import StyledTextBox from '../TextBox.style';
  * The border styles for success and error are governed by isErrorState and isSuccessState props.
  * The prop disabled determines if the textbox needs to be disabled or not.
  */
-
 type Props = {
   id?: string,
   className: string,
   ariaLabel?: string,
-  name?: string,
   type?: string,
   placeholder?: string,
-  isErrorState?: boolean,
-  isSuccessState?: boolean,
-  onChangeHandler?: func,
+  onChangeHandler?: any,
+  meta?: { touched: any, error: any, warning: any },
+  input: any,
+  maxLength: any,
+  inputRef: any,
+  dataLocator?: string,
+  showSuccessCheck?: boolean,
 };
 
 const TextBox = ({
   className,
   id,
   ariaLabel,
-  name,
   type,
   placeholder,
-  isErrorState,
-  isSuccessState,
-  onChangeHandler,
-}: Props): Node => (
-  <input
-    id={id}
-    aria-label={ariaLabel}
-    className={className}
-    name={name}
-    type={type}
-    placeholder={placeholder}
-    isErrorState={isErrorState}
-    isSuccessState={isSuccessState}
-    onChange={onChangeHandler}
-  />
-);
+  maxLength,
+  input,
+  inputRef,
+  meta: { touched, error },
+  dataLocator,
+  showSuccessCheck,
+}: Props): Node => {
+  const elemValue = input.value;
+  return (
+    <label htmlFor={input.name} className={`${className} input-fields-wrapper`}>
+      <input
+        {...input}
+        id={id}
+        aria-label={ariaLabel}
+        className="TextBox__input"
+        name={input.name}
+        type={type}
+        maxLength={maxLength}
+        value={elemValue}
+        ref={inputRef}
+        placeholder=""
+        data-locator={dataLocator}
+      />
+      <BodyCopy className="TextBox__label" fontFamily="secondary" fontSize="fs12">
+        {placeholder}
+      </BodyCopy>
+      {touched && error && (
+        <BodyCopy
+          className="TextBox__error"
+          color="error"
+          component="div"
+          fontSize="fs12"
+          fontFamily="secondary"
+        >
+          {error}
+        </BodyCopy>
+      )}
+      {showSuccessCheck && <div className="success__checkmark" />}
+    </label>
+  );
+};
 
 TextBox.defaultProps = {
   id: '',
   ariaLabel: '',
-  name: '',
   type: 'text',
   placeholder: '',
-  isErrorState: false,
-  isSuccessState: false,
   onChangeHandler: () => {},
+  dataLocator: '',
+  meta: {},
+  showSuccessCheck: false,
 };
 
 export default withStyles(TextBox, StyledTextBox);

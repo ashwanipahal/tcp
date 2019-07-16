@@ -2,17 +2,29 @@
 
 exports[`AddressBook component should renders correctly when addresses are not present 1`] = `
 <div>
-  <Styled(HeadingStyle)
-    HeadingLarge="six"
-    className="addressBook__separator"
-    fontFamily="secondaryFontFamily"
-    tag="h4"
+  <Styled(Row)
+    fullBleed={true}
   >
-    Address Book
-  </Styled(HeadingStyle)>
-  <Styled(EmptyAddressList)
-    labels={Object {}}
-  />
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(HeadingStyle)
+        HeadingLarge="six"
+        className="addressBook__separator"
+        fontFamily="secondaryFontFamily"
+        tag="h4"
+      />
+      <Styled(EmptyAddressList)
+        labels={Object {}}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
   <Styled(Row)
     className="addressBook__row--marginBottom"
     fullBleed={true}
@@ -29,7 +41,9 @@ exports[`AddressBook component should renders correctly when addresses are not p
     >
       <Styled(Button)
         buttonVariation="variable-width"
+        data-locator="addressbook-addnewaddress"
         fill="BLUE"
+        onClick={[Function]}
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -41,21 +55,46 @@ exports[`AddressBook component should renders correctly when addresses are not p
         "small": 6,
       }
     }
-    status="error"
+  />
+  <Styled(DeleteAddressModal)
+    data={
+      Object {
+        "buttons": Object {
+          "cancel": undefined,
+          "confirm": undefined,
+        },
+        "description": Object {},
+        "heading": undefined,
+        "title": undefined,
+      }
+    }
+    labels={Object {}}
   />
 </div>
 `;
 
 exports[`AddressBook component should renders correctly when addresses are present 1`] = `
 <div>
-  <Styled(HeadingStyle)
-    HeadingLarge="six"
-    className="addressBook__separator"
-    fontFamily="secondaryFontFamily"
-    tag="h4"
+  <Styled(Row)
+    fullBleed={true}
   >
-    Address Book
-  </Styled(HeadingStyle)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(HeadingStyle)
+        HeadingLarge="six"
+        className="addressBook__separator"
+        fontFamily="secondaryFontFamily"
+        tag="h4"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
   <Styled(Row)
     className="addressBook__row--marginBottom"
     fullBleed={true}
@@ -72,7 +111,9 @@ exports[`AddressBook component should renders correctly when addresses are prese
     >
       <Styled(Button)
         buttonVariation="variable-width"
+        data-locator="addressbook-addnewaddress"
         fill="BLUE"
+        onClick={[Function]}
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -84,7 +125,6 @@ exports[`AddressBook component should renders correctly when addresses are prese
         "small": 6,
       }
     }
-    status="error"
   />
   <Styled(AddressList)
     addresses={
@@ -101,6 +141,21 @@ exports[`AddressBook component should renders correctly when addresses are prese
           "phone1": "1234567890",
         },
       ]
+    }
+    labels={Object {}}
+    setSelectedAddress={[Function]}
+  />
+  <Styled(DeleteAddressModal)
+    data={
+      Object {
+        "buttons": Object {
+          "cancel": undefined,
+          "confirm": undefined,
+        },
+        "description": Object {},
+        "heading": undefined,
+        "title": undefined,
+      }
     }
     labels={Object {}}
   />

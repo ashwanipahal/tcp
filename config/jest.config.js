@@ -1,15 +1,15 @@
 const ignorePsuedoCodeDir = [
   '/ProductListingPage/',
   '/plpDeltaSync/',
-  '/mobileapp/',
   '/LoginPage/',
   '/server/',
+  '/service/',
 ];
 
 module.exports = {
   verbose: true,
   rootDir: '../',
-  roots: ['<rootDir>/packages'],
+  roots: ['<rootDir>/packages/web', '<rootDir>/packages/core'],
   moduleFileExtensions: ['js', 'jsx'],
   moduleDirectories: ['node_modules', './packages/web/node_modules'],
   transform: {
@@ -23,17 +23,21 @@ module.exports = {
   },
   setupFiles: ['<rootDir>/config/jest.setup.js'],
   collectCoverage: true,
-  coverageDirectory: 'reports/coverage',
+  coverageDirectory: 'reports/web/coverage',
   collectCoverageFrom: [
     '**/*.js',
     '**/*.jsx',
     '!**/*.style.js',
+    '!**/*.style.native.js',
     '!**/*.constants.js',
     '!**/*.config.js',
     '!**/core/styles/**',
-    '!**/*.action.js',
+    '!**/*.actions.js',
+    '!**/*.container.js',
     '!**/*.query.js',
     '!**/__mocks__/**',
+    '!**/*.native.js',
+    '!**/*.native.jsx',
   ],
   coveragePathIgnorePatterns: [
     '/node_modules/',

@@ -3,22 +3,32 @@ import PropTypes from 'prop-types';
 import Image from '@tcp/core/src/components/common/atoms/Image';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { getIconPath, getLocator } from '@tcp/web/src/utils';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import { getIconPath, getLocator } from '@tcp/core/src/utils';
 import style from '../SocialMediaLinks.style';
 
 const SocialMediaLinks = ({ className, connectWithUsLabel, links }) => (
   <React.Fragment>
     <div className={className}>
-      <span className="social-media-label" data-locator={getLocator('label-connect-with-us')}>
+      <BodyCopy
+        className="social-media-label"
+        data-locator={getLocator('label-connect-with-us')}
+        component="span"
+        fontFamily={['secondary', 'primary']}
+        fontSize={['fs12', 'fs10', 'fs12']}
+        fontWeight={['regular', 'black']}
+        textAlign="center"
+        color="text.secondary"
+      >
         {connectWithUsLabel}
-      </span>
+      </BodyCopy>
       <div className="social-media-pallete">
-        {links.map(link => {
+        {links.map((link, index) => {
           return (
             <Anchor to={link.url} target={link.target}>
               <Image
                 className="social-media-icon"
-                data-locator={getLocator(link.iconClass)}
+                data-locator={`${getLocator('social_media_links')}${index}`}
                 src={getIconPath(link.class)}
                 alt={link.title}
               />

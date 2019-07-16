@@ -1,104 +1,289 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header component renders correctly 1`] = `
-<StyledComponent
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-gZMcBi",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  background-color: ",
-          [Function],
-          ";
-
-  .header-topnav__row {
-    overflow: auto;
-    padding: 0 14px;
-    position: relative;
-
-    @media ",
-          [Function],
-          " {
-      padding: 0 15px;
+exports[`Footer component HeaderTopNav component renders correctly to match snapshot 1`] = `
+<div
+  className="header-top-nav"
+>
+  <Styled(PromotionalArea)
+    data={
+      Array [
+        Object {
+          "__typename": "PromoMessage",
+          "link": Object {
+            "__typename": "Link",
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "/static/promo1",
+          },
+          "richText": Object {
+            "__typename": "Text",
+            "text": "<b>FREE SHIPPING EVERY TEST DAY!</b> No minimum purchase required.",
+          },
+        },
+        Object {
+          "__typename": "PromoMessage",
+          "link": Object {
+            "__typename": "Link",
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "/static/promo2",
+          },
+          "richText": Object {
+            "__typename": "Text",
+            "text": "<b>FREE SHIPPING EVERY DAY!</b> This is banner2",
+          },
+        },
+        Object {
+          "__typename": "PromoMessage",
+          "link": Object {
+            "__typename": "Link",
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "/static/promo3",
+          },
+          "richText": Object {
+            "__typename": "Text",
+            "text": "<b>FREE SHIPPING EVERY DAY!</b> Banner 3 comes now",
+          },
+        },
+      ]
     }
+    mobile={true}
+  />
+  <div
+    className="header-topnav__row"
+  >
+    <div
+      className="header-topnav__brand-tabs"
+    >
+      <Styled(BrandTabs)
+        data={
+          Array [
+            Object {
+              "__typename": "LinkClass",
+              "class": "header__brand-tab--tcp",
+              "external": 0,
+              "target": "",
+              "title": "TCP Link",
+              "url": "/",
+            },
+            Object {
+              "__typename": "LinkClass",
+              "class": "header__brand-tab-gymboree",
+              "external": 0,
+              "target": "_blank",
+              "title": "Gymboree Link",
+              "url": "https://www.gymboree.com/",
+            },
+          ]
+        }
+      />
+    </div>
+    <div
+      className="header-topnav__promo-area"
+    >
+      <Styled(PromotionalArea)
+        data={
+          Array [
+            Object {
+              "__typename": "PromoMessage",
+              "link": Object {
+                "__typename": "Link",
+                "external": 0,
+                "target": "",
+                "title": "",
+                "url": "/static/promo1",
+              },
+              "richText": Object {
+                "__typename": "Text",
+                "text": "<b>FREE SHIPPING EVERY TEST DAY!</b> No minimum purchase required.",
+              },
+            },
+            Object {
+              "__typename": "PromoMessage",
+              "link": Object {
+                "__typename": "Link",
+                "external": 0,
+                "target": "",
+                "title": "",
+                "url": "/static/promo2",
+              },
+              "richText": Object {
+                "__typename": "Text",
+                "text": "<b>FREE SHIPPING EVERY DAY!</b> This is banner2",
+              },
+            },
+            Object {
+              "__typename": "PromoMessage",
+              "link": Object {
+                "__typename": "Link",
+                "external": 0,
+                "target": "",
+                "title": "",
+                "url": "/static/promo3",
+              },
+              "richText": Object {
+                "__typename": "Text",
+                "text": "<b>FREE SHIPPING EVERY DAY!</b> Banner 3 comes now",
+              },
+            },
+          ]
+        }
+        mobile={false}
+      />
+    </div>
+    <div
+      className="header-topnav__track-order"
+    >
+      Track order
+    </div>
+  </div>
+</div>
+`;
 
-    @media ",
-          [Function],
-          " {
-      padding: 0 15px 0 6px;
+exports[`Footer component HeaderTopNav component renders correctly with props 1`] = `
+<div
+  className="header-top-nav"
+>
+  <Styled(PromotionalArea)
+    data={
+      Array [
+        Object {
+          "__typename": "PromoMessage",
+          "link": Object {
+            "__typename": "Link",
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "/static/promo1",
+          },
+          "richText": Object {
+            "__typename": "Text",
+            "text": "<b>FREE SHIPPING EVERY TEST DAY!</b> No minimum purchase required.",
+          },
+        },
+        Object {
+          "__typename": "PromoMessage",
+          "link": Object {
+            "__typename": "Link",
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "/static/promo2",
+          },
+          "richText": Object {
+            "__typename": "Text",
+            "text": "<b>FREE SHIPPING EVERY DAY!</b> This is banner2",
+          },
+        },
+        Object {
+          "__typename": "PromoMessage",
+          "link": Object {
+            "__typename": "Link",
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "/static/promo3",
+          },
+          "richText": Object {
+            "__typename": "Text",
+            "text": "<b>FREE SHIPPING EVERY DAY!</b> Banner 3 comes now",
+          },
+        },
+      ]
     }
-  }
-
-  .header-topnav__brand-tabs,
-  .header-topnav__track-order,
-  .header-topnav__promo-area {
-    float: left;
-  }
-
-  .header-topnav__brand-tabs {
-    width: 60%;
-
-    @media ",
-          [Function],
-          " {
-      width: 30%;
-    }
-  }
-
-  .header-topnav__promo-area {
-    text-align: center;
-    width: 50%;
-
-    @media ",
-          [Function],
-          " {
-      display: none;
-    }
-  }
-
-  .header-topnav__track-order {
-    font-size: ",
-          [Function],
-          "px;
-    text-align: right;
-    padding-top: 15px;
-    width: 40%;
-
-    @media ",
-          [Function],
-          " {
-      width: 20%;
-    }
-
-    @media ",
-          [Function],
-          " {
-      font-size: ",
-          [Function],
-          "px;
-    }
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(HeaderTopNav)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-gZMcBi",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-/>
+    mobile={true}
+  />
+  <div
+    className="header-topnav__row"
+  >
+    <div
+      className="header-topnav__brand-tabs"
+    >
+      <Styled(BrandTabs)
+        data={
+          Array [
+            Object {
+              "__typename": "LinkClass",
+              "class": "header__brand-tab--tcp",
+              "external": 0,
+              "target": "",
+              "title": "TCP Link",
+              "url": "/",
+            },
+            Object {
+              "__typename": "LinkClass",
+              "class": "header__brand-tab-gymboree",
+              "external": 0,
+              "target": "_blank",
+              "title": "Gymboree Link",
+              "url": "https://www.gymboree.com/",
+            },
+          ]
+        }
+      />
+    </div>
+    <div
+      className="header-topnav__promo-area"
+    >
+      <Styled(PromotionalArea)
+        data={
+          Array [
+            Object {
+              "__typename": "PromoMessage",
+              "link": Object {
+                "__typename": "Link",
+                "external": 0,
+                "target": "",
+                "title": "",
+                "url": "/static/promo1",
+              },
+              "richText": Object {
+                "__typename": "Text",
+                "text": "<b>FREE SHIPPING EVERY TEST DAY!</b> No minimum purchase required.",
+              },
+            },
+            Object {
+              "__typename": "PromoMessage",
+              "link": Object {
+                "__typename": "Link",
+                "external": 0,
+                "target": "",
+                "title": "",
+                "url": "/static/promo2",
+              },
+              "richText": Object {
+                "__typename": "Text",
+                "text": "<b>FREE SHIPPING EVERY DAY!</b> This is banner2",
+              },
+            },
+            Object {
+              "__typename": "PromoMessage",
+              "link": Object {
+                "__typename": "Link",
+                "external": 0,
+                "target": "",
+                "title": "",
+                "url": "/static/promo3",
+              },
+              "richText": Object {
+                "__typename": "Text",
+                "text": "<b>FREE SHIPPING EVERY DAY!</b> Banner 3 comes now",
+              },
+            },
+          ]
+        }
+        mobile={false}
+      />
+    </div>
+    <div
+      className="header-topnav__track-order"
+    >
+      Track order
+    </div>
+  </div>
+</div>
 `;

@@ -65,6 +65,15 @@ export default {
       ALT_FOCUS: '#1f4862',
       TEXT: '#fff',
     },
+    RED: {
+      NORMAL: '#ffffff',
+      BORDER: '#c84747',
+      HOVER: '#f3d7d7',
+      FOCUS: '#e19999',
+      ALT_HOVER: '#e19999',
+      ALT_FOCUS: '#e19999',
+      TEXT: '#c84747',
+    },
   },
   ANCHOR: {
     PRIMARY: '#1a1a1a',
@@ -94,5 +103,10 @@ export default {
   },
   BORDER: {
     NORMAL: '#979797',
+  },
+  CHECKBOX: {
+    BORDER: '#575757',
+    CHECKED_BORDER: '#2e6a91',
+    TICK_COLOR: '#fff',
   },
 };

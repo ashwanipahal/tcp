@@ -1,130 +1,234 @@
 export default {
-  header_top_nav: {
-    brand_tabs: [
-      {
-        id: '1',
-        url: '#',
-        alt: "The Children's Place",
-        title: "The Children's Place",
-        target: '',
-        logoClass: 'tcp_logo_medium',
-        active: true,
+  submodules: {
+    topNavWrapper: {
+      composites: {
+        brand_tabs: [
+          {
+            url: '/',
+            title: 'TCP Link',
+            target: '',
+            external: 0,
+            class: 'header__brand-tab-gymboree',
+            __typename: 'LinkClass',
+          },
+          {
+            url: 'https://www.gymboree.com/',
+            title: 'Gymboree Link',
+            target: '_blank',
+            external: 0,
+            class: 'header__brand-tab--tcp',
+            __typename: 'LinkClass',
+          },
+        ],
+        promo_message_wrapper: [
+          {
+            richText: {
+              text: '<b>FREE SHIPPING EVERY TEST DAY!</b> No minimum purchase required.',
+              __typename: 'Text',
+            },
+            link: {
+              url: '/static/promo1',
+              title: '',
+              target: '',
+              external: 0,
+              __typename: 'Link',
+            },
+            __typename: 'PromoMessage',
+          },
+          {
+            richText: {
+              text: '<b>FREE SHIPPING EVERY DAY!</b> This is banner2',
+              __typename: 'Text',
+            },
+            link: {
+              url: '/static/promo2',
+              title: '',
+              target: '',
+              external: 0,
+              __typename: 'Link',
+            },
+            __typename: 'PromoMessage',
+          },
+          {
+            richText: {
+              text: '<b>FREE SHIPPING EVERY DAY!</b> Banner 3 comes now',
+              __typename: 'Text',
+            },
+            link: {
+              url: '/static/promo3',
+              title: '',
+              target: '',
+              external: 0,
+              __typename: 'Link',
+            },
+            __typename: 'PromoMessage',
+          },
+        ],
+        __typename: 'Composite',
       },
-      {
-        id: '2',
-        url: 'https://www.gymboree.com/',
-        alt: 'Gymboree',
-        title: 'Gymboree',
-        target: '_blank',
-        logoClass: 'gymboree_logo_medium',
-        active: false,
+      __typename: 'SubmoduleComposite',
+    },
+    promoTextBannerCarousel: {
+      composites: {
+        promoTextBanner: [
+          {
+            linkClass: {
+              url:
+                'https://www.childrensplace.com/us/content/buy-online?icid=hp_na_na_image_062411_boss',
+              title: '',
+              target: '',
+              external: 0,
+              class: 'header__promo-text-banner1',
+              __typename: 'LinkClass',
+            },
+            textLines: [
+              {
+                text: 'NEED IT NOW?',
+                style: 'style2',
+                color: 'color1',
+                __typename: 'StyledText',
+              },
+              {
+                text: 'Buy online, pickup in store.',
+                style: null,
+                color: 'color1',
+                __typename: 'StyledText',
+              },
+            ],
+            __typename: 'PromoTextBanner',
+          },
+          {
+            linkClass: {
+              url:
+                'https://www.childrensplace.com/us/content/buy-online?icid=hp_na_na_image_062419_boss',
+              title: '',
+              target: '',
+              external: 0,
+              class: 'header__promo-text-banner',
+              __typename: 'LinkClass',
+            },
+            textLines: [
+              {
+                text: 'EARN PLACE CASH!',
+                style: 'style2',
+                color: 'color2',
+                __typename: 'StyledText',
+              },
+              {
+                text: 'Get 10$ for every 20$ spent today.',
+                style: null,
+                color: 'color2',
+                __typename: 'StyledText',
+              },
+            ],
+            __typename: 'PromoTextBanner',
+          },
+          {
+            linkClass: {
+              url:
+                'https://www.childrensplace.com/us/content/buy-online?icid=hp_na_na_image_062419_boss',
+              title: '',
+              target: '',
+              external: 0,
+              class: 'header__promo-text-banner',
+              __typename: 'LinkClass',
+            },
+            textLines: [
+              {
+                text: 'NEED IT NOW?',
+                style: 'style3',
+                color: 'color3',
+                __typename: 'StyledText',
+              },
+              {
+                text: 'Buy online, pickup in store.',
+                style: null,
+                color: 'color1',
+                __typename: 'StyledText',
+              },
+            ],
+            __typename: 'PromoTextBanner',
+          },
+        ],
+        __typename: 'Composite',
       },
-    ],
-    promo_message_wrapper: [
-      {
-        id: '1',
-        url: '/static/promo',
-        text:
-          '<a href="https://www.childrensplace.com/us/home"><b>1 FREE SHIPPING EVERY DAY!</b> No minimum purchase required.</a>',
-        title: 'FREE SHIPPING EVERY DAY! No minimum purchase required 1.',
-        target: '',
-        class: 'promo_message',
+      __typename: 'SubmoduleComposite',
+    },
+    loyaltyPromoBannerWrapper: {
+      composites: {
+        loyaltyPromoBanner: [
+          {
+            image: {
+              url: 'http://image1.sm/url',
+              title: 'Banner Image Title attribute val',
+              alt: 'Banner Image Alt text attribute val',
+              __typename: 'Image',
+            },
+            link: {
+              url: '/banner/url',
+              title: '',
+              target: '',
+              external: 0,
+              __typename: 'Link',
+            },
+            styled: {
+              text: 'Banner Text val',
+              style: 'style1',
+              color: 'color1',
+              __typename: 'StyledText',
+            },
+            __typename: 'StyledLinkedImage',
+          },
+          {
+            image: {
+              url: 'http://image2.sm/url',
+              title: 'Banner Image 2 Title attribute val',
+              alt: 'Banner Image 2 Alt text attribute val',
+              __typename: 'Image',
+            },
+            link: {
+              url: '/banner/url',
+              title: '',
+              target: '',
+              external: 0,
+              __typename: 'Link',
+            },
+            styled: {
+              text: 'Banner 2 Text val',
+              style: null,
+              color: 'color2',
+              __typename: 'StyledText',
+            },
+            __typename: 'StyledLinkedImage',
+          },
+          {
+            image: {
+              url: 'http://image2.sm/url',
+              title: 'Banner Image 2 Title attribute val',
+              alt: 'Banner Image 2 Alt text attribute val',
+              __typename: 'Image',
+            },
+            link: {
+              url: '/Banner/url',
+              title: '',
+              target: '',
+              external: 0,
+              __typename: 'Link',
+            },
+            styled: {
+              text: 'Banner 2 Text val',
+              style: 'style3',
+              color: 'color2',
+              __typename: 'StyledText',
+            },
+            __typename: 'StyledLinkedImage',
+          },
+        ],
+        __typename: 'Composite',
       },
-      {
-        id: '2',
-        url: '/static/promo2',
-        text:
-          '<a href="https://www.childrensplace.com/us/home"><b>2 FREE SHIPPING EVERY DAY!</b> No minimum purchase required.</a>',
-        title: 'FREE SHIPPING EVERY DAY! No minimum purchase required 2.',
-        target: '',
-        class: 'promo_message',
-      },
-      {
-        id: '3',
-        url: '/static/promo3',
-        text:
-          '<a href="https://www.childrensplace.com/us/home"><b>3 FREE SHIPPING EVERY DAY!</b> No minimum purchase required.</a>',
-        title: 'FREE SHIPPING EVERY DAY! No minimum purchase required 3.',
-        target: '',
-        class: 'promo_message',
-      },
-    ],
+      __typename: 'SubmoduleComposite',
+    },
+    __typename: 'Submodule',
   },
-  header_promo_area: {
-    promoTextBanners: [
-      {
-        id: '1',
-        url: '/banner/url1',
-        promo_text: {
-          primary: {
-            text: '<b>NEED IT NOW?</b>',
-            color: '#1a1a1a',
-          },
-          secondary: {
-            text: 'Buy online, pickup in store.',
-            color: '#1a1a1a',
-          },
-        },
-        title: 'NEED IT NOW? Buy online, pickup in store.',
-        target: '',
-        class: 'promo_icon_clock',
-      },
-      {
-        id: '2',
-        url: '/banner/url2',
-        promo_text: {
-          primary: {
-            text: '<b>EARN PLACE CASH!</b>',
-            color: '#7dc24c',
-          },
-          secondary: {
-            text: 'Get 10$ for every 20$ spent today.',
-            color: '#1a1a1a',
-          },
-        },
-        title: 'EARN PLACE CASH! Get 10$ for every 20$ spent today.',
-        target: '',
-        class: 'promo_icon_dollar',
-      },
-      {
-        id: '3',
-        url: '/node/modal/rr1',
-        promo_text: {
-          primary: {
-            text: '<b>SIGN UP AND GET 10$ OFF!</b>',
-            color: '#1a1a1a',
-          },
-          secondary: {
-            text: '<u>ENTER YOUR EMAIL.</u>',
-            color: '#1a1a1a',
-          },
-        },
-        title: 'SIGN UP AND GET 10$ OFF! ENTER YOUR EMAIL.',
-        target: '',
-        class: 'promo_icon_at',
-      },
-    ],
-    promo_loyalty_banners: [
-      {
-        id: '1',
-        url: '/banner/url',
-        imageUrl: 'http://image1.sm/url',
-        imageAlt: 'Banner Image 1 Alt text attribute val',
-        title: 'Banner Image 1 Title attribute val',
-        text: '<b>Banner 1 Text val</b>',
-        target: '',
-        class: 'promo_loyalty_bonus',
-      },
-      {
-        id: '2',
-        url: '/banner/url',
-        imageUrl: 'http://image2.sm/url',
-        imageAlt: 'Banner Image 2 Alt text attribute val',
-        title: 'Banner Image 2 Title attribute val',
-        text: '<b>Banner 2 Text val</b>',
-        target: '',
-        class: 'promo_loyalty_reward',
-      },
-    ],
-  },
+  __typename: 'ModuleContent',
 };

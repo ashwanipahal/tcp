@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VenmoCardList Component should render correctly 1`] = `
+<div
+  className="abc"
+>
+  <Styled(Heading)
+    className="cardList__heading"
+    color="text.primary"
+    component={null}
+    dataLocator="payment-venmocardtile"
+    textAlign="left"
+    variant="h6"
+  />
+</div>
+`;
+
+exports[`VenmoCardList Component should render correctly if list is present 1`] = `
+<div
+  className="abc"
+>
+  <Styled(Heading)
+    className="cardList__heading"
+    color="text.primary"
+    component={null}
+    dataLocator="payment-venmocardtile"
+    textAlign="left"
+    variant="h6"
+  />
+  <CardView
+    cardList={
+      Immutable.List [
+        Object {
+          "accountNo": "************1111",
+          "addressDetails": Object {
+            "addressLine1": "111 3rd Ave",
+            "addressLine2": "",
+            "city": "New York",
+            "country": "US",
+            "firstName": "new",
+            "lastName": "address",
+            "phone1": "9878909876",
+            "state": "NY",
+            "zipCode": "10003",
+          },
+          "billingAddressId": 160685,
+          "ccBrand": "VENMO",
+          "ccType": "VENMO",
+          "creditCardId": 73501,
+          "defaultInd": false,
+          "expMonth": "5 ",
+          "expYear": "2024",
+          "nameOnAccount": ".",
+          "properties": Object {
+            "venmoUserId": "1234",
+          },
+        },
+      ]
+    }
+    labels={
+      Object {
+        "VenmoCardHeading": "heading",
+      }
+    }
+  />
+</div>
+`;

@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Selectbox component renders correctly 1`] = `
+<div
+  className="asdfasdf"
+>
+  <select
+    aria-label=""
+    className="select__input"
+    data-locator=""
+    id="abcd"
+    name=""
+    value="hello"
+  >
+    <option
+      id="US"
+      key="US"
+      value="US"
+    >
+      United States
+    </option>
+    <option
+      id="CA"
+      key="CA"
+      value="CA"
+    >
+      Canada
+    </option>
+  </select>
+  <Styled(BodyCopy)
+    className="select__label"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    placeholder
+  </Styled(BodyCopy)>
+</div>
+`;
+
+exports[`Selectbox component renders correctly with touched and error 1`] = `
+<div
+  className="asdfasdf"
+>
+  <select
+    aria-label=""
+    className="select__input"
+    data-locator=""
+    id="abcd"
+    name=""
+  >
+    <option
+      id="US"
+      key="US"
+      value="US"
+    >
+      United States
+    </option>
+    <option
+      id="CA"
+      key="CA"
+      value="CA"
+    >
+      Canada
+    </option>
+  </select>
+  <Styled(BodyCopy)
+    className="select__label"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    first name for user
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className={null}
+    color="error"
+    component="div"
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    REQUIRED_FIELD
+  </Styled(BodyCopy)>
+</div>
+`;
+
+exports[`Selectbox component renders correctly with touched and warning 1`] = `
+<div
+  className="asdfasdf"
+>
+  <select
+    aria-label=""
+    className="select__input"
+    data-locator=""
+    id="abcd"
+    name=""
+  >
+    <option
+      id="US"
+      key="US"
+      value="US"
+    >
+      United States
+    </option>
+    <option
+      id="CA"
+      key="CA"
+      value="CA"
+    >
+      Canada
+    </option>
+  </select>
+  <Styled(BodyCopy)
+    className="select__label"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  />
+</div>
+`;

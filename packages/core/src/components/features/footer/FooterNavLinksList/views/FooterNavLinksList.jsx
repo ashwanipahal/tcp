@@ -7,12 +7,13 @@ import withStyles from '../../../../common/hoc/withStyles';
 type Props = {
   className: string,
   listArray: Object[],
+  colNum: number,
 };
 
-const FooterNavLinksList = ({ className, listArray }: Props) => {
+const FooterNavLinksList = ({ className, listArray, colNum }: Props) => {
   return (
     <ul className={`${className} list`}>
-      {listArray.map(linkItems => (
+      {listArray.map((linkItems, index) => (
         <li>
           <Anchor
             className={className}
@@ -20,7 +21,8 @@ const FooterNavLinksList = ({ className, listArray }: Props) => {
             to={linkItems.url}
             anchorVariation="primary"
             fontSizeVariation="large"
-            data-locator={linkItems.url}
+            data-locator={`col_${colNum}_link_${index}`}
+            target={linkItems.target}
           >
             {linkItems.title}
           </Anchor>

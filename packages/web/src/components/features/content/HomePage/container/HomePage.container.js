@@ -8,10 +8,15 @@ HomePageView.pageInfo = {
 HomePageView.getInitActions = () => initActions;
 
 const mapStateToProps = state => {
+  const homepageSlots = state.Layouts.homepage.slots;
+  const newObj = {};
+  homepageSlots.forEach(slotItem => {
+    newObj[slotItem.name] = state.Modules[slotItem.contentId];
+    newObj[slotItem.name].name = slotItem.moduleName;
+    return newObj;
+  });
   return {
-    slot_1: state.GlobalReducers.homepage.slot_1,
-    slot_2: state.GlobalReducers.homepage.slot_2,
-    links: state.HomePageReducer.links,
+    ...newObj,
   };
 };
 

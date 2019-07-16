@@ -1,122 +1,121 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PromotionalArea component renders correctly 1`] = `
-<StyledComponent
-  data={
-    Array [
-      Object {
-        "class": "promo_message",
-        "id": "1",
-        "target": "_blank",
-        "text": "<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 1.",
-        "title": "FREE SHIPPING EVERY DAY! No minimum purchase required 1.",
-        "url": "/static/promo",
-      },
-      Object {
-        "class": "promo_message",
-        "id": "2",
-        "target": "_blank",
-        "text": "<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 2.",
-        "title": "FREE SHIPPING EVERY DAY! No minimum purchase required 2.",
-        "url": "/static/promo2",
-      },
-      Object {
-        "class": "promo_message",
-        "id": "3",
-        "target": "_blank",
-        "text": "<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 3.",
-        "title": "FREE SHIPPING EVERY DAY! No minimum purchase required 3.",
-        "url": "/static/promo3",
-      },
-    ]
-  }
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-dnqmqq",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  font-size: ",
-          [Function],
-          "px;
+exports[`PromotionalArea component renders correctly with mobile check false for tablet 1`] = `
+<div
+  className="promotional-area"
+>
+  <div
+    className="header-topnav__promo-area--tablet"
+  >
+    <errorBoundaryComponent
+      carouselConfig={
+        Object {
+          "arrow": "small",
+          "type": "dark",
+        }
+      }
+      options={
+        Object {
+          "arrows": false,
+          "autoplay": true,
+          "autoplaySpeed": 3000,
+          "fade": true,
+          "infinite": true,
+          "responsive": Array [
+            Object {
+              "breakpoint": NaN,
+              "settings": Object {
+                "arrows": false,
+              },
+            },
+          ],
+          "slidesToScroll": 1,
+          "slidesToShow": 1,
+          "speed": 500,
+        }
+      }
+    >
+      <Styled(Anchor)
+        target="_blank"
+        to="/static/promo"
+      >
+        <Styled(RichText)
+          dataLocator="global_promoareaimg"
+          richTextHtml="<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 1."
+        />
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        target="_blank"
+        to="/static/promo2"
+      >
+        <Styled(RichText)
+          dataLocator="global_promoareaimg"
+          richTextHtml="<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 2."
+        />
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        target="_blank"
+        to="/static/promo3"
+      >
+        <Styled(RichText)
+          dataLocator="global_promoareaimg"
+          richTextHtml="<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 3."
+        />
+      </Styled(Anchor)>
+    </errorBoundaryComponent>
+  </div>
+</div>
+`;
 
-  .header-topnav__promo-area--mobile {
-    background-color: ",
-          [Function],
-          ";
-    color: ",
-          [Function],
-          ";
-    font-family: ",
-          [Function],
-          ";
-    padding: 8px 0;
-
-    @media ",
-          [Function],
-          " {
-      display: none;
-    }
-  }
-
-  .header-topnav__promo-area--tablet {
-    font-family: ",
-          [Function],
-          ";
-    margin-top: 16px;
-
-    @media ",
-          [Function],
-          " {
-      display: none;
-    }
-
-    @media ",
-          [Function],
-          " {
-      font-family: ",
-          [Function],
-          ";
-      font-size: ",
-          [Function],
-          "px;
-    }
-  }
-
-  a {
-    color: ",
-          [Function],
-          ";
-    text-decoration: none;
-
-    @media ",
-          [Function],
-          " {
-      color: ",
-          [Function],
-          ";
-    }
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(PromotionalArea)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-dnqmqq",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-/>
+exports[`PromotionalArea component renders correctly with mobile check true 1`] = `
+<div
+  className="promotional-area"
+>
+  <div
+    className="header-topnav__promo-area--mobile"
+  >
+    <errorBoundaryComponent
+      carouselConfig={
+        Object {
+          "arrow": "small",
+          "type": "dark",
+        }
+      }
+      options={
+        Object {
+          "autoplaySpeed": 6000,
+          "speed": 500,
+        }
+      }
+    >
+      <Styled(Anchor)
+        target="_blank"
+        to="/static/promo"
+      >
+        <Styled(RichText)
+          dataLocator="global_promoareaimg"
+          richTextHtml="<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 1."
+        />
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        target="_blank"
+        to="/static/promo2"
+      >
+        <Styled(RichText)
+          dataLocator="global_promoareaimg"
+          richTextHtml="<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 2."
+        />
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        target="_blank"
+        to="/static/promo3"
+      >
+        <Styled(RichText)
+          dataLocator="global_promoareaimg"
+          richTextHtml="<b>FREE SHIPPING EVERY DAY!</b> No minimum purchase required 3."
+        />
+      </Styled(Anchor)>
+    </errorBoundaryComponent>
+  </div>
+</div>
 `;

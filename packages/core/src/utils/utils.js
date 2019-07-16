@@ -1,4 +1,6 @@
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
+import icons from '../config/icons';
+import locators from '../config/locators';
 
 export const importGraphQLClientDynamically = module => {
   return import(`../services/handler/${module}`);
@@ -8,6 +10,18 @@ export const importGraphQLQueriesDynamically = query => {
   return import(`../services/handler/graphQL/queries/${query}`);
 };
 
+export const isMobileApp = () => {
+  return typeof navigator !== 'undefined' && navigator.product === 'ReactNative';
+};
+
+export const isServer = () => {
+  return typeof window === 'undefined' && !isMobileApp();
+};
+
+export function isClient() {
+  return typeof window !== 'undefined' && !isMobileApp();
+}
+
 export const isProduction = () => {
   return process.env.NODE_ENV === ENV_PRODUCTION;
 };
@@ -16,13 +30,16 @@ export const isDevelopment = () => {
   return process.env.NODE_ENV === ENV_DEVELOPMENT;
 };
 
-export const brand = () => {
+export const identifyBrand = () => {
   const url = 'http://www.thechildrensplace.com/';
+
   return url.indexOf('thechildrensplace') > -1 ? 'tcp' : 'gymboree';
 };
 
-// This common function works for finding key in an object.
-// Please refer Account.jsx in core/src/components/features/account/Account/Account.jsx
+/**
+ * This common function works for finding key in an object.
+ * Please refer Account.jsx in core/src/components/features/account/Account/Account.jsx
+ */
 export const getObjectValue = (obj, defaultVal, ...params) => {
   if (!obj) return defaultVal;
 
@@ -60,13 +77,52 @@ export const buildUrl = options => {
   return options;
 };
 
+/**
+ * This function returns the path of icons in static/images folder
+ * @param {*} icon | String - Identifier for icons in assets
+ */
+export const getIconPath = icon => {
+  return icons[icon];
+};
+
+/**
+ * This function returns the path of icons in static/images folder
+ * @param {*} icon | String - Identifier for icons in assets
+ */
+export const getLocator = locator => {
+  return locators[locator];
+};
+
+export const getIconCard = icon => {
+  switch (icon) {
+    case 'disc-small':
+      return icons.dicoveryCard;
+    case 'mc-small':
+      return icons.masterCard;
+    case 'amex-small':
+      return icons.amexCard;
+    case 'visa-small':
+      return icons.visaSmall;
+    case 'gift-card-small':
+      return icons.giftCardSmall;
+    case 'place-card-small':
+      return icons.plccCard;
+    case 'venmo-blue-acceptance-mark':
+      return icons.venmoCard;
+    default:
+      return icons.visaSmall;
+  }
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
   isProduction,
   isDevelopment,
-  brand,
+  identifyBrand,
   getObjectValue,
+  getIconPath,
+  getLocator,
   createUrlSearchParams,
   buildUrl,
 };

@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Delete Address Modal should render correctly 1`] = `
+<errorBoundaryComponent
+  className="TCPModal__Content, undefined"
+  closeIconDataLocator="addressdeletemodalcrossicon"
+  fixedWidth={true}
+  heading="DELETE ADDRESS"
+  maxWidth="460px"
+  minHeight="500px"
+  onRequestClose={[Function]}
+  overlayClassName="TCPModal__Overlay"
+>
+  <div>
+    <Styled(BodyStyle)
+      bodySize="seven"
+      className="deleteAddressModal_modalTitle"
+      dataLocator="addressdeletemodalconfirmtext"
+      fontFamily="secondaryFontFamily"
+      fontWeight="bold"
+    >
+      Are you sure you want to delete this address?
+    </Styled(BodyStyle)>
+    <Address
+      address={
+        Object {
+          "addressLine": Array [
+            "addressline 1",
+            "addressline 2",
+          ],
+          "firstName": "test",
+          "lastName": "test",
+        }
+      }
+      className="deleteAddressModal_addressToDelete"
+      dataLocatorPrefix="address-delete-modal"
+      fontWeight="bold"
+      showCountry={true}
+      showPhone={true}
+    />
+    <div
+      className="deleteAddressModal_btnWrapper"
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        className="deleteAddressModal_deleteConfirm deleteAddressModal_btn"
+        dataLocator="addressdeletemodalyesdeletebtn"
+        fill="BLUE"
+        onClick={[Function]}
+      >
+        Yes Delete
+      </Styled(Button)>
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        className="deleteAddressModal_btn"
+        dataLocator="addressdeletemodalnodontdeletebtn"
+        fill="RED"
+        onClick={[Function]}
+      >
+        No, Dont Cancel
+      </Styled(Button)>
+    </div>
+  </div>
+</errorBoundaryComponent>
+`;

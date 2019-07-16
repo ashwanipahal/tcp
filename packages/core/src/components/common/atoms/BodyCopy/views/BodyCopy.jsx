@@ -4,8 +4,12 @@ import { PropTypes } from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../BodyCopy.style';
 
-const BodyCopy = ({ children, className, component: Component }) => {
-  return <Component className={className}>{children}</Component>;
+const BodyCopy = ({ children, className, component: Component, ...others }) => {
+  return (
+    <Component className={className} {...others}>
+      {children}
+    </Component>
+  );
 };
 
 BodyCopy.defaultProps = {
@@ -59,6 +63,7 @@ BodyCopy.propTypes = {
     PropTypes.Array,
     PropTypes.oneOf(['text.primary', 'text.secondary', 'text.hint', 'text.disabled', 'white']),
   ]),
+  dataLocator: PropTypes.string,
   /* eslint-enable */
 };
 

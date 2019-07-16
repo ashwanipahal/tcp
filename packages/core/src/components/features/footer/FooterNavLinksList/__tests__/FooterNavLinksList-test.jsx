@@ -25,6 +25,7 @@ describe('FooterNavLinksList component', () => {
           text: '',
         },
       ],
+      colNum: 1,
     };
     const component = shallow(<FooterNavLinksListVanilla {...props} />);
     expect(component).toMatchSnapshot();

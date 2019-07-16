@@ -5,9 +5,33 @@ exports[`Legal Links component renders correctly 1`] = `
   <div
     className="test-socialMediaLinks"
   >
-    <span
+    <Styled(BodyCopy)
       className="social-media-label"
+      color="text.secondary"
+      component="span"
       data-locator="global_connectwithustext"
+      fontFamily={
+        Array [
+          "secondary",
+          "primary",
+        ]
+      }
+      fontSize={
+        Array [
+          "fs12",
+          "fs10",
+          "fs12",
+        ]
+      }
+      fontWeight={
+        Array [
+          "regular",
+          "black",
+        ]
+      }
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="center"
     />
     <div
       className="social-media-pallete"
@@ -19,7 +43,7 @@ exports[`Legal Links component renders correctly 1`] = `
         <Styled(Image)
           alt="Facebook"
           className="social-media-icon"
-          data-locator="global_facebooklink"
+          data-locator="social_media_links_0"
         />
       </Styled(Anchor)>
       <Styled(Anchor)
@@ -29,7 +53,7 @@ exports[`Legal Links component renders correctly 1`] = `
         <Styled(Image)
           alt="Twitter"
           className="social-media-icon"
-          data-locator="global_twitterlink"
+          data-locator="social_media_links_1"
         />
       </Styled(Anchor)>
       <Styled(Anchor)
@@ -39,7 +63,7 @@ exports[`Legal Links component renders correctly 1`] = `
         <Styled(Image)
           alt="Instagram"
           className="social-media-icon"
-          data-locator="global_instagramlink"
+          data-locator="social_media_links_2"
         />
       </Styled(Anchor)>
       <Styled(Anchor)
@@ -49,7 +73,7 @@ exports[`Legal Links component renders correctly 1`] = `
         <Styled(Image)
           alt="Pinterest"
           className="social-media-icon"
-          data-locator="global_pinterestlink"
+          data-locator="social_media_links_3"
         />
       </Styled(Anchor)>
     </div>

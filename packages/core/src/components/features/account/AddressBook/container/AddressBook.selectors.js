@@ -6,6 +6,14 @@ export const getAddressListFetchingState = state => {
   return state.AddressBookReducer.get('isFetching');
 };
 
-export const showDefaultShippingUpdatedState = state => {
-  return state.AddressBookReducer.get('showDefaultShippingUpdatedMsg');
+export const showUpdatedNotificationState = state => {
+  return state.AddressBookReducer.get('showUpdatedNotification');
+};
+
+export const showUpdatedNotificationOnModalState = state => {
+  return state.AddressBookReducer.get('showUpdatedNotificationOnModal');
+};
+
+export const deleteModalOpenState = state => {
+  return state.AddressBookReducer.get('deleteModalMountedState');
 };

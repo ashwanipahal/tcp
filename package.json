@@ -14,6 +14,7 @@
     "lerna-clean": "npx lerna clean --y",
     "test": "jest --config ./config/jest.config.js",
     "test:web": "yarn test ",
+    "test:app": "jest --config ./config/jest.config.native.js",
     "test:staged": "yarn test --bail --findRelatedTests",
     "test:watch": "yarn test --watch",
     "test:coverage": "yarn test",
@@ -23,9 +24,13 @@
     "flow:install": "npx lerna exec flow-typed install",
     "flow:coverage": "flow-coverage-report -i 'packages/*/src/**/*.js' -x 'packages/**/*.test.js' -t html -t json -t text -o reports/flow/ --threshold 70",
     "pretty": "prettier --write **/*.{js,json,css}",
-    "eslint:web": "yarn workspace @tcp/web eslint src/ && yarn workspace @tcp/core eslint src/",
+    "eslint:core": "yarn workspace @tcp/core eslint src/ --ext .js,.jsx",
+    "eslint:web": "yarn workspace @tcp/web eslint src/ --ext .js,.jsx && yarn eslint:core",
+    "eslint:app": "yarn workspace mobileapp eslint src/ --ext .js,.jsx && yarn eslint:core",
     "stylelint:web": "yarn workspace @tcp/web stylelint src/**/*.js && yarn workspace @tcp/core stylelint src/**/*.js",
-    "lint:web": "yarn eslint:web && yarn stylelint:web"
+    "stylelint:app": "yarn workspace mobileapp stylelint src/**/*.js && yarn workspace @tcp/core stylelint src/**/*.js",
+    "lint:web": "yarn eslint:web && yarn stylelint:web",
+    "lint:app": "yarn eslint:app && yarn stylelint:app"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.4",
@@ -45,6 +50,7 @@
     "babel-loader": "^8.0.6",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.2",
+    "enzyme-to-json": "^3.3.4",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-config-prettier": "3.1.0",
@@ -71,15 +77,14 @@
     "lerna": "^3.13.4",
     "lint-staged": "^8.1.7",
     "prettier": "1.17.1",
+    "react-test-renderer": "^16.0.0",
     "stylelint": "^9.10.1",
     "stylelint-config-css-modules": "^1.3.0",
     "stylelint-config-prettier": "^5.0.0",
     "stylelint-config-recommended": "^2.2.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-formatter-pretty": "^1.0.3",
-    "stylelint-processor-styled-components": "^1.5.1",
-    "react-test-renderer": "^16.0.0",
-    "enzyme-to-json": "^3.3.4"
+    "stylelint-processor-styled-components": "^1.5.1"
   },
   "husky": {
     "hooks": {
@@ -92,7 +97,6 @@
       "git add"
     ],
     "*.{js,jsx}": [
-      "yarn flow focus-check",
       "eslint",
       "yarn test:staged",
       "stylelint"
@@ -106,10 +110,13 @@
     "cross-env": "^5.2.0",
     "dotenv": "^8.0.0",
     "immutable": "^4.0.0-rc.12",
+    "little-loader": "^0.2.0",
     "react-modal": "^3.8.1",
     "react-redux": "^6.0.1",
     "react-slick": "^0.24.0",
     "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-form": "^8.2.4",
     "redux-immutable": "^4.0.0",
     "redux-saga": "^1.0.2",
     "reselect": "^4.0.0",

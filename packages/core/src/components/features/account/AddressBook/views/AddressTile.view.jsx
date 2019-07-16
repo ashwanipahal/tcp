@@ -1,4 +1,5 @@
 import React from 'react';
+import Router from 'next/router'; //eslint-disable-line
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Anchor from '../../../../common/atoms/Anchor';
 import Address from '../../../../common/molecules/Address';
@@ -12,6 +13,8 @@ type Props = {
   labels: Object,
   className: string,
   onDefaultShippingAddressClick(address: {}): Object,
+  setSelectedAddress: Function,
+  setDeleteModalMountState: Function,
 };
 
 class AddressBookTile extends React.Component<Props> {
@@ -41,40 +44,82 @@ class AddressBookTile extends React.Component<Props> {
     onDefaultShippingAddressClick(setDefaultShippingAddressJSON);
   };
 
+  onDeleteAddressClick = e => {
+    const { address, setDeleteModalMountState, setSelectedAddress } = this.props;
+    e.preventDefault();
+    setSelectedAddress(address);
+    setDeleteModalMountState({ state: true });
+  };
+
+  onEditAddressClick = e => {
+    e.preventDefault();
+    const { address } = this.props;
+    Router.push(
+      `/account?id=edit-address&addressId=${address.addressId}`,
+      `/account/address-book/edit-address/${address.addressId}`
+    );
+  };
+
   render() {
     const { address, labels, className } = this.props;
     return (
       <div className={className}>
         <div className="addressTile__row--twoCol">
-          <Address address={address} />
+          <Address address={address} dataLocatorPrefix="addressbook" fontWeight="bold" />
           <div>
-            {address.primary === 'true' && <Badge showCheckmark>{labels.defaultShipping}</Badge>}
-            {address.xcont_isDefaultBilling === 'true' && (
-              <Badge showCheckmark>{labels.defaultBilling}</Badge>
+            {address.primary === 'true' && (
+              <Badge showCheckmark dataLocator="addressbook-defshippinglabel">
+                {labels.defaultShipping}
+              </Badge>
             )}
-            {address.xcont_isBillingAddress === 'true' && <Badge>{labels.billing}</Badge>}
+            {address.xcont_isDefaultBilling === 'true' && (
+              <Badge showCheckmark dataLocator="addressbook-defbillinglabel">
+                {labels.defaultBilling}
+              </Badge>
+            )}
+            {address.xcont_isDefaultBilling !== 'true' &&
+              address.xcont_isBillingAddress === 'true' && (
+                <Badge dataLocator="addressbook-billinglabel">{labels.billing}</Badge>
+              )}
             {address.primary !== 'true' && address.xcont_isShippingAddress === 'true' && (
-              <Badge>{labels.shipping}</Badge>
+              <Badge dataLocator="addressbook-shippinglabel">{labels.shipping}</Badge>
             )}
             {address.primary !== 'true' && (
-              <Anchor
-                fontSizeVariation="small"
-                underline
-                anchorVariation="primary"
-                handleLinkClick={this.handleDefaultLinkClick}
-                noLink
-                to=""
-              >
-                {labels.makeDefault}
-              </Anchor>
+              <div className="textRight">
+                <Anchor
+                  fontSizeVariation="small"
+                  underline
+                  anchorVariation="primary"
+                  handleLinkClick={this.handleDefaultLinkClick}
+                  noLink
+                  to=""
+                  data-locator="addressbook-makedefault"
+                >
+                  {labels.makeDefault}
+                </Anchor>
+              </div>
             )}
           </div>
         </div>
         <div className="addressTile__row">
-          <Anchor fontSizeVariation="medium" underline to="/#" anchorVariation="primary">
+          <Anchor
+            fontSizeVariation="large"
+            underline
+            to="/#"
+            anchorVariation="primary"
+            data-locator="addressbook-edit"
+            onClick={this.onEditAddressClick}
+          >
             {labels.edit}
           </Anchor>
-          <Anchor fontSizeVariation="medium" underline to="/#" anchorVariation="primary">
+          <Anchor
+            fontSizeVariation="large"
+            underline
+            to="/#"
+            anchorVariation="primary"
+            data-locator="addressbook-deletelink"
+            onClick={e => this.onDeleteAddressClick(e)}
+          >
             {labels.delete}
           </Anchor>
         </div>

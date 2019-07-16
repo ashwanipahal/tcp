@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Body component renders correctly with props 1`] = `
+<p
+  className="body-copy"
+  color="text.primary"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  Body Copy with props
+</p>
+`;
+
+exports[`Body component renders correctly without props 1`] = `
+<p
+  className={null}
+  color="text.primary"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  Body Copy
+</p>
+`;
