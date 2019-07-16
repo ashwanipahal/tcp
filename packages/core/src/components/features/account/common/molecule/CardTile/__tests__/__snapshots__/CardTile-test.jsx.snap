@@ -80,12 +80,13 @@ exports[`CardTile should render correctly with amex card 1`] = `
     >
       <Styled(Badge)
         dataLocator="payment-carddefaultpaymentbadge"
+        noMargin={true}
         showCheckmark={true}
       >
         DEFAULT PAYMENT
       </Styled(Badge)>
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-XS"
       >
         <img
           alt=""
@@ -196,7 +197,7 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
         Make Default
       </Styled(Anchor)>
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-MED"
       >
         <img
           alt=""
@@ -323,7 +324,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
         Make Default
       </Styled(Anchor)>
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-MED"
       >
         <img
           alt=""
@@ -421,7 +422,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
       className="cardTile__defaultSection"
     >
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-XL"
       >
         <img
           alt=""
@@ -700,7 +701,7 @@ exports[`CardTile should render correctly with master card 1`] = `
         Make Default
       </Styled(Anchor)>
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-MED"
       >
         <img
           alt=""
@@ -809,7 +810,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       className="cardTile__defaultSection"
     >
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-XL"
       >
         <img
           alt=""
@@ -1072,7 +1073,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         Make Default
       </Styled(Anchor)>
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-MED"
       >
         <img
           alt=""
@@ -1154,7 +1155,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
       className="cardTile__defaultSection"
     >
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-XL"
       >
         <img
           alt=""
@@ -1271,7 +1272,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
         Make Default
       </Styled(Anchor)>
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-MED"
       >
         <img
           alt=""
@@ -1369,7 +1370,7 @@ exports[`CardTile should show loading 1`] = `
       className="cardTile__defaultSection"
     >
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-XL"
       >
         <img
           alt=""
@@ -1647,7 +1648,7 @@ exports[`CardTile should show remining balance 1`] = `
       className="cardTile__defaultSection"
     >
       <div
-        className="cardTile__img_wrapper"
+        className="cardTile__img_wrapper elem-mt-XL"
       >
         <img
           alt=""

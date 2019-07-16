@@ -40,7 +40,7 @@ class CardTile extends React.Component<Props> {
   getMakeDefaultBadge = () => {
     const { card, labels } = this.props;
     return card.defaultInd ? (
-      <Badge showCheckmark dataLocator="payment-carddefaultpaymentbadge">
+      <Badge showCheckmark dataLocator="payment-carddefaultpaymentbadge" noMargin>
         {labels.ACC_LBL_DEFAULT_PAYMENT}
       </Badge>
     ) : (
@@ -302,6 +302,20 @@ class CardTile extends React.Component<Props> {
     );
   };
 
+  getCardImage = ({ card, cardIcon }) => {
+    let cardTopMargin = 'elem-mt-XL';
+    if (card.defaultInd) {
+      cardTopMargin = 'elem-mt-XS';
+    } else if (card.ccType !== 'GiftCard' && card.ccType !== 'VENMO') {
+      cardTopMargin = 'elem-mt-MED';
+    }
+    return (
+      <div className={`cardTile__img_wrapper ${cardTopMargin}`}>
+        <img className="cardTile__img" alt="" src={cardIcon} />
+      </div>
+    );
+  };
+
   render() {
     const { card, className, showNotificationCaptcha, labels } = this.props;
     const { HideCaptchaBtn } = this.state;
@@ -336,9 +350,7 @@ class CardTile extends React.Component<Props> {
           </div>
           <div className="cardTile__defaultSection">
             {isCreditCard ? this.getMakeDefaultBadge() : null}
-            <div className="cardTile__img_wrapper">
-              <img className="cardTile__img" alt="" src={cardIcon} />
-            </div>
+            {this.getCardImage({ card, cardIcon })}
           </div>
         </div>
         {card.ccType === 'GiftCard' && (

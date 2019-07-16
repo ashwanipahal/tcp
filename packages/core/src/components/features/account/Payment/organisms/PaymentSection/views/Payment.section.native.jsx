@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, ScrollView } from 'react-native';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import { StyledHeading, UnderlineStyle } from '../PaymentSection.style.native';
+import { ParentContainer, StyledHeading, UnderlineStyle } from '../PaymentSection.style.native';
 import OffersSection from '../../../molecules/OffersSection';
 import MoneyCards from '../../../molecules/MoneyCards';
 import GiftCards from '../../../molecules/GiftCards';
@@ -19,8 +19,8 @@ type Props = {
 const PaymentView = (props: Props) => {
   const { labels, creditCardList, giftCardList, cardList, setDefaultPaymentMethod } = props;
   return (
-    <ScrollView>
-      <View {...props}>
+    <View {...props}>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <StyledHeading>
           <BodyCopy fontSize="fs16" fontWeight="extrabold">
             {labels.ACC_LBL_PAYMENT_HEADING}
@@ -36,10 +36,10 @@ const PaymentView = (props: Props) => {
           />
         )}
         {giftCardList && <GiftCards labels={labels} giftCardList={giftCardList} />}
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 
-export default withStyles(PaymentView);
+export default withStyles(PaymentView, ParentContainer);
 export { PaymentView as PaymentViewVanilla };
