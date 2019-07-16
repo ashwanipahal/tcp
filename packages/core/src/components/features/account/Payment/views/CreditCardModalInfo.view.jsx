@@ -48,12 +48,7 @@ class CreditCardModalInfo extends React.Component<Props> {
             onClick={this.pause}
           />
           <BodyCopy className="deleteCreditCardModal__cardInfo" bodySize="three">
-            <BodyCopy
-              fontWeight="bold"
-              fontFamily="secondaryFontFamily"
-              className="is-visible"
-              tag="span"
-            >
+            <BodyCopy fontWeight="bold" fontFamily="secondaryFontFamily" tag="span">
               {data.cardText.cardEnd}
               {getAccNumbr}
             </BodyCopy>

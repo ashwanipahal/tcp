@@ -9,27 +9,34 @@ const deleteCreditCardModalStyle = css`
   }
 
   .deleteCreditCardModal__cardInfo {
-    padding-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
     float: left;
     width: 60%;
-    margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.SM} @media
-      ${props => props.theme.mediaQuery.medium} {
+    padding-left: 0px;
+    padding-top: 10px;
+    margin-left: 12px;
+    @media ${props => props.theme.mediaQuery.medium} {
       float: none;
       text-align: left;
-      margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.MED}
-        ${props => props.theme.spacing.LAYOUT_SPACING.XL} span {
+      margin-bottom: 15px;
+      margin-left: 35%;
+      padding-top: 0px;
+      span {
         display: block;
       }
     }
     @media ${props => props.theme.mediaQuery.large} {
       width: 100%;
-      margin: 0 0 ${props => props.theme.spacing.ELEM_SPACING.SM}
-        ${props => props.theme.spacing.LAYOUT_SPACING.XL} span {
+      margin-bottom: 12px;
+      margin-left: 20%;
+      padding-top: 0px;
+      span {
         display: inline-block;
+        margin-left: 30px;
       }
     }
   }
   .deleteCreditCardModal__expiry {
+    float: none;
     @media ${props => props.theme.mediaQuery.large} {
       float: right;
     }
