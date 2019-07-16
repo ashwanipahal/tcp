@@ -66,7 +66,7 @@ export const showLoader = () => ({
   type: PAYMENT_CONSTANTS.SHOW_LOADER,
 });
 
-export const addGiftCardSuccess = payload => {
+export const paymentAddGiftCardSuccess = payload => {
   return {
     type: PAYMENT_CONSTANTS.ADD_GIFT_CARD_SUCCESS,
     payload,

@@ -21,3 +21,9 @@ export const addGiftCardSuccess = payload => {
     payload,
   };
 };
+
+export const resetShowNotification = () => {
+  return {
+    type: ADD_GIFT_CARD_CONSTANTS.RESET_SHOW_NOTIFICATION,
+  };
+};

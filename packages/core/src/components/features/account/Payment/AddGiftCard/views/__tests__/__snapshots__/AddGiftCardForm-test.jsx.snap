@@ -254,6 +254,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
     >
       <Recaptcha
         className="giftcards-recaptcha"
+        dataLocator="gift-card-addcardrecaptchacheckbox"
         expiredCallback={[Function]}
         sitekey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
         size="normal"
@@ -398,7 +399,9 @@ exports[`Add gift card form component should render component correctly 1`] = `
       <div
         className="add-gift-card__row__message__container"
       >
-        <Styled(RichText) />
+        <Styled(RichText)
+          dataLocator="git-card-messagetext"
+        />
       </div>
     </Styled(Col)>
     <Styled(Col)

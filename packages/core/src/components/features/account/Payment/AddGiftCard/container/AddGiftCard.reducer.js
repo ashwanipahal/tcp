@@ -6,6 +6,7 @@ const initialState = fromJS({
   addGiftCardResponse: {},
   error: {},
   showUpdatedNotification: null,
+  onAddGiftCardPage: false,
 });
 
 type Action = {
@@ -15,10 +16,17 @@ type Action = {
 
 const AddGiftCardReducer = (state = initialState, action: Action) => {
   switch (action.type) {
+    case ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_REQUEST:
+      return state.set('onAddGiftCardPage', true);
     case ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_SUCCESS:
-      return state.set('showUpdatedNotification', 'success');
+      return state.set('showUpdatedNotification', 'success').set('onAddGiftCardPage', false);
     case ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_FAILED:
-      return state.set('error', action.payload).set('showUpdatedNotification', 'error');
+      return state
+        .set('error', action.payload)
+        .set('showUpdatedNotification', 'error')
+        .set('onAddGiftCardPage', false);
+    case ADD_GIFT_CARD_CONSTANTS.RESET_SHOW_NOTIFICATION:
+      return state.set('showUpdatedNotification', null);
     default:
       if (state instanceof Object) {
         return fromJS(state);

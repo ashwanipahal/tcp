@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import AddGiftCardComponent from '../views/AddGiftCard.view';
 import { addGiftCardRequest } from './AddGiftCard.actions';
-import getAddGiftCardResponse from './AddGiftCard.selector';
+import { getAddGiftCardResponse } from './AddGiftCard.selector';
 import labels from './AddGiftCard.labels';
 import Router from 'next/router'; //eslint-disable-line
 

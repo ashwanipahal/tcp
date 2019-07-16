@@ -1,8 +1,18 @@
-import { call, takeLatest, put } from 'redux-saga/effects';
+import { call, takeLatest, put, select } from 'redux-saga/effects';
 import { validateReduxCache } from '../../../../../utils/cache.util';
 import PAYMENT_CONSTANTS from '../Payment.constants';
 import fetchData from '../../../../../service/API';
-import { setCardList, getCardListErr, showLoader } from './Payment.actions';
+import {
+  setCardList,
+  getCardListErr,
+  showLoader,
+  paymentAddGiftCardSuccess,
+} from './Payment.actions';
+import {
+  addGiftCardSuccess,
+  resetShowNotification,
+} from '../AddGiftCard/container/AddGiftCard.actions';
+import { getOnAddGiftCardPageState } from '../AddGiftCard/container/AddGiftCard.selector';
 import endpoints from '../../../../../service/endpoint';
 
 export function* getCardList() {
@@ -22,8 +32,15 @@ export function* getCardList() {
       },
       method
     );
+    const isFromAddGiftCard = yield select(getOnAddGiftCardPageState);
     if (res.body) {
-      return yield put(setCardList(res.body.creditCardListJson || []));
+      yield put(setCardList(res.body.creditCardListJson || []));
+      if (isFromAddGiftCard) {
+        yield put(paymentAddGiftCardSuccess());
+        yield put(addGiftCardSuccess());
+        yield put(resetShowNotification());
+      }
+      return yield;
     }
     return yield put(getCardListErr(res.error));
   } catch (err) {

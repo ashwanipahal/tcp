@@ -114,6 +114,7 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
               tabindex="0"
               verifyCallback={this.handleRecaptchaVerify}
               expiredCallback={this.handleRecaptchaExpired}
+              dataLocator="gift-card-addcardrecaptchacheckbox"
             />
           </Col>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 4, medium: 2, large: 2 }}>
@@ -124,7 +125,10 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
         <Row fullBleed className="add-gift-card__row">
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 8, large: 5 }}>
             <div className="add-gift-card__row__message__container">
-              <RichText richTextHtml={labels.ACC_LBL_GIFT_CARD_MESSAGE} />
+              <RichText
+                richTextHtml={labels.ACC_LBL_GIFT_CARD_MESSAGE}
+                dataLocator="git-card-messagetext"
+              />
             </div>
           </Col>
 
