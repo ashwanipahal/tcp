@@ -78,5 +78,20 @@ const endpoints = {
     method: 'post',
     relURI: '/api/v2/account/modifyCreditCardDetails',
   },
+  emailVerification: {
+    method: 'get',
+    baseURI: '',
+    relURI: 'https://bpi.briteverify.com/emails.json?apikey=e50ab0a9-ac0b-436b-9932-2a74b9486436',
+  },
+  addEmailSignup: {
+    method: 'post',
+    baseURI: 'https://test1.childrensplace.com',
+    relURI: '/api/v2/store/addSignUpEmail',
+  },
+  addSmsSignup: {
+    method: 'post',
+    baseURI: 'https://test2.childrensplace.com',
+    relURI: '/api/v2/vibes/smsSignUp',
+  },
 };
 export default endpoints;

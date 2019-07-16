@@ -22,6 +22,8 @@ const labels = {
   ACC_LBL_MODAL_GC_EXPIRE: ' Expire on ',
   ACC_LBL_OFFERS_MESSAGE:
     '<b>SAVE 30% TODAY WHEN YOU OPEN AND USE A <span class="offers__msg"> MY PLACE REWARDS CREDIT CARD! </span></b>',
+  ACC_LBL_OFFERS_MESSAGE_MOBILE:
+    '<b><font size="7">SAVE 30% TODAY WHEN YOU OPEN AND USE A <span class="offers__msg"> MY PLACE REWARDS CREDIT CARD! </span></font></b>',
   ACC_LBL_OFFERS_DETAILS: '<a class="offers__link" href="#">DETAILS</a>',
   ACC_LBL_DEFAULT_CARD_NAME: 'Credit Card',
   ACC_LBL_CARD_NUM: 'Card ending in ',

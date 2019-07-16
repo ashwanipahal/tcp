@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components/native';
 
 const ParentContainerStyle = css`
-  padding: 20px 0;
+  padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0;
 `;
 
 const WrapperStyle = styled.View`
@@ -22,12 +22,11 @@ const ImageStyle = styled.Image`
 const RichTextStyle = styled.View`
   width: 270px;
   height: 55px;
-  top: 15px;
 `;
 
 const UnderlineStyle = styled.View`
   height: 3px;
-  background-color: black;
+  background-color: ${props => props.theme.colorPalette.black};
 `;
 
 export {
