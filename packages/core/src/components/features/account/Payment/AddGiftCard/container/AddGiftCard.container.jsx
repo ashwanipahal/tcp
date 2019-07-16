@@ -13,7 +13,7 @@ type Props = {
   addGiftCardResponse: String,
 };
 
-const AddGiftCardContainer = ({ onAddGiftCardClick, addGiftCardResponse }: Props) => {
+export const AddGiftCardContainer = ({ onAddGiftCardClick, addGiftCardResponse }: Props) => {
   if (addGiftCardResponse === 'success') {
     Router.push('/account?id=payment', '/account/payment');
     return null;
@@ -27,7 +27,7 @@ const AddGiftCardContainer = ({ onAddGiftCardClick, addGiftCardResponse }: Props
   );
 };
 
-const mapDispatchToProps = (dispatch: ({}) => void) => {
+export const mapDispatchToProps = (dispatch: ({}) => void) => {
   return {
     onAddGiftCardClick: (payload: {}) => {
       dispatch(addGiftCardRequest(payload));
