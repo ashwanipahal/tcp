@@ -20,7 +20,7 @@ exports[`GiftCardModalInfo Component should render correctly 1`] = `
     />
     <Styled(BodyStyle)
       bodySize="three"
-      className="deleteCardModal_cardInfo"
+      className="deleteCardModal_cardInfo layout-pb-LRG"
     >
       <Styled(BodyStyle)
         className="deleteCardModal_card"
@@ -29,14 +29,6 @@ exports[`GiftCardModalInfo Component should render correctly 1`] = `
         tag="span"
       >
         111
-      </Styled(BodyStyle)>
-      <Styled(BodyStyle)
-        className="deleteCardModal_expiry"
-        fontFamily="secondaryFontFamily"
-        fontWeight="normal"
-        tag="span"
-      >
-        fgh
       </Styled(BodyStyle)>
     </Styled(BodyStyle)>
   </Styled(BodyStyle)>
