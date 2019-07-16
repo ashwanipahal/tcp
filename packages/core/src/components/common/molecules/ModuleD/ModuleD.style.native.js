@@ -4,8 +4,7 @@ export const ButtonWrapper = styled.View`
   align-items: center;
   display: flex;
 `;
-
-export const HeadingWrapper = styled.View`
+export const HeadingWrapper = styled.TouchableOpacity`
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
 `;

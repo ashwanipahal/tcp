@@ -97,11 +97,11 @@ class ModuleH extends React.PureComponent<Props, State> {
       const { link, styled } = item;
       return (
         <BodyCopy
-          fontFamily={['secondary']}
-          fontSize={['fs20', 'fs42', 'fs48']}
-          letterSpacing={['ls167', 'ls257']}
-          textAlign={['left', 'center']}
-          color={['white']}
+          fontFamily="secondary"
+          fontSize="fs20"
+          letterSpacing="ls167"
+          textAlign="left"
+          color="white"
           fontWeight={currentIndex === index ? 'extrabold' : null}
           text={styled.text}
           onPress={() => {
@@ -132,11 +132,11 @@ class ModuleH extends React.PureComponent<Props, State> {
                 {link ? (
                   <TouchableOpacity accessibilityRole="link" onPress={() => UrlHandler(link.url)}>
                     <Heading
-                      fontFamily={['primary']}
-                      fontSize={['fs36', 'fs42', 'fs48']}
-                      letterSpacing={['ls167', 'ls257']}
-                      textAlign={['left', 'center']}
-                      color={['white']}
+                      fontFamily="primary"
+                      fontSize="fs36"
+                      letterSpacing="ls167"
+                      textAlign="left"
+                      color="white"
                       fontWeight="black"
                       text={textLine.text}
                       lineOrder={index}
@@ -146,11 +146,11 @@ class ModuleH extends React.PureComponent<Props, State> {
                   </TouchableOpacity>
                 ) : (
                   <Heading
-                    fontFamily={['primary']}
-                    fontSize={['fs36', 'fs42', 'fs48']}
-                    letterSpacing={['ls167', 'ls257']}
-                    textAlign={['left', 'center']}
-                    color={['white']}
+                    fontFamily="primary"
+                    fontSize="fs36"
+                    letterSpacing="ls167"
+                    textAlign="left"
+                    color="white"
                     fontWeight="black"
                     text={textLine.text}
                     lineOrder={index}

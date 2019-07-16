@@ -20,7 +20,7 @@ const keyExtractor = (_, index) => index.toString();
  * @function getUrlWithCrop : Return updated image URL.
  * @desc Returns updated image URL with crop details.
  *
- * @param {String} url : Image URL received from CMS.a
+ * @param {String} url : Image URL received from CMS.
  * @return {String} function returns updated image URL as a string.
  */
 const getUrlWithCrop = url => {
@@ -40,6 +40,7 @@ const renderItem = item => {
     item: { image, link },
   } = item;
 
+  const anchorEnable = true;
   return (
     <Tile tileIndex={item.index}>
       <TouchableOpacity accessibilityRole="button" onPress={() => UrlHandler(link.url)}>
@@ -54,12 +55,12 @@ const renderItem = item => {
 
       <Anchor
         fontSizeVariation="large"
+        text={link.title}
+        visible={anchorEnable}
         onPress={() => {
           UrlHandler(link.url);
         }}
-      >
-        {link.title}
-      </Anchor>
+      />
     </Tile>
   );
 };
@@ -91,19 +92,17 @@ const ModuleD = (props: Props) => {
   return (
     <Wrapper>
       {headingText && (
-        <TouchableOpacity accessibilityRole="button" onPress={() => UrlHandler(url)}>
-          <HeadingWrapper>
-            <Heading
-              fontFamily={['primary']}
-              fontSize={['fs36', 'fs42', 'fs48']}
-              letterSpacing={['ls167', 'ls257']}
-              textAlign={['center', 'center']}
-              color={['text.primary']}
-              fontWeight="extrabold"
-              text={headingText}
-            />
-          </HeadingWrapper>
-        </TouchableOpacity>
+        <HeadingWrapper accessibilityRole="button" onPress={() => UrlHandler(url)}>
+          <Heading
+            fontFamily="primary"
+            fontSize="fs36"
+            letterSpacing="ls167"
+            textAlign="center"
+            color="text.primary"
+            fontWeight="extrabold"
+            text={headingText}
+          />
+        </HeadingWrapper>
       )}
       {smallCompImage && (
         <FlatList

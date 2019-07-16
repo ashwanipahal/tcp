@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const AnchorView = styled.View`
+export const AnchorView = styled.TouchableOpacity`
   align-items: center;
   display: flex;
   flex-direction: row;

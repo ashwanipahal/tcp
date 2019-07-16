@@ -31,11 +31,11 @@ type Props = {
 
 const CustomButton = (props: Props) => {
   const { text, url, id, buttonVariation, fullWidth, customStyle, ...otherProps } = props;
-  const myText = text || '';
+  const textValue = text || '';
   return (
     <TouchableOpacity accessibilityRole="button">
       <Text fullWidth={fullWidth} buttonVariation={buttonVariation} id={id} {...otherProps}>
-        {myText}
+        {textValue}
       </Text>
     </TouchableOpacity>
   );
