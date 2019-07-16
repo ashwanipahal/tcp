@@ -33,4 +33,5 @@ const PromoBanner = (props: Props) => {
   );
 };
 
+export { PromoBanner as PromoBannerVanilla };
 export default withStyles(PromoBanner, PromoBannerStyle);

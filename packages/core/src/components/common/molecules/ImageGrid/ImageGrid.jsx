@@ -6,9 +6,9 @@ import style from './ImageGrid.style';
 
 type Props = {
   mediaList: Object[],
-  colD?: String,
-  colT?: String,
-  colM?: String,
+  colD?: Number,
+  colT?: Number,
+  colM?: Number,
   className: String,
   dataLocator?: String,
 };
@@ -94,4 +94,5 @@ ImageGrid.defaultProps = {
   dataLocator: '',
 };
 
+export { ImageGrid as ImageGridVanilla };
 export default withStyles(ImageGrid, style);
