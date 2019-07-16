@@ -4,6 +4,7 @@ exports[`Heading component renders correctly with props with different variant 1
 <h4
   className="heading"
   color="text.primary"
+  textAlign="left"
 >
   Heading with different variant check
 </h4>
@@ -13,6 +14,7 @@ exports[`Heading component renders correctly without props 1`] = `
 <h1
   className={null}
   color="text.primary"
+  textAlign="left"
 >
   Heading
 </h1>

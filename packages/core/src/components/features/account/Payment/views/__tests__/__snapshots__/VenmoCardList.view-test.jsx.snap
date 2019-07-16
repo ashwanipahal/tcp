@@ -9,6 +9,7 @@ exports[`VenmoCardList Component should render correctly 1`] = `
     color="text.primary"
     component={null}
     dataLocator="payment-venmocardtile"
+    textAlign="left"
     variant="h6"
   />
   <Styled(Row)
@@ -26,6 +27,7 @@ exports[`VenmoCardList Component should render correctly if list is present 1`] 
     color="text.primary"
     component={null}
     dataLocator="payment-venmocardtile"
+    textAlign="left"
     variant="h6"
   />
   <Styled(Row)
