@@ -1,5 +1,5 @@
 import fetchData from '../../../../service/API';
-import { executeExternalAPICall } from '../../../handler';
+import { executeExternalAPICall, getAPIConfig } from '../../../handler';
 import endpoints from '../../../endpoints';
 
 /**
@@ -17,10 +17,12 @@ const Abstractor = {
       .catch(Abstractor.handleValidationError);
   },
   verifyEmail: emailAddress => {
+    const apiConfig = getAPIConfig();
     const payload = {
       webService: endpoints.emailVerification,
       body: {
         address: emailAddress,
+        apikey: apiConfig.BV_API_KEY,
       },
     };
     return executeExternalAPICall(payload)

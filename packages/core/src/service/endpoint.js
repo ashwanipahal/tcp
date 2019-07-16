@@ -81,7 +81,7 @@ const endpoints = {
   emailVerification: {
     method: 'get',
     baseURI: '',
-    relURI: 'https://bpi.briteverify.com/emails.json?apikey=e50ab0a9-ac0b-436b-9932-2a74b9486436',
+    relURI: 'https://bpi.briteverify.com/emails.json',
   },
   addEmailSignup: {
     method: 'post',
