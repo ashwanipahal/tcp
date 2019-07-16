@@ -21,7 +21,7 @@ const DeleteAddressModalStyle = css`
     @media ${props => props.theme.mediaQuery.medium} {
       margin-left: 0;
       margin-right: 0;
-      padding-left: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+      padding-left: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
     }
   }
   .deleteAddressModal_deleteConfirm {
