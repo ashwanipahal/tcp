@@ -38,38 +38,50 @@ class SignupWrapper extends React.PureComponent {
         showAsyncError: true,
         validInput: false,
       });
-    } else {
-      this.setState({
-        showAsyncError: false,
-        validInput: true,
-      });
     }
   };
 
   onFormSubmit = e => {
-    e.preventDefault();
-    const { signup } = this.state;
-    const { submitSmsSubscription } = this.props;
-
-    const isPhoneNumberValid = this.validatePhoneNumber(signup);
-    if (!isPhoneNumberValid) {
-      this.setState({
-        showAsyncError: true,
-        validInput: false,
-      });
-    } else {
+    try {
+      e.preventDefault();
+      const { signup } = this.state;
+      const { submitSmsSubscription } = this.props;
       submitSmsSubscription(signup);
+    } catch (error) {
+      console.log(error);
     }
   };
 
   onSignUpInputChange = e => {
     const { clearSmsSignupForm, isSubscriptionValid } = this.props;
+    const { anyTouched } = this.props;
     const fieldValue = e.target.value;
     this.setState({
       [e.target.name]: fieldValue,
     });
     if (isSubscriptionValid) {
       clearSmsSignupForm();
+    }
+    const isPhoneNumberValid = this.validatePhoneNumber(fieldValue);
+    // Based on the input, set the validInput state but only
+    // if the field is touched (blurred atleast once) show error state
+    if (!isPhoneNumberValid) {
+      this.setState({
+        validInput: false,
+      });
+    } else {
+      this.setState({
+        validInput: true,
+      });
+    }
+    if (!isPhoneNumberValid && anyTouched) {
+      this.setState({
+        showAsyncError: true,
+      });
+    } else {
+      this.setState({
+        showAsyncError: false,
+      });
     }
   };
 
@@ -215,6 +227,7 @@ SignupWrapper.propTypes = {
   isSubscriptionValid: PropTypes.string,
   submitSmsSubscription: PropTypes.func,
   pristine: PropTypes.bool.isRequired,
+  anyTouched: PropTypes.bool.isRequired,
 };
 
 SignupWrapper.defaultProps = {
