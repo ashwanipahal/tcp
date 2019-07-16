@@ -214,7 +214,7 @@ const CarouselStyle = styled.div`
     width: 30px;
     height: 30px;
   }
-  .tcp_carousel_wrapper .slick-dots li {
+  &.tcp_carousel_wrapper .slick-dots li {
     position: relative;
     display: inline-block;
     background: url('/static/images/carousal-dot.svg') no-repeat;

@@ -1,5 +1,3 @@
-/* eslint-disable complexity */
-/* eslint-disable sonarjs/cognitive-complexity */
 import { css } from 'styled-components';
 
 /**
@@ -88,6 +86,7 @@ const colLength = ({ colSize, offsetLeft, offsetRight }, viewport) => {
 const StyledCol = css`
   ${props =>
     props.theme.gridDimensions.gridBreakPointsKeys.map(
+      // eslint-disable-next-line complexity
       key => `
       @media ${props.theme.mediaQuery[`${key}Only`]} {
         ${calculateNthChild(key, colLength(props, key), props.theme.gridDimensions) &&
@@ -99,8 +98,6 @@ const StyledCol = css`
             margin-right: 0;
           }`}
       }
-      ${key !== 'small' ? `@media ${props.theme.mediaQuery[`${key}Only`]} {` : ''}
-        ${props.hideCol && props.hideCol[key] ? 'display: none' : ''};
       ${key !== 'small' ? `}` : ''}
       ${key !== 'small' ? `@media ${props.theme.mediaQuery[key]} {` : ''}
           ${!props.isNotInlineBlock ? 'display: inline-block' : ''};
