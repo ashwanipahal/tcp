@@ -172,7 +172,7 @@ class SignupWrapper extends React.PureComponent {
                           onChange={this.onSignUpInputChange}
                           onBlur={this.onSignUpInputBlur}
                           className={validationClass}
-                          showSuccessCheck={validationClass === 'async-success'}
+                          showSuccessCheck={this.checkEmailValid()}
                         />
                         {isEmailValid && !this.checkEmailValid() && signup.length > 0 && (
                           <BodyCopy fontSize="fs12" fontFamily="secondary" color="secondary.dark">

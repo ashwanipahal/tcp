@@ -42,46 +42,29 @@ class SignupWrapper extends React.PureComponent {
   };
 
   onFormSubmit = e => {
-    try {
-      e.preventDefault();
-      const { signup } = this.state;
-      const { submitSmsSubscription } = this.props;
+    e.preventDefault();
+    const { signup } = this.state;
+    const { submitSmsSubscription } = this.props;
+
+    const isPhoneNumberValid = this.validatePhoneNumber(signup);
+    if (!isPhoneNumberValid) {
+      this.setState({
+        showAsyncError: true,
+        validInput: false,
+      });
+    } else {
       submitSmsSubscription(signup);
-    } catch (error) {
-      console.log(error);
     }
   };
 
   onSignUpInputChange = e => {
     const { clearSmsSignupForm, isSubscriptionValid } = this.props;
-    const { anyTouched } = this.props;
     const fieldValue = e.target.value;
     this.setState({
       [e.target.name]: fieldValue,
     });
     if (isSubscriptionValid) {
       clearSmsSignupForm();
-    }
-    const isPhoneNumberValid = this.validatePhoneNumber(fieldValue);
-    // Based on the input, set the validInput state but only
-    // if the field is touched (blurred atleast once) show error state
-    if (!isPhoneNumberValid) {
-      this.setState({
-        validInput: false,
-      });
-    } else {
-      this.setState({
-        validInput: true,
-      });
-    }
-    if (!isPhoneNumberValid && anyTouched) {
-      this.setState({
-        showAsyncError: true,
-      });
-    } else {
-      this.setState({
-        showAsyncError: false,
-      });
     }
   };
 
@@ -94,7 +77,7 @@ class SignupWrapper extends React.PureComponent {
   };
 
   render() {
-    const { isOpen, showAsyncError, validInput } = this.state;
+    const { isOpen, showAsyncError, validInput, signup = '' } = this.state;
     const { buttonConfig, className, formViewConfig, isSubscriptionValid, pristine } = this.props;
 
     if (isSubscriptionValid === 'invalid') {
@@ -190,7 +173,7 @@ class SignupWrapper extends React.PureComponent {
                       <Row className="button-wrapper-form" fullBleed>
                         <Col colSize={{ small: 4, medium: 4, large: 6 }}>
                           <Button
-                            disabled={notValidPhone}
+                            disabled={signup.length === 0}
                             fullWidth
                             buttonVariation="fixed-width"
                             fill="BLUE"
@@ -226,7 +209,6 @@ SignupWrapper.propTypes = {
   isSubscriptionValid: PropTypes.bool,
   submitSmsSubscription: PropTypes.func,
   pristine: PropTypes.bool.isRequired,
-  anyTouched: PropTypes.bool.isRequired,
 };
 
 SignupWrapper.defaultProps = {
