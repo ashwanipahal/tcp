@@ -309,6 +309,15 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
   ",
                         [Function],
                         ";
+
+  .visible-hidden {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 ",
                         ";
 ",

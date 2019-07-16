@@ -26,6 +26,7 @@ type Props = {
   inputRef: any,
   dataLocator?: string,
   showSuccessCheck?: boolean,
+  isRequired?: boolean,
 };
 
 const TextBox = ({
@@ -40,6 +41,7 @@ const TextBox = ({
   meta: { touched, error },
   dataLocator,
   showSuccessCheck,
+  isRequired,
 }: Props): Node => {
   const elemValue = input.value;
   return (
@@ -59,6 +61,7 @@ const TextBox = ({
       />
       <BodyCopy className="TextBox__label" fontFamily="secondary" fontSize="fs12">
         {placeholder}
+        {isRequired ? <i className="visible-hidden">required</i> : null}
       </BodyCopy>
       {touched && error && (
         <BodyCopy
@@ -85,6 +88,7 @@ TextBox.defaultProps = {
   dataLocator: '',
   meta: {},
   showSuccessCheck: false,
+  isRequired: false,
 };
 
 export default withStyles(TextBox, StyledTextBox);

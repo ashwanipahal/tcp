@@ -176,7 +176,12 @@ class SignupWrapper extends React.PureComponent {
                           showSuccessCheck={this.checkEmailValid()}
                         />
                         {isEmailValid && !this.checkEmailValid() && signup.length > 0 && (
-                          <BodyCopy fontSize="fs12" fontFamily="secondary" color="secondary.dark">
+                          <BodyCopy
+                            aria-live="assertive"
+                            fontSize="fs12"
+                            fontFamily="secondary"
+                            color="secondary.dark"
+                          >
                             {formViewConfig.validationErrorLabel}
                           </BodyCopy>
                         )}

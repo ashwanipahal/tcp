@@ -559,6 +559,15 @@ exports[`CardTile should render correctly with gift card 1`] = `
   ",
                   [Function],
                   ";
+
+  .visible-hidden {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 ",
                   ";
 ",
@@ -947,6 +956,15 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
   ",
                   [Function],
                   ";
+
+  .visible-hidden {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 ",
                   ";
 ",
@@ -1502,6 +1520,15 @@ exports[`CardTile should show loading 1`] = `
   ",
                   [Function],
                   ";
+
+  .visible-hidden {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 ",
                   ";
 ",
@@ -1780,6 +1807,15 @@ exports[`CardTile should show remining balance 1`] = `
   ",
                   [Function],
                   ";
+
+  .visible-hidden {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 ",
                   ";
 ",
