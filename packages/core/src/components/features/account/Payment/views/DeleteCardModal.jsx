@@ -4,6 +4,7 @@ import styles from '../styles/DeleteCardModal.style';
 import Modal from '../../../../common/molecules/Modal';
 import Notification from '../../../../common/molecules/Notification';
 import GiftCardModalInfo from './GiftCardModalInfo.view';
+import CreditCardModalInfo from './CreditCardModalInfo.view';
 import VenmoCardModalInfo from './VenmoCardModalInfo.view';
 import Button from '../../../../common/atoms/Button';
 // @flow
@@ -62,8 +63,20 @@ class DeleteCardModal extends React.Component<Props> {
     const ccType = data && data.description && data.description.ccType;
     const getAccNumbr = `${data.description.accountNo}`.slice(-4);
     const TotalExp = `${data.description.expMonth}/${data.description.expYear} `;
+    const isCreditCard = ccType !== 'GiftCard' && ccType !== 'VENMO';
+    const address = data.description.addressDetails ? data.description.addressDetails : null;
     return (
       <div className={className}>
+        {isCreditCard && (
+          <CreditCardModalInfo
+            getAccNumbr={getAccNumbr}
+            TotalExp={TotalExp}
+            data={data}
+            address={address}
+            {...this.props}
+            isCreditCard={isCreditCard}
+          />
+        )}
         {ccType === 'GiftCard' && (
           <GiftCardModalInfo
             getAccNumbr={getAccNumbr}
@@ -80,7 +93,7 @@ class DeleteCardModal extends React.Component<Props> {
             {...this.props}
           />
         )}
-        <div className="deleteCardModal_btnWrapper">
+        <div className="deleteCardModal__btnWrapper">
           <Button
             buttonVariation="variable-width"
             fill="BLUE"

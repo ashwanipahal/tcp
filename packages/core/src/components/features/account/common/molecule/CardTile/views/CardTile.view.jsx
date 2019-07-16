@@ -321,7 +321,7 @@ class CardTile extends React.Component<Props> {
     return (
       <form name={className} onSubmit={this.handleSubmit} autoComplete="off" noValidate>
         <div className="giftcardTile__row">
-          {!HideCaptchaBtn && !isVenmo && (
+          {!HideCaptchaBtn && !isCreditCard && (
             <Recaptcha
               ref={this.attachReCaptchaRef}
               onloadCallback={this.handleRecaptchaOnload}

@@ -25,7 +25,6 @@ type Props = {
   creditCardList: Array<object>,
   giftCardList: Array<object>,
   cardList: Array<object>,
-  setSelectedGiftCard: any,
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
   setDefaultPaymentMethod: Function,
@@ -56,14 +55,22 @@ export class PaymentView extends React.Component<Props> {
       setDeleteModalMountState,
       showUpdatedNotificationOnModal,
     } = this.props;
+
+    const isCreditCard = selectedCard.ccType !== 'GiftCard' && selectedCard.ccType !== 'VENMO';
+    const isVenmo = selectedCard.ccType === 'VENMO';
+    let CardHeading = '';
+    if (isCreditCard) {
+      CardHeading = labels.ACC_LBL_MODAL_CREDIT_CARD_HEADING;
+    } else {
+      CardHeading = isVenmo
+        ? labels.ACC_LBL_MODAL_Venmo_Delete_HEADING
+        : labels.ACC_LBL_MODAL_GC_HEADING;
+    }
     return (
       <DeleteCardModal
         openState={deleteModalMountedState}
         data={{
-          heading:
-            selectedCard.ccType === 'VENMO'
-              ? labels.ACC_LBL_MODAL_Venmo_Delete_HEADING
-              : labels.ACC_LBL_MODAL_GC_HEADING,
+          heading: CardHeading,
           description: selectedCard,
           buttons: {
             cancel: labels.ACC_LBL_MODAL_GC_CANCEL,
@@ -88,7 +95,6 @@ export class PaymentView extends React.Component<Props> {
       className,
       showNotification,
       setDeleteModalMountState,
-      setSelectedGiftCard,
       creditCardList,
       giftCardList,
       cardList,
@@ -165,8 +171,8 @@ export class PaymentView extends React.Component<Props> {
             onDeleteCard={onDeleteCard}
             showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
             showNotification={showNotification}
-            setSelectedGiftCard={setSelectedGiftCard}
             setDefaultPaymentMethod={setDefaultPaymentMethod}
+            setSelectedCard={this.setSelectedCard}
           />
         )}
         {venmoCardList && venmoCardList.size > 0 && (

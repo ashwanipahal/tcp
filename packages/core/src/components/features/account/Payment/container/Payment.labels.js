@@ -15,6 +15,7 @@ const labels = {
   ACC_LBL_GC_EMPTY_DESC:
     'Save up to 5 gift cards and/or merchandise cards to use the next time you shop.',
   ACC_LBL_MODAL_GC_HEADING: 'Are you sure you want to delete this gift card?',
+  ACC_LBL_MODAL_CREDIT_CARD_HEADING: 'Are you sure you want to delete this credit card?',
   ACC_LBL_MODAL_GC_CANCEL: "No, Don't Delete",
   ACC_LBL_MODAL_GC_CONFIRM: 'Yes, Delete',
   ACC_LBL_MODAL_GC_CARDEND: 'Card ending in ',

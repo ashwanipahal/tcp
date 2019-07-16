@@ -17,6 +17,7 @@ type Props = {
   cardList: Array<object>,
   showNotification: boolean,
   showNotificationCaptcha: boolean,
+  setDefaultPaymentMethod: Function,
 }; // giftCards comment for time being
 export const CardList = ({
   setSelectedGiftCard,
@@ -28,6 +29,7 @@ export const CardList = ({
   cardList,
   showNotification,
   showNotificationCaptcha,
+  setDefaultPaymentMethod,
 }: Props) => {
   return (
     <div>
@@ -53,6 +55,7 @@ export const CardList = ({
               labels={labels}
               showNotification={showNotification}
               showNotificationCaptcha={showNotificationCaptcha}
+              setDefaultPaymentMethod={setDefaultPaymentMethod}
             />
           </Col>
         ))}
