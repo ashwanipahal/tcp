@@ -8,7 +8,7 @@ const buildQuery = ({ type, brand, country, channel }) => `
     submodules {
       footerTop {
         composites {
-          buttonGroup {
+          buttonList {
             url
             title
             external
@@ -61,7 +61,7 @@ const buildQuery = ({ type, brand, country, channel }) => `
             title
             external
           }
-          richTextGroup {
+          richTextList {
             text
           }
         }

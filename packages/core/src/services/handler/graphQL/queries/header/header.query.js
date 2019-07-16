@@ -35,10 +35,9 @@ const buildQuery = ({ type, brand, country, channel }) => `
               external
               class
             }
-            textLines {
+            textItems {
               text
               style
-              color
             }
           }
         }
@@ -61,7 +60,6 @@ const buildQuery = ({ type, brand, country, channel }) => `
             styled {
               text
               style
-              color
             }
           }
         }

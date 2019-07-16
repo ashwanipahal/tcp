@@ -4,9 +4,9 @@ import handler from '../../../handler';
 const processFooterTop = footerTop => {
   try {
     return {
-      emailSignupBtn: footerTop.composites.buttonGroup[0],
-      smsSignupBtn: footerTop.composites.buttonGroup[1],
-      referFriendBtn: footerTop.composites.buttonGroup[2],
+      emailSignupBtn: footerTop.composites.buttonList[0],
+      smsSignupBtn: footerTop.composites.buttonList[1],
+      referFriendBtn: footerTop.composites.buttonList[2],
       socialLinks: footerTop.composites.socialLinks,
     };
   } catch (e) {
@@ -50,7 +50,7 @@ const processFooterMiddle = footerMiddleObj => {
 const processFooterBottom = footerBottom => {
   try {
     return {
-      copyrightText: footerBottom.composites.richTextGroup[0].text,
+      copyrightText: footerBottom.composites.richTextList[0].text,
       legalLinks: footerBottom.composites.linkList,
     };
   } catch (e) {

@@ -54,11 +54,41 @@ const calculateOffset = (colCount, breakpoint, gridDimensions) => {
   );
 };
 
+const calculateNthChild = (viewport, col) => {
+  switch (viewport) {
+    case 'small':
+      return 6 % col === 0 ? 6 / col : '';
+    case 'medium':
+      return 8 % col === 0 ? 8 / col : '';
+    case 'large':
+      return 12 % col === 0 ? 12 / col : '';
+    default:
+      return '';
+  }
+};
+
+const colLength = ({ colSize, offsetLeft, offsetRight }, key) => {
+  let length = colSize[key];
+  if (offsetLeft && offsetLeft[key]) {
+    length += offsetLeft[key];
+  }
+  if (offsetRight && offsetRight[key]) {
+    length += offsetRight[key];
+  }
+  return length;
+};
+
 const StyledCol = css`
   ${props =>
     props.theme.gridDimensions.gridBreakPointsKeys.map(
       // eslint-disable-next-line complexity
       key => `
+      @media ${props.theme.mediaQuery[`${key}Only`]} {
+        ${calculateNthChild(key, colLength(props, key)) &&
+          `&:nth-child(${calculateNthChild(key, colLength(props, key))}) {
+            margin-right: 0;
+          }`}
+      }
       ${key !== 'small' ? `@media ${props.theme.mediaQuery[`${key}Only`]} {` : ''}
         ${props.hideCol && props.hideCol[key] ? 'display: none' : ''};
       ${key !== 'small' ? `}` : ''}
