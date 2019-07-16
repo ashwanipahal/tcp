@@ -22,7 +22,10 @@ const StyledRow = css`
       }
       ${
         props.fullBleed === true || (props.fullBleed && props.fullBleed[key])
-          ? `width: 100%;`
+          ? `width: 100%;
+            margin-right: 0;
+            margin-left: 0;
+          `
           : `
           margin-right: ${props.theme.gridDimensions.gridOffsetObj[key]}px;
           margin-left: ${props.theme.gridDimensions.gridOffsetObj[key]}px;

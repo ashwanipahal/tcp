@@ -42,6 +42,7 @@ export const AddEditAddress = ({
         fontSizeVariation="xlarge"
         anchorVariation="secondary"
         to="/account"
+        data-locator="addnewaddress-back"
       >
         Back
       </Anchor>

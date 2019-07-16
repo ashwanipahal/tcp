@@ -162,7 +162,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
             />
           </Col>
         </Row>
-        <Row fullBleed>
+        <Row fullBleed className="elem-mb-XL">
           <Col colSize={{ small: 4, medium: 4, large: 6 }} offsetLeft={{ small: 1 }}>
             <Field
               name="primary"
@@ -201,7 +201,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
               buttonVariation="fixed-width"
               data-locator="addnewaddress-addaddress"
             >
-              {isEdit ? labels.acc_lbl_edit_address_cta : labels.acc_lbl_add_address_cta}
+              {isEdit ? labels.acc_lbl_update_address_cta : labels.acc_lbl_add_address_cta}
             </Button>
           </Col>
         </Row>

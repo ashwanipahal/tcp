@@ -23,11 +23,9 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
           }
         }
       >
-        <Styled(Button)
-          customStyle="shadow-button"
-        >
-          <Styled(RichText) />
-        </Styled(Button)>
+        <Connect(EmailSignupWrapperContainer)
+          buttonConfig={Object {}}
+        />
       </Styled(Col)>
       <Styled(Col)
         className="footer-top__slots"
@@ -45,11 +43,9 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
           }
         }
       >
-        <Styled(Button)
-          customStyle="shadow-button"
-        >
-          <Styled(RichText) />
-        </Styled(Button)>
+        <Connect(EmailSignupWrapperContainer)
+          buttonConfig={Object {}}
+        />
       </Styled(Col)>
       <Styled(Col)
         className="footer-top__slots"
@@ -205,11 +201,9 @@ exports[`Footer component Footer component renders correctly without props 1`] =
           }
         }
       >
-        <Styled(Button)
-          customStyle="shadow-button"
-        >
-          <Styled(RichText) />
-        </Styled(Button)>
+        <Connect(EmailSignupWrapperContainer)
+          buttonConfig={Object {}}
+        />
       </Styled(Col)>
       <Styled(Col)
         className="footer-top__slots"
@@ -227,11 +221,9 @@ exports[`Footer component Footer component renders correctly without props 1`] =
           }
         }
       >
-        <Styled(Button)
-          customStyle="shadow-button"
-        >
-          <Styled(RichText) />
-        </Styled(Button)>
+        <Connect(EmailSignupWrapperContainer)
+          buttonConfig={Object {}}
+        />
       </Styled(Col)>
       <Styled(Col)
         className="footer-top__slots"

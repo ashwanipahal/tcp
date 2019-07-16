@@ -44,6 +44,10 @@ const styles = css`
     top: 5px;
     position: absolute;
   }
+
+  & .disabled {
+    opacity: ${props => props.theme.opacity.opacity.medium};
+  }
 `;
 
 export default styles;

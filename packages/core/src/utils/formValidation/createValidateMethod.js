@@ -268,7 +268,8 @@ function evaluateAllSyncRules(
           );
       }
 
-      if (isFieldInvalid) {
+      if (isFieldInvalid && !errors[fieldName]) {
+        // we need only first error
         errors[fieldName] = getErrorMessage(
           messages,
           fieldName,

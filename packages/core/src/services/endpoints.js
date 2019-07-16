@@ -10,6 +10,11 @@ const endpoints = {
     method: API_METHODS.GET,
     URI: 'v2/account/getAddressFromBook',
   },
+  verifyAddress: {
+    method: API_METHODS.GET,
+    // TODO - Use MELISSA_KEY from config file
+    URI: 'https://personator.melissadata.net/v3/WEB/ContactVerify/doContactVerify',
+  },
 };
 
 export default endpoints;
