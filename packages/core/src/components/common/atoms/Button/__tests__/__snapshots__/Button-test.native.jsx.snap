@@ -6,10 +6,8 @@ exports[`CustomButton should render correctly 1`] = `
   activeOpacity={0.2}
 >
   <Text
-    background="white"
     buttonVariation="fixed-width"
     fullWidth=""
-    name="name"
   />
 </TouchableOpacity>
 `;

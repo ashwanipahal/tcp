@@ -30,12 +30,12 @@ type State = {
 /**
  * Default settings for Carousel.
  */
-const defaults = { ...config.CAROUSEL_MOBILE_DEFAULTS };
+const defaults = { ...config.CAROUSEL_APP_DEFAULTS };
 
 /**
  * Style for play pause icons.
  */
-const { playIconHeight, playIconWidth } = config.CAROUSEL_MOBILE_CONFIG;
+const { playIconHeight, playIconWidth } = config.CAROUSEL_APP_CONFIG;
 
 /**
  * @function Carousel component that creates carousel using
