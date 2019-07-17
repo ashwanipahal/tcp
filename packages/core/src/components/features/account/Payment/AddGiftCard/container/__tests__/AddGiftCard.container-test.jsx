@@ -4,8 +4,8 @@ import { AddGiftCardContainer, mapDispatchToProps } from '../AddGiftCard.contain
 import AddGiftCardComponent from '../../views/AddGiftCard.view';
 import labels from '../AddGiftCard.labels';
 
-describe('Payment & Gift Cards', () => {
-  it('should render payment view section', () => {
+describe('Add Gift Card Container', () => {
+  it('should render gift card view section', () => {
     const tree = shallow(
       <AddGiftCardContainer
         onAddGiftCardClick={jest.fn()}

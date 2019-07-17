@@ -11,7 +11,7 @@ exports[`Add gift card component should render component correctly if add gift i
   />
   <Styled(HeadingStyle)
     HeadingLarge="six"
-    className="add-gift-card__separator"
+    className="card__separator"
     dataLocator="gift-card-addcardheader"
     fontFamily="secondaryFontFamily"
     tag="h4"
@@ -61,7 +61,7 @@ exports[`Add gift card component should render component correctly if add gift i
   />
   <Styled(HeadingStyle)
     HeadingLarge="six"
-    className="add-gift-card__separator"
+    className="card__separator"
     dataLocator="gift-card-addcardheader"
     fontFamily="secondaryFontFamily"
     tag="h4"

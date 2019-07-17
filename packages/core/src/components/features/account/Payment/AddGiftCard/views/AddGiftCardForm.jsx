@@ -28,25 +28,7 @@ type Props = {
 };
 
 class AddGiftCardForm extends React.PureComponent<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.recaptcha = null;
-    this.state = {
-      isTokenDirty: false,
-    };
-  }
-
   handleSubmit = (data: { giftCardNumber: string, cardPin: string, recaptchaToken: string }) => {
-    const { isTokenDirty } = this.state;
-    const { change } = this.props;
-    if (isTokenDirty) {
-      change('recaptchaToken', '');
-      this.setState({
-        isTokenDirty: false,
-      });
-      return;
-    }
-
     const { onAddGiftCardClick } = this.props;
     onAddGiftCardClick(data);
   };
@@ -54,10 +36,6 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
   handleRecaptchaVerify = (token: string) => {
     const { change } = this.props;
     change('recaptchaToken', token);
-
-    this.setState({
-      isTokenDirty: false,
-    });
   };
 
   handleRecaptchaExpired = () => {
@@ -112,9 +90,9 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
           </Col>
         </Row>
 
-        <Row fullBleed className="add-gift-card__row">
+        <Row fullBleed className="card__row">
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 8, large: 5 }}>
-            <div className="add-gift-card__row__message-container">
+            <div className="card__row__msg-wrapper">
               <RichText
                 richTextHtml={labels.ACC_LBL_GIFT_CARD_MESSAGE}
                 dataLocator="git-card-messagetext"
@@ -125,7 +103,7 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
           <Col
             ignoreGutter={{ small: true }}
             colSize={{ small: 4, medium: 3, large: 2 }}
-            className="add-gift-card__first-button-container"
+            className="card__cancel-btn"
             offsetLeft={{ small: 1, medium: 1, large: 1 }}
             offsetRight={{ small: 1, medium: 0, large: 0 }}
           >
@@ -142,7 +120,7 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
           <Col
             ignoreGutter={{ small: true }}
             colSize={{ small: 4, medium: 3, large: 2 }}
-            className="add-gift-card__second-button-container"
+            className="card__add-btn"
             offsetLeft={{ small: 1, medium: 0, large: 0 }}
             offsetRight={{ small: 1, medium: 0, large: 0 }}
           >

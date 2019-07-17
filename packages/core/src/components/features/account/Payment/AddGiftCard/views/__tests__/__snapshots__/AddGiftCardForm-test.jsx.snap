@@ -480,7 +480,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="add-gift-card__row"
+    className="card__row"
     fullBleed={true}
   >
     <Styled(Col)
@@ -498,7 +498,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
       }
     >
       <div
-        className="add-gift-card__row__message-container"
+        className="card__row__msg-wrapper"
       >
         <Styled(RichText)
           dataLocator="git-card-messagetext"
@@ -506,7 +506,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
       </div>
     </Styled(Col)>
     <Styled(Col)
-      className="add-gift-card__first-button-container"
+      className="card__cancel-btn"
       colSize={
         Object {
           "large": 2,
@@ -542,7 +542,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
       />
     </Styled(Col)>
     <Styled(Col)
-      className="add-gift-card__second-button-container"
+      className="card__add-btn"
       colSize={
         Object {
           "large": 2,
