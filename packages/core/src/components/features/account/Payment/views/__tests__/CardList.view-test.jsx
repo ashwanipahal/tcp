@@ -16,7 +16,7 @@ describe('CardView component', () => {
   it('should render correctly', () => {
     const props = {
       labels: {
-        CardHeading: 'heading',
+        cardHeading: 'heading',
       },
       className: 'abc',
       cardList: List(),
