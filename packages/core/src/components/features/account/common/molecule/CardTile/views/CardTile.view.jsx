@@ -3,7 +3,6 @@ import { Field, reduxForm, reset } from 'redux-form';
 import Notification from '@tcp/core/src/components/common/molecules/Notification';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Badge from '../../../../../../common/atoms/Badge';
-import Address from '../../../../../../common/molecules/Address';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../CardTile.style';
@@ -13,7 +12,13 @@ import Recaptcha from '../../../../../../common/molecules/recaptcha/recaptcha';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
-import { getDataLocatorPrefix, getCardName, cardIconMapping } from './CardTile.utils';
+import {
+  getDataLocatorPrefix,
+  getCardName,
+  cardIconMapping,
+  getAddressDetails,
+  loading,
+} from './CardTile.utils';
 import Button from '../../../../../../common/atoms/Button';
 // @flow
 type Props = {
@@ -73,21 +78,6 @@ class CardTile extends React.Component<Props> {
       >
         {labels.ACC_LBL_MAKE_DEFAULT}
       </Anchor>
-    );
-  };
-
-  getAddressDetails = () => {
-    const { card } = this.props;
-    return (
-      card.addressDetails && (
-        <Address
-          address={card.addressDetails}
-          fontWeight="normal"
-          showCountry={false}
-          showPhone={false}
-          dataLocatorPrefix="payment-creditcard"
-        />
-      )
     );
   };
 
@@ -241,26 +231,6 @@ class CardTile extends React.Component<Props> {
     setDefaultPaymentMethod(card);
   };
 
-  loading = (isGiftCardBalanceRequested, balance) => {
-    const { labels } = this.props;
-    return (
-      <React.Fragment>
-        {isGiftCardBalanceRequested && !balance && (
-          <BodyCopy
-            tag="span"
-            fontSize="fs24"
-            fontFamily="secondary"
-            fontWeight="extrabold"
-            className=""
-            lineHeights="lh115"
-          >
-            {labels.ACC_LBL_LOADING}
-          </BodyCopy>
-        )}
-      </React.Fragment>
-    );
-  };
-
   renderCtaLinks = ({ isCreditCard, dataLocatorPrefix }) => {
     const { labels } = this.props;
     return (
@@ -318,9 +288,9 @@ class CardTile extends React.Component<Props> {
     const cardName = getCardName({ card, labels });
     const cardIcon = getIconPath(cardIconMapping[card.ccBrand]);
     const dataLocatorPrefix = getDataLocatorPrefix({ card });
+
     const isGiftCardBalanceRequested = this.getIfGiftCardBalanceRequested(card.accountNo);
     const balance = this.getGiftCardBalance(card.accountNo);
-
     return (
       <div className={className}>
         {showNotificationCaptcha && (
@@ -343,7 +313,7 @@ class CardTile extends React.Component<Props> {
               {cardName}
             </BodyCopy>
             {isVenmo ? this.getVenmoUserName() : this.getCardDetails(dataLocatorPrefix)}
-            {isCreditCard ? this.getAddressDetails() : null}
+            {isCreditCard ? getAddressDetails({ card }) : null}
           </div>
           <div className="cardTile__defaultSection">
             {isCreditCard ? this.getMakeDefaultBadge() : null}
@@ -370,7 +340,8 @@ class CardTile extends React.Component<Props> {
                   name="recaptchaToken"
                   id="recaptchaToken"
                 />
-                {this.loading(isGiftCardBalanceRequested, balance)}
+
+                {loading(isGiftCardBalanceRequested, labels, balance)}
                 {this.remainBalance(isGiftCardBalanceRequested, balance)}
               </div>
             </form>
