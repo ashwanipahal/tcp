@@ -6,7 +6,6 @@ import { Carousel } from '../..';
 import config from '../config';
 import colors from '../../../../../../styles/themes/colors/common';
 import fonts from '../../../../../../styles/themes/TCP/fonts';
-import spacing from '../../../../../../styles/themes/TCP/spacing';
 import { HeaderWrapper, LinksWrapper, Wrapper } from '../ModuleH.style.native';
 
 // @flow
@@ -97,6 +96,7 @@ class ModuleH extends React.PureComponent<Props, State> {
       const { link, styled } = item;
       return (
         <BodyCopy
+          key={index.toString()}
           fontFamily="secondary"
           fontSize="fs20"
           letterSpacing="ls167"
@@ -122,29 +122,15 @@ class ModuleH extends React.PureComponent<Props, State> {
 
     return (
       <Wrapper>
-        {textLines &&
-          textLines.map((textLine, index) => {
-            const headingStyle = {
-              marginTop: index > 0 ? parseInt(spacing.ELEM_SPACING.XL, 10) : 0,
-            };
-            return (
-              <HeaderWrapper key={index.toString()}>
-                {link ? (
-                  <TouchableOpacity accessibilityRole="link" onPress={() => UrlHandler(link.url)}>
-                    <Heading
-                      fontFamily="primary"
-                      fontSize="fs36"
-                      letterSpacing="ls167"
-                      textAlign="left"
-                      color="white"
-                      fontWeight="black"
-                      text={textLine.text}
-                      lineOrder={index}
-                      data-locator={`${getLocator('moduleH_header_text')}_${index + 1}`}
-                      style={headingStyle}
-                    />
-                  </TouchableOpacity>
-                ) : (
+        <HeaderWrapper>
+          {textLines &&
+            textLines.map((textLine, index) => {
+              return link ? (
+                <TouchableOpacity
+                  key={index.toString()}
+                  accessibilityRole="link"
+                  onPress={() => UrlHandler(link.url)}
+                >
                   <Heading
                     fontFamily="primary"
                     fontSize="fs36"
@@ -153,14 +139,23 @@ class ModuleH extends React.PureComponent<Props, State> {
                     color="white"
                     fontWeight="black"
                     text={textLine.text}
-                    lineOrder={index}
                     data-locator={`${getLocator('moduleH_header_text')}_${index + 1}`}
                   />
-                )}
-              </HeaderWrapper>
-            );
-          })}
-        {divCTALinks ? <LinksWrapper>{this.renderLinks(divCTALinks)}</LinksWrapper> : null}
+                </TouchableOpacity>
+              ) : (
+                <Heading
+                  fontFamily="primary"
+                  fontSize="fs36"
+                  letterSpacing="ls167"
+                  textAlign="left"
+                  color="white"
+                  fontWeight="black"
+                  text={textLine.text}
+                  data-locator={`${getLocator('moduleH_header_text')}_${index + 1}`}
+                />
+              );
+            })}
+        </HeaderWrapper>
         {divCTALinks && (
           <Carousel
             onSnapToItem={this.updateCurrentIndex}
@@ -173,6 +168,7 @@ class ModuleH extends React.PureComponent<Props, State> {
             }}
           />
         )}
+        {divCTALinks ? <LinksWrapper>{this.renderLinks(divCTALinks)}</LinksWrapper> : null}
       </Wrapper>
     );
   }
