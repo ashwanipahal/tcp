@@ -6,5 +6,20 @@ import Grid from './Grid';
 import Modal from './Modal';
 import ModuleD from './ModuleD';
 import ModuleH from './ModuleH';
+import PromoTextBanner from './PromoTextBanner';
+import LinkText from './LinkText';
+import ImageGrid from './ImageGrid';
 
-export { AccordionHeader, AccordionItem, AccordionList, Carousel, Grid, Modal, ModuleD, ModuleH };
+export {
+  AccordionHeader,
+  AccordionItem,
+  AccordionList,
+  Carousel,
+  Grid,
+  Modal,
+  ModuleD,
+  ModuleH,
+  PromoTextBanner,
+  LinkText,
+  ImageGrid,
+};

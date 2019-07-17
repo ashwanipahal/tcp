@@ -2,7 +2,7 @@ export default {
   submodules: {
     footerTop: {
       composites: {
-        buttonGroup: [
+        buttonList: [
           {
             url: '/node/modal/ttt1',
             text: null,

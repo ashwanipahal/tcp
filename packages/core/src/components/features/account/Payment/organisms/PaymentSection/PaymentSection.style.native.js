@@ -1,4 +1,8 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
+
+const ParentContainer = css`
+  margin-bottom: 120px;
+`;
 
 const StyledHeading = styled.Text`
   padding: ${props => props.theme.spacing.ELEM_SPACING.XL} 0
@@ -9,4 +13,4 @@ const UnderlineStyle = styled.View`
   background-color: ${props => props.theme.colorPalette.black};
 `;
 
-export { StyledHeading, UnderlineStyle };
+export { ParentContainer, StyledHeading, UnderlineStyle };

@@ -6,7 +6,7 @@ import { CardList } from '../CardList.view';
 describe('CardView component', () => {
   it('should renders correctly when Card are not present', () => {
     const props = {
-      giftCardList: new List(),
+      cardList: new List(),
       labels: {},
     };
     const component = shallow(<CardList {...props} />);
@@ -16,10 +16,10 @@ describe('CardView component', () => {
   it('should render correctly', () => {
     const props = {
       labels: {
-        CardHeading: 'heading',
+        cardHeading: 'heading',
       },
       className: 'abc',
-      giftCardList: List(),
+      cardList: List(),
     };
     const tree = shallow(<CardList {...props} />);
     expect(tree).toMatchSnapshot();

@@ -1,0 +1,553 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleK component renders correctly 1`] = `
+<StyledComponent
+  className={null}
+  color="text.primary"
+  component="p"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bZQynM",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  ",
+          [Function],
+          "
+  ",
+          [Function],
+          "
+",
+          ";
+",
+        ],
+      },
+      "defaultProps": Object {
+        "children": null,
+        "className": null,
+        "color": "text.primary",
+        "component": "p",
+        "fontFamily": "primary",
+        "fontSize": 12,
+        "fontWeight": "regular",
+        "letterSpacing": "normal",
+        "lineHeight": "normal",
+        "textAlign": "left",
+      },
+      "displayName": "Styled(BodyCopy)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bZQynM",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <Styled(Row)
+    className="module-k"
+  >
+    <Styled(Col)
+      className="module-k__header"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(LinkText)
+        component="div"
+        dataLocator="moduleK_header_text"
+        fontSize="fs48"
+        fontWeight="black"
+        icon={
+          Object {
+            "icon": "heart",
+            "placement": "left|middle|right",
+          }
+        }
+        link={
+          Object {
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "https://www.childrensplace.com/us/c/girls-new-arrivals",
+          }
+        }
+        textLines={
+          Array [
+            Object {
+              "style": "moduleK__Header",
+              "text": "UNICORNS,",
+            },
+            Object {
+              "style": "moduleK__Header",
+              "text": "DINOS & MORE!",
+            },
+          ]
+        }
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="module-k__promoBanner"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      offsetRight={
+        Object {
+          "large": 0,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+    />
+    <Styled(Col)
+      className="module-k__carousal"
+      colSize={
+        Object {
+          "large": 8,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 2,
+          "medium": 0,
+          "small": 0,
+        }
+      }
+    >
+      <Styled(errorBoundaryComponent)
+        carouselConfig={
+          Object {
+            "autoplay": true,
+            "dataLocatorPause": "moduleK_pause_button",
+            "dataLocatorPlay": "moduleK_play_button",
+            "type": "light",
+          }
+        }
+        options={
+          Object {
+            "arrows": true,
+            "autoplay": true,
+            "autoplaySpeed": 4000,
+            "dots": true,
+            "dotsClass": "slick-dots",
+            "fade": false,
+            "hidePlayPause": false,
+            "nextArrow": <button
+              className="slick-prev"
+              data-locator="moduleK_right_arrow"
+              type="button"
+            />,
+            "prevArrow": <button
+              className="slick-prev"
+              data-locator="moduleK_left_arrow"
+              type="button"
+            />,
+            "responsive": Array [
+              Object {
+                "breakpoint": 1024,
+                "settings": Object {
+                  "arrows": false,
+                },
+              },
+            ],
+            "speed": 1000,
+            "swipe": true,
+          }
+        }
+      >
+        <Styled(Styled(PromoBanner))
+          className="module-k__promoBanner"
+          fontSize="fs48"
+          link={
+            Object {
+              "class": "",
+              "external": 0,
+              "target": "",
+              "text": "",
+              "title": "",
+              "url": "/banner/url",
+            }
+          }
+          textItems={
+            Array [
+              Object {
+                "style": "style2",
+                "text": "ALL DINOS",
+              },
+              Object {
+                "style": "text-black",
+                "text": "50% OFF",
+              },
+            ]
+          }
+        />
+        <Styled(Styled(ImageGrid))
+          className="image-grid"
+          colM={2}
+          dataLocator="moduleK_image_"
+          mediaList={
+            Array [
+              Object {
+                "alt": "Image Alt text attribute value",
+                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+                "title": "Image Title attribute value",
+                "url": "/static/images/K-210x210-1.jpg",
+              },
+              Object {
+                "alt": "Image Alt text attribute value",
+                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+                "title": "Image Title attribute value",
+                "url": "/static/images/K-210x210-2.jpg",
+              },
+              Object {
+                "alt": "Image Alt text attribute value",
+                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+                "title": "Image Title attribute value",
+                "url": "/static/images/K-210x210-3.jpg",
+              },
+              Object {
+                "alt": "Image Alt text attribute value",
+                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+                "title": "Image Title attribute value",
+                "url": "/static/images/K-210x210-4.jpg",
+              },
+            ]
+          }
+        />
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 3,
+              "medium": 2,
+              "small": 4,
+            }
+          }
+        >
+          <Styled(Anchor)
+            external={0}
+            target=""
+            text="SHOP NOW"
+            title="SHOP NOW"
+            url="/node/pdp"
+          >
+            <Styled(Button)
+              buttonVariation="fixed-width"
+              className="carousal-cta"
+              dataLocator="moduleK_button_set_0"
+            >
+              SHOP NOW
+            </Styled(Button)>
+          </Styled(Anchor)>
+        </Styled(Col)>
+        <Styled(Styled(PromoBanner))
+          className="module-k__promoBanner"
+          fontSize="fs48"
+          link={
+            Object {
+              "class": "",
+              "external": 0,
+              "target": "",
+              "text": "",
+              "title": "",
+              "url": "/banner/url",
+            }
+          }
+          textItems={
+            Array [
+              Object {
+                "style": "style2",
+                "text": "ALL DINOS",
+              },
+              Object {
+                "style": "text-black",
+                "text": "50% OFF",
+              },
+            ]
+          }
+        />
+        <Styled(Styled(ImageGrid))
+          className="image-grid"
+          colM={2}
+          dataLocator="moduleK_image_"
+          mediaList={
+            Array [
+              Object {
+                "alt": "Image Alt text attribute value",
+                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+                "title": "Image Title attribute value",
+                "url": "/static/images/K-210x210-1.jpg",
+              },
+              Object {
+                "alt": "Image Alt text attribute value",
+                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+                "title": "Image Title attribute value",
+                "url": "/static/images/K-210x210-2.jpg",
+              },
+              Object {
+                "alt": "Image Alt text attribute value",
+                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+                "title": "Image Title attribute value",
+                "url": "/static/images/K-210x210-3.jpg",
+              },
+              Object {
+                "alt": "Image Alt text attribute value",
+                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+                "title": "Image Title attribute value",
+                "url": "/static/images/K-210x210-4.jpg",
+              },
+            ]
+          }
+        />
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 3,
+              "medium": 2,
+              "small": 4,
+            }
+          }
+        >
+          <Styled(Anchor)
+            external={0}
+            target=""
+            text="SHOP NOW"
+            title="SHOP NOW"
+            url="http://www.google.com"
+          >
+            <Styled(Button)
+              buttonVariation="fixed-width"
+              className="carousal-cta"
+              dataLocator="moduleK_button_set_1"
+            >
+              SHOP NOW
+            </Styled(Button)>
+          </Styled(Anchor)>
+        </Styled(Col)>
+        <Styled(Styled(PromoBanner))
+          className="module-k__promoBanner"
+          fontSize="fs48"
+          link={
+            Object {
+              "class": "",
+              "external": 0,
+              "target": "",
+              "text": "",
+              "title": "",
+              "url": "/banner/url",
+            }
+          }
+          textItems={
+            Array [
+              Object {
+                "style": "style2",
+                "text": "ALL DINOS",
+              },
+              Object {
+                "style": "text-black",
+                "text": "50% OFF",
+              },
+            ]
+          }
+        />
+        <Styled(Styled(ImageGrid))
+          className="image-grid"
+          colM={2}
+          dataLocator="moduleK_image_"
+          mediaList={
+            Array [
+              Object {
+                "alt": "Image Alt text attribute value",
+                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+                "title": "Image Title attribute value",
+                "url": "/static/images/K-210x210-1.jpg",
+              },
+              Object {
+                "alt": "Image Alt text attribute value",
+                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+                "title": "Image Title attribute value",
+                "url": "/static/images/K-210x210-2.jpg",
+              },
+              Object {
+                "alt": "Image Alt text attribute value",
+                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+                "title": "Image Title attribute value",
+                "url": "/static/images/K-210x210-3.jpg",
+              },
+              Object {
+                "alt": "Image Alt text attribute value",
+                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+                "title": "Image Title attribute value",
+                "url": "/static/images/K-210x210-4.jpg",
+              },
+            ]
+          }
+        />
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 3,
+              "medium": 2,
+              "small": 4,
+            }
+          }
+        >
+          <Styled(Anchor)
+            external={0}
+            target=""
+            text="SHOP NOW"
+            title="SHOP NOW"
+            url="/node/pdp"
+          >
+            <Styled(Button)
+              buttonVariation="fixed-width"
+              className="carousal-cta"
+              dataLocator="moduleK_button_set_2"
+            >
+              SHOP NOW
+            </Styled(Button)>
+          </Styled(Anchor)>
+        </Styled(Col)>
+        <Styled(Styled(PromoBanner))
+          className="module-k__promoBanner"
+          fontSize="fs48"
+          link={
+            Object {
+              "class": "",
+              "external": 0,
+              "target": "",
+              "text": "",
+              "title": "",
+              "url": "/banner/url",
+            }
+          }
+          textItems={
+            Array [
+              Object {
+                "style": "style2",
+                "text": "ALL DINOS",
+              },
+              Object {
+                "style": "text-black",
+                "text": "50% OFF",
+              },
+            ]
+          }
+        />
+        <Styled(Styled(ImageGrid))
+          className="image-grid"
+          colM={2}
+          dataLocator="moduleK_image_"
+          mediaList={
+            Array [
+              Object {
+                "alt": "Image Alt text attribute value",
+                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+                "title": "Image Title attribute value",
+                "url": "/static/images/K-210x210-1.jpg",
+              },
+              Object {
+                "alt": "Image Alt text attribute value",
+                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+                "title": "Image Title attribute value",
+                "url": "/static/images/K-210x210-2.jpg",
+              },
+              Object {
+                "alt": "Image Alt text attribute value",
+                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+                "title": "Image Title attribute value",
+                "url": "/static/images/K-210x210-3.jpg",
+              },
+              Object {
+                "alt": "Image Alt text attribute value",
+                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+                "title": "Image Title attribute value",
+                "url": "/static/images/K-210x210-4.jpg",
+              },
+            ]
+          }
+        />
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 3,
+              "medium": 2,
+              "small": 4,
+            }
+          }
+        >
+          <Styled(Anchor)
+            external={0}
+            target=""
+            text="SHOP NOW"
+            title="SHOP NOW"
+            url="/node/pdp"
+          >
+            <Styled(Button)
+              buttonVariation="fixed-width"
+              className="carousal-cta"
+              dataLocator="moduleK_button_set_3"
+            >
+              SHOP NOW
+            </Styled(Button)>
+          </Styled(Anchor)>
+        </Styled(Col)>
+      </Styled(errorBoundaryComponent)>
+    </Styled(Col)>
+  </Styled(Row)>
+</StyledComponent>
+`;

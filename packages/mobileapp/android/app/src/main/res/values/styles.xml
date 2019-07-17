@@ -21,5 +21,9 @@
         <item name="android:gravity">center</item>
         <item name="android:textStyle">bold</item>
     </style>
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/ic_launcher</item>
+    </style>
+
 
 </resources>

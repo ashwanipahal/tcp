@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Image grid component renders correctly 1`] = `
+<div>
+  <Styled(Row)
+    className="image-grid"
+    fullBlead={
+      Object {
+        "large": true,
+        "medium": false,
+        "small": false,
+      }
+    }
+  >
+    <Styled(Col)
+      className="image-col"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(Image)
+        alt="Image Alt text attribute value"
+        crop_d="c_crop,g_face:center,q_auto:best,w_962"
+        crop_m="c_crop,g_face:center,q_auto:best,w_962"
+        crop_t="c_crop,g_face:center,q_auto:best,w_962"
+        data-locator="moduleK_image_0"
+        title="Image Title attribute value"
+        url="/static/images/K-210x210-1.jpg"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="image-col"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(Image)
+        alt="Image Alt text attribute value"
+        crop_d="c_crop,g_face:center,q_auto:best,w_962"
+        crop_m="c_crop,g_face:center,q_auto:best,w_962"
+        crop_t="c_crop,g_face:center,q_auto:best,w_962"
+        data-locator="moduleK_image_1"
+        title="Image Title attribute value"
+        url="/static/images/K-210x210-2.jpg"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="image-col"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(Image)
+        alt="Image Alt text attribute value"
+        crop_d="c_crop,g_face:center,q_auto:best,w_962"
+        crop_m="c_crop,g_face:center,q_auto:best,w_962"
+        crop_t="c_crop,g_face:center,q_auto:best,w_962"
+        data-locator="moduleK_image_2"
+        title="Image Title attribute value"
+        url="/static/images/K-210x210-3.jpg"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="image-col"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+        }
+      }
+    >
+      <Styled(Image)
+        alt="Image Alt text attribute value"
+        crop_d="c_crop,g_face:center,q_auto:best,w_962"
+        crop_m="c_crop,g_face:center,q_auto:best,w_962"
+        crop_t="c_crop,g_face:center,q_auto:best,w_962"
+        data-locator="moduleK_image_3"
+        title="Image Title attribute value"
+        url="/static/images/K-210x210-4.jpg"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;

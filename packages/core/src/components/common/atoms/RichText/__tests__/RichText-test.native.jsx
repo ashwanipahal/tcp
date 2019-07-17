@@ -6,7 +6,7 @@ describe('RichText', () => {
   let component;
 
   beforeEach(() => {
-    component = shallow(<RichText id="RichText" />);
+    component = shallow(<RichText />);
   });
 
   it('should be defined', () => {
@@ -18,6 +18,6 @@ describe('RichText', () => {
   });
 
   it('should return abc component value one', () => {
-    expect(component.find('#RichText')).toHaveLength(1);
+    expect(component.find('WebView')).toHaveLength(1);
   });
 });

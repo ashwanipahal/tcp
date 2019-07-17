@@ -1,21 +1,31 @@
 // @flow
 import React from 'react';
-import { Text, TouchableOpacity } from 'react-native';
+import { Text } from 'react-native';
 import withStyles from '../../../hoc/withStyles.native';
-import AnchorStyles from '../Anchor.style.native';
+import { AnchorStyles, AnchorView, AnchorIcon } from '../Anchor.style.native';
 
 type Props = {
   anchorVariation?: string,
+  text?: string,
+  visible?: boolean,
 };
 
-const Anchor = ({ anchorVariation, ...otherProps }: Props) => (
-  <TouchableOpacity accessibilityRole="button">
-    <Text anchorVariation={anchorVariation} {...otherProps} />
-  </TouchableOpacity>
+const Icon = require('../../../../../assets/carrot-small-rights.png');
+
+const Anchor = ({ anchorVariation, text, visible, ...otherProps }: Props) => (
+  <AnchorView>
+    <Text anchorVariation={anchorVariation} {...otherProps}>
+      {text}
+    </Text>
+    {visible && <AnchorIcon source={Icon} />}
+  </AnchorView>
 );
 
 Anchor.defaultProps = {
   anchorVariation: '',
+  text: '',
+  visible: false,
 };
 
 export default withStyles(Anchor, AnchorStyles);
+export { Anchor as AnchorVanilla };

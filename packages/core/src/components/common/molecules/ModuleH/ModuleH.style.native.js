@@ -16,7 +16,6 @@ export const Header = styled.Text`
   font-size: ${props => props.theme.fonts.fontSize.heading.large.h3}px;
   font-weight: bold;
   line-height: 34px;
-  margin-top: ${props => (props.lineOrder > 0 ? props.theme.spacing.ELEM_SPACING.XL : 0)};
 `;
 
 export const LinksWrapper = styled.View`
