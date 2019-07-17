@@ -18,6 +18,7 @@ const buildQuery = ({ type, brand, country, channel }) => `
             link {
               url
               title
+              text
               target
               external
             }
@@ -31,6 +32,7 @@ const buildQuery = ({ type, brand, country, channel }) => `
             linkClass {
               url
               title
+              text
               target
               external
               class
@@ -54,6 +56,7 @@ const buildQuery = ({ type, brand, country, channel }) => `
             link {
               url
               title
+              text
               target
               external
             }
