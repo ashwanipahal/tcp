@@ -21,9 +21,6 @@ export default css`
     }
   }
 
-  .moduleD_header {
-    text-transform: uppercase;
-  }
   .moduleD_tile {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
