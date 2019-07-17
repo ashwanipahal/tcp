@@ -66,12 +66,12 @@ const endpoints = {
   },
   getOrderDetails: {
     method: 'get',
-    baseURI: 'http://test1.gymboree.com',
+    baseURI: 'https://test1.gymboree.com',
     relURI: '/api/v2/checkout/getOrderDetails',
   },
   registeredUserInfoPOC: {
     method: 'get',
-    baseURI: 'http://test1.gymboree.com',
+    baseURI: 'https://test1.gymboree.com',
     relURI: '/api/v2/account/getRegisteredUserInfo',
   },
   setDefaultPayment: {
@@ -81,7 +81,7 @@ const endpoints = {
   emailVerification: {
     method: 'get',
     baseURI: '',
-    relURI: 'https://bpi.briteverify.com/emails.json?apikey=e50ab0a9-ac0b-436b-9932-2a74b9486436',
+    relURI: 'https://bpi.briteverify.com/emails.json',
   },
   addEmailSignup: {
     method: 'post',

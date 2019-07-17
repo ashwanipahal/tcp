@@ -39,6 +39,7 @@ export const API_CONFIG = {
     ca: '2',
   },
   MELISSA_KEY: '63987687',
+  BV_API_KEY: 'e50ab0a9-ac0b-436b-9932-2a74b9486436',
   /* --------- UNBXD ------- */
   version: 'V2',
   pagetype: 'boolean',

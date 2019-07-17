@@ -2,7 +2,7 @@
 import React from 'react';
 import { Anchor, Button, Col, Row, Image } from '../../../atoms';
 import { Grid } from '../..';
-import { Heading } from '../../../../../../styles/themes/TCP/typotheme';
+import Heading from '../../../atoms/Heading';
 import { getLocator } from '../../../../../utils';
 import style from '../ModuleD.style';
 import withStyles from '../../../hoc/withStyles';
@@ -66,10 +66,10 @@ const ModuleD = (props: Props) => {
       <Anchor className="moduleD_textlink" to={url} target={target}>
         <Heading
           className="moduleD_header"
-          HeadingLarge="two"
-          HeadingcolorSm="primary"
-          tag="h2"
+          variant="h2"
           data-locator={getLocator('moduleD_headerlink')}
+          textAlign="center"
+          color="text.primary"
           title={title}
         >
           {headingText}

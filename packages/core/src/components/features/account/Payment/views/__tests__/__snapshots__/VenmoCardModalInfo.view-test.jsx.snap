@@ -3,15 +3,21 @@
 exports[`VenmoCardModalInfo Component should render correctly 1`] = `
 <div>
   <Styled(BodyStyle)
-    className="deleteCardModal_desc"
+    bodySize="seven"
+    className="deleteCardModal__modalTitle"
+    fontFamily="secondaryFontFamily"
+    fontWeight="bold"
+  />
+  <Styled(BodyStyle)
+    className="deleteCardModal__venmoDesc"
   >
      
     <Styled(Image)
-      className="deleteCardModal_img"
+      className="deleteCardModal__img"
       src="/static/images/venmo-blue-acceptance-mark.svg"
     />
     <Styled(BodyStyle)
-      className="deleteCardModal_card"
+      className="deleteCardModal__card deleteCardModal__venmoDesc"
       fontFamily="secondaryFontFamily"
       fontWeight="bold"
       tag="span"

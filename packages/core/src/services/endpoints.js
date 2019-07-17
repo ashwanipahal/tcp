@@ -16,6 +16,12 @@ const endpoints = {
     // TODO - Use MELISSA_KEY from config file
     URI: 'https://personator.melissadata.net/v3/WEB/ContactVerify/doContactVerify',
   },
+  emailVerification: {
+    method: API_METHODS.GET,
+    URI: 'https://bpi.briteverify.com/emails.json',
+    JSONP: true,
+    reqTimeout: 2000,
+  },
 };
 
 export default endpoints;

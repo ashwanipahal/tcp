@@ -10,7 +10,7 @@ const WrapperStyle = styled.View`
 `;
 
 const ImgWrapper = styled.View`
-  width: 75px;
+  flex-basis: 20%;
   height: 55px;
 `;
 
@@ -20,8 +20,7 @@ const ImageStyle = styled.Image`
 `;
 
 const RichTextStyle = styled.View`
-  width: 270px;
-  height: 55px;
+  flex-basis: 80%;
 `;
 
 const UnderlineStyle = styled.View`

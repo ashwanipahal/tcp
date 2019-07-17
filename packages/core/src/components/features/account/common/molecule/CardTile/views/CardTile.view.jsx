@@ -35,7 +35,9 @@ class CardTile extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.paymentMethodId = PAYMENT_CONSTANTS.CREDIT_CARDS_PAYMETHODID;
-    this.state = { isTokenDirty: false, HideCaptchaBtn: false, balance: null };
+    this.state = {
+      isTokenDirty: false,
+    };
     this.handleCheckBalanceClick = this.handleCheckBalanceClick.bind(this);
   }
 
@@ -44,10 +46,20 @@ class CardTile extends React.Component<Props> {
     dispatch(reset(form));
   }
 
+  getIfGiftCardBalanceRequested = key => {
+    const { checkbalanceValueInfo } = this.props;
+    return checkbalanceValueInfo && checkbalanceValueInfo.has(key);
+  };
+
+  getGiftCardBalance = key => {
+    const { checkbalanceValueInfo } = this.props;
+    return checkbalanceValueInfo && checkbalanceValueInfo.get(key);
+  };
+
   getMakeDefaultBadge = () => {
     const { card, labels } = this.props;
     return card.defaultInd ? (
-      <Badge showCheckmark dataLocator="payment-carddefaultpaymentbadge">
+      <Badge showCheckmark dataLocator="payment-carddefaultpaymentbadge" noMargin>
         {labels.ACC_LBL_DEFAULT_PAYMENT}
       </Badge>
     ) : (
@@ -90,7 +102,7 @@ class CardTile extends React.Component<Props> {
           fontWeight="extrabold"
           className="cardTile__heading"
           lineHeights="lh107"
-          dataLocator="payment-venmoid"
+          data-locator="payment-venmoid"
         >
           {card.properties.venmoUserId}
         </BodyCopy>
@@ -111,11 +123,11 @@ class CardTile extends React.Component<Props> {
           fontWeight="black"
           className="cardTile__number"
           lineHeights="lh107"
-          dataLocator={`payment-${dataLocatorPrefix}endingtext`}
+          data-locator={`payment-${dataLocatorPrefix}endingtext`}
         >
           {cardNum}
         </BodyCopy>
-        {card.ccType !== 'PLACE CARD' && (
+        {card.ccType !== 'PLACE CARD' && card.ccType !== 'GiftCard' && (
           <BodyCopy
             tag="span"
             fontSize="fs14"
@@ -123,7 +135,7 @@ class CardTile extends React.Component<Props> {
             fontWeight="semibold"
             className="cardTile__expiry"
             lineHeights="lh115"
-            dataLocator={`payment-${dataLocatorPrefix}expiretext`}
+            data-locator={`payment-${dataLocatorPrefix}expiretext`}
           >
             {expDate}
           </BodyCopy>
@@ -138,16 +150,6 @@ class CardTile extends React.Component<Props> {
     setSelectedGiftCard(card);
     setDeleteModalMountState({ state: true });
   };
-
-  static getDerivedStateFromProps(prevProps) {
-    if (
-      prevProps.checkbalanceValueInfo &&
-      prevProps.card.accountNo === prevProps.checkbalanceValueInfo.giftCardNbr
-    ) {
-      return { balance: prevProps.checkbalanceValueInfo.giftCardAuthorizedAmt };
-    }
-    return null;
-  }
 
   handleRecaptchaVerify = token => {
     const { change } = this.props;
@@ -164,13 +166,10 @@ class CardTile extends React.Component<Props> {
     this.recaptcha = ref;
   };
 
-  renderBalance = ({ HideCaptchaBtn, balance, labels }) => {
-    const { card, checkbalanceValueInfo } = this.props;
-    const isCreditCard = card.ccType !== 'GiftCard' && card.ccType !== 'VENMO';
-    const isVenmo = card.ccType === 'VENMO';
+  renderBalance = ({ labels, balance, isGiftCardBalanceRequested }) => {
     return (
       <React.Fragment>
-        {HideCaptchaBtn && (
+        {balance && (
           <BodyCopy
             tag="span"
             fontSize="fs28"
@@ -182,14 +181,13 @@ class CardTile extends React.Component<Props> {
             {balance}
           </BodyCopy>
         )}
-        {!HideCaptchaBtn && !isVenmo && !isCreditCard && (
+        {!isGiftCardBalanceRequested && (
           <Button
             onClick={this.handleCheckBalanceClick}
             buttonVariation="variable-width"
             type="submit"
             data-locator="gift-card-recaptchcb"
             fill="BLUE"
-            disabled={HideCaptchaBtn && !checkbalanceValueInfo.giftCardNbr}
           >
             {labels.ACC_LBL_CHECK_BALANCE}
           </Button>
@@ -198,24 +196,11 @@ class CardTile extends React.Component<Props> {
     );
   };
 
-  remainBalance = () => {
-    const { card, checkbalanceValueInfo, labels } = this.props;
-    const { HideCaptchaBtn, balance } = this.state;
+  remainBalance = (isGiftCardBalanceRequested, balance) => {
+    const { labels } = this.props;
     return (
       <React.Fragment>
-        {HideCaptchaBtn && !checkbalanceValueInfo.giftCardNbr && (
-          <BodyCopy
-            tag="span"
-            fontSize="fs24"
-            fontFamily="secondary"
-            fontWeight="extrabold"
-            className=""
-            lineHeights="lh115"
-          >
-            {labels.ACC_LBL_LOADING}
-          </BodyCopy>
-        )}
-        {HideCaptchaBtn && checkbalanceValueInfo.giftCardNbr === card.accountNo && (
+        {balance && (
           <BodyCopy
             tag="span"
             fontSize="fs14"
@@ -227,7 +212,7 @@ class CardTile extends React.Component<Props> {
             {balance && labels.ACC_LBL_REMAINING_BALANCE}
           </BodyCopy>
         )}
-        {this.renderBalance({ HideCaptchaBtn, balance, labels })}
+        {this.renderBalance({ balance, isGiftCardBalanceRequested, labels })}
       </React.Fragment>
     );
   };
@@ -247,7 +232,6 @@ class CardTile extends React.Component<Props> {
     handleSubmit(formData => {
       const { onGetBalanceCard } = this.props;
       onGetBalanceCard({ formData, card });
-      this.setState({ HideCaptchaBtn: true });
     })();
   };
 
@@ -257,12 +241,11 @@ class CardTile extends React.Component<Props> {
     setDefaultPaymentMethod(card);
   };
 
-  loading = () => {
+  loading = (isGiftCardBalanceRequested, balance) => {
     const { labels } = this.props;
-    const { HideCaptchaBtn, balance } = this.state;
     return (
       <React.Fragment>
-        {HideCaptchaBtn && !balance && (
+        {isGiftCardBalanceRequested && !balance && (
           <BodyCopy
             tag="span"
             fontSize="fs24"
@@ -309,14 +292,35 @@ class CardTile extends React.Component<Props> {
     );
   };
 
+  getCardImage = ({ card, cardIcon }) => {
+    let cardTopMargin = 'elem-mt-XL';
+    if (card.defaultInd) {
+      cardTopMargin = 'elem-mt-XS';
+    } else if (card.ccType !== 'GiftCard' && card.ccType !== 'VENMO') {
+      cardTopMargin = 'elem-mt-MED';
+    }
+    return (
+      <div className={`cardTile__img_wrapper ${cardTopMargin}`}>
+        <img
+          className="cardTile__img"
+          data-locator={card.ccBrand}
+          alt={card.ccType}
+          src={cardIcon}
+        />
+      </div>
+    );
+  };
+
   render() {
     const { card, className, showNotificationCaptcha, labels, form } = this.props;
-    const { HideCaptchaBtn } = this.state;
     const isCreditCard = card.ccType !== 'GiftCard' && card.ccType !== 'VENMO';
     const isVenmo = card.ccType === 'VENMO';
     const cardName = getCardName({ card, labels });
     const cardIcon = getIconPath(cardIconMapping[card.ccBrand]);
     const dataLocatorPrefix = getDataLocatorPrefix({ card });
+    const isGiftCardBalanceRequested = this.getIfGiftCardBalanceRequested(card.accountNo);
+    const balance = this.getGiftCardBalance(card.accountNo);
+
     return (
       <div className={className}>
         {showNotificationCaptcha && (
@@ -334,7 +338,7 @@ class CardTile extends React.Component<Props> {
               fontFamily="secondary"
               fontWeight="normal"
               className="cardTile__heading"
-              dataLocator={`payment-${dataLocatorPrefix}nametitle`}
+              data-locator={`payment-${dataLocatorPrefix}nametitle`}
             >
               {cardName}
             </BodyCopy>
@@ -343,16 +347,14 @@ class CardTile extends React.Component<Props> {
           </div>
           <div className="cardTile__defaultSection">
             {isCreditCard ? this.getMakeDefaultBadge() : null}
-            <div className="cardTile__img_wrapper">
-              <img className="cardTile__img" alt="" src={cardIcon} />
-            </div>
+            {this.getCardImage({ card, cardIcon })}
           </div>
         </div>
         {card.ccType === 'GiftCard' && (
           <div className="giftcardTile__wrapper">
             <form name={form} onSubmit={this.handleSubmit} autoComplete="off" noValidate>
               <div className="giftcardTile__row">
-                {!HideCaptchaBtn && !isVenmo && !isCreditCard && (
+                {!isGiftCardBalanceRequested && (
                   <Recaptcha
                     ref={this.attachReCaptchaRef}
                     onloadCallback={this.handleRecaptchaOnload}
@@ -368,8 +370,8 @@ class CardTile extends React.Component<Props> {
                   name="recaptchaToken"
                   id="recaptchaToken"
                 />
-                {this.loading()}
-                {this.remainBalance()}
+                {this.loading(isGiftCardBalanceRequested, balance)}
+                {this.remainBalance(isGiftCardBalanceRequested, balance)}
               </div>
             </form>
           </div>

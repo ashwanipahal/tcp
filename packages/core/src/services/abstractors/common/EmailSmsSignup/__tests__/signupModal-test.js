@@ -32,8 +32,8 @@ describe('SignupModalAbstractor', () => {
       { payload: 'address=abf@gmail.com' },
       'post'
     ).then(data => {
-      expect(data).toEqual('valid');
-      expect(data).not.toEqual('invalid');
+      expect(data).toEqual('invalid');
+      expect(data).not.toEqual('valid');
     });
   });
 
