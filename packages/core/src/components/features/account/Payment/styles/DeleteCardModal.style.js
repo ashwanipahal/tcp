@@ -27,7 +27,7 @@ const deleteCardModalStyle = css`
     }
   }
   .deleteCardModal__btnWrapper {
-    padding-top: 80px;
+    padding-top: 20px;
     clear: both;
     text-align: center;
   }

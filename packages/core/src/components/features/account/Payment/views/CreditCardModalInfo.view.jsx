@@ -74,7 +74,7 @@ const CreditCardModalInfo = ({
                 medium: 2,
               }}
             >
-              <BodyCopy fontFamily="secondary" fontWeight="semibold">
+              <BodyCopy fontFamily="secondary" fontSize="fs14" fontWeight="semibold">
                 {data.cardText.cardEnd}
                 {getAccNumbr}
               </BodyCopy>
@@ -89,7 +89,7 @@ const CreditCardModalInfo = ({
                 medium: 2,
               }}
             >
-              <BodyCopy fontFamily="secondary" fontWeight="regular">
+              <BodyCopy fontFamily="secondary" fontSize="fs14" fontWeight="regular">
                 {data.cardText.expire}
                 {TotalExp}
               </BodyCopy>
