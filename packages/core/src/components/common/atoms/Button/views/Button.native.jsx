@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { Button, View } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../Button.style.native';
 
@@ -21,34 +21,32 @@ import style from '../Button.style.native';
  */
 
 type Props = {
-  id?: string,
   buttonVariation?: string,
   fullWidth?: string,
   customStyle?: string,
-  title?: string,
+  text?: string,
+  url?: string,
 };
 
 const CustomButton = (props: Props) => {
-  const { title, id, buttonVariation, fullWidth, customStyle, ...otherProps } = props;
+  const { text, url, buttonVariation, fullWidth, customStyle, ...otherProps } = props;
+  const textValue = text || '';
   return (
-    <View {...props}>
-      <Button
-        title={title}
-        fullWidth={fullWidth}
-        buttonVariation={buttonVariation}
-        id={id}
-        {...otherProps}
-      />
-    </View>
+    <TouchableOpacity accessibilityRole="button">
+      <Text fullWidth={fullWidth} buttonVariation={buttonVariation} {...otherProps}>
+        {textValue}
+      </Text>
+    </TouchableOpacity>
   );
 };
 
 CustomButton.defaultProps = {
-  id: 'btn',
   fullWidth: '',
   buttonVariation: 'fixed-width',
   customStyle: '',
-  title: '',
+  text: '',
+  url: '',
 };
 
 export default withStyles(CustomButton, style);
+export { CustomButton as CustomButtonVanilla };
