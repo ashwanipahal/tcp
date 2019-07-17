@@ -43,6 +43,10 @@ export const importGraphQLQueriesDynamically = query => {
         // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/moduleH'));
         break;
+      case 'moduleK':
+        // eslint-disable-next-line global-require
+        resolve(require('../services/handler/graphQL/queries/moduleK'));
+        break;
       default:
         reject();
         break;
