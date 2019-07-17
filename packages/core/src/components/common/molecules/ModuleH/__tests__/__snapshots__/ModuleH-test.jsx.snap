@@ -7,7 +7,11 @@ exports[`ModuleH component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
+<<<<<<< HEAD
+        "componentId": "sc-kgoBCf",
+=======
         "componentId": "sc-kAzzGY",
+>>>>>>> 93eba8041771c960af93c618ac44faea236cce14
         "isStatic": false,
         "rules": Array [
           "
@@ -141,7 +145,11 @@ exports[`ModuleH component renders correctly 1`] = `
       "displayName": "Styled(ModuleH)",
       "foldedComponentIds": Array [],
       "render": [Function],
+<<<<<<< HEAD
+      "styledComponentId": "sc-kgoBCf",
+=======
       "styledComponentId": "sc-kAzzGY",
+>>>>>>> 93eba8041771c960af93c618ac44faea236cce14
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

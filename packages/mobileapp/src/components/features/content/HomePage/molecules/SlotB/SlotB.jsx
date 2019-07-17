@@ -9,7 +9,7 @@ type Props = {
 const SlotB = (props: Props) => {
   switch (props.name) {
     case 'moduleD':
-      return <ModuleD />;
+      return <ModuleD {...props} />;
     case 'moduleH':
       return <ModuleH {...props} />;
     default:

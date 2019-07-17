@@ -161,16 +161,6 @@ const CarouselStyle = styled.div`
     list-style: none;
     text-align: center;
   }
-  .slick-dots li {
-    position: relative;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin: 0 5px;
-    padding: 0;
-
-    cursor: pointer;
-  }
   .slick-dots li button {
     font-size: 0;
     line-height: 0;
@@ -223,6 +213,31 @@ const CarouselStyle = styled.div`
     transform: translateX(-50%);
     width: 30px;
     height: 30px;
+  }
+  &.tcp_carousel_wrapper .slick-dots li {
+    position: relative;
+    display: inline-block;
+    background: url('/static/images/carousal-dot.svg') no-repeat;
+    margin: 0 2px 0 0;
+    width: 7px;
+    height: 10px;
+    button,
+    button:before {
+      margin: 0;
+      padding: 0;
+      width: 7px;
+      height: 7px;
+    }
+    &.slick-active {
+      width: 10px;
+      margin: 0 1px 0 0;
+      background: url('/static/images/carousal-dot-active.svg') no-repeat;
+      button,
+      button:before {
+        width: 10px;
+        height: 10px;
+      }
+    }
   }
 `;
 
