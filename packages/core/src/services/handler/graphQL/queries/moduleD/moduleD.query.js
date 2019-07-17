@@ -13,6 +13,7 @@ const buildQuery = ({ slot, contentId }) => `
         link {
           url
           title
+          text
           target
           external
         }
@@ -36,6 +37,7 @@ const buildQuery = ({ slot, contentId }) => `
           link {
             url
             title
+            text
             target
             external
           }

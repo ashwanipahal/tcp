@@ -57,7 +57,7 @@ const renderItem = item => {
           UrlHandler(link.url);
         }}
       >
-        {link.title}
+        {link.text}
       </Anchor>
     </Tile>
   );

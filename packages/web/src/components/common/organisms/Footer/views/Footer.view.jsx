@@ -68,7 +68,7 @@ const Footer = ({
         >
           <span id="extole_zone_global_footer" title={referAFriend.title}>
             <Button customStyle="shadow-button" data-locator={getLocator('refer_friend')}>
-              <RichText richTextHtml={referAFriend.title} />
+              <RichText richTextHtml={referAFriend.text} />
             </Button>
           </span>
         </Col>

@@ -90,7 +90,8 @@ const ModuleD = (props: Props) => {
                     <Anchor
                       className="moduleD_textlink"
                       to={item.link.url}
-                      aria-label={item.link.title}
+                      aria-label={item.link.text}
+                      title={item.link.title}
                       target={item.link.target}
                     >
                       <Image
@@ -108,9 +109,10 @@ const ModuleD = (props: Props) => {
                       className="moduleD_textlink"
                       to={item.link.url}
                       target={item.link.target}
+                      title={item.link.title}
                       data-locator={`${getLocator('moduleD_textlink')}_${index + 1}`}
                     >
-                      {item.link.title}
+                      {item.link.text}
                     </Anchor>
                   </div>
                 </Col>
@@ -127,7 +129,7 @@ const ModuleD = (props: Props) => {
               title={singleCTAButton.title}
               data-locator={getLocator('moduleD_button')}
             >
-              {singleCTAButton.title}
+              {singleCTAButton.text}
             </Button>
           </Anchor>
         </Row>
