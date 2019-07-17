@@ -13,10 +13,18 @@ type Props = {
   getAccNumbr: object,
   data: object,
   address: object,
+  creditCardHeading: string,
   className: string,
 };
 
-const CreditCardModalInfo = ({ TotalExp, getAccNumbr, data, address, className }: Props) => {
+const CreditCardModalInfo = ({
+  TotalExp,
+  getAccNumbr,
+  data,
+  address,
+  creditCardHeading,
+  className,
+}: Props) => {
   return (
     <div className={className}>
       <Row fullBleed className="elem-mb-MED">
@@ -28,7 +36,7 @@ const CreditCardModalInfo = ({ TotalExp, getAccNumbr, data, address, className }
           }}
         >
           <BodyCopy fontSize="fs18" fontFamily="secondary" fontWeight="extrabold">
-            {data.heading}
+            {creditCardHeading}
           </BodyCopy>
         </Col>
       </Row>
@@ -41,7 +49,7 @@ const CreditCardModalInfo = ({ TotalExp, getAccNumbr, data, address, className }
             medium: 8,
           }}
           offsetLeft={{
-            medium: 2,
+            medium: 3,
           }}
         >
           <BodyCopy>

@@ -59,11 +59,12 @@ class DeleteCardModal extends React.Component<Props> {
    * @return {[Object]} JSX of the component
    */
   renderModal = () => {
-    const { data, className } = this.props;
+    const { data, className, labels } = this.props;
     const ccType = data && data.description && data.description.ccType;
     const getAccNumbr = `${data.description.accountNo}`.slice(-4);
     const TotalExp = `${data.description.expMonth}/${data.description.expYear} `;
     const isCreditCard = ccType !== 'GiftCard' && ccType !== 'VENMO';
+    const creditCardHeading = labels.ACC_LBL_MODAL_CREDIT_CARD_HEADING;
     const address = data.description.addressDetails ? data.description.addressDetails : null;
     return (
       <div className={className}>
@@ -73,6 +74,7 @@ class DeleteCardModal extends React.Component<Props> {
             TotalExp={TotalExp}
             data={data}
             address={address}
+            creditCardHeading={creditCardHeading}
             {...this.props}
             isCreditCard={isCreditCard}
           />

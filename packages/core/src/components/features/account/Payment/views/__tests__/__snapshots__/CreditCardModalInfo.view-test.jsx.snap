@@ -25,9 +25,7 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
-      >
-        abc
-      </Styled(BodyCopy)>
+      />
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -44,7 +42,7 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
       }
       offsetLeft={
         Object {
-          "medium": 2,
+          "medium": 3,
         }
       }
     >

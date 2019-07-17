@@ -38,6 +38,7 @@ exports[`Delete card Modal should render correctly 1`] = `
       }
       getAccNumbr="ined"
       isCreditCard={true}
+      labels={Object {}}
     />
     <div
       className="deleteCardModal__btnWrapper"

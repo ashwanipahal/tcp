@@ -59,7 +59,7 @@ export class PaymentView extends React.Component<Props> {
     const isVenmo = selectedCard.ccType === 'VENMO';
     let cardHeading = '';
     if (isCreditCard) {
-      cardHeading = labels.ACC_LBL_MODAL_CREDIT_CARD_HEADING;
+      cardHeading = labels.ACC_LBL_MODAL_DELETE_CARD;
     } else {
       cardHeading = isVenmo ? labels.ACC_LBL_MODAL_VENMO_DELETE : labels.ACC_LBL_MODAL_GC_HEADING;
     }
