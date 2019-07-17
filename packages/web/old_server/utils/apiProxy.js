@@ -1,4 +1,4 @@
-/* eslint-disable no-param-reassign */
+/* eslint-disable */
 const proxy = require('http-proxy-middleware');
 const { PROTOCOL_HTTPS } = require('../../isomorphic/constants');
 const agent = require('./proxyAgent');

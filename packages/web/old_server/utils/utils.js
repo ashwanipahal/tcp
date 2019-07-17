@@ -1,3 +1,4 @@
+/* eslint-disable */
 const {
   ENV_PRODUCTION,
   SERVER_FALLBACK_LOCALE,
@@ -6,7 +7,7 @@ const {
 const { MACHINE_IP } = require('../config/appConfig');
 
 module.exports = {
-  getUserLocation: (req) => {
+  getUserLocation: req => {
     /* eslint-disable */
     const userIP =
       (req.headers && req.headers['x-forwarded-for']) ||
@@ -29,9 +30,9 @@ module.exports = {
 
   isValidLocale: param => process.env.LOCALE_LIST.split('|').find(item => param === item),
 
-  getLocale: (param) => {
-    const validLocale =
-      process.env.LOCALE_LIST.split('|').find(item => param === item) || SERVER_FALLBACK_LOCALE;
-    return validLocale;
+  getLocale: param => {
+    return (
+      process.env.LOCALE_LIST.split('|').find(item => param === item) || SERVER_FALLBACK_LOCALE
+    );
   },
 };

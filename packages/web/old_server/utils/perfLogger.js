@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 /**
  * Logger Module
  */

@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 const axios = require('axios');
 const { HANDSHAKE_URL, SESSION_API_URL } = require('./../config/appConfig');
 const { RESPONSE_INTERNAL_SERVER_ERROR } = require('../../isomorphic/constants');
@@ -8,7 +10,7 @@ const { RESPONSE_INTERNAL_SERVER_ERROR } = require('../../isomorphic/constants')
  *
  * @param {Object} req Request object from incoming page request
  */
-const handShakeCall = async (req) => {
+const handShakeCall = async req => {
   const start = Date.now();
   let response = {};
   let details;
@@ -31,7 +33,7 @@ const handShakeCall = async (req) => {
   req.perfLogger.log(
     'error',
     `[PERFLOG] Status: ${responseStatus} Method: GET URL: ${HANDSHAKE_URL} Elapsed Time: ${Date.now() -
-      start}ms`,
+      start}ms`
   );
   const cookieList = response.headers ? response.headers['set-cookie'] : []; // eslint-disable-line no-underscore-dangle
 

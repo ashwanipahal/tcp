@@ -1,19 +1,36 @@
 const express = require('express');
 const next = require('next');
+const helmet = require('helmet');
 const RoutesMap = require('./routes');
+const config = require('./config/cspPolicy.js');
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev, dir: './src' });
 
-app.prepare().then(() => {
-  const server = express();
+const locationCodes = require('./config/constants').locations;
 
+const server = express();
+
+// Security headers
+server.set('x-powered-by', false);
+server.use(helmet.frameguard({ action: 'sameorigin' }));
+server.use(helmet.hsts({ force: true, maxAge: 10886400, includeSubDomains: true, preload: true })); // 90 days
+server.use(helmet.noSniff());
+server.use(helmet.xssFilter());
+server.use(helmet.ieNoOpen());
+server.use(helmet.contentSecurityPolicy(config));
+
+app.prepare().then(() => {
+  // Looping through the routes and providing the corresponding resolver route
   RoutesMap.forEach(route => {
-    const routePaths = [`/us${route.path}`, `/ca${route.path}`];
+    // creating routes for country code eg: /ca/xyz and /us/xyz
+    const routePaths = locationCodes.map(location => `/${location}${route.path}`);
     server.get(routePaths, (req, res) => {
+      // Handling routes without params
       if (!route.params) return app.render(req, res, route.resolver, req.query);
 
+      // Handling routes with params
       const params = route.params.reduce((componentParam, paramKey) => {
         // eslint-disable-next-line no-param-reassign
         componentParam[paramKey] = req.params[paramKey];
@@ -23,6 +40,7 @@ app.prepare().then(() => {
     });
   });
 
+  // handling of other routes
   server.get('*', (req, res) => {
     return app.render(req, res, '/404');
   });
