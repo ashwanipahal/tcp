@@ -4,19 +4,33 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import endpoints from '../../../../../../service/endpoint';
 import ADD_GIFT_CARD_CONSTANTS from '../AddGiftCard.constants';
 import fetchData from '../../../../../../service/API';
-import { addGiftCardFailure } from './AddGiftCard.actions';
-import { getCardList } from '../../container/Payment.actions';
+import { addGiftCardFailure, addGiftCardSuccess } from './AddGiftCard.actions';
+import { clearCardListTTL } from '../../container/Payment.actions';
 
-export function* addGiftCard({ payload }: { payload: {} }): Saga<void> {
+export function* addGiftCard({
+  payload,
+}: {
+  payload: { giftCardNumber: string, cardPin: string, recaptchaToken: string },
+}): Saga<void> {
   try {
     const { relURI, method } = endpoints.addGiftCard;
     const baseURI = endpoints.addGiftCard.baseURI || endpoints.global.baseURI;
+
+    const { giftCardNumber, cardPin, recaptchaToken } = payload;
+    const requestPayload = {
+      cc_brand: 'GC',
+      payMethodId: 'GiftCard',
+      account_pin: cardPin,
+      pay_account: giftCardNumber,
+      recapchaResponse: recaptchaToken,
+    };
+
     const response = yield call(
       fetchData,
       baseURI,
       relURI,
       {
-        payload,
+        payload: requestPayload,
         langId: -1,
         catalogId: 10551,
         storeId: 10151,
@@ -25,7 +39,8 @@ export function* addGiftCard({ payload }: { payload: {} }): Saga<void> {
       method
     );
     if (response.body) {
-      return yield put(getCardList({ ignoreCache: true }));
+      yield put(clearCardListTTL());
+      return yield put(addGiftCardSuccess());
     }
     return yield put(addGiftCardFailure());
   } catch (err) {

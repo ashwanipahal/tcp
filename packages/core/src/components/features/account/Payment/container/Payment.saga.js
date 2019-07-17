@@ -8,10 +8,7 @@ import {
   showLoader,
   paymentAddGiftCardSuccess,
 } from './Payment.actions';
-import {
-  addGiftCardSuccess,
-  resetShowNotification,
-} from '../AddGiftCard/container/AddGiftCard.actions';
+import { resetShowNotification } from '../AddGiftCard/container/AddGiftCard.actions';
 import { getOnAddGiftCardPageState } from '../AddGiftCard/container/AddGiftCard.selector';
 import endpoints from '../../../../../service/endpoint';
 
@@ -37,7 +34,6 @@ export function* getCardList() {
       yield put(setCardList(res.body.creditCardListJson || []));
       if (isFromAddGiftCard) {
         yield put(paymentAddGiftCardSuccess());
-        yield put(addGiftCardSuccess());
         yield put(resetShowNotification());
       }
       return yield;

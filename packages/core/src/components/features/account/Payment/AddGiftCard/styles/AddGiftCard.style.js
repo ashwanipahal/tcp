@@ -11,7 +11,7 @@ const styles = css`
     display: flex;
     align-items: flex-end;
   }
-  .add-gift-card__row__message__container {
+  .add-gift-card__row__message-container {
     background-color: #d8d8d8;
     padding: ${props => props.theme.spacing.ELEM_SPACING.MED}
       ${props => props.theme.spacing.ELEM_SPACING.LRG}
@@ -38,18 +38,18 @@ const styles = css`
 
   .add-gift-card__first-button-container {
     @media ${props => props.theme.mediaQuery.medium} {
-      margin-top: 55px;
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
     }
     @media ${props => props.theme.mediaQuery.small} {
-      margin-top: 39px;
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     }
   }
   .add-gift-card__second-button-container {
     @media ${props => props.theme.mediaQuery.medium} {
-      margin-top: 55px;
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
     }
     @media ${props => props.theme.mediaQuery.small} {
-      margin-top: 19px;
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
 `;

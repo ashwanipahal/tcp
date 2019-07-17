@@ -72,3 +72,9 @@ export const paymentAddGiftCardSuccess = payload => {
     payload,
   };
 };
+
+export const clearCardListTTL = () => {
+  return {
+    type: PAYMENT_CONSTANTS.CLEAR_CARD_LIST_TTL,
+  };
+};

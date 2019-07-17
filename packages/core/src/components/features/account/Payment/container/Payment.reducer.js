@@ -72,6 +72,8 @@ const PaymentReducer = (state = initialState, action) => {
         .deleteIn(['giftcardBalance', action.payload.card.accountNo]);
     case PAYMENT_CONSTANTS.ADD_GIFT_CARD_SUCCESS:
       return state.set('showNotification', 'success');
+    case PAYMENT_CONSTANTS.CLEAR_CARD_LIST_TTL:
+      return state.set(DEFAULT_REDUCER_KEY, null);
     default:
       return returnPaymentReducer(state, action);
   }

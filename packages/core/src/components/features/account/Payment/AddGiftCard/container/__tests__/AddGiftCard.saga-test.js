@@ -1,16 +1,19 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { addGiftCard, AddGiftCardSaga } from '../AddGiftCard.saga';
 import endpoints from '../../../../../../../service/endpoint';
-import { addGiftCardFailure } from '../AddGiftCard.actions';
-import { getCardList } from '../../../container/Payment.actions';
+import { addGiftCardFailure, addGiftCardSuccess } from '../AddGiftCard.actions';
+import { clearCardListTTL } from '../../../container/Payment.actions';
 import fetchData from '../../../../../../../service/API';
 import ADD_GIFT_CARD_CONSTANTS from '../../AddGiftCard.constants';
 
 describe('Add Gift Card saga', () => {
   let gen;
   const payload = {
-    blahBlah: 'blah blah',
-    fooFoo: 'foo foo',
+    account_pin: undefined,
+    cc_brand: 'GC',
+    payMethodId: 'GiftCard',
+    pay_account: undefined,
+    recapchaResponse: undefined,
   };
 
   beforeEach(() => {
@@ -35,7 +38,8 @@ describe('Add Gift Card saga', () => {
     expect(gen.next().value).toEqual(
       call(fetchData, baseURI, relURI, { payload, langId, catalogId, storeId, isrest }, method)
     );
-    expect(gen.next(res).value).toEqual(put(getCardList({ ignoreCache: true })));
+    expect(gen.next(res).value).toEqual(put(clearCardListTTL()));
+    expect(gen.next(res).value).toEqual(put(addGiftCardSuccess()));
     expect(gen.next().done).toBeTruthy();
   });
 

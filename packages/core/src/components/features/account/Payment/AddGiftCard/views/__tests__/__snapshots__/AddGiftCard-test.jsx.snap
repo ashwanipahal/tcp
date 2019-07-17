@@ -8,9 +8,7 @@ exports[`Add gift card component should render component correctly if add gift i
     dataLocator="gift-card-addcardbacklink"
     fontSizeVariation="xlarge"
     to="/account?id=payment"
-  >
-    Back
-  </Styled(Anchor)>
+  />
   <Styled(HeadingStyle)
     HeadingLarge="six"
     className="add-gift-card__separator"
@@ -60,9 +58,7 @@ exports[`Add gift card component should render component correctly if add gift i
     dataLocator="gift-card-addcardbacklink"
     fontSizeVariation="xlarge"
     to="/account?id=payment"
-  >
-    Back
-  </Styled(Anchor)>
+  />
   <Styled(HeadingStyle)
     HeadingLarge="six"
     className="add-gift-card__separator"

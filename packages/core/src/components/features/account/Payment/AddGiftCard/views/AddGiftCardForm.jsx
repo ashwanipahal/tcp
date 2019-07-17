@@ -8,6 +8,7 @@ import Button from '../../../../../common/atoms/Button';
 import createValidateMethod from '../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../utils/formValidation/validatorStandardConfig';
 import Recaptcha from '../../../../../common/molecules/recaptcha/recaptcha';
+import Router from 'next/router'; //eslint-disable-line
 
 // @flow
 
@@ -47,16 +48,7 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
     }
 
     const { onAddGiftCardClick } = this.props;
-    const { giftCardNumber, cardPin, recaptchaToken } = data;
-    const requestPayload = {
-      cc_brand: 'GC',
-      payMethodId: 'GiftCard',
-      account_pin: cardPin,
-      pay_account: giftCardNumber,
-      recapchaResponse: recaptchaToken,
-    };
-
-    onAddGiftCardClick(requestPayload);
+    onAddGiftCardClick(data);
   };
 
   handleRecaptchaVerify = (token: string) => {
@@ -71,6 +63,10 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
   handleRecaptchaExpired = () => {
     const { change } = this.props;
     change('recaptchaToken', '');
+  };
+
+  onCancelClick = () => {
+    return Router.push('/account?id=payment', '/account/payment');
   };
 
   render() {
@@ -118,7 +114,7 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
 
         <Row fullBleed className="add-gift-card__row">
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 8, large: 5 }}>
-            <div className="add-gift-card__row__message__container">
+            <div className="add-gift-card__row__message-container">
               <RichText
                 richTextHtml={labels.ACC_LBL_GIFT_CARD_MESSAGE}
                 dataLocator="git-card-messagetext"
@@ -133,7 +129,12 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
             offsetLeft={{ small: 1, medium: 1, large: 1 }}
             offsetRight={{ small: 1, medium: 0, large: 0 }}
           >
-            <Button buttonVariation="fixed-width" type="button" data-locator="gift-card-cancelbtn">
+            <Button
+              buttonVariation="fixed-width"
+              type="button"
+              data-locator="gift-card-cancelbtn"
+              onClick={this.onCancelClick}
+            >
               {labels.ACC_LBL_CANCEL_CARD}
             </Button>
           </Col>

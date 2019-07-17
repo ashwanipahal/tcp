@@ -6,6 +6,7 @@ const labels = {
   ACC_LBL_CANCEL_CARD: 'CANCEL',
   ACC_LBL_OP_SUCCESS: 'Your account has been updated',
   ACC_LBL_OP_FAILURE: 'Your action could not be completed due to a system error',
+  ACC_LBL_BACK: 'Back',
 };
 
 export default labels;

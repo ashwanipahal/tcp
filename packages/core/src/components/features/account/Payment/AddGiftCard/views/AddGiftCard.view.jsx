@@ -26,7 +26,7 @@ class AddGiftCard extends React.PureComponent<Props> {
           dataLocator="gift-card-addcardbacklink"
           asPath="/account/payment"
         >
-          Back
+          {labels.ACC_LBL_BACK}
         </Anchor>
         <Heading
           fontFamily="secondaryFontFamily"
