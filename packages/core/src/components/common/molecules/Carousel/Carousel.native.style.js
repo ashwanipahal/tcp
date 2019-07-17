@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import config from './config';
 
-const { playIconHeight, playIconWidth } = config.CAROUSEL_MOBILE_CONFIG;
+const { playIconHeight, playIconWidth } = config.CAROUSEL_APP_CONFIG;
 
 export const Touchable = styled.TouchableOpacity`
   background-color: ${props => props.theme.colorPalette.white};

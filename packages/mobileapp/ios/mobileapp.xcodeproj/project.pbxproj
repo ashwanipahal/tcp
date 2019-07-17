@@ -744,9 +744,9 @@
 			productReference = 00E356EE1AD99517003FC87E /* mobileappTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* tcp */ = {
+		13B07F861A680F5B00A75B9A /* mobileapp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "tcp" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "mobileapp" */;
 			buildPhases = (
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
@@ -757,7 +757,7 @@
 			);
 			dependencies = (
 			);
-			name = tcp;
+			name = mobileapp;
 			productName = "Hello World";
 			productReference = 13B07F961A680F5B00A75B9A /* mobileapp.app */;
 			productType = "com.apple.product-type.application";
@@ -917,7 +917,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* tcp */,
+				13B07F861A680F5B00A75B9A /* mobileapp */,
 				00E356ED1AD99517003FC87E /* mobileappTests */,
 				2D02E47A1E0B4A5D006451C7 /* mobileapp-tvOS */,
 				2D02E48F1E0B4A5D006451C7 /* mobileapp-tvOSTests */,
@@ -1347,7 +1347,7 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* tcp */;
+			target = 13B07F861A680F5B00A75B9A /* mobileapp */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
@@ -1807,7 +1807,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "tcp" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "mobileapp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
