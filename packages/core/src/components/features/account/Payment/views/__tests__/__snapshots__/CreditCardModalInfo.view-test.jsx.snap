@@ -15,13 +15,19 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
         }
       }
     >
-      <Styled(BodyStyle)
-        bodySize="five"
-        fontFamily="secondaryFontFamily"
-        fontWeight="bold"
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs18"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
       >
         abc
-      </Styled(BodyStyle)>
+      </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -42,9 +48,19 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
         }
       }
     >
-      <Styled(BodyStyle)>
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
         <Styled(Image) />
-      </Styled(BodyStyle)>
+      </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
       colSize={
@@ -72,13 +88,19 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
             }
           }
         >
-          <Styled(BodyStyle)
-            fontFamily="secondaryFontFamily"
-            fontWeight="bold"
-            tag="span"
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize={12}
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
           >
             111
-          </Styled(BodyStyle)>
+          </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
           colSize={
@@ -94,13 +116,19 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
             }
           }
         >
-          <Styled(BodyStyle)
-            fontFamily="secondaryFontFamily"
-            fontWeight="normal"
-            tag="span"
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize={12}
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
           >
             fgh
-          </Styled(BodyStyle)>
+          </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
     </Styled(Col)>
@@ -125,15 +153,23 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
         }
       }
     >
-      <Styled(BodyStyle)
-        bodySize="three"
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="primary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
       >
         <Address
-          fontWeight="normal"
+          fontWeight="regular"
           showCountry={false}
           showPhone={false}
         />
-      </Styled(BodyStyle)>
+      </Styled(BodyCopy)>
     </Styled(Col)>
   </Styled(Row)>
 </div>

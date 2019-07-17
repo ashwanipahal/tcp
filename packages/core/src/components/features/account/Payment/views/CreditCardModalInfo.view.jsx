@@ -1,5 +1,5 @@
 import React from 'react';
-import { BodyCopy } from '../../../../../../styles/themes/TCP/typotheme';
+import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { getIconPath } from '../../../../../utils';
 import { Image } from '../../../../common/atoms';
 import Address from '../../../../common/molecules/Address';
@@ -27,7 +27,7 @@ const CreditCardModalInfo = ({ TotalExp, getAccNumbr, data, address, className }
             medium: 12,
           }}
         >
-          <BodyCopy bodySize="five" fontWeight="bold" fontFamily="secondaryFontFamily">
+          <BodyCopy fontSize="fs18" fontFamily="secondary" fontWeight="extrabold">
             {data.heading}
           </BodyCopy>
         </Col>
@@ -66,7 +66,7 @@ const CreditCardModalInfo = ({ TotalExp, getAccNumbr, data, address, className }
                 medium: 2,
               }}
             >
-              <BodyCopy fontWeight="bold" fontFamily="secondaryFontFamily" tag="span">
+              <BodyCopy fontFamily="secondary" fontWeight="semibold">
                 {data.cardText.cardEnd}
                 {getAccNumbr}
               </BodyCopy>
@@ -81,7 +81,7 @@ const CreditCardModalInfo = ({ TotalExp, getAccNumbr, data, address, className }
                 medium: 2,
               }}
             >
-              <BodyCopy fontWeight="normal" fontFamily="secondaryFontFamily" tag="span">
+              <BodyCopy fontFamily="secondary" fontWeight="regular">
                 {data.cardText.expire}
                 {TotalExp}
               </BodyCopy>
@@ -102,8 +102,8 @@ const CreditCardModalInfo = ({ TotalExp, getAccNumbr, data, address, className }
             large: 2,
           }}
         >
-          <BodyCopy bodySize="three">
-            <Address address={address} fontWeight="normal" showCountry={false} showPhone={false} />
+          <BodyCopy fontSize="fs14">
+            <Address address={address} fontWeight="regular" showCountry={false} showPhone={false} />
           </BodyCopy>
         </Col>
       </Row>
