@@ -16,6 +16,8 @@ import {
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
+import ThemeWrapperReducer from '../../components/common/hoc/ThemeWrapper.reducer';
+import { THEME_WRAPPER_REDUCER_KEY } from '../../components/common/hoc/ThemeWrapper.constrants';
 
 const filteredProductListingPageReducer = createFilteredReducer(
   ProductListingPageReducer,
@@ -23,6 +25,7 @@ const filteredProductListingPageReducer = createFilteredReducer(
 );
 
 export default combineReducers({
+  [THEME_WRAPPER_REDUCER_KEY]: ThemeWrapperReducer,
   [HEADER_REDUCER_KEY]: HeaderReducer,
   [LABEL_REDUCER_KEY]: LabelReducer,
   [LAYOUT_REDUCER_KEY]: LayoutReducer,

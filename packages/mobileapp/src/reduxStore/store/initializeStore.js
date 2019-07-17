@@ -8,13 +8,14 @@ let store;
 
 export const initializeStore = initialState => {
   const sagaMiddleware = createSagaMiddleware();
+
+  // eslint-disable-next-line no-underscore-dangle
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+
   store = createStore(
     globalReducers,
     initialState,
-    compose(
-      applyMiddleware(sagaMiddleware),
-      cacheEnhancerMiddleware()
-    )
+    composeEnhancers(applyMiddleware(sagaMiddleware), cacheEnhancerMiddleware())
   );
   store.sagaTask = sagaMiddleware.run(rootSaga);
   return store;
