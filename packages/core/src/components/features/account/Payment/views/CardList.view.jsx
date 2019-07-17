@@ -18,7 +18,7 @@ type Props = {
   showNotification: boolean,
   showNotificationCaptcha: boolean,
   setDefaultPaymentMethod: Function,
-}; // giftCards comment for time being
+};
 export const CardList = ({
   setSelectedGiftCard,
   className,
