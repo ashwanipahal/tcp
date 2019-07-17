@@ -24,6 +24,11 @@ const RoutesMap = [
     path: '/p',
     resolver: '/ProductListingPage',
   },
+  {
+    path: '/test',
+    resolver: '/test',
+    withoutCountryCode: true,
+  },
 ];
 
 module.exports = RoutesMap;

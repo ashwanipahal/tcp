@@ -25,7 +25,9 @@ app.prepare().then(() => {
   // Looping through the routes and providing the corresponding resolver route
   RoutesMap.forEach(route => {
     // creating routes for country code eg: /ca/xyz and /us/xyz
-    const routePaths = locationCodes.map(location => `/${location}${route.path}`);
+    const routePaths = route.withoutCountryCode
+      ? route.path
+      : locationCodes.map(location => `/${location}${route.path}`);
     server.get(routePaths, (req, res) => {
       // Handling routes without params
       if (!route.params) return app.render(req, res, route.resolver, req.query);
