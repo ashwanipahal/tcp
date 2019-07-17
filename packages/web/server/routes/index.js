@@ -1,8 +1,29 @@
-const routes = require('next-routes')();
-const rules = require('./rules');
+const RoutesMap = [
+  {
+    path: '/',
+    resolver: '/index',
+  },
+  {
+    path: '/home',
+    resolver: '/index',
+  },
+  {
+    path: '/login',
+    resolver: '/login',
+  },
+  {
+    path: '/account/:id',
+    resolver: '/account',
+    params: ['id'],
+  },
+  {
+    path: '/ds',
+    resolver: '/DeltaSyncSamplePage',
+  },
+  {
+    path: '/p',
+    resolver: '/ProductListingPage',
+  },
+];
 
-rules.forEach((rule) => {
-  routes.add(rule.name, rule.regex, rule.page || rule.name);
-});
-
-module.exports = routes;
+module.exports = RoutesMap;
