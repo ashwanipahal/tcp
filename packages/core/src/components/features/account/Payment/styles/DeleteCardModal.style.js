@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 const deleteCardModalStyle = css`
   @media ${props => props.theme.mediaQuery.medium} {
-    margin: 0 80px;
+    margin: 0 58px;
   }
   @media ${props => props.theme.mediaQuery.smallOnly} {
     .deleteCardModal__card {
@@ -27,7 +27,7 @@ const deleteCardModalStyle = css`
     }
   }
   .deleteCardModal__btnWrapper {
-    padding-top: 80px;
+    padding-top: 20px;
     clear: both;
     text-align: center;
   }

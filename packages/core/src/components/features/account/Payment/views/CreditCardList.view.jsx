@@ -6,7 +6,7 @@ import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/CardList.style';
 import Col from '../../../../common/atoms/Col';
 import Row from '../../../../common/atoms/Row';
-import CardTile from '../../common/molecule/CardTile/views/CardTile.view';
+import { CardView } from './Card.view';
 
 // @flow
 
@@ -15,9 +15,26 @@ type Props = {
   creditCardList: Array<object>,
   className: string,
   setDefaultPaymentMethod: Function,
+  setDeleteModalMountState: Function,
+  deleteModalMountedState: false,
+  onDeleteCard: Function,
+  showUpdatedNotificationOnModal: any,
+  showNotification: boolean,
+  setSelectedCard: string,
 };
 
-const CreditCardList = ({ labels, creditCardList, className, setDefaultPaymentMethod }: Props) => {
+const CreditCardList = ({
+  labels,
+  creditCardList,
+  className,
+  setDefaultPaymentMethod,
+  setDeleteModalMountState,
+  deleteModalMountedState,
+  onDeleteCard,
+  showUpdatedNotificationOnModal,
+  showNotification,
+  setSelectedCard,
+}: Props) => {
   return (
     <div className={className}>
       <Heading
@@ -48,27 +65,19 @@ const CreditCardList = ({ labels, creditCardList, className, setDefaultPaymentMe
           </Button>
         </Col>
       </Row>
-      <Row fullBleed>
-        {creditCardList.size !== 0 &&
-          creditCardList.map((card, index) => (
-            <Col
-              className="cardList__col"
-              key={`container-${card.creditCardId}`}
-              colSize={{ large: 4, medium: 4, small: 6 }}
-              ignoreGutter={{
-                large: (index + 1) % 3 === 0,
-                medium: (index + 1) % 2 === 0,
-                small: true,
-              }}
-            >
-              <CardTile
-                card={card}
-                labels={labels}
-                setDefaultPaymentMethod={setDefaultPaymentMethod}
-              />
-            </Col>
-          ))}
-      </Row>
+      {creditCardList.size !== 0 && (
+        <CardView
+          labels={labels}
+          deleteModalMountedState={deleteModalMountedState}
+          setDeleteModalMountState={setDeleteModalMountState}
+          onDeleteCard={onDeleteCard}
+          showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
+          setDefaultPaymentMethod={setDefaultPaymentMethod}
+          cardList={creditCardList}
+          showNotification={showNotification}
+          setSelectedCard={setSelectedCard}
+        />
+      )}
     </div>
   );
 };

@@ -60,9 +60,7 @@ const renderItem = item => {
         onPress={() => {
           UrlHandler(link.url);
         }}
-      >
-        {link.text}
-      </Anchor>
+      />
     </Tile>
   );
 };

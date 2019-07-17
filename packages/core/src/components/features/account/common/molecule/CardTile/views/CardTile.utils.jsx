@@ -1,3 +1,7 @@
+import React from 'react';
+import Address from '../../../../../../common/molecules/Address';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+
 const getDataLocatorPrefix = ({ card }) => {
   switch (card.ccType) {
     case 'GiftCard':
@@ -32,4 +36,37 @@ const cardIconMapping = {
   VENMO: 'venmo-blue-acceptance-mark',
 };
 
-export { getDataLocatorPrefix, getCardName, cardIconMapping };
+const getAddressDetails = ({ card }) => {
+  return (
+    card.addressDetails && (
+      <Address
+        address={card.addressDetails}
+        fontWeight="normal"
+        showCountry={false}
+        showPhone={false}
+        dataLocatorPrefix="payment-creditcard"
+      />
+    )
+  );
+};
+
+const loading = (isGiftCardBalanceRequested, labels, balance) => {
+  return (
+    <React.Fragment>
+      {isGiftCardBalanceRequested && !balance && (
+        <BodyCopy
+          tag="span"
+          fontSize="fs24"
+          fontFamily="secondary"
+          fontWeight="extrabold"
+          className=""
+          lineHeights="lh115"
+        >
+          {labels.ACC_LBL_LOADING}
+        </BodyCopy>
+      )}
+    </React.Fragment>
+  );
+};
+
+export { getDataLocatorPrefix, getCardName, cardIconMapping, getAddressDetails, loading };
