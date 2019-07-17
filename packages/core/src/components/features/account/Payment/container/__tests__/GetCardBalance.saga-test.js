@@ -38,14 +38,26 @@ describe('GiftCardBalanceSaga', () => {
         },
       };
       const putDescriptor = getcardBalanceCardGen.next(error).value;
-      expect(putDescriptor).toEqual(put(setcheckBalanceError()));
+      expect(putDescriptor).toEqual(
+        put(
+          setcheckBalanceError({
+            card: payload.card,
+          })
+        )
+      );
     });
     it('should dispatch setcheckBalanceError action when api fails', () => {
       const response = {
         error: 'error in API',
       };
       const putDescriptor = getcardBalanceCardGen.throw(response).value;
-      expect(putDescriptor).toEqual(put(setcheckBalanceError(response)));
+      expect(putDescriptor).toEqual(
+        put(
+          setcheckBalanceError({
+            card: payload.card,
+          })
+        )
+      );
     });
   });
   describe('GiftCardBalanceSaga', () => {

@@ -9,6 +9,9 @@ const deleteCardModalStyle = css`
       display: block;
     }
   }
+  .deleteCardModal__venmoDesc {
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  }
   .deleteCardModal__cardInfo {
     float: left;
     width: 70%;
@@ -49,6 +52,10 @@ const deleteCardModalStyle = css`
       margin: 0 auto;
       width: 75%;
     }
+  }
+  .deleteCardModal__venmo_desc {
+    display: flex;
+    justify-content: center;
   }
   .deleteCardModal__img {
     width: 15%;

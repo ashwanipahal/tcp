@@ -2,8 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import ModuleH from '../views/ModuleH.native';
 import Carousel from '../../Carousel/views/Carousel.native';
-import { Anchor } from '../../../atoms';
-import { Header } from '../ModuleH.style.native';
+import { BodyCopy, Heading } from '../../../atoms';
 import mock from '../mock';
 
 describe('ModuleH component', () => {
@@ -22,19 +21,19 @@ describe('ModuleH component', () => {
   it('should render Heading', () => {
     const wrapperWithHeading = shallow(
       <ModuleH {...props.data}>
-        <Header />
+        <Heading />
       </ModuleH>
     );
-    expect(wrapperWithHeading.find(Header)).toHaveLength(2);
+    expect(wrapperWithHeading.find(Heading)).toHaveLength(2);
   });
 
   it('should render Links', () => {
     const wrapperWithLinks = shallow(
       <ModuleH {...props.data}>
-        <Anchor />
+        <BodyCopy />
       </ModuleH>
     );
-    expect(wrapperWithLinks.find(Anchor)).toHaveLength(5);
+    expect(wrapperWithLinks.find(BodyCopy)).toHaveLength(5);
   });
 
   it('should render Carousel', () => {

@@ -66,6 +66,7 @@ const createAPIConfig = () => {
     traceIdCount: 0,
     proto: 'https',
     MELISSA_KEY: '63987687',
+    BV_API_KEY: 'e50ab0a9-ac0b-436b-9932-2a74b9486436',
     storeId: '10151',
     catalogId: '10551',
     isUSStore: true,

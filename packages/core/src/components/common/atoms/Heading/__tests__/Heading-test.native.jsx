@@ -1,16 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import RichText from '../views/RichText.native';
+import { HeadingVanilla } from '../views/Heading.native';
 
-describe('RichText', () => {
+describe('HeadingVanilla', () => {
   let component;
 
   beforeEach(() => {
-    component = shallow(<RichText />);
+    component = shallow(<HeadingVanilla />);
   });
 
   it('should be defined', () => {
-    expect(RichText).toBeDefined();
+    expect(component).toBeDefined();
   });
 
   it('should render correctly', () => {
@@ -18,6 +18,6 @@ describe('RichText', () => {
   });
 
   it('should return abc component value one', () => {
-    expect(component.find('WebView')).toHaveLength(1);
+    expect(component.find('Text')).toHaveLength(1);
   });
 });
