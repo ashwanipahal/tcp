@@ -123,7 +123,11 @@ class ModuleH extends React.PureComponent<Props, State> {
           {textLines &&
             textLines.map((textLine, index) => {
               return link ? (
-                <TouchableOpacity accessibilityRole="link" onPress={() => UrlHandler(link.url)}>
+                <TouchableOpacity
+                  key={index.toString()}
+                  accessibilityRole="link"
+                  onPress={() => UrlHandler(link.url)}
+                >
                   <Header data-locator={`${getLocator('moduleH_header_text')}_${index + 1}`}>
                     {textLine.text}
                   </Header>
