@@ -14,15 +14,20 @@ type Props = {
 };
 
 export const AddGiftCardContainer = ({ onAddGiftCardClick, addGiftCardResponse }: Props) => {
-  if (addGiftCardResponse === 'success') {
+  const goBackToPayment = () => {
     Router.push('/account?id=payment', '/account/payment');
     return null;
+  };
+
+  if (addGiftCardResponse === 'success') {
+    return goBackToPayment();
   }
   return (
     <AddGiftCardComponent
       onAddGiftCardClick={onAddGiftCardClick}
       labels={labels}
       addGiftCardResponse={addGiftCardResponse}
+      goBackToPayment={goBackToPayment}
     />
   );
 };

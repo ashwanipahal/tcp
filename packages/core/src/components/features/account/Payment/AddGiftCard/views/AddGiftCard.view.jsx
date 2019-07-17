@@ -11,12 +11,19 @@ type Props = {
   className: String,
   onAddGiftCardClick: Function,
   addGiftCardResponse: String,
+  goBackToPayment: Function,
   labels: Object,
 };
 
 class AddGiftCard extends React.PureComponent<Props> {
   render() {
-    const { onAddGiftCardClick, className, addGiftCardResponse, labels } = this.props;
+    const {
+      onAddGiftCardClick,
+      className,
+      addGiftCardResponse,
+      labels,
+      goBackToPayment,
+    } = this.props;
     return (
       <div className={className}>
         <Anchor
@@ -48,7 +55,11 @@ class AddGiftCard extends React.PureComponent<Props> {
             }
           />
         )}
-        <AddGiftCardForm onAddGiftCardClick={onAddGiftCardClick} labels={labels} />
+        <AddGiftCardForm
+          onAddGiftCardClick={onAddGiftCardClick}
+          labels={labels}
+          goBackToPayment={goBackToPayment}
+        />
       </div>
     );
   }

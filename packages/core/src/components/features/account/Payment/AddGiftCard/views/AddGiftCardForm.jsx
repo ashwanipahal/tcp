@@ -25,6 +25,7 @@ type Props = {
   },
   handleSubmit: Function,
   change: Function,
+  goBackToPayment: Function,
 };
 
 class AddGiftCardForm extends React.PureComponent<Props, State> {
@@ -44,7 +45,8 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
   };
 
   onCancelClick = () => {
-    return Router.push('/account?id=payment', '/account/payment');
+    const { goBackToPayment } = this.props;
+    return goBackToPayment();
   };
 
   render() {
