@@ -1,18 +1,20 @@
 const buildQuery = ({ brand, country, channel }) => `
-  mainNavigation(brand: "${brand}", country: "${country}", channel: "${channel}")) {
-    categoryContent {
+  navigation: mainNavigation(brand: "${brand}", country: "${country}", channel: "${channel}")) {
+    nav {
+      categoryContent {
         categoryId
         mainContent {
           contentId
         }
-    }
-    subCategories {
-        categoryContent {
+      }
+      subCategories {
+          categoryContent {
             categoryId
-        }
-        subCategories {
+          }
+          subCategories {
             categoryId
-        }
+          }
+      }
     }
   }
 `;
