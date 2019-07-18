@@ -2,30 +2,22 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { withTheme } from 'styled-components';
 
-/*
-  Based on breakpoints defined on theme, it will create the srcset according to
-  the breakpoints; If user only send the Cloudinary imgPath, it add the
-  configuration according to the breakpoints; For ony adding width property;
-  If width found on imgConfigs (cloudinary config) then it will use to create srcset;
-*/
+const getBreakpointImgUrl = (type, props) => {
+  const {
+    theme: { breakpoints },
+    path,
+    imgPath,
+    imgConfigs,
+  } = props;
 
-const getSrcSetConfig = props => {
-  const { breakpoints, path, imgPath, imgConfigs } = props;
+  const breakpointTypeIndex = breakpoints.keys.indexOf(type);
+  const breakpoint = breakpoints.values[type];
 
-  return breakpoints.keys
-    .map((breakpointKey, breakpointKeyIndex) => {
-      const breakpointValue = breakpoints.values[breakpointKey];
-      let cloudinaryImgConfig = imgConfigs[breakpointKeyIndex] || '';
-
-      if (!cloudinaryImgConfig) {
-        cloudinaryImgConfig = breakpointValue ? `w_${breakpointValue}` : null;
-      }
-
-      return cloudinaryImgConfig
-        ? { url: `${path}/${cloudinaryImgConfig}/${imgPath}`, size: breakpointValue }
-        : null;
-    })
-    .filter(val => val);
+  let config = `w_${breakpoint}`;
+  if (imgConfigs[breakpointTypeIndex]) {
+    config = imgConfigs[breakpointTypeIndex];
+  }
+  return `${path}/${config}/${imgPath}`;
 };
 
 const DamImage = props => {
@@ -38,17 +30,29 @@ const DamImage = props => {
     ...other
   } = props;
 
-  const srcSetConfigs = getSrcSetConfig({ breakpoints, path, imgPath, imgConfigs });
   return (
     <picture>
-      {srcSetConfigs
-        .slice(0)
-        .reverse()
-        .map(config => {
-          const { url, size } = config;
-          return size ? <source media={`(min-width: ${size}px)`} srcSet={url} key={url} /> : null;
-        })}
-      <img src={srcSetConfigs[0].url} alt={alt} title={alt} {...other} />
+      <source
+        media={`(min-width: ${breakpoints.values.xl}px)`}
+        srcSet={getBreakpointImgUrl('xl', props)}
+      />
+
+      <source
+        media={`(min-width: ${breakpoints.values.lg}px)`}
+        srcSet={getBreakpointImgUrl('lg', props)}
+      />
+
+      <source
+        media={`(min-width: ${breakpoints.values.sm}px)`}
+        srcSet={getBreakpointImgUrl('sm', props)}
+      />
+
+      <img
+        src={getBreakpointImgUrl(imgConfigs[0] ? 'xs' : 'sm', props)}
+        alt={alt}
+        title={alt}
+        {...other}
+      />
     </picture>
   );
 };
