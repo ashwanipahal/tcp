@@ -42,10 +42,9 @@ const LinkText = (props: Props) => {
   return (
     <Anchor className={className} {...link}>
       <Component {...compProps} className="link-text">
-        {textLines &&
-          textLines.map(({ style, text }, index) => (
-            <span className={style}>{index ? ` ${text}` : text}</span>
-          ))}
+        {textLines.map(({ style, text }, index) => (
+          <span className={style}>{index ? ` ${text}` : text}</span>
+        ))}
       </Component>
     </Anchor>
   );
