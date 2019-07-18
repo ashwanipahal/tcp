@@ -1,5 +1,5 @@
 export const getAddGiftCardResponse = state => {
-  return state.AddGiftCardReducer.get('showUpdatedNotification');
+  return state.AddGiftCardReducer.get('error');
 };
 
 export const getOnAddGiftCardPageState = state => {

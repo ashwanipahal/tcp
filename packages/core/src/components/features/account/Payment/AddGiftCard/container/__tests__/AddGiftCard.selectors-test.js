@@ -13,7 +13,7 @@ describe('#Add Gift Card selector', () => {
   };
 
   it('#AddGiftCardState should return AddGiftCard state', () => {
-    expect(getAddGiftCardResponse(state)).toEqual(AddGiftCardState.get('showUpdatedNotification'));
+    expect(getAddGiftCardResponse(state)).toEqual(AddGiftCardState.get('error'));
   });
 
   it('#AddGiftCardState should return AddGiftCard state', () => {

@@ -24,7 +24,8 @@ exports[`Add gift card component should render component correctly if add gift i
         "small": 6,
       }
     }
-    status="failure"
+    message="failure"
+    status="error"
   />
   <ReduxForm
     destroyOnUnmount={true}
@@ -74,7 +75,8 @@ exports[`Add gift card component should render component correctly if add gift i
         "small": 6,
       }
     }
-    status="success"
+    message="success"
+    status="error"
   />
   <ReduxForm
     destroyOnUnmount={true}
