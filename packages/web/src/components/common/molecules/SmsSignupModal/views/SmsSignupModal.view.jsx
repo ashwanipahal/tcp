@@ -220,7 +220,7 @@ class SignupWrapper extends React.PureComponent {
           onClick={this.onButtonClick}
           dataLocator="footer_sms_signup_btn"
         >
-          <RichText richTextHtml={buttonConfig.title} />
+          <RichText richTextHtml={buttonConfig.text} />
         </Button>
       </Fragment>
     );

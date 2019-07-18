@@ -47,14 +47,16 @@ const config = {
       },
     ],
   },
-  CAROUSEL_MOBILE_DEFAULTS: {
+  CAROUSEL_APP_DEFAULTS: {
     autoplay: true,
     loop: true,
     vertical: true,
     autoplayDelay: 1000,
     autoplayInterval: 3000,
+    inactiveSlideScale: 1,
+    scrollEnabled: false,
   },
-  CAROUSEL_MOBILE_CONFIG: {
+  CAROUSEL_APP_CONFIG: {
     playIconHeight: 30,
     playIconWidth: 30,
   },
