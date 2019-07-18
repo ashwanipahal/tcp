@@ -13,21 +13,27 @@ export const getCardType = createSelector(getCardNumber, cc => {
   }
 
   // look up based on cardNumber
-  Object.keys(constants.CREDIT_CARDS_BIN_RANGES).filter(range => {
+  const type = Object.keys(constants.CREDIT_CARDS_BIN_RANGES).filter(range => {
     const rangeCount = range.length;
-    for (const currentRange = 0, currentRange < rangesCount, currentRange++) {
-      const { from, to } = range[currentRange];
+    for (let i = 0; i < rangeCount; i += i + 1) {
+      const { from, to } = range[i];
       const prefixLength = from.toString().length;
       const prefix = (cc.cardNumber || '').substr(0, prefixLength);
 
       if (prefix >= from && prefix <= to) {
-        return range;
+        return true;
       }
     }
-  })
+    return false;
+  });
 
+  if(type && type.length > 0) {
+    return constants.ACCEPTED_CREDIT_CARDS[type[0]];
+  }
 
   if (cc.cardType && cc.cardNumber.substr(0, 1) === '*') { // if not editing
     return cc.cardType.toUpperCase();
   }
+
+  return null;
 });
