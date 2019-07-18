@@ -28,6 +28,7 @@ describe('DamImage component', () => {
 
     expect(component.find('source').get(0).props.srcSet).toEqual(srcSets[0]);
     expect(component.find('source').get(1).props.srcSet).toEqual(srcSets[1]);
+    expect(component.find('source').get(2)).toBeFalsy();
     expect(component.find('img').get(0).props.src).toEqual(srcSets[2]);
   });
 
