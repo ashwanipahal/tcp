@@ -1,0 +1,174 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreditCardModalInfo Component should render correctly 1`] = `
+<div>
+  <Styled(Row)
+    className="elem-mb-MED"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 12,
+          "small": 12,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs18"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="elem-mb-MED"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 8,
+          "small": 2,
+        }
+      }
+      offsetLeft={
+        Object {
+          "medium": 3,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <Styled(Image) />
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 10,
+          "medium": 8,
+          "small": 4,
+        }
+      }
+    >
+      <Styled(Row)
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+          offsetLeft={
+            Object {
+              "medium": 2,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="semibold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            111
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 6,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+          offsetLeft={
+            Object {
+              "medium": 2,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            fgh
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="elem-mb-MED"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 10,
+          "medium": 8,
+          "small": 4,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 2,
+          "medium": 2,
+          "small": 2,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="primary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <Address
+          fontWeight="regular"
+          showCountry={false}
+          showPhone={false}
+        />
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;
