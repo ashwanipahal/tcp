@@ -7,6 +7,6 @@ exports[`Image component renders correctly 1`] = `
   onError={null}
   sizes={null}
   src="acdde.html"
-  srcSet={null}
+  srcSet=""
 />
 `;

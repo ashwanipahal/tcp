@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Promo Text Banner component renders correctly 1`] = `
+<StyledComponent
+  external={0}
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bdVaJa",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  font-family: ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+  ",
+          [Function],
+          ";
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(Anchor)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bdVaJa",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  target=""
+  title=""
+  url="https://www.childrensplace.com/us/c/girls-new-arrivals"
+>
+  <Styled(BodyCopy)
+    className="link-text"
+    color="text.primary"
+    component="p"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    icon={
+      Object {
+        "icon": "heart",
+        "placement": "left|middle|right",
+      }
+    }
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <span
+      className="moduleK__Header"
+    >
+      UNICORNS,
+    </span>
+    <span
+      className="moduleK__Header"
+    >
+       DINOS & MORE!
+    </span>
+  </Styled(BodyCopy)>
+</StyledComponent>
+`;

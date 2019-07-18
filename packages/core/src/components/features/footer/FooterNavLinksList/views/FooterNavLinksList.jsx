@@ -23,8 +23,9 @@ const FooterNavLinksList = ({ className, listArray, colNum }: Props) => {
             fontSizeVariation="large"
             data-locator={`col_${colNum}_link_${index}`}
             target={linkItems.target}
+            title={linkItems.title}
           >
-            {linkItems.title}
+            {linkItems.text}
           </Anchor>
         </li>
       ))}

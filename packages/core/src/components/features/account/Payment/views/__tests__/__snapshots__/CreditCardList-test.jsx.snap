@@ -42,9 +42,6 @@ exports[`CreditCardList Component should render correctly 1`] = `
       />
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)
-    fullBleed={true}
-  />
 </div>
 `;
 
@@ -80,76 +77,39 @@ exports[`CreditCardList Component should render correctly if list is present 1`]
       />
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)
-    fullBleed={true}
-  >
-    <Styled(Col)
-      className="cardList__col"
-      colSize={
+  <CardView
+    cardList={
+      Immutable.List [
         Object {
-          "large": 4,
-          "medium": 4,
-          "small": 6,
-        }
+          "accountNo": "************1111",
+          "addressDetails": Object {
+            "addressLine1": "111 3rd Ave",
+            "addressLine2": "",
+            "city": "New York",
+            "country": "US",
+            "firstName": "new",
+            "lastName": "address",
+            "phone1": "9878909876",
+            "state": "NY",
+            "zipCode": "10003",
+          },
+          "billingAddressId": 160685,
+          "ccBrand": "Visa",
+          "ccType": "COMPASSVISA",
+          "creditCardId": 73501,
+          "defaultInd": false,
+          "expMonth": "5 ",
+          "expYear": "2024",
+          "nameOnAccount": ".",
+          "properties": null,
+        },
+      ]
+    }
+    labels={
+      Object {
+        "creditCardHeading": "heading",
       }
-      ignoreGutter={
-        Object {
-          "large": false,
-          "medium": false,
-          "small": true,
-        }
-      }
-      key="container-73501"
-    >
-      <ReduxForm
-        card={
-          Object {
-            "accountNo": "************1111",
-            "addressDetails": Object {
-              "addressLine1": "111 3rd Ave",
-              "addressLine2": "",
-              "city": "New York",
-              "country": "US",
-              "firstName": "new",
-              "lastName": "address",
-              "phone1": "9878909876",
-              "state": "NY",
-              "zipCode": "10003",
-            },
-            "billingAddressId": 160685,
-            "ccBrand": "Visa",
-            "ccType": "COMPASSVISA",
-            "creditCardId": 73501,
-            "defaultInd": false,
-            "expMonth": "5 ",
-            "expYear": "2024",
-            "nameOnAccount": ".",
-            "properties": null,
-          }
-        }
-        destroyOnUnmount={false}
-        enableReinitialize={true}
-        forceUnregisterOnUnmount={false}
-        getFormState={[Function]}
-        keepDirtyOnReinitialize={false}
-        labels={
-          Object {
-            "creditCardHeading": "heading",
-          }
-        }
-        persistentSubmitErrors={false}
-        pure={true}
-        shouldAsyncValidate={[Function]}
-        shouldError={[Function]}
-        shouldValidate={[Function]}
-        shouldWarn={[Function]}
-        submitAsSideEffect={false}
-        touchOnBlur={true}
-        touchOnChange={false}
-        updateUnregisteredFields={false}
-        validate={[Function]}
-      />
-    </Styled(Col)>
-  </Styled(Row)>
+    }
+  />
 </div>
 `;
