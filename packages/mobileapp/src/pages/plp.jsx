@@ -5,7 +5,19 @@ import NavBarIcon from '../components/common/atoms/NavBarIcon';
 
 const Plp = () => <Text>PLP Page</Text>;
 
-const ProductList = props => <Text>Product List Page {props.product} </Text>;
+const ProductList = Props => {
+  const { navigation: props } = Props;
+  const { getParam } = props;
+  const productName = getParam('product');
+  return (
+    <React.Fragment>
+      <Text>
+        Product List Page
+        {productName}
+      </Text>
+    </React.Fragment>
+  );
+};
 
 const PlpStack = createStackNavigator({
   Plp,

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView, TouchableOpacity } from 'react-native';
+import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
@@ -17,9 +17,12 @@ class HomePageView extends React.Component {
     return (
       <ScrollView>
         <React.Fragment>
-          {/* <SlotA {...slotA} />
-          <SlotB {...slotB} /> */}
-          <Anchor url="https://www.google.com/c/" external navigation={navigation} />
+          <Anchor
+            url="https://www.google.com/p/Rainbow--The-Birthday-Girl--Graphic-Tee"
+            navigation={navigation}
+          />
+          <SlotA {...slotA} />
+          <SlotB {...slotB} />
         </React.Fragment>
       </ScrollView>
     );
@@ -30,6 +33,11 @@ HomePageView.propTypes = {
   slot_1: PropTypes.shape({}).isRequired,
   slot_2: PropTypes.shape({}).isRequired,
   getBootstrapData: PropTypes.func.isRequired,
+  navigation: PropTypes.node,
+};
+
+HomePageView.defaultProps = {
+  navigation: null,
 };
 
 export default errorBoundary(HomePageView);
