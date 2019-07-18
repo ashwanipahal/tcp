@@ -31,7 +31,7 @@ export function* addAddressGet({ payload }) {
           nickName: addressKey,
           phone1: payload.phoneNumber,
           phone1Publish: 'false',
-          primary: payload.primary ? 'true' : 'false', // as string
+          primary: payload.primary,
           state: payload.state,
           zipCode: payload.zip,
           xcont_addressField2: payload.isCommercialAddress ? '2' : '1',
