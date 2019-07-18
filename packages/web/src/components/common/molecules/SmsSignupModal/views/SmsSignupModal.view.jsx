@@ -116,6 +116,9 @@ class SignupWrapper extends React.PureComponent {
             onRequestClose={this.closeModal}
             noPadding
             widthConfig={{ small: '375px', medium: '458px', large: '851px' }}
+            closeIconDataLocator={
+              isSubscriptionValid ? 'thank_you_modal_close_btn' : 'email_signup_modal_close_btn'
+            }
           >
             {isSubscriptionValid === 'valid' ? (
               <Grid>
@@ -139,6 +142,7 @@ class SignupWrapper extends React.PureComponent {
                           type="submit"
                           className="shop-button"
                           onClick={this.closeModal}
+                          dataLocator="shop_now_btnForm"
                         >
                           {formViewConfig.shopNowLabel}
                         </Button>
@@ -173,7 +177,7 @@ class SignupWrapper extends React.PureComponent {
                           type="text"
                           component={TextBox}
                           maxLength={50}
-                          dataLocator="signup_textbox"
+                          dataLocator="sms_address_field"
                           onChange={this.onSignUpInputChange}
                           onBlur={this.onSignUpInputBlur}
                           className={showAsyncError ? 'async-error' : ''}
@@ -197,6 +201,7 @@ class SignupWrapper extends React.PureComponent {
                             fill="BLUE"
                             type="submit"
                             className="join-button"
+                            dataLocator="join_now_btn"
                           >
                             {formViewConfig.joinButtonLabel}
                           </Button>
@@ -209,7 +214,12 @@ class SignupWrapper extends React.PureComponent {
             )}
           </Modal>
         )}
-        <Button customStyle="shadow-button" title={buttonConfig.title} onClick={this.onButtonClick}>
+        <Button
+          customStyle="shadow-button"
+          title={buttonConfig.title}
+          onClick={this.onButtonClick}
+          dataLocator="footer_sms_signup_btn"
+        >
           <RichText richTextHtml={buttonConfig.text} />
         </Button>
       </Fragment>

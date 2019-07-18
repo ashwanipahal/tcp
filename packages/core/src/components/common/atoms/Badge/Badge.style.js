@@ -42,6 +42,7 @@ const BadgeStyles = css`
       props.showCheckmark
         ? props.theme.spacing.ELEM_SPACING.XXXS
         : props.theme.spacing.ELEM_SPACING.XXS};
+    color: ${props => props.theme.colors.WHITE};
   }
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
