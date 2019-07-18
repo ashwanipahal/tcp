@@ -17,7 +17,8 @@ type Props = {
   cardList: Array<object>,
   showNotification: boolean,
   showNotificationCaptcha: boolean,
-}; // giftCards comment for time being
+  setDefaultPaymentMethod: Function,
+};
 export const CardList = ({
   setSelectedGiftCard,
   className,
@@ -28,35 +29,36 @@ export const CardList = ({
   cardList,
   showNotification,
   showNotificationCaptcha,
+  setDefaultPaymentMethod,
 }: Props) => {
   return (
     <div>
       <Row fullBleed className={className}>
-        {cardList &&
-          cardList.map((card, index) => (
-            <Col
-              className="cardList__col"
-              key={`container-${card.creditCardId}`}
-              colSize={{ large: 4, medium: 4, small: 6 }}
-              ignoreGutter={{
-                large: (index + 1) % 3 === 0,
-                medium: (index + 1) % 2 === 0,
-                small: true,
-              }}
-            >
-              <CardTile
-                card={card}
-                setSelectedGiftCard={setSelectedGiftCard}
-                setDeleteModalMountState={setDeleteModalMountState}
-                onGetBalanceCard={onGetBalanceCard}
-                checkbalanceValueInfo={checkbalanceValueInfo}
-                form={`giftcardBalance-${card.creditCardId}`}
-                labels={labels}
-                showNotification={showNotification}
-                showNotificationCaptcha={showNotificationCaptcha}
-              />
-            </Col>
-          ))}
+        {cardList.map((card, index) => (
+          <Col
+            className="cardList__col"
+            key={`container-${card.creditCardId}`}
+            colSize={{ large: 4, medium: 4, small: 6 }}
+            ignoreGutter={{
+              large: (index + 1) % 3 === 0,
+              medium: (index + 1) % 2 === 0,
+              small: true,
+            }}
+          >
+            <CardTile
+              card={card}
+              setSelectedGiftCard={setSelectedGiftCard}
+              setDeleteModalMountState={setDeleteModalMountState}
+              onGetBalanceCard={onGetBalanceCard}
+              checkbalanceValueInfo={checkbalanceValueInfo}
+              form={`giftcardBalance-${card.creditCardId}`}
+              labels={labels}
+              showNotification={showNotification}
+              showNotificationCaptcha={showNotificationCaptcha}
+              setDefaultPaymentMethod={setDefaultPaymentMethod}
+            />
+          </Col>
+        ))}
       </Row>
     </div>
   );

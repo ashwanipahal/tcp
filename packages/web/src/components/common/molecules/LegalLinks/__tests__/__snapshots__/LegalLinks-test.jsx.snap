@@ -11,9 +11,10 @@ exports[`Legal Links component renders correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         target=""
+        title="Terms and Conditions title"
         to="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
       >
-        Terms and Conditions title
+        Terms and Conditions
       </Styled(Anchor)>
     </li>
     <li
@@ -22,9 +23,10 @@ exports[`Legal Links component renders correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         target=""
+        title="Privacy Policy title"
         to="https://www.childrensplace.com/us/help-center/#privacyPolicySectionli"
       >
-        Privacy Policy title
+        Privacy Policy
       </Styled(Anchor)>
     </li>
     <li
@@ -33,9 +35,10 @@ exports[`Legal Links component renders correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         target=""
+        title="Cookie Policy title"
         to="https://www.childrensplace.com/us/help-center/#cookiePolicySectionli"
       >
-        Cookie Policy title
+        Cookie Policy
       </Styled(Anchor)>
     </li>
     <li
@@ -44,9 +47,10 @@ exports[`Legal Links component renders correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         target=""
+        title="California supply chain act title"
         to="https://www.childrensplace.com/us/content/supply-chain"
       >
-        California supply chain act title
+        California Supply Chains Act
       </Styled(Anchor)>
     </li>
     <li
@@ -55,9 +59,10 @@ exports[`Legal Links component renders correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         target=""
+        title="Site Map title"
         to="https://www.childrensplace.com/us/sitemap"
       >
-        Site Map title
+        Site Map
       </Styled(Anchor)>
     </li>
   </ul>

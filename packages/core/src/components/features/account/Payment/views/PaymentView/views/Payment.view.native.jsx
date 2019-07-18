@@ -11,9 +11,14 @@ type Props = {
   cardList: object,
 };
 
-const PaymentViewContainer = ({ labels,creditCardList,
+const PaymentViewContainer = ({
+  labels,
+  creditCardList,
   giftCardList,
-  venmoCardList,cardList,setDefaultPaymentMethod }: Props) => {
+  venmoCardList,
+  cardList,
+  setDefaultPaymentMethod,
+}: Props) => {
   return (
     <PaymentSection
       labels={labels}
@@ -23,7 +28,7 @@ const PaymentViewContainer = ({ labels,creditCardList,
       cardList={cardList}
       setDefaultPaymentMethod={setDefaultPaymentMethod}
     />
-);
+  );
 };
 
 export default PaymentViewContainer;

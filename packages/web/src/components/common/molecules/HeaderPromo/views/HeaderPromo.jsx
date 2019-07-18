@@ -31,23 +31,27 @@ const renderMobileMarkup = (dataPromo, className) => {
             <Image src={getIconPath(promoItem.linkClass.class)} alt={promoItem.linkClass.title} />
           </div>
           <div className="header-promo-item__content">
-            <BodyCopy
-              className={`styled-text ${promoItem.textLines[0].style}`}
-              fontWeight="black"
-              fontFamily="secondary"
-              fontSize={['fs12', 'fs12', 'fs14']}
-              textAlign="center"
-            >
-              {promoItem.textLines[0].text}
-            </BodyCopy>
-            <BodyCopy
-              className={`styled-text-line ${promoItem.textLines[1].style}`}
-              fontFamily="secondary"
-              fontSize={['fs12', 'fs12', 'fs14']}
-              textAlign="center"
-            >
-              {promoItem.textLines[1].text}
-            </BodyCopy>
+            {promoItem.textItems[0] && (
+              <BodyCopy
+                className={`styled-text ${promoItem.textItems[0].style}`}
+                fontWeight="black"
+                fontFamily="secondary"
+                fontSize={['fs12', 'fs12', 'fs14']}
+                textAlign="center"
+              >
+                {promoItem.textItems[0].text}
+              </BodyCopy>
+            )}
+            {promoItem.textItems[1] && (
+              <BodyCopy
+                className={`styled-text-line ${promoItem.textItems[1].style}`}
+                fontFamily="secondary"
+                fontSize={['fs12', 'fs12', 'fs14']}
+                textAlign="center"
+              >
+                {promoItem.textItems[1].text}
+              </BodyCopy>
+            )}
           </div>
         </Anchor>
       ))}
@@ -76,23 +80,27 @@ const renderDesktopMarkup = (dataPromo, className) => {
               <Image src={getIconPath(promoItem.linkClass.class)} alt={promoItem.linkClass.title} />
             </div>
             <div className="header-promo-item__content">
-              <BodyCopy
-                className={`styled-text ${promoItem.textLines[0].style}`}
-                fontWeight="black"
-                fontFamily="secondary"
-                fontSize={['fs12', 'fs12', 'fs14']}
-                textAlign="center"
-              >
-                {promoItem.textLines[0].text}
-              </BodyCopy>
-              <BodyCopy
-                className={`styled-text-line ${promoItem.textLines[1].style}`}
-                fontFamily="secondary"
-                fontSize={['fs12', 'fs12', 'fs14']}
-                textAlign="center"
-              >
-                {promoItem.textLines[1].text}
-              </BodyCopy>
+              {promoItem.textItems[0] && (
+                <BodyCopy
+                  className={`styled-text ${promoItem.textItems[0].style}`}
+                  fontWeight="black"
+                  fontFamily="secondary"
+                  fontSize={['fs12', 'fs12', 'fs14']}
+                  textAlign="center"
+                >
+                  {promoItem.textItems[0].text}
+                </BodyCopy>
+              )}
+              {promoItem.textItems[1] && (
+                <BodyCopy
+                  className={`styled-text-line ${promoItem.textItems[1].style}`}
+                  fontFamily="secondary"
+                  fontSize={['fs12', 'fs12', 'fs14']}
+                  textAlign="center"
+                >
+                  {promoItem.textItems[1].text}
+                </BodyCopy>
+              )}
             </div>
           </Anchor>
         </Col>
