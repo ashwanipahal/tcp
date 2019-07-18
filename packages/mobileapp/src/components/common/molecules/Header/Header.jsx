@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import {
@@ -25,6 +26,7 @@ const upIcon = require('../../../../assets/images/carrot-small-up.png');
 const cartIcon = require('../../../../assets/images/empty-bag.png');
 
 const textStyle = { position: 'absolute', marginTop: 18, paddingRight: 5 };
+const wrapperStyle = { marginTop: Platform.OS === 'ios' ? 40 : 0 };
 
 class Header extends React.Component<Props> {
   constructor(props) {
@@ -52,7 +54,7 @@ class Header extends React.Component<Props> {
       headerLabels = labels;
     }
     return (
-      <Wrapper>
+      <Wrapper style={wrapperStyle}>
         <VerticalLeftView>
           <BodyCopy
             fontFamily="secondary"
@@ -74,7 +76,6 @@ class Header extends React.Component<Props> {
             {isIconIn ? <Icon source={upIcon} /> : <Icon source={downIcon} />}
           </HorizontalView>
         </VerticalLeftView>
-
         <VerticalRightView>
           <Icon source={cartIcon} width="32px" height="32px" />
           <RoundView color="white" width="22px" height="22px" borderRadius={11} />

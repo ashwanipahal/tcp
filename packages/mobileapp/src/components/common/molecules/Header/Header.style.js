@@ -8,7 +8,6 @@ export const Wrapper = styled.View`
   padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   display: flex;
   background: white;
-  margin-top: 40px;
 `;
 
 export const VerticalLeftView = styled.View`
