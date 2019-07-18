@@ -32,22 +32,22 @@ const DamImage = props => {
 
   return (
     <picture>
-      <source
-        media={`(min-width: ${breakpoints.values.xl}px)`}
-        srcSet={getBreakpointImgUrl('xl', props)}
-      />
+      {imgConfigs[3] ? (
+        <source
+          media={`(min-width: ${breakpoints.values.xl}px)`}
+          srcSet={getBreakpointImgUrl('xl', props)}
+        />
+      ) : null}
 
       <source
         media={`(min-width: ${breakpoints.values.lg}px)`}
-        srcSet={getBreakpointImgUrl('lg', props)}
+        srcSet={getBreakpointImgUrl(imgConfigs[2] ? 'lg' : 'xl', props)}
       />
 
-      {imgConfigs[0] ? (
-        <source
-          media={`(min-width: ${breakpoints.values.sm}px)`}
-          srcSet={getBreakpointImgUrl('sm', props)}
-        />
-      ) : null}
+      <source
+        media={`(min-width: ${breakpoints.values.sm}px)`}
+        srcSet={getBreakpointImgUrl(imgConfigs[1] ? 'sm' : 'lg', props)}
+      />
 
       <img
         src={getBreakpointImgUrl(imgConfigs[0] ? 'xs' : 'sm', props)}

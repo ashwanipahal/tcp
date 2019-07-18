@@ -34,10 +34,10 @@ describe('DamImage component', () => {
 
   it('Should create correct srcset with imgLocation and cloudinary configuration', () => {
     const srcSets = [
+      'https://res.cloudinary.com/tcp-dam-test/image/upload/c_crop,g_face:auto,q_auto:best,w_1600/dancing-boy.png',
       'https://res.cloudinary.com/tcp-dam-test/image/upload/c_crop,g_face:auto,q_auto:best,w_1440/dancing-boy.png',
-      'https://res.cloudinary.com/tcp-dam-test/image/upload/c_crop,g_face:auto,q_auto:best,w_1100/dancing-boy.png',
-      'https://res.cloudinary.com/tcp-dam-test/image/upload/c_fill,g_face:center,q_auto:best,w_780/dancing-boy.png',
-      'https://res.cloudinary.com/tcp-dam-test/image/upload/g_face:center,q_auto:best,w_470/dancing-boy.png',
+      'https://res.cloudinary.com/tcp-dam-test/image/upload/c_fill,g_face:center,q_auto:best,w_1024/dancing-boy.png',
+      'https://res.cloudinary.com/tcp-dam-test/image/upload/g_face:center,q_auto:best,w_768/dancing-boy.png',
     ];
 
     const component = mount(
@@ -46,10 +46,10 @@ describe('DamImage component', () => {
         alt="Dancing Boy"
         imgPath="dancing-boy.png"
         imgConfigs={[
-          'g_face:center,q_auto:best,w_470',
-          'c_fill,g_face:center,q_auto:best,w_780',
-          'c_crop,g_face:auto,q_auto:best,w_1100',
+          'g_face:center,q_auto:best,w_768',
+          'c_fill,g_face:center,q_auto:best,w_1024',
           'c_crop,g_face:auto,q_auto:best,w_1440',
+          'c_crop,g_face:auto,q_auto:best,w_1600',
         ]}
       />
     );
