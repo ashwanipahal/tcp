@@ -54,20 +54,53 @@ const calculateOffset = (colCount, breakpoint, gridDimensions) => {
   );
 };
 
+/**
+ * @function calculateNthChild
+ * @param {String} viewport - small|medium|large
+ * @param {Number} col - number of columns passed in props
+ * @param {object} gridDimensions - The grid dimension object from the theme,
+ * contains all the hardcoded values of the grid.
+ */
+const calculateNthChild = (viewport, col, gridDimensions) => {
+  return gridDimensions.numberOfColumnsObj[viewport] % col === 0
+    ? gridDimensions.numberOfColumnsObj[viewport] / col
+    : '';
+};
+
+/**
+ * Calculates effective col length with all offsets
+ * @param {Object} {colSize} Object, {offsetLeft} Object, {offsetRight} Object
+ * @param {*} viewport small|medium|large
+ */
+const colLength = ({ colSize, offsetLeft, offsetRight }, viewport) => {
+  let length = colSize[viewport];
+  if (offsetLeft && offsetLeft[viewport]) {
+    length += offsetLeft[viewport];
+  }
+  if (offsetRight && offsetRight[viewport]) {
+    length += offsetRight[viewport];
+  }
+  return length;
+};
+
 const StyledCol = css`
   ${props =>
     props.theme.gridDimensions.gridBreakPointsKeys.map(
+      // eslint-disable-next-line complexity
       key => `
       @media ${props.theme.mediaQuery[`${key}Only`]} {
-        ${props.hideCol && props.hideCol[key] ? 'display: none' : ''};
+        ${calculateNthChild(key, colLength(props, key), props.theme.gridDimensions) &&
+          `&:nth-child(${calculateNthChild(
+            key,
+            colLength(props, key),
+            props.theme.gridDimensions
+          )}) {
+            margin-right: 0;
+          }`}
       }
-      @media ${props.theme.mediaQuery[key]} {
+      ${key !== 'small' ? `}` : ''}
+      ${key !== 'small' ? `@media ${props.theme.mediaQuery[key]} {` : ''}
           ${!props.isNotInlineBlock ? 'display: inline-block' : ''};
-          ${
-            !(props.ignoreGutter && props.ignoreGutter[key])
-              ? `padding-right: ${getGutter(key, props.theme.gridDimensions)}%`
-              : 'padding-right:0'
-          };
           margin-left: ${
             props.offsetLeft && props.offsetLeft[key]
               ? calculateOffset(props.offsetLeft[key], key, props.theme.gridDimensions)
@@ -78,8 +111,16 @@ const StyledCol = css`
               ? calculateOffset(props.offsetRight[key], key, props.theme.gridDimensions)
               : '0'
           }%;
+          ${
+            !(props.ignoreGutter && props.ignoreGutter[key])
+              ? `margin-right: ${getGutter(key, props.theme.gridDimensions)}%`
+              : ''
+          };
           width: ${getColumnWidth(props.colSize[key], key, props.theme.gridDimensions)}%;
-      }`
+        ${key !== 'small' ? `}` : ''}
+        ${key !== 'small' ? `@media ${props.theme.mediaQuery[`${key}Only`]} {` : ''}
+        ${props.hideCol && props.hideCol[key] ? 'display: none' : ''};
+      `
     )}
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

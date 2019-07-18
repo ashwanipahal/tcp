@@ -1,9 +1,6 @@
 import { css } from 'styled-components';
 
 const GlobalCss = css`
-  font-family: ${props => props.theme.fonts.secondaryFontSemilBoldFamily};
-  font-size: ${props => props.theme.fonts.fontSize.heading.small.h6}px;
-  color: ${props => props.theme.colors.ACCORDION.TEXT};
   margin: 0 0 37px 0;
   ::after {
     content: '';

@@ -33,19 +33,11 @@ const HeaderPromoStyles = css`
       justify-content: center;
     }
   }
-  .styled-text {
-    font-weight: ${props => props.theme.fonts.fontWeight.black};
-  }
 
   .styled-text,
   .styled-text-line {
-    font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy2}px;
     display: inline;
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
-    @media ${props => props.theme.mediaQuery.large} {
-      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy3}px;
-    }
-    color: ${props => props.theme.colors.PRIMARY.DARK};
     /* TODO - Remove the style1, style2, style3 when the styles start coming up from CMS */
     &.style1,
     &[class*='orange-'] {

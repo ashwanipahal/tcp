@@ -11,85 +11,35 @@ exports[`Delete card Modal should render correctly 1`] = `
   overlayClassName="TCPModal__Overlay"
 >
   <div>
-    <Styled(BodyCopy)
-      className="deleteCardModal__modalTitle"
-      color="text.primary"
-      component="div"
-      dataLocator=""
-      fontFamily="primary"
-      fontSize={
-        Array [
-          "fs18",
-        ]
+    <CreditCardModalInfo
+      TotalExp="undefined/undefined "
+      address={null}
+      data={
+        Object {
+          "buttons": Object {
+            "cancel": "No, Dont Cancel",
+            "confirm": "Yes Delete",
+          },
+          "cardText": Object {
+            "cardEnd": "Card ending in ",
+            "expire": " Expire on ",
+          },
+          "description": Object {
+            "addressLine": Array [
+              "addressline 1",
+              "addressline 2",
+            ],
+            "firstName": "test",
+            "lastName": "test",
+          },
+          "heading": "DELETE ADDRESS",
+          "title": "Are you sure you want to delete this address?",
+        }
       }
-      fontWeight="extrabold"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="left"
-    >
-      DELETE ADDRESS
-    </Styled(BodyCopy)>
-    <Styled(BodyCopy)
-      className="deleteCardModal__desc"
-      color="text.primary"
-      component="p"
-      dataLocator=""
-      fontFamily="primary"
-      fontSize={12}
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="left"
-    >
-      <Styled(Image)
-        className="deleteCardModal__img"
-        src="/static/images/gift-card-small.png"
-      />
-      <Styled(BodyCopy)
-        bodySize="three"
-        className="deleteCardModal__cardInfo"
-        color="text.primary"
-        component="p"
-        dataLocator=""
-        fontFamily="primary"
-        fontSize={12}
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
-      >
-        <Styled(BodyCopy)
-          className="deleteCardModal__card"
-          color="text.primary"
-          component="span"
-          dataLocator=""
-          fontFamily="secondary"
-          fontSize="fs14"
-          fontWeight="extrabold"
-          letterSpacing="normal"
-          lineHeight="normal"
-          textAlign="left"
-        >
-          Card ending in 
-          ined
-        </Styled(BodyCopy)>
-        <Styled(BodyCopy)
-          className="deleteCardModal__expiry"
-          color="text.primary"
-          component="span"
-          dataLocator=""
-          fontFamily="secondary"
-          fontSize="fs14"
-          fontWeight="normal"
-          letterSpacing="normal"
-          lineHeight="normal"
-          textAlign="left"
-        >
-           Expire on 
-          undefined/undefined 
-        </Styled(BodyCopy)>
-      </Styled(BodyCopy)>
-    </Styled(BodyCopy)>
+      getAccNumbr="ined"
+      isCreditCard={true}
+      labels={Object {}}
+    />
     <div
       className="deleteCardModal__btnWrapper"
     >

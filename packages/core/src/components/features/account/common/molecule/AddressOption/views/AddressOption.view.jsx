@@ -5,12 +5,13 @@ import Address from '../../../../../../common/molecules/Address';
 
 type Props = {
   className: string,
-  value: ?string,
-  name: ?string,
+  value?: string,
+  name?: string,
   showInput: boolean,
   address: object,
-  onChange: ?() => void,
+  onChange?: () => void,
   isSelected: ?boolean,
+  inputProps?: object,
 };
 const AddressOption = ({
   className,
@@ -20,6 +21,7 @@ const AddressOption = ({
   address,
   onChange,
   isSelected,
+  inputProps,
 }: Props) => {
   if (showInput) {
     return (
@@ -32,16 +34,24 @@ const AddressOption = ({
           checked={isSelected}
           onChange={onChange}
           className="elem-mr-MED"
+          {...inputProps}
         />
-        <Address address={address} />
+        <Address address={address} showPhone={false} showCountry={false} />
       </label>
     );
   }
   return (
     <div className={className}>
-      <Address address={address} />
+      <Address address={address} showPhone={false} showCountry={false} />
     </div>
   );
+};
+
+AddressOption.defaultProps = {
+  value: '',
+  name: '',
+  onChange: () => {},
+  inputProps: {},
 };
 
 export default AddressOption;

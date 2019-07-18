@@ -54,7 +54,7 @@ const endpoints = {
     baseURI: 'https://personator.melissadata.net',
   },
   global: {
-    baseURI: 'https://test4.childrensplace.com',
+    baseURI: 'https://test3.childrensplace.com',
   },
   setDefaultShippingAddress: {
     method: 'put',
@@ -66,17 +66,32 @@ const endpoints = {
   },
   getOrderDetails: {
     method: 'get',
-    baseURI: 'http://test1.gymboree.com',
+    baseURI: 'https://test1.gymboree.com',
     relURI: '/api/v2/checkout/getOrderDetails',
   },
   registeredUserInfoPOC: {
     method: 'get',
-    baseURI: 'http://test1.gymboree.com',
+    baseURI: 'https://test1.gymboree.com',
     relURI: '/api/v2/account/getRegisteredUserInfo',
   },
   setDefaultPayment: {
     method: 'post',
     relURI: '/api/v2/account/modifyCreditCardDetails',
+  },
+  emailVerification: {
+    method: 'get',
+    baseURI: '',
+    relURI: 'https://bpi.briteverify.com/emails.json',
+  },
+  addEmailSignup: {
+    method: 'post',
+    baseURI: 'https://test1.childrensplace.com',
+    relURI: '/api/v2/store/addSignUpEmail',
+  },
+  addSmsSignup: {
+    method: 'post',
+    baseURI: 'https://test2.childrensplace.com',
+    relURI: '/api/v2/vibes/smsSignUp',
   },
 };
 export default endpoints;

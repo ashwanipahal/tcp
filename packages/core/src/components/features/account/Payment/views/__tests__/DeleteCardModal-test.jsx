@@ -23,15 +23,20 @@ describe('Delete card Modal', () => {
       expire: ' Expire on ',
     },
   };
+  const labels = {};
   it('should render correctly', () => {
-    const tree = shallow(<DeleteCardModalVanilla data={data} />);
+    const tree = shallow(<DeleteCardModalVanilla labels={labels} data={data} />);
     expect(tree).toMatchSnapshot();
     expect(tree.find(Button)).toHaveLength(2);
   });
   it('should call Cancel Button Correctly', () => {
     const mockedCloseModal = jest.fn();
     const tree = shallow(
-      <DeleteCardModalVanilla data={data} setDeleteModalMountState={mockedCloseModal} />
+      <DeleteCardModalVanilla
+        data={data}
+        labels={labels}
+        setDeleteModalMountState={mockedCloseModal}
+      />
     );
     tree
       .find(Button)
@@ -41,7 +46,9 @@ describe('Delete card Modal', () => {
   });
   it('should call confirm Button Correctly', () => {
     const mockedOnConfirm = jest.fn();
-    const tree = shallow(<DeleteCardModalVanilla data={data} onDeleteCard={mockedOnConfirm} />);
+    const tree = shallow(
+      <DeleteCardModalVanilla labels={labels} data={data} onDeleteCard={mockedOnConfirm} />
+    );
     tree
       .find(Button)
       .at(0)

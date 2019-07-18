@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
-import RichText from '@tcp/core/src/components/common/atoms/RichText';
 import Image from '@tcp/core/src/components/common/atoms/Image';
 import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import carouselConfig from '@tcp/web/src/config/carousel';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { getIconPath, getLocator } from '@tcp/core/src/utils';
@@ -31,15 +31,27 @@ const renderMobileMarkup = (dataPromo, className) => {
             <Image src={getIconPath(promoItem.linkClass.class)} alt={promoItem.linkClass.title} />
           </div>
           <div className="header-promo-item__content">
-            <RichText
-              className={`styled-text ${promoItem.textLines[0].style}`}
-              richTextHtml={promoItem.textLines[0].text}
-            />
-
-            <RichText
-              className={`styled-text-line ${promoItem.textLines[1].style}`}
-              richTextHtml={promoItem.textLines[1].text}
-            />
+            {promoItem.textItems[0] && (
+              <BodyCopy
+                className={`styled-text ${promoItem.textItems[0].style}`}
+                fontWeight="black"
+                fontFamily="secondary"
+                fontSize={['fs12', 'fs12', 'fs14']}
+                textAlign="center"
+              >
+                {promoItem.textItems[0].text}
+              </BodyCopy>
+            )}
+            {promoItem.textItems[1] && (
+              <BodyCopy
+                className={`styled-text-line ${promoItem.textItems[1].style}`}
+                fontFamily="secondary"
+                fontSize={['fs12', 'fs12', 'fs14']}
+                textAlign="center"
+              >
+                {promoItem.textItems[1].text}
+              </BodyCopy>
+            )}
           </div>
         </Anchor>
       ))}
@@ -68,14 +80,27 @@ const renderDesktopMarkup = (dataPromo, className) => {
               <Image src={getIconPath(promoItem.linkClass.class)} alt={promoItem.linkClass.title} />
             </div>
             <div className="header-promo-item__content">
-              <RichText
-                className={`styled-text ${promoItem.textLines[0].style}`}
-                richTextHtml={promoItem.textLines[0].text}
-              />
-              <RichText
-                className={`styled-text-line ${promoItem.textLines[1].style}`}
-                richTextHtml={promoItem.textLines[1].text}
-              />
+              {promoItem.textItems[0] && (
+                <BodyCopy
+                  className={`styled-text ${promoItem.textItems[0].style}`}
+                  fontWeight="black"
+                  fontFamily="secondary"
+                  fontSize={['fs12', 'fs12', 'fs14']}
+                  textAlign="center"
+                >
+                  {promoItem.textItems[0].text}
+                </BodyCopy>
+              )}
+              {promoItem.textItems[1] && (
+                <BodyCopy
+                  className={`styled-text-line ${promoItem.textItems[1].style}`}
+                  fontFamily="secondary"
+                  fontSize={['fs12', 'fs12', 'fs14']}
+                  textAlign="center"
+                >
+                  {promoItem.textItems[1].text}
+                </BodyCopy>
+              )}
             </div>
           </Anchor>
         </Col>

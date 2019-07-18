@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ModuleHCTALinks from '../view/ModuleH.Links';
+import ModuleHCTALinks from '../views/ModuleH.Links';
 import mock from '../mock';
 
 describe('ModuleH Links Component', () => {

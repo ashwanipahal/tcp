@@ -75,7 +75,7 @@ describe('AccordionList component', () => {
         <AccordionList {...props} />
       </ThemeProvider>
     );
-    component.find('h4.accordion.inactive').simulate('click');
+    component.find('p.accordion.inactive').simulate('click');
     expect(component.find({ activeClass: 'inactive' })).toHaveLength(3);
   });
 });

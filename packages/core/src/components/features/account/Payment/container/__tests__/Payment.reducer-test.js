@@ -77,18 +77,22 @@ describe('Payment Reducer', () => {
   });
 
   it('should return showNotificationCaptcha as error if error occurs', () => {
-    const err = fromJS({
-      statusCode: 400,
-      message: 'Object not found inn res',
-    });
     const initialState = fromJS({
       showNotificationCaptcha: null,
+      giftcardBalance: {},
     });
+    const updatedState = initialState
+      .set('showNotificationCaptcha', 'error')
+      .deleteIn(['giftcardBalance', '1234']);
     expect(
       PaymentReducer(initialState, {
         type: PAYMENT_CONSTANTS.SET_CHECK_BALANCE_ERROR,
-        payload: err,
+        payload: {
+          card: {
+            accountNo: '1234',
+          },
+        },
       })
-    ).toEqual(fromJS({ showNotificationCaptcha: 'error' }));
+    ).toEqual(updatedState);
   });
 });
