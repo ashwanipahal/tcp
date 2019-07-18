@@ -93,5 +93,9 @@ const endpoints = {
     baseURI: 'https://test2.childrensplace.com',
     relURI: '/api/v2/vibes/smsSignUp',
   },
+  addGiftCard: {
+    method: 'post',
+    relURI: '/api/v2/account/addCreditCardDetails',
+  },
 };
 export default endpoints;
