@@ -2,6 +2,7 @@
 import { fromJS } from 'immutable';
 import ADD_GIFT_CARD_CONSTANTS from '../AddGiftCard.constants';
 
+// TODO - Refactor reducer state (Ajay Saini)
 const initialState = fromJS({
   error: {},
   showUpdatedNotification: null,
