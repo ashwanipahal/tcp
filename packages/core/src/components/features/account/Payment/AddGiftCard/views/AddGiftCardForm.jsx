@@ -12,10 +12,6 @@ import Router from 'next/router'; //eslint-disable-line
 
 // @flow
 
-type State = {
-  isTokenDirty: boolean,
-};
-
 type Props = {
   onAddGiftCardClick: Function,
   labels: {
@@ -28,7 +24,7 @@ type Props = {
   goBackToPayment: Function,
 };
 
-class AddGiftCardForm extends React.PureComponent<Props, State> {
+class AddGiftCardForm extends React.PureComponent<Props> {
   handleSubmit = (data: { giftCardNumber: string, cardPin: string, recaptchaToken: string }) => {
     const { onAddGiftCardClick } = this.props;
     onAddGiftCardClick(data);

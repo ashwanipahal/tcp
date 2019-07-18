@@ -59,10 +59,12 @@ function stateRequiredValidator(value, param, _, linkedFieldsValues) {
   return value || (linkedFieldsValues[0] !== 'US' && linkedFieldsValues[0] !== 'CA');
 }
 
+// TODO - Add test case (Ajay Saini)
 function numberValidator(value) {
   return /^(?:-?\d+|-?\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/.test(value);
 }
 
+// TODO - Add test case (Ajay Saini)
 function lengthValidator(value, length) {
   const len = (value || '').length;
   return len === 0 || len === length;

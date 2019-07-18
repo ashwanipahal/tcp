@@ -33,6 +33,7 @@ export function* getCardList() {
     if (res.body) {
       yield put(setCardList(res.body.creditCardListJson || []));
       if (isFromAddGiftCard) {
+        // TODO Will Move into Add Gift Card Saga (Ajay Saini)
         yield put(paymentAddGiftCardSuccess());
         yield put(resetShowNotification());
       }
