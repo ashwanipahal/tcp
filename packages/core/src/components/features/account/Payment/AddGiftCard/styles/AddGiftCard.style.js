@@ -11,7 +11,7 @@ const styles = css`
     display: flex;
     align-items: flex-end;
   }
-  .card__row__msg-wrapper {
+  .card__msgWrapper {
     background-color: ${props => props.theme.colorPalette.gray[500]};
     padding: ${props => props.theme.spacing.ELEM_SPACING.MED}
       ${props => props.theme.spacing.ELEM_SPACING.LRG}
@@ -22,13 +22,6 @@ const styles = css`
     font-stretch: normal;
   }
 
-  .card__msg__title {
-    font-size: ${props => props.theme.typography.fontSizes.fs14};
-    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
-    line-height: ${props => props.theme.typography.lineHeights.lh107};
-    color: ${props => props.theme.colorPalette.black};
-  }
-
   .card__msg {
     font-size: ${props => props.theme.typography.fontSizes.fs12};
     font-weight: ${props => props.theme.typography.fontWeights.regular};
@@ -36,7 +29,13 @@ const styles = css`
     color: ${props => props.theme.colorPalette.black};
   }
 
-  .card__cancel-btn {
+  .card__msg--bold {
+    font-size: ${props => props.theme.typography.fontSizes.fs14};
+    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+    line-height: ${props => props.theme.typography.lineHeights.lh107};
+  }
+
+  .card__btn {
     @media ${props => props.theme.mediaQuery.medium} {
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
     }
@@ -44,10 +43,7 @@ const styles = css`
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
     }
   }
-  .card__add-btn {
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
-    }
+  .card__btn--medium {
     @media ${props => props.theme.mediaQuery.small} {
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }

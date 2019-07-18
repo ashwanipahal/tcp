@@ -94,7 +94,7 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
 
         <Row fullBleed className="card__row">
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 8, large: 5 }}>
-            <div className="card__row__msg-wrapper">
+            <div className="card__msgWrapper">
               <RichText
                 richTextHtml={labels.ACC_LBL_GIFT_CARD_MESSAGE}
                 dataLocator="git-card-messagetext"
@@ -105,7 +105,7 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
           <Col
             ignoreGutter={{ small: true }}
             colSize={{ small: 4, medium: 3, large: 2 }}
-            className="card__cancel-btn"
+            className="card__btn"
             offsetLeft={{ small: 1, medium: 1, large: 1 }}
             offsetRight={{ small: 1, medium: 0, large: 0 }}
           >
@@ -122,7 +122,7 @@ class AddGiftCardForm extends React.PureComponent<Props, State> {
           <Col
             ignoreGutter={{ small: true }}
             colSize={{ small: 4, medium: 3, large: 2 }}
-            className="card__add-btn"
+            className="card__btn--medium"
             offsetLeft={{ small: 1, medium: 0, large: 0 }}
             offsetRight={{ small: 1, medium: 0, large: 0 }}
           >

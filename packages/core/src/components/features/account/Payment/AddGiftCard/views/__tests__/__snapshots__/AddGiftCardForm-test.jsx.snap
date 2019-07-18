@@ -498,7 +498,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
       }
     >
       <div
-        className="card__row__msg-wrapper"
+        className="card__msgWrapper"
       >
         <Styled(RichText)
           dataLocator="git-card-messagetext"
@@ -506,7 +506,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
       </div>
     </Styled(Col)>
     <Styled(Col)
-      className="card__cancel-btn"
+      className="card__btn"
       colSize={
         Object {
           "large": 2,
@@ -542,7 +542,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
       />
     </Styled(Col)>
     <Styled(Col)
-      className="card__add-btn"
+      className="card__btn--medium"
       colSize={
         Object {
           "large": 2,
