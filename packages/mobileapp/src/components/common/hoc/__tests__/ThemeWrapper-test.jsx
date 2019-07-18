@@ -4,9 +4,10 @@ import { ThemeWrapper, mapDispatchToProps } from '../ThemeWrapper.container';
 
 describe('HomePageView', () => {
   const props = {
-    appType: '',
+    appType: 'tcp',
     updateAppTypeHandler: jest.fn(),
     children: {},
+    defaultAppType: 'tcp',
   };
   let component;
   beforeEach(() => {
@@ -16,6 +17,7 @@ describe('HomePageView', () => {
   it('should render correctly', () => {
     expect(component).toMatchSnapshot();
   });
+
   it('the default value of currentAppType should be tcp ', () => {
     expect(component.instance().currentAppType).toEqual('tcp');
   });

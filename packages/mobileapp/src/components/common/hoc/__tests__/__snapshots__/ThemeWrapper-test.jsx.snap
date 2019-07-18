@@ -2,6 +2,7 @@
 
 exports[`HomePageView should render correctly 1`] = `
 <ThemeProvider
+  appType="tcp"
   theme={
     Object {
       "breakpoints": Object {
@@ -389,7 +390,6 @@ exports[`HomePageView should render correctly 1`] = `
           "fontWeight": "black",
           "letterSpacing": "normal",
           "lineHeight": "normal",
-          "textAlign": "left",
         },
         "h2": Object {
           "fontFamily": "primary",
@@ -401,7 +401,6 @@ exports[`HomePageView should render correctly 1`] = `
           "fontWeight": "black",
           "letterSpacing": "normal",
           "lineHeight": "normal",
-          "textAlign": "left",
         },
         "h3": Object {
           "fontFamily": "primary",
@@ -417,7 +416,6 @@ exports[`HomePageView should render correctly 1`] = `
             "ls271",
           ],
           "lineHeight": "normal",
-          "textAlign": "left",
         },
         "h4": Object {
           "fontFamily": "primary",
@@ -433,7 +431,6 @@ exports[`HomePageView should render correctly 1`] = `
             "ls257",
           ],
           "lineHeight": "normal",
-          "textAlign": "left",
         },
         "h5": Object {
           "fontFamily": "primary",
@@ -445,7 +442,6 @@ exports[`HomePageView should render correctly 1`] = `
           "fontWeight": "normal",
           "letterSpacing": "normal",
           "lineHeight": "normal",
-          "textAlign": "left",
         },
         "h6": Object {
           "fontFamily": "secondary",
@@ -453,7 +449,6 @@ exports[`HomePageView should render correctly 1`] = `
           "fontWeight": "semibold",
           "letterSpacing": "normal",
           "lineHeight": "normal",
-          "textAlign": "left",
         },
         "letterSpacings": Object {
           "ls167": "1.67px",
@@ -477,7 +472,6 @@ exports[`HomePageView should render correctly 1`] = `
             "lh115",
             "lh107",
           ],
-          "textAlign": "left",
         },
         "nav": Object {
           "fontFamily": "secondary",
@@ -485,7 +479,6 @@ exports[`HomePageView should render correctly 1`] = `
           "fontWeight": "semibold",
           "letterSpacing": "normal",
           "lineHeight": "normal",
-          "textAlign": "left",
         },
         "navMinified": Object {
           "fontFamily": "secondary",
@@ -497,7 +490,6 @@ exports[`HomePageView should render correctly 1`] = `
             "lh115",
             "lh107",
           ],
-          "textAlign": "left",
         },
         "textAligns": Object {
           "center": "center",

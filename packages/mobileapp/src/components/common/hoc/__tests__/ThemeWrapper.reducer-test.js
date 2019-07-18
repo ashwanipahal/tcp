@@ -1,17 +1,18 @@
+import { fromJS } from 'immutable';
 import MobileAppReducer from '../ThemeWrapper.reducer';
-import { UPDATE_APP_TYPE } from '../ThemeWrapper.constrants';
 
 describe('MobileAppReducer reducer', () => {
+  const initialState = { APP_TYPE: 'tcp' };
   it('should handle success addAddressSuccess', () => {
-    const initialState = { APP_TYPE: '' };
-    const actions = {
-      type: UPDATE_APP_TYPE,
-      payload: 'tcp',
-    };
-    const result = {
-      APP_TYPE: 'tcp',
-    };
-    const ThemeWrapperReducer = MobileAppReducer(initialState, actions);
-    expect(ThemeWrapperReducer).toEqual(result);
+    expect(
+      MobileAppReducer(initialState, {
+        type: 'updateAppType',
+        payload: 'tcp',
+      })
+    ).toEqual(
+      fromJS({
+        APP_TYPE: 'tcp',
+      })
+    );
   });
 });

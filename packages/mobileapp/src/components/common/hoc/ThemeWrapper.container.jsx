@@ -8,15 +8,15 @@ import theme from '@tcp/core/styles/themes/TCP';
 import themeGymboree from '@tcp/core/styles/themes/Gymboree';
 import updateAppType from './ThemeWrapper.actions';
 import { APP_TYPE_TCP, APP_TYPE_GYMBOREE } from './ThemeWrapper.constrants';
-
-const DEFAULT_APP_TYPE = APP_TYPE_TCP;
+import { getAppType } from './ThemeWrapper.selectors';
 
 export class ThemeWrapper extends React.PureComponent {
   currentAppType = '';
 
   constructor(props) {
     super(props);
-    this.currentAppType = DEFAULT_APP_TYPE;
+    this.currentAppType = props.defaultAppType;
+    props.updateAppTypeHandler(this.currentAppType);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -36,9 +36,7 @@ export class ThemeWrapper extends React.PureComponent {
 
   onPressLearnMore = () => {
     const { appType, updateAppTypeHandler } = this.props;
-    if (appType === '' && this.currentAppType === DEFAULT_APP_TYPE) {
-      updateAppTypeHandler(APP_TYPE_GYMBOREE);
-    } else if (appType === APP_TYPE_GYMBOREE) {
+    if (appType === APP_TYPE_GYMBOREE) {
       updateAppTypeHandler(APP_TYPE_TCP);
     } else if (appType === APP_TYPE_TCP) {
       updateAppTypeHandler(APP_TYPE_GYMBOREE);
@@ -55,7 +53,7 @@ export class ThemeWrapper extends React.PureComponent {
           <View style={{ backgroundColor: '#ff0000', marginTop: 100 }}>
             <Button
               onPress={this.onPressLearnMore}
-              title={appType === '' ? DEFAULT_APP_TYPE : appType}
+              title={this.currentAppType}
               color="#841584"
               accessibilityLabel="Learn more about this purple button"
             />
@@ -71,17 +69,19 @@ export class ThemeWrapper extends React.PureComponent {
 ThemeWrapper.propTypes = {
   children: PropTypes.shape({}).isRequired,
   appType: PropTypes.string,
+  defaultAppType: PropTypes.string,
   updateAppTypeHandler: PropTypes.func,
 };
 
 ThemeWrapper.defaultProps = {
+  defaultAppType: '',
   appType: '',
   updateAppTypeHandler: () => {},
 };
 
 const mapStateToProps = state => {
   return {
-    appType: state.ThemeWrapper.APP_TYPE,
+    appType: getAppType(state),
   };
 };
 

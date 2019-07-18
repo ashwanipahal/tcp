@@ -1,6 +1,7 @@
 import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { Provider } from 'react-redux';
+import { PropTypes } from 'prop-types';
 import ThemeWrapperHOC from '../components/common/hoc/ThemeWrapper.container';
 import AppNavigator from '../navigation/AppNavigator';
 import { initializeStore } from '../reduxStore/store/initializeStore';
@@ -34,9 +35,10 @@ export class App extends React.PureComponent {
   };
 
   render() {
+    const { appType } = this.props;
     return (
       <Provider store={this.store}>
-        <ThemeWrapperHOC>
+        <ThemeWrapperHOC defaultAppType={appType}>
           <View style={styles.container}>
             {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
             <AppNavigator />
@@ -46,5 +48,13 @@ export class App extends React.PureComponent {
     );
   }
 }
+
+App.propTypes = {
+  appType: PropTypes.string,
+};
+
+App.defaultProps = {
+  appType: 'tcp',
+};
 
 export default App;
