@@ -81,9 +81,10 @@ DamImage.propTypes = {
     For instance in following, First element is mobile(default) and
     then further breakpoints
     [
-      'c_crop,g_face:center,q_auto:best,w_468',
       'c_crop,g_face:center,q_auto:best,w_768',
       'c_crop,g_face:center,q_auto:best,w_1024',
+      'c_crop,g_face:center,q_auto:best,w_1440',
+      'c_crop,g_face:center,q_auto:best,w_1600',
     ]
   */
   imgConfigs: PropTypes.arrayOf(PropTypes.string),
