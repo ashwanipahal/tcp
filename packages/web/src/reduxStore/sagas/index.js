@@ -1,5 +1,6 @@
 import { all } from 'redux-saga/effects';
 import ProductListingPageSaga from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.saga';
+import CartPageSaga from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.saga';
 import LoginPageSaga from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.saga';
 import AddEditAddressSaga from '@tcp/core/src/components/features/account/AddEditAddress/container/AddEditAddress.saga';
 import AddressBookSaga from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.saga';
@@ -21,6 +22,7 @@ export default function* rootSaga() {
     HomePageSaga(),
     ProductListingPageSaga(),
     LoginPageSaga(),
+    CartPageSaga(),
     AddEditAddressSaga(),
     AddressBookSaga(),
     DeleteAddressSaga(),

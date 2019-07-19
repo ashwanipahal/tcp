@@ -10,6 +10,7 @@ import AddEditAddressReducer from '@tcp/core/src/components/features/account/Add
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
 import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
 import AddressVerificationReducer from '@tcp/core/src/components/features/account/AddressVerification/container/AddressVerification.reducer';
+import CartPage from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import {
   HEADER_REDUCER_KEY,
   FOOTER_REDUCER_KEY,
@@ -25,6 +26,7 @@ import {
   EMAIL_SIGNUP_REDUCER_KEY,
   SMS_SIGNUP_REDUCER_KEY,
   MODULES_REDUCER_KEY,
+  CARTPAGE_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
@@ -54,4 +56,5 @@ export default combineReducers({
   form: reduxFormReducer,
   [EMAIL_SIGNUP_REDUCER_KEY]: EmailSignupReducer,
   [SMS_SIGNUP_REDUCER_KEY]: SmsSignupReducer,
+  [CARTPAGE_REDUCER_KEY]: CartPage,
 });

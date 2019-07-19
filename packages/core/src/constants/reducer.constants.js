@@ -14,6 +14,7 @@ export const ADDRESSBOOK_ACTION_PATTERN = '@@AddressBook-';
 export const PAYMENT_REDUCER_KEY = 'PaymentReducer';
 export const PAYMENT_ACTION_PATTERN = '@@payment-';
 export const LOGINPAGE_ACTION_PATTERN = '@@Login-';
+export const CARTPAGE_REDUCER_KEY = 'CartPage';
 
 // Add address page reducer
 export const ADDEDITADDRESS_REDUCER_KEY = 'AddEditAddressReducer';
