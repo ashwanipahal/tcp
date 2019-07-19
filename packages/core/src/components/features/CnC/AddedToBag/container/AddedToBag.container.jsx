@@ -1,16 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToCartEcom } from './AddedToBag.actions';
+import { addToCartEcom, closeAddedToBag } from './AddedToBag.actions';
 import {
   //   getCreditDebitCards,
   //   getCardListFetchingState,
   //   getShowNotificationState,
   //   getGiftCards,
   //   getVenmoCards,
-  getCardListState,
+  getAddedToBagData,
+  isOpenAddedToBag,
 } from './AddedToBag.selectors';
 // import labels from './Payment.labels';
-import AddedToBagContainer from '../views/AddedToBag.view';
+import AddedToBag from '../views/AddedToBag.view';
 
 // @flow
 type Props = {
@@ -23,34 +24,25 @@ type Props = {
   // cardList: List<any>,
 };
 
-export class AddedToBag extends React.Component<Props> {
+export class AddedToBagContainer extends React.Component<Props> {
+  constructor(props) {
+    super(props);
+
+    this.closeModal = this.closeModal.bind(this);
+  }
   componentDidMount() {
     // const { getCardListAction } = this.props;
     // getCardListAction();
   }
 
+  closeModal(){
+    const { closeModal } = this.props;
+    closeModal();
+  }
+
   render() {
-    return <AddedToBag openState={openState} onRequestClose={this.closeQuickViewModal} />;
-    //   const {
-    //     creditCardList,
-    //     giftCardList,
-    //     venmoCardList,
-    //     isFetching,
-    //     showNotification,
-    //     cardList,
-    //   } = this.props;
-    //   if (isFetching) return <p>Loading...</p>;
-    //   return (
-    //     <PaymentView
-    //       labels={labels}
-    //       showNotification={showNotification}
-    //       creditCardList={creditCardList}
-    //       giftCardList={giftCardList}
-    //       venmoCardList={venmoCardList}
-    //       cardList={cardList}
-    //     />
-    //   );
-    // }
+    const { addedToBagData , isOpenDialog} = this.props;
+    return (<AddedToBag openState={isOpenDialog} onRequestClose={this.closeModal} addedToBagData={addedToBagData} />);
   }
 }
 
@@ -59,12 +51,16 @@ const mapDispatchToProps = (dispatch: ({}) => void) => {
     addToCartEcom: payload => {
       dispatch(addToCartEcom(payload));
     },
+    closeModal: () => {
+      dispatch(closeAddedToBag());
+    },
   };
 };
 
 const mapStateToProps = state => {
   return {
-    cardList: getCardListState(state),
+    addedToBagData: getAddedToBagData(state),
+    isOpenDialog: isOpenAddedToBag(state),
     // creditCardList: getCreditDebitCards(state),
     // giftCardList: getGiftCards(state),
     // venmoCardList: getVenmoCards(state),

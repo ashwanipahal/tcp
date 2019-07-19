@@ -1,25 +1,22 @@
-import { fromJS, List } from 'immutable';
-import PAYMENT_CONSTANTS from '../Payment.constants';
-import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../utils/cache.util';
+import { fromJS } from 'immutable';
+import ADDEDTOBAG_CONSTANTS from '../AddedToBag.constants';
 
 const initialState = fromJS({
-  [DEFAULT_REDUCER_KEY]: null,
-  cardList: null,
-  isFetching: false,
-  showNotification: null,
+  itemInfo: {},
+  error: false,
+  isOpenAddedToBag: false
 });
 
-const PaymentReducer = (state = initialState, action) => {
+const AddedToBagReducer = (state = initialState, action) => {
   switch (action.type) {
-    case PAYMENT_CONSTANTS.GET_CARD_LIST:
-      return state.set('isFetching', true);
-    case PAYMENT_CONSTANTS.SET_CARD_LIST:
-      return state
-        .set([DEFAULT_REDUCER_KEY], setCacheTTL())
-        .set('cardList', List(action.payload))
-        .set('isFetching', false);
-    case PAYMENT_CONSTANTS.GET_CARD_LIST_ERR:
-      return state.set('showNotification', 'error').set('isFetching', false);
+    case ADDEDTOBAG_CONSTANTS.SET_ADDED_TO_BAG:
+      return state.set('itemInfo', action.payload);
+    case ADDEDTOBAG_CONSTANTS.OPEN_ADDED_TO_BAG:
+      return state.set('isOpenAddedToBag', true);
+    case ADDEDTOBAG_CONSTANTS.ClOSE_ADDED_TO_BAG:
+      return state.set('isOpenAddedToBag', false);
+    case ADDEDTOBAG_CONSTANTS.SET_ADDED_TO_BAG_ERROR:
+      return state.set('error', action.payload);
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {
@@ -29,4 +26,4 @@ const PaymentReducer = (state = initialState, action) => {
   }
 };
 
-export default PaymentReducer;
+export default AddedToBagReducer;

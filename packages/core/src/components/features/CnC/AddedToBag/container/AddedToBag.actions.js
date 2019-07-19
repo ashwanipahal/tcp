@@ -6,9 +6,23 @@ export const addToCartEcom = payload => ({
 });
 
 export const AddToCartError = payload => ({
-  type: ADDEDTOBAG_CONSTANTS.SET_CARD_LIST,
+  type: ADDEDTOBAG_CONSTANTS.SET_ADDED_TO_BAG_ERROR,
   payload,
 });
+
+export const SetAddedToBagData = payload => ({
+  type: ADDEDTOBAG_CONSTANTS.SET_ADDED_TO_BAG,
+  payload,
+});
+
+export const openAddedToBag = () => ({
+  type: ADDEDTOBAG_CONSTANTS.OPEN_ADDED_TO_BAG,
+});
+
+export const closeAddedToBag = () => ({
+  type: ADDEDTOBAG_CONSTANTS.CLOSE_ADDED_TO_BAG,
+});
+
 
 // export const getCardListErr = payload => ({
 //   type: PAYMENT_CONSTANTS.GET_CARD_LIST_ERR,

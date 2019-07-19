@@ -10,32 +10,21 @@ import AddedToBag from '../../../CnC/AddedToBag';
 import { getImgPath } from '../../ProductListingPage/util/utility';
 import { parseProductFromAPI } from '../../ProductListingPage/container/ProductListingPage.dataMassage';
 import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
+import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 export class ProductListView extends React.Component {
   constructor(props: Props) {
     super(props);
     this.state = {
-      openQuickViewModal: false,
+
     };
     this.addToBagEcom = this.addToBagEcom.bind(this);
   }
 
-  openQuickViewModal = item => {
-    this.setState({
-      openQuickViewModal: true,
-    });
-  };
-
-  closeQuickViewModal = () => {
-    console.log('closed');
-    this.setState({
-      openQuickViewModal: false,
-    });
-  };
   addToBagEcom(item) {
     //console.log(item);
     const { data, addToCartEcom } = this.props;
-    const pdpObj = parseProductFromAPI(data, item.uniqueId, false, getImgPath, false, false);
+    const pdpObj = parseProductFromAPI(item, item.uniqueId, false, getImgPath, false, false);
     const {
       product: { colorFitsSizesMap },
     } = pdpObj;
@@ -60,13 +49,13 @@ export class ProductListView extends React.Component {
       sku: cartItemInfo.skuInfo.skuId,
       qty: cartItemInfo.quantity,
       wishlistItemId,
+      cartItemInfo
     });
 
     //this.openQuickViewModal(item);
   }
   render() {
     const { data, className, addToCartEcom } = this.props;
-    const { openQuickViewModal } = this.state;
     return (
       <ProductListingPageStyle>
         <h1>PLP Page</h1>
@@ -92,7 +81,7 @@ export class ProductListView extends React.Component {
               </Col>
             ))}
         </Row>
-        <AddedToBag openState={openQuickViewModal} onRequestClose={this.closeQuickViewModal} />
+        <AddedToBagContainer />
       </ProductListingPageStyle>
     );
   }
