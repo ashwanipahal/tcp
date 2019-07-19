@@ -52,7 +52,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
         <Row fullBleed>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 4 }}>
             <Field
-              placeholder="Gift Card #"
+              placeholder={labels.ACC_LBL_GIFT_CARD_NO_PLACEHOLDER}
               name="giftCardNumber"
               type="tel"
               component={TextBox}
@@ -62,7 +62,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
           </Col>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 2, large: 3 }}>
             <Field
-              placeholder="Pin #"
+              placeholder={labels.ACC_LBL_GIFT_CARD_PIN_PLACEHOLDER}
               name="cardPin"
               type="tel"
               component={TextBox}
@@ -83,7 +83,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
               dataLocator="gift-card-addcardrecaptchacheckbox"
             />
           </Col>
-          <Field component={TextBox} title="" type="hidden" name="recaptchaToken" />
+          <Field component={TextBox} type="hidden" name="recaptchaToken" />
         </Row>
 
         <Row fullBleed className="card__row">

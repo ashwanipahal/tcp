@@ -150,7 +150,6 @@ exports[`Add gift card form component should render component correctly 1`] = `
         dataLocator="gift-card-cardnumberfield"
         maxLength={50}
         name="giftCardNumber"
-        placeholder="Gift Card #"
         type="tel"
       />
     </Styled(Col)>
@@ -298,7 +297,6 @@ exports[`Add gift card form component should render component correctly 1`] = `
         }
         dataLocator="gift-card-pinnumberfield"
         name="cardPin"
-        placeholder="Pin #"
         type="tel"
       />
     </Styled(Col)>
@@ -460,7 +458,6 @@ exports[`Add gift card form component should render component correctly 1`] = `
         }
       }
       name="recaptchaToken"
-      title=""
       type="hidden"
     />
   </Styled(Row)>
