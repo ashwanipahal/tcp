@@ -79,21 +79,26 @@ const Test = () => {
     <div>
       <div>
         <DamImage
-          alt="Dancing Boy"
-          imgPath="v1561401513/ecom/assets/content/tcp/us/home/transform/home_modh_sample_qtylh0.png"
+          imgData={{
+            alt: 'Dancing Boy',
+            url:
+              'v1561401513/ecom/assets/content/tcp/us/home/transform/home_modh_sample_qtylh0.png',
+          }}
         />
       </div>
       <div>
         <Heading variant="h2">Dam Image with image configs</Heading>
         <DamImage
-          alt="Dancing Boy"
+          imgData={{
+            alt: 'Dancing Boy',
+            url:
+              'v1561401513/ecom/assets/content/tcp/us/home/transform/home_modh_sample_qtylh0.png',
+          }}
           imgConfigs={[
             'g_face:center,q_auto:best,w_768',
-            'c_fill,g_face:center,q_auto:best,w_1024',
-            'c_crop,g_face:auto,q_auto:best,w_1440',
+            'c_fill,g_face:center,q_auto:best,w_1440',
             'c_crop,g_face:auto,q_auto:best,w_1600',
           ]}
-          imgPath="v1561401513/ecom/assets/content/tcp/us/home/transform/home_modh_sample_qtylh0.png"
         />
       </div>
       <Row>
