@@ -10,10 +10,9 @@ const AddedToBag = ({ openState, onRequestClose, addedToBagData, className  }) =
       maxWidth="700px"
       minHeight="500px"
       heading={"ADDED TO BAG"}
-      title={" Title ADDED TO BAG"}
       overlayClassName="TCPModal__Overlay"
       className={`TCPModal__Content, ${className}`}
-      closeIconDataLocator="addressdeletemodalcrossicon"
+      closeIconDataLocator="added-to-bg-close"
     >
       <div className="addedToBagWrapper">
         Integrate here your
