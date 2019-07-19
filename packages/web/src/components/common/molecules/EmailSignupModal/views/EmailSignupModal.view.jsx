@@ -98,6 +98,9 @@ class SignupWrapper extends React.PureComponent {
             onRequestClose={this.closeModal}
             noPadding
             widthConfig={{ small: '375px', medium: '458px', large: '851px' }}
+            closeIconDataLocator={
+              isSubscriptionValid ? 'thank_you_modal_close_btn' : 'email_signup_modal_close_btn'
+            }
           >
             {isSubscriptionValid ? (
               <Grid>
@@ -120,6 +123,7 @@ class SignupWrapper extends React.PureComponent {
                           fill="BLUE"
                           type="submit"
                           className="shop-button"
+                          dataLocator="shop_now_btn"
                           onClick={this.closeModal}
                         >
                           {formViewConfig.shopNowLabel}
@@ -155,7 +159,7 @@ class SignupWrapper extends React.PureComponent {
                           type="text"
                           component={TextBox}
                           maxLength={50}
-                          dataLocator="signup_textbox"
+                          dataLocator="email_address_field"
                           onChange={this.onSignUpInputChange}
                           onBlur={this.onSignUpInputBlur}
                           className={validationClass}
@@ -179,6 +183,7 @@ class SignupWrapper extends React.PureComponent {
                             fill="BLUE"
                             type="submit"
                             className="join-button"
+                            dataLocator="join_now_btn"
                           >
                             {formViewConfig.joinButtonLabel}
                           </Button>
