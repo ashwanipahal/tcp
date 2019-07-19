@@ -1,5 +1,7 @@
 import React from 'react';
 import Modal from '../../../../common/molecules/Modal';
+import withStyles from '../../../../common/hoc/withStyles';
+import styles from '../styles/AddedToBag.style';
 
 const AddedToBag = ({ openState, onRequestClose, addedToBagData, className  }) => {
   return (
@@ -7,13 +9,12 @@ const AddedToBag = ({ openState, onRequestClose, addedToBagData, className  }) =
       fixedWidth
       isOpen={openState}
       onRequestClose={onRequestClose}
-      maxWidth="700px"
-      minHeight="500px"
+      maxWidth="375px"
+      minHeight="1000px"
       heading={"ADDED TO BAG"}
-      title={" Title ADDED TO BAG"}
       overlayClassName="TCPModal__Overlay"
       className={`TCPModal__Content, ${className}`}
-      closeIconDataLocator="addressdeletemodalcrossicon"
+      closeIconDataLocator="added-to-bg-close"
     >
       <div className="addedToBagWrapper">
         Integrate here your
@@ -23,4 +24,5 @@ const AddedToBag = ({ openState, onRequestClose, addedToBagData, className  }) =
   );
 };
 
-export default AddedToBag;
+export default withStyles(AddedToBag, styles);
+export { AddedToBag as AddedToBagVanilla };
