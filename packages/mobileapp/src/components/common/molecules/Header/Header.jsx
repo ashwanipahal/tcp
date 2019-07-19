@@ -2,6 +2,7 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { connect } from 'react-redux';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { getLocator } from '@tcp/core/src/utils/utils.native';
 import {
   Wrapper,
   HorizontalView,
@@ -26,7 +27,8 @@ const upIcon = require('../../../../assets/images/carrot-small-up.png');
 const cartIcon = require('../../../../assets/images/empty-bag.png');
 
 const textStyle = { position: 'absolute', marginTop: 18, paddingRight: 5 };
-const wrapperStyle = { marginTop: Platform.OS === 'ios' ? 40 : 0 };
+const imageColor = { tintColor: 'grey' };
+const wrapperStyle = { marginTop: Platform.OS === 'ios' ? 50 : 0 };
 
 class Header extends React.Component<Props> {
   constructor(props) {
@@ -53,8 +55,9 @@ class Header extends React.Component<Props> {
     if (labels) {
       headerLabels = labels;
     }
+
     return (
-      <Wrapper style={wrapperStyle}>
+      <Wrapper style={wrapperStyle} data-locator={getLocator('global_headerpanel')}>
         <VerticalLeftView>
           <BodyCopy
             fontFamily="secondary"
@@ -63,6 +66,7 @@ class Header extends React.Component<Props> {
             color="black"
             fontWeight="semibold"
             text={headerLabels.headerTitle}
+            data-locator={getLocator('global_headerpanelwelcometext')}
           />
           <HorizontalView onPress={this.validateIcon}>
             <BodyCopy
@@ -72,15 +76,45 @@ class Header extends React.Component<Props> {
               color="text.primary"
               fontWeight="regular"
               text={headerLabels.storeTitle}
+              data-locator={getLocator('global_findastoretext')}
             />
-            {isIconIn ? <Icon source={upIcon} /> : <Icon source={downIcon} />}
+            {isIconIn ? (
+              <Icon
+                source={upIcon}
+                style={imageColor}
+                data-locator={getLocator('global_headerpanelexpandedicon')}
+              />
+            ) : (
+              <Icon
+                source={downIcon}
+                style={imageColor}
+                data-locator={getLocator('global_headerpanelcollapsedicon')}
+              />
+            )}
           </HorizontalView>
         </VerticalLeftView>
-        <VerticalRightView>
-          <Icon source={cartIcon} width="32px" height="32px" />
-          <RoundView color="white" width="22px" height="22px" borderRadius={11} />
+        <VerticalRightView data-locator={getLocator('')}>
+          <Icon
+            source={cartIcon}
+            width="32px"
+            height="32px"
+            data-locator={getLocator('global_headerpanelbagicon')}
+          />
+          <RoundView
+            color="white"
+            width="22px"
+            height="22px"
+            borderRadius={11}
+            style={imageColor}
+          />
           <RoundView color="TCP" />
-          <BodyCopy text="0" color="white" style={textStyle} fontSize="fs10" />
+          <BodyCopy
+            text="0"
+            color="white"
+            style={textStyle}
+            fontSize="fs10"
+            data-locator={getLocator('global_headerpanelbagitemtext')}
+          />
         </VerticalRightView>
       </Wrapper>
     );
@@ -94,3 +128,4 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(Header);
+export { Header as HeaderVanilla };

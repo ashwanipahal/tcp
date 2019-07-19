@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component Header should render correctly 1`] = `
+<Styled(View)
+  data-locator="global_headerpanel"
+  style={
+    Object {
+      "marginTop": 50,
+    }
+  }
+>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      color="black"
+      data-locator="global_headerpanelwelcometext"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      textAlign="center"
+    />
+    <Styled(TouchableOpacity)
+      onPress={[Function]}
+    >
+      <Styled(BodyCopy)
+        color="text.primary"
+        data-locator="global_findastoretex"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        textAlign="center"
+      />
+      <Styled(Image)
+        data-locator="global_headerpanelexpandedicon"
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/carrot-small-up.png",
+          }
+        }
+        style={
+          Object {
+            "tintColor": "grey",
+          }
+        }
+      />
+    </Styled(TouchableOpacity)>
+  </Styled(View)>
+  <Styled(TouchableOpacity)>
+    <Styled(Image)
+      data-locator="global_headerpanelbagicon"
+      height="32px"
+      source={
+        Object {
+          "testUri": "../../../src/assets/images/empty-bag.png",
+        }
+      }
+      width="32px"
+    />
+    <Styled(View)
+      borderRadius={11}
+      color="white"
+      height="22px"
+      style={
+        Object {
+          "tintColor": "grey",
+        }
+      }
+      width="22px"
+    />
+    <Styled(View)
+      color="TCP"
+    />
+    <Styled(BodyCopy)
+      color="white"
+      data-locator="obal_headerpanelbagicon"
+      fontSize="fs10"
+      style={
+        Object {
+          "marginTop": 18,
+          "paddingRight": 5,
+          "position": "absolute",
+        }
+      }
+      text="0"
+    />
+  </Styled(TouchableOpacity)>
+</Styled(View)>
+`;

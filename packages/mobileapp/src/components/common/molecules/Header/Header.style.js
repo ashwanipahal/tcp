@@ -2,8 +2,6 @@ import styled from 'styled-components/native';
 
 export const Wrapper = styled.View`
   flex-direction: row;
-  height: 40px;
-  flex: 1;
   padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
   padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   display: flex;
@@ -15,16 +13,15 @@ export const VerticalLeftView = styled.View`
   position: absolute;
   z-index: ${props => props.theme.zindex.zOverlay};
   justify-content: space-between;
-  margin-top: 10px;
   padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  margin-top: 7px;
 `;
 
 export const VerticalRightView = styled.TouchableOpacity`
   align-items: flex-end;
-  flex-direction: column;
   align-self: flex-end;
   flex-basis: 100%;
-  display: flex;
+  margin-top: 5px;
 `;
 
 export const HorizontalView = styled.TouchableOpacity`
