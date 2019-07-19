@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CTA component CTA component renders correctly 1`] = `
+<div
+  className="checkout"
+>
+  <Styled(Button)
+    className="view-bag"
+  >
+    View Bag
+  </Styled(Button)>
+  <div
+    className="check-out-container"
+  >
+    <PayPalButton
+      className="paypal-button"
+    />
+    <Styled(Button)
+      className="checkout"
+      onClick={[MockFunction]}
+    >
+      Checkout
+    </Styled(Button)>
+  </div>
+</div>
+`;

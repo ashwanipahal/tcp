@@ -6,13 +6,13 @@ import style from '../styles/CTA.style';
 import PayPalButton from '../../../atoms/PaypalButton';
 
 const CTA = props => {
-  const { className, onClickCartcheckout } = props;
+  const { className, onClickCartCheckout } = props;
   return (
     <div className={className}>
       <Button className="view-bag">View Bag</Button>
       <div className="check-out-container">
         <PayPalButton className="paypal-button" />
-        <Button onClick={onClickCartcheckout} className="checkout">
+        <Button onClick={onClickCartCheckout} className="checkout">
           Checkout
         </Button>
       </div>
@@ -22,7 +22,7 @@ const CTA = props => {
 
 CTA.propTypes = {
   className: PropTypes.string.isRequired,
-  onClickCartcheckout: PropTypes.func.isRequired,
+  onClickCartCheckout: PropTypes.func.isRequired,
 };
 
 export default withStyles(CTA, style);
