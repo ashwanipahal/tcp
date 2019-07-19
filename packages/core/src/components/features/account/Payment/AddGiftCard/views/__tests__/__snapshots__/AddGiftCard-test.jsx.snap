@@ -10,11 +10,10 @@ exports[`Add gift card component should render component correctly if add gift i
     to="/account?id=payment"
   />
   <Styled(HeadingStyle)
-    HeadingLarge="six"
     className="card__separator"
     dataLocator="gift-card-addcardheader"
-    fontFamily="secondaryFontFamily"
-    tag="h4"
+    fontFamily="primary"
+    variant="h4"
   />
   <Styled(Notification)
     colSize={
@@ -60,11 +59,10 @@ exports[`Add gift card component should render component correctly if add gift i
     to="/account?id=payment"
   />
   <Styled(HeadingStyle)
-    HeadingLarge="six"
     className="card__separator"
     dataLocator="gift-card-addcardheader"
-    fontFamily="secondaryFontFamily"
-    tag="h4"
+    fontFamily="primary"
+    variant="h4"
   />
   <Styled(Notification)
     colSize={

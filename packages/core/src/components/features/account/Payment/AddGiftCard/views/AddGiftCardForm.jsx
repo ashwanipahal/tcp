@@ -52,7 +52,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
         <Row fullBleed>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 4 }}>
             <Field
-              placeholder="Gift Card"
+              placeholder="Gift Card #"
               name="giftCardNumber"
               type="tel"
               component={TextBox}
@@ -62,7 +62,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
           </Col>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 2, large: 3 }}>
             <Field
-              placeholder="Pin"
+              placeholder="Pin #"
               name="cardPin"
               type="tel"
               component={TextBox}
