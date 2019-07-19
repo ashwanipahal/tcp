@@ -506,21 +506,6 @@ exports[`HomePageView should render correctly 1`] = `
     }
   }
 >
-  <View
-    style={
-      Object {
-        "backgroundColor": "#ff0000",
-        "marginTop": 100,
-      }
-    }
-  >
-    <Button
-      accessibilityLabel="Learn more about this purple button"
-      color="#841584"
-      onPress={[Function]}
-      title="tcp"
-    />
-  </View>
   <Component />
 </ThemeProvider>
 `;
