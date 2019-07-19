@@ -83,9 +83,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
               dataLocator="gift-card-addcardrecaptchacheckbox"
             />
           </Col>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 4, medium: 2, large: 2 }}>
-            <Field component={TextBox} title="" type="hidden" name="recaptchaToken" />
-          </Col>
+          <Field component={TextBox} title="" type="hidden" name="recaptchaToken" />
         </Row>
 
         <Row fullBleed className="card__row">
@@ -103,7 +101,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
             colSize={{ small: 4, medium: 3, large: 2 }}
             className="card__btn"
             offsetLeft={{ small: 1, medium: 1, large: 1 }}
-            offsetRight={{ small: 1, medium: 0, large: 0 }}
+            offsetRight={{ small: 1, medium: 1, large: 0 }}
           >
             <Button
               buttonVariation="fixed-width"
