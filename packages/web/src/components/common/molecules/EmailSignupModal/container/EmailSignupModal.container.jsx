@@ -1,48 +1,12 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { submitEmailSignup, validateEmail, clearEmailSignupForm } from './EmailSignupModal.actions';
+import {
+  submitEmailSignup,
+  validateEmail,
+  clearEmailSignupForm,
+  togglerEmailSignupModal,
+} from './EmailSignupModal.actions';
 import SignupModalView from '../views/EmailSignupModal.view';
-
-export const EmailSignupWrapperContainer = ({
-  verifyEmailAddress,
-  buttonConfig,
-  submitEmailSubscription,
-  formViewConfig,
-  isSubscriptionValid,
-  clearFormStoreInfo,
-  isEmailValid,
-}) => {
-  return (
-    <SignupModalView
-      buttonConfig={buttonConfig}
-      formViewConfig={formViewConfig}
-      verifyEmailAddress={verifyEmailAddress}
-      submitEmailSubscription={submitEmailSubscription}
-      isSubscriptionValid={isSubscriptionValid}
-      clearEmailSignupForm={clearFormStoreInfo}
-      isEmailValid={isEmailValid}
-    />
-  );
-};
-
-EmailSignupWrapperContainer.propTypes = {
-  verifyEmailAddress: PropTypes.func.isRequired,
-  submitEmailSubscription: PropTypes.func.isRequired,
-  buttonConfig: PropTypes.shape({}),
-  formViewConfig: PropTypes.shape({}),
-  isSubscriptionValid: PropTypes.bool,
-  clearFormStoreInfo: PropTypes.func.isRequired,
-  isEmailValid: PropTypes.bool,
-};
-
-EmailSignupWrapperContainer.defaultProps = {
-  buttonConfig: {},
-  formViewConfig: {},
-  isSubscriptionValid: false,
-  isEmailValid: '',
-};
 
 export const mapDispatchToProps = dispatch => {
   return {
@@ -52,8 +16,11 @@ export const mapDispatchToProps = dispatch => {
     submitEmailSubscription: payload => {
       dispatch(submitEmailSignup(payload));
     },
-    clearFormStoreInfo: () => {
+    clearEmailSignupForm: () => {
       dispatch(clearEmailSignupForm());
+    },
+    closeModal: () => {
+      dispatch(togglerEmailSignupModal({ isModalOpen: false }));
     },
   };
 };
@@ -65,15 +32,17 @@ const mapStateToProps = (state, props) => {
       ...state.Labels.global.emailSignup,
     };
   }
-
+  const { EmailSignUp = {} } = state;
   return {
     formViewConfig,
-    isSubscriptionValid: state.EmailSignUp && state.EmailSignUp.signupSuccess,
-    isEmailValid: state.EmailSignUp && state.EmailSignUp.validEmail,
+    isSubscriptionValid: EmailSignUp.signupSuccess,
+    isEmailValid: EmailSignUp.validEmail,
+    isModalOpen: EmailSignUp.isModalOpen,
+    ...props,
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(EmailSignupWrapperContainer);
+)(SignupModalView);

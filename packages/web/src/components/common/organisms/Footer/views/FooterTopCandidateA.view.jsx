@@ -12,206 +12,220 @@ import { SocialMediaLinks } from '../../../molecules';
 
 import style from '../Footer.style';
 
-const FooterTopCandidateA = props => {
-  const {
-    className,
-    buttonConfig,
-    showError,
-    formViewConfig,
-    isEmailValid,
-    socialMediaLinks,
-    referAFriendButton,
-    referAFriend,
-  } = props;
+class FooterTopCandidateA extends React.Component {
+  onFormSubmit = e => {
+    e.preventDefault();
+  };
 
-  return (
-    <Grid className={`${className} footer_top_candidate_a`}>
-      <Row>
-        {/* ------------ Email Sign Up starts here ----------------- */}
-        <Col
-          className=""
-          colSize={{
-            large: 4,
-            medium: 4,
-            small: 6,
-          }}
-          ignoreGutter={{
-            small: true,
-          }}
-        >
-          {/* TODO: Desktop font size is 15px in Zeplin. Need to confirm that as it is not in guideline  */}
-          <BodyCopy
-            className="heading_text"
-            textAlign="center"
-            fontSize={['fs12', 'fs12', 'fs16']}
-            fontWeight="black"
+  render() {
+    const { props } = this;
+
+    const {
+      className,
+      buttonConfig,
+      showError,
+      formViewConfig,
+      isEmailValid,
+      socialMediaLinks,
+      referAFriendButton,
+      referAFriend,
+    } = props;
+
+    return (
+      <Grid className={`${className} footer_top_candidate_a`}>
+        <Row>
+          {/* ------------ Email Sign Up starts here ----------------- */}
+          <Col
+            className=""
+            colSize={{
+              large: 4,
+              medium: 4,
+              small: 6,
+            }}
+            ignoreGutter={{
+              small: true,
+            }}
           >
-            <RichText richTextHtml={buttonConfig.text} />
-          </BodyCopy>
-          <Grid>
-            <Row fullBleed>
-              <Col
-                className=""
-                colSize={{
-                  large: 8,
-                  medium: 4,
-                  small: 4,
-                }}
-                ignoreGutter={{
-                  small: false,
-                }}
-              >
-                <Field
-                  placeholder={formViewConfig.placeholderText}
-                  name="signup"
-                  id="signup"
-                  type="text"
-                  component={TextBox}
-                  maxLength={50}
-                  dataLocator="email_address_field"
-                />
-                {/* onChange={this.onSignUpInputChange} */}
-                {/* onBlur={this.onSignUpInputBlur} */}
-                {/* className={validationClass} */}
-                {/* showSuccessCheck={isEmailValid === 'valid'} */}
-                {showError && (
-                  <BodyCopy fontSize="fs12" fontFamily="secondary" color="secondary.dark">
-                    {formViewConfig.validationErrorLabel}
+            {/* TODO: Desktop font size is 15px in Zeplin. Need to confirm that as it is not in guideline  */}
+            <BodyCopy
+              className="heading_text"
+              textAlign="center"
+              fontSize={['fs12', 'fs12', 'fs16']}
+              fontWeight="black"
+            >
+              <RichText richTextHtml={buttonConfig.text} />
+            </BodyCopy>
+            <form onSubmit={this.onFormSubmit}>
+              <Grid>
+                <Row fullBleed>
+                  <Col
+                    className=""
+                    colSize={{
+                      large: 8,
+                      medium: 4,
+                      small: 4,
+                    }}
+                    ignoreGutter={{
+                      small: false,
+                    }}
+                  >
+                    <Field
+                      placeholder={formViewConfig.placeholderText}
+                      name="signup"
+                      id="signup"
+                      type="text"
+                      component={TextBox}
+                      maxLength={50}
+                      dataLocator="email_address_field"
+                    />
+                    {/* onChange={this.onSignUpInputChange} */}
+                    {/* onBlur={this.onSignUpInputBlur} */}
+                    {/* className={validationClass} */}
+                    {/* showSuccessCheck={isEmailValid === 'valid'} */}
+                    {showError && (
+                      <BodyCopy fontSize="fs12" fontFamily="secondary" color="secondary.dark">
+                        {formViewConfig.validationErrorLabel}
+                      </BodyCopy>
+                    )}
+                  </Col>
+                  <Col
+                    colSize={{
+                      large: 4,
+                      medium: 4,
+                      small: 2,
+                    }}
+                    ignoreGutter={{
+                      small: true,
+                    }}
+                    className="candidate_a_inline_container_button"
+                  >
+                    {/* TODO: Need to update this to boolean maybe; disabled={isEmailValid !== 'valid'} */}
+                    <Button
+                      disabled={isEmailValid}
+                      buttonVariation="variable-width"
+                      type="submit"
+                      data-locator="submit_btn"
+                    >
+                      {formViewConfig.submitButtonLabel}
+                    </Button>
+                  </Col>
+                </Row>
+              </Grid>
+            </form>
+            {/* TODO: Zeplin has ["fs11","fs11", "fs13"], which is not in guidline using following for now  */}
+            {/* <BodyCopy
+              fontFamily="secondary"
+              textAlign="center"
+              fontSize={['fs12', 'fs12', 'fs14']}
+              component={RichText}
+              richTextHtml={formViewConfig.termsTextLabel}
+            /> */}
+            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs12', 'fs12', 'fs14']}>
+              {formViewConfig.termsTextLabel}
+            </BodyCopy>
+            <div className="divider hide-in-medium-up" />
+          </Col>
+
+          {/* ---------- Email Signup ends here ---------- */}
+
+          {/* ---------- SMS Sign Up starts here ---------- */}
+          <Col
+            className=""
+            colSize={{
+              large: 4,
+              medium: 4,
+              small: 6,
+            }}
+            ignoreGutter={{
+              small: true,
+            }}
+          >
+            Hala
+          </Col>
+          <div className="divider hide-in-large-up" />
+          {/* ---------- SMS Signup ends here ------------ */}
+
+          {/* ---------- Refer a friend start here-------- */}
+
+          <Col
+            className=""
+            colSize={{
+              large: 4,
+              medium: 4,
+              small: 6,
+            }}
+            ignoreGutter={{
+              small: true,
+            }}
+          >
+            <Grid>
+              <Row fullBleed className="flex-align-center">
+                <Col
+                  className=""
+                  colSize={{
+                    large: 7,
+                    medium: 4,
+                    small: 7,
+                  }}
+                  ignoreGutter={{
+                    small: true,
+                  }}
+                >
+                  <BodyCopy
+                    className="heading_text refer_friend_text"
+                    textAlign="center"
+                    fontSize={['fs12', 'fs12', 'fs16']}
+                    fontWeight="black"
+                  >
+                    <RichText richTextHtml={referAFriend.text} />
                   </BodyCopy>
-                )}
-              </Col>
-              <Col
-                colSize={{
-                  large: 4,
-                  medium: 4,
-                  small: 2,
-                }}
-                ignoreGutter={{
-                  small: true,
-                }}
-                className="candidate_a_inline_container_button"
-              >
-                {/* TODO: Need to update this to boolean maybe; disabled={isEmailValid !== 'valid'} */}
-                <Button
-                  disabled={isEmailValid}
-                  buttonVariation="variable-width"
-                  type="submit"
-                  data-locator="submit_btn"
+                </Col>
+                <Col
+                  colSize={{
+                    large: 5,
+                    medium: 4,
+                    small: 6,
+                  }}
+                  ignoreGutter={{
+                    small: false,
+                  }}
+                  className="candidate_a_inline_container_button"
                 >
-                  {formViewConfig.submitButtonLabel}
-                </Button>
-              </Col>
-            </Row>
-          </Grid>
-          {/* TODO: Zeplin has ["fs11","fs11", "fs13"], which is not in guidline using following for now  */}
-          {/* <BodyCopy
-            fontFamily="secondary"
-            textAlign="center"
-            fontSize={['fs12', 'fs12', 'fs14']}
-            component={RichText}
-            richTextHtml={formViewConfig.termsTextLabel}
-          /> */}
-          <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs12', 'fs12', 'fs14']}>
-            {formViewConfig.termsTextLabel}
-          </BodyCopy>
-          <div className="divider hide-in-medium-up" />
-        </Col>
+                  <Button
+                    buttonVariation="variable-width"
+                    type="refer_a"
+                    data-locator="refer_a_btn"
+                  >
+                    {referAFriendButton.text}
+                  </Button>
+                </Col>
+              </Row>
 
-        {/* ---------- Email Signup ends here ---------- */}
-
-        {/* ---------- SMS Sign Up starts here ---------- */}
-        <Col
-          className=""
-          colSize={{
-            large: 4,
-            medium: 4,
-            small: 6,
-          }}
-          ignoreGutter={{
-            small: true,
-          }}
-        >
-          Hala
-        </Col>
-        <div className="divider hide-in-large-up" />
-        {/* ---------- SMS Signup ends here ------------ */}
-
-        {/* ---------- Refer a friend start here-------- */}
-
-        <Col
-          className=""
-          colSize={{
-            large: 4,
-            medium: 4,
-            small: 6,
-          }}
-          ignoreGutter={{
-            small: true,
-          }}
-        >
-          <Grid>
-            <Row fullBleed>
-              <Col
-                className=""
-                colSize={{
-                  large: 7,
-                  medium: 4,
-                  small: 7,
-                }}
-                ignoreGutter={{
-                  small: true,
-                }}
-              >
-                <BodyCopy
-                  className="heading_text refer_friend_text"
-                  textAlign="center"
-                  fontSize={['fs12', 'fs12', 'fs16']}
-                  fontWeight="black"
+              <Row fullBleed>
+                <Col
+                  className=""
+                  colSize={{
+                    large: 12,
+                    medium: 12,
+                    small: 12,
+                  }}
+                  ignoreGutter={{
+                    small: true,
+                  }}
                 >
-                  <RichText richTextHtml={referAFriend.text} />
-                </BodyCopy>
-              </Col>
-              <Col
-                colSize={{
-                  large: 5,
-                  medium: 4,
-                  small: 6,
-                }}
-                ignoreGutter={{
-                  small: false,
-                }}
-                className="candidate_a_inline_container_button"
-              >
-                <Button buttonVariation="variable-width" type="refer_a" data-locator="refer_a_btn">
-                  {referAFriendButton.text}
-                </Button>
-              </Col>
-            </Row>
-
-            <Row fullBleed>
-              <Col
-                className=""
-                colSize={{
-                  large: 12,
-                  medium: 12,
-                  small: 12,
-                }}
-                ignoreGutter={{
-                  small: true,
-                }}
-              >
-                <div className="divider hide-in-medium-up" />
-                <SocialMediaLinks {...socialMediaLinks} />
-              </Col>
-            </Row>
-          </Grid>
-        </Col>
-        {/* ---------- Refer a friend ends here-------- */}
-      </Row>
-      <div className="divider hide-in-medium-down" />
-    </Grid>
-  );
-};
+                  <div className="divider hide-in-medium-up" />
+                  <SocialMediaLinks {...socialMediaLinks} />
+                </Col>
+              </Row>
+            </Grid>
+          </Col>
+          {/* ---------- Refer a friend ends here-------- */}
+        </Row>
+        <div className="divider hide-in-medium-down" />
+      </Grid>
+    );
+  }
+}
 
 FooterTopCandidateA.propTypes = {
   className: PropTypes.string.isRequired,

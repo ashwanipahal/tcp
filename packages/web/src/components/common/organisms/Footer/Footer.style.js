@@ -1,6 +1,9 @@
 import { css } from 'styled-components';
 
 export default css`
+  &.footer_top_candidate_a .flex-align-center {
+    align-items: center;
+  }
   &.footer_top_candidate_a .candidate_a_inline_container_button {
     text-align: center;
   }
@@ -14,7 +17,7 @@ export default css`
   }
 
   &.footer_top_candidate_a .heading_text {
-    line-height: 44px;
+    margin-bottom: 10px;
   }
 
   &.footer_top_candidate_a .divider {
@@ -73,7 +76,7 @@ export default css`
       display: none;
     }
     &.footer_top_candidate_a .heading_text.refer_friend_text {
-      line-height: 22px;
+      margin-bottom: 0;
     }
   }
   @media ${props => props.theme.mediaQuery.large} {
@@ -113,9 +116,6 @@ export default css`
       font-size: ${props => props.theme.fonts.fontSize.body.small.secondary};
       padding: 11px 0 24px;
       color: ${props => props.theme.colors.TEXT.DARKERGRAY};
-    }
-    &.footer_top_candidate_a .heading_text.refer_friend_text {
-      line-height: 44px;
     }
   }
 
