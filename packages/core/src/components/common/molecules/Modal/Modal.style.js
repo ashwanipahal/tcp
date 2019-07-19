@@ -38,7 +38,7 @@ const ModalStyle = css`
     margin-top: 0;
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     @media ${props => props.theme.mediaQuery.medium} {
-      display: none;
+     display: none;
     }
   }
 `;
