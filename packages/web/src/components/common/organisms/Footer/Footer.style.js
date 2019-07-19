@@ -1,6 +1,30 @@
 import { css } from 'styled-components';
 
 export default css`
+  &.footer_top_candidate_a .candidate_a_inline_container_button {
+    text-align: center;
+  }
+  &.footer_top_candidate_a .candidate_a_inline_container_button button {
+    font-size: 13px;
+    padding: 12px 32px;
+  }
+
+  &.footer_top_candidate_a .TextBox__input {
+    padding-top: 18px;
+  }
+
+  &.footer_top_candidate_a .heading_text {
+    line-height: 44px;
+  }
+
+  &.footer_top_candidate_a .divider {
+    height: 1px;
+    background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
+    margin-top: 32px;
+    margin-bottom: 32px;
+    width: 100%;
+  }
+
   .poc-hide {
     display: none;
   }
@@ -45,8 +69,17 @@ export default css`
     .footer-top {
       padding-bottom: 20px;
     }
+    .hide-in-medium-up {
+      display: none;
+    }
+    &.footer_top_candidate_a .heading_text.refer_friend_text {
+      line-height: 22px;
+    }
   }
   @media ${props => props.theme.mediaQuery.large} {
+    .hide-in-large-up {
+      display: none;
+    }
     .footer-top {
       padding-bottom: 44px;
       border-bottom: 2px solid ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
@@ -80,6 +113,15 @@ export default css`
       font-size: ${props => props.theme.fonts.fontSize.body.small.secondary};
       padding: 11px 0 24px;
       color: ${props => props.theme.colors.TEXT.DARKERGRAY};
+    }
+    &.footer_top_candidate_a .heading_text.refer_friend_text {
+      line-height: 44px;
+    }
+  }
+
+  @media ${props => props.theme.mediaQuery.mediumMax} {
+    .hide-in-medium-down {
+      display: none;
     }
   }
 `;

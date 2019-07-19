@@ -5,6 +5,7 @@ import Heading from '@tcp/core/src/components/common/atoms/Heading';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
+import FooterTopCandidateA from '@tcp/web/src/components/common/organisms/Footer/views/FooterTopCandidateA.view';
 
 function getHeadingColm(props) {
   return (
@@ -76,6 +77,7 @@ const Test = () => {
   const colSizeConfig = { small: 2, medium: 2, large: 2 };
   return (
     <div>
+      <FooterTopCandidateA />
       <Row>
         <BodyCopy
           component="p"
