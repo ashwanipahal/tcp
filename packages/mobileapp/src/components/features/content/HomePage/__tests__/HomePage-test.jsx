@@ -7,7 +7,12 @@ describe('HomePageView', () => {
   let component;
 
   beforeEach(() => {
-    component = shallow(<HomePageView />);
+    const props = {
+      slot_1: { className: 'moduleD' },
+      slot_2: { className: 'moduleH' },
+      getBootstrapData: jest.fn(),
+    };
+    component = shallow(<HomePageView {...props} />);
   });
 
   it('should be defined', () => {
