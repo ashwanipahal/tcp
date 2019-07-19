@@ -10,7 +10,7 @@ class PayPalButton extends React.Component {
       : requireNamedOnlineModule('paypal').then(this.renderPayPalButton);
   }
 
-  initalizePayPalButton = ({ containerId, height = 48, width }) => {
+  initializePayPalButton = ({ containerId, height = 48, width }) => {
     const options = {
       locale: 'en_US',
       style: {
@@ -45,7 +45,7 @@ class PayPalButton extends React.Component {
   renderPayPalButton = () => {
     const element = document.querySelector(`#paypal-button-container`);
     if (element && !element.hasChildNodes()) {
-      this.initalizePayPalButton({
+      this.initializePayPalButton({
         containerId: 'paypal-button-container',
         height: 48,
         width: 108,

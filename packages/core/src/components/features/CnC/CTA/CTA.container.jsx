@@ -14,8 +14,7 @@ const CTAContainer = props => {
       Router.push('/shipping');
     }
   };
-
-  return <CTAView onClickCartcheckout={onClickCheckout} />;
+  return <CTAView onClickCartCheckout={onClickCheckout} />;
 };
 
 CTAContainer.propTypes = {
