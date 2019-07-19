@@ -87,7 +87,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
         </Row>
 
         <Row fullBleed className="card__row">
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 8, large: 5 }}>
+          <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 8, large: 7 }}>
             <div className="card__msgWrapper">
               <RichText
                 richTextHtml={labels.ACC_LBL_GIFT_CARD_MESSAGE}

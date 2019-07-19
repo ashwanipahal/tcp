@@ -468,7 +468,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 5,
+          "large": 7,
           "medium": 8,
           "small": 6,
         }
