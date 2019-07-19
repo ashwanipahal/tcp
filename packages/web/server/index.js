@@ -4,8 +4,10 @@ const helmet = require('helmet');
 const RoutesMap = require('./routes');
 const config = require('./config/cspPolicy.js');
 
-const port = parseInt(process.env.PORT, 10) || 3000;
-const dev = process.env.NODE_ENV !== 'production';
+const portIndex = process.argv.indexOf('-p') + 1;
+const port = portIndex != 0 ? process.argv[portIndex] : 3000;
+
+const dev = process.env.NODE_ENV === 'development';
 const app = next({ dev, dir: './src' });
 
 const locationCodes = require('./config/server.config').locations;
@@ -14,6 +16,7 @@ const server = express();
 
 // Security headers
 server.set('x-powered-by', false);
+
 server.use(helmet.frameguard({ action: 'sameorigin' }));
 server.use(helmet.hsts({ force: true, maxAge: 10886400, includeSubDomains: true, preload: true })); // 90 days
 server.use(helmet.noSniff());
