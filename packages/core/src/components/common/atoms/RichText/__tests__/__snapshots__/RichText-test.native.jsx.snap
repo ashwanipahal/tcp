@@ -3,7 +3,6 @@
 exports[`RichText should render correctly 1`] = `
 <WebView
   domStorageEnabled={false}
-  id="RichText"
   javaScriptEnabled={false}
   originWhitelist={
     Array [

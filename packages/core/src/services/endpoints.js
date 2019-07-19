@@ -2,9 +2,10 @@ import { API_METHODS } from './api.constants';
 
 const endpoints = {
   graphQL: {
-    dev: 'https://y4yzlmipjvd6padvtxj43f2ip4.appsync-api.us-east-2.amazonaws.com/graphql',
+    int: 'https://niebw6f7lfeorgk6adlvicfnca.appsync-api.us-east-2.amazonaws.com/graphql',
     uat: 'https://vftt2fuvm5eu5jat3ounglwv3a.appsync-api.us-east-2.amazonaws.com/graphql',
     perf: 'https://563k2dzbojbsvnaaljusrz4y44.appsync-api.us-east-2.amazonaws.com/graphql',
+    sandbox: 'https://lwmlzhk7g5grdgtbzozpgsb3lm.appsync-api.us-east-2.amazonaws.com/graphql',
   },
   getAddressList: {
     method: API_METHODS.GET,

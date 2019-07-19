@@ -14,6 +14,7 @@ type Props = {
   options: Object,
   children: any,
   carouselConfig: Object,
+  className: String,
 };
 
 type State = {
@@ -57,14 +58,14 @@ class Carousel extends React.PureComponent<Props, State> {
     return autoplay ? (
       <Image
         className="tcp_carousel__play"
-        data-locator={wrapperConfig.dataLocator}
+        data-locator={wrapperConfig.dataLocatorPause || wrapperConfig.dataLocator}
         src={getIconPath('icon-pause')}
         onClick={this.pause}
       />
     ) : (
       <Image
         className="tcp_carousel__play"
-        data-locator={wrapperConfig.dataLocator}
+        data-locator={wrapperConfig.dataLocatorPlay || wrapperConfig.dataLocator}
         src={getIconPath('icon-play')}
         onClick={this.play}
       />
@@ -106,15 +107,18 @@ class Carousel extends React.PureComponent<Props, State> {
    * of functionalities like play pause, change carousel theme etc.
    */
   render() {
-    const { options, children, carouselConfig } = this.props;
+    const { options, children, carouselConfig, className } = this.props;
     const settings = { ...defaults, ...options };
 
     return (
-      <CarouselStyle className="tcp_carousel_wrapper" carouselConfig={carouselConfig}>
+      <CarouselStyle
+        className={`${className} tcp_carousel_wrapper`}
+        carouselConfig={carouselConfig}
+      >
         <Slider className="tcp_carousel" ref={this.getSlider} {...settings}>
           {!children ? null : children}
         </Slider>
-        {carouselConfig.autoplay && this.getPlayButton(carouselConfig)}
+        {carouselConfig.autoplay && !options.hidePlayPause && this.getPlayButton(carouselConfig)}
       </CarouselStyle>
     );
   }

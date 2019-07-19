@@ -6,5 +6,7 @@ import Image from './Image';
 import RichText from './RichText';
 import Row from './Row';
 import TextBox from './TextBox';
+import Heading from './Heading';
+import BodyCopy from './BodyCopy';
 
-export { Anchor, Button, Col, DynamicTag, Image, RichText, Row, TextBox };
+export { Anchor, Button, Col, DynamicTag, Image, RichText, Row, TextBox, Heading, BodyCopy };
