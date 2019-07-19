@@ -93,7 +93,7 @@ class Header extends React.Component<Props> {
             )}
           </HorizontalView>
         </VerticalLeftView>
-        <VerticalRightView data-locator={getLocator('')}>
+        <VerticalRightView>
           <Icon
             source={cartIcon}
             width="32px"
