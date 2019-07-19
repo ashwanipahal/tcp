@@ -2,9 +2,9 @@ import React from 'react';
 import Router from 'next/router'; //eslint-disable-line
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import CTAView from '../../../common/molecules/CTA/views/CTA';
+import AddedToBagActionsView from './views/AddedToBagActions';
 
-const CTAContainer = props => {
+const AddedToBagContainer = props => {
   const { isLoggedIn } = props;
 
   const onClickCheckout = () => {
@@ -14,10 +14,10 @@ const CTAContainer = props => {
       Router.push('/shipping');
     }
   };
-  return <CTAView onClickCartCheckout={onClickCheckout} />;
+  return <AddedToBagActionsView onClickCartCheckout={onClickCheckout} />;
 };
 
-CTAContainer.propTypes = {
+AddedToBagContainer.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
 };
 
@@ -29,4 +29,4 @@ const mapStateToDispatch = (...params) => {
   };
 };
 
-export default connect(mapStateToDispatch)(CTAContainer);
+export default connect(mapStateToDispatch)(AddedToBagContainer);
