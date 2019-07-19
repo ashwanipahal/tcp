@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { LayoutAnimation, Image, View, TouchableOpacity } from 'react-native';
 import { PropTypes } from 'prop-types';
 import styles from './AnimatedBrandChangeIcon.style';
-import tcpLogo from '../../../brand_config/main/config/tcp.png';
-import gymboreeLogo from '../../../brand_config/gymboree/config/gymboree.png';
-import NavBarIcon from '../../common/atoms/NavBarIcon';
+import tcpLogo from '../../../../brand_config/main/config/tcp.png';
+import gymboreeLogo from '../../../../brand_config/gymboree/config/gymboree.png';
+import NavBarIcon from '../NavBarIcon';
 
 const {
   container,
