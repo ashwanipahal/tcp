@@ -5,8 +5,12 @@ import fetchData from '../../../../../service/API';
 import { AddToCartError , SetAddedToBagData, openAddedToBag} from './AddedToBag.actions';
 import endpoints from '../../../../../service/endpoint';
 
-export function* addToCartEcom({ payload: { sku, qty, wishlistId, cartItemInfo } }) {
+export function* addToCartEcom({ payload }) {
   try {
+    const sku = payload.skuInfo.skuId;
+    const qty = payload.quantity;
+    const wishlistItemId = payload.wishlistItemId;
+
     const params = {
       payload: {
         storeId: 10151,
@@ -18,6 +22,7 @@ export function* addToCartEcom({ payload: { sku, qty, wishlistId, cartItemInfo }
         catEntryId: sku,
         quantity: qty.toString(),
         'calculationUsage[]': '-7',
+        externalId: wishlistItemId || ''
       },
       langId: -1,
       storeId: 10151,
@@ -28,14 +33,14 @@ export function* addToCartEcom({ payload: { sku, qty, wishlistId, cartItemInfo }
     const res = yield call(fetchData, baseURI, relURI, params, method);
     if (res.body) {
       yield put(SetAddedToBagData({
-        ...cartItemInfo,
+        ...payload,
         orderId: res.body.orderId && res.body.orderId[0],
         orderItemId: res.body.orderItemId && res.body.orderItemId[0]
       }));
       yield put(openAddedToBag());
       // return yield put(setCardList(res.body.creditCardListJson || []));
     }else {
-      return yield put(AddToCartError(res.error));
+      yield put(AddToCartError(res.error));
     }
 
   } catch (err) {
@@ -43,7 +48,7 @@ export function* addToCartEcom({ payload: { sku, qty, wishlistId, cartItemInfo }
     //   ...cartItemInfo,
     // }));
     // yield put(openAddedToBag());
-    return yield put(AddToCartError(err));
+    yield put(AddToCartError(err));
   }
 }
 

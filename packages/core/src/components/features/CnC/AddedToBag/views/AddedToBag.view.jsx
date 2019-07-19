@@ -11,14 +11,16 @@ const AddedToBag = ({ openState, onRequestClose, addedToBagData, className  }) =
       onRequestClose={onRequestClose}
       maxWidth="375px"
       minHeight="1000px"
-      heading={"ADDED TO BAG"}
+      heading="ADDED TO BAG"
       overlayClassName="TCPModal__Overlay"
       className={`TCPModal__Content, ${className}`}
       closeIconDataLocator="added-to-bg-close"
     >
       <div className="addedToBagWrapper">
         Integrate here your
-        {JSON.stringify(addedToBagData)}
+        Integrate here your
+        Integrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here your
+        {/* {JSON.stringify(addedToBagData)} */}
       </div>
     </Modal>
   );

@@ -32,6 +32,7 @@ export const getCartItemInfo = (productInfoOrWishlistItem, customizationInfo) =>
         size,
       },
       quantity,
+      wishlistItemId: customizationInfo.wishlistItemId || (productInfoOrWishlistItem.itemInfo && productInfoOrWishlistItem.itemInfo.itemId)
     };
   }
 };

@@ -23,7 +23,7 @@ export class ProductListView extends React.Component {
 
   addToBagEcom(item) {
     //console.log(item);
-    const { data, addToCartEcom } = this.props;
+    const { addToCartEcom } = this.props;
     const pdpObj = parseProductFromAPI(item, item.uniqueId, false, getImgPath, false, false);
     const {
       product: { colorFitsSizesMap },
@@ -40,18 +40,9 @@ export class ProductListView extends React.Component {
       color: selectedColor,
       wishlistItemId: false,
     };
+    addToCartEcom()
     const cartItemInfo = getCartItemInfo(pdpObj.product, formData);
-    let wishlistItemId =
-      formData.wishlistItemId || (pdpObj.product.itemInfo && pdpObj.product.itemInfo.itemId);
-    console.log(cartItemInfo);
-
-    addToCartEcom({
-      sku: cartItemInfo.skuInfo.skuId,
-      qty: cartItemInfo.quantity,
-      wishlistItemId,
-      cartItemInfo
-    });
-
+    addToCartEcom(cartItemInfo);
     //this.openQuickViewModal(item);
   }
   render() {

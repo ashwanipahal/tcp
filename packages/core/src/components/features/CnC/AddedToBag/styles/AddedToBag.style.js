@@ -19,6 +19,10 @@ const styles = css`
      display: block;
     }
   }
+  .addedToBagWrapper{
+    overflow-y: auto;
+    height: 100%;
+  }
 
   @media ${props => props.theme.mediaQuery.medium} {
 
