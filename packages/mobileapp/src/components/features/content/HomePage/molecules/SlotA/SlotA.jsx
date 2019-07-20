@@ -11,7 +11,7 @@ const SlotA = (props: Props) => {
     case 'moduleD':
       return <ModuleD {...props} />;
     case 'moduleH':
-      return <ModuleH />;
+      return <ModuleH {...props} />;
     default:
       return null;
   }

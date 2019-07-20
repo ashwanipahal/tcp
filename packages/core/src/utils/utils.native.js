@@ -43,6 +43,10 @@ export const importGraphQLQueriesDynamically = query => {
         // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/moduleH'));
         break;
+      case 'moduleK':
+        // eslint-disable-next-line global-require
+        resolve(require('../services/handler/graphQL/queries/moduleK'));
+        break;
       default:
         reject();
         break;
@@ -56,7 +60,7 @@ const amexCard = require('../assets/amex-small.png');
 const visaSmall = require('../assets/visa-small.png');
 const placeCard = require('../assets/place-card-small.png');
 const giftCardSmall = require('../assets/gift-card-small.png');
-const venmoCard = require('../assets/venmo-blue-acceptance-mark.svg');
+const venmoCard = require('../assets/venmo-blue-acceptance-mark.png');
 
 export const getIconCard = icon => {
   switch (icon) {

@@ -7,6 +7,7 @@ describe('EmailSignupModal component', () => {
     const props = {
       className: '',
       formViewConfig: {},
+      susbscriptionType: 'sms',
     };
     const component = shallow(<SignupConfirmVanilla {...props} />);
     expect(component).toMatchSnapshot();

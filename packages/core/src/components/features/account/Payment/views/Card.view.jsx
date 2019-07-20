@@ -12,6 +12,7 @@ type Props = {
   showNotification: boolean,
   showNotificationCaptcha: boolean,
   setSelectedCard: string,
+  setDefaultPaymentMethod: Function,
 };
 
 export const CardView = ({
@@ -23,6 +24,7 @@ export const CardView = ({
   showNotification,
   showNotificationCaptcha,
   setSelectedCard,
+  setDefaultPaymentMethod,
 }: Props) => {
   return (
     <React.Fragment>
@@ -35,6 +37,7 @@ export const CardView = ({
         labels={labels}
         showNotification={showNotification}
         showNotificationCaptcha={showNotificationCaptcha}
+        setDefaultPaymentMethod={setDefaultPaymentMethod}
       />
     </React.Fragment>
   );
