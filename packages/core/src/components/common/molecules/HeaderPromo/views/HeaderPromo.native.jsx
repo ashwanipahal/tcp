@@ -1,25 +1,29 @@
 import React from 'react';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
-import { Wrapper, LeftView, PromoImage, CenterView } from '../HeaderPromo.style.native';
+import { Wrapper, WrapperView, PromoImage, CenterView } from '../HeaderPromo.style.native';
 
 const bannerTextFirst = 'EARN PLACE CASH!';
-const bannerTextSecond = 'Get $10 for every $20 spent today.';
+const bannerTextSecond = 'Buy Online, pickup in store';
 
-const clockIcon = require('../../../../../assets/clock.png');
+const rightIcon = require('../../../../../assets/carrot-large-right.png');
+const leftIcon = require('../../../../../assets/carrot-large-left.png');
+
+const bodyCopyStyle = { margin: 5 };
 
 const HeaderPromo = () => (
   <Wrapper>
-    <LeftView>
-      <PromoImage source={clockIcon} />
-    </LeftView>
+    <WrapperView>
+      <PromoImage source={leftIcon} />
+    </WrapperView>
     <CenterView>
       <BodyCopy
         fontFamily="secondary"
-        fontSize="fs12"
+        fontSize="fs14"
         textAlign="center"
-        color="black"
+        color="text.primary"
         fontWeight="black"
         text={bannerTextFirst}
+        style={bodyCopyStyle}
       />
       <BodyCopy
         fontFamily="secondary"
@@ -30,6 +34,9 @@ const HeaderPromo = () => (
         text={bannerTextSecond}
       />
     </CenterView>
+    <WrapperView>
+      <PromoImage source={rightIcon} />
+    </WrapperView>
   </Wrapper>
 );
 

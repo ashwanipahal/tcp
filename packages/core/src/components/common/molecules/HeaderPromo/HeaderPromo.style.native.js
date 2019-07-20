@@ -2,39 +2,28 @@ import styled from 'styled-components/native';
 
 export const Wrapper = styled.View`
   flex-direction: row;
-  height: 45px;
-  flex: 1;
-  background: white;
   align-items: center;
+  justify-content: space-between;
+  height: 42px;
+  background: ${props => props.theme.colors.PRIMARY.COLOR3};
 `;
-export const LeftView = styled.View`
-  background: ${props => props.height || 'green'};
-  height: ${props => props.height || '45px'};
-  width: ${props => props.width || '48px'};
-`;
+export const WrapperView = styled.TouchableOpacity``;
 
-export const CenterView = styled.View`
+export const CenterView = styled.TouchableOpacity`
   flex-direction: row;
-  display: flex;
   align-items: center;
 `;
 
 export const PromoImage = styled.Image`
-  height: ${props => props.height || '35px'};
-  width: ${props => props.width || '38px'};
-  align-items: center;
-`;
-
-export const ViewBackground = styled.View`
-  height: 40px;
-  width: 40px;
-  background: black;
+  width: ${props => props.width || '6px'};
+  height: ${props => props.height || '10px'};
+  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
 export default {
   Wrapper,
-  LeftView,
+  WrapperView,
   PromoImage,
-  ViewBackground,
   CenterView,
 };
