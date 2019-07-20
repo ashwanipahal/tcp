@@ -9,6 +9,7 @@ exports[`Textbox component renders correctly 1`] = `
     className="TextBox__input"
     data-locator=""
     id="abcd"
+    onChangeHandler={[Function]}
     placeholder=""
     type="text"
     value="hello sonar"
@@ -23,6 +24,9 @@ exports[`Textbox component renders correctly 1`] = `
     letterSpacing="normal"
     lineHeight="normal"
     textAlign="left"
+  />
+  <div
+    className="success__checkmark"
   />
 </label>
 `;

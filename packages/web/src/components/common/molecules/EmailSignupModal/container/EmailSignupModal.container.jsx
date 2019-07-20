@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 
+import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/EmailSmsSignup';
+
 import {
   submitEmailSignup,
   validateEmail,
@@ -22,6 +24,24 @@ export const mapDispatchToProps = dispatch => {
     closeModal: () => {
       dispatch(togglerEmailSignupModal({ isModalOpen: false }));
     },
+    /* Validate function for redux-form */
+    asyncValidate: (values, f, state) => {
+      const {
+        formViewConfig: { validationErrorLabel },
+      } = state;
+
+      return values.signup
+        ? emailSignupAbstractor.verifyEmail(values.signup).then(isValid => {
+            if (!isValid) {
+              const error = { signup: validationErrorLabel };
+              // eslint-disable-next-line prefer-promise-reject-errors
+              return Promise.reject({ ...error, _error: error });
+            }
+
+            return isValid;
+          })
+        : Promise.resolve({ awesome: 'awesome' });
+    },
   };
 };
 
@@ -36,8 +56,9 @@ const mapStateToProps = (state, props) => {
   return {
     formViewConfig,
     isSubscriptionValid: EmailSignUp.signupSuccess,
-    isEmailValid: EmailSignUp.validEmail,
+    isEmailValid: EmailSignUp.isEmailValid,
     isModalOpen: EmailSignUp.isModalOpen,
+
     ...props,
   };
 };

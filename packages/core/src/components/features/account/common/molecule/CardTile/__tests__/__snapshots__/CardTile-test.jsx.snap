@@ -449,7 +449,6 @@ exports[`CardTile should render correctly with gift card 1`] = `
                   "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -491,6 +490,10 @@ exports[`CardTile should render correctly with gift card 1`] = `
     padding-top: ",
                   [Function],
                   ";
+
+    ",
+                  [Function],
+                  "
 
     ",
                   [Function],
@@ -548,6 +551,15 @@ exports[`CardTile should render correctly with gift card 1`] = `
   ",
                   [Function],
                   ";
+
+  .visible-hidden {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 ",
                   ";
 ",
@@ -822,7 +834,6 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
                   "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -864,6 +875,10 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
     padding-top: ",
                   [Function],
                   ";
+
+    ",
+                  [Function],
+                  "
 
     ",
                   [Function],
@@ -921,6 +936,15 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
   ",
                   [Function],
                   ";
+
+  .visible-hidden {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 ",
                   ";
 ",
@@ -1364,7 +1388,6 @@ exports[`CardTile should show loading 1`] = `
                   "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -1406,6 +1429,10 @@ exports[`CardTile should show loading 1`] = `
     padding-top: ",
                   [Function],
                   ";
+
+    ",
+                  [Function],
+                  "
 
     ",
                   [Function],
@@ -1463,6 +1490,15 @@ exports[`CardTile should show loading 1`] = `
   ",
                   [Function],
                   ";
+
+  .visible-hidden {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 ",
                   ";
 ",
@@ -1599,7 +1635,6 @@ exports[`CardTile should show remining balance 1`] = `
                   "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -1641,6 +1676,10 @@ exports[`CardTile should show remining balance 1`] = `
     padding-top: ",
                   [Function],
                   ";
+
+    ",
+                  [Function],
+                  "
 
     ",
                   [Function],
@@ -1698,6 +1737,15 @@ exports[`CardTile should show remining balance 1`] = `
   ",
                   [Function],
                   ";
+
+  .visible-hidden {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 ",
                   ";
 ",

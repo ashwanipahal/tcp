@@ -85,7 +85,6 @@ const EmailSignUpButton = ({ openModal }) => {
 };
 const ConnectedEmailSignupButton = connect(
   state => {
-    console.log(state);
     return state;
   },
   dispatch => ({

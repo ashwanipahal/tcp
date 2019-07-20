@@ -24,9 +24,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
       }
     }
   >
-    <form
-      onSubmit={[Function]}
-    >
+    <form>
       <Styled(Grid)>
         <Styled(Row)
           className="wrapper"
@@ -85,7 +83,6 @@ exports[`EmailSignupModal component renders correctly 1`] = `
               }
             >
               <Field
-                className=""
                 component={
                   Object {
                     "$$typeof": Symbol(react.forward_ref),
@@ -99,7 +96,6 @@ exports[`EmailSignupModal component renders correctly 1`] = `
                         "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -141,6 +137,10 @@ exports[`EmailSignupModal component renders correctly 1`] = `
     padding-top: ",
                         [Function],
                         ";
+
+    ",
+                        [Function],
+                        "
 
     ",
                         [Function],
@@ -198,6 +198,15 @@ exports[`EmailSignupModal component renders correctly 1`] = `
   ",
                         [Function],
                         ";
+
+  .visible-hidden {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 ",
                         ";
 ",
@@ -218,8 +227,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
                 maxLength={50}
                 name="signup"
                 onBlur={[Function]}
-                onChange={[Function]}
-                showSuccessCheck={false}
+                onKeyPress={[Function]}
                 type="text"
               />
               <Styled(BodyCopy)
@@ -254,7 +262,8 @@ exports[`EmailSignupModal component renders correctly 1`] = `
                   disabled={true}
                   fill="BLUE"
                   fullWidth={true}
-                  type="submit"
+                  onClick={[Function]}
+                  type="button"
                 />
               </Styled(Col)>
             </Styled(Row)>
@@ -387,9 +396,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
       }
     }
   >
-    <form
-      onSubmit={[Function]}
-    >
+    <form>
       <Styled(Grid)>
         <Styled(Row)
           className="wrapper"
@@ -448,7 +455,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
               }
             >
               <Field
-                className="field-label async-success"
                 component={
                   Object {
                     "$$typeof": Symbol(react.forward_ref),
@@ -462,7 +468,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                         "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -504,6 +509,10 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
     padding-top: ",
                         [Function],
                         ";
+
+    ",
+                        [Function],
+                        "
 
     ",
                         [Function],
@@ -561,6 +570,15 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
   ",
                         [Function],
                         ";
+
+  .visible-hidden {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 ",
                         ";
 ",
@@ -581,8 +599,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                 maxLength={50}
                 name="signup"
                 onBlur={[Function]}
-                onChange={[Function]}
-                showSuccessCheck={true}
+                onKeyPress={[Function]}
                 type="text"
               />
               <Styled(BodyCopy)
@@ -614,10 +631,11 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                   buttonVariation="fixed-width"
                   className="join-button"
                   dataLocator="join_now_btn"
-                  disabled={false}
+                  disabled={true}
                   fill="BLUE"
                   fullWidth={true}
-                  type="submit"
+                  onClick={[Function]}
+                  type="button"
                 />
               </Styled(Col)>
             </Styled(Row)>

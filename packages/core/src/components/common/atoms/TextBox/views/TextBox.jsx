@@ -26,6 +26,7 @@ type Props = {
   inputRef: any,
   dataLocator?: string,
   showSuccessCheck?: boolean,
+  isRequired?: boolean,
 };
 
 const TextBox = ({
@@ -37,14 +38,19 @@ const TextBox = ({
   maxLength,
   input,
   inputRef,
-  meta: { touched, error },
+  meta,
   dataLocator,
   showSuccessCheck,
+  isRequired,
+  ...others
 }: Props): Node => {
   const elemValue = input.value;
+  const { touched, error, invalid, pristine, asyncValidating, active } = meta;
+
   return (
     <label htmlFor={input.name} className={`${className} input-fields-wrapper`}>
       <input
+        {...others}
         {...input}
         id={id}
         aria-label={ariaLabel}
@@ -59,6 +65,7 @@ const TextBox = ({
       />
       <BodyCopy className="TextBox__label" fontFamily="secondary" fontSize="fs12">
         {placeholder}
+        {isRequired ? <i className="visible-hidden">required</i> : null}
       </BodyCopy>
       {touched && error && (
         <BodyCopy
@@ -71,7 +78,9 @@ const TextBox = ({
           {error}
         </BodyCopy>
       )}
-      {showSuccessCheck && <div className="success__checkmark" />}
+      {showSuccessCheck || (!active && !pristine && !invalid && !asyncValidating) ? (
+        <div className="success__checkmark" />
+      ) : null}
     </label>
   );
 };
@@ -85,6 +94,7 @@ TextBox.defaultProps = {
   dataLocator: '',
   meta: {},
   showSuccessCheck: false,
+  isRequired: false,
 };
 
 export default withStyles(TextBox, StyledTextBox);

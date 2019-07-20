@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Field, reduxForm, reset } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 import { Button, Col, Row, Image, TextBox } from '@tcp/core/src/components/common/atoms';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
@@ -11,46 +11,44 @@ import SignupFormIntro from '../../SignupFormIntro';
 
 import signupWrapperStyle from '../EmailSignupModal.style';
 
-const FormName = 'EmailSignupModalReduxForm';
+const FormName = 'EmailSignupModalForm';
 
 class SignupWrapper extends React.PureComponent {
-  onSignUpInputBlur = e => {
-    const { verifyEmailAddress } = this.props;
-    verifyEmailAddress(e.target.value);
+  constructor(props) {
+    super(props);
+    this.state = {
+      validationStarted: false,
+    };
+  }
+
+  onSignUpInputKeyPress = e => {
+    if (e.keyCode === 13 || e.which === 13) {
+      e.preventDefault();
+      this.submitForm();
+    }
   };
 
-  onFormSubmit = e => {
-    e.preventDefault();
-    const { signup } = this.state;
-    const { submitEmailSubscription } = this.props;
-    submitEmailSubscription(signup);
-  };
-
-  onSignUpInputChange = e => {
-    const { clearEmailSignupForm } = this.props;
-    const fieldValue = e.target.value;
+  onInputBlur = () => {
     this.setState({
-      [e.target.name]: fieldValue,
+      validationStarted: true,
     });
-    clearEmailSignupForm();
   };
 
   closeModal = () => {
-    const { closeModal, clearEmailSignupForm, dispatch } = this.props;
+    const { closeModal, clearEmailSignupForm, dispatch, reset } = this.props;
     dispatch(reset(FormName));
     clearEmailSignupForm();
     closeModal();
+    this.setState({
+      validationStarted: false,
+    });
   };
 
-  getValidationClass = isEmailValid => {
-    let validationClass = '';
-    if (isEmailValid === 'invalid') {
-      validationClass = 'field-label async-error';
-    }
-    if (isEmailValid === 'valid') {
-      validationClass = 'field-label async-success';
-    }
-    return validationClass;
+  submitForm = () => {
+    const { handleSubmit, submitEmailSubscription } = this.props;
+    handleSubmit(values => {
+      submitEmailSubscription(values.signup);
+    })();
   };
 
   render() {
@@ -59,12 +57,13 @@ class SignupWrapper extends React.PureComponent {
       className,
       formViewConfig,
       isSubscriptionValid,
-      isEmailValid,
+      pristine,
+      invalid,
+      asyncValidating,
+      submitSucceeded,
     } = this.props;
-    const showAsyncError = isEmailValid === 'invalid';
+    const { validationStarted = false } = this.state;
 
-    const validationClass = this.getValidationClass(isEmailValid);
-    console.log('Open modal', isModalOpen);
     return (
       <Fragment>
         <Modal
@@ -111,7 +110,7 @@ class SignupWrapper extends React.PureComponent {
               </Row>
             </Grid>
           ) : (
-            <form onSubmit={this.onFormSubmit}>
+            <form>
               <Grid>
                 <Row fullBleed={{ large: true }} className="wrapper">
                   <Col
@@ -135,18 +134,11 @@ class SignupWrapper extends React.PureComponent {
                         id="signup"
                         type="text"
                         component={TextBox}
+                        onBlur={this.onInputBlur}
                         maxLength={50}
                         dataLocator="email_address_field"
-                        onChange={this.onSignUpInputChange}
-                        onBlur={this.onSignUpInputBlur}
-                        className={validationClass}
-                        showSuccessCheck={isEmailValid === 'valid'}
+                        onKeyPress={this.onSignUpInputKeyPress}
                       />
-                      {showAsyncError && (
-                        <BodyCopy fontSize="fs12" fontFamily="secondary" color="secondary.dark">
-                          {formViewConfig.validationErrorLabel}
-                        </BodyCopy>
-                      )}
                       <BodyCopy fontSize="fs12" fontFamily="secondary" className="terms-label">
                         {formViewConfig.termsTextLabel}
                       </BodyCopy>
@@ -154,13 +146,20 @@ class SignupWrapper extends React.PureComponent {
                     <Row className="button-wrapper-form" fullBleed>
                       <Col colSize={{ small: 4, medium: 4, large: 6 }}>
                         <Button
-                          disabled={isEmailValid !== 'valid'}
                           fullWidth
+                          disabled={
+                            pristine ||
+                            !validationStarted ||
+                            asyncValidating ||
+                            invalid ||
+                            submitSucceeded
+                          }
                           buttonVariation="fixed-width"
                           fill="BLUE"
-                          type="submit"
+                          type="button"
                           className="join-button"
                           dataLocator="join_now_btn"
+                          onClick={this.submitForm}
                         >
                           {formViewConfig.joinButtonLabel}
                         </Button>
@@ -182,7 +181,6 @@ class SignupWrapper extends React.PureComponent {
 
 SignupWrapper.propTypes = {
   buttonConfig: PropTypes.shape({}),
-  verifyEmailAddress: PropTypes.func,
   submitEmailSubscription: PropTypes.func,
   className: PropTypes.string,
   formViewConfig: PropTypes.shape({}).isRequired,
@@ -190,20 +188,29 @@ SignupWrapper.propTypes = {
   clearEmailSignupForm: PropTypes.shape({}).isRequired,
   dispatch: PropTypes.func.isRequired,
   closeModal: PropTypes.func,
+  reset: PropTypes.func,
+  handleSubmit: PropTypes.func,
   isSubscriptionValid: PropTypes.bool,
   isModalOpen: PropTypes.bool,
-  isEmailValid: PropTypes.string,
+  pristine: PropTypes.bool,
+  invalid: PropTypes.bool,
+  asyncValidating: PropTypes.bool,
+  submitSucceeded: PropTypes.bool,
 };
 
 SignupWrapper.defaultProps = {
   buttonConfig: {},
-  verifyEmailAddress: () => {},
   submitEmailSubscription: () => {},
   closeModal: () => {},
+  reset: () => {},
+  handleSubmit: () => {},
   className: '',
   isSubscriptionValid: false,
   isModalOpen: false,
-  isEmailValid: '',
+  pristine: false,
+  invalid: false,
+  asyncValidating: false,
+  submitSucceeded: false,
 };
 
 // export default withStyles(SignupWrapper, signupWrapperStyle);
@@ -214,6 +221,7 @@ export default withStyles(
     initialValues: {
       signup: '',
     },
+    asyncBlurFields: ['signup'],
   })(SignupWrapper),
   signupWrapperStyle
 );

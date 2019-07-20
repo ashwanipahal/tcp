@@ -20,6 +20,9 @@ function getParent() {
   return document.querySelector('.TCPModal__Wrapper');
 }
 
+// Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
+if (process.env.NODE_ENV !== 'test') ReactModal.setAppElement('#__next');
+
 const Modal = ({ children, ...otherProps }) => {
   const {
     colSet,

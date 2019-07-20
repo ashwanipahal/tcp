@@ -1,9 +1,9 @@
 import { css } from 'styled-components';
 
+/* height: 70px; TODO: Need to check this from Naman, why this size? */
 const textboxStyles = css`
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ${props =>
@@ -43,6 +43,11 @@ const textboxStyles = css`
       `
       border-bottom: 1px solid ${props.theme.colors.NOTIFICATION.ERROR};
     `}
+
+    ${({ theme, meta: { active, pristine, invalid, asyncValidating }, showSuccessCheck }) =>
+      showSuccessCheck || (!active && !pristine && !invalid && !asyncValidating)
+        ? `border-bottom: 1px solid ${theme.colorPalette.success};`
+        : ''}
 
     ${props =>
       props.disabled
@@ -88,6 +93,15 @@ const textboxStyles = css`
   }
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
+
+  .visible-hidden {
+    clip: rect(1px, 1px, 1px, 1px);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
 `;
 
 export default textboxStyles;
