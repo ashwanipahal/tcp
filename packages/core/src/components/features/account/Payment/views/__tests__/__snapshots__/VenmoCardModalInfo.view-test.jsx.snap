@@ -14,7 +14,7 @@ exports[`VenmoCardModalInfo Component should render correctly 1`] = `
      
     <Styled(Image)
       className="deleteCardModal__img"
-      src="/static/images/venmo-blue-acceptance-mark.svg"
+      src="/static/images/venmo-blue-acceptance-mark.png"
     />
     <Styled(BodyStyle)
       className="deleteCardModal__card deleteCardModal__venmoDesc"

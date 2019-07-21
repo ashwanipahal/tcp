@@ -91,6 +91,17 @@ function plccEnabledValidator(value, param, linkedProps) {
   return !(cleanValue.length > 0 && linkedProps[0] === 'PLACE CARD' && !linkedProps[1]);
 }
 
+// TODO - Add test case (Ajay Saini)
+function numberValidator(value) {
+  return /^(?:-?\d+|-?\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/.test(value);
+}
+
+// TODO - Add test case (Ajay Saini)
+function lengthValidator(value, length) {
+  const len = (value || '').length;
+  return len === 0 || len === length;
+}
+
 const validatorMethods = {
   required: requiredValidator,
   nonEmpty: nonEmptyValidator,
@@ -105,6 +116,8 @@ const validatorMethods = {
   cardNumberForType: cardNumberForTypeValidator,
   expiration: expirationValidator,
   plccEnabled: plccEnabledValidator,
+  number: numberValidator,
+  exactLength: lengthValidator,
 };
 
 export default validatorMethods;

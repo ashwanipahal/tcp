@@ -58,6 +58,8 @@ export const formValidationMessages = {
     required: validExpirationDate,
     expiration: validExpirationDate,
   },
+  giftCardNumber: 'Please enter a valid gift card number',
+  cardPin: 'Please enter your gift card pin number',
 };
 
 export const formValidationRules = {
@@ -128,6 +130,16 @@ export const formValidationRules = {
   expYear: {
     required: true,
     expiration: { linkedFields: ['expMonth', 'expYear'] },
+  },
+  giftCardNumber: {
+    number: true,
+    required: true,
+    exactLength: 19,
+  },
+  cardPin: {
+    required: true,
+    number: true,
+    exactLength: 4,
   },
 };
 

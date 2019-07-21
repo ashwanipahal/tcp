@@ -9,6 +9,7 @@ import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
 import AddEditAddressReducer from '@tcp/core/src/components/features/account/AddEditAddress/container/AddEditAddress.reducer';
 import AddEditCreditCardReducer from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
+import AddGiftCardReducer from '@tcp/core/src/components/features/account/Payment/AddGiftCard/container/AddGiftCard.reducer';
 import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
 import AddressVerificationReducer from '@tcp/core/src/components/features/account/AddressVerification/container/AddressVerification.reducer';
 import {
@@ -27,6 +28,7 @@ import {
   SMS_SIGNUP_REDUCER_KEY,
   MODULES_REDUCER_KEY,
   ADDEDITCREDITCARD_REDUCER_KEY,
+  ADD_GIFT_CARD_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
@@ -57,4 +59,5 @@ export default combineReducers({
   [EMAIL_SIGNUP_REDUCER_KEY]: EmailSignupReducer,
   [SMS_SIGNUP_REDUCER_KEY]: SmsSignupReducer,
   [ADDEDITCREDITCARD_REDUCER_KEY]: AddEditCreditCardReducer,
+  [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,
 });
