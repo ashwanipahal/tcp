@@ -4,7 +4,7 @@ import Notification from '@tcp/core/src/components/common/molecules/Notification
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import Anchor from '../../../../common/atoms/Anchor';
-import AddressFormComponent from '../../common/organism/AddressForm';
+import AddressFormComponent from '../../common/organism/AddressForm/AddressForm';
 import AddressVerification from '../../AddressVerification/container/AddressVerification.container';
 import styles from '../styles/AddEditAddress.style';
 
