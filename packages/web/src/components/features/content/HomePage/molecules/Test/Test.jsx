@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 import EmailSignUpModal from '@tcp/web/src/components/common/molecules/EmailSignupModal/container';
-import { togglerEmailSignupModal as togglerEmailSignupModalAction } from '@tcp/web/src/components/common/molecules/EmailSignupModal/container/EmailSignupModal.actions';
+import { toggleEmailSignupModal as toggleEmailSignupModalAction } from '@tcp/web/src/components/common/molecules/EmailSignupModal/container/EmailSignupModal.actions';
 import Heading from '@tcp/core/src/components/common/atoms/Heading';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Button from '@tcp/core/src/components/common/atoms/Button';
@@ -89,7 +89,7 @@ const ConnectedEmailSignupButton = connect(
   },
   dispatch => ({
     openModal: () => {
-      dispatch(togglerEmailSignupModalAction({ isModalOpen: true }));
+      dispatch(toggleEmailSignupModalAction({ isModalOpen: true }));
     },
   })
 )(EmailSignUpButton);

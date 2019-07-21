@@ -1,9 +1,9 @@
 /* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, RichText, Col, Row, TextBox } from '@tcp/core/src/components/common/atoms';
+import { Button, RichText, Col, Row } from '@tcp/core/src/components/common/atoms';
 // reset
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import { Grid } from '@tcp/core/src/components/common/molecules';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -11,28 +11,42 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { SocialMediaLinks } from '../../../molecules';
 
 import style from '../Footer.style';
+import FooterTopSignUpForm from './FooterTopSignUpForm.view';
 
-class FooterTopCandidateA extends React.Component {
-  onFormSubmit = e => {
-    e.preventDefault();
-  };
+const FooterTopEmailSignUpForm = reduxForm({
+  form: 'FooterTopEmailSignUpForm', // a unique identifier for this form
+  initialValues: {
+    signup: '',
+  },
+  asyncBlurFields: ['signup'],
+})(FooterTopSignUpForm);
 
+const FooterTopSmsSignUpForm = reduxForm({
+  form: 'FooterTopSmsSignUpForm', // a unique identifier for this form
+  initialValues: {
+    signup: '',
+  },
+  asyncBlurFields: ['signup'],
+})(FooterTopSignUpForm);
+
+class FooterTopCandidateA extends React.PureComponent {
   render() {
-    const { props } = this;
-
     const {
-      className,
-      buttonConfig,
-      showError,
-      formViewConfig,
-      isEmailValid,
+      emailSignup,
+      emailSignupLabels,
+      smsSignup,
+      smsSignupLabels,
       socialMediaLinks,
       referAFriendButton,
       referAFriend,
-    } = props;
+      emailSignUpAsyncValidate,
+      submitEmailSubscription,
+      isSubscriptionValid,
+      openEmailSignUpModal,
+    } = this.props;
 
     return (
-      <Grid className={`${className} footer_top_candidate_a`}>
+      <Grid className="footer-top footer_top_candidate_a">
         <Row>
           {/* ------------ Email Sign Up starts here ----------------- */}
           <Col
@@ -53,75 +67,24 @@ class FooterTopCandidateA extends React.Component {
               fontSize={['fs12', 'fs12', 'fs16']}
               fontWeight="black"
             >
-              <RichText richTextHtml={buttonConfig.text} />
+              <RichText richTextHtml={emailSignup.text} />
             </BodyCopy>
-            <form onSubmit={this.onFormSubmit}>
-              <Grid>
-                <Row fullBleed>
-                  <Col
-                    className=""
-                    colSize={{
-                      large: 8,
-                      medium: 4,
-                      small: 4,
-                    }}
-                    ignoreGutter={{
-                      small: false,
-                    }}
-                  >
-                    <Field
-                      placeholder={formViewConfig.placeholderText}
-                      name="signup"
-                      id="signup"
-                      type="text"
-                      component={TextBox}
-                      maxLength={50}
-                      dataLocator="email_address_field"
-                    />
-                    {/* onChange={this.onSignUpInputChange} */}
-                    {/* onBlur={this.onSignUpInputBlur} */}
-                    {/* className={validationClass} */}
-                    {/* showSuccessCheck={isEmailValid === 'valid'} */}
-                    {showError && (
-                      <BodyCopy fontSize="fs12" fontFamily="secondary" color="secondary.dark">
-                        {formViewConfig.validationErrorLabel}
-                      </BodyCopy>
-                    )}
-                  </Col>
-                  <Col
-                    colSize={{
-                      large: 4,
-                      medium: 4,
-                      small: 2,
-                    }}
-                    ignoreGutter={{
-                      small: true,
-                    }}
-                    className="candidate_a_inline_container_button"
-                  >
-                    {/* TODO: Need to update this to boolean maybe; disabled={isEmailValid !== 'valid'} */}
-                    <Button
-                      disabled={isEmailValid}
-                      buttonVariation="variable-width"
-                      type="submit"
-                      data-locator="submit_btn"
-                    >
-                      {formViewConfig.submitButtonLabel}
-                    </Button>
-                  </Col>
-                </Row>
-              </Grid>
-            </form>
+            <FooterTopEmailSignUpForm
+              labels={emailSignupLabels}
+              asyncValidate={emailSignUpAsyncValidate}
+              onFormSubmit={submitEmailSubscription}
+              isSubscriptionValid={isSubscriptionValid}
+              openSuccessModal={openEmailSignUpModal}
+            />
             {/* TODO: Zeplin has ["fs11","fs11", "fs13"], which is not in guidline using following for now  */}
-            {/* <BodyCopy
+            <BodyCopy
               fontFamily="secondary"
               textAlign="center"
               fontSize={['fs12', 'fs12', 'fs14']}
               component={RichText}
-              richTextHtml={formViewConfig.termsTextLabel}
-            /> */}
-            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs12', 'fs12', 'fs14']}>
-              {formViewConfig.termsTextLabel}
+              richTextHtml={emailSignupLabels.termsTextLabel}
+            >
+              <RichText>{emailSignupLabels.termsTextLabel}</RichText>
             </BodyCopy>
             <div className="divider hide-in-medium-up" />
           </Col>
@@ -140,7 +103,31 @@ class FooterTopCandidateA extends React.Component {
               small: true,
             }}
           >
-            Hala
+            {/* TODO: Desktop font size is 15px in Zeplin. Need to confirm that as it is not in guideline  */}
+            <BodyCopy
+              className="heading_text"
+              textAlign="center"
+              fontSize={['fs12', 'fs12', 'fs16']}
+              fontWeight="black"
+            >
+              <RichText richTextHtml={smsSignup.text} />
+            </BodyCopy>
+            <FooterTopSmsSignUpForm labels={smsSignupLabels} />
+            {/* asyncValidate={emailSignUpAsyncValidate}
+            onFormSubmit={submitEmailSubscription}
+            isSubscriptionValid={isSubscriptionValid}
+            openSuccessModal={openEmailSignUpModal} */}
+            {/* TODO: Zeplin has ["fs11","fs11", "fs13"], which is not in guidline using following for now  */}
+            <BodyCopy
+              fontFamily="secondary"
+              textAlign="center"
+              fontSize={['fs12', 'fs12', 'fs14']}
+              component={RichText}
+              richTextHtml={smsSignupLabels.termsTextLabel}
+            >
+              <RichText>{smsSignupLabels.termsTextLabel}</RichText>
+            </BodyCopy>
+            <div className="divider hide-in-medium-up" />
           </Col>
           <div className="divider hide-in-large-up" />
           {/* ---------- SMS Signup ends here ------------ */}
@@ -229,11 +216,21 @@ class FooterTopCandidateA extends React.Component {
 
 FooterTopCandidateA.propTypes = {
   className: PropTypes.string.isRequired,
-  buttonConfig: PropTypes.shape({
-    text: PropTypes.string,
+  emailSignup: PropTypes.shape({
     title: PropTypes.string,
+    text: PropTypes.string,
   }),
-  formViewConfig: PropTypes.shape({
+  smsSignup: PropTypes.shape({
+    title: PropTypes.string,
+    text: PropTypes.string,
+  }),
+  emailSignupLabels: PropTypes.shape({
+    placeholderText: PropTypes.string,
+    validationErrorLabel: PropTypes.string,
+    termsTextLabel: PropTypes.string,
+    submitButtonLabel: PropTypes.string,
+  }),
+  smsSignupLabels: PropTypes.shape({
     placeholderText: PropTypes.string,
     validationErrorLabel: PropTypes.string,
     termsTextLabel: PropTypes.string,
@@ -255,15 +252,30 @@ FooterTopCandidateA.propTypes = {
   }),
   showError: PropTypes.bool,
   isEmailValid: PropTypes.bool,
+  emailSignUpAsyncValidate: PropTypes.func,
+  submitEmailSubscription: PropTypes.func,
+  openEmailSignUpModal: PropTypes.func,
+  isSubscriptionValid: PropTypes.bool,
 };
 
 FooterTopCandidateA.defaultProps = {
-  buttonConfig: {
+  emailSignup: {
     text: 'GET $10 OFF BY SIGNING UP FOR EMAIL!',
     title: '',
   },
-  formViewConfig: {
+  smsSignup: {
+    text: 'GET $10 OFF BY SIGNING UP FOR SMS!',
+    title: '',
+  },
+  emailSignupLabels: {
     placeholderText: 'Enter email address',
+    validationErrorLabel: '',
+    termsTextLabel:
+      '*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com.',
+    submitButtonLabel: 'Submit',
+  },
+  smsSignupLabels: {
+    placeholderText: 'Enter phone number',
     validationErrorLabel: '',
     termsTextLabel:
       '*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com.',
@@ -279,16 +291,19 @@ FooterTopCandidateA.defaultProps = {
   },
   showError: false,
   isEmailValid: false,
+  emailSignUpAsyncValidate: () => Promise.resolve(),
+  submitEmailSubscription: () => {},
+  openEmailSignUpModal: () => {},
+  isSubscriptionValid: false,
 };
 
-export default withStyles(
-  reduxForm({
-    form: 'FooterTopCandidateAEmailSignUpForm', // a unique identifier for this form
+export default withStyles(FooterTopCandidateA, style);
+
+/*  reduxForm({
+    form: a'FooterTopCandidateAEmailSignUpForm', // a unique identifier for this form
     initialValues: {
       signup: '',
     },
-  })(FooterTopCandidateA),
-  style
-);
+  })(FooterTopCandidateA) */
 
 export { FooterTopCandidateA as FooterTopCandidateAVanilla };

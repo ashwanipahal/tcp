@@ -4,85 +4,22 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
 <footer
   className="footer-class"
 >
-  <div
-    className="footer-top"
-  >
-    <Styled(Row)>
-      <Styled(Col)
-        className="footer-top__slots"
-        colSize={
-          Object {
-            "large": 3,
-            "medium": 4,
-            "small": 6,
-          }
-        }
-        ignoreGutter={
-          Object {
-            "small": true,
-          }
-        }
-      />
-      <Styled(Col)
-        className="footer-top__slots"
-        colSize={
-          Object {
-            "large": 3,
-            "medium": 4,
-            "small": 6,
-          }
-        }
-        ignoreGutter={
-          Object {
-            "medium": true,
-            "small": true,
-          }
-        }
-      >
-        <Connect(EmailSignupWrapperContainer)
-          buttonConfig={Object {}}
-        />
-      </Styled(Col)>
-      <Styled(Col)
-        className="footer-top__slots"
-        colSize={
-          Object {
-            "large": 3,
-            "medium": 4,
-            "small": 6,
-          }
-        }
-        ignoreGutter={
-          Object {
-            "small": true,
-          }
-        }
-      >
-        <span
-          id="extole_zone_global_footer"
-        >
-          <Styled(Button)
-            customStyle="shadow-button"
-            data-locator="global_referfriend"
-          >
-            <Styled(RichText) />
-          </Styled(Button)>
-        </span>
-      </Styled(Col)>
-      <Styled(Col)
-        className="footer-top__slot--2"
-        colSize={
-          Object {
-            "large": 3,
-            "medium": 4,
-            "small": 6,
-          }
-        }
-      >
-        <Styled(SocialMediaLinks) />
-      </Styled(Col)>
-    </Styled(Row)>
-  </div>
+  <Styled(FooterTopCandidateB)
+    className="footer-class"
+    copyrightText=""
+    legalLinks={Array []}
+    navLinks={Array []}
+    openEmailSignUpModal={[Function]}
+    referenceID=""
+  />
+  <Connect(Styled(ReduxForm))
+    buttonConfig={
+      Object {
+        "text": "Email Signup",
+        "url": "/EMAIL_SIGNUP_MODAL",
+      }
+    }
+  />
   <Styled(Row)
     className="footer-middle mobile"
     fullBleed={true}
@@ -165,10 +102,16 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
           }
         }
       >
-        <Styled(BodyStyle)
-          bodySize="five"
+        <Styled(BodyCopy)
           className="reference-id"
-          tag="p"
+          color="text.primary"
+          component="p"
+          fontFamily="primary"
+          fontSize="fs32"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
         />
       </Styled(Col)>
     </Styled(Row)>
@@ -178,85 +121,21 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
 
 exports[`Footer component Footer component renders correctly without props 1`] = `
 <footer>
-  <div
-    className="footer-top"
-  >
-    <Styled(Row)>
-      <Styled(Col)
-        className="footer-top__slots"
-        colSize={
-          Object {
-            "large": 3,
-            "medium": 4,
-            "small": 6,
-          }
-        }
-        ignoreGutter={
-          Object {
-            "small": true,
-          }
-        }
-      />
-      <Styled(Col)
-        className="footer-top__slots"
-        colSize={
-          Object {
-            "large": 3,
-            "medium": 4,
-            "small": 6,
-          }
-        }
-        ignoreGutter={
-          Object {
-            "medium": true,
-            "small": true,
-          }
-        }
-      >
-        <Connect(EmailSignupWrapperContainer)
-          buttonConfig={Object {}}
-        />
-      </Styled(Col)>
-      <Styled(Col)
-        className="footer-top__slots"
-        colSize={
-          Object {
-            "large": 3,
-            "medium": 4,
-            "small": 6,
-          }
-        }
-        ignoreGutter={
-          Object {
-            "small": true,
-          }
-        }
-      >
-        <span
-          id="extole_zone_global_footer"
-        >
-          <Styled(Button)
-            customStyle="shadow-button"
-            data-locator="global_referfriend"
-          >
-            <Styled(RichText) />
-          </Styled(Button)>
-        </span>
-      </Styled(Col)>
-      <Styled(Col)
-        className="footer-top__slot--2"
-        colSize={
-          Object {
-            "large": 3,
-            "medium": 4,
-            "small": 6,
-          }
-        }
-      >
-        <Styled(SocialMediaLinks) />
-      </Styled(Col)>
-    </Styled(Row)>
-  </div>
+  <Styled(FooterTopCandidateB)
+    copyrightText=""
+    legalLinks={Array []}
+    navLinks={Array []}
+    openEmailSignUpModal={[Function]}
+    referenceID=""
+  />
+  <Connect(Styled(ReduxForm))
+    buttonConfig={
+      Object {
+        "text": "Email Signup",
+        "url": "/EMAIL_SIGNUP_MODAL",
+      }
+    }
+  />
   <Styled(Row)
     className="footer-middle mobile"
     fullBleed={true}
@@ -337,10 +216,16 @@ exports[`Footer component Footer component renders correctly without props 1`] =
           }
         }
       >
-        <Styled(BodyStyle)
-          bodySize="five"
+        <Styled(BodyCopy)
           className="reference-id"
-          tag="p"
+          color="text.primary"
+          component="p"
+          fontFamily="primary"
+          fontSize="fs32"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
         />
       </Styled(Col)>
     </Styled(Row)>

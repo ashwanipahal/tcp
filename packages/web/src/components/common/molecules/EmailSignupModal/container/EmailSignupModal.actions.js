@@ -28,7 +28,7 @@ export const emailSignupStatus = payload => {
   };
 };
 
-export const togglerEmailSignupModal = payload => {
+export const toggleEmailSignupModal = payload => {
   return {
     payload,
     type: EMAIL_SIGNUP_CONSTANTS.EMAIL_SUBSCRIPTION_MODAL_TOGGLE,

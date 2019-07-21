@@ -6,7 +6,7 @@ import {
   submitEmailSignup,
   validateEmail,
   clearEmailSignupForm,
-  togglerEmailSignupModal,
+  toggleEmailSignupModal,
 } from './EmailSignupModal.actions';
 import SignupModalView from '../views/EmailSignupModal.view';
 
@@ -22,7 +22,7 @@ export const mapDispatchToProps = dispatch => {
       dispatch(clearEmailSignupForm());
     },
     closeModal: () => {
-      dispatch(togglerEmailSignupModal({ isModalOpen: false }));
+      dispatch(toggleEmailSignupModal({ isModalOpen: false }));
     },
     /* Validate function for redux-form */
     asyncValidate: (values, f, state) => {
@@ -40,7 +40,7 @@ export const mapDispatchToProps = dispatch => {
 
             return isValid;
           })
-        : Promise.resolve({ awesome: 'awesome' });
+        : Promise.resolve();
     },
   };
 };
