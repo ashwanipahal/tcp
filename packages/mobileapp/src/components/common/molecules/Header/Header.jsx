@@ -30,7 +30,18 @@ const textStyle = { position: 'absolute', marginTop: 18, paddingRight: 5 };
 const imageColor = { tintColor: 'grey' };
 const wrapperStyle = { marginTop: Platform.OS === 'ios' ? 50 : 0 };
 
+/**
+ * This component creates Mobile Header.
+ * 1. To Manage the store locator
+ * 2. To Navigate the cart page & show cart quantity
+ * 3. To show the welcome text for guest user
+ *     and shoe the name fro register user
+ */
 class Header extends React.Component<Props> {
+  /**
+   * To manage the state of icons on the
+   * basis of expand & collaps .
+   */
   constructor(props) {
     super(props);
     this.state = {
@@ -38,6 +49,9 @@ class Header extends React.Component<Props> {
     };
   }
 
+  /**
+   * This function validate the iconView.
+   */
   validateIcon = () => {
     const { isIconIn } = this.state;
     this.setState({
@@ -51,7 +65,8 @@ class Header extends React.Component<Props> {
       storeTitle: 'Find the store',
       headerTitle: 'Welcome',
     };
-    const { labels } = this.props;
+    const { labels = headerLabels } = this.props;
+
     if (labels) {
       headerLabels = labels;
     }

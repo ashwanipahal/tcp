@@ -30,10 +30,10 @@ exports[`Header Component Header should render correctly 1`] = `
         textAlign="center"
       />
       <Styled(Image)
-        data-locator="global_headerpanelexpandedicon"
+        data-locator="global_headerpanelcollapsedicon"
         source={
           Object {
-            "testUri": "../../../src/assets/images/carrot-small-up.png",
+            "testUri": "../../../src/assets/images/carrot-small-down.png",
           }
         }
         style={
