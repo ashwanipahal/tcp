@@ -4,5 +4,4 @@ dist/
 build/
 /flow-typed/
 .expo
-android
-ios
+

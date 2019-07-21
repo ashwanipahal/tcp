@@ -1,3 +1,4 @@
+/* eslint-disable */
 const endpoints = {
   getPlpProducts: {
     method: 'get',
@@ -81,7 +82,7 @@ const endpoints = {
   emailVerification: {
     method: 'get',
     baseURI: '',
-    relURI: 'https://bpi.briteverify.com/emails.json?apikey=e50ab0a9-ac0b-436b-9932-2a74b9486436',
+    relURI: 'https://bpi.briteverify.com/emails.json',
   },
   addEmailSignup: {
     method: 'post',
@@ -92,6 +93,11 @@ const endpoints = {
     method: 'post',
     baseURI: 'https://test2.childrensplace.com',
     relURI: '/api/v2/vibes/smsSignUp',
+  },
+  addGiftCard: {
+    baseURI: 'https://test1.childrensplace.com',
+    method: 'post',
+    relURI: '/api/v2/account/addCreditCardDetails',
   },
 };
 export default endpoints;

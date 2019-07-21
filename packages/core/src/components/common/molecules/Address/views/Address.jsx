@@ -38,10 +38,10 @@ type GetAddressLineProps = {
 const getAddressfromDiffLines = ({ address, dataLocatorPrefix }: GetAddressLineProps) => {
   return (
     <React.Fragment>
-      <BodyCopy tag="p" dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline1` : ''}>
+      <BodyCopy tag="p" data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline1` : ''}>
         {address.addressLine1}
       </BodyCopy>
-      <BodyCopy tag="p" dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline2` : ''}>
+      <BodyCopy tag="p" data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline2` : ''}>
         {address.addressLine2}
       </BodyCopy>
     </React.Fragment>
@@ -54,7 +54,7 @@ const getAddessLines = ({ address, dataLocatorPrefix }) => {
     .map((addressLine, index) => (
       <BodyCopy
         component="p"
-        dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressl${index}` : ''}
+        data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressl${index}` : ''}
         fontFamily="secondary"
       >
         {addressLine}
@@ -83,7 +83,7 @@ const Address = ({
         component="p"
         fontWeight={fontWeight}
         fontFamily="secondary"
-        dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-fullname` : ''}
+        data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-fullname` : ''}
       >
         {`${address.firstName} ${address.lastName}`}
       </BodyCopy>
@@ -92,7 +92,7 @@ const Address = ({
         : getAddressfromDiffLines({ address, dataLocatorPrefix })}
       <BodyCopy
         component="p"
-        dataLocator={dataLocatorPrefix ? `${dataLocatorPrefix}-cityfullname` : ''}
+        data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-cityfullname` : ''}
         fontFamily="secondary"
       >
         {`${address.city}, ${address.state} ${address.zipCode}`}

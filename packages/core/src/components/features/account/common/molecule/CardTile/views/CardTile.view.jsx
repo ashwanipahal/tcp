@@ -92,7 +92,7 @@ class CardTile extends React.Component<Props> {
           fontWeight="extrabold"
           className="cardTile__heading"
           lineHeights="lh107"
-          dataLocator="payment-venmoid"
+          data-locator="payment-venmoid"
         >
           {card.properties.venmoUserId}
         </BodyCopy>
@@ -113,7 +113,7 @@ class CardTile extends React.Component<Props> {
           fontWeight="black"
           className="cardTile__number"
           lineHeights="lh107"
-          dataLocator={`payment-${dataLocatorPrefix}endingtext`}
+          data-locator={`payment-${dataLocatorPrefix}endingtext`}
         >
           {cardNum}
         </BodyCopy>
@@ -125,7 +125,7 @@ class CardTile extends React.Component<Props> {
             fontWeight="semibold"
             className="cardTile__expiry"
             lineHeights="lh115"
-            dataLocator={`payment-${dataLocatorPrefix}expiretext`}
+            data-locator={`payment-${dataLocatorPrefix}expiretext`}
           >
             {expDate}
           </BodyCopy>
@@ -271,7 +271,12 @@ class CardTile extends React.Component<Props> {
     }
     return (
       <div className={`cardTile__img_wrapper ${cardTopMargin}`}>
-        <img className="cardTile__img" alt={card.ccType} src={cardIcon} />
+        <img
+          className="cardTile__img"
+          data-locator={card.ccBrand}
+          alt={card.ccType}
+          src={cardIcon}
+        />
       </div>
     );
   };
@@ -303,7 +308,7 @@ class CardTile extends React.Component<Props> {
               fontFamily="secondary"
               fontWeight="normal"
               className="cardTile__heading"
-              dataLocator={`payment-${dataLocatorPrefix}nametitle`}
+              data-locator={`payment-${dataLocatorPrefix}nametitle`}
             >
               {cardName}
             </BodyCopy>

@@ -8,7 +8,6 @@ const buildQuery = ({ slot, contentId }) => `
       headerText {
         textLines {
           text
-          color
           style
         }
         link {
@@ -33,7 +32,6 @@ const buildQuery = ({ slot, contentId }) => `
           }
           styled {
             text
-            color
             style
           }
       }

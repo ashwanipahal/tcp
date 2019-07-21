@@ -65,9 +65,12 @@ const getMakeDefaultBadge = ({ card, labels, setDefaultPaymentMethod }: MakeDefa
   return card.defaultInd ? (
     <DefaultBadgeWrapper>
       <BadgeContent>
-        <BodyCopy mobilefontFamily={['secondary']} fontWeight="semibold" fontSize="fs10">
-          {labels.ACC_LBL_DEFAULT_PAYMENT}
-        </BodyCopy>
+        <BodyCopy
+          mobilefontFamily={['secondary']}
+          fontWeight="semibold"
+          fontSize="fs10"
+          text={labels.ACC_LBL_DEFAULT_PAYMENT}
+        />
       </BadgeContent>
     </DefaultBadgeWrapper>
   ) : (
@@ -98,9 +101,7 @@ const getVenmoUserName = ({ card }) => {
   return (
     card.properties && (
       <VenmoCardTileHeading dataLocator="payment-venmoid">
-        <BodyCopy fontSize="fs14" fontWeight="extrabold">
-          {card.properties.venmoUserId}
-        </BodyCopy>
+        <BodyCopy fontSize="fs14" fontWeight="extrabold" text={card.properties.venmoUserId} />
       </VenmoCardTileHeading>
     )
   );
@@ -121,18 +122,16 @@ const getCardDetails = ({ dataLocatorPrefix, card, labels }: GetCardDetailsProps
         fontSize="fs14"
         fontWeight="black"
         dataLocator={`payment-${dataLocatorPrefix}endingtext`}
-      >
-        {cardNum}
-      </BodyCopy>
+        text={cardNum}
+      />
       {card.ccType !== 'PLACE CARD' && (
         <CardTileExpiry>
           <BodyCopy
             fontSize="fs14"
             fontWeight="semibold"
             dataLocator={`payment-${dataLocatorPrefix}expiretext`}
-          >
-            {expDate}
-          </BodyCopy>
+            text={expDate}
+          />
         </CardTileExpiry>
       )}
     </View>
@@ -168,9 +167,8 @@ const CardTile = ({ card, labels, setDefaultPaymentMethod }: Props) => {
             mobilefontFamily={['secondary']}
             fontWeight="regular"
             dataLocator={`payment-${dataLocatorPrefix}nametitle`}
-          >
-            {cardName}
-          </BodyCopy>
+            text={cardName}
+          />
         </CardTileHeading>
         {isCreditCard ? getMakeDefaultBadge({ card, labels, setDefaultPaymentMethod }) : null}
       </CardTileContext>

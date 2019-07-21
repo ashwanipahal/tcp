@@ -13,7 +13,6 @@ const BASE_HEADING_TYPOGRAPHY = {
   fontWeight: 'black',
   letterSpacing: 'normal',
   lineHeight: 'normal',
-  textAlign: 'left',
 };
 
 function createThemeTypography(theme = {}) {
