@@ -2,7 +2,7 @@ import React from 'react';
 import { reduxForm } from 'redux-form';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
-import AddressFields from '../../../../common/molecule/AddressFields';
+import AddressFields from '../../../molecule/AddressFields';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import Button from '../../../../../../common/atoms/Button';
