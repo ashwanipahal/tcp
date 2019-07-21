@@ -1,4 +1,6 @@
 const validStreetAddress = 'Please enter a valid street address';
+const validExpirationDate = 'Please enter a valid expiration date';
+
 export const formValidationMessages = {
   addressLine1: {
     required: validStreetAddress,
@@ -42,6 +44,19 @@ export const formValidationMessages = {
   },
   recaptchaToken: {
     required: 'Please check the reCaptcha value',
+  },
+  cardNumber: {
+    required: 'Please enter a valid credit card number',
+    cardNumberForType: 'Please enter a valid credit card number',
+    plccEnabled: 'This card can only be used when shopping the US store',
+  },
+  expYear: {
+    required: validExpirationDate,
+    expiration: validExpirationDate,
+  },
+  expMonth: {
+    required: validExpirationDate,
+    expiration: validExpirationDate,
   },
 };
 
@@ -91,6 +106,28 @@ export const formValidationRules = {
   },
   recaptchaToken: {
     required: true,
+  },
+  cardNumber: {
+    required: true,
+    cardNumberForType: {
+      linkedProps: ['cardType', 'isPLCCEnabled'],
+    },
+    plccEnabled: {
+      linkedProps: ['cardType', 'isPLCCEnabled'],
+    },
+  },
+  expMonth: {
+    required: true,
+    expiration: {
+      linkedFields: ['expMonth', 'expYear'],
+      depends: {
+        expYY: { required: true },
+      },
+    },
+  },
+  expYear: {
+    required: true,
+    expiration: { linkedFields: ['expMonth', 'expYear'] },
   },
 };
 

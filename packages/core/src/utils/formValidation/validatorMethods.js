@@ -59,6 +59,38 @@ function stateRequiredValidator(value, param, _, linkedFieldsValues) {
   return value || (linkedFieldsValues[0] !== 'US' && linkedFieldsValues[0] !== 'CA');
 }
 
+function expirationValidator(value, param, linkedPropsValues, datePieces) {
+  const now = new Date();
+  const nowYear = now.getFullYear();
+  const nowMonth = now.getMonth();
+  const month = datePieces[0] * 1;
+  const year = datePieces[1] * 1;
+
+  return !(year < nowYear || (year === nowYear && month < nowMonth + 1));
+}
+
+// eslint-disable-next-line complexity
+function cardNumberForTypeValidator(value, param, linkedProps) {
+  const cleanValue = (value || '').replace(/\D/g, '');
+  // no type, invalid CC numbr
+  if (!linkedProps[0]) {
+    return false;
+  }
+
+  return (
+    cleanValue.length === 0 ||
+    (cleanValue.length === 15 && linkedProps[0] === 'AMEX') || // new amex card
+    (/[*]{11}\d{4}$/.test(value) && linkedProps[0] === 'AMEX') || // editing amex card
+    (cleanValue.length === 16 && linkedProps[0] !== 'AMEX') || // new non-amex card
+    (/[*]{12}\d{4}$/.test(value) && linkedProps[0] !== 'AMEX' && linkedProps[0] !== null)
+  ); // editing amex card
+}
+
+function plccEnabledValidator(value, param, linkedProps) {
+  const cleanValue = (value || '').replace(/\D/g, '');
+  return !(cleanValue.length > 0 && linkedProps[0] === 'PLACE CARD' && !linkedProps[1]);
+}
+
 const validatorMethods = {
   required: requiredValidator,
   nonEmpty: nonEmptyValidator,
@@ -70,6 +102,9 @@ const validatorMethods = {
   name: nameValidator,
   city: cityNameValidator,
   stateRequired: stateRequiredValidator,
+  cardNumberForType: cardNumberForTypeValidator,
+  expiration: expirationValidator,
+  plccEnabled: plccEnabledValidator,
 };
 
 export default validatorMethods;

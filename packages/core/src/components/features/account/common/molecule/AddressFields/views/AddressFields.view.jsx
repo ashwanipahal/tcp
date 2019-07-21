@@ -1,35 +1,46 @@
 import React from 'react';
-import { Field, reduxForm, change } from 'redux-form';
-import TextBox from '../../../../../common/atoms/TextBox';
-import SelectBox from '../../../../../common/atoms/Select';
-import InputCheckbox from '../../../../../common/atoms/InputCheckbox';
-import Row from '../../../../../common/atoms/Row';
-import Col from '../../../../../common/atoms/Col';
-import Button from '../../../../../common/atoms/Button';
-import createValidateMethod from '../../../../../../utils/formValidation/createValidateMethod';
-import getStandardConfig from '../../../../../../utils/formValidation/validatorStandardConfig';
-import { AutoCompleteComponent } from '../../../../../common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
+import { Field, change } from 'redux-form';
+import TextBox from '../../../../../../common/atoms/TextBox';
+import SelectBox from '../../../../../../common/atoms/Select';
+import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
+import Row from '../../../../../../common/atoms/Row';
+import Col from '../../../../../../common/atoms/Col';
+import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+import { AutoCompleteComponent } from '../../../../../../common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import {
   countriesOptionsMap,
   CAcountriesStatesTable,
   UScountriesStatesTable,
-} from './CountriesAndStates.constants';
+} from '../../../../../../../constants/CountriesAndStates.constants';
+
 // @flow
 type Props = {
-  handleSubmit: any,
-  pristine: any,
-  className: any,
-  backToAddressBookClick: any,
   dispatch: any,
   labels: object,
-  isEdit?: boolean,
   isMakeDefaultDisabled?: boolean,
+  formName: string,
+  showDefaultCheckbox?: boolean,
+  showPhoneNumber?: boolean,
+  formSection?: string,
 };
 
 type State = {
   country: string,
 };
-export class AddressForm extends React.PureComponent<Props, State> {
+
+export class AddressFields extends React.PureComponent<Props, State> {
+  static addressValidationConfig = getStandardConfig([
+    'firstName',
+    'lastName',
+    'addressLine1',
+    'addressLine2',
+    'city',
+    'state',
+    'zipCode',
+    'country',
+    'phoneNumber',
+  ]);
+
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -44,27 +55,19 @@ export class AddressForm extends React.PureComponent<Props, State> {
   };
 
   handlePlaceSelected = (place: Object, inputValue: string) => {
-    const { dispatch } = this.props;
+    const { dispatch, formName, formSection } = this.props;
     const address = AutoCompleteComponent.getAddressFromPlace(place, inputValue);
-    dispatch(change('AddressForm', 'city', address.city));
-    dispatch(change('AddressForm', 'zipCode', address.zip));
-    dispatch(change('AddressForm', 'state', address.state));
-    dispatch(change('AddressForm', 'addressLine1', address.street));
+    dispatch(change(formName, `${formSection ? 'address.' : ''}city`, address.city));
+    dispatch(change(formName, `${formSection ? 'address.' : ''}zipCode`, address.zip));
+    dispatch(change(formName, `${formSection ? 'address.' : ''}state`, address.state));
+    dispatch(change(formName, `${formSection ? 'address.' : ''}addressLine1`, address.street));
   };
 
   render() {
-    const {
-      handleSubmit,
-      pristine,
-      className,
-      backToAddressBookClick,
-      labels,
-      isEdit,
-      isMakeDefaultDisabled,
-    } = this.props;
+    const { labels, isMakeDefaultDisabled, showDefaultCheckbox, showPhoneNumber } = this.props;
     const { country } = this.state;
     return (
-      <form className={className} onSubmit={handleSubmit} noValidate>
+      <React.Fragment>
         <Row fullBleed>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
@@ -151,86 +154,43 @@ export class AddressForm extends React.PureComponent<Props, State> {
               dataLocator="addnewaddress-country"
             />
           </Col>
-          <Col colSize={{ small: 6, medium: 4, large: 6 }}>
-            <Field
-              placeholder={labels.acc_lbl_phone_number}
-              name="phoneNumber"
-              id="phoneNumber"
-              component={TextBox}
-              dataLocator="addnewaddress-phnumber"
-              type="tel"
-            />
-          </Col>
+          {showPhoneNumber && (
+            <Col colSize={{ small: 6, medium: 4, large: 6 }}>
+              <Field
+                placeholder={labels.acc_lbl_phone_number}
+                name="phoneNumber"
+                id="phoneNumber"
+                component={TextBox}
+                dataLocator="addnewaddress-phnumber"
+                type="tel"
+              />
+            </Col>
+          )}
         </Row>
-        <Row fullBleed className="elem-mb-XL">
-          <Col colSize={{ small: 4, medium: 4, large: 6 }} offsetLeft={{ small: 1 }}>
-            <Field
-              name="primary"
-              component={InputCheckbox}
-              dataLocator="addnewaddress-setdefaddress"
-              disabled={isMakeDefaultDisabled}
-            >
-              {labels.acc_lbl_set_default}
-            </Field>
-          </Col>
-        </Row>
-        <Row fullBleed className="AddAddressForm__ctaContainer">
-          <Col
-            className="AddAddressForm__cancel"
-            colSize={{ small: 4, medium: 3, large: 3 }}
-            offsetLeft={{ small: 1, medium: 1, large: 6 }}
-          >
-            <Button
-              onClick={backToAddressBookClick}
-              buttonVariation="fixed-width"
-              type="button"
-              data-locator="addnewaddress-cancel"
-            >
-              {labels.acc_lbl_cancel_cta}
-            </Button>
-          </Col>
-          <Col
-            className="AddAddressForm__submit"
-            colSize={{ small: 4, medium: 3, large: 3 }}
-            offsetLeft={{ small: 1 }}
-          >
-            <Button
-              fill="BLUE"
-              disabled={pristine}
-              type="submit"
-              buttonVariation="fixed-width"
-              data-locator="addnewaddress-addaddress"
-            >
-              {isEdit ? labels.acc_lbl_update_address_cta : labels.acc_lbl_add_address_cta}
-            </Button>
-          </Col>
-        </Row>
-      </form>
+        {showDefaultCheckbox && (
+          <Row fullBleed className="elem-mb-XL">
+            <Col colSize={{ small: 4, medium: 4, large: 6 }} offsetLeft={{ small: 1 }}>
+              <Field
+                name="primary"
+                component={InputCheckbox}
+                dataLocator="addnewaddress-setdefaddress"
+                disabled={isMakeDefaultDisabled}
+              >
+                {labels.acc_lbl_set_default}
+              </Field>
+            </Col>
+          </Row>
+        )}
+      </React.Fragment>
     );
   }
 }
 
-AddressForm.defaultProps = {
-  isEdit: false,
+AddressFields.defaultProps = {
   isMakeDefaultDisabled: false,
+  showDefaultCheckbox: true,
+  showPhoneNumber: true,
+  formSection: '',
 };
 
-const validateMethod = createValidateMethod(
-  getStandardConfig([
-    'firstName',
-    'lastName',
-    'addressLine1',
-    'addressLine2',
-    'city',
-    'state',
-    'zipCode',
-    'country',
-    'phoneNumber',
-  ])
-);
-
-export default reduxForm({
-  form: 'AddressForm', // a unique identifier for this form
-  enableReinitialize: true,
-  ...validateMethod,
-})(AddressForm);
+export default AddressFields;

@@ -1,21 +1,27 @@
-import React from 'react'
+import React from 'react';
 import PropTypes from 'prop-types';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { TextBox, Image } from '../../../../../../common/atoms';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy/views/BodyCopy';
+import { getIconPath } from '../../../../../../../utils/utils';
+import styles from '../styles/CreditCardNumber.style';
 
-const CreditCardNumber = ({ creditCardImgUrl, ...otherProps }) => {
+const getCardTypeImgUrl = cardType => {
+  return getIconPath(`${(cardType || '').toLowerCase().replace(' ', '-')}-small`);
+};
+
+const CreditCardNumber = ({ cardType, className, ...otherProps }) => {
   return (
-    <BodyCopy component="div">
-      <TextBox
-        {...otherProps}
-      />
-      <Image src={creditCardImgUrl} />
+    <BodyCopy component="div" className={className}>
+      <TextBox {...otherProps} />
+      {cardType && <Image src={getCardTypeImgUrl(cardType)} />}
     </BodyCopy>
   );
-}
+};
 
 CreditCardNumber.propTypes = {
-  creditCardImgUrl: PropTypes.string.isRequired
-}
+  cardType: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
+};
 
-export default CreditCardNumber;
+export default withStyles(CreditCardNumber, styles);

@@ -22,6 +22,14 @@ const endpoints = {
     JSONP: true,
     reqTimeout: 2000,
   },
+  addCreditCard: {
+    method: API_METHODS.POST,
+    URI: 'v2/account/addCreditCardDetails',
+  },
+  updateCreditCard: {
+    method: API_METHODS.POST,
+    URI: 'v2/account/modifyCreditCardDetails',
+  },
 };
 
 export default endpoints;

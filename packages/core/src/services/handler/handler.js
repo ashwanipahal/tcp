@@ -102,7 +102,7 @@ export const executeStatefulAPICall = reqObj => {
     return null;
   }
   const apiConfigObj = getAPIConfig();
-  return statefulAPIClient(apiConfigObj, reqObj).catch(errorHandler);
+  return statefulAPIClient(apiConfigObj, reqObj);
 };
 
 export const executeUnbxdAPICall = reqObj => {
