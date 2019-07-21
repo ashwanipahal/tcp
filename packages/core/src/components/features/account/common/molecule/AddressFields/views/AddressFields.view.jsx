@@ -11,7 +11,7 @@ import {
   countriesOptionsMap,
   CAcountriesStatesTable,
   UScountriesStatesTable,
-} from '../../../../../../../constants/CountriesAndStates.constants';
+} from '../../../organism/AddressForm/CountriesAndStates.constants';
 
 // @flow
 type Props = {
