@@ -4,23 +4,55 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
 <div
   className="checkout"
 >
-  <Styled(Button)
-    className="view-bag"
-  >
-    View Bag
-  </Styled(Button)>
-  <div
-    className="check-out-container"
-  >
-    <PayPalButton
-      className="paypal-button"
-    />
-    <Styled(Button)
-      className="checkout"
-      onClick={[MockFunction]}
+  <Styled(Row)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 12,
+          "small": 12,
+        }
+      }
     >
-      Checkout
-    </Styled(Button)>
-  </div>
+      <Styled(Button)
+        className="view-bag"
+      >
+        View Bag
+      </Styled(Button)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="checkout-button"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <PayPalButton
+        className="payPal-button"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 6,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Button)
+        className="checkout"
+        onClick={[MockFunction]}
+      >
+        Checkout
+      </Styled(Button)>
+    </Styled(Col)>
+  </Styled(Row)>
 </div>
 `;
