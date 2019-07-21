@@ -46,7 +46,7 @@ class FooterTopCandidateA extends React.PureComponent {
     } = this.props;
 
     return (
-      <Grid className="footer-top footer_top_candidate_a">
+      <Grid className="footer_top_candidate_a">
         <Row>
           {/* ------------ Email Sign Up starts here ----------------- */}
           <Col
@@ -66,6 +66,7 @@ class FooterTopCandidateA extends React.PureComponent {
               textAlign="center"
               fontSize={['fs12', 'fs12', 'fs16']}
               fontWeight="black"
+              data-locator="email_promo_text"
             >
               <RichText richTextHtml={emailSignup.text} />
             </BodyCopy>
@@ -75,6 +76,10 @@ class FooterTopCandidateA extends React.PureComponent {
               onFormSubmit={submitEmailSubscription}
               isSubscriptionValid={isSubscriptionValid}
               openSuccessModal={openEmailSignUpModal}
+              dataLocators={{
+                submitButton: 'email_submit_btn',
+                inputField: 'enter_email_text_field',
+              }}
             />
             {/* TODO: Zeplin has ["fs11","fs11", "fs13"], which is not in guidline using following for now  */}
             <BodyCopy
@@ -127,7 +132,6 @@ class FooterTopCandidateA extends React.PureComponent {
             >
               <RichText>{smsSignupLabels.termsTextLabel}</RichText>
             </BodyCopy>
-            <div className="divider hide-in-medium-up" />
           </Col>
           <div className="divider hide-in-large-up" />
           {/* ---------- SMS Signup ends here ------------ */}
@@ -135,7 +139,7 @@ class FooterTopCandidateA extends React.PureComponent {
           {/* ---------- Refer a friend start here-------- */}
 
           <Col
-            className=""
+            className="refer_a_friend_desktop"
             colSize={{
               large: 4,
               medium: 4,
@@ -187,8 +191,8 @@ class FooterTopCandidateA extends React.PureComponent {
                   </Button>
                 </Col>
               </Row>
-
-              <Row fullBleed>
+              <div className="divider hide-in-medium-down" />
+              <Row fullBleed className="hide-in-medium-down">
                 <Col
                   className=""
                   colSize={{
@@ -207,6 +211,20 @@ class FooterTopCandidateA extends React.PureComponent {
             </Grid>
           </Col>
           {/* ---------- Refer a friend ends here-------- */}
+          <div className="divider hide-in-medium-up" />
+          <Col
+            className="hide-in-large-up refer_a_frient_last_colm"
+            colSize={{
+              large: 0,
+              medium: 4,
+              small: 12,
+            }}
+            ignoreGutter={{
+              small: true,
+            }}
+          >
+            <SocialMediaLinks {...socialMediaLinks} />
+          </Col>
         </Row>
         <div className="divider hide-in-medium-down" />
       </Grid>

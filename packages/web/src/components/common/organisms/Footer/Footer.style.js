@@ -1,30 +1,33 @@
 import { css } from 'styled-components';
 
 export default css`
-  &.footer_top_candidate_a .flex-align-center {
+  .footer_top_candidate_a .flex-align-center {
     align-items: center;
   }
-  &.footer_top_candidate_a .candidate_a_inline_container_button {
+  .footer_top_candidate_a .candidate_a_inline_container_button {
     text-align: center;
   }
-  &.footer_top_candidate_a .candidate_a_inline_container_button button {
+  .footer_top_candidate_a .candidate_a_inline_container_button button {
     font-size: 13px;
     padding: 12px 32px;
   }
 
-  &.footer_top_candidate_a .TextBox__input {
+  .footer_top_candidate_a .TextBox__input {
     padding-top: 18px;
   }
 
-  &.footer_top_candidate_a .heading_text {
-    margin-bottom: 10px;
+  .footer_top_candidate_a .heading_text {
+    margin-bottom: 15px;
   }
 
-  &.footer_top_candidate_a .divider {
+  .footer_top_candidate_a .refer_a_frient_last_colm {
+    margin-bottom: 32px;
+  }
+  .footer_top_candidate_a .divider {
     height: 1px;
     background-color: ${props => props.theme.colors.PRIMARY.LIGHTGRAY};
-    margin-top: 32px;
-    margin-bottom: 32px;
+    margin-top: 24px;
+    margin-bottom: 24px;
     width: 100%;
   }
 
@@ -75,7 +78,7 @@ export default css`
     .hide-in-medium-up {
       display: none;
     }
-    &.footer_top_candidate_a .heading_text.refer_friend_text {
+    .footer_top_candidate_a .heading_text.refer_friend_text {
       margin-bottom: 0;
     }
   }
@@ -116,6 +119,10 @@ export default css`
       font-size: ${props => props.theme.fonts.fontSize.body.small.secondary};
       padding: 11px 0 24px;
       color: ${props => props.theme.colors.TEXT.DARKERGRAY};
+    }
+
+    .refer_a_friend_desktop {
+      margin-right: 0;
     }
   }
 

@@ -56,7 +56,14 @@ class FooterTopEmailSignUpForm extends React.Component {
   };
 
   render() {
-    const { labels, pristine, invalid, asyncValidating, submitSucceeded } = this.props;
+    const {
+      labels,
+      pristine,
+      invalid,
+      asyncValidating,
+      submitSucceeded,
+      dataLocators,
+    } = this.props;
     const { validationStarted = false } = this.state;
 
     return (
@@ -82,7 +89,7 @@ class FooterTopEmailSignUpForm extends React.Component {
                 component={TextBox}
                 onBlur={this.onInputBlur}
                 onKeyPress={this.onSignUpInputKeyPress}
-                dataLocator="email_address_field"
+                dataLocator={dataLocators.inputField}
               />
             </Col>
             <Col
@@ -102,7 +109,7 @@ class FooterTopEmailSignUpForm extends React.Component {
                 }
                 buttonVariation="variable-width"
                 type="button"
-                data-locator="submit_btn"
+                data-locator={dataLocators.submitButton}
                 onClick={this.submitForm}
               >
                 {labels.submitButtonLabel}
@@ -122,6 +129,10 @@ FooterTopEmailSignUpForm.propTypes = {
     termsTextLabel: PropTypes.string,
     submitButtonLabel: PropTypes.string,
   }),
+  dataLocators: PropTypes.shape({
+    submitButton: PropTypes.string,
+    inputField: PropTypes.string,
+  }),
   pristine: PropTypes.bool,
   invalid: PropTypes.bool,
   asyncValidating: PropTypes.bool,
@@ -139,6 +150,10 @@ FooterTopEmailSignUpForm.defaultProps = {
     validationErrorLabel: '',
     termsTextLabel: '',
     submitButtonLabel: 'Submit',
+  },
+  dataLocators: {
+    submitButton: 'email_submit_btn',
+    inputField: 'enter_email_text_field',
   },
   pristine: false,
   invalid: false,
