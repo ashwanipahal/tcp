@@ -37,14 +37,14 @@ const GiftCards = (props: Props) => {
             <EmptyCCLabelStyle>{labels.ACC_LBL_GC_EMPTY_HEADING}</EmptyCCLabelStyle>
           </WrapperStyle>
           <DescriptionEmptyCCStyle>{labels.ACC_LBL_GC_EMPTY_DESC}</DescriptionEmptyCCStyle>
-          <ButtonWrapperStyle>
-            <CustomButton
-              title={labels.ACC_LBL_GC_EMPTY_ADD_BTN}
-              buttonVariation="variable-width"
-            />
-          </ButtonWrapperStyle>
         </React.Fragment>
       )}
+      <ButtonWrapperStyle>
+        <CustomButton
+          title={giftCardList.size === 0 ? labels.ACC_LBL_GC_EMPTY_ADD_BTN : labels.ACC_LBL_ADD_BTN}
+          buttonVariation="variable-width"
+        />
+      </ButtonWrapperStyle>
       {giftCardList.size > 0 &&
         giftCardList.map(cardItem => <CardTile card={cardItem} labels={labels} />)}
     </View>

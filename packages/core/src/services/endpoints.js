@@ -22,6 +22,14 @@ const endpoints = {
     JSONP: true,
     reqTimeout: 2000,
   },
+  getOrderDetails: {
+    method: API_METHODS.GET,
+    URI: 'v2/checkout/getOrderDetails',
+  },
+  updateMultiSelectItemsToRemove: {
+    method: 'PUT',
+    URI: 'v2/cart/deleteMultipleOrderItems',
+  },
 };
 
 export default endpoints;
