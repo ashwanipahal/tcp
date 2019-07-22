@@ -38,24 +38,6 @@ const AddedToBag = ({
       }}
     >
       <div className="addedToBagWrapper">
-        Integrate here your Integrate here your Integrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here your
-        {JSON.stringify(addedToBagData)}
         <AddedToBagActions />
         <AddedToBagViewPoints className="added-to-bag-points" />
       </div>
