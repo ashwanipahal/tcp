@@ -52,7 +52,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
         <Row fullBleed>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 4 }}>
             <Field
-              placeholder="Gift Card"
+              placeholder={labels.ACC_LBL_GIFT_CARD_NO_PLACEHOLDER}
               name="giftCardNumber"
               type="tel"
               component={TextBox}
@@ -62,7 +62,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
           </Col>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 2, large: 3 }}>
             <Field
-              placeholder="Pin"
+              placeholder={labels.ACC_LBL_GIFT_CARD_PIN_PLACEHOLDER}
               name="cardPin"
               type="tel"
               component={TextBox}
@@ -83,13 +83,11 @@ class AddGiftCardForm extends React.PureComponent<Props> {
               dataLocator="gift-card-addcardrecaptchacheckbox"
             />
           </Col>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 4, medium: 2, large: 2 }}>
-            <Field component={TextBox} title="" type="hidden" name="recaptchaToken" />
-          </Col>
+          <Field component={TextBox} type="hidden" name="recaptchaToken" />
         </Row>
 
         <Row fullBleed className="card__row">
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 8, large: 5 }}>
+          <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 8, large: 7 }}>
             <div className="card__msgWrapper">
               <RichText
                 richTextHtml={labels.ACC_LBL_GIFT_CARD_MESSAGE}
@@ -103,7 +101,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
             colSize={{ small: 4, medium: 3, large: 2 }}
             className="card__btn"
             offsetLeft={{ small: 1, medium: 1, large: 1 }}
-            offsetRight={{ small: 1, medium: 0, large: 0 }}
+            offsetRight={{ small: 1, medium: 1, large: 0 }}
           >
             <Button
               buttonVariation="fixed-width"
