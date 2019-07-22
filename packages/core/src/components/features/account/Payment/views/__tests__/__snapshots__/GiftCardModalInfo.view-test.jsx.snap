@@ -4,23 +4,23 @@ exports[`GiftCardModalInfo Component should render correctly 1`] = `
 <div>
   <Styled(BodyStyle)
     bodySize="seven"
-    className="deleteCardModal_modalTitle"
+    className="deleteCardModal__modalTitle"
     fontFamily="secondaryFontFamily"
     fontWeight="bold"
   >
     abc
   </Styled(BodyStyle)>
   <Styled(BodyStyle)
-    className="deleteCardModal_desc"
+    className="deleteCardModal__desc"
   >
      
     <Styled(Image)
-      className="deleteCardModal_img"
-      src="/static/images/gift-card.png"
+      className="deleteCardModal__img"
+      src="/static/images/gift-card-small.png"
     />
     <Styled(BodyStyle)
       bodySize="three"
-      className="deleteCardModal_cardInfo layout-pb-LRG"
+      className="deleteCardModal__cardInfo layout-pb-LRG"
     >
       <Styled(BodyStyle)
         className="deleteCardModal_card"
