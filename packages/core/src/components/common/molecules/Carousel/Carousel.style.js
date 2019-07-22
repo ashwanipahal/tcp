@@ -131,7 +131,7 @@ const CarouselStyle = styled.div`
   }
 
   .slick-prev {
-    left: 0;
+    left: ${props => (props.carouselConfig.moduleL ? '-70px' : 0)};
     transform: rotateY(180deg) translate(0, -50%);
   }
   [dir='rtl'] .slick-prev {
@@ -139,7 +139,7 @@ const CarouselStyle = styled.div`
     left: auto;
   }
   .slick-next {
-    right: 0;
+    right: ${props => (props.carouselConfig.moduleL ? '-70px' : 0)};
   }
   [dir='rtl'] .slick-next {
     right: auto;
@@ -183,7 +183,6 @@ const CarouselStyle = styled.div`
     left: 0;
     width: 20px;
     height: 20px;
-    content: '•';
     text-align: center;
     opacity: 0.25;
     color: black;

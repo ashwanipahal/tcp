@@ -129,7 +129,7 @@ const ModuleD = (props: Props) => {
               title={singleCTAButton.title}
               data-locator={getLocator('moduleD_button')}
             >
-              {singleCTAButton.text}
+              {singleCTAButton.title}
             </Button>
           </Anchor>
         </Row>

@@ -1,13 +1,21 @@
 // @flow
 import React from 'react';
-import { Col, Row } from '../../../atoms';
+import { Anchor, BodyCopy, Col, Image, Row } from '../../../atoms';
 import errorBoundary from '../../../hoc/errorBoundary';
+import withStyle from '../../../hoc/withStyles';
 import { Carousel } from '../..';
 import config from '../config';
+import ModuleLHeader from './ModuleL.Header';
+import style from '../ModuleL.style';
 
 type Props = {
+  className: string,
   headerText: Object,
   imageGrid: Array<Object>,
+};
+
+const getUrlWithCrop = url => {
+  return url.replace('upload/', `upload/c_fill,g_center,h_260,w_210/`);
 };
 
 /**
@@ -17,39 +25,55 @@ type Props = {
  * @param {headerText} headerText : Header data object
  * @param {imageGrid} imageGrid : Slides data in array list
  */
-const ModuleL = ({ headerText, imageGrid }: Props) => {
-  console.log(headerText);
+const ModuleL = ({ className, headerText, imageGrid }: Props) => {
   console.log(imageGrid);
 
   return (
-    <Row>
-      <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+    <Row className={`${className} moduleL`}>
+      <Col colSize={{ small: 6, medium: 8, large: 10 }} offsetLeft={{ large: 1 }}>
+        <ModuleLHeader headerText={headerText} />
         <Carousel
           options={config.CAROUSEL_OPTIONS}
-          carouselConfig={{ autoplay: false, type: 'light' }}
+          carouselConfig={{
+            autoplay: false,
+            type: 'light',
+            moduleL: true,
+          }}
         >
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
-          <div>
-            <h3>5</h3>
-          </div>
-          <div>
-            <h3>6</h3>
-          </div>
+          {imageGrid.map(({ image, link, styled }, index) => {
+            return (
+              <Row key={index.toString()}>
+                <Col colSize={{ small: 6, medium: 8, large: 12 }} className="moduleL__tile">
+                  <Image
+                    className="moduleL__tile-image"
+                    alt={image.alt}
+                    src={getUrlWithCrop(image.url)}
+                  />
+                  <div className="moduleL__tile-text">
+                    <BodyCopy
+                      component="div"
+                      className="moduleL__tile-title"
+                      fontFamily={['primary']}
+                      fontSize={['fs32']}
+                      fontWeight={['regular']}
+                      letterSpacing={['ls222']}
+                      textAlign="left"
+                      color="text.primary"
+                    >
+                      {styled.text}
+                    </BodyCopy>
+                    <Anchor withCaret className="moduleL__tile-link">
+                      {link.text}
+                    </Anchor>
+                  </div>
+                </Col>
+              </Row>
+            );
+          })}
         </Carousel>
       </Col>
     </Row>
   );
 };
 
-export default errorBoundary(ModuleL);
+export default errorBoundary(withStyle(ModuleL, style));

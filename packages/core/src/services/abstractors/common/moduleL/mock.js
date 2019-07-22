@@ -8,26 +8,24 @@ export default {
     name: 'moduleL',
     type: 'module',
     composites: {
-      headerText: [
-        {
-          textItems: [
-            {
-              text: 'TRENDING NOW',
-              style: 'style1',
-            },
-          ],
-          icon: {
-            placement: '',
-            icon: '',
+      headerText: {
+        textItems: [
+          {
+            text: 'TRENDING NOW',
+            style: 'style1',
           },
-          link: {
-            url: 'https://www.childrensplace.com/us/c/girls-new-arrivals',
-            title: '',
-            target: '',
-            external: 0,
-          },
+        ],
+        icon: {
+          placement: '',
+          icon: '',
         },
-      ],
+        link: {
+          url: 'https://www.childrensplace.com/us/c/girls-new-arrivals',
+          title: '',
+          target: '',
+          external: 0,
+        },
+      },
       promoTextBanner: {
         linkClass: {
           url: '/banner/url',
@@ -64,8 +62,8 @@ export default {
           },
           link: {
             url: 'https://www.childrensplace.com/us/c/toddler-girl-clothes',
-            text: '',
-            title: '',
+            text: 'Shop Unicorns & Friends',
+            title: 'Shop Unicorns & Friends',
             target: '',
             external: 0,
             class: '',
@@ -87,8 +85,8 @@ export default {
           },
           link: {
             url: 'https://www.childrensplace.com/us/c/toddler-boy-clothes',
-            text: '',
-            title: '',
+            text: 'Shop Dinos',
+            title: 'Shop Dinos',
             target: '',
             external: 0,
             class: '',
@@ -110,8 +108,8 @@ export default {
           },
           link: {
             url: 'https://www.childrensplace.com/us/c/girls-clothing',
-            text: '',
-            title: '',
+            text: 'Shop Flip Sequence',
+            title: 'Shop Flip Sequence',
             target: '',
             external: 0,
             class: '',
@@ -133,8 +131,8 @@ export default {
           },
           link: {
             url: 'https://www.childrensplace.com/us/c/boys-clothing',
-            text: '',
-            title: '',
+            text: 'Shop Ninjas',
+            title: 'Shop Ninjas',
             target: '',
             external: 0,
             class: '',

@@ -6,7 +6,7 @@ export default {
     infinite: true,
     speed: 1000,
     dots: true,
-    rows: 2,
+    rows: 1,
     slidesPerRow: 1,
     slidesToShow: 2,
     slidesToScroll: 1,

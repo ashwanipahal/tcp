@@ -24,4 +24,6 @@ export default {
   // Promotional Banner
   promo_item: 'global_promobannerimg',
   refer_friend: 'global_referfriend',
+  // Module L
+  module_L_header_text: 'module_L_header_text',
 };
