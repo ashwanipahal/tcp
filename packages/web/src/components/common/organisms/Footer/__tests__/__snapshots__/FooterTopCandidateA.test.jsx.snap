@@ -1,0 +1,409 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
+<Styled(Grid)
+  className="footer_top_candidate_a"
+>
+  <Styled(Row)>
+    <Styled(Col)
+      className=""
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="heading_text"
+        color="text.primary"
+        component="p"
+        data-locator="email_promo_text"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs12",
+            "fs12",
+            "fs16",
+          ]
+        }
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="center"
+      >
+        <Styled(RichText)
+          richTextHtml="GET $10 OFF BY SIGNING UP FOR EMAIL!"
+        />
+      </Styled(BodyCopy)>
+      <ReduxForm
+        asyncBlurFields={
+          Array [
+            "signup",
+          ]
+        }
+        asyncValidate={[Function]}
+        dataLocators={
+          Object {
+            "inputField": "enter_email_text_field",
+            "submitButton": "email_submit_btn",
+          }
+        }
+        destroyOnUnmount={true}
+        enableReinitialize={false}
+        fieldName="signup"
+        forceUnregisterOnUnmount={false}
+        form="FooterTopEmailSignUpForm"
+        getFormState={[Function]}
+        initialValues={
+          Object {
+            "signup": "",
+          }
+        }
+        isSubscriptionValid={false}
+        keepDirtyOnReinitialize={false}
+        labels={
+          Object {
+            "placeholderText": "Enter email address",
+            "submitButtonLabel": "Submit",
+            "termsTextLabel": "*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com.",
+            "validationErrorLabel": "",
+          }
+        }
+        onFormSubmit={[Function]}
+        openSuccessModal={[Function]}
+        persistentSubmitErrors={false}
+        pure={true}
+        shouldAsyncValidate={[Function]}
+        shouldError={[Function]}
+        shouldValidate={[Function]}
+        shouldWarn={[Function]}
+        submitAsSideEffect={false}
+        touchOnBlur={true}
+        touchOnChange={false}
+        updateUnregisteredFields={false}
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-ifAKCX",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(RichText)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-ifAKCX",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        fontFamily="secondary"
+        fontSize={
+          Array [
+            "fs12",
+            "fs12",
+            "fs14",
+          ]
+        }
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        richTextHtml="*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com."
+        textAlign="center"
+      >
+        <Styled(RichText)>
+          *Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com.
+        </Styled(RichText)>
+      </Styled(BodyCopy)>
+      <div
+        className="divider hide-in-medium-up"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className=""
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="heading_text"
+        color="text.primary"
+        component="p"
+        fontFamily="primary"
+        fontSize={
+          Array [
+            "fs12",
+            "fs12",
+            "fs16",
+          ]
+        }
+        fontWeight="black"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="center"
+      >
+        <Styled(RichText)
+          richTextHtml="GET $10 OFF BY SIGNING UP FOR SMS!"
+        />
+      </Styled(BodyCopy)>
+      <ReduxForm
+        asyncBlurFields={
+          Array [
+            "footerTopSmsSignup",
+          ]
+        }
+        destroyOnUnmount={true}
+        enableReinitialize={false}
+        fieldName="footerTopSmsSignup"
+        forceUnregisterOnUnmount={false}
+        form="FooterTopSmsSignUpForm"
+        getFormState={[Function]}
+        initialValues={
+          Object {
+            "footerTopSmsSignup": "",
+          }
+        }
+        keepDirtyOnReinitialize={false}
+        labels={
+          Object {
+            "placeholderText": "Enter phone number",
+            "submitButtonLabel": "Submit",
+            "termsTextLabel": "*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com.",
+            "validationErrorLabel": "",
+          }
+        }
+        persistentSubmitErrors={false}
+        pure={true}
+        shouldAsyncValidate={[Function]}
+        shouldError={[Function]}
+        shouldValidate={[Function]}
+        shouldWarn={[Function]}
+        submitAsSideEffect={false}
+        touchOnBlur={true}
+        touchOnChange={false}
+        updateUnregisteredFields={false}
+      />
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-ifAKCX",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  ",
+                [Function],
+                ";
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(RichText)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-ifAKCX",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        fontFamily="secondary"
+        fontSize={
+          Array [
+            "fs12",
+            "fs12",
+            "fs14",
+          ]
+        }
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        richTextHtml="*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com."
+        textAlign="center"
+      >
+        <Styled(RichText)>
+          *Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com.
+        </Styled(RichText)>
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <div
+      className="divider hide-in-large-up"
+    />
+    <Styled(Col)
+      className="refer_a_friend_desktop"
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+    >
+      <Styled(Grid)>
+        <Styled(Row)
+          className="flex-align-center"
+          fullBleed={true}
+        >
+          <Styled(Col)
+            className=""
+            colSize={
+              Object {
+                "large": 7,
+                "medium": 4,
+                "small": 7,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
+          >
+            <Styled(BodyCopy)
+              className="heading_text refer_friend_text"
+              color="text.primary"
+              component="p"
+              fontFamily="primary"
+              fontSize={
+                Array [
+                  "fs12",
+                  "fs12",
+                  "fs16",
+                ]
+              }
+              fontWeight="black"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="center"
+            >
+              <Styled(RichText)
+                richTextHtml="$10 for a friend, $10 for you!"
+              />
+            </Styled(BodyCopy)>
+          </Styled(Col)>
+          <Styled(Col)
+            className="candidate_a_inline_container_button"
+            colSize={
+              Object {
+                "large": 5,
+                "medium": 4,
+                "small": 6,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": false,
+              }
+            }
+          >
+            <Styled(Button)
+              buttonVariation="variable-width"
+              data-locator="refer_a_btn"
+              type="refer_a"
+            >
+              REFER FRIEND
+            </Styled(Button)>
+          </Styled(Col)>
+        </Styled(Row)>
+        <div
+          className="divider hide-in-medium-down"
+        />
+        <Styled(Row)
+          className="hide-in-medium-down"
+          fullBleed={true}
+        >
+          <Styled(Col)
+            className=""
+            colSize={
+              Object {
+                "large": 12,
+                "medium": 12,
+                "small": 12,
+              }
+            }
+            ignoreGutter={
+              Object {
+                "small": true,
+              }
+            }
+          >
+            <div
+              className="divider hide-in-medium-up"
+            />
+            <Styled(SocialMediaLinks) />
+          </Styled(Col)>
+        </Styled(Row)>
+      </Styled(Grid)>
+    </Styled(Col)>
+    <div
+      className="divider hide-in-medium-up"
+    />
+    <Styled(Col)
+      className="hide-in-large-up refer_a_frient_last_colm"
+      colSize={
+        Object {
+          "large": 0,
+          "medium": 4,
+          "small": 12,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+    >
+      <Styled(SocialMediaLinks) />
+    </Styled(Col)>
+  </Styled(Row)>
+  <div
+    className="divider hide-in-medium-down"
+  />
+</Styled(Grid)>
+`;

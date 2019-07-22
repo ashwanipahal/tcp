@@ -5,12 +5,10 @@ import { Field } from 'redux-form';
 import { Grid } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Button, Col, Row, TextBox } from '@tcp/core/src/components/common/atoms';
-// import { getLocator } from '@tcp/core/src/utils';
-// import { SocialMediaLinks } from '../../../molecules';
 
 import style from '../Footer.style';
 
-class FooterTopEmailSignUpForm extends React.Component {
+class FooterTopEmailSignUpForm extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {

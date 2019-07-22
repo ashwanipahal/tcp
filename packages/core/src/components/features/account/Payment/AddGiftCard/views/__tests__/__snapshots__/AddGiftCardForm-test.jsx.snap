@@ -81,10 +81,6 @@ exports[`Add gift card form component should render component correctly 1`] = `
 
     ",
                 [Function],
-                "
-
-    ",
-                [Function],
                 ";
 
     &:focus + .TextBox__label {
@@ -97,8 +93,17 @@ exports[`Add gift card form component should render component correctly 1`] = `
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -135,15 +140,6 @@ exports[`Add gift card form component should render component correctly 1`] = `
   ",
                 [Function],
                 ";
-
-  .visible-hidden {
-    clip: rect(1px, 1px, 1px, 1px);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-  }
 ",
                 ";
 ",
@@ -241,10 +237,6 @@ exports[`Add gift card form component should render component correctly 1`] = `
 
     ",
                 [Function],
-                "
-
-    ",
-                [Function],
                 ";
 
     &:focus + .TextBox__label {
@@ -257,8 +249,17 @@ exports[`Add gift card form component should render component correctly 1`] = `
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -295,15 +296,6 @@ exports[`Add gift card form component should render component correctly 1`] = `
   ",
                 [Function],
                 ";
-
-  .visible-hidden {
-    clip: rect(1px, 1px, 1px, 1px);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-  }
 ",
                 ";
 ",
@@ -415,10 +407,6 @@ exports[`Add gift card form component should render component correctly 1`] = `
 
     ",
               [Function],
-              "
-
-    ",
-              [Function],
               ";
 
     &:focus + .TextBox__label {
@@ -431,8 +419,17 @@ exports[`Add gift card form component should render component correctly 1`] = `
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+              [Function],
+              ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -469,15 +466,6 @@ exports[`Add gift card form component should render component correctly 1`] = `
   ",
               [Function],
               ";
-
-  .visible-hidden {
-    clip: rect(1px, 1px, 1px, 1px);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-  }
 ",
               ";
 ",

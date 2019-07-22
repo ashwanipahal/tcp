@@ -320,11 +320,4 @@ FooterTopCandidateA.defaultProps = {
 
 export default withStyles(FooterTopCandidateA, style);
 
-/*  reduxForm({
-    form: a'FooterTopCandidateAEmailSignUpForm', // a unique identifier for this form
-    initialValues: {
-      signup: '',
-    },
-  })(FooterTopCandidateA) */
-
 export { FooterTopCandidateA as FooterTopCandidateAVanilla };

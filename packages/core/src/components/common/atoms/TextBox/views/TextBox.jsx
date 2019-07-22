@@ -29,6 +29,13 @@ type Props = {
   isRequired?: boolean,
 };
 
+const getValidationSuccessClass = (showSuccessCheck, meta) => {
+  const { invalid, pristine, asyncValidating, active } = meta;
+  return showSuccessCheck || (!active && !pristine && !invalid && !asyncValidating)
+    ? 'textbox_validation_success'
+    : '';
+};
+
 const TextBox = ({
   className,
   id,
@@ -42,15 +49,19 @@ const TextBox = ({
   dataLocator,
   showSuccessCheck,
   isRequired,
-  ...others
 }: Props): Node => {
   const elemValue = input.value;
-  const { touched, error, invalid, pristine, asyncValidating, active } = meta;
+  const { touched, error } = meta;
 
   return (
-    <label htmlFor={input.name} className={`${className} input-fields-wrapper`}>
+    <label
+      htmlFor={input.name}
+      className={`${className} input-fields-wrapper ${getValidationSuccessClass(
+        showSuccessCheck,
+        meta
+      )}`}
+    >
       <input
-        {...others}
         {...input}
         id={id}
         aria-label={ariaLabel}
@@ -62,25 +73,23 @@ const TextBox = ({
         ref={inputRef}
         placeholder=""
         data-locator={dataLocator}
+        aria-required={isRequired}
       />
       <BodyCopy className="TextBox__label" fontFamily="secondary" fontSize="fs12">
         {placeholder}
-        {isRequired ? <i className="visible-hidden">required</i> : null}
       </BodyCopy>
-      {touched && error && (
-        <BodyCopy
-          className="TextBox__error"
-          color="error"
-          component="div"
-          fontSize="fs12"
-          fontFamily="secondary"
-        >
-          {error}
-        </BodyCopy>
-      )}
-      {showSuccessCheck || (!active && !pristine && !invalid && !asyncValidating) ? (
-        <div className="success__checkmark" />
-      ) : null}
+      <BodyCopy
+        className="TextBox__error"
+        color="error"
+        component="div"
+        fontSize="fs12"
+        fontFamily="secondary"
+        role="alert"
+        aria-atomic="true"
+      >
+        {touched && error ? error : ''}
+      </BodyCopy>
+      <div className="success__checkmark" />
     </label>
   );
 };
