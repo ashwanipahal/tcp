@@ -12,7 +12,7 @@ exports[`Delete card Modal should render correctly 1`] = `
 >
   <div>
     <CreditCardModalInfo
-      TotalExp="undefined/undefined "
+      TotalExp="undefined/undefined"
       address={null}
       data={
         Object {
