@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getLocator } from '@tcp/core/src/utils/utils.native';
 import {
-  Wrapper,
+  Container,
   MessageContainer,
   StoreContainer,
   CartContainer,
@@ -75,7 +75,7 @@ class Header extends React.Component<Props> {
 
     return (
       <SafeAreaViewStyle>
-        <Wrapper data-locator={getLocator('global_headerpanel')}>
+        <Container data-locator={getLocator('global_headerpanel')}>
           <MessageContainer>
             <BodyCopy
               fontFamily="secondary"
@@ -126,7 +126,7 @@ class Header extends React.Component<Props> {
               data-locator={getLocator('global_headerpanelbagitemtext')}
             />
           </CartContainer>
-        </Wrapper>
+        </Container>
       </SafeAreaViewStyle>
     );
   }

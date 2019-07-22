@@ -4,7 +4,7 @@ export const SafeAreaViewStyle = styled.SafeAreaView`
   background: ${props => props.theme.colorPalette.white};
 `;
 
-export const Wrapper = styled.View`
+export const Container = styled.View`
   flex-direction: row;
   padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
   padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
@@ -69,7 +69,7 @@ export const TextStyle = { position: 'absolute', marginTop: 18, paddingRight: 5.
 export const ImageColor = { tintColor: 'gray' };
 
 export default {
-  Wrapper,
+  Container,
   MessageContainer,
   StoreContainer,
   Icon,

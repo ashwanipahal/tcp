@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { HeaderVanilla } from '../Header';
-import { Wrapper, VerticalLeftView, VerticalRightView } from '../Header.style';
+import { Container, StoreContainer, CartContainer } from '../Header.style';
 
 describe('Header Component', () => {
   let component;
@@ -25,15 +25,15 @@ describe('Header Component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('Header should return Wrapper component value one', () => {
-    expect(component.find(Wrapper)).toHaveLength(1);
+  it('Header should return Container component value one', () => {
+    expect(component.find(Container)).toHaveLength(1);
   });
 
-  it('Header should return VerticalLeftView component value one', () => {
-    expect(component.find(VerticalLeftView)).toHaveLength(1);
+  it('Header should return StoreContainer component value one', () => {
+    expect(component.find(StoreContainer)).toHaveLength(1);
   });
 
   it('Header should return VerticalRightView component value one', () => {
-    expect(component.find(VerticalRightView)).toHaveLength(1);
+    expect(component.find(CartContainer)).toHaveLength(1);
   });
 });
