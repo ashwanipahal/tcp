@@ -11,7 +11,8 @@ import {
   RoundView,
   SafeAreaViewStyle,
   TextStyle,
-  ImageColor,
+  BackgroundView,
+  CartIconView,
 } from './Header.style';
 
 // @flow
@@ -44,6 +45,7 @@ class Header extends React.Component<Props> {
     super(props);
     this.state = {
       isDownIcon: false,
+      cartVal: 0,
     };
   }
 
@@ -58,12 +60,13 @@ class Header extends React.Component<Props> {
   };
 
   render() {
-    const { isDownIcon } = this.state;
+    const { isDownIcon, cartVal } = this.state;
     let headerLabels = {
-      storeTitle: 'Find the store',
-      headerTitle: 'Welcome',
+      lbl_header_storeDefaultTitle: '',
+      lbl_header_welcomeMessage: '',
     };
-    const { labels = headerLabels } = this.props;
+
+    const { labels } = this.props;
 
     if (labels) {
       headerLabels = labels;
@@ -79,7 +82,7 @@ class Header extends React.Component<Props> {
               textAlign="center"
               color="black"
               fontWeight="semibold"
-              text={headerLabels.headerTitle}
+              text={headerLabels.lbl_header_welcomeMessage}
               data-locator={getLocator('global_headerpanelwelcometext')}
             />
             <StoreContainer onPress={this.validateIcon}>
@@ -89,41 +92,28 @@ class Header extends React.Component<Props> {
                 textAlign="center"
                 color="text.primary"
                 fontWeight="regular"
-                text={headerLabels.storeTitle}
+                text={headerLabels.lbl_header_storeDefaultTitle}
                 data-locator={getLocator('global_findastoretext')}
               />
               {isDownIcon ? (
-                <Icon
-                  source={upIcon}
-                  style={ImageColor}
-                  data-locator={getLocator('global_headerpanelexpandedicon')}
-                />
+                <Icon source={upIcon} data-locator={getLocator('global_headerpanelexpandedicon')} />
               ) : (
                 <Icon
                   source={downIcon}
-                  style={ImageColor}
                   data-locator={getLocator('global_headerpanelcollapsedicon')}
                 />
               )}
             </StoreContainer>
           </MessageContainer>
           <CartContainer>
-            <Icon
+            <CartIconView
               source={cartIcon}
-              width="32px"
-              height="32px"
               data-locator={getLocator('global_headerpanelbagicon')}
             />
-            <RoundView
-              color="white"
-              width="22px"
-              height="22px"
-              borderRadius={11}
-              style={ImageColor}
-            />
-            <RoundView color="TCP-Gymboree" />
+            <BackgroundView />
+            <RoundView />
             <BodyCopy
-              text="0"
+              text={cartVal}
               color="white"
               style={TextStyle}
               fontSize="fs10"
