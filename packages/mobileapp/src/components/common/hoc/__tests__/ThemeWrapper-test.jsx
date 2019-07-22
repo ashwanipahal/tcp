@@ -21,6 +21,13 @@ describe('#ThemeWrapper.container', () => {
   it('the default value of currentAppType should be tcp ', () => {
     expect(component.instance().currentAppType).toEqual('tcp');
   });
+
+  it('getTheme method should be call', () => {
+    const inst = component.instance();
+    jest.spyOn(inst, 'getTheme');
+    inst.render();
+    expect(inst.getTheme).toHaveBeenCalledTimes(1);
+  });
 });
 
 describe('#mapDispatchToProps', () => {
