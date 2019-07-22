@@ -1,12 +1,10 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet } from 'react-native';
+import styled from 'styled-components';
 
 const styles = StyleSheet.create({
-  container: {
-    left: -20,
-  },
   firstIconFinalState: {
     bottom: 90,
-    left: -Dimensions.get('window').width / 6,
+    left: '-90%',
     position: 'absolute',
   },
   iconInitialState: {
@@ -27,8 +25,12 @@ const styles = StyleSheet.create({
   secondIconFinalState: {
     bottom: 90,
     position: 'absolute',
-    right: -Dimensions.get('window').width / 5,
+    right: '-130%',
   },
 });
 
-export default styles;
+const Container = styled.View`
+  left: -20px;
+`;
+
+export { styles, Container };
