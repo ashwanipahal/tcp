@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
-import Image from '@tcp/core/src/components/common/atoms/Image';
+import ModuleK from '@tcp/core/src/components/common/molecules/ModuleK';
+import moduleKMock from '@tcp/core/src/services/abstractors/common/moduleK/mock';
 import SlotA from '../molecules/SlotA';
 import SlotB from '../molecules/SlotB';
 
@@ -9,9 +10,9 @@ const HomePageView = props => {
   const { slot_1: slotA, slot_2: slotB } = props;
   return (
     <Fragment>
-      <Image src="/static/images/hero.png" />
       <SlotA {...slotA} />
       <SlotB {...slotB} />
+      <ModuleK {...moduleKMock.moduleK.composites} />
     </Fragment>
   );
 };

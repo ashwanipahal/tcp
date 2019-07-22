@@ -37,14 +37,16 @@ const MoneyCards = (props: Props) => {
             <EmptyCCLabelStyle>{labels.ACC_LBL_CC_EMPTY_HEADING}</EmptyCCLabelStyle>
           </WrapperStyle>
           <DescriptionEmptyCCStyle>{labels.ACC_LBL_CC_EMPTY_DESC}</DescriptionEmptyCCStyle>
-          <ButtonWrapperStyle>
-            <CustomButton
-              title={labels.ACC_LBL_CC_EMPTY_ADD_BTN}
-              buttonVariation="variable-width"
-            />
-          </ButtonWrapperStyle>
         </React.Fragment>
       )}
+      <ButtonWrapperStyle>
+        <CustomButton
+          title={
+            creditCardList.size === 0 ? labels.ACC_LBL_CC_EMPTY_ADD_BTN : labels.ACC_LBL_ADD_BTN
+          }
+          buttonVariation="variable-width"
+        />
+      </ButtonWrapperStyle>
       {creditCardList.size > 0 &&
         creditCardList.map(cardItem => (
           <CardTile

@@ -1,12 +1,12 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { Anchor, Image } from '../../../atoms';
+import { Image, BodyCopy, Heading } from '../../../atoms';
 import { getLocator, getScreenWidth, UrlHandler } from '../../../../../utils/utils.native';
 import { Carousel } from '../..';
 import config from '../config';
 import colors from '../../../../../../styles/themes/colors/common';
 import fonts from '../../../../../../styles/themes/TCP/fonts';
-import { Header, HeaderWrapper, LinksWrapper, Wrapper } from '../ModuleH.style.native';
+import { HeaderWrapper, LinksWrapper, Wrapper } from '../ModuleH.style.native';
 
 // @flow
 type Props = {
@@ -95,17 +95,20 @@ class ModuleH extends React.PureComponent<Props, State> {
     return linksData.map((item, index) => {
       const { link, styled } = item;
       return (
-        <Anchor
+        <BodyCopy
           key={index.toString()}
-          fontWeightVariation={currentIndex === index ? 'active' : null}
-          data-locator={`${getLocator('moduleH_cta_links')}_${index + 1}`}
+          fontFamily="secondary"
+          fontSize="fs20"
+          letterSpacing="ls167"
+          textAlign="left"
+          color="white"
+          fontWeight={currentIndex === index ? 'extrabold' : null}
+          text={styled.text}
           onPress={() => {
             UrlHandler(link.url);
           }}
           style={linksData.length < maxLimit ? lessThanSixLinkStyle : linkStyle}
-        >
-          {styled.text}
-        </Anchor>
+        />
       );
     });
   };
@@ -119,26 +122,40 @@ class ModuleH extends React.PureComponent<Props, State> {
 
     return (
       <Wrapper>
-        {textLines &&
-          textLines.map((textLine, index) => {
-            return (
-              <HeaderWrapper key={index.toString()}>
-                {link ? (
-                  <TouchableOpacity accessibilityRole="link" onPress={() => UrlHandler(link.url)}>
-                    <Header
-                      lineOrder={index}
-                      data-locator={`${getLocator('moduleH_header_text')}_${index + 1}`}
-                    >
-                      {textLine.text}
-                    </Header>
-                  </TouchableOpacity>
-                ) : (
-                  <Header data-locator={getLocator('moduleH_header_text')}>{textLine.text}</Header>
-                )}
-              </HeaderWrapper>
-            );
-          })}
-        {divCTALinks ? <LinksWrapper>{this.renderLinks(divCTALinks)}</LinksWrapper> : null}
+        <HeaderWrapper>
+          {textLines &&
+            textLines.map((textLine, index) => {
+              return link ? (
+                <TouchableOpacity
+                  key={index.toString()}
+                  accessibilityRole="link"
+                  onPress={() => UrlHandler(link.url)}
+                >
+                  <Heading
+                    fontFamily="primary"
+                    fontSize="fs36"
+                    letterSpacing="ls167"
+                    textAlign="left"
+                    color="white"
+                    fontWeight="black"
+                    text={textLine.text}
+                    data-locator={`${getLocator('moduleH_header_text')}_${index + 1}`}
+                  />
+                </TouchableOpacity>
+              ) : (
+                <Heading
+                  fontFamily="primary"
+                  fontSize="fs36"
+                  letterSpacing="ls167"
+                  textAlign="left"
+                  color="white"
+                  fontWeight="black"
+                  text={textLine.text}
+                  data-locator={`${getLocator('moduleH_header_text')}_${index + 1}`}
+                />
+              );
+            })}
+        </HeaderWrapper>
         {divCTALinks && (
           <Carousel
             onSnapToItem={this.updateCurrentIndex}
@@ -151,6 +168,7 @@ class ModuleH extends React.PureComponent<Props, State> {
             }}
           />
         )}
+        {divCTALinks ? <LinksWrapper>{this.renderLinks(divCTALinks)}</LinksWrapper> : null}
       </Wrapper>
     );
   }

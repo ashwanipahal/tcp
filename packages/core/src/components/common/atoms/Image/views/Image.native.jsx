@@ -14,3 +14,4 @@ const ImageComp = (otherProps: Props) => {
 };
 
 export default withStyles(ImageComp, style);
+export { ImageComp as ImageCompVanilla };
