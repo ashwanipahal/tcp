@@ -16,6 +16,7 @@
     "test:web": "yarn test ",
     "test:app": "jest --config ./config/jest.config.native.js",
     "test:staged": "yarn test --bail --findRelatedTests",
+    "test:app:staged": "yarn test:app --bail --findRelatedTests",
     "test:watch": "yarn test --watch",
     "test:coverage": "yarn test",
     "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}",
@@ -26,9 +27,10 @@
     "pretty": "prettier --write **/*.{js,json,css}",
     "eslint:core": "yarn workspace @tcp/core eslint src/ --ext .js,.jsx",
     "eslint:web": "yarn workspace @tcp/web eslint src/ --ext .js,.jsx && yarn eslint:core",
-    "eslint:app": "yarn workspace mobileapp eslint src/ --ext .js,.jsx && yarn eslint:core",
+    "eslint:core:app": "yarn workspace @tcp/core eslint src/ --ext .native.js,.native.jsx",
+    "eslint:app": "yarn workspace mobileapp eslint src/ --ext .js,.jsx && yarn eslint:core:app",
     "stylelint:web": "yarn workspace @tcp/web stylelint src/**/*.js && yarn workspace @tcp/core stylelint src/**/*.js",
-    "stylelint:app": "yarn workspace mobileapp stylelint src/**/*.js && yarn workspace @tcp/core stylelint src/**/*.js",
+    "stylelint:app": "yarn workspace mobileapp stylelint src/**/*.js && yarn workspace @tcp/core stylelint src/**/*native.js",
     "lint:web": "yarn eslint:web && yarn stylelint:web",
     "lint:app": "yarn eslint:app && yarn stylelint:app"
   },
@@ -99,6 +101,7 @@
     "*.{js,jsx}": [
       "eslint",
       "yarn test:staged",
+      "yarn test:app:staged",
       "stylelint"
     ],
     "*.css": "stylelint"
