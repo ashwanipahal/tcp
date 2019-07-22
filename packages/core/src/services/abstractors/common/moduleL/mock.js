@@ -8,6 +8,7 @@ export default {
     name: 'moduleL',
     type: 'module',
     composites: {
+      imagesPerSlide: '2',
       headerText: {
         textItems: [
           {

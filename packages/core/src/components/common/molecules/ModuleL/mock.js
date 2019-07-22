@@ -5,6 +5,7 @@ export default {
     type: 'module',
     imagesPerSlide: 2,
     composites: {
+      imagesPerSlide: '2',
       headerText: {
         textLines: [
           {

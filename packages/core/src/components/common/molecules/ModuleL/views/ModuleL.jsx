@@ -1,21 +1,30 @@
 // @flow
 import React from 'react';
-import { Anchor, BodyCopy, Col, Image, Row } from '../../../atoms';
+import { Col, Row } from '../../../atoms';
 import errorBoundary from '../../../hoc/errorBoundary';
 import withStyle from '../../../hoc/withStyles';
 import { Carousel } from '../..';
 import config from '../config';
 import ModuleLHeader from './ModuleL.Header';
+import ModuleLTile from './ModuleL.Tile';
 import style from '../ModuleL.style';
 
 type Props = {
   className: string,
   headerText: Object,
   imageGrid: Array<Object>,
+  imagesPerSlide: string,
 };
 
-const getUrlWithCrop = url => {
-  return url.replace('upload/', `upload/c_fill,g_center,h_260,w_210/`);
+/**
+ * @function renderTiles - rendering tiles inside component.
+ * @param {tiles} tiles : tiles data in an array format.
+ * @return {node} : returns tile element.
+ */
+const renderTiles = tiles => {
+  return tiles.map((tile, index) => {
+    return <ModuleLTile key={index.toString()} index={index} tileData={tile} />;
+  });
 };
 
 /**
@@ -25,52 +34,34 @@ const getUrlWithCrop = url => {
  * @param {headerText} headerText : Header data object
  * @param {imageGrid} imageGrid : Slides data in array list
  */
-const ModuleL = ({ className, headerText, imageGrid }: Props) => {
-  console.log(imageGrid);
+const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide }: Props) => {
+  const options = config.CAROUSEL_OPTIONS;
+  if (parseInt(imagesPerSlide, 10) === 4) {
+    options.rows = 2;
+  }
 
   return (
-    <Row className={`${className} moduleL`}>
+    <Row
+      className={`${className} moduleL`}
+      fullBleed={{
+        small: true,
+        medium: true,
+        large: true,
+      }}
+    >
       <Col colSize={{ small: 6, medium: 8, large: 10 }} offsetLeft={{ large: 1 }}>
         <ModuleLHeader headerText={headerText} />
         <Carousel
-          options={config.CAROUSEL_OPTIONS}
+          options={options}
           carouselConfig={{
             autoplay: false,
             type: 'light',
             moduleL: true,
           }}
         >
-          {imageGrid.map(({ image, link, styled }, index) => {
-            return (
-              <Row key={index.toString()}>
-                <Col colSize={{ small: 6, medium: 8, large: 12 }} className="moduleL__tile">
-                  <Image
-                    className="moduleL__tile-image"
-                    alt={image.alt}
-                    src={getUrlWithCrop(image.url)}
-                  />
-                  <div className="moduleL__tile-text">
-                    <BodyCopy
-                      component="div"
-                      className="moduleL__tile-title"
-                      fontFamily={['primary']}
-                      fontSize={['fs32']}
-                      fontWeight={['regular']}
-                      letterSpacing={['ls222']}
-                      textAlign="left"
-                      color="text.primary"
-                    >
-                      {styled.text}
-                    </BodyCopy>
-                    <Anchor withCaret className="moduleL__tile-link">
-                      {link.text}
-                    </Anchor>
-                  </div>
-                </Col>
-              </Row>
-            );
-          })}
+          {renderTiles(imageGrid)}
         </Carousel>
+        <div className="moduleL__mobile-web-container">{renderTiles(imageGrid)}</div>
       </Col>
     </Row>
   );

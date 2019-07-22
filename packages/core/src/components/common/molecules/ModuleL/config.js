@@ -1,3 +1,7 @@
+import theme from '@tcp/core/styles/themes/TCP';
+
+const { breakpoints } = theme;
+
 export default {
   CAROUSEL_OPTIONS: {
     autoplay: false,
@@ -10,6 +14,18 @@ export default {
     slidesPerRow: 1,
     slidesToShow: 2,
     slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: parseInt(breakpoints.medium, 10) - 1,
+        settings: 'unslick',
+      },
+      {
+        breakpoint: parseInt(breakpoints.large, 10) - 1,
+        settings: {
+          arrows: false,
+        },
+      },
+    ],
   },
   COL_SIZE: {
     small: 6,
