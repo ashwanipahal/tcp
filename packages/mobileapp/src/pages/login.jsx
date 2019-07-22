@@ -16,10 +16,6 @@ const Login = createStackNavigator(
   }
 );
 
-// LoginSync.navigationOptions = {
-//   header: props => <Header {...props} />,
-// };
-
 Login.navigationOptions = {
   tabBarLabel: 'wallet',
   // eslint-disable-next-line react/prop-types
