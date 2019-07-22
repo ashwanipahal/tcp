@@ -29,6 +29,7 @@ const Modal = ({ children, ...otherProps }) => {
     fixedWidth,
     className,
     closeIconDataLocator,
+    headingStyle,
   } = otherProps;
   const column = colSet || Config.MODAL_COL_DEFAULTS;
   return (
@@ -44,6 +45,7 @@ const Modal = ({ children, ...otherProps }) => {
                     title={title}
                     heading={heading}
                     closeIconDataLocator={closeIconDataLocator}
+                    headingStyle={headingStyle}
                   />
                   {children}
                 </Col>
@@ -57,6 +59,7 @@ const Modal = ({ children, ...otherProps }) => {
                 title={title}
                 heading={heading}
                 closeIconDataLocator={closeIconDataLocator}
+                headingStyle={headingStyle}
               />
               {children}
             </div>

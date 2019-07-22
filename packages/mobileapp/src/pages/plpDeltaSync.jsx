@@ -3,10 +3,19 @@ import { Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import PLPDeltaSync from '../screens/PLPDeltaSyncScreen';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
+import Header from '../components/common/molecules/Header';
 
-const PlpDeltaSyncStack = createStackNavigator({
-  PLPDeltaSync,
-});
+const PlpDeltaSyncStack = createStackNavigator(
+  {
+    PLPDeltaSync,
+  },
+  {
+    defaultNavigationOptions: {
+      header: props => <Header {...props} />,
+      headerBackground: 'transparent',
+    },
+  }
+);
 
 PlpDeltaSyncStack.navigationOptions = {
   tabBarLabel: 'PLP-DeltaSync',

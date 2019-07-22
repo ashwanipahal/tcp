@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal Native should render correctly 1`] = `
+<SafeAreaView>
+  <StatusBar
+    animated={false}
+    hidden={true}
+    showHideTransition="fade"
+  />
+  <Component
+    hardwareAccelerated={false}
+    transparent={false}
+    visible={true}
+  >
+    <Styled(View)>
+      <Styled(TouchableOpacity)
+        onPress={[MockFunction]}
+      >
+        <Styled(Image)
+          source={
+            Object {
+              "testUri": "../../../../core/src/assets/close.png",
+            }
+          }
+        />
+      </Styled(TouchableOpacity)>
+    </Styled(View)>
+    <Styled(BodyCopy)
+      color="black"
+      fontFamily="primary"
+      fontSize="fs28"
+      fontWeight="black"
+      text="Modal Heading"
+      textAlign="center"
+    />
+  </Component>
+</SafeAreaView>
+`;

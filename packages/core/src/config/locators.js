@@ -30,4 +30,12 @@ export default {
   module_L_composite_image: 'module_L_composite_image',
   module_L_text_link: 'module_L_text_link',
   module_L_content_tiles: 'module_L_content_tiles',
+  // MobileHeader
+  global_headerpanel: 'global_headerpanel',
+  global_findastoretext: 'global_findastoretext',
+  global_headerpanelcollapsedicon: 'global_headerpanelcollapsedicon',
+  global_headerpanelexpandedicon: 'global_headerpanelexpandedicon',
+  global_headerpanelbagicon: 'global_headerpanelbagicon',
+  global_headerpanelbagitemtext: 'obal_headerpanelbagicon',
+  global_headerpanelwelcometext: 'global_headerpanelwelcometext',
 };
