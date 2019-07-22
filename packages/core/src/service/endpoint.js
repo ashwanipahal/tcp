@@ -1,3 +1,4 @@
+/* eslint-disable */
 const endpoints = {
   getPlpProducts: {
     method: 'get',
@@ -92,6 +93,11 @@ const endpoints = {
     method: 'post',
     baseURI: 'https://test2.childrensplace.com',
     relURI: '/api/v2/vibes/smsSignUp',
+  },
+  addGiftCard: {
+    baseURI: 'https://test1.childrensplace.com',
+    method: 'post',
+    relURI: '/api/v2/account/addCreditCardDetails',
   },
 };
 export default endpoints;
