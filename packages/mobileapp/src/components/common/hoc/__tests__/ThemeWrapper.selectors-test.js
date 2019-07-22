@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
 import { getAppType } from '../ThemeWrapper.selectors';
-import { THEME_WRAPPER_REDUCER_KEY } from '../ThemeWrapper.constrants';
+import { THEME_WRAPPER_REDUCER_KEY } from '../ThemeWrapper.constants';
 
 describe('#getAppType selector', () => {
   let storeState;

@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { ThemeWrapper, mapDispatchToProps } from '../ThemeWrapper.container';
 
-describe('HomePageView', () => {
+describe('#ThemeWrapper.container', () => {
   const props = {
     appType: 'tcp',
     updateAppTypeHandler: jest.fn(),
@@ -28,6 +28,6 @@ describe('#mapDispatchToProps', () => {
     const dispatch = jest.fn();
     const dispatchProps = mapDispatchToProps(dispatch);
     dispatchProps.updateAppTypeHandler();
-    expect(dispatch.mock.calls).toHaveLength(1);
+    expect(dispatch).toHaveBeenCalledTimes(1);
   });
 });

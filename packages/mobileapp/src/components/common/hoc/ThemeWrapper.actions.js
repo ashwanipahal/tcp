@@ -1,4 +1,4 @@
-import { UPDATE_APP_TYPE } from './ThemeWrapper.constrants';
+import { UPDATE_APP_TYPE } from './ThemeWrapper.constants';
 
 const updateAppType = payload => {
   return {

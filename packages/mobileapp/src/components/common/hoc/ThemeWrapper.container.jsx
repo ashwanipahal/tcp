@@ -6,16 +6,22 @@ import { ThemeProvider } from 'styled-components/native';
 import theme from '@tcp/core/styles/themes/TCP';
 import themeGymboree from '@tcp/core/styles/themes/Gymboree';
 import updateAppType from './ThemeWrapper.actions';
-import { APP_TYPE_GYMBOREE } from './ThemeWrapper.constrants';
+import { APP_TYPE } from './ThemeWrapper.constants';
 import { getAppType } from './ThemeWrapper.selectors';
 
+/**
+ * @param {string} appType : Props for app type
+ * @desc The ThemeWrapper works as a bridge for the for the TCP and  GYMBOREE thems.
+ * It also provide  ThemeProvider
+ */
 export class ThemeWrapper extends React.PureComponent {
   currentAppType = '';
 
   constructor(props) {
     super(props);
-    this.currentAppType = props.defaultAppType;
-    props.updateAppTypeHandler(this.currentAppType);
+    const { defaultAppType, updateAppTypeHandler } = props;
+    this.currentAppType = defaultAppType;
+    updateAppTypeHandler(this.currentAppType);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -26,8 +32,12 @@ export class ThemeWrapper extends React.PureComponent {
     }
   }
 
+  /**
+   * @return  {[Object]} JSX of the component. Default tcp theme
+   * @desc The getTheme method check current theme type and return theme accordingly
+   */
   getTheme = () => {
-    if (this.currentAppType === APP_TYPE_GYMBOREE) {
+    if (this.currentAppType === APP_TYPE.GYMBOREE) {
       return themeGymboree;
     }
     return theme;

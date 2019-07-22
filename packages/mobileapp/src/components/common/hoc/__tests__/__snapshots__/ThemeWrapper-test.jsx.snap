@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HomePageView should render correctly 1`] = `
+exports[`#ThemeWrapper.container should render correctly 1`] = `
 <ThemeProvider
   appType="tcp"
   theme={
@@ -13,6 +13,7 @@ exports[`HomePageView should render correctly 1`] = `
         ],
         "large": "1024px",
         "largeMax": "1439px",
+        "maxWidth": 1440,
         "medium": "768px",
         "mediumMax": "1023px",
         "small": "375px",
