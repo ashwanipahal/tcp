@@ -12,7 +12,7 @@
     "@babel/runtime-corejs2": "^7.4.3",
     "@svgr/webpack": "^4.3.0",
     "@tcp/core": "*",
-    "next": "latest",
+    "next": "8.0.3",
     "next-redux-saga": "4.0.0",
     "next-redux-wrapper": "^3.0.0-alpha.2",
     "next-transpile-modules": "^2.0.0",

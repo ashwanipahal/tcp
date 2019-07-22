@@ -3,15 +3,15 @@
 exports[`CreditCardModalInfo Component should render correctly 1`] = `
 <div>
   <Styled(Row)
-    className="elem-mb-MED"
+    className="elem-mb-LRG elem-mt-MED"
     fullBleed={true}
   >
     <Styled(Col)
       colSize={
         Object {
           "large": 12,
-          "medium": 12,
-          "small": 12,
+          "medium": 10,
+          "small": 6,
         }
       }
     >
@@ -29,14 +29,14 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
-    className="elem-mb-MED"
+    className="elem-mt-XS"
     fullBleed={true}
   >
     <Styled(Col)
       colSize={
         Object {
-          "large": 2,
-          "medium": 8,
+          "large": 3,
+          "medium": 5,
           "small": 2,
         }
       }
@@ -63,7 +63,7 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 10,
+          "large": 9,
           "medium": 8,
           "small": 4,
         }
@@ -76,7 +76,7 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
           colSize={
             Object {
               "large": 6,
-              "medium": 8,
+              "medium": 6,
               "small": 6,
             }
           }
@@ -92,7 +92,7 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
             component="p"
             fontFamily="secondary"
             fontSize="fs14"
-            fontWeight="semibold"
+            fontWeight="extrabold"
             letterSpacing="normal"
             lineHeight="normal"
             textAlign="left"
@@ -104,7 +104,7 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
           colSize={
             Object {
               "large": 6,
-              "medium": 8,
+              "medium": 6,
               "small": 6,
             }
           }
@@ -129,45 +129,43 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
-    className="elem-mb-MED"
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 10,
-          "medium": 8,
-          "small": 4,
-        }
-      }
-      offsetLeft={
-        Object {
-          "large": 2,
-          "medium": 2,
-          "small": 2,
-        }
-      }
-    >
-      <Styled(BodyCopy)
-        className={null}
-        color="text.primary"
-        component="p"
-        fontFamily="primary"
-        fontSize="fs14"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
+      <Styled(Row)
+        className="elem-mb-MED elem-mt-MED"
+        fullBleed={true}
       >
-        <Address
-          fontWeight="regular"
-          showCountry={false}
-          showPhone={false}
-        />
-      </Styled(BodyCopy)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 6,
+              "small": 6,
+            }
+          }
+          offsetLeft={
+            Object {
+              "medium": 2,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="primary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            <Address
+              fontWeight="regular"
+              showCountry={false}
+              showPhone={false}
+            />
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+      </Styled(Row)>
     </Styled(Col)>
   </Styled(Row)>
 </div>

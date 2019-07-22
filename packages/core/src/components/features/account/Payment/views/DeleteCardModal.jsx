@@ -62,7 +62,7 @@ class DeleteCardModal extends React.Component<Props> {
     const { data, className, labels } = this.props;
     const ccType = data && data.description && data.description.ccType;
     const getAccNumbr = `${data.description.accountNo}`.slice(-4);
-    const TotalExp = `${data.description.expMonth}/${data.description.expYear} `;
+    const TotalExp = `${data.description.expMonth}/${data.description.expYear}`.replace(/ /g, '');
     const isCreditCard = ccType !== 'GiftCard' && ccType !== 'VENMO';
     const creditCardHeading = labels.ACC_LBL_MODAL_CREDIT_CARD_HEADING;
     const address = data.description.addressDetails ? data.description.addressDetails : null;
