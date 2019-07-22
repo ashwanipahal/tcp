@@ -16,12 +16,12 @@ const getImgData = props => {
 
   if (/^http/.test(url)) {
     const [imgDataBasePath, imgDataPath] = url.split(imgPathSplitter);
-    basePath = imgDataBasePath;
+    basePath = `${imgDataBasePath}${imgPathSplitter}`;
     imgPath = imgDataPath;
   } else {
     imgPath = url;
   }
-
+  imgPath = imgPath.replace(/^\//, '');
   return { basePath, imgPath, imgConfigs };
 };
 

@@ -1,7 +1,9 @@
 // @flow
 import React from 'react';
+import DamImage from '@tcp/core/src/components/common/atoms/DamImage';
+import config from './config';
 import withStyles from '../../hoc/withStyles';
-import { Image, Row, Col } from '../../atoms';
+import { Row, Col } from '../../atoms';
 import style from './ImageGrid.style';
 
 type Props = {
@@ -77,7 +79,14 @@ const ImageGrid = (props: Props) => {
           {medList.map((mediaProps, index) => {
             return (
               <Col colSize={colSize} className="image-col">
-                <Image {...mediaProps} data-locator={`${dataLocator}${index}`} />
+                <DamImage
+                  data-locator={`${dataLocator}${index}`}
+                  imgConfigs={config.IMG_DATA.imgConfig}
+                  imgData={{
+                    alt: mediaProps.alt,
+                    url: mediaProps.url,
+                  }}
+                />
               </Col>
             );
           })}

@@ -1,6 +1,8 @@
 // @flow
 import React from 'react';
-import { Anchor, Button, Col, Row, Image } from '../../../atoms';
+import DamImage from '@tcp/core/src/components/common/atoms/DamImage';
+import config from '../config';
+import { Anchor, Button, Col, Row } from '../../../atoms';
 import { Grid } from '../..';
 import Heading from '../../../atoms/Heading';
 import { getLocator } from '../../../../../utils';
@@ -52,13 +54,17 @@ const ModuleD = (props: Props) => {
     link: { target, title, url },
   } = headerText;
   let colSize;
+  let imgData;
 
   if (smallCompImage && smallCompImage.length === 2) {
     colSize = colSize2Elements;
+    imgData = config.IMG_DATA_2.imgConfig;
   } else if (smallCompImage && smallCompImage.length === 4) {
     colSize = colSize4Elements;
+    imgData = config.IMG_DATA_4.imgConfig;
   } else {
     colSize = colSize6Elements;
+    imgData = config.IMG_DATA_6.imgConfig;
   }
 
   return (
@@ -94,11 +100,14 @@ const ModuleD = (props: Props) => {
                       title={item.link.title}
                       target={item.link.target}
                     >
-                      <Image
-                        data-locator={`${getLocator('moduleD_image')}_${index + 1}`}
-                        src={item.image.url}
-                        alt={item.image.alt}
+                      <DamImage
                         className="moduleD_image"
+                        data-locator={`${getLocator('moduleD_image')}_${index + 1}`}
+                        imgConfigs={imgData}
+                        imgData={{
+                          alt: item.image.alt,
+                          url: item.image.url,
+                        }}
                       />
                     </Anchor>
                   </div>
