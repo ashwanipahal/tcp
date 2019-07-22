@@ -1,4 +1,3 @@
-/* eslint-disable complexity */
 // TODO: Need fix unused/proptypes eslint error
 import React from 'react';
 import { connect } from 'react-redux';
@@ -24,7 +23,7 @@ class AddedToBagViewPointsContainer extends React.Component {
         subTotal,
       } = getOrderPointsSummary.orderDetails;
       pointsSummary = {
-        itemPrice: (orderItems && orderItems[0] && orderItems[0].itemPrice) || 0,
+        itemPrice: (orderItems[0] && orderItems[0].itemPrice) || 0,
         itemPoints: (orderItems && orderItems[0] && orderItems[0].itemPoints) || 0,
         pointsToNextReward,
         userPoints: userPoints || 0,
