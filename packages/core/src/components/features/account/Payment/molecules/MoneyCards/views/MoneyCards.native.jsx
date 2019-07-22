@@ -41,7 +41,7 @@ const MoneyCards = (props: Props) => {
       )}
       <ButtonWrapperStyle>
         <CustomButton
-          title={
+          text={
             creditCardList.size === 0 ? labels.ACC_LBL_CC_EMPTY_ADD_BTN : labels.ACC_LBL_ADD_BTN
           }
           buttonVariation="variable-width"
