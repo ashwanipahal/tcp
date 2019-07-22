@@ -1,3 +1,4 @@
+/* eslint-disable */
 export function parseBoolean(bool) {
   return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
 }

@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-lonely-if */
 /* eslint-disable func-names */
