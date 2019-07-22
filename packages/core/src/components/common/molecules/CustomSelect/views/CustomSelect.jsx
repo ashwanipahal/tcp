@@ -50,17 +50,7 @@ class CustomSelect extends React.Component<Props> {
       <BodyCopy component="div" className={className}>
         <span>{selectListTitle}</span>
         <BodyCopy component="div" onClick={this.toggleHandler} className="customSelectTitle">
-          <Row>
-            <Col
-              colSize={{
-                small: 6,
-                large: 12,
-                medium: 8,
-              }}
-            >
-              {selectedDefault}
-            </Col>
-          </Row>
+          {selectedDefault}
         </BodyCopy>
         {toggle && (
           <DropdownList
