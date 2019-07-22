@@ -13,6 +13,7 @@ import {
   TextStyle,
   BackgroundView,
   CartIconView,
+  ImageColor,
 } from './Header.style';
 
 // @flow
@@ -96,10 +97,15 @@ class Header extends React.Component<Props> {
                 data-locator={getLocator('global_findastoretext')}
               />
               {isDownIcon ? (
-                <Icon source={upIcon} data-locator={getLocator('global_headerpanelexpandedicon')} />
+                <Icon
+                  source={upIcon}
+                  style={ImageColor}
+                  data-locator={getLocator('global_headerpanelexpandedicon')}
+                />
               ) : (
                 <Icon
                   source={downIcon}
+                  style={ImageColor}
                   data-locator={getLocator('global_headerpanelcollapsedicon')}
                 />
               )}

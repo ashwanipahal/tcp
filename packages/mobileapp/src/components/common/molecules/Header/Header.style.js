@@ -36,36 +36,37 @@ export const StoreContainer = styled.TouchableOpacity`
 `;
 
 export const Icon = styled.Image`
-  width: ${props => props.width || '9px'};
-  height: ${props => props.width || '5px'};
-  border-radius: ${props => props.borderRadius || 0};
+  width: 9px;
+  height: 5px;
   margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-  background-color: ${props => props.background || 'transparent'};
 `;
-
-export const RoundView = styled.View`
-  ${props =>
-    props.color === 'white'
-      ? `
-    background-color: ${props.theme.colorPalette.white};
-          `
-      : ''};
-  ${props =>
-    props.color === 'TCP-Gymboree'
-      ? `
-    background-color: ${props.theme.colorPalette.primary.dark};
-          `
-      : ''};
-  width: ${props => props.width || '20px'};
-  height: ${props => props.height || '20px'};
-  border-radius: ${props => props.borderRadius || 10};
+export const BackgroundView = styled.View`
+  background-color: ${props => props.theme.colorPalette.white};
+  width: 22px;
+  height: 22px;
+  border-radius: 11;
   position: absolute;
   margin-top: 14px;
 `;
 
+export const RoundView = styled.View`
+  background-color: ${props => props.theme.colorPalette.primary.dark};
+  width: 20px;
+  height: 20px;
+  border-radius: 10;
+  position: absolute;
+  margin-top: 14px;
+`;
+
+export const CartIconView = styled.Image`
+  width: 32px;
+  height: 32px;
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+`;
+
 export const TextStyle = { position: 'absolute', marginTop: 18, paddingRight: 5.6 };
 
-export const ImageColor = { tintColor: 'grey' };
+export const ImageColor = { tintColor: 'gray' };
 
 export default {
   Wrapper,
@@ -76,5 +77,7 @@ export default {
   RoundView,
   SafeAreaViewStyle,
   TextStyle,
+  BackgroundView,
+  CartIconView,
   ImageColor,
 };
