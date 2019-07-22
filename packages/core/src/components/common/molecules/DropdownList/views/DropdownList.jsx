@@ -8,42 +8,55 @@ type Props = {
   optionsMap: object,
   className: string,
   clickHandler: Function,
-  ValueForActiveClass: string,
-  addClickhandler: Function
+  activeClassValue: string,
 };
 
+const itemLists = (item, activeClassValue, clickHandler) => {
+  return (
+    <li
+      key={item.value}
+      tabIndex={-1}
+      className={`dropdownliBottomBorder ${
+        activeClassValue === item.value ? 'dropdownActiveClass' : ''
+      }`}
+    >
+      <BodyCopy
+        component="div"
+        role="button"
+        key={item.value}
+        onClick={e => clickHandler(e, item.value, item.title)}
+        onKeyPress={e => clickHandler(e, item.value, item.title)}
+      >
+        <BodyCopy
+          component="div"
+          className={`${activeClassValue === item.value ? 'dropdownActiveIcon' : ''}`}
+        />
+        {item.content}
+      </BodyCopy>
+    </li>
+  );
+};
 
-
-
-const DropdownList = ({
-    className,
-    optionsMap,
-    clickHandler,
-    addClickhandler,
-    ValueForActiveClass
-   }: Props)=>{
-    const nthClild =   optionsMap.find(itemValue => itemValue.value==='');
-    const nthClildWithClass = nthClild ? nthClild.value:'undefined' ;
-    return (
-      <div className={className}>
-        <BodyCopy className={`${(nthClildWithClass==='') ? 'addNewItemButton' : ''}`}>
-          <BodyCopy className="divOverFlow">
-            <ul className={`${(nthClildWithClass==='') ? 'ulBorderWithLastRow' : 'ulBorder'}`}>
-              {optionsMap.map((item) =>(
-                <li key={item.value}>
-                  <BodyCopy role="button" className={`liBottomBorder ${(ValueForActiveClass===item.value) ? 'activeClass' : ''}`} tabIndex={-1} key={item.value} onClick={(item.value==='') ? (e) => addClickhandler(e, item.value, item.title): (e) => clickHandler(e, item.value, item.title)} onKeyPress={(item.value==='') ? (e) => addClickhandler(e, item.value, item.title): (e) => clickHandler(e, item.value, item.title)}>
-                    <BodyCopy className={`${(ValueForActiveClass===item.value) ? 'activeIcon' : ''}`} />
-                    {item.content}
-                  </BodyCopy>
-                </li>
-              ))}
-            </ul>
-          </BodyCopy>
+const DropdownList = ({ className, optionsMap, clickHandler, activeClassValue }: Props) => {
+  const nthClild = optionsMap.find(itemValue => itemValue.value === '');
+  const nthClildWithClass = nthClild ? nthClild.value : 'undefined';
+  return (
+    <BodyCopy component="div" className={className}>
+      <BodyCopy
+        component="div"
+        className={`${nthClildWithClass === '' ? 'dropDownListwrapper' : ''}`}
+      >
+        <BodyCopy component="div" className="dropdownDivOverFlow">
+          <ul
+            className={`${nthClildWithClass === '' ? 'ulBorderWithLastRow' : 'dropdownUlBorder'}`}
+          >
+            {optionsMap.map(item => itemLists(item, activeClassValue, clickHandler))}
+          </ul>
         </BodyCopy>
-      </div>
-    );
-}
+      </BodyCopy>
+    </BodyCopy>
+  );
+};
 
 export default withStyles(DropdownList, styles);
 export { DropdownList as CustomSelectVanilla };
-

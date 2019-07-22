@@ -1,43 +1,30 @@
-
 import { css } from 'styled-components';
 import { getIconPath } from '../../../../../utils';
 
-const downArrowIcon = getIconPath('down_arrow_icon');
 const activeIcon = getIconPath('active_icon');
 
 const dropDownlist = css`
-  .customSelectTitle {
-    border-bottom: 1px solid #979797;
-    margin-top:10px;
-    background: url(${downArrowIcon})
-      no-repeat right center;
+  .dropdownUlBorder {
+    border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+    background-color: ${props => props.theme.colors.WHITE};
   }
 
-  .Row_img{
-    text-align: right;
+  .dropdownliBottomBorder {
+    border-bottom: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
-  .ulBorder{
-    border: solid 1px #979797;
-    background-color: #ffffff;
-  }
-
-  .liBottomBorder{
-    border-bottom: solid 1px #979797;
-    width: 100%;
-  }
-
-  .divOverFlow{
+  .dropdownDivOverFlow {
     overflow-y: scroll;
-    height: 200px;
+    max-height: 230px;
   }
 
-  .activeClass{
-    background-color: #edf5fb;
+  .dropdownActiveClass {
+    background-color: ${props => props.theme.colors.PRIMARY.COLOR1};
     position: relative;
   }
 
-  .activeIcon{
+  .dropdownActiveIcon {
     background-image: url(${activeIcon});
     background-repeat: no-repeat;
     position: absolute;
@@ -47,32 +34,38 @@ const dropDownlist = css`
     height: 16%;
   }
 
-  .addNewItemButton{
+  .dropDownListwrapper {
     position: relative;
-    padding-bottom: 68px;
-    border: solid 1px #979797;
-    background-color: #ffffff;
+    padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+    border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+    background-color: ${props => props.theme.colors.WHITE};
   }
 
-  .classBtn{
-    background-color: #1a1a1a;
-    color: #fff;
+  .dropdownClassBtn {
+    color: ${props => props.theme.colors.WHITE};
+    background-color: ${props => props.theme.colors.PRIMARY.DARK};
   }
 
-  .ulBorderWithLastRow{
-    border-bottom: solid 1px #979797;
+  .ulBorderWithLastRow {
+    border-bottom: ${props => props.theme.colors.BORDER.NORMAL};
     width: 100%;
   }
 
   .ulBorderWithLastRow li:last-child {
     position: absolute;
     width: 96%;
-    height: 45px;
-    padding: 15px;
+    height: 36px;
+    padding: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
     left: 0;
     bottom: 0;
+    border-bottom: none;
   }
-
+  .ulBorderWithLastRow li:last-child:hover {
+    background: none;
+  }
+  .ulBorderWithLastRow li:hover {
+    background: ${props => props.theme.colors.PRIMARY.COLOR1};
+  }
 `;
 
 export default dropDownlist;

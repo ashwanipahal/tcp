@@ -1,1 +1,1 @@
-export { default } from './views/DropdownList';
+export { default } from './views';

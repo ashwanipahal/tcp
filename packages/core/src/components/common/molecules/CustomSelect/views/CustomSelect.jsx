@@ -10,9 +10,10 @@ import withStyles from '../../../hoc/withStyles';
 type Props = {
   className: string,
   selectListTitle: string,
-  customSelectOnChangeHandler: Function,
-  addClickhandler: Function,
+  clickHandler: Function,
   options: Object,
+  defaultTitle: String,
+  activeClassValue: String,
 };
 
 class CustomSelect extends React.Component<Props> {
@@ -20,8 +21,8 @@ class CustomSelect extends React.Component<Props> {
     super(props);
     this.state = {
       toggle: false,
-      selectedDefault: 'Please Select',
-      ValueForActiveClass: null,
+      selectedDefault: props.defaultTitle || 'Please Select',
+      activeClassValue: props.activeClassValue || null,
     };
   }
 
@@ -33,23 +34,22 @@ class CustomSelect extends React.Component<Props> {
   };
 
   clickHandler = (e, value, title) => {
-    const { customSelectOnChangeHandler } = this.props;
+    const { clickHandler } = this.props;
     this.setState({
       selectedDefault: title,
-      ValueForActiveClass: value,
+      activeClassValue: value,
     });
     this.toggleHandler();
-    customSelectOnChangeHandler(e, value, title);
+    clickHandler(e, value, title);
   };
 
   render() {
-    const { toggle, selectedDefault, ValueForActiveClass } = this.state;
-    const { className, selectListTitle, addClickhandler, options } = this.props;
+    const { toggle, selectedDefault, activeClassValue } = this.state;
+    const { className, selectListTitle, options } = this.props;
     return (
-      <div className={className}>
+      <BodyCopy component="div" className={className}>
         <span>{selectListTitle}</span>
-
-        <BodyCopy onClick={this.toggleHandler} className="customSelectTitle">
+        <BodyCopy component="div" onClick={this.toggleHandler} className="customSelectTitle">
           <Row>
             <Col
               colSize={{
@@ -65,12 +65,11 @@ class CustomSelect extends React.Component<Props> {
         {toggle && (
           <DropdownList
             optionsMap={options}
-            addClickhandler={addClickhandler}
             clickHandler={this.clickHandler}
-            ValueForActiveClass={ValueForActiveClass}
+            activeClassValue={activeClassValue}
           />
         )}
-      </div>
+      </BodyCopy>
     );
   }
 }
