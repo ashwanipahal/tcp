@@ -1,5 +1,9 @@
 import styled from 'styled-components/native';
 
+export const SafeAreaViewStyle = styled.SafeAreaView`
+  background: white;
+`;
+
 export const Wrapper = styled.View`
   flex-direction: row;
   padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
@@ -72,4 +76,5 @@ export default {
   Icon,
   VerticalLeftView,
   RoundView,
+  SafeAreaViewStyle,
 };
