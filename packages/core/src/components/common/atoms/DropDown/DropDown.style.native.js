@@ -24,4 +24,11 @@ const Row = styled.View`
   justify-content: center;
 `;
 
-export { style, StyledText, Row };
+const OverLayView = styled.View`
+  position: absolute;
+  top: 42px;
+  background-color: #eeeeee;
+  z-index: 999;
+`;
+
+export { style, StyledText, Row, OverLayView };
