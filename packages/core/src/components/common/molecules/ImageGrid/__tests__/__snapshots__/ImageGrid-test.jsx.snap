@@ -26,9 +26,9 @@ exports[`Image grid component renders correctly 1`] = `
         data-locator="moduleK_image_0"
         imgConfigs={
           Array [
-            "ar_1.1,w_164",
-            "q_auto:good,ar_1.1,w_162",
-            "q_auto:good,ar_1.1,w_210",
+            "ar_1:1,q_0.8,w_164",
+            "ar_1:1,q_0.8,w_162",
+            "ar_1:1,q_0.8,w_210",
           ]
         }
         imgData={
@@ -53,9 +53,9 @@ exports[`Image grid component renders correctly 1`] = `
         data-locator="moduleK_image_1"
         imgConfigs={
           Array [
-            "ar_1.1,w_164",
-            "q_auto:good,ar_1.1,w_162",
-            "q_auto:good,ar_1.1,w_210",
+            "ar_1:1,q_0.8,w_164",
+            "ar_1:1,q_0.8,w_162",
+            "ar_1:1,q_0.8,w_210",
           ]
         }
         imgData={
@@ -80,9 +80,9 @@ exports[`Image grid component renders correctly 1`] = `
         data-locator="moduleK_image_2"
         imgConfigs={
           Array [
-            "ar_1.1,w_164",
-            "q_auto:good,ar_1.1,w_162",
-            "q_auto:good,ar_1.1,w_210",
+            "ar_1:1,q_0.8,w_164",
+            "ar_1:1,q_0.8,w_162",
+            "ar_1:1,q_0.8,w_210",
           ]
         }
         imgData={
@@ -107,9 +107,9 @@ exports[`Image grid component renders correctly 1`] = `
         data-locator="moduleK_image_3"
         imgConfigs={
           Array [
-            "ar_1.1,w_164",
-            "q_auto:good,ar_1.1,w_162",
-            "q_auto:good,ar_1.1,w_210",
+            "ar_1:1,q_0.8,w_164",
+            "ar_1:1,q_0.8,w_162",
+            "ar_1:1,q_0.8,w_210",
           ]
         }
         imgData={

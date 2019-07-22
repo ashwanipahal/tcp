@@ -1,4 +1,4 @@
-const cropParam = 'ar_1.1,q_80';
+const cropParam = 'ar_1:1,q_80';
 
 export default {
   IMG_DATA_2: {
