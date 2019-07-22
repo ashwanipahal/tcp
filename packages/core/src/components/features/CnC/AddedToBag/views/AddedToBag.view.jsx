@@ -3,7 +3,15 @@ import Modal from '../../../../common/molecules/Modal';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/AddedToBag.style';
 
-const AddedToBag = ({ openState, onRequestClose, addedToBagData, className }) => {
+// @flow
+type Props = {
+  openState: Function,
+  onRequestClose: Function,
+  className: string,
+  addedToBagData: any,
+};
+
+const AddedToBag = ({ openState, onRequestClose, addedToBagData, className }: Props) => {
   return (
     <Modal
       fixedWidth
