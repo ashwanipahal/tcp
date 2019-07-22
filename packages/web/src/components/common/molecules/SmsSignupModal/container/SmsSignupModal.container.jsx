@@ -1,19 +1,23 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { submitSmsSignup, clearSmsSignupForm } from './SmsSignupModal.actions';
+import {
+  submitSmsSignup,
+  clearSmsSignupForm,
+  toggleSmsSignupModal,
+} from './SmsSignupModal.actions';
 import SignupModalView from '../views/SmsSignupModal.view';
 
-export const EmailSignupWrapperContainer = ({
+/* export const EmailSignupWrapperContainer = ({
   buttonConfig,
   formViewConfig,
   isSubscriptionValid,
   clearFormStoreInfo,
   submitSmsSubscription,
+  isModalOpen,
 }) => {
   return (
     <SignupModalView
+      isModalOpen={isModalOpen}
       buttonConfig={buttonConfig}
       formViewConfig={formViewConfig}
       isSubscriptionValid={isSubscriptionValid}
@@ -36,7 +40,7 @@ EmailSignupWrapperContainer.defaultProps = {
   formViewConfig: {},
   isSubscriptionValid: '',
   clearFormStoreInfo: () => {},
-};
+}; */
 
 export const mapDispatchToProps = dispatch => {
   return {
@@ -45,6 +49,9 @@ export const mapDispatchToProps = dispatch => {
     },
     clearFormStoreInfo: () => {
       dispatch(clearSmsSignupForm());
+    },
+    closeModal: () => {
+      dispatch(toggleSmsSignupModal({ isModalOpen: false }));
     },
   };
 };
@@ -56,13 +63,16 @@ const mapStateToProps = (state, props) => {
       ...state.Labels.global.smsSignup,
     };
   }
+  const { SmsSignUp = {} } = state;
+  console.log('State: ', SmsSignUp);
   return {
     formViewConfig,
-    isSubscriptionValid: state.SmsSignUp && state.SmsSignUp.signupSuccess,
+    isModalOpen: SmsSignUp.isModalOpen,
+    isSubscriptionValid: SmsSignUp.signupSuccess,
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(EmailSignupWrapperContainer);
+)(SignupModalView);
