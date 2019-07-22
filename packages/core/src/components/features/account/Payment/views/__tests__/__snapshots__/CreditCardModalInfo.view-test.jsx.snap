@@ -3,15 +3,15 @@
 exports[`CreditCardModalInfo Component should render correctly 1`] = `
 <div>
   <Styled(Row)
-    className="elem-mb-MED"
+    className="elem-mb-LRG elem-mt-MED"
     fullBleed={true}
   >
     <Styled(Col)
       colSize={
         Object {
           "large": 12,
-          "medium": 12,
-          "small": 12,
+          "medium": 10,
+          "small": 6,
         }
       }
     >
@@ -29,6 +29,7 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
+    className="elem-mt-XS"
     fullBleed={true}
   >
     <Styled(Col)
@@ -128,45 +129,43 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
-    className="elem-mb-MED"
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 7,
-          "medium": 8,
-          "small": 4,
-        }
-      }
-      offsetLeft={
-        Object {
-          "large": 3,
-          "medium": 2,
-          "small": 2,
-        }
-      }
-    >
-      <Styled(BodyCopy)
-        className={null}
-        color="text.primary"
-        component="p"
-        fontFamily="primary"
-        fontSize="fs14"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
+      <Styled(Row)
+        className="elem-mb-MED elem-mt-MED"
+        fullBleed={true}
       >
-        <Address
-          fontWeight="regular"
-          showCountry={false}
-          showPhone={false}
-        />
-      </Styled(BodyCopy)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 6,
+              "small": 6,
+            }
+          }
+          offsetLeft={
+            Object {
+              "medium": 2,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="primary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            <Address
+              fontWeight="regular"
+              showCountry={false}
+              showPhone={false}
+            />
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+      </Styled(Row)>
     </Styled(Col)>
   </Styled(Row)>
 </div>
