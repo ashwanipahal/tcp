@@ -41,12 +41,12 @@ const CreditCardModalInfo = ({
         </Col>
       </Row>
 
-      <Row fullBleed className="elem-mb-MED">
+      <Row fullBleed>
         <Col
           colSize={{
             small: 2,
-            large: 2,
-            medium: 8,
+            large: 3,
+            medium: 5,
           }}
           offsetLeft={{
             medium: 3,
@@ -59,7 +59,7 @@ const CreditCardModalInfo = ({
         <Col
           colSize={{
             small: 4,
-            large: 10,
+            large: 9,
             medium: 8,
           }}
         >
@@ -68,13 +68,13 @@ const CreditCardModalInfo = ({
               colSize={{
                 small: 6,
                 large: 6,
-                medium: 8,
+                medium: 6,
               }}
               offsetLeft={{
                 medium: 2,
               }}
             >
-              <BodyCopy fontFamily="secondary" fontSize="fs14" fontWeight="semibold">
+              <BodyCopy fontFamily="secondary" fontSize="fs14" fontWeight="extrabold">
                 {data.cardText.cardEnd}
                 {getAccNumbr}
               </BodyCopy>
@@ -83,7 +83,7 @@ const CreditCardModalInfo = ({
               colSize={{
                 small: 6,
                 large: 6,
-                medium: 8,
+                medium: 6,
               }}
               offsetLeft={{
                 medium: 2,
@@ -101,13 +101,13 @@ const CreditCardModalInfo = ({
         <Col
           colSize={{
             small: 4,
-            large: 10,
+            large: 7,
             medium: 8,
           }}
           offsetLeft={{
             small: 2,
             medium: 2,
-            large: 2,
+            large: 3,
           }}
         >
           <BodyCopy fontSize="fs14">

@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 const deleteCardModalStyle = css`
   @media ${props => props.theme.mediaQuery.medium} {
-    margin: 0 58px;
+    margin: 0 40px;
   }
   @media ${props => props.theme.mediaQuery.smallOnly} {
     .deleteCardModal__card {
@@ -44,7 +44,8 @@ const deleteCardModalStyle = css`
   .deleteCardModal__deleteCancel {
     float: none;
     @media ${props => props.theme.mediaQuery.medium} {
-      float: left;
+      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      margin-left: ${props => props.theme.spacing.ELEM_SPACING.LRG};
     }
   }
   .deleteCardModal__desc {
@@ -74,6 +75,7 @@ const deleteCardModalStyle = css`
   }
   .deleteCardModal__deleteConfirm {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
   }
   .deleteCardModal__modalTitle {
     text-align: center;
