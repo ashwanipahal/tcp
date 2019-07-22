@@ -63,16 +63,6 @@ describe('Add Gift Card saga', () => {
     expect(gen.next().done).toBeTruthy();
   });
 
-  it('should fail default shipping address', () => {
-    const err = {
-      statusCode: 400,
-      message: 'Object not found',
-    };
-    gen.next();
-    expect(gen.throw(err).value).toEqual(put(addGiftCardFailure(err)));
-    expect(gen.next().done).toBeTruthy();
-  });
-
   it('should test addGiftCard', () => {
     gen = AddGiftCardSaga();
     expect(gen.next().value).toEqual(
