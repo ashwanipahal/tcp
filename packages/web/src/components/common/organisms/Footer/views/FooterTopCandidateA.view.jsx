@@ -13,20 +13,22 @@ import { SocialMediaLinks } from '../../../molecules';
 import style from '../Footer.style';
 import FooterTopSignUpForm from './FooterTopSignUpForm.view';
 
+const emailSignupFieldName = 'signup';
 const FooterTopEmailSignUpForm = reduxForm({
   form: 'FooterTopEmailSignUpForm', // a unique identifier for this form
   initialValues: {
-    signup: '',
+    [emailSignupFieldName]: '',
   },
-  asyncBlurFields: ['signup'],
+  asyncBlurFields: [emailSignupFieldName],
 })(FooterTopSignUpForm);
 
+const smsSignupFieldName = 'footerTopSmsSignup';
 const FooterTopSmsSignUpForm = reduxForm({
   form: 'FooterTopSmsSignUpForm', // a unique identifier for this form
   initialValues: {
-    signup: '',
+    [smsSignupFieldName]: '',
   },
-  asyncBlurFields: ['signup'],
+  asyncBlurFields: [smsSignupFieldName],
 })(FooterTopSignUpForm);
 
 class FooterTopCandidateA extends React.PureComponent {
@@ -80,6 +82,7 @@ class FooterTopCandidateA extends React.PureComponent {
                 submitButton: 'email_submit_btn',
                 inputField: 'enter_email_text_field',
               }}
+              fieldName={emailSignupFieldName}
             />
             {/* TODO: Zeplin has ["fs11","fs11", "fs13"], which is not in guidline using following for now  */}
             <BodyCopy
@@ -117,7 +120,7 @@ class FooterTopCandidateA extends React.PureComponent {
             >
               <RichText richTextHtml={smsSignup.text} />
             </BodyCopy>
-            <FooterTopSmsSignUpForm labels={smsSignupLabels} />
+            <FooterTopSmsSignUpForm labels={smsSignupLabels} fieldName={smsSignupFieldName} />
             {/* asyncValidate={emailSignUpAsyncValidate}
             onFormSubmit={submitEmailSubscription}
             isSubscriptionValid={isSubscriptionValid}

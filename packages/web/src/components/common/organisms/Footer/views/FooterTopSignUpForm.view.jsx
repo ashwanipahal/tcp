@@ -63,6 +63,7 @@ class FooterTopEmailSignUpForm extends React.Component {
       asyncValidating,
       submitSucceeded,
       dataLocators,
+      fieldName,
     } = this.props;
     const { validationStarted = false } = this.state;
 
@@ -83,8 +84,8 @@ class FooterTopEmailSignUpForm extends React.Component {
             >
               <Field
                 placeholder={labels.placeholderText}
-                name="signup"
-                id="signup"
+                name={fieldName}
+                id={fieldName}
                 type="text"
                 component={TextBox}
                 onBlur={this.onInputBlur}
@@ -142,6 +143,7 @@ FooterTopEmailSignUpForm.propTypes = {
   onFormSubmit: PropTypes.func,
   openSuccessModal: PropTypes.func,
   reset: PropTypes.func,
+  fieldName: PropTypes.string,
 };
 
 FooterTopEmailSignUpForm.defaultProps = {
@@ -164,6 +166,7 @@ FooterTopEmailSignUpForm.defaultProps = {
   onFormSubmit: () => {},
   openSuccessModal: () => {},
   reset: () => {},
+  fieldName: 'signup',
 };
 
 export default withStyles(FooterTopEmailSignUpForm, style);
