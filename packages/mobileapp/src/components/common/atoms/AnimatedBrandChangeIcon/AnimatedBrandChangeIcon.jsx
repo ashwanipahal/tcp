@@ -1,22 +1,26 @@
-import React, { Component } from 'react';
-import { LayoutAnimation, Image, View, TouchableOpacity } from 'react-native';
+import React, { PureComponent } from 'react';
+import { LayoutAnimation, View, TouchableOpacity } from 'react-native';
 import { PropTypes } from 'prop-types';
+import { Image } from '@tcp/core/src/components/common/atoms';
 import styles from './AnimatedBrandChangeIcon.style';
 import tcpLogo from '../../../../brand_config/main/config/tcp.png';
 import gymboreeLogo from '../../../../brand_config/gymboree/config/gymboree.png';
 import NavBarIcon from '../NavBarIcon';
 
 const {
-  container,
   logo,
   logoHidden,
-  iconInitialState,
   firstIconFinalState,
   secondIconFinalState,
+  container,
+  iconInitialState,
 } = styles;
 
-// kindly use this component only for the bottom tab at the center of the tab
-class AnimatedBrandChangeIcon extends Component {
+/**
+ * kindly use this component only for the bottom tab at the center of the tab
+ *
+ */
+class AnimatedBrandChangeIcon extends PureComponent {
   constructor(props) {
     super(props);
     this.state = { openSwitch: false };
