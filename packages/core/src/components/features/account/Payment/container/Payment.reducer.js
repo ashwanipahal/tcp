@@ -41,7 +41,8 @@ const returnPaymentReducer = (state = initialState, action) => {
       return state.set('showNotification', 'success');
     case PAYMENT_CONSTANTS.SET_DEFAULT_PAYMENT_ERROR:
       return state.set('showNotification', 'error');
-
+    case PAYMENT_CONSTANTS.SET_PAYMENT_NOTIFICATION:
+      return state.set('showNotification', null);
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {
