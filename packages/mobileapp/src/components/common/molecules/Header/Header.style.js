@@ -18,14 +18,14 @@ export const MessageContainer = styled.View`
   z-index: ${props => props.theme.zindex.zOverlay};
   justify-content: space-between;
   padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  margin-top: 7px;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 export const CartContainer = styled.TouchableOpacity`
   align-items: flex-end;
   align-self: flex-end;
   flex-basis: 100%;
-  margin-top: 5px;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
 export const StoreContainer = styled.TouchableOpacity`
