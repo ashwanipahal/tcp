@@ -8,6 +8,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
     className="thank-you__label"
     color="text.primary"
     component="p"
+    dataLocator="sms_thank_you_message"
     fontFamily="primary"
     fontSize={
       Array [
@@ -39,7 +40,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
     textAlign="center"
   />
   <Styled(Image)
-    alt="undefined-icon"
+    alt="sms-icon"
     className="confirmation-image"
     src="/static/images/chat.svg"
   />

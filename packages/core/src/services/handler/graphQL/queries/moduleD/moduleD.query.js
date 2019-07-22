@@ -8,12 +8,12 @@ const buildQuery = ({ slot, contentId }) => `
       headerText {
         textLines {
           text
-          color
           style
         }
         link {
           url
           title
+          text
           target
           external
         }
@@ -37,6 +37,7 @@ const buildQuery = ({ slot, contentId }) => `
           link {
             url
             title
+            text
             target
             external
           }

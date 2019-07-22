@@ -28,5 +28,5 @@ export default {
   'place-card-small': '/static/images/place-card-small.png',
   'visa-small': '/static/images/visa-small.png',
   'gift-card-small': '/static/images/gift-card-small.png',
-  'venmo-blue-acceptance-mark': '/static/images/venmo-blue-acceptance-mark.svg',
+  'venmo-blue-acceptance-mark': '/static/images/venmo-blue-acceptance-mark.png',
 };

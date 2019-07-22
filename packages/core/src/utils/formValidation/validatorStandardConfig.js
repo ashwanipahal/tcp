@@ -43,6 +43,8 @@ export const formValidationMessages = {
   recaptchaToken: {
     required: 'Please check the reCaptcha value',
   },
+  giftCardNumber: 'Please enter a valid gift card number',
+  cardPin: 'Please enter your gift card pin number',
 };
 
 export const formValidationRules = {
@@ -91,6 +93,16 @@ export const formValidationRules = {
   },
   recaptchaToken: {
     required: true,
+  },
+  giftCardNumber: {
+    number: true,
+    required: true,
+    exactLength: 19,
+  },
+  cardPin: {
+    required: true,
+    number: true,
+    exactLength: 4,
   },
 };
 

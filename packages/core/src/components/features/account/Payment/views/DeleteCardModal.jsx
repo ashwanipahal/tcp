@@ -4,6 +4,7 @@ import styles from '../styles/DeleteCardModal.style';
 import Modal from '../../../../common/molecules/Modal';
 import Notification from '../../../../common/molecules/Notification';
 import GiftCardModalInfo from './GiftCardModalInfo.view';
+import CreditCardModalInfo from './CreditCardModalInfo.view';
 import VenmoCardModalInfo from './VenmoCardModalInfo.view';
 import Button from '../../../../common/atoms/Button';
 // @flow
@@ -58,12 +59,26 @@ class DeleteCardModal extends React.Component<Props> {
    * @return {[Object]} JSX of the component
    */
   renderModal = () => {
-    const { data, className } = this.props;
+    const { data, className, labels } = this.props;
     const ccType = data && data.description && data.description.ccType;
     const getAccNumbr = `${data.description.accountNo}`.slice(-4);
-    const TotalExp = `${data.description.expMonth}/${data.description.expYear} `;
+    const TotalExp = `${data.description.expMonth}/${data.description.expYear}`.replace(/ /g, '');
+    const isCreditCard = ccType !== 'GiftCard' && ccType !== 'VENMO';
+    const creditCardHeading = labels.ACC_LBL_MODAL_CREDIT_CARD_HEADING;
+    const address = data.description.addressDetails ? data.description.addressDetails : null;
     return (
       <div className={className}>
+        {isCreditCard && (
+          <CreditCardModalInfo
+            getAccNumbr={getAccNumbr}
+            TotalExp={TotalExp}
+            data={data}
+            address={address}
+            creditCardHeading={creditCardHeading}
+            {...this.props}
+            isCreditCard={isCreditCard}
+          />
+        )}
         {ccType === 'GiftCard' && (
           <GiftCardModalInfo
             getAccNumbr={getAccNumbr}
