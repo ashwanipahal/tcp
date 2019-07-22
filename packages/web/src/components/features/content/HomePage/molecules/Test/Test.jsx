@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import DamImage from '@tcp/core/src/components/common/atoms/DamImage';
 import Heading from '@tcp/core/src/components/common/atoms/Heading';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Row from '@tcp/core/src/components/common/atoms/Row';
@@ -76,6 +77,30 @@ const Test = () => {
   const colSizeConfig = { small: 2, medium: 2, large: 2 };
   return (
     <div>
+      <div>
+        <DamImage
+          imgData={{
+            alt: 'Dancing Boy',
+            url:
+              'v1561401513/ecom/assets/content/tcp/us/home/transform/home_modh_sample_qtylh0.png',
+          }}
+        />
+      </div>
+      <div>
+        <Heading variant="h2">Dam Image with image configs</Heading>
+        <DamImage
+          imgData={{
+            alt: 'Dancing Boy',
+            url:
+              'v1561401513/ecom/assets/content/tcp/us/home/transform/home_modh_sample_qtylh0.png',
+          }}
+          imgConfigs={[
+            'g_face:center,q_auto:best,w_768',
+            'c_fill,g_face:center,q_auto:best,w_1440',
+            'c_crop,g_face:auto,q_auto:best,w_1600',
+          ]}
+        />
+      </div>
       <Row>
         <BodyCopy
           component="p"
