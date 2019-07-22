@@ -162,7 +162,6 @@ exports[`Add gift card form component should render component correctly 1`] = `
         dataLocator="gift-card-cardnumberfield"
         maxLength={50}
         name="giftCardNumber"
-        placeholder="Gift Card"
         type="tel"
       />
     </Styled(Col)>
@@ -322,7 +321,6 @@ exports[`Add gift card form component should render component correctly 1`] = `
         }
         dataLocator="gift-card-pinnumberfield"
         name="cardPin"
-        placeholder="Pin"
         type="tel"
       />
     </Styled(Col)>
@@ -355,95 +353,81 @@ exports[`Add gift card form component should render component correctly 1`] = `
         verifyCallback={[Function]}
       />
     </Styled(Col)>
-    <Styled(Col)
-      colSize={
+    <Field
+      component={
         Object {
-          "large": 2,
-          "medium": 2,
-          "small": 4,
-        }
-      }
-      ignoreGutter={
-        Object {
-          "small": true,
-        }
-      }
-    >
-      <Field
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-bwzfXH",
-              "isStatic": false,
-              "rules": Array [
-                "
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bwzfXH",
+            "isStatic": false,
+            "rules": Array [
+              "
   ",
-                "
+              "
   position: relative;
   display: block;
 
   .TextBox__label {
     font-size: ",
-                [Function],
-                "px;
+              [Function],
+              "px;
     padding: 0;
     position: absolute;
     top: ",
-                [Function],
-                ";
+              [Function],
+              ";
     ",
-                [Function],
-                "
+              [Function],
+              "
   }
 
   .TextBox__input {
     margin: 0;
     outline: 0;
     font-size: ",
-                [Function],
-                "px;
+              [Function],
+              "px;
     color: ",
-                [Function],
-                ";
+              [Function],
+              ";
     width: 100%;
     background-position: left top;
     background-repeat: no-repeat;
     background-size: contain;
     border: 0 solid transparent;
     border-bottom: 1px solid ",
-                [Function],
-                ";
+              [Function],
+              ";
     padding-bottom: ",
-                [Function],
-                ";
+              [Function],
+              ";
     margin-bottom: ",
-                [Function],
-                ";
+              [Function],
+              ";
     padding-top: ",
-                [Function],
-                ";
+              [Function],
+              ";
 
     ",
-                [Function],
-                "
+              [Function],
+              "
 
     ",
-                [Function],
-                "
+              [Function],
+              "
 
     ",
-                [Function],
-                ";
+              [Function],
+              ";
 
     &:focus + .TextBox__label {
       font-size: ",
-                [Function],
-                "px;
+              [Function],
+              "px;
       font-weight: ",
-                [Function],
-                ";
+              [Function],
+              ";
       top: 0;
     }
   }
@@ -452,8 +436,8 @@ exports[`Add gift card form component should render component correctly 1`] = `
     width: 15px;
     height: 8px;
     margin-left: ",
-                [Function],
-                ";
+              [Function],
+              ";
     transform: rotate(-45deg);
     transform-origin: left;
     position: absolute;
@@ -466,8 +450,8 @@ exports[`Add gift card form component should render component correctly 1`] = `
       width: 3px;
       height: 100%;
       background-color: ",
-                [Function],
-                ";
+              [Function],
+              ";
     }
 
     &:after {
@@ -476,15 +460,15 @@ exports[`Add gift card form component should render component correctly 1`] = `
       width: 100%;
       height: 3px;
       background-color: ",
-                [Function],
-                ";
+              [Function],
+              ";
       bottom: 0;
     }
   }
 
   ",
-                [Function],
-                ";
+              [Function],
+              ";
 
   .visible-hidden {
     clip: rect(1px, 1px, 1px, 1px);
@@ -495,25 +479,23 @@ exports[`Add gift card form component should render component correctly 1`] = `
     width: 1px;
   }
 ",
-                ";
+              ";
 ",
-              ],
-            },
-            "displayName": "Styled(TextBox)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-bwzfXH",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
+            ],
+          },
+          "displayName": "Styled(TextBox)",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-bwzfXH",
+          "target": [Function],
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
         }
-        name="recaptchaToken"
-        title=""
-        type="hidden"
-      />
-    </Styled(Col)>
+      }
+      name="recaptchaToken"
+      type="hidden"
+    />
   </Styled(Row)>
   <Styled(Row)
     className="card__row"
@@ -522,7 +504,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 5,
+          "large": 7,
           "medium": 8,
           "small": 6,
         }
@@ -565,7 +547,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
       offsetRight={
         Object {
           "large": 0,
-          "medium": 0,
+          "medium": 1,
           "small": 1,
         }
       }
