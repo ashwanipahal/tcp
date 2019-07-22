@@ -22,9 +22,3 @@ export const openAddedToBag = () => ({
 export const closeAddedToBag = () => ({
   type: ADDEDTOBAG_CONSTANTS.CLOSE_ADDED_TO_BAG,
 });
-
-
-// export const getCardListErr = payload => ({
-//   type: PAYMENT_CONSTANTS.GET_CARD_LIST_ERR,
-//   payload,
-// });
