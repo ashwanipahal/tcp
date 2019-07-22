@@ -15,7 +15,7 @@ async function fetchData(baseURL, relURL, params = {}, method) {
       catalogId: params.catalogId,
       deviceType: params.isMobile ? 'mobile' : 'desktop',
       'Cache-Control': 'no-store, must-revalidate',
-      //'Content-Type': 'application/json',
+      'Content-Type': 'application/json',
     };
 
     if (params.nickName) {
@@ -31,14 +31,12 @@ async function fetchData(baseURL, relURL, params = {}, method) {
   }
   const request = superagent[requestType](requestUrl)
     .set(reqSetting)
-    .set('Cookie', 'myApp-token=12345667;myApp-other=blah')
     .accept('application/json');
   // .timeout(reqTimeout);
 
   if (params.header) {
     request.set(params.header);
   }
-  request.withCredentials();
 
   if (params.payload) {
     request.send(params.payload);
