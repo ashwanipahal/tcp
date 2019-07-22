@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 
 import EmailSignUpModal from '@tcp/web/src/components/common/molecules/EmailSignupModal/container';
 import { toggleEmailSignupModal as toggleEmailSignupModalAction } from '@tcp/web/src/components/common/molecules/EmailSignupModal/container/EmailSignupModal.actions';
+import DamImage from '@tcp/core/src/components/common/atoms/DamImage';
 import Heading from '@tcp/core/src/components/common/atoms/Heading';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Button from '@tcp/core/src/components/common/atoms/Button';
@@ -107,6 +108,27 @@ const Test = () => {
       </div>
       <br />
       <FooterTopCandidateA />
+      <DamImage
+        imgData={{
+          alt: 'Dancing Boy',
+          url: 'v1561401513/ecom/assets/content/tcp/us/home/transform/home_modh_sample_qtylh0.png',
+        }}
+      />
+      <div>
+        <Heading variant="h2">Dam Image with image configs</Heading>
+        <DamImage
+          imgData={{
+            alt: 'Dancing Boy',
+            url:
+              'v1561401513/ecom/assets/content/tcp/us/home/transform/home_modh_sample_qtylh0.png',
+          }}
+          imgConfigs={[
+            'g_face:center,q_auto:best,w_768',
+            'c_fill,g_face:center,q_auto:best,w_1440',
+            'c_crop,g_face:auto,q_auto:best,w_1600',
+          ]}
+        />
+      </div>
       <Row>
         <BodyCopy
           component="p"

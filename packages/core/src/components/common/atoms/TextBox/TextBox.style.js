@@ -1,6 +1,5 @@
 import { css } from 'styled-components';
 
-/* height: 70px; TODO: Need to check this from Naman, why this size? */
 const textboxStyles = css`
   position: relative;
   display: block;

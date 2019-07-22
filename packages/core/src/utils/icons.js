@@ -3,7 +3,7 @@ import dicoveryCard from '../assets/disc-small.png';
 import giftCardSmall from '../assets/gift-card-small.png';
 import masterCard from '../assets/mc-small.png';
 import plccCard from '../assets/place-card-small.png';
-import venmoCard from '../assets/venmo-blue-acceptance-mark.svg';
+import venmoCard from '../assets/venmo-blue-acceptance-mark.png';
 import visaSmall from '../assets/visa-small.png';
 
 export default {
