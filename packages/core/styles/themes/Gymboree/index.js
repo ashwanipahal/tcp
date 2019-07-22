@@ -1,14 +1,14 @@
-import createThemeColorPalette from './createThemeColorPalette';
+import createThemeColorPalette from '../createThemeColorPalette';
 import createThemeTypography from '../createThemeTypography';
-import colors from './colors';
+import colors from '../TCP/colors';
 import green from '../colors/green';
-import fonts from './fonts';
-import zindex from './zindex';
-import spacing from './spacing';
-import gridDimensions from './gridDimensions';
-import { mediaQuery, breakpoints } from './mediaQuery';
+import fonts from '../TCP/fonts';
+import zindex from '../TCP/zindex';
+import spacing from '../TCP/spacing';
+import gridDimensions from '../TCP/gridDimensions';
+import { mediaQuery, breakpoints } from '../TCP/mediaQuery';
 
-import opacity from './opacity';
+import opacity from '../TCP/opacity';
 
 const colorPalette = createThemeColorPalette();
 const typography = createThemeTypography();
