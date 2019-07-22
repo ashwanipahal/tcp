@@ -39,6 +39,7 @@ class Modal extends React.Component {
       fixedWidth,
       className,
       closeIconDataLocator,
+      headingStyle,
     } = otherProps;
     const column = colSet || Config.MODAL_COL_DEFAULTS;
     return (
@@ -54,6 +55,7 @@ class Modal extends React.Component {
                       title={title}
                       heading={heading}
                       closeIconDataLocator={closeIconDataLocator}
+                      headingStyle={headingStyle}
                     />
                     {children}
                   </Col>
@@ -67,6 +69,7 @@ class Modal extends React.Component {
                   title={title}
                   heading={heading}
                   closeIconDataLocator={closeIconDataLocator}
+                  headingStyle={headingStyle}
                 />
                 {children}
               </div>
