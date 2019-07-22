@@ -11,7 +11,6 @@ import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
 import AddGiftCardReducer from '@tcp/core/src/components/features/account/Payment/AddGiftCard/container/AddGiftCard.reducer';
 import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
 import AddressVerificationReducer from '@tcp/core/src/components/features/account/AddressVerification/container/AddressVerification.reducer';
-import CartPage from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import {
   HEADER_REDUCER_KEY,
   FOOTER_REDUCER_KEY,
@@ -27,7 +26,6 @@ import {
   EMAIL_SIGNUP_REDUCER_KEY,
   SMS_SIGNUP_REDUCER_KEY,
   MODULES_REDUCER_KEY,
-  CARTPAGE_REDUCER_KEY,
   ADD_GIFT_CARD_REDUCER_KEY,
   ADDED_TO_BAG_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
@@ -44,7 +42,7 @@ const filteredProductListingPageReducer = createFilteredReducer(
   PRODUCTLISTINGPAGE_REDUCER_KEY
 );
 
-console.log("----------------------------->",ADDED_TO_BAG_REDUCER_KEY);
+console.log('----------------------------->', ADDED_TO_BAG_REDUCER_KEY);
 export default combineReducers({
   [HEADER_REDUCER_KEY]: HeaderReducer,
   [FOOTER_REDUCER_KEY]: FooterReducer,
@@ -61,7 +59,6 @@ export default combineReducers({
   form: reduxFormReducer,
   [EMAIL_SIGNUP_REDUCER_KEY]: EmailSignupReducer,
   [SMS_SIGNUP_REDUCER_KEY]: SmsSignupReducer,
-  [CARTPAGE_REDUCER_KEY]: CartPage,
   [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,
   [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,
 });

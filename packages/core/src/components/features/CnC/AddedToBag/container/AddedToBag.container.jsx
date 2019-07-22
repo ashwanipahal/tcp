@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import { connect } from 'react-redux';
 import { addToCartEcom, closeAddedToBag } from './AddedToBag.actions';
@@ -30,19 +31,27 @@ export class AddedToBagContainer extends React.Component<Props> {
 
     this.closeModal = this.closeModal.bind(this);
   }
+
   componentDidMount() {
     // const { getCardListAction } = this.props;
     // getCardListAction();
   }
 
-  closeModal(){
+  closeModal() {
     const { closeModal } = this.props;
     closeModal();
   }
 
   render() {
-    const { addedToBagData , isOpenDialog} = this.props;
-    return (<AddedToBag openState={isOpenDialog} onRequestClose={this.closeModal} addedToBagData={addedToBagData} />);
+    const { addedToBagData, isOpenDialog, ...rest } = this.props;
+    return (
+      <AddedToBag
+        {...rest}
+        openState={isOpenDialog}
+        onRequestClose={this.closeModal}
+        addedToBagData={addedToBagData}
+      />
+    );
   }
 }
 

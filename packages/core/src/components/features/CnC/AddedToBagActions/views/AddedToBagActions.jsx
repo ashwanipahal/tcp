@@ -12,15 +12,15 @@ const AddedToBagActions = props => {
   return (
     <div className={className}>
       <Row>
-        <Col colSize={{ medium: 12, large: 12, small: 12 }}>
+        <Col colSize={{ medium: 8, large: 12, small: 6 }}>
           <Button className="view-bag">View Bag</Button>
         </Col>
       </Row>
       <Row className="checkout-button">
-        <Col colSize={{ medium: 4, large: 6, small: 6 }}>
+        <Col colSize={{ medium: 4, large: 6, small: 3 }}>
           <PayPalButton className="payPal-button" />
         </Col>
-        <Col colSize={{ medium: 6, large: 6, small: 6 }}>
+        <Col colSize={{ medium: 4, large: 6, small: 3 }}>
           <Button onClick={onClickCartCheckout} className="checkout">
             Checkout
           </Button>

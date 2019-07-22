@@ -56,9 +56,9 @@ export const getOrderDetailsData = () => {
     }
 
     const orderDetailsResponse = res.body;
-
+    let orderDetails = getCurrentOrderFormatter(orderDetailsResponse, false, false);
     return {
-      orderDetails: getCurrentOrderFormatter(orderDetailsResponse, false, false),
+      orderDetails,
     };
   });
 };
@@ -451,6 +451,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
   usersOrder.uiFlags = {
     // isPaypalEnabled: parseBoolean(orderDetailsResponse.payPalAllowed || orderDetailsResponse.isPayPalAllowed)
   };
+  debugger;
   usersOrder.cartTotalAfterPLCCDiscount =
     orderDetailsResponse && orderDetailsResponse.cartTotalAfterPLCCDiscount;
   return usersOrder;

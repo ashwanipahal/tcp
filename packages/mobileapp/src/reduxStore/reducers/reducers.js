@@ -5,7 +5,6 @@ import PaymentReducer from '@tcp/core/src/components/features/account/Payment/co
 import { ProductListingPageReducer } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.reducer';
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
-import CartPage from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import {
   HEADER_REDUCER_KEY,
   LABEL_REDUCER_KEY,
@@ -14,7 +13,6 @@ import {
   PRODUCTLISTINGPAGE_REDUCER_KEY,
   PAYMENT_REDUCER_KEY,
   MODULES_REDUCER_KEY,
-  CARTPAGE_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -32,5 +30,4 @@ export default combineReducers({
   [LOGINPAGE_REDUCER_KEY]: LoginPageReducer,
   [PAYMENT_REDUCER_KEY]: PaymentReducer,
   [MODULES_REDUCER_KEY]: ModulesReducer,
-  [CARTPAGE_REDUCER_KEY]: CartPage,
 });

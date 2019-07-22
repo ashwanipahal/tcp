@@ -1,1 +1,1 @@
-export { default } from './views/AddedToBagViewPoints.view';
+export { default } from './containers/AddedToBagViewPoints.container';

@@ -7,7 +7,13 @@ import Modal from '../../../../common/molecules/Modal';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/AddedToBag.style';
 
-const AddedToBag = ({ openState, onRequestClose, addedToBagData, className }) => {
+const AddedToBag = ({
+  openState,
+  onRequestClose,
+  addedToBagData,
+  className,
+  getOrderPointsSummary,
+}) => {
   return (
     <Modal
       fixedWidth

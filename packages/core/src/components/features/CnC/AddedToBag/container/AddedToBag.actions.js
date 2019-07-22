@@ -23,6 +23,16 @@ export const closeAddedToBag = () => ({
   type: ADDEDTOBAG_CONSTANTS.CLOSE_ADDED_TO_BAG,
 });
 
+export const getOrderDetails = () => ({
+  type: ADDEDTOBAG_CONSTANTS.GET_ORDER_DETAILS,
+});
+
+export const getOrderDetailsComplete = payload => {
+  return {
+    type: ADDEDTOBAG_CONSTANTS.GET_ORDER_DETAILS_COMPLETE,
+    payload,
+  };
+};
 
 // export const getCardListErr = payload => ({
 //   type: PAYMENT_CONSTANTS.GET_CARD_LIST_ERR,

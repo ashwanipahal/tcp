@@ -8,6 +8,10 @@ export const isOpenAddedToBag = state => {
   return state.AddedToBagReducer.get('isOpenAddedToBag');
 };
 
+export const getCartOrderList = state => {
+  // needs to do it with get method.
+  return state.AddedToBagReducer.get('orders');
+};
 // export const getCreditDebitCards = createSelector(
 //   [getCardListState],
 //   creditCardList =>

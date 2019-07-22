@@ -27,16 +27,15 @@ const CTAStyle = css`
     font-weight: 800;
     height: 48px;
     background-color: #2e6a91;
-    width: 100%;
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     @media ${props => props.theme.mediaQuery.small} {
-      width: inherit;
+      width: 100%;
     }
     @media ${props => props.theme.mediaQuery.medium} {
-      width: inherit;
+      width: 100%;
     }
     @media ${props => props.theme.mediaQuery.large} {
-      width: inherit;
+      width: 100%;
     }
   }
 `;
