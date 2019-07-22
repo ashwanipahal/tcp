@@ -2,6 +2,8 @@ import React from 'react';
 import Modal from '../../../../common/molecules/Modal';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/AddedToBag.style';
+import ProductInformationView from '../../ProductInformation/views/ProductInformation.views';
+import BossBannerView from '../../BossBanner/views/BossBanner.views';
 
 // @flow
 type Props = {
@@ -27,23 +29,9 @@ const AddedToBag = ({ openState, onRequestClose, addedToBagData, className }: Pr
       }}
     >
       <div className="addedToBagWrapper">
-        Integrate here your Integrate here your Integrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here your
+        <ProductInformationView data={addedToBagData} />
+        <BossBannerView />
+
         {JSON.stringify(addedToBagData)}
       </div>
     </Modal>
