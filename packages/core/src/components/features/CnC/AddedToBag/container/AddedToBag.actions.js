@@ -33,8 +33,3 @@ export const getOrderDetailsComplete = payload => {
     payload,
   };
 };
-
-// export const getCardListErr = payload => ({
-//   type: PAYMENT_CONSTANTS.GET_CARD_LIST_ERR,
-//   payload,
-// });

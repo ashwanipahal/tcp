@@ -1,3 +1,4 @@
+/* eslint-disable */
 export function parseBoolean(bool) {
   return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
 }
@@ -76,7 +77,6 @@ export const getImgPath = (id, excludeExtension) => {
  * @return the first element in the colorFitsSizesMap array that corresponds to the given colorName.
  */
 export function getMapSliceForColor(colorFitsSizesMap, colorName) {
-  console.log('colorFitsSizesMap', colorFitsSizesMap);
   return colorFitsSizesMap.find(entry => entry.color.name === colorName);
 }
 

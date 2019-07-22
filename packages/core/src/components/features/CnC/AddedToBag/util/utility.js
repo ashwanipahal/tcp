@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 import {
   getSkuId,
   getMapSliceForColor,
@@ -5,18 +6,25 @@ import {
 } from '../../../browse/ProductListingPage/util/utility';
 
 export const getCartItemInfo = (productInfoOrWishlistItem, customizationInfo) => {
+  let obj = {};
   if (productInfoOrWishlistItem.productInfo) {
     // productInfoOrWishlistItem is a wishlistItem
-    let {
+
+    const {
       productInfo: { name, isGiftCard },
       skuInfo,
     } = productInfoOrWishlistItem;
-    return { isGiftCard, productName: name, skuInfo, quantity: 1 };
+    obj = {
+      isGiftCard,
+      productName: name,
+      skuInfo,
+      quantity: 1,
+    };
   } else {
     // productInfoOrWishlistItem is a productInfo
-    let { color, fit, size, quantity } = customizationInfo;
-    let { name, colorFitsSizesMap, isGiftCard, imagesByColor } = productInfoOrWishlistItem;
-    return {
+    const { color, fit, size, quantity } = customizationInfo;
+    const { name, colorFitsSizesMap, isGiftCard, imagesByColor } = productInfoOrWishlistItem;
+    obj = {
       isGiftCard,
       productName: name,
       skuInfo: {
@@ -32,6 +40,10 @@ export const getCartItemInfo = (productInfoOrWishlistItem, customizationInfo) =>
         size,
       },
       quantity,
+      wishlistItemId:
+        customizationInfo.wishlistItemId ||
+        (productInfoOrWishlistItem.itemInfo && productInfoOrWishlistItem.itemInfo.itemId),
     };
   }
+  return obj;
 };

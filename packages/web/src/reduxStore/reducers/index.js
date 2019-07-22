@@ -42,7 +42,6 @@ const filteredProductListingPageReducer = createFilteredReducer(
   PRODUCTLISTINGPAGE_REDUCER_KEY
 );
 
-console.log('----------------------------->', ADDED_TO_BAG_REDUCER_KEY);
 export default combineReducers({
   [HEADER_REDUCER_KEY]: HeaderReducer,
   [FOOTER_REDUCER_KEY]: FooterReducer,

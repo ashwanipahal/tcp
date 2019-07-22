@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { parseBoolean } from './utility';
 // import {matchPath} from 'react-router';
 // import {PAGES} from '../../../routing/routes/pages.js';
