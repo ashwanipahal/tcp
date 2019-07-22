@@ -4,12 +4,14 @@ import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getLocator } from '@tcp/core/src/utils/utils.native';
 import {
   Wrapper,
-  HorizontalView,
-  VerticalLeftView,
-  VerticalRightView,
+  MessageContainer,
+  StoreContainer,
+  CartContainer,
   Icon,
   RoundView,
   SafeAreaViewStyle,
+  TextStyle,
+  ImageColor,
 } from './Header.style';
 
 // @flow
@@ -26,9 +28,6 @@ const downIcon = require('../../../../assets/images/carrot-small-down.png');
 const upIcon = require('../../../../assets/images/carrot-small-up.png');
 const cartIcon = require('../../../../assets/images/empty-bag.png');
 
-const textStyle = { position: 'absolute', marginTop: 18, paddingRight: 5.6 };
-const imageColor = { tintColor: 'grey' };
-
 /**
  * This component creates Mobile Header.
  * 1. To Manage the store locator
@@ -44,7 +43,7 @@ class Header extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      isIconIn: false,
+      isDownIcon: false,
     };
   }
 
@@ -52,14 +51,14 @@ class Header extends React.Component<Props> {
    * This function validate the iconView.
    */
   validateIcon = () => {
-    const { isIconIn } = this.state;
+    const { isDownIcon } = this.state;
     this.setState({
-      isIconIn: !isIconIn,
+      isDownIcon: !isDownIcon,
     });
   };
 
   render() {
-    const { isIconIn } = this.state;
+    const { isDownIcon } = this.state;
     let headerLabels = {
       storeTitle: 'Find the store',
       headerTitle: 'Welcome',
@@ -73,7 +72,7 @@ class Header extends React.Component<Props> {
     return (
       <SafeAreaViewStyle>
         <Wrapper data-locator={getLocator('global_headerpanel')}>
-          <VerticalLeftView>
+          <MessageContainer>
             <BodyCopy
               fontFamily="secondary"
               fontSize="fs14"
@@ -83,7 +82,7 @@ class Header extends React.Component<Props> {
               text={headerLabels.headerTitle}
               data-locator={getLocator('global_headerpanelwelcometext')}
             />
-            <HorizontalView onPress={this.validateIcon}>
+            <StoreContainer onPress={this.validateIcon}>
               <BodyCopy
                 fontFamily="secondary"
                 fontSize="fs12"
@@ -93,22 +92,22 @@ class Header extends React.Component<Props> {
                 text={headerLabels.storeTitle}
                 data-locator={getLocator('global_findastoretext')}
               />
-              {isIconIn ? (
+              {isDownIcon ? (
                 <Icon
                   source={upIcon}
-                  style={imageColor}
+                  style={ImageColor}
                   data-locator={getLocator('global_headerpanelexpandedicon')}
                 />
               ) : (
                 <Icon
                   source={downIcon}
-                  style={imageColor}
+                  style={ImageColor}
                   data-locator={getLocator('global_headerpanelcollapsedicon')}
                 />
               )}
-            </HorizontalView>
-          </VerticalLeftView>
-          <VerticalRightView>
+            </StoreContainer>
+          </MessageContainer>
+          <CartContainer>
             <Icon
               source={cartIcon}
               width="32px"
@@ -120,17 +119,17 @@ class Header extends React.Component<Props> {
               width="22px"
               height="22px"
               borderRadius={11}
-              style={imageColor}
+              style={ImageColor}
             />
-            <RoundView color="Gymboree" />
+            <RoundView color="TCP-Gymboree" />
             <BodyCopy
               text="0"
               color="white"
-              style={textStyle}
+              style={TextStyle}
               fontSize="fs10"
               data-locator={getLocator('global_headerpanelbagitemtext')}
             />
-          </VerticalRightView>
+          </CartContainer>
         </Wrapper>
       </SafeAreaViewStyle>
     );
@@ -139,7 +138,7 @@ class Header extends React.Component<Props> {
 
 const mapStateToProps = state => {
   return {
-    labels: state.Labels.MobileApp && state.Labels.MobileApp.Header,
+    labels: state.Labels.global && state.Labels.global.header,
   };
 };
 

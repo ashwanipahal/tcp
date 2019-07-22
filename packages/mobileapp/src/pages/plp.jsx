@@ -7,13 +7,17 @@ import Header from '../components/common/molecules/Header';
 const styles = { margin: 10 };
 const Plp = () => <Text style={styles}>PLP Page</Text>;
 
-const PlpStack = createStackNavigator({
-  Plp,
-});
-
-Plp.navigationOptions = {
-  header: props => <Header {...props} />,
-};
+const PlpStack = createStackNavigator(
+  {
+    Plp,
+  },
+  {
+    defaultNavigationOptions: {
+      header: props => <Header {...props} />,
+      headerBackground: 'transparent',
+    },
+  }
+);
 
 PlpStack.navigationOptions = {
   tabBarLabel: 'shop',

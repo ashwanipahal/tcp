@@ -4,13 +4,21 @@ import LoginSync from '../screens/LoginSync';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Header from '../components/common/molecules/Header';
 
-const Login = createStackNavigator({
-  LoginSync,
-});
+const Login = createStackNavigator(
+  {
+    LoginSync,
+  },
+  {
+    defaultNavigationOptions: {
+      header: props => <Header {...props} />,
+      headerBackground: 'transparent',
+    },
+  }
+);
 
-LoginSync.navigationOptions = {
-  header: props => <Header {...props} />,
-};
+// LoginSync.navigationOptions = {
+//   header: props => <Header {...props} />,
+// };
 
 Login.navigationOptions = {
   tabBarLabel: 'wallet',

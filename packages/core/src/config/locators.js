@@ -26,7 +26,7 @@ export default {
   refer_friend: 'global_referfriend',
   // MobileHeader
   global_headerpanel: 'global_headerpanel',
-  global_findastoretext: 'global_findastoretex',
+  global_findastoretext: 'global_findastoretext',
   global_headerpanelcollapsedicon: 'global_headerpanelcollapsedicon',
   global_headerpanelexpandedicon: 'global_headerpanelexpandedicon',
   global_headerpanelbagicon: 'global_headerpanelbagicon',

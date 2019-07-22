@@ -5,18 +5,18 @@ import account from '../components/features/account/account';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Header from '../components/common/molecules/Header';
 
-Home.navigationOptions = {
-  header: props => <Header {...props} />,
-};
-
-account.navigationOptions = {
-  header: props => <Header {...props} />,
-};
-
-const HomeStack = createStackNavigator({
-  Home,
-  account,
-});
+const HomeStack = createStackNavigator(
+  {
+    Home,
+    account,
+  },
+  {
+    defaultNavigationOptions: {
+      header: props => <Header {...props} />,
+      headerBackground: 'transparent',
+    },
+  }
+);
 
 HomeStack.navigationOptions = {
   headerMode: 'float',

@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const SafeAreaViewStyle = styled.SafeAreaView`
-  background: white;
+  background: ${props => props.theme.colorPalette.white};
 `;
 
 export const Wrapper = styled.View`
@@ -9,10 +9,10 @@ export const Wrapper = styled.View`
   padding-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
   padding-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   display: flex;
-  background: white;
+  background: ${props => props.theme.colorPalette.white};
 `;
 
-export const VerticalLeftView = styled.View`
+export const MessageContainer = styled.View`
   align-items: flex-start;
   position: absolute;
   z-index: ${props => props.theme.zindex.zOverlay};
@@ -21,14 +21,14 @@ export const VerticalLeftView = styled.View`
   margin-top: 7px;
 `;
 
-export const VerticalRightView = styled.TouchableOpacity`
+export const CartContainer = styled.TouchableOpacity`
   align-items: flex-end;
   align-self: flex-end;
   flex-basis: 100%;
   margin-top: 5px;
 `;
 
-export const HorizontalView = styled.TouchableOpacity`
+export const StoreContainer = styled.TouchableOpacity`
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -51,16 +51,10 @@ export const RoundView = styled.View`
           `
       : ''};
   ${props =>
-    props.color === 'TCP'
+    props.color === 'TCP-Gymboree'
       ? `
     background-color: ${props.theme.colorPalette.primary.dark};
           `
-      : ''};
-  ${props =>
-    props.color === 'Gymboree'
-      ? `
-        background-color: ${'#c25621'};
-              `
       : ''};
   width: ${props => props.width || '20px'};
   height: ${props => props.height || '20px'};
@@ -69,12 +63,18 @@ export const RoundView = styled.View`
   margin-top: 14px;
 `;
 
+export const TextStyle = { position: 'absolute', marginTop: 18, paddingRight: 5.6 };
+
+export const ImageColor = { tintColor: 'grey' };
+
 export default {
   Wrapper,
-  VerticalRightView,
-  HorizontalView,
+  MessageContainer,
+  StoreContainer,
   Icon,
-  VerticalLeftView,
+  CartContainer,
   RoundView,
   SafeAreaViewStyle,
+  TextStyle,
+  ImageColor,
 };
