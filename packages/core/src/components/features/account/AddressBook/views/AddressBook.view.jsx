@@ -11,7 +11,6 @@ import AddressListComponent from './AddressList.view';
 import EmptyAddressListComponent from './EmptyAddressList.view';
 import DeleteAddressModal from './DeleteAddressModal.view';
 import Notification from '../../../../common/molecules/Notification';
-import CustomSelect from '../../../../common/molecules/CustomSelect';
 
 // @flow
 
@@ -90,8 +89,6 @@ export class AddressBook extends React.PureComponent<Props> {
             }}
             className="addressBook__addNewCtaContainer"
           >
-            <CustomSelect />
-
             <Button
               onClick={this.onAddNNewAddressClick}
               buttonVariation="variable-width"
