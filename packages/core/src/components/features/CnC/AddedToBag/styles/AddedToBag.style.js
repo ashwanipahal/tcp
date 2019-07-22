@@ -33,9 +33,6 @@ const styles = css`
     overflow-y: auto;
     height: calc(100% - 43px);
   }
-
-  @media ${props => props.theme.mediaQuery.medium} {
-  }
 `;
 
 export default styles;
