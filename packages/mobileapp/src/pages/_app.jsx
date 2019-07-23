@@ -38,7 +38,7 @@ export class App extends React.PureComponent {
     const { appType } = this.props;
     return (
       <Provider store={this.store}>
-        <ThemeWrapperHOC defaultAppType={appType}>
+        <ThemeWrapperHOC appType={appType}>
           <View style={styles.container}>
             {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
             <AppNavigator />

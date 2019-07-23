@@ -19,8 +19,8 @@ export class ThemeWrapper extends React.PureComponent {
 
   constructor(props) {
     super(props);
-    const { defaultAppType, updateAppTypeHandler } = props;
-    this.currentAppType = defaultAppType;
+    const { appType, updateAppTypeHandler } = props;
+    this.currentAppType = appType;
     updateAppTypeHandler(this.currentAppType);
   }
 
@@ -48,7 +48,7 @@ export class ThemeWrapper extends React.PureComponent {
     const currentTheme = this.getTheme();
     return (
       <ThemeProvider theme={currentTheme} appType={appType}>
-        {children}
+        <React.Fragment>{children}</React.Fragment>
       </ThemeProvider>
     );
   }
@@ -57,19 +57,20 @@ export class ThemeWrapper extends React.PureComponent {
 ThemeWrapper.propTypes = {
   children: PropTypes.shape({}).isRequired,
   appType: PropTypes.string,
-  defaultAppType: PropTypes.string,
   updateAppTypeHandler: PropTypes.func,
 };
 
 ThemeWrapper.defaultProps = {
-  defaultAppType: '',
   appType: '',
   updateAppTypeHandler: () => {},
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  const { appType } = ownProps;
+  const appTypeStoreValue = getAppType(state);
+  const appTypeValue = appTypeStoreValue === '' ? appType : appTypeStoreValue;
   return {
-    appType: getAppType(state),
+    appType: appTypeValue,
   };
 };
 

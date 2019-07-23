@@ -7,7 +7,6 @@ describe('#ThemeWrapper.container', () => {
     appType: 'tcp',
     updateAppTypeHandler: jest.fn(),
     children: {},
-    defaultAppType: 'tcp',
   };
   let component;
   beforeEach(() => {
