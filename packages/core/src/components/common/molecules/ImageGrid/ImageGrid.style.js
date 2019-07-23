@@ -6,4 +6,7 @@ export default css`
     justify-content: center;
     align-items: center;
   }
+  .moduleK_dam-image {
+    max-width: 210px;
+  }
 `;
