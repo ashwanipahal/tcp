@@ -49,6 +49,7 @@ const TextBox = ({
   dataLocator,
   showSuccessCheck,
   isRequired,
+  ...others
 }: Props): Node => {
   const elemValue = input.value;
   const { touched, error } = meta;
@@ -62,6 +63,7 @@ const TextBox = ({
       )}`}
     >
       <input
+        {...others}
         {...input}
         id={id}
         aria-label={ariaLabel}
