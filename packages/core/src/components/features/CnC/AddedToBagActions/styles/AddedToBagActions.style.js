@@ -1,4 +1,3 @@
-/* stylelint-disable */
 import { css } from 'styled-components';
 
 const CTAStyle = css`

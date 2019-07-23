@@ -1,6 +1,3 @@
-/* eslint-disable extra-rules/no-commented-out-code */
-/* eslint-disable no-unused-vars */
-
 import { call, takeLatest, put } from 'redux-saga/effects';
 // import { validateReduxCache } from '../../../../../utils/cache.util';
 import ADDEDTOBAG_CONSTANTS from '../AddedToBag.constants';

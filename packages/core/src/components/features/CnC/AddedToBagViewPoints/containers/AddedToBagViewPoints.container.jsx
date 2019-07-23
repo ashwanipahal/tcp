@@ -1,4 +1,3 @@
-// TODO: Need fix unused/proptypes eslint error
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';

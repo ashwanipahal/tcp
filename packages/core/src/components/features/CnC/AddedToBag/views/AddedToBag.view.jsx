@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 import AddedToBagActions from '../../AddedToBagActions';
@@ -12,17 +11,9 @@ type Props = {
   openState: Function,
   onRequestClose: Function,
   className: string,
-  addedToBagData: any,
-  getOrderPointsSummary: any,
 };
 
-const AddedToBag = ({
-  openState,
-  onRequestClose,
-  addedToBagData,
-  className,
-  getOrderPointsSummary,
-}: Props) => {
+const AddedToBag = ({ openState, onRequestClose, className }: Props) => {
   return (
     <Modal
       fixedWidth
