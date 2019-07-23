@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleL Header component renders correctly 1`] = `
+<Styled(BodyCopy)
+  className={null}
+  color="text.primary"
+  component="div"
+  data-locator="module_L_content_tiles_NaN"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <Styled(Row)>
+    <Styled(Col)
+      className="moduleL__tile"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <WithTheme(DamImage)
+        className="moduleL__tile-image"
+        data-locator="module_L_composite_image_NaN"
+        imgConfigs={
+          Array [
+            "c_fill,g_center,q_80,h_127,w_103",
+            "c_fill,g_center,q_80,h_200,w_162",
+            "c_fill,g_center,q_80,h_260,w_210",
+          ]
+        }
+        imgData={
+          Object {
+            "alt": "BE A UNICORN 24/7/365 alt",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562061640/senjuti-kundu-7uP2gFMB2ps-unsplash_kxf3r4.jpg",
+          }
+        }
+      />
+      <div
+        className="moduleL__tile-text"
+      >
+        <Styled(BodyCopy)
+          className="moduleL__tile-title"
+          color="text.primary"
+          component="div"
+          data-locator="module_L_header_text_NaN"
+          fontFamily={
+            Array [
+              "primary",
+            ]
+          }
+          fontSize={
+            Array [
+              "fs32",
+            ]
+          }
+          fontWeight={
+            Array [
+              "regular",
+            ]
+          }
+          letterSpacing={
+            Array [
+              "ls222",
+            ]
+          }
+          lineHeight="normal"
+          textAlign="left"
+        >
+          BE A UNICORN 24/7/365
+        </Styled(BodyCopy)>
+        <Styled(Anchor)
+          className="moduleL__tile-link"
+          data-locator="module_L_text_link_NaN"
+          withCaret={true}
+        >
+          Shop Unicorns & Friends
+        </Styled(Anchor)>
+      </div>
+    </Styled(Col)>
+  </Styled(Row)>
+</Styled(BodyCopy)>
+`;

@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleL Header component renders correctly 1`] = `
+<Fragment>
+  <Styled(Anchor)
+    key="0"
+    target=""
+    to="https://www.childrensplace.com/us/c/girls-new-arrivals"
+  >
+    <Styled(Heading)
+      className={null}
+      color="text.primary"
+      component={null}
+      data-locator="module_L_header_text"
+      dataLocator=""
+      textAlign="center"
+      variant="h2"
+    >
+      TRENDING NOW
+    </Styled(Heading)>
+  </Styled(Anchor)>
+</Fragment>
+`;

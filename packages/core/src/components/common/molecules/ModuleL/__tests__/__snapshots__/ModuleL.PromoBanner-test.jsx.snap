@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleL Header component renders correctly 1`] = `
+<Styled(BodyCopy)
+  className="moduleL__promo-banner"
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <Styled(Anchor)
+    target=""
+    to="/banner/url"
+  >
+    <Styled(BodyCopy)
+      className="moduleL__promo-text text-black"
+      color="text.primary"
+      component="span"
+      fontFamily="primary"
+      fontSize={
+        Array [
+          "fs48",
+        ]
+      }
+      fontWeight="regular"
+      key="0"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      60% OFF 
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="moduleL__promo-text text-normal"
+      color="text.primary"
+      component="span"
+      fontFamily="primary"
+      fontSize={
+        Array [
+          "fs48",
+        ]
+      }
+      fontWeight="regular"
+      key="1"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      BUY TODAY 
+    </Styled(BodyCopy)>
+  </Styled(Anchor)>
+</Styled(BodyCopy)>
+`;

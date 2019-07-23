@@ -71,3 +71,4 @@ const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide, promoTextBa
 };
 
 export default errorBoundary(withStyle(ModuleL, style));
+export { ModuleL as ModuleLVanilla };
