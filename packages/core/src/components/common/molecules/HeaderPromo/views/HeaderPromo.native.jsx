@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-expressions */
 import React from 'react';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import Carousel from 'react-native-snap-carousel';
