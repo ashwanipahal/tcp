@@ -11,9 +11,10 @@ type Props = {
   onRequestClose: Function,
   className: string,
   addedToBagData: any,
+  labels: any,
 };
 
-const AddedToBag = ({ openState, onRequestClose, addedToBagData, className }: Props) => {
+const AddedToBag = ({ openState, onRequestClose, addedToBagData, className, labels }: Props) => {
   return (
     <Modal
       fixedWidth
@@ -29,10 +30,8 @@ const AddedToBag = ({ openState, onRequestClose, addedToBagData, className }: Pr
       }}
     >
       <div className="addedToBagWrapper">
-        <ProductInformationView data={addedToBagData} />
-        <BossBannerView />
-
-        {JSON.stringify(addedToBagData)}
+        <ProductInformationView data={addedToBagData} labels={labels} />
+        <BossBannerView labels={labels} />
       </div>
     </Modal>
   );

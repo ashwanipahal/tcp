@@ -25,39 +25,17 @@ export default styled.div`
   .itemList {
     width: 36px;
     height: 18px;
-    font-family: Nunito;
     font-size: 13px;
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.38;
-    letter-spacing: normal;
-    color: #1a1a1a;
   }
   .itemDesc {
-    width: 86px;
+    width: 120px;
     height: 18px;
     margin-left: 17px;
-    font-family: Nunito;
     font-size: 13px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.38;
-    letter-spacing: normal;
-    color: #595959;
   }
   .product-title {
     width: 203px;
     height: 19px;
-    font-family: Nunito;
-    font-size: 14px;
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.29;
-    letter-spacing: -0.1px;
-    color: #1a1a1a;
   }
   .product-description {
     width: 210px;
