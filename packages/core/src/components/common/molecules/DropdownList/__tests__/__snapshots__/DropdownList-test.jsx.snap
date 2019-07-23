@@ -96,7 +96,7 @@ exports[`DropdownList component should renders correctly 1`] = `
   .ulBorderWithLastRow li:last-child {
     position: absolute;
     width: 96%;
-    height: 36px;
+    height: 42px;
     padding: ",
           [Function],
           ";
@@ -233,7 +233,7 @@ exports[`DropdownList component should renders correctly when optional fields ar
   .ulBorderWithLastRow li:last-child {
     position: absolute;
     width: 96%;
-    height: 36px;
+    height: 42px;
     padding: ",
           [Function],
           ";

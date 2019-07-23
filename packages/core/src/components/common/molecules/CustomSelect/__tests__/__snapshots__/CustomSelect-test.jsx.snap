@@ -23,6 +23,15 @@ exports[`CustomSelect component should renders correctly 1`] = `
     margin-top: ",
           [Function],
           ";
+    padding: ",
+          [Function],
+          "
+      ",
+          [Function],
+          "
+      ",
+          [Function],
+          " 0;
     background: url(",
           "/static/images/down_arrow_icon.png",
           ") no-repeat right center;
@@ -79,6 +88,15 @@ exports[`CustomSelect component should renders correctly when optional fields ar
     margin-top: ",
           [Function],
           ";
+    padding: ",
+          [Function],
+          "
+      ",
+          [Function],
+          "
+      ",
+          [Function],
+          " 0;
     background: url(",
           "/static/images/down_arrow_icon.png",
           ") no-repeat right center;

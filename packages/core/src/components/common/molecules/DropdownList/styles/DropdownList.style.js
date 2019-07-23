@@ -36,7 +36,7 @@ const dropDownlist = css`
 
   .dropDownListwrapper {
     position: relative;
-    padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+    padding-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
     border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
     background-color: ${props => props.theme.colors.WHITE};
   }
@@ -58,7 +58,7 @@ const dropDownlist = css`
   .ulBorderWithLastRow li:last-child {
     position: absolute;
     width: 96%;
-    height: 36px;
+    height: 42px;
     padding: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
     left: 0;
     bottom: 0;
