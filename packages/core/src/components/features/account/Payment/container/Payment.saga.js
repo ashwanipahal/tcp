@@ -75,6 +75,8 @@ function* fetchEspot({ payload }) {
     const espotData = res.body.List[0].maketingText || [];
     yield put(setEspots(espotData));
   } catch (err) {
+    const espotData = '';
+    yield put(setEspots(espotData));
     // eslint-disable-next-line no-console
     console.log('Error in API');
     // eslint-disable-next-line no-console
