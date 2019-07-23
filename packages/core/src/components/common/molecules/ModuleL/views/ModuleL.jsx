@@ -6,6 +6,7 @@ import withStyle from '../../../hoc/withStyles';
 import { Carousel } from '../..';
 import config from '../config';
 import ModuleLHeader from './ModuleL.Header';
+import PromoBanner from './ModuleL.PromoBanner';
 import ModuleLTile from './ModuleL.Tile';
 import style from '../ModuleL.style';
 
@@ -14,6 +15,7 @@ type Props = {
   headerText: Object,
   imageGrid: Array<Object>,
   imagesPerSlide: string,
+  promoTextBanner: Object,
 };
 
 /**
@@ -34,7 +36,7 @@ const renderTiles = tiles => {
  * @param {headerText} headerText : Header data object
  * @param {imageGrid} imageGrid : Slides data in array list
  */
-const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide }: Props) => {
+const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide, promoTextBanner }: Props) => {
   const options = config.CAROUSEL_OPTIONS;
   if (parseInt(imagesPerSlide, 10) === 4) {
     options.rows = 2;
@@ -51,6 +53,7 @@ const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide }: Props) =>
     >
       <Col colSize={{ small: 6, medium: 8, large: 10 }} offsetLeft={{ large: 1 }}>
         <ModuleLHeader headerText={headerText} />
+        {promoTextBanner && <PromoBanner {...promoTextBanner} />}
         <Carousel
           options={options}
           carouselConfig={{

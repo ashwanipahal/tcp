@@ -32,4 +32,11 @@ export default {
     medium: 8,
     large: 5,
   },
+  IMG_DATA: {
+    crops: [
+      'c_fill,g_center,q_80,h_127,w_103',
+      'c_fill,g_center,q_80,h_200,w_162',
+      'c_fill,g_center,q_80,h_260,w_210',
+    ],
+  },
 };

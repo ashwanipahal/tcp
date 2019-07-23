@@ -38,11 +38,11 @@ export default {
         textItems: [
           {
             text: '60% OFF',
-            style: 'style1',
+            style: 'text-black',
           },
           {
-            text: 'Buy today',
-            style: 'style2',
+            text: 'BUY TODAY',
+            style: 'text-normal',
           },
         ],
       },

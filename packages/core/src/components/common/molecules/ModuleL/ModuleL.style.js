@@ -6,6 +6,13 @@ export default css`
       display: none;
     }
   }
+  .moduleL__promo-banner {
+    text-align: center;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+  }
+  .text-black {
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+  }
   .moduleL__tile {
     background-color: ${props => props.theme.colorPalette.gray['300']};
     display: flex;
@@ -18,15 +25,7 @@ export default css`
     }
   }
   .moduleL__tile-image {
-    max-width: 103px;
-
-    @media ${props => props.theme.mediaQuery.medium} {
-      max-width: 180px;
-    }
-
-    @media ${props => props.theme.mediaQuery.large} {
-      max-width: 210px;
-    }
+    max-width: 210px;
   }
   .moduleL__tile-text {
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
