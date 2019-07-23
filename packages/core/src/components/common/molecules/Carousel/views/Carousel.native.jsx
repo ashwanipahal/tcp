@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import { Image } from '../../../atoms';
 import config from '../config';
+import { getLocator } from '../../../../../utils/utils.native';
 import { Touchable, TouchableView, Icon, Container } from '../Carousel.native.style';
 
 /**
@@ -131,14 +132,17 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     if (variation === 'swipe-arrow') {
       return (
         <Container>
-          <TouchableView onPress={() => this.manageSlide('next')}>
+          <TouchableView
+            data-locator={getLocator('global_promobanner_right_arrow')}
+            onPress={() => this.manageSlide('next')}
+          >
             <Icon source={nextIcon} />
           </TouchableView>
           <Carousel
             data={data}
             renderItem={renderItem}
-            sliderWidth={width}
-            itemWidth={width}
+            sliderWidth={width + 40}
+            itemWidth={width - 40}
             sliderHeight={height}
             itemHeight={height}
             autoplay={defaultAutoplay}
@@ -146,7 +150,10 @@ class SnapCarousel extends React.PureComponent<Props, State> {
               this.carousel = c;
             }}
           />
-          <TouchableView onPress={() => this.manageSlide('prev')}>
+          <TouchableView
+            data-locator={getLocator('global_promobanner_left_arrowRight')}
+            onPress={() => this.manageSlide('prev')}
+          >
             <Icon source={prevIcon} />
           </TouchableView>
         </Container>
