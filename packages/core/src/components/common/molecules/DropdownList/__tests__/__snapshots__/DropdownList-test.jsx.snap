@@ -87,6 +87,12 @@ exports[`DropdownList component should renders correctly 1`] = `
     width: 100%;
   }
 
+  .ulBorderWithLastRow li:hover {
+    background: ",
+          [Function],
+          ";
+  }
+
   .ulBorderWithLastRow li:last-child {
     position: absolute;
     width: 96%;
@@ -98,13 +104,9 @@ exports[`DropdownList component should renders correctly 1`] = `
     bottom: 0;
     border-bottom: none;
   }
+
   .ulBorderWithLastRow li:last-child:hover {
     background: none;
-  }
-  .ulBorderWithLastRow li:hover {
-    background: ",
-          [Function],
-          ";
   }
 ",
           ";
@@ -222,6 +224,12 @@ exports[`DropdownList component should renders correctly when optional fields ar
     width: 100%;
   }
 
+  .ulBorderWithLastRow li:hover {
+    background: ",
+          [Function],
+          ";
+  }
+
   .ulBorderWithLastRow li:last-child {
     position: absolute;
     width: 96%;
@@ -233,13 +241,9 @@ exports[`DropdownList component should renders correctly when optional fields ar
     bottom: 0;
     border-bottom: none;
   }
+
   .ulBorderWithLastRow li:last-child:hover {
     background: none;
-  }
-  .ulBorderWithLastRow li:hover {
-    background: ",
-          [Function],
-          ";
   }
 ",
           ";

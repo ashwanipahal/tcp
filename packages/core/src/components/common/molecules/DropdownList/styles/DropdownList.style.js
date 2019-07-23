@@ -51,6 +51,10 @@ const dropDownlist = css`
     width: 100%;
   }
 
+  .ulBorderWithLastRow li:hover {
+    background: ${props => props.theme.colors.PRIMARY.COLOR1};
+  }
+
   .ulBorderWithLastRow li:last-child {
     position: absolute;
     width: 96%;
@@ -60,11 +64,9 @@ const dropDownlist = css`
     bottom: 0;
     border-bottom: none;
   }
+
   .ulBorderWithLastRow li:last-child:hover {
     background: none;
-  }
-  .ulBorderWithLastRow li:hover {
-    background: ${props => props.theme.colors.PRIMARY.COLOR1};
   }
 `;
 
