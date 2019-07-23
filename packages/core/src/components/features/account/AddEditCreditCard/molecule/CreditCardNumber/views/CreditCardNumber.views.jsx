@@ -10,7 +10,7 @@ const getCardTypeImgUrl = cardType => {
   return getIconPath(`${(cardType || '').toLowerCase().replace(' ', '-')}-small`);
 };
 
-const CreditCardNumber = ({ cardType, className, ...otherProps }) => {
+export const CreditCardNumber = ({ cardType, className, ...otherProps }) => {
   return (
     <BodyCopy component="div" className={className}>
       <TextBox maxLength="16" {...otherProps} />

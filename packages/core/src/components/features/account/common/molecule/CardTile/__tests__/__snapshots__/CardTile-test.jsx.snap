@@ -102,10 +102,11 @@ exports[`CardTile should render correctly with amex card 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/#"
+      to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       Edit
@@ -214,10 +215,11 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/#"
+      to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       Edit
@@ -342,10 +344,11 @@ exports[`CardTile should render correctly with discover card 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/#"
+      to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       Edit
@@ -704,10 +707,11 @@ exports[`CardTile should render correctly with master card 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/#"
+      to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       Edit
@@ -1061,10 +1065,11 @@ exports[`CardTile should render correctly with plcc card 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/#"
+      to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       Edit
@@ -1262,10 +1267,11 @@ exports[`CardTile should render correctly with visa card 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/#"
+      to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       Edit
