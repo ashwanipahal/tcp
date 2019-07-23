@@ -3,10 +3,10 @@ import React from 'react';
 import { Col, Row } from '../../../atoms';
 import errorBoundary from '../../../hoc/errorBoundary';
 import withStyle from '../../../hoc/withStyles';
-import { Carousel } from '../..';
+import { Carousel, PromoTextBanner } from '../..';
+import { getLocator } from '../../../../../utils';
 import config from '../config';
 import ModuleLHeader from './ModuleL.Header';
-import PromoBanner from './ModuleL.PromoBanner';
 import ModuleLTile from './ModuleL.Tile';
 import style from '../ModuleL.style';
 
@@ -53,7 +53,14 @@ const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide, promoTextBa
     >
       <Col colSize={{ small: 6, medium: 8, large: 10 }} offsetLeft={{ large: 1 }}>
         <ModuleLHeader headerText={headerText} />
-        {promoTextBanner && <PromoBanner {...promoTextBanner} />}
+        {promoTextBanner && (
+          <PromoTextBanner
+            {...promoTextBanner}
+            className="moduleL__promo-banner"
+            fontSize="fs48"
+            data-locator={getLocator('module_L_promobanner_text')}
+          />
+        )}
         <Carousel
           options={options}
           carouselConfig={{

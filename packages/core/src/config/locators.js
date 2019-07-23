@@ -26,6 +26,7 @@ export default {
   refer_friend: 'global_referfriend',
   // Module L
   module_L_header_text: 'module_L_header_text',
+  module_L_promobanner_text: 'module_L_promobanner_text',
   module_L_title: 'module_L_title',
   module_L_composite_image: 'module_L_composite_image',
   module_L_text_link: 'module_L_text_link',

@@ -84,7 +84,10 @@ exports[`ModuleL component renders correctly 1`] = `
         }
       }
     />
-    <PromoBanner
+    <Styled(PromoBanner)
+      className="moduleL__promo-banner"
+      data-locator="module_L_promobanner_text"
+      fontSize="fs48"
       linkClass={
         Object {
           "class": "",

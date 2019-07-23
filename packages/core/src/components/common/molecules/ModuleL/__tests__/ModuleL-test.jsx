@@ -2,9 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import mock from '../../../../../services/abstractors/common/moduleL/mock';
 import { ModuleLVanilla as ModuleL } from '../views/ModuleL';
-import { Carousel } from '../..';
+import { Carousel, PromoTextBanner } from '../..';
 import Header from '../views/ModuleL.Header';
-import PromoBanner from '../views/ModuleL.PromoBanner';
 
 describe('ModuleL component', () => {
   let ModuleLComp;
@@ -22,8 +21,8 @@ describe('ModuleL component', () => {
     expect(ModuleLComp.find(Header)).toHaveLength(1);
   });
 
-  it('should render promo banner', () => {
-    expect(ModuleLComp.find(PromoBanner)).toHaveLength(1);
+  it('should render promo text banner', () => {
+    expect(ModuleLComp.find(PromoTextBanner)).toHaveLength(1);
   });
 
   it('should render carousel', () => {
