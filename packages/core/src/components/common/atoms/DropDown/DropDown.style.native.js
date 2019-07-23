@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components/native';
 
 const style = css`
   border: 1px solid #9c9c9c;
@@ -15,6 +15,9 @@ const StyledText = styled.Text`
   font-size: ${props => props.theme.typography.fontSizes.fs13};
   font-weight: ${props => props.theme.typography.fontWeights.black};
   font-style: normal;
+`;
+
+const HeaderText = styled(StyledText)`
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
@@ -27,8 +30,27 @@ const Row = styled.View`
 const OverLayView = styled.View`
   position: absolute;
   top: 42px;
-  background-color: #eeeeee;
+  background-color: #fff;
   z-index: 999;
+  flex-direction: row;
+  border: 1px solid #9c9c9c;
+  border-top-width: 0px;
+  margin-top: 108px;
 `;
 
-export { style, StyledText, Row, OverLayView };
+const DropDownItem = styled(StyledText)`
+  padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
+    ${props => props.theme.spacing.ELEM_SPACING.XL};
+  text-align: center;
+`;
+
+const Separator = styled.View`
+  background-color: #9c9c9c;
+  height: 1px;
+`;
+
+const StyledTouchableOpacity = styled.TouchableOpacity`
+  flex: 1;
+`;
+
+export { style, HeaderText, Row, OverLayView, DropDownItem, Separator, StyledTouchableOpacity };

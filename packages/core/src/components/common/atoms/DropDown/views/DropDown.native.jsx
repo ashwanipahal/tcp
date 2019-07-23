@@ -1,21 +1,37 @@
 import React from 'react';
-import { Image, View, TouchableHighlight, FlatList, TouchableWithoutFeedback } from 'react-native';
+import { Image, View, FlatList, Modal } from 'react-native';
 import withStyles from '../../../hoc/withStyles.native';
-import { style, StyledText, Row, OverLayView } from '../DropDown.style.native';
+import {
+  style,
+  HeaderText,
+  Row,
+  OverLayView,
+  DropDownItem,
+  Separator,
+  StyledTouchableOpacity,
+} from '../DropDown.style.native';
 
 const icon = require('../../../../../assets/carrot-small-down.png');
 
 // @flow
 type Props = {
-  title: string,
+  data: Array,
+  selectedValue: String,
+  onValueChange: Function,
 };
 
 class DropDown extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
 
+    const { data, selectedValue } = this.props;
+    const selectedObject = data.filter(item => {
+      return item.value === selectedValue;
+    });
+
     this.state = {
       dropDownIsOpen: false,
+      selectedLabelState: selectedObject[0].label,
     };
   }
 
@@ -26,39 +42,54 @@ class DropDown extends React.PureComponent<Props> {
   };
 
   dropDownLayout = ({ item }) => {
-    return (
-      <TouchableWithoutFeedback accessibilityTraits="none" accessibilityComponentType="none">
-        <View>
-          <StyledText>{item.key}</StyledText>
-        </View>
-      </TouchableWithoutFeedback>
-    );
+    return <DropDownItem onPress={() => this.onDropDownItemClick(item)}>{item.label}</DropDownItem>;
+  };
+
+  onDropDownItemClick = item => {
+    this.setState({
+      dropDownIsOpen: false,
+      selectedLabelState: item.label,
+    });
+
+    // pass the callback here with value
+    const { onValueChange } = this.props;
+    onValueChange(item.value);
+  };
+
+  closeDropDown = () => {
+    this.setState({
+      dropDownIsOpen: false,
+    });
   };
 
   render() {
-    const { title } = this.props;
-    const { dropDownIsOpen } = this.state;
+    const { data } = this.props;
+    const { dropDownIsOpen, selectedLabelState } = this.state;
+
     return (
       <View>
-        <TouchableHighlight
-          accessibilityTraits="none"
-          accessibilityComponentType="none"
-          onPress={this.openDropDown}
-        >
-          <Row {...this.props}>
-            <StyledText>{title}</StyledText>
-            <Image source={icon} />
-          </Row>
-        </TouchableHighlight>
-        <OverLayView>
-          {dropDownIsOpen && (
-            <FlatList
-              data={[{ key: 'hello hello hello' }, { key: 'hey hey hey' }]}
-              renderItem={item => this.dropDownLayout(item)}
-            />
-          )}
-        </OverLayView>
-        <StyledText>STATESTATESTATESTATESTATESTATE</StyledText>
+        <Row {...this.props} onStartShouldSetResponder={() => this.openDropDown()}>
+          <HeaderText>{selectedLabelState}</HeaderText>
+          <Image source={icon} />
+        </Row>
+        <Modal visible={dropDownIsOpen} transparent>
+          <StyledTouchableOpacity
+            accessibilityTraits="none"
+            accessibilityComponentType="none"
+            onPress={this.closeDropDown}
+            activeOpacity={1}
+          >
+            <OverLayView>
+              {dropDownIsOpen && (
+                <FlatList
+                  data={data}
+                  renderItem={item => this.dropDownLayout(item)}
+                  ItemSeparatorComponent={() => <Separator />}
+                />
+              )}
+            </OverLayView>
+          </StyledTouchableOpacity>
+        </Modal>
       </View>
     );
   }
