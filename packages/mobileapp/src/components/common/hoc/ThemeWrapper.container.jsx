@@ -56,12 +56,11 @@ export class ThemeWrapper extends React.PureComponent {
 
 ThemeWrapper.propTypes = {
   children: PropTypes.shape({}).isRequired,
-  appType: PropTypes.string,
+  appType: PropTypes.string.isRequired,
   updateAppTypeHandler: PropTypes.func,
 };
 
 ThemeWrapper.defaultProps = {
-  appType: '',
   updateAppTypeHandler: () => {},
 };
 
