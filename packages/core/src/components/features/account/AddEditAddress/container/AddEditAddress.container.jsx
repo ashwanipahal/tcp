@@ -37,7 +37,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
   getInitialValues = (addressList, address) => {
     if (!address) {
       return {
-        primary: addressList.size === 0,
+        primary: addressList && addressList.size === 0,
         country: 'US',
         addressLine2: '',
       };
@@ -92,13 +92,14 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
   };
 
   backToAddressBookClick = () => {
-    Router.push('/account');
+    return Router.push('/account?id=address-book', '/account/address-book');
   };
 
   render() {
     const { addressResponse, addressList, address } = this.props;
     this.initialValues = this.getInitialValues(addressList, address);
-    const isMakeDefaultDisabled = address ? addressList.size === 1 : addressList.size === 0;
+    const addressListSize = addressList && addressList.size;
+    const isMakeDefaultDisabled = address ? addressListSize === 1 : addressListSize === 0;
     return (
       <AddAddressComponent
         addressResponse={addressResponse}

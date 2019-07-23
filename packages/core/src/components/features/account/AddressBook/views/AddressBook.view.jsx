@@ -41,7 +41,10 @@ export class AddressBook extends React.PureComponent<Props> {
   };
 
   onAddNNewAddressClick = () => {
-    Router.push('/account?id=add-new-address', '/account/address-book/add-new-address');
+    Router.push(
+      '/account?id=address-book&subSection=add-new-address',
+      '/account/address-book/add-new-address'
+    );
   };
 
   render() {
