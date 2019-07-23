@@ -17,8 +17,8 @@ describe('#ThemeWrapper.container', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('the default value of currentAppType should be tcp ', () => {
-    expect(component.instance().currentAppType).toEqual('tcp');
+  it('the default value of appType should be tcp ', () => {
+    expect(component.instance().appType).toEqual(undefined);
   });
 
   it('getTheme method should be call', () => {

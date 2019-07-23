@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import get from 'lodash/get';
 import { PropTypes } from 'prop-types';
 import { ThemeProvider } from 'styled-components/native';
 import theme from '@tcp/core/styles/themes/TCP';
@@ -15,21 +14,10 @@ import { getAppType } from './ThemeWrapper.selectors';
  * It also provide  ThemeProvider
  */
 export class ThemeWrapper extends React.PureComponent {
-  currentAppType = '';
-
   constructor(props) {
     super(props);
     const { appType, updateAppTypeHandler } = props;
-    this.currentAppType = appType;
-    updateAppTypeHandler(this.currentAppType);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { appType } = this.props;
-    const nextPropsAppType = get(nextProps, 'appType', null);
-    if (nextPropsAppType && appType !== nextPropsAppType) {
-      this.currentAppType = nextPropsAppType;
-    }
+    updateAppTypeHandler(appType);
   }
 
   /**
@@ -37,7 +25,8 @@ export class ThemeWrapper extends React.PureComponent {
    * @desc The getTheme method check current theme type and return theme accordingly
    */
   getTheme = () => {
-    if (this.currentAppType === APP_TYPE.GYMBOREE) {
+    const { appType } = this.props;
+    if (appType === APP_TYPE.GYMBOREE) {
       return themeGymboree;
     }
     return theme;
