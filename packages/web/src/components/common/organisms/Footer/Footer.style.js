@@ -5,7 +5,7 @@ export default css`
     align-items: center;
   }
   .footer_top_candidate_a .candidate_a_inline_container_button {
-    text-align: right;
+    text-align: center;
   }
   .footer_top_candidate_a .candidate_a_inline_container_button button {
     font-size: 13px;
@@ -68,6 +68,12 @@ export default css`
     color: ${props => props.theme.colors.WHITE};
     font-family: ${props => props.theme.secondaryFontFamily};
   }
+
+  .footer_top_candidate_a_social_links {
+    flex-direction: row;
+    align-items: center;
+  }
+
   @media ${props => props.theme.mediaQuery.medium} {
     .default-offset {
       padding: 0 ${props => props.theme.gridDimensions.gridOffsetObj.medium}px;

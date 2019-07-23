@@ -377,7 +377,9 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
             <div
               className="divider hide-in-medium-up"
             />
-            <Styled(SocialMediaLinks) />
+            <Styled(SocialMediaLinks)
+              className="footer_top_candidate_a_social_links"
+            />
           </Styled(Col)>
         </Styled(Row)>
       </Styled(Grid)>
