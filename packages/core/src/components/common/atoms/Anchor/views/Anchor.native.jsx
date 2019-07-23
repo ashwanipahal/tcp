@@ -40,7 +40,7 @@ const Anchor = ({ anchorVariation, text, visible, ...otherProps }: Props) => {
   return (
     <AnchorView
       accessibilityRole="button"
-      onPress={() => (external ? null : parseUrl(url, navigation))}
+      onPress={() => (external ? url : parseUrl(url, navigation))}
     >
       <Text anchorVariation={anchorVariation} {...otherProps}>
         {text}

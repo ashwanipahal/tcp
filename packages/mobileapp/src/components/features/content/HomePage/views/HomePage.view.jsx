@@ -20,6 +20,7 @@ class HomePageView extends React.Component {
           <Anchor
             url="https://www.google.com/p/Rainbow--The-Birthday-Girl--Graphic-Tee"
             navigation={navigation}
+            text="click Me"
           />
           <SlotA {...slotA} />
           <SlotB {...slotB} />

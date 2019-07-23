@@ -8,8 +8,7 @@ import Header from '../components/common/molecules/Header';
 const styles = { margin: 10 };
 const Plp = () => <Text style={styles}>PLP Page</Text>;
 
-const ProductList = Props => {
-  const { navigation: props } = Props;
+const ProductList = ({ navigation: props }) => {
   const { getParam } = props;
   const productName = getParam('product');
   return (
@@ -24,10 +23,12 @@ const ProductList = Props => {
 
 ProductList.propTypes = {
   getParam: PropTypes.func,
+  navigation: PropTypes.shape,
 };
 
 ProductList.defaultProps = {
   getParam: null,
+  navigation: null,
 };
 
 const PlpStack = createStackNavigator(
