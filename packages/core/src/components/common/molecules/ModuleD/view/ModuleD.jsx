@@ -54,17 +54,17 @@ const ModuleD = (props: Props) => {
     link: { target, title, url },
   } = headerText;
   let colSize;
-  let imgData;
+  let imgDataConfig;
 
   if (smallCompImage && smallCompImage.length === 2) {
     colSize = colSize2Elements;
-    imgData = config.IMG_DATA_2.imgConfig;
+    imgDataConfig = config.IMG_DATA_2.imgConfig;
   } else if (smallCompImage && smallCompImage.length === 4) {
     colSize = colSize4Elements;
-    imgData = config.IMG_DATA_4.imgConfig;
+    imgDataConfig = config.IMG_DATA_4.imgConfig;
   } else {
     colSize = colSize6Elements;
-    imgData = config.IMG_DATA_6.imgConfig;
+    imgDataConfig = config.IMG_DATA_6.imgConfig;
   }
 
   return (
@@ -103,7 +103,7 @@ const ModuleD = (props: Props) => {
                       <DamImage
                         className="moduleD_image"
                         data-locator={`${getLocator('moduleD_image')}_${index + 1}`}
-                        imgConfigs={imgData}
+                        imgConfigs={imgDataConfig}
                         imgData={item.image}
                       />
                     </Anchor>
