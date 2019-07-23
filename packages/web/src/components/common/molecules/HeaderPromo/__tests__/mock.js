@@ -10,7 +10,7 @@ export default {
           class: 'orange-schedule',
           __typename: 'LinkClass',
         },
-        textLines: [
+        textItems: [
           {
             text: 'NEED IT NOW?',
             style: 'black-bold',
@@ -35,7 +35,7 @@ export default {
           class: 'green-dollar',
           __typename: 'LinkClass',
         },
-        textLines: [
+        textItems: [
           {
             text: 'EARN PLACE CASH!',
             style: 'green-bold',
@@ -58,7 +58,7 @@ export default {
           class: 'blue-email',
           __typename: 'LinkClass',
         },
-        textLines: [
+        textItems: [
           {
             text: 'SIGN UP AND GET 10$ OFF!',
             style: 'black-bold',

@@ -1,6 +1,6 @@
-import { css } from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
-const AnchorStyles = css`
+export const AnchorStyles = css`
   ${props =>
     props.anchorVariation === 'primary'
       ? `
@@ -86,4 +86,18 @@ const AnchorStyles = css`
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
-export default AnchorStyles;
+export const AnchorView = styled.TouchableOpacity`
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
+
+export const AnchorIcon = styled.Image`
+  width: 3px;
+  height: 7px;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+`;
+
+export default { AnchorStyles, AnchorView, AnchorIcon };

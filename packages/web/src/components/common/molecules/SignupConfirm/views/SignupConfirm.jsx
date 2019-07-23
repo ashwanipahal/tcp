@@ -13,6 +13,7 @@ const SignupConfirm = ({ className, formViewConfig, susbscriptionType }) => (
       fontWeight="black"
       textAlign="center"
       className="thank-you__label"
+      dataLocator={`${susbscriptionType}_thank_you_message`}
     >
       {formViewConfig.thankYouTextLabel}
     </BodyCopy>

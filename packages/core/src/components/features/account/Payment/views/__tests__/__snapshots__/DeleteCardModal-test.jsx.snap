@@ -11,6 +11,35 @@ exports[`Delete card Modal should render correctly 1`] = `
   overlayClassName="TCPModal__Overlay"
 >
   <div>
+    <CreditCardModalInfo
+      TotalExp="undefined/undefined"
+      address={null}
+      data={
+        Object {
+          "buttons": Object {
+            "cancel": "No, Dont Cancel",
+            "confirm": "Yes Delete",
+          },
+          "cardText": Object {
+            "cardEnd": "Card ending in ",
+            "expire": " Expire on ",
+          },
+          "description": Object {
+            "addressLine": Array [
+              "addressline 1",
+              "addressline 2",
+            ],
+            "firstName": "test",
+            "lastName": "test",
+          },
+          "heading": "DELETE ADDRESS",
+          "title": "Are you sure you want to delete this address?",
+        }
+      }
+      getAccNumbr="ined"
+      isCreditCard={true}
+      labels={Object {}}
+    />
     <div
       className="deleteCardModal__btnWrapper"
     >

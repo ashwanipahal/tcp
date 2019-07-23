@@ -5,6 +5,10 @@ module.exports = {
   roots: ['<rootDir>/packages/core', '<rootDir>/packages/mobileapp'],
   moduleDirectories: ['node_modules', './packages/mobileapp/node_modules'],
   moduleFileExtensions: ['js', 'jsx'],
+  moduleNameMapper: {
+    'styled-components':
+      '<rootDir>/packages/mobileapp/node_modules/styled-components/native/dist/styled-components.native.cjs.js',
+  },
   testMatch: [
     '**/core/**/__tests__/*-test.native.+(js|jsx)',
     '**/mobileapp/**/__tests__/*-test.+(js|jsx)',

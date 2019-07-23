@@ -41,7 +41,8 @@ const returnPaymentReducer = (state = initialState, action) => {
       return state.set('showNotification', 'success');
     case PAYMENT_CONSTANTS.SET_DEFAULT_PAYMENT_ERROR:
       return state.set('showNotification', 'error');
-
+    case PAYMENT_CONSTANTS.SET_PAYMENT_NOTIFICATION:
+      return state.set('showNotification', action.payload.status);
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {
@@ -70,6 +71,10 @@ const PaymentReducer = (state = initialState, action) => {
       return state
         .set('showNotificationCaptcha', 'error')
         .deleteIn(['giftcardBalance', action.payload.card.accountNo]);
+    case PAYMENT_CONSTANTS.ADD_GIFT_CARD_SUCCESS:
+      return state.set('showNotification', 'success');
+    case PAYMENT_CONSTANTS.CLEAR_CARD_LIST_TTL:
+      return state.set(DEFAULT_REDUCER_KEY, null);
     default:
       return returnPaymentReducer(state, action);
   }

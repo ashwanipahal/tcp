@@ -15,6 +15,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
 <Fragment>
   <errorBoundaryComponent
     className=""
+    closeIconDataLocator="thank_you_modal_close_btn"
     colSet={
       Object {
         "large": 8,
@@ -92,6 +93,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
               <Styled(Button)
                 buttonVariation="fixed-width"
                 className="shop-button"
+                dataLocator="shop_now_btn"
                 fill="BLUE"
                 fullWidth={true}
                 onClick={[Function]}
@@ -116,6 +118,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
 <Fragment>
   <errorBoundaryComponent
     className=""
+    closeIconDataLocator="email_signup_modal_close_btn"
     colSet={
       Object {
         "large": 8,
@@ -324,7 +327,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                     "withComponent": [Function],
                   }
                 }
-                dataLocator="signup_textbox"
+                dataLocator="email_address_field"
                 id="signup"
                 maxLength={50}
                 name="signup"
@@ -361,6 +364,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                 <Styled(Button)
                   buttonVariation="fixed-width"
                   className="join-button"
+                  dataLocator="join_now_btn"
                   disabled={false}
                   fill="BLUE"
                   fullWidth={true}

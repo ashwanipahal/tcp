@@ -24,7 +24,6 @@ type Props = {
   creditCardList: Array<object>,
   giftCardList: Array<object>,
   cardList: Array<object>,
-  setSelectedGiftCard: any,
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
   setDefaultPaymentMethod: Function,
@@ -55,14 +54,20 @@ export class PaymentView extends React.Component<Props> {
       setDeleteModalMountState,
       showUpdatedNotificationOnModal,
     } = this.props;
+
+    const isCreditCard = selectedCard.ccType !== 'GiftCard' && selectedCard.ccType !== 'VENMO';
+    const isVenmo = selectedCard.ccType === 'VENMO';
+    let cardHeading = '';
+    if (isCreditCard) {
+      cardHeading = labels.ACC_LBL_MODAL_DELETE_CARD;
+    } else {
+      cardHeading = isVenmo ? labels.ACC_LBL_MODAL_VENMO_DELETE : labels.ACC_LBL_MODAL_GC_HEADING;
+    }
     return (
       <DeleteCardModal
         openState={deleteModalMountedState}
         data={{
-          heading:
-            selectedCard.ccType === 'VENMO'
-              ? labels.ACC_LBL_MODAL_VENMO_DELETE
-              : labels.ACC_LBL_MODAL_GC_HEADING,
+          heading: cardHeading,
           subHeading:
             selectedCard.ccType === 'VENMO' ? labels.ACC_LBL_MODAL_VENMO_DELETE_HEADING : '',
           description: selectedCard,
@@ -89,7 +94,6 @@ export class PaymentView extends React.Component<Props> {
       className,
       showNotification,
       setDeleteModalMountState,
-      setSelectedGiftCard,
       creditCardList,
       giftCardList,
       cardList,
@@ -138,7 +142,7 @@ export class PaymentView extends React.Component<Props> {
               fontWeight="extrabold"
               component="h4"
               className="payment__heading"
-              dataLocator="payment-payment&gcheader"
+              data-locator="payment-payment&gcheader"
             >
               {labels.ACC_LBL_PAYMENT_HEADING}
             </BodyCopy>
@@ -166,8 +170,8 @@ export class PaymentView extends React.Component<Props> {
             onDeleteCard={onDeleteCard}
             showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
             showNotification={showNotification}
-            setSelectedGiftCard={setSelectedGiftCard}
             setDefaultPaymentMethod={setDefaultPaymentMethod}
+            setSelectedCard={this.setSelectedCard}
           />
         )}
         {venmoCardList && venmoCardList.size > 0 && (
