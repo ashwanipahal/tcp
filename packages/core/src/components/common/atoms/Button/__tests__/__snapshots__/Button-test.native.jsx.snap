@@ -7,7 +7,9 @@ exports[`CustomButton should render correctly 1`] = `
 >
   <Text
     buttonVariation="fixed-width"
+    data={Array []}
     fullWidth=""
+    selectedValue="foo"
   />
 </TouchableOpacity>
 `;
