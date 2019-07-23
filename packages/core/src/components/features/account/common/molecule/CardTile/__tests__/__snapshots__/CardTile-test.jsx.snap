@@ -1753,7 +1753,7 @@ exports[`CardTile should show remining balance 1`] = `
           tag="span"
           textAlign="left"
         >
-          0
+          $0
         </Styled(BodyCopy)>
       </div>
     </form>

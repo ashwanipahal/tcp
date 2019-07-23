@@ -7,6 +7,7 @@ import {
   deleteCard,
   checkBalance,
   setDefaultPayment,
+  setPaymentNotification,
 } from './Payment.actions';
 import {
   getCreditDebitCards,
@@ -39,12 +40,18 @@ type Props = {
   checkbalanceValueInfo: any,
   setDefaultPaymentMethod: Function,
   showNotificationCaptcha: boolean,
+  clearPaymentNotification: () => void,
 };
 
 export class PaymentContainer extends React.Component<Props> {
   componentDidMount() {
     const { getCardListAction } = this.props;
     getCardListAction();
+  }
+
+  componentWillUnmount() {
+    const { clearPaymentNotification } = this.props;
+    clearPaymentNotification();
   }
 
   addNewCreditCard = () => {
@@ -105,6 +112,13 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     },
     setDefaultPaymentMethod: payload => {
       dispatch(setDefaultPayment(payload));
+    },
+    clearPaymentNotification: () => {
+      dispatch(
+        setPaymentNotification({
+          status: '',
+        })
+      );
     },
   };
 };

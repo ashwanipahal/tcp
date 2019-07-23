@@ -168,7 +168,7 @@ class CardTile extends React.Component<Props> {
             className=""
             lineHeights="lh115"
           >
-            {balance}
+            {`$${balance}`}
           </BodyCopy>
         )}
         {!isGiftCardBalanceRequested && (

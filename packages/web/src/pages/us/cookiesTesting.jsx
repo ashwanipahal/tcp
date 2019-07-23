@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { initActions } from '../components/features/content/HomePage/container/HomePage.actions';
+import { initActions } from '../../components/features/content/HomePage/container/HomePage.actions';
 
 const DOMAIN = '.childrensplace.com';
 const TEMP_CART_ITEM_COUNT = 'tempcartItemsCount';
@@ -119,7 +119,7 @@ class CookiesTestView extends React.Component {
     }).then(res => {
       console.log(res);
       if (res.status === 200) {
-        window.location.hostname = this.state.redirectDomain;
+        console.log(`on XHR Success Nagivation`);
       }
     });
   }
