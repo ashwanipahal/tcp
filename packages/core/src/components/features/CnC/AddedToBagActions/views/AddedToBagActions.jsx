@@ -6,6 +6,7 @@ import style from '../styles/AddedToBagActions.style';
 import PayPalButton from '../../../../common/atoms/PayPalButton';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
+import { getLocator } from '../../../../../utils';
 
 const AddedToBagActions = props => {
   const { className, onClickCartCheckout } = props;
@@ -13,7 +14,9 @@ const AddedToBagActions = props => {
     <div className={className}>
       <Row>
         <Col colSize={{ medium: 8, large: 12, small: 6 }}>
-          <Button className="view-bag">View Bag</Button>
+          <Button data-locator={getLocator('addedtobag_btnviewbag')} className="view-bag">
+            View Bag
+          </Button>
         </Col>
       </Row>
       <Row className="checkout-button">
@@ -21,7 +24,11 @@ const AddedToBagActions = props => {
           <PayPalButton className="payPal-button" />
         </Col>
         <Col colSize={{ medium: 4, large: 6, small: 3 }}>
-          <Button onClick={onClickCartCheckout} className="checkout">
+          <Button
+            data-locator={getLocator('addedtobag_btncheckout')}
+            onClick={onClickCartCheckout}
+            className="checkout"
+          >
             Checkout
           </Button>
         </Col>

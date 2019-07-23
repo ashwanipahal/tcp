@@ -16,6 +16,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
     >
       <Styled(Button)
         className="view-bag"
+        data-locator="addedtobag-btnviewbag"
       >
         View Bag
       </Styled(Button)>
@@ -48,6 +49,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
     >
       <Styled(Button)
         className="checkout"
+        data-locator="addedtobag-btncheckout"
         onClick={[MockFunction]}
       >
         Checkout

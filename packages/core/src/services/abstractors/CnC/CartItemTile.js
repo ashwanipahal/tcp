@@ -451,7 +451,6 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
   usersOrder.uiFlags = {
     // isPaypalEnabled: parseBoolean(orderDetailsResponse.payPalAllowed || orderDetailsResponse.isPayPalAllowed)
   };
-  debugger;
   usersOrder.cartTotalAfterPLCCDiscount =
     orderDetailsResponse && orderDetailsResponse.cartTotalAfterPLCCDiscount;
   return usersOrder;

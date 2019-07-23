@@ -24,4 +24,8 @@ export default {
   // Promotional Banner
   promo_item: 'global_promobannerimg',
   refer_friend: 'global_referfriend',
+  // Added To Bag
+  addedtobag_btnviewbag: 'addedtobag-btnviewbag',
+  addedtobag_btnpaypal: 'addedtobag-btnpaypal',
+  addedtobag_btncheckout: 'addedtobag-btncheckout',
 };

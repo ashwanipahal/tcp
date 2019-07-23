@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { requireNamedOnlineModule } from '../../GoogleAutoSuggest/resourceLoader';
+import { getLocator } from '../../../../../utils';
 
 class PayPalButton extends React.Component {
   componentDidMount() {
@@ -53,7 +54,13 @@ class PayPalButton extends React.Component {
 
   render() {
     const { className } = this.props;
-    return <div className={className} id="paypal-button-container" />;
+    return (
+      <div
+        data-locator={getLocator('addedtobag_btnpaypal')}
+        className={className}
+        id="paypal-button-container"
+      />
+    );
   }
 }
 
