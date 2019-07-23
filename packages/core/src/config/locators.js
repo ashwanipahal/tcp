@@ -28,4 +28,12 @@ export default {
   addedtobag_btnviewbag: 'addedtobag-btnviewbag',
   addedtobag_btnpaypal: 'addedtobag-btnpaypal',
   addedtobag_btncheckout: 'addedtobag-btncheckout',
+  // MobileHeader
+  global_headerpanel: 'global_headerpanel',
+  global_findastoretext: 'global_findastoretext',
+  global_headerpanelcollapsedicon: 'global_headerpanelcollapsedicon',
+  global_headerpanelexpandedicon: 'global_headerpanelexpandedicon',
+  global_headerpanelbagicon: 'global_headerpanelbagicon',
+  global_headerpanelbagitemtext: 'obal_headerpanelbagicon',
+  global_headerpanelwelcometext: 'global_headerpanelwelcometext',
 };
