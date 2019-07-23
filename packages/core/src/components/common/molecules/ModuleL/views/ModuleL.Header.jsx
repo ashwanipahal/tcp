@@ -8,7 +8,7 @@ type Props = {
 };
 
 /**
- * @function ModuleLHeader This function renders header of Module H
+ * @function ModuleLHeader This function renders header of Module L
  * @param {headerText} headerText Header text lines and link data
  */
 const ModuleLHeader = ({ headerText: { textItems, link } }: Props) => (

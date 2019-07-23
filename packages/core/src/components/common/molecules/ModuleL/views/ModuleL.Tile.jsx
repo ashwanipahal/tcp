@@ -9,10 +9,10 @@ type Props = {
   index: number,
 };
 
-// const getUrlWithCrop = url => {
-//   return url.replace('upload/', `upload/c_fill,g_center,h_260,w_210/`);
-// };
-
+/**
+ * @function ModuleLTile This function renders tiles for carousel
+ * @param {tileData} tileData Accepts image, link and styled object and index
+ */
 const ModuleLTile = ({ tileData: { image, link, styled }, index }: Props) => {
   return (
     <BodyCopy component="div" data-locator={`${getLocator('module_L_content_tiles')}_${index + 1}`}>
