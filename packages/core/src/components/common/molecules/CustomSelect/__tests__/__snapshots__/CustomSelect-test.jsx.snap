@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomSelect component should renders correctly 1`] = `
+<StyledComponent
+  activeClassValue="activeClassValue"
+  activeTitle="Please select list item"
+  className="sample-class"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-htpNat",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .customSelectTitle {
+    border-bottom: 1px solid ",
+          [Function],
+          ";
+    margin-top: ",
+          [Function],
+          ";
+    background: url(",
+          "/static/images/down_arrow_icon.png",
+          ") no-repeat right center;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(CustomSelect)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-htpNat",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  options={
+    Object {
+      "content": <div>
+        <p>
+          Test 1
+        </p>
+      </div>,
+      "title": "Test 1",
+      "value": "1",
+    }
+  }
+  selectListTitle="Select from address book"
+/>
+`;
+
+exports[`CustomSelect component should renders correctly when optional fields are not present 1`] = `
+<StyledComponent
+  className="sample-class"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-htpNat",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .customSelectTitle {
+    border-bottom: 1px solid ",
+          [Function],
+          ";
+    margin-top: ",
+          [Function],
+          ";
+    background: url(",
+          "/static/images/down_arrow_icon.png",
+          ") no-repeat right center;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(CustomSelect)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-htpNat",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  options={
+    Object {
+      "content": <div>
+        <p>
+          Test 1
+        </p>
+      </div>,
+      "title": "Test 1",
+      "value": "1",
+    }
+  }
+/>
+`;
