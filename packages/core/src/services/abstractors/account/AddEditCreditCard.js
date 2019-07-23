@@ -3,6 +3,13 @@ import { executeStatefulAPICall, getAPIConfig } from '../../handler';
 import endpoints from '../../endpoints';
 import constants from '../../../components/features/account/AddEditCreditCard/container/AddEditCreditCard.constants';
 
+const errorHandler = err => {
+  if (err.response && err.response.body && err.response.body.errors) {
+    throw new Error(err.response.body.errors[0].errorMessage);
+  }
+  throw new Error('Your action could not be completed due to system error');
+};
+
 export const addCreditCard = args => {
   const apiConfig = getAPIConfig();
   const payload = {
@@ -39,13 +46,7 @@ export const addCreditCard = args => {
     .then(res => {
       return res.body;
     })
-    .catch(err => {
-      console.log('error in abstractor is ', err);
-      if (err.response && err.response.body && err.response.body.errors) {
-        throw new Error(err.response.body.errors[0].errorMessage);
-      }
-      throw new Error('Your action could not be completed due to system error');
-    });
+    .catch(errorHandler);
 };
 
 export const updateCreditCard = args => {
@@ -84,7 +85,5 @@ export const updateCreditCard = args => {
     .then(res => {
       return res.body;
     })
-    .catch(err => {
-      throw new Error(err.response.body.errors[0].errorMessage);
-    });
+    .catch(errorHandler);
 };

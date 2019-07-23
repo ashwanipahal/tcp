@@ -36,7 +36,7 @@ export const CreditCardFields = ({
             name="cardNumber"
             id="cardNumber"
             component={CreditCardNumber}
-            dataLocator=""
+            dataLocator="payment-cardtextfield"
             cardTypeImgUrl={cardTypeImgUrl}
             isPLCCEnabled={isPLCCEnabled}
             cardType={cardType}
@@ -61,7 +61,7 @@ export const CreditCardFields = ({
             name="expMonth"
             id="expMonth"
             component={Select}
-            dataLocator=""
+            dataLocator="payment-expmonthdd"
             options={expMonthOptionsMap}
           />
         </Col>
@@ -77,7 +77,7 @@ export const CreditCardFields = ({
             name="expYear"
             id="expYear"
             component={Select}
-            dataLocator=""
+            dataLocator="payment-expyeardd"
             options={expYearOptionsMap}
           />
         </Col>
