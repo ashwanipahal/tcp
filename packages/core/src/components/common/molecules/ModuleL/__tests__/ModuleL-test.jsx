@@ -22,11 +22,15 @@ describe('ModuleL component', () => {
     expect(ModuleLComp.find(Header)).toHaveLength(1);
   });
 
+  it('should render promo banner', () => {
+    expect(ModuleLComp.find(PromoBanner)).toHaveLength(1);
+  });
+
   it('should render carousel', () => {
     expect(ModuleLComp.find(Carousel)).toHaveLength(1);
   });
 
-  it('should render promo banner', () => {
-    expect(ModuleLComp.find(PromoBanner)).toHaveLength(1);
+  it('should render ModuleL for mobile', () => {
+    expect(ModuleLComp.find('.moduleL__mobile-web-container')).toHaveLength(1);
   });
 });
