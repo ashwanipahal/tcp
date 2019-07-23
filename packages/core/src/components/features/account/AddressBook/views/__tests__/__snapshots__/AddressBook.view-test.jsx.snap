@@ -39,7 +39,6 @@ exports[`AddressBook component should renders correctly when addresses are not p
         }
       }
     >
-      <Styled(CustomSelect) />
       <Styled(Button)
         buttonVariation="variable-width"
         data-locator="addressbook-addnewaddress"
@@ -110,7 +109,6 @@ exports[`AddressBook component should renders correctly when addresses are prese
         }
       }
     >
-      <Styled(CustomSelect) />
       <Styled(Button)
         buttonVariation="variable-width"
         data-locator="addressbook-addnewaddress"
