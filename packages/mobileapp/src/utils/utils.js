@@ -42,6 +42,8 @@ export const getIcon = icon => {
       return icons.accountInactive;
     case 'wallet-inactive':
       return icons.walletInactive;
+    case 'close-icon':
+      return icons.closeIcon;
     default:
       return getIconByBrand(icon, brandName);
   }
