@@ -1,15 +1,12 @@
 import React from 'react';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import Carousel from 'react-native-snap-carousel';
-import { Wrapper, WrapperView, PromoImage, CenterView } from '../HeaderPromo.style.native';
+import { Container, ChildContainer, Image, MessageContainer } from '../HeaderPromo.style.native';
 import colors from '../../../../../../styles/themes/TCP/colors';
 import { getScreenWidth } from '../../../../../utils/utils.native';
 
 const bannerTextFirst = 'EARN PLACE CASH!';
 const bannerTextSecond = 'Buy Online, pickup in store';
-
-const rightIcon = require('../../../../../assets/carrot-large-right.png');
-const leftIcon = require('../../../../../assets/carrot-large-left.png');
 
 /**
  * Module height and width.
@@ -20,7 +17,13 @@ const MODULE_HEIGHT = 42;
 const MODULE_WIDTH = getScreenWidth();
 const autoplay = true;
 
-/* TODO - Remove the style1, style2, style3 when the styles start coming up from CMS */
+/**
+ * Next & Prev icons listing.
+ */
+const prevIcon = require('../../../../../assets/carrot-large-right.png');
+const nextIcon = require('../../../../../assets/carrot-large-left.png');
+
+/* TODO - To use the style1, style2, style3 when the styles start coming up from CMS */
 
 const manageTextStyles = style => {
   if (style === 'style1') {
@@ -87,14 +90,15 @@ const dataObject = [
 
 /**
  * @desc Returns updated Banner text details with styles.
+ * Content render on the basis of style type .
  */
 const renderView = () => {
   return (
-    <Wrapper>
-      <CenterView>
+    <Container>
+      <MessageContainer>
         <BodyCopy
           fontFamily="secondary"
-          fontSize="fs14"
+          fontSize="fs12"
           textAlign="center"
           fontWeight="black"
           text={bannerTextFirst}
@@ -102,18 +106,18 @@ const renderView = () => {
         />
         <BodyCopy
           fontFamily="secondary"
-          fontSize="fs14"
+          fontSize="fs12"
           textAlign="center"
           color="black"
           fontWeight="regular"
           text={bannerTextSecond}
         />
-      </CenterView>
-    </Wrapper>
+      </MessageContainer>
+    </Container>
   );
 };
 
-class HeaderPromo extends React.PureComponent {
+class HeaderPromo extends React.PureComponent<props> {
   constructor(props) {
     super(props);
     this.carousel = null;
@@ -131,10 +135,10 @@ class HeaderPromo extends React.PureComponent {
 
   render() {
     return (
-      <Wrapper>
-        <WrapperView onPress={() => this.manageSlide('next')}>
-          <PromoImage source={leftIcon} />
-        </WrapperView>
+      <Container>
+        <ChildContainer onPress={() => this.manageSlide('next')}>
+          <Image source={nextIcon} />
+        </ChildContainer>
         <Carousel
           data={dataObject}
           renderItem={renderView}
@@ -147,10 +151,10 @@ class HeaderPromo extends React.PureComponent {
             this.carousel = c;
           }}
         />
-        <WrapperView onPress={() => this.manageSlide('prev')}>
-          <PromoImage source={rightIcon} />
-        </WrapperView>
-      </Wrapper>
+        <ChildContainer onPress={() => this.manageSlide('prev')}>
+          <Image source={prevIcon} />
+        </ChildContainer>
+      </Container>
     );
   }
 }
