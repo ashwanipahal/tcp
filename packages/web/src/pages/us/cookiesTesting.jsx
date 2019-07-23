@@ -119,7 +119,7 @@ class CookiesTestView extends React.Component {
     }).then(res => {
       console.log(res);
       if (res.status === 200) {
-        window.location.hostname = this.state.redirectDomain;
+        console.log(`on XHR Success Nagivation`);
       }
     });
   }
