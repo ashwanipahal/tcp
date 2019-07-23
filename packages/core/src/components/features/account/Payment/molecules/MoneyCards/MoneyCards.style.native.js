@@ -35,6 +35,7 @@ const DescriptionEmptyCCStyle = styled.Text`
 
 const ButtonWrapperStyle = styled.View`
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
 `;
 
 export {
