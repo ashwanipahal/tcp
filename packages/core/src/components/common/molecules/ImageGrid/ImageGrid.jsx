@@ -88,10 +88,7 @@ const ImageGrid = (props: Props) => {
                   className="moduleK_dam-image"
                   data-locator={`${dataLocator}${index}`}
                   imgConfigs={config.IMG_DATA.imgConfig}
-                  imgData={{
-                    alt: mediaProps.alt,
-                    url: mediaProps.url,
-                  }}
+                  imgData={mediaProps}
                 /> */
                 }
               </Col>

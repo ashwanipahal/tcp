@@ -66,10 +66,7 @@ class ModuleH extends React.PureComponent<Props, State> {
                   data-locator={`${getLocator('moduleH_composite_image')}_${index + 1}`}
                   key={index.toString()}
                   imgConfigs={IMG_DATA.imgConfig}
-                  imgData={{
-                    alt: item.image.alt,
-                    url: item.image.url,
-                  }}
+                  imgData={item.image}
                 />
               );
             })}

@@ -104,10 +104,7 @@ const ModuleD = (props: Props) => {
                         className="moduleD_image"
                         data-locator={`${getLocator('moduleD_image')}_${index + 1}`}
                         imgConfigs={imgData}
-                        imgData={{
-                          alt: item.image.alt,
-                          url: item.image.url,
-                        }}
+                        imgData={item.image}
                       />
                     </Anchor>
                   </div>
