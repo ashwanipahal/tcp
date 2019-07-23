@@ -78,3 +78,8 @@ export const clearCardListTTL = () => {
     type: PAYMENT_CONSTANTS.CLEAR_CARD_LIST_TTL,
   };
 };
+
+export const setPaymentNotification = payload => ({
+  type: PAYMENT_CONSTANTS.SET_PAYMENT_NOTIFICATION,
+  payload,
+});
