@@ -2,10 +2,11 @@
 
 exports[`Textbox component renders correctly 1`] = `
 <label
-  className="asdfasdf input-fields-wrapper"
+  className="asdfasdf input-fields-wrapper textbox_validation_success"
 >
   <input
     aria-label=""
+    aria-required={false}
     className="TextBox__input"
     data-locator=""
     id="abcd"
@@ -23,6 +24,19 @@ exports[`Textbox component renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    textAlign="left"
+  />
+  <Styled(BodyCopy)
+    aria-atomic="true"
+    className="TextBox__error"
+    color="error"
+    component="div"
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    role="alert"
     textAlign="left"
   />
   <div

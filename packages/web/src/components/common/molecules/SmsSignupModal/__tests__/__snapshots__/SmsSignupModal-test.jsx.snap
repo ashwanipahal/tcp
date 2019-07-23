@@ -425,10 +425,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
 
     ",
                         [Function],
-                        "
-
-    ",
-                        [Function],
                         ";
 
     &:focus + .TextBox__label {
@@ -441,8 +437,17 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                        [Function],
+                        ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -479,15 +484,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
   ",
                         [Function],
                         ";
-
-  .visible-hidden {
-    clip: rect(1px, 1px, 1px, 1px);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-  }
 ",
                         ";
 ",
@@ -703,10 +699,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
 
     ",
                         [Function],
-                        "
-
-    ",
-                        [Function],
                         ";
 
     &:focus + .TextBox__label {
@@ -719,8 +711,17 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                        [Function],
+                        ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -757,15 +758,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
   ",
                         [Function],
                         ";
-
-  .visible-hidden {
-    clip: rect(1px, 1px, 1px, 1px);
-    height: 1px;
-    overflow: hidden;
-    position: absolute;
-    white-space: nowrap;
-    width: 1px;
-  }
 ",
                         ";
 ",

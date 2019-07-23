@@ -5,7 +5,7 @@ export default css`
     align-items: center;
   }
   .footer_top_candidate_a .candidate_a_inline_container_button {
-    text-align: center;
+    text-align: right;
   }
   .footer_top_candidate_a .candidate_a_inline_container_button button {
     font-size: 13px;

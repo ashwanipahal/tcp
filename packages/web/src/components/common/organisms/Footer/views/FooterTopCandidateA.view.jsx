@@ -186,6 +186,7 @@ class FooterTopCandidateA extends React.PureComponent {
                   className="candidate_a_inline_container_button"
                 >
                   <Button
+                    id="extole_zone_global_footer"
                     buttonVariation="variable-width"
                     type="refer_a"
                     data-locator="refer_a_btn"
@@ -319,12 +320,5 @@ FooterTopCandidateA.defaultProps = {
 };
 
 export default withStyles(FooterTopCandidateA, style);
-
-/*  reduxForm({
-    form: a'FooterTopCandidateAEmailSignUpForm', // a unique identifier for this form
-    initialValues: {
-      signup: '',
-    },
-  })(FooterTopCandidateA) */
 
 export { FooterTopCandidateA as FooterTopCandidateAVanilla };

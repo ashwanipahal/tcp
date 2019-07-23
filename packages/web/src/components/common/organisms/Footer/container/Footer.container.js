@@ -6,7 +6,6 @@ import {
 import {
   toggleEmailSignupModal,
   submitEmailSignup,
-  // clearEmailSignupForm,
 } from '@tcp/web/src/components/common/molecules/EmailSignupModal/container/EmailSignupModal.actions';
 import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/EmailSmsSignup';
 

@@ -81,9 +81,8 @@ const getMakeDefaultBadge = ({ card, labels, setDefaultPaymentMethod }: MakeDefa
       anchorVariation="primary"
       data-locator="payment-makedefault"
       onPress={e => handleDefaultLinkClick(e, card, setDefaultPaymentMethod)}
-    >
-      {labels.ACC_LBL_MAKE_DEFAULT}
-    </Anchor>
+      text={labels.ACC_LBL_MAKE_DEFAULT}
+    />
   );
 };
 
@@ -193,9 +192,8 @@ const CardTile = ({ card, labels, setDefaultPaymentMethod }: Props) => {
               to="/#"
               anchorVariation="primary"
               data-locator={`payment-${dataLocatorPrefix}editlink`}
-            >
-              {labels.ACC_LBL_EDIT}
-            </Anchor>
+              text={labels.ACC_LBL_EDIT}
+            />
           )}
         </CardCtaLinkLeftMargin>
         <Anchor
@@ -204,9 +202,8 @@ const CardTile = ({ card, labels, setDefaultPaymentMethod }: Props) => {
           to="/#"
           anchorVariation="primary"
           data-locator={`payment-${dataLocatorPrefix}deletelink`}
-        >
-          {labels.ACC_LBL_DELETE}
-        </Anchor>
+          text={labels.ACC_LBL_DELETE}
+        />
       </CardCtaLinks>
     </CardTileWrapper>
   );

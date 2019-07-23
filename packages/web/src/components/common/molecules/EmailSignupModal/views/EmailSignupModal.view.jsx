@@ -171,9 +171,6 @@ class SignupWrapper extends React.PureComponent {
             </form>
           )}
         </Modal>
-        {/*     <Button customStyle="shadow-button" title={buttonConfig.title} onClick={this.onButtonClick}>
-          <RichText richTextHtml={buttonConfig.text} />
-        </Button> */}
       </Fragment>
     );
   }
