@@ -15,4 +15,24 @@ export const Touchable = styled.TouchableOpacity`
   z-index: ${props => props.theme.zindex.zOverlay};
 `;
 
-export default { Touchable };
+export const TouchableView = styled.TouchableOpacity`
+  align-items: center;
+`;
+
+export const Icon = styled.Image`
+  width: 6px;
+  height: 10px;
+  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
+export const Container = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 42px;
+  background: ${props => props.theme.colors.PRIMARY.COLOR3};
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
+export default { Touchable, TouchableView, Icon, Container };

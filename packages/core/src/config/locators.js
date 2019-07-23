@@ -32,4 +32,9 @@ export default {
   global_headerpanelbagicon: 'global_headerpanelbagicon',
   global_headerpanelbagitemtext: 'obal_headerpanelbagicon',
   global_headerpanelwelcometext: 'global_headerpanelwelcometext',
+  // MobileHeader
+  global_promobanner_title_0: 'global_promobanner_title_0',
+  global_promobanner_title_1: 'global_promobanner_title_1',
+  global_promobanner_left_arrowRight: 'global_promobanner_left_arrowRight',
+  global_promobanner_right_arrow: 'global_promobanner_right_arrow',
 };

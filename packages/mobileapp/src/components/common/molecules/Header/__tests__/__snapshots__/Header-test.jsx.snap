@@ -66,5 +66,6 @@ exports[`Header Component Header should render correctly 1`] = `
       />
     </Styled(TouchableOpacity)>
   </Styled(View)>
+  <HeaderPromo />
 </Styled(SafeAreaView)>
 `;

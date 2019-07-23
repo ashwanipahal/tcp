@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import { Image } from '../../../atoms';
 import config from '../config';
-import { Touchable } from '../Carousel.native.style';
+import { Touchable, TouchableView, Icon, Container } from '../Carousel.native.style';
 
 /**
  * Import play pause image icons.
@@ -11,6 +11,12 @@ import { Touchable } from '../Carousel.native.style';
  */
 const playIcon = require('../../../../../assets/play.png');
 const pauseIcon = require('../../../../../assets/pause.png');
+
+// /**
+//  * Next & Prev icons listing.
+//  */
+const prevIcon = require('../../../../../assets/carrot-large-right.png');
+const nextIcon = require('../../../../../assets/carrot-large-left.png');
 
 // @flow
 type Props = {
@@ -21,6 +27,7 @@ type Props = {
   width: Number,
   height: Number,
   slideStyle: Object,
+  variation: String,
 };
 
 type State = {
@@ -59,6 +66,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
    */
   getPlayButton() {
     const { autoplay } = this.state;
+
     return autoplay ? (
       <Touchable accessibilityRole="button" onPress={this.pause}>
         <Image source={pauseIcon} height={playIconHeight} width={playIconWidth} />
@@ -69,6 +77,17 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       </Touchable>
     );
   }
+
+  /**
+   * To manage the direction of the carousel
+   */
+
+  manageSlide = direction => {
+    if (direction === 'next') {
+      return this.carousel.snapToPrev();
+    }
+    return this.carousel.snapToNext();
+  };
 
   /**
    * @function play function enable autoplay for carousel
@@ -106,7 +125,33 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       onSnapToItem,
       renderItem,
       slideStyle,
+      variation,
     } = this.props;
+
+    if (variation === 'swipe-arrow') {
+      return (
+        <Container>
+          <TouchableView onPress={() => this.manageSlide('next')}>
+            <Icon source={nextIcon} />
+          </TouchableView>
+          <Carousel
+            data={data}
+            renderItem={renderItem}
+            sliderWidth={width}
+            itemWidth={width}
+            sliderHeight={height}
+            itemHeight={height}
+            autoplay={defaultAutoplay}
+            ref={c => {
+              this.carousel = c;
+            }}
+          />
+          <TouchableView onPress={() => this.manageSlide('prev')}>
+            <Icon source={prevIcon} />
+          </TouchableView>
+        </Container>
+      );
+    }
 
     return (
       <View>

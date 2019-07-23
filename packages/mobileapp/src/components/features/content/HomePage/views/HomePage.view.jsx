@@ -1,7 +1,6 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
-import { HeaderPromo } from '@tcp/core/src/components/common/molecules/';
 import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
 import { SlotA, SlotB } from '../molecules';
 
@@ -12,10 +11,9 @@ class HomePageView extends React.Component {
   }
 
   render() {
-    const { slot_1: slotA, slot_2: slotB, headerPromo } = this.props;
+    const { slot_1: slotA, slot_2: slotB } = this.props;
     return (
       <ScrollView>
-        <HeaderPromo headerPromo={headerPromo} />
         <React.Fragment>
           <SlotA {...slotA} />
           <SlotB {...slotB} />
