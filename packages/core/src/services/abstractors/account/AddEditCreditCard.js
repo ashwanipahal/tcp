@@ -40,7 +40,11 @@ export const addCreditCard = args => {
       return res.body;
     })
     .catch(err => {
-      throw new Error(err.response.body.errors[0].errorMessage);
+      console.log('error in abstractor is ', err);
+      if (err.response && err.response.body && err.response.body.errors) {
+        throw new Error(err.response.body.errors[0].errorMessage);
+      }
+      throw new Error('Your action could not be completed due to system error');
     });
 };
 

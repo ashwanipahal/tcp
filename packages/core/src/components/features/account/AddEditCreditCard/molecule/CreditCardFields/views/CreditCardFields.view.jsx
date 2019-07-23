@@ -19,20 +19,30 @@ export const CreditCardFields = ({
     <Col
       colSize={{
         small: 6,
-        medium: 4,
+        medium: 8,
         large: 6,
       }}
     >
-      <Field
-        placeholder={labels.ACC_LBL_CARD_NUMBER}
-        name="cardNumber"
-        id="cardNumber"
-        component={CreditCardNumber}
-        dataLocator=""
-        cardTypeImgUrl={cardTypeImgUrl}
-        isPLCCEnabled={isPLCCEnabled}
-        cardType={cardType}
-      />
+      <Row fullBleed>
+        <Col
+          colSize={{
+            small: 6,
+            medium: 4,
+            large: 12,
+          }}
+        >
+          <Field
+            placeholder={labels.ACC_LBL_CARD_NUMBER}
+            name="cardNumber"
+            id="cardNumber"
+            component={CreditCardNumber}
+            dataLocator=""
+            cardTypeImgUrl={cardTypeImgUrl}
+            isPLCCEnabled={isPLCCEnabled}
+            cardType={cardType}
+          />
+        </Col>
+      </Row>
     </Col>
     {isExpirationRequired && (
       <React.Fragment>
@@ -41,6 +51,9 @@ export const CreditCardFields = ({
             small: 6,
             medium: 2,
             large: 3,
+          }}
+          ignoreGutter={{
+            small: true,
           }}
         >
           <Field

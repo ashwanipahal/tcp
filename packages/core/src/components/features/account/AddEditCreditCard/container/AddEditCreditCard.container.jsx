@@ -3,11 +3,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Router from 'next/router'; //eslint-disable-line
+import { List } from 'immutable';
 import { getAddressList } from '../../AddressBook/container/AddressBook.actions';
 import {
   getCardType,
   getCreditCardById,
-  getCreditCardExpirationOptionMap,
   getOnFileAddressKey,
   getAddEditCreditCardSuccess,
   getAddEditCreditCardError,
@@ -19,6 +19,7 @@ import AddEditCreditCardComponent from '../views/AddEditCreditCard.view';
 import { getAddressListState } from '../../AddressBook/container/AddressBook.selectors';
 import { addCreditCard, editCreditCard } from './AddEditCreditCard.actions';
 import { setDefaultPaymentSuccess } from '../../Payment/container/Payment.actions';
+import { getCreditCardExpirationOptionMap } from '../../../../../utils/utils';
 
 export class AddEditCreditCard extends React.PureComponent {
   static propTypes = {
@@ -26,20 +27,18 @@ export class AddEditCreditCard extends React.PureComponent {
     cardType: PropTypes.string,
     onFileAddressKey: PropTypes.string,
     addressList: PropTypes.array,
-    getAddressListAction: PropTypes.func.isRequired,
     isPLCCEnabled: PropTypes.bool,
-    expMonthOptionsMap: PropTypes.array.isRequired,
-    expYearOptionsMap: PropTypes.array.isRequired,
+    addEditCreditCardSuccess: PropTypes.object,
+    addEditCreditCardError: PropTypes.string,
+    getAddressListAction: PropTypes.func.isRequired,
     addCreditCardAction: PropTypes.func.isRequired,
     editCreditCardAction: PropTypes.func.isRequired,
     showSuccessNotification: PropTypes.func.isRequired,
-    addEditCreditCardSuccess: PropTypes.object,
-    addEditCreditCardError: PropTypes.string,
   };
 
   static defaultProps = {
     cardType: '',
-    addressList: [],
+    addressList: List(),
     isPLCCEnabled: true,
     onFileAddressKey: '',
     addEditCreditCardSuccess: null,
@@ -52,6 +51,7 @@ export class AddEditCreditCard extends React.PureComponent {
     this.state = {
       initialValues: {},
     };
+    this.creditCardExpirationOptionMap = getCreditCardExpirationOptionMap();
   }
 
   componentDidMount() {
@@ -151,12 +151,10 @@ export class AddEditCreditCard extends React.PureComponent {
       onFileAddressKey,
       addressList,
       isPLCCEnabled,
-      expYearOptionsMap,
-      expMonthOptionsMap,
       addEditCreditCardError,
     } = this.props;
 
-    if (!addressList) {
+    if (!addressList || addressList.size === 0) {
       return null;
     }
 
@@ -173,8 +171,8 @@ export class AddEditCreditCard extends React.PureComponent {
         isExpirationRequired={isExpirationRequired}
         addressList={addressList}
         labels={labels}
-        expMonthOptionsMap={expMonthOptionsMap}
-        expYearOptionsMap={expYearOptionsMap}
+        expMonthOptionsMap={this.creditCardExpirationOptionMap.monthsMap}
+        expYearOptionsMap={this.creditCardExpirationOptionMap.yearsMap}
         initialValues={initialValues}
         addressLabels={addressLabels}
         backToPaymentClick={this.backToPaymentClick}
@@ -191,8 +189,6 @@ const mapStateToProps = (state, ownProps) => {
     addressList: getAddressListState(state, ownProps),
     cardType: getCardType(state, ownProps),
     onFileAddressKey: getOnFileAddressKey(state, ownProps),
-    expMonthOptionsMap: getCreditCardExpirationOptionMap().monthsMap,
-    expYearOptionsMap: getCreditCardExpirationOptionMap().yearsMap,
     isPLCCEnabled: true,
     addEditCreditCardSuccess: getAddEditCreditCardSuccess(state),
     addEditCreditCardError: getAddEditCreditCardError(state),

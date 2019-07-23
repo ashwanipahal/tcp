@@ -1,6 +1,7 @@
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { reduxForm, Field, FormSection } from 'redux-form';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
@@ -13,9 +14,11 @@ import { Heading } from '../../../../../../common/atoms';
 import Select from '../../../../../../common/atoms/Select';
 import AddressFields from '../../../../common/molecule/AddressFields';
 import Address from '../../../../../../common/molecules/Address';
+import styles from '../styles/CreditCardForm.style';
 
-class CreditCardForm extends React.PureComponent {
+export class CreditCardForm extends React.PureComponent {
   static propTypes = {
+    className: PropTypes.string,
     labels: PropTypes.object.isRequired,
     addressLabels: PropTypes.object.isRequired,
     addressList: PropTypes.array.isRequired,
@@ -29,6 +32,7 @@ class CreditCardForm extends React.PureComponent {
   };
 
   static defaultProps = {
+    className: '',
     onFileAddressKey: '',
     isEdit: false,
   };
@@ -37,15 +41,14 @@ class CreditCardForm extends React.PureComponent {
     const { addressList } = this.props;
     const addressOptions = addressList.map(address => ({
       id: address.addressId,
-      displayName: `${address.firstName} ${address.lastName}
-                      ${address.addressLine[0]}
-                      ${address.city}
-                    `,
+      displayName: `${address.firstName} ${address.lastName} ${
+        address.primary === 'true' ? '(Default)' : ''
+      }`,
     }));
 
     return addressOptions.push({
       id: '',
-      displayName: 'Add New Address',
+      displayName: '+ Add New Address',
     });
   };
 
@@ -55,6 +58,7 @@ class CreditCardForm extends React.PureComponent {
 
   render() {
     const {
+      className,
       labels,
       addressLabels,
       addressList,
@@ -68,24 +72,54 @@ class CreditCardForm extends React.PureComponent {
     } = this.props;
     const showAddressForm = pristine ? !initialValues.onFileAddressKey : !onFileAddressKey;
     return (
-      <form name={constants.FORM_NAME} noValidate onSubmit={handleSubmit}>
+      <form name={constants.FORM_NAME} noValidate onSubmit={handleSubmit} className={className}>
         <CreditCardFields {...this.props} />
         {addressList && addressList.size > 0 && (
-          <React.Fragment>
-            <Heading variant="h6">{labels.ACC_LBL_CC_HEADING}</Heading>
-            <Field
-              placeholder={labels.ACC_LBL_CC_ADDRESS_SELECT}
-              name="onFileAddressKey"
-              id="onFileAddressKey"
-              component={Select}
-              dataLocator=""
-              options={this.getAddressOptions()}
-            />
-          </React.Fragment>
+          <Row fullBleed>
+            <Col
+              colSize={{
+                large: 6,
+                small: 6,
+                medium: 4,
+              }}
+            >
+              <Heading
+                component="h3"
+                variant="listMenu"
+                className="addressDropdownHeading"
+                dataLocator="payment-bilingaddresslabel"
+              >
+                {labels.ACC_LBL_CC_HEADING}
+              </Heading>
+              <Field
+                placeholder={labels.ACC_LBL_CC_ADDRESS_SELECT}
+                name="onFileAddressKey"
+                id="onFileAddressKey"
+                component={Select}
+                dataLocator="payment-billingaddressdd"
+                options={this.getAddressOptions()}
+              />
+            </Col>
+            <Col
+              colSize={{
+                large: 6,
+                medium: 4,
+                small: 6,
+              }}
+            >
+              {onFileAddressKey && (
+                <Address
+                  address={this.getSelectedAddress(addressList, onFileAddressKey)}
+                  showCountry={false}
+                  showPhone={false}
+                  className="CreditCardForm__address"
+                  dataLocatorPrefix="payment"
+                />
+              )}
+            </Col>
+          </Row>
         )}
-        {onFileAddressKey && addressList && (
-          <Address address={this.getSelectedAddress(addressList, onFileAddressKey)} />
-        )}
+
         {showAddressForm && (
           <FormSection name="address">
             <AddressFields
@@ -98,9 +132,9 @@ class CreditCardForm extends React.PureComponent {
             />
           </FormSection>
         )}
-        <Row fullBleed className="AddAddressForm__ctaContainer">
+        <Row fullBleed className="CreditCardForm__ctaContainer">
           <Col
-            className="AddAddressForm__cancel"
+            className="CreditCardForm__cancel"
             colSize={{ small: 4, medium: 3, large: 3 }}
             offsetLeft={{ small: 1, medium: 1, large: 6 }}
           >
@@ -108,13 +142,13 @@ class CreditCardForm extends React.PureComponent {
               onClick={backToPaymentClick}
               buttonVariation="fixed-width"
               type="button"
-              data-locator="addnewaddress-cancel"
+              data-locator="payment-cancelbtn"
             >
               {labels.ACC_LBL_CANCEL_CTA}
             </Button>
           </Col>
           <Col
-            className="AddAddressForm__submit"
+            className="CreditCardForm__submit"
             colSize={{ small: 4, medium: 3, large: 3 }}
             offsetLeft={{ small: 1 }}
           >
@@ -123,7 +157,7 @@ class CreditCardForm extends React.PureComponent {
               disabled={!isEdit && pristine}
               type="submit"
               buttonVariation="fixed-width"
-              data-locator="addnewaddress-addaddress"
+              data-locator="payment-addcardbtn"
             >
               {isEdit ? labels.ACC_LBL_UPDATE_CTA : labels.ACC_LBL_ADD_CTA}
             </Button>
@@ -143,4 +177,4 @@ export default reduxForm({
   form: constants.FORM_NAME, // a unique identifier for this form
   enableReinitialize: true,
   ...validateMethod,
-})(CreditCardForm);
+})(withStyles(CreditCardForm, styles));

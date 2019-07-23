@@ -8,6 +8,7 @@ import {
   clearGetAddressListTTL,
   getAddressList,
 } from '../../AddressBook/container/AddressBook.actions';
+import { clearCardListTTL } from '../../Payment/container/Payment.actions';
 
 export function* addCreditCardSaga({ payload }) {
   try {
@@ -41,6 +42,7 @@ export function* addCreditCardSaga({ payload }) {
     };
     const response = yield call(addCreditCard, paymentInfo);
     yield put(clearGetAddressListTTL());
+    yield put(clearCardListTTL());
     yield put(getAddressList());
     return yield put(addCreditCardSuccess({ response }));
   } catch (err) {
@@ -80,6 +82,7 @@ export function* updateCreditCardSaga({ payload }) {
     };
     const response = yield call(updateCreditCard, paymentInfo);
     yield put(clearGetAddressListTTL());
+    yield put(clearCardListTTL());
     yield put(getAddressList());
     return yield put(addCreditCardSuccess({ response }));
   } catch (err) {

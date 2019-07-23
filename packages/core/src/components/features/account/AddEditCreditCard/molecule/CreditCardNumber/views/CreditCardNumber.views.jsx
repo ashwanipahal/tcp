@@ -13,7 +13,7 @@ const getCardTypeImgUrl = cardType => {
 const CreditCardNumber = ({ cardType, className, ...otherProps }) => {
   return (
     <BodyCopy component="div" className={className}>
-      <TextBox {...otherProps} />
+      <TextBox maxLength="16" {...otherProps} />
       {cardType && <Image src={getCardTypeImgUrl(cardType)} />}
     </BodyCopy>
   );

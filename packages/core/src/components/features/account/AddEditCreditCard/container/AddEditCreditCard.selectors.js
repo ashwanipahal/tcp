@@ -4,21 +4,6 @@ import { ADDEDITCREDITCARD_REDUCER_KEY } from '@tcp/core/src/constants/reducer.c
 import constants from './AddEditCreditCard.constants';
 import { getCreditDebitCards } from '../../Payment/container/Payment.selectors';
 
-const MONTH_SHORT_FORMAT = {
-  JAN: 'Jan',
-  FEB: 'Feb',
-  MAR: 'Mar',
-  APR: 'Apr',
-  MAY: 'May',
-  JUN: 'Jun',
-  JUL: 'Jul',
-  AUG: 'Aug',
-  SEP: 'Sep',
-  OCT: 'Oct',
-  NOV: 'Nov',
-  DEC: 'Dec',
-};
-
 export const getAddEditCreditCardResponse = state => {
   return state[ADDEDITCREDITCARD_REDUCER_KEY];
 };
@@ -95,36 +80,3 @@ export const getCardType = createSelector(
     return null;
   }
 );
-
-export const getCreditCardExpirationOptionMap = () => {
-  const expMonthOptionsMap = [
-    { id: '', displayName: 'YYYY' },
-    { id: '1', displayName: MONTH_SHORT_FORMAT.JAN },
-    { id: '2', displayName: MONTH_SHORT_FORMAT.FEB },
-    { id: '3', displayName: MONTH_SHORT_FORMAT.MAR },
-    { id: '4', displayName: MONTH_SHORT_FORMAT.APR },
-    { id: '5', displayName: MONTH_SHORT_FORMAT.MAY },
-    { id: '6', displayName: MONTH_SHORT_FORMAT.JUN },
-    { id: '7', displayName: MONTH_SHORT_FORMAT.JUL },
-    { id: '8', displayName: MONTH_SHORT_FORMAT.AUG },
-    { id: '9', displayName: MONTH_SHORT_FORMAT.SEP },
-    { id: '10', displayName: MONTH_SHORT_FORMAT.OCT },
-    { id: '11', displayName: MONTH_SHORT_FORMAT.NOV },
-    { id: '12', displayName: MONTH_SHORT_FORMAT.DEC },
-  ];
-
-  const expYearOptionsMap = [];
-  const nowYear = new Date().getFullYear();
-  expYearOptionsMap.push({
-    id: '',
-    displayName: 'MMM',
-  });
-  for (let i = nowYear; i < nowYear + 11; i += 1) {
-    expYearOptionsMap.push({ id: i.toString(), displayName: i.toString() });
-  }
-
-  return {
-    monthsMap: expMonthOptionsMap,
-    yearsMap: expYearOptionsMap,
-  };
-};
