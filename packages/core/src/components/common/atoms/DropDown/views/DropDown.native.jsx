@@ -11,18 +11,23 @@ import {
   StyledTouchableOpacity,
 } from '../DropDown.style.native';
 
-const icon = require('../../../../../assets/carrot-small-down.png');
+const downIcon = require('../../../../../assets/carrot-small-down.png');
+const upIcon = require('../../../../../assets/carrot-small-up.png');
 
 // @flow
 type Props = {
   data: Array,
-  selectedValue: String,
-  onValueChange: Function,
+  selectedValue: string,
+  onValueChange: () => void,
+  containerStyle: Object,
 };
 
 class DropDown extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
+    this.width = -1;
+    this.leftMargin = -1;
+    this.topMargin = -1;
 
     const { data, selectedValue } = this.props;
     const selectedObject = data.filter(item => {
@@ -62,15 +67,32 @@ class DropDown extends React.PureComponent<Props> {
     });
   };
 
+  findDimensions = () => {
+    if (this.marker) {
+      this.marker.measure((x, y, width, height, pageX, pageY) => {
+        this.width = width;
+        this.leftMargin = pageX;
+        this.topMargin = height + pageY;
+      });
+    }
+  };
+
   render() {
-    const { data } = this.props;
+    const { data, containerStyle } = this.props;
     const { dropDownIsOpen, selectedLabelState } = this.state;
 
     return (
-      <View>
-        <Row {...this.props} onStartShouldSetResponder={() => this.openDropDown()}>
+      <View style={containerStyle}>
+        <Row
+          {...this.props}
+          onStartShouldSetResponder={() => this.openDropDown()}
+          ref={ref => {
+            this.marker = ref;
+          }}
+          onLayout={() => this.findDimensions()}
+        >
           <HeaderText>{selectedLabelState}</HeaderText>
-          <Image source={icon} />
+          <Image source={dropDownIsOpen ? upIcon : downIcon} />
         </Row>
         <Modal visible={dropDownIsOpen} transparent>
           <StyledTouchableOpacity
@@ -78,8 +100,9 @@ class DropDown extends React.PureComponent<Props> {
             accessibilityComponentType="none"
             onPress={this.closeDropDown}
             activeOpacity={1}
+            style={{ width: this.width, left: this.leftMargin, top: this.topMargin }}
           >
-            <OverLayView>
+            <OverLayView style={containerStyle}>
               {dropDownIsOpen && (
                 <FlatList
                   data={data}

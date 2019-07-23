@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { StylePicker, StylePickerWrapper } from '../styles/MyAccountLayout.style.native';
+import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
 import withStyles from '../../../../common/hoc/withStyles';
 
 // @flow
@@ -33,25 +33,18 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
     const { dropDownItem } = this.state;
     return (
       <View {...this.props}>
-        <StylePicker
+        <DropDown
           selectedValue={dropDownItem}
+          data={navData}
           onValueChange={itemValue => {
             this.setState({ dropDownItem: itemValue });
             handleComponentChange(itemValue);
           }}
-          mode="dropdown"
-        >
-          {navData &&
-            navData.map(nav => {
-              return (
-                <StylePicker.Item key={nav.id} label={nav.displayName} value={nav.component} />
-              );
-            })}
-        </StylePicker>
+        />
       </View>
     );
   }
 }
 
-export default withStyles(MyAccountDropdownNav, StylePickerWrapper);
+export default withStyles(MyAccountDropdownNav);
 export { MyAccountDropdownNav as MyAccountDropdownNavVanilla };
