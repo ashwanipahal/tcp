@@ -163,7 +163,7 @@ exports[`CreditCardModalInfo Component should render correctly 1`] = `
             textAlign="left"
           >
             <Address
-              dataLocatorPrefix="deletecredit"
+              dataLocatorPrefix="deletecreditmodal"
               fontWeight="regular"
               showCountry={false}
               showPhone={false}

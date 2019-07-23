@@ -124,7 +124,7 @@ const CreditCardModalInfo = ({
             >
               <BodyCopy fontSize="fs14">
                 <Address
-                  dataLocatorPrefix="deletecredit"
+                  dataLocatorPrefix="deletecreditmodal"
                   address={address}
                   fontWeight="regular"
                   showCountry={false}
