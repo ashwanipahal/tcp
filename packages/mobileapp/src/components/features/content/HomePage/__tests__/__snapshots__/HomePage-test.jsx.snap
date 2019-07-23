@@ -3,6 +3,15 @@
 exports[`HomePageView should render correctly 1`] = `
 <HomePageView
   getBootstrapData={[MockFunction]}
-  moduleD={Object {}}
+  slot_1={
+    Object {
+      "className": "moduleD",
+    }
+  }
+  slot_2={
+    Object {
+      "className": "moduleH",
+    }
+  }
 />
 `;

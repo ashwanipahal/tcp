@@ -19,7 +19,8 @@ describe('CardList saga', () => {
           contact: [],
         },
       };
-      const putDescriptor = cardListGen.next(response).value;
+      let putDescriptor = cardListGen.next(response).value;
+      putDescriptor = cardListGen.next(response).value;
       expect(putDescriptor).toEqual(put(setCardList(response.body.contact)));
     });
 
@@ -27,7 +28,8 @@ describe('CardList saga', () => {
       const response = {
         error: 'Error in API',
       };
-      const putDescriptor = cardListGen.next(response).value;
+      let putDescriptor = cardListGen.next(response).value;
+      putDescriptor = cardListGen.next(response).value;
       expect(putDescriptor).toEqual(put(getCardListErr(response.error)));
     });
 

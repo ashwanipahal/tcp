@@ -1,12 +1,11 @@
+// @flow
 import React from 'react';
 import { FlatList, TouchableOpacity } from 'react-native';
-import { Anchor, Button, Image } from '../../../atoms';
 import { getScreenWidth, UrlHandler } from '../../../../../utils/utils.native';
-import { ButtonWrapper, Heading, ModuleDWrapper, Tile } from '../ModuleD.style.native';
+import { Heading, Anchor, Button, Image } from '../../../atoms';
+import { ButtonWrapper, Tile, HeadingWrapper, Wrapper } from '../ModuleD.style.native';
 import colors from '../../../../../../styles/themes/TCP/colors';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
-
-// @flow
 
 type Props = {
   headerText: Object,
@@ -40,28 +39,28 @@ const renderItem = item => {
   const {
     item: { image, link },
   } = item;
+
+  const anchorEnable = true;
   return (
     <Tile tileIndex={item.index}>
       <TouchableOpacity accessibilityRole="button" onPress={() => UrlHandler(link.url)}>
         <Image
           alt={image.alt}
           source={{ uri: getUrlWithCrop(image.url) }}
-          style={{
-            height: imageSize,
-            marginBottom: parseInt(spacing.ELEM_SPACING.XS, 10),
-            width: imageSize,
-          }}
+          height={imageSize}
+          marginBottom={parseInt(spacing.ELEM_SPACING.XS, 10)}
+          width={imageSize}
         />
       </TouchableOpacity>
+
       <Anchor
-        centered="centered"
         fontSizeVariation="large"
+        text={link.title}
+        visible={anchorEnable}
         onPress={() => {
           UrlHandler(link.url);
         }}
-      >
-        {link.title}
-      </Anchor>
+      />
     </Tile>
   );
 };
@@ -91,11 +90,19 @@ const ModuleD = (props: Props) => {
   }
 
   return (
-    <ModuleDWrapper>
+    <Wrapper>
       {headingText && (
-        <TouchableOpacity accessibilityRole="button" onPress={() => UrlHandler(url)}>
-          <Heading>{headingText}</Heading>
-        </TouchableOpacity>
+        <HeadingWrapper accessibilityRole="button" onPress={() => UrlHandler(url)}>
+          <Heading
+            fontFamily="primary"
+            fontSize="fs36"
+            letterSpacing="ls167"
+            textAlign="center"
+            color="text.primary"
+            fontWeight="extrabold"
+            text={headingText}
+          />
+        </HeadingWrapper>
       )}
       {smallCompImage && (
         <FlatList
@@ -109,17 +116,17 @@ const ModuleD = (props: Props) => {
         <ButtonWrapper>
           <Button
             color={colors.BUTTON.WHITE.TEXT}
-            title={singleCTAButton.title}
             accessibilityLabel={singleCTAButton.title}
             buttonVariation="variable-width"
             style={buttonWidth}
+            text={singleCTAButton.title}
             onPress={() => {
               UrlHandler(singleCTAButton.url);
             }}
           />
         </ButtonWrapper>
       )}
-    </ModuleDWrapper>
+    </Wrapper>
   );
 };
 

@@ -65,3 +65,21 @@ export const setDefaultPaymentError = () => ({
 export const showLoader = () => ({
   type: PAYMENT_CONSTANTS.SHOW_LOADER,
 });
+
+export const paymentAddGiftCardSuccess = payload => {
+  return {
+    type: PAYMENT_CONSTANTS.ADD_GIFT_CARD_SUCCESS,
+    payload,
+  };
+};
+
+export const clearCardListTTL = () => {
+  return {
+    type: PAYMENT_CONSTANTS.CLEAR_CARD_LIST_TTL,
+  };
+};
+
+export const setPaymentNotification = payload => ({
+  type: PAYMENT_CONSTANTS.SET_PAYMENT_NOTIFICATION,
+  payload,
+});

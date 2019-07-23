@@ -91,6 +91,7 @@ export class AddressVerification extends React.Component<Props> {
         }
         className="elem-mb-XXXL"
         fontFamily="secondary"
+        data-locator="verifyaddress-msg"
       >
         {labels[`acc_label_verify_your_address_${verificationResult}`]}
       </BodyCopy>
@@ -119,6 +120,13 @@ export class AddressVerification extends React.Component<Props> {
 
   onCloseModal = () => {
     const { resetVerifyAddressAction } = this.props;
+    const { optionalAddressLine } = this.state;
+    if (optionalAddressLine) {
+      this.setState({
+        optionalAddressLine: '',
+      });
+    }
+
     resetVerifyAddressAction();
   };
 
@@ -143,6 +151,7 @@ export class AddressVerification extends React.Component<Props> {
           fontWeight="extrabold"
           fontSize="fs14"
           className="elem-mb-SM"
+          data-locator="verifyaddress-youenteredlbl"
         >
           {labels.acc_lbl_you_entered}
         </BodyCopy>
@@ -155,6 +164,9 @@ export class AddressVerification extends React.Component<Props> {
             isSelected={selectAddress === 'userAddress'}
             onChange={this.handleChange}
             showInput={this.showInput}
+            inputProps={{
+              'data-locator': 'verifyaddress-enteredradio',
+            }}
           />
         </div>
       </div>
@@ -173,6 +185,7 @@ export class AddressVerification extends React.Component<Props> {
             fontWeight="extrabold"
             fontSize="fs14"
             className="elem-mb-SM"
+            data-locator="verifyaddress-wesuggestlbl"
           >
             {labels.acc_lbl_we_suggest}
           </BodyCopy>
@@ -184,6 +197,9 @@ export class AddressVerification extends React.Component<Props> {
               value="suggestedAddress"
               isSelected={selectAddress === 'suggestedAddress'}
               onChange={this.handleChange}
+              inputProps={{
+                'data-locator': 'verifyaddress-suggestedradio',
+              }}
               showInput
             />
           </div>
@@ -202,6 +218,7 @@ export class AddressVerification extends React.Component<Props> {
             }}
             placeholder={labels.acc_lbl_address_line2}
             id="optionalAddressLine"
+            dataLocator="verifyaddress-addressLine2InPopUp"
           />
         </div>
       );
@@ -252,6 +269,7 @@ export class AddressVerification extends React.Component<Props> {
                 buttonVariation="variable-width"
                 fill="BLUE"
                 onClick={this.onConfirm}
+                data-locator="verifyaddress-continuebtn"
               >
                 {labels.acc_lbl_continue_cta}
               </Button>
@@ -260,6 +278,7 @@ export class AddressVerification extends React.Component<Props> {
                 buttonVariation="variable-width"
                 onClick={this.onCloseModal}
                 fill="RED"
+                data-locator="verifyaddress-editaddressbtn"
               >
                 {labels.acc_lbl_edit_address_cta}
               </Button>

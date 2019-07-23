@@ -1,18 +1,26 @@
 import React from 'react';
-import { Platform } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import LoginSync from '../screens/LoginSync';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
+import Header from '../components/common/molecules/Header';
 
-const Login = createStackNavigator({
-  LoginSync,
-});
+const Login = createStackNavigator(
+  {
+    LoginSync,
+  },
+  {
+    defaultNavigationOptions: {
+      header: props => <Header {...props} />,
+      headerBackground: 'transparent',
+    },
+  }
+);
 
 Login.navigationOptions = {
-  tabBarLabel: 'Login',
+  tabBarLabel: 'wallet',
   // eslint-disable-next-line react/prop-types
-  tabBarIcon: ({ focused }) => (
-    <NavBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
+  tabBarIcon: props => (
+    <NavBarIcon iconActive="wallet-active" iconInactive="wallet-inactive" {...props} />
   ),
 };
 

@@ -3,7 +3,7 @@ import labelsAbstractor from './labels';
 import headerAbstractor from './header';
 import footerAbstractor from './footer';
 import handler from '../../handler';
-import { defaultBrand, defaultChannel, defaultCountry } from '../../config';
+import { defaultBrand, defaultChannel, defaultCountry } from '../../api.constants';
 
 /**
  * Config Responsible for making all the http requests that need to be resolved before loading the application
@@ -104,7 +104,7 @@ const bootstrap = async pages => {
     response.labels = await labelsAbstractor.processData(bootstrapData.labels);
   } catch (error) {
     // eslint-disable-next-line no-console
-    console.error(error);
+    console.log(error);
   }
   return response;
 };

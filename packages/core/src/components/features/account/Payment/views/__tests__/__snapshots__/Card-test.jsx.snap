@@ -1,28 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CardView component should renders correctly when Card are not present 1`] = `
-<div>
+<Fragment>
   <CardList
-    giftCardList={Immutable.List []}
-    labels={Object {}}
-    setSelectedGiftCard={[Function]}
-  />
-  <Styled(DeleteCardModal)
-    data={
-      Object {
-        "buttons": Object {
-          "cancel": undefined,
-          "confirm": undefined,
-        },
-        "cardText": Object {
-          "cardEnd": undefined,
-          "expire": undefined,
-        },
-        "description": Object {},
-        "heading": undefined,
-      }
-    }
     labels={Object {}}
   />
-</div>
+</Fragment>
 `;

@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VenmoCardModalInfo Component should render correctly 1`] = `
+<div>
+  <Styled(BodyStyle)
+    bodySize="seven"
+    className="deleteCardModal__modalTitle"
+    fontFamily="secondaryFontFamily"
+    fontWeight="bold"
+  />
+  <Styled(BodyStyle)
+    className="deleteCardModal__venmoDesc"
+  >
+     
+    <Styled(Image)
+      className="deleteCardModal__img"
+      src="/static/images/venmo-blue-acceptance-mark.png"
+    />
+    <Styled(BodyStyle)
+      className="deleteCardModal__card deleteCardModal__venmoDesc"
+      fontFamily="secondaryFontFamily"
+      fontWeight="bold"
+      tag="span"
+    >
+      @test
+    </Styled(BodyStyle)>
+  </Styled(BodyStyle)>
+</div>
+`;

@@ -1,12 +1,14 @@
 import { css } from 'styled-components/native';
 
 const style = css`
+  text-transform: uppercase;
+  text-align: center;
   ${props =>
     props.buttonVariation === 'fixed-width'
       ? `
     width: 40px;
     height: 100px;
-    color: ${props.theme.colorPalette.white};
+    color: ${props.theme.colorPalette.black};
     font-size: ${props.theme.fonts.fontSize.button.size}px
     font-family: ${props.theme.typography.fonts.primary};
     font-weight: ${props.theme.typography.fontWeights.semibold};
@@ -25,11 +27,11 @@ const style = css`
   min-width: 64px;
   background: ${props.theme.colorPalette.white};
   color: ${props.theme.colorPalette.black};
-  font-family: ${props.theme.typography.fonts.primary};
-  font-size: ${props.theme.typography.fontSizes.fs14};
+  font-family: ${props.theme.typography.fonts.secondary};
+  font-size: ${props.theme.fonts.fontSize.button.size}px;
   font-weight: ${props.theme.typography.fontWeights.black};
   border: 1px solid ${props.theme.colorPalette.black};
-  padding: 2px 32px;
+  padding: 12px 32px;
   `
       : ''};
 

@@ -15,12 +15,16 @@ const labels = {
   ACC_LBL_GC_EMPTY_DESC:
     'Save up to 5 gift cards and/or merchandise cards to use the next time you shop.',
   ACC_LBL_MODAL_GC_HEADING: 'Are you sure you want to delete this gift card?',
+  ACC_LBL_MODAL_CREDIT_CARD_HEADING: 'Are you sure you want to delete this Credit/Debit Card?',
+  ACC_LBL_MODAL_DELETE_CARD: 'DELETE CARD',
   ACC_LBL_MODAL_GC_CANCEL: "No, Don't Delete",
   ACC_LBL_MODAL_GC_CONFIRM: 'Yes, Delete',
   ACC_LBL_MODAL_GC_CARDEND: 'Card ending in ',
-  ACC_LBL_MODAL_GC_EXPIRE: ' Expire on ',
+  ACC_LBL_MODAL_GC_EXPIRE: ' Expires on ',
   ACC_LBL_OFFERS_MESSAGE:
     '<b>SAVE 30% TODAY WHEN YOU OPEN AND USE A <span class="offers__msg"> MY PLACE REWARDS CREDIT CARD! </span></b>',
+  ACC_LBL_OFFERS_MESSAGE_MOBILE:
+    '<b><font size="7">SAVE 30% TODAY WHEN YOU OPEN AND USE A <span class="offers__msg"> MY PLACE REWARDS CREDIT CARD! </span></font></b>',
   ACC_LBL_OFFERS_DETAILS: '<a class="offers__link" href="#">DETAILS</a>',
   ACC_LBL_DEFAULT_CARD_NAME: 'Credit Card',
   ACC_LBL_CARD_NUM: 'Card ending in ',
@@ -34,6 +38,8 @@ const labels = {
   ACC_LBL_DEFAULT_PAYMENT: 'DEFAULT PAYMENT',
   ACC_LBL_PLCC_CARD: 'My Place Rewards Credit Card',
   ACC_LBL_VENMO_HEADING: 'VENMO',
+  ACC_LBL_MODAL_VENMO_DELETE: 'DELETE VENMO',
+  ACC_LBL_MODAL_VENMO_DELETE_HEADING: 'Are you sure you want to delete this saved Venmo payment?',
   ACC_LBL_LOADING: 'LOADING...',
   ACC_LBL_CHECK_BALANCE: ' Check Balance',
   ACC_LBL_REMAINING_BALANCE: 'Remaining balance',

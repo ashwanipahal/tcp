@@ -1,24 +1,23 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Anchor from '../views/Anchor';
+import { AnchorVanilla } from '../views/Anchor.native';
 
-describe('Anchor component', () => {
-  it('renders correctly', () => {
-    const props = {
-      className: 'sample-anchor',
-    };
-    const component = shallow(<Anchor {...props}>Random anchor</Anchor>);
-    expect(component).toMatchSnapshot();
-    expect(component.find('.sample-anchor')).toHaveLength(1);
+describe('HeadingVanilla', () => {
+  let component;
+
+  beforeEach(() => {
+    component = shallow(<AnchorVanilla />);
   });
 
-  it('renders correctly with nolink variation', () => {
-    const props = {
-      className: 'sample-anchor-nolink',
-      noLink: true,
-    };
-    const component = shallow(<Anchor {...props}>Random anchor with no link component</Anchor>);
+  it('should be defined', () => {
+    expect(component).toBeDefined();
+  });
+
+  it('should render correctly', () => {
     expect(component).toMatchSnapshot();
-    expect(component.find('.sample-anchor-nolink')).toHaveLength(1);
+  });
+
+  it('should return abc component value one', () => {
+    expect(component.find('Text')).toHaveLength(1);
   });
 });

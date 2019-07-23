@@ -7,7 +7,7 @@ const BadgeStyles = css`
   color: ${props => props.theme.colors.WHITE};
   border-radius: 10px 0 0 10px;
   display: flex;
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  margin-bottom: ${props => (props.noMargin ? 0 : props.theme.spacing.ELEM_SPACING.XS)};
   padding: ${props => props.theme.spacing.ELEM_SPACING.XXXS}
     ${props => props.theme.spacing.ELEM_SPACING.XXS};
 
@@ -42,6 +42,7 @@ const BadgeStyles = css`
       props.showCheckmark
         ? props.theme.spacing.ELEM_SPACING.XXXS
         : props.theme.spacing.ELEM_SPACING.XXS};
+    color: ${props => props.theme.colors.WHITE};
   }
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};

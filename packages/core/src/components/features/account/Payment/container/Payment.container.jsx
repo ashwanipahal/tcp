@@ -6,6 +6,7 @@ import {
   deleteCard,
   checkBalance,
   setDefaultPayment,
+  setPaymentNotification,
 } from './Payment.actions';
 import {
   getCreditDebitCards,
@@ -20,13 +21,12 @@ import {
   getShowNotificationCaptchaState,
 } from './Payment.selectors';
 import labels from './Payment.labels';
-import PaymentView from '../views/Payment.view';
+import PaymentView from '../views/PaymentView';
 
 // @flow
 type Props = {
   getCardListAction: Function,
   showNotification: any,
-  isFetching: boolean,
   deleteModalMountedState: boolean,
   setDeleteModalMountState: Function,
   onDeleteCard: Function,
@@ -39,6 +39,7 @@ type Props = {
   checkbalanceValueInfo: any,
   setDefaultPaymentMethod: Function,
   showNotificationCaptcha: boolean,
+  clearPaymentNotification: () => void,
 };
 
 export class PaymentContainer extends React.Component<Props> {
@@ -47,9 +48,13 @@ export class PaymentContainer extends React.Component<Props> {
     getCardListAction();
   }
 
+  componentWillUnmount() {
+    const { clearPaymentNotification } = this.props;
+    clearPaymentNotification();
+  }
+
   render() {
     const {
-      isFetching,
       showNotification,
       setDeleteModalMountState,
       deleteModalMountedState,
@@ -64,7 +69,6 @@ export class PaymentContainer extends React.Component<Props> {
       setDefaultPaymentMethod,
       showNotificationCaptcha,
     } = this.props;
-    if (isFetching) return <p>Loading...</p>;
     return (
       <PaymentView
         deleteModalMountedState={deleteModalMountedState}
@@ -102,6 +106,13 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     },
     setDefaultPaymentMethod: payload => {
       dispatch(setDefaultPayment(payload));
+    },
+    clearPaymentNotification: () => {
+      dispatch(
+        setPaymentNotification({
+          status: '',
+        })
+      );
     },
   };
 };

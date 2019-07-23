@@ -7,6 +7,7 @@ import styles from '../styles/CardList.style';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import { CardView } from './Card.view';
+import Router from 'next/router'; //eslint-disable-line
 
 // @flow
 
@@ -22,6 +23,11 @@ type Props = {
   checkbalanceValueInfo: any,
   showNotification: boolean,
   showNotificationCaptcha: boolean,
+  setSelectedCard: string,
+};
+
+const onAddGiftCardClick = () => {
+  Router.push('/account?id=add-gift-card', '/account/payment/add-gift-card');
 };
 
 const GiftCardList = ({
@@ -36,6 +42,7 @@ const GiftCardList = ({
   checkbalanceValueInfo,
   showNotification,
   showNotificationCaptcha,
+  setSelectedCard,
 }: Props) => {
   return (
     <div className={className}>
@@ -62,6 +69,7 @@ const GiftCardList = ({
             fill="BLUE"
             dataLocator="payment-addagiftcard"
             className="cardList__ccAddCta"
+            onClick={onAddGiftCardClick}
           >
             {giftCardList.size === 0 ? labels.ACC_LBL_GC_EMPTY_ADD_BTN : labels.ACC_LBL_ADD_BTN}
           </Button>
@@ -74,11 +82,12 @@ const GiftCardList = ({
           setDeleteModalMountState={setDeleteModalMountState}
           onDeleteCard={onDeleteCard}
           showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
-          giftCardList={giftCardList}
+          cardList={giftCardList}
           onGetBalanceCard={onGetBalanceCard}
           checkbalanceValueInfo={checkbalanceValueInfo}
           showNotification={showNotification}
           showNotificationCaptcha={showNotificationCaptcha}
+          setSelectedCard={setSelectedCard}
         />
       )}
     </div>

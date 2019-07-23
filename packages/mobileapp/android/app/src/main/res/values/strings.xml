@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">mobileapp</string>
+    <string name="app_name">MyPlace</string>
+    <string name="splash_name">MyPlace</string>
 </resources>
