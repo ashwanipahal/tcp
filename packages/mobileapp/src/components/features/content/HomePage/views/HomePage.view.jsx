@@ -12,10 +12,10 @@ class HomePageView extends React.Component {
   }
 
   render() {
-    const { slot_1: slotA, slot_2: slotB } = this.props;
+    const { slot_1: slotA, slot_2: slotB, headerPromo } = this.props;
     return (
       <ScrollView>
-        <HeaderPromo />
+        <HeaderPromo headerPromo={headerPromo} />
         <React.Fragment>
           <SlotA {...slotA} />
           <SlotB {...slotB} />
@@ -28,6 +28,7 @@ class HomePageView extends React.Component {
 HomePageView.propTypes = {
   slot_1: PropTypes.shape({}).isRequired,
   slot_2: PropTypes.shape({}).isRequired,
+  headerPromo: PropTypes.shape({}).isRequired,
   getBootstrapData: PropTypes.func.isRequired,
 };
 
