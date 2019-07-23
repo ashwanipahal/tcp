@@ -83,3 +83,17 @@ export const setPaymentNotification = payload => ({
   type: PAYMENT_CONSTANTS.SET_PAYMENT_NOTIFICATION,
   payload,
 });
+
+export const getEspots = payload => {
+  return {
+    payload,
+    type: PAYMENT_CONSTANTS.FETCH_ESPOT,
+  };
+};
+
+export const setEspots = payload => {
+  return {
+    payload,
+    type: PAYMENT_CONSTANTS.SET_ESPOT,
+  };
+};

@@ -7,6 +7,7 @@ import {
   getCardListErr,
   showLoader,
   paymentAddGiftCardSuccess,
+  setEspots,
 } from './Payment.actions';
 import { resetShowNotification } from '../AddGiftCard/container/AddGiftCard.actions';
 import { getOnAddGiftCardPageState } from '../AddGiftCard/container/AddGiftCard.selector';
@@ -45,9 +46,46 @@ export function* getCardList() {
   }
 }
 
+function* fetchEspot({ payload }) {
+  // TODO:  move it to common ??
+  // eslint-disable-next-line no-console
+  try {
+    const { baseURI, relURI, method } = endpoints.getEspots;
+    const res = yield call(
+      fetchData,
+      baseURI,
+      relURI,
+      {
+        espotname: payload,
+        catalogId: 10551,
+        langId: -1,
+        storeId: 10151,
+        devicetype: 'desktop',
+        header: {
+          espotName: payload,
+          deviceType: 'desktop',
+          type: 'content',
+          'Cache-Control': 'no-store, must-revalidate',
+          Pragma: 'no-cache',
+          Expires: 0,
+        },
+      },
+      method
+    );
+    const espotData = res.body.List[0].maketingText || [];
+    yield put(setEspots(espotData));
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.log('Error in API');
+    // eslint-disable-next-line no-console
+    console.log(err);
+  }
+}
+
 export function* PaymentSaga() {
   const cachedCardList = validateReduxCache(getCardList);
   yield takeLatest(PAYMENT_CONSTANTS.GET_CARD_LIST, cachedCardList);
+  yield takeLatest(PAYMENT_CONSTANTS.FETCH_ESPOT, fetchEspot);
 }
 
 export default PaymentSaga;

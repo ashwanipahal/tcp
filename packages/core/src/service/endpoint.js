@@ -14,7 +14,7 @@ const endpoints = {
   getEspots: {
     method: 'get',
     baseURI: 'https://test1.childrensplace.com',
-    relURI: '/api/getESpot',
+    relURI: '/api/v2/global-components/getESpot',
   },
   addProductToCart: {
     method: 'post',

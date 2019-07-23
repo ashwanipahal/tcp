@@ -7,6 +7,7 @@ import {
   checkBalance,
   setDefaultPayment,
   setPaymentNotification,
+  getEspots,
 } from './Payment.actions';
 import {
   getCreditDebitCards,
@@ -19,6 +20,7 @@ import {
   getCardListState,
   checkbalanceValue,
   getShowNotificationCaptchaState,
+  getEspotValue,
 } from './Payment.selectors';
 import labels from './Payment.labels';
 import PaymentView from '../views/PaymentView';
@@ -38,14 +40,17 @@ type Props = {
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
   setDefaultPaymentMethod: Function,
+  getEspotAction: Function,
   showNotificationCaptcha: boolean,
+  espotsValue: string,
   clearPaymentNotification: () => void,
 };
 
 export class PaymentContainer extends React.Component<Props> {
   componentDidMount() {
-    const { getCardListAction } = this.props;
+    const { getCardListAction, getEspotAction } = this.props;
     getCardListAction();
+    getEspotAction();
   }
 
   componentWillUnmount() {
@@ -68,7 +73,10 @@ export class PaymentContainer extends React.Component<Props> {
       checkbalanceValueInfo,
       setDefaultPaymentMethod,
       showNotificationCaptcha,
+      espotsValue,
     } = this.props;
+    const updateLabels = { ...labels, ACC_LBL_PAYMENT_BANNER_DETAIL: espotsValue };
+
     return (
       <PaymentView
         deleteModalMountedState={deleteModalMountedState}
@@ -77,7 +85,7 @@ export class PaymentContainer extends React.Component<Props> {
         showNotificationCaptcha={showNotificationCaptcha}
         onDeleteCard={onDeleteCard}
         showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
-        labels={labels}
+        labels={updateLabels}
         creditCardList={creditCardList}
         giftCardList={giftCardList}
         venmoCardList={venmoCardList}
@@ -114,6 +122,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
         })
       );
     },
+    getEspotAction: () => {
+      dispatch(getEspots(labels.ACC_LBL_PAYMENT_BANNER));
+    },
   };
 };
 
@@ -129,6 +140,7 @@ const mapStateToProps = state => {
     deleteModalMountedState: deleteModalOpenState(state),
     showUpdatedNotificationOnModal: showUpdatedNotificationOnModalState(state),
     checkbalanceValueInfo: checkbalanceValue(state),
+    espotsValue: getEspotValue(state),
   };
 };
 

@@ -44,3 +44,7 @@ export const showUpdatedNotificationOnModalState = state => {
 export const checkbalanceValue = state => {
   return state.PaymentReducer.get('giftcardBalance');
 };
+
+export const getEspotValue = state => {
+  return state.PaymentReducer.get('espotData');
+};
