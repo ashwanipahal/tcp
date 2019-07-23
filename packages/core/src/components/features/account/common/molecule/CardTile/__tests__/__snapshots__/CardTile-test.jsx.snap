@@ -1134,7 +1134,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
           alt="VENMO"
           className="cardTile__img"
           data-locator="VENMO"
-          src="/static/images/venmo-blue-acceptance-mark.svg"
+          src="/static/images/venmo-blue-acceptance-mark.png"
         />
       </div>
     </div>
@@ -1747,7 +1747,7 @@ exports[`CardTile should show remining balance 1`] = `
           tag="span"
           textAlign="left"
         >
-          0
+          $0
         </Styled(BodyCopy)>
       </div>
     </form>

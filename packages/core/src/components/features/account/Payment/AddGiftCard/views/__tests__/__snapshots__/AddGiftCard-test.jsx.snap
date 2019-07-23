@@ -13,7 +13,7 @@ exports[`Add gift card component should render component correctly if add gift i
     HeadingLarge="six"
     className="card__separator"
     dataLocator="gift-card-addcardheader"
-    fontFamily="secondaryFontFamily"
+    fontFamily="primaryFontFamily"
     tag="h4"
   />
   <Styled(Notification)
@@ -63,7 +63,7 @@ exports[`Add gift card component should render component correctly if add gift i
     HeadingLarge="six"
     className="card__separator"
     dataLocator="gift-card-addcardheader"
-    fontFamily="secondaryFontFamily"
+    fontFamily="primaryFontFamily"
     tag="h4"
   />
   <Styled(Notification)

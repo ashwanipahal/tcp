@@ -69,6 +69,11 @@ exports[`MoneyCards Component should render correctly if list is present 1`] = `
   }
 >
   <Styled(Text) />
+  <Styled(View)>
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+    />
+  </Styled(View)>
   <CardTile
     card={
       Object {
