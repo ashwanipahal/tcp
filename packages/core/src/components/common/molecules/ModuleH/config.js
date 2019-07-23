@@ -17,6 +17,14 @@ export default {
       },
     ],
   },
+  IMG_DATA: {
+    imgConfig: [
+      'c_fill,g_face,q_80,h_425,w_375',
+      'c_fill,g_face,q_80,h_465,w_768',
+      'c_fill,g_face,q_80,h_541,w_1410',
+    ],
+  },
+
   MODULE_H_CTALINKS: {
     minLimit: 4,
     maxLimit: 6,
