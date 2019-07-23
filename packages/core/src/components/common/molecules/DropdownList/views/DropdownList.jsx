@@ -1,23 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styles from '../styles/DropdownList.style';
 import withStyles from '../../../hoc/withStyles';
 import BodyCopy from '../../../atoms/BodyCopy';
 
-// @flow
-type Props = {
-  optionsMap: object,
-  className: string,
-  clickHandler: Function,
-  activeClassValue: string,
-};
 
-const itemLists = (item, activeClassValue, clickHandler) => {
+
+const itemLists = (item, activeClass, clickHandler) => {
   return (
     <li
       key={item.value}
       tabIndex={-1}
       className={`dropdownliBottomBorder ${
-        activeClassValue === item.value ? 'dropdownActiveClass' : ''
+        activeClass === item.value ? 'dropdownActiveClass' : ''
       }`}
     >
       <BodyCopy
@@ -29,7 +24,7 @@ const itemLists = (item, activeClassValue, clickHandler) => {
       >
         <BodyCopy
           component="div"
-          className={`${activeClassValue === item.value ? 'dropdownActiveIcon' : ''}`}
+          className={`${activeClass === item.value ? 'dropdownActiveIcon' : ''}`}
         />
         {item.content}
       </BodyCopy>
@@ -37,9 +32,9 @@ const itemLists = (item, activeClassValue, clickHandler) => {
   );
 };
 
-const DropdownList = ({ className, optionsMap, clickHandler, activeClassValue }: Props) => {
+const DropdownList = ({ className, optionsMap, clickHandler, activeClass }) => {
   const nthClild = optionsMap.find(itemValue => itemValue.value === '');
-  const nthClildWithClass = nthClild ? nthClild.value : 'undefined';
+  const nthClildWithClass = nthClild ? nthClild.value : undefined;
   return (
     <BodyCopy component="div" className={className}>
       <BodyCopy
@@ -50,13 +45,21 @@ const DropdownList = ({ className, optionsMap, clickHandler, activeClassValue }:
           <ul
             className={`${nthClildWithClass === '' ? 'ulBorderWithLastRow' : 'dropdownUlBorder'}`}
           >
-            {optionsMap.map(item => itemLists(item, activeClassValue, clickHandler))}
+            {optionsMap.map(item => itemLists(item, activeClass, clickHandler))}
           </ul>
         </BodyCopy>
       </BodyCopy>
     </BodyCopy>
   );
 };
+
+DropdownList.propTypes = {
+  className: PropTypes.string.isRequired,
+  clickHandler: PropTypes.func.isRequired,
+  optionsMap: PropTypes.shape({}).isRequired,
+  activeClass: PropTypes.string.isRequired
+};
+
 
 export default withStyles(DropdownList, styles);
 export { DropdownList as CustomSelectVanilla };

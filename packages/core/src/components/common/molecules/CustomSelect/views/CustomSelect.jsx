@@ -1,28 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DropdownList from '../../DropdownList';
 import BodyCopy from '../../../atoms/BodyCopy';
-import Row from '../../../atoms/Row';
-import Col from '../../../atoms/Col';
 import styles from '../styles/CustomSelect.style';
 import withStyles from '../../../hoc/withStyles';
-
-// @flow
-type Props = {
-  className: string,
-  selectListTitle: string,
-  clickHandler: Function,
-  options: Object,
-  defaultTitle: String,
-  activeClassValue: String,
-};
 
 class CustomSelect extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
       toggle: false,
-      selectedDefault: props.defaultTitle || 'Please Select',
-      activeClassValue: props.activeClassValue || null,
+      defaultTitle: props.defaultTitle || 'Please Select',
+      activeClass: props.activeClass || null,
     };
   }
 
@@ -36,33 +25,44 @@ class CustomSelect extends React.Component<Props> {
   clickHandler = (e, value, title) => {
     const { clickHandler } = this.props;
     this.setState({
-      selectedDefault: title,
-      activeClassValue: value,
+      defaultTitle: title,
+      activeClass: value,
     });
     this.toggleHandler();
     clickHandler(e, value, title);
   };
 
   render() {
-    const { toggle, selectedDefault, activeClassValue } = this.state;
+    const { toggle, defaultTitle, activeClass } = this.state;
     const { className, selectListTitle, options } = this.props;
     return (
       <BodyCopy component="div" className={className}>
         <span>{selectListTitle}</span>
         <BodyCopy component="div" onClick={this.toggleHandler} className="customSelectTitle">
-          {selectedDefault}
+          {defaultTitle}
         </BodyCopy>
         {toggle && (
           <DropdownList
             optionsMap={options}
             clickHandler={this.clickHandler}
-            activeClassValue={activeClassValue}
+            activeClass={activeClass}
           />
         )}
       </BodyCopy>
     );
   }
 }
+
+
+CustomSelect.propTypes = {
+  className: PropTypes.string.isRequired,
+  selectListTitle: PropTypes.string.isRequired,
+  clickHandler: PropTypes.func.isRequired,
+  options: PropTypes.shape({}).isRequired,
+  defaultTitle: PropTypes.string.isRequired,
+  activeClass: PropTypes.string.isRequired
+};
+
 
 export default withStyles(CustomSelect, styles);
 export { CustomSelect as CustomSelectVanilla };
