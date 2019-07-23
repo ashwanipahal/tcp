@@ -1,4 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -19,16 +18,16 @@ import styles from '../styles/CreditCardForm.style';
 export class CreditCardForm extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string,
-    labels: PropTypes.object.isRequired,
-    addressLabels: PropTypes.object.isRequired,
-    addressList: PropTypes.array.isRequired,
+    labels: PropTypes.shape({}).isRequired,
+    addressLabels: PropTypes.shape({}).isRequired,
+    addressList: PropTypes.shape({}).isRequired,
     onFileAddressKey: PropTypes.string,
     isEdit: PropTypes.bool,
     backToPaymentClick: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
-    initialValues: PropTypes.object.isRequired,
+    initialValues: PropTypes.shape({}).isRequired,
   };
 
   static defaultProps = {

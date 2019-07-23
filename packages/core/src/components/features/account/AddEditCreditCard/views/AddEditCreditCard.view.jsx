@@ -1,4 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Anchor from '../../../../common/atoms/Anchor';
@@ -34,7 +33,7 @@ export const AddEditCreditCard = ({ labels, isEdit, errorMessage, ...otherProps 
 };
 
 AddEditCreditCard.propTypes = {
-  labels: PropTypes.object.isRequired,
+  labels: PropTypes.shape({}).isRequired,
   isEdit: PropTypes.bool,
   errorMessage: PropTypes.string,
 };

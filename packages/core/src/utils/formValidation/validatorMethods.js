@@ -69,7 +69,6 @@ function expirationValidator(value, param, linkedPropsValues, datePieces) {
   return !(year < nowYear || (year === nowYear && month < nowMonth + 1));
 }
 
-// eslint-disable-next-line complexity
 function cardNumberForTypeValidator(value, param, linkedProps) {
   const cleanValue = (value || '').replace(/\D/g, '');
   // no type, invalid CC numbr
@@ -77,12 +76,14 @@ function cardNumberForTypeValidator(value, param, linkedProps) {
     return false;
   }
 
+  const isAmex = linkedProps[0] === 'AMEX';
+  const isValidAmex = isAmex && (cleanValue.length === 15 || /[*]{11}\d{4}$/.test(value));
+  const isValidNonAmex = !isAmex && (cleanValue.length === 16 || /[*]{12}\d{4}$/.test(value));
+
   return (
     cleanValue.length === 0 ||
-    (cleanValue.length === 15 && linkedProps[0] === 'AMEX') || // new amex card
-    (/[*]{11}\d{4}$/.test(value) && linkedProps[0] === 'AMEX') || // editing amex card
-    (cleanValue.length === 16 && linkedProps[0] !== 'AMEX') || // new non-amex card
-    (/[*]{12}\d{4}$/.test(value) && linkedProps[0] !== 'AMEX' && linkedProps[0] !== null)
+    isValidAmex || // editing amex card
+    isValidNonAmex
   ); // editing amex card
 }
 

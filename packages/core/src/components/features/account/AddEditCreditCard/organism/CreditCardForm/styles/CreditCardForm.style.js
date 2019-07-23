@@ -1,6 +1,5 @@
 import { css } from 'styled-components';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
-import spacing from '@tcp/core/styles/themes/TCP/spacing';
 
 const colorPallete = createThemeColorPalette();
 const squareBracketBorderColor = colorPallete.gray[500];
@@ -13,12 +12,15 @@ const styles = css`
       linear-gradient(${squareBracketBorderColor}, ${squareBracketBorderColor}),
       linear-gradient(${squareBracketBorderColor}, ${squareBracketBorderColor});
     background-repeat: no-repeat;
-    background-size: 8px 2px;
+    background-size: ${props => props.theme.spacing.ELEM_SPACING.XS}
+      ${props => props.theme.spacing.ELEM_SPACING.XXXS};
     background-position: top left, top right, bottom left, bottom right;
-    border: 2px solid ${squareBracketBorderColor};
-    border-width: 0 2px;
-    padding: ${spacing.ELEM_SPACING.XS} ${spacing.ELEM_SPACING.XXXL} ${spacing.ELEM_SPACING.XS}
-      ${spacing.ELEM_SPACING.MED};
+    border: ${props => props.theme.spacing.ELEM_SPACING.XXXS} solid ${squareBracketBorderColor};
+    border-width: 0 ${props => props.theme.spacing.ELEM_SPACING.XXXS};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
+      ${props => props.theme.spacing.ELEM_SPACING.XXXL}
+      ${props => props.theme.spacing.ELEM_SPACING.XS}
+      ${props => props.theme.spacing.ELEM_SPACING.MED};
 
     @media ${props => props.theme.mediaQuery.medium} {
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
@@ -34,14 +36,23 @@ const styles = css`
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
 
-  @media ${props => props.theme.mediaQuery.smallMax} {
+  .CreditCardForm__submit {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    order: 1;
+  }
+
+  .CreditCardForm__cancel {
+    order: 2;
+  }
+
+  @media ${props => props.theme.mediaQuery.medium} {
     .CreditCardForm__cancel {
-      order: 2;
+      order: 0;
     }
 
     .CreditCardForm__submit {
-      order: 1;
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      order: 0;
+      margin-bottom: 0;
     }
   }
 `;

@@ -1,4 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -23,12 +22,12 @@ import { getCreditCardExpirationOptionMap } from '../../../../../utils/utils';
 
 export class AddEditCreditCard extends React.PureComponent {
   static propTypes = {
-    creditCard: PropTypes.object,
+    creditCard: PropTypes.shape({}),
     cardType: PropTypes.string,
     onFileAddressKey: PropTypes.string,
-    addressList: PropTypes.array,
+    addressList: PropTypes.shape([]),
     isPLCCEnabled: PropTypes.bool,
-    addEditCreditCardSuccess: PropTypes.object,
+    addEditCreditCardSuccess: PropTypes.shape({}),
     addEditCreditCardError: PropTypes.string,
     getAddressListAction: PropTypes.func.isRequired,
     addCreditCardAction: PropTypes.func.isRequired,

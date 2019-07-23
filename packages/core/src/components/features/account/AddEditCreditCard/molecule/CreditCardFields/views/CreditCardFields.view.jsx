@@ -1,4 +1,3 @@
-/* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
@@ -96,8 +95,8 @@ CreditCardFields.propTypes = {
   cardTypeImgUrl: PropTypes.string,
   isPLCCEnabled: PropTypes.bool,
   cardType: PropTypes.string,
-  expMonthOptionsMap: PropTypes.array.isRequired,
-  expYearOptionsMap: PropTypes.array.isRequired,
+  expMonthOptionsMap: PropTypes.shape([]).isRequired,
+  expYearOptionsMap: PropTypes.shape([]).isRequired,
 };
 
 CreditCardFields.defaultProps = {
