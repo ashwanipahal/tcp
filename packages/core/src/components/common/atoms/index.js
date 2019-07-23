@@ -8,5 +8,18 @@ import Row from './Row';
 import TextBox from './TextBox';
 import Heading from './Heading';
 import BodyCopy from './BodyCopy';
+import Drawer from './Drawer';
 
-export { Anchor, Button, Col, DynamicTag, Image, RichText, Row, TextBox, Heading, BodyCopy };
+export {
+  Anchor,
+  Button,
+  Col,
+  DynamicTag,
+  Image,
+  RichText,
+  Row,
+  TextBox,
+  Heading,
+  BodyCopy,
+  Drawer,
+};

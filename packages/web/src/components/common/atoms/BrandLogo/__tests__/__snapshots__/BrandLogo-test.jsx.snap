@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HomeLogo component HomeLogo component renders correctly without props 1`] = `
+exports[`BrandLogo component BrandLogo component renders correctly without props 1`] = `
 <div>
   <Styled(Anchor)
     to="/"

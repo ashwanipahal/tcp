@@ -1,21 +1,21 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { HomeLogoVanilla } from '../views/HomeLogo';
+import { BrandLogoVanilla } from '../BrandLogo';
 
-describe('HomeLogo component', () => {
-  it('HomeLogo component renders correctly without props', () => {
-    const component = shallow(<HomeLogoVanilla />);
+describe('BrandLogo component', () => {
+  it('BrandLogo component renders correctly without props', () => {
+    const component = shallow(<BrandLogoVanilla />);
     expect(component).toMatchSnapshot();
   });
 
-  it('HomeLogo component renders correctly with props', () => {
+  it('BrandLogo component renders correctly with props', () => {
     const props = {
       className: 'homelogo-class',
       alt: 'homelogo image',
       dataLocator: 'global_homelogo',
       imgSrc: 'src/homeImage',
     };
-    const component = shallow(<HomeLogoVanilla {...props} />);
+    const component = shallow(<BrandLogoVanilla {...props} />);
     expect(component.find('.homelogo-class')).toHaveLength(1);
   });
 });

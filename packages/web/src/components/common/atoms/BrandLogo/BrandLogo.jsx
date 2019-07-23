@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Anchor, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import style from '../HomeLogo.style';
+import style from './BrandLogo.style';
 
-const HomeLogo = ({ className, alt, dataLocator, imgSrc }) => (
+const BrandLogo = ({ className, alt, dataLocator, imgSrc }) => (
   <div className={className}>
     <Anchor to="/" data-locator={dataLocator}>
       <Image src={imgSrc} alt={alt} />
@@ -12,12 +12,12 @@ const HomeLogo = ({ className, alt, dataLocator, imgSrc }) => (
   </div>
 );
 
-HomeLogo.propTypes = {
+BrandLogo.propTypes = {
   alt: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   dataLocator: PropTypes.string.isRequired,
   imgSrc: PropTypes.string.isRequired,
 };
 
-export default withStyles(HomeLogo, style);
-export { HomeLogo as HomeLogoVanilla };
+export default withStyles(BrandLogo, style);
+export { BrandLogo as BrandLogoVanilla };

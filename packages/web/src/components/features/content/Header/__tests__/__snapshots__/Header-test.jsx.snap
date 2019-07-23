@@ -5,29 +5,7 @@ exports[`Header component renders correctly 1`] = `
   <Styled(HeaderTopNav)
     className="header-topnav"
   />
-  <styled.div
-    className="header-brand"
-  >
-    <Styled(Row)>
-      <Styled(Col)
-        className="header-brand__home-logo"
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-      >
-        <Styled(HomeLogo)
-          alt="The Children's Place"
-          className="header-brand__home-logo--brand"
-          dataLocator="global_TCPlink"
-          imgSrc="/static/images/tcp-logo.svg"
-        />
-      </Styled(Col)>
-    </Styled(Row)>
-  </styled.div>
+  <Styled(HeaderMiddleNav) />
   <Styled(HeaderPromo)
     className="header__promo-area--mobile"
     dataPromo={

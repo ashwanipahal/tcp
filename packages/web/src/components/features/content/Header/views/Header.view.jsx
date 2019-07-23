@@ -1,16 +1,19 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Col, Row } from '@tcp/core/src/components/common/atoms';
-import { identifyBrand } from '@tcp/core/src/utils';
-import { HeaderTopNav, HeaderPromo } from '../molecules';
-import config from '../config';
+import { HeaderTopNav, HeaderPromo, HeaderMiddleNav } from '../molecules';
 import headerStyles from '../Header.style';
-import HomeLogo from './HomeLogo';
 
-const { HeaderBrand, HeaderLoyalty } = headerStyles;
-const brand = identifyBrand();
+const { HeaderLoyalty } = headerStyles;
 
-const Header = ({ brandTabs, promoMessageWrapper, headerPromoArea }) => {
+const Header = ({
+  brandTabs,
+  promoMessageWrapper,
+  headerPromoArea,
+  navigationDrawer,
+  openNavigationDrawer,
+  closeNavigationDrawer,
+}) => {
   return (
     <header>
       <HeaderTopNav
@@ -18,25 +21,11 @@ const Header = ({ brandTabs, promoMessageWrapper, headerPromoArea }) => {
         brandTabs={brandTabs}
         promoMessageWrapper={promoMessageWrapper}
       />
-      <HeaderBrand className="header-brand">
-        <Row>
-          <Col
-            className="header-brand__home-logo"
-            colSize={{
-              large: 12,
-              medium: 8,
-              small: 6,
-            }}
-          >
-            <HomeLogo
-              alt={config[brand].alt}
-              className="header-brand__home-logo--brand"
-              dataLocator={config[brand].dataLocator}
-              imgSrc={config[brand].imgSrc}
-            />
-          </Col>
-        </Row>
-      </HeaderBrand>
+      <HeaderMiddleNav
+        openNavigationDrawer={openNavigationDrawer}
+        closeNavigationDrawer={closeNavigationDrawer}
+        navigationDrawer={navigationDrawer}
+      />
       <HeaderPromo
         mobileMarkup
         className="header__promo-area--mobile"
@@ -65,6 +54,9 @@ Header.propTypes = {
   brandTabs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   promoMessageWrapper: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   headerPromoArea: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  navigationDrawer: PropTypes.shape({}).isRequired,
+  openNavigationDrawer: PropTypes.func.isRequired,
+  closeNavigationDrawer: PropTypes.func.isRequired,
 };
 
 export default Header;
