@@ -23,7 +23,6 @@ export default {
     GREEN: '#7dc24c',
     COLOR1: '#edf5fb',
     COLOR2: '#dbebf8',
-    COLOR3: '#f5f5f5',
   },
   TEXT: {
     DARK: '#1a1a1a',

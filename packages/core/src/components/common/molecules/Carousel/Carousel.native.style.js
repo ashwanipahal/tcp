@@ -31,7 +31,7 @@ export const Container = styled.View`
   align-items: center;
   justify-content: space-between;
   height: 42px;
-  background: ${props => props.theme.colors.PRIMARY.COLOR3};
+  background: ${props => props.theme.colors.PRIMARY.PALEGRAY};
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 

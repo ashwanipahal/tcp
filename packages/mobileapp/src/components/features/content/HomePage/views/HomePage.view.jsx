@@ -26,7 +26,6 @@ class HomePageView extends React.Component {
 HomePageView.propTypes = {
   slot_1: PropTypes.shape({}).isRequired,
   slot_2: PropTypes.shape({}).isRequired,
-  headerPromo: PropTypes.shape({}).isRequired,
   getBootstrapData: PropTypes.func.isRequired,
 };
 
