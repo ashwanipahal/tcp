@@ -72,6 +72,8 @@ class DropDown extends React.PureComponent<Props> {
       this.marker.measure((x, y, width, height, pageX, pageY) => {
         this.width = width;
         this.leftMargin = pageX;
+
+        // calculate this
         this.topMargin = height + pageY;
       });
     }

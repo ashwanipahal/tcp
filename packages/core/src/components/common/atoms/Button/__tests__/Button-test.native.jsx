@@ -5,8 +5,13 @@ import { CustomButtonVanilla } from '../views/Button.native';
 describe('CustomButton', () => {
   let component;
 
+  const props = {
+    selectedValue: 'foo',
+    data: [],
+  };
+
   beforeEach(() => {
-    component = shallow(<CustomButtonVanilla />);
+    component = shallow(<CustomButtonVanilla {...props} />);
   });
 
   it('should be defined', () => {
