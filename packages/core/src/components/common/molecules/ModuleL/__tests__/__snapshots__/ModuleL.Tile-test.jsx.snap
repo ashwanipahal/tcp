@@ -5,7 +5,7 @@ exports[`ModuleL Header component renders correctly 1`] = `
   className={null}
   color="text.primary"
   component="div"
-  data-locator="module_L_content_tiles_NaN"
+  data-locator="moduleL_tiles_NaN"
   fontFamily="primary"
   fontSize={12}
   fontWeight="regular"
@@ -26,7 +26,7 @@ exports[`ModuleL Header component renders correctly 1`] = `
     >
       <WithTheme(DamImage)
         className="moduleL__tile-image"
-        data-locator="module_L_composite_image_NaN"
+        data-locator="moduleL_image_NaN"
         imgConfigs={
           Array [
             "c_fill,g_center,q_80,h_127,w_103",
@@ -48,7 +48,7 @@ exports[`ModuleL Header component renders correctly 1`] = `
           className="moduleL__tile-title"
           color="text.primary"
           component="div"
-          data-locator="module_L_header_text_NaN"
+          data-locator="moduleL_title_NaN"
           fontFamily={
             Array [
               "primary",
@@ -76,7 +76,7 @@ exports[`ModuleL Header component renders correctly 1`] = `
         </Styled(BodyCopy)>
         <Styled(Anchor)
           className="moduleL__tile-link"
-          data-locator="module_L_text_link_NaN"
+          data-locator="moduleL_link_NaN"
           withCaret={true}
         >
           Shop Unicorns & Friends

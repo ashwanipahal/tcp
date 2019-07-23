@@ -18,7 +18,7 @@ const ModuleLHeader = ({ headerText: { textItems, link } }: Props) => (
         <Anchor key={index.toString()} to={link.url} target={link.target}>
           <Heading
             variant="h2"
-            data-locator={getLocator('module_L_header_text')}
+            data-locator={getLocator('moduleL_header_text')}
             textAlign="center"
             color="text.primary"
           >
@@ -28,7 +28,7 @@ const ModuleLHeader = ({ headerText: { textItems, link } }: Props) => (
       ) : (
         <Heading
           variant="h2"
-          data-locator={getLocator('module_L_header_text')}
+          data-locator={getLocator('moduleL_header_text')}
           textAlign="center"
           color="text.primary"
         >

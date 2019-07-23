@@ -58,7 +58,7 @@ const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide, promoTextBa
             {...promoTextBanner}
             className="moduleL__promo-banner"
             fontSize="fs48"
-            data-locator={getLocator('module_L_promobanner_text')}
+            data-locator={getLocator('moduleL_promobanner_text')}
           />
         )}
         <Carousel

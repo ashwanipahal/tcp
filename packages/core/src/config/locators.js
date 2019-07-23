@@ -25,12 +25,12 @@ export default {
   promo_item: 'global_promobannerimg',
   refer_friend: 'global_referfriend',
   // Module L
-  module_L_header_text: 'module_L_header_text',
-  module_L_promobanner_text: 'module_L_promobanner_text',
-  module_L_title: 'module_L_title',
-  module_L_composite_image: 'module_L_composite_image',
-  module_L_text_link: 'module_L_text_link',
-  module_L_content_tiles: 'module_L_content_tiles',
+  moduleL_header_text: 'moduleL_header_text',
+  moduleL_title: 'moduleL_title',
+  moduleL_promobanner_text: 'moduleL_promobanner_text',
+  moduleL_image: 'moduleL_image',
+  moduleL_link: 'moduleL_link',
+  moduleL_tiles: 'moduleL_tiles',
   // MobileHeader
   global_headerpanel: 'global_headerpanel',
   global_findastoretext: 'global_findastoretext',
