@@ -20,7 +20,7 @@ function getParent() {
   return document.querySelector('.TCPModal__Wrapper');
 }
 
-class Modal extends React.Component {
+class Modal extends React.PureComponent {
   componentDidMount() {
     // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
     const rootElemId = '__next';
