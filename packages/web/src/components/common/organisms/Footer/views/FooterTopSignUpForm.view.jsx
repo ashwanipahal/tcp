@@ -106,7 +106,7 @@ class FooterTopEmailSignUpForm extends React.PureComponent {
                 disabled={
                   pristine || !validationStarted || asyncValidating || invalid || submitSucceeded
                 }
-                buttonVariation="variable-width"
+                buttonVariation="fixed-width"
                 type="button"
                 data-locator={dataLocators.submitButton}
                 onClick={this.submitForm}

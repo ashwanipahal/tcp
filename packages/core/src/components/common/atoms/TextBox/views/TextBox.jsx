@@ -29,6 +29,12 @@ type Props = {
   isRequired?: boolean,
 };
 
+/**
+ *
+ * @param {Boolean} showSuccessCheck Forcefully show the success mark and success border. Override redux form params.
+ * @param {Object} meta redux-form meta object to analyse the success state. Based on this class will be returned.
+ * @return {string} Returns a class name if the form success validation criteria matches else blank string.
+ */
 const getValidationSuccessClass = (showSuccessCheck, meta) => {
   const { invalid, pristine, asyncValidating, active } = meta;
   return showSuccessCheck || (!active && !pristine && !invalid && !asyncValidating)
@@ -87,7 +93,7 @@ const TextBox = ({
         fontSize="fs12"
         fontFamily="secondary"
         role="alert"
-        aria-atomic="true"
+        aria-live="assertive"
       >
         {touched && error ? error : ''}
       </BodyCopy>

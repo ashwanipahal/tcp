@@ -27,7 +27,7 @@ exports[`Textbox component renders correctly 1`] = `
     textAlign="left"
   />
   <Styled(BodyCopy)
-    aria-atomic="true"
+    aria-live="assertive"
     className="TextBox__error"
     color="error"
     component="div"
