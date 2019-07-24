@@ -5,15 +5,19 @@ import AddedToBagViewPoints from '../../AddedToBagViewPoints';
 import Modal from '../../../../common/molecules/Modal';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/AddedToBag.style';
+import ProductInformationView from '../../ProductInformation/views/ProductInformation.views';
+import BossBannerView from '../../BossBanner/views/BossBanner.views';
 
 // @flow
 type Props = {
   openState: Function,
   onRequestClose: Function,
   className: string,
+  addedToBagData: any,
+  labels: any,
 };
 
-const AddedToBag = ({ openState, onRequestClose, className }: Props) => {
+const AddedToBag = ({ openState, onRequestClose, addedToBagData, className, labels }: Props) => {
   return (
     <Modal
       fixedWidth
@@ -29,8 +33,10 @@ const AddedToBag = ({ openState, onRequestClose, className }: Props) => {
       }}
     >
       <div className="addedToBagWrapper">
+        <ProductInformationView data={addedToBagData} labels={labels} />
         <AddedToBagViewPoints className="added-to-bag-points" />
         <AddedToBagActions />
+        <BossBannerView labels={labels} />
       </div>
     </Modal>
   );

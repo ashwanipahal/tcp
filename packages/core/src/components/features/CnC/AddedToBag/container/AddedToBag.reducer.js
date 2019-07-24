@@ -5,7 +5,6 @@ const initialState = fromJS({
   itemInfo: {},
   error: false,
   isOpenAddedToBag: false,
-  orders: {},
 });
 
 const AddedToBagReducer = (state = initialState, action) => {
