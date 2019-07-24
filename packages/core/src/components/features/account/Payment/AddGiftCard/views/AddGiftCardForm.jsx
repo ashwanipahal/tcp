@@ -70,27 +70,29 @@ class AddGiftCardForm extends React.PureComponent<Props> {
             />
           </Col>
         </Row>
-
-        <Row fullBleed>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 4, medium: 2, large: 2 }}>
-            <Recaptcha
-              theme="light"
-              type="image"
-              size="normal"
-              tabindex="0"
-              verifyCallback={this.handleRecaptchaVerify}
-              expiredCallback={this.handleRecaptchaExpired}
-              dataLocator="gift-card-addcardrecaptchacheckbox"
-            />
-          </Col>
-        </Row>
         <div>
-          <Field
-            component={TextBox}
-            type="hidden"
-            name="recaptchaToken"
-            className="card__recaptcha"
-          />
+          <Row fullBleed>
+            <Col ignoreGutter={{ small: true }} colSize={{ small: 4, medium: 2, large: 2 }}>
+              <Recaptcha
+                theme="light"
+                type="image"
+                size="normal"
+                tabindex="0"
+                className="card__recaptcha"
+                verifyCallback={this.handleRecaptchaVerify}
+                expiredCallback={this.handleRecaptchaExpired}
+                dataLocator="gift-card-addcardrecaptchacheckbox"
+              />
+            </Col>
+          </Row>
+          <div>
+            <Field
+              component={TextBox}
+              type="hidden"
+              name="recaptchaToken"
+              className="card__hidden"
+            />
+          </div>
         </div>
 
         <Row fullBleed className="card__row">

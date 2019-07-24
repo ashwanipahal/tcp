@@ -49,6 +49,9 @@ const styles = css`
     }
   }
   .card__recaptcha {
+    position: relative;
+  }
+  .card__hidden {
     position: absolute;
   }
 `;
