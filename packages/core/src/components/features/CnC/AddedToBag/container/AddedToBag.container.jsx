@@ -9,12 +9,12 @@ type Props = {
   closeModal: Function,
   addedToBagData: any,
   isOpenDialog: boolean,
+  labels: any,
 };
 
 export class AddedToBagContainer extends React.Component<Props> {
   constructor(props) {
     super(props);
-
     this.closeModal = this.closeModal.bind(this);
   }
 
@@ -24,12 +24,13 @@ export class AddedToBagContainer extends React.Component<Props> {
   }
 
   render() {
-    const { addedToBagData, isOpenDialog } = this.props;
+    const { addedToBagData, isOpenDialog, labels } = this.props;
     return (
       <AddedToBag
         openState={isOpenDialog}
         onRequestClose={this.closeModal}
         addedToBagData={addedToBagData}
+        labels={labels}
       />
     );
   }
@@ -47,9 +48,43 @@ const mapDispatchToProps = (dispatch: ({}) => void) => {
 };
 
 const mapStateToProps = state => {
+  const {
+    bag: {
+      addedToBag: {
+        lbl_info_color: colorLabel,
+        lbl_info_size: sizeLabel,
+        lbl_info_Qty: qtyLabel,
+        lbl_bossBanner_headingDefault: pickUpText,
+        lbl_bossBanner_subHeadingDefault: simplyChooseText,
+        lbl_bossBanner_noRush: noRushText,
+        lbl_cta_viewBag: viewBag,
+        lbl_cta_checkout: checkout,
+        lbl_info_price: price,
+        lbl_info_pointYouCanEarn: pointsYouCanEarn,
+        lbl_info_subTotal: bagSubTotal,
+        lbl_info_totalRewardsInBag: totalRewardsInPoints,
+        lbl_info_totalNextRewards: totalNextRewards,
+      },
+    },
+  } = state.Labels;
   return {
     addedToBagData: getAddedToBagData(state),
     isOpenDialog: isOpenAddedToBag(state),
+    labels: {
+      colorLabel,
+      sizeLabel,
+      qtyLabel,
+      pickUpText,
+      simplyChooseText,
+      noRushText,
+      viewBag,
+      checkout,
+      price,
+      pointsYouCanEarn,
+      bagSubTotal,
+      totalRewardsInPoints,
+      totalNextRewards,
+    },
   };
 };
 

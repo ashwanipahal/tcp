@@ -14,6 +14,6 @@ describe('Footer component', () => {
     };
     const component = shallow(<FooterVanilla {...props} />);
     expect(component).toMatchSnapshot();
-    expect(component.find('.footer-class')).toHaveLength(3);
+    expect(component.find('.footer-class')).toHaveLength(4);
   });
 });

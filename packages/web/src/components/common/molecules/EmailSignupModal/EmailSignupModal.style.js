@@ -19,12 +19,6 @@ const EmailSignupModalStyle = css`
   .button-wrapper-form {
     margin: 89px -15px 0;
   }
-  .async-error input {
-    border-bottom: 1px solid ${props => props.theme.colors.NOTIFICATION.ERROR};
-  }
-  .async-success input {
-    border-bottom: 1px solid ${props => props.theme.colors.TEXTBOX.SUCCESS_BORDER};
-  }
   .terms-label {
     margin-top: 52px;
   }
@@ -56,6 +50,10 @@ const EmailSignupModalStyle = css`
       bottom: 0;
       width: 100%;
     }
+  }
+
+  .email-modal-signup-image {
+    max-width: 300px;
   }
 `;
 
