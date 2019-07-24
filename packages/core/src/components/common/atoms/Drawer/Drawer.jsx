@@ -44,4 +44,5 @@ Drawer.defaultProps = {
   desktop: false,
 };
 
+export { Drawer as DrawerVanilla };
 export default withStyles(Drawer, style);

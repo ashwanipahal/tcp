@@ -29,7 +29,7 @@ const L1NavItem = props => {
           {description ||
             (promoBadge &&
               promoBadge.map(({ cls, text }, index) => (
-                <span className={cls}>{index ? ` ${text}` : text}</span>
+                <span className={`${cls} nav-bar-l1-promo-badge`}>{index ? ` ${text}` : text}</span>
               ))) ||
             ``}
         </span>
@@ -44,4 +44,5 @@ L1NavItem.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
+export { L1NavItem as L1NavItemVanilla };
 export default withStyles(L1NavItem, style);

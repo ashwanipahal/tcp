@@ -23,4 +23,5 @@ NavBar.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
+export { NavBar as NavBarVanilla };
 export default withStyles(NavBar, style);

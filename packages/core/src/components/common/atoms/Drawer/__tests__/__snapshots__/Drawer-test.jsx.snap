@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drawer component renders correctly 1`] = `
+<Fragment>
+  <aside
+    className="undefined tcp-drawer tcp-drawer__isOpen"
+  >
+    <div
+      className="tcp-drawer-content"
+    >
+      Renders correctly
+    </div>
+  </aside>
+  <div
+    className="undefined tcp-drawer-overlay"
+  />
+</Fragment>
+`;

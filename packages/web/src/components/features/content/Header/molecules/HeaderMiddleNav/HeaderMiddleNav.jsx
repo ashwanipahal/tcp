@@ -59,6 +59,7 @@ const HeaderMiddleNav = props => {
         }}
       >
         <Col
+          className="header-middle-nav-bar"
           colSize={{
             large: 12,
             medium: 8,
@@ -96,4 +97,5 @@ HeaderMiddleNav.defaultProps = {
   },
 };
 
+export { HeaderMiddleNav as HeaderMiddleNavVanilla };
 export default withStyles(HeaderMiddleNav, style);
