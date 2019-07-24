@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import config from './config';
+import config from './Config.native';
 
 const { playIconHeight, playIconWidth } = config.CAROUSEL_APP_CONFIG;
 
@@ -15,4 +15,21 @@ export const Touchable = styled.TouchableOpacity`
   z-index: ${props => props.theme.zindex.zOverlay};
 `;
 
-export default { Touchable };
+export const TouchableView = styled.TouchableOpacity`
+  align-items: center;
+`;
+
+export const Icon = styled.Image`
+  width: 6px;
+  height: 10px;
+  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
+export const Container = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export default { Touchable, TouchableView, Icon, Container };
