@@ -6,6 +6,13 @@ export const getItemsFromCMS = `query getItemsFromCMS {
   }
 }`;
 
+export const getPaymentBannerFromCMS = `query getPaymentBannerFromCMS($paymentBannerLabel : Label) {
+  getPaymentBannerLabel(label: $paymentBannerLabel) {
+    label,
+    label_value
+  }
+}`;
+
 export const getProductsAndCMSData = `query getProductsAndCMSData {
   getProductsCMS {
     	products {

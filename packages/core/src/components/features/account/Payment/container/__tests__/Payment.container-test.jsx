@@ -6,7 +6,11 @@ import PaymentView from '../../views/PaymentView';
 describe('Payment & Gift Cards', () => {
   it('should render payment view section', () => {
     const tree = shallow(
-      <PaymentContainer getCardListAction={jest.fn()} getEspotAction={jest.fn()} />
+      <PaymentContainer
+        getCardListAction={jest.fn()}
+        getContentId={jest.fn()}
+        getPaymentBannerRichText={jest.fn()}
+      />
     );
     expect(tree.is(PaymentView)).toBeTruthy();
   });

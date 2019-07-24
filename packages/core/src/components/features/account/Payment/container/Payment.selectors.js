@@ -45,6 +45,10 @@ export const checkbalanceValue = state => {
   return state.PaymentReducer.get('giftcardBalance');
 };
 
-export const getEspotValue = state => {
-  return state.PaymentReducer.get('espotData');
+export const getPaymentBannerContentId = state => {
+  return state.Labels.account;
+};
+
+export const getPaymentBannerRichTextSelector = state => {
+  return state.PaymentReducer.get('paymentBannerRichText');
 };

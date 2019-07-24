@@ -1,5 +1,6 @@
 import { call, takeLatest, put, select } from 'redux-saga/effects';
 import { validateReduxCache } from '../../../../../utils/cache.util';
+import PaymentAbstractor from '../../../../../services/abstractors/account/Payment';
 import PAYMENT_CONSTANTS from '../Payment.constants';
 import fetchData from '../../../../../service/API';
 import {
@@ -7,7 +8,7 @@ import {
   getCardListErr,
   showLoader,
   paymentAddGiftCardSuccess,
-  setEspots,
+  setRichText,
 } from './Payment.actions';
 import { resetShowNotification } from '../AddGiftCard/container/AddGiftCard.actions';
 import { getOnAddGiftCardPageState } from '../AddGiftCard/container/AddGiftCard.selector';
@@ -46,39 +47,11 @@ export function* getCardList() {
   }
 }
 
-function* fetchEspot({ payload }) {
-  // TODO:  move it to common ??
-  // eslint-disable-next-line no-console
+function* fetchRichText({ payload = '' }) {
   try {
-    const { baseURI, relURI, method } = endpoints.getEspots;
-    const res = yield call(
-      fetchData,
-      baseURI,
-      relURI,
-      {
-        espotname: payload,
-        catalogId: 10551,
-        langId: -1,
-        storeId: 10151,
-        devicetype: 'desktop',
-        header: {
-          espotName: payload,
-          deviceType: 'desktop',
-          type: 'content',
-          'Cache-Control': 'no-store, must-revalidate',
-          Pragma: 'no-cache',
-          Expires: 0,
-        },
-      },
-      method
-    );
-    const espotData = res.body.List[0].maketingText || [];
-    yield put(setEspots(espotData));
+    const result = yield call(PaymentAbstractor, payload);
+    yield put(setRichText(result));
   } catch (err) {
-    const espotData = '';
-    yield put(setEspots(espotData));
-    // eslint-disable-next-line no-console
-    console.log('Error in API');
     // eslint-disable-next-line no-console
     console.log(err);
   }
@@ -87,7 +60,7 @@ function* fetchEspot({ payload }) {
 export function* PaymentSaga() {
   const cachedCardList = validateReduxCache(getCardList);
   yield takeLatest(PAYMENT_CONSTANTS.GET_CARD_LIST, cachedCardList);
-  yield takeLatest(PAYMENT_CONSTANTS.FETCH_ESPOT, fetchEspot);
+  yield takeLatest(PAYMENT_CONSTANTS.FETCH_RICH_TEXT, fetchRichText);
 }
 
 export default PaymentSaga;

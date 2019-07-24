@@ -7,8 +7,10 @@ import {
   checkBalance,
   setDefaultPayment,
   setPaymentNotification,
-  getEspots,
+  getRichText,
 } from './Payment.actions';
+
+import { bootstrapData } from '../../../../../reduxStore/actions';
 import {
   getCreditDebitCards,
   getCardListFetchingState,
@@ -20,7 +22,8 @@ import {
   getCardListState,
   checkbalanceValue,
   getShowNotificationCaptchaState,
-  getEspotValue,
+  getPaymentBannerContentId,
+  getPaymentBannerRichTextSelector,
 } from './Payment.selectors';
 import labels from './Payment.labels';
 import PaymentView from '../views/PaymentView';
@@ -40,17 +43,24 @@ type Props = {
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
   setDefaultPaymentMethod: Function,
-  getEspotAction: Function,
+  getContentId: Function,
+  getPaymentBannerRichText: Function,
+  paymentBannerContentId: string,
   showNotificationCaptcha: boolean,
-  espotsValue: string,
   clearPaymentNotification: () => void,
 };
 
 export class PaymentContainer extends React.Component<Props> {
   componentDidMount() {
-    const { getCardListAction, getEspotAction } = this.props;
+    const {
+      getCardListAction,
+      getContentId,
+      paymentBannerContentId,
+      getPaymentBannerRichText,
+    } = this.props;
     getCardListAction();
-    getEspotAction();
+    getContentId();
+    getPaymentBannerRichText(paymentBannerContentId);
   }
 
   componentWillUnmount() {
@@ -73,9 +83,7 @@ export class PaymentContainer extends React.Component<Props> {
       checkbalanceValueInfo,
       setDefaultPaymentMethod,
       showNotificationCaptcha,
-      espotsValue,
     } = this.props;
-    const updateLabels = { ...labels, ACC_LBL_PAYMENT_BANNER_DETAIL: espotsValue };
 
     return (
       <PaymentView
@@ -85,7 +93,7 @@ export class PaymentContainer extends React.Component<Props> {
         showNotificationCaptcha={showNotificationCaptcha}
         onDeleteCard={onDeleteCard}
         showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
-        labels={updateLabels}
+        labels={labels}
         creditCardList={creditCardList}
         giftCardList={giftCardList}
         venmoCardList={venmoCardList}
@@ -122,8 +130,11 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
         })
       );
     },
-    getEspotAction: () => {
-      dispatch(getEspots(labels.ACC_LBL_PAYMENT_BANNER));
+    getContentId: () => {
+      dispatch(bootstrapData());
+    },
+    getPaymentBannerRichText: cid => {
+      dispatch(getRichText(cid));
     },
   };
 };
@@ -140,7 +151,8 @@ const mapStateToProps = state => {
     deleteModalMountedState: deleteModalOpenState(state),
     showUpdatedNotificationOnModal: showUpdatedNotificationOnModalState(state),
     checkbalanceValueInfo: checkbalanceValue(state),
-    espotsValue: getEspotValue(state),
+    paymentBannerContentId: getPaymentBannerContentId(state),
+    paymentBannerRichText: getPaymentBannerRichTextSelector(state),
   };
 };
 

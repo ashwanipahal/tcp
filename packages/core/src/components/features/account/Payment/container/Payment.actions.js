@@ -84,16 +84,16 @@ export const setPaymentNotification = payload => ({
   payload,
 });
 
-export const getEspots = payload => {
+export const getRichText = payload => {
   return {
     payload,
-    type: PAYMENT_CONSTANTS.FETCH_ESPOT,
+    type: PAYMENT_CONSTANTS.FETCH_RICH_TEXT,
   };
 };
 
-export const setEspots = payload => {
+export const setRichText = payload => {
   return {
     payload,
-    type: PAYMENT_CONSTANTS.SET_ESPOT,
+    type: PAYMENT_CONSTANTS.SET_RICH_TEXT,
   };
 };

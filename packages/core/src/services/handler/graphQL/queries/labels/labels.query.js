@@ -9,6 +9,10 @@ const buildQuery = ({ category, subCategory, brand, country, channel }) => `
         key
         value
       }
+      referred {
+        name
+        cid
+      }
     }
   }
 `;
