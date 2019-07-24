@@ -42,10 +42,6 @@ async function fetchData(baseURL, relURL, params = {}, method) {
     request.send(params.payload);
   }
 
-  if (!params.unbxd) {
-    request.withCredentials();
-  }
-
   const result = new Promise((resolve, reject) => {
     request
       .then(response => {
