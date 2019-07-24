@@ -1,12 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HeadingVanilla should render correctly 1`] = `
+exports[`Anchor Native should render correctly 1`] = `
 <Styled(TouchableOpacity)
   accessibilityRole="button"
   onPress={[Function]}
 >
   <Text
     anchorVariation=""
-  />
+    navigation={
+      Object {
+        "navigate": [MockFunction],
+      }
+    }
+    url="https://www.google.com/p/Rainbow--The-Birthday-Girl--Graphic-Tee"
+  >
+    click Me
+  </Text>
 </Styled(TouchableOpacity)>
 `;
