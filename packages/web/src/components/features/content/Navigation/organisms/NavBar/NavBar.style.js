@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 export default css`
   list-style-type: none;
-  border-bottom: 1px solid #d8d8d8;
+  border-bottom: 1px solid ${props => props.theme.colorPalette.text.disabled};
   padding: 0 14px;
 
   @media ${props => props.theme.mediaQuery.medium} {
@@ -12,6 +12,6 @@ export default css`
   @media ${props => props.theme.mediaQuery.large} {
     display: flex;
     justify-content: center;
-    border-bottom: 1px solid #d8d8d8;
+    border-bottom: 1px solid ${props => props.theme.colorPalette.text.disabled};
   }
 `;

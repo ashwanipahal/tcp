@@ -5,7 +5,7 @@ const darkArrow = getIconPath('icon-carrot-black-small');
 
 export default css`
   padding: 18px 0 17px 0;
-  color: #1a1a1a;
+  color: ${props => props.theme.colorPalette.text.primary};
   cursor: pointer;
 
   span {
@@ -23,14 +23,14 @@ export default css`
   }
   .nav-bar-l1-item-content {
     width: 46%;
-    color: #439ad4;
+    color: ${props => props.theme.colorPalette.primary.main};
   }
 
   &:hover {
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.99), #f6f6f6);
-    color: #1a1a1a;
+    color: ${props => props.theme.colorPalette.text.primary};
     cursor: pointer;
-    border-bottom: 3px solid #4b9fdd;
+    border-bottom: 3px solid ${props => props.theme.colorPalette.primary.main};
   }
 
   @media ${props => props.theme.mediaQuery.large} {
@@ -41,6 +41,6 @@ export default css`
       display: none;
     }
     padding: 38px 38px 12px 41px;
-    color: #9b9b9b;
+    color: ${props => props.theme.colorPalette.text.hint};
   }
 `;
