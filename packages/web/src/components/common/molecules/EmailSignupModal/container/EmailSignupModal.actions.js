@@ -28,6 +28,13 @@ export const emailSignupStatus = payload => {
   };
 };
 
+export const toggleEmailSignupModal = payload => {
+  return {
+    payload,
+    type: EMAIL_SIGNUP_CONSTANTS.EMAIL_SUBSCRIPTION_MODAL_TOGGLE,
+  };
+};
+
 export const clearEmailSignupForm = payload => {
   return {
     payload,
