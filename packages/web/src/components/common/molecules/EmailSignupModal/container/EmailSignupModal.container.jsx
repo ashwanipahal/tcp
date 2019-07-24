@@ -25,10 +25,10 @@ export const mapDispatchToProps = dispatch => {
       dispatch(toggleEmailSignupModal({ isModalOpen: false }));
     },
     /* Validate function for redux-form */
-    asyncValidate: (values, f, state) => {
+    asyncValidate: (values, reduxFormDispatch, props) => {
       const {
         formViewConfig: { validationErrorLabel },
-      } = state;
+      } = props;
 
       return values.signup
         ? emailSignupAbstractor.verifyEmail(values.signup).then(isValid => {

@@ -55,7 +55,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(submitEmailSignup(payload));
     },
     /* Validate function for email signup redux-form */
-    emailSignUpAsyncValidate: (values, f, props) => {
+    emailSignUpAsyncValidate: (values, reduxFormDispatch, props) => {
       const {
         labels: { validationErrorLabel },
       } = props;
