@@ -6,7 +6,7 @@ import AddedToBagViewPoints from '../views/AddedToBagViewPoints.view';
 import getCartOrderList from '../../Cart/containers/Cart.selectors';
 import getPointsSummary from '../../Cart/util/utility';
 
-class AddedToBagViewPointsContainer extends React.Component {
+export class AddedToBagViewPointsContainer extends React.Component {
   componentDidMount = () => {
     const { getOrderDetailsAction } = this.props;
     getOrderDetailsAction();
@@ -18,13 +18,13 @@ class AddedToBagViewPointsContainer extends React.Component {
     return <AddedToBagViewPoints labels={labels} pointsSummary={pointsSummary} />;
   }
 }
-function mapDispatchToProps(dispatch) {
+export const mapDispatchToProps = dispatch => {
   return {
     getOrderDetailsAction: () => {
       dispatch(getOrderDetails());
     },
   };
-}
+};
 
 function mapStateToProps(state) {
   return {
