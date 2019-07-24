@@ -58,7 +58,6 @@ const mapStateToProps = (state, props) => {
     isSubscriptionValid: EmailSignUp.signupSuccess,
     isEmailValid: EmailSignUp.isEmailValid,
     isModalOpen: EmailSignUp.isModalOpen,
-
     ...props,
   };
 };
