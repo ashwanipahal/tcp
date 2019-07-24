@@ -118,9 +118,7 @@ class CookiesTestView extends React.Component {
         'targetDomain',
         this.state.targetDomain.substr(this.state.targetDomain.split('.')[0].length)
       )
-      .set('credentials', 'include')
       .set('Accept', 'application/json')
-      .withCredentials()
       .send(JSON.stringify(payload))
       .then(res => {
         console.log(res);
