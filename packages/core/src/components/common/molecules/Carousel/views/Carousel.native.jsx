@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import { Image } from '../../../atoms';
-import config from '../config';
+import config from '../Config.native';
 import { getLocator } from '../../../../../utils/utils.native';
 import { Touchable, TouchableView, Icon, Container } from '../Carousel.native.style';
 
@@ -44,7 +44,7 @@ const swipeDefault = { ...config.CAROUSEL_APP_SWIPE };
 /**
  * Style for play pause icons.
  */
-const { playIconHeight, playIconWidth } = config.CAROUSEL_APP_CONFIG;
+const { playIconHeight, playIconWidth } = { ...config.CAROUSEL_APP_CONFIG };
 
 /**
  * @function Carousel component that creates carousel using
@@ -130,7 +130,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       variation,
     } = this.props;
 
-    if (variation === 'swipe-arrow') {
+    if (variation === 'show-arrow') {
       return (
         <Container>
           <TouchableView

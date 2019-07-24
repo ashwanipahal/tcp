@@ -10,7 +10,7 @@ exports[`HeaderPromo Component HeaderPromo should render correctly 1`] = `
   data={Object {}}
   height={30}
   renderItem={[Function]}
-  variation="swipe-arrow"
+  variation="show-arrow"
   width={750}
 />
 `;

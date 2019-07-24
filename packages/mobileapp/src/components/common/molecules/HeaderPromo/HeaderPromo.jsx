@@ -66,7 +66,7 @@ class HeaderPromo extends React.PureComponent<props> {
         renderItem={this.renderView}
         height={MODULE_HEIGHT}
         width={MODULE_WIDTH}
-        variation="swipe-arrow"
+        variation="show-arrow"
         carouselConfig={{
           autoplay: true,
         }}

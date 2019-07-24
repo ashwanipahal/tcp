@@ -15,6 +15,7 @@ import {
   BackgroundView,
   CartIconView,
   ImageColor,
+  HeaderPromoContainer,
 } from './Header.style';
 
 // @flow
@@ -129,7 +130,9 @@ class Header extends React.PureComponent<Props> {
             />
           </CartContainer>
         </Container>
-        <HeaderPromo headerPromo={headerPromo} />
+        <HeaderPromoContainer>
+          <HeaderPromo headerPromo={headerPromo} />
+        </HeaderPromoContainer>
       </SafeAreaViewStyle>
     );
   }

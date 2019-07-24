@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import config from './config';
+import config from './Config.native';
 
 const { playIconHeight, playIconWidth } = config.CAROUSEL_APP_CONFIG;
 
@@ -30,9 +30,6 @@ export const Container = styled.View`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 42px;
-  background: ${props => props.theme.colors.PRIMARY.PALEGRAY};
-  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
 export default { Touchable, TouchableView, Icon, Container };
