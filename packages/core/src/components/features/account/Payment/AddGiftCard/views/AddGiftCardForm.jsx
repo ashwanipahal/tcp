@@ -83,8 +83,15 @@ class AddGiftCardForm extends React.PureComponent<Props> {
               dataLocator="gift-card-addcardrecaptchacheckbox"
             />
           </Col>
-          <Field component={TextBox} type="hidden" name="recaptchaToken" />
         </Row>
+        <div>
+          <Field
+            component={TextBox}
+            type="hidden"
+            name="recaptchaToken"
+            className="card__recaptcha"
+          />
+        </div>
 
         <Row fullBleed className="card__row">
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 8, large: 7 }}>
@@ -135,7 +142,9 @@ class AddGiftCardForm extends React.PureComponent<Props> {
   }
 }
 
-const validateMethod = createValidateMethod(getStandardConfig(['giftCardNumber', 'cardPin']));
+const validateMethod = createValidateMethod(
+  getStandardConfig(['giftCardNumber', 'cardPin', 'recaptchaToken'])
+);
 
 export default reduxForm({
   form: 'AddGiftCardForm', // a unique identifier for this form

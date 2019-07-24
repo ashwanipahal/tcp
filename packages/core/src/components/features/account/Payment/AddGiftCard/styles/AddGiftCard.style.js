@@ -48,6 +48,9 @@ const styles = css`
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
+  .card__recaptcha {
+    position: absolute;
+  }
 `;
 
 export default styles;
