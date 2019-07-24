@@ -4,11 +4,15 @@ import ProductListingPageStyle from '../styles/ProductListingPage.style';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 
 export const ProductListView = ({ data, className }) => {
   return (
     <ProductListingPageStyle>
       <h1>PLP Page</h1>
+      <Anchor href="/account" asPath="/account">
+        Go to account
+      </Anchor>
       <Row tagName="ul" className={className}>
         {data &&
           data.map(item => (

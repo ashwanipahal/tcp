@@ -27,7 +27,7 @@ type Props = {
 };
 
 const onAddGiftCardClick = () => {
-  Router.push('/account?id=add-gift-card', '/account/payment/add-gift-card');
+  Router.push('/account?id=payment&subSection=add-gift-card', '/account/payment/add-gift-card');
 };
 
 const GiftCardList = ({
