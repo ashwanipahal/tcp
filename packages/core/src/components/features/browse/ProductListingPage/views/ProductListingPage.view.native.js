@@ -36,6 +36,7 @@ export class ProductListView extends React.Component {
             <Picker
               selectedValue={this.state.quantity}
               itemStyle={{ backgroundColor: 'white', color: 'blue', fontSize: 17, height: 60 }}
+              onValueChange={value => this.selectChange(value, 'quantity')}
             >
               <Picker.Item label="1" value="1" />
               <Picker.Item label="2" value="2" />
@@ -59,6 +60,7 @@ export class ProductListView extends React.Component {
             buttonVariation="variable-width"
             text="Add to Bag"
             onPress={() => this.addToBagEcom(item)}
+            className="addToBagButton"
           />
           <View className="product-store">
             <Text>Please select a store</Text>
@@ -81,6 +83,15 @@ export class ProductListView extends React.Component {
       </ProductListingPageStyle>
     );
   };
+
+  selectChange(value, elem) {
+    //const val = e.target && e.target.value;
+    if (value) {
+      this.setState({
+        [elem]: value,
+      });
+    }
+  }
 
   addToBagEcom = item => {
     const { addToCartEcom } = this.props;

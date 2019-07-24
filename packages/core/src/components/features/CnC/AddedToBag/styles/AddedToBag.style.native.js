@@ -9,9 +9,9 @@ const styles = css`
     transform: none;
     box-shadow: 0 4px 8px 0 rgba(163, 162, 162, 0.5);
     padding: 7px 20px 20px;
-    width: 350px;
+    width: 250px;
     @media ${props => props.theme.mediaQuery.large} {
-      width: 375px;
+      width: 275px;
     }
   }
   .Modal_Heading {

@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header Component AddedToBag should render correctly 1`] = `
+<ModalNative
+  aria={
+    Object {
+      "describedby": "Added To Bag Modal",
+      "labelledby": "Added To Bag",
+    }
+  }
+  className="TCPModal__Content, "
+  closeIconDataLocator="added-to-bg-close"
+  fixedWidth={true}
+  heading="ADDED TO BAG"
+  isOpen={[Function]}
+  onRequestClose={[Function]}
+  overlayClassName="TCPModal__Overlay"
+>
+  <View
+    className="addedToBagWrapper"
+  >
+    <Text>
+      Integrate here your Integrate here
+    </Text>
+  </View>
+</ModalNative>
+`;
