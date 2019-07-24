@@ -24,8 +24,8 @@ class LoginView extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'testingnarvar@gmail.com',
-      password: 'Password@123',
+      email: 'naman.jain@publicissapient.com',
+      password: 'Test@1234',
     };
   }
 

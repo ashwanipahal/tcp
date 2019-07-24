@@ -8,7 +8,7 @@ import {
   setAddressBookNotification,
 } from './AddressBook.actions';
 import { getUserInfo } from '../../LoginPage/container/LoginPage.actions';
-import AddressBookComponent from '../views/AddressBook.view';
+import AddressView from '../views/AddressView';
 import {
   getAddressListState,
   getAddressListFetchingState,
@@ -57,13 +57,14 @@ export class AddressBookContainer extends React.Component<Props> {
       setDeleteModalMountState,
       showUpdatedNotificationOnModal,
     } = this.props;
-    if (isFetching) {
-      return <p>Loading...</p>;
-    }
+    // if (isFetching) {
+    //   return <p>Loading...</p>;
+    // }
     if (List.isList(addressList)) {
       return (
-        <AddressBookComponent
+        <AddressView
           addresses={addressList}
+          isFetching={isFetching}
           labels={labels}
           onDefaultShippingAddressClick={onDefaultShippingAddressClick}
           showUpdatedNotification={showUpdatedNotification}

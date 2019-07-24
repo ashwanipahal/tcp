@@ -3,14 +3,14 @@ import Router from 'next/router'; //eslint-disable-line
 import { List } from 'immutable';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Heading } from '@tcp/core/styles/themes/TCP/typotheme';
-import styles from '../styles/AddressBook.style';
-import Row from '../../../../common/atoms/Row';
-import Col from '../../../../common/atoms/Col';
-import Button from '../../../../common/atoms/Button';
-import AddressListComponent from './AddressList.view';
-import EmptyAddressListComponent from './EmptyAddressList.view';
-import DeleteAddressModal from './DeleteAddressModal.view';
-import Notification from '../../../../common/molecules/Notification';
+import styles from '../../../styles/AddressBook.style';
+import Row from '../../../../../../common/atoms/Row';
+import Col from '../../../../../../common/atoms/Col';
+import Button from '../../../../../../common/atoms/Button';
+import AddressListComponent from '../../AddressList.view';
+import EmptyAddressListComponent from '../../EmptyAddressList.view';
+import DeleteAddressModal from '../../DeleteAddressModal.view';
+import Notification from '../../../../../../common/molecules/Notification';
 
 // @flow
 
@@ -28,7 +28,7 @@ type Props = {
   setDeleteModalMountState: Function,
 };
 
-export class AddressBook extends React.PureComponent<Props> {
+export class AddressView extends React.PureComponent<Props> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -138,4 +138,4 @@ export class AddressBook extends React.PureComponent<Props> {
     );
   }
 }
-export default withStyles(AddressBook, styles);
+export default withStyles(AddressView, styles);
