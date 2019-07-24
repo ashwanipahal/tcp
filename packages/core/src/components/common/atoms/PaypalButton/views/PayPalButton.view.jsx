@@ -11,19 +11,12 @@ class PayPalButton extends React.Component {
       : requireNamedOnlineModule('paypal').then(this.renderPayPalButton);
   }
 
-  initializePayPalButton = ({ containerId, height = 48 }) => {
+  initializePayPalButton = ({ containerId }) => {
+    const { locale, style } = this.props;
     const options = {
-      locale: 'en_US',
-      style: {
-        size: 'responsive',
-        color: 'blue',
-        shape: 'rect',
-        label: 'paypal',
-        tagline: false, // disabling the tagline text
-        height,
-      },
+      locale,
+      style,
       funding: {
-        // eslint-disable-next-line no-undef
         disallowed: [],
       },
       env: 'sandbox',
@@ -43,11 +36,11 @@ class PayPalButton extends React.Component {
   };
 
   renderPayPalButton = () => {
-    const element = document.querySelector(`#paypal-button-container`);
+    const { containerId } = this.props;
+    const element = document.querySelector(`#${containerId}`);
     if (element && !element.hasChildNodes()) {
       this.initializePayPalButton({
-        containerId: 'paypal-button-container',
-        height: 48,
+        containerId,
       });
     }
   };
@@ -64,8 +57,24 @@ class PayPalButton extends React.Component {
   }
 }
 
+PayPalButton.defaultProps = {
+  containerId: 'paypal-button-container',
+  locale: 'en_US',
+  style: {
+    size: 'responsive',
+    color: 'blue',
+    shape: 'rect',
+    label: 'paypal',
+    tagline: false,
+    height: 48,
+  },
+};
+
 PayPalButton.propTypes = {
   className: PropTypes.string.isRequired,
+  locale: PropTypes.string,
+  style: PropTypes.shape,
+  containerId: PropTypes.string,
 };
 
 export default PayPalButton;

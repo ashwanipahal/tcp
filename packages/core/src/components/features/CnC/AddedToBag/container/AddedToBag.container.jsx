@@ -14,7 +14,6 @@ type Props = {
 export class AddedToBagContainer extends React.Component<Props> {
   constructor(props) {
     super(props);
-
     this.closeModal = this.closeModal.bind(this);
   }
 

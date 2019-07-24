@@ -29,8 +29,8 @@ const AddedToBag = ({ openState, onRequestClose, className }: Props) => {
       }}
     >
       <div className="addedToBagWrapper">
-        <AddedToBagActions />
         <AddedToBagViewPoints className="added-to-bag-points" />
+        <AddedToBagActions />
       </div>
     </Modal>
   );

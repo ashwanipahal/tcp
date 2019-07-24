@@ -2,13 +2,7 @@ import { call, takeLatest, put } from 'redux-saga/effects';
 // import { validateReduxCache } from '../../../../../utils/cache.util';
 import ADDEDTOBAG_CONSTANTS from '../AddedToBag.constants';
 import fetchData from '../../../../../service/API';
-import { getOrderDetailsData } from '../../../../../services/abstractors/CnC/CartItemTile';
-import {
-  AddToCartError,
-  SetAddedToBagData,
-  openAddedToBag,
-  getOrderDetailsComplete,
-} from './AddedToBag.actions';
+import { AddToCartError, SetAddedToBagData, openAddedToBag } from './AddedToBag.actions';
 import endpoints from '../../../../../service/endpoint';
 
 export function* addToCartEcom({ payload }) {
@@ -54,18 +48,8 @@ export function* addToCartEcom({ payload }) {
   }
 }
 
-function* getOrderDetailSaga() {
-  try {
-    const res = yield call(getOrderDetailsData);
-    yield put(getOrderDetailsComplete(res));
-  } catch (err) {
-    console.log(err);
-  }
-}
-
 export function* AddedToBagSaga() {
   yield takeLatest(ADDEDTOBAG_CONSTANTS.ADD_TO_CART_ECOM, addToCartEcom);
-  yield takeLatest(ADDEDTOBAG_CONSTANTS.GET_ORDER_DETAILS, getOrderDetailSaga);
 }
 
 export default AddedToBagSaga;

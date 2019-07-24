@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-const CTAStyle = css`
+const CtaStyle = css`
   display: block;
   margin: 10px 0;
   .check-out-container {
@@ -25,17 +25,9 @@ const CTAStyle = css`
     font-size: 14px;
     font-weight: 800;
     height: 48px;
+    width: 100%;
     background-color: #2e6a91;
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
-    @media ${props => props.theme.mediaQuery.small} {
-      width: 100%;
-    }
-    @media ${props => props.theme.mediaQuery.medium} {
-      width: 100%;
-    }
-    @media ${props => props.theme.mediaQuery.large} {
-      width: 100%;
-    }
   }
 `;
-export default CTAStyle;
+export default CtaStyle;

@@ -1,9 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getOrderDetails } from '../../AddedToBag/container/AddedToBag.actions';
+import { getOrderDetails } from '../../Cart/containers/Cart.actions';
 import AddedToBagViewPoints from '../views/AddedToBagViewPoints.view';
-import { getCartOrderList } from '../../AddedToBag/container/AddedToBag.selectors';
+import getCartOrderList from '../../Cart/containers/Cart.selectors';
+import getPointsSummary from '../../Cart/util/utility';
 
 class AddedToBagViewPointsContainer extends React.Component {
   componentDidMount = () => {
@@ -13,23 +14,7 @@ class AddedToBagViewPointsContainer extends React.Component {
 
   render() {
     const { getOrderPointsSummary } = this.props;
-    let pointsSummary = {};
-    if (getOrderPointsSummary.orderDetails) {
-      const {
-        orderItems,
-        pointsToNextReward,
-        userPoints,
-        subTotal,
-      } = getOrderPointsSummary.orderDetails;
-      pointsSummary = {
-        itemPrice: (orderItems[0] && orderItems[0].itemPrice) || 0,
-        itemPoints: (orderItems && orderItems[0] && orderItems[0].itemPoints) || 0,
-        pointsToNextReward,
-        userPoints: userPoints || 0,
-        subTotal,
-        totalItems: (orderItems && orderItems.length) || 0,
-      };
-    }
+    const pointsSummary = getPointsSummary(getOrderPointsSummary);
     return <AddedToBagViewPoints pointsSummary={pointsSummary} />;
   }
 }

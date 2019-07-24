@@ -9,7 +9,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary }) => {
   const {
     itemPrice,
     itemPoints,
-    subTotal,
+    bagSubTotal,
     userPoints,
     pointsToNextReward,
     totalItems,
@@ -19,7 +19,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary }) => {
       <Row className="row-padding">
         <Col colSize={{ large: 9, small: 4, medium: 6 }}>Price</Col>
         <Col className="value" colSize={{ large: 3, small: 2, medium: 2 }}>
-          ${itemPrice}
+          {`$${itemPrice}`}
         </Col>
       </Row>
       <Row className="bold-text">
@@ -30,12 +30,9 @@ const AddedToBagViewPoints = ({ className, pointsSummary }) => {
       </Row>
       <Row className="divided-line" />
       <Row className="row-padding">
-        <Col colSize={{ large: 9, small: 4, medium: 6 }}>
-          Bag Total ({totalItems}
-          items)
-        </Col>
+        <Col colSize={{ large: 9, small: 4, medium: 6 }}>{`Bag Total ${totalItems} items`}</Col>
         <Col className="value" colSize={{ large: 3, small: 2, medium: 2 }}>
-          ${subTotal}
+          {`$${bagSubTotal}`}
         </Col>
       </Row>
       <Row className="bold-text row-padding">
