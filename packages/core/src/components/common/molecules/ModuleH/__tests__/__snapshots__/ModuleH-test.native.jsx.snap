@@ -2,6 +2,243 @@
 
 exports[`ModuleH component renders correctly 1`] = `
 <Styled(View)>
-  <Styled(View) />
+  <Styled(View)>
+    <TouchableOpacity
+      accessibilityRole="link"
+      activeOpacity={0.2}
+      key="0"
+      onPress={[Function]}
+    >
+      <Styled(Heading)
+        color="white"
+        data-locator="moduleH_header_text_1"
+        fontFamily="primary"
+        fontSize="fs36"
+        fontWeight="black"
+        letterSpacing="ls167"
+        text="New arrivals"
+        textAlign="left"
+      />
+    </TouchableOpacity>
+    <TouchableOpacity
+      accessibilityRole="link"
+      activeOpacity={0.2}
+      key="1"
+      onPress={[Function]}
+    >
+      <Styled(Heading)
+        color="white"
+        data-locator="moduleH_header_text_2"
+        fontFamily="primary"
+        fontSize="fs36"
+        fontWeight="black"
+        letterSpacing="ls167"
+        text="New adventures"
+        textAlign="left"
+      />
+    </TouchableOpacity>
+  </Styled(View)>
+  <SnapCarousel
+    carouselConfig={
+      Object {
+        "autoplay": true,
+      }
+    }
+    data={
+      Array [
+        Object {
+          "image": Object {
+            "alt": "Toddler girl",
+            "title": "Toddler girl",
+            "url": "http://example.com/img1.jpg",
+          },
+          "link": Object {
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "/toddler",
+          },
+          "styled": Object {
+            "color": "color1",
+            "style": "style1",
+            "text": "Toddler Girl",
+          },
+        },
+        Object {
+          "image": Object {
+            "alt": "Girl",
+            "title": "Girl",
+            "url": "http://example.com/girl.jpg",
+          },
+          "link": Object {
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "/girl",
+          },
+          "styled": Object {
+            "color": "color2",
+            "style": "style2",
+            "text": "Girl",
+          },
+        },
+        Object {
+          "image": Object {
+            "alt": "Toddler boy",
+            "title": "Toddler boy",
+            "url": "http://example.com/toddler-boy.jpg",
+          },
+          "link": Object {
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "/toddler-boy",
+          },
+          "styled": Object {
+            "color": "color3",
+            "style": "style3",
+            "text": "Toddler boy",
+          },
+        },
+        Object {
+          "image": Object {
+            "alt": "Boy",
+            "title": "Boy",
+            "url": "http://example.com/boy.jpg",
+          },
+          "link": Object {
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "/boy",
+          },
+          "styled": Object {
+            "color": "color4",
+            "style": "style4",
+            "text": "Boy",
+          },
+        },
+        Object {
+          "image": Object {
+            "alt": "Baby",
+            "title": "Baby",
+            "url": "http://example.com/baby.jpg",
+          },
+          "link": Object {
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "/baby",
+          },
+          "styled": Object {
+            "color": "color4",
+            "style": "style5",
+            "text": "Baby",
+          },
+        },
+      ]
+    }
+    height={425}
+    onSnapToItem={[Function]}
+    renderItem={[Function]}
+    width={750}
+  />
+  <Styled(View)>
+    <Styled(BodyCopy)
+      color="white"
+      fontFamily="secondary"
+      fontSize="fs20"
+      fontWeight="extrabold"
+      key="0"
+      letterSpacing="ls167"
+      onPress={[Function]}
+      style={
+        Object {
+          "color": "#fff",
+          "fontSize": 20,
+          "lineHeight": 20,
+          "marginTop": 38,
+        }
+      }
+      text="Toddler Girl"
+      textAlign="left"
+    />
+    <Styled(BodyCopy)
+      color="white"
+      fontFamily="secondary"
+      fontSize="fs20"
+      fontWeight={null}
+      key="1"
+      letterSpacing="ls167"
+      onPress={[Function]}
+      style={
+        Object {
+          "color": "#fff",
+          "fontSize": 20,
+          "lineHeight": 20,
+          "marginTop": 38,
+        }
+      }
+      text="Girl"
+      textAlign="left"
+    />
+    <Styled(BodyCopy)
+      color="white"
+      fontFamily="secondary"
+      fontSize="fs20"
+      fontWeight={null}
+      key="2"
+      letterSpacing="ls167"
+      onPress={[Function]}
+      style={
+        Object {
+          "color": "#fff",
+          "fontSize": 20,
+          "lineHeight": 20,
+          "marginTop": 38,
+        }
+      }
+      text="Toddler boy"
+      textAlign="left"
+    />
+    <Styled(BodyCopy)
+      color="white"
+      fontFamily="secondary"
+      fontSize="fs20"
+      fontWeight={null}
+      key="3"
+      letterSpacing="ls167"
+      onPress={[Function]}
+      style={
+        Object {
+          "color": "#fff",
+          "fontSize": 20,
+          "lineHeight": 20,
+          "marginTop": 38,
+        }
+      }
+      text="Boy"
+      textAlign="left"
+    />
+    <Styled(BodyCopy)
+      color="white"
+      fontFamily="secondary"
+      fontSize="fs20"
+      fontWeight={null}
+      key="4"
+      letterSpacing="ls167"
+      onPress={[Function]}
+      style={
+        Object {
+          "color": "#fff",
+          "fontSize": 20,
+          "lineHeight": 20,
+          "marginTop": 38,
+        }
+      }
+      text="Baby"
+      textAlign="left"
+    />
+  </Styled(View)>
 </Styled(View)>
 `;

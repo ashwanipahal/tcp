@@ -40,7 +40,6 @@ const buildQuery = ({ slot, contentId }) => `
       imageGrid {
         image {
           url
-          title
           alt
           crop_d
           crop_t

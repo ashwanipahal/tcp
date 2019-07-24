@@ -1,15 +1,14 @@
 // @flow
 import React from 'react';
 import { Anchor, Button, Col, Row, Image } from '../../../atoms';
-import { Grid } from '../..';
-import Heading from '../../../atoms/Heading';
+import { Grid, LinkText } from '../..';
 import { getLocator } from '../../../../../utils';
 import style from '../ModuleD.style';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/errorBoundary';
 
 type Props = {
-  className: String,
+  className: string,
   headerText: Object,
   smallCompImage: Object,
   singleCTAButton: Object,
@@ -47,10 +46,6 @@ const ignoreGutter = [
 
 const ModuleD = (props: Props) => {
   const { className, headerText, smallCompImage, singleCTAButton } = props;
-  const {
-    textLines: [{ text: headingText }],
-    link: { target, title, url },
-  } = headerText;
   let colSize;
 
   if (smallCompImage && smallCompImage.length === 2) {
@@ -60,21 +55,19 @@ const ModuleD = (props: Props) => {
   } else {
     colSize = colSize6Elements;
   }
-
   return (
-    <Grid className={className}>
-      <Anchor className="moduleD_textlink" to={url} target={target}>
-        <Heading
+    <Grid className={`${className} moduleD`}>
+      {headerText.length && (
+        <LinkText
+          headerText={headerText}
           className="moduleD_header"
-          variant="h2"
-          data-locator={getLocator('moduleD_headerlink')}
+          component="div"
+          fontSize="fs48"
+          fontWeight="black"
           textAlign="center"
-          color="text.primary"
-          title={title}
-        >
-          {headingText}
-        </Heading>
-      </Anchor>
+          dataLocator="moduleD_headerlink"
+        />
+      )}
       <Row centered>
         {smallCompImage &&
           smallCompImage.map((item, index) => {

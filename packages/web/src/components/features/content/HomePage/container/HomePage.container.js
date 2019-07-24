@@ -10,6 +10,7 @@ HomePageView.getInitActions = () => initActions;
 const mapStateToProps = state => {
   const homepageSlots = state.Layouts.homepage.slots;
   const newObj = {};
+
   homepageSlots.forEach(slotItem => {
     newObj[slotItem.name] = state.Modules[slotItem.contentId];
     newObj[slotItem.name].name = slotItem.moduleName;

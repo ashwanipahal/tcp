@@ -29,4 +29,5 @@ export default {
   'visa-small': '/static/images/visa-small.png',
   'gift-card-small': '/static/images/gift-card-small.png',
   'venmo-blue-acceptance-mark': '/static/images/venmo-blue-acceptance-mark.png',
+  'carousel-big-carrot': '/static/images/right-carousel-carrot.svg',
 };

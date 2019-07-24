@@ -32,6 +32,11 @@ export default {
     medium: 8,
     large: 5,
   },
+  COL_SIZE_TILE: {
+    small: 6,
+    medium: 8,
+    large: 12,
+  },
   IMG_DATA: {
     crops: [
       'c_fill,g_center,q_80,h_127,w_103',

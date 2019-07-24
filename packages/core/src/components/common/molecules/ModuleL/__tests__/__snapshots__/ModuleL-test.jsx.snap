@@ -62,50 +62,61 @@ exports[`ModuleL component renders correctly 1`] = `
       }
     }
   >
-    <ModuleLHeader
+    <LinkText
+      className="moduleL__header"
+      component="div"
+      dataLocator="moduleL_header_text"
+      fontSize="fs48"
+      fontWeight="black"
       headerText={
-        Object {
-          "icon": Object {
-            "icon": "",
-            "placement": "",
-          },
-          "link": Object {
-            "external": 0,
-            "target": "",
-            "title": "",
-            "url": "https://www.childrensplace.com/us/c/girls-new-arrivals",
-          },
-          "textItems": Array [
-            Object {
-              "style": "style1",
-              "text": "TRENDING NOW",
+        Array [
+          Object {
+            "icon": Object {
+              "icon": "",
+              "placement": "",
             },
-          ],
-        }
+            "link": Object {
+              "external": 0,
+              "target": "",
+              "title": "",
+              "url": "https://www.childrensplace.com/us/c/girls-new-arrivals",
+            },
+            "textItems": Array [
+              Object {
+                "style": "style1",
+                "text": "TRENDING NOW",
+              },
+            ],
+          },
+        ]
       }
+      icon={Object {}}
+      textAlign="center"
     />
     <Styled(PromoBanner)
       className="moduleL__promo-banner"
       data-locator="moduleL_promobanner_text"
       fontSize="fs48"
-      linkClass={
-        Object {
-          "class": "",
-          "external": 0,
-          "target": "",
-          "title": "",
-          "url": "/banner/url",
-        }
-      }
-      textItems={
+      promoTextBanner={
         Array [
           Object {
-            "style": "text-black",
-            "text": "60% OFF",
-          },
-          Object {
-            "style": "text-normal",
-            "text": "BUY TODAY",
+            "linkClass": Object {
+              "class": "",
+              "external": 0,
+              "target": "",
+              "title": "",
+              "url": "/banner/url",
+            },
+            "textItems": Array [
+              Object {
+                "style": "text-black",
+                "text": "60% OFF",
+              },
+              Object {
+                "style": "text-normal",
+                "text": "BUY TODAY",
+              },
+            ],
           },
         ]
       }
@@ -137,7 +148,7 @@ exports[`ModuleL component renders correctly 1`] = `
               },
             },
           ],
-          "rows": 1,
+          "rows": 2,
           "slidesPerRow": 1,
           "slidesToScroll": 1,
           "slidesToShow": 2,

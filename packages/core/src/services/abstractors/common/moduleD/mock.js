@@ -8,18 +8,20 @@ export default {
     name: 'moduleD',
     type: 'module',
     composites: {
-      headerText: {
-        textLines: {
-          text: 'Mini me shop',
-          color: 'color2',
-          style: 'style1',
+      headerText: [
+        {
+          textItems: {
+            text: 'Mini me shop',
+            color: 'color2',
+            style: 'style1',
+          },
+          link: {
+            url: plpUrl,
+            title: '',
+            target: '',
+          },
         },
-        link: {
-          url: plpUrl,
-          title: '',
-          target: '',
-        },
-      },
+      ],
       promoBanner: {
         items: [
           {
@@ -37,69 +39,67 @@ export default {
           },
         ],
       },
-      smallCompImage: {
-        items: [
-          {
-            link: {
-              url: plpUrl,
-              title: fmt,
-              target: '',
-              external: 0,
-            },
-            image: {
-              url:
-                'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-              title: fmt,
-              alt: fmt,
-            },
+      smallCompImage: [
+        {
+          link: {
+            url: plpUrl,
+            title: fmt,
+            target: '',
+            external: 0,
           },
-          {
-            link: {
-              url: plpUrl,
-              text: mmt,
-              title: mmt,
-              target: '',
-              external: 0,
-            },
-            image: {
-              url:
-                'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg',
-              title: mmt,
-              alt: mmt,
-            },
+          image: {
+            url:
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+            title: fmt,
+            alt: fmt,
           },
-          {
-            link: {
-              url: plpUrl,
-              text: fmt,
-              title: fmt,
-              target: '',
-              external: 0,
-            },
-            image: {
-              url:
-                'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME4_iuzwmp.jpg',
-              title: fmt,
-              alt: fmt,
-            },
+        },
+        {
+          link: {
+            url: plpUrl,
+            text: mmt,
+            title: mmt,
+            target: '',
+            external: 0,
           },
-          {
-            link: {
-              url: plpUrl,
-              text: mmt,
-              title: mmt,
-              target: '',
-              external: 0,
-            },
-            image: {
-              url:
-                'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME2_uwtbdd.jpg',
-              title: mmt,
-              alt: mmt,
-            },
+          image: {
+            url:
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg',
+            title: mmt,
+            alt: mmt,
           },
-        ],
-      },
+        },
+        {
+          link: {
+            url: plpUrl,
+            text: fmt,
+            title: fmt,
+            target: '',
+            external: 0,
+          },
+          image: {
+            url:
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME4_iuzwmp.jpg',
+            title: fmt,
+            alt: fmt,
+          },
+        },
+        {
+          link: {
+            url: plpUrl,
+            text: mmt,
+            title: mmt,
+            target: '',
+            external: 0,
+          },
+          image: {
+            url:
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME2_uwtbdd.jpg',
+            title: mmt,
+            alt: mmt,
+          },
+        },
+      ],
       singleCTAButton: {
         url: plpUrl,
         target: '',

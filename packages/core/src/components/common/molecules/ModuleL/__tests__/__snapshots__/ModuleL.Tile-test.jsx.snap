@@ -49,27 +49,21 @@ exports[`ModuleL Header component renders correctly 1`] = `
           color="text.primary"
           component="div"
           data-locator="moduleL_title_NaN"
-          fontFamily={
-            Array [
-              "primary",
-            ]
-          }
+          fontFamily="primary"
           fontSize={
             Array [
+              "fs20",
               "fs32",
             ]
           }
           fontWeight={
             Array [
               "regular",
+              "semibold",
             ]
           }
-          letterSpacing={
-            Array [
-              "ls222",
-            ]
-          }
-          lineHeight="normal"
+          letterSpacing="ls222"
+          lineHeight="lh107"
           textAlign="left"
         >
           BE A UNICORN 24/7/365

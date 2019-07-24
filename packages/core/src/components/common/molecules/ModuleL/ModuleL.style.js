@@ -1,6 +1,9 @@
 import { css } from 'styled-components';
+import { getIconPath } from '../../../../utils';
 
+const carouselArrowBig = getIconPath('carousel-big-carrot');
 export default css`
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   .moduleL__mobile-web-container {
     @media ${props => props.theme.mediaQuery.medium} {
       display: none;
@@ -17,44 +20,55 @@ export default css`
     background-color: ${props => props.theme.colorPalette.gray['300']};
     display: flex;
     flex-direction: row;
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-bottom: 18px;
     text-align: left;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+      margin-bottom: 30px;
     }
   }
   .moduleL__tile-image {
     max-width: 210px;
   }
   .moduleL__tile-text {
-    margin-left: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    margin-left: 13px;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      margin-left: ${props => props.theme.spacing.ELEM_SPACING.XL};
+      margin-left: 30px;
     }
   }
   .moduleL__tile-title {
-    font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy6}px;
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    margin-top: 31px;
+    margin-bottom: 13px;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+      margin-top: 44px;
+      margin-bottom: 20px;
     }
 
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy10}px;
-      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+      margin-top: 58px;
     }
 
     @media ${props => props.theme.mediaQuery.xlarge} {
-      margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
+      margin-top: 91px;
     }
   }
   .moduleL__tile-link {
     color: ${props => props.theme.colorPalette.gray['900']};
-    font-size: ${props => props.theme.fonts.fontSize.anchor.large}px;
+  }
+  .slick-prev {
+    left: -70px;
+    background-image: url(${carouselArrowBig});
+    background-size: auto;
+    width: 42px;
+    height: 42px;
+  }
+  .slick-next {
+    right: -70px;
+    background-image: url(${carouselArrowBig});
+    background-size: auto;
+    width: 42px;
+    height: 42px;
   }
 `;

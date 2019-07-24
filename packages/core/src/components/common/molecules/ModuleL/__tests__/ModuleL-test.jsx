@@ -2,8 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import mock from '../../../../../services/abstractors/common/moduleL/mock';
 import { ModuleLVanilla as ModuleL } from '../views/ModuleL';
-import { Carousel, PromoTextBanner } from '../..';
-import Header from '../views/ModuleL.Header';
+import { Carousel, LinkText, PromoTextBanner } from '../..';
 
 describe('ModuleL component', () => {
   let ModuleLComp;
@@ -18,7 +17,7 @@ describe('ModuleL component', () => {
   });
 
   it('should render header', () => {
-    expect(ModuleLComp.find(Header)).toHaveLength(1);
+    expect(ModuleLComp.find(LinkText)).toHaveLength(1);
   });
 
   it('should render promo text banner', () => {

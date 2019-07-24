@@ -3,19 +3,18 @@ import React from 'react';
 import { Col, Row } from '../../../atoms';
 import errorBoundary from '../../../hoc/errorBoundary';
 import withStyle from '../../../hoc/withStyles';
-import { Carousel, PromoTextBanner } from '../..';
+import { Carousel, LinkText, PromoTextBanner } from '../..';
 import { getLocator } from '../../../../../utils';
 import config from '../config';
-import ModuleLHeader from './ModuleL.Header';
 import ModuleLTile from './ModuleL.Tile';
 import style from '../ModuleL.style';
 
 type Props = {
   className: string,
-  headerText: Object,
+  headerText: Array<Object>,
   imageGrid: Array<Object>,
   imagesPerSlide: string,
-  promoTextBanner: Object,
+  promoTextBanner: Array<Object>,
 };
 
 /**
@@ -52,10 +51,20 @@ const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide, promoTextBa
       }}
     >
       <Col colSize={{ small: 6, medium: 8, large: 10 }} offsetLeft={{ large: 1 }}>
-        <ModuleLHeader headerText={headerText} />
-        {promoTextBanner && (
+        {headerText.length && (
+          <LinkText
+            headerText={headerText}
+            className="moduleL__header"
+            component="div"
+            fontSize="fs48"
+            fontWeight="black"
+            textAlign="center"
+            dataLocator="moduleL_header_text"
+          />
+        )}
+        {promoTextBanner.length && (
           <PromoTextBanner
-            {...promoTextBanner}
+            promoTextBanner={promoTextBanner}
             className="moduleL__promo-banner"
             fontSize="fs48"
             data-locator={getLocator('moduleL_promobanner_text')}

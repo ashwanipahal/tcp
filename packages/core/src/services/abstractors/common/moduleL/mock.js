@@ -8,44 +8,48 @@ export default {
     name: 'moduleL',
     type: 'module',
     composites: {
-      imagesPerSlide: '2',
-      headerText: {
-        textItems: [
-          {
-            text: 'TRENDING NOW',
-            style: 'style1',
+      imagesPerSlide: '4',
+      headerText: [
+        {
+          textItems: [
+            {
+              text: 'TRENDING NOW',
+              style: 'style1',
+            },
+          ],
+          icon: {
+            placement: '',
+            icon: '',
           },
-        ],
-        icon: {
-          placement: '',
-          icon: '',
-        },
-        link: {
-          url: 'https://www.childrensplace.com/us/c/girls-new-arrivals',
-          title: '',
-          target: '',
-          external: 0,
-        },
-      },
-      promoTextBanner: {
-        linkClass: {
-          url: '/banner/url',
-          title: '',
-          target: '',
-          external: 0,
-          class: '',
-        },
-        textItems: [
-          {
-            text: '60% OFF',
-            style: 'text-black',
+          link: {
+            url: 'https://www.childrensplace.com/us/c/girls-new-arrivals',
+            title: '',
+            target: '',
+            external: 0,
           },
-          {
-            text: 'BUY TODAY',
-            style: 'text-normal',
+        },
+      ],
+      promoTextBanner: [
+        {
+          linkClass: {
+            url: '/banner/url',
+            title: '',
+            target: '',
+            external: 0,
+            class: '',
           },
-        ],
-      },
+          textItems: [
+            {
+              text: '60% OFF',
+              style: 'text-black',
+            },
+            {
+              text: 'BUY TODAY',
+              style: 'text-normal',
+            },
+          ],
+        },
+      ],
       imageGrid: [
         {
           image: {

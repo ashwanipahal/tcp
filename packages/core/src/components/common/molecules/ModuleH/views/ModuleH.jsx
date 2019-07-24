@@ -73,7 +73,6 @@ class ModuleH extends React.PureComponent<Props, State> {
       this.setState({ current, next });
     };
     const { current, next } = this.state;
-
     return (
       <Row fullBleed={FULL_BLEED} className={`${className} moduleH`}>
         <Col colSize={COL_SIZE} offsetLeft={OFFSET_LEFT} className="moduleH__header--wrapper">

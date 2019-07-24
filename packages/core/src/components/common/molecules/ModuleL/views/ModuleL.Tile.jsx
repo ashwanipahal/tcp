@@ -10,6 +10,11 @@ type Props = {
 };
 
 /**
+ * @colSize : Column size for tile element
+ */
+const colSize = { ...config.COL_SIZE_TILE };
+
+/**
  * @function ModuleLTile This function renders tiles for carousel
  * @param {tileData} tileData Accepts image, link and styled object and index
  */
@@ -17,7 +22,7 @@ const ModuleLTile = ({ tileData: { image, link, styled }, index }: Props) => {
   return (
     <BodyCopy component="div" data-locator={`${getLocator('moduleL_tiles')}_${index + 1}`}>
       <Row>
-        <Col colSize={{ small: 6, medium: 8, large: 12 }} className="moduleL__tile">
+        <Col colSize={colSize} className="moduleL__tile">
           <DamImage
             imgData={{
               alt: image.alt,
@@ -31,10 +36,11 @@ const ModuleLTile = ({ tileData: { image, link, styled }, index }: Props) => {
             <BodyCopy
               component="div"
               className="moduleL__tile-title"
-              fontFamily={['primary']}
-              fontSize={['fs32']}
-              fontWeight={['regular']}
-              letterSpacing={['ls222']}
+              fontFamily="primary"
+              fontSize={['fs20', 'fs32']}
+              fontWeight={['regular', 'semibold']}
+              letterSpacing="ls222"
+              lineHeight="lh107"
               textAlign="left"
               color="text.primary"
               data-locator={`${getLocator('moduleL_title')}_${index + 1}`}
