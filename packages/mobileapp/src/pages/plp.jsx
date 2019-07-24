@@ -1,9 +1,9 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation';
-import { Text } from 'react-native';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
+import Navigation from '../components/features/content/Navigation';
 
-const Plp = () => <Text>PLP Page</Text>;
+const Plp = () => <Navigation />;
 
 const PlpStack = createStackNavigator({
   Plp,
