@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import AddGiftCardComponent from '../views/AddGiftCard.view';
 import { addGiftCardRequest, resetShowNotification } from './AddGiftCard.actions';
-import { getAddGiftCardResponse } from './AddGiftCard.selector';
+import { getAddGiftCardResponse, getAddGiftCardError } from './AddGiftCard.selector';
 import labels from './AddGiftCard.labels';
 import Router from 'next/router'; //eslint-disable-line
 
@@ -11,13 +11,17 @@ import Router from 'next/router'; //eslint-disable-line
 type Props = {
   onAddGiftCardClick: Function,
   addGiftCardResponse: String,
+  getAddGiftCardErr: String,
   resetNotificationStateAction: Function,
 };
 
 export class AddGiftCardContainer extends React.Component<Props> {
   componentWillUnmount() {
-    const { resetNotificationStateAction } = this.props;
-    resetNotificationStateAction();
+    const { getAddGiftCardErr } = this.props;
+    if (getAddGiftCardErr) {
+      const { resetNotificationStateAction } = this.props;
+      resetNotificationStateAction();
+    }
   }
 
   goBackToPayment = () => {
@@ -26,7 +30,7 @@ export class AddGiftCardContainer extends React.Component<Props> {
   };
 
   render() {
-    const { onAddGiftCardClick, addGiftCardResponse } = this.props;
+    const { onAddGiftCardClick, addGiftCardResponse, getAddGiftCardErr } = this.props;
 
     if (addGiftCardResponse === 'success') {
       return this.goBackToPayment();
@@ -35,7 +39,7 @@ export class AddGiftCardContainer extends React.Component<Props> {
       <AddGiftCardComponent
         onAddGiftCardClick={onAddGiftCardClick}
         labels={labels}
-        addGiftCardResponse={addGiftCardResponse}
+        addGiftCardResponse={getAddGiftCardErr}
         goBackToPayment={this.goBackToPayment}
       />
     );
@@ -56,6 +60,7 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
 const mapStateToProps = state => {
   return {
     addGiftCardResponse: getAddGiftCardResponse(state),
+    getAddGiftCardErr: getAddGiftCardError(state),
   };
 };
 
