@@ -29,6 +29,7 @@ type Props = {
   height: Number,
   slideStyle: Object,
   variation: String,
+  vertical: Boolean,
 };
 
 type State = {
@@ -39,7 +40,6 @@ type State = {
  * Default settings for Carousel.
  */
 const defaults = { ...config.CAROUSEL_APP_DEFAULTS };
-const swipeDefault = { ...config.CAROUSEL_APP_SWIPE };
 
 /**
  * Style for play pause icons.
@@ -128,6 +128,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       renderItem,
       slideStyle,
       variation,
+      vertical,
     } = this.props;
 
     if (variation === 'show-arrow') {
@@ -146,10 +147,10 @@ class SnapCarousel extends React.PureComponent<Props, State> {
             itemWidth={width}
             sliderHeight={height}
             itemHeight={height}
+            {...defaults}
             ref={c => {
               this.carousel = c;
             }}
-            {...swipeDefault}
           />
           <TouchableView
             data-locator={getLocator('global_promobanner_left_arrowRight')}
@@ -175,6 +176,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           sliderHeight={height}
           itemHeight={height}
           slideStyle={slideStyle}
+          vertical={vertical}
           {...defaults}
         />
         {defaultAutoplay && this.getPlayButton()}
