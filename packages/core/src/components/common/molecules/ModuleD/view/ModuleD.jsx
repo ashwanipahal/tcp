@@ -1,7 +1,8 @@
 // @flow
 import React from 'react';
-import { Anchor, Button, Col, Row, Image } from '../../../atoms';
+import { Anchor, Button, Col, DamImage, Row } from '../../../atoms';
 import { Grid, LinkText } from '../..';
+import config from '../config';
 import { getLocator } from '../../../../../utils';
 import style from '../ModuleD.style';
 import withStyles from '../../../hoc/withStyles';
@@ -47,13 +48,17 @@ const ignoreGutter = [
 const ModuleD = (props: Props) => {
   const { className, headerText, smallCompImage, singleCTAButton } = props;
   let colSize;
+  let imgDataConfig;
 
   if (smallCompImage && smallCompImage.length === 2) {
     colSize = colSize2Elements;
+    imgDataConfig = config.IMG_DATA_2.imgConfig;
   } else if (smallCompImage && smallCompImage.length === 4) {
     colSize = colSize4Elements;
+    imgDataConfig = config.IMG_DATA_4.imgConfig;
   } else {
     colSize = colSize6Elements;
+    imgDataConfig = config.IMG_DATA_6.imgConfig;
   }
   return (
     <Grid className={`${className} moduleD`}>
@@ -87,11 +92,11 @@ const ModuleD = (props: Props) => {
                       title={item.link.title}
                       target={item.link.target}
                     >
-                      <Image
-                        data-locator={`${getLocator('moduleD_image')}_${index + 1}`}
-                        src={item.image.url}
-                        alt={item.image.alt}
+                      <DamImage
                         className="moduleD_image"
+                        data-locator={`${getLocator('moduleD_image')}_${index + 1}`}
+                        imgConfigs={imgDataConfig}
+                        imgData={item.image}
                       />
                     </Anchor>
                   </div>

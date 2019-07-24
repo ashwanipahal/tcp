@@ -21,7 +21,6 @@ const getImgData = props => {
   } else {
     imgPath = url;
   }
-
   imgPath = imgPath.replace(/^\//, '');
   return { basePath, imgPath, imgConfigs };
 };
@@ -67,7 +66,7 @@ const DamImage = props => {
         srcSet={getBreakpointImgUrl('sm', props)}
       />
 
-      <img src={getBreakpointImgUrl('xs', props)} alt={alt} title={alt} {...other} />
+      <img src={getBreakpointImgUrl('xs', props)} alt={alt} {...other} />
     </picture>
   );
 };

@@ -230,45 +230,95 @@ exports[`ModuleH component renders correctly 1`] = `
         }
       }
     >
-      <img
-        alt="Toddler girl"
+      <WithTheme(DamImage)
         data-locator="moduleH_composite_image_1"
+        imgConfigs={
+          Array [
+            "c_fill,g_face,q_80,h_425,w_375",
+            "c_fill,g_face,q_80,h_465,w_768",
+            "c_fill,g_face,q_80,h_541,w_1410",
+          ]
+        }
+        imgData={
+          Object {
+            "alt": "Toddler girl",
+            "title": "Toddler girl",
+            "url": "http://example.com/img1.jpg",
+          }
+        }
         key="0"
-        sizes="(min-width: 375px) 100vw"
-        src="http://example.com/img1.jpg"
-        srcSet="http://example.com/img1.jpg 767w,http://example.com/img1.jpg 1024w,http://example.com/img1.jpg 1440w"
       />
-      <img
-        alt="Girl"
+      <WithTheme(DamImage)
         data-locator="moduleH_composite_image_2"
+        imgConfigs={
+          Array [
+            "c_fill,g_face,q_80,h_425,w_375",
+            "c_fill,g_face,q_80,h_465,w_768",
+            "c_fill,g_face,q_80,h_541,w_1410",
+          ]
+        }
+        imgData={
+          Object {
+            "alt": "Girl",
+            "title": "Girl",
+            "url": "http://example.com/girl.jpg",
+          }
+        }
         key="1"
-        sizes="(min-width: 375px) 100vw"
-        src="http://example.com/girl.jpg"
-        srcSet="http://example.com/girl.jpg 767w,http://example.com/girl.jpg 1024w,http://example.com/girl.jpg 1440w"
       />
-      <img
-        alt="Toddler boy"
+      <WithTheme(DamImage)
         data-locator="moduleH_composite_image_3"
+        imgConfigs={
+          Array [
+            "c_fill,g_face,q_80,h_425,w_375",
+            "c_fill,g_face,q_80,h_465,w_768",
+            "c_fill,g_face,q_80,h_541,w_1410",
+          ]
+        }
+        imgData={
+          Object {
+            "alt": "Toddler boy",
+            "title": "Toddler boy",
+            "url": "http://example.com/toddler-boy.jpg",
+          }
+        }
         key="2"
-        sizes="(min-width: 375px) 100vw"
-        src="http://example.com/toddler-boy.jpg"
-        srcSet="http://example.com/toddler-boy.jpg 767w,http://example.com/toddler-boy.jpg 1024w,http://example.com/toddler-boy.jpg 1440w"
       />
-      <img
-        alt="Boy"
+      <WithTheme(DamImage)
         data-locator="moduleH_composite_image_4"
+        imgConfigs={
+          Array [
+            "c_fill,g_face,q_80,h_425,w_375",
+            "c_fill,g_face,q_80,h_465,w_768",
+            "c_fill,g_face,q_80,h_541,w_1410",
+          ]
+        }
+        imgData={
+          Object {
+            "alt": "Boy",
+            "title": "Boy",
+            "url": "http://example.com/boy.jpg",
+          }
+        }
         key="3"
-        sizes="(min-width: 375px) 100vw"
-        src="http://example.com/boy.jpg"
-        srcSet="http://example.com/boy.jpg 767w,http://example.com/boy.jpg 1024w,http://example.com/boy.jpg 1440w"
       />
-      <img
-        alt="Baby"
+      <WithTheme(DamImage)
         data-locator="moduleH_composite_image_5"
+        imgConfigs={
+          Array [
+            "c_fill,g_face,q_80,h_425,w_375",
+            "c_fill,g_face,q_80,h_465,w_768",
+            "c_fill,g_face,q_80,h_541,w_1410",
+          ]
+        }
+        imgData={
+          Object {
+            "alt": "Baby",
+            "title": "Baby",
+            "url": "http://example.com/baby.jpg",
+          }
+        }
         key="4"
-        sizes="(min-width: 375px) 100vw"
-        src="http://example.com/baby.jpg"
-        srcSet="http://example.com/baby.jpg 767w,http://example.com/baby.jpg 1024w,http://example.com/baby.jpg 1440w"
       />
     </errorBoundaryComponent>
   </Styled(Col)>

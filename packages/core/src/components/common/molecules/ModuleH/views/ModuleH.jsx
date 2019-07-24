@@ -1,11 +1,11 @@
 // @flow
 import React from 'react';
+import DamImage from '@tcp/core/src/components/common/atoms/DamImage';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/errorBoundary';
 import { Col, Row } from '../../../atoms';
 import { getLocator } from '../../../../../utils';
 import { Carousel } from '../..';
-import theme from '../../../../../../styles/themes/TCP';
 import ModuleHHeader from './ModuleH.Header';
 import ModuleHCTALinks from './ModuleH.Links';
 import style from '../ModuleH.style';
@@ -20,35 +20,6 @@ type Props = {
 type State = {
   current: number,
   next: number,
-};
-
-/**
- * @function getSrcSet - prepare srcset images for moduleH
- */
-const getSrcSet = url => {
-  const crops = {
-    crop_m: 'c_fill,g_center,h_425,w_512',
-    crop_t: 'c_fill,g_center,h_400,w_768',
-    crop_d: 'c_fill,g_auto:face,h_541,w_1440',
-  };
-  const srcSet = [];
-  const { breakpoints } = theme;
-
-  Object.keys(crops).forEach(channel => {
-    const crop = crops[channel];
-    let vw;
-    if (channel === 'crop_m') {
-      vw = parseInt(breakpoints.smallMax, 10);
-    } else if (channel === 'crop_t') {
-      vw = parseInt(breakpoints.large, 10);
-    } else {
-      vw = parseInt(breakpoints.xlarge, 10);
-    }
-    const imageUrl = `${url.replace('upload/', `upload/${crop}/`)} ${vw}w`;
-    srcSet.push(imageUrl);
-  });
-
-  return srcSet.join(',');
 };
 
 /**
@@ -68,7 +39,7 @@ class ModuleH extends React.PureComponent<Props, State> {
 
   render() {
     const { className, divCTALinks, headerText } = this.props;
-    const { CAROUSEL_OPTIONS, COL_SIZE, FULL_BLEED, OFFSET_LEFT } = config;
+    const { CAROUSEL_OPTIONS, COL_SIZE, FULL_BLEED, OFFSET_LEFT, IMG_DATA } = config;
     CAROUSEL_OPTIONS.beforeChange = (current, next) => {
       this.setState({ current, next });
     };
@@ -90,13 +61,11 @@ class ModuleH extends React.PureComponent<Props, State> {
           >
             {divCTALinks.map((item, index) => {
               return (
-                <img
-                  key={index.toString()}
-                  sizes="(min-width: 375px) 100vw"
-                  srcSet={getSrcSet(item.image.url)}
-                  src={item.image.url}
-                  alt={item.image.alt}
+                <DamImage
                   data-locator={`${getLocator('moduleH_composite_image')}_${index + 1}`}
+                  key={index.toString()}
+                  imgConfigs={IMG_DATA.imgConfig}
+                  imgData={item.image}
                 />
               );
             })}

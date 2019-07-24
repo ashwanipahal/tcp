@@ -84,11 +84,23 @@ exports[`ModuleD component renders correctly 1`] = `
           title="Family Tees"
           to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
         >
-          <Styled(Image)
-            alt="Family Tees"
+          <WithTheme(DamImage)
             className="moduleD_image"
             data-locator="moduleD_image_1"
-            src="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg"
+            imgConfigs={
+              Array [
+                "ar_1:1,q_80,w_164",
+                "ar_1:1,q_80,w_162",
+                "ar_1:1,q_80,w_330",
+              ]
+            }
+            imgData={
+              Object {
+                "alt": "Family Tees",
+                "title": "Family Tees",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+              }
+            }
           />
         </Styled(Anchor)>
       </div>
@@ -133,11 +145,23 @@ exports[`ModuleD component renders correctly 1`] = `
           title="Mom & Me Tees"
           to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
         >
-          <Styled(Image)
-            alt="Mom & Me Tees"
+          <WithTheme(DamImage)
             className="moduleD_image"
             data-locator="moduleD_image_2"
-            src="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg"
+            imgConfigs={
+              Array [
+                "ar_1:1,q_80,w_164",
+                "ar_1:1,q_80,w_162",
+                "ar_1:1,q_80,w_330",
+              ]
+            }
+            imgData={
+              Object {
+                "alt": "Mom & Me Tees",
+                "title": "Mom & Me Tees",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+              }
+            }
           />
         </Styled(Anchor)>
       </div>
@@ -180,11 +204,23 @@ exports[`ModuleD component renders correctly 1`] = `
           title="Family Tees"
           to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
         >
-          <Styled(Image)
-            alt="Family Tees"
+          <WithTheme(DamImage)
             className="moduleD_image"
             data-locator="moduleD_image_3"
-            src="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME4_iuzwmp.jpg"
+            imgConfigs={
+              Array [
+                "ar_1:1,q_80,w_164",
+                "ar_1:1,q_80,w_162",
+                "ar_1:1,q_80,w_330",
+              ]
+            }
+            imgData={
+              Object {
+                "alt": "Family Tees",
+                "title": "Family Tees",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME4_iuzwmp.jpg",
+              }
+            }
           />
         </Styled(Anchor)>
       </div>
@@ -232,11 +268,23 @@ exports[`ModuleD component renders correctly 1`] = `
           title="Mom & Me Tees"
           to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
         >
-          <Styled(Image)
-            alt="Mom & Me Tees"
+          <WithTheme(DamImage)
             className="moduleD_image"
             data-locator="moduleD_image_4"
-            src="https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME2_uwtbdd.jpg"
+            imgConfigs={
+              Array [
+                "ar_1:1,q_80,w_164",
+                "ar_1:1,q_80,w_162",
+                "ar_1:1,q_80,w_330",
+              ]
+            }
+            imgData={
+              Object {
+                "alt": "Mom & Me Tees",
+                "title": "Mom & Me Tees",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME2_uwtbdd.jpg",
+              }
+            }
           />
         </Styled(Anchor)>
       </div>

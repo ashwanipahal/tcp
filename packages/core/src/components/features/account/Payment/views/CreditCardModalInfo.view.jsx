@@ -35,7 +35,12 @@ const CreditCardModalInfo = ({
             medium: 10,
           }}
         >
-          <BodyCopy fontSize="fs18" fontFamily="secondary" fontWeight="extrabold">
+          <BodyCopy
+            fontSize="fs18"
+            fontFamily="secondary"
+            fontWeight="extrabold"
+            data-locator="deletecreditmodalhdrmsg"
+          >
             {creditCardHeading}
           </BodyCopy>
         </Col>
@@ -52,7 +57,7 @@ const CreditCardModalInfo = ({
             medium: 3,
           }}
         >
-          <BodyCopy>
+          <BodyCopy data-locator="deletecreditmodalcardicon">
             <Image src={getIconPath(CardIconMapping[data.description.ccBrand])} />
           </BodyCopy>
         </Col>
@@ -74,7 +79,12 @@ const CreditCardModalInfo = ({
                 medium: 2,
               }}
             >
-              <BodyCopy fontFamily="secondary" fontSize="fs14" fontWeight="extrabold">
+              <BodyCopy
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                data-locator="deletecreditmodacardendingtxt"
+              >
                 {data.cardText.cardEnd}
                 {getAccNumbr}
               </BodyCopy>
@@ -89,7 +99,12 @@ const CreditCardModalInfo = ({
                 medium: 2,
               }}
             >
-              <BodyCopy fontFamily="secondary" fontSize="fs14" fontWeight="regular">
+              <BodyCopy
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="regular"
+                data-locator="deletecreditmodalexpiresontxt"
+              >
                 {data.cardText.expire}
                 {TotalExp}
               </BodyCopy>
@@ -109,6 +124,7 @@ const CreditCardModalInfo = ({
             >
               <BodyCopy fontSize="fs14">
                 <Address
+                  dataLocatorPrefix="deletecreditmodal"
                   address={address}
                   fontWeight="regular"
                   showCountry={false}
