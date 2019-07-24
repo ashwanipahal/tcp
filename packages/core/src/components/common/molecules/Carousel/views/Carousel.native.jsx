@@ -39,6 +39,7 @@ type State = {
  * Default settings for Carousel.
  */
 const defaults = { ...config.CAROUSEL_APP_DEFAULTS };
+const swipeDefault = { ...config.CAROUSEL_APP_SWIPE };
 
 /**
  * Style for play pause icons.
@@ -141,14 +142,14 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           <Carousel
             data={data}
             renderItem={renderItem}
-            sliderWidth={width + 40}
-            itemWidth={width - 40}
+            sliderWidth={width}
+            itemWidth={width}
             sliderHeight={height}
             itemHeight={height}
-            autoplay={defaultAutoplay}
             ref={c => {
               this.carousel = c;
             }}
+            {...swipeDefault}
           />
           <TouchableView
             data-locator={getLocator('global_promobanner_left_arrowRight')}

@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { HeaderPromoVanilla } from '../HeaderPromo';
+import { MessageContainer } from '../HeaderPromo.style';
 
 describe('HeaderPromo Component', () => {
   let component;
@@ -22,5 +23,9 @@ describe('HeaderPromo Component', () => {
 
   it('HeaderPromo should render correctly', () => {
     expect(component).toMatchSnapshot();
+  });
+
+  it('HeaderPromo should return MessageContainer component value one', () => {
+    expect(component.find(MessageContainer)).toHaveLength(0);
   });
 });

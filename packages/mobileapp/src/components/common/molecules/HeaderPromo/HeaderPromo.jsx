@@ -29,18 +29,13 @@ const manageTextStyles = style => {
  * This Component return the mobile Promo Banner
  */
 class HeaderPromo extends React.PureComponent<props> {
-  constructor(props) {
-    super(props);
-    this.carousel = null;
-  }
-
   /**
    * @desc Returns updated Banner text details with styles.
    * Content render on the basis of style type .
    */
   renderView = ({ item }) => {
     return (
-      <MessageContainer onPress={() => UrlHandler(item.linkClass.url)}>
+      <MessageContainer width={MODULE_WIDTH} onPress={() => UrlHandler(item.linkClass.url)}>
         <BodyCopy
           fontFamily="secondary"
           fontSize="fs12"
@@ -68,7 +63,7 @@ class HeaderPromo extends React.PureComponent<props> {
     return (
       <Carousel
         data={headerPromo}
-        renderItem={item => this.renderView(item)}
+        renderItem={this.renderView}
         height={MODULE_HEIGHT}
         width={MODULE_WIDTH}
         variation="swipe-arrow"

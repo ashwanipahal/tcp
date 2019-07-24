@@ -3,7 +3,9 @@ import colors from '@tcp/core/styles/themes/TCP/colors';
 
 export const MessageContainer = styled.TouchableOpacity`
   flex-direction: row;
+  width: ${props => props.width - 75}px;
   align-items: center;
+  align-self: center;
 `;
 
 /* TODO - To use the style1, style2, style3 when the styles start coming up from CMS */
