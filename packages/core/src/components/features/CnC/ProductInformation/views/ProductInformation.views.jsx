@@ -4,6 +4,8 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import { Image } from '@tcp/core/src/components/common/atoms';
 import { getIconPath, getLocator } from '@tcp/core/src/utils';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import endpoints from '../../../../../service/endpoint';
+
 import ProductInformationStyle from '../styles/ProductInformation.style';
 
 // @flow
@@ -16,16 +18,12 @@ const ProductInformation = ({ data, labels }: Props) => {
   return (
     <ProductInformationStyle>
       <Row tagName="ul" className="product">
-        <Col
-          tagName="li"
-          key="productDetails"
-          className="productImgBrand"
-          colSize={{ small: 2, medium: 2, large: 3 }}
-        >
+        <Col tagName="li" key="productDetails" colSize={{ small: 2, medium: 2, large: 3 }}>
           <Image
             alt="Product"
             className="product-image"
-            src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3000996_FM.jpg"
+            src={endpoints.global.baseURI + data.skuInfo.imageUrl}
+            data-locator="addedtobag-productimage"
           />
           <Image
             alt="Brand"
@@ -34,12 +32,7 @@ const ProductInformation = ({ data, labels }: Props) => {
             data-locator={getLocator('header__brand-tab--tcp')}
           />
         </Col>
-        <Col
-          tagName="li"
-          key="productDetails"
-          className="productInfo"
-          colSize={{ small: 4, medium: 6, large: 9 }}
-        >
+        <Col tagName="li" key="productDetails" colSize={{ small: 4, medium: 6, large: 9 }}>
           <Row tagName="ul" className="product-details">
             <Col
               tagName="li"
@@ -53,6 +46,7 @@ const ProductInformation = ({ data, labels }: Props) => {
                 fontWeight={['semibold']}
                 textAlign="left"
                 className="product-title"
+                dataLocator="addedtobag-productname"
               >
                 {data.productName}
               </BodyCopy>
@@ -76,8 +70,14 @@ const ProductInformation = ({ data, labels }: Props) => {
               className="itemList"
               colSize={{ small: 4, medium: 5, large: 8 }}
             >
-              <BodyCopy tag="span" fontSize="fs13" textAlign="left" className="itemDesc">
-                {data.skuInfo.color.family}
+              <BodyCopy
+                tag="span"
+                fontSize="fs13"
+                textAlign="left"
+                className="itemDesc"
+                dataLocator="addedtobag-productcolor"
+              >
+                {data.skuInfo.color.name}
               </BodyCopy>
             </Col>
           </Row>
@@ -94,9 +94,15 @@ const ProductInformation = ({ data, labels }: Props) => {
               </BodyCopy>
             </Col>
             <Col tagName="li" key="product-title" colSize={{ small: 4, medium: 5, large: 8 }}>
-              <BodyCopy tag="span" fontSize="fs13" textAlign="left" className="itemDesc">
-                {data.skuInfo.size}
-                {data.skuInfo.fit ? data.skuInfo.fit : 'Regular'}
+              <BodyCopy
+                tag="span"
+                fontSize="fs13"
+                textAlign="left"
+                className="itemDesc"
+                dataLocator="addedtobag-productsize"
+              >
+                {`${data.skuInfo.size} `}
+                {!data.skuInfo.fit || data.skuInfo.fit === 'Regular' ? ' ' : data.skuInfo.fit}
               </BodyCopy>
             </Col>
           </Row>
@@ -118,7 +124,13 @@ const ProductInformation = ({ data, labels }: Props) => {
               className="itemList"
               colSize={{ small: 4, medium: 5, large: 8 }}
             >
-              <BodyCopy tag="span" fontSize="fs13" textAlign="left" className="itemDesc">
+              <BodyCopy
+                tag="span"
+                fontSize="fs13"
+                textAlign="left"
+                className="itemDesc"
+                dataLocator="addedtobag-productqty"
+              >
                 {data.quantity}
               </BodyCopy>
             </Col>
