@@ -94,16 +94,16 @@ const endpoints = {
   },
   addEmailSignup: {
     method: 'post',
-    baseURI: 'https://test1.childrensplace.com',
+    baseURI: 'https://test4.childrensplace.com',
     relURI: '/api/v2/store/addSignUpEmail',
   },
   addSmsSignup: {
     method: 'post',
-    baseURI: 'https://test2.childrensplace.com',
+    baseURI: 'https://test4.childrensplace.com',
     relURI: '/api/v2/vibes/smsSignUp',
   },
   addGiftCard: {
-    baseURI: 'https://test1.childrensplace.com',
+    baseURI: 'https://test4.childrensplace.com',
     method: 'post',
     relURI: '/api/v2/account/addCreditCardDetails',
   },

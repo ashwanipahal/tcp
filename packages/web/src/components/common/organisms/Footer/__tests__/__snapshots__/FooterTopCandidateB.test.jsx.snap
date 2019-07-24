@@ -43,7 +43,7 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
         }
       }
     >
-      <Connect(EmailSignupWrapperContainer)
+      <Connect(Styled(ReduxForm))
         buttonConfig={Object {}}
       />
     </Styled(Col)>
