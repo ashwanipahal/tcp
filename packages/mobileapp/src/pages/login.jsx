@@ -2,10 +2,19 @@ import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 import LoginSync from '../screens/LoginSync';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
+import Header from '../components/common/molecules/Header';
 
-const Login = createStackNavigator({
-  LoginSync,
-});
+const Login = createStackNavigator(
+  {
+    LoginSync,
+  },
+  {
+    defaultNavigationOptions: {
+      header: props => <Header {...props} />,
+      headerBackground: 'transparent',
+    },
+  }
+);
 
 Login.navigationOptions = {
   tabBarLabel: 'wallet',

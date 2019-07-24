@@ -27,39 +27,44 @@ const CreditCardModalInfo = ({
 }: Props) => {
   return (
     <div className={className}>
-      <Row fullBleed className="elem-mb-MED">
+      <Row fullBleed className="elem-mb-LRG elem-mt-MED">
         <Col
           colSize={{
-            small: 12,
+            small: 6,
             large: 12,
-            medium: 12,
+            medium: 10,
           }}
         >
-          <BodyCopy fontSize="fs18" fontFamily="secondary" fontWeight="extrabold">
+          <BodyCopy
+            fontSize="fs18"
+            fontFamily="secondary"
+            fontWeight="extrabold"
+            data-locator="deletecreditmodalhdrmsg"
+          >
             {creditCardHeading}
           </BodyCopy>
         </Col>
       </Row>
 
-      <Row fullBleed className="elem-mb-MED">
+      <Row fullBleed className="elem-mt-XS">
         <Col
           colSize={{
             small: 2,
-            large: 2,
-            medium: 8,
+            large: 3,
+            medium: 5,
           }}
           offsetLeft={{
             medium: 3,
           }}
         >
-          <BodyCopy>
+          <BodyCopy data-locator="deletecreditmodalcardicon">
             <Image src={getIconPath(CardIconMapping[data.description.ccBrand])} />
           </BodyCopy>
         </Col>
         <Col
           colSize={{
             small: 4,
-            large: 10,
+            large: 9,
             medium: 8,
           }}
         >
@@ -68,13 +73,18 @@ const CreditCardModalInfo = ({
               colSize={{
                 small: 6,
                 large: 6,
-                medium: 8,
+                medium: 6,
               }}
               offsetLeft={{
                 medium: 2,
               }}
             >
-              <BodyCopy fontFamily="secondary" fontSize="fs14" fontWeight="semibold">
+              <BodyCopy
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="extrabold"
+                data-locator="deletecreditmodacardendingtxt"
+              >
                 {data.cardText.cardEnd}
                 {getAccNumbr}
               </BodyCopy>
@@ -83,36 +93,46 @@ const CreditCardModalInfo = ({
               colSize={{
                 small: 6,
                 large: 6,
-                medium: 8,
+                medium: 6,
               }}
               offsetLeft={{
                 medium: 2,
               }}
             >
-              <BodyCopy fontFamily="secondary" fontSize="fs14" fontWeight="regular">
+              <BodyCopy
+                fontFamily="secondary"
+                fontSize="fs14"
+                fontWeight="regular"
+                data-locator="deletecreditmodalexpiresontxt"
+              >
                 {data.cardText.expire}
                 {TotalExp}
               </BodyCopy>
             </Col>
           </Row>
-        </Col>
-      </Row>
-      <Row fullBleed className="elem-mb-MED">
-        <Col
-          colSize={{
-            small: 4,
-            large: 10,
-            medium: 8,
-          }}
-          offsetLeft={{
-            small: 2,
-            medium: 2,
-            large: 2,
-          }}
-        >
-          <BodyCopy fontSize="fs14">
-            <Address address={address} fontWeight="regular" showCountry={false} showPhone={false} />
-          </BodyCopy>
+
+          <Row fullBleed className="elem-mb-MED elem-mt-MED">
+            <Col
+              colSize={{
+                small: 6,
+                large: 12,
+                medium: 6,
+              }}
+              offsetLeft={{
+                medium: 2,
+              }}
+            >
+              <BodyCopy fontSize="fs14">
+                <Address
+                  dataLocatorPrefix="deletecreditmodal"
+                  address={address}
+                  fontWeight="regular"
+                  showCountry={false}
+                  showPhone={false}
+                />
+              </BodyCopy>
+            </Col>
+          </Row>
         </Col>
       </Row>
     </div>

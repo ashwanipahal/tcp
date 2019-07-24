@@ -38,10 +38,18 @@ type GetAddressLineProps = {
 const getAddressfromDiffLines = ({ address, dataLocatorPrefix }: GetAddressLineProps) => {
   return (
     <React.Fragment>
-      <BodyCopy tag="p" data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline1` : ''}>
+      <BodyCopy
+        fontFamily="secondary"
+        tag="p"
+        data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline1` : ''}
+      >
         {address.addressLine1}
       </BodyCopy>
-      <BodyCopy tag="p" data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline2` : ''}>
+      <BodyCopy
+        fontFamily="secondary"
+        tag="p"
+        data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline2` : ''}
+      >
         {address.addressLine2}
       </BodyCopy>
     </React.Fragment>

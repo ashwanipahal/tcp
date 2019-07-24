@@ -36,7 +36,7 @@ class AddGiftCard extends React.PureComponent<Props> {
           {labels.ACC_LBL_BACK}
         </Anchor>
         <Heading
-          fontFamily="secondaryFontFamily"
+          fontFamily="primaryFontFamily"
           HeadingLarge="six"
           tag="h4"
           className="card__separator"

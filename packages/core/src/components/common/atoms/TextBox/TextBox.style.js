@@ -3,7 +3,6 @@ import { css } from 'styled-components';
 const textboxStyles = css`
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ${props =>
@@ -58,8 +57,15 @@ const textboxStyles = css`
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ${props => props.theme.colorPalette.success};
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXXS};

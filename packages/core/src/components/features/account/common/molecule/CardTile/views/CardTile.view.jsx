@@ -168,7 +168,7 @@ class CardTile extends React.Component<Props> {
             className=""
             lineHeights="lh115"
           >
-            {balance}
+            {`$${balance}`}
           </BodyCopy>
         )}
         {!isGiftCardBalanceRequested && (
@@ -176,7 +176,7 @@ class CardTile extends React.Component<Props> {
             onClick={this.handleCheckBalanceClick}
             buttonVariation="variable-width"
             type="submit"
-            data-locator="gift-card-recaptchcb"
+            data-locator="gift-card-checkbalance-btn"
             fill="BLUE"
           >
             {labels.ACC_LBL_CHECK_BALANCE}
@@ -339,6 +339,7 @@ class CardTile extends React.Component<Props> {
                   placeholder="recaptcha value"
                   name="recaptchaToken"
                   id="recaptchaToken"
+                  data-locator="gift-card-recaptchcb"
                 />
 
                 {loading(isGiftCardBalanceRequested, labels, balance)}

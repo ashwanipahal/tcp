@@ -449,7 +449,6 @@ exports[`CardTile should render correctly with gift card 1`] = `
                   "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -510,8 +509,17 @@ exports[`CardTile should render correctly with gift card 1`] = `
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -563,6 +571,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
               "withComponent": [Function],
             }
           }
+          data-locator="gift-card-recaptchcb"
           id="recaptchaToken"
           name="recaptchaToken"
           placeholder="recaptcha value"
@@ -571,7 +580,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
         />
         <Styled(Button)
           buttonVariation="variable-width"
-          data-locator="gift-card-recaptchcb"
+          data-locator="gift-card-checkbalance-btn"
           fill="BLUE"
           onClick={[Function]}
           type="submit"
@@ -822,7 +831,6 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
                   "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -883,8 +891,17 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -936,6 +953,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
               "withComponent": [Function],
             }
           }
+          data-locator="gift-card-recaptchcb"
           id="recaptchaToken"
           name="recaptchaToken"
           placeholder="recaptcha value"
@@ -944,7 +962,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         />
         <Styled(Button)
           buttonVariation="variable-width"
-          data-locator="gift-card-recaptchcb"
+          data-locator="gift-card-checkbalance-btn"
           fill="BLUE"
           onClick={[Function]}
           type="submit"
@@ -1134,7 +1152,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
           alt="VENMO"
           className="cardTile__img"
           data-locator="VENMO"
-          src="/static/images/venmo-blue-acceptance-mark.svg"
+          src="/static/images/venmo-blue-acceptance-mark.png"
         />
       </div>
     </div>
@@ -1364,7 +1382,6 @@ exports[`CardTile should show loading 1`] = `
                   "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -1425,8 +1442,17 @@ exports[`CardTile should show loading 1`] = `
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -1478,6 +1504,7 @@ exports[`CardTile should show loading 1`] = `
               "withComponent": [Function],
             }
           }
+          data-locator="gift-card-recaptchcb"
           id="recaptchaToken"
           name="recaptchaToken"
           placeholder="recaptcha value"
@@ -1599,7 +1626,6 @@ exports[`CardTile should show remining balance 1`] = `
                   "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -1660,8 +1686,17 @@ exports[`CardTile should show remining balance 1`] = `
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -1713,6 +1748,7 @@ exports[`CardTile should show remining balance 1`] = `
               "withComponent": [Function],
             }
           }
+          data-locator="gift-card-recaptchcb"
           id="recaptchaToken"
           name="recaptchaToken"
           placeholder="recaptcha value"
@@ -1747,7 +1783,7 @@ exports[`CardTile should show remining balance 1`] = `
           tag="span"
           textAlign="left"
         >
-          0
+          $0
         </Styled(BodyCopy)>
       </div>
     </form>

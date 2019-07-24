@@ -12,7 +12,7 @@ exports[`Delete card Modal should render correctly 1`] = `
 >
   <div>
     <CreditCardModalInfo
-      TotalExp="undefined/undefined "
+      TotalExp="undefined/undefined"
       address={null}
       data={
         Object {
@@ -46,6 +46,7 @@ exports[`Delete card Modal should render correctly 1`] = `
       <Styled(Button)
         buttonVariation="variable-width"
         className="deleteCardModal__deleteConfirm deleteCardModal__btn"
+        dataLocator="deletecreditmodalyesdeletebtn"
         fill="BLUE"
         onClick={[Function]}
       >
@@ -54,6 +55,7 @@ exports[`Delete card Modal should render correctly 1`] = `
       <Styled(Button)
         buttonVariation="variable-width"
         className="deleteCardModal__btn deleteCardModal__deleteCancel"
+        dataLocator="deletecreditmodalnodeletebtn"
         fill="RED"
         onClick={[Function]}
       >
