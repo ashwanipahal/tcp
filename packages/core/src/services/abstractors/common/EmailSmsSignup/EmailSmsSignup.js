@@ -47,16 +47,18 @@ const Abstractor = {
   },
   processData: res => {
     if (res.body && (res.body.status === 'valid' || res.body.status === 'accept_all')) {
-      return 'valid';
+      return true;
     }
-    return 'invalid';
+    return false;
   },
 
   handleValidationError: e => {
+    // eslint-disable-next-line no-console
     console.log(e);
     return 'invalid';
   },
   handleSubscriptionError: e => {
+    // eslint-disable-next-line no-console
     console.log(e);
     return false;
   },
