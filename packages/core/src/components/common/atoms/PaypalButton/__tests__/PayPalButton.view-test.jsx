@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import PayPalButton from '@tcp/core/src/components/common/atoms/PayPalButton/views/PayPalButton.view';
+import PayPalButton from '../views/PayPalButton.view';
 
 describe('PayPalButton component', () => {
   it('PayPalButton component renders correctly', () => {
