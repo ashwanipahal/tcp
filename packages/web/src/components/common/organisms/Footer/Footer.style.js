@@ -8,8 +8,9 @@ export default css`
     text-align: center;
   }
   .footer_top_candidate_a .candidate_a_inline_container_button button {
-    font-size: 13px;
-    padding: 12px 32px;
+    font-size: ${props => props.theme.typography.fontSizes.fs13};
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
+      ${props => props.theme.spacing.ELEM_SPACING.XL};
   }
 
   .footer_top_candidate_a .TextBox__input {
@@ -21,7 +22,7 @@ export default css`
   }
 
   .footer_top_candidate_a .refer_a_frient_last_colm {
-    margin-bottom: 32px;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
   }
   .footer_top_candidate_a .divider {
     height: 1px;
