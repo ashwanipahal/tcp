@@ -8,7 +8,7 @@ import { Button, Col, Row, TextBox } from '@tcp/core/src/components/common/atoms
 
 import style from '../Footer.style';
 
-class FooterTopEmailSignUpForm extends React.PureComponent {
+class FooterTopSignUpForm extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -121,7 +121,7 @@ class FooterTopEmailSignUpForm extends React.PureComponent {
   }
 }
 
-FooterTopEmailSignUpForm.propTypes = {
+FooterTopSignUpForm.propTypes = {
   labels: PropTypes.shape({
     placeholderText: PropTypes.string,
     validationErrorLabel: PropTypes.string,
@@ -144,7 +144,7 @@ FooterTopEmailSignUpForm.propTypes = {
   fieldName: PropTypes.string,
 };
 
-FooterTopEmailSignUpForm.defaultProps = {
+FooterTopSignUpForm.defaultProps = {
   labels: {
     placeholderText: 'Enter email address',
     validationErrorLabel: '',
@@ -167,6 +167,6 @@ FooterTopEmailSignUpForm.defaultProps = {
   fieldName: 'signup',
 };
 
-export default withStyles(FooterTopEmailSignUpForm, style);
+export default withStyles(FooterTopSignUpForm, style);
 
-export { FooterTopEmailSignUpForm as FooterTopEmailSignUpFormVanilla };
+export { FooterTopSignUpForm as FooterTopSignUpFormVanilla };
