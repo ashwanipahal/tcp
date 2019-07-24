@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components/native';
 
 const style = css`
-  border: 1px solid #9c9c9c;
-  background-color: #eeeeee;
+  border: 1px solid ${props => props.theme.colors.BUTTON.WHITE.BORDER};
+  background-color: ${props => props.theme.colorPalette.gray[500]};
   height: 42px;
   align-items: center;
   flex-direction: row;
@@ -21,33 +21,23 @@ const Row = styled.View`
 
 const OverLayView = styled.View`
   position: absolute;
-  background-color: #fff;
   z-index: 999;
   flex-direction: row;
-  border: 1px solid #9c9c9c;
+  border: 1px solid ${props => props.theme.colors.BUTTON.WHITE.BORDER};
   border-top-width: 1px;
 `;
 
-const DropDownItemContainer = styled.View`
+const DropDownItemContainer = styled.TouchableHighlight.attrs({
+  underlayColor: props => props.theme.colors.BUTTON.WHITE.ALT_FOCUS,
+})`
   padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
     ${props => props.theme.spacing.ELEM_SPACING.XL};
+  background-color: ${props => props.theme.colors.WHITE};
 `;
 
 const Separator = styled.View`
-  background-color: #9c9c9c;
+  background-color: ${props => props.theme.colors.BUTTON.WHITE.BORDER};
   height: 1px;
 `;
 
-const StyledTouchableOpacity = styled.TouchableOpacity`
-  flex: 1;
-`;
-
-export {
-  style,
-  HeaderContainer,
-  Row,
-  OverLayView,
-  DropDownItemContainer,
-  Separator,
-  StyledTouchableOpacity,
-};
+export { style, HeaderContainer, Row, OverLayView, DropDownItemContainer, Separator };

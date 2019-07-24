@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, View, FlatList, Modal, Dimensions } from 'react-native';
+import { Image, View, FlatList, Modal, Dimensions, TouchableOpacity } from 'react-native';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '../../../hoc/withStyles.native';
 import {
@@ -9,7 +9,6 @@ import {
   HeaderContainer,
   DropDownItemContainer,
   Separator,
-  StyledTouchableOpacity,
 } from '../DropDown.style.native';
 
 const downIcon = require('../../../../../assets/carrot-small-down.png');
@@ -59,7 +58,7 @@ class DropDown extends React.PureComponent<Props> {
 
   dropDownLayout = ({ item }) => {
     return (
-      <DropDownItemContainer onStartShouldSetResponder={() => this.onDropDownItemClick(item)}>
+      <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)}>
         <BodyCopy
           fontFamily="secondary"
           fontSize="fs13"
@@ -145,7 +144,7 @@ class DropDown extends React.PureComponent<Props> {
           <Image source={dropDownIsOpen ? upIcon : downIcon} />
         </Row>
         <Modal visible={dropDownIsOpen} transparent>
-          <StyledTouchableOpacity
+          <TouchableOpacity
             accessibilityTraits="none"
             accessibilityComponentType="none"
             onPress={this.closeDropDown}
@@ -171,7 +170,7 @@ class DropDown extends React.PureComponent<Props> {
                 />
               )}
             </OverLayView>
-          </StyledTouchableOpacity>
+          </TouchableOpacity>
         </Modal>
       </View>
     );

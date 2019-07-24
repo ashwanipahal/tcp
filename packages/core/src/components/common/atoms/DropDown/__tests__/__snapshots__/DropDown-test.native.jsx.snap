@@ -80,7 +80,7 @@ exports[`DropDown Test should render correctly 1`] = `
     transparent={true}
     visible={false}
   >
-    <Styled(TouchableOpacity)
+    <TouchableOpacity
       accessibilityComponentType="none"
       accessibilityTraits="none"
       activeOpacity={1}
@@ -96,7 +96,7 @@ exports[`DropDown Test should render correctly 1`] = `
       <Styled(View)
         onLayout={[Function]}
       />
-    </Styled(TouchableOpacity)>
+    </TouchableOpacity>
   </Component>
 </View>
 `;
