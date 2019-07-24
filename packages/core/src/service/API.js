@@ -28,6 +28,7 @@ async function fetchData(baseURL, relURL, params = {}, method) {
     if (params.isRest) {
       reqSetting.isRest = params.isRest;
     }
+    reqSetting.withCredentials();
   }
   const request = superagent[requestType](requestUrl)
     .set(reqSetting)
