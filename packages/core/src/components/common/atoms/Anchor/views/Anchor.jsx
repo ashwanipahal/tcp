@@ -30,26 +30,34 @@ const Anchor = ({
   target,
   url,
   text,
-  ...other
-}) =>
-  noLink ? (
+  dataLocator,
+}) => {
+  const targetVal = target || '_self';
+  return noLink ? (
     <a
       href={buildUrl(to) || buildUrl(url)}
       className={className}
-      {...other}
       onClick={handleLinkClick}
       title={title}
-      target={target}
+      target={targetVal}
+      data-locator={dataLocator}
     >
       {children}
     </a>
   ) : (
     <Link href={to || url} as={asPath} shallow={shallow} scroll={scroll}>
-      <a className={className} title={title} target={target} {...other}>
+      <a
+        className={className}
+        href={to || url}
+        title={title}
+        target={targetVal}
+        data-locator={dataLocator}
+      >
         {children || text}
       </a>
     </Link>
   );
+};
 
 Anchor.propTypes = {
   children: PropTypes.string.isRequired,
@@ -64,6 +72,7 @@ Anchor.propTypes = {
   target: PropTypes.string,
   url: PropTypes.string,
   text: PropTypes.string,
+  dataLocator: PropTypes.string,
 };
 
 Anchor.defaultProps = {
@@ -76,6 +85,7 @@ Anchor.defaultProps = {
   target: '',
   url: '',
   text: '',
+  dataLocator: '',
 };
 
 export default withStyles(Anchor, styles);

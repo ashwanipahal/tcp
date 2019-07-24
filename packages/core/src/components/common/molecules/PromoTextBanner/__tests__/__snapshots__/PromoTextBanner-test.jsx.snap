@@ -40,6 +40,7 @@ exports[`Promo Text Banner component renders correctly 1`] = `
         "fontWeight": "regular",
         "letterSpacing": "normal",
         "lineHeight": "normal",
+        "link": Object {},
         "textAlign": "left",
       },
       "displayName": "Styled(BodyCopy)",

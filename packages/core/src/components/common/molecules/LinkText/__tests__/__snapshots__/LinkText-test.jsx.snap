@@ -94,6 +94,7 @@ exports[`Promo Text Banner component renders correctly 1`] = `
     }
     letterSpacing="normal"
     lineHeight="normal"
+    link={Object {}}
     textAlign="left"
   >
     <span

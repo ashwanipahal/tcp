@@ -10,6 +10,7 @@ exports[`Address component should renders correctly 1`] = `
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={Object {}}
   textAlign="left"
 >
   <Styled(BodyCopy)
@@ -22,6 +23,7 @@ exports[`Address component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={Object {}}
     textAlign="left"
   >
     test test
@@ -36,6 +38,7 @@ exports[`Address component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={Object {}}
     textAlign="left"
   >
     addressline 1
@@ -50,6 +53,7 @@ exports[`Address component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={Object {}}
     textAlign="left"
   >
     addressline 2
@@ -64,6 +68,7 @@ exports[`Address component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={Object {}}
     textAlign="left"
   >
     test city, test state 111-111
@@ -77,6 +82,7 @@ exports[`Address component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={Object {}}
     textAlign="left"
   >
     test country
@@ -90,6 +96,7 @@ exports[`Address component should renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={Object {}}
     textAlign="left"
   >
     1234567890
@@ -107,6 +114,7 @@ exports[`Address component should renders correctly when optional fields are not
   fontWeight="regular"
   letterSpacing="normal"
   lineHeight="normal"
+  link={Object {}}
   textAlign="left"
 >
   <Styled(BodyCopy)
@@ -119,6 +127,7 @@ exports[`Address component should renders correctly when optional fields are not
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={Object {}}
     textAlign="left"
   >
     test test
@@ -133,6 +142,7 @@ exports[`Address component should renders correctly when optional fields are not
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={Object {}}
     textAlign="left"
   >
     addressline 1
@@ -147,6 +157,7 @@ exports[`Address component should renders correctly when optional fields are not
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={Object {}}
     textAlign="left"
   >
     addressline 2
@@ -161,6 +172,7 @@ exports[`Address component should renders correctly when optional fields are not
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={Object {}}
     textAlign="left"
   >
     test city, test state 111-111

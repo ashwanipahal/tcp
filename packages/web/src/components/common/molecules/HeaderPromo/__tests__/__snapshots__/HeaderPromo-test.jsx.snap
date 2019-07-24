@@ -19,7 +19,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
     >
       <Styled(Anchor)
         className="header-promo__item"
-        data-locator="global_promobannerimg"
+        dataLocator="global_promobannerimg"
         target=""
         to="/banner/url1"
       >
@@ -49,6 +49,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
             fontWeight="black"
             letterSpacing="normal"
             lineHeight="normal"
+            link={Object {}}
             textAlign="center"
           >
             NEED IT NOW?
@@ -68,6 +69,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={Object {}}
             textAlign="center"
           >
             Buy online, pickup in store.
@@ -86,7 +88,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
     >
       <Styled(Anchor)
         className="header-promo__item"
-        data-locator="global_promobannerimg"
+        dataLocator="global_promobannerimg"
         target=""
         to="/banner/url2"
       >
@@ -116,6 +118,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
             fontWeight="black"
             letterSpacing="normal"
             lineHeight="normal"
+            link={Object {}}
             textAlign="center"
           >
             EARN PLACE CASH!
@@ -135,6 +138,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={Object {}}
             textAlign="center"
           >
             Get 10$ for every 20$ spent today.
@@ -153,7 +157,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
     >
       <Styled(Anchor)
         className="header-promo__item"
-        data-locator="global_promobannerimg"
+        dataLocator="global_promobannerimg"
         target=""
         to="/node/modal/rr1"
       >
@@ -183,6 +187,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
             fontWeight="black"
             letterSpacing="normal"
             lineHeight="normal"
+            link={Object {}}
             textAlign="center"
           >
             SIGN UP AND GET 10$ OFF!
@@ -202,6 +207,7 @@ exports[`HeaderPromo component renders correctly for desktop 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
+            link={Object {}}
             textAlign="center"
           >
             &lt;u&gt;ENTER YOUR EMAIL&lt;/u&gt;.
@@ -255,7 +261,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
   >
     <Styled(Anchor)
       className="header-promo__item"
-      data-locator="global_promobannerimg"
+      dataLocator="global_promobannerimg"
       target=""
       to="/banner/url1"
     >
@@ -285,6 +291,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
           fontWeight="black"
           letterSpacing="normal"
           lineHeight="normal"
+          link={Object {}}
           textAlign="center"
         >
           NEED IT NOW?
@@ -304,6 +311,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={Object {}}
           textAlign="center"
         >
           Buy online, pickup in store.
@@ -312,7 +320,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
     </Styled(Anchor)>
     <Styled(Anchor)
       className="header-promo__item"
-      data-locator="global_promobannerimg"
+      dataLocator="global_promobannerimg"
       target=""
       to="/banner/url2"
     >
@@ -342,6 +350,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
           fontWeight="black"
           letterSpacing="normal"
           lineHeight="normal"
+          link={Object {}}
           textAlign="center"
         >
           EARN PLACE CASH!
@@ -361,6 +370,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={Object {}}
           textAlign="center"
         >
           Get 10$ for every 20$ spent today.
@@ -369,7 +379,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
     </Styled(Anchor)>
     <Styled(Anchor)
       className="header-promo__item"
-      data-locator="global_promobannerimg"
+      dataLocator="global_promobannerimg"
       target=""
       to="/node/modal/rr1"
     >
@@ -399,6 +409,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
           fontWeight="black"
           letterSpacing="normal"
           lineHeight="normal"
+          link={Object {}}
           textAlign="center"
         >
           SIGN UP AND GET 10$ OFF!
@@ -418,6 +429,7 @@ exports[`HeaderPromo component renders correctly for mobile 1`] = `
           fontWeight="regular"
           letterSpacing="normal"
           lineHeight="normal"
+          link={Object {}}
           textAlign="center"
         >
           &lt;u&gt;ENTER YOUR EMAIL&lt;/u&gt;.

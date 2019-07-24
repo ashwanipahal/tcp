@@ -47,7 +47,7 @@ const FooterNavHeader = ({
     <Anchor
       to={titleObj.url}
       className={`${className} img-link`}
-      data-locator={`col_heading_${colNum}`}
+      dataLocator={`col_heading_${colNum}`}
     >
       <Image alt={titleObj.image_alt} src={getIconPath(titleObj.class)} />
     </Anchor>

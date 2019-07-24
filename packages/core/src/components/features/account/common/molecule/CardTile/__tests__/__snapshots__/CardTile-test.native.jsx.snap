@@ -131,7 +131,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
-        data-locator="payment-creditdebiteditlink"
+        dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         to="/#"
         underline={true}
@@ -139,7 +139,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
-      data-locator="payment-creditdebitdeletelink"
+      dataLocator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       to="/#"
       underline={true}
@@ -193,7 +193,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
     </Styled(Text)>
     <Styled(Anchor)
       anchorVariation="primary"
-      data-locator="payment-makedefault"
+      dataLocator="payment-makedefault"
       fontSizeVariation="small"
       onPress={[Function]}
       to="/#"
@@ -274,7 +274,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
-        data-locator="payment-creditdebiteditlink"
+        dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         to="/#"
         underline={true}
@@ -282,7 +282,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
-      data-locator="payment-creditdebitdeletelink"
+      dataLocator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       to="/#"
       underline={true}
@@ -395,7 +395,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
-        data-locator="payment-giftcardeditlink"
+        dataLocator="payment-giftcardeditlink"
         fontSizeVariation="large"
         to="/#"
         underline={true}
@@ -403,7 +403,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
-      data-locator="payment-giftcarddeletelink"
+      dataLocator="payment-giftcarddeletelink"
       fontSizeVariation="large"
       to="/#"
       underline={true}
@@ -457,7 +457,7 @@ exports[`CardTile should render correctly with master card 1`] = `
     </Styled(Text)>
     <Styled(Anchor)
       anchorVariation="primary"
-      data-locator="payment-makedefault"
+      dataLocator="payment-makedefault"
       fontSizeVariation="small"
       onPress={[Function]}
       to="/#"
@@ -538,7 +538,7 @@ exports[`CardTile should render correctly with master card 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
-        data-locator="payment-creditdebiteditlink"
+        dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         to="/#"
         underline={true}
@@ -546,7 +546,7 @@ exports[`CardTile should render correctly with master card 1`] = `
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
-      data-locator="payment-creditdebitdeletelink"
+      dataLocator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       to="/#"
       underline={true}
@@ -659,7 +659,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
-        data-locator="payment-giftcardeditlink"
+        dataLocator="payment-giftcardeditlink"
         fontSizeVariation="large"
         to="/#"
         underline={true}
@@ -667,7 +667,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
-      data-locator="payment-giftcarddeletelink"
+      dataLocator="payment-giftcarddeletelink"
       fontSizeVariation="large"
       to="/#"
       underline={true}
@@ -721,7 +721,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
     </Styled(Text)>
     <Styled(Anchor)
       anchorVariation="primary"
-      data-locator="payment-makedefault"
+      dataLocator="payment-makedefault"
       fontSizeVariation="small"
       onPress={[Function]}
       to="/#"
@@ -794,7 +794,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
-        data-locator="payment-creditdebiteditlink"
+        dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         to="/#"
         underline={true}
@@ -802,7 +802,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
-      data-locator="payment-creditdebitdeletelink"
+      dataLocator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       to="/#"
       underline={true}
@@ -912,7 +912,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
     <Styled(View) />
     <Styled(Anchor)
       anchorVariation="primary"
-      data-locator="payment-venmodeletelink"
+      dataLocator="payment-venmodeletelink"
       fontSizeVariation="large"
       to="/#"
       underline={true}
@@ -966,7 +966,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
     </Styled(Text)>
     <Styled(Anchor)
       anchorVariation="primary"
-      data-locator="payment-makedefault"
+      dataLocator="payment-makedefault"
       fontSizeVariation="small"
       onPress={[Function]}
       to="/#"
@@ -1047,7 +1047,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
-        data-locator="payment-creditdebiteditlink"
+        dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         to="/#"
         underline={true}
@@ -1055,7 +1055,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
-      data-locator="payment-creditdebitdeletelink"
+      dataLocator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
       to="/#"
       underline={true}

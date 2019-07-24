@@ -73,7 +73,7 @@ class CardTile extends React.Component<Props> {
         underline
         to="/#"
         anchorVariation="primary"
-        data-locator="payment-makedefault"
+        dataLocator="payment-makedefault"
         onClick={this.handleDefaultLinkClick}
       >
         {labels.ACC_LBL_MAKE_DEFAULT}
@@ -241,7 +241,7 @@ class CardTile extends React.Component<Props> {
             underline
             to="/#"
             anchorVariation="primary"
-            data-locator={`payment-${dataLocatorPrefix}editlink`}
+            dataLocator={`payment-${dataLocatorPrefix}editlink`}
             className="cardTile__anchor"
           >
             {labels.ACC_LBL_EDIT}
@@ -253,7 +253,7 @@ class CardTile extends React.Component<Props> {
           underline
           to="/#"
           anchorVariation="primary"
-          data-locator={`payment-${dataLocatorPrefix}deletelink`}
+          dataLocator={`payment-${dataLocatorPrefix}deletelink`}
           onClick={e => this.onDeletegiftardClick(e)}
         >
           {labels.ACC_LBL_DELETE}

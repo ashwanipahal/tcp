@@ -5,7 +5,7 @@ exports[`AddressBook component should renders correctly when errors are present 
   <Styled(Anchor)
     anchorVariation="secondary"
     className="addAddress__anchor__back"
-    data-locator="addnewaddress-back"
+    dataLocator="addnewaddress-back"
     fontSizeVariation="xlarge"
     to="/account"
   >
@@ -53,7 +53,7 @@ exports[`AddressBook component should renders correctly without any error 1`] = 
   <Styled(Anchor)
     anchorVariation="secondary"
     className="addAddress__anchor__back"
-    data-locator="addnewaddress-back"
+    dataLocator="addnewaddress-back"
     fontSizeVariation="xlarge"
     to="/account"
   >

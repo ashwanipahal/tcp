@@ -20,6 +20,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
     fontWeight="black"
     letterSpacing="normal"
     lineHeight="normal"
+    link={Object {}}
     textAlign="center"
   />
   <Styled(BodyCopy)
@@ -37,6 +38,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={Object {}}
     textAlign="center"
   />
   <Styled(Image)
@@ -59,6 +61,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
     fontWeight="semibold"
     letterSpacing="normal"
     lineHeight="normal"
+    link={Object {}}
     textAlign="center"
   />
   <Styled(BodyCopy)
@@ -76,6 +79,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={Object {}}
     textAlign="center"
   />
   <Styled(BodyCopy)
@@ -87,6 +91,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={Object {}}
     textAlign="center"
   />
 </div>

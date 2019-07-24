@@ -6,7 +6,7 @@ import style from '../HomeLogo.style';
 
 const HomeLogo = ({ className, alt, dataLocator, imgSrc }) => (
   <div className={className}>
-    <Anchor to="/" data-locator={dataLocator}>
+    <Anchor to="/" dataLocator={dataLocator}>
       <Image src={imgSrc} alt={alt} />
     </Anchor>
   </div>

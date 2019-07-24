@@ -28,7 +28,7 @@ const ModuleHCTALinks = ({ currentIndex, dataCTALinks }: Props) => {
               className={`moduleH__CTALink ${
                 currentIndex.next === index ? `moduleH__CTALink--active` : ''
               }`}
-              data-locator={`${getLocator('moduleH_cta_links')}_${index + 1}`}
+              dataLocator={`${getLocator('moduleH_cta_links')}_${index + 1}`}
               to={item.link.url}
               target={item.link.target}
             >

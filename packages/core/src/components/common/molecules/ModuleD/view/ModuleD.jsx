@@ -116,7 +116,7 @@ const ModuleD = (props: Props) => {
                       to={item.link.url}
                       target={item.link.target}
                       title={item.link.title}
-                      data-locator={`${getLocator('moduleD_textlink')}_${index + 1}`}
+                      dataLocator={`${getLocator('moduleD_textlink')}_${index + 1}`}
                     >
                       {item.link.text}
                     </Anchor>

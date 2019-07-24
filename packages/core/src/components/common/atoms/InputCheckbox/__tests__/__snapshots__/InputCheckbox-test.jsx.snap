@@ -19,6 +19,7 @@ exports[`InputCheckbox component should render correctly 1`] = `
     fontWeight="regular"
     letterSpacing="normal"
     lineHeight="normal"
+    link={Object {}}
     textAlign="left"
   >
     This is sample checkbox

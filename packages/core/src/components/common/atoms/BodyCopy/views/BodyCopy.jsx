@@ -4,7 +4,21 @@ import { PropTypes } from 'prop-types';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../BodyCopy.style';
 
-const BodyCopy = ({ children, className, component: Component, ...others }) => {
+const BodyCopy = props => {
+  const {
+    children,
+    className,
+    fontFamily,
+    component: Component,
+    fontSize,
+    fontWeight,
+    lineHeight,
+    letterSpacing,
+    textAlign,
+    color,
+    link,
+    ...others
+  } = props;
   return (
     <Component className={className} {...others}>
       {children}
@@ -23,6 +37,7 @@ BodyCopy.defaultProps = {
   letterSpacing: 'normal',
   textAlign: 'left',
   color: 'text.primary',
+  link: {},
 };
 
 BodyCopy.propTypes = {
@@ -64,6 +79,7 @@ BodyCopy.propTypes = {
     PropTypes.oneOf(['text.primary', 'text.secondary', 'text.hint', 'text.disabled', 'white']),
   ]),
   dataLocator: PropTypes.string,
+  link: PropTypes.shape({}),
   /* eslint-enable */
 };
 

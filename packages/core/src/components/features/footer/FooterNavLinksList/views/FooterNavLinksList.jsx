@@ -21,7 +21,7 @@ const FooterNavLinksList = ({ className, listArray, colNum }: Props) => {
             to={linkItems.url}
             anchorVariation="primary"
             fontSizeVariation="large"
-            data-locator={`col_${colNum}_link_${index}`}
+            dataLocator={`col_${colNum}_link_${index}`}
             target={linkItems.target}
             title={linkItems.title}
           >
