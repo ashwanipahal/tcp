@@ -20,23 +20,26 @@ class GiftCardModalInfo extends React.Component<Props> {
           bodySize="seven"
           fontWeight="bold"
           fontFamily="secondaryFontFamily"
-          className="deleteCardModal_modalTitle"
+          className="deleteCardModal__modalTitle"
+          data-locator="deletegcmodalheadinng"
         >
           {data.heading}
         </BodyCopy>
-        <BodyCopy className="deleteCardModal_desc">
+        <BodyCopy className="deleteCardModal__desc">
           {' '}
           <Image
-            className="deleteCardModal_img"
-            src={getIconPath('gift-card')}
+            className="deleteCardModal__img"
+            src={getIconPath('gift-card-small')}
             onClick={this.pause}
+            data-locator="deletegcmodalicon"
           />
-          <BodyCopy className="deleteCardModal_cardInfo layout-pb-LRG" bodySize="three">
+          <BodyCopy className="deleteCardModal__cardInfo layout-pb-LRG" bodySize="three">
             <BodyCopy
               fontWeight="bold"
               fontFamily="secondaryFontFamily"
-              className="deleteCardModal_card"
+              className="deleteCardModal__card"
               tag="span"
+              data-locator="deletegcmodalcardendingtext"
             >
               {data.cardText.cardEnd}
               {getAccNumbr}
