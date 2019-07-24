@@ -3,7 +3,7 @@ import { getOrderDetailsData } from '../../../../../services/abstractors/CnC/Car
 import CART_CONSTANTS from '../Cart.constants';
 import { getOrderDetailsComplete } from './Cart.actions';
 
-function* getOrderDetailSaga() {
+export function* getOrderDetailSaga() {
   try {
     const res = yield call(getOrderDetailsData);
     yield put(getOrderDetailsComplete(res && res.orderDetails));
