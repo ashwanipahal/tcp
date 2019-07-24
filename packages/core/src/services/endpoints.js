@@ -22,6 +22,10 @@ const endpoints = {
     JSONP: true,
     reqTimeout: 2000,
   },
+  createAccount: {
+    method: API_METHODS.POST,
+    URI: 'v2/wallet/addCustomerRegistration',
+  },
 };
 
 export default endpoints;

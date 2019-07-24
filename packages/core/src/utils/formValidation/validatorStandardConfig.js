@@ -40,11 +40,31 @@ export const formValidationMessages = {
     required: 'Please enter your zip code',
     zipcode: 'Please enter a valid zip code',
   },
+  noCountryZip: {
+    required: 'Please enter your zip code',
+    noCountryZip: 'Please enter a valid zip code',
+  },
   recaptchaToken: {
     required: 'Please check the reCaptcha value',
   },
   giftCardNumber: 'Please enter a valid gift card number',
   cardPin: 'Please enter your gift card pin number',
+  emailAddress: {
+    required: 'Please enter a valid email',
+    emailPattern: 'Email format is invalid',
+  },
+  confirmEmailAddress: {
+    required: 'Please confirm your email address',
+    matchEmail: 'Email addresses must match',
+  },
+  password: {
+    required: 'Please enter your password',
+    password: 'Please enter a valid password',
+  },
+  confirmPassword: {
+    required: 'Please enter a valid password',
+    equalTo: 'Passwords must match',
+  },
 };
 
 export const formValidationRules = {
@@ -91,6 +111,10 @@ export const formValidationRules = {
       linkedFields: ['country'],
     },
   },
+  noCountryZip: {
+    required: true,
+    noCountryZip: true,
+  },
   recaptchaToken: {
     required: true,
   },
@@ -103,6 +127,26 @@ export const formValidationRules = {
     required: true,
     number: true,
     exactLength: 4,
+  },
+  emailAddress: {
+    required: true,
+    emailPattern: 'isValid',
+  },
+  confirmEmailAddress: {
+    required: true,
+    matchEmail: {
+      linkedFields: ['emailAddress'],
+    },
+  },
+  password: {
+    required: true,
+    password: true,
+  },
+  confirmPassword: {
+    required: true,
+    equalTo: {
+      linkedFields: ['password'],
+    },
   },
 };
 

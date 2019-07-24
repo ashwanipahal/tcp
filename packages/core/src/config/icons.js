@@ -29,4 +29,6 @@ export default {
   'visa-small': '/static/images/visa-small.png',
   'gift-card-small': '/static/images/gift-card-small.png',
   'venmo-blue-acceptance-mark': '/static/images/venmo-blue-acceptance-mark.svg',
+  'my-place-rewards': '/static/images/my-place-rewards.png',
+  'info-icon': '/static/images/info-icon.png',
 };
