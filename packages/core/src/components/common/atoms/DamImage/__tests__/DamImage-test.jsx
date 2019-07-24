@@ -202,4 +202,33 @@ describe('DamImage component', () => {
     expect(component.find('source').get(1).props.srcSet).toEqual(srcSets[1]);
     expect(component.find('img').get(0).props.src).toEqual(srcSets[2]);
   });
+
+  it('Should create correct srcset with mix CMS imgData and prop imgConfigs', () => {
+    const srcSets = [
+      'https://www.tcp.com/upload/c_crop,g_face:center,q_auto:best,w_1200/dancing-boy.png',
+      'https://www.tcp.com/upload/test_image_presets/dancing-boy.png',
+      'https://www.tcp.com/upload/c_crop,q_auto:best,w_470/dancing-boy.png',
+    ];
+
+    const imgData = {
+      alt: imgDataAltText,
+      url: 'https://www.tcp.com/upload/dancing-boy.png',
+    };
+    const component = mount(
+      <DamImage
+        theme={themeMock}
+        basePath="https://www.tcp.com"
+        imgData={imgData}
+        imgConfigs={[
+          'c_crop,q_auto:best,w_470',
+          'test_image_presets',
+          'c_crop,g_face:center,q_auto:best,w_1200',
+        ]}
+      />
+    );
+
+    expect(component.find('source').get(0).props.srcSet).toEqual(srcSets[0]);
+    expect(component.find('source').get(1).props.srcSet).toEqual(srcSets[1]);
+    expect(component.find('img').get(0).props.src).toEqual(srcSets[2]);
+  });
 });
