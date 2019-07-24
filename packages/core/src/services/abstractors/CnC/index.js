@@ -1,1 +1,1 @@
-export { getOrderDetailsData, removeItem } from './CartItemTile';
+export { default } from './CartItemTile';
