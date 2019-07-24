@@ -9,15 +9,7 @@ const style = css`
   justify-content: center;
 `;
 
-const StyledText = styled.Text`
-  color: ${props => props.theme.colorPalette.gray[800]};
-  font-family: ${props => props.theme.typography.fonts.secondary};
-  font-size: ${props => props.theme.typography.fontSizes.fs13};
-  font-weight: ${props => props.theme.typography.fontWeights.black};
-  font-style: normal;
-`;
-
-const HeaderText = styled(StyledText)`
+const HeaderContainer = styled.View`
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
@@ -36,10 +28,9 @@ const OverLayView = styled.View`
   border-top-width: 1px;
 `;
 
-const DropDownItem = styled(StyledText)`
+const DropDownItemContainer = styled.View`
   padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
     ${props => props.theme.spacing.ELEM_SPACING.XL};
-  text-align: center;
 `;
 
 const Separator = styled.View`
@@ -51,4 +42,12 @@ const StyledTouchableOpacity = styled.TouchableOpacity`
   flex: 1;
 `;
 
-export { style, HeaderText, Row, OverLayView, DropDownItem, Separator, StyledTouchableOpacity };
+export {
+  style,
+  HeaderContainer,
+  Row,
+  OverLayView,
+  DropDownItemContainer,
+  Separator,
+  StyledTouchableOpacity,
+};

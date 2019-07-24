@@ -1,12 +1,13 @@
 import React from 'react';
 import { Image, View, FlatList, Modal, Dimensions } from 'react-native';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '../../../hoc/withStyles.native';
 import {
   style,
-  HeaderText,
   Row,
   OverLayView,
-  DropDownItem,
+  HeaderContainer,
+  DropDownItemContainer,
   Separator,
   StyledTouchableOpacity,
 } from '../DropDown.style.native';
@@ -57,7 +58,18 @@ class DropDown extends React.PureComponent<Props> {
   };
 
   dropDownLayout = ({ item }) => {
-    return <DropDownItem onPress={() => this.onDropDownItemClick(item)}>{item.label}</DropDownItem>;
+    return (
+      <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)}>
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs13"
+          textAlign="center"
+          color="gray.800"
+          fontWeight="black"
+          text={item.label}
+        />
+      </DropDownItemContainer>
+    );
   };
 
   onDropDownItemClick = item => {
@@ -120,7 +132,16 @@ class DropDown extends React.PureComponent<Props> {
           }}
           onLayout={() => this.findRowDimensions()}
         >
-          <HeaderText>{selectedLabelState}</HeaderText>
+          <HeaderContainer>
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs13"
+              textAlign="center"
+              color="gray.800"
+              fontWeight="black"
+              text={selectedLabelState}
+            />
+          </HeaderContainer>
           <Image source={dropDownIsOpen ? upIcon : downIcon} />
         </Row>
         <Modal visible={dropDownIsOpen} transparent>
