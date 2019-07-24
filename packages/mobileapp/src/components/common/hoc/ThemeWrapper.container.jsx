@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import { ThemeProvider } from 'styled-components/native';
-import theme from '@tcp/core/styles/themes/TCP';
+import themeTcp from '@tcp/core/styles/themes/TCP';
 import themeGymboree from '@tcp/core/styles/themes/Gymboree';
 import updateAppType from './ThemeWrapper.actions';
 import { APP_TYPE } from './ThemeWrapper.constants';
@@ -29,7 +29,7 @@ export class ThemeWrapper extends React.PureComponent {
     if (appType === APP_TYPE.GYMBOREE) {
       return themeGymboree;
     }
-    return theme;
+    return themeTcp;
   };
 
   render() {

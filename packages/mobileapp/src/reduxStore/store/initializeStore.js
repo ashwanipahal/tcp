@@ -10,7 +10,7 @@ export const initializeStore = initialState => {
   const sagaMiddleware = createSagaMiddleware();
 
   // eslint-disable-next-line no-underscore-dangle
-  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  const composeEnhancers = (__DEV__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
 
   store = createStore(
     globalReducers,
