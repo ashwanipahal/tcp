@@ -5,6 +5,7 @@ import { addGiftCardRequest } from './AddGiftCard.actions';
 import { getAddGiftCardResponse } from './AddGiftCard.selector';
 import labels from './AddGiftCard.labels';
 import Router from 'next/router'; //eslint-disable-line
+import utils from '../../../../../../utils';
 
 // @flow
 
@@ -15,7 +16,7 @@ type Props = {
 
 export const AddGiftCardContainer = ({ onAddGiftCardClick, addGiftCardResponse }: Props) => {
   const goBackToPayment = () => {
-    Router.push('/account?id=payment', '/account/payment');
+    utils.routerPush('/account?id=payment', '/account/payment');
     return null;
   };
 

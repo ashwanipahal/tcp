@@ -14,6 +14,8 @@ const { settingCspConfig } = require('./config/server.config');
 
 const server = express();
 
+const handle = app.getRequestHandler();
+
 settingCspConfig(server, helmet);
 
 app.prepare().then(() => {
@@ -39,7 +41,7 @@ app.prepare().then(() => {
 
   // handling of other routes
   server.get('*', (req, res) => {
-    return app.render(req, res, '/404');
+    return handle(req, res);
   });
 
   server.listen(port, err => {

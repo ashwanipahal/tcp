@@ -7,6 +7,7 @@ import { getAddressResponse, getUserEmail, getAddressById } from './AddEditAddre
 import { verifyAddress } from '../../AddressVerification/container/AddressVerification.actions';
 import { getAddressListState } from '../../AddressBook/container/AddressBook.selectors';
 import labels from '../../AddressBook/container/AddressBook.labels';
+import utils from '../../../../../utils';
 
 // @flow
 
@@ -92,7 +93,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
   };
 
   backToAddressBookClick = () => {
-    Router.push('/account');
+    utils.routerPush('/account?id=address-book', '/account/address-book');
   };
 
   render() {
