@@ -1,12 +1,7 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  color: ${props => props.theme.colors.PRIMARY.DARK};
-  font-family: ${props => props.theme.fonts.secondaryFontFamily};
-  font-size: ${props => props.theme.fonts.fontSize.body.large.secondary}px;
-  .bold-text {
-    font-weight: ${props => props.theme.fonts.fontWeight.bold};
-  }
+  font-size: 13px;
   .value {
     text-align: right;
   }

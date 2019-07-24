@@ -9,25 +9,18 @@ const CtaStyle = css`
     justify-content: space-between;
   }
   .view-bag {
-    color: white;
     width: inherit;
-    background-color: #1a1a1a;
+    background-color: ${props => props.theme.colors.PRIMARY.DARK};
     height: 48px;
-    font-size: 14px;
-    font-weight: 800;
-    font-family: ${props => props.theme.fonts.secondaryFontFamily};
   }
   .checkout-button {
     padding-top: 10px;
   }
   .checkout {
-    color: white;
-    font-size: 14px;
-    font-weight: 800;
     height: 48px;
-    width: 100%;
-    background-color: #2e6a91;
-    font-family: ${props => props.theme.fonts.secondaryFontFamily};
+    margin-left: 10px;
+    flex: 1;
+    background-color: ${props => props.theme.colors.PRIMARY.BLUE};
   }
 `;
 export default CtaStyle;

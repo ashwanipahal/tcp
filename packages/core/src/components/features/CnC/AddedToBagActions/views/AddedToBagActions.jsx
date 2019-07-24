@@ -6,6 +6,7 @@ import style from '../styles/AddedToBagActions.style';
 import PayPalButton from '../../../../common/atoms/PayPalButton';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
+import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { getLocator } from '../../../../../utils';
 
 const AddedToBagActions = props => {
@@ -15,23 +16,36 @@ const AddedToBagActions = props => {
       <Row>
         <Col colSize={{ medium: 8, large: 12, small: 6 }}>
           <Button data-locator={getLocator('addedtobag_btnviewbag')} className="view-bag">
-            View Bag
+            <BodyCopy
+              component="span"
+              color="white"
+              fontWeight="extrabold"
+              fontFamily="secondary"
+              fontSize="fs14"
+            >
+              View Bag
+            </BodyCopy>
           </Button>
         </Col>
       </Row>
       <Row className="checkout-button">
-        <Col colSize={{ medium: 4, large: 6, small: 3 }}>
-          <PayPalButton className="payPal-button" />
-        </Col>
-        <Col colSize={{ medium: 4, large: 6, small: 3 }}>
-          <Button
-            data-locator={getLocator('addedtobag_btncheckout')}
-            onClick={onClickCartCheckout}
-            className="checkout"
+        <PayPalButton className="payPal-button" />
+
+        <Button
+          data-locator={getLocator('addedtobag_btncheckout')}
+          onClick={onClickCartCheckout}
+          className="checkout"
+        >
+          <BodyCopy
+            component="span"
+            color="white"
+            fontWeight="extrabold"
+            fontFamily="secondary"
+            fontSize="fs14"
           >
             Checkout
-          </Button>
-        </Col>
+          </BodyCopy>
+        </Button>
       </Row>
     </div>
   );

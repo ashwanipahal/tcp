@@ -18,55 +18,59 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
         className="view-bag"
         data-locator="addedtobag-btnviewbag"
       >
-        View Bag
+        <Styled(BodyCopy)
+          className={null}
+          color="white"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          View Bag
+        </Styled(BodyCopy)>
       </Styled(Button)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
     className="checkout-button"
   >
-    <Styled(Col)
-      colSize={
+    <PayPalButton
+      className="payPal-button"
+      containerId="paypal-button-container"
+      locale="en_US"
+      style={
         Object {
-          "large": 6,
-          "medium": 4,
-          "small": 3,
+          "color": "blue",
+          "height": 48,
+          "label": "paypal",
+          "shape": "rect",
+          "size": "responsive",
+          "tagline": false,
         }
       }
+    />
+    <Styled(Button)
+      className="checkout"
+      data-locator="addedtobag-btncheckout"
+      onClick={[MockFunction]}
     >
-      <PayPalButton
-        className="payPal-button"
-        containerId="paypal-button-container"
-        locale="en_US"
-        style={
-          Object {
-            "color": "blue",
-            "height": 48,
-            "label": "paypal",
-            "shape": "rect",
-            "size": "responsive",
-            "tagline": false,
-          }
-        }
-      />
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 6,
-          "medium": 4,
-          "small": 3,
-        }
-      }
-    >
-      <Styled(Button)
-        className="checkout"
-        data-locator="addedtobag-btncheckout"
-        onClick={[MockFunction]}
+      <Styled(BodyCopy)
+        className={null}
+        color="white"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
       >
         Checkout
-      </Styled(Button)>
-    </Styled(Col)>
+      </Styled(BodyCopy)>
+    </Styled(Button)>
   </Styled(Row)>
 </div>
 `;

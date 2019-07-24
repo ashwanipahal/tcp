@@ -8,26 +8,13 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-htpNat",
+        "componentId": "sc-bxivhb",
         "isStatic": false,
         "rules": Array [
           "
   ",
           "
-  color: ",
-          [Function],
-          ";
-  font-family: ",
-          [Function],
-          ";
-  font-size: ",
-          [Function],
-          "px;
-  .bold-text {
-    font-weight: ",
-          [Function],
-          ";
-  }
+  font-size: 13px;
   .value {
     text-align: right;
   }
@@ -55,7 +42,7 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
       "displayName": "Styled(AddedToBagViewPoints)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-htpNat",
+      "styledComponentId": "sc-bxivhb",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
