@@ -118,15 +118,26 @@ exports[`CustomSelect component should renders correctly when optional fields ar
   }
   forwardedRef={null}
   options={
-    Object {
-      "content": <div>
-        <p>
-          Test 1
-        </p>
-      </div>,
-      "title": "Test 1",
-      "value": "1",
-    }
+    Array [
+      Object {
+        "content": <div>
+          <p>
+            Test 1
+          </p>
+        </div>,
+        "title": "Test 1",
+        "value": "1",
+      },
+      Object {
+        "content": <div>
+          <p>
+            Test 2
+          </p>
+        </div>,
+        "title": "Test 2",
+        "value": "2",
+      },
+    ]
   }
 />
 `;

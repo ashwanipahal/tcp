@@ -24,9 +24,8 @@ describe('CustomSelect component', () => {
   });
 
   it('should renders correctly when optional fields are not present', () => {
-    const props = {
-      className: 'sample-class',
-      options: {
+    const options = [
+      {
         value: '1',
         content: (
           <div>
@@ -35,8 +34,18 @@ describe('CustomSelect component', () => {
         ),
         title: 'Test 1',
       },
-    };
-    const component = shallow(<CustomSelectVanilla {...props} />);
+      {
+        value: '2',
+        content: (
+          <div>
+            <p>Test 2</p>
+          </div>
+        ),
+        title: 'Test 2',
+      },
+    ];
+
+    const component = shallow(<CustomSelectVanilla options={options} className="sample-class" />);
     expect(component).toMatchSnapshot();
   });
 });

@@ -28,10 +28,10 @@ const dropDownlist = css`
     background-image: url(${activeIcon});
     background-repeat: no-repeat;
     position: absolute;
-    width: 3%;
-    right: 1%;
+    width: 30px;
+    right: 5px;
     top: 40%;
-    height: 16%;
+    height: 30px;
   }
 
   .dropDownListwrapper {

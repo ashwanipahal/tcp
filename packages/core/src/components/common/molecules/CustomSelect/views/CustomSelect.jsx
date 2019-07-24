@@ -4,13 +4,14 @@ import DropdownList from '../../DropdownList';
 import BodyCopy from '../../../atoms/BodyCopy';
 import styles from '../styles/CustomSelect.style';
 import withStyles from '../../../hoc/withStyles';
+import CustomSelectConst from './CustomSelect.constants';
 
 class CustomSelect extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
       toggle: false,
-      activeTitle: props.activeTitle || 'Please Select',
+      activeTitle: props.activeTitle || CustomSelectConst.DEFAULT_SELECT,
       activeValue: props.activeValue || null,
     };
   }
@@ -22,7 +23,7 @@ class CustomSelect extends React.Component<Props> {
     });
   };
 
-  clickHandler = (e, value, title) => {
+  onClickHandler = (e, value, title) => {
     const { clickHandler } = this.props;
     this.setState({
       activeTitle: title,
@@ -44,7 +45,7 @@ class CustomSelect extends React.Component<Props> {
         {toggle && (
           <DropdownList
             optionsMap={options}
-            clickHandler={this.clickHandler}
+            clickHandler={this.onClickHandler}
             activeValue={activeValue}
           />
         )}

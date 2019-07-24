@@ -39,6 +39,173 @@ exports[`AddressBook component should renders correctly when addresses are not p
         }
       }
     >
+      <Styled(CustomSelect)
+        activeTitle="Please select list item"
+        activeValue="2"
+        clickHandler={[Function]}
+        options={
+          Array [
+            Object {
+              "content": <div>
+                <p>
+                  Test 1
+                </p>
+                <p>
+                  430 Greenwich St
+                </p>
+                <p>
+                  Manhattan Rd
+                </p>
+                <p>
+                  New York, NY 10013
+                </p>
+                <p>
+                  US
+                </p>
+                <p>
+                  4256890492
+                </p>
+              </div>,
+              "title": "Test 1",
+              "value": "1",
+            },
+            Object {
+              "content": <div>
+                <p>
+                  Test 2
+                </p>
+                <p>
+                  430 Greenwich St
+                </p>
+                <p>
+                  Manhattan Rd
+                </p>
+                <p>
+                  New York, NY 10013
+                </p>
+                <p>
+                  US
+                </p>
+                <p>
+                  4256890492
+                </p>
+              </div>,
+              "title": "Test 2",
+              "value": "2",
+            },
+            Object {
+              "content": <div>
+                <p>
+                  Test 3
+                </p>
+                <p>
+                  430 Greenwich St
+                </p>
+                <p>
+                  Manhattan Rd
+                </p>
+                <p>
+                  New York, NY 10013
+                </p>
+                <p>
+                  US
+                </p>
+                <p>
+                  4256890492
+                </p>
+              </div>,
+              "title": "Test 3",
+              "value": "3",
+            },
+            Object {
+              "content": <span
+                aria-label="Add a new address 1"
+                className="button-add-new button-add-new-address"
+              >
+                + Add a new address 1 + Add a new address 1 
+              </span>,
+              "title": "+ Add a new address 1",
+              "value": "4",
+            },
+            Object {
+              "content": <span
+                aria-label="Add a new address 1"
+                className="button-add-new button-add-new-address"
+              >
+                + Add a new address 1 + Add a new address 1 
+              </span>,
+              "title": "+ Add a new address 1",
+              "value": "5",
+            },
+            Object {
+              "content": <span
+                aria-label="Add a new address 1"
+                className="button-add-new button-add-new-address"
+              >
+                + Add a new address 1 + Add a new address 1 
+              </span>,
+              "title": "+ Add a new address 1",
+              "value": "6",
+            },
+            Object {
+              "content": <span
+                aria-label="Add a new address 1"
+                className="button-add-new button-add-new-address"
+              >
+                + Add a new address 1 + Add a new address 1 
+              </span>,
+              "title": "+ Add a new address 1",
+              "value": "7",
+            },
+            Object {
+              "content": <span
+                aria-label="Add a new address 1"
+                className="button-add-new button-add-new-address"
+              >
+                + Add a new address 1 + Add a new address 1 
+              </span>,
+              "title": "+ Add a new address 1",
+              "value": "8",
+            },
+            Object {
+              "content": <span
+                aria-label="Add a new address 2"
+                className="button-add-new button-add-new-address"
+              >
+                + Add a new address 2
+              </span>,
+              "title": "+ Add a new address 2",
+              "value": "29",
+            },
+            Object {
+              "content": <span
+                aria-label="Add a new address 3"
+                className="button-add-new button-add-new-address"
+              >
+                + Add a new address 3
+              </span>,
+              "title": "+ Add a new address 3",
+              "value": "10",
+            },
+            Object {
+              "content": <div>
+                <ForwardRef
+                  buttonVariation="variable-width"
+                  className="dropdownClassBtn"
+                  data-locator="addressbook-addnewaddress"
+                  fullWidth="true"
+                  onClick={[Function]}
+                >
+                  add new item
+                </ForwardRef>
+              </div>,
+              "title": "add new item",
+              "value": "",
+            },
+          ]
+        }
+        selectListTitle="Select from address book"
+      />
       <Styled(Button)
         buttonVariation="variable-width"
         data-locator="addressbook-addnewaddress"
@@ -109,6 +276,173 @@ exports[`AddressBook component should renders correctly when addresses are prese
         }
       }
     >
+      <Styled(CustomSelect)
+        activeTitle="Please select list item"
+        activeValue="2"
+        clickHandler={[Function]}
+        options={
+          Array [
+            Object {
+              "content": <div>
+                <p>
+                  Test 1
+                </p>
+                <p>
+                  430 Greenwich St
+                </p>
+                <p>
+                  Manhattan Rd
+                </p>
+                <p>
+                  New York, NY 10013
+                </p>
+                <p>
+                  US
+                </p>
+                <p>
+                  4256890492
+                </p>
+              </div>,
+              "title": "Test 1",
+              "value": "1",
+            },
+            Object {
+              "content": <div>
+                <p>
+                  Test 2
+                </p>
+                <p>
+                  430 Greenwich St
+                </p>
+                <p>
+                  Manhattan Rd
+                </p>
+                <p>
+                  New York, NY 10013
+                </p>
+                <p>
+                  US
+                </p>
+                <p>
+                  4256890492
+                </p>
+              </div>,
+              "title": "Test 2",
+              "value": "2",
+            },
+            Object {
+              "content": <div>
+                <p>
+                  Test 3
+                </p>
+                <p>
+                  430 Greenwich St
+                </p>
+                <p>
+                  Manhattan Rd
+                </p>
+                <p>
+                  New York, NY 10013
+                </p>
+                <p>
+                  US
+                </p>
+                <p>
+                  4256890492
+                </p>
+              </div>,
+              "title": "Test 3",
+              "value": "3",
+            },
+            Object {
+              "content": <span
+                aria-label="Add a new address 1"
+                className="button-add-new button-add-new-address"
+              >
+                + Add a new address 1 + Add a new address 1 
+              </span>,
+              "title": "+ Add a new address 1",
+              "value": "4",
+            },
+            Object {
+              "content": <span
+                aria-label="Add a new address 1"
+                className="button-add-new button-add-new-address"
+              >
+                + Add a new address 1 + Add a new address 1 
+              </span>,
+              "title": "+ Add a new address 1",
+              "value": "5",
+            },
+            Object {
+              "content": <span
+                aria-label="Add a new address 1"
+                className="button-add-new button-add-new-address"
+              >
+                + Add a new address 1 + Add a new address 1 
+              </span>,
+              "title": "+ Add a new address 1",
+              "value": "6",
+            },
+            Object {
+              "content": <span
+                aria-label="Add a new address 1"
+                className="button-add-new button-add-new-address"
+              >
+                + Add a new address 1 + Add a new address 1 
+              </span>,
+              "title": "+ Add a new address 1",
+              "value": "7",
+            },
+            Object {
+              "content": <span
+                aria-label="Add a new address 1"
+                className="button-add-new button-add-new-address"
+              >
+                + Add a new address 1 + Add a new address 1 
+              </span>,
+              "title": "+ Add a new address 1",
+              "value": "8",
+            },
+            Object {
+              "content": <span
+                aria-label="Add a new address 2"
+                className="button-add-new button-add-new-address"
+              >
+                + Add a new address 2
+              </span>,
+              "title": "+ Add a new address 2",
+              "value": "29",
+            },
+            Object {
+              "content": <span
+                aria-label="Add a new address 3"
+                className="button-add-new button-add-new-address"
+              >
+                + Add a new address 3
+              </span>,
+              "title": "+ Add a new address 3",
+              "value": "10",
+            },
+            Object {
+              "content": <div>
+                <ForwardRef
+                  buttonVariation="variable-width"
+                  className="dropdownClassBtn"
+                  data-locator="addressbook-addnewaddress"
+                  fullWidth="true"
+                  onClick={[Function]}
+                >
+                  add new item
+                </ForwardRef>
+              </div>,
+              "title": "add new item",
+              "value": "",
+            },
+          ]
+        }
+        selectListTitle="Select from address book"
+      />
       <Styled(Button)
         buttonVariation="variable-width"
         data-locator="addressbook-addnewaddress"
