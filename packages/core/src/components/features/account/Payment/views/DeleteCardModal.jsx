@@ -62,7 +62,7 @@ class DeleteCardModal extends React.Component<Props> {
     const { data, className, labels } = this.props;
     const ccType = data && data.description && data.description.ccType;
     const getAccNumbr = `${data.description.accountNo}`.slice(-4);
-    const TotalExp = `${data.description.expMonth}/${data.description.expYear} `;
+    const TotalExp = `${data.description.expMonth}/${data.description.expYear}`.replace(/ /g, '');
     const isCreditCard = ccType !== 'GiftCard' && ccType !== 'VENMO';
     const creditCardHeading = labels.ACC_LBL_MODAL_CREDIT_CARD_HEADING;
     const address = data.description.addressDetails ? data.description.addressDetails : null;
@@ -101,6 +101,7 @@ class DeleteCardModal extends React.Component<Props> {
             fill="BLUE"
             onClick={this.onConfirm}
             className="deleteCardModal__deleteConfirm deleteCardModal__btn"
+            dataLocator="deletecreditmodalyesdeletebtn"
           >
             {data.buttons.confirm}
           </Button>
@@ -109,6 +110,7 @@ class DeleteCardModal extends React.Component<Props> {
             onClick={this.onClose}
             fill="RED"
             className="deleteCardModal__btn deleteCardModal__deleteCancel"
+            dataLocator="deletecreditmodalnodeletebtn"
           >
             {data.buttons.cancel}
           </Button>

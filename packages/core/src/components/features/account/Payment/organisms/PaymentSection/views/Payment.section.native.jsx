@@ -22,9 +22,7 @@ const PaymentView = (props: Props) => {
     <View {...props}>
       <ScrollView showsVerticalScrollIndicator={false}>
         <StyledHeading>
-          <BodyCopy fontSize="fs16" fontWeight="extrabold">
-            {labels.ACC_LBL_PAYMENT_HEADING}
-          </BodyCopy>
+          <BodyCopy fontSize="fs16" fontWeight="extrabold" text={labels.ACC_LBL_PAYMENT_HEADING} />
         </StyledHeading>
         <UnderlineStyle />
         {cardList && <OffersSection labels={labels} />}

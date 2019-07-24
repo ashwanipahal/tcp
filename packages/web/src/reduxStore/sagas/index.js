@@ -7,6 +7,8 @@ import PaymentSaga from '@tcp/core/src/components/features/account/Payment/conta
 import DeleteCardSaga from '@tcp/core/src/components/features/account/Payment/container/DeleteCard.saga';
 import GiftCardBalanceSaga from '@tcp/core/src/components/features/account/Payment/container/GetCardBalance.saga';
 import DefaultPaymentSaga from '@tcp/core/src/components/features/account/Payment/container/DefaultPayment.saga';
+import { AddGiftCardSaga } from '@tcp/core/src/components/features/account/Payment/AddGiftCard/container/AddGiftCard.saga';
+import AddedToBagSaga from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.saga';
 import DeleteAddressSaga from '@tcp/core/src/components/features/account/AddressBook/container/DeleteAddress.saga';
 import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
 import AddressVerificationSaga from '@tcp/core/src/components/features/account/AddressVerification/container/AddressVerification.saga';
@@ -24,6 +26,7 @@ export default function* rootSaga() {
     AddEditAddressSaga(),
     AddressBookSaga(),
     DeleteAddressSaga(),
+    AddedToBagSaga(),
     SetDefaultShippingAddressSaga(),
     AddressVerificationSaga(),
     PaymentSaga(),
@@ -32,5 +35,6 @@ export default function* rootSaga() {
     DeleteCardSaga(),
     GiftCardBalanceSaga(),
     DefaultPaymentSaga(),
+    AddGiftCardSaga(),
   ]);
 }

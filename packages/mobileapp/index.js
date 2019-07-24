@@ -3,7 +3,10 @@
  */
 
 import { AppRegistry } from 'react-native';
-import App from './src/pages/_app';
+import MobileApp from './src/pages/_app';
 import { name as appName } from './app.json';
 
-AppRegistry.registerComponent(appName, () => App);
+AppRegistry.registerComponent(appName, () => MobileApp);
+
+// eslint-disable-next-line
+console.disableYellowBox = true;

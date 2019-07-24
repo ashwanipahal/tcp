@@ -63,17 +63,15 @@ exports[`CardTile should render correctly with amex card 1`] = `
         dataLocator="payment-creditdebitendingtext"
         fontSize="fs14"
         fontWeight="black"
-      >
-        undefined6765
-      </Styled(BodyCopy)>
+        text="undefined6765"
+      />
       <Styled(Text)>
         <Styled(BodyCopy)
           dataLocator="payment-creditdebitexpiretext"
           fontSize="fs14"
           fontWeight="semibold"
-        >
-          undefined10/2025
-        </Styled(BodyCopy)>
+          text="undefined10/2025"
+        />
       </Styled(Text)>
     </View>
     <Styled(View)
@@ -208,17 +206,15 @@ exports[`CardTile should render correctly with discover card 1`] = `
         dataLocator="payment-creditdebitendingtext"
         fontSize="fs14"
         fontWeight="black"
-      >
-        undefined6765
-      </Styled(BodyCopy)>
+        text="undefined6765"
+      />
       <Styled(Text)>
         <Styled(BodyCopy)
           dataLocator="payment-creditdebitexpiretext"
           fontSize="fs14"
           fontWeight="semibold"
-        >
-          undefined10/2025
-        </Styled(BodyCopy)>
+          text="undefined10/2025"
+        />
       </Styled(Text)>
     </View>
     <Styled(View)
@@ -345,17 +341,15 @@ exports[`CardTile should render correctly with gift card 1`] = `
         dataLocator="payment-giftcardendingtext"
         fontSize="fs14"
         fontWeight="black"
-      >
-        undefined6765
-      </Styled(BodyCopy)>
+        text="undefined6765"
+      />
       <Styled(Text)>
         <Styled(BodyCopy)
           dataLocator="payment-giftcardexpiretext"
           fontSize="fs14"
           fontWeight="semibold"
-        >
-          undefined10/2025
-        </Styled(BodyCopy)>
+          text="undefined10/2025"
+        />
       </Styled(Text)>
     </View>
     <Styled(View)
@@ -476,17 +470,15 @@ exports[`CardTile should render correctly with master card 1`] = `
         dataLocator="payment-creditdebitendingtext"
         fontSize="fs14"
         fontWeight="black"
-      >
-        undefined6765
-      </Styled(BodyCopy)>
+        text="undefined6765"
+      />
       <Styled(Text)>
         <Styled(BodyCopy)
           dataLocator="payment-creditdebitexpiretext"
           fontSize="fs14"
           fontWeight="semibold"
-        >
-          undefined10/2025
-        </Styled(BodyCopy)>
+          text="undefined10/2025"
+        />
       </Styled(Text)>
     </View>
     <Styled(View)
@@ -613,17 +605,15 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         dataLocator="payment-giftcardendingtext"
         fontSize="fs14"
         fontWeight="black"
-      >
-        undefined6765
-      </Styled(BodyCopy)>
+        text="undefined6765"
+      />
       <Styled(Text)>
         <Styled(BodyCopy)
           dataLocator="payment-giftcardexpiretext"
           fontSize="fs14"
           fontWeight="semibold"
-        >
-          undefined10/2025
-        </Styled(BodyCopy)>
+          text="undefined10/2025"
+        />
       </Styled(Text)>
     </View>
     <Styled(View)
@@ -744,9 +734,8 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         dataLocator="payment-creditdebitendingtext"
         fontSize="fs14"
         fontWeight="black"
-      >
-        undefined6765
-      </Styled(BodyCopy)>
+        text="undefined6765"
+      />
     </View>
     <Styled(View)
       card={
@@ -875,9 +864,8 @@ exports[`CardTile should render correctly with venmocard 1`] = `
       <Styled(BodyCopy)
         fontSize="fs14"
         fontWeight="extrabold"
-      >
-        1234
-      </Styled(BodyCopy)>
+        text="1234"
+      />
     </Styled(Text)>
     <Styled(View)
       card={
@@ -914,7 +902,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
         data-locator="payment-cardImage"
         source={
           Object {
-            "testUri": "../../../../core/src/assets/venmo-blue-acceptance-mark.svg",
+            "testUri": "../../../../core/src/assets/venmo-blue-acceptance-mark.png",
           }
         }
       />
@@ -991,17 +979,15 @@ exports[`CardTile should render correctly with visa card 1`] = `
         dataLocator="payment-creditdebitendingtext"
         fontSize="fs14"
         fontWeight="black"
-      >
-        undefined6765
-      </Styled(BodyCopy)>
+        text="undefined6765"
+      />
       <Styled(Text)>
         <Styled(BodyCopy)
           dataLocator="payment-creditdebitexpiretext"
           fontSize="fs14"
           fontWeight="semibold"
-        >
-          undefined10/2025
-        </Styled(BodyCopy)>
+          text="undefined10/2025"
+        />
       </Styled(Text)>
     </View>
     <Styled(View)
