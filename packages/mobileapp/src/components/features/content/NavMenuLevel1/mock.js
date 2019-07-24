@@ -23,12 +23,13 @@ export default {
               promoBadges: [],
               categoryImages: [
                 {
-                  url: 'http://mobile.app/category/girls.jpg',
+                  url:
+                    'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
                   alt: 'Image Alt text attribute value',
                   title: 'Image Title attribute value',
-                  crop_d: '',
-                  crop_t: '',
-                  crop_m: '',
+                  crop_d: 'c_crop,g_face:center,q_auto:best,w_962',
+                  crop_t: 'c_crop,g_face:center,q_auto:best,w_962',
+                  crop_m: 'c_crop,g_face:center,q_auto:best,w_962',
                 },
               ],
               sizesRanges: [
@@ -62,9 +63,9 @@ export default {
                               url: 'http://banner.com/image.jpg',
                               alt: 'Family Tees',
                               title: 'Family Tees',
-                              crop_d: 'c_crop...',
-                              crop_t: 'c_crop...',
-                              crop_m: 'c_crop...',
+                              crop_d: 'c_crop,g_face:center,q_auto:best,w_962',
+                              crop_t: 'c_crop,g_face:center,q_auto:best,w_962',
+                              crop_m: 'c_crop,g_face:center,q_auto:best,w_962',
                             },
                             link: {
                               url: '/node/product/<uuid>',
@@ -81,9 +82,9 @@ export default {
                               url: 'http://banner.com/raj.jpg',
                               alt: 'Family Tees',
                               title: 'Family Tees',
-                              crop_d: 'c_crop...',
-                              crop_t: 'c_crop...',
-                              crop_m: 'c_crop...',
+                              crop_d: 'c_crop,g_face:center,q_auto:best,w_962',
+                              crop_t: 'c_crop,g_face:center,q_auto:best,w_962.',
+                              crop_m: 'c_crop,g_face:center,q_auto:best,w_962',
                             },
                             link: {
                               url: '/node/product/<uuid>',
@@ -1257,12 +1258,13 @@ export default {
               promoBadges: [],
               categoryImages: [
                 {
-                  url: 'http://mobile.app/category/image.jpg',
+                  url:
+                    'https://res.cloudinary.com/tcp-dam-test/image/upload/c_fill,g_face,h_650,w_650/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
                   alt: 'Image Alt text attribute value',
                   title: 'Image Title attribute value',
-                  crop_d: '',
-                  crop_t: '',
-                  crop_m: '',
+                  crop_d: 'c_crop,g_face:center,q_auto:best,w_962',
+                  crop_t: 'c_crop,g_face:center,q_auto:best,w_962',
+                  crop_m: 'c_crop,g_face:center,q_auto:best,w_962',
                 },
               ],
               sizesRanges: [],
@@ -1278,6 +1280,50 @@ export default {
                               url: 'http://banner.com/image.jpg',
                               alt: 'Family Tees',
                               title: 'Family Tees',
+                              crop_d: 'c_crop,g_face:center,q_auto:best,w_962',
+                              crop_t: 'c_crop,g_face:center,q_auto:best,w_962',
+                              crop_m: 'c_crop,g_face:center,q_auto:best,w_962',
+                            },
+                            link: {
+                              url: '/node/product/<uuid>',
+                              text: 'Family Tees',
+                              title: 'Family Tees',
+                              target: '',
+                              external: 0,
+                            },
+                          },
+                        ],
+                      ],
+                      textBanners: [],
+                      shopBySizeList: [],
+                    },
+                    {
+                      imageBanners: [
+                        [
+                          {
+                            image: {
+                              url: 'http://banner.com/image.jpg',
+                              alt: 'Family Tees',
+                              title: 'Family Tees',
+                              crop_d: 'c_crop,g_face:center,q_auto:best,w_962',
+                              crop_t: 'c_crop,g_face:center,q_auto:best,w_962',
+                              crop_m: 'c_crop,g_face:center,q_auto:best,w_962',
+                            },
+                            link: {
+                              url: '/node/product/<uuid>',
+                              text: 'Family Tees',
+                              title: 'Family Tees',
+                              target: '',
+                              external: 0,
+                            },
+                          },
+                        ],
+                        [
+                          {
+                            image: {
+                              url: 'http://banner.com/image.jpg',
+                              alt: 'Family Tees',
+                              title: 'Family Tees',
                               crop_d: 'c_crop...',
                               crop_t: 'c_crop...',
                               crop_m: 'c_crop...',
@@ -1303,53 +1349,9 @@ export default {
                               url: 'http://banner.com/image.jpg',
                               alt: 'Family Tees',
                               title: 'Family Tees',
-                              crop_d: 'c_crop...',
-                              crop_t: 'c_crop...',
-                              crop_m: 'c_crop...',
-                            },
-                            link: {
-                              url: '/node/product/<uuid>',
-                              text: 'Family Tees',
-                              title: 'Family Tees',
-                              target: '',
-                              external: 0,
-                            },
-                          },
-                        ],
-                        [
-                          {
-                            image: {
-                              url: 'http://banner.com/image.jpg',
-                              alt: 'Family Tees',
-                              title: 'Family Tees',
-                              crop_d: 'c_crop...',
-                              crop_t: 'c_crop...',
-                              crop_m: 'c_crop...',
-                            },
-                            link: {
-                              url: '/node/product/<uuid>',
-                              text: 'Family Tees',
-                              title: 'Family Tees',
-                              target: '',
-                              external: 0,
-                            },
-                          },
-                        ],
-                      ],
-                      textBanners: [],
-                      shopBySizeList: [],
-                    },
-                    {
-                      imageBanners: [
-                        [
-                          {
-                            image: {
-                              url: 'http://banner.com/image.jpg',
-                              alt: 'Family Tees',
-                              title: 'Family Tees',
-                              crop_d: 'c_crop...',
-                              crop_t: 'c_crop...',
-                              crop_m: 'c_crop...',
+                              crop_d: 'c_crop,g_face:center,q_auto:best,w_962',
+                              crop_t: 'c_crop,g_face:center,q_auto:best,w_962',
+                              crop_m: 'c_crop,g_face:center,q_auto:best,w_962',
                             },
                             link: {
                               url: '/node/product/<uuid>',
@@ -2380,12 +2382,13 @@ export default {
               promoBadges: [],
               categoryImages: [
                 {
-                  url: 'http://mobile.app/category/image.jpg',
+                  url:
+                    'https://res.cloudinary.com/tcp-dam-test/image/upload/c_fill,g_face,h_650,w_650/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
                   alt: 'Image Alt text attribute value',
                   title: 'Image Title attribute value',
-                  crop_d: '',
-                  crop_t: '',
-                  crop_m: '',
+                  crop_d: 'c_crop,g_face:center,q_auto:best,w_962',
+                  crop_t: 'c_crop,g_face:center,q_auto:best,w_962',
+                  crop_m: 'c_crop,g_face:center,q_auto:best,w_962',
                 },
               ],
               sizesRanges: [],
@@ -3317,7 +3320,8 @@ export default {
               promoBadges: [],
               categoryImages: [
                 {
-                  url: 'http://mobile.app/category/image.jpg',
+                  url:
+                    'https://res.cloudinary.com/tcp-dam-test/image/upload/c_fill,g_face,h_650,w_650/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
                   alt: 'Image Alt text attribute value',
                   title: 'Image Title attribute value',
                   crop_d: '',
@@ -4863,7 +4867,8 @@ export default {
               promoBadges: [],
               categoryImages: [
                 {
-                  url: 'http://mobile.app/category/girls.jpg',
+                  url:
+                    'https://res.cloudinary.com/tcp-dam-test/image/upload/c_fill,g_face,h_650,w_650/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
                   alt: 'Image Alt text attribute value',
                   title: 'Image Title attribute value',
                   crop_d: '',

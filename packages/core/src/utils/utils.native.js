@@ -114,3 +114,14 @@ export const getIconPath = icon => {
 export const getLocator = locator => {
   return locators[locator];
 };
+
+/**
+ * @function cropUrl function appends or replaces the cropping value in the URL
+ * @param {string} url the image url
+ * @param {string} crop the crop parameter
+ * @return {string} function returns new Url with the crop value
+ */
+export const cropUrl = (url, crop) => {
+  const [urlPath, urlData] = url.split('/upload');
+  return `${urlPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
+};
