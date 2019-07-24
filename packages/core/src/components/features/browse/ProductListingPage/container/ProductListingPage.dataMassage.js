@@ -1164,7 +1164,10 @@ export const parseProductFromAPI = (
   }
 
   try {
-    alternateSizes = JSON.parse(defaultColorAlternateSizes || otherColorAlternateSizes);
+    alternateSizes =
+      defaultColorAlternateSizes || otherColorAlternateSizes
+        ? JSON.parse(defaultColorAlternateSizes || otherColorAlternateSizes)
+        : '';
   } catch (err) {
     alternateSizes = {};
     console.error('API response coming for additional_styles key JSON format is incorrect', err);

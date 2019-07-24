@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Modal from '../../../../common/molecules/Modal';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/AddedToBag.style';
