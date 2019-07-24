@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
+<div
+  className="footer-top"
+>
+  <Styled(Row)>
+    <Styled(Col)
+      className="footer-top__slots"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+    >
+      <Styled(Button)
+        customStyle="shadow-button"
+        onClick={[Function]}
+      >
+        <Styled(RichText) />
+      </Styled(Button)>
+    </Styled(Col)>
+    <Styled(Col)
+      className="footer-top__slots"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "medium": true,
+          "small": true,
+        }
+      }
+    >
+      <Connect(EmailSignupWrapperContainer)
+        buttonConfig={Object {}}
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="footer-top__slots"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+    >
+      <span
+        id="extole_zone_global_footer"
+      >
+        <Styled(Button)
+          customStyle="shadow-button"
+          data-locator="global_referfriend"
+        >
+          <Styled(RichText) />
+        </Styled(Button)>
+      </span>
+    </Styled(Col)>
+    <Styled(Col)
+      className="footer-top__slot--2"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(SocialMediaLinks) />
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;
