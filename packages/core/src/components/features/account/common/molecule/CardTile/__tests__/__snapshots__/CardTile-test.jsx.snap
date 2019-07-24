@@ -563,6 +563,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
               "withComponent": [Function],
             }
           }
+          data-locator="gift-card-recaptchcb"
           id="recaptchaToken"
           name="recaptchaToken"
           placeholder="recaptcha value"
@@ -571,7 +572,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
         />
         <Styled(Button)
           buttonVariation="variable-width"
-          data-locator="gift-card-recaptchcb"
+          data-locator="gift-card-checkbalance-btn"
           fill="BLUE"
           onClick={[Function]}
           type="submit"
@@ -936,6 +937,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
               "withComponent": [Function],
             }
           }
+          data-locator="gift-card-recaptchcb"
           id="recaptchaToken"
           name="recaptchaToken"
           placeholder="recaptcha value"
@@ -944,7 +946,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         />
         <Styled(Button)
           buttonVariation="variable-width"
-          data-locator="gift-card-recaptchcb"
+          data-locator="gift-card-checkbalance-btn"
           fill="BLUE"
           onClick={[Function]}
           type="submit"
@@ -1478,6 +1480,7 @@ exports[`CardTile should show loading 1`] = `
               "withComponent": [Function],
             }
           }
+          data-locator="gift-card-recaptchcb"
           id="recaptchaToken"
           name="recaptchaToken"
           placeholder="recaptcha value"
@@ -1713,6 +1716,7 @@ exports[`CardTile should show remining balance 1`] = `
               "withComponent": [Function],
             }
           }
+          data-locator="gift-card-recaptchcb"
           id="recaptchaToken"
           name="recaptchaToken"
           placeholder="recaptcha value"
