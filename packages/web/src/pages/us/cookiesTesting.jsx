@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { initActions } from '../../components/features/content/HomePage/container/HomePage.actions';
+import fetch from 'superagent';
 
 const DOMAIN = '.childrensplace.com';
 const TEMP_CART_ITEM_COUNT = 'tempcartItemsCount';
@@ -108,20 +109,28 @@ class CookiesTestView extends React.Component {
       '== HITTING URL : ',
       'https://' + this.state.targetDomain + '/api/v2/appconfig/navigateXHR'
     );
-    fetch('https://' + this.state.targetDomain + '/api/v2/appconfig/navigateXHR', {
-      method: 'POST',
-      body: JSON.stringify(payload),
-      headers: {
-        'Content-Type': 'application/json',
-        targetDomain: this.state.targetDomain.substr(this.state.targetDomain.split('.')[0].length),
-      },
-      credentials: 'include',
-    }).then(res => {
-      console.log(res);
-      if (res.status === 200) {
-        console.log(`on XHR Success Nagivation`);
-      }
-    });
+
+    const req = fetch.post('https://' + this.state.targetDomain + '/api/v2/appconfig/navigateXHR');
+    req
+      .set('Content-Type', 'application/json')
+      .set(
+        'targetDomain',
+        this.state.targetDomain.substr(this.state.targetDomain.split('.')[0].length)
+      )
+      .set('credentials', 'include')
+      .set('Accept', 'application/json')
+      .withCredentials()
+      .send(JSON.stringify(payload))
+      .then(res => {
+        console.log(res);
+        if (res.status === 200) {
+          console.log(`on XHR Success Nagivation`);
+        }
+      })
+      .catch(err => {
+        // err.message, err.response
+        console.log(err);
+      });
   }
 
   readCookieNative() {
