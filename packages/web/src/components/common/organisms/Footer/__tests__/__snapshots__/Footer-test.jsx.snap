@@ -12,14 +12,8 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
     openEmailSignUpModal={[Function]}
     referenceID=""
   />
-  <Connect(Styled(ReduxForm))
-    buttonConfig={
-      Object {
-        "text": "Email Signup",
-        "url": "/EMAIL_SIGNUP_MODAL",
-      }
-    }
-  />
+  <Connect(Styled(ReduxForm)) />
+  <Connect(Styled(ReduxForm)) />
   <Styled(Row)
     className="footer-middle mobile"
     fullBleed={true}
@@ -128,14 +122,8 @@ exports[`Footer component Footer component renders correctly without props 1`] =
     openEmailSignUpModal={[Function]}
     referenceID=""
   />
-  <Connect(Styled(ReduxForm))
-    buttonConfig={
-      Object {
-        "text": "Email Signup",
-        "url": "/EMAIL_SIGNUP_MODAL",
-      }
-    }
-  />
+  <Connect(Styled(ReduxForm)) />
+  <Connect(Styled(ReduxForm)) />
   <Styled(Row)
     className="footer-middle mobile"
     fullBleed={true}

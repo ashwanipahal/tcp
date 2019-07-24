@@ -31,14 +31,14 @@ export const mapDispatchToProps = dispatch => {
       } = props;
 
       return values.signup
-        ? emailSignupAbstractor.verifyEmail(values.signup).then(isValid => {
-            if (!isValid) {
+        ? emailSignupAbstractor.verifyEmail(values.signup).then(result => {
+            if (result.error) {
               const error = { signup: validationErrorLabel };
               // eslint-disable-next-line prefer-promise-reject-errors
               return Promise.reject({ ...error, _error: error });
             }
 
-            return isValid;
+            return result;
           })
         : Promise.resolve();
     },
@@ -55,7 +55,7 @@ const mapStateToProps = (state, props) => {
   const { EmailSignUp = {} } = state;
   return {
     formViewConfig,
-    isSubscriptionValid: EmailSignUp.signupSuccess,
+    subscription: EmailSignUp.subscription,
     isEmailValid: EmailSignUp.isEmailValid,
     isModalOpen: EmailSignUp.isModalOpen,
     ...props,

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field } from 'redux-form';
+import { Field, SubmissionError } from 'redux-form';
 
 import { Grid } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -16,11 +16,18 @@ class FooterTopSignUpForm extends React.PureComponent {
     };
   }
 
-  componentDidUpdate({ isSubscriptionValid: oldIsSubscriptionValid }) {
-    const { isSubscriptionValid, openSuccessModal } = this.props;
-    if (oldIsSubscriptionValid !== isSubscriptionValid && isSubscriptionValid) {
-      openSuccessModal();
-    } else if (oldIsSubscriptionValid !== isSubscriptionValid && !isSubscriptionValid) {
+  componentDidUpdate({ subscription: oldSubscription }) {
+    const { subscription, openSuccessModal } = this.props;
+
+    if ((subscription.error || subscription.success) && this.formSubmitPromise) {
+      if (subscription.error) {
+        this.formSubmitPromise.reject();
+      } else {
+        this.formSubmitPromise.resolve();
+        openSuccessModal();
+      }
+      this.formSubmitPromise = null;
+    } else if (oldSubscription !== subscription) {
       this.cleanUpForm();
     }
   }
@@ -47,9 +54,19 @@ class FooterTopSignUpForm extends React.PureComponent {
   };
 
   submitForm = () => {
-    const { handleSubmit, onFormSubmit } = this.props;
+    const { handleSubmit, onFormSubmit, fieldName } = this.props;
+
     handleSubmit(values => {
-      onFormSubmit(values.signup);
+      return new Promise((resolve, reject) => {
+        this.formSubmitPromise = { resolve, reject };
+        onFormSubmit(values[fieldName]);
+      }).catch(() => {
+        const {
+          labels: { validationErrorLabel },
+        } = this.props;
+        const error = { [fieldName]: validationErrorLabel };
+        throw new SubmissionError({ ...error, _error: error });
+      });
     })();
   };
 
@@ -59,9 +76,11 @@ class FooterTopSignUpForm extends React.PureComponent {
       pristine,
       invalid,
       asyncValidating,
+      submitting,
       submitSucceeded,
       dataLocators,
       fieldName,
+      fieldProps,
     } = this.props;
     const { validationStarted = false } = this.state;
 
@@ -89,6 +108,7 @@ class FooterTopSignUpForm extends React.PureComponent {
                 onBlur={this.onInputBlur}
                 onKeyPress={this.onSignUpInputKeyPress}
                 dataLocator={dataLocators.inputField}
+                {...fieldProps}
               />
             </Col>
             <Col
@@ -104,7 +124,12 @@ class FooterTopSignUpForm extends React.PureComponent {
             >
               <Button
                 disabled={
-                  pristine || !validationStarted || asyncValidating || invalid || submitSucceeded
+                  pristine ||
+                  !validationStarted ||
+                  asyncValidating ||
+                  invalid ||
+                  submitSucceeded ||
+                  submitting
                 }
                 buttonVariation="fixed-width"
                 type="button"
@@ -136,12 +161,14 @@ FooterTopSignUpForm.propTypes = {
   invalid: PropTypes.bool,
   asyncValidating: PropTypes.bool,
   submitSucceeded: PropTypes.bool,
-  isSubscriptionValid: PropTypes.bool,
+  submitting: PropTypes.bool,
+  subscription: PropTypes.shape({}),
   handleSubmit: PropTypes.func,
   onFormSubmit: PropTypes.func,
   openSuccessModal: PropTypes.func,
   reset: PropTypes.func,
   fieldName: PropTypes.string,
+  fieldProps: PropTypes.shape({}),
 };
 
 FooterTopSignUpForm.defaultProps = {
@@ -159,12 +186,14 @@ FooterTopSignUpForm.defaultProps = {
   invalid: false,
   asyncValidating: false,
   submitSucceeded: false,
-  isSubscriptionValid: false,
+  submitting: false,
+  subscription: {},
   handleSubmit: () => {},
   onFormSubmit: () => {},
   openSuccessModal: () => {},
   reset: () => {},
   fieldName: 'signup',
+  fieldProps: {},
 };
 
 export default withStyles(FooterTopSignUpForm, style);

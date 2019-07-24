@@ -56,7 +56,7 @@ class SignupWrapper extends React.PureComponent {
       isModalOpen,
       className,
       formViewConfig,
-      isSubscriptionValid,
+      subscription,
       pristine,
       invalid,
       asyncValidating,
@@ -75,10 +75,10 @@ class SignupWrapper extends React.PureComponent {
           noPadding
           widthConfig={{ small: '375px', medium: '458px', large: '851px' }}
           closeIconDataLocator={
-            isSubscriptionValid ? 'thank_you_modal_close_btn' : 'email_signup_modal_close_btn'
+            subscription.success ? 'thank_you_modal_close_btn' : 'email_signup_modal_close_btn'
           }
         >
-          {isSubscriptionValid ? (
+          {subscription.success ? (
             <Grid>
               <Row fullBleed>
                 <Col
@@ -187,7 +187,7 @@ SignupWrapper.propTypes = {
   closeModal: PropTypes.func,
   reset: PropTypes.func,
   handleSubmit: PropTypes.func,
-  isSubscriptionValid: PropTypes.bool,
+  subscription: PropTypes.shape({}),
   isModalOpen: PropTypes.bool,
   pristine: PropTypes.bool,
   invalid: PropTypes.bool,
@@ -202,7 +202,7 @@ SignupWrapper.defaultProps = {
   reset: () => {},
   handleSubmit: () => {},
   className: '',
-  isSubscriptionValid: false,
+  subscription: {},
   isModalOpen: false,
   pristine: false,
   invalid: false,

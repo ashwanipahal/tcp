@@ -43,9 +43,13 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
         }
       }
     >
-      <Connect(Styled(ReduxForm))
-        buttonConfig={Object {}}
-      />
+      <Styled(Button)
+        customStyle="shadow-button"
+        dataLocator="footer_sms_signup_btn"
+        onClick={[Function]}
+      >
+        <Styled(RichText) />
+      </Styled(Button)>
     </Styled(Col)>
     <Styled(Col)
       className="footer-top__slots"

@@ -6,7 +6,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import FooterMiddleMobile from '@tcp/core/src/components/features/footer/FooterMiddleMobile';
 import FooterMiddleDesktop from '@tcp/core/src/components/features/footer/FooterMiddleDesktop/views';
 import EmailSignupModal from '../../../molecules/EmailSignupModal/container';
-// import SmsSignupWrapper from '../../../molecules/SmsSignupModal/container';
+import SmsSignupModal from '../../../molecules/SmsSignupModal/container';
 
 import style from '../Footer.style';
 import { LegalLinks, Copyright } from '../../../molecules';
@@ -41,6 +41,8 @@ class Footer extends React.Component {
       referenceID,
       getUserInfoAction,
       getOrderDetailAction,
+      emailSignup,
+      smsSignup,
     } = props;
     const { showFooterTopCandidateA } = this.state;
 
@@ -51,7 +53,8 @@ class Footer extends React.Component {
         ) : (
           <FooterTopCandidateB {...props} />
         )}
-        <EmailSignupModal buttonConfig={{ url: '/EMAIL_SIGNUP_MODAL', text: 'Email Signup' }} />
+        <EmailSignupModal buttonConfig={emailSignup} />
+        <SmsSignupModal buttonConfig={smsSignup} />
         <Row className="footer-middle mobile" fullBleed>
           <FooterMiddleMobile className={className} navLinkItems={navLinks} />
         </Row>

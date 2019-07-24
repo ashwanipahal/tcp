@@ -7,6 +7,7 @@ import { reduxForm } from 'redux-form';
 import { Grid } from '@tcp/core/src/components/common/molecules';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { normalizePhoneNumber } from '@tcp/core/src/utils/formValidation/signupPhoneNumber';
 
 import { SocialMediaLinks } from '../../../molecules';
 
@@ -42,9 +43,13 @@ class FooterTopCandidateA extends React.PureComponent {
       referAFriendButton,
       referAFriend,
       emailSignUpAsyncValidate,
+      smsSignUpAsyncValidate,
       submitEmailSubscription,
-      isSubscriptionValid,
+      submitSmsSubscription,
+      emailSubscription,
+      smsSubscription,
       openEmailSignUpModal,
+      openSmsSignUpModal,
     } = this.props;
 
     return (
@@ -76,7 +81,7 @@ class FooterTopCandidateA extends React.PureComponent {
               labels={emailSignupLabels}
               asyncValidate={emailSignUpAsyncValidate}
               onFormSubmit={submitEmailSubscription}
-              isSubscriptionValid={isSubscriptionValid}
+              subscription={emailSubscription}
               openSuccessModal={openEmailSignUpModal}
               dataLocators={{
                 submitButton: 'email_submit_btn',
@@ -120,11 +125,15 @@ class FooterTopCandidateA extends React.PureComponent {
             >
               <RichText richTextHtml={smsSignup.text} />
             </BodyCopy>
-            <FooterTopSmsSignUpForm labels={smsSignupLabels} fieldName={smsSignupFieldName} />
-            {/* asyncValidate={emailSignUpAsyncValidate}
-            onFormSubmit={submitEmailSubscription}
-            isSubscriptionValid={isSubscriptionValid}
-            openSuccessModal={openEmailSignUpModal} */}
+            <FooterTopSmsSignUpForm
+              labels={smsSignupLabels}
+              fieldName={smsSignupFieldName}
+              fieldProps={{ normalize: normalizePhoneNumber }}
+              asyncValidate={smsSignUpAsyncValidate}
+              onFormSubmit={submitSmsSubscription}
+              subscription={smsSubscription}
+              openSuccessModal={openSmsSignUpModal}
+            />
             {/* TODO: Zeplin has ["fs11","fs11", "fs13"], which is not in guidline using following for now  */}
             <BodyCopy
               fontFamily="secondary"
@@ -278,9 +287,13 @@ FooterTopCandidateA.propTypes = {
   showError: PropTypes.bool,
   isEmailValid: PropTypes.bool,
   emailSignUpAsyncValidate: PropTypes.func,
+  smsSignUpAsyncValidate: PropTypes.func,
   submitEmailSubscription: PropTypes.func,
+  submitSmsSubscription: PropTypes.func,
   openEmailSignUpModal: PropTypes.func,
-  isSubscriptionValid: PropTypes.bool,
+  openSmsSignUpModal: PropTypes.func,
+  emailSubscription: PropTypes.shape({}),
+  smsSubscription: PropTypes.shape({}),
 };
 
 FooterTopCandidateA.defaultProps = {
@@ -317,9 +330,13 @@ FooterTopCandidateA.defaultProps = {
   showError: false,
   isEmailValid: false,
   emailSignUpAsyncValidate: () => Promise.resolve(),
+  smsSignUpAsyncValidate: () => {},
   submitEmailSubscription: () => {},
+  submitSmsSubscription: () => {},
   openEmailSignUpModal: () => {},
-  isSubscriptionValid: false,
+  openSmsSignUpModal: () => {},
+  emailSubscription: {},
+  smsSubscription: {},
 };
 
 export default withStyles(FooterTopCandidateA, style);

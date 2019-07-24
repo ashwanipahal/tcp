@@ -66,7 +66,6 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
             "signup": "",
           }
         }
-        isSubscriptionValid={false}
         keepDirtyOnReinitialize={false}
         labels={
           Object {
@@ -85,6 +84,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         shouldValidate={[Function]}
         shouldWarn={[Function]}
         submitAsSideEffect={false}
+        subscription={Object {}}
         touchOnBlur={true}
         touchOnChange={false}
         updateUnregisteredFields={false}
@@ -185,9 +185,15 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
             "footerTopSmsSignup",
           ]
         }
+        asyncValidate={[Function]}
         destroyOnUnmount={true}
         enableReinitialize={false}
         fieldName="footerTopSmsSignup"
+        fieldProps={
+          Object {
+            "normalize": [Function],
+          }
+        }
         forceUnregisterOnUnmount={false}
         form="FooterTopSmsSignUpForm"
         getFormState={[Function]}
@@ -205,6 +211,8 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
             "validationErrorLabel": "",
           }
         }
+        onFormSubmit={[Function]}
+        openSuccessModal={[Function]}
         persistentSubmitErrors={false}
         pure={true}
         shouldAsyncValidate={[Function]}
@@ -212,6 +220,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         shouldValidate={[Function]}
         shouldWarn={[Function]}
         submitAsSideEffect={false}
+        subscription={Object {}}
         touchOnBlur={true}
         touchOnChange={false}
         updateUnregisteredFields={false}

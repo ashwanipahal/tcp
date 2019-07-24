@@ -35,30 +35,28 @@ const Abstractor = {
       res.body.redirecturl &&
       res.body.redirecturl.indexOf('/email-confirmation') !== -1
     ) {
-      return true;
+      return { success: true };
     }
-    return false;
+    return { error: 'invalid' };
   },
   processSmsSubscriptionData: res => {
     if (res.errors) {
-      return 'invalid';
+      return { error: 'invalid' };
     }
-    return 'valid';
+    return { success: true };
   },
   processData: res => {
     if (res.body && (res.body.status === 'valid' || res.body.status === 'accept_all')) {
-      return true;
+      return { success: true };
     }
-    return false;
+    return { error: 'invalid' };
   },
 
-  handleValidationError: e => {
-    console.log(e);
-    return 'invalid';
+  handleValidationError: () => {
+    return { error: 'invalid' };
   },
-  handleSubscriptionError: e => {
-    console.log(e);
-    return false;
+  handleSubscriptionError: () => {
+    return { error: 'invalid' };
   },
 };
 export default Abstractor;
