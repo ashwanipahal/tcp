@@ -47,9 +47,9 @@ const Abstractor = {
   },
   processData: res => {
     if (res.body && (res.body.status === 'valid' || res.body.status === 'accept_all')) {
-      return 'valid';
+      return true;
     }
-    return 'invalid';
+    return false;
   },
 
   handleValidationError: e => {

@@ -20,55 +20,66 @@ function getParent() {
   return document.querySelector('.TCPModal__Wrapper');
 }
 
-const Modal = ({ children, ...otherProps }) => {
-  const {
-    colSet,
-    onRequestClose,
-    title,
-    heading,
-    fixedWidth,
-    className,
-    closeIconDataLocator,
-    headingStyle,
-  } = otherProps;
-  const column = colSet || Config.MODAL_COL_DEFAULTS;
-  return (
-    <div className={className}>
-      <div className="TCPModal__Wrapper">
-        <ReactModal {...otherProps} parentSelector={getParent}>
-          {!fixedWidth && (
-            <Grid>
-              <Row>
-                <Col colSize={column} className="TCPModal__InnerContent">
-                  <ModalHeader
-                    closeFunc={onRequestClose}
-                    title={title}
-                    heading={heading}
-                    closeIconDataLocator={closeIconDataLocator}
-                    headingStyle={headingStyle}
-                  />
-                  {children}
-                </Col>
-              </Row>
-            </Grid>
-          )}
-          {fixedWidth && (
-            <div className="TCPModal__InnerContent">
-              <ModalHeader
-                closeFunc={onRequestClose}
-                title={title}
-                heading={heading}
-                closeIconDataLocator={closeIconDataLocator}
-                headingStyle={headingStyle}
-              />
-              {children}
-            </div>
-          )}
-        </ReactModal>
+class Modal extends React.PureComponent {
+  componentDidMount() {
+    // Make sure to bind modal to your appElement (http://reactcommunity.org/react-modal/accessibility/)
+    const rootElemId = '__next';
+    if (process.env.NODE_ENV !== 'test' && document.getElementById(rootElemId)) {
+      ReactModal.setAppElement(`#${rootElemId}`);
+    }
+  }
+
+  render() {
+    const { children, ...otherProps } = this.props;
+    const {
+      colSet,
+      onRequestClose,
+      title,
+      heading,
+      fixedWidth,
+      className,
+      closeIconDataLocator,
+      headingStyle,
+    } = otherProps;
+    const column = colSet || Config.MODAL_COL_DEFAULTS;
+    return (
+      <div className={className}>
+        <div className="TCPModal__Wrapper">
+          <ReactModal {...otherProps} parentSelector={getParent}>
+            {!fixedWidth && (
+              <Grid>
+                <Row>
+                  <Col colSize={column} className="TCPModal__InnerContent">
+                    <ModalHeader
+                      closeFunc={onRequestClose}
+                      title={title}
+                      heading={heading}
+                      closeIconDataLocator={closeIconDataLocator}
+                      headingStyle={headingStyle}
+                    />
+                    {children}
+                  </Col>
+                </Row>
+              </Grid>
+            )}
+            {fixedWidth && (
+              <div className="TCPModal__InnerContent">
+                <ModalHeader
+                  closeFunc={onRequestClose}
+                  title={title}
+                  heading={heading}
+                  closeIconDataLocator={closeIconDataLocator}
+                  headingStyle={headingStyle}
+                />
+                {children}
+              </div>
+            )}
+          </ReactModal>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 Modal.propTypes = {
   children: PropTypes.element.isRequired,

@@ -24,6 +24,10 @@ export default {
   // Promotional Banner
   promo_item: 'global_promobannerimg',
   refer_friend: 'global_referfriend',
+  // Added To Bag
+  addedtobag_btnviewbag: 'addedtobag-btnviewbag',
+  addedtobag_btnpaypal: 'addedtobag-btnpaypal',
+  addedtobag_btncheckout: 'addedtobag-btncheckout',
   // MobileHeader
   global_headerpanel: 'global_headerpanel',
   global_findastoretext: 'global_findastoretext',
@@ -32,4 +36,9 @@ export default {
   global_headerpanelbagicon: 'global_headerpanelbagicon',
   global_headerpanelbagitemtext: 'obal_headerpanelbagicon',
   global_headerpanelwelcometext: 'global_headerpanelwelcometext',
+  // MobileHeader
+  global_promobanner_title_0: 'global_promobanner_title_0',
+  global_promobanner_title_1: 'global_promobanner_title_1',
+  global_promobanner_left_arrowRight: 'global_promobanner_left_arrowRight',
+  global_promobanner_right_arrow: 'global_promobanner_right_arrow',
 };
