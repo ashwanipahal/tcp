@@ -7,6 +7,7 @@ describe('AddedToBagActions component', () => {
     const props = {
       className: 'checkout',
       onClickCartCheckout: jest.fn(),
+      labels: {},
     };
     const component = shallow(<AddedToBagActionsVanilla {...props} />);
     expect(component).toMatchSnapshot();

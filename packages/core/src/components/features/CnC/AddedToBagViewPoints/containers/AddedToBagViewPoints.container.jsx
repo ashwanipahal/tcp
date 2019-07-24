@@ -13,9 +13,9 @@ class AddedToBagViewPointsContainer extends React.Component {
   };
 
   render() {
-    const { getOrderPointsSummary } = this.props;
+    const { getOrderPointsSummary, labels } = this.props;
     const pointsSummary = getPointsSummary(getOrderPointsSummary);
-    return <AddedToBagViewPoints pointsSummary={pointsSummary} />;
+    return <AddedToBagViewPoints labels={labels} pointsSummary={pointsSummary} />;
   }
 }
 function mapDispatchToProps(dispatch) {
@@ -35,10 +35,12 @@ function mapStateToProps(state) {
 AddedToBagViewPointsContainer.propTypes = {
   getOrderDetailsAction: PropTypes.func.isRequired,
   getOrderPointsSummary: PropTypes.shape,
+  labels: PropTypes.shape,
 };
 
 AddedToBagViewPointsContainer.defaultProps = {
   getOrderPointsSummary: {},
+  labels: {},
 };
 
 export default connect(

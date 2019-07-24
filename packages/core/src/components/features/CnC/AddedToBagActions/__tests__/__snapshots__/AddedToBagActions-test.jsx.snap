@@ -28,9 +28,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
           letterSpacing="normal"
           lineHeight="normal"
           textAlign="left"
-        >
-          View Bag
-        </Styled(BodyCopy)>
+        />
       </Styled(Button)>
     </Styled(Col)>
   </Styled(Row)>
@@ -67,9 +65,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
-      >
-        Checkout
-      </Styled(BodyCopy)>
+      />
     </Styled(Button)>
   </Styled(Row)>
 </div>

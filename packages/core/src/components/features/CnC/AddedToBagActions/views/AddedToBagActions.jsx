@@ -10,7 +10,7 @@ import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { getLocator } from '../../../../../utils';
 
 const AddedToBagActions = props => {
-  const { className, onClickCartCheckout } = props;
+  const { className, onClickCartCheckout, labels } = props;
   return (
     <div className={className}>
       <Row>
@@ -23,7 +23,7 @@ const AddedToBagActions = props => {
               fontFamily="secondary"
               fontSize="fs14"
             >
-              View Bag
+              {labels.viewBag}
             </BodyCopy>
           </Button>
         </Col>
@@ -43,7 +43,7 @@ const AddedToBagActions = props => {
             fontFamily="secondary"
             fontSize="fs14"
           >
-            Checkout
+            {labels.checkout}
           </BodyCopy>
         </Button>
       </Row>
@@ -54,6 +54,7 @@ const AddedToBagActions = props => {
 AddedToBagActions.propTypes = {
   className: PropTypes.string.isRequired,
   onClickCartCheckout: PropTypes.func.isRequired,
+  labels: PropTypes.shape.isRequired,
 };
 
 export default withStyles(AddedToBagActions, style);

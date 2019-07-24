@@ -34,8 +34,8 @@ const AddedToBag = ({ openState, onRequestClose, addedToBagData, className, labe
     >
       <div className="addedToBagWrapper">
         <ProductInformationView data={addedToBagData} labels={labels} />
-        <AddedToBagViewPoints className="added-to-bag-points" />
-        <AddedToBagActions />
+        <AddedToBagViewPoints labels={labels} className="added-to-bag-points" />
+        <AddedToBagActions labels={labels} />
         <BossBannerView labels={labels} />
       </div>
     </Modal>
