@@ -57,9 +57,16 @@ exports[`DropDown Test should render correctly 1`] = `
     onValueChange={[MockFunction]}
     selectedValue="addressBookMobile"
   >
-    <Styled(Styled(Text))>
-      ADDRESS BOOK
-    </Styled(Styled(Text))>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        color="gray.800"
+        fontFamily="secondary"
+        fontSize="fs13"
+        fontWeight="black"
+        text="ADDRESS BOOK"
+        textAlign="center"
+      />
+    </Styled(View)>
     <Image
       source={
         Object {

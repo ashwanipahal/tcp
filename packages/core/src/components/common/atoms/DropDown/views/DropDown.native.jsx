@@ -59,7 +59,7 @@ class DropDown extends React.PureComponent<Props> {
 
   dropDownLayout = ({ item }) => {
     return (
-      <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)}>
+      <DropDownItemContainer onStartShouldSetResponder={() => this.onDropDownItemClick(item)}>
         <BodyCopy
           fontFamily="secondary"
           fontSize="fs13"
