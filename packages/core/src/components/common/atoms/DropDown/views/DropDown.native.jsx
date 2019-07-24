@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, View, FlatList, Modal } from 'react-native';
+import { Image, View, FlatList, Modal, Dimensions } from 'react-native';
 import withStyles from '../../../hoc/withStyles.native';
 import {
   style,
@@ -25,9 +25,19 @@ type Props = {
 class DropDown extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
-    this.width = -1;
-    this.leftMargin = -1;
-    this.topMargin = -1;
+    this.rowFrame = {
+      x: 0,
+      y: 0,
+      w: 0,
+      h: 0,
+    };
+
+    this.dropDownFrame = {
+      x: 0,
+      y: 0,
+      w: 0,
+      h: 0,
+    };
 
     const { data, selectedValue } = this.props;
     const selectedObject = data.filter(item => {
@@ -67,14 +77,32 @@ class DropDown extends React.PureComponent<Props> {
     });
   };
 
-  findDimensions = () => {
-    if (this.marker) {
-      this.marker.measure((x, y, width, height, pageX, pageY) => {
-        this.width = width;
-        this.leftMargin = pageX;
+  findRowDimensions = () => {
+    if (this.rowMarker) {
+      this.rowMarker.measure((x, y, width, height, pageX, pageY) => {
+        this.rowFrame = { x: pageX, y: height + pageY, w: width, h: height };
+      });
+    }
+  };
 
-        // calculate this
-        this.topMargin = height + pageY;
+  findDropDownDimensions = () => {
+    if (this.overlayMarker) {
+      this.overlayMarker.measure((x, y, width, height, pageX) => {
+        const dimensions = Dimensions.get('window');
+        const windowHeight = dimensions.height;
+
+        const bottomSpace = windowHeight - this.rowFrame.y - this.rowFrame.h;
+        const showInBottom = bottomSpace >= height || bottomSpace >= this.rowFrame.y;
+
+        const topMargin = {
+          top: showInBottom ? this.rowFrame.y : Math.max(0, this.rowFrame.y - height),
+        };
+        this.dropDownFrame = { x: pageX, y: topMargin.top, w: width, h: height };
+        // this.overlayMarker.setNativeProps({
+        //   style: {
+        //     top: topMargin.top,
+        //   },
+        // });
       });
     }
   };
@@ -82,16 +110,15 @@ class DropDown extends React.PureComponent<Props> {
   render() {
     const { data, containerStyle } = this.props;
     const { dropDownIsOpen, selectedLabelState } = this.state;
-
     return (
       <View style={containerStyle}>
         <Row
           {...this.props}
           onStartShouldSetResponder={() => this.openDropDown()}
           ref={ref => {
-            this.marker = ref;
+            this.rowMarker = ref;
           }}
-          onLayout={() => this.findDimensions()}
+          onLayout={() => this.findRowDimensions()}
         >
           <HeaderText>{selectedLabelState}</HeaderText>
           <Image source={dropDownIsOpen ? upIcon : downIcon} />
@@ -102,9 +129,19 @@ class DropDown extends React.PureComponent<Props> {
             accessibilityComponentType="none"
             onPress={this.closeDropDown}
             activeOpacity={1}
-            style={{ width: this.width, left: this.leftMargin, top: this.topMargin }}
+            style={{
+              width: this.rowFrame.w,
+              left: this.rowFrame.x,
+              top: this.dropDownFrame.y,
+            }}
           >
-            <OverLayView style={containerStyle}>
+            <OverLayView
+              style={containerStyle}
+              ref={ref => {
+                this.overlayMarker = ref;
+              }}
+              onLayout={() => this.findDropDownDimensions()}
+            >
               {dropDownIsOpen && (
                 <FlatList
                   data={data}

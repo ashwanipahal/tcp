@@ -33,7 +33,7 @@ const OverLayView = styled.View`
   z-index: 999;
   flex-direction: row;
   border: 1px solid #9c9c9c;
-  border-top-width: 0px;
+  border-top-width: 1px;
 `;
 
 const DropDownItem = styled(StyledText)`
