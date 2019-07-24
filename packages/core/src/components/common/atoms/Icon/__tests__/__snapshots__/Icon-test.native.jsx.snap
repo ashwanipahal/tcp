@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomButton should render correctly 1`] = `
+<Icon
+  allowFontScaling={false}
+  color="#ff0000"
+  name="FontAwesome"
+  size={11}
+/>
+`;
