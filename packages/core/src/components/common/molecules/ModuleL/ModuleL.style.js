@@ -71,4 +71,7 @@ export default css`
     width: 42px;
     height: 42px;
   }
+  .slick-dots li button {
+    pointer-events: none;
+  }
 `;

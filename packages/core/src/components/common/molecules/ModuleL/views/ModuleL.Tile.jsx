@@ -24,10 +24,7 @@ const ModuleLTile = ({ tileData: { image, link, styled }, index }: Props) => {
       <Row>
         <Col colSize={colSize} className="moduleL__tile">
           <DamImage
-            imgData={{
-              alt: image.alt,
-              url: image.url,
-            }}
+            imgData={image}
             imgConfigs={config.IMG_DATA.crops}
             className="moduleL__tile-image"
             data-locator={`${getLocator('moduleL_image')}_${index + 1}`}

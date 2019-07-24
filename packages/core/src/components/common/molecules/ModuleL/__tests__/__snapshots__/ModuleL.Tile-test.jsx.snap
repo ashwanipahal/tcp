@@ -37,6 +37,10 @@ exports[`ModuleL Header component renders correctly 1`] = `
         imgData={
           Object {
             "alt": "BE A UNICORN 24/7/365 alt",
+            "crop_d": "c_crop,g_face:center,q_auto:best,w_1440",
+            "crop_m": "c_crop,g_face:center,q_auto:best,w_520",
+            "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+            "title": "BE A UNICORN 24/7/365 title",
             "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562061640/senjuti-kundu-7uP2gFMB2ps-unsplash_kxf3r4.jpg",
           }
         }
