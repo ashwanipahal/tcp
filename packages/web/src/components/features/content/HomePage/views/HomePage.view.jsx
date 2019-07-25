@@ -11,8 +11,8 @@ const HomePageView = props => {
     <Fragment>
       <SlotA {...slotA} />
       <SlotB {...slotB} />
-      <ModuleK {...moduleKMock.moduleK.composites} />
       <SlotD {...slotD} />
+      <ModuleK {...moduleKMock.moduleK.composites} />
     </Fragment>
   );
 };

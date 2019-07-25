@@ -2,7 +2,7 @@
 import React from 'react';
 import { Col, Row } from '../../../atoms';
 import errorBoundary from '../../../hoc/errorBoundary';
-import withStyle from '../../../hoc/withStyles';
+import withStyles from '../../../hoc/withStyles';
 import { Carousel, LinkText, PromoTextBanner } from '../..';
 import { getLocator } from '../../../../../utils';
 import config from '../config';
@@ -86,5 +86,5 @@ const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide, promoTextBa
   );
 };
 
-export default errorBoundary(withStyle(ModuleL, style));
+export default errorBoundary(withStyles(ModuleL, style));
 export { ModuleL as ModuleLVanilla };
