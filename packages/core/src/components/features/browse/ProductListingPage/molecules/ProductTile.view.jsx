@@ -8,8 +8,6 @@ import ProductListingPageStyle from '../styles/ProductListingPage.style.native';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
 
 const ProductTile = ({ item, selectChange, addToBagEcom }) => {
-  console.log(item);
-
   return (
     <ProductListingPageStyle key={item.product_name} className="product-item">
       <View>
