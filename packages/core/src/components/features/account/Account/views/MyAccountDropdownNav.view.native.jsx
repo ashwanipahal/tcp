@@ -40,6 +40,8 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
             this.setState({ dropDownItem: itemValue });
             handleComponentChange(itemValue);
           }}
+          variation="primary"
+          height="40px"
         />
       </View>
     );

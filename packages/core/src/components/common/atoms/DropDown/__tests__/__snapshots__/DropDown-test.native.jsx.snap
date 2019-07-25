@@ -55,6 +55,7 @@ exports[`DropDown Test should render correctly 1`] = `
         },
       ]
     }
+    height="40px"
     onLayout={[Function]}
     onStartShouldSetResponder={[Function]}
     onValueChange={[MockFunction]}
@@ -161,6 +162,7 @@ exports[`DropDown Test test openDropDown 1`] = `
         },
       ]
     }
+    height="40px"
     onLayout={[Function]}
     onStartShouldSetResponder={[Function]}
     onValueChange={[MockFunction]}

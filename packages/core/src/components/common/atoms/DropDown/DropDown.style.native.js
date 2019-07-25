@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components/native';
 
 const style = css`
-  height: 42px;
+  height: ${props => props.height};
   ${props =>
     props.variation === 'primary'
       ? `border: 1px solid ${props.theme.colors.BUTTON.WHITE.BORDER}`

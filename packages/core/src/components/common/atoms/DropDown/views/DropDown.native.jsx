@@ -22,6 +22,7 @@ class DropDown extends React.PureComponent<Props> {
     onValueChange: PropTypes.func,
     containerStyle: PropTypes.shape({}),
     variation: PropTypes.string,
+    height: PropTypes.string,
   };
 
   static defaultProps = {
@@ -30,6 +31,7 @@ class DropDown extends React.PureComponent<Props> {
     onValueChange: null,
     containerStyle: null,
     variation: 'primary',
+    height: '40px',
   };
 
   constructor(props) {
