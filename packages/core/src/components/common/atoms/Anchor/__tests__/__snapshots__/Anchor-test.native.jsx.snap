@@ -13,7 +13,7 @@ exports[`Anchor Native should render correctly 1`] = `
         "navigate": [MockFunction],
       }
     }
-    url="https://www.google.com/p/Rainbow--The-Birthday-Girl--Graphic-Tee"
+    url="/p/Rainbow--The-Birthday-Girl--Graphic-Tee"
   >
     click Me
   </Text>
