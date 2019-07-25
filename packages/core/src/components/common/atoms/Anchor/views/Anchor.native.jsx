@@ -64,10 +64,10 @@ const openUrlInBrowser = url => {
 };
 
 const Anchor = ({ anchorVariation, text, visible, ...otherProps }: Props) => {
-  const { url, external, navigation, onPress } = otherProps;
+  const { url, internal, navigation, onPress } = otherProps;
 
   const openUrlInExternalBrowser = onPress || (() => openUrlInBrowser(url));
-  const openUrl = external ? openUrlInExternalBrowser : () => navigateToUrl(url, navigation);
+  const openUrl = internal ? () => navigateToUrl(url, navigation) : openUrlInExternalBrowser;
   return (
     <AnchorView accessibilityRole="button" onPress={openUrl}>
       <Text anchorVariation={anchorVariation} {...otherProps}>

@@ -15,6 +15,7 @@ describe('Anchor Native', () => {
         url="https://www.google.com/p/Rainbow--The-Birthday-Girl--Graphic-Tee"
         navigation={navigation}
         text="click Me"
+        internal
       />
     );
   });
@@ -37,25 +38,25 @@ describe('Anchor Native', () => {
   });
 
   it('should call onPress for external url handler', () => {
-    component.setProps({ external: true, onPress: navigate });
+    component.setProps({ internal: false, onPress: navigate });
     component.props().onPress();
     expect(navigate).toHaveBeenCalledTimes(2);
   });
 
   it('should call for plp page', () => {
-    component.setProps({ external: false, url: 'https://www.google.com/c/test' });
+    component.setProps({ internal: true, url: 'https://www.google.com/c/test' });
     component.props().onPress();
     expect(navigate).toHaveBeenCalledTimes(3);
   });
 
   it('should return null', () => {
-    component.setProps({ external: false, url: 'https://www.google.com/test' });
+    component.setProps({ internal: true, url: 'https://www.google.com/test' });
     component.props().onPress();
     expect(navigate).toHaveBeenCalledTimes(3);
   });
 
   it('should return navigation to default browser', () => {
-    component.setProps({ external: true, onPress: null });
+    component.setProps({ internal: false, onPress: null });
     component.props().onPress();
     expect(navigate).toHaveBeenCalledTimes(3);
   });
