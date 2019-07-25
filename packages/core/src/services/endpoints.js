@@ -22,9 +22,13 @@ const endpoints = {
     JSONP: true,
     reqTimeout: 2000,
   },
-  createAccount: {
-    method: API_METHODS.POST,
-    URI: 'v2/wallet/addCustomerRegistration',
+  getOrderDetails: {
+    method: API_METHODS.GET,
+    URI: 'v2/checkout/getOrderDetails',
+  },
+  updateMultiSelectItemsToRemove: {
+    method: 'PUT',
+    URI: 'v2/cart/deleteMultipleOrderItems',
   },
 };
 

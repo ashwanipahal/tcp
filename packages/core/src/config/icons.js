@@ -31,4 +31,6 @@ export default {
   'venmo-blue-acceptance-mark': '/static/images/venmo-blue-acceptance-mark.png',
   'my-place-rewards': '/static/images/my-place-rewards.png',
   'info-icon': '/static/images/info-icon.png',
+  down_arrow_icon: '/static/images/down_arrow_icon.png',
+  active_icon: '/static/images/active_icon.png',
 };
