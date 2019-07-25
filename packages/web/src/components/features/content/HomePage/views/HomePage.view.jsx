@@ -9,10 +9,10 @@ const HomePageView = props => {
   const { slot_1: slotA, slot_2: slotB, slot_4: slotD } = props;
   return (
     <Fragment>
+      <SlotD {...slotD} />
       <SlotA {...slotA} />
       <SlotB {...slotB} />
       <ModuleK {...moduleKMock.moduleK.composites} />
-      <SlotD {...slotD} />
     </Fragment>
   );
 };
