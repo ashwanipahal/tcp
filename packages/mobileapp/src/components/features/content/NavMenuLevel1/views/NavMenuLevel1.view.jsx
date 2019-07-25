@@ -1,16 +1,13 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { FlatList, View } from 'react-native';
 import { getScreenWidth, cropUrl } from '@tcp/core/src/utils/utils.native';
 import { Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import {
-  L1WithoutImageView,
   L1TouchableOpacity,
   L1TextView,
-  ContainerView,
+  ContainerList,
+  L1TouchableOpacityNoImage,
 } from '../NavMenuLevel1.style';
-
-import navObject from '../mock';
 
 const imageWidth = parseInt(getScreenWidth() / 2, 10);
 const keyExtractor = (_, index) => index.toString();
@@ -22,7 +19,11 @@ const Icon = require('@tcp/core/src/assets/carrot-small-rights.png');
  */
 const NavigationMenu = props => {
   const {
-    navigation: { navigate },
+    navigationMenuObj: {
+      data: {
+        navigation: { nav },
+      },
+    },
   } = props;
 
   /**
@@ -30,10 +31,41 @@ const NavigationMenu = props => {
    * @param {object} item Details of the L1 menu item that has been clicked
    */
   const ShowL2Navigation = item => {
-    return navigate('navMenuL2', {
+    const {
+      navigation: { navigate },
+    } = props;
+
+    return navigate('NavMenuLevel2', {
       navigationKey: item.name,
       navigationLinks: item.categoryContent,
     });
+  };
+
+  /**
+   * The renderTextBlock populates the L1 menu content
+   * @param {object} item Details of the L1 menu item that has been clicked
+   */
+  const renderTextBlock = (catName, catSize) => {
+    return (
+      <L1TextView>
+        <BodyCopy
+          fontFamily="primary"
+          fontSize="fs22"
+          fontWeight="black"
+          textAlign="center"
+          text={catName}
+          color="text.primary"
+        />
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="extrabold"
+          textAlign="center"
+          text={catSize}
+          color="text.primary"
+        />
+      </L1TextView>
+    );
   };
 
   /**
@@ -42,117 +74,72 @@ const NavigationMenu = props => {
    */
   const renderItem = item => {
     const {
-      item: { categoryContent },
+      item: {
+        categoryContent,
+        categoryContent: {
+          mainCategory: { categoryImages },
+        },
+      },
     } = item;
     // In case of no category image, add the caret with the text
-    if (categoryContent.mainCategory.categoryImages.length === 0) {
+    if (categoryImages.length === 0) {
       return (
-        <L1WithoutImageView>
-          <L1TouchableOpacity
-            accessibilityRole="button"
-            onPress={() => ShowL2Navigation(categoryContent)}
-          >
-            <BodyCopy
-              fontFamily="primary"
-              fontSize="fs28"
-              fontWeight="black"
-              textAlign="center"
-              text={categoryContent.name}
-              color="text.primary"
-            />
-            <Image
-              alt="PLP"
-              source={Icon}
-              maxWidth={16}
-              height={26}
-              position="absolute"
-              right={37}
-            />
-          </L1TouchableOpacity>
-        </L1WithoutImageView>
+        <L1TouchableOpacityNoImage
+          accessibilityRole="button"
+          onPress={() => ShowL2Navigation(categoryContent)}
+        >
+          <BodyCopy
+            fontFamily="primary"
+            fontSize="fs28"
+            fontWeight="black"
+            textAlign="center"
+            text={categoryContent.name}
+            color="text.primary"
+          />
+          <Image
+            alt={categoryContent.name}
+            source={Icon}
+            maxWidth={16}
+            height={26}
+            position="absolute"
+            right={37}
+          />
+        </L1TouchableOpacityNoImage>
       );
     }
 
     return (
-      <View>
-        <L1TouchableOpacity
-          accessibilityRole="button"
-          onPress={() => ShowL2Navigation(categoryContent)}
-        >
-          {!categoryContent.imageFirst && (
-            <L1TextView>
-              <BodyCopy
-                fontFamily="primary"
-                fontSize="fs22"
-                fontWeight="black"
-                textAlign="center"
-                text={categoryContent.name}
-                color="text.primary"
-              />
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs12"
-                fontWeight="extrabold"
-                textAlign="center"
-                text={categoryContent.description}
-                color="text.primary"
-              />
-            </L1TextView>
-          )}
-          <View>
-            <Image
-              alt="abcd"
-              source={{
-                uri: cropUrl(
-                  categoryContent.mainCategory.categoryImages[0].url,
-                  categoryContent.mainCategory.categoryImages[0].crop_m
-                ),
-              }}
-              width={imageWidth}
-              height={132}
-            />
-          </View>
-          {!!categoryContent.imageFirst && (
-            <L1TextView>
-              <BodyCopy
-                fontFamily="primary"
-                fontSize="fs22"
-                fontWeight="black"
-                textAlign="center"
-                text={categoryContent.name}
-                color="text.primary"
-              />
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs12"
-                fontWeight="extrabold"
-                textAlign="center"
-                text={categoryContent.description}
-                color="text.primary"
-              />
-            </L1TextView>
-          )}
-        </L1TouchableOpacity>
-      </View>
+      <L1TouchableOpacity
+        accessibilityRole="button"
+        onPress={() => ShowL2Navigation(categoryContent)}
+      >
+        {!categoryContent.imageFirst &&
+          renderTextBlock(categoryContent.name, categoryContent.description)}
+        <Image
+          alt={categoryContent.mainCategory.categoryImages[0].alt}
+          source={{
+            uri: cropUrl(
+              categoryContent.mainCategory.categoryImages[0].url,
+              categoryContent.mainCategory.categoryImages[0].crop_m
+            ),
+          }}
+          width={imageWidth}
+          height={132}
+        />
+        {!!categoryContent.imageFirst &&
+          renderTextBlock(categoryContent.name, categoryContent.description)}
+      </L1TouchableOpacity>
     );
   };
 
-  return (
-    <ContainerView>
-      <FlatList
-        numColumns={1}
-        data={navObject.data.navigation.nav}
-        keyExtractor={keyExtractor}
-        renderItem={renderItem}
-      />
-    </ContainerView>
-  );
+  return <ContainerList data={nav} keyExtractor={keyExtractor} renderItem={renderItem} />;
 };
 
 NavigationMenu.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
+  navigationMenuObj: PropTypes.shape({}).isRequired,
 };
 
 export default NavigationMenu;

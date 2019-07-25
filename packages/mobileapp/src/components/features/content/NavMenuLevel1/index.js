@@ -1,1 +1,1 @@
-export { default } from './views/NavMenuLevel1.view';
+export { default } from './container/NavMenuLevel1.container';

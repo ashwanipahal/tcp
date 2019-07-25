@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const L1WithoutImageView = styled.View`
+export const L1TouchableOpacityNoImage = styled.TouchableOpacity`
   flex: 1;
   align-items: center;
   flex-direction: row;
@@ -11,7 +11,10 @@ export const L1WithoutImageView = styled.View`
 
 export const L1TouchableOpacity = styled.TouchableOpacity`
   flex: 1;
+  align-items: center;
   flex-direction: row;
+  height: 132;
+  background-color: ${props => props.theme.colorPalette.gray[300]};
 `;
 
 export const L1TextView = styled.View`
@@ -21,6 +24,6 @@ export const L1TextView = styled.View`
   background-color: ${props => props.theme.colorPalette.gray[300]};
 `;
 
-export const ContainerView = styled.View`
+export const ContainerList = styled.FlatList`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;

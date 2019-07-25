@@ -5,13 +5,10 @@ import Header from '../components/common/molecules/Header';
 import NavMenuLevel1 from '../components/features/content/NavMenuLevel1';
 import NavMenuLevel2 from '../components/features/content/NavMenuLevel2';
 
-const navMenuL1 = props => <NavMenuLevel1 {...props} />;
-const navMenuL2 = props => <NavMenuLevel2 {...props} />;
-
 const PlpStack = createStackNavigator(
   {
-    navMenuL1,
-    navMenuL2,
+    NavMenuLevel1,
+    NavMenuLevel2,
   },
   {
     defaultNavigationOptions: {
