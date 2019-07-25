@@ -1,287 +1,239 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DropdownList component should renders correctly 1`] = `
-<StyledComponent
-  activeTitle="Please select list item"
-  activeValue="activeClassValue"
+<Styled(BodyCopy)
   className="sample-class"
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-bwzfXH",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  .dropdownUlBorder {
-    border: 1px solid ",
-          [Function],
-          ";
-    background-color: ",
-          [Function],
-          ";
-  }
-
-  .dropdownliBottomBorder {
-    border-bottom: 1px solid ",
-          [Function],
-          ";
-    padding: ",
-          [Function],
-          ";
-  }
-
-  .dropdownDivOverFlow {
-    overflow-y: scroll;
-    max-height: 230px;
-  }
-
-  .dropdownActiveClass {
-    background-color: ",
-          [Function],
-          ";
-    position: relative;
-  }
-
-  .dropdownActiveIcon {
-    background-image: url(",
-          "/static/images/active_icon.png",
-          ");
-    background-repeat: no-repeat;
-    position: absolute;
-    width: 30px;
-    right: 5px;
-    top: 40%;
-    height: 30px;
-  }
-
-  .dropDownListwrapper {
-    position: relative;
-    padding-bottom: ",
-          [Function],
-          ";
-    border: 1px solid ",
-          [Function],
-          ";
-    background-color: ",
-          [Function],
-          ";
-  }
-
-  .dropdownClassBtn {
-    color: ",
-          [Function],
-          ";
-    background-color: ",
-          [Function],
-          ";
-  }
-
-  .ulBorderWithLastRow {
-    border-bottom: ",
-          [Function],
-          ";
-    width: 100%;
-  }
-
-  .ulBorderWithLastRow li:hover {
-    background: ",
-          [Function],
-          ";
-  }
-
-  .ulBorderWithLastRow li:last-child {
-    position: absolute;
-    width: 96%;
-    height: 42px;
-    padding: ",
-          [Function],
-          ";
-    left: 0;
-    bottom: 0;
-    border-bottom: none;
-  }
-
-  .ulBorderWithLastRow li:last-child:hover {
-    background: none;
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(DropdownList)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-bwzfXH",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  options={
-    Object {
-      "content": <div>
-        <p>
-          Test 1
-        </p>
-      </div>,
-      "title": "Test 1",
-      "value": "1",
-    }
-  }
-  selectListTitle="Select from address book"
-/>
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className=""
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className="dropdownDivOverFlow"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      <ul
+        className="dropdownUlBorder"
+      >
+        <li
+          className="dropdownliBottomBorder "
+          key="1"
+          tabIndex={-1}
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="div"
+            fontFamily="primary"
+            fontSize={12}
+            fontWeight="regular"
+            key="1"
+            letterSpacing="normal"
+            lineHeight="normal"
+            onClick={[Function]}
+            onKeyPress={[Function]}
+            role="button"
+            textAlign="left"
+          >
+            <Styled(BodyCopy)
+              className=""
+              color="text.primary"
+              component="div"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="left"
+            />
+            <div>
+              <p>
+                Test 1
+              </p>
+            </div>
+          </Styled(BodyCopy)>
+        </li>
+      </ul>
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
 `;
 
 exports[`DropdownList component should renders correctly when optional fields are not present 1`] = `
-<StyledComponent
+<Styled(BodyCopy)
   className="sample-class"
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-bwzfXH",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  .dropdownUlBorder {
-    border: 1px solid ",
-          [Function],
-          ";
-    background-color: ",
-          [Function],
-          ";
-  }
-
-  .dropdownliBottomBorder {
-    border-bottom: 1px solid ",
-          [Function],
-          ";
-    padding: ",
-          [Function],
-          ";
-  }
-
-  .dropdownDivOverFlow {
-    overflow-y: scroll;
-    max-height: 230px;
-  }
-
-  .dropdownActiveClass {
-    background-color: ",
-          [Function],
-          ";
-    position: relative;
-  }
-
-  .dropdownActiveIcon {
-    background-image: url(",
-          "/static/images/active_icon.png",
-          ");
-    background-repeat: no-repeat;
-    position: absolute;
-    width: 30px;
-    right: 5px;
-    top: 40%;
-    height: 30px;
-  }
-
-  .dropDownListwrapper {
-    position: relative;
-    padding-bottom: ",
-          [Function],
-          ";
-    border: 1px solid ",
-          [Function],
-          ";
-    background-color: ",
-          [Function],
-          ";
-  }
-
-  .dropdownClassBtn {
-    color: ",
-          [Function],
-          ";
-    background-color: ",
-          [Function],
-          ";
-  }
-
-  .ulBorderWithLastRow {
-    border-bottom: ",
-          [Function],
-          ";
-    width: 100%;
-  }
-
-  .ulBorderWithLastRow li:hover {
-    background: ",
-          [Function],
-          ";
-  }
-
-  .ulBorderWithLastRow li:last-child {
-    position: absolute;
-    width: 96%;
-    height: 42px;
-    padding: ",
-          [Function],
-          ";
-    left: 0;
-    bottom: 0;
-    border-bottom: none;
-  }
-
-  .ulBorderWithLastRow li:last-child:hover {
-    background: none;
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(DropdownList)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-bwzfXH",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  options={
-    Array [
-      Object {
-        "content": <div>
-          <p>
-            Test 1
-          </p>
-        </div>,
-        "title": "Test 1",
-        "value": "1",
-      },
-      Object {
-        "content": <div>
-          <p>
-            Test 2
-          </p>
-        </div>,
-        "title": "Test 2",
-        "value": "2",
-      },
-    ]
-  }
-/>
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="dropDownListwrapper"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className="dropdownDivOverFlow"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      <ul
+        className="ulBorderWithLastRow"
+      >
+        <li
+          className="dropdownliBottomBorder "
+          key="1"
+          tabIndex={-1}
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="div"
+            fontFamily="primary"
+            fontSize={12}
+            fontWeight="regular"
+            key="1"
+            letterSpacing="normal"
+            lineHeight="normal"
+            onClick={[Function]}
+            onKeyPress={[Function]}
+            role="button"
+            textAlign="left"
+          >
+            <Styled(BodyCopy)
+              className=""
+              color="text.primary"
+              component="div"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="left"
+            />
+            <div>
+              <p>
+                Test 1
+              </p>
+            </div>
+          </Styled(BodyCopy)>
+        </li>
+        <li
+          className="dropdownliBottomBorder "
+          key="2"
+          tabIndex={-1}
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="div"
+            fontFamily="primary"
+            fontSize={12}
+            fontWeight="regular"
+            key="2"
+            letterSpacing="normal"
+            lineHeight="normal"
+            onClick={[Function]}
+            onKeyPress={[Function]}
+            role="button"
+            textAlign="left"
+          >
+            <Styled(BodyCopy)
+              className=""
+              color="text.primary"
+              component="div"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="left"
+            />
+            <div>
+              <p>
+                Test 2
+              </p>
+            </div>
+          </Styled(BodyCopy)>
+        </li>
+        <li
+          className="dropdownliBottomBorder dropdownActiveClass"
+          key=""
+          tabIndex={-1}
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="div"
+            fontFamily="primary"
+            fontSize={12}
+            fontWeight="regular"
+            key=""
+            letterSpacing="normal"
+            lineHeight="normal"
+            onClick={[Function]}
+            onKeyPress={[Function]}
+            role="button"
+            textAlign="left"
+          >
+            <Styled(BodyCopy)
+              className="dropdownActiveIcon"
+              color="text.primary"
+              component="div"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="left"
+            />
+            <div>
+              <p>
+                Test 3
+              </p>
+            </div>
+          </Styled(BodyCopy)>
+        </li>
+      </ul>
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
 `;

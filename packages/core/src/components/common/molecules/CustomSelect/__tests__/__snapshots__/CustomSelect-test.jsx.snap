@@ -1,143 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CustomSelect component should renders correctly 1`] = `
-<StyledComponent
-  activeClassValue="activeClassValue"
-  activeTitle="Please select list item"
+<Styled(BodyCopy)
   className="sample-class"
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-htpNat",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  .customSelectTitle {
-    border-bottom: 1px solid ",
-          [Function],
-          ";
-    margin-top: ",
-          [Function],
-          ";
-    padding: ",
-          [Function],
-          "
-      ",
-          [Function],
-          "
-      ",
-          [Function],
-          " 0;
-    background: url(",
-          "/static/images/down_arrow_icon.png",
-          ") no-repeat right center;
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(CustomSelect)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-htpNat",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  options={
-    Object {
-      "content": <div>
-        <p>
-          Test 1
-        </p>
-      </div>,
-      "title": "Test 1",
-      "value": "1",
-    }
-  }
-  selectListTitle="Select from address book"
-/>
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <span>
+    Select from address book
+  </span>
+  <Styled(BodyCopy)
+    className="customSelectTitle"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    onClick={[Function]}
+    textAlign="left"
+  >
+    Please select list item
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
 `;
 
 exports[`CustomSelect component should renders correctly when optional fields are not present 1`] = `
-<StyledComponent
+<Styled(BodyCopy)
   className="sample-class"
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-htpNat",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  .customSelectTitle {
-    border-bottom: 1px solid ",
-          [Function],
-          ";
-    margin-top: ",
-          [Function],
-          ";
-    padding: ",
-          [Function],
-          "
-      ",
-          [Function],
-          "
-      ",
-          [Function],
-          " 0;
-    background: url(",
-          "/static/images/down_arrow_icon.png",
-          ") no-repeat right center;
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(CustomSelect)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-htpNat",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  options={
-    Array [
-      Object {
-        "content": <div>
-          <p>
-            Test 1
-          </p>
-        </div>,
-        "title": "Test 1",
-        "value": "1",
-      },
-      Object {
-        "content": <div>
-          <p>
-            Test 2
-          </p>
-        </div>,
-        "title": "Test 2",
-        "value": "2",
-      },
-    ]
-  }
-/>
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <span />
+  <Styled(BodyCopy)
+    className="customSelectTitle"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    onClick={[Function]}
+    textAlign="left"
+  />
+</Styled(BodyCopy)>
 `;

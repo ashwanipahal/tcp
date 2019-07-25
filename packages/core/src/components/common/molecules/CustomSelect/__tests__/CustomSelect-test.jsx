@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CustomSelectVanilla from '../views';
+import { CustomSelectVanilla } from '../views/CustomSelect';
 
 describe('CustomSelect component', () => {
   it('should renders correctly', () => {
@@ -44,8 +44,18 @@ describe('CustomSelect component', () => {
         title: 'Test 2',
       },
     ];
-
-    const component = shallow(<CustomSelectVanilla options={options} className="sample-class" />);
+    const mockedClickHandler = jest.fn();
+    const component = shallow(
+      <CustomSelectVanilla
+        options={options}
+        className="sample-class"
+        clickHandler={mockedClickHandler}
+      />
+    );
+    component.setState({ toggle: true });
+    component.instance().onClickHandler();
+    expect(component.state('toggle')).toBe(false);
+    expect(mockedClickHandler).toBeCalled();
     expect(component).toMatchSnapshot();
   });
 });
