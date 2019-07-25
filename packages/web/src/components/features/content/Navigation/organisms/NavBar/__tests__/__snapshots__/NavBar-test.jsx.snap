@@ -5455,5 +5455,9 @@ exports[`NavBar component renders correctly 1`] = `
       }
     />
   </ul>
+  <Styled(L2Panel)
+    openPanel={false}
+    panelData={Object {}}
+  />
 </Fragment>
 `;
