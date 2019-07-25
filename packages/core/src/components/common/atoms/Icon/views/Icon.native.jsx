@@ -1,59 +1,124 @@
 // @flow
 import React from 'react';
-import { Platform } from 'react-native';
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome';
 import { PropTypes } from 'prop-types';
+import { get, noop } from 'lodash';
 import withStyles from '../../../hoc/withStyles.native';
-import style from '../Icon.style.native';
+import IconStyle from '../Icon.style.native';
+import { ICON_FONT_CLASS, FONT_SIZE_VARIATIONS } from '../Icon.constants';
 
 /**
- * @param {object} props : Props for button
- * @desc This is a button component. The two variations of buttons are:
- * 1. fixed-width: Takes the width of the column which it occupies.
+ * props of CustomeIcon component
+ * [name] The name of the Icon which is mendatory field
+ * [iconFontName] Name of the font class. Default FontAwesome
+ * [sizeVariation] This can be 'small', 'medium', 'large', 'xLarge', 'custom'. Default is medium
+ * [size] The size will not work if sizeVariation is not defined as 'custom'. Default is 20 for medium
+ * [color] The color will pick from the primary theme as default. But can pass own icon color
+ * [isDisabled] in case of android icon disable color need to be set because opacity doen't work. Default false
+ * [isButton] This need to be set true to make a clickable button. Default false
+ * [iconStyle] Styles applied to the icon only, good for setting margins or a different color. Note: use iconStyle for margins or expect unstable behaviour. Default {marginRight: 10}
+ * [backgroundColor] Options using for the icon button background color. Default white
+ * [borderRadius] Border radius of the button, set to 0 to disable. Default 0
+ * [onPress] A function called when the button is pressed. Default none
+ * [children] Button icon lable as children. Default blank
  */
-const ICON_FONT_FONT_AWESOME = 'FontAwesome';
-
 type Props = {
-  iconFontName?: string,
   name: string,
-  size: number,
-  color: string,
+  iconFontName?: string,
+  sizeVariation: Object,
+  size?: number,
+  color?: string,
   isDisabled?: Boolean,
+  iconStyle?: Object,
+  backgroundColor?: string,
+  borderRadius?: number,
+  onPress?: Function,
+  isButton?: Boolean,
+  children?: Object,
 };
 
-const getFontClass = (iconFontName = ICON_FONT_FONT_AWESOME) => {
-  if (iconFontName === ICON_FONT_FONT_AWESOME) {
+/**
+ * @param {string} iconFontName : require parameter for the method
+ * @return {Object} IconFontAwesome : Return font class
+ * @desc This method return icon font class based on the font name.
+ */
+const getFontClass = (iconFontName = ICON_FONT_CLASS.FontAwesome) => {
+  if (iconFontName === ICON_FONT_CLASS.FontAwesome) {
     return IconFontAwesome;
   }
   return IconFontAwesome;
 };
 
+/**
+ * @param {string} props : props for CustomIcon
+ * @return {JSX} IconClass : Return jsx icon component
+ * @desc This method based on the props generate icon component.
+ */
 const CustomIcon = (props: Props) => {
-  const { iconFontName, name, size, color, isDisabled, ...otherProps } = props;
+  const {
+    iconFontName,
+    name,
+    size,
+    color,
+    isDisabled,
+    isButton,
+    onPress,
+    backgroundColor,
+    borderRadius,
+    iconStyle,
+    children,
+    ...otherProps
+  } = props;
   const IconClass = getFontClass(iconFontName);
-  return (
-    <IconClass
-      {...otherProps}
-      name={name}
-      size={size}
-      /* in case of android icon disable color need to be set because opacity doen't work */
-      color={isDisabled && Platform.OS === 'android' ? '#b7b8b9' : color}
-    />
-  );
+  const fontSize = get(props, 'style[1].fontSize', null);
+
+  if (isButton) {
+    return (
+      <IconClass.Button
+        {...otherProps}
+        name={name}
+        size={fontSize}
+        color={color}
+        onPress={!isDisabled ? onPress : noop}
+        backgroundColor={backgroundColor}
+        borderRadius={borderRadius}
+        iconStyle={iconStyle}
+      >
+        {children}
+      </IconClass.Button>
+    );
+  }
+  return <IconClass {...otherProps} name={name} size={fontSize} />;
 };
 
 CustomIcon.propTypes = {
+  children: PropTypes.shape({}),
   iconFontName: PropTypes.string,
   name: PropTypes.string.isRequired,
-  size: PropTypes.number.isRequired,
-  color: PropTypes.string.isRequired,
+  sizeVariation: PropTypes.oneOf(FONT_SIZE_VARIATIONS),
+  size: PropTypes.number,
+  color: PropTypes.string,
   isDisabled: PropTypes.bool,
+  iconStyle: PropTypes.shape({}),
+  backgroundColor: PropTypes.string,
+  borderRadius: PropTypes.number,
+  onPress: PropTypes.func,
+  isButton: PropTypes.bool,
 };
 
 CustomIcon.defaultProps = {
-  iconFontName: ICON_FONT_FONT_AWESOME,
+  children: {},
+  iconFontName: ICON_FONT_CLASS.FontAwesome,
   isDisabled: false,
+  iconStyle: {},
+  backgroundColor: '#ffffff',
+  borderRadius: 0,
+  onPress: noop,
+  isButton: false,
+  color: '',
+  sizeVariation: 'medium',
+  size: 20,
 };
 
-export default withStyles(CustomIcon, style);
+export default withStyles(CustomIcon, IconStyle);
 export { CustomIcon as CustomIconVanilla };

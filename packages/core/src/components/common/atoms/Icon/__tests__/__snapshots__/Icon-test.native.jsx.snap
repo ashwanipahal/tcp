@@ -3,8 +3,23 @@
 exports[`CustomButton should render correctly 1`] = `
 <Icon
   allowFontScaling={false}
-  color="#ff0000"
   name="FontAwesome"
-  size={11}
+  size={null}
+  sizeVariation="medium"
+  theme={
+    Object {
+      "0": "
+  ",
+      "1": [Function],
+      "2": ";
+  ",
+      "3": [Function],
+      "4": ";
+  ",
+      "5": [Function],
+      "6": "
+",
+    }
+  }
 />
 `;
