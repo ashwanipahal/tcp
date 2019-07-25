@@ -22,3 +22,8 @@ export const openAddedToBag = () => ({
 export const closeAddedToBag = () => ({
   type: ADDEDTOBAG_CONSTANTS.CLOSE_ADDED_TO_BAG,
 });
+
+export const addItemToCartBopis = payload => ({
+  type: ADDEDTOBAG_CONSTANTS.ADD_TO_CART_BOPIS,
+  payload,
+});
