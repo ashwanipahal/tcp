@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React from 'react';
+import { mergeDeep } from 'immutable';
 import ProductListingPageStyle from '../styles/ProductListingPage.style';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
@@ -15,6 +16,7 @@ export class ProductListView extends React.Component {
     this.state = {
       quantity: 1,
       storeId: 110715,
+      brand: 'tcp',
     };
     this.addToBagEcom = this.addToBagEcom.bind(this);
     this.selectChange = this.selectChange.bind(this);
@@ -41,11 +43,12 @@ export class ProductListView extends React.Component {
 
   addToBagEcom(item) {
     const { addToCartEcom } = this.props;
-    const { quantity } = this.state;
+    const { quantity, brand } = this.state;
     let { product, formData } = this.getPDPObject(item);
     formData = {
       ...formData,
       quantity,
+      brand,
     };
     const cartItemInfo = getCartItemInfo(product, formData);
     addToCartEcom(cartItemInfo);
@@ -53,12 +56,13 @@ export class ProductListView extends React.Component {
 
   addToBagBossBopis(item, isBoss) {
     const { addItemToCartBopis } = this.props;
-    const { quantity, storeId } = this.state;
+    const { quantity, storeId, brand } = this.state;
     let { product, formData } = this.getPDPObject(item);
     formData = {
       ...formData,
       quantity,
       isBoss,
+      brand: isBoss ? brand : 'tcp',
       storeLocId: storeId,
     };
     const cartItemInfo = getCartItemInfo(product, formData);
@@ -74,13 +78,20 @@ export class ProductListView extends React.Component {
     }
   }
   render() {
-    const { data, className, addToCartEcom } = this.props;
+    const { className, giftCardProducts } = this.props;
+    let { data } = this.props;
+    let allProducts = [];
+    if (giftCardProducts.length && data.length) {
+      allProducts = [...data, ...giftCardProducts];
+    }
+
+    console.log(data, giftCardProducts);
     return (
       <ProductListingPageStyle>
         <h1>PLP Page</h1>
         <Row tagName="ul" className={className}>
-          {data &&
-            data.map(item => (
+          {allProducts &&
+            allProducts.map(item => (
               <Col
                 tagName="li"
                 key={item.productid}
@@ -108,6 +119,13 @@ export class ProductListView extends React.Component {
                     <option value="13">13</option>
                     <option value="14">14</option>
                     <option value="15">15</option>
+                  </select>
+                </div>
+                <div className="product-quantity">
+                  Please select brand:
+                  <select onChange={e => this.selectChange(e, 'brand')}>
+                    <option value="tcp">TCP</option>
+                    <option value="gymboree">GYMBOREE</option>
                   </select>
                 </div>
                 <br />

@@ -30,7 +30,11 @@ const ProductInformation = ({ data, labels }: Props) => {
           <Image
             alt="Brand"
             className="brand-image"
-            src={getIconPath('header__brand-tab--tcp')}
+            src={
+              data.brand === 'tcp'
+                ? getIconPath(`header__brand-tab--${data.brand}`)
+                : getIconPath('header__brand-tab-gymboree')
+            }
             data-locator={getLocator('header__brand-tab--tcp')}
           />
         </Col>
