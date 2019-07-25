@@ -11,7 +11,7 @@ const Plp = () => <Text style={styles}>PLP Page</Text>;
 const PlpStack = createStackNavigator(
   {
     Plp,
-    ProductList: { screen: props => <ProductList {...props} /> },
+    ProductList,
   },
   {
     defaultNavigationOptions: {
