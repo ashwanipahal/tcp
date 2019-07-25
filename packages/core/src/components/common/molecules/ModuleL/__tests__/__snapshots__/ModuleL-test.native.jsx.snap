@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HeadingVanilla should render correctly 1`] = `
+exports[`ModuleLVanilla should render correctly 1`] = `
 <Styled(View)>
   <Styled(Heading)
     color="text.primary"

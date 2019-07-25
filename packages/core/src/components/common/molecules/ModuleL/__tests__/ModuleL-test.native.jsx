@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { ModuleLVanilla } from '../views/ModuleL.native';
 
-describe('HeadingVanilla', () => {
+describe('ModuleLVanilla', () => {
   let component;
 
   beforeEach(() => {
