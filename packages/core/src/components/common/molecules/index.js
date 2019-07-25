@@ -6,6 +6,7 @@ import Grid from './Grid';
 import Modal from './Modal';
 import ModuleD from './ModuleD';
 import ModuleH from './ModuleH';
+import ModuleL from './ModuleL';
 import PromoTextBanner from './PromoTextBanner';
 import LinkText from './LinkText';
 import ImageGrid from './ImageGrid';
@@ -19,6 +20,7 @@ export {
   Modal,
   ModuleD,
   ModuleH,
+  ModuleL,
   PromoTextBanner,
   LinkText,
   ImageGrid,
