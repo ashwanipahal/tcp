@@ -52,7 +52,7 @@ class ModuleK extends React.PureComponent<Props, State> {
             }}
             className="module-k__header"
           >
-            {headerText.length && (
+            {headerText && (
               <LinkText
                 headerText={headerText}
                 component="div"
@@ -108,7 +108,7 @@ class ModuleK extends React.PureComponent<Props, State> {
               {masonryGrid.map(({ promoTextBanner, mediaList, singleCTAButton }, index) => {
                 return (
                   <React.Fragment>
-                    {promoTextBanner.length && (
+                    {promoTextBanner && (
                       <PromoTextBanner
                         promoTextBanner={promoTextBanner}
                         className="module-k__promoBanner"

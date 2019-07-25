@@ -51,7 +51,7 @@ const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide, promoTextBa
       }}
     >
       <Col colSize={{ small: 6, medium: 8, large: 10 }} offsetLeft={{ large: 1 }}>
-        {headerText.length && (
+        {headerText && (
           <LinkText
             headerText={headerText}
             className="moduleL__header"
@@ -62,7 +62,7 @@ const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide, promoTextBa
             dataLocator="moduleL_header_text"
           />
         )}
-        {promoTextBanner.length && (
+        {promoTextBanner && (
           <PromoTextBanner
             promoTextBanner={promoTextBanner}
             className="moduleL__promo-banner"
