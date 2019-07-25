@@ -49,7 +49,11 @@ const renderitem = item => {
     item: { image, link },
   } = item;
   return (
-    <DataContainer>
+    <DataContainer
+      onPress={() => {
+        UrlHandler(link.url);
+      }}
+    >
       <Image width={imageSize} height={127} source={{ uri: getUrlWithCrop(image.url) }} />
       <MessageContainer>
         <BodyCopyContainer width={width}>
