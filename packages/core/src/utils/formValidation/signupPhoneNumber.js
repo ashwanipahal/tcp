@@ -1,6 +1,7 @@
 /**
  *
  * @param {String} phoneNumber Phone Number to validate
+ * @return {Boolean}
  */
 export const validatePhoneNumber = phoneNumber => {
   return /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/i.test(phoneNumber);
@@ -8,7 +9,8 @@ export const validatePhoneNumber = phoneNumber => {
 
 /**
  *
- * @param {String} phoneNumber Convert phoneNumber to (XXX) XXX-XXXX
+ * @param {String} phoneNumber phoneNumber to convert
+ * @return {String} Returns phoneNumber in format (XXX) XXX-XXXX
  */
 export const normalizePhoneNumber = phoneNumber => {
   let normalizePhoneNum = phoneNumber.replace(/[\s()-]/g, '');
