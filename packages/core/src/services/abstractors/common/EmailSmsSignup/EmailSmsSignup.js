@@ -53,10 +53,12 @@ const Abstractor = {
   },
 
   handleValidationError: e => {
+    // eslint-disable-next-line no-console
     console.log(e);
     return 'invalid';
   },
   handleSubscriptionError: e => {
+    // eslint-disable-next-line no-console
     console.log(e);
     return false;
   },
