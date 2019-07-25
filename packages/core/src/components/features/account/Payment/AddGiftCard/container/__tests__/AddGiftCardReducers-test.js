@@ -4,7 +4,7 @@ import ADD_GIFT_CARD_CONSTANTS from '../../AddGiftCard.constants';
 
 describe('AddGiftCard Reducer', () => {
   const initialState = fromJS({
-    error: {},
+    error: null,
     showUpdatedNotification: null,
     onAddGiftCardPage: false,
   });
@@ -18,7 +18,7 @@ describe('AddGiftCard Reducer', () => {
       AddGiftCardReducer(initialState, {
         type: ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_REQUEST,
       })
-    ).toEqual(fromJS({ onAddGiftCardPage: true, error: {}, showUpdatedNotification: null }));
+    ).toEqual(fromJS({ onAddGiftCardPage: true, error: null, showUpdatedNotification: null }));
   });
 
   it('should be called on add gift card success', () => {
@@ -26,7 +26,9 @@ describe('AddGiftCard Reducer', () => {
       AddGiftCardReducer(initialState, {
         type: ADD_GIFT_CARD_CONSTANTS.ADD_GIFT_CARD_SUCCESS,
       })
-    ).toEqual(fromJS({ showUpdatedNotification: 'success', onAddGiftCardPage: false, error: {} }));
+    ).toEqual(
+      fromJS({ showUpdatedNotification: 'success', onAddGiftCardPage: false, error: null })
+    );
   });
 
   it('should be called on add gift card failed', () => {
@@ -47,6 +49,6 @@ describe('AddGiftCard Reducer', () => {
       AddGiftCardReducer(initialState, {
         type: ADD_GIFT_CARD_CONSTANTS.RESET_SHOW_NOTIFICATION,
       })
-    ).toEqual(fromJS({ showUpdatedNotification: null, error: {}, onAddGiftCardPage: false }));
+    ).toEqual(fromJS({ showUpdatedNotification: null, error: null, onAddGiftCardPage: false }));
   });
 });

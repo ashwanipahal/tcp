@@ -19,6 +19,10 @@ const namedModulesMap = {
     url: 'https://www.google.com/recaptcha/api.js',
     loadPromise: null,
   },
+  paypal: {
+    url: 'https://www.paypalobjects.com/api/checkout.js',
+    loadPromise: null,
+  },
 };
 export function requireUrlScript(url) {
   return new Promise((resolve, reject) => {

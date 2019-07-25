@@ -4,7 +4,7 @@ import ADD_GIFT_CARD_CONSTANTS from '../AddGiftCard.constants';
 
 // TODO - Refactor reducer state (Ajay Saini)
 const initialState = fromJS({
-  error: {},
+  error: null,
   showUpdatedNotification: null,
   onAddGiftCardPage: false,
 });
@@ -26,7 +26,10 @@ const AddGiftCardReducer = (state = initialState, action: Action) => {
         .set('showUpdatedNotification', 'error')
         .set('onAddGiftCardPage', false);
     case ADD_GIFT_CARD_CONSTANTS.RESET_SHOW_NOTIFICATION:
-      return state.set('showUpdatedNotification', null).set('onAddGiftCardPage', false);
+      return state
+        .set('showUpdatedNotification', null)
+        .set('onAddGiftCardPage', false)
+        .set('error', null);
     default:
       if (state instanceof Object) {
         return fromJS(state);

@@ -449,7 +449,6 @@ exports[`CardTile should render correctly with gift card 1`] = `
                   "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -510,8 +509,17 @@ exports[`CardTile should render correctly with gift card 1`] = `
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -823,7 +831,6 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
                   "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -884,8 +891,17 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -1136,7 +1152,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
           alt="VENMO"
           className="cardTile__img"
           data-locator="VENMO"
-          src="/static/images/venmo-blue-acceptance-mark.png"
+          src="/static/images/venmo-blue-acceptance-mark.svg"
         />
       </div>
     </div>
@@ -1366,7 +1382,6 @@ exports[`CardTile should show loading 1`] = `
                   "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -1427,8 +1442,17 @@ exports[`CardTile should show loading 1`] = `
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -1602,7 +1626,6 @@ exports[`CardTile should show remining balance 1`] = `
                   "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -1663,8 +1686,17 @@ exports[`CardTile should show remining balance 1`] = `
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
