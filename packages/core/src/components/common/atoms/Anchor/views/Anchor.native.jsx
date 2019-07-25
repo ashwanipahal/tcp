@@ -21,10 +21,10 @@ const URL_TYPE = {
  * @param {url} string
  */
 const categorizeUrl = url => {
-  if (url.includes(URL_TYPE.PRODUCT_LIST)) {
+  if (url.startsWith(URL_TYPE.PRODUCT_LIST)) {
     return URL_TYPE.PRODUCT_LIST;
   }
-  if (url.includes(URL_TYPE.SHOP)) {
+  if (url.startsWith(URL_TYPE.SHOP)) {
     return URL_TYPE.SHOP;
   }
   return null;

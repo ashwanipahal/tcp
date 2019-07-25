@@ -12,7 +12,7 @@ describe('Anchor Native', () => {
     };
     component = shallow(
       <AnchorVanilla
-        url="https://www.google.com/p/Rainbow--The-Birthday-Girl--Graphic-Tee"
+        url="/p/Rainbow--The-Birthday-Girl--Graphic-Tee"
         navigation={navigation}
         text="click Me"
         internal
@@ -44,19 +44,19 @@ describe('Anchor Native', () => {
   });
 
   it('should call for plp page', () => {
-    component.setProps({ internal: true, url: 'https://www.google.com/p/test' });
+    component.setProps({ internal: true, url: '/p/test' });
     component.props().onPress();
     expect(navigate).toHaveBeenCalledTimes(3);
   });
 
   it('should call for shop page', () => {
-    component.setProps({ internal: true, url: 'https://www.google.com/c/test' });
+    component.setProps({ internal: true, url: '/c/test' });
     component.props().onPress();
     expect(navigate).toHaveBeenCalledTimes(4);
   });
 
   it('should return null', () => {
-    component.setProps({ internal: true, url: 'https://www.google.com/test' });
+    component.setProps({ internal: true, url: '/test' });
     component.props().onPress();
     expect(navigate).toHaveBeenCalledTimes(4);
   });
