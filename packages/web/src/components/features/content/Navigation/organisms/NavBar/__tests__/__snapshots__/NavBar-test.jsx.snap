@@ -4,6 +4,7 @@ exports[`NavBar component renders correctly 1`] = `
 <Fragment>
   <ul
     className="undefined nav-bar-l1"
+    data-locator="nav_bar_l1"
   >
     <Styled(L1NavItem)
       categoryContent={
@@ -103,6 +104,9 @@ exports[`NavBar component renders correctly 1`] = `
           "productCount": 1853,
         }
       }
+      dataLocator="l1menu_link_0"
+      index={0}
+      key="l1menu_link_0"
       subCategories={
         Array [
           Object {
@@ -1352,6 +1356,9 @@ exports[`NavBar component renders correctly 1`] = `
           "productCount": 841,
         }
       }
+      dataLocator="l1menu_link_1"
+      index={1}
+      key="l1menu_link_1"
       subCategories={
         Array [
           Object {
@@ -2446,6 +2453,9 @@ exports[`NavBar component renders correctly 1`] = `
           "productCount": 916,
         }
       }
+      dataLocator="l1menu_link_2"
+      index={2}
+      key="l1menu_link_2"
       subCategories={
         Array [
           Object {
@@ -3328,6 +3338,9 @@ exports[`NavBar component renders correctly 1`] = `
           "productCount": 844,
         }
       }
+      dataLocator="l1menu_link_3"
+      index={3}
+      key="l1menu_link_3"
       subCategories={
         Array [
           Object {
@@ -4225,6 +4238,9 @@ exports[`NavBar component renders correctly 1`] = `
           "productCount": 537,
         }
       }
+      dataLocator="l1menu_link_4"
+      index={4}
+      key="l1menu_link_4"
       subCategories={
         Array [
           Object {
@@ -4686,6 +4702,9 @@ exports[`NavBar component renders correctly 1`] = `
           "productCount": 35,
         }
       }
+      dataLocator="l1menu_link_5"
+      index={5}
+      key="l1menu_link_5"
       subCategories={
         Array [
           Object {
@@ -5360,6 +5379,9 @@ exports[`NavBar component renders correctly 1`] = `
           "productCount": 12,
         }
       }
+      dataLocator="l1menu_link_6"
+      index={6}
+      key="l1menu_link_6"
       subCategories={
         Array [
           Object {
