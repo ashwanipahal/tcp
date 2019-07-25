@@ -20,28 +20,11 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         }
       }
     >
-      <Styled(BodyCopy)
+      <Styled(RichText)
         className="heading_text"
-        color="text.primary"
-        component="p"
         data-locator="email_promo_text"
-        fontFamily="primary"
-        fontSize={
-          Array [
-            "fs12",
-            "fs12",
-            "fs16",
-          ]
-        }
-        fontWeight="black"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="center"
-      >
-        <Styled(RichText)
-          richTextHtml="GET $10 OFF BY SIGNING UP FOR EMAIL!"
-        />
-      </Styled(BodyCopy)>
+        richTextHtml="GET $10 OFF BY SIGNING UP FOR EMAIL!"
+      />
       <ReduxForm
         asyncBlurFields={
           Array [
@@ -89,56 +72,9 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         touchOnChange={false}
         updateUnregisteredFields={false}
       />
-      <Styled(BodyCopy)
-        className={null}
-        color="text.primary"
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-ifAKCX",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  ",
-                [Function],
-                ";
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(RichText)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-ifAKCX",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
-        fontFamily="secondary"
-        fontSize={
-          Array [
-            "fs12",
-            "fs12",
-            "fs14",
-          ]
-        }
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
+      <Styled(RichText)
         richTextHtml="*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com."
-        textAlign="center"
-      >
-        <Styled(RichText)>
-          *Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com.
-        </Styled(RichText)>
-      </Styled(BodyCopy)>
+      />
       <div
         className="divider hide-in-medium-up"
       />
@@ -158,27 +94,10 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         }
       }
     >
-      <Styled(BodyCopy)
+      <Styled(RichText)
         className="heading_text"
-        color="text.primary"
-        component="p"
-        fontFamily="primary"
-        fontSize={
-          Array [
-            "fs12",
-            "fs12",
-            "fs16",
-          ]
-        }
-        fontWeight="black"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="center"
-      >
-        <Styled(RichText)
-          richTextHtml="GET $10 OFF BY SIGNING UP FOR SMS!"
-        />
-      </Styled(BodyCopy)>
+        richTextHtml="GET $10 OFF BY SIGNING UP FOR SMS!"
+      />
       <ReduxForm
         asyncBlurFields={
           Array [
@@ -225,56 +144,9 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         touchOnChange={false}
         updateUnregisteredFields={false}
       />
-      <Styled(BodyCopy)
-        className={null}
-        color="text.primary"
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-ifAKCX",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  ",
-                [Function],
-                ";
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(RichText)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-ifAKCX",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
-        fontFamily="secondary"
-        fontSize={
-          Array [
-            "fs12",
-            "fs12",
-            "fs14",
-          ]
-        }
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
+      <Styled(RichText)
         richTextHtml="*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com."
-        textAlign="center"
-      >
-        <Styled(RichText)>
-          *Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com.
-        </Styled(RichText)>
-      </Styled(BodyCopy)>
+      />
     </Styled(Col)>
     <div
       className="divider hide-in-large-up"
@@ -314,27 +186,10 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
               }
             }
           >
-            <Styled(BodyCopy)
+            <Styled(RichText)
               className="heading_text refer_friend_text"
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize={
-                Array [
-                  "fs12",
-                  "fs12",
-                  "fs16",
-                ]
-              }
-              fontWeight="black"
-              letterSpacing="normal"
-              lineHeight="normal"
-              textAlign="center"
-            >
-              <Styled(RichText)
-                richTextHtml="$10 for a friend, $10 for you!"
-              />
-            </Styled(BodyCopy)>
+              richTextHtml="$10 for a friend, $10 for you!"
+            />
           </Styled(Col)>
           <Styled(Col)
             className="candidate_a_inline_container_button"

@@ -5,7 +5,6 @@ import { Button, RichText, Col, Row } from '@tcp/core/src/components/common/atom
 // reset
 import { reduxForm } from 'redux-form';
 import { Grid } from '@tcp/core/src/components/common/molecules';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { normalizePhoneNumber } from '@tcp/core/src/utils/formValidation/signupPhoneNumber';
 
@@ -67,16 +66,11 @@ class FooterTopCandidateA extends React.PureComponent {
               small: true,
             }}
           >
-            {/* TODO: Desktop font size is 15px in Zeplin. Need to confirm that as it is not in guideline  */}
-            <BodyCopy
+            <RichText
               className="heading_text"
-              textAlign="center"
-              fontSize={['fs12', 'fs12', 'fs16']}
-              fontWeight="black"
               data-locator="email_promo_text"
-            >
-              <RichText richTextHtml={emailSignup.text} />
-            </BodyCopy>
+              richTextHtml={emailSignup.text}
+            />
             <FooterTopEmailSignUpForm
               labels={emailSignupLabels}
               asyncValidate={emailSignUpAsyncValidate}
@@ -89,16 +83,8 @@ class FooterTopCandidateA extends React.PureComponent {
               }}
               fieldName={emailSignupFieldName}
             />
-            {/* TODO: Zeplin has ["fs11","fs11", "fs13"], which is not in guidline using following for now  */}
-            <BodyCopy
-              fontFamily="secondary"
-              textAlign="center"
-              fontSize={['fs12', 'fs12', 'fs14']}
-              component={RichText}
-              richTextHtml={emailSignupLabels.termsTextLabel}
-            >
-              <RichText>{emailSignupLabels.termsTextLabel}</RichText>
-            </BodyCopy>
+
+            <RichText richTextHtml={emailSignupLabels.termsTextLabel} />
             <div className="divider hide-in-medium-up" />
           </Col>
 
@@ -116,15 +102,7 @@ class FooterTopCandidateA extends React.PureComponent {
               small: true,
             }}
           >
-            {/* TODO: Desktop font size is 15px in Zeplin. Need to confirm that as it is not in guideline  */}
-            <BodyCopy
-              className="heading_text"
-              textAlign="center"
-              fontSize={['fs12', 'fs12', 'fs16']}
-              fontWeight="black"
-            >
-              <RichText richTextHtml={smsSignup.text} />
-            </BodyCopy>
+            <RichText className="heading_text" richTextHtml={smsSignup.text} />
             <FooterTopSmsSignUpForm
               labels={smsSignupLabels}
               fieldName={smsSignupFieldName}
@@ -134,16 +112,8 @@ class FooterTopCandidateA extends React.PureComponent {
               subscription={smsSubscription}
               openSuccessModal={openSmsSignUpModal}
             />
-            {/* TODO: Zeplin has ["fs11","fs11", "fs13"], which is not in guidline using following for now  */}
-            <BodyCopy
-              fontFamily="secondary"
-              textAlign="center"
-              fontSize={['fs12', 'fs12', 'fs14']}
-              component={RichText}
-              richTextHtml={smsSignupLabels.termsTextLabel}
-            >
-              <RichText>{smsSignupLabels.termsTextLabel}</RichText>
-            </BodyCopy>
+
+            <RichText richTextHtml={smsSignupLabels.termsTextLabel} />
           </Col>
           <div className="divider hide-in-large-up" />
           {/* ---------- SMS Signup ends here ------------ */}
@@ -174,14 +144,10 @@ class FooterTopCandidateA extends React.PureComponent {
                     small: true,
                   }}
                 >
-                  <BodyCopy
+                  <RichText
                     className="heading_text refer_friend_text"
-                    textAlign="center"
-                    fontSize={['fs12', 'fs12', 'fs16']}
-                    fontWeight="black"
-                  >
-                    <RichText richTextHtml={referAFriend.text} />
-                  </BodyCopy>
+                    richTextHtml={referAFriend.text}
+                  />
                 </Col>
                 <Col
                   colSize={{

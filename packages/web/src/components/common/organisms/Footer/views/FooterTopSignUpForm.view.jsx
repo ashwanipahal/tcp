@@ -85,7 +85,7 @@ class FooterTopSignUpForm extends React.PureComponent {
     const { validationStarted = false } = this.state;
 
     return (
-      <form>
+      <form className="footer_top__signup_form">
         <Grid>
           <Row fullBleed>
             <Col

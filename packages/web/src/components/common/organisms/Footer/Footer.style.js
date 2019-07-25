@@ -14,10 +14,6 @@ export default css`
     min-height: 42px;
   }
 
-  .footer_top_candidate_a .TextBox__input {
-    padding-top: 18px;
-  }
-
   .footer_top_candidate_a .heading_text {
     margin-bottom: 15px;
   }
@@ -31,6 +27,12 @@ export default css`
     margin-top: 24px;
     margin-bottom: 24px;
     width: 100%;
+  }
+
+  .footer_top__signup_form {
+    label {
+      margin-bottom: 10px;
+    }
   }
 
   .poc-hide {
