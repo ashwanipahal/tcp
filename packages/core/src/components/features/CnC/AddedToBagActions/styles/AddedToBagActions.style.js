@@ -26,7 +26,7 @@ const CtaStyle = css`
     }
     height: 48px;
     margin-left: 10px;
-    flex: 2;
+    flex: 1;
     background-color: ${props => props.theme.colors.PRIMARY.BLUE};
     @media ${props => props.theme.mediaQuery.smallMax} {
       margin-left: 0;
