@@ -2,10 +2,8 @@
 /* dummy plp page | TODO: eslint fixes*/
 
 import React from 'react';
-import { Text, FlatList, Image, View, Picker } from 'react-native';
 import { Button } from '@tcp/core/src/components/common/atoms';
-import ProductListingPageStyle from '../styles/ProductListingPage.style.native';
-import AddedToBagContainer from '../../../CnC/AddedToBag';
+import Col from '@tcp/core/src/components/common/atoms/Col';
 
 class ProductTile extends React.Component {
   constructor(props: Props) {
@@ -13,91 +11,101 @@ class ProductTile extends React.Component {
     this.state = {
       quantity: 1,
       storeId: 110715,
+      brand: 'tcp',
     };
+    this.selectChange = this.selectChange.bind(this);
   }
 
-  selectChange = (value, elem) => {
-    if (value) {
+  selectChange(e, elem) {
+    const val = e.target && e.target.value;
+    if (val) {
       this.setState({
-        [elem]: value,
+        [elem]: val,
       });
     }
-  };
+  }
 
   render() {
+    const { quantity, storeId, brand } = this.state;
     const { item, addToBagEcom, addToBagBossBopis } = this.props;
+    console.log('item', item);
     return (
-      <ProductListingPageStyle key={item.product_name} className="product-item">
-        <View>
-          <Text style={{ textAlign: 'center' }}>{item.product_name}</Text>
-          <Text style={{ color: 'red', textAlign: 'center' }}>{item.min_offer_price}</Text>
-          <Text style={{ color: 'black', textAlign: 'center' }}>{`Was ${
-            item.min_list_price
-          }`}</Text>
-          <View className="product-quantity">
-            <Text>Please select a quantity</Text>
-            <Picker
-              selectedValue={this.state.quantity}
-              itemStyle={{ backgroundColor: 'white', color: 'blue', fontSize: 17, height: 60 }}
-              onValueChange={value => this.selectChange(value, 'quantity')}
-            >
-              <Picker.Item label="1" value="1" />
-              <Picker.Item label="2" value="2" />
-              <Picker.Item label="3" value="3" />
-              <Picker.Item label="4" value="4" />
-              <Picker.Item label="5" value="5" />
-              <Picker.Item label="6" value="6" />
-              <Picker.Item label="7" value="7" />
-              <Picker.Item label="8" value="8" />
-              <Picker.Item label="9" value="9" />
-              <Picker.Item label="10" value="10" />
-              <Picker.Item label="11" value="11" />
-              <Picker.Item label="12" value="12" />
-              <Picker.Item label="13" value="13" />
-              <Picker.Item label="14" value="14" />
-              <Picker.Item label="15" value="15" />
-            </Picker>
-          </View>
-          <Button
-            fullWidth
-            buttonVariation="variable-width"
-            text="Add to Bag"
-            onPress={() => addToBagEcom(item, this.state.quantity)}
-            className="addToBagButton"
-          />
-          <View className="product-store">
-            <Text>Please select a store</Text>
-            <Picker
-              selectedValue={this.state.storeId}
-              itemStyle={{ backgroundColor: 'white', color: 'blue', fontSize: 17, height: 60 }}
-              onValueChange={value => this.selectChange(value, 'storeId')}
-            >
-              <Picker.Item value="110715" label="Newport Center 110715" />
-              <Picker.Item value="110961" label="Union Square 110961" />
-              <Picker.Item value="111287" label="Bergenline Ave 111287" />
-              <Picker.Item value="111723" label="Ferry St Newark 111723" />
-              <Picker.Item value="111202" label="Newark 111202" />
-              <Picker.Item value="111616" label="Franklin Square Sc 111616" />
-              <Picker.Item value="110945" label="The Mills At Jersey Gardens 110945" />
-            </Picker>
-          </View>
-          <Button
-            fullWidth
-            buttonVariation="variable-width"
-            text="Add to BOSS"
-            onPress={() => addToBagBossBopis(item, true, this.state.quantity, this.state.storeId)}
-          />
-          <Button
-            fullWidth
-            buttonVariation="variable-width"
-            text="Add to BOPIS"
-            onPress={() => addToBagBossBopis(item, false, this.state.quantity, this.state.storeId)}
-          />
-        </View>
-        <View>
-          <AddedToBagContainer />
-        </View>
-      </ProductListingPageStyle>
+      <Col
+        tagName="li"
+        key={item.productid}
+        className="product-item"
+        colSize={{ small: 6, medium: 8, large: 4 }}
+      >
+        <p className="product-name">{item.product_name}</p>
+        <p className="product-disc-price">{item.min_offer_price}</p>
+        <p className="product-original-price">{`Was ${item.min_list_price}`}</p>
+        <div className="product-quantity">
+          Please select a quantity
+          <select onChange={e => this.selectChange(e, 'quantity')}>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+          </select>
+        </div>
+        <div className="product-quantity">
+          Please select brand:
+          <select onChange={e => this.selectChange(e, 'brand')}>
+            <option value="tcp">TCP</option>
+            <option value="gymboree">GYMBOREE</option>
+          </select>
+        </div>
+        <br />
+        <Button
+          className="product-button"
+          onClick={() => addToBagEcom(item, quantity, brand)}
+          buttonVariation="fixed-width"
+          fullWidth
+        >
+          Add to Bag
+        </Button>
+        <br />
+        <div className="product-store">
+          Please select a store
+          <select onChange={e => this.selectChange(e, 'storeId')}>
+            <option value="110715">Newport Center 110715</option>
+            <option value="110961">Union Square 110961</option>
+            <option value="111287">Bergenline Ave 111287</option>
+            <option value="111723">Ferry St Newark 111723</option>
+            <option value="111202">Newark 111202</option>
+            <option value="111616">Franklin Square Sc 111616</option>
+            <option value="110945">The Mills At Jersey Gardens 110945</option>
+          </select>
+        </div>
+        <Button
+          className="product-button"
+          onClick={() => addToBagBossBopis(item, true, quantity, storeId, brand)}
+          buttonVariation="fixed-width"
+          fullWidth
+        >
+          Add to BOSS
+        </Button>
+        <br />
+        <Button
+          className="product-button"
+          onClick={() => addToBagBossBopis(item, false, quantity, storeId, brand)}
+          buttonVariation="fixed-width"
+          fullWidth
+        >
+          Add to BOPIS
+        </Button>
+      </Col>
     );
   }
 }

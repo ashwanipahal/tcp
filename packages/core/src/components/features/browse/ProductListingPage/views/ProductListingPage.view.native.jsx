@@ -9,7 +9,7 @@ import { getCartItemInfo } from '../../../CnC/AddedToBag/util/utility';
 import { getImgPath } from '../../ProductListingPage/util/utility';
 import ProductListingPageStyle from '../styles/ProductListingPage.style.native';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
-import ProductTile from '../molecules/ProductTile.view';
+import ProductTile from '../molecules/ProductTile.view.native';
 
 export class ProductListView extends React.Component {
   getPDPObject(item) {

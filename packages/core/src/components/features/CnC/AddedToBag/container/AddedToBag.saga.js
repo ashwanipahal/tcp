@@ -31,7 +31,7 @@ export function* addToCartEcom({ payload }) {
     const { relURI, method } = endpoints.addProductToCart;
     const baseURI = endpoints.addProductToCart.baseURI || endpoints.global.baseURI;
     const res = yield call(fetchData, baseURI, relURI, params, method);
-    if (res.body && !res.body.error) {
+    if (res.body && !res.body.error && !res.body.errors) {
       yield put(
         SetAddedToBagData({
           ...payload,
@@ -77,7 +77,7 @@ export function* addItemToCartBopis({ payload }) {
     const { relURI, method } = endpoints.addOrderBopisItem;
     const baseURI = endpoints.addOrderBopisItem.baseURI || endpoints.global.baseURI;
     const res = yield call(fetchData, baseURI, relURI, params, method);
-    if (res.body && !res.body.error) {
+    if (res.body && !res.body.error && !res.body.errors) {
       yield put(
         SetAddedToBagData({
           ...payload,
