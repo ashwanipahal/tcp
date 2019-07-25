@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PayPalButton component PayPalButton component renders correctly 1`] = `
+<div
+  className=""
+  data-locator="addedtobag-btnpaypal"
+  id="paypal-button-container"
+/>
+`;

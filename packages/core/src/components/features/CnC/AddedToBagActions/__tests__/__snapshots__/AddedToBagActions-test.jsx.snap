@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddedToBagActions component AddedToBagActions component renders correctly 1`] = `
+<div
+  className="checkout"
+>
+  <Styled(Row)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Button)
+        className="view-bag"
+        data-locator="addedtobag-btnviewbag"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="white"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="extrabold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        />
+      </Styled(Button)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="checkout-button"
+  >
+    <PayPalButton
+      className="payPal-button"
+      containerId="paypal-button-container"
+      locale="en_US"
+      style={
+        Object {
+          "color": "blue",
+          "height": 48,
+          "label": "paypal",
+          "shape": "rect",
+          "size": "responsive",
+          "tagline": false,
+        }
+      }
+    />
+    <Styled(Button)
+      className="checkout"
+      data-locator="addedtobag-btncheckout"
+      onClick={[MockFunction]}
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="white"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </Styled(Button)>
+  </Styled(Row)>
+</div>
+`;

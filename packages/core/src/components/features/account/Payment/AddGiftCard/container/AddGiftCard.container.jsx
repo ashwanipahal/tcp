@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import AddGiftCardComponent from '../views/AddGiftCard.view';
-import { addGiftCardRequest } from './AddGiftCard.actions';
-import { getAddGiftCardResponse } from './AddGiftCard.selector';
+import { addGiftCardRequest, resetShowNotification } from './AddGiftCard.actions';
+import { getAddGiftCardResponse, getAddGiftCardError } from './AddGiftCard.selector';
 import labels from './AddGiftCard.labels';
 import Router from 'next/router'; //eslint-disable-line
 import utils from '../../../../../../utils';
@@ -12,31 +12,48 @@ import utils from '../../../../../../utils';
 type Props = {
   onAddGiftCardClick: Function,
   addGiftCardResponse: String,
+  getAddGiftCardErr: String,
+  resetNotificationStateAction: Function,
 };
 
-export const AddGiftCardContainer = ({ onAddGiftCardClick, addGiftCardResponse }: Props) => {
-  const goBackToPayment = () => {
+export class AddGiftCardContainer extends React.Component<Props> {
+  componentWillUnmount() {
+    const { getAddGiftCardErr } = this.props;
+    if (getAddGiftCardErr) {
+      const { resetNotificationStateAction } = this.props;
+      resetNotificationStateAction();
+    }
+  }
+
+  goBackToPayment = () => {
     utils.routerPush('/account?id=payment', '/account/payment');
     return null;
   };
 
-  if (addGiftCardResponse === 'success') {
-    return goBackToPayment();
+  render() {
+    const { onAddGiftCardClick, addGiftCardResponse, getAddGiftCardErr } = this.props;
+
+    if (addGiftCardResponse === 'success') {
+      return this.goBackToPayment();
+    }
+    return (
+      <AddGiftCardComponent
+        onAddGiftCardClick={onAddGiftCardClick}
+        labels={labels}
+        addGiftCardResponse={getAddGiftCardErr}
+        goBackToPayment={this.goBackToPayment}
+      />
+    );
   }
-  return (
-    <AddGiftCardComponent
-      onAddGiftCardClick={onAddGiftCardClick}
-      labels={labels}
-      addGiftCardResponse={addGiftCardResponse}
-      goBackToPayment={goBackToPayment}
-    />
-  );
-};
+}
 
 export const mapDispatchToProps = (dispatch: ({}) => void) => {
   return {
     onAddGiftCardClick: (payload: {}) => {
       dispatch(addGiftCardRequest(payload));
+    },
+    resetNotificationStateAction: () => {
+      dispatch(resetShowNotification());
     },
   };
 };
@@ -44,6 +61,7 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
 const mapStateToProps = state => {
   return {
     addGiftCardResponse: getAddGiftCardResponse(state),
+    getAddGiftCardErr: getAddGiftCardError(state),
   };
 };
 
