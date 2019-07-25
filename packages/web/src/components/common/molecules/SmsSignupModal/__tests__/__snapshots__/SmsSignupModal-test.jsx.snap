@@ -111,7 +111,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
                         "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -172,8 +171,17 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                        [Function],
+                        ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -384,7 +392,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                         "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -445,8 +452,17 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                        [Function],
+                        ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",

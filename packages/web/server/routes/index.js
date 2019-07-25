@@ -12,9 +12,9 @@ const RoutesMap = [
     resolver: '/login',
   },
   {
-    path: '/account/:id',
+    path: '/account/:id?/:subSection?',
     resolver: '/account',
-    params: ['id'],
+    params: ['id', 'subSection'],
   },
   {
     path: '/ds',

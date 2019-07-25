@@ -101,6 +101,7 @@ class DeleteCardModal extends React.Component<Props> {
             fill="BLUE"
             onClick={this.onConfirm}
             className="deleteCardModal__deleteConfirm deleteCardModal__btn"
+            dataLocator="deletecreditmodalyesdeletebtn"
           >
             {data.buttons.confirm}
           </Button>
@@ -109,6 +110,7 @@ class DeleteCardModal extends React.Component<Props> {
             onClick={this.onClose}
             fill="RED"
             className="deleteCardModal__btn deleteCardModal__deleteCancel"
+            dataLocator="deletecreditmodalnodeletebtn"
           >
             {data.buttons.cancel}
           </Button>

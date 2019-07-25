@@ -32,8 +32,8 @@ describe('SignupModalAbstractor', () => {
       { payload: 'address=abf@gmail.com' },
       'post'
     ).then(data => {
-      expect(data).toEqual('invalid');
-      expect(data).not.toEqual('valid');
+      expect(data).toEqual(false);
+      expect(data).not.toEqual(true);
     });
   });
 
@@ -45,8 +45,8 @@ describe('SignupModalAbstractor', () => {
 
   test('Signup modal Abstractor Email Verification with empty params', () => {
     return SignupModalAbstractor.verifyEmail('baseURL', 'relURI').then(data => {
-      expect(data).toEqual('invalid');
-      expect(data).not.toEqual('valid');
+      expect(data).toEqual(false);
+      expect(data).not.toEqual(true);
     });
   });
 });

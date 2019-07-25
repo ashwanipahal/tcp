@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 // eslint-disable-next-line
 import Link from 'next/link';
-import { buildUrl } from '../../../../../utils';
+import utils, { buildUrl } from '../../../../../utils';
 import withStyles from '../../../hoc/withStyles';
 
 import styles from '../Anchor.style';
@@ -31,10 +31,17 @@ const Anchor = ({
   url,
   text,
   ...other
-}) =>
-  noLink ? (
+}) => {
+  const siteId = utils.getSiteId();
+
+  const incomingUrl = to || url;
+  const isCompleteUrl = incomingUrl.startsWith('http');
+  const linkUrl = isCompleteUrl || asPath ? incomingUrl : `/${siteId}${incomingUrl}`;
+  const asLinkPath = asPath ? `/${siteId}${asPath}` : asPath;
+
+  return noLink ? (
     <a
-      href={buildUrl(to) || buildUrl(url)}
+      href={buildUrl(linkUrl)}
       className={className}
       {...other}
       onClick={handleLinkClick}
@@ -44,12 +51,13 @@ const Anchor = ({
       {children}
     </a>
   ) : (
-    <Link href={to || url} as={asPath} shallow={shallow} scroll={scroll}>
+    <Link href={linkUrl} as={asLinkPath} shallow={shallow} scroll={scroll}>
       <a className={className} title={title} target={target} {...other}>
         {children || text}
       </a>
     </Link>
   );
+};
 
 Anchor.propTypes = {
   children: PropTypes.string.isRequired,
