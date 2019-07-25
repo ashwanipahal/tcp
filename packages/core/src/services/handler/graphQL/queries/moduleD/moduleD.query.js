@@ -45,6 +45,9 @@ const buildQuery = ({ slot, contentId }) => `
             url
             title
             alt
+            crop_d
+            crop_t
+            crop_m
           }
       }
 
