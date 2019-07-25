@@ -3,6 +3,7 @@ import {
   getSkuId,
   getMapSliceForColor,
   getVariantId,
+  getMapSliceForSize,
 } from '../../../browse/ProductListingPage/util/utility';
 
 export const getCartItemInfo = (productInfoOrWishlistItem, customizationInfo) => {
@@ -22,8 +23,9 @@ export const getCartItemInfo = (productInfoOrWishlistItem, customizationInfo) =>
     };
   } else {
     // productInfoOrWishlistItem is a productInfo
-    const { color, fit, size, quantity } = customizationInfo;
+    const { color, fit, size, quantity, isBoss, storeLocId } = customizationInfo;
     const { name, colorFitsSizesMap, isGiftCard, imagesByColor } = productInfoOrWishlistItem;
+    const currentSizeEntry = getMapSliceForSize(colorFitsSizesMap, color, fit, size);
     obj = {
       isGiftCard,
       productName: name,
@@ -34,12 +36,16 @@ export const getCartItemInfo = (productInfoOrWishlistItem, customizationInfo) =>
           (imagesByColor[color].extraImages[0] || {}).iconSizeImageUrl,
         color: getMapSliceForColor(colorFitsSizesMap, color).color,
         variantId: getVariantId(colorFitsSizesMap, color, fit, size),
+        variantNo:
+          currentSizeEntry && currentSizeEntry.variantNo ? currentSizeEntry.variantNo : null,
         unbxdProdId: productInfoOrWishlistItem.unbxdProdId,
         productId: productInfoOrWishlistItem.generalProductId,
         fit,
         size,
       },
       quantity,
+      isBoss,
+      storeLocId,
       wishlistItemId:
         customizationInfo.wishlistItemId ||
         (productInfoOrWishlistItem.itemInfo && productInfoOrWishlistItem.itemInfo.itemId),

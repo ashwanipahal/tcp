@@ -12,7 +12,7 @@ class ProductTile extends React.Component {
     super(props);
     this.state = {
       quantity: 1,
-      store: '',
+      storeId: 110715,
     };
   }
 
@@ -25,7 +25,7 @@ class ProductTile extends React.Component {
   };
 
   render() {
-    const { item, addToBagEcom } = this.props;
+    const { item, addToBagEcom, addToBagBossBopis } = this.props;
     return (
       <ProductListingPageStyle key={item.product_name} className="product-item">
         <View>
@@ -68,17 +68,31 @@ class ProductTile extends React.Component {
           <View className="product-store">
             <Text>Please select a store</Text>
             <Picker
+              selectedValue={this.state.storeId}
               itemStyle={{ backgroundColor: 'white', color: 'blue', fontSize: 17, height: 60 }}
-              onValueChange={value => this.selectChange(value, 'store')}
+              onValueChange={value => this.selectChange(value, 'storeId')}
             >
-              <Picker.Item label="Store 1" value="Store 1" />
-              <Picker.Item label="Store 2" value="Store 2" />
-              <Picker.Item label="Store 3" value="Store 3" />
-              <Picker.Item label="Store 4" value="Store 4" />
+              <Picker.Item value="110715" label="Newport Center 110715" />
+              <Picker.Item value="110961" label="Union Square 110961" />
+              <Picker.Item value="111287" label="Bergenline Ave 111287" />
+              <Picker.Item value="111723" label="Ferry St Newark 111723" />
+              <Picker.Item value="111202" label="Newark 111202" />
+              <Picker.Item value="111616" label="Franklin Square Sc 111616" />
+              <Picker.Item value="110945" label="The Mills At Jersey Gardens 110945" />
             </Picker>
           </View>
-          <Button fullWidth buttonVariation="variable-width" text="Add to BOSS" />
-          <Button fullWidth buttonVariation="variable-width" text="Add to BOPIS" />
+          <Button
+            fullWidth
+            buttonVariation="variable-width"
+            text="Add to BOSS"
+            onPress={() => addToBagBossBopis(item, true, this.state.quantity, this.state.storeId)}
+          />
+          <Button
+            fullWidth
+            buttonVariation="variable-width"
+            text="Add to BOPIS"
+            onPress={() => addToBagBossBopis(item, false, this.state.quantity, this.state.storeId)}
+          />
         </View>
         <View>
           <AddedToBagContainer />
