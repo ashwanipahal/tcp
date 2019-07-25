@@ -10,6 +10,7 @@ describe('DropDown Test', () => {
     data: navDataMobile,
     selectedValue: 'addressBookMobile',
     onValueChange: jest.fn(),
+    variation: 'primary',
   };
 
   beforeEach(() => {
@@ -26,8 +27,16 @@ describe('DropDown Test', () => {
   });
 
   it('test openDropDown', () => {
-    component.instance().openDropDown();
-    expect(component.state('dropDownIsOpen')).toBe(true);
+    const props1 = {
+      data: navDataMobile,
+      selectedValue: 'addressBookMobile',
+      onValueChange: jest.fn(),
+      variation: 'secondary',
+    };
+    const component1 = shallow(<DropDownVanilla {...props1} />);
+    expect(component1).toMatchSnapshot();
+    component1.instance().openDropDown();
+    expect(component1.state('dropDownIsOpen')).toBe(true);
   });
 
   it('test closeDropDown', () => {

@@ -59,6 +59,113 @@ exports[`DropDown Test should render correctly 1`] = `
     onStartShouldSetResponder={[Function]}
     onValueChange={[MockFunction]}
     selectedValue="addressBookMobile"
+    variation="primary"
+  >
+    <Styled(View)>
+      <Styled(BodyCopy)
+        color="gray.800"
+        fontFamily="secondary"
+        fontSize="fs13"
+        fontWeight="black"
+        text="ADDRESS BOOK"
+        textAlign="center"
+      />
+    </Styled(View)>
+    <Image
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/carrot-small-down.png",
+        }
+      }
+    />
+  </Styled(View)>
+  <Component
+    hardwareAccelerated={false}
+    transparent={true}
+    visible={false}
+  >
+    <TouchableOpacity
+      accessibilityComponentType="none"
+      accessibilityTraits="none"
+      activeOpacity={1}
+      onPress={[Function]}
+      style={
+        Object {
+          "left": 0,
+          "top": 0,
+          "width": 0,
+        }
+      }
+    >
+      <Styled(View)
+        onLayout={[Function]}
+        style={null}
+      />
+    </TouchableOpacity>
+  </Component>
+</View>
+`;
+
+exports[`DropDown Test test openDropDown 1`] = `
+<View
+  style={null}
+>
+  <Styled(View)
+    containerStyle={null}
+    data={
+      Array [
+        Object {
+          "id": "accountOverview",
+          "label": "ACCOUNT OVERVIEW",
+          "value": "accountOverviewMobile",
+        },
+        Object {
+          "id": "myPlaceRewards",
+          "label": "MY PLACE REWARDS",
+          "value": "myPlaceRewardsMobile",
+        },
+        Object {
+          "id": "myWallet",
+          "label": "MY WALLET",
+          "value": "myWalletPageMobile",
+        },
+        Object {
+          "id": "earnExtraPoints",
+          "label": "EARN EXTRA POINTS",
+          "value": "earnExtraPointsPageMobile",
+        },
+        Object {
+          "id": "profileInformation",
+          "label": "PROFILE INFORMATION",
+          "value": "profileInformationMobile",
+        },
+        Object {
+          "id": "addressBook",
+          "label": "ADDRESS BOOK",
+          "value": "addressBookMobile",
+        },
+        Object {
+          "id": "paymentGiftCards",
+          "label": "PAYMENT & GIFT CARDS",
+          "value": "paymentGiftCardsPageMobile",
+        },
+        Object {
+          "id": "myPreferences",
+          "label": "MY PREFERENCES",
+          "value": "myPreferencePageMobile",
+        },
+        Object {
+          "id": "myPlaceRewardsCC",
+          "label": "MY PLACE REWARDS CREDIT CARD",
+          "value": "myPlaceRewardsCCPageMobile",
+        },
+      ]
+    }
+    onLayout={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onValueChange={[MockFunction]}
+    selectedValue="addressBookMobile"
+    variation="secondary"
   >
     <Styled(View)>
       <Styled(BodyCopy)

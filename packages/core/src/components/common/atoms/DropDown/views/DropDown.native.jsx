@@ -15,14 +15,13 @@ import {
 const downIcon = require('../../../../../assets/carrot-small-down.png');
 const upIcon = require('../../../../../assets/carrot-small-up.png');
 
-// @flow
-
 class DropDown extends React.PureComponent<Props> {
   static propTypes = {
     data: PropTypes.shape([]),
     selectedValue: PropTypes.string,
     onValueChange: PropTypes.func,
     containerStyle: PropTypes.shape({}),
+    variation: PropTypes.string,
   };
 
   static defaultProps = {
@@ -30,9 +29,8 @@ class DropDown extends React.PureComponent<Props> {
     selectedValue: null,
     onValueChange: null,
     containerStyle: null,
+    variation: 'primary',
   };
-
-  static defaultP;
 
   constructor(props) {
     super(props);
@@ -68,12 +66,13 @@ class DropDown extends React.PureComponent<Props> {
   };
 
   dropDownLayout = ({ item }) => {
+    const { variation } = this.props;
     return (
       <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)}>
         <BodyCopy
           fontFamily="secondary"
           fontSize="fs13"
-          textAlign="center"
+          textAlign={variation === 'primary' ? 'center' : ''}
           color="gray.800"
           fontWeight="black"
           text={item.label}

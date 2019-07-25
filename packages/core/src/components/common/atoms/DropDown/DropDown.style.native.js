@@ -1,12 +1,15 @@
 import styled, { css } from 'styled-components/native';
 
 const style = css`
-  border: 1px solid ${props => props.theme.colors.BUTTON.WHITE.BORDER};
-  background-color: ${props => props.theme.colorPalette.gray[500]};
   height: 42px;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
+  ${props =>
+    props.variation === 'primary'
+      ? `border: 1px solid ${props.theme.colors.BUTTON.WHITE.BORDER}`
+      : `border-bottom-width: 1px; border-bottom-color: ${props.theme.colors.BUTTON.WHITE.BORDER}`};
+  background-color: ${props =>
+    props.variation === 'primary'
+      ? props.theme.colorPalette.gray[500]
+      : props.theme.colorPalette.white};
 `;
 
 const HeaderContainer = styled.View`
@@ -14,9 +17,12 @@ const HeaderContainer = styled.View`
 `;
 
 const Row = styled.View`
+  display: flex;
   flex-direction: row;
+  ${props =>
+    props.variation === 'primary' ? 'justify-content: center' : 'justify-content:space-between'};
   align-items: center;
-  justify-content: center;
+  padding: ${props => (props.variation === 'primary' ? '0' : '0 5px')};
 `;
 
 const OverLayView = styled.View`
