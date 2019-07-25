@@ -3,13 +3,13 @@
  * This will change once we integrate it with cms labels
  */
 // will uncomment once we have nav data story in place
-const href = '/account?id=accountOverview';
+const href = '/account?id=account-overview';
 const navData = [
   {
     id: 'accountOverview',
     url: '/account',
     displayName: 'Account Overview',
-    component: 'accountOverview',
+    component: 'account-overview',
     href,
   },
   {
@@ -53,8 +53,8 @@ const navData = [
     id: 'addressBook',
     url: '/account/address-book',
     displayName: 'Address Book',
-    component: 'addressBook',
-    href: '/account?id=addressBook',
+    component: 'address-book',
+    href: '/account?id=address-book',
   },
   {
     id: 'paymentGiftCards',
