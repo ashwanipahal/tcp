@@ -2,7 +2,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 
-const ProductList = ({ navigation: props }) => {
+const ProductLanding = ({ navigation: props }) => {
   const { getParam } = props;
   const productName = getParam('product');
   return (
@@ -15,14 +15,14 @@ const ProductList = ({ navigation: props }) => {
   );
 };
 
-ProductList.propTypes = {
+ProductLanding.propTypes = {
   getParam: PropTypes.func,
   navigation: PropTypes.shape,
 };
 
-ProductList.defaultProps = {
+ProductLanding.defaultProps = {
   getParam: null,
   navigation: null,
 };
 
-export default ProductList;
+export default ProductLanding;

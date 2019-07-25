@@ -2,6 +2,8 @@ import { Dimensions, Linking } from 'react-native';
 import icons from '../config/icons';
 import locators from '../config/locators';
 
+import config from '../components/common/molecules/Carousel/Config.native';
+
 export const importGraphQLClientDynamically = module => {
   return new Promise((resolve, reject) => {
     switch (module) {
@@ -89,6 +91,49 @@ export const UrlHandler = url => {
       Linking.openURL(url);
     }
   });
+};
+
+/**
+ * @param {url} string
+ * @returns {type} string
+ */
+const getLandingPage = url => {
+  const { URL_PATTERN } = config;
+  if (url.includes(URL_PATTERN.PRODUCT_LIST)) {
+    return URL_PATTERN.PRODUCT_LIST;
+  }
+  if (url.includes(URL_PATTERN.CATEGORY_LANDING)) {
+    return URL_PATTERN.CATEGORY_LANDING;
+  }
+  return null;
+};
+
+/**
+ * @param {string} url
+ * @param {function} navigation
+ * Returns navigation to the parsed URL based on  the url param
+ */
+export const navigateToPage = (url, navigation) => {
+  const { URL_PATTERN } = config;
+  const { navigate } = navigation;
+  const category = getLandingPage(url);
+  const text = url.split('/');
+  const title = text[text.length - 1].replace(/[\W_]+/g, ' ');
+  switch (category) {
+    case URL_PATTERN.PRODUCT_LIST:
+      /**
+       * /p/Rainbow--The-Birthday-Girl--Graphic-Tee-2098277-10
+       * If url starts with “/p” → Create and navigate to a page in stack for Products (Blank page with a Text - “Product List”)
+       */
+      return navigate('ProductLanding', { product: title });
+    case URL_PATTERN.CATEGORY_LANDING:
+      /**
+       * /c/* - If url starts with “/c” (* can be anything in url) → Select “CATEGORY_LANDING” tab in tabbar and Open CATEGORY_LANDING page
+       */
+      return navigate('Plp');
+    default:
+      return null;
+  }
 };
 
 /**

@@ -38,31 +38,31 @@ describe('Anchor Native', () => {
   });
 
   it('should call onPress for external url handler', () => {
-    component.setProps({ internal: false, onPress: navigate });
+    component.setProps({ external: true, onPress: navigate });
     component.props().onPress();
     expect(navigate).toHaveBeenCalledTimes(2);
   });
 
   it('should call for plp page', () => {
-    component.setProps({ internal: true, url: '/p/test' });
+    component.setProps({ external: false, url: '/p/test' });
     component.props().onPress();
     expect(navigate).toHaveBeenCalledTimes(3);
   });
 
   it('should call for shop page', () => {
-    component.setProps({ internal: true, url: '/c/test' });
+    component.setProps({ external: false, url: '/c/test' });
     component.props().onPress();
     expect(navigate).toHaveBeenCalledTimes(4);
   });
 
   it('should return null', () => {
-    component.setProps({ internal: true, url: '/test' });
+    component.setProps({ external: false, url: '/test' });
     component.props().onPress();
     expect(navigate).toHaveBeenCalledTimes(4);
   });
 
   it('should return navigation to default browser', () => {
-    component.setProps({ internal: false, onPress: null });
+    component.setProps({ external: true, onPress: null });
     component.props().onPress();
     expect(navigate).toHaveBeenCalledTimes(4);
   });

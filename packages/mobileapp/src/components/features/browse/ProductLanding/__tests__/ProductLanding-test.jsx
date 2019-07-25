@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ProductList from '../ProductList';
+import ProductList from '../ProductLanding';
 
 describe('Anchor Native', () => {
   let component;
