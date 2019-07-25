@@ -11,6 +11,7 @@ import AddressListComponent from './AddressList.view';
 import EmptyAddressListComponent from './EmptyAddressList.view';
 import DeleteAddressModal from './DeleteAddressModal.view';
 import Notification from '../../../../common/molecules/Notification';
+import Dropdown from '../../../../common/molecules/Dropdown';
 
 // @flow
 
@@ -34,6 +35,33 @@ export class AddressBook extends React.PureComponent<Props> {
     this.state = {
       selectedAddress: {},
     };
+
+
+
+    this.options =  [
+      {
+        value: '1',
+        title: 'Account Overview'
+      },
+      {
+        value: '2',
+        title: 'My Place Rewards'
+      },
+      {
+        value: '3',
+        title: 'My Wallet'
+      },
+      {
+        value: '4',
+        title: 'Points History'
+      },
+      {
+        value: '5',
+        title: 'Earn Extra Points'
+      }
+    ];
+
+
   }
 
   setSelectedAddress = address => {
@@ -43,6 +71,15 @@ export class AddressBook extends React.PureComponent<Props> {
   onAddNNewAddressClick = () => {
     Router.push('/account?id=add-new-address', '/account/address-book/add-new-address');
   };
+
+
+
+ clickHandler = (e, value,title )=>{
+  console.log(value);
+  console.log("On Change Handler from address book");
+  console.log(title);
+}
+
 
   render() {
     const {
@@ -89,6 +126,16 @@ export class AddressBook extends React.PureComponent<Props> {
             }}
             className="addressBook__addNewCtaContainer"
           >
+
+
+            <Dropdown
+              options={this.options}
+              clickHandler={this.clickHandler}
+              activeTitle="Account Overview"
+              activeValue="1"
+            />
+
+
             <Button
               onClick={this.onAddNNewAddressClick}
               buttonVariation="variable-width"

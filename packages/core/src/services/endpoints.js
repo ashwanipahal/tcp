@@ -22,6 +22,10 @@ const endpoints = {
     JSONP: true,
     reqTimeout: 2000,
   },
+  getAccountNavigation: {
+    method: API_METHODS.GET,
+    URI: 'v2/account/getAddressFromBook',
+  },
 };
 
 export default endpoints;

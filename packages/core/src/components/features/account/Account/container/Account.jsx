@@ -1,13 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentMapping from '../AccountComponentMapping';
 import navData from '../MyAccountRoute.config';
 import utils from '../../../../../utils';
 
+import { getAccountNavigationList } from './Account.actions';
+
+import {
+  getAddressListState
+} from './Account.selectors';
+
 // @flow
 type Props = {
   router: Object,
+  getAddressListAction: () => void,
 };
 
 type State = {
@@ -28,6 +36,11 @@ export class Account extends React.PureComponent<Props, State> {
     this.state = {
       component: utils.getObjectValue(props.router, 'addressBook', 'query', 'id'),
     };
+  }
+
+  componentDidMount() {
+    const { getAddressListAction} = this.props;
+    getAddressListAction();
   }
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
@@ -58,4 +71,24 @@ export class Account extends React.PureComponent<Props, State> {
   }
 }
 
-export default withRouter(Account);
+
+
+export const mapDispatchToProps = (dispatch: ({}) => void) => {
+  return {
+    getAddressListAction: () => {
+      dispatch(getAccountNavigationList());
+    }
+  };
+};
+
+const mapStateToProps = state => {
+  return {
+    addressList: getAddressListState(state)
+  };
+};
+
+
+export default withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Account));

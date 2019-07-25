@@ -1,0 +1,276 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropdownList component should renders correctly 1`] = `
+<StyledComponent
+  activeTitle="Please select list item"
+  activeValue="activeClassValue"
+  className="sample-class"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bwzfXH",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .dropdownUlBorder {
+    border: 1px solid ",
+          [Function],
+          ";
+    background-color: ",
+          [Function],
+          ";
+  }
+
+  .dropdownliBottomBorder {
+    border-bottom: 1px solid ",
+          [Function],
+          ";
+    padding: ",
+          [Function],
+          ";
+  }
+
+  .dropdownDivOverFlow {
+    overflow-y: scroll;
+    max-height: 230px;
+  }
+
+  .dropdownActiveClass {
+    background-color: ",
+          [Function],
+          ";
+    position: relative;
+  }
+
+  .dropdownActiveIcon {
+    background-image: url(",
+          "/static/images/active_icon.png",
+          ");
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 3%;
+    right: 1%;
+    top: 40%;
+    height: 16%;
+  }
+
+  .dropDownListwrapper {
+    position: relative;
+    padding-bottom: ",
+          [Function],
+          ";
+    border: 1px solid ",
+          [Function],
+          ";
+    background-color: ",
+          [Function],
+          ";
+  }
+
+  .dropdownClassBtn {
+    color: ",
+          [Function],
+          ";
+    background-color: ",
+          [Function],
+          ";
+  }
+
+  .ulBorderWithLastRow {
+    border-bottom: ",
+          [Function],
+          ";
+    width: 100%;
+  }
+
+  .ulBorderWithLastRow li:hover {
+    background: ",
+          [Function],
+          ";
+  }
+
+  .ulBorderWithLastRow li:last-child {
+    position: absolute;
+    width: 96%;
+    height: 42px;
+    padding: ",
+          [Function],
+          ";
+    left: 0;
+    bottom: 0;
+    border-bottom: none;
+  }
+
+  .ulBorderWithLastRow li:last-child:hover {
+    background: none;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(DropdownList)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bwzfXH",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  options={
+    Object {
+      "content": <div>
+        <p>
+          Test 1
+        </p>
+      </div>,
+      "title": "Test 1",
+      "value": "1",
+    }
+  }
+  selectListTitle="Select from address book"
+/>
+`;
+
+exports[`DropdownList component should renders correctly when optional fields are not present 1`] = `
+<StyledComponent
+  className="sample-class"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bwzfXH",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .dropdownUlBorder {
+    border: 1px solid ",
+          [Function],
+          ";
+    background-color: ",
+          [Function],
+          ";
+  }
+
+  .dropdownliBottomBorder {
+    border-bottom: 1px solid ",
+          [Function],
+          ";
+    padding: ",
+          [Function],
+          ";
+  }
+
+  .dropdownDivOverFlow {
+    overflow-y: scroll;
+    max-height: 230px;
+  }
+
+  .dropdownActiveClass {
+    background-color: ",
+          [Function],
+          ";
+    position: relative;
+  }
+
+  .dropdownActiveIcon {
+    background-image: url(",
+          "/static/images/active_icon.png",
+          ");
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 3%;
+    right: 1%;
+    top: 40%;
+    height: 16%;
+  }
+
+  .dropDownListwrapper {
+    position: relative;
+    padding-bottom: ",
+          [Function],
+          ";
+    border: 1px solid ",
+          [Function],
+          ";
+    background-color: ",
+          [Function],
+          ";
+  }
+
+  .dropdownClassBtn {
+    color: ",
+          [Function],
+          ";
+    background-color: ",
+          [Function],
+          ";
+  }
+
+  .ulBorderWithLastRow {
+    border-bottom: ",
+          [Function],
+          ";
+    width: 100%;
+  }
+
+  .ulBorderWithLastRow li:hover {
+    background: ",
+          [Function],
+          ";
+  }
+
+  .ulBorderWithLastRow li:last-child {
+    position: absolute;
+    width: 96%;
+    height: 42px;
+    padding: ",
+          [Function],
+          ";
+    left: 0;
+    bottom: 0;
+    border-bottom: none;
+  }
+
+  .ulBorderWithLastRow li:last-child:hover {
+    background: none;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(DropdownList)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bwzfXH",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  options={
+    Object {
+      "content": <div>
+        <p>
+          Test 1
+        </p>
+      </div>,
+      "title": "Test 1",
+      "value": "1",
+    }
+  }
+/>
+`;
