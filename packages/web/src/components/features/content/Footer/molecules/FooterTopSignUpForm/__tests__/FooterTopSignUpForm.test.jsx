@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { FooterTopSignUpFormVanilla } from '../views/FooterTopSignUpForm.view';
+import { FooterTopSignUpFormVanilla } from '../FooterTopSignUpForm';
 
 describe('FooterTopSignUpFormVanilla component', () => {
   it('renders correctly', () => {
