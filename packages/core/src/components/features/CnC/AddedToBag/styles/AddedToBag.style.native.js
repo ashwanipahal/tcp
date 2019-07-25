@@ -1,6 +1,6 @@
-import { css } from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const styles = css`
+export const styles = css`
   div.TCPModal__InnerContent {
     right: 0;
     left: auto;
@@ -32,7 +32,15 @@ const styles = css`
   .addedToBagWrapper {
     overflow-y: auto;
     height: calc(100% - 43px);
+    border: 1px solid black;
   }
 `;
 
-export default styles;
+export const PlaceHolderView = styled.View`
+  height: 150px;
+  border: 1px solid black;
+  margin: 10px;
+  text-align: center;
+`;
+
+export default { styles, PlaceHolderView };

@@ -5,8 +5,8 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
   animationType="slide"
   aria={
     Object {
-      "describedby": "Added To Bag Modal",
-      "labelledby": "Added To Bag",
+      "describedby": "undefined",
+      "labelledby": "undefined",
     }
   }
   className="TCPModal__Content, "
@@ -17,12 +17,33 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
   onRequestClose={[Function]}
   overlayClassName="TCPModal__Overlay"
 >
-  <View
-    className="addedToBagWrapper"
+  <Styled(View)
+    className="ProductInformationView"
   >
     <Text>
-      Integrate here your Integrate here, Integrate here your Integrate here
+      ProductInformationView
     </Text>
-  </View>
+  </Styled(View)>
+  <Styled(View)
+    className="AddedToBagViewPoints"
+  >
+    <Text>
+      AddedToBagViewPoints
+    </Text>
+  </Styled(View)>
+  <Styled(View)
+    className="AddedToBagActions"
+  >
+    <Text>
+      AddedToBagActions
+    </Text>
+  </Styled(View)>
+  <Styled(View)
+    className="BossBannerView"
+  >
+    <Text>
+      BossBannerView
+    </Text>
+  </Styled(View)>
 </ModalNative>
 `;

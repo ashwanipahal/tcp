@@ -12,25 +12,9 @@ import AddedToBagContainer from '../../../CnC/AddedToBag';
 import ProductTile from '../molecules/ProductTile.view';
 
 export class ProductListView extends React.Component {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      quantity: 1,
-    };
-  }
-
-  selectChange = (value, elem) => {
-    console.log(value);
-    if (value) {
-      this.setState({
-        [elem]: value,
-      });
-    }
-  };
-
-  addToBagEcom = item => {
+  addToBagEcom = (item, newQuantity) => {
     const { addToCartEcom } = this.props;
-    const { quantity } = this.state;
+    const quantity = newQuantity;
     const pdpObj = parseProductFromAPI(item, item.uniqueId, false, getImgPath, false, false);
     const {
       product: { colorFitsSizesMap },
@@ -63,13 +47,7 @@ export class ProductListView extends React.Component {
         <FlatList
           className="product-wrapper"
           data={data}
-          renderItem={({ item }) => (
-            <ProductTile
-              item={item}
-              selectChange={this.selectChange}
-              addToBagEcom={this.addToBagEcom}
-            />
-          )}
+          renderItem={({ item }) => <ProductTile item={item} addToBagEcom={this.addToBagEcom} />}
           numColumns={2}
         />
       </React.Fragment>

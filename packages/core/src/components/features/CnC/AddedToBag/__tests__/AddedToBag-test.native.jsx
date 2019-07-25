@@ -1,9 +1,6 @@
 import React from 'react';
-import { Text, View } from 'react-native';
 import { shallow } from 'enzyme';
 import { AddedToBagVanilla } from '../views/AddedToBag.view.native';
-
-import Modal from '../../../../common/molecules/Modal';
 
 describe('AddedToBag Component', () => {
   let component;
@@ -11,6 +8,7 @@ describe('AddedToBag Component', () => {
     openState: Function,
     onRequestClose: Function,
     className: '',
+    labels: {},
   };
 
   beforeEach(() => {
@@ -23,17 +21,5 @@ describe('AddedToBag Component', () => {
 
   it('AddedToBag should render correctly', () => {
     expect(component).toMatchSnapshot();
-  });
-
-  it('AddedToBag should return Modal component value one', () => {
-    expect(component.find(Modal)).toHaveLength(1);
-  });
-
-  it('AddedToBag should return View component value one', () => {
-    expect(component.find(View)).toHaveLength(1);
-  });
-
-  it('AddedToBag should return Text component value one', () => {
-    expect(component.find(Text)).toHaveLength(1);
   });
 });
