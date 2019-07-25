@@ -1,5 +1,5 @@
 const buildQuery = ({ cid }) => `
-moduleById(${cid ? `cid: "${cid}",` : ``}) {
+moduleX: moduleById(id: "${cid}") {
   contentId
   name
   type
