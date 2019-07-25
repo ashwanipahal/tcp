@@ -25,38 +25,50 @@ export default css`
       transform: translateX(0);
     }
   }
-  &.tcp-drawer {
-    display: none;
-  }
-  &.tcp-drawer-overlay {
-    background: black;
+  .tcp-drawer-overlay {
+    background: ${props => props.theme.colorPalette.black};
     position: fixed;
     z-index: 900;
     height: 100vh;
     opacity: 0.6;
     width: 100vw;
   }
-  &.tcp-drawer__isOpen {
+  .tcp-drawer {
+    display: none;
+  }
+  .tcp-drawer__isOpen {
     display: block;
     position: fixed;
     z-index: 999;
   }
   .tcp-drawer-content {
     width: ${props => props.width.small || `100%`};
-    background: white;
+    background: ${props => props.theme.colorPalette.white};
+  }
+  .display-small-none {
+    display: none;
   }
   @media ${props => props.theme.mediaQuery.medium} {
     .tcp-drawer-content {
       width: ${props => props.width.medium || `100%`};
     }
-  }
-  @media ${props => props.theme.mediaQuery.large} {
-    &.tcp-drawer {
+    .display-small-none {
       display: block;
     }
+    .display-medium-none {
+      display: none;
+    }
+  }
+  @media ${props => props.theme.mediaQuery.large} {
     .tcp-drawer-content {
       width: ${props => props.width.large || `100%`};
       background: none;
+    }
+    .display-medium-none {
+      display: block;
+    }
+    .display-large-none {
+      display: none;
     }
   }
 `;

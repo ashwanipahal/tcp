@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Row, Drawer, Image } from '@tcp/core/src/components/common/atoms';
+import { Col, Row, Image } from '@tcp/core/src/components/common/atoms';
 import navMock from '@tcp/core/src/services/abstractors/bootstrap/navigation/mock';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { identifyBrand } from '@tcp/core/src/utils';
@@ -66,18 +66,7 @@ const HeaderMiddleNav = props => {
             small: 6,
           }}
         >
-          <Drawer
-            mobile
-            tablet
-            open={navigationDrawer.open}
-            width={{
-              small: '314px',
-              medium: '314px',
-              large: '100%',
-            }}
-          >
-            <Navigation nav={navMock.data.navigation} />
-          </Drawer>
+          <Navigation openNavigationDrawer={navigationDrawer.open} nav={navMock.data.navigation} />
         </Col>
       </Row>
     </React.Fragment>
