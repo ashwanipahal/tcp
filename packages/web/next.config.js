@@ -3,6 +3,7 @@ const path = require('path');
 
 module.exports = withTM({
   transpileModules: ['@tcp'],
+  useFileSystemPublicRoutes: false,
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,

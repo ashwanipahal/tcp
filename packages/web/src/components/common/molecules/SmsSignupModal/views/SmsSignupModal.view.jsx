@@ -209,7 +209,7 @@ SmsSignupModal.propTypes = {
   submitSmsSubscription: PropTypes.func,
   pristine: PropTypes.bool.isRequired,
   invalid: PropTypes.bool.isRequired,
-  asyncValidating: PropTypes.bool.isRequired,
+  asyncValidating: PropTypes.oneOf(PropTypes.bool, PropTypes.string).isRequired,
   submitSucceeded: PropTypes.bool.isRequired,
   submitting: PropTypes.bool.isRequired,
   isModalOpen: PropTypes.bool,

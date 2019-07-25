@@ -14,7 +14,7 @@ import Button from '@tcp/core/src/components/common/atoms/Button';
 import RichText from '@tcp/core/src/components/common/atoms/RichText';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
-import FooterTopCandidateA from '@tcp/web/src/components/common/organisms/Footer/views/FooterTopCandidateA.view';
+import FooterTopCandidateA from '../../../Footer/molecules/FooterTopCandidateA';
 
 function getHeadingColm(props) {
   return (

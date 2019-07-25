@@ -41,8 +41,9 @@ export const AddEditAddress = ({
         className="addAddress__anchor__back"
         fontSizeVariation="xlarge"
         anchorVariation="secondary"
-        to="/account"
+        to="/account?id=address-book"
         data-locator="addnewaddress-back"
+        asPath="/account/address-book"
       >
         Back
       </Anchor>
