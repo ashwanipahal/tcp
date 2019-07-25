@@ -1,7 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import AddedToBagActions from '../../AddedToBagActions';
+import AddedToBagViewPoints from '../../AddedToBagViewPoints';
 import Modal from '../../../../common/molecules/Modal';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/AddedToBag.style';
+import ProductInformationView from '../../ProductInformation/views/ProductInformation.views';
+import BossBannerView from '../../BossBanner/views/BossBanner.views';
 
 // @flow
 type Props = {
@@ -9,9 +14,10 @@ type Props = {
   onRequestClose: Function,
   className: string,
   addedToBagData: any,
+  labels: any,
 };
 
-const AddedToBag = ({ openState, onRequestClose, addedToBagData, className }: Props) => {
+const AddedToBag = ({ openState, onRequestClose, addedToBagData, className, labels }: Props) => {
   return (
     <Modal
       fixedWidth
@@ -27,27 +33,16 @@ const AddedToBag = ({ openState, onRequestClose, addedToBagData, className }: Pr
       }}
     >
       <div className="addedToBagWrapper">
-        Integrate here your Integrate here your Integrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here
-        yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate here yourIntegrate
-        here yourIntegrate here yourIntegrate here your
-        {JSON.stringify(addedToBagData)}
+        <ProductInformationView data={addedToBagData} labels={labels} />
+        <AddedToBagViewPoints labels={labels} className="added-to-bag-points" />
+        <AddedToBagActions labels={labels} />
+        <BossBannerView labels={labels} />
       </div>
     </Modal>
   );
+};
+AddedToBag.propTypes = {
+  className: PropTypes.string.isRequired,
 };
 
 export default withStyles(AddedToBag, styles);

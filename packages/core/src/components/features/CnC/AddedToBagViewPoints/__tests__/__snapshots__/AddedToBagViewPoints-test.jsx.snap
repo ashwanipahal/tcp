@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddedToBagViewPoints component renders correctly 1`] = `
+<StyledComponent
+  className="abcd"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bxivhb",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  font-size: 13px;
+  .value {
+    text-align: right;
+  }
+  .row-padding {
+    padding-bottom: 9px;
+  }
+  .divided-line {
+    height: 1px;
+    background-color: ",
+          [Function],
+          ";
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  .promo-color {
+    color: ",
+          [Function],
+          ";
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(AddedToBagViewPoints)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bxivhb",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  pointsSummary={
+    Object {
+      "itemPoints": 23,
+      "itemPrice": 12,
+      "pointsToNextReward": 12,
+      "subTotal": 34,
+      "totalItems": 3,
+      "userPoints": 60,
+    }
+  }
+/>
+`;
