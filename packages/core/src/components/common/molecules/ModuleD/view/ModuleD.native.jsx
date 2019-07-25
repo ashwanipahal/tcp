@@ -55,7 +55,7 @@ const renderItem = item => {
 
       <Anchor
         fontSizeVariation="large"
-        text={link.title}
+        text={link.text}
         visible={anchorEnable}
         onPress={() => {
           UrlHandler(link.url);
