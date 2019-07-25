@@ -11,6 +11,7 @@ export default css`
     font-size: ${props => props.theme.typography.fontSizes.fs13};
     padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
       ${props => props.theme.spacing.ELEM_SPACING.XL};
+    min-height: 42px;
   }
 
   .footer_top_candidate_a .TextBox__input {
