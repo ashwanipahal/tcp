@@ -20,8 +20,6 @@ const Row = styled.View`
 `;
 
 const OverLayView = styled.View`
-  position: absolute;
-  z-index: 999;
   flex-direction: row;
   border: 1px solid ${props => props.theme.colors.BUTTON.WHITE.BORDER};
   border-top-width: 1px;
