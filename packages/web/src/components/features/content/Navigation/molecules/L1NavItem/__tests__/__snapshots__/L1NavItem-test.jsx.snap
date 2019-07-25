@@ -20,7 +20,7 @@ exports[`Drawer component renders correctly 1`] = `
     textAlign="left"
   >
     <span
-      className="nav-bar-l1-item-label"
+      className="nav-bar-l1-item-label "
     />
     <span
       className="nav-bar-l1-item-content"

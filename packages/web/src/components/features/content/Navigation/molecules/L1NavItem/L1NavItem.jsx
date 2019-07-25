@@ -8,12 +8,15 @@ import style from './L1NavItem.style';
 const L1NavItem = props => {
   const {
     categoryContent: {
+      id,
       name,
       description,
       mainCategory: { promoBadge },
     },
     className,
   } = props;
+  const classForRedContent = id === '505518' ? `highlighted` : ``;
+
   return (
     <React.Fragment>
       <BodyCopy
@@ -25,7 +28,7 @@ const L1NavItem = props => {
         color="text.hint"
         lineHeight="lh115"
       >
-        <span className="nav-bar-l1-item-label">{name}</span>
+        <span className={`nav-bar-l1-item-label ${classForRedContent}`}>{name}</span>
         <span className="nav-bar-l1-item-content">
           {description || (promoBadge && <PromoBadge data={promoBadge} />) || ``}
         </span>
