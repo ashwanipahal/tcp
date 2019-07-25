@@ -120,11 +120,6 @@ class DropDown extends React.PureComponent<Props> {
           top: showInBottom ? this.rowFrame.y : Math.max(0, this.rowFrame.y - height),
         };
         this.dropDownFrame = { x: pageX, y: topMargin.top, w: width, h: height };
-        // this.overlayMarker.setNativeProps({
-        //   style: {
-        //     top: topMargin.top,
-        //   },
-        // });
       });
     }
   };
