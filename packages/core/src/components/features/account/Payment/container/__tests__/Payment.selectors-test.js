@@ -6,6 +6,7 @@ import {
   getCreditDebitCards,
   getGiftCards,
   getVenmoCards,
+  getPaymentBannerContentId,
 } from '../Payment.selectors';
 
 describe('#Payment Selectors', () => {
@@ -134,5 +135,23 @@ describe('#Payment Selectors', () => {
         },
       ])
     );
+  });
+  it('#getPaymentBannerContentId should return content ID', () => {
+    const account = fromJS({
+      payment: {
+        referred: List([
+          {
+            name: 'payment-banner-label',
+            cid: '66b73859-0893-4abe-9d0d-dc3d58fa2782',
+          },
+        ]),
+      },
+    });
+    const state = {
+      Labels: {
+        account,
+      },
+    };
+    expect(getPaymentBannerContentId(state)).toEqual('66b73859-0893-4abe-9d0d-dc3d58fa2782');
   });
 });
