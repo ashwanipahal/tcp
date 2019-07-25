@@ -29,6 +29,10 @@ const RoutesMap = [
     resolver: '/test',
     withoutCountryCode: true,
   },
+  {
+    path: '/cart',
+    resolver: '/cart',
+  },
 ];
 
 module.exports = RoutesMap;
