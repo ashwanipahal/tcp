@@ -8,7 +8,7 @@ import GlobalStyle from '@tcp/core/styles/globalStyles';
 import theme from '@tcp/core/styles/themes/TCP';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
-import { Header } from '../components/common/organisms';
+import { Header, Footer } from '../components/common/organisms';
 
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
@@ -59,7 +59,7 @@ class TCPWebApp extends App {
             <Grid>
               <Header />
               <Component {...pageProps} />
-              {/* <Footer /> */}
+              <Footer />
             </Grid>
           </Provider>
         </ThemeProvider>
