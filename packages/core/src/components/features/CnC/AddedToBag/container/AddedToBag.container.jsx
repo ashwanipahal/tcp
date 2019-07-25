@@ -61,6 +61,7 @@ const mapStateToProps = state => {
         lbl_info_subTotal: bagSubTotal,
         lbl_info_totalRewardsInBag: totalRewardsInPoints,
         lbl_info_totalNextRewards: totalNextRewards,
+        lbl_header_addedToBag: addedToBag,
       },
     },
   } = state.Labels;
@@ -81,6 +82,7 @@ const mapStateToProps = state => {
       bagSubTotal,
       totalRewardsInPoints,
       totalNextRewards,
+      addedToBag,
     },
   };
 };
