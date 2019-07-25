@@ -11,11 +11,12 @@ const AddedToBag = ({ openState, onRequestClose, className, labels }) => {
       fixedWidth
       isOpen={openState}
       onRequestClose={onRequestClose}
-      heading="ADDED TO BAG"
+      heading={labels.addedToBag}
       overlayClassName="TCPModal__Overlay"
       className={`TCPModal__Content, ${className}`}
       closeIconDataLocator="added-to-bg-close"
       animationType="slide"
+      headingAlign="left"
       aria={{
         labelledby: `${labels.addedToBag}`,
         describedby: `${labels.addedToBag}`,
