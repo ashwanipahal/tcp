@@ -9,6 +9,9 @@ const CtaStyle = css`
     justify-content: space-between;
   }
   .view-bag {
+    &:hover {
+      background: ${props => props.theme.colors.PRIMARY.DARK};
+    }
     width: inherit;
     background-color: ${props => props.theme.colors.PRIMARY.DARK};
     height: 48px;
@@ -16,11 +19,23 @@ const CtaStyle = css`
   .checkout-button {
     padding-top: 10px;
   }
+
   .checkout {
+    &:hover {
+      background: ${props => props.theme.colors.PRIMARY.BLUE};
+    }
     height: 48px;
     margin-left: 10px;
-    flex: 1;
+    flex: 2;
     background-color: ${props => props.theme.colors.PRIMARY.BLUE};
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      margin-left: 0;
+    }
+  }
+  .payPal-button {
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      display: none;
+    }
   }
 `;
 export default CtaStyle;
