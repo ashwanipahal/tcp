@@ -1,4 +1,6 @@
-import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
+// eslint-disable-next-line import/no-unresolved
+import Router from 'next/router';
+import { ENV_PRODUCTION, ENV_DEVELOPMENT, ENV_SITE_ID } from '../constants/env.config';
 import icons from '../config/icons';
 import locators from '../config/locators';
 
@@ -28,6 +30,15 @@ export const isProduction = () => {
 
 export const isDevelopment = () => {
   return process.env.NODE_ENV === ENV_DEVELOPMENT;
+};
+
+export const getSiteId = () => {
+  return process.env.SITE_ID || ENV_SITE_ID;
+};
+
+export const routerPush = (href, as) => {
+  const siteId = getSiteId();
+  return Router.push(href, `/${siteId}${as}`);
 };
 
 export const identifyBrand = () => {
@@ -125,4 +136,6 @@ export default {
   getLocator,
   createUrlSearchParams,
   buildUrl,
+  getSiteId,
+  routerPush,
 };
