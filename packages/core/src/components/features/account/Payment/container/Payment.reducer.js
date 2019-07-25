@@ -76,7 +76,7 @@ const PaymentReducer = (state = initialState, action) => {
     case PAYMENT_CONSTANTS.CLEAR_CARD_LIST_TTL:
       return state.set(DEFAULT_REDUCER_KEY, null);
     case PAYMENT_CONSTANTS.SET_RICH_TEXT:
-      return state.set('paymentBannerRichText', action.payload);
+      return state.set('paymentBannerRichText', action.payload.richText);
     default:
       return returnPaymentReducer(state, action);
   }

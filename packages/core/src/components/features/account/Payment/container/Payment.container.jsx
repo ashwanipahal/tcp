@@ -47,6 +47,7 @@ type Props = {
   getPaymentBannerRichText: Function,
   paymentBannerContentId: string,
   showNotificationCaptcha: boolean,
+  paymentBannerRichText: string,
   clearPaymentNotification: () => void,
 };
 
@@ -83,7 +84,10 @@ export class PaymentContainer extends React.Component<Props> {
       checkbalanceValueInfo,
       setDefaultPaymentMethod,
       showNotificationCaptcha,
+      paymentBannerRichText,
     } = this.props;
+
+    const updatesLabels = { ...labels, ACC_PAYMNET_BANNER_LABEL: paymentBannerRichText };
 
     return (
       <PaymentView
@@ -93,7 +97,7 @@ export class PaymentContainer extends React.Component<Props> {
         showNotificationCaptcha={showNotificationCaptcha}
         onDeleteCard={onDeleteCard}
         showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
-        labels={labels}
+        labels={updatesLabels}
         creditCardList={creditCardList}
         giftCardList={giftCardList}
         venmoCardList={venmoCardList}

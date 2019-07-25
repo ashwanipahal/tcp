@@ -1,5 +1,10 @@
 import handler from '../../handler';
+import mockData from './__mocks__/PaymentBannerMock';
 
+/**
+ * Responsible for fetching data with GraphQL
+ * @param {String} id - Content ID to fetch content from CMS
+ */
 const DataAbstractor = {
   getData: async id => {
     return handler
@@ -9,17 +14,16 @@ const DataAbstractor = {
           data: { cid: id, type: 'paymentBanner' },
         },
       ])
-      .then(response => response.data)
-      .then(DataAbstractor.processData);
+      .then(response => (response ? response.data : mockData));
   },
-  processData: data => {
+  processData: async data => {
     const result = {};
     const {
       name,
-      composites: { richTextList: text },
-    } = data;
+      composites: { richTextList },
+    } = data.moduleX;
     result.name = name;
-    result.richText = text;
+    result.richText = richTextList[0].text;
     return result;
   },
 };
@@ -29,16 +33,17 @@ const DataAbstractor = {
  * @param {String} cid - Content ID
  */
 const PaymentAbstractor = async cid => {
-  const { getData } = DataAbstractor;
-  let fetchedData = {};
+  const { getData, processData } = DataAbstractor;
+  let response = {};
 
   try {
-    fetchedData = await getData(cid);
+    const data = await getData(cid);
+    response = await processData(data);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);
   }
-  return fetchedData;
+  return response;
 };
 
 export default PaymentAbstractor;

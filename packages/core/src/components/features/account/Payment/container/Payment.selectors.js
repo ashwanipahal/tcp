@@ -46,7 +46,17 @@ export const checkbalanceValue = state => {
 };
 
 export const getPaymentBannerContentId = state => {
-  return state.Labels.account;
+  const { payment } = state.Labels.account;
+  const labelsToFetchFromCMS = payment ? payment.referred : [];
+  let contentId = '66b73859-0893-4abe-9d0d-dc3d58fa2782';
+  if (labelsToFetchFromCMS.length > 0) {
+    labelsToFetchFromCMS.forEach(label => {
+      // TO DO - Change the condition with appropirate banner label name
+      if (label.name === 'payment-banner-label') contentId = label.cid;
+    });
+  }
+
+  return contentId;
 };
 
 export const getPaymentBannerRichTextSelector = state => {
