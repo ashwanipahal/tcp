@@ -12,7 +12,7 @@ const Abstractor = {
       .then(Abstractor.processData);
   },
   getMock: () => {
-    return mock.navigation;
+    return mock;
   },
   processData: data => data,
 };

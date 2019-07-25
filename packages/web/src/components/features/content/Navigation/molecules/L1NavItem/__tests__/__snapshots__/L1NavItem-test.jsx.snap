@@ -25,11 +25,16 @@ exports[`Drawer component renders correctly 1`] = `
     <span
       className="nav-bar-l1-item-content"
     >
-      <span
-        className="undefined nav-bar-l1-promo-badge"
-      >
-        30% off shoes
-      </span>
+      <Styled(PromoBadge)
+        data={
+          Array [
+            Object {
+              "style": "style1",
+              "text": "30% off shoes",
+            },
+          ]
+        }
+      />
     </span>
     <span
       className="icon-arrow"

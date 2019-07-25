@@ -39,9 +39,4 @@ describe('Drawer component', () => {
 
     expect(L1NavItemComp.find('.nav-bar-l1-item-label')).toHaveLength(1);
   });
-
-  it('renders promo badge', () => {
-    const L1NavItemComp = shallow(<L1NavItem {...data1} />);
-    expect(L1NavItemComp.find('.nav-bar-l1-promo-badge')).toHaveLength(1);
-  });
 });

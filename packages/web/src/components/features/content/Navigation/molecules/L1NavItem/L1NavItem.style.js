@@ -19,10 +19,10 @@ export default css`
   }
 
   .nav-bar-l1-item-label {
-    width: 50%;
+    width: 45%;
   }
   .nav-bar-l1-item-content {
-    width: 46%;
+    width: 51%;
     color: ${props => props.theme.colorPalette.primary.main};
   }
 

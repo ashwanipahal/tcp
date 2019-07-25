@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
+import PromoBadge from '../PromoBadge';
 import style from './L1NavItem.style';
 
 const L1NavItem = props => {
@@ -26,12 +27,7 @@ const L1NavItem = props => {
       >
         <span className="nav-bar-l1-item-label">{name}</span>
         <span className="nav-bar-l1-item-content">
-          {description ||
-            (promoBadge &&
-              promoBadge.map(({ cls, text }, index) => (
-                <span className={`${cls} nav-bar-l1-promo-badge`}>{index ? ` ${text}` : text}</span>
-              ))) ||
-            ``}
+          {description || (promoBadge && <PromoBadge data={promoBadge} />) || ``}
         </span>
         <span className="icon-arrow" />
       </BodyCopy>
