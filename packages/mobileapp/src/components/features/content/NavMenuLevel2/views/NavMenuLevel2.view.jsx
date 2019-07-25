@@ -1,19 +1,70 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { View, Text } from 'react-native';
+import { FlatList, ScrollView } from 'react-native';
+import { BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { TitleView, HeadingView, ItemView } from '../NavMenuLevel2.style';
 
-// Dummy placeholder component for navigation L2
-// This will be replaced with the L2 navigation data with the L2 story
+const keyExtractor = (_, index) => index.toString();
+
 const NavigationMenu = props => {
+  const renderItem = item => {
+    return (
+      <ItemView>
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs16"
+          text={item.item.categoryContent.name}
+          color="text.primary"
+        />
+      </ItemView>
+    );
+  };
   const {
     navigation: { getParam },
   } = props;
-  const l1NavKey = getParam('navigationKey');
+  const item = getParam('navigationObj');
 
+  const {
+    item: { categoryContent, subCategories },
+  } = item;
   return (
-    <View>
-      <Text>{l1NavKey}</Text>
-    </View>
+    <ScrollView>
+      <HeadingView>
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs16"
+          textAlign="center"
+          text={categoryContent.name}
+          color="text.primary"
+        />
+      </HeadingView>
+      <FlatList
+        data={subCategories['Lorem Ipsum']}
+        keyExtractor={keyExtractor}
+        renderItem={renderItem}
+      />
+      <TitleView>
+        <BodyCopy fontFamily="secondary" fontSize="fs16" text="Categories" color="text.primary" />
+      </TitleView>
+      <FlatList
+        data={subCategories.Categories}
+        keyExtractor={keyExtractor}
+        renderItem={renderItem}
+      />
+      <TitleView>
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs16"
+          text="Featured Shops"
+          color="text.primary"
+        />
+      </TitleView>
+      <FlatList
+        data={subCategories['Featured Shops']}
+        keyExtractor={keyExtractor}
+        renderItem={renderItem}
+      />
+    </ScrollView>
   );
 };
 

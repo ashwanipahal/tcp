@@ -122,6 +122,6 @@ export const getLocator = locator => {
  * @return {string} function returns new Url with the crop value
  */
 export const cropUrl = (url, crop) => {
-  const [urlPath, urlData] = url.split('/upload');
+  const [urlPath, urlData] = (url && url.split('/upload')) || ['', ''];
   return `${urlPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
 };

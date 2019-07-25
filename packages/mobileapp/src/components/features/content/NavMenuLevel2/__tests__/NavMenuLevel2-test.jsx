@@ -8,7 +8,7 @@ describe('NavMenuLevel2', () => {
     expect(NavMenuLevel2View).toBeDefined();
   });
 
-  it('should render correctly', () => {
+  xit('should render correctly', () => {
     const props = {
       navigation: {
         getParam: jest.fn(),

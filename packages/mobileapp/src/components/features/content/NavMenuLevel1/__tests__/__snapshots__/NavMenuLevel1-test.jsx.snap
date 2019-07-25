@@ -67,42 +67,48 @@ exports[`NavMenuLevel1 should render component when renderItem is called without
 exports[`NavMenuLevel1 should render correctly 1`] = `
 <Styled(FlatList)
   data={
-    Array [
-      Object {
-        "categoryContent": Object {
-          "description": "Sizes 4-141",
-          "groupIdentifier": "",
-          "id": "47511",
-          "isShortImage": false,
-          "isUnique": true,
-          "longDescription": "long description 1",
-          "mainCategory": Object {
-            "categoryImages": Array [
-              Object {
-                "alt": "Image Alt text attribute value",
-                "crop_d": "c_crop,g_face:center,q_auto:best,w_393",
-                "crop_m": "c_crop,g_face:center,q_auto:best,w_961",
-                "crop_t": "c_crop,g_face:center,q_auto:best,w_932",
-                "title": "Image Title attribute value",
-                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+    Object {
+      "data": Object {
+        "navigation": Object {
+          "nav": Array [
+            Object {
+              "categoryContent": Object {
+                "description": "Sizes 4-141",
+                "groupIdentifier": "",
+                "id": "47511",
+                "isShortImage": false,
+                "isUnique": true,
+                "longDescription": "long description 1",
+                "mainCategory": Object {
+                  "categoryImages": Array [
+                    Object {
+                      "alt": "Image Alt text attribute value",
+                      "crop_d": "c_crop,g_face:center,q_auto:best,w_393",
+                      "crop_m": "c_crop,g_face:center,q_auto:best,w_961",
+                      "crop_t": "c_crop,g_face:center,q_auto:best,w_932",
+                      "title": "Image Title attribute value",
+                      "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                    },
+                  ],
+                  "categoryLayouts": Array [],
+                  "contentId": "47511",
+                  "name": "GIRL",
+                  "promoBadges": Array [],
+                  "set": Array [],
+                  "sizesRanges": Array [
+                    Object {
+                      "text": "SIZES 4-161",
+                    },
+                  ],
+                },
+                "name": "Girl",
+                "productCount": 1853,
               },
-            ],
-            "categoryLayouts": Array [],
-            "contentId": "47511",
-            "name": "GIRL",
-            "promoBadges": Array [],
-            "set": Array [],
-            "sizesRanges": Array [
-              Object {
-                "text": "SIZES 4-161",
-              },
-            ],
-          },
-          "name": "Girl",
-          "productCount": 1853,
+            },
+          ],
         },
       },
-    ]
+    }
   }
   keyExtractor={[Function]}
   renderItem={[Function]}
