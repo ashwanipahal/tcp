@@ -24,7 +24,7 @@ class Footer extends React.Component {
 
   componentDidMount() {
     // TODO: Need to change this when proper solution for A/B test come
-    if (localStorage.getItem('showFooterTopCandidateA') === 'true') {
+    if (window.location.search.match('cand-a')) {
       this.setState({ showFooterTopCandidateA: true });
     } else {
       this.setState({ showFooterTopCandidateA: false });

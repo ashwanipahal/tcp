@@ -11,9 +11,7 @@ import SignupFormIntro from '../../SignupFormIntro';
 
 import signupWrapperStyle from '../EmailSignupModal.style';
 
-const FormName = 'EmailSignupModalForm';
-
-class SignupWrapper extends React.PureComponent {
+class EmailSignupModal extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,8 +33,8 @@ class SignupWrapper extends React.PureComponent {
   };
 
   closeModal = () => {
-    const { closeModal, clearEmailSignupForm, dispatch, reset } = this.props;
-    dispatch(reset(FormName));
+    const { closeModal, clearEmailSignupForm, reset } = this.props;
+    reset();
     clearEmailSignupForm();
     closeModal();
     this.setState({
@@ -176,14 +174,13 @@ class SignupWrapper extends React.PureComponent {
   }
 }
 
-SignupWrapper.propTypes = {
+EmailSignupModal.propTypes = {
   buttonConfig: PropTypes.shape({}),
   submitEmailSubscription: PropTypes.func,
   className: PropTypes.string,
   formViewConfig: PropTypes.shape({}).isRequired,
   confirmationViewConfig: PropTypes.shape({}).isRequired,
   clearEmailSignupForm: PropTypes.shape({}).isRequired,
-  dispatch: PropTypes.func.isRequired,
   closeModal: PropTypes.func,
   reset: PropTypes.func,
   handleSubmit: PropTypes.func,
@@ -195,7 +192,7 @@ SignupWrapper.propTypes = {
   submitSucceeded: PropTypes.bool,
 };
 
-SignupWrapper.defaultProps = {
+EmailSignupModal.defaultProps = {
   buttonConfig: {},
   submitEmailSubscription: () => {},
   closeModal: () => {},
@@ -210,17 +207,15 @@ SignupWrapper.defaultProps = {
   submitSucceeded: false,
 };
 
-// export default withStyles(SignupWrapper, signupWrapperStyle);
-
 export default withStyles(
   reduxForm({
-    form: FormName, // a unique identifier for this form
+    form: 'EmailSignupModalForm',
     initialValues: {
       signup: '',
     },
     asyncBlurFields: ['signup'],
-  })(SignupWrapper),
+  })(EmailSignupModal),
   signupWrapperStyle
 );
 
-export { SignupWrapper as SignupWrapperVanilla };
+export { EmailSignupModal as EmailSignupModalVanilla };

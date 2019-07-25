@@ -164,7 +164,7 @@ FooterTopSignUpForm.propTypes = {
   }),
   pristine: PropTypes.bool,
   invalid: PropTypes.bool,
-  asyncValidating: PropTypes.bool,
+  asyncValidating: PropTypes.oneOf(PropTypes.bool, PropTypes.string),
   submitSucceeded: PropTypes.bool,
   submitting: PropTypes.bool,
   subscription: PropTypes.shape({}),
