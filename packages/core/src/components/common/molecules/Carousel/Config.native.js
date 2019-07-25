@@ -14,9 +14,5 @@ const config = {
     playIconHeight: 30,
     playIconWidth: 30,
   },
-  URL_PATTERN: {
-    CATEGORY_LANDING: '/c/',
-    PRODUCT_LIST: '/p/',
-  },
 };
 export default config;

@@ -2,7 +2,7 @@ import { Dimensions, Linking } from 'react-native';
 import icons from '../config/icons';
 import locators from '../config/locators';
 
-import config from '../components/common/molecules/Carousel/Config.native';
+import config from '../components/common/atoms/Anchor/config.native';
 
 export const importGraphQLClientDynamically = module => {
   return new Promise((resolve, reject) => {
