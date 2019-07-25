@@ -68,6 +68,7 @@ const LayoutAbstractor = {
     Object.keys(moduleData).forEach(slotKey => {
       modulesObject[moduleData[slotKey].contentId] = {
         ...moduleData[slotKey].composites,
+        imagesPerSlide: moduleData[slotKey].imagesPerSlide,
       };
     });
     return modulesObject;

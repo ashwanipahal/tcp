@@ -8,8 +8,8 @@ import config from '../config';
 
 type Props = {
   className: string,
-  headerText: Object,
-  promoTextBanner: Object,
+  headerText: Array<Object>,
+  promoTextBanner: Array<Object>,
   masonryGrid: Object,
 };
 
@@ -52,13 +52,15 @@ class ModuleK extends React.PureComponent<Props, State> {
             }}
             className="module-k__header"
           >
-            <LinkText
-              {...headerText}
-              component="div"
-              fontSize="fs48"
-              fontWeight="black"
-              dataLocator="moduleK_header_text"
-            />
+            {headerText.length && (
+              <LinkText
+                headerText={headerText}
+                component="div"
+                fontSize="fs48"
+                fontWeight="black"
+                dataLocator="moduleK_header_text"
+              />
+            )}
           </Col>
           <Col
             colSize={{
@@ -75,7 +77,7 @@ class ModuleK extends React.PureComponent<Props, State> {
           >
             {outerPromoTextBanner && (
               <PromoTextBanner
-                {...outerPromoTextBanner}
+                promoTextBanner={outerPromoTextBanner}
                 fontSize="fs48"
                 dataLocator="moduleK_promobanner_text"
               />
@@ -106,10 +108,10 @@ class ModuleK extends React.PureComponent<Props, State> {
               {masonryGrid.map(({ promoTextBanner, mediaList, singleCTAButton }, index) => {
                 return (
                   <React.Fragment>
-                    {promoTextBanner && (
+                    {promoTextBanner.length && (
                       <PromoTextBanner
+                        promoTextBanner={promoTextBanner}
                         className="module-k__promoBanner"
-                        {...promoTextBanner}
                         fontSize="fs48"
                       />
                     )}

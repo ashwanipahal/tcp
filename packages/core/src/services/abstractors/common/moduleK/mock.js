@@ -5,70 +5,76 @@ export default {
     name: 'moduleK',
     type: 'module',
     composites: {
-      headerText: {
-        textLines: [
-          {
-            text: 'UNICORNS,',
-            style: 'moduleK__Header',
+      headerText: [
+        {
+          textItems: [
+            {
+              text: 'UNICORNS,',
+              style: 'moduleK__Header',
+            },
+            {
+              text: 'DINOS & MORE!',
+              style: 'moduleK__Header',
+            },
+          ],
+          link: {
+            url: 'https://www.childrensplace.com/us/c/girls-new-arrivals',
+            title: '',
+            target: '',
+            external: 0,
           },
-          {
-            text: 'DINOS & MORE!',
-            style: 'moduleK__Header',
+          icon: {
+            icon: 'heart',
+            placement: 'left|middle|right',
           },
-        ],
-        link: {
-          url: 'https://www.childrensplace.com/us/c/girls-new-arrivals',
-          title: '',
-          target: '',
-          external: 0,
         },
-        icon: {
-          icon: 'heart',
-          placement: 'left|middle|right',
-        },
-      },
-      // promoTextBanner: {
-      //   link: {
-      //     "url":"/banner/url",
-      //     "text":"",
-      //     "title":"",
-      //     "target":"",
-      //     "external":0,
-      //     "class":""
-      //   },
-      //   textItems: [
-      //     {
-      //       "text":"ALL DINOS",
-      //       "style":"style2"
+      ],
+      // promoTextBanner: [
+      //   {
+      //     link: {
+      //       "url":"/banner/url",
+      //       "text":"",
+      //       "title":"",
+      //       "target":"",
+      //       "external":0,
+      //       "class":""
       //     },
-      //     {
-      //       "text":"50% OFF",
-      //       "style":"text-black"
-      //     },
-      //   ]
-      // },
+      //     textItems: [
+      //       {
+      //         "text":"ALL DINOS",
+      //         "style":"style2"
+      //       },
+      //       {
+      //         "text":"50% OFF",
+      //         "style":"text-black"
+      //       },
+      //     ]
+      //   }
+      // ],
       masonryGrid: [
         {
-          promoTextBanner: {
-            link: {
-              url: '/banner/url',
-              text: '',
-              title: '',
-              target: '',
-              external: 0,
-              class: '',
+          promoTextBanner: [
+            {
+              link: {
+                url: '/banner/url',
+                text: '',
+                title: '',
+                target: '',
+                external: 0,
+                class: '',
+              },
+              textItems: [
+                {
+                  text: 'ALL DINOS',
+                  style: 'style2',
+                },
+                {
+                  text: '50% OFF',
+                  style: 'text-black',
+                },
+              ],
             },
-            textItems: [
-              {
-                text: 'ALL DINOS',
-                style: 'style2',
-              },
-              {
-                text: '50% OFF',
-                style: 'text-black',
-              },
-            ],
-          },
+          ],
           mediaList: [
             {
               url: '/static/images/K-210x210-1.jpg',
@@ -112,26 +118,28 @@ export default {
           },
         },
         {
-          promoTextBanner: {
-            link: {
-              url: '/banner/url',
-              text: '',
-              title: '',
-              target: '',
-              external: 0,
-              class: '',
+          promoTextBanner: [
+            {
+              link: {
+                url: '/banner/url',
+                text: '',
+                title: '',
+                target: '',
+                external: 0,
+                class: '',
+              },
+              textItems: [
+                {
+                  text: 'ALL DINOS',
+                  style: 'style2',
+                },
+                {
+                  text: '50% OFF',
+                  style: 'text-black',
+                },
+              ],
             },
-            textItems: [
-              {
-                text: 'ALL DINOS',
-                style: 'style2',
-              },
-              {
-                text: '50% OFF',
-                style: 'text-black',
-              },
-            ],
-          },
+          ],
           mediaList: [
             {
               url: '/static/images/K-210x210-1.jpg',
@@ -175,26 +183,28 @@ export default {
           },
         },
         {
-          promoTextBanner: {
-            link: {
-              url: '/banner/url',
-              text: '',
-              title: '',
-              target: '',
-              external: 0,
-              class: '',
+          promoTextBanner: [
+            {
+              link: {
+                url: '/banner/url',
+                text: '',
+                title: '',
+                target: '',
+                external: 0,
+                class: '',
+              },
+              textItems: [
+                {
+                  text: 'ALL DINOS',
+                  style: 'style2',
+                },
+                {
+                  text: '50% OFF',
+                  style: 'text-black',
+                },
+              ],
             },
-            textItems: [
-              {
-                text: 'ALL DINOS',
-                style: 'style2',
-              },
-              {
-                text: '50% OFF',
-                style: 'text-black',
-              },
-            ],
-          },
+          ],
           mediaList: [
             {
               url: '/static/images/K-210x210-1.jpg',
@@ -238,26 +248,28 @@ export default {
           },
         },
         {
-          promoTextBanner: {
-            link: {
-              url: '/banner/url',
-              text: '',
-              title: '',
-              target: '',
-              external: 0,
-              class: '',
+          promoTextBanner: [
+            {
+              link: {
+                url: '/banner/url',
+                text: '',
+                title: '',
+                target: '',
+                external: 0,
+                class: '',
+              },
+              textItems: [
+                {
+                  text: 'ALL DINOS',
+                  style: 'style2',
+                },
+                {
+                  text: '50% OFF',
+                  style: 'text-black',
+                },
+              ],
             },
-            textItems: [
-              {
-                text: 'ALL DINOS',
-                style: 'style2',
-              },
-              {
-                text: '50% OFF',
-                style: 'text-black',
-              },
-            ],
-          },
+          ],
           mediaList: [
             {
               url: '/static/images/K-210x210-1.jpg',
