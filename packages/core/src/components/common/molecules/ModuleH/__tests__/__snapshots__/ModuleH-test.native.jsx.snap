@@ -141,6 +141,7 @@ exports[`ModuleH component renders correctly 1`] = `
     height={425}
     onSnapToItem={[Function]}
     renderItem={[Function]}
+    vertical={true}
     width={750}
   />
   <Styled(View)>

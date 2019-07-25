@@ -15,7 +15,6 @@ type Props = {
 export class AddedToBagContainer extends React.Component<Props> {
   constructor(props) {
     super(props);
-
     this.closeModal = this.closeModal.bind(this);
   }
 
@@ -58,6 +57,13 @@ const mapStateToProps = state => {
         lbl_bossBanner_headingDefault: pickUpText,
         lbl_bossBanner_subHeadingDefault: simplyChooseText,
         lbl_bossBanner_noRush: noRushText,
+        lbl_cta_viewBag: viewBag,
+        lbl_cta_checkout: checkout,
+        lbl_info_price: price,
+        lbl_info_pointYouCanEarn: pointsYouCanEarn,
+        lbl_info_subTotal: bagSubTotal,
+        lbl_info_totalRewardsInBag: totalRewardsInPoints,
+        lbl_info_totalNextRewards: totalNextRewards,
       },
     },
   } = state.Labels;
@@ -71,6 +77,13 @@ const mapStateToProps = state => {
       pickUpText,
       simplyChooseText,
       noRushText,
+      viewBag,
+      checkout,
+      price,
+      pointsYouCanEarn,
+      bagSubTotal,
+      totalRewardsInPoints,
+      totalNextRewards,
     },
   };
 };
