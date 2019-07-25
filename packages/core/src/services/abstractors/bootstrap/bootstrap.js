@@ -2,6 +2,7 @@ import layoutAbstractor from './layout';
 import labelsAbstractor from './labels';
 import headerAbstractor from './header';
 import footerAbstractor from './footer';
+import navigationAbstractor from './navigation';
 import handler from '../../handler';
 import { defaultBrand, defaultChannel, defaultCountry } from '../../api.constants';
 
@@ -102,6 +103,7 @@ const bootstrap = async pages => {
     response.header = await headerAbstractor.processData(bootstrapData.header);
     response.footer = await footerAbstractor.processData(bootstrapData.footer);
     response.labels = await labelsAbstractor.processData(bootstrapData.labels);
+    response.navigation = await navigationAbstractor.getMock();
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);

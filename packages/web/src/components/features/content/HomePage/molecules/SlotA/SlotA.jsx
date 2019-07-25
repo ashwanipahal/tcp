@@ -24,7 +24,7 @@ const SlotA = dynamic({
       case 'moduleK':
         return <ModuleK {...props} />;
       default:
-        return null;
+        return <div>Module not defined</div>;
     }
   },
 });
