@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { CustomIconVanilla } from '../views/Icon.native';
-import { ICON_FONT_CLASS } from '../Icon.constants';
+import { ICON_FONT_CLASS, ICON_NAME } from '../Icon.constants';
 import IconStyle from '../Icon.style.native';
 
 describe('CustomButton', () => {
   let component;
   const props = {
-    name: 'FontAwesome',
+    name: ICON_NAME.chevronRight,
     size: 20,
     color: '#ff0000',
     children: {},

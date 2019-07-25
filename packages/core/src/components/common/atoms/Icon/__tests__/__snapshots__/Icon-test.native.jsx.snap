@@ -3,7 +3,7 @@
 exports[`CustomButton should render correctly 1`] = `
 <Icon
   allowFontScaling={false}
-  name="FontAwesome"
+  name="chevron-right"
   size={null}
   sizeVariation="medium"
   theme={
