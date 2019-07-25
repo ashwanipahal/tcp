@@ -77,6 +77,9 @@ const NavigationMenu = props => {
       item: {
         categoryContent,
         categoryContent: {
+          name,
+          description,
+          imageFirst,
           mainCategory: { categoryImages },
         },
       },
@@ -93,11 +96,11 @@ const NavigationMenu = props => {
             fontSize="fs28"
             fontWeight="black"
             textAlign="center"
-            text={categoryContent.name}
+            text={name}
             color="text.primary"
           />
           <Image
-            alt={categoryContent.name}
+            alt={name}
             source={Icon}
             maxWidth={16}
             height={26}
@@ -113,21 +116,16 @@ const NavigationMenu = props => {
         accessibilityRole="button"
         onPress={() => ShowL2Navigation(categoryContent)}
       >
-        {!categoryContent.imageFirst &&
-          renderTextBlock(categoryContent.name, categoryContent.description)}
+        {!categoryContent.imageFirst && renderTextBlock(name, description)}
         <Image
-          alt={categoryContent.mainCategory.categoryImages[0].alt}
+          alt={categoryImages[0].alt}
           source={{
-            uri: cropUrl(
-              categoryContent.mainCategory.categoryImages[0].url,
-              categoryContent.mainCategory.categoryImages[0].crop_m
-            ),
+            uri: cropUrl(categoryImages[0].url, categoryImages[0].crop_m),
           }}
           width={imageWidth}
           height={132}
         />
-        {!!categoryContent.imageFirst &&
-          renderTextBlock(categoryContent.name, categoryContent.description)}
+        {!!imageFirst && renderTextBlock(name, description)}
       </L1TouchableOpacity>
     );
   };
