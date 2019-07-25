@@ -3,17 +3,18 @@
  */
 
 import React from 'react';
+import { reduxForm } from 'redux-form';
 import LoginPageStyle from '../styles/LoginPage.style';
 import Button from '../../../../common/atoms/Button';
 import Grid from '../../../../common/molecules/Grid';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
-
+import ForgotPasswordView from '../../ForgotPassword/views/ForgotPassword.view';
+import LoginPageForm from './LoginPageForm.view';
 // @flow
 
 type Props = {
   getUserInfo: () => void,
-  onSubmit: Object => void,
   loginInfo: Object,
 };
 
@@ -21,8 +22,7 @@ class LoginView extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
-      password: '',
+      resetPassword: false,
     };
   }
 
@@ -37,34 +37,16 @@ class LoginView extends React.PureComponent<Props> {
     });
   };
 
-  onFormSubmit = e => {
-    e.preventDefault();
-    const { onSubmit } = this.props;
-    const { email, password } = this.state;
-    onSubmit({
-      storeId: '10151',
-      logonId1: email,
-      logonPassword1: password,
-      rememberCheck: true,
-      rememberMe: true,
-      requesttype: 'ajax',
-      reLogonURL: 'TCPAjaxLogonErrorView',
-      URL: 'TCPAjaxLogonSuccessView',
-      registryAccessPreference: 'Public',
-      calculationUsageId: -1,
-      createIfEmpty: 1,
-      deleteIfEmpty: '*',
-      fromOrderId: '*',
-      toOrderId: '.',
-      updatePrices: 0,
-      xCreditCardId: '',
-      userId: '-1002',
+  showForgotPasswordForm = () => {
+    this.setState({
+      resetPassword: true,
     });
   };
 
   /* eslint-disable */
   render() {
-    const { loginInfo } = this.props;
+    const { loginInfo, getUserInfo, onSubmit, onSubmitForgot } = this.props;
+    const { resetPassword } = this.state;
 
     if (Object.keys(loginInfo).length === 0) {
       return null;
@@ -87,63 +69,28 @@ class LoginView extends React.PureComponent<Props> {
               }}
             >
               <LoginPageStyle>
-                <h1>Login Page</h1>
-                {loginInfo.errorMessage && <p>{loginInfo.errorMessage}</p>}
-                {loginInfo.accountStatus === 'Enabled' && (
-                  <p>{`Welcome ${loginInfo.firstName} ${loginInfo.lastName}`}</p>
+                {
+                  <LoginPageForm
+                    onSubmit={onSubmit}
+                    loginInfo={loginInfo}
+                    getUserInfo={getUserInfo}
+                  />
+                }
+                {resetPassword && (
+                  <ForgotPasswordView
+                    onSubmitForgot={onSubmitForgot}
+                    loginInfo={loginInfo}
+                    getUserInfo={getUserInfo}
+                  />
                 )}
-                {loginInfo.accountStatus !== 'Enabled' && (
-                  <form onSubmit={this.onFormSubmit} noValidate>
-                    <Row className="marginBottom">
-                      <Col
-                        colSize={{
-                          large: 12,
-                          medium: 12,
-                          small: 12,
-                        }}
-                      >
-                        <label htmlFor="email">Email Id</label>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          value={this.state.email}
-                          onChange={this.changeHandler}
-                        />
-                      </Col>
-                    </Row>
-                    <Row className="marginBottom">
-                      <Col
-                        colSize={{
-                          large: 12,
-                          medium: 12,
-                          small: 12,
-                        }}
-                      >
-                        <label htmlFor="password">Password</label>
-                        <input
-                          type="password"
-                          id="password"
-                          name="password"
-                          value={this.state.password}
-                          onChange={this.changeHandler}
-                        />
-                      </Col>
-                    </Row>
-                    <Row className="marginBottom">
-                      <Col
-                        colSize={{
-                          large: 12,
-                          medium: 12,
-                          small: 12,
-                        }}
-                      >
-                        <Button type="submit" fullWidth buttonVariation="variable-width">
-                          Login
-                        </Button>
-                      </Col>
-                    </Row>
-                  </form>
+                {!resetPassword && (
+                  <Button
+                    type="button"
+                    onClick={this.showForgotPasswordForm}
+                    className="link-forgot"
+                  >
+                    Forgot password?
+                  </Button>
                 )}
               </LoginPageStyle>
             </Col>
@@ -154,4 +101,6 @@ class LoginView extends React.PureComponent<Props> {
   }
 }
 
-export default LoginView;
+export default reduxForm({
+  form: 'LoginView', // a unique identifier for this form
+})(LoginView);

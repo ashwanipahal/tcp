@@ -40,6 +40,12 @@ const endpoints = {
     method: 'get',
     relURI: '/api/v2/account/getRegisteredUserInfo',
   },
+
+  requestPassword: {
+    method: 'put',
+    relURI: '/api/v2/account/resetPassword',
+  },
+
   getAddressList: {
     method: 'get',
     relURI: '/api/v2/account/getAddressFromBook',
@@ -63,7 +69,7 @@ const endpoints = {
     baseURI: 'https://personator.melissadata.net',
   },
   global: {
-    baseURI: 'https://test4.childrensplace.com',
+    baseURI: 'https://test3.childrensplace.com',
   },
   setDefaultShippingAddress: {
     method: 'put',
