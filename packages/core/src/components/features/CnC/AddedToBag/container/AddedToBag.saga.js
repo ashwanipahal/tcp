@@ -31,7 +31,7 @@ export function* addToCartEcom({ payload }) {
     const { relURI, method } = endpoints.addProductToCart;
     const baseURI = endpoints.addProductToCart.baseURI || endpoints.global.baseURI;
     const res = yield call(fetchData, baseURI, relURI, params, method);
-    if (res.body) {
+    if (res.body && !res.body.error) {
       yield put(
         SetAddedToBagData({
           ...payload,
@@ -41,7 +41,52 @@ export function* addToCartEcom({ payload }) {
       );
       yield put(openAddedToBag());
     } else {
-      yield put(AddToCartError(res.error));
+      yield put(AddToCartError(res.error || res.body.error));
+    }
+  } catch (err) {
+    yield put(AddToCartError(err));
+  }
+}
+
+export function* addItemToCartBopis({ payload }) {
+  try {
+    const {
+      storeLocId,
+      isBoss,
+      quantity,
+      skuInfo: { skuId, variantId, variantNo },
+    } = payload;
+    const PICKUP_TYPE = {
+      boss: 'boss',
+      bopis: 'bopis',
+    };
+    const params = {
+      payload: {
+        storeLocId: storeLocId.toString(),
+        quantity: quantity.toString(),
+        catEntryId: skuId,
+        isRest: 'false',
+        pickupType: isBoss ? PICKUP_TYPE.boss : PICKUP_TYPE.bopis,
+        variantNo,
+        itemPartNumber: variantId,
+      },
+      langId: -1,
+      storeId: 10151,
+      catalogId: 10551,
+    };
+    const { relURI, method } = endpoints.addOrderBopisItem;
+    const baseURI = endpoints.addOrderBopisItem.baseURI || endpoints.global.baseURI;
+    const res = yield call(fetchData, baseURI, relURI, params, method);
+    if (res.body && !res.body.error) {
+      yield put(
+        SetAddedToBagData({
+          ...payload,
+          orderItemId: res.body.orderItemId && res.body.orderItemId[0],
+        })
+      );
+      yield put(openAddedToBag());
+    } else {
+      yield put(AddToCartError(res.error || res.body.error));
     }
   } catch (err) {
     yield put(AddToCartError(err));
@@ -50,6 +95,7 @@ export function* addToCartEcom({ payload }) {
 
 export function* AddedToBagSaga() {
   yield takeLatest(ADDEDTOBAG_CONSTANTS.ADD_TO_CART_ECOM, addToCartEcom);
+  yield takeLatest(ADDEDTOBAG_CONSTANTS.ADD_TO_CART_BOPIS, addItemToCartBopis);
 }
 
 export default AddedToBagSaga;

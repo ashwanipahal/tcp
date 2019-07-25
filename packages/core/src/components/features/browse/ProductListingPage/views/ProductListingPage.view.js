@@ -14,40 +14,56 @@ export class ProductListView extends React.Component {
     super(props);
     this.state = {
       quantity: 1,
+      storeId: 110715,
     };
     this.addToBagEcom = this.addToBagEcom.bind(this);
     this.selectChange = this.selectChange.bind(this);
-    this.addToBagBoss = this.addToBagBoss.bind(this);
-    this.addToBagBopis = this.addToBagBopis.bind(this);
+    this.addToBagBossBopis = this.addToBagBossBopis.bind(this);
   }
-
-  addToBagEcom(item) {
-    //console.log(item);
-    const { addToCartEcom } = this.props;
-    const { quantity } = this.state;
+  getPDPObject(item) {
     const pdpObj = parseProductFromAPI(item, item.uniqueId, false, getImgPath, false, false);
     const {
       product: { colorFitsSizesMap },
     } = pdpObj;
-    const { color, fits } = colorFitsSizesMap[0];
+    const { color, fits, hasFits } = colorFitsSizesMap[0];
     const selectedColor = color.name;
-    const selectedFit = fits[0].hasFits ? fits[0].fitName : '';
+    const selectedFit = hasFits ? fits[0].fitName : '';
     const selectedSize = fits[0].sizes[0].sizeName;
 
     const formData = {
       size: selectedSize,
       fit: selectedFit,
-      quantity,
       color: selectedColor,
       wishlistItemId: false,
     };
-    const cartItemInfo = getCartItemInfo(pdpObj.product, formData);
+    return { formData, product: pdpObj.product };
+  }
+
+  addToBagEcom(item) {
+    const { addToCartEcom } = this.props;
+    const { quantity } = this.state;
+    let { product, formData } = this.getPDPObject(item);
+    formData = {
+      ...formData,
+      quantity,
+    };
+    const cartItemInfo = getCartItemInfo(product, formData);
     addToCartEcom(cartItemInfo);
   }
 
-  addToBagBoss() {}
-
-  addToBagBopis() {}
+  addToBagBossBopis(item, isBoss) {
+    const { addItemToCartBopis } = this.props;
+    const { quantity, storeId } = this.state;
+    let { product, formData } = this.getPDPObject(item);
+    formData = {
+      ...formData,
+      quantity,
+      isBoss,
+      storeLocId: storeId,
+    };
+    const cartItemInfo = getCartItemInfo(product, formData);
+    addItemToCartBopis(cartItemInfo);
+  }
 
   selectChange(e, elem) {
     const val = e.target && e.target.value;
@@ -106,16 +122,19 @@ export class ProductListView extends React.Component {
                 <br />
                 <div className="product-store">
                   Please select a store
-                  <select onChange={e => this.selectChange(e, 'store')}>
-                    <option value="store 1">store 1</option>
-                    <option value="store 2">store 2</option>
-                    <option value="store 3">store 3</option>
-                    <option value="store 4">store 4</option>
+                  <select onChange={e => this.selectChange(e, 'storeId')}>
+                    <option value="110715">Newport Center 110715</option>
+                    <option value="110961">Union Square 110961</option>
+                    <option value="111287">Bergenline Ave 111287</option>
+                    <option value="111723">Ferry St Newark 111723</option>
+                    <option value="111202">Newark 111202</option>
+                    <option value="111616">Franklin Square Sc 111616</option>
+                    <option value="110945">The Mills At Jersey Gardens 110945</option>
                   </select>
                 </div>
                 <Button
                   className="product-button"
-                  onClick={() => this.addToBagBoss(item)}
+                  onClick={() => this.addToBagBossBopis(item, true)}
                   buttonVariation="fixed-width"
                   fullWidth
                 >
@@ -124,7 +143,7 @@ export class ProductListView extends React.Component {
                 <br />
                 <Button
                   className="product-button"
-                  onClick={() => this.addToBagBopis(item)}
+                  onClick={() => this.addToBagBossBopis(item, false)}
                   buttonVariation="fixed-width"
                   fullWidth
                 >

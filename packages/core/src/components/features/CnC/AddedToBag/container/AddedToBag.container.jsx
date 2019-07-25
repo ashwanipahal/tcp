@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToCartEcom, closeAddedToBag } from './AddedToBag.actions';
+import { closeAddedToBag } from './AddedToBag.actions';
 import { getAddedToBagData, isOpenAddedToBag } from './AddedToBag.selectors';
 import AddedToBag from '../views/AddedToBag.view';
 
@@ -36,11 +36,8 @@ export class AddedToBagContainer extends React.Component<Props> {
   }
 }
 
-const mapDispatchToProps = (dispatch: ({}) => void) => {
+export const mapDispatchToProps = (dispatch: ({}) => void) => {
   return {
-    addToCartEcom: payload => {
-      dispatch(addToCartEcom(payload));
-    },
     closeModal: () => {
       dispatch(closeAddedToBag());
     },
