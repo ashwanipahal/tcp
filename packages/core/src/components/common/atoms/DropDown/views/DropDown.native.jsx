@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Image, View, FlatList, Modal, Dimensions, TouchableOpacity } from 'react-native';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '../../../hoc/withStyles.native';
@@ -15,14 +16,24 @@ const downIcon = require('../../../../../assets/carrot-small-down.png');
 const upIcon = require('../../../../../assets/carrot-small-up.png');
 
 // @flow
-type Props = {
-  data: Array,
-  selectedValue: string,
-  onValueChange: () => void,
-  containerStyle: Object,
-};
 
 class DropDown extends React.PureComponent<Props> {
+  static propTypes = {
+    data: PropTypes.shape([]),
+    selectedValue: PropTypes.string,
+    onValueChange: PropTypes.func,
+    containerStyle: PropTypes.shape({}),
+  };
+
+  static defaultProps = {
+    data: [],
+    selectedValue: null,
+    onValueChange: null,
+    containerStyle: null,
+  };
+
+  static defaultP;
+
   constructor(props) {
     super(props);
     this.rowFrame = {
