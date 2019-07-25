@@ -8,14 +8,11 @@ const StyledCrossImage = styled.Image`
 
 const ImageWrapper = styled.View`
   display: flex;
-  flex: 0.1;
+  flex: 0.2;
 `;
 
 const StyledTouchableOpacity = styled.TouchableOpacity`
   align-items: flex-end;
 `;
 
-const SafeAreaViewStyle = styled.SafeAreaView`
-  margin-top: 30px;
-`;
-export { StyledCrossImage, ImageWrapper, StyledTouchableOpacity, SafeAreaViewStyle };
+export { StyledCrossImage, ImageWrapper, StyledTouchableOpacity };
