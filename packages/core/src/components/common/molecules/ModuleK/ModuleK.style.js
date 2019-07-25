@@ -16,7 +16,8 @@ const StyledCarousal = styled(Carousel)`
   }
 `;
 const StyledPromoTextBanner = styled(PromoTextBanner)`
-  .text-black {
+  .style3 {
+    color: ${props => props.theme.colorPalette.black};
     font-weight: ${props => props.theme.typography.fontWeights.black};
   }
 `;
