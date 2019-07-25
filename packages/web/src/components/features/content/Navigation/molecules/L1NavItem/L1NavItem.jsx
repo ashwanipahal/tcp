@@ -14,6 +14,7 @@ const L1NavItem = props => {
       mainCategory: { promoBadge },
     },
     className,
+    ...others
   } = props;
   const classForRedContent = id === '505518' ? `highlighted` : ``;
 
@@ -27,6 +28,7 @@ const L1NavItem = props => {
         fontWeight="semibold"
         color="text.hint"
         lineHeight="lh115"
+        {...others}
       >
         <span className={`nav-bar-l1-item-label ${classForRedContent}`}>{name}</span>
         <span className="nav-bar-l1-item-content">

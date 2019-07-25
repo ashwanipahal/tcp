@@ -1,26 +1,45 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import L1NavItem from '../../molecules/L1NavItem';
 import style from './NavBar.style';
+import L2Panel from '../../molecules/L2Panel/L2Panel';
 
 const NavBar = props => {
-  const { nav: navigationData, className } = props;
+  const { nav: navigationData, className, openL2Panel, closeL2Panel, panelData, openPanel } = props;
 
   return (
     <React.Fragment>
       <ul className={`${className} nav-bar-l1`}>
         {navigationData.map(navL1Item => (
-          <L1NavItem {...navL1Item} />
+          <L1NavItem
+            // onFocus={openL2Panel(navL1Item.subCategories)}
+            // onMouseOver={openL2Panel(navL1Item.subCategories)}
+            // onBlur={closeL2Panel}
+            // onMouseOut={closeL2Panel}
+            {...navL1Item}
+          />
         ))}
       </ul>
+      <L2Panel panelData={panelData} openPanel={openPanel} />
     </React.Fragment>
   );
 };
 
 NavBar.propTypes = {
-  nav: PropTypes.shape([]).isRequired,
+  nav: PropTypes.shape([]),
   className: PropTypes.string.isRequired,
+  openL2Panel: PropTypes.func.isRequired,
+  closeL2Panel: PropTypes.func.isRequired,
+  panelData: PropTypes.shape([]),
+  openPanel: PropTypes.bool,
+};
+
+NavBar.defaultProps = {
+  nav: [],
+  panelData: {},
+  openPanel: false,
 };
 
 export { NavBar as NavBarVanilla };
