@@ -3,7 +3,7 @@ const buildQuery = ({ slot, contentId }) => `
     contentId
     name
     type
-
+    imagesPerSlide
     composites {
       headerText {
         textItems {
