@@ -1,8 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DropDown Test should render correctly 1`] = `
-<View>
+<View
+  style={null}
+>
   <Styled(View)
+    containerStyle={null}
     data={
       Array [
         Object {
@@ -95,6 +98,7 @@ exports[`DropDown Test should render correctly 1`] = `
     >
       <Styled(View)
         onLayout={[Function]}
+        style={null}
       />
     </TouchableOpacity>
   </Component>
