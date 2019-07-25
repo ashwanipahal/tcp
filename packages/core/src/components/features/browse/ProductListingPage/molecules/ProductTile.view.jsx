@@ -4,6 +4,7 @@
 import React from 'react';
 import { Button } from '@tcp/core/src/components/common/atoms';
 import Col from '@tcp/core/src/components/common/atoms/Col';
+import endpoints from '../../../../../service/endpoint';
 
 class ProductTile extends React.Component {
   constructor(props: Props) {
@@ -28,6 +29,12 @@ class ProductTile extends React.Component {
   render() {
     const { quantity, storeId, brand } = this.state;
     const { item, addToBagEcom, addToBagBossBopis } = this.props;
+
+    const { colorFitsSizesMap, imagesByColor } = item;
+    const { color, fits, hasFits } = colorFitsSizesMap[0];
+    const selectedColor = color.name;
+    const selectedFit = hasFits ? fits[0].fitName : '';
+    const selectedSize = fits[0].sizes[0].sizeName;
     console.log('item', item);
     return (
       <Col
@@ -36,9 +43,16 @@ class ProductTile extends React.Component {
         className="product-item"
         colSize={{ small: 6, medium: 8, large: 4 }}
       >
-        <p className="product-name">{item.product_name}</p>
-        <p className="product-disc-price">{item.min_offer_price}</p>
-        <p className="product-original-price">{`Was ${item.min_list_price}`}</p>
+        <p className="product-name">{item.name}</p>
+        <p className="product-name">{item.shortDescription}</p>
+        <div class="product-image">
+          <img src={endpoints.global.baseURI + imagesByColor[selectedColor].basicImageUrl} />
+        </div>
+        <p className="product-name">selectedColor :{selectedColor}</p>
+        <p className="product-name">selectedFit :{selectedFit}</p>
+        <p className="product-name">selectedSize :{selectedSize}</p>
+        <p className="product-disc-price">${item.offerPrice}</p>
+        <p className="product-original-price">{`Was $${item.listPrice}`}</p>
         <div className="product-quantity">
           Please select a quantity
           <select onChange={e => this.selectChange(e, 'quantity')}>
@@ -69,7 +83,14 @@ class ProductTile extends React.Component {
         <br />
         <Button
           className="product-button"
-          onClick={() => addToBagEcom(item, quantity, brand)}
+          onClick={() =>
+            addToBagEcom(item, quantity, brand, {
+              size: selectedSize,
+              fit: selectedFit,
+              color: selectedColor,
+              wishlistItemId: false,
+            })
+          }
           buttonVariation="fixed-width"
           fullWidth
         >
@@ -90,7 +111,14 @@ class ProductTile extends React.Component {
         </div>
         <Button
           className="product-button"
-          onClick={() => addToBagBossBopis(item, true, quantity, storeId, brand)}
+          onClick={() =>
+            addToBagBossBopis(item, true, quantity, storeId, brand, {
+              size: selectedSize,
+              fit: selectedFit,
+              color: selectedColor,
+              wishlistItemId: false,
+            })
+          }
           buttonVariation="fixed-width"
           fullWidth
         >
@@ -99,12 +127,20 @@ class ProductTile extends React.Component {
         <br />
         <Button
           className="product-button"
-          onClick={() => addToBagBossBopis(item, false, quantity, storeId, brand)}
+          onClick={() =>
+            addToBagBossBopis(item, false, quantity, storeId, brand, {
+              size: selectedSize,
+              fit: selectedFit,
+              color: selectedColor,
+              wishlistItemId: false,
+            })
+          }
           buttonVariation="fixed-width"
           fullWidth
         >
           Add to BOPIS
         </Button>
+        <p className="product-name">productId: {item.productId}</p>
       </Col>
     );
   }

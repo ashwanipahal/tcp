@@ -14,28 +14,9 @@ export class ProductListView extends React.Component {
     this.addToBagEcom = this.addToBagEcom.bind(this);
     this.addToBagBossBopis = this.addToBagBossBopis.bind(this);
   }
-  getPDPObject(item) {
-    const pdpObj = parseProductFromAPI(item, item.uniqueId, false, getImgPath, false, false);
-    const {
-      product: { colorFitsSizesMap },
-    } = pdpObj;
-    const { color, fits, hasFits } = colorFitsSizesMap[0];
-    const selectedColor = color.name;
-    const selectedFit = hasFits ? fits[0].fitName : '';
-    const selectedSize = fits[0].sizes[0].sizeName;
 
-    const formData = {
-      size: selectedSize,
-      fit: selectedFit,
-      color: selectedColor,
-      wishlistItemId: false,
-    };
-    return { formData, product: pdpObj.product };
-  }
-
-  addToBagEcom(item, quantity, brand) {
+  addToBagEcom(product, quantity, brand, formData) {
     const { addToCartEcom } = this.props;
-    let { product, formData } = this.getPDPObject(item);
     formData = {
       ...formData,
       quantity,
@@ -45,9 +26,8 @@ export class ProductListView extends React.Component {
     addToCartEcom(cartItemInfo);
   }
 
-  addToBagBossBopis(item, isBoss, quantity, storeId, brand) {
+  addToBagBossBopis(product, isBoss, quantity, storeId, brand, formData) {
     const { addItemToCartBopis } = this.props;
-    let { product, formData } = this.getPDPObject(item);
     formData = {
       ...formData,
       quantity,
@@ -71,13 +51,23 @@ export class ProductListView extends React.Component {
         <h1>PLP Page</h1>
         <Row tagName="ul" className={className}>
           {allProducts &&
-            allProducts.map(item => (
-              <ProductTile
-                item={item}
-                addToBagEcom={this.addToBagEcom}
-                addToBagBossBopis={this.addToBagBossBopis}
-              />
-            ))}
+            allProducts.map(item => {
+              const pdpObj = parseProductFromAPI(
+                item,
+                item.uniqueId,
+                false,
+                getImgPath,
+                false,
+                false
+              );
+              return (
+                <ProductTile
+                  item={pdpObj.product}
+                  addToBagEcom={this.addToBagEcom}
+                  addToBagBossBopis={this.addToBagBossBopis}
+                />
+              );
+            })}
         </Row>
         <AddedToBagContainer />
       </ProductListingPageStyle>
