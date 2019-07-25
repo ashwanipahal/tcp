@@ -22,7 +22,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
     >
       <Styled(RichText)
         className="heading_text"
-        data-locator="email_promo_text"
+        dataLocator="email_promo_text"
         richTextHtml="GET $10 OFF BY SIGNING UP FOR EMAIL!"
       />
       <ReduxForm
@@ -34,6 +34,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         asyncValidate={[Function]}
         dataLocators={
           Object {
+            "errorDataLocator": "email_error_message",
             "inputField": "enter_email_text_field",
             "submitButton": "email_submit_btn",
           }
@@ -72,9 +73,27 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         touchOnChange={false}
         updateUnregisteredFields={false}
       />
-      <Styled(RichText)
-        richTextHtml="*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com."
-      />
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize={
+          Array [
+            "fs10",
+            "fs10",
+            "fs12",
+          ]
+        }
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="center"
+      >
+        <Styled(RichText)
+          richTextHtml="*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com."
+        />
+      </Styled(BodyCopy)>
       <div
         className="divider hide-in-medium-up"
       />
@@ -96,6 +115,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
     >
       <Styled(RichText)
         className="heading_text"
+        dataLocator="sms_promo_text"
         richTextHtml="GET $10 OFF BY SIGNING UP FOR SMS!"
       />
       <ReduxForm
@@ -105,6 +125,13 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
           ]
         }
         asyncValidate={[Function]}
+        dataLocators={
+          Object {
+            "errorDataLocator": "sms_error_message",
+            "inputField": "sms_field",
+            "submitButton": "sms_submit_btn",
+          }
+        }
         destroyOnUnmount={true}
         enableReinitialize={false}
         fieldName="footerTopSmsSignup"
@@ -144,9 +171,27 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         touchOnChange={false}
         updateUnregisteredFields={false}
       />
-      <Styled(RichText)
-        richTextHtml="*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com."
-      />
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize={
+          Array [
+            "fs10",
+            "fs10",
+            "fs12",
+          ]
+        }
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="center"
+      >
+        <Styled(RichText)
+          richTextHtml="*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com."
+        />
+      </Styled(BodyCopy)>
     </Styled(Col)>
     <div
       className="divider hide-in-large-up"

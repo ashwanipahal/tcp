@@ -1,7 +1,11 @@
 import { connect } from 'react-redux';
 import { validatePhoneNumber } from '@tcp/core/src/utils/formValidation/signupPhoneNumber';
 
-import { submitSmsSignup, clearSmsSignupForm } from './SmsSignupModal.actions';
+import {
+  submitSmsSignup,
+  clearSmsSignupForm,
+  toggleSmsSignupModal,
+} from './SmsSignupModal.actions';
 import SignupModalView from '../views/SmsSignupModal.view';
 
 export const mapDispatchToProps = dispatch => {
@@ -11,6 +15,9 @@ export const mapDispatchToProps = dispatch => {
     },
     clearSmsSignupForm: () => {
       dispatch(clearSmsSignupForm());
+    },
+    closeModal: () => {
+      dispatch(toggleSmsSignupModal({ isModalOpen: false }));
     },
     asyncValidate: (values, reduxFormDispatch, props) => {
       const { signupPhoneNumber } = values;

@@ -7,7 +7,7 @@ const SmsSignupReducer = (state = {}, action) => {
     case SMS_SIGNUP_CONSTANTS.SMS_SUBSCRIPTION_MODAL_TOGGLE:
       return { ...state, ...action.payload };
     case SMS_SIGNUP_CONSTANTS.CLEAR_SUBSCRIPTION_FORM:
-      return {};
+      return { ...state, subscription: {} };
     default:
       return state;
   }

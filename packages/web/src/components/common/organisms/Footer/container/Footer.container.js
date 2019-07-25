@@ -11,6 +11,7 @@ import {
 import {
   toggleSmsSignupModal,
   submitSmsSignup,
+  clearSmsSignupForm,
 } from '@tcp/web/src/components/common/molecules/SmsSignupModal/container/SmsSignupModal.actions';
 
 import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/EmailSmsSignup';
@@ -66,6 +67,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(submitEmailSignup(payload));
     },
     submitSmsSubscription: payload => {
+      dispatch(clearSmsSignupForm());
       dispatch(submitSmsSignup(payload));
     },
     /* Validate function for email signup redux-form */

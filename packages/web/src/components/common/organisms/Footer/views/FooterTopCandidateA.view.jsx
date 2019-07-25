@@ -1,7 +1,7 @@
 /* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, RichText, Col, Row } from '@tcp/core/src/components/common/atoms';
+import { Button, RichText, Col, Row, BodyCopy } from '@tcp/core/src/components/common/atoms';
 // reset
 import { reduxForm } from 'redux-form';
 import { Grid } from '@tcp/core/src/components/common/molecules';
@@ -68,7 +68,7 @@ class FooterTopCandidateA extends React.PureComponent {
           >
             <RichText
               className="heading_text"
-              data-locator="email_promo_text"
+              dataLocator="email_promo_text"
               richTextHtml={emailSignup.text}
             />
             <FooterTopEmailSignUpForm
@@ -80,11 +80,15 @@ class FooterTopCandidateA extends React.PureComponent {
               dataLocators={{
                 submitButton: 'email_submit_btn',
                 inputField: 'enter_email_text_field',
+                errorDataLocator: 'email_error_message',
               }}
               fieldName={emailSignupFieldName}
             />
 
-            <RichText richTextHtml={emailSignupLabels.termsTextLabel} />
+            {/* TODO: Zeplin has ["fs9","fs9", "fs13"], which is not in guidline using following for now  */}
+            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs10', 'fs10', 'fs12']}>
+              <RichText richTextHtml={emailSignupLabels.termsTextLabel} />
+            </BodyCopy>
             <div className="divider hide-in-medium-up" />
           </Col>
 
@@ -102,18 +106,32 @@ class FooterTopCandidateA extends React.PureComponent {
               small: true,
             }}
           >
-            <RichText className="heading_text" richTextHtml={smsSignup.text} />
+            <RichText
+              dataLocator="sms_promo_text"
+              className="heading_text"
+              richTextHtml={smsSignup.text}
+            />
             <FooterTopSmsSignUpForm
               labels={smsSignupLabels}
               fieldName={smsSignupFieldName}
-              fieldProps={{ normalize: normalizePhoneNumber }}
+              fieldProps={{
+                normalize: normalizePhoneNumber,
+              }}
               asyncValidate={smsSignUpAsyncValidate}
               onFormSubmit={submitSmsSubscription}
               subscription={smsSubscription}
               openSuccessModal={openSmsSignUpModal}
+              dataLocators={{
+                submitButton: 'sms_submit_btn',
+                inputField: 'sms_field',
+                errorDataLocator: 'sms_error_message',
+              }}
             />
 
-            <RichText richTextHtml={smsSignupLabels.termsTextLabel} />
+            {/* TODO: Zeplin has ["fs9","fs9", "fs13"], which is not in guidline using following for now  */}
+            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs10', 'fs10', 'fs12']}>
+              <RichText richTextHtml={smsSignupLabels.termsTextLabel} />
+            </BodyCopy>
           </Col>
           <div className="divider hide-in-large-up" />
           {/* ---------- SMS Signup ends here ------------ */}

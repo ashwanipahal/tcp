@@ -45,9 +45,10 @@ class SmsSignupModal extends React.PureComponent {
   };
 
   submitForm = () => {
-    const { handleSubmit, submitSmsSubscription } = this.props;
+    const { handleSubmit, submitSmsSubscription, clearSmsSignupForm } = this.props;
     handleSubmit(values => {
       return new Promise((resolve, reject) => {
+        clearSmsSignupForm();
         this.formSubmitPromise = { resolve, reject };
         submitSmsSubscription(values.signupPhoneNumber);
       }).catch(() => {
@@ -120,7 +121,7 @@ class SmsSignupModal extends React.PureComponent {
                         type="submit"
                         className="shop-button"
                         onClick={this.closeModal}
-                        dataLocator="shop_now_btnForm"
+                        dataLocator="shop_now_btn"
                       >
                         {formViewConfig.shopNowLabel}
                       </Button>
