@@ -6,7 +6,6 @@ const initialState = fromJS({
 });
 
 const ForgotPasswordReducer = (state = initialState, action) => {
-  debugger;
   switch (action.type) {
     case FORGOTPASSWORD_CONSTANTS.RESET_PASSWORD_SUCCESS:
       return state.set('showNotification', action.payload.state);

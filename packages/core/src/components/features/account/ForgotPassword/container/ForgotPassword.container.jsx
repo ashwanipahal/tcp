@@ -7,10 +7,8 @@ import { connect } from 'react-redux';
 import ForgotPasswordView from '../views/ForgotPassword.view';
 // @flow
 
-export class ForgotPasswordContainer extends React.Component<Props> {
-  render() {
-    return <ForgotPasswordView />;
-  }
-}
+export const ForgotPasswordContainer = () => {
+  return <ForgotPasswordView />;
+};
 
 export default connect()(ForgotPasswordContainer);

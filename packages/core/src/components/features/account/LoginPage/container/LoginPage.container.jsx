@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import { login, getUserInfo } from './LoginPage.actions';
 import { resetPassword } from '../../ForgotPassword/container/ForgotPassword.actions';
 import LoginView from '../views/LoginPage.view';
+import labels from '../../ForgotPassword/container/ForgotPassword.labels';
 import {
   getShowNotificationState,
   getResetEmailResponse,
@@ -40,6 +41,7 @@ export class LoginPageContainer extends React.PureComponent<Props> {
         getUserInfo={getUserInfoAction}
         showNotification={showNotification}
         resetResponse={resetResponse}
+        labels={labels}
       />
     );
   }

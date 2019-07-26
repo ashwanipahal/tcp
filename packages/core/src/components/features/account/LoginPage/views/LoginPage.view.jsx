@@ -55,8 +55,8 @@ class LoginView extends React.PureComponent<Props> {
       onSubmitForgot,
       showNotification,
       resetResponse,
+      labels,
     } = this.props;
-    debugger;
     const { resetPassword } = this.state;
 
     if (Object.keys(loginInfo).length === 0) {
@@ -95,6 +95,7 @@ class LoginView extends React.PureComponent<Props> {
                     showNotification={showNotification}
                     showForgotPasswordForm={this.showForgotPasswordForm}
                     resetResponse={resetResponse}
+                    labels={labels}
                   />
                 )}
                 {!resetPassword && (

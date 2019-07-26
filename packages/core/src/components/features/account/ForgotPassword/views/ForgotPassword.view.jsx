@@ -20,6 +20,7 @@ type Props = {
   showNotification: any,
   showForgotPasswordForm: any,
   resetResponse: any,
+  labels: any,
 };
 
 type State = {
@@ -50,11 +51,12 @@ class ForgotPasswordView extends React.Component<Props, State> {
 
   onBackClick = () => {
     const { showForgotPasswordForm } = this.props;
+
     showForgotPasswordForm();
   };
 
   render() {
-    const { pristine, className, showNotification, resetResponse } = this.props;
+    const { pristine, className, showNotification, resetResponse, labels } = this.props;
     const errorObject = resetResponse && resetResponse.get('errors');
     const { email } = this.state;
     return (
@@ -62,12 +64,11 @@ class ForgotPasswordView extends React.Component<Props, State> {
         <Button type="button" onClick={this.onBackClick} className="link-forgot">
           Back to Login In
         </Button>
-        {/* showNotification : {showNotification ? 'true' : 'false'} */}
-        {errorObject && (
+        {errorObject && !showNotification && (
           <Notification
             status="error"
             colSize={{ large: 11, medium: 7, small: 6 }}
-            message={errorObject.getIn(['0', 'errorMessage'])}
+            message={labels.FORGOT_PASSWORD_USER_NOT_AVAILABLE}
           />
         )}
 
@@ -89,11 +90,10 @@ class ForgotPasswordView extends React.Component<Props, State> {
                     color="black"
                     fontWeight="black"
                   >
-                    Check your email
+                    {labels.FORGOT_PASSWORD_CHECK_MAIL}
                   </BodyCopy>
                   <BodyCopy fontFamily="primary" fontSize="fs12" textAlign="center" color="black">
-                    We’ve just sent you instructions to reset your password. Didn’t get your email?
-                    Check your spam or click here to contact customer service.
+                    {labels.FORGOT_PASSWORD_HEADING}
                   </BodyCopy>
                 </Col>
               </Row>
@@ -131,10 +131,20 @@ class ForgotPasswordView extends React.Component<Props, State> {
                     type="submit"
                     buttonVariation="fixed-width"
                   >
-                    Reset Password
+                    {labels.FORGOT_PASSWORD_RESET_PASSWORD}
                   </Button>
                 </Col>
               </Row>
+            )}
+            {showNotification && (
+              <Button
+                fill="BLUE"
+                type="button"
+                onClick={this.onBackClick}
+                buttonVariation="fixed-width"
+              >
+                {labels.FORGOT_PASSWORD_RETURN_LOGIN}
+              </Button>
             )}
           </Grid>
         </form>

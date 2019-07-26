@@ -21,7 +21,6 @@ class LoginPageForm extends React.PureComponent<Props> {
     this.state = {
       email: '',
       password: '',
-      resetPassword: false,
     };
   }
 
@@ -64,9 +63,6 @@ class LoginPageForm extends React.PureComponent<Props> {
   /* eslint-disable */
   render() {
     const { loginInfo } = this.props;
-    debugger;
-    const { resetPassword } = this.state;
-
     if (Object.keys(loginInfo).length === 0) {
       return null;
     }
