@@ -3,7 +3,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { initActions } from '../components/features/content/HomePage/container/HomePage.actions';
 /* eslint-disable */
-import fetch from 'superagent';
+import superagent from 'superagent';
 
 const DOMAIN = '.childrensplace.com';
 const TEMP_CART_ITEM_COUNT = 'tempcartItemsCount';
@@ -107,11 +107,13 @@ class CookiesTestView extends React.Component {
     });
 
     console.log(
-      '== HITTING URL : ',
+      '== Super Agent used HITTING URL : ',
       'https://' + this.state.targetDomain + '/api/v2/appconfig/navigateXHR'
     );
 
-    const req = fetch.post('https://' + this.state.targetDomain + '/api/v2/appconfig/navigateXHR');
+    const req = superagent.post(
+      'https://' + this.state.targetDomain + '/api/v2/appconfig/navigateXHR'
+    );
     req
       .set('Content-Type', 'application/json')
       .set(
