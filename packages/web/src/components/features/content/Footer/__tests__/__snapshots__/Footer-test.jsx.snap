@@ -4,7 +4,7 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
 <footer
   className="footer-class"
 >
-  <Styled(FooterTopCandidateB)
+  <Styled(FooterTopCandidateA)
     className="footer-class"
     copyrightText=""
     legalLinks={Array []}
@@ -115,7 +115,7 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
 
 exports[`Footer component Footer component renders correctly without props 1`] = `
 <footer>
-  <Styled(FooterTopCandidateB)
+  <Styled(FooterTopCandidateA)
     copyrightText=""
     legalLinks={Array []}
     navLinks={Array []}

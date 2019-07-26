@@ -20,16 +20,16 @@ class Footer extends React.Component {
     super(props);
 
     this.state = {
-      showFooterTopCandidateA: false,
+      showFooterTopCandidateB: false,
     };
   }
 
   componentDidMount() {
     // TODO: Need to change this when proper solution for A/B test come
-    if (window.location.search.match('cand-a')) {
-      this.setState({ showFooterTopCandidateA: true });
+    if (window.location.search.match('cand-b')) {
+      this.setState({ showFooterTopCandidateB: true });
     } else {
-      this.setState({ showFooterTopCandidateA: false });
+      this.setState({ showFooterTopCandidateB: false });
     }
   }
 
@@ -46,14 +46,14 @@ class Footer extends React.Component {
       emailSignup,
       smsSignup,
     } = props;
-    const { showFooterTopCandidateA } = this.state;
+    const { showFooterTopCandidateB } = this.state;
 
     return (
       <footer className={className}>
-        {showFooterTopCandidateA ? (
-          <FooterTopCandidateA {...props} />
-        ) : (
+        {showFooterTopCandidateB ? (
           <FooterTopCandidateB {...props} />
+        ) : (
+          <FooterTopCandidateA {...props} />
         )}
         <EmailSignupModal buttonConfig={emailSignup} />
         <SmsSignupModal buttonConfig={smsSignup} />
