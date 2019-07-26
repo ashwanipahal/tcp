@@ -183,7 +183,6 @@ const CarouselStyle = styled.div`
     left: 0;
     width: 20px;
     height: 20px;
-    content: '•';
     text-align: center;
     opacity: 0.25;
     color: black;
