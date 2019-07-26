@@ -4,6 +4,7 @@ export default styled.div`
   .product-details {
     float: left;
     width: 37%;
+    margin-bottom: 5px;
   }
   .product-image {
     text-align: center;
@@ -14,12 +15,10 @@ export default styled.div`
   }
   .itemList {
     width: 36px;
-    height: 18px;
     font-size: 13px;
   }
   .itemDesc {
     width: 120px;
-    height: 18px;
     margin-left: 17px;
     font-size: 13px;
   }
@@ -28,6 +27,5 @@ export default styled.div`
   }
   .product-description {
     width: 210px;
-    height: 20px;
   }
 `;
