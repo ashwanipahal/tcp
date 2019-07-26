@@ -8,6 +8,7 @@ import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import { CardView } from './Card.view';
 import Router from 'next/router'; //eslint-disable-line
+import utils from '../../../../../utils';
 
 // @flow
 
@@ -27,7 +28,10 @@ type Props = {
 };
 
 const onAddGiftCardClick = () => {
-  Router.push('/account?id=add-gift-card', '/account/payment/add-gift-card');
+  utils.routerPush(
+    '/account?id=payment&subSection=add-gift-card',
+    '/account/payment/add-gift-card'
+  );
 };
 
 const GiftCardList = ({
