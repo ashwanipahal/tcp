@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image, View, FlatList, Modal, TouchableOpacity } from 'react-native';
+import { Image, View, Modal, TouchableOpacity } from 'react-native';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { getScreenHeight } from '../../../../../utils/utils.native';
 import withStyles from '../../../hoc/withStyles.native';
@@ -11,6 +11,7 @@ import {
   HeaderContainer,
   DropDownItemContainer,
   Separator,
+  FlatList,
 } from '../DropDown.style.native';
 
 const downIcon = require('../../../../../assets/carrot-small-down.png');

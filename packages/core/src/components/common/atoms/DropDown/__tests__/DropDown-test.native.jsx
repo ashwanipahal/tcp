@@ -65,14 +65,14 @@ describe('DropDown Test', () => {
       key: 'foo',
     };
     component.setState({ dropDownIsOpen: true });
-    const flatList = component.find('FlatList');
+    const flatList = component.find('Styled(FlatList)');
     expect(flatList).toHaveLength(1);
     expect(flatList.props().keyExtractor(item)).toBe('foo');
   });
 
   it('test flatlist ItemSeparatorComponent', () => {
     component.setState({ dropDownIsOpen: true });
-    const flatList = component.find('FlatList');
+    const flatList = component.find('Styled(FlatList)');
     expect(flatList).toHaveLength(1);
     expect(flatList.props().ItemSeparatorComponent()).not.toBeNull();
   });

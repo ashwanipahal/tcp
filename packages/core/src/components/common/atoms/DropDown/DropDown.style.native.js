@@ -45,4 +45,16 @@ const Separator = styled.View`
   height: 1px;
 `;
 
-export { DropDownStyle, HeaderContainer, Row, OverLayView, DropDownItemContainer, Separator };
+const FlatList = styled.FlatList`
+  flex: 1;
+`;
+
+export {
+  DropDownStyle,
+  HeaderContainer,
+  Row,
+  OverLayView,
+  DropDownItemContainer,
+  Separator,
+  FlatList,
+};
