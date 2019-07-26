@@ -9,7 +9,7 @@ type Props = {
   labels: any,
 };
 const getModifiedString = labels => {
-  const subHeading = `<span>${labels.simplyChooseText.replace(
+  const subHeading = `<span className="spanNoRush">${labels.simplyChooseText.replace(
     '#type',
     `<b>${labels.noRushText}</b>`
   )}</span>`;
