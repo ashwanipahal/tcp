@@ -29,6 +29,10 @@ const RoutesMap = [
     resolver: '/test',
     withoutCountryCode: true,
   },
+  {
+    path: '/cookiesTesting',
+    resolver: '/cookiesTesting',
+  },
 ];
 
 module.exports = RoutesMap;
