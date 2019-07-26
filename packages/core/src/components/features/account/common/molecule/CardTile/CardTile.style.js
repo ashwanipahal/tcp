@@ -68,6 +68,8 @@ const styles = css`
     width: 90px;
     height: 56px;
     margin-bottom: auto;
+    border: 1px solid #d8d8d8;
+    border-radius: 10px;
   }
   .cardTile__img {
     width: 100%;
