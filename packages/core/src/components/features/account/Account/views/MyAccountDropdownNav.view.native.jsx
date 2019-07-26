@@ -31,6 +31,13 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
   render() {
     const { navData, handleComponentChange } = this.props;
     const { dropDownItem } = this.state;
+    const dropDownStyle = {
+      height: 42,
+      border: 1,
+    };
+    const itemStyle = {
+      height: 49,
+    };
     return (
       <View {...this.props}>
         <DropDown
@@ -41,7 +48,8 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
             handleComponentChange(itemValue);
           }}
           variation="primary"
-          height="40px"
+          dropDownStyle={{ ...dropDownStyle }}
+          itemStyle={{ ...itemStyle }}
         />
       </View>
     );

@@ -1,11 +1,13 @@
 import styled, { css } from 'styled-components/native';
 
-const style = css`
-  height: ${props => props.height};
+const DropDownStyle = css`
+  height: ${props => props.dropDownStyle.height}px;
   ${props =>
     props.variation === 'primary'
-      ? `border: 1px solid ${props.theme.colors.BUTTON.WHITE.BORDER}`
-      : `border-bottom-width: 1px; border-bottom-color: ${props.theme.colors.BUTTON.WHITE.BORDER}`};
+      ? `border: ${props.dropDownStyle.border}px solid ${props.theme.colors.BUTTON.WHITE.BORDER}`
+      : `border-bottom-width: ${props.dropDownStyle.border}px; border-bottom-color: ${
+          props.theme.colors.BUTTON.WHITE.BORDER
+        }`};
   background-color: ${props =>
     props.variation === 'primary'
       ? props.theme.colorPalette.gray[500]
@@ -22,7 +24,6 @@ const Row = styled.View`
   ${props =>
     props.variation === 'primary' ? 'justify-content: center' : 'justify-content:space-between'};
   align-items: center;
-  padding: ${props => (props.variation === 'primary' ? '0' : '0 5px')};
 `;
 
 const OverLayView = styled.View`
@@ -34,9 +35,9 @@ const OverLayView = styled.View`
 const DropDownItemContainer = styled.TouchableHighlight.attrs({
   underlayColor: props => props.theme.colors.BUTTON.WHITE.ALT_FOCUS,
 })`
-  padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
-    ${props => props.theme.spacing.ELEM_SPACING.XL};
+  padding: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
   background-color: ${props => props.theme.colors.WHITE};
+  justify-content: ${props => (props.variation === 'primary' ? 'flex-start' : 'center')};
 `;
 
 const Separator = styled.View`
@@ -44,4 +45,4 @@ const Separator = styled.View`
   height: 1px;
 `;
 
-export { style, HeaderContainer, Row, OverLayView, DropDownItemContainer, Separator };
+export { DropDownStyle, HeaderContainer, Row, OverLayView, DropDownItemContainer, Separator };

@@ -1,14 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import navDataMobile from '@tcp/core/src/components/features/account/Account/MyAccountRoute.config.native';
 import { DropDownVanilla } from '../views/DropDown.native';
 
 describe('DropDown Test', () => {
   let component;
 
   const props = {
-    data: navDataMobile,
-    selectedValue: 'addressBookMobile',
+    data: [{ label: 'foo', value: 'foo' }],
+    selectedValue: 'foo',
     onValueChange: jest.fn(),
     variation: 'primary',
   };
@@ -26,22 +25,25 @@ describe('DropDown Test', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('test openDropDown', () => {
-    const props1 = {
-      data: navDataMobile,
-      selectedValue: 'addressBookMobile',
-      onValueChange: jest.fn(),
-      variation: 'secondary',
-    };
-    const component1 = shallow(<DropDownVanilla {...props1} />);
-    expect(component1).toMatchSnapshot();
-    component1.instance().openDropDown();
-    expect(component1.state('dropDownIsOpen')).toBe(true);
+  it('test openDropDown with primary variation ', () => {
+    props.variation = 'primary';
+    component = shallow(<DropDownVanilla {...props} />);
+    component.instance().openDropDown();
+    expect(component.state('dropDownIsOpen')).toBe(true);
   });
 
   it('test closeDropDown', () => {
-    component.instance().closeDropDown();
+    const instance = component.instance();
+    instance.closeDropDown();
     expect(component.state('dropDownIsOpen')).toBe(false);
+
+    instance.refs = {
+      rowMarker: {
+        getRenderedComponent: jest.fn(() => ({
+          focus: jest.fn,
+        })),
+      },
+    };
   });
 
   it('test dropDownLayout', () => {
@@ -50,7 +52,7 @@ describe('DropDown Test', () => {
         label: 'foo',
       },
     };
-    component.instance().dropDownLayout(obj);
+    expect(component.instance().dropDownLayout(obj)).not.toBeNull();
   });
 
   it('test onDropDownItemClick', () => {
