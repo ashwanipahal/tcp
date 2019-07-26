@@ -30,6 +30,14 @@ const endpoints = {
     method: API_METHODS.POST,
     URI: 'v2/account/modifyCreditCardDetails',
   },
+  getOrderDetails: {
+    method: API_METHODS.GET,
+    URI: 'v2/checkout/getOrderDetails',
+  },
+  updateMultiSelectItemsToRemove: {
+    method: 'PUT',
+    URI: 'v2/cart/deleteMultipleOrderItems',
+  },
 };
 
 export default endpoints;

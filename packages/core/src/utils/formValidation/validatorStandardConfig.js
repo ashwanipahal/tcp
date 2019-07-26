@@ -43,7 +43,7 @@ export const formValidationMessages = {
     zipcode: 'Please enter a valid zip code',
   },
   recaptchaToken: {
-    required: 'Please check the reCaptcha value',
+    required: 'Please check the recaptcha value',
   },
   cardNumber: {
     required: 'Please enter a valid credit card number',

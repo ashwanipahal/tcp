@@ -4,7 +4,10 @@ import { connect } from 'react-redux';
 import { getPlpProducts } from './ProductListingPage.actions';
 import { ProductListView } from '../views/ProductListingPage.view';
 import getExpensivePlpProducts from './ProductListingPage.selectors';
-import { addToCartEcom } from '../../../CnC/AddedToBag/container/AddedToBag.actions';
+import {
+  addToCartEcom,
+  addItemToCartBopis,
+} from '../../../CnC/AddedToBag/container/AddedToBag.actions';
 
 class ProductListingPageContainer extends React.Component {
   componentDidMount() {
@@ -12,8 +15,14 @@ class ProductListingPageContainer extends React.Component {
   }
 
   render() {
-    const { addToCartEcom } = this.props;
-    return <ProductListView data={this.props.products} addToCartEcom={addToCartEcom} />;
+    const { addToCartEcom, addItemToCartBopis } = this.props;
+    return (
+      <ProductListView
+        data={this.props.products}
+        addToCartEcom={addToCartEcom}
+        addItemToCartBopis={addItemToCartBopis}
+      />
+    );
   }
 }
 
@@ -30,6 +39,9 @@ function mapDispatchToProps(dispatch) {
     },
     addToCartEcom: payload => {
       dispatch(addToCartEcom(payload));
+    },
+    addItemToCartBopis: payload => {
+      dispatch(addItemToCartBopis(payload));
     },
   };
 }

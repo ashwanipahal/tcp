@@ -1,0 +1,512 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#ThemeWrapper.container should render correctly 1`] = `
+<ThemeProvider
+  appType="tcp"
+  theme={
+    Object {
+      "breakpoints": Object {
+        "keys": Array [
+          "xs",
+          "sm",
+          "lg",
+        ],
+        "large": "1024px",
+        "largeMax": "1439px",
+        "maxWidth": 1440,
+        "medium": "768px",
+        "mediumMax": "1023px",
+        "small": "375px",
+        "smallMax": "767px",
+        "values": Object {
+          "lg": 1024,
+          "sm": 768,
+          "xs": 0,
+        },
+        "xlarge": "1440px",
+      },
+      "colorPalette": Object {
+        "black": "#000",
+        "error": "#c8102e",
+        "gray": Object {
+          "300": "#f3f3f3",
+          "500": "#d8d8d8",
+          "600": "#9b9b9b",
+          "700": "#575757",
+          "800": "#595959",
+          "900": "#1a1a1a",
+        },
+        "green": Object {
+          "300": "#7dc24c",
+          "400": "#4b742d",
+          "500": "#26762c",
+        },
+        "primary": Object {
+          "dark": "#3c7fb0",
+          "light": "#93c5ea",
+          "main": "#4b9fdd",
+        },
+        "secondary": Object {
+          "dark": "#c84747",
+          "light": "#f3d7d7",
+          "main": "#c84747",
+        },
+        "success": "#26762c",
+        "text": Object {
+          "disabled": "#d8d8d8",
+          "hint": "#9b9b9b",
+          "primary": "#1a1a1a",
+          "secondary": "#575757",
+        },
+        "white": "#fff",
+      },
+      "colors": Object {
+        "ACCORDION": Object {
+          "ACTIVE_HEADER": "#f7f7f7",
+          "COLLAPSE_EXPAND_ICON": "#9b9b9b",
+          "INACTIVE_HEADER": "#e5e5e5",
+          "TEXT": "#1a1a1a",
+        },
+        "ANCHOR": Object {
+          "GRAYED": "#9b9b9b",
+          "PRIMARY": "#1a1a1a",
+          "SECONDARY": "#2e6a91",
+          "TERTIARY": "#c84747",
+        },
+        "BLACK": "#000000",
+        "BORDER": Object {
+          "NORMAL": "#979797",
+        },
+        "BRAND": Object {
+          "BOYS": "#e76829",
+          "GIRLS": "#ce43a6",
+          "PRIMARY": "#4b9fdd",
+        },
+        "BUTTON": Object {
+          "BLUE": Object {
+            "ALT_FOCUS": "#1f4862",
+            "ALT_HOVER": "#1f4862",
+            "BORDER": "#2e6a91",
+            "FOCUS": "#1f4862",
+            "HOVER": "#1f4862",
+            "NORMAL": "#2e6a91",
+            "TEXT": "#fff",
+          },
+          "RED": Object {
+            "ALT_FOCUS": "#e19999",
+            "ALT_HOVER": "#e19999",
+            "BORDER": "#c84747",
+            "FOCUS": "#e19999",
+            "HOVER": "#f3d7d7",
+            "NORMAL": "#ffffff",
+            "TEXT": "#c84747",
+          },
+          "WHITE": Object {
+            "ALT_FOCUS": "#e2ecf3",
+            "ALT_HOVER": "#f2f9fe",
+            "BORDER": "#979797",
+            "FOCUS": "#d8d8d8",
+            "HOVER": "#f3f3f3",
+            "NORMAL": "#ffffff",
+            "TEXT": "#4a4a4a",
+          },
+        },
+        "BUTTON_HOVER": "rgba(24, 24, 24, 0.8)",
+        "CHECKBOX": Object {
+          "BORDER": "#575757",
+          "CHECKED_BORDER": "#2e6a91",
+          "TICK_COLOR": "#fff",
+        },
+        "COUNT_ICON_DISABLE": "rgba(0, 0, 0, 0.3)",
+        "EMPTY_CART_BOX": "rgba(0, 0, 0, 0.07)",
+        "FOOTER": Object {
+          "DIVIDER": "#c3c3c3",
+        },
+        "MODAL_OVERLAY": "rgba(0, 0, 0, 0.6)",
+        "NOTIFICATION": Object {
+          "ERROR": "#c8102e",
+          "SUCCESS": "#26762c",
+        },
+        "PRIMARY": Object {
+          "BLUE": "#2e6a91",
+          "COLOR1": "#edf5fb",
+          "COLOR2": "#dbebf8",
+          "DARK": "#1a1a1a",
+          "GRAY": "#9b9b9b",
+          "GREEN": "#7dc24c",
+          "LIGHTGRAY": "#d8d8d8",
+          "NAVY": "#24465e",
+          "PALEBLUE": "#ebf7ff",
+          "PALEGRAY": "#f3f3f3",
+        },
+        "PROMO": Object {
+          "FUCHSIA": "#ff3db4",
+          "PURPLE": "#b976cc",
+          "RED": "#ED0505",
+          "YELLOW": "#F6D343",
+        },
+        "TEXT": Object {
+          "BLUE": "#2e6a91",
+          "DARK": "#1a1a1a",
+          "DARKERBLUE": "#439ad4",
+          "DARKERGRAY": "#595959",
+          "DARKGRAY": "#575757",
+          "GRAY": "#9b9b9b",
+          "GREEN": "#7dc24c",
+          "LIGHTGRAY": "#d8d8d8",
+          "PINK": "#e19999",
+          "RED": "#c84747",
+        },
+        "TEXTBOX": Object {
+          "BACKGROUND": "#f2f2f2",
+          "COLOR": "#1a1a1a",
+          "ERROR_BORDER": "#c84747",
+          "FOCUS_BORDER": "#439ad4",
+          "SUCCESS_BORDER": "#6dc927",
+        },
+        "WHITE": "#ffffff",
+      },
+      "fonts": Object {
+        "fontSize": Object {
+          "anchor": Object {
+            "large": 14,
+            "medium": 12,
+            "small": 10,
+            "xlarge": 16,
+          },
+          "body": Object {
+            "bodytext": Object {
+              "copy1": 10,
+              "copy10": 32,
+              "copy11": 36,
+              "copy12": 42,
+              "copy13": 48,
+              "copy2": 12,
+              "copy3": 14,
+              "copy4": 16,
+              "copy5": 18,
+              "copy6": 20,
+              "copy7": 22,
+              "copy8": 24,
+              "copy9": 28,
+            },
+            "large": Object {
+              "primary": 10,
+              "secondary": 13,
+              "tertiary": 11,
+            },
+            "small": Object {
+              "primary": 10,
+              "secondary": 12,
+              "tertiary": 11,
+            },
+          },
+          "button": Object {
+            "size": 14,
+          },
+          "heading": Object {
+            "large": Object {
+              "h1": 64,
+              "h2": 48,
+              "h3": 36,
+              "h4": 28,
+              "h5": 28,
+              "h6": 16,
+            },
+            "small": Object {
+              "h1": 48,
+              "h2": 32,
+              "h3": 24,
+              "h4": 18,
+              "h5": 18,
+              "h6": 16,
+            },
+          },
+          "listmenu": Object {
+            "large": 14,
+            "small": 13,
+          },
+          "nav": 15,
+          "promo1": Object {
+            "large": 15,
+            "small": 15,
+          },
+          "promo2": Object {
+            "large": 14,
+            "small": 11,
+          },
+          "textbox": 13,
+          "textbox_input": 16,
+        },
+        "fontWeight": Object {
+          "black": "900",
+          "bold": "700",
+          "light": "300",
+          "medium": "500",
+          "normal": "400",
+          "semiBold": "600",
+        },
+        "letterSpacing": Object {
+          "normal": "normal",
+          "wide": "2px",
+        },
+        "lineHeight": Object {
+          "medium": 1.15,
+          "normal": "normal",
+          "snug": 1,
+          "tight": 1.07,
+        },
+        "primaryFontBlackFamily": "Montserrat-Black, Arial, Helvetica, sans-serif",
+        "primaryFontFamily": "Montserrat, Arial, Helvetica, sans-serif",
+        "primaryFontSemilBoldFamily": "Montserrat-SemiBold , Arial, Helvetica, sans-serif",
+        "secondaryFontBlackFamily": "Nunito-Black, Arial, Helvetica, sans-serif",
+        "secondaryFontFamily": "Nunito, Arial, Helvetica, sans-serif",
+        "secondaryFontSemilBoldFamily": "Nunito-SemiBold, Arial, Helvetica, sans-serif",
+      },
+      "gridDimensions": Object {
+        "availableMaxWidthObj": Object {
+          "large": 998,
+          "medium": 740,
+          "small": 347,
+        },
+        "columnGutterObj": Object {
+          "large": 22,
+          "medium": 30,
+          "small": 19,
+        },
+        "columnWidthObj": Object {
+          "large": 63,
+          "medium": 66,
+          "small": 42,
+        },
+        "gridBreakPointsKeys": Array [
+          "small",
+          "medium",
+          "large",
+        ],
+        "gridOffsetObj": Object {
+          "large": 13,
+          "medium": 15,
+          "small": 14,
+        },
+        "numberOfColumnsObj": Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        },
+      },
+      "mediaQuery": Object {
+        "large": "(min-width: 1024px)",
+        "largeMax": "(max-width: 1439px)",
+        "largeOnly": "
+    (min-width: 1024px)
+    and
+    (max-width: 1439px)
+  ",
+        "medium": "(min-width: 768px)",
+        "mediumMax": "(max-width: 1023px)",
+        "mediumOnly": "
+    (min-width: 768px)
+    and
+    (max-width: 1023px)
+  ",
+        "small": "(min-width: 375px)",
+        "smallMax": "(max-width: 767px)",
+        "smallOnly": "
+    (min-width: 375px)
+    and
+    (max-width: 767px)
+  ",
+        "xlarge": "(min-width: 1440px)",
+      },
+      "opacity": Object {
+        "opacity": Object {
+          "high": 0.8,
+          "low": 0.3,
+          "medium": 0.5,
+        },
+      },
+      "spacing": Object {
+        "ELEM_SPACING": Object {
+          "LRG": "24px",
+          "MED": "16px",
+          "SM": "12px",
+          "XL": "32px",
+          "XS": "8px",
+          "XXL": "40px",
+          "XXS": "4px",
+          "XXXL": "48px",
+          "XXXS": "2px",
+        },
+        "LAYOUT_SPACING": Object {
+          "LRG": "64px",
+          "MED": "48px",
+          "SM": "32px",
+          "XL": "96px",
+          "XS": "24px",
+          "XXL": "160px",
+          "XXS": "16px",
+        },
+        "MODAL_WIDTH": Object {
+          "SMALL": "458px",
+        },
+      },
+      "typography": Object {
+        "fontSizes": Object {
+          "fs10": "10px",
+          "fs12": "12px",
+          "fs13": "13px",
+          "fs14": "14px",
+          "fs15": "15px",
+          "fs16": "16px",
+          "fs18": "18px",
+          "fs20": "20px",
+          "fs22": "22px",
+          "fs24": "24px",
+          "fs28": "28px",
+          "fs32": "32px",
+          "fs36": "36px",
+          "fs38": "38px",
+          "fs42": "42px",
+          "fs48": "48px",
+          "fs64": "64px",
+        },
+        "fontWeights": Object {
+          "black": "900",
+          "extrabold": "800",
+          "regular": "400",
+          "semibold": "600",
+        },
+        "fonts": Object {
+          "primary": "Montserrat",
+          "secondary": "Nunito",
+        },
+        "h1": Object {
+          "fontFamily": "primary",
+          "fontSize": Array [
+            "fs48",
+            "fs48",
+            "fs64",
+          ],
+          "fontWeight": "black",
+          "letterSpacing": "normal",
+          "lineHeight": "normal",
+        },
+        "h2": Object {
+          "fontFamily": "primary",
+          "fontSize": Array [
+            "fs42",
+            "fs42",
+            "fs48",
+          ],
+          "fontWeight": "black",
+          "letterSpacing": "normal",
+          "lineHeight": "normal",
+        },
+        "h3": Object {
+          "fontFamily": "primary",
+          "fontSize": Array [
+            "fs20",
+            "fs20",
+            "fs38",
+          ],
+          "fontWeight": "black",
+          "letterSpacing": Array [
+            "ls167",
+            "ls167",
+            "ls271",
+          ],
+          "lineHeight": "normal",
+        },
+        "h4": Object {
+          "fontFamily": "primary",
+          "fontSize": Array [
+            "fs20",
+            "fs20",
+            "fs36",
+          ],
+          "fontWeight": "semibold",
+          "letterSpacing": Array [
+            "ls222",
+            "ls222",
+            "ls257",
+          ],
+          "lineHeight": "normal",
+        },
+        "h5": Object {
+          "fontFamily": "primary",
+          "fontSize": Array [
+            "fs16",
+            "fs16",
+            "fs28",
+          ],
+          "fontWeight": "normal",
+          "letterSpacing": "normal",
+          "lineHeight": "normal",
+        },
+        "h6": Object {
+          "fontFamily": "secondary",
+          "fontSize": "fs16",
+          "fontWeight": "semibold",
+          "letterSpacing": "normal",
+          "lineHeight": "normal",
+        },
+        "letterSpacings": Object {
+          "ls167": "1.67px",
+          "ls222": "2.22px",
+          "ls257": "2.57px",
+          "ls271": "2.71px",
+          "normal": "normal",
+        },
+        "lineHeights": Object {
+          "lh107": "1.07",
+          "lh115": "1.15",
+          "normal": "normal",
+        },
+        "listMenu": Object {
+          "fontFamily": "secondary",
+          "fontSize": "fs14",
+          "fontWeight": "semibold",
+          "letterSpacing": "normal",
+          "lineHeight": Array [
+            "lh115",
+            "lh115",
+            "lh107",
+          ],
+        },
+        "nav": Object {
+          "fontFamily": "secondary",
+          "fontSize": "fs15",
+          "fontWeight": "semibold",
+          "letterSpacing": "normal",
+          "lineHeight": "normal",
+        },
+        "navMinified": Object {
+          "fontFamily": "secondary",
+          "fontSize": "fs13",
+          "fontWeight": "semibold",
+          "letterSpacing": "normal",
+          "lineHeight": Array [
+            "lh115",
+            "lh115",
+            "lh107",
+          ],
+        },
+        "textAligns": Object {
+          "center": "center",
+          "left": "left",
+        },
+      },
+      "zindex": Object {
+        "zDrawer": 1200,
+        "zLoader": 1000,
+        "zModal": 1300,
+        "zModule": 200,
+        "zOverlay": 900,
+      },
+    }
+  }
+>
+  <Component />
+</ThemeProvider>
+`;

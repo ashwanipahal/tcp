@@ -6,8 +6,8 @@ import AddEditCreditCardContainer from '../AddEditCreditCard/container/AddEditCr
 import AddGiftCardContainer from '../Payment/AddGiftCard/container/AddGiftCard.container'; //eslint-disable-line
 
 const AccountComponentMapping = {
-  addressBook: AddressBook,
-  accountOverview: AccountOverviewContainer,
+  'address-book': AddressBook,
+  'account-overview': AccountOverviewContainer,
   'add-new-address': AddEditAddress,
   'edit-address': AddEditAddress,
   'add-gift-card': AddGiftCardContainer,
