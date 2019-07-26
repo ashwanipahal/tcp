@@ -5,7 +5,7 @@ import endpoints from '../../../endpoints';
 /**
  * Abstractor layer for loading data from API for SMS and Email Signup
  */
-const ErrorReponse = { success: false, error: 'Invalid' };
+const ErrorResponse = { success: false, error: 'Invalid' };
 const SuccessResponse = { success: true };
 
 const Abstractor = {
@@ -44,11 +44,11 @@ const Abstractor = {
     ) {
       return SuccessResponse;
     }
-    return ErrorReponse;
+    return ErrorResponse;
   },
   processSmsSubscriptionData: res => {
     if (res.errors) {
-      return ErrorReponse;
+      return ErrorResponse;
     }
     return SuccessResponse;
   },
@@ -56,14 +56,14 @@ const Abstractor = {
     if (res.body && (res.body.status === 'valid' || res.body.status === 'accept_all')) {
       return SuccessResponse;
     }
-    return ErrorReponse;
+    return ErrorResponse;
   },
 
   handleValidationError: () => {
-    return ErrorReponse;
+    return ErrorResponse;
   },
   handleSubscriptionError: () => {
-    return ErrorReponse;
+    return ErrorResponse;
   },
 };
 export default Abstractor;
