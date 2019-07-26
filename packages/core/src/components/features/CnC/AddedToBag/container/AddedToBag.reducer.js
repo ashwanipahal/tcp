@@ -4,7 +4,7 @@ import ADDEDTOBAG_CONSTANTS from '../AddedToBag.constants';
 const initialState = fromJS({
   itemInfo: {},
   error: false,
-  isOpenAddedToBag: false
+  isOpenAddedToBag: false,
 });
 
 const AddedToBagReducer = (state = initialState, action) => {

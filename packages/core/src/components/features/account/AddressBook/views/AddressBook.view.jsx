@@ -11,6 +11,7 @@ import AddressListComponent from './AddressList.view';
 import EmptyAddressListComponent from './EmptyAddressList.view';
 import DeleteAddressModal from './DeleteAddressModal.view';
 import Notification from '../../../../common/molecules/Notification';
+import utils from '../../../../../utils';
 
 // @flow
 
@@ -34,8 +35,6 @@ export class AddressBook extends React.PureComponent<Props> {
     this.state = {
       selectedAddress: {},
     };
-
-
   }
 
   setSelectedAddress = address => {
@@ -43,9 +42,11 @@ export class AddressBook extends React.PureComponent<Props> {
   };
 
   onAddNNewAddressClick = () => {
-    Router.push('/account?id=add-new-address', '/account/address-book/add-new-address');
+    utils.routerPush(
+      '/account?id=address-book&subSection=add-new-address',
+      '/account/address-book/add-new-address'
+    );
   };
-
 
   render() {
     const {
@@ -92,9 +93,6 @@ export class AddressBook extends React.PureComponent<Props> {
             }}
             className="addressBook__addNewCtaContainer"
           >
-
-
-
             <Button
               onClick={this.onAddNNewAddressClick}
               buttonVariation="variable-width"

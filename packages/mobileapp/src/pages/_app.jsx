@@ -1,8 +1,8 @@
 import React from 'react';
 import { Platform, StatusBar, StyleSheet, View } from 'react-native';
-import { ThemeProvider } from 'styled-components/native';
-import theme from '@tcp/core/styles/themes/TCP';
 import { Provider } from 'react-redux';
+import { PropTypes } from 'prop-types';
+import ThemeWrapperHOC from '../components/common/hoc/ThemeWrapper.container';
 import AppNavigator from '../navigation/AppNavigator';
 import { initializeStore } from '../reduxStore/store/initializeStore';
 
@@ -14,8 +14,7 @@ const styles = StyleSheet.create({
   },
 });
 
-// Config from './brand_config';
-export default class App extends React.Component {
+export class App extends React.PureComponent {
   state = {
     // eslint-disable-next-line react/no-unused-state
     isLoadingComplete: false,
@@ -36,15 +35,26 @@ export default class App extends React.Component {
   };
 
   render() {
+    const { appType } = this.props;
     return (
-      <ThemeProvider theme={theme}>
-        <Provider store={this.store}>
+      <Provider store={this.store}>
+        <ThemeWrapperHOC appType={appType}>
           <View style={styles.container}>
             {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
             <AppNavigator />
           </View>
-        </Provider>
-      </ThemeProvider>
+        </ThemeWrapperHOC>
+      </Provider>
     );
   }
 }
+
+App.propTypes = {
+  appType: PropTypes.string,
+};
+
+App.defaultProps = {
+  appType: 'tcp',
+};
+
+export default App;

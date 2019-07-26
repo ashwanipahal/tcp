@@ -13,7 +13,7 @@ import { getAccountNavigationState } from './Account.selectors';
 type Props = {
   router: Object,
   getAccountNavigationAction: () => void,
-  accountNavigation: array<any>
+  accountNavigation: array<any>,
 };
 
 type State = {
@@ -31,21 +31,32 @@ type State = {
 export class Account extends React.PureComponent<Props, State> {
   constructor(props: Props) {
     super(props);
+    const activeComponent = utils.getObjectValue(props.router, 'account-overview', 'query', 'id');
     this.state = {
-      component: utils.getObjectValue(props.router, 'addressBook', 'query', 'id'),
+      componentToLoad:
+        utils.getObjectValue(props.router, undefined, 'query', 'subSection') || activeComponent,
+      activeComponent,
     };
   }
 
   componentDidMount() {
-    const { getAccountNavigationAction} = this.props;
+    const { getAccountNavigationAction } = this.props;
     getAccountNavigationAction();
   }
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
-    const nextComponent = utils.getObjectValue(nextProps.router, 'addressBook', 'query', 'id');
-    const prevComponent = prevState.component;
+    const nextActiveComponent = utils.getObjectValue(
+      nextProps.router,
+      'account-overview',
+      'query',
+      'id'
+    );
+    const nextComponent =
+      utils.getObjectValue(nextProps.router, undefined, 'query', 'subSection') ||
+      nextActiveComponent;
+    const prevComponent = prevState.componentToLoad;
     if (nextComponent !== prevComponent) {
-      return { component: nextComponent };
+      return { componentToLoad: nextComponent, activeComponent: nextActiveComponent };
     }
     return null;
   }
@@ -56,16 +67,16 @@ export class Account extends React.PureComponent<Props, State> {
    * @return   {[Object]} JSX of the component
    */
   render() {
-    const { component } = this.state;
+    const { componentToLoad, activeComponent } = this.state;
     const { router, accountNavigation } = this.props;
     let navData = [];
-    if(accountNavigation){
+    if (accountNavigation) {
       navData = accountNavigation.accountNav;
     }
     return (
       <MyAccountLayout
-        mainContent={AccountComponentMapping[component]}
-        active={component}
+        mainContent={AccountComponentMapping[componentToLoad]}
+        active={activeComponent}
         navData={navData}
         router={router}
       />
@@ -73,24 +84,23 @@ export class Account extends React.PureComponent<Props, State> {
   }
 }
 
-
-
 export const mapDispatchToProps = (dispatch: ({}) => void) => {
   return {
     getAccountNavigationAction: () => {
       dispatch(getAccountNavigationList());
-    }
+    },
   };
 };
 
 const mapStateToProps = state => {
   return {
-    accountNavigation: getAccountNavigationState(state)
+    accountNavigation: getAccountNavigationState(state),
   };
 };
 
-
-export default withRouter(connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Account));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Account)
+);

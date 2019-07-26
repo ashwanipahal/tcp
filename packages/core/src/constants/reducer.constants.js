@@ -13,10 +13,12 @@ export const ADDRESSBOOK_REDUCER_KEY = 'AddressBookReducer';
 export const ADDRESSBOOK_ACTION_PATTERN = '@@AddressBook-';
 export const PAYMENT_REDUCER_KEY = 'PaymentReducer';
 export const ADDED_TO_BAG_REDUCER_KEY = 'AddedToBagReducer';
+export const CART_REDUCER_KEY = 'CartReducer';
 export const ADD_GIFT_CARD_REDUCER_KEY = 'AddGiftCardReducer';
 export const PAYMENT_ACTION_PATTERN = '@@payment-';
 export const ADD_GIFT_CARD_ACTION_PATTERN = '@@AddGiftCard-';
 export const LOGINPAGE_ACTION_PATTERN = '@@Login-';
+export const CARTPAGE_REDUCER_KEY = 'CartPage';
 
 // acconut page reducer
 export const ACCOUNT_REDUCER_KEY = 'AccountReducer';
@@ -25,6 +27,9 @@ export const ACCOUNT_ACTION_PATTERN = '@@Account-';
 // Add address page reducer
 export const ADDEDITADDRESS_REDUCER_KEY = 'AddEditAddressReducer';
 export const ADDEDITADDRESS_ACTION_PATTERN = '@@Address-';
+
+// Add/Update Credit Card reducer
+export const ADDEDITCREDITCARD_REDUCER_KEY = 'AddEditCreditCardReducer';
 
 // ProductListing Page Reducer
 export const PRODUCTLISTINGPAGE_REDUCER_KEY = 'ProductListingPage';

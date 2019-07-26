@@ -2,8 +2,9 @@ import React from 'react';
 import { View } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import { Image } from '../../../atoms';
-import config from '../config';
-import { Touchable } from '../Carousel.native.style';
+import config from '../Config.native';
+import { getLocator } from '../../../../../utils/utils.native';
+import { Touchable, TouchableView, Icon, Container } from '../Carousel.native.style';
 
 /**
  * Import play pause image icons.
@@ -11,6 +12,12 @@ import { Touchable } from '../Carousel.native.style';
  */
 const playIcon = require('../../../../../assets/play.png');
 const pauseIcon = require('../../../../../assets/pause.png');
+
+// /**
+//  * Next & Prev icons listing.
+//  */
+const prevIcon = require('../../../../../assets/carrot-large-right.png');
+const nextIcon = require('../../../../../assets/carrot-large-left.png');
 
 // @flow
 type Props = {
@@ -21,6 +28,8 @@ type Props = {
   width: Number,
   height: Number,
   slideStyle: Object,
+  variation: String,
+  vertical: Boolean,
 };
 
 type State = {
@@ -35,7 +44,7 @@ const defaults = { ...config.CAROUSEL_APP_DEFAULTS };
 /**
  * Style for play pause icons.
  */
-const { playIconHeight, playIconWidth } = config.CAROUSEL_APP_CONFIG;
+const { playIconHeight, playIconWidth } = { ...config.CAROUSEL_APP_CONFIG };
 
 /**
  * @function Carousel component that creates carousel using
@@ -59,6 +68,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
    */
   getPlayButton() {
     const { autoplay } = this.state;
+
     return autoplay ? (
       <Touchable accessibilityRole="button" onPress={this.pause}>
         <Image source={pauseIcon} height={playIconHeight} width={playIconWidth} />
@@ -69,6 +79,17 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       </Touchable>
     );
   }
+
+  /**
+   * To manage the direction of the carousel
+   */
+
+  manageSlide = direction => {
+    if (direction === 'next') {
+      return this.carousel.snapToPrev();
+    }
+    return this.carousel.snapToNext();
+  };
 
   /**
    * @function play function enable autoplay for carousel
@@ -106,7 +127,40 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       onSnapToItem,
       renderItem,
       slideStyle,
+      variation,
+      vertical,
     } = this.props;
+
+    if (variation === 'show-arrow') {
+      return (
+        <Container>
+          <TouchableView
+            data-locator={getLocator('global_promobanner_right_arrow')}
+            onPress={() => this.manageSlide('next')}
+          >
+            <Icon source={nextIcon} />
+          </TouchableView>
+          <Carousel
+            data={data}
+            renderItem={renderItem}
+            sliderWidth={width}
+            itemWidth={width}
+            sliderHeight={height}
+            itemHeight={height}
+            {...defaults}
+            ref={c => {
+              this.carousel = c;
+            }}
+          />
+          <TouchableView
+            data-locator={getLocator('global_promobanner_left_arrowRight')}
+            onPress={() => this.manageSlide('prev')}
+          >
+            <Icon source={prevIcon} />
+          </TouchableView>
+        </Container>
+      );
+    }
 
     return (
       <View>
@@ -122,6 +176,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           sliderHeight={height}
           itemHeight={height}
           slideStyle={slideStyle}
+          vertical={vertical}
           {...defaults}
         />
         {defaultAutoplay && this.getPlayButton()}

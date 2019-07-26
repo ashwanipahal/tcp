@@ -10,6 +10,8 @@ type Props = {
   iconInactive: String,
   focused: Boolean,
   style?: Object,
+  isBrandIcon: Boolean,
+  logocomponent: Object,
 };
 
 /**
@@ -17,9 +19,9 @@ type Props = {
  * @param {*} props Props passed from Stack navigator screen
  */
 const NavBarIcon = (props: Props) => {
-  const { iconActive, iconInactive, style, focused } = props;
+  const { iconActive, iconInactive, style, focused, isBrandIcon, logocomponent } = props;
   const icon = focused ? iconActive : iconInactive;
-
+  if (isBrandIcon) return logocomponent;
   return (
     <View>
       <Image source={getIcon(icon)} style={style.icon} />

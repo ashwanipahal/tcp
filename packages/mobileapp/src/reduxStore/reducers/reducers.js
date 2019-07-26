@@ -5,6 +5,7 @@ import PaymentReducer from '@tcp/core/src/components/features/account/Payment/co
 import { ProductListingPageReducer } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.reducer';
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
+import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
 import {
   HEADER_REDUCER_KEY,
   LABEL_REDUCER_KEY,
@@ -14,10 +15,13 @@ import {
   PAYMENT_REDUCER_KEY,
   MODULES_REDUCER_KEY,
   ADD_GIFT_CARD_REDUCER_KEY,
+  ADDED_TO_BAG_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
 import AddGiftCardReducer from '@tcp/core/src/components/features/account/Payment/AddGiftCard/container/AddGiftCard.reducer';
+import ThemeWrapperReducer from '../../components/common/hoc/ThemeWrapper.reducer';
+import { THEME_WRAPPER_REDUCER_KEY } from '../../components/common/hoc/ThemeWrapper.constants';
 
 const filteredProductListingPageReducer = createFilteredReducer(
   ProductListingPageReducer,
@@ -25,6 +29,7 @@ const filteredProductListingPageReducer = createFilteredReducer(
 );
 
 export default combineReducers({
+  [THEME_WRAPPER_REDUCER_KEY]: ThemeWrapperReducer,
   [HEADER_REDUCER_KEY]: HeaderReducer,
   [LABEL_REDUCER_KEY]: LabelReducer,
   [LAYOUT_REDUCER_KEY]: LayoutReducer,
@@ -33,4 +38,5 @@ export default combineReducers({
   [PAYMENT_REDUCER_KEY]: PaymentReducer,
   [MODULES_REDUCER_KEY]: ModulesReducer,
   [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,
+  [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,
 });
