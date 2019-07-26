@@ -7,49 +7,49 @@ exports[`AccountNative View should render AccountNative Correctly 1`] = `
   navData={
     Array [
       Object {
-        "component": "accountOverviewMobile",
-        "displayName": "Account Overview",
         "id": "accountOverview",
+        "label": "ACCOUNT OVERVIEW",
+        "value": "accountOverviewMobile",
       },
       Object {
-        "component": "myPlaceRewardsMobile",
-        "displayName": "My Place Rewards",
         "id": "myPlaceRewards",
+        "label": "MY PLACE REWARDS",
+        "value": "myPlaceRewardsMobile",
       },
       Object {
-        "component": "myWalletPageMobile",
-        "displayName": "My Wallet",
         "id": "myWallet",
+        "label": "MY WALLET",
+        "value": "myWalletPageMobile",
       },
       Object {
-        "component": "earnExtraPointsPageMobile",
-        "displayName": "Earn Extra Points",
         "id": "earnExtraPoints",
+        "label": "EARN EXTRA POINTS",
+        "value": "earnExtraPointsPageMobile",
       },
       Object {
-        "component": "profileInformationMobile",
-        "displayName": "Profile Information",
         "id": "profileInformation",
+        "label": "PROFILE INFORMATION",
+        "value": "profileInformationMobile",
       },
       Object {
-        "component": "addressBookMobile",
-        "displayName": "Address Book",
         "id": "addressBook",
+        "label": "ADDRESS BOOK",
+        "value": "addressBookMobile",
       },
       Object {
-        "component": "paymentGiftCardsPageMobile",
-        "displayName": "Payment & Gift Cards",
         "id": "paymentGiftCards",
+        "label": "PAYMENT & GIFT CARDS",
+        "value": "paymentGiftCardsPageMobile",
       },
       Object {
-        "component": "myPreferencePageMobile",
-        "displayName": "My Preferences",
         "id": "myPreferences",
+        "label": "MY PREFERENCES",
+        "value": "myPreferencePageMobile",
       },
       Object {
-        "component": "myPlaceRewardsCCPageMobile",
-        "displayName": "My Place Rewards Credit Card",
         "id": "myPlaceRewardsCC",
+        "label": "MY PLACE REWARDS CREDIT CARD",
+        "value": "myPlaceRewardsCCPageMobile",
       },
     ]
   }

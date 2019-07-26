@@ -6,8 +6,7 @@ import LinkText from '../LinkText';
 let LinkTextComp;
 
 beforeEach(() => {
-  const wrapper = shallow(<LinkText {...mock.moduleK.composites.headerText} />).get(0);
-  LinkTextComp = shallow(wrapper);
+  LinkTextComp = shallow(<LinkText headerText={mock.moduleK.composites.headerText} />);
 });
 
 describe('Promo Text Banner component', () => {

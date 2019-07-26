@@ -43,6 +43,7 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>FontAwesome.ttf</string>
 		<string>Montserrat-Black.ttf</string>
 		<string>Montserrat-Bold.ttf</string>
 		<string>Montserrat.ttf</string>

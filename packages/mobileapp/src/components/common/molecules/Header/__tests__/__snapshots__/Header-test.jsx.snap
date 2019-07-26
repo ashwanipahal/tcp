@@ -12,6 +12,7 @@ exports[`Header Component Header should render correctly 1`] = `
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="semibold"
+        text=""
         textAlign="center"
       />
       <Styled(TouchableOpacity)
@@ -23,6 +24,7 @@ exports[`Header Component Header should render correctly 1`] = `
           fontFamily="secondary"
           fontSize="fs12"
           fontWeight="regular"
+          text=""
           textAlign="center"
         />
         <Styled(Image)
