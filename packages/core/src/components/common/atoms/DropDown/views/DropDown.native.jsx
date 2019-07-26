@@ -72,12 +72,18 @@ class DropDown extends React.PureComponent<Props> {
     };
   }
 
+  /**
+   * Open the drop down
+   */
   openDropDown = () => {
     this.setState({
       dropDownIsOpen: true,
     });
   };
 
+  /**
+   * Render drop down item
+   */
   dropDownLayout = ({ item }) => {
     const { variation, itemStyle } = this.props;
     const { label } = item;
@@ -95,6 +101,9 @@ class DropDown extends React.PureComponent<Props> {
     );
   };
 
+  /**
+   * Handle the drop down item click
+   */
   onDropDownItemClick = item => {
     const { label, value } = item;
     this.setState({
@@ -107,12 +116,18 @@ class DropDown extends React.PureComponent<Props> {
     if (onValueChange) onValueChange(value);
   };
 
+  /**
+   * Close the drop down
+   */
   closeDropDown = () => {
     this.setState({
       dropDownIsOpen: false,
     });
   };
 
+  /**
+   * Calculate the dimension and coordinates of drop down
+   */
   findRowDimensions = () => {
     if (this.rowMarker) {
       this.rowMarker.measure((x, y, width, height, pageX, pageY) => {
@@ -121,6 +136,9 @@ class DropDown extends React.PureComponent<Props> {
     }
   };
 
+  /**
+   * Calculate the dimension and coordinates of drop down item
+   */
   findDropDownDimensions = () => {
     if (this.overlayMarker) {
       this.overlayMarker.measure((x, y, width, height, pageX) => {

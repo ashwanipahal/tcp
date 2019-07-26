@@ -40,14 +40,6 @@ describe('DropDown Test', () => {
     const instance = component.instance();
     instance.closeDropDown();
     expect(component.state('dropDownIsOpen')).toBe(false);
-
-    instance.refs = {
-      rowMarker: {
-        getRenderedComponent: jest.fn(() => ({
-          focus: jest.fn,
-        })),
-      },
-    };
   });
 
   it('test dropDownLayout', () => {
