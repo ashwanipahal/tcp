@@ -16,4 +16,8 @@ const StylePicker = styled.Picker.attrs(() => ({ itemStyle: { height: 48 } }))`
   height: 48px;
 `;
 
-export { ParentContainer, StylePickerWrapper, StylePicker };
+const StyledWrapper = styled.View`
+  display: flex;
+`;
+
+export { ParentContainer, StylePickerWrapper, StylePicker, StyledWrapper };

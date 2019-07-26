@@ -1,6 +1,9 @@
 import React from 'react';
-import { View } from 'react-native';
-import { StylePicker, StylePickerWrapper } from '../styles/MyAccountLayout.style.native';
+import {
+  StylePicker,
+  StylePickerWrapper,
+  StyledWrapper,
+} from '../styles/MyAccountLayout.style.native';
 import withStyles from '../../../../common/hoc/withStyles';
 
 // @flow
@@ -32,7 +35,7 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
     const { navData, handleComponentChange } = this.props;
     const { dropDownItem } = this.state;
     return (
-      <View {...this.props}>
+      <StyledWrapper {...this.props}>
         <StylePicker
           selectedValue={dropDownItem}
           onValueChange={itemValue => {
@@ -48,7 +51,7 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
               );
             })}
         </StylePicker>
-      </View>
+      </StyledWrapper>
     );
   }
 }
