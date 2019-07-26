@@ -5,6 +5,9 @@ import endpoints from '../../../endpoints';
 /**
  * Abstractor layer for loading data from API for SMS and Email Signup
  */
+const ErrorReponse = { success: false, error: 'Invalid' };
+const SuccessResponse = { success: true };
+
 const Abstractor = {
   subscribeEmail: (baseURI, relURI, params = {}, method) => {
     return fetchData(baseURI, relURI, params, method)
@@ -39,28 +42,28 @@ const Abstractor = {
       res.body.redirecturl &&
       res.body.redirecturl.indexOf('/email-confirmation') !== -1
     ) {
-      return { success: true };
+      return SuccessResponse;
     }
-    return { error: 'invalid' };
+    return ErrorReponse;
   },
   processSmsSubscriptionData: res => {
     if (res.errors) {
-      return { error: 'invalid' };
+      return ErrorReponse;
     }
-    return { success: true };
+    return SuccessResponse;
   },
   processData: res => {
     if (res.body && (res.body.status === 'valid' || res.body.status === 'accept_all')) {
-      return { success: true };
+      return SuccessResponse;
     }
-    return { error: 'invalid' };
+    return ErrorReponse;
   },
 
   handleValidationError: () => {
-    return { error: 'invalid' };
+    return ErrorReponse;
   },
   handleSubscriptionError: () => {
-    return { error: 'invalid' };
+    return ErrorReponse;
   },
 };
 export default Abstractor;
