@@ -70,7 +70,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(clearSmsSignupForm());
       dispatch(submitSmsSignup(payload));
     },
-    /* Validate function for email signup redux-form */
+    /* Validate function for email signup redux-for. check asyncValidate of redux-form */
     emailSignUpAsyncValidate: (values, reduxFormDispatch, props) => {
       const { fieldName } = props;
       const email = values[fieldName];
@@ -90,7 +90,7 @@ const mapDispatchToProps = dispatch => {
           })
         : Promise.resolve();
     },
-
+    /* Validate function for sms signup redux-form; check asyncValidate of redux-form */
     smsSignUpAsyncValidate: (values, reduxFormDispatch, props) => {
       const { fieldName } = props;
 

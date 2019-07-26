@@ -44,6 +44,11 @@ class SmsSignupModal extends React.PureComponent {
     });
   };
 
+  /**
+   * Expect redux-form handleSubmit function on props. This can be called to manually and
+   * redux-form handleSubmit function has been used to submit form.
+   * More information, read redux-form doc handleSubmit prop.
+   */
   submitForm = () => {
     const { handleSubmit, submitSmsSubscription, clearSmsSignupForm } = this.props;
     handleSubmit(values => {
