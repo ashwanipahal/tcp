@@ -1,13 +1,6 @@
 import styled from 'styled-components';
 
 export default styled.div`
-  .productImgBrand {
-    float: left;
-    width: 20%;
-  }
-  .productInfo {
-    width: 74%;
-  }
   .product-details {
     float: left;
     width: 37%;
@@ -15,12 +8,9 @@ export default styled.div`
   .product-image {
     text-align: center;
     width: 100px;
-    height: 100px;
   }
   .brand-image {
     text-align: center;
-    width: 55px;
-    height: 20px;
   }
   .itemList {
     width: 36px;
@@ -35,7 +25,6 @@ export default styled.div`
   }
   .product-title {
     width: 203px;
-    height: 19px;
   }
   .product-description {
     width: 210px;

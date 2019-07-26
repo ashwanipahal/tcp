@@ -22,13 +22,13 @@ const endpoints = {
     JSONP: true,
     reqTimeout: 2000,
   },
-  addCreditCard: {
-    method: API_METHODS.POST,
-    URI: 'v2/account/addCreditCardDetails',
+  getOrderDetails: {
+    method: API_METHODS.GET,
+    URI: 'v2/checkout/getOrderDetails',
   },
-  updateCreditCard: {
-    method: API_METHODS.POST,
-    URI: 'v2/account/modifyCreditCardDetails',
+  updateMultiSelectItemsToRemove: {
+    method: 'PUT',
+    URI: 'v2/cart/deleteMultipleOrderItems',
   },
 };
 

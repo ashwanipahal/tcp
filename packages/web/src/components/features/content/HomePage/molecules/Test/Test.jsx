@@ -1,11 +1,18 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
+import EmailSignUpModal from '@tcp/web/src/components/common/molecules/EmailSignupModal/container';
+import { toggleEmailSignupModal as toggleEmailSignupModalAction } from '@tcp/web/src/components/common/molecules/EmailSignupModal/container/EmailSignupModal.actions';
 import DamImage from '@tcp/core/src/components/common/atoms/DamImage';
 import Heading from '@tcp/core/src/components/common/atoms/Heading';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import Button from '@tcp/core/src/components/common/atoms/Button';
+import RichText from '@tcp/core/src/components/common/atoms/RichText';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
+import FooterTopCandidateA from '../../../Footer/molecules/FooterTopCandidateA';
 
 function getHeadingColm(props) {
   return (
@@ -70,6 +77,24 @@ const BlackCol = styled(Col)`
   background-color: black;
 `;
 
+const EmailSignUpButton = ({ openModal }) => {
+  return (
+    <Button customStyle="shadow-button" title="Email Signup" onClick={openModal}>
+      <RichText richTextHtml="Email Signup" />
+    </Button>
+  );
+};
+const ConnectedEmailSignupButton = connect(
+  state => {
+    return state;
+  },
+  dispatch => ({
+    openModal: () => {
+      dispatch(toggleEmailSignupModalAction({ isModalOpen: true }));
+    },
+  })
+)(EmailSignUpButton);
+
 const Test = () => {
   const secondaryTextColor = 'text.secondary';
   const disabledTextColor = 'text.disabled';
@@ -78,14 +103,17 @@ const Test = () => {
   return (
     <div>
       <div>
-        <DamImage
-          imgData={{
-            alt: 'Dancing Boy',
-            url:
-              'v1561401513/ecom/assets/content/tcp/us/home/transform/home_modh_sample_qtylh0.png',
-          }}
-        />
+        <ConnectedEmailSignupButton />
+        <EmailSignUpModal buttonConfig={{ url: '/EMAIL_SIGNUP_MODAL', text: 'Email Signup' }} />
       </div>
+      <br />
+      <FooterTopCandidateA />
+      <DamImage
+        imgData={{
+          alt: 'Dancing Boy',
+          url: 'v1561401513/ecom/assets/content/tcp/us/home/transform/home_modh_sample_qtylh0.png',
+        }}
+      />
       <div>
         <Heading variant="h2">Dam Image with image configs</Heading>
         <DamImage
@@ -174,7 +202,6 @@ const Test = () => {
           {getHeadingColm({ textAlign: 'center', color: 'green.300', component: 'div' })}
         </Col>
       </Row>
-
       <Row>
         <Col colSize={colSizeConfig}>{getBodyColm({})}</Col>
         <Col colSize={colSizeConfig}>{getBodyColm({ textAlign: 'center' })}</Col>
@@ -184,7 +211,6 @@ const Test = () => {
           {getBodyColm({ fontWeight: 'black', textAlign: 'center' })}
         </Col>
       </Row>
-
       <Row>
         <Col colSize={colSizeConfig}>{getBodyColm({ color: secondaryTextColor })}</Col>
         <Col colSize={colSizeConfig}>{getBodyColm({ color: hintTextColor })}</Col>
@@ -193,7 +219,6 @@ const Test = () => {
           {getBodyColm({ color: 'white', fontWeight: 'black' })}
         </BlackCol>
       </Row>
-
       <Row>
         <Col colSize={colSizeConfig}>{getBodyColm({ fontFamily: 'secondary' }, 'P2')}</Col>
         <Col colSize={colSizeConfig}>
@@ -210,7 +235,6 @@ const Test = () => {
           )}
         </Col>
       </Row>
-
       <Row>
         <Col colSize={colSizeConfig}>
           {getBodyColm({ fontFamily: 'secondary', color: 'text.secondary' }, 'P2')}
@@ -235,7 +259,6 @@ const Test = () => {
           )}
         </BlackCol>
       </Row>
-
       <Row>Body text with another tag (div)</Row>
       <Row>
         <Col colSize={colSizeConfig}>

@@ -70,21 +70,30 @@ class AddGiftCardForm extends React.PureComponent<Props> {
             />
           </Col>
         </Row>
-
-        <Row fullBleed>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 4, medium: 2, large: 2 }}>
-            <Recaptcha
-              theme="light"
-              type="image"
-              size="normal"
-              tabindex="0"
-              verifyCallback={this.handleRecaptchaVerify}
-              expiredCallback={this.handleRecaptchaExpired}
-              dataLocator="gift-card-addcardrecaptchacheckbox"
+        <div>
+          <Row fullBleed>
+            <Col ignoreGutter={{ small: true }} colSize={{ small: 4, medium: 2, large: 2 }}>
+              <Recaptcha
+                theme="light"
+                type="image"
+                size="normal"
+                tabindex="0"
+                className="card__recaptcha"
+                verifyCallback={this.handleRecaptchaVerify}
+                expiredCallback={this.handleRecaptchaExpired}
+                dataLocator="gift-card-addcardrecaptchacheckbox"
+              />
+            </Col>
+          </Row>
+          <div>
+            <Field
+              component={TextBox}
+              type="hidden"
+              name="recaptchaToken"
+              className="card__hidden"
             />
-          </Col>
-          <Field component={TextBox} type="hidden" name="recaptchaToken" />
-        </Row>
+          </div>
+        </div>
 
         <Row fullBleed className="card__row">
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 8, large: 7 }}>
@@ -135,7 +144,9 @@ class AddGiftCardForm extends React.PureComponent<Props> {
   }
 }
 
-const validateMethod = createValidateMethod(getStandardConfig(['giftCardNumber', 'cardPin']));
+const validateMethod = createValidateMethod(
+  getStandardConfig(['giftCardNumber', 'cardPin', 'recaptchaToken'])
+);
 
 export default reduxForm({
   form: 'AddGiftCardForm', // a unique identifier for this form

@@ -1,15 +1,14 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation';
-import { Text } from 'react-native';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Header from '../components/common/molecules/Header';
-
-const styles = { margin: 10 };
-const Plp = () => <Text style={styles}>PLP Page</Text>;
+import NavMenuLevel1 from '../components/features/content/NavMenuLevel1';
+import NavMenuLevel2 from '../components/features/content/NavMenuLevel2';
 
 const PlpStack = createStackNavigator(
   {
-    Plp,
+    NavMenuLevel1,
+    NavMenuLevel2,
   },
   {
     defaultNavigationOptions: {
