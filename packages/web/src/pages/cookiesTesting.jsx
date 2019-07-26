@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { initActions } from '../../components/features/content/HomePage/container/HomePage.actions';
+import { initActions } from '../components/features/content/HomePage/container/HomePage.actions';
 /* eslint-disable */
 import fetch from 'superagent';
 
