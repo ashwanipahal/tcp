@@ -9,6 +9,20 @@ import { APICONFIG_REDUCER_KEY } from '../constants/reducer.constants';
 
 // setting the apiConfig subtree of whole state in variable; Do we really need it ?
 let apiConfig = null;
+const MONTH_SHORT_FORMAT = {
+  JAN: 'Jan',
+  FEB: 'Feb',
+  MAR: 'Mar',
+  APR: 'Apr',
+  MAY: 'May',
+  JUN: 'Jun',
+  JUL: 'Jul',
+  AUG: 'Aug',
+  SEP: 'Sep',
+  OCT: 'Oct',
+  NOV: 'Nov',
+  DEC: 'Dec',
+};
 
 export const isMobileApp = () => {
   return typeof navigator !== 'undefined' && navigator.product === 'ReactNative';
@@ -197,6 +211,39 @@ export const getIconCard = icon => {
   }
 };
 
+export const getCreditCardExpirationOptionMap = () => {
+  const expMonthOptionsMap = [
+    { id: '', displayName: 'MMM' },
+    { id: '1', displayName: MONTH_SHORT_FORMAT.JAN },
+    { id: '2', displayName: MONTH_SHORT_FORMAT.FEB },
+    { id: '3', displayName: MONTH_SHORT_FORMAT.MAR },
+    { id: '4', displayName: MONTH_SHORT_FORMAT.APR },
+    { id: '5', displayName: MONTH_SHORT_FORMAT.MAY },
+    { id: '6', displayName: MONTH_SHORT_FORMAT.JUN },
+    { id: '7', displayName: MONTH_SHORT_FORMAT.JUL },
+    { id: '8', displayName: MONTH_SHORT_FORMAT.AUG },
+    { id: '9', displayName: MONTH_SHORT_FORMAT.SEP },
+    { id: '10', displayName: MONTH_SHORT_FORMAT.OCT },
+    { id: '11', displayName: MONTH_SHORT_FORMAT.NOV },
+    { id: '12', displayName: MONTH_SHORT_FORMAT.DEC },
+  ];
+
+  const expYearOptionsMap = [];
+  const nowYear = new Date().getFullYear();
+  expYearOptionsMap.push({
+    id: '',
+    displayName: 'YYYY',
+  });
+  for (let i = nowYear; i < nowYear + 11; i += 1) {
+    expYearOptionsMap.push({ id: i.toString(), displayName: i.toString() });
+  }
+
+  return {
+    monthsMap: expMonthOptionsMap,
+    yearsMap: expYearOptionsMap,
+  };
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -208,6 +255,7 @@ export default {
   getLocator,
   createUrlSearchParams,
   buildUrl,
+  getCreditCardExpirationOptionMap,
   getSiteId,
   routerPush,
 };

@@ -15,7 +15,7 @@ exports[`ProductListingPage Component ProductListingPage should render correctly
   </Text>
   <FlatList
     className="product-wrapper"
-    data={Object {}}
+    data={Array []}
     disableVirtualization={false}
     horizontal={false}
     initialNumToRender={10}

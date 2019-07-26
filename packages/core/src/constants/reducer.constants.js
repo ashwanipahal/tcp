@@ -27,6 +27,8 @@ export const ADDEDITADDRESS_ACTION_PATTERN = '@@Address-';
 // set api config reducer
 export const APICONFIG_REDUCER_KEY = 'APIConfig';
 export const APICONFIG_ACTION_PATTERN = '@@APICONFIG-';
+// Add/Update Credit Card reducer
+export const ADDEDITCREDITCARD_REDUCER_KEY = 'AddEditCreditCardReducer';
 
 // ProductListing Page Reducer
 export const PRODUCTLISTINGPAGE_REDUCER_KEY = 'ProductListingPage';
