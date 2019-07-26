@@ -1,13 +1,11 @@
 import React from 'react';
-import { View, ScrollView } from 'react-native';
+import { View } from 'react-native';
 import AddressTile from './AddressTile.view.native';
 
 // @flow
-
 type Props = {
   addresses: Object[],
   labels: {},
-  className: string,
   onDefaultShippingAddressClick: Object,
   setDeleteModalMountState: Function,
   setSelectedAddress: Function,
@@ -16,14 +14,13 @@ type Props = {
 export const AddressList = ({
   addresses,
   labels,
-  className,
   onDefaultShippingAddressClick,
   setDeleteModalMountState,
   setSelectedAddress,
 }: Props) => {
   return (
     <View>
-      {addresses.map((address, index) => (
+      {addresses.map(address => (
         <AddressTile
           address={address}
           key={address.addressId}

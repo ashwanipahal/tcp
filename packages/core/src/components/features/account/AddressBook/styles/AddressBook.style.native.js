@@ -90,6 +90,7 @@ const AddressLinks = styled.View`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 const AddressLinkLeftMargin = styled.View`

@@ -19,43 +19,22 @@ type Props = {
   labels: {
     addNewAddressCTA: string,
   },
-  className: string,
   onDefaultShippingAddressClick: Object,
-  showUpdatedNotification: any,
-  showUpdatedNotificationOnModal: any,
-  onDeleteAddress: Function,
   deleteModalMountedState: false,
   setDeleteModalMountState: Function,
 };
 
 export class AddressView extends React.PureComponent<Props> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      selectedAddress: {},
-    };
-  }
-
-  setSelectedAddress = address => {
-    this.setState({ selectedAddress: address });
-  };
-
   onAddNNewAddressClick = () => {};
 
   render() {
     const {
       addresses,
       labels,
-      className,
       onDefaultShippingAddressClick,
-      showUpdatedNotification,
-      onDeleteAddress,
       deleteModalMountedState,
       setDeleteModalMountState,
-      showUpdatedNotificationOnModal,
     } = this.props;
-
-    const { selectedAddress } = this.state;
 
     return (
       <View {...this.props}>
@@ -64,7 +43,7 @@ export class AddressView extends React.PureComponent<Props> {
             <BodyCopy fontSize="fs16" fontWeight="extrabold" text={labels.addressBookHeading} />
           </StyledHeading>
           <UnderlineStyle />
-          {addresses.size == 0 && (
+          {addresses.size === 0 && (
             <NoAddressWrapper>
               <NoAddressHeading>
                 <BodyCopy
@@ -97,7 +76,7 @@ export class AddressView extends React.PureComponent<Props> {
               addresses={addresses}
               labels={labels}
               deleteModalMountedState={deleteModalMountedState}
-              setSelectedAddress={this.setSelectedAddress}
+              setSelectedAddress={() => {}}
               onDefaultShippingAddressClick={onDefaultShippingAddressClick}
               setDeleteModalMountState={setDeleteModalMountState}
             />

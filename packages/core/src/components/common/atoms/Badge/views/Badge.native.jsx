@@ -1,31 +1,31 @@
 // @flow
 import React from 'react';
-import { View, Text } from 'react-native';
 import withStyles from '../../../hoc/withStyles.native';
-import BodyCopy from '../../../atoms/BodyCopy';
-import styles from '../Badge.style.native';
+import BodyCopy from '../../BodyCopy';
+import { BadgeStyles, BadgeView, DefaultBadgeView } from '../Badge.style.native';
 
 // @flow
 
 type Props = {
   children: string,
-  className: string,
   showCheckmark: boolean,
   dataLocator: ?string,
 };
 
-const Badge = ({ children, className, showCheckmark, dataLocator }: Props): Node => (
-  <View>
+const Badge = ({ children, showCheckmark, dataLocator }: Props) => (
+  <React.Fragment>
     {showCheckmark && (
-      <View>
-        <Text>Yes</Text>
-      </View>
+      <DefaultBadgeView data-locator={dataLocator}>
+        <BodyCopy fontSize="fs10" fontWeight="regular" color="white" text={children} />
+      </DefaultBadgeView>
     )}
-    <View>
-      <Text>{children}</Text>
-    </View>
-  </View>
+    {!showCheckmark && (
+      <BadgeView data-locator={dataLocator}>
+        <BodyCopy fontSize="fs10" fontWeight="regular" text={children} />
+      </BadgeView>
+    )}
+  </React.Fragment>
 );
 
-export default withStyles(Badge, styles);
+export default withStyles(Badge, BadgeStyles);
 export { Badge as BadgeVanilla };
