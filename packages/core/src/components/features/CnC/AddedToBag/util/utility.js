@@ -23,9 +23,10 @@ export const getCartItemInfo = (productInfoOrWishlistItem, customizationInfo) =>
     };
   } else {
     // productInfoOrWishlistItem is a productInfo
-    const { color, fit, size, quantity, isBoss, storeLocId } = customizationInfo;
+    const { color, fit, size, quantity, isBoss, storeLocId, brand } = customizationInfo;
     const { name, colorFitsSizesMap, isGiftCard, imagesByColor } = productInfoOrWishlistItem;
     const currentSizeEntry = getMapSliceForSize(colorFitsSizesMap, color, fit, size);
+
     obj = {
       isGiftCard,
       productName: name,
@@ -46,6 +47,7 @@ export const getCartItemInfo = (productInfoOrWishlistItem, customizationInfo) =>
       quantity,
       isBoss,
       storeLocId,
+      brand,
       wishlistItemId:
         customizationInfo.wishlistItemId ||
         (productInfoOrWishlistItem.itemInfo && productInfoOrWishlistItem.itemInfo.itemId),
