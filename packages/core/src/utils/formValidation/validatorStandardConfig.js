@@ -45,6 +45,9 @@ export const formValidationMessages = {
   },
   giftCardNumber: 'Please enter a valid gift card number',
   cardPin: 'Please enter your gift card pin number',
+  Email: {
+    validEmail: 'wrong format',
+  },
 };
 
 export const formValidationRules = {
@@ -103,6 +106,9 @@ export const formValidationRules = {
     required: true,
     number: true,
     exactLength: 4,
+  },
+  Email: {
+    validEmail: true,
   },
 };
 

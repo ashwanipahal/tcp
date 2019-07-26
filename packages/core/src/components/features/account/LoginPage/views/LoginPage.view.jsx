@@ -16,6 +16,8 @@ import LoginPageForm from './LoginPageForm.view';
 type Props = {
   getUserInfo: () => void,
   loginInfo: Object,
+  showNotification: any,
+  resetResponse: any,
 };
 
 class LoginView extends React.PureComponent<Props> {
@@ -38,14 +40,23 @@ class LoginView extends React.PureComponent<Props> {
   };
 
   showForgotPasswordForm = () => {
+    const { resetPassword } = this.state;
     this.setState({
-      resetPassword: true,
+      resetPassword: !resetPassword,
     });
   };
 
   /* eslint-disable */
   render() {
-    const { loginInfo, getUserInfo, onSubmit, onSubmitForgot } = this.props;
+    const {
+      loginInfo,
+      getUserInfo,
+      onSubmit,
+      onSubmitForgot,
+      showNotification,
+      resetResponse,
+    } = this.props;
+    debugger;
     const { resetPassword } = this.state;
 
     if (Object.keys(loginInfo).length === 0) {
@@ -69,18 +80,21 @@ class LoginView extends React.PureComponent<Props> {
               }}
             >
               <LoginPageStyle>
-                {
+                {!resetPassword && (
                   <LoginPageForm
                     onSubmit={onSubmit}
                     loginInfo={loginInfo}
                     getUserInfo={getUserInfo}
                   />
-                }
+                )}
                 {resetPassword && (
                   <ForgotPasswordView
                     onSubmitForgot={onSubmitForgot}
                     loginInfo={loginInfo}
                     getUserInfo={getUserInfo}
+                    showNotification={showNotification}
+                    showForgotPasswordForm={this.showForgotPasswordForm}
+                    resetResponse={resetResponse}
                   />
                 )}
                 {!resetPassword && (

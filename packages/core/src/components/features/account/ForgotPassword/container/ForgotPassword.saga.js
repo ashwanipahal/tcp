@@ -3,9 +3,9 @@
  */
 
 import { call, takeLatest, put } from 'redux-saga/effects';
-import LOGINPAGE_CONSTANTS from '../ForgotPassword.constants';
+import FORGOTPASSWORD_CONSTANTS from '../ForgotPassword.constants';
 import fetchData from '../../../../../service/API';
-import resetPassword from './ForgotPassword.actions';
+import { getResetPasswordSuccess, userNotAvailable } from './ForgotPassword.actions';
 import endpoints from '../../../../../service/endpoint';
 
 function* ForgotPassword(action) {
@@ -31,14 +31,18 @@ function* ForgotPassword(action) {
       method
     );
     if (res) {
-      yield put(resetPassword());
+      yield put(getResetPasswordSuccess({ state: true }));
     }
   } catch (err) {
-    console.log(err);
+    let error = {};
+    if (err instanceof Error) {
+      error = err.response.body;
+    }
+    return yield put(userNotAvailable(error));
   }
 }
 function* ForgotPasswordSaga() {
-  yield takeLatest(LOGINPAGE_CONSTANTS.RESET_PASSWORD, ForgotPassword);
+  yield takeLatest(FORGOTPASSWORD_CONSTANTS.RESET_PASSWORD, ForgotPassword);
 }
 
 export default ForgotPasswordSaga;

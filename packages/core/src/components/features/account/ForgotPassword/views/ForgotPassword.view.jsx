@@ -1,14 +1,25 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import TextBox from '../../../../common/atoms/TextBox';
+import styles from '../styles/ForgotPassword.style';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
+import Grid from '../../../../common/molecules/Grid';
 import Button from '../../../../common/atoms/Button';
+import BodyCopy from '../../../../common/atoms/BodyCopy';
+import createValidateMethod from '../../../../../utils/formValidation/createValidateMethod';
+import getStandardConfig from '../../../../../utils/formValidation/validatorStandardConfig';
+import Notification from '../../../../common/molecules/Notification';
+
 // @flow
 type Props = {
   pristine: any,
   className: any,
   onSubmitForgot: Object => void,
+  showNotification: any,
+  showForgotPasswordForm: any,
+  resetResponse: any,
 };
 
 type State = {
@@ -28,8 +39,6 @@ class ForgotPasswordView extends React.Component<Props, State> {
     });
   };
 
-  showForgotPasswordForm = () => {};
-
   onFormSubmit = e => {
     e.preventDefault();
     const { email } = this.state;
@@ -39,39 +48,105 @@ class ForgotPasswordView extends React.Component<Props, State> {
     });
   };
 
+  onBackClick = () => {
+    const { showForgotPasswordForm } = this.props;
+    showForgotPasswordForm();
+  };
+
   render() {
-    const { pristine, className } = this.props;
+    const { pristine, className, showNotification, resetResponse } = this.props;
+    const errorObject = resetResponse && resetResponse.get('errors');
     const { email } = this.state;
     return (
-      <div>
+      <React.Fragment>
+        <Button type="button" onClick={this.onBackClick} className="link-forgot">
+          Back to Login In
+        </Button>
+        {/* showNotification : {showNotification ? 'true' : 'false'} */}
+        {errorObject && (
+          <Notification
+            status="error"
+            colSize={{ large: 11, medium: 7, small: 6 }}
+            message={errorObject.getIn(['0', 'errorMessage'])}
+          />
+        )}
+
         <form onSubmit={this.onFormSubmit} className={className}>
-          <Row fullBleed>
-            <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
-              <Field
-                name="Email"
-                id="Email"
-                type="Email"
-                component={TextBox}
-                value={email}
-                onChange={this.changeHandler}
-              />
-            </Col>
-            <Col
-              className="AddAddressForm__submit"
-              colSize={{ small: 4, medium: 3, large: 3 }}
-              offsetLeft={{ small: 1 }}
-            >
-              <Button fill="BLUE" disabled={pristine} type="submit" buttonVariation="fixed-width">
-                Reset Password
-              </Button>
-            </Col>
-          </Row>
+          <Grid>
+            {showNotification && (
+              <Row>
+                <Col
+                  colSize={{
+                    large: 12,
+                    medium: 12,
+                    small: 12,
+                  }}
+                >
+                  <BodyCopy
+                    fontFamily="primary"
+                    fontSize="fs16"
+                    textAlign="center"
+                    color="black"
+                    fontWeight="black"
+                  >
+                    Check your email
+                  </BodyCopy>
+                  <BodyCopy fontFamily="primary" fontSize="fs12" textAlign="center" color="black">
+                    We’ve just sent you instructions to reset your password. Didn’t get your email?
+                    Check your spam or click here to contact customer service.
+                  </BodyCopy>
+                </Col>
+              </Row>
+            )}
+            {!showNotification && (
+              <Row fullBleed>
+                <Col
+                  colSize={{
+                    large: 12,
+                    medium: 12,
+                    small: 12,
+                  }}
+                >
+                  <Field
+                    name="Email"
+                    id="Email"
+                    type="Email"
+                    component={TextBox}
+                    value={email}
+                    onChange={this.changeHandler}
+                  />
+                </Col>
+              </Row>
+            )}
+            {!showNotification && (
+              <Row fullBleed>
+                <Col
+                  className="AddAddressForm__submit"
+                  colSize={{ small: 4, medium: 3, large: 12 }}
+                  offsetLeft={{ small: 1 }}
+                >
+                  <Button
+                    fill="BLUE"
+                    disabled={pristine}
+                    type="submit"
+                    buttonVariation="fixed-width"
+                  >
+                    Reset Password
+                  </Button>
+                </Col>
+              </Row>
+            )}
+          </Grid>
         </form>
-      </div>
+      </React.Fragment>
     );
   }
 }
 
+const validateMethod = createValidateMethod(getStandardConfig(['Email']));
+
 export default reduxForm({
-  form: 'ForgotPasswordView', // a unique identifier for this form
-})(ForgotPasswordView);
+  form: 'ForgotPasswordView',
+  enableReinitialize: true,
+  ...validateMethod, // a unique identifier for this form
+})(withStyles(ForgotPasswordView, styles));

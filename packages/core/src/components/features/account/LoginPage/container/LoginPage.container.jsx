@@ -5,8 +5,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { login, getUserInfo } from './LoginPage.actions';
-import resetPassword from '../../ForgotPassword/container/ForgotPassword.actions';
+import { resetPassword } from '../../ForgotPassword/container/ForgotPassword.actions';
 import LoginView from '../views/LoginPage.view';
+import {
+  getShowNotificationState,
+  getResetEmailResponse,
+} from '../../ForgotPassword/container/ForgotPassword.selectors';
 
 // @flow
 
@@ -15,16 +19,27 @@ type Props = {
   loginInfo: Object,
   getUserInfoAction: void,
   onSubmitForgot: any,
+  showNotification: any,
+  resetResponse: any,
 };
 export class LoginPageContainer extends React.PureComponent<Props> {
   render() {
-    const { onSubmit, loginInfo, getUserInfoAction, onSubmitForgot } = this.props;
+    const {
+      onSubmit,
+      loginInfo,
+      getUserInfoAction,
+      onSubmitForgot,
+      showNotification,
+      resetResponse,
+    } = this.props;
     return (
       <LoginView
         onSubmitForgot={onSubmitForgot}
         onSubmit={onSubmit}
         loginInfo={loginInfo}
         getUserInfo={getUserInfoAction}
+        showNotification={showNotification}
+        resetResponse={resetResponse}
       />
     );
   }
@@ -47,6 +62,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     loginInfo: state.LoginPageReducer.loginInfo,
+    showNotification: getShowNotificationState(state),
+    resetResponse: getResetEmailResponse(state),
   };
 };
 
