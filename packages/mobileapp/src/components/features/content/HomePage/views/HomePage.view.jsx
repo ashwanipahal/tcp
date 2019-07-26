@@ -16,10 +16,10 @@ class HomePageView extends React.Component {
     return (
       <ScrollView>
         <React.Fragment>
-          <ModuleL />
           <SlotA {...slotA} />
           <SlotB {...slotB} />
           <SlotD {...slotD} />
+          <ModuleL />
         </React.Fragment>
       </ScrollView>
     );

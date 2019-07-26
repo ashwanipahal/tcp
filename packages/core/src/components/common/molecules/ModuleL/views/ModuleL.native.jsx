@@ -63,7 +63,7 @@ const renderitem = item => {
             color="black"
             fontWeight="regular"
             letterSpacing="ls222"
-            text={image.title}
+            text={image.text}
           />
         </BodyCopyContainer>
         <LinkContainer>
