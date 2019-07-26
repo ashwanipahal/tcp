@@ -39,12 +39,13 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
         {getCloseIcon({ onRequestClose })}
         {heading && (
           <BodyCopy
+            fontSize="fs16"
             fontFamily="primary"
-            fontSize="fs28"
             textAlign={headingAlign}
-            color="black"
-            fontWeight="black"
             text={heading}
+            className="modalHeading"
+            component="span"
+            color="#000000"
           />
         )}
         {children}
