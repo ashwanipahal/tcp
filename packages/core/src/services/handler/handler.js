@@ -3,7 +3,7 @@ import QueryBuilder from './graphQL/queries/queryBuilder';
 import { importGraphQLClientDynamically, getAPIConfig } from '../../utils';
 import StatefulAPIClient from './stateful/statefulClient';
 import unbxdAPIClient from './unbxd/unbxdClient';
-import externalAPIClient from './external/externalClient';
+import ExternalAPIClient from './external/externalClient';
 
 /**
  * Logs error
@@ -81,7 +81,7 @@ export const executeExternalAPICall = reqObj => {
     return null;
   }
   const apiConfigObj = getAPIConfig();
-  return externalAPIClient(apiConfigObj, reqObj).catch(errorHandler); // TODO - Make a new Instance..
+  return new ExternalAPIClient(apiConfigObj, reqObj).catch(errorHandler);
 };
 
 export default {

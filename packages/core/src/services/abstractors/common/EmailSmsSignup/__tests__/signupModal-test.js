@@ -1,6 +1,7 @@
 import SignupModalAbstractor from '../EmailSmsSignup';
 
 jest.mock('../../../../../service/API');
+jest.mock('../../../../handler/handler');
 
 describe('SignupModalAbstractor', () => {
   test('Signup modal Abstractor Email subscription ', () => {
