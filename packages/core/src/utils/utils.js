@@ -75,7 +75,7 @@ export const getAPIConfig = () => {
       isMobile: false,
     };
   } else if (deriveApiConfigObj) {
-    apiConfig = getStoreRef().getState()[APICONFIG_REDUCER_KEY];
+    apiConfig = (getStoreRef() && getStoreRef().getState()[APICONFIG_REDUCER_KEY]) || {};
     if (!isServer()) {
       resetStoreRef(); // This is to make module variable reduxStore as null
     }
