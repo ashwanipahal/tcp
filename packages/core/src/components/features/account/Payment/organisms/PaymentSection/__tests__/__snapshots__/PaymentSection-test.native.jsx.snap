@@ -16,6 +16,7 @@ exports[`Payment View should render correctly 1`] = `
       <Styled(BodyCopy)
         fontSize="fs16"
         fontWeight="extrabold"
+        text=""
       />
     </Styled(Text)>
     <Styled(View) />
@@ -121,6 +122,7 @@ exports[`Payment View should render correctly with cardList 1`] = `
       <Styled(BodyCopy)
         fontSize="fs16"
         fontWeight="extrabold"
+        text=""
       />
     </Styled(Text)>
     <Styled(View) />
