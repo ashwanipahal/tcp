@@ -57,7 +57,9 @@ exports[`CardTile should render correctly with amex card 1`] = `
       </Styled(Text)>
     </Styled(View)>
   </Styled(View)>
-  <Styled(View)>
+  <Styled(View)
+    isVenmo={true}
+  >
     <View>
       <Styled(BodyCopy)
         dataLocator="payment-creditdebitendingtext"
@@ -200,7 +202,9 @@ exports[`CardTile should render correctly with discover card 1`] = `
       underline={true}
     />
   </Styled(View)>
-  <Styled(View)>
+  <Styled(View)
+    isVenmo={true}
+  >
     <View>
       <Styled(BodyCopy)
         dataLocator="payment-creditdebitendingtext"
@@ -335,7 +339,9 @@ exports[`CardTile should render correctly with gift card 1`] = `
       />
     </Styled(Text)>
   </Styled(View)>
-  <Styled(View)>
+  <Styled(View)
+    isVenmo={true}
+  >
     <View>
       <Styled(BodyCopy)
         dataLocator="payment-giftcardendingtext"
@@ -464,7 +470,9 @@ exports[`CardTile should render correctly with master card 1`] = `
       underline={true}
     />
   </Styled(View)>
-  <Styled(View)>
+  <Styled(View)
+    isVenmo={true}
+  >
     <View>
       <Styled(BodyCopy)
         dataLocator="payment-creditdebitendingtext"
@@ -599,7 +607,9 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       />
     </Styled(Text)>
   </Styled(View)>
-  <Styled(View)>
+  <Styled(View)
+    isVenmo={true}
+  >
     <View>
       <Styled(BodyCopy)
         dataLocator="payment-giftcardendingtext"
@@ -728,7 +738,9 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       underline={true}
     />
   </Styled(View)>
-  <Styled(View)>
+  <Styled(View)
+    isVenmo={true}
+  >
     <View>
       <Styled(BodyCopy)
         dataLocator="payment-creditdebitendingtext"
@@ -857,7 +869,9 @@ exports[`CardTile should render correctly with venmocard 1`] = `
       />
     </Styled(Text)>
   </Styled(View)>
-  <Styled(View)>
+  <Styled(View)
+    isVenmo={true}
+  >
     <Styled(Text)
       dataLocator="payment-venmoid"
     >
@@ -973,7 +987,9 @@ exports[`CardTile should render correctly with visa card 1`] = `
       underline={true}
     />
   </Styled(View)>
-  <Styled(View)>
+  <Styled(View)
+    isVenmo={true}
+  >
     <View>
       <Styled(BodyCopy)
         dataLocator="payment-creditdebitendingtext"

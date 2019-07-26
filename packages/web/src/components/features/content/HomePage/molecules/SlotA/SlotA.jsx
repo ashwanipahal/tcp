@@ -14,8 +14,9 @@ const SlotA = dynamic({
     ModuleD: () => import('@tcp/core/src/components/common/molecules/ModuleD').then(returnModule),
     ModuleH: () => import('@tcp/core/src/components/common/molecules/ModuleH').then(returnModule),
     ModuleK: () => import('@tcp/core/src/components/common/molecules/ModuleK').then(returnModule),
+    ModuleL: () => import('@tcp/core/src/components/common/molecules/ModuleL').then(returnModule),
   }),
-  render: (props: Props, { ModuleD, ModuleH, ModuleK }) => {
+  render: (props: Props, { ModuleD, ModuleH, ModuleK, ModuleL }) => {
     switch (props.name) {
       case 'moduleD':
         return <ModuleD {...props} />;
@@ -23,8 +24,10 @@ const SlotA = dynamic({
         return <ModuleH {...props} />;
       case 'moduleK':
         return <ModuleK {...props} />;
+      case 'moduleL':
+        return <ModuleL {...props} />;
       default:
-        return null;
+        return <div>Module not defined</div>;
     }
   },
 });

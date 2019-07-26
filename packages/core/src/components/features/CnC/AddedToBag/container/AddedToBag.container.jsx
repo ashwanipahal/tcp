@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addToCartEcom, closeAddedToBag } from './AddedToBag.actions';
+import { closeAddedToBag } from './AddedToBag.actions';
 import { getAddedToBagData, isOpenAddedToBag } from './AddedToBag.selectors';
 import AddedToBag from '../views/AddedToBag.view';
 
@@ -36,11 +36,8 @@ export class AddedToBagContainer extends React.Component<Props> {
   }
 }
 
-const mapDispatchToProps = (dispatch: ({}) => void) => {
+export const mapDispatchToProps = (dispatch: ({}) => void) => {
   return {
-    addToCartEcom: payload => {
-      dispatch(addToCartEcom(payload));
-    },
     closeModal: () => {
       dispatch(closeAddedToBag());
     },
@@ -64,6 +61,7 @@ const mapStateToProps = state => {
         lbl_info_subTotal: bagSubTotal,
         lbl_info_totalRewardsInBag: totalRewardsInPoints,
         lbl_info_totalNextRewards: totalNextRewards,
+        lbl_header_addedToBag: addedToBag,
       },
     },
   } = state.Labels;
@@ -84,6 +82,7 @@ const mapStateToProps = state => {
       bagSubTotal,
       totalRewardsInPoints,
       totalNextRewards,
+      addedToBag,
     },
   };
 };

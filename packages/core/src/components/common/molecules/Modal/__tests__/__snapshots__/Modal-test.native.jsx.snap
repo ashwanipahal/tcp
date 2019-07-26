@@ -31,7 +31,6 @@ exports[`Modal Native should render correctly 1`] = `
       fontSize="fs28"
       fontWeight="black"
       text="Modal Heading"
-      textAlign="center"
     />
   </Component>
 </SafeAreaView>

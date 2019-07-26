@@ -28,5 +28,8 @@ export default {
   'place-card-small': '/static/images/place-card-small.png',
   'visa-small': '/static/images/visa-small.png',
   'gift-card-small': '/static/images/gift-card-small.png',
-  'venmo-blue-acceptance-mark': '/static/images/venmo-blue-acceptance-mark.png',
+  'venmo-blue-acceptance-mark': '/static/images/venmo-blue-acceptance-mark.svg',
+  down_arrow_icon: '/static/images/down_arrow_icon.png',
+  active_icon: '/static/images/active_icon.png',
+  'carousel-big-carrot': '/static/images/right-carousel-carrot.svg',
 };

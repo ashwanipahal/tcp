@@ -6,7 +6,7 @@ describe('AddedToBagActions component', () => {
   it('AddedToBagActions component renders correctly', () => {
     const props = {
       className: 'checkout',
-      onClickCartCheckout: jest.fn(),
+      onClickViewBag: jest.fn(),
       labels: {},
     };
     const component = shallow(<AddedToBagActionsVanilla {...props} />);

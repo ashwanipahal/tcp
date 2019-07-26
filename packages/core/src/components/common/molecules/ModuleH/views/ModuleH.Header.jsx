@@ -13,9 +13,9 @@ type Props = {
  * @function moduleHHeader This function renders header of Module H
  * @param {headerText} headerText Header text lines and link data
  */
-const moduleHHeader = ({ headerText: { link, textLines } }: Props) => (
+const moduleHHeader = ({ headerText: [{ link, textItems }] }: Props) => (
   <Fragment>
-    {textLines.map((textLine, index) => {
+    {textItems.map((textLine, index) => {
       return (
         <Heading
           key={index.toString()}

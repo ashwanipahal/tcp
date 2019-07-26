@@ -61,10 +61,12 @@ export const getOrderDetailsData = () => {
   const payload = {
     webService: endpoints.getOrderDetails,
     header: {
-      langId: -1,
       catalogId: 10551,
       storeId: 10151,
-      pageName: 'cartpage',
+      calc: true,
+      pageName: 'fullOrderInfo',
+      langId: -1,
+      recalculate: true,
     },
   };
 

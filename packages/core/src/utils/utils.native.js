@@ -130,7 +130,7 @@ export const navigateToPage = (url, navigation) => {
       /**
        * /c/* - If url starts with “/c” (* can be anything in url) → Select “CATEGORY_LANDING” tab in tabbar and Open CATEGORY_LANDING page
        */
-      return navigate('Plp');
+      return navigate('NavMenuLevel1');
     default:
       return null;
   }
@@ -142,6 +142,14 @@ export const navigateToPage = (url, navigation) => {
  */
 export const getScreenWidth = () => {
   return parseInt(Dimensions.get('screen').width, 10);
+};
+
+/**
+ * @function getScreenHeight function returns screen height.
+ * @return {number} function returns width of device viewport.
+ */
+export const getScreenHeight = () => {
+  return parseInt(Dimensions.get('screen').height, 10);
 };
 
 /**
@@ -158,4 +166,15 @@ export const getIconPath = icon => {
  */
 export const getLocator = locator => {
   return locators[locator];
+};
+
+/**
+ * @function cropImageUrl function appends or replaces the cropping value in the URL
+ * @param {string} url the image url
+ * @param {string} crop the crop parameter
+ * @return {string} function returns new Url with the crop value
+ */
+export const cropImageUrl = (url, crop) => {
+  const [urlPath, urlData] = url.split('/upload');
+  return `${urlPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
 };

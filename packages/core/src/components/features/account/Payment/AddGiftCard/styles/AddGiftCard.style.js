@@ -48,6 +48,12 @@ const styles = css`
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
   }
+  .card__recaptcha {
+    position: relative;
+  }
+  .card__hidden {
+    position: absolute;
+  }
 `;
 
 export default styles;
