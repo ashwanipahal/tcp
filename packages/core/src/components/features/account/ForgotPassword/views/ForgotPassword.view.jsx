@@ -90,6 +90,27 @@ class ForgotPasswordView extends React.Component<Props, State> {
                     color="black"
                     fontWeight="black"
                   >
+                    Forgot your password? No worries!
+                  </BodyCopy>
+                </Col>
+              </Row>
+            )}
+            {showNotification && (
+              <Row>
+                <Col
+                  colSize={{
+                    large: 12,
+                    medium: 12,
+                    small: 12,
+                  }}
+                >
+                  <BodyCopy
+                    fontFamily="primary"
+                    fontSize="fs16"
+                    textAlign="center"
+                    color="black"
+                    fontWeight="black"
+                  >
                     {labels.FORGOT_PASSWORD_CHECK_MAIL}
                   </BodyCopy>
                   <BodyCopy fontFamily="primary" fontSize="fs12" textAlign="center" color="black">
