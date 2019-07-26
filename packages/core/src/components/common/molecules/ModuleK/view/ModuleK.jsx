@@ -5,6 +5,7 @@ import { Carousel, PromoTextBanner, LinkText, ImageGrid, style } from '../Module
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/errorBoundary';
 import config from '../config';
+import { getIconPath } from '../../../../../utils';
 
 type Props = {
   className: string,
@@ -102,7 +103,8 @@ class ModuleK extends React.PureComponent<Props, State> {
                 autoplay: true,
                 dataLocatorPlay: 'moduleK_play_button',
                 dataLocatorPause: 'moduleK_pause_button',
-                type: 'light',
+                customArrowLeft: getIconPath('carousel-big-carrot'),
+                customArrowRight: getIconPath('carousel-big-carrot'),
               }}
             >
               {masonryGrid.map(({ promoTextBanner, mediaList, singleCTAButton }, index) => {
