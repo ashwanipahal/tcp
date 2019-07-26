@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { getScreenWidth, cropUrl } from '@tcp/core/src/utils/utils.native';
+import { getScreenWidth, cropImageUrl } from '@tcp/core/src/utils/utils.native';
 import { Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import {
   L1TouchableOpacity,
@@ -9,9 +9,9 @@ import {
   L1TouchableOpacityNoImage,
 } from '../NavMenuLevel1.style';
 
-const imageWidth = parseInt(getScreenWidth() / 2, 10);
+const imageWidth = getScreenWidth() / 2;
 const keyExtractor = (_, index) => index.toString();
-const Icon = require('@tcp/core/src/assets/carrot-small-rights.png');
+const Icon = require('../../../../../../../core/src/assets/carrot-small-rights.png');
 
 /**
  * The Navigation menu level1 is created by this component
@@ -35,9 +35,10 @@ const NavigationMenu = props => {
       navigation: { navigate },
     } = props;
 
+    const { name, categoryContent } = item;
     return navigate('NavMenuLevel2', {
-      navigationKey: item.name,
-      navigationLinks: item.categoryContent,
+      navigationKey: name,
+      navigationLinks: categoryContent,
     });
   };
 
@@ -120,7 +121,7 @@ const NavigationMenu = props => {
         <Image
           alt={categoryImages[0].alt}
           source={{
-            uri: cropUrl(categoryImages[0].url, categoryImages[0].crop_m),
+            uri: cropImageUrl(categoryImages[0].url, categoryImages[0].crop_m),
           }}
           width={imageWidth}
           height={132}
