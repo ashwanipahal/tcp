@@ -9,8 +9,8 @@ class Dropdown extends React.Component<Props> {
     super(props);
     this.state = {
       dropDownExpend: false,
-      activeTitle: props.activeTitle || 'Please Select',
-      activeValue: props.activeValue || null,
+      active: props.active || 'Please Select',
+      activeId: props.activeId || null,
     };
   }
 
@@ -24,25 +24,25 @@ class Dropdown extends React.Component<Props> {
     });
   };
 
-  onClickHandler = (e, value, title) => {
+  onClickHandler = (e, value, displayName) => {
     const { clickHandler } = this.props;
     this.setState({
-      activeTitle: title,
-      activeValue: value,
+      active: displayName,
+      activeId: value,
     });
     this.toggleHandler();
-    clickHandler(e, value, title);
+    clickHandler(e, value, displayName);
   };
 
 
 
 
-  itemLists = (item, options, activeValue) => {
+  itemLists = (item, options, activeId) => {
     return (
       <li
-        key={item.value}
+        key={item.id}
         tabIndex={-1}
-        className={`${ activeValue === item.value ? 'dropdownActiveClass text-align-center' : 'text-align-center'
+        className={`${ activeId === item.id ? 'dropdownActiveClass text-align-center' : 'text-align-center'
         }`}
       >
         <BodyCopy
@@ -50,12 +50,12 @@ class Dropdown extends React.Component<Props> {
           role="button"
           textAlign="center"
           tabIndex={-1}
-          key={item.value}
-          onClick={e => this.onClickHandler(e, item.value, item.title)}
-          onKeyPress={e => this.onClickHandler(e, item.value, item.title)}
-          onKeyDown={e => this.onClickHandler(e, item.value, item.title)}
+          key={item.id}
+          onClick={e => this.onClickHandler(e, item.id, item.displayName)}
+          onKeyPress={e => this.onClickHandler(e, item.id, item.displayName)}
+          onKeyDown={e => this.onClickHandler(e, item.id, item.displayName)}
         >
-          {item.title}
+          {item.displayName}
         </BodyCopy>
       </li>
     );
@@ -63,7 +63,7 @@ class Dropdown extends React.Component<Props> {
 
 
   render() {
-    const { dropDownExpend, activeTitle, activeValue } = this.state;
+    const { dropDownExpend, active, activeId } = this.state;
     const { className, options } = this.props;
     return (
       <BodyCopy component="div" className={className}>
@@ -77,12 +77,12 @@ class Dropdown extends React.Component<Props> {
           fontWeight="extrabold"
         >
           <BodyCopy component="div" className={`${dropDownExpend ? 'customSelectTitleUpImg' : 'customSelectTitleImg'}`} />
-          {activeTitle}
+          {active}
         </BodyCopy>
         {dropDownExpend && (
           <BodyCopy component="div" className="dropdownUpperDiv">
             <ul className="dropdownUlBorder dropDownSelect">
-              {options.map(item => this.itemLists(item, options, activeValue))}
+              {options.map(item => this.itemLists(item, options, activeId))}
             </ul>
           </BodyCopy>
         )}
@@ -95,14 +95,14 @@ Dropdown.propTypes = {
   className: PropTypes.string,
   clickHandler: PropTypes.func.isRequired,
   options: PropTypes.shape({}).isRequired,
-  activeTitle: PropTypes.string,
-  activeValue: PropTypes.string,
+  active: PropTypes.string,
+  activeId: PropTypes.string,
 };
 
 Dropdown.defaultProps = {
   className: 'className',
-  activeTitle: '',
-  activeValue: '',
+  active: '',
+  activeId: '',
 };
 
 export default withStyles(Dropdown, styles);

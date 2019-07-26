@@ -1,5 +1,5 @@
 import { fromJS, List } from 'immutable';
-import ADDRESS_BOOK_CONSTANTS from '../AddressBook.constants';
+import ACCOUNT_CONSTANTS from '../Account.constants';
 import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../utils/cache.util';
 
 const initialState = fromJS({
@@ -37,16 +37,15 @@ const getDefaultState = state => {
   return state;
 };
 
-const AddressBookReducer = (state = initialState, action) => {
+const AccountReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADDRESS_BOOK_CONSTANTS.SHOW_LOADER:
+    case ACCOUNT_CONSTANTS.SHOW_LOADER:
       return state.set('isFetching', true);
-    case ADDRESS_BOOK_CONSTANTS.SET_ADDRESS_LIST:
+    case ACCOUNT_CONSTANTS.SET_ACCOUNT_NAVIGATION_LIST:
       return state
-        .set('isFetching', false)
-        .set('list', List(action.addressList))
-        .set(DEFAULT_REDUCER_KEY, setCacheTTL(ADDRESS_BOOK_CONSTANTS.GET_ADDRESS_LIST_TTL));
-    case ADDRESS_BOOK_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_SUCCESS:
+        .set('accountNavigation', action)
+        .set(DEFAULT_REDUCER_KEY, setCacheTTL(ACCOUNT_CONSTANTS.GET_ADDRESS_LIST_TTL));
+    case ACCOUNT_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_SUCCESS:
       return state
         .set(
           'list',
@@ -63,26 +62,26 @@ const AddressBookReducer = (state = initialState, action) => {
           )
         )
         .set('showUpdatedNotification', 'success');
-    case ADDRESS_BOOK_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_FAILED:
+    case ACCOUNT_CONSTANTS.SET_DEFAULT_SHIPPING_ADDRESS_FAILED:
       return state.set('error', action.payload).set('showUpdatedNotification', 'error');
-    case ADDRESS_BOOK_CONSTANTS.UPDATE_ADDRESS_LIST_ON_DELETE:
+    case ACCOUNT_CONSTANTS.UPDATE_ADDRESS_LIST_ON_DELETE:
       return state
         .set('list', updateAddressList(state, action))
         .set('showUpdatedNotification', 'success');
-    case ADDRESS_BOOK_CONSTANTS.UPDATE_ADDRESS_LIST_ON_DELETE_ERR:
+    case ACCOUNT_CONSTANTS.UPDATE_ADDRESS_LIST_ON_DELETE_ERR:
       return state
         .set('error', action.payload)
         .set('showUpdatedNotification', null)
         .set('showUpdatedNotificationOnModal', 'error');
-    case ADDRESS_BOOK_CONSTANTS.SET_ADDRESS_BOOK_NOTIFICATION:
+    case ACCOUNT_CONSTANTS.SET_ADDRESS_BOOK_NOTIFICATION:
       return state.set('showUpdatedNotification', action.payload.status);
-    case ADDRESS_BOOK_CONSTANTS.DELETE_MODAL_MOUNTED_STATE:
+    case ACCOUNT_CONSTANTS.DELETE_MODAL_MOUNTED_STATE:
       return state.set('deleteModalMountedState', action.payload.state);
-    case ADDRESS_BOOK_CONSTANTS.CLEAR_GET_ADDRESS_LIST_TTL:
+    case ACCOUNT_CONSTANTS.CLEAR_GET_ADDRESS_LIST_TTL:
       return state.set(DEFAULT_REDUCER_KEY, null);
     default:
       return getDefaultState(state);
   }
 };
 
-export default AddressBookReducer;
+export default AccountReducer;

@@ -1,5 +1,5 @@
-export const getAddressListState = state => {
-  return state.AddressBookReducer.get('list');
+export const getAccountNavigationState = state => {
+  return state.AccountReducer.get('accountNavigation');
 };
 
 export const getAddressListFetchingState = state => {

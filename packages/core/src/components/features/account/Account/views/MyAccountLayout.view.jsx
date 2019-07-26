@@ -4,6 +4,7 @@ import Col from '../../../../common/atoms/Col';
 import MyAccountLeftNav from './MyAccountLeftNav.view';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/MyAccountContainer.style';
+import Dropdown from '../../../../common/molecules/Dropdown';
 
 // @flow
 type Props = {
@@ -13,6 +14,15 @@ type Props = {
   className: string,
   router: object,
 };
+
+
+const clickHandler = (e, value,title )=>{
+  console.log(value);
+  console.log("On Change Handler from address book");
+  console.log(title);
+}
+
+
 
 /**
  * @function MyAccountLayoutView The AccountLayout component will provide a list of left
@@ -27,9 +37,21 @@ const MyAccountLayoutView = (props: Props) => {
     <div className={className}>
       <Row>
         <Col colSize={{ large: 2, medium: 8, small: 6 }}>
-          <MyAccountLeftNav navData={navData} active={active} />
+          <div className="menuLarge">
+            <MyAccountLeftNav navData={navData} active={active} />
+          </div>
         </Col>
         <Col colSize={{ large: 10, medium: 8, small: 6 }}>
+
+          <div className="menuMedium">
+            <Dropdown
+              options={navData}
+              clickHandler={clickHandler}
+              active="Account Overview"
+              activeId="place-rewards"
+            />
+          </div>
+
           <MainContent router={router} />
         </Col>
       </Row>

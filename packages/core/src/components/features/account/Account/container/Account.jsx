@@ -3,19 +3,20 @@ import { connect } from 'react-redux';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentMapping from '../AccountComponentMapping';
-import navData from '../MyAccountRoute.config';
+// import navData from '../MyAccountRoute.config';
 import utils from '../../../../../utils';
 
 import { getAccountNavigationList } from './Account.actions';
 
 import {
-  getAddressListState
+  getAccountNavigationState
 } from './Account.selectors';
 
 // @flow
 type Props = {
   router: Object,
-  getAddressListAction: () => void,
+  getAccountNavigationAction: () => void,
+  accountNavigation: array<any>
 };
 
 type State = {
@@ -39,8 +40,8 @@ export class Account extends React.PureComponent<Props, State> {
   }
 
   componentDidMount() {
-    const { getAddressListAction} = this.props;
-    getAddressListAction();
+    const { getAccountNavigationAction} = this.props;
+    getAccountNavigationAction();
   }
 
   static getDerivedStateFromProps(nextProps: Props, prevState: State) {
@@ -59,7 +60,12 @@ export class Account extends React.PureComponent<Props, State> {
    */
   render() {
     const { component } = this.state;
-    const { router } = this.props;
+    const { router, accountNavigation } = this.props;
+    let navData = [];
+    if(accountNavigation){
+     navData = accountNavigation.accountNav;
+     console.log(navData);
+    }
     return (
       <MyAccountLayout
         mainContent={AccountComponentMapping[component]}
@@ -75,7 +81,7 @@ export class Account extends React.PureComponent<Props, State> {
 
 export const mapDispatchToProps = (dispatch: ({}) => void) => {
   return {
-    getAddressListAction: () => {
+    getAccountNavigationAction: () => {
       dispatch(getAccountNavigationList());
     }
   };
@@ -83,7 +89,7 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
 
 const mapStateToProps = state => {
   return {
-    addressList: getAddressListState(state)
+    accountNavigation: getAccountNavigationState(state)
   };
 };
 
