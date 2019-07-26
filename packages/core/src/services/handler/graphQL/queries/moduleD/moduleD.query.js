@@ -6,7 +6,7 @@ const buildQuery = ({ slot, contentId }) => `
 
     composites {
       headerText {
-        textLines {
+        textItems {
           text
           style
         }
