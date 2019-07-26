@@ -33,10 +33,12 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
       </Row>
       <Row>
         <Col colSize={{ large: 9, small: 4, medium: 6 }}>
-          <BodyCopy fontWeight="semibold">{labels.pointsYouCanEarn}</BodyCopy>
+          <BodyCopy fontFamily="secondary" fontWeight="extrabold">
+            {labels.pointsYouCanEarn}
+          </BodyCopy>
         </Col>
         <Col colSize={{ large: 3, small: 2, medium: 2 }}>
-          <BodyCopy className="value promo-color" fontWeight="semibold">
+          <BodyCopy fontFamily="secondary" className="value promo-color" fontWeight="extrabold">
             {itemPoints}
           </BodyCopy>
         </Col>
@@ -52,20 +54,24 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
       </Row>
       <Row className="row-padding">
         <Col colSize={{ large: 9, small: 4, medium: 6 }}>
-          <BodyCopy fontWeight="semibold">{labels.totalRewardsInPoints}</BodyCopy>
+          <BodyCopy fontFamily="secondary" fontWeight="extrabold">
+            {labels.totalRewardsInPoints}
+          </BodyCopy>
         </Col>
         <Col colSize={{ large: 3, small: 2, medium: 2 }}>
-          <BodyCopy className="value promo-color" fontWeight="semibold">
+          <BodyCopy fontFamily="secondary" className="value promo-color" fontWeight="extrabold">
             {userPoints}
           </BodyCopy>
         </Col>
       </Row>
       <Row className="row-padding">
         <Col colSize={{ large: 9, small: 4, medium: 6 }}>
-          <BodyCopy fontWeight="semibold">{labels.totalNextRewards}</BodyCopy>
+          <BodyCopy fontFamily="secondary" fontWeight="extrabold">
+            {labels.totalNextRewards}
+          </BodyCopy>
         </Col>
         <Col colSize={{ large: 3, small: 2, medium: 2 }}>
-          <BodyCopy className="value promo-color" fontWeight="semibold">
+          <BodyCopy fontFamily="secondary" className="value promo-color" fontWeight="extrabold">
             {pointsToNextReward}
           </BodyCopy>
         </Col>
