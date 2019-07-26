@@ -12,11 +12,10 @@ const getDisableStyle = props => {
   /* in case of android icon disable color need to be set because opacity doen't work */
   if (isDisabled && Platform.OS === 'android') {
     return `
-      color: ${colorPalette.disable};
+      color: ${colorPalette.text.disabled};
     `;
   }
-
-  const colorValue = color === '' ? colorPalette.primary.light : color;
+  const colorValue = color === '' ? colorPalette.primary.main : color;
   return `
   color: ${colorValue}
   `;

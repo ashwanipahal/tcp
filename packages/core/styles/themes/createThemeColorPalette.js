@@ -11,7 +11,7 @@ function createThemeColorPalette(colors = {}) {
     text = { primary: gray[900], secondary: gray[700], disabled: gray[500], hint: gray[600] },
   } = colors;
 
-  const { white, black, disable } = common;
+  const { white, black } = common;
 
   return {
     white,
@@ -22,7 +22,6 @@ function createThemeColorPalette(colors = {}) {
     success: green[500],
     error: red[500],
     gray,
-    disable,
   };
 }
 

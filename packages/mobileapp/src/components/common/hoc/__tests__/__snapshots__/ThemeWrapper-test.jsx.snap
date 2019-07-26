@@ -27,7 +27,6 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
       },
       "colorPalette": Object {
         "black": "#000",
-        "disable": "#b7b8b9",
         "error": "#c8102e",
         "gray": Object {
           "300": "#f3f3f3",
