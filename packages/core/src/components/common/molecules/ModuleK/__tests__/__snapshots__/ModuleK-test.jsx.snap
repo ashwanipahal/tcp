@@ -141,9 +141,10 @@ exports[`ModuleK component renders correctly 1`] = `
         carouselConfig={
           Object {
             "autoplay": true,
+            "customArrowLeft": "/static/images/right-carousel-carrot.svg",
+            "customArrowRight": "/static/images/right-carousel-carrot.svg",
             "dataLocatorPause": "moduleK_pause_button",
             "dataLocatorPlay": "moduleK_play_button",
-            "type": "light",
           }
         }
         options={
