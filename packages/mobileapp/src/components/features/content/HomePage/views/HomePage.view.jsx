@@ -2,7 +2,6 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
-import ModuleL from '@tcp/core/src/components/common/molecules/ModuleL/views/ModuleL.native';
 import { SlotA, SlotB, SlotD } from '../molecules';
 
 class HomePageView extends React.Component {
@@ -19,7 +18,6 @@ class HomePageView extends React.Component {
           <SlotA {...slotA} />
           <SlotB {...slotB} />
           <SlotD {...slotD} />
-          <ModuleL />
         </React.Fragment>
       </ScrollView>
     );

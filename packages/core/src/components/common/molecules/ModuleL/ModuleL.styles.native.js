@@ -8,7 +8,7 @@ export const BodyCopyContainer = styled.View`
   width: ${props => props.width};
 `;
 
-export const DataContainer = styled.TouchableOpacity`
+export const ChildContainer = styled.TouchableOpacity`
   flex-direction: row;
   margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
@@ -29,15 +29,15 @@ export const LinkContainer = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
-export const FlatListContainer = styled.View`
+export const ListContainer = styled.View`
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
 export default {
   Container,
   BodyCopyContainer,
-  DataContainer,
+  ChildContainer,
   MessageContainer,
   LinkContainer,
-  FlatListContainer,
+  ListContainer,
 };

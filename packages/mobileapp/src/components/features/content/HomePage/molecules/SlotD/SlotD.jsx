@@ -1,6 +1,6 @@
 import React from 'react';
 import { ModuleD, ModuleH } from '@tcp/core/src/components/common/molecules';
-import ModuleL from '@tcp/core/src/components/common/molecules/ModuleL/views/ModuleL.native';
+import ModuleL from '@tcp/core/src/components/common/molecules/ModuleL';
 
 // @flow
 type Props = {

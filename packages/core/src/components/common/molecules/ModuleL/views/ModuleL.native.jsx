@@ -2,24 +2,25 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 import { UrlHandler, getScreenWidth } from '../../../../../utils/utils.native';
-import { Image } from '../../../atoms';
+import { Image, BodyCopy, Anchor } from '../../../atoms';
 import LinkText from '../../LinkText';
 import {
   Container,
   BodyCopyContainer,
-  DataContainer,
+  ChildContainer,
   MessageContainer,
   LinkContainer,
-  FlatListContainer,
+  ListContainer,
 } from '../ModuleL.styles.native';
-import moduleL from '../mock';
 
 /**
- * Default data for ModuleL.
+ * To enable the anchorIcon.
  */
-const moduleData = { moduleL };
+const anchorIcon = true;
 
-const anchorEnable = true;
+/**
+ * To manage the width of the Mesasge Container.
+ */
 const width = getScreenWidth() - 150;
 const imageSize = parseInt(getScreenWidth() / 4, 10);
 const keyExtractor = (_, index) => index.toString();
@@ -50,7 +51,7 @@ const renderitem = item => {
     item: { image, link },
   } = item;
   return (
-    <DataContainer
+    <ChildContainer
       onPress={() => {
         UrlHandler(link.url);
       }}
@@ -58,32 +59,28 @@ const renderitem = item => {
       <Image width={imageSize} height={127} source={{ uri: getUrlWithCrop(image.url) }} />
       <MessageContainer>
         <BodyCopyContainer width={width}>
-          <LinkText
-            type="bodycopy"
-            fontFamily="primary"
+          <BodyCopy
             fontSize="fs20"
             color="black"
-            fontWeight="regular"
             letterSpacing="ls222"
-            text={image.title}
+            text={image.text}
             onPress={() => {
               UrlHandler(link.url);
             }}
           />
         </BodyCopyContainer>
         <LinkContainer>
-          <LinkText
-            type="anchor"
+          <Anchor
             fontSizeVariation="xlarge"
             text={link.text}
-            visible={anchorEnable}
+            visible={anchorIcon}
             onPress={() => {
               UrlHandler(link.url);
             }}
           />
         </LinkContainer>
       </MessageContainer>
-    </DataContainer>
+    </ChildContainer>
   );
 };
 
@@ -94,7 +91,9 @@ const renderitem = item => {
  * Author can surface teaser content leading to corresponding pages.
  */
 
-const ModuleL = () => {
+const ModuleL = (props: Props) => {
+  // let { headingText, url } = {};
+  const { imageGrid, headerText } = props;
   return (
     <Container>
       <LinkText
@@ -105,18 +104,14 @@ const ModuleL = () => {
         textAlign="center"
         color="text.primary"
         fontWeight="black"
-        text={moduleData.moduleL.moduleL.composites.headerText[0].textItems[0].text}
+        textItems={headerText[0].textItems}
         onPress={() => {
-          UrlHandler(moduleData.moduleL.moduleL.composites.headerText[0].link.url);
+          UrlHandler(headerText.link.url);
         }}
       />
-      <FlatListContainer>
-        <FlatList
-          keyExtractor={keyExtractor}
-          data={moduleData.moduleL.moduleL.composites.imageGrid}
-          renderItem={renderitem}
-        />
-      </FlatListContainer>
+      <ListContainer>
+        <FlatList keyExtractor={keyExtractor} data={imageGrid} renderItem={renderitem} />
+      </ListContainer>
     </Container>
   );
 };

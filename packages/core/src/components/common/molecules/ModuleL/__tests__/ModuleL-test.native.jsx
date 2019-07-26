@@ -1,23 +1,20 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import mock from '../../../../../services/abstractors/common/moduleL/mock';
 import { ModuleLVanilla } from '../views/ModuleL.native';
 
 describe('ModuleLVanilla', () => {
   let component;
 
   beforeEach(() => {
-    component = shallow(<ModuleLVanilla />);
+    component = shallow(<ModuleLVanilla {...mock.moduleL.composites} />);
   });
 
-  it('should be defined', () => {
+  it('ModuleL should be defined', () => {
     expect(component).toBeDefined();
   });
 
-  it('should render correctly', () => {
+  it('ModuleL should render correctly', () => {
     expect(component).toMatchSnapshot();
-  });
-
-  it('should return FlatList component value one', () => {
-    expect(component.find('FlatList')).toHaveLength(1);
   });
 });

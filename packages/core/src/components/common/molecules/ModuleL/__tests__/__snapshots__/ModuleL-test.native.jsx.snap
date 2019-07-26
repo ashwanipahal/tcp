@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ModuleLVanilla should render correctly 1`] = `
+exports[`ModuleLVanilla ModuleL should render correctly 1`] = `
 <Styled(View)>
   <LinkText
     color="text.primary"
@@ -9,8 +9,15 @@ exports[`ModuleLVanilla should render correctly 1`] = `
     fontWeight="black"
     letterSpacing="ls167"
     onPress={[Function]}
-    text="TRENDING NOW"
     textAlign="center"
+    textItems={
+      Array [
+        Object {
+          "style": "style1",
+          "text": "TRENDING NOW",
+        },
+      ]
+    }
     type="heading"
   />
   <Styled(View)>
@@ -23,7 +30,7 @@ exports[`ModuleLVanilla should render correctly 1`] = `
               "crop_d": "c_crop,g_face:center,q_auto:best,w_1440",
               "crop_m": "c_crop,g_face:center,q_auto:best,w_520",
               "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-              "title": "BE A UNICORN 24/7/365",
+              "title": "BE A UNICORN 24/7/365 title",
               "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562061640/senjuti-kundu-7uP2gFMB2ps-unsplash_kxf3r4.jpg",
             },
             "link": Object {
