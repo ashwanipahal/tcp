@@ -21,13 +21,17 @@ const RoutesMap = [
     resolver: '/DeltaSyncSamplePage',
   },
   {
-    path: '/p',
+    path: '/c',
     resolver: '/ProductListingPage',
   },
   {
     path: '/test',
     resolver: '/test',
     withoutCountryCode: true,
+  },
+  {
+    path: '/cart',
+    resolver: '/cart',
   },
 ];
 

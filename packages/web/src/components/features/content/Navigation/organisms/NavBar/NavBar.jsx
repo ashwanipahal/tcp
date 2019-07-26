@@ -9,9 +9,14 @@ const NavBar = props => {
 
   return (
     <React.Fragment>
-      <ul className={`${className} nav-bar-l1`}>
-        {navigationData.map(navL1Item => (
-          <L1NavItem {...navL1Item} />
+      <ul data-locator="nav_bar_l1" className={`${className} nav-bar-l1`}>
+        {navigationData.map((navL1Item, index) => (
+          <L1NavItem
+            dataLocator={`l1menu_link_${index}`}
+            index={index}
+            key={`l1menu_link_${index.toString()}`}
+            {...navL1Item}
+          />
         ))}
       </ul>
     </React.Fragment>
