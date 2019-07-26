@@ -1,4 +1,5 @@
 import getOrderPointsSummary from '../utility';
+
 // TODO - Include more test cases
 describe('#getOrderPointSummary', () => {
   it('should return valid object', () => {
