@@ -2,11 +2,13 @@ import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
 import Header from '../components/common/molecules/Header';
-import Plp from '../screens/PLPScreen';
+import NavMenuLevel1 from '../components/features/content/NavMenuLevel1';
+import NavMenuLevel2 from '../components/features/content/NavMenuLevel2';
 
 const PlpStack = createStackNavigator(
   {
-    Plp,
+    NavMenuLevel1,
+    NavMenuLevel2,
   },
   {
     defaultNavigationOptions: {
