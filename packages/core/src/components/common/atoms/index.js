@@ -1,6 +1,7 @@
 import Anchor from './Anchor';
 import Button from './Button';
 import Col from './Col';
+import DamImage from './DamImage';
 import DynamicTag from './DynamicTag';
 import Image from './Image';
 import RichText from './RichText';
@@ -9,4 +10,16 @@ import TextBox from './TextBox';
 import Heading from './Heading';
 import BodyCopy from './BodyCopy';
 
-export { Anchor, Button, Col, DynamicTag, Image, RichText, Row, TextBox, Heading, BodyCopy };
+export {
+  Anchor,
+  Button,
+  Col,
+  DamImage,
+  DynamicTag,
+  Image,
+  RichText,
+  Row,
+  TextBox,
+  Heading,
+  BodyCopy,
+};
