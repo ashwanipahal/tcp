@@ -18,6 +18,8 @@ type Props = {
   handleSubmit: string,
   labels: string,
   isIAgreeField: string,
+  hideShowPwdField?: string,
+  confirmHideShowPwdField?: string,
 };
 
 const handleSubmitForm = data => {
@@ -25,44 +27,57 @@ const handleSubmitForm = data => {
   createAccountAction(data);
 };
 
-// const showHideFunction = e => {
-//   const { showPassword } = this.state;
-//   this.setState({
-//     showPassword: !showPassword,
-//     passwordType: showPassword ? 'password' : 'text',
-//   });
-// };
-
 // eslint-disable-next-line import/no-mutable-exports
-let CreateAccountForm = ({ isMakeDefaultDisabled, handleSubmit, labels, isIAgreeField }: Props) => {
+let CreateAccountForm = ({
+  isMakeDefaultDisabled,
+  handleSubmit,
+  labels,
+  isIAgreeField,
+  hideShowPwdField,
+  confirmHideShowPwdField,
+}: Props) => {
   return (
     <div>
       <form onSubmit={handleSubmit(() => handleSubmitForm)}>
-        <Row fullBleed>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
-            <div className="my-rewards-img-wrapper">
-              <Image className="tcp_carousel__play" src={getIconPath('my-place-rewards')} />
+        <Row fullBleed className="row-form-wrapper">
+          <Col
+            className="banner padding-left-right-15"
+            ignoreGutter={{ small: true }}
+            colSize={{ small: 12 }}
+          >
+            <div className="img-parent align-center">
+              <div className="my-rewards-img-wrapper">
+                <Image className="tcp_carousel__play" src={getIconPath('my-place-rewards')} />
+              </div>
             </div>
           </Col>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
+          <Col
+            className="labels padding-left-right-15"
+            ignoreGutter={{ small: true }}
+            colSize={{ small: 12 }}
+          >
             <div className="labels-wrapper">
-              <div>
+              <div className="padding-bottom-10">
                 <span>{labels.CREATE_ACC_LBL_CREATE_A}</span>
                 <span>{labels.CREATE_ACC_LBL_MY_PLACE_REWARDS}</span>
                 <span>{labels.CREATE_ACC_LBL_EARN_POINTS}</span>
               </div>
-              <div>{labels.CREATE_ACC_LBL_SPEND_POINT}</div>
-              <div>{labels.CREATE_ACC_LBL_POINT_REWARD}</div>
-              <div>{labels.CREATE_ACC_LBL_SIGNED_UP}</div>
-              <div>{labels.CREATE_ACC_LBL_ONLINE_ACC_CREATED}</div>
+              <div className="padding-bottom-10">
+                <div>{labels.CREATE_ACC_LBL_SPEND_POINT}</div>
+                <div>{labels.CREATE_ACC_LBL_POINT_REWARD}</div>
+              </div>
               <div>
-                <Anchor className="reset_password" to="" target="">
-                  {labels.CREATE_ACC_LBL_RESET_PWD}
-                </Anchor>
+                <div>{labels.CREATE_ACC_LBL_SIGNED_UP}</div>
+                <div>{labels.CREATE_ACC_LBL_ONLINE_ACC_CREATED}</div>
+                <div className="reset-pwd">
+                  <Anchor className="reset_password" to="" target="">
+                    {labels.CREATE_ACC_LBL_RESET_PWD}
+                  </Anchor>
+                </div>
               </div>
             </div>
           </Col>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
+          <Col className="padding-top-40" ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
             <Field
               placeholder="First Name"
               name="firstName"
@@ -70,7 +85,7 @@ let CreateAccountForm = ({ isMakeDefaultDisabled, handleSubmit, labels, isIAgree
               dataLocator="first-name-field"
             />
           </Col>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
+          <Col className="padding-top-28" ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
             <Field
               placeholder="Last Name"
               name="lastName"
@@ -78,7 +93,7 @@ let CreateAccountForm = ({ isMakeDefaultDisabled, handleSubmit, labels, isIAgree
               dataLocator="last name-field"
             />
           </Col>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
+          <Col className="padding-top-28" ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
             <Field
               placeholder="Phone Number"
               name="phoneNumber"
@@ -88,7 +103,7 @@ let CreateAccountForm = ({ isMakeDefaultDisabled, handleSubmit, labels, isIAgree
               dataLocator="phone-number-field"
             />
           </Col>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
+          <Col className="padding-top-28" ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
             <Field
               placeholder="Zip Code"
               name="noCountryZip"
@@ -96,7 +111,7 @@ let CreateAccountForm = ({ isMakeDefaultDisabled, handleSubmit, labels, isIAgree
               dataLocator="zip-code-field"
             />
           </Col>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
+          <Col className="padding-top-28" ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
             <Field
               placeholder="Email Address"
               name="emailAddress"
@@ -104,7 +119,7 @@ let CreateAccountForm = ({ isMakeDefaultDisabled, handleSubmit, labels, isIAgree
               dataLocator="email-address-field"
             />
           </Col>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
+          <Col className="padding-top-28" ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
             <Field
               placeholder="Confirm Email Address"
               name="confirmEmailAddress"
@@ -112,41 +127,70 @@ let CreateAccountForm = ({ isMakeDefaultDisabled, handleSubmit, labels, isIAgree
               dataLocator="confirm-email-field"
             />
           </Col>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
+          <Col
+            className="padding-top-28 position-relative"
+            ignoreGutter={{ small: true }}
+            colSize={{ small: 12 }}
+          >
             <Field
               placeholder="Password"
               name="password"
-              type="password"
+              type={hideShowPwdField ? 'text' : 'password'}
               component={TextBox}
               dataLocator="password-field"
             />
-            <div className="info-icon-img-wrapper">
-              <Image className="tcp_carousel__play" src={getIconPath('info-icon')} />
-            </div>
-            {/* <Anchor className="type_password" to="" target="" onClick={showHideFunction}>
-              {labels.CREATE_ACC_LBL_HIDE}
-            </Anchor> */}
+            <span className="show-hide-icons">
+              <span className="info-icon-img-wrapper">
+                <Image className="tcp_carousel__play" src={getIconPath('info-icon')} />
+              </span>
+              <Col
+                className="checkbox-hide-show"
+                ignoreGutter={{ small: true }}
+                colSize={{ small: 12 }}
+              >
+                <Field
+                  name="hideShowPwd"
+                  component={InputCheckbox}
+                  dataLocator="hide-show-checkbox"
+                >
+                  {hideShowPwdField ? labels.CREATE_ACC_LBL_HIDE : labels.CREATE_ACC_LBL_SHOW}
+                </Field>
+              </Col>
+            </span>
           </Col>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
+          <Col
+            className="padding-top-28 position-relative"
+            ignoreGutter={{ small: true }}
+            colSize={{ small: 12 }}
+          >
             <Field
               placeholder="Confirm Password"
               name="confirmPassword"
-              type="password"
+              type={confirmHideShowPwdField ? 'text' : 'password'}
               component={TextBox}
               dataLocator="confirm-Password-field"
             />
-            {/* <Anchor
-              className="confirm_password"
-              to=""
-              target=""
-              onClick={showHideConfirmFunction}
-            >
-              {labels.CREATE_ACC_LBL_HIDE}
-            </Anchor> */}
+            <span className="confirm-pwd-hide-show">
+              <Col
+                className="checkbox-hide-show"
+                ignoreGutter={{ small: true }}
+                colSize={{ small: 12 }}
+              >
+                <Field
+                  name="confirmHideShowPwd"
+                  component={InputCheckbox}
+                  dataLocator="confirm-hide-show-checkbox"
+                >
+                  {confirmHideShowPwdField
+                    ? labels.CREATE_ACC_LBL_HIDE
+                    : labels.CREATE_ACC_LBL_SHOW}
+                </Field>
+              </Col>
+            </span>
           </Col>
 
           {/* CHECKBOXES */}
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
+          <Col className="padding-top-28" ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
             <Field
               name="myPlace"
               component={InputCheckbox}
@@ -156,7 +200,7 @@ let CreateAccountForm = ({ isMakeDefaultDisabled, handleSubmit, labels, isIAgree
               {labels.CREATE_ACC_LBL_SAVE_REWARDS}
             </Field>
           </Col>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
+          <Col className="i-agree-checkbox" ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
             <Field
               name="iAgree"
               component={InputCheckbox}
@@ -176,7 +220,11 @@ let CreateAccountForm = ({ isMakeDefaultDisabled, handleSubmit, labels, isIAgree
               {labels.CREATE_ACC_LBL_REMEMBER_ME}
             </Field>
           </Col>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 12 }} className="card__btn--medium">
+          <Col
+            ignoreGutter={{ small: true }}
+            colSize={{ small: 12 }}
+            className="card__btn--medium create-account-btn"
+          >
             <Button
               buttonVariation="fixed-width"
               fill="BLUE"
@@ -187,9 +235,15 @@ let CreateAccountForm = ({ isMakeDefaultDisabled, handleSubmit, labels, isIAgree
               {labels.CREATE_ACC_LBL_CREATE_ACCOUNT}
             </Button>
           </Col>
-          <Anchor className="moduleD_textlink" to="v" target="d">
-            {labels.CREATE_ACC_LBL_ALREADY_ACCOUNT}
-          </Anchor>
+          <Col
+            ignoreGutter={{ small: true }}
+            colSize={{ small: 12 }}
+            className="already-account align-center"
+          >
+            <Anchor className="moduleD_textlink" to="v" target="d">
+              {labels.CREATE_ACC_LBL_ALREADY_ACCOUNT}
+            </Anchor>
+          </Col>
         </Row>
       </form>
     </div>
@@ -215,12 +269,21 @@ CreateAccountForm = reduxForm({
   enableReinitialize: true,
 })(CreateAccountForm);
 
+CreateAccountForm.defaultProps = {
+  hideShowPwdField: false,
+  confirmHideShowPwdField: false,
+};
+
 const formState = formValueSelector('CreateAccountForm');
 
 CreateAccountForm = connect(state => {
   const isIAgreeField = formState(state, 'iAgree');
+  const hideShowPwdField = formState(state, 'hideShowPwd');
+  const confirmHideShowPwdField = formState(state, 'confirmHideShowPwd');
   return {
     isIAgreeField,
+    hideShowPwdField,
+    confirmHideShowPwdField,
   };
 })(CreateAccountForm);
 
