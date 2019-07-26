@@ -3,11 +3,11 @@
  */
 
 import React from 'react';
-import LoginPageStyle from '../styles/LoginPage.style';
-import Button from '../../../../common/atoms/Button';
-import Grid from '../../../../common/molecules/Grid';
-import Row from '../../../../common/atoms/Row';
-import Col from '../../../../common/atoms/Col';
+import LoginPageStyle from '../../styles/LoginPage.style';
+import Button from '../../../../../common/atoms/Button';
+import Grid from '../../../../../common/molecules/Grid';
+import Row from '../../../../../common/atoms/Row';
+import Col from '../../../../../common/atoms/Col';
 
 // @flow
 

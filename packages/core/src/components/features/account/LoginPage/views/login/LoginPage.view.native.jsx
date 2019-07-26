@@ -4,6 +4,8 @@
 
 import React from 'react';
 import { View, Button, TextInput, Text, StyleSheet } from 'react-native'; //eslint-disable-line
+import LoginPage from '../../organisms/LoginPage';
+
 // @flow
 type Props = {
   getUserInfo: () => void,
@@ -17,6 +19,7 @@ const styles = StyleSheet.create({
   },
   parentViewStyle: { flex: 1, justifyContent: 'flex-start', margin: 10 },
   textInputStyle: { borderColor: gray, borderWidth: 1, height: 40 },
+  // eslint-disable-next-line
   textStyle: { fontSize: 36, fontWeight: 'bold' },
 });
 
@@ -42,6 +45,7 @@ class LoginView extends React.PureComponent<Props> {
 
   onFormSubmit = () => {
     const { onSubmit } = this.props;
+    console.log('this.props: ', this.props);
     // const email = 'sunil.syal@gmail.com';
     // const password = 'Test@123';
 
@@ -73,7 +77,8 @@ class LoginView extends React.PureComponent<Props> {
     const { email, password } = this.state;
     return (
       <View style={styles.parentViewStyle}>
-        <Text style={styles.textStyle}>Login Page</Text>
+        <LoginPage />
+        {/* <Text style={styles.textStyle}>Login Page</Text> */}
         <View style={styles.childViewStyle}>
           <Text>Email Id</Text>
           <TextInput
