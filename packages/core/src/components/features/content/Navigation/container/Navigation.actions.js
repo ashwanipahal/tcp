@@ -7,9 +7,10 @@ export const loadNavigationData = payload => {
   };
 };
 
-export const openL2Panel = payload => {
+export const openL2Panel = (data, order) => {
   return {
-    payload,
+    data,
+    order,
     type: NAVIGATION_CONSTANTS.OPEN_L2_PANEL,
   };
 };

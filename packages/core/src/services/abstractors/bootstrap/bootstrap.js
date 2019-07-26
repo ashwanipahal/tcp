@@ -11,6 +11,7 @@ import { defaultBrand, defaultChannel, defaultCountry } from '../../api.constant
  *  -   Header
  *  -   Footer
  *  -   Labels
+ *  -   Navigation
  */
 const bootstrapModules = ['labels', 'header', 'footer', 'navigation'];
 

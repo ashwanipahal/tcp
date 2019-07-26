@@ -103,6 +103,8 @@ exports[`NavBar component renders correctly 1`] = `
           "productCount": 1853,
         }
       }
+      onBlur={[Function]}
+      onMouseOut={[Function]}
       subCategories={
         Array [
           Object {
@@ -1352,6 +1354,8 @@ exports[`NavBar component renders correctly 1`] = `
           "productCount": 841,
         }
       }
+      onBlur={[Function]}
+      onMouseOut={[Function]}
       subCategories={
         Array [
           Object {
@@ -2446,6 +2450,8 @@ exports[`NavBar component renders correctly 1`] = `
           "productCount": 916,
         }
       }
+      onBlur={[Function]}
+      onMouseOut={[Function]}
       subCategories={
         Array [
           Object {
@@ -3328,6 +3334,8 @@ exports[`NavBar component renders correctly 1`] = `
           "productCount": 844,
         }
       }
+      onBlur={[Function]}
+      onMouseOut={[Function]}
       subCategories={
         Array [
           Object {
@@ -4225,6 +4233,8 @@ exports[`NavBar component renders correctly 1`] = `
           "productCount": 537,
         }
       }
+      onBlur={[Function]}
+      onMouseOut={[Function]}
       subCategories={
         Array [
           Object {
@@ -4686,6 +4696,8 @@ exports[`NavBar component renders correctly 1`] = `
           "productCount": 35,
         }
       }
+      onBlur={[Function]}
+      onMouseOut={[Function]}
       subCategories={
         Array [
           Object {
@@ -5360,6 +5372,8 @@ exports[`NavBar component renders correctly 1`] = `
           "productCount": 12,
         }
       }
+      onBlur={[Function]}
+      onMouseOut={[Function]}
       subCategories={
         Array [
           Object {
@@ -5457,6 +5471,7 @@ exports[`NavBar component renders correctly 1`] = `
   </ul>
   <Styled(L2Panel)
     openPanel={false}
+    order={Array []}
     panelData={Object {}}
   />
 </Fragment>

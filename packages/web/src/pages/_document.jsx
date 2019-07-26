@@ -37,8 +37,10 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
-        <body className="custom_class">
+        <Head>
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
+        </Head>
+        <body>
           <Main />
           <NextScript />
           <StaticScripts />
