@@ -38,6 +38,10 @@ const endpoints = {
     method: 'PUT',
     URI: 'v2/cart/deleteMultipleOrderItems',
   },
+  updateOrderItem: {
+    method: 'PUT',
+    URI: 'v2/cart/updateOrderItem',
+  },
 };
 
 export default endpoints;
