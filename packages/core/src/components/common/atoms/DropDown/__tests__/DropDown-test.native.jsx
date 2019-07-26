@@ -14,7 +14,6 @@ describe('DropDown Test', () => {
 
   beforeEach(() => {
     component = shallow(<DropDownVanilla {...props} />);
-    component.setState({ dropDownIsOpen: false });
   });
 
   it('should be defined', () => {
@@ -22,6 +21,11 @@ describe('DropDown Test', () => {
   });
 
   it('should render correctly', () => {
+    expect(component).toMatchSnapshot();
+  });
+
+  it('should render with dropdown open state', () => {
+    component.setState({ dropDownIsOpen: true });
     expect(component).toMatchSnapshot();
   });
 
@@ -62,5 +66,22 @@ describe('DropDown Test', () => {
     };
     component.instance().onDropDownItemClick(obj);
     expect(component.state('dropDownIsOpen')).toBe(false);
+  });
+
+  it('test flatlist keyExtractor', () => {
+    const item = {
+      key: 'foo',
+    };
+    component.setState({ dropDownIsOpen: true });
+    const flatList = component.find('FlatList');
+    expect(flatList).toHaveLength(1);
+    expect(flatList.props().keyExtractor(item)).toBe('foo');
+  });
+
+  it('test flatlist ItemSeparatorComponent', () => {
+    component.setState({ dropDownIsOpen: true });
+    const flatList = component.find('FlatList');
+    expect(flatList).toHaveLength(1);
+    expect(flatList.props().ItemSeparatorComponent()).not.toBeNull();
   });
 });

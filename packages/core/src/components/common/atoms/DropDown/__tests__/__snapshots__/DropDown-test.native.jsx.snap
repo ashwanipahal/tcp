@@ -65,3 +65,93 @@ exports[`DropDown Test should render correctly 1`] = `
   </Component>
 </View>
 `;
+
+exports[`DropDown Test should render with dropdown open state 1`] = `
+<View
+  style={null}
+>
+  <Styled(View)
+    data={
+      Array [
+        Object {
+          "label": "foo",
+          "value": "foo",
+        },
+      ]
+    }
+    dropDownStyle={null}
+    itemStyle={null}
+    onLayout={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onValueChange={[MockFunction]}
+    selectedValue="foo"
+    variation="primary"
+  >
+    <Styled(View)>
+      <Styled(BodyCopy)
+        color="gray.800"
+        fontFamily="secondary"
+        fontSize="fs13"
+        fontWeight="black"
+        text="foo"
+        textAlign="center"
+      />
+    </Styled(View)>
+    <Image
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/carrot-small-up.png",
+        }
+      }
+    />
+  </Styled(View)>
+  <Component
+    hardwareAccelerated={false}
+    transparent={true}
+    visible={true}
+  >
+    <TouchableOpacity
+      accessibilityLabel="Tap to close it"
+      accessibilityRole="none"
+      accessible={true}
+      activeOpacity={1}
+      onPress={[Function]}
+      style={
+        Object {
+          "left": 0,
+          "top": 0,
+          "width": 0,
+        }
+      }
+    >
+      <Styled(View)
+        onLayout={[Function]}
+      >
+        <FlatList
+          ItemSeparatorComponent={[Function]}
+          data={
+            Array [
+              Object {
+                "label": "foo",
+                "value": "foo",
+              },
+            ]
+          }
+          disableVirtualization={false}
+          horizontal={false}
+          initialNumToRender={10}
+          keyExtractor={[Function]}
+          maxToRenderPerBatch={10}
+          numColumns={1}
+          onEndReachedThreshold={2}
+          removeClippedSubviews={false}
+          renderItem={[Function]}
+          scrollEventThrottle={50}
+          updateCellsBatchingPeriod={50}
+          windowSize={21}
+        />
+      </Styled(View)>
+    </TouchableOpacity>
+  </Component>
+</View>
+`;
