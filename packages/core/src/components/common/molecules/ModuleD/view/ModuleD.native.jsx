@@ -8,8 +8,8 @@ import colors from '../../../../../../styles/themes/TCP/colors';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
 
 type Props = {
-  headerText: Object,
-  smallCompImage: Object,
+  headerText: Array<Object>,
+  smallCompImage: Array<Object>,
   singleCTAButton: Object,
 };
 
@@ -78,21 +78,21 @@ const renderItem = item => {
  */
 
 const ModuleD = (props: Props) => {
-  let { headingText, url } = {};
-  const { headerText, smallCompImage, singleCTAButton } = props;
+  const {
+    headerText: [
+      {
+        link,
+        textItems: [{ headingText }],
+      },
+    ],
+    smallCompImage,
+    singleCTAButton,
+  } = props;
   const buttonWidth = { width: 225 };
-
-  if (headerText) {
-    ({
-      textItems: [{ text: headingText }],
-      link: { url },
-    } = headerText);
-  }
-
   return (
     <Wrapper>
       {headingText && (
-        <HeadingWrapper accessibilityRole="button" onPress={() => UrlHandler(url)}>
+        <HeadingWrapper accessibilityRole="button" onPress={() => UrlHandler(link.url)}>
           <Heading
             fontFamily="primary"
             fontSize="fs36"
