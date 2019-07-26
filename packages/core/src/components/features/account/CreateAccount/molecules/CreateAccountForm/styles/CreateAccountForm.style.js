@@ -1,9 +1,5 @@
 import { css } from 'styled-components';
 
-const styles = css`
-  .my-rewards-img-wrapper {
-    text-align: center;
-  }
-`;
+const styles = css``;
 
 export default styles;
