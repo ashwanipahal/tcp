@@ -146,7 +146,7 @@ export const getScreenWidth = () => {
 
 /**
  * @function getScreenHeight function returns screen height.
- * @return {number} function returns width of device viewport.
+ * @return {number} function returns height of device viewport.
  */
 export const getScreenHeight = () => {
   return parseInt(Dimensions.get('screen').height, 10);

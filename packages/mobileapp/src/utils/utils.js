@@ -1,6 +1,7 @@
 import icons from './icons';
 
-const brandName = 'tcp';
+let brandName = 'tcp';
+let toggleBrandIcon = true;
 
 /**
  * This function returns icon based on brand
@@ -47,6 +48,18 @@ export const getIcon = icon => {
     default:
       return getIconByBrand(icon, brandName);
   }
+};
+
+export const updateBrandName = appType => {
+  brandName = appType;
+};
+
+export const updateToggleBrandIcon = () => {
+  toggleBrandIcon = !toggleBrandIcon;
+};
+
+export const shouldToggleBrandIcon = () => {
+  return toggleBrandIcon;
 };
 
 export default {

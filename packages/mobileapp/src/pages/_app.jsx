@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import ThemeWrapperHOC from '../components/common/hoc/ThemeWrapper.container';
 import AppNavigator from '../navigation/AppNavigator';
+import AppSplash from '../navigation/AppSplash';
+
 import { initializeStore } from '../reduxStore/store/initializeStore';
 
 const styles = StyleSheet.create({
@@ -42,6 +44,7 @@ export class App extends React.PureComponent {
           <View style={styles.container}>
             {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
             <AppNavigator />
+            <AppSplash appType={appType} />
           </View>
         </ThemeWrapperHOC>
       </Provider>
