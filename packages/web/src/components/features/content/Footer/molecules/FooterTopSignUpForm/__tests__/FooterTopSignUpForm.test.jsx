@@ -97,13 +97,8 @@ describe('FooterTopSignUpFormVanilla component', () => {
       />
     );
     component.find(`#${fieldName}`).simulate('keypress', { which: 13, preventDefault: () => {} });
-    component.setProps({ subscription: { success: true } });
+    component.setProps({ submitSucceeded: true, subscription: { success: true } });
     expect(openModalMock).toHaveBeenCalledTimes(1);
-    return new Promise(resolve => {
-      setTimeout(() => {
-        expect(reduxFormReset).toHaveBeenCalledTimes(1);
-        resolve();
-      }, 1000);
-    });
+    expect(reduxFormReset).toHaveBeenCalledTimes(1);
   });
 });

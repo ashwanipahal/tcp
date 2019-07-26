@@ -16,23 +16,21 @@ class FooterTopSignUpForm extends React.PureComponent {
     };
   }
 
-  componentDidUpdate() {
-    const { subscription, openSuccessModal } = this.props;
+  componentDidUpdate({ submitSucceeded: oldSubmitSucceeded }) {
+    const { subscription, submitSucceeded, openSuccessModal } = this.props;
 
     if ((subscription.error || subscription.success) && this.formSubmitPromise) {
       if (subscription.error) {
         this.formSubmitPromise.reject();
       } else {
         this.formSubmitPromise.resolve();
-        openSuccessModal();
-        /* getting timing issue while resetting right after submit success.
-           The form is not clearing properly Doing following to get it work.
-        */
-        setTimeout(() => {
-          this.cleanUpForm();
-        }, 600);
       }
       this.formSubmitPromise = null;
+    }
+
+    if (oldSubmitSucceeded !== submitSucceeded && submitSucceeded) {
+      openSuccessModal();
+      this.cleanUpForm();
     }
   }
 
