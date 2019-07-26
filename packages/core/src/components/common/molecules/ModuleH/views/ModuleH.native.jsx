@@ -119,13 +119,13 @@ class ModuleH extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { divCTALinks, headerText: { link, textLines } = {} } = this.props;
+    const { divCTALinks, headerText: [{ link, textItems }] = {} } = this.props;
 
     return (
       <Wrapper>
         <HeaderWrapper>
-          {textLines &&
-            textLines.map((textLine, index) => {
+          {textItems &&
+            textItems.map((textLine, index) => {
               return link ? (
                 <TouchableOpacity
                   key={index.toString()}

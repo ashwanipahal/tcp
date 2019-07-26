@@ -1,1 +1,1 @@
-export { default } from './ModuleL.native';
+export { default } from './ModuleL';

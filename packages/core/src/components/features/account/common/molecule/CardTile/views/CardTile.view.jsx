@@ -231,7 +231,7 @@ class CardTile extends React.Component<Props> {
     setDefaultPaymentMethod(card);
   };
 
-  renderCtaLinks = ({ isCreditCard, dataLocatorPrefix }) => {
+  renderCtaLinks = ({ isCreditCard, dataLocatorPrefix, creditCardId }) => {
     const { labels } = this.props;
     return (
       <div className="cardTile__ctaLinks">
@@ -239,7 +239,8 @@ class CardTile extends React.Component<Props> {
           <Anchor
             fontSizeVariation="large"
             underline
-            to="/#"
+            to={`/account?id=edit-credit-card&creditCardId=${creditCardId}`}
+            asPath={`/account/address-book/edit-credit-card/${creditCardId}`}
             anchorVariation="primary"
             data-locator={`payment-${dataLocatorPrefix}editlink`}
             className="cardTile__anchor"
@@ -288,6 +289,7 @@ class CardTile extends React.Component<Props> {
     const cardName = getCardName({ card, labels });
     const cardIcon = getIconPath(cardIconMapping[card.ccBrand]);
     const dataLocatorPrefix = getDataLocatorPrefix({ card });
+    const { creditCardId } = card;
 
     const isGiftCardBalanceRequested = this.getIfGiftCardBalanceRequested(card.accountNo);
     const balance = this.getGiftCardBalance(card.accountNo);
@@ -348,7 +350,7 @@ class CardTile extends React.Component<Props> {
             </form>
           </div>
         )}
-        {this.renderCtaLinks({ isCreditCard, dataLocatorPrefix })}
+        {this.renderCtaLinks({ isCreditCard, dataLocatorPrefix, creditCardId })}
       </div>
     );
   }

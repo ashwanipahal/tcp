@@ -12,45 +12,24 @@ import AddedToBagContainer from '../../../CnC/AddedToBag';
 import ProductTile from '../molecules/ProductTile.view.native';
 
 export class ProductListView extends React.Component {
-  getPDPObject(item) {
-    const pdpObj = parseProductFromAPI(item, item.uniqueId, false, getImgPath, false, false);
-    const {
-      product: { colorFitsSizesMap },
-    } = pdpObj;
-    const { color, fits, hasFits } = colorFitsSizesMap[0];
-    const selectedColor = color.name;
-    const selectedFit = hasFits ? fits[0].fitName : '';
-    const selectedSize = fits[0].sizes[0].sizeName;
-
-    const formData = {
-      size: selectedSize,
-      fit: selectedFit,
-      color: selectedColor,
-      wishlistItemId: false,
-    };
-    return { formData, product: pdpObj.product };
-  }
-
-  addToBagEcom = (item, newQuantity) => {
+  addToBagEcom = (product, quantity, brand, formData) => {
     const { addToCartEcom } = this.props;
-    const quantity = newQuantity;
-    let { product, formData } = this.getPDPObject(item);
     formData = {
       ...formData,
       quantity,
+      brand,
     };
     const cartItemInfo = getCartItemInfo(product, formData);
     addToCartEcom(cartItemInfo);
   };
 
-  addToBagBossBopis = (item, isBoss, quantity, newStoreId) => {
+  addToBagBossBopis = (product, isBoss, quantity, storeId, brand, formData) => {
     const { addItemToCartBopis } = this.props;
-    const storeId = newStoreId;
-    let { product, formData } = this.getPDPObject(item);
     formData = {
       ...formData,
       quantity,
       isBoss,
+      brand: isBoss ? brand : 'tcp',
       storeLocId: storeId,
     };
     const cartItemInfo = getCartItemInfo(product, formData);
@@ -58,20 +37,36 @@ export class ProductListView extends React.Component {
   };
 
   render() {
-    const { data, className, addToCartEcom } = this.props;
+    const { className, addToCartEcom, giftCardProducts } = this.props;
+    let { data } = this.props;
+    let allProducts = [];
+    if (giftCardProducts.length && data.length) {
+      allProducts = [...data, ...giftCardProducts];
+    }
+
     return (
       <React.Fragment>
         <Text style={{ fontWeight: 'bold', textAlign: 'center', fontSize: 30 }}>PLP-Page</Text>
         <FlatList
           className="product-wrapper"
-          data={data}
-          renderItem={({ item }) => (
-            <ProductTile
-              item={item}
-              addToBagEcom={this.addToBagEcom}
-              addToBagBossBopis={this.addToBagBossBopis}
-            />
-          )}
+          data={allProducts}
+          renderItem={({ item }) => {
+            const pdpObj = parseProductFromAPI(
+              item,
+              item.uniqueId,
+              false,
+              getImgPath,
+              false,
+              false
+            );
+            return (
+              <ProductTile
+                item={pdpObj.product}
+                addToBagEcom={this.addToBagEcom}
+                addToBagBossBopis={this.addToBagBossBopis}
+              />
+            );
+          }}
           numColumns={2}
         />
       </React.Fragment>

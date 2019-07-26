@@ -1,7 +1,8 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  font-size: 13px;
+  margin-top: 10px;
+  font-size: 12px;
   .value {
     text-align: right;
   }

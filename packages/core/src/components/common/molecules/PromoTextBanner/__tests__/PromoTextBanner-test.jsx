@@ -7,7 +7,7 @@ let PromoTextBannerComp;
 
 beforeEach(() => {
   const wrapper = shallow(
-    <PromoTextBanner {...mock.moduleK.composites.masonryGrid[0].promoTextBanner} />
+    <PromoTextBanner promoTextBanner={mock.moduleK.composites.masonryGrid[0].promoTextBanner} />
   ).get(0);
   PromoTextBannerComp = shallow(wrapper);
 });

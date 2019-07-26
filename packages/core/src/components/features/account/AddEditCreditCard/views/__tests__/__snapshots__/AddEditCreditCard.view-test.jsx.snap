@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddEditCreditCard component should renders correctly 1`] = `
+<Fragment>
+  <Styled(Anchor)
+    anchorVariation="secondary"
+    data-locator="payment-backlink"
+    fontSizeVariation="xlarge"
+    to="/account?id=payment"
+  />
+  <Styled(FormPageHeading)
+    data-locator="payment-addcreditordebitcardheader"
+  />
+  <ReduxForm
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="addEditCreditCard"
+    getFormState={[Function]}
+    isEdit={false}
+    keepDirtyOnReinitialize={false}
+    labels={Object {}}
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    validate={[Function]}
+  />
+</Fragment>
+`;
+
+exports[`AddEditCreditCard component should renders correctly with error message 1`] = `
+<Fragment>
+  <Styled(Anchor)
+    anchorVariation="secondary"
+    data-locator="payment-backlink"
+    fontSizeVariation="xlarge"
+    to="/account?id=payment"
+  />
+  <Styled(FormPageHeading)
+    data-locator="payment-addcreditordebitcardheader"
+  />
+  <Styled(Notification)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    message="There is some error"
+    status="error"
+  />
+  <ReduxForm
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="addEditCreditCard"
+    getFormState={[Function]}
+    isEdit={true}
+    keepDirtyOnReinitialize={false}
+    labels={Object {}}
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    validate={[Function]}
+  />
+</Fragment>
+`;

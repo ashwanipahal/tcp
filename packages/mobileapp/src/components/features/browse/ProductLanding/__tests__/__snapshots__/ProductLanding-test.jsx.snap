@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Anchor Native should render correctly 1`] = `
+<Fragment>
+  <Text>
+    Product List Page
+    test component
+  </Text>
+</Fragment>
+`;

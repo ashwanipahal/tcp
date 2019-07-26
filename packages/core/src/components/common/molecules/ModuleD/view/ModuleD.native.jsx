@@ -84,7 +84,7 @@ const ModuleD = (props: Props) => {
 
   if (headerText) {
     ({
-      textLines: [{ text: headingText }],
+      textItems: [{ text: headingText }],
       link: { url },
     } = headerText);
   }
