@@ -73,7 +73,7 @@ export const executeUnbxdAPICall = reqObj => {
     return null;
   }
   const apiConfigObj = getAPIConfig();
-  return unbxdAPIClient(apiConfigObj, reqObj).catch(errorHandler);
+  return unbxdAPIClient(apiConfigObj, reqObj).catch(errorHandler); // TODO - Make a new Instance and for GRAPHQL as well..
 };
 
 export const executeExternalAPICall = reqObj => {
@@ -81,7 +81,7 @@ export const executeExternalAPICall = reqObj => {
     return null;
   }
   const apiConfigObj = getAPIConfig();
-  return externalAPIClient(apiConfigObj, reqObj).catch(errorHandler);
+  return externalAPIClient(apiConfigObj, reqObj).catch(errorHandler); // TODO - Make a new Instance..
 };
 
 export default {
