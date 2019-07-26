@@ -7,10 +7,7 @@ import AccountComponentMapping from '../AccountComponentMapping';
 import utils from '../../../../../utils';
 
 import { getAccountNavigationList } from './Account.actions';
-
-import {
-  getAccountNavigationState
-} from './Account.selectors';
+import { getAccountNavigationState } from './Account.selectors';
 
 // @flow
 type Props = {
@@ -63,8 +60,7 @@ export class Account extends React.PureComponent<Props, State> {
     const { router, accountNavigation } = this.props;
     let navData = [];
     if(accountNavigation){
-     navData = accountNavigation.accountNav;
-     console.log(navData);
+      navData = accountNavigation.accountNav;
     }
     return (
       <MyAccountLayout

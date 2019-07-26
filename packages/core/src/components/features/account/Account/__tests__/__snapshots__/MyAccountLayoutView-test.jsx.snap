@@ -12,84 +12,88 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
         }
       }
     >
-      <Styled(MyAccountLeftNav)
-        navData={
-          Array [
-            Object {
-              "component": "accountOverview",
-              "displayName": "Account Overview",
-              "href": "/account?id=accountOverview",
-              "id": "accountOverview",
-              "url": "/account",
-            },
-            Object {
-              "component": "myPlaceRewards",
-              "displayName": "My Place Rewards",
-              "href": "/account?id=accountOverview",
-              "id": "myPlaceRewards",
-              "subSections": Array [
-                Object {
-                  "component": "pointsHistoryPage",
-                  "displayName": "Points History",
-                  "href": "/account?id=accountOverview",
-                  "id": "pointsHistory",
-                  "url": "/account/place-rewards/points-history",
-                },
-              ],
-              "url": "/account/place-rewards",
-            },
-            Object {
-              "component": "myWalletPage",
-              "displayName": "My Wallet",
-              "href": "/account?id=accountOverview",
-              "id": "myWallet",
-              "url": "/account/wallet",
-            },
-            Object {
-              "component": "earnExtraPointsPage",
-              "displayName": "Earn Extra Points",
-              "href": "/account?id=accountOverview",
-              "id": "earnExtraPoints",
-              "url": "/account/extra-points",
-            },
-            Object {
-              "component": "profileInformation",
-              "displayName": "Profile Information",
-              "href": "/account?id=accountOverview",
-              "id": "profileInformation",
-              "url": "/account/profile",
-            },
-            Object {
-              "component": "addressBook",
-              "displayName": "Address Book",
-              "href": "/account?id=addressBook",
-              "id": "addressBook",
-              "url": "/account/address-book",
-            },
-            Object {
-              "component": "payment",
-              "displayName": "Payment & Gift Cards",
-              "href": "/account?id=payment",
-              "id": "paymentGiftCards",
-              "url": "/account/payment",
-            },
-            Object {
-              "component": "myPreferencePage",
-              "displayName": "My Preferences",
-              "href": "/account?id=accountOverview",
-              "id": "myPreferences",
-              "url": "/account/my-preference",
-            },
-            Object {
-              "component": "myPlaceRewardsCCPage",
-              "displayName": "My Place Rewards Credit Card",
-              "href": "/account?id=accountOverview",
-              "id": "myPlaceRewardsCC",
-              "url": "/account/rewardsCreditCard",
-            },
-          ]
-        }
-      />
+      <div
+        className="menuLarge"
+      >
+        <Styled(MyAccountLeftNav)
+          navData={
+            Array [
+              Object {
+                "component": "accountOverview",
+                "displayName": "Account Overview",
+                "href": "/account?id=accountOverview",
+                "id": "accountOverview",
+                "url": "/account",
+              },
+              Object {
+                "component": "myPlaceRewards",
+                "displayName": "My Place Rewards",
+                "href": "/account?id=accountOverview",
+                "id": "myPlaceRewards",
+                "subSections": Array [
+                  Object {
+                    "component": "pointsHistoryPage",
+                    "displayName": "Points History",
+                    "href": "/account?id=accountOverview",
+                    "id": "pointsHistory",
+                    "url": "/account/place-rewards/points-history",
+                  },
+                ],
+                "url": "/account/place-rewards",
+              },
+              Object {
+                "component": "myWalletPage",
+                "displayName": "My Wallet",
+                "href": "/account?id=accountOverview",
+                "id": "myWallet",
+                "url": "/account/wallet",
+              },
+              Object {
+                "component": "earnExtraPointsPage",
+                "displayName": "Earn Extra Points",
+                "href": "/account?id=accountOverview",
+                "id": "earnExtraPoints",
+                "url": "/account/extra-points",
+              },
+              Object {
+                "component": "profileInformation",
+                "displayName": "Profile Information",
+                "href": "/account?id=accountOverview",
+                "id": "profileInformation",
+                "url": "/account/profile",
+              },
+              Object {
+                "component": "addressBook",
+                "displayName": "Address Book",
+                "href": "/account?id=addressBook",
+                "id": "addressBook",
+                "url": "/account/address-book",
+              },
+              Object {
+                "component": "payment",
+                "displayName": "Payment & Gift Cards",
+                "href": "/account?id=payment",
+                "id": "paymentGiftCards",
+                "url": "/account/payment",
+              },
+              Object {
+                "component": "myPreferencePage",
+                "displayName": "My Preferences",
+                "href": "/account?id=accountOverview",
+                "id": "myPreferences",
+                "url": "/account/my-preference",
+              },
+              Object {
+                "component": "myPlaceRewardsCCPage",
+                "displayName": "My Place Rewards Credit Card",
+                "href": "/account?id=accountOverview",
+                "id": "myPlaceRewardsCC",
+                "url": "/account/rewardsCreditCard",
+              },
+            ]
+          }
+        />
+      </div>
     </Styled(Col)>
     <Styled(Col)
       colSize={
@@ -100,6 +104,91 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
         }
       }
     >
+      <div
+        className="menuMedium"
+      >
+        <Styled(Dropdown)
+          active="Account Overview"
+          activeId="place-rewards"
+          clickHandler={[Function]}
+          options={
+            Array [
+              Object {
+                "component": "accountOverview",
+                "displayName": "Account Overview",
+                "href": "/account?id=accountOverview",
+                "id": "accountOverview",
+                "url": "/account",
+              },
+              Object {
+                "component": "myPlaceRewards",
+                "displayName": "My Place Rewards",
+                "href": "/account?id=accountOverview",
+                "id": "myPlaceRewards",
+                "subSections": Array [
+                  Object {
+                    "component": "pointsHistoryPage",
+                    "displayName": "Points History",
+                    "href": "/account?id=accountOverview",
+                    "id": "pointsHistory",
+                    "url": "/account/place-rewards/points-history",
+                  },
+                ],
+                "url": "/account/place-rewards",
+              },
+              Object {
+                "component": "myWalletPage",
+                "displayName": "My Wallet",
+                "href": "/account?id=accountOverview",
+                "id": "myWallet",
+                "url": "/account/wallet",
+              },
+              Object {
+                "component": "earnExtraPointsPage",
+                "displayName": "Earn Extra Points",
+                "href": "/account?id=accountOverview",
+                "id": "earnExtraPoints",
+                "url": "/account/extra-points",
+              },
+              Object {
+                "component": "profileInformation",
+                "displayName": "Profile Information",
+                "href": "/account?id=accountOverview",
+                "id": "profileInformation",
+                "url": "/account/profile",
+              },
+              Object {
+                "component": "addressBook",
+                "displayName": "Address Book",
+                "href": "/account?id=addressBook",
+                "id": "addressBook",
+                "url": "/account/address-book",
+              },
+              Object {
+                "component": "payment",
+                "displayName": "Payment & Gift Cards",
+                "href": "/account?id=payment",
+                "id": "paymentGiftCards",
+                "url": "/account/payment",
+              },
+              Object {
+                "component": "myPreferencePage",
+                "displayName": "My Preferences",
+                "href": "/account?id=accountOverview",
+                "id": "myPreferences",
+                "url": "/account/my-preference",
+              },
+              Object {
+                "component": "myPlaceRewardsCCPage",
+                "displayName": "My Place Rewards Credit Card",
+                "href": "/account?id=accountOverview",
+                "id": "myPlaceRewardsCC",
+                "url": "/account/rewardsCreditCard",
+              },
+            ]
+          }
+        />
+      </div>
       <mockConstructor />
     </Styled(Col)>
   </Styled(Row)>

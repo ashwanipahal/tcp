@@ -3,61 +3,86 @@ import PropTypes from 'prop-types';
 import BodyCopy from '../../../atoms/BodyCopy';
 import styles from '../styles/Dropdown.style';
 import withStyles from '../../../hoc/withStyles';
+import Anchor from '../../../atoms/Anchor';
 
 class Dropdown extends React.Component<Props> {
   constructor(props) {
     super(props);
     this.state = {
       dropDownExpend: false,
-      active: props.active || 'Please Select',
+      active: props.active,
       activeId: props.activeId || null,
     };
   }
 
   toggleHandler = () => {
-    console.log("furki");
     const { dropDownExpend } = this.state;
-    console.log(dropDownExpend);
-    console.log("furkan");
     this.setState({
       dropDownExpend: !dropDownExpend,
     });
   };
 
   onClickHandler = (e, value, displayName) => {
-    const { clickHandler } = this.props;
     this.setState({
       active: displayName,
       activeId: value,
     });
     this.toggleHandler();
-    clickHandler(e, value, displayName);
   };
 
-
-
-
-  itemLists = (item, options, activeId) => {
+  itemLists = (nav, options, activeId) => {
     return (
-      <li
-        key={item.id}
-        tabIndex={-1}
-        className={`${ activeId === item.id ? 'dropdownActiveClass text-align-center' : 'text-align-center'
-        }`}
-      >
-        <BodyCopy
-          component="div"
-          role="button"
-          textAlign="center"
+      <>
+        <li
+          key={nav.id}
           tabIndex={-1}
-          key={item.id}
-          onClick={e => this.onClickHandler(e, item.id, item.displayName)}
-          onKeyPress={e => this.onClickHandler(e, item.id, item.displayName)}
-          onKeyDown={e => this.onClickHandler(e, item.id, item.displayName)}
+          className={`${ activeId === nav.id ? 'dropdownActiveClass text-align-center' : 'text-align-center'
+          }`}
         >
-          {item.displayName}
-        </BodyCopy>
-      </li>
+          <BodyCopy
+            component="div"
+            role="button"
+            textAlign="center"
+            tabIndex={-1}
+            key={nav.id}
+            onClick={e => this.onClickHandler(e, nav.id, nav.displayName)}
+          >
+            <Anchor
+              asPath={nav.url}
+              to={nav.href}
+            >
+              {nav.displayName}
+            </Anchor>
+          </BodyCopy>
+        </li>
+        {nav.subSections &&  nav.subSections.map(subSection => {
+          return (
+            <li
+              key={subSection.id}
+              tabIndex={-1}
+              className={`${ activeId === subSection.id ? 'dropdownActiveClass text-align-center' : 'text-align-center'
+              }`}
+            >
+              <BodyCopy
+                component="div"
+                role="button"
+                textAlign="center"
+                tabIndex={-1}
+                key={subSection.id}
+                onClick={e => this.onClickHandler(e, subSection.id, subSection.displayName)}
+              >
+                <Anchor
+                  asPath={subSection.url}
+                  to={subSection.href}
+                >
+                  {subSection.displayName}
+                </Anchor>
+              </BodyCopy>
+            </li>
+          )})
+          }
+      </>
+
     );
   };
 
@@ -82,7 +107,7 @@ class Dropdown extends React.Component<Props> {
         {dropDownExpend && (
           <BodyCopy component="div" className="dropdownUpperDiv">
             <ul className="dropdownUlBorder dropDownSelect">
-              {options.map(item => this.itemLists(item, options, activeId))}
+              {options.map(nav => this.itemLists(nav, options, activeId))}
             </ul>
           </BodyCopy>
         )}
@@ -93,7 +118,6 @@ class Dropdown extends React.Component<Props> {
 
 Dropdown.propTypes = {
   className: PropTypes.string,
-  clickHandler: PropTypes.func.isRequired,
   options: PropTypes.shape({}).isRequired,
   active: PropTypes.string,
   activeId: PropTypes.string,

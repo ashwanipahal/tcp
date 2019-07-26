@@ -10,7 +10,7 @@ exports[`DropdownList component should renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-bwzfXH",
+        "componentId": "sc-htpNat",
         "isStatic": false,
         "rules": Array [
           "
@@ -25,6 +25,63 @@ exports[`DropdownList component should renders correctly 1`] = `
           ";
   }
 
+  .customSelectTitle {
+    border: 1px solid #9c9c9c;
+    background-color: #eeeeee;
+    margin-top: ",
+          [Function],
+          ";
+    padding: ",
+          [Function],
+          "
+    cursor:pointer;
+    position: relative;
+  }
+
+
+  .customSelectTitleImg {
+    background: url(",
+          "/static/images/down_arrow_icon.png",
+          ") no-repeat right center;
+    position: absolute;
+    right: 10px;
+    height: 15px;
+    width: 100%;
+    top: 10px;
+  }
+
+  .customSelectTitleUpImg {
+    background: url(",
+          "/static/images/up_arrow_icon.png",
+          ") no-repeat right center;
+    position: absolute;
+    right: 10px;
+    height: 15px;
+    width: 100%;
+    top: 10px;
+  }
+
+  .text-align-center{
+    padding: ",
+          [Function],
+          "
+    cursor:pointer;
+  }
+
+  .dropDownSelect{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+    overflow: auto
+  }
+
+  .dropdownUpperDiv{
+    position: relative;
+    text-align:center;
+  }
+
+
   .dropdownliBottomBorder {
     border-bottom: 1px solid ",
           [Function],
@@ -34,89 +91,23 @@ exports[`DropdownList component should renders correctly 1`] = `
           ";
   }
 
-  .dropdownDivOverFlow {
-    overflow-y: scroll;
-    max-height: 230px;
-  }
-
   .dropdownActiveClass {
-    background-color: ",
-          [Function],
-          ";
+    background-color: #eeeeee};
     position: relative;
   }
 
-  .dropdownActiveIcon {
-    background-image: url(",
-          "/static/images/active_icon.png",
-          ");
-    background-repeat: no-repeat;
-    position: absolute;
-    width: 3%;
-    right: 1%;
-    top: 40%;
-    height: 16%;
-  }
-
-  .dropDownListwrapper {
-    position: relative;
-    padding-bottom: ",
-          [Function],
-          ";
-    border: 1px solid ",
-          [Function],
-          ";
-    background-color: ",
-          [Function],
-          ";
-  }
-
-  .dropdownClassBtn {
-    color: ",
-          [Function],
-          ";
-    background-color: ",
-          [Function],
-          ";
-  }
-
-  .ulBorderWithLastRow {
-    border-bottom: ",
-          [Function],
-          ";
-    width: 100%;
-  }
-
-  .ulBorderWithLastRow li:hover {
-    background: ",
-          [Function],
-          ";
-  }
-
-  .ulBorderWithLastRow li:last-child {
-    position: absolute;
-    width: 96%;
-    height: 42px;
-    padding: ",
-          [Function],
-          ";
-    left: 0;
-    bottom: 0;
-    border-bottom: none;
-  }
-
-  .ulBorderWithLastRow li:last-child:hover {
-    background: none;
+  li:hover {
+    background: #eeeeee;
   }
 ",
           ";
 ",
         ],
       },
-      "displayName": "Styled(DropdownList)",
+      "displayName": "Styled(Dropdown)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-bwzfXH",
+      "styledComponentId": "sc-htpNat",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -147,7 +138,7 @@ exports[`DropdownList component should renders correctly when optional fields ar
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-bwzfXH",
+        "componentId": "sc-htpNat",
         "isStatic": false,
         "rules": Array [
           "
@@ -162,6 +153,63 @@ exports[`DropdownList component should renders correctly when optional fields ar
           ";
   }
 
+  .customSelectTitle {
+    border: 1px solid #9c9c9c;
+    background-color: #eeeeee;
+    margin-top: ",
+          [Function],
+          ";
+    padding: ",
+          [Function],
+          "
+    cursor:pointer;
+    position: relative;
+  }
+
+
+  .customSelectTitleImg {
+    background: url(",
+          "/static/images/down_arrow_icon.png",
+          ") no-repeat right center;
+    position: absolute;
+    right: 10px;
+    height: 15px;
+    width: 100%;
+    top: 10px;
+  }
+
+  .customSelectTitleUpImg {
+    background: url(",
+          "/static/images/up_arrow_icon.png",
+          ") no-repeat right center;
+    position: absolute;
+    right: 10px;
+    height: 15px;
+    width: 100%;
+    top: 10px;
+  }
+
+  .text-align-center{
+    padding: ",
+          [Function],
+          "
+    cursor:pointer;
+  }
+
+  .dropDownSelect{
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 9;
+    overflow: auto
+  }
+
+  .dropdownUpperDiv{
+    position: relative;
+    text-align:center;
+  }
+
+
   .dropdownliBottomBorder {
     border-bottom: 1px solid ",
           [Function],
@@ -171,89 +219,23 @@ exports[`DropdownList component should renders correctly when optional fields ar
           ";
   }
 
-  .dropdownDivOverFlow {
-    overflow-y: scroll;
-    max-height: 230px;
-  }
-
   .dropdownActiveClass {
-    background-color: ",
-          [Function],
-          ";
+    background-color: #eeeeee};
     position: relative;
   }
 
-  .dropdownActiveIcon {
-    background-image: url(",
-          "/static/images/active_icon.png",
-          ");
-    background-repeat: no-repeat;
-    position: absolute;
-    width: 3%;
-    right: 1%;
-    top: 40%;
-    height: 16%;
-  }
-
-  .dropDownListwrapper {
-    position: relative;
-    padding-bottom: ",
-          [Function],
-          ";
-    border: 1px solid ",
-          [Function],
-          ";
-    background-color: ",
-          [Function],
-          ";
-  }
-
-  .dropdownClassBtn {
-    color: ",
-          [Function],
-          ";
-    background-color: ",
-          [Function],
-          ";
-  }
-
-  .ulBorderWithLastRow {
-    border-bottom: ",
-          [Function],
-          ";
-    width: 100%;
-  }
-
-  .ulBorderWithLastRow li:hover {
-    background: ",
-          [Function],
-          ";
-  }
-
-  .ulBorderWithLastRow li:last-child {
-    position: absolute;
-    width: 96%;
-    height: 42px;
-    padding: ",
-          [Function],
-          ";
-    left: 0;
-    bottom: 0;
-    border-bottom: none;
-  }
-
-  .ulBorderWithLastRow li:last-child:hover {
-    background: none;
+  li:hover {
+    background: #eeeeee;
   }
 ",
           ";
 ",
         ],
       },
-      "displayName": "Styled(DropdownList)",
+      "displayName": "Styled(Dropdown)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-bwzfXH",
+      "styledComponentId": "sc-htpNat",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

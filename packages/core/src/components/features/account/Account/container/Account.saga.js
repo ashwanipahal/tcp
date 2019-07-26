@@ -15,10 +15,6 @@ export function* getAccountNavigationList() {
       country: 'USA',
       channel: 'Desktop',
     });
-
-    console.log("furkan ------------------");
-    console.log(contact);
-    console.log("furkan ------------------");
     yield put(setAccountNavigationList(contact));
   } catch (err) {
     yield null;
@@ -26,8 +22,8 @@ export function* getAccountNavigationList() {
 }
 
 export function* AccountSaga() {
-  const cachedAddressList = validateReduxCache(getAccountNavigationList);
-  yield takeLatest(ACCOUNT_CONSTANTS.GET_ACCOUNT_NAVIGATION_LIST, cachedAddressList);
+  const cachedAccountNavigationList = validateReduxCache(getAccountNavigationList);
+  yield takeLatest(ACCOUNT_CONSTANTS.GET_ACCOUNT_NAVIGATION_LIST, cachedAccountNavigationList);
 }
 
 export default AccountSaga;

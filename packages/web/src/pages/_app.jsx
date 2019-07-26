@@ -57,9 +57,9 @@ class TCPWebApp extends App {
           <Provider store={store}>
             <GlobalStyle />
             <Grid>
-              {/* <Header /> */}
+              <Header />
               <Component {...pageProps} />
-              {/* <Footer /> */}
+              <Footer />
             </Grid>
           </Provider>
         </ThemeProvider>

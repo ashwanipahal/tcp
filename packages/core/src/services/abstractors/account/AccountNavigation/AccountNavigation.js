@@ -16,16 +16,16 @@ const Abstractor = {
   },
 
   hrefUrl:(url) => {
-    var hrefUrlVal = '';
-    var res = url.split("/");
-      hrefUrlVal = '/'+res[1];
+    let hrefUrlVal = '';
+    const res = url.split("/");
+      hrefUrlVal = `/${res[1]}`;
       if(res.length > 2){
-        for(let i=2;i<res.length;i++){
-          var resVal = res[i];
-          if(i==2){
-            hrefUrlVal = hrefUrlVal +'?id=' + resVal
+        for(let i = 2; i < res.length; i += 1){
+          const resVal = res[i];
+          if(i===2){
+            hrefUrlVal = `${hrefUrlVal}?id=${resVal}`;
           }else{
-            hrefUrlVal = hrefUrlVal + '&' + resVal
+            hrefUrlVal = `${hrefUrlVal}&${resVal}`;
           }
         }
       }
@@ -33,12 +33,11 @@ const Abstractor = {
   },
 
   MakeComponent:(title) => {
-    var ComponentVal = '';
-    var res = title.split("-");
-    ComponentVal = res[0];
+    const res = title.split("-");
+    let [ComponentVal] = res[0];
       if(res.length > 1){
-        for(let i=1;i<res.length;i++){
-          var resVal = res[i];
+        for(let i = 1 ; i < res.length; i += 1){
+          const resVal = res[i];
           ComponentVal = ComponentVal + resVal.charAt(0).toUpperCase() + resVal.slice(1);
         }
       }
@@ -47,41 +46,40 @@ const Abstractor = {
 
   processData: data => {
     try {
-          const accountNavData = data.accountNavigation;
-          const navData = []
-        for(var nav of accountNavData) {
+        const accountNavData = data.accountNavigation;
+        const navData = [];
+        for (const nav of accountNavData) {
           if(nav){
-            let subSections = [];
+            const subSections = [];
             if(nav.subSections){
-              let subItem = nav.subSections;
-              for (var i = 0; i < subItem.length; i++) {
-                console.log(subItem[i]);
-                console.log(subItem[i].leafLink.url);
-                let hrefValue = Abstractor.hrefUrl(subItem[i].leafLink.url);
-                let MenuComponent = Abstractor.MakeComponent(subItem[i].leafLink.title);
+              const subItem = nav.subSections;
+              for (let i = 0; i < subItem.length; i += 1) {
+                const hrefValue = Abstractor.hrefUrl(subItem[i].leafLink.url);
+                const MenuId = Abstractor.MakeComponent(subItem[i].leafLink.title);
                 subSections.push({
-                  id : MenuComponent,
+                  id : MenuId,
                   url: subItem[i].leafLink.url,
                   displayName: subItem[i].leafLink.text,
-                  component: MenuComponent,
+                  component: MenuId,
                   href:hrefValue,
                 });
               }
             }
+
             if(nav.leafLink){
-              let item = nav.leafLink;
-              let hrefValue = Abstractor.hrefUrl(item.url);
-              let MenuComponent = Abstractor.MakeComponent(item.title);
-              var menu = {
-                id : MenuComponent,
+              const item = nav.leafLink;
+              const hrefValue = Abstractor.hrefUrl(item.url);
+              const MenuId = Abstractor.MakeComponent(item.title);
+              const menu = {
+                id : MenuId,
                 url: item.url,
                 displayName: item.text,
-                component: MenuComponent,
+                component: MenuId,
                 href:hrefValue,
                 subSections: subSections
               };
+              navData.push(menu);
           }
-            navData.push(menu);
           }
         }
       return navData
