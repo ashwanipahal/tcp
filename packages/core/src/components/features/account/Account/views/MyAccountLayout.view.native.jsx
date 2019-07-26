@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import MyAccountDropdownNav from './MyAccountDropdownNav.view';
-import { ParentContainer } from '../styles/MyAccountLayout.style.native';
+import ParentContainer from '../styles/MyAccountLayout.style.native';
 import withStyles from '../../../../common/hoc/withStyles';
 
 // @flow

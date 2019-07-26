@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Animated Brand Change Icon Native should render correctly 1`] = `
+<Styled(View)>
+  <TouchableOpacity
+    accessibilityComponentType="none"
+    accessibilityTraits="none"
+    activeOpacity={0.2}
+    onPress={[Function]}
+    style={
+      Object {
+        "borderRadius": 35,
+        "height": 66,
+        "width": 66,
+      }
+    }
+  />
+  <View>
+    <TouchableOpacity
+      accessibilityComponentType="none"
+      accessibilityTraits="none"
+      activeOpacity={0.2}
+      onPress={[Function]}
+      style={
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+        }
+      }
+    >
+      <Styled(ImageComp)
+        source={
+          Object {
+            "testUri": "../../../src/brand_config/main/config/tcp.png",
+          }
+        }
+        style={
+          Object {
+            "borderRadius": 35,
+            "height": 0,
+            "width": 0,
+          }
+        }
+      />
+    </TouchableOpacity>
+    <TouchableOpacity
+      accessibilityComponentType="none"
+      accessibilityTraits="none"
+      activeOpacity={0.2}
+      onPress={[Function]}
+      style={
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+        }
+      }
+    >
+      <Styled(ImageComp)
+        source={
+          Object {
+            "testUri": "../../../src/brand_config/gymboree/config/gymboree.png",
+          }
+        }
+        style={
+          Object {
+            "borderRadius": 35,
+            "height": 0,
+            "width": 0,
+          }
+        }
+      />
+    </TouchableOpacity>
+  </View>
+</Styled(View)>
+`;

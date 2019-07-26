@@ -9,8 +9,7 @@ import theme from '@tcp/core/styles/themes/TCP';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
 import { createAPIConfig } from '@tcp/core/src/utils';
-import { Header, Footer } from '../components/common/organisms';
-
+import { Header, Footer } from '../components/features/content';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 

@@ -31,4 +31,5 @@ export default {
   'venmo-blue-acceptance-mark': '/static/images/venmo-blue-acceptance-mark.svg',
   down_arrow_icon: '/static/images/down_arrow_icon.png',
   active_icon: '/static/images/active_icon.png',
+  'carousel-big-carrot': '/static/images/right-carousel-carrot.svg',
 };

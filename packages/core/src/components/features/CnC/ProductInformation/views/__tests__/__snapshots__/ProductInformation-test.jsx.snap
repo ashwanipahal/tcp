@@ -7,7 +7,6 @@ exports[`BossBannerView component renders correctly 1`] = `
     tagName="ul"
   >
     <Styled(Col)
-      className="productImgBrand"
       colSize={
         Object {
           "large": 3,
@@ -21,17 +20,17 @@ exports[`BossBannerView component renders correctly 1`] = `
       <Styled(Image)
         alt="Product"
         className="product-image"
-        src="https://www.childrensplace.com/wcsstore/GlobalSAS/images/tcp/products/500/3000996_FM.jpg"
+        data-locator="addedtobag-productimage"
+        src="https://test4.childrensplace.comundefined"
       />
       <Styled(Image)
         alt="Brand"
         className="brand-image"
         data-locator="global_TCPimg"
-        src="/static/images/tcp-logo.svg"
+        src="/static/images/gymboree-logo.svg"
       />
     </Styled(Col)>
     <Styled(Col)
-      className="productInfo"
       colSize={
         Object {
           "large": 9,
@@ -62,6 +61,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             className="product-title"
             color="text.primary"
             component="p"
+            dataLocator="addedtobag-productname"
             fontFamily="primary"
             fontSize="fs14"
             fontWeight={
@@ -130,6 +130,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             className="itemDesc"
             color="text.primary"
             component="p"
+            dataLocator="addedtobag-productcolor"
             fontFamily="primary"
             fontSize="fs13"
             fontWeight="regular"
@@ -137,9 +138,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             lineHeight="normal"
             tag="span"
             textAlign="left"
-          >
-            RED
-          </Styled(BodyCopy)>
+          />
         </Styled(Col)>
       </Styled(Row)>
       <Styled(Row)
@@ -193,6 +192,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             className="itemDesc"
             color="text.primary"
             component="p"
+            dataLocator="addedtobag-productsize"
             fontFamily="primary"
             fontSize="fs13"
             fontWeight="regular"
@@ -201,7 +201,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             tag="span"
             textAlign="left"
           >
-            M
+            M 
             slim
           </Styled(BodyCopy)>
         </Styled(Col)>
@@ -258,6 +258,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             className="itemDesc"
             color="text.primary"
             component="p"
+            dataLocator="addedtobag-productqty"
             fontFamily="primary"
             fontSize="fs13"
             fontWeight="regular"

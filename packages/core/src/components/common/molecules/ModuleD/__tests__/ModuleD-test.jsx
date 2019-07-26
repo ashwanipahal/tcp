@@ -1,13 +1,17 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ModuleD from '../view/ModuleD';
+import { ModuleDVanilla as ModuleD } from '../view/ModuleD';
+import mock from '../../../../../services/abstractors/common/moduleD/mock';
 
 describe('ModuleD component', () => {
-  it('renders correctly', () => {
-    const props = {};
+  let ModuleDComp;
 
-    const wrapper = shallow(<ModuleD {...props} />).get(0);
-    const mount = shallow(wrapper);
-    expect(mount).toMatchSnapshot();
+  beforeEach(() => {
+    const wrapper = shallow(<ModuleD {...mock.moduleD.composites} />).get(0);
+    ModuleDComp = shallow(wrapper);
+  });
+
+  it('renders correctly', () => {
+    expect(ModuleDComp).toMatchSnapshot();
   });
 });
