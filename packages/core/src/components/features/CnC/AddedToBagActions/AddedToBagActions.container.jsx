@@ -5,27 +5,22 @@ import { connect } from 'react-redux';
 import AddedToBagActionsView from './views/AddedToBagActions';
 
 const AddedToBagContainer = props => {
-  const { isLoggedIn, labels } = props;
+  const { labels } = props;
 
-  const onClickCheckout = () => {
-    if (!isLoggedIn) {
-      Router.push('/login');
-    } else {
-      Router.push('/shipping');
-    }
+  const onClickViewBag = () => {
+    Router.push('/cart');
   };
-  return <AddedToBagActionsView labels={labels} onClickCartCheckout={onClickCheckout} />;
+  return <AddedToBagActionsView onClickViewBag={onClickViewBag} labels={labels} />;
 };
 
 AddedToBagContainer.propTypes = {
-  isLoggedIn: PropTypes.bool.isRequired,
+  // loginInfo: PropTypes.shape.isRequired,
   labels: PropTypes.shape.isRequired,
 };
 
-const mapStateToDispatch = (...params) => {
-  const ownProps = params[1];
+const mapStateToDispatch = (state, ownProps) => {
   return {
-    isLoggedIn: true,
+    loginInfo: state.LoginPageReducer.loginInfo,
     componentProps: ownProps,
   };
 };

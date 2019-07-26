@@ -30,14 +30,25 @@ const BOSSBanner = ({ labels }: Props) => {
             colSize={{ small: 6, medium: 8, large: 12 }}
             textAlign="center"
           >
-            <BodyCopy tag="span" fontSize="fs12" fontWeight={['semibold']} textAlign="center">
+            <BodyCopy
+              dataLocator="addedtobag-bossbanner"
+              tag="span"
+              fontSize="fs12"
+              fontWeight={['semibold']}
+              textAlign="center"
+            >
               {labels.pickUpText}
             </BodyCopy>
           </Col>
         </Row>
         <Row className="bossText">
           <Col className="pickUp" key="productDetails" colSize={{ small: 6, medium: 8, large: 12 }}>
-            <BodyCopy tag="span" fontSize="fs10" textAlign="center">
+            <BodyCopy
+              tag="span"
+              fontSize="fs10"
+              textAlign="center"
+              dataLocator="addedtobag-bossbannerdescription"
+            >
               {getModifiedString(labels)}
             </BodyCopy>
           </Col>
