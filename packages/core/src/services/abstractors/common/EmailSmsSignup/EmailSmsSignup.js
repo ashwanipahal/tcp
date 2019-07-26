@@ -30,6 +30,10 @@ const Abstractor = {
       .catch(Abstractor.handleValidationError);
   },
   processSubscriptionData: res => {
+    /**
+     * The only way currently to confirm successful email subscription is that
+     * we get redirectionurl with /email-confirmation on that.
+     */
     if (
       res.body &&
       res.body.redirecturl &&
