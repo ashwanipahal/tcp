@@ -4,7 +4,6 @@ yarn.lock
 .DS_Store
 packages/**/.DS_Store
 reports
-/packages/mobileapp/android/app/bin/
 
 
 # Xcode
@@ -38,6 +37,6 @@ local.properties
 *.iml
 debug
 release
-
+/packages/mobileapp/android/app/bin/
 packages/mobileapp/android/.project
 packages/mobileapp/android/app/.project

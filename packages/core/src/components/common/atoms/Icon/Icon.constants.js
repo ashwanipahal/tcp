@@ -13,5 +13,3 @@ export const ICON_NAME = {
   arrowDown: 'arrow-down',
   Facebook: 'facebook',
 };
-
-export const FONT_SIZE_VARIATIONS = ['small', 'medium', 'large', 'xLarge', 'custom'];

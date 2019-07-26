@@ -69,12 +69,6 @@ const FONT_SIZE = {
   button: {
     size: 14,
   },
-  icon: {
-    small: 15,
-    medium: 20,
-    large: 25,
-    xlarge: 30,
-  },
   anchor: {
     small: 10,
     medium: 12,

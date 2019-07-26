@@ -1,6 +1,5 @@
 import { css } from 'styled-components/native';
 import { Platform } from 'react-native';
-import { FONT_SIZE_VARIATIONS } from './Icon.constants';
 
 /**
  * @param {Object} props : props for getDisableStyle
@@ -30,18 +29,9 @@ const getDisableStyle = props => {
  * note: The fontSize converting into 'size' in the Icon.native as Icon accept font size in 'size' insted of fontSize
  */
 const getFontSizeStyle = props => {
-  const { sizeVariation, theme, size } = props;
-  const { fonts } = theme;
-  let sizeValue;
-  if (
-    sizeVariation &&
-    FONT_SIZE_VARIATIONS.indexOf(sizeVariation) !== -1 &&
-    sizeVariation !== 'custom'
-  ) {
-    sizeValue = fonts.fontSize.icon[sizeVariation];
-  } else {
-    sizeValue = size;
-  }
+  const { theme, size } = props;
+  const { typography } = theme;
+  const sizeValue = size === 0 ? typography.fontSizes.fs20 : size;
   return `
   font-size: ${sizeValue}
   `;

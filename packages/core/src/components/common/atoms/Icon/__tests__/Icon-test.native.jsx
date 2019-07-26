@@ -4,7 +4,7 @@ import { CustomIconVanilla } from '../views/Icon.native';
 import { ICON_FONT_CLASS, ICON_NAME } from '../Icon.constants';
 import IconStyle from '../Icon.style.native';
 
-describe('CustomButton', () => {
+describe('CustomIcon', () => {
   let component;
   const props = {
     name: ICON_NAME.chevronRight,
@@ -18,7 +18,6 @@ describe('CustomButton', () => {
     borderRadius: 0,
     onPress: () => {},
     isButton: false,
-    sizeVariation: 'medium',
     theme: { ...IconStyle },
   };
 
