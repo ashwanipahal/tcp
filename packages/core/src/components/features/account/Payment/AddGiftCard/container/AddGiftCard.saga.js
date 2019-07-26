@@ -44,7 +44,11 @@ export function* addGiftCard({
     }
     return yield put(addGiftCardFailure());
   } catch (err) {
-    return yield put(addGiftCardFailure(err));
+    let error = {};
+    if (err instanceof Error) {
+      error = err.response.body;
+    }
+    return yield put(addGiftCardFailure(error.errors[0].errorMessage));
   }
 }
 

@@ -46,13 +46,9 @@ class AddGiftCard extends React.PureComponent<Props> {
         </Heading>
         {addGiftCardResponse && (
           <Notification
-            status={addGiftCardResponse}
+            status="error"
             colSize={{ large: 12, medium: 8, small: 6 }}
-            message={
-              addGiftCardResponse === 'success'
-                ? labels.ACC_LBL_OP_SUCCESS
-                : labels.ACC_LBL_OP_FAILURE
-            }
+            message={addGiftCardResponse}
           />
         )}
         <AddGiftCardForm
