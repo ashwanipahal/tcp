@@ -7,6 +7,6 @@ describe('#getOrderPointSummary', () => {
   });
   it('should return valid currency', () => {
     const resultType = flatCurrencyToCents(123);
-    expect(resultType).toEqual(123);
+    expect(resultType).toEqual('123.00');
   });
 });
