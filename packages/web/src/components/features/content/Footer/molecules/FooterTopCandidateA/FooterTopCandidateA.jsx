@@ -5,7 +5,7 @@ import { Button, RichText, Col, Row, BodyCopy } from '@tcp/core/src/components/c
 import { reduxForm } from 'redux-form';
 import { Grid } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { normalizePhoneNumber } from '@tcp/core/src/utils/formValidation/signupPhoneNumber';
+import { formatPhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
 
 import SocialMediaLinks from '../SocialMediaLinks';
 /* TODO move to component itself */
@@ -115,7 +115,7 @@ class FooterTopCandidateA extends React.PureComponent {
               labels={smsSignupLabels}
               fieldName={smsSignupFieldName}
               fieldProps={{
-                normalize: normalizePhoneNumber,
+                normalize: formatPhoneNumber,
               }}
               asyncValidate={smsSignUpAsyncValidate}
               onFormSubmit={submitSmsSubscription}

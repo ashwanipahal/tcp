@@ -3,7 +3,7 @@ import { Field, reduxForm, SubmissionError } from 'redux-form';
 import PropTypes from 'prop-types';
 import { Button, Col, Row, Image, TextBox } from '@tcp/core/src/components/common/atoms';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import { normalizePhoneNumber } from '@tcp/core/src/utils/formValidation/signupPhoneNumber';
+import { formatPhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
 import { Grid, Modal } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import SignupConfirm from '../../SignupConfirm';
@@ -159,7 +159,7 @@ class SmsSignupModal extends React.PureComponent {
                         component={TextBox}
                         maxLength={50}
                         dataLocator="sms_address_field"
-                        normalize={normalizePhoneNumber}
+                        normalize={formatPhoneNumber}
                       />
                       <BodyCopy fontSize="fs12" fontFamily="secondary" className="terms-label">
                         {formViewConfig.termsTextLabel}

@@ -1,4 +1,4 @@
-import { validatePhoneNumber, normalizePhoneNumber } from '../signupPhoneNumber';
+import { validatePhoneNumber, formatPhoneNumber } from '../phoneNumber';
 
 describe('validatePhoneNumber', () => {
   it('Should validate phone number with 123131', () => {
@@ -12,11 +12,11 @@ describe('validatePhoneNumber', () => {
   });
 });
 
-describe('normalizePhoneNumber', () => {
+describe('formatPhoneNumber', () => {
   it('Should format phone number with 1234', () => {
-    expect(normalizePhoneNumber('1234')).toEqual('(123) 4');
+    expect(formatPhoneNumber('1234')).toEqual('(123) 4');
   });
   it('Should format phone number with 1234567891', () => {
-    expect(normalizePhoneNumber('1234567891')).toEqual('(123) 456-7891');
+    expect(formatPhoneNumber('1234567891')).toEqual('(123) 456-7891');
   });
 });

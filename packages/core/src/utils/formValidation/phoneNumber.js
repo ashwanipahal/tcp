@@ -12,7 +12,7 @@ export const validatePhoneNumber = phoneNumber => {
  * @param {String} phoneNumber phoneNumber to convert
  * @return {String} Returns phoneNumber in format (XXX) XXX-XXXX
  */
-export const normalizePhoneNumber = phoneNumber => {
+export const formatPhoneNumber = phoneNumber => {
   let normalizePhoneNum = phoneNumber.replace(/[\s()-]/g, '');
   if (normalizePhoneNum.length > 3) {
     normalizePhoneNum = `(${normalizePhoneNum.slice(0, 3)}) ${normalizePhoneNum.slice(3)}`;
@@ -24,4 +24,4 @@ export const normalizePhoneNumber = phoneNumber => {
   return normalizePhoneNum;
 };
 
-export default { validatePhoneNumber, normalizePhoneNumber };
+export default { validatePhoneNumber, formatPhoneNumber };

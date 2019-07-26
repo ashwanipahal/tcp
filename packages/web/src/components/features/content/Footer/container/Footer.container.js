@@ -15,7 +15,7 @@ import {
 } from '@tcp/web/src/components/common/molecules/SmsSignupModal/container/SmsSignupModal.actions';
 
 import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/EmailSmsSignup';
-import { validatePhoneNumber } from '@tcp/core/src/utils/formValidation/signupPhoneNumber';
+import { validatePhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
 
 import FooterView from '../views';
 

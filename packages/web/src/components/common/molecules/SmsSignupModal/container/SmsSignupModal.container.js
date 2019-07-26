@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { validatePhoneNumber } from '@tcp/core/src/utils/formValidation/signupPhoneNumber';
+import { validatePhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
 
 import {
   submitSmsSignup,
