@@ -17,10 +17,6 @@ describe('ModuleLVanilla', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('should return Heading component value one', () => {
-    expect(component.find('Styled(Heading)')).toHaveLength(1);
-  });
-
   it('should return FlatList component value one', () => {
     expect(component.find('FlatList')).toHaveLength(1);
   });

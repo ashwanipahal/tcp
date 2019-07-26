@@ -2,7 +2,8 @@
 import React from 'react';
 import { FlatList } from 'react-native';
 import { UrlHandler, getScreenWidth } from '../../../../../utils/utils.native';
-import { Heading, BodyCopy, Image, Anchor } from '../../../atoms';
+import { Image } from '../../../atoms';
+import LinkText from '../../LinkText';
 import {
   Container,
   BodyCopyContainer,
@@ -57,17 +58,22 @@ const renderitem = item => {
       <Image width={imageSize} height={127} source={{ uri: getUrlWithCrop(image.url) }} />
       <MessageContainer>
         <BodyCopyContainer width={width}>
-          <BodyCopy
+          <LinkText
+            type="bodycopy"
             fontFamily="primary"
             fontSize="fs20"
             color="black"
             fontWeight="regular"
             letterSpacing="ls222"
-            text={image.text}
+            text={image.title}
+            onPress={() => {
+              UrlHandler(link.url);
+            }}
           />
         </BodyCopyContainer>
         <LinkContainer>
-          <Anchor
+          <LinkText
+            type="anchor"
             fontSizeVariation="xlarge"
             text={link.text}
             visible={anchorEnable}
@@ -91,7 +97,8 @@ const renderitem = item => {
 const ModuleL = () => {
   return (
     <Container>
-      <Heading
+      <LinkText
+        type="heading"
         fontFamily="primary"
         fontSize="fs36"
         letterSpacing="ls167"
@@ -99,6 +106,9 @@ const ModuleL = () => {
         color="text.primary"
         fontWeight="black"
         text={moduleData.moduleL.moduleL.composites.headerText[0].textItems[0].text}
+        onPress={() => {
+          UrlHandler(moduleData.moduleL.moduleL.composites.headerText[0].link.url);
+        }}
       />
       <FlatListContainer>
         <FlatList

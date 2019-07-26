@@ -2,14 +2,16 @@
 
 exports[`ModuleLVanilla should render correctly 1`] = `
 <Styled(View)>
-  <Styled(Heading)
+  <LinkText
     color="text.primary"
     fontFamily="primary"
     fontSize="fs36"
     fontWeight="black"
     letterSpacing="ls167"
+    onPress={[Function]}
     text="TRENDING NOW"
     textAlign="center"
+    type="heading"
   />
   <Styled(View)>
     <FlatList
