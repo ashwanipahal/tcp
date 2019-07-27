@@ -31,9 +31,7 @@ const StyledLabel = styled.Text`
   margin-bottom: ${props => (props.isFocused ? props.theme.spacing.ELEM_SPACING.XXS : '0')};
 `;
 
-const StyledErrorIcon = styled.Image`
-  width: 15px;
-  height: 15px;
+const StyledErrorIcon = styled.View`
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
 `;
 
@@ -44,9 +42,7 @@ const StyledErrorWrapper = styled.View`
   align-items: flex-start;
 `;
 
-const StyledSuccessIcon = styled.Image`
-  width: 15px;
-  height: 12px;
+const StyledSuccessIcon = styled.View`
   position: absolute;
   right: 0;
   top: ${props => props.theme.spacing.ELEM_SPACING.LRG};

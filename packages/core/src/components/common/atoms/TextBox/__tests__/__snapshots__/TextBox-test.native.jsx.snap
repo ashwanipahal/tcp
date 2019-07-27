@@ -22,21 +22,29 @@ exports[`Textbox component render showSuccessCheck on validation fail 1`] = `
     type="text"
     value="foo"
   />
-  <Styled(Image)
-    source={
-      Object {
-        "testUri": "../../../../core/src/assets/success-icon.png",
-      }
-    }
-  />
   <Styled(View)>
-    <Styled(Image)
+    <Styled(ImageComp)
+      height="12px"
       source={
         Object {
-          "testUri": "../../../../core/src/assets/alert-triangle.png",
+          "testUri": "../../../../core/src/assets/success-icon.png",
         }
       }
+      width="15px"
     />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(ImageComp)
+        height="15px"
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/alert-triangle.png",
+          }
+        }
+        width="15px"
+      />
+    </Styled(View)>
     <Styled(BodyCopy)
       color="error"
       fontSize="fs12"
@@ -74,13 +82,17 @@ exports[`Textbox component render showSuccessCheck on validation true 1`] = `
     type="text"
     value="foo"
   />
-  <Styled(Image)
-    source={
-      Object {
-        "testUri": "../../../../core/src/assets/success-icon.png",
+  <Styled(View)>
+    <Styled(ImageComp)
+      height="12px"
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/success-icon.png",
+        }
       }
-    }
-  />
+      width="15px"
+    />
+  </Styled(View)>
 </Styled(View)>
 `;
 

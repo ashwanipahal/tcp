@@ -2,6 +2,7 @@ import React from 'React';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../BodyCopy';
 import { StyledCheckBox, StyledImage } from '../InputCheckbox.style.native';
+import Image from '../../Image';
 
 const uncheckedIcon = require('../../../../../assets/store-locator-check.png');
 const checkedIcon = require('../../../../../assets/store-locator-checked.png');
@@ -44,7 +45,11 @@ class InputCheckBox extends React.Component {
   genCheckedIcon() {
     const { isChecked } = this.state;
     const source = isChecked ? checkedIcon : uncheckedIcon;
-    return <StyledImage source={source} />;
+    return (
+      <StyledImage>
+        <Image source={source} height="25px" width="25px" />
+      </StyledImage>
+    );
   }
 
   renderRight() {

@@ -10,6 +10,7 @@ import {
   StyledTextBoxWrapper,
   StyledSuccessIcon,
 } from '../TextBox.style.native';
+import Image from '../../Image';
 
 const errorIcon = require('../../../../../assets/alert-triangle.png');
 const successIcon = require('../../../../../assets/success-icon.png');
@@ -68,7 +69,11 @@ class TextBox extends React.Component {
     if (touched && error) {
       return (
         <StyledErrorWrapper>
-          {showErrorIcon && <StyledErrorIcon source={errorIcon} />}
+          {showErrorIcon && (
+            <StyledErrorIcon>
+              <Image source={errorIcon} width="15px" height="15px" />
+            </StyledErrorIcon>
+          )}
           <BodyCopy
             mobilefontFamily={['secondary']}
             fontWeight="semibold"
@@ -121,7 +126,11 @@ class TextBox extends React.Component {
           error={error}
           showSuccessCheck={showSuccessCheck}
         />
-        {showSuccessCheck && <StyledSuccessIcon source={successIcon} />}
+        {showSuccessCheck && (
+          <StyledSuccessIcon>
+            <Image source={successIcon} width="15px" height="12px" />
+          </StyledSuccessIcon>
+        )}
         {this.getErrorMsg({ touched, error, showErrorIcon })}
       </StyledTextBoxWrapper>
     );

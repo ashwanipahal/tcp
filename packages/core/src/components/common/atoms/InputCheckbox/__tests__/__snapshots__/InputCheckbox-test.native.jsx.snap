@@ -9,13 +9,17 @@ exports[`InputCheckbox component should render correctly 1`] = `
   rightText="checkbox"
   val=""
 >
-  <Styled(Image)
-    source={
-      Object {
-        "testUri": "../../../../core/src/assets/store-locator-checked.png",
+  <Styled(View)>
+    <Styled(ImageComp)
+      height="25px"
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/store-locator-checked.png",
+        }
       }
-    }
-  />
+      width="25px"
+    />
+  </Styled(View)>
   <Styled(BodyCopy)
     fontSize="fs12"
     mobileFontFamily="secondary"
@@ -33,13 +37,17 @@ exports[`InputCheckbox component should render correctly with checked state fals
   rightText="checkbox"
   val=""
 >
-  <Styled(Image)
-    source={
-      Object {
-        "testUri": "../../../../core/src/assets/store-locator-check.png",
+  <Styled(View)>
+    <Styled(ImageComp)
+      height="25px"
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/store-locator-check.png",
+        }
       }
-    }
-  />
+      width="25px"
+    />
+  </Styled(View)>
   <Styled(BodyCopy)
     fontSize="fs12"
     mobileFontFamily="secondary"

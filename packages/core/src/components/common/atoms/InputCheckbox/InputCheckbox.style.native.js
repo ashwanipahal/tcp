@@ -6,9 +6,7 @@ const StyledCheckBox = styled.View`
   align-items: center;
 `;
 
-const StyledImage = styled.Image`
-  height: 25px;
-  width: 25px;
+const StyledImage = styled.View`
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
