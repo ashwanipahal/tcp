@@ -1,23 +1,30 @@
-import EMAIL_SIGNUP_CONSTANTS from './SmsSignupModal.constants';
+import SMS_SIGNUP_CONSTANTS from './SmsSignupModal.constants';
 
 export const clearSmsSignupForm = payload => {
   return {
     payload,
-    type: EMAIL_SIGNUP_CONSTANTS.CLEAR_SUBSCRIPTION_FORM,
+    type: SMS_SIGNUP_CONSTANTS.CLEAR_SUBSCRIPTION_FORM,
   };
 };
 
 export const submitSmsSignup = payload => {
   return {
     payload,
-    type: EMAIL_SIGNUP_CONSTANTS.SMS_SUBSCRIPTION_SUBMIT,
+    type: SMS_SIGNUP_CONSTANTS.SMS_SUBSCRIPTION_SUBMIT,
   };
 };
 
 export const smsSignupStatus = payload => {
   return {
     payload,
-    type: EMAIL_SIGNUP_CONSTANTS.SMS_SUBSCRIPTION_STATUS,
+    type: SMS_SIGNUP_CONSTANTS.SMS_SUBSCRIPTION_STATUS,
+  };
+};
+
+export const toggleSmsSignupModal = payload => {
+  return {
+    payload,
+    type: SMS_SIGNUP_CONSTANTS.SMS_SUBSCRIPTION_MODAL_TOGGLE,
   };
 };
 

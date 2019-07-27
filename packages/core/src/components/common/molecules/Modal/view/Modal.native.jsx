@@ -31,20 +31,21 @@ const getCloseIcon = ({ onRequestClose }: CloseIconProps) => {
 };
 
 const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
-  const { heading, onRequestClose } = otherProps;
+  const { heading, onRequestClose, animationType, headingAlign } = otherProps;
   return (
     <SafeAreaView>
       <StatusBar hidden />
-      <Modal transparent={false} visible={isOpen}>
+      <Modal transparent={false} visible={isOpen} animationType={animationType}>
         {getCloseIcon({ onRequestClose })}
         {heading && (
           <BodyCopy
+            fontSize="fs16"
             fontFamily="primary"
-            fontSize="fs28"
-            textAlign="center"
-            color="black"
-            fontWeight="black"
+            textAlign={headingAlign}
             text={heading}
+            className="modalHeading"
+            component="span"
+            color="#000000"
           />
         )}
         {children}

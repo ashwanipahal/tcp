@@ -1,8 +1,6 @@
-import BrandTabs from './BrandTabs';
-import Copyright from './Copyright';
-import HeaderTopNav from './HeaderTopNav';
-import LegalLinks from './LegalLinks';
-import PromotionalArea from './PromotionalArea';
-import SocialMediaLinks from './SocialMediaLinks';
+import SignupConfirm from './SignupConfirm';
+import SignupFormIntro from './SignupFormIntro';
+import EmailSignupModal from './EmailSignupModal';
+import SmsSignupModal from './SmsSignupModal';
 
-export { BrandTabs, Copyright, HeaderTopNav, LegalLinks, PromotionalArea, SocialMediaLinks };
+export { EmailSignupModal, SmsSignupModal, SignupFormIntro, SignupConfirm };

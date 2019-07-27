@@ -1,0 +1,277 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BossBannerView component renders correctly 1`] = `
+<styled.div>
+  <Styled(Row)
+    className="product"
+    tagName="ul"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 2,
+        }
+      }
+      key="productDetails"
+      tagName="li"
+    >
+      <Styled(Image)
+        alt="Product"
+        className="product-image"
+        data-locator="addedtobag-productimage"
+        src="https://test3.childrensplace.comundefined"
+      />
+      <Styled(Image)
+        alt="Brand"
+        className="brand-image"
+        data-locator="global_TCPimg"
+        src="/static/images/gymboree-logo.svg"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 9,
+          "medium": 6,
+          "small": 4,
+        }
+      }
+      key="productDetails"
+      tagName="li"
+    >
+      <Styled(Row)
+        className="product-details"
+        tagName="ul"
+      >
+        <Styled(Col)
+          className="productImgBrand"
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+          key="product-title"
+          tagName="li"
+        >
+          <Styled(BodyCopy)
+            className="product-title"
+            color="text.primary"
+            component="p"
+            dataLocator="addedtobag-productname"
+            fontFamily="primary"
+            fontSize="fs14"
+            fontWeight={
+              Array [
+                "semibold",
+              ]
+            }
+            letterSpacing="normal"
+            lineHeight="normal"
+            tag="span"
+            textAlign="left"
+          >
+            abc
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+      </Styled(Row)>
+      <Styled(Row)
+        className="product-description"
+        tagName="ul"
+      >
+        <Styled(Col)
+          className="itemList"
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 3,
+              "small": 2,
+            }
+          }
+          key="product-title"
+          tagName="li"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="primary"
+            fontSize="fs13"
+            fontWeight={
+              Array [
+                "semibold",
+              ]
+            }
+            letterSpacing="normal"
+            lineHeight="normal"
+            tag="span"
+            textAlign="left"
+          >
+            abc
+            :
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+        <Styled(Col)
+          className="itemList"
+          colSize={
+            Object {
+              "large": 8,
+              "medium": 5,
+              "small": 4,
+            }
+          }
+          key="product-title"
+          tagName="li"
+        >
+          <Styled(BodyCopy)
+            className="itemDesc"
+            color="text.primary"
+            component="p"
+            dataLocator="addedtobag-productcolor"
+            fontFamily="primary"
+            fontSize="fs13"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            tag="span"
+            textAlign="left"
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+      <Styled(Row)
+        className="product-description"
+        tagName="ul"
+      >
+        <Styled(Col)
+          className="itemList"
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 3,
+              "small": 2,
+            }
+          }
+          key="product-title"
+          tagName="li"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="primary"
+            fontSize="fs13"
+            fontWeight={
+              Array [
+                "semibold",
+              ]
+            }
+            letterSpacing="normal"
+            lineHeight="normal"
+            tag="span"
+            textAlign="left"
+          >
+            def
+            :
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 8,
+              "medium": 5,
+              "small": 4,
+            }
+          }
+          key="product-title"
+          tagName="li"
+        >
+          <Styled(BodyCopy)
+            className="itemDesc"
+            color="text.primary"
+            component="p"
+            dataLocator="addedtobag-productsize"
+            fontFamily="primary"
+            fontSize="fs13"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            tag="span"
+            textAlign="left"
+          >
+            M 
+            slim
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+      </Styled(Row)>
+      <Styled(Row)
+        className="product-description"
+        tagName="ul"
+      >
+        <Styled(Col)
+          className="itemList"
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 3,
+              "small": 2,
+            }
+          }
+          key="product-title"
+          tagName="li"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="primary"
+            fontSize="fs13"
+            fontWeight={
+              Array [
+                "semibold",
+              ]
+            }
+            letterSpacing="normal"
+            lineHeight="normal"
+            tag="span"
+            textAlign="left"
+          >
+            xyz
+            :
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+        <Styled(Col)
+          className="itemList"
+          colSize={
+            Object {
+              "large": 8,
+              "medium": 5,
+              "small": 4,
+            }
+          }
+          key="product-title"
+          tagName="li"
+        >
+          <Styled(BodyCopy)
+            className="itemDesc"
+            color="text.primary"
+            component="p"
+            dataLocator="addedtobag-productqty"
+            fontFamily="primary"
+            fontSize="fs13"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            tag="span"
+            textAlign="left"
+          >
+            1
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(Col)>
+  </Styled(Row)>
+</styled.div>
+`;

@@ -16,22 +16,22 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
         navData={
           Array [
             Object {
-              "component": "accountOverview",
+              "component": "account-overview",
               "displayName": "Account Overview",
-              "href": "/account?id=accountOverview",
+              "href": "/account?id=account-overview",
               "id": "accountOverview",
               "url": "/account",
             },
             Object {
               "component": "myPlaceRewards",
               "displayName": "My Place Rewards",
-              "href": "/account?id=accountOverview",
+              "href": "/account?id=account-overview",
               "id": "myPlaceRewards",
               "subSections": Array [
                 Object {
                   "component": "pointsHistoryPage",
                   "displayName": "Points History",
-                  "href": "/account?id=accountOverview",
+                  "href": "/account?id=account-overview",
                   "id": "pointsHistory",
                   "url": "/account/place-rewards/points-history",
                 },
@@ -41,28 +41,28 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
             Object {
               "component": "myWalletPage",
               "displayName": "My Wallet",
-              "href": "/account?id=accountOverview",
+              "href": "/account?id=account-overview",
               "id": "myWallet",
               "url": "/account/wallet",
             },
             Object {
               "component": "earnExtraPointsPage",
               "displayName": "Earn Extra Points",
-              "href": "/account?id=accountOverview",
+              "href": "/account?id=account-overview",
               "id": "earnExtraPoints",
               "url": "/account/extra-points",
             },
             Object {
               "component": "profileInformation",
               "displayName": "Profile Information",
-              "href": "/account?id=accountOverview",
+              "href": "/account?id=account-overview",
               "id": "profileInformation",
               "url": "/account/profile",
             },
             Object {
-              "component": "addressBook",
+              "component": "address-book",
               "displayName": "Address Book",
-              "href": "/account?id=addressBook",
+              "href": "/account?id=address-book",
               "id": "addressBook",
               "url": "/account/address-book",
             },
@@ -76,14 +76,14 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
             Object {
               "component": "myPreferencePage",
               "displayName": "My Preferences",
-              "href": "/account?id=accountOverview",
+              "href": "/account?id=account-overview",
               "id": "myPreferences",
               "url": "/account/my-preference",
             },
             Object {
               "component": "myPlaceRewardsCCPage",
               "displayName": "My Place Rewards Credit Card",
-              "href": "/account?id=accountOverview",
+              "href": "/account?id=account-overview",
               "id": "myPlaceRewardsCC",
               "url": "/account/rewardsCreditCard",
             },

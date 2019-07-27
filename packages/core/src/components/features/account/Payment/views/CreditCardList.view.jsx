@@ -21,6 +21,8 @@ type Props = {
   showUpdatedNotificationOnModal: any,
   showNotification: boolean,
   setSelectedCard: string,
+  addCreditCard: () => {},
+  editCreditCard: () => {},
 };
 
 const CreditCardList = ({
@@ -34,6 +36,8 @@ const CreditCardList = ({
   showUpdatedNotificationOnModal,
   showNotification,
   setSelectedCard,
+  addCreditCard,
+  editCreditCard,
 }: Props) => {
   return (
     <div className={className}>
@@ -60,6 +64,7 @@ const CreditCardList = ({
             fill="BLUE"
             className="cardList__ccAddCta"
             dataLocator="payment-addcreditcard"
+            onClick={addCreditCard}
           >
             {creditCardList.size === 0 ? labels.ACC_LBL_CC_EMPTY_ADD_BTN : labels.ACC_LBL_ADD_BTN}
           </Button>
@@ -76,6 +81,7 @@ const CreditCardList = ({
           cardList={creditCardList}
           showNotification={showNotification}
           setSelectedCard={setSelectedCard}
+          editCreditCard={editCreditCard}
         />
       )}
     </div>

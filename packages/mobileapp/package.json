@@ -25,16 +25,17 @@
     "react-native-gesture-handler": "^1.3.0",
     "react-native-render-html": "^4.1.2",
     "react-native-snap-carousel": "^3.8.0",
+    "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^3.11.0",
     "react-redux": "^6.0.1",
     "redux": "^4.0.1",
     "redux-cache": "^0.3.0",
     "redux-form": "^8.2.4",
-    "superagent-jsonp": "^0.2.1",
     "redux-ignore": "^1.2.5",
     "redux-saga": "^1.0.2",
     "reselect": "^4.0.0",
     "styled-components": "^4.2.1",
+    "superagent-jsonp": "^0.2.1",
     "superagent": "^5.0.8"
   },
   "devDependencies": {
@@ -99,7 +100,9 @@
       "**/immutable",
       "**/immutable/**",
       "**/superagent-jsonp",
-      "**/superagent-jsonp/**"
+      "**/superagent-jsonp/**",
+      "**/react-native-vector-icons",
+      "**/react-native-vector-icons/**"
     ]
   }
 }

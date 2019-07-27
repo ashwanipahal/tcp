@@ -32,6 +32,12 @@ export default styled.div`
       padding: 1%;
       color: #999;
     }
+    .product-image {
+      width: 50%;
+      text-align: center;
+      padding: 5px 0;
+      margin: 0 auto;
+    }
     &:nth-child(3n) {
       margin-right: 0;
       @media ${props => props.theme.mediaQuery.large} {
