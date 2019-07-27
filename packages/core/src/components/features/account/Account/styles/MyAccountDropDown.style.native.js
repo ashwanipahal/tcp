@@ -1,6 +1,6 @@
-import styled from 'styled-components/native';
+import { css } from 'styled-components/native';
 
-const StyledWrapper = styled.css`
+const StyledWrapper = css`
   display: flex;
 `;
 
