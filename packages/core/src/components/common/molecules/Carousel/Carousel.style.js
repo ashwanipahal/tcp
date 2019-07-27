@@ -120,12 +120,16 @@ const CarouselStyle = styled.div`
   @media only screen and (min-width: 768px) {
     .slick-prev {
       background: url(${props =>
-          props.carouselConfig.type === 'dark' ? lightArrow : darkArrowLarge})
+          props.carouselConfig.type === 'dark'
+            ? lightArrow
+            : props.carouselConfig.customArrowLeft || darkArrowLarge})
         no-repeat center center;
     }
     .slick-next {
       background: url(${props =>
-          props.carouselConfig.type === 'dark' ? lightArrow : darkArrowLarge})
+          props.carouselConfig.type === 'dark'
+            ? lightArrow
+            : props.carouselConfig.customArrowRight || darkArrowLarge})
         no-repeat center center;
     }
   }
@@ -183,7 +187,6 @@ const CarouselStyle = styled.div`
     left: 0;
     width: 20px;
     height: 20px;
-    content: '•';
     text-align: center;
     opacity: 0.25;
     color: black;

@@ -22,6 +22,10 @@ const endpoints = {
     JSONP: true,
     reqTimeout: 2000,
   },
+  getOrderDetails: {
+    method: API_METHODS.GET,
+    URI: 'v2/checkout/getOrderDetails',
+  },
   addCreditCard: {
     method: API_METHODS.POST,
     URI: 'v2/account/addCreditCardDetails',
@@ -29,10 +33,6 @@ const endpoints = {
   updateCreditCard: {
     method: API_METHODS.POST,
     URI: 'v2/account/modifyCreditCardDetails',
-  },
-  getOrderDetails: {
-    method: API_METHODS.GET,
-    URI: 'v2/checkout/getOrderDetails',
   },
   updateMultiSelectItemsToRemove: {
     method: 'PUT',

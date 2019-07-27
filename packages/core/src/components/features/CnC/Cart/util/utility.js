@@ -4,18 +4,19 @@ export default getOrderPointsSummary => {
     const {
       orderItems,
       pointsToNextReward,
-      userPoints,
-      grandTotal = 0,
-      giftCardsTotal = 0,
+      estimatedRewards,
+      totalItems,
+      bagSubTotal,
     } = getOrderPointsSummary;
     pointsSummary = {
-      itemPrice: (orderItems[0] && orderItems[0].itemInfo && orderItems[0].itemInfo.itemPrice) || 0,
+      itemPrice:
+        (orderItems[0] && orderItems[0].itemInfo && orderItems[0].itemInfo.offerPrice) || 0,
       itemPoints:
         (orderItems[0] && orderItems[0].itemInfo && orderItems[0].itemInfo.itemPoints) || 0,
       pointsToNextReward,
-      userPoints: userPoints || 0,
-      bagSubTotal: grandTotal - giftCardsTotal,
-      totalItems: orderItems.length || 0,
+      userPoints: estimatedRewards || 0,
+      bagSubTotal: bagSubTotal.toFixed(2),
+      totalItems: totalItems || 0,
     };
   }
   return pointsSummary;

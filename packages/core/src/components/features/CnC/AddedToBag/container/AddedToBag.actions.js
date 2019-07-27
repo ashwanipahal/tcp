@@ -4,6 +4,10 @@ export const addToCartEcom = payload => ({
   type: ADDEDTOBAG_CONSTANTS.ADD_TO_CART_ECOM,
   payload,
 });
+export const addItemToCartBopis = payload => ({
+  type: ADDEDTOBAG_CONSTANTS.ADD_TO_CART_BOPIS,
+  payload,
+});
 
 export const AddToCartError = payload => ({
   type: ADDEDTOBAG_CONSTANTS.SET_ADDED_TO_BAG_ERROR,
@@ -21,9 +25,4 @@ export const openAddedToBag = () => ({
 
 export const closeAddedToBag = () => ({
   type: ADDEDTOBAG_CONSTANTS.CLOSE_ADDED_TO_BAG,
-});
-
-export const addItemToCartBopis = payload => ({
-  type: ADDEDTOBAG_CONSTANTS.ADD_TO_CART_BOPIS,
-  payload,
 });

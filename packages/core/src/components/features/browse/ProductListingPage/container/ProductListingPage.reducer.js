@@ -5,6 +5,7 @@ import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../utils/cache.uti
 const initialState = {
   [DEFAULT_REDUCER_KEY]: null,
   products: [],
+  giftCardProducts: [],
 };
 
 export const ProductListingPageReducer = (state = initialState, action) => {
@@ -13,6 +14,11 @@ export const ProductListingPageReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         [DEFAULT_REDUCER_KEY]: setCacheTTL(),
         products: action.payload,
+      });
+    case PRODUCTLISTINGPAGE_CONSTANTS.SET_GIFT_CARD_PRODUCTS:
+      return Object.assign({}, state, {
+        [DEFAULT_REDUCER_KEY]: setCacheTTL(),
+        giftCardProducts: action.payload,
       });
     default:
       return state;

@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`VenmoCardList Component should render correctly 1`] = `
+<View
+  className="abc"
+  labels={Object {}}
+  venmoCardList={Immutable.List []}
+>
+  <Styled(Text) />
+</View>
+`;
+
+exports[`VenmoCardList Component should render correctly if list is present 1`] = `
+<View
+  className="abc"
+  labels={Object {}}
+  venmoCardList={
+    Immutable.List [
+      Object {
+        "accountNo": "",
+        "addressDetails": null,
+        "billingAddressId": null,
+        "ccBrand": "VENMO",
+        "ccType": "VENMO",
+        "creditCardId": 74530,
+        "defaultInd": false,
+        "expMonth": "11",
+        "expYear": "2037",
+        "nameOnAccount": ".",
+        "properties": Object {
+          "venmoUserId": "Testaccount1",
+        },
+      },
+    ]
+  }
+>
+  <Styled(Text) />
+  <CardTile
+    card={
+      Object {
+        "accountNo": "",
+        "addressDetails": null,
+        "billingAddressId": null,
+        "ccBrand": "VENMO",
+        "ccType": "VENMO",
+        "creditCardId": 74530,
+        "defaultInd": false,
+        "expMonth": "11",
+        "expYear": "2037",
+        "nameOnAccount": ".",
+        "properties": Object {
+          "venmoUserId": "Testaccount1",
+        },
+      }
+    }
+    labels={Object {}}
+  />
+</View>
+`;
