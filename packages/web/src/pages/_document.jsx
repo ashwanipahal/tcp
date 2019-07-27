@@ -38,7 +38,11 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta name="viewport" content="initial-scale=1.0, width=device-width" key="viewport" />
+          <meta
+            name="viewport"
+            content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1"
+            key="viewport"
+          />
         </Head>
         <body>
           <Main />

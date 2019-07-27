@@ -21,7 +21,7 @@ const RoutesMap = [
     resolver: '/DeltaSyncSamplePage',
   },
   {
-    path: '/p',
+    path: '/c',
     resolver: '/ProductListingPage',
   },
   {
@@ -29,6 +29,11 @@ const RoutesMap = [
     resolver: '/test',
     withoutCountryCode: true,
   },
+  {
+    path: '/cart',
+    resolver: '/cart',
+  },
+  { path: '/cookiesTesting', resolver: '/cookiesTesting' },
 ];
 
 module.exports = RoutesMap;

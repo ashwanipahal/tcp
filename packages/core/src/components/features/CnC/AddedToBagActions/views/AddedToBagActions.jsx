@@ -10,12 +10,16 @@ import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { getLocator } from '../../../../../utils';
 
 const AddedToBagActions = props => {
-  const { className, onClickCartCheckout, labels } = props;
+  const { className, labels, onClickViewBag } = props;
   return (
     <div className={className}>
       <Row>
         <Col colSize={{ medium: 8, large: 12, small: 6 }}>
-          <Button data-locator={getLocator('addedtobag_btnviewbag')} className="view-bag">
+          <Button
+            onClick={onClickViewBag}
+            data-locator={getLocator('addedtobag_btnviewbag')}
+            className="view-bag"
+          >
             <BodyCopy
               component="span"
               color="white"
@@ -31,11 +35,7 @@ const AddedToBagActions = props => {
       <Row className="checkout-button">
         <PayPalButton className="payPal-button" />
 
-        <Button
-          data-locator={getLocator('addedtobag_btncheckout')}
-          onClick={onClickCartCheckout}
-          className="checkout"
-        >
+        <Button data-locator={getLocator('addedtobag_btncheckout')} className="checkout">
           <BodyCopy
             component="span"
             color="white"
@@ -53,7 +53,7 @@ const AddedToBagActions = props => {
 
 AddedToBagActions.propTypes = {
   className: PropTypes.string.isRequired,
-  onClickCartCheckout: PropTypes.func.isRequired,
+  onClickViewBag: PropTypes.func.isRequired,
   labels: PropTypes.shape.isRequired,
 };
 

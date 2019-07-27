@@ -20,8 +20,11 @@ const NavBar = props => {
   return (
     <React.Fragment>
       <ul className={`${className} nav-bar-l1`}>
-        {navigationData.map(navL1Item => (
+        {navigationData.map((navL1Item, index) => (
           <L1NavItem
+            dataLocator={`l1menu_link_${index}`}
+            index={index}
+            key={`l1menu_link_${index.toString()}`}
             onFocus={openL2Panel(navL1Item.subCategories, Object.keys(navL1Item.subCategories))}
             onMouseOver={openL2Panel(navL1Item.subCategories, Object.keys(navL1Item.subCategories))}
             onBlur={closeL2Panel}

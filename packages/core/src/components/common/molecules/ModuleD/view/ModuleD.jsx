@@ -62,7 +62,7 @@ const ModuleD = (props: Props) => {
   }
   return (
     <Grid className={`${className} moduleD`}>
-      {headerText.length && (
+      {headerText && (
         <LinkText
           headerText={headerText}
           className="moduleD_header"

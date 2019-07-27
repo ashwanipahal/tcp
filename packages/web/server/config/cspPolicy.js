@@ -194,6 +194,7 @@ const config = {
       '*.vibescm.com',
       'stylitics-ampersand-production.sfo2.cdn.digitaloceanspaces.com',
       'assets.braintreegateway.com',
+      'res.cloudinary.com',
     ],
     styleSrc: [
       "'self'",

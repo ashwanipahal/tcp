@@ -6,6 +6,7 @@ exports[`Drawer component renders correctly 1`] = `
     className="undefined nav-bar-l1-item"
     color="text.hint"
     component="li"
+    dataLocator=""
     fontFamily="secondary"
     fontSize={
       Array [
@@ -24,6 +25,7 @@ exports[`Drawer component renders correctly 1`] = `
     />
     <span
       className="nav-bar-l1-item-content"
+      data-locator="promo_badge_undefined"
     >
       <Styled(PromoBadge)
         data={

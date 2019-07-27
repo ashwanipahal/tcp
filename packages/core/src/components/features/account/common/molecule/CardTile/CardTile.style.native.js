@@ -26,6 +26,7 @@ const CardTileDefaultSection = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
+  margin-bottom: ${props => (props.isVenmo ? props.theme.spacing.ELEM_SPACING.XL : 0)};
 `;
 
 const CardTileImgWrapper = styled.View`

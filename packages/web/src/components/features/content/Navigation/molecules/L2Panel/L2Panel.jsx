@@ -1,13 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { Heading } from '@tcp/core/src/components/common/atoms';
+import { Heading, Row } from '@tcp/core/src/components/common/atoms';
 import style from './L2Panel.style';
 
 const L2Panel = props => {
   const { openPanel, className, panelData, order } = props;
   return (
-    <div className={`${className} nav-bar-l2-panel`}>
+    <Row
+      className={`${className} nav-bar-l2-panel`}
+      fullBleed={{
+        small: false,
+        medium: false,
+        large: true,
+      }}
+    >
       {openPanel &&
         order.map(category => {
           return (
@@ -24,7 +31,7 @@ const L2Panel = props => {
             </div>
           );
         })}
-    </div>
+    </Row>
   );
 };
 
