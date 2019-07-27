@@ -19,6 +19,8 @@ export const PAYMENT_ACTION_PATTERN = '@@payment-';
 export const ADD_GIFT_CARD_ACTION_PATTERN = '@@AddGiftCard-';
 export const LOGINPAGE_ACTION_PATTERN = '@@Login-';
 export const CARTPAGE_REDUCER_KEY = 'CartPage';
+export const OVERLAY_MODAL_REDUCER_KEY = 'OverlayModalReducer';
+export const OVERLAY_MODAL_ACTION_PATTERN = '@@Overlay-';
 
 // Add address page reducer
 export const ADDEDITADDRESS_REDUCER_KEY = 'AddEditAddressReducer';
