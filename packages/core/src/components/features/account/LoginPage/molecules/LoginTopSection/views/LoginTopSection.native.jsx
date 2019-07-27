@@ -2,6 +2,8 @@ import React from 'react';
 import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
+import ImageComp from '../../../../../../common/atoms/Image';
+import TheMarketPlaceLogo from '../../../../../../../assets/my-place-rewards.png';
 import {
   SectionStyle,
   HeadingStyle,
@@ -18,6 +20,7 @@ const LoginTopSection = props => {
   const { labels } = props;
   return (
     <View {...props}>
+      <ImageComp source={TheMarketPlaceLogo} width={186} height={60} />
       <HeadingStyle>{labels.heading}</HeadingStyle>
       <SubHeadingStyle>{labels.subHeading}</SubHeadingStyle>
       <DescriptionStyle>{labels.description}</DescriptionStyle>
