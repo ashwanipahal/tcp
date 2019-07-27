@@ -33,7 +33,6 @@ exports[`Add gift card form component should render component correctly 1`] = `
                 "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -94,8 +93,17 @@ exports[`Add gift card form component should render component correctly 1`] = `
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -105,7 +113,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -181,7 +189,6 @@ exports[`Add gift card form component should render component correctly 1`] = `
                 "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -242,8 +249,17 @@ exports[`Add gift card form component should render component correctly 1`] = `
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -253,7 +269,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -301,121 +317,134 @@ exports[`Add gift card form component should render component correctly 1`] = `
       />
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 2,
-          "medium": 2,
-          "small": 4,
-        }
-      }
-      ignoreGutter={
-        Object {
-          "small": true,
-        }
-      }
+  <div>
+    <Styled(Row)
+      fullBleed={true}
     >
-      <Recaptcha
-        dataLocator="gift-card-addcardrecaptchacheckbox"
-        expiredCallback={[Function]}
-        sitekey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-        size="normal"
-        tabindex="0"
-        theme="light"
-        type="image"
-        verifyCallback={[Function]}
-      />
-    </Styled(Col)>
-    <Field
-      component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "attrs": Array [],
-          "componentStyle": ComponentStyle {
-            "componentId": "sc-bwzfXH",
-            "isStatic": false,
-            "rules": Array [
-              "
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 2,
+            "medium": 2,
+            "small": 4,
+          }
+        }
+        ignoreGutter={
+          Object {
+            "small": true,
+          }
+        }
+      >
+        <Recaptcha
+          className="card__recaptcha"
+          dataLocator="gift-card-addcardrecaptchacheckbox"
+          expiredCallback={[Function]}
+          sitekey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+          size="normal"
+          tabindex="0"
+          theme="light"
+          type="image"
+          verifyCallback={[Function]}
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+    <div>
+      <Field
+        className="card__hidden"
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bwzfXH",
+              "isStatic": false,
+              "rules": Array [
+                "
   ",
-              "
+                "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
-              [Function],
-              "px;
+                [Function],
+                "px;
     padding: 0;
     position: absolute;
     top: ",
-              [Function],
-              ";
+                [Function],
+                ";
     ",
-              [Function],
-              "
+                [Function],
+                "
   }
 
   .TextBox__input {
     margin: 0;
     outline: 0;
     font-size: ",
-              [Function],
-              "px;
+                [Function],
+                "px;
     color: ",
-              [Function],
-              ";
+                [Function],
+                ";
     width: 100%;
     background-position: left top;
     background-repeat: no-repeat;
     background-size: contain;
     border: 0 solid transparent;
     border-bottom: 1px solid ",
-              [Function],
-              ";
+                [Function],
+                ";
     padding-bottom: ",
-              [Function],
-              ";
+                [Function],
+                ";
     margin-bottom: ",
-              [Function],
-              ";
+                [Function],
+                ";
     padding-top: ",
-              [Function],
-              ";
+                [Function],
+                ";
 
     ",
-              [Function],
-              "
+                [Function],
+                "
 
     ",
-              [Function],
-              ";
+                [Function],
+                ";
 
     &:focus + .TextBox__label {
       font-size: ",
-              [Function],
-              "px;
+                [Function],
+                "px;
       font-weight: ",
-              [Function],
-              ";
+                [Function],
+                ";
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
-              [Function],
-              ";
+                [Function],
+                ";
     transform: rotate(-45deg);
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -423,8 +452,8 @@ exports[`Add gift card form component should render component correctly 1`] = `
       width: 3px;
       height: 100%;
       background-color: ",
-              [Function],
-              ";
+                [Function],
+                ";
     }
 
     &:after {
@@ -433,34 +462,35 @@ exports[`Add gift card form component should render component correctly 1`] = `
       width: 100%;
       height: 3px;
       background-color: ",
-              [Function],
-              ";
+                [Function],
+                ";
       bottom: 0;
     }
   }
 
   ",
-              [Function],
-              ";
+                [Function],
+                ";
 ",
-              ";
+                ";
 ",
-            ],
-          },
-          "displayName": "Styled(TextBox)",
-          "foldedComponentIds": Array [],
-          "render": [Function],
-          "styledComponentId": "sc-bwzfXH",
-          "target": [Function],
-          "toString": [Function],
-          "warnTooManyClasses": [Function],
-          "withComponent": [Function],
+              ],
+            },
+            "displayName": "Styled(TextBox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bwzfXH",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
         }
-      }
-      name="recaptchaToken"
-      type="hidden"
-    />
-  </Styled(Row)>
+        name="recaptchaToken"
+        type="hidden"
+      />
+    </div>
+  </div>
   <Styled(Row)
     className="card__row"
     fullBleed={true}

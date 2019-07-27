@@ -6,7 +6,7 @@ export const L1TouchableOpacityNoImage = styled.TouchableOpacity`
   flex-direction: row;
   height: 132;
   background-color: ${props => props.theme.colorPalette.gray[300]};
-  padding-left: 28px;
+  padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
 `;
 
 export const L1TouchableOpacity = styled.TouchableOpacity`

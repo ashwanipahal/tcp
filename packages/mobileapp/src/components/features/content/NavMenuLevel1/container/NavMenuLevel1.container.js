@@ -4,7 +4,6 @@ import navObject from '../mock';
 
 const mapStateToProps = () => {
   return {
-    // navigationMenuObj: state.Navigation,
     navigationMenuObj: navObject.Navigation.navigationData,
   };
 };

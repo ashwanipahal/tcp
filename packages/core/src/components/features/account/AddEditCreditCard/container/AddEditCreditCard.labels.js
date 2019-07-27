@@ -1,0 +1,13 @@
+export default {
+  ACC_LBL_CC_HEADING: 'Billing Address',
+  ACC_LBL_CC_ADDRESS_SELECT: 'Select from Address Book',
+  ACC_LBL_CARD_NUMBER: 'Card #',
+  ACC_LBL_EXP_MONTH: 'Exp. Month',
+  ACC_LBL_EXP_YEAR: 'Exp. Year',
+  ACC_LBL_UPDATE_CTA: 'Update',
+  ACC_LBL_ADD_CTA: 'Add',
+  ACC_LBL_CANCEL_CTA: 'Cancel',
+  ACC_LBL_ADD_CC_HEADING: 'ADD CREDIT OR DEBIT CARD',
+  ACC_LBL_EDIT_CC_HEADING: 'EDIT CREDIT OR DEBIT CARD',
+  ACC_LBL_BACK_LINK_CTA: 'Back',
+};

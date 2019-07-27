@@ -2,6 +2,8 @@ import { Dimensions, Linking } from 'react-native';
 import icons from '../config/icons';
 import locators from '../config/locators';
 
+import config from '../components/common/atoms/Anchor/config.native';
+
 export const importGraphQLClientDynamically = module => {
   return new Promise((resolve, reject) => {
     switch (module) {
@@ -46,6 +48,10 @@ export const importGraphQLQueriesDynamically = query => {
       case 'moduleK':
         // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/moduleK'));
+        break;
+      case 'moduleL':
+        // eslint-disable-next-line global-require
+        resolve(require('../services/handler/graphQL/queries/moduleL'));
         break;
       default:
         reject();
@@ -92,11 +98,62 @@ export const UrlHandler = url => {
 };
 
 /**
+ * @param {url} string
+ * @returns {type} string
+ */
+const getLandingPage = url => {
+  const { URL_PATTERN } = config;
+  if (url.includes(URL_PATTERN.PRODUCT_LIST)) {
+    return URL_PATTERN.PRODUCT_LIST;
+  }
+  if (url.includes(URL_PATTERN.CATEGORY_LANDING)) {
+    return URL_PATTERN.CATEGORY_LANDING;
+  }
+  return null;
+};
+
+/**
+ * @param {string} url
+ * @param {function} navigation
+ * Returns navigation to the parsed URL based on  the url param
+ */
+export const navigateToPage = (url, navigation) => {
+  const { URL_PATTERN } = config;
+  const { navigate } = navigation;
+  const category = getLandingPage(url);
+  const text = url.split('/');
+  const title = text[text.length - 1].replace(/[\W_]+/g, ' ');
+  switch (category) {
+    case URL_PATTERN.PRODUCT_LIST:
+      /**
+       * /p/Rainbow--The-Birthday-Girl--Graphic-Tee-2098277-10
+       * If url starts with “/p” → Create and navigate to a page in stack for Products (Blank page with a Text - “Product List”)
+       */
+      return navigate('ProductLanding', { product: title });
+    case URL_PATTERN.CATEGORY_LANDING:
+      /**
+       * /c/* - If url starts with “/c” (* can be anything in url) → Select “CATEGORY_LANDING” tab in tabbar and Open CATEGORY_LANDING page
+       */
+      return navigate('NavMenuLevel1');
+    default:
+      return null;
+  }
+};
+
+/**
  * @function getScreenWidth function returns screen width.
  * @return {number} function returns width of device vieport.
  */
 export const getScreenWidth = () => {
   return parseInt(Dimensions.get('screen').width, 10);
+};
+
+/**
+ * @function getScreenHeight function returns screen height.
+ * @return {number} function returns width of device viewport.
+ */
+export const getScreenHeight = () => {
+  return parseInt(Dimensions.get('screen').height, 10);
 };
 
 /**
@@ -116,12 +173,12 @@ export const getLocator = locator => {
 };
 
 /**
- * @function cropUrl function appends or replaces the cropping value in the URL
+ * @function cropImageUrl function appends or replaces the cropping value in the URL
  * @param {string} url the image url
  * @param {string} crop the crop parameter
  * @return {string} function returns new Url with the crop value
  */
-export const cropUrl = (url, crop) => {
+export const cropImageUrl = (url, crop) => {
   const [urlPath, urlData] = (url && url.split('/upload')) || ['', ''];
   return `${urlPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
 };

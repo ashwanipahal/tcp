@@ -8,7 +8,7 @@ describe('EmailSignupModal component', () => {
       buttonConfig: {},
       className: '',
       formViewConfig: {},
-      isSubscriptionValid: false,
+      subscription: { success: false },
       isEmailValid: false,
     };
     const component = shallow(<SmsSignupModalVanilla {...props} />);
@@ -20,11 +20,11 @@ describe('EmailSignupModal component', () => {
       buttonConfig: {},
       className: '',
       formViewConfig: {},
-      isSubscriptionValid: true,
+      subscription: { success: true },
       isEmailValid: true,
     };
     const component = shallow(<SmsSignupModalVanilla {...props} />);
-    component.setState({ isOpen: true });
+    component.setProps({ isModalOpen: true });
     expect(component).toMatchSnapshot();
   });
 
@@ -33,11 +33,11 @@ describe('EmailSignupModal component', () => {
       buttonConfig: {},
       className: '',
       formViewConfig: {},
-      isSubscriptionValid: false,
+      subscription: { success: false },
       isEmailValid: true,
     };
     const component = shallow(<SmsSignupModalVanilla {...props} />);
-    component.setState({ isOpen: true });
+    component.setProps({ isModalOpen: true });
     expect(component).toMatchSnapshot();
   });
 });

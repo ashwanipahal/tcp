@@ -19,6 +19,7 @@ type Props = {
   ariaLabel?: string,
   type?: string,
   placeholder?: string,
+  errorDataLocator?: string,
   onChangeHandler?: any,
   meta?: { touched: any, error: any, warning: any },
   input: any,
@@ -26,6 +27,20 @@ type Props = {
   inputRef: any,
   dataLocator?: string,
   showSuccessCheck?: boolean,
+  isRequired?: boolean,
+};
+
+/**
+ *
+ * @param {Boolean} showSuccessCheck Forcefully show the success mark and success border. Override redux form params.
+ * @param {Object} meta redux-form meta object to analyse the success state. Based on this class will be returned.
+ * @return {string} Returns a class name if the form success validation criteria matches else blank string.
+ */
+const getValidationSuccessClass = (showSuccessCheck, meta) => {
+  const { invalid, pristine, asyncValidating, active } = meta;
+  return showSuccessCheck || (!active && !pristine && !invalid && !asyncValidating)
+    ? 'textbox_validation_success'
+    : '';
 };
 
 const TextBox = ({
@@ -37,14 +52,26 @@ const TextBox = ({
   maxLength,
   input,
   inputRef,
-  meta: { touched, error },
+  meta,
   dataLocator,
   showSuccessCheck,
+  isRequired,
+  errorDataLocator,
+  ...others
 }: Props): Node => {
   const elemValue = input.value;
+  const { touched, error } = meta;
+
   return (
-    <label htmlFor={input.name} className={`${className} input-fields-wrapper`}>
+    <label
+      htmlFor={input.name}
+      className={`${className} input-fields-wrapper ${getValidationSuccessClass(
+        showSuccessCheck,
+        meta
+      )}`}
+    >
       <input
+        {...others}
         {...input}
         id={id}
         aria-label={ariaLabel}
@@ -56,22 +83,24 @@ const TextBox = ({
         ref={inputRef}
         placeholder=""
         data-locator={dataLocator}
+        aria-required={isRequired}
       />
       <BodyCopy className="TextBox__label" fontFamily="secondary" fontSize="fs12">
         {placeholder}
       </BodyCopy>
-      {touched && error && (
-        <BodyCopy
-          className="TextBox__error"
-          color="error"
-          component="div"
-          fontSize="fs12"
-          fontFamily="secondary"
-        >
-          {error}
-        </BodyCopy>
-      )}
-      {showSuccessCheck && <div className="success__checkmark" />}
+      <BodyCopy
+        className="TextBox__error"
+        color="error"
+        component="div"
+        fontSize="fs12"
+        fontFamily="secondary"
+        role="alert"
+        aria-live="assertive"
+        data-locator={errorDataLocator}
+      >
+        {touched && error ? error : ''}
+      </BodyCopy>
+      <div className="success__checkmark" />
     </label>
   );
 };
@@ -81,10 +110,12 @@ TextBox.defaultProps = {
   ariaLabel: '',
   type: 'text',
   placeholder: '',
+  errorDataLocator: '',
   onChangeHandler: () => {},
   dataLocator: '',
   meta: {},
   showSuccessCheck: false,
+  isRequired: false,
 };
 
 export default withStyles(TextBox, StyledTextBox);

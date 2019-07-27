@@ -102,10 +102,11 @@ exports[`CardTile should render correctly with amex card 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/#"
+      to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       Edit
@@ -214,10 +215,11 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/#"
+      to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       Edit
@@ -342,10 +344,11 @@ exports[`CardTile should render correctly with discover card 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/#"
+      to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       Edit
@@ -449,7 +452,6 @@ exports[`CardTile should render correctly with gift card 1`] = `
                   "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -510,8 +512,17 @@ exports[`CardTile should render correctly with gift card 1`] = `
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -521,7 +532,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -705,10 +716,11 @@ exports[`CardTile should render correctly with master card 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/#"
+      to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       Edit
@@ -823,7 +835,6 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
                   "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -884,8 +895,17 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -895,7 +915,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -1063,10 +1083,11 @@ exports[`CardTile should render correctly with plcc card 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/#"
+      to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       Edit
@@ -1136,7 +1157,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
           alt="VENMO"
           className="cardTile__img"
           data-locator="VENMO"
-          src="/static/images/venmo-blue-acceptance-mark.png"
+          src="/static/images/venmo-blue-acceptance-mark.svg"
         />
       </div>
     </div>
@@ -1264,10 +1285,11 @@ exports[`CardTile should render correctly with visa card 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/#"
+      to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       Edit
@@ -1366,7 +1388,6 @@ exports[`CardTile should show loading 1`] = `
                   "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -1427,8 +1448,17 @@ exports[`CardTile should show loading 1`] = `
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -1438,7 +1468,7 @@ exports[`CardTile should show loading 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -1602,7 +1632,6 @@ exports[`CardTile should show remining balance 1`] = `
                   "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -1663,8 +1692,17 @@ exports[`CardTile should show remining balance 1`] = `
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                  [Function],
+                  ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -1674,7 +1712,7 @@ exports[`CardTile should show remining balance 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';

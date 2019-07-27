@@ -13,7 +13,7 @@ exports[`ModuleH Header Component renders correctly 1`] = `
     <Styled(Anchor)
       className="moduleH__header-link"
       target=""
-      to="https://www.childrensplace.com/us/c/girls-new-arrivals"
+      to="/toddler"
     >
       New arrivals
     </Styled(Anchor)>
@@ -29,7 +29,7 @@ exports[`ModuleH Header Component renders correctly 1`] = `
     <Styled(Anchor)
       className="moduleH__header-link"
       target=""
-      to="https://www.childrensplace.com/us/c/girls-new-arrivals"
+      to="/toddler"
     >
       New adventures
     </Styled(Anchor)>
