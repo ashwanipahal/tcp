@@ -7,16 +7,14 @@ import style from './L1NavItem.style';
 
 const L1NavItem = props => {
   const {
-    categoryContent: {
-      id,
-      name,
-      description,
-      mainCategory: { promoBadge },
-    },
+    categoryContent: { id, name, description, mainCategory },
     className,
     dataLocator,
     index,
+    ...others
   } = props;
+
+  const promoBadge = mainCategory && mainCategory.promoBadge;
   const classForRedContent = id === '505518' ? `highlighted` : ``;
 
   return (
@@ -30,6 +28,7 @@ const L1NavItem = props => {
         color="text.hint"
         lineHeight="lh115"
         dataLocator={dataLocator}
+        {...others}
       >
         <span className={`nav-bar-l1-item-label ${classForRedContent}`}>{name}</span>
         <span

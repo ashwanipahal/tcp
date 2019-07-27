@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import {
   openNavigationDrawer,
   closeNavigationDrawer,
-} from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
+} from '@tcp/core/src/components/features/content/Header/container/Header.actions';
 import HeaderView from '../views';
 
 const mapStateToProps = state => {

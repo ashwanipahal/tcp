@@ -11,8 +11,9 @@ import { defaultBrand, defaultChannel, defaultCountry } from '../../api.constant
  *  -   Header
  *  -   Footer
  *  -   Labels
+ *  -   Navigation
  */
-const bootstrapModules = ['labels', 'header', 'footer'];
+const bootstrapModules = ['labels', 'header', 'footer', 'navigation'];
 
 /**
  * Asynchronous function to fetch data from service for given array of moduleIds
@@ -26,6 +27,9 @@ const fetchBootstrapData = async ({ pages, labels, brand, country, channel }) =>
     name: 'layout',
     data: {
       path: page,
+      brand,
+      country,
+      channel,
     },
   }));
 
@@ -55,6 +59,13 @@ const fetchBootstrapData = async ({ pages, labels, brand, country, channel }) =>
       case 'footer':
         data = {
           type: 'footer',
+          brand,
+          country,
+          channel,
+        };
+        break;
+      case 'navigation':
+        data = {
           brand,
           country,
           channel,
@@ -103,7 +114,8 @@ const bootstrap = async pages => {
     response.header = await headerAbstractor.processData(bootstrapData.header);
     response.footer = await footerAbstractor.processData(bootstrapData.footer);
     response.labels = await labelsAbstractor.processData(bootstrapData.labels);
-    response.navigation = await navigationAbstractor.getMock();
+    response.navigation = navigationAbstractor.processData(bootstrapData.navigation);
+    response.nav = await navigationAbstractor.getMock();
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);

@@ -31,9 +31,11 @@ import {
   ADD_GIFT_CARD_REDUCER_KEY,
   ADDED_TO_BAG_REDUCER_KEY,
   CART_REDUCER_KEY,
+  NAVIGATION_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
-import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
-import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
+import HeaderReducer from '@tcp/core/src/components/features/content/Header/container/Header.reducer';
+import FooterReducer from '@tcp/core/src/components/features/content/Footer/container/Footer.reducer';
+import NavigationReducer from '@tcp/core/src/components/features/content/Navigation/container/Navigation.reducer';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
 import CartReducer from '@tcp/core/src/components/features/CnC/Cart/containers/Cart.reducer';
 import HomePageReducer from '../../components/features/content/HomePage/container/HomePage.reducer';
@@ -66,4 +68,5 @@ export default combineReducers({
   [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,
   [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,
   [CART_REDUCER_KEY]: CartReducer,
+  [NAVIGATION_REDUCER_KEY]: NavigationReducer,
 });

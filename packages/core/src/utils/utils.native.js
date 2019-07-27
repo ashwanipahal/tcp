@@ -29,6 +29,10 @@ export const importGraphQLQueriesDynamically = query => {
         // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/header'));
         break;
+      case 'navigation':
+        // eslint-disable-next-line global-require
+        resolve(require('../services/handler/graphQL/queries/navigation'));
+        break;
       case 'layout':
         // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/layout'));

@@ -17,7 +17,7 @@ import {
   ADD_GIFT_CARD_REDUCER_KEY,
   ADDED_TO_BAG_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
-import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
+import HeaderReducer from '@tcp/core/src/components/features/content/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
 import AddGiftCardReducer from '@tcp/core/src/components/features/account/Payment/AddGiftCard/container/AddGiftCard.reducer';
 import ThemeWrapperReducer from '../../components/common/hoc/ThemeWrapper.reducer';

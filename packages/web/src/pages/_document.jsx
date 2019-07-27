@@ -41,9 +41,10 @@ class MyDocument extends Document {
           <meta
             name="viewport"
             content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1"
+            key="viewport"
           />
         </Head>
-        <body className="custom_class">
+        <body>
           <Main />
           <NextScript />
           <StaticScripts />
