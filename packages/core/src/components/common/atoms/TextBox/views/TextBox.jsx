@@ -100,7 +100,7 @@ const TextBox = ({
       >
         {touched && error ? error : ''}
       </BodyCopy>
-      <div className="success__checkmark" />
+      {showSuccessCheck && <div className="success__checkmark" />}
     </label>
   );
 };
@@ -114,7 +114,7 @@ TextBox.defaultProps = {
   onChangeHandler: () => {},
   dataLocator: '',
   meta: {},
-  showSuccessCheck: false,
+  showSuccessCheck: true,
   isRequired: false,
 };
 

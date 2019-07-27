@@ -10,7 +10,7 @@ import Button from '../../../../../../common/atoms/Button';
 import constants from '../../../container/AddEditCreditCard.constants';
 import CreditCardFields from '../../../molecule/CreditCardFields';
 import { Heading } from '../../../../../../common/atoms';
-import Select from '../../../../../../common/atoms/Select';
+import CustomSelect from '../../../../../../common/molecules/CustomSelect';
 import AddressFields from '../../../../common/molecule/AddressFields';
 import Address from '../../../../../../common/molecules/Address';
 import styles from '../styles/CreditCardForm.style';
@@ -39,16 +39,20 @@ export class CreditCardForm extends React.PureComponent {
   getAddressOptions = () => {
     const { addressList, labels } = this.props;
     const addressOptions = addressList.map(address => ({
-      id: address.addressId,
-      displayName: `${address.firstName} ${address.lastName} ${
+      value: address.addressId,
+      title: `${address.firstName} ${address.lastName} ${
         address.primary === 'true' ? '(Default)' : ''
       }`,
+      content: <Address address={address} />,
     }));
 
-    return addressOptions.push({
-      id: '',
-      displayName: labels.ACC_LBL_ADD_NEW_ADD_CTA,
+    addressOptions.push({
+      value: '',
+      title: labels.ACC_LBL_ADD_NEW_ADD_CTA,
+      content: labels.ACC_LBL_ADD_NEW_ADD_CTA,
     });
+
+    return addressOptions;
   };
 
   getSelectedAddress = (addressList, onFileAddresskey) => {
@@ -92,10 +96,10 @@ export class CreditCardForm extends React.PureComponent {
               className="creditCardForm__addressBook"
             >
               <Field
-                placeholder={labels.ACC_LBL_CC_ADDRESS_SELECT}
+                selectListTitle={labels.ACC_LBL_CC_ADDRESS_SELECT}
                 name="onFileAddressKey"
                 id="onFileAddressKey"
-                component={Select}
+                component={CustomSelect}
                 dataLocator="payment-billingaddressdd"
                 options={this.getAddressOptions()}
               />

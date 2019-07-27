@@ -5,6 +5,7 @@ import BodyCopy from '../../../atoms/BodyCopy';
 import styles from '../styles/CustomSelect.style';
 import withStyles from '../../../hoc/withStyles';
 import CustomSelectConst from './CustomSelect.constants';
+import { TextBox } from '../../../atoms';
 
 class CustomSelect extends React.Component<Props> {
   constructor(props) {
@@ -35,13 +36,14 @@ class CustomSelect extends React.Component<Props> {
 
   render() {
     const { toggle, activeTitle, activeValue } = this.state;
-    const { className, selectListTitle, options } = this.props;
+    const { className, selectListTitle, options, input } = this.props;
     return (
       <BodyCopy component="div" className={className}>
         <span>{selectListTitle}</span>
         <BodyCopy component="div" onClick={this.toggleHandler} className="customSelectTitle">
           {activeTitle}
         </BodyCopy>
+        <input type="hidden" {...input} />
         {toggle && (
           <DropdownList
             optionsMap={options}
@@ -61,13 +63,15 @@ CustomSelect.propTypes = {
   options: PropTypes.shape({}).isRequired,
   activeTitle: PropTypes.string,
   activeValue: PropTypes.string,
+  input: PropTypes.shape({})
 };
 
 CustomSelect.defaultProps = {
-  className: 'className',
+  className: '',
   selectListTitle: '',
   activeTitle: '',
   activeValue: '',
+  input: {}
 };
 
 export default withStyles(CustomSelect, styles);
