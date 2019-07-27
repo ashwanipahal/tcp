@@ -91,7 +91,7 @@ const ModuleL = (props: Props) => {
         fontWeight="black"
         textItems={headerText[0].textItems}
         onPress={() => {
-          UrlHandler(headerText.link.url);
+          UrlHandler(headerText[0].link.url);
         }}
       />
       <ListContainer>
