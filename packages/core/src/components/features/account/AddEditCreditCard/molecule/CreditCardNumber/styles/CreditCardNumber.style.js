@@ -7,7 +7,7 @@ const styles = css`
     position: absolute;
     top: 0;
     right: 0;
-    width: 50px;
+    width: ${props => props.theme.spacing.CREDIT_CARD_ICON_WIDTH};
   }
 `;
 

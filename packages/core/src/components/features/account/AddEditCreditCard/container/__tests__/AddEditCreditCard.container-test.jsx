@@ -22,6 +22,7 @@ describe('AddEditCreditCardContainer', () => {
       addCreditCardAction: addCreditCardActionSpy,
       editCreditCardAction: editCreditCardActionSpy,
       showSuccessNotification: showSuccessNotificationSpy,
+      addressList: null,
     };
 
     const component = shallow(<AddEditCreditCard {...props} />);

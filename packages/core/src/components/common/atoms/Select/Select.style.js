@@ -3,7 +3,6 @@ import { css } from 'styled-components';
 const selectStyles = css`
   position: relative;
   display: block;
-  height: 70px;
 
   .select__input {
     appearance: none;

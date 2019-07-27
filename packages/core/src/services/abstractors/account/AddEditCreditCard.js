@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { executeStatefulAPICall, getAPIConfig } from '../../handler';
 import endpoints from '../../endpoints';
 import constants from '../../../components/features/account/AddEditCreditCard/container/AddEditCreditCard.constants';

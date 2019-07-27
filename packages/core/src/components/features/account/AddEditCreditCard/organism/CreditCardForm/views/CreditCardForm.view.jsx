@@ -37,7 +37,7 @@ export class CreditCardForm extends React.PureComponent {
   };
 
   getAddressOptions = () => {
-    const { addressList } = this.props;
+    const { addressList, labels } = this.props;
     const addressOptions = addressList.map(address => ({
       id: address.addressId,
       displayName: `${address.firstName} ${address.lastName} ${
@@ -47,7 +47,7 @@ export class CreditCardForm extends React.PureComponent {
 
     return addressOptions.push({
       id: '',
-      displayName: '+ Add New Address',
+      displayName: labels.ACC_LBL_ADD_NEW_ADD_CTA,
     });
   };
 
@@ -73,6 +73,14 @@ export class CreditCardForm extends React.PureComponent {
     return (
       <form name={constants.FORM_NAME} noValidate onSubmit={handleSubmit} className={className}>
         <CreditCardFields {...this.props} />
+        <Heading
+          component="h3"
+          variant="listMenu"
+          className="addressDropdownHeading"
+          dataLocator="payment-bilingaddresslabel"
+        >
+          {labels.ACC_LBL_CC_HEADING}
+        </Heading>
         {addressList && addressList.size > 0 && (
           <Row fullBleed>
             <Col
@@ -81,15 +89,8 @@ export class CreditCardForm extends React.PureComponent {
                 small: 6,
                 medium: 4,
               }}
+              className="creditCardForm__addressBook"
             >
-              <Heading
-                component="h3"
-                variant="listMenu"
-                className="addressDropdownHeading"
-                dataLocator="payment-bilingaddresslabel"
-              >
-                {labels.ACC_LBL_CC_HEADING}
-              </Heading>
               <Field
                 placeholder={labels.ACC_LBL_CC_ADDRESS_SELECT}
                 name="onFileAddressKey"

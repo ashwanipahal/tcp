@@ -6,7 +6,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
   name="addEditCreditCard"
   noValidate={true}
 >
-  <CreditCardFields
+  <Styled(CreditCardFields)
     addressLabels={Object {}}
     addressList={
       Immutable.List [
@@ -18,20 +18,25 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         },
       ]
     }
-    cardType=""
-    cardTypeImgUrl=""
     className=""
     isEdit={false}
-    isExpirationRequired={true}
-    isPLCCEnabled={true}
     labels={Object {}}
     onFileAddressKey=""
     onFileAddresskey="12345"
+  />
+  <Styled(Heading)
+    className="addressDropdownHeading"
+    color="text.primary"
+    component="h3"
+    dataLocator="payment-bilingaddresslabel"
+    textAlign="left"
+    variant="listMenu"
   />
   <Styled(Row)
     fullBleed={true}
   >
     <Styled(Col)
+      className="creditCardForm__addressBook"
       colSize={
         Object {
           "large": 6,
@@ -40,14 +45,6 @@ exports[`CreditCardForm component should renders correctly with address dropdown
         }
       }
     >
-      <Styled(Heading)
-        className="addressDropdownHeading"
-        color="text.primary"
-        component="h3"
-        dataLocator="payment-bilingaddresslabel"
-        textAlign="left"
-        variant="listMenu"
-      />
       <Field
         component={
           Object {
@@ -62,7 +59,6 @@ exports[`CreditCardForm component should renders correctly with address dropdown
                 "
   position: relative;
   display: block;
-  height: 70px;
 
   .select__input {
     appearance: none;
@@ -140,7 +136,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
               "id": "12345",
             },
             Object {
-              "displayName": "+ Add New Address",
+              "displayName": undefined,
               "id": "",
             },
           ]
@@ -160,10 +156,9 @@ exports[`CreditCardForm component should renders correctly with address dropdown
   <FormSection
     name="address"
   >
-    <AddressFields
+    <Styled(AddressFields)
       formName="addEditCreditCard"
       formSection="address"
-      isMakeDefaultDisabled={false}
       labels={Object {}}
       showDefaultCheckbox={false}
       showPhoneNumber={false}
@@ -228,7 +223,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
   name="addEditCreditCard"
   noValidate={true}
 >
-  <CreditCardFields
+  <Styled(CreditCardFields)
     addressLabels={Object {}}
     addressList={
       Immutable.List [
@@ -240,21 +235,26 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         },
       ]
     }
-    cardType=""
-    cardTypeImgUrl=""
     className=""
     initialValues={Object {}}
     isEdit={false}
-    isExpirationRequired={true}
-    isPLCCEnabled={true}
     labels={Object {}}
     onFileAddressKey=""
     pristine={true}
+  />
+  <Styled(Heading)
+    className="addressDropdownHeading"
+    color="text.primary"
+    component="h3"
+    dataLocator="payment-bilingaddresslabel"
+    textAlign="left"
+    variant="listMenu"
   />
   <Styled(Row)
     fullBleed={true}
   >
     <Styled(Col)
+      className="creditCardForm__addressBook"
       colSize={
         Object {
           "large": 6,
@@ -263,14 +263,6 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
         }
       }
     >
-      <Styled(Heading)
-        className="addressDropdownHeading"
-        color="text.primary"
-        component="h3"
-        dataLocator="payment-bilingaddresslabel"
-        textAlign="left"
-        variant="listMenu"
-      />
       <Field
         component={
           Object {
@@ -285,7 +277,6 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
                 "
   position: relative;
   display: block;
-  height: 70px;
 
   .select__input {
     appearance: none;
@@ -363,7 +354,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
               "id": "12345",
             },
             Object {
-              "displayName": "+ Add New Address",
+              "displayName": undefined,
               "id": "",
             },
           ]
@@ -383,10 +374,9 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
   <FormSection
     name="address"
   >
-    <AddressFields
+    <Styled(AddressFields)
       formName="addEditCreditCard"
       formSection="address"
-      isMakeDefaultDisabled={false}
       labels={Object {}}
       showDefaultCheckbox={false}
       showPhoneNumber={false}

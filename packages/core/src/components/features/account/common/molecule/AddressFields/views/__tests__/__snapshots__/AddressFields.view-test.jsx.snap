@@ -3,6 +3,7 @@
 exports[`AddressFields component should render correctly 1`] = `
 <Fragment>
   <Styled(Row)
+    className=""
     fullBleed={true}
   >
     <Styled(Col)
@@ -20,6 +21,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -171,6 +173,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -330,6 +333,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
+        className="field"
         component={[Function]}
         componentRestrictions={
           Object {
@@ -354,6 +358,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -513,6 +518,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -663,6 +669,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -676,7 +683,6 @@ exports[`AddressFields component should render correctly 1`] = `
                 "
   position: relative;
   display: block;
-  height: 70px;
 
   .select__input {
     appearance: none;
@@ -1077,6 +1083,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1237,6 +1244,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1250,7 +1258,6 @@ exports[`AddressFields component should render correctly 1`] = `
                 "
   position: relative;
   display: block;
-  height: 70px;
 
   .select__input {
     appearance: none;
@@ -1346,6 +1353,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1507,6 +1515,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1608,6 +1617,7 @@ exports[`AddressFields component should render correctly 1`] = `
 exports[`AddressFields component should render correctly without phoneNumber and  1`] = `
 <Fragment>
   <Styled(Row)
+    className=""
     fullBleed={true}
   >
     <Styled(Col)
@@ -1625,6 +1635,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1776,6 +1787,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1935,6 +1947,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
+        className="field"
         component={[Function]}
         componentRestrictions={
           Object {
@@ -1959,6 +1972,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -2118,6 +2132,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -2268,6 +2283,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -2281,7 +2297,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 "
   position: relative;
   display: block;
-  height: 70px;
 
   .select__input {
     appearance: none;
@@ -2682,6 +2697,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -2842,6 +2858,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -2855,7 +2872,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
                 "
   position: relative;
   display: block;
-  height: 70px;
 
   .select__input {
     appearance: none;

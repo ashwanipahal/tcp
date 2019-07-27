@@ -22,13 +22,13 @@ const styles = css`
       ${props => props.theme.spacing.ELEM_SPACING.XS}
       ${props => props.theme.spacing.ELEM_SPACING.MED};
 
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
-    }
-
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       display: block;
     }
+  }
+
+  .creditCardForm__addressBook {
+    align-self: flex-end;
   }
 
   .CreditCardForm__ctaContainer {
