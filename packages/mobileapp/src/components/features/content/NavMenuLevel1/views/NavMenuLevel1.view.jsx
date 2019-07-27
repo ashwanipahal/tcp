@@ -24,13 +24,14 @@ const NavigationMenu = props => {
    * The ShowL2Navigation populates the L2 menu for the L1 link that has been clicked
    * @param {object} item Details of the L1 menu item that has been clicked
    */
-  const ShowL2Navigation = item => {
+  const ShowL2Navigation = (item, name) => {
     const {
       navigation: { navigate },
     } = props;
 
     return navigate('NavMenuLevel2', {
       navigationObj: item,
+      l1Title: name,
     });
   };
 
@@ -72,12 +73,13 @@ const NavigationMenu = props => {
         categoryContent: { name, description, imageFirst, mainCategory },
       },
     } = item;
+
     // In case of no category image, add the caret with the text
-    if (mainCategory && mainCategory.categoryImages.length === 0) {
+    if (mainCategory && mainCategory.categoryImage && mainCategory.categoryImage.length === 0) {
       return (
         <L1TouchableOpacityNoImage
           accessibilityRole="button"
-          onPress={() => ShowL2Navigation(item)}
+          onPress={() => ShowL2Navigation(item, name)}
         >
           <BodyCopy
             fontFamily="primary"
@@ -90,8 +92,8 @@ const NavigationMenu = props => {
           <Image
             alt={name}
             source={Icon}
-            maxWidth={16}
-            height={26}
+            maxWidth={10}
+            height={10}
             position="absolute"
             right={37}
           />
@@ -100,17 +102,15 @@ const NavigationMenu = props => {
     }
 
     return (
-      <L1TouchableOpacity accessibilityRole="button" onPress={() => ShowL2Navigation(item)}>
+      <L1TouchableOpacity accessibilityRole="button" onPress={() => ShowL2Navigation(item, name)}>
         {!categoryContent.imageFirst && renderTextBlock(name, description)}
         <Image
-          alt={mainCategory && mainCategory.categoryImages[0].alt}
+          alt={mainCategory && mainCategory.categoryImage && mainCategory.categoryImage[0].alt}
           source={{
             uri:
               mainCategory &&
-              cropImageUrl(
-                mainCategory.categoryImages[0].url,
-                mainCategory.categoryImages[0].crop_m
-              ),
+              mainCategory.categoryImage &&
+              cropImageUrl(mainCategory.categoryImage[0].url, mainCategory.categoryImage[0].crop_m),
           }}
           width={imageWidth}
           height={132}
@@ -120,6 +120,7 @@ const NavigationMenu = props => {
     );
   };
 
+  console.log('navigationMenuObj', navigationMenuObj.length);
   return (
     <ContainerList data={navigationMenuObj} keyExtractor={keyExtractor} renderItem={renderItem} />
   );

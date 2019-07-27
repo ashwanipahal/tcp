@@ -1,10 +1,9 @@
 import { connect } from 'react-redux';
 import NavMenuLevel1View from '../views';
-import navObject from '../mock';
 
-const mapStateToProps = () => {
+const mapStateToProps = state => {
   return {
-    navigationMenuObj: navObject.Navigation.navigationData,
+    navigationMenuObj: (state.Navigation && state.Navigation.navigationData) || [],
   };
 };
 
