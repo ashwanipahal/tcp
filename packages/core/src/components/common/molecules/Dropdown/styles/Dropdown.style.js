@@ -12,9 +12,9 @@ const dropDownlist = css`
 
   .customSelectTitle {
     border: 1px solid #9c9c9c;
-    background-color: #eeeeee;
+    background-color: ${props => props.theme.colorPalette.gray['500']};
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
     cursor:pointer;
     position: relative;
   }
@@ -23,23 +23,23 @@ const dropDownlist = css`
   .customSelectTitleImg {
     background: url(${downArrowIcon}) no-repeat right center;
     position: absolute;
-    right: 10px;
-    height: 15px;
+    right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    height: ${props => props.theme.spacing.ELEM_SPACING.MED};
     width: 100%;
-    top: 10px;
+    top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
   .customSelectTitleUpImg {
     background: url(${upArrowIcon}) no-repeat right center;
     position: absolute;
-    right: 10px;
-    height: 15px;
+    right: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    height: ${props => props.theme.spacing.ELEM_SPACING.MED};
     width: 100%;
-    top: 10px;
+    top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
-  .text-align-center{
-    padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
+  .dropDownLists{
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
     cursor:pointer;
   }
 
@@ -56,19 +56,13 @@ const dropDownlist = css`
     text-align:center;
   }
 
-
-  .dropdownliBottomBorder {
-    border-bottom: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
-    padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
-  }
-
   .dropdownActiveClass {
-    background-color: #eeeeee};
+    background-color: ${props => props.theme.colors.BUTTON.WHITE.ALT_HOVER};
     position: relative;
   }
 
   li:hover {
-    background: #eeeeee;
+    background: ${props => props.theme.colors.BUTTON.WHITE.ALT_HOVER};
   }
 `;
 

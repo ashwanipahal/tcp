@@ -8,13 +8,15 @@ export function* getAccountNavigationList() {
   try {
      yield put(showLoader());
     const contact = yield call(
-      accountNavigationAbstractor.getData,
-      'AccountNavigation',
-      {
-      brand: 'TCP',
-      country: 'USA',
-      channel: 'Desktop',
-    });
+      accountNavigationAbstractor.getMock
+    //   ,
+    //   'AccountNavigation',
+    //   {
+    //   brand: 'TCP',
+    //   country: 'USA',
+    //   channel: 'Desktop',
+    // }
+    );
     yield put(setAccountNavigationList(contact));
   } catch (err) {
     yield null;

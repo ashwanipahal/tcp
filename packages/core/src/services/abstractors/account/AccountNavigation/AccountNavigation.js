@@ -12,7 +12,7 @@ const Abstractor = {
       .then(Abstractor.processData);
   },
   getMock: () => {
-    return mock;
+    return Abstractor.processData(mock);
   },
 
   hrefUrl:(url) => {
@@ -34,7 +34,7 @@ const Abstractor = {
 
   MakeComponent:(title) => {
     const res = title.split("-");
-    let [ComponentVal] = res[0];
+    let ComponentVal = res[0];
       if(res.length > 1){
         for(let i = 1 ; i < res.length; i += 1){
           const resVal = res[i];
@@ -60,7 +60,7 @@ const Abstractor = {
                   id : MenuId,
                   url: subItem[i].leafLink.url,
                   displayName: subItem[i].leafLink.text,
-                  component: MenuId,
+                  component: subItem[i].leafLink.title,
                   href:hrefValue,
                 });
               }
@@ -74,7 +74,7 @@ const Abstractor = {
                 id : MenuId,
                 url: item.url,
                 displayName: item.text,
-                component: MenuId,
+                component: item.title,
                 href:hrefValue,
                 subSections: subSections
               };

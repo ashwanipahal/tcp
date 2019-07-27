@@ -13,7 +13,7 @@ import { getAccountNavigationState } from './Account.selectors';
 type Props = {
   router: Object,
   getAccountNavigationAction: () => void,
-  accountNavigation: array<any>,
+  accountNavigation: array<any>
 };
 
 type State = {
@@ -40,7 +40,7 @@ export class Account extends React.PureComponent<Props, State> {
   }
 
   componentDidMount() {
-    const { getAccountNavigationAction } = this.props;
+    const { getAccountNavigationAction} = this.props;
     getAccountNavigationAction();
   }
 
@@ -70,7 +70,7 @@ export class Account extends React.PureComponent<Props, State> {
     const { componentToLoad, activeComponent } = this.state;
     const { router, accountNavigation } = this.props;
     let navData = [];
-    if (accountNavigation) {
+    if(accountNavigation){
       navData = accountNavigation.accountNav;
     }
     return (
@@ -88,19 +88,18 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
   return {
     getAccountNavigationAction: () => {
       dispatch(getAccountNavigationList());
-    },
+    }
   };
 };
 
 const mapStateToProps = state => {
   return {
-    accountNavigation: getAccountNavigationState(state),
+    accountNavigation: getAccountNavigationState(state)
   };
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Account)
-);
+
+export default withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Account));

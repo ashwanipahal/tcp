@@ -5,7 +5,7 @@ export default {
       "leafLink": {
         "url": "/account",
         "text": "Account overview",
-        "title": "Account overview",
+        "title": "account-overview",
         "target": "",
         "external": 0
       }
@@ -13,9 +13,9 @@ export default {
     {
       "subSections": null,
       "leafLink": {
-        "url": "/account/favorites",
-        "text": "My Favorites",
-        "title": "My Favorites",
+        "url": "/account/address-book",
+        "text": "Address Book",
+        "title": "address-book",
         "target": "",
         "external": 0
       }
@@ -23,21 +23,10 @@ export default {
     {
       "subSections": [
         {
-          "subSections": [
-            {
-              "leafLink": {
-                "url": "/account/new",
-                "text": "My Wallet",
-                "title": "My Wallet",
-                "target": "",
-                "external": 0
-              }
-            }
-          ],
           "leafLink": {
-            "url": "/account/wallet/points",
-            "text": "Points",
-            "title": "Points",
+            "url": "/account/payment",
+            "text": "Payment & Gift Cards",
+            "title": "payment",
             "target": "",
             "external": 0
           }

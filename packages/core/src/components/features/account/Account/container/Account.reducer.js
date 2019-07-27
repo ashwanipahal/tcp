@@ -22,7 +22,7 @@ const AccountReducer = (state = initialState, action) => {
     case ACCOUNT_CONSTANTS.SET_ACCOUNT_NAVIGATION_LIST:
       return state
         .set('accountNavigation', action)
-        .set(DEFAULT_REDUCER_KEY, setCacheTTL(ACCOUNT_CONSTANTS.GET_ADDRESS_LIST_TTL));
+        .set(DEFAULT_REDUCER_KEY, setCacheTTL(ACCOUNT_CONSTANTS.GET_ACCOUNT_NAV_LIST_TTL));
     default:
       return getDefaultState(state);
   }

@@ -15,15 +15,6 @@ type Props = {
   router: object,
 };
 
-
-const clickHandler = (e, value,title )=>{
-  console.log(value);
-  console.log("On Change Handler from address book");
-  console.log(title);
-}
-
-
-
 /**
  * @function MyAccountLayoutView The AccountLayout component will provide a list of left
  * navigationLinks and the component associated with it
@@ -36,22 +27,27 @@ const MyAccountLayoutView = (props: Props) => {
   return (
     <div className={className}>
       <Row>
+        <Col
+          colSize={{ large: 12, medium: 4, small: 6 }}
+          offsetLeft={{ medium: 2}}
+        >
+          <div className="menuMedium">
+            <Dropdown
+              options={navData}
+              active="Account Overview"
+              activeComponent={active}
+            />
+          </div>
+        </Col>
+      </Row>
+
+      <Row>
         <Col colSize={{ large: 2, medium: 8, small: 6 }}>
           <div className="menuLarge">
             <MyAccountLeftNav navData={navData} active={active} />
           </div>
         </Col>
         <Col colSize={{ large: 10, medium: 8, small: 6 }}>
-
-          <div className="menuMedium">
-            <Dropdown
-              options={navData}
-              clickHandler={clickHandler}
-              active="Account Overview"
-              activeId="place-rewards"
-            />
-          </div>
-
           <MainContent router={router} />
         </Col>
       </Row>

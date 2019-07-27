@@ -7,6 +7,7 @@ const MyAccountStyles = css`
     }
     .menuMedium {
       display:block;
+      margin-bottom:${props => props.theme.spacing.ELEM_SPACING.XL}
     }
   @media ${props => props.theme.mediaQuery.large} {
     .menuMedium {
@@ -15,12 +16,6 @@ const MyAccountStyles = css`
     .menuLarge {
       display:block;
     }
-  }
-
-  @media ${props => props.theme.mediaQuery.large} {
-      .menuMedium {
-        display:none;
-      }
   }
 `;
 
