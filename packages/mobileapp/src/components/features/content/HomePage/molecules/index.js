@@ -1,5 +1,5 @@
 import SlotA from './SlotA';
 import SlotB from './SlotB';
-import SlotD from './SlotD';
+import SlotC from './SlotC';
 
-export { SlotA, SlotB, SlotD };
+export { SlotA, SlotB, SlotC };

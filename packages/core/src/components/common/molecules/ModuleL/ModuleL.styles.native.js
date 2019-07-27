@@ -1,8 +1,6 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
-  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-`;
+export const Container = styled.View``;
 
 export const BodyCopyContainer = styled.View`
   width: ${props => props.width};

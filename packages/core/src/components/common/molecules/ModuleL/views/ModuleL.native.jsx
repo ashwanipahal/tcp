@@ -22,21 +22,7 @@ const anchorIcon = true;
  * To manage the width of the Mesasge Container.
  */
 const width = getScreenWidth() - 150;
-const imageSize = parseInt(getScreenWidth() / 4, 10);
 const keyExtractor = (_, index) => index.toString();
-
-/**
- * @function getUrlWithCrop : Return updated image URL.
- * @desc Returns updated image URL with crop details.
- *
- * @param {String} url : Image URL received from CMS.
- * @return {String} function returns updated image URL as a string.
- */
-
-const getUrlWithCrop = url => {
-  const dimension = imageSize;
-  return url.replace('h_650,w_650', `h_${dimension},w_${dimension}`);
-};
 
 /**
  * @function renderItem : Render method for Flatlist.
@@ -56,14 +42,14 @@ const renderitem = item => {
         UrlHandler(link.url);
       }}
     >
-      <Image width={imageSize} height={127} source={{ uri: getUrlWithCrop(image.url) }} />
+      <Image url={image.url} height={127} crop={image.crop_m} />
       <MessageContainer>
         <BodyCopyContainer width={width}>
           <BodyCopy
             fontSize="fs20"
             color="black"
             letterSpacing="ls222"
-            text={image.text}
+            text={image.alt}
             onPress={() => {
               UrlHandler(link.url);
             }}
@@ -92,7 +78,6 @@ const renderitem = item => {
  */
 
 const ModuleL = (props: Props) => {
-  // let { headingText, url } = {};
   const { imageGrid, headerText } = props;
   return (
     <Container>

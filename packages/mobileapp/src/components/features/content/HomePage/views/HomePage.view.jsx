@@ -2,7 +2,7 @@ import React from 'react';
 import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
-import { SlotA, SlotB, SlotD } from '../molecules';
+import { SlotA, SlotB, SlotC } from '../molecules';
 
 class HomePageView extends React.Component {
   componentDidMount() {
@@ -11,13 +11,14 @@ class HomePageView extends React.Component {
   }
 
   render() {
-    const { slot_1: slotA, slot_2: slotB, slot_4: slotD } = this.props;
+    const { slot_1: slotA, slot_2: slotB, slot_3: slotC } = this.props;
+
     return (
       <ScrollView>
         <React.Fragment>
           <SlotA {...slotA} />
           <SlotB {...slotB} />
-          <SlotD {...slotD} />
+          <SlotC {...slotC} />
         </React.Fragment>
       </ScrollView>
     );
@@ -27,7 +28,7 @@ class HomePageView extends React.Component {
 HomePageView.propTypes = {
   slot_1: PropTypes.shape({}).isRequired,
   slot_2: PropTypes.shape({}).isRequired,
-  slot_4: PropTypes.shape({}).isRequired,
+  slot_3: PropTypes.shape({}).isRequired,
   getBootstrapData: PropTypes.func.isRequired,
 };
 

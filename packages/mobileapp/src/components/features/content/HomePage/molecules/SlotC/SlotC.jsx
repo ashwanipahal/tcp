@@ -7,7 +7,7 @@ type Props = {
   name: string,
 };
 
-const SlotD = (props: Props) => {
+const SlotC = (props: Props) => {
   switch (props.name) {
     case 'moduleD':
       return <ModuleD {...props} />;
@@ -20,4 +20,4 @@ const SlotD = (props: Props) => {
   }
 };
 
-export default SlotD;
+export default SlotC;
