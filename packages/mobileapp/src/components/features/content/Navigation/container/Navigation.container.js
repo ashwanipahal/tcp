@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import NavMenuLevel1View from '../views';
+import NavMenuLevel1View from '../molecules/NavMenuLevel1';
 
 const mapStateToProps = state => {
   return {

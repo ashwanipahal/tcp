@@ -19,8 +19,8 @@ import {
 } from '../NavMenuLevel2.style';
 
 const placeHolderText = 'Lorem Ipsum';
-const Icon = require('../../../../../../../core/src/assets/carrot-large-right.png');
-const BackIcon = require('../../../../../../../core/src/assets/carrot-large-left.png');
+const Icon = require('../../../../../../../../../core/src/assets/carrot-large-right.png');
+const BackIcon = require('../../../../../../../../../core/src/assets/carrot-large-left.png');
 
 const NavigationMenu = props => {
   const {

@@ -11,7 +11,7 @@ import {
 
 const imageWidth = getScreenWidth() / 2;
 const keyExtractor = (_, index) => index.toString();
-const Icon = require('../../../../../../../core/src/assets/carrot-small-rights.png');
+const Icon = require('../../../../../../../../../core/src/assets/carrot-small-rights.png');
 
 /**
  * The Navigation menu level1 is created by this component
