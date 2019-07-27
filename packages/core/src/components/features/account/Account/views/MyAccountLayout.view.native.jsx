@@ -1,14 +1,15 @@
 import React from 'react';
+import { View } from 'react-native';
 import MyAccountDropdownNav from './MyAccountDropdownNav.view';
-import { ParentContainer } from '../styles/MyAccountLayout.style.native';
+import ParentContainer from '../styles/MyAccountLayout.style.native';
 import withStyles from '../../../../common/hoc/withStyles';
-import StyledWrapper from '../styles/MyAccountLayoutView.style.native';
 
 // @flow
 type Props = {
   navData: Array<Object>,
   mainContent: Function,
   handleComponentChange: Function,
+  className: string,
 };
 
 /**
@@ -20,12 +21,12 @@ type Props = {
  */
 
 const MyAccountLayoutView = (props: Props) => {
-  const { navData, mainContent: MainContent, handleComponentChange } = props;
+  const { navData, mainContent: MainContent, handleComponentChange, className } = props;
   return (
-    <StyledWrapper {...props}>
+    <View className={className} {...props}>
       <MyAccountDropdownNav navData={navData} handleComponentChange={handleComponentChange} />
       <MainContent />
-    </StyledWrapper>
+    </View>
   );
 };
 

@@ -1,9 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import AddedToBagActions from '../../AddedToBagActions';
+import AddedToBagViewPoints from '../../AddedToBagViewPoints';
 import Modal from '../../../../common/molecules/Modal';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/AddedToBag.style';
-import ProductInformationView from '../../ProductInformation/views/ProductInformation.views';
-import BossBannerView from '../../BossBanner/views/BossBanner.views';
+import ProductInformationView from '../molecules/ProductInformation/views/ProductInformation.views';
+import BossBannerView from '../molecules/BossBanner/views/BossBanner.views';
 
 // @flow
 type Props = {
@@ -31,10 +34,15 @@ const AddedToBag = ({ openState, onRequestClose, addedToBagData, className, labe
     >
       <div className="addedToBagWrapper">
         <ProductInformationView data={addedToBagData} labels={labels} />
+        <AddedToBagViewPoints labels={labels} className="added-to-bag-points" />
+        <AddedToBagActions labels={labels} />
         <BossBannerView labels={labels} />
       </div>
     </Modal>
   );
+};
+AddedToBag.propTypes = {
+  className: PropTypes.string.isRequired,
 };
 
 export default withStyles(AddedToBag, styles);

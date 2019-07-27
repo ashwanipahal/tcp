@@ -13,4 +13,6 @@ export {
   getLocator,
   createUrlSearchParams,
   buildUrl,
+  getSiteId,
+  routerPush,
 } from './utils';

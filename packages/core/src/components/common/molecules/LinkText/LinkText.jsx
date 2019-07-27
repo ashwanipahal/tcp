@@ -5,7 +5,7 @@ import { Anchor, Heading, BodyCopy } from '../../atoms';
 type Props = {
   type: String,
   component: String,
-  textLines: Object[],
+  headerText: Object[],
   link: Object,
   icon?: Object,
   className: String,
@@ -23,8 +23,13 @@ type Props = {
  * [TODO] Can configure icon in heading at start|middle|last
  */
 const LinkText = (props: Props) => {
-  const { type, component, textLines, link, className, ...otherProps } = props;
-
+  const {
+    type,
+    component,
+    headerText: [{ textItems, link }],
+    className,
+    ...otherProps
+  } = props;
   let Component;
   let compProps = {};
 
@@ -42,7 +47,7 @@ const LinkText = (props: Props) => {
   return (
     <Anchor className={className} {...link}>
       <Component {...compProps} className="link-text">
-        {textLines.map(({ style, text }, index) => (
+        {textItems.map(({ style, text }, index) => (
           <span className={style}>{index ? ` ${text}` : text}</span>
         ))}
       </Component>

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components/native';
+import { css } from 'styled-components/native';
 
 const ParentContainer = css`
   display: flex;
@@ -8,16 +8,4 @@ const ParentContainer = css`
   margin-left: 14px;
 `;
 
-const StylePickerWrapper = css`
-  background-color: #eeeeee;
-`;
-
-const StylePicker = styled.Picker.attrs(() => ({ itemStyle: { height: 48 } }))`
-  height: 48px;
-`;
-
-const StyledWrapper = styled.View`
-  display: flex;
-`;
-
-export { ParentContainer, StylePickerWrapper, StylePicker, StyledWrapper };
+export default ParentContainer;

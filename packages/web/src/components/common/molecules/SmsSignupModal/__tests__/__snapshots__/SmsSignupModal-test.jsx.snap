@@ -2,13 +2,273 @@
 
 exports[`EmailSignupModal component renders correctly 1`] = `
 <Fragment>
-  <Styled(Button)
-    customStyle="shadow-button"
-    dataLocator="footer_sms_signup_btn"
-    onClick={[Function]}
+  <errorBoundaryComponent
+    className=""
+    closeIconDataLocator="thank_you_modal_close_btn"
+    colSet={
+      Object {
+        "large": 8,
+        "medium": 6,
+        "small": 6,
+      }
+    }
+    isOpen={false}
+    noPadding={true}
+    onRequestClose={[Function]}
+    overlayClassName="TCPModal__Overlay"
+    widthConfig={
+      Object {
+        "large": "851px",
+        "medium": "458px",
+        "small": "375px",
+      }
+    }
   >
-    <Styled(RichText) />
-  </Styled(Button)>
+    <form>
+      <Styled(Grid)>
+        <Styled(Row)
+          className="wrapper"
+          fullBleed={
+            Object {
+              "large": true,
+            }
+          }
+        >
+          <Styled(Col)
+            className="img-wrapper"
+            colSize={
+              Object {
+                "large": 4,
+                "medium": 4,
+                "small": 4,
+              }
+            }
+            hideCol={
+              Object {
+                "medium": true,
+                "small": true,
+              }
+            }
+            isNotInlineBlock={true}
+          >
+            <Styled(Image) />
+          </Styled(Col)>
+          <Styled(Col)
+            colSize={
+              Object {
+                "large": 8,
+                "medium": 8,
+                "small": 6,
+              }
+            }
+          >
+            <Styled(SignupFormIntro)
+              formViewConfig={Object {}}
+            />
+            <Styled(Col)
+              className="field-container"
+              colSize={
+                Object {
+                  "large": 10,
+                  "medium": 6,
+                  "small": 6,
+                }
+              }
+              offsetLeft={
+                Object {
+                  "large": 1,
+                  "medium": 1,
+                  "small": 0,
+                }
+              }
+            >
+              <Field
+                component={
+                  Object {
+                    "$$typeof": Symbol(react.forward_ref),
+                    "attrs": Array [],
+                    "componentStyle": ComponentStyle {
+                      "componentId": "sc-gzVnrw",
+                      "isStatic": false,
+                      "rules": Array [
+                        "
+  ",
+                        "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+                        [Function],
+                        "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+                        [Function],
+                        ";
+    ",
+                        [Function],
+                        "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+                        [Function],
+                        "px;
+    color: ",
+                        [Function],
+                        ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+                        [Function],
+                        ";
+    padding-bottom: ",
+                        [Function],
+                        ";
+    margin-bottom: ",
+                        [Function],
+                        ";
+    padding-top: ",
+                        [Function],
+                        ";
+
+    ",
+                        [Function],
+                        "
+
+    ",
+                        [Function],
+                        ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+                        [Function],
+                        "px;
+      font-weight: ",
+                        [Function],
+                        ";
+      top: 0;
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                        [Function],
+                        ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+                        [Function],
+                        ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+                        [Function],
+                        ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+                        [Function],
+                        ";
+      bottom: 0;
+    }
+  }
+
+  ",
+                        [Function],
+                        ";
+",
+                        ";
+",
+                      ],
+                    },
+                    "displayName": "Styled(TextBox)",
+                    "foldedComponentIds": Array [],
+                    "render": [Function],
+                    "styledComponentId": "sc-gzVnrw",
+                    "target": [Function],
+                    "toString": [Function],
+                    "warnTooManyClasses": [Function],
+                    "withComponent": [Function],
+                  }
+                }
+                dataLocator="sms_address_field"
+                id="signupPhoneNumber"
+                maxLength={50}
+                name="signupPhoneNumber"
+                normalize={[Function]}
+                onBlur={[Function]}
+                onKeyPress={[Function]}
+                type="text"
+              />
+              <Styled(BodyCopy)
+                className="terms-label"
+                color="text.primary"
+                component="p"
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="regular"
+                letterSpacing="normal"
+                lineHeight="normal"
+                textAlign="left"
+              />
+            </Styled(Col)>
+            <Styled(Row)
+              className="button-wrapper-form"
+              fullBleed={true}
+            >
+              <Styled(Col)
+                colSize={
+                  Object {
+                    "large": 6,
+                    "medium": 4,
+                    "small": 4,
+                  }
+                }
+              >
+                <Styled(Button)
+                  buttonVariation="fixed-width"
+                  className="join-button"
+                  dataLocator="join_now_btn"
+                  disabled={true}
+                  fill="BLUE"
+                  fullWidth={true}
+                  onClick={[Function]}
+                  type="button"
+                />
+              </Styled(Col)>
+            </Styled(Row)>
+          </Styled(Col)>
+        </Styled(Row)>
+      </Styled(Grid)>
+    </form>
+  </errorBoundaryComponent>
 </Fragment>
 `;
 
@@ -36,252 +296,76 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
       }
     }
   >
-    <form
-      onSubmit={[Function]}
-    >
-      <Styled(Grid)>
-        <Styled(Row)
-          className="wrapper"
-          fullBleed={
+    <Styled(Grid)>
+      <Styled(Row)
+        fullBleed={true}
+      >
+        <Styled(Col)
+          className="img-wrapper"
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 4,
+              "small": 4,
+            }
+          }
+          hideCol={
+            Object {
+              "medium": true,
+              "small": true,
+            }
+          }
+          isNotInlineBlock={true}
+        >
+          <Styled(Image) />
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 8,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+          ignoreGutter={
             Object {
               "large": true,
             }
           }
         >
-          <Styled(Col)
-            className="img-wrapper"
-            colSize={
-              Object {
-                "large": 4,
-                "medium": 4,
-                "small": 4,
-              }
-            }
-            hideCol={
-              Object {
-                "medium": true,
-                "small": true,
-              }
-            }
-            isNotInlineBlock={true}
+          <Styled(SignupConfirm)
+            formViewConfig={Object {}}
+            susbscriptionType="sms"
+          />
+          <Styled(Row)
+            className="button-wrapper"
+            fullBleed={true}
           >
-            <Styled(Image) />
-          </Styled(Col)>
-          <Styled(Col)
-            colSize={
-              Object {
-                "large": 8,
-                "medium": 8,
-                "small": 6,
-              }
-            }
-          >
-            <Styled(SignupFormIntro)
-              formViewConfig={Object {}}
-            />
             <Styled(Col)
-              className="field-container"
+              className="button-container"
               colSize={
                 Object {
-                  "large": 10,
-                  "medium": 6,
-                  "small": 6,
-                }
-              }
-              offsetLeft={
-                Object {
-                  "large": 1,
-                  "medium": 1,
-                  "small": 0,
+                  "large": 4,
+                  "medium": 4,
+                  "small": 4,
                 }
               }
             >
-              <Field
-                className=""
-                component={
-                  Object {
-                    "$$typeof": Symbol(react.forward_ref),
-                    "attrs": Array [],
-                    "componentStyle": ComponentStyle {
-                      "componentId": "sc-gzVnrw",
-                      "isStatic": false,
-                      "rules": Array [
-                        "
-  ",
-                        "
-  position: relative;
-  display: block;
-  height: 70px;
-
-  .TextBox__label {
-    font-size: ",
-                        [Function],
-                        "px;
-    padding: 0;
-    position: absolute;
-    top: ",
-                        [Function],
-                        ";
-    ",
-                        [Function],
-                        "
-  }
-
-  .TextBox__input {
-    margin: 0;
-    outline: 0;
-    font-size: ",
-                        [Function],
-                        "px;
-    color: ",
-                        [Function],
-                        ";
-    width: 100%;
-    background-position: left top;
-    background-repeat: no-repeat;
-    background-size: contain;
-    border: 0 solid transparent;
-    border-bottom: 1px solid ",
-                        [Function],
-                        ";
-    padding-bottom: ",
-                        [Function],
-                        ";
-    margin-bottom: ",
-                        [Function],
-                        ";
-    padding-top: ",
-                        [Function],
-                        ";
-
-    ",
-                        [Function],
-                        "
-
-    ",
-                        [Function],
-                        ";
-
-    &:focus + .TextBox__label {
-      font-size: ",
-                        [Function],
-                        "px;
-      font-weight: ",
-                        [Function],
-                        ";
-      top: 0;
-    }
-  }
-
-  .success__checkmark {
-    width: 15px;
-    height: 8px;
-    margin-left: ",
-                        [Function],
-                        ";
-    transform: rotate(-45deg);
-    transform-origin: left;
-    position: absolute;
-    right: 0;
-    bottom: 10px;
-
-    &:before {
-      content: '';
-      position: absolute;
-      width: 3px;
-      height: 100%;
-      background-color: ",
-                        [Function],
-                        ";
-    }
-
-    &:after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 3px;
-      background-color: ",
-                        [Function],
-                        ";
-      bottom: 0;
-    }
-  }
-
-  ",
-                        [Function],
-                        ";
-",
-                        ";
-",
-                      ],
-                    },
-                    "displayName": "Styled(TextBox)",
-                    "foldedComponentIds": Array [],
-                    "render": [Function],
-                    "styledComponentId": "sc-gzVnrw",
-                    "target": [Function],
-                    "toString": [Function],
-                    "warnTooManyClasses": [Function],
-                    "withComponent": [Function],
-                  }
-                }
-                dataLocator="sms_address_field"
-                id="signup"
-                maxLength={50}
-                name="signup"
-                onBlur={[Function]}
-                onChange={[Function]}
-                showSuccessCheck={false}
-                type="text"
-              />
-              <Styled(BodyCopy)
-                className="terms-label"
-                color="text.primary"
-                component="p"
-                fontFamily="secondary"
-                fontSize="fs12"
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Button)
+                buttonVariation="fixed-width"
+                className="shop-button"
+                dataLocator="shop_now_btn"
+                fill="BLUE"
+                fullWidth={true}
+                onClick={[Function]}
+                type="submit"
               />
             </Styled(Col)>
-            <Styled(Row)
-              className="button-wrapper-form"
-              fullBleed={true}
-            >
-              <Styled(Col)
-                colSize={
-                  Object {
-                    "large": 6,
-                    "medium": 4,
-                    "small": 4,
-                  }
-                }
-              >
-                <Styled(Button)
-                  buttonVariation="fixed-width"
-                  className="join-button"
-                  dataLocator="join_now_btn"
-                  disabled={true}
-                  fill="BLUE"
-                  fullWidth={true}
-                  type="submit"
-                />
-              </Styled(Col)>
-            </Styled(Row)>
-          </Styled(Col)>
-        </Styled(Row)>
-      </Styled(Grid)>
-    </form>
+          </Styled(Row)>
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(Grid)>
   </errorBoundaryComponent>
-  <Styled(Button)
-    customStyle="shadow-button"
-    dataLocator="footer_sms_signup_btn"
-    onClick={[Function]}
-  >
-    <Styled(RichText) />
-  </Styled(Button)>
 </Fragment>
 `;
 
@@ -289,7 +373,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
 <Fragment>
   <errorBoundaryComponent
     className=""
-    closeIconDataLocator="email_signup_modal_close_btn"
+    closeIconDataLocator="thank_you_modal_close_btn"
     colSet={
       Object {
         "large": 8,
@@ -309,9 +393,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
       }
     }
   >
-    <form
-      onSubmit={[Function]}
-    >
+    <form>
       <Styled(Grid)>
         <Styled(Row)
           className="wrapper"
@@ -370,7 +452,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
               }
             >
               <Field
-                className=""
                 component={
                   Object {
                     "$$typeof": Symbol(react.forward_ref),
@@ -384,7 +465,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                         "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -445,8 +525,17 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                        [Function],
+                        ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -456,7 +545,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -499,12 +588,12 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                   }
                 }
                 dataLocator="sms_address_field"
-                id="signup"
+                id="signupPhoneNumber"
                 maxLength={50}
-                name="signup"
+                name="signupPhoneNumber"
+                normalize={[Function]}
                 onBlur={[Function]}
-                onChange={[Function]}
-                showSuccessCheck={false}
+                onKeyPress={[Function]}
                 type="text"
               />
               <Styled(BodyCopy)
@@ -539,7 +628,8 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                   disabled={true}
                   fill="BLUE"
                   fullWidth={true}
-                  type="submit"
+                  onClick={[Function]}
+                  type="button"
                 />
               </Styled(Col)>
             </Styled(Row)>
@@ -548,12 +638,5 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
       </Styled(Grid)>
     </form>
   </errorBoundaryComponent>
-  <Styled(Button)
-    customStyle="shadow-button"
-    dataLocator="footer_sms_signup_btn"
-    onClick={[Function]}
-  >
-    <Styled(RichText) />
-  </Styled(Button)>
 </Fragment>
 `;
