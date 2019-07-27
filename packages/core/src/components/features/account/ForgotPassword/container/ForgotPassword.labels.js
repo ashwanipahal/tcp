@@ -5,6 +5,8 @@ const labels = {
   FORGOT_PASSWORD_CHECK_MAIL: 'Check your email',
   FORGOT_PASSWORD_RESET_PASSWORD: 'Reset Password',
   FORGOT_PASSWORD_RETURN_LOGIN: ' Return to Login',
+  FORGOT_PASSWORD_CREATE_ACCOUNT_MSG:
+    "Don't have an account? Create one now to start earning points!",
   FORGOT_PASSWORD_HEADING:
     'We’ve just sent you instructions to reset your password. Didn’t get your email?Check your spam or click here to contact customer service.',
 };

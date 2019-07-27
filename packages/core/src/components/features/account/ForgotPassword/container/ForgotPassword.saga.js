@@ -8,7 +8,7 @@ import fetchData from '../../../../../service/API';
 import { getResetPasswordSuccess, userNotAvailable } from './ForgotPassword.actions';
 import endpoints from '../../../../../service/endpoint';
 
-function* ForgotPassword(action) {
+export function* ForgotPassword(action) {
   try {
     const { relURI, method } = endpoints.requestPassword;
     const baseURI = endpoints.requestPassword.baseURI || endpoints.global.baseURI;
@@ -41,7 +41,7 @@ function* ForgotPassword(action) {
     return yield put(userNotAvailable(error));
   }
 }
-function* ForgotPasswordSaga() {
+export function* ForgotPasswordSaga() {
   yield takeLatest(FORGOTPASSWORD_CONSTANTS.RESET_PASSWORD, ForgotPassword);
 }
 

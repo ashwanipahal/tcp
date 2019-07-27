@@ -74,7 +74,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
 
         <form onSubmit={this.onFormSubmit} className={className}>
           <Grid>
-            {showNotification && (
+            {!showNotification && (
               <Row>
                 <Col
                   colSize={{
@@ -91,6 +91,18 @@ class ForgotPasswordView extends React.Component<Props, State> {
                     fontWeight="black"
                   >
                     Forgot your password? No worries!
+                  </BodyCopy>
+                </Col>
+                <Col
+                  colSize={{
+                    large: 12,
+                    medium: 12,
+                    small: 12,
+                  }}
+                >
+                  <BodyCopy fontFamily="primary" fontSize="fs16" textAlign="center" color="black">
+                    Enter your email address, and we’ll send you instructions to reset your
+                    password.
                   </BodyCopy>
                 </Col>
               </Row>
@@ -152,7 +164,9 @@ class ForgotPasswordView extends React.Component<Props, State> {
                     type="submit"
                     buttonVariation="fixed-width"
                   >
-                    {labels.FORGOT_PASSWORD_RESET_PASSWORD}
+                    <BodyCopy fontFamily="primary" fontSize="fs16" textAlign="center" color="white">
+                      {labels.FORGOT_PASSWORD_RESET_PASSWORD}
+                    </BodyCopy>
                   </Button>
                 </Col>
               </Row>
@@ -166,6 +180,19 @@ class ForgotPasswordView extends React.Component<Props, State> {
               >
                 {labels.FORGOT_PASSWORD_RETURN_LOGIN}
               </Button>
+            )}
+            {!showNotification && (
+              <Row fullBleed>
+                <Col
+                  colSize={{
+                    large: 12,
+                    medium: 12,
+                    small: 12,
+                  }}
+                >
+                  {labels.FORGOT_PASSWORD_CREATE_ACCOUNT_MSG}
+                </Col>
+              </Row>
             )}
           </Grid>
         </form>
