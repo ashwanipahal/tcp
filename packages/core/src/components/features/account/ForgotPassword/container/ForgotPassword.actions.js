@@ -11,6 +11,20 @@ export const resetPassword = payload => {
   };
 };
 
+export const resetLoginForgotPasswordState = payload => {
+  return {
+    type: FORGOTPASSWORD_CONSTANTS.RESET_PASSWORD_LOGIN_STATE,
+    payload,
+  };
+};
+
+export const successFullResetEmailState = payload => {
+  return {
+    type: FORGOTPASSWORD_CONSTANTS.RESET_PASSWORD_SUCCESSFULL_EMAIL,
+    payload,
+  };
+};
+
 export const getResetPasswordSuccess = payload => {
   return {
     type: FORGOTPASSWORD_CONSTANTS.RESET_PASSWORD_SUCCESS,
@@ -21,6 +35,13 @@ export const getResetPasswordSuccess = payload => {
 export const userNotAvailable = (payload: {}) => {
   return {
     type: FORGOTPASSWORD_CONSTANTS.USER_NOT_AVAILABLE,
+    payload,
+  };
+};
+
+export const getResetPasswordFail = payload => {
+  return {
+    type: FORGOTPASSWORD_CONSTANTS.RESET_PASSWORD_FAIL,
     payload,
   };
 };

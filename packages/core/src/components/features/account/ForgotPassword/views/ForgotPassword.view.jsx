@@ -21,6 +21,8 @@ type Props = {
   showForgotPasswordForm: any,
   resetResponse: any,
   labels: any,
+  resetLoginState: any,
+  successFullResetEmail: any,
 };
 
 type State = {
@@ -50,21 +52,26 @@ class ForgotPasswordView extends React.Component<Props, State> {
   };
 
   onBackClick = () => {
-    const { showForgotPasswordForm } = this.props;
-
+    const { showForgotPasswordForm, resetLoginState } = this.props;
+    resetLoginState();
     showForgotPasswordForm();
   };
-
+  /* eslint-disable */
   render() {
-    const { pristine, className, showNotification, resetResponse, labels } = this.props;
+    const {
+      pristine,
+      className,
+      showNotification,
+      resetResponse,
+      labels,
+      successFullResetEmail,
+    } = this.props;
     const errorObject = resetResponse && resetResponse.get('errors');
     const { email } = this.state;
     return (
       <React.Fragment>
-        <Button type="button" onClick={this.onBackClick} className="link-forgot">
-          Back to Login In
-        </Button>
-        {errorObject && !showNotification && (
+        <Button type="button" onClick={this.onBackClick} className="link-forgot" />
+        {errorObject && showNotification && (
           <Notification
             status="error"
             colSize={{ large: 11, medium: 7, small: 6 }}
@@ -74,7 +81,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
 
         <form onSubmit={this.onFormSubmit} className={className}>
           <Grid>
-            {!showNotification && (
+            {!successFullResetEmail && (
               <Row>
                 <Col
                   colSize={{
@@ -107,7 +114,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 </Col>
               </Row>
             )}
-            {showNotification && (
+            {successFullResetEmail && (
               <Row>
                 <Col
                   colSize={{
@@ -131,7 +138,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 </Col>
               </Row>
             )}
-            {!showNotification && (
+            {!successFullResetEmail && (
               <Row fullBleed>
                 <Col
                   colSize={{
@@ -151,7 +158,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 </Col>
               </Row>
             )}
-            {!showNotification && (
+            {!successFullResetEmail && (
               <Row fullBleed>
                 <Col
                   className="AddAddressForm__submit"
@@ -171,7 +178,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 </Col>
               </Row>
             )}
-            {showNotification && (
+            {successFullResetEmail && (
               <Button
                 fill="BLUE"
                 type="button"
@@ -181,19 +188,17 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 {labels.FORGOT_PASSWORD_RETURN_LOGIN}
               </Button>
             )}
-            {!showNotification && (
-              <Row fullBleed>
-                <Col
-                  colSize={{
-                    large: 12,
-                    medium: 12,
-                    small: 12,
-                  }}
-                >
-                  {labels.FORGOT_PASSWORD_CREATE_ACCOUNT_MSG}
-                </Col>
-              </Row>
-            )}
+            <Row fullBleed>
+              <Col
+                colSize={{
+                  large: 12,
+                  medium: 12,
+                  small: 12,
+                }}
+              >
+                {labels.FORGOT_PASSWORD_CREATE_ACCOUNT_MSG}
+              </Col>
+            </Row>
           </Grid>
         </form>
       </React.Fragment>

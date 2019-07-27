@@ -5,12 +5,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { login, getUserInfo } from './LoginPage.actions';
-import { resetPassword } from '../../ForgotPassword/container/ForgotPassword.actions';
+import {
+  resetPassword,
+  resetLoginForgotPasswordState,
+} from '../../ForgotPassword/container/ForgotPassword.actions';
 import LoginView from '../views/LoginPage.view';
 import labels from '../../ForgotPassword/container/ForgotPassword.labels';
 import {
   getShowNotificationState,
   getResetEmailResponse,
+  toggleSuccessfulEmailSection,
 } from '../../ForgotPassword/container/ForgotPassword.selectors';
 
 // @flow
@@ -22,6 +26,8 @@ type Props = {
   onSubmitForgot: any,
   showNotification: any,
   resetResponse: any,
+  resetLoginState: any,
+  successFullResetEmail: any,
 };
 export class LoginPageContainer extends React.PureComponent<Props> {
   render() {
@@ -32,6 +38,8 @@ export class LoginPageContainer extends React.PureComponent<Props> {
       onSubmitForgot,
       showNotification,
       resetResponse,
+      resetLoginState,
+      successFullResetEmail,
     } = this.props;
     return (
       <LoginView
@@ -42,6 +50,8 @@ export class LoginPageContainer extends React.PureComponent<Props> {
         showNotification={showNotification}
         resetResponse={resetResponse}
         labels={labels}
+        resetLoginState={resetLoginState}
+        successFullResetEmail={successFullResetEmail}
       />
     );
   }
@@ -58,6 +68,9 @@ const mapDispatchToProps = dispatch => {
     onSubmitForgot: payload => {
       dispatch(resetPassword(payload));
     },
+    resetLoginState: payload => {
+      dispatch(resetLoginForgotPasswordState(payload));
+    },
   };
 };
 
@@ -66,6 +79,7 @@ const mapStateToProps = state => {
     loginInfo: state.LoginPageReducer.loginInfo,
     showNotification: getShowNotificationState(state),
     resetResponse: getResetEmailResponse(state),
+    successFullResetEmail: toggleSuccessfulEmailSection(state),
   };
 };
 

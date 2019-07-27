@@ -18,6 +18,7 @@ type Props = {
   loginInfo: Object,
   showNotification: any,
   resetResponse: any,
+  resetLoginState: any,
 };
 
 class LoginView extends React.PureComponent<Props> {
@@ -41,6 +42,8 @@ class LoginView extends React.PureComponent<Props> {
 
   showForgotPasswordForm = () => {
     const { resetPassword } = this.state;
+    const { resetLoginState } = this.props;
+    resetLoginState();
     this.setState({
       resetPassword: !resetPassword,
     });
@@ -56,6 +59,8 @@ class LoginView extends React.PureComponent<Props> {
       showNotification,
       resetResponse,
       labels,
+      resetLoginState,
+      successFullResetEmail,
     } = this.props;
     const { resetPassword } = this.state;
 
@@ -85,6 +90,7 @@ class LoginView extends React.PureComponent<Props> {
                     onSubmit={onSubmit}
                     loginInfo={loginInfo}
                     getUserInfo={getUserInfo}
+                    successFullResetEmail={successFullResetEmail}
                   />
                 )}
                 {resetPassword && (
@@ -96,6 +102,8 @@ class LoginView extends React.PureComponent<Props> {
                     showForgotPasswordForm={this.showForgotPasswordForm}
                     resetResponse={resetResponse}
                     labels={labels}
+                    resetLoginState={resetLoginState}
+                    successFullResetEmail={successFullResetEmail}
                   />
                 )}
                 {!resetPassword && (
