@@ -31,6 +31,7 @@ exports[`Textbox component renders correctly 1`] = `
     className="TextBox__error"
     color="error"
     component="div"
+    data-locator=""
     fontFamily="secondary"
     fontSize="fs12"
     fontWeight="regular"

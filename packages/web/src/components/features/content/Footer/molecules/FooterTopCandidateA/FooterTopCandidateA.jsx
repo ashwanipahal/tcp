@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, RichText, Col, Row } from '@tcp/core/src/components/common/atoms';
+import { Button, RichText, Col, Row, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { reduxForm } from 'redux-form';
 import { Grid } from '@tcp/core/src/components/common/molecules';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { formatPhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
 
 import SocialMediaLinks from '../SocialMediaLinks';
 /* TODO move to component itself */
@@ -41,9 +41,13 @@ class FooterTopCandidateA extends React.PureComponent {
       referAFriendButton,
       referAFriend,
       emailSignUpAsyncValidate,
+      smsSignUpAsyncValidate,
       submitEmailSubscription,
-      isSubscriptionValid,
+      submitSmsSubscription,
+      emailSubscription,
+      smsSubscription,
       openEmailSignUpModal,
+      openSmsSignUpModal,
     } = this.props;
 
     return (
@@ -61,37 +65,28 @@ class FooterTopCandidateA extends React.PureComponent {
               small: true,
             }}
           >
-            {/* TODO: Desktop font size is 15px in Zeplin. Need to confirm that as it is not in guideline  */}
-            <BodyCopy
+            <RichText
               className="heading_text"
-              textAlign="center"
-              fontSize={['fs12', 'fs12', 'fs16']}
-              fontWeight="black"
-              data-locator="email_promo_text"
-            >
-              <RichText richTextHtml={emailSignup.text} />
-            </BodyCopy>
+              dataLocator="email_promo_text"
+              richTextHtml={emailSignup.text}
+            />
             <FooterTopEmailSignUpForm
               labels={emailSignupLabels}
               asyncValidate={emailSignUpAsyncValidate}
               onFormSubmit={submitEmailSubscription}
-              isSubscriptionValid={isSubscriptionValid}
+              subscription={emailSubscription}
               openSuccessModal={openEmailSignUpModal}
               dataLocators={{
                 submitButton: 'email_submit_btn',
                 inputField: 'enter_email_text_field',
+                errorDataLocator: 'email_error_message',
               }}
               fieldName={emailSignupFieldName}
             />
-            {/* TODO: Zeplin has ["fs11","fs11", "fs13"], which is not in guidline using following for now  */}
-            <BodyCopy
-              fontFamily="secondary"
-              textAlign="center"
-              fontSize={['fs12', 'fs12', 'fs14']}
-              component={RichText}
-              richTextHtml={emailSignupLabels.termsTextLabel}
-            >
-              <RichText>{emailSignupLabels.termsTextLabel}</RichText>
+
+            {/* TODO: Zeplin has ["fs9","fs9", "fs13"], which is not in guidline using following for now  */}
+            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs10', 'fs10', 'fs12']}>
+              <RichText richTextHtml={emailSignupLabels.termsTextLabel} />
             </BodyCopy>
             <div className="divider hide-in-medium-up" />
           </Col>
@@ -110,29 +105,31 @@ class FooterTopCandidateA extends React.PureComponent {
               small: true,
             }}
           >
-            {/* TODO: Desktop font size is 15px in Zeplin. Need to confirm that as it is not in guideline  */}
-            <BodyCopy
+            <RichText
+              dataLocator="sms_promo_text"
               className="heading_text"
-              textAlign="center"
-              fontSize={['fs12', 'fs12', 'fs16']}
-              fontWeight="black"
-            >
-              <RichText richTextHtml={smsSignup.text} />
-            </BodyCopy>
-            <FooterTopSmsSignUpForm labels={smsSignupLabels} fieldName={smsSignupFieldName} />
-            {/* asyncValidate={emailSignUpAsyncValidate}
-            onFormSubmit={submitEmailSubscription}
-            isSubscriptionValid={isSubscriptionValid}
-            openSuccessModal={openEmailSignUpModal} */}
-            {/* TODO: Zeplin has ["fs11","fs11", "fs13"], which is not in guidline using following for now  */}
-            <BodyCopy
-              fontFamily="secondary"
-              textAlign="center"
-              fontSize={['fs12', 'fs12', 'fs14']}
-              component={RichText}
-              richTextHtml={smsSignupLabels.termsTextLabel}
-            >
-              <RichText>{smsSignupLabels.termsTextLabel}</RichText>
+              richTextHtml={smsSignup.text}
+            />
+            <FooterTopSmsSignUpForm
+              labels={smsSignupLabels}
+              fieldName={smsSignupFieldName}
+              fieldProps={{
+                normalize: formatPhoneNumber,
+              }}
+              asyncValidate={smsSignUpAsyncValidate}
+              onFormSubmit={submitSmsSubscription}
+              subscription={smsSubscription}
+              openSuccessModal={openSmsSignUpModal}
+              dataLocators={{
+                submitButton: 'sms_submit_btn',
+                inputField: 'sms_field',
+                errorDataLocator: 'sms_error_message',
+              }}
+            />
+
+            {/* TODO: Zeplin has ["fs9","fs9", "fs13"], which is not in guidline using following for now  */}
+            <BodyCopy fontFamily="secondary" textAlign="center" fontSize={['fs10', 'fs10', 'fs12']}>
+              <RichText richTextHtml={smsSignupLabels.termsTextLabel} />
             </BodyCopy>
           </Col>
           <div className="divider hide-in-large-up" />
@@ -164,14 +161,10 @@ class FooterTopCandidateA extends React.PureComponent {
                     small: true,
                   }}
                 >
-                  <BodyCopy
+                  <RichText
                     className="heading_text refer_friend_text"
-                    textAlign="center"
-                    fontSize={['fs12', 'fs12', 'fs16']}
-                    fontWeight="black"
-                  >
-                    <RichText richTextHtml={referAFriend.text} />
-                  </BodyCopy>
+                    richTextHtml={referAFriend.text}
+                  />
                 </Col>
                 <Col
                   colSize={{
@@ -277,9 +270,13 @@ FooterTopCandidateA.propTypes = {
   showError: PropTypes.bool,
   isEmailValid: PropTypes.bool,
   emailSignUpAsyncValidate: PropTypes.func,
+  smsSignUpAsyncValidate: PropTypes.func,
   submitEmailSubscription: PropTypes.func,
+  submitSmsSubscription: PropTypes.func,
   openEmailSignUpModal: PropTypes.func,
-  isSubscriptionValid: PropTypes.bool,
+  openSmsSignUpModal: PropTypes.func,
+  emailSubscription: PropTypes.shape({}),
+  smsSubscription: PropTypes.shape({}),
 };
 
 FooterTopCandidateA.defaultProps = {
@@ -316,9 +313,13 @@ FooterTopCandidateA.defaultProps = {
   showError: false,
   isEmailValid: false,
   emailSignUpAsyncValidate: () => Promise.resolve(),
+  smsSignUpAsyncValidate: () => {},
   submitEmailSubscription: () => {},
+  submitSmsSubscription: () => {},
   openEmailSignUpModal: () => {},
-  isSubscriptionValid: false,
+  openSmsSignUpModal: () => {},
+  emailSubscription: {},
+  smsSubscription: {},
 };
 
 export default withStyles(FooterTopCandidateA, style);

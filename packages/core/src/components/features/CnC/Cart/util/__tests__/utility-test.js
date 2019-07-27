@@ -16,11 +16,13 @@ describe('#getOrderPointSummary', () => {
       userPoints: 1,
       grandTotal: 1,
       giftCardsTotal: 1,
+      bagSubTotal: 123,
+      totalItems: 1,
     });
     expect(resultType).toEqual({
       pointsToNextReward: 1,
       userPoints: 0,
-      bagSubTotal: 0,
+      bagSubTotal: '123.00',
       totalItems: 1,
       itemPrice: 0,
       itemPoints: 12,
