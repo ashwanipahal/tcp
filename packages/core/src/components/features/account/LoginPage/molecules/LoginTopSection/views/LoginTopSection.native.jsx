@@ -9,6 +9,7 @@ import {
   HeadingStyle,
   SubHeadingStyle,
   DescriptionStyle,
+  HrLineStyle,
 } from '../LoginTopSection.style.native';
 
 /**
@@ -18,12 +19,15 @@ import {
  */
 const LoginTopSection = props => {
   const { labels } = props;
+  const imgStyle = { alignSelf: 'center' };
   return (
     <View {...props}>
-      <ImageComp source={TheMarketPlaceLogo} width={186} height={60} />
+      <ImageComp source={TheMarketPlaceLogo} width={186} height={60} customStyle={imgStyle} />
+      <HrLineStyle />
       <HeadingStyle>{labels.heading}</HeadingStyle>
       <SubHeadingStyle>{labels.subHeading}</SubHeadingStyle>
       <DescriptionStyle>{labels.description}</DescriptionStyle>
+      <HrLineStyle topMargin={25} bottomMargin={1} />
     </View>
   );
 };
@@ -40,8 +44,7 @@ LoginTopSection.defaultProps = {
   labels: {
     heading: 'Welcome Back',
     subHeading: 'Log in to earn points for MY PLACE REWARDS ',
-    description:
-      'Signed up in store? An online account has been created with your email! Click here to reset your password.',
+    description: `Signed up in store?\nAn online account has been created with your email! Click here to reset your password.`,
   },
 };
 

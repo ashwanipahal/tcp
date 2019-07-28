@@ -5,6 +5,7 @@
 import React from 'react';
 import { View, Button, TextInput, Text, StyleSheet } from 'react-native'; //eslint-disable-line
 import LoginTopSection from '../../molecules/LoginTopSection';
+import LoginForm from '../../molecules/LoginForm';
 
 // @flow
 type Props = {
@@ -78,6 +79,7 @@ class LoginView extends React.PureComponent<Props> {
     return (
       <View style={styles.parentViewStyle}>
         <LoginTopSection />
+        <LoginForm />
         {/* <Text style={styles.textStyle}>Login Page</Text> */}
         <View style={styles.childViewStyle}>
           <Text>Email Id</Text>
