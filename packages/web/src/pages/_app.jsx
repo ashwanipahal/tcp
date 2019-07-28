@@ -11,6 +11,7 @@ import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
 import { Header, Footer } from '../components/features/content';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
+import OverlayModal from '../components/common/molecules/OverlayModal';
 
 class TCPWebApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -55,6 +56,7 @@ class TCPWebApp extends App {
         <ThemeProvider theme={theme}>
           <Provider store={store}>
             <GlobalStyle />
+            <OverlayModal />
             <Grid>
               <Header />
               <Component {...pageProps} />

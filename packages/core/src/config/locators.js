@@ -24,6 +24,13 @@ export default {
   // Promotional Banner
   promo_item: 'global_promobannerimg',
   refer_friend: 'global_referfriend',
+  // Module L
+  moduleL_header_text: 'moduleL_header_text',
+  moduleL_title: 'moduleL_title',
+  moduleL_promobanner_text: 'moduleL_promobanner_text',
+  moduleL_image: 'moduleL_image',
+  moduleL_link: 'moduleL_link',
+  moduleL_tiles: 'moduleL_tiles',
   // Added To Bag
   addedtobag_btnviewbag: 'addedtobag-btnviewbag',
   addedtobag_btnpaypal: 'addedtobag-btnpaypal',

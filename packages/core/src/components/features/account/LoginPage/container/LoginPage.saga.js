@@ -89,6 +89,7 @@ function* getOrderDetailSaga() {
         catalogId: 10551,
         storeId: 10151,
         pageName: 'fullOrderInfo',
+        poc: 'withCredentials',
       },
       method
     );

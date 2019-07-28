@@ -2,60 +2,30 @@
 
 exports[`ModuleD component renders correctly 1`] = `
 <StyledComponent
+  className="undefined moduleD"
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-kgoBCf",
+        "componentId": "sc-gqjmRU",
         "isStatic": false,
         "rules": Array [
           "
   ",
           "
-  a {
-    color: ",
+  ",
           [Function],
           ";
-  }
-
-  .moduleD_button {
-    margin: 19px auto 32px;
-    padding: 12px 0;
-    width: 225px;
-
-    @media ",
-          [Function],
-          " {
-      width: 162px;
-    }
-
-    @media ",
-          [Function],
-          " {
-      margin: 35px auto 48px;
-      padding: 16px 0;
-      width: 210px;
-    }
-  }
-
-  .moduleD_tile {
-    margin-bottom: ",
-          [Function],
-          ";
-  }
-  .moduleD_link {
-    text-align: center;
-  }
 ",
           ";
 ",
         ],
       },
-      "displayName": "Styled(ModuleD)",
+      "displayName": "Styled(Grid)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-kgoBCf",
+      "styledComponentId": "sc-gqjmRU",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -63,5 +33,294 @@ exports[`ModuleD component renders correctly 1`] = `
     }
   }
   forwardedRef={null}
-/>
+>
+  <LinkText
+    className="moduleD_header"
+    component="div"
+    dataLocator="moduleD_headerlink"
+    fontSize="fs48"
+    fontWeight="black"
+    headerText={
+      Array [
+        Object {
+          "link": Object {
+            "target": "",
+            "title": "",
+            "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
+          },
+          "textItems": Object {
+            "color": "color2",
+            "style": "style1",
+            "text": "Mini me shop",
+          },
+        },
+      ]
+    }
+    icon={Object {}}
+    textAlign="center"
+  />
+  <Styled(Row)
+    centered={true}
+  >
+    <Styled(Col)
+      className="moduleD_tile"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+          "xlarge": 3,
+        }
+      }
+      ignoreGutter={Object {}}
+      key="0"
+    >
+      <div
+        className="moduleD__image-container"
+      >
+        <Styled(Anchor)
+          className="moduleD_textlink"
+          target=""
+          title="Family Tees"
+          to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
+        >
+          <WithTheme(DamImage)
+            className="moduleD_image"
+            data-locator="moduleD_image_1"
+            imgConfigs={
+              Array [
+                "ar_1:1,q_80,w_164",
+                "ar_1:1,q_80,w_162",
+                "ar_1:1,q_80,w_330",
+              ]
+            }
+            imgData={
+              Object {
+                "alt": "Family Tees",
+                "title": "Family Tees",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+              }
+            }
+          />
+        </Styled(Anchor)>
+      </div>
+      <div
+        className="moduleD_link"
+      >
+        <Styled(Anchor)
+          centered={true}
+          className="moduleD_textlink"
+          data-locator="moduleD_textlink_1"
+          target=""
+          title="Family Tees"
+          to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
+          withCaret={true}
+        />
+      </div>
+    </Styled(Col)>
+    <Styled(Col)
+      className="moduleD_tile"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+          "xlarge": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+      key="1"
+    >
+      <div
+        className="moduleD__image-container"
+      >
+        <Styled(Anchor)
+          aria-label="Mom & Me Tees"
+          className="moduleD_textlink"
+          target=""
+          title="Mom & Me Tees"
+          to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
+        >
+          <WithTheme(DamImage)
+            className="moduleD_image"
+            data-locator="moduleD_image_2"
+            imgConfigs={
+              Array [
+                "ar_1:1,q_80,w_164",
+                "ar_1:1,q_80,w_162",
+                "ar_1:1,q_80,w_330",
+              ]
+            }
+            imgData={
+              Object {
+                "alt": "Mom & Me Tees",
+                "title": "Mom & Me Tees",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg",
+              }
+            }
+          />
+        </Styled(Anchor)>
+      </div>
+      <div
+        className="moduleD_link"
+      >
+        <Styled(Anchor)
+          centered={true}
+          className="moduleD_textlink"
+          data-locator="moduleD_textlink_2"
+          target=""
+          title="Mom & Me Tees"
+          to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
+          withCaret={true}
+        >
+          Mom & Me Tees
+        </Styled(Anchor)>
+      </div>
+    </Styled(Col)>
+    <Styled(Col)
+      className="moduleD_tile"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+          "xlarge": 3,
+        }
+      }
+      ignoreGutter={Object {}}
+      key="2"
+    >
+      <div
+        className="moduleD__image-container"
+      >
+        <Styled(Anchor)
+          aria-label="Family Tees"
+          className="moduleD_textlink"
+          target=""
+          title="Family Tees"
+          to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
+        >
+          <WithTheme(DamImage)
+            className="moduleD_image"
+            data-locator="moduleD_image_3"
+            imgConfigs={
+              Array [
+                "ar_1:1,q_80,w_164",
+                "ar_1:1,q_80,w_162",
+                "ar_1:1,q_80,w_330",
+              ]
+            }
+            imgData={
+              Object {
+                "alt": "Family Tees",
+                "title": "Family Tees",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME4_iuzwmp.jpg",
+              }
+            }
+          />
+        </Styled(Anchor)>
+      </div>
+      <div
+        className="moduleD_link"
+      >
+        <Styled(Anchor)
+          centered={true}
+          className="moduleD_textlink"
+          data-locator="moduleD_textlink_3"
+          target=""
+          title="Family Tees"
+          to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
+          withCaret={true}
+        >
+          Family Tees
+        </Styled(Anchor)>
+      </div>
+    </Styled(Col)>
+    <Styled(Col)
+      className="moduleD_tile"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 3,
+          "xlarge": 3,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "medium": true,
+          "small": true,
+        }
+      }
+      key="3"
+    >
+      <div
+        className="moduleD__image-container"
+      >
+        <Styled(Anchor)
+          aria-label="Mom & Me Tees"
+          className="moduleD_textlink"
+          target=""
+          title="Mom & Me Tees"
+          to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
+        >
+          <WithTheme(DamImage)
+            className="moduleD_image"
+            data-locator="moduleD_image_4"
+            imgConfigs={
+              Array [
+                "ar_1:1,q_80,w_164",
+                "ar_1:1,q_80,w_162",
+                "ar_1:1,q_80,w_330",
+              ]
+            }
+            imgData={
+              Object {
+                "alt": "Mom & Me Tees",
+                "title": "Mom & Me Tees",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME2_uwtbdd.jpg",
+              }
+            }
+          />
+        </Styled(Anchor)>
+      </div>
+      <div
+        className="moduleD_link"
+      >
+        <Styled(Anchor)
+          centered={true}
+          className="moduleD_textlink"
+          data-locator="moduleD_textlink_4"
+          target=""
+          title="Mom & Me Tees"
+          to="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
+          withCaret={true}
+        >
+          Mom & Me Tees
+        </Styled(Anchor)>
+      </div>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    centered={true}
+  >
+    <Styled(Anchor)
+      href="https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts"
+      target=""
+    >
+      <Styled(Button)
+        buttonVariation="variable-width"
+        className="moduleD_button"
+        data-locator="moduleD_button"
+        title="SHOP ALL"
+      >
+        SHOP ALL
+      </Styled(Button)>
+    </Styled(Anchor)>
+  </Styled(Row)>
+</StyledComponent>
 `;
