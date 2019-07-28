@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkText component renders correctly 1`] = `
+<TouchableOpacity
+  accessibilityRole="button"
+  activeOpacity={0.2}
+>
+  <Styled(BodyCopy)
+    Component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "text": "",
+        },
+        "attrs": Array [],
+        "displayName": "Styled(BodyCopy)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+    ",
+            "
+  ",
+            [Function],
+            "
+  ",
+            [Function],
+            "
+",
+            ";
+  ",
+          ],
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
+      }
+    }
+    headerText={
+      Array [
+        Object {
+          "icon": Object {
+            "icon": "heart",
+            "placement": "left|middle|right",
+          },
+          "link": Object {
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "https://www.childrensplace.com/us/c/girls-new-arrivals",
+          },
+          "textItems": Array [
+            Object {
+              "style": "moduleK__Header",
+              "text": "UNICORNS,",
+            },
+            Object {
+              "style": "moduleK__Header",
+              "text": "DINOS & MORE!",
+            },
+          ],
+        },
+      ]
+    }
+    text=""
+  />
+</TouchableOpacity>
+`;

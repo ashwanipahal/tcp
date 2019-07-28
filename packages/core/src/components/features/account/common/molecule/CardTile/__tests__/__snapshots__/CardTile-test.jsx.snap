@@ -532,7 +532,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -915,7 +915,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -1468,7 +1468,7 @@ exports[`CardTile should show loading 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -1712,7 +1712,7 @@ exports[`CardTile should show remining balance 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';

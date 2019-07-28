@@ -3,9 +3,6 @@ import { css } from 'styled-components';
 const SmsSignupModalStyle = css`
   .field-container {
     padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
-    label {
-      height: 40px;
-    }
   }
   .button-wrapper,
   .button-wrapper-form {
@@ -28,6 +25,7 @@ const SmsSignupModalStyle = css`
   .terms-label {
     margin-top: 52px;
   }
+
   @media ${props => props.theme.mediaQuery.medium} {
     .button-wrapper,
     .button-wrapper-form {

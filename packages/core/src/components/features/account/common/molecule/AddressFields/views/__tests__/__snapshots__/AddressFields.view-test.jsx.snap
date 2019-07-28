@@ -113,7 +113,7 @@ exports[`AddressFields component should render correctly 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -264,7 +264,7 @@ exports[`AddressFields component should render correctly 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -447,7 +447,7 @@ exports[`AddressFields component should render correctly 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -606,7 +606,7 @@ exports[`AddressFields component should render correctly 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -1170,7 +1170,7 @@ exports[`AddressFields component should render correctly 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -1439,7 +1439,7 @@ exports[`AddressFields component should render correctly 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -1718,7 +1718,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -1869,7 +1869,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -2052,7 +2052,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -2211,7 +2211,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -2775,7 +2775,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';

@@ -5,8 +5,8 @@ export default getOrderPointsSummary => {
       orderItems,
       pointsToNextReward,
       estimatedRewards,
-      grandTotal = 0,
-      giftCardsTotal = 0,
+      totalItems,
+      bagSubTotal,
     } = getOrderPointsSummary;
     pointsSummary = {
       itemPrice:
@@ -15,8 +15,8 @@ export default getOrderPointsSummary => {
         (orderItems[0] && orderItems[0].itemInfo && orderItems[0].itemInfo.itemPoints) || 0,
       pointsToNextReward,
       userPoints: estimatedRewards || 0,
-      bagSubTotal: grandTotal - giftCardsTotal,
-      totalItems: orderItems.length || 0,
+      bagSubTotal: bagSubTotal.toFixed(2),
+      totalItems: totalItems || 0,
     };
   }
   return pointsSummary;
