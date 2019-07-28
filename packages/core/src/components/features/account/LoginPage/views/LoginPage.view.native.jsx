@@ -3,7 +3,7 @@
  */
 
 import React from 'react';
-import { View, Button, TextInput, Text, StyleSheet } from 'react-native'; //eslint-disable-line
+import { View, ScrollView, Button, TextInput, Text, StyleSheet } from 'react-native'; //eslint-disable-line
 import LoginTopSection from '../molecules/LoginTopSection';
 import LoginForm from '../molecules/LoginForm';
 
@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   childViewStyle: {
     margin: 10,
   },
-  parentViewStyle: { flex: 1, justifyContent: 'flex-start', margin: 10 },
+  parentViewStyle: { flex: 1, margin: 10 },
   textInputStyle: { borderColor: gray, borderWidth: 1, height: 40 },
   // eslint-disable-next-line
   textStyle: { fontSize: 36, fontWeight: 'bold' },
@@ -77,7 +77,7 @@ class LoginView extends React.PureComponent<Props> {
   render() {
     const { email, password } = this.state;
     return (
-      <View style={styles.parentViewStyle}>
+      <ScrollView style={styles.parentViewStyle}>
         <LoginTopSection />
         <LoginForm />
         {/* <Text style={styles.textStyle}>Login Page</Text> */}
@@ -101,7 +101,7 @@ class LoginView extends React.PureComponent<Props> {
         </View>
 
         <Button title="Login" onPress={this.onFormSubmit} />
-      </View>
+      </ScrollView>
     );
   }
 }

@@ -3,13 +3,13 @@ import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import ImageComp from '../../../../../../common/atoms/Image';
+import LineComp from '../../../../../../common/atoms/Line';
 import TheMarketPlaceLogo from '../../../../../../../assets/my-place-rewards.png';
 import {
   SectionStyle,
   HeadingStyle,
   SubHeadingStyle,
   DescriptionStyle,
-  HrLineStyle,
 } from '../LoginTopSection.style.native';
 
 /**
@@ -23,11 +23,11 @@ const LoginTopSection = props => {
   return (
     <View {...props}>
       <ImageComp source={TheMarketPlaceLogo} width={186} height={60} customStyle={imgStyle} />
-      <HrLineStyle />
+      <LineComp marginTop={30} marginBottom={17} />
       <HeadingStyle>{labels.heading}</HeadingStyle>
       <SubHeadingStyle>{labels.subHeading}</SubHeadingStyle>
       <DescriptionStyle>{labels.description}</DescriptionStyle>
-      <HrLineStyle topMargin={25} bottomMargin={1} />
+      <LineComp marginTop={25} marginBottom={28} />
     </View>
   );
 };

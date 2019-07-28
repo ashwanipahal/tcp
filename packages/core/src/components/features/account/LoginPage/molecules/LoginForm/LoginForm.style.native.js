@@ -3,12 +3,12 @@ import styled, { css } from 'styled-components/native';
 const getPageStyle = () => {
   return `
   margin-top: ${'30px'}
-  margin-horizontal: ${'30px'}
+  margin-horizontal: ${'20px'}
   justify-content: ${'center'};
 
   `;
 };
-const SectionStyle = css`
+const FormStyle = css`
   ${getPageStyle}
 `;
 
@@ -41,4 +41,4 @@ const HeadingStyle = styled.Text`
   ${getHeadingStyle}
 `;
 
-export { SectionStyle, HeadingStyle };
+export { FormStyle, HeadingStyle };

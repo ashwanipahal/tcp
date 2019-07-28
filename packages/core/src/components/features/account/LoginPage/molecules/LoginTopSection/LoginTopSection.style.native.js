@@ -58,16 +58,6 @@ const getDescriptionStyle = props => {
   `;
 };
 
-const getHrLineStyle = props => {
-  const { topMargin, bottomMargin } = props;
-  return `
-  margin-top: ${topMargin || '33px'};
-  margin-bottom: ${bottomMargin || '17px'};
-  border-width: ${0.65};
-  border-color: ${'#2e6a91'};
-  `;
-};
-
 const HeadingStyle = styled.Text`
   ${getHeadingStyle}
 `;
@@ -78,7 +68,4 @@ const DescriptionStyle = styled.Text`
   ${getDescriptionStyle}
 `;
 
-const HrLineStyle = styled.View`
-  ${getHrLineStyle}
-`;
-export { SectionStyle, HeadingStyle, SubHeadingStyle, DescriptionStyle, HrLineStyle };
+export { SectionStyle, HeadingStyle, SubHeadingStyle, DescriptionStyle };
