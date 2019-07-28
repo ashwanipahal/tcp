@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { SectionList, Text } from 'react-native';
+import { SectionList, Text, View } from 'react-native';
 import { getScreenWidth } from '@tcp/core/src/utils/utils.native';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import {
@@ -13,12 +13,49 @@ import {
   ArrowIcon,
   ArrowBackIcon,
   TouchableOpacityArrow,
-  TextContainer,
   PromoAndArrowView,
   ItemViewWithHeading,
 } from '../NavMenuLevel2.style';
 
 const placeHolderText = 'Lorem Ipsum';
+const shopBySizeArr = [
+  {
+    links: [
+      {
+        url: '1',
+        text: '1',
+      },
+      {
+        url: '2',
+        text: '2',
+      },
+      {
+        url: '3',
+        text: '3',
+      },
+      {
+        url: '4',
+        text: '4',
+      },
+      {
+        url: '5',
+        text: '5',
+      },
+      {
+        url: '6',
+        text: '6',
+      },
+      {
+        url: '7',
+        text: '7',
+      },
+      {
+        url: '8',
+        text: '8',
+      },
+    ],
+  },
+];
 const Icon = require('../../../../../../../../../core/src/assets/carrot-large-right.png');
 const BackIcon = require('../../../../../../../../../core/src/assets/carrot-large-left.png');
 
@@ -56,7 +93,7 @@ const NavigationMenu = props => {
   const menuItem = (maxWidthItem, item, hasBadge, promoBannerMargin, hasL3) => {
     return (
       <React.Fragment>
-        <TextContainer maxWidth={maxWidthItem}>
+        <View maxWidth={maxWidthItem}>
           <BodyCopy
             fontFamily="secondary"
             fontSize="fs16"
@@ -65,7 +102,7 @@ const NavigationMenu = props => {
             color="text.primary"
             numberOfLines={1}
           />
-        </TextContainer>
+        </View>
         <PromoAndArrowView>
           {hasBadge && (
             <PromoWrapper marginRight={promoBannerMargin}>
@@ -137,44 +174,7 @@ const NavigationMenu = props => {
     item: { subCategories },
   } = item;
 
-  subCategories['Shop By Size'] = [
-    {
-      links: [
-        {
-          url: '1',
-          text: '1',
-        },
-        {
-          url: '2',
-          text: '2',
-        },
-        {
-          url: '3',
-          text: '3',
-        },
-        {
-          url: '4',
-          text: '4',
-        },
-        {
-          url: '5',
-          text: '5',
-        },
-        {
-          url: '6',
-          text: '6',
-        },
-        {
-          url: '7',
-          text: '7',
-        },
-        {
-          url: '8',
-          text: '8',
-        },
-      ],
-    },
-  ];
+  subCategories['Shop By Size'] = shopBySizeArr;
 
   const subCatArr = Object.keys(subCategories);
   const indexOfSubFirstSection = subCatArr.indexOf(placeHolderText);

@@ -1,9 +1,10 @@
 import styled from 'styled-components/native';
 
 export const TitleView = styled.View`
-  background: #ebf7ff;
-  padding: ${props => props.theme.spacing.ELEM_SPACING.MED} 0
-    ${props => props.theme.spacing.ELEM_SPACING.MED} 14px;
+  background: ${props => props.theme.colorPalette.blue[50]};
+  padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
+    ${props => props.theme.spacing.ELEM_SPACING.LRG}
+    ${props => props.theme.gridDimensions.gridOffsetObj.small}px;
 `;
 
 export const ItemView = styled.TouchableOpacity`
@@ -11,7 +12,8 @@ export const ItemView = styled.TouchableOpacity`
   flex-wrap: nowrap;
   justify-content: space-between;
   padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
-    ${props => props.theme.spacing.ELEM_SPACING.LRG} 14px;
+    ${props => props.theme.spacing.ELEM_SPACING.LRG}
+    ${props => props.theme.gridDimensions.gridOffsetObj.small}px;
 `;
 
 export const ItemViewWithHeading = styled.TouchableOpacity`
@@ -24,8 +26,9 @@ export const ItemViewWithHeading = styled.TouchableOpacity`
 
 export const HeadingView = styled.View`
   padding: ${props => props.theme.spacing.ELEM_SPACING.MED} 0
-    ${props => props.theme.spacing.ELEM_SPACING.MED} 14px;
-  border-bottom-color: #c3c3c3;
+    ${props => props.theme.spacing.ELEM_SPACING.MED}
+    ${props => props.theme.gridDimensions.gridOffsetObj.small}px;
+  border-bottom-color: ${props => props.theme.colorPalette.gray[600]};
   border-bottom-width: 1;
   flex-direction: row;
   align-items: center;
@@ -34,18 +37,19 @@ export const HeadingView = styled.View`
 `;
 
 export const SizeSelector = styled.TouchableOpacity`
-  margin: 10px 12px;
+  margin: ${props => props.theme.spacing.ELEM_SPACING.XS};
   width: 54;
   height: 54;
   border-radius: 27;
-  background-color: white;
-  border: 1px solid #9b9b9b;
+  background-color: ${props => props.theme.colorPalette.white};
+  border: 1px solid ${props => props.theme.colorPalette.text.hint};
   align-items: center;
   justify-content: center;
 `;
 
 export const ShopBySizeViewWrapper = styled.View`
-  margin: 20px 5px;
+  margin: ${props => props.theme.spacing.ELEM_SPACING.MED}
+    ${props => props.theme.spacing.ELEM_SPACING.XXS};
   flex-direction: row;
   flex-wrap: wrap;
 `;
@@ -72,13 +76,11 @@ export const ArrowBackIcon = styled.Image`
 `;
 
 export const TouchableOpacityArrow = styled.TouchableOpacity`
-  padding: 10px;
+  padding: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
-
-export const TextContainer = styled.View``;
 
 export const PromoAndArrowView = styled.TouchableOpacity`
   align-items: center;
   flex-direction: row;
-  padding: 0 14px 0 0;
+  padding: 0 ${props => props.theme.gridDimensions.gridOffsetObj.small}px 0 0;
 `;
