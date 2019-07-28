@@ -95,7 +95,7 @@ const ProductInformation = ({ data, labels }: Props) => {
               colSize={{ small: 2, medium: 3, large: 4 }}
             >
               <BodyCopy tag="span" fontSize="fs13" fontWeight={['semibold']} textAlign="left">
-                {data.isGiftCard === true ? `Size` : `${labels.sizeLabel}`}
+                {data.isGiftCard === true ? `Value` : `${labels.sizeLabel}`}
                 {':'}
               </BodyCopy>
             </Col>
