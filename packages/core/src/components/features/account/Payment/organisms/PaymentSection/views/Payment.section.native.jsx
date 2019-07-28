@@ -16,6 +16,8 @@ type Props = {
   giftCardList: object,
   cardList: object,
   venmoCardList: object,
+  onGetBalanceCard: Function,
+  checkbalanceValueInfo: any,
 };
 
 const PaymentView = (props: Props) => {
@@ -26,6 +28,8 @@ const PaymentView = (props: Props) => {
     cardList,
     setDefaultPaymentMethod,
     venmoCardList,
+    onGetBalanceCard,
+    checkbalanceValueInfo,
   } = props;
   return (
     <View {...props}>
@@ -45,7 +49,14 @@ const PaymentView = (props: Props) => {
         {venmoCardList && venmoCardList.size > 0 && (
           <VenmoCards labels={labels} venmoCardList={venmoCardList} />
         )}
-        {giftCardList && <GiftCards labels={labels} giftCardList={giftCardList} />}
+        {giftCardList && (
+          <GiftCards
+            labels={labels}
+            giftCardList={giftCardList}
+            checkbalanceValueInfo={checkbalanceValueInfo}
+            onGetBalanceCard={onGetBalanceCard}
+          />
+        )}
       </ScrollView>
     </View>
   );

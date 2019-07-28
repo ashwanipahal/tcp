@@ -18,10 +18,12 @@ import CardTile from '../../../../common/molecule/CardTile/views/CardTile.view.n
 type Props = {
   labels: string,
   giftCardList: object,
+  onGetBalanceCard: Function,
+  checkbalanceValueInfo: any,
 };
 
 const GiftCards = (props: Props) => {
-  const { labels, giftCardList } = props;
+  const { labels, giftCardList, onGetBalanceCard, checkbalanceValueInfo } = props;
   return (
     <View {...props}>
       <HeadingTextStyle>{labels.ACC_LBL_GC_HEADING}</HeadingTextStyle>
@@ -48,7 +50,14 @@ const GiftCards = (props: Props) => {
         />
       </ButtonWrapperStyle>
       {giftCardList.size > 0 &&
-        giftCardList.map(cardItem => <CardTile card={cardItem} labels={labels} />)}
+        giftCardList.map(cardItem => (
+          <CardTile
+            card={cardItem}
+            labels={labels}
+            onGetBalanceCard={onGetBalanceCard}
+            checkbalanceValueInfo={checkbalanceValueInfo}
+          />
+        ))}
     </View>
   );
 };

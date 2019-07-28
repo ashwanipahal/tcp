@@ -27,6 +27,7 @@ const CardTileDefaultSection = styled.View`
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: ${props => (props.isVenmo ? props.theme.spacing.ELEM_SPACING.XL : 0)};
+  margin-bottom: ${props => (props.isGiftCard ? props.theme.spacing.ELEM_SPACING.XXXL : 0)};
 `;
 
 const CardTileImgWrapper = styled.View`
@@ -71,13 +72,21 @@ const CardAddress = styled.View`
   font-size: ${props => props.theme.typography.fontSizes.fs14};
 `;
 
-const CardCtaLinks = styled.View`
+const CardCtaRow = styled.View`
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
-const CardCtaLinkLeftMargin = styled.View`
+const CardCtaLinks = styled.View`
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+`;
+
+const CardCtaLinkMargin = styled.View`
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
@@ -93,6 +102,7 @@ export {
   CardTileImg,
   DefaultBadgeWrapper,
   CardAddress,
+  CardCtaRow,
   CardCtaLinks,
-  CardCtaLinkLeftMargin,
+  CardCtaLinkMargin,
 };
