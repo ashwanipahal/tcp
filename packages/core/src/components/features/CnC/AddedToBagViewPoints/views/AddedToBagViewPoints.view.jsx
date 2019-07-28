@@ -28,7 +28,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
       <Row className="row-padding">
         <Col colSize={{ large: 9, small: 4, medium: 6 }}>{labels.price}</Col>
         <Col className="value" colSize={{ large: 3, small: 2, medium: 2 }}>
-          {`$${itemPrice}`}
+          {`$${itemPrice || 0}`}
         </Col>
       </Row>
       <Row>
@@ -39,17 +39,17 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
         </Col>
         <Col colSize={{ large: 3, small: 2, medium: 2 }}>
           <BodyCopy fontFamily="secondary" className="value promo-color" fontWeight="extrabold">
-            {itemPoints}
+            {itemPoints || 0}
           </BodyCopy>
         </Col>
       </Row>
       <Row className="divided-line" />
       <Row className="row-padding">
         <Col colSize={{ large: 9, small: 4, medium: 6 }}>
-          {getModifiedString(labels, totalItems)}
+          {getModifiedString(labels, totalItems || 0)}
         </Col>
         <Col className="value" colSize={{ large: 3, small: 2, medium: 2 }}>
-          {`$${bagSubTotal}`}
+          {`$${bagSubTotal || 0}`}
         </Col>
       </Row>
       <Row className="row-padding">
@@ -60,7 +60,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
         </Col>
         <Col colSize={{ large: 3, small: 2, medium: 2 }}>
           <BodyCopy fontFamily="secondary" className="value promo-color" fontWeight="extrabold">
-            {userPoints}
+            {userPoints || 0}
           </BodyCopy>
         </Col>
       </Row>
@@ -72,7 +72,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
         </Col>
         <Col colSize={{ large: 3, small: 2, medium: 2 }}>
           <BodyCopy fontFamily="secondary" className="value promo-color" fontWeight="extrabold">
-            {pointsToNextReward}
+            {pointsToNextReward || 0}
           </BodyCopy>
         </Col>
       </Row>

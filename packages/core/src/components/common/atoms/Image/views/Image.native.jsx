@@ -1,25 +1,25 @@
 // @flow
 import React from 'react';
 import { Image } from 'react-native';
-import { PropTypes } from 'prop-types';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../Image.style';
+import { cropImageUrl } from '../../../../../utils/utils.native';
 
 type Props = {
   source: string,
-  customStyle: Object,
+  url: string,
+  crop: string,
 };
 
-const ImageComp = (otherProps: Props) => {
-  const { source, customStyle } = otherProps;
-  return <Image source={source} {...otherProps} {...customStyle} />;
-};
-
-ImageComp.propTypes = {
-  customStyle: PropTypes.shape({}),
-};
-ImageComp.defaultProps = {
-  customStyle: {},
+const ImageComp = (props: Props) => {
+  const { url, crop, source, ...otherProps } = props;
+  const cropVal = crop || '';
+  const urlVal = url || '';
+  const sourceVal = source || '';
+  if (sourceVal === '') {
+    return <Image {...otherProps} source={{ uri: cropImageUrl(urlVal, cropVal) }} />;
+  }
+  return <Image {...otherProps} source={source} />;
 };
 
 export default withStyles(ImageComp, style);

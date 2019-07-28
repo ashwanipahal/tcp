@@ -24,6 +24,9 @@ export const CARTPAGE_REDUCER_KEY = 'CartPage';
 export const ADDEDITADDRESS_REDUCER_KEY = 'AddEditAddressReducer';
 export const ADDEDITADDRESS_ACTION_PATTERN = '@@Address-';
 
+// Add/Update Credit Card reducer
+export const ADDEDITCREDITCARD_REDUCER_KEY = 'AddEditCreditCardReducer';
+
 // ProductListing Page Reducer
 export const PRODUCTLISTINGPAGE_REDUCER_KEY = 'ProductListingPage';
 export const PRODUCTLISTINGPAGE_ACTION_PATTERN = '@@PLP-';

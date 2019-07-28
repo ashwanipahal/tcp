@@ -97,7 +97,7 @@ export const AnchorIcon = styled.Image`
   width: 3px;
   height: 7px;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
-  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 export default { AnchorStyles, AnchorView, AnchorIcon };
