@@ -8,10 +8,19 @@ describe('NavMenuLevel2', () => {
     expect(NavMenuLevel2View).toBeDefined();
   });
 
-  xit('should render correctly', () => {
+  it('should render correctly', () => {
     const props = {
       navigation: {
-        getParam: jest.fn(),
+        getParam: param => {
+          if (param === 'navigationObj') {
+            return {
+              item: {
+                subCategories: [],
+              },
+            };
+          }
+          return 'GIRL';
+        },
       },
     };
     const component = shallow(<NavMenuLevel2View {...props} />);

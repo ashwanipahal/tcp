@@ -18,6 +18,7 @@ import {
 } from '../NavMenuLevel2.style';
 
 const placeHolderText = 'Lorem Ipsum';
+const shopBySize = 'Shop By Size';
 const shopBySizeArr = [
   {
     links: [
@@ -59,11 +60,20 @@ const shopBySizeArr = [
 const Icon = require('../../../../../../../../../core/src/assets/carrot-large-right.png');
 const BackIcon = require('../../../../../../../../../core/src/assets/carrot-large-left.png');
 
-const NavigationMenu = props => {
+/**
+ * The Navigation menu level2 is created by this component
+ * @param {object} props Props passed from Stack navigator screen and the parent L1
+ */
+const NavMenuLevel2 = props => {
   const {
     navigation: { navigate, goBack },
   } = props;
 
+  /**
+   * @function navigateFromL2 populates the L3 menu or PLP page for the L1 link that has been clicked
+   * @param {object} subCats Details of the L2 menu item that has been clicked
+   * @param {object} hasL3 flag that defines if L3 is present for the L2
+   */
   const navigateFromL2 = (subCats, hasL3) => {
     if (hasL3) {
       return navigate('NavMenuLevel3');
@@ -71,6 +81,10 @@ const NavigationMenu = props => {
     return navigate('productListingPage');
   };
 
+  /**
+   * @function shopBySizeCircle populates the circular links for shop by size
+   * @param {object} links shop by size links
+   */
   const shopBySizeCircle = links => {
     return (
       <ShopBySizeViewWrapper>
@@ -90,6 +104,10 @@ const NavigationMenu = props => {
     );
   };
 
+  /**
+   * @function menuItem populates the text, promobadge and arrow of the menu item
+   * @param {object} links shop by size links
+   */
   const menuItem = (maxWidthItem, item, hasBadge, promoBannerMargin, hasL3) => {
     return (
       <React.Fragment>
@@ -121,6 +139,11 @@ const NavigationMenu = props => {
     );
   };
 
+  /**
+   * @function renderItem populates the menu item conditionally
+   * @param {object} item menu item object
+   * @param {object} section contains the section title of the menu item
+   */
   const renderItem = ({ item, section: { title } }) => {
     let maxWidthItem = getScreenWidth() - 60;
     let promoBannerMargin = 55;
@@ -130,7 +153,7 @@ const NavigationMenu = props => {
 
     // TODO - there would be a differentiating factor for generating circular links
     // Use that check instead, as of now hardcoding the mock Title
-    if (title === 'Shop By Size') {
+    if (title === shopBySize) {
       return shopBySizeCircle(item.links);
     }
 
@@ -174,8 +197,11 @@ const NavigationMenu = props => {
     item: { subCategories },
   } = item;
 
-  subCategories['Shop By Size'] = shopBySizeArr;
+  // TODO - Appending the dummy shop by size object for development. Remove it later
+  subCategories[shopBySize] = shopBySizeArr;
 
+  // Extract the object keys and place the placeHolderText key
+  // as the first element of the array since that appears first
   const subCatArr = Object.keys(subCategories);
   const indexOfSubFirstSection = subCatArr.indexOf(placeHolderText);
   if (indexOfSubFirstSection !== 0) {
@@ -229,7 +255,7 @@ const NavigationMenu = props => {
   );
 };
 
-NavigationMenu.propTypes = {
+NavMenuLevel2.propTypes = {
   navigation: PropTypes.shape({
     getParam: PropTypes.func.isRequired,
   }).isRequired,
@@ -239,4 +265,4 @@ NavigationMenu.propTypes = {
   }).isRequired,
 };
 
-export default NavigationMenu;
+export default NavMenuLevel2;

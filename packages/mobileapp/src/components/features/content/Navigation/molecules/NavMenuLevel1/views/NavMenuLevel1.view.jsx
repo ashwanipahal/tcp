@@ -14,14 +14,14 @@ const keyExtractor = (_, index) => index.toString();
 const Icon = require('../../../../../../../../../core/src/assets/carrot-small-rights.png');
 
 /**
- * The Navigation menu level1 is created by this component
+ * @function NavMenuLevel1 The Navigation menu level1 is created by this component
  * @param {object} props Props passed from Stack navigator screen
  */
-const NavigationMenu = props => {
+const NavMenuLevel1 = props => {
   const { navigationMenuObj } = props;
 
   /**
-   * The ShowL2Navigation populates the L2 menu for the L1 link that has been clicked
+   * @function ShowL2Navigation populates the L2 menu for the L1 link that has been clicked
    * @param {object} item Details of the L1 menu item that has been clicked
    */
   const ShowL2Navigation = (item, name) => {
@@ -36,7 +36,7 @@ const NavigationMenu = props => {
   };
 
   /**
-   * The renderTextBlock populates the L1 menu content
+   * @function renderTextBlock populates the L1 menu content
    * @param {object} item Details of the L1 menu item that has been clicked
    */
   const renderTextBlock = (catName, catSize) => {
@@ -63,7 +63,7 @@ const NavigationMenu = props => {
   };
 
   /**
-   * The renderItem populates the L1 menu item from the data passed to it
+   * @function renderItem populates the L1 menu item from the data passed to it
    * @param {object} item Details of the L1 menu item passed from the loop
    */
   const renderItem = item => {
@@ -92,8 +92,8 @@ const NavigationMenu = props => {
           <Image
             alt={name}
             source={Icon}
-            maxWidth={10}
-            height={10}
+            maxWidth={16}
+            height={26}
             position="absolute"
             right={37}
           />
@@ -119,18 +119,16 @@ const NavigationMenu = props => {
       </L1TouchableOpacity>
     );
   };
-
-  console.log('navigationMenuObj', navigationMenuObj.length);
   return (
     <ContainerList data={navigationMenuObj} keyExtractor={keyExtractor} renderItem={renderItem} />
   );
 };
 
-NavigationMenu.propTypes = {
+NavMenuLevel1.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
   navigationMenuObj: PropTypes.shape({}).isRequired,
 };
 
-export default NavigationMenu;
+export default NavMenuLevel1;

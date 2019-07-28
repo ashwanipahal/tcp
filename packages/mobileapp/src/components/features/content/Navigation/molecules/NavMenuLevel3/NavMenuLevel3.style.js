@@ -2,8 +2,9 @@ import styled from 'styled-components/native';
 
 export const HeadingView = styled.View`
   padding: ${props => props.theme.spacing.ELEM_SPACING.MED} 0
-    ${props => props.theme.spacing.ELEM_SPACING.MED} 14px;
-  border-bottom-color: #c3c3c3;
+    ${props => props.theme.spacing.ELEM_SPACING.MED}
+    ${props => props.theme.gridDimensions.gridOffsetObj.small}px;
+  border-bottom-color: ${props => props.theme.colorPalette.gray[600]};
   border-bottom-width: 1;
   flex-direction: row;
   align-items: center;
@@ -17,5 +18,5 @@ export const ArrowBackIcon = styled.Image`
 `;
 
 export const TouchableOpacityArrow = styled.TouchableOpacity`
-  padding: 10px;
+  padding: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;

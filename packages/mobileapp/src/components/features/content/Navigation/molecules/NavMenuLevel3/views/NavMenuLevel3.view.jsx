@@ -6,7 +6,11 @@ import { ArrowBackIcon, HeadingView, TouchableOpacityArrow } from '../NavMenuLev
 
 const BackIcon = require('../../../../../../../../../core/src/assets/carrot-large-left.png');
 
-const NavigationMenu = props => {
+/**
+ * The Navigation menu level3 is created by this component
+ * @param {object} props Props passed from Stack navigator screen and the parent L1
+ */
+const NavMenuLevel3 = props => {
   const {
     navigation: { goBack },
   } = props;
@@ -34,10 +38,10 @@ const NavigationMenu = props => {
   );
 };
 
-NavigationMenu.propTypes = {
+NavMenuLevel3.propTypes = {
   navigation: PropTypes.shape({
     getParam: PropTypes.func.isRequired,
   }).isRequired,
 };
 
-export default NavigationMenu;
+export default NavMenuLevel3;
