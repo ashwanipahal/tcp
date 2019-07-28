@@ -1,5 +1,6 @@
 import superagent from 'superagent';
 import { API_CONFIG } from '../../config';
+// eslint-disable-next-line no-unused-vars
 import { isClient, isMobileApp } from '../../../utils';
 import { readCookie } from '../../../utils/cookie.util';
 
@@ -11,16 +12,19 @@ import { readCookie } from '../../../utils/cookie.util';
  */
 const generateTraceId = apiConfig => {
   const apiConfigObj = apiConfig;
-  let prefix;
+  const prefix = 'MOBILE';
 
   // Setting prefix of trace-id based on platform of user i.e. either mobile, browser, Node
-  if (isMobileApp()) {
-    prefix = 'MOBILE';
-  } else if (isClient()) {
-    prefix = 'CLIENT';
-  } else {
-    prefix = 'NODE';
-  }
+  // if (true) {
+  // eslint-disable-next-line extra-rules/no-commented-out-code
+  //   prefix = 'MOBILE';
+  // } else if (isClient()) {
+  // eslint-disable-next-line extra-rules/no-commented-out-code
+  //   prefix = 'CLIENT';
+  // } else {
+  // eslint-disable-next-line extra-rules/no-commented-out-code
+  //   prefix = 'NODE';
+  // }
   const timeStamp = new Date().valueOf().toString();
 
   // On the Node Server traceIdCount can grow to Infinity, so we will reset it at 10000
@@ -38,6 +42,7 @@ const generateTraceId = apiConfig => {
  * @param {string} apiConfig - Api config to be utilized for brand/channel/locale config
  * @returns {string} returns derived QuantumMetricSessionID from cookie or else not-found string value
  */
+// eslint-disable-next-line no-unused-vars
 const generateSessionId = apiConfig => {
   const { sessionCookieKey } = API_CONFIG;
   // TODO - Check if it works in Mobile app as well or else change it to isServer check
@@ -52,8 +57,9 @@ const generateSessionId = apiConfig => {
  * @returns {Object} returns derived request object and request url
  */
 const getRequestParams = (apiConfig, reqObj) => {
+  // eslint-disable-next-line no-unused-vars
   const { proto, domain, catalogId, storeId, langId, isMobile } = apiConfig;
-  const deviceType = isMobile ? 'mobile' : 'desktop';
+  const deviceType = 'mobile';
   const requestUrl = `${proto}${domain}${reqObj.webService.URI}`;
   const reqHeaders = {
     langId,
@@ -64,7 +70,7 @@ const getRequestParams = (apiConfig, reqObj) => {
     deviceType,
     'Cache-Control': 'no-store, must-revalidate',
     'tcp-trace-request-id': generateTraceId(apiConfig),
-    'tcp-trace-session-id': generateSessionId(apiConfig),
+    // 'tcp-trace-session-id': generateSessionId(apiConfig),
   };
   // TODO - Check if it works in Mobile app as well or else change it to isServer check
   if (apiConfig.cookie && !isClient()) {

@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddedToBagViewPoints native component renders correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(Text)>
+      <Styled(Text)>
+        Price
+      </Styled(Text)>
+    </Styled(Text)>
+    <Styled(Text)>
+      <Styled(Text)>
+        $12
+      </Styled(Text)>
+    </Styled(Text)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Text)>
+      <Styled(Text)>
+        Points you can earn on these items
+      </Styled(Text)>
+    </Styled(Text)>
+    <Styled(Text)>
+      <Styled(Text)>
+        23
+      </Styled(Text)>
+    </Styled(Text)>
+  </Styled(View)>
+  <Styled(View) />
+  <Styled(View)>
+    <Styled(Text)>
+      <Styled(Text)>
+        Bag Subtotal (3 items)
+      </Styled(Text)>
+    </Styled(Text)>
+    <Styled(Text)>
+      <Styled(Text)>
+        $undefined
+      </Styled(Text)>
+    </Styled(Text)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Text)>
+      <Styled(Text)>
+        Total My Place Rewards points in my bag
+      </Styled(Text)>
+    </Styled(Text)>
+    <Styled(Text)>
+      <Styled(Text)>
+        60
+      </Styled(Text)>
+    </Styled(Text)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Text)>
+      <Styled(Text)>
+        Total Point to next purchase
+      </Styled(Text)>
+    </Styled(Text)>
+    <Styled(Text)>
+      <Styled(Text)>
+        12
+      </Styled(Text)>
+    </Styled(Text)>
+  </Styled(View)>
+</Styled(View)>
+`;
