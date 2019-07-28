@@ -27,7 +27,7 @@ const LoginTopSection = props => {
       <HeadingStyle>{labels.heading}</HeadingStyle>
       <SubHeadingStyle>{labels.subHeading}</SubHeadingStyle>
       <DescriptionStyle>{labels.description}</DescriptionStyle>
-      <LineComp marginTop={25} marginBottom={28} />
+      <LineComp marginTop={25} marginBottom={0} />
     </View>
   );
 };
