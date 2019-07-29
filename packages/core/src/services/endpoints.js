@@ -38,6 +38,10 @@ const endpoints = {
     method: 'PUT',
     URI: 'v2/cart/deleteMultipleOrderItems',
   },
+  createAccount: {
+    method: API_METHODS.POST,
+    URI: 'v2/wallet/addCustomerRegistration',
+  },
 };
 
 export default endpoints;

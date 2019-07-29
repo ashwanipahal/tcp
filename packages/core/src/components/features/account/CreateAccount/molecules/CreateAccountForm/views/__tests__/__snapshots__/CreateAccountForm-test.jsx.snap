@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateAccountForm should render correctly 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;
