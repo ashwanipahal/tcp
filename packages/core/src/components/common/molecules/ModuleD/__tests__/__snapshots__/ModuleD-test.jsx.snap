@@ -34,11 +34,15 @@ exports[`ModuleD component renders correctly 1`] = `
   }
   forwardedRef={null}
 >
-  <LinkText
-    className="moduleD_header"
+  <Styled(LinkText)
     component="div"
     dataLocator="moduleD_headerlink"
-    fontSize="fs48"
+    fontSize={
+      Array [
+        "fs32",
+        "fs48",
+      ]
+    }
     fontWeight="black"
     headerText={
       Array [
@@ -56,7 +60,8 @@ exports[`ModuleD component renders correctly 1`] = `
         },
       ]
     }
-    icon={Object {}}
+    headingClass="moduleD_header"
+    lineHeight="lh107"
     textAlign="center"
   />
   <Styled(Row)

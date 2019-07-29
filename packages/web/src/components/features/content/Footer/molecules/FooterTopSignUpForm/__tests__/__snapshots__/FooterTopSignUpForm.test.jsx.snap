@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
-<form>
+<form
+  className="footer_top__signup_form"
+>
   <Styled(Grid)>
     <Styled(Row)
       fullBleed={true}
@@ -115,7 +117,7 @@ exports[`FooterTopSignUpFormVanilla component renders correctly 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';

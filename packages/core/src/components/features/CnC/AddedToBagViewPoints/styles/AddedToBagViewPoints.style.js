@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 const styles = css`
   margin-top: 10px;
   font-size: 12px;
-  .value {
+  .text-value {
     text-align: right;
   }
   .row-padding {

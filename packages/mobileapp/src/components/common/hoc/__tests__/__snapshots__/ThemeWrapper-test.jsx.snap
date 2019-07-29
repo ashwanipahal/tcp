@@ -327,6 +327,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         },
       },
       "spacing": Object {
+        "CREDIT_CARD_ICON_WIDTH": "50px",
         "ELEM_SPACING": Object {
           "LRG": "24px",
           "MED": "16px",
@@ -338,6 +339,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "XXXL": "48px",
           "XXXS": "2px",
         },
+        "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
           "MED": "48px",

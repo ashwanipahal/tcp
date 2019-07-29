@@ -2,14 +2,15 @@
 import React from 'react';
 import { FlatList, TouchableOpacity } from 'react-native';
 import { getScreenWidth, UrlHandler } from '../../../../../utils/utils.native';
-import { Heading, Anchor, Button, Image } from '../../../atoms';
+import { Anchor, Button, Image } from '../../../atoms';
 import { ButtonWrapper, Tile, HeadingWrapper, Wrapper } from '../ModuleD.style.native';
 import colors from '../../../../../../styles/themes/TCP/colors';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
+import LinkText from '../../LinkText';
 
 type Props = {
-  headerText: Object,
-  smallCompImage: Object,
+  headerText: Object[],
+  smallCompImage: Object[],
   singleCTAButton: Object,
 };
 
@@ -55,7 +56,7 @@ const renderItem = item => {
 
       <Anchor
         fontSizeVariation="large"
-        text={link.title}
+        text={link.text}
         visible={anchorEnable}
         onPress={() => {
           UrlHandler(link.url);
@@ -78,54 +79,44 @@ const renderItem = item => {
  */
 
 const ModuleD = (props: Props) => {
-  let { headingText, url } = {};
-  const { headerText, smallCompImage, singleCTAButton } = props;
+  const { smallCompImage, headerText, singleCTAButton } = props;
   const buttonWidth = { width: 225 };
-
-  if (headerText) {
-    ({
-      textItems: [{ text: headingText }],
-      link: { url },
-    } = headerText);
-  }
-
   return (
     <Wrapper>
-      {headingText && (
-        <HeadingWrapper accessibilityRole="button" onPress={() => UrlHandler(url)}>
-          <Heading
-            fontFamily="primary"
-            fontSize="fs36"
-            letterSpacing="ls167"
-            textAlign="center"
-            color="text.primary"
-            fontWeight="extrabold"
-            text={headingText}
-          />
-        </HeadingWrapper>
-      )}
-      {smallCompImage && (
-        <FlatList
-          numColumns={2}
-          data={smallCompImage}
-          keyExtractor={keyExtractor}
-          renderItem={renderItem}
+      <HeadingWrapper accessibilityRole="button" onPress={() => UrlHandler(headerText[0].link.url)}>
+        <LinkText
+          fontFamily="primary"
+          fontSize="fs36"
+          letterSpacing="ls167"
+          textAlign="center"
+          color="text.primary"
+          fontWeight="extrabold"
+          textItems={headerText[0].textItems}
+          onPress={() => {
+            UrlHandler(headerText[0].link.url);
+          }}
         />
-      )}
-      {singleCTAButton && (
-        <ButtonWrapper>
-          <Button
-            color={colors.BUTTON.WHITE.TEXT}
-            accessibilityLabel={singleCTAButton.title}
-            buttonVariation="variable-width"
-            style={buttonWidth}
-            text={singleCTAButton.title}
-            onPress={() => {
-              UrlHandler(singleCTAButton.url);
-            }}
-          />
-        </ButtonWrapper>
-      )}
+      </HeadingWrapper>
+
+      <FlatList
+        numColumns={2}
+        data={smallCompImage}
+        keyExtractor={keyExtractor}
+        renderItem={renderItem}
+      />
+
+      <ButtonWrapper>
+        <Button
+          color={colors.BUTTON.WHITE.TEXT}
+          accessibilityLabel={singleCTAButton.title}
+          buttonVariation="variable-width"
+          style={buttonWidth}
+          text={singleCTAButton.title}
+          onPress={() => {
+            UrlHandler(singleCTAButton.url);
+          }}
+        />
+      </ButtonWrapper>
     </Wrapper>
   );
 };
