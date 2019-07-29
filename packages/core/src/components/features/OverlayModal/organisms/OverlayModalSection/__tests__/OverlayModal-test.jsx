@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { OverlayModalVanilla } from '../OverlayModal';
+import { OverlayModalVanilla } from '../views/OverlayModal';
 
 describe('OverlayModal', () => {
   let mockedRef = null;
@@ -20,15 +20,15 @@ describe('OverlayModal', () => {
     const comp = document.createElement('div');
     comp.setAttribute('id', 'login');
     const overlayElementWrapper = document.createElement('div');
-    overlayElementWrapper.setAttribute('id', 'overlayElements');
+    overlayElementWrapper.setAttribute('id', 'overlayWrapper');
     const overlayElementComponent = document.createElement('div');
     overlayElementComponent.setAttribute('id', 'overlayComponent');
     const dialog = document.createElement('div');
-    dialog.setAttribute('id', 'dialog__content');
+    dialog.setAttribute('id', 'dialogContent');
     const modalTriangle = document.createElement('div');
-    modalTriangle.setAttribute('id', 'modal__triangle');
+    modalTriangle.setAttribute('id', 'modalTriangle');
     const modalWrapper = document.createElement('div');
-    modalWrapper.setAttribute('id', 'modal__wrapper');
+    modalWrapper.setAttribute('id', 'modalWrapper');
     document.body.appendChild(comp);
     document.body.appendChild(dialog);
     document.body.appendChild(modalTriangle);
@@ -44,20 +44,20 @@ describe('OverlayModal', () => {
     if (document.getElementById('login')) {
       document.body.removeChild(document.getElementById('login'));
     }
-    if (document.getElementById('dialog__content')) {
-      document.body.removeChild(document.getElementById('dialog__content'));
+    if (document.getElementById('dialogContent')) {
+      document.body.removeChild(document.getElementById('dialogContent'));
     }
-    if (document.getElementById('modal__triangle')) {
-      document.body.removeChild(document.getElementById('modal__triangle'));
+    if (document.getElementById('modalTriangle')) {
+      document.body.removeChild(document.getElementById('modalTriangle'));
     }
-    if (document.getElementById('overlayElements')) {
-      document.body.removeChild(document.getElementById('overlayElements'));
+    if (document.getElementById('overlayWrapper')) {
+      document.body.removeChild(document.getElementById('overlayWrapper'));
     }
     if (document.getElementById('overlayComponent')) {
       document.body.removeChild(document.getElementById('overlayComponent'));
     }
-    if (document.getElementById('modal__wrapper')) {
-      document.body.removeChild(document.getElementById('modal__wrapper'));
+    if (document.getElementById('modalWrapper')) {
+      document.body.removeChild(document.getElementById('modalWrapper'));
     }
   });
 
