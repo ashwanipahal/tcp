@@ -29,7 +29,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
         <Col colSize={{ large: 9, small: 4, medium: 6 }}>{labels.price}</Col>
         <Col
           data-locator="addedtobag-productprice"
-          className="value"
+          className="text-value"
           colSize={{ large: 3, small: 2, medium: 2 }}
         >
           {`$${itemPrice || 0}`}
@@ -45,7 +45,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           <BodyCopy
             data-locator="addedtobag-pointsonitem"
             fontFamily="secondary"
-            className="value promo-color"
+            className="text-value promo-color"
             fontWeight="extrabold"
           >
             {itemPoints || 0}
@@ -59,7 +59,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
         </Col>
         <Col
           data-locator="addedtobag-bagsubtotal"
-          className="value"
+          className="text-value"
           colSize={{ large: 3, small: 2, medium: 2 }}
         >
           {`$${bagSubTotal || 0}`}
@@ -75,7 +75,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           <BodyCopy
             data-locator="addedtobag-totalrewardpoints"
             fontFamily="secondary"
-            className="value promo-color"
+            className="text-value promo-color"
             fontWeight="extrabold"
           >
             {userPoints || 0}
@@ -92,7 +92,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           <BodyCopy
             data-locator="addedtobag-totalpointsnextreward"
             fontFamily="secondary"
-            className="value promo-color"
+            className="text-value promo-color"
             fontWeight="extrabold"
           >
             {pointsToNextReward || 0}
