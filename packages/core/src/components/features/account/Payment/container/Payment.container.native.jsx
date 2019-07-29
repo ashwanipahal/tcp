@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import {
   getCardList,
@@ -23,26 +24,43 @@ import {
 import labels from './Payment.labels';
 import PaymentView from '../views/PaymentView';
 
-// @flow
-type Props = {
-  getCardListAction: Function,
-  showNotification: any,
-  deleteModalMountedState: boolean,
-  setDeleteModalMountState: Function,
-  onDeleteCard: Function,
-  showUpdatedNotificationOnModal: any,
-  creditCardList: List<any>,
-  venmoCardList: List<any>,
-  giftCardList: List<any>,
-  cardList: List<any>,
-  onGetBalanceCard: Function,
-  checkbalanceValueInfo: any,
-  setDefaultPaymentMethod: Function,
-  showNotificationCaptcha: boolean,
-  clearPaymentNotification: () => void,
-};
-
 export class PaymentContainer extends React.Component<Props> {
+  static propTypes = {
+    getCardListAction: PropTypes.func,
+    showNotification: PropTypes.string,
+    deleteModalMountedState: PropTypes.bool,
+    setDeleteModalMountState: PropTypes.func,
+    onDeleteCard: PropTypes.func,
+    showUpdatedNotificationOnModal: PropTypes.string,
+    creditCardList: PropTypes.shape({}),
+    venmoCardList: PropTypes.shape({}),
+    giftCardList: PropTypes.shape({}),
+    cardList: PropTypes.shape({}),
+    onGetBalanceCard: PropTypes.func,
+    checkbalanceValueInfo: PropTypes.string,
+    setDefaultPaymentMethod: PropTypes.func,
+    showNotificationCaptcha: PropTypes.bool,
+    clearPaymentNotification: PropTypes.func,
+  };
+
+  static defaultProps = {
+    getCardListAction: () => {},
+    showNotification: '',
+    deleteModalMountedState: false,
+    setDeleteModalMountState: false,
+    onDeleteCard: () => {},
+    showUpdatedNotificationOnModal: '',
+    creditCardList: null,
+    venmoCardList: null,
+    giftCardList: null,
+    cardList: null,
+    onGetBalanceCard: () => {},
+    checkbalanceValueInfo: '',
+    setDefaultPaymentMethod: () => {},
+    showNotificationCaptcha: '',
+    clearPaymentNotification: () => {},
+  };
+
   componentDidMount() {
     const { getCardListAction } = this.props;
     getCardListAction();
@@ -90,7 +108,7 @@ export class PaymentContainer extends React.Component<Props> {
   }
 }
 
-export const mapDispatchToProps = (dispatch: ({}) => void) => {
+export const mapDispatchToProps = dispatch => {
   return {
     getCardListAction: () => {
       dispatch(getCardList());
