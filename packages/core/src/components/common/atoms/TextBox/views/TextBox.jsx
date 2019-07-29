@@ -114,7 +114,7 @@ TextBox.defaultProps = {
   onChangeHandler: () => {},
   dataLocator: '',
   meta: {},
-  showSuccessCheck: false,
+  showSuccessCheck: true,
   isRequired: false,
 };
 

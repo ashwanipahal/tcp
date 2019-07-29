@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Col, Row } from '@tcp/core/src/components/common/atoms';
+import OverlayModal from '@tcp/core/src/components/features/OverlayModal';
 import { HeaderTopNav, HeaderPromo, HeaderMiddleNav } from '../molecules';
 import headerStyles from '../Header.style';
 
@@ -14,6 +15,7 @@ const Header = ({
   openNavigationDrawer,
   closeNavigationDrawer,
   userName,
+  openOverlay,
 }) => {
   return (
     <header>
@@ -27,6 +29,7 @@ const Header = ({
         closeNavigationDrawer={closeNavigationDrawer}
         navigationDrawer={navigationDrawer}
         userName={userName}
+        openOverlay={openOverlay}
       />
       <HeaderPromo
         mobileMarkup
@@ -48,6 +51,7 @@ const Header = ({
           </Col>
         </Row>
       </HeaderLoyalty>
+      <OverlayModal />
     </header>
   );
 };
@@ -59,7 +63,8 @@ Header.propTypes = {
   navigationDrawer: PropTypes.shape({}).isRequired,
   openNavigationDrawer: PropTypes.func.isRequired,
   closeNavigationDrawer: PropTypes.func.isRequired,
-  userName: PropTypes.string.isRequired
+  userName: PropTypes.string.isRequired,
+  openOverlay: PropTypes.func.isRequired,
 };
 
 export default Header;

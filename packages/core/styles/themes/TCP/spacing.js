@@ -36,4 +36,6 @@ export default {
   MODAL_WIDTH: {
     SMALL: '458px',
   },
+  CREDIT_CARD_ICON_WIDTH: '50px',
+  FORM_FIELD_HEIGHT: '70px',
 };
