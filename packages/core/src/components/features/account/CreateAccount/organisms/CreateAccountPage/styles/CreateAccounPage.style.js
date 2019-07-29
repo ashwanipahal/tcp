@@ -21,7 +21,7 @@ const styles = css`
     justify-content: center;
   }
   .row-form-wrapper {
-    padding: 40px 45px 72px;
+    padding: 40px 28px 30px;
   }
   .img-parent {
     border-bottom: 2px solid;

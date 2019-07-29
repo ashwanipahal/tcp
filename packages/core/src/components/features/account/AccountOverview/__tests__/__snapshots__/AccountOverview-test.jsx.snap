@@ -3,5 +3,6 @@
 exports[`MyAccountOverview View should render AccountOverview Correctly 1`] = `
 <div>
   This is AccountOverview component
+  <Connect(CreateAccountContainer) />
 </div>
 `;

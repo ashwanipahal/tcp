@@ -16,6 +16,17 @@ const labels = {
   CREATE_ACC_LBL_REMEMBER_ME: 'Remember me. Not recommended on shared devices.',
   CREATE_ACC_LBL_CREATE_ACCOUNT: 'Create Account',
   CREATE_ACC_LBL_ALREADY_ACCOUNT: 'Already have an account?',
+
+  CREATE_ACC_LBL_FIRST_NAME: 'First Name',
+  CREATE_ACC_LBL_LAST_NAME: 'Last Name',
+  CREATE_ACC_LBL_PHONE_NUMBER: 'Phone Number',
+  CREATE_ACC_LBL_ZIP_CODE: 'Zip Code',
+  CREATE_ACC_LBL_EMAIL_ADDRESS: 'Email Address',
+  CREATE_ACC_LBL_CONFIRM_EMAIL: 'Confirm Email Address',
+  CREATE_ACC_LBL_PASSWORD: 'Password',
+  CREATE_ACC_LBL_CONFIRM_PASSWORD: 'Confirm Password',
+  CREATE_ACC_LBL_USE_TOUCH_ID: 'Use Touch ID',
+  CREATE_ACC_LBL_USE_FACE_ID: 'Use Face ID',
 };
 
 export default labels;

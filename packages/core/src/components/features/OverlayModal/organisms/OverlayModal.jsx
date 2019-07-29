@@ -64,6 +64,7 @@ class OverlayModal extends React.Component {
       const compRectBoundingX = comp.getBoundingClientRect().x;
       const compWidth = comp.getBoundingClientRect().width;
       const modal = document.getElementById('dialog__content');
+      modal.style.maxHeight = window && `${window.innerHeight - 200}px`;
       const modalWrapper = document.getElementById('modal__wrapper');
       const modalTriangle = document.getElementById('modal__triangle');
       const modalRectBoundingX = modal && modal.getBoundingClientRect().x;
