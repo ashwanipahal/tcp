@@ -4,9 +4,7 @@ exports[`AddedToBagViewPoints native component renders correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(Text)>
-      <Styled(Text)>
-        Price
-      </Styled(Text)>
+      <Styled(Text) />
     </Styled(Text)>
     <Styled(Text)>
       <Styled(Text)>
@@ -16,9 +14,7 @@ exports[`AddedToBagViewPoints native component renders correctly 1`] = `
   </Styled(View)>
   <Styled(View)>
     <Styled(Text)>
-      <Styled(Text)>
-        Points you can earn on these items
-      </Styled(Text)>
+      <Styled(Text) />
     </Styled(Text)>
     <Styled(Text)>
       <Styled(Text)>
@@ -30,20 +26,18 @@ exports[`AddedToBagViewPoints native component renders correctly 1`] = `
   <Styled(View)>
     <Styled(Text)>
       <Styled(Text)>
-        Bag Subtotal (3 items)
+        123
       </Styled(Text)>
     </Styled(Text)>
     <Styled(Text)>
       <Styled(Text)>
-        $undefined
+        $0
       </Styled(Text)>
     </Styled(Text)>
   </Styled(View)>
   <Styled(View)>
     <Styled(Text)>
-      <Styled(Text)>
-        Total My Place Rewards points in my bag
-      </Styled(Text)>
+      <Styled(Text) />
     </Styled(Text)>
     <Styled(Text)>
       <Styled(Text)>
@@ -53,9 +47,7 @@ exports[`AddedToBagViewPoints native component renders correctly 1`] = `
   </Styled(View)>
   <Styled(View)>
     <Styled(Text)>
-      <Styled(Text)>
-        Total Point to next purchase
-      </Styled(Text)>
+      <Styled(Text) />
     </Styled(Text)>
     <Styled(Text)>
       <Styled(Text)>

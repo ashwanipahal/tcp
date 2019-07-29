@@ -4,16 +4,12 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
 <Styled(View)>
   <Styled(View)>
     <Styled(TouchableOpacity)>
-      <Styled(Text)>
-        VIEW BAG
-      </Styled(Text)>
+      <Styled(Text) />
     </Styled(TouchableOpacity)>
   </Styled(View)>
   <Styled(View)>
     <Styled(TouchableOpacity)>
-      <Styled(Text)>
-        CHECKOUT
-      </Styled(Text)>
+      <Styled(Text) />
     </Styled(TouchableOpacity)>
   </Styled(View)>
 </Styled(View)>

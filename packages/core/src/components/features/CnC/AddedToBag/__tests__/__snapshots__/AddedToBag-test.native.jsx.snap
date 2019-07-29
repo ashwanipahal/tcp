@@ -5,22 +5,25 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
   animationType="slide"
   aria={
     Object {
-      "describedby": "labels.addedToBag",
-      "labelledby": "labels.addedToBag",
+      "describedby": "undefined",
+      "labelledby": "undefined",
     }
   }
   className="TCPModal__Content, "
   closeIconDataLocator="added-to-bg-close"
   fixedWidth={true}
-  heading="labels.addedToBag"
   headingAlign="left"
   isOpen={[Function]}
   onRequestClose={[Function]}
   overlayClassName="TCPModal__Overlay"
 >
-  <View>
-    <Connect(AddedToBagViewPointsContainer) />
-    <AddedToBagActions />
-  </View>
+  <Styled(View)>
+    <Connect(AddedToBagViewPointsContainer)
+      labels={Object {}}
+    />
+    <AddedToBagActions
+      labels={Object {}}
+    />
+  </Styled(View)>
 </ModalNative>
 `;

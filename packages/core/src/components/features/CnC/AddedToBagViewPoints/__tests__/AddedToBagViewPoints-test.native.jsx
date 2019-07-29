@@ -13,6 +13,9 @@ describe('AddedToBagViewPoints native component', () => {
         pointsToNextReward: 12,
         totalItems: 3,
       },
+      labels: {
+        bagSubTotal: '123',
+      },
     };
     const component = shallow(<AddedToBagViewPoints {...props} />);
     expect(component).toMatchSnapshot();

@@ -13,13 +13,14 @@ import {
 // @flow
 type Props = {
   pointsSummary: Object,
+  labels: Object,
 };
 
 const getModifiedString = (labels, totalItems) => {
   return `${labels.bagSubTotal.replace('#items', `${totalItems}`)}`;
 };
 
-const AddedToBagViewPoints = ({ pointsSummary }: Props) => {
+const AddedToBagViewPoints = ({ pointsSummary, labels }: Props) => {
   const {
     itemPrice,
     itemPoints,
@@ -28,13 +29,6 @@ const AddedToBagViewPoints = ({ pointsSummary }: Props) => {
     pointsToNextReward,
     totalItems,
   } = pointsSummary;
-  const labels = {
-    price: 'Price',
-    pointsYouCanEarn: 'Points you can earn on these items',
-    bagSubTotal: 'Bag Subtotal (#items items)',
-    totalRewardsInPoints: 'Total My Place Rewards points in my bag',
-    totalNextRewards: 'Total Point to next purchase',
-  };
   return (
     <ViewPointsWrapper>
       <DefaultView>
@@ -42,7 +36,7 @@ const AddedToBagViewPoints = ({ pointsSummary }: Props) => {
           <DefaultLabel>{labels.price}</DefaultLabel>
         </DefaultText>
         <DefaultText>
-          <DefaultValue>{`$${itemPrice}`}</DefaultValue>
+          <DefaultValue>{`$${itemPrice || 0}`}</DefaultValue>
         </DefaultText>
       </DefaultView>
       <DefaultView>
@@ -50,16 +44,16 @@ const AddedToBagViewPoints = ({ pointsSummary }: Props) => {
           <BoldText>{labels.pointsYouCanEarn}</BoldText>
         </DefaultText>
         <DefaultText>
-          <PromoValue>{itemPoints}</PromoValue>
+          <PromoValue>{itemPoints || 0}</PromoValue>
         </DefaultText>
       </DefaultView>
       <Horizontal />
       <DefaultView>
         <DefaultText>
-          <DefaultLabel>{getModifiedString(labels, totalItems)}</DefaultLabel>
+          <DefaultLabel>{getModifiedString(labels, totalItems || 0)}</DefaultLabel>
         </DefaultText>
         <DefaultText>
-          <DefaultValue>{`$${bagSubTotal}`}</DefaultValue>
+          <DefaultValue>{`$${bagSubTotal || 0}`}</DefaultValue>
         </DefaultText>
       </DefaultView>
       <DefaultView>
@@ -67,7 +61,7 @@ const AddedToBagViewPoints = ({ pointsSummary }: Props) => {
           <BoldText>{labels.totalRewardsInPoints}</BoldText>
         </DefaultText>
         <DefaultText>
-          <PromoValue>{userPoints}</PromoValue>
+          <PromoValue>{userPoints || 0}</PromoValue>
         </DefaultText>
       </DefaultView>
       <DefaultView>
@@ -75,7 +69,7 @@ const AddedToBagViewPoints = ({ pointsSummary }: Props) => {
           <BoldText>{labels.totalNextRewards}</BoldText>
         </DefaultText>
         <DefaultText>
-          <PromoValue>{pointsToNextReward}</PromoValue>
+          <PromoValue>{pointsToNextReward || 0}</PromoValue>
         </DefaultText>
       </DefaultView>
     </ViewPointsWrapper>
