@@ -1,5 +1,5 @@
 import React from 'react';
-import Router from 'next/router'; // eslint-disable-line
+//import Router from 'next/router'; // eslint-disable-line
 import { connect } from 'react-redux';
 import {
   getCardList,
@@ -55,7 +55,7 @@ export class PaymentContainer extends React.Component<Props> {
   }
 
   addNewCreditCard = () => {
-    Router.push('/account?id=add-credit-card', '/account/payment/add-credit-card');
+    //Router.push('/account?id=add-credit-card', '/account/payment/add-credit-card');
   };
 
   render() {

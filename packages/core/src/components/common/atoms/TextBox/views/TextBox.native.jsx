@@ -101,6 +101,7 @@ class TextBox extends React.Component {
       showErrorIcon,
       showSuccessCheck,
       keyboardType,
+      ...inputProps
     } = this.props;
     const { isFocused } = this.state;
     const elemValue = input.value;
@@ -108,6 +109,7 @@ class TextBox extends React.Component {
       <StyledTextBoxWrapper>
         <StyledLabel isFocused={elemValue || isFocused}>{label}</StyledLabel>
         <StyledTextBox
+          {...inputProps}
           {...input}
           id={id}
           aria-label={ariaLabel}

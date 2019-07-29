@@ -9,13 +9,13 @@ import {
   resetPassword,
   resetLoginForgotPasswordState,
 } from '../../ForgotPassword/container/ForgotPassword.actions';
-import LoginView from '../views/LoginPage.view';
 import labels from '../../ForgotPassword/container/ForgotPassword.labels';
 import {
   getShowNotificationState,
   getResetEmailResponse,
   toggleSuccessfulEmailSection,
 } from '../../ForgotPassword/container/ForgotPassword.selectors';
+import LoginView from '../views';
 
 // @flow
 
