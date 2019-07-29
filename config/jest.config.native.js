@@ -18,7 +18,7 @@ module.exports = {
     '^.+\\.jsx?$': '<rootDir>/packages/mobileapp/node_modules/react-native/jest/preprocessor.js',
   },
   setupFiles: ['<rootDir>/config/jest.setup.native.js'],
-  collectCoverage: false,
+  collectCoverage: true,
   coverageDirectory: 'reports/mobile/coverage',
   collectCoverageFrom: [
     '**/core/**/*.native.js',
