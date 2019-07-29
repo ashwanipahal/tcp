@@ -5,8 +5,8 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
   animationType="slide"
   aria={
     Object {
-      "describedby": "undefined",
-      "labelledby": "undefined",
+      "describedby": "Added to bag Modal",
+      "labelledby": "Added to bag",
     }
   }
   className="TCPModal__Content, "
@@ -17,6 +17,9 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
   onRequestClose={[Function]}
   overlayClassName="TCPModal__Overlay"
 >
+  <Styled(Text)>
+    ADDED TO BAG
+  </Styled(Text)>
   <Styled(View)
     className="ProductInformationView"
   >
