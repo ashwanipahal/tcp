@@ -1,4 +1,5 @@
-import { executeStatefulAPICall, getAPIConfig } from '../../handler';
+import { executeStatefulAPICall } from '../../handler';
+import { getAPIConfig } from '../../../utils';
 import endpoints from '../../endpoints';
 import constants from '../../../components/features/account/AddEditCreditCard/container/AddEditCreditCard.constants';
 

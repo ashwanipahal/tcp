@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputCheckbox component should render correctly 1`] = `
+<Styled(View)
+  id="checkbox"
+  isChecked={false}
+  onClick={[MockFunction]}
+  onStartShouldSetResponder={[Function]}
+  rightText="checkbox"
+  val=""
+>
+  <Styled(View)>
+    <Styled(ImageComp)
+      height="25px"
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/store-locator-checked.png",
+        }
+      }
+      width="25px"
+    />
+  </Styled(View)>
+  <Styled(BodyCopy)
+    fontSize="fs12"
+    mobileFontFamily="secondary"
+    text="checkbox"
+  />
+</Styled(View)>
+`;
+
+exports[`InputCheckbox component should render correctly with checked state false 1`] = `
+<Styled(View)
+  id="checkbox"
+  isChecked={false}
+  onClick={[MockFunction]}
+  onStartShouldSetResponder={[Function]}
+  rightText="checkbox"
+  val=""
+>
+  <Styled(View)>
+    <Styled(ImageComp)
+      height="25px"
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/store-locator-check.png",
+        }
+      }
+      width="25px"
+    />
+  </Styled(View)>
+  <Styled(BodyCopy)
+    fontSize="fs12"
+    mobileFontFamily="secondary"
+    text="checkbox"
+  />
+</Styled(View)>
+`;
