@@ -6,7 +6,7 @@ const RoutesMap = require('./routes');
 const portIndex = process.argv.indexOf('-p') + 1;
 const port = portIndex !== 0 ? process.argv[portIndex] : 3000;
 
-const dev = process.env.NODE_ENV === 'development' || true;
+const dev = process.env.NODE_ENV === 'development';
 const app = next({ dev, dir: './src' });
 
 const { settingHelmetConfig, sites, siteIds } = require('./config/server.config');
