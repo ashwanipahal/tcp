@@ -1,5 +1,8 @@
-import ModuleD from '@tcp/core/src/components/common/molecules/ModuleD';
 import NavBar from './NavBar';
+import SlotA from './SlotA';
+import SlotB from './SlotB';
+import SlotC from './SlotC';
+import SlotD from './SlotD';
 import Test from './Test';
 
-export { NavBar, Test, ModuleD };
+export { SlotA, SlotB, SlotC, SlotD, NavBar, Test };

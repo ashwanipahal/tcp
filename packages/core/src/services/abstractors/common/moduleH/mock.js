@@ -4,26 +4,28 @@ export default {
     name: 'moduleH',
     type: 'module',
     composites: {
-      headerText: {
-        textLines: [
-          {
-            text: 'New arrivals',
-            color: 'color1',
-            style: 'style1',
+      headerText: [
+        {
+          textItems: [
+            {
+              text: 'New arrivals',
+              color: 'color1',
+              style: 'style1',
+            },
+            {
+              text: 'New adventures',
+              color: 'color1',
+              style: 'style1',
+            },
+          ],
+          link: {
+            url: '/toddler',
+            title: '',
+            target: '',
+            external: 0,
           },
-          {
-            text: 'New adventures',
-            color: 'color1',
-            style: 'style1',
-          },
-        ],
-        link: {
-          url: '/toddler',
-          title: '',
-          target: '',
-          external: 0,
         },
-      },
+      ],
       divCTALinks: [
         {
           link: {

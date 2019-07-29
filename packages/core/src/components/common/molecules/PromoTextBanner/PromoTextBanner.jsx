@@ -5,7 +5,7 @@ import withStyles from '../../hoc/withStyles';
 import PromoBannerStyle from './PromoTextBanner.style';
 
 type Props = {
-  textItems: Object,
+  promoTextBanner: Array<Object>,
   className: String,
 };
 
@@ -20,8 +20,11 @@ type Props = {
  * @param {*} props
  */
 const PromoBanner = (props: Props) => {
-  const { textItems, className, ...otherProps } = props;
-
+  const {
+    promoTextBanner: [{ textItems }],
+    className,
+    ...otherProps
+  } = props;
   return (
     <BodyCopy component="div" className={className} {...otherProps}>
       <React.Fragment>

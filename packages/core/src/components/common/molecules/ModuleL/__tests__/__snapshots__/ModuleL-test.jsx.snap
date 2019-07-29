@@ -1,0 +1,397 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleL component renders correctly 1`] = `
+<StyledComponent
+  className="undefined moduleL"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-EHOje",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  ",
+          [Function],
+          "
+
+  > *:last-child {
+    margin-right: 0;
+  }
+  ",
+          [Function],
+          ";
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(Row)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-EHOje",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  fullBleed={
+    Object {
+      "large": true,
+      "medium": true,
+      "small": true,
+    }
+  }
+>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 10,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    offsetLeft={
+      Object {
+        "large": 1,
+      }
+    }
+  >
+    <Styled(LinkText)
+      component="div"
+      dataLocator="moduleL_header_text"
+      fontSize={
+        Array [
+          "fs32",
+          "fs48",
+        ]
+      }
+      fontWeight="black"
+      headerText={
+        Array [
+          Object {
+            "icon": Object {
+              "icon": "",
+              "placement": "",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "",
+              "title": "",
+              "url": "https://www.childrensplace.com/us/c/girls-new-arrivals",
+            },
+            "textItems": Array [
+              Object {
+                "style": "style1",
+                "text": "TRENDING NOW",
+              },
+            ],
+          },
+        ]
+      }
+      headingClass="moduleL__header"
+      lineHeight="lh107"
+      textAlign="center"
+    />
+    <Styled(PromoBanner)
+      className="moduleL__promo-banner"
+      data-locator="moduleL_promobanner_text"
+      fontSize="fs48"
+      promoTextBanner={
+        Array [
+          Object {
+            "linkClass": Object {
+              "class": "",
+              "external": 0,
+              "target": "",
+              "title": "",
+              "url": "/banner/url",
+            },
+            "textItems": Array [
+              Object {
+                "style": "text-black",
+                "text": "60% OFF",
+              },
+              Object {
+                "style": "text-normal",
+                "text": "BUY TODAY",
+              },
+            ],
+          },
+        ]
+      }
+    />
+    <errorBoundaryComponent
+      carouselConfig={
+        Object {
+          "autoplay": false,
+          "customArrowLeft": "/static/images/right-carousel-carrot.svg",
+          "customArrowRight": "/static/images/right-carousel-carrot.svg",
+          "moduleL": true,
+          "type": "light",
+        }
+      }
+      options={
+        Object {
+          "arrows": true,
+          "autoplay": false,
+          "dots": true,
+          "infinite": true,
+          "lazyLoad": false,
+          "responsive": Array [
+            Object {
+              "breakpoint": 767,
+              "settings": "unslick",
+            },
+            Object {
+              "breakpoint": 1023,
+              "settings": Object {
+                "arrows": false,
+              },
+            },
+          ],
+          "rows": 2,
+          "slidesPerRow": 1,
+          "slidesToScroll": 1,
+          "slidesToShow": 2,
+          "speed": 1000,
+        }
+      }
+    >
+      <ModuleLTile
+        index={0}
+        key="0"
+        tileData={
+          Object {
+            "image": Object {
+              "alt": "BE A UNICORN 24/7/365 alt",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_1440",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_520",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "BE A UNICORN 24/7/365 title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562061640/senjuti-kundu-7uP2gFMB2ps-unsplash_kxf3r4.jpg",
+            },
+            "link": Object {
+              "class": "",
+              "external": 0,
+              "target": "",
+              "text": "Shop Unicorns & Friends",
+              "title": "Shop Unicorns & Friends",
+              "url": "https://www.childrensplace.com/us/c/toddler-girl-clothes",
+            },
+            "styled": Object {
+              "style": "style1",
+              "text": "BE A UNICORN 24/7/365",
+            },
+          }
+        }
+      />
+      <ModuleLTile
+        index={1}
+        key="1"
+        tileData={
+          Object {
+            "image": Object {
+              "alt": "FOR YOUR #1DINO FAN alt",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_1440",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_520",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "FOR YOUR #1DINO FAN title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+            "link": Object {
+              "class": "",
+              "external": 0,
+              "target": "",
+              "text": "Shop Dinos",
+              "title": "Shop Dinos",
+              "url": "https://www.childrensplace.com/us/c/toddler-boy-clothes",
+            },
+            "styled": Object {
+              "style": "style2",
+              "text": "FOR YOUR #1DINO FAN",
+            },
+          }
+        }
+      />
+      <ModuleLTile
+        index={2}
+        key="2"
+        tileData={
+          Object {
+            "image": Object {
+              "alt": "FLIP, SHAKE & SHINE alt",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_1440",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_520",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "FLIP, SHAKE & SHINE title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562061640/charlein-gracia--Ux5mdMJNEA-unsplash_bnyejv.jpg",
+            },
+            "link": Object {
+              "class": "",
+              "external": 0,
+              "target": "",
+              "text": "Shop Flip Sequence",
+              "title": "Shop Flip Sequence",
+              "url": "https://www.childrensplace.com/us/c/girls-clothing",
+            },
+            "styled": Object {
+              "style": "style3",
+              "text": "FLIP, SHAKE & SHINE",
+            },
+          }
+        }
+      />
+      <ModuleLTile
+        index={3}
+        key="3"
+        tileData={
+          Object {
+            "image": Object {
+              "alt": "COOL & COMFY STYLE alt",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_1440",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_520",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "COOL & COMFY STYLE title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562651404/Kids_Image_1_hiov9u.jpg",
+            },
+            "link": Object {
+              "class": "",
+              "external": 0,
+              "target": "",
+              "text": "Shop Ninjas",
+              "title": "Shop Ninjas",
+              "url": "https://www.childrensplace.com/us/c/boys-clothing",
+            },
+            "styled": Object {
+              "style": "style4",
+              "text": "COOL & COMFY STYLE",
+            },
+          }
+        }
+      />
+    </errorBoundaryComponent>
+    <div
+      className="moduleL__mobile-web-container"
+    >
+      <ModuleLTile
+        index={0}
+        key="0"
+        tileData={
+          Object {
+            "image": Object {
+              "alt": "BE A UNICORN 24/7/365 alt",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_1440",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_520",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "BE A UNICORN 24/7/365 title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562061640/senjuti-kundu-7uP2gFMB2ps-unsplash_kxf3r4.jpg",
+            },
+            "link": Object {
+              "class": "",
+              "external": 0,
+              "target": "",
+              "text": "Shop Unicorns & Friends",
+              "title": "Shop Unicorns & Friends",
+              "url": "https://www.childrensplace.com/us/c/toddler-girl-clothes",
+            },
+            "styled": Object {
+              "style": "style1",
+              "text": "BE A UNICORN 24/7/365",
+            },
+          }
+        }
+      />
+      <ModuleLTile
+        index={1}
+        key="1"
+        tileData={
+          Object {
+            "image": Object {
+              "alt": "FOR YOUR #1DINO FAN alt",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_1440",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_520",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "FOR YOUR #1DINO FAN title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+            "link": Object {
+              "class": "",
+              "external": 0,
+              "target": "",
+              "text": "Shop Dinos",
+              "title": "Shop Dinos",
+              "url": "https://www.childrensplace.com/us/c/toddler-boy-clothes",
+            },
+            "styled": Object {
+              "style": "style2",
+              "text": "FOR YOUR #1DINO FAN",
+            },
+          }
+        }
+      />
+      <ModuleLTile
+        index={2}
+        key="2"
+        tileData={
+          Object {
+            "image": Object {
+              "alt": "FLIP, SHAKE & SHINE alt",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_1440",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_520",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "FLIP, SHAKE & SHINE title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562061640/charlein-gracia--Ux5mdMJNEA-unsplash_bnyejv.jpg",
+            },
+            "link": Object {
+              "class": "",
+              "external": 0,
+              "target": "",
+              "text": "Shop Flip Sequence",
+              "title": "Shop Flip Sequence",
+              "url": "https://www.childrensplace.com/us/c/girls-clothing",
+            },
+            "styled": Object {
+              "style": "style3",
+              "text": "FLIP, SHAKE & SHINE",
+            },
+          }
+        }
+      />
+      <ModuleLTile
+        index={3}
+        key="3"
+        tileData={
+          Object {
+            "image": Object {
+              "alt": "COOL & COMFY STYLE alt",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_1440",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_520",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "COOL & COMFY STYLE title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562651404/Kids_Image_1_hiov9u.jpg",
+            },
+            "link": Object {
+              "class": "",
+              "external": 0,
+              "target": "",
+              "text": "Shop Ninjas",
+              "title": "Shop Ninjas",
+              "url": "https://www.childrensplace.com/us/c/boys-clothing",
+            },
+            "styled": Object {
+              "style": "style4",
+              "text": "COOL & COMFY STYLE",
+            },
+          }
+        }
+      />
+    </div>
+  </Styled(Col)>
+</StyledComponent>
+`;

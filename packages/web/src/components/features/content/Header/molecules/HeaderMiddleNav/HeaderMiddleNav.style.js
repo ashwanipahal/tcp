@@ -4,12 +4,19 @@ export default css`
   box-sizing: border-box;
   padding: 14px 0;
   position: relative;
-  text-align: center;
+  text-align: right;
 
   .hamburger-menu {
     cursor: pointer;
     width: 22px;
     height: 22px;
+  }
+
+  .rightLink {
+    border-left: 1px solid ${props => props.theme.colorPalette.gray[500]};
+    box-sizing: border-box;
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
 
   @media ${props => props.theme.mediaQuery.mediumMax} {

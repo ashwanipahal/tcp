@@ -84,6 +84,7 @@ const Address = ({
   fontWeight,
   showPhone,
   showCountry,
+  isDefault,
 }: Props) =>
   address && (
     <BodyCopy component="div" fontSize="fs14" color="text.primary" className={className}>
@@ -93,7 +94,7 @@ const Address = ({
         fontFamily="secondary"
         data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-fullname` : ''}
       >
-        {`${address.firstName} ${address.lastName}`}
+        {`${address.firstName} ${address.lastName}${isDefault ? ' (Default)' : ''}`}
       </BodyCopy>
       {address.addressLine
         ? getAddessLines({ address, dataLocatorPrefix })
@@ -121,6 +122,7 @@ const Address = ({
 Address.defaultProps = {
   showPhone: true,
   showCountry: true,
+  isDefault: false,
 };
 
 export default Address;

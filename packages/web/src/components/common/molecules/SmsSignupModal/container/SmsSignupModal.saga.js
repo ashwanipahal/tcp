@@ -23,7 +23,7 @@ export function* subscribeSms({ payload }) {
       catalogId: 10551,
     };
     const res = yield call(emailSignupAbstractor.subscribeSms, baseURI, relURI, params, method);
-    yield put(smsSignupStatus({ signupSuccess: res }));
+    yield put(smsSignupStatus({ subscription: res }));
   } catch (err) {
     // eslint-disable-next-line no-console
     console.log(err);

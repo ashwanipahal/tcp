@@ -74,6 +74,30 @@ export const executeGraphQLQuery = query => {
   });
 };
 
+export const executeStatefulAPICall = reqObj => {
+  return new Promise((resolve, reject) => {
+    let response = null;
+    if (reqObj.webService) {
+      response = {
+        data: {},
+      };
+    }
+    sendResponse(response, resolve, reject);
+  });
+};
+
+export const executeExternalAPICall = reqObj => {
+  return new Promise((resolve, reject) => {
+    let response;
+    if (reqObj.webService) {
+      response = {
+        data: {},
+      };
+    }
+    sendResponse(response, resolve, reject);
+  });
+};
+
 export default {
   fetchModuleDataFromGraphQL,
   executeGraphQLQuery,

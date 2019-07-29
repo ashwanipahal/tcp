@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleLVanilla ModuleL should render correctly 1`] = `
+<Styled(View)>
+  <LinkText
+    color="text.primary"
+    fontFamily="primary"
+    fontSize="fs36"
+    fontWeight="black"
+    letterSpacing="ls167"
+    onPress={[Function]}
+    textAlign="center"
+    textItems={
+      Array [
+        Object {
+          "style": "style1",
+          "text": "TRENDING NOW",
+        },
+      ]
+    }
+    type="heading"
+  />
+  <Styled(View)>
+    <FlatList
+      data={
+        Array [
+          Object {
+            "image": Object {
+              "alt": "BE A UNICORN 24/7/365 alt",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_1440",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_520",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "BE A UNICORN 24/7/365 title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562061640/senjuti-kundu-7uP2gFMB2ps-unsplash_kxf3r4.jpg",
+            },
+            "link": Object {
+              "class": "",
+              "external": 0,
+              "target": "",
+              "text": "Shop Unicorns & Friends",
+              "title": "Shop Unicorns & Friends",
+              "url": "https://www.childrensplace.com/us/c/toddler-girl-clothes",
+            },
+            "styled": Object {
+              "style": "style1",
+              "text": "BE A UNICORN 24/7/365",
+            },
+          },
+          Object {
+            "image": Object {
+              "alt": "FOR YOUR #1DINO FAN alt",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_1440",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_520",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "FOR YOUR #1DINO FAN title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+            "link": Object {
+              "class": "",
+              "external": 0,
+              "target": "",
+              "text": "Shop Dinos",
+              "title": "Shop Dinos",
+              "url": "https://www.childrensplace.com/us/c/toddler-boy-clothes",
+            },
+            "styled": Object {
+              "style": "style2",
+              "text": "FOR YOUR #1DINO FAN",
+            },
+          },
+          Object {
+            "image": Object {
+              "alt": "FLIP, SHAKE & SHINE alt",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_1440",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_520",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "FLIP, SHAKE & SHINE title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562061640/charlein-gracia--Ux5mdMJNEA-unsplash_bnyejv.jpg",
+            },
+            "link": Object {
+              "class": "",
+              "external": 0,
+              "target": "",
+              "text": "Shop Flip Sequence",
+              "title": "Shop Flip Sequence",
+              "url": "https://www.childrensplace.com/us/c/girls-clothing",
+            },
+            "styled": Object {
+              "style": "style3",
+              "text": "FLIP, SHAKE & SHINE",
+            },
+          },
+          Object {
+            "image": Object {
+              "alt": "COOL & COMFY STYLE alt",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_1440",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_520",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "COOL & COMFY STYLE title",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562651404/Kids_Image_1_hiov9u.jpg",
+            },
+            "link": Object {
+              "class": "",
+              "external": 0,
+              "target": "",
+              "text": "Shop Ninjas",
+              "title": "Shop Ninjas",
+              "url": "https://www.childrensplace.com/us/c/boys-clothing",
+            },
+            "styled": Object {
+              "style": "style4",
+              "text": "COOL & COMFY STYLE",
+            },
+          },
+        ]
+      }
+      disableVirtualization={false}
+      horizontal={false}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      maxToRenderPerBatch={10}
+      numColumns={1}
+      onEndReachedThreshold={2}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      updateCellsBatchingPeriod={50}
+      windowSize={21}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
