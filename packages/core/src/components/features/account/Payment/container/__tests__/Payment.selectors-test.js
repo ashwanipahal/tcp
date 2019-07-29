@@ -7,6 +7,7 @@ import {
   getGiftCards,
   getVenmoCards,
   getPaymentBannerContentId,
+  getPaymentBannerRichTextSelector,
 } from '../Payment.selectors';
 
 describe('#Payment Selectors', () => {
@@ -151,5 +152,16 @@ describe('#Payment Selectors', () => {
       PaymentReducer: paymentData,
     };
     expect(getPaymentBannerContentId(state)).toEqual('66b73859-0893-4abe-9d0d-dc3d58fa2782');
+  });
+  it('#getPaymentBannerRichTextSelector should return Rich Text', () => {
+    const paymentData = fromJS({
+      paymentBannerRichText: '<h1>New Module X</h1><p>Module X content</p>',
+    });
+    const state = {
+      PaymentReducer: paymentData,
+    };
+    expect(getPaymentBannerRichTextSelector(state)).toEqual(
+      '<h1>New Module X</h1><p>Module X content</p>'
+    );
   });
 });
