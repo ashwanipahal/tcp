@@ -3,21 +3,24 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Router from 'next/router'; // eslint-disable-line
 import { login, resetLoginInfo } from './LoginPage.actions';
+import { closeOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
 import labels from './LoginPage.labels';
 import { getUserLoggedInState, getLoginError, shouldShowRecaptcha, getLoginErrorMessage } from './LoginPage.selectors';
 import LoginView from '../views';
 
 class LoginPageContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
-    const { isUserLoggedIn } = this.props;
+    const { isUserLoggedIn, closeOverlay  } = this.props;
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
-      Router.push('/');
+      closeOverlay();
     }
   }
 
   componentWillUnmount() {
-    const { resetLoginState } = this.props;
-    resetLoginState();
+    const { resetLoginState, loginError } = this.props;
+    if(loginError) {
+      resetLoginState();
+    }
   }
 
   render() {
@@ -43,6 +46,7 @@ LoginPageContainer.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   resetLoginState: PropTypes.func,
+  closeOverlay: PropTypes.func,
   loginError: PropTypes.bool,
   loginErrorMessage: PropTypes.string,
   showRecaptcha: PropTypes.bool,
@@ -52,7 +56,8 @@ LoginPageContainer.defaultProps = {
   showRecaptcha: false,
   loginError: false,
   loginErrorMessage: '',
-  resetLoginState: () => {}
+  resetLoginState: () => {},
+  closeOverlay: () => {}
 };
 
 function mapDispatchToProps(dispatch) {
@@ -62,6 +67,9 @@ function mapDispatchToProps(dispatch) {
     },
     resetLoginState: () => {
       dispatch(resetLoginInfo());
+    },
+    closeOverlay: () => {
+      dispatch(closeOverlayModal());
     }
   };
 }

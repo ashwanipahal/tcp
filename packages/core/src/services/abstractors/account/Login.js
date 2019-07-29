@@ -150,6 +150,6 @@ export const getProfile = ({ refreshPoints, pageId, source }) => {
       }
     })
     .catch(err => {
-      throw this.apiHelper.getFormattedError(err);
+      throw new Error(err);
     });
 };

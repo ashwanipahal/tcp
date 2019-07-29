@@ -75,7 +75,7 @@ const HeaderMiddleNav = props => {
           }}
           className="hide-on-mobile hide-on-tablet"
         >
-          {userName ? <BodyCopy>{`Hi, ${userName}`}</BodyCopy> : (
+          {userName ? <BodyCopy textAlign="right">{`Hi, ${userName}`}</BodyCopy> : (
             <React.Fragment>
               <Anchor
                 href="#"
