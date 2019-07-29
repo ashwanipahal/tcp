@@ -33,7 +33,7 @@ const CardTileImgWrapper = styled.View`
   width: 90px;
   height: 56px;
   margin-bottom: auto;
-  border: 1px solid #d8d8d8;
+  border: 1px solid ${props => props.theme.colorPalette.gray[500]};
   border-radius: 10px;
 `;
 
