@@ -1,15 +1,14 @@
 /**
  * These are temporary changes for a dummy Bag page
  */
-// TODO: Need fix unused/proptypes eslint error
-/* eslint-disable */
-import { fromJS, List } from 'immutable';
-import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../utils/cache.util';
+import { fromJS } from 'immutable';
+import { DEFAULT_REDUCER_KEY } from '../../../../../utils/cache.util';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 
 const initialState = fromJS({
   [DEFAULT_REDUCER_KEY]: null,
   items: [],
+  editableItemData: {},
 });
 
 const CartPage = (state = initialState, action) => {
@@ -17,6 +16,10 @@ const CartPage = (state = initialState, action) => {
     case CARTPAGE_CONSTANTS.GET_ORDER_DETAILS_COMPLETE:
       return Object.assign({}, state, {
         items: action.payload.orderDetails.orderItems,
+      });
+    case CARTPAGE_CONSTANTS.GET_PRODUCT_SKU_INFO_SUCCESS:
+      return Object.assign({}, state, {
+        editableItemData: action.payload.product,
       });
     default:
       return state;

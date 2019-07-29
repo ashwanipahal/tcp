@@ -1,46 +1,147 @@
-// TODO: Need fix unused/proptypes eslint error
-/* eslint-disable */
-
-import SelectBox from '../../../../common/atoms/Select';
-import { Field, reduxForm, change } from 'redux-form';
-import { getSkuId } from '../../../../../utils';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import Button from '@tcp/core/src/components/common/atoms/Button';
-import { connect } from 'react-redux';
+import SelectBox from '../../../../common/atoms/Select';
 
 // @flow
 
 type Props = {
   handleSubmit: (itemId, skuId, quantity, itemPartNumber, variantNo) => void,
   colorFitsSizesMap: any,
+  initialValues: any,
+  item: any,
 };
 
 export class ProductCustomizeForm extends React.PureComponent<Props> {
   constructor(props: Props) {
     super(props);
+    this.state = {
+      selectedColor: '',
+      selectedFit: '',
+      selectedSize: '',
+      selectedQuantity: '',
+    };
   }
 
+  componentDidMount() {
+    const { initialValues } = this.props;
+    this.setState({
+      selectedColor: initialValues.color,
+      selectedFit: initialValues.fit,
+      selectedSize: initialValues.size,
+    });
+  }
+
+  getSelectedColorData = (colorFitsSizesMap, color) => {
+    return (
+      colorFitsSizesMap &&
+      colorFitsSizesMap.filter(colorItem => {
+        if (colorItem.color.name === color.name) {
+          return colorItem;
+        }
+        return '';
+      })
+    );
+  };
+
+  getColorOptions = colorFitsSizesMap => {
+    const colorOptions = [];
+    // eslint-disable-next-line no-unused-expressions
+    colorFitsSizesMap &&
+      colorFitsSizesMap.map(colorItem => {
+        colorOptions.push({
+          displayName: colorItem.color.name,
+          id: colorItem.color.name,
+        });
+        return '';
+      });
+    return colorOptions;
+  };
+
+  getFitOptions = colorItem => {
+    const fitOptions = [];
+    colorItem.fits.map(fit => {
+      fitOptions.push({
+        displayName: fit.fitName,
+        id: fit.fitName,
+      });
+      return '';
+    });
+    return fitOptions;
+  };
+
+  getSizeOptions = (colorItem, selectedFit?) => {
+    const sizeOptions = [];
+    // eslint-disable-next-line no-unused-expressions
+    colorItem &&
+      colorItem.fits &&
+      colorItem.fits.map(fit => {
+        if (selectedFit) {
+          if (fit.fitName === selectedFit) {
+            fit.sizes.map(size => {
+              return sizeOptions.push({
+                displayName: size.sizeName,
+                id: size.skuId,
+              });
+            });
+          }
+        } else {
+          // eslint-disable-next-line sonarjs/no-identical-functions
+          return fit.sizes.map(size => {
+            return sizeOptions.push({
+              displayName: size.sizeName,
+              id: size.skuId,
+            });
+          });
+        }
+        return '';
+      });
+    return sizeOptions;
+  };
+
+  colorChange = e => {
+    this.setState({
+      selectedColor: { name: e.target.value },
+    });
+  };
+
+  fitChange = e => {
+    this.setState({
+      selectedFit: e.target.value,
+    });
+  };
+
+  sizeChange = e => {
+    this.setState({
+      selectedSize: e.target.value,
+    });
+  };
+
   render() {
-    //const {colorFitsSizesMap} = this.props;
-    const sizeList = [
-      {
-        displayName: 'United States',
-        id: 'US',
-      },
-      {
-        displayName: 'India',
-        id: 'India',
-      },
-    ];
+    const { colorFitsSizesMap, item } = this.props;
+    const { selectedColor, selectedFit, selectedSize, selectedQuantity } = this.state;
+
+    const colorList = this.getColorOptions(colorFitsSizesMap);
+    const selectedColorElement = this.getSelectedColorData(colorFitsSizesMap, selectedColor);
+    const hasFits =
+      selectedColorElement && selectedColorElement[0] && selectedColorElement[0].hasFits;
+    const fitList = hasFits && this.getFitOptions(selectedColorElement[0]);
+    const sizeList =
+      selectedColorElement &&
+      (hasFits
+        ? this.getSizeOptions(selectedColorElement[0], selectedFit)
+        : this.getSizeOptions(selectedColorElement[0]));
 
     const className = 'CartItemEditableForm';
     const { handleSubmit } = this.props;
-    const itemId = '8066036228';
-    const skuId = '897839';
-    const quantity = '5';
-    const itemPartNumber = '00889705796216';
-    const variantNo = '2084644004';
+    const { itemId } = item.itemInfo;
+    const skuId = selectedSize;
+    const quantity = selectedQuantity || '3';
+    const { itemPartNumber } = item.productInfo;
+    const { variantNo } = item.productInfo;
 
     return (
       <form
@@ -55,59 +156,39 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 2 }}>
             <Field
               id="color"
-              placeholder="Select color"
               name="Color"
+              placeholder="Color"
               component={SelectBox}
-              options={sizeList}
+              options={colorList}
+              onChange={this.colorChange}
               dataLocator="addnewaddress-state"
             />
           </Col>
-          <Col colSize={{ small: 6, medium: 4, large: 2 }}>
-            <Field
-              id="fit"
-              placeholder="Select Fit"
-              name="Fit"
-              component={SelectBox}
-              options={sizeList}
-              dataLocator="addnewaddress-state"
-            />
-          </Col>
+          {hasFits && (
+            <Col colSize={{ small: 6, medium: 4, large: 2 }}>
+              <Field
+                id="fit"
+                name="Fit"
+                placeholder="Fit"
+                component={SelectBox}
+                options={fitList}
+                onChange={this.fitChange}
+                dataLocator="addnewaddress-state"
+              />
+            </Col>
+          )}
           <Col colSize={{ small: 6, medium: 4, large: 2 }}>
             <Field
               id="size"
-              placeholder="Select size"
+              placeholder="Size"
               name="Size"
               component={SelectBox}
               options={sizeList}
+              onChange={this.sizeChange}
               dataLocator="addnewaddress-state"
             />
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 2 }}>
-            <Field
-              id="qty"
-              placeholder="Select qty"
-              name="Qty"
-              component={SelectBox}
-              options={sizeList}
-              dataLocator="addnewaddress-state"
-            />
-          </Col>
-          <Col colSize={{ small: 6, medium: 4, large: 3 }}>
-            {/* <Button
-        fill="Black"
-        type="submit"
-        buttonVariation="fixed-width"
-        data-locator="addnewaddress-addaddress">
-      Update
-      </Button>
-      <Button
-        fill="BLUE"
-        type="button"
-        buttonVariation="fixed-width"
-        data-locator="addnewaddress-addaddress">
-      Cancel
-        </Button> */}
-
             <Button type="submit">Update</Button>
             <Button>Cancel</Button>
           </Col>
@@ -119,6 +200,8 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
 export default connect()(
   reduxForm({
     form: 'ProductCustomizeForm',
+    enableReinitialize: true,
+
     // a unique identifier for this form
   })(ProductCustomizeForm)
 );

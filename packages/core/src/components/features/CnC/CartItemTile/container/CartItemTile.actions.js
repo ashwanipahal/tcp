@@ -1,12 +1,10 @@
 /**
  * These are temporary changes for a dummy Bag page
  */
-// TODO: Need fix unused/proptypes eslint error
-/* eslint-disable */
 
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 
-export const getOrderDetails = (payload?) => {
+export const getOrderDetails = () => {
   return {
     type: CARTPAGE_CONSTANTS.GET_ORDER_DETAILS,
   };
@@ -26,9 +24,23 @@ export const removeCartItem = (payload?) => {
   };
 };
 
-export const removeCartItemComplete = (payload?) => {
+export const removeCartItemComplete = () => {
   return {
     type: CARTPAGE_CONSTANTS.REMOVE_CART_ITEM_COMPLETE,
+  };
+};
+
+export const getProductSKUInfo = (payload?) => {
+  return {
+    type: CARTPAGE_CONSTANTS.GET_PRODUCT_SKU_INFO,
+    payload,
+  };
+};
+
+export const getProductSKUInfoSuccess = (payload?) => {
+  return {
+    type: CARTPAGE_CONSTANTS.GET_PRODUCT_SKU_INFO_SUCCESS,
+    payload,
   };
 };
 
@@ -39,7 +51,7 @@ export const updateCartItem = (payload?) => {
   };
 };
 
-export const updateCartItemComplete = (payload?) => {
+export const updateCartItemComplete = () => {
   return {
     type: CARTPAGE_CONSTANTS.UPDATE_CART_ITEM_COMPLETE,
   };

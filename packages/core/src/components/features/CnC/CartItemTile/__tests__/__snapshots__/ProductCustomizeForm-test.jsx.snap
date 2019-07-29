@@ -1,0 +1,235 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductCustomizeForm Component ProductCustomizeForm should render correctly 1`] = `
+<form
+  className="CartItemEditableForm"
+  noValidate={true}
+  onSubmit={[Function]}
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      ignoreGutter={
+        Object {
+          "small": true,
+        }
+      }
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-ifAKCX",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .select__input {
+    appearance: none;
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
+      no-repeat right 0px bottom 6px;
+    border: 0;
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+    ",
+                [Function],
+                ";
+    border-radius: 0;
+    color: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    margin: 0;
+    margin-bottom: ",
+                [Function],
+                ";
+    outline: 0;
+    padding: ",
+                [Function],
+                " 0
+      ",
+                [Function],
+                ";
+    width: 100%;
+
+    ",
+                [Function],
+                ";
+  }
+
+  .select__label {
+    font-size: ",
+                [Function],
+                "px;
+    font-weight: ",
+                [Function],
+                ";
+    padding: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  ",
+                [Function],
+                ";
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(SelectBox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-ifAKCX",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="addnewaddress-state"
+        id="color"
+        name="Color"
+        onChange={[Function]}
+        options={Array []}
+        placeholder="Color"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-ifAKCX",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .select__input {
+    appearance: none;
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
+      no-repeat right 0px bottom 6px;
+    border: 0;
+    border-bottom: 1px solid ",
+                [Function],
+                ";
+    ",
+                [Function],
+                ";
+    border-radius: 0;
+    color: ",
+                [Function],
+                ";
+    font-size: ",
+                [Function],
+                "px;
+    margin: 0;
+    margin-bottom: ",
+                [Function],
+                ";
+    outline: 0;
+    padding: ",
+                [Function],
+                " 0
+      ",
+                [Function],
+                ";
+    width: 100%;
+
+    ",
+                [Function],
+                ";
+  }
+
+  .select__label {
+    font-size: ",
+                [Function],
+                "px;
+    font-weight: ",
+                [Function],
+                ";
+    padding: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  ",
+                [Function],
+                ";
+",
+                ";
+",
+              ],
+            },
+            "displayName": "Styled(SelectBox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-ifAKCX",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        dataLocator="addnewaddress-state"
+        id="size"
+        name="Size"
+        onChange={[Function]}
+        options={Array []}
+        placeholder="Size"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Button)
+        type="submit"
+      >
+        Update
+      </Styled(Button)>
+      <Styled(Button)>
+        Cancel
+      </Styled(Button)>
+    </Styled(Col)>
+  </Styled(Row)>
+</form>
+`;

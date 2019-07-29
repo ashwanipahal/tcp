@@ -1,10 +1,10 @@
-// TODO: Need fix unused/proptypes eslint error
-/* eslint-disable */
+/**
+ * These are temporary changes for a dummy Bag page
+ */
 import React from 'react';
-import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
-import ProductCustomizeForm from '../organisms/ProductCustomizeForm';
+import CartItem from '../organisms/CartItem';
 
 // @flow
 
@@ -13,32 +13,23 @@ type Props = {
   removeCartItem: orderItemId => void,
   cartItems: any,
   updateCartItem: (itemId, skuId, quantity, itemPartNumber, variantNo) => void,
+  getProductSKUInfo: productNumber => void,
+  editableProductInfo: any,
 };
 
 class CartItemTile extends React.Component<Props> {
-  constructor(props) {
-    super(props);
-  }
-
-  loadGetOrderDetails = e => {
+  loadGetOrderDetails = () => {
     const { getOrderDetails } = this.props;
     getOrderDetails();
   };
 
   deleteCartItem = orderItemId => {
-    console.log('delete cart item');
     const { removeCartItem } = this.props;
     removeCartItem(orderItemId);
   };
 
-  handleSubmit = (itemId, skuId, quantity, itemPartNumber, variantNo) => {
-    const { updateCartItem } = this.props;
-      updateCartItem(itemId, skuId, quantity, itemPartNumber, variantNo);
-  };
-
   render() {
-    const { cartItems } = this.props;
-    console.log(this.props);
+    const { cartItems, editableProductInfo, getProductSKUInfo, updateCartItem } = this.props;
     return (
       <div>
         <span>CART ITEM TILE</span>
@@ -47,43 +38,12 @@ class CartItemTile extends React.Component<Props> {
           {cartItems &&
             cartItems.map(item => (
               <Col tagName="li" className="cart-item" colSize={{ small: 2, medium: 3, large: 12 }}>
-                <div className="product-title">
-                  <h4>
-                    <a
-                      href={item.productInfo.pdpUrl}
-                      className="department-name"
-                      title={item.productInfo.name}
-                    >
-                      {item.productInfo.name}
-                    </a>
-                  </h4>
-                  <h4 className="upc-number" tabIndex="0">
-                    Upc: {item.productInfo.upc}
-                  </h4>
-                  <p>{item.productInfo.fit}</p>
-                  <p>{item.productInfo.size}</p>
-                  <p>{item.productInfo.color.name}</p>
-                </div>
-                <div className="container-price">
-                  <span className="text-price product-offer-price" tabIndex="0">
-                    {item.itemInfo.offerPrice.toFixed(2)}
-                  </span>
-                  {/* changed copy to match VD */}
-                  {item.itemInfo.listPrice !== item.itemInfo.offerPrice && (
-                    <span className="text-price product-list-price" tabIndex="0">
-                      Was {item.itemInfo.listPrice.toFixed(2)}
-                    </span>
-                  )}
-
-                  <div className="container-price__item-points" tabIndex="0">
-                    My Place Rewards Points:
-                    <span className="user-tier-theme"> {item.itemInfo.itemPoints}</span>
-                  </div>
-                  <button onClick={() => this.deleteCartItem(item.itemInfo.itemId)}> Delete</button>
-                </div>
-                <ProductCustomizeForm
-                  colorFitsSizesMap={this.colorFitsSizesMap}
-                  handleSubmit={this.handleSubmit}
+                <CartItem
+                  updateCartItem={updateCartItem}
+                  item={item}
+                  deleteCartItem={this.deleteCartItem}
+                  getProductSKUInfo={getProductSKUInfo}
+                  editableProductInfo={editableProductInfo}
                 />
               </Col>
             ))}

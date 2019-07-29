@@ -2,9 +2,14 @@
 /* eslint-disable */
 import React from 'react';
 import { connect } from 'react-redux';
-import { getOrderDetails, removeCartItem, updateCartItem } from './CartItemTile.actions';
+import {
+  getOrderDetails,
+  removeCartItem,
+  updateCartItem,
+  getProductSKUInfo,
+} from './CartItemTile.actions';
 import CartItemTile from '../views/CartItemTile.view';
-import { getCartOrderList } from './CartItemTile.selectors';
+import { getCartOrderList, getEditableProductInfo } from './CartItemTile.selectors';
 
 // @flow
 
@@ -13,14 +18,25 @@ type Props = {
   removeCartItem: void,
   cartItems: any,
   updateCartItem: any,
+  getProductSKUInfo: any,
+  editableProductInfo: any,
 };
 
-const CartItemTileContainer = ({ getOrderDetails, cartItems, removeCartItem, updateCartItem }) => (
+const CartItemTileContainer = ({
+  getOrderDetails,
+  cartItems,
+  removeCartItem,
+  updateCartItem,
+  getProductSKUInfo,
+  editableProductInfo,
+}) => (
   <CartItemTile
     getOrderDetails={getOrderDetails}
     cartItems={cartItems}
     removeCartItem={removeCartItem}
     updateCartItem={updateCartItem}
+    getProductSKUInfo={getProductSKUInfo}
+    editableProductInfo={editableProductInfo}
   />
 );
 function mapDispatchToProps(dispatch) {
@@ -34,12 +50,16 @@ function mapDispatchToProps(dispatch) {
     updateCartItem: (itemId, skuId, quantity, itemPartNumber, variantNo) => {
       dispatch(updateCartItem({ itemId, skuId, quantity, itemPartNumber, variantNo }));
     },
+    getProductSKUInfo: productNumber => {
+      dispatch(getProductSKUInfo(productNumber));
+    },
   };
 }
 
 function mapStateToProps(state) {
   return {
     cartItems: getCartOrderList(state),
+    editableProductInfo: getEditableProductInfo(state),
   };
 }
 

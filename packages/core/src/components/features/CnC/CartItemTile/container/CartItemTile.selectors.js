@@ -7,3 +7,7 @@ export const getCartOrderList = state => {
   // needs to do it with get method.
   return state.CartPage.items;
 };
+export const getEditableProductInfo = state => {
+  // needs to do it with get method.
+  return state.CartPage.editableItemData;
+};
