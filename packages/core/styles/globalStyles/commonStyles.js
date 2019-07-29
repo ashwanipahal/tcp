@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import theme from '../themes/TCP';
 
-const { fonts, breakpoints } = theme;
+const { fonts, breakpoints, mediaQuery } = theme;
 export default css`
   body {
     font-family: ${fonts.primaryFontFamily};
@@ -12,6 +12,7 @@ export default css`
     width: 100%;
     max-width: ${breakpoints.xlarge};
     margin: 0 auto;
+    position: relative;
   }
 
   input[type='text']::-ms-clear {
@@ -64,6 +65,18 @@ export default css`
     clip-path: inset(50%);
   }
 
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 2;
+  }
+
   figure {
     margin: 0;
     padding: 0;
@@ -92,6 +105,24 @@ export default css`
 
   p {
     margin: 0;
+  }
+
+  .hide-on-mobile {
+    @media ${mediaQuery.smallOnly} {
+      display: none;
+    }
+  }
+
+  .hide-on-desktop {
+    @media ${mediaQuery.largeOnly} {
+      display: none;
+    }
+  }
+
+  .hide-on-tablet {
+    @media ${mediaQuery.mediumOnly} {
+      display: none;
+    }
   }
 
   ${props => {
