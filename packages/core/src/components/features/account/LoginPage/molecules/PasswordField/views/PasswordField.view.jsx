@@ -16,13 +16,13 @@ export class PasswordField extends React.PureComponent {
   static defaultProps = {
     className: '',
     hideText: 'hide',
-    showText: 'show'
-  }
+    showText: 'show',
+  };
 
   constructor(props) {
     super(props);
     this.state = {
-      type: 'password'
+      type: 'password',
     };
   }
 
@@ -30,9 +30,9 @@ export class PasswordField extends React.PureComponent {
     e.preventDefault();
     const { type } = this.state;
     this.setState({
-      type: type === 'password' ? 'text' : 'password'
+      type: type === 'password' ? 'text' : 'password',
     });
-  }
+  };
 
   render() {
     const { className, showText, hideText, ...otherProps } = this.props;
@@ -40,9 +40,11 @@ export class PasswordField extends React.PureComponent {
     return (
       <BodyCopy component="div" className={className}>
         <TextBox {...otherProps} type={type} />
-        <Anchor anchorVariation="primary" noLink handleLinkClick={this.changeType}>{type === 'password' ? showText : hideText }</Anchor>
+        <Anchor anchorVariation="primary" noLink handleLinkClick={this.changeType} underline>
+          {type === 'password' ? showText : hideText}
+        </Anchor>
       </BodyCopy>
-    )
+    );
   }
 }
 

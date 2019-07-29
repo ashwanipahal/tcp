@@ -1,6 +1,6 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
-import { setLoginInfo, getUserInfo, setLoginError } from './LoginPage.actions';
+import { setLoginInfo, getUserInfo } from './LoginPage.actions';
 import { setAddressList } from '../../AddressBook/container/AddressBook.actions';
 import fetchData from '../../../../../service/API';
 import { login, getProfile } from '../../../../../services/abstractors/account';
@@ -8,24 +8,35 @@ import endpoints from '../../../../../service/endpoint';
 
 const errorLabel = 'Error in API';
 
-function* loginSaga({ payload }) {
+export function* loginSaga({ payload }) {
   try {
-    yield call(login, payload);
-    return yield put(getUserInfo());
+    const response = yield call(login, payload);
+    if (response.success) {
+      return yield put(getUserInfo());
+    }
+    return yield put(setLoginInfo(response));
   } catch (err) {
-    return yield put(setLoginError());
+    return yield put(
+      setLoginInfo({
+        success: false,
+      })
+    );
   }
 }
 
-function* getUserInfoSaga() {
+export function* getUserInfoSaga() {
   try {
     const response = yield call(getProfile, {});
-    if(response.addressBook) {
+    if (response.addressBook) {
       yield put(setAddressList(response.addressBook));
     }
     return yield put(setLoginInfo(response));
   } catch (err) {
-    return yield put(setLoginError());
+    return yield put(
+      setLoginInfo({
+        success: false,
+      })
+    );
   }
 }
 

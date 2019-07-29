@@ -4,32 +4,45 @@ import { connect } from 'react-redux';
 import Router from 'next/router'; // eslint-disable-line
 import { login } from './LoginPage.actions';
 import labels from './LoginPage.labels';
-import { getUserLoggedInState, getLoginError } from './LoginPage.selectors';
+import { getUserLoggedInState, getLoginError, shouldShowRecaptcha } from './LoginPage.selectors';
 import LoginView from '../views';
 
 class LoginPageContainer extends React.PureComponent {
-  componentDidUpdate(prevProps){
+  componentDidUpdate(prevProps) {
     const { isUserLoggedIn } = this.props;
-    if(!prevProps.isUserLoggedIn && isUserLoggedIn) {
+    if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
       Router.push('/');
     }
   }
 
   render() {
-    const { onSubmit, loginError } = this.props;
+    const { onSubmit, loginError, showRecaptcha } = this.props;
     const initialValues = {
       rememberMe: true,
       savePlcc: true,
     };
-    return <LoginView onSubmit={onSubmit} labels={labels} loginErrorMessage={loginError ? labels.ACC_LBL_LOGIN_ERROR : ''} initialValues={initialValues} />;
+    return (
+      <LoginView
+        onSubmit={onSubmit}
+        labels={labels}
+        loginErrorMessage={loginError ? labels.ACC_LBL_LOGIN_ERROR : ''}
+        initialValues={initialValues}
+        showRecaptcha={showRecaptcha}
+      />
+    );
   }
 }
 
 LoginPageContainer.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
-  loginError: PropTypes.bool.isRequired
-}
+  loginError: PropTypes.bool.isRequired,
+  showRecaptcha: PropTypes.bool,
+};
+
+LoginPageContainer.defaultProps = {
+  showRecaptcha: false,
+};
 
 function mapDispatchToProps(dispatch) {
   return {
@@ -42,8 +55,9 @@ function mapDispatchToProps(dispatch) {
 function mapStateToProps(state) {
   return {
     isUserLoggedIn: getUserLoggedInState(state),
-    loginError: getLoginError(state)
-  }
+    loginError: getLoginError(state),
+    showRecaptcha: shouldShowRecaptcha(state),
+  };
 }
 
 export default connect(

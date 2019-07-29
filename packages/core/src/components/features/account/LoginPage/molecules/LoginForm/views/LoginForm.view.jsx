@@ -11,10 +11,18 @@ import createValidateMethod from '../../../../../../../utils/formValidation/crea
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import PasswordField from '../../PasswordField';
 import Anchor from '../../../../../../common/atoms/Anchor';
+import Recaptcha from '../../../../../../common/molecules/recaptcha/recaptcha';
 import styles from '../styles/LoginForm.styles';
 
-export const LoginForm = ({ handleSubmit, labels, loginErrorMessage, className }) => {
-  return  (
+export const LoginForm = ({
+  handleSubmit,
+  labels,
+  loginErrorMessage,
+  className,
+  showRecaptcha,
+  change,
+}) => {
+  return (
     <form name="LoginForm" onSubmit={handleSubmit} noValidate className={className}>
       {loginErrorMessage && (
         <Notification
@@ -39,23 +47,22 @@ export const LoginForm = ({ handleSubmit, labels, loginErrorMessage, className }
           dataLocator=""
         />
         <BodyCopy component="div">
-          <Field
-            name="rememberMe"
-            component={InputCheckbox}
-            dataLocator=""
-            className=""
-          >
+          <Field name="rememberMe" component={InputCheckbox} dataLocator="" className="">
             {labels.ACC_LBL_LOGIN_REMEMBER_ME}
           </Field>
         </BodyCopy>
         <BodyCopy component="div">
-          <Field
-            name="savePlcc"
-            component={InputCheckbox}
-            dataLocator=""
-          >
+          <Field name="savePlcc" component={InputCheckbox} dataLocator="">
             {labels.ACC_LBL_LOGIN_SAVE_MY_PLACE}
           </Field>
+        </BodyCopy>
+        <BodyCopy component="div">
+          {showRecaptcha && (
+            <Recaptcha
+              verifyCallback={token => change('recaptchaToken', token)}
+              expiredCallback={() => change('recaptchaToken', '')}
+            />
+          )}
         </BodyCopy>
       </BodyCopy>
       <BodyCopy component="div" textAlign="center" className="elem-mb-LRG">
@@ -69,45 +76,41 @@ export const LoginForm = ({ handleSubmit, labels, loginErrorMessage, className }
         >
           {labels.ACC_LBL_LOGIN_CTA}
         </Button>
-        <Anchor
-          to="/"
-        >
-          {labels.ACC_LBL_LOGIN_FORGET_PASSWORD_CTA}
-        </Anchor>
+        <Anchor to="/">{labels.ACC_LBL_LOGIN_FORGET_PASSWORD_CTA}</Anchor>
       </BodyCopy>
       <BodyCopy component="div" className="border elem-pt-LRG">
-        <BodyCopy textAlign="center" className="elem-mb-LRG">{labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}</BodyCopy>
-        <Button
-          fill="BLUE"
-          type="submit"
-          buttonVariation="fixed-width"
-          data-locator=""
-        >
+        <BodyCopy textAlign="center" className="elem-mb-LRG">
+          {labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}
+        </BodyCopy>
+        <Button fill="BLUE" type="submit" buttonVariation="fixed-width" data-locator="">
           {labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
         </Button>
       </BodyCopy>
     </form>
-    )
-}
+  );
+};
 
 LoginForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   labels: PropTypes.shape({}).isRequired,
   className: PropTypes.string,
   loginErrorMessage: PropTypes.string,
-}
+  showRecaptcha: PropTypes.bool,
+  change: PropTypes.func,
+};
 
 LoginForm.defaultProps = {
   className: '',
-  loginErrorMessage: ''
-}
-
+  loginErrorMessage: '',
+  showRecaptcha: false,
+  change: () => {},
+};
 
 const validateMethod = createValidateMethod(
   getStandardConfig([
-    {'emailAddress': 'emailAddressNoAsync'},
-    {'password': 'legacyPassword'},
-    'recaptchaToken'
+    { emailAddress: 'emailAddressNoAsync' },
+    { password: 'legacyPassword' },
+    'recaptchaToken',
   ])
 );
 
