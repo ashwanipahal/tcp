@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import NavMenuLevel3View from '../views/NavMenuLevel3.view';
 
-describe('NavMenuLevel2', () => {
+describe('NavMenuLevel3', () => {
   it('should be defined', () => {
     expect(NavMenuLevel3View).toBeDefined();
   });
@@ -11,15 +11,11 @@ describe('NavMenuLevel2', () => {
   it('should render correctly', () => {
     const props = {
       navigation: {
-        getParam: param => {
-          if (param === 'navigationObj') {
-            return {
-              item: {
-                subCategories: [],
-              },
-            };
-          }
-          return 'GIRL';
+        goBack: () => {
+          return 'back';
+        },
+        getParam: () => {
+          return '';
         },
       },
     };

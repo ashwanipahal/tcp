@@ -19,10 +19,10 @@ const navigateFromL2 = (navigate, subCats, hasL3) => {
 };
 
 /**
- * @function shopBySizeCircle populates the circular links for shop by size
+ * @function MenuItems populates the menu item
  * @param {object} links shop by size links
  */
-const ShopBySize = ({ navigate, maxWidthItem, item, hasBadge, promoBannerMargin, hasL3 }) => {
+const MenuItems = ({ navigate, maxWidthItem, item, hasBadge, promoBannerMargin, hasL3 }) => {
   return (
     <React.Fragment>
       <View maxWidth={maxWidthItem}>
@@ -53,7 +53,7 @@ const ShopBySize = ({ navigate, maxWidthItem, item, hasBadge, promoBannerMargin,
   );
 };
 
-ShopBySize.propTypes = {
+MenuItems.propTypes = {
   navigate: PropTypes.func.isRequired,
   item: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   maxWidthItem: PropTypes.string,
@@ -62,11 +62,11 @@ ShopBySize.propTypes = {
   promoBannerMargin: PropTypes.string,
 };
 
-ShopBySize.defaultProps = {
+MenuItems.defaultProps = {
   hasL3: false,
   maxWidthItem: '',
   hasBadge: false,
   promoBannerMargin: '',
 };
 
-export default ShopBySize;
+export default MenuItems;

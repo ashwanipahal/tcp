@@ -16,11 +16,10 @@ const navigateFromL2 = (navigate, subCats, hasL3) => {
 };
 
 /**
- * @function shopBySizeCircle populates the circular links for shop by size
+ * @function shopBySize populates the circular links for shop by size
  * @param {object} links shop by size links
  */
 const ShopBySize = ({ navigate, links, hasL3 }) => {
-  console.log('links', links);
   return (
     <ShopBySizeContainer>
       {links.map(linkItem => {

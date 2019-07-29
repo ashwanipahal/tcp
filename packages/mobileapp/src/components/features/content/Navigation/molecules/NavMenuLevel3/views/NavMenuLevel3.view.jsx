@@ -15,13 +15,9 @@ const NavMenuLevel3 = props => {
     navigation: { goBack },
   } = props;
 
-  const navigateBack = () => {
-    return goBack();
-  };
-
   return (
     <HeadingView>
-      <TouchableOpacityArrow accessibilityRole="button" onPress={() => navigateBack()}>
+      <TouchableOpacityArrow accessibilityRole="button" onPress={() => goBack()}>
         <ArrowBackIcon source={BackIcon} />
       </TouchableOpacityArrow>
       <BodyCopy
