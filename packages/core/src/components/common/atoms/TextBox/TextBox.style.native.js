@@ -7,7 +7,7 @@ const StyledTextBoxWrapper = styled.View`
 const StyledTextBox = styled.TextInput`
   border-bottom-color: ${props =>
     (props.error && props.theme.colorPalette.error) ||
-    (props.showSuccessCheck && props.theme.colorPalette.success) ||
+    (props.enableSuccessCheck && props.theme.colorPalette.success) ||
     props.theme.colorPalette.gray[500]};
   border-bottom-width: 1px;
   height: 40px;
