@@ -1,18 +1,19 @@
-import ModuleDAbstractor from '../moduleD';
+import AccountNavigationAbstractor from '../AccountNavigation';
 import mock from '../mock';
 
 jest.mock('../../../../handler/handler');
 
-it('ModuleD Abstractor | ', () => {
-  ModuleDAbstractor.getData('moduleD', {
-    contentId: '73f6a699-79a4-4874-994f-ab306dd66dca',
-    slot: 'moduleD',
+it('Account Navigation Abstractor | ', () => {
+  AccountNavigationAbstractor.getData('AccountNavigation', {
+    brand: 'TCP',
+    country: 'USA',
+    channel: 'Desktop',
   }).then(data => {
-    expect(data).toMatchObject(mock);
+    expect(data).toMatchObject(AccountNavigationAbstractor.processData(mock));
   });
 });
 
-it('ModuleH Abstractor | getMock', () => {
-  const data = ModuleDAbstractor.getMock();
-  expect(data).toMatchObject(mock);
+it(' Account Navigation | getMock', () => {
+  const data = AccountNavigationAbstractor.getMock();
+  expect(data).toMatchObject(AccountNavigationAbstractor.processData(mock));
 });

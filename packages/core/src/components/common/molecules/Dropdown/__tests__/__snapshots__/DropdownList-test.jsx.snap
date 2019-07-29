@@ -27,7 +27,9 @@ exports[`DropdownList component should renders correctly 1`] = `
 
   .customSelectTitle {
     border: 1px solid #9c9c9c;
-    background-color: #eeeeee;
+    background-color: ",
+          [Function],
+          ";
     margin-top: ",
           [Function],
           ";
@@ -44,10 +46,16 @@ exports[`DropdownList component should renders correctly 1`] = `
           "/static/images/down_arrow_icon.png",
           ") no-repeat right center;
     position: absolute;
-    right: 10px;
-    height: 15px;
+    right: ",
+          [Function],
+          ";
+    height: ",
+          [Function],
+          ";
     width: 100%;
-    top: 10px;
+    top: ",
+          [Function],
+          ";
   }
 
   .customSelectTitleUpImg {
@@ -55,13 +63,19 @@ exports[`DropdownList component should renders correctly 1`] = `
           "/static/images/up_arrow_icon.png",
           ") no-repeat right center;
     position: absolute;
-    right: 10px;
-    height: 15px;
+    right: ",
+          [Function],
+          ";
+    height: ",
+          [Function],
+          ";
     width: 100%;
-    top: 10px;
+    top: ",
+          [Function],
+          ";
   }
 
-  .text-align-center{
+  .dropDownLists{
     padding: ",
           [Function],
           "
@@ -81,23 +95,17 @@ exports[`DropdownList component should renders correctly 1`] = `
     text-align:center;
   }
 
-
-  .dropdownliBottomBorder {
-    border-bottom: 1px solid ",
-          [Function],
-          ";
-    padding: ",
-          [Function],
-          ";
-  }
-
   .dropdownActiveClass {
-    background-color: #eeeeee};
+    background-color: ",
+          [Function],
+          ";
     position: relative;
   }
 
   li:hover {
-    background: #eeeeee;
+    background: ",
+          [Function],
+          ";
   }
 ",
           ";
@@ -155,7 +163,9 @@ exports[`DropdownList component should renders correctly when optional fields ar
 
   .customSelectTitle {
     border: 1px solid #9c9c9c;
-    background-color: #eeeeee;
+    background-color: ",
+          [Function],
+          ";
     margin-top: ",
           [Function],
           ";
@@ -172,10 +182,16 @@ exports[`DropdownList component should renders correctly when optional fields ar
           "/static/images/down_arrow_icon.png",
           ") no-repeat right center;
     position: absolute;
-    right: 10px;
-    height: 15px;
+    right: ",
+          [Function],
+          ";
+    height: ",
+          [Function],
+          ";
     width: 100%;
-    top: 10px;
+    top: ",
+          [Function],
+          ";
   }
 
   .customSelectTitleUpImg {
@@ -183,13 +199,19 @@ exports[`DropdownList component should renders correctly when optional fields ar
           "/static/images/up_arrow_icon.png",
           ") no-repeat right center;
     position: absolute;
-    right: 10px;
-    height: 15px;
+    right: ",
+          [Function],
+          ";
+    height: ",
+          [Function],
+          ";
     width: 100%;
-    top: 10px;
+    top: ",
+          [Function],
+          ";
   }
 
-  .text-align-center{
+  .dropDownLists{
     padding: ",
           [Function],
           "
@@ -209,23 +231,17 @@ exports[`DropdownList component should renders correctly when optional fields ar
     text-align:center;
   }
 
-
-  .dropdownliBottomBorder {
-    border-bottom: 1px solid ",
-          [Function],
-          ";
-    padding: ",
-          [Function],
-          ";
-  }
-
   .dropdownActiveClass {
-    background-color: #eeeeee};
+    background-color: ",
+          [Function],
+          ";
     position: relative;
   }
 
   li:hover {
-    background: #eeeeee;
+    background: ",
+          [Function],
+          ";
   }
 ",
           ";

@@ -5,6 +5,7 @@ import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../utils/cache.uti
 const initialState = fromJS({
   [DEFAULT_REDUCER_KEY]: null,
   isFetching: false,
+  accountNavigation: null,
 });
 
 const getDefaultState = state => {
