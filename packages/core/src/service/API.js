@@ -42,6 +42,10 @@ async function fetchData(baseURL, relURL, params = {}, method) {
     request.send(params.payload);
   }
 
+  if (params.poc) {
+    request.withCredentials();
+  }
+
   const result = new Promise((resolve, reject) => {
     request
       .then(response => {

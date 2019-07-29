@@ -6,8 +6,6 @@ import { Button, Col, RichText, Row } from '@tcp/core/src/components/common/atom
 import { getLocator } from '@tcp/core/src/utils';
 import SocialMediaLinks from '../SocialMediaLinks';
 
-// TODO: Need to remove this after Modal detachment
-import SmsSignupWrapper from '../../../../../common/molecules/SmsSignupModal/container';
 /* TODO move to component itself */
 import style from '../../Footer.style';
 
@@ -16,7 +14,7 @@ const FooterTopCandidateB = props => {
     referAFriend,
     socialMediaLinks,
     openEmailSignUpModal,
-    // openSmsSignUpModal,
+    openSmsSignUpModal,
     emailSignup,
     smsSignup,
   } = props;
@@ -55,11 +53,14 @@ const FooterTopCandidateB = props => {
             medium: true,
           }}
         >
-          {/* TODO: Uncomment and remove this after detachment */}
-          {/*  <Button customStyle="shadow-button" title={smsSignup.title} onClick={openSmsSignUpModal}>
+          <Button
+            dataLocator="footer_sms_signup_btn"
+            customStyle="shadow-button"
+            title={smsSignup.title}
+            onClick={openSmsSignUpModal}
+          >
             <RichText richTextHtml={smsSignup.text} />
-          </Button> */}
-          <SmsSignupWrapper buttonConfig={smsSignup} />
+          </Button>
         </Col>
         <Col
           className="footer-top__slots"

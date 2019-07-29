@@ -43,7 +43,6 @@ const labels = {
   ACC_LBL_LOADING: 'LOADING...',
   ACC_LBL_CHECK_BALANCE: ' Check Balance',
   ACC_LBL_REMAINING_BALANCE: 'Remaining balance',
-  ACC_LBL_PAYMENT_BANNER: 'payment-banner-label',
 };
 
 export default labels;

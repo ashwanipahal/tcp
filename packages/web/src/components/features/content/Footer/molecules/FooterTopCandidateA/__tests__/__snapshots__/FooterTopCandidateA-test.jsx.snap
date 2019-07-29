@@ -20,28 +20,11 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         }
       }
     >
-      <Styled(BodyCopy)
+      <Styled(RichText)
         className="heading_text"
-        color="text.primary"
-        component="p"
-        data-locator="email_promo_text"
-        fontFamily="primary"
-        fontSize={
-          Array [
-            "fs12",
-            "fs12",
-            "fs16",
-          ]
-        }
-        fontWeight="black"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="center"
-      >
-        <Styled(RichText)
-          richTextHtml="GET $10 OFF BY SIGNING UP FOR EMAIL!"
-        />
-      </Styled(BodyCopy)>
+        dataLocator="email_promo_text"
+        richTextHtml="GET $10 OFF BY SIGNING UP FOR EMAIL!"
+      />
       <ReduxForm
         asyncBlurFields={
           Array [
@@ -51,6 +34,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         asyncValidate={[Function]}
         dataLocators={
           Object {
+            "errorDataLocator": "email_error_message",
             "inputField": "enter_email_text_field",
             "submitButton": "email_submit_btn",
           }
@@ -66,7 +50,6 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
             "signup": "",
           }
         }
-        isSubscriptionValid={false}
         keepDirtyOnReinitialize={false}
         labels={
           Object {
@@ -85,6 +68,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         shouldValidate={[Function]}
         shouldWarn={[Function]}
         submitAsSideEffect={false}
+        subscription={Object {}}
         touchOnBlur={true}
         touchOnChange={false}
         updateUnregisteredFields={false}
@@ -92,52 +76,23 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
       <Styled(BodyCopy)
         className={null}
         color="text.primary"
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-ifAKCX",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  ",
-                [Function],
-                ";
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(RichText)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-ifAKCX",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
+        component="p"
         fontFamily="secondary"
         fontSize={
           Array [
+            "fs10",
+            "fs10",
             "fs12",
-            "fs12",
-            "fs14",
           ]
         }
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
-        richTextHtml="*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com."
         textAlign="center"
       >
-        <Styled(RichText)>
-          *Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com.
-        </Styled(RichText)>
+        <Styled(RichText)
+          richTextHtml="*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com."
+        />
       </Styled(BodyCopy)>
       <div
         className="divider hide-in-medium-up"
@@ -158,36 +113,33 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         }
       }
     >
-      <Styled(BodyCopy)
+      <Styled(RichText)
         className="heading_text"
-        color="text.primary"
-        component="p"
-        fontFamily="primary"
-        fontSize={
-          Array [
-            "fs12",
-            "fs12",
-            "fs16",
-          ]
-        }
-        fontWeight="black"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="center"
-      >
-        <Styled(RichText)
-          richTextHtml="GET $10 OFF BY SIGNING UP FOR SMS!"
-        />
-      </Styled(BodyCopy)>
+        dataLocator="sms_promo_text"
+        richTextHtml="GET $10 OFF BY SIGNING UP FOR SMS!"
+      />
       <ReduxForm
         asyncBlurFields={
           Array [
             "footerTopSmsSignup",
           ]
         }
+        asyncValidate={[Function]}
+        dataLocators={
+          Object {
+            "errorDataLocator": "sms_error_message",
+            "inputField": "sms_field",
+            "submitButton": "sms_submit_btn",
+          }
+        }
         destroyOnUnmount={true}
         enableReinitialize={false}
         fieldName="footerTopSmsSignup"
+        fieldProps={
+          Object {
+            "normalize": [Function],
+          }
+        }
         forceUnregisterOnUnmount={false}
         form="FooterTopSmsSignUpForm"
         getFormState={[Function]}
@@ -205,6 +157,8 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
             "validationErrorLabel": "",
           }
         }
+        onFormSubmit={[Function]}
+        openSuccessModal={[Function]}
         persistentSubmitErrors={false}
         pure={true}
         shouldAsyncValidate={[Function]}
@@ -212,6 +166,7 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
         shouldValidate={[Function]}
         shouldWarn={[Function]}
         submitAsSideEffect={false}
+        subscription={Object {}}
         touchOnBlur={true}
         touchOnChange={false}
         updateUnregisteredFields={false}
@@ -219,52 +174,23 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
       <Styled(BodyCopy)
         className={null}
         color="text.primary"
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-ifAKCX",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  ",
-                [Function],
-                ";
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(RichText)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-ifAKCX",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
+        component="p"
         fontFamily="secondary"
         fontSize={
           Array [
+            "fs10",
+            "fs10",
             "fs12",
-            "fs12",
-            "fs14",
           ]
         }
         fontWeight="regular"
         letterSpacing="normal"
         lineHeight="normal"
-        richTextHtml="*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com."
         textAlign="center"
       >
-        <Styled(RichText)>
-          *Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com.
-        </Styled(RichText)>
+        <Styled(RichText)
+          richTextHtml="*Applies to new email subscribers only. Exclusions apply. Offer valid onyour next purchase of $40 or more. You may withdraw your consent at any time. Contact Us The Children’s Place, 500 Plaza Drive, Secaucus, NJ 07094, www.childrensplace.com."
+        />
       </Styled(BodyCopy)>
     </Styled(Col)>
     <div
@@ -305,27 +231,10 @@ exports[`FooterTopCandidateAVanilla component renders correctly 1`] = `
               }
             }
           >
-            <Styled(BodyCopy)
+            <Styled(RichText)
               className="heading_text refer_friend_text"
-              color="text.primary"
-              component="p"
-              fontFamily="primary"
-              fontSize={
-                Array [
-                  "fs12",
-                  "fs12",
-                  "fs16",
-                ]
-              }
-              fontWeight="black"
-              letterSpacing="normal"
-              lineHeight="normal"
-              textAlign="center"
-            >
-              <Styled(RichText)
-                richTextHtml="$10 for a friend, $10 for you!"
-              />
-            </Styled(BodyCopy)>
+              richTextHtml="$10 for a friend, $10 for you!"
+            />
           </Styled(Col)>
           <Styled(Col)
             className="candidate_a_inline_container_button"

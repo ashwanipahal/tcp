@@ -59,6 +59,39 @@ function stateRequiredValidator(value, param, _, linkedFieldsValues) {
   return value || (linkedFieldsValues[0] !== 'US' && linkedFieldsValues[0] !== 'CA');
 }
 
+function expirationValidator(value, param, linkedPropsValues, datePieces) {
+  const now = new Date();
+  const nowYear = now.getFullYear();
+  const nowMonth = now.getMonth();
+  const month = datePieces[0] * 1;
+  const year = datePieces[1] * 1;
+
+  return !(year < nowYear || (year === nowYear && month < nowMonth + 1));
+}
+
+function cardNumberForTypeValidator(value, param, linkedProps) {
+  const cleanValue = (value || '').replace(/\D/g, '');
+  // no type, invalid CC numbr
+  if (!linkedProps[0]) {
+    return false;
+  }
+
+  const isAmex = linkedProps[0] === 'AMEX';
+  const isValidAmex = isAmex && (cleanValue.length === 15 || /[*]{11}\d{4}$/.test(value));
+  const isValidNonAmex = !isAmex && (cleanValue.length === 16 || /[*]{12}\d{4}$/.test(value));
+
+  return (
+    cleanValue.length === 0 ||
+    isValidAmex || // editing amex card
+    isValidNonAmex
+  ); // editing amex card
+}
+
+function plccEnabledValidator(value, param, linkedProps) {
+  const cleanValue = (value || '').replace(/\D/g, '');
+  return !(cleanValue.length > 0 && linkedProps[0] === 'PLACE CARD' && !linkedProps[1]);
+}
+
 // TODO - Add test case (Ajay Saini)
 function numberValidator(value) {
   return /^(?:-?\d+|-?\d{1,3}(?:,\d{3})+)?(?:\.\d+)?$/.test(value);
@@ -81,6 +114,9 @@ const validatorMethods = {
   name: nameValidator,
   city: cityNameValidator,
   stateRequired: stateRequiredValidator,
+  cardNumberForType: cardNumberForTypeValidator,
+  expiration: expirationValidator,
+  plccEnabled: plccEnabledValidator,
   number: numberValidator,
   exactLength: lengthValidator,
 };

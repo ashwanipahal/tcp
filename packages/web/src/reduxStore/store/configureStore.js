@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import { cacheEnhancerMiddleware } from '@tcp/core/src/utils/cache.util';
+import { setStoreRef } from '@tcp/core/src/utils/store.utils';
 import globalSagas from '../sagas';
 import globalReducers from '../reducers';
 
@@ -31,6 +32,9 @@ const configureStore = preloadedState => {
    * It is used to await the rootSaga task before sending results to the client.
    */
   store.sagaTask = sagaMiddleware.run(globalSagas);
+
+  // Need to save the store in a separate variable as there is no easy way of getting the store in Non-saga file like util.js
+  setStoreRef(store);
 
   return store;
 };

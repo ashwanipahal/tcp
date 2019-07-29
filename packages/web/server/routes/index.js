@@ -33,6 +33,7 @@ const RoutesMap = [
     path: '/cart',
     resolver: '/cart',
   },
+  { path: '/cookiesTesting', resolver: '/cookiesTesting' },
 ];
 
 module.exports = RoutesMap;

@@ -1,6 +1,5 @@
 import { call, takeLatest, put, select } from 'redux-saga/effects';
 import { validateReduxCache } from '../../../../../utils/cache.util';
-import PaymentAbstractor from '../../../../../services/abstractors/account/Payment';
 import PAYMENT_CONSTANTS from '../Payment.constants';
 import fetchData from '../../../../../service/API';
 import {
@@ -8,11 +7,16 @@ import {
   getCardListErr,
   showLoader,
   paymentAddGiftCardSuccess,
-  setRichText,
+  setReferredContent,
+  loadLabelsData,
 } from './Payment.actions';
 import { resetShowNotification } from '../AddGiftCard/container/AddGiftCard.actions';
 import { getOnAddGiftCardPageState } from '../AddGiftCard/container/AddGiftCard.selector';
 import endpoints from '../../../../../service/endpoint';
+import {
+  getReferredContentById,
+  fetchLabels,
+} from '../../../../../services/abstractors/common/ReferredContent';
 
 export function* getCardList() {
   try {
@@ -47,10 +51,19 @@ export function* getCardList() {
   }
 }
 
-function* fetchRichText({ payload = '' }) {
+function* fetchReferredContent({ payload = '' }) {
   try {
-    const result = yield call(PaymentAbstractor, payload);
-    yield put(setRichText(result));
+    const result = yield call(getReferredContentById, payload);
+    yield put(setReferredContent(result));
+  } catch (err) {
+    // eslint-disable-next-line no-console
+    console.log(err);
+  }
+}
+function* fetchPaymentLabels({ payload }) {
+  try {
+    const result = yield call(fetchLabels, payload);
+    yield put(loadLabelsData(result));
   } catch (err) {
     // eslint-disable-next-line no-console
     console.log(err);
@@ -60,7 +73,8 @@ function* fetchRichText({ payload = '' }) {
 export function* PaymentSaga() {
   const cachedCardList = validateReduxCache(getCardList);
   yield takeLatest(PAYMENT_CONSTANTS.GET_CARD_LIST, cachedCardList);
-  yield takeLatest(PAYMENT_CONSTANTS.FETCH_RICH_TEXT, fetchRichText);
+  yield takeLatest(PAYMENT_CONSTANTS.FETCH_PAYMENT_LABELS, fetchPaymentLabels);
+  yield takeLatest(PAYMENT_CONSTANTS.FETCH_REFERRED_CONTENT, fetchReferredContent);
 }
 
 export default PaymentSaga;

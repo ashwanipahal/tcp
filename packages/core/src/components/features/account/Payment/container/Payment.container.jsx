@@ -1,4 +1,5 @@
 import React from 'react';
+import Router from 'next/router'; // eslint-disable-line
 import { connect } from 'react-redux';
 import {
   getCardList,
@@ -7,10 +8,10 @@ import {
   checkBalance,
   setDefaultPayment,
   setPaymentNotification,
-  getRichText,
+  getReferredContent,
+  fetchLabelsData,
 } from './Payment.actions';
 
-import { bootstrapData } from '../../../../../reduxStore/actions';
 import {
   getCreditDebitCards,
   getCardListFetchingState,
@@ -69,6 +70,10 @@ export class PaymentContainer extends React.Component<Props> {
     clearPaymentNotification();
   }
 
+  addNewCreditCard = () => {
+    Router.push('/account?id=add-credit-card', '/account/payment/add-credit-card');
+  };
+
   render() {
     const {
       showNotification,
@@ -105,6 +110,7 @@ export class PaymentContainer extends React.Component<Props> {
         onGetBalanceCard={onGetBalanceCard}
         checkbalanceValueInfo={checkbalanceValueInfo}
         setDefaultPaymentMethod={setDefaultPaymentMethod}
+        addCreditCard={this.addNewCreditCard}
       />
     );
   }
@@ -135,10 +141,10 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
       );
     },
     getContentId: () => {
-      dispatch(bootstrapData());
+      dispatch(fetchLabelsData({ category: 'account', subCategory: 'payment' }));
     },
     getPaymentBannerRichText: cid => {
-      dispatch(getRichText(cid));
+      dispatch(getReferredContent(cid));
     },
   };
 };

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, Col, Row } from '@tcp/core/src/components/common/atoms';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+
 import {
   FooterMiddleMobile,
   FooterMiddleDesktop,
@@ -11,7 +12,7 @@ import {
   FooterTopCandidateA,
   FooterTopCandidateB,
 } from '../molecules';
-import { EmailSignupModal } from '../../../../common/molecules';
+import { EmailSignupModal, SmsSignupModal } from '../../../../common/molecules';
 import style from '../Footer.style';
 
 class Footer extends React.Component {
@@ -19,16 +20,16 @@ class Footer extends React.Component {
     super(props);
 
     this.state = {
-      showFooterTopCandidateA: false,
+      showFooterTopCandidateB: false,
     };
   }
 
   componentDidMount() {
     // TODO: Need to change this when proper solution for A/B test come
-    if (localStorage.getItem('showFooterTopCandidateA') === 'true') {
-      this.setState({ showFooterTopCandidateA: true });
+    if (window.location.search.match('cand-b')) {
+      this.setState({ showFooterTopCandidateB: true });
     } else {
-      this.setState({ showFooterTopCandidateA: false });
+      this.setState({ showFooterTopCandidateB: false });
     }
   }
 
@@ -42,17 +43,20 @@ class Footer extends React.Component {
       referenceID,
       getUserInfoAction,
       getOrderDetailAction,
+      emailSignup,
+      smsSignup,
     } = props;
-    const { showFooterTopCandidateA } = this.state;
+    const { showFooterTopCandidateB } = this.state;
 
     return (
       <footer className={className}>
-        {showFooterTopCandidateA ? (
-          <FooterTopCandidateA {...props} />
-        ) : (
+        {showFooterTopCandidateB ? (
           <FooterTopCandidateB {...props} />
+        ) : (
+          <FooterTopCandidateA {...props} />
         )}
-        <EmailSignupModal buttonConfig={{ url: '/EMAIL_SIGNUP_MODAL', text: 'Email Signup' }} />
+        <EmailSignupModal buttonConfig={emailSignup} />
+        <SmsSignupModal buttonConfig={smsSignup} />
         <Row className="footer-middle mobile" fullBleed>
           <FooterMiddleMobile className={className} navLinkItems={navLinks} />
         </Row>

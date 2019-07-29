@@ -113,7 +113,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -269,7 +269,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -444,7 +444,7 @@ exports[`Add gift card form component should render component correctly 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';

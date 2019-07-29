@@ -1,8 +1,9 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  font-size: 13px;
-  .value {
+  margin-top: 10px;
+  font-size: 12px;
+  .text-value {
     text-align: right;
   }
   .row-padding {

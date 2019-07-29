@@ -70,37 +70,43 @@ exports[`ModuleK component renders correctly 1`] = `
         }
       }
     >
-      <Styled(LinkText)
+      <Styled(Styled(LinkText))
         component="div"
         dataLocator="moduleK_header_text"
-        fontSize="fs48"
+        fontSize={
+          Array [
+            "fs32",
+            "fs48",
+          ]
+        }
         fontWeight="black"
-        icon={
-          Object {
-            "icon": "heart",
-            "placement": "left|middle|right",
-          }
-        }
-        link={
-          Object {
-            "external": 0,
-            "target": "",
-            "title": "",
-            "url": "https://www.childrensplace.com/us/c/girls-new-arrivals",
-          }
-        }
-        textLines={
+        headerText={
           Array [
             Object {
-              "style": "moduleK__Header",
-              "text": "UNICORNS,",
-            },
-            Object {
-              "style": "moduleK__Header",
-              "text": "DINOS & MORE!",
+              "icon": Object {
+                "icon": "heart",
+                "placement": "left|middle|right",
+              },
+              "link": Object {
+                "external": 0,
+                "target": "",
+                "title": "",
+                "url": "https://www.childrensplace.com/us/c/girls-new-arrivals",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "moduleK__Header",
+                  "text": "UNICORNS,",
+                },
+                Object {
+                  "style": "moduleK__Header",
+                  "text": "DINOS & MORE!",
+                },
+              ],
             },
           ]
         }
+        lineHeight="lh107"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -141,9 +147,10 @@ exports[`ModuleK component renders correctly 1`] = `
         carouselConfig={
           Object {
             "autoplay": true,
+            "customArrowLeft": "/static/images/right-carousel-carrot.svg",
+            "customArrowRight": "/static/images/right-carousel-carrot.svg",
             "dataLocatorPause": "moduleK_pause_button",
             "dataLocatorPlay": "moduleK_play_button",
-            "type": "light",
           }
         }
         options={
@@ -181,25 +188,27 @@ exports[`ModuleK component renders correctly 1`] = `
         <Styled(Styled(PromoBanner))
           className="module-k__promoBanner"
           fontSize="fs48"
-          link={
-            Object {
-              "class": "",
-              "external": 0,
-              "target": "",
-              "text": "",
-              "title": "",
-              "url": "/banner/url",
-            }
-          }
-          textItems={
+          promoTextBanner={
             Array [
               Object {
-                "style": "style2",
-                "text": "ALL DINOS",
-              },
-              Object {
-                "style": "text-black",
-                "text": "50% OFF",
+                "link": Object {
+                  "class": "",
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/banner/url",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style2",
+                    "text": "ALL DINOS",
+                  },
+                  Object {
+                    "style": "text-black",
+                    "text": "50% OFF",
+                  },
+                ],
               },
             ]
           }
@@ -273,25 +282,27 @@ exports[`ModuleK component renders correctly 1`] = `
         <Styled(Styled(PromoBanner))
           className="module-k__promoBanner"
           fontSize="fs48"
-          link={
-            Object {
-              "class": "",
-              "external": 0,
-              "target": "",
-              "text": "",
-              "title": "",
-              "url": "/banner/url",
-            }
-          }
-          textItems={
+          promoTextBanner={
             Array [
               Object {
-                "style": "style2",
-                "text": "ALL DINOS",
-              },
-              Object {
-                "style": "text-black",
-                "text": "50% OFF",
+                "link": Object {
+                  "class": "",
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/banner/url",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style2",
+                    "text": "ALL DINOS",
+                  },
+                  Object {
+                    "style": "text-black",
+                    "text": "50% OFF",
+                  },
+                ],
               },
             ]
           }
@@ -365,25 +376,27 @@ exports[`ModuleK component renders correctly 1`] = `
         <Styled(Styled(PromoBanner))
           className="module-k__promoBanner"
           fontSize="fs48"
-          link={
-            Object {
-              "class": "",
-              "external": 0,
-              "target": "",
-              "text": "",
-              "title": "",
-              "url": "/banner/url",
-            }
-          }
-          textItems={
+          promoTextBanner={
             Array [
               Object {
-                "style": "style2",
-                "text": "ALL DINOS",
-              },
-              Object {
-                "style": "text-black",
-                "text": "50% OFF",
+                "link": Object {
+                  "class": "",
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/banner/url",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style2",
+                    "text": "ALL DINOS",
+                  },
+                  Object {
+                    "style": "text-black",
+                    "text": "50% OFF",
+                  },
+                ],
               },
             ]
           }
@@ -457,25 +470,27 @@ exports[`ModuleK component renders correctly 1`] = `
         <Styled(Styled(PromoBanner))
           className="module-k__promoBanner"
           fontSize="fs48"
-          link={
-            Object {
-              "class": "",
-              "external": 0,
-              "target": "",
-              "text": "",
-              "title": "",
-              "url": "/banner/url",
-            }
-          }
-          textItems={
+          promoTextBanner={
             Array [
               Object {
-                "style": "style2",
-                "text": "ALL DINOS",
-              },
-              Object {
-                "style": "text-black",
-                "text": "50% OFF",
+                "link": Object {
+                  "class": "",
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/banner/url",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style2",
+                    "text": "ALL DINOS",
+                  },
+                  Object {
+                    "style": "text-black",
+                    "text": "50% OFF",
+                  },
+                ],
               },
             ]
           }

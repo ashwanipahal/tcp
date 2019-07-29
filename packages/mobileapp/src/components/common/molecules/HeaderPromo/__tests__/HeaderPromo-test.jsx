@@ -13,10 +13,6 @@ describe('HeaderPromo Component', () => {
     component = shallow(<HeaderPromoVanilla {...props} />);
   });
 
-  it('HeaderPromo icons should be defined', () => {
-    component.setState({ isIconIn: true });
-  });
-
   it('HeaderPromo should be defined', () => {
     expect(component).toBeDefined();
   });

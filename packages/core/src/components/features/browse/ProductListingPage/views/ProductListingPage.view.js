@@ -51,7 +51,7 @@ export class ProductListView extends React.Component {
         <h1>PLP Page</h1>
         <Row tagName="ul" className={className}>
           {allProducts &&
-            allProducts.map(item => {
+            allProducts.map((item, index) => {
               const pdpObj = parseProductFromAPI(
                 item,
                 item.uniqueId,
@@ -65,6 +65,7 @@ export class ProductListView extends React.Component {
                   item={pdpObj.product}
                   addToBagEcom={this.addToBagEcom}
                   addToBagBossBopis={this.addToBagBossBopis}
+                  index={index}
                 />
               );
             })}

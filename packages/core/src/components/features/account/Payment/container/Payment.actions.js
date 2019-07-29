@@ -84,16 +84,30 @@ export const setPaymentNotification = payload => ({
   payload,
 });
 
-export const getRichText = payload => {
+export const getReferredContent = payload => {
   return {
     payload,
-    type: PAYMENT_CONSTANTS.FETCH_RICH_TEXT,
+    type: PAYMENT_CONSTANTS.FETCH_REFERRED_CONTENT,
   };
 };
 
-export const setRichText = payload => {
+export const setReferredContent = payload => {
   return {
     payload,
-    type: PAYMENT_CONSTANTS.SET_RICH_TEXT,
+    type: PAYMENT_CONSTANTS.SET_REFERRED_CONTENT,
+  };
+};
+
+export const fetchLabelsData = payload => {
+  return {
+    payload,
+    type: PAYMENT_CONSTANTS.FETCH_PAYMENT_LABELS,
+  };
+};
+
+export const loadLabelsData = payload => {
+  return {
+    payload,
+    type: PAYMENT_CONSTANTS.LOAD_PAYMENT_LABELS,
   };
 };
