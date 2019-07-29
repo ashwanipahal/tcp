@@ -64,11 +64,12 @@ class OverlayModal extends React.Component {
       const compRectBoundingX = comp.getBoundingClientRect().x;
       const compWidth = comp.getBoundingClientRect().width;
       const modal = document.getElementById('dialog__content');
+      const modalWrapper = document.getElementById('modal__wrapper');
       const modalTriangle = document.getElementById('modal__triangle');
       const modalRectBoundingX = modal && modal.getBoundingClientRect().x;
       /* istanbul ignore else */
       if (compRectBoundingY) {
-        modal.style.top = `${compRectBoundingY + compHeight + 12}px`;
+        modalWrapper.style.top = `${compRectBoundingY + compHeight + 12}px`;
       }
       /* istanbul ignore else */
       if (compRectBoundingX && compWidth && modalRectBoundingX && modalTriangle) {

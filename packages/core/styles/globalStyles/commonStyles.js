@@ -12,6 +12,7 @@ export default css`
     width: 100%;
     max-width: ${breakpoints.xlarge};
     margin: 0 auto;
+    position: relative;
   }
 
   input[type='text']::-ms-clear {
