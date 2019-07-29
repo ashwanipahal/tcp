@@ -70,7 +70,6 @@ export const ImageColor = { tintColor: 'gray' };
 
 export const HeaderPromoContainer = styled.View`
   height: 45px;
-  padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   background: ${props => props.theme.colors.PRIMARY.PALEGRAY};
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
