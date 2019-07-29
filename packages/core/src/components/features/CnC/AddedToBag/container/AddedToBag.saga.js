@@ -83,7 +83,7 @@ export function* addItemToCartBopis({ payload }) {
       yield put(
         SetAddedToBagData({
           ...payload,
-          orderItemId: res.body.orderItemId && res.body.orderItemId[0],
+          orderItemId: res.body.orderItemId,
         })
       );
       yield put(openAddedToBag());

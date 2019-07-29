@@ -22,18 +22,21 @@ const styles = css`
       ${props => props.theme.spacing.ELEM_SPACING.XS}
       ${props => props.theme.spacing.ELEM_SPACING.MED};
 
-    @media ${props => props.theme.mediaQuery.medium} {
-      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
-    }
-
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       display: block;
     }
   }
 
+  .creditCardForm__addressBook {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    @media ${props => props.theme.mediaQuery.medium} {
+      align-self: flex-end;
+      margin-bottom: 0;
+    }
+  }
+
   .CreditCardForm__ctaContainer {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
 
   .CreditCardForm__submit {

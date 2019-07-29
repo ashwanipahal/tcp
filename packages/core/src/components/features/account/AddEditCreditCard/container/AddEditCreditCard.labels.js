@@ -1,4 +1,5 @@
 export default {
+  ACC_LBL_ADD_NEW_ADD_CTA: '+ Add New Address',
   ACC_LBL_CC_HEADING: 'Billing Address',
   ACC_LBL_CC_ADDRESS_SELECT: 'Select from Address Book',
   ACC_LBL_CARD_NUMBER: 'Card #',

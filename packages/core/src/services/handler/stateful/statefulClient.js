@@ -88,7 +88,7 @@ const getRequestParams = (apiConfig, reqObj) => {
  * @param {Object} reqObj - request param with endpoints and payload
  * @returns {Promise} Resolves with promise to consume the stateful api or reject in case of error
  */
-const statefulAPIClient = (apiConfig, reqObj) => {
+const StatefulAPIClient = (apiConfig, reqObj) => {
   const { requestUrl, reqHeaders } = getRequestParams(apiConfig, reqObj);
   const reqTimeout = API_CONFIG.apiRequestTimeout;
   const requestType = reqObj.webService.method.toLowerCase();
@@ -118,4 +118,4 @@ const statefulAPIClient = (apiConfig, reqObj) => {
   return result;
 };
 
-export default statefulAPIClient;
+export default StatefulAPIClient;

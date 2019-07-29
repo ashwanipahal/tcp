@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Field } from 'redux-form';
 import { Col, Row } from '../../../../../../common/atoms';
 import Select from '../../../../../../common/atoms/Select';
 import CreditCardNumber from '../../CreditCardNumber';
+import styles from '../styles/CreditCardFields.style';
 
 export const CreditCardFields = ({
   labels,
@@ -13,8 +15,9 @@ export const CreditCardFields = ({
   cardType,
   expMonthOptionsMap,
   expYearOptionsMap,
+  className,
 }) => (
-  <Row fullBleed>
+  <Row fullBleed className={className}>
     <Col
       colSize={{
         small: 6,
@@ -39,6 +42,8 @@ export const CreditCardFields = ({
             cardTypeImgUrl={cardTypeImgUrl}
             isPLCCEnabled={isPLCCEnabled}
             cardType={cardType}
+            className="field"
+            showSuccessCheck={false}
           />
         </Col>
       </Row>
@@ -62,6 +67,8 @@ export const CreditCardFields = ({
             component={Select}
             dataLocator="payment-expmonthdd"
             options={expMonthOptionsMap}
+            className="field"
+            showSuccessCheck={false}
           />
         </Col>
         <Col
@@ -78,6 +85,8 @@ export const CreditCardFields = ({
             component={Select}
             dataLocator="payment-expyeardd"
             options={expYearOptionsMap}
+            className="field"
+            showSuccessCheck={false}
           />
         </Col>
       </React.Fragment>
@@ -97,6 +106,7 @@ CreditCardFields.propTypes = {
   cardType: PropTypes.string,
   expMonthOptionsMap: PropTypes.shape([]).isRequired,
   expYearOptionsMap: PropTypes.shape([]).isRequired,
+  className: PropTypes.string,
 };
 
 CreditCardFields.defaultProps = {
@@ -105,6 +115,7 @@ CreditCardFields.defaultProps = {
   cardTypeImgUrl: '',
   cardType: '',
   isPLCCEnabled: true,
+  className: '',
 };
 
-export default CreditCardFields;
+export default withStyles(CreditCardFields, styles);

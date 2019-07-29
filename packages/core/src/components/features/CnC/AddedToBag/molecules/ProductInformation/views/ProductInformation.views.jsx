@@ -4,7 +4,7 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import { Image } from '@tcp/core/src/components/common/atoms';
 import { getIconPath, getLocator } from '@tcp/core/src/utils';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import endpoints from '../../../../../service/endpoint';
+import endpoints from '../../../../../../../service/endpoint';
 
 import ProductInformationStyle from '../styles/ProductInformation.style';
 
@@ -25,16 +25,18 @@ const ProductInformation = ({ data, labels }: Props) => {
             src={endpoints.global.baseURI + data.skuInfo.imageUrl}
             data-locator="addedtobag-productimage"
           />
-          <Image
-            alt="Brand"
-            className="brand-image"
-            src={
-              data.brand === 'tcp'
-                ? getIconPath(`header__brand-tab--${data.brand}`)
-                : getIconPath('header__brand-tab-gymboree')
-            }
-            data-locator={getLocator('header__brand-tab--tcp')}
-          />
+          {!data.isGiftCard && (
+            <Image
+              alt="Brand"
+              className="brand-image"
+              src={
+                data.brand === 'tcp'
+                  ? getIconPath(`header__brand-tab--${data.brand}`)
+                  : getIconPath('header__brand-tab-gymboree')
+              }
+              data-locator={getLocator('header__brand-tab--tcp')}
+            />
+          )}
         </Col>
         <Col tagName="li" key="productDetails" colSize={{ small: 4, medium: 6, large: 9 }}>
           <Row tagName="ul" className="product-details">
@@ -64,7 +66,7 @@ const ProductInformation = ({ data, labels }: Props) => {
               colSize={{ small: 2, medium: 3, large: 4 }}
             >
               <BodyCopy tag="span" fontSize="fs13" fontWeight={['semibold']} textAlign="left">
-                {labels.colorLabel}
+                {data.isGiftCard === true ? `Design` : `${labels.colorLabel}`}
                 {':'}
               </BodyCopy>
             </Col>
@@ -93,7 +95,7 @@ const ProductInformation = ({ data, labels }: Props) => {
               colSize={{ small: 2, medium: 3, large: 4 }}
             >
               <BodyCopy tag="span" fontSize="fs13" fontWeight={['semibold']} textAlign="left">
-                {labels.sizeLabel}
+                {data.isGiftCard === true ? `Size` : `${labels.sizeLabel}`}
                 {':'}
               </BodyCopy>
             </Col>
@@ -106,7 +108,7 @@ const ProductInformation = ({ data, labels }: Props) => {
                 dataLocator="addedtobag-productsize"
               >
                 {`${data.skuInfo.size} `}
-                {!data.skuInfo.fit || data.skuInfo.fit === 'Regular' ? ' ' : data.skuInfo.fit}
+                {!data.skuInfo.fit || data.skuInfo.fit === 'regular' ? ' ' : data.skuInfo.fit}
               </BodyCopy>
             </Col>
           </Row>
