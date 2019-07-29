@@ -8,10 +8,10 @@ import {
   checkBalance,
   setDefaultPayment,
   setPaymentNotification,
-  getRichText,
+  getReferredContent,
+  fetchLabelsData,
 } from './Payment.actions';
 
-import { bootstrapData } from '../../../../../reduxStore/actions';
 import {
   getCreditDebitCards,
   getCardListFetchingState,
@@ -141,10 +141,10 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
       );
     },
     getContentId: () => {
-      dispatch(bootstrapData());
+      dispatch(fetchLabelsData({ category: 'account', subCategory: 'payment' }));
     },
     getPaymentBannerRichText: cid => {
-      dispatch(getRichText(cid));
+      dispatch(getReferredContent(cid));
     },
   };
 };
