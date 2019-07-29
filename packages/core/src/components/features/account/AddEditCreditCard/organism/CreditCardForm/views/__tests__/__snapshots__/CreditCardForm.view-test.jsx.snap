@@ -1,0 +1,326 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreditCardForm component should renders correctly with address dropdown 1`] = `
+<form
+  className=""
+  name="addEditCreditCard"
+  noValidate={true}
+>
+  <Styled(CreditCardFields)
+    addressLabels={Object {}}
+    addressList={
+      Immutable.List [
+        Object {
+          "addressId": "12345",
+          "firstName": "test",
+          "lastName": "test",
+          "primary": "true",
+        },
+      ]
+    }
+    className=""
+    initialValues={Object {}}
+    isEdit={false}
+    labels={Object {}}
+    onFileAddressKey=""
+    onFileAddresskey="12345"
+  />
+  <Styled(Heading)
+    className="addressDropdownHeading"
+    color="text.primary"
+    component="h3"
+    dataLocator="payment-bilingaddresslabel"
+    textAlign="left"
+    variant="listMenu"
+  />
+  <Styled(Row)
+    className="elem-mb-XL"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="creditCardForm__addressBook"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Field
+        component={[Function]}
+        dataLocator="payment-billingaddressdd"
+        id="onFileAddressKey"
+        name="onFileAddressKey"
+        options={
+          Immutable.List [
+            Object {
+              "content": <Address
+                address={
+                  Object {
+                    "addressId": "12345",
+                    "firstName": "test",
+                    "lastName": "test",
+                    "primary": "true",
+                  }
+                }
+                isDefault={true}
+                showCountry={true}
+                showPhone={true}
+              />,
+              "title": "test test (Default)",
+              "value": "12345",
+            },
+            Object {
+              "content": <ForwardRef
+                buttonVariation="variable-width"
+                fill="BLUE"
+                fullWidth={true}
+              />,
+              "title": undefined,
+              "value": "",
+            },
+          ]
+        }
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    />
+  </Styled(Row)>
+  <div
+    className="elem-mb-XL"
+  >
+    <FormSection
+      name="address"
+    >
+      <Styled(AddressFields)
+        formName="addEditCreditCard"
+        formSection="address"
+        labels={Object {}}
+        showDefaultCheckbox={false}
+        showPhoneNumber={false}
+      />
+    </FormSection>
+  </div>
+  <Styled(Row)
+    className="CreditCardForm__ctaContainer"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="CreditCardForm__cancel"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 3,
+          "small": 4,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 6,
+          "medium": 1,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        data-locator="payment-cancelbtn"
+        type="button"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="CreditCardForm__submit"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 3,
+          "small": 4,
+        }
+      }
+      offsetLeft={
+        Object {
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        data-locator="payment-addcardbtn"
+        fill="BLUE"
+        type="submit"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</form>
+`;
+
+exports[`CreditCardForm component should renders correctly with addressForm 1`] = `
+<form
+  className=""
+  name="addEditCreditCard"
+  noValidate={true}
+>
+  <Styled(CreditCardFields)
+    addressLabels={Object {}}
+    addressList={
+      Immutable.List [
+        Object {
+          "addressId": "12345",
+          "firstName": "test",
+          "lastName": "test",
+          "primary": "true",
+        },
+      ]
+    }
+    className=""
+    initialValues={Object {}}
+    isEdit={false}
+    labels={Object {}}
+    onFileAddressKey=""
+    pristine={true}
+  />
+  <Styled(Heading)
+    className="addressDropdownHeading"
+    color="text.primary"
+    component="h3"
+    dataLocator="payment-bilingaddresslabel"
+    textAlign="left"
+    variant="listMenu"
+  />
+  <Styled(Row)
+    className="elem-mb-XL"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="creditCardForm__addressBook"
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    >
+      <Field
+        component={[Function]}
+        dataLocator="payment-billingaddressdd"
+        id="onFileAddressKey"
+        name="onFileAddressKey"
+        options={
+          Immutable.List [
+            Object {
+              "content": <Address
+                address={
+                  Object {
+                    "addressId": "12345",
+                    "firstName": "test",
+                    "lastName": "test",
+                    "primary": "true",
+                  }
+                }
+                isDefault={true}
+                showCountry={true}
+                showPhone={true}
+              />,
+              "title": "test test (Default)",
+              "value": "12345",
+            },
+            Object {
+              "content": <ForwardRef
+                buttonVariation="variable-width"
+                fill="BLUE"
+                fullWidth={true}
+              />,
+              "title": undefined,
+              "value": "",
+            },
+          ]
+        }
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 6,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+    />
+  </Styled(Row)>
+  <div
+    className="elem-mb-XL"
+  >
+    <FormSection
+      name="address"
+    >
+      <Styled(AddressFields)
+        formName="addEditCreditCard"
+        formSection="address"
+        labels={Object {}}
+        showDefaultCheckbox={false}
+        showPhoneNumber={false}
+      />
+    </FormSection>
+  </div>
+  <Styled(Row)
+    className="CreditCardForm__ctaContainer"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="CreditCardForm__cancel"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 3,
+          "small": 4,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 6,
+          "medium": 1,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        data-locator="payment-cancelbtn"
+        type="button"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      className="CreditCardForm__submit"
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 3,
+          "small": 4,
+        }
+      }
+      offsetLeft={
+        Object {
+          "small": 1,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        data-locator="payment-addcardbtn"
+        disabled={true}
+        fill="BLUE"
+        type="submit"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</form>
+`;

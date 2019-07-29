@@ -1,12 +1,13 @@
 import React from 'react';
 import { View } from 'react-native';
-import { StylePicker, StylePickerWrapper } from '../styles/MyAccountLayout.style.native';
+import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
 import withStyles from '../../../../common/hoc/withStyles';
-
+import StyledWrapper from '../styles/MyAccountDropDown.style.native';
 // @flow
 type Props = {
   navData: Array<Object>,
   handleComponentChange: Function,
+  className: string,
 };
 
 type State = {
@@ -29,29 +30,32 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
   }
 
   render() {
-    const { navData, handleComponentChange } = this.props;
+    const { navData, handleComponentChange, className } = this.props;
     const { dropDownItem } = this.state;
+    const dropDownStyle = {
+      height: 42,
+      border: 1,
+    };
+    const itemStyle = {
+      height: 49,
+    };
     return (
-      <View {...this.props}>
-        <StylePicker
+      <View className={className} {...this.props}>
+        <DropDown
           selectedValue={dropDownItem}
+          data={navData}
           onValueChange={itemValue => {
             this.setState({ dropDownItem: itemValue });
             handleComponentChange(itemValue);
           }}
-          mode="dropdown"
-        >
-          {navData &&
-            navData.map(nav => {
-              return (
-                <StylePicker.Item key={nav.id} label={nav.displayName} value={nav.component} />
-              );
-            })}
-        </StylePicker>
+          variation="primary"
+          dropDownStyle={{ ...dropDownStyle }}
+          itemStyle={{ ...itemStyle }}
+        />
       </View>
     );
   }
 }
 
-export default withStyles(MyAccountDropdownNav, StylePickerWrapper);
+export default withStyles(MyAccountDropdownNav, StyledWrapper);
 export { MyAccountDropdownNav as MyAccountDropdownNavVanilla };

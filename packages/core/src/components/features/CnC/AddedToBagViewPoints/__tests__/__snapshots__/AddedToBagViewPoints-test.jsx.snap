@@ -14,8 +14,9 @@ exports[`AddedToBagViewPoints component renders correctly 1`] = `
           "
   ",
           "
-  font-size: 13px;
-  .value {
+  margin-top: 10px;
+  font-size: 12px;
+  .text-value {
     text-align: right;
   }
   .row-padding {

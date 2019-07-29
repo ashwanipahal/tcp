@@ -14,6 +14,8 @@ const L1NavItem = props => {
       mainCategory: { promoBadge },
     },
     className,
+    dataLocator,
+    index,
   } = props;
   const classForRedContent = id === '505518' ? `highlighted` : ``;
 
@@ -27,9 +29,13 @@ const L1NavItem = props => {
         fontWeight="semibold"
         color="text.hint"
         lineHeight="lh115"
+        dataLocator={dataLocator}
       >
         <span className={`nav-bar-l1-item-label ${classForRedContent}`}>{name}</span>
-        <span className="nav-bar-l1-item-content">
+        <span
+          className="nav-bar-l1-item-content"
+          data-locator={description ? `sizesrange_label_${index}` : `promo_badge_${index}`}
+        >
           {description || (promoBadge && <PromoBadge data={promoBadge} />) || ``}
         </span>
         <span className="icon-arrow" />
@@ -41,6 +47,12 @@ const L1NavItem = props => {
 L1NavItem.propTypes = {
   categoryContent: PropTypes.shape({}).isRequired,
   className: PropTypes.string.isRequired,
+  dataLocator: PropTypes.string,
+  index: PropTypes.number.isRequired,
+};
+
+L1NavItem.defaultProps = {
+  dataLocator: '',
 };
 
 export { L1NavItem as L1NavItemVanilla };

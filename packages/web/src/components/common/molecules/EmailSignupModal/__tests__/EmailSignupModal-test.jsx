@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { SignupWrapperVanilla } from '../views/EmailSignupModal.view';
+import { EmailSignupModalVanilla } from '../views/EmailSignupModal.view';
 
 describe('EmailSignupModal component', () => {
   it('renders correctly', () => {
@@ -8,10 +8,10 @@ describe('EmailSignupModal component', () => {
       buttonConfig: {},
       className: '',
       formViewConfig: {},
-      isSubscriptionValid: false,
+      subscription: { success: false },
       isEmailValid: false,
     };
-    const component = shallow(<SignupWrapperVanilla {...props} />);
+    const component = shallow(<EmailSignupModalVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 
@@ -20,11 +20,11 @@ describe('EmailSignupModal component', () => {
       buttonConfig: {},
       className: '',
       formViewConfig: {},
-      isSubscriptionValid: true,
+      isSubscriptionValid: { success: true },
       isEmailValid: 'invalid',
     };
-    const component = shallow(<SignupWrapperVanilla {...props} />);
-    component.setState({ isOpen: true });
+    const component = shallow(<EmailSignupModalVanilla {...props} />);
+    component.setProps({ isModalOpen: true });
     expect(component).toMatchSnapshot();
   });
 
@@ -33,11 +33,11 @@ describe('EmailSignupModal component', () => {
       buttonConfig: {},
       className: '',
       formViewConfig: {},
-      isSubscriptionValid: false,
+      isSubscriptionValid: { success: false },
       isEmailValid: 'valid',
     };
-    const component = shallow(<SignupWrapperVanilla {...props} />);
-    component.setState({ isOpen: true });
+    const component = shallow(<EmailSignupModalVanilla {...props} />);
+    component.setProps({ isModalOpen: true });
     expect(component).toMatchSnapshot();
   });
 });
