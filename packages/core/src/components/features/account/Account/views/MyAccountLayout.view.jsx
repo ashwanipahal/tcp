@@ -27,23 +27,16 @@ const MyAccountLayoutView = (props: Props) => {
   return (
     <div className={className}>
       <Row>
-        <Col
-          colSize={{ large: 12, medium: 4, small: 6 }}
-          offsetLeft={{ medium: 2}}
-        >
-          <div className="menuMedium">
-            <Dropdown
-              options={navData}
-              active="Account Overview"
-              activeComponent={active}
-            />
+        <Col colSize={{ large: 12, medium: 4, small: 6 }} offsetLeft={{ medium: 2 }}>
+          <div className="is-hidden-nav">
+            <Dropdown options={navData} active="Account Overview" activeComponent={active} />
           </div>
         </Col>
       </Row>
 
       <Row>
         <Col colSize={{ large: 2, medium: 8, small: 6 }}>
-          <div className="menuLarge">
+          <div className="is-visible-nav">
             <MyAccountLeftNav navData={navData} active={active} />
           </div>
         </Col>

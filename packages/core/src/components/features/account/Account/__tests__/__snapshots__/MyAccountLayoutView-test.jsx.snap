@@ -18,7 +18,7 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
       }
     >
       <div
-        className="menuMedium"
+        className="is-hidden-nav"
       >
         <Styled(Dropdown)
           active="Account Overview"
@@ -113,7 +113,7 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
       }
     >
       <div
-        className="menuLarge"
+        className="is-visible-nav"
       >
         <Styled(MyAccountLeftNav)
           navData={
