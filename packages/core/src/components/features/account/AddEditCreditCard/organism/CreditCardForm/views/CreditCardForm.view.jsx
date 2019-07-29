@@ -49,7 +49,11 @@ export class CreditCardForm extends React.PureComponent {
     addressOptions = addressOptions.push({
       value: '',
       title: labels.ACC_LBL_ADD_NEW_ADD_CTA,
-      content: <Button fullWidth buttonVariation="variable-width" fill="BLUE">{labels.ACC_LBL_ADD_NEW_ADD_CTA}</Button>,
+      content: (
+        <Button fullWidth buttonVariation="variable-width" fill="BLUE">
+          {labels.ACC_LBL_ADD_NEW_ADD_CTA}
+        </Button>
+      ),
     });
 
     return addressOptions;
@@ -74,7 +78,6 @@ export class CreditCardForm extends React.PureComponent {
       initialValues,
     } = this.props;
     const showAddressForm = pristine ? !initialValues.onFileAddressKey : !onFileAddressKey;
-    console.log('initial onFileAddressKety and ',initialValues.onFileAddressKey, onFileAddressKey);
     return (
       <form name={constants.FORM_NAME} noValidate onSubmit={handleSubmit} className={className}>
         <CreditCardFields {...this.props} />
@@ -138,7 +141,6 @@ export class CreditCardForm extends React.PureComponent {
               />
             </FormSection>
           </div>
-
         )}
         <Row fullBleed className="CreditCardForm__ctaContainer">
           <Col
