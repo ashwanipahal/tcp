@@ -72,6 +72,7 @@ const HeaderMiddleNav = props => {
             medium: 8,
             small: 6,
           }}
+          className="hide-on-mobile hide-on-tablet"
         >
           <Anchor
             href="#"
@@ -86,7 +87,7 @@ const HeaderMiddleNav = props => {
           <Anchor
             href="#"
             id="login"
-            className="rightLink"
+            className="rightLink "
             onClick={e => onLinkClick({ e, openOverlay })}
             fontSizeVariation="small"
             anchorVariation="primary"

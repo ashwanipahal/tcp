@@ -19,6 +19,10 @@ describe('OverlayModal', () => {
     });
     const comp = document.createElement('div');
     comp.setAttribute('id', 'login');
+    const overlayElementWrapper = document.createElement('div');
+    overlayElementWrapper.setAttribute('id', 'overlayElements');
+    const overlayElementComponent = document.createElement('div');
+    overlayElementComponent.setAttribute('id', 'overlayComponent');
     const dialog = document.createElement('div');
     dialog.setAttribute('id', 'dialog__content');
     const modalTriangle = document.createElement('div');
@@ -26,6 +30,8 @@ describe('OverlayModal', () => {
     document.body.appendChild(comp);
     document.body.appendChild(dialog);
     document.body.appendChild(modalTriangle);
+    document.body.appendChild(overlayElementWrapper);
+    document.body.appendChild(overlayElementComponent);
     mockedRef = {
       contains: jest.fn(),
     };
@@ -40,6 +46,12 @@ describe('OverlayModal', () => {
     }
     if (document.getElementById('modal__triangle')) {
       document.body.removeChild(document.getElementById('modal__triangle'));
+    }
+    if (document.getElementById('overlayElements')) {
+      document.body.removeChild(document.getElementById('overlayElements'));
+    }
+    if (document.getElementById('overlayComponent')) {
+      document.body.removeChild(document.getElementById('overlayComponent'));
     }
   });
 

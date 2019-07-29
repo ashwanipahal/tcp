@@ -29,6 +29,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       />
     </Styled(Col)>
     <Styled(Col)
+      className="hide-on-mobile hide-on-tablet"
       colSize={
         Object {
           "large": 5,
@@ -49,7 +50,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       </Styled(Anchor)>
       <Styled(Anchor)
         anchorVariation="primary"
-        className="rightLink"
+        className="rightLink "
         fontSizeVariation="small"
         href="#"
         id="login"
