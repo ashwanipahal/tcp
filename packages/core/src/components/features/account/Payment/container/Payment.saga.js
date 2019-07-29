@@ -51,7 +51,7 @@ export function* getCardList() {
   }
 }
 
-function* fetchReferredContent({ payload = '' }) {
+export function* fetchReferredContent({ payload = '' }) {
   try {
     const result = yield call(getReferredContentById, payload);
     yield put(setReferredContent(result));
@@ -60,7 +60,7 @@ function* fetchReferredContent({ payload = '' }) {
     console.log(err);
   }
 }
-function* fetchPaymentLabels({ payload }) {
+export function* fetchPaymentLabels({ payload }) {
   try {
     const result = yield call(fetchLabels, payload);
     yield put(loadLabelsData(result));
