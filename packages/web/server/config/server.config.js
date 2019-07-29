@@ -1,3 +1,6 @@
+const dotenv = require('dotenv');
+const path = require('path');
+
 // TODO - Ideally, all this config should be moved to @tcp/core/services/config
 const sites = ['us', 'ca'];
 const siteIds = {
@@ -8,6 +11,17 @@ const brandIds = {
   tcp: 'tcp',
   gym: 'gym',
 };
+const envIds = {
+  local: 'local',
+  dev: 'dev',
+  int: 'int',
+  uat: 'uat',
+  prod: 'prod',
+};
+
+const BRAND_CONFIG = brandIds.tcp;
+const ENV_CONFIG = envIds.uat;
+const ENV_CONFIG_FILE_PATH = BRAND_CONFIG + '_' + ENV_CONFIG; // Set this to change the env file
 
 /**
  * This function configures helmet properties and setting CSP policies
@@ -27,9 +41,22 @@ const settingHelmetConfig = (server, helmet) => {
   server.use(helmet.ieNoOpen());
 };
 
+/**
+ * This function sets the environment variables for local server run based on ENV_CONFIG_FILE_PATH variable
+ * @param {*} dev | boolean - depicts whether environment is local
+ */
+const setEnvConfig = dev => {
+  if (dev) {
+    dotenv.config({
+      path: path.resolve(__dirname, `..${path.sep}env${path.sep}${ENV_CONFIG_FILE_PATH}.env`),
+    });
+  }
+};
+
 module.exports = {
   sites,
   siteIds,
   brandIds,
   settingHelmetConfig,
+  setEnvConfig,
 };

@@ -2,14 +2,13 @@ const express = require('express');
 const next = require('next');
 const helmet = require('helmet');
 const RoutesMap = require('./routes');
-
-const portIndex = process.argv.indexOf('-p') + 1;
-const port = portIndex !== 0 ? process.argv[portIndex] : 3000;
+const { settingHelmetConfig, sites, siteIds, setEnvConfig } = require('./config/server.config');
 
 const dev = process.env.NODE_ENV === 'development';
-const app = next({ dev, dir: './src' });
+setEnvConfig(dev);
+const port = process.env.PORT || 3000;
 
-const { settingHelmetConfig, sites, siteIds } = require('./config/server.config');
+const app = next({ dev, dir: './src' });
 
 const server = express();
 
@@ -30,8 +29,8 @@ const setSiteId = (req, res) => {
   res.locals.siteId = siteId;
 };
 
+// TODO - To be picked from env config file when Gym build process is done....
 const setBrandId = (req, res) => {
-  // TODO - To be picked from env config file.
   const { hostname } = req;
   let brandId = 'tcp';
   const reqUrl = hostname.split('.');

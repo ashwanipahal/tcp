@@ -32,6 +32,22 @@ export const isServer = () => {
   return typeof window === 'undefined' && !isMobileApp();
 };
 
+const getAPIInfoFromEnv = () => {
+  const apiSiteInfo = API_CONFIG.sitesInfo;
+  const processEnv = process.env;
+  return {
+    traceIdCount: 0,
+    port: process.env.PORT || apiSiteInfo.port,
+    proto: processEnv.PROTO || apiSiteInfo.proto,
+    langId: processEnv.LANGID || apiSiteInfo.langId,
+    MELISSA_KEY: processEnv.MELISSA_KEY || apiSiteInfo.MELISSA_KEY,
+    BV_API_KEY: processEnv.BV_API_KEY || apiSiteInfo.BV_API_KEY,
+    assetHost: processEnv.ASSETHOST || apiSiteInfo.assetHost,
+    domain: processEnv.API_DOMAIN || apiSiteInfo.domain,
+    unbxd: processEnv.UNBXD_DOMAIN || apiSiteInfo.unbxd,
+  };
+};
+
 /**
  * @summary Creates the API config object based on the response local variables set by node server
  * @param {Object} resLocals  response object of Node server
@@ -41,14 +57,13 @@ export const isServer = () => {
 export const createAPIConfig = resLocals => {
   // TODO - Get data from env config - Brand, MellisaKey, BritverifyId, AcquisitionId, Domains, Asset Host, Unbxd Domain;
   // TODO - use isMobile and cookie as well..
-  // TODO - Keep a fallback in case of any error in state/store reference
 
   const { siteId, brandId } = resLocals;
   const isCASite = siteId === API_CONFIG.siteIds.ca;
   const isGYMSite = brandId === API_CONFIG.brandIds.gym;
   const countryConfig = isCASite ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
   const brandConfig = isGYMSite ? API_CONFIG.GYM_CONFIG_OPTIONS : API_CONFIG.TCP_CONFIG_OPTIONS;
-  const basicConfig = API_CONFIG.sitesInfo;
+  const basicConfig = getAPIInfoFromEnv();
   return {
     ...basicConfig,
     ...countryConfig,
@@ -70,6 +85,7 @@ export const getAPIConfig = () => {
   if (isMobileApp()) {
     // TODO - need to configure it for mobile app in similar way of Web - Overriding it for now
     apiConfig = {
+      port: 8081,
       brandId: 'tcp',
       brandIdCMS: 'TCP',
       traceIdCount: 0,
