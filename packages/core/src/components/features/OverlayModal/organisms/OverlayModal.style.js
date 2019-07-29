@@ -7,18 +7,19 @@ const getColorCode = props => {
 };
 
 const StyledModal = css`
-  position: fixed;
+  position: absolute;
   margin: auto;
   min-width: 375px;
   width: auto;
   height: auto;
   right: ${props => (props.variation === 'primary' ? '0' : '')};
   left: ${props => (props.variation === 'secondary' ? '0' : '')};
-  z-index: 1;
+  z-index: 999;
   .dialog__content {
-    position: fixed;
     background-color: ${props => props.theme.colorPalette.white};
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+    width: 100%;
+    height: 100%;
   }
   .modal__bar {
     height: 8px;
