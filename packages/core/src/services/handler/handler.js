@@ -1,11 +1,9 @@
 import { graphQLClient } from '../api.constants';
 import QueryBuilder from './graphQL/queries/queryBuilder';
-import { importGraphQLClientDynamically } from '../../utils';
-import statefulAPIClient from './stateful/statefulClient';
+import { importGraphQLClientDynamically, getAPIConfig } from '../../utils';
+import StatefulAPIClient from './stateful/statefulClient';
 import unbxdAPIClient from './unbxd/unbxdClient';
-import externalAPIClient from './external/externalClient';
-
-let apiConfig = null;
+import ExternalAPIClient from './external/externalClient';
 
 /**
  * Logs error
@@ -58,41 +56,6 @@ export const fetchModuleDataFromGraphQL = async modules => {
 };
 
 /**
- * @summary Creates the API config object and set it to global constant to be used across
- */
-const createAPIConfig = () => {
-  // TODO - Get data from env config
-  apiConfig = {
-    traceIdCount: 0,
-    proto: 'https',
-    MELISSA_KEY: '63987687',
-    BV_API_KEY: 'e50ab0a9-ac0b-436b-9932-2a74b9486436',
-    storeId: '10151',
-    catalogId: '10551',
-    isUSStore: true,
-    langId: '-1',
-    siteId: 'us',
-    countryKey: '_US',
-    assetHost: 'https://test4.childrensplace.com',
-    domain: '://test4.childrensplace.com/api/',
-    unbxd: '://search.unbxd.io',
-    cookie: null,
-    isMobile: false,
-  };
-};
-
-/**
- * @summary Get the api config if already created or else creates one.
- * @returns {Object} apiConfig - Api config to be utilized for brand/channel/locale config
- */
-export const getAPIConfig = () => {
-  if (!apiConfig) {
-    createAPIConfig();
-  }
-  return apiConfig;
-};
-
-/**
  * @summary Fetches Queries based on passed module, then executes the query and returns a promise for query execution
  * @param {Object} reqObj request param with endpoints and payload
  * @returns {Promise} Resolves with unbxd or stateful client based on request object or returns null
@@ -102,7 +65,7 @@ export const executeStatefulAPICall = reqObj => {
     return null;
   }
   const apiConfigObj = getAPIConfig();
-  return statefulAPIClient(apiConfigObj, reqObj).catch(errorHandler);
+  return new StatefulAPIClient(apiConfigObj, reqObj).catch(errorHandler);
 };
 
 export const executeUnbxdAPICall = reqObj => {
@@ -110,7 +73,7 @@ export const executeUnbxdAPICall = reqObj => {
     return null;
   }
   const apiConfigObj = getAPIConfig();
-  return unbxdAPIClient(apiConfigObj, reqObj).catch(errorHandler);
+  return unbxdAPIClient(apiConfigObj, reqObj).catch(errorHandler); // TODO - Make a new Instance and for GRAPHQL as well..
 };
 
 export const executeExternalAPICall = reqObj => {
@@ -118,7 +81,7 @@ export const executeExternalAPICall = reqObj => {
     return null;
   }
   const apiConfigObj = getAPIConfig();
-  return externalAPIClient(apiConfigObj, reqObj).catch(errorHandler);
+  return new ExternalAPIClient(apiConfigObj, reqObj).catch(errorHandler);
 };
 
 export default {

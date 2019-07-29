@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import styles from './OverlayModal.style';
+import styles from '../styles/OverlayModal.style';
 
 const propTypes = {
   component: PropTypes.string,
@@ -21,7 +21,7 @@ const defaultProps = {
 class OverlayModal extends React.Component {
   constructor(props) {
     super(props);
-    const overlayElementWrapper = document.getElementById('overlayElements');
+    const overlayElementWrapper = document.getElementById('overlayWrapper');
     const overlayElement = document.getElementById('overlayComponent');
     const [body] = document.getElementsByTagName('body');
     this.overlayElementWrapper = overlayElementWrapper;
@@ -43,7 +43,6 @@ class OverlayModal extends React.Component {
   }
 
   componentWillUnmount() {
-    /* istanbul ignore else */
     this.overlayElementWrapper.style.position = 'static';
     this.overlayElementWrapper.style.pointerEvents = 'auto;';
     if (this.overlayElement) this.overlayElement.classList.remove('overlay');
@@ -63,10 +62,9 @@ class OverlayModal extends React.Component {
       const compHeight = comp.getBoundingClientRect().height;
       const compRectBoundingX = comp.getBoundingClientRect().x;
       const compWidth = comp.getBoundingClientRect().width;
-      const modal = document.getElementById('dialog__content');
-      modal.style.maxHeight = window && `${window.innerHeight - 200}px`;
-      const modalWrapper = document.getElementById('modal__wrapper');
-      const modalTriangle = document.getElementById('modal__triangle');
+      const modal = document.getElementById('dialogContent');
+      const modalWrapper = document.getElementById('modalWrapper');
+      const modalTriangle = document.getElementById('modalTriangle');
       const modalRectBoundingX = modal && modal.getBoundingClientRect().x;
       /* istanbul ignore else */
       if (compRectBoundingY) {
@@ -104,9 +102,9 @@ class OverlayModal extends React.Component {
   render() {
     const { className, ModalContent, color } = this.props;
     return (
-      <div className={className} id="modal__wrapper" color={color} ref={this.setModalRef}>
-        <div id="dialog__content" className="dialog__content">
-          <div className="modal__triangle" id="modal__triangle" />
+      <div className={className} id="modalWrapper" color={color} ref={this.setModalRef}>
+        <div id="dialogContent" className="dialog__content">
+          <div className="modal__triangle" id="modalTriangle" />
           <div className="modal__bar" />
           <ModalContent className="modal__content" />
         </div>

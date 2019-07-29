@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import OverlayModalComponentMapping from '../container/OverlayModalComponentMapping';
-import OverlayModalView from '../organisms/OverlayModal';
+import OverlayModalView from '../organisms/OverlayModalSection';
 
 const propTypes = {
   component: PropTypes.string,

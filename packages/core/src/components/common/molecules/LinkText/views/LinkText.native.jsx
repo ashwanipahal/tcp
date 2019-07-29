@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { TouchableOpacity, Text } from 'react-native';
-import { Heading, BodyCopy } from '../../atoms';
+import { Heading, BodyCopy } from '../../../atoms';
 
 type Props = {
   type: string,

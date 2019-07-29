@@ -6,6 +6,7 @@ import AddressBookReducer from '@tcp/core/src/components/features/account/Addres
 import PaymentReducer from '@tcp/core/src/components/features/account/Payment/container/Payment.reducer';
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
+import ApiConfigReducer from '@tcp/core/src/reduxStore/reducers/apiConfig';
 import AddEditAddressReducer from '@tcp/core/src/components/features/account/AddEditAddress/container/AddEditAddress.reducer';
 import AddEditCreditCardReducer from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -15,6 +16,7 @@ import AddressVerificationReducer from '@tcp/core/src/components/features/accoun
 import OverlayModalReducer from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.reducer';
 
 import {
+  APICONFIG_REDUCER_KEY,
   HEADER_REDUCER_KEY,
   FOOTER_REDUCER_KEY,
   LABEL_REDUCER_KEY,
@@ -49,7 +51,10 @@ const filteredProductListingPageReducer = createFilteredReducer(
   PRODUCTLISTINGPAGE_REDUCER_KEY
 );
 
+const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONFIG_REDUCER_KEY);
+
 export default combineReducers({
+  [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [HEADER_REDUCER_KEY]: HeaderReducer,
   [FOOTER_REDUCER_KEY]: FooterReducer,
   [LABEL_REDUCER_KEY]: LabelReducer,

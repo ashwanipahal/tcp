@@ -62,20 +62,26 @@ export class AddEditCreditCard extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    const { addEditCreditCardSuccess, showSuccessNotification, creditCard } = this.props;
+    const {
+      addEditCreditCardSuccess,
+      showSuccessNotification,
+      creditCard,
+      addressList,
+    } = this.props;
+    const isAddressListUpdated = !prevProps.addressList && addressList;
     if (!prevProps.addEditCreditCardSuccess && addEditCreditCardSuccess) {
       showSuccessNotification();
       this.backToPaymentClick();
     }
 
-    if (!prevProps.creditCard && creditCard) {
+    if (isAddressListUpdated || (!prevProps.creditCard && creditCard)) {
       this.setInitialValues();
     }
   }
 
   setInitialValues = () => {
     const { addressList } = this.props;
-    if (addressList && addressList.size > 0) {
+    if (addressList) {
       const initialValues = this.getInitialValues();
       this.setState({
         initialValues,
@@ -93,18 +99,8 @@ export class AddEditCreditCard extends React.PureComponent {
     return !cardType || cardType !== constants.ACCEPTED_CREDIT_CARDS['PLACE CARD'];
   };
 
-  getInitialValues = () => {
-    const { addressList, creditCard } = this.props;
-    let onFileAddressKey = '';
-
-    if (addressList && addressList.size > 0) {
-      const defaultBillingAddress = addressList.filter(address => address.primary === 'true');
-      onFileAddressKey =
-        defaultBillingAddress.size > 0 ? defaultBillingAddress.get(0).addressId : '';
-    }
-
+  getInitialValuesForEditMode = creditCard => {
     if (creditCard) {
-      // edit mode
       let cardType = creditCard.ccBrand || creditCard.ccType;
       cardType = constants.ACCEPTED_CREDIT_CARDS[cardType.toUpperCase()];
       return {
@@ -118,6 +114,23 @@ export class AddEditCreditCard extends React.PureComponent {
           addressLine2: '',
         },
       };
+    }
+
+    return null;
+  };
+
+  getInitialValues = () => {
+    const { addressList, creditCard } = this.props;
+    let onFileAddressKey = '';
+
+    if (addressList && addressList.size > 0) {
+      const defaultBillingAddress = addressList.filter(address => address.primary === 'true');
+      onFileAddressKey =
+        defaultBillingAddress.size > 0 ? defaultBillingAddress.get(0).addressId : '';
+    }
+
+    if (creditCard) {
+      return this.getInitialValuesForEditMode(creditCard);
     }
 
     return {
@@ -153,7 +166,7 @@ export class AddEditCreditCard extends React.PureComponent {
       addEditCreditCardError,
     } = this.props;
 
-    if (!addressList || addressList.size === 0) {
+    if (addressList === null) {
       return null;
     }
 

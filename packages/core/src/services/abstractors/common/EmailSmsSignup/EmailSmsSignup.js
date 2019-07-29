@@ -1,5 +1,7 @@
 import fetchData from '../../../../service/API';
-import { executeExternalAPICall, getAPIConfig } from '../../../handler';
+import { executeExternalAPICall } from '../../../handler';
+import { getAPIConfig } from '../../../../utils';
+
 import endpoints from '../../../endpoints';
 
 /**

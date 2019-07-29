@@ -15,10 +15,17 @@ export const loadLabelsData = payload => {
   };
 };
 
-export const bootstrapData = pageInfo => {
+export const setAPIConfig = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_API_CONFIG,
+  };
+};
+
+export const bootstrapData = payload => {
   return {
     type: GLOBAL_CONSTANTS.BOOTSTRAP_API,
-    pageInfo,
+    payload,
   };
 };
 
