@@ -42,7 +42,6 @@ exports[`Image grid component renders correctly 1`] = `
             "url": "/static/images/K-210x210-1.jpg",
           }
         }
-        role="img"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -75,7 +74,6 @@ exports[`Image grid component renders correctly 1`] = `
             "url": "/static/images/K-210x210-2.jpg",
           }
         }
-        role="img"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -108,7 +106,6 @@ exports[`Image grid component renders correctly 1`] = `
             "url": "/static/images/K-210x210-3.jpg",
           }
         }
-        role="img"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -141,7 +138,6 @@ exports[`Image grid component renders correctly 1`] = `
             "url": "/static/images/K-210x210-4.jpg",
           }
         }
-        role="img"
       />
     </Styled(Col)>
   </Styled(Row)>
