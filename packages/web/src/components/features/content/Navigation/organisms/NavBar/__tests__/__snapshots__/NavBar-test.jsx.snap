@@ -1479,6 +1479,7 @@ exports[`NavBar component renders correctly 1`] = `
             ]
           }
           className="nav-bar-l2"
+          l1Index={0}
           name="Girl"
           order={
             Array [
@@ -4143,6 +4144,7 @@ exports[`NavBar component renders correctly 1`] = `
             ]
           }
           className="nav-bar-l2"
+          l1Index={1}
           name="Toddler Girl"
           order={
             Array [
@@ -6422,6 +6424,7 @@ exports[`NavBar component renders correctly 1`] = `
             ]
           }
           className="nav-bar-l2"
+          l1Index={2}
           name="Boy"
           order={
             Array [
@@ -8563,6 +8566,7 @@ exports[`NavBar component renders correctly 1`] = `
             ]
           }
           className="nav-bar-l2"
+          l1Index={3}
           name="Toddler Boy"
           order={
             Array [
@@ -10165,6 +10169,7 @@ exports[`NavBar component renders correctly 1`] = `
             ]
           }
           className="nav-bar-l2"
+          l1Index={4}
           name="Baby"
           order={
             Array [
@@ -11289,6 +11294,7 @@ exports[`NavBar component renders correctly 1`] = `
             ]
           }
           className="nav-bar-l2"
+          l1Index={5}
           name="Shoes"
           order={
             Array [
@@ -12708,6 +12714,7 @@ exports[`NavBar component renders correctly 1`] = `
             ]
           }
           className="nav-bar-l2"
+          l1Index={6}
           name="Accessories"
           order={
             Array [
@@ -13576,6 +13583,7 @@ exports[`NavBar component renders correctly 1`] = `
         <Styled(L2Panel)
           categoryLayout={Array []}
           className="nav-bar-l2"
+          l1Index={7}
           name="Clearance"
           order={
             Array [

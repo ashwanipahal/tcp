@@ -56,6 +56,7 @@ const HeaderMiddleNav = props => {
               closeNavigationDrawer,
               navigationDrawer.open
             )}
+            data-locator={navigationDrawer.open ? 'L1_menu_close_Btn' : 'menu_bar_icon'}
           />
           <BrandLogo
             alt={config[brand].alt}

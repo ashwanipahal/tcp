@@ -6,14 +6,20 @@ import { Heading, Row, Col, Anchor, Image, BodyCopy } from '@tcp/core/src/compon
 import PromoBadge from '../PromoBadge';
 import style from './L2Panel.style';
 
-const createShopByLinks = links => {
+const createShopByLinks = (links, column) => {
   return (
     <ul>
-      {links.map(link => {
+      {links.map((link, index) => {
         const { url, text, title, target } = link;
+        const currentIndex = column > 1 ? index + 5 : index;
         return (
           <li>
-            <Anchor to={url} title={title} target={target}>
+            <Anchor
+              to={url}
+              title={title}
+              target={target}
+              data-locator={`l2_size_btn_${currentIndex}`}
+            >
               <BodyCopy className="l2-circle-link">{text}</BodyCopy>
             </Anchor>
           </li>
@@ -23,7 +29,7 @@ const createShopByLinks = links => {
   );
 };
 
-const createLinks = (links, column) => {
+const createLinks = (links, column, categoryIndex) => {
   if (links.length) {
     return (
       <ul>
@@ -33,8 +39,12 @@ const createLinks = (links, column) => {
           } = l2Links;
           const promoBadge = mainCategory && mainCategory.promoBadge;
           const classForRedContent = id === '505519' ? `highlighted` : ``;
+          const currentIndex = column > 1 ? index + 7 : index;
           return (
-            <Anchor to={`/c/${seoToken}`}>
+            <Anchor
+              to={`/c/${seoToken}`}
+              data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}
+            >
               <BodyCopy
                 className="l2-nav-link"
                 fontFamily="secondary"
@@ -45,7 +55,7 @@ const createLinks = (links, column) => {
                 <span className={`nav-bar-l1-item-label ${classForRedContent}`}>{name}</span>
                 <span
                   className="nav-bar-l1-item-content"
-                  data-locator={`promo_badge_${index * column}`}
+                  data-locator={`promo_badge_${currentIndex}`}
                 >
                   {(promoBadge && <PromoBadge data={promoBadge} />) || ``}
                 </span>
@@ -61,12 +71,21 @@ const createLinks = (links, column) => {
 };
 
 const L2Panel = props => {
-  const { openPanel, className, panelData, categoryLayout, order, name, hideL2Drawer } = props;
+  const {
+    openPanel,
+    className,
+    panelData,
+    categoryLayout,
+    order,
+    name,
+    hideL2Drawer,
+    l1Index,
+  } = props;
 
   const displayClass = openPanel ? 'is-open' : '';
   return (
     <React.Fragment>
-      <div className={`${className} nav-bar-l2-panel ${displayClass}`}>
+      <div data-locator="overrlay_img" className={`${className} nav-bar-l2-panel ${displayClass}`}>
         <div className="sizes-rage-background">
           <span
             role="button"
@@ -86,7 +105,7 @@ const L2Panel = props => {
             large: false,
           }}
         >
-          {order.map(category => {
+          {order.map((category, categoryIndex) => {
             const colSize = {
               small: 6,
               medium: 8,
@@ -102,14 +121,15 @@ const L2Panel = props => {
                     <Heading
                       variant="h6"
                       className={`l2-nav-category-heading ${hideOnMobileClass}`}
+                      data-locator={`l2_col_heading_${categoryIndex}`}
                     >
                       {category}
                     </Heading>
                     <span className="l2-nav-category-divider" />
                   </div>
                   <div className="l2-nav-category-links">
-                    {createLinks(firstCol, 1)}
-                    {createLinks(secondCol, 2)}
+                    {createLinks(firstCol, 1, categoryIndex)}
+                    {createLinks(secondCol, 2, categoryIndex)}
                   </div>
                 </Col>
               </React.Fragment>
@@ -132,14 +152,18 @@ const L2Panel = props => {
                         }}
                       >
                         <div className="l2-nav-category-header">
-                          <Heading variant="h6" className="l2-nav-category-heading">
+                          <Heading
+                            variant="h6"
+                            className="l2-nav-category-heading"
+                            data-locator="l2_col_heading_3"
+                          >
                             Shop By Size
                           </Heading>
                           <span className="l2-nav-category-divider" />
                         </div>
                         <div className="shop-by-size-links">
-                          {createShopByLinks(shopBySizeCol1)}
-                          {createShopByLinks(shopBySizeCol2)}
+                          {createShopByLinks(shopBySizeCol1, 1)}
+                          {createShopByLinks(shopBySizeCol2, 2)}
                         </div>
                       </Col>
                     )}
@@ -154,12 +178,16 @@ const L2Panel = props => {
                       >
                         {imageBanner.map(({ image, link }) => (
                           <React.Fragment>
-                            <Image className="l2-image-banner-image" {...image} />
-                            <Anchor />
+                            <Image
+                              className="l2-image-banner-image"
+                              data-locator={`overlay_img_${l1Index}`}
+                              {...image}
+                            />
                             <Anchor
                               className="l2-image-banner-link"
                               to={link.url}
                               title={link.title}
+                              data-locator={`overlay_img_link_${l1Index}`}
                               target={link.target}
                             >
                               <BodyCopy
@@ -195,10 +223,12 @@ L2Panel.propTypes = {
   categoryLayout: PropTypes.shape([]),
   name: PropTypes.string.isRequired,
   hideL2Drawer: PropTypes.func.isRequired,
+  l1Index: PropTypes.number,
 };
 
 L2Panel.defaultProps = {
   categoryLayout: [],
+  l1Index: 0,
 };
 
 export { L2Panel as L2PanelVanilla };

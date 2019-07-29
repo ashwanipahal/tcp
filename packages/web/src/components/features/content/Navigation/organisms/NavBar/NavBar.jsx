@@ -57,6 +57,7 @@ const NavBar = props => {
                   name={navL1Item.categoryContent.name}
                   hideL2Drawer={hideL2Drawer(`l2-drawer-${index.toString()}`)}
                   className="nav-bar-l2"
+                  l1Index={index}
                 />
               </Drawer>
             </L1NavItem>

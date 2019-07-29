@@ -18,6 +18,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       <Styled(Image)
         alt="hamburger menu"
         className="hamburger-menu"
+        data-locator="menu_bar_icon"
         onClick={[Function]}
         src="/static/images/menu.svg"
       />
