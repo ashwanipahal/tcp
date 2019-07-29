@@ -37,14 +37,14 @@ const getAPIInfoFromEnv = () => {
   const processEnv = process.env;
   return {
     traceIdCount: 0,
-    port: process.env.PORT || apiSiteInfo.port,
-    proto: processEnv.PROTO || apiSiteInfo.proto,
-    langId: processEnv.LANGID || apiSiteInfo.langId,
-    MELISSA_KEY: processEnv.MELISSA_KEY || apiSiteInfo.MELISSA_KEY,
-    BV_API_KEY: processEnv.BV_API_KEY || apiSiteInfo.BV_API_KEY,
-    assetHost: processEnv.ASSETHOST || apiSiteInfo.assetHost,
-    domain: processEnv.API_DOMAIN || apiSiteInfo.domain,
-    unbxd: processEnv.UNBXD_DOMAIN || apiSiteInfo.unbxd,
+    port: process.env.RWD_WEB_PORT || apiSiteInfo.port,
+    proto: processEnv.RWD_WEB_PROTO || apiSiteInfo.proto,
+    langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
+    MELISSA_KEY: processEnv.RWD_WEB_MELISSA_KEY || apiSiteInfo.MELISSA_KEY,
+    BV_API_KEY: processEnv.RWD_WEB_BV_API_KEY || apiSiteInfo.BV_API_KEY,
+    assetHost: processEnv.RWD_WEB_ASSETHOST || apiSiteInfo.assetHost,
+    domain: processEnv.RWD_WEB_API_DOMAIN || apiSiteInfo.domain,
+    unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
   };
 };
 
