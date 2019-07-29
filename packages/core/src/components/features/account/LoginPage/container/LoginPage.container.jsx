@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Router from 'next/router'; // eslint-disable-line
-import { login } from './LoginPage.actions';
+import { login, resetLoginInfo } from './LoginPage.actions';
 import labels from './LoginPage.labels';
-import { getUserLoggedInState, getLoginError, shouldShowRecaptcha } from './LoginPage.selectors';
+import { getUserLoggedInState, getLoginError, shouldShowRecaptcha, getLoginErrorMessage } from './LoginPage.selectors';
 import LoginView from '../views';
 
 class LoginPageContainer extends React.PureComponent {
@@ -15,8 +15,14 @@ class LoginPageContainer extends React.PureComponent {
     }
   }
 
+  componentWillUnmount() {
+    const { resetLoginState } = this.props;
+    resetLoginState();
+  }
+
   render() {
-    const { onSubmit, loginError, showRecaptcha } = this.props;
+    const { onSubmit, loginError, loginErrorMessage, showRecaptcha } = this.props;
+    const errorMessage = loginError ? (loginErrorMessage || labels.ACC_LBL_LOGIN_ERROR) : '';
     const initialValues = {
       rememberMe: true,
       savePlcc: true,
@@ -25,7 +31,7 @@ class LoginPageContainer extends React.PureComponent {
       <LoginView
         onSubmit={onSubmit}
         labels={labels}
-        loginErrorMessage={loginError ? labels.ACC_LBL_LOGIN_ERROR : ''}
+        loginErrorMessage={errorMessage}
         initialValues={initialValues}
         showRecaptcha={showRecaptcha}
       />
@@ -36,12 +42,17 @@ class LoginPageContainer extends React.PureComponent {
 LoginPageContainer.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
-  loginError: PropTypes.bool.isRequired,
+  resetLoginState: PropTypes.func,
+  loginError: PropTypes.bool,
+  loginErrorMessage: PropTypes.string,
   showRecaptcha: PropTypes.bool,
 };
 
 LoginPageContainer.defaultProps = {
   showRecaptcha: false,
+  loginError: false,
+  loginErrorMessage: '',
+  resetLoginState: () => {}
 };
 
 function mapDispatchToProps(dispatch) {
@@ -49,6 +60,9 @@ function mapDispatchToProps(dispatch) {
     onSubmit: payload => {
       dispatch(login(payload));
     },
+    resetLoginState: () => {
+      dispatch(resetLoginInfo());
+    }
   };
 }
 
@@ -56,6 +70,7 @@ function mapStateToProps(state) {
   return {
     isUserLoggedIn: getUserLoggedInState(state),
     loginError: getLoginError(state),
+    loginErrorMessage: getLoginErrorMessage(state),
     showRecaptcha: shouldShowRecaptcha(state),
   };
 }

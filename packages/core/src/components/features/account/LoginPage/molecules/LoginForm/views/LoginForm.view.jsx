@@ -38,6 +38,7 @@ export const LoginForm = ({
           name="emailAddress"
           component={TextBox}
           dataLocator=""
+          showSuccessCheck={false}
         />
         <Field
           id="password"
@@ -45,6 +46,7 @@ export const LoginForm = ({
           name="password"
           component={PasswordField}
           dataLocator=""
+          showSuccessCheck={false}
         />
         <BodyCopy component="div">
           <Field name="rememberMe" component={InputCheckbox} dataLocator="" className="">
@@ -58,10 +60,18 @@ export const LoginForm = ({
         </BodyCopy>
         <BodyCopy component="div">
           {showRecaptcha && (
-            <Recaptcha
-              verifyCallback={token => change('recaptchaToken', token)}
-              expiredCallback={() => change('recaptchaToken', '')}
-            />
+            <>
+              <Recaptcha
+                verifyCallback={token => change('recaptchaToken', token)}
+                expiredCallback={() => change('recaptchaToken', '')}
+              />
+              <Field
+                component={TextBox}
+                type="hidden"
+                name="recaptchaToken"
+                data-locator="login-recaptchcb"
+              />
+            </>
           )}
         </BodyCopy>
       </BodyCopy>

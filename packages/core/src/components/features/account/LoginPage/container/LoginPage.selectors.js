@@ -13,8 +13,10 @@ export const getUserLoggedInState = createSelector(
 
 export const getLoginError = createSelector(
   getLoginState,
-  loginState => loginState && loginState.get('success')
+  loginState => loginState && loginState.get('success') === false
 );
+
+export const getLoginErrorMessage = createSelector(getLoginState, loginState => loginState && loginState.get('errorMessage'));
 
 export const shouldShowRecaptcha = createSelector(
   getLoginState,
