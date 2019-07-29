@@ -77,7 +77,7 @@ exports[`ModuleK component renders correctly 1`] = `
           Array [
             "fs36",
             "fs36",
-            "fs52",
+            "fs48",
           ]
         }
         fontWeight="black"

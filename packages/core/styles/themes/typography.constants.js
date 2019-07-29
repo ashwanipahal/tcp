@@ -27,8 +27,6 @@ export const FONT_WEIGHTS = {
 
 export const FONT_SIZES = {
   fs64: '64px',
-  fs60: '60px',
-  fs52: '52px',
   fs48: '48px',
   fs42: '42px',
   fs38: '38px',

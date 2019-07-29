@@ -26,18 +26,15 @@ const StyledPromoTextBanner = styled(PromoTextBanner)`
   .style2 {
     font-size: ${props => props.theme.typography.fontSizes.fs42};
     @media ${props => props.theme.mediaQuery.medium} {
-      font-size: 70px;
-    }
-    @media ${props => props.theme.mediaQuery.large} {
-      font-size: ${props => props.theme.typography.fontSizes.fs60};
+      font-size: ${props => props.theme.typography.fontSizes.fs64};
     }
   }
   .style3 {
     color: ${props => props.theme.colorPalette.black};
     font-weight: ${props => props.theme.typography.fontWeights.black};
-    font-size: 70px;
+    font-size: ${props => props.theme.typography.fontSizes.fs64};
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: ${props => props.theme.typography.fontSizes.fs60};
+      font-size: ${props => props.theme.typography.fontSizes.fs64};
     }
   }
 `;
