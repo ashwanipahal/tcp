@@ -28,12 +28,15 @@ const styles = css`
   }
 
   .creditCardForm__addressBook {
-    align-self: flex-end;
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    @media ${props => props.theme.mediaQuery.medium} {
+      align-self: flex-end;
+      margin-bottom: 0;
+    }
   }
 
   .CreditCardForm__ctaContainer {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
 
   .CreditCardForm__submit {

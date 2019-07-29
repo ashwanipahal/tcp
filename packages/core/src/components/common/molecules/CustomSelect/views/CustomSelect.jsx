@@ -5,7 +5,6 @@ import BodyCopy from '../../../atoms/BodyCopy';
 import styles from '../styles/CustomSelect.style';
 import withStyles from '../../../hoc/withStyles';
 import CustomSelectConst from './CustomSelect.constants';
-import { TextBox } from '../../../atoms';
 
 class CustomSelect extends React.Component<Props> {
   constructor(props) {
@@ -15,6 +14,21 @@ class CustomSelect extends React.Component<Props> {
       activeTitle: props.activeTitle || CustomSelectConst.DEFAULT_SELECT,
       activeValue: props.activeValue || null,
     };
+  }
+
+  componentDidUpdate(prevProps){
+    const { activeValue } = this.props;
+    if(prevProps.activeValue !== activeValue){
+      this.updateState();
+    }
+  }
+
+  updateState = () => {
+    const { activeValue, activeTitle } = this.props;
+    this.setState({
+      activeValue,
+      activeTitle
+    });
   }
 
   toggleHandler = () => {
@@ -36,14 +50,13 @@ class CustomSelect extends React.Component<Props> {
 
   render() {
     const { toggle, activeTitle, activeValue } = this.state;
-    const { className, selectListTitle, options, input } = this.props;
+    const { className, selectListTitle, options } = this.props;
     return (
       <BodyCopy component="div" className={className}>
         <span>{selectListTitle}</span>
         <BodyCopy component="div" onClick={this.toggleHandler} className="customSelectTitle">
           {activeTitle}
         </BodyCopy>
-        <input type="hidden" {...input} />
         {toggle && (
           <DropdownList
             optionsMap={options}
@@ -59,11 +72,10 @@ class CustomSelect extends React.Component<Props> {
 CustomSelect.propTypes = {
   className: PropTypes.string,
   selectListTitle: PropTypes.string,
-  clickHandler: PropTypes.func.isRequired,
+  clickHandler: PropTypes.func,
   options: PropTypes.shape({}).isRequired,
   activeTitle: PropTypes.string,
   activeValue: PropTypes.string,
-  input: PropTypes.shape({})
 };
 
 CustomSelect.defaultProps = {
@@ -71,7 +83,7 @@ CustomSelect.defaultProps = {
   selectListTitle: '',
   activeTitle: '',
   activeValue: '',
-  input: {}
+  clickHandler: () => {}
 };
 
 export default withStyles(CustomSelect, styles);
