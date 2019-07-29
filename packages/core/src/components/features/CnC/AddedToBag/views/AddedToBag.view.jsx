@@ -31,6 +31,7 @@ const AddedToBag = ({ openState, onRequestClose, addedToBagData, className, labe
         labelledby: 'Added To Bag',
         describedby: 'Added To Bag Modal',
       }}
+      data-locator="addedToBag-modal"
     >
       <div className="addedToBagWrapper">
         <ProductInformationView data={addedToBagData} labels={labels} />
