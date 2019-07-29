@@ -54,9 +54,11 @@ export const getPaymentBannerContentId = createSelector(
   labels => {
     // TO DO - Change the condition with appropirate banner label name
     let paymentBannerContentId = '66b73859-0893-4abe-9d0d-dc3d58fa2782';
-    labels.forEach(label => {
-      if (label.name === 'payment-banner-label') paymentBannerContentId = label.cid;
-    });
+    if (Array.isArray(labels.referred)) {
+      labels.referred.forEach(label => {
+        if (label.name === 'payment-banner-label') paymentBannerContentId = label.cid;
+      });
+    }
     return paymentBannerContentId;
   }
 );

@@ -1,0 +1,325 @@
+diff --git a/packages/core/src/components/features/account/Payment/Payment.constants.js b/packages/core/src/components/features/account/Payment/Payment.constants.js
+index fda4c43c..f51c4db9 100644
+--- a/packages/core/src/components/features/account/Payment/Payment.constants.js
++++ b/packages/core/src/components/features/account/Payment/Payment.constants.js
+@@ -1,35 +1,36 @@
+ import { PAYMENT_ACTION_PATTERN } from '../../../../constants/reducer.constants';
+ 
+ const PAYMENT_CONSTANTS = {
+-  GET_CARD_LIST: `${PAYMENT_ACTION_PATTERN}GET_CARD_DETAILS`,
+-  SET_CARD_LIST: `${PAYMENT_ACTION_PATTERN}SET_CARD_DETAILS`,
+-  GET_CARD_LIST_ERR: `${PAYMENT_ACTION_PATTERN}GET_CARD_DETAILS_ERROR`,
+-  SET_DEFAULT_PAYMENT: `${PAYMENT_ACTION_PATTERN}SET_DEFAULT_PAYMENT`,
+-  SET_DEFAULT_PAYMENT_SUCCESS: `${PAYMENT_ACTION_PATTERN}SET_DEFAULT_PAYMENT_SUCCESS`,
+-  SET_DEFAULT_PAYMENT_ERROR: `${PAYMENT_ACTION_PATTERN}SET_DEFAULT_PAYMENT_ERROR`,
+-  DELETE_MODAL_MOUNT_STATE: `${PAYMENT_ACTION_PATTERN}DELETE_MODAL_MOUNT_STATE`,
+-  DELETE_CARD: `${PAYMENT_ACTION_PATTERN}DELETE_CARD`,
+-  UPDATE_CARD_LIST_ON_DELETE: `${PAYMENT_ACTION_PATTERN}UPDATE_CARD_LIST_ON_DELETE`,
+-  UPDATE_CARD_LIST_ON_DELETE_ERR: `${PAYMENT_ACTION_PATTERN}UPDATE_CARD_LIST_ON_DELETE_ERR`,
+-  CHECK_BALANCE: `${PAYMENT_ACTION_PATTERN}CHECK_BALANCE`,
+-  SET_CHECK_BALANCE: `${PAYMENT_ACTION_PATTERN}SET_CHECK_BALANCE`,
+-  SET_CHECK_BALANCE_ERROR: `${PAYMENT_ACTION_PATTERN}SET_CHECK_BALANCE_ERROR`,
+-  SET_LOADER: `${PAYMENT_ACTION_PATTERN}SET_LOADER`,
+-  SHOW_LOADER: `${PAYMENT_ACTION_PATTERN}SHOW_LOADER`,
+-  CREDIT_CARDS_PAYMETHODID: {
+-    'PLACE CARD': 'ADSPlaceCard',
+-    VISA: 'COMPASSVISA',
+-    AMEX: 'COMPASSAMEX',
+-    MC: 'COMPASSMASTERCARD',
+-    DISC: 'COMPASSDISCOVER',
+-    VENMO: 'VENMO',
+-  },
+-  GET_CARD_LIST_TTL: 30 * 1000,
+-  ADD_GIFT_CARD_SUCCESS: `${PAYMENT_ACTION_PATTERN}ADD_GIFT_CARD_SUCCESS`,
+-  CLEAR_CARD_LIST_TTL: `${PAYMENT_ACTION_PATTERN}CLEAR_CARD_LIST_TTL`,
+-  SET_PAYMENT_NOTIFICATION: `${PAYMENT_ACTION_PATTERN}SET_PAYMENT_NOTIFICATION`,
+-  FETCH_RICH_TEXT: 'FETCH_RICH_TEXT',
+-  SET_RICH_TEXT: 'ADD_INDEX_RICH_TEXT',
++    GET_CARD_LIST: `${PAYMENT_ACTION_PATTERN}GET_CARD_DETAILS`,
++    SET_CARD_LIST: `${PAYMENT_ACTION_PATTERN}SET_CARD_DETAILS`,
++    GET_CARD_LIST_ERR: `${PAYMENT_ACTION_PATTERN}GET_CARD_DETAILS_ERROR`,
++    SET_DEFAULT_PAYMENT: `${PAYMENT_ACTION_PATTERN}SET_DEFAULT_PAYMENT`,
++    SET_DEFAULT_PAYMENT_SUCCESS: `${PAYMENT_ACTION_PATTERN}SET_DEFAULT_PAYMENT_SUCCESS`,
++    SET_DEFAULT_PAYMENT_ERROR: `${PAYMENT_ACTION_PATTERN}SET_DEFAULT_PAYMENT_ERROR`,
++    DELETE_MODAL_MOUNT_STATE: `${PAYMENT_ACTION_PATTERN}DELETE_MODAL_MOUNT_STATE`,
++    DELETE_CARD: `${PAYMENT_ACTION_PATTERN}DELETE_CARD`,
++    UPDATE_CARD_LIST_ON_DELETE: `${PAYMENT_ACTION_PATTERN}UPDATE_CARD_LIST_ON_DELETE`,
++    UPDATE_CARD_LIST_ON_DELETE_ERR: `${PAYMENT_ACTION_PATTERN}UPDATE_CARD_LIST_ON_DELETE_ERR`,
++    CHECK_BALANCE: `${PAYMENT_ACTION_PATTERN}CHECK_BALANCE`,
++    SET_CHECK_BALANCE: `${PAYMENT_ACTION_PATTERN}SET_CHECK_BALANCE`,
++    SET_CHECK_BALANCE_ERROR: `${PAYMENT_ACTION_PATTERN}SET_CHECK_BALANCE_ERROR`,
++    SET_LOADER: `${PAYMENT_ACTION_PATTERN}SET_LOADER`,
++    SHOW_LOADER: `${PAYMENT_ACTION_PATTERN}SHOW_LOADER`,
++    CREDIT_CARDS_PAYMETHODID: {
++        'PLACE CARD': 'ADSPlaceCard',
++        VISA: 'COMPASSVISA',
++        AMEX: 'COMPASSAMEX',
++        MC: 'COMPASSMASTERCARD',
++        DISC: 'COMPASSDISCOVER',
++        VENMO: 'VENMO',
++    },
++    GET_CARD_LIST_TTL: 30 * 1000,
++    ADD_GIFT_CARD_SUCCESS: `${PAYMENT_ACTION_PATTERN}ADD_GIFT_CARD_SUCCESS`,
++    CLEAR_CARD_LIST_TTL: `${PAYMENT_ACTION_PATTERN}CLEAR_CARD_LIST_TTL`,
++    SET_PAYMENT_NOTIFICATION: `${PAYMENT_ACTION_PATTERN}SET_PAYMENT_NOTIFICATION`,
++    FETCH_REFERRED_CONTENT: '${PAYMENT_ACTION_PATTERN}FETCH_REFERRED_CONTENT',
++    SET_REFERRED_CONTENT: '${PAYMENT_ACTION_PATTERN}SET_REFERRED_CONTENT',
++    LOAD_PAYMENT_LABELS: '${PAYMENT_ACTION_PATTERN}LOAD_PAYMENT_LABELS'
+ };
+ 
+-export default PAYMENT_CONSTANTS;
++export default PAYMENT_CONSTANTS;
+\ No newline at end of file
+diff --git a/packages/core/src/components/features/account/Payment/container/Payment.actions.js b/packages/core/src/components/features/account/Payment/container/Payment.actions.js
+index 47aaf2dc..4f71f3fb 100644
+--- a/packages/core/src/components/features/account/Payment/container/Payment.actions.js
++++ b/packages/core/src/components/features/account/Payment/container/Payment.actions.js
+@@ -84,16 +84,23 @@ export const setPaymentNotification = payload => ({
+   payload,
+ });
+ 
+-export const getRichText = payload => {
++export const getReferredContent = payload => {
+   return {
+     payload,
+-    type: PAYMENT_CONSTANTS.FETCH_RICH_TEXT,
++    type: PAYMENT_CONSTANTS.FETCH_REFERRED_CONTENT,
+   };
+ };
+ 
+-export const setRichText = payload => {
++export const setReferredContent = payload => {
+   return {
+     payload,
+-    type: PAYMENT_CONSTANTS.SET_RICH_TEXT,
++    type: PAYMENT_CONSTANTS.SET_REFERRED_CONTENT,
++  };
++};
++
++export const loadLabelsData = payload => {
++  return {
++    payload,
++    type: PAYMENT_CONSTANTS.LOAD_PAYMENT_LABELS,
+   };
+ };
+diff --git a/packages/core/src/components/features/account/Payment/container/Payment.container.jsx b/packages/core/src/components/features/account/Payment/container/Payment.container.jsx
+index 47ecfd49..e454cdac 100644
+--- a/packages/core/src/components/features/account/Payment/container/Payment.container.jsx
++++ b/packages/core/src/components/features/account/Payment/container/Payment.container.jsx
+@@ -8,10 +8,10 @@ import {
+   checkBalance,
+   setDefaultPayment,
+   setPaymentNotification,
+-  getRichText,
++  getReferredContent,
++  loadLabelsData
+ } from './Payment.actions';
+ 
+-import { bootstrapData } from '../../../../../reduxStore/actions';
+ import {
+   getCreditDebitCards,
+   getCardListFetchingState,
+@@ -141,10 +141,10 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
+       );
+     },
+     getContentId: () => {
+-      dispatch(bootstrapData());
++      dispatch(loadLabelsData({category: 'account', subcategory: 'payment'}));
+     },
+     getPaymentBannerRichText: cid => {
+-      dispatch(getRichText(cid));
++      dispatch(getReferredContent(cid));
+     },
+   };
+ };
+diff --git a/packages/core/src/components/features/account/Payment/container/Payment.labels.js b/packages/core/src/components/features/account/Payment/container/Payment.labels.js
+index 6d97dc92..13205e71 100644
+--- a/packages/core/src/components/features/account/Payment/container/Payment.labels.js
++++ b/packages/core/src/components/features/account/Payment/container/Payment.labels.js
+@@ -42,8 +42,7 @@ const labels = {
+   ACC_LBL_MODAL_VENMO_DELETE_HEADING: 'Are you sure you want to delete this saved Venmo payment?',
+   ACC_LBL_LOADING: 'LOADING...',
+   ACC_LBL_CHECK_BALANCE: ' Check Balance',
+-  ACC_LBL_REMAINING_BALANCE: 'Remaining balance',
+-  ACC_LBL_PAYMENT_BANNER: 'payment-banner-label',
++  ACC_LBL_REMAINING_BALANCE: 'Remaining balance'
+ };
+ 
+ export default labels;
+diff --git a/packages/core/src/components/features/account/Payment/container/Payment.reducer.js b/packages/core/src/components/features/account/Payment/container/Payment.reducer.js
+index f2bb0622..4546e260 100644
+--- a/packages/core/src/components/features/account/Payment/container/Payment.reducer.js
++++ b/packages/core/src/components/features/account/Payment/container/Payment.reducer.js
+@@ -75,8 +75,10 @@ const PaymentReducer = (state = initialState, action) => {
+       return state.set('showNotification', 'success');
+     case PAYMENT_CONSTANTS.CLEAR_CARD_LIST_TTL:
+       return state.set(DEFAULT_REDUCER_KEY, null);
+-    case PAYMENT_CONSTANTS.SET_RICH_TEXT:
++    case PAYMENT_CONSTANTS.SET_REFERRED_CONTENT:
+       return state.set('paymentBannerRichText', action.payload.richText);
++    case PAYMENT_CONSTANTS.LOAD_PAYMENT_LABELS:
++      return { ...state, ...action.payload };
+     default:
+       return returnPaymentReducer(state, action);
+   }
+diff --git a/packages/core/src/components/features/account/Payment/container/Payment.saga.js b/packages/core/src/components/features/account/Payment/container/Payment.saga.js
+index a06cb805..3898ec80 100644
+--- a/packages/core/src/components/features/account/Payment/container/Payment.saga.js
++++ b/packages/core/src/components/features/account/Payment/container/Payment.saga.js
+@@ -1,66 +1,82 @@
+ import { call, takeLatest, put, select } from 'redux-saga/effects';
+ import { validateReduxCache } from '../../../../../utils/cache.util';
+-import PaymentAbstractor from '../../../../../services/abstractors/account/Payment';
++import { getReferredContentById, fetchLabels } from '../../../../../services/abstractors/common/ReferredContent';
+ import PAYMENT_CONSTANTS from '../Payment.constants';
+ import fetchData from '../../../../../service/API';
+ import {
+-  setCardList,
+-  getCardListErr,
+-  showLoader,
+-  paymentAddGiftCardSuccess,
+-  setRichText,
++    setCardList,
++    getCardListErr,
++    showLoader,
++    paymentAddGiftCardSuccess,
++    setRichText,
++    loadLabelsData,
++    setReferredContent
+ } from './Payment.actions';
+ import { resetShowNotification } from '../AddGiftCard/container/AddGiftCard.actions';
+ import { getOnAddGiftCardPageState } from '../AddGiftCard/container/AddGiftCard.selector';
+ import endpoints from '../../../../../service/endpoint';
++import GLOBAL_CONSTANTS from '../../../../../reduxStore/constants';
+ 
+ export function* getCardList() {
+-  try {
+-    const { relURI, method } = endpoints.getCardList;
+-    const baseURI = endpoints.getCardList.baseURI || endpoints.global.baseURI;
+-    yield put(showLoader());
+-    const res = yield call(
+-      fetchData,
+-      baseURI,
+-      relURI,
+-      {
+-        langId: -1,
+-        catalogId: 10551,
+-        storeId: 10151,
+-        isRest: true,
+-      },
+-      method
+-    );
+-    const isFromAddGiftCard = yield select(getOnAddGiftCardPageState);
+-    if (res.body) {
+-      yield put(setCardList(res.body.creditCardListJson || []));
+-      if (isFromAddGiftCard) {
+-        // TODO Will Move into Add Gift Card Saga (Ajay Saini)
+-        yield put(paymentAddGiftCardSuccess());
+-        yield put(resetShowNotification());
+-      }
+-      return yield;
++    try {
++        const { relURI, method } = endpoints.getCardList;
++        const baseURI = endpoints.getCardList.baseURI || endpoints.global.baseURI;
++        yield put(showLoader());
++        const res = yield call(
++            fetchData,
++            baseURI,
++            relURI, {
++                langId: -1,
++                catalogId: 10551,
++                storeId: 10151,
++                isRest: true,
++            },
++            method
++        );
++        const isFromAddGiftCard = yield select(getOnAddGiftCardPageState);
++        if (res.body) {
++            yield put(setCardList(res.body.creditCardListJson || []));
++            if (isFromAddGiftCard) {
++                // TODO Will Move into Add Gift Card Saga (Ajay Saini)
++                yield put(paymentAddGiftCardSuccess());
++                yield put(resetShowNotification());
++            }
++            return yield;
++        }
++        return yield put(getCardListErr(res.error));
++    } catch (err) {
++        return yield put(getCardListErr(err));
++    }
++}
++/**
++ * Functionality - Fetched the referred content from CMS by providing a content ID
++ * @param {String} payload -  content ID
++ */
++function* fetchReferredContentById({ payload }) {
++    try {
++        const result = yield call(getReferredContentById, payload);
++        yield put(setReferredContent(result));
++    } catch (err) {
++        // eslint-disable-next-line no-console
++        console.log(err);
+     }
+-    return yield put(getCardListErr(res.error));
+-  } catch (err) {
+-    return yield put(getCardListErr(err));
+-  }
+ }
+ 
+-function* fetchRichText({ payload = '' }) {
+-  try {
+-    const result = yield call(PaymentAbstractor, payload);
+-    yield put(setRichText(result));
+-  } catch (err) {
+-    // eslint-disable-next-line no-console
+-    console.log(err);
+-  }
++function* fetchPaymentLabels({ payload }){
++    try {
++        const result = yield call(fetchLabels, payload);
++        yield put(loadLabelsData(result));
++    } catch (err) {
++        // eslint-disable-next-line no-console
++        console.log(err);
++    }
+ }
+ 
+ export function* PaymentSaga() {
+-  const cachedCardList = validateReduxCache(getCardList);
+-  yield takeLatest(PAYMENT_CONSTANTS.GET_CARD_LIST, cachedCardList);
+-  yield takeLatest(PAYMENT_CONSTANTS.FETCH_RICH_TEXT, fetchRichText);
++    const cachedCardList = validateReduxCache(getCardList);
++    yield takeLatest(PAYMENT_CONSTANTS.GET_CARD_LIST, cachedCardList);
++    yield takeLatest(PAYMENT_CONSTANTS.LOAD_PAYMENT_LABELS, fetchPaymentLabels);
++    yield takeLatest(PAYMENT_CONSTANTS.FETCH_REFERRED_CONTENT, fetchReferredContentById);
+ }
+ 
+-export default PaymentSaga;
++export default PaymentSaga;
+\ No newline at end of file
+diff --git a/packages/core/src/service/endpoint.js b/packages/core/src/service/endpoint.js
+index ecd1ae2c..910134f0 100644
+--- a/packages/core/src/service/endpoint.js
++++ b/packages/core/src/service/endpoint.js
+@@ -24,7 +24,7 @@ const endpoints = {
+   getEspots: {
+     method: 'get',
+     baseURI: 'https://test1.childrensplace.com',
+-    relURI: '/api/v2/global-components/getESpot',
++    relURI: '/api/getESpot'
+   },
+   addProductToCart: {
+     method: 'post',
+diff --git a/packages/web/server/index.js b/packages/web/server/index.js
+index acfa7783..fccedc1f 100644
+--- a/packages/web/server/index.js
++++ b/packages/web/server/index.js
+@@ -6,7 +6,7 @@ const RoutesMap = require('./routes');
+ const portIndex = process.argv.indexOf('-p') + 1;
+ const port = portIndex !== 0 ? process.argv[portIndex] : 3000;
+ 
+-const dev = process.env.NODE_ENV === 'development';
++const dev = process.env.NODE_ENV === 'development' || true;
+ const app = next({ dev, dir: './src' });
+ 
+ const { settingHelmetConfig, sites, siteIds } = require('./config/server.config');
