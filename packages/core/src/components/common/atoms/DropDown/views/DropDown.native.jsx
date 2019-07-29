@@ -166,7 +166,7 @@ class DropDown extends React.PureComponent<Props> {
         const windowHeight = getScreenHeight();
 
         // checking bottom space
-        const bottomSpace = windowHeight - this.rowFrame.y - this.rowFrame.height;
+        const bottomSpace = windowHeight - this.rowFrame.y;
         // check drop down is in bottom or not
         const showInBottom = bottomSpace >= height || bottomSpace >= this.rowFrame.y;
 
@@ -215,6 +215,7 @@ class DropDown extends React.PureComponent<Props> {
             style={{
               width: this.rowFrame.width,
               left: this.rowFrame.x,
+              height: getScreenHeight(),
               top: this.dropDownFrame.y,
               height: getScreenHeight(),
             }}
