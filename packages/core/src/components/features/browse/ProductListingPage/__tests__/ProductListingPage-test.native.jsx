@@ -10,6 +10,7 @@ describe('ProductListingPage Component', () => {
     data: {},
     quantity: 1,
     className: '',
+    giftCardProducts: {},
   };
 
   beforeEach(() => {
@@ -23,13 +24,8 @@ describe('ProductListingPage Component', () => {
   it('ProductListingPage should render correctly', () => {
     expect(component).toMatchSnapshot();
   });
-
   it('ProductListingPage should return FlatList component value one', () => {
     expect(component.find(FlatList)).toHaveLength(1);
-  });
-
-  it('ProductListingPage should return Text component value one', () => {
-    expect(component.find(Text)).toHaveLength(1);
   });
 
   it('ProductListingPage should return Text component value one', () => {

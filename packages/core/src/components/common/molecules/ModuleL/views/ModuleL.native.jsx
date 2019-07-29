@@ -1,0 +1,105 @@
+// @flow
+import React from 'react';
+import { FlatList } from 'react-native';
+import { UrlHandler, getScreenWidth } from '../../../../../utils/utils.native';
+import { Image, BodyCopy, Anchor } from '../../../atoms';
+import LinkText from '../../LinkText';
+import {
+  Container,
+  BodyCopyContainer,
+  ChildContainer,
+  MessageContainer,
+  LinkContainer,
+  ListContainer,
+} from '../ModuleL.styles.native';
+
+/**
+ * To enable the anchorIcon.
+ */
+const anchorIcon = true;
+
+/**
+ * To manage the width of the Mesasge Container.
+ */
+const width = getScreenWidth() - 150;
+const keyExtractor = (_, index) => index.toString();
+
+/**
+ * @function renderItem : Render method for Flatlist.
+ * @desc This method is rendering Module L items.
+ *
+ * @param {Object} item : Single object to render inside Flatlist.
+ * @return {node} function returns module L single element item.
+ */
+
+const renderitem = item => {
+  const {
+    item: { image, link },
+  } = item;
+  return (
+    <ChildContainer
+      onPress={() => {
+        UrlHandler(link.url);
+      }}
+    >
+      <Image url={image.url} height={127} crop={image.crop_m} />
+      <MessageContainer>
+        <BodyCopyContainer width={width}>
+          <BodyCopy
+            fontSize="fs20"
+            color="black"
+            letterSpacing="ls222"
+            text={image.alt}
+            onPress={() => {
+              UrlHandler(link.url);
+            }}
+          />
+        </BodyCopyContainer>
+        <LinkContainer>
+          <Anchor
+            fontSizeVariation="xlarge"
+            text={link.text}
+            visible={anchorIcon}
+            onPress={() => {
+              UrlHandler(link.url);
+            }}
+          />
+        </LinkContainer>
+      </MessageContainer>
+    </ChildContainer>
+  );
+};
+
+/**
+ * @param {object} props : Props for Module L multi list banner.
+ * @desc This is Module L global component. It has capability to display
+ * featured content module with 1 images tiles ,links and a CTA.
+ * Author can surface teaser content leading to corresponding pages.
+ */
+
+const ModuleL = (props: Props) => {
+  const { imageGrid, headerText } = props;
+  return (
+    <Container>
+      <LinkText
+        type="heading"
+        fontFamily="primary"
+        fontSize="fs36"
+        letterSpacing="ls167"
+        textAlign="center"
+        color="text.primary"
+        fontWeight="black"
+        textItems={headerText[0].textItems}
+        onPress={() => {
+          UrlHandler(headerText[0].link.url);
+        }}
+      />
+      <ListContainer>
+        <FlatList keyExtractor={keyExtractor} data={imageGrid} renderItem={renderitem} />
+      </ListContainer>
+    </Container>
+  );
+};
+
+export default ModuleL;
+export { ModuleL as ModuleLVanilla };

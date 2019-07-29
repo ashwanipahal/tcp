@@ -11,10 +11,7 @@ export default css`
     font-size: ${props => props.theme.typography.fontSizes.fs13};
     padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
       ${props => props.theme.spacing.ELEM_SPACING.XL};
-  }
-
-  .footer_top_candidate_a .TextBox__input {
-    padding-top: 18px;
+    min-height: 42px;
   }
 
   .footer_top_candidate_a .heading_text {
@@ -30,6 +27,12 @@ export default css`
     margin-top: 24px;
     margin-bottom: 24px;
     width: 100%;
+  }
+
+  .footer_top__signup_form {
+    label {
+      margin-bottom: 10px;
+    }
   }
 
   .poc-hide {
