@@ -11,10 +11,6 @@ const buildQuery = ({ brand, country, channel }) => `
           key
 					value
         }
-        promoBadge {
-          text
-          style
-        }
         sizesRange {
           text
         }
@@ -25,6 +21,7 @@ const buildQuery = ({ brand, country, channel }) => `
           crop_d
           crop_m
           crop_t
+          position
         }
         categoryLayout {
           name
@@ -82,6 +79,11 @@ const buildQuery = ({ brand, country, channel }) => `
         groupIdentifierName
         name
         id
+        mainCategory {
+          promoBadge {
+            text
+          }
+        }
       }
       subCategories {
         categoryContent {

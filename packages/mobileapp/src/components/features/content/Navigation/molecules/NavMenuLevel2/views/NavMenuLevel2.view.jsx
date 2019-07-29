@@ -17,6 +17,8 @@ import {
   ItemViewWithHeading,
 } from '../NavMenuLevel2.style';
 
+const keyExtractor = (_, index) => index.toString();
+
 const placeHolderText = 'Lorem Ipsum';
 const shopBySize = 'Shop By Size';
 const shopBySizeArr = [
@@ -61,6 +63,43 @@ const Icon = require('../../../../../../../../../core/src/assets/carrot-large-ri
 const BackIcon = require('../../../../../../../../../core/src/assets/carrot-large-left.png');
 
 /**
+ * @function navigateFromL2 populates the L3 menu or PLP page for the L1 link that has been clicked
+ * @param {object} subCats Details of the L2 menu item that has been clicked
+ * @param {object} hasL3 flag that defines if L3 is present for the L2
+ */
+const navigateFromL2 = (navigate, subCats, hasL3) => {
+  if (hasL3) {
+    return navigate('NavMenuLevel3');
+  }
+  return navigate('productListingPage');
+};
+
+/**
+ * @function shopBySizeCircle populates the circular links for shop by size
+ * @param {object} links shop by size links
+ */
+const shopBySizeCircle = (navigate, links) => {
+  return (
+    <ShopBySizeViewWrapper>
+      {links.map(linkItem => {
+        return (
+          <SizeSelector
+            accessibilityRole="button"
+            onPress={() => navigateFromL2(navigate, linkItem.url)}
+          >
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs18"
+              text={linkItem.text}
+              color="text.primary"
+            />
+          </SizeSelector>
+        );
+      })}
+    </ShopBySizeViewWrapper>
+  );
+};
+/**
  * The Navigation menu level2 is created by this component
  * @param {object} props Props passed from Stack navigator screen and the parent L1
  */
@@ -68,41 +107,6 @@ const NavMenuLevel2 = props => {
   const {
     navigation: { navigate, goBack },
   } = props;
-
-  /**
-   * @function navigateFromL2 populates the L3 menu or PLP page for the L1 link that has been clicked
-   * @param {object} subCats Details of the L2 menu item that has been clicked
-   * @param {object} hasL3 flag that defines if L3 is present for the L2
-   */
-  const navigateFromL2 = (subCats, hasL3) => {
-    if (hasL3) {
-      return navigate('NavMenuLevel3');
-    }
-    return navigate('productListingPage');
-  };
-
-  /**
-   * @function shopBySizeCircle populates the circular links for shop by size
-   * @param {object} links shop by size links
-   */
-  const shopBySizeCircle = links => {
-    return (
-      <ShopBySizeViewWrapper>
-        {links.map(linkItem => {
-          return (
-            <SizeSelector accessibilityRole="button" onPress={() => navigateFromL2(linkItem.url)}>
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs18"
-                text={linkItem.text}
-                color="text.primary"
-              />
-            </SizeSelector>
-          );
-        })}
-      </ShopBySizeViewWrapper>
-    );
-  };
 
   /**
    * @function menuItem populates the text, promobadge and arrow of the menu item
@@ -121,14 +125,14 @@ const NavMenuLevel2 = props => {
             numberOfLines={1}
           />
         </View>
-        <PromoAndArrowView>
+        <PromoAndArrowView onPress={() => navigateFromL2(navigate, item.subCategories, hasL3)}>
           {hasBadge && (
             <PromoWrapper marginRight={promoBannerMargin}>
               <BodyCopy
                 fontFamily="primary"
                 fontSize="fs10"
                 fontWeight="black"
-                text="60% OFF"
+                text={item.categoryContent.mainCategory.promoBadge[0].text}
                 color="white"
               />
             </PromoWrapper>
@@ -154,7 +158,7 @@ const NavMenuLevel2 = props => {
     // TODO - there would be a differentiating factor for generating circular links
     // Use that check instead, as of now hardcoding the mock Title
     if (title === shopBySize) {
-      return shopBySizeCircle(item.links);
+      return shopBySizeCircle(navigate, item.links);
     }
 
     if (item.subCategories.length) {
@@ -163,7 +167,7 @@ const NavMenuLevel2 = props => {
     }
 
     // TODO - Random check for getting the badge on page, remove it
-    if (item.categoryContent.productCount % 2 === 0) {
+    if (item.categoryContent.mainCategory && item.categoryContent.mainCategory.promoBadge[0].text) {
       hasBadge = true;
       maxWidthItem -= 180;
     }
@@ -171,7 +175,7 @@ const NavMenuLevel2 = props => {
       return (
         <ItemView
           accessibilityRole="button"
-          onPress={() => navigateFromL2(item.subCategories, hasL3)}
+          onPress={() => navigateFromL2(navigate, item.subCategories, hasL3)}
         >
           {menuItem(maxWidthItem, item, hasBadge, promoBannerMargin, hasL3)}
         </ItemView>
@@ -180,7 +184,7 @@ const NavMenuLevel2 = props => {
     return (
       <ItemViewWithHeading
         accessibilityRole="button"
-        onPress={() => navigateFromL2(item.subCategories, hasL3)}
+        onPress={() => navigateFromL2(navigate, item.subCategories, hasL3)}
       >
         {menuItem(maxWidthItem, item, hasBadge, promoBannerMargin, hasL3)}
       </ItemViewWithHeading>
@@ -216,6 +220,7 @@ const NavMenuLevel2 = props => {
   return (
     <SectionList
       renderItem={renderItem}
+      keyExtractor={keyExtractor}
       stickySectionHeadersEnabled={false}
       renderSectionHeader={({ section }) => {
         if (section.title === placeHolderText) {
@@ -259,10 +264,17 @@ NavMenuLevel2.propTypes = {
   navigation: PropTypes.shape({
     getParam: PropTypes.func.isRequired,
   }).isRequired,
-  item: PropTypes.shape({}).isRequired,
+  item: PropTypes.shape({}),
   section: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-  }).isRequired,
+    title: PropTypes.string,
+  }),
+};
+
+NavMenuLevel2.defaultProps = {
+  item: {},
+  section: {
+    title: '',
+  },
 };
 
 export default NavMenuLevel2;

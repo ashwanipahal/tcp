@@ -5,6 +5,16 @@ exports[`NavMenuLevel1 should render component when renderItem is called 1`] = `
   accessibilityRole="button"
   onPress={[Function]}
 >
+  <ForwardRef
+    alt="Image Alt text attribute value"
+    height={132}
+    source={
+      Object {
+        "uri": "https://res.cloudinary.com/tcp-dam-test/image/upload/c_crop,g_face:center,q_auto:best,w_961/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+      }
+    }
+    width={375}
+  />
   <ForwardRef>
     <ForwardRef
       color="text.primary"
@@ -23,15 +33,6 @@ exports[`NavMenuLevel1 should render component when renderItem is called 1`] = `
       textAlign="center"
     />
   </ForwardRef>
-  <ForwardRef
-    height={132}
-    source={
-      Object {
-        "uri": undefined,
-      }
-    }
-    width={375}
-  />
 </ForwardRef>
 `;
 
@@ -40,32 +41,25 @@ exports[`NavMenuLevel1 should render component when renderItem is called without
   accessibilityRole="button"
   onPress={[Function]}
 >
-  <ForwardRef>
-    <ForwardRef
-      color="text.primary"
-      fontFamily="primary"
-      fontSize="fs22"
-      fontWeight="black"
-      text="Girl"
-      textAlign="center"
-    />
-    <ForwardRef
-      color="text.primary"
-      fontFamily="secondary"
-      fontSize="fs12"
-      fontWeight="extrabold"
-      text="Sizes 4-14"
-      textAlign="center"
-    />
-  </ForwardRef>
   <ForwardRef
-    height={132}
+    color="text.primary"
+    fontFamily="primary"
+    fontSize="fs28"
+    fontWeight="black"
+    text="Girl"
+    textAlign="center"
+  />
+  <ForwardRef
+    alt="Girl"
+    height={26}
+    maxWidth={16}
+    position="absolute"
+    right={37}
     source={
       Object {
-        "uri": undefined,
+        "testUri": "../../../../core/src/assets/carrot-small-rights.png",
       }
     }
-    width={375}
   />
 </ForwardRef>
 `;
@@ -86,7 +80,7 @@ exports[`NavMenuLevel1 should render correctly 1`] = `
                 "isUnique": true,
                 "longDescription": "long description 1",
                 "mainCategory": Object {
-                  "categoryImages": Array [
+                  "categoryImage": Array [
                     Object {
                       "alt": "Image Alt text attribute value",
                       "crop_d": "c_crop,g_face:center,q_auto:best,w_393",

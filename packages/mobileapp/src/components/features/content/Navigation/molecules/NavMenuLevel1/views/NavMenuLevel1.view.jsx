@@ -69,13 +69,24 @@ const NavMenuLevel1 = props => {
   const renderItem = item => {
     const {
       item: {
-        categoryContent,
-        categoryContent: { name, description, imageFirst, mainCategory },
+        categoryContent: { name, description },
       },
     } = item;
 
+    let {
+      item: {
+        categoryContent: { mainCategory },
+      },
+    } = item;
+    if (!mainCategory) {
+      mainCategory = {
+        categoryImage: [],
+      };
+    }
+    const { categoryImage } = mainCategory;
+
     // In case of no category image, add the caret with the text
-    if (mainCategory && mainCategory.categoryImage && mainCategory.categoryImage.length === 0) {
+    if (categoryImage.length === 0) {
       return (
         <L1TouchableOpacityNoImage
           accessibilityRole="button"
@@ -103,22 +114,23 @@ const NavMenuLevel1 = props => {
 
     return (
       <L1TouchableOpacity accessibilityRole="button" onPress={() => ShowL2Navigation(item, name)}>
-        {!categoryContent.imageFirst && renderTextBlock(name, description)}
+        {categoryImage[0].position &&
+          categoryImage[0].position === 'right' &&
+          renderTextBlock(name, description)}
         <Image
-          alt={mainCategory && mainCategory.categoryImage && mainCategory.categoryImage[0].alt}
+          alt={categoryImage && categoryImage[0].alt}
           source={{
-            uri:
-              mainCategory &&
-              mainCategory.categoryImage &&
-              cropImageUrl(mainCategory.categoryImage[0].url, mainCategory.categoryImage[0].crop_m),
+            uri: categoryImage && cropImageUrl(categoryImage[0].url, categoryImage[0].crop_m),
           }}
           width={imageWidth}
           height={132}
         />
-        {!!imageFirst && renderTextBlock(name, description)}
+        {(!categoryImage[0].position || categoryImage[0].position === 'left') &&
+          renderTextBlock(name, description)}
       </L1TouchableOpacity>
     );
   };
+
   return (
     <ContainerList data={navigationMenuObj} keyExtractor={keyExtractor} renderItem={renderItem} />
   );
@@ -128,7 +140,7 @@ NavMenuLevel1.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
-  navigationMenuObj: PropTypes.shape({}).isRequired,
+  navigationMenuObj: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
 };
 
 export default NavMenuLevel1;
