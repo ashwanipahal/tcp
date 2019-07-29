@@ -27,18 +27,26 @@ const getTextBaseStyle = props => {
   font-family: ${typography.fonts.secondary};
   `;
 };
-const getHeadingStyle = props => {
+
+/**
+ * @param {Object} props : props for getTextBaseStyle
+ * @return {Object} : Return object
+ * @desc This method get font base style
+ */
+const getDescriptionStyle = props => {
   const { theme } = props;
-  const { typography } = theme;
+  const { typography, colorPalette } = theme;
   return `
   ${getTextBaseStyle};
-  font-weight: ${typography.fontWeights.semibold};
-  align-self: ${'center'};
+  font-size: ${typography.fontSizes.fs12};
+  color: ${colorPalette.text.primary};
+  margin-top: ${'27px'};
+  text-align: ${'center'};
   `;
 };
 
-const HeadingStyle = styled.Text`
-  ${getHeadingStyle}
+const DescriptionStyle = styled.Text`
+  ${getDescriptionStyle}
 `;
 
-export { FormStyle, HeadingStyle };
+export { FormStyle, DescriptionStyle };

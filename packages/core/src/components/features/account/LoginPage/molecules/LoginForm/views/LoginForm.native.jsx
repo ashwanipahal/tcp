@@ -1,26 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import { FormStyle } from '../LoginForm.style.native';
+import { FormStyle, DescriptionStyle } from '../LoginForm.style.native';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import CustomButton from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import LineComp from '../../../../../../common/atoms/Line';
 
-const onRememberMe = value => {
-  console.log('onRememberMe: ', value);
-};
-const onSaveMyRewards = value => {
-  console.log('onSaveMyRewards: ', value);
-};
-
 const styles = {
   loginButtonStyle: {
     marginTop: 30,
   },
+
+  createAccountStyle: {
+    marginTop: 30,
+  },
+
   forgotPasswordStyle: {
     marginTop: 10,
   },
@@ -32,11 +30,46 @@ const styles = {
  * @desc This method based on the props generate icon component.
  */
 const LoginForm = props => {
-  const { labels } = props;
+  const [emailAddress, setEmailAddress] = useState('');
+  const [password, setPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
+  const [saveMyRewards, setSaveMyRewards] = useState(false);
+  const { labels, handleSubmit } = props;
+  // console.log('handleSubmit:', handleSubmit);
+
+  const submit = values => {
+    console.log('submitting form', values);
+  };
+
+  const onEmailChange = val => {
+    console.log('onEmailChange', val);
+    setEmailAddress(val);
+  };
+
+  const onPasswordChange = val => {
+    console.log('onPasswordChange', val);
+    setPassword(val);
+  };
+
+  const onRememberMe = value => {
+    console.log('onRememberMe: ', value);
+    setRememberMe(value);
+  };
+
+  const onSaveMyRewards = value => {
+    console.log('onSaveMyRewards: ', value);
+    setSaveMyRewards(value);
+  };
+
   return (
     <View {...props}>
       <Field
         label={labels.email}
+        input={{
+          value: emailAddress,
+          onChangeText: onEmailChange,
+          name: 'emailAddress',
+        }}
         name="emailAddress"
         id="emailAddress"
         type="text"
@@ -45,6 +78,11 @@ const LoginForm = props => {
       />
       <Field
         label={labels.password}
+        input={{
+          value: password,
+          onChangeText: onPasswordChange,
+          name: 'password',
+        }}
         name="password"
         id="password"
         type="text"
@@ -58,6 +96,7 @@ const LoginForm = props => {
         disabled={false}
         rightText={labels.rememberMe}
         onClick={onRememberMe}
+        isChecked={rememberMe}
       />
       <Field
         name="saveMyRewards"
@@ -67,11 +106,13 @@ const LoginForm = props => {
         rightText={labels.saveMyRewards}
         marginTop={13}
         onClick={onSaveMyRewards}
+        isChecked={saveMyRewards}
       />
       <CustomButton
         text={labels.login}
         buttonVariation="variable-width"
         customStyle={styles.loginButtonStyle}
+        onPress={handleSubmit(submit)}
       />
       <Anchor
         fontSizeVariation="xlarge"
@@ -79,8 +120,13 @@ const LoginForm = props => {
         text={labels.forgotPassword}
         customStyle={styles.forgotPasswordStyle}
       />
-      <LineComp marginTop={28} marginBottom={28} />
-      <CustomButton text={labels.createAccount} buttonVariation="variable-width" />
+      <LineComp marginTop={28} />
+      <DescriptionStyle>{labels.createAccountLabel}</DescriptionStyle>
+      <CustomButton
+        text={labels.createAccount}
+        buttonVariation="variable-width"
+        customStyle={styles.createAccountStyle}
+      />
     </View>
   );
 };
