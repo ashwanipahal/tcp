@@ -19,6 +19,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       ]
     }
     className=""
+    initialValues={Object {}}
     isEdit={false}
     labels={Object {}}
     onFileAddressKey=""
@@ -33,6 +34,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
     variant="listMenu"
   />
   <Styled(Row)
+    className="elem-mb-XL"
     fullBleed={true}
   >
     <Styled(Col)
@@ -46,98 +48,37 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       }
     >
       <Field
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-dnqmqq",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  position: relative;
-  display: block;
-
-  .select__input {
-    appearance: none;
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-      no-repeat right 0px bottom 6px;
-    border: 0;
-    border-bottom: 1px solid ",
-                [Function],
-                ";
-    ",
-                [Function],
-                ";
-    border-radius: 0;
-    color: ",
-                [Function],
-                ";
-    font-size: ",
-                [Function],
-                "px;
-    margin: 0;
-    margin-bottom: ",
-                [Function],
-                ";
-    outline: 0;
-    padding: ",
-                [Function],
-                " 0
-      ",
-                [Function],
-                ";
-    width: 100%;
-
-    ",
-                [Function],
-                ";
-  }
-
-  .select__label {
-    font-size: ",
-                [Function],
-                "px;
-    font-weight: ",
-                [Function],
-                ";
-    padding: 0;
-    position: absolute;
-    top: 0;
-  }
-
-  ",
-                [Function],
-                ";
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(SelectBox)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-dnqmqq",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
+        component={[Function]}
         dataLocator="payment-billingaddressdd"
         id="onFileAddressKey"
         name="onFileAddressKey"
         options={
           Immutable.List [
             Object {
-              "displayName": "test test (Default)",
-              "id": "12345",
+              "content": <Address
+                address={
+                  Object {
+                    "addressId": "12345",
+                    "firstName": "test",
+                    "lastName": "test",
+                    "primary": "true",
+                  }
+                }
+                isDefault={true}
+                showCountry={true}
+                showPhone={true}
+              />,
+              "title": "test test (Default)",
+              "value": "12345",
             },
             Object {
-              "displayName": undefined,
-              "id": "",
+              "content": <ForwardRef
+                buttonVariation="variable-width"
+                fill="BLUE"
+                fullWidth={true}
+              />,
+              "title": undefined,
+              "value": "",
             },
           ]
         }
@@ -153,17 +94,21 @@ exports[`CreditCardForm component should renders correctly with address dropdown
       }
     />
   </Styled(Row)>
-  <FormSection
-    name="address"
+  <div
+    className="elem-mb-XL"
   >
-    <Styled(AddressFields)
-      formName="addEditCreditCard"
-      formSection="address"
-      labels={Object {}}
-      showDefaultCheckbox={false}
-      showPhoneNumber={false}
-    />
-  </FormSection>
+    <FormSection
+      name="address"
+    >
+      <Styled(AddressFields)
+        formName="addEditCreditCard"
+        formSection="address"
+        labels={Object {}}
+        showDefaultCheckbox={false}
+        showPhoneNumber={false}
+      />
+    </FormSection>
+  </div>
   <Styled(Row)
     className="CreditCardForm__ctaContainer"
     fullBleed={true}
@@ -251,6 +196,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
     variant="listMenu"
   />
   <Styled(Row)
+    className="elem-mb-XL"
     fullBleed={true}
   >
     <Styled(Col)
@@ -264,98 +210,37 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       }
     >
       <Field
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-dnqmqq",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  position: relative;
-  display: block;
-
-  .select__input {
-    appearance: none;
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-      no-repeat right 0px bottom 6px;
-    border: 0;
-    border-bottom: 1px solid ",
-                [Function],
-                ";
-    ",
-                [Function],
-                ";
-    border-radius: 0;
-    color: ",
-                [Function],
-                ";
-    font-size: ",
-                [Function],
-                "px;
-    margin: 0;
-    margin-bottom: ",
-                [Function],
-                ";
-    outline: 0;
-    padding: ",
-                [Function],
-                " 0
-      ",
-                [Function],
-                ";
-    width: 100%;
-
-    ",
-                [Function],
-                ";
-  }
-
-  .select__label {
-    font-size: ",
-                [Function],
-                "px;
-    font-weight: ",
-                [Function],
-                ";
-    padding: 0;
-    position: absolute;
-    top: 0;
-  }
-
-  ",
-                [Function],
-                ";
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(SelectBox)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-dnqmqq",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-          }
-        }
+        component={[Function]}
         dataLocator="payment-billingaddressdd"
         id="onFileAddressKey"
         name="onFileAddressKey"
         options={
           Immutable.List [
             Object {
-              "displayName": "test test (Default)",
-              "id": "12345",
+              "content": <Address
+                address={
+                  Object {
+                    "addressId": "12345",
+                    "firstName": "test",
+                    "lastName": "test",
+                    "primary": "true",
+                  }
+                }
+                isDefault={true}
+                showCountry={true}
+                showPhone={true}
+              />,
+              "title": "test test (Default)",
+              "value": "12345",
             },
             Object {
-              "displayName": undefined,
-              "id": "",
+              "content": <ForwardRef
+                buttonVariation="variable-width"
+                fill="BLUE"
+                fullWidth={true}
+              />,
+              "title": undefined,
+              "value": "",
             },
           ]
         }
@@ -371,17 +256,21 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       }
     />
   </Styled(Row)>
-  <FormSection
-    name="address"
+  <div
+    className="elem-mb-XL"
   >
-    <Styled(AddressFields)
-      formName="addEditCreditCard"
-      formSection="address"
-      labels={Object {}}
-      showDefaultCheckbox={false}
-      showPhoneNumber={false}
-    />
-  </FormSection>
+    <FormSection
+      name="address"
+    >
+      <Styled(AddressFields)
+        formName="addEditCreditCard"
+        formSection="address"
+        labels={Object {}}
+        showDefaultCheckbox={false}
+        showPhoneNumber={false}
+      />
+    </FormSection>
+  </div>
   <Styled(Row)
     className="CreditCardForm__ctaContainer"
     fullBleed={true}

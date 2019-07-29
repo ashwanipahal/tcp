@@ -11,8 +11,9 @@ export const AddEditCreditCard = ({ labels, isEdit, errorMessage, ...otherProps 
       <Anchor
         fontSizeVariation="xlarge"
         anchorVariation="secondary"
-        to="/account/payment"
+        to="/account?id=payment"
         data-locator="payment-backlink"
+        asPath="/account/payment"
       >
         {labels.ACC_LBL_BACK_LINK_CTA}
       </Anchor>

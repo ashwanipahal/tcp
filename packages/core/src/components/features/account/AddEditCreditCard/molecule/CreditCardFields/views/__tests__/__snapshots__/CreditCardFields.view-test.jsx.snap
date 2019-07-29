@@ -70,6 +70,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           id="cardNumber"
           isPLCCEnabled={true}
           name="cardNumber"
+          showSuccessCheck={false}
         />
       </Styled(Col)>
     </Styled(Row)>
@@ -147,6 +148,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           id="cardNumber"
           isPLCCEnabled={true}
           name="cardNumber"
+          showSuccessCheck={false}
         />
       </Styled(Col)>
     </Styled(Row)>
@@ -180,6 +182,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
               "
   position: relative;
   display: block;
+  height: 70px;
 
   .select__input {
     appearance: none;
@@ -250,6 +253,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
       dataLocator="payment-expmonthdd"
       id="expMonth"
       name="expMonth"
+      showSuccessCheck={false}
     />
   </Styled(Col)>
   <Styled(Col)
@@ -276,6 +280,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
               "
   position: relative;
   display: block;
+  height: 70px;
 
   .select__input {
     appearance: none;
@@ -346,6 +351,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
       dataLocator="payment-expyeardd"
       id="expYear"
       name="expYear"
+      showSuccessCheck={false}
     />
   </Styled(Col)>
 </Styled(Row)>

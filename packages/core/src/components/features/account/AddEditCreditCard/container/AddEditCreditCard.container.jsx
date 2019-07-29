@@ -58,14 +58,17 @@ export class AddEditCreditCard extends React.PureComponent {
     if (addressList === null) {
       getAddressListAction();
     }
-    console.log('addressLIst is ', addressList);
     this.setInitialValues();
   }
 
   componentDidUpdate(prevProps) {
-    const { addEditCreditCardSuccess, showSuccessNotification, creditCard, addressList } = this.props;
+    const {
+      addEditCreditCardSuccess,
+      showSuccessNotification,
+      creditCard,
+      addressList,
+    } = this.props;
     const isAddressListUpdated = !prevProps.addressList && addressList;
-    console.log('didupdate addressLIst is ', addressList);
     if (!prevProps.addEditCreditCardSuccess && addEditCreditCardSuccess) {
       showSuccessNotification();
       this.backToPaymentClick();
