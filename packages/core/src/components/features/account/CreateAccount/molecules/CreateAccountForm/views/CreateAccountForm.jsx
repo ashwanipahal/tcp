@@ -32,7 +32,7 @@ let CreateAccountForm = ({
   handleSubmit,
 }: Props) => {
   return (
-    <div>
+    <div className="parent-wrapper">
       <form onSubmit={handleSubmit}>
         <Row fullBleed className="row-form-wrapper">
           <Col
@@ -195,7 +195,11 @@ let CreateAccountForm = ({
               {labels.CREATE_ACC_LBL_SAVE_REWARDS}
             </Field>
           </Col>
-          <Col className="i-agree-checkbox" ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
+          <Col
+            className="padding-top-28 i-agree-checkbox"
+            ignoreGutter={{ small: true }}
+            colSize={{ small: 12 }}
+          >
             <Field
               name="iAgree"
               component={InputCheckbox}
@@ -205,7 +209,7 @@ let CreateAccountForm = ({
               {labels.CREATE_ACC_LBL_TERMS_CONDITIONS}
             </Field>
           </Col>
-          <Col ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
+          <Col className="padding-top-28" ignoreGutter={{ small: true }} colSize={{ small: 12 }}>
             <Field
               name="rememberMe"
               component={InputCheckbox}
