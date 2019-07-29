@@ -17,7 +17,11 @@ class LoginPageContainer extends React.PureComponent {
 
   render() {
     const { onSubmit, loginError } = this.props;
-    return <LoginView onSubmit={onSubmit} labels={labels} loginErrorMessage={loginError ? labels.ACC_LBL_LOGIN_ERROR : ''} />;
+    const initialValues = {
+      rememberMe: true,
+      savePlcc: true,
+    };
+    return <LoginView onSubmit={onSubmit} labels={labels} loginErrorMessage={loginError ? labels.ACC_LBL_LOGIN_ERROR : ''} initialValues={initialValues} />;
   }
 }
 

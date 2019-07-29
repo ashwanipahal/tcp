@@ -82,7 +82,7 @@ export const LoginForm = ({ handleSubmit, labels, loginErrorMessage, className }
           }}
         >
           <Field
-            name="savePLCCCard"
+            name="savePlcc"
             component={InputCheckbox}
             dataLocator=""
           >
