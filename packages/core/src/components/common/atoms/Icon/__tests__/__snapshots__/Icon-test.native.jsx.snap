@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomIcon should render correctly 1`] = `
+<Icon
+  allowFontScaling={false}
+  name="chevron-right"
+  size={null}
+  theme={
+    Object {
+      "0": "
+  ",
+      "1": [Function],
+      "2": ";
+  ",
+      "3": [Function],
+      "4": ";
+  ",
+      "5": [Function],
+      "6": "
+",
+    }
+  }
+/>
+`;

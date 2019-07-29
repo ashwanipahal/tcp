@@ -71,6 +71,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
         }
         dataLocatorPrefix="payment-creditcard"
         fontWeight="normal"
+        isDefault={false}
         showCountry={false}
         showPhone={false}
       />
@@ -102,10 +103,11 @@ exports[`CardTile should render correctly with amex card 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/#"
+      to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       Edit
@@ -180,6 +182,7 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
         }
         dataLocatorPrefix="payment-creditcard"
         fontWeight="normal"
+        isDefault={false}
         showCountry={false}
         showPhone={false}
       />
@@ -214,10 +217,11 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/#"
+      to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       Edit
@@ -308,6 +312,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
         }
         dataLocatorPrefix="payment-creditcard"
         fontWeight="normal"
+        isDefault={false}
         showCountry={false}
         showPhone={false}
       />
@@ -342,10 +347,11 @@ exports[`CardTile should render correctly with discover card 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/#"
+      to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       Edit
@@ -529,7 +535,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -679,6 +685,7 @@ exports[`CardTile should render correctly with master card 1`] = `
         }
         dataLocatorPrefix="payment-creditcard"
         fontWeight="normal"
+        isDefault={false}
         showCountry={false}
         showPhone={false}
       />
@@ -713,10 +720,11 @@ exports[`CardTile should render correctly with master card 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/#"
+      to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       Edit
@@ -911,7 +919,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -1045,6 +1053,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         }
         dataLocatorPrefix="payment-creditcard"
         fontWeight="normal"
+        isDefault={false}
         showCountry={false}
         showPhone={false}
       />
@@ -1079,10 +1088,11 @@ exports[`CardTile should render correctly with plcc card 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/#"
+      to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       Edit
@@ -1152,7 +1162,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
           alt="VENMO"
           className="cardTile__img"
           data-locator="VENMO"
-          src="/static/images/venmo-blue-acceptance-mark.png"
+          src="/static/images/venmo-blue-acceptance-mark.svg"
         />
       </div>
     </div>
@@ -1246,6 +1256,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
         }
         dataLocatorPrefix="payment-creditcard"
         fontWeight="normal"
+        isDefault={false}
         showCountry={false}
         showPhone={false}
       />
@@ -1280,10 +1291,11 @@ exports[`CardTile should render correctly with visa card 1`] = `
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      asPath="/account/address-book/edit-credit-card/8977328"
       className="cardTile__anchor"
       data-locator="payment-creditdebiteditlink"
       fontSizeVariation="large"
-      to="/#"
+      to="/account?id=edit-credit-card&creditCardId=8977328"
       underline={true}
     >
       Edit
@@ -1462,7 +1474,7 @@ exports[`CardTile should show loading 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -1706,7 +1718,7 @@ exports[`CardTile should show remining balance 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';

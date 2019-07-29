@@ -28,7 +28,11 @@ exports[`GiftCardList Component should render correctly 1`] = `
     <Styled(CustomButton)
       buttonVariation="variable-width"
       color="white"
+      customStyle=""
       fill="BLUE"
+      fullWidth=""
+      text=""
+      url=""
     />
   </Styled(View)>
 </View>
@@ -75,7 +79,11 @@ exports[`GiftCardList Component should render correctly if list is present 1`] =
     <Styled(CustomButton)
       buttonVariation="variable-width"
       color="white"
+      customStyle=""
       fill="BLUE"
+      fullWidth=""
+      text=""
+      url=""
     />
   </Styled(View)>
   <CardTile

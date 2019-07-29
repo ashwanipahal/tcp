@@ -6,12 +6,15 @@ import AddressBookReducer from '@tcp/core/src/components/features/account/Addres
 import PaymentReducer from '@tcp/core/src/components/features/account/Payment/container/Payment.reducer';
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
+import ApiConfigReducer from '@tcp/core/src/reduxStore/reducers/apiConfig';
 import AddEditAddressReducer from '@tcp/core/src/components/features/account/AddEditAddress/container/AddEditAddress.reducer';
+import AddEditCreditCardReducer from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
 import AddGiftCardReducer from '@tcp/core/src/components/features/account/Payment/AddGiftCard/container/AddGiftCard.reducer';
 import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
 import AddressVerificationReducer from '@tcp/core/src/components/features/account/AddressVerification/container/AddressVerification.reducer';
 import {
+  APICONFIG_REDUCER_KEY,
   HEADER_REDUCER_KEY,
   FOOTER_REDUCER_KEY,
   LABEL_REDUCER_KEY,
@@ -26,6 +29,7 @@ import {
   EMAIL_SIGNUP_REDUCER_KEY,
   SMS_SIGNUP_REDUCER_KEY,
   MODULES_REDUCER_KEY,
+  ADDEDITCREDITCARD_REDUCER_KEY,
   ADD_GIFT_CARD_REDUCER_KEY,
   ADDED_TO_BAG_REDUCER_KEY,
   CART_REDUCER_KEY,
@@ -44,7 +48,10 @@ const filteredProductListingPageReducer = createFilteredReducer(
   PRODUCTLISTINGPAGE_REDUCER_KEY
 );
 
+const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONFIG_REDUCER_KEY);
+
 export default combineReducers({
+  [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
   [HEADER_REDUCER_KEY]: HeaderReducer,
   [FOOTER_REDUCER_KEY]: FooterReducer,
   [LABEL_REDUCER_KEY]: LabelReducer,
@@ -60,6 +67,7 @@ export default combineReducers({
   form: reduxFormReducer,
   [EMAIL_SIGNUP_REDUCER_KEY]: EmailSignupReducer,
   [SMS_SIGNUP_REDUCER_KEY]: SmsSignupReducer,
+  [ADDEDITCREDITCARD_REDUCER_KEY]: AddEditCreditCardReducer,
   [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,
   [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,
   [CART_REDUCER_KEY]: CartReducer,

@@ -2,146 +2,37 @@
 
 exports[`ModuleH component renders correctly 1`] = `
 <StyledComponent
+  className="undefined moduleH"
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-kgoBCf",
+        "componentId": "sc-EHOje",
         "isStatic": false,
         "rules": Array [
           "
   ",
           "
-  height: ",
-          "425",
-          "px;
-  margin-bottom: ",
+  ",
           [Function],
-          ";
-  margin-top: ",
-          [Function],
-          ";
-  overflow: hidden;
-  position: relative;
+          "
 
-  img {
-    height: 425px;
-
-    @media ",
-          [Function],
-          " {
-      height: 541px;
-    }
+  > *:last-child {
+    margin-right: 0;
   }
-
-  @media ",
-          [Function],
-          " {
-    height: 541px;
-    margin-bottom: ",
+  ",
           [Function],
           ";
-    margin-top: ",
-          [Function],
-          ";
-  }
-
-  .moduleH__header--wrapper {
-    margin-top: 38px;
-    position: absolute;
-    z-index: ",
-          [Function],
-          ";
-
-    @media ",
-          [Function],
-          " {
-      margin: 18px 0 0 11px;
-    }
-
-    @media ",
-          [Function],
-          " {
-      margin-top: ",
-          [Function],
-          ";
-    }
-  }
-
-  .moduleH__header {
-    color: ",
-          [Function],
-          ";
-    font-family: ",
-          [Function],
-          ";
-    line-height: 34px;
-    margin: 0px;
-
-    @media ",
-          [Function],
-          " {
-      font-size: ",
-          [Function],
-          "px;
-      line-height: 52px;
-    }
-  }
-
-  .moduleH__header-link {
-    color: ",
-          [Function],
-          ";
-    font-family: ",
-          [Function],
-          ";
-  }
-
-  .moduleH__CTALink {
-    color: ",
-          [Function],
-          ";
-    font-family: ",
-          [Function],
-          ";
-    font-size: ",
-          [Function],
-          "px;
-    line-height: 20px;
-    opacity: 0.8;
-
-    &:hover {
-      font-family: ",
-          [Function],
-          ";
-      opacity: 1;
-    }
-  }
-
-  .moduleH__listItem-partial {
-    margin-top: 38px;
-  }
-
-  .moduleH__listItem-full {
-    margin-top: 22px;
-  }
-
-  .moduleH__CTALink--active {
-    font-family: ",
-          [Function],
-          ";
-    opacity: 1;
-  }
 ",
           ";
 ",
         ],
       },
-      "displayName": "Styled(ModuleH)",
+      "displayName": "Styled(Row)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-kgoBCf",
+      "styledComponentId": "sc-EHOje",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -149,5 +40,287 @@ exports[`ModuleH component renders correctly 1`] = `
     }
   }
   forwardedRef={null}
-/>
+  fullBleed={
+    Object {
+      "large": false,
+      "medium": false,
+      "small": true,
+    }
+  }
+>
+  <Styled(Col)
+    className="moduleH__header--wrapper"
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+    offsetLeft={
+      Object {
+        "large": 1,
+        "medium": 1,
+        "small": 0,
+      }
+    }
+  >
+    <moduleHHeader
+      headerText={
+        Array [
+          Object {
+            "link": Object {
+              "external": 0,
+              "target": "",
+              "title": "",
+              "url": "/toddler",
+            },
+            "textItems": Array [
+              Object {
+                "color": "color1",
+                "style": "style1",
+                "text": "New arrivals",
+              },
+              Object {
+                "color": "color1",
+                "style": "style1",
+                "text": "New adventures",
+              },
+            ],
+          },
+        ]
+      }
+    />
+    <ModuleHCTALinks
+      currentIndex={
+        Object {
+          "current": 0,
+          "next": 0,
+        }
+      }
+      dataCTALinks={
+        Array [
+          Object {
+            "image": Object {
+              "alt": "Toddler girl",
+              "title": "Toddler girl",
+              "url": "http://example.com/img1.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "",
+              "title": "",
+              "url": "/toddler",
+            },
+            "styled": Object {
+              "color": "color1",
+              "style": "style1",
+              "text": "Toddler Girl",
+            },
+          },
+          Object {
+            "image": Object {
+              "alt": "Girl",
+              "title": "Girl",
+              "url": "http://example.com/girl.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "",
+              "title": "",
+              "url": "/girl",
+            },
+            "styled": Object {
+              "color": "color2",
+              "style": "style2",
+              "text": "Girl",
+            },
+          },
+          Object {
+            "image": Object {
+              "alt": "Toddler boy",
+              "title": "Toddler boy",
+              "url": "http://example.com/toddler-boy.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "",
+              "title": "",
+              "url": "/toddler-boy",
+            },
+            "styled": Object {
+              "color": "color3",
+              "style": "style3",
+              "text": "Toddler boy",
+            },
+          },
+          Object {
+            "image": Object {
+              "alt": "Boy",
+              "title": "Boy",
+              "url": "http://example.com/boy.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "",
+              "title": "",
+              "url": "/boy",
+            },
+            "styled": Object {
+              "color": "color4",
+              "style": "style4",
+              "text": "Boy",
+            },
+          },
+          Object {
+            "image": Object {
+              "alt": "Baby",
+              "title": "Baby",
+              "url": "http://example.com/baby.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "",
+              "title": "",
+              "url": "/baby",
+            },
+            "styled": Object {
+              "color": "color4",
+              "style": "style5",
+              "text": "Baby",
+            },
+          },
+        ]
+      }
+    />
+  </Styled(Col)>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <errorBoundaryComponent
+      carouselConfig={
+        Object {
+          "autoplay": true,
+          "dataLocator": "moduleH_play_button",
+          "type": "light",
+        }
+      }
+      options={
+        Object {
+          "arrows": false,
+          "autoplay": true,
+          "autoplaySpeed": 4000,
+          "beforeChange": [Function],
+          "fade": true,
+          "responsive": Array [
+            Object {
+              "breakpoint": 767,
+              "settings": Object {
+                "arrows": false,
+              },
+            },
+          ],
+          "speed": 1000,
+        }
+      }
+    >
+      <WithTheme(DamImage)
+        data-locator="moduleH_composite_image_1"
+        imgConfigs={
+          Array [
+            "c_fill,g_face,q_80,h_425,w_375",
+            "c_fill,g_face,q_80,h_465,w_768",
+            "c_fill,g_face,q_80,h_541,w_1410",
+          ]
+        }
+        imgData={
+          Object {
+            "alt": "Toddler girl",
+            "title": "Toddler girl",
+            "url": "http://example.com/img1.jpg",
+          }
+        }
+        key="0"
+      />
+      <WithTheme(DamImage)
+        data-locator="moduleH_composite_image_2"
+        imgConfigs={
+          Array [
+            "c_fill,g_face,q_80,h_425,w_375",
+            "c_fill,g_face,q_80,h_465,w_768",
+            "c_fill,g_face,q_80,h_541,w_1410",
+          ]
+        }
+        imgData={
+          Object {
+            "alt": "Girl",
+            "title": "Girl",
+            "url": "http://example.com/girl.jpg",
+          }
+        }
+        key="1"
+      />
+      <WithTheme(DamImage)
+        data-locator="moduleH_composite_image_3"
+        imgConfigs={
+          Array [
+            "c_fill,g_face,q_80,h_425,w_375",
+            "c_fill,g_face,q_80,h_465,w_768",
+            "c_fill,g_face,q_80,h_541,w_1410",
+          ]
+        }
+        imgData={
+          Object {
+            "alt": "Toddler boy",
+            "title": "Toddler boy",
+            "url": "http://example.com/toddler-boy.jpg",
+          }
+        }
+        key="2"
+      />
+      <WithTheme(DamImage)
+        data-locator="moduleH_composite_image_4"
+        imgConfigs={
+          Array [
+            "c_fill,g_face,q_80,h_425,w_375",
+            "c_fill,g_face,q_80,h_465,w_768",
+            "c_fill,g_face,q_80,h_541,w_1410",
+          ]
+        }
+        imgData={
+          Object {
+            "alt": "Boy",
+            "title": "Boy",
+            "url": "http://example.com/boy.jpg",
+          }
+        }
+        key="3"
+      />
+      <WithTheme(DamImage)
+        data-locator="moduleH_composite_image_5"
+        imgConfigs={
+          Array [
+            "c_fill,g_face,q_80,h_425,w_375",
+            "c_fill,g_face,q_80,h_465,w_768",
+            "c_fill,g_face,q_80,h_541,w_1410",
+          ]
+        }
+        imgData={
+          Object {
+            "alt": "Baby",
+            "title": "Baby",
+            "url": "http://example.com/baby.jpg",
+          }
+        }
+        key="4"
+      />
+    </errorBoundaryComponent>
+  </Styled(Col)>
+</StyledComponent>
 `;

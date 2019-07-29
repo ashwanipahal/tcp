@@ -21,14 +21,8 @@ export const awsAppSync = {
 
 // TODO - to move it in env config file
 export const API_CONFIG = {
-  sitesInfo: {
-    proto: 'https',
-    storeIdCA: '10152',
-    storeIdUS: '10151',
-    catalogIdCA: '10552',
-    catalogIdUS: '10551',
-    langId: '-1',
-  },
+  sites: ['us', 'ca'],
+  brands: ['tcp', 'gym'],
   siteIds: {
     // the values here are the strings that make up the siteId protion of the sites' urls (i.e., it is the 'us' in the path ( /us/favorites)
     us: 'us',
@@ -38,8 +32,44 @@ export const API_CONFIG = {
     us: '1',
     ca: '2',
   },
-  MELISSA_KEY: '63987687',
-  BV_API_KEY: 'e50ab0a9-ac0b-436b-9932-2a74b9486436',
+  brandIds: {
+    tcp: 'tcp',
+    gym: 'gym',
+  },
+  TCP_CONFIG_OPTIONS: {
+    brandId: 'tcp',
+    brandIdCMS: 'TCP',
+  },
+  GYM_CONFIG_OPTIONS: {
+    brandId: 'gym',
+    brandIdCMS: 'Gymboree',
+  },
+  sitesInfo: {
+    proto: 'https',
+    langId: '-1',
+    MELISSA_KEY: '63987687',
+    BV_API_KEY: 'e50ab0a9-ac0b-436b-9932-2a74b9486436',
+    traceIdCount: 0,
+    assetHost: 'https://test4.childrensplace.com',
+    domain: '://test4.childrensplace.com/api/',
+    unbxd: '://search.unbxd.io',
+  },
+  US_CONFIG_OPTIONS: {
+    storeId: '10151',
+    catalogId: '10551',
+    isUSStore: true,
+    countryKey: '_US',
+    siteId: 'us',
+    siteIdCMS: 'USA',
+  },
+  CA_CONFIG_OPTIONS: {
+    storeId: '10152',
+    catalogId: '10552',
+    isUSStore: false,
+    countryKey: '_CA',
+    siteId: 'ca',
+    siteIdCMS: 'Canada',
+  },
   /* --------- UNBXD ------- */
   version: 'V2',
   pagetype: 'boolean',

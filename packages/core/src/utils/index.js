@@ -1,5 +1,7 @@
 export {
   default,
+  createAPIConfig,
+  getAPIConfig,
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
   isProduction,
@@ -13,4 +15,6 @@ export {
   getLocator,
   createUrlSearchParams,
   buildUrl,
+  getSiteId,
+  routerPush,
 } from './utils';
