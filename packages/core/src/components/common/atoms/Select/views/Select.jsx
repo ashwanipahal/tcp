@@ -46,9 +46,14 @@ const SelectBox = ({
         aria-label={ariaLabel}
         className="select__input"
         name={name}
-        value={input.value}
+        value={input.value || placeholder}
         data-locator={dataLocator}
       >
+        {!input.value && placeholder && (
+          <option value="" id="">
+            {placeholder}
+          </option>
+        )}
         {options &&
           options.map(option => {
             return (
@@ -58,9 +63,11 @@ const SelectBox = ({
             );
           })}
       </select>
-      <BodyCopy fontSize="fs12" fontFamily="secondary" className="select__label">
-        {placeholder}
-      </BodyCopy>
+      {input.value && (
+        <BodyCopy fontSize="fs12" fontFamily="secondary" className="select__label">
+          {placeholder}
+        </BodyCopy>
+      )}
       {touched && error && (
         <BodyCopy fontSize="fs12" fontFamily="secondary" component="div" color="error">
           {error}

@@ -37,7 +37,8 @@ class CustomSelect extends React.Component<Props> {
   }
 
   closeDropdownIfClickOutside = e => {
-    if (!this.customSelect.contains(e.target)) {
+    const { toggle } = this.state;
+    if (toggle && !this.customSelect.contains(e.target)) {
       this.toggleHandler();
     }
   };
