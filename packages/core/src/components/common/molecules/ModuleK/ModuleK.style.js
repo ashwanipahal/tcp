@@ -6,12 +6,14 @@ const StyledCarousal = styled(Carousel)`
     top: 44%;
   }
   .slick-next {
-    height: 50px;
+    height: 52px;
     right: -68px;
+    width: 15px;
   }
   .slick-prev {
-    height: 50px;
+    height: 52px;
     left: -68px;
+    width: 15px;
   }
   .slick-dots {
     bottom: -10px;
@@ -24,6 +26,13 @@ const StyledPromoTextBanner = styled(PromoTextBanner)`
   .style3 {
     color: ${props => props.theme.colorPalette.black};
     font-weight: ${props => props.theme.typography.fontWeights.black};
+    font-size: ${props => props.theme.typography.FONT_SIZES.fs42};
+    @media ${props => props.theme.mediaQuery.medium} {
+      font-size: 70px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: 60px;
+    }
   }
 `;
 const StyledLinkText = styled(LinkText)`
@@ -43,6 +52,10 @@ const StyledModuleK = css`
   .module-k__promoBanner,
   .module-k__header {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    font-size: ${props => props.theme.typography.FONT_SIZES.fs36};
+  }
+  @media ${props => props.theme.mediaQuery.large} {
+    font-size: 52px;
   }
   .carousal-cta {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
