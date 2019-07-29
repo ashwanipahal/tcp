@@ -176,6 +176,7 @@ const CarouselStyle = styled.div`
     color: transparent;
     border: 0;
     outline: none;
+    pointer-events: none;
     background: transparent;
   }
   .slick-dots li button:before {

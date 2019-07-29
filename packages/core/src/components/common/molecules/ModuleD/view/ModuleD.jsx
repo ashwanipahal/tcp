@@ -65,9 +65,10 @@ const ModuleD = (props: Props) => {
       {headerText && (
         <LinkText
           headerText={headerText}
-          className="moduleD_header"
+          headingClass="moduleD_header"
           component="div"
-          fontSize="fs48"
+          fontSize={['fs32', 'fs48']}
+          lineHeight="lh107"
           fontWeight="black"
           textAlign="center"
           dataLocator="moduleD_headerlink"
