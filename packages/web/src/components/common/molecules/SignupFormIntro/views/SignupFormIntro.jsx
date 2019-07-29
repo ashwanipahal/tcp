@@ -13,52 +13,59 @@ const SignupFormIntro = ({ className, formViewConfig }) => (
       ignoreGutter={{ large: true }}
       className={className}
     >
-      <BodyCopy
-        fontSize={['fs18', 'fs18', 'fs22']}
-        fontFamily="secondary"
-        textAlign="center"
-        className="sign-up__label"
-      >
-        {formViewConfig.signUpForLabel}
-      </BodyCopy>
-      <BodyCopy
-        fontSize={['fs28', 'fs28', 'fs38']}
-        fontFamily="primary"
-        fontWeight="black"
-        textAlign="center"
-        className="offer-type__label"
-      >
-        {formViewConfig.offerTypeLabel}
-      </BodyCopy>
-      <BodyCopy fontFamily="primary" className="flash-text" textAlign="center" component="div">
-        <BodyCopy fontSize="fs48" component="span" className="get-text" color="primary.main">
-          {formViewConfig.getTextLabel}
+      <section id="sign-up-modal-form-intro-view">
+        <BodyCopy
+          fontSize={['fs18', 'fs18', 'fs22']}
+          fontFamily="secondary"
+          textAlign="center"
+          className="sign-up__label"
+        >
+          {formViewConfig.signUpForLabel}
         </BodyCopy>
         <BodyCopy
-          fontSize="fs36"
-          component="span"
+          fontSize={['fs28', 'fs28', 'fs38']}
+          fontFamily="primary"
           fontWeight="black"
-          className="dollar-text"
-          color="primary.main"
+          textAlign="center"
+          className="offer-type__label"
         >
-          {formViewConfig.dollarTextLabel}
+          {formViewConfig.offerTypeLabel}
         </BodyCopy>
-        <BodyCopy
-          fontSize="fs48"
-          component="span"
-          fontWeight="black"
-          className="ten-text"
-          color="primary.main"
-        >
-          {formViewConfig.tenTextLabel}
+        <BodyCopy fontFamily="primary" className="flash-text" textAlign="center" component="div">
+          <BodyCopy fontSize="fs48" component="span" className="get-text" color="primary.main">
+            {formViewConfig.getTextLabel}
+          </BodyCopy>
+          <BodyCopy
+            fontSize="fs36"
+            component="span"
+            fontWeight="black"
+            className="dollar-text"
+            color="primary.main"
+            aria-hidden="true"
+            aria-describedby="sign-up-form-doller-text"
+          >
+            {formViewConfig.dollarTextLabel}
+          </BodyCopy>
+          <BodyCopy
+            fontSize="fs48"
+            component="span"
+            fontWeight="black"
+            className="ten-text"
+            color="primary.main"
+          >
+            {formViewConfig.tenTextLabel}
+          </BodyCopy>
+          <p className="visually-hidden" id="sign-up-form-doller-text">
+            doller
+          </p>
+          <BodyCopy fontSize="fs48" textAlign="center" className="off-text" color="primary.main">
+            {formViewConfig.offTextLabel}
+          </BodyCopy>
         </BodyCopy>
-        <BodyCopy fontSize="fs48" textAlign="center" className="off-text" color="primary.main">
-          {formViewConfig.offTextLabel}
+        <BodyCopy fontSize="fs22" fontFamily="primary" fontWeight="semibold" textAlign="center">
+          {formViewConfig.nextPurchaseLabel}
         </BodyCopy>
-      </BodyCopy>
-      <BodyCopy fontSize="fs22" fontFamily="primary" fontWeight="semibold" textAlign="center">
-        {formViewConfig.nextPurchaseLabel}
-      </BodyCopy>
+      </section>
     </Col>
   </Fragment>
 );
