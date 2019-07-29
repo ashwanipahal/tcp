@@ -4,36 +4,66 @@ import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import L1NavItem from '../../molecules/L1NavItem';
 import style from './NavBar.style';
-import L2Panel from '../../molecules/L2Panel/L2Panel';
+import L2Panel from '../../molecules/L2Panel';
+import Drawer from '../../molecules/Drawer';
 
 const NavBar = props => {
   const {
     nav: navigationData,
     className,
-    openL2Panel,
-    closeL2Panel,
-    panelData,
-    openPanel,
-    order,
+    openL2Drawer,
+    openDrawer,
+    closeDrawer,
+    hideL2Drawer,
   } = props;
 
   return (
     <React.Fragment>
       <ul className={`${className} nav-bar-l1`}>
-        {navigationData.map((navL1Item, index) => (
-          <L1NavItem
-            dataLocator={`l1menu_link_${index}`}
-            index={index}
-            key={`l1menu_link_${index.toString()}`}
-            onFocus={openL2Panel(navL1Item.subCategories, Object.keys(navL1Item.subCategories))}
-            onMouseOver={openL2Panel(navL1Item.subCategories, Object.keys(navL1Item.subCategories))}
-            onBlur={closeL2Panel}
-            onMouseOut={closeL2Panel}
-            {...navL1Item}
-          />
-        ))}
+        {navigationData.map((navL1Item, index) => {
+          let categoryLayout = [];
+          let sizesRange = [];
+          if (navL1Item.categoryContent.mainCategory) {
+            const { mainCategory } = navL1Item.categoryContent;
+            const { categoryLayout: catLayout, sizesRange: sizRange } = mainCategory;
+            categoryLayout = catLayout;
+            sizesRange = sizRange;
+          }
+
+          return (
+            <L1NavItem
+              dataLocator={`l1menu_link_${index}`}
+              index={index}
+              key={`l1menu_link_${index.toString()}`}
+              sizesRange={sizesRange}
+              onClick={openL2Drawer(`l2-drawer-${index.toString()}`)}
+              {...navL1Item}
+            >
+              <Drawer
+                id={`l2-drawer-${index.toString()}`}
+                small
+                medium
+                open={openDrawer}
+                close={closeDrawer}
+                width={{
+                  small: '314px',
+                  medium: '314px',
+                  large: '100%',
+                }}
+              >
+                <L2Panel
+                  categoryLayout={categoryLayout}
+                  order={Object.keys(navL1Item.subCategories)}
+                  panelData={navL1Item.subCategories}
+                  name={navL1Item.categoryContent.name}
+                  hideL2Drawer={hideL2Drawer(`l2-drawer-${index.toString()}`)}
+                  className="nav-bar-l2"
+                />
+              </Drawer>
+            </L1NavItem>
+          );
+        })}
       </ul>
-      <L2Panel order={order} panelData={panelData} openPanel={openPanel} />
     </React.Fragment>
   );
 };
@@ -41,18 +71,16 @@ const NavBar = props => {
 NavBar.propTypes = {
   nav: PropTypes.shape([]),
   className: PropTypes.string.isRequired,
-  openL2Panel: PropTypes.func.isRequired,
-  closeL2Panel: PropTypes.func.isRequired,
-  panelData: PropTypes.shape([]),
-  openPanel: PropTypes.bool,
-  order: PropTypes.shape([]),
+  mainCategory: PropTypes.shape({}),
+  openL2Drawer: PropTypes.func.isRequired,
+  hideL2Drawer: PropTypes.func.isRequired,
+  openDrawer: PropTypes.string.isRequired,
+  closeDrawer: PropTypes.bool.isRequired,
 };
 
 NavBar.defaultProps = {
   nav: [],
-  panelData: {},
-  openPanel: false,
-  order: [],
+  mainCategory: {},
 };
 
 export { NavBar as NavBarVanilla };

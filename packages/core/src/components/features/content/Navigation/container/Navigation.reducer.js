@@ -7,14 +7,19 @@ const NavigationReducer = (state = {}, action) => {
     case NAVIGATION_CONSTANTS.OPEN_L2_PANEL:
       return {
         ...state,
-        panelData: action.data,
-        order: action.order,
+        ...action,
         openPanel: true,
       };
-    case NAVIGATION_CONSTANTS.CLOSE_L2_PANEL:
+    case NAVIGATION_CONSTANTS.OPEN_L2_DRAWER:
       return {
         ...state,
-        openPanel: false,
+        openDrawer: action.payload,
+        closeDrawer: false,
+      };
+    case NAVIGATION_CONSTANTS.HIDE_L2_DRAWER:
+      return {
+        ...state,
+        closeDrawer: true,
       };
     default:
       return state;

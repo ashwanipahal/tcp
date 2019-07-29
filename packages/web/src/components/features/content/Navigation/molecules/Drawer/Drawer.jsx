@@ -25,10 +25,35 @@ const showOnViewport = viewport => {
   } ${viewport.large ? 'display-large-none' : ''}`;
 };
 
-const Drawer = props => {
-  const { children, className, small, medium, large, open } = props;
+const renderOverlay = () => {
+  const className = 'dark-overlay';
+  if (typeof window !== 'undefined' && document.getElementsByClassName(className)[0]) {
+    document.getElementsByClassName(className)[0].style.display = 'block';
+  }
+};
 
-  const classToOpen = open ? 'tcp-drawer__isOpen' : '';
+const closeOverlay = () => {
+  const className = 'dark-overlay';
+  if (typeof window !== 'undefined' && document.getElementsByClassName(className)[0]) {
+    document.getElementsByClassName(className)[0].style.display = 'none';
+  }
+};
+
+const Drawer = props => {
+  const { children, className, small, medium, large, open, id, close } = props;
+
+  let openDrawer = open;
+  if (typeof open === 'string') {
+    openDrawer = open === id;
+  }
+  if (close) {
+    openDrawer = false;
+    closeOverlay();
+  }
+  if (openDrawer) {
+    renderOverlay();
+  }
+  const classToOpen = openDrawer ? 'tcp-drawer__isOpen' : '';
   const classToHideOnViewports = hideOnViewport({ small, medium, large });
   const classToShowOnViewports = showOnViewport({ small, medium, large });
 
@@ -43,7 +68,6 @@ const Drawer = props => {
         <aside className={`tcp-drawer ${classToOpen} ${classToHideOnViewports}`}>
           <div className="tcp-drawer-content">{children}</div>
         </aside>
-        <div className={`${open && 'tcp-drawer-overlay'} ${classToHideOnViewports}`} />
       </React.Fragment>
     </div>
   );
@@ -56,6 +80,8 @@ Drawer.propTypes = {
   medium: PropTypes.bool,
   large: PropTypes.bool,
   open: PropTypes.bool.isRequired,
+  id: PropTypes.string.isRequired,
+  close: PropTypes.bool.isRequired,
 };
 
 Drawer.defaultProps = {

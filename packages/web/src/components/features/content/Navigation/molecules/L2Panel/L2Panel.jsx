@@ -1,37 +1,189 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { Heading, Row } from '@tcp/core/src/components/common/atoms';
+import mock from '@tcp/core/src/services/abstractors/bootstrap/navigation/mock';
+import { Heading, Row, Col, Anchor, Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import PromoBadge from '../PromoBadge';
 import style from './L2Panel.style';
 
-const L2Panel = props => {
-  const { openPanel, className, panelData, order } = props;
+const createShopByLinks = links => {
   return (
-    <Row
-      className={`${className} nav-bar-l2-panel`}
-      fullBleed={{
-        small: false,
-        medium: false,
-        large: true,
-      }}
-    >
-      {openPanel &&
-        order.map(category => {
+    <ul>
+      {links.map(link => {
+        const { url, text, title, target } = link;
+        return (
+          <li>
+            <Anchor to={url} title={title} target={target}>
+              <BodyCopy className="l2-circle-link">{text}</BodyCopy>
+            </Anchor>
+          </li>
+        );
+      })}
+    </ul>
+  );
+};
+
+const createLinks = (links, column) => {
+  if (links.length) {
+    return (
+      <ul>
+        {links.map((l2Links, index) => {
+          const {
+            categoryContent: { id, name, seoToken, mainCategory },
+          } = l2Links;
+          const promoBadge = mainCategory && mainCategory.promoBadge;
+          const classForRedContent = id === '505519' ? `highlighted` : ``;
           return (
-            <div className="l2-nav-category">
-              <Heading variant="h6">{category}</Heading>
-              <ul className="l2-nav-category-links">
-                {panelData[category].map(l2Links => {
-                  const {
-                    categoryContent: { name },
-                  } = l2Links;
-                  return <li className="l2-nav-link">{name}</li>;
-                })}
-              </ul>
-            </div>
+            <Anchor to={`/c/${seoToken}`}>
+              <BodyCopy
+                className="l2-nav-link"
+                fontFamily="secondary"
+                fontSize={['fs13', 'fs13', 'fs14']}
+                lineHeight="lh107"
+                color="text.primary"
+              >
+                <span className={`nav-bar-l1-item-label ${classForRedContent}`}>{name}</span>
+                <span
+                  className="nav-bar-l1-item-content"
+                  data-locator={`promo_badge_${index * column}`}
+                >
+                  {(promoBadge && <PromoBadge data={promoBadge} />) || ``}
+                </span>
+                <span className="icon-arrow" />
+              </BodyCopy>
+            </Anchor>
           );
         })}
-    </Row>
+      </ul>
+    );
+  }
+  return ``;
+};
+
+const L2Panel = props => {
+  const { openPanel, className, panelData, categoryLayout, order, name, hideL2Drawer } = props;
+
+  const displayClass = openPanel ? 'is-open' : '';
+  return (
+    <React.Fragment>
+      <div className={`${className} nav-bar-l2-panel ${displayClass}`}>
+        <div className="sizes-rage-background">
+          <span
+            role="button"
+            tabIndex={0}
+            className="icon-back"
+            onClick={hideL2Drawer}
+            onKeyDown={hideL2Drawer}
+          />
+          <span className="l1-label">{name}</span>
+        </div>
+        <Row
+          className="nav-bar-l2-details"
+          tabIndex={0}
+          fullBleed={{
+            small: true,
+            medium: true,
+            large: false,
+          }}
+        >
+          {order.map(category => {
+            const colSize = {
+              small: 6,
+              medium: 8,
+              large: panelData[category].length > 7 ? 4 : 2,
+            };
+            const firstCol = panelData[category].slice(0, 7);
+            const secondCol = panelData[category].slice(7);
+            const hideOnMobileClass = category === 'Lorem Ipsum' ? 's-display-none' : '';
+            return (
+              <React.Fragment>
+                <Col colSize={colSize} className="l2-nav-category">
+                  <div className="l2-nav-category-header">
+                    <Heading
+                      variant="h6"
+                      className={`l2-nav-category-heading ${hideOnMobileClass}`}
+                    >
+                      {category}
+                    </Heading>
+                    <span className="l2-nav-category-divider" />
+                  </div>
+                  <div className="l2-nav-category-links">
+                    {createLinks(firstCol, 1)}
+                    {createLinks(secondCol, 2)}
+                  </div>
+                </Col>
+              </React.Fragment>
+            );
+          })}
+          {categoryLayout &&
+            categoryLayout.map(({ columns }) =>
+              columns.map(({ imageBanner, shopBySize }) => {
+                const shopBySizeCol1 = mock.shopBySizeMockData.slice(0, 5);
+                const shopBySizeCol2 = mock.shopBySizeMockData.slice(5);
+                return (
+                  <React.Fragment>
+                    {shopBySize && (
+                      <Col
+                        className="l2-nav-category"
+                        colSize={{
+                          small: 6,
+                          medium: 8,
+                          large: 2,
+                        }}
+                      >
+                        <div className="l2-nav-category-header">
+                          <Heading variant="h6" className="l2-nav-category-heading">
+                            Shop By Size
+                          </Heading>
+                          <span className="l2-nav-category-divider" />
+                        </div>
+                        <div className="shop-by-size-links">
+                          {createShopByLinks(shopBySizeCol1)}
+                          {createShopByLinks(shopBySizeCol2)}
+                        </div>
+                      </Col>
+                    )}
+                    {imageBanner && (
+                      <Col
+                        className="l2-image-banner"
+                        colSize={{
+                          small: 6,
+                          medium: 8,
+                          large: 2,
+                        }}
+                      >
+                        {imageBanner.map(({ image, link }) => (
+                          <React.Fragment>
+                            <Image className="l2-image-banner-image" {...image} />
+                            <Anchor />
+                            <Anchor
+                              className="l2-image-banner-link"
+                              to={link.url}
+                              title={link.title}
+                              target={link.target}
+                            >
+                              <BodyCopy
+                                className="l2-nav-link"
+                                fontFamily="secondary"
+                                fontSize={['fs13', 'fs13', 'fs14']}
+                                lineHeight="lh107"
+                                color="text.primary"
+                              >
+                                <span className="nav-bar-l1-item-label">{link.text}</span>
+                                <span className="icon-arrow" />
+                              </BodyCopy>
+                            </Anchor>
+                          </React.Fragment>
+                        ))}
+                      </Col>
+                    )}
+                  </React.Fragment>
+                );
+              })
+            )}
+        </Row>
+      </div>
+    </React.Fragment>
   );
 };
 
@@ -40,6 +192,14 @@ L2Panel.propTypes = {
   openPanel: PropTypes.bool.isRequired,
   panelData: PropTypes.shape([]).isRequired,
   order: PropTypes.shape([]).isRequired,
+  categoryLayout: PropTypes.shape([]),
+  name: PropTypes.string.isRequired,
+  hideL2Drawer: PropTypes.func.isRequired,
 };
 
+L2Panel.defaultProps = {
+  categoryLayout: [],
+};
+
+export { L2Panel as L2PanelVanilla };
 export default withStyles(L2Panel, style);

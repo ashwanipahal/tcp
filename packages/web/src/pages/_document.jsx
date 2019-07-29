@@ -44,10 +44,30 @@ class MyDocument extends Document {
             key="viewport"
           />
         </Head>
-        <body>
+        <body
+          /* eslint-disable-next-line react-native/no-inline-styles */
+          style={{
+            position: 'relative',
+            minHeight: '100%',
+          }}
+        >
           <Main />
           <NextScript />
           <StaticScripts />
+          <div
+            className="dark-overlay"
+            /* eslint-disable-next-line react-native/no-inline-styles */
+            style={{
+              display: 'none',
+              background: '#1a1a1a',
+              position: 'absolute',
+              top: '157px',
+              zIndex: 1,
+              height: 'calc(100% - 157px)',
+              opacity: 0.6,
+              width: '100%',
+            }}
+          />
         </body>
       </Html>
     );

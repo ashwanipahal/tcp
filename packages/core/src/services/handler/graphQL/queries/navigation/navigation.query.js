@@ -74,6 +74,8 @@ const buildQuery = ({ brand, country, channel }) => `
     }
     subCategories {
       categoryContent {
+        seoToken
+        groupIdentifierSequence
         isShortImage
         isUnique
         productCount
@@ -85,6 +87,8 @@ const buildQuery = ({ brand, country, channel }) => `
       }
       subCategories {
         categoryContent {
+          seoToken
+          groupIdentifierSequence
           isShortImage
           isUnique
           productCount

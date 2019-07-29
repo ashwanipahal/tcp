@@ -6,7 +6,7 @@ import { NavBarVanilla as NavBar } from '../NavBar';
 describe('NavBar component', () => {
   it('renders correctly', () => {
     const NavBarComp = shallow(
-      <NavBar nav={mock.data.navigation} openL2Panel={() => {}} closeL2Panel={() => {}} />
+      <NavBar nav={mock.data.navigation} openL2Drawer={() => {}} hideL2Drawer={() => {}} />
     );
 
     expect(NavBarComp).toMatchSnapshot();
@@ -14,7 +14,7 @@ describe('NavBar component', () => {
 
   it('DOM loaded perfectly', () => {
     const NavBarComp = shallow(
-      <NavBar nav={mock.data.navigation} openL2Panel={() => {}} closeL2Panel={() => {}} />
+      <NavBar nav={mock.data.navigation} openL2Drawer={() => {}} hideL2Drawer={() => {}} />
     );
 
     expect(NavBarComp.find('.nav-bar-l1')).toHaveLength(1);

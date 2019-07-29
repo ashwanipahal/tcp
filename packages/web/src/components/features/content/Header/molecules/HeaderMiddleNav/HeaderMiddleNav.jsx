@@ -11,7 +11,6 @@ import style from './HeaderMiddleNav.style';
 const brand = identifyBrand();
 
 const handleNavigationDrawer = (openNavigationDrawer, closeNavigationDrawer, isOpen) => () => {
-  document.body.style.overflow = isOpen ? 'visible' : 'hidden';
   return isOpen ? closeNavigationDrawer() : openNavigationDrawer();
 };
 
@@ -55,6 +54,7 @@ const HeaderMiddleNav = props => {
         fullBleed={{
           small: true,
           medium: true,
+          large: true,
         }}
       >
         <Col
@@ -65,7 +65,10 @@ const HeaderMiddleNav = props => {
             small: 6,
           }}
         >
-          <Navigation openNavigationDrawer={navigationDrawer.open} />
+          <Navigation
+            openNavigationDrawer={navigationDrawer.open}
+            closeNavigationDrawer={!navigationDrawer.open}
+          />
         </Col>
       </Row>
     </React.Fragment>
