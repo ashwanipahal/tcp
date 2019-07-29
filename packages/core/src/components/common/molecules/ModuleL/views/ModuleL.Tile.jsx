@@ -20,7 +20,7 @@ const colSize = { ...config.COL_SIZE_TILE };
  */
 const ModuleLTile = ({ tileData: { image, link, styled }, index }: Props) => {
   return (
-    <BodyCopy component="div" data-locator={`${getLocator('moduleL_tiles')}_${index + 1}`}>
+    <Anchor data-locator={`${getLocator('moduleL_tiles')}_${index + 1}`} {...link}>
       <Row>
         <Col colSize={colSize} className="moduleL__tile">
           <DamImage
@@ -54,7 +54,7 @@ const ModuleLTile = ({ tileData: { image, link, styled }, index }: Props) => {
           </div>
         </Col>
       </Row>
-    </BodyCopy>
+    </Anchor>
   );
 };
 
