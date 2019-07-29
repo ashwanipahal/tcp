@@ -70,7 +70,9 @@ class ForgotPasswordView extends React.Component<Props, State> {
     const { email } = this.state;
     return (
       <React.Fragment>
-        <Button type="button" onClick={this.onBackClick} className="link-forgot" />
+        <Button type="button" onClick={this.onBackClick} className="link-forgot">
+          {labels.FORGO_PASSWORD_BACK_LOGIN}
+        </Button>
         {errorObject && showNotification && (
           <Notification
             status="error"
@@ -97,7 +99,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
                     color="black"
                     fontWeight="black"
                   >
-                    Forgot your password? No worries!
+                    {labels.FORGOT_PASSWORD_CONTENT_1}
                   </BodyCopy>
                 </Col>
                 <Col
@@ -108,8 +110,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
                   }}
                 >
                   <BodyCopy fontFamily="primary" fontSize="fs16" textAlign="center" color="black">
-                    Enter your email address, and we’ll send you instructions to reset your
-                    password.
+                    {labels.FORGOT_PASSWORD_CONTENT_2}
                   </BodyCopy>
                 </Col>
               </Row>
