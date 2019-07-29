@@ -42,6 +42,7 @@ class MyDocument extends Document {
             name="viewport"
             content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1"
           />
+          <link href="/static/app.css" rel="stylesheet" />
         </Head>
         <body
           /* eslint-disable-next-line react-native/no-inline-styles */
@@ -53,20 +54,7 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
           <StaticScripts />
-          <div
-            className="dark-overlay"
-            /* eslint-disable-next-line react-native/no-inline-styles */
-            style={{
-              display: 'none',
-              background: '#1a1a1a',
-              position: 'absolute',
-              top: '157px',
-              zIndex: 1,
-              height: 'calc(100% - 157px)',
-              opacity: 0.6,
-              width: '100%',
-            }}
-          />
+          <div className="dark-overlay" />
         </body>
       </Html>
     );

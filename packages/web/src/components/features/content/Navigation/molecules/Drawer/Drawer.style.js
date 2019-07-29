@@ -52,6 +52,9 @@ export default css`
     display: none;
   }
   @media ${props => props.theme.mediaQuery.medium} {
+    .tcp-drawer__isOpen {
+      top: ${props => (props.position && props.position.topMedium) || 0};
+    }
     .tcp-drawer-content {
       width: ${props => props.width.medium || `100%`};
     }

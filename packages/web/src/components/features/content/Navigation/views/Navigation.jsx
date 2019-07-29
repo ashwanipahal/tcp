@@ -21,6 +21,7 @@ const Navigation = props => {
       position={{
         top: '157px',
         left: 0,
+        topMedium: '130px',
       }}
     >
       <nav className={`${className} navigation nav-bar`}>
