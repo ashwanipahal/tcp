@@ -1,4 +1,5 @@
-import { executeStatefulAPICall, getAPIConfig } from '../../handler';
+import { executeStatefulAPICall } from '../../handler';
+import { getAPIConfig } from '../../../utils';
 import endpoints from '../../endpoints';
 
 export const responseContainsErrors = response => {

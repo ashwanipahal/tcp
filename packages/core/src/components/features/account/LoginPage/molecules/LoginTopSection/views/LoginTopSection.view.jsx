@@ -14,10 +14,10 @@ import styles from '../styles/LoginTopSection.styles';
 const LoginTopSection = ({ labels, className }) => {
   return (
     <BodyCopy component="div" textAlign="center" className={className}>
-      <ImageComp src={getIconPath('my-place-rewards')} />
+      <ImageComp src={getIconPath('my-place-rewards')} className="elem-mb-LRG" />
       <BodyCopy component="div" className="bordered elem-pt-MED elem-pb-LRG">
         <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary" textAlign="center">{labels.ACC_LBL_LOGIN_HEADING}</BodyCopy>
-        <BodyCopy fontWeight="semibold" fontFamily="secondary" textAlign="center">{labels.ACC_LBL_LOGIN_SUB_HEADING}</BodyCopy>
+        <BodyCopy fontWeight="semibold" fontFamily="secondary" textAlign="center" className="elem-mb-SM">{labels.ACC_LBL_LOGIN_SUB_HEADING}</BodyCopy>
         <BodyCopy fontFamily="secondary" textAlign="center">{labels.ACC_LBL_LOGIN_SUB_DESCRIPTION}</BodyCopy>
       </BodyCopy>
     </BodyCopy>

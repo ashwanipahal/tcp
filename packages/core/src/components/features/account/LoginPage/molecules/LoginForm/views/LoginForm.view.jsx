@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { reduxForm, Field } from 'redux-form';
-import Row from '../../../../../../common/atoms/Row';
-import Col from '../../../../../../common/atoms/Col';
+import withStyles from '../../../../../../common/hoc/withStyles';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../common/atoms/Button';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
@@ -11,6 +11,7 @@ import createValidateMethod from '../../../../../../../utils/formValidation/crea
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import PasswordField from '../../PasswordField';
 import Anchor from '../../../../../../common/atoms/Anchor';
+import styles from '../styles/LoginForm.styles';
 
 export const LoginForm = ({ handleSubmit, labels, loginErrorMessage, className }) => {
   return  (
@@ -22,65 +23,32 @@ export const LoginForm = ({ handleSubmit, labels, loginErrorMessage, className }
           message={loginErrorMessage}
         />
       )}
-      <Row fullBleed>
-        <Col
-          colSize={{
-            large: 12,
-            medium: 8,
-            small: 6,
-          }}
-        >
-          <Field
-            id="emailAddress"
-            placeholder={labels.ACC_LBL_LOGIN_EMAIL}
-            name="emailAddress"
-            component={TextBox}
-            dataLocator=""
-          />
-        </Col>
-      </Row>
-      <Row fullBleed>
-        <Col
-          colSize={{
-            large: 12,
-            medium: 8,
-            small: 6,
-          }}
-        >
-          <Field
-            id="password"
-            placeholder={labels.ACC_LBL_LOGIN_PASSWORD}
-            name="password"
-            component={PasswordField}
-            dataLocator=""
-          />
-        </Col>
-      </Row>
-      <Row fullBleed>
-        <Col
-          colSize={{
-            large: 12,
-            medium: 8,
-            small: 6,
-          }}
-        >
+      <BodyCopy component="div" className="elem-mb-LRG">
+        <Field
+          id="emailAddress"
+          placeholder={labels.ACC_LBL_LOGIN_EMAIL}
+          name="emailAddress"
+          component={TextBox}
+          dataLocator=""
+        />
+        <Field
+          id="password"
+          placeholder={labels.ACC_LBL_LOGIN_PASSWORD}
+          name="password"
+          component={PasswordField}
+          dataLocator=""
+        />
+        <BodyCopy component="div">
           <Field
             name="rememberMe"
             component={InputCheckbox}
             dataLocator=""
+            className=""
           >
             {labels.ACC_LBL_LOGIN_REMEMBER_ME}
           </Field>
-        </Col>
-      </Row>
-      <Row fullBleed>
-        <Col
-          colSize={{
-            large: 12,
-            medium: 8,
-            small: 6,
-          }}
-        >
+        </BodyCopy>
+        <BodyCopy component="div">
           <Field
             name="savePlcc"
             component={InputCheckbox}
@@ -88,42 +56,36 @@ export const LoginForm = ({ handleSubmit, labels, loginErrorMessage, className }
           >
             {labels.ACC_LBL_LOGIN_SAVE_MY_PLACE}
           </Field>
-        </Col>
-      </Row>
-      <Row fullBleed className="elem-mb-XS">
-        <Col
-          colSize={{
-            large: 12,
-            medium: 8,
-            small: 6,
-          }}
+        </BodyCopy>
+      </BodyCopy>
+      <BodyCopy component="div" textAlign="center" className="elem-mb-LRG">
+        <Button
+          fill="BLUE"
+          type="submit"
+          buttonVariation="fixed-width"
+          data-locator=""
+          fullWidth
+          className="elem-mb-XS"
         >
-          <Button
-            fill="BLUE"
-            type="submit"
-            buttonVariation="fixed-width"
-            data-locator=""
-          >
-            {labels.ACC_LBL_LOGIN_CTA}
-          </Button>
-        </Col>
-      </Row>
-      <Row fullBleed>
-        <Col
-          colSize={{
-            large: 12,
-            medium: 8,
-            small: 6,
-          }}
-          className="textCenter"
+          {labels.ACC_LBL_LOGIN_CTA}
+        </Button>
+        <Anchor
+          to="/"
         >
-          <Anchor
-            to="/"
-          >
-            {labels.ACC_LBL_LOGIN_FORGET_PASSWORD_CTA}
-          </Anchor>
-        </Col>
-      </Row>
+          {labels.ACC_LBL_LOGIN_FORGET_PASSWORD_CTA}
+        </Anchor>
+      </BodyCopy>
+      <BodyCopy component="div" className="border elem-pt-LRG">
+        <BodyCopy textAlign="center" className="elem-mb-LRG">{labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}</BodyCopy>
+        <Button
+          fill="BLUE"
+          type="submit"
+          buttonVariation="fixed-width"
+          data-locator=""
+        >
+          {labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
+        </Button>
+      </BodyCopy>
     </form>
     )
 }
@@ -153,4 +115,4 @@ export default reduxForm({
   form: 'LoginForm', // a unique identifier for this form
   enableReinitialize: true,
   ...validateMethod,
-})(LoginForm);
+})(withStyles(LoginForm, styles));
