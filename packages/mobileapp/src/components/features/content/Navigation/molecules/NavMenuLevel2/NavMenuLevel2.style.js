@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-export const TitleView = styled.View`
+export const TitleContainer = styled.View`
   background: ${props => props.theme.colorPalette.blue[50]};
   padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
     ${props => props.theme.spacing.ELEM_SPACING.LRG}
@@ -24,7 +24,7 @@ export const ItemViewWithHeading = styled.TouchableOpacity`
     ${props => props.theme.spacing.ELEM_SPACING.LRG} ${props => props.theme.spacing.ELEM_SPACING.XL};
 `;
 
-export const HeadingView = styled.View`
+export const HeadingContainer = styled.View`
   padding: ${props => props.theme.spacing.ELEM_SPACING.MED} 0
     ${props => props.theme.spacing.ELEM_SPACING.MED}
     ${props => props.theme.gridDimensions.gridOffsetObj.small}px;
@@ -36,7 +36,7 @@ export const HeadingView = styled.View`
   padding-right: 50px;
 `;
 
-export const SizeSelector = styled.TouchableOpacity`
+export const ShopBySizeLink = styled.TouchableOpacity`
   margin: ${props => props.theme.spacing.ELEM_SPACING.XS};
   width: 54;
   height: 54;
@@ -47,14 +47,14 @@ export const SizeSelector = styled.TouchableOpacity`
   justify-content: center;
 `;
 
-export const ShopBySizeViewWrapper = styled.View`
+export const ShopBySizeContainer = styled.View`
   margin: ${props => props.theme.spacing.ELEM_SPACING.MED}
     ${props => props.theme.spacing.ELEM_SPACING.XXS};
   flex-direction: row;
   flex-wrap: wrap;
 `;
 
-export const PromoWrapper = styled.View`
+export const PromoContainer = styled.View`
   background: ${props => props.theme.colorPalette.primary.main};
   border-radius: 5px;
   width: 150px;
@@ -79,7 +79,7 @@ export const TouchableOpacityArrow = styled.TouchableOpacity`
   padding: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
-export const PromoAndArrowView = styled.TouchableOpacity`
+export const PromoAndArrowContainer = styled.TouchableOpacity`
   align-items: center;
   flex-direction: row;
   padding: 0 ${props => props.theme.gridDimensions.gridOffsetObj.small}px 0 0;

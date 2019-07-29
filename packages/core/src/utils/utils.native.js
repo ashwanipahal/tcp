@@ -184,5 +184,7 @@ export const getLocator = locator => {
  */
 export const cropImageUrl = (url, crop) => {
   const [urlPath, urlData] = (url && url.split('/upload')) || ['', ''];
-  return `${urlPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
+  const newUrl = `${urlPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
+  console.log(newUrl);
+  return newUrl;
 };

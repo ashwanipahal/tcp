@@ -1,65 +1,22 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { SectionList, Text, View } from 'react-native';
+import { SectionList, Text } from 'react-native';
 import { getScreenWidth } from '@tcp/core/src/utils/utils.native';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
+import ShopBySize from '../../ShopBySize';
+import MenuItem from '../../MenuItems';
+import { shopBySizeArr, placeHolderText, shopBySize } from '../shopBySizeMock';
 import {
-  TitleView,
-  HeadingView,
+  TitleContainer,
+  HeadingContainer,
   ItemView,
-  SizeSelector,
-  ShopBySizeViewWrapper,
-  PromoWrapper,
-  ArrowIcon,
   ArrowBackIcon,
   TouchableOpacityArrow,
-  PromoAndArrowView,
   ItemViewWithHeading,
 } from '../NavMenuLevel2.style';
 
 const keyExtractor = (_, index) => index.toString();
 
-const placeHolderText = 'Lorem Ipsum';
-const shopBySize = 'Shop By Size';
-const shopBySizeArr = [
-  {
-    links: [
-      {
-        url: '1',
-        text: '1',
-      },
-      {
-        url: '2',
-        text: '2',
-      },
-      {
-        url: '3',
-        text: '3',
-      },
-      {
-        url: '4',
-        text: '4',
-      },
-      {
-        url: '5',
-        text: '5',
-      },
-      {
-        url: '6',
-        text: '6',
-      },
-      {
-        url: '7',
-        text: '7',
-      },
-      {
-        url: '8',
-        text: '8',
-      },
-    ],
-  },
-];
-const Icon = require('../../../../../../../../../core/src/assets/carrot-large-right.png');
 const BackIcon = require('../../../../../../../../../core/src/assets/carrot-large-left.png');
 
 /**
@@ -75,31 +32,6 @@ const navigateFromL2 = (navigate, subCats, hasL3) => {
 };
 
 /**
- * @function shopBySizeCircle populates the circular links for shop by size
- * @param {object} links shop by size links
- */
-const shopBySizeCircle = (navigate, links) => {
-  return (
-    <ShopBySizeViewWrapper>
-      {links.map(linkItem => {
-        return (
-          <SizeSelector
-            accessibilityRole="button"
-            onPress={() => navigateFromL2(navigate, linkItem.url)}
-          >
-            <BodyCopy
-              fontFamily="secondary"
-              fontSize="fs18"
-              text={linkItem.text}
-              color="text.primary"
-            />
-          </SizeSelector>
-        );
-      })}
-    </ShopBySizeViewWrapper>
-  );
-};
-/**
  * The Navigation menu level2 is created by this component
  * @param {object} props Props passed from Stack navigator screen and the parent L1
  */
@@ -107,41 +39,6 @@ const NavMenuLevel2 = props => {
   const {
     navigation: { navigate, goBack },
   } = props;
-
-  /**
-   * @function menuItem populates the text, promobadge and arrow of the menu item
-   * @param {object} links shop by size links
-   */
-  const menuItem = (maxWidthItem, item, hasBadge, promoBannerMargin, hasL3) => {
-    return (
-      <React.Fragment>
-        <View maxWidth={maxWidthItem}>
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs16"
-            fontWeight="regular"
-            text={item.categoryContent.name}
-            color="text.primary"
-            numberOfLines={1}
-          />
-        </View>
-        <PromoAndArrowView onPress={() => navigateFromL2(navigate, item.subCategories, hasL3)}>
-          {hasBadge && (
-            <PromoWrapper marginRight={promoBannerMargin}>
-              <BodyCopy
-                fontFamily="primary"
-                fontSize="fs10"
-                fontWeight="black"
-                text={item.categoryContent.mainCategory.promoBadge[0].text}
-                color="white"
-              />
-            </PromoWrapper>
-          )}
-          {hasL3 && <ArrowIcon alt="alt" source={Icon} />}
-        </PromoAndArrowView>
-      </React.Fragment>
-    );
-  };
 
   /**
    * @function renderItem populates the menu item conditionally
@@ -158,7 +55,8 @@ const NavMenuLevel2 = props => {
     // TODO - there would be a differentiating factor for generating circular links
     // Use that check instead, as of now hardcoding the mock Title
     if (title === shopBySize) {
-      return shopBySizeCircle(navigate, item.links);
+      return <ShopBySize navigate={navigate} links={item.links} hasL3={hasL3} />;
+      // return shopBySizeCircle(navigate, item.links);
     }
 
     if (item.subCategories.length) {
@@ -166,18 +64,27 @@ const NavMenuLevel2 = props => {
       promoBannerMargin = 40;
     }
 
-    // TODO - Random check for getting the badge on page, remove it
     if (item.categoryContent.mainCategory && item.categoryContent.mainCategory.promoBadge[0].text) {
       hasBadge = true;
       maxWidthItem -= 180;
     }
+
+    // In case of empty group category, using Lorem Ipsum to
+    // group these items and rendering it on top of the menu items
     if (title === placeHolderText) {
       return (
         <ItemView
           accessibilityRole="button"
           onPress={() => navigateFromL2(navigate, item.subCategories, hasL3)}
         >
-          {menuItem(maxWidthItem, item, hasBadge, promoBannerMargin, hasL3)}
+          <MenuItem
+            navigate={navigate}
+            maxWidthItem={maxWidthItem}
+            item={item}
+            hasBadge={hasBadge}
+            promoBannerMargin={promoBannerMargin}
+            hasL3={hasL3}
+          />
         </ItemView>
       );
     }
@@ -186,7 +93,14 @@ const NavMenuLevel2 = props => {
         accessibilityRole="button"
         onPress={() => navigateFromL2(navigate, item.subCategories, hasL3)}
       >
-        {menuItem(maxWidthItem, item, hasBadge, promoBannerMargin, hasL3)}
+        <MenuItem
+          navigate={navigate}
+          maxWidthItem={maxWidthItem}
+          item={item}
+          hasBadge={hasBadge}
+          promoBannerMargin={promoBannerMargin}
+          hasL3={hasL3}
+        />
       </ItemViewWithHeading>
     );
   };
@@ -225,7 +139,7 @@ const NavMenuLevel2 = props => {
       renderSectionHeader={({ section }) => {
         if (section.title === placeHolderText) {
           return (
-            <HeadingView>
+            <HeadingContainer>
               <TouchableOpacityArrow accessibilityRole="button" onPress={() => goBack()}>
                 <ArrowBackIcon source={BackIcon} />
               </TouchableOpacityArrow>
@@ -239,11 +153,11 @@ const NavMenuLevel2 = props => {
                 style={{ textTransform: 'uppercase' }}
               />
               <Text />
-            </HeadingView>
+            </HeadingContainer>
           );
         }
         return (
-          <TitleView>
+          <TitleContainer>
             <BodyCopy
               fontFamily="secondary"
               fontSize="fs16"
@@ -252,7 +166,7 @@ const NavMenuLevel2 = props => {
               // eslint-disable-next-line react-native/no-inline-styles
               style={{ textTransform: 'uppercase' }}
             />
-          </TitleView>
+          </TitleContainer>
         );
       }}
       sections={sectionArr}
