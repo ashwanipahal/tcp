@@ -84,7 +84,6 @@ const ImageGrid = (props: Props) => {
                   data-locator={`${dataLocator}${index}`}
                   imgConfigs={config.IMG_DATA.imgConfig}
                   imgData={mediaProps}
-                  aria-label={mediaProps.alt}
                 />
               </Col>
             );

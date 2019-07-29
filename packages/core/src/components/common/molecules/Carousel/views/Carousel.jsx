@@ -61,7 +61,6 @@ class Carousel extends React.PureComponent<Props, State> {
         data-locator={wrapperConfig.dataLocatorPause || wrapperConfig.dataLocator}
         src={getIconPath('icon-pause')}
         onClick={this.pause}
-        role="button"
       />
     ) : (
       <Image
@@ -69,7 +68,6 @@ class Carousel extends React.PureComponent<Props, State> {
         data-locator={wrapperConfig.dataLocatorPlay || wrapperConfig.dataLocator}
         src={getIconPath('icon-play')}
         onClick={this.play}
-        role="button"
       />
     );
   }
