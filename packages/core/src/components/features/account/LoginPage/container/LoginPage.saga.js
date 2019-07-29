@@ -86,7 +86,7 @@ function* getOrderDetailSaga() {
   }
 }
 
-function* LoginPageSaga() {
+export function* LoginPageSaga() {
   yield takeLatest(LOGINPAGE_CONSTANTS.LOGIN, loginSaga);
   yield takeLatest(LOGINPAGE_CONSTANTS.GET_USER_INFO, getUserInfoSaga);
   yield takeLatest('GET_ORDER_DETAIL', getOrderDetailSaga);
