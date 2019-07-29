@@ -13,6 +13,7 @@ const Header = ({
   navigationDrawer,
   openNavigationDrawer,
   closeNavigationDrawer,
+  userName,
 }) => {
   return (
     <header>
@@ -25,6 +26,7 @@ const Header = ({
         openNavigationDrawer={openNavigationDrawer}
         closeNavigationDrawer={closeNavigationDrawer}
         navigationDrawer={navigationDrawer}
+        userName={userName}
       />
       <HeaderPromo
         mobileMarkup
@@ -57,6 +59,7 @@ Header.propTypes = {
   navigationDrawer: PropTypes.shape({}).isRequired,
   openNavigationDrawer: PropTypes.func.isRequired,
   closeNavigationDrawer: PropTypes.func.isRequired,
+  userName: PropTypes.string.isRequired
 };
 
 export default Header;

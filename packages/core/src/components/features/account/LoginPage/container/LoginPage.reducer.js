@@ -1,20 +1,20 @@
-/**
- * These are temporary changes for a dummy login page
- */
-
+import { fromJS } from 'immutable';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
 
-const initialState = {
-  loginInfo: {},
-};
+const initialState = null;
 
 const LoginPageReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGINPAGE_CONSTANTS.SET_LOGIN_INFO:
-      return Object.assign({}, state, {
-        loginInfo: action.payload,
+      return fromJS(action.payload);
+    case LOGINPAGE_CONSTANTS.SET_LOGIN_ERROR:
+      return fromJS({
+        error: true
       });
     default:
+      if (state instanceof Object) {
+        return fromJS(state);
+      }
       return state;
   }
 };

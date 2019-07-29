@@ -6,6 +6,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { identifyBrand } from '@tcp/core/src/utils';
 import Navigation from '../../../Navigation';
 import BrandLogo from '../../../../../common/atoms/BrandLogo';
+import HeaderLoginInfo from '../HeaderLoginInfo';
 import config from '../../config';
 import style from './HeaderMiddleNav.style';
 
@@ -17,7 +18,7 @@ const handleNavigationDrawer = (openNavigationDrawer, closeNavigationDrawer, isO
 };
 
 const HeaderMiddleNav = props => {
-  const { className, openNavigationDrawer, closeNavigationDrawer, navigationDrawer } = props;
+  const { className, openNavigationDrawer, closeNavigationDrawer, navigationDrawer, userName } = props;
 
   return (
     <React.Fragment>
@@ -25,9 +26,14 @@ const HeaderMiddleNav = props => {
         <Col
           className="header-middle-nav-search"
           colSize={{
-            large: 12,
-            medium: 8,
-            small: 6,
+            large: 4,
+            medium: 4,
+            small: 3,
+          }}
+          offsetLeft={{
+            large: 4,
+            medium: 2,
+            small: 0
           }}
         >
           <Image
@@ -50,6 +56,14 @@ const HeaderMiddleNav = props => {
             dataLocator={config[brand].dataLocator}
             imgSrc={config[brand].imgSrc}
           />
+        </Col>
+        <Col colSize={{
+          large: 4,
+          medium: 2,
+          small: 3
+        }}
+        >
+          <HeaderLoginInfo userName={userName} />
         </Col>
       </Row>
       <Row
@@ -78,6 +92,7 @@ HeaderMiddleNav.propTypes = {
   navigationDrawer: PropTypes.shape({}),
   openNavigationDrawer: PropTypes.func.isRequired,
   closeNavigationDrawer: PropTypes.func.isRequired,
+  userName: PropTypes.string.isRequired
 };
 
 HeaderMiddleNav.defaultProps = {

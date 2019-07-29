@@ -4,7 +4,7 @@
 
 import React from 'react';
 import { View, Button, TextInput, Text, StyleSheet } from 'react-native'; //eslint-disable-line
-import LoginTopSection from '../../molecules/LoginTopSection';
+import LoginTopSection from '../molecules/LoginTopSection';
 
 // @flow
 type Props = {

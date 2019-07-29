@@ -70,6 +70,14 @@ function lengthValidator(value, length) {
   return len === 0 || len === length;
 }
 
+function legacyPasswordValidator (value) {
+  return /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@#%^$<>.,!%*?&\-_~`()+={}[\]|:;"'/]{8,}$/g.test(value);
+}
+
+function emailValidator (value) {
+  return /^(\s*)([a-zA-Z0-9_\-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)(\s*)$/.test(value);
+}
+
 const validatorMethods = {
   required: requiredValidator,
   nonEmpty: nonEmptyValidator,
@@ -83,6 +91,8 @@ const validatorMethods = {
   stateRequired: stateRequiredValidator,
   number: numberValidator,
   exactLength: lengthValidator,
+  legacyPassword: legacyPasswordValidator,
+  email: emailValidator,
 };
 
 export default validatorMethods;

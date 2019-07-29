@@ -1,39 +1,45 @@
-/**
- * These are temporary changes for a dummy login page
- */
-
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { login, getUserInfo } from './LoginPage.actions';
-import LoginView from '../views/login';
+import Router from 'next/router'; // eslint-disable-line
+import { login } from './LoginPage.actions';
+import labels from './LoginPage.labels';
+import { getUserLoggedInState, getLoginError } from './LoginPage.selectors';
+import LoginView from '../views';
 
-// @flow
+class LoginPageContainer extends React.PureComponent {
+  componentDidUpdate(prevProps){
+    const { isUserLoggedIn } = this.props;
+    if(!prevProps.isUserLoggedIn && isUserLoggedIn) {
+      Router.push('/');
+    }
+  }
 
-type Props = {
-  onSubmit: (SyntheticEvent<>, Object) => void,
-  loginInfo: Object,
-  getUserInfoAction: void,
-};
+  render() {
+    const { onSubmit, loginError } = this.props;
+    return <LoginView onSubmit={onSubmit} labels={labels} loginErrorMessage={loginError ? labels.ACC_LBL_LOGIN_ERROR : ''} />;
+  }
+}
 
-const LoginPageContainer = ({ onSubmit, loginInfo, getUserInfoAction }: Props) => (
-  <LoginView onSubmit={onSubmit} loginInfo={loginInfo} getUserInfo={getUserInfoAction} />
-);
+LoginPageContainer.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
+  loginError: PropTypes.bool.isRequired
+}
 
 function mapDispatchToProps(dispatch) {
   return {
     onSubmit: payload => {
       dispatch(login(payload));
     },
-    getUserInfoAction: () => {
-      dispatch(getUserInfo());
-    },
   };
 }
 
 function mapStateToProps(state) {
   return {
-    loginInfo: state.LoginPageReducer.loginInfo,
-  };
+    isUserLoggedIn: getUserLoggedInState(state),
+    loginError: getLoginError(state)
+  }
 }
 
 export default connect(

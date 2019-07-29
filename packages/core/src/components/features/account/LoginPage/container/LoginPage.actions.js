@@ -18,6 +18,13 @@ export const setLoginInfo = payload => {
   };
 };
 
+export const setLoginError = payload => {
+  return {
+    type: LOGINPAGE_CONSTANTS.SET_LOGIN_ERROR,
+    payload,
+  };
+};
+
 export const getUserInfo = () => {
   return {
     type: LOGINPAGE_CONSTANTS.GET_USER_INFO,

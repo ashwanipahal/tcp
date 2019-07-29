@@ -97,7 +97,7 @@ const TextBox = ({
       >
         {touched && error ? error : ''}
       </BodyCopy>
-      <div className="success__checkmark" />
+      {showSuccessCheck && <div className="success__checkmark" />}
     </label>
   );
 };
