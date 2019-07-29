@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import mock from '../../../../../services/abstractors/common/moduleK/mock';
-import LinkText from '../LinkText.native';
+import LinkText from '../index';
 
 let LinkTextComp;
 
