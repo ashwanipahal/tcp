@@ -11,7 +11,7 @@ const dropDownlist = css`
   }
 
   .customSelectTitle {
-    border: 1px solid #9c9c9c;
+    border: 1px solid ${props => props.theme.colorPalette.gray['600']};
     background-color: ${props => props.theme.colorPalette.gray['500']};
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
     padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
@@ -46,7 +46,7 @@ const dropDownlist = css`
     position: absolute;
     left: 0;
     width: 100%;
-    z-index: 9;
+    z-index: 1;
     overflow: auto;
   }
 

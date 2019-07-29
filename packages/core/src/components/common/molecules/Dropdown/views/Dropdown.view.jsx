@@ -5,20 +5,20 @@ import styles from '../styles/Dropdown.style';
 import withStyles from '../../../hoc/withStyles';
 import Anchor from '../../../atoms/Anchor';
 
-class Dropdown extends React.Component<Props> {
+class Dropdown extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      dropDownExpend: false,
+      dropDownExpand: false,
       active: props.active,
       activeComponent: props.activeComponent || null,
     };
   }
 
   toggleHandler = () => {
-    const { dropDownExpend } = this.state;
+    const { dropDownExpand } = this.state;
     this.setState({
-      dropDownExpend: !dropDownExpend,
+      dropDownExpand: !dropDownExpand,
     });
   };
 
@@ -30,7 +30,7 @@ class Dropdown extends React.Component<Props> {
     this.toggleHandler();
   };
 
-  subMenuList =(subSection, activeComponent)=>{
+  subMenuList = (subSection, activeComponent) => {
     return (
       <BodyCopy
         component="div"
@@ -39,20 +39,19 @@ class Dropdown extends React.Component<Props> {
         tabIndex={-1}
         onClick={e => this.onClickHandler(e, subSection)}
       >
-        <Anchor
-          asPath={subSection.url}
-          to={subSection.href}
-        >
+        <Anchor asPath={subSection.url} to={subSection.href}>
           <li
             key={subSection.id}
-            className={`dropDownLists ${ activeComponent === subSection.component ? 'dropdownActiveClass' : ''}`}
+            className={`dropDownLists ${
+              activeComponent === subSection.component ? 'dropdownActiveClass' : ''
+            }`}
           >
             {subSection.displayName}
           </li>
         </Anchor>
       </BodyCopy>
-    )
-  }
+    );
+  };
 
   itemLists = (nav, activeComponent) => {
     return (
@@ -64,29 +63,25 @@ class Dropdown extends React.Component<Props> {
           onClick={e => this.onClickHandler(e, nav)}
           tabIndex={-1}
         >
-          <Anchor
-            asPath={nav.url}
-            to={nav.href}
-          >
+          <Anchor asPath={nav.url} to={nav.href}>
             <li
               key={nav.id}
-              className={`dropDownLists ${ activeComponent === nav.component ? 'dropdownActiveClass' : ''}`}
+              className={`dropDownLists ${
+                activeComponent === nav.component ? 'dropdownActiveClass' : ''
+              }`}
             >
               {nav.displayName}
             </li>
           </Anchor>
         </BodyCopy>
-        {nav.subSections &&  nav.subSections.map(subSection =>(
-          this.subMenuList(subSection,activeComponent)
-          ))
-        }
+        {nav.subSections &&
+          nav.subSections.map(subSection => this.subMenuList(subSection, activeComponent))}
       </>
     );
   };
 
-
   render() {
-    const { dropDownExpend, active, activeComponent } = this.state;
+    const { dropDownExpand, active, activeComponent } = this.state;
     const { className, options } = this.props;
     return (
       <BodyCopy component="div" className={className}>
@@ -99,10 +94,13 @@ class Dropdown extends React.Component<Props> {
           textAlign="center"
           fontWeight="extrabold"
         >
-          <BodyCopy component="div" className={`${dropDownExpend ? 'customSelectTitleUpImg' : 'customSelectTitleImg'}`} />
+          <BodyCopy
+            component="div"
+            className={`${dropDownExpand ? 'customSelectTitleUpImg' : 'customSelectTitleImg'}`}
+          />
           {active}
         </BodyCopy>
-        {dropDownExpend && (
+        {dropDownExpand && (
           <BodyCopy component="div" className="dropdownUpperDiv">
             <ul className="dropdownUlBorder dropDownSelect">
               {options.map(nav => this.itemLists(nav, activeComponent))}
@@ -122,7 +120,7 @@ Dropdown.propTypes = {
 };
 
 Dropdown.defaultProps = {
-  className: 'className',
+  className: '',
   active: '',
   activeComponent: '',
 };

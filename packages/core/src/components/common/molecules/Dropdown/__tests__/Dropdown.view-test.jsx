@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import DropdownListVanilla from '../views';
+import DropdownVanilla from '../views';
 
-describe('DropdownList component', () => {
+describe('Dropdown component', () => {
   it('should renders correctly', () => {
     const props = {
       className: 'sample-class',
@@ -15,11 +15,10 @@ describe('DropdownList component', () => {
         ),
         title: 'Test 1',
       },
-      selectListTitle: 'Select from address book',
-      activeTitle: 'Please select list item',
-      activeValue: 'activeClassValue',
+      active: 'Active title',
+      activeComponent: 'activeClassValue',
     };
-    const component = shallow(<DropdownListVanilla {...props} />);
+    const component = shallow(<DropdownVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 
@@ -36,7 +35,7 @@ describe('DropdownList component', () => {
         title: 'Test 1',
       },
     };
-    const component = shallow(<DropdownListVanilla {...props} />);
+    const component = shallow(<DropdownVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });
