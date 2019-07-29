@@ -21,14 +21,14 @@ const BackIcon = require('../../../../../../../../../core/src/assets/carrot-larg
 
 /**
  * @function navigateFromL2 populates the L3 menu or PLP page for the L1 link that has been clicked
- * @param {object} subCats Details of the L2 menu item that has been clicked
+ * @param {object} subCategories Details of the L2 menu item that has been clicked
  * @param {object} hasL3 flag that defines if L3 is present for the L2
  */
-const navigateFromL2 = (navigate, subCats, hasL3) => {
+const navigateFromL2 = (navigate, subCategories, hasL3) => {
   if (hasL3) {
     return navigate('NavMenuLevel3');
   }
-  return navigate('productListingPage');
+  return navigate('ProductListingPage');
 };
 
 /**
