@@ -29,7 +29,7 @@ const StyledPromoTextBanner = styled(PromoTextBanner)`
       font-size: 70px;
     }
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: 60px;
+      font-size: ${props => props.theme.typography.fontSizes.fs60};
     }
   }
   .style3 {
