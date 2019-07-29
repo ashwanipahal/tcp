@@ -43,6 +43,8 @@ const GiftCards = (props: Props) => {
         <CustomButton
           text={giftCardList.size === 0 ? labels.ACC_LBL_GC_EMPTY_ADD_BTN : labels.ACC_LBL_ADD_BTN}
           buttonVariation="variable-width"
+          fill="BLUE"
+          color="white"
         />
       </ButtonWrapperStyle>
       {giftCardList.size > 0 &&

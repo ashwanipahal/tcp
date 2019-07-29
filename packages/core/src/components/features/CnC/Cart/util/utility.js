@@ -1,23 +1,25 @@
-export default getOrderPointsSummary => {
+const filterObject = (arr, searchedValue) => {
+  const filteredValue = arr.filter(value => {
+    return value.itemInfo.itemId.toString() === searchedValue.orderItemId.toString();
+  });
+  return filteredValue[0];
+};
+
+export default (getOrderPointsSummary, lastAddedToBag) => {
   let pointsSummary = {};
   if (getOrderPointsSummary.orderItems) {
-    const {
-      orderItems,
-      pointsToNextReward,
-      estimatedRewards,
-      totalItems,
-      bagSubTotal,
-    } = getOrderPointsSummary;
-    pointsSummary = {
-      itemPrice:
-        (orderItems[0] && orderItems[0].itemInfo && orderItems[0].itemInfo.offerPrice) || 0,
-      itemPoints:
-        (orderItems[0] && orderItems[0].itemInfo && orderItems[0].itemInfo.itemPoints) || 0,
-      pointsToNextReward,
-      userPoints: estimatedRewards || 0,
-      bagSubTotal: bagSubTotal.toFixed(2),
-      totalItems: totalItems || 0,
-    };
+    const lastAddedItem = filterObject(getOrderPointsSummary.orderItems, lastAddedToBag);
+    const { pointsToNextReward, estimatedRewards, totalItems, bagSubTotal } = getOrderPointsSummary;
+    if (lastAddedItem) {
+      pointsSummary = {
+        itemPrice: (lastAddedItem.itemInfo && lastAddedItem.itemInfo.offerPrice) || 0,
+        itemPoints: (lastAddedItem.itemInfo && lastAddedItem.itemInfo.itemPoints) || 0,
+        pointsToNextReward,
+        userPoints: estimatedRewards || 0,
+        bagSubTotal: bagSubTotal.toFixed(2),
+        totalItems: totalItems || 0,
+      };
+    }
   }
   return pointsSummary;
 };
