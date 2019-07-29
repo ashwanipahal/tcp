@@ -3,7 +3,7 @@ import {
   openNavigationDrawer,
   closeNavigationDrawer,
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
-import { openOverlayModal } from '../../../../common/molecules/OverlayModal/container/OverlayModal.actions';
+import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import HeaderView from '../views';
 
 const mapStateToProps = state => {

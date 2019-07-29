@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 import theme from '../themes/TCP';
 
-const { fonts, breakpoints } = theme;
+const { fonts, breakpoints, mediaQuery } = theme;
 export default css`
   body {
     font-family: ${fonts.primaryFontFamily};
@@ -65,7 +65,7 @@ export default css`
   }
 
   .overlay {
-    position: fixed;
+    position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
@@ -74,7 +74,6 @@ export default css`
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 2;
-    cursor: pointer;
   }
 
   figure {
@@ -105,6 +104,24 @@ export default css`
 
   p {
     margin: 0;
+  }
+
+  .hide-on-mobile {
+    @media ${mediaQuery.smallOnly} {
+      display: none;
+    }
+  }
+
+  .hide-on-desktop {
+    @media ${mediaQuery.largeOnly} {
+      display: none;
+    }
+  }
+
+  .hide-on-tablet {
+    @media ${mediaQuery.mediumOnly} {
+      display: none;
+    }
   }
 
   ${props => {

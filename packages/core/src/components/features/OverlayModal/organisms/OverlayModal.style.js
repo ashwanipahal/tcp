@@ -18,6 +18,7 @@ const StyledModal = css`
   .dialog__content {
     position: fixed;
     background-color: ${props => props.theme.colorPalette.white};
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
   }
   .modal__bar {
     height: 8px;

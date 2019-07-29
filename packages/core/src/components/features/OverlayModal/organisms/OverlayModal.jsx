@@ -21,13 +21,20 @@ const defaultProps = {
 class OverlayModal extends React.Component {
   constructor(props) {
     super(props);
+    const overlayElementWrapper = document.getElementById('overlayElements');
+    const overlayElement = document.getElementById('overlayComponent');
     const [body] = document.getElementsByTagName('body');
+    this.overlayElementWrapper = overlayElementWrapper;
+    this.overlayElement = overlayElement;
     this.body = body;
     this.handleWindowClick = this.handleWindowClick.bind(this);
   }
 
   componentDidMount() {
-    this.body.classList.add('overlay');
+    this.overlayElementWrapper.style.position = 'relative';
+    this.overlayElementWrapper.style.pointerEvents = 'none';
+    this.overlayElement.classList.add('overlay');
+    this.body.style.overflow = 'hidden';
     /* istanbul ignore else */
     if (window) {
       window.addEventListener('mousedown', this.handleWindowClick);
@@ -37,7 +44,10 @@ class OverlayModal extends React.Component {
 
   componentWillUnmount() {
     /* istanbul ignore else */
-    if (this.body) this.body.classList.remove('overlay');
+    this.overlayElementWrapper.style.position = 'static';
+    this.overlayElementWrapper.style.pointerEvents = 'auto;';
+    if (this.overlayElement) this.overlayElement.classList.remove('overlay');
+    this.body.style.overflow = 'visible';
     /* istanbul ignore else */
     if (window) {
       window.removeEventListener('mousedown', this.handleWindowClick);

@@ -1,6 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Col, Row } from '@tcp/core/src/components/common/atoms';
+import OverlayModal from '@tcp/core/src/components/features/OverlayModal';
 import { HeaderTopNav, HeaderPromo, HeaderMiddleNav } from '../molecules';
 import headerStyles from '../Header.style';
 
@@ -48,6 +49,7 @@ const Header = ({
           </Col>
         </Row>
       </HeaderLoyalty>
+      <OverlayModal />
     </header>
   );
 };

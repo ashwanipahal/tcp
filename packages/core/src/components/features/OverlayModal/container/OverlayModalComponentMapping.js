@@ -1,4 +1,4 @@
-import LoginPage from '../../../../features/account/LoginPage';
+import LoginPage from '../../account/LoginPage';
 
 const OverlayModalComponentMapping = {
   login: LoginPage,

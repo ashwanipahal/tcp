@@ -12,6 +12,8 @@ import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
 import AddGiftCardReducer from '@tcp/core/src/components/features/account/Payment/AddGiftCard/container/AddGiftCard.reducer';
 import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
 import AddressVerificationReducer from '@tcp/core/src/components/features/account/AddressVerification/container/AddressVerification.reducer';
+import OverlayModalReducer from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.reducer';
+
 import {
   HEADER_REDUCER_KEY,
   FOOTER_REDUCER_KEY,
@@ -39,7 +41,6 @@ import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/
 import CartReducer from '@tcp/core/src/components/features/CnC/Cart/containers/Cart.reducer';
 import HomePageReducer from '../../components/features/content/HomePage/container/HomePage.reducer';
 import EmailSignupReducer from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.reducer';
-import OverlayModalReducer from '../../components/common/molecules/OverlayModal/container/OverlayModal.reducer';
 import SmsSignupReducer from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.reducer';
 
 // A higher order reducer to filter out actions not matching a certain action name pattern.
