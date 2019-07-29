@@ -14,11 +14,10 @@ const dropDownlist = css`
     border: 1px solid #9c9c9c;
     background-color: ${props => props.theme.colorPalette.gray['500']};
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-    padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
-    cursor:pointer;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    cursor: pointer;
     position: relative;
   }
-
 
   .customSelectTitleImg {
     background: url(${downArrowIcon}) no-repeat right center;
@@ -38,22 +37,22 @@ const dropDownlist = css`
     top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
-  .dropDownLists{
-    padding: ${props => props.theme.spacing.ELEM_SPACING.SM}
-    cursor:pointer;
+  .dropDownLists {
+    padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    cursor: pointer;
   }
 
-  .dropDownSelect{
+  .dropDownSelect {
     position: absolute;
     left: 0;
     width: 100%;
     z-index: 9;
-    overflow: auto
+    overflow: auto;
   }
 
-  .dropdownUpperDiv{
+  .dropdownUpperDiv {
     position: relative;
-    text-align:center;
+    text-align: center;
   }
 
   .dropdownActiveClass {

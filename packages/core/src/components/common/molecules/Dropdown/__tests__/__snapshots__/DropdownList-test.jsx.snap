@@ -35,11 +35,10 @@ exports[`DropdownList component should renders correctly 1`] = `
           ";
     padding: ",
           [Function],
-          "
-    cursor:pointer;
+          ";
+    cursor: pointer;
     position: relative;
   }
-
 
   .customSelectTitleImg {
     background: url(",
@@ -75,24 +74,24 @@ exports[`DropdownList component should renders correctly 1`] = `
           ";
   }
 
-  .dropDownLists{
+  .dropDownLists {
     padding: ",
           [Function],
-          "
-    cursor:pointer;
+          ";
+    cursor: pointer;
   }
 
-  .dropDownSelect{
+  .dropDownSelect {
     position: absolute;
     left: 0;
     width: 100%;
     z-index: 9;
-    overflow: auto
+    overflow: auto;
   }
 
-  .dropdownUpperDiv{
+  .dropdownUpperDiv {
     position: relative;
-    text-align:center;
+    text-align: center;
   }
 
   .dropdownActiveClass {
@@ -171,11 +170,10 @@ exports[`DropdownList component should renders correctly when optional fields ar
           ";
     padding: ",
           [Function],
-          "
-    cursor:pointer;
+          ";
+    cursor: pointer;
     position: relative;
   }
-
 
   .customSelectTitleImg {
     background: url(",
@@ -211,24 +209,24 @@ exports[`DropdownList component should renders correctly when optional fields ar
           ";
   }
 
-  .dropDownLists{
+  .dropDownLists {
     padding: ",
           [Function],
-          "
-    cursor:pointer;
+          ";
+    cursor: pointer;
   }
 
-  .dropDownSelect{
+  .dropDownSelect {
     position: absolute;
     left: 0;
     width: 100%;
     z-index: 9;
-    overflow: auto
+    overflow: auto;
   }
 
-  .dropdownUpperDiv{
+  .dropdownUpperDiv {
     position: relative;
-    text-align:center;
+    text-align: center;
   }
 
   .dropdownActiveClass {
