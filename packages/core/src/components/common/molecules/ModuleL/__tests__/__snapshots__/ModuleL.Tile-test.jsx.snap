@@ -1,17 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ModuleL Header component renders correctly 1`] = `
-<Styled(BodyCopy)
-  className={null}
-  color="text.primary"
-  component="div"
+<Styled(Anchor)
+  class=""
   data-locator="moduleL_tiles_NaN"
-  fontFamily="primary"
-  fontSize={12}
-  fontWeight="regular"
-  letterSpacing="normal"
-  lineHeight="normal"
-  textAlign="left"
+  external={0}
+  target=""
+  text="Shop Unicorns & Friends"
+  title="Shop Unicorns & Friends"
+  url="https://www.childrensplace.com/us/c/toddler-girl-clothes"
 >
   <Styled(Row)>
     <Styled(Col)
@@ -82,5 +79,5 @@ exports[`ModuleL Header component renders correctly 1`] = `
       </div>
     </Styled(Col)>
   </Styled(Row)>
-</Styled(BodyCopy)>
+</Styled(Anchor)>
 `;

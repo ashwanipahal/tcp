@@ -8,6 +8,7 @@ import GlobalStyle from '@tcp/core/styles/globalStyles';
 import theme from '@tcp/core/styles/themes/TCP';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
+import { createAPIConfig } from '@tcp/core/src/utils';
 import { Header, Footer } from '../components/features/content';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
@@ -30,8 +31,18 @@ class TCPWebApp extends App {
     ReactAxe.runAccessibility();
   }
 
-  static loadGlobalData(Component, { store }, pageProps) {
-    store.dispatch(bootstrapData(Component.pageInfo));
+  static loadGlobalData(Component, { store, res, isServer }, pageProps) {
+    // getInitialProps of _App is called on every internal page navigation in spa.
+    // This check is to avoid unnecessary api call in those cases
+    if (isServer) {
+      const { locals } = res;
+      const apiConfig = createAPIConfig(locals);
+      const payload = {
+        pageInfo: Component.pageInfo,
+        apiConfig,
+      };
+      store.dispatch(bootstrapData(payload));
+    }
     return pageProps;
   }
 
@@ -57,7 +68,7 @@ class TCPWebApp extends App {
             <GlobalStyle />
             <Grid>
               <Header />
-              <div id="overlayElements">
+              <div id="overlayWrapper">
                 <div id="overlayComponent" />
                 <Component {...pageProps} />
                 <Footer />

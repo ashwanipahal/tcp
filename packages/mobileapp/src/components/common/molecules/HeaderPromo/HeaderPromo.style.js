@@ -3,7 +3,9 @@ import colors from '@tcp/core/styles/themes/TCP/colors';
 
 export const MessageContainer = styled.TouchableOpacity`
   flex-direction: row;
-  width: ${props => props.width - 75}px;
+  width: ${props => props.width}px;
+  padding-left: 20px;
+  height: 100%;
   align-items: center;
   align-self: center;
 `;
