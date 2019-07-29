@@ -10,7 +10,7 @@ type Props = {
   createAccountAction: Function,
 };
 
-const CreateAccountContainer = ({ className, createAccountAction }: Props) => {
+export const CreateAccountContainer = ({ className, createAccountAction }: Props) => {
   return (
     <CreateAccountView
       className={className}

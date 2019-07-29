@@ -22,23 +22,18 @@ type Props = {
   confirmHideShowPwdField?: string,
 };
 
-const handleSubmitForm = data => {
-  const { createAccountAction } = this.props;
-  createAccountAction(data);
-};
-
 // eslint-disable-next-line import/no-mutable-exports
 let CreateAccountForm = ({
   isMakeDefaultDisabled,
-  handleSubmit,
   labels,
   isIAgreeField,
   hideShowPwdField,
   confirmHideShowPwdField,
+  handleSubmit,
 }: Props) => {
   return (
     <div>
-      <form onSubmit={handleSubmit(() => handleSubmitForm)}>
+      <form onSubmit={handleSubmit}>
         <Row fullBleed className="row-form-wrapper">
           <Col
             className="banner padding-left-right-15"
