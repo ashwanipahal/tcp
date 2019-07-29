@@ -1,8 +1,10 @@
+/* eslint-disable */
 import { connect } from 'react-redux';
 import {
   openNavigationDrawer,
   closeNavigationDrawer,
-} from '@tcp/core/src/components/features/content/Header/container/Header.actions';
+} from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
+import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import HeaderView from '../views';
 
 const mapStateToProps = state => {
@@ -19,6 +21,7 @@ const mapDispatchToProps = dispatch => {
   return {
     openNavigationDrawer: () => dispatch(openNavigationDrawer()),
     closeNavigationDrawer: () => dispatch(closeNavigationDrawer()),
+    openOverlay: component => dispatch(openOverlayModal(component)),
   };
 };
 
