@@ -22,6 +22,7 @@ exports[`AddressTile component should renders correctly 1`] = `
       }
       dataLocatorPrefix="addressbook"
       fontWeight="bold"
+      isDefault={false}
       showCountry={true}
       showPhone={true}
     />

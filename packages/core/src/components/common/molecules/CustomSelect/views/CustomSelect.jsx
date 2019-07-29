@@ -16,6 +16,21 @@ class CustomSelect extends React.Component<Props> {
     };
   }
 
+  componentDidUpdate(prevProps){
+    const { activeValue } = this.props;
+    if(prevProps.activeValue !== activeValue){
+      this.updateState();
+    }
+  }
+
+  updateState = () => {
+    const { activeValue, activeTitle } = this.props;
+    this.setState({
+      activeValue,
+      activeTitle
+    });
+  }
+
   toggleHandler = () => {
     const { toggle } = this.state;
     this.setState({
@@ -57,17 +72,18 @@ class CustomSelect extends React.Component<Props> {
 CustomSelect.propTypes = {
   className: PropTypes.string,
   selectListTitle: PropTypes.string,
-  clickHandler: PropTypes.func.isRequired,
+  clickHandler: PropTypes.func,
   options: PropTypes.shape({}).isRequired,
   activeTitle: PropTypes.string,
   activeValue: PropTypes.string,
 };
 
 CustomSelect.defaultProps = {
-  className: 'className',
+  className: '',
   selectListTitle: '',
   activeTitle: '',
   activeValue: '',
+  clickHandler: () => {}
 };
 
 export default withStyles(CustomSelect, styles);
