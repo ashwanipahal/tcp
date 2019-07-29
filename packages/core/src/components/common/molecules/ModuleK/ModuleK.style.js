@@ -37,7 +37,7 @@ const StyledPromoTextBanner = styled(PromoTextBanner)`
     font-weight: ${props => props.theme.typography.fontWeights.black};
     font-size: 70px;
     @media ${props => props.theme.mediaQuery.large} {
-      font-size: 60px;
+      font-size: ${props => props.theme.typography.fontSizes.fs60};
     }
   }
 `;
