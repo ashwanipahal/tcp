@@ -9,8 +9,10 @@ import getPointsSummary from '../../Cart/util/utility';
 
 export class AddedToBagViewPointsContainer extends React.Component {
   componentDidMount = () => {
+    // eslint-disable-next-line no-unused-vars
     const { getOrderDetailsAction } = this.props;
-    getOrderDetailsAction();
+    // eslint-disable-next-line extra-rules/no-commented-out-code
+    // getOrderDetailsAction();
   };
 
   render() {
