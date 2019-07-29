@@ -7,12 +7,12 @@ import accountNavigationAbstractor from '../../../../../services/abstractors/acc
 export function* getAccountNavigationList() {
   try {
     yield put(showLoader());
-    const contact = yield call(accountNavigationAbstractor.getData, 'AccountNavigation', {
+    const accountNav = yield call(accountNavigationAbstractor.getData, 'AccountNavigation', {
       brand: 'TCP',
       country: 'USA',
       channel: 'Desktop',
     });
-    yield put(setAccountNavigationList(contact));
+    yield put(setAccountNavigationList(accountNav));
   } catch (err) {
     yield null;
   }
