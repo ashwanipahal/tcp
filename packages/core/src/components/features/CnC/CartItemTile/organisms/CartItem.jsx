@@ -24,11 +24,15 @@ class CartItem extends React.Component<Props, State> {
     };
   }
 
+  toggleFormVisibility = () => {
+    const { isEdit } = this.state;
+    this.setState({ isEdit: !isEdit });
+  };
+
   handleEditCartItem = productNumber => {
     const productNum = productNumber.slice(0, productNumber.indexOf('_'));
-    const { isEdit } = this.state;
+    this.toggleFormVisibility();
     const { getProductSKUInfo } = this.props;
-    this.setState({ isEdit: !isEdit });
     getProductSKUInfo(productNum);
   };
 
@@ -44,9 +48,8 @@ class CartItem extends React.Component<Props, State> {
 
   handleSubmit = (itemId, skuId, quantity, itemPartNumber, variantNo) => {
     const { updateCartItem } = this.props;
-    const { isEdit } = this.state;
     updateCartItem(itemId, skuId, quantity, itemPartNumber, variantNo);
-    this.setState({ isEdit: !isEdit });
+    this.toggleFormVisibility();
   };
 
   render() {
@@ -103,6 +106,7 @@ class CartItem extends React.Component<Props, State> {
             colorFitsSizesMap={editableProductInfo && editableProductInfo.colorFitsSizesMap}
             handleSubmit={this.handleSubmit}
             initialValues={this.getInitialValuesForEditableForm(item)}
+            // formVisiblity={this.toggleFormVisibility()}
           />
         )}
       </React.Fragment>

@@ -22,7 +22,7 @@ type Props = {
   editableProductInfo: any,
 };
 
-const CartItemTileContainer = ({
+export const CartItemTileContainer = ({
   getOrderDetails,
   cartItems,
   removeCartItem,
@@ -39,7 +39,7 @@ const CartItemTileContainer = ({
     editableProductInfo={editableProductInfo}
   />
 );
-function mapDispatchToProps(dispatch) {
+export const mapDispatchToProps = (dispatch: ({}) => void) => {
   return {
     getOrderDetails: () => {
       dispatch(getOrderDetails());
@@ -54,7 +54,7 @@ function mapDispatchToProps(dispatch) {
       dispatch(getProductSKUInfo(productNumber));
     },
   };
-}
+};
 
 function mapStateToProps(state) {
   return {

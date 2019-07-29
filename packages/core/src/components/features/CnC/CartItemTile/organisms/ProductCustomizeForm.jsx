@@ -1,3 +1,4 @@
+/* eslint-disable no-plusplus */
 import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
@@ -120,6 +121,24 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
     });
   };
 
+  quantityChange = e => {
+    this.setState({
+      selectedQuantity: e.target.value,
+    });
+  };
+
+  getQuantityList = () => {
+    const quantityArray = [];
+    for (let i = 0; i < 15; i++) {
+      let num = i;
+      quantityArray.push({
+        displayName: ++num,
+        id: ++num,
+      });
+    }
+    return quantityArray;
+  };
+
   render() {
     const { colorFitsSizesMap, item } = this.props;
     const { selectedColor, selectedFit, selectedSize, selectedQuantity } = this.state;
@@ -185,6 +204,17 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
               component={SelectBox}
               options={sizeList}
               onChange={this.sizeChange}
+              dataLocator="addnewaddress-state"
+            />
+          </Col>
+          <Col colSize={{ small: 6, medium: 4, large: 2 }}>
+            <Field
+              id="quantity"
+              placeholder="Quantity"
+              name="quantity"
+              component={SelectBox}
+              options={this.getQuantityList()}
+              onChange={this.quantityChange}
               dataLocator="addnewaddress-state"
             />
           </Col>
