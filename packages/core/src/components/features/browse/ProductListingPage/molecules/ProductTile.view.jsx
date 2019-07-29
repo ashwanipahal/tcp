@@ -28,14 +28,13 @@ class ProductTile extends React.Component {
 
   render() {
     const { quantity, storeId, brand } = this.state;
-    const { item, addToBagEcom, addToBagBossBopis } = this.props;
+    const { item, addToBagEcom, addToBagBossBopis, index } = this.props;
 
     const { colorFitsSizesMap, imagesByColor } = item;
     const { color, fits, hasFits } = colorFitsSizesMap[0];
     const selectedColor = color.name;
     const selectedFit = hasFits ? fits[0].fitName : '';
     const selectedSize = fits[0].sizes[0].sizeName;
-    console.log('item', item);
     return (
       <Col
         tagName="li"
@@ -46,16 +45,30 @@ class ProductTile extends React.Component {
         <p className="product-name">{item.name}</p>
         <p className="product-name">{item.shortDescription}</p>
         <div class="product-image">
-          <img src={endpoints.global.baseURI + imagesByColor[selectedColor].basicImageUrl} />
+          <img
+            data-locator={'productImage-PLP-' + index}
+            src={endpoints.global.baseURI + imagesByColor[selectedColor].basicImageUrl}
+          />
         </div>
-        <p className="product-name">selectedColor :{selectedColor}</p>
-        <p className="product-name">selectedFit :{selectedFit}</p>
-        <p className="product-name">selectedSize :{selectedSize}</p>
-        <p className="product-disc-price">${item.offerPrice}</p>
+        <p className="product-name">
+          selectedColor : <span data-locator={'product-color-' + index}>{selectedColor}</span>
+        </p>
+        <p className="product-name">
+          selectedFit : <span data-locator={'product-fit-' + index}>{selectedFit}</span>
+        </p>
+        <p className="product-name">
+          selectedSize : <span data-locator={'product-size-' + index}>{selectedSize}</span>
+        </p>
+        <p className="product-disc-price" data-locator={'discountedPrice-PLP-' + index}>
+          ${item.offerPrice}
+        </p>
         <p className="product-original-price">{`Was $${item.listPrice}`}</p>
         <div className="product-quantity">
           Please select a quantity
-          <select onChange={e => this.selectChange(e, 'quantity')}>
+          <select
+            onChange={e => this.selectChange(e, 'quantity')}
+            data-locator={'product-quantity-' + index}
+          >
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -75,7 +88,10 @@ class ProductTile extends React.Component {
         </div>
         <div className="product-quantity">
           Please select brand:
-          <select onChange={e => this.selectChange(e, 'brand')}>
+          <select
+            onChange={e => this.selectChange(e, 'brand')}
+            data-locator={'product-brand-' + index}
+          >
             <option value="tcp">TCP</option>
             <option value="gymboree">GYMBOREE</option>
           </select>
@@ -91,6 +107,7 @@ class ProductTile extends React.Component {
               wishlistItemId: false,
             })
           }
+          data-locator={'addToBagPLP-ecom-' + index}
           buttonVariation="fixed-width"
           fullWidth
         >
@@ -99,7 +116,10 @@ class ProductTile extends React.Component {
         <br />
         <div className="product-store">
           Please select a store
-          <select onChange={e => this.selectChange(e, 'storeId')}>
+          <select
+            onChange={e => this.selectChange(e, 'storeId')}
+            data-locator={'product-store-' + index}
+          >
             <option value="110715">Newport Center 110715</option>
             <option value="110961">Union Square 110961</option>
             <option value="111287">Bergenline Ave 111287</option>
@@ -119,6 +139,7 @@ class ProductTile extends React.Component {
               wishlistItemId: false,
             })
           }
+          data-locator={'addToBagPLP-boss-' + index}
           buttonVariation="fixed-width"
           fullWidth
         >
@@ -135,6 +156,7 @@ class ProductTile extends React.Component {
               wishlistItemId: false,
             })
           }
+          data-locator={'addToBagPLP-bopis-' + index}
           buttonVariation="fixed-width"
           fullWidth
         >
