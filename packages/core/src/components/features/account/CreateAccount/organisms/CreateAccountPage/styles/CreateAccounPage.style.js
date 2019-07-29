@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 const styles = css`
   .padding-left-right-15 {
-    padding: 0 45px;
+    padding: 0 15px;
   }
   .padding-bottom-10 {
     padding-bottom: 10px;
@@ -20,8 +20,8 @@ const styles = css`
     display: flex;
     justify-content: center;
   }
-  .row-form-wrapper {
-    padding: 40px 28px 30px;
+  .parent-wrapper {
+    padding: 40px 28px 60px;
   }
   .img-parent {
     border-bottom: 2px solid;
