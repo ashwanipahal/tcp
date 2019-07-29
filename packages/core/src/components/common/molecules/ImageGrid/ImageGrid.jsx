@@ -81,7 +81,6 @@ const ImageGrid = (props: Props) => {
             return (
               <Col colSize={colSize} className="image-col">
                 <DamImage
-                  className="moduleK_dam-image"
                   data-locator={`${dataLocator}${index}`}
                   imgConfigs={config.IMG_DATA.imgConfig}
                   imgData={mediaProps}

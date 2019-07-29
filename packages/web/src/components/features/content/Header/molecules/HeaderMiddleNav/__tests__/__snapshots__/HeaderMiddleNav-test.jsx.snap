@@ -9,7 +9,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       className="header-middle-nav-search"
       colSize={
         Object {
-          "large": 12,
+          "large": 7,
           "medium": 8,
           "small": 6,
         }
@@ -27,6 +27,37 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         dataLocator="global_TCPlink"
         imgSrc="/static/images/tcp-logo.svg"
       />
+    </Styled(Col)>
+    <Styled(Col)
+      className="hide-on-mobile hide-on-tablet"
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="leftLink"
+        fontSizeVariation="small"
+        href="#"
+        id="createAccount"
+        onClick={[Function]}
+      >
+        Create Account
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="rightLink "
+        fontSizeVariation="small"
+        href="#"
+        id="login"
+        onClick={[Function]}
+      >
+        Login
+      </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)

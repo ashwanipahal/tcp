@@ -7,7 +7,12 @@ import style from './L1NavItem.style';
 
 const L1NavItem = props => {
   const {
-    categoryContent: { id, name, description, mainCategory },
+    categoryContent: {
+      id,
+      name,
+      description,
+      mainCategory: { promoBadge },
+    },
     className,
     dataLocator,
     index,
@@ -15,8 +20,6 @@ const L1NavItem = props => {
     onClick,
     ...others
   } = props;
-
-  const promoBadge = mainCategory && mainCategory.promoBadge;
   const classForRedContent = id === '505518' ? `highlighted` : ``;
 
   return (

@@ -1,6 +1,6 @@
 import { fromJS } from 'immutable';
-import FOOTER_CONSTANTS from '@tcp/core/src/components/features/content/Footer/container/Footer.constants';
-import FooterReducer from '@tcp/core/src/components/features/content/Footer/container/Footer.reducer';
+import FOOTER_CONSTANTS from '@tcp/core/src/components/common/organisms/Footer/container/Footer.constants';
+import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
 
 describe('Footer Reducer', () => {
   let state = '';

@@ -151,11 +151,7 @@ class ApiHelper {
         'tcp-trace-request-id': this.generateTraceId(),
         'tcp-trace-session-id': this.generateSessionId(),
       };
-    } else if (args && args.body && !args.body.rows) {
-      // eslint-disable-next-line no-param-reassign
-      // args.body.rows = DEFAULT_PAYLOAD_SEARCH_ROWS_COUNT;
     }
-
     const unbxdUID = readCookie('unbxd.userId');
     if (isClient() && args.webService.unbxd && unbxdUID) {
       args.body = args.body || {};

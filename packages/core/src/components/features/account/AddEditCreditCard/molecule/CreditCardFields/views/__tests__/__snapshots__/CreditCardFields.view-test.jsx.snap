@@ -2,6 +2,7 @@
 
 exports[`CreditCardFields component should renders correctly when isExpirationRequired is false 1`] = `
 <Styled(Row)
+  className=""
   fullBleed={true}
 >
   <Styled(Col)
@@ -28,13 +29,14 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
         <Field
           cardType=""
           cardTypeImgUrl=""
+          className="field"
           component={
             Object {
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
                 "componentId": "sc-iwsKbI",
-                "isStatic": true,
+                "isStatic": false,
                 "rules": Array [
                   "
   ",
@@ -45,7 +47,9 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     position: absolute;
     top: 0;
     right: 0;
-    width: 50px;
+    width: ",
+                  [Function],
+                  ";
   }
 ",
                   ";
@@ -66,6 +70,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           id="cardNumber"
           isPLCCEnabled={true}
           name="cardNumber"
+          showSuccessCheck={false}
         />
       </Styled(Col)>
     </Styled(Row)>
@@ -75,6 +80,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
 
 exports[`CreditCardFields component should renders correctly when isExpirationRequired is true 1`] = `
 <Styled(Row)
+  className=""
   fullBleed={true}
 >
   <Styled(Col)
@@ -101,13 +107,14 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
         <Field
           cardType=""
           cardTypeImgUrl=""
+          className="field"
           component={
             Object {
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
                 "componentId": "sc-iwsKbI",
-                "isStatic": true,
+                "isStatic": false,
                 "rules": Array [
                   "
   ",
@@ -118,7 +125,9 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     position: absolute;
     top: 0;
     right: 0;
-    width: 50px;
+    width: ",
+                  [Function],
+                  ";
   }
 ",
                   ";
@@ -139,6 +148,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
           id="cardNumber"
           isPLCCEnabled={true}
           name="cardNumber"
+          showSuccessCheck={false}
         />
       </Styled(Col)>
     </Styled(Row)>
@@ -158,6 +168,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     }
   >
     <Field
+      className="field"
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -242,6 +253,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
       dataLocator="payment-expmonthdd"
       id="expMonth"
       name="expMonth"
+      showSuccessCheck={false}
     />
   </Styled(Col)>
   <Styled(Col)
@@ -254,6 +266,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     }
   >
     <Field
+      className="field"
       component={
         Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -338,6 +351,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
       dataLocator="payment-expyeardd"
       id="expYear"
       name="expYear"
+      showSuccessCheck={false}
     />
   </Styled(Col)>
 </Styled(Row)>

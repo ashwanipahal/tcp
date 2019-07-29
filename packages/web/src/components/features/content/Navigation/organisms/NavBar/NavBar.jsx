@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
@@ -69,7 +68,7 @@ const NavBar = props => {
 };
 
 NavBar.propTypes = {
-  nav: PropTypes.shape([]),
+  nav: PropTypes.shape([]).isRequired,
   className: PropTypes.string.isRequired,
   mainCategory: PropTypes.shape({}),
   openL2Drawer: PropTypes.func.isRequired,
@@ -79,7 +78,6 @@ NavBar.propTypes = {
 };
 
 NavBar.defaultProps = {
-  nav: [],
   mainCategory: {},
 };
 
