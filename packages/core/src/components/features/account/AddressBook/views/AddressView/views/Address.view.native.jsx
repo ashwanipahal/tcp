@@ -25,8 +25,6 @@ type Props = {
 };
 
 export class AddressView extends React.PureComponent<Props> {
-  onAddNNewAddressClick = () => {};
-
   render() {
     const {
       addresses,

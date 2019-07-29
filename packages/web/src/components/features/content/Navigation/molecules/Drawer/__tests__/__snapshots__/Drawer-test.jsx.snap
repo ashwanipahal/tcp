@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drawer component renders correctly 1`] = `
+<div>
+  <div
+    className="  "
+  >
+    Renders correctly
+  </div>
+  <aside
+    className="tcp-drawer tcp-drawer__isOpen display-small-none display-medium-none display-large-none"
+  >
+    <div
+      className="tcp-drawer-content"
+    >
+      Renders correctly
+    </div>
+  </aside>
+  <div
+    className="tcp-drawer-overlay display-small-none display-medium-none display-large-none"
+  />
+</div>
+`;

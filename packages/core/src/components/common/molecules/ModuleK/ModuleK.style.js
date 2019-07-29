@@ -6,17 +6,23 @@ const StyledCarousal = styled(Carousel)`
     top: 44%;
   }
   .slick-next {
+    height: 50px;
     right: -68px;
   }
   .slick-prev {
+    height: 50px;
     left: -68px;
   }
   .slick-dots {
     bottom: -10px;
   }
+  .slick-dots li button {
+    pointer-events: none;
+  }
 `;
 const StyledPromoTextBanner = styled(PromoTextBanner)`
-  .text-black {
+  .style3 {
+    color: ${props => props.theme.colorPalette.black};
     font-weight: ${props => props.theme.typography.fontWeights.black};
   }
 `;

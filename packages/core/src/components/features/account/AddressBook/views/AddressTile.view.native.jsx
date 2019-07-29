@@ -1,23 +1,13 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import {
-  HeadingTextStyle,
-  WrapperStyle,
-  ImgWrapper,
-  ImageStyle,
-  EmptyCCLabelStyle,
-  DescriptionEmptyCCStyle,
-  ButtonWrapperStyle,
   AddressTileWrapper,
   AddressTileContext,
-  AddressTileHeading,
   AddressLinks,
   AddressLinkLeftMargin,
-  LeftMargin,
 } from '../styles/AddressBook.style.native';
 
 import withStyles from '../../../../common/hoc/withStyles.native';
-import BodyCopy from '../../../../common/atoms/BodyCopy';
 import Badge from '../../../../common/atoms/Badge';
 import Anchor from '../../../../common/atoms/Anchor';
 import Address from '../../../../common/molecules/Address';
@@ -26,7 +16,6 @@ import Address from '../../../../common/molecules/Address';
 type Props = {
   address: Object,
   labels: Object,
-  className: string,
   onDefaultShippingAddressClick(address: {}): Object,
   setSelectedAddress: Function,
   setDeleteModalMountState: Function,
@@ -71,7 +60,7 @@ class AddressBookTile extends React.Component<Props> {
   };
 
   render() {
-    const { address, labels, className } = this.props;
+    const { address, labels } = this.props;
 
     return (
       <AddressTileWrapper>

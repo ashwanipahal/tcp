@@ -25,6 +25,7 @@ type State = {
  */
 const MODULE_HEIGHT = config.MODULE_STYLE.height;
 const MODULE_WIDTH = getScreenWidth();
+const MODULE_DIRECTION = true;
 
 /**
  * TODO: Link style has to be updated
@@ -118,13 +119,13 @@ class ModuleH extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { divCTALinks, headerText: { link, textLines } = {} } = this.props;
+    const { divCTALinks, headerText: [{ link, textItems }] = {} } = this.props;
 
     return (
       <Wrapper>
         <HeaderWrapper>
-          {textLines &&
-            textLines.map((textLine, index) => {
+          {textItems &&
+            textItems.map((textLine, index) => {
               return link ? (
                 <TouchableOpacity
                   key={index.toString()}
@@ -163,6 +164,7 @@ class ModuleH extends React.PureComponent<Props, State> {
             renderItem={this.renderItem}
             height={MODULE_HEIGHT}
             width={MODULE_WIDTH}
+            vertical={MODULE_DIRECTION}
             carouselConfig={{
               autoplay: true,
             }}

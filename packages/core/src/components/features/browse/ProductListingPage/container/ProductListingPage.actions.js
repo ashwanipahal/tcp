@@ -13,3 +13,17 @@ export const getPlpProducts = payload => {
     payload,
   };
 };
+
+export const setGiftCardProducts = payload => {
+  return {
+    type: PRODUCTLISTINGPAGE_CONSTANTS.SET_GIFT_CARD_PRODUCTS,
+    payload,
+  };
+};
+
+export const getGiftCardProducts = payload => {
+  return {
+    type: PRODUCTLISTINGPAGE_CONSTANTS.FETCH_GIFT_CARD_PRODUCTS,
+    payload,
+  };
+};

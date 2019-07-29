@@ -2,7 +2,10 @@ import layoutAbstractor from './layout';
 import labelsAbstractor from './labels';
 import headerAbstractor from './header';
 import footerAbstractor from './footer';
+import navigationAbstractor from './navigation';
 import handler from '../../handler';
+import { getAPIConfig } from '../../../utils';
+
 import { defaultBrand, defaultChannel, defaultCountry } from '../../api.constants';
 
 /**
@@ -82,15 +85,16 @@ const fetchBootstrapData = async ({ pages, labels, brand, country, channel }) =>
  */
 const bootstrap = async pages => {
   const response = {};
-
+  const apiConfig = getAPIConfig();
   const bootstrapParams = {
     pages,
     labels: {},
-    brand: defaultBrand,
+    brand: apiConfig.brandIdCMS || defaultBrand,
     channel: defaultChannel,
-    country: defaultCountry,
+    country: apiConfig.siteIdCMS || defaultCountry,
   };
 
+  // TODO - This should be ideally done in Handler of graphQL
   try {
     const bootstrapData = await fetchBootstrapData(bootstrapParams);
     for (let i = 0; i < pages.length; i += 1) {
@@ -102,6 +106,7 @@ const bootstrap = async pages => {
     response.header = await headerAbstractor.processData(bootstrapData.header);
     response.footer = await footerAbstractor.processData(bootstrapData.footer);
     response.labels = await labelsAbstractor.processData(bootstrapData.labels);
+    response.navigation = await navigationAbstractor.getMock();
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);

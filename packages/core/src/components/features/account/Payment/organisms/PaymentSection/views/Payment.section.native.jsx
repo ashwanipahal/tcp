@@ -6,6 +6,7 @@ import OffersSection from '../../../molecules/OffersSection';
 import MoneyCards from '../../../molecules/MoneyCards';
 import GiftCards from '../../../molecules/GiftCards';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import VenmoCards from '../../../molecules/VenmoCards';
 
 // @flow
 type Props = {
@@ -14,10 +15,18 @@ type Props = {
   setDefaultPaymentMethod: Function,
   giftCardList: object,
   cardList: object,
+  venmoCardList: object,
 };
 
 const PaymentView = (props: Props) => {
-  const { labels, creditCardList, giftCardList, cardList, setDefaultPaymentMethod } = props;
+  const {
+    labels,
+    creditCardList,
+    giftCardList,
+    cardList,
+    setDefaultPaymentMethod,
+    venmoCardList,
+  } = props;
   return (
     <View {...props}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -32,6 +41,9 @@ const PaymentView = (props: Props) => {
             creditCardList={creditCardList}
             setDefaultPaymentMethod={setDefaultPaymentMethod}
           />
+        )}
+        {venmoCardList && venmoCardList.size > 0 && (
+          <VenmoCards labels={labels} venmoCardList={venmoCardList} />
         )}
         {giftCardList && <GiftCards labels={labels} giftCardList={giftCardList} />}
       </ScrollView>

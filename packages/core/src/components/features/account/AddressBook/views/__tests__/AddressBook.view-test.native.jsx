@@ -2,8 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { List } from 'immutable';
 import AddressBook from '../AddressView/views/Address.view.native';
-// import EmptyAddressListComponent from '../EmptyAddressList.view';
-// import AddressListComponent from '../AddressList.view';
 
 describe('Native AddressBook component', () => {
   it('should renders correctly when addresses are not present', () => {

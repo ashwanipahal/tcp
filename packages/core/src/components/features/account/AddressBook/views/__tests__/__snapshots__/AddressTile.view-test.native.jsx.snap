@@ -1,5 +1,62 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`AddressTile component should renders correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <View>
+      <Address
+        address={
+          Object {
+            "addressLine": Array [
+              "addressline 1",
+              "addressline 2",
+            ],
+            "city": "test city",
+            "country": "test country",
+            "firstName": "test",
+            "lastName": "test",
+            "phone1": "1234567890",
+            "primary": "true",
+          }
+        }
+        dataLocatorPrefix="addressbook"
+        fontWeight="bold"
+        showCountry={true}
+        showPhone={true}
+      />
+    </View>
+    <View>
+      <Styled(Badge)
+        dataLocator="addressbook-defshippinglabel"
+        showCheckmark={true}
+      >
+        DEFAULT SHIPPING
+      </Styled(Badge)>
+    </View>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        fontSizeVariation="large"
+        text=""
+        to="/#"
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      fontSizeVariation="large"
+      text=""
+      to="/#"
+      underline={true}
+      visible={false}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
 exports[`Native AddressTile component should renders correctly 1`] = `
 <Styled(View)>
   <Styled(View)>

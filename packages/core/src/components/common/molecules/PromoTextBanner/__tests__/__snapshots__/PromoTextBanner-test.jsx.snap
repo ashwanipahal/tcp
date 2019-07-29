@@ -55,16 +55,6 @@ exports[`Promo Text Banner component renders correctly 1`] = `
   forwardedRef={null}
   letterSpacing="normal"
   lineHeight="normal"
-  link={
-    Object {
-      "class": "",
-      "external": 0,
-      "target": "",
-      "text": "",
-      "title": "",
-      "url": "/banner/url",
-    }
-  }
   textAlign="left"
 >
   <span

@@ -6,48 +6,48 @@
 const navDataMobile = [
   {
     id: 'accountOverview',
-    displayName: 'Account Overview',
-    component: 'accountOverviewMobile',
+    label: 'ACCOUNT OVERVIEW',
+    value: 'accountOverviewMobile',
   },
   {
     id: 'myPlaceRewards',
-    displayName: 'My Place Rewards',
-    component: 'myPlaceRewardsMobile',
+    label: 'MY PLACE REWARDS',
+    value: 'myPlaceRewardsMobile',
   },
   {
     id: 'myWallet',
-    displayName: 'My Wallet',
-    component: 'myWalletPageMobile',
+    label: 'MY WALLET',
+    value: 'myWalletPageMobile',
   },
   {
     id: 'earnExtraPoints',
-    displayName: 'Earn Extra Points',
-    component: 'earnExtraPointsPageMobile',
+    label: 'EARN EXTRA POINTS',
+    value: 'earnExtraPointsPageMobile',
   },
   {
     id: 'profileInformation',
-    displayName: 'Profile Information',
-    component: 'profileInformationMobile',
+    label: 'PROFILE INFORMATION',
+    value: 'profileInformationMobile',
   },
   {
     id: 'addressBook',
-    displayName: 'Address Book',
-    component: 'addressBookMobile',
+    label: 'ADDRESS BOOK',
+    value: 'addressBookMobile',
   },
   {
     id: 'paymentGiftCards',
-    displayName: 'Payment & Gift Cards',
-    component: 'paymentGiftCardsPageMobile',
+    label: 'PAYMENT & GIFT CARDS',
+    value: 'paymentGiftCardsPageMobile',
   },
   {
     id: 'myPreferences',
-    displayName: 'My Preferences',
-    component: 'myPreferencePageMobile',
+    label: 'MY PREFERENCES',
+    value: 'myPreferencePageMobile',
   },
   {
     id: 'myPlaceRewardsCC',
-    displayName: 'My Place Rewards Credit Card',
-    component: 'myPlaceRewardsCCPageMobile',
+    label: 'MY PLACE REWARDS CREDIT CARD',
+    value: 'myPlaceRewardsCCPageMobile',
   },
 ];
 
