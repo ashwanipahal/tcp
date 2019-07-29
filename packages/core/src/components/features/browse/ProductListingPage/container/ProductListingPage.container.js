@@ -8,7 +8,6 @@ import {
   addToCartEcom,
   addItemToCartBopis,
 } from '../../../CnC/AddedToBag/container/AddedToBag.actions';
-import { getOrderDetails } from '../../../CnC/Cart/containers/Cart.actions';
 
 class ProductListingPageContainer extends React.Component {
   componentDidMount() {
@@ -43,7 +42,6 @@ function mapDispatchToProps(dispatch) {
     },
     addToCartEcom: payload => {
       dispatch(addToCartEcom(payload));
-      dispatch(getOrderDetails());
     },
     addItemToCartBopis: payload => {
       dispatch(addItemToCartBopis(payload));

@@ -3,6 +3,7 @@ import { call, takeLatest, put } from 'redux-saga/effects';
 import ADDEDTOBAG_CONSTANTS from '../AddedToBag.constants';
 import fetchData from '../../../../../service/API';
 import { AddToCartError, SetAddedToBagData, openAddedToBag } from './AddedToBag.actions';
+import { getOrderDetails } from '../../Cart/containers/Cart.actions';
 import endpoints from '../../../../../service/endpoint';
 
 export function* addToCartEcom({ payload }) {
@@ -40,6 +41,7 @@ export function* addToCartEcom({ payload }) {
         })
       );
       yield put(openAddedToBag());
+      yield put(getOrderDetails());
     } else {
       yield put(AddToCartError(res.error || res.body.error));
     }
