@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const TitleContainer = styled.View`
-  background: ${props => props.theme.colorPalette.blue[50]};
+  background: ${props => props.theme.colors.PRIMARY.COLOR1};
   padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
     ${props => props.theme.spacing.ELEM_SPACING.LRG}
     ${props => props.theme.gridDimensions.gridOffsetObj.small}px;

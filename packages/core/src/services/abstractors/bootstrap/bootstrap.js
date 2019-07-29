@@ -96,13 +96,13 @@ const fetchBootstrapData = async ({ pages, labels, brand, country, channel }) =>
  */
 const bootstrap = async pages => {
   const response = {};
-  const apiConfig = getAPIConfig();
+  const apiConfig = typeof getAPIConfig === 'function' ? getAPIConfig() : '';
   const bootstrapParams = {
     pages,
     labels: {},
-    brand: apiConfig.brandIdCMS || defaultBrand,
+    brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
     channel: defaultChannel,
-    country: apiConfig.siteIdCMS || defaultCountry,
+    country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
   };
 
   // TODO - This should be ideally done in Handler of graphQL
