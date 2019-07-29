@@ -54,9 +54,10 @@ const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide, promoTextBa
         {headerText && (
           <LinkText
             headerText={headerText}
-            className="moduleL__header"
+            headingClass="moduleL__header"
             component="div"
-            fontSize="fs48"
+            fontSize={['fs32', 'fs48']}
+            lineHeight="lh107"
             fontWeight="black"
             textAlign="center"
             dataLocator="moduleL_header_text"

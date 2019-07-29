@@ -57,7 +57,8 @@ class ModuleK extends React.PureComponent<Props, State> {
               <LinkText
                 headerText={headerText}
                 component="div"
-                fontSize="fs48"
+                fontSize={['fs32', 'fs48']}
+                lineHeight="lh107"
                 fontWeight="black"
                 dataLocator="moduleK_header_text"
               />

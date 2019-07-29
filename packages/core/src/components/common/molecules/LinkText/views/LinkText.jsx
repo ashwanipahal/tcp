@@ -1,6 +1,8 @@
 // @flow
 import React from 'react';
-import { Anchor, Heading, BodyCopy } from '../../atoms';
+import { Anchor, Heading, BodyCopy } from '../../../atoms';
+import withStyles from '../../../hoc/withStyles';
+import LinkTextStyle from '../LinkText.style';
 
 type Props = {
   type: String,
@@ -8,7 +10,8 @@ type Props = {
   headerText: Object[],
   link: Object,
   icon?: Object,
-  className: String,
+  className: string,
+  headingClass: string,
 };
 
 /**
@@ -24,10 +27,11 @@ type Props = {
  */
 const LinkText = (props: Props) => {
   const {
+    className,
     type,
     component,
     headerText: [{ textItems, link }],
-    className,
+    headingClass,
     ...otherProps
   } = props;
   let Component;
@@ -45,8 +49,8 @@ const LinkText = (props: Props) => {
   }
 
   return (
-    <Anchor className={className} {...link}>
-      <Component {...compProps} className="link-text">
+    <Anchor {...link} className={className}>
+      <Component {...compProps} className={`${headingClass} link-text`}>
         {textItems.map(({ style, text }, index) => (
           <span className={style}>{index ? ` ${text}` : text}</span>
         ))}
@@ -59,4 +63,5 @@ LinkText.defaultProps = {
   icon: {},
 };
 
-export default LinkText;
+export default withStyles(LinkText, LinkTextStyle);
+export { LinkText as VanillaLinkText };
