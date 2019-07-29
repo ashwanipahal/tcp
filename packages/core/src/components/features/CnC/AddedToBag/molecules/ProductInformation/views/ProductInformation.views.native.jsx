@@ -2,21 +2,23 @@
 /* eslint-disable react-native/no-color-literals */
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import { View, Image } from 'react-native';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import PropTypes from 'prop-types';
+import { Image } from 'react-native';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import endpoints from '../../../../../../../service/endpoint';
-import { ProductName, ProductDesc } from '../styles/ProductInformation.style.native';
+import {
+  ProductName,
+  ProductDesc,
+  OuterContainer,
+  ImageWrapper,
+  ProductDescription,
+} from '../styles/ProductInformation.style.native';
 
-// @flow
-type Props = {
-  labels: any,
-  data: Object,
-};
-const ProductInformation = ({ data, labels }: Props) => {
+const ProductInformation = ({ data, labels }) => {
   return (
-    <View style={{ flexDirection: 'row' }}>
-      <View style={{ width: 120 }}>
+    <OuterContainer>
+      <ImageWrapper>
         <Image
           style={{ width: 100, height: 100 }}
           source={{ uri: endpoints.global.baseURI + data.skuInfo.imageUrl }}
@@ -27,8 +29,8 @@ const ProductInformation = ({ data, labels }: Props) => {
             source={{ uri: `${endpoints.global.baseURI}/static/images/${data.brand}` }}
           />
         )}
-      </View>
-      <View style={{ width: 203 }}>
+      </ImageWrapper>
+      <ProductDescription>
         <ProductName>
           <BodyCopy fontSize="fs12" fontWeight={['semibold']} text={data.productName} />
         </ProductName>
@@ -37,7 +39,7 @@ const ProductInformation = ({ data, labels }: Props) => {
             fontSize="fs12"
             fontWeight={['semibold']}
             textAlign="center"
-            text={data.isGiftCard === true ? `Design: ` : `${labels.colorLabel}: `}
+            text={data.isGiftCard === true ? `${labels.giftDesign}: ` : `${labels.colorLabel}: `}
           />
           <BodyCopy fontSize="fs12" text={data.skuInfo.color.name} />
         </ProductDesc>
@@ -46,7 +48,7 @@ const ProductInformation = ({ data, labels }: Props) => {
             fontSize="fs12"
             fontWeight={['semibold']}
             textAlign="center"
-            text={data.isGiftCard === true ? `Value: ` : `${labels.sizeLabel}: `}
+            text={data.isGiftCard === true ? `${labels.giftValue}: ` : `${labels.sizeLabel}: `}
           />
           <BodyCopy fontSize="fs12" text={`${data.skuInfo.size} `} />
           <BodyCopy
@@ -63,10 +65,18 @@ const ProductInformation = ({ data, labels }: Props) => {
           />
           <BodyCopy fontSize="fs12" text={data.quantity} />
         </ProductDesc>
-      </View>
-    </View>
+      </ProductDescription>
+    </OuterContainer>
   );
 };
 
+ProductInformation.propTypes = {
+  data: PropTypes.shape,
+  labels: PropTypes.shape,
+};
+ProductInformation.defaultProps = {
+  data: {},
+  labels: {},
+};
 export default withStyles(ProductInformation);
 export { ProductInformation as ProductInformationVanilla };

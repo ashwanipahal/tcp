@@ -1,14 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BossBanner Component should render correctly 1`] = `
-<View
-  style={
-    Object {
-      "alignItems": "center",
-      "flex": 1,
-    }
-  }
->
+<Styled(View)>
   <Styled(Text)>
     <Styled(BodyCopy)
       fontSize="fs12"
@@ -22,9 +15,11 @@ exports[`BossBanner Component should render correctly 1`] = `
     />
   </Styled(Text)>
   <Styled(View)>
-    <Text>
-      def
-    </Text>
+    <Styled(BodyCopy)
+      fontSize="fs10"
+      text="def"
+      textAlign="center"
+    />
   </Styled(View)>
-</View>
+</Styled(View)>
 `;

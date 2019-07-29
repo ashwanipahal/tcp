@@ -1,18 +1,15 @@
-/* eslint-disable react-native/no-color-literals */
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import { View, Text } from 'react-native';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import PropTypes from 'prop-types';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import { StyledHeading, SubHeading } from '../styles/BossBanner.style.native';
+import { StyledHeading, SubHeading, MainWrapper } from '../styles/BossBanner.style.native';
 
-// @flow
-type Props = {
-  labels: any,
+const getItemLabel = labels => {
+  return `${labels.simplyChooseText.replace('#type', `${labels.noRushText}`)}`;
 };
-const BossBanner = ({ labels }: Props) => {
+const BossBanner = ({ labels }) => {
   return (
-    <View style={{ flex: 1, alignItems: 'center' }}>
+    <MainWrapper>
       <StyledHeading>
         <BodyCopy
           fontSize="fs12"
@@ -22,11 +19,16 @@ const BossBanner = ({ labels }: Props) => {
         />
       </StyledHeading>
       <SubHeading>
-        <Text>{labels.simplyChooseText}</Text>
+        <BodyCopy fontSize="fs10" textAlign="center" text={getItemLabel(labels)} />
       </SubHeading>
-    </View>
+    </MainWrapper>
   );
 };
-
+BossBanner.propTypes = {
+  labels: PropTypes.shape,
+};
+BossBanner.defaultProps = {
+  labels: {},
+};
 export default withStyles(BossBanner);
 export { BossBanner as BossBannerVanilla };

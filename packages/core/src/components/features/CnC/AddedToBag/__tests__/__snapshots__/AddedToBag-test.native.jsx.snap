@@ -18,6 +18,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
   overlayClassName="TCPModal__Overlay"
 >
   <Styled(ProductInformation)
+    data={Object {}}
     labels={Object {}}
   />
   <Styled(View)

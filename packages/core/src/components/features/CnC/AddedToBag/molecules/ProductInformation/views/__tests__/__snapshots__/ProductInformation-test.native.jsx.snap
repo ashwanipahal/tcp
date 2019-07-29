@@ -1,20 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`GiftCardList Component renders correctly 1`] = `
-<View
-  style={
-    Object {
-      "flexDirection": "row",
-    }
-  }
->
-  <View
-    style={
-      Object {
-        "width": 120,
-      }
-    }
-  >
+<Styled(View)>
+  <Styled(View)>
     <Image
       source={
         Object {
@@ -41,14 +29,8 @@ exports[`GiftCardList Component renders correctly 1`] = `
         }
       }
     />
-  </View>
-  <View
-    style={
-      Object {
-        "width": 203,
-      }
-    }
-  >
+  </Styled(View)>
+  <Styled(View)>
     <Styled(Text)>
       <Styled(BodyCopy)
         fontSize="fs12"
@@ -57,7 +39,7 @@ exports[`GiftCardList Component renders correctly 1`] = `
             "semibold",
           ]
         }
-        text="abc"
+        text="Boys Basic Skinny Jeans"
       />
     </Styled(Text)>
     <Styled(View)>
@@ -68,7 +50,7 @@ exports[`GiftCardList Component renders correctly 1`] = `
             "semibold",
           ]
         }
-        text="abc: "
+        text="Color: "
         textAlign="center"
       />
       <Styled(BodyCopy)
@@ -84,7 +66,7 @@ exports[`GiftCardList Component renders correctly 1`] = `
             "semibold",
           ]
         }
-        text="def: "
+        text="Size: "
         textAlign="center"
       />
       <Styled(BodyCopy)
@@ -104,7 +86,7 @@ exports[`GiftCardList Component renders correctly 1`] = `
             "semibold",
           ]
         }
-        text="xyz: "
+        text="Qty: "
         textAlign="center"
       />
       <Styled(BodyCopy)
@@ -112,6 +94,6 @@ exports[`GiftCardList Component renders correctly 1`] = `
         text="1"
       />
     </Styled(View)>
-  </View>
-</View>
+  </Styled(View)>
+</Styled(View)>
 `;
