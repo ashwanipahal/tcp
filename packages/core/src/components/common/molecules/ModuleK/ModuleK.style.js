@@ -23,13 +23,19 @@ const StyledCarousal = styled(Carousel)`
   }
 `;
 const StyledPromoTextBanner = styled(PromoTextBanner)`
-  .style3 {
-    color: ${props => props.theme.colorPalette.black};
-    font-weight: ${props => props.theme.typography.fontWeights.black};
-    font-size: ${props => props.theme.typography.FONT_SIZES.fs42};
+  .style2 {
+    font-size: ${props => props.theme.typography.fontSizes.fs42};
     @media ${props => props.theme.mediaQuery.medium} {
       font-size: 70px;
     }
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: 60px;
+    }
+  }
+  .style3 {
+    color: ${props => props.theme.colorPalette.black};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    font-size: 70px;
     @media ${props => props.theme.mediaQuery.large} {
       font-size: 60px;
     }
@@ -52,10 +58,6 @@ const StyledModuleK = css`
   .module-k__promoBanner,
   .module-k__header {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
-    font-size: ${props => props.theme.typography.FONT_SIZES.fs36};
-  }
-  @media ${props => props.theme.mediaQuery.large} {
-    font-size: 52px;
   }
   .carousal-cta {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
