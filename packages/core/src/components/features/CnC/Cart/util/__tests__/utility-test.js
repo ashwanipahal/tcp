@@ -1,4 +1,5 @@
 import getOrderPointsSummary from '../utility';
+
 // TODO - Include more test cases
 describe('#getOrderPointSummary', () => {
   it('should return valid object', () => {
@@ -15,13 +16,15 @@ describe('#getOrderPointSummary', () => {
       userPoints: 1,
       grandTotal: 1,
       giftCardsTotal: 1,
+      bagSubTotal: 123,
+      totalItems: 1,
     });
     expect(resultType).toEqual({
       pointsToNextReward: 1,
-      userPoints: 1,
-      bagSubTotal: 0,
+      userPoints: 0,
+      bagSubTotal: '123.00',
       totalItems: 1,
-      itemPrice: 12,
+      itemPrice: 0,
       itemPoints: 12,
     });
   });

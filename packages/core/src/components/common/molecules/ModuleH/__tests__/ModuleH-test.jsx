@@ -1,46 +1,32 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Carousel from '../../Carousel';
-import { Image } from '../../../atoms';
-import ModuleH from '../views';
-import mock from '../mock';
+import { ModuleHVanilla as ModuleH } from '../views/ModuleH';
+import ModuleHHeader from '../views/ModuleH.Header';
+import ModuleHCTALinks from '../views/ModuleH.Links';
+import mock from '../../../../../services/abstractors/common/moduleH/mock';
 
 describe('ModuleH component', () => {
+  let moduleHComp;
+
+  beforeEach(() => {
+    const wrapper = shallow(<ModuleH {...mock.moduleH.composites} />).get(0);
+    moduleHComp = shallow(wrapper);
+  });
+
   it('renders correctly', () => {
-    const wrapper = shallow(<ModuleH />).get(0);
-    const moduleHComp = shallow(wrapper);
     expect(moduleHComp).toMatchSnapshot();
   });
 
+  it('has Header component', () => {
+    expect(moduleHComp.find(ModuleHHeader)).toHaveLength(1);
+  });
+
   it('has Carousel wrapper', () => {
-    const props = {
-      data: mock.moduleH,
-    };
-    const wrapper = shallow(
-      <ModuleH {...props.data}>
-        <Carousel carouselConfig={{ type: 'light', arrow: 'none' }}>
-          <div>Item1</div>
-        </Carousel>
-      </ModuleH>
-    ).get(0);
-    const moduleHComp = shallow(wrapper);
     expect(moduleHComp.find(Carousel)).toHaveLength(1);
   });
 
-  it('should renders 5 images correctly', () => {
-    const props = {
-      data: mock.moduleH.composites.divCTALinks,
-    };
-    const wrapper = shallow(
-      <ModuleH {...props.data}>
-        <Carousel {...props.data} carouselConfig={{ type: 'light', arrow: 'none' }}>
-          {props.data.map((item, index) => {
-            return <Image key={index.toString()} alt={item.image.alt} src={item.image.url} />;
-          })}
-        </Carousel>
-      </ModuleH>
-    ).get(0);
-    const moduleHImageComp = shallow(wrapper);
-    expect(moduleHImageComp.find(Image)).toHaveLength(5);
+  it('should renders CTA Links', () => {
+    expect(moduleHComp.find(ModuleHCTALinks)).toHaveLength(1);
   });
 });

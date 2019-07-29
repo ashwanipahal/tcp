@@ -13,29 +13,28 @@ type Props = {
  * @function moduleHHeader This function renders header of Module H
  * @param {headerText} headerText Header text lines and link data
  */
-const moduleHHeader = ({ headerText: { link, textLines } }: Props) => (
+const moduleHHeader = ({ headerText: [{ link, textItems }] }: Props) => (
   <Fragment>
-    {textLines &&
-      textLines.map((textLine, index) => {
-        return (
-          <Heading
-            key={index.toString()}
-            className="moduleH__header"
-            data-locator={getLocator('moduleH_header_text')}
-            HeadingLarge="three"
-            HeadingcolorSm="primary"
-            tag="h2"
-          >
-            {link ? (
-              <Anchor className="moduleH__header-link" to={link.url} target={link.target}>
-                {textLine.text}
-              </Anchor>
-            ) : (
-              textLine.text
-            )}
-          </Heading>
-        );
-      })}
+    {textItems.map((textLine, index) => {
+      return (
+        <Heading
+          key={index.toString()}
+          className="moduleH__header"
+          data-locator={getLocator('moduleH_header_text')}
+          HeadingLarge="three"
+          HeadingcolorSm="primary"
+          tag="h2"
+        >
+          {link ? (
+            <Anchor className="moduleH__header-link" to={link.url} target={link.target}>
+              {textLine.text}
+            </Anchor>
+          ) : (
+            textLine.text
+          )}
+        </Heading>
+      );
+    })}
   </Fragment>
 );
 

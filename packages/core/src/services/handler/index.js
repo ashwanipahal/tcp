@@ -3,5 +3,4 @@ export {
   executeStatefulAPICall,
   executeUnbxdAPICall,
   executeExternalAPICall,
-  getAPIConfig,
 } from './handler';

@@ -4,7 +4,9 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 
 import EmailSignUpModal from '@tcp/web/src/components/common/molecules/EmailSignupModal/container';
+import SmsSignUpModal from '@tcp/web/src/components/common/molecules/SmsSignupModal/container';
 import { toggleEmailSignupModal as toggleEmailSignupModalAction } from '@tcp/web/src/components/common/molecules/EmailSignupModal/container/EmailSignupModal.actions';
+import { toggleSmsSignupModal as toggleSmsSignupModalAction } from '@tcp/web/src/components/common/molecules/SmsSignupModal/container/SmsSignupModal.actions';
 import DamImage from '@tcp/core/src/components/common/atoms/DamImage';
 import Heading from '@tcp/core/src/components/common/atoms/Heading';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
@@ -95,6 +97,24 @@ const ConnectedEmailSignupButton = connect(
   })
 )(EmailSignUpButton);
 
+const SmsSignUpButton = ({ openModal }) => {
+  return (
+    <Button customStyle="shadow-button" title="Sms Signup" onClick={openModal}>
+      <RichText richTextHtml="Sms Signup" />
+    </Button>
+  );
+};
+const ConnectedSmsSignupButton = connect(
+  state => {
+    return state;
+  },
+  dispatch => ({
+    openModal: () => {
+      dispatch(toggleSmsSignupModalAction({ isModalOpen: true }));
+    },
+  })
+)(SmsSignUpButton);
+
 const Test = () => {
   const secondaryTextColor = 'text.secondary';
   const disabledTextColor = 'text.disabled';
@@ -105,6 +125,11 @@ const Test = () => {
       <div>
         <ConnectedEmailSignupButton />
         <EmailSignUpModal buttonConfig={{ url: '/EMAIL_SIGNUP_MODAL', text: 'Email Signup' }} />
+      </div>
+
+      <div>
+        <ConnectedSmsSignupButton />
+        <SmsSignUpModal buttonConfig={{ url: '/SMS_SIGNUP_MODAL', text: 'Sms Signup' }} />
       </div>
       <br />
       <FooterTopCandidateA />

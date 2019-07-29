@@ -5,11 +5,12 @@ import { Carousel, PromoTextBanner, LinkText, ImageGrid, style } from '../Module
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/errorBoundary';
 import config from '../config';
+import { getIconPath } from '../../../../../utils';
 
 type Props = {
   className: string,
-  headerText: Object,
-  promoTextBanner: Object,
+  headerText: Array<Object>,
+  promoTextBanner: Array<Object>,
   masonryGrid: Object,
 };
 
@@ -52,13 +53,15 @@ class ModuleK extends React.PureComponent<Props, State> {
             }}
             className="module-k__header"
           >
-            <LinkText
-              {...headerText}
-              component="div"
-              fontSize="fs48"
-              fontWeight="black"
-              dataLocator="moduleK_header_text"
-            />
+            {headerText && (
+              <LinkText
+                headerText={headerText}
+                component="div"
+                fontSize="fs48"
+                fontWeight="black"
+                dataLocator="moduleK_header_text"
+              />
+            )}
           </Col>
           <Col
             colSize={{
@@ -75,7 +78,7 @@ class ModuleK extends React.PureComponent<Props, State> {
           >
             {outerPromoTextBanner && (
               <PromoTextBanner
-                {...outerPromoTextBanner}
+                promoTextBanner={outerPromoTextBanner}
                 fontSize="fs48"
                 dataLocator="moduleK_promobanner_text"
               />
@@ -100,7 +103,8 @@ class ModuleK extends React.PureComponent<Props, State> {
                 autoplay: true,
                 dataLocatorPlay: 'moduleK_play_button',
                 dataLocatorPause: 'moduleK_pause_button',
-                type: 'light',
+                customArrowLeft: getIconPath('carousel-big-carrot'),
+                customArrowRight: getIconPath('carousel-big-carrot'),
               }}
             >
               {masonryGrid.map(({ promoTextBanner, mediaList, singleCTAButton }, index) => {
@@ -108,8 +112,8 @@ class ModuleK extends React.PureComponent<Props, State> {
                   <React.Fragment>
                     {promoTextBanner && (
                       <PromoTextBanner
+                        promoTextBanner={promoTextBanner}
                         className="module-k__promoBanner"
-                        {...promoTextBanner}
                         fontSize="fs48"
                       />
                     )}
