@@ -4,7 +4,7 @@ import { Col, Row } from '../../../atoms';
 import errorBoundary from '../../../hoc/errorBoundary';
 import withStyles from '../../../hoc/withStyles';
 import { Carousel, LinkText, PromoTextBanner } from '../..';
-import { getLocator } from '../../../../../utils';
+import { getIconPath, getLocator } from '../../../../../utils';
 import config from '../config';
 import ModuleLTile from './ModuleL.Tile';
 import style from '../ModuleL.style';
@@ -77,6 +77,8 @@ const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide, promoTextBa
             autoplay: false,
             type: 'light',
             moduleL: true,
+            customArrowLeft: getIconPath('carousel-big-carrot'),
+            customArrowRight: getIconPath('carousel-big-carrot'),
           }}
         >
           {renderTiles(imageGrid)}

@@ -1,7 +1,5 @@
 import { css } from 'styled-components';
-import { getIconPath } from '../../../../utils';
 
-const carouselArrowBig = getIconPath('carousel-big-carrot');
 export default css`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   .moduleL__mobile-web-container {
@@ -65,16 +63,11 @@ export default css`
   }
   .slick-prev {
     left: -70px;
-    background-image: url(${carouselArrowBig});
   }
   .slick-next {
     right: -70px;
-    background-image: url(${carouselArrowBig});
   }
   .slick-dots {
     bottom: -5px;
-    button {
-      pointer-events: none;
-    }
   }
 `;

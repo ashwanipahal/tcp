@@ -130,6 +130,8 @@ exports[`ModuleL component renders correctly 1`] = `
       carouselConfig={
         Object {
           "autoplay": false,
+          "customArrowLeft": "/static/images/right-carousel-carrot.svg",
+          "customArrowRight": "/static/images/right-carousel-carrot.svg",
           "moduleL": true,
           "type": "light",
         }

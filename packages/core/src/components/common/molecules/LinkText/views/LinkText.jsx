@@ -36,6 +36,7 @@ const LinkText = (props: Props) => {
   } = props;
   let Component;
   let compProps = {};
+  const heading = headingClass || '';
 
   if (type === 'heading') {
     Component = Heading;
@@ -50,7 +51,7 @@ const LinkText = (props: Props) => {
 
   return (
     <Anchor {...link} className={className}>
-      <Component {...compProps} className={`${headingClass} link-text`}>
+      <Component {...compProps} className={`${heading} link-text`}>
         {textItems.map(({ style, text }, index) => (
           <span className={style}>{index ? ` ${text}` : text}</span>
         ))}
