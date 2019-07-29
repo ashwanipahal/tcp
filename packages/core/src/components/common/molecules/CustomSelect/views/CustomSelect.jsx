@@ -16,9 +16,9 @@ class CustomSelect extends React.Component<Props> {
     };
   }
 
-  componentDidUpdate(prevProps){
+  componentDidUpdate(prevProps) {
     const { activeValue } = this.props;
-    if(prevProps.activeValue !== activeValue){
+    if (prevProps.activeValue !== activeValue) {
       this.updateState();
     }
   }
@@ -27,9 +27,9 @@ class CustomSelect extends React.Component<Props> {
     const { activeValue, activeTitle } = this.props;
     this.setState({
       activeValue,
-      activeTitle
+      activeTitle,
     });
-  }
+  };
 
   toggleHandler = () => {
     const { toggle } = this.state;
@@ -83,7 +83,7 @@ CustomSelect.defaultProps = {
   selectListTitle: '',
   activeTitle: '',
   activeValue: '',
-  clickHandler: () => {}
+  clickHandler: () => {},
 };
 
 export default withStyles(CustomSelect, styles);
