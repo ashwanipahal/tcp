@@ -35,6 +35,7 @@ exports[`Delete Address Modal should render correctly 1`] = `
       className="deleteAddressModal_addressToDelete"
       dataLocatorPrefix="address-delete-modal"
       fontWeight="bold"
+      isDefault={false}
       showCountry={true}
       showPhone={true}
     />
