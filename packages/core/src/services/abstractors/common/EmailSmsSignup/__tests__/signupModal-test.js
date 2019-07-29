@@ -1,6 +1,7 @@
 import SignupModalAbstractor from '../EmailSmsSignup';
 
 jest.mock('../../../../../service/API');
+jest.mock('../../../../handler/handler');
 
 describe('SignupModalAbstractor', () => {
   test('Signup modal Abstractor Email subscription ', () => {
@@ -10,7 +11,7 @@ describe('SignupModalAbstractor', () => {
       { payload: 'URL' },
       'post'
     ).then(data => {
-      expect(data).toEqual(true);
+      expect(data.success).toBeTruthy();
     });
   });
 
@@ -21,7 +22,7 @@ describe('SignupModalAbstractor', () => {
       { payload: 'mobile_phone' },
       'post'
     ).then(data => {
-      expect(data).toEqual('valid');
+      expect(data.success).toBeTruthy();
     });
   });
 
@@ -32,21 +33,21 @@ describe('SignupModalAbstractor', () => {
       { payload: 'address=abf@gmail.com' },
       'post'
     ).then(data => {
-      expect(data).toEqual(false);
-      expect(data).not.toEqual(true);
+      expect(data.success).toBeFalsy();
+      expect(data.success).not.toBeTruthy();
     });
   });
 
   test('Signup modal Abstractor Email subscription with empty params', () => {
     return SignupModalAbstractor.subscribeEmail('baseURL', 'relURI').then(data => {
-      expect(data).toEqual(false);
+      expect(data.success).toBeFalsy();
     });
   });
 
   test('Signup modal Abstractor Email Verification with empty params', () => {
     return SignupModalAbstractor.verifyEmail('baseURL', 'relURI').then(data => {
-      expect(data).toEqual(false);
-      expect(data).not.toEqual(true);
+      expect(data.success).toBeFalsy();
+      expect(data.success).not.toBeTruthy();
     });
   });
 });

@@ -9,6 +9,7 @@ type Props = {
   navData: Array<Object>,
   mainContent: Function,
   handleComponentChange: Function,
+  className: string,
 };
 
 /**
@@ -20,9 +21,9 @@ type Props = {
  */
 
 const MyAccountLayoutView = (props: Props) => {
-  const { navData, mainContent: MainContent, handleComponentChange } = props;
+  const { navData, mainContent: MainContent, handleComponentChange, className } = props;
   return (
-    <View {...props}>
+    <View className={className} {...props}>
       <MyAccountDropdownNav navData={navData} handleComponentChange={handleComponentChange} />
       <MainContent />
     </View>

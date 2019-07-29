@@ -29,6 +29,7 @@ type Props = {
   setDefaultPaymentMethod: Function,
   venmoCardList: Array<object>,
   showNotificationCaptcha: boolean,
+  addCreditCard: () => {},
 };
 
 export class PaymentView extends React.Component<Props> {
@@ -104,6 +105,7 @@ export class PaymentView extends React.Component<Props> {
       showNotificationCaptcha,
       onDeleteCard,
       showUpdatedNotificationOnModal,
+      addCreditCard,
     } = this.props;
     return (
       <div className={className}>
@@ -172,6 +174,7 @@ export class PaymentView extends React.Component<Props> {
             showNotification={showNotification}
             setDefaultPaymentMethod={setDefaultPaymentMethod}
             setSelectedCard={this.setSelectedCard}
+            addCreditCard={addCreditCard}
           />
         )}
         {venmoCardList && venmoCardList.size > 0 && (

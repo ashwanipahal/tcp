@@ -34,7 +34,7 @@ const externalJsonpAPIClient = reqObj => {
  * @param {Object} reqObj - request param with endpoints and payload
  * @returns {Promise} Resolves with promise to consume the external api or reject in case of error
  */
-const externalAPIClient = (apiConfig, reqObj) => {
+const ExternalAPIClient = (apiConfig, reqObj) => {
   // TODO - Keeping it generic for now, to check if it fulfills all the variations of external call
   const { webService } = reqObj;
 
@@ -71,4 +71,4 @@ const externalAPIClient = (apiConfig, reqObj) => {
   return result;
 };
 
-export default externalAPIClient;
+export default ExternalAPIClient;

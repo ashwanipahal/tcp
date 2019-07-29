@@ -1,18 +1,16 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
-import ModuleK from '@tcp/core/src/components/common/molecules/ModuleK';
-import moduleKMock from '@tcp/core/src/services/abstractors/common/moduleK/mock';
-import { SlotA, SlotB, SlotD } from '../molecules';
+import { SlotA, SlotB, SlotC, SlotD } from '../molecules';
 
 const HomePageView = props => {
-  const { slot_1: slotA, slot_2: slotB, slot_4: slotD } = props;
+  const { slot_1: slotA, slot_2: slotB, slot_3: slotC, slot_4: slotD } = props;
   return (
     <Fragment>
       <SlotA {...slotA} />
       <SlotB {...slotB} />
+      <SlotC {...slotC} />
       <SlotD {...slotD} />
-      <ModuleK {...moduleKMock.moduleK.composites} />
     </Fragment>
   );
 };
@@ -30,6 +28,12 @@ HomePageView.propTypes = {
     type: PropTypes.string,
     contentId: PropTypes.string,
   }),
+  slot_3: PropTypes.shape({
+    composites: PropTypes.shape({}),
+    name: PropTypes.string,
+    type: PropTypes.string,
+    contentId: PropTypes.string,
+  }),
   slot_4: PropTypes.shape({
     composites: PropTypes.shape({}),
     name: PropTypes.string,
@@ -41,6 +45,7 @@ HomePageView.propTypes = {
 HomePageView.defaultProps = {
   slot_1: {},
   slot_2: {},
+  slot_3: {},
   slot_4: {},
 };
 
