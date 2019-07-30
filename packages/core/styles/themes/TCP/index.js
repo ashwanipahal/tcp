@@ -2,6 +2,7 @@ import createThemeColorPalette from '../createThemeColorPalette';
 import createThemeTypography from '../createThemeTypography';
 import colors from './colors';
 import green from '../colors/green';
+import blue from '../colors/blue';
 import fonts from './fonts';
 import zindex from './zindex';
 import spacing from './spacing';
@@ -15,7 +16,7 @@ const typography = createThemeTypography();
 
 const theme = {
   /* add required colors other than default as per theme requirement */
-  colorPalette: { ...colorPalette, green },
+  colorPalette: { ...colorPalette, green, blue },
   /* colors object has been deprecated and, will be removed in the future release.
    Please use colorPalette instead */
   colors,

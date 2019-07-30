@@ -38,7 +38,7 @@ export const LoginForm = ({
           name="emailAddress"
           component={TextBox}
           dataLocator=""
-          showSuccessCheck={false}
+          enableSuccessCheck={false}
         />
         <Field
           id="password"
@@ -46,7 +46,7 @@ export const LoginForm = ({
           name="password"
           component={PasswordField}
           dataLocator=""
-          showSuccessCheck={false}
+          enableSuccessCheck={false}
         />
         <BodyCopy component="div">
           <Field name="rememberMe" component={InputCheckbox} dataLocator="" className="">

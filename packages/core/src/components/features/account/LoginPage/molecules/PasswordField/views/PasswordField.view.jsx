@@ -40,7 +40,13 @@ export class PasswordField extends React.PureComponent {
     return (
       <BodyCopy component="div" className={className}>
         <TextBox {...otherProps} type={type} />
-        <Anchor anchorVariation="primary" fontSizeVariation="medium" noLink handleLinkClick={this.changeType} underline>
+        <Anchor
+          anchorVariation="primary"
+          fontSizeVariation="medium"
+          noLink
+          handleLinkClick={this.changeType}
+          underline
+        >
           {type === 'password' ? showText : hideText}
         </Anchor>
       </BodyCopy>

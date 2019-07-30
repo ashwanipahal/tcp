@@ -20,10 +20,9 @@ export const setLoginInfo = payload => {
 
 export const resetLoginInfo = () => {
   return {
-    type: LOGINPAGE_CONSTANTS.RESET_LOGIN_INFO
-  }
-}
-
+    type: LOGINPAGE_CONSTANTS.RESET_LOGIN_INFO,
+  };
+};
 
 export const getUserInfo = () => {
   return {

@@ -77,6 +77,8 @@ const LoginForm = props => {
       </View>
 
       <CustomButton
+        color="#FFFFFF"
+        fill="BLUE"
         text={labels.ACC_LBL_LOGIN_CTA}
         buttonVariation="variable-width"
         customStyle={styles.loginButtonStyle}

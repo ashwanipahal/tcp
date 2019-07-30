@@ -1,0 +1,7 @@
+import { CREATE_ACCOUNT_ACTION_PATTERN } from '../../../../constants/reducer.constants';
+
+const CREATE_ACCOUNT_CONSTANTS = {
+  CREATE_AN_ACCOUNT: `${CREATE_ACCOUNT_ACTION_PATTERN}CREATE_AN_ACCOUNT`,
+};
+
+export default CREATE_ACCOUNT_CONSTANTS;

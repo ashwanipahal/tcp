@@ -77,7 +77,7 @@ export const login = ({
       fromOrderId: '*',
       toOrderId: '.',
       updatePrices: 0,
-      xCreditCardId: plccCardId || '', // DT-20015
+      xCreditCardId: plccCardId || '',
       reCaptcha: recaptchaToken,
     },
     webService: endpoints.logon,
@@ -126,7 +126,7 @@ export const getProfile = ({ refreshPoints, pageId, source }) => {
   return executeStatefulAPICall(payload)
     .then(res => {
       if (responseContainsErrors(res)) {
-        throw new Error('There is some error in fetching profile details');
+        throw new Error(res);
       } else {
         const addressBook = formatAddressBookResponse(res.body.contact);
         const userLoggedIn =

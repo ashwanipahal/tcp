@@ -56,7 +56,7 @@ export function* addCreditCardSaga({ payload }) {
 
 export function* updateCreditCardSaga({ payload }) {
   try {
-    const { address, cardType, onFileAddressKey, isDefault, ...otherPayloadProps } = payload;
+    const { address, cardType, onFileAddressKey, ...otherPayloadProps } = payload;
     const addressList = yield select(getAddressListState);
 
     let addressEntry;

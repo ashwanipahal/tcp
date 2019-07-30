@@ -28,9 +28,10 @@ export default {
   'place-card-small': '/static/images/place-card-small.png',
   'visa-small': '/static/images/visa-small.png',
   'gift-card-small': '/static/images/gift-card-small.png',
-  'venmo-blue-acceptance-mark': '/static/images/venmo-blue-acceptance-mark.svg',
+  'venmo-blue-acceptance-mark': '/static/images/venmo-blue-acceptance-mark.png',
+  'my-place-rewards': '/static/images/my-place-rewards.png',
+  'info-icon': '/static/images/info-icon.png',
   down_arrow_icon: '/static/images/down_arrow_icon.png',
   active_icon: '/static/images/active_icon.png',
   'carousel-big-carrot': '/static/images/right-carousel-carrot.svg',
-  'my-place-rewards': '/static/images/my-place-rewards.png'
 };
