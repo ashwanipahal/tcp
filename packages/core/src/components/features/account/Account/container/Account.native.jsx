@@ -2,6 +2,10 @@ import React from 'react';
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentNativeMapping from '../AccountComponentMapping';
 import navDataMobile from '../MyAccountRoute.config';
+import {
+  StyledKeyboardAvoidingView,
+  StyledScrollView,
+} from '../styles/MyAccountContainer.style.native';
 
 // @flow
 type Props = {
@@ -49,11 +53,15 @@ export default class Account extends React.PureComponent<Props, State> {
   render() {
     const { component } = this.state;
     return (
-      <MyAccountLayout
-        navData={navDataMobile}
-        mainContent={AccountComponentNativeMapping[component]}
-        handleComponentChange={this.handleComponentChange}
-      />
+      <StyledKeyboardAvoidingView behavior="padding" enabled keyboardVerticalOffset={82}>
+        <StyledScrollView>
+          <MyAccountLayout
+            navData={navDataMobile}
+            mainContent={AccountComponentNativeMapping[component]}
+            handleComponentChange={this.handleComponentChange}
+          />
+        </StyledScrollView>
+      </StyledKeyboardAvoidingView>
     );
   }
 }

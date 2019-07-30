@@ -4,6 +4,7 @@ exports[`AddEditCreditCard component should renders correctly 1`] = `
 <Fragment>
   <Styled(Anchor)
     anchorVariation="secondary"
+    asPath="/account/payment"
     data-locator="payment-backlink"
     fontSizeVariation="xlarge"
     to="/account?id=payment"
@@ -39,6 +40,7 @@ exports[`AddEditCreditCard component should renders correctly with error message
 <Fragment>
   <Styled(Anchor)
     anchorVariation="secondary"
+    asPath="/account/payment"
     data-locator="payment-backlink"
     fontSizeVariation="xlarge"
     to="/account?id=payment"

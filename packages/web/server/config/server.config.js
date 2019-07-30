@@ -1,13 +1,20 @@
-const config = require('./cspPolicy.js');
-
-const locations = ['us', 'ca'];
+// TODO - Ideally, all this config should be moved to @tcp/core/services/config
+const sites = ['us', 'ca'];
+const siteIds = {
+  us: 'us',
+  ca: 'ca',
+};
+const brandIds = {
+  tcp: 'tcp',
+  gym: 'gym',
+};
 
 /**
  * This function configures helmet properties and setting CSP policies
  * @param {*} server | Object - Instance of express server
  * @param {*} helmet | Object - Instance of helmet package
  */
-const settingCspConfig = (server, helmet) => {
+const settingHelmetConfig = (server, helmet) => {
   // Security headers
   server.set('x-powered-by', false);
 
@@ -18,10 +25,11 @@ const settingCspConfig = (server, helmet) => {
   server.use(helmet.noSniff());
   server.use(helmet.xssFilter());
   server.use(helmet.ieNoOpen());
-  server.use(helmet.contentSecurityPolicy(config));
 };
 
 module.exports = {
-  locations,
-  settingCspConfig,
+  sites,
+  siteIds,
+  brandIds,
+  settingHelmetConfig,
 };

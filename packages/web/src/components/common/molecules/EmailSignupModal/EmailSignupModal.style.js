@@ -22,6 +22,7 @@ const EmailSignupModalStyle = css`
   .terms-label {
     margin-top: 52px;
   }
+
   @media ${props => props.theme.mediaQuery.medium} {
     .button-wrapper,
     .button-wrapper-form {
@@ -39,7 +40,7 @@ const EmailSignupModalStyle = css`
       padding: 0;
     }
     .img-wrapper {
-      display: flex;
+      display: block;
     }
     .button-container {
       position: absolute;

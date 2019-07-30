@@ -27,6 +27,15 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
       },
       "colorPalette": Object {
         "black": "#000",
+        "blue": Object {
+          "100": "#dbebf8",
+          "300": "#93c5ea",
+          "50": "#edf5fb",
+          "500": "#4b9fdd",
+          "700": "#3c7fb0",
+          "800": "#254f6e",
+          "900": "#162f42",
+        },
         "error": "#c8102e",
         "gray": Object {
           "300": "#f3f3f3",
@@ -40,6 +49,15 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "300": "#7dc24c",
           "400": "#4b742d",
           "500": "#26762c",
+        },
+        "orange": Object {
+          "100": "#fdead2",
+          "300": "#fbd5a5",
+          "50": "#fef4e8",
+          "500": "#fac078",
+          "700": "#f8ab4b",
+          "800": "#f7971f",
+          "900": "#c25621",
         },
         "primary": Object {
           "dark": "#3c7fb0",
@@ -59,6 +77,9 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "secondary": "#575757",
         },
         "white": "#fff",
+        "yellow": Object {
+          "500": "#ffe700",
+        },
       },
       "colors": Object {
         "ACCORDION": Object {
@@ -75,6 +96,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         },
         "BLACK": "#000000",
         "BORDER": Object {
+          "BLUE": "#2e6a91",
           "NORMAL": "#979797",
         },
         "BRAND": Object {
@@ -327,6 +349,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         },
       },
       "spacing": Object {
+        "CREDIT_CARD_ICON_WIDTH": "50px",
         "ELEM_SPACING": Object {
           "LRG": "24px",
           "MED": "16px",
@@ -338,6 +361,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "XXXL": "48px",
           "XXXS": "2px",
         },
+        "FORM_FIELD_HEIGHT": "70px",
         "LAYOUT_SPACING": Object {
           "LRG": "64px",
           "MED": "48px",
@@ -495,6 +519,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "textAligns": Object {
           "center": "center",
           "left": "left",
+          "right": "right",
         },
       },
       "zindex": Object {

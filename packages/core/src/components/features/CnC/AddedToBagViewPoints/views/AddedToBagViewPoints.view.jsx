@@ -27,8 +27,12 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
     <BodyCopy color="black" fontFamily="secondary" component="div" className={className}>
       <Row className="row-padding">
         <Col colSize={{ large: 9, small: 4, medium: 6 }}>{labels.price}</Col>
-        <Col className="value" colSize={{ large: 3, small: 2, medium: 2 }}>
-          {`$${itemPrice}`}
+        <Col
+          data-locator="addedtobag-productprice"
+          className="text-value"
+          colSize={{ large: 3, small: 2, medium: 2 }}
+        >
+          {`$${itemPrice || 0}`}
         </Col>
       </Row>
       <Row>
@@ -38,18 +42,28 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           </BodyCopy>
         </Col>
         <Col colSize={{ large: 3, small: 2, medium: 2 }}>
-          <BodyCopy fontFamily="secondary" className="value promo-color" fontWeight="extrabold">
-            {itemPoints}
+          <BodyCopy
+            data-locator="addedtobag-pointsonitem"
+            fontFamily="secondary"
+            className="text-value"
+            color="orange.800"
+            fontWeight="extrabold"
+          >
+            {itemPoints || 0}
           </BodyCopy>
         </Col>
       </Row>
       <Row className="divided-line" />
       <Row className="row-padding">
         <Col colSize={{ large: 9, small: 4, medium: 6 }}>
-          {getModifiedString(labels, totalItems)}
+          {getModifiedString(labels, totalItems || 0)}
         </Col>
-        <Col className="value" colSize={{ large: 3, small: 2, medium: 2 }}>
-          {`$${bagSubTotal}`}
+        <Col
+          data-locator="addedtobag-bagsubtotal"
+          className="text-value"
+          colSize={{ large: 3, small: 2, medium: 2 }}
+        >
+          {`$${bagSubTotal || 0}`}
         </Col>
       </Row>
       <Row className="row-padding">
@@ -59,8 +73,14 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           </BodyCopy>
         </Col>
         <Col colSize={{ large: 3, small: 2, medium: 2 }}>
-          <BodyCopy fontFamily="secondary" className="value promo-color" fontWeight="extrabold">
-            {userPoints}
+          <BodyCopy
+            data-locator="addedtobag-totalrewardpoints"
+            fontFamily="secondary"
+            className="text-value"
+            color="orange.800"
+            fontWeight="extrabold"
+          >
+            {userPoints || 0}
           </BodyCopy>
         </Col>
       </Row>
@@ -71,8 +91,14 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           </BodyCopy>
         </Col>
         <Col colSize={{ large: 3, small: 2, medium: 2 }}>
-          <BodyCopy fontFamily="secondary" className="value promo-color" fontWeight="extrabold">
-            {pointsToNextReward}
+          <BodyCopy
+            data-locator="addedtobag-totalpointsnextreward"
+            fontFamily="secondary"
+            className="text-value"
+            color="orange.800"
+            fontWeight="extrabold"
+          >
+            {pointsToNextReward || 0}
           </BodyCopy>
         </Col>
       </Row>

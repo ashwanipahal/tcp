@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { Field, change } from 'redux-form';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import SelectBox from '../../../../../../common/atoms/Select';
@@ -12,23 +14,20 @@ import {
   CAcountriesStatesTable,
   UScountriesStatesTable,
 } from '../../../organism/AddressForm/CountriesAndStates.constants';
+import styles from '../styles/AddressFields.style';
 
-// @flow
-type Props = {
-  dispatch: any,
-  labels: object,
-  isMakeDefaultDisabled?: boolean,
-  formName: string,
-  showDefaultCheckbox?: boolean,
-  showPhoneNumber?: boolean,
-  formSection?: string,
-};
+export class AddressFields extends React.PureComponent {
+  static propTypes = {
+    dispatch: PropTypes.func.isRequired,
+    labels: PropTypes.shape({}).isRequired,
+    isMakeDefaultDisabled: PropTypes.bool,
+    formName: PropTypes.string.isRequired,
+    showDefaultCheckbox: PropTypes.bool,
+    showPhoneNumber: PropTypes.bool,
+    formSection: PropTypes.string,
+    className: PropTypes.string,
+  };
 
-type State = {
-  country: string,
-};
-
-export class AddressFields extends React.PureComponent<Props, State> {
   static addressValidationConfig = getStandardConfig([
     'firstName',
     'lastName',
@@ -41,20 +40,20 @@ export class AddressFields extends React.PureComponent<Props, State> {
     'phoneNumber',
   ]);
 
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
     this.state = {
       country: 'US',
     };
   }
 
-  StateCountryChange = (e: Object) => {
+  StateCountryChange = e => {
     this.setState({
       country: e.target.value ? e.target.value : '',
     });
   };
 
-  handlePlaceSelected = (place: Object, inputValue: string) => {
+  handlePlaceSelected = (place, inputValue) => {
     const { dispatch, formName, formSection } = this.props;
     const address = AutoCompleteComponent.getAddressFromPlace(place, inputValue);
     dispatch(change(formName, `${formSection ? 'address.' : ''}city`, address.city));
@@ -64,10 +63,16 @@ export class AddressFields extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { labels, isMakeDefaultDisabled, showDefaultCheckbox, showPhoneNumber } = this.props;
+    const {
+      labels,
+      isMakeDefaultDisabled,
+      showDefaultCheckbox,
+      showPhoneNumber,
+      className,
+    } = this.props;
     const { country } = this.state;
     return (
-      <React.Fragment>
+      <div className={className}>
         <Row fullBleed>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
@@ -77,6 +82,8 @@ export class AddressFields extends React.PureComponent<Props, State> {
               type="text"
               component={TextBox}
               dataLocator="addnewaddress-firstname"
+              className="field"
+              enableSuccessCheck={false}
             />
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 6 }}>
@@ -86,6 +93,8 @@ export class AddressFields extends React.PureComponent<Props, State> {
               id="lastName"
               component={TextBox}
               dataLocator="addnewaddress-lastname"
+              className="field"
+              enableSuccessCheck={false}
             />
           </Col>
         </Row>
@@ -99,6 +108,8 @@ export class AddressFields extends React.PureComponent<Props, State> {
               onPlaceSelected={this.handlePlaceSelected}
               componentRestrictions={Object.assign({}, { country: [country] })}
               dataLocator="addnewaddress-addressl1"
+              className="field"
+              enableSuccessCheck={false}
             />
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 6 }}>
@@ -108,6 +119,8 @@ export class AddressFields extends React.PureComponent<Props, State> {
               id="addressLine2"
               component={TextBox}
               dataLocator="addnewaddress-addressl2"
+              className="field"
+              enableSuccessCheck={false}
             />
           </Col>
         </Row>
@@ -119,6 +132,8 @@ export class AddressFields extends React.PureComponent<Props, State> {
               name="city"
               component={TextBox}
               dataLocator="addnewaddress-city"
+              className="field"
+              enableSuccessCheck={false}
             />
           </Col>
           <Col colSize={{ small: 3, medium: 2, large: 3 }}>
@@ -129,6 +144,8 @@ export class AddressFields extends React.PureComponent<Props, State> {
               component={SelectBox}
               options={country === 'CA' ? CAcountriesStatesTable : UScountriesStatesTable}
               dataLocator="addnewaddress-state"
+              className="field"
+              enableSuccessCheck={false}
             />
           </Col>
           <Col colSize={{ small: 3, medium: 2, large: 3 }}>
@@ -139,6 +156,8 @@ export class AddressFields extends React.PureComponent<Props, State> {
               maxLength={country === 'CA' ? 6 : 5}
               component={TextBox}
               dataLocator="addnewaddress-zipcode"
+              className="field"
+              enableSuccessCheck={false}
             />
           </Col>
         </Row>
@@ -152,6 +171,8 @@ export class AddressFields extends React.PureComponent<Props, State> {
               options={countriesOptionsMap}
               onChange={this.StateCountryChange}
               dataLocator="addnewaddress-country"
+              className="field"
+              enableSuccessCheck={false}
             />
           </Col>
           {showPhoneNumber && (
@@ -163,6 +184,8 @@ export class AddressFields extends React.PureComponent<Props, State> {
                 component={TextBox}
                 dataLocator="addnewaddress-phnumber"
                 type="tel"
+                className="field"
+                enableSuccessCheck={false}
               />
             </Col>
           )}
@@ -175,13 +198,14 @@ export class AddressFields extends React.PureComponent<Props, State> {
                 component={InputCheckbox}
                 dataLocator="addnewaddress-setdefaddress"
                 disabled={isMakeDefaultDisabled}
+                className="field"
               >
                 {labels.acc_lbl_set_default}
               </Field>
             </Col>
           </Row>
         )}
-      </React.Fragment>
+      </div>
     );
   }
 }
@@ -191,6 +215,7 @@ AddressFields.defaultProps = {
   showDefaultCheckbox: true,
   showPhoneNumber: true,
   formSection: '',
+  className: '',
 };
 
-export default AddressFields;
+export default withStyles(AddressFields, styles);

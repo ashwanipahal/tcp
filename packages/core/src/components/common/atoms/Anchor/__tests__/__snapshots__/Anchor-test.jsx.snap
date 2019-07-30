@@ -3,7 +3,7 @@
 exports[`Anchor component renders correctly 1`] = `
 <Link
   as=""
-  href="/us"
+  href="/undefined"
   scroll=""
   shallow={false}
 >
@@ -20,7 +20,7 @@ exports[`Anchor component renders correctly 1`] = `
 exports[`Anchor component renders correctly with nolink variation 1`] = `
 <a
   className="sample-anchor-nolink"
-  href="/us"
+  href="/undefined"
   onClick={[Function]}
   target=""
   title=""

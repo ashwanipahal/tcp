@@ -29,6 +29,10 @@ export const importGraphQLQueriesDynamically = query => {
         // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/header'));
         break;
+      case 'navigation':
+        // eslint-disable-next-line global-require
+        resolve(require('../services/handler/graphQL/queries/navigation'));
+        break;
       case 'layout':
         // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/layout'));
@@ -48,6 +52,10 @@ export const importGraphQLQueriesDynamically = query => {
       case 'moduleK':
         // eslint-disable-next-line global-require
         resolve(require('../services/handler/graphQL/queries/moduleK'));
+        break;
+      case 'moduleL':
+        // eslint-disable-next-line global-require
+        resolve(require('../services/handler/graphQL/queries/moduleL'));
         break;
       default:
         reject();
@@ -175,6 +183,9 @@ export const getLocator = locator => {
  * @return {string} function returns new Url with the crop value
  */
 export const cropImageUrl = (url, crop) => {
-  const [urlPath, urlData] = url.split('/upload');
-  return `${urlPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
+  const [urlPath, urlData] = (url && url.split('/upload')) || ['', ''];
+  if (urlPath && crop) {
+    return `${urlPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
+  }
+  return url;
 };
