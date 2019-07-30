@@ -68,6 +68,9 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "secondary": "#575757",
         },
         "white": "#fff",
+        "yellow": Object {
+          "500": "#ffe700",
+        },
       },
       "colors": Object {
         "ACCORDION": Object {

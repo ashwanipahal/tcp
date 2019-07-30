@@ -61,7 +61,7 @@ const dropDownlist = css`
 
   .ulBorderWithLastRow li:last-child {
     position: absolute;
-    width: 96%;
+    width: 93%;
     height: 42px;
     padding: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
     left: 0;

@@ -102,7 +102,9 @@
       "**/superagent-jsonp",
       "**/superagent-jsonp/**",
       "**/react-native-vector-icons",
-      "**/react-native-vector-icons/**"
+      "**/react-native-vector-icons/**",
+      "**/redux-form",
+      "**/redux-form/**"
     ]
   }
 }

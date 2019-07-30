@@ -5,6 +5,7 @@ import ForgotPasswordSaga from '@tcp/core/src/components/features/account/Forgot
 import AddEditAddressSaga from '@tcp/core/src/components/features/account/AddEditAddress/container/AddEditAddress.saga';
 import AddressBookSaga from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.saga';
 import PaymentSaga from '@tcp/core/src/components/features/account/Payment/container/Payment.saga';
+import CreateAccountSaga from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.saga';
 import DeleteCardSaga from '@tcp/core/src/components/features/account/Payment/container/DeleteCard.saga';
 import GiftCardBalanceSaga from '@tcp/core/src/components/features/account/Payment/container/GetCardBalance.saga';
 import DefaultPaymentSaga from '@tcp/core/src/components/features/account/Payment/container/DefaultPayment.saga';
@@ -41,6 +42,7 @@ export default function* rootSaga() {
     DefaultPaymentSaga(),
     AddEditCreditCardSaga(),
     AddGiftCardSaga(),
+    CreateAccountSaga(),
     CartSaga(),
   ]);
 }

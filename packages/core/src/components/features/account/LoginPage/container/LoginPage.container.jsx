@@ -85,6 +85,14 @@ LoginPageContainer.propTypes = {
   showRecaptcha: PropTypes.bool,
 };
 
+LoginPageContainer.defaultProps = {
+  showRecaptcha: false,
+  loginError: false,
+  loginErrorMessage: '',
+  resetLoginState: () => {},
+  closeOverlay: () => {},
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     onSubmit: payload => {

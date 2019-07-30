@@ -155,9 +155,9 @@ exports[`LoginForm component should renders correctly 1`] = `
         }
       }
       dataLocator=""
+      enableSuccessCheck={false}
       id="emailAddress"
       name="emailAddress"
-      showSuccessCheck={false}
     />
     <Field
       component={
@@ -194,9 +194,9 @@ exports[`LoginForm component should renders correctly 1`] = `
         }
       }
       dataLocator=""
+      enableSuccessCheck={false}
       id="password"
       name="password"
-      showSuccessCheck={false}
     />
     <Styled(BodyCopy)
       className={null}
@@ -278,6 +278,10 @@ exports[`LoginForm component should renders correctly 1`] = `
     left: 10px;
     top: 5px;
     position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
   }
 
   & .disabled {
@@ -383,6 +387,10 @@ exports[`LoginForm component should renders correctly 1`] = `
     left: 10px;
     top: 5px;
     position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
   }
 
   & .disabled {
@@ -642,9 +650,9 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         }
       }
       dataLocator=""
+      enableSuccessCheck={false}
       id="emailAddress"
       name="emailAddress"
-      showSuccessCheck={false}
     />
     <Field
       component={
@@ -681,9 +689,9 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         }
       }
       dataLocator=""
+      enableSuccessCheck={false}
       id="password"
       name="password"
-      showSuccessCheck={false}
     />
     <Styled(BodyCopy)
       className={null}
@@ -765,6 +773,10 @@ exports[`LoginForm component should renders correctly with error 1`] = `
     left: 10px;
     top: 5px;
     position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
   }
 
   & .disabled {
@@ -870,6 +882,10 @@ exports[`LoginForm component should renders correctly with error 1`] = `
     left: 10px;
     top: 5px;
     position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
   }
 
   & .disabled {

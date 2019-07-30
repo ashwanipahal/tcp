@@ -45,12 +45,7 @@ LoginTopSection.propTypes = {
 };
 
 LoginTopSection.defaultProps = {
-  labels: {
-    ACC_LBL_LOGIN_HEADING: 'Welcome Back',
-    ACC_LBL_LOGIN_SUB_HEADING: 'Log in to earn points for MY PLACE REWARDS ',
-    ACC_LBL_LOGIN_SUB_DESCRIPTION:
-      'Signed up in store? An online account has been created with your email! Click here to reset your password.',
-  },
+  labels: {},
 };
 
 export default withStyles(LoginTopSection, styles);
