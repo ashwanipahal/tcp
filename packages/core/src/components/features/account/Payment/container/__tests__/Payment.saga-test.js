@@ -1,17 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import { validateReduxCache } from '../../../../../../utils/cache.util';
-import {
-  getCardList,
-  PaymentSaga,
-  fetchPaymentLabels,
-  fetchReferredContent,
-} from '../Payment.saga';
-import {
-  setCardList,
-  getCardListErr,
-  loadLabelsData,
-  setReferredContent,
-} from '../Payment.actions';
+import { getCardList, PaymentSaga, fetchModuleX } from '../Payment.saga';
+import { setCardList, getCardListErr, setModuleX } from '../Payment.actions';
 import PAYMENT_CONSTANTS from '../../Payment.constants';
 
 describe('CardList saga', () => {
@@ -63,33 +53,16 @@ describe('CardList saga', () => {
   });
 });
 
-describe('Payment Labels Saga', () => {
-  let paymentLabelGen;
-  const payload = {
-    category: 'account',
-    subCategory: 'payment',
-  };
-  beforeEach(() => {
-    paymentLabelGen = fetchPaymentLabels({ payload });
-  });
-  describe('fetchPaymentLabels', () => {
-    it('should dispatch loadLabelsData action for success response', () => {
-      const response = paymentLabelGen.next().value;
-      expect(paymentLabelGen.next(response).value).toEqual(put(loadLabelsData(response)));
-    });
-  });
-});
-
-describe('Referred Content Saga', () => {
-  let referredContentGen;
+describe('Module X Saga', () => {
+  let moduleXGen;
   const payload = '66b73859-0893-4abe-9d0d-dc3d58fa2782';
   beforeEach(() => {
-    referredContentGen = fetchReferredContent({ payload });
+    moduleXGen = fetchModuleX({ payload });
   });
-  describe('fetchReferredContent', () => {
-    it('should dispatch setReferredContent action for success response', () => {
-      const response = referredContentGen.next().value;
-      expect(referredContentGen.next(response).value).toEqual(put(setReferredContent(response)));
+  describe('fetchmoduleX', () => {
+    it('should dispatch setmoduleX action for success response', () => {
+      const response = moduleXGen.next().value;
+      expect(moduleXGen.next(response).value).toEqual(put(setModuleX(response)));
     });
   });
 });

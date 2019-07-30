@@ -4,10 +4,6 @@ export const getCardListState = state => {
   return state.PaymentReducer.get('cardList');
 };
 
-export const getPaymentReferedContent = state => {
-  return state.PaymentReducer.get('paymentLabels') ? state.PaymentReducer.get('paymentLabels') : {};
-};
-
 export const getCreditDebitCards = createSelector(
   [getCardListState],
   creditCardList =>
@@ -49,19 +45,15 @@ export const checkbalanceValue = state => {
   return state.PaymentReducer.get('giftcardBalance');
 };
 
-export const getPaymentBannerContentId = createSelector(
-  [getPaymentReferedContent],
-  labels => {
-    // TO DO - Change the condition with appropirate banner label name
-    let paymentBannerContentId = '66b73859-0893-4abe-9d0d-dc3d58fa2782';
-    if (Array.isArray(labels.referred)) {
-      labels.referred.forEach(label => {
-        if (label.name === 'payment-banner-label') paymentBannerContentId = label.cid;
-      });
-    }
-    return paymentBannerContentId;
+export const getPaymentBannerContentId = state => {
+  let paymentBannerContentId;
+  if (state.Labels.account.paymentGC && Array.isArray(state.Labels.account.paymentGC.referred)) {
+    state.Labels.account.paymentGC.referred.forEach(label => {
+      if (label.name === 'paymentGCTopBanner') paymentBannerContentId = label.contentId;
+    });
   }
-);
+  return paymentBannerContentId;
+};
 
 export const getPaymentBannerRichTextSelector = state => {
   return state.PaymentReducer.get('paymentBannerRichText');

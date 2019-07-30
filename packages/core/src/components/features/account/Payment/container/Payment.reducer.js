@@ -75,10 +75,8 @@ const PaymentReducer = (state = initialState, action) => {
       return state.set('showNotification', 'success');
     case PAYMENT_CONSTANTS.CLEAR_CARD_LIST_TTL:
       return state.set(DEFAULT_REDUCER_KEY, null);
-    case PAYMENT_CONSTANTS.SET_REFERRED_CONTENT:
+    case PAYMENT_CONSTANTS.SET_MODULEX_CONTENT:
       return state.set('paymentBannerRichText', action.payload.richText);
-    case PAYMENT_CONSTANTS.LOAD_PAYMENT_LABELS:
-      return state.set('paymentLabels', action.payload.account.payment);
     default:
       return returnPaymentReducer(state, action);
   }

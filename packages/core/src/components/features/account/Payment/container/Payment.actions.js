@@ -84,30 +84,16 @@ export const setPaymentNotification = payload => ({
   payload,
 });
 
-export const getReferredContent = payload => {
+export const fetchModuleX = payload => {
   return {
     payload,
-    type: PAYMENT_CONSTANTS.FETCH_REFERRED_CONTENT,
+    type: PAYMENT_CONSTANTS.FETCH_MODULEX_CONTENT,
   };
 };
 
-export const setReferredContent = payload => {
+export const setModuleX = payload => {
   return {
     payload,
-    type: PAYMENT_CONSTANTS.SET_REFERRED_CONTENT,
-  };
-};
-
-export const fetchLabelsData = payload => {
-  return {
-    payload,
-    type: PAYMENT_CONSTANTS.FETCH_PAYMENT_LABELS,
-  };
-};
-
-export const loadLabelsData = payload => {
-  return {
-    payload,
-    type: PAYMENT_CONSTANTS.LOAD_PAYMENT_LABELS,
+    type: PAYMENT_CONSTANTS.SET_MODULEX_CONTENT,
   };
 };

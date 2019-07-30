@@ -8,8 +8,7 @@ import {
   checkBalance,
   setDefaultPayment,
   setPaymentNotification,
-  getReferredContent,
-  fetchLabelsData,
+  fetchModuleX,
 } from './Payment.actions';
 
 import {
@@ -44,7 +43,6 @@ type Props = {
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
   setDefaultPaymentMethod: Function,
-  getContentId: Function,
   getPaymentBannerRichText: Function,
   paymentBannerContentId: string,
   showNotificationCaptcha: boolean,
@@ -54,14 +52,8 @@ type Props = {
 
 export class PaymentContainer extends React.Component<Props> {
   componentDidMount() {
-    const {
-      getCardListAction,
-      getContentId,
-      paymentBannerContentId,
-      getPaymentBannerRichText,
-    } = this.props;
+    const { getCardListAction, paymentBannerContentId, getPaymentBannerRichText } = this.props;
     getCardListAction();
-    getContentId();
     getPaymentBannerRichText(paymentBannerContentId);
   }
 
@@ -140,11 +132,8 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
         })
       );
     },
-    getContentId: () => {
-      dispatch(fetchLabelsData({ category: 'account', subCategory: 'payment' }));
-    },
     getPaymentBannerRichText: cid => {
-      dispatch(getReferredContent(cid));
+      dispatch(fetchModuleX(cid));
     },
   };
 };

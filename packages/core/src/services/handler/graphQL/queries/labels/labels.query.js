@@ -11,7 +11,7 @@ const buildQuery = ({ category, subCategory, brand, country, channel }) => `
       }
       referred {
         name
-        cid
+        contentId
       }
     }
   }

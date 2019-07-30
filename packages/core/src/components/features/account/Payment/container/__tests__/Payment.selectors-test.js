@@ -138,18 +138,19 @@ describe('#Payment Selectors', () => {
     );
   });
   it('#getPaymentBannerContentId should return content ID', () => {
-    const paymentData = fromJS({
-      paymentLabels: {
-        referred: List([
-          {
-            name: 'payment-banner-label',
-            cid: '66b73859-0893-4abe-9d0d-dc3d58fa2782',
-          },
-        ]),
-      },
-    });
     const state = {
-      PaymentReducer: paymentData,
+      Labels: {
+        account: {
+          paymentGC: {
+            referred: [
+              {
+                name: 'paymentGCTopBanner',
+                contentId: '66b73859-0893-4abe-9d0d-dc3d58fa2782',
+              },
+            ],
+          },
+        },
+      },
     };
     expect(getPaymentBannerContentId(state)).toEqual('66b73859-0893-4abe-9d0d-dc3d58fa2782');
   });
