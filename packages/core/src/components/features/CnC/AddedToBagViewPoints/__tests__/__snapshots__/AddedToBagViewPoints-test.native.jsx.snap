@@ -3,57 +3,74 @@
 exports[`AddedToBagViewPoints native component renders correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
-    <Styled(Text)>
-      <Styled(Text) />
-    </Styled(Text)>
-    <Styled(Text)>
-      <Styled(Text)>
-        $12
-      </Styled(Text)>
-    </Styled(Text)>
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs13"
+      text=""
+    />
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs13"
+      text="$12"
+    />
   </Styled(View)>
   <Styled(View)>
-    <Styled(Text)>
-      <Styled(Text) />
-    </Styled(Text)>
-    <Styled(Text)>
-      <Styled(Text)>
-        23
-      </Styled(Text)>
-    </Styled(Text)>
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="extrabold"
+      text=""
+    />
+    <Styled(BodyCopy)
+      color="yellow.500"
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="extrabold"
+      text={23}
+    />
   </Styled(View)>
   <Styled(View) />
   <Styled(View)>
-    <Styled(Text)>
-      <Styled(Text)>
-        123
-      </Styled(Text)>
-    </Styled(Text)>
-    <Styled(Text)>
-      <Styled(Text)>
-        $0
-      </Styled(Text)>
-    </Styled(Text)>
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs13"
+      text="123"
+    />
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs13"
+      text="$0"
+    />
   </Styled(View)>
   <Styled(View)>
-    <Styled(Text)>
-      <Styled(Text) />
-    </Styled(Text)>
-    <Styled(Text)>
-      <Styled(Text)>
-        60
-      </Styled(Text)>
-    </Styled(Text)>
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="extrabold"
+      text=""
+    />
+    <Styled(BodyCopy)
+      color="yellow.500"
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="extrabold"
+      text={60}
+    />
   </Styled(View)>
   <Styled(View)>
-    <Styled(Text)>
-      <Styled(Text) />
-    </Styled(Text)>
-    <Styled(Text)>
-      <Styled(Text)>
-        12
-      </Styled(Text)>
-    </Styled(Text)>
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="extrabold"
+      text=""
+    />
+    <Styled(BodyCopy)
+      color="yellow.500"
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="extrabold"
+      text={12}
+    />
   </Styled(View)>
 </Styled(View)>
 `;

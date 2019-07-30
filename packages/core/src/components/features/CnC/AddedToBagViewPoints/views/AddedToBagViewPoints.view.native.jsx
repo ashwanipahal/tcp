@@ -1,12 +1,8 @@
 import React from 'react';
+import BodyCopy from '../../../../common/atoms/BodyCopy';
 import {
   ViewPointsWrapper,
   DefaultView,
-  DefaultLabel,
-  DefaultValue,
-  PromoValue,
-  BoldText,
-  DefaultText,
   Horizontal,
 } from '../styles/AddedToBagViewPoints.style.native';
 
@@ -32,45 +28,62 @@ const AddedToBagViewPoints = ({ pointsSummary, labels }: Props) => {
   return (
     <ViewPointsWrapper>
       <DefaultView>
-        <DefaultText>
-          <DefaultLabel>{labels.price}</DefaultLabel>
-        </DefaultText>
-        <DefaultText>
-          <DefaultValue>{`$${itemPrice || 0}`}</DefaultValue>
-        </DefaultText>
+        <BodyCopy fontFamily="secondary" fontSize="fs13" text={labels.price} />
+        <BodyCopy fontFamily="secondary" fontSize="fs13" text={`$${itemPrice || 0}`} />
       </DefaultView>
       <DefaultView>
-        <DefaultText>
-          <BoldText>{labels.pointsYouCanEarn}</BoldText>
-        </DefaultText>
-        <DefaultText>
-          <PromoValue>{itemPoints || 0}</PromoValue>
-        </DefaultText>
+        <BodyCopy
+          fontWeight="extrabold"
+          fontFamily="secondary"
+          fontSize="fs13"
+          text={labels.pointsYouCanEarn}
+        />
+        <BodyCopy
+          color="yellow.500"
+          fontWeight="extrabold"
+          fontFamily="secondary"
+          fontSize="fs13"
+          text={itemPoints || 0}
+        />
       </DefaultView>
       <Horizontal />
       <DefaultView>
-        <DefaultText>
-          <DefaultLabel>{getModifiedString(labels, totalItems || 0)}</DefaultLabel>
-        </DefaultText>
-        <DefaultText>
-          <DefaultValue>{`$${bagSubTotal || 0}`}</DefaultValue>
-        </DefaultText>
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs13"
+          text={getModifiedString(labels, totalItems || 0)}
+        />
+        <BodyCopy fontFamily="secondary" fontSize="fs13" text={`$${bagSubTotal || 0}`} />
       </DefaultView>
       <DefaultView>
-        <DefaultText>
-          <BoldText>{labels.totalRewardsInPoints}</BoldText>
-        </DefaultText>
-        <DefaultText>
-          <PromoValue>{userPoints || 0}</PromoValue>
-        </DefaultText>
+        <BodyCopy
+          fontWeight="extrabold"
+          fontFamily="secondary"
+          fontSize="fs13"
+          text={labels.totalRewardsInPoints}
+        />
+        <BodyCopy
+          color="yellow.500"
+          fontWeight="extrabold"
+          fontFamily="secondary"
+          fontSize="fs13"
+          text={userPoints || 0}
+        />
       </DefaultView>
       <DefaultView>
-        <DefaultText>
-          <BoldText>{labels.totalNextRewards}</BoldText>
-        </DefaultText>
-        <DefaultText>
-          <PromoValue>{pointsToNextReward || 0}</PromoValue>
-        </DefaultText>
+        <BodyCopy
+          fontWeight="extrabold"
+          fontFamily="secondary"
+          fontSize="fs13"
+          text={labels.totalNextRewards}
+        />
+        <BodyCopy
+          color="yellow.500"
+          fontWeight="extrabold"
+          fontFamily="secondary"
+          fontSize="fs13"
+          text={pointsToNextReward || 0}
+        />
       </DefaultView>
     </ViewPointsWrapper>
   );

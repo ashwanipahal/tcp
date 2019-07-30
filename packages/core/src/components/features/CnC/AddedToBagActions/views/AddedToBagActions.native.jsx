@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import BodyCopy from '../../../../common/atoms/BodyCopy';
 import {
   ButtonWrapper,
   ActionsWrapper,
   ViewBagButton,
-  ButtonText,
   CheckoutButton,
 } from '../styles/AddedToBagActions.style.native';
 
@@ -13,12 +13,25 @@ const AddedToBagActions = ({ labels }) => {
     <ActionsWrapper>
       <ButtonWrapper>
         <ViewBagButton>
-          <ButtonText>{labels.viewBag}</ButtonText>
+          <BodyCopy
+            textTransform="uppercase"
+            color="white"
+            fontWeight="extrabold"
+            fontFamily="secondary"
+            fontSize="fs13"
+            text={labels.viewBag.toUpperCase()}
+          />
         </ViewBagButton>
       </ButtonWrapper>
       <ButtonWrapper>
         <CheckoutButton>
-          <ButtonText>{labels.checkout}</ButtonText>
+          <BodyCopy
+            color="white"
+            fontWeight="extrabold"
+            fontFamily="secondary"
+            fontSize="fs13"
+            text={labels.checkout.toUpperCase()}
+          />
         </CheckoutButton>
       </ButtonWrapper>
     </ActionsWrapper>
