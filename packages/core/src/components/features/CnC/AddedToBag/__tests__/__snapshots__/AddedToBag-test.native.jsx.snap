@@ -18,10 +18,17 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
   overlayClassName="TCPModal__Overlay"
 >
   <Styled(View)>
+    <Styled(ProductInformation)
+      data={Object {}}
+      labels={Object {}}
+    />
     <Connect(AddedToBagViewPointsContainer)
       labels={Object {}}
     />
     <AddedToBagActions
+      labels={Object {}}
+    />
+    <Styled(BossBanner)
       labels={Object {}}
     />
   </Styled(View)>

@@ -12,7 +12,7 @@ export default (getOrderPointsSummary, lastAddedToBag) => {
     const { pointsToNextReward, estimatedRewards, totalItems, bagSubTotal } = getOrderPointsSummary;
     if (lastAddedItem) {
       pointsSummary = {
-        itemPrice: (lastAddedItem.itemInfo && lastAddedItem.itemInfo.offerPrice) || 0,
+        listPrice: (lastAddedItem.itemInfo && lastAddedItem.itemInfo.offerPrice) || 0,
         itemPoints: (lastAddedItem.itemInfo && lastAddedItem.itemInfo.itemPoints) || 0,
         pointsToNextReward,
         userPoints: estimatedRewards || 0,

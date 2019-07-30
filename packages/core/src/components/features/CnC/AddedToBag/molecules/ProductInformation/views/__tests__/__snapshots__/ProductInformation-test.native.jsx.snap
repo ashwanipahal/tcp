@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GiftCardList Component renders correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(Image)
+      source={
+        Object {
+          "uri": "https://test4.childrensplace.comundefined",
+        }
+      }
+    />
+    <Styled(Image)
+      source={
+        Object {
+          "uri": "https://test4.childrensplace.com/static/images/undefined",
+        }
+      }
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        fontSize="fs12"
+        fontWeight={
+          Array [
+            "semibold",
+          ]
+        }
+        text="Boys Basic Skinny Jeans"
+      />
+    </Styled(Text)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        fontSize="fs12"
+        fontWeight={
+          Array [
+            "semibold",
+          ]
+        }
+        text="Color: "
+        textAlign="center"
+      />
+      <Styled(BodyCopy)
+        fontSize="fs12"
+        text=""
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        fontSize="fs12"
+        fontWeight={
+          Array [
+            "semibold",
+          ]
+        }
+        text="Size: "
+        textAlign="center"
+      />
+      <Styled(BodyCopy)
+        fontSize="fs12"
+        text="M "
+      />
+      <Styled(BodyCopy)
+        fontSize="fs12"
+        text="slim"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        fontSize="fs12"
+        fontWeight={
+          Array [
+            "semibold",
+          ]
+        }
+        text="Qty: "
+        textAlign="center"
+      />
+      <Styled(BodyCopy)
+        fontSize="fs12"
+        text="1"
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Styled(View)>
+`;

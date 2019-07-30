@@ -1,7 +1,6 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
 import { setLoginInfo, getUserInfo } from './LoginPage.actions';
-import { setAddressList } from '../../AddressBook/container/AddressBook.actions';
 import fetchData from '../../../../../service/API';
 import { login, getProfile } from '../../../../../services/abstractors/account';
 import endpoints from '../../../../../service/endpoint';
@@ -27,9 +26,6 @@ export function* loginSaga({ payload }) {
 export function* getUserInfoSaga() {
   try {
     const response = yield call(getProfile, {});
-    if (response.addressBook) {
-      yield put(setAddressList(response.addressBook));
-    }
     return yield put(setLoginInfo(response));
   } catch (err) {
     return yield put(

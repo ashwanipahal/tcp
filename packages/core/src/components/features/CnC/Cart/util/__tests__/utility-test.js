@@ -8,7 +8,7 @@ describe('#getOrderPointSummary', () => {
         orderItems: [
           {
             itemInfo: {
-              itemPrice: 12,
+              listPrice: 12,
               itemPoints: 12,
               itemId: '123',
             },
@@ -30,7 +30,7 @@ describe('#getOrderPointSummary', () => {
       userPoints: 0,
       bagSubTotal: '123.00',
       totalItems: 1,
-      itemPrice: 0,
+      listPrice: 0,
       itemPoints: 12,
     });
   });
