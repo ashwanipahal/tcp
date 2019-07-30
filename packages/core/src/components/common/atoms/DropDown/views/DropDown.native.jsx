@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, View, Modal, TouchableOpacity } from 'react-native';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import { getScreenHeight } from '../../../../../utils/index.native';
+import { getScreenHeight } from '../../../../../utils/utils.native';
 import withStyles from '../../../hoc/withStyles.native';
 import {
   DropDownStyle,
@@ -67,42 +67,34 @@ class DropDown extends React.PureComponent<Props> {
       return item.value === selectedValue;
     });
 
-    let selectedLabelState;
-    if (selectedValue) {
-      if (selectedObject[0]) selectedLabelState = selectedObject[0].label;
-      else selectedLabelState = selectedValue;
-    } else {
-      selectedLabelState = data[0].label;
-    }
-
     this.state = {
       dropDownIsOpen: false,
-      selectedLabelState,
+      selectedLabelState: selectedValue ? selectedObject[0].label : data[0].label,
+      top: 0,
     };
   }
 
   /**
-   * Open the drop down
+   * Calculate the dimension and coordinates of drop down
    */
-  openDropDown = () => {
-    this.setState({
-      dropDownIsOpen: true,
-    });
-  };
+  componentDidMount() {
+    if (this.rowMarker)
+      setTimeout(
+        () =>
+          this.rowMarker.measure((x, y, width, height, pageX, pageY) => {
+            this.rowFrame = { x: pageX, y: height + pageY, width, height };
+            this.setState({ top: height + pageY });
+          }),
+        100
+      );
+  }
 
   /**
    * Render drop down item
    */
   dropDownLayout = ({ item }) => {
     const { variation, itemStyle } = this.props;
-    const { displayName, fullName } = item;
-    let { label } = item;
-    if (!label) {
-      if (fullName) label = fullName;
-      else {
-        label = displayName;
-      }
-    }
+    const { label } = item;
     return (
       <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)} style={itemStyle}>
         <BodyCopy
@@ -118,20 +110,24 @@ class DropDown extends React.PureComponent<Props> {
   };
 
   /**
+   * Open the drop down
+   */
+  openDropDown = () => {
+    this.setState({
+      dropDownIsOpen: true,
+    });
+  };
+
+  /**
    * Handle the drop down item click
    */
   onDropDownItemClick = item => {
-    let { label, value } = item;
-    const { id, displayName, fullName } = item;
-    if (!label) {
-      if (fullName) label = fullName;
-      else label = displayName;
-    }
-    if (!value) value = id;
+    const { label, value } = item;
     this.setState({
       dropDownIsOpen: false,
       selectedLabelState: label,
     });
+
     // pass the callback here with value
     const { onValueChange } = this.props;
     if (onValueChange) onValueChange(value);
@@ -146,43 +142,9 @@ class DropDown extends React.PureComponent<Props> {
     });
   };
 
-  /**
-   * Calculate the dimension and coordinates of drop down
-   */
-  findRowDimensions = () => {
-    if (this.rowMarker) {
-      this.rowMarker.measure((x, y, width, height, pageX, pageY) => {
-        this.rowFrame = { x: pageX, y: height + pageY, width, height };
-      });
-    }
-  };
-
-  /**
-   * Calculate the dimension and coordinates of drop down item
-   */
-  findDropDownDimensions = () => {
-    if (this.overlayMarker) {
-      this.overlayMarker.measure((x, y, width, height, pageX) => {
-        const windowHeight = getScreenHeight();
-
-        // checking bottom space
-        const bottomSpace = windowHeight - this.rowFrame.y;
-        // check drop down is in bottom or not
-        const showInBottom = bottomSpace >= height || bottomSpace >= this.rowFrame.y;
-
-        // if it is not in bottom then taking it y coordinate to set the drop down item position
-        // else subtracting device height and position of drop down y coordinate.
-        const topMargin = {
-          top: showInBottom ? this.rowFrame.y : Math.max(0, this.rowFrame.y - height),
-        };
-        this.dropDownFrame = { x: pageX, y: topMargin.top, width, height };
-      });
-    }
-  };
-
   render() {
     const { data, dropDownStyle } = this.props;
-    const { dropDownIsOpen, selectedLabelState } = this.state;
+    const { dropDownIsOpen, selectedLabelState, top } = this.state;
     return (
       <View style={dropDownStyle}>
         <Row
@@ -191,7 +153,6 @@ class DropDown extends React.PureComponent<Props> {
           ref={ref => {
             this.rowMarker = ref;
           }}
-          onLayout={this.findRowDimensions}
         >
           <HeaderContainer>
             <BodyCopy
@@ -222,9 +183,8 @@ class DropDown extends React.PureComponent<Props> {
               ref={ref => {
                 this.overlayMarker = ref;
               }}
-              onLayout={this.findDropDownDimensions}
               style={{
-                top: this.dropDownFrame.y,
+                top,
               }}
             >
               {dropDownIsOpen && (
@@ -233,6 +193,7 @@ class DropDown extends React.PureComponent<Props> {
                   renderItem={this.dropDownLayout}
                   keyExtractor={item => item.key}
                   ItemSeparatorComponent={() => <Separator />}
+                  style={{ height: getScreenHeight() / 2 }}
                 />
               )}
             </OverLayView>
