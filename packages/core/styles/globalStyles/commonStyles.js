@@ -35,10 +35,6 @@ export default css`
     text-align: right;
   }
 
-  .textCenter {
-    text-align: center;
-  }
-
   &.focus-styling {
     &:focus {
       outline: 1px dashed black;

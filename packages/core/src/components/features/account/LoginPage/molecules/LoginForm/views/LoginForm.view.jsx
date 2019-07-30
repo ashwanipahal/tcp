@@ -4,6 +4,7 @@ import { reduxForm, Field } from 'redux-form';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../common/atoms/Button';
+import Anchor from '../../../../../../common/atoms/Anchor';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import Notification from '../../../../../../common/molecules/Notification';
@@ -15,14 +16,8 @@ import Recaptcha from '../../../../../../common/molecules/recaptcha/recaptcha';
 import styles from '../styles/LoginForm.styles';
 
 class LoginForm extends React.PureComponent<Props> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      resetPassword: false,
-    };
-  }
-
-  showForgotPasswordForm = () => {
+  showForgotPasswordForm = e => {
+    e.preventDefault();
     const { showForgotPasswordForm, resetForm } = this.props;
     resetForm();
     showForgotPasswordForm();
@@ -101,17 +96,16 @@ class LoginForm extends React.PureComponent<Props> {
           >
             {labels.ACC_LBL_LOGIN_CTA}
           </Button>
-          <Button onClick={this.showForgotPasswordForm}>
+          <Anchor
+            className="addAddress__anchor__back"
+            fontSizeVariation="xlarge"
+            anchorVariation="secondary"
+            to="/account?id=address-book"
+            data-locator="addnewaddress-back"
+            onClick={this.showForgotPasswordForm}
+          >
             {labels.ACC_LBL_LOGIN_FORGET_PASSWORD_CTA}
-          </Button>
-        </BodyCopy>
-        <BodyCopy component="div" className="border elem-pt-LRG">
-          <BodyCopy textAlign="center" className="elem-mb-LRG">
-            {labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}
-          </BodyCopy>
-          <Button fill="BLUE" type="submit" buttonVariation="fixed-width" data-locator="">
-            {labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
-          </Button>
+          </Anchor>
         </BodyCopy>
       </form>
     );

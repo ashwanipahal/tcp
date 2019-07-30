@@ -316,7 +316,6 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       <Styled(Button)
         buttonVariation="fixed-width"
         data-locator="payment-addcardbtn"
-        disabled={true}
         fill="BLUE"
         type="submit"
       />

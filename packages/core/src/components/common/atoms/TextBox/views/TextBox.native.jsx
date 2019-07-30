@@ -28,7 +28,7 @@ class TextBox extends React.Component {
     maxLength: PropTypes.number.isRequired,
     inputRef: PropTypes.node.isRequired,
     dataLocator: PropTypes.string,
-    showSuccessCheck: PropTypes.bool,
+    enableSuccessCheck: PropTypes.bool,
     label: PropTypes.string,
     keyboardType: PropTypes.string,
     showErrorIcon: PropTypes.bool,
@@ -40,7 +40,7 @@ class TextBox extends React.Component {
     type: 'text',
     meta: { touched: '', error: '' },
     dataLocator: 'input-field',
-    showSuccessCheck: false,
+    enableSuccessCheck: false,
     label: 'input',
     keyboardType: 'default',
     showErrorIcon: true,
@@ -99,7 +99,7 @@ class TextBox extends React.Component {
       meta: { touched, error },
       input,
       showErrorIcon,
-      showSuccessCheck,
+      enableSuccessCheck,
       keyboardType,
       ...inputProps
     } = this.props;
@@ -126,9 +126,9 @@ class TextBox extends React.Component {
           keyboardType={keyboardType}
           returnKeyType="next"
           error={error}
-          showSuccessCheck={showSuccessCheck}
+          enableSuccessCheck={enableSuccessCheck}
         />
-        {showSuccessCheck && (
+        {enableSuccessCheck && (
           <StyledSuccessIcon>
             <Image source={successIcon} width="15px" height="12px" />
           </StyledSuccessIcon>

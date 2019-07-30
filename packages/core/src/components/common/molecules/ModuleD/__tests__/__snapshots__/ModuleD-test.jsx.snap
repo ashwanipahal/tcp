@@ -74,7 +74,6 @@ exports[`ModuleD component renders correctly 1`] = `
           "large": 3,
           "medium": 2,
           "small": 3,
-          "xlarge": 3,
         }
       }
       ignoreGutter={Object {}}
@@ -130,7 +129,6 @@ exports[`ModuleD component renders correctly 1`] = `
           "large": 3,
           "medium": 2,
           "small": 3,
-          "xlarge": 3,
         }
       }
       ignoreGutter={
@@ -193,7 +191,6 @@ exports[`ModuleD component renders correctly 1`] = `
           "large": 3,
           "medium": 2,
           "small": 3,
-          "xlarge": 3,
         }
       }
       ignoreGutter={Object {}}
@@ -252,7 +249,6 @@ exports[`ModuleD component renders correctly 1`] = `
           "large": 3,
           "medium": 2,
           "small": 3,
-          "xlarge": 3,
         }
       }
       ignoreGutter={

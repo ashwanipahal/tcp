@@ -2,19 +2,12 @@
  * These are temporary changes for a dummy login page
  */
 
-import styled from 'styled-components';
+import { css } from 'styled-components';
 
-export default styled.div`
-  padding: 20px;
-  margin-top: 30px;
-  & .marginBottom {
-    margin-bottom: 20px;
-  }
-
-  input {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #d3d3d3;
+const styles = css`
+  .create-acc-cta {
+    margin: 10px 0;
   }
 `;
+
+export default styles;

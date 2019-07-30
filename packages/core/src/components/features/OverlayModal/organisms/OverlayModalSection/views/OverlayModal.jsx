@@ -43,6 +43,7 @@ class OverlayModal extends React.Component {
   }
 
   componentWillUnmount() {
+    /* istanbul ignore else */
     this.overlayElementWrapper.style.position = 'static';
     this.overlayElementWrapper.style.pointerEvents = 'auto;';
     if (this.overlayElement) this.overlayElement.classList.remove('overlay');
@@ -62,9 +63,10 @@ class OverlayModal extends React.Component {
       const compHeight = comp.getBoundingClientRect().height;
       const compRectBoundingX = comp.getBoundingClientRect().x;
       const compWidth = comp.getBoundingClientRect().width;
-      const modal = document.getElementById('dialogContent');
-      const modalWrapper = document.getElementById('modalWrapper');
-      const modalTriangle = document.getElementById('modalTriangle');
+      const modal = document.getElementById('dialog__content');
+      modal.style.maxHeight = window && `${window.innerHeight - 200}px`;
+      const modalWrapper = document.getElementById('modal__wrapper');
+      const modalTriangle = document.getElementById('modal__triangle');
       const modalRectBoundingX = modal && modal.getBoundingClientRect().x;
       /* istanbul ignore else */
       if (compRectBoundingY) {
@@ -102,9 +104,9 @@ class OverlayModal extends React.Component {
   render() {
     const { className, ModalContent, color } = this.props;
     return (
-      <div className={className} id="modalWrapper" color={color} ref={this.setModalRef}>
-        <div id="dialogContent" className="dialog__content">
-          <div className="modal__triangle" id="modalTriangle" />
+      <div className={className} id="modal__wrapper" color={color} ref={this.setModalRef}>
+        <div id="dialog__content" className="dialog__content">
+          <div className="modal__triangle" id="modal__triangle" />
           <div className="modal__bar" />
           <ModalContent className="modal__content" />
         </div>
