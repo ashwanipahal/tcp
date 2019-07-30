@@ -9,8 +9,7 @@ const getColorCode = props => {
 const StyledModal = css`
   position: absolute;
   margin: auto;
-  min-width: 375px;
-  width: auto;
+  width: 374px;
   height: auto;
   right: ${props => (props.variation === 'primary' ? '0' : '')};
   left: ${props => (props.variation === 'secondary' ? '0' : '')};
@@ -20,6 +19,7 @@ const StyledModal = css`
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
     width: 100%;
     height: 100%;
+    overflow-y: auto;
   }
   .modal__bar {
     height: 8px;
@@ -36,9 +36,6 @@ const StyledModal = css`
       ${props => (props.color ? getColorCode(props) : props.theme.colorPalette.gray[600])};
     position: absolute;
     top: -10px;
-  }
-  .modal__content {
-    overflow-y: auto;
   }
 `;
 

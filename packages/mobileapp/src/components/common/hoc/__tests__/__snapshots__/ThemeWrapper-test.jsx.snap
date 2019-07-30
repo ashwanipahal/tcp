@@ -87,6 +87,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         },
         "BLACK": "#000000",
         "BORDER": Object {
+          "BLUE": "#2e6a91",
           "NORMAL": "#979797",
         },
         "BRAND": Object {
@@ -509,6 +510,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "textAligns": Object {
           "center": "center",
           "left": "left",
+          "right": "right",
         },
       },
       "zindex": Object {

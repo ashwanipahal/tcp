@@ -14,7 +14,7 @@ const mapStateToProps = state => {
     promoMessageWrapper: Header.promoMessageWrapper,
     headerPromoArea: Header.promoTextBannerCarousel,
     navigationDrawer: Header.navigationDrawer,
-    userName: getUserName(state)
+    userName: getUserName(state),
   };
 };
 
