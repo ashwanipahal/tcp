@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as reduxFormReducer } from 'redux-form';
 import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
 import LoginPageReducer from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.reducer';
 import PaymentReducer from '@tcp/core/src/components/features/account/Payment/container/Payment.reducer';
@@ -39,4 +40,5 @@ export default combineReducers({
   [MODULES_REDUCER_KEY]: ModulesReducer,
   [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,
   [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,
+  form: reduxFormReducer,
 });

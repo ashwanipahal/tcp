@@ -32,7 +32,7 @@ const HeaderMiddleNav = props => {
     closeNavigationDrawer,
     navigationDrawer,
     openOverlay,
-    userName
+    userName,
   } = props;
 
   return (
@@ -75,7 +75,9 @@ const HeaderMiddleNav = props => {
           }}
           className="hide-on-mobile hide-on-tablet"
         >
-          {userName ? <BodyCopy textAlign="right">{`Hi, ${userName}`}</BodyCopy> : (
+          {userName ? (
+            <BodyCopy textAlign="right">{`Hi, ${userName}`}</BodyCopy>
+          ) : (
             <React.Fragment>
               <Anchor
                 href="#"
@@ -85,7 +87,7 @@ const HeaderMiddleNav = props => {
                 fontSizeVariation="small"
                 anchorVariation="primary"
               >
-              Create Account
+                Create Account
               </Anchor>
               <Anchor
                 href="#"
@@ -95,7 +97,7 @@ const HeaderMiddleNav = props => {
                 fontSizeVariation="small"
                 anchorVariation="primary"
               >
-              Login
+                Login
               </Anchor>
             </React.Fragment>
           )}

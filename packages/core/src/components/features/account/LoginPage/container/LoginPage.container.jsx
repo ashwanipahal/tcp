@@ -1,16 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Router from 'next/router'; // eslint-disable-line
+// import Router from 'next/router'; // eslint-disable-line
 import { login, resetLoginInfo } from './LoginPage.actions';
 import { closeOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
 import labels from './LoginPage.labels';
-import { getUserLoggedInState, getLoginError, shouldShowRecaptcha, getLoginErrorMessage } from './LoginPage.selectors';
+import {
+  getUserLoggedInState,
+  getLoginError,
+  shouldShowRecaptcha,
+  getLoginErrorMessage,
+} from './LoginPage.selectors';
 import LoginView from '../views';
 
 class LoginPageContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
-    const { isUserLoggedIn, closeOverlay  } = this.props;
+    const { isUserLoggedIn, closeOverlay } = this.props;
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
       closeOverlay();
     }
@@ -18,14 +23,14 @@ class LoginPageContainer extends React.PureComponent {
 
   componentWillUnmount() {
     const { resetLoginState, loginError } = this.props;
-    if(loginError) {
+    if (loginError) {
       resetLoginState();
     }
   }
 
   render() {
     const { onSubmit, loginError, loginErrorMessage, showRecaptcha } = this.props;
-    const errorMessage = loginError ? (loginErrorMessage || labels.ACC_LBL_LOGIN_ERROR) : '';
+    const errorMessage = loginError ? loginErrorMessage || labels.ACC_LBL_LOGIN_ERROR : '';
     const initialValues = {
       rememberMe: true,
       savePlcc: true,
@@ -57,7 +62,7 @@ LoginPageContainer.defaultProps = {
   loginError: false,
   loginErrorMessage: '',
   resetLoginState: () => {},
-  closeOverlay: () => {}
+  closeOverlay: () => {},
 };
 
 function mapDispatchToProps(dispatch) {
@@ -70,7 +75,7 @@ function mapDispatchToProps(dispatch) {
     },
     closeOverlay: () => {
       dispatch(closeOverlayModal());
-    }
+    },
   };
 }
 
