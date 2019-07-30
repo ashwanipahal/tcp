@@ -32,4 +32,5 @@ export default {
   down_arrow_icon: '/static/images/down_arrow_icon.png',
   active_icon: '/static/images/active_icon.png',
   'carousel-big-carrot': '/static/images/right-carousel-carrot.svg',
+  'my-place-rewards': '/static/images/my-place-rewards.png'
 };

@@ -68,6 +68,7 @@ exports[`ModuleL component renders correctly 1`] = `
       fontSize={
         Array [
           "fs32",
+          "fs32",
           "fs48",
         ]
       }

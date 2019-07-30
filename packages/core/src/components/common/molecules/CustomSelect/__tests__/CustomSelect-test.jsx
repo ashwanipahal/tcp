@@ -53,7 +53,7 @@ describe('CustomSelect component', () => {
       />
     );
     component.setState({ toggle: true });
-    component.instance().onClickHandler();
+    component.instance().onClickHandler({ stopPropagation: () => {} });
     expect(component.state('toggle')).toBe(false);
     expect(mockedClickHandler).toBeCalled();
     expect(component).toMatchSnapshot();
