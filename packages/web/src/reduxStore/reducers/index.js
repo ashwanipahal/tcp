@@ -35,20 +35,17 @@ import {
   ADDEDITCREDITCARD_REDUCER_KEY,
   ADD_GIFT_CARD_REDUCER_KEY,
   ADDED_TO_BAG_REDUCER_KEY,
-<<<<<<< HEAD
   // CART_REDUCER_KEY,
   CARTPAGE_REDUCER_KEY,
-=======
   CART_REDUCER_KEY,
   OVERLAY_MODAL_REDUCER_KEY,
   NAVIGATION_REDUCER_KEY,
->>>>>>> 53b8d20c7133fff12191eaa80111f5a475ebd2e2
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
 import NavigationReducer from '@tcp/core/src/components/features/content/Navigation/container/Navigation.reducer';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
-// import CartReducer from '@tcp/core/src/components/features/CnC/Cart/containers/Cart.reducer';
+import CartReducer from '@tcp/core/src/components/features/CnC/Cart/containers/Cart.reducer';
 import HomePageReducer from '../../components/features/content/HomePage/container/HomePage.reducer';
 import EmailSignupReducer from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.reducer';
 import SmsSignupReducer from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.reducer';
@@ -81,12 +78,8 @@ export default combineReducers({
   [ADDEDITCREDITCARD_REDUCER_KEY]: AddEditCreditCardReducer,
   [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,
   [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,
-<<<<<<< HEAD
-  // [CART_REDUCER_KEY]: CartReducer,
   [CARTPAGE_REDUCER_KEY]: CartPage,
-=======
   [CART_REDUCER_KEY]: CartReducer,
   [OVERLAY_MODAL_REDUCER_KEY]: OverlayModalReducer,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
->>>>>>> 53b8d20c7133fff12191eaa80111f5a475ebd2e2
 });
