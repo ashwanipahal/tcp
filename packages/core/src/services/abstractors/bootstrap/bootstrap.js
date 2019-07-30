@@ -94,6 +94,8 @@ const bootstrap = async pages => {
     country: apiConfig.siteIdCMS || defaultCountry,
   };
 
+  console.log('bootstrapParams Abstractor  ---> --------> ', bootstrapParams);
+
   // TODO - This should be ideally done in Handler of graphQL
   try {
     const bootstrapData = await fetchBootstrapData(bootstrapParams);

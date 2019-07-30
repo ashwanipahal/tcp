@@ -51,6 +51,8 @@ app.prepare().then(() => {
       ? route.path
       : sites.map(location => `/${location}${route.path}`);
     server.get(routePaths, (req, res) => {
+      console.log('server REQ URL ================================>', ctx.req.url);
+      console.log('server REQ hostname ================================>', ctx.req.hostname);
       setSiteId(req, res);
       setBrandId(req, res);
       // Handling routes without params
