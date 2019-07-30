@@ -72,7 +72,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
               "value": "12345",
             },
             Object {
-              "content": <ForwardRef(Styled(Button))
+              "content": <ForwardRef
                 buttonVariation="variable-width"
                 fill="BLUE"
                 fullWidth={true}
@@ -234,7 +234,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
               "value": "12345",
             },
             Object {
-              "content": <ForwardRef(Styled(Button))
+              "content": <ForwardRef
                 buttonVariation="variable-width"
                 fill="BLUE"
                 fullWidth={true}

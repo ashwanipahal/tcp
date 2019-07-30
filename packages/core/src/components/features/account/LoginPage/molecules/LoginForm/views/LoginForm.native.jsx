@@ -35,29 +35,20 @@ const LoginForm = props => {
   const [rememberMe, setRememberMe] = useState(false);
   const [saveMyRewards, setSaveMyRewards] = useState(false);
   const { labels, handleSubmit } = props;
-  // console.log('handleSubmit:', handleSubmit);
-
-  const submit = values => {
-    console.log('submitting form', values);
-  };
 
   const onEmailChange = val => {
-    console.log('onEmailChange', val);
     setEmailAddress(val);
   };
 
   const onPasswordChange = val => {
-    console.log('onPasswordChange', val);
     setPassword(val);
   };
 
   const onRememberMe = value => {
-    console.log('onRememberMe: ', value);
     setRememberMe(value);
   };
 
   const onSaveMyRewards = value => {
-    console.log('onSaveMyRewards: ', value);
     setSaveMyRewards(value);
   };
 
@@ -112,7 +103,7 @@ const LoginForm = props => {
         text={labels.login}
         buttonVariation="variable-width"
         customStyle={styles.loginButtonStyle}
-        onPress={handleSubmit(submit)}
+        onPress={handleSubmit()}
       />
       <Anchor
         fontSizeVariation="xlarge"
@@ -132,6 +123,7 @@ const LoginForm = props => {
 };
 
 LoginForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
   labels: PropTypes.shape({
     email: PropTypes.string,
     password: PropTypes.string,

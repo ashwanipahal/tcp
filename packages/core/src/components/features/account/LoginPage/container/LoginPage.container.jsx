@@ -83,6 +83,12 @@ LoginPageContainer.propTypes = {
   loginError: PropTypes.bool,
   loginErrorMessage: PropTypes.string,
   showRecaptcha: PropTypes.bool,
+  resetResponse: PropTypes.bool.isRequired,
+  resetForm: PropTypes.bool.isRequired,
+  getUserInfoAction: PropTypes.bool.isRequired,
+  onSubmitForgot: PropTypes.bool.isRequired,
+  showNotification: PropTypes.bool.isRequired,
+  successFullResetEmail: PropTypes.bool.isRequired,
 };
 
 LoginPageContainer.defaultProps = {

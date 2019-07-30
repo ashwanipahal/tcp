@@ -38,6 +38,12 @@ LoginView.propTypes = {
   loginErrorMessage: PropTypes.string,
   initialValues: PropTypes.shape({}).isRequired,
   showRecaptcha: PropTypes.bool,
+  resetResponse: PropTypes.bool.isRequired,
+  resetForm: PropTypes.bool.isRequired,
+  resetLoginState: PropTypes.bool.isRequired,
+  onSubmitForgot: PropTypes.bool.isRequired,
+  showNotification: PropTypes.bool.isRequired,
+  successFullResetEmail: PropTypes.bool.isRequired,
 };
 
 LoginView.defaultProps = {
