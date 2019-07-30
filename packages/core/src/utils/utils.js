@@ -64,9 +64,6 @@ export const createAPIConfig = resLocals => {
   const countryConfig = isCASite ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
   const brandConfig = isGYMSite ? API_CONFIG.GYM_CONFIG_OPTIONS : API_CONFIG.TCP_CONFIG_OPTIONS;
   const basicConfig = getAPIInfoFromEnv();
-
-  console.log(' brandId  |---------------------|--> ', brandId);
-
   return {
     ...basicConfig,
     ...countryConfig,

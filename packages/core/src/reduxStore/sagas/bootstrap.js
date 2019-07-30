@@ -12,9 +12,6 @@ function* bootstrap({ payload: { pageInfo = { name: 'homepage' }, apiConfig } })
     // putResolve is used to block the other actions till apiConfig is set in state, which is to be used by next bootstrap api calls
     yield putResolve(setAPIConfig(apiConfig));
     const result = yield call(bootstrapAbstractor, pagesList);
-
-    console.log('result Modules --------> ', result);
-
     yield put(loadLayoutData(result[pageInfo.name].items[0].layout, pageInfo.name));
     yield put(loadLabelsData(result.labels));
     yield put(loadHeaderData(result.header));
