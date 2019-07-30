@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginForm component should renders correctly 1`] = `
+<View
+  handleSubmit={[Function]}
+  labels={Object {}}
+  loginErrorMessage=""
+  onSubmit={[Function]}
+>
+  <Field
+    component={[Function]}
+    dataLocator="emailAddress"
+    id="emailAddress"
+    name="emailAddress"
+    type="text"
+  />
+  <Field
+    component={[Function]}
+    dataLocator="password"
+    id="password"
+    name="password"
+    secureTextEntry={true}
+    type="text"
+  />
+  <View
+    style={
+      Object {
+        "width": "90%",
+      }
+    }
+  >
+    <Field
+      component={[Function]}
+      dataLocator="rememberMe"
+      disabled={false}
+      name="rememberMe"
+    />
+    <Field
+      component={[Function]}
+      dataLocator="savePlcc"
+      disabled={false}
+      marginTop={13}
+      name="savePlcc"
+    />
+  </View>
+  <Styled(CustomButton)
+    buttonVariation="variable-width"
+    color="#FFFFFF"
+    customStyle={
+      Object {
+        "marginTop": 30,
+      }
+    }
+    fill="BLUE"
+    fullWidth=""
+    text=""
+    url=""
+  />
+  <Styled(Anchor)
+    anchorVariation="secondary"
+    customStyle={
+      Object {
+        "marginTop": 10,
+      }
+    }
+    fontSizeVariation="xlarge"
+    text=""
+    visible={false}
+  />
+  <Styled(LineComp)
+    borderColor="#2e6a91"
+    borderWidth={0.65}
+    marginBottom={0}
+    marginTop={28}
+  />
+  <Styled(Text) />
+  <Styled(CustomButton)
+    buttonVariation="variable-width"
+    customStyle={
+      Object {
+        "marginTop": 30,
+      }
+    }
+    fullWidth=""
+    text=""
+    url=""
+  />
+</View>
+`;

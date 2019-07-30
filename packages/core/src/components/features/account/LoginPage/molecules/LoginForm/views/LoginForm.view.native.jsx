@@ -35,9 +35,8 @@ const styles = {
  * @return {JSX} IconClass : Return jsx icon component
  * @desc This method based on the props generate icon component.
  */
-const LoginForm = props => {
-  const { labels, handleSubmit, onSubmit, loginErrorMessage } = props;
-  console.log('error: ', loginErrorMessage);
+export const LoginForm = props => {
+  const { labels, handleSubmit, onSubmit } = props;
 
   return (
     <View {...props}>
