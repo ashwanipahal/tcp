@@ -1597,6 +1597,10 @@ exports[`AddressFields component should render correctly 1`] = `
     position: absolute;
   }
 
+  & .CheckBox__text {
+    width: calc(100% - 25px);
+  }
+
   & .disabled {
     opacity: ",
                 [Function],

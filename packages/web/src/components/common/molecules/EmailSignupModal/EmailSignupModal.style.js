@@ -40,7 +40,7 @@ const EmailSignupModalStyle = css`
       padding: 0;
     }
     .img-wrapper {
-      display: flex;
+      display: block;
     }
     .button-container {
       position: absolute;

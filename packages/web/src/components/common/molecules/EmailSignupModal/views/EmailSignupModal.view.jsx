@@ -19,6 +19,18 @@ class EmailSignupModal extends React.PureComponent {
     };
   }
 
+  componentDidUpdate({ subscription: oldSubscription }) {
+    const { subscription } = this.props;
+
+    if (
+      this.modalContentRef &&
+      subscription.success !== oldSubscription.success &&
+      subscription.success
+    ) {
+      this.modalContentRef.focus();
+    }
+  }
+
   onSignUpInputKeyPress = e => {
     if (e.keyCode === 13 || e.which === 13) {
       e.preventDefault();
@@ -30,6 +42,10 @@ class EmailSignupModal extends React.PureComponent {
     this.setState({
       validationStarted: true,
     });
+  };
+
+  setModalContentRef = node => {
+    this.modalContentRef = node;
   };
 
   closeModal = () => {
@@ -65,6 +81,7 @@ class EmailSignupModal extends React.PureComponent {
     return (
       <Fragment>
         <Modal
+          contentRef={this.setModalContentRef}
           isOpen={isModalOpen}
           colSet={{ small: 6, medium: 6, large: 8 }}
           className={className}
@@ -75,6 +92,12 @@ class EmailSignupModal extends React.PureComponent {
           closeIconDataLocator={
             subscription.success ? 'thank_you_modal_close_btn' : 'email_signup_modal_close_btn'
           }
+          contentLabel={`${formViewConfig.signUpForLabel} ${formViewConfig.offerTypeLabel}`}
+          aria={{
+            describedby: subscription.success
+              ? 'sign-up-modal-confirm-view'
+              : 'sign-up-modal-form-intro-view',
+          }}
         >
           {subscription.success ? (
             <Grid>
