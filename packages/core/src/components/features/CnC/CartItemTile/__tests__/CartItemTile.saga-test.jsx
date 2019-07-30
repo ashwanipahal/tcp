@@ -7,7 +7,11 @@ import {
   updateCartItemSaga,
   getProductSKUInfoSaga,
 } from '../container/CartItemTile.saga';
-import { getOrderDetailsComplete } from '../container/CartItemTile.actions';
+import {
+  getOrderDetailsComplete,
+  removeCartItemComplete,
+  updateCartItemComplete,
+} from '../container/CartItemTile.actions';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 
 describe('Cart Item saga', () => {
@@ -22,6 +26,51 @@ describe('Cart Item saga', () => {
     };
     const putDescriptor = getOrderDetailSagaGen.next(res).value;
     expect(putDescriptor).toEqual(put(getOrderDetailsComplete(res)));
+  });
+});
+
+describe('Cart Item saga remove', () => {
+  it('should dispatch removeCartItem action for success resposnse', () => {
+    const payload = [
+      {
+        orderItemId: '3001545548',
+        quantity: '0',
+      },
+    ];
+    const removeCartItemGen = removeCartItem(payload);
+    removeCartItemGen.next();
+
+    const res = {
+      orderId: '3000284778',
+      x_orderTotal: '49.35000',
+    };
+    const putDescriptor = removeCartItemGen.next(res).value;
+    expect(putDescriptor).toEqual(put(removeCartItemComplete(res)));
+  });
+});
+
+describe('Cart Item saga update', () => {
+  it('should dispatch updateCartItem action for success resposnse', () => {
+    const payload = [
+      {
+        itemPartNumber: '00193511095440',
+        orderItemId: '3001545559',
+        quantity: '1',
+        variantNo: '3002156005',
+        xitem_catEntryId: '1285036',
+      },
+    ];
+    const updateCartItemSagaGen = updateCartItemSaga(payload);
+    updateCartItemSagaGen.next();
+
+    const res = {
+      orderId: '3000284778',
+      orderItem: [{ orderItemId: '3001545559' }],
+      x_orderItemTotal: '10.50000',
+      x_orderTotal: '49.35000',
+    };
+    const putDescriptor = updateCartItemSagaGen.next(res).value;
+    expect(putDescriptor).toEqual(put(updateCartItemComplete(res)));
   });
 });
 
@@ -56,9 +105,5 @@ describe('ForgotPasswordSaga', () => {
     expect(takeLatestDescriptor).toEqual(
       takeLatest(CARTPAGE_CONSTANTS.GET_PRODUCT_SKU_INFO, getProductSKUInfoSaga)
     );
-
-    // yield takeLatest(CARTPAGE_CONSTANTS.UPDATE_CART_ITEM, updateCartItemSaga);
-    // yield takeLatest(CARTPAGE_CONSTANTS.UPDATE_CART_ITEM_COMPLETE, getOrderDetailSaga);
-    // yield takeLatest(CARTPAGE_CONSTANTS.GET_PRODUCT_SKU_INFO, getProductSKUInfoSaga);
   });
 });
