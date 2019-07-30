@@ -70,10 +70,16 @@ exports[`ModuleK component renders correctly 1`] = `
         }
       }
     >
-      <Styled(LinkText)
+      <Styled(Styled(LinkText))
         component="div"
         dataLocator="moduleK_header_text"
-        fontSize="fs48"
+        fontSize={
+          Array [
+            "fs36",
+            "fs36",
+            "fs48",
+          ]
+        }
         fontWeight="black"
         headerText={
           Array [
@@ -101,6 +107,7 @@ exports[`ModuleK component renders correctly 1`] = `
             },
           ]
         }
+        lineHeight="lh107"
       />
     </Styled(Col)>
     <Styled(Col)

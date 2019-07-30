@@ -15,5 +15,5 @@ it('Navigation Abstractor | ', () => {
 });
 it('NavigationAbstractor Abstractor | getMock', () => {
   const data = NavigationAbstractor.getMock();
-  expect(data).toMatchObject(mock);
+  expect(data).toMatchObject(NavigationAbstractor.processData(mock.data.navigation));
 });

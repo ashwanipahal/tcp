@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavMenuLevel3 should render correctly 1`] = `
+<Styled(View)>
+  <Styled(TouchableOpacity)
+    accessibilityRole="button"
+    onPress={[Function]}
+  >
+    <Styled(Image)
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/carrot-large-left.png",
+        }
+      }
+    />
+  </Styled(TouchableOpacity)>
+  <Styled(BodyCopy)
+    color="text.primary"
+    fontFamily="secondary"
+    fontSize="fs16"
+    style={
+      Object {
+        "textTransform": "uppercase",
+      }
+    }
+    text="L3"
+    textAlign="center"
+  />
+  <Text />
+</Styled(View)>
+`;

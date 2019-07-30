@@ -1,11 +1,12 @@
 import React from 'react';
-import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 import Modal from '../../../../common/molecules/Modal';
 import withStyles from '../../../../common/hoc/withStyles';
-import { styles, PlaceHolderView } from '../styles/AddedToBag.style.native';
 import ProductInformation from '../molecules/ProductInformation/views/ProductInformation.views.native';
 import BossBanner from '../molecules/BossBanner/views/BossBanner.views.native';
+import { styles, AddedToBagWrapper } from '../styles/AddedToBag.style.native';
+import AddedToBagViewPoints from '../../AddedToBagViewPoints';
+import AddedToBagActions from '../../AddedToBagActions/views/AddedToBagActions.native';
 
 const AddedToBag = ({ openState, onRequestClose, className, addedToBagData, labels }) => {
   return (
@@ -25,14 +26,12 @@ const AddedToBag = ({ openState, onRequestClose, className, addedToBagData, labe
       }}
     >
       {/* Below are place holders for different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
-      <ProductInformation data={addedToBagData} labels={labels} />
-      <PlaceHolderView className="AddedToBagViewPoints">
-        <Text>AddedToBagViewPoints</Text>
-      </PlaceHolderView>
-      <PlaceHolderView className="AddedToBagActions">
-        <Text>AddedToBagActions</Text>
-      </PlaceHolderView>
-      <BossBanner labels={labels} />
+      <AddedToBagWrapper>
+        <ProductInformation data={addedToBagData} labels={labels} />
+        <AddedToBagViewPoints labels={labels} />
+        <AddedToBagActions labels={labels} />
+        <BossBanner labels={labels} />
+      </AddedToBagWrapper>
     </Modal>
   );
 };

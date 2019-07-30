@@ -11,14 +11,24 @@ import SignupFormIntro from '../../SignupFormIntro';
 
 import signupWrapperStyle from '../EmailSignupModal.style';
 
-const FormName = 'EmailSignupModalForm';
-
-class SignupWrapper extends React.PureComponent {
+class EmailSignupModal extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
       validationStarted: false,
     };
+  }
+
+  componentDidUpdate({ subscription: oldSubscription }) {
+    const { subscription } = this.props;
+
+    if (
+      this.modalContentRef &&
+      subscription.success !== oldSubscription.success &&
+      subscription.success
+    ) {
+      this.modalContentRef.focus();
+    }
   }
 
   onSignUpInputKeyPress = e => {
@@ -34,9 +44,13 @@ class SignupWrapper extends React.PureComponent {
     });
   };
 
+  setModalContentRef = node => {
+    this.modalContentRef = node;
+  };
+
   closeModal = () => {
-    const { closeModal, clearEmailSignupForm, dispatch, reset } = this.props;
-    dispatch(reset(FormName));
+    const { closeModal, clearEmailSignupForm, reset } = this.props;
+    reset();
     clearEmailSignupForm();
     closeModal();
     this.setState({
@@ -56,7 +70,7 @@ class SignupWrapper extends React.PureComponent {
       isModalOpen,
       className,
       formViewConfig,
-      isSubscriptionValid,
+      subscription,
       pristine,
       invalid,
       asyncValidating,
@@ -67,6 +81,7 @@ class SignupWrapper extends React.PureComponent {
     return (
       <Fragment>
         <Modal
+          contentRef={this.setModalContentRef}
           isOpen={isModalOpen}
           colSet={{ small: 6, medium: 6, large: 8 }}
           className={className}
@@ -75,10 +90,16 @@ class SignupWrapper extends React.PureComponent {
           noPadding
           widthConfig={{ small: '375px', medium: '458px', large: '851px' }}
           closeIconDataLocator={
-            isSubscriptionValid ? 'thank_you_modal_close_btn' : 'email_signup_modal_close_btn'
+            subscription.success ? 'thank_you_modal_close_btn' : 'email_signup_modal_close_btn'
           }
+          contentLabel={`${formViewConfig.signUpForLabel} ${formViewConfig.offerTypeLabel}`}
+          aria={{
+            describedby: subscription.success
+              ? 'sign-up-modal-confirm-view'
+              : 'sign-up-modal-form-intro-view',
+          }}
         >
-          {isSubscriptionValid ? (
+          {subscription.success ? (
             <Grid>
               <Row fullBleed>
                 <Col
@@ -176,18 +197,17 @@ class SignupWrapper extends React.PureComponent {
   }
 }
 
-SignupWrapper.propTypes = {
+EmailSignupModal.propTypes = {
   buttonConfig: PropTypes.shape({}),
   submitEmailSubscription: PropTypes.func,
   className: PropTypes.string,
   formViewConfig: PropTypes.shape({}).isRequired,
   confirmationViewConfig: PropTypes.shape({}).isRequired,
   clearEmailSignupForm: PropTypes.shape({}).isRequired,
-  dispatch: PropTypes.func.isRequired,
   closeModal: PropTypes.func,
   reset: PropTypes.func,
   handleSubmit: PropTypes.func,
-  isSubscriptionValid: PropTypes.bool,
+  subscription: PropTypes.shape({}),
   isModalOpen: PropTypes.bool,
   pristine: PropTypes.bool,
   invalid: PropTypes.bool,
@@ -195,14 +215,14 @@ SignupWrapper.propTypes = {
   submitSucceeded: PropTypes.bool,
 };
 
-SignupWrapper.defaultProps = {
+EmailSignupModal.defaultProps = {
   buttonConfig: {},
   submitEmailSubscription: () => {},
   closeModal: () => {},
   reset: () => {},
   handleSubmit: () => {},
   className: '',
-  isSubscriptionValid: false,
+  subscription: {},
   isModalOpen: false,
   pristine: false,
   invalid: false,
@@ -210,17 +230,15 @@ SignupWrapper.defaultProps = {
   submitSucceeded: false,
 };
 
-// export default withStyles(SignupWrapper, signupWrapperStyle);
-
 export default withStyles(
   reduxForm({
-    form: FormName, // a unique identifier for this form
+    form: 'EmailSignupModalForm',
     initialValues: {
       signup: '',
     },
     asyncBlurFields: ['signup'],
-  })(SignupWrapper),
+  })(EmailSignupModal),
   signupWrapperStyle
 );
 
-export { SignupWrapper as SignupWrapperVanilla };
+export { EmailSignupModal as EmailSignupModalVanilla };

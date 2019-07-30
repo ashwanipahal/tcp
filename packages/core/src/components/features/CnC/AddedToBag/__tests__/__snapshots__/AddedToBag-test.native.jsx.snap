@@ -17,26 +17,20 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
   onRequestClose={[Function]}
   overlayClassName="TCPModal__Overlay"
 >
-  <Styled(ProductInformation)
-    data={Object {}}
-    labels={Object {}}
-  />
-  <Styled(View)
-    className="AddedToBagViewPoints"
-  >
-    <Text>
-      AddedToBagViewPoints
-    </Text>
+  <Styled(View)>
+    <Styled(ProductInformation)
+      data={Object {}}
+      labels={Object {}}
+    />
+    <Connect(AddedToBagViewPointsContainer)
+      labels={Object {}}
+    />
+    <AddedToBagActions
+      labels={Object {}}
+    />
+    <Styled(BossBanner)
+      labels={Object {}}
+    />
   </Styled(View)>
-  <Styled(View)
-    className="AddedToBagActions"
-  >
-    <Text>
-      AddedToBagActions
-    </Text>
-  </Styled(View)>
-  <Styled(BossBanner)
-    labels={Object {}}
-  />
 </ModalNative>
 `;

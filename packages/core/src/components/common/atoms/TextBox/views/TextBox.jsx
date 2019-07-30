@@ -19,6 +19,7 @@ type Props = {
   ariaLabel?: string,
   type?: string,
   placeholder?: string,
+  errorDataLocator?: string,
   onChangeHandler?: any,
   meta?: { touched: any, error: any, warning: any },
   input: any,
@@ -26,6 +27,7 @@ type Props = {
   inputRef: any,
   dataLocator?: string,
   showSuccessCheck?: boolean,
+  enableSuccessCheck?: boolean,
   isRequired?: boolean,
 };
 
@@ -54,7 +56,9 @@ const TextBox = ({
   meta,
   dataLocator,
   showSuccessCheck,
+  enableSuccessCheck,
   isRequired,
+  errorDataLocator,
   ...others
 }: Props): Node => {
   const elemValue = input.value;
@@ -94,10 +98,11 @@ const TextBox = ({
         fontFamily="secondary"
         role="alert"
         aria-live="assertive"
+        data-locator={errorDataLocator}
       >
         {touched && error ? error : ''}
       </BodyCopy>
-      <div className="success__checkmark" />
+      {enableSuccessCheck && <div className="success__checkmark" />}
     </label>
   );
 };
@@ -107,10 +112,12 @@ TextBox.defaultProps = {
   ariaLabel: '',
   type: 'text',
   placeholder: '',
+  errorDataLocator: '',
   onChangeHandler: () => {},
   dataLocator: '',
   meta: {},
   showSuccessCheck: false,
+  enableSuccessCheck: true,
   isRequired: false,
 };
 
