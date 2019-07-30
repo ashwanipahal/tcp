@@ -7,7 +7,6 @@ const ProductName = styled.Text`
   padding: 5px;
 `;
 const ProductDesc = styled.View`
-  font-size: 10;
   flex-direction: row;
 `;
 const ImageWrapper = styled.View`
@@ -16,4 +15,20 @@ const ImageWrapper = styled.View`
 const ProductDescription = styled.View`
   width: 203px;
 `;
-export { OuterContainer, ProductName, ProductDesc, ImageWrapper, ProductDescription };
+const ImgWrapper = styled.View`
+  flex-basis: 20%;
+`;
+
+const ImageStyle = styled.Image`
+  width: 100px;
+  height: 100px;
+`;
+export {
+  OuterContainer,
+  ProductName,
+  ProductDesc,
+  ImageWrapper,
+  ProductDescription,
+  ImgWrapper,
+  ImageStyle,
+};

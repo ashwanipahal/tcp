@@ -1,9 +1,5 @@
-/* eslint-disable sonarjs/no-duplicate-string */
-/* eslint-disable react-native/no-color-literals */
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Image } from 'react-native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import endpoints from '../../../../../../../service/endpoint';
@@ -11,25 +7,20 @@ import {
   ProductName,
   ProductDesc,
   OuterContainer,
-  ImageWrapper,
+  ImgWrapper,
+  ImageStyle,
   ProductDescription,
 } from '../styles/ProductInformation.style.native';
 
 const ProductInformation = ({ data, labels }) => {
   return (
     <OuterContainer>
-      <ImageWrapper>
-        <Image
-          style={{ width: 100, height: 100 }}
-          source={{ uri: endpoints.global.baseURI + data.skuInfo.imageUrl }}
-        />
+      <ImgWrapper>
+        <ImageStyle source={{ uri: endpoints.global.baseURI + data.skuInfo.imageUrl }} />
         {!data.isGiftCard && (
-          <Image
-            style={{ width: 100, height: 100 }}
-            source={{ uri: `${endpoints.global.baseURI}/static/images/${data.brand}` }}
-          />
+          <ImageStyle source={{ uri: `${endpoints.global.baseURI}/static/images/${data.brand}` }} />
         )}
-      </ImageWrapper>
+      </ImgWrapper>
       <ProductDescription>
         <ProductName>
           <BodyCopy fontSize="fs12" fontWeight={['semibold']} text={data.productName} />

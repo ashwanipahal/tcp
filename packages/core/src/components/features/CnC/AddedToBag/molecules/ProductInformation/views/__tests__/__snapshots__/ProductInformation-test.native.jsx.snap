@@ -3,29 +3,17 @@
 exports[`GiftCardList Component renders correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
-    <Image
+    <Styled(Image)
       source={
         Object {
           "uri": "https://test4.childrensplace.comundefined",
         }
       }
-      style={
-        Object {
-          "height": 100,
-          "width": 100,
-        }
-      }
     />
-    <Image
+    <Styled(Image)
       source={
         Object {
           "uri": "https://test4.childrensplace.com/static/images/undefined",
-        }
-      }
-      style={
-        Object {
-          "height": 100,
-          "width": 100,
         }
       }
     />
