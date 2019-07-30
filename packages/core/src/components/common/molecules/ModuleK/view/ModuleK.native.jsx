@@ -47,6 +47,7 @@ class ModuleK extends React.PureComponent {
     const {
       data: { masonryGrid = [] },
     } = this.props;
+
     /* eslint-disable  */
     return (
       <Pagination
@@ -95,7 +96,7 @@ class ModuleK extends React.PureComponent {
             />
           </PromoTextBannerWrapper>
         )}
-        <ImageGrid dataLocator={`moduleK_image_${slideIndex}`} data={mediaList} />
+        <ImageGrid dataLocator={`moduleK_image_${slideIndex}`} mediaList={mediaList} />
         {singleCTAButton && (
           <WrapperView width={getScreenWidth() - 20}>
             <Button
@@ -118,7 +119,7 @@ class ModuleK extends React.PureComponent {
     } = this;
 
     const [headerText] = data.headerText;
-    const { outerPromoTextBanner, masonryGrid, autoplayInterval } = data;
+    const { promoTextBanner: outerPromoTextBanner, masonryGrid, autoplayInterval } = data;
     let indexedMasonryGrid = masonryGrid.map((item, i) => {
       item.slideIndex = i;
       return item;
@@ -165,218 +166,16 @@ class ModuleK extends React.PureComponent {
 
 ModuleK.defaultProps = {
   data: {
+    headerText: [],
+    promoTextBanner: null,
+    masonryGrid: [],
     autoplayInterval: 2,
-    headerText: [
-      {
-        textItems: [
-          {
-            text: 'UNICORNS',
-            style: 'style1',
-          },
-          {
-            text: ', DINOS & MORE!',
-            style: 'style1',
-          },
-        ],
-        link: {
-          url: 'http://google.com/',
-          text: 'example',
-          title: 'example',
-          target: '_blank',
-        },
-      },
-    ],
-    // outerPromoTextBanner: [
-    //   {
-    //     textItems: [
-    //       {
-    //         style: 'style2',
-    //         text: 'ALL DINOS',
-    //       },
-    //       {
-    //         style: 'style3',
-    //         text: '100% OFF',
-    //       },
-    //     ],
-    //   },
-    // ],
-
-    promoTextBanner: [
-      {
-        textItems: [
-          {
-            style: 'style2',
-            text: 'ALL DINOS',
-          },
-          {
-            style: 'style3',
-            text: '100% OFF',
-          },
-        ],
-      },
-    ],
-
-    masonryGrid: [
-      {
-        mediaList: [
-          {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-1_s0jewf.jpg',
-            title: 'Image Title attribute value',
-            alt: '',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
-            __typename: 'Image',
-          },
-          {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-2_cpjda2.jpg',
-            title: '2222',
-            alt: '',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
-            __typename: 'Image',
-          },
-          {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-3_tlamd0.jpg',
-            title: '33333',
-            alt: '',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
-            __typename: 'Image',
-          },
-          {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-4_com7vo.jpg',
-            title: '4444444',
-            alt: '',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
-            __typename: 'Image',
-          },
-        ],
-        promoBanner: null,
-        promoTextBanner: [
-          {
-            textItems: [
-              {
-                text: 'ALL DINOS',
-                style: 'style2',
-                __typename: 'StyledText',
-              },
-              {
-                text: '50% OFF',
-                style: 'style3',
-                __typename: 'StyledText',
-              },
-            ],
-            linkClass: {
-              class: '',
-              __typename: 'LinkClass',
-            },
-            __typename: 'PromoTextBanner',
-          },
-        ],
-        mediaLinkedList: null,
-        singleCTAButton: {
-          url: 'https://www.bing.com',
-          text: 'SHOP NOW',
-          title: '',
-          target: '',
-          external: 0,
-          __typename: 'Button',
-        },
-        __typename: 'MasonryGridItem',
-      },
-      {
-        mediaList: [
-          {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-3_tlamd0.jpg',
-            title: 'Image Title attribute value',
-            alt: '',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
-            __typename: 'Image',
-          },
-          {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-4_com7vo.jpg',
-            title: 'Image Title attribute value 3',
-            alt: '',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
-            __typename: 'Image',
-          },
-          {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-1_s0jewf.jpg',
-            title: 'Image Title attribute value 4',
-            alt: '',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
-            __typename: 'Image',
-          },
-          {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-2_cpjda2.jpg',
-            title: 'sssssswww',
-            alt: '',
-            crop_d: '',
-            crop_t: '',
-            crop_m: '',
-            __typename: 'Image',
-          },
-        ],
-        promoBanner: null,
-        promoTextBanner: [
-          {
-            textItems: [
-              {
-                text: 'ALL DINOS',
-                style: 'style2',
-                __typename: 'StyledText',
-              },
-              {
-                text: '100% OFF',
-                style: 'style3',
-                __typename: 'StyledText',
-              },
-            ],
-            linkClass: {
-              class: '',
-              __typename: 'LinkClass',
-            },
-            __typename: 'PromoTextBanner',
-          },
-        ],
-        mediaLinkedList: null,
-        singleCTAButton: {
-          url: 'http://www.childrensplace.com',
-          text: 'SHOP NOW',
-          title: '',
-          target: '',
-          external: 0,
-          __typename: 'Button',
-        },
-        __typename: 'MasonryGridItem',
-      },
-    ],
   },
 };
 
 ModuleK.propTypes = {
   data: PropTypes.shape({
     headerText: PropTypes.array,
-    outerPromoTextBanner: PropTypes.array,
     promoTextBanner: PropTypes.array,
     masonryGrid: PropTypes.array,
     autoplayInterval: PropTypes.number, // 2 means 2 seconds

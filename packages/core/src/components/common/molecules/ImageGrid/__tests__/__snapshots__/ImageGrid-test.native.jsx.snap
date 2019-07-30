@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageGrid native component renders correctly 1`] = `
+<Styled(View)>
+  <Styled(Styled(ImageComp))
+    alt="Image Alt text attribute value"
+    crop="c_crop,g_face:center,q_auto:best,w_962"
+    data-locator="moduleK_image__0"
+    height="164px"
+    url="/static/images/K-210x210-1.jpg"
+    width="164px"
+  />
+  <Styled(Styled(ImageComp))
+    alt="Image Alt text attribute value"
+    crop="c_crop,g_face:center,q_auto:best,w_962"
+    data-locator="moduleK_image__1"
+    height="164px"
+    url="/static/images/K-210x210-2.jpg"
+    width="164px"
+  />
+  <Styled(Styled(ImageComp))
+    alt="Image Alt text attribute value"
+    crop="c_crop,g_face:center,q_auto:best,w_962"
+    data-locator="moduleK_image__2"
+    height="164px"
+    url="/static/images/K-210x210-3.jpg"
+    width="164px"
+  />
+  <Styled(Styled(ImageComp))
+    alt="Image Alt text attribute value"
+    crop="c_crop,g_face:center,q_auto:best,w_962"
+    data-locator="moduleK_image__3"
+    height="164px"
+    url="/static/images/K-210x210-4.jpg"
+    width="164px"
+  />
+</Styled(View)>
+`;

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PromoTextBanner native component renders correctly 1`] = `
+Array [
+  <style2
+    dataLocator="moduleK_text_"
+    text="ALL DINOS"
+  />,
+  <style3
+    dataLocator="moduleK_text_"
+    text=" 50% OFF"
+  />,
+]
+`;

@@ -13,7 +13,8 @@ type Props = {
  *    style: "",
  *    text: ""
  * }
- * This component uses BodyCopy atom and accepts all properties of BodyCopy
+ * This component accepts BodyCopy styles in array return matching BodyCopy style with
+ * the key provided by CMS
  * @param {*} props
  */
 const PromoTextBanner = (props: Props) => {
