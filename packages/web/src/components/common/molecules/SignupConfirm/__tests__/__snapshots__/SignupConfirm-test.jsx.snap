@@ -40,13 +40,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
     letterSpacing="normal"
     lineHeight="normal"
     textAlign="center"
-  >
-    <span
-      className="visually-hidden"
-    >
-      .
-    </span>
-  </Styled(BodyCopy)>
+  />
   <Styled(Image)
     alt="sms-icon"
     aria-hidden="true"
@@ -71,13 +65,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
     letterSpacing="normal"
     lineHeight="normal"
     textAlign="center"
-  >
-    <span
-      className="visually-hidden"
-    >
-      .
-    </span>
-  </Styled(BodyCopy)>
+  />
   <Styled(BodyCopy)
     className="redeem-label"
     color="text.primary"

@@ -25,7 +25,6 @@ const SignupConfirm = ({ className, formViewConfig, susbscriptionType }) => (
       data-locator={`${susbscriptionType}_copy_text_01`}
     >
       {formViewConfig.joiningTextLabel}
-      <span className="visually-hidden">.</span>
     </BodyCopy>
     <Image
       src={
@@ -48,7 +47,6 @@ const SignupConfirm = ({ className, formViewConfig, susbscriptionType }) => (
       data-locator={`${susbscriptionType}_copy_text_02`}
     >
       {formViewConfig.confirmationMsgReceiveLabel}
-      <span className="visually-hidden">.</span>
     </BodyCopy>
     <BodyCopy
       fontSize={['fs16', 'f16', 'fs18']}

@@ -84,8 +84,6 @@ exports[`SignupFormIntro component renders correctly 1`] = `
           textAlign="left"
         />
         <Styled(BodyCopy)
-          aria-describedby="sign-up-form-doller-text"
-          aria-hidden="true"
           className="dollar-text"
           color="primary.main"
           component="span"
@@ -107,12 +105,6 @@ exports[`SignupFormIntro component renders correctly 1`] = `
           lineHeight="normal"
           textAlign="left"
         />
-        <p
-          className="visually-hidden"
-          id="sign-up-form-doller-text"
-        >
-          doller
-        </p>
         <Styled(BodyCopy)
           className="off-text"
           color="primary.main"

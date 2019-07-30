@@ -41,8 +41,6 @@ const SignupFormIntro = ({ className, formViewConfig }) => (
             fontWeight="black"
             className="dollar-text"
             color="primary.main"
-            aria-hidden="true"
-            aria-describedby="sign-up-form-doller-text"
           >
             {formViewConfig.dollarTextLabel}
           </BodyCopy>
@@ -55,9 +53,6 @@ const SignupFormIntro = ({ className, formViewConfig }) => (
           >
             {formViewConfig.tenTextLabel}
           </BodyCopy>
-          <p className="visually-hidden" id="sign-up-form-doller-text">
-            doller
-          </p>
           <BodyCopy fontSize="fs48" textAlign="center" className="off-text" color="primary.main">
             {formViewConfig.offTextLabel}
           </BodyCopy>
