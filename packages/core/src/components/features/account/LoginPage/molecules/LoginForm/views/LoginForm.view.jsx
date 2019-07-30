@@ -88,14 +88,14 @@ export const LoginForm = ({
         </Button>
         <Anchor to="/">{labels.ACC_LBL_LOGIN_FORGET_PASSWORD_CTA}</Anchor>
       </BodyCopy>
-      <BodyCopy component="div" className="border elem-pt-LRG">
+      <BodyCopy component="div" className="border elem-pt-LRG elem-pl-MED elem-pr-MED">
         <BodyCopy textAlign="center" className="elem-mb-LRG">
           {labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}
         </BodyCopy>
-        <Button fill="BLUE" type="submit" buttonVariation="fixed-width" data-locator="">
-          {labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
-        </Button>
       </BodyCopy>
+      <Button fill="BLUE" type="submit" fullWidth buttonVariation="fixed-width">
+        {labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
+      </Button>
     </form>
   );
 };
