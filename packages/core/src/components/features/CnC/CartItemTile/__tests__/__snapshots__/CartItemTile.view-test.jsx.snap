@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartItemTile Component CartItemTile should render correctly 1`] = `
+<div>
+  <span>
+    CART ITEM TILE
+  </span>
+  <button
+    onClick={[Function]}
+  >
+    load data
+  </button>
+  <Styled(Row)
+    className="cart-items-list"
+    tagName="ul"
+  />
+</div>
+`;
