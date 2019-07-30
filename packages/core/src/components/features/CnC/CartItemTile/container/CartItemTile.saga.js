@@ -22,14 +22,11 @@ import {
   updateItem,
 } from '../../../../../services/abstractors/CnC';
 
-const errorLabel = 'Error in API';
-
 export function* getOrderDetailSaga() {
   try {
     const res = yield call(getOrderDetailsData);
     yield put(getOrderDetailsComplete(res));
   } catch (err) {
-    console.log(errorLabel);
     console.log(err);
   }
 }
@@ -39,7 +36,6 @@ export function* removeCartItem({ payload }) {
     const res = yield call(removeItem, payload);
     yield put(removeCartItemComplete(res));
   } catch (err) {
-    console.log(errorLabel);
     console.log(err);
   }
 }
@@ -49,7 +45,6 @@ export function* updateCartItemSaga({ payload }) {
     const res = yield call(updateItem, payload);
     yield put(updateCartItemComplete(res));
   } catch (err) {
-    console.log(errorLabel);
     console.log(err);
   }
 }
@@ -84,7 +79,6 @@ export function* getProductSKUInfoSaga(payload) {
     );
     yield put(getProductSKUInfoSuccess(formattedInfo));
   } catch (err) {
-    console.log('Error in API');
     console.log(err);
   }
 }

@@ -56,7 +56,7 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
   };
 };
 
-function mapStateToProps(state) {
+export function mapStateToProps(state) {
   return {
     cartItems: getCartOrderList(state),
     editableProductInfo: getEditableProductInfo(state),
