@@ -216,7 +216,6 @@ class DropDown extends React.PureComponent<Props> {
               width: this.rowFrame.width,
               left: this.rowFrame.x,
               height: getScreenHeight(),
-              top: this.dropDownFrame.y,
             }}
           >
             <OverLayView
