@@ -11,6 +11,7 @@ exports[`Textbox component render showSuccessCheck on validation fail 1`] = `
     aria-label="input"
     className="TextBox__input"
     data-locator="input-field"
+    enableSuccessCheck={false}
     error="foo"
     id="input"
     keyboardType="default"
@@ -18,21 +19,9 @@ exports[`Textbox component render showSuccessCheck on validation fail 1`] = `
     onEndEditing={[Function]}
     onFocus={[Function]}
     returnKeyType="next"
-    showSuccessCheck={true}
     type="text"
     value="foo"
   />
-  <Styled(View)>
-    <Styled(ImageComp)
-      height="12px"
-      source={
-        Object {
-          "testUri": "../../../../core/src/assets/success-icon.png",
-        }
-      }
-      width="15px"
-    />
-  </Styled(View)>
   <Styled(View)>
     <Styled(View)>
       <Styled(ImageComp)
@@ -71,6 +60,7 @@ exports[`Textbox component render showSuccessCheck on validation true 1`] = `
     aria-label="input"
     className="TextBox__input"
     data-locator="input-field"
+    enableSuccessCheck={false}
     error=""
     id="input"
     keyboardType="default"
@@ -78,21 +68,9 @@ exports[`Textbox component render showSuccessCheck on validation true 1`] = `
     onEndEditing={[Function]}
     onFocus={[Function]}
     returnKeyType="next"
-    showSuccessCheck={true}
     type="text"
     value="foo"
   />
-  <Styled(View)>
-    <Styled(ImageComp)
-      height="12px"
-      source={
-        Object {
-          "testUri": "../../../../core/src/assets/success-icon.png",
-        }
-      }
-      width="15px"
-    />
-  </Styled(View)>
 </Styled(View)>
 `;
 
@@ -107,6 +85,7 @@ exports[`Textbox component renders correctly 1`] = `
     aria-label="input"
     className="TextBox__input"
     data-locator="input-field"
+    enableSuccessCheck={false}
     error=""
     id="input"
     keyboardType="default"
@@ -114,7 +93,6 @@ exports[`Textbox component renders correctly 1`] = `
     onEndEditing={[Function]}
     onFocus={[Function]}
     returnKeyType="next"
-    showSuccessCheck={false}
     type="text"
     value="foo"
   />
