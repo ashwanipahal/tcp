@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuItems should render correctly 1`] = `
+<Fragment>
+  <View
+    maxWidth=""
+  >
+    <Styled(BodyCopy)
+      color="text.primary"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="regular"
+      numberOfLines={1}
+      text="abcd"
+    />
+  </View>
+  <Styled(TouchableOpacity)
+    onPress={[Function]}
+  />
+</Fragment>
+`;
+
+exports[`MenuItems should render correctly with badges and submenu 1`] = `
+<Fragment>
+  <View
+    maxWidth=""
+  >
+    <Styled(BodyCopy)
+      color="text.primary"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="regular"
+      numberOfLines={1}
+      text="abcd"
+    />
+  </View>
+  <Styled(TouchableOpacity)
+    onPress={[Function]}
+  >
+    <Styled(View)
+      marginRight=""
+    >
+      <Styled(BodyCopy)
+        color="white"
+        fontFamily="primary"
+        fontSize="fs10"
+        fontWeight="black"
+        text="promo"
+      />
+    </Styled(View)>
+    <Styled(Image)
+      alt="alt"
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/carrot-large-right.png",
+        }
+      }
+    />
+  </Styled(TouchableOpacity)>
+</Fragment>
+`;
+
+exports[`MenuItems should trigger the press event with l3 1`] = `
+<Fragment>
+  <View
+    maxWidth=""
+  >
+    <Styled(BodyCopy)
+      color="text.primary"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="regular"
+      numberOfLines={1}
+      text="abcd"
+    />
+  </View>
+  <Styled(TouchableOpacity)
+    onPress={[Function]}
+  >
+    <Styled(View)
+      marginRight=""
+    >
+      <Styled(BodyCopy)
+        color="white"
+        fontFamily="primary"
+        fontSize="fs10"
+        fontWeight="black"
+        text="promo"
+      />
+    </Styled(View)>
+    <Styled(Image)
+      alt="alt"
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/carrot-large-right.png",
+        }
+      }
+    />
+  </Styled(TouchableOpacity)>
+</Fragment>
+`;
+
+exports[`MenuItems should trigger the press event without l3 1`] = `
+<Fragment>
+  <View
+    maxWidth=""
+  >
+    <Styled(BodyCopy)
+      color="text.primary"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="regular"
+      numberOfLines={1}
+      text="abcd"
+    />
+  </View>
+  <Styled(TouchableOpacity)
+    onPress={[Function]}
+  >
+    <Styled(View)
+      marginRight=""
+    >
+      <Styled(BodyCopy)
+        color="white"
+        fontFamily="primary"
+        fontSize="fs10"
+        fontWeight="black"
+        text="promo"
+      />
+    </Styled(View)>
+  </Styled(TouchableOpacity)>
+</Fragment>
+`;

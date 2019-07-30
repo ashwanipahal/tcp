@@ -75,7 +75,8 @@ exports[`ModuleK component renders correctly 1`] = `
         dataLocator="moduleK_header_text"
         fontSize={
           Array [
-            "fs32",
+            "fs36",
+            "fs36",
             "fs48",
           ]
         }

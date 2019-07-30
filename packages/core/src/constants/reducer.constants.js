@@ -4,6 +4,7 @@ export const LABEL_REDUCER_KEY = 'Labels';
 export const LAYOUT_REDUCER_KEY = 'Layouts';
 export const MODULES_REDUCER_KEY = 'Modules';
 export const HOMEPAGE_REDUCER_KEY = 'HomePage';
+export const NAVIGATION_REDUCER_KEY = 'Navigation';
 
 // Don't Add "Reducer" in the Key - it should be LoginPage, not LoginPageReducer
 
@@ -19,6 +20,8 @@ export const PAYMENT_ACTION_PATTERN = '@@payment-';
 export const ADD_GIFT_CARD_ACTION_PATTERN = '@@AddGiftCard-';
 export const LOGINPAGE_ACTION_PATTERN = '@@Login-';
 export const CARTPAGE_REDUCER_KEY = 'CartPage';
+export const OVERLAY_MODAL_REDUCER_KEY = 'OverlayModalReducer';
+export const OVERLAY_MODAL_ACTION_PATTERN = '@@Overlay-';
 
 // Add address page reducer
 export const ADDEDITADDRESS_REDUCER_KEY = 'AddEditAddressReducer';
