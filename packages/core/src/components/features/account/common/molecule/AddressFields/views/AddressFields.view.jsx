@@ -83,7 +83,7 @@ export class AddressFields extends React.PureComponent {
               component={TextBox}
               dataLocator="addnewaddress-firstname"
               className="field"
-              showSuccessCheck={false}
+              enableSuccessCheck={false}
             />
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 6 }}>
@@ -94,7 +94,7 @@ export class AddressFields extends React.PureComponent {
               component={TextBox}
               dataLocator="addnewaddress-lastname"
               className="field"
-              showSuccessCheck={false}
+              enableSuccessCheck={false}
             />
           </Col>
         </Row>
@@ -109,7 +109,7 @@ export class AddressFields extends React.PureComponent {
               componentRestrictions={Object.assign({}, { country: [country] })}
               dataLocator="addnewaddress-addressl1"
               className="field"
-              showSuccessCheck={false}
+              enableSuccessCheck={false}
             />
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 6 }}>
@@ -120,7 +120,7 @@ export class AddressFields extends React.PureComponent {
               component={TextBox}
               dataLocator="addnewaddress-addressl2"
               className="field"
-              showSuccessCheck={false}
+              enableSuccessCheck={false}
             />
           </Col>
         </Row>
@@ -133,7 +133,7 @@ export class AddressFields extends React.PureComponent {
               component={TextBox}
               dataLocator="addnewaddress-city"
               className="field"
-              showSuccessCheck={false}
+              enableSuccessCheck={false}
             />
           </Col>
           <Col colSize={{ small: 3, medium: 2, large: 3 }}>
@@ -145,7 +145,7 @@ export class AddressFields extends React.PureComponent {
               options={country === 'CA' ? CAcountriesStatesTable : UScountriesStatesTable}
               dataLocator="addnewaddress-state"
               className="field"
-              showSuccessCheck={false}
+              enableSuccessCheck={false}
             />
           </Col>
           <Col colSize={{ small: 3, medium: 2, large: 3 }}>
@@ -157,7 +157,7 @@ export class AddressFields extends React.PureComponent {
               component={TextBox}
               dataLocator="addnewaddress-zipcode"
               className="field"
-              showSuccessCheck={false}
+              enableSuccessCheck={false}
             />
           </Col>
         </Row>
@@ -172,7 +172,7 @@ export class AddressFields extends React.PureComponent {
               onChange={this.StateCountryChange}
               dataLocator="addnewaddress-country"
               className="field"
-              showSuccessCheck={false}
+              enableSuccessCheck={false}
             />
           </Col>
           {showPhoneNumber && (
@@ -185,7 +185,7 @@ export class AddressFields extends React.PureComponent {
                 dataLocator="addnewaddress-phnumber"
                 type="tel"
                 className="field"
-                showSuccessCheck={false}
+                enableSuccessCheck={false}
               />
             </Col>
           )}
