@@ -31,6 +31,14 @@ const InputField = styled.View`
   padding-bottom: 7px;
 `;
 
+const InputFieldHalf = styled.View`
+  height: 41px;
+  width: 170px;
+  margin-bottom: 32px;
+  padding-top: 16px;
+  padding-bottom: 7px;
+`;
+
 export {
   StyledText,
   ParentContainer,
@@ -38,4 +46,5 @@ export {
   UnderlineStyle,
   UnderlineStyleLight,
   InputField,
+  InputFieldHalf,
 };
