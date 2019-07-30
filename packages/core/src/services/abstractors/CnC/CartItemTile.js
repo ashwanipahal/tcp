@@ -4,9 +4,20 @@
 
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
+import {
+  parseBoolean,
+  extractPrioritizedBadge,
+  getDateInformation,
+  getProductAttributes,
+} from '../../../utils/badge.util';
 
 export const getProductSkuInfoByUnbxd = item => {
   // calling unbxd API logic is written in CartItemTile.saga.js, needs to move it in this abstractor, as of now getting result from saga and formatting it here.
+};
+const ORDER_ITEM_TYPE = {
+  BOSS: 'BOSS',
+  BOPIS: 'BOPIS',
+  ECOM: 'ECOM',
 };
 
 export const removeItem = orderItemId => {
@@ -330,7 +341,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
     for (let store of orderDetailsResponse.mixOrderDetails.data) {
       if (store.orderType !== 'ECOM') {
         usersOrder.stores.push({
-          stLocId: store.shippingAddressDetails.stLocId,
+          stLocId: store.shippingAddressDetails.stLocId || '',
           itemsCount: store.itemsCount,
           storeName: capitalize(store.shippingAddressDetails.storeName),
           orderType: store.orderType,
@@ -347,11 +358,11 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
             zipCode: store.shippingAddressDetails.zipCode,
           },
           bossStartDate:
-            store.orderType === config.ORDER_ITEM_TYPE.BOSS
+            store.orderType === ORDER_ITEM_TYPE.BOSS
               ? getDateInformation(store.shippingAddressDetails.bossMinDate, false)
               : null,
           bossEndDate:
-            store.orderType === config.ORDER_ITEM_TYPE.BOSS
+            store.orderType === ORDER_ITEM_TYPE.BOSS
               ? getDateInformation(store.shippingAddressDetails.bossMaxDate, false)
               : null,
           storeHours: store.shippingAddressDetails.storeHours,
@@ -433,10 +444,12 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
         },
         miscInfo: {
           // clearanceItem: this.apiHelper.configOptions.isUSStore ? item.productInfo.itemTCPProductIndUSStore === 'Clearance' : item.productInfo.itemTCPProductIndCanadaStore === 'Clearance',
-          //isOnlineOnly: (this.apiHelper.configOptions.isUSStore ? (Boolean(parseInt(item.productInfo.webOnlyFlagUSStore))) : (Boolean(parseInt(item.productInfo.webOnlyFlagCanadaStore)))),
+          isOnlineOnly: true
+            ? Boolean(parseInt(item.productInfo.webOnlyFlagUSStore))
+            : Boolean(parseInt(item.productInfo.webOnlyFlagCanadaStore)),
           isBopisEligible: !parseBoolean(orderDetailsResponse.bopisIntlField),
           isBossEligible: deriveBossEligiblity(item, orderDetailsResponse),
-          //badge: extractPrioritizedBadge(item.productInfo, getProductAttributes()),
+          badge: extractPrioritizedBadge(item.productInfo, getProductAttributes()),
           // onlineInventoryAvailable: item.inventoryAvail,
 
           // TODO: cleanup structure
@@ -461,8 +474,8 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
           //availability: deriveItemAvailability(orderDetailsResponse, item, store),
           vendorColorDisplayId: item.productInfo && item.productInfo.productPartNumber,
           // dates for boss pickup, used getDateInformation utility
-          // bossStartDate: item.orderItemType === config.ORDER_ITEM_TYPE.BOSS ? getDateInformation(store.shippingAddressDetails.bossMinDate, false) : null,
-          //bossEndDate: item.orderItemType === config.ORDER_ITEM_TYPE.BOSS ? getDateInformation(store.shippingAddressDetails.bossMaxDate, false) : null,
+          // bossStartDate: item.orderItemType === ORDER_ITEM_TYPE.BOSS ? getDateInformation(store.shippingAddressDetails.bossMinDate, false) : null,
+          //bossEndDate: item.orderItemType === ORDER_ITEM_TYPE.BOSS ? getDateInformation(store.shippingAddressDetails.bossMaxDate, false) : null,
           // shows number of items from the store
           storeItemsCount: store ? +store.itemsCount : 0,
           orderItemType: item.orderItemType && item.orderItemType.toUpperCase(),
@@ -534,20 +547,6 @@ export const deriveBossEligiblity = (item, orderDetailsResponse) => {
     parseBoolean(item.productInfo.itemTcpBossCategoryDisabled) ||
     orderDetailsResponse.bossIntlField
   );
-};
-
-// partially copied
-export const getProductAttributes = () => {
-  return {
-    onlineOnly: 'webOnlyFlagUSStore',
-    clearance: 'itemTCPProductIndUSStore',
-    glowInTheDark: 'itemTCPGlowInDarkUSStore',
-    limitedQuantity: 'inventoryMessageUSStore',
-  };
-};
-
-export const parseBoolean = bool => {
-  return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
 };
 
 export default {

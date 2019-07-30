@@ -8,15 +8,24 @@ const filterObject = (arr, searchedValue) => {
 export default (getOrderPointsSummary, lastAddedToBag) => {
   let pointsSummary = {};
   if (getOrderPointsSummary.orderItems) {
+    console.log('swsddsds', getOrderPointsSummary, lastAddedToBag);
     const lastAddedItem = filterObject(getOrderPointsSummary.orderItems, lastAddedToBag);
-    const { pointsToNextReward, estimatedRewards, totalItems, bagSubTotal } = getOrderPointsSummary;
+    console.log('dcsdcdec', lastAddedItem);
+    const {
+      pointsToNextReward,
+      estimatedRewards,
+      totalItems,
+      grandTotal,
+      giftCardsTotal,
+    } = getOrderPointsSummary;
+
     if (lastAddedItem) {
       pointsSummary = {
-        listPrice: (lastAddedItem.itemInfo && lastAddedItem.itemInfo.offerPrice) || 0,
+        itemPrice: (lastAddedItem.itemInfo && lastAddedItem.itemInfo.offerPrice) || 0,
         itemPoints: (lastAddedItem.itemInfo && lastAddedItem.itemInfo.itemPoints) || 0,
         pointsToNextReward,
         userPoints: estimatedRewards || 0,
-        bagSubTotal: bagSubTotal.toFixed(2),
+        bagSubTotal: grandTotal - giftCardsTotal || 0,
         totalItems: totalItems || 0,
       };
     }

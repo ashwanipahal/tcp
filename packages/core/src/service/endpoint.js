@@ -79,7 +79,7 @@ const endpoints = {
     baseURI: 'https://personator.melissadata.net',
   },
   global: {
-    baseURI: 'https://test4.childrensplace.com',
+    baseURI: 'https://uatlive2.childrensplace.com',
   },
   setDefaultShippingAddress: {
     method: 'put',
@@ -110,16 +110,16 @@ const endpoints = {
   },
   addEmailSignup: {
     method: 'post',
-    baseURI: 'https://test4.childrensplace.com',
+    baseURI: 'https://uatlive2.childrensplace.com',
     relURI: '/api/v2/store/addSignUpEmail',
   },
   addSmsSignup: {
     method: 'post',
-    baseURI: 'https://test4.childrensplace.com',
+    baseURI: 'https://uatlive2.childrensplace.com',
     relURI: '/api/v2/vibes/smsSignUp',
   },
   addGiftCard: {
-    baseURI: 'https://test4.childrensplace.com',
+    baseURI: 'https://uatlive2.childrensplace.com',
     method: 'post',
     relURI: '/api/v2/account/addCreditCardDetails',
   },
