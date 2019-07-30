@@ -1162,7 +1162,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
           alt="VENMO"
           className="cardTile__img"
           data-locator="VENMO"
-          src="/static/images/venmo-blue-acceptance-mark.png"
+          src="/static/images/venmo-blue-acc-mark.png"
         />
       </div>
     </div>

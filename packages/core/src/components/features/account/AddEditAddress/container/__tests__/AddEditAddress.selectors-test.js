@@ -20,11 +20,9 @@ describe('#AddEditAddress selector', () => {
 
   it('#getUserEmail should return user email', () => {
     const state = {
-      LoginPageReducer: {
-        loginInfo: {
-          email1: 'user@user.com',
-        },
-      },
+      LoginPageReducer: fromJS({
+        email1: 'user@user.com',
+      }),
     };
 
     expect(getUserEmail(state)).toEqual('user@user.com');

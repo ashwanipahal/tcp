@@ -15,6 +15,10 @@ export default css`
     position: relative;
   }
 
+  .ReactModal__Body--open {
+    overflow: hidden;
+  }
+
   input[type='text']::-ms-clear {
     display: none;
   }

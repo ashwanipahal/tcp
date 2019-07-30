@@ -1,5 +1,6 @@
 const labels = {
   ACC_LBL_LOGIN_EMAIL: 'Email Address',
+  ACC_LBL_LOGIN_EMAIL_TESTING: 'Email Address TESTING',
   ACC_LBL_LOGIN_PASSWORD: 'Password',
   ACC_LBL_LOGIN_CTA: 'LOG IN',
   ACC_LBL_LOGIN_REMEMBER_ME: 'Remember me. Not recommended on shared devices',

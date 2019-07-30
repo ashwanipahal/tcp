@@ -22,7 +22,7 @@ exports[`AddedToBagViewPoints native component renders correctly 1`] = `
       text=""
     />
     <Styled(BodyCopy)
-      color="yellow.500"
+      color="orange.500"
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
@@ -50,7 +50,7 @@ exports[`AddedToBagViewPoints native component renders correctly 1`] = `
       text=""
     />
     <Styled(BodyCopy)
-      color="yellow.500"
+      color="orange.500"
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
@@ -65,7 +65,7 @@ exports[`AddedToBagViewPoints native component renders correctly 1`] = `
       text=""
     />
     <Styled(BodyCopy)
-      color="yellow.500"
+      color="orange.500"
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
