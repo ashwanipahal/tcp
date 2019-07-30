@@ -6,6 +6,7 @@ import { ProductListingPageReducer } from '@tcp/core/src/components/features/bro
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
+import CartPage from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import CartReducer from '@tcp/core/src/components/features/CnC/Cart/containers/Cart.reducer';
 import {
   HEADER_REDUCER_KEY,
@@ -15,6 +16,7 @@ import {
   PRODUCTLISTINGPAGE_REDUCER_KEY,
   PAYMENT_REDUCER_KEY,
   MODULES_REDUCER_KEY,
+  CARTPAGE_REDUCER_KEY,
   ADD_GIFT_CARD_REDUCER_KEY,
   ADDED_TO_BAG_REDUCER_KEY,
   CART_REDUCER_KEY,
@@ -43,6 +45,7 @@ export default combineReducers({
   [MODULES_REDUCER_KEY]: ModulesReducer,
   [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,
   [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,
+  [CARTPAGE_REDUCER_KEY]: CartPage,
   [CART_REDUCER_KEY]: CartReducer,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
 });
