@@ -2,6 +2,7 @@
 
 exports[`Modal Close Icon renders correctly with props 1`] = `
 <button
+  aria-label="close"
   className="modal-close-button"
   data-locator="close"
   onClick={[Function]}

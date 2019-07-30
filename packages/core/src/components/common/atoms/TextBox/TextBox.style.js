@@ -33,7 +33,7 @@ const textboxStyles = css`
     border-bottom: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
-    padding-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
 
     ${props =>
       props.meta &&
@@ -73,7 +73,7 @@ const textboxStyles = css`
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';

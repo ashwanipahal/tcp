@@ -14,7 +14,42 @@ class CustomSelect extends React.Component<Props> {
       activeTitle: props.activeTitle || CustomSelectConst.DEFAULT_SELECT,
       activeValue: props.activeValue || null,
     };
+    this.customSelect = null;
+    this.closeDropdownIfClickOutside = this.closeDropdownIfClickOutside.bind(this);
   }
+
+  componentDidMount() {
+    this.customSelect = document.querySelector('.custom-select');
+    window.addEventListener('click', this.closeDropdownIfClickOutside);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { activeValue } = this.props;
+    if (prevProps.activeValue !== activeValue) {
+      this.updateState();
+    }
+  }
+
+  componentWillUnmount() {
+    if (window) {
+      window.removeEventListener('click', this.closeDropdownIfClickOutside);
+    }
+  }
+
+  closeDropdownIfClickOutside = e => {
+    const { toggle } = this.state;
+    if (toggle && !this.customSelect.contains(e.target)) {
+      this.toggleHandler();
+    }
+  };
+
+  updateState = () => {
+    const { activeValue, activeTitle } = this.props;
+    this.setState({
+      activeValue,
+      activeTitle,
+    });
+  };
 
   toggleHandler = () => {
     const { toggle } = this.state;
@@ -24,6 +59,7 @@ class CustomSelect extends React.Component<Props> {
   };
 
   onClickHandler = (e, value, title) => {
+    e.stopPropagation();
     const { clickHandler } = this.props;
     this.setState({
       activeTitle: title,
@@ -37,7 +73,7 @@ class CustomSelect extends React.Component<Props> {
     const { toggle, activeTitle, activeValue } = this.state;
     const { className, selectListTitle, options } = this.props;
     return (
-      <BodyCopy component="div" className={className}>
+      <BodyCopy component="div" className={`${className} custom-select`}>
         <span>{selectListTitle}</span>
         <BodyCopy component="div" onClick={this.toggleHandler} className="customSelectTitle">
           {activeTitle}
@@ -57,17 +93,18 @@ class CustomSelect extends React.Component<Props> {
 CustomSelect.propTypes = {
   className: PropTypes.string,
   selectListTitle: PropTypes.string,
-  clickHandler: PropTypes.func.isRequired,
+  clickHandler: PropTypes.func,
   options: PropTypes.shape({}).isRequired,
   activeTitle: PropTypes.string,
   activeValue: PropTypes.string,
 };
 
 CustomSelect.defaultProps = {
-  className: 'className',
+  className: '',
   selectListTitle: '',
   activeTitle: '',
   activeValue: '',
+  clickHandler: () => {},
 };
 
 export default withStyles(CustomSelect, styles);
