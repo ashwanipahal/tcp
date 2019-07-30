@@ -62,11 +62,15 @@ exports[`ModuleL component renders correctly 1`] = `
       }
     }
   >
-    <LinkText
-      className="moduleL__header"
+    <Styled(LinkText)
       component="div"
       dataLocator="moduleL_header_text"
-      fontSize="fs48"
+      fontSize={
+        Array [
+          "fs32",
+          "fs48",
+        ]
+      }
       fontWeight="black"
       headerText={
         Array [
@@ -90,7 +94,8 @@ exports[`ModuleL component renders correctly 1`] = `
           },
         ]
       }
-      icon={Object {}}
+      headingClass="moduleL__header"
+      lineHeight="lh107"
       textAlign="center"
     />
     <Styled(PromoBanner)
@@ -125,6 +130,8 @@ exports[`ModuleL component renders correctly 1`] = `
       carouselConfig={
         Object {
           "autoplay": false,
+          "customArrowLeft": "/static/images/right-carousel-carrot.svg",
+          "customArrowRight": "/static/images/right-carousel-carrot.svg",
           "moduleL": true,
           "type": "light",
         }

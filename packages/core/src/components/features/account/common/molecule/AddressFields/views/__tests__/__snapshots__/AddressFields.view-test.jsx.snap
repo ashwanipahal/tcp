@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AddressFields component should render correctly 1`] = `
-<Fragment>
+<div
+  className=""
+>
   <Styled(Row)
     fullBleed={true}
   >
@@ -20,6 +22,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -113,7 +116,7 @@ exports[`AddressFields component should render correctly 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -156,6 +159,7 @@ exports[`AddressFields component should render correctly 1`] = `
           }
         }
         dataLocator="addnewaddress-firstname"
+        enableSuccessCheck={false}
         id="firstName"
         name="firstName"
         type="text"
@@ -171,6 +175,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -264,7 +269,7 @@ exports[`AddressFields component should render correctly 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -307,6 +312,7 @@ exports[`AddressFields component should render correctly 1`] = `
           }
         }
         dataLocator="addnewaddress-lastname"
+        enableSuccessCheck={false}
         id="lastName"
         name="lastName"
       />
@@ -330,6 +336,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
+        className="field"
         component={[Function]}
         componentRestrictions={
           Object {
@@ -339,6 +346,7 @@ exports[`AddressFields component should render correctly 1`] = `
           }
         }
         dataLocator="addnewaddress-addressl1"
+        enableSuccessCheck={false}
         id="addressLine1"
         name="addressLine1"
         onPlaceSelected={[Function]}
@@ -354,6 +362,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -447,7 +456,7 @@ exports[`AddressFields component should render correctly 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -490,6 +499,7 @@ exports[`AddressFields component should render correctly 1`] = `
           }
         }
         dataLocator="addnewaddress-addressl2"
+        enableSuccessCheck={false}
         id="addressLine2"
         name="addressLine2"
       />
@@ -513,6 +523,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -606,7 +617,7 @@ exports[`AddressFields component should render correctly 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -649,6 +660,7 @@ exports[`AddressFields component should render correctly 1`] = `
           }
         }
         dataLocator="addnewaddress-city"
+        enableSuccessCheck={false}
         id="city"
         name="city"
       />
@@ -663,6 +675,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -745,6 +758,7 @@ exports[`AddressFields component should render correctly 1`] = `
           }
         }
         dataLocator="addnewaddress-state"
+        enableSuccessCheck={false}
         id="state"
         name="state"
         options={
@@ -1077,6 +1091,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1170,7 +1185,7 @@ exports[`AddressFields component should render correctly 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -1213,6 +1228,7 @@ exports[`AddressFields component should render correctly 1`] = `
           }
         }
         dataLocator="addnewaddress-zipcode"
+        enableSuccessCheck={false}
         id="zipCode"
         maxLength={5}
         name="zipCode"
@@ -1237,6 +1253,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1319,6 +1336,7 @@ exports[`AddressFields component should render correctly 1`] = `
           }
         }
         dataLocator="addnewaddress-country"
+        enableSuccessCheck={false}
         id="country"
         name="country"
         onChange={[Function]}
@@ -1346,6 +1364,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1439,7 +1458,7 @@ exports[`AddressFields component should render correctly 1`] = `
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -1482,6 +1501,7 @@ exports[`AddressFields component should render correctly 1`] = `
           }
         }
         dataLocator="addnewaddress-phnumber"
+        enableSuccessCheck={false}
         id="phoneNumber"
         name="phoneNumber"
         type="tel"
@@ -1507,6 +1527,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1602,11 +1623,13 @@ exports[`AddressFields component should render correctly 1`] = `
       />
     </Styled(Col)>
   </Styled(Row)>
-</Fragment>
+</div>
 `;
 
 exports[`AddressFields component should render correctly without phoneNumber and  1`] = `
-<Fragment>
+<div
+  className=""
+>
   <Styled(Row)
     fullBleed={true}
   >
@@ -1625,6 +1648,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1718,7 +1742,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -1761,6 +1785,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
           }
         }
         dataLocator="addnewaddress-firstname"
+        enableSuccessCheck={false}
         id="firstName"
         name="firstName"
         type="text"
@@ -1776,6 +1801,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1869,7 +1895,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -1912,6 +1938,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
           }
         }
         dataLocator="addnewaddress-lastname"
+        enableSuccessCheck={false}
         id="lastName"
         name="lastName"
       />
@@ -1935,6 +1962,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
+        className="field"
         component={[Function]}
         componentRestrictions={
           Object {
@@ -1944,6 +1972,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
           }
         }
         dataLocator="addnewaddress-addressl1"
+        enableSuccessCheck={false}
         id="addressLine1"
         name="addressLine1"
         onPlaceSelected={[Function]}
@@ -1959,6 +1988,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -2052,7 +2082,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -2095,6 +2125,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
           }
         }
         dataLocator="addnewaddress-addressl2"
+        enableSuccessCheck={false}
         id="addressLine2"
         name="addressLine2"
       />
@@ -2118,6 +2149,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -2211,7 +2243,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -2254,6 +2286,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
           }
         }
         dataLocator="addnewaddress-city"
+        enableSuccessCheck={false}
         id="city"
         name="city"
       />
@@ -2268,6 +2301,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -2350,6 +2384,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
           }
         }
         dataLocator="addnewaddress-state"
+        enableSuccessCheck={false}
         id="state"
         name="state"
         options={
@@ -2682,6 +2717,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -2775,7 +2811,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -2818,6 +2854,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
           }
         }
         dataLocator="addnewaddress-zipcode"
+        enableSuccessCheck={false}
         id="zipCode"
         maxLength={5}
         name="zipCode"
@@ -2842,6 +2879,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
+        className="field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -2924,6 +2962,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
           }
         }
         dataLocator="addnewaddress-country"
+        enableSuccessCheck={false}
         id="country"
         name="country"
         onChange={[Function]}
@@ -2942,5 +2981,5 @@ exports[`AddressFields component should render correctly without phoneNumber and
       />
     </Styled(Col)>
   </Styled(Row)>
-</Fragment>
+</div>
 `;

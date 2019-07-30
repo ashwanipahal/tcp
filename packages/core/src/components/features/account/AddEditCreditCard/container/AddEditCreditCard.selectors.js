@@ -54,7 +54,7 @@ export const getCardType = createSelector(
     // look up based on cardNumber
     const type = Object.keys(constants.CREDIT_CARDS_BIN_RANGES).filter(range => {
       const rangeCount = constants.CREDIT_CARDS_BIN_RANGES[range].length;
-      for (let i = 0; i < rangeCount; i += i + 1) {
+      for (let i = 0; i < rangeCount; i += 1) {
         const { from, to } = constants.CREDIT_CARDS_BIN_RANGES[range][i];
         const prefixLength = from.toString().length;
         const prefix = cardNumber.substr(0, prefixLength);

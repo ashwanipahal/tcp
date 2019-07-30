@@ -22,7 +22,7 @@ export function* subscribeEmail(emailObj, status) {
       catalogId: 10551,
     };
     const res = yield call(emailSignupAbstractor.subscribeEmail, baseURI, relURI, params, method);
-    yield put(emailSignupStatus({ signupSuccess: res }));
+    yield put(emailSignupStatus({ subscription: res }));
   } catch (err) {
     console.log(err);
   }

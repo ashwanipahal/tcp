@@ -17,6 +17,7 @@ describe('CreditCardForm component', () => {
         },
       ]),
       onFileAddresskey: '12345',
+      initialValues: {},
     };
     const component = shallow(<CreditCardForm {...props} />);
     expect(component).toMatchSnapshot();

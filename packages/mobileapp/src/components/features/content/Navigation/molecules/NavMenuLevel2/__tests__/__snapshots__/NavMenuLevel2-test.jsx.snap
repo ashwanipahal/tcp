@@ -1,0 +1,149 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavMenuLevel2 should render component when renderItem is called 1`] = `
+<ForwardRef
+  accessibilityRole="button"
+  onPress={[Function]}
+>
+  <MenuItems
+    hasBadge={true}
+    hasL3={true}
+    item={
+      Object {
+        "categoryContent": Object {
+          "mainCategory": Object {
+            "promoBadge": Array [
+              Object {
+                "text": "1",
+              },
+            ],
+          },
+        },
+        "subCategories": Array [
+          Object {
+            "title": "abcd",
+          },
+        ],
+      }
+    }
+    maxWidthItem={510}
+    promoBannerMargin={40}
+  />
+</ForwardRef>
+`;
+
+exports[`NavMenuLevel2 should render component when renderItem is with title categories called 1`] = `
+<ForwardRef
+  accessibilityRole="button"
+  onPress={[Function]}
+>
+  <MenuItems
+    hasBadge={true}
+    hasL3={true}
+    item={
+      Object {
+        "categoryContent": Object {
+          "mainCategory": Object {
+            "promoBadge": Array [
+              Object {
+                "text": "1",
+              },
+            ],
+          },
+        },
+        "subCategories": Array [
+          Object {
+            "title": "abcd",
+          },
+        ],
+      }
+    }
+    maxWidthItem={510}
+    promoBannerMargin={40}
+  />
+</ForwardRef>
+`;
+
+exports[`NavMenuLevel2 should render component when renderSectionHeader is called 1`] = `
+<ForwardRef>
+  <ForwardRef
+    accessibilityRole="button"
+    onPress={[Function]}
+  >
+    <ForwardRef
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/carrot-large-left.png",
+        }
+      }
+    />
+  </ForwardRef>
+  <ForwardRef
+    color="text.primary"
+    fontFamily="secondary"
+    fontSize="fs16"
+    style={
+      Object {
+        "textTransform": "uppercase",
+      }
+    }
+    text="GIRL"
+    textAlign="center"
+  />
+  <Text />
+</ForwardRef>
+`;
+
+exports[`NavMenuLevel2 should render component when renderSectionHeader is called with Categories 1`] = `
+<ForwardRef>
+  <ForwardRef
+    color="text.primary"
+    fontFamily="secondary"
+    fontSize="fs16"
+    style={
+      Object {
+        "textTransform": "uppercase",
+      }
+    }
+    text="Categories"
+  />
+</ForwardRef>
+`;
+
+exports[`NavMenuLevel2 should render correctly 1`] = `
+<SectionList
+  data={Array []}
+  disableVirtualization={false}
+  horizontal={false}
+  initialNumToRender={10}
+  keyExtractor={[Function]}
+  maxToRenderPerBatch={10}
+  onEndReachedThreshold={2}
+  renderItem={[Function]}
+  renderSectionHeader={[Function]}
+  scrollEventThrottle={50}
+  sections={
+    Array [
+      Object {
+        "data": undefined,
+        "title": "Lorem Ipsum",
+      },
+      Object {
+        "data": Object {
+          "title": "Lorem",
+        },
+        "title": "0",
+      },
+      Object {
+        "data": Object {
+          "title": "Categoriess",
+        },
+        "title": "1",
+      },
+    ]
+  }
+  stickySectionHeadersEnabled={false}
+  updateCellsBatchingPeriod={50}
+  windowSize={21}
+/>
+`;
