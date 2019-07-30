@@ -14,6 +14,7 @@ const Header = ({
   navigationDrawer,
   openNavigationDrawer,
   closeNavigationDrawer,
+  userName,
   openOverlay,
 }) => {
   return (
@@ -27,6 +28,7 @@ const Header = ({
         openNavigationDrawer={openNavigationDrawer}
         closeNavigationDrawer={closeNavigationDrawer}
         navigationDrawer={navigationDrawer}
+        userName={userName}
         openOverlay={openOverlay}
       />
       <HeaderPromo
@@ -61,6 +63,7 @@ Header.propTypes = {
   navigationDrawer: PropTypes.shape({}).isRequired,
   openNavigationDrawer: PropTypes.func.isRequired,
   closeNavigationDrawer: PropTypes.func.isRequired,
+  userName: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
 };
 

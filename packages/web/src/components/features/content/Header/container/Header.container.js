@@ -5,6 +5,7 @@ import {
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import HeaderView from '../views';
+import { getUserName } from './Header.selectors';
 
 const mapStateToProps = state => {
   const { Header } = state;
@@ -13,6 +14,7 @@ const mapStateToProps = state => {
     promoMessageWrapper: Header.promoMessageWrapper,
     headerPromoArea: Header.promoTextBannerCarousel,
     navigationDrawer: Header.navigationDrawer,
+    userName: getUserName(state)
   };
 };
 

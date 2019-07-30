@@ -38,6 +38,14 @@ const endpoints = {
     method: 'PUT',
     URI: 'v2/cart/deleteMultipleOrderItems',
   },
+  logon: {
+    method: API_METHODS.POST,
+    URI: 'v2/account/logon'
+  },
+  getRegisteredUserDetailsInfo: {
+    method: API_METHODS.GET,
+    URI: 'v2/account/getRegisteredUserInfo'
+  }
 };
 
 export default endpoints;
