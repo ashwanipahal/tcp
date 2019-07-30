@@ -59,7 +59,6 @@ exports[`DropDown Test should render correctly 1`] = `
       }
     >
       <Styled(View)
-        onLayout={[Function]}
         style={
           Object {
             "top": 0,
@@ -130,7 +129,6 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
       }
     >
       <Styled(View)
-        onLayout={[Function]}
         style={
           Object {
             "top": 0,
@@ -149,6 +147,11 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
           }
           keyExtractor={[Function]}
           renderItem={[Function]}
+          style={
+            Object {
+              "height": 667,
+            }
+          }
         />
       </Styled(View)>
     </TouchableOpacity>
