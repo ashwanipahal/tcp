@@ -14,7 +14,9 @@ import styles from '../styles/LoginTopSection.styles';
 const LoginTopSection = ({ labels, className }) => {
   return (
     <BodyCopy component="div" textAlign="center" className={className}>
-      <ImageComp src={getIconPath('my-place-rewards')} className="elem-mb-LRG" />
+      <BodyCopy component="div" textAlign="center">
+        <ImageComp src={getIconPath('my-place-rewards')} className="logo elem-mb-LRG" />
+      </BodyCopy>
       <BodyCopy component="div" className="bordered elem-pt-MED elem-pb-LRG">
         <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary" textAlign="center">
           {labels.ACC_LBL_LOGIN_HEADING}

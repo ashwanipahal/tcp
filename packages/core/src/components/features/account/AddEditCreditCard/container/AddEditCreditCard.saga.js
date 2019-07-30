@@ -23,7 +23,9 @@ export function* addCreditCardSaga({ payload }) {
       addressEntry = addressList.find(add => add.addressId === onFileAddressKey);
     } else {
       addressEntry = Object.assign({}, address, {
-        phoneNumber: yield select(state => state.LoginPageReducer.loginInfo.phone1),
+        phoneNumber: yield select(
+          state => state.LoginPageReducer && state.LoginPageReducer.get('phone')
+        ),
       });
     }
 
@@ -65,7 +67,9 @@ export function* updateCreditCardSaga({ payload }) {
       addressEntry = addressList.find(add => add.addressId === onFileAddressKey);
     } else {
       addressEntry = Object.assign({}, address, {
-        phoneNumber: yield select(state => state.LoginPageReducer.loginInfo.phone1),
+        phoneNumber: yield select(
+          state => state.LoginPageReducer && state.LoginPageReducer.get('phone')
+        ),
       });
     }
 

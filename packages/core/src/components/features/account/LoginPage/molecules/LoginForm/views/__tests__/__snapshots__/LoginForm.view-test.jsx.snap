@@ -453,7 +453,7 @@ exports[`LoginForm component should renders correctly 1`] = `
     />
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className="border elem-pt-LRG"
+    className="border elem-pt-LRG elem-pl-MED elem-pr-MED"
     color="text.primary"
     component="div"
     fontFamily="primary"
@@ -474,13 +474,13 @@ exports[`LoginForm component should renders correctly 1`] = `
       lineHeight="normal"
       textAlign="center"
     />
-    <Styled(Button)
-      buttonVariation="fixed-width"
-      data-locator=""
-      fill="BLUE"
-      type="submit"
-    />
   </Styled(BodyCopy)>
+  <Styled(Button)
+    buttonVariation="fixed-width"
+    fill="BLUE"
+    fullWidth={true}
+    type="submit"
+  />
 </form>
 `;
 
@@ -948,7 +948,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
     />
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className="border elem-pt-LRG"
+    className="border elem-pt-LRG elem-pl-MED elem-pr-MED"
     color="text.primary"
     component="div"
     fontFamily="primary"
@@ -969,12 +969,12 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       lineHeight="normal"
       textAlign="center"
     />
-    <Styled(Button)
-      buttonVariation="fixed-width"
-      data-locator=""
-      fill="BLUE"
-      type="submit"
-    />
   </Styled(BodyCopy)>
+  <Styled(Button)
+    buttonVariation="fixed-width"
+    fill="BLUE"
+    fullWidth={true}
+    type="submit"
+  />
 </form>
 `;
