@@ -1,17 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getOrderDetails } from '../../Cart/containers/Cart.actions';
 import AddedToBagViewPoints from '../views/AddedToBagViewPoints.view';
 import getCartOrderList from '../../Cart/containers/Cart.selectors';
 import { getAddedToBagData } from '../../AddedToBag/container/AddedToBag.selectors';
 import getPointsSummary from '../../Cart/util/utility';
 
 export class AddedToBagViewPointsContainer extends React.Component {
-  componentDidMount = () => {
-    const { getOrderDetailsAction } = this.props;
-    getOrderDetailsAction();
-  };
+  componentDidMount = () => {};
 
   render() {
     const { getOrderPointsSummary, labels, lastAddedToBag } = this.props;
@@ -19,13 +15,6 @@ export class AddedToBagViewPointsContainer extends React.Component {
     return <AddedToBagViewPoints labels={labels} pointsSummary={pointsSummary} />;
   }
 }
-export const mapDispatchToProps = dispatch => {
-  return {
-    getOrderDetailsAction: () => {
-      dispatch(getOrderDetails());
-    },
-  };
-};
 
 function mapStateToProps(state) {
   return {
@@ -35,7 +24,6 @@ function mapStateToProps(state) {
 }
 
 AddedToBagViewPointsContainer.propTypes = {
-  getOrderDetailsAction: PropTypes.func.isRequired,
   getOrderPointsSummary: PropTypes.shape,
   labels: PropTypes.shape,
   lastAddedToBag: PropTypes.shape,
@@ -47,7 +35,4 @@ AddedToBagViewPointsContainer.defaultProps = {
   lastAddedToBag: {},
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AddedToBagViewPointsContainer);
+export default connect(mapStateToProps)(AddedToBagViewPointsContainer);
