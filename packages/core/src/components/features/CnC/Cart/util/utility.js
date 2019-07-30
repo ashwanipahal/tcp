@@ -9,7 +9,7 @@ export default getOrderPointsSummary => {
       giftCardsTotal = 0,
     } = getOrderPointsSummary;
     pointsSummary = {
-      itemPrice:
+      listPrice:
         (orderItems[0] && orderItems[0].itemInfo && orderItems[0].itemInfo.offerPrice) || 0,
       itemPoints:
         (orderItems[0] && orderItems[0].itemInfo && orderItems[0].itemInfo.itemPoints) || 0,
