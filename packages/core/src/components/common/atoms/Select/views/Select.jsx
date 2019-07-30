@@ -49,11 +49,7 @@ const SelectBox = ({
         value={input.value || placeholder}
         data-locator={dataLocator}
       >
-        {!input.value && placeholder && (
-          <option value="" id="">
-            {placeholder}
-          </option>
-        )}
+        {!input.value && placeholder && <option value="">{placeholder}</option>}
         {options &&
           options.map(option => {
             return (

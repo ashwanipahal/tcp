@@ -56,7 +56,6 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
     value="first name for user"
   >
     <option
-      id=""
       value=""
     >
       first name for user
