@@ -217,7 +217,6 @@ class DropDown extends React.PureComponent<Props> {
               left: this.rowFrame.x,
               height: getScreenHeight(),
               top: this.dropDownFrame.y,
-              height: getScreenHeight(),
             }}
           >
             <OverLayView
@@ -225,6 +224,9 @@ class DropDown extends React.PureComponent<Props> {
                 this.overlayMarker = ref;
               }}
               onLayout={this.findDropDownDimensions}
+              style={{
+                top: this.dropDownFrame.y,
+              }}
             >
               {dropDownIsOpen && (
                 <FlatList
