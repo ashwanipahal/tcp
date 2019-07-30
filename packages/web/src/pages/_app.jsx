@@ -5,10 +5,12 @@ import { ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
 import GlobalStyle from '@tcp/core/styles/globalStyles';
-import theme from '@tcp/core/styles/themes/TCP';
+import themeTCP from '@tcp/core/styles/themes/TCP';
+import themeGymboree from '@tcp/core/styles/themes/Gymboree';
+import { brandIds } from '@tcp/web/server/config/server.config';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
-import { createAPIConfig } from '@tcp/core/src/utils';
+import { createAPIConfig, getBrandName } from '@tcp/core/src/utils';
 import { Header, Footer } from '../components/features/content';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
@@ -61,6 +63,8 @@ class TCPWebApp extends App {
 
   render() {
     const { Component, pageProps, store } = this.props;
+    const brandName = getBrandName();
+    const theme = brandName === brandIds.gym ? themeGymboree : themeTCP;
     return (
       <Container>
         <ThemeProvider theme={theme}>

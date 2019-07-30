@@ -17,4 +17,5 @@ export {
   buildUrl,
   getSiteId,
   routerPush,
+  getBrandName,
 } from './utils';

@@ -190,6 +190,14 @@ export const getLocator = locator => {
   return locators[locator];
 };
 
+/**
+ * This function returns the brand name
+ */
+export const getBrandName = () => {
+  const { brandId } = getAPIConfig();
+  return brandId;
+};
+
 export const getIconCard = icon => {
   switch (icon) {
     case 'disc-small':
@@ -258,4 +266,5 @@ export default {
   getCreditCardExpirationOptionMap,
   getSiteId,
   routerPush,
+  getBrandName,
 };

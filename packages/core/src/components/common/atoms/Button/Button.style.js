@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { brandIds } from '@tcp/web/server/config/server.config';
 
 const ButtonStyles = css`
   border: none;
@@ -83,6 +84,12 @@ const ButtonStyles = css`
     ${props =>
       props.buttonVariation === 'variable-width' ? 'min-height: 45px; padding: 16px 32px;' : ''};
   }
+  ${props =>
+    props.theme.brand === brandIds.gym
+      ? `
+    border-radius: 25px;
+  `
+      : ``}
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
