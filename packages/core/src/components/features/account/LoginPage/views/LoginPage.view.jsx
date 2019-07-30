@@ -5,7 +5,7 @@
 import React from 'react';
 import { reduxForm } from 'redux-form';
 import LoginPageStyle from '../styles/LoginPage.style';
-import Button from '../../../../common/atoms/Button';
+import Anchor from '../../../../common/atoms/Anchor';
 import Grid from '../../../../common/molecules/Grid';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
@@ -74,12 +74,12 @@ class LoginView extends React.PureComponent<Props> {
           <Row>
             <Col
               colSize={{
-                large: 6,
+                large: 12,
                 medium: 8,
                 small: 12,
               }}
               offsetLeft={{
-                large: 3,
+                large: 0,
                 medium: 2,
                 small: 0,
               }}
@@ -95,6 +95,7 @@ class LoginView extends React.PureComponent<Props> {
                 )}
                 {resetPassword && (
                   <ForgotPasswordView
+                    className="forgotPassword"
                     onSubmitForgot={onSubmitForgot}
                     loginInfo={loginInfo}
                     getUserInfo={getUserInfo}
@@ -107,13 +108,9 @@ class LoginView extends React.PureComponent<Props> {
                   />
                 )}
                 {!resetPassword && (
-                  <Button
-                    type="button"
-                    onClick={this.showForgotPasswordForm}
-                    className="link-forgot"
-                  >
+                  <Anchor onClick={this.showForgotPasswordForm} className="link-forgot">
                     Forgot password?
-                  </Button>
+                  </Anchor>
                 )}
               </LoginPageStyle>
             </Col>

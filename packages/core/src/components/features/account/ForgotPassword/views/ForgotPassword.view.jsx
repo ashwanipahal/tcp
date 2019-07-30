@@ -5,7 +5,7 @@ import TextBox from '../../../../common/atoms/TextBox';
 import styles from '../styles/ForgotPassword.style';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
-import Grid from '../../../../common/molecules/Grid';
+import { Heading } from '../../../../../../styles/themes/TCP/typotheme';
 import Button from '../../../../common/atoms/Button';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import createValidateMethod from '../../../../../utils/formValidation/createValidateMethod';
@@ -70,9 +70,9 @@ class ForgotPasswordView extends React.Component<Props, State> {
     const { email } = this.state;
     return (
       <React.Fragment>
-        <Button type="button" onClick={this.onBackClick} className="link-forgot">
+        <Anchor onClick={this.onBackClick} className="link-forgot">
           {labels.FORGO_PASSWORD_BACK_LOGIN}
-        </Button>
+        </Anchor>
         {errorObject && showNotification && (
           <Notification
             status="error"
@@ -82,114 +82,19 @@ class ForgotPasswordView extends React.Component<Props, State> {
         )}
 
         <form onSubmit={this.onFormSubmit} className={className}>
-          <Grid>
-            {!successFullResetEmail && (
-              <Row>
-                <Col
-                  colSize={{
-                    large: 12,
-                    medium: 12,
-                    small: 12,
-                  }}
-                >
-                  <BodyCopy
-                    fontFamily="primary"
-                    fontSize="fs16"
-                    textAlign="center"
-                    color="black"
-                    fontWeight="black"
-                  >
-                    {labels.FORGOT_PASSWORD_CONTENT_1}
-                  </BodyCopy>
-                </Col>
-                <Col
-                  colSize={{
-                    large: 12,
-                    medium: 12,
-                    small: 12,
-                  }}
-                >
-                  <BodyCopy fontFamily="primary" fontSize="fs16" textAlign="center" color="black">
-                    {labels.FORGOT_PASSWORD_CONTENT_2}
-                  </BodyCopy>
-                </Col>
-              </Row>
-            )}
-            {successFullResetEmail && (
-              <Row>
-                <Col
-                  colSize={{
-                    large: 12,
-                    medium: 12,
-                    small: 12,
-                  }}
-                >
-                  <BodyCopy
-                    fontFamily="primary"
-                    fontSize="fs16"
-                    textAlign="center"
-                    color="black"
-                    fontWeight="black"
-                  >
-                    {labels.FORGOT_PASSWORD_CHECK_MAIL}
-                  </BodyCopy>
-                  <BodyCopy fontFamily="primary" fontSize="fs12" textAlign="center" color="black">
-                    {labels.FORGOT_PASSWORD_HEADING}
-                  </BodyCopy>
-                </Col>
-              </Row>
-            )}
-            {!successFullResetEmail && (
-              <Row fullBleed>
-                <Col
-                  colSize={{
-                    large: 12,
-                    medium: 12,
-                    small: 12,
-                  }}
-                >
-                  <Field
-                    name="Email"
-                    id="Email"
-                    type="Email"
-                    component={TextBox}
-                    value={email}
-                    onChange={this.changeHandler}
-                  />
-                </Col>
-              </Row>
-            )}
-            {!successFullResetEmail && (
-              <Row fullBleed>
-                <Col
-                  className="AddAddressForm__submit"
-                  colSize={{ small: 4, medium: 3, large: 12 }}
-                  offsetLeft={{ small: 1 }}
-                >
-                  <Button
-                    fill="BLUE"
-                    disabled={pristine}
-                    type="submit"
-                    buttonVariation="fixed-width"
-                  >
-                    <BodyCopy fontFamily="primary" fontSize="fs16" textAlign="center" color="white">
-                      {labels.FORGOT_PASSWORD_RESET_PASSWORD}
-                    </BodyCopy>
-                  </Button>
-                </Col>
-              </Row>
-            )}
-            {successFullResetEmail && (
-              <Button
-                fill="BLUE"
-                type="button"
-                onClick={this.onBackClick}
-                buttonVariation="fixed-width"
-              >
-                {labels.FORGOT_PASSWORD_RETURN_LOGIN}
-              </Button>
-            )}
-            <Row fullBleed>
+          {!successFullResetEmail && (
+            <Heading fontFamily="primaryFontFamily" HeadingLarge="six" tag="h4">
+              {labels.FORGOT_PASSWORD_CONTENT_1}
+            </Heading>
+          )}
+
+          {!successFullResetEmail && (
+            <BodyCopy fontFamily="primary" fontSize="fs16" textAlign="center" color="black">
+              {labels.FORGOT_PASSWORD_CONTENT_2}
+            </BodyCopy>
+          )}
+          {successFullResetEmail && (
+            <Row>
               <Col
                 colSize={{
                   large: 12,
@@ -197,10 +102,79 @@ class ForgotPasswordView extends React.Component<Props, State> {
                   small: 12,
                 }}
               >
-                {labels.FORGOT_PASSWORD_CREATE_ACCOUNT_MSG}
+                <BodyCopy
+                  fontFamily="primary"
+                  fontSize="fs16"
+                  textAlign="center"
+                  color="black"
+                  fontWeight="black"
+                >
+                  {labels.FORGOT_PASSWORD_CHECK_MAIL}
+                </BodyCopy>
+                <BodyCopy fontFamily="primary" fontSize="fs12" textAlign="center" color="black">
+                  {labels.FORGOT_PASSWORD_HEADING}
+                </BodyCopy>
               </Col>
             </Row>
-          </Grid>
+          )}
+          {!successFullResetEmail && (
+            <Row fullBleed>
+              <Col
+                colSize={{
+                  large: 12,
+                  medium: 12,
+                  small: 12,
+                }}
+                ignoreGutter={{ small: true }}
+                colSize={{ small: 6, medium: 4, large: 6 }}
+              >
+                <Field
+                  name="Email"
+                  id="Email"
+                  type="text"
+                  component={TextBox}
+                  value={email}
+                  onChange={this.changeHandler}
+                />
+              </Col>
+            </Row>
+          )}
+          {!successFullResetEmail && (
+            <Row fullBleed>
+              <Col
+                className="AddAddressForm__submit"
+                colSize={{ small: 4, medium: 3, large: 12 }}
+                offsetLeft={{ small: 1 }}
+              >
+                <Button fill="BLUE" disabled={pristine} type="submit" buttonVariation="fixed-width">
+                  <BodyCopy fontFamily="primary" fontSize="fs16" textAlign="center" color="white">
+                    {labels.FORGOT_PASSWORD_RESET_PASSWORD}
+                  </BodyCopy>
+                </Button>
+              </Col>
+            </Row>
+          )}
+          {successFullResetEmail && (
+            <Button
+              fill="BLUE"
+              type="button"
+              onClick={this.onBackClick}
+              buttonVariation="fixed-width"
+            >
+              {labels.FORGOT_PASSWORD_RETURN_LOGIN}
+            </Button>
+          )}
+          <Row fullBleed>
+            <Col
+              colSize={{
+                large: 12,
+                medium: 12,
+                small: 12,
+              }}
+            >
+              {labels.FORGOT_PASSWORD_CREATE_ACCOUNT_MSG}
+            </Col>
+          </Row>
         </form>
       </React.Fragment>
     );

@@ -4,15 +4,15 @@ exports[`OverlayModal should render correctly 1`] = `
 <div
   className=""
   color={null}
-  id="modal__wrapper"
+  id="modalWrapper"
 >
   <div
     className="dialog__content"
-    id="dialog__content"
+    id="dialogContent"
   >
     <div
       className="modal__triangle"
-      id="modal__triangle"
+      id="modalTriangle"
     />
     <div
       className="modal__bar"

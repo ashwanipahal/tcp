@@ -1,8 +1,8 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  .addressVerification__input {
-    display: flex;
+  &.forgotPassword h4 {
+    text-align: center;
   }
 `;
 
