@@ -27,14 +27,21 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
           "secondary",
         ]
       }
-      text="ADDED TO BAG"
+      text=""
     />
   </Styled(Text)>
   <Styled(View)>
+    <Styled(ProductInformation)
+      data={Object {}}
+      labels={Object {}}
+    />
     <Connect(AddedToBagViewPointsContainer)
       labels={Object {}}
     />
     <AddedToBagActions
+      labels={Object {}}
+    />
+    <Styled(BossBanner)
       labels={Object {}}
     />
   </Styled(View)>
