@@ -90,7 +90,7 @@ export class AddEditCreditCard extends React.PureComponent {
   };
 
   backToPaymentClick = () => {
-    Router.push('/account?id=payment', '/account/payment');
+    Router.push('/account?id=payment', '/us/account/payment');
   };
 
   getExpirationRequiredFlag = () => {
@@ -151,6 +151,7 @@ export class AddEditCreditCard extends React.PureComponent {
 
     if (creditCard && creditCard.creditCardId) {
       payload.creditCardId = creditCard.creditCardId;
+      payload.isDefault = creditCard.defaultInd;
       return editCreditCardAction(payload);
     }
     return addCreditCardAction(payload);

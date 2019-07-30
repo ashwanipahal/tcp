@@ -80,6 +80,10 @@ export const formValidationMessages = {
     required: 'Please enter a valid password',
     equalTo: 'Passwords must match',
   },
+  emailAddressNoAsync: {
+    required: 'Please enter a valid email',
+    email: 'Email format is invalid.',
+  },
 };
 
 export const formValidationRules = {
@@ -184,6 +188,13 @@ export const formValidationRules = {
     equalTo: {
       linkedFields: ['password'],
     },
+  },
+  emailAddressNoAsync: {
+    required: true,
+    email: true,
+  },
+  legacyPassword: {
+    required: true,
   },
 };
 

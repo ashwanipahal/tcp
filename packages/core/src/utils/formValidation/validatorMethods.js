@@ -133,6 +133,10 @@ function equalToValidator(value, param, linkedPropsValues, linkedFieldsValues) {
   return value === linkedFieldsValues[0];
 }
 
+function legacyPasswordValidator(value) {
+  return /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@#%^$<>.,!%*?&\-_~`()+={}[\]|:;"'/]{8,}$/g.test(value);
+}
+
 const validatorMethods = {
   required: requiredValidator,
   nonEmpty: nonEmptyValidator,
@@ -154,6 +158,8 @@ const validatorMethods = {
   matchEmail: matchEmailValidator,
   password: passwordValidator,
   equalTo: equalToValidator,
+  legacyPassword: legacyPasswordValidator,
+  email: emailValidator,
 };
 
 export default validatorMethods;
