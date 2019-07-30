@@ -1,1 +1,1 @@
-export { default } from './LoginForm.native';
+export { default } from './LoginForm.view';

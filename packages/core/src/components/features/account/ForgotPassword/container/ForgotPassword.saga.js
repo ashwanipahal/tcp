@@ -42,7 +42,9 @@ export function* ForgotPassword(action) {
     if (err instanceof Error) {
       error = err.response.body;
     }
-    yield put(userNotAvailable(error));
+    if (error) {
+      yield put(userNotAvailable(error));
+    }
     yield put(getResetPasswordFail({ state: true }));
   }
 }

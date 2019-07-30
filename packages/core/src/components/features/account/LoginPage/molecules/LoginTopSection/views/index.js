@@ -1,1 +1,1 @@
-export { default } from './LoginTopSection.native';
+export { default } from './LoginTopSection.view';

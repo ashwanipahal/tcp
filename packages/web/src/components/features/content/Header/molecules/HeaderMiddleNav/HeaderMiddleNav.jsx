@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Row, Image, Anchor } from '@tcp/core/src/components/common/atoms';
+import { Col, Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import navMock from '@tcp/core/src/services/abstractors/bootstrap/navigation/mock';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { identifyBrand } from '@tcp/core/src/utils';
@@ -32,6 +32,7 @@ const HeaderMiddleNav = props => {
     closeNavigationDrawer,
     navigationDrawer,
     openOverlay,
+    userName,
   } = props;
 
   return (
@@ -74,26 +75,32 @@ const HeaderMiddleNav = props => {
           }}
           className="hide-on-mobile hide-on-tablet"
         >
-          <Anchor
-            href="#"
-            id="createAccount"
-            className="leftLink"
-            onClick={e => onLinkClick({ e, openOverlay })}
-            fontSizeVariation="small"
-            anchorVariation="primary"
-          >
-            Create Account
-          </Anchor>
-          <Anchor
-            href="#"
-            id="login"
-            className="rightLink "
-            onClick={e => onLinkClick({ e, openOverlay })}
-            fontSizeVariation="small"
-            anchorVariation="primary"
-          >
-            Login
-          </Anchor>
+          {userName ? (
+            <BodyCopy textAlign="right">{`Hi, ${userName}`}</BodyCopy>
+          ) : (
+            <React.Fragment>
+              <Anchor
+                href="#"
+                id="createAccount"
+                className="leftLink"
+                onClick={e => onLinkClick({ e, openOverlay })}
+                fontSizeVariation="small"
+                anchorVariation="primary"
+              >
+                Create Account
+              </Anchor>
+              <Anchor
+                href="#"
+                id="login"
+                className="rightLink "
+                onClick={e => onLinkClick({ e, openOverlay })}
+                fontSizeVariation="small"
+                anchorVariation="primary"
+              >
+                Login
+              </Anchor>
+            </React.Fragment>
+          )}
         </Col>
       </Row>
       <Row
@@ -122,6 +129,7 @@ HeaderMiddleNav.propTypes = {
   navigationDrawer: PropTypes.shape({}),
   openNavigationDrawer: PropTypes.func.isRequired,
   closeNavigationDrawer: PropTypes.func.isRequired,
+  userName: PropTypes.string.isRequired,
   openOverlay: PropTypes.func.isRequired,
 };
 

@@ -103,6 +103,7 @@ export default {
   },
   BORDER: {
     NORMAL: '#979797',
+    BLUE: '#2e6a91',
   },
   CHECKBOX: {
     BORDER: '#575757',

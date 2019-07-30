@@ -108,6 +108,9 @@ function emailValidator(value) {
     value
   );
 }
+function legacyPasswordValidator(value) {
+  return /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@#%^$<>.,!%*?&\-_~`()+={}[\]|:;"'/]{8,}$/g.test(value);
+}
 
 const validatorMethods = {
   required: requiredValidator,
@@ -126,6 +129,8 @@ const validatorMethods = {
   number: numberValidator,
   exactLength: lengthValidator,
   validEmail: emailValidator,
+  legacyPassword: legacyPasswordValidator,
+  email: emailValidator,
 };
 
 export default validatorMethods;

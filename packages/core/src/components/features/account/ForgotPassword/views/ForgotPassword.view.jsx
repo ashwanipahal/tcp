@@ -66,13 +66,14 @@ class ForgotPasswordView extends React.Component<Props, State> {
       labels,
       successFullResetEmail,
     } = this.props;
+    debugger;
     const errorObject = resetResponse && resetResponse.get('errors');
     const { email } = this.state;
     return (
       <React.Fragment>
-        <Anchor onClick={this.onBackClick} className="link-forgot">
-          {labels.FORGO_PASSWORD_BACK_LOGIN}
-        </Anchor>
+        <Button onClick={this.onBackClick} className="link-forgot">
+          {labels.FORGOT_PASSWORD_BACK_LOGIN}
+        </Button>
         {errorObject && showNotification && (
           <Notification
             status="error"

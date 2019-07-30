@@ -64,6 +64,14 @@ export const formValidationMessages = {
     required: 'Please enter a valid email',
     validEmail: 'Email format is invalid',
   },
+  emailAddressNoAsync: {
+    required: 'Please enter a valid email',
+    email: 'Email format is invalid.',
+  },
+  password: {
+    required: 'Please enter your password',
+    password: 'Please enter a valid password.',
+  },
 };
 
 export const formValidationRules = {
@@ -148,6 +156,13 @@ export const formValidationRules = {
   Email: {
     required: true,
     validEmail: true,
+  },
+  emailAddressNoAsync: {
+    required: true,
+    email: true,
+  },
+  legacyPassword: {
+    required: true,
   },
 };
 

@@ -79,7 +79,7 @@ const endpoints = {
     baseURI: 'https://personator.melissadata.net',
   },
   global: {
-    baseURI: 'https://test3.childrensplace.com',
+    baseURI: 'https://www.childrensplace.com',
   },
   setDefaultShippingAddress: {
     method: 'put',
