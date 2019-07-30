@@ -30,6 +30,8 @@ type Props = {
   slideStyle: Object,
   variation: String,
   vertical: Boolean,
+  hidePlayStopButton: Boolean,
+  autoplayInterval: Number,
 };
 
 type State = {
@@ -129,6 +131,8 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       slideStyle,
       variation,
       vertical,
+      hidePlayStopButton,
+      autoplayInterval,
     } = this.props;
 
     if (variation === 'show-arrow') {
@@ -141,13 +145,14 @@ class SnapCarousel extends React.PureComponent<Props, State> {
             <Icon source={nextIcon} />
           </TouchableView>
           <Carousel
+            {...defaults}
             data={data}
             renderItem={renderItem}
             sliderWidth={width}
             itemWidth={width}
             sliderHeight={height}
             itemHeight={height}
-            {...defaults}
+            autoplayInterval={autoplayInterval}
             ref={c => {
               this.carousel = c;
             }}
@@ -165,6 +170,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
     return (
       <View>
         <Carousel
+          {...defaults}
           ref={c => {
             this.carousel = c;
           }}
@@ -177,9 +183,9 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           itemHeight={height}
           slideStyle={slideStyle}
           vertical={vertical}
-          {...defaults}
+          autoplayInterval={autoplayInterval}
         />
-        {defaultAutoplay && this.getPlayButton()}
+        {hidePlayStopButton ? null : defaultAutoplay && this.getPlayButton()}
       </View>
     );
   }

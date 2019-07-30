@@ -23,7 +23,7 @@ const style = css`
     props.buttonVariation === 'variable-width'
       ? `
   width: ${props.width};
-  height: ${props.width};
+  height: ${props.height};
   min-width: 64px;
   background: ${props.theme.colorPalette.white};
   color: ${props.theme.colorPalette.black};
