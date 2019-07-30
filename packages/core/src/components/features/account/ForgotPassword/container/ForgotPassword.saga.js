@@ -34,14 +34,17 @@ export function* ForgotPassword(action) {
       },
       method
     );
+    /* istanbul ignore else */
     if (res) {
       yield put(getResetPasswordSuccess({ state: true }));
     }
   } catch (err) {
     let error = {};
+    /* istanbul ignore else */
     if (err instanceof Error) {
       error = err.response.body;
     }
+    /* istanbul ignore else */
     if (error) {
       yield put(userNotAvailable(error));
     }

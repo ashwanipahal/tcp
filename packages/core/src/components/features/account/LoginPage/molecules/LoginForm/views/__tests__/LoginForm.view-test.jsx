@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { LoginForm } from '../LoginForm.view';
+import { LoginFormFormVanilla } from '../LoginForm.view';
 
 describe('LoginForm component', () => {
   it('should renders correctly', () => {
@@ -9,7 +9,7 @@ describe('LoginForm component', () => {
       handleSubmit: () => {},
       className: 'test-class',
     };
-    const component = shallow(<LoginForm {...props} />);
+    const component = shallow(<LoginFormFormVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 
@@ -20,7 +20,7 @@ describe('LoginForm component', () => {
       className: 'test-class',
       loginErrorMessage: 'test errror',
     };
-    const component = shallow(<LoginForm {...props} />);
+    const component = shallow(<LoginFormFormVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

@@ -2,7 +2,7 @@ import { fromJS } from 'immutable';
 import ForgotPasswordReducer from '../ForgotPassword.reducer';
 import FORGOTPASSWORD_CONSTANTS from '../../ForgotPassword.constants';
 
-describe('Address List reducer', () => {
+describe('ForgotPasswordReducer List reducer', () => {
   it('should return  default state', () => {
     const initialState = fromJS({
       showNotification: false,
@@ -10,7 +10,7 @@ describe('Address List reducer', () => {
     expect(ForgotPasswordReducer(initialState, {}));
   });
 
-  it('should handle success addAddressSuccess', () => {
+  it('should handle success ForgotPasswordReducer', () => {
     const initialState = null;
     expect(
       ForgotPasswordReducer(initialState, {
@@ -24,5 +24,37 @@ describe('Address List reducer', () => {
         userId: '12345',
       })
     );
+  });
+
+  it('should return toggleSuccessfulEmailSection true', () => {
+    const err = fromJS({
+      statusCode: 200,
+      message: 'Object not found',
+    });
+    const initialState = fromJS({
+      toggleSuccessfulEmailSection: null,
+    });
+    expect(
+      ForgotPasswordReducer(initialState, {
+        type: FORGOTPASSWORD_CONSTANTS.RESET_PASSWORD_SUCCESS,
+        payload: err,
+      })
+    ).toEqual(fromJS({ toggleSuccessfulEmailSection: true }));
+  });
+
+  it('should return toggleSuccessfulEmailSection true email', () => {
+    const err = fromJS({
+      statusCode: 200,
+      message: 'Object not found',
+    });
+    const initialState = fromJS({
+      toggleSuccessfulEmailSection: null,
+    });
+    expect(
+      ForgotPasswordReducer(initialState, {
+        type: FORGOTPASSWORD_CONSTANTS.RESET_PASSWORD_SUCCESSFULL_EMAIL,
+        payload: err,
+      })
+    ).toEqual(fromJS({ toggleSuccessfulEmailSection: true }));
   });
 });

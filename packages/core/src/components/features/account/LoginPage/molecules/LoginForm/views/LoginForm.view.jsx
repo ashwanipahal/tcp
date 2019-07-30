@@ -141,3 +141,5 @@ export default reduxForm({
   enableReinitialize: true,
   ...validateMethod,
 })(withStyles(LoginForm, styles));
+
+export { LoginForm as LoginFormFormVanilla };

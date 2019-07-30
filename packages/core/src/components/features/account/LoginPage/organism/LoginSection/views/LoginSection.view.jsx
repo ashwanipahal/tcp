@@ -117,3 +117,4 @@ LoginSection.defaultProps = {
 };
 
 export default withStyles(LoginSection, styles);
+export { LoginSection as LoginSectionVanilla };
