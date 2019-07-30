@@ -7,7 +7,7 @@ export const getAddressResponse = state => {
 };
 
 export const getUserEmail = state => {
-  return state[LOGINPAGE_REDUCER_KEY].loginInfo.email1;
+  return state[LOGINPAGE_REDUCER_KEY].email;
 };
 
 export const getAddressId = (state, props) => {

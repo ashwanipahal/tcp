@@ -21,9 +21,7 @@ describe('#AddEditAddress selector', () => {
   it('#getUserEmail should return user email', () => {
     const state = {
       LoginPageReducer: {
-        loginInfo: {
-          email1: 'user@user.com',
-        },
+        email: 'user@user.com',
       },
     };
 

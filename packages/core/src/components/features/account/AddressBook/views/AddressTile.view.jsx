@@ -70,20 +70,24 @@ class AddressBookTile extends React.Component<Props> {
           <div>
             {address.primary === 'true' && (
               <Badge showCheckmark dataLocator="addressbook-defshippinglabel">
-                {labels.defaultShipping}
+                {labels.addressBook.ACC_LBL_DEFAULT_SHIPPING}
               </Badge>
             )}
             {address.xcont_isDefaultBilling === 'true' && (
               <Badge showCheckmark dataLocator="addressbook-defbillinglabel">
-                {labels.defaultBilling}
+                {labels.addressBook.ACC_LBL_DEFAULT_BILLING}
               </Badge>
             )}
             {address.xcont_isDefaultBilling !== 'true' &&
               address.xcont_isBillingAddress === 'true' && (
-                <Badge dataLocator="addressbook-billinglabel">{labels.billing}</Badge>
+                <Badge dataLocator="addressbook-billinglabel">
+                  {labels.addressBook.ACC_LBL_BILLING}
+                </Badge>
               )}
             {address.primary !== 'true' && address.xcont_isShippingAddress === 'true' && (
-              <Badge dataLocator="addressbook-shippinglabel">{labels.shipping}</Badge>
+              <Badge dataLocator="addressbook-shippinglabel">
+                {labels.addressBook.ACC_LBL_SHIPPING}
+              </Badge>
             )}
             {address.primary !== 'true' && (
               <div className="textRight">
@@ -96,7 +100,7 @@ class AddressBookTile extends React.Component<Props> {
                   to=""
                   data-locator="addressbook-makedefault"
                 >
-                  {labels.makeDefault}
+                  {labels.common.ACC_LBL_MAKE_DEFAULT}
                 </Anchor>
               </div>
             )}
@@ -111,7 +115,7 @@ class AddressBookTile extends React.Component<Props> {
             data-locator="addressbook-edit"
             onClick={this.onEditAddressClick}
           >
-            {labels.edit}
+            {labels.common.ACC_LBL_EDIT}
           </Anchor>
           <Anchor
             fontSizeVariation="large"
@@ -121,7 +125,7 @@ class AddressBookTile extends React.Component<Props> {
             data-locator="addressbook-deletelink"
             onClick={e => this.onDeleteAddressClick(e)}
           >
-            {labels.delete}
+            {labels.common.ACC_LBL_DELETE}
           </Anchor>
         </div>
       </div>

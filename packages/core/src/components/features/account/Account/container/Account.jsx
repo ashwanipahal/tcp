@@ -1,13 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentMapping from '../AccountComponentMapping';
 import navData from '../MyAccountRoute.config';
 import utils from '../../../../../utils';
+import getLabels from './Account.selectors';
 
 // @flow
 type Props = {
   router: Object,
+  labels: object,
 };
 
 type State = {
@@ -57,16 +60,23 @@ export class Account extends React.PureComponent<Props, State> {
    */
   render() {
     const { componentToLoad, activeComponent } = this.state;
-    const { router } = this.props;
+    const { router, labels } = this.props;
     return (
       <MyAccountLayout
         mainContent={AccountComponentMapping[componentToLoad]}
         active={activeComponent}
         navData={navData}
         router={router}
+        labels={labels}
       />
     );
   }
 }
 
-export default withRouter(Account);
+const mapStateToProps = state => {
+  return {
+    labels: getLabels(state),
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(Account));
