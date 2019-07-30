@@ -54,6 +54,7 @@ exports[`ModuleL Header component renders correctly 1`] = `
           fontSize={
             Array [
               "fs20",
+              "fs20",
               "fs32",
             ]
           }
@@ -70,8 +71,14 @@ exports[`ModuleL Header component renders correctly 1`] = `
           BE A UNICORN 24/7/365
         </Styled(BodyCopy)>
         <Styled(Anchor)
+          class=""
           className="moduleL__tile-link"
           data-locator="moduleL_link_NaN"
+          external={0}
+          target=""
+          text="Shop Unicorns & Friends"
+          title="Shop Unicorns & Friends"
+          url="https://www.childrensplace.com/us/c/toddler-girl-clothes"
           withCaret={true}
         >
           Shop Unicorns & Friends

@@ -34,7 +34,7 @@ const ModuleLTile = ({ tileData: { image, link, styled }, index }: Props) => {
               component="div"
               className="moduleL__tile-title"
               fontFamily="primary"
-              fontSize={['fs20', 'fs32']}
+              fontSize={['fs20', 'fs20', 'fs32']}
               fontWeight={['regular', 'semibold']}
               letterSpacing="ls222"
               lineHeight="lh107"
@@ -48,6 +48,7 @@ const ModuleLTile = ({ tileData: { image, link, styled }, index }: Props) => {
               withCaret
               className="moduleL__tile-link"
               data-locator={`${getLocator('moduleL_link')}_${index + 1}`}
+              {...link}
             >
               {link.text}
             </Anchor>

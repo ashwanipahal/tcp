@@ -23,6 +23,10 @@ export const CARTPAGE_REDUCER_KEY = 'CartPage';
 export const OVERLAY_MODAL_REDUCER_KEY = 'OverlayModalReducer';
 export const OVERLAY_MODAL_ACTION_PATTERN = '@@Overlay-';
 
+// Create Account Reducer
+export const CREATE_ACCOUNT_REDUCER_KEY = 'CreateAccountReducer';
+export const CREATE_ACCOUNT_ACTION_PATTERN = '@@CreateAccount-';
+
 // Add address page reducer
 export const ADDEDITADDRESS_REDUCER_KEY = 'AddEditAddressReducer';
 export const ADDEDITADDRESS_ACTION_PATTERN = '@@Address-';
@@ -48,6 +52,7 @@ export const REDUCER_ACTION_MAPPING = {
   [ADDRESSBOOK_REDUCER_KEY]: ADDRESSBOOK_ACTION_PATTERN,
   [PAYMENT_REDUCER_KEY]: PAYMENT_ACTION_PATTERN,
   [ADD_GIFT_CARD_REDUCER_KEY]: ADD_GIFT_CARD_ACTION_PATTERN,
+  [CREATE_ACCOUNT_REDUCER_KEY]: CREATE_ACCOUNT_ACTION_PATTERN,
 };
 
 export const ADDRESS_VERIFICATION_REDUCER_KEY = 'addressVerification';

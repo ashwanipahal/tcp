@@ -117,5 +117,9 @@ const endpoints = {
     method: 'post',
     relURI: '/api/v2/account/addCreditCardDetails',
   },
+  createAccount: {
+    method: 'post',
+    relURI: '/api/v2/wallet/addCustomerRegistration',
+  },
 };
 export default endpoints;
