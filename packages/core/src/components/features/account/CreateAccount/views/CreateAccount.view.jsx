@@ -1,11 +1,3 @@
-// import React from 'react';
-
-// const AccountOverview = () => {
-//   return <div>This is aaaaa</div>;
-// };
-
-// export default AccountOverview;
-
 import React from 'react';
 import CreateAccounPage from '../organisms/CreateAccountPage';
 

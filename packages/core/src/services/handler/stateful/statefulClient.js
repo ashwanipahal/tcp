@@ -93,12 +93,11 @@ const StatefulAPIClient = (apiConfig, reqObj) => {
   if (reqObj.header) {
     request.set(reqObj.header);
   }
-
   request.withCredentials();
   if (requestType === 'get') {
     request.query(reqObj.body);
   } else {
-    request.send(reqObj.payload);
+    request.send(reqObj.body);
   }
   const result = new Promise((resolve, reject) => {
     request
