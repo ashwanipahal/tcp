@@ -4,6 +4,7 @@ import fetchData from '../../../../../service/API';
 import { getUserInfo } from '../../LoginPage/container/LoginPage.actions';
 import endpoints from '../../../../../service/endpoint';
 import { routerPush } from '../../../../../utils/utils';
+import { closeOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
 
 export function* createAccount({ payload }) {
   try {
@@ -39,6 +40,7 @@ export function* createAccount({ payload }) {
     /* istanbul ignore else */
     if (res.body) {
       yield put(getUserInfo());
+      yield put(closeOverlayModal());
       routerPush('/', '/home');
     }
   } catch (err) {

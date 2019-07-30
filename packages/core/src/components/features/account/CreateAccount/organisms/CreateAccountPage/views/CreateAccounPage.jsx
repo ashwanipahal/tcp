@@ -9,6 +9,9 @@ class CreateAccounPage extends React.Component {
     createAccountAction: PropTypes.func,
     className: PropTypes.string,
     labels: PropTypes.shape({}),
+    isIAgreeChecked: PropTypes.bool,
+    hideShowPwd: PropTypes.bool,
+    confirmHideShowPwd: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -17,6 +20,9 @@ class CreateAccounPage extends React.Component {
     labels: {
       CREATE_ACC_LBL_HIDE: 'hide',
     },
+    isIAgreeChecked: false,
+    hideShowPwd: false,
+    confirmHideShowPwd: false,
   };
 
   constructor(props) {
@@ -30,10 +36,17 @@ class CreateAccounPage extends React.Component {
   }
 
   render() {
-    const { className, labels } = this.props;
+    const { className, labels, isIAgreeChecked, hideShowPwd, confirmHideShowPwd } = this.props;
     return (
       <div className={className}>
-        <CreateAccountForm className={className} labels={labels} onSubmit={this.handleSubmitForm} />
+        <CreateAccountForm
+          className={className}
+          labels={labels}
+          onSubmit={this.handleSubmitForm}
+          isIAgreeChecked={isIAgreeChecked}
+          hideShowPwd={hideShowPwd}
+          confirmHideShowPwd={confirmHideShowPwd}
+        />
       </div>
     );
   }

@@ -1,6 +1,5 @@
 import React from 'react';
-import { Field, reduxForm, formValueSelector } from 'redux-form';
-import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
@@ -17,18 +16,18 @@ type Props = {
   isMakeDefaultDisabled: string,
   handleSubmit: string,
   labels: string,
-  isIAgreeField: string,
-  hideShowPwdField?: string,
-  confirmHideShowPwdField?: string,
+  isIAgreeChecked: boolean,
+  hideShowPwd: boolean,
+  confirmHideShowPwd: boolean,
 };
 
 // eslint-disable-next-line import/no-mutable-exports
 let CreateAccountForm = ({
   isMakeDefaultDisabled,
   labels,
-  isIAgreeField,
-  hideShowPwdField,
-  confirmHideShowPwdField,
+  isIAgreeChecked,
+  hideShowPwd,
+  confirmHideShowPwd,
   handleSubmit,
 }: Props) => {
   return (
@@ -130,7 +129,7 @@ let CreateAccountForm = ({
             <Field
               placeholder="Password"
               name="password"
-              type={hideShowPwdField ? 'text' : 'password'}
+              type={hideShowPwd ? 'text' : 'password'}
               component={TextBox}
               dataLocator="password-field"
             />
@@ -148,7 +147,7 @@ let CreateAccountForm = ({
                   component={InputCheckbox}
                   dataLocator="hide-show-checkbox"
                 >
-                  {hideShowPwdField ? labels.CREATE_ACC_LBL_HIDE : labels.CREATE_ACC_LBL_SHOW}
+                  {hideShowPwd ? labels.CREATE_ACC_LBL_HIDE : labels.CREATE_ACC_LBL_SHOW}
                 </Field>
               </Col>
             </span>
@@ -161,7 +160,7 @@ let CreateAccountForm = ({
             <Field
               placeholder="Confirm Password"
               name="confirmPassword"
-              type={confirmHideShowPwdField ? 'text' : 'password'}
+              type={confirmHideShowPwd ? 'text' : 'password'}
               component={TextBox}
               dataLocator="confirm-Password-field"
             />
@@ -176,9 +175,7 @@ let CreateAccountForm = ({
                   component={InputCheckbox}
                   dataLocator="confirm-hide-show-checkbox"
                 >
-                  {confirmHideShowPwdField
-                    ? labels.CREATE_ACC_LBL_HIDE
-                    : labels.CREATE_ACC_LBL_SHOW}
+                  {confirmHideShowPwd ? labels.CREATE_ACC_LBL_HIDE : labels.CREATE_ACC_LBL_SHOW}
                 </Field>
               </Col>
             </span>
@@ -229,7 +226,7 @@ let CreateAccountForm = ({
               fill="BLUE"
               type="submit"
               data-locator="create-account-btn"
-              disabled={!isIAgreeField}
+              disabled={!isIAgreeChecked}
             >
               {labels.CREATE_ACC_LBL_CREATE_ACCOUNT}
             </Button>
@@ -266,24 +263,6 @@ CreateAccountForm = reduxForm({
   form: 'CreateAccountForm', // a unique identifier for this form
   ...validateMethod,
   enableReinitialize: true,
-})(CreateAccountForm);
-
-CreateAccountForm.defaultProps = {
-  hideShowPwdField: false,
-  confirmHideShowPwdField: false,
-};
-
-const formState = formValueSelector('CreateAccountForm');
-
-CreateAccountForm = connect(state => {
-  const isIAgreeField = formState(state, 'iAgree');
-  const hideShowPwdField = formState(state, 'hideShowPwd');
-  const confirmHideShowPwdField = formState(state, 'confirmHideShowPwd');
-  return {
-    isIAgreeField,
-    hideShowPwdField,
-    confirmHideShowPwdField,
-  };
 })(CreateAccountForm);
 
 export default CreateAccountForm;
