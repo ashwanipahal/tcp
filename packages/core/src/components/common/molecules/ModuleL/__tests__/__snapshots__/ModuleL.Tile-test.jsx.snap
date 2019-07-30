@@ -54,6 +54,7 @@ exports[`ModuleL Header component renders correctly 1`] = `
           fontSize={
             Array [
               "fs20",
+              "fs20",
               "fs32",
             ]
           }

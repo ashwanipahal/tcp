@@ -23,7 +23,6 @@ exports[`Image grid component renders correctly 1`] = `
       }
     >
       <WithTheme(DamImage)
-        className="moduleK_dam-image"
         data-locator="moduleK_image_0"
         imgConfigs={
           Array [
@@ -55,7 +54,6 @@ exports[`Image grid component renders correctly 1`] = `
       }
     >
       <WithTheme(DamImage)
-        className="moduleK_dam-image"
         data-locator="moduleK_image_1"
         imgConfigs={
           Array [
@@ -87,7 +85,6 @@ exports[`Image grid component renders correctly 1`] = `
       }
     >
       <WithTheme(DamImage)
-        className="moduleK_dam-image"
         data-locator="moduleK_image_2"
         imgConfigs={
           Array [
@@ -119,7 +116,6 @@ exports[`Image grid component renders correctly 1`] = `
       }
     >
       <WithTheme(DamImage)
-        className="moduleK_dam-image"
         data-locator="moduleK_image_3"
         imgConfigs={
           Array [
