@@ -75,4 +75,14 @@ describe('CartItemTile Component', () => {
   it('CartItemTile should return Col component value one', () => {
     expect(component.find(Col)).toHaveLength(1);
   });
+  it('get order details to be called', () => {
+    const instance = component.instance();
+    instance.loadGetOrderDetails();
+    expect(Props.getOrderDetails).toHaveBeenCalled();
+  });
+  it('delete item to be called', () => {
+    const instance = component.instance();
+    instance.deleteCartItem();
+    expect(Props.removeCartItem).toHaveBeenCalled();
+  });
 });
