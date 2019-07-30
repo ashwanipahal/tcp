@@ -28,7 +28,9 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
       <Row className="row-padding">
         <Col colSize={{ large: 9, small: 4, medium: 6 }}>{labels.price}</Col>
         <Col className="text-value" colSize={{ large: 3, small: 2, medium: 2 }}>
-          <BodyCopy data-locator="addedtobag-productprice">{`$${itemPrice || 0}`}</BodyCopy>
+          <BodyCopy className="text-value" data-locator="addedtobag-productprice">
+            {`$${itemPrice || 0}`}
+          </BodyCopy>
         </Col>
       </Row>
       <Row>
@@ -58,7 +60,7 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           className="text-value"
           colSize={{ large: 3, small: 2, medium: 2 }}
         >
-          <BodyCopy>{`$${bagSubTotal || 0}`}</BodyCopy>
+          <BodyCopy className="text-value">{`$${bagSubTotal || 0}`}</BodyCopy>
         </Col>
       </Row>
       <Row className="row-padding">
