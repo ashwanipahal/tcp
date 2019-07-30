@@ -18,9 +18,9 @@ export const LoginSection = ({
         colSize={{
           small: 6,
           medium: 8,
-          large: 12
+          large: 12,
         }}
-        className="elem-pt-XXL"
+        className="elem-pt-XXL elem-ml-LRG elem-mr-LRG"
       >
         <LoginTopSection labels={labels} className="elem-mb-LRG" />
         <LoginForm

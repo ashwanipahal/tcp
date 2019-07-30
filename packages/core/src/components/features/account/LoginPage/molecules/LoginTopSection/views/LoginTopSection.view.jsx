@@ -16,9 +16,20 @@ const LoginTopSection = ({ labels, className }) => {
     <BodyCopy component="div" textAlign="center" className={className}>
       <ImageComp src={getIconPath('my-place-rewards')} className="elem-mb-LRG" />
       <BodyCopy component="div" className="bordered elem-pt-MED elem-pb-LRG">
-        <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary" textAlign="center">{labels.ACC_LBL_LOGIN_HEADING}</BodyCopy>
-        <BodyCopy fontWeight="semibold" fontFamily="secondary" textAlign="center" className="elem-mb-SM">{labels.ACC_LBL_LOGIN_SUB_HEADING}</BodyCopy>
-        <BodyCopy fontFamily="secondary" textAlign="center">{labels.ACC_LBL_LOGIN_SUB_DESCRIPTION}</BodyCopy>
+        <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary" textAlign="center">
+          {labels.ACC_LBL_LOGIN_HEADING}
+        </BodyCopy>
+        <BodyCopy
+          fontWeight="semibold"
+          fontFamily="secondary"
+          textAlign="center"
+          className="elem-mb-SM"
+        >
+          {labels.ACC_LBL_LOGIN_SUB_HEADING}
+        </BodyCopy>
+        <BodyCopy fontFamily="secondary" textAlign="center">
+          {labels.ACC_LBL_LOGIN_SUB_DESCRIPTION}
+        </BodyCopy>
       </BodyCopy>
     </BodyCopy>
   );
@@ -34,12 +45,7 @@ LoginTopSection.propTypes = {
 };
 
 LoginTopSection.defaultProps = {
-  labels: {
-    ACC_LBL_LOGIN_HEADING: 'Welcome Back',
-    ACC_LBL_LOGIN_SUB_HEADING: 'Log in to earn points for MY PLACE REWARDS ',
-    ACC_LBL_LOGIN_SUB_DESCRIPTION:
-      'Signed up in store? An online account has been created with your email! Click here to reset your password.',
-  },
+  labels: {},
 };
 
 export default withStyles(LoginTopSection, styles);
