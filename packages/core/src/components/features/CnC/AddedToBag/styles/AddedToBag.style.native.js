@@ -15,4 +15,9 @@ export const StyledText = styled.Text`
   top: 23;
 `;
 
-export default { styles, StyledText };
+export const AddedToBagWrapper = styled.View`
+  display: flex;
+  flex: 1;
+`;
+
+export default { styles, StyledText, PlaceHolderView, AddedToBagWrapper };

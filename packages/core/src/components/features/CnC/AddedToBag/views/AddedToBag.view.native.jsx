@@ -1,12 +1,13 @@
 import React from 'react';
-import { Text } from 'react-native';
 import PropTypes from 'prop-types';
 import Modal from '../../../../common/molecules/Modal';
 import withStyles from '../../../../common/hoc/withStyles';
-import { styles, PlaceHolderView, StyledText } from '../styles/AddedToBag.style.native';
+import { styles, StyledText, AddedToBagWrapper } from '../styles/AddedToBag.style.native';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
+import AddedToBagViewPoints from '../../AddedToBagViewPoints';
+import AddedToBagActions from '../../AddedToBagActions/views/AddedToBagActions.native';
 
-const AddedToBag = ({ openState, onRequestClose, className }) => {
+const AddedToBag = ({ openState, onRequestClose, className, labels }) => {
   return (
     <Modal
       fixedWidth
@@ -32,18 +33,11 @@ const AddedToBag = ({ openState, onRequestClose, className }) => {
         />
       </StyledText>
       {/* Below are place holders for different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
-      <PlaceHolderView className="ProductInformationView">
-        <Text>ProductInformationView</Text>
-      </PlaceHolderView>
-      <PlaceHolderView className="AddedToBagViewPoints">
-        <Text>AddedToBagViewPoints</Text>
-      </PlaceHolderView>
-      <PlaceHolderView className="AddedToBagActions">
-        <Text>AddedToBagActions</Text>
-      </PlaceHolderView>
-      <PlaceHolderView className="BossBannerView">
-        <Text>BossBannerView</Text>
-      </PlaceHolderView>
+
+      <AddedToBagWrapper>
+        <AddedToBagViewPoints labels={labels} />
+        <AddedToBagActions labels={labels} />
+      </AddedToBagWrapper>
     </Modal>
   );
 };
@@ -52,7 +46,7 @@ AddedToBag.propTypes = {
   openState: PropTypes.func.isRequired,
   onRequestClose: PropTypes.func.isRequired,
   className: PropTypes.string.isRequired,
-  // labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
 };
 
 export default withStyles(AddedToBag, styles);
