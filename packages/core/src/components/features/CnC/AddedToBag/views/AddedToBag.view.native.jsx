@@ -21,8 +21,8 @@ const AddedToBag = ({ openState, onRequestClose, className, addedToBagData, labe
       animationType="slide"
       headingAlign="left"
       aria={{
-        labelledby: 'Added to bag',
-        describedby: 'Added to bag Modal',
+        labelledby: `${labels.addedToBag}`,
+        describedby: `${labels.addedToBag}`,
       }}
     >
       <StyledText>

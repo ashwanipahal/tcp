@@ -5,8 +5,8 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
   animationType="slide"
   aria={
     Object {
-      "describedby": "Added to bag Modal",
-      "labelledby": "Added to bag",
+      "describedby": "undefined",
+      "labelledby": "undefined",
     }
   }
   className="TCPModal__Content, "
