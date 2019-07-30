@@ -19,7 +19,6 @@ import {
 import labels from './AddressBook.labels';
 import { setDefaultShippingAddressRequest } from './DefaultShippingAddress.actions';
 
-// @flow
 type Props = {
   getAddressListAction: () => void,
   getUserInfoAction: () => void,
@@ -57,9 +56,6 @@ export class AddressBookContainer extends React.Component<Props> {
       setDeleteModalMountState,
       showUpdatedNotificationOnModal,
     } = this.props;
-    // if (isFetching) {
-    //   return <p>Loading...</p>;
-    // }
     if (List.isList(addressList)) {
       return (
         <AddressView

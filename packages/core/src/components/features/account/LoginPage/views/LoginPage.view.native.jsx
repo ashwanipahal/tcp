@@ -4,7 +4,6 @@
 
 import React from 'react';
 import { View, Button, TextInput, Text, StyleSheet } from 'react-native'; //eslint-disable-line
-// @flow
 type Props = {
   getUserInfo: () => void,
   onSubmit: Object => void,
@@ -24,8 +23,8 @@ class LoginView extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'naman.jain@publicissapient.com',
-      password: 'Test@1234',
+      email: '',
+      password: '',
     };
   }
 

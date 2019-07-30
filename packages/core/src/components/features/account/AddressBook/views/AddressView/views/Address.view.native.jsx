@@ -13,7 +13,7 @@ import {
 import Button from '../../../../../../common/atoms/Button';
 import AddressListComponent from '../../AddressList.view.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-// @flow
+
 type Props = {
   addresses: List<{}>,
   labels: {
@@ -38,36 +38,44 @@ export class AddressView extends React.PureComponent<Props> {
       <View {...this.props}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <StyledHeading>
-            <BodyCopy fontSize="fs16" fontWeight="extrabold" text={labels.addressBookHeading} />
+            {labels.addressBookHeading && (
+              <BodyCopy fontSize="fs16" fontWeight="extrabold" text={labels.addressBookHeading} />
+            )}
           </StyledHeading>
           <UnderlineStyle />
           {addresses.size === 0 && (
             <NoAddressWrapper>
               <NoAddressHeading>
-                <BodyCopy
-                  fontSize="fs14"
-                  fontWeight="semibold"
-                  mobilefontFamily={['secondary']}
-                  text={labels.createAddressBookMsg}
-                />
+                {labels.createAddressBookMsg && (
+                  <BodyCopy
+                    fontSize="fs14"
+                    fontWeight="semibold"
+                    mobilefontFamily={['secondary']}
+                    text={labels.createAddressBookMsg}
+                  />
+                )}
               </NoAddressHeading>
               <NoAddressBody>
-                <BodyCopy
-                  fontSize="fs13"
-                  fontWeight="regular"
-                  mobilefontFamily={['secondary']}
-                  text={labels.createAddressBookBenefitMsg}
-                />
+                {labels.createAddressBookBenefitMsg && (
+                  <BodyCopy
+                    fontSize="fs13"
+                    fontWeight="regular"
+                    mobilefontFamily={['secondary']}
+                    text={labels.createAddressBookBenefitMsg}
+                  />
+                )}
               </NoAddressBody>
             </NoAddressWrapper>
           )}
           <ButtonWrapperStyle>
-            <Button
-              buttonVariation="variable-width"
-              fill="BLUE"
-              data-locator="addressbook-addnewaddress"
-              text={labels.addNewAddressCTA}
-            />
+            {labels.addNewAddressCTA && (
+              <Button
+                buttonVariation="variable-width"
+                fill="BLUE"
+                data-locator="addressbook-addnewaddress"
+                text={labels.addNewAddressCTA}
+              />
+            )}
           </ButtonWrapperStyle>
           {addresses.size > 0 && (
             <AddressListComponent

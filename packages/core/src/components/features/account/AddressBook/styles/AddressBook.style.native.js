@@ -4,7 +4,7 @@ const HeadingTextStyle = styled.Text`
   height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   font-size: ${props => props.theme.typography.fontSizes.fs16};
-  font-weight: 600;
+  font-weight: ${props => props.theme.typography.fontWeights.black};
 `;
 
 const WrapperStyle = styled.View`
@@ -25,7 +25,7 @@ const ImageStyle = styled.Image`
 const EmptyCCLabelStyle = styled.Text`
   flex-basis: 80%;
   font-size: ${props => props.theme.typography.fontSizes.fs14};
-  font-weight: bold;
+  font-weight: ${props => props.theme.typography.fontWeights.black};
   top: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
