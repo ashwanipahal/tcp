@@ -20,7 +20,7 @@ const colSize = { ...config.COL_SIZE_TILE };
  */
 const ModuleLTile = ({ tileData: { image, link, styled }, index }: Props) => {
   return (
-    <BodyCopy component="div" data-locator={`${getLocator('moduleL_tiles')}_${index + 1}`}>
+    <Anchor data-locator={`${getLocator('moduleL_tiles')}_${index + 1}`} {...link}>
       <Row>
         <Col colSize={colSize} className="moduleL__tile">
           <DamImage
@@ -34,7 +34,7 @@ const ModuleLTile = ({ tileData: { image, link, styled }, index }: Props) => {
               component="div"
               className="moduleL__tile-title"
               fontFamily="primary"
-              fontSize={['fs20', 'fs32']}
+              fontSize={['fs20', 'fs20', 'fs32']}
               fontWeight={['regular', 'semibold']}
               letterSpacing="ls222"
               lineHeight="lh107"
@@ -48,13 +48,14 @@ const ModuleLTile = ({ tileData: { image, link, styled }, index }: Props) => {
               withCaret
               className="moduleL__tile-link"
               data-locator={`${getLocator('moduleL_link')}_${index + 1}`}
+              {...link}
             >
               {link.text}
             </Anchor>
           </div>
         </Col>
       </Row>
-    </BodyCopy>
+    </Anchor>
   );
 };
 

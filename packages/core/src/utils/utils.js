@@ -232,7 +232,6 @@ export const getIconCard = icon => {
 
 export const getCreditCardExpirationOptionMap = () => {
   const expMonthOptionsMap = [
-    { id: '', displayName: 'MMM' },
     { id: '1', displayName: MONTH_SHORT_FORMAT.JAN },
     { id: '2', displayName: MONTH_SHORT_FORMAT.FEB },
     { id: '3', displayName: MONTH_SHORT_FORMAT.MAR },
@@ -249,10 +248,6 @@ export const getCreditCardExpirationOptionMap = () => {
 
   const expYearOptionsMap = [];
   const nowYear = new Date().getFullYear();
-  expYearOptionsMap.push({
-    id: '',
-    displayName: 'YYYY',
-  });
   for (let i = nowYear; i < nowYear + 11; i += 1) {
     expYearOptionsMap.push({ id: i.toString(), displayName: i.toString() });
   }

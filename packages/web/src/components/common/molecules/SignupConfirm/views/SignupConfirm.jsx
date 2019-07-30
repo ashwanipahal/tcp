@@ -6,7 +6,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import SignupConfirmStyle from '../SignupConfirm.style';
 
 const SignupConfirm = ({ className, formViewConfig, susbscriptionType }) => (
-  <div className={className}>
+  <div className={className} id="sign-up-modal-confirm-view">
     <BodyCopy
       fontSize={['fs28', 'fs28', 'fs38']}
       fontFamily="primary"
@@ -34,6 +34,7 @@ const SignupConfirm = ({ className, formViewConfig, susbscriptionType }) => (
       }
       alt={`${susbscriptionType}-icon`}
       className="confirmation-image"
+      aria-hidden="true"
       data-locator={susbscriptionType === 'email' ? 'e-mail_icon' : 'sms_icon'}
     />
     <BodyCopy

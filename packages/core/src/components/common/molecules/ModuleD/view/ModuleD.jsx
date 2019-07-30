@@ -17,23 +17,20 @@ type Props = {
 
 const colSize2Elements = {
   small: 3,
-  medium: 4,
-  large: 6,
-  xlarge: 6,
+  medium: 3,
+  large: 4,
 };
 
 const colSize4Elements = {
   small: 3,
   medium: 2,
   large: 3,
-  xlarge: 3,
 };
 
 const colSize6Elements = {
   small: 3,
   medium: 3,
   large: 2,
-  xlarge: 2,
 };
 
 const ignoreGutter = [
@@ -65,9 +62,10 @@ const ModuleD = (props: Props) => {
       {headerText && (
         <LinkText
           headerText={headerText}
-          className="moduleD_header"
+          headingClass="moduleD_header"
           component="div"
-          fontSize="fs48"
+          fontSize={['fs32', 'fs48']}
+          lineHeight="lh107"
           fontWeight="black"
           textAlign="center"
           dataLocator="moduleD_headerlink"

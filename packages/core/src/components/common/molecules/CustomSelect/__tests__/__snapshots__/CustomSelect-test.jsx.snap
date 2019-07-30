@@ -2,7 +2,7 @@
 
 exports[`CustomSelect component should renders correctly 1`] = `
 <Styled(BodyCopy)
-  className="sample-class"
+  className="sample-class custom-select"
   color="text.primary"
   component="div"
   fontFamily="primary"
@@ -34,7 +34,7 @@ exports[`CustomSelect component should renders correctly 1`] = `
 
 exports[`CustomSelect component should renders correctly when optional fields are not present 1`] = `
 <Styled(BodyCopy)
-  className="sample-class"
+  className="sample-class custom-select"
   color="text.primary"
   component="div"
   fontFamily="primary"
