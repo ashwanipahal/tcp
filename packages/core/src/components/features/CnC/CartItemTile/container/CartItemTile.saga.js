@@ -24,7 +24,7 @@ import {
 
 const errorLabel = 'Error in API';
 
-function* getOrderDetailSaga() {
+export function* getOrderDetailSaga() {
   try {
     const res = yield call(getOrderDetailsData);
     yield put(getOrderDetailsComplete(res));
@@ -34,7 +34,7 @@ function* getOrderDetailSaga() {
   }
 }
 
-function* removeCartItem({ payload }) {
+export function* removeCartItem({ payload }) {
   try {
     const res = yield call(removeItem, payload);
     yield put(removeCartItemComplete(res));
@@ -44,7 +44,7 @@ function* removeCartItem({ payload }) {
   }
 }
 
-function* updateCartItemSaga({ payload }) {
+export function* updateCartItemSaga({ payload }) {
   try {
     const res = yield call(updateItem, payload);
     yield put(updateCartItemComplete(res));
@@ -54,7 +54,7 @@ function* updateCartItemSaga({ payload }) {
   }
 }
 
-function* getProductSKUInfoSaga(payload) {
+export function* getProductSKUInfoSaga(payload) {
   // const res = yield call(getProductSkuInfoByUnbxd, payload);
   // yield put(updateCartItemComplete(res));
 
@@ -89,7 +89,7 @@ function* getProductSKUInfoSaga(payload) {
   }
 }
 
-function* CartPageSaga() {
+export function* CartPageSaga() {
   yield takeLatest(CARTPAGE_CONSTANTS.GET_ORDER_DETAILS, getOrderDetailSaga);
   yield takeLatest(CARTPAGE_CONSTANTS.REMOVE_CART_ITEM, removeCartItem);
   yield takeLatest(CARTPAGE_CONSTANTS.REMOVE_CART_ITEM_COMPLETE, getOrderDetailSaga);
