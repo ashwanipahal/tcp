@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-// import Router from 'next/router'; // eslint-disable-line
 import { login, resetLoginInfo } from './LoginPage.actions';
 import { closeOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
 import labels from './LoginPage.labels';

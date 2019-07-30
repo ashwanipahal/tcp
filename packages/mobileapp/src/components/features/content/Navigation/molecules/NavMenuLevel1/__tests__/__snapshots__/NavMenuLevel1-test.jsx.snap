@@ -21,7 +21,7 @@ exports[`NavMenuLevel1 should render component when renderItem is called 1`] = `
       fontFamily="primary"
       fontSize="fs22"
       fontWeight="black"
-      text="Girl"
+      text="GIRL"
       textAlign="center"
     />
     <ForwardRef
@@ -46,11 +46,11 @@ exports[`NavMenuLevel1 should render component when renderItem is called without
     fontFamily="primary"
     fontSize="fs28"
     fontWeight="black"
-    text="Girl"
+    text="GIRL"
     textAlign="center"
   />
   <ForwardRef
-    alt="Girl"
+    alt="GIRL"
     height={26}
     maxWidth={16}
     position="absolute"

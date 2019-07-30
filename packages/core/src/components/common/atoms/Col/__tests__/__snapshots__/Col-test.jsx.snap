@@ -3,6 +3,20 @@
 exports[`Col component renders correctly 1`] = `
 <div
   className="sample-column"
+  colSize={
+    Object {
+      "large": 12,
+      "medium": 8,
+      "small": 6,
+    }
+  }
+  hideCol={
+    Object {
+      "large": false,
+      "medium": false,
+      "small": true,
+    }
+  }
 >
   Random column
 </div>

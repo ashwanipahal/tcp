@@ -3,6 +3,11 @@
 exports[`EmailSignupModal component renders correctly 1`] = `
 <Fragment>
   <errorBoundaryComponent
+    aria={
+      Object {
+        "describedby": "sign-up-modal-form-intro-view",
+      }
+    }
     className=""
     closeIconDataLocator="email_signup_modal_close_btn"
     colSet={
@@ -12,6 +17,8 @@ exports[`EmailSignupModal component renders correctly 1`] = `
         "small": 6,
       }
     }
+    contentLabel="undefined undefined"
+    contentRef={[Function]}
     isOpen={false}
     noPadding={true}
     onRequestClose={[Function]}
@@ -274,6 +281,11 @@ exports[`EmailSignupModal component renders correctly 1`] = `
 exports[`EmailSignupModal component renders correctly when button is clicked 1`] = `
 <Fragment>
   <errorBoundaryComponent
+    aria={
+      Object {
+        "describedby": "sign-up-modal-form-intro-view",
+      }
+    }
     className=""
     closeIconDataLocator="email_signup_modal_close_btn"
     colSet={
@@ -283,6 +295,8 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
         "small": 6,
       }
     }
+    contentLabel="undefined undefined"
+    contentRef={[Function]}
     isOpen={true}
     noPadding={true}
     onRequestClose={[Function]}
@@ -545,6 +559,11 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
 exports[`EmailSignupModal component renders correctly when button is clicked 2`] = `
 <Fragment>
   <errorBoundaryComponent
+    aria={
+      Object {
+        "describedby": "sign-up-modal-form-intro-view",
+      }
+    }
     className=""
     closeIconDataLocator="email_signup_modal_close_btn"
     colSet={
@@ -554,6 +573,8 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
         "small": 6,
       }
     }
+    contentLabel="undefined undefined"
+    contentRef={[Function]}
     isOpen={true}
     noPadding={true}
     onRequestClose={[Function]}

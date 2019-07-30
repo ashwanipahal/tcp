@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ProductInformationView from '../ProductInformation.views';
+import { ProductInformationVanilla } from '../ProductInformation.views.native';
 
-describe('BossBannerView component', () => {
+describe('GiftCardList Component', () => {
   it('renders correctly', () => {
     const props = {
       data: {
@@ -22,7 +22,7 @@ describe('BossBannerView component', () => {
         qtyLabel: 'Qty',
       },
     };
-    const component = shallow(<ProductInformationView {...props} />);
+    const component = shallow(<ProductInformationVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });
