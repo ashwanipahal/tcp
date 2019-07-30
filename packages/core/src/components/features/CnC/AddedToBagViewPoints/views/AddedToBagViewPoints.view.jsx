@@ -55,12 +55,10 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
         <Col colSize={{ large: 9, small: 4, medium: 6 }}>
           {getModifiedString(labels, totalItems || 0)}
         </Col>
-        <Col
-          data-locator="addedtobag-bagsubtotal"
-          className="text-value"
-          colSize={{ large: 3, small: 2, medium: 2 }}
-        >
-          <BodyCopy className="text-value">{`$${bagSubTotal || 0}`}</BodyCopy>
+        <Col className="text-value" colSize={{ large: 3, small: 2, medium: 2 }}>
+          <BodyCopy data-locator="addedtobag-bagsubtotal" className="text-value">
+            {`$${bagSubTotal || 0}`}
+          </BodyCopy>
         </Col>
       </Row>
       <Row className="row-padding">
