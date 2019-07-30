@@ -32,6 +32,7 @@ class TextBox extends React.Component {
     label: PropTypes.string,
     keyboardType: PropTypes.string,
     showErrorIcon: PropTypes.bool,
+    secureTextEntry: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -44,6 +45,7 @@ class TextBox extends React.Component {
     label: 'input',
     keyboardType: 'default',
     showErrorIcon: true,
+    secureTextEntry: false,
   };
 
   constructor(props) {
@@ -101,6 +103,7 @@ class TextBox extends React.Component {
       showErrorIcon,
       enableSuccessCheck,
       keyboardType,
+      secureTextEntry,
     } = this.props;
     const { isFocused } = this.state;
     const elemValue = input.value;
@@ -125,6 +128,7 @@ class TextBox extends React.Component {
           returnKeyType="next"
           error={error}
           enableSuccessCheck={enableSuccessCheck}
+          secureTextEntry={secureTextEntry}
         />
         {enableSuccessCheck && (
           <StyledSuccessIcon>
