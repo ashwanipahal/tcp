@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OverlayModal should render correctly 1`] = `
+<div
+  className=""
+  color={null}
+  id="modalWrapper"
+>
+  <div
+    className="dialog__content"
+    id="dialogContent"
+  >
+    <div
+      className="modal__triangle"
+      id="modalTriangle"
+    />
+    <div
+      className="modal__bar"
+    />
+    <ModalContent
+      className="modal__content"
+    />
+  </div>
+</div>
+`;

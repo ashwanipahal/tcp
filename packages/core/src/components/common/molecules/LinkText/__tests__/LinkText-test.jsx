@@ -1,12 +1,12 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import mock from '../../../../../services/abstractors/common/moduleK/mock';
-import LinkText from '../LinkText';
+import { VanillaLinkText } from '../views/LinkText';
 
 let LinkTextComp;
 
 beforeEach(() => {
-  LinkTextComp = shallow(<LinkText headerText={mock.moduleK.composites.headerText} />);
+  LinkTextComp = shallow(<VanillaLinkText headerText={mock.moduleK.composites.headerText} />);
 });
 
 describe('Promo Text Banner component', () => {
