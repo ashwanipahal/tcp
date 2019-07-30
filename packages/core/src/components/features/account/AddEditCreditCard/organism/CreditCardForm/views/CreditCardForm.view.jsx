@@ -44,7 +44,14 @@ export class CreditCardForm extends React.PureComponent {
       title: `${address.firstName} ${address.lastName} ${
         address.primary === 'true' ? '(Default)' : ''
       }`,
-      content: <Address address={address} isDefault={address.primary === 'true'} />,
+      content: (
+        <Address
+          address={address}
+          showCountry={false}
+          showPhone={false}
+          isDefault={address.primary === 'true'}
+        />
+      ),
     }));
 
     addressOptions = addressOptions.push({
