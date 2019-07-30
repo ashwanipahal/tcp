@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Modal from '../../../../common/molecules/Modal';
 import withStyles from '../../../../common/hoc/withStyles';
 import { styles, PlaceHolderView, StyledText } from '../styles/AddedToBag.style.native';
+import BodyCopy from '../../../../common/atoms/BodyCopy';
 
 const AddedToBag = ({ openState, onRequestClose, className }) => {
   return (
@@ -21,7 +22,15 @@ const AddedToBag = ({ openState, onRequestClose, className }) => {
         describedby: 'Added to bag Modal',
       }}
     >
-      <StyledText>ADDED TO BAG</StyledText>
+      <StyledText>
+        <BodyCopy
+          mobilefontFamily={['secondary']}
+          fontWeight="semibold"
+          fontSize="fs16"
+          text="ADDED TO BAG"
+          color="black"
+        />
+      </StyledText>
       {/* Below are place holders for different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
       <PlaceHolderView className="ProductInformationView">
         <Text>ProductInformationView</Text>

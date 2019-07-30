@@ -8,7 +8,6 @@ describe('AddedToBag Component', () => {
     openState: Function,
     onRequestClose: Function,
     className: '',
-    labels: {},
   };
 
   beforeEach(() => {

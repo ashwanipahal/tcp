@@ -10,13 +10,9 @@ export const PlaceHolderView = styled.View`
 `;
 
 export const StyledText = styled.Text`
-  font-family: 'Nunito-SemiBold';
   position: absolute;
   left: 20;
   top: 23;
-  font-size: 16px;
-  font-weight: 600;
-  color: #000000;
 `;
 
 export default { styles, StyledText };

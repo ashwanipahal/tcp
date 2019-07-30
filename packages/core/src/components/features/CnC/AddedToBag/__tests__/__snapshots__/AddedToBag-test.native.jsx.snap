@@ -18,7 +18,17 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
   overlayClassName="TCPModal__Overlay"
 >
   <Styled(Text)>
-    ADDED TO BAG
+    <Styled(BodyCopy)
+      color="black"
+      fontSize="fs16"
+      fontWeight="semibold"
+      mobilefontFamily={
+        Array [
+          "secondary",
+        ]
+      }
+      text="ADDED TO BAG"
+    />
   </Styled(Text)>
   <Styled(View)
     className="ProductInformationView"
