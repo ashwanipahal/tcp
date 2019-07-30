@@ -39,7 +39,7 @@ const AddedToBagViewPoints = ({ pointsSummary, labels }: Props) => {
           text={labels.pointsYouCanEarn}
         />
         <BodyCopy
-          color="yellow.500"
+          color="orange.500"
           fontWeight="extrabold"
           fontFamily="secondary"
           fontSize="fs13"
@@ -63,7 +63,7 @@ const AddedToBagViewPoints = ({ pointsSummary, labels }: Props) => {
           text={labels.totalRewardsInPoints}
         />
         <BodyCopy
-          color="yellow.500"
+          color="orange.500"
           fontWeight="extrabold"
           fontFamily="secondary"
           fontSize="fs13"
@@ -78,7 +78,7 @@ const AddedToBagViewPoints = ({ pointsSummary, labels }: Props) => {
           text={labels.totalNextRewards}
         />
         <BodyCopy
-          color="yellow.500"
+          color="orange.500"
           fontWeight="extrabold"
           fontFamily="secondary"
           fontSize="fs13"
