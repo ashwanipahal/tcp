@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { login, resetLoginInfo } from './LoginPage.actions';
-import { closeOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
+import {
+  closeOverlayModal,
+  openOverlayModal,
+} from '../../../OverlayModal/container/OverlayModal.actions';
 import labels from './LoginPage.labels';
 import {
   getUserLoggedInState,
@@ -27,6 +30,14 @@ class LoginPageContainer extends React.PureComponent {
     }
   }
 
+  onCreateAccountClick = () => {
+    const { openOverlay } = this.props;
+    openOverlay({
+      component: 'createAccount',
+      variation: 'primary',
+    });
+  };
+
   render() {
     const { onSubmit, loginError, loginErrorMessage, showRecaptcha } = this.props;
     const errorMessage = loginError ? loginErrorMessage || labels.ACC_LBL_LOGIN_ERROR : '';
@@ -41,6 +52,7 @@ class LoginPageContainer extends React.PureComponent {
         loginErrorMessage={errorMessage}
         initialValues={initialValues}
         showRecaptcha={showRecaptcha}
+        onCreateAccountClick={this.onCreateAccountClick}
       />
     );
   }
@@ -54,6 +66,7 @@ LoginPageContainer.propTypes = {
   loginError: PropTypes.bool,
   loginErrorMessage: PropTypes.string,
   showRecaptcha: PropTypes.bool,
+  openOverlay: PropTypes.func,
 };
 
 LoginPageContainer.defaultProps = {
@@ -62,6 +75,7 @@ LoginPageContainer.defaultProps = {
   loginErrorMessage: '',
   resetLoginState: () => {},
   closeOverlay: () => {},
+  openOverlay: () => {},
 };
 
 function mapDispatchToProps(dispatch) {
@@ -74,6 +88,9 @@ function mapDispatchToProps(dispatch) {
     },
     closeOverlay: () => {
       dispatch(closeOverlayModal());
+    },
+    openOverlay: payload => {
+      dispatch(openOverlayModal(payload));
     },
   };
 }

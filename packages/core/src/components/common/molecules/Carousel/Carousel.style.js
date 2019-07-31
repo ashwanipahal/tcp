@@ -243,6 +243,7 @@ const CarouselStyle = styled.div`
       }
     }
   }
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
 export default CarouselStyle;

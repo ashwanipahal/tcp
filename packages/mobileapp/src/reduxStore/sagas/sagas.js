@@ -3,6 +3,7 @@ import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
 import LoginPageSaga from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.saga';
 import PaymentSaga from '@tcp/core/src/components/features/account/Payment/container/Payment.saga';
 import DefaultPaymentSaga from '@tcp/core/src/components/features/account/Payment/container/DefaultPayment.saga';
+import AddressBookSaga from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.saga';
 import ProductListingPageSaga from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.saga';
 import AddedToBagSaga from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.saga';
 import CartReducer from '@tcp/core/src/components/features/CnC/Cart/containers/Cart.saga';
@@ -17,6 +18,7 @@ export default function* rootSaga() {
     LoginPageSaga(),
     PaymentSaga(),
     DefaultPaymentSaga(),
+    AddressBookSaga(),
     ProductListingPageSaga(),
     AddedToBagSaga(),
     CartReducer(),

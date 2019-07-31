@@ -8,7 +8,7 @@ import { styles, AddedToBagWrapper } from '../styles/AddedToBag.style.native';
 import AddedToBagViewPoints from '../../AddedToBagViewPoints';
 import AddedToBagActions from '../../AddedToBagActions/views/AddedToBagActions.native';
 
-const AddedToBag = ({ openState, onRequestClose, className, addedToBagData, labels }) => {
+const AddedToBag = ({ openState, onRequestClose, className, addedToBagData, labels, quantity }) => {
   return (
     <Modal
       fixedWidth
@@ -27,7 +27,7 @@ const AddedToBag = ({ openState, onRequestClose, className, addedToBagData, labe
     >
       {/* Below are place holders for different data on added to Bag Modal. Replace <PlaceHolderView> with <View> and use your component within it. */}
       <AddedToBagWrapper>
-        <ProductInformation data={addedToBagData} labels={labels} />
+        <ProductInformation data={addedToBagData} labels={labels} quantity={quantity} />
         <AddedToBagViewPoints labels={labels} />
         <AddedToBagActions labels={labels} />
         <BossBanner labels={labels} />
@@ -42,6 +42,7 @@ AddedToBag.propTypes = {
   className: PropTypes.string.isRequired,
   addedToBagData: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
+  quantity: PropTypes.string.isRequired,
 };
 
 export default withStyles(AddedToBag, styles);
