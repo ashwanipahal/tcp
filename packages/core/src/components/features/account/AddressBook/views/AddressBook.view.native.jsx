@@ -1,11 +1,10 @@
 import React from 'react';
-import { View } from 'react-native';
-import StyledText from '../styles/AddressBook.style';
+import { View, Text } from 'react-native';
 import CustomButton from '../../../../common/atoms/Button';
 import ModalNative from '../../../../common/molecules/Modal';
 import CreateAccount from '../../CreateAccount';
-
-export default class AddressBook extends React.PureComponent<Props> {
+import AddNewAddress from '@tcp/core/src/components/features/account/AddEditAddress/views/AddNewAddress.view.native';
+class AddressBook extends React.PureComponent<Props> {
   constructor() {
     super();
     this.state = { isOpenBool: false };
@@ -18,18 +17,22 @@ export default class AddressBook extends React.PureComponent<Props> {
     });
   };
 
+
+
   render() {
     const { isOpenBool } = this.state;
     return (
       <View>
-        <StyledText>Address Book</StyledText>
-        <CustomButton text="login" buttonVariation="variable-width" onPress={this.openModal} />
+        <Text>Address Book</Text>
+        <CustomButton text="Create Account" buttonVariation="variable-width" onPress={this.openModal} />
         <ModalNative isOpen={isOpenBool} onRequestClose={this.openModal} heading="Create Account">
           <CreateAccount />
         </ModalNative>
+        <AddNewAddress labels={this.props.labels}/>
       </View>
     );
   }
 };
 
 export { AddressBook as AddressBookVanilla };
+export default AddressBook;
