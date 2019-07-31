@@ -38,9 +38,16 @@ const HeaderMiddleNav = props => {
     <React.Fragment>
       <Row className={`${className} header-middle-nav`}>
         <Col
+          colSize={{
+            large: 4,
+            medium: 8,
+            small: 6,
+          }}
+        />
+        <Col
           className="header-middle-nav-search"
           colSize={{
-            large: 7,
+            large: 4,
             medium: 8,
             small: 6,
           }}
@@ -68,11 +75,11 @@ const HeaderMiddleNav = props => {
         </Col>
         <Col
           colSize={{
-            large: 5,
+            large: 4,
             medium: 8,
             small: 6,
           }}
-          className="hide-on-mobile hide-on-tablet textRight"
+          className="hide-on-mobile textRight"
         >
           {userName ? (
             <BodyCopy textAlign="right">{`Hi, ${userName}`}</BodyCopy>
