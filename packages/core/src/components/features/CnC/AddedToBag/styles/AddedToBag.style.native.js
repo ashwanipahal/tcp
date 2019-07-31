@@ -9,4 +9,9 @@ export const PlaceHolderView = styled.View`
   text-align: center;
 `;
 
-export default { styles, PlaceHolderView };
+export const AddedToBagWrapper = styled.View`
+  display: flex;
+  flex: 1;
+`;
+
+export default { styles, PlaceHolderView, AddedToBagWrapper };

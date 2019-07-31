@@ -83,7 +83,6 @@ export {
 };
 
 export default {
-  Carousel: StyledCarousal,
   PromoTextBanner: StyledPromoTextBanner,
   LinkText: StyledLinkText,
   ImageGrid: StyledImageGrid,
