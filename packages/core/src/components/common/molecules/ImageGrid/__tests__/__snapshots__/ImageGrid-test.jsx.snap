@@ -4,13 +4,7 @@ exports[`Image grid component renders correctly 1`] = `
 <div>
   <Styled(Row)
     className="image-grid"
-    fullBlead={
-      Object {
-        "large": true,
-        "medium": false,
-        "small": false,
-      }
-    }
+    fullBleed={true}
   >
     <Styled(Col)
       className="image-col"
