@@ -3,6 +3,8 @@ import withStyles from '../../../hoc/withStyles.native';
 import BodyCopy from '../../BodyCopy';
 import { BadgeStyles, BadgeView, DefaultBadgeView } from '../Badge.style.native';
 
+// @flow
+
 type Props = {
   children: string,
   showCheckmark: boolean,
