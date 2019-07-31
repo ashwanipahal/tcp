@@ -1,23 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LoginForm component should renders correctly 1`] = `
-<form
+<div
   className="test-class"
-  name="LoginForm"
-  noValidate={true}
-  onSubmit={[Function]}
 >
-  <Styled(BodyCopy)
-    className="elem-mb-LRG"
-    color="text.primary"
-    component="div"
-    fontFamily="primary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="left"
+  <form
+    className="test-class"
+    name="LoginForm"
+    noValidate={true}
+    onSubmit={[Function]}
   >
+<<<<<<< HEAD
     <Field
       component={
         Object {
@@ -28,67 +21,90 @@ exports[`LoginForm component should renders correctly 1`] = `
             "isStatic": false,
             "rules": Array [
               "
+=======
+    <Styled(BodyCopy)
+      className="elem-mb-LRG"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-htpNat",
+              "isStatic": false,
+              "rules": Array [
+                "
+>>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
   ",
-              "
+                "
   position: relative;
   display: block;
 
   .TextBox__label {
     font-size: ",
-              [Function],
-              "px;
+                [Function],
+                "px;
     padding: 0;
     position: absolute;
     top: ",
-              [Function],
-              ";
+                [Function],
+                ";
     ",
-              [Function],
-              "
+                [Function],
+                "
   }
 
   .TextBox__input {
     margin: 0;
     outline: 0;
     font-size: ",
-              [Function],
-              "px;
+                [Function],
+                "px;
     color: ",
-              [Function],
-              ";
+                [Function],
+                ";
     width: 100%;
     background-position: left top;
     background-repeat: no-repeat;
     background-size: contain;
     border: 0 solid transparent;
     border-bottom: 1px solid ",
-              [Function],
-              ";
+                [Function],
+                ";
     padding-bottom: ",
-              [Function],
-              ";
+                [Function],
+                ";
     margin-bottom: ",
-              [Function],
-              ";
+                [Function],
+                ";
     padding-top: ",
-              [Function],
-              ";
+                [Function],
+                ";
 
     ",
-              [Function],
-              "
+                [Function],
+                "
 
     ",
-              [Function],
-              ";
+                [Function],
+                ";
 
     &:focus + .TextBox__label {
       font-size: ",
-              [Function],
-              "px;
+                [Function],
+                "px;
       font-weight: ",
-              [Function],
-              ";
+                [Function],
+                ";
       top: 0;
     }
   }
@@ -97,8 +113,8 @@ exports[`LoginForm component should renders correctly 1`] = `
   }
   &.textbox_validation_success .TextBox__input {
     border-bottom: 1px solid ",
-              [Function],
-              ";
+                [Function],
+                ";
   }
 
   &.textbox_validation_success .success__checkmark {
@@ -106,8 +122,8 @@ exports[`LoginForm component should renders correctly 1`] = `
     width: 15px;
     height: 8px;
     margin-left: ",
-              [Function],
-              ";
+                [Function],
+                ";
     transform: rotate(-45deg);
     transform-origin: left;
     position: absolute;
@@ -120,8 +136,8 @@ exports[`LoginForm component should renders correctly 1`] = `
       width: 3px;
       height: 100%;
       background-color: ",
-              [Function],
-              ";
+                [Function],
+                ";
     }
 
     &:after {
@@ -130,13 +146,14 @@ exports[`LoginForm component should renders correctly 1`] = `
       width: 100%;
       height: 3px;
       background-color: ",
-              [Function],
-              ";
+                [Function],
+                ";
       bottom: 0;
     }
   }
 
   ",
+<<<<<<< HEAD
               [Function],
               ";
 ",
@@ -178,20 +195,26 @@ exports[`LoginForm component should renders correctly 1`] = `
     right: 0;
     top: 12px;
   }
+=======
+                [Function],
+                ";
+>>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
 ",
-              ";
+                ";
 ",
-            ],
-          },
-          "displayName": "Styled(PasswordField)",
-          "foldedComponentIds": Array [],
-          "render": [Function],
-          "styledComponentId": "sc-dnqmqq",
-          "target": [Function],
-          "toString": [Function],
-          "warnTooManyClasses": [Function],
-          "withComponent": [Function],
+              ],
+            },
+            "displayName": "Styled(TextBox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-htpNat",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
         }
+<<<<<<< HEAD
       }
       dataLocator=""
       id="password"
@@ -209,95 +232,50 @@ exports[`LoginForm component should renders correctly 1`] = `
       lineHeight="normal"
       textAlign="left"
     >
+=======
+        dataLocator=""
+        enableSuccessCheck={false}
+        id="emailAddress"
+        name="emailAddress"
+      />
+>>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
       <Field
-        className=""
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
+<<<<<<< HEAD
               "componentId": "sc-ifAKCX",
               "isStatic": false,
+=======
+              "componentId": "sc-dnqmqq",
+              "isStatic": true,
+>>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
               "rules": Array [
                 "
   ",
                 "
-  display: inline-flex;
-  align-items: center;
-  height: 50px;
+  position: relative;
 
-  & .CheckBox__input {
-    position: relative;
-    top: 0;
-    appearance: none;
-    outline: 0;
-    border: 0;
-    height: 25px;
-    width: 25px;
-    margin: 0;
-    margin-right: ",
-                [Function],
-                ";
-  }
-
-  & .CheckBox__input:before {
-    content: '';
+  a {
     position: absolute;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    border: 1px solid ",
-                [Function],
-                ";
-  }
-
-  & .CheckBox__input:checked:before {
-    background: ",
-                [Function],
-                ";
-    border: 1px solid ",
-                [Function],
-                ";
-  }
-
-  & .CheckBox__input:checked:after {
-    transform: rotate(225deg);
-    content: '';
-    border: 2px solid ",
-                [Function],
-                ";
-    font-size: ",
-                [Function],
-                "px;
-    width: ",
-                [Function],
-                ";
-    height: 10px;
-    border-right: 0;
-    border-bottom: 0;
-    left: 10px;
-    top: 5px;
-    position: absolute;
-  }
-
-  & .CheckBox__text {
-    width: calc(100% - 25px);
-  }
-
-  & .disabled {
-    opacity: ",
-                [Function],
-                ";
+    right: 0;
+    top: 12px;
   }
 ",
                 ";
 ",
               ],
             },
-            "displayName": "Styled(InputCheckbox)",
+            "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
+<<<<<<< HEAD
             "styledComponentId": "sc-ifAKCX",
+=======
+            "styledComponentId": "sc-dnqmqq",
+>>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -305,8 +283,11 @@ exports[`LoginForm component should renders correctly 1`] = `
           }
         }
         dataLocator=""
-        name="rememberMe"
+        enableSuccessCheck={false}
+        id="password"
+        name="password"
       />
+<<<<<<< HEAD
     </Styled(BodyCopy)>
     <Styled(BodyCopy)
       className={null}
@@ -329,8 +310,32 @@ exports[`LoginForm component should renders correctly 1`] = `
               "isStatic": false,
               "rules": Array [
                 "
+=======
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <Field
+          className=""
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-bxivhb",
+                "isStatic": false,
+                "rules": Array [
+                  "
+>>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
   ",
-                "
+                  "
   display: inline-flex;
   align-items: center;
   height: 50px;
@@ -345,8 +350,8 @@ exports[`LoginForm component should renders correctly 1`] = `
     width: 25px;
     margin: 0;
     margin-right: ",
-                [Function],
-                ";
+                  [Function],
+                  ";
   }
 
   & .CheckBox__input:before {
@@ -356,31 +361,31 @@ exports[`LoginForm component should renders correctly 1`] = `
     width: 100%;
     left: 0;
     border: 1px solid ",
-                [Function],
-                ";
+                  [Function],
+                  ";
   }
 
   & .CheckBox__input:checked:before {
     background: ",
-                [Function],
-                ";
+                  [Function],
+                  ";
     border: 1px solid ",
-                [Function],
-                ";
+                  [Function],
+                  ";
   }
 
   & .CheckBox__input:checked:after {
     transform: rotate(225deg);
     content: '';
     border: 2px solid ",
-                [Function],
-                ";
+                  [Function],
+                  ";
     font-size: ",
-                [Function],
-                "px;
+                  [Function],
+                  "px;
     width: ",
-                [Function],
-                ";
+                  [Function],
+                  ";
     height: 10px;
     border-right: 0;
     border-bottom: 0;
@@ -395,12 +400,13 @@ exports[`LoginForm component should renders correctly 1`] = `
 
   & .disabled {
     opacity: ",
-                [Function],
-                ";
+                  [Function],
+                  ";
   }
 ",
-                ";
+                  ";
 ",
+<<<<<<< HEAD
               ],
             },
             "displayName": "Styled(InputCheckbox)",
@@ -411,14 +417,38 @@ exports[`LoginForm component should renders correctly 1`] = `
             "toString": [Function],
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
+=======
+                ],
+              },
+              "displayName": "Styled(InputCheckbox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-bxivhb",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+>>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
           }
-        }
-        dataLocator=""
-        name="savePlcc"
+          dataLocator=""
+          name="rememberMe"
+        />
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
       />
     </Styled(BodyCopy)>
     <Styled(BodyCopy)
-      className={null}
+      className="elem-mb-LRG"
       color="text.primary"
       component="div"
       fontFamily="primary"
@@ -426,6 +456,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+<<<<<<< HEAD
       textAlign="left"
     />
   </Styled(BodyCopy)>
@@ -458,40 +489,70 @@ exports[`LoginForm component should renders correctly 1`] = `
     />
   </Styled(BodyCopy)>
 </form>
+=======
+      textAlign="center"
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        className="elem-mb-XS"
+        data-locator=""
+        fill="BLUE"
+        fullWidth={true}
+        type="submit"
+      />
+      <Styled(Anchor)
+        to="/"
+      />
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="border elem-pt-LRG elem-pl-MED elem-pr-MED"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      <Styled(BodyCopy)
+        className="elem-mb-LRG"
+        color="text.primary"
+        component="p"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="center"
+      />
+    </Styled(BodyCopy)>
+  </form>
+  <Styled(Button)
+    buttonVariation="fixed-width"
+    fill="BLUE"
+    fullWidth={true}
+    onClick={[Function]}
+    type="button"
+  />
+</div>
+>>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
 `;
 
 exports[`LoginForm component should renders correctly with error 1`] = `
-<form
+<div
   className="test-class"
-  name="LoginForm"
-  noValidate={true}
-  onSubmit={[Function]}
 >
-  <Styled(Notification)
-    colSize={
-      Object {
-        "large": 12,
-        "medium": 8,
-        "small": 6,
-      }
-    }
-    message="test errror"
-    status="error"
-  />
-  <Styled(BodyCopy)
-    className="elem-mb-LRG"
-    color="text.primary"
-    component="div"
-    fontFamily="primary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="left"
+  <form
+    className="test-class"
+    name="LoginForm"
+    noValidate={true}
+    onSubmit={[Function]}
   >
-    <Field
-      component={
+    <Styled(Notification)
+      colSize={
         Object {
+<<<<<<< HEAD
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
@@ -499,67 +560,98 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "isStatic": false,
             "rules": Array [
               "
+=======
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+      message="test errror"
+      status="error"
+    />
+    <Styled(BodyCopy)
+      className="elem-mb-LRG"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      <Field
+        component={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-htpNat",
+              "isStatic": false,
+              "rules": Array [
+                "
+>>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
   ",
-              "
+                "
   position: relative;
   display: block;
 
   .TextBox__label {
     font-size: ",
-              [Function],
-              "px;
+                [Function],
+                "px;
     padding: 0;
     position: absolute;
     top: ",
-              [Function],
-              ";
+                [Function],
+                ";
     ",
-              [Function],
-              "
+                [Function],
+                "
   }
 
   .TextBox__input {
     margin: 0;
     outline: 0;
     font-size: ",
-              [Function],
-              "px;
+                [Function],
+                "px;
     color: ",
-              [Function],
-              ";
+                [Function],
+                ";
     width: 100%;
     background-position: left top;
     background-repeat: no-repeat;
     background-size: contain;
     border: 0 solid transparent;
     border-bottom: 1px solid ",
-              [Function],
-              ";
+                [Function],
+                ";
     padding-bottom: ",
-              [Function],
-              ";
+                [Function],
+                ";
     margin-bottom: ",
-              [Function],
-              ";
+                [Function],
+                ";
     padding-top: ",
-              [Function],
-              ";
+                [Function],
+                ";
 
     ",
-              [Function],
-              "
+                [Function],
+                "
 
     ",
-              [Function],
-              ";
+                [Function],
+                ";
 
     &:focus + .TextBox__label {
       font-size: ",
-              [Function],
-              "px;
+                [Function],
+                "px;
       font-weight: ",
-              [Function],
-              ";
+                [Function],
+                ";
       top: 0;
     }
   }
@@ -568,8 +660,8 @@ exports[`LoginForm component should renders correctly with error 1`] = `
   }
   &.textbox_validation_success .TextBox__input {
     border-bottom: 1px solid ",
-              [Function],
-              ";
+                [Function],
+                ";
   }
 
   &.textbox_validation_success .success__checkmark {
@@ -577,8 +669,8 @@ exports[`LoginForm component should renders correctly with error 1`] = `
     width: 15px;
     height: 8px;
     margin-left: ",
-              [Function],
-              ";
+                [Function],
+                ";
     transform: rotate(-45deg);
     transform-origin: left;
     position: absolute;
@@ -591,8 +683,8 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       width: 3px;
       height: 100%;
       background-color: ",
-              [Function],
-              ";
+                [Function],
+                ";
     }
 
     &:after {
@@ -601,13 +693,14 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       width: 100%;
       height: 3px;
       background-color: ",
-              [Function],
-              ";
+                [Function],
+                ";
       bottom: 0;
     }
   }
 
   ",
+<<<<<<< HEAD
               [Function],
               ";
 ",
@@ -649,20 +742,26 @@ exports[`LoginForm component should renders correctly with error 1`] = `
     right: 0;
     top: 12px;
   }
+=======
+                [Function],
+                ";
+>>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
 ",
-              ";
+                ";
 ",
-            ],
-          },
-          "displayName": "Styled(PasswordField)",
-          "foldedComponentIds": Array [],
-          "render": [Function],
-          "styledComponentId": "sc-dnqmqq",
-          "target": [Function],
-          "toString": [Function],
-          "warnTooManyClasses": [Function],
-          "withComponent": [Function],
+              ],
+            },
+            "displayName": "Styled(TextBox)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-htpNat",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
         }
+<<<<<<< HEAD
       }
       dataLocator=""
       id="password"
@@ -680,95 +779,50 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       lineHeight="normal"
       textAlign="left"
     >
+=======
+        dataLocator=""
+        enableSuccessCheck={false}
+        id="emailAddress"
+        name="emailAddress"
+      />
+>>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
       <Field
-        className=""
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
+<<<<<<< HEAD
               "componentId": "sc-ifAKCX",
               "isStatic": false,
+=======
+              "componentId": "sc-dnqmqq",
+              "isStatic": true,
+>>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
               "rules": Array [
                 "
   ",
                 "
-  display: inline-flex;
-  align-items: center;
-  height: 50px;
+  position: relative;
 
-  & .CheckBox__input {
-    position: relative;
-    top: 0;
-    appearance: none;
-    outline: 0;
-    border: 0;
-    height: 25px;
-    width: 25px;
-    margin: 0;
-    margin-right: ",
-                [Function],
-                ";
-  }
-
-  & .CheckBox__input:before {
-    content: '';
+  a {
     position: absolute;
-    height: 100%;
-    width: 100%;
-    left: 0;
-    border: 1px solid ",
-                [Function],
-                ";
-  }
-
-  & .CheckBox__input:checked:before {
-    background: ",
-                [Function],
-                ";
-    border: 1px solid ",
-                [Function],
-                ";
-  }
-
-  & .CheckBox__input:checked:after {
-    transform: rotate(225deg);
-    content: '';
-    border: 2px solid ",
-                [Function],
-                ";
-    font-size: ",
-                [Function],
-                "px;
-    width: ",
-                [Function],
-                ";
-    height: 10px;
-    border-right: 0;
-    border-bottom: 0;
-    left: 10px;
-    top: 5px;
-    position: absolute;
-  }
-
-  & .CheckBox__text {
-    width: calc(100% - 25px);
-  }
-
-  & .disabled {
-    opacity: ",
-                [Function],
-                ";
+    right: 0;
+    top: 12px;
   }
 ",
                 ";
 ",
               ],
             },
-            "displayName": "Styled(InputCheckbox)",
+            "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
+<<<<<<< HEAD
             "styledComponentId": "sc-ifAKCX",
+=======
+            "styledComponentId": "sc-dnqmqq",
+>>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -776,8 +830,11 @@ exports[`LoginForm component should renders correctly with error 1`] = `
           }
         }
         dataLocator=""
-        name="rememberMe"
+        enableSuccessCheck={false}
+        id="password"
+        name="password"
       />
+<<<<<<< HEAD
     </Styled(BodyCopy)>
     <Styled(BodyCopy)
       className={null}
@@ -800,8 +857,32 @@ exports[`LoginForm component should renders correctly with error 1`] = `
               "isStatic": false,
               "rules": Array [
                 "
+=======
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <Field
+          className=""
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-bxivhb",
+                "isStatic": false,
+                "rules": Array [
+                  "
+>>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
   ",
-                "
+                  "
   display: inline-flex;
   align-items: center;
   height: 50px;
@@ -816,8 +897,8 @@ exports[`LoginForm component should renders correctly with error 1`] = `
     width: 25px;
     margin: 0;
     margin-right: ",
-                [Function],
-                ";
+                  [Function],
+                  ";
   }
 
   & .CheckBox__input:before {
@@ -827,31 +908,31 @@ exports[`LoginForm component should renders correctly with error 1`] = `
     width: 100%;
     left: 0;
     border: 1px solid ",
-                [Function],
-                ";
+                  [Function],
+                  ";
   }
 
   & .CheckBox__input:checked:before {
     background: ",
-                [Function],
-                ";
+                  [Function],
+                  ";
     border: 1px solid ",
-                [Function],
-                ";
+                  [Function],
+                  ";
   }
 
   & .CheckBox__input:checked:after {
     transform: rotate(225deg);
     content: '';
     border: 2px solid ",
-                [Function],
-                ";
+                  [Function],
+                  ";
     font-size: ",
-                [Function],
-                "px;
+                  [Function],
+                  "px;
     width: ",
-                [Function],
-                ";
+                  [Function],
+                  ";
     height: 10px;
     border-right: 0;
     border-bottom: 0;
@@ -866,12 +947,13 @@ exports[`LoginForm component should renders correctly with error 1`] = `
 
   & .disabled {
     opacity: ",
-                [Function],
-                ";
+                  [Function],
+                  ";
   }
 ",
-                ";
+                  ";
 ",
+<<<<<<< HEAD
               ],
             },
             "displayName": "Styled(InputCheckbox)",
@@ -882,14 +964,38 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "toString": [Function],
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
+=======
+                ],
+              },
+              "displayName": "Styled(InputCheckbox)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-bxivhb",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+>>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
           }
-        }
-        dataLocator=""
-        name="savePlcc"
+          dataLocator=""
+          name="rememberMe"
+        />
+      </Styled(BodyCopy)>
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="div"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
       />
     </Styled(BodyCopy)>
     <Styled(BodyCopy)
-      className={null}
+      className="elem-mb-LRG"
       color="text.primary"
       component="div"
       fontFamily="primary"
@@ -897,6 +1003,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
+<<<<<<< HEAD
       textAlign="left"
     />
   </Styled(BodyCopy)>
@@ -929,4 +1036,52 @@ exports[`LoginForm component should renders correctly with error 1`] = `
     />
   </Styled(BodyCopy)>
 </form>
+=======
+      textAlign="center"
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        className="elem-mb-XS"
+        data-locator=""
+        fill="BLUE"
+        fullWidth={true}
+        type="submit"
+      />
+      <Styled(Anchor)
+        to="/"
+      />
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="border elem-pt-LRG elem-pl-MED elem-pr-MED"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      <Styled(BodyCopy)
+        className="elem-mb-LRG"
+        color="text.primary"
+        component="p"
+        fontFamily="primary"
+        fontSize={12}
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="center"
+      />
+    </Styled(BodyCopy)>
+  </form>
+  <Styled(Button)
+    buttonVariation="fixed-width"
+    fill="BLUE"
+    fullWidth={true}
+    onClick={[Function]}
+    type="button"
+  />
+</div>
+>>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
 `;

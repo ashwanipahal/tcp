@@ -18,7 +18,6 @@ const StyledModal = css`
     background-color: ${props => props.theme.colorPalette.white};
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
     width: 100%;
-    height: 100%;
     overflow-y: auto;
   }
   .modal__bar {

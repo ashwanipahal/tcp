@@ -14,6 +14,7 @@ const LoginView = ({
   successFullResetEmail,
   resetForm,
   resetForgotPasswordErrorResponse,
+  onCreateAccountClick,
 }) => {
   return (
     <LoginSection
@@ -28,6 +29,7 @@ const LoginView = ({
       successFullResetEmail={successFullResetEmail}
       resetForm={resetForm}
       resetForgotPasswordErrorResponse={resetForgotPasswordErrorResponse}
+      onCreateAccountClick={onCreateAccountClick}
     />
   );
 };
@@ -44,11 +46,13 @@ LoginView.propTypes = {
   SubmitForgot: PropTypes.bool.isRequired,
   showNotification: PropTypes.bool.isRequired,
   successFullResetEmail: PropTypes.bool.isRequired,
+  onCreateAccountClick: PropTypes.func,
 };
 
 LoginView.defaultProps = {
   loginErrorMessage: '',
   showRecaptcha: false,
+  onCreateAccountClick: () => {},
 };
 
 export default LoginView;

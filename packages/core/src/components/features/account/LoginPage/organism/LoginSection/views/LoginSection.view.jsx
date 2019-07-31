@@ -41,6 +41,7 @@ class LoginSection extends React.PureComponent<Props> {
       resetForm,
       resetForgotPasswordErrorResponse,
       className,
+      onCreateAccountClick
     } = this.props;
 
     const { resetPassword } = this.state;
@@ -65,6 +66,7 @@ class LoginSection extends React.PureComponent<Props> {
               showForgotPasswordForm={this.showForgotPasswordForm}
               resetForm={resetForm}
               className="elem-mb-LRG"
+              onCreateAccountClick={onCreateAccountClick}
             />
           )}
 
@@ -109,11 +111,13 @@ LoginSection.propTypes = {
   loginErrorMessage: PropTypes.string,
   initialValues: PropTypes.shape({}).isRequired,
   showRecaptcha: PropTypes.bool,
+  onCreateAccountClick: PropTypes.func,
 };
 
 LoginSection.defaultProps = {
   loginErrorMessage: '',
   showRecaptcha: false,
+  onCreateAccountClick: () => {},
 };
 
 export default withStyles(LoginSection, styles);
