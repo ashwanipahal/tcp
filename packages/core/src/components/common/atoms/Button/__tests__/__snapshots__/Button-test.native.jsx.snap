@@ -4,6 +4,7 @@ exports[`CustomButton should render correctly 1`] = `
 <TouchableOpacity
   accessibilityRole="button"
   activeOpacity={0.2}
+  style={Object {}}
 >
   <Text
     buttonVariation="fixed-width"

@@ -1,34 +1,31 @@
-/**
- * These are temporary changes for a dummy login page
- */
-
 import React from 'react';
 import PropTypes from 'prop-types';
-import LoginSection from '../organism/LoginSection';
-import ScrollViewStyle from '../styles/LoginPage.style.native';
+import LoginForm from '../../../molecules/LoginForm';
+import LoginTopSection from '../../../molecules/LoginTopSection';
 
-const LoginView = ({ onSubmit, labels, loginErrorMessage, initialValues }) => {
+const LoginSection = ({ onSubmit, labels, loginErrorMessage, initialValues }) => {
   return (
-    <ScrollViewStyle>
-      <LoginSection
+    <React.Fragment>
+      <LoginTopSection labels={labels} />
+      <LoginForm
         onSubmit={onSubmit}
         labels={labels}
         loginErrorMessage={loginErrorMessage}
         initialValues={initialValues}
       />
-    </ScrollViewStyle>
+    </React.Fragment>
   );
 };
 
-LoginView.propTypes = {
+LoginSection.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   labels: PropTypes.shape({}).isRequired,
   loginErrorMessage: PropTypes.string,
   initialValues: PropTypes.shape({}).isRequired,
 };
 
-LoginView.defaultProps = {
+LoginSection.defaultProps = {
   loginErrorMessage: '',
 };
 
-export default LoginView;
+export default LoginSection;

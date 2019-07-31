@@ -9,17 +9,20 @@ type Props = {
   anchorVariation?: string,
   text?: string,
   visible?: boolean,
+  customStyle?: Object,
 };
 
 const Icon = require('../../../../../assets/carrot-small-rights.png');
 
-const Anchor = ({ anchorVariation, text, visible, ...otherProps }: Props) => {
+const Anchor = ({ anchorVariation, text, visible, customStyle, ...otherProps }: Props) => {
   const { url, external, navigation, onPress } = otherProps;
 
   const openUrlInExternalBrowser = onPress || (() => UrlHandler(url));
-  const openUrl = external ? openUrlInExternalBrowser : () => navigateToPage(url, navigation);
+  const openUrl = external
+    ? openUrlInExternalBrowser
+    : () => (navigation ? navigateToPage(url, navigation) : () => {});
   return (
-    <AnchorView accessibilityRole="button" onPress={openUrl}>
+    <AnchorView accessibilityRole="button" onPress={openUrl} style={customStyle}>
       <Text anchorVariation={anchorVariation} {...otherProps}>
         {text}
       </Text>
@@ -31,6 +34,7 @@ Anchor.defaultProps = {
   anchorVariation: '',
   text: '',
   visible: false,
+  customStyle: {},
 };
 
 export default withStyles(Anchor, AnchorStyles);
