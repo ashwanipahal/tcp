@@ -65,7 +65,7 @@ Recaptcha.propTypes = {
 Recaptcha.defaultProps = {
   onMessage: () => {},
   url: 'https://www.childrensplace.com',
-  style: null,
+  style: {},
   siteKey: '6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8',
 };
 

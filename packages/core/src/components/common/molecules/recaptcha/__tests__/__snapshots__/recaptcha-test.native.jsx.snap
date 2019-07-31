@@ -70,6 +70,6 @@ exports[`Recaptcha should render correctly 1`] = `
           </html>",
     }
   }
-  style={null}
+  style={Object {}}
 />
 `;
