@@ -1,4 +1,7 @@
 import { getOrderDetailsData, flatCurrencyToCents } from '../CartItemTile';
+
+jest.mock('../../../handler/handler');
+
 // TODO - Include more test cases
 describe('#getOrderPointSummary', () => {
   it('should return valid response', () => {
@@ -7,6 +10,6 @@ describe('#getOrderPointSummary', () => {
   });
   it('should return valid currency', () => {
     const resultType = flatCurrencyToCents(123);
-    expect(resultType).toEqual('123.00');
+    expect(resultType).toEqual(123);
   });
 });

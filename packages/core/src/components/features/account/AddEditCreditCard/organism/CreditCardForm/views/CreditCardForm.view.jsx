@@ -10,7 +10,7 @@ import Button from '../../../../../../common/atoms/Button';
 import constants from '../../../container/AddEditCreditCard.constants';
 import CreditCardFields from '../../../molecule/CreditCardFields';
 import { Heading } from '../../../../../../common/atoms';
-import Select from '../../../../../../common/atoms/Select';
+import AddressDropdown from '../../../molecule/AddressDropdown';
 import AddressFields from '../../../../common/molecule/AddressFields';
 import Address from '../../../../../../common/molecules/Address';
 import styles from '../styles/CreditCardForm.style';
@@ -25,6 +25,7 @@ export class CreditCardForm extends React.PureComponent {
     isEdit: PropTypes.bool,
     backToPaymentClick: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,
+    invalid: PropTypes.bool.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
     initialValues: PropTypes.shape({}).isRequired,
@@ -37,18 +38,33 @@ export class CreditCardForm extends React.PureComponent {
   };
 
   getAddressOptions = () => {
-    const { addressList } = this.props;
-    const addressOptions = addressList.map(address => ({
-      id: address.addressId,
-      displayName: `${address.firstName} ${address.lastName} ${
+    const { addressList, labels } = this.props;
+    let addressOptions = addressList.map(address => ({
+      value: address.addressId,
+      title: `${address.firstName} ${address.lastName} ${
         address.primary === 'true' ? '(Default)' : ''
       }`,
+      content: (
+        <Address
+          address={address}
+          showCountry={false}
+          showPhone={false}
+          isDefault={address.primary === 'true'}
+        />
+      ),
     }));
 
-    return addressOptions.push({
-      id: '',
-      displayName: '+ Add New Address',
+    addressOptions = addressOptions.push({
+      value: '',
+      title: labels.ACC_LBL_ADD_NEW_ADD_CTA,
+      content: (
+        <Button fullWidth buttonVariation="variable-width" fill="BLUE">
+          {labels.ACC_LBL_ADD_NEW_ADD_CTA}
+        </Button>
+      ),
     });
+
+    return addressOptions;
   };
 
   getSelectedAddress = (addressList, onFileAddresskey) => {
@@ -65,6 +81,7 @@ export class CreditCardForm extends React.PureComponent {
       isEdit,
       backToPaymentClick,
       pristine,
+      invalid,
       handleSubmit,
       dispatch,
       initialValues,
@@ -73,28 +90,29 @@ export class CreditCardForm extends React.PureComponent {
     return (
       <form name={constants.FORM_NAME} noValidate onSubmit={handleSubmit} className={className}>
         <CreditCardFields {...this.props} />
+        <Heading
+          component="h3"
+          variant="listMenu"
+          className="addressDropdownHeading"
+          dataLocator="payment-bilingaddresslabel"
+        >
+          {labels.ACC_LBL_CC_HEADING}
+        </Heading>
         {addressList && addressList.size > 0 && (
-          <Row fullBleed>
+          <Row fullBleed className="elem-mb-XL">
             <Col
               colSize={{
                 large: 6,
                 small: 6,
                 medium: 4,
               }}
+              className="creditCardForm__addressBook"
             >
-              <Heading
-                component="h3"
-                variant="listMenu"
-                className="addressDropdownHeading"
-                dataLocator="payment-bilingaddresslabel"
-              >
-                {labels.ACC_LBL_CC_HEADING}
-              </Heading>
               <Field
-                placeholder={labels.ACC_LBL_CC_ADDRESS_SELECT}
+                selectListTitle={labels.ACC_LBL_CC_ADDRESS_SELECT}
                 name="onFileAddressKey"
                 id="onFileAddressKey"
-                component={Select}
+                component={AddressDropdown}
                 dataLocator="payment-billingaddressdd"
                 options={this.getAddressOptions()}
               />
@@ -120,16 +138,18 @@ export class CreditCardForm extends React.PureComponent {
         )}
 
         {showAddressForm && (
-          <FormSection name="address">
-            <AddressFields
-              labels={addressLabels}
-              showDefaultCheckbox={false}
-              showPhoneNumber={false}
-              formName={constants.FORM_NAME}
-              formSection="address"
-              dispatch={dispatch}
-            />
-          </FormSection>
+          <div className="elem-mb-XL">
+            <FormSection name="address">
+              <AddressFields
+                labels={addressLabels}
+                showDefaultCheckbox={false}
+                showPhoneNumber={false}
+                formName={constants.FORM_NAME}
+                formSection="address"
+                dispatch={dispatch}
+              />
+            </FormSection>
+          </div>
         )}
         <Row fullBleed className="CreditCardForm__ctaContainer">
           <Col
@@ -153,7 +173,7 @@ export class CreditCardForm extends React.PureComponent {
           >
             <Button
               fill="BLUE"
-              disabled={!isEdit && pristine}
+              disabled={invalid}
               type="submit"
               buttonVariation="fixed-width"
               data-locator="payment-addcardbtn"

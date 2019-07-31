@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OverlayModal View should render correctly 1`] = `
+<Styled(OverlayModal)
+  ModalContent={[Function]}
+  closeOverlay={[Function]}
+  color={null}
+  component="login"
+  openState={true}
+  variation="primary"
+/>
+`;
+
+exports[`OverlayModal View should render null 1`] = `""`;

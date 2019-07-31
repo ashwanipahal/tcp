@@ -41,5 +41,6 @@ const ModalStyle = css`
       display: none;
     }
   }
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 export default ModalStyle;

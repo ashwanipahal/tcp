@@ -100,9 +100,9 @@
     ],
     "*.{js,jsx}": [
       "eslint",
+      "stylelint",
       "yarn test:staged",
-      "yarn test:app:staged",
-      "stylelint"
+      "yarn test:app:staged"
     ],
     "*.css": "stylelint"
   },

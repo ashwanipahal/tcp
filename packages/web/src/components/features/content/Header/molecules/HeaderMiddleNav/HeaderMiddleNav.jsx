@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col, Row, Image } from '@tcp/core/src/components/common/atoms';
+import { Col, Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import navMock from '@tcp/core/src/services/abstractors/bootstrap/navigation/mock';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { identifyBrand } from '@tcp/core/src/utils';
@@ -16,8 +16,23 @@ const handleNavigationDrawer = (openNavigationDrawer, closeNavigationDrawer, isO
   return isOpen ? closeNavigationDrawer() : openNavigationDrawer();
 };
 
+const onLinkClick = ({ e, openOverlay }) => {
+  e.preventDefault();
+  openOverlay({
+    component: e.target.id,
+    variation: 'primary',
+  });
+};
+
 const HeaderMiddleNav = props => {
-  const { className, openNavigationDrawer, closeNavigationDrawer, navigationDrawer } = props;
+  const {
+    className,
+    openNavigationDrawer,
+    closeNavigationDrawer,
+    navigationDrawer,
+    openOverlay,
+    userName,
+  } = props;
 
   return (
     <React.Fragment>
@@ -25,7 +40,7 @@ const HeaderMiddleNav = props => {
         <Col
           className="header-middle-nav-search"
           colSize={{
-            large: 12,
+            large: 7,
             medium: 8,
             small: 6,
           }}
@@ -50,6 +65,41 @@ const HeaderMiddleNav = props => {
             dataLocator={config[brand].dataLocator}
             imgSrc={config[brand].imgSrc}
           />
+        </Col>
+        <Col
+          colSize={{
+            large: 5,
+            medium: 8,
+            small: 6,
+          }}
+          className="hide-on-mobile hide-on-tablet textRight"
+        >
+          {userName ? (
+            <BodyCopy textAlign="right">{`Hi, ${userName}`}</BodyCopy>
+          ) : (
+            <React.Fragment>
+              <Anchor
+                href="#"
+                id="createAccount"
+                className="leftLink"
+                onClick={e => onLinkClick({ e, openOverlay })}
+                fontSizeVariation="small"
+                anchorVariation="primary"
+              >
+                Create Account
+              </Anchor>
+              <Anchor
+                href="#"
+                id="login"
+                className="rightLink "
+                onClick={e => onLinkClick({ e, openOverlay })}
+                fontSizeVariation="small"
+                anchorVariation="primary"
+              >
+                Login
+              </Anchor>
+            </React.Fragment>
+          )}
         </Col>
       </Row>
       <Row
@@ -78,6 +128,8 @@ HeaderMiddleNav.propTypes = {
   navigationDrawer: PropTypes.shape({}),
   openNavigationDrawer: PropTypes.func.isRequired,
   closeNavigationDrawer: PropTypes.func.isRequired,
+  userName: PropTypes.string.isRequired,
+  openOverlay: PropTypes.func.isRequired,
 };
 
 HeaderMiddleNav.defaultProps = {

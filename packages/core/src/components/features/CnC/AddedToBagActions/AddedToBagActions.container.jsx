@@ -20,7 +20,6 @@ AddedToBagContainer.propTypes = {
 
 const mapStateToDispatch = (state, ownProps) => {
   return {
-    loginInfo: state.LoginPageReducer.loginInfo,
     componentProps: ownProps,
   };
 };
