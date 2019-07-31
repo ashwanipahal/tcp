@@ -74,7 +74,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             tag="span"
             textAlign="left"
           >
-            abc
+            Boys Basic Skinny Jeans
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
@@ -110,8 +110,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             tag="span"
             textAlign="left"
           >
-            abc
-            :
+            Color: 
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -173,8 +172,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             tag="span"
             textAlign="left"
           >
-            def
-            :
+            Size: 
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -238,7 +236,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             tag="span"
             textAlign="left"
           >
-            xyz
+            Qty
             :
           </Styled(BodyCopy)>
         </Styled(Col)>

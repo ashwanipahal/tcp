@@ -43,7 +43,7 @@ export const CreditCardFields = ({
             isPLCCEnabled={isPLCCEnabled}
             cardType={cardType}
             className="field"
-            showSuccessCheck={false}
+            enableSuccessCheck={false}
           />
         </Col>
       </Row>
@@ -68,7 +68,7 @@ export const CreditCardFields = ({
             dataLocator="payment-expmonthdd"
             options={expMonthOptionsMap}
             className="field"
-            showSuccessCheck={false}
+            enableSuccessCheck={false}
           />
         </Col>
         <Col
@@ -86,7 +86,7 @@ export const CreditCardFields = ({
             dataLocator="payment-expyeardd"
             options={expYearOptionsMap}
             className="field"
-            showSuccessCheck={false}
+            enableSuccessCheck={false}
           />
         </Col>
       </React.Fragment>

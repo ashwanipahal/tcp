@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddedToBagActions native component AddedToBagActions native component renders correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(TouchableOpacity)>
+      <Styled(BodyCopy)
+        color="white"
+        fontFamily="secondary"
+        fontSize="fs13"
+        fontWeight="extrabold"
+        text=""
+        textTransform="uppercase"
+      />
+    </Styled(TouchableOpacity)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(TouchableOpacity)>
+      <Styled(BodyCopy)
+        color="white"
+        fontFamily="secondary"
+        fontSize="fs13"
+        fontWeight="extrabold"
+        text=""
+      />
+    </Styled(TouchableOpacity)>
+  </Styled(View)>
+</Styled(View)>
+`;

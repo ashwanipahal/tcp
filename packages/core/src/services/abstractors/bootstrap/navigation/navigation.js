@@ -1,3 +1,4 @@
+/* eslint-disable sonarjs/no-duplicate-string */
 import mock from './mock';
 import handler from '../../../handler';
 
@@ -12,9 +13,27 @@ const Abstractor = {
       .then(Abstractor.processData);
   },
   getMock: () => {
-    return mock;
+    return Abstractor.processData(mock.data.navigation);
   },
-  processData: data => data,
+  processData: navLinkList => {
+    return navLinkList.map(listItem => {
+      const subCategories = {};
+      listItem.subCategories.map(subCategory => {
+        if (!subCategories[subCategory.categoryContent.groupIdentifierName || 'Lorem Ipsum']) {
+          subCategories[subCategory.categoryContent.groupIdentifierName || 'Lorem Ipsum'] = [];
+        }
+        subCategories[subCategory.categoryContent.groupIdentifierName || 'Lorem Ipsum'].push(
+          subCategory
+        );
+        return subCategory;
+      });
+
+      return {
+        categoryContent: listItem.categoryContent,
+        subCategories,
+      };
+    });
+  },
 };
 
 export default Abstractor;

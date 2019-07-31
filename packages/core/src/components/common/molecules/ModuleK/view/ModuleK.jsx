@@ -57,7 +57,7 @@ class ModuleK extends React.PureComponent<Props, State> {
               <LinkText
                 headerText={headerText}
                 component="div"
-                fontSize={['fs32', 'fs48']}
+                fontSize={['fs36', 'fs36', 'fs48']}
                 lineHeight="lh107"
                 fontWeight="black"
                 dataLocator="moduleK_header_text"
@@ -106,6 +106,7 @@ class ModuleK extends React.PureComponent<Props, State> {
                 dataLocatorPause: 'moduleK_pause_button',
                 customArrowLeft: getIconPath('carousel-big-carrot'),
                 customArrowRight: getIconPath('carousel-big-carrot'),
+                inheritedStyles: Carousel,
               }}
             >
               {masonryGrid.map(({ promoTextBanner, mediaList, singleCTAButton }, index) => {

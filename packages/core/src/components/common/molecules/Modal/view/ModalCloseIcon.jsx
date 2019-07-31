@@ -15,7 +15,12 @@ const CloseButtonStyle = css`
 `;
 
 const ModalCloseIcon = ({ className, closeFunc, closeIconDataLocator }) => (
-  <button className={className} onClick={e => closeFunc(e)} data-locator={closeIconDataLocator} />
+  <button
+    aria-label="close"
+    className={className}
+    onClick={e => closeFunc(e)}
+    data-locator={closeIconDataLocator}
+  />
 );
 
 ModalCloseIcon.propTypes = {

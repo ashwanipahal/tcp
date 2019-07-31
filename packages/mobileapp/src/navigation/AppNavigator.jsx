@@ -6,7 +6,7 @@ import {
 import React from 'react';
 import NavBar from '../components/common/molecules/NavBar';
 import HomeStack from '../pages/home';
-import PlpStack from '../pages/plp';
+import PlpStack from '../pages/productListing';
 import AccountStack from '../pages/account';
 import WalletStack from '../pages/login';
 import BrandSwitchStack from '../pages/brandSwitch';

@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddedToBagViewPoints native component renders correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs13"
+      text=""
+    />
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs13"
+      text="$12"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="extrabold"
+      text=""
+    />
+    <Styled(BodyCopy)
+      color="orange.500"
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="extrabold"
+      text={23}
+    />
+  </Styled(View)>
+  <Styled(View) />
+  <Styled(View)>
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs13"
+      text="123"
+    />
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs13"
+      text="$0"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="extrabold"
+      text=""
+    />
+    <Styled(BodyCopy)
+      color="orange.500"
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="extrabold"
+      text={60}
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="extrabold"
+      text=""
+    />
+    <Styled(BodyCopy)
+      color="orange.500"
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="extrabold"
+      text={12}
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
