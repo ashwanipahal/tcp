@@ -7,6 +7,7 @@ import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
 import CartReducer from '@tcp/core/src/components/features/CnC/Cart/containers/Cart.reducer';
+import { reducer as reduxFormReducer } from 'redux-form';
 import {
   HEADER_REDUCER_KEY,
   LABEL_REDUCER_KEY,
@@ -45,4 +46,5 @@ export default combineReducers({
   [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,
   [CART_REDUCER_KEY]: CartReducer,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
+  form: reduxFormReducer,
 });
