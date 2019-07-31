@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import ModuleHCTALinks from '../views/ModuleH.Links';
-import mock from '../mock';
+import mock from '../../../../../services/abstractors/common/moduleH/mock';
 
 describe('ModuleH Links Component', () => {
   it('renders correctly', () => {

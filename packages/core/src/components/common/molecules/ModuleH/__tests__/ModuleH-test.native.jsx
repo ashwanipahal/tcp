@@ -3,15 +3,12 @@ import { shallow } from 'enzyme';
 import ModuleH from '../views/ModuleH.native';
 import Carousel from '../../Carousel/views/Carousel.native';
 import { BodyCopy, Heading } from '../../../atoms';
-import mock from '../mock';
+import mock from '../../../../../services/abstractors/common/moduleH/mock';
 
 describe('ModuleH component', () => {
   let ModuleHComponent;
-  const props = {
-    data: mock.moduleH.composites,
-  };
   beforeEach(() => {
-    ModuleHComponent = shallow(<ModuleH />);
+    ModuleHComponent = shallow(<ModuleH {...mock.moduleH.composites} />);
   });
 
   it('renders correctly', () => {
@@ -19,29 +16,14 @@ describe('ModuleH component', () => {
   });
 
   it('should render Heading', () => {
-    const wrapperWithHeading = shallow(
-      <ModuleH {...props.data}>
-        <Heading />
-      </ModuleH>
-    );
-    expect(wrapperWithHeading.find(Heading)).toHaveLength(2);
+    expect(ModuleHComponent.find(Heading)).toHaveLength(2);
   });
 
   it('should render Links', () => {
-    const wrapperWithLinks = shallow(
-      <ModuleH {...props.data}>
-        <BodyCopy />
-      </ModuleH>
-    );
-    expect(wrapperWithLinks.find(BodyCopy)).toHaveLength(5);
+    expect(ModuleHComponent.find(BodyCopy)).toHaveLength(5);
   });
 
   it('should render Carousel', () => {
-    const wrapperWithCarousel = shallow(
-      <ModuleH {...props.data}>
-        <Carousel />
-      </ModuleH>
-    );
-    expect(wrapperWithCarousel.find(Carousel)).toHaveLength(1);
+    expect(ModuleHComponent.find(Carousel)).toHaveLength(1);
   });
 });

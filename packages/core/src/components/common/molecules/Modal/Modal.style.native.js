@@ -8,9 +8,11 @@ const StyledCrossImage = styled.Image`
 
 const ImageWrapper = styled.View`
   display: flex;
+  flex: 0.3;
 `;
 
 const StyledTouchableOpacity = styled.TouchableOpacity`
   align-items: flex-end;
 `;
+
 export { StyledCrossImage, ImageWrapper, StyledTouchableOpacity };

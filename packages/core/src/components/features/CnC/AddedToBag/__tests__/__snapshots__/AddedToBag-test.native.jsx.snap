@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
+<ModalNative
+  animationType="slide"
+  aria={
+    Object {
+      "describedby": "undefined",
+      "labelledby": "undefined",
+    }
+  }
+  className="TCPModal__Content, "
+  closeIconDataLocator="added-to-bg-close"
+  fixedWidth={true}
+  headingAlign="left"
+  isOpen={[Function]}
+  onRequestClose={[Function]}
+  overlayClassName="TCPModal__Overlay"
+>
+  <Styled(View)>
+    <Styled(ProductInformation)
+      data={Object {}}
+      labels={Object {}}
+    />
+    <Connect(AddedToBagViewPointsContainer)
+      labels={Object {}}
+    />
+    <AddedToBagActions
+      labels={Object {}}
+    />
+    <Styled(BossBanner)
+      labels={Object {}}
+    />
+  </Styled(View)>
+</ModalNative>
+`;

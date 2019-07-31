@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 // eslint-disable-next-line
 import Link from 'next/link';
-import { buildUrl } from '../../../../../utils';
+import utils, { buildUrl } from '../../../../../utils';
 import withStyles from '../../../hoc/withStyles';
 
 import styles from '../Anchor.style';
@@ -33,9 +33,16 @@ const Anchor = ({
   dataLocator,
 }) => {
   const targetVal = target || '_self';
+  const siteId = utils.getSiteId();
+
+  const incomingUrl = to || url;
+  const isCompleteUrl = incomingUrl.startsWith('http');
+  const linkUrl = isCompleteUrl || asPath ? incomingUrl : `/${siteId}${incomingUrl}`;
+  const asLinkPath = asPath ? `/${siteId}${asPath}` : asPath;
+
   return noLink ? (
     <a
-      href={buildUrl(to) || buildUrl(url)}
+      href={buildUrl(linkUrl)}
       className={className}
       onClick={handleLinkClick}
       title={title}

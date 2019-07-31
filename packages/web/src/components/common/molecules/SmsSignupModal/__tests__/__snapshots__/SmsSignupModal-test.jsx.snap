@@ -2,19 +2,12 @@
 
 exports[`EmailSignupModal component renders correctly 1`] = `
 <Fragment>
-  <Styled(Button)
-    customStyle="shadow-button"
-    dataLocator="footer_sms_signup_btn"
-    onClick={[Function]}
-  >
-    <Styled(RichText) />
-  </Styled(Button)>
-</Fragment>
-`;
-
-exports[`EmailSignupModal component renders correctly when button is clicked 1`] = `
-<Fragment>
   <errorBoundaryComponent
+    aria={
+      Object {
+        "describedby": "sign-up-modal-form-intro-view",
+      }
+    }
     className=""
     closeIconDataLocator="thank_you_modal_close_btn"
     colSet={
@@ -24,7 +17,9 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
         "small": 6,
       }
     }
-    isOpen={true}
+    contentLabel="undefined undefined"
+    contentRef={[Function]}
+    isOpen={false}
     noPadding={true}
     onRequestClose={[Function]}
     overlayClassName="TCPModal__Overlay"
@@ -36,9 +31,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
       }
     }
   >
-    <form
-      onSubmit={[Function]}
-    >
+    <form>
       <Styled(Grid)>
         <Styled(Row)
           className="wrapper"
@@ -97,7 +90,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
               }
             >
               <Field
-                className=""
                 component={
                   Object {
                     "$$typeof": Symbol(react.forward_ref),
@@ -111,7 +103,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
                         "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -172,8 +163,17 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                        [Function],
+                        ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -183,7 +183,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -226,12 +226,12 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
                   }
                 }
                 dataLocator="sms_address_field"
-                id="signup"
+                id="signupPhoneNumber"
                 maxLength={50}
-                name="signup"
+                name="signupPhoneNumber"
+                normalize={[Function]}
                 onBlur={[Function]}
-                onChange={[Function]}
-                showSuccessCheck={false}
+                onKeyPress={[Function]}
                 type="text"
               />
               <Styled(BodyCopy)
@@ -267,7 +267,8 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
                   disabled={true}
                   fill="BLUE"
                   fullWidth={true}
-                  type="submit"
+                  onClick={[Function]}
+                  type="button"
                 />
               </Styled(Col)>
             </Styled(Row)>
@@ -276,21 +277,19 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
       </Styled(Grid)>
     </form>
   </errorBoundaryComponent>
-  <Styled(Button)
-    customStyle="shadow-button"
-    dataLocator="footer_sms_signup_btn"
-    onClick={[Function]}
-  >
-    <Styled(RichText) />
-  </Styled(Button)>
 </Fragment>
 `;
 
-exports[`EmailSignupModal component renders correctly when button is clicked 2`] = `
+exports[`EmailSignupModal component renders correctly when button is clicked 1`] = `
 <Fragment>
   <errorBoundaryComponent
+    aria={
+      Object {
+        "describedby": "sign-up-modal-confirm-view",
+      }
+    }
     className=""
-    closeIconDataLocator="email_signup_modal_close_btn"
+    closeIconDataLocator="thank_you_modal_close_btn"
     colSet={
       Object {
         "large": 8,
@@ -298,6 +297,8 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
         "small": 6,
       }
     }
+    contentLabel="undefined undefined"
+    contentRef={[Function]}
     isOpen={true}
     noPadding={true}
     onRequestClose={[Function]}
@@ -310,9 +311,111 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
       }
     }
   >
-    <form
-      onSubmit={[Function]}
-    >
+    <Styled(Grid)>
+      <Styled(Row)
+        fullBleed={true}
+      >
+        <Styled(Col)
+          className="img-wrapper"
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 4,
+              "small": 4,
+            }
+          }
+          hideCol={
+            Object {
+              "medium": true,
+              "small": true,
+            }
+          }
+          isNotInlineBlock={true}
+        >
+          <Styled(Image) />
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 8,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+          ignoreGutter={
+            Object {
+              "large": true,
+            }
+          }
+        >
+          <Styled(SignupConfirm)
+            formViewConfig={Object {}}
+            susbscriptionType="sms"
+          />
+          <Styled(Row)
+            className="button-wrapper"
+            fullBleed={true}
+          >
+            <Styled(Col)
+              className="button-container"
+              colSize={
+                Object {
+                  "large": 4,
+                  "medium": 4,
+                  "small": 4,
+                }
+              }
+            >
+              <Styled(Button)
+                buttonVariation="fixed-width"
+                className="shop-button"
+                dataLocator="shop_now_btn"
+                fill="BLUE"
+                fullWidth={true}
+                onClick={[Function]}
+                type="submit"
+              />
+            </Styled(Col)>
+          </Styled(Row)>
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(Grid)>
+  </errorBoundaryComponent>
+</Fragment>
+`;
+
+exports[`EmailSignupModal component renders correctly when button is clicked 2`] = `
+<Fragment>
+  <errorBoundaryComponent
+    aria={
+      Object {
+        "describedby": "sign-up-modal-form-intro-view",
+      }
+    }
+    className=""
+    closeIconDataLocator="thank_you_modal_close_btn"
+    colSet={
+      Object {
+        "large": 8,
+        "medium": 6,
+        "small": 6,
+      }
+    }
+    contentLabel="undefined undefined"
+    contentRef={[Function]}
+    isOpen={true}
+    noPadding={true}
+    onRequestClose={[Function]}
+    overlayClassName="TCPModal__Overlay"
+    widthConfig={
+      Object {
+        "large": "851px",
+        "medium": "458px",
+        "small": "375px",
+      }
+    }
+  >
+    <form>
       <Styled(Grid)>
         <Styled(Row)
           className="wrapper"
@@ -371,7 +474,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
               }
             >
               <Field
-                className=""
                 component={
                   Object {
                     "$$typeof": Symbol(react.forward_ref),
@@ -385,7 +487,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                         "
   position: relative;
   display: block;
-  height: 70px;
 
   .TextBox__label {
     font-size: ",
@@ -446,8 +547,17 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
       top: 0;
     }
   }
-
   .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+                        [Function],
+                        ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -457,7 +567,7 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
     transform-origin: left;
     position: absolute;
     right: 0;
-    bottom: 10px;
+    top: 30px;
 
     &:before {
       content: '';
@@ -500,12 +610,12 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                   }
                 }
                 dataLocator="sms_address_field"
-                id="signup"
+                id="signupPhoneNumber"
                 maxLength={50}
-                name="signup"
+                name="signupPhoneNumber"
+                normalize={[Function]}
                 onBlur={[Function]}
-                onChange={[Function]}
-                showSuccessCheck={false}
+                onKeyPress={[Function]}
                 type="text"
               />
               <Styled(BodyCopy)
@@ -541,7 +651,8 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
                   disabled={true}
                   fill="BLUE"
                   fullWidth={true}
-                  type="submit"
+                  onClick={[Function]}
+                  type="button"
                 />
               </Styled(Col)>
             </Styled(Row)>
@@ -550,12 +661,5 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
       </Styled(Grid)>
     </form>
   </errorBoundaryComponent>
-  <Styled(Button)
-    customStyle="shadow-button"
-    dataLocator="footer_sms_signup_btn"
-    onClick={[Function]}
-  >
-    <Styled(RichText) />
-  </Styled(Button)>
 </Fragment>
 `;

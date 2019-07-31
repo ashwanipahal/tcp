@@ -400,7 +400,8 @@ const getUnbxdId = () => 'unbxdId';
 const isGiftCard = product =>
   !!(
     product &&
-    (product.style_partno.toLowerCase() === 'giftcardbundle' || product.giftcard === '1')
+    ((product.style_partno && product.style_partno.toLowerCase() === 'giftcardbundle') ||
+      product.giftcard === '1')
   );
 
 /**
@@ -1164,7 +1165,10 @@ export const parseProductFromAPI = (
   }
 
   try {
-    alternateSizes = JSON.parse(defaultColorAlternateSizes || otherColorAlternateSizes);
+    alternateSizes =
+      defaultColorAlternateSizes || otherColorAlternateSizes
+        ? JSON.parse(defaultColorAlternateSizes || otherColorAlternateSizes)
+        : '';
   } catch (err) {
     alternateSizes = {};
     console.error('API response coming for additional_styles key JSON format is incorrect', err);

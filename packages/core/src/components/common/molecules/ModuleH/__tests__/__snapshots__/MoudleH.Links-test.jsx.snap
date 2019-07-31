@@ -12,7 +12,7 @@ exports[`ModuleH Links Component renders correctly 1`] = `
       className="moduleH__CTALink "
       dataLocator="moduleH_cta_links_1"
       target=""
-      to="https://www.childrensplace.com/us/c/toddler-girl-clothes"
+      to="/toddler"
     >
       Toddler Girl
     </Styled(Anchor)>
@@ -25,7 +25,7 @@ exports[`ModuleH Links Component renders correctly 1`] = `
       className="moduleH__CTALink moduleH__CTALink--active"
       dataLocator="moduleH_cta_links_2"
       target=""
-      to="https://www.childrensplace.com/us/c/girls-clothing"
+      to="/girl"
     >
       Girl
     </Styled(Anchor)>
@@ -38,7 +38,7 @@ exports[`ModuleH Links Component renders correctly 1`] = `
       className="moduleH__CTALink "
       dataLocator="moduleH_cta_links_3"
       target=""
-      to="https://www.childrensplace.com/us/c/toddler-boy-clothes"
+      to="/toddler-boy"
     >
       Toddler boy
     </Styled(Anchor)>
@@ -51,7 +51,7 @@ exports[`ModuleH Links Component renders correctly 1`] = `
       className="moduleH__CTALink "
       dataLocator="moduleH_cta_links_4"
       target=""
-      to="https://www.childrensplace.com/us/c/boys-clothing"
+      to="/boy"
     >
       Boy
     </Styled(Anchor)>
@@ -64,7 +64,7 @@ exports[`ModuleH Links Component renders correctly 1`] = `
       className="moduleH__CTALink "
       dataLocator="moduleH_cta_links_5"
       target=""
-      to="https://www.childrensplace.com/us/c/baby-clothes"
+      to="/baby"
     >
       Baby
     </Styled(Anchor)>

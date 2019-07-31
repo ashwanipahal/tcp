@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Drawer component renders correctly 1`] = `
+<Fragment>
+  <Styled(BodyCopy)
+    className="undefined nav-bar-l1-item"
+    color="text.hint"
+    component="li"
+    dataLocator=""
+    fontFamily="secondary"
+    fontSize={
+      Array [
+        "fs13",
+        "fs13",
+        "fs15",
+      ]
+    }
+    fontWeight="semibold"
+    letterSpacing="normal"
+    lineHeight="lh115"
+    link={Object {}}
+    textAlign="left"
+  >
+    <span
+      className="nav-bar-l1-item-label "
+    />
+    <span
+      className="nav-bar-l1-item-content"
+      data-locator="promo_badge_undefined"
+    >
+      <Styled(PromoBadge)
+        data={
+          Array [
+            Object {
+              "style": "style1",
+              "text": "30% off shoes",
+            },
+          ]
+        }
+      />
+    </span>
+    <span
+      className="icon-arrow"
+    />
+  </Styled(BodyCopy)>
+</Fragment>
+`;

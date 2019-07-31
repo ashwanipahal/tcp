@@ -1,0 +1,358 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreditCardFields component should renders correctly when isExpirationRequired is false 1`] = `
+<Styled(Row)
+  className=""
+  fullBleed={true}
+>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 6,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+      >
+        <Field
+          cardType=""
+          cardTypeImgUrl=""
+          className="field"
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-iwsKbI",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+
+  img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: ",
+                  [Function],
+                  ";
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(CreditCardNumber)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-iwsKbI",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="payment-cardtextfield"
+          enableSuccessCheck={false}
+          id="cardNumber"
+          isPLCCEnabled={true}
+          name="cardNumber"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+  </Styled(Col)>
+</Styled(Row)>
+`;
+
+exports[`CreditCardFields component should renders correctly when isExpirationRequired is true 1`] = `
+<Styled(Row)
+  className=""
+  fullBleed={true}
+>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 6,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <Styled(Row)
+      fullBleed={true}
+    >
+      <Styled(Col)
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 4,
+            "small": 6,
+          }
+        }
+      >
+        <Field
+          cardType=""
+          cardTypeImgUrl=""
+          className="field"
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-iwsKbI",
+                "isStatic": false,
+                "rules": Array [
+                  "
+  ",
+                  "
+  position: relative;
+
+  img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: ",
+                  [Function],
+                  ";
+  }
+",
+                  ";
+",
+                ],
+              },
+              "displayName": "Styled(CreditCardNumber)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-iwsKbI",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="payment-cardtextfield"
+          enableSuccessCheck={false}
+          id="cardNumber"
+          isPLCCEnabled={true}
+          name="cardNumber"
+        />
+      </Styled(Col)>
+    </Styled(Row)>
+  </Styled(Col)>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 3,
+        "medium": 2,
+        "small": 6,
+      }
+    }
+    ignoreGutter={
+      Object {
+        "small": true,
+      }
+    }
+  >
+    <Field
+      className="field"
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-dnqmqq",
+            "isStatic": false,
+            "rules": Array [
+              "
+  ",
+              "
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .select__input {
+    appearance: none;
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
+      no-repeat right 0px bottom 6px;
+    border: 0;
+    border-bottom: 1px solid ",
+              [Function],
+              ";
+    ",
+              [Function],
+              ";
+    border-radius: 0;
+    color: ",
+              [Function],
+              ";
+    font-size: ",
+              [Function],
+              "px;
+    margin: 0;
+    margin-bottom: ",
+              [Function],
+              ";
+    outline: 0;
+    padding: ",
+              [Function],
+              " 0
+      ",
+              [Function],
+              ";
+    width: 100%;
+
+    ",
+              [Function],
+              ";
+  }
+
+  .select__label {
+    font-size: ",
+              [Function],
+              "px;
+    font-weight: ",
+              [Function],
+              ";
+    padding: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  ",
+              [Function],
+              ";
+",
+              ";
+",
+            ],
+          },
+          "displayName": "Styled(SelectBox)",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-dnqmqq",
+          "target": [Function],
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="payment-expmonthdd"
+      enableSuccessCheck={false}
+      id="expMonth"
+      name="expMonth"
+    />
+  </Styled(Col)>
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 3,
+        "medium": 2,
+        "small": 6,
+      }
+    }
+  >
+    <Field
+      className="field"
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-dnqmqq",
+            "isStatic": false,
+            "rules": Array [
+              "
+  ",
+              "
+  position: relative;
+  display: block;
+  height: 70px;
+
+  .select__input {
+    appearance: none;
+    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
+      no-repeat right 0px bottom 6px;
+    border: 0;
+    border-bottom: 1px solid ",
+              [Function],
+              ";
+    ",
+              [Function],
+              ";
+    border-radius: 0;
+    color: ",
+              [Function],
+              ";
+    font-size: ",
+              [Function],
+              "px;
+    margin: 0;
+    margin-bottom: ",
+              [Function],
+              ";
+    outline: 0;
+    padding: ",
+              [Function],
+              " 0
+      ",
+              [Function],
+              ";
+    width: 100%;
+
+    ",
+              [Function],
+              ";
+  }
+
+  .select__label {
+    font-size: ",
+              [Function],
+              "px;
+    font-weight: ",
+              [Function],
+              ";
+    padding: 0;
+    position: absolute;
+    top: 0;
+  }
+
+  ",
+              [Function],
+              ";
+",
+              ";
+",
+            ],
+          },
+          "displayName": "Styled(SelectBox)",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-dnqmqq",
+          "target": [Function],
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="payment-expyeardd"
+      enableSuccessCheck={false}
+      id="expYear"
+      name="expYear"
+    />
+  </Styled(Col)>
+</Styled(Row)>
+`;

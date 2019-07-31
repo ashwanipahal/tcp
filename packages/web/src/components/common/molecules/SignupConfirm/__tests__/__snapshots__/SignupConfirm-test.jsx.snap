@@ -3,12 +3,13 @@
 exports[`EmailSignupModal component renders correctly 1`] = `
 <div
   className=""
+  id="sign-up-modal-confirm-view"
 >
   <Styled(BodyCopy)
     className="thank-you__label"
     color="text.primary"
     component="p"
-    dataLocator="sms_thank_you_message"
+    data-locator="sms_thank_you_message"
     fontFamily="primary"
     fontSize={
       Array [
@@ -27,6 +28,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
     className="confirmation-label"
     color="text.primary"
     component="p"
+    data-locator="sms_copy_text_01"
     fontFamily="secondary"
     fontSize={
       Array [
@@ -43,13 +45,16 @@ exports[`EmailSignupModal component renders correctly 1`] = `
   />
   <Styled(Image)
     alt="sms-icon"
+    aria-hidden="true"
     className="confirmation-image"
+    data-locator="sms_icon"
     src="/static/images/chat.svg"
   />
   <Styled(BodyCopy)
     className="first-label"
     color="primary.main"
     component="p"
+    data-locator="sms_copy_text_02"
     fontFamily="secondary"
     fontSize={
       Array [
@@ -68,6 +73,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
     className="redeem-label"
     color="text.primary"
     component="p"
+    data-locator="sms_copy_text_03"
     fontFamily="secondary"
     fontSize={
       Array [
@@ -86,6 +92,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
     className="tnc-label"
     color="text.primary"
     component="p"
+    data-locator="sms_copy_text_04"
     fontFamily="secondary"
     fontSize="fs10"
     fontWeight="regular"

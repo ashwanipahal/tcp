@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CustomSelect component should renders correctly 1`] = `
+<Styled(BodyCopy)
+  className="sample-class custom-select"
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={Object {}}
+  textAlign="left"
+>
+  <span>
+    Select from address book
+  </span>
+  <Styled(BodyCopy)
+    className="customSelectTitle"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={Object {}}
+    onClick={[Function]}
+    textAlign="left"
+  >
+    Please select list item
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;
+
+exports[`CustomSelect component should renders correctly when optional fields are not present 1`] = `
+<Styled(BodyCopy)
+  className="sample-class custom-select"
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={Object {}}
+  textAlign="left"
+>
+  <span />
+  <Styled(BodyCopy)
+    className="customSelectTitle"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={Object {}}
+    onClick={[Function]}
+    textAlign="left"
+  />
+</Styled(BodyCopy)>
+`;

@@ -73,7 +73,7 @@ BodyCopy.propTypes = {
     PropTypes.Array,
     PropTypes.oneOf(['ls271', 'ls257', 'ls222', 'ls167', 'normal']),
   ]),
-  textAlign: PropTypes.oneOfType([PropTypes.Array, PropTypes.oneOf(['left', 'center'])]),
+  textAlign: PropTypes.oneOfType([PropTypes.Array, PropTypes.oneOf(['left', 'center', 'right'])]),
   color: PropTypes.oneOfType([
     PropTypes.Array,
     PropTypes.oneOf(['text.primary', 'text.secondary', 'text.hint', 'text.disabled', 'white']),

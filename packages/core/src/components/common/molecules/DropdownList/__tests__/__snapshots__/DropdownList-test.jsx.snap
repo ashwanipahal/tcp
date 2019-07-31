@@ -1,0 +1,253 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropdownList component should renders correctly 1`] = `
+<Styled(BodyCopy)
+  className="sample-class"
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={Object {}}
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className=""
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={Object {}}
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className="dropdownDivOverFlow"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={Object {}}
+      textAlign="left"
+    >
+      <ul
+        className="dropdownUlBorder"
+      >
+        <li
+          className="dropdownliBottomBorder "
+          key="1"
+          tabIndex={-1}
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="div"
+            fontFamily="primary"
+            fontSize={12}
+            fontWeight="regular"
+            key="1"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={Object {}}
+            onClick={[Function]}
+            onKeyPress={[Function]}
+            role="button"
+            textAlign="left"
+          >
+            <Styled(BodyCopy)
+              className=""
+              color="text.primary"
+              component="div"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={Object {}}
+              textAlign="left"
+            />
+            <div>
+              <p>
+                Test 1
+              </p>
+            </div>
+          </Styled(BodyCopy)>
+        </li>
+      </ul>
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;
+
+exports[`DropdownList component should renders correctly when optional fields are not present 1`] = `
+<Styled(BodyCopy)
+  className="sample-class"
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  link={Object {}}
+  textAlign="left"
+>
+  <Styled(BodyCopy)
+    className="dropDownListwrapper"
+    color="text.primary"
+    component="div"
+    fontFamily="primary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    link={Object {}}
+    textAlign="left"
+  >
+    <Styled(BodyCopy)
+      className="dropdownDivOverFlow"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      link={Object {}}
+      textAlign="left"
+    >
+      <ul
+        className="ulBorderWithLastRow"
+      >
+        <li
+          className="dropdownliBottomBorder "
+          key="1"
+          tabIndex={-1}
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="div"
+            fontFamily="primary"
+            fontSize={12}
+            fontWeight="regular"
+            key="1"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={Object {}}
+            onClick={[Function]}
+            onKeyPress={[Function]}
+            role="button"
+            textAlign="left"
+          >
+            <Styled(BodyCopy)
+              className=""
+              color="text.primary"
+              component="div"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={Object {}}
+              textAlign="left"
+            />
+            <div>
+              <p>
+                Test 1
+              </p>
+            </div>
+          </Styled(BodyCopy)>
+        </li>
+        <li
+          className="dropdownliBottomBorder "
+          key="2"
+          tabIndex={-1}
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="div"
+            fontFamily="primary"
+            fontSize={12}
+            fontWeight="regular"
+            key="2"
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={Object {}}
+            onClick={[Function]}
+            onKeyPress={[Function]}
+            role="button"
+            textAlign="left"
+          >
+            <Styled(BodyCopy)
+              className=""
+              color="text.primary"
+              component="div"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={Object {}}
+              textAlign="left"
+            />
+            <div>
+              <p>
+                Test 2
+              </p>
+            </div>
+          </Styled(BodyCopy)>
+        </li>
+        <li
+          className="dropdownliBottomBorder dropdownActiveClass"
+          key=""
+          tabIndex={-1}
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="div"
+            fontFamily="primary"
+            fontSize={12}
+            fontWeight="regular"
+            key=""
+            letterSpacing="normal"
+            lineHeight="normal"
+            link={Object {}}
+            onClick={[Function]}
+            onKeyPress={[Function]}
+            role="button"
+            textAlign="left"
+          >
+            <Styled(BodyCopy)
+              className="dropdownActiveIcon"
+              color="text.primary"
+              component="div"
+              fontFamily="primary"
+              fontSize={12}
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              link={Object {}}
+              textAlign="left"
+            />
+            <div>
+              <p>
+                Test 3
+              </p>
+            </div>
+          </Styled(BodyCopy)>
+        </li>
+      </ul>
+    </Styled(BodyCopy)>
+  </Styled(BodyCopy)>
+</Styled(BodyCopy)>
+`;

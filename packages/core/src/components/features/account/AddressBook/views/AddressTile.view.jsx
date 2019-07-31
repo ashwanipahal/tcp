@@ -5,6 +5,7 @@ import Anchor from '../../../../common/atoms/Anchor';
 import Address from '../../../../common/molecules/Address';
 import styles from '../styles/AddressTile.style';
 import Badge from '../../../../common/atoms/Badge';
+import utils from '../../../../../utils';
 
 // @flow
 
@@ -54,7 +55,7 @@ class AddressBookTile extends React.Component<Props> {
   onEditAddressClick = e => {
     e.preventDefault();
     const { address } = this.props;
-    Router.push(
+    utils.routerPush(
       `/account?id=edit-address&addressId=${address.addressId}`,
       `/account/address-book/edit-address/${address.addressId}`
     );

@@ -12,7 +12,7 @@ describe('subscribeEmail', () => {
 
   it('should dispatch subscribeEmail action for success resposnse', () => {
     const putDescriptor = subscribeEmailGen.next(true).value;
-    expect(putDescriptor).toEqual(put(emailSignupStatus({ signupSuccess: true })));
+    expect(putDescriptor).toEqual(put(emailSignupStatus({ subscription: true })));
   });
 });
 

@@ -4,10 +4,11 @@ exports[`AddressBook component should renders correctly when errors are present 
 <div>
   <Styled(Anchor)
     anchorVariation="secondary"
+    asPath="/account/address-book"
     className="addAddress__anchor__back"
     dataLocator="addnewaddress-back"
     fontSizeVariation="xlarge"
-    to="/account"
+    to="/account?id=address-book"
   >
     Back
   </Styled(Anchor)>
@@ -52,10 +53,11 @@ exports[`AddressBook component should renders correctly without any error 1`] = 
 <div>
   <Styled(Anchor)
     anchorVariation="secondary"
+    asPath="/account/address-book"
     className="addAddress__anchor__back"
     dataLocator="addnewaddress-back"
     fontSizeVariation="xlarge"
-    to="/account"
+    to="/account?id=address-book"
   >
     Back
   </Styled(Anchor)>

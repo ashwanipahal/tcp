@@ -38,10 +38,18 @@ type GetAddressLineProps = {
 const getAddressfromDiffLines = ({ address, dataLocatorPrefix }: GetAddressLineProps) => {
   return (
     <React.Fragment>
-      <BodyCopy tag="p" data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline1` : ''}>
+      <BodyCopy
+        fontFamily="secondary"
+        tag="p"
+        data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline1` : ''}
+      >
         {address.addressLine1}
       </BodyCopy>
-      <BodyCopy tag="p" data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline2` : ''}>
+      <BodyCopy
+        fontFamily="secondary"
+        tag="p"
+        data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-addressline2` : ''}
+      >
         {address.addressLine2}
       </BodyCopy>
     </React.Fragment>
@@ -76,6 +84,7 @@ const Address = ({
   fontWeight,
   showPhone,
   showCountry,
+  isDefault,
 }: Props) =>
   address && (
     <BodyCopy component="div" fontSize="fs14" color="text.primary" className={className}>
@@ -85,7 +94,7 @@ const Address = ({
         fontFamily="secondary"
         data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-fullname` : ''}
       >
-        {`${address.firstName} ${address.lastName}`}
+        {`${address.firstName} ${address.lastName}${isDefault ? ' (Default)' : ''}`}
       </BodyCopy>
       {address.addressLine
         ? getAddessLines({ address, dataLocatorPrefix })
@@ -113,6 +122,7 @@ const Address = ({
 Address.defaultProps = {
   showPhone: true,
   showCountry: true,
+  isDefault: false,
 };
 
 export default Address;

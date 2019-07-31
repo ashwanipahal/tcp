@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Promo Badge component renders correctly 1`] = `
+<Fragment>
+  <Styled(BodyCopy)
+    className="undefined undefined nav-bar-l1-promo-badge"
+    color="white"
+    component="span"
+    fontFamily="primary"
+    fontSize="fs10"
+    fontWeight="black"
+    letterSpacing="normal"
+    lineHeight="lh115"
+    link={Object {}}
+    textAlign="left"
+  >
+    30% off shoes
+  </Styled(BodyCopy)>
+</Fragment>
+`;

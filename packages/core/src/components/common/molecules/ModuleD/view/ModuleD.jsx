@@ -1,17 +1,15 @@
 // @flow
 import React from 'react';
-import DamImage from '@tcp/core/src/components/common/atoms/DamImage';
+import { Anchor, Button, Col, DamImage, Row } from '../../../atoms';
+import { Grid, LinkText } from '../..';
 import config from '../config';
-import { Anchor, Button, Col, Row } from '../../../atoms';
-import { Grid } from '../..';
-import Heading from '../../../atoms/Heading';
 import { getLocator } from '../../../../../utils';
 import style from '../ModuleD.style';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/errorBoundary';
 
 type Props = {
-  className: String,
+  className: string,
   headerText: Object,
   smallCompImage: Object,
   singleCTAButton: Object,
@@ -19,23 +17,20 @@ type Props = {
 
 const colSize2Elements = {
   small: 3,
-  medium: 4,
-  large: 6,
-  xlarge: 6,
+  medium: 3,
+  large: 4,
 };
 
 const colSize4Elements = {
   small: 3,
   medium: 2,
   large: 3,
-  xlarge: 3,
 };
 
 const colSize6Elements = {
   small: 3,
   medium: 3,
   large: 2,
-  xlarge: 2,
 };
 
 const ignoreGutter = [
@@ -49,10 +44,6 @@ const ignoreGutter = [
 
 const ModuleD = (props: Props) => {
   const { className, headerText, smallCompImage, singleCTAButton } = props;
-  const {
-    textLines: [{ text: headingText }],
-    link: { target, title, url },
-  } = headerText;
   let colSize;
   let imgDataConfig;
 
@@ -66,21 +57,20 @@ const ModuleD = (props: Props) => {
     colSize = colSize6Elements;
     imgDataConfig = config.IMG_DATA_6.imgConfig;
   }
-
   return (
-    <Grid className={className}>
-      <Anchor className="moduleD_textlink" to={url} target={target}>
-        <Heading
-          className="moduleD_header"
-          variant="h2"
-          data-locator={getLocator('moduleD_headerlink')}
+    <Grid className={`${className} moduleD`}>
+      {headerText && (
+        <LinkText
+          headerText={headerText}
+          headingClass="moduleD_header"
+          component="div"
+          fontSize={['fs32', 'fs48']}
+          lineHeight="lh107"
+          fontWeight="black"
           textAlign="center"
-          color="text.primary"
-          title={title}
-        >
-          {headingText}
-        </Heading>
-      </Anchor>
+          dataLocator="moduleD_headerlink"
+        />
+      )}
       <Row centered>
         {smallCompImage &&
           smallCompImage.map((item, index) => {
@@ -135,7 +125,7 @@ const ModuleD = (props: Props) => {
               title={singleCTAButton.title}
               data-locator={getLocator('moduleD_button')}
             >
-              {singleCTAButton.text}
+              {singleCTAButton.title}
             </Button>
           </Anchor>
         </Row>

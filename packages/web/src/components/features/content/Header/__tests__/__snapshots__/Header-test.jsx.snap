@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component renders correctly 1`] = `
+<header>
+  <Styled(HeaderTopNav)
+    className="header-topnav"
+  />
+  <Styled(HeaderMiddleNav) />
+  <Styled(HeaderPromo)
+    className="header__promo-area--mobile"
+    dataPromo={
+      Object {
+        "composites": Object {
+          "promoTextBanner": Object {},
+        },
+      }
+    }
+    mobileMarkup={true}
+  />
+  <Styled(HeaderPromo)
+    className="header__promo-area--desktop"
+    dataPromo={
+      Object {
+        "composites": Object {
+          "promoTextBanner": Object {},
+        },
+      }
+    }
+  />
+  <styled.div
+    className="header-loyalty"
+  >
+    <Styled(Row)>
+      <Styled(Col)
+        className="header-loyalty__promo-loyalty"
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+      >
+        Loyalty Promo banners
+      </Styled(Col)>
+    </Styled(Row)>
+  </styled.div>
+  <Connect(OverlayModal) />
+</header>
+`;

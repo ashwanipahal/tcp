@@ -171,7 +171,7 @@ const CardTile = ({ card, labels, setDefaultPaymentMethod }: Props) => {
         </CardTileHeading>
         {isCreditCard ? getMakeDefaultBadge({ card, labels, setDefaultPaymentMethod }) : null}
       </CardTileContext>
-      <CardTileDefaultSection>
+      <CardTileDefaultSection isVenmo>
         {isVenmo ? getVenmoUserName({ card }) : getCardDetails({ dataLocatorPrefix, card, labels })}
         <CardTileImgWrapper card={card}>
           <CardTileImg

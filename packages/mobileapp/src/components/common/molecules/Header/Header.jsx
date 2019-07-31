@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import { getLocator } from '@tcp/core/src/utils/utils.native';
+import HeaderPromo from '../HeaderPromo/HeaderPromo';
 import {
   Container,
   MessageContainer,
@@ -14,11 +15,13 @@ import {
   BackgroundView,
   CartIconView,
   ImageColor,
+  HeaderPromoContainer,
 } from './Header.style';
 
 // @flow
 type Props = {
   labels: object,
+  headerPromo: Array,
 };
 
 /**
@@ -67,7 +70,7 @@ class Header extends React.PureComponent<Props> {
       lbl_header_welcomeMessage: '',
     };
 
-    const { labels } = this.props;
+    const { labels, headerPromo } = this.props;
 
     if (labels) {
       headerLabels = labels;
@@ -127,6 +130,9 @@ class Header extends React.PureComponent<Props> {
             />
           </CartContainer>
         </Container>
+        <HeaderPromoContainer>
+          <HeaderPromo headerPromo={headerPromo} />
+        </HeaderPromoContainer>
       </SafeAreaViewStyle>
     );
   }
@@ -135,6 +141,7 @@ class Header extends React.PureComponent<Props> {
 const mapStateToProps = state => {
   return {
     labels: state.Labels.global && state.Labels.global.header,
+    headerPromo: state.Header && state.Header.promoTextBannerCarousel,
   };
 };
 

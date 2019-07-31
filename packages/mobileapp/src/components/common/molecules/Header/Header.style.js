@@ -68,6 +68,12 @@ export const TextStyle = { position: 'absolute', marginTop: 18, paddingRight: 5.
 
 export const ImageColor = { tintColor: 'gray' };
 
+export const HeaderPromoContainer = styled.View`
+  height: 45px;
+  background: ${props => props.theme.colors.PRIMARY.PALEGRAY};
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
 export default {
   Container,
   MessageContainer,
@@ -80,4 +86,5 @@ export default {
   BackgroundView,
   CartIconView,
   ImageColor,
+  HeaderPromoContainer,
 };

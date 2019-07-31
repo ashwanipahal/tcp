@@ -41,6 +41,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
             "secondary",
           ]
         }
+        text=""
       />
     </Styled(Text)>
     <Styled(View)>
@@ -53,11 +54,14 @@ exports[`CardTile should render correctly with amex card 1`] = `
               "secondary",
             ]
           }
+          text=""
         />
       </Styled(Text)>
     </Styled(View)>
   </Styled(View)>
-  <Styled(View)>
+  <Styled(View)
+    isVenmo={true}
+  >
     <View>
       <Styled(BodyCopy)
         dataLocator="payment-creditdebitendingtext"
@@ -131,18 +135,24 @@ exports[`CardTile should render correctly with amex card 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
+        customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
+        text=""
         to="/#"
         underline={true}
+        visible={false}
       />
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
+      customStyle={Object {}}
       dataLocator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
+      text=""
       to="/#"
       underline={true}
+      visible={false}
     />
   </Styled(View)>
 </Styled(View)>
@@ -189,18 +199,24 @@ exports[`CardTile should render correctly with discover card 1`] = `
             "secondary",
           ]
         }
+        text=""
       />
     </Styled(Text)>
     <Styled(Anchor)
       anchorVariation="primary"
+      customStyle={Object {}}
       dataLocator="payment-makedefault"
       fontSizeVariation="small"
       onPress={[Function]}
+      text=""
       to="/#"
       underline={true}
+      visible={false}
     />
   </Styled(View)>
-  <Styled(View)>
+  <Styled(View)
+    isVenmo={true}
+  >
     <View>
       <Styled(BodyCopy)
         dataLocator="payment-creditdebitendingtext"
@@ -274,18 +290,24 @@ exports[`CardTile should render correctly with discover card 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
+        customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
+        text=""
         to="/#"
         underline={true}
+        visible={false}
       />
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
+      customStyle={Object {}}
       dataLocator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
+      text=""
       to="/#"
       underline={true}
+      visible={false}
     />
   </Styled(View)>
 </Styled(View)>
@@ -332,10 +354,13 @@ exports[`CardTile should render correctly with gift card 1`] = `
             "secondary",
           ]
         }
+        text=""
       />
     </Styled(Text)>
   </Styled(View)>
-  <Styled(View)>
+  <Styled(View)
+    isVenmo={true}
+  >
     <View>
       <Styled(BodyCopy)
         dataLocator="payment-giftcardendingtext"
@@ -395,18 +420,24 @@ exports[`CardTile should render correctly with gift card 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
+        customStyle={Object {}}
         dataLocator="payment-giftcardeditlink"
         fontSizeVariation="large"
+        text=""
         to="/#"
         underline={true}
+        visible={false}
       />
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
+      customStyle={Object {}}
       dataLocator="payment-giftcarddeletelink"
       fontSizeVariation="large"
+      text=""
       to="/#"
       underline={true}
+      visible={false}
     />
   </Styled(View)>
 </Styled(View)>
@@ -453,18 +484,24 @@ exports[`CardTile should render correctly with master card 1`] = `
             "secondary",
           ]
         }
+        text=""
       />
     </Styled(Text)>
     <Styled(Anchor)
       anchorVariation="primary"
+      customStyle={Object {}}
       dataLocator="payment-makedefault"
       fontSizeVariation="small"
       onPress={[Function]}
+      text=""
       to="/#"
       underline={true}
+      visible={false}
     />
   </Styled(View)>
-  <Styled(View)>
+  <Styled(View)
+    isVenmo={true}
+  >
     <View>
       <Styled(BodyCopy)
         dataLocator="payment-creditdebitendingtext"
@@ -538,18 +575,24 @@ exports[`CardTile should render correctly with master card 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
+        customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
+        text=""
         to="/#"
         underline={true}
+        visible={false}
       />
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
+      customStyle={Object {}}
       dataLocator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
+      text=""
       to="/#"
       underline={true}
+      visible={false}
     />
   </Styled(View)>
 </Styled(View)>
@@ -596,10 +639,13 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
             "secondary",
           ]
         }
+        text=""
       />
     </Styled(Text)>
   </Styled(View)>
-  <Styled(View)>
+  <Styled(View)
+    isVenmo={true}
+  >
     <View>
       <Styled(BodyCopy)
         dataLocator="payment-giftcardendingtext"
@@ -659,18 +705,24 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
+        customStyle={Object {}}
         dataLocator="payment-giftcardeditlink"
         fontSizeVariation="large"
+        text=""
         to="/#"
         underline={true}
+        visible={false}
       />
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
+      customStyle={Object {}}
       dataLocator="payment-giftcarddeletelink"
       fontSizeVariation="large"
+      text=""
       to="/#"
       underline={true}
+      visible={false}
     />
   </Styled(View)>
 </Styled(View)>
@@ -717,18 +769,24 @@ exports[`CardTile should render correctly with plcc card 1`] = `
             "secondary",
           ]
         }
+        text=""
       />
     </Styled(Text)>
     <Styled(Anchor)
       anchorVariation="primary"
+      customStyle={Object {}}
       dataLocator="payment-makedefault"
       fontSizeVariation="small"
       onPress={[Function]}
+      text=""
       to="/#"
       underline={true}
+      visible={false}
     />
   </Styled(View)>
-  <Styled(View)>
+  <Styled(View)
+    isVenmo={true}
+  >
     <View>
       <Styled(BodyCopy)
         dataLocator="payment-creditdebitendingtext"
@@ -794,18 +852,24 @@ exports[`CardTile should render correctly with plcc card 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
+        customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
+        text=""
         to="/#"
         underline={true}
+        visible={false}
       />
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
+      customStyle={Object {}}
       dataLocator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
+      text=""
       to="/#"
       underline={true}
+      visible={false}
     />
   </Styled(View)>
 </Styled(View)>
@@ -854,10 +918,13 @@ exports[`CardTile should render correctly with venmocard 1`] = `
             "secondary",
           ]
         }
+        text=""
       />
     </Styled(Text)>
   </Styled(View)>
-  <Styled(View)>
+  <Styled(View)
+    isVenmo={true}
+  >
     <Styled(Text)
       dataLocator="payment-venmoid"
     >
@@ -912,10 +979,13 @@ exports[`CardTile should render correctly with venmocard 1`] = `
     <Styled(View) />
     <Styled(Anchor)
       anchorVariation="primary"
+      customStyle={Object {}}
       dataLocator="payment-venmodeletelink"
       fontSizeVariation="large"
+      text=""
       to="/#"
       underline={true}
+      visible={false}
     />
   </Styled(View)>
 </Styled(View)>
@@ -962,18 +1032,24 @@ exports[`CardTile should render correctly with visa card 1`] = `
             "secondary",
           ]
         }
+        text=""
       />
     </Styled(Text)>
     <Styled(Anchor)
       anchorVariation="primary"
+      customStyle={Object {}}
       dataLocator="payment-makedefault"
       fontSizeVariation="small"
       onPress={[Function]}
+      text=""
       to="/#"
       underline={true}
+      visible={false}
     />
   </Styled(View)>
-  <Styled(View)>
+  <Styled(View)
+    isVenmo={true}
+  >
     <View>
       <Styled(BodyCopy)
         dataLocator="payment-creditdebitendingtext"
@@ -1047,18 +1123,24 @@ exports[`CardTile should render correctly with visa card 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
+        customStyle={Object {}}
         dataLocator="payment-creditdebiteditlink"
         fontSizeVariation="large"
+        text=""
         to="/#"
         underline={true}
+        visible={false}
       />
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
+      customStyle={Object {}}
       dataLocator="payment-creditdebitdeletelink"
       fontSizeVariation="large"
+      text=""
       to="/#"
       underline={true}
+      visible={false}
     />
   </Styled(View)>
 </Styled(View)>

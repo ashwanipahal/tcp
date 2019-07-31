@@ -2,7 +2,10 @@ import layoutAbstractor from './layout';
 import labelsAbstractor from './labels';
 import headerAbstractor from './header';
 import footerAbstractor from './footer';
+import navigationAbstractor from './navigation';
 import handler from '../../handler';
+import { getAPIConfig } from '../../../utils';
+
 import { defaultBrand, defaultChannel, defaultCountry } from '../../api.constants';
 
 /**
@@ -10,8 +13,9 @@ import { defaultBrand, defaultChannel, defaultCountry } from '../../api.constant
  *  -   Header
  *  -   Footer
  *  -   Labels
+ *  -   Navigation
  */
-const bootstrapModules = ['labels', 'header', 'footer'];
+const bootstrapModules = ['labels', 'header', 'footer', 'navigation'];
 
 /**
  * Asynchronous function to fetch data from service for given array of moduleIds
@@ -25,6 +29,9 @@ const fetchBootstrapData = async ({ pages, labels, brand, country, channel }) =>
     name: 'layout',
     data: {
       path: page,
+      brand,
+      country,
+      channel,
     },
   }));
 
@@ -59,6 +66,13 @@ const fetchBootstrapData = async ({ pages, labels, brand, country, channel }) =>
           channel,
         };
         break;
+      case 'navigation':
+        data = {
+          brand,
+          country,
+          channel,
+        };
+        break;
       default:
         data = pages;
     }
@@ -82,15 +96,16 @@ const fetchBootstrapData = async ({ pages, labels, brand, country, channel }) =>
  */
 const bootstrap = async pages => {
   const response = {};
-
+  const apiConfig = typeof getAPIConfig === 'function' ? getAPIConfig() : '';
   const bootstrapParams = {
     pages,
     labels: {},
-    brand: defaultBrand,
+    brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
     channel: defaultChannel,
-    country: defaultCountry,
+    country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,
   };
 
+  // TODO - This should be ideally done in Handler of graphQL
   try {
     const bootstrapData = await fetchBootstrapData(bootstrapParams);
     for (let i = 0; i < pages.length; i += 1) {
@@ -102,6 +117,8 @@ const bootstrap = async pages => {
     response.header = await headerAbstractor.processData(bootstrapData.header);
     response.footer = await footerAbstractor.processData(bootstrapData.footer);
     response.labels = await labelsAbstractor.processData(bootstrapData.labels);
+    response.navigation = navigationAbstractor.processData(bootstrapData.navigation);
+    response.nav = await navigationAbstractor.getMock();
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);
