@@ -77,19 +77,19 @@ class LoginForm extends React.PureComponent<Props> {
             )}
             <BodyCopy component="div">
               {showRecaptcha && (
-              <>
-                <Recaptcha
-                  verifyCallback={token => change('recaptchaToken', token)}
-                  expiredCallback={() => change('recaptchaToken', '')}
-                />
-                <Field
-                  component={TextBox}
-                  type="hidden"
-                  name="recaptchaToken"
-                  data-locator="login-recaptchcb"
-                />
-              </>
-            )}
+                <>
+                  <Recaptcha
+                    verifyCallback={token => change('recaptchaToken', token)}
+                    expiredCallback={() => change('recaptchaToken', '')}
+                  />
+                  <Field
+                    component={TextBox}
+                    type="hidden"
+                    name="recaptchaToken"
+                    data-locator="login-recaptchcb"
+                  />
+                </>
+              )}
             </BodyCopy>
           </BodyCopy>
           <BodyCopy component="div" textAlign="center" className="elem-mb-LRG">
@@ -103,7 +103,16 @@ class LoginForm extends React.PureComponent<Props> {
             >
               {labels.ACC_LBL_LOGIN_CTA}
             </Button>
-            <Anchor to="/">{labels.ACC_LBL_LOGIN_FORGET_PASSWORD_CTA}</Anchor>
+            <Anchor
+              className="addAddress__anchor__back"
+              fontSizeVariation="xlarge"
+              anchorVariation="secondary"
+              to="/account?id=address-book"
+              data-locator="addnewaddress-back"
+              onClick={this.showForgotPasswordForm}
+            >
+              {labels.ACC_LBL_LOGIN_FORGET_PASSWORD_CTA}
+            </Anchor>
           </BodyCopy>
           <BodyCopy component="div" className="border elem-pt-LRG elem-pl-MED elem-pr-MED">
             <BodyCopy textAlign="center" className="elem-mb-LRG">
@@ -122,7 +131,7 @@ class LoginForm extends React.PureComponent<Props> {
         </Button>
       </div>
     );
-  };
+  }
 }
 
 LoginForm.propTypes = {
@@ -140,8 +149,8 @@ LoginForm.defaultProps = {
   className: '',
   loginErrorMessage: '',
   showRecaptcha: false,
-  change: () => { },
-  onCreateAccountClick: () => { },
+  change: () => {},
+  onCreateAccountClick: () => {},
   showSavePlcc: false,
 };
 

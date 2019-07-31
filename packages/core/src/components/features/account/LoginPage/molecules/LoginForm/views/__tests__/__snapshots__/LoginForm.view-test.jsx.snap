@@ -10,18 +10,6 @@ exports[`LoginForm component should renders correctly 1`] = `
     noValidate={true}
     onSubmit={[Function]}
   >
-<<<<<<< HEAD
-    <Field
-      component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "attrs": Array [],
-          "componentStyle": ComponentStyle {
-            "componentId": "sc-bxivhb",
-            "isStatic": false,
-            "rules": Array [
-              "
-=======
     <Styled(BodyCopy)
       className="elem-mb-LRG"
       color="text.primary"
@@ -39,11 +27,10 @@ exports[`LoginForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bxivhb",
               "isStatic": false,
               "rules": Array [
                 "
->>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
   ",
                 "
   position: relative;
@@ -153,52 +140,8 @@ exports[`LoginForm component should renders correctly 1`] = `
   }
 
   ",
-<<<<<<< HEAD
-              [Function],
-              ";
-",
-              ";
-",
-            ],
-          },
-          "displayName": "Styled(TextBox)",
-          "foldedComponentIds": Array [],
-          "render": [Function],
-          "styledComponentId": "sc-bxivhb",
-          "target": [Function],
-          "toString": [Function],
-          "warnTooManyClasses": [Function],
-          "withComponent": [Function],
-        }
-      }
-      dataLocator=""
-      id="emailAddress"
-      name="emailAddress"
-      showSuccessCheck={false}
-    />
-    <Field
-      component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "attrs": Array [],
-          "componentStyle": ComponentStyle {
-            "componentId": "sc-dnqmqq",
-            "isStatic": true,
-            "rules": Array [
-              "
-  ",
-              "
-  position: relative;
-
-  a {
-    position: absolute;
-    right: 0;
-    top: 12px;
-  }
-=======
                 [Function],
                 ";
->>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
 ",
                 ";
 ",
@@ -207,51 +150,27 @@ exports[`LoginForm component should renders correctly 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bxivhb",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
         }
-<<<<<<< HEAD
-      }
-      dataLocator=""
-      id="password"
-      name="password"
-      showSuccessCheck={false}
-    />
-    <Styled(BodyCopy)
-      className={null}
-      color="text.primary"
-      component="div"
-      fontFamily="primary"
-      fontSize={12}
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="left"
-    >
-=======
         dataLocator=""
         enableSuccessCheck={false}
         id="emailAddress"
         name="emailAddress"
+        showSuccessCheck={false}
       />
->>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
       <Field
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-<<<<<<< HEAD
-              "componentId": "sc-ifAKCX",
-              "isStatic": false,
-=======
               "componentId": "sc-dnqmqq",
               "isStatic": true,
->>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
               "rules": Array [
                 "
   ",
@@ -271,11 +190,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-<<<<<<< HEAD
-            "styledComponentId": "sc-ifAKCX",
-=======
             "styledComponentId": "sc-dnqmqq",
->>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -286,31 +201,8 @@ exports[`LoginForm component should renders correctly 1`] = `
         enableSuccessCheck={false}
         id="password"
         name="password"
+        showSuccessCheck={false}
       />
-<<<<<<< HEAD
-    </Styled(BodyCopy)>
-    <Styled(BodyCopy)
-      className={null}
-      color="text.primary"
-      component="div"
-      fontFamily="primary"
-      fontSize={12}
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="left"
-    >
-      <Field
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-ifAKCX",
-              "isStatic": false,
-              "rules": Array [
-                "
-=======
       <Styled(BodyCopy)
         className={null}
         color="text.primary"
@@ -329,11 +221,10 @@ exports[`LoginForm component should renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-bxivhb",
+                "componentId": "sc-ifAKCX",
                 "isStatic": false,
                 "rules": Array [
                   "
->>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
   ",
                   "
   display: inline-flex;
@@ -406,30 +297,17 @@ exports[`LoginForm component should renders correctly 1`] = `
 ",
                   ";
 ",
-<<<<<<< HEAD
-              ],
-            },
-            "displayName": "Styled(InputCheckbox)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-ifAKCX",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-=======
                 ],
               },
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-bxivhb",
+              "styledComponentId": "sc-ifAKCX",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
               "withComponent": [Function],
             }
->>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
           }
           dataLocator=""
           name="rememberMe"
@@ -456,40 +334,6 @@ exports[`LoginForm component should renders correctly 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
-<<<<<<< HEAD
-      textAlign="left"
-    />
-  </Styled(BodyCopy)>
-  <Styled(BodyCopy)
-    className="elem-mb-LRG"
-    color="text.primary"
-    component="div"
-    fontFamily="primary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="center"
-  >
-    <Styled(Button)
-      buttonVariation="fixed-width"
-      className="elem-mb-XS"
-      data-locator=""
-      fill="BLUE"
-      fullWidth={true}
-      type="submit"
-    />
-    <Styled(Anchor)
-      anchorVariation="secondary"
-      className="addAddress__anchor__back"
-      data-locator="addnewaddress-back"
-      fontSizeVariation="xlarge"
-      onClick={[Function]}
-      to="/account?id=address-book"
-    />
-  </Styled(BodyCopy)>
-</form>
-=======
       textAlign="center"
     >
       <Styled(Button)
@@ -501,7 +345,12 @@ exports[`LoginForm component should renders correctly 1`] = `
         type="submit"
       />
       <Styled(Anchor)
-        to="/"
+        anchorVariation="secondary"
+        className="addAddress__anchor__back"
+        data-locator="addnewaddress-back"
+        fontSizeVariation="xlarge"
+        onClick={[Function]}
+        to="/account?id=address-book"
       />
     </Styled(BodyCopy)>
     <Styled(BodyCopy)
@@ -536,7 +385,6 @@ exports[`LoginForm component should renders correctly 1`] = `
     type="button"
   />
 </div>
->>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
 `;
 
 exports[`LoginForm component should renders correctly with error 1`] = `
@@ -552,15 +400,6 @@ exports[`LoginForm component should renders correctly with error 1`] = `
     <Styled(Notification)
       colSize={
         Object {
-<<<<<<< HEAD
-          "$$typeof": Symbol(react.forward_ref),
-          "attrs": Array [],
-          "componentStyle": ComponentStyle {
-            "componentId": "sc-bxivhb",
-            "isStatic": false,
-            "rules": Array [
-              "
-=======
           "large": 12,
           "medium": 8,
           "small": 6,
@@ -586,11 +425,10 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-htpNat",
+              "componentId": "sc-bxivhb",
               "isStatic": false,
               "rules": Array [
                 "
->>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
   ",
                 "
   position: relative;
@@ -700,52 +538,8 @@ exports[`LoginForm component should renders correctly with error 1`] = `
   }
 
   ",
-<<<<<<< HEAD
-              [Function],
-              ";
-",
-              ";
-",
-            ],
-          },
-          "displayName": "Styled(TextBox)",
-          "foldedComponentIds": Array [],
-          "render": [Function],
-          "styledComponentId": "sc-bxivhb",
-          "target": [Function],
-          "toString": [Function],
-          "warnTooManyClasses": [Function],
-          "withComponent": [Function],
-        }
-      }
-      dataLocator=""
-      id="emailAddress"
-      name="emailAddress"
-      showSuccessCheck={false}
-    />
-    <Field
-      component={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "attrs": Array [],
-          "componentStyle": ComponentStyle {
-            "componentId": "sc-dnqmqq",
-            "isStatic": true,
-            "rules": Array [
-              "
-  ",
-              "
-  position: relative;
-
-  a {
-    position: absolute;
-    right: 0;
-    top: 12px;
-  }
-=======
                 [Function],
                 ";
->>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
 ",
                 ";
 ",
@@ -754,51 +548,27 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "displayName": "Styled(TextBox)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-htpNat",
+            "styledComponentId": "sc-bxivhb",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
         }
-<<<<<<< HEAD
-      }
-      dataLocator=""
-      id="password"
-      name="password"
-      showSuccessCheck={false}
-    />
-    <Styled(BodyCopy)
-      className={null}
-      color="text.primary"
-      component="div"
-      fontFamily="primary"
-      fontSize={12}
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="left"
-    >
-=======
         dataLocator=""
         enableSuccessCheck={false}
         id="emailAddress"
         name="emailAddress"
+        showSuccessCheck={false}
       />
->>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
       <Field
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-<<<<<<< HEAD
-              "componentId": "sc-ifAKCX",
-              "isStatic": false,
-=======
               "componentId": "sc-dnqmqq",
               "isStatic": true,
->>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
               "rules": Array [
                 "
   ",
@@ -818,11 +588,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-<<<<<<< HEAD
-            "styledComponentId": "sc-ifAKCX",
-=======
             "styledComponentId": "sc-dnqmqq",
->>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -833,31 +599,8 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         enableSuccessCheck={false}
         id="password"
         name="password"
+        showSuccessCheck={false}
       />
-<<<<<<< HEAD
-    </Styled(BodyCopy)>
-    <Styled(BodyCopy)
-      className={null}
-      color="text.primary"
-      component="div"
-      fontFamily="primary"
-      fontSize={12}
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="left"
-    >
-      <Field
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-ifAKCX",
-              "isStatic": false,
-              "rules": Array [
-                "
-=======
       <Styled(BodyCopy)
         className={null}
         color="text.primary"
@@ -876,11 +619,10 @@ exports[`LoginForm component should renders correctly with error 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-bxivhb",
+                "componentId": "sc-ifAKCX",
                 "isStatic": false,
                 "rules": Array [
                   "
->>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
   ",
                   "
   display: inline-flex;
@@ -953,30 +695,17 @@ exports[`LoginForm component should renders correctly with error 1`] = `
 ",
                   ";
 ",
-<<<<<<< HEAD
-              ],
-            },
-            "displayName": "Styled(InputCheckbox)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-ifAKCX",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
-=======
                 ],
               },
               "displayName": "Styled(InputCheckbox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-bxivhb",
+              "styledComponentId": "sc-ifAKCX",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
               "withComponent": [Function],
             }
->>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
           }
           dataLocator=""
           name="rememberMe"
@@ -1003,40 +732,6 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       fontWeight="regular"
       letterSpacing="normal"
       lineHeight="normal"
-<<<<<<< HEAD
-      textAlign="left"
-    />
-  </Styled(BodyCopy)>
-  <Styled(BodyCopy)
-    className="elem-mb-LRG"
-    color="text.primary"
-    component="div"
-    fontFamily="primary"
-    fontSize={12}
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="center"
-  >
-    <Styled(Button)
-      buttonVariation="fixed-width"
-      className="elem-mb-XS"
-      data-locator=""
-      fill="BLUE"
-      fullWidth={true}
-      type="submit"
-    />
-    <Styled(Anchor)
-      anchorVariation="secondary"
-      className="addAddress__anchor__back"
-      data-locator="addnewaddress-back"
-      fontSizeVariation="xlarge"
-      onClick={[Function]}
-      to="/account?id=address-book"
-    />
-  </Styled(BodyCopy)>
-</form>
-=======
       textAlign="center"
     >
       <Styled(Button)
@@ -1048,7 +743,12 @@ exports[`LoginForm component should renders correctly with error 1`] = `
         type="submit"
       />
       <Styled(Anchor)
-        to="/"
+        anchorVariation="secondary"
+        className="addAddress__anchor__back"
+        data-locator="addnewaddress-back"
+        fontSizeVariation="xlarge"
+        onClick={[Function]}
+        to="/account?id=address-book"
       />
     </Styled(BodyCopy)>
     <Styled(BodyCopy)
@@ -1083,5 +783,4 @@ exports[`LoginForm component should renders correctly with error 1`] = `
     type="button"
   />
 </div>
->>>>>>> 6610b48dd34b903fd346f6f73b95a9e4dc15cb02
 `;
