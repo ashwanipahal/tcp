@@ -11,6 +11,7 @@ export const LoginSection = ({
   loginErrorMessage,
   initialValues,
   showRecaptcha,
+  onCreateAccountClick,
 }) => {
   return (
     <Row>
@@ -30,6 +31,7 @@ export const LoginSection = ({
           initialValues={initialValues}
           showRecaptcha={showRecaptcha}
           className="elem-mb-LRG"
+          onCreateAccountClick={onCreateAccountClick}
         />
       </Col>
     </Row>
@@ -42,11 +44,13 @@ LoginSection.propTypes = {
   loginErrorMessage: PropTypes.string,
   initialValues: PropTypes.shape({}).isRequired,
   showRecaptcha: PropTypes.bool,
+  onCreateAccountClick: PropTypes.func,
 };
 
 LoginSection.defaultProps = {
   loginErrorMessage: '',
   showRecaptcha: false,
+  onCreateAccountClick: () => {},
 };
 
 export default LoginSection;
