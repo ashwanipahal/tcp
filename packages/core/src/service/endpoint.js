@@ -1,5 +1,11 @@
 /* eslint-disable */
 const endpoints = {
+  getProductSkuInfo: {
+    method: 'get',
+    baseURI: 'https://search.unbxd.io',
+    //  relURI:'/8eb8cb308b493ec0a6d92bff22ef8df3/qa1-childrensplace-com702771542012808/search?variants=true&variants.count=100&version=V2&rows=20&pagetype=boolean&q=2092425&promotion=false&fields=alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant,%20low_offer_price,%20high_offer_price,%20low_list_price,%20high_list_price,long_product_title&uid=uid-1562746344280-64813',
+  },
+
   getPlpProducts: {
     method: 'get',
     baseURI: 'https://search.unbxd.io',
@@ -116,6 +122,10 @@ const endpoints = {
     baseURI: 'https://test4.childrensplace.com',
     method: 'post',
     relURI: '/api/v2/account/addCreditCardDetails',
+  },
+  createAccount: {
+    method: 'post',
+    relURI: '/api/v2/wallet/addCustomerRegistration',
   },
 };
 export default endpoints;

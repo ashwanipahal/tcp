@@ -45,5 +45,6 @@ exports[`Header component renders correctly 1`] = `
       </Styled(Col)>
     </Styled(Row)>
   </styled.div>
+  <Connect(OverlayModal) />
 </header>
 `;

@@ -1,29 +1,23 @@
 import styled, { css } from 'styled-components';
-import { Carousel, PromoTextBanner, LinkText, ImageGrid } from '..';
+import { PromoTextBanner, LinkText, ImageGrid } from '..';
+import { getIconPath } from '../../../../utils';
 
-const StyledCarousal = styled(Carousel)`
-  .slick-arrow {
-    top: 44%;
-  }
-  .slick-next {
-    height: 50px;
-    right: -68px;
-  }
-  .slick-prev {
-    height: 50px;
-    left: -68px;
-  }
-  .slick-dots {
-    bottom: -10px;
-  }
-  .slick-dots li button {
-    pointer-events: none;
-  }
-`;
+const darkArrowLarge = getIconPath('carousel-big-carrot');
+
 const StyledPromoTextBanner = styled(PromoTextBanner)`
+  .style2 {
+    font-size: ${props => props.theme.typography.fontSizes.fs42};
+    @media ${props => props.theme.mediaQuery.medium} {
+      font-size: ${props => props.theme.typography.fontSizes.fs64};
+    }
+  }
   .style3 {
     color: ${props => props.theme.colorPalette.black};
     font-weight: ${props => props.theme.typography.fontWeights.black};
+    font-size: ${props => props.theme.typography.fontSizes.fs64};
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs64};
+    }
   }
 `;
 const StyledLinkText = styled(LinkText)`
@@ -63,10 +57,29 @@ const StyledModuleK = css`
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
   }
+  .module-k__carousal {
+    .slick-arrow {
+      top: 44%;
+    }
+    .slick-next {
+      background-image: url(${darkArrowLarge});
+      height: 52px;
+      right: -68px;
+      width: 15px;
+    }
+    .slick-prev {
+      background-image: url(${darkArrowLarge});
+      height: 52px;
+      left: -68px;
+      width: 15px;
+    }
+    .slick-dots {
+      bottom: -10px;
+    }
+  }
 `;
 
 export {
-  StyledCarousal as Carousel,
   StyledPromoTextBanner as PromoTextBanner,
   StyledLinkText as LinkText,
   StyledImageGrid as ImageGrid,
@@ -74,7 +87,6 @@ export {
 };
 
 export default {
-  Carousel: StyledCarousal,
   PromoTextBanner: StyledPromoTextBanner,
   LinkText: StyledLinkText,
   ImageGrid: StyledImageGrid,

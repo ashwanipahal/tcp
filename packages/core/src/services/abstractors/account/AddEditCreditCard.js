@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import { executeStatefulAPICall } from '../../handler';
 import { getAPIConfig } from '../../../utils';
 import endpoints from '../../endpoints';
