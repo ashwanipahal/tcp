@@ -9,11 +9,11 @@ const LoginView = ({
   initialValues,
   showRecaptcha,
   resetLoginState,
-  onSubmitForgot,
+  SubmitForgot,
   showNotification,
   successFullResetEmail,
   resetForm,
-  resetResponse,
+  resetForgotPasswordErrorResponse,
 }) => {
   return (
     <LoginSection
@@ -23,11 +23,11 @@ const LoginView = ({
       initialValues={initialValues}
       showRecaptcha={showRecaptcha}
       resetLoginState={resetLoginState}
-      onSubmitForgot={onSubmitForgot}
+      SubmitForgot={SubmitForgot}
       showNotification={showNotification}
       successFullResetEmail={successFullResetEmail}
       resetForm={resetForm}
-      resetResponse={resetResponse}
+      resetForgotPasswordErrorResponse={resetForgotPasswordErrorResponse}
     />
   );
 };
@@ -38,10 +38,10 @@ LoginView.propTypes = {
   loginErrorMessage: PropTypes.string,
   initialValues: PropTypes.shape({}).isRequired,
   showRecaptcha: PropTypes.bool,
-  resetResponse: PropTypes.bool.isRequired,
+  resetForgotPasswordErrorResponse: PropTypes.bool.isRequired,
   resetForm: PropTypes.bool.isRequired,
   resetLoginState: PropTypes.bool.isRequired,
-  onSubmitForgot: PropTypes.bool.isRequired,
+  SubmitForgot: PropTypes.bool.isRequired,
   showNotification: PropTypes.bool.isRequired,
   successFullResetEmail: PropTypes.bool.isRequired,
 };

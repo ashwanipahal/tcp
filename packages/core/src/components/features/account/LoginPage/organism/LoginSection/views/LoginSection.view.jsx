@@ -34,12 +34,12 @@ class LoginSection extends React.PureComponent<Props> {
       showRecaptcha,
       loginInfo,
       getUserInfo,
-      onSubmitForgot,
+      SubmitForgot,
       showNotification,
       resetLoginState,
       successFullResetEmail,
       resetForm,
-      resetResponse,
+      resetForgotPasswordErrorResponse,
       className,
     } = this.props;
 
@@ -70,12 +70,12 @@ class LoginSection extends React.PureComponent<Props> {
 
           {resetPassword && (
             <ForgotPasswordView
-              onSubmitForgot={onSubmitForgot}
+              SubmitForgot={SubmitForgot}
               loginInfo={loginInfo}
               getUserInfo={getUserInfo}
               showNotification={showNotification}
               showForgotPasswordForm={this.showForgotPasswordForm}
-              resetResponse={resetResponse}
+              resetForgotPasswordErrorResponse={resetForgotPasswordErrorResponse}
               labels={labels}
               resetPassword={resetPassword}
               resetLoginState={resetLoginState}

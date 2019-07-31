@@ -4,7 +4,6 @@ import FORGOTPASSWORD_CONSTANTS from '../ForgotPassword.constants';
 const initialState = fromJS({
   showNotification: false,
   toggleSuccessfulEmailSection: null,
-  showCheckEmailSection: null,
 });
 
 const ForgotPasswordReducer = (state = initialState, action) => {

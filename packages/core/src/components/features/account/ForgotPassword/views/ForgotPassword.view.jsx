@@ -14,13 +14,14 @@ import Notification from '../../../../common/molecules/Notification';
 type Props = {
   pristine: any,
   className: any,
-  onSubmitForgot: Object => void,
+  SubmitForgot: Object => void,
   showNotification: any,
   showForgotPasswordForm: any,
-  resetResponse: any,
+  resetForgotPasswordErrorResponse: any,
   labels: any,
   resetLoginState: any,
   successFullResetEmail: any,
+  handleSubmit: string,
 };
 
 type State = {
@@ -34,18 +35,10 @@ class ForgotPasswordView extends React.Component<Props, State> {
     };
   }
 
-  changeHandler = e => {
-    this.setState({
-      email: e.target.value,
-    });
-  };
-
-  onFormSubmit = e => {
-    e.preventDefault();
-    const { email } = this.state;
-    const { onSubmitForgot } = this.props;
-    onSubmitForgot({
-      logonId: email.toUpperCase().trim(),
+  onFormSubmit = formData => {
+    const { SubmitForgot } = this.props;
+    SubmitForgot({
+      logonId: formData.Email.toUpperCase().trim(),
     });
   };
 
@@ -55,17 +48,19 @@ class ForgotPasswordView extends React.Component<Props, State> {
     resetLoginState();
     showForgotPasswordForm();
   };
-  /* eslint-disable */
+
   render() {
     const {
       pristine,
       className,
       showNotification,
-      resetResponse,
+      resetForgotPasswordErrorResponse,
       labels,
       successFullResetEmail,
+      handleSubmit,
     } = this.props;
-    const errorObject = resetResponse && resetResponse.get('errors');
+    const errorObject =
+      resetForgotPasswordErrorResponse && resetForgotPasswordErrorResponse.get('errors');
     const { email } = this.state;
     return (
       <React.Fragment className={className}>
@@ -81,7 +76,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
             {labels.FORGOT_PASSWORD_BACK_LOGIN}
           </Anchor>
         </div>
-        <form onSubmit={this.onFormSubmit} className={className}>
+        <form onSubmit={handleSubmit(this.onFormSubmit)} className={className}>
           {errorObject && showNotification && (
             <Notification
               status="error"
@@ -118,7 +113,6 @@ class ForgotPasswordView extends React.Component<Props, State> {
                   type="text"
                   component={TextBox}
                   value={email}
-                  onChange={this.changeHandler}
                 />
               </BodyCopy>
               <Button fill="BLUE" disabled={pristine} type="submit" buttonVariation="fixed-width">

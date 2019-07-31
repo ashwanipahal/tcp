@@ -14,7 +14,7 @@ describe('ForgotPasswordView component', () => {
       onFormSubmit: jest.fn(),
       showNotification: true,
       showForgotPasswordForm: true,
-      resetResponse: {},
+      resetForgotPasswordErrorResponse: {},
       labels: {},
     };
     const component = shallow(<ForgotPasswordView {...props} />);

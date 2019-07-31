@@ -43,11 +43,11 @@ class LoginPageContainer extends React.PureComponent {
       loginError,
       loginErrorMessage,
       showRecaptcha,
-      resetResponse,
+      resetForgotPasswordErrorResponse,
       resetForm,
       resetLoginState,
       getUserInfoAction,
-      onSubmitForgot,
+      SubmitForgot,
       showNotification,
       successFullResetEmail,
     } = this.props;
@@ -64,9 +64,9 @@ class LoginPageContainer extends React.PureComponent {
         initialValues={initialValues}
         showRecaptcha={showRecaptcha}
         resetLoginState={resetLoginState}
-        resetResponse={resetResponse}
+        resetForgotPasswordErrorResponse={resetForgotPasswordErrorResponse}
         resetForm={resetForm}
-        onSubmitForgot={onSubmitForgot}
+        SubmitForgot={SubmitForgot}
         getUserInfo={getUserInfoAction}
         showNotification={showNotification}
         successFullResetEmail={successFullResetEmail}
@@ -83,10 +83,10 @@ LoginPageContainer.propTypes = {
   loginError: PropTypes.bool,
   loginErrorMessage: PropTypes.string,
   showRecaptcha: PropTypes.bool,
-  resetResponse: PropTypes.bool.isRequired,
+  resetForgotPasswordErrorResponse: PropTypes.bool.isRequired,
   resetForm: PropTypes.bool.isRequired,
   getUserInfoAction: PropTypes.bool.isRequired,
-  onSubmitForgot: PropTypes.bool.isRequired,
+  SubmitForgot: PropTypes.bool.isRequired,
   showNotification: PropTypes.bool.isRequired,
   successFullResetEmail: PropTypes.bool.isRequired,
 };
@@ -107,7 +107,7 @@ const mapDispatchToProps = dispatch => {
     resetLoginState: () => {
       dispatch(resetLoginInfo());
     },
-    onSubmitForgot: payload => {
+    SubmitForgot: payload => {
       dispatch(resetPassword(payload));
     },
     resetForm: payload => {
@@ -122,7 +122,7 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     showNotification: getShowNotificationState(state),
-    resetResponse: getResetEmailResponse(state),
+    resetForgotPasswordErrorResponse: getResetEmailResponse(state),
     successFullResetEmail: toggleSuccessfulEmailSection(state),
     isUserLoggedIn: getUserLoggedInState(state),
     loginError: getLoginError(state),

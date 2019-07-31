@@ -67,12 +67,12 @@ class TCPWebApp extends App {
           <Provider store={store}>
             <GlobalStyle />
             <Grid>
-              {<Header />}
+              <Header />
               <div id="overlayWrapper">
                 <div id="overlayComponent" />
                 <Component {...pageProps} />
               </div>
-              {<Footer />}
+              <Footer />
             </Grid>
           </Provider>
         </ThemeProvider>
