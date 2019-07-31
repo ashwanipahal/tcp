@@ -1,6 +1,7 @@
 /* eslint-disable spaced-comment */
 import React from 'react';
 import { View, Text } from 'react-native';
+import Recaptcha from '@tcp/core/src/components/common/molecules/recaptcha/recaptcha.native';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import {
   CardTileWrapper,
@@ -270,7 +271,7 @@ const CardTile = ({
           />
         </CardCtaRow>
       )}
-
+      <Recaptcha />
       {getCtaRow(isGiftCard, isVenmo, balance, labels, dataLocatorPrefix, card, onGetBalanceCard)}
     </CardTileWrapper>
   );
