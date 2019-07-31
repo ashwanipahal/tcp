@@ -15,6 +15,10 @@ export default css`
     position: relative;
   }
 
+  .ReactModal__Body--open {
+    overflow: hidden;
+  }
+
   input[type='text']::-ms-clear {
     display: none;
   }
@@ -33,6 +37,10 @@ export default css`
 
   .textRight {
     text-align: right;
+  }
+
+  .textCenter {
+    text-align: center;
   }
 
   &.focus-styling {

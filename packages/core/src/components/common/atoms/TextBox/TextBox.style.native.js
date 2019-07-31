@@ -1,14 +1,24 @@
-import styled from 'styled-components/native';
+import styled, { css } from 'styled-components/native';
 
 const StyledTextBoxWrapper = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
 `;
 
+const getInputBottomColor = props => {
+  const { theme, meta } = props;
+  const { colorPalette } = theme;
+  const { dirty, error } = meta;
+  const borderColor = dirty && error !== undefined ? colorPalette.error : colorPalette.gray[500];
+  return `
+  border-bottom-color: ${borderColor};
+  `;
+};
+
+const TextBoxStyle = css`
+  ${getInputBottomColor};
+`;
+
 const StyledTextBox = styled.TextInput`
-  border-bottom-color: ${props =>
-    (props.error && props.theme.colorPalette.error) ||
-    (props.showSuccessCheck && props.theme.colorPalette.success) ||
-    props.theme.colorPalette.gray[500]};
   border-bottom-width: 1px;
   height: 40px;
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
@@ -49,6 +59,7 @@ const StyledSuccessIcon = styled.View`
 `;
 
 export {
+  TextBoxStyle,
   StyledTextBox,
   StyledLabel,
   StyledErrorIcon,

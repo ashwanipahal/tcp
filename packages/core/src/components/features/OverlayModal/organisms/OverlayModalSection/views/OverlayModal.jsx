@@ -23,10 +23,8 @@ class OverlayModal extends React.Component {
     super(props);
     const overlayElementWrapper = document.getElementById('overlayWrapper');
     const overlayElement = document.getElementById('overlayComponent');
-    const [body] = document.getElementsByTagName('body');
     this.overlayElementWrapper = overlayElementWrapper;
     this.overlayElement = overlayElement;
-    this.body = body;
     this.handleWindowClick = this.handleWindowClick.bind(this);
   }
 
@@ -34,7 +32,6 @@ class OverlayModal extends React.Component {
     this.overlayElementWrapper.style.position = 'relative';
     this.overlayElementWrapper.style.pointerEvents = 'none';
     this.overlayElement.classList.add('overlay');
-    this.body.style.overflow = 'hidden';
     /* istanbul ignore else */
     if (window) {
       window.addEventListener('mousedown', this.handleWindowClick);
@@ -46,7 +43,6 @@ class OverlayModal extends React.Component {
     this.overlayElementWrapper.style.position = 'static';
     this.overlayElementWrapper.style.pointerEvents = 'auto;';
     if (this.overlayElement) this.overlayElement.classList.remove('overlay');
-    this.body.style.overflow = 'visible';
     /* istanbul ignore else */
     if (window) {
       window.removeEventListener('mousedown', this.handleWindowClick);
@@ -63,6 +59,7 @@ class OverlayModal extends React.Component {
       const compRectBoundingX = comp.getBoundingClientRect().x;
       const compWidth = comp.getBoundingClientRect().width;
       const modal = document.getElementById('dialogContent');
+      modal.style.maxHeight = window && `${window.innerHeight}px`;
       const modalWrapper = document.getElementById('modalWrapper');
       const modalTriangle = document.getElementById('modalTriangle');
       const modalRectBoundingX = modal && modal.getBoundingClientRect().x;

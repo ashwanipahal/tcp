@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputCheckbox component should render correctly 1`] = `
+<Styled(View)
+  borderColor="#ff0000"
+  borderWidth={0.65}
+  marginBottom={0}
+  marginTop={0}
+/>
+`;
