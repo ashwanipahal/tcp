@@ -132,12 +132,6 @@ exports[`CardTile should render correctly with amex card 1`] = `
       Los Angeles, CA 90028
     </Text>
   </Styled(View)>
-  <Recaptcha
-    onMessage={[Function]}
-    siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-    style={Object {}}
-    url="https://www.childrensplace.com"
-  />
   <Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
@@ -295,12 +289,6 @@ exports[`CardTile should render correctly with discover card 1`] = `
       Los Angeles, CA 90028
     </Text>
   </Styled(View)>
-  <Recaptcha
-    onMessage={[Function]}
-    siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-    style={Object {}}
-    url="https://www.childrensplace.com"
-  />
   <Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
@@ -433,18 +421,68 @@ exports[`CardTile should render correctly with gift card 1`] = `
       />
     </Styled(View)>
   </Styled(View)>
-  <Recaptcha
-    onMessage={[Function]}
-    siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-    style={Object {}}
-    url="https://www.childrensplace.com"
-  />
+  <View>
+    <Styled(View)>
+      <Recaptcha
+        onMessage={[Function]}
+        siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+        style={Object {}}
+        url="https://www.childrensplace.com"
+      />
+    </Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      data-locator="gift-card-recaptchcb"
+      id="recaptchaToken"
+      label=""
+      name="recaptchaToken"
+      title=""
+      type="hidden"
+    />
+  </View>
   <Styled(View)>
     <Styled(CustomButton)
       buttonVariation="variable-width"
       customStyle={Object {}}
       fullWidth=""
-      onPress={[Function]}
       text="CHECK BALANCE"
       url=""
     />
@@ -604,12 +642,6 @@ exports[`CardTile should render correctly with master card 1`] = `
       Los Angeles, CA 90028
     </Text>
   </Styled(View)>
-  <Recaptcha
-    onMessage={[Function]}
-    siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-    style={Object {}}
-    url="https://www.childrensplace.com"
-  />
   <Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
@@ -742,18 +774,68 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       />
     </Styled(View)>
   </Styled(View)>
-  <Recaptcha
-    onMessage={[Function]}
-    siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-    style={Object {}}
-    url="https://www.childrensplace.com"
-  />
+  <View>
+    <Styled(View)>
+      <Recaptcha
+        onMessage={[Function]}
+        siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+        style={Object {}}
+        url="https://www.childrensplace.com"
+      />
+    </Styled(View)>
+    <Field
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      data-locator="gift-card-recaptchcb"
+      id="recaptchaToken"
+      label=""
+      name="recaptchaToken"
+      title=""
+      type="hidden"
+    />
+  </View>
   <Styled(View)>
     <Styled(CustomButton)
       buttonVariation="variable-width"
       customStyle={Object {}}
       fullWidth=""
-      onPress={[Function]}
       text="CHECK BALANCE"
       url=""
     />
@@ -905,12 +987,6 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       Los Angeles, CA 90028
     </Text>
   </Styled(View)>
-  <Recaptcha
-    onMessage={[Function]}
-    siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-    style={Object {}}
-    url="https://www.childrensplace.com"
-  />
   <Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
@@ -1040,12 +1116,6 @@ exports[`CardTile should render correctly with venmocard 1`] = `
       />
     </Styled(View)>
   </Styled(View)>
-  <Recaptcha
-    onMessage={[Function]}
-    siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-    style={Object {}}
-    url="https://www.childrensplace.com"
-  />
   <Styled(View)>
     <Styled(View)>
       <Styled(View) />
@@ -1193,12 +1263,6 @@ exports[`CardTile should render correctly with visa card 1`] = `
       Los Angeles, CA 90028
     </Text>
   </Styled(View)>
-  <Recaptcha
-    onMessage={[Function]}
-    siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
-    style={Object {}}
-    url="https://www.childrensplace.com"
-  />
   <Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
