@@ -40,7 +40,7 @@ export class ProductListView extends React.Component {
     const { className, addToCartEcom, giftCardProducts } = this.props;
     let { data } = this.props;
     let allProducts = [];
-    if (giftCardProducts.length && data.length) {
+    if (giftCardProducts.length || data.length) {
       allProducts = [...data, ...giftCardProducts];
     }
 
