@@ -56,8 +56,7 @@ describe('LoginPage saga', () => {
       const response = {
         addressBook: [{}],
       };
-      getUserInfoGen.next(response);
-      const putDescriptor = getUserInfoGen.next().value;
+      const putDescriptor = getUserInfoGen.next(response).value;
       expect(putDescriptor).toEqual(put(setLoginInfo(response)));
     });
 

@@ -63,6 +63,22 @@ const NavMenuLevel1 = props => {
   };
 
   /**
+   * @function extractL1Information extracts the L1 information from the CMS object
+   * uses the unbxd object in case CMS object is not available
+   */
+  const extractL1Information = (name, description, mainCategory) => {
+    return {
+      name: (mainCategory && mainCategory.name) || name,
+      description:
+        (mainCategory &&
+          mainCategory.sizesRange &&
+          mainCategory.sizesRange[0] &&
+          mainCategory.sizesRange[0].text) ||
+        description,
+    };
+  };
+
+  /**
    * @function renderItem populates the L1 menu item from the data passed to it
    * @param {object} item Details of the L1 menu item passed from the loop
    */
@@ -83,25 +99,28 @@ const NavMenuLevel1 = props => {
         categoryImage: [],
       };
     }
+
     const { categoryImage } = mainCategory;
+
+    const L1InfoObject = extractL1Information(name, description, mainCategory);
 
     // In case of no category image, add the caret with the text
     if (categoryImage.length === 0) {
       return (
         <L1TouchableOpacityNoImage
           accessibilityRole="button"
-          onPress={() => ShowL2Navigation(item, name)}
+          onPress={() => ShowL2Navigation(item, L1InfoObject.name)}
         >
           <BodyCopy
             fontFamily="primary"
             fontSize="fs28"
             fontWeight="black"
             textAlign="center"
-            text={name}
+            text={L1InfoObject.name}
             color="text.primary"
           />
           <Image
-            alt={name}
+            alt={L1InfoObject.name}
             source={Icon}
             maxWidth={16}
             height={26}
@@ -113,10 +132,13 @@ const NavMenuLevel1 = props => {
     }
 
     return (
-      <L1TouchableOpacity accessibilityRole="button" onPress={() => ShowL2Navigation(item, name)}>
+      <L1TouchableOpacity
+        accessibilityRole="button"
+        onPress={() => ShowL2Navigation(item, L1InfoObject.name)}
+      >
         {categoryImage[0].position &&
           categoryImage[0].position === 'right' &&
-          renderTextBlock(name, description)}
+          renderTextBlock(L1InfoObject.name, L1InfoObject.description)}
         <Image
           alt={categoryImage && categoryImage[0].alt}
           source={{
@@ -126,7 +148,7 @@ const NavMenuLevel1 = props => {
           height={132}
         />
         {(!categoryImage[0].position || categoryImage[0].position === 'left') &&
-          renderTextBlock(name, description)}
+          renderTextBlock(L1InfoObject.name, L1InfoObject.description)}
       </L1TouchableOpacity>
     );
   };

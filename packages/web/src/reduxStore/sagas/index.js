@@ -16,6 +16,7 @@ import AddressVerificationSaga from '@tcp/core/src/components/features/account/A
 import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
 import AccountSaga from '@tcp/core/src/components/features/account/Account/container/Account.saga';
 import AddEditCreditCardSaga from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.saga';
+import CartPageSaga from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.saga';
 import CartSaga from '@tcp/core/src/components/features/CnC/Cart/containers/Cart.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
@@ -42,6 +43,7 @@ export default function* rootSaga() {
     AddEditCreditCardSaga(),
     AddGiftCardSaga(),
     AccountSaga(),
+    CartPageSaga(),
     CreateAccountSaga(),
     CartSaga(),
   ]);

@@ -1,7 +1,8 @@
 // @flow
 import React from 'react';
 import { Col, Row, Button, BodyCopy, Anchor } from '../../../atoms';
-import { Carousel, PromoTextBanner, LinkText, ImageGrid, style } from '../ModuleK.style';
+import { Carousel } from '../..';
+import { PromoTextBanner, LinkText, ImageGrid, style } from '../ModuleK.style';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/errorBoundary';
 import config from '../config';

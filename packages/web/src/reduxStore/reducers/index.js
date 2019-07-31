@@ -14,6 +14,7 @@ import AddGiftCardReducer from '@tcp/core/src/components/features/account/Paymen
 import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
 import AddressVerificationReducer from '@tcp/core/src/components/features/account/AddressVerification/container/AddressVerification.reducer';
 import AccountReducer from '@tcp/core/src/components/features/account/Account/container/Account.reducer';
+import CartPage from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import OverlayModalReducer from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.reducer';
 
 import {
@@ -36,6 +37,8 @@ import {
   ADD_GIFT_CARD_REDUCER_KEY,
   ADDED_TO_BAG_REDUCER_KEY,
   ACCOUNT_REDUCER_KEY,
+  // CART_REDUCER_KEY,
+  CARTPAGE_REDUCER_KEY,
   CART_REDUCER_KEY,
   OVERLAY_MODAL_REDUCER_KEY,
   NAVIGATION_REDUCER_KEY,
@@ -78,6 +81,7 @@ export default combineReducers({
   [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,
   [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,
   [ACCOUNT_REDUCER_KEY]: AccountReducer,
+  [CARTPAGE_REDUCER_KEY]: CartPage,
   [CART_REDUCER_KEY]: CartReducer,
   [OVERLAY_MODAL_REDUCER_KEY]: OverlayModalReducer,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
