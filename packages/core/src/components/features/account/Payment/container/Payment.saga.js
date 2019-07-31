@@ -52,8 +52,7 @@ export function* fetchModuleX({ payload = '' }) {
     const result = yield call(getModuleX, payload);
     yield put(setModuleX(result));
   } catch (err) {
-    // eslint-disable-next-line no-console
-    console.log(err);
+    yield null;
   }
 }
 
