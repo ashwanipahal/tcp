@@ -31,7 +31,6 @@ class LoginForm extends React.PureComponent<Props> {
       className,
       showRecaptcha,
       change,
-      onCreateAccountClick,
       showSavePlcc,
     } = this.props;
     return (
@@ -114,21 +113,7 @@ class LoginForm extends React.PureComponent<Props> {
               {labels.ACC_LBL_LOGIN_FORGET_PASSWORD_CTA}
             </Anchor>
           </BodyCopy>
-          <BodyCopy component="div" className="border elem-pt-LRG elem-pl-MED elem-pr-MED">
-            <BodyCopy textAlign="center" className="elem-mb-LRG">
-              {labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}
-            </BodyCopy>
-          </BodyCopy>
         </form>
-        <Button
-          fill="BLUE"
-          type="button"
-          fullWidth
-          buttonVariation="fixed-width"
-          onClick={onCreateAccountClick}
-        >
-          {labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
-        </Button>
       </div>
     );
   }
@@ -141,7 +126,6 @@ LoginForm.propTypes = {
   loginErrorMessage: PropTypes.string,
   showRecaptcha: PropTypes.bool,
   change: PropTypes.func,
-  onCreateAccountClick: PropTypes.func,
   showSavePlcc: PropTypes.bool,
 };
 
@@ -150,7 +134,6 @@ LoginForm.defaultProps = {
   loginErrorMessage: '',
   showRecaptcha: false,
   change: () => {},
-  onCreateAccountClick: () => {},
   showSavePlcc: false,
 };
 
