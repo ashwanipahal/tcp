@@ -8,9 +8,7 @@ const filterObject = (arr, searchedValue) => {
 export default (getOrderPointsSummary, lastAddedToBag) => {
   let pointsSummary = {};
   if (getOrderPointsSummary.orderItems) {
-    console.log('swsddsds', getOrderPointsSummary, lastAddedToBag);
     const lastAddedItem = filterObject(getOrderPointsSummary.orderItems, lastAddedToBag);
-    console.log('dcsdcdec', lastAddedItem);
     const {
       pointsToNextReward,
       estimatedRewards,
