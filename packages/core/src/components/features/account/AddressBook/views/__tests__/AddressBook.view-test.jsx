@@ -7,7 +7,7 @@ describe('AddressBook component', () => {
   it('should renders correctly when addresses are not present', () => {
     const props = {
       addresses: new List(),
-      labels: {},
+      labels: { addressBook: {}, common: {} },
     };
     const component = shallow(<AddressBook {...props} />);
     expect(component).toMatchSnapshot();
@@ -25,7 +25,7 @@ describe('AddressBook component', () => {
           phone1: '1234567890',
         },
       ]),
-      labels: {},
+      labels: { addressBook: {}, common: {} },
     };
     const component = shallow(<AddressBook {...props} />);
     expect(component).toMatchSnapshot();

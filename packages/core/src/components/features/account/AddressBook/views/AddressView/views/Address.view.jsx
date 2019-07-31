@@ -78,7 +78,7 @@ export class AddressView extends React.PureComponent<Props> {
               tag="h4"
               className="addressBook__separator"
             >
-              {labels.addressBookHeading}
+              {labels.addressBook.ACC_LBL_ADDRESS_BOOK_HEADING}
             </Heading>
             {addresses.size === 0 && <EmptyAddressListComponent labels={labels} />}
           </Col>
@@ -99,7 +99,7 @@ export class AddressView extends React.PureComponent<Props> {
               fill="BLUE"
               data-locator="addressbook-addnewaddress"
             >
-              {labels.addNewAddressCTA}
+              {labels.addressBook.ACC_LBL_ADD_NEW_ADDRESS_CTA}
             </Button>
           </Col>
         </Row>
@@ -108,7 +108,9 @@ export class AddressView extends React.PureComponent<Props> {
             status={showUpdatedNotification}
             colSize={{ large: 12, medium: 8, small: 6 }}
             message={
-              showUpdatedNotification === 'success' ? labels.successMessage : labels.errorMessage
+              showUpdatedNotification === 'success'
+                ? labels.common.ACC_LBL_SUCCESS_MESSAGE
+                : labels.common.ACC_LBL_ERROR_MESSAGE
             }
           />
         )}
@@ -125,12 +127,12 @@ export class AddressView extends React.PureComponent<Props> {
         <DeleteAddressModal
           openState={deleteModalMountedState}
           data={{
-            heading: labels.deleteAddressHeading,
-            title: labels.deleteAddressTitle,
+            heading: labels.addressBook.ACC_LBL_DELETE_ADDRESS_HEADING,
+            title: labels.addressBook.ACC_LBL_DELETE_ADDRESS_TITLE,
             description: selectedAddress,
             buttons: {
-              cancel: labels.cancel,
-              confirm: labels.deleteConfirm,
+              cancel: labels.common.ACC_LBL_DONT_DELETE,
+              confirm: labels.common.ACC_LBL_YES_DELETE,
             },
           }}
           setDeleteModalMountState={setDeleteModalMountState}

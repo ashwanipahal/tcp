@@ -8,7 +8,6 @@ import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
 import CartPage from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
-import CartReducer from '@tcp/core/src/components/features/CnC/Cart/containers/Cart.reducer';
 import {
   HEADER_REDUCER_KEY,
   LABEL_REDUCER_KEY,
@@ -21,7 +20,6 @@ import {
   ADD_GIFT_CARD_REDUCER_KEY,
   ADDRESSBOOK_REDUCER_KEY,
   ADDED_TO_BAG_REDUCER_KEY,
-  CART_REDUCER_KEY,
   NAVIGATION_REDUCER_KEY,
   FORM_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
@@ -52,6 +50,5 @@ export default combineReducers({
   [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,
   [FORM_REDUCER_KEY]: reduxFormReducer,
   [CARTPAGE_REDUCER_KEY]: CartPage,
-  [CART_REDUCER_KEY]: CartReducer,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
 });
