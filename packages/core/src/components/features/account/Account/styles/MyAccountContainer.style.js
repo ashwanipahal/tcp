@@ -14,7 +14,7 @@ const MyAccountStyles = css`
       display: none;
     }
     .is-visible-nav {
-      display: block;
+      display: flex;
     }
   }
 `;
