@@ -4,6 +4,7 @@ import Col from '../../../../common/atoms/Col';
 import MyAccountLeftNav from './MyAccountLeftNav.view';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/MyAccountContainer.style';
+import Dropdown from '../../../../common/molecules/Dropdown';
 
 // @flow
 type Props = {
@@ -26,8 +27,18 @@ const MyAccountLayoutView = (props: Props) => {
   return (
     <div className={className}>
       <Row>
+        <Col colSize={{ large: 12, medium: 4, small: 6 }} offsetLeft={{ medium: 2 }}>
+          <div className="is-hidden-nav">
+            <Dropdown options={navData} active="Account Overview" activeComponent={active} />
+          </div>
+        </Col>
+      </Row>
+
+      <Row>
         <Col colSize={{ large: 2, medium: 8, small: 6 }}>
-          <MyAccountLeftNav navData={navData} active={active} />
+          <div className="is-visible-nav">
+            <MyAccountLeftNav navData={navData} active={active} />
+          </div>
         </Col>
         <Col colSize={{ large: 10, medium: 8, small: 6 }}>
           <MainContent router={router} />
