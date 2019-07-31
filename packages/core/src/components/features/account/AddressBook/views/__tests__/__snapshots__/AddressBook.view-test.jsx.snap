@@ -1,64 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AddressBook component should renders correctly when addresses are not present 1`] = `
-<div>
-  <Styled(Row)
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    >
-      <Styled(HeadingStyle)
-        HeadingLarge="six"
-        className="addressBook__separator"
-        fontFamily="secondaryFontFamily"
-        tag="h4"
-      />
-      <Styled(EmptyAddressList)
-        labels={
-          Object {
-            "addressBook": Object {},
-            "common": Object {},
-          }
-        }
-      />
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Row)
-    className="addressBook__row--marginBottom"
-    fullBleed={true}
-  >
-    <Styled(Col)
-      className="addressBook__addNewCtaContainer"
-      colSize={
-        Object {
-          "large": 10,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-    >
-      <Styled(Button)
-        buttonVariation="variable-width"
-        data-locator="addressbook-addnewaddress"
-        fill="BLUE"
-        onClick={[Function]}
-      />
-    </Styled(Col)>
-  </Styled(Row)>
-  <Styled(Notification)
-    colSize={
-      Object {
-        "large": 12,
-        "medium": 8,
-        "small": 6,
-      }
+<StyledComponent
+  addresses={Immutable.List []}
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-jzJRlG",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .addressBook__separator {
+    border-bottom: 3px solid ",
+          [Function],
+          ";
+    padding-bottom: ",
+          [Function],
+          ";
+    margin-bottom: ",
+          [Function],
+          ";
+  }
+
+  .addressBook__row--marginBottom {
+    margin-bottom: ",
+          [Function],
+          ";
+  }
+
+  .addressBook__addNewCtaContainer {
+    text-align: center;
+  }
+
+  @media ",
+          [Function],
+          " {
+    .addressBook__addNewCtaContainer {
+      text-align: left;
     }
   }
 ",
@@ -75,21 +57,15 @@ exports[`AddressBook component should renders correctly when addresses are not p
       "warnTooManyClasses": [Function],
       "withComponent": [Function],
     }
-<<<<<<< HEAD
   }
   forwardedRef={null}
-  labels={Object {}}
-/>
-=======
-    labels={
-      Object {
-        "addressBook": Object {},
-        "common": Object {},
-      }
+  labels={
+    Object {
+      "addressBook": Object {},
+      "common": Object {},
     }
-  />
-</div>
->>>>>>> origin/RELEASE-1-RWD
+  }
+/>
 `;
 
 exports[`AddressBook component should renders correctly when addresses are present 1`] = `
@@ -148,7 +124,6 @@ exports[`AddressBook component should renders correctly when addresses are prese
     .addressBook__addNewCtaContainer {
       text-align: left;
     }
-<<<<<<< HEAD
   }
 ",
           ";
@@ -166,36 +141,11 @@ exports[`AddressBook component should renders correctly when addresses are prese
     }
   }
   forwardedRef={null}
-  labels={Object {}}
+  labels={
+    Object {
+      "addressBook": Object {},
+      "common": Object {},
+    }
+  }
 />
-=======
-    labels={
-      Object {
-        "addressBook": Object {},
-        "common": Object {},
-      }
-    }
-    setSelectedAddress={[Function]}
-  />
-  <Styled(DeleteAddressModal)
-    data={
-      Object {
-        "buttons": Object {
-          "cancel": undefined,
-          "confirm": undefined,
-        },
-        "description": Object {},
-        "heading": undefined,
-        "title": undefined,
-      }
-    }
-    labels={
-      Object {
-        "addressBook": Object {},
-        "common": Object {},
-      }
-    }
-  />
-</div>
->>>>>>> origin/RELEASE-1-RWD
 `;
