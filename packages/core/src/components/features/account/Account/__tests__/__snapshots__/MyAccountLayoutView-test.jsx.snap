@@ -100,10 +100,9 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
       />
     </Styled(Col)>
   </Styled(Row)>
-  <Styled(Row)
-    className="is-visible-nav"
-  >
+  <Styled(Row)>
     <Styled(Col)
+      className="is-visible-nav"
       colSize={
         Object {
           "large": 2,
