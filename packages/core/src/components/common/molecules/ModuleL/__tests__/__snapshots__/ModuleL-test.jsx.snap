@@ -65,14 +65,6 @@ exports[`ModuleL component renders correctly 1`] = `
     <Styled(LinkText)
       component="h2"
       dataLocator="moduleL_header_text"
-      fontSize={
-        Array [
-          "fs36",
-          "fs36",
-          "fs52",
-        ]
-      }
-      fontWeight="black"
       headerText={
         Array [
           Object {

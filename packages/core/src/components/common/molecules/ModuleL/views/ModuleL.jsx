@@ -57,8 +57,6 @@ const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide, promoTextBa
             headingClass="moduleL__header"
             component="h2"
             type="heading"
-            fontSize={['fs36', 'fs36', 'fs52']}
-            fontWeight="black"
             textAlign="center"
             dataLocator="moduleL_header_text"
           />

@@ -421,9 +421,9 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs42",
-            "fs42",
-            "fs48",
+            "fs36",
+            "fs36",
+            "fs52",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",

@@ -65,8 +65,6 @@ const ModuleD = (props: Props) => {
           headingClass="moduleD_header"
           component="h2"
           type="heading"
-          fontSize={['fs36', 'fs36', 'fs52']}
-          fontWeight="black"
           textAlign="center"
           dataLocator="moduleD_headerlink"
         />
