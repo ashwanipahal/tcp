@@ -193,14 +193,6 @@ export const getLocator = locator => {
   return locators[locator];
 };
 
-export const isMobileApp = () => {
-  return typeof navigator !== 'undefined' && navigator.product === 'ReactNative';
-};
-
-export function isClient() {
-  return typeof window !== 'undefined' && !isMobileApp();
-}
-
 /**
  * @function cropImageUrl function appends or replaces the cropping value in the URL
  * @param {string} url the image url

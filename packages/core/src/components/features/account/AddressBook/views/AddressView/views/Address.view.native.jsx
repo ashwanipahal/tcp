@@ -14,16 +14,6 @@ import Button from '../../../../../../common/atoms/Button';
 import AddressListComponent from '../../AddressList.view.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 
-type Props = {
-  addresses: List<{}>,
-  labels: {
-    addNewAddressCTA: string,
-  },
-  onDefaultShippingAddressClick: Object,
-  deleteModalMountedState: false,
-  setDeleteModalMountState: Function,
-};
-
 export class AddressView extends React.PureComponent<Props> {
   render() {
     const {
@@ -70,6 +60,7 @@ export class AddressView extends React.PureComponent<Props> {
           <ButtonWrapperStyle>
             {labels.addNewAddressCTA && (
               <Button
+                color="white"
                 buttonVariation="variable-width"
                 fill="BLUE"
                 data-locator="addressbook-addnewaddress"
