@@ -10,10 +10,9 @@ import TextBox from '../../../../common/atoms/TextBox';
 import styles from '../styles/ForgotPassword.style';
 import CustomButton from '../../../../common/atoms/Button';
 import Anchor from '../../../../common/atoms/Anchor';
-import BodyCopy from '../../../../common/atoms/BodyCopy';
 import createValidateMethod from '../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../utils/formValidation/validatorStandardConfig';
-import Notification from '../../../../common/molecules/Notification';
+import Notification from '../../../../common/molecules/Notification/views/Notification.native';
 import {
   HeadingStyle,
   SubHeadingStyle,
@@ -23,10 +22,10 @@ import {
 type Props = {
   pristine: any,
   className: any,
-  onSubmitForgot: Object => void,
+  SubmitForgot: Object => void,
   showNotification: any,
   showForgotPasswordForm: any,
-  resetResponse: any,
+  resetForgotPasswordErrorResponse: any,
   labels: any,
   resetLoginState: any,
   successFullResetEmail: any,
@@ -49,12 +48,10 @@ class ForgotPasswordView extends React.Component<Props, State> {
     });
   };
 
-  onFormSubmit = e => {
-    e.preventDefault();
-    const { email } = this.state;
-    const { onSubmitForgot } = this.props;
-    onSubmitForgot({
-      logonId: email.toUpperCase().trim(),
+  onFormSubmit = formData => {
+    const { SubmitForgot } = this.props;
+    SubmitForgot({
+      logonId: formData.Email.toUpperCase().trim(),
     });
   };
 
@@ -69,11 +66,13 @@ class ForgotPasswordView extends React.Component<Props, State> {
       pristine,
       className,
       showNotification,
-      resetResponse,
+      resetForgotPasswordErrorResponse,
+      handleSubmit,
       labels,
       successFullResetEmail,
     } = this.props;
-    const errorObject = resetResponse && resetResponse.get('errors');
+    const errorObject =
+      resetForgotPasswordErrorResponse && resetForgotPasswordErrorResponse.get('errors');
     const { email } = this.state;
     return (
       <View className={className}>
@@ -112,36 +111,22 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 text={labels.FORGOT_PASSWORD_RESET_PASSWORD}
                 buttonVariation="variable-width"
                 customStyle={styles.createAccountStyle}
+                onPress={handleSubmit(this.onFormSubmit)}
               />
             </React.Fragment>
           )}
 
           {successFullResetEmail && (
             <React.Fragment>
-              <BodyCopy component="div" className="bordered elem-pt-MED elem-pb-LRG">
-                <BodyCopy
-                  fontSize="fs14"
-                  fontWeight="extrabold"
-                  fontFamily="secondary"
-                  textAlign="center"
-                >
-                  {labels.FORGOT_PASSWORD_HEADING}
-                </BodyCopy>
-                <BodyCopy
-                  fontWeight="semibold"
-                  fontFamily="secondary"
-                  textAlign="center"
-                  className="elem-mb-SM"
-                >
-                  {labels.FORGOT_PASSWORD_HEADING}
-                </BodyCopy>
-              </BodyCopy>
+              <HeadingStyle>{labels.FORGOT_PASSWORD_HEADING}</HeadingStyle>
+              <SubHeadingStyle>{labels.FORGOT_PASSWORD_HEADING}</SubHeadingStyle>
               <CustomButton
                 color="#FFFFFF"
                 fill="BLUE"
                 text={labels.FORGOT_PASSWORD_RETURN_LOGIN}
                 buttonVariation="variable-width"
                 customStyle={styles.createAccountStyle}
+                onPress={this.onBackClick}
               />
             </React.Fragment>
           )}
