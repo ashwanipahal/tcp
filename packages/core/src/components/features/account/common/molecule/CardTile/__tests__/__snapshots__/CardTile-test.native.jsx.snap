@@ -132,6 +132,12 @@ exports[`CardTile should render correctly with amex card 1`] = `
       Los Angeles, CA 90028
     </Text>
   </Styled(View)>
+  <Recaptcha
+    onMessage={[Function]}
+    siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+    style={Object {}}
+    url="https://www.childrensplace.com"
+  />
   <Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
@@ -289,6 +295,12 @@ exports[`CardTile should render correctly with discover card 1`] = `
       Los Angeles, CA 90028
     </Text>
   </Styled(View)>
+  <Recaptcha
+    onMessage={[Function]}
+    siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+    style={Object {}}
+    url="https://www.childrensplace.com"
+  />
   <Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
@@ -421,6 +433,12 @@ exports[`CardTile should render correctly with gift card 1`] = `
       />
     </Styled(View)>
   </Styled(View)>
+  <Recaptcha
+    onMessage={[Function]}
+    siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+    style={Object {}}
+    url="https://www.childrensplace.com"
+  />
   <Styled(View)>
     <Styled(CustomButton)
       buttonVariation="variable-width"
@@ -586,6 +604,12 @@ exports[`CardTile should render correctly with master card 1`] = `
       Los Angeles, CA 90028
     </Text>
   </Styled(View)>
+  <Recaptcha
+    onMessage={[Function]}
+    siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+    style={Object {}}
+    url="https://www.childrensplace.com"
+  />
   <Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
@@ -718,6 +742,12 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       />
     </Styled(View)>
   </Styled(View)>
+  <Recaptcha
+    onMessage={[Function]}
+    siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+    style={Object {}}
+    url="https://www.childrensplace.com"
+  />
   <Styled(View)>
     <Styled(CustomButton)
       buttonVariation="variable-width"
@@ -875,6 +905,12 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       Los Angeles, CA 90028
     </Text>
   </Styled(View)>
+  <Recaptcha
+    onMessage={[Function]}
+    siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+    style={Object {}}
+    url="https://www.childrensplace.com"
+  />
   <Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
@@ -1004,6 +1040,12 @@ exports[`CardTile should render correctly with venmocard 1`] = `
       />
     </Styled(View)>
   </Styled(View)>
+  <Recaptcha
+    onMessage={[Function]}
+    siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+    style={Object {}}
+    url="https://www.childrensplace.com"
+  />
   <Styled(View)>
     <Styled(View)>
       <Styled(View) />
@@ -1151,6 +1193,12 @@ exports[`CardTile should render correctly with visa card 1`] = `
       Los Angeles, CA 90028
     </Text>
   </Styled(View)>
+  <Recaptcha
+    onMessage={[Function]}
+    siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+    style={Object {}}
+    url="https://www.childrensplace.com"
+  />
   <Styled(View)>
     <Styled(View)>
       <Styled(Anchor)
