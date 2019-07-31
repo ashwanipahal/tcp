@@ -28,6 +28,10 @@ type Props = {
   labels: Object,
 };
 
+/**
+ * This function renders simple input field.
+ * @param {string} text as label
+ */
 const element = text => (
   <InputField>
     <TextInput placeholder={text} />
@@ -35,6 +39,9 @@ const element = text => (
   </InputField>
 );
 
+/**
+ * This function renders dropdown.
+ */
 const dropdown = () => {
   return (
     <DropDown
@@ -46,6 +53,10 @@ const dropdown = () => {
   );
 };
 
+/**
+ * This function renders google autosuggest component.
+ * @param {string} text from cms
+ */
 const googleAutoSuggest = text => {
   return (
     <InputField>
@@ -53,7 +64,14 @@ const googleAutoSuggest = text => {
       <UnderlineStyleLight />
     </InputField>
   );
-}
+};
+
+/**
+ * This function returns input components to render in the ui based on the
+ * type parameter
+ * @param {string} text as label
+ * @param {integer} type based on the screen
+ */
 
 const inputBox = (text, type = 1) => {
   switch (type) {
@@ -94,18 +112,36 @@ const inputBox = (text, type = 1) => {
   }
 };
 
+/**
+ * This function selects type of input from user and renders the corresponding
+ * component.
+ * @param {object} labels from cms
+ * @param {array} labelsToLoad based on the screen
+ */
 const loadAddressInfo = (labels, labelsToLoad) => {
   return labelsToLoad.map(labelElement => {
     let type = 1;
-    if (labelElement == "acc_lbl_city") type = 3;
-    if (labelElement == "acc_lbl_state" || labelElement == "acc_lbl_zip_code") type = 0;
+    if (labelElement == 'acc_lbl_city') type = 3;
+    if (labelElement == 'acc_lbl_state' || labelElement == 'acc_lbl_zip_code') type = 0;
     return inputBox(labels[labelElement], type);
   });
 };
 
+/**
+ * This function just renders loadAddressInfo along with a shell i.e. <View>...</View>
+ * @param {object} labels from cms
+ * @param {array} labelsToLoad based on the screen
+ */
 const loadAddressComponent = (labels, labelsToLoad) => {
   return (
-    <View style={{display:"flex", flexDirection: "row",flexWrap: "wrap", justifyContent: "space-between"}}>
+    <View
+      style={{
+        display: 'flex',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+      }}
+    >
       {loadAddressInfo(labels, labelsToLoad)}
     </View>
   );
