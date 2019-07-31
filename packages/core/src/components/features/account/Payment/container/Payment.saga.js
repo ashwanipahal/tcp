@@ -7,10 +7,12 @@ import {
   getCardListErr,
   showLoader,
   paymentAddGiftCardSuccess,
+  setModuleX,
 } from './Payment.actions';
 import { resetShowNotification } from '../AddGiftCard/container/AddGiftCard.actions';
 import { getOnAddGiftCardPageState } from '../AddGiftCard/container/AddGiftCard.selector';
 import endpoints from '../../../../../service/endpoint';
+import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
 
 export function* getCardList() {
   try {
@@ -45,9 +47,19 @@ export function* getCardList() {
   }
 }
 
+export function* fetchModuleX({ payload = '' }) {
+  try {
+    const result = yield call(getModuleX, payload);
+    yield put(setModuleX(result));
+  } catch (err) {
+    yield null;
+  }
+}
+
 export function* PaymentSaga() {
   const cachedCardList = validateReduxCache(getCardList);
   yield takeLatest(PAYMENT_CONSTANTS.GET_CARD_LIST, cachedCardList);
+  yield takeLatest(PAYMENT_CONSTANTS.FETCH_MODULEX_CONTENT, fetchModuleX);
 }
 
 export default PaymentSaga;
