@@ -400,7 +400,8 @@ const getUnbxdId = () => 'unbxdId';
 const isGiftCard = product =>
   !!(
     product &&
-    (product.style_partno.toLowerCase() === 'giftcardbundle' || product.giftcard === '1')
+    ((product.style_partno && product.style_partno.toLowerCase() === 'giftcardbundle') ||
+      product.giftcard === '1')
   );
 
 /**
