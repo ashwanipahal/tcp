@@ -24,7 +24,7 @@ export const LoginForm = ({
   onCreateAccountClick,
 }) => {
   return (
-    <React.Fragment>
+    <div className={className}>
       <form name="LoginForm" onSubmit={handleSubmit} noValidate className={className}>
         {loginErrorMessage && (
           <Notification
@@ -105,7 +105,7 @@ export const LoginForm = ({
       >
         {labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
       </Button>
-    </React.Fragment>
+    </div>
   );
 };
 

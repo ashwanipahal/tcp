@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LoginForm component should renders correctly 1`] = `
-<Fragment>
+<div
+  className="test-class"
+>
   <form
     className="test-class"
     name="LoginForm"
@@ -484,11 +486,13 @@ exports[`LoginForm component should renders correctly 1`] = `
     onClick={[Function]}
     type="button"
   />
-</Fragment>
+</div>
 `;
 
 exports[`LoginForm component should renders correctly with error 1`] = `
-<Fragment>
+<div
+  className="test-class"
+>
   <form
     className="test-class"
     name="LoginForm"
@@ -982,5 +986,5 @@ exports[`LoginForm component should renders correctly with error 1`] = `
     onClick={[Function]}
     type="button"
   />
-</Fragment>
+</div>
 `;
