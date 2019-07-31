@@ -20,6 +20,7 @@ import {
   ADDED_TO_BAG_REDUCER_KEY,
   CART_REDUCER_KEY,
   NAVIGATION_REDUCER_KEY,
+  FORM_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -44,7 +45,7 @@ export default combineReducers({
   [MODULES_REDUCER_KEY]: ModulesReducer,
   [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,
   [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,
-  form: reduxFormReducer,
+  [FORM_REDUCER_KEY]: reduxFormReducer,
   [CART_REDUCER_KEY]: CartReducer,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
 });

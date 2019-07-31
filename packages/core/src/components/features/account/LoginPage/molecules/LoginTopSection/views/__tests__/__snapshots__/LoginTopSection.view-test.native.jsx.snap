@@ -19,7 +19,7 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
     width={186}
   />
   <Styled(LineComp)
-    borderColor="#2e6a91"
+    borderColor={null}
     borderWidth={0.65}
     marginBottom={17}
     marginTop={30}
@@ -28,7 +28,7 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
   <Styled(Text) />
   <Styled(Text) />
   <Styled(LineComp)
-    borderColor="#2e6a91"
+    borderColor={null}
     borderWidth={0.65}
     marginBottom={0}
     marginTop={25}
