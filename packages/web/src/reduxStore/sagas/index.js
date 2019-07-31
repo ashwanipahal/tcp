@@ -14,6 +14,7 @@ import DeleteAddressSaga from '@tcp/core/src/components/features/account/Address
 import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
 import AddressVerificationSaga from '@tcp/core/src/components/features/account/AddressVerification/container/AddressVerification.saga';
 import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
+import AccountSaga from '@tcp/core/src/components/features/account/Account/container/Account.saga';
 import AddEditCreditCardSaga from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.saga';
 import CartPageSaga from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.saga';
 import CartSaga from '@tcp/core/src/components/features/CnC/Cart/containers/Cart.saga';
@@ -41,6 +42,7 @@ export default function* rootSaga() {
     DefaultPaymentSaga(),
     AddEditCreditCardSaga(),
     AddGiftCardSaga(),
+    AccountSaga(),
     CartPageSaga(),
     CreateAccountSaga(),
     CartSaga(),

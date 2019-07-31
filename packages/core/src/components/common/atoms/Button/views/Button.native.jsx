@@ -23,7 +23,7 @@ import style from '../Button.style.native';
 type Props = {
   buttonVariation?: string,
   fullWidth?: string,
-  customStyle?: string,
+  customStyle?: Object,
   text?: string,
   url?: string,
 };
@@ -32,7 +32,7 @@ const CustomButton = (props: Props) => {
   const { text, url, buttonVariation, fullWidth, customStyle, ...otherProps } = props;
   const textValue = text || '';
   return (
-    <TouchableOpacity accessibilityRole="button">
+    <TouchableOpacity accessibilityRole="button" style={customStyle}>
       <Text fullWidth={fullWidth} buttonVariation={buttonVariation} {...otherProps}>
         {textValue}
       </Text>
@@ -43,7 +43,7 @@ const CustomButton = (props: Props) => {
 CustomButton.defaultProps = {
   fullWidth: '',
   buttonVariation: 'fixed-width',
-  customStyle: '',
+  customStyle: {},
   text: '',
   url: '',
 };

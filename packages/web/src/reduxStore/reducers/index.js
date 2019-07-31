@@ -13,6 +13,7 @@ import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
 import AddGiftCardReducer from '@tcp/core/src/components/features/account/Payment/AddGiftCard/container/AddGiftCard.reducer';
 import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
 import AddressVerificationReducer from '@tcp/core/src/components/features/account/AddressVerification/container/AddressVerification.reducer';
+import AccountReducer from '@tcp/core/src/components/features/account/Account/container/Account.reducer';
 import CartPage from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import OverlayModalReducer from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.reducer';
 
@@ -35,6 +36,7 @@ import {
   ADDEDITCREDITCARD_REDUCER_KEY,
   ADD_GIFT_CARD_REDUCER_KEY,
   ADDED_TO_BAG_REDUCER_KEY,
+  ACCOUNT_REDUCER_KEY,
   // CART_REDUCER_KEY,
   CARTPAGE_REDUCER_KEY,
   CART_REDUCER_KEY,
@@ -78,6 +80,7 @@ export default combineReducers({
   [ADDEDITCREDITCARD_REDUCER_KEY]: AddEditCreditCardReducer,
   [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,
   [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,
+  [ACCOUNT_REDUCER_KEY]: AccountReducer,
   [CARTPAGE_REDUCER_KEY]: CartPage,
   [CART_REDUCER_KEY]: CartReducer,
   [OVERLAY_MODAL_REDUCER_KEY]: OverlayModalReducer,

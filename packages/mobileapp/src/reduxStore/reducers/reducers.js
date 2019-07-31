@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { reducer as reduxFormReducer } from 'redux-form';
 import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
 import LoginPageReducer from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.reducer';
 import PaymentReducer from '@tcp/core/src/components/features/account/Payment/container/Payment.reducer';
@@ -22,6 +23,7 @@ import {
   ADDED_TO_BAG_REDUCER_KEY,
   CART_REDUCER_KEY,
   NAVIGATION_REDUCER_KEY,
+  FORM_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -48,6 +50,7 @@ export default combineReducers({
   [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,
   [ADDRESSBOOK_REDUCER_KEY]: AddressBookReducer,
   [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,
+  [FORM_REDUCER_KEY]: reduxFormReducer,
   [CARTPAGE_REDUCER_KEY]: CartPage,
   [CART_REDUCER_KEY]: CartReducer,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
