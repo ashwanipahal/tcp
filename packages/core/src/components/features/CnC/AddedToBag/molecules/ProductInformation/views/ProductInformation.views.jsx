@@ -13,8 +13,9 @@ import ProductInformationStyle from '../styles/ProductInformation.style';
 type Props = {
   data: Object,
   labels: any,
+  quantity: String,
 };
-const ProductInformation = ({ data, labels }: Props) => {
+const ProductInformation = ({ data, labels, quantity }: Props) => {
   return (
     <ProductInformationStyle>
       <Row tagName="ul" className="product">
@@ -135,7 +136,7 @@ const ProductInformation = ({ data, labels }: Props) => {
                 className="itemDesc"
                 dataLocator="addedtobag-productqty"
               >
-                {data.quantity}
+                {quantity || data.quantity}
               </BodyCopy>
             </Col>
           </Row>
