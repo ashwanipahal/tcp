@@ -269,6 +269,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "semiBold": "600",
         },
         "letterSpacing": Object {
+          "medium": "1px",
           "normal": "normal",
           "wide": "2px",
         },

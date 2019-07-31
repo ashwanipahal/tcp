@@ -17,7 +17,7 @@ import {
 // @flow
 type Props = {
   handleSubmit: any,
-  pristine: any,
+  invalid: any,
   className: any,
   backToAddressBookClick: any,
   dispatch: any,
@@ -55,7 +55,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
   render() {
     const {
       handleSubmit,
-      pristine,
+      invalid,
       className,
       backToAddressBookClick,
       labels,
@@ -196,7 +196,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
           >
             <Button
               fill="BLUE"
-              disabled={pristine}
+              disabled={invalid}
               type="submit"
               buttonVariation="fixed-width"
               data-locator="addnewaddress-addaddress"

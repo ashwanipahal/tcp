@@ -5,33 +5,33 @@ exports[`Recaptcha should render correctly 1`] = `
   automaticallyAdjustContentInsets={true}
   injectedJavaScript="(function () {
   /* istanbul ignore next */
-  cov_1gb3mhxhmj.f[1]++;
+  cov_1h4c2sykdj.f[1]++;
   var originalPostMessage =
   /* istanbul ignore next */
-  (cov_1gb3mhxhmj.s[8]++, window.postMessage);
+  (cov_1h4c2sykdj.s[8]++, window.postMessage);
 
   /* istanbul ignore next */
-  cov_1gb3mhxhmj.s[9]++;
+  cov_1h4c2sykdj.s[9]++;
 
   var patchedPostMessage = function patchedPostMessage(message, targetOrigin, transfer) {
     /* istanbul ignore next */
-    cov_1gb3mhxhmj.f[2]++;
-    cov_1gb3mhxhmj.s[10]++;
+    cov_1h4c2sykdj.f[2]++;
+    cov_1h4c2sykdj.s[10]++;
     originalPostMessage(message, targetOrigin, transfer);
   };
 
   /* istanbul ignore next */
-  cov_1gb3mhxhmj.s[11]++;
+  cov_1h4c2sykdj.s[11]++;
 
   patchedPostMessage.toString = function () {
     /* istanbul ignore next */
-    cov_1gb3mhxhmj.f[3]++;
-    cov_1gb3mhxhmj.s[12]++;
+    cov_1h4c2sykdj.f[3]++;
+    cov_1h4c2sykdj.s[12]++;
     return String(Object.hasOwnProperty).replace('hasOwnProperty', 'postMessage');
   };
 
   /* istanbul ignore next */
-  cov_1gb3mhxhmj.s[13]++;
+  cov_1h4c2sykdj.s[13]++;
   window.postMessage = patchedPostMessage;
 })();"
   javaScriptEnabled={true}
