@@ -18,6 +18,21 @@ import {
 } from './AddressBook.selectors';
 import { setDefaultShippingAddressRequest } from './DefaultShippingAddress.actions';
 
+// @flow
+type Props = {
+  getAddressListAction: () => void,
+  getUserInfoAction: () => void,
+  addressList: List<any>,
+  isFetching: boolean,
+  onDefaultShippingAddressClick: () => void,
+  showUpdatedNotification: any,
+  onDeleteAddress: Function,
+  deleteModalMountedState: boolean,
+  setDeleteModalMountState: Function,
+  showUpdatedNotificationOnModal: any,
+  clearAddressBookNotification: () => void,
+  labels: object,
+};
 export class AddressBookContainer extends React.Component<Props> {
   componentDidMount() {
     const { getAddressListAction, getUserInfoAction } = this.props;

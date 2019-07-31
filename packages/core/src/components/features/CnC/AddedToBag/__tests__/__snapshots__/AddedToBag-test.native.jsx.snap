@@ -21,6 +21,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
     <Styled(ProductInformation)
       data={Object {}}
       labels={Object {}}
+      quantity=""
     />
     <Connect(AddedToBagViewPointsContainer)
       labels={Object {}}
