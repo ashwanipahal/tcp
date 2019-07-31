@@ -21,7 +21,6 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
         className="is-hidden-nav"
       >
         <Styled(Dropdown)
-          active="Account Overview"
           options={
             Array [
               Object {
