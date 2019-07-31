@@ -1,4 +1,5 @@
 export {
+  getAPIConfig,
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
   UrlHandler,
