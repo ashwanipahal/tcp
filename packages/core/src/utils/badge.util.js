@@ -44,7 +44,7 @@ export const getDateInformation = (date, upperCase) => {
   };
 };
 
-export const getProductAttributes = () => {
+export const getCartProductAttributes = () => {
   const isUSStore = true;
   return isUSStore
     ? {
@@ -61,42 +61,44 @@ export const getProductAttributes = () => {
       };
 };
 
-// export const getProductAttributes = () => {
-//   const  isUSStore = true;
-//   return isUSStore
-//     ? {
-//         merchant: 'TCPMerchantTagUSStore',
-//         sizes: 'TCPSizeUSStore',
-//         swatches: 'TCPSwatchesUSStore',
-//         onlineOnly: 'TCPWebOnlyFlagUSStore',
-//         clearance: 'TCPProductIndUSStore',
-//         inventory: 'TCPInventoryFlagUSStore',
-//         glowInTheDark: 'TCPGlowInDarkUSStore',
-//         limitedQuantity: 'TCPInventoryMessageUSStore',
-//         extendedSize: 'TCPFitMessageUSStore',
-//         onModelAltImages: 'TCPMarketingText1USStore',
-//         bossProductDisabled: 'TcpBossProductDisabled',
-//         bossCategoryDisabled: 'TcpBossCategoryDisabled',
-//         videoUrl: 'TCPMarketingText2USStore',
-//         matchingCategory: 'TCPProductFlagUSStore',
-//         matchingFamily: 'TCPMatchingFamilyUSStore',
-//       }
-//     : {
-//         merchant: 'TCPMerchantTagCanadaStore',
-//         sizes: 'TCPSizeCanadaStore',
-//         swatches: 'TCPSwatchesCanadaStore',
-//         onlineOnly: 'TCPWebOnlyFlagCanadaStore',
-//         clearance: 'TCPProductIndCanadaStore',
-//         inventory: 'TCPInventoryFlagCanadaStore',
-//         glowInTheDark: 'TCPGlowInDarkUCanadaStore',
-//         limitedQuantity: 'TCPInventoryMessageCanadaStore',
-//         extendedSize: 'TCPFitMessageCanadaStore',
-//         onModelAltImages: 'TCPMarketingText1CanadaStore',
-//         videoUrl: 'TCPMarketingText2CanadaStore',
-//         matchingCategory: 'TCPProductFlagCAStore',
-//         matchingFamily: 'TCPMatchingFamilyCAStore',
-//       };
-// };
+export const getProductAttributes = () => {
+  const isUSStore = true;
+  return isUSStore
+    ? {
+        merchant: 'TCPMerchantTagUSStore',
+        sizes: 'TCPSizeUSStore',
+        swatches: 'TCPSwatchesUSStore',
+        onlineOnly: 'TCPWebOnlyFlagUSStore',
+        clearance: 'TCPProductIndUSStore',
+        inventory: 'TCPInventoryFlagUSStore',
+        glowInTheDark: 'TCPGlowInDarkUSStore',
+        limitedQuantity: 'TCPInventoryMessageUSStore',
+        extendedSize: 'TCPFitMessageUSStore',
+        onModelAltImages: 'TCPMarketingText1USStore',
+        bossProductDisabled: 'TcpBossProductDisabled',
+        bossCategoryDisabled: 'TcpBossCategoryDisabled',
+        videoUrl: 'TCPMarketingText2USStore',
+        matchingCategory: 'TCPProductFlagUSStore',
+        matchingFamily: 'TCPMatchingFamilyUSStore',
+        keepAlive: 'TCPOutOfStockFlagUSStore',
+      }
+    : {
+        merchant: 'TCPMerchantTagCanadaStore',
+        sizes: 'TCPSizeCanadaStore',
+        swatches: 'TCPSwatchesCanadaStore',
+        onlineOnly: 'TCPWebOnlyFlagCanadaStore',
+        clearance: 'TCPProductIndCanadaStore',
+        inventory: 'TCPInventoryFlagCanadaStore',
+        glowInTheDark: 'TCPGlowInDarkUCanadaStore',
+        limitedQuantity: 'TCPInventoryMessageCanadaStore',
+        extendedSize: 'TCPFitMessageCanadaStore',
+        onModelAltImages: 'TCPMarketingText1CanadaStore',
+        videoUrl: 'TCPMarketingText2CanadaStore',
+        matchingCategory: 'TCPProductFlagCAStore',
+        matchingFamily: 'TCPMatchingFamilyCAStore',
+        keepAlive: 'TCPOutOfStockFlagCanadaStore',
+      };
+};
 
 export const attributeListMaker = attributes => {
   return attributes.split(`;`).map(attribute => {
@@ -118,7 +120,8 @@ export const extractAttributeValue = (item, attribute) => {
       we do the modifcation and pass the data to this function but on PDP we do not have a wrapper function in this module hence handeling the PDP at this
       place only. */
       const itm = Array.isArray(currItm) ? currItm : attributeListMaker(currItm);
-      obj = itm.find(att => att.identifier === attribute).value;
+      const ele = itm.find(att => att.identifier === attribute);
+      obj = ele && ele.value;
     } else if (item[attribute]) {
       obj = item[attribute];
     }

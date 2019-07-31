@@ -6,14 +6,14 @@ exports[`GiftCardList Component renders correctly 1`] = `
     <Styled(Image)
       source={
         Object {
-          "uri": "https://uatlive2.childrensplace.comundefined",
+          "uri": "https://test4.childrensplace.comundefined",
         }
       }
     />
     <Styled(Image)
       source={
         Object {
-          "uri": "https://uatlive2.childrensplace.com/static/images/undefined",
+          "uri": "https://test4.childrensplace.com/static/images/undefined",
         }
       }
     />

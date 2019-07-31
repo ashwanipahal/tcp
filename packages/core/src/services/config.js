@@ -50,8 +50,8 @@ export const API_CONFIG = {
     MELISSA_KEY: '63987687',
     BV_API_KEY: 'e50ab0a9-ac0b-436b-9932-2a74b9486436',
     traceIdCount: 0,
-    assetHost: 'https://uatlive2.childrensplace.com',
-    domain: '://uatlive2.childrensplace.com/api/',
+    assetHost: 'https://test4.childrensplace.com',
+    domain: '://test4.childrensplace.com/api/',
     unbxd: '://search.unbxd.io',
   },
   US_CONFIG_OPTIONS: {

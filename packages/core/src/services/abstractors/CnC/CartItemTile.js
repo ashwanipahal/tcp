@@ -8,7 +8,7 @@ import {
   parseBoolean,
   extractPrioritizedBadge,
   getDateInformation,
-  getProductAttributes,
+  getCartProductAttributes,
 } from '../../../utils/badge.util';
 
 export const getProductSkuInfoByUnbxd = item => {
@@ -449,7 +449,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
             : Boolean(parseInt(item.productInfo.webOnlyFlagCanadaStore)),
           isBopisEligible: !parseBoolean(orderDetailsResponse.bopisIntlField),
           isBossEligible: deriveBossEligiblity(item, orderDetailsResponse),
-          badge: extractPrioritizedBadge(item.productInfo, getProductAttributes()),
+          badge: extractPrioritizedBadge(item.productInfo, getCartProductAttributes()),
           // onlineInventoryAvailable: item.inventoryAvail,
 
           // TODO: cleanup structure

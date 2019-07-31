@@ -21,7 +21,7 @@ exports[`BossBannerView component renders correctly 1`] = `
         alt="Product"
         className="product-image"
         data-locator="addedtobag-productimage"
-        src="https://uatlive2.childrensplace.comundefined"
+        src="https://test4.childrensplace.comundefined"
       />
       <Styled(Image)
         alt="Brand"

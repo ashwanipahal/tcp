@@ -1,7 +1,7 @@
 import {
   parseBoolean,
   getDateInformation,
-  getProductAttributes,
+  getCartProductAttributes,
   attributeListMaker,
   extractAttributeValue,
   checkMatchingFamily,
@@ -16,19 +16,19 @@ describe('badge util test', () => {
     });
     it('should return date object with caps', () => {
       const dateObj = {
-        date: 30,
-        day: 'TUE',
-        month: 'JUL',
+        date: 12,
+        day: 'THU',
+        month: 'DEC',
       };
-      expect(getDateInformation(new Date(), true)).toEqual(dateObj);
+      expect(getDateInformation(new Date('12/12/2019'), true)).toEqual(dateObj);
     });
     it('should return date object in lower case', () => {
       const dateObj = {
-        date: 30,
-        day: 'Tue',
-        month: 'Jul',
+        date: 12,
+        day: 'Thu',
+        month: 'Dec',
       };
-      expect(getDateInformation(new Date(), false)).toEqual(dateObj);
+      expect(getDateInformation(new Date('12/12/2019'), false)).toEqual(dateObj);
     });
 
     it('should return product attributes', () => {
@@ -38,7 +38,7 @@ describe('badge util test', () => {
         limitedQuantity: 'inventoryMessageUSStore',
         onlineOnly: 'webOnlyFlagUSStore',
       };
-      expect(getProductAttributes()).toEqual(attributes);
+      expect(getCartProductAttributes()).toEqual(attributes);
     });
 
     it('should return product attributes', () => {
