@@ -2,6 +2,7 @@ import React from 'react';
 import { View, ScrollView, TextInput } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
+import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggestAddress/GoogleAutoSuggestAddress';
 import {
   // eslint-disable-next-line import/named
   StyledHeading,
@@ -116,6 +117,7 @@ const AddressBook = (props: Props) => {
           />
         </StyledHeading>
         <UnderlineStyle />
+        <GooglePlacesInput />
         {inputBox('test', 2)}
         {loadAddressInfo(loadedLabels)}
       </ScrollView>
