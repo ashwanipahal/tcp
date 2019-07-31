@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { List } from 'immutable';
-import AddressBook from '../AddressView/views/Address.view';
+import AddressBook from '../AddressView/views/Address.view.native';
 
-describe('AddressBook component', () => {
+describe('Native AddressBook component', () => {
   it('should renders correctly when addresses are not present', () => {
     const props = {
       addresses: new List(),
-      labels: { addressBook: {}, common: {} },
+      labels: {},
     };
     const component = shallow(<AddressBook {...props} />);
     expect(component).toMatchSnapshot();
@@ -25,7 +25,7 @@ describe('AddressBook component', () => {
           phone1: '1234567890',
         },
       ]),
-      labels: { addressBook: {}, common: {} },
+      labels: {},
     };
     const component = shallow(<AddressBook {...props} />);
     expect(component).toMatchSnapshot();
