@@ -49,4 +49,10 @@ const DescriptionStyle = styled.Text`
   ${getDescriptionStyle}
 `;
 
-export { FormStyle, DescriptionStyle };
+const FormStyleView = styled.View`
+  margin-top: ${'30px'}
+  margin-horizontal: ${'20px'}
+  justify-content: ${'center'};
+`;
+
+export { FormStyle, DescriptionStyle, FormStyleView };

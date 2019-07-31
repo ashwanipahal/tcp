@@ -4,7 +4,7 @@ import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import { noop } from 'lodash';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import { FormStyle, DescriptionStyle } from '../styles/LoginForm.style.native';
+import { FormStyle, DescriptionStyle } from '../LoginForm.style.native';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import CustomButton from '../../../../../../common/atoms/Button';
@@ -35,70 +35,74 @@ const styles = {
  * @return {JSX} IconClass : Return jsx icon component
  * @desc This method based on the props generate icon component.
  */
-export const LoginForm = props => {
-  const { labels, handleSubmit, onSubmit } = props;
 
-  return (
-    <View {...props}>
-      <Field
-        label={labels.ACC_LBL_LOGIN_EMAIL}
-        name="emailAddress"
-        id="emailAddress"
-        type="text"
-        component={TextBox}
-        dataLocator="emailAddress"
-      />
-      <Field
-        label={labels.ACC_LBL_LOGIN_PASSWORD}
-        name="password"
-        id="password"
-        type="text"
-        component={TextBox}
-        dataLocator="password"
-        secureTextEntry
-      />
-      <View style={styles.inputCheckBoxStyle}>
+class LoginForm extends React.PureComponent<Props> {
+  showForgotPasswordForm = e => {
+    e.preventDefault();
+    const { showForgotPasswordForm, resetForm } = this.props;
+    resetForm();
+    showForgotPasswordForm();
+  };
+
+  render() {
+    const { labels, handleSubmit, onSubmit } = this.props;
+    return (
+      <View {...this.props}>
         <Field
-          name="rememberMe"
-          component={InputCheckbox}
-          dataLocator="rememberMe"
-          disabled={false}
-          rightText={labels.ACC_LBL_LOGIN_REMEMBER_ME}
+          label={labels.ACC_LBL_LOGIN_EMAIL}
+          name="emailAddress"
+          id="emailAddress"
+          type="text"
+          component={TextBox}
+          dataLocator="emailAddress"
         />
         <Field
-          name="savePlcc"
-          component={InputCheckbox}
-          dataLocator="savePlcc"
-          disabled={false}
-          rightText={labels.ACC_LBL_LOGIN_SAVE_MY_PLACE}
-          marginTop={13}
+          label={labels.ACC_LBL_LOGIN_PASSWORD}
+          name="password"
+          id="password"
+          type="text"
+          component={TextBox}
+          dataLocator="password"
+          secureTextEntry
         />
+        <View style={styles.inputCheckBoxStyle}>
+          <Field
+            name="rememberMe"
+            component={InputCheckbox}
+            dataLocator="rememberMe"
+            disabled={false}
+            rightText={labels.ACC_LBL_LOGIN_REMEMBER_ME}
+          />
+          <Field
+            name="savePlcc"
+            component={InputCheckbox}
+            dataLocator="savePlcc"
+            disabled={false}
+            rightText={labels.ACC_LBL_LOGIN_SAVE_MY_PLACE}
+            marginTop={13}
+          />
+        </View>
+
+        <CustomButton
+          color="#FFFFFF"
+          fill="BLUE"
+          text={labels.ACC_LBL_LOGIN_CTA}
+          buttonVariation="variable-width"
+          customStyle={styles.loginButtonStyle}
+          onPress={handleSubmit(onSubmit)}
+        />
+        <Anchor
+          fontSizeVariation="xlarge"
+          anchorVariation="secondary"
+          text={labels.ACC_LBL_LOGIN_FORGET_PASSWORD_CTA}
+          customStyle={styles.forgotPasswordStyle}
+          onPress={this.showForgotPasswordForm}
+        />
+        <LineComp marginTop={28} />
       </View>
-
-      <CustomButton
-        color="#FFFFFF"
-        fill="BLUE"
-        text={labels.ACC_LBL_LOGIN_CTA}
-        buttonVariation="variable-width"
-        customStyle={styles.loginButtonStyle}
-        onPress={handleSubmit(onSubmit)}
-      />
-      <Anchor
-        fontSizeVariation="xlarge"
-        anchorVariation="secondary"
-        text={labels.ACC_LBL_LOGIN_FORGET_PASSWORD_CTA}
-        customStyle={styles.forgotPasswordStyle}
-      />
-      <LineComp marginTop={28} />
-      <DescriptionStyle>{labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}</DescriptionStyle>
-      <CustomButton
-        text={labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
-        buttonVariation="variable-width"
-        customStyle={styles.createAccountStyle}
-      />
-    </View>
-  );
-};
+    );
+  }
+}
 
 LoginForm.propTypes = {
   labels: PropTypes.shape({
