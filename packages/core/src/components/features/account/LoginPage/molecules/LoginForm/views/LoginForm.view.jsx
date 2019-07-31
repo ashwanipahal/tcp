@@ -21,6 +21,7 @@ export const LoginForm = ({
   className,
   showRecaptcha,
   change,
+  showSavePlcc,
 }) => {
   return (
     <form name="LoginForm" onSubmit={handleSubmit} noValidate className={className}>
@@ -53,11 +54,13 @@ export const LoginForm = ({
             {labels.ACC_LBL_LOGIN_REMEMBER_ME}
           </Field>
         </BodyCopy>
-        <BodyCopy component="div">
-          <Field name="savePlcc" component={InputCheckbox} dataLocator="">
-            {labels.ACC_LBL_LOGIN_SAVE_MY_PLACE}
-          </Field>
-        </BodyCopy>
+        {showSavePlcc && (
+          <BodyCopy component="div">
+            <Field name="savePlcc" component={InputCheckbox} dataLocator="">
+              {labels.ACC_LBL_LOGIN_SAVE_MY_PLACE}
+            </Field>
+          </BodyCopy>
+        )}
         <BodyCopy component="div">
           {showRecaptcha && (
             <>
@@ -107,6 +110,7 @@ LoginForm.propTypes = {
   loginErrorMessage: PropTypes.string,
   showRecaptcha: PropTypes.bool,
   change: PropTypes.func,
+  showSavePlcc: PropTypes.bool,
 };
 
 LoginForm.defaultProps = {
@@ -114,6 +118,7 @@ LoginForm.defaultProps = {
   loginErrorMessage: '',
   showRecaptcha: false,
   change: () => {},
+  showSavePlcc: false,
 };
 
 const validateMethod = createValidateMethod(

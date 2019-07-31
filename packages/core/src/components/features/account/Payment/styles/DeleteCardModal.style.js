@@ -33,9 +33,10 @@ const deleteCardModalStyle = css`
   }
   .deleteCardModal__btn {
     display: inline-block;
-    font-weight: ${props => props.theme.fonts.fontWeight.normal};
+    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
     float: none;
     width: 60%;
+    letter-spacing: ${props => props.theme.fonts.letterSpacing.medium};
     @media ${props => props.theme.mediaQuery.medium} {
       float: right;
       width: 40%;
