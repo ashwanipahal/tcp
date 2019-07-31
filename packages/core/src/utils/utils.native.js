@@ -81,13 +81,13 @@ export const importGraphQLQueriesDynamically = query => {
   });
 };
 
-const discSmall = require('../assets/disc-small.png');
-const masterCard = require('../assets/mc-small.png');
+const discSmall = require('../assets/discover-small.png');
+const masterCard = require('../assets/mastercard-small.png');
 const amexCard = require('../assets/amex-small.png');
 const visaSmall = require('../assets/visa-small.png');
-const placeCard = require('../assets/place-card-small.png');
-const giftCardSmall = require('../assets/gift-card-small.png');
-const venmoCard = require('../assets/venmo-blue-acceptance-mark.png');
+const placeCard = require('../assets/TCP-CC-small.png');
+const giftCardSmall = require('../assets/TCP-gift-small.png');
+const venmoCard = require('../assets/venmo-small.png');
 
 export const getIconCard = icon => {
   switch (icon) {

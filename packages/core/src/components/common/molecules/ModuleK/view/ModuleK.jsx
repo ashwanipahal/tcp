@@ -1,8 +1,7 @@
 // @flow
 import React from 'react';
 import { Col, Row, Button, BodyCopy, Anchor } from '../../../atoms';
-import { Carousel } from '../..';
-import { PromoTextBanner, LinkText, ImageGrid, style } from '../ModuleK.style';
+import { Carousel, PromoTextBanner, LinkText, ImageGrid, style } from '../ModuleK.style';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/errorBoundary';
 import config from '../config';
@@ -107,6 +106,7 @@ class ModuleK extends React.PureComponent<Props, State> {
                 dataLocatorPause: 'moduleK_pause_button',
                 customArrowLeft: getIconPath('carousel-big-carrot'),
                 customArrowRight: getIconPath('carousel-big-carrot'),
+                inheritedStyles: Carousel,
               }}
             >
               {masonryGrid.map(({ promoTextBanner, mediaList, singleCTAButton }, index) => {
