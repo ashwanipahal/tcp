@@ -33,8 +33,8 @@ const MyAccountLayoutView = (props: Props) => {
         </Col>
       </Row>
 
-      <Row className="is-visible-nav">
-        <Col colSize={{ large: 2, medium: 8, small: 6 }}>
+      <Row>
+        <Col colSize={{ large: 2, medium: 8, small: 6 }} className="is-visible-nav">
           <MyAccountLeftNav navData={navData} active={active} />
         </Col>
         <Col colSize={{ large: 10, medium: 8, small: 6 }}>
