@@ -3,6 +3,7 @@
 exports[`Account View should render Account Correctly 1`] = `
 <Styled(MyAccountLayoutView)
   active="accountOverview"
+  labels={[Function]}
   navData={Array []}
   router={
     Object {
@@ -17,6 +18,7 @@ exports[`Account View should render Account Correctly 1`] = `
 exports[`Account View should render Account container Correctly 1`] = `
 <Styled(MyAccountLayoutView)
   active="addressBook"
+  labels={[Function]}
   navData={Array []}
   router={
     Object {
