@@ -7,7 +7,7 @@ import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 
 const initialState = fromJS({
   [DEFAULT_REDUCER_KEY]: null,
-  items: [],
+  orderDetails: {},
   editableItemData: {},
 });
 
@@ -15,7 +15,7 @@ const CartPage = (state = initialState, action) => {
   switch (action.type) {
     case CARTPAGE_CONSTANTS.GET_ORDER_DETAILS_COMPLETE:
       return Object.assign({}, state, {
-        items: action.payload.orderDetails.orderItems,
+        orderDetails: action.payload.orderDetails,
       });
     case CARTPAGE_CONSTANTS.GET_PRODUCT_SKU_INFO_SUCCESS:
       return Object.assign({}, state, {

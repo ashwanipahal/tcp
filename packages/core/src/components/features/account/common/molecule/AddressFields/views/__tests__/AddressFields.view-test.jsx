@@ -6,7 +6,7 @@ describe('AddressFields component', () => {
   it('should render correctly', () => {
     const props = {
       formName: 'creditCard',
-      labels: {},
+      labels: { addressBook: {}, common: {} },
     };
     const component = shallow(<AddressFields {...props} />);
     expect(component).toMatchSnapshot();
@@ -15,7 +15,7 @@ describe('AddressFields component', () => {
   it('should render correctly without phoneNumber and ', () => {
     const props = {
       formName: 'creditCard',
-      labels: {},
+      labels: { addressBook: {}, common: {} },
       showPhoneNumber: false,
       showDefaultCheckbox: false,
     };
