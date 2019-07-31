@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import TextBox from '../views/TextBox.native';
+import { TextBox } from '../views/TextBox.native';
 
 describe('Textbox component', () => {
   const props = {

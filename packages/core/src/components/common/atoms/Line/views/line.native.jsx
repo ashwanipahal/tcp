@@ -24,7 +24,7 @@ LineComp.defaultProps = {
   marginTop: 0,
   marginBottom: 0,
   borderWidth: 0.65,
-  borderColor: '#2e6a91',
+  borderColor: null,
 };
 
 export default withStyles(LineComp);

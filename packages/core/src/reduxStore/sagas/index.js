@@ -4,12 +4,14 @@ import ForgotPasswordSaga from '@tcp/core/src/components/features/account/Forgot
 import AddressBookSaga from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.saga';
 import DeleteAddressSaga from '@tcp/core/src/components/features/account/AddressBook/container/DeleteAddress.saga';
 import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
+import CartPageSaga from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.saga';
 import BootstrapSaga from './bootstrap';
 
 export {
   ProductListingPageSaga,
   LoginPageSaga,
   ForgotPasswordSaga,
+  CartPageSaga,
   AddressBookSaga,
   DeleteAddressSaga,
   SetDefaultShippingAddressSaga,
@@ -20,6 +22,7 @@ export default {
   ProductListingPageSaga,
   LoginPageSaga,
   ForgotPasswordSaga,
+  CartPageSaga,
   AddressBookSaga,
   DeleteAddressSaga,
   SetDefaultShippingAddressSaga,
