@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../BodyCopy';
+import withStyles from '../../../hoc/withStyles';
 
 import {
+  TextBoxStyle,
   StyledTextBox,
   StyledLabel,
   StyledErrorIcon,
@@ -15,7 +17,7 @@ import Image from '../../Image';
 const errorIcon = require('../../../../../assets/alert-triangle.png');
 const successIcon = require('../../../../../assets/success-icon.png');
 
-class TextBox extends React.Component {
+export class TextBox extends React.Component {
   static propTypes = {
     id: PropTypes.string,
     ariaLabel: PropTypes.string,
@@ -104,6 +106,7 @@ class TextBox extends React.Component {
       enableSuccessCheck,
       keyboardType,
       secureTextEntry,
+      ...others
     } = this.props;
     const { isFocused } = this.state;
     const elemValue = input.value;
@@ -111,6 +114,7 @@ class TextBox extends React.Component {
       <StyledTextBoxWrapper>
         <StyledLabel isFocused={elemValue || isFocused}>{label}</StyledLabel>
         <StyledTextBox
+          {...others}
           {...input}
           id={id}
           aria-label={ariaLabel}
@@ -141,4 +145,6 @@ class TextBox extends React.Component {
   }
 }
 
-export default TextBox;
+// export default TextBox;
+export default withStyles(TextBox, TextBoxStyle);
+export { TextBox as TextBoxVanilla };

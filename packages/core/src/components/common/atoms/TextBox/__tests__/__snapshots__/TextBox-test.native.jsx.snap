@@ -20,6 +20,7 @@ exports[`Textbox component render showSuccessCheck on validation fail 1`] = `
     onFocus={[Function]}
     returnKeyType="next"
     secureTextEntry={false}
+    showSuccessCheck={true}
     type="text"
     value="foo"
   />
@@ -70,6 +71,7 @@ exports[`Textbox component render showSuccessCheck on validation true 1`] = `
     onFocus={[Function]}
     returnKeyType="next"
     secureTextEntry={false}
+    showSuccessCheck={true}
     type="text"
     value="foo"
   />
@@ -96,6 +98,7 @@ exports[`Textbox component renders correctly 1`] = `
     onFocus={[Function]}
     returnKeyType="next"
     secureTextEntry={false}
+    showSuccessCheck={false}
     type="text"
     value="foo"
   />

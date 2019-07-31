@@ -8,14 +8,90 @@ exports[`LoginForm component should renders correctly 1`] = `
   onSubmit={[Function]}
 >
   <Field
-    component={[Function]}
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "ariaLabel": "input",
+          "dataLocator": "input-field",
+          "enableSuccessCheck": false,
+          "id": "input",
+          "keyboardType": "default",
+          "label": "input",
+          "meta": Object {
+            "error": "",
+            "touched": "",
+          },
+          "secureTextEntry": false,
+          "showErrorIcon": true,
+          "type": "text",
+        },
+        "attrs": Array [],
+        "displayName": "Styled(TextBox)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+    ",
+            "
+  ",
+            [Function],
+            ";
+",
+            ";
+  ",
+          ],
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
+      }
+    }
     dataLocator="emailAddress"
     id="emailAddress"
     name="emailAddress"
     type="text"
   />
   <Field
-    component={[Function]}
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "ariaLabel": "input",
+          "dataLocator": "input-field",
+          "enableSuccessCheck": false,
+          "id": "input",
+          "keyboardType": "default",
+          "label": "input",
+          "meta": Object {
+            "error": "",
+            "touched": "",
+          },
+          "secureTextEntry": false,
+          "showErrorIcon": true,
+          "type": "text",
+        },
+        "attrs": Array [],
+        "displayName": "Styled(TextBox)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+    ",
+            "
+  ",
+            [Function],
+            ";
+",
+            ";
+  ",
+          ],
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
+      }
+    }
     dataLocator="password"
     id="password"
     name="password"
