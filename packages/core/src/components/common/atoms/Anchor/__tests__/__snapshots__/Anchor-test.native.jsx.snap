@@ -4,6 +4,7 @@ exports[`Anchor Native should render correctly 1`] = `
 <Styled(TouchableOpacity)
   accessibilityRole="button"
   onPress={[Function]}
+  style={Object {}}
 >
   <Text
     anchorVariation=""

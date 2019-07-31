@@ -2,9 +2,9 @@ import { call, takeLatest, put } from 'redux-saga/effects';
 // import { validateReduxCache } from '../../../../../utils/cache.util';
 import ADDEDTOBAG_CONSTANTS from '../AddedToBag.constants';
 import fetchData from '../../../../../service/API';
-import { getOrderDetails } from '../../Cart/containers/Cart.actions';
 import { AddToCartError, SetAddedToBagData, openAddedToBag } from './AddedToBag.actions';
 import endpoints from '../../../../../service/endpoint';
+import { getOrderDetails } from '../../CartItemTile/container/CartItemTile.actions';
 
 export function* addToCartEcom({ payload }) {
   try {

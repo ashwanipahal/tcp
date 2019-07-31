@@ -1,21 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentMapping from '../AccountComponentMapping';
-import navData from '../MyAccountRoute.config';
 import utils from '../../../../../utils';
-import getLabels from './Account.selectors';
-
-// @flow
-type Props = {
-  router: Object,
-  labels: object,
-};
-
-type State = {
-  component: String,
-};
+import { getAccountNavigationState, getLabels } from './Account.selectors';
+import { getAccountNavigationList } from './Account.actions';
 
 /**
  * @function Account The Account component is the main container for the account section
@@ -25,8 +16,8 @@ type State = {
  * @param {router} router Router object to get the query key
  */
 
-export class Account extends React.PureComponent<Props, State> {
-  constructor(props: Props) {
+export class Account extends React.PureComponent {
+  constructor(props) {
     super(props);
     const activeComponent = utils.getObjectValue(props.router, 'account-overview', 'query', 'id');
     this.state = {
@@ -36,7 +27,12 @@ export class Account extends React.PureComponent<Props, State> {
     };
   }
 
-  static getDerivedStateFromProps(nextProps: Props, prevState: State) {
+  componentDidMount() {
+    const { getAccountNavigationAction } = this.props;
+    getAccountNavigationAction();
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
     const nextActiveComponent = utils.getObjectValue(
       nextProps.router,
       'account-overview',
@@ -60,7 +56,11 @@ export class Account extends React.PureComponent<Props, State> {
    */
   render() {
     const { componentToLoad, activeComponent } = this.state;
-    const { router, labels } = this.props;
+    const { router, accountNavigation, labels } = this.props;
+    let navData = [];
+    if (accountNavigation) {
+      navData = accountNavigation.accountNav;
+    }
     return (
       <MyAccountLayout
         mainContent={AccountComponentMapping[componentToLoad]}
@@ -73,10 +73,35 @@ export class Account extends React.PureComponent<Props, State> {
   }
 }
 
+export const mapDispatchToProps = dispatch => {
+  return {
+    getAccountNavigationAction: () => {
+      dispatch(getAccountNavigationList());
+    },
+  };
+};
+
 const mapStateToProps = state => {
   return {
+    accountNavigation: getAccountNavigationState(state),
     labels: getLabels(state),
   };
 };
 
-export default withRouter(connect(mapStateToProps)(Account));
+Account.propTypes = {
+  getAccountNavigationAction: PropTypes.func.isRequired,
+  router: PropTypes.shape({}).isRequired,
+  accountNavigation: PropTypes.shape([]).isRequired,
+  labels: PropTypes.shape({}),
+};
+
+Account.defaultProps = {
+  labels: PropTypes.shape({ addressBook: {}, labels: {} }),
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Account)
+);

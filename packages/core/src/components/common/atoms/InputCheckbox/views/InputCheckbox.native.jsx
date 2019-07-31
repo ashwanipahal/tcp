@@ -19,14 +19,15 @@ class InputCheckBox extends React.Component {
   static defaultProps = {
     rightText: 'checkbox',
     isChecked: false,
-    onClick: null,
+    onClick: () => {},
     id: 'checkbox',
     input: { val: '' },
   };
 
   constructor(props) {
     super(props);
-    const { isChecked } = props;
+    const { isChecked, input } = props;
+    input.onChange(isChecked);
     this.state = {
       isChecked,
     };
@@ -34,8 +35,9 @@ class InputCheckBox extends React.Component {
 
   onClick = () => {
     const { isChecked } = this.state;
-    const { onClick, id } = this.props;
+    const { onClick, id, input } = this.props;
     const checkboxState = !isChecked;
+    input.onChange(checkboxState);
     this.setState({
       isChecked: checkboxState,
     });
@@ -59,8 +61,14 @@ class InputCheckBox extends React.Component {
 
   render() {
     const { input, ...otherProps } = this.props;
+    const { value } = input;
     return (
-      <StyledCheckBox onStartShouldSetResponder={this.onClick} {...input} {...otherProps}>
+      <StyledCheckBox
+        onStartShouldSetResponder={this.onClick}
+        {...input}
+        {...otherProps}
+        value={value}
+      >
         {this.genCheckedIcon()}
         {this.renderRight()}
       </StyledCheckBox>
