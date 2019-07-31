@@ -5,9 +5,8 @@ import { withRouter } from 'next/router'; //eslint-disable-line
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentMapping from '../AccountComponentMapping';
 import utils from '../../../../../utils';
-
+import { getAccountNavigationState, getLabels } from './Account.selectors';
 import { getAccountNavigationList } from './Account.actions';
-import { getAccountNavigationState } from './Account.selectors';
 
 /**
  * @function Account The Account component is the main container for the account section
@@ -57,7 +56,7 @@ export class Account extends React.PureComponent {
    */
   render() {
     const { componentToLoad, activeComponent } = this.state;
-    const { router, accountNavigation } = this.props;
+    const { router, accountNavigation, labels } = this.props;
     let navData = [];
     if (accountNavigation) {
       navData = accountNavigation.accountNav;
@@ -68,6 +67,7 @@ export class Account extends React.PureComponent {
         active={activeComponent}
         navData={navData}
         router={router}
+        labels={labels}
       />
     );
   }
@@ -84,6 +84,7 @@ export const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     accountNavigation: getAccountNavigationState(state),
+    labels: getLabels(state),
   };
 };
 
@@ -91,6 +92,11 @@ Account.propTypes = {
   getAccountNavigationAction: PropTypes.func.isRequired,
   router: PropTypes.shape({}).isRequired,
   accountNavigation: PropTypes.shape([]).isRequired,
+  labels: PropTypes.shape({}),
+};
+
+Account.defaultProps = {
+  labels: PropTypes.shape({ addressBook: {}, labels: {} }),
 };
 
 export default withRouter(
