@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Image, View, Modal, TouchableOpacity } from 'react-native';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import { getScreenHeight } from '../../../../../utils/utils.native';
+import { getScreenHeight } from '../../../../../utils';
 import withStyles from '../../../hoc/withStyles.native';
 import {
   DropDownStyle,

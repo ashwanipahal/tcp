@@ -7,14 +7,12 @@ export {
   isProduction,
   isDevelopment,
   identifyBrand,
-  isServer,
-  isClient,
-  isMobileApp,
   getObjectValue,
-  getIconPath,
-  getLocator,
   createUrlSearchParams,
   buildUrl,
   getSiteId,
   routerPush,
-} from './utils';
+  getCreditCardExpirationOptionMap,
+} from './utils.web';
+
+export { isServer, isClient, isMobileApp, getIconPath, getLocator } from './utils';

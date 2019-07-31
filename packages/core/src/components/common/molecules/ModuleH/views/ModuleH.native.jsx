@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Image, BodyCopy, Heading } from '../../../atoms';
-import { getLocator, getScreenWidth, UrlHandler } from '../../../../../utils/utils.native';
+import { getLocator, getScreenWidth, UrlHandler } from '../../../../../utils';
 import { Carousel } from '../..';
 import config from '../config';
 import colors from '../../../../../../styles/themes/colors/common';

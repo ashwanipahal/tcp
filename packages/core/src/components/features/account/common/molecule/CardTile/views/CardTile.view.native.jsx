@@ -16,7 +16,7 @@ import {
   CardCtaLinkLeftMargin,
   CardCtaLinks,
 } from '../CardTile.style.native';
-import { getIconCard } from '../../../../../../../utils/utils.native';
+import { getIconCard } from '../../../../../../../utils';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 
 // @flow

@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { FlatList, TouchableOpacity } from 'react-native';
-import { getScreenWidth, UrlHandler } from '../../../../../utils/utils.native';
+import { getScreenWidth, UrlHandler } from '../../../../../utils';
 import { Anchor, Button, Image } from '../../../atoms';
 import { ButtonWrapper, Tile, HeadingWrapper, Wrapper } from '../ModuleD.style.native';
 import colors from '../../../../../../styles/themes/TCP/colors';

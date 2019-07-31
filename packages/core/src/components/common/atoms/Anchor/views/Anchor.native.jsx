@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { Text } from 'react-native';
-import { UrlHandler, navigateToPage } from '../../../../../utils/utils.native';
+import { UrlHandler, navigateToPage } from '../../../../../utils';
 import withStyles from '../../../hoc/withStyles.native';
 import { AnchorStyles, AnchorView, AnchorIcon } from '../Anchor.style.native';
 
