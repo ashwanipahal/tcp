@@ -18,18 +18,15 @@ export default createAppContainer(
     // Read more at https://reactnavigation.org/docs/en/auth-flow.html
     Main: createBottomTabNavigator(
       {
-        AccountStack,
+        HomeStack,
         PlpStack,
         BrandSwitchStack,
-        HomeStack,
+        AccountStack,
         WalletStack,
       },
       {
         header: props => <Header {...props} />,
         tabBarComponent: NavBar,
-        defaultNavigationOptions: {
-          AccountStack: AccountStack,
-        },
       }
     ),
   })
