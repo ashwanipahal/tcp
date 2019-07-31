@@ -33,7 +33,7 @@ const InputField = styled.View`
 
 const InputFieldHalf = styled.View`
   height: 41px;
-  width: 170px;
+  width: 150px;
   margin-bottom: 32px;
   padding-top: 16px;
   padding-bottom: 7px;

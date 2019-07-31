@@ -3,6 +3,7 @@ import { View, ScrollView, TextInput } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
 import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggestAddress/GoogleAutoSuggestAddress';
+import Button from '@tcp/core/src/components/common/atoms/Button';
 import {
   // eslint-disable-next-line import/named
   StyledHeading,
@@ -45,6 +46,15 @@ const dropdown = () => {
   );
 };
 
+const googleAutoSuggest = text => {
+  return (
+    <InputField>
+      <GooglePlacesInput text={text} />
+      <UnderlineStyleLight />
+    </InputField>
+  );
+}
+
 const inputBox = (text, type = 1) => {
   switch (type) {
     case 1:
@@ -71,6 +81,9 @@ const inputBox = (text, type = 1) => {
         />
       );
 
+    case 3:
+      return googleAutoSuggest(text);
+
     default:
       return (
         <InputFieldHalf>
@@ -81,15 +94,21 @@ const inputBox = (text, type = 1) => {
   }
 };
 
-const loadAddressInfo = labels => {
-  return labels.map(labelElement => {
-    // if()
-    return inputBox(labelElement);
+const loadAddressInfo = (labels, labelsToLoad) => {
+  return labelsToLoad.map(labelElement => {
+    let type = 1;
+    if (labelElement == "acc_lbl_city") type = 3;
+    if (labelElement == "acc_lbl_state" || labelElement == "acc_lbl_zip_code") type = 0;
+    return inputBox(labels[labelElement], type);
   });
 };
 
-const constructLabelsObject = (labels, labelsToLoad) => {
-  return labelsToLoad.map(e => labels[e]);
+const loadAddressComponent = (labels, labelsToLoad) => {
+  return (
+    <View style={{display:"flex", flexDirection: "row",flexWrap: "wrap", justifyContent: "space-between"}}>
+      {loadAddressInfo(labels, labelsToLoad)}
+    </View>
+  );
 };
 
 const AddressBook = (props: Props) => {
@@ -105,7 +124,6 @@ const AddressBook = (props: Props) => {
     'acc_lbl_country',
     'acc_lbl_phone_number',
   ];
-  const loadedLabels = constructLabelsObject(labels, labelsToLoad);
   return (
     <View {...props}>
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -117,9 +135,22 @@ const AddressBook = (props: Props) => {
           />
         </StyledHeading>
         <UnderlineStyle />
-        <GooglePlacesInput />
-        {inputBox('test', 2)}
-        {loadAddressInfo(loadedLabels)}
+        {loadAddressComponent(labels, labelsToLoad)}
+        <Button
+          fill="BLUE"
+          type="submit"
+          buttonVariation="variable-width"
+          text={labels.acc_lbl_add_address_cta}
+          style={{ color: 'white', fontWeight: 'normal', opacity: 0.5 }}
+        />
+        <View style={{ height: 20 }} />
+        <Button
+          fill="WHITE"
+          type="submit"
+          buttonVariation="variable-width"
+          text={labels.acc_lbl_cancel_cta}
+          style={{ fontWeight: 'normal', opacity: 0.5 }}
+        />
       </ScrollView>
     </View>
   );
