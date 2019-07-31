@@ -90,6 +90,11 @@ const CardCtaLinkMargin = styled.View`
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
+const RecaptchaContainer = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  height: 189px;
+`;
+
 export {
   CardTileWrapper,
   CardTileHeading,
@@ -105,4 +110,5 @@ export {
   CardCtaRow,
   CardCtaLinks,
   CardCtaLinkMargin,
+  RecaptchaContainer,
 };

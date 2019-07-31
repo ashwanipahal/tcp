@@ -1,8 +1,8 @@
 export {
   getAPIConfig,
+  isMobileApp,
+  isClient,
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
   UrlHandler,
-  isMobileApp,
-  isClient,
 } from './utils.native';

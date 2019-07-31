@@ -1,5 +1,7 @@
 /* eslint-disable spaced-comment */
 import React from 'react';
+import { Field, reduxForm } from 'redux-form';
+import { get } from 'lodash';
 import { View, Text } from 'react-native';
 import Recaptcha from '@tcp/core/src/components/common/molecules/recaptcha/recaptcha.native';
 import Anchor from '../../../../../../common/atoms/Anchor';
@@ -18,10 +20,14 @@ import {
   CardCtaLinkMargin,
   CardCtaLinks,
   CardCtaRow,
+  RecaptchaContainer,
 } from '../CardTile.style.native';
 import { getIconCard } from '../../../../../../../utils/utils.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import CustomButton from '../../../../../../common/atoms/Button';
+import TextBox from '../../../../../../common/atoms/TextBox';
+import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
+import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 
 // @flow
 type Props = {
@@ -30,6 +36,8 @@ type Props = {
   setDefaultPaymentMethod: Function,
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
+  change: Function,
+  handleSubmit: Function,
 };
 
 const getCardName = ({ card, labels }) => {
@@ -63,11 +71,6 @@ const getDataLocatorPrefix = ({ card }) => {
 const handleDefaultLinkClick = (e, card, setDefaultPaymentMethod) => {
   e.preventDefault();
   setDefaultPaymentMethod(card);
-};
-
-const handleGetGiftCardBalanceClick = (e, card, onGetBalanceCard) => {
-  e.preventDefault();
-  onGetBalanceCard({ card });
 };
 
 type MakeDefaultProps = {
@@ -166,6 +169,10 @@ const getAddressDetails = ({ card }) => {
   );
 };
 
+const handleGetGiftCardBalanceClick = (formData, card, onGetBalanceCard) => {
+  onGetBalanceCard({ formData, card });
+};
+
 const getCtaRow = (
   isGiftCard,
   isVenmo,
@@ -173,7 +180,9 @@ const getCtaRow = (
   labels,
   dataLocatorPrefix,
   card,
-  onGetBalanceCard
+  onGetBalanceCard,
+  handleSubmit
+  // eslint-disable-next-line max-params
 ) => {
   return (
     <CardCtaRow>
@@ -191,7 +200,9 @@ const getCtaRow = (
         <CustomButton
           text="CHECK BALANCE"
           buttonVariation="variable-width"
-          onPress={e => handleGetGiftCardBalanceClick(e, card, onGetBalanceCard)}
+          onPress={handleSubmit(formData =>
+            handleGetGiftCardBalanceClick(formData, card, onGetBalanceCard)
+          )}
         />
       )}
 
@@ -224,8 +235,10 @@ const CardTile = ({
   card,
   labels,
   setDefaultPaymentMethod,
-  onGetBalanceCard,
   checkbalanceValueInfo,
+  onGetBalanceCard,
+  change,
+  handleSubmit,
 }: Props) => {
   const isCreditCard = card.ccType !== 'GiftCard' && card.ccType !== 'VENMO';
   const isVenmo = card.ccType === 'VENMO';
@@ -234,6 +247,12 @@ const CardTile = ({
   const cardName = getCardName({ card, labels });
   const cardIcon = getIconCard(cardIconMapping[card.ccBrand]);
   const dataLocatorPrefix = getDataLocatorPrefix({ card });
+  const onMessage = event => {
+    if (event && event.nativeEvent.data) {
+      const value = get(event, 'nativeEvent.data', '');
+      change('recaptchaToken', value);
+    }
+  };
   return (
     <CardTileWrapper card={card}>
       <CardTileContext defaultPayment={card.defaultInd}>
@@ -271,10 +290,42 @@ const CardTile = ({
           />
         </CardCtaRow>
       )}
-      <Recaptcha />
-      {getCtaRow(isGiftCard, isVenmo, balance, labels, dataLocatorPrefix, card, onGetBalanceCard)}
+      {isGiftCard && (
+        <View>
+          <RecaptchaContainer>
+            <Recaptcha onMessage={onMessage} />
+          </RecaptchaContainer>
+          <Field
+            label=""
+            component={TextBox}
+            title=""
+            type="hidden"
+            name="recaptchaToken"
+            id="recaptchaToken"
+            data-locator="gift-card-recaptchcb"
+          />
+        </View>
+      )}
+      {getCtaRow(
+        isGiftCard,
+        isVenmo,
+        balance,
+        labels,
+        dataLocatorPrefix,
+        card,
+        onGetBalanceCard,
+        handleSubmit
+      )}
     </CardTileWrapper>
   );
 };
 
-export default CardTile;
+const validateMethod = createValidateMethod(getStandardConfig(['recaptchaToken']));
+
+export default reduxForm({
+  form: 'CardTileForm', // a unique identifier for this form
+  ...validateMethod,
+  enableReinitialize: true,
+})(CardTile);
+
+export { CardTile as CardTileVanilla };

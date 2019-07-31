@@ -35,7 +35,7 @@ exports[`VenmoCardList Component should render correctly if list is present 1`] 
   }
 >
   <Styled(Text) />
-  <CardTile
+  <ReduxForm
     card={
       Object {
         "accountNo": "",
@@ -53,7 +53,24 @@ exports[`VenmoCardList Component should render correctly if list is present 1`] 
         },
       }
     }
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="CardTileForm"
+    getFormState={[Function]}
+    keepDirtyOnReinitialize={false}
     labels={Object {}}
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    validate={[Function]}
   />
 </View>
 `;

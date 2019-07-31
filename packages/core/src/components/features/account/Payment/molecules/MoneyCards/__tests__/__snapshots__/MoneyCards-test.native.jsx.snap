@@ -86,7 +86,7 @@ exports[`MoneyCards Component should render correctly if list is present 1`] = `
       url=""
     />
   </Styled(View)>
-  <CardTile
+  <ReduxForm
     card={
       Object {
         "accountNo": "************1111",
@@ -112,11 +112,28 @@ exports[`MoneyCards Component should render correctly if list is present 1`] = `
         "properties": null,
       }
     }
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="CardTileForm"
+    getFormState={[Function]}
+    keepDirtyOnReinitialize={false}
     labels={
       Object {
         "creditCardHeading": "heading",
       }
     }
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    validate={[Function]}
   />
 </View>
 `;

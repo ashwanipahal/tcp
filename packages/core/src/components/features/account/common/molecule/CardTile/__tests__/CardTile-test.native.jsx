@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CardTile from '../views/CardTile.view.native';
+import { CardTileVanilla } from '../views/CardTile.view.native';
 import labels from '../../../../Payment/Payment.constants';
 
 describe('CardTile', () => {
@@ -29,7 +29,7 @@ describe('CardTile', () => {
   };
   const placeCard = 'PLACE CARD';
   it('should render correctly with discover card', () => {
-    const tree = shallow(<CardTile labels={labels} card={cardList} />);
+    const tree = shallow(<CardTileVanilla labels={labels} card={cardList} />);
     expect(tree).toMatchSnapshot();
   });
   it('should render correctly with visa card', () => {
@@ -37,7 +37,7 @@ describe('CardTile', () => {
       ccBrand: 'Visa',
       ccType: 'COMPASSVISA',
     });
-    const tree = shallow(<CardTile labels={labels} card={cardVisa} />);
+    const tree = shallow(<CardTileVanilla labels={labels} card={cardVisa} />);
     expect(tree).toMatchSnapshot();
   });
   it('should render correctly with amex card', () => {
@@ -46,7 +46,7 @@ describe('CardTile', () => {
       ccType: 'COMPASSAMEX',
       defaultInd: true,
     });
-    const tree = shallow(<CardTile labels={labels} card={cardAmex} />);
+    const tree = shallow(<CardTileVanilla labels={labels} card={cardAmex} />);
     expect(tree).toMatchSnapshot();
   });
   it('should render correctly with master card', () => {
@@ -54,7 +54,7 @@ describe('CardTile', () => {
       ccBrand: 'MC',
       ccType: 'COMPASSMASTERCARD',
     });
-    const tree = shallow(<CardTile labels={labels} card={cardMaster} />);
+    const tree = shallow(<CardTileVanilla labels={labels} card={cardMaster} />);
     expect(tree).toMatchSnapshot();
   });
   it('should render correctly with gift card', () => {
@@ -62,7 +62,9 @@ describe('CardTile', () => {
       ccBrand: 'GC',
       ccType: 'GiftCard',
     });
-    const tree = shallow(<CardTile labels={labels} card={giftCard} />);
+    const tree = shallow(
+      <CardTileVanilla labels={labels} card={giftCard} handleSubmit={jest.fn()} />
+    );
     expect(tree).toMatchSnapshot();
   });
   it('should render correctly with venmocard', () => {
@@ -73,7 +75,7 @@ describe('CardTile', () => {
         venmoUserId: '1234',
       },
     });
-    const tree = shallow(<CardTile labels={labels} card={venmo} />);
+    const tree = shallow(<CardTileVanilla labels={labels} card={venmo} />);
     expect(tree).toMatchSnapshot();
   });
   it('should render correctly with plcc card', () => {
@@ -81,7 +83,7 @@ describe('CardTile', () => {
       ccBrand: placeCard,
       ccType: placeCard,
     });
-    const tree = shallow(<CardTile labels={labels} card={plcc} />);
+    const tree = shallow(<CardTileVanilla labels={labels} card={plcc} />);
     expect(tree).toMatchSnapshot();
   });
   it('should render correctly with notification  gift card', () => {
@@ -89,7 +91,14 @@ describe('CardTile', () => {
       ccBrand: 'GC',
       ccType: 'GiftCard',
     });
-    const tree = shallow(<CardTile labels={labels} card={giftCard} showNotificationCaptcha />);
+    const tree = shallow(
+      <CardTileVanilla
+        labels={labels}
+        card={giftCard}
+        showNotificationCaptcha
+        handleSubmit={jest.fn()}
+      />
+    );
     expect(tree).toMatchSnapshot();
   });
 });
