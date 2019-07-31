@@ -38,7 +38,6 @@ class LoginSection extends React.PureComponent<Props> {
       successFullResetEmail,
       resetForm,
       resetForgotPasswordErrorResponse,
-      className,
     } = this.props;
 
     const { resetPassword } = this.state;
@@ -78,7 +77,7 @@ class LoginSection extends React.PureComponent<Props> {
             color="#FFFFFF"
             fill="BLUE"
             type="submit"
-            buttonVariation="fixed-width"
+            buttonVariation="variable-width"
             data-locator=""
             text={labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
           />
