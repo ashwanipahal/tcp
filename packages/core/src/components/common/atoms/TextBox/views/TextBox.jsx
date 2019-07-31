@@ -27,6 +27,7 @@ type Props = {
   inputRef: any,
   dataLocator?: string,
   showSuccessCheck?: boolean,
+  enableSuccessCheck?: boolean,
   isRequired?: boolean,
 };
 
@@ -55,6 +56,7 @@ const TextBox = ({
   meta,
   dataLocator,
   showSuccessCheck,
+  enableSuccessCheck,
   isRequired,
   errorDataLocator,
   ...others
@@ -100,7 +102,7 @@ const TextBox = ({
       >
         {touched && error ? error : ''}
       </BodyCopy>
-      <div className="success__checkmark" />
+      {enableSuccessCheck && <div className="success__checkmark" />}
     </label>
   );
 };
@@ -115,6 +117,7 @@ TextBox.defaultProps = {
   dataLocator: '',
   meta: {},
   showSuccessCheck: false,
+  enableSuccessCheck: true,
   isRequired: false,
 };
 

@@ -7,7 +7,11 @@ import AccountOverview from '../views/AccountOverview.view';
  * and paint the right panel for addresses
  */
 const AccountOverviewContainer = () => {
-  return <AccountOverview />;
+  return (
+    <div>
+      <AccountOverview />
+    </div>
+  );
 };
 
 export default AccountOverviewContainer;

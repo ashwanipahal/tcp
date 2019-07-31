@@ -5,11 +5,11 @@ import BossBannerView from '../BossBanner.views';
 describe('BossBannerView component', () => {
   it('renders correctly', () => {
     const props = {
-      className: 'abcd',
+      className: 'className',
       labels: {
-        pickUpText: 'abc',
-        simplyChooseText: 'def',
-        noRushText: 'xyz',
+        pickUpText: 'PICK UP IN STORE AND SAVE AN EXTRA 5%',
+        simplyChooseText: 'Simply choose #type in your bag before checking out.',
+        noRushText: 'NO RUSH Pick Up',
       },
     };
     const component = shallow(<BossBannerView {...props} />);

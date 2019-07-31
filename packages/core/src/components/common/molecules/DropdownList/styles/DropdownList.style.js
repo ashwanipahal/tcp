@@ -4,6 +4,10 @@ import { getIconPath } from '../../../../../utils';
 const activeIcon = getIconPath('active_icon');
 
 const dropDownlist = css`
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+
   .dropdownUlBorder {
     border: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
     background-color: ${props => props.theme.colors.WHITE};
@@ -57,7 +61,7 @@ const dropDownlist = css`
 
   .ulBorderWithLastRow li:last-child {
     position: absolute;
-    width: 96%;
+    width: 93%;
     height: 42px;
     padding: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
     left: 0;

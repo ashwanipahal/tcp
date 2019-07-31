@@ -1,7 +1,8 @@
 // @flow
 import React from 'react';
 import { Col, Row, Button, BodyCopy, Anchor } from '../../../atoms';
-import { Carousel, PromoTextBanner, LinkText, ImageGrid, style } from '../ModuleK.style';
+import { Carousel } from '../..';
+import { PromoTextBanner, LinkText, ImageGrid, style } from '../ModuleK.style';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/errorBoundary';
 import config from '../config';
@@ -57,7 +58,8 @@ class ModuleK extends React.PureComponent<Props, State> {
               <LinkText
                 headerText={headerText}
                 component="div"
-                fontSize="fs48"
+                fontSize={['fs36', 'fs36', 'fs48']}
+                lineHeight="lh107"
                 fontWeight="black"
                 dataLocator="moduleK_header_text"
               />

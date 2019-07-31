@@ -16,12 +16,12 @@ describe('ModuleK native component', () => {
   });
 
   it('Should renders correctly', () => {
-    const wrapper = shallow(<ModuleK data={moduleKData} />);
+    const wrapper = shallow(<ModuleK {...moduleKData} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('Should verify header text link click', () => {
-    const wrapper = shallow(<ModuleK data={moduleKData} />);
+    const wrapper = shallow(<ModuleK {...moduleKData} />);
     wrapper
       .find('[dataLocator="moduleK_header_text"]')
       .props()

@@ -44,9 +44,7 @@ class ModuleK extends React.PureComponent {
 
   getPagination() {
     const { activeSlide } = this.state;
-    const {
-      data: { masonryGrid = [] },
-    } = this.props;
+    const { masonryGrid } = this.props;
 
     /* eslint-disable  */
     return (
@@ -114,12 +112,10 @@ class ModuleK extends React.PureComponent {
   };
 
   render() {
-    const {
-      props: { data },
-    } = this;
+    const { props } = this;
 
-    const [headerText] = data.headerText;
-    const { promoTextBanner: outerPromoTextBanner, masonryGrid, autoplayInterval } = data;
+    const [headerText] = props.headerText;
+    const { promoTextBanner: outerPromoTextBanner, masonryGrid, autoplayInterval } = props;
     let indexedMasonryGrid = masonryGrid.map((item, i) => {
       item.slideIndex = i;
       return item;
@@ -165,21 +161,17 @@ class ModuleK extends React.PureComponent {
 }
 
 ModuleK.defaultProps = {
-  data: {
-    headerText: [],
-    promoTextBanner: null,
-    masonryGrid: [],
-    autoplayInterval: 2,
-  },
+  headerText: [],
+  promoTextBanner: [],
+  masonryGrid: [],
+  autoplayInterval: 2,
 };
 
 ModuleK.propTypes = {
-  data: PropTypes.shape({
-    headerText: PropTypes.array,
-    promoTextBanner: PropTypes.array,
-    masonryGrid: PropTypes.array,
-    autoplayInterval: PropTypes.number, // 2 means 2 seconds
-  }),
+  headerText: PropTypes.array,
+  promoTextBanner: PropTypes.array,
+  masonryGrid: PropTypes.array,
+  autoplayInterval: PropTypes.number, // 2 means 2 seconds
 };
 
 export default ModuleK;
