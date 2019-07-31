@@ -69,7 +69,7 @@ const styles = css`
     height: 56px;
     margin-bottom: auto;
     border: 1px solid ${props => props.theme.colorPalette.gray[500]};
-    border-radius: 10px;
+    border-radius: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
   .cardTile__img {
     width: 100%;
