@@ -104,7 +104,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-ckVGcZ",
+              "componentId": "sc-jKJlTe",
               "isStatic": false,
               "rules": Array [
                 "
@@ -144,7 +144,7 @@ exports[`ModuleK component renders correctly 1`] = `
               "sc-kGXeez",
             ],
             "render": [Function],
-            "styledComponentId": "sc-ckVGcZ",
+            "styledComponentId": "sc-jKJlTe",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -188,7 +188,7 @@ exports[`ModuleK component renders correctly 1`] = `
         }
       }
     >
-      <errorBoundaryComponent
+      <Styled(errorBoundaryComponent)
         carouselConfig={
           Object {
             "autoplay": true,
@@ -196,6 +196,42 @@ exports[`ModuleK component renders correctly 1`] = `
             "customArrowRight": "/static/images/right-carousel-carrot.svg",
             "dataLocatorPause": "moduleK_pause_button",
             "dataLocatorPlay": "moduleK_play_button",
+            "inheritedStyles": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-dxgOiQ",
+                "isStatic": true,
+                "rules": Array [
+                  "
+  .slick-arrow {
+    top: 44%;
+  }
+  .slick-next {
+    height: 52px;
+    right: -68px;
+    width: 15px;
+  }
+  .slick-prev {
+    height: 52px;
+    left: -68px;
+    width: 15px;
+  }
+  .slick-dots {
+    bottom: -10px;
+  }
+",
+                ],
+              },
+              "displayName": "Styled(errorBoundaryComponent)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-dxgOiQ",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            },
           }
         }
         options={
@@ -606,7 +642,7 @@ exports[`ModuleK component renders correctly 1`] = `
             </Styled(Button)>
           </Styled(Anchor)>
         </Styled(Col)>
-      </errorBoundaryComponent>
+      </Styled(errorBoundaryComponent)>
     </Styled(Col)>
   </Styled(Row)>
 </StyledComponent>

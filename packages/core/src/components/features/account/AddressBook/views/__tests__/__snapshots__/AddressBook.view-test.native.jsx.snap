@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Native AddressBook component should renders correctly when addresses are not present 1`] = `
+<StyledNativeComponent
+  addresses={Immutable.List []}
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "_foldedDefaultProps": undefined,
+      "attrs": Array [],
+      "displayName": "Styled(AddressView)",
+      "inlineStyle": InlineStyle {
+        "rules": Array [
+          "
+    ",
+          "
+  margin-bottom: 120px;
+",
+          ";
+  ",
+        ],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  labels={Object {}}
+/>
+`;
+
+exports[`Native AddressBook component should renders correctly when addresses are present 1`] = `
+<StyledNativeComponent
+  addresses={
+    Immutable.List [
+      Object {
+        "addressLine": Array [
+          "addressline 1",
+          "addressline 2",
+        ],
+        "city": "test city",
+        "country": "test country",
+        "firstName": "test",
+        "lastName": "test",
+        "phone1": "1234567890",
+      },
+    ]
+  }
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "_foldedDefaultProps": undefined,
+      "attrs": Array [],
+      "displayName": "Styled(AddressView)",
+      "inlineStyle": InlineStyle {
+        "rules": Array [
+          "
+    ",
+          "
+  margin-bottom: 120px;
+",
+          ";
+  ",
+        ],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  labels={Object {}}
+/>
+`;

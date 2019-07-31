@@ -1,8 +1,25 @@
 import { Dimensions, Linking } from 'react-native';
 import icons from '../config/icons';
 import locators from '../config/locators';
+import { getStoreRef, resetStoreRef } from './store.utils';
+import { APICONFIG_REDUCER_KEY } from '../constants/reducer.constants';
 
 import config from '../components/common/atoms/Anchor/config.native';
+
+// setting the apiConfig subtree of whole state in variable; Do we really need it ?
+let apiConfig = null;
+
+export const isMobileApp = () => {
+  return typeof navigator !== 'undefined' && navigator.product === 'ReactNative';
+};
+
+export const isServer = () => {
+  return typeof window === 'undefined' && !isMobileApp();
+};
+
+export function isClient() {
+  return typeof window !== 'undefined' && !isMobileApp();
+}
 
 export const importGraphQLClientDynamically = module => {
   return new Promise((resolve, reject) => {
@@ -64,13 +81,13 @@ export const importGraphQLQueriesDynamically = query => {
   });
 };
 
-const discSmall = require('../assets/disc-small.png');
-const masterCard = require('../assets/mc-small.png');
+const discSmall = require('../assets/discover-small.png');
+const masterCard = require('../assets/mastercard-small.png');
 const amexCard = require('../assets/amex-small.png');
 const visaSmall = require('../assets/visa-small.png');
-const placeCard = require('../assets/place-card-small.png');
-const giftCardSmall = require('../assets/gift-card-small.png');
-const venmoCard = require('../assets/venmo-blue-acceptance-mark.png');
+const placeCard = require('../assets/TCP-CC-small.png');
+const giftCardSmall = require('../assets/TCP-gift-small.png');
+const venmoCard = require('../assets/venmo-small.png');
 
 export const getIconCard = icon => {
   switch (icon) {
@@ -188,4 +205,43 @@ export const cropImageUrl = (url, crop) => {
     return `${urlPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
   }
   return url;
+};
+
+/**
+ * @summary Get the api config if already created or else creates one.
+ * @returns {Object} apiConfig - Api config to be utilized for brand/channel/locale config
+ */
+export const getAPIConfig = () => {
+  // When apiConfig is null (the very first time) or is an empty object, derive value from store..
+  const validApiConfigObj = !apiConfig || (apiConfig && !Object.keys(apiConfig).length);
+  // This check is to make sure that same instance of apiConfig for different country/brand ssr requests
+  const deriveApiConfigObj = validApiConfigObj || isServer();
+  if (isMobileApp()) {
+    // TODO - need to configure it for mobile app in similar way of Web - Overriding it for now
+    apiConfig = {
+      brandId: 'tcp',
+      brandIdCMS: 'TCP',
+      traceIdCount: 0,
+      proto: 'https',
+      MELISSA_KEY: '63987687',
+      BV_API_KEY: 'e50ab0a9-ac0b-436b-9932-2a74b9486436',
+      storeId: '10151',
+      catalogId: '10551',
+      isUSStore: true,
+      langId: '-1',
+      siteId: 'us',
+      countryKey: '_US',
+      assetHost: 'https://test4.childrensplace.com',
+      domain: '://test4.childrensplace.com/api/',
+      unbxd: '://search.unbxd.io',
+      cookie: null,
+      isMobile: false,
+    };
+  } else if (deriveApiConfigObj) {
+    apiConfig = (getStoreRef() && getStoreRef().getState()[APICONFIG_REDUCER_KEY]) || {};
+    if (!isServer()) {
+      resetStoreRef(); // This is to make module variable reduxStore as null
+    }
+  }
+  return apiConfig;
 };

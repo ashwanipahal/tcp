@@ -69,14 +69,7 @@ const ImageGrid = (props: Props) => {
   return (
     <div>
       {mediaList.reduce(gridReducer, gridCoordinator).final.map(medList => (
-        <Row
-          fullBlead={{
-            small: false,
-            medium: false,
-            large: true,
-          }}
-          className={className}
-        >
+        <Row fullBleed className={className}>
           {medList.map((mediaProps, index) => {
             return (
               <Col colSize={colSize} className="image-col">

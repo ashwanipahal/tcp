@@ -1,4 +1,4 @@
-const filterObject = (arr, searchedValue) => {
+export const filterObject = (arr, searchedValue) => {
   const filteredValue = arr.filter(value => {
     return value.itemInfo.itemId.toString() === searchedValue.orderItemId.toString();
   });
