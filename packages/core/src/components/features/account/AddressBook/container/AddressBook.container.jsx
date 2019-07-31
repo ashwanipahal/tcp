@@ -16,7 +16,6 @@ import {
   deleteModalOpenState,
   showUpdatedNotificationOnModalState,
 } from './AddressBook.selectors';
-import labels from './AddressBook.labels';
 import { setDefaultShippingAddressRequest } from './DefaultShippingAddress.actions';
 
 // @flow
@@ -32,6 +31,7 @@ type Props = {
   setDeleteModalMountState: Function,
   showUpdatedNotificationOnModal: any,
   clearAddressBookNotification: () => void,
+  labels: object,
 };
 
 export class AddressBookContainer extends React.Component<Props> {
@@ -56,6 +56,7 @@ export class AddressBookContainer extends React.Component<Props> {
       deleteModalMountedState,
       setDeleteModalMountState,
       showUpdatedNotificationOnModal,
+      labels,
     } = this.props;
     if (isFetching) {
       return <p>Loading...</p>;

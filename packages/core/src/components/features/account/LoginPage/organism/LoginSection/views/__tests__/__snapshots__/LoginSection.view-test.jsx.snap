@@ -27,6 +27,7 @@ exports[`LoginSection component should renders correctly 1`] = `
       keepDirtyOnReinitialize={false}
       labels={Object {}}
       loginErrorMessage=""
+      onCreateAccountClick={[Function]}
       onSubmit={[Function]}
       persistentSubmitErrors={false}
       pure={true}

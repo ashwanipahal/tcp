@@ -14,10 +14,10 @@ export const EmptyAddressList = ({ labels, className }: Props) => {
   return (
     <div className={className}>
       <BodyCopy bodySize="three" tag="p" fontWeight="bold" className="emptyAddressList__row">
-        {labels.createAddressBookMsg}
+        {labels.addressBook.ACC_LBL_CREATE_ADDRESS_BOOK_MSG}
       </BodyCopy>
       <BodyCopy bodySize="three" tag="p" className="emptyAddressList__row">
-        {labels.createAddressBookBenefitMsg}
+        {labels.addressBook.ACC_LBL_CREATE_ADDRESS_BOOK_BENEFIT_MSG}
       </BodyCopy>
     </div>
   );

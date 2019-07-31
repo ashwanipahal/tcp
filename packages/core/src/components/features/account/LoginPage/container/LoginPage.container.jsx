@@ -11,7 +11,10 @@ import {
   toggleSuccessfulEmailSection,
 } from '../../ForgotPassword/container/ForgotPassword.selectors';
 import { login, resetLoginInfo } from './LoginPage.actions';
-import { closeOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
+import {
+  closeOverlayModal,
+  openOverlayModal,
+} from '../../../OverlayModal/container/OverlayModal.actions';
 import labels from './LoginPage.labels';
 import {
   getUserLoggedInState,
@@ -35,6 +38,14 @@ class LoginPageContainer extends React.PureComponent {
       resetLoginState();
     }
   }
+
+  onCreateAccountClick = () => {
+    const { openOverlay } = this.props;
+    openOverlay({
+      component: 'createAccount',
+      variation: 'primary',
+    });
+  };
 
   render() {
     const {
@@ -69,6 +80,7 @@ class LoginPageContainer extends React.PureComponent {
         getUserInfo={getUserInfoAction}
         showNotification={showNotification}
         successFullResetEmail={successFullResetEmail}
+        onCreateAccountClick={this.onCreateAccountClick}
       />
     );
   }
@@ -88,6 +100,7 @@ LoginPageContainer.propTypes = {
   SubmitForgot: PropTypes.bool.isRequired,
   showNotification: PropTypes.bool.isRequired,
   successFullResetEmail: PropTypes.bool.isRequired,
+  openOverlay: PropTypes.func,
 };
 
 LoginPageContainer.defaultProps = {
@@ -96,6 +109,7 @@ LoginPageContainer.defaultProps = {
   loginErrorMessage: '',
   resetLoginState: () => {},
   closeOverlay: () => {},
+  openOverlay: () => {},
 };
 
 const mapDispatchToProps = dispatch => {
@@ -114,6 +128,9 @@ const mapDispatchToProps = dispatch => {
     },
     closeOverlay: () => {
       dispatch(closeOverlayModal());
+    },
+    openOverlay: payload => {
+      dispatch(openOverlayModal(payload));
     },
   };
 };

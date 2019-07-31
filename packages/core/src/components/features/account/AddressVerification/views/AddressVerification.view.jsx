@@ -93,7 +93,7 @@ export class AddressVerification extends React.Component<Props> {
         fontFamily="secondary"
         data-locator="verifyaddress-msg"
       >
-        {labels[`acc_label_verify_your_address_${verificationResult}`]}
+        {labels.addressBook[`ACC_LABEL_VERIFY_YOUR_ADDRESS_${verificationResult}`]}
       </BodyCopy>
     );
   };
@@ -153,7 +153,7 @@ export class AddressVerification extends React.Component<Props> {
           className="elem-mb-SM"
           data-locator="verifyaddress-youenteredlbl"
         >
-          {labels.acc_lbl_you_entered}
+          {labels.addressBook.ACC_LBL_YOU_ENTERED}
         </BodyCopy>
         <div className="elem-mb-XL">
           <AddressOption
@@ -187,7 +187,7 @@ export class AddressVerification extends React.Component<Props> {
             className="elem-mb-SM"
             data-locator="verifyaddress-wesuggestlbl"
           >
-            {labels.acc_lbl_we_suggest}
+            {labels.addressBook.ACC_LBL_WE_SUGGEST}
           </BodyCopy>
           <div className="elem-mb-XL">
             <AddressOption
@@ -216,7 +216,7 @@ export class AddressVerification extends React.Component<Props> {
               onChange: this.handleChange,
               name: 'optionalAddressLine',
             }}
-            placeholder={labels.acc_lbl_address_line2}
+            placeholder={labels.addressBook.ACC_LBL_ADDRESS_LINE2}
             id="optionalAddressLine"
             dataLocator="verifyaddress-addressLine2InPopUp"
           />
@@ -258,7 +258,7 @@ export class AddressVerification extends React.Component<Props> {
               textAlign="center"
               className="elem-mb-MED"
             >
-              {labels.acc_lbl_verify_your_address_header}
+              {labels.addressBook.ACC_LBL_VERIFY_YOUR_ADDRESS_HEADER}
             </BodyCopy>
             {this.getMessage(verificationResult, suggestedAddress)}
             {this.renderUserAddress(verificationResult, userAddress, suggestedAddress)}
@@ -271,7 +271,7 @@ export class AddressVerification extends React.Component<Props> {
                 onClick={this.onConfirm}
                 data-locator="verifyaddress-continuebtn"
               >
-                {labels.acc_lbl_continue_cta}
+                {labels.addressBook.ACC_LBL_CONTINUE_CTA}
               </Button>
               <Button
                 className="addressVerification__cta"
@@ -280,7 +280,7 @@ export class AddressVerification extends React.Component<Props> {
                 fill="RED"
                 data-locator="verifyaddress-editaddressbtn"
               >
-                {labels.acc_lbl_edit_address_cta}
+                {labels.addressBook.ACC_LBL_EDIT_ADDRESS}
               </Button>
             </div>
           </div>

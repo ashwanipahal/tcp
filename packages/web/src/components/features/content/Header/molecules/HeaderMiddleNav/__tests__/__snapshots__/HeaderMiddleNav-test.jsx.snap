@@ -29,7 +29,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       />
     </Styled(Col)>
     <Styled(Col)
-      className="hide-on-mobile hide-on-tablet"
+      className="hide-on-mobile hide-on-tablet textRight"
       colSize={
         Object {
           "large": 5,

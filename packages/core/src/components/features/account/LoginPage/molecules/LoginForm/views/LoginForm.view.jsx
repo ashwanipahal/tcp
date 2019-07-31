@@ -31,83 +31,105 @@ class LoginForm extends React.PureComponent<Props> {
       className,
       showRecaptcha,
       change,
+      onCreateAccountClick,
+      showSavePlcc,
     } = this.props;
     return (
-      <form name="LoginForm" onSubmit={handleSubmit} noValidate className={className}>
-        {loginErrorMessage && (
-          <Notification
-            status="error"
-            colSize={{ large: 12, medium: 8, small: 6 }}
-            message={loginErrorMessage}
-          />
-        )}
-        <BodyCopy component="div" className="elem-mb-LRG">
-          <Field
-            id="emailAddress"
-            placeholder={labels.ACC_LBL_LOGIN_EMAIL}
-            name="emailAddress"
-            component={TextBox}
-            dataLocator=""
-            showSuccessCheck={false}
-          />
-          <Field
-            id="password"
-            placeholder={labels.ACC_LBL_LOGIN_PASSWORD}
-            name="password"
-            component={PasswordField}
-            dataLocator=""
-            showSuccessCheck={false}
-          />
-          <BodyCopy component="div">
-            <Field name="rememberMe" component={InputCheckbox} dataLocator="" className="">
-              {labels.ACC_LBL_LOGIN_REMEMBER_ME}
-            </Field>
-          </BodyCopy>
-          <BodyCopy component="div">
-            <Field name="savePlcc" component={InputCheckbox} dataLocator="">
-              {labels.ACC_LBL_LOGIN_SAVE_MY_PLACE}
-            </Field>
-          </BodyCopy>
-          <BodyCopy component="div">
-            {showRecaptcha && (
-              <>
-                <Recaptcha
-                  verifyCallback={token => change('recaptchaToken', token)}
-                  expiredCallback={() => change('recaptchaToken', '')}
-                />
-                <Field
-                  component={TextBox}
-                  type="hidden"
-                  name="recaptchaToken"
-                  data-locator="login-recaptchcb"
-                />
-              </>
+      <div className={className}>
+        <form name="LoginForm" onSubmit={handleSubmit} noValidate className={className}>
+          {loginErrorMessage && (
+            <Notification
+              status="error"
+              colSize={{ large: 12, medium: 8, small: 6 }}
+              message={loginErrorMessage}
+            />
+          )}
+          <BodyCopy component="div" className="elem-mb-LRG">
+            <Field
+              id="emailAddress"
+              placeholder={labels.ACC_LBL_LOGIN_EMAIL}
+              name="emailAddress"
+              component={TextBox}
+              dataLocator=""
+              showSuccessCheck={false}
+              enableSuccessCheck={false}
+            />
+            <Field
+              id="password"
+              placeholder={labels.ACC_LBL_LOGIN_PASSWORD}
+              name="password"
+              component={PasswordField}
+              dataLocator=""
+              showSuccessCheck={false}
+              enableSuccessCheck={false}
+            />
+            <BodyCopy component="div">
+              <Field name="rememberMe" component={InputCheckbox} dataLocator="" className="">
+                {labels.ACC_LBL_LOGIN_REMEMBER_ME}
+              </Field>
+            </BodyCopy>
+            {showSavePlcc && (
+              <BodyCopy component="div">
+                <Field name="savePlcc" component={InputCheckbox} dataLocator="">
+                  {labels.ACC_LBL_LOGIN_SAVE_MY_PLACE}
+                </Field>
+              </BodyCopy>
             )}
+            <BodyCopy component="div">
+              {showRecaptcha && (
+                <>
+                  <Recaptcha
+                    verifyCallback={token => change('recaptchaToken', token)}
+                    expiredCallback={() => change('recaptchaToken', '')}
+                  />
+                  <Field
+                    component={TextBox}
+                    type="hidden"
+                    name="recaptchaToken"
+                    data-locator="login-recaptchcb"
+                  />
+                </>
+              )}
+            </BodyCopy>
           </BodyCopy>
-        </BodyCopy>
-        <BodyCopy component="div" textAlign="center" className="elem-mb-LRG">
-          <Button
-            fill="BLUE"
-            type="submit"
-            buttonVariation="fixed-width"
-            data-locator=""
-            fullWidth
-            className="elem-mb-XS"
-          >
-            {labels.ACC_LBL_LOGIN_CTA}
-          </Button>
-          <Anchor
-            className="addAddress__anchor__back"
-            fontSizeVariation="xlarge"
-            anchorVariation="secondary"
-            to="/account?id=address-book"
-            data-locator="addnewaddress-back"
-            onClick={this.showForgotPasswordForm}
-          >
-            {labels.ACC_LBL_LOGIN_FORGET_PASSWORD_CTA}
-          </Anchor>
-        </BodyCopy>
-      </form>
+          <BodyCopy component="div" textAlign="center" className="elem-mb-LRG">
+            <Button
+              fill="BLUE"
+              type="submit"
+              buttonVariation="fixed-width"
+              data-locator=""
+              fullWidth
+              className="elem-mb-XS"
+            >
+              {labels.ACC_LBL_LOGIN_CTA}
+            </Button>
+            <Anchor
+              className="addAddress__anchor__back"
+              fontSizeVariation="xlarge"
+              anchorVariation="secondary"
+              to="/account?id=address-book"
+              data-locator="addnewaddress-back"
+              onClick={this.showForgotPasswordForm}
+            >
+              {labels.ACC_LBL_LOGIN_FORGET_PASSWORD_CTA}
+            </Anchor>
+          </BodyCopy>
+          <BodyCopy component="div" className="border elem-pt-LRG elem-pl-MED elem-pr-MED">
+            <BodyCopy textAlign="center" className="elem-mb-LRG">
+              {labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}
+            </BodyCopy>
+          </BodyCopy>
+        </form>
+        <Button
+          fill="BLUE"
+          type="button"
+          fullWidth
+          buttonVariation="fixed-width"
+          onClick={onCreateAccountClick}
+        >
+          {labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
+        </Button>
+      </div>
     );
   }
 }
@@ -119,6 +141,8 @@ LoginForm.propTypes = {
   loginErrorMessage: PropTypes.string,
   showRecaptcha: PropTypes.bool,
   change: PropTypes.func,
+  onCreateAccountClick: PropTypes.func,
+  showSavePlcc: PropTypes.bool,
 };
 
 LoginForm.defaultProps = {
@@ -126,6 +150,8 @@ LoginForm.defaultProps = {
   loginErrorMessage: '',
   showRecaptcha: false,
   change: () => {},
+  onCreateAccountClick: () => {},
+  showSavePlcc: false,
 };
 
 const validateMethod = createValidateMethod(
