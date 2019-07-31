@@ -33,9 +33,7 @@ describe('AddGiftCard Reducer', () => {
       ...getOrderDetailAction,
     });
 
-    expect(newState.items.length).toEqual(
-      getOrderDetailAction.payload.orderDetails.orderItems.length
-    );
+    expect(newState.orderDetails.length).toEqual(getOrderDetailAction.payload.orderDetails.length);
   });
 
   it('GET_PRODUCT_SKU_INFO_SUCCESS', () => {
