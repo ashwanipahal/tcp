@@ -45,7 +45,7 @@ const dropDownlist = css`
   .dropDownSelect {
     position: absolute;
     left: 0;
-    width: 100%;
+    width: 99%;
     z-index: 1;
     overflow: auto;
   }

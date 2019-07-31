@@ -15,12 +15,12 @@ class Dropdown extends React.PureComponent {
         component: props.active || null,
       },
     };
-    this.customSelect = null;
+    this.dropDown = null;
     this.closeDropdownIfClickOutside = this.closeDropdownIfClickOutside.bind(this);
   }
 
   componentDidMount() {
-    this.customSelect = document.querySelector('.custom-select');
+    this.dropDown = document.querySelector('.drop_down');
     window.addEventListener('click', this.closeDropdownIfClickOutside);
   }
 
@@ -32,7 +32,7 @@ class Dropdown extends React.PureComponent {
 
   closeDropdownIfClickOutside = e => {
     const { dropDownExpand } = this.state;
-    if (dropDownExpand && !this.customSelect.contains(e.target)) {
+    if (dropDownExpand && !this.dropDown.contains(e.target)) {
       this.toggleHandler();
     }
   };
@@ -124,7 +124,7 @@ class Dropdown extends React.PureComponent {
     }
 
     return (
-      <BodyCopy component="div" className={`${className} custom-select`}>
+      <BodyCopy component="div" className={`${className} drop_down`}>
         <BodyCopy
           component="div"
           onClick={this.toggleHandler}
