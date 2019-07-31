@@ -5,33 +5,33 @@ exports[`Recaptcha should render correctly 1`] = `
   automaticallyAdjustContentInsets={true}
   injectedJavaScript="(function () {
   /* istanbul ignore next */
-  cov_2reoejybo1.f[1]++;
+  cov_24zismuizq.f[1]++;
   var originalPostMessage =
   /* istanbul ignore next */
-  (cov_2reoejybo1.s[8]++, window.postMessage);
+  (cov_24zismuizq.s[8]++, window.postMessage);
 
   /* istanbul ignore next */
-  cov_2reoejybo1.s[9]++;
+  cov_24zismuizq.s[9]++;
 
   var patchedPostMessage = function patchedPostMessage(message, targetOrigin, transfer) {
     /* istanbul ignore next */
-    cov_2reoejybo1.f[2]++;
-    cov_2reoejybo1.s[10]++;
+    cov_24zismuizq.f[2]++;
+    cov_24zismuizq.s[10]++;
     originalPostMessage(message, targetOrigin, transfer);
   };
 
   /* istanbul ignore next */
-  cov_2reoejybo1.s[11]++;
+  cov_24zismuizq.s[11]++;
 
   patchedPostMessage.toString = function () {
     /* istanbul ignore next */
-    cov_2reoejybo1.f[3]++;
-    cov_2reoejybo1.s[12]++;
+    cov_24zismuizq.f[3]++;
+    cov_24zismuizq.s[12]++;
     return String(Object.hasOwnProperty).replace('hasOwnProperty', 'postMessage');
   };
 
   /* istanbul ignore next */
-  cov_2reoejybo1.s[13]++;
+  cov_24zismuizq.s[13]++;
   window.postMessage = patchedPostMessage;
 })();"
   javaScriptEnabled={true}

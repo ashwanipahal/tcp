@@ -35,12 +35,13 @@ exports[`ModuleD component renders correctly 1`] = `
   forwardedRef={null}
 >
   <Styled(LinkText)
-    component="div"
+    component="h2"
     dataLocator="moduleD_headerlink"
     fontSize={
       Array [
-        "fs32",
-        "fs48",
+        "fs36",
+        "fs36",
+        "fs52",
       ]
     }
     fontWeight="black"
@@ -61,8 +62,8 @@ exports[`ModuleD component renders correctly 1`] = `
       ]
     }
     headingClass="moduleD_header"
-    lineHeight="lh107"
     textAlign="center"
+    type="heading"
   />
   <Styled(Row)
     centered={true}

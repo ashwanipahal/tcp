@@ -63,13 +63,13 @@ exports[`ModuleL component renders correctly 1`] = `
     }
   >
     <Styled(LinkText)
-      component="div"
+      component="h2"
       dataLocator="moduleL_header_text"
       fontSize={
         Array [
-          "fs32",
-          "fs32",
-          "fs48",
+          "fs36",
+          "fs36",
+          "fs52",
         ]
       }
       fontWeight="black"
@@ -96,8 +96,8 @@ exports[`ModuleL component renders correctly 1`] = `
         ]
       }
       headingClass="moduleL__header"
-      lineHeight="lh107"
       textAlign="center"
+      type="heading"
     />
     <Styled(PromoBanner)
       className="moduleL__promo-banner"
