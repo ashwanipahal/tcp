@@ -28,9 +28,9 @@ describe('#getOrderPointSummary', () => {
     expect(resultType).toEqual({
       pointsToNextReward: 1,
       userPoints: 0,
-      bagSubTotal: '123.00',
+      bagSubTotal: 0,
       totalItems: 1,
-      listPrice: 0,
+      itemPrice: 0,
       itemPoints: 12,
     });
   });

@@ -32,6 +32,7 @@ export default {
   'my-place-rewards': '/static/images/my-place-rewards.png',
   'info-icon': '/static/images/info-icon.png',
   down_arrow_icon: '/static/images/down_arrow_icon.png',
+  up_arrow_icon: '/static/images/up_arrow_icon.png',
   active_icon: '/static/images/active_icon.png',
   'carousel-big-carrot': '/static/images/right-carousel-carrot.svg',
 };
