@@ -14,12 +14,19 @@ import {
   getLoginErrorMessage,
 } from './LoginPage.selectors';
 import LoginView from '../views';
+import { navigateToNestedRoute } from '../../../../../utils/utils.native';
+import { isMobileApp } from '../../../../../utils';
 
 class LoginPageContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
     const { isUserLoggedIn, closeOverlay } = this.props;
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
-      closeOverlay();
+      if (isMobileApp) {
+        const { navigation } = this.props;
+        navigateToNestedRoute(navigation, 'HomeStack', 'home');
+      } else {
+        closeOverlay();
+      }
     }
   }
 
@@ -60,13 +67,14 @@ class LoginPageContainer extends React.PureComponent {
 
 LoginPageContainer.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  isUserLoggedIn: PropTypes.bool.isRequired,
+  isUserLoggedIn: PropTypes.bool,
   resetLoginState: PropTypes.func,
   closeOverlay: PropTypes.func,
   loginError: PropTypes.bool,
   loginErrorMessage: PropTypes.string,
   showRecaptcha: PropTypes.bool,
   openOverlay: PropTypes.func,
+  navigation: PropTypes.shape({}),
 };
 
 LoginPageContainer.defaultProps = {
@@ -76,11 +84,14 @@ LoginPageContainer.defaultProps = {
   resetLoginState: () => {},
   closeOverlay: () => {},
   openOverlay: () => {},
+  isUserLoggedIn: false,
+  navigation: {},
 };
 
 function mapDispatchToProps(dispatch) {
   return {
     onSubmit: payload => {
+      console.log('payload: ', payload);
       dispatch(login(payload));
     },
     resetLoginState: () => {

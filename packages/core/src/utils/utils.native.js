@@ -1,4 +1,5 @@
 import { Dimensions, Linking } from 'react-native';
+import { NavigationActions } from 'react-navigation';
 import icons from '../config/icons';
 import locators from '../config/locators';
 import { getStoreRef, resetStoreRef } from './store.utils';
@@ -159,6 +160,21 @@ export const navigateToPage = (url, navigation) => {
     default:
       return null;
   }
+};
+
+export const navigateToNestedRoute = (_navigation, _stackName, _routeName, params) => {
+  return (
+    _navigation &&
+    _navigation.dispatch(
+      NavigationActions.navigate({
+        routeName: _stackName,
+        action: NavigationActions.navigate({
+          routeName: _routeName,
+          params,
+        }),
+      })
+    )
+  );
 };
 
 /**

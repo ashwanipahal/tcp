@@ -45,6 +45,7 @@ export const LoginForm = props => {
         name="emailAddress"
         id="emailAddress"
         type="text"
+        autoCapitalize={false}
         component={TextBox}
         dataLocator="emailAddress"
       />

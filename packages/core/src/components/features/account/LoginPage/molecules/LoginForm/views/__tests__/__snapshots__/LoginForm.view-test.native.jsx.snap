@@ -8,6 +8,7 @@ exports[`LoginForm component should renders correctly 1`] = `
   onSubmit={[Function]}
 >
   <Field
+    autoCapitalize={false}
     component={
       Object {
         "$$typeof": Symbol(react.forward_ref),
