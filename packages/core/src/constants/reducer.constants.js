@@ -5,6 +5,7 @@ export const LAYOUT_REDUCER_KEY = 'Layouts';
 export const MODULES_REDUCER_KEY = 'Modules';
 export const HOMEPAGE_REDUCER_KEY = 'HomePage';
 export const NAVIGATION_REDUCER_KEY = 'Navigation';
+export const FORM_REDUCER_KEY = 'form';
 
 // Don't Add "Reducer" in the Key - it should be LoginPage, not LoginPageReducer
 
@@ -23,7 +24,11 @@ export const CARTPAGE_REDUCER_KEY = 'CartPage';
 export const OVERLAY_MODAL_REDUCER_KEY = 'OverlayModalReducer';
 export const OVERLAY_MODAL_ACTION_PATTERN = '@@Overlay-';
 
-// Create Account Reducer
+// acconut page reducer
+export const ACCOUNT_REDUCER_KEY = 'AccountReducer';
+export const ACCOUNT_ACTION_PATTERN = '@@Account-';
+
+// feature/acconut page reducer
 export const CREATE_ACCOUNT_REDUCER_KEY = 'CreateAccountReducer';
 export const CREATE_ACCOUNT_ACTION_PATTERN = '@@CreateAccount-';
 

@@ -38,6 +38,10 @@ const endpoints = {
     method: 'PUT',
     URI: 'v2/cart/deleteMultipleOrderItems',
   },
+  updateOrderItem: {
+    method: 'PUT',
+    URI: 'v2/cart/updateOrderItem',
+  },
   createAccount: {
     method: API_METHODS.POST,
     URI: 'v2/wallet/addCustomerRegistration',
@@ -51,5 +55,4 @@ const endpoints = {
     URI: 'v2/account/getRegisteredUserInfo',
   },
 };
-
 export default endpoints;

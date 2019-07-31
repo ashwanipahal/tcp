@@ -6,7 +6,6 @@ import AddAddressComponent from '../views/AddEditAddress.view';
 import { getAddressResponse, getUserEmail, getAddressById } from './AddEditAddress.selectors';
 import { verifyAddress } from '../../AddressVerification/container/AddressVerification.actions';
 import { getAddressListState } from '../../AddressBook/container/AddressBook.selectors';
-import labels from '../../AddressBook/container/AddressBook.labels';
 import utils from '../../../../../utils';
 
 // @flow
@@ -19,6 +18,7 @@ type Props = {
   userEmail: string,
   addressList: List<{}>,
   address?: object,
+  labels: object,
 };
 
 export class AddEditAddressContainer extends React.PureComponent<Props> {
@@ -97,7 +97,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
   };
 
   render() {
-    const { addressResponse, addressList, address } = this.props;
+    const { addressResponse, addressList, address, labels } = this.props;
     this.initialValues = this.getInitialValues(addressList, address);
     const addressListSize = addressList && addressList.size;
     const isMakeDefaultDisabled = address ? addressListSize === 1 : addressListSize === 0;
