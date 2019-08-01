@@ -45,7 +45,7 @@ async function fetchData(baseURL, relURL, params = {}, method) {
     request.send(params.payload);
   }
 
-  if (params.poc) {
+  if (!params.unbxd) {
     request.withCredentials();
   }
 

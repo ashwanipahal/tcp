@@ -6,7 +6,7 @@ const { settingHelmetConfig, sites, siteIds, setEnvConfig } = require('./config/
 
 const dev = process.env.NODE_ENV === 'development';
 setEnvConfig(dev);
-const port = process.env.PORT || 3000;
+const port = process.env.RWD_WEB_PORT || 3000;
 
 const app = next({ dev, dir: './src' });
 
@@ -43,6 +43,14 @@ const setBrandId = (req, res) => {
   res.locals.brandId = brandId;
 };
 
+const setHostname = (req, res) => {
+  const { hostname } = req;
+  console.log('------------------------------||----------------------------');
+  console.log(hostname);
+  // TODO --- Remove console from here - This was just added for testing
+  res.locals.hostname = hostname;
+};
+
 app.prepare().then(() => {
   // Looping through the routes and providing the corresponding resolver route
   RoutesMap.forEach(route => {
@@ -53,6 +61,7 @@ app.prepare().then(() => {
     server.get(routePaths, (req, res) => {
       setSiteId(req, res);
       setBrandId(req, res);
+      setHostname(req, res);
       // Handling routes without params
       if (!route.params) return app.render(req, res, route.resolver, req.query);
 

@@ -20,7 +20,7 @@ const envIds = {
 };
 
 const BRAND_CONFIG = brandIds.tcp;
-const ENV_CONFIG = envIds.uat;
+const ENV_CONFIG = envIds.local;
 const ENV_CONFIG_FILE_PATH = BRAND_CONFIG + '_' + ENV_CONFIG; // Set this to change the env file
 
 /**
