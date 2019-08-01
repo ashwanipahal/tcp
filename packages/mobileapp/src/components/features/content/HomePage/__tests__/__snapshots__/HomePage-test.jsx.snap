@@ -1,17 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HomePageView should render correctly 1`] = `
-<HomePageView
-  getBootstrapData={[MockFunction]}
-  slot_1={
-    Object {
-      "className": "moduleD",
+<ServerBoundary
+  fallBack={[Function]}
+>
+  <HomePageView
+    getBootstrapData={[MockFunction]}
+    slot_1={
+      Object {
+        "className": "moduleD",
+      }
     }
-  }
-  slot_2={
-    Object {
-      "className": "moduleH",
+    slot_2={
+      Object {
+        "className": "moduleH",
+      }
     }
-  }
-/>
+  />
+</ServerBoundary>
 `;
