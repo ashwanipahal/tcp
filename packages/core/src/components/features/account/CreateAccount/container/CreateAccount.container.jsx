@@ -1,9 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CreateAccountView from '../views/CreateAccount.view';
-import createAccount from './CreateAccount.actions';
+import { createAccount } from './CreateAccount.actions';
 import labels from '../CreateAccount.labels';
-import { getIAgree, getHideShowPwd, getConfirmHideShowPwd } from './CreateAccount.selectors';
+import {
+  getIAgree,
+  getHideShowPwd,
+  getConfirmHideShowPwd,
+  getError,
+} from './CreateAccount.selectors';
 
 // @flow
 type Props = {
@@ -12,6 +17,7 @@ type Props = {
   isIAgreeChecked: string,
   hideShowPwd: string,
   confirmHideShowPwd: string,
+  error: any,
 };
 
 export const CreateAccountContainer = ({
@@ -20,6 +26,7 @@ export const CreateAccountContainer = ({
   isIAgreeChecked,
   hideShowPwd,
   confirmHideShowPwd,
+  error,
 }: Props) => {
   return (
     <CreateAccountView
@@ -29,6 +36,7 @@ export const CreateAccountContainer = ({
       isIAgreeChecked={isIAgreeChecked}
       hideShowPwd={hideShowPwd}
       confirmHideShowPwd={confirmHideShowPwd}
+      error={error}
     />
   );
 };
@@ -38,6 +46,7 @@ export const mapStateToProps = state => {
     isIAgreeChecked: getIAgree(state),
     hideShowPwd: getHideShowPwd(state),
     confirmHideShowPwd: getConfirmHideShowPwd(state),
+    error: getError(state),
   };
 };
 

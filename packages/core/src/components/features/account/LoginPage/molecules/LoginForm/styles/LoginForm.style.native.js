@@ -51,4 +51,14 @@ const DescriptionStyle = styled.Text`
   ${getDescriptionStyle}
 `;
 
-export { FormStyle, DescriptionStyle };
+const ModalHeading = styled.Text`
+  margin-top: 30px;
+  margin-right: 50px;
+  margin-left: 15px;
+`;
+
+const ModalViewWrapper = styled.View`
+  margin-top: 10px;
+`;
+
+export { FormStyle, DescriptionStyle, ModalHeading, ModalViewWrapper };

@@ -14,3 +14,7 @@ export const getConfirmHideShowPwd = state => {
   const selector = formValueSelector('CreateAccountForm');
   return selector(state, 'confirmHideShowPwd');
 };
+
+export const getError = state => {
+  return state.CreateAccountReducer.get('error');
+};

@@ -27,19 +27,22 @@ export default css`
   }
   .tcp-drawer-overlay {
     background: ${props => props.theme.colorPalette.black};
-    position: fixed;
+    position: absolute;
     z-index: 900;
-    height: 100vh;
+    height: 100%;
     opacity: 0.6;
-    width: 100vw;
+    width: 100%;
   }
   .tcp-drawer {
     display: none;
   }
   .tcp-drawer__isOpen {
     display: block;
-    position: fixed;
+    position: absolute;
     z-index: 999;
+    top: ${props => (props.position && props.position.top) || 0};
+    left: ${props => (props.position && props.position.left) || 0};
+    width: 100%;
   }
   .tcp-drawer-content {
     width: ${props => props.width.small || `100%`};
@@ -49,6 +52,9 @@ export default css`
     display: none;
   }
   @media ${props => props.theme.mediaQuery.medium} {
+    .tcp-drawer__isOpen {
+      top: ${props => (props.position && props.position.topMedium) || 0};
+    }
     .tcp-drawer-content {
       width: ${props => props.width.medium || `100%`};
     }

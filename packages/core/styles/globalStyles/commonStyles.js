@@ -122,6 +122,9 @@ export default css`
     @media ${mediaQuery.largeOnly} {
       display: none;
     }
+    @media ${mediaQuery.xlarge} {
+      display: none;
+    }
   }
 
   .hide-on-tablet {

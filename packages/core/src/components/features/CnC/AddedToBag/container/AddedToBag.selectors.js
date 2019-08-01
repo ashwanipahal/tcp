@@ -21,3 +21,15 @@ export const getQuantityValue = state => {
 
   return quantity;
 };
+
+export const getLabelsAddToActions = state => {
+  const {
+    bag: {
+      addedToBag: { lbl_cta_viewBag: viewBag, lbl_cta_checkout: checkout },
+    },
+  } = state.Labels;
+  return {
+    viewBag,
+    checkout,
+  };
+};
