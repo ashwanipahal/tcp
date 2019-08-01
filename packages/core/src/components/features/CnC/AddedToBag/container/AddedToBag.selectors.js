@@ -10,13 +10,17 @@ export const isOpenAddedToBag = state => {
   return state.AddedToBagReducer.get('isOpenAddedToBag');
 };
 
+export const getOrderItems = state => {
+  return getCartOrderDetails(state) && getCartOrderDetails(state).get('orderItems');
+};
+
 export const getQuantityValue = state => {
   let quantity = '';
-  const orderItems = getCartOrderDetails(state) && getCartOrderDetails(state).orderItems;
+  const orderItems = getOrderItems(state);
   const lastAddedToBag = getAddedToBagData(state);
   if (orderItems && lastAddedToBag) {
     const lastAddedItem = filterObject(orderItems, lastAddedToBag);
-    quantity = lastAddedItem && lastAddedItem.itemInfo.quantity;
+    quantity = lastAddedItem.getIn(['itemInfo', 'quantity']);
   }
 
   return quantity;
