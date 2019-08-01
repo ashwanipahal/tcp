@@ -32,37 +32,6 @@ const FooterTopSmsSignUpForm = reduxForm({
 })(FooterTopSignUpForm);
 
 class FooterTopCandidateA extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isLargeUp: false,
-      isMediumDown: false,
-    };
-  }
-
-  componentDidMount() {
-    // hide-in-large-up; Hide social link
-    const isLargeUpMatch = window.matchMedia('(min-width: 1024px)');
-    if (isLargeUpMatch.matches) {
-      this.setState({ isLargeUp: true });
-    }
-
-    isLargeUpMatch.addListener(({ matches }) => {
-      this.setState({ isLargeUp: matches });
-    });
-
-    // hide-in-medium-down
-    const isMediumDownMatch = window.matchMedia('(max-width: 1023px)');
-    if (isMediumDownMatch.matches) {
-      this.setState({ isMediumDown: true });
-    }
-
-    isMediumDownMatch.addListener(({ matches }) => {
-      this.setState({ isMediumDown: matches });
-    });
-  }
-
   render() {
     const {
       emailSignup,
@@ -81,8 +50,6 @@ class FooterTopCandidateA extends React.PureComponent {
       openEmailSignUpModal,
       openSmsSignUpModal,
     } = this.props;
-
-    const { isMediumDown, isLargeUp } = this.state;
 
     return (
       <Grid className="footer_top_candidate_a">
@@ -221,46 +188,42 @@ class FooterTopCandidateA extends React.PureComponent {
                 </Col>
               </Row>
               <div className="divider hide-in-medium-down" />
-              {isMediumDown ? null : (
-                <Row fullBleed className="hide-in-medium-down">
-                  <Col
-                    className=""
-                    colSize={{
-                      large: 12,
-                      medium: 12,
-                      small: 12,
-                    }}
-                    ignoreGutter={{
-                      small: true,
-                    }}
-                  >
-                    <div className="divider hide-in-medium-up" />
-                    <SocialMediaLinks
-                      {...socialMediaLinks}
-                      className="footer_top_candidate_a_social_links"
-                    />
-                  </Col>
-                </Row>
-              )}
+              <Row fullBleed className="hide-in-medium-down">
+                <Col
+                  className=""
+                  colSize={{
+                    large: 12,
+                    medium: 12,
+                    small: 12,
+                  }}
+                  ignoreGutter={{
+                    small: true,
+                  }}
+                >
+                  <div className="divider hide-in-medium-up" />
+                  <SocialMediaLinks
+                    {...socialMediaLinks}
+                    className="footer_top_candidate_a_social_links"
+                  />
+                </Col>
+              </Row>
             </Grid>
           </Col>
           {/* ---------- Refer a friend ends here-------- */}
           <div className="divider hide-in-medium-up" />
-          {isLargeUp ? null : (
-            <Col
-              className="hide-in-large-up refer_a_frient_last_colm"
-              colSize={{
-                large: 0,
-                medium: 4,
-                small: 12,
-              }}
-              ignoreGutter={{
-                small: true,
-              }}
-            >
-              <SocialMediaLinks {...socialMediaLinks} />
-            </Col>
-          )}
+          <Col
+            className="hide-in-large-up refer_a_frient_last_colm"
+            colSize={{
+              large: 0,
+              medium: 4,
+              small: 12,
+            }}
+            ignoreGutter={{
+              small: true,
+            }}
+          >
+            <SocialMediaLinks {...socialMediaLinks} />
+          </Col>
         </Row>
         <div className="divider hide-in-medium-down" />
       </Grid>
