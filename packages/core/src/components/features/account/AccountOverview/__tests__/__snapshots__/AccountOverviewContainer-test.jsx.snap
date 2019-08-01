@@ -3,5 +3,6 @@
 exports[`MyAccountOverview Container should render AccountOverview Correctly 1`] = `
 <div>
   <AccountOverview />
+  <withRouter(Connect(RewardsPointsContainer)) />
 </div>
 `;

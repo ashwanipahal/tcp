@@ -27,3 +27,18 @@ export const shouldShowRecaptcha = createSelector(
     loginState &&
     parseInt(loginState.get('retriesCount') || 0, 10) > constants.FAILED_ATTEMPT_ALLOWED
 );
+
+export const getPointsToNextRewardState = createSelector(
+  getLoginState,
+  loginState => loginState && loginState.get('pointsToNextReward')
+);
+
+export const getCurrentPointsState = createSelector(
+  getLoginState,
+  loginState => loginState && loginState.get('currentPoints')
+);
+
+export const getTotalRewardsState = createSelector(
+  getLoginState,
+  loginState => loginState && loginState.get('totalRewards')
+);
