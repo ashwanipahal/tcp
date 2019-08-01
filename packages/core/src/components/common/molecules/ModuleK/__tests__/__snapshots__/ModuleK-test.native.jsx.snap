@@ -30,21 +30,14 @@ exports[`ModuleK native component Should renders correctly 1`] = `
     }
   />
   <PromoTextBanner
-    bodyCopyStyles={
-      Object {
-        "style1": [Function],
-        "style2": [Function],
-        "style3": [Function],
-      }
-    }
     dataLocator="moduleK_outerPromoBanner_text"
     promoTextBanner={Array []}
   />
-  <SnapCarousel
+  <WithTheme(SnapCarousel)
     autoplayInterval={2000}
     carouselConfig={
       Object {
-        "autoplay": false,
+        "autoplay": true,
       }
     }
     data={
@@ -315,49 +308,11 @@ exports[`ModuleK native component Should renders correctly 1`] = `
         },
       ]
     }
-    defaultAutoplay={false}
+    defaultAutoplay={true}
     height={260}
-    hidePlayStopButton={true}
-    onSnapToItem={[Function]}
     renderItem={[Function]}
+    showDots={true}
     width={347}
-  />
-  <Pagination
-    activeDotIndex={0}
-    containerStyle={
-      Object {
-        "paddingVertical": 24,
-      }
-    }
-    dotContainerStyle={
-      Object {
-        "marginHorizontal": 4,
-      }
-    }
-    dotStyle={
-      Object {
-        "backgroundColor": "#ffffff",
-        "borderColor": "#575757",
-        "borderRadius": 5,
-        "borderWidth": 1,
-        "height": 10,
-        "marginHorizontal": 0,
-        "padding": 0,
-        "width": 10,
-      }
-    }
-    dotsLength={4}
-    inactiveDotOpacity={1}
-    inactiveDotScale={1}
-    inactiveDotStyle={
-      Object {
-        "backgroundColor": "#575757",
-        "height": 6,
-        "width": 6,
-      }
-    }
-    tappableDots={false}
-    vertical={false}
   />
 </Styled(View)>
 `;
