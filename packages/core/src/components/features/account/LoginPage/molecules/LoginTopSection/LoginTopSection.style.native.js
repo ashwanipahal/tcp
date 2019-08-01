@@ -4,14 +4,11 @@ const getPageStyle = () => {
   return `
   margin-horizontal: ${'30px'}
   justify-content: ${'center'};
-
+ 
   `;
 };
 const SectionStyle = css`
   ${getPageStyle}
-  .border {
-    border-bottom: 1px solid red;
-  }
 `;
 
 /**
@@ -36,29 +33,6 @@ const getHeadingStyle = props => {
   ${getTextBaseStyle};
   font-weight: ${typography.fontWeights.semibold};
   align-self: ${'center'};
-  `;
-};
-
-const ForgotHeading = props => {
-  const { theme } = props;
-  const { typography } = theme;
-  return `
-  ${getTextBaseStyle};
-  font-weight: ${typography.fontWeights.semibold};
-  align-self: ${'center'};
-  font-size: ${typography.fontSizes.fs16};
-  padding:10px 0;
-  `;
-};
-
-const ForgotDescription = props => {
-  const { theme } = props;
-  const { typography } = theme;
-  return `
-  ${getTextBaseStyle};
-  align-self: ${'center'};
-  font-size: ${typography.fontSizes.fs12};
-  padding:10px 0;
   `;
 };
 
@@ -87,13 +61,6 @@ const getDescriptionStyle = props => {
 const HeadingStyle = styled.Text`
   ${getHeadingStyle}
 `;
-const ForgotHeadingStyle = styled.Text`
-  ${ForgotHeading}
-`;
-
-const ForgotDescriptionStyle = styled.Text`
-  ${ForgotDescription}
-`;
 
 const SubHeadingStyle = styled.Text`
   ${getSubHeadingStyle}
@@ -102,11 +69,4 @@ const DescriptionStyle = styled.Text`
   ${getDescriptionStyle}
 `;
 
-export {
-  SectionStyle,
-  HeadingStyle,
-  SubHeadingStyle,
-  DescriptionStyle,
-  ForgotHeadingStyle,
-  ForgotDescriptionStyle,
-};
+export { SectionStyle, HeadingStyle, SubHeadingStyle, DescriptionStyle };

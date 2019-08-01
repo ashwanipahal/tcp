@@ -6,7 +6,11 @@ import CustomButton from '../../../../../../common/atoms/Button';
 import LoginForm from '../../../molecules/LoginForm';
 import LoginTopSection from '../../../molecules/LoginTopSection';
 import ForgotPasswordView from '../../../../ForgotPassword/views/ForgotPassword.view';
-import { FormStyle, FormStyleView } from '../../../molecules/LoginForm/LoginForm.style.native';
+import {
+  FormStyle,
+  FormStyleView,
+  DescriptionStyle,
+} from '../../../molecules/LoginForm/LoginForm.style.native';
 
 class LoginSection extends React.PureComponent<Props> {
   constructor(props) {
@@ -73,7 +77,9 @@ class LoginSection extends React.PureComponent<Props> {
           />
         )}
         <FormStyleView>
-          <Text>{labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}</Text>
+          <DescriptionStyle>
+            <Text>{labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}</Text>
+          </DescriptionStyle>
           <CustomButton
             color="#FFFFFF"
             fill="BLUE"

@@ -15,11 +15,12 @@ const getTextBaseStyle = props => {
   const { theme } = props;
   const { typography } = theme;
   return `
-    font-size: ${typography.fontSizes.fs18};
-    color: ${props.status === 'success' ? 'green' : '#c8102e'}
+    font-size: ${typography.fontSizes.fs14};
+    color: #000;
     font-family: ${typography.fonts.secondary};
     border:1px solid #c8102e;
-    padding:10px;
+    padding:5px;
+    margin:10px;
     `;
 };
 

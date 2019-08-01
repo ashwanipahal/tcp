@@ -77,11 +77,15 @@ class ForgotPasswordView extends React.Component<Props, State> {
           </Anchor>
         </div>
         <form onSubmit={handleSubmit(this.onFormSubmit)} className={className}>
-          {errorObject && showNotification && (
+          {showNotification && (
             <Notification
               status="error"
               colSize={{ large: 11, medium: 7, small: 6 }}
-              message={labels.FORGOT_PASSWORD_USER_NOT_AVAILABLE}
+              message={
+                errorObject
+                  ? labels.FORGOT_PASSWORD_USER_NOT_AVAILABLE
+                  : labels.FORGOT_PASSWORD_API_ERROR
+              }
             />
           )}
 

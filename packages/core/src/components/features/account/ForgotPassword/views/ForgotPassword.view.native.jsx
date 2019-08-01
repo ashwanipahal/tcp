@@ -5,6 +5,11 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import {
   FormStyle,
   FormStyleView,
+  HeadingStyle,
+  SubHeadingStyle,
+  ForgotHeadingStyle,
+  ForgotDescriptionStyle,
+  FloatWrapper,
 } from '../../LoginPage/molecules/LoginForm/LoginForm.style.native';
 import TextBox from '../../../../common/atoms/TextBox';
 import styles from '../styles/ForgotPassword.style';
@@ -14,16 +19,9 @@ import createValidateMethod from '../../../../../utils/formValidation/createVali
 import getStandardConfig from '../../../../../utils/formValidation/validatorStandardConfig';
 import Notification from '../../../../common/molecules/Notification/views/Notification.native';
 import LineComp from '../../../../common/atoms/Line';
-import {
-  HeadingStyle,
-  SubHeadingStyle,
-  ForgotHeadingStyle,
-  ForgotDescriptionStyle,
-} from '../../LoginPage/molecules/LoginTopSection/LoginTopSection.style.native';
 
 // @flow
 type Props = {
-  pristine: any,
   className: any,
   SubmitForgot: Object => void,
   showNotification: any,
@@ -66,7 +64,6 @@ class ForgotPasswordView extends React.Component<Props, State> {
   /* eslint-disable */
   render() {
     const {
-      pristine,
       className,
       showNotification,
       resetForgotPasswordErrorResponse,
@@ -79,19 +76,27 @@ class ForgotPasswordView extends React.Component<Props, State> {
     const { email } = this.state;
     return (
       <View className={className}>
-        <FormStyleView className="border">
-          <Anchor
-            fontSizeVariation="xlarge"
-            anchorVariation="secondary"
-            text={labels.FORGOT_PASSWORD_BACK_LOGIN}
-            customStyle={styles.forgotPasswordStyle}
-            onPress={this.onBackClick}
-          />
-          {errorObject && showNotification && (
+        <FormStyleView>
+          <FloatWrapper>
+            <Anchor
+              fontSizeVariation="xlarge"
+              anchorVariation="secondary"
+              text={labels.FORGOT_PASSWORD_BACK_LOGIN}
+              customStyle={styles.forgotPasswordStyle}
+              onPress={this.onBackClick}
+              customStyle={{ textAlign: 'left' }}
+              className="floatLt"
+            />
+          </FloatWrapper>
+          {showNotification && (
             <Notification
               status="error"
               colSize={{ large: 11, medium: 7, small: 6 }}
-              message={labels.FORGOT_PASSWORD_USER_NOT_AVAILABLE}
+              message={
+                errorObject
+                  ? labels.FORGOT_PASSWORD_USER_NOT_AVAILABLE
+                  : labels.FORGOT_PASSWORD_API_ERROR
+              }
             />
           )}
           {!successFullResetEmail && (
