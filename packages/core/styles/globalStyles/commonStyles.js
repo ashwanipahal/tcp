@@ -107,6 +107,7 @@ export default css`
     list-style-type: none;
   }
 
+  h2,
   p {
     margin: 0;
   }
