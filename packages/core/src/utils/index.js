@@ -17,4 +17,7 @@ export {
   buildUrl,
   getSiteId,
   routerPush,
+  getViewportInfo,
+  showOverlay,
+  closeOverlay,
 } from './utils';

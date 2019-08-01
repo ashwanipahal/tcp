@@ -3,15 +3,17 @@
 exports[`NavBar component renders correctly 1`] = `
 <Styled(Drawer)
   close={false}
+  id="l1_drawer"
   medium={true}
   open={true}
   position={
     Object {
       "left": 0,
       "top": "157px",
-      "topMedium": "130px",
+      "topMedium": "111px",
     }
   }
+  renderOverlay={true}
   small={true}
   width={
     Object {

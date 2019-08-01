@@ -3,7 +3,7 @@
 exports[`L2 Panel component renders correctly 1`] = `
 <Fragment>
   <div
-    className="nav-bar-l2 nav-bar-l2-panel "
+    className="nav-bar-l2 nav-bar-l2-panel"
     data-locator="overrlay_img"
   >
     <div
@@ -26,7 +26,6 @@ exports[`L2 Panel component renders correctly 1`] = `
       className="nav-bar-l2-details"
       fullBleed={
         Object {
-          "large": false,
           "medium": true,
           "small": true,
         }

@@ -71,21 +71,11 @@ const createLinks = (links, column, categoryIndex) => {
 };
 
 const L2Panel = props => {
-  const {
-    openPanel,
-    className,
-    panelData,
-    categoryLayout,
-    order,
-    name,
-    hideL2Drawer,
-    l1Index,
-  } = props;
+  const { className, panelData, categoryLayout, order, name, hideL2Drawer, l1Index } = props;
 
-  const displayClass = openPanel ? 'is-open' : '';
   return (
     <React.Fragment>
-      <div data-locator="overrlay_img" className={`${className} nav-bar-l2-panel ${displayClass}`}>
+      <div data-locator="overrlay_img" className={`${className} nav-bar-l2-panel`}>
         <div className="sizes-rage-background">
           <span
             role="button"
@@ -102,7 +92,6 @@ const L2Panel = props => {
           fullBleed={{
             small: true,
             medium: true,
-            large: false,
           }}
         >
           {order.map((category, categoryIndex) => {
@@ -217,7 +206,6 @@ const L2Panel = props => {
 
 L2Panel.propTypes = {
   className: PropTypes.string.isRequired,
-  openPanel: PropTypes.bool.isRequired,
   panelData: PropTypes.shape([]).isRequired,
   order: PropTypes.shape([]).isRequired,
   categoryLayout: PropTypes.shape([]),

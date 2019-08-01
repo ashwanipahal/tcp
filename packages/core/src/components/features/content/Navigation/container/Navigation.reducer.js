@@ -20,6 +20,7 @@ const NavigationReducer = (state = {}, action) => {
       return {
         ...state,
         closeDrawer: true,
+        openDrawer: false,
       };
     default:
       return state;

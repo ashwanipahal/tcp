@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { showOverlay, closeOverlay } from '@tcp/core/src/utils';
 import style from './Drawer.style';
 
 /**
@@ -25,33 +26,18 @@ const showOnViewport = viewport => {
   } ${viewport.large ? 'display-large-none' : ''}`;
 };
 
-const renderOverlay = () => {
-  const className = 'dark-overlay';
-  if (typeof window !== 'undefined' && document.getElementsByClassName(className)[0]) {
-    document.getElementsByClassName(className)[0].style.display = 'block';
-  }
-};
-
-const closeOverlay = () => {
-  const className = 'dark-overlay';
-  if (typeof window !== 'undefined' && document.getElementsByClassName(className)[0]) {
-    document.getElementsByClassName(className)[0].style.display = 'none';
-  }
-};
-
 const Drawer = props => {
-  const { children, className, small, medium, large, open, id, close } = props;
+  const { children, className, small, medium, large, open, id, close, renderOverlay } = props;
 
   let openDrawer = open;
   if (typeof open === 'string') {
     openDrawer = open === id;
   }
-  if (close) {
-    openDrawer = false;
+  if (close && renderOverlay) {
     closeOverlay();
   }
-  if (openDrawer) {
-    renderOverlay();
+  if (openDrawer && renderOverlay) {
+    showOverlay();
   }
   const classToOpen = openDrawer ? 'tcp-drawer__isOpen' : '';
   const classToHideOnViewports = hideOnViewport({ small, medium, large });
@@ -82,12 +68,14 @@ Drawer.propTypes = {
   open: PropTypes.bool.isRequired,
   id: PropTypes.string.isRequired,
   close: PropTypes.bool.isRequired,
+  renderOverlay: PropTypes.bool,
 };
 
 Drawer.defaultProps = {
   small: false,
   medium: false,
   large: false,
+  renderOverlay: false,
 };
 
 export { Drawer as DrawerVanilla };

@@ -70,6 +70,18 @@ export default css`
   .s-display-none {
     display: none;
   }
+
+  .dark-overlay {
+    display: none;
+    background-color: #1a1a1a;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    height: 100vh;
+    opacity: 0.6;
+    width: 100%;
+  }
   @media ${props => props.theme.mediaQuery.smallOnly} {
     .l2-nav-category {
       margin: 0;
@@ -92,8 +104,10 @@ export default css`
       display: none;
     }
     .l2-nav-category {
+      box-sizing: border-box;
       border-right: 1px solid #c3c3c3;
-      margin: 36px 30px 36px 0;
+      margin-top: 36px;
+      margin-bottom: 36px;
     }
     .l2-nav-category-header {
       margin-bottom: 24px;
@@ -135,8 +149,10 @@ export default css`
       margin-top: 36px;
     }
     .l2-image-banner-image {
-      width: 210px;
-      height: 330px;
+      width: 100%;
+      max-width: 210px;
+      height: 100%;
+      max-height: 330px;
     }
     .l2-image-banner-link {
       .nav-bar-l1-item-label {

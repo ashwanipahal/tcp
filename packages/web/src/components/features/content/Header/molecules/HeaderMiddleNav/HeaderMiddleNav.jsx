@@ -10,8 +10,14 @@ import style from './HeaderMiddleNav.style';
 
 const brand = identifyBrand();
 
+/**
+ * This function handles opening and closing for Navigation drawer on mobile and tablet viewport
+ * @param {Function} openNavigationDrawer Function to dispatch open drawer action to store
+ * @param {Function} closeNavigationDrawer  Function to dispatch close drawer action to store
+ * @param {Boolean} isOpen Flag to determine if drawer is open
+ */
 const handleNavigationDrawer = (openNavigationDrawer, closeNavigationDrawer, isOpen) => () => {
-  return isOpen ? closeNavigationDrawer() : openNavigationDrawer();
+  return isOpen ? closeNavigationDrawer('l1_drawer') : openNavigationDrawer('l1_drawer');
 };
 
 const onLinkClick = ({ e, openOverlay }) => {

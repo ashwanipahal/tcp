@@ -2,8 +2,16 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { getViewportInfo } from '@tcp/core/src/utils';
 import PromoBadge from '../PromoBadge';
 import style from './L1NavItem.style';
+
+const handleClick = onClick => e => {
+  e.preventDefault();
+  if (!getViewportInfo().isDesktop) {
+    onClick();
+  }
+};
 
 const L1NavItem = props => {
   const {
@@ -33,8 +41,8 @@ const L1NavItem = props => {
       >
         <div
           className="nav-bar-l1-content"
-          onClick={onClick}
-          onKeyDown={onClick}
+          onClick={handleClick(onClick)}
+          onKeyDown={handleClick(onClick)}
           role="button"
           tabIndex={0}
         >

@@ -9,6 +9,7 @@ const Navigation = props => {
   const { openNavigationDrawer, className, closeNavigationDrawer } = props;
   return (
     <Drawer
+      id="l1_drawer"
       small
       medium
       open={openNavigationDrawer}
@@ -21,8 +22,9 @@ const Navigation = props => {
       position={{
         top: '157px',
         left: 0,
-        topMedium: '130px',
+        topMedium: '111px',
       }}
+      renderOverlay
     >
       <nav className={`${className} navigation nav-bar`}>
         <NavBar {...props} />
