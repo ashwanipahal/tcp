@@ -20,6 +20,7 @@ import {
   CARTPAGE_REDUCER_KEY,
   ADD_GIFT_CARD_REDUCER_KEY,
   FORGOTPASSWORD_REDUCER_KEY,
+  ADDRESSBOOK_REDUCER_KEY,
   ADDED_TO_BAG_REDUCER_KEY,
   NAVIGATION_REDUCER_KEY,
   FORM_REDUCER_KEY,
@@ -27,6 +28,7 @@ import {
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
 import AddGiftCardReducer from '@tcp/core/src/components/features/account/Payment/AddGiftCard/container/AddGiftCard.reducer';
+import AddressBookReducer from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.reducer';
 import NavigationReducer from '@tcp/core/src/components/features/content/Navigation/container/Navigation.reducer';
 import ThemeWrapperReducer from '../../components/common/hoc/ThemeWrapper.reducer';
 import { THEME_WRAPPER_REDUCER_KEY } from '../../components/common/hoc/ThemeWrapper.constants';
@@ -47,6 +49,7 @@ export default combineReducers({
   [PAYMENT_REDUCER_KEY]: PaymentReducer,
   [MODULES_REDUCER_KEY]: ModulesReducer,
   [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,
+  [ADDRESSBOOK_REDUCER_KEY]: AddressBookReducer,
   [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,
   [FORM_REDUCER_KEY]: reduxFormReducer,
   [CARTPAGE_REDUCER_KEY]: CartPage,

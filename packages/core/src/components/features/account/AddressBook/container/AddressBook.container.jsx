@@ -8,7 +8,7 @@ import {
   setAddressBookNotification,
 } from './AddressBook.actions';
 import { getUserInfo } from '../../LoginPage/container/LoginPage.actions';
-import AddressBookComponent from '../views/AddressBook.view';
+import AddressView from '../views/AddressView';
 import {
   getAddressListState,
   getAddressListFetchingState,
@@ -33,7 +33,6 @@ type Props = {
   clearAddressBookNotification: () => void,
   labels: object,
 };
-
 export class AddressBookContainer extends React.Component<Props> {
   componentDidMount() {
     const { getAddressListAction, getUserInfoAction } = this.props;
@@ -58,13 +57,11 @@ export class AddressBookContainer extends React.Component<Props> {
       showUpdatedNotificationOnModal,
       labels,
     } = this.props;
-    if (isFetching) {
-      return <p>Loading...</p>;
-    }
     if (List.isList(addressList)) {
       return (
-        <AddressBookComponent
+        <AddressView
           addresses={addressList}
+          isFetching={isFetching}
           labels={labels}
           onDefaultShippingAddressClick={onDefaultShippingAddressClick}
           showUpdatedNotification={showUpdatedNotification}

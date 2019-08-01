@@ -126,7 +126,7 @@ export const extractAttributeValue = (item, attribute) => {
       obj = item[attribute];
     }
   } catch (error) {
-    console.log('error', error);
+    //
   }
   return obj;
 };

@@ -266,7 +266,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
         data-locator="payment-cardImage"
         source={
           Object {
-            "testUri": "../../../../core/src/assets/disc-small.png",
+            "testUri": "../../../../core/src/assets/discover-small.png",
           }
         }
       />
@@ -410,7 +410,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
         data-locator="payment-cardImage"
         source={
           Object {
-            "testUri": "../../../../core/src/assets/gift-card-small.png",
+            "testUri": "../../../../core/src/assets/TCP-gift-small.png",
           }
         }
       />
@@ -551,7 +551,7 @@ exports[`CardTile should render correctly with master card 1`] = `
         data-locator="payment-cardImage"
         source={
           Object {
-            "testUri": "../../../../core/src/assets/mc-small.png",
+            "testUri": "../../../../core/src/assets/mastercard-small.png",
           }
         }
       />
@@ -695,7 +695,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         data-locator="payment-cardImage"
         source={
           Object {
-            "testUri": "../../../../core/src/assets/gift-card-small.png",
+            "testUri": "../../../../core/src/assets/TCP-gift-small.png",
           }
         }
       />
@@ -828,7 +828,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         data-locator="payment-cardImage"
         source={
           Object {
-            "testUri": "../../../../core/src/assets/place-card-small.png",
+            "testUri": "../../../../core/src/assets/TCP-CC-small.png",
           }
         }
       />
@@ -969,7 +969,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
         data-locator="payment-cardImage"
         source={
           Object {
-            "testUri": "../../../../core/src/assets/venmo-blue-acceptance-mark.png",
+            "testUri": "../../../../core/src/assets/venmo-small.png",
           }
         }
       />
