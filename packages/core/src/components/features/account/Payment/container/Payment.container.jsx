@@ -25,7 +25,6 @@ import {
   getPaymentBannerContentId,
   getPaymentBannerRichTextSelector,
 } from './Payment.selectors';
-// import labels from './Payment.labels';
 import PaymentView from '../views/PaymentView';
 
 // @flow

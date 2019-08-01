@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import AddGiftCardComponent from '../views/AddGiftCard.view';
 import { addGiftCardRequest, resetShowNotification } from './AddGiftCard.actions';
 import { getAddGiftCardResponse, getAddGiftCardError } from './AddGiftCard.selector';
-// import labels from './AddGiftCard.labels';
 import Router from 'next/router'; //eslint-disable-line
 import utils from '../../../../../../utils';
 

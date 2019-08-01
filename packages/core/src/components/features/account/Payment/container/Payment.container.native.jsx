@@ -21,7 +21,6 @@ import {
   checkbalanceValue,
   getShowNotificationCaptchaState,
 } from './Payment.selectors';
-// import labels from './Payment.labels';
 import PaymentView from '../views/PaymentView';
 
 export class PaymentContainer extends React.Component<Props> {
