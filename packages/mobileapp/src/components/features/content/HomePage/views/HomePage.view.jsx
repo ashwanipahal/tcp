@@ -11,14 +11,14 @@ class HomePageView extends React.Component {
   }
 
   render() {
-    const { slot_1: slotA, slot_2: slotB, slot_3: slotC, ...otherProps } = this.props;
+    const { slot_1: slotA, slot_2: slotB, slot_3: slotC, navigation } = this.props;
 
     return (
       <ScrollView>
         <React.Fragment>
-          <SlotA {...slotA} {...otherProps} />
-          <SlotB {...slotB} {...otherProps} />
-          <SlotC {...slotC} {...otherProps} />
+          <SlotA {...slotA} navigation={navigation} />
+          <SlotB {...slotB} navigation={navigation} />
+          <SlotC {...slotC} navigation={navigation} />
         </React.Fragment>
       </ScrollView>
     );
@@ -30,6 +30,7 @@ HomePageView.propTypes = {
   slot_2: PropTypes.shape({}).isRequired,
   slot_3: PropTypes.shape({}).isRequired,
   getBootstrapData: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 export default errorBoundary(HomePageView);
