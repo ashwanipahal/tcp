@@ -4,7 +4,7 @@ import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import { noop } from 'lodash';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import { FormStyle, DescriptionStyle } from '../LoginForm.style.native';
+import { FormStyle } from '../LoginForm.style.native';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import CustomButton from '../../../../../../common/atoms/Button';
