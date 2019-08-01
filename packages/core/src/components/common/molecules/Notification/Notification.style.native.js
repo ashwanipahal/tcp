@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components/native';
 
-const getPageStyle = () => {
+const getPageStyle = props => {
+  const { theme } = props;
   return `
-  margin-horizontal: ${'30px'}
+  margin-horizontal: ${theme.spacing.LAYOUT_SPACING.SM};
   justify-content: ${'center'};
 
   `;
@@ -16,11 +17,11 @@ const getTextBaseStyle = props => {
   const { typography } = theme;
   return `
     font-size: ${typography.fontSizes.fs14};
-    color: #000;
+    color: ${theme.colorPalette.black};
     font-family: ${typography.fonts.secondary};
-    border:1px solid #c8102e;
-    padding:5px;
-    margin:10px;
+    border:1px solid ${theme.colorPalette.red[500]};
+    padding:${theme.spacing.ELEM_SPACING.XXS};
+    margin: ${theme.spacing.ELEM_SPACING.XS};
     `;
 };
 

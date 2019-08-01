@@ -30,6 +30,7 @@ type Props = {
   labels: any,
   resetLoginState: any,
   successFullResetEmail: any,
+  handleSubmit: string,
 };
 
 type State = {
@@ -61,14 +62,14 @@ class ForgotPasswordView extends React.Component<Props, State> {
     resetLoginState();
     showForgotPasswordForm();
   };
-  /* eslint-disable */
+
   render() {
     const {
       className,
       showNotification,
       resetForgotPasswordErrorResponse,
-      handleSubmit,
       labels,
+      handleSubmit,
       successFullResetEmail,
     } = this.props;
     const errorObject =
@@ -84,7 +85,6 @@ class ForgotPasswordView extends React.Component<Props, State> {
               text={labels.FORGOT_PASSWORD_BACK_LOGIN}
               customStyle={styles.forgotPasswordStyle}
               onPress={this.onBackClick}
-              customStyle={{ textAlign: 'left' }}
               className="floatLt"
             />
           </FloatWrapper>

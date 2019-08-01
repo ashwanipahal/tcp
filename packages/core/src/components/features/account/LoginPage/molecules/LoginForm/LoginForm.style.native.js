@@ -4,7 +4,7 @@ const getPageStyle = () => {
   return `
   margin-top: ${'30px'};
   margin-horizontal: ${'20px'};
-  justify-content: ${'center'};
+  justify-content: center;
 
   `;
 };
@@ -40,7 +40,7 @@ const getDescriptionStyle = props => {
   font-size: ${typography.fontSizes.fs12};
   color: ${colorPalette.text.primary};
   margin-bottom: ${'20px'};
-  text-align: ${'center'};
+  text-align: center;
   `;
 };
 
@@ -50,7 +50,7 @@ const ForgotHeading = props => {
   return `
   ${getTextBaseStyle};
   font-weight: ${typography.fontWeights.semibold};
-  align-self: ${'center'};
+  align-self: center;
   font-size: ${typography.fontSizes.fs16};
   padding:10px 0;
   `;
@@ -61,7 +61,7 @@ const ForgotDescription = props => {
   const { typography } = theme;
   return `
   ${getTextBaseStyle};
-  align-self: ${'center'};
+  align-self: center;
   font-size: ${typography.fontSizes.fs12};
   padding:10px 0;
   `;
@@ -73,7 +73,7 @@ const getHeadingStyle = props => {
   return `
   ${getTextBaseStyle};
   font-weight: ${typography.fontWeights.semibold};
-  align-self: ${'center'};
+  align-self: center;
   `;
 };
 
@@ -83,7 +83,7 @@ const getSubHeadingStyle = props => {
   return `
   ${getTextBaseStyle};
   font-size: ${typography.fontSizes.fs13};
-  align-self: ${'center'};
+  align-self: center;
   `;
 };
 
@@ -117,7 +117,7 @@ const DescriptionStyle = styled.Text`
 const FormStyleView = styled.View`
   margin-top: ${'30px'};
   margin-horizontal: ${'20px'};
-  justify-content: ${'center'};
+  justify-content: center;
 `;
 
 const FloatWrapper = styled.View`
