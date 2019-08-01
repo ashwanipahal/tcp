@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ShopBySize should render correctly 1`] = `
+<Styled(View)>
+  <Styled(TouchableOpacity)
+    accessibilityRole="button"
+    onPress={[Function]}
+  >
+    <Styled(BodyCopy)
+      color="text.primary"
+      fontFamily="secondary"
+      fontSize="fs18"
+      text="1"
+    />
+  </Styled(TouchableOpacity)>
+</Styled(View)>
+`;
+
+exports[`ShopBySize should render correctly with l3 1`] = `
+<Styled(View)>
+  <Styled(TouchableOpacity)
+    accessibilityRole="button"
+    onPress={[Function]}
+  >
+    <Styled(BodyCopy)
+      color="text.primary"
+      fontFamily="secondary"
+      fontSize="fs18"
+      text="1"
+    />
+  </Styled(TouchableOpacity)>
+</Styled(View)>
+`;
+
+exports[`ShopBySize should render correctly with no l3 1`] = `
+<Styled(View)>
+  <Styled(TouchableOpacity)
+    accessibilityRole="button"
+    onPress={[Function]}
+  >
+    <Styled(BodyCopy)
+      color="text.primary"
+      fontFamily="secondary"
+      fontSize="fs18"
+      text="1"
+    />
+  </Styled(TouchableOpacity)>
+</Styled(View)>
+`;

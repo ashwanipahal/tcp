@@ -1,6 +1,11 @@
 import { connect } from 'react-redux';
+import { validatePhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
 
-import { submitSmsSignup, clearSmsSignupForm } from './SmsSignupModal.actions';
+import {
+  submitSmsSignup,
+  clearSmsSignupForm,
+  toggleSmsSignupModal,
+} from './SmsSignupModal.actions';
 import SignupModalView from '../views/SmsSignupModal.view';
 
 export const mapDispatchToProps = dispatch => {
@@ -10,6 +15,21 @@ export const mapDispatchToProps = dispatch => {
     },
     clearSmsSignupForm: () => {
       dispatch(clearSmsSignupForm());
+    },
+    closeModal: () => {
+      dispatch(toggleSmsSignupModal({ isModalOpen: false }));
+    },
+    asyncValidate: (values, reduxFormDispatch, props) => {
+      const { signupPhoneNumber } = values;
+      if (signupPhoneNumber.length && !validatePhoneNumber(signupPhoneNumber)) {
+        const {
+          formViewConfig: { validationErrorLabel },
+        } = props;
+        const error = { signupPhoneNumber: validationErrorLabel };
+        // eslint-disable-next-line prefer-promise-reject-errors
+        return Promise.reject({ ...error, _error: error });
+      }
+      return Promise.resolve();
     },
   };
 };
@@ -22,9 +42,11 @@ const mapStateToProps = (state, props) => {
     };
   }
 
+  const { SmsSignUp: { isModalOpen, subscription } = {} } = state;
   return {
     formViewConfig,
-    isSubscriptionValid: state.SmsSignUp && state.SmsSignUp.signupSuccess,
+    isModalOpen,
+    subscription,
   };
 };
 

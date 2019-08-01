@@ -1,4 +1,5 @@
 import React from 'react';
+import Router from 'next/router'; // eslint-disable-line
 import { connect } from 'react-redux';
 import {
   getCardList,
@@ -7,7 +8,9 @@ import {
   checkBalance,
   setDefaultPayment,
   setPaymentNotification,
+  fetchModuleX,
 } from './Payment.actions';
+
 import {
   getCreditDebitCards,
   getCardListFetchingState,
@@ -19,6 +22,8 @@ import {
   getCardListState,
   checkbalanceValue,
   getShowNotificationCaptchaState,
+  getPaymentBannerContentId,
+  getPaymentBannerRichTextSelector,
 } from './Payment.selectors';
 import labels from './Payment.labels';
 import PaymentView from '../views/PaymentView';
@@ -38,20 +43,28 @@ type Props = {
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
   setDefaultPaymentMethod: Function,
+  getPaymentBannerRichText: Function,
+  paymentBannerContentId: string,
   showNotificationCaptcha: boolean,
+  paymentBannerRichText: string,
   clearPaymentNotification: () => void,
 };
 
 export class PaymentContainer extends React.Component<Props> {
   componentDidMount() {
-    const { getCardListAction } = this.props;
+    const { getCardListAction, paymentBannerContentId, getPaymentBannerRichText } = this.props;
     getCardListAction();
+    getPaymentBannerRichText(paymentBannerContentId);
   }
 
   componentWillUnmount() {
     const { clearPaymentNotification } = this.props;
     clearPaymentNotification();
   }
+
+  addNewCreditCard = () => {
+    Router.push('/account?id=add-credit-card', '/us/account/payment/add-credit-card');
+  };
 
   render() {
     const {
@@ -68,7 +81,11 @@ export class PaymentContainer extends React.Component<Props> {
       checkbalanceValueInfo,
       setDefaultPaymentMethod,
       showNotificationCaptcha,
+      paymentBannerRichText,
     } = this.props;
+
+    const updatedLabels = { ...labels, ACC_PAYMNET_BANNER_LABEL: paymentBannerRichText };
+
     return (
       <PaymentView
         deleteModalMountedState={deleteModalMountedState}
@@ -77,7 +94,7 @@ export class PaymentContainer extends React.Component<Props> {
         showNotificationCaptcha={showNotificationCaptcha}
         onDeleteCard={onDeleteCard}
         showUpdatedNotificationOnModal={showUpdatedNotificationOnModal}
-        labels={labels}
+        labels={updatedLabels}
         creditCardList={creditCardList}
         giftCardList={giftCardList}
         venmoCardList={venmoCardList}
@@ -85,6 +102,7 @@ export class PaymentContainer extends React.Component<Props> {
         onGetBalanceCard={onGetBalanceCard}
         checkbalanceValueInfo={checkbalanceValueInfo}
         setDefaultPaymentMethod={setDefaultPaymentMethod}
+        addCreditCard={this.addNewCreditCard}
       />
     );
   }
@@ -114,6 +132,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
         })
       );
     },
+    getPaymentBannerRichText: cid => {
+      dispatch(fetchModuleX(cid));
+    },
   };
 };
 
@@ -129,6 +150,8 @@ const mapStateToProps = state => {
     deleteModalMountedState: deleteModalOpenState(state),
     showUpdatedNotificationOnModal: showUpdatedNotificationOnModalState(state),
     checkbalanceValueInfo: checkbalanceValue(state),
+    paymentBannerContentId: getPaymentBannerContentId(state),
+    paymentBannerRichText: getPaymentBannerRichTextSelector(state),
   };
 };
 

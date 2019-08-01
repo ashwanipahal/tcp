@@ -47,6 +47,16 @@ function zipcodeValidator(valueParam, param, linkedPropsValues, linkedFieldsValu
   );
 }
 
+function noCountryZipValidator(valueParam) {
+  let validZip;
+  const value = (valueParam || '').toUpperCase();
+  if (/^\d{5}-\d{4}$|^\d{5}$/.test(value) && value.substr(0, 5) !== '00000') validZip = true;
+  else if (/^[ABCEGHJKLMNPRSTVXY]{1}\d{1}[A-Z]{1} *\d{1}[A-Z]{1}\d{1}$/.test(value))
+    validZip = true;
+  else validZip = false;
+  return validZip;
+}
+
 function nameValidator(value) {
   return /^[a-zA-Z áéíóúÁÉÍÓÚäëïöüÄËÏÖÜñÑ]*$/.test(value);
 }
@@ -57,6 +67,39 @@ function cityNameValidator(value) {
 
 function stateRequiredValidator(value, param, _, linkedFieldsValues) {
   return value || (linkedFieldsValues[0] !== 'US' && linkedFieldsValues[0] !== 'CA');
+}
+
+function expirationValidator(value, param, linkedPropsValues, datePieces) {
+  const now = new Date();
+  const nowYear = now.getFullYear();
+  const nowMonth = now.getMonth();
+  const month = datePieces[0] * 1;
+  const year = datePieces[1] * 1;
+
+  return !(year < nowYear || (year === nowYear && month < nowMonth + 1));
+}
+
+function cardNumberForTypeValidator(value, param, linkedProps) {
+  const cleanValue = (value || '').replace(/\D/g, '');
+  // no type, invalid CC numbr
+  if (!linkedProps[0]) {
+    return false;
+  }
+
+  const isAmex = linkedProps[0] === 'AMEX';
+  const isValidAmex = isAmex && (cleanValue.length === 15 || /[*]{11}\d{4}$/.test(value));
+  const isValidNonAmex = !isAmex && (cleanValue.length === 16 || /[*]{12}\d{4}$/.test(value));
+
+  return (
+    cleanValue.length === 0 ||
+    isValidAmex || // editing amex card
+    isValidNonAmex
+  ); // editing amex card
+}
+
+function plccEnabledValidator(value, param, linkedProps) {
+  const cleanValue = (value || '').replace(/\D/g, '');
+  return !(cleanValue.length > 0 && linkedProps[0] === 'PLACE CARD' && !linkedProps[1]);
 }
 
 // TODO - Add test case (Ajay Saini)
@@ -70,6 +113,30 @@ function lengthValidator(value, length) {
   return len === 0 || len === length;
 }
 
+function emailValidator(value) {
+  return /^(\s*)([a-zA-Z0-9_\-.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)(\s*)$/.test(
+    value
+  );
+}
+
+function matchEmailValidator(value, param, linkedPropsValues, linkedFieldsValues) {
+  return (value || '').trim() === (linkedFieldsValues[0] || '').trim();
+}
+
+function passwordValidator(value) {
+  return /^(?=.*[A-Z])(?=.*\d)(?=.*[$@#%^$<>.,!%*?&\-_~`()+={}[\]|:;"'/])[A-Za-z\d$@#%^$<>.,!%*?&\-_~`()+={}[\]|:;“’/]{8,}$/g.test(
+    value
+  );
+}
+
+function equalToValidator(value, param, linkedPropsValues, linkedFieldsValues) {
+  return value === linkedFieldsValues[0];
+}
+
+function legacyPasswordValidator(value) {
+  return /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@#%^$<>.,!%*?&\-_~`()+={}[\]|:;"'/]{8,}$/g.test(value);
+}
+
 const validatorMethods = {
   required: requiredValidator,
   nonEmpty: nonEmptyValidator,
@@ -81,8 +148,18 @@ const validatorMethods = {
   name: nameValidator,
   city: cityNameValidator,
   stateRequired: stateRequiredValidator,
+  cardNumberForType: cardNumberForTypeValidator,
+  expiration: expirationValidator,
+  plccEnabled: plccEnabledValidator,
   number: numberValidator,
   exactLength: lengthValidator,
+  emailPattern: emailValidator,
+  noCountryZip: noCountryZipValidator,
+  matchEmail: matchEmailValidator,
+  password: passwordValidator,
+  equalTo: equalToValidator,
+  legacyPassword: legacyPasswordValidator,
+  email: emailValidator,
 };
 
 export default validatorMethods;

@@ -1,0 +1,106 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Textbox component render showSuccessCheck on validation fail 1`] = `
+<Styled(View)>
+  <Styled(Text)
+    isFocused="foo"
+  >
+    input
+  </Styled(Text)>
+  <Styled(TextInput)
+    aria-label="input"
+    className="TextBox__input"
+    data-locator="input-field"
+    enableSuccessCheck={false}
+    error="foo"
+    id="input"
+    keyboardType="default"
+    onBlur={[Function]}
+    onEndEditing={[Function]}
+    onFocus={[Function]}
+    returnKeyType="next"
+    secureTextEntry={false}
+    showSuccessCheck={true}
+    type="text"
+    value="foo"
+  />
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(ImageComp)
+        height="15px"
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/alert-triangle.png",
+          }
+        }
+        width="15px"
+      />
+    </Styled(View)>
+    <Styled(BodyCopy)
+      color="error"
+      fontSize="fs12"
+      fontWeight="semibold"
+      mobilefontFamily={
+        Array [
+          "secondary",
+        ]
+      }
+      text="foo"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`Textbox component render showSuccessCheck on validation true 1`] = `
+<Styled(View)>
+  <Styled(Text)
+    isFocused="foo"
+  >
+    input
+  </Styled(Text)>
+  <Styled(TextInput)
+    aria-label="input"
+    className="TextBox__input"
+    data-locator="input-field"
+    enableSuccessCheck={false}
+    error=""
+    id="input"
+    keyboardType="default"
+    onBlur={[Function]}
+    onEndEditing={[Function]}
+    onFocus={[Function]}
+    returnKeyType="next"
+    secureTextEntry={false}
+    showSuccessCheck={true}
+    type="text"
+    value="foo"
+  />
+</Styled(View)>
+`;
+
+exports[`Textbox component renders correctly 1`] = `
+<Styled(View)>
+  <Styled(Text)
+    isFocused="foo"
+  >
+    input
+  </Styled(Text)>
+  <Styled(TextInput)
+    aria-label="input"
+    className="TextBox__input"
+    data-locator="input-field"
+    enableSuccessCheck={false}
+    error=""
+    id="input"
+    keyboardType="default"
+    onBlur={[Function]}
+    onEndEditing={[Function]}
+    onFocus={[Function]}
+    returnKeyType="next"
+    secureTextEntry={false}
+    showSuccessCheck={false}
+    type="text"
+    value="foo"
+  />
+</Styled(View)>
+`;

@@ -2,11 +2,12 @@ import React from 'react';
 import { View } from 'react-native';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
 import withStyles from '../../../../common/hoc/withStyles';
-
+import StyledWrapper from '../styles/MyAccountDropDown.style.native';
 // @flow
 type Props = {
   navData: Array<Object>,
   handleComponentChange: Function,
+  className: string,
 };
 
 type State = {
@@ -29,7 +30,7 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
   }
 
   render() {
-    const { navData, handleComponentChange } = this.props;
+    const { navData, handleComponentChange, className } = this.props;
     const { dropDownItem } = this.state;
     const dropDownStyle = {
       height: 42,
@@ -39,7 +40,7 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
       height: 49,
     };
     return (
-      <View {...this.props}>
+      <View className={className} {...this.props}>
         <DropDown
           selectedValue={dropDownItem}
           data={navData}
@@ -56,5 +57,5 @@ class MyAccountDropdownNav extends React.Component<Props, State> {
   }
 }
 
-export default withStyles(MyAccountDropdownNav);
+export default withStyles(MyAccountDropdownNav, StyledWrapper);
 export { MyAccountDropdownNav as MyAccountDropdownNavVanilla };

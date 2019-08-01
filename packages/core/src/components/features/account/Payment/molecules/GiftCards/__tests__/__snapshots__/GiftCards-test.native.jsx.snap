@@ -27,7 +27,9 @@ exports[`GiftCardList Component should render correctly 1`] = `
   <Styled(View)>
     <Styled(CustomButton)
       buttonVariation="variable-width"
-      customStyle=""
+      color="white"
+      customStyle={Object {}}
+      fill="BLUE"
       fullWidth=""
       text=""
       url=""
@@ -76,7 +78,9 @@ exports[`GiftCardList Component should render correctly if list is present 1`] =
   <Styled(View)>
     <Styled(CustomButton)
       buttonVariation="variable-width"
-      customStyle=""
+      color="white"
+      customStyle={Object {}}
+      fill="BLUE"
       fullWidth=""
       text=""
       url=""

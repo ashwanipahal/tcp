@@ -1,11 +1,10 @@
 // @flow
 import React from 'react';
-/* TODO: Import these while implementing DAM Image in Module K */
-// import DamImage from '@tcp/core/src/components/common/atoms/DamImage';
-// import config from './config';
+import DamImage from '@tcp/core/src/components/common/atoms/DamImage';
+import config from './config';
 
 import withStyles from '../../hoc/withStyles';
-import { Image, Row, Col } from '../../atoms';
+import { Row, Col } from '../../atoms';
 import style from './ImageGrid.style';
 
 type Props = {
@@ -70,27 +69,15 @@ const ImageGrid = (props: Props) => {
   return (
     <div>
       {mediaList.reduce(gridReducer, gridCoordinator).final.map(medList => (
-        <Row
-          fullBlead={{
-            small: false,
-            medium: false,
-            large: true,
-          }}
-          className={className}
-        >
+        <Row fullBleed className={className}>
           {medList.map((mediaProps, index) => {
             return (
               <Col colSize={colSize} className="image-col">
-                <Image {...mediaProps} data-locator={`${dataLocator}${index}`} />
-                {
-                  // TODO: Need to update after CMS Integration
-                  /* <DamImage
-                  className="moduleK_dam-image"
+                <DamImage
                   data-locator={`${dataLocator}${index}`}
                   imgConfigs={config.IMG_DATA.imgConfig}
                   imgData={mediaProps}
-                /> */
-                }
+                />
               </Col>
             );
           })}

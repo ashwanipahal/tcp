@@ -1,5 +1,7 @@
 export {
   default,
+  createAPIConfig,
+  getAPIConfig,
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
   isProduction,

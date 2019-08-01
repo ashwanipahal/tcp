@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavMenuLevel1 should render component when renderItem is called 1`] = `
+<ForwardRef
+  accessibilityRole="button"
+  onPress={[Function]}
+>
+  <ForwardRef
+    alt="Image Alt text attribute value"
+    height={132}
+    source={
+      Object {
+        "uri": "https://res.cloudinary.com/tcp-dam-test/image/upload/c_crop,g_face:center,q_auto:best,w_961/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+      }
+    }
+    width={375}
+  />
+  <ForwardRef>
+    <ForwardRef
+      color="text.primary"
+      fontFamily="primary"
+      fontSize="fs22"
+      fontWeight="black"
+      text="GIRL"
+      textAlign="center"
+    />
+    <ForwardRef
+      color="text.primary"
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="extrabold"
+      text="Sizes 4-141"
+      textAlign="center"
+    />
+  </ForwardRef>
+</ForwardRef>
+`;
+
+exports[`NavMenuLevel1 should render component when renderItem is called without nav menu image 1`] = `
+<ForwardRef
+  accessibilityRole="button"
+  onPress={[Function]}
+>
+  <ForwardRef
+    color="text.primary"
+    fontFamily="primary"
+    fontSize="fs28"
+    fontWeight="black"
+    text="GIRL"
+    textAlign="center"
+  />
+  <ForwardRef
+    alt="GIRL"
+    height={26}
+    maxWidth={16}
+    position="absolute"
+    right={37}
+    source={
+      Object {
+        "testUri": "../../../../core/src/assets/carrot-small-rights.png",
+      }
+    }
+  />
+</ForwardRef>
+`;
+
+exports[`NavMenuLevel1 should render correctly 1`] = `
+<Styled(FlatList)
+  data={
+    Object {
+      "data": Object {
+        "navigation": Object {
+          "nav": Array [
+            Object {
+              "categoryContent": Object {
+                "description": "Sizes 4-141",
+                "groupIdentifier": "",
+                "id": "47511",
+                "isShortImage": false,
+                "isUnique": true,
+                "longDescription": "long description 1",
+                "mainCategory": Object {
+                  "categoryImage": Array [
+                    Object {
+                      "alt": "Image Alt text attribute value",
+                      "crop_d": "c_crop,g_face:center,q_auto:best,w_393",
+                      "crop_m": "c_crop,g_face:center,q_auto:best,w_961",
+                      "crop_t": "c_crop,g_face:center,q_auto:best,w_932",
+                      "title": "Image Title attribute value",
+                      "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg",
+                    },
+                  ],
+                  "categoryLayouts": Array [],
+                  "contentId": "47511",
+                  "name": "GIRL",
+                  "promoBadges": Array [],
+                  "set": Array [],
+                  "sizesRanges": Array [
+                    Object {
+                      "text": "SIZES 4-161",
+                    },
+                  ],
+                },
+                "name": "Girl",
+                "productCount": 1853,
+              },
+            },
+          ],
+        },
+      },
+    }
+  }
+  keyExtractor={[Function]}
+  renderItem={[Function]}
+/>
+`;

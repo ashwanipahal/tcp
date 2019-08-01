@@ -70,10 +70,16 @@ exports[`ModuleK component renders correctly 1`] = `
         }
       }
     >
-      <Styled(LinkText)
+      <Styled(Styled(LinkText))
         component="div"
         dataLocator="moduleK_header_text"
-        fontSize="fs48"
+        fontSize={
+          Array [
+            "fs36",
+            "fs36",
+            "fs48",
+          ]
+        }
         fontWeight="black"
         headerText={
           Array [
@@ -101,6 +107,7 @@ exports[`ModuleK component renders correctly 1`] = `
             },
           ]
         }
+        lineHeight="lh107"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -141,9 +148,46 @@ exports[`ModuleK component renders correctly 1`] = `
         carouselConfig={
           Object {
             "autoplay": true,
+            "customArrowLeft": "/static/images/right-carousel-carrot.svg",
+            "customArrowRight": "/static/images/right-carousel-carrot.svg",
             "dataLocatorPause": "moduleK_pause_button",
             "dataLocatorPlay": "moduleK_play_button",
-            "type": "light",
+            "inheritedStyles": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-dxgOiQ",
+                "isStatic": true,
+                "rules": Array [
+                  "
+  .slick-arrow {
+    top: 44%;
+  }
+  .slick-next {
+    height: 52px;
+    right: -68px;
+    width: 15px;
+  }
+  .slick-prev {
+    height: 52px;
+    left: -68px;
+    width: 15px;
+  }
+  .slick-dots {
+    bottom: -10px;
+  }
+",
+                ],
+              },
+              "displayName": "Styled(errorBoundaryComponent)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-dxgOiQ",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            },
           }
         }
         options={

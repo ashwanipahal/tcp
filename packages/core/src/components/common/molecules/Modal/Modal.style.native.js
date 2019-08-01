@@ -8,7 +8,7 @@ const StyledCrossImage = styled.Image`
 
 const ImageWrapper = styled.View`
   display: flex;
-  flex: 0.2;
+  flex: 0.3;
 `;
 
 const StyledTouchableOpacity = styled.TouchableOpacity`

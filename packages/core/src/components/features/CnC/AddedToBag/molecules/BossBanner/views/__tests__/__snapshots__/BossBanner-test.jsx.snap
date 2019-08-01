@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BossBannerView component renders correctly 1`] = `
+<Fragment>
+  <styled.div>
+    <Styled(Row)
+      className="banner"
+    >
+      <Styled(Col)
+        className="pickUp"
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        key="productDetails"
+        textAlign="center"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          dataLocator="addedtobag-bossbanner"
+          fontFamily="primary"
+          fontSize="fs12"
+          fontWeight={
+            Array [
+              "semibold",
+            ]
+          }
+          letterSpacing="normal"
+          lineHeight="normal"
+          tag="span"
+          textAlign="center"
+        >
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<span className=\\"spanNoRush\\">PICK UP IN STORE AND SAVE AN EXTRA 5%</span>",
+              }
+            }
+          />
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+    <Styled(Row)
+      className="bossText"
+    >
+      <Styled(Col)
+        className="pickUp"
+        colSize={
+          Object {
+            "large": 12,
+            "medium": 8,
+            "small": 6,
+          }
+        }
+        key="productDetails"
+      >
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="p"
+          dataLocator="addedtobag-bossbannerdescription"
+          fontFamily="primary"
+          fontSize="fs10"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          tag="span"
+          textAlign="center"
+        >
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<span className=\\"spanNoRush\\">Simply choose <b>NO RUSH Pick Up</b> in your bag before checking out.</span>",
+              }
+            }
+          />
+        </Styled(BodyCopy)>
+      </Styled(Col)>
+    </Styled(Row)>
+  </styled.div>
+</Fragment>
+`;

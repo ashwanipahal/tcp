@@ -5,6 +5,7 @@ import { Carousel, PromoTextBanner, LinkText, ImageGrid, style } from '../Module
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/errorBoundary';
 import config from '../config';
+import { getIconPath } from '../../../../../utils';
 
 type Props = {
   className: string,
@@ -56,7 +57,8 @@ class ModuleK extends React.PureComponent<Props, State> {
               <LinkText
                 headerText={headerText}
                 component="div"
-                fontSize="fs48"
+                fontSize={['fs36', 'fs36', 'fs48']}
+                lineHeight="lh107"
                 fontWeight="black"
                 dataLocator="moduleK_header_text"
               />
@@ -102,7 +104,9 @@ class ModuleK extends React.PureComponent<Props, State> {
                 autoplay: true,
                 dataLocatorPlay: 'moduleK_play_button',
                 dataLocatorPause: 'moduleK_pause_button',
-                type: 'light',
+                customArrowLeft: getIconPath('carousel-big-carrot'),
+                customArrowRight: getIconPath('carousel-big-carrot'),
+                inheritedStyles: Carousel,
               }}
             >
               {masonryGrid.map(({ promoTextBanner, mediaList, singleCTAButton }, index) => {

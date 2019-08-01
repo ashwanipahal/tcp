@@ -6,18 +6,33 @@ const StyledCarousal = styled(Carousel)`
     top: 44%;
   }
   .slick-next {
+    height: 52px;
     right: -68px;
+    width: 15px;
   }
   .slick-prev {
+    height: 52px;
     left: -68px;
+    width: 15px;
   }
   .slick-dots {
     bottom: -10px;
   }
 `;
 const StyledPromoTextBanner = styled(PromoTextBanner)`
-  .text-black {
+  .style2 {
+    font-size: ${props => props.theme.typography.fontSizes.fs42};
+    @media ${props => props.theme.mediaQuery.medium} {
+      font-size: ${props => props.theme.typography.fontSizes.fs64};
+    }
+  }
+  .style3 {
+    color: ${props => props.theme.colorPalette.black};
     font-weight: ${props => props.theme.typography.fontWeights.black};
+    font-size: ${props => props.theme.typography.fontSizes.fs64};
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: ${props => props.theme.typography.fontSizes.fs64};
+    }
   }
 `;
 const StyledLinkText = styled(LinkText)`
@@ -68,7 +83,6 @@ export {
 };
 
 export default {
-  Carousel: StyledCarousal,
   PromoTextBanner: StyledPromoTextBanner,
   LinkText: StyledLinkText,
   ImageGrid: StyledImageGrid,

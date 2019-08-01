@@ -4,13 +4,7 @@ exports[`Image grid component renders correctly 1`] = `
 <div>
   <Styled(Row)
     className="image-grid"
-    fullBlead={
-      Object {
-        "large": true,
-        "medium": false,
-        "small": false,
-      }
-    }
+    fullBleed={true}
   >
     <Styled(Col)
       className="image-col"
@@ -22,14 +16,25 @@ exports[`Image grid component renders correctly 1`] = `
         }
       }
     >
-      <Styled(Image)
-        alt="Image Alt text attribute value"
-        crop_d="c_crop,g_face:center,q_auto:best,w_962"
-        crop_m="c_crop,g_face:center,q_auto:best,w_962"
-        crop_t="c_crop,g_face:center,q_auto:best,w_962"
+      <WithTheme(DamImage)
         data-locator="moduleK_image_0"
-        title="Image Title attribute value"
-        url="/static/images/K-210x210-1.jpg"
+        imgConfigs={
+          Array [
+            "ar_1:1,q_80,w_384",
+            "ar_1:1,q_80,w_300",
+            "ar_1:1,q_80,w_360",
+          ]
+        }
+        imgData={
+          Object {
+            "alt": "Image Alt text attribute value",
+            "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+            "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+            "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+            "title": "Image Title attribute value",
+            "url": "/static/images/K-210x210-1.jpg",
+          }
+        }
       />
     </Styled(Col)>
     <Styled(Col)
@@ -42,14 +47,25 @@ exports[`Image grid component renders correctly 1`] = `
         }
       }
     >
-      <Styled(Image)
-        alt="Image Alt text attribute value"
-        crop_d="c_crop,g_face:center,q_auto:best,w_962"
-        crop_m="c_crop,g_face:center,q_auto:best,w_962"
-        crop_t="c_crop,g_face:center,q_auto:best,w_962"
+      <WithTheme(DamImage)
         data-locator="moduleK_image_1"
-        title="Image Title attribute value"
-        url="/static/images/K-210x210-2.jpg"
+        imgConfigs={
+          Array [
+            "ar_1:1,q_80,w_384",
+            "ar_1:1,q_80,w_300",
+            "ar_1:1,q_80,w_360",
+          ]
+        }
+        imgData={
+          Object {
+            "alt": "Image Alt text attribute value",
+            "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+            "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+            "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+            "title": "Image Title attribute value",
+            "url": "/static/images/K-210x210-2.jpg",
+          }
+        }
       />
     </Styled(Col)>
     <Styled(Col)
@@ -62,14 +78,25 @@ exports[`Image grid component renders correctly 1`] = `
         }
       }
     >
-      <Styled(Image)
-        alt="Image Alt text attribute value"
-        crop_d="c_crop,g_face:center,q_auto:best,w_962"
-        crop_m="c_crop,g_face:center,q_auto:best,w_962"
-        crop_t="c_crop,g_face:center,q_auto:best,w_962"
+      <WithTheme(DamImage)
         data-locator="moduleK_image_2"
-        title="Image Title attribute value"
-        url="/static/images/K-210x210-3.jpg"
+        imgConfigs={
+          Array [
+            "ar_1:1,q_80,w_384",
+            "ar_1:1,q_80,w_300",
+            "ar_1:1,q_80,w_360",
+          ]
+        }
+        imgData={
+          Object {
+            "alt": "Image Alt text attribute value",
+            "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+            "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+            "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+            "title": "Image Title attribute value",
+            "url": "/static/images/K-210x210-3.jpg",
+          }
+        }
       />
     </Styled(Col)>
     <Styled(Col)
@@ -82,14 +109,25 @@ exports[`Image grid component renders correctly 1`] = `
         }
       }
     >
-      <Styled(Image)
-        alt="Image Alt text attribute value"
-        crop_d="c_crop,g_face:center,q_auto:best,w_962"
-        crop_m="c_crop,g_face:center,q_auto:best,w_962"
-        crop_t="c_crop,g_face:center,q_auto:best,w_962"
+      <WithTheme(DamImage)
         data-locator="moduleK_image_3"
-        title="Image Title attribute value"
-        url="/static/images/K-210x210-4.jpg"
+        imgConfigs={
+          Array [
+            "ar_1:1,q_80,w_384",
+            "ar_1:1,q_80,w_300",
+            "ar_1:1,q_80,w_360",
+          ]
+        }
+        imgData={
+          Object {
+            "alt": "Image Alt text attribute value",
+            "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+            "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+            "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+            "title": "Image Title attribute value",
+            "url": "/static/images/K-210x210-4.jpg",
+          }
+        }
       />
     </Styled(Col)>
   </Styled(Row)>
