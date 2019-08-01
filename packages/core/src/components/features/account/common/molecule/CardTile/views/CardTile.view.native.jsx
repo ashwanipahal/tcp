@@ -258,6 +258,8 @@ const CardTile = ({
     if (event && event.nativeEvent.data) {
       const value = get(event, 'nativeEvent.data', '');
       change('recaptchaToken', value);
+    } else if (event.nativeEvent.data === 'load') {
+      console.log('this is when load');
     }
   };
   return (
