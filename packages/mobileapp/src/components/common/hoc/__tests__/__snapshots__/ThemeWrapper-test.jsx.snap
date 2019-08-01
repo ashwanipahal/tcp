@@ -356,6 +356,10 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         },
       },
       "spacing": Object {
+        "APP_LAYOUT_SPACING": Object {
+          "SM": "30px",
+          "XS": "20px",
+        },
         "CREDIT_CARD_ICON_WIDTH": "50px",
         "ELEM_SPACING": Object {
           "LRG": "24px",

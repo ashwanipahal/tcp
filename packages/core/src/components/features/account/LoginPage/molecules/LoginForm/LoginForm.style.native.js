@@ -1,9 +1,11 @@
 import styled, { css } from 'styled-components/native';
 
-const getPageStyle = () => {
+const getPageStyle = props => {
+  const { theme } = props;
   return `
-  margin-top: ${'30px'};
-  margin-horizontal: ${'20px'};
+  margin: ${theme.spacing.APP_LAYOUT_SPACING.SM} ${theme.spacing.APP_LAYOUT_SPACING.XS} auto ${
+    theme.spacing.APP_LAYOUT_SPACING.XS
+  };
   justify-content: center;
 
   `;
@@ -115,9 +117,7 @@ const DescriptionStyle = styled.Text`
 `;
 
 const FormStyleView = styled.View`
-  margin-top: ${'30px'};
-  margin-horizontal: ${'20px'};
-  justify-content: center;
+  ${getPageStyle}
 `;
 
 const FloatWrapper = styled.View`

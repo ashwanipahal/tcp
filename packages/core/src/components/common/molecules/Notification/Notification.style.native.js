@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components/native';
 const getPageStyle = props => {
   const { theme } = props;
   return `
-  margin-horizontal: ${theme.spacing.LAYOUT_SPACING.SM};
+ margin: auto  ${theme.spacing.APP_LAYOUT_SPACING.XS};
   justify-content: ${'center'};
 
   `;
