@@ -32,6 +32,23 @@ describe('CardTile', () => {
     const tree = shallow(<CardTileVanilla labels={labels} card={cardList} />);
     expect(tree).toMatchSnapshot();
   });
+
+  it('should render correctly with gift card with balance', () => {
+    const giftCard = Object.assign({}, cardList, {
+      ccBrand: 'GC',
+      ccType: 'GiftCard',
+    });
+    const tree = shallow(
+      <CardTileVanilla
+        labels={labels}
+        card={giftCard}
+        checkbalanceValueInfo={{ get: jest.fn() }}
+        handleSubmit={jest.fn()}
+      />
+    );
+    expect(tree).toMatchSnapshot();
+  });
+
   it('should render correctly with visa card', () => {
     const cardVisa = Object.assign({}, cardList, {
       ccBrand: 'Visa',
@@ -61,6 +78,7 @@ describe('CardTile', () => {
     const giftCard = Object.assign({}, cardList, {
       ccBrand: 'GC',
       ccType: 'GiftCard',
+      balance: 1,
     });
     const tree = shallow(
       <CardTileVanilla labels={labels} card={giftCard} handleSubmit={jest.fn()} />

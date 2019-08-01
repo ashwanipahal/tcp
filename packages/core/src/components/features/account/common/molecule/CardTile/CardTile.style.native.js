@@ -27,7 +27,6 @@ const CardTileDefaultSection = styled.View`
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: ${props => (props.isVenmo ? props.theme.spacing.ELEM_SPACING.XL : 0)};
-  margin-bottom: ${props => (props.isGiftCard ? props.theme.spacing.ELEM_SPACING.XXXL : 0)};
 `;
 
 const CardTileImgWrapper = styled.View`
@@ -92,7 +91,7 @@ const CardCtaLinkMargin = styled.View`
 
 const RecaptchaContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  height: 189px;
+  height: 89px;
 `;
 
 export {

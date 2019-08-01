@@ -198,7 +198,9 @@ const getCtaRow = (
 
       {isGiftCard && balance == null && (
         <CustomButton
-          text="CHECK BALANCE"
+          color="white"
+          fill="BLUE"
+          text={labels.ACC_LBL_CHECK_BALANCE}
           buttonVariation="variable-width"
           onPress={handleSubmit(formData =>
             handleGetGiftCardBalanceClick(formData, card, onGetBalanceCard)
@@ -251,6 +253,8 @@ const CardTile = ({
     if (event && event.nativeEvent.data) {
       const value = get(event, 'nativeEvent.data', '');
       change('recaptchaToken', value);
+    } else if (event.nativeEvent.data === 'load') {
+      console.log('this is when load');
     }
   };
   return (
@@ -286,11 +290,11 @@ const CardTile = ({
             mobilefontFamily={['secondary']}
             fontSize="fs14"
             color="gray.900"
-            text="Remaining balance"
+            text={labels.ACC_LBL_REMAINING_BALANCE}
           />
         </CardCtaRow>
       )}
-      {isGiftCard && (
+      {isGiftCard && (balance === undefined || balance === null) && (
         <View>
           <RecaptchaContainer>
             <Recaptcha onMessage={onMessage} />
@@ -303,6 +307,7 @@ const CardTile = ({
             name="recaptchaToken"
             id="recaptchaToken"
             data-locator="gift-card-recaptchcb"
+            className="visibility-recaptcha"
           />
         </View>
       )}

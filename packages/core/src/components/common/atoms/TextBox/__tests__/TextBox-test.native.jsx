@@ -9,7 +9,7 @@ describe('Textbox component', () => {
     type: 'text',
     meta: { touched: '', error: '' },
     dataLocator: 'input-field',
-    showSuccessCheck: false,
+    enableSuccessCheck: false,
     label: 'input',
     keyboardType: 'default',
     showErrorIcon: true,
@@ -21,13 +21,19 @@ describe('Textbox component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('render showSuccessCheck on validation true', () => {
-    props.showSuccessCheck = true;
+  it('renders correctly hidden textbox', () => {
+    props.type = 'hidden';
     const component = shallow(<TextBox {...props} />);
     expect(component).toMatchSnapshot();
   });
 
-  it('render showSuccessCheck on validation fail', () => {
+  it('render enableSuccessCheck on validation true', () => {
+    props.enableSuccessCheck = true;
+    const component = shallow(<TextBox {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+
+  it('render enableSuccessCheck on validation fail', () => {
     props.meta.touched = 'foo';
     props.meta.error = 'foo';
     const component = shallow(<TextBox {...props} />);
