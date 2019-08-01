@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, ScrollView, TextInput } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
-import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggestNative/GoogleAutoSuggestNative';
+import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
 
