@@ -5,7 +5,7 @@ import { EmptyAddressList } from '../EmptyAddressList.view';
 describe('EmptyAddressList component', () => {
   it('should renders correctly', () => {
     const props = {
-      labels: {},
+      labels: { addressBook: {}, common: {} },
     };
     const component = shallow(<EmptyAddressList {...props} />);
     expect(component).toMatchSnapshot();

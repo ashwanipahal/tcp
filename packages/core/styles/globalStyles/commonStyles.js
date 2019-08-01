@@ -39,10 +39,6 @@ export default css`
     text-align: right;
   }
 
-  .textCenter {
-    text-align: center;
-  }
-
   &.focus-styling {
     &:focus {
       outline: 1px dashed black;
@@ -111,6 +107,7 @@ export default css`
     list-style-type: none;
   }
 
+  h2,
   p {
     margin: 0;
   }
@@ -125,6 +122,9 @@ export default css`
     @media ${mediaQuery.largeOnly} {
       display: none;
     }
+    @media ${mediaQuery.xlarge} {
+      display: none;
+    }
   }
 
   .hide-on-tablet {
@@ -135,7 +135,11 @@ export default css`
 
   ${props => {
     return Object.keys(props.theme.spacing.ELEM_SPACING).map(key => {
-      return `.elem-mr-${key} {
+      return `
+      .elem-mt-${key} {
+        margin-top: ${props.theme.spacing.ELEM_SPACING[key]}
+      }
+      .elem-mr-${key} {
         margin-right: ${props.theme.spacing.ELEM_SPACING[key]}
       }
       .elem-mb-${key} {
@@ -144,8 +148,8 @@ export default css`
       .elem-ml-${key} {
         margin-left: ${props.theme.spacing.ELEM_SPACING[key]}
       }
-      .elem-mt-${key} {
-        margin-top: ${props.theme.spacing.ELEM_SPACING[key]}
+      .elem-pt-${key} {
+        padding-top: ${props.theme.spacing.ELEM_SPACING[key]}
       }
       .elem-pr-${key} {
         padding-right: ${props.theme.spacing.ELEM_SPACING[key]}
@@ -155,9 +159,6 @@ export default css`
       }
       .elem-pl-${key} {
         padding-left: ${props.theme.spacing.ELEM_SPACING[key]}
-      }
-      .elem-pt-${key} {
-        padding-top: ${props.theme.spacing.ELEM_SPACING[key]}
       }`;
     });
   }}
@@ -165,6 +166,9 @@ export default css`
   ${props => {
     return Object.keys(props.theme.spacing.LAYOUT_SPACING).map(key => {
       return `
+      .layout-pt-${key} {
+        padding-top: ${props.theme.spacing.LAYOUT_SPACING[key]}
+      }
       .layout-pr-${key} {
         padding-right: ${props.theme.spacing.LAYOUT_SPACING[key]}
       }
@@ -173,9 +177,6 @@ export default css`
       }
       .layout-pl-${key} {
         padding-left: ${props.theme.spacing.LAYOUT_SPACING[key]}
-      }
-      .layout-pt-${key} {
-        padding-top: ${props.theme.spacing.LAYOUT_SPACING[key]}
       }`;
     });
   }}

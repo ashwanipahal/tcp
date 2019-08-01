@@ -20,8 +20,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    openNavigationDrawer: () => dispatch(openNavigationDrawer()),
-    closeNavigationDrawer: () => dispatch(closeNavigationDrawer()),
+    openNavigationDrawer: id => {
+      dispatch(openNavigationDrawer(id));
+    },
+    closeNavigationDrawer: () => {
+      dispatch(closeNavigationDrawer());
+    },
     openOverlay: component => dispatch(openOverlayModal(component)),
   };
 };

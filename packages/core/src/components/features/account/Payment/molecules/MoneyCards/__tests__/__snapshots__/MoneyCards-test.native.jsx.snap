@@ -28,7 +28,7 @@ exports[`MoneyCards Component should render correctly 1`] = `
     <Styled(CustomButton)
       buttonVariation="variable-width"
       color="white"
-      customStyle=""
+      customStyle={Object {}}
       fill="BLUE"
       fullWidth=""
       text=""
@@ -79,7 +79,7 @@ exports[`MoneyCards Component should render correctly if list is present 1`] = `
     <Styled(CustomButton)
       buttonVariation="variable-width"
       color="white"
-      customStyle=""
+      customStyle={Object {}}
       fill="BLUE"
       fullWidth=""
       text=""

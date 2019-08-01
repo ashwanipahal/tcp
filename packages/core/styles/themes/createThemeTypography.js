@@ -33,7 +33,7 @@ function createThemeTypography(theme = {}) {
     },
     h2 = {
       ...BASE_HEADING_TYPOGRAPHY,
-      fontSize: ['fs42', 'fs42', 'fs48'],
+      fontSize: ['fs36', 'fs36', 'fs52'],
     },
     h3 = {
       ...BASE_HEADING_TYPOGRAPHY,

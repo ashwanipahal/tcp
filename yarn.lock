@@ -12761,6 +12761,11 @@ react-slick@^0.24.0:
     lodash.debounce "^4.0.8"
     resize-observer-polyfill "^1.5.0"
 
+react-ssr-error-boundary@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-ssr-error-boundary/-/react-ssr-error-boundary-1.0.1.tgz#4c52c84fee77662d850b998dbeac59aef696d31d"
+  integrity sha512-KSPBVlGr3ltsTAZGPvQTm+AMD97BvDZXt5wLyxfwVVwN21kNnbXKlhkRTkLT8Oo/bZblodfa2N7RkwJYEhjFLA==
+
 react-test-renderer@16.8.3:
   version "16.8.3"
   resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-16.8.3.tgz#230006af264cc46aeef94392e04747c21839e05e"

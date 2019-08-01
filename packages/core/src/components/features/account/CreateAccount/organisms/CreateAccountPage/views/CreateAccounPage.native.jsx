@@ -6,25 +6,39 @@ import styles from '../styles/CreateAccounPage.style';
 import CreateAccountForm from '../../../molecules/CreateAccountForm';
 import CreateAccountTopSection from '../../../molecules/CreateAccountTopSection';
 
-const CreateAccounPage = props => {
-  const { labels } = props;
-  return (
-    <View {...props}>
-      <ScrollView showsVerticalScrollIndicator={false}>
-        <CreateAccountTopSection labels={labels} />
-        <CreateAccountForm labels={labels} />
+class CreateAccounPage extends React.Component {
+  static propTypes = {
+    createAccountAction: PropTypes.func,
+    labels: {},
+  };
+
+  static defaultProps = {
+    createAccountAction: () => {},
+    labels: PropTypes.shape({}),
+  };
+
+  constructor(props) {
+    super(props);
+    this.handleSubmitForm = this.handleSubmitForm.bind(this);
+  }
+
+  handleSubmitForm(payload) {
+    const { createAccountAction } = this.props;
+    createAccountAction(payload);
+  }
+
+  render() {
+    const { labels } = this.props;
+    return (
+      <ScrollView showsVerticalScrollIndicator={false} {...this.props}>
+        <View>
+          <CreateAccountTopSection labels={labels} />
+          <CreateAccountForm labels={labels} handleSubmitForm={this.handleSubmitForm} />
+        </View>
       </ScrollView>
-    </View>
-  );
-};
-
-CreateAccounPage.propTypes = {
-  labels: PropTypes.shape({}),
-};
-
-CreateAccounPage.defaultProps = {
-  labels: {},
-};
+    );
+  }
+}
 
 export default withStyles(CreateAccounPage, styles);
 export { CreateAccounPage as CreateAccounPageVanilla };

@@ -110,8 +110,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             tag="span"
             textAlign="left"
           >
-            Color
-            :
+            Color: 
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -173,8 +172,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             tag="span"
             textAlign="left"
           >
-            Size
-            :
+            Size: 
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
