@@ -25,6 +25,10 @@ const RoutesMap = [
     resolver: '/ProductListingPage',
   },
   {
+    path: '/cc',
+    resolver: '/ProductListing',
+  },
+  {
     path: '/test',
     resolver: '/test',
     withoutCountryCode: true,

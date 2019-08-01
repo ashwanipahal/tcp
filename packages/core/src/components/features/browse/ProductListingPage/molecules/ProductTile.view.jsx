@@ -1,13 +1,11 @@
 /* eslint-disable */
-/* dummy plp page | TODO: eslint fixes*/
-
 import React from 'react';
 import { Button } from '@tcp/core/src/components/common/atoms';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import endpoints from '../../../../../service/endpoint';
 
 class ProductTile extends React.Component {
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
     this.state = {
       quantity: 1,
