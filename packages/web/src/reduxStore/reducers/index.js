@@ -17,6 +17,7 @@ import AddressVerificationReducer from '@tcp/core/src/components/features/accoun
 import AccountReducer from '@tcp/core/src/components/features/account/Account/container/Account.reducer';
 import CartPage from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import OverlayModalReducer from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.reducer';
+import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -42,6 +43,7 @@ import {
   FORGOTPASSWORD_REDUCER_KEY,
   OVERLAY_MODAL_REDUCER_KEY,
   NAVIGATION_REDUCER_KEY,
+  CREATE_ACCOUNT_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
@@ -84,4 +86,5 @@ export default combineReducers({
   [CARTPAGE_REDUCER_KEY]: CartPage,
   [OVERLAY_MODAL_REDUCER_KEY]: OverlayModalReducer,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
+  [CREATE_ACCOUNT_REDUCER_KEY]: CreateAccountReducer,
 });

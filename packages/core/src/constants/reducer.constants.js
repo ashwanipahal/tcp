@@ -17,7 +17,6 @@ export const PAYMENT_REDUCER_KEY = 'PaymentReducer';
 export const FORGOTPASSWORD_ACTION_PATTERN = '@@ForgotPassword-';
 export const FORGOTPASSWORD_REDUCER_KEY = 'ForgotPasswordReducer';
 export const ADDED_TO_BAG_REDUCER_KEY = 'AddedToBagReducer';
-export const CART_REDUCER_KEY = 'CartReducer';
 export const ADD_GIFT_CARD_REDUCER_KEY = 'AddGiftCardReducer';
 export const PAYMENT_ACTION_PATTERN = '@@payment-';
 export const ADD_GIFT_CARD_ACTION_PATTERN = '@@AddGiftCard-';
