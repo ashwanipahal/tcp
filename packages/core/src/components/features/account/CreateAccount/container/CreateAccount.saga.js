@@ -7,6 +7,12 @@ import { routerPush } from '../../../../../utils/utils';
 import { closeOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
 import { createAccountErr } from './CreateAccount.actions';
 
+const errorMessage = res => {
+  let errorMessageRecieved = '';
+  errorMessageRecieved = res.body.errors[0].errorMessage;
+  return errorMessageRecieved;
+};
+
 export function* createAccount({ payload }) {
   try {
     const { relURI, method } = endpoints.createAccount;
@@ -41,13 +47,15 @@ export function* createAccount({ payload }) {
     /* istanbul ignore else */
     if (res.body) {
       if (res.body.errors) {
-        return yield put(createAccountErr(res));
+        const resErr = errorMessage(res);
+        return yield put(createAccountErr(resErr));
       }
       yield put(getUserInfo());
       yield put(closeOverlayModal());
       return routerPush('/', '/home');
     }
-    return yield put(createAccountErr(res));
+    const resErr = errorMessage(res);
+    return yield put(createAccountErr(resErr));
   } catch (err) {
     return yield put(createAccountErr(err));
   }

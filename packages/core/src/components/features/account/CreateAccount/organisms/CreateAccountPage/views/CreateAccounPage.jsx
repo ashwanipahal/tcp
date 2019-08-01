@@ -49,13 +49,6 @@ class CreateAccounPage extends React.Component {
       confirmHideShowPwd,
       error,
     } = this.props;
-    let errorMessageRecieved = '';
-    if (error && error.status === 599) {
-      errorMessageRecieved = error.response.body.errorMessage;
-    } else if (error) {
-      errorMessageRecieved =
-        error && error.body && error.body.errors && error.body.errors[0].errorMessage;
-    }
     return (
       <div className={className}>
         <div className="parent-wrapper">
@@ -68,7 +61,7 @@ class CreateAccounPage extends React.Component {
                 fontSize="fs12"
                 color="error"
               >
-                {errorMessageRecieved}
+                {error}
               </BodyCopy>
             </div>
           )}

@@ -8,7 +8,6 @@ import { ProductListingPageReducer } from '@tcp/core/src/components/features/bro
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
-import CartReducer from '@tcp/core/src/components/features/CnC/Cart/containers/Cart.reducer';
 import CartPage from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
 import {
@@ -24,7 +23,6 @@ import {
   FORGOTPASSWORD_REDUCER_KEY,
   ADDRESSBOOK_REDUCER_KEY,
   ADDED_TO_BAG_REDUCER_KEY,
-  CART_REDUCER_KEY,
   NAVIGATION_REDUCER_KEY,
   FORM_REDUCER_KEY,
   CREATE_ACCOUNT_REDUCER_KEY,
@@ -55,7 +53,6 @@ export default combineReducers({
   [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,
   [ADDRESSBOOK_REDUCER_KEY]: AddressBookReducer,
   [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,
-  [CART_REDUCER_KEY]: CartReducer,
   [FORM_REDUCER_KEY]: reduxFormReducer,
   [CARTPAGE_REDUCER_KEY]: CartPage,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,

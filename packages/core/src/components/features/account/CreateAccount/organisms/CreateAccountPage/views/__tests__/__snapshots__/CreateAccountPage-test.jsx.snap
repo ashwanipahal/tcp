@@ -31,7 +31,9 @@ exports[`Create Account Page should render correctly 1`] = `
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
-      />
+      >
+        <Component />
+      </Styled(BodyCopy)>
     </div>
     <ReduxForm
       className=""
