@@ -55,8 +55,6 @@ export const createAPIConfig = resLocals => {
  * @returns {Object} apiConfig - Api config to be utilized for brand/channel/locale config
  */
 export const getAPIConfig = () => {
-  console.log('getAPIConfig web');
-
   // When apiConfig is null (the very first time) or is an empty object, derive value from store..
   const validApiConfigObj = !apiConfig || (apiConfig && !Object.keys(apiConfig).length);
   // This check is to make sure that same instance of apiConfig for different country/brand ssr requests
