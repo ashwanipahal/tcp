@@ -22,7 +22,7 @@ class ModuleK extends React.PureComponent {
     const { mediaList, slideIndex, promoTextBanner, singleCTAButton } = item;
 
     return (
-      <>
+      <React.Fragment>
         {promoTextBanner && (
           <PromoTextBannerWrapper>
             <PromoTextBanner
@@ -44,7 +44,7 @@ class ModuleK extends React.PureComponent {
             />
           </WrapperView>
         )}
-      </>
+      </React.Fragment>
     );
   };
 
