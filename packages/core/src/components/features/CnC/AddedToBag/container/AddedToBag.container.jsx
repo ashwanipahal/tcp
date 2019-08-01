@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { closeAddedToBag } from './AddedToBag.actions';
-import { getAddedToBagData, isOpenAddedToBag } from './AddedToBag.selectors';
+import { getAddedToBagData, isOpenAddedToBag, getQuantityValue } from './AddedToBag.selectors';
 import AddedToBag from '../views/AddedToBag.view';
 
 // @flow
@@ -10,6 +10,7 @@ type Props = {
   addedToBagData: any,
   isOpenDialog: boolean,
   labels: any,
+  quantity: number,
 };
 
 export class AddedToBagContainer extends React.Component<Props> {
@@ -24,13 +25,14 @@ export class AddedToBagContainer extends React.Component<Props> {
   }
 
   render() {
-    const { addedToBagData, isOpenDialog, labels } = this.props;
+    const { addedToBagData, isOpenDialog, labels, quantity } = this.props;
     return (
       <AddedToBag
         openState={isOpenDialog}
         onRequestClose={this.closeModal}
         addedToBagData={addedToBagData}
         labels={labels}
+        quantity={quantity}
       />
     );
   }
@@ -45,6 +47,8 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
 };
 
 const mapStateToProps = state => {
+  // ----------- commenting usage of labels as we are getting labels values from backend intermittently. ------------
+
   const {
     bag: {
       addedToBag: {
@@ -70,6 +74,7 @@ const mapStateToProps = state => {
   return {
     addedToBagData: getAddedToBagData(state),
     isOpenDialog: isOpenAddedToBag(state),
+    quantity: getQuantityValue(state),
     labels: {
       colorLabel,
       sizeLabel,

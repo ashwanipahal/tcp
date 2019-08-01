@@ -3,7 +3,7 @@
 exports[`LoginSection component should renders correctly 1`] = `
 <Styled(Row)>
   <Styled(Col)
-    className="elem-pt-XXL elem-ml-LRG elem-mr-LRG"
+    className="elem-pt-XXL elem-pl-LRG elem-pr-LRG"
     colSize={
       Object {
         "large": 12,
@@ -13,7 +13,7 @@ exports[`LoginSection component should renders correctly 1`] = `
     }
   >
     <Styled(LoginTopSection)
-      className="elem-mb-LRG"
+      className="elem-mb-LRG elem-pl-MED elem-pr-MED"
       labels={Object {}}
     />
     <ReduxForm
@@ -27,6 +27,7 @@ exports[`LoginSection component should renders correctly 1`] = `
       keepDirtyOnReinitialize={false}
       labels={Object {}}
       loginErrorMessage=""
+      onCreateAccountClick={[Function]}
       onSubmit={[Function]}
       persistentSubmitErrors={false}
       pure={true}

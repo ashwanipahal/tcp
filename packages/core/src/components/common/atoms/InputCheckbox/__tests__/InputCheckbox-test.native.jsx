@@ -8,7 +8,7 @@ describe('InputCheckbox component', () => {
     isChecked: false,
     onClick: jest.fn(),
     id: 'checkbox',
-    input: { val: '' },
+    input: { val: '', onChange: () => {} },
   };
 
   it('should render correctly', () => {

@@ -15,9 +15,17 @@ type Props = {
   className: string,
   addedToBagData: any,
   labels: any,
+  quantity: number,
 };
 
-const AddedToBag = ({ openState, onRequestClose, addedToBagData, className, labels }: Props) => {
+const AddedToBag = ({
+  openState,
+  onRequestClose,
+  addedToBagData,
+  className,
+  labels,
+  quantity,
+}: Props) => {
   return (
     <Modal
       fixedWidth
@@ -35,7 +43,7 @@ const AddedToBag = ({ openState, onRequestClose, addedToBagData, className, labe
       inheritedStyles={modalStyles}
     >
       <div className="addedToBagWrapper">
-        <ProductInformationView data={addedToBagData} labels={labels} />
+        <ProductInformationView data={addedToBagData} labels={labels} quantity={quantity} />
         <AddedToBagViewPoints labels={labels} className="added-to-bag-points" />
         <AddedToBagActions labels={labels} />
         <BossBannerView labels={labels} />

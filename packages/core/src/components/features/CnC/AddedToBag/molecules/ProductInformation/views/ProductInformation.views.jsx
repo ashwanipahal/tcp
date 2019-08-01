@@ -13,8 +13,9 @@ import ProductInformationStyle from '../styles/ProductInformation.style';
 type Props = {
   data: Object,
   labels: any,
+  quantity: String,
 };
-const ProductInformation = ({ data, labels }: Props) => {
+const ProductInformation = ({ data, labels, quantity }: Props) => {
   return (
     <ProductInformationStyle>
       <Row tagName="ul" className="product">
@@ -66,8 +67,7 @@ const ProductInformation = ({ data, labels }: Props) => {
               colSize={{ small: 2, medium: 3, large: 4 }}
             >
               <BodyCopy tag="span" fontSize="fs13" fontWeight={['semibold']} textAlign="left">
-                {data.isGiftCard === true ? `${labels.giftDesign}: ` : `${labels.colorLabel}`}
-                {':'}
+                {data.isGiftCard === true ? `${labels.giftDesign}: ` : `${labels.colorLabel}: `}
               </BodyCopy>
             </Col>
             <Col
@@ -95,8 +95,7 @@ const ProductInformation = ({ data, labels }: Props) => {
               colSize={{ small: 2, medium: 3, large: 4 }}
             >
               <BodyCopy tag="span" fontSize="fs13" fontWeight={['semibold']} textAlign="left">
-                {data.isGiftCard === true ? `${labels.giftValue}: ` : `${labels.sizeLabel}`}
-                {':'}
+                {data.isGiftCard === true ? `${labels.giftValue}: ` : `${labels.sizeLabel}: `}
               </BodyCopy>
             </Col>
             <Col tagName="li" key="product-title" colSize={{ small: 4, medium: 5, large: 8 }}>
@@ -137,7 +136,7 @@ const ProductInformation = ({ data, labels }: Props) => {
                 className="itemDesc"
                 dataLocator="addedtobag-productqty"
               >
-                {data.quantity}
+                {quantity || data.quantity}
               </BodyCopy>
             </Col>
           </Row>

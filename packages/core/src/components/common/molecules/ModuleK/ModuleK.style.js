@@ -18,9 +18,6 @@ const StyledCarousal = styled(Carousel)`
   .slick-dots {
     bottom: -10px;
   }
-  .slick-dots li button {
-    pointer-events: none;
-  }
 `;
 const StyledPromoTextBanner = styled(PromoTextBanner)`
   .style2 {
@@ -41,6 +38,7 @@ const StyledPromoTextBanner = styled(PromoTextBanner)`
 const StyledLinkText = styled(LinkText)`
   text-align: center;
   .link-text {
+    margin-bottom: 0;
     text-align: center;
   }
 `;
@@ -86,7 +84,6 @@ export {
 };
 
 export default {
-  Carousel: StyledCarousal,
   PromoTextBanner: StyledPromoTextBanner,
   LinkText: StyledLinkText,
   ImageGrid: StyledImageGrid,

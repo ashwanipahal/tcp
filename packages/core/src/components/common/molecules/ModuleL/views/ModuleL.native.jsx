@@ -13,6 +13,12 @@ import {
   ListContainer,
 } from '../ModuleL.styles.native';
 
+type Props = {
+  imageGrid: Array<Object>,
+  headerText: Array<Object>,
+  navigation: Object,
+};
+
 /**
  * To enable the anchorIcon.
  */
@@ -32,7 +38,7 @@ const keyExtractor = (_, index) => index.toString();
  * @return {node} function returns module L single element item.
  */
 
-const renderitem = item => {
+const renderItem = (item, navigation) => {
   const {
     item: { image, link },
   } = item;
@@ -60,9 +66,9 @@ const renderitem = item => {
             fontSizeVariation="xlarge"
             text={link.text}
             visible={anchorIcon}
-            onPress={() => {
-              UrlHandler(link.url);
-            }}
+            url={link.url}
+            navigation={navigation}
+            external={link.external}
           />
         </LinkContainer>
       </MessageContainer>
@@ -78,7 +84,7 @@ const renderitem = item => {
  */
 
 const ModuleL = (props: Props) => {
-  const { imageGrid, headerText } = props;
+  const { imageGrid, headerText, navigation } = props;
   return (
     <Container>
       <LinkText
@@ -95,7 +101,11 @@ const ModuleL = (props: Props) => {
         }}
       />
       <ListContainer>
-        <FlatList keyExtractor={keyExtractor} data={imageGrid} renderItem={renderitem} />
+        <FlatList
+          keyExtractor={keyExtractor}
+          data={imageGrid}
+          renderItem={item => renderItem(item, navigation)}
+        />
       </ListContainer>
     </Container>
   );
