@@ -63,10 +63,8 @@ const ModuleD = (props: Props) => {
         <LinkText
           headerText={headerText}
           headingClass="moduleD_header"
-          component="div"
-          fontSize={['fs32', 'fs48']}
-          lineHeight="lh107"
-          fontWeight="black"
+          component="h2"
+          type="heading"
           textAlign="center"
           dataLocator="moduleD_headerlink"
         />

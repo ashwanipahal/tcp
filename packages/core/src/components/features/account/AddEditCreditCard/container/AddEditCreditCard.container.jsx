@@ -12,8 +12,7 @@ import {
   getAddEditCreditCardError,
 } from './AddEditCreditCard.selectors';
 import constants from './AddEditCreditCard.constants';
-import labels from './AddEditCreditCard.labels';
-import addressLabels from '../../AddressBook/container/AddressBook.labels';
+import creditCardLabels from './AddEditCreditCard.labels';
 import AddEditCreditCardComponent from '../views/AddEditCreditCard.view';
 import { getAddressListState } from '../../AddressBook/container/AddressBook.selectors';
 import { addCreditCard, editCreditCard } from './AddEditCreditCard.actions';
@@ -33,6 +32,7 @@ export class AddEditCreditCard extends React.PureComponent {
     addCreditCardAction: PropTypes.func.isRequired,
     editCreditCardAction: PropTypes.func.isRequired,
     showSuccessNotification: PropTypes.func.isRequired,
+    labels: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -43,6 +43,7 @@ export class AddEditCreditCard extends React.PureComponent {
     addEditCreditCardSuccess: null,
     addEditCreditCardError: null,
     creditCard: null,
+    labels: {},
   };
 
   constructor(props) {
@@ -165,6 +166,7 @@ export class AddEditCreditCard extends React.PureComponent {
       addressList,
       isPLCCEnabled,
       addEditCreditCardError,
+      labels,
     } = this.props;
 
     if (addressList === null) {
@@ -183,11 +185,11 @@ export class AddEditCreditCard extends React.PureComponent {
         isPLCCEnabled={isPLCCEnabled}
         isExpirationRequired={isExpirationRequired}
         addressList={addressList}
-        labels={labels}
+        labels={creditCardLabels}
         expMonthOptionsMap={this.creditCardExpirationOptionMap.monthsMap}
         expYearOptionsMap={this.creditCardExpirationOptionMap.yearsMap}
         initialValues={initialValues}
-        addressLabels={addressLabels}
+        addressLabels={labels}
         backToPaymentClick={this.backToPaymentClick}
         onSubmit={this.onCreditCardFormSubmit}
         errorMessage={addEditCreditCardError}

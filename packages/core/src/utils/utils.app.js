@@ -149,7 +149,7 @@ export const navigateToPage = (url, navigation) => {
       /**
        * /c/* - If url starts with “/c” (* can be anything in url) → Select “CATEGORY_LANDING” tab in tabbar and Open CATEGORY_LANDING page
        */
-      return navigate('NavMenuLevel1');
+      return navigate('ProductLanding');
     default:
       return null;
   }
