@@ -167,3 +167,4 @@ export default reduxForm({
   enableReinitialize: true,
   ...validateMethod, // a unique identifier for this form
 })(withStyles(ForgotPasswordView, styles));
+export { ForgotPasswordView as ForgotPasswordViewVanilla };

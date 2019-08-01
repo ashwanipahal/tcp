@@ -2,7 +2,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { ForgotPasswordViewVanilla } from '../ForgotPassword.view';
+import { ForgotPasswordViewVanilla } from '../ForgotPassword.view.native';
+
+// const AddressValidationForm = ({ handleSubmit, pristine, reset, submitting }: Props): Node => (
 
 describe('ForgotPasswordView component', () => {
   it('should renders correctly', () => {
