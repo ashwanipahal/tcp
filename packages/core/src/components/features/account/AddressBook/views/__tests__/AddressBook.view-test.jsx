@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { List } from 'immutable';
-import { AAddressViewVanilla } from '../AddressView/views/Address.view';
+import { AddressViewVanilla } from '../AddressView/views/Address.view';
 
 describe('AddressBook component', () => {
   it('should renders correctly when addresses are not present', () => {
@@ -9,7 +9,7 @@ describe('AddressBook component', () => {
       addresses: new List(),
       labels: { addressBook: {}, common: {} },
     };
-    const component = shallow(<AAddressViewVanilla {...props} />);
+    const component = shallow(<AddressViewVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 
@@ -27,7 +27,7 @@ describe('AddressBook component', () => {
       ]),
       labels: { addressBook: {}, common: {} },
     };
-    const component = shallow(<AAddressViewVanilla {...props} />);
+    const component = shallow(<AddressViewVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });
