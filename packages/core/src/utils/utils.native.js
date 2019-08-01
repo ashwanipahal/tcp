@@ -1,4 +1,5 @@
-import { Dimensions, Linking } from 'react-native';
+import { Dimensions, Linking, AsyncStorage } from 'react-native';
+
 import icons from '../config/icons';
 import locators from '../config/locators';
 import { getStoreRef, resetStoreRef } from './store.utils';
@@ -244,4 +245,35 @@ export const getAPIConfig = () => {
     }
   }
   return apiConfig;
+};
+
+/**
+ * @function geValueFromAsyncStorage
+ * This method retrieves value for input key from asyncstorage
+ * @param key
+ *
+ * @returns: lastSplashAnimationDate
+ */
+export const geValueFromAsyncStorage = async key => {
+  try {
+    return await AsyncStorage.getItem(key);
+  } catch (error) {
+    // Error retrieving data
+    return null;
+  }
+};
+
+/**
+ * @function setValueInAsyncStorage
+ * This method saves last splash animation date in asyncstorage
+ * @param key: key to be saved
+ * @param value: value for key
+ *
+ */
+export const setValueInAsyncStorage = async (key, value) => {
+  try {
+    await AsyncStorage.setItem(key, value);
+  } catch (error) {
+    // Error saving data
+  }
 };

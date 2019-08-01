@@ -1,103 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Appsplash component test cases should match snapshot 1`] = `
-<AnimatedComponent
-  style={
-    Array [
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "none",
-        "bottom": 0,
-        "flex": 1,
-        "justifyContent": "center",
-        "left": 0,
-        "position": "absolute",
-        "right": 0,
-        "top": 0,
-      },
-      Object {
-        "zIndex": 1,
-      },
-    ]
-  }
+<View
+  appType="tcp"
+  justifyContent="center"
+  opacity={1}
+  zIndex={0}
 >
-  <AnimatedComponent
+  <Styled(ImageComp)
+    name="image"
     source={
       Object {
-        "testUri": "../../../src/assets/images/gymboree/gymboreeLaunchImage.png",
+        "testUri": "../../../src/assets/images/tcp/tcpLaunchImage.png",
       }
     }
-    style={
-      Array [
-        Object {
-          "backgroundColor": "white",
-          "borderColor": "rgba(240, 110, 35, 0.26)",
-          "borderRadius": 40,
-          "borderWidth": 2,
-          "bottom": 20,
-          "elevation": 0,
-          "height": 80,
-          "position": "absolute",
-          "shadowColor": "rgba(240, 110, 35, 0.26)",
-          "shadowOffset": Object {
-            "height": 0,
-            "width": 0,
-          },
-          "shadowOpacity": 9,
-          "width": 80,
-          "zIndex": 0,
-        },
-        Object {
-          "transform": Array [
-            Object {
-              "translateY": 0,
-            },
-          ],
-        },
-      ]
-    }
+    width={650}
   />
-  <AnimatedComponent
-    style={
-      Array [
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "white",
-          "bottom": 0,
-          "justifyContent": "center",
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-        },
-        Object {
-          "opacity": 1,
-        },
-      ]
-    }
-  >
-    <AnimatedComponent
-      source={
-        Object {
-          "testUri": "../../../src/assets/images/tcp/tcpLaunchImage.png",
-        }
-      }
-      style={
-        Object {
-          "transform": Array [
-            Object {
-              "translateY": 0,
-            },
-            Object {
-              "scaleX": 1,
-            },
-            Object {
-              "scaleY": 1,
-            },
-          ],
-        }
-      }
-    />
-  </AnimatedComponent>
-</AnimatedComponent>
+</View>
 `;

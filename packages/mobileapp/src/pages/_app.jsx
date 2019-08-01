@@ -7,6 +7,7 @@ import AppNavigator from '../navigation/AppNavigator';
 import AppSplash from '../navigation/AppSplash';
 
 import { initializeStore } from '../reduxStore/store/initializeStore';
+import { APP_TYPE } from '../components/common/hoc/ThemeWrapper.constants';
 
 const styles = StyleSheet.create({
   // eslint-disable-next-line react-native/no-color-literals
@@ -57,7 +58,7 @@ App.propTypes = {
 };
 
 App.defaultProps = {
-  appType: 'tcp',
+  appType: APP_TYPE.TCP,
 };
 
 export default App;

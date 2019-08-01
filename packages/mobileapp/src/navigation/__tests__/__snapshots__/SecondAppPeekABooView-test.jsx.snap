@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SecondAppPeekABooView component test cases should match snapshot 1`] = `
+<View
+  height={50}
+>
+  <Styled(View)
+    name="imageContainer"
+    shadowColor="#f7971f"
+  >
+    <Styled(ImageComp)
+      height="80px"
+      name="image"
+      source={
+        Object {
+          "testUri": "../../../src/assets/images/gymboree/gymboreePeekABoo.png",
+        }
+      }
+      width="100px"
+    />
+  </Styled(View)>
+</View>
+`;

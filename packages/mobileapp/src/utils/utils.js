@@ -1,7 +1,20 @@
-import icons from './icons';
+import moment from 'moment';
+import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
+import { setValueInAsyncStorage, geValueFromAsyncStorage } from '@tcp/core/src/utils/utils.native';
 
-let brandName = 'tcp';
-let toggleBrandIcon = true;
+import icons from './icons';
+import { APP_TYPE } from '../components/common/hoc/ThemeWrapper.constants';
+
+let brandName = APP_TYPE.TCP;
+
+// constants for last splash animation
+export const AppAnimationConfig = {
+  ANIMATION_REPEAT_DAYS: 30,
+  LAST_ANIMATION_DATE: 'LAST_ANIMATION_DATE',
+  PeekABooLogoMaxHeight: 120,
+  PeekABooLogoMinHeight: 50,
+  AnimationDelay: 1000,
+};
 
 /**
  * This function returns icon based on brand
@@ -50,16 +63,72 @@ export const getIcon = icon => {
   }
 };
 
+/**
+ * @function getAppSplashLogo
+ * This method retrieves current app splash logo
+ *
+ * @returns: appSplashLogo
+ */
+export const getAppSplashLogo = () => {
+  return icons[brandName].splash;
+};
+
+/**
+ * @function getSecondAppLogo
+ * This method retrieves second app logo
+ *
+ * @returns: secondAppLogo
+ */
+export const getSecondAppLogo = () => {
+  const { TCP, GYMBOREE } = APP_TYPE;
+  const secondBrand = brandName === TCP ? GYMBOREE : TCP;
+  return icons[secondBrand].peekABoo;
+};
+
+/**
+ * @function getSecondBrandThemeColor
+ * This method retrieves second app theme main color
+ *
+ * @returns: secondAppBrandColor
+ */
+export const getSecondBrandThemeColor = () => {
+  const colorPallete = createThemeColorPalette();
+  return brandName === APP_TYPE.TCP ? colorPallete.orange[800] : colorPallete.primary.light;
+};
+
+/**
+ * @function updateBrandName
+ * This method saves brand name locally
+ *
+ */
 export const updateBrandName = appType => {
   brandName = appType;
 };
 
-export const updateToggleBrandIcon = () => {
-  toggleBrandIcon = !toggleBrandIcon;
+/**
+ * @function updateLastSplashAnimationDate
+ * This method saves last splash animation date in asyncstorage
+ *
+ */
+export const updateLastSplashAnimationDate = async () => {
+  setValueInAsyncStorage(AppAnimationConfig.LAST_ANIMATION_DATE, moment());
 };
 
-export const shouldToggleBrandIcon = () => {
-  return toggleBrandIcon;
+/**
+ * @function: shouldAnimateLogo
+ * This method checks if last animation date has past 30 days
+ * @returns if last animation date has past 30 days, returns true
+ * else returns false
+ *
+ * @returns
+ */
+export const shouldAnimateLogo = async () => {
+  const today = moment();
+  const { LAST_ANIMATION_DATE, ANIMATION_REPEAT_DAYS } = AppAnimationConfig;
+  const lastAnimationDate = await geValueFromAsyncStorage(LAST_ANIMATION_DATE);
+  const isLastAnimationDiffValid =
+    today.diff(moment(lastAnimationDate), 'days') >= ANIMATION_REPEAT_DAYS;
+  return lastAnimationDate ? isLastAnimationDiffValid : true;
 };
 
 export default {

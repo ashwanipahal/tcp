@@ -1,40 +1,16 @@
-const SplashStyles = {
-  container: {
-    backgroundColor: 'none',
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-  },
-  secondImageStyle: {
-    width: 80,
-    height: 80,
-    position: 'absolute',
-    bottom: 20,
-    zIndex: 0,
-    backgroundColor: 'white',
-    shadowOffset: { width: 0, height: 0 },
-    shadowColor: 'rgba(240, 110, 35, 0.26)',
-    shadowOpacity: 9.0,
-    borderColor: 'rgba(240, 110, 35, 0.26)',
-    borderRadius: 40,
-    borderWidth: 2,
-    elevation: 0,
-  },
-  splashImageContainer: {
-    backgroundColor: 'white',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-};
+import { css } from 'styled-components/native';
+
+const SplashStyles = css`
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  ${props =>
+    `background-color: ${props.theme.colors.WHITE}
+  `};
+`;
 
 export default SplashStyles;

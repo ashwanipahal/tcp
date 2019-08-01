@@ -36,7 +36,8 @@
     "reselect": "^4.0.0",
     "styled-components": "^4.2.1",
     "superagent-jsonp": "^0.2.1",
-    "superagent": "^5.0.8"
+    "superagent": "^5.0.8",
+    "moment": "^2.24.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -104,7 +105,9 @@
       "**/react-native-vector-icons",
       "**/react-native-vector-icons/**",
       "**/redux-form",
-      "**/redux-form/**"
+      "**/redux-form/**",
+      "**/moment",
+      "**/moment/**"
     ]
   }
 }
