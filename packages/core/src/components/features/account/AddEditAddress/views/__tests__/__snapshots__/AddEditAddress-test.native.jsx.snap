@@ -1,98 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AddEditAddress Native should render correctly 1`] = `
-<StyledNativeComponent
-  asyncBlurFields={
-    Array [
-      "signup",
-    ]
-  }
-  destroyOnUnmount={true}
-  enableReinitialize={false}
-  forceUnregisterOnUnmount={false}
-  form="AddressBookForm"
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "asyncBlurFields": Array [
-          "signup",
-        ],
-        "destroyOnUnmount": true,
-        "enableReinitialize": false,
-        "forceUnregisterOnUnmount": false,
-        "form": "AddressBookForm",
-        "getFormState": [Function],
-        "initialValues": Object {
-          "signup": "",
-        },
-        "keepDirtyOnReinitialize": false,
-        "persistentSubmitErrors": false,
-        "pure": true,
-        "shouldAsyncValidate": [Function],
-        "shouldError": [Function],
-        "shouldValidate": [Function],
-        "shouldWarn": [Function],
-        "submitAsSideEffect": false,
-        "touchOnBlur": true,
-        "touchOnChange": false,
-        "updateUnregisteredFields": false,
-      },
-      "attrs": Array [],
-      "displayName": "Styled(ReduxForm)",
-      "inlineStyle": InlineStyle {
-        "rules": Array [
-          "
-    ",
-          "
-  margin-bottom: 120px;
-",
-          ";
-  ",
-        ],
-      },
-      "render": [Function],
-      "styledComponentId": "StyledNativeComponent",
-      "target": Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "defaultProps": Object {
-          "asyncBlurFields": Array [
-            "signup",
-          ],
-          "destroyOnUnmount": true,
-          "enableReinitialize": false,
-          "forceUnregisterOnUnmount": false,
-          "form": "AddressBookForm",
-          "getFormState": [Function],
-          "initialValues": Object {
-            "signup": "",
-          },
-          "keepDirtyOnReinitialize": false,
-          "persistentSubmitErrors": false,
-          "pure": true,
-          "shouldAsyncValidate": [Function],
-          "shouldError": [Function],
-          "shouldValidate": [Function],
-          "shouldWarn": [Function],
-          "submitAsSideEffect": false,
-          "touchOnBlur": true,
-          "touchOnChange": false,
-          "updateUnregisteredFields": false,
-        },
-        "displayName": "ReduxForm",
-        "render": [Function],
-      },
-      "withComponent": [Function],
-    }
-  }
-  forwardedRef={null}
-  getFormState={[Function]}
-  initialValues={
-    Object {
-      "signup": "",
-    }
-  }
-  keepDirtyOnReinitialize={false}
+<View
   labels={
     Object {
       "acc_label_verify_your_address_AE09": "There may be an issue with your address as entered. Please double check it, or if you believe the address is correct you can continue to the next step.",
@@ -146,15 +55,134 @@ exports[`AddEditAddress Native should render correctly 1`] = `
       "successMessage": "Your account has been updated",
     }
   }
-  persistentSubmitErrors={false}
-  pure={true}
-  shouldAsyncValidate={[Function]}
-  shouldError={[Function]}
-  shouldValidate={[Function]}
-  shouldWarn={[Function]}
-  submitAsSideEffect={false}
-  touchOnBlur={true}
-  touchOnChange={false}
-  updateUnregisteredFields={false}
-/>
+>
+  <ScrollViewMock
+    showsVerticalScrollIndicator={false}
+  >
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        fontSize="fs16"
+        fontWeight="extrabold"
+        text="Add New Shipping Address"
+      />
+    </Styled(Text)>
+    <Styled(View) />
+    <Styled(View)>
+      <Field
+        component={[Function]}
+        dataLocator="email_address_field"
+        id="signup"
+        maxLength={50}
+        name="signup"
+        type="text"
+      />
+      <Field
+        component={[Function]}
+        dataLocator="email_address_field"
+        id="signup"
+        maxLength={50}
+        name="signup"
+        type="text"
+      />
+      <Field
+        component={[Function]}
+        dataLocator="email_address_field"
+        id="signup"
+        maxLength={50}
+        name="signup"
+        type="text"
+      />
+      <Field
+        component={[Function]}
+        dataLocator="email_address_field"
+        id="signup"
+        maxLength={50}
+        name="signup"
+        type="text"
+      />
+      <Styled(View)>
+        <GooglePlacesInput
+          text="City"
+        />
+        <Styled(View) />
+      </Styled(View)>
+      <Styled(View)>
+        <TextInput
+          allowFontScaling={true}
+          placeholder="State"
+          rejectResponderTermination={true}
+          underlineColorAndroid="transparent"
+        />
+        <Styled(View) />
+      </Styled(View)>
+      <Styled(View)>
+        <TextInput
+          allowFontScaling={true}
+          placeholder="Zip Code"
+          rejectResponderTermination={true}
+          underlineColorAndroid="transparent"
+        />
+        <Styled(View) />
+      </Styled(View)>
+      <Field
+        component={[Function]}
+        dataLocator="email_address_field"
+        id="signup"
+        maxLength={50}
+        name="signup"
+        type="text"
+      />
+      <Field
+        component={[Function]}
+        dataLocator="email_address_field"
+        id="signup"
+        maxLength={50}
+        name="signup"
+        type="text"
+      />
+      <Field
+        component={[Function]}
+        dataLocator="setDefaultAddress"
+        disabled={false}
+        marginTop={13}
+        name="setDefaultAddress"
+        onClick={[Function]}
+        rightText="Set as default shipping address"
+      />
+    </Styled(View)>
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      customStyle={Object {}}
+      fill="BLUE"
+      fullWidth=""
+      style={
+        Object {
+          "color": "white",
+          "fontWeight": "normal",
+          "marginTop": 48,
+          "opacity": 0.5,
+        }
+      }
+      text="ADD ADDRESS"
+      type="submit"
+      url=""
+    />
+    <Styled(View) />
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      customStyle={Object {}}
+      fill="WHITE"
+      fullWidth=""
+      style={
+        Object {
+          "fontWeight": "normal",
+          "opacity": 0.5,
+        }
+      }
+      text="CANCEL"
+      type="submit"
+      url=""
+    />
+  </ScrollViewMock>
+</View>
 `;
