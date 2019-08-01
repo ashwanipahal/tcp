@@ -6,6 +6,8 @@ const getColorCode = props => {
     : props.theme.colorPalette[props.color.tint];
 };
 
+const iconSpacing = '15px';
+
 const StyledModal = css`
   position: absolute;
   margin: auto;
@@ -54,10 +56,10 @@ const StyledModal = css`
     border: none;
     cursor: pointer;
     position: absolute;
-    right: 15px;
-    top: 15px;
-    height: 15px;
-    width: 15px;
+    right: ${iconSpacing};
+    top: ${iconSpacing};
+    height: ${iconSpacing};
+    width: ${iconSpacing};
   }
 `;
 
