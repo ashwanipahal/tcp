@@ -31,7 +31,6 @@ export const Tile = styled.View`
     props.tileIndex % 2 === 0
       ? `margin-right: ${props.theme.spacing.ELEM_SPACING.XS}`
       : `margin-left: ${props.theme.spacing.ELEM_SPACING.XS}`};
-  width: 50%;
 `;
 
 export default {

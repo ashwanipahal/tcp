@@ -95,4 +95,16 @@ describe('Payment Reducer', () => {
       })
     ).toEqual(updatedState);
   });
+  it('should return payment banner rich text', () => {
+    const initialState = fromJS({});
+    const updatedState = initialState.set('paymentBannerRichText', '<div></div>');
+    expect(
+      PaymentReducer(initialState, {
+        type: PAYMENT_CONSTANTS.SET_MODULEX_CONTENT,
+        payload: {
+          richText: '<div></div>',
+        },
+      })
+    ).toEqual(updatedState);
+  });
 });
