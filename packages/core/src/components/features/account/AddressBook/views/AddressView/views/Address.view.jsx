@@ -145,3 +145,4 @@ export class AddressView extends React.PureComponent<Props> {
   }
 }
 export default withStyles(AddressView, styles);
+export { AddressView as AAddressViewVanilla };
