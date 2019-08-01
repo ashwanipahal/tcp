@@ -3,7 +3,7 @@
 exports[`LoginSection component should renders correctly 1`] = `
 <Styled(Row)>
   <Styled(Col)
-    className="elem-pt-XXL"
+    className="elem-pt-XXL  elem-pl-LRG elem-pr-LRG"
     colSize={
       Object {
         "large": 12,
@@ -44,7 +44,7 @@ exports[`LoginSection component should renders correctly 1`] = `
       validate={[Function]}
     />
     <Styled(BodyCopy)
-      className="border elem-pt-LRG"
+      className="border elem-pt-MED elem-pb-LRG"
       color="text.primary"
       component="div"
       fontFamily="primary"
@@ -65,14 +65,15 @@ exports[`LoginSection component should renders correctly 1`] = `
         lineHeight="normal"
         textAlign="center"
       />
-      <Styled(Button)
-        buttonVariation="fixed-width"
-        className="create-acc-cta"
-        data-locator=""
-        fill="BLUE"
-        type="submit"
-      />
     </Styled(BodyCopy)>
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="create-acc-cta"
+      data-locator=""
+      fill="BLUE"
+      onClick={[Function]}
+      type="submit"
+    />
   </Styled(Col)>
 </Styled(Row)>
 `;
