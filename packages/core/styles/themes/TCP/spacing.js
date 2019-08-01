@@ -32,6 +32,7 @@ export default {
     LRG: '64px',
     XL: '96px',
     XXL: '160px',
+    XXXL: '320px',
   },
   MODAL_WIDTH: {
     SMALL: '458px',
