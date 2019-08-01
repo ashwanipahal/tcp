@@ -5,15 +5,15 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
   labels={Object {}}
 >
   <Styled(ImageComp)
-    customStyle={
-      Object {
-        "alignSelf": "center",
-      }
-    }
     height={60}
     source={
       Object {
         "testUri": "../../../../core/src/assets/my-place-rewards.png",
+      }
+    }
+    style={
+      Object {
+        "alignSelf": "center",
       }
     }
     width={186}

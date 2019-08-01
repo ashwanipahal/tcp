@@ -17,6 +17,19 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
   onRequestClose={[Function]}
   overlayClassName="TCPModal__Overlay"
 >
+  <Styled(Text)>
+    <Styled(BodyCopy)
+      color="black"
+      fontSize="fs16"
+      fontWeight="semibold"
+      mobilefontFamily={
+        Array [
+          "secondary",
+        ]
+      }
+      text=""
+    />
+  </Styled(Text)>
   <Styled(View)>
     <Styled(ProductInformation)
       data={Object {}}

@@ -21,7 +21,7 @@ class LoginPageContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
     const { isUserLoggedIn, closeOverlay } = this.props;
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
-      if (isMobileApp) {
+      if (isMobileApp()) {
         const { navigation } = this.props;
         navigateToNestedRoute(navigation, 'HomeStack', 'home');
       } else {
@@ -91,7 +91,6 @@ LoginPageContainer.defaultProps = {
 function mapDispatchToProps(dispatch) {
   return {
     onSubmit: payload => {
-      console.log('payload: ', payload);
       dispatch(login(payload));
     },
     resetLoginState: () => {

@@ -22,7 +22,7 @@ const LoginTopSection = props => {
   const imgStyle = { alignSelf: 'center' };
   return (
     <View {...props}>
-      <ImageComp source={TheMarketPlaceLogo} width={186} height={60} customStyle={imgStyle} />
+      <ImageComp source={TheMarketPlaceLogo} width={186} height={60} style={imgStyle} />
       <LineComp marginTop={30} marginBottom={17} />
       <HeadingStyle>{labels.ACC_LBL_LOGIN_HEADING}</HeadingStyle>
       <SubHeadingStyle>{labels.ACC_LBL_LOGIN_SUB_HEADING}</SubHeadingStyle>

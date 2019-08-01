@@ -9,20 +9,17 @@ type Props = {
   source: string,
   url: string,
   crop: string,
-  customStyle: Object,
 };
 
 const ImageComp = (props: Props) => {
-  const { url, crop, source, customStyle, ...otherProps } = props;
+  const { url, crop, source, ...otherProps } = props;
   const cropVal = crop || '';
   const urlVal = url || '';
   const sourceVal = source || '';
   if (sourceVal === '') {
-    return (
-      <Image {...otherProps} {...customStyle} source={{ uri: cropImageUrl(urlVal, cropVal) }} />
-    );
+    return <Image {...otherProps} source={{ uri: cropImageUrl(urlVal, cropVal) }} />;
   }
-  return <Image {...otherProps} source={source} {...customStyle} />;
+  return <Image {...otherProps} source={source} />;
 };
 
 export default withStyles(ImageComp, style);
