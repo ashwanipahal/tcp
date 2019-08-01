@@ -64,8 +64,13 @@ export const formValidationMessages = {
   },
   giftCardNumber: 'Please enter a valid gift card number',
   cardPin: 'Please enter your gift card pin number',
+
+  Email: {
+    required: `Please enter a valid email`,
+    validEmail: 'Email format is invalid',
+  },
   emailAddress: {
-    required: 'Please enter a valid email',
+    required: `Please enter a valid email`,
     emailPattern: 'Email format is invalid',
   },
   confirmEmailAddress: {
@@ -81,7 +86,7 @@ export const formValidationMessages = {
     equalTo: 'Passwords must match',
   },
   emailAddressNoAsync: {
-    required: 'Please enter a valid email',
+    required: `Please enter a valid email`,
     email: 'Email format is invalid.',
   },
 };
@@ -168,6 +173,10 @@ export const formValidationRules = {
     required: true,
     number: true,
     exactLength: 4,
+  },
+  Email: {
+    required: true,
+    validEmail: true,
   },
   emailAddress: {
     required: true,

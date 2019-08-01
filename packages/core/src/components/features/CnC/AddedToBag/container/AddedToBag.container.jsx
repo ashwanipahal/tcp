@@ -47,6 +47,8 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
 };
 
 const mapStateToProps = state => {
+  // ----------- commenting usage of labels as we are getting labels values from backend intermittently. ------------
+
   const {
     bag: {
       addedToBag: {

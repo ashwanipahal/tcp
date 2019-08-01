@@ -39,10 +39,6 @@ export default css`
     text-align: right;
   }
 
-  .textCenter {
-    text-align: center;
-  }
-
   &.focus-styling {
     &:focus {
       outline: 1px dashed black;
@@ -111,6 +107,7 @@ export default css`
     list-style-type: none;
   }
 
+  h2,
   p {
     margin: 0;
   }
