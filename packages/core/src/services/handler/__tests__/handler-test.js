@@ -3,7 +3,7 @@ import ModuleDMock from '../../abstractors/common/moduleD/mock';
 import QueryBuilder from '../graphQL/queries/queryBuilder';
 import { fetchModuleDataFromGraphQL, executeGraphQLQuery } from '../handler';
 
-jest.mock('../../../utils');
+jest.mock('../../../utils/utils.web');
 jest.mock('../graphQL/graphQLClient');
 jest.mock('../graphQL/queries/queryBuilder');
 
