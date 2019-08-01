@@ -4,7 +4,7 @@ const getPageStyle = props => {
   const { theme } = props;
   return `
  margin: auto  ${theme.spacing.APP_LAYOUT_SPACING.XS};
-  justify-content: ${'center'};
+  justify-content: center;
 
   `;
 };

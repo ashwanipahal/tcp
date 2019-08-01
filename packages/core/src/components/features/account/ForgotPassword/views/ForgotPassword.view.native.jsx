@@ -31,6 +31,8 @@ class ForgotPasswordView extends React.Component<Props> {
     };
   }
 
+  // Form submit user will submit the form with email id with right format else formsubmit will not trigger
+  //  due to ( redux form )
   onFormSubmit = formData => {
     const { SubmitForgot } = this.props;
     SubmitForgot({
@@ -38,12 +40,14 @@ class ForgotPasswordView extends React.Component<Props> {
     });
   };
 
+  // onclick back button user will redirect to the login page
   onBackClick = () => {
     const { showForgotPasswordForm, resetLoginState } = this.props;
     resetLoginState();
     showForgotPasswordForm();
   };
 
+  // inital state of forgot password reset email form
   showResetEmailSection = () => {
     const { labels, handleSubmit } = this.props;
     const { email } = this.state;
@@ -72,6 +76,7 @@ class ForgotPasswordView extends React.Component<Props> {
     );
   };
 
+  // section visible if user will get the email successfully
   showSuccessullEmail = () => {
     const { labels } = this.props;
     return (
