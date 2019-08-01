@@ -1,8 +1,7 @@
 // @flow
 import React from 'react';
 import { Col, Row, Button, BodyCopy, Anchor } from '../../../atoms';
-import { Carousel } from '../..';
-import { PromoTextBanner, LinkText, ImageGrid, style } from '../ModuleK.style';
+import { Carousel, PromoTextBanner, LinkText, ImageGrid, style } from '../ModuleK.style';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/errorBoundary';
 import config from '../config';
@@ -21,7 +20,7 @@ type State = {
 };
 
 /**
- * @class ModuleH - global reusable component will provide featured content module
+ * @class ModuleK - global reusable component will provide featured content module
  * with a composite background image and 2-6 CTAs
  * This component is plug and play at any given slot in layout by passing required data
  * @param {composites} composites the list of data for header texts, links and images for component
@@ -57,11 +56,10 @@ class ModuleK extends React.PureComponent<Props, State> {
             {headerText && (
               <LinkText
                 headerText={headerText}
-                component="div"
-                fontSize={['fs36', 'fs36', 'fs48']}
-                lineHeight="lh107"
-                fontWeight="black"
+                component="h2"
+                type="heading"
                 dataLocator="moduleK_header_text"
+                inheritedStyles={LinkText}
               />
             )}
           </Col>
@@ -107,6 +105,7 @@ class ModuleK extends React.PureComponent<Props, State> {
                 dataLocatorPause: 'moduleK_pause_button',
                 customArrowLeft: getIconPath('carousel-big-carrot'),
                 customArrowRight: getIconPath('carousel-big-carrot'),
+                inheritedStyles: Carousel,
               }}
             >
               {masonryGrid.map(({ promoTextBanner, mediaList, singleCTAButton }, index) => {

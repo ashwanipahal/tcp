@@ -31,46 +31,9 @@ let CreateAccountForm = ({
   handleSubmit,
 }: Props) => {
   return (
-    <div className="parent-wrapper">
+    <div>
       <form onSubmit={handleSubmit}>
         <Row fullBleed className="row-form-wrapper">
-          <Col
-            className="banner padding-left-right-15"
-            ignoreGutter={{ small: true }}
-            colSize={{ small: 6 }}
-          >
-            <div className="img-parent align-center">
-              <div className="my-rewards-img-wrapper">
-                <Image className="tcp_carousel__play" src={getIconPath('my-place-rewards')} />
-              </div>
-            </div>
-          </Col>
-          <Col
-            className="labels padding-left-right-15"
-            ignoreGutter={{ small: true }}
-            colSize={{ small: 6 }}
-          >
-            <div className="labels-wrapper">
-              <div className="elem-pb-XS">
-                <span>{labels.CREATE_ACC_LBL_CREATE_A}</span>
-                <span>{labels.CREATE_ACC_LBL_MY_PLACE_REWARDS}</span>
-                <span>{labels.CREATE_ACC_LBL_EARN_POINTS}</span>
-              </div>
-              <div className="elem-pb-XS">
-                <p>{labels.CREATE_ACC_LBL_SPEND_POINT}</p>
-                <p>{labels.CREATE_ACC_LBL_POINT_REWARD}</p>
-              </div>
-              <div>
-                <p>{labels.CREATE_ACC_LBL_SIGNED_UP}</p>
-                <p>{labels.CREATE_ACC_LBL_ONLINE_ACC_CREATED}</p>
-                <div className="reset-pwd">
-                  <Anchor className="reset-password" to="" target="">
-                    {labels.CREATE_ACC_LBL_RESET_PWD}
-                  </Anchor>
-                </div>
-              </div>
-            </div>
-          </Col>
           <Col className="elem-pt-XXL" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
               placeholder="First Name"
@@ -133,7 +96,7 @@ let CreateAccountForm = ({
               component={TextBox}
               dataLocator="password-field"
             />
-            <span className="show-hide-icons">
+            <span className="hide-show show-hide-icons">
               <span className="info-icon-img-wrapper">
                 <Image className="tcp_carousel__play" src={getIconPath('info-icon')} />
               </span>
@@ -164,7 +127,7 @@ let CreateAccountForm = ({
               component={TextBox}
               dataLocator="confirm-Password-field"
             />
-            <span className="confirm-pwd-hide-show">
+            <span className="hide-show confirm-pwd-hide-show">
               <Col
                 className="checkbox-hide-show"
                 ignoreGutter={{ small: true }}
@@ -236,9 +199,7 @@ let CreateAccountForm = ({
             colSize={{ small: 6 }}
             className="already-account align-center"
           >
-            <Anchor className="moduleD_textlink" to="v" target="d">
-              {labels.CREATE_ACC_LBL_ALREADY_ACCOUNT}
-            </Anchor>
+            <Anchor>{labels.CREATE_ACC_LBL_ALREADY_ACCOUNT}</Anchor>
           </Col>
         </Row>
       </form>

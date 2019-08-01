@@ -14,7 +14,7 @@ type Props = {
   singleCTAButton: Object,
 };
 
-const imageSize = parseInt((getScreenWidth() - 32) / 2, 10);
+const imageSize = parseInt((getScreenWidth() - 48) / 2, 10);
 const keyExtractor = (_, index) => index.toString();
 
 /**

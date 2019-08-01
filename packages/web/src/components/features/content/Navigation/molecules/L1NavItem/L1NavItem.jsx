@@ -6,7 +6,11 @@ import { getViewportInfo } from '@tcp/core/src/utils';
 import PromoBadge from '../PromoBadge';
 import style from './L1NavItem.style';
 
-const handleClick = onClick => e => {
+/**
+ * This function handles if navigation drawer needs to open on current viewport or now
+ * @param {*} onClick
+ */
+const openNavigationDrawer = onClick => e => {
   e.preventDefault();
   if (!getViewportInfo().isDesktop) {
     onClick();
@@ -41,8 +45,8 @@ const L1NavItem = props => {
       >
         <div
           className="nav-bar-l1-content"
-          onClick={handleClick(onClick)}
-          onKeyDown={handleClick(onClick)}
+          onClick={openNavigationDrawer(onClick)}
+          onKeyDown={openNavigationDrawer(onClick)}
           role="button"
           tabIndex={0}
         >

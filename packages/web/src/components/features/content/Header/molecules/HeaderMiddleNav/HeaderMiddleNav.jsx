@@ -23,7 +23,6 @@ const handleNavigationDrawer = (openNavigationDrawer, closeNavigationDrawer, isO
 const onLinkClick = ({ e, openOverlay }) => {
   e.preventDefault();
   openOverlay({
-    e,
     component: e.target.id,
     variation: 'primary',
   });
@@ -78,7 +77,7 @@ const HeaderMiddleNav = props => {
             medium: 8,
             small: 6,
           }}
-          className="hide-on-mobile hide-on-tablet"
+          className="textRight"
         >
           {userName ? (
             <BodyCopy textAlign="right">{`Hi, ${userName}`}</BodyCopy>

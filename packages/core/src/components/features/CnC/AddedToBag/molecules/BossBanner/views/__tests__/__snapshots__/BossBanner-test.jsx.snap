@@ -35,7 +35,13 @@ exports[`BossBannerView component renders correctly 1`] = `
           tag="span"
           textAlign="center"
         >
-          PICK UP IN STORE AND SAVE AN EXTRA 5%
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<span className=\\"spanNoRush\\">PICK UP IN STORE AND SAVE AN EXTRA 5%</span>",
+              }
+            }
+          />
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>

@@ -7,6 +7,10 @@ import endpoints from '../../../../../service/endpoint';
 
 const errorLabel = 'Error in API';
 
+const notIsLocalHost = siteOrigin => {
+  return siteOrigin.indexOf('local') === -1;
+};
+
 export function* loginSaga({ payload }) {
   try {
     const response = yield call(login, payload);
@@ -39,7 +43,11 @@ export function* getUserInfoSaga() {
 function* getUserInfoPOCSaga() {
   try {
     const { relURI, method } = endpoints.registeredUserInfoPOC;
-    const baseURI = endpoints.registeredUserInfoPOC.baseURI || endpoints.global.baseURI;
+    const siteOrigin = window && window.location && window.location.origin;
+    const baseURI = notIsLocalHost(siteOrigin)
+      ? siteOrigin
+      : endpoints.registeredUserInfoPOC.baseURI || endpoints.global.baseURI;
+
     const res = yield call(
       fetchData,
       baseURI,
@@ -61,7 +69,11 @@ function* getUserInfoPOCSaga() {
 function* getOrderDetailSaga() {
   try {
     const { relURI, method } = endpoints.getOrderDetails;
-    const baseURI = endpoints.getOrderDetails.baseURI || endpoints.global.baseURI;
+    const siteOrigin = window && window.location && window.location.origin;
+    const baseURI = notIsLocalHost(siteOrigin)
+      ? siteOrigin
+      : endpoints.getOrderDetails.baseURI || endpoints.global.baseURI;
+
     const res = yield call(
       fetchData,
       baseURI,

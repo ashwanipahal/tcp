@@ -34,7 +34,7 @@ describe('AddressVerification component', () => {
         userAddress,
         suggestedAddress: userAddress,
         verificationResult: '',
-        labels: {},
+        labels: { addressBook: {}, common: {} },
         onSuccess: onSuccessSpy,
         resetVerifyAddressAction: resetVerifyAddressActionSpy,
       };
@@ -70,7 +70,7 @@ describe('AddressVerification component', () => {
         userAddress,
         suggestedAddress,
         verificationResult: '',
-        labels: {},
+        labels: { addressBook: {}, common: {} },
         onSuccess: onSuccessSpy,
         resetVerifyAddressAction: resetVerifyAddressActionSpy,
       };
@@ -102,7 +102,7 @@ describe('AddressVerification component', () => {
         userAddress,
         suggestedAddress,
         verificationResult: '',
-        labels: {},
+        labels: { addressBook: {}, common: {} },
         onSuccess: onSuccessSpy,
         resetVerifyAddressAction: resetVerifyAddressActionSpy,
       };
@@ -133,7 +133,7 @@ describe('AddressVerification component', () => {
         heading,
         userAddress,
         verificationResult: '',
-        labels: {},
+        labels: { addressBook: {}, common: {} },
         onSuccess: onSuccessSpy,
         resetVerifyAddressAction: resetVerifyAddressActionSpy,
       };

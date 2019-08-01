@@ -9,9 +9,7 @@ exports[`AddressBook component should renders correctly when errors are present 
     data-locator="addnewaddress-back"
     fontSizeVariation="xlarge"
     to="/account?id=address-book"
-  >
-    Back
-  </Styled(Anchor)>
+  />
   <Styled(HeadingStyle)
     HeadingLarge="six"
     className="addAddress__separator"
@@ -20,7 +18,12 @@ exports[`AddressBook component should renders correctly when errors are present 
   />
   <Styled(Grid)>
     <Connect(Styled(AddressVerification))
-      labels={Object {}}
+      labels={
+        Object {
+          "addressBook": Object {},
+          "common": Object {},
+        }
+      }
     />
     <ReduxForm
       destroyOnUnmount={true}
@@ -32,7 +35,12 @@ exports[`AddressBook component should renders correctly when errors are present 
       isEdit={false}
       isMakeDefaultDisabled={false}
       keepDirtyOnReinitialize={false}
-      labels={Object {}}
+      labels={
+        Object {
+          "addressBook": Object {},
+          "common": Object {},
+        }
+      }
       persistentSubmitErrors={false}
       pure={true}
       shouldAsyncValidate={[Function]}
@@ -58,9 +66,7 @@ exports[`AddressBook component should renders correctly without any error 1`] = 
     data-locator="addnewaddress-back"
     fontSizeVariation="xlarge"
     to="/account?id=address-book"
-  >
-    Back
-  </Styled(Anchor)>
+  />
   <Styled(HeadingStyle)
     HeadingLarge="six"
     className="addAddress__separator"
@@ -69,7 +75,12 @@ exports[`AddressBook component should renders correctly without any error 1`] = 
   />
   <Styled(Grid)>
     <Connect(Styled(AddressVerification))
-      labels={Object {}}
+      labels={
+        Object {
+          "addressBook": Object {},
+          "common": Object {},
+        }
+      }
     />
     <ReduxForm
       destroyOnUnmount={true}
@@ -81,7 +92,12 @@ exports[`AddressBook component should renders correctly without any error 1`] = 
       isEdit={false}
       isMakeDefaultDisabled={false}
       keepDirtyOnReinitialize={false}
-      labels={Object {}}
+      labels={
+        Object {
+          "addressBook": Object {},
+          "common": Object {},
+        }
+      }
       persistentSubmitErrors={false}
       pure={true}
       shouldAsyncValidate={[Function]}

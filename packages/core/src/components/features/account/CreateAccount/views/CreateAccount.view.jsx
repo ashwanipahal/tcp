@@ -9,6 +9,7 @@ type Props = {
   hideShowPwd: string,
   confirmHideShowPwd: string,
   labels: object,
+  error: any,
 };
 
 const CreateAccount = ({
@@ -18,6 +19,7 @@ const CreateAccount = ({
   hideShowPwd,
   confirmHideShowPwd,
   labels,
+  error,
 }: Props) => {
   return (
     <CreateAccounPage
@@ -27,6 +29,7 @@ const CreateAccount = ({
       isIAgreeChecked={isIAgreeChecked}
       hideShowPwd={hideShowPwd}
       confirmHideShowPwd={confirmHideShowPwd}
+      error={error}
     />
   );
 };
