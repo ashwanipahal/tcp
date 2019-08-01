@@ -36,6 +36,31 @@ const getHeadingStyle = props => {
   `;
 };
 
+const ForgotHeading = props => {
+  const { theme } = props;
+  const { typography } = theme;
+  return `
+  ${getTextBaseStyle};
+  font-weight: ${typography.fontWeights.semibold};
+  align-self: ${'center'};
+  font-size: ${typography.fontSizes.fs16};
+  padding:20px 0;
+  `;
+};
+
+const ForgotDescription = props => {
+  const { theme } = props;
+  const { typography } = theme;
+  return `
+  ${getTextBaseStyle};
+  font-weight: ${typography.fontWeights.semibold};
+  align-self: ${'center'};
+  font-size: ${typography.fontSizes.fs16};
+  padding:20px 0;
+  `;
+};
+
+
 const getSubHeadingStyle = props => {
   const { theme } = props;
   const { typography } = theme;
@@ -61,6 +86,14 @@ const getDescriptionStyle = props => {
 const HeadingStyle = styled.Text`
   ${getHeadingStyle}
 `;
+const ForgotHeadingStyle = styled.Text`
+  ${ForgotHeading}
+`;
+
+const ForgotDescriptionStyle = styled.Text`
+  ${ForgotDescription}
+`;
+
 const SubHeadingStyle = styled.Text`
   ${getSubHeadingStyle}
 `;
@@ -68,4 +101,4 @@ const DescriptionStyle = styled.Text`
   ${getDescriptionStyle}
 `;
 
-export { SectionStyle, HeadingStyle, SubHeadingStyle, DescriptionStyle };
+export { SectionStyle, HeadingStyle, SubHeadingStyle, DescriptionStyle, ForgotHeadingStyle , ForgotDescriptionStyle };

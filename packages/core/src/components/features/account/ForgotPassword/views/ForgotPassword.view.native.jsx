@@ -16,6 +16,8 @@ import Notification from '../../../../common/molecules/Notification/views/Notifi
 import {
   HeadingStyle,
   SubHeadingStyle,
+  ForgotHeadingStyle,
+  ForgotDescriptionStyle
 } from '../../LoginPage/molecules/LoginTopSection/LoginTopSection.style.native';
 
 // @flow
@@ -93,8 +95,8 @@ class ForgotPasswordView extends React.Component<Props, State> {
           )}
           {!successFullResetEmail && (
             <React.Fragment>
-              <HeadingStyle>{labels.FORGOT_PASSWORD_CONTENT_1}</HeadingStyle>
-              <SubHeadingStyle>{labels.FORGOT_PASSWORD_CONTENT_2}</SubHeadingStyle>
+              <ForgotHeadingStyle>{labels.FORGOT_PASSWORD_CONTENT_1}</ForgotHeadingStyle>
+              <ForgotDescriptionStyle>{labels.FORGOT_PASSWORD_CONTENT_2}</ForgotDescriptionStyle>
 
               <Field
                 label="Email Address"
