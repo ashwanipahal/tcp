@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
+import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import CustomButton from '../../../../../../common/atoms/Button';
 import LoginForm from '../../../molecules/LoginForm';
@@ -12,6 +13,7 @@ import {
   DescriptionStyle,
 } from '../../../molecules/LoginForm/LoginForm.style.native';
 
+const colorPallete = createThemeColorPalette();
 class LoginSection extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
@@ -48,7 +50,7 @@ class LoginSection extends React.PureComponent<Props> {
     const { resetPassword } = this.state;
     return (
       <View>
-        {!resetPassword && <LoginTopSection labels={labels} className="elem-mb-LRG" />}
+        {!resetPassword && <LoginTopSection labels={labels} />}
         {!resetPassword && (
           <LoginForm
             onSubmit={onSubmit}
@@ -58,7 +60,6 @@ class LoginSection extends React.PureComponent<Props> {
             showRecaptcha={showRecaptcha}
             showForgotPasswordForm={this.showForgotPassword}
             resetForm={resetForm}
-            className="elem-mb-LRG"
           />
         )}
 
@@ -81,7 +82,7 @@ class LoginSection extends React.PureComponent<Props> {
             <Text>{labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}</Text>
           </DescriptionStyle>
           <CustomButton
-            color="#FFFFFF"
+            color={colorPallete.white}
             fill="BLUE"
             type="submit"
             buttonVariation="variable-width"

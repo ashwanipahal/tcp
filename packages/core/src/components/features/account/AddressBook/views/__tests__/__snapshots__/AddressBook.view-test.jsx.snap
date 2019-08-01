@@ -8,7 +8,7 @@ exports[`AddressBook component should renders correctly when addresses are not p
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-kgoBCf",
+        "componentId": "sc-jzJRlG",
         "isStatic": false,
         "rules": Array [
           "
@@ -51,7 +51,7 @@ exports[`AddressBook component should renders correctly when addresses are not p
       "displayName": "Styled(AddressView)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-kgoBCf",
+      "styledComponentId": "sc-jzJRlG",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -90,7 +90,7 @@ exports[`AddressBook component should renders correctly when addresses are prese
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-kgoBCf",
+        "componentId": "sc-jzJRlG",
         "isStatic": false,
         "rules": Array [
           "
@@ -133,7 +133,7 @@ exports[`AddressBook component should renders correctly when addresses are prese
       "displayName": "Styled(AddressView)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-kgoBCf",
+      "styledComponentId": "sc-jzJRlG",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

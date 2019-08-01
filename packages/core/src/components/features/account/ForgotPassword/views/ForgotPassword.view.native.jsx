@@ -1,7 +1,9 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import {
   FormStyle,
   FormStyleView,
@@ -20,35 +22,14 @@ import getStandardConfig from '../../../../../utils/formValidation/validatorStan
 import Notification from '../../../../common/molecules/Notification/views/Notification.native';
 import LineComp from '../../../../common/atoms/Line';
 
-// @flow
-type Props = {
-  className: any,
-  SubmitForgot: Object => void,
-  showNotification: any,
-  showForgotPasswordForm: any,
-  resetForgotPasswordErrorResponse: any,
-  labels: any,
-  resetLoginState: any,
-  successFullResetEmail: any,
-  handleSubmit: string,
-};
-
-type State = {
-  country: string,
-};
-class ForgotPasswordView extends React.Component<Props, State> {
-  constructor(props: Props) {
+const colorPallete = createThemeColorPalette();
+class ForgotPasswordView extends React.Component<Props> {
+  constructor(props) {
     super(props);
     this.state = {
       email: '',
     };
   }
-
-  changeHandler = e => {
-    this.setState({
-      email: e.target.value,
-    });
-  };
 
   onFormSubmit = formData => {
     const { SubmitForgot } = this.props;
@@ -63,20 +44,63 @@ class ForgotPasswordView extends React.Component<Props, State> {
     showForgotPasswordForm();
   };
 
+  showResetEmailSection = () => {
+    const { labels, handleSubmit } = this.props;
+    const { email } = this.state;
+    return (
+      <React.Fragment>
+        <ForgotHeadingStyle>{labels.FORGOT_PASSWORD_CONTENT_1}</ForgotHeadingStyle>
+        <ForgotDescriptionStyle>{labels.FORGOT_PASSWORD_CONTENT_2}</ForgotDescriptionStyle>
+
+        <Field
+          label="Email Address"
+          name="Email"
+          id="Email"
+          type="Email"
+          component={TextBox}
+          value={email}
+        />
+        <CustomButton
+          color={colorPallete.white}
+          fill="BLUE"
+          text={labels.FORGOT_PASSWORD_RESET_PASSWORD}
+          buttonVariation="variable-width"
+          customStyle={styles.createAccountStyle}
+          onPress={handleSubmit(this.onFormSubmit)}
+        />
+      </React.Fragment>
+    );
+  };
+
+  showSuccessullEmail = () => {
+    const { labels } = this.props;
+    return (
+      <React.Fragment>
+        <HeadingStyle>{labels.FORGOT_PASSWORD_HEADING}</HeadingStyle>
+        <SubHeadingStyle>{labels.FORGOT_PASSWORD_HEADING}</SubHeadingStyle>
+        <CustomButton
+          color={colorPallete.white}
+          fill="BLUE"
+          text={labels.FORGOT_PASSWORD_RETURN_LOGIN}
+          buttonVariation="variable-width"
+          customStyle={styles.createAccountStyle}
+          onPress={this.onBackClick}
+        />
+      </React.Fragment>
+    );
+  };
+
   render() {
     const {
-      className,
       showNotification,
       resetForgotPasswordErrorResponse,
       labels,
-      handleSubmit,
       successFullResetEmail,
     } = this.props;
     const errorObject =
       resetForgotPasswordErrorResponse && resetForgotPasswordErrorResponse.get('errors');
-    const { email } = this.state;
     return (
-      <View className={className}>
+      <View>
         <FormStyleView>
           <FloatWrapper>
             <Anchor
@@ -99,51 +123,24 @@ class ForgotPasswordView extends React.Component<Props, State> {
               }
             />
           )}
-          {!successFullResetEmail && (
-            <React.Fragment>
-              <ForgotHeadingStyle>{labels.FORGOT_PASSWORD_CONTENT_1}</ForgotHeadingStyle>
-              <ForgotDescriptionStyle>{labels.FORGOT_PASSWORD_CONTENT_2}</ForgotDescriptionStyle>
-
-              <Field
-                label="Email Address"
-                name="Email"
-                id="Email"
-                type="Email"
-                component={TextBox}
-                value={email}
-                onChange={this.changeHandler}
-              />
-              <CustomButton
-                color="#FFFFFF"
-                fill="BLUE"
-                text={labels.FORGOT_PASSWORD_RESET_PASSWORD}
-                buttonVariation="variable-width"
-                customStyle={styles.createAccountStyle}
-                onPress={handleSubmit(this.onFormSubmit)}
-              />
-            </React.Fragment>
-          )}
-
-          {successFullResetEmail && (
-            <React.Fragment>
-              <HeadingStyle>{labels.FORGOT_PASSWORD_HEADING}</HeadingStyle>
-              <SubHeadingStyle>{labels.FORGOT_PASSWORD_HEADING}</SubHeadingStyle>
-              <CustomButton
-                color="#FFFFFF"
-                fill="BLUE"
-                text={labels.FORGOT_PASSWORD_RETURN_LOGIN}
-                buttonVariation="variable-width"
-                customStyle={styles.createAccountStyle}
-                onPress={this.onBackClick}
-              />
-            </React.Fragment>
-          )}
+          {successFullResetEmail ? this.showSuccessullEmail() : this.showResetEmailSection()}
           <LineComp marginTop={28} />
         </FormStyleView>
       </View>
     );
   }
 }
+
+ForgotPasswordView.propTypes = {
+  SubmitForgot: PropTypes.string.isRequired,
+  showNotification: PropTypes.string.isRequired,
+  showForgotPasswordForm: PropTypes.string.isRequired,
+  resetForgotPasswordErrorResponse: PropTypes.string.isRequired,
+  labels: PropTypes.string.isRequired,
+  resetLoginState: PropTypes.string.isRequired,
+  successFullResetEmail: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.string.isRequired,
+};
 
 const validateMethod = createValidateMethod(getStandardConfig(['Email']));
 
