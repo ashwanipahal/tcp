@@ -65,7 +65,7 @@ class CardTile extends React.Component<Props> {
     const { card, labels } = this.props;
     return card.defaultInd ? (
       <Badge showCheckmark dataLocator="payment-carddefaultpaymentbadge" noMargin>
-        {labels.ACC_LBL_DEFAULT_PAYMENT}
+        {labels.paymentGC.ACC_LBL_DEFAULT_PAYMENT}
       </Badge>
     ) : (
       <Anchor
@@ -76,7 +76,7 @@ class CardTile extends React.Component<Props> {
         data-locator="payment-makedefault"
         onClick={this.handleDefaultLinkClick}
       >
-        {labels.ACC_LBL_MAKE_DEFAULT}
+        {labels.paymentGC.ACC_LBL_MAKE_DEFAULT}
       </Anchor>
     );
   };
@@ -102,8 +102,8 @@ class CardTile extends React.Component<Props> {
 
   getCardDetails = dataLocatorPrefix => {
     const { card, labels } = this.props;
-    const cardNum = `${labels.ACC_LBL_CARD_NUM}${card.accountNo.slice(-4)}`;
-    const expDate = `${labels.ACC_LBL_EXP_DATE}${card.expMonth.trim()}/${card.expYear}`;
+    const cardNum = `${labels.paymentGC.ACC_LBL_CARD_NUM}${card.accountNo.slice(-4)}`;
+    const expDate = `${labels.paymentGC.ACC_LBL_EXP_DATE}${card.expMonth.trim()}/${card.expYear}`;
     return (
       <React.Fragment>
         <BodyCopy
@@ -179,7 +179,7 @@ class CardTile extends React.Component<Props> {
             data-locator="gift-card-checkbalance-btn"
             fill="BLUE"
           >
-            {labels.ACC_LBL_CHECK_BALANCE}
+            {labels.paymentGC.ACC_LBL_CHECK_BALANCE}
           </Button>
         )}
       </React.Fragment>
@@ -199,7 +199,7 @@ class CardTile extends React.Component<Props> {
             className=""
             lineHeights="lh115"
           >
-            {balance && labels.ACC_LBL_REMAINING_BALANCE}
+            {balance && labels.paymentGC.ACC_LBL_REMAINING_BALANCE}
           </BodyCopy>
         )}
         {this.renderBalance({ balance, isGiftCardBalanceRequested, labels })}
@@ -245,7 +245,7 @@ class CardTile extends React.Component<Props> {
             data-locator={`payment-${dataLocatorPrefix}editlink`}
             className="cardTile__anchor"
           >
-            {labels.ACC_LBL_EDIT}
+            {labels.paymentGC.ACC_LBL_EDIT}
           </Anchor>
         )}
         <Anchor
@@ -257,7 +257,7 @@ class CardTile extends React.Component<Props> {
           data-locator={`payment-${dataLocatorPrefix}deletelink`}
           onClick={e => this.onDeletegiftardClick(e)}
         >
-          {labels.ACC_LBL_DELETE}
+          {labels.paymentGC.ACC_LBL_DELETE}
         </Anchor>
       </div>
     );

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import AddGiftCardComponent from '../views/AddGiftCard.view';
 import { addGiftCardRequest, resetShowNotification } from './AddGiftCard.actions';
 import { getAddGiftCardResponse, getAddGiftCardError } from './AddGiftCard.selector';
-import labels from './AddGiftCard.labels';
+// import labels from './AddGiftCard.labels';
 import Router from 'next/router'; //eslint-disable-line
 import utils from '../../../../../../utils';
 
@@ -14,6 +14,7 @@ type Props = {
   addGiftCardResponse: String,
   getAddGiftCardErr: String,
   resetNotificationStateAction: Function,
+  labels: object,
 };
 
 export class AddGiftCardContainer extends React.Component<Props> {
@@ -31,7 +32,7 @@ export class AddGiftCardContainer extends React.Component<Props> {
   };
 
   render() {
-    const { onAddGiftCardClick, addGiftCardResponse, getAddGiftCardErr } = this.props;
+    const { onAddGiftCardClick, addGiftCardResponse, getAddGiftCardErr, labels } = this.props;
 
     if (addGiftCardResponse === 'success') {
       return this.goBackToPayment();

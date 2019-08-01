@@ -15,10 +15,14 @@ export const AddEditCreditCard = ({ labels, isEdit, errorMessage, ...otherProps 
         data-locator="payment-backlink"
         asPath="/account/payment"
       >
-        {labels.ACC_LBL_BACK_LINK_CTA}
+        {labels.common.ACC_LBL_BACK_LINK_CTA}
       </Anchor>
       <FormPageHeading
-        heading={isEdit ? labels.ACC_LBL_EDIT_CC_HEADING : labels.ACC_LBL_ADD_CC_HEADING}
+        heading={
+          isEdit
+            ? labels.paymentGC.ACC_LBL_EDIT_CC_HEADING
+            : labels.paymentGC.ACC_LBL_ADD_CC_HEADING
+        }
         data-locator="payment-addcreditordebitcardheader"
       />
       {errorMessage && (

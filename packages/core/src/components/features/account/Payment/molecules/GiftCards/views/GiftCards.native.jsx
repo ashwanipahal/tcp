@@ -24,7 +24,7 @@ const GiftCards = (props: Props) => {
   const { labels, giftCardList } = props;
   return (
     <View {...props}>
-      <HeadingTextStyle>{labels.ACC_LBL_GC_HEADING}</HeadingTextStyle>
+      <HeadingTextStyle>{labels.paymentGC.ACC_LBL_GC_HEADING}</HeadingTextStyle>
       {giftCardList.size === 0 && (
         <React.Fragment>
           <WrapperStyle>
@@ -34,14 +34,20 @@ const GiftCards = (props: Props) => {
                 source={require('../../../../../../../../../mobileapp/src/assets/images/gift-card.png')}
               />
             </ImgWrapper>
-            <EmptyCCLabelStyle>{labels.ACC_LBL_GC_EMPTY_HEADING}</EmptyCCLabelStyle>
+            <EmptyCCLabelStyle>{labels.paymentGC.ACC_LBL_GC_EMPTY_HEADING}</EmptyCCLabelStyle>
           </WrapperStyle>
-          <DescriptionEmptyCCStyle>{labels.ACC_LBL_GC_EMPTY_DESC}</DescriptionEmptyCCStyle>
+          <DescriptionEmptyCCStyle>
+            {labels.paymentGC.ACC_LBL_GC_EMPTY_DESC}
+          </DescriptionEmptyCCStyle>
         </React.Fragment>
       )}
       <ButtonWrapperStyle>
         <CustomButton
-          text={giftCardList.size === 0 ? labels.ACC_LBL_GC_EMPTY_ADD_BTN : labels.ACC_LBL_ADD_BTN}
+          text={
+            giftCardList.size === 0
+              ? labels.paymentGC.ACC_LBL_GC_EMPTY_ADD_BTN
+              : labels.paymentGC.ACC_LBL_ADD_BTN
+          }
           buttonVariation="variable-width"
           fill="BLUE"
           color="white"

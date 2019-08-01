@@ -25,7 +25,7 @@ import {
   getPaymentBannerContentId,
   getPaymentBannerRichTextSelector,
 } from './Payment.selectors';
-import labels from './Payment.labels';
+// import labels from './Payment.labels';
 import PaymentView from '../views/PaymentView';
 
 // @flow
@@ -48,6 +48,7 @@ type Props = {
   showNotificationCaptcha: boolean,
   paymentBannerRichText: string,
   clearPaymentNotification: () => void,
+  labels: object,
 };
 
 export class PaymentContainer extends React.Component<Props> {
@@ -82,6 +83,7 @@ export class PaymentContainer extends React.Component<Props> {
       setDefaultPaymentMethod,
       showNotificationCaptcha,
       paymentBannerRichText,
+      labels,
     } = this.props;
 
     const updatedLabels = { ...labels, ACC_PAYMNET_BANNER_LABEL: paymentBannerRichText };

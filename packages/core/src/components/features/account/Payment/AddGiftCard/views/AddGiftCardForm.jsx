@@ -52,7 +52,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
         <Row fullBleed>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 4 }}>
             <Field
-              placeholder={labels.ACC_LBL_GIFT_CARD_NO_PLACEHOLDER}
+              placeholder={labels.paymentGC.ACC_LBL_GIFT_CARD_NO_PLACEHOLDER}
               name="giftCardNumber"
               type="tel"
               component={TextBox}
@@ -62,7 +62,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
           </Col>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 2, large: 3 }}>
             <Field
-              placeholder={labels.ACC_LBL_GIFT_CARD_PIN_PLACEHOLDER}
+              placeholder={labels.paymentGC.ACC_LBL_GIFT_CARD_PIN_PLACEHOLDER}
               name="cardPin"
               type="tel"
               component={TextBox}
@@ -99,7 +99,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 8, large: 7 }}>
             <div className="card__msgWrapper">
               <RichText
-                richTextHtml={labels.ACC_LBL_GIFT_CARD_MESSAGE}
+                richTextHtml={labels.paymentGC.ACC_LBL_GIFT_CARD_MESSAGE}
                 dataLocator="git-card-messagetext"
               />
             </div>
@@ -118,7 +118,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
               data-locator="gift-card-cancelbtn"
               onClick={this.onCancelClick}
             >
-              {labels.ACC_LBL_CANCEL_CARD}
+              {labels.paymentGC.ACC_LBL_CANCEL_CARD}
             </Button>
           </Col>
 
@@ -135,7 +135,7 @@ class AddGiftCardForm extends React.PureComponent<Props> {
               type="submit"
               data-locator="gift-card-addcardbtn"
             >
-              {labels.ACC_LBL_ADD_CARD}
+              {labels.paymentGC.ACC_LBL_ADD_CARD}
             </Button>
           </Col>
         </Row>

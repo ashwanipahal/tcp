@@ -24,7 +24,7 @@ const MoneyCards = (props: Props) => {
   const { labels, creditCardList, setDefaultPaymentMethod } = props;
   return (
     <View {...props}>
-      <HeadingTextStyle>{labels.ACC_LBL_CC_HEADING}</HeadingTextStyle>
+      <HeadingTextStyle>{labels.paymentGC.ACC_LBL_CC_HEADING}</HeadingTextStyle>
       {creditCardList.size === 0 && (
         <React.Fragment>
           <WrapperStyle>
@@ -34,15 +34,19 @@ const MoneyCards = (props: Props) => {
                 source={require('../../../../../../../../../mobileapp/src/assets/images/credit-card.png')}
               />
             </ImgWrapper>
-            <EmptyCCLabelStyle>{labels.ACC_LBL_CC_EMPTY_HEADING}</EmptyCCLabelStyle>
+            <EmptyCCLabelStyle>{labels.paymentGC.ACC_LBL_CC_EMPTY_HEADING}</EmptyCCLabelStyle>
           </WrapperStyle>
-          <DescriptionEmptyCCStyle>{labels.ACC_LBL_CC_EMPTY_DESC}</DescriptionEmptyCCStyle>
+          <DescriptionEmptyCCStyle>
+            {labels.paymentGC.ACC_LBL_CC_EMPTY_DESC}
+          </DescriptionEmptyCCStyle>
         </React.Fragment>
       )}
       <ButtonWrapperStyle>
         <CustomButton
           text={
-            creditCardList.size === 0 ? labels.ACC_LBL_CC_EMPTY_ADD_BTN : labels.ACC_LBL_ADD_BTN
+            creditCardList.size === 0
+              ? labels.paymentGC.ACC_LBL_CC_EMPTY_ADD_BTN
+              : labels.paymentGC.ACC_LBL_ADD_BTN
           }
           buttonVariation="variable-width"
           fill="BLUE"

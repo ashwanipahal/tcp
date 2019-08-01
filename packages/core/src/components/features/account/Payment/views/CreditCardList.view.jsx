@@ -46,7 +46,7 @@ const CreditCardList = ({
         className="cardList__heading"
         dataLocator="payment-creditAndDebitCardsLabel"
       >
-        {labels.ACC_LBL_CC_HEADING}
+        {labels.paymentGC.ACC_LBL_CC_HEADING}
       </Heading>
       {creditCardList.size === 0 && (
         <EmptyCard labels={labels} icon="credit-card" alt="card icon" prefix="CC" />
@@ -66,7 +66,9 @@ const CreditCardList = ({
             dataLocator="payment-addcreditcard"
             onClick={addCreditCard}
           >
-            {creditCardList.size === 0 ? labels.ACC_LBL_CC_EMPTY_ADD_BTN : labels.ACC_LBL_ADD_BTN}
+            {creditCardList.size === 0
+              ? labels.paymentGC.ACC_LBL_CC_EMPTY_ADD_BTN
+              : labels.paymentGC.ACC_LBL_ADD_BTN}
           </Button>
         </Col>
       </Row>

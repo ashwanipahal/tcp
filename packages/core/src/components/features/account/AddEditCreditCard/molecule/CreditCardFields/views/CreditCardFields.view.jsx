@@ -34,7 +34,7 @@ export const CreditCardFields = ({
           }}
         >
           <Field
-            placeholder={labels.ACC_LBL_CARD_NUMBER}
+            placeholder={labels.paymentGC.ACC_LBL_CARD_NUMBER}
             name="cardNumber"
             id="cardNumber"
             component={CreditCardNumber}
@@ -61,7 +61,7 @@ export const CreditCardFields = ({
           }}
         >
           <Field
-            placeholder={labels.ACC_LBL_EXP_MONTH}
+            placeholder={labels.paymentGC.ACC_LBL_EXP_MONTH}
             name="expMonth"
             id="expMonth"
             component={Select}
@@ -79,7 +79,7 @@ export const CreditCardFields = ({
           }}
         >
           <Field
-            placeholder={labels.ACC_LBL_EXP_YEAR}
+            placeholder={labels.paymentGC.ACC_LBL_EXP_YEAR}
             name="expYear"
             id="expYear"
             component={Select}

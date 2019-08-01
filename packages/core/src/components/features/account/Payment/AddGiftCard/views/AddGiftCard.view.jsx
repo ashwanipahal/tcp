@@ -33,7 +33,7 @@ class AddGiftCard extends React.PureComponent<Props> {
           dataLocator="gift-card-addcardbacklink"
           asPath="/account/payment"
         >
-          {labels.ACC_LBL_BACK}
+          {labels.common.ACC_LBL_BACK_LINK_CTA}
         </Anchor>
         <Heading
           fontFamily="primaryFontFamily"
@@ -42,7 +42,7 @@ class AddGiftCard extends React.PureComponent<Props> {
           className="card__separator"
           dataLocator="gift-card-addcardheader"
         >
-          {labels.ACC_LBL_ADD_GIFT_CARD}
+          {labels.paymentGC.ACC_LBL_ADD_GIFT_CARD}
         </Heading>
         {addGiftCardResponse && (
           <Notification
