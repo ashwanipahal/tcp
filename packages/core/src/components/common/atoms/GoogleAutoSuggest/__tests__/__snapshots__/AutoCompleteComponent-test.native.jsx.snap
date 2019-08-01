@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AutoCompleteComponent Native should render correctly 1`] = `
+<GooglePlacesAutocomplete
+  GooglePlacesSearchQuery={
+    Object {
+      "rankby": "distance",
+    }
+  }
+  GoogleReverseGeocodingQuery={Object {}}
+  autoFillOnNotFound={false}
+  autoFocus={false}
+  currentLocation={false}
+  currentLocationLabel="Current location"
+  debounce={200}
+  editable={true}
+  enableEmptySections={true}
+  enableHighAccuracyLocation={true}
+  enablePoweredByContainer={true}
+  fetchDetails={true}
+  filterReverseGeocodingByTypes={
+    Array [
+      "locality",
+      "administrative_area_level_3",
+    ]
+  }
+  getDefaultValue={[Function]}
+  isRowScrollable={true}
+  keyboardShouldPersistTaps="always"
+  listViewDisplayed="auto"
+  minLength={2}
+  nearbyPlacesAPI="GooglePlacesSearch"
+  numberOfLines={1}
+  onFail={[Function]}
+  onNotFound={[Function]}
+  onPress={[Function]}
+  onSubmitEditing={[Function]}
+  onTimeout={[Function]}
+  placeholder="test"
+  placeholderTextColor="#A8A8A8"
+  predefinedPlaces={Array []}
+  predefinedPlacesAlwaysVisible={false}
+  query={
+    Object {
+      "key": "AIzaSyDuU66iTcoX2TISQsJV7LrZZeOhIGDDlRw",
+      "language": "en",
+      "types": "(cities)",
+    }
+  }
+  renderDescription={[Function]}
+  returnKeyType="search"
+  styles={
+    Object {
+      "description": Object {
+        "fontWeight": "bold",
+      },
+      "predefinedPlacesDescription": Object {
+        "color": "#1faadb",
+      },
+      "textInputContainer": Object {
+        "width": "100%",
+      },
+    }
+  }
+  suppressDefaultStyles={true}
+  textInputHide={false}
+  textInputProps={Object {}}
+  timeout={20000}
+  underlineColorAndroid="transparent"
+/>
+`;
