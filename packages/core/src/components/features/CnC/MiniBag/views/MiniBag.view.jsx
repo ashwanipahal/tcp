@@ -14,7 +14,6 @@ type Props = {
 const MiniBag = ({ onRequestClose, className }: Props) => {
   return (
     <Modal
-      fixedWidth
       isOpen
       onRequestClose={onRequestClose}
       heading="Mini BAG"

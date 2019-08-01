@@ -26,8 +26,8 @@ const ProductTile = () => {
 
   return (
     <ProductInformationStyle>
-      <Row tagName="ul" className="product">
-        <Col tagName="li" key="productDetails" colSize={{ small: 2, medium: 2, large: 3 }}>
+      <Row className="product">
+        <Col key="productDetails" colSize={{ small: 2, medium: 2, large: 3 }}>
           <Image
             alt="Product"
             className="product-image"
@@ -47,156 +47,154 @@ const ProductTile = () => {
             />
           )}
         </Col>
-        <Col tagName="li" key="productDetails" colSize={{ small: 4, medium: 6, large: 9 }}>
-          <Row tagName="ul" className="product-details">
-            <Col
-              tagName="li"
-              key="product-title"
-              className="productImgBrand"
-              colSize={{ small: 6, medium: 8, large: 12 }}
-            >
+        <Col key="productDetails" colSize={{ small: 4, medium: 6, large: 9 }}>
+          <Row>
+            <Col className="productImgBrand" colSize={{ small: 6, medium: 8, large: 12 }}>
               <BodyCopy
+                fontFamily="secondary"
                 tag="span"
                 fontSize="fs14"
                 fontWeight={['semibold']}
-                textAlign="left"
-                className="product-title"
                 dataLocator="addedtobag-productname"
               >
                 {'This is product name'}
               </BodyCopy>
             </Col>
           </Row>
-          <Row tagName="ul" className="product-description">
-            <Col
-              tagName="li"
-              key="product-title"
-              className="itemList"
-              colSize={{ small: 2, medium: 3, large: 4 }}
-            >
-              <BodyCopy tag="span" fontSize="fs13" fontWeight={['semibold']} textAlign="left">
+          <Row className="padding-top-10">
+            <div className="itemList">
+              <BodyCopy
+                fontFamily="secondary"
+                component="span"
+                fontSize="fs13"
+                fontWeight={['semibold']}
+                textAlign="left"
+              >
                 {data.isGiftCard === true ? `Design` : `${labels.colorLabel}`}
                 {':'}
               </BodyCopy>
-            </Col>
-            <Col
-              tagName="li"
-              key="product-title"
-              className="itemList"
-              colSize={{ small: 4, medium: 5, large: 8 }}
-            >
               <BodyCopy
-                tag="span"
+                fontFamily="secondary"
+                component="span"
                 fontSize="fs13"
-                textAlign="left"
                 className="itemDesc"
                 dataLocator="addedtobag-productcolor"
               >
-                {data.skuInfo.color.name}
+                {` ${data.skuInfo.color.name} | `}
               </BodyCopy>
-            </Col>
-            <Col
-              tagName="li"
-              key="product-title"
-              className="itemList"
-              colSize={{ small: 2, medium: 3, large: 4 }}
-            >
-              <BodyCopy tag="span" fontSize="fs13" fontWeight={['semibold']} textAlign="left">
-                {data.isGiftCard === true ? `Size` : `${labels.sizeLabel}`}
+            </div>
+
+            <div className="itemList padding-left">
+              <BodyCopy
+                fontFamily="secondary"
+                component="span"
+                fontSize="fs13"
+                fontWeight={['semibold']}
+              >
+                {data.isGiftCard === true ? ` Size` : ` ${labels.sizeLabel}`}
                 {':'}
               </BodyCopy>
-            </Col>
-            <Col tagName="li" key="product-title" colSize={{ small: 4, medium: 5, large: 8 }}>
               <BodyCopy
-                tag="span"
+                fontFamily="secondary"
+                component="span"
                 fontSize="fs13"
-                textAlign="left"
                 className="itemDesc"
                 dataLocator="addedtobag-productsize"
               >
-                {`${data.skuInfo.size} `}
+                {` ${data.skuInfo.size}`}
                 {!data.skuInfo.fit || data.skuInfo.fit === 'regular' ? ' ' : data.skuInfo.fit}
+                {` | `}
               </BodyCopy>
-            </Col>
-            <Col
-              tagName="li"
-              key="product-title"
-              className="itemList"
-              colSize={{ small: 2, medium: 3, large: 4 }}
-            >
-              <BodyCopy tag="span" fontSize="fs13" fontWeight={['semibold']} textAlign="left">
-                {labels.qtyLabel}
+            </div>
+
+            <div className="itemList padding-left">
+              <BodyCopy
+                fontFamily="secondary"
+                component="span"
+                fontSize="fs13"
+                fontWeight={['semibold']}
+              >
+                {` ${labels.qtyLabel}`}
                 {':'}
               </BodyCopy>
-            </Col>
-            <Col
-              tagName="li"
-              key="product-title"
-              className="itemList"
-              colSize={{ small: 4, medium: 5, large: 8 }}
-            >
               <BodyCopy
-                tag="span"
+                fontFamily="secondary"
+                component="span"
                 fontSize="fs13"
-                textAlign="left"
                 className="itemDesc"
                 dataLocator="addedtobag-productqty"
               >
-                {data.quantity}
+                {` ${data.quantity}`}
+              </BodyCopy>
+            </div>
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs12"
+              component="div"
+              className="padding-left-10"
+            >
+              <u>Edit</u>
+            </BodyCopy>
+          </Row>
+          <Row className="padding-top-10">
+            <Col colSize={{ large: 4, medium: 3, small: 2 }}>
+              <BodyCopy
+                fontFamily="secondary"
+                component="span"
+                fontSize="fs13"
+                fontWeight={['semibold']}
+              >
+                Price:
+              </BodyCopy>
+            </Col>
+            <Col colSize={{ small: 2, medium: 3, large: 8 }}>
+              <BodyCopy
+                fontFamily="secondary"
+                component="span"
+                fontSize="fs13"
+                fontWeight={['semibold']}
+              >
+                $124
               </BodyCopy>
             </Col>
           </Row>
-          <Row tagName="ul" className="product-description">
-            <Col
-              tagName="li"
-              key="product-title"
-              className="itemList"
-              colSize={{ small: 2, medium: 3, large: 4 }}
-            >
-              <BodyCopy tag="span" fontSize="fs13" fontWeight={['semibold']} textAlign="left">
-                {data.isGiftCard === true ? `Size` : `${labels.sizeLabel}`}
-                {':'}
+          <Row>
+            <Col colSize={{ large: 4, medium: 3, small: 2 }}>
+              <BodyCopy
+                fontFamily="secondary"
+                component="span"
+                fontSize="fs13"
+                fontWeight={['semibold']}
+              >
+                Points:
               </BodyCopy>
             </Col>
-            <Col tagName="li" key="product-title" colSize={{ small: 4, medium: 5, large: 8 }}>
+            <Col colSize={{ small: 2, medium: 3, large: 8 }}>
               <BodyCopy
-                tag="span"
+                fontFamily="secondary"
+                component="span"
                 fontSize="fs13"
-                textAlign="left"
-                className="itemDesc"
-                dataLocator="addedtobag-productsize"
+                fontWeight={['semibold']}
               >
-                {`${data.skuInfo.size} `}
-                {!data.skuInfo.fit || data.skuInfo.fit === 'regular' ? ' ' : data.skuInfo.fit}
+                24
               </BodyCopy>
             </Col>
           </Row>
-          <Row tagName="ul" className="product-description">
-            <Col
-              tagName="li"
-              key="product-title"
-              className="itemList"
-              colSize={{ small: 2, medium: 3, large: 4 }}
-            >
-              <BodyCopy tag="span" fontSize="fs13" fontWeight={['semibold']} textAlign="left">
-                {labels.qtyLabel}
-                {':'}
+          <Row className="padding-top-15" fullBleed>
+            <Col className="padding-left-13" colSize={{ small: 4, medium: 6, large: 8 }}>
+              <BodyCopy
+                fontFamily="secondary"
+                color="gray.600"
+                component="span"
+                fontSize="fs10"
+                fontWeight={['semibold']}
+              >
+                I will pickup store at union square today
               </BodyCopy>
             </Col>
-            <Col
-              tagName="li"
-              key="product-title"
-              className="itemList"
-              colSize={{ small: 4, medium: 5, large: 8 }}
-            >
-              <BodyCopy
-                tag="span"
-                fontSize="fs13"
-                textAlign="left"
-                className="itemDesc"
-                dataLocator="addedtobag-productqty"
-              >
-                {data.quantity}
+            <Col colSize={{ small: 1, medium: 1, large: 3 }}>
+              <BodyCopy fontFamily="secondary" fontSize="fs12" component="span">
+                <u>Save for later</u>
               </BodyCopy>
             </Col>
           </Row>
