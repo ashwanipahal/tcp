@@ -158,6 +158,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       }
     }
     fullWidth=""
+    onPress={[Function]}
     text=""
     url=""
   />

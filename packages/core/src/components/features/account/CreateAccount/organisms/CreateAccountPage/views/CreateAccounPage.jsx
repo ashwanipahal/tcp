@@ -50,7 +50,7 @@ class CreateAccounPage extends React.Component {
       error,
     } = this.props;
     let errorMessageRecieved = '';
-    if (error.status === 599) {
+    if (error && error.status === 599) {
       errorMessageRecieved = error.response.body.errorMessage;
     } else if (error) {
       errorMessageRecieved =

@@ -199,9 +199,7 @@ let CreateAccountForm = ({
             colSize={{ small: 6 }}
             className="already-account align-center"
           >
-            <Anchor className="moduleD_textlink" to="v" target="d">
-              {labels.CREATE_ACC_LBL_ALREADY_ACCOUNT}
-            </Anchor>
+            <Anchor>{labels.CREATE_ACC_LBL_ALREADY_ACCOUNT}</Anchor>
           </Col>
         </Row>
       </form>
