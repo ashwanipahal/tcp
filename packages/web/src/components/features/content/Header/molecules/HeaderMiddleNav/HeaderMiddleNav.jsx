@@ -72,7 +72,7 @@ const HeaderMiddleNav = props => {
             medium: 8,
             small: 6,
           }}
-          className="hide-on-mobile hide-on-tablet textRight"
+          className="textRight"
         >
           {userName ? (
             <BodyCopy textAlign="right">{`Hi, ${userName}`}</BodyCopy>
