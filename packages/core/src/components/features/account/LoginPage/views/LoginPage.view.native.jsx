@@ -19,6 +19,7 @@ const LoginView = ({
   successFullResetEmail,
   resetForm,
   resetForgotPasswordErrorResponse,
+  onCreateAccountClick,
 }) => {
   return (
     <ScrollViewStyle>
@@ -34,6 +35,7 @@ const LoginView = ({
         successFullResetEmail={successFullResetEmail}
         resetForm={resetForm}
         resetForgotPasswordErrorResponse={resetForgotPasswordErrorResponse}
+        onCreateAccountClick={onCreateAccountClick}
       />
     </ScrollViewStyle>
   );
@@ -51,6 +53,7 @@ LoginView.propTypes = {
   successFullResetEmail: PropTypes.string.isRequired,
   resetForm: PropTypes.string.isRequired,
   resetForgotPasswordErrorResponse: PropTypes.string.isRequired,
+  onCreateAccountClick: PropTypes.string.isRequired,
 };
 
 LoginView.defaultProps = {

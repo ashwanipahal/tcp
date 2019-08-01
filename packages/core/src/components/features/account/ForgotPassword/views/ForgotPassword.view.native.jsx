@@ -13,11 +13,12 @@ import Anchor from '../../../../common/atoms/Anchor';
 import createValidateMethod from '../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../utils/formValidation/validatorStandardConfig';
 import Notification from '../../../../common/molecules/Notification/views/Notification.native';
+import LineComp from '../../../../common/atoms/Line';
 import {
   HeadingStyle,
   SubHeadingStyle,
   ForgotHeadingStyle,
-  ForgotDescriptionStyle
+  ForgotDescriptionStyle,
 } from '../../LoginPage/molecules/LoginTopSection/LoginTopSection.style.native';
 
 // @flow
@@ -78,7 +79,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
     const { email } = this.state;
     return (
       <View className={className}>
-        <FormStyleView>
+        <FormStyleView className="border">
           <Anchor
             fontSizeVariation="xlarge"
             anchorVariation="secondary"
@@ -132,6 +133,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
               />
             </React.Fragment>
           )}
+          <LineComp marginTop={28} />
         </FormStyleView>
       </View>
     );

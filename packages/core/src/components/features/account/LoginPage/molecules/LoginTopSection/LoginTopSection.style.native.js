@@ -9,6 +9,9 @@ const getPageStyle = () => {
 };
 const SectionStyle = css`
   ${getPageStyle}
+  .border {
+    border-bottom: 1px solid red;
+  }
 `;
 
 /**
@@ -44,7 +47,7 @@ const ForgotHeading = props => {
   font-weight: ${typography.fontWeights.semibold};
   align-self: ${'center'};
   font-size: ${typography.fontSizes.fs16};
-  padding:20px 0;
+  padding:10px 0;
   `;
 };
 
@@ -53,13 +56,11 @@ const ForgotDescription = props => {
   const { typography } = theme;
   return `
   ${getTextBaseStyle};
-  font-weight: ${typography.fontWeights.semibold};
   align-self: ${'center'};
-  font-size: ${typography.fontSizes.fs16};
-  padding:20px 0;
+  font-size: ${typography.fontSizes.fs12};
+  padding:10px 0;
   `;
 };
-
 
 const getSubHeadingStyle = props => {
   const { theme } = props;
@@ -101,4 +102,11 @@ const DescriptionStyle = styled.Text`
   ${getDescriptionStyle}
 `;
 
-export { SectionStyle, HeadingStyle, SubHeadingStyle, DescriptionStyle, ForgotHeadingStyle , ForgotDescriptionStyle };
+export {
+  SectionStyle,
+  HeadingStyle,
+  SubHeadingStyle,
+  DescriptionStyle,
+  ForgotHeadingStyle,
+  ForgotDescriptionStyle,
+};

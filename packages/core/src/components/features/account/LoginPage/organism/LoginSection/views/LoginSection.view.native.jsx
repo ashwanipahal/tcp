@@ -38,6 +38,7 @@ class LoginSection extends React.PureComponent<Props> {
       successFullResetEmail,
       resetForm,
       resetForgotPasswordErrorResponse,
+      onCreateAccountClick,
     } = this.props;
 
     const { resetPassword } = this.state;
@@ -80,6 +81,7 @@ class LoginSection extends React.PureComponent<Props> {
             buttonVariation="variable-width"
             data-locator=""
             text={labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
+            onClick={onCreateAccountClick}
           />
         </FormStyleView>
       </View>
