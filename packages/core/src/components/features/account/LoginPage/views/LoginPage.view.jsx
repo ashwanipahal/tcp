@@ -8,6 +8,12 @@ const LoginView = ({
   loginErrorMessage,
   initialValues,
   showRecaptcha,
+  resetLoginState,
+  SubmitForgot,
+  showNotification,
+  successFullResetEmail,
+  resetForm,
+  resetForgotPasswordErrorResponse,
   onCreateAccountClick,
 }) => {
   return (
@@ -17,6 +23,12 @@ const LoginView = ({
       loginErrorMessage={loginErrorMessage}
       initialValues={initialValues}
       showRecaptcha={showRecaptcha}
+      resetLoginState={resetLoginState}
+      SubmitForgot={SubmitForgot}
+      showNotification={showNotification}
+      successFullResetEmail={successFullResetEmail}
+      resetForm={resetForm}
+      resetForgotPasswordErrorResponse={resetForgotPasswordErrorResponse}
       onCreateAccountClick={onCreateAccountClick}
     />
   );
@@ -28,6 +40,12 @@ LoginView.propTypes = {
   loginErrorMessage: PropTypes.string,
   initialValues: PropTypes.shape({}).isRequired,
   showRecaptcha: PropTypes.bool,
+  resetForgotPasswordErrorResponse: PropTypes.bool.isRequired,
+  resetForm: PropTypes.bool.isRequired,
+  resetLoginState: PropTypes.bool.isRequired,
+  SubmitForgot: PropTypes.bool.isRequired,
+  showNotification: PropTypes.bool.isRequired,
+  successFullResetEmail: PropTypes.bool.isRequired,
   onCreateAccountClick: PropTypes.func,
 };
 
