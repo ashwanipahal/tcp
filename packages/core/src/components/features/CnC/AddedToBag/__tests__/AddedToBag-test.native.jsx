@@ -10,6 +10,7 @@ describe('AddedToBag Component', () => {
     className: '',
     addedToBag: {},
     labels: {},
+    quantity: '',
   };
 
   beforeEach(() => {

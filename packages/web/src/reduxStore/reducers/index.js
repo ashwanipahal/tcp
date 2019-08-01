@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { reducer as reduxFormReducer } from 'redux-form';
 import { ProductListingPageReducer } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.reducer';
 import LoginPageReducer from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.reducer';
+import ForgotPasswordReducer from '@tcp/core/src/components/features/account/ForgotPassword/container/ForgotPassword.reducer';
 import AddressBookReducer from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.reducer';
 import PaymentReducer from '@tcp/core/src/components/features/account/Payment/container/Payment.reducer';
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
@@ -16,6 +17,7 @@ import AddressVerificationReducer from '@tcp/core/src/components/features/accoun
 import AccountReducer from '@tcp/core/src/components/features/account/Account/container/Account.reducer';
 import CartPage from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import OverlayModalReducer from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.reducer';
+import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -38,8 +40,10 @@ import {
   ADDED_TO_BAG_REDUCER_KEY,
   ACCOUNT_REDUCER_KEY,
   CARTPAGE_REDUCER_KEY,
+  FORGOTPASSWORD_REDUCER_KEY,
   OVERLAY_MODAL_REDUCER_KEY,
   NAVIGATION_REDUCER_KEY,
+  CREATE_ACCOUNT_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
@@ -67,6 +71,7 @@ export default combineReducers({
   [HOMEPAGE_REDUCER_KEY]: HomePageReducer,
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
   [LOGINPAGE_REDUCER_KEY]: LoginPageReducer,
+  [FORGOTPASSWORD_REDUCER_KEY]: ForgotPasswordReducer,
   [ADDRESSBOOK_REDUCER_KEY]: AddressBookReducer,
   [ADDRESS_VERIFICATION_REDUCER_KEY]: AddressVerificationReducer,
   [PAYMENT_REDUCER_KEY]: PaymentReducer,
@@ -81,4 +86,5 @@ export default combineReducers({
   [CARTPAGE_REDUCER_KEY]: CartPage,
   [OVERLAY_MODAL_REDUCER_KEY]: OverlayModalReducer,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
+  [CREATE_ACCOUNT_REDUCER_KEY]: CreateAccountReducer,
 });

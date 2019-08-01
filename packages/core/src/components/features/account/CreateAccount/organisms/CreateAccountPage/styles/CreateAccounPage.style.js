@@ -53,6 +53,7 @@ const styles = css`
   .checkbox-hide-show {
     label {
       height: auto;
+      text-decoration: underline;
     }
     input {
       display: none;
