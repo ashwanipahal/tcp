@@ -97,6 +97,7 @@ const LINE_HEIGHT = {
 
 const LETTER_SPACING = {
   normal: 'normal',
+  medium: '1px',
   wide: '2px',
 };
 

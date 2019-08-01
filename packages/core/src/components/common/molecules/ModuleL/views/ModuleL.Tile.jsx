@@ -48,6 +48,7 @@ const ModuleLTile = ({ tileData: { image, link, styled }, index }: Props) => {
               withCaret
               className="moduleL__tile-link"
               data-locator={`${getLocator('moduleL_link')}_${index + 1}`}
+              {...link}
             >
               {link.text}
             </Anchor>

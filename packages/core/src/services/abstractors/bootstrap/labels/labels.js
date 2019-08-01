@@ -19,8 +19,9 @@ const Abstractor = {
     data.map(labelData => {
       const { name: category, subcategories } = labelData;
       result[category] = {};
-      subcategories.map(({ name: subcategory, labels }) => {
+      subcategories.map(({ name: subcategory, labels, referred }) => {
         result[category][subcategory] = {};
+        result[category][subcategory].referred = referred;
         labels.map(({ key, value }) => {
           result[category][subcategory][key] = value;
           return value;

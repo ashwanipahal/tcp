@@ -1,6 +1,7 @@
 import { all } from 'redux-saga/effects';
 import ProductListingPageSaga from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.saga';
 import LoginPageSaga from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.saga';
+import ForgotPasswordSaga from '@tcp/core/src/components/features/account/ForgotPassword/container/ForgotPassword.saga';
 import AddEditAddressSaga from '@tcp/core/src/components/features/account/AddEditAddress/container/AddEditAddress.saga';
 import AddressBookSaga from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.saga';
 import PaymentSaga from '@tcp/core/src/components/features/account/Payment/container/Payment.saga';
@@ -16,7 +17,7 @@ import AddressVerificationSaga from '@tcp/core/src/components/features/account/A
 import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
 import AccountSaga from '@tcp/core/src/components/features/account/Account/container/Account.saga';
 import AddEditCreditCardSaga from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.saga';
-import CartSaga from '@tcp/core/src/components/features/CnC/Cart/containers/Cart.saga';
+import CartPageSaga from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 import EmailSignupSaga from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.saga';
 import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.saga';
@@ -27,6 +28,7 @@ export default function* rootSaga() {
     HomePageSaga(),
     ProductListingPageSaga(),
     LoginPageSaga(),
+    ForgotPasswordSaga(),
     AddEditAddressSaga(),
     AddressBookSaga(),
     DeleteAddressSaga(),
@@ -42,7 +44,7 @@ export default function* rootSaga() {
     AddEditCreditCardSaga(),
     AddGiftCardSaga(),
     AccountSaga(),
+    CartPageSaga(),
     CreateAccountSaga(),
-    CartSaga(),
   ]);
 }

@@ -4,6 +4,7 @@ exports[`InputCheckbox component should render correctly 1`] = `
 <Styled(View)
   id="checkbox"
   isChecked={false}
+  onChange={[Function]}
   onClick={[MockFunction]}
   onStartShouldSetResponder={[Function]}
   rightText="checkbox"
@@ -32,6 +33,7 @@ exports[`InputCheckbox component should render correctly with checked state fals
 <Styled(View)
   id="checkbox"
   isChecked={false}
+  onChange={[Function]}
   onClick={[MockFunction]}
   onStartShouldSetResponder={[Function]}
   rightText="checkbox"

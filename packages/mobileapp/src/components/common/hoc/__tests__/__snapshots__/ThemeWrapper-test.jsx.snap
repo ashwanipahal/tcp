@@ -50,6 +50,15 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "400": "#4b742d",
           "500": "#26762c",
         },
+        "orange": Object {
+          "100": "#fdead2",
+          "300": "#fbd5a5",
+          "50": "#fef4e8",
+          "500": "#fac078",
+          "700": "#f8ab4b",
+          "800": "#f7971f",
+          "900": "#c25621",
+        },
         "primary": Object {
           "dark": "#3c7fb0",
           "light": "#93c5ea",
@@ -260,6 +269,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "semiBold": "600",
         },
         "letterSpacing": Object {
+          "medium": "1px",
           "normal": "normal",
           "wide": "2px",
         },
@@ -384,6 +394,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "fs38": "38px",
           "fs42": "42px",
           "fs48": "48px",
+          "fs52": "52px",
           "fs64": "64px",
         },
         "fontWeights": Object {
@@ -410,9 +421,9 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs42",
-            "fs42",
-            "fs48",
+            "fs36",
+            "fs36",
+            "fs52",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",

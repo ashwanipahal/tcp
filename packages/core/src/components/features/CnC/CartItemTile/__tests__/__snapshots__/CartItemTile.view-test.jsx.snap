@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartItemTile Component CartItemTile should render correctly 1`] = `
+<div>
+  <span>
+    CART ITEM TILE
+  </span>
+  <button
+    onClick={[Function]}
+  >
+    load data
+  </button>
+  <Styled(Row)
+    className="cart-items-list"
+    tagName="ul"
+  >
+    <Styled(Col)
+      className="cart-item"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 3,
+          "small": 2,
+        }
+      }
+      tagName="li"
+    >
+      <CartItem
+        deleteCartItem={[Function]}
+        editableProductInfo={Object {}}
+        getProductSKUInfo={[MockFunction]}
+        item={
+          Object {
+            "itemInfo": Object {
+              "itemId": "3001545564",
+              "itemPoints": 78,
+              "listPrice": 38.85,
+              "offerPrice": 38.85,
+              "quantity": 3,
+              "salePrice": 12.95,
+              "wasPrice": 12.95,
+            },
+            "miscInfo": Object {
+              "availability": "OK",
+              "badge": "",
+              "bossEndDate": null,
+              "bossStartDate": null,
+              "clearanceItem": false,
+              "isBopisEligible": true,
+              "isBossEligible": true,
+              "isOnlineOnly": false,
+              "orderItemType": "ECOM",
+              "store": null,
+              "storeAddress": null,
+              "storeId": null,
+              "storeItemsCount": 0,
+              "storePhoneNumber": null,
+              "storeTodayOpenRange": null,
+              "storeTomorrowOpenRange": null,
+              "vendorColorDisplayId": "3001569_1301",
+            },
+            "productInfo": Object {
+              "generalProductId": "1234080",
+              "imagePath": "/wcsstore/GlobalSAS/images/tcp/products/500/3001569_1301.jpg",
+              "itemPartNumber": "00193511087773",
+              "name": "Girls Uniform Short Sleeve Ruffle Pique Polo",
+              "pdpUrl": "/us/p/Girls-Uniform-Short-Sleeve-Ruffle-Pique-Polo-3001569-1301",
+              "productPartNumber": "3001569_1301",
+              "size": "L (10/12)",
+              "skuId": "1234475",
+              "upc": "00193511087773",
+              "variantNo": "3001569004",
+            },
+          }
+        }
+        updateCartItem={[MockFunction]}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;
