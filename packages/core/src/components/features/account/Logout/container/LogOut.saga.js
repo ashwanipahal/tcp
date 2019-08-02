@@ -7,9 +7,14 @@ import { LogoutApplication } from '../../../../../services/abstractors/account';
 export function* logoutSaga() {
   try {
     const res = yield call(LogoutApplication);
+    const matchPath = window.location.pathname.split('/')[2];
     if (res.statusCode === 200) {
       yield put(resetLoginInfo());
-      routerPush('/', '/home');
+      if (window.location.href.indexOf('account')) {
+        routerPush('/', '/home');
+      } else {
+        routerPush('/', `/${matchPath}`);
+      }
     }
   } catch (err) {
     routerPush('/', '/home');
