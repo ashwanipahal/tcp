@@ -19,6 +19,7 @@ const labels = {
   FORGOT_PASSWORD_USER_NOT_AVAILABLE:
     "Sorry, we couldn't find an account associated with that email address. Please try again",
   FORGOT_PASSWORD_CHECK_MAIL: 'Check your email',
+  FORGOT_PASSWORD_API_ERROR: 'something wrong occur',
   FORGOT_PASSWORD_BACK_LOGIN: ' Back to Login In',
   FORGOT_PASSWORD_RESET_PASSWORD: 'Reset Password',
   FORGOT_PASSWORD_CONTENT_1: 'Forgot your password? No worries!',
