@@ -1,6 +1,6 @@
 import AWSAppSync from 'aws-appsync';
 import fetch from 'node-fetch';
-import { awsAppSync as config } from '../../config';
+import { getAPIConfig } from '../../../utils';
 
 // TODO - use util's isServer Method
 if (!process.browser) {
@@ -39,12 +39,13 @@ class AwsAppSyncClient extends AWSAppSync {
    * This function returns config options used to initialize awsAppSync Class
    */
   static clientOptions() {
+    const apiConfigObj = getAPIConfig();
     return {
-      url: config.aws_appsync_graphqlEndpoint,
-      region: config.aws_appsync_region,
+      url: apiConfigObj.graphql_endpoint_url,
+      region: apiConfigObj.graphql_reqion,
       auth: {
-        type: config.aws_appsync_authenticationType,
-        apiKey: config.aws_appsync_apiKey,
+        type: apiConfigObj.graphql_auth_type,
+        apiKey: apiConfigObj.graphql_api_key,
       },
       disableOffline: true,
     };

@@ -3,7 +3,7 @@ import Router from 'next/router';
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
 import icons from '../config/icons';
 import locators from '../config/locators';
-import { API_CONFIG } from '../services/config';
+import { API_CONFIG, awsAppSync } from '../services/config';
 import { getStoreRef, resetStoreRef } from './store.utils';
 import { APICONFIG_REDUCER_KEY } from '../constants/reducer.constants';
 import { breakpoints } from '../../styles/themes/TCP/mediaQuery';
@@ -33,6 +33,29 @@ export const isServer = () => {
   return typeof window === 'undefined' && !isMobileApp();
 };
 
+const getAPIInfoFromEnv = (apiSiteInfo, processEnv, relHostname) => {
+  const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || relHostname;
+  return {
+    traceIdCount: 0,
+    langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
+    MELISSA_KEY: processEnv.RWD_WEB_MELISSA_KEY || apiSiteInfo.MELISSA_KEY,
+    BV_API_KEY: processEnv.RWD_WEB_BV_API_KEY || apiSiteInfo.BV_API_KEY,
+    assetHost: processEnv.RWD_WEB_ASSETHOST || apiSiteInfo.assetHost,
+    domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
+    unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
+  };
+};
+
+const getGraphQLApiFromEnv = (apiSiteInfo, processEnv, relHostname) => {
+  const graphQlEndpoint = processEnv.RWD_WEB_GRAPHQL_API_ENDPOINT || relHostname;
+  return {
+    graphql_reqion: processEnv.RWD_WEB_GRAPHQL_API_REGION,
+    graphql_endpoint_url: `${graphQlEndpoint}/${processEnv.RWD_WEB_GRAPHQL_API_IDENTIFIER}`,
+    graphql_auth_type: processEnv.RWD_WEB_GRAPHQL_API_AUTH_TYPE,
+    graphql_api_key: processEnv.RWD_WEB_GRAPHQL_API_KEY || '',
+  };
+};
+
 /**
  * @summary Creates the API config object based on the response local variables set by node server
  * @param {Object} resLocals  response object of Node server
@@ -42,16 +65,20 @@ export const isServer = () => {
 export const createAPIConfig = resLocals => {
   // TODO - Get data from env config - Brand, MellisaKey, BritverifyId, AcquisitionId, Domains, Asset Host, Unbxd Domain;
   // TODO - use isMobile and cookie as well..
-  // TODO - Keep a fallback in case of any error in state/store reference
 
-  const { siteId, brandId } = resLocals;
+  const { siteId, brandId, hostname } = resLocals;
   const isCASite = siteId === API_CONFIG.siteIds.ca;
   const isGYMSite = brandId === API_CONFIG.brandIds.gym;
   const countryConfig = isCASite ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
   const brandConfig = isGYMSite ? API_CONFIG.GYM_CONFIG_OPTIONS : API_CONFIG.TCP_CONFIG_OPTIONS;
-  const basicConfig = API_CONFIG.sitesInfo;
+  const apiSiteInfo = API_CONFIG.sitesInfo;
+  const processEnv = process.env;
+  const relHostname = apiSiteInfo.proto + apiSiteInfo.protoSeparator + hostname;
+  const basicConfig = getAPIInfoFromEnv(apiSiteInfo, processEnv, relHostname);
+  const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, processEnv, relHostname);
   return {
     ...basicConfig,
+    ...graphQLConfig,
     ...countryConfig,
     ...brandConfig,
     isMobile: false,
@@ -71,6 +98,7 @@ export const getAPIConfig = () => {
   if (isMobileApp()) {
     // TODO - need to configure it for mobile app in similar way of Web - Overriding it for now
     apiConfig = {
+      port: 8081,
       brandId: 'tcp',
       brandIdCMS: 'TCP',
       traceIdCount: 0,
@@ -84,10 +112,14 @@ export const getAPIConfig = () => {
       siteId: 'us',
       countryKey: '_US',
       assetHost: 'https://test4.childrensplace.com',
-      domain: '://test4.childrensplace.com/api/',
+      domain: 'https://test4.childrensplace.com/api/',
       unbxd: '://search.unbxd.io',
       cookie: null,
       isMobile: false,
+      graphql_reqion: awsAppSync.aws_appsync_region,
+      graphql_endpoint_url: awsAppSync.aws_appsync_graphqlEndpoint,
+      graphql_auth_type: awsAppSync.aws_appsync_authenticationType,
+      graphql_api_key: awsAppSync.aws_appsync_apiKey,
     };
   } else if (deriveApiConfigObj) {
     apiConfig = (getStoreRef() && getStoreRef().getState()[APICONFIG_REDUCER_KEY]) || {};

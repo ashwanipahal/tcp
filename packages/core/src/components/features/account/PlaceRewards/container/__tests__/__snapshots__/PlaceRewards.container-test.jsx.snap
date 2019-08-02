@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlaceRewardsContainer should not render if site id is ca 1`] = `""`;
+
+exports[`PlaceRewardsContainer should render correctly 1`] = `
+<PlaceRewardsView
+  labels={
+    Object {
+      "common": Object {},
+      "myPlaceRewards": Object {},
+    }
+  }
+/>
+`;
