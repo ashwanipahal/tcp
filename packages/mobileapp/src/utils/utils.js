@@ -10,6 +10,7 @@ import icons from './icons';
 import { APP_TYPE } from '../components/common/hoc/ThemeWrapper.constants';
 
 let brandName = APP_TYPE.TCP;
+const MOMENT_DATE_FORMAT = 'YYYY-MM-DD';
 
 // constants for last splash animation
 export const AppAnimationConfig = {
@@ -121,7 +122,10 @@ export const updateBrandName = appType => {
  *
  */
 export const updateLastSplashAnimationDate = async () => {
-  setValueInAsyncStorage(AppAnimationConfig.LAST_ANIMATION_DATE, moment());
+  setValueInAsyncStorage(
+    AppAnimationConfig.LAST_ANIMATION_DATE,
+    moment().format(MOMENT_DATE_FORMAT)
+  );
 };
 
 /**
@@ -133,11 +137,12 @@ export const updateLastSplashAnimationDate = async () => {
  * @returns
  */
 export const shouldAnimateLogo = async () => {
-  const today = moment();
+  const today = moment().format(MOMENT_DATE_FORMAT);
   const { LAST_ANIMATION_DATE, ANIMATION_REPEAT_DAYS } = AppAnimationConfig;
   const lastAnimationDate = await geValueFromAsyncStorage(LAST_ANIMATION_DATE);
   const isLastAnimationDiffValid =
-    today.diff(moment(lastAnimationDate), 'days') >= ANIMATION_REPEAT_DAYS;
+    lastAnimationDate &&
+    today.diff(moment(lastAnimationDate, MOMENT_DATE_FORMAT), 'days') >= ANIMATION_REPEAT_DAYS;
   return lastAnimationDate ? isLastAnimationDiffValid : true;
 };
 
