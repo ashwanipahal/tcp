@@ -9,7 +9,6 @@ type Props = {
   anchorVariation?: string,
   text?: string,
   visible?: boolean,
-  variation?: string,
   children?: Object,
   customStyle?: Object,
 };
@@ -54,7 +53,6 @@ Anchor.defaultProps = {
   anchorVariation: '',
   text: '',
   visible: false,
-  variation: '',
   children: null,
   customStyle: {},
 };

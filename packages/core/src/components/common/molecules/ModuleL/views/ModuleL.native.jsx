@@ -48,15 +48,7 @@ const renderItem = (item, navigation) => {
         <Image url={image.url} height={127} crop={image.crop_m} />
         <MessageContainer>
           <BodyCopyContainer width={width}>
-            <BodyCopy
-              fontSize="fs20"
-              color="black"
-              letterSpacing="ls222"
-              text={image.alt}
-              onPress={() => {
-                UrlHandler(link.url);
-              }}
-            />
+            <BodyCopy fontSize="fs20" color="black" letterSpacing="ls222" text={image.alt} />
           </BodyCopyContainer>
           <LinkContainer>
             <Anchor
