@@ -1,5 +1,6 @@
-import { call, takeLatest } from 'redux-saga/effects';
+import { call, takeLatest, put } from 'redux-saga/effects';
 import LOGOUT_CONSTANTS from '../LogOut.constants';
+import { resetLoginInfo } from '../../LoginPage/container/LoginPage.actions';
 import { routerPush } from '../../../../../utils/utils';
 import fetchData from '../../../../../service/API';
 // import { login, getProfile } from '../../../../../services/abstractors/account';
@@ -23,6 +24,7 @@ export function* logoutSaga() {
       method
     );
     if (res.statusCode === 200) {
+      yield put(resetLoginInfo());
       routerPush('/', '/home');
     }
   } catch (err) {

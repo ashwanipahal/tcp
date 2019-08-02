@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import Anchor from '../../../../common/atoms/Anchor';
 
 class LogOutView extends React.Component {
-  logoutApp = () => {
+  logoutApp = e => {
+    e.preventDefault();
     const { triggerLogout } = this.props;
     triggerLogout();
   };
@@ -18,8 +19,6 @@ class LogOutView extends React.Component {
             className="elem-pb-SM"
             fontSizeVariation="xlarge"
             anchorVariation="secondary"
-            to="/account?id=address-book"
-            data-locator="addnewaddress-back"
           >
             logout container
           </Anchor>
