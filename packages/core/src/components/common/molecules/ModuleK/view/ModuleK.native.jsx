@@ -4,13 +4,18 @@ import PropTypes from 'prop-types';
 import Button from '../../../atoms/Button';
 import LinkText from '../../LinkText';
 
-import { MainWrapper, WrapperView, PromoTextBannerWrapper } from '../ModuleK.style.native';
+import {
+  MainWrapper,
+  WrapperView,
+  PromoTextBannerWrapper,
+  HeaderWrapper,
+} from '../ModuleK.style.native';
 import { ImageGrid, PromoTextBanner, Carousel } from '../..';
 
 import { UrlHandler, getScreenWidth } from '../../../../../utils/utils.native';
 
 const MODULE_HEIGHT = 260;
-const MODULE_WIDTH = 347;
+const MODULE_WIDTH = getScreenWidth();
 
 class ModuleK extends React.PureComponent {
   /**
@@ -23,17 +28,19 @@ class ModuleK extends React.PureComponent {
 
     return (
       <React.Fragment>
-        {promoTextBanner && (
-          <PromoTextBannerWrapper>
-            <PromoTextBanner
-              dataLocator={`moduleK_promobanner_text_${slideIndex}`}
-              promoTextBanner={promoTextBanner}
-            />
-          </PromoTextBannerWrapper>
-        )}
+        <HeaderWrapper>
+          {promoTextBanner && (
+            <PromoTextBannerWrapper>
+              <PromoTextBanner
+                dataLocator={`moduleK_promobanner_text_${slideIndex}`}
+                promoTextBanner={promoTextBanner}
+              />
+            </PromoTextBannerWrapper>
+          )}
+        </HeaderWrapper>
         <ImageGrid dataLocator={`moduleK_image_${slideIndex}`} mediaList={mediaList} />
         {singleCTAButton && (
-          <WrapperView width={getScreenWidth() - 20}>
+          <WrapperView width={getScreenWidth()}>
             <Button
               width="225px"
               height="42px"
@@ -61,23 +68,25 @@ class ModuleK extends React.PureComponent {
 
     return (
       <MainWrapper>
-        {headerText && (
-          <LinkText
-            textItems={headerText[0].textItems}
-            link={headerText[0].link}
-            fontSize="fs36"
-            fontWeight="black"
-            textAlign="center"
-            dataLocator="moduleK_header_text"
-            onPress={() => UrlHandler(headerText[0].link.url)}
-          />
-        )}
-        {outerPromoTextBanner && (
-          <PromoTextBanner
-            dataLocator="moduleK_outerPromoBanner_text"
-            promoTextBanner={outerPromoTextBanner}
-          />
-        )}
+        <HeaderWrapper>
+          {headerText && (
+            <LinkText
+              textItems={headerText[0].textItems}
+              link={headerText[0].link}
+              fontSize="fs36"
+              fontWeight="black"
+              textAlign="center"
+              dataLocator="moduleK_header_text"
+              onPress={() => UrlHandler(headerText[0].link.url)}
+            />
+          )}
+          {outerPromoTextBanner && (
+            <PromoTextBanner
+              dataLocator="moduleK_outerPromoBanner_text"
+              promoTextBanner={outerPromoTextBanner}
+            />
+          )}
+        </HeaderWrapper>
         <Carousel
           data={indexedMasonryGrid}
           renderItem={this.renderCarouselSlide}

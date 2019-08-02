@@ -2,8 +2,10 @@ import styled from 'styled-components';
 
 import BodyCopy from '../../atoms/BodyCopy';
 
-const MainWrapper = styled.View`
-  margin: ${props => props.theme.spacing.LAYOUT_SPACING.SM} 14px;
+const MainWrapper = styled.View``;
+
+const HeaderWrapper = styled.View`
+  padding: 0 18px;
 `;
 
 const PromoTextBannerWrapper = styled.View`
@@ -23,11 +25,18 @@ const StyledBodyCopy = styled(BodyCopy)`
   ${({ lineHeight }) => (lineHeight ? `line-height: ${lineHeight}` : '')}
 `;
 
-export { MainWrapper, WrapperView, PromoTextBannerWrapper, StyledBodyCopy as BodyCopy };
+export {
+  MainWrapper,
+  HeaderWrapper,
+  WrapperView,
+  PromoTextBannerWrapper,
+  StyledBodyCopy as BodyCopy,
+};
 
 export default {
   MainWrapper,
   WrapperView,
+  HeaderWrapper,
   PromoTextBannerWrapper,
   StyledBodyCopy: BodyCopy,
 };
