@@ -41,7 +41,7 @@ const getDescriptionStyle = props => {
   ${getTextBaseStyle};
   font-size: ${typography.fontSizes.fs12};
   color: ${colorPalette.text.primary};
-  margin-bottom: ${'20px'};
+  margin-bottom: ${theme.spacing.APP_LAYOUT_SPACING.XS};
   text-align: center;
   `;
 };

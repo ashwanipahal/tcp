@@ -50,17 +50,19 @@ class LoginSection extends React.PureComponent<Props> {
     const { resetPassword } = this.state;
     return (
       <View>
-        {!resetPassword && <LoginTopSection labels={labels} />}
         {!resetPassword && (
-          <LoginForm
-            onSubmit={onSubmit}
-            labels={labels}
-            loginErrorMessage={loginErrorMessage}
-            initialValues={initialValues}
-            showRecaptcha={showRecaptcha}
-            showForgotPasswordForm={this.showForgotPassword}
-            resetForm={resetForm}
-          />
+          <React.Fragment>
+            <LoginTopSection labels={labels} />
+            <LoginForm
+              onSubmit={onSubmit}
+              labels={labels}
+              loginErrorMessage={loginErrorMessage}
+              initialValues={initialValues}
+              showRecaptcha={showRecaptcha}
+              showForgotPasswordForm={this.showForgotPassword}
+              resetForm={resetForm}
+            />
+          </React.Fragment>
         )}
 
         {resetPassword && (
