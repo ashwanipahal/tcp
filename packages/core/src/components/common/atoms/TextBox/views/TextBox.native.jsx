@@ -152,15 +152,15 @@ export class TextBox extends React.Component {
     return (
       <View>
         {type === 'hidden' ? (
-          <HiddenView>{this.renderTextBox({ elemValue, isFocused, others })}</HiddenView>
+          <View>
+            <HiddenView>{this.renderTextBox({ elemValue, isFocused, others })}</HiddenView>
+            {this.getErrorMsg()}
+          </View>
         ) : (
-          this.renderTextBox({ elemValue, isFocused, others })
-        )}
-
-        {type === 'hidden' ? (
-          this.getErrorMsg()
-        ) : (
-          <StyledTextBoxWrapper>{this.getErrorMsg()}</StyledTextBoxWrapper>
+          <View>
+            {this.renderTextBox({ elemValue, isFocused, others })}
+            <StyledTextBoxWrapper>{this.getErrorMsg()}</StyledTextBoxWrapper>
+          </View>
         )}
       </View>
     );
