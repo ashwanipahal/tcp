@@ -12,29 +12,25 @@ export class AddedToBagViewPointsContainer extends React.Component {
   componentDidMount = () => {};
 
   render() {
-    const { getOrderPointsSummary, labels, lastAddedToBag } = this.props;
-    const pointsSummary = getPointsSummary(getOrderPointsSummary, lastAddedToBag);
+    const { pointsSummary, labels } = this.props;
     return <AddedToBagViewPoints labels={labels} pointsSummary={pointsSummary} />;
   }
 }
 
 function mapStateToProps(state) {
   return {
-    getOrderPointsSummary: getCartOrderDetails(state),
-    lastAddedToBag: getAddedToBagData(state),
+    pointsSummary: getPointsSummary(getCartOrderDetails(state), getAddedToBagData(state)),
   };
 }
 
 AddedToBagViewPointsContainer.propTypes = {
-  getOrderPointsSummary: PropTypes.shape,
+  pointsSummary: PropTypes.shape,
   labels: PropTypes.shape,
-  lastAddedToBag: PropTypes.shape,
 };
 
 AddedToBagViewPointsContainer.defaultProps = {
-  getOrderPointsSummary: {},
+  pointsSummary: {},
   labels: {},
-  lastAddedToBag: {},
 };
 
 export default connect(mapStateToProps)(AddedToBagViewPointsContainer);

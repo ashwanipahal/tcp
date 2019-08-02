@@ -33,7 +33,9 @@ describe('AddGiftCard Reducer', () => {
       ...getOrderDetailAction,
     });
 
-    expect(newState.orderDetails.length).toEqual(getOrderDetailAction.payload.orderDetails.length);
+    expect(newState.get('orderDetails').length).toEqual(
+      getOrderDetailAction.payload.orderDetails.length
+    );
   });
 
   it('GET_PRODUCT_SKU_INFO_SUCCESS', () => {
@@ -41,7 +43,7 @@ describe('AddGiftCard Reducer', () => {
       ...getProductSkuInfoSuccess,
     });
 
-    expect(newState.editableItemData.productId).toEqual(
+    expect(newState.get('editableItemData').get('productId')).toEqual(
       getProductSkuInfoSuccess.payload.product.productId
     );
   });
