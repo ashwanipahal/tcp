@@ -26,17 +26,19 @@ const CreateAccountTopSection = props => {
       </CenterAlignWrapper>
       <CenterAlignWrapper className="labels-wrapper">
         <TextAlignCenter>
-          {labels.CREATE_ACC_LBL_CREATE_A}
-          {labels.CREATE_ACC_LBL_MY_PLACE_REWARDS}
-          {labels.CREATE_ACC_LBL_EARN_POINTS}
+          {labels.createAccount.CREATE_ACC_LBL_CREATE_A}
+          {labels.createAccount.CREATE_ACC_LBL_MY_PLACE_REWARDS}
+          {labels.createAccount.CREATE_ACC_LBL_EARN_POINTS}
         </TextAlignCenter>
         <View>
-          <TextAlignCenter>{labels.CREATE_ACC_LBL_SPEND_POINT}</TextAlignCenter>
-          <TextAlignCenter>{labels.CREATE_ACC_LBL_POINT_REWARD}</TextAlignCenter>
+          <TextAlignCenter>{labels.createAccount.CREATE_ACC_LBL_SPEND_POINT}</TextAlignCenter>
+          <TextAlignCenter>{labels.createAccount.CREATE_ACC_LBL_POINT_REWARD}</TextAlignCenter>
         </View>
         <View>
-          <TextAlignCenter>{labels.CREATE_ACC_LBL_SIGNED_UP}</TextAlignCenter>
-          <TextAlignCenter>{labels.CREATE_ACC_LBL_ONLINE_ACC_CREATED}</TextAlignCenter>
+          <TextAlignCenter>{labels.createAccount.CREATE_ACC_LBL_SIGNED_UP}</TextAlignCenter>
+          <TextAlignCenter>
+            {labels.createAccount.CREATE_ACC_LBL_ONLINE_ACC_CREATED}
+          </TextAlignCenter>
         </View>
       </CenterAlignWrapper>
     </View>

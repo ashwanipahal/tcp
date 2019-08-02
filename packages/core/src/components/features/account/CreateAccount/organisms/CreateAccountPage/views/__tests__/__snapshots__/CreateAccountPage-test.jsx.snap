@@ -11,6 +11,7 @@ exports[`Create Account Page should render correctly 1`] = `
       labels={
         Object {
           "CREATE_ACC_LBL_HIDE": "hide",
+          "createAccount": Object {},
         }
       }
     />
@@ -49,6 +50,7 @@ exports[`Create Account Page should render correctly 1`] = `
       labels={
         Object {
           "CREATE_ACC_LBL_HIDE": "hide",
+          "createAccount": Object {},
         }
       }
       onSubmit={[Function]}

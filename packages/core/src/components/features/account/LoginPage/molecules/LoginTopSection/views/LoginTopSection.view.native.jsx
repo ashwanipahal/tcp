@@ -24,9 +24,9 @@ const LoginTopSection = props => {
     <View {...props}>
       <ImageComp source={TheMarketPlaceLogo} width={186} height={60} customStyle={imgStyle} />
       <LineComp marginTop={30} marginBottom={17} />
-      <HeadingStyle>{labels.ACC_LBL_LOGIN_HEADING}</HeadingStyle>
-      <SubHeadingStyle>{labels.ACC_LBL_LOGIN_SUB_HEADING}</SubHeadingStyle>
-      <DescriptionStyle>{labels.ACC_LBL_LOGIN_SUB_DESCRIPTION}</DescriptionStyle>
+      <HeadingStyle>{labels.login.ACC_LBL_LOGIN_HEADING}</HeadingStyle>
+      <SubHeadingStyle>{labels.login.ACC_LBL_LOGIN_SUB_HEADING}</SubHeadingStyle>
+      <DescriptionStyle>{labels.login.ACC_LBL_LOGIN_SUB_DESCRIPTION}</DescriptionStyle>
       <LineComp marginTop={25} marginBottom={0} />
     </View>
   );

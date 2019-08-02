@@ -19,7 +19,7 @@ const LoginTopSection = ({ labels, className }) => {
       </BodyCopy>
       <BodyCopy component="div" className="bordered elem-pt-MED elem-pb-LRG">
         <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary" textAlign="center">
-          {labels.ACC_LBL_LOGIN_HEADING}
+          {labels.login.ACC_LBL_LOGIN_HEADING}
         </BodyCopy>
         <BodyCopy
           fontWeight="semibold"
@@ -27,10 +27,10 @@ const LoginTopSection = ({ labels, className }) => {
           textAlign="center"
           className="elem-mb-SM"
         >
-          {labels.ACC_LBL_LOGIN_SUB_HEADING}
+          {labels.login.ACC_LBL_LOGIN_SUB_HEADING}
         </BodyCopy>
         <BodyCopy fontFamily="secondary" textAlign="center">
-          {labels.ACC_LBL_LOGIN_SUB_DESCRIPTION}
+          {labels.login.ACC_LBL_LOGIN_SUB_DESCRIPTION}
         </BodyCopy>
       </BodyCopy>
     </BodyCopy>

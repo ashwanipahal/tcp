@@ -52,7 +52,7 @@ export const LoginForm = props => {
   return (
     <View {...props}>
       <Field
-        label={labels.ACC_LBL_LOGIN_EMAIL}
+        label={labels.login.ACC_LBL_LOGIN_EMAIL}
         name="emailAddress"
         id="emailAddress"
         type="text"
@@ -60,7 +60,7 @@ export const LoginForm = props => {
         dataLocator="emailAddress"
       />
       <Field
-        label={labels.ACC_LBL_LOGIN_PASSWORD}
+        label={labels.login.ACC_LBL_LOGIN_PASSWORD}
         name="password"
         id="password"
         type="text"
@@ -74,14 +74,14 @@ export const LoginForm = props => {
           component={InputCheckbox}
           dataLocator="rememberMe"
           disabled={false}
-          rightText={labels.ACC_LBL_LOGIN_REMEMBER_ME}
+          rightText={labels.login.ACC_LBL_LOGIN_REMEMBER_ME}
         />
         <Field
           name="savePlcc"
           component={InputCheckbox}
           dataLocator="savePlcc"
           disabled={false}
-          rightText={labels.ACC_LBL_LOGIN_SAVE_MY_PLACE}
+          rightText={labels.login.ACC_LBL_LOGIN_SAVE_MY_PLACE}
           marginTop={13}
         />
       </View>
@@ -89,7 +89,7 @@ export const LoginForm = props => {
       <CustomButton
         color="#FFFFFF"
         fill="BLUE"
-        text={labels.ACC_LBL_LOGIN_CTA}
+        text={labels.login.ACC_LBL_LOGIN_CTA}
         buttonVariation="variable-width"
         customStyle={styles.loginButtonStyle}
         onPress={handleSubmit(onSubmit)}
@@ -97,13 +97,13 @@ export const LoginForm = props => {
       <Anchor
         fontSizeVariation="xlarge"
         anchorVariation="secondary"
-        text={labels.ACC_LBL_LOGIN_FORGET_PASSWORD_CTA}
+        text={labels.login.ACC_LBL_LOGIN_FORGET_PASSWORD_CTA}
         customStyle={styles.forgotPasswordStyle}
       />
       <LineComp marginTop={28} />
-      <DescriptionStyle>{labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}</DescriptionStyle>
+      <DescriptionStyle>{labels.login.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}</DescriptionStyle>
       <CustomButton
-        text={labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
+        text={labels.login.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
         buttonVariation="variable-width"
         onPress={() => setModalState(true)}
         customStyle={styles.createAccountStyle}

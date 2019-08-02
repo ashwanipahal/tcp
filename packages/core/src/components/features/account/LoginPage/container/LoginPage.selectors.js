@@ -27,3 +27,5 @@ export const shouldShowRecaptcha = createSelector(
     loginState &&
     parseInt(loginState.get('retriesCount') || 0, 10) > constants.FAILED_ATTEMPT_ALLOWED
 );
+
+export const getLabels = state => state.Labels.account;

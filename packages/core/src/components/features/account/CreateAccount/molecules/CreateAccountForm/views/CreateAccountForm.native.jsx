@@ -35,7 +35,7 @@ const CreateAccountForm = props => {
     <View {...props}>
       <ParentView>
         <Field
-          label={labels.CREATE_ACC_LBL_FIRST_NAME}
+          label={labels.createAccount.CREATE_ACC_LBL_FIRST_NAME}
           name="firstName"
           id="firstName"
           type="text"
@@ -43,7 +43,7 @@ const CreateAccountForm = props => {
           dataLocator="firstName"
         />
         <Field
-          label={labels.CREATE_ACC_LBL_LAST_NAME}
+          label={labels.createAccount.CREATE_ACC_LBL_LAST_NAME}
           name="lastName"
           id="lastName"
           type="text"
@@ -51,7 +51,7 @@ const CreateAccountForm = props => {
           dataLocator="lastName"
         />
         <Field
-          label={labels.CREATE_ACC_LBL_PHONE_NUMBER}
+          label={labels.createAccount.CREATE_ACC_LBL_PHONE_NUMBER}
           name="phoneNumber"
           id="phoneNumber"
           type="text"
@@ -59,7 +59,7 @@ const CreateAccountForm = props => {
           dataLocator="phoneNumber"
         />
         <Field
-          label={labels.CREATE_ACC_LBL_ZIP_CODE}
+          label={labels.createAccount.CREATE_ACC_LBL_ZIP_CODE}
           name="noCountryZip"
           id="ZipCode"
           type="text"
@@ -67,7 +67,7 @@ const CreateAccountForm = props => {
           dataLocator="Zip-Code"
         />
         <Field
-          label={labels.CREATE_ACC_LBL_EMAIL_ADDRESS}
+          label={labels.createAccount.CREATE_ACC_LBL_EMAIL_ADDRESS}
           name="emailAddress"
           id="emailAddress"
           type="text"
@@ -75,7 +75,7 @@ const CreateAccountForm = props => {
           dataLocator="emailAddress"
         />
         <Field
-          label={labels.CREATE_ACC_LBL_CONFIRM_EMAIL}
+          label={labels.createAccount.CREATE_ACC_LBL_CONFIRM_EMAIL}
           name="confirmEmailAddress"
           id="confirmEmailAddress"
           type="text"
@@ -83,7 +83,7 @@ const CreateAccountForm = props => {
           dataLocator="confirmEmailAddress"
         />
         <Field
-          label={labels.CREATE_ACC_LBL_PASSWORD}
+          label={labels.createAccount.CREATE_ACC_LBL_PASSWORD}
           name="password"
           id="password"
           type="text"
@@ -91,7 +91,7 @@ const CreateAccountForm = props => {
           dataLocator="password"
         />
         <Field
-          label={labels.CREATE_ACC_LBL_CONFIRM_PASSWORD}
+          label={labels.createAccount.CREATE_ACC_LBL_CONFIRM_PASSWORD}
           name="confirmPassword"
           id="confirmPassword"
           type="text"
@@ -103,7 +103,7 @@ const CreateAccountForm = props => {
           component={InputCheckbox}
           dataLocator="saveMyPlaceRewards"
           disabled={false}
-          rightText={labels.CREATE_ACC_LBL_SAVE_REWARDS}
+          rightText={labels.createAccount.CREATE_ACC_LBL_SAVE_REWARDS}
           onClick={onSaveMyPlaceRewards}
         />
         <Field
@@ -111,7 +111,7 @@ const CreateAccountForm = props => {
           component={InputCheckbox}
           dataLocator="TnC"
           disabled={false}
-          rightText={labels.CREATE_ACC_LBL_TERMS_CONDITIONS}
+          rightText={labels.createAccount.CREATE_ACC_LBL_TERMS_CONDITIONS}
           marginTop={13}
           onClick={onTnC}
         />
@@ -120,7 +120,7 @@ const CreateAccountForm = props => {
           component={InputCheckbox}
           dataLocator="useTouchID"
           disabled={false}
-          rightText={labels.CREATE_ACC_LBL_USE_TOUCH_ID}
+          rightText={labels.createAccount.CREATE_ACC_LBL_USE_TOUCH_ID}
           onClick={onUseTouchID}
         />
         <Field
@@ -128,13 +128,13 @@ const CreateAccountForm = props => {
           component={InputCheckbox}
           dataLocator="useFaceID"
           disabled={false}
-          rightText={labels.CREATE_ACC_LBL_USE_FACE_ID}
+          rightText={labels.createAccount.CREATE_ACC_LBL_USE_FACE_ID}
           marginTop={13}
           onClick={onUseFaceID}
         />
         <ButtonWrapper>
           <CustomButton
-            text={labels.CREATE_ACC_LBL_CREATE_ACCOUNT}
+            text={labels.createAccount.CREATE_ACC_LBL_CREATE_ACCOUNT}
             buttonVariation="variable-width"
             onPress={handleSubmit(handleSubmitForm)}
             fill="BLUE"
@@ -145,7 +145,7 @@ const CreateAccountForm = props => {
           <Anchor
             fontSizeVariation="xlarge"
             anchorVariation="secondary"
-            text={labels.CREATE_ACC_LBL_ALREADY_ACCOUNT}
+            text={labels.createAccount.CREATE_ACC_LBL_ALREADY_ACCOUNT}
           />
         </AlreadyAccountWrapper>
       </ParentView>

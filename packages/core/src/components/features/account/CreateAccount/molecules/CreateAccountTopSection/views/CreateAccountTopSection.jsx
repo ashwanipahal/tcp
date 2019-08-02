@@ -20,20 +20,22 @@ const CreateAccountTopSection = props => {
       <div className="elem-pr-MED elem-pl-MED">
         <div className="labels-wrapper">
           <div className="elem-pb-XS">
-            <span>{labels.CREATE_ACC_LBL_CREATE_A}</span>
-            <span className="my-place-rewards">{labels.CREATE_ACC_LBL_MY_PLACE_REWARDS}</span>
-            <span>{labels.CREATE_ACC_LBL_EARN_POINTS}</span>
+            <span>{labels.createAccount.CREATE_ACC_LBL_CREATE_A}</span>
+            <span className="my-place-rewards">
+              {labels.createAccount.CREATE_ACC_LBL_MY_PLACE_REWARDS}
+            </span>
+            <span>{labels.createAccount.CREATE_ACC_LBL_EARN_POINTS}</span>
           </div>
           <div className="elem-pb-XS spend-points">
-            <p>{labels.CREATE_ACC_LBL_SPEND_POINT}</p>
-            <p>{labels.CREATE_ACC_LBL_POINT_REWARD}</p>
+            <p>{labels.createAccount.CREATE_ACC_LBL_SPEND_POINT}</p>
+            <p>{labels.createAccount.CREATE_ACC_LBL_POINT_REWARD}</p>
           </div>
           <div>
-            <p>{labels.CREATE_ACC_LBL_SIGNED_UP}</p>
-            <p>{labels.CREATE_ACC_LBL_ONLINE_ACC_CREATED}</p>
+            <p>{labels.createAccount.CREATE_ACC_LBL_SIGNED_UP}</p>
+            <p>{labels.createAccount.CREATE_ACC_LBL_ONLINE_ACC_CREATED}</p>
             <div className="reset-pwd">
               <Anchor className="reset-password" to="" target="">
-                {labels.CREATE_ACC_LBL_RESET_PWD}
+                {labels.createAccount.CREATE_ACC_LBL_RESET_PWD}
               </Anchor>
             </div>
           </div>

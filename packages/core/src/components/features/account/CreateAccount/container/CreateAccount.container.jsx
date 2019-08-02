@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import CreateAccountView from '../views/CreateAccount.view';
 import { createAccount } from './CreateAccount.actions';
-import labels from '../CreateAccount.labels';
 import {
   getIAgree,
   getHideShowPwd,
   getConfirmHideShowPwd,
   getError,
+  getLabels,
 } from './CreateAccount.selectors';
 
 // @flow
@@ -18,6 +18,7 @@ type Props = {
   hideShowPwd: string,
   confirmHideShowPwd: string,
   error: any,
+  labels: object,
 };
 
 export const CreateAccountContainer = ({
@@ -27,6 +28,7 @@ export const CreateAccountContainer = ({
   hideShowPwd,
   confirmHideShowPwd,
   error,
+  labels,
 }: Props) => {
   return (
     <CreateAccountView
@@ -47,6 +49,7 @@ export const mapStateToProps = state => {
     hideShowPwd: getHideShowPwd(state),
     confirmHideShowPwd: getConfirmHideShowPwd(state),
     error: getError(state),
+    labels: getLabels(state),
   };
 };
 

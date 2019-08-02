@@ -87,7 +87,7 @@ class LoginSection extends React.PureComponent<Props> {
 
           <BodyCopy component="div" className="border elem-pt-MED elem-pb-LRG">
             <BodyCopy fontSize="fs12" textAlign="center" className="elem-mb-LRG">
-              {labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}
+              {labels.login.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}
             </BodyCopy>
           </BodyCopy>
           <Button
@@ -98,7 +98,7 @@ class LoginSection extends React.PureComponent<Props> {
             data-locator=""
             onClick={onCreateAccountClick}
           >
-            {labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
+            {labels.login.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
           </Button>
         </Col>
       </Row>
