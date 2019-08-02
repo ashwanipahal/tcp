@@ -23,6 +23,14 @@ class Dropdown extends React.PureComponent {
     window.addEventListener('click', this.closeDropdownIfClickOutside);
   }
 
+  componentDidUpdate(prevProps) {
+    const { options } = this.props;
+    const { navState } = this.state;
+    if (options !== prevProps.options) {
+      this.calNavState(options, navState);
+    }
+  }
+
   componentWillUnmount() {
     if (window) {
       window.removeEventListener('click', this.closeDropdownIfClickOutside);
@@ -33,6 +41,24 @@ class Dropdown extends React.PureComponent {
     const { dropDownExpand } = this.state;
     if (dropDownExpand && !this.dropDown.contains(e.target)) {
       this.toggleHandler();
+    }
+  };
+
+  calNavState = (options, navState) => {
+    for (let j = 0; j < options.length; j += 1) {
+      const nav = options[j];
+      if (nav.subSections && nav.subSections.length) {
+        for (let i = 0; i < nav.subSections.length; i += 1) {
+          if (navState.component === nav.subSections[i].component) {
+            this.updateState(nav.subSections[i]);
+            break;
+          }
+        }
+      }
+      if (navState.component === nav.component) {
+        this.updateState(nav);
+        break;
+      }
     }
   };
 
@@ -105,22 +131,6 @@ class Dropdown extends React.PureComponent {
   render() {
     const { dropDownExpand, navState } = this.state;
     const { className, options } = this.props;
-
-    for (let j = 0; j < options.length; j += 1) {
-      const nav = options[j];
-      if (nav.subSections && nav.subSections.length) {
-        for (let i = 0; i < nav.subSections.length; i += 1) {
-          if (navState.component === nav.subSections[i].component) {
-            this.updateState(nav.subSections[i]);
-            break;
-          }
-        }
-      }
-      if (navState.component === nav.component) {
-        this.updateState(nav);
-        break;
-      }
-    }
 
     return (
       <BodyCopy component="div" className={`${className} drop_down`}>
