@@ -1,53 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getOrderDetails } from '../../Cart/containers/Cart.actions';
 import AddedToBagViewPoints from '../views/AddedToBagViewPoints.view';
-import getCartOrderList from '../../Cart/containers/Cart.selectors';
-import { getAddedToBagData } from '../../AddedToBag/container/AddedToBag.selectors';
-import getPointsSummary from '../../Cart/util/utility';
+import { getCartOrderDetails } from '../../CartItemTile/container/CartItemTile.selectors';
+import {
+  getAddedToBagData,
+  getPointsSummary,
+} from '../../AddedToBag/container/AddedToBag.selectors';
 
 export class AddedToBagViewPointsContainer extends React.Component {
-  componentDidMount = () => {
-    const { getOrderDetailsAction } = this.props;
-    getOrderDetailsAction();
-  };
+  componentDidMount = () => {};
 
   render() {
-    const { getOrderPointsSummary, labels, lastAddedToBag } = this.props;
-    const pointsSummary = getPointsSummary(getOrderPointsSummary, lastAddedToBag);
+    const { pointsSummary, labels } = this.props;
     return <AddedToBagViewPoints labels={labels} pointsSummary={pointsSummary} />;
   }
 }
-export const mapDispatchToProps = dispatch => {
-  return {
-    getOrderDetailsAction: () => {
-      dispatch(getOrderDetails());
-    },
-  };
-};
 
 function mapStateToProps(state) {
   return {
-    getOrderPointsSummary: getCartOrderList(state),
-    lastAddedToBag: getAddedToBagData(state),
+    pointsSummary: getPointsSummary(getCartOrderDetails(state), getAddedToBagData(state)),
   };
 }
 
 AddedToBagViewPointsContainer.propTypes = {
-  getOrderDetailsAction: PropTypes.func.isRequired,
-  getOrderPointsSummary: PropTypes.shape,
+  pointsSummary: PropTypes.shape,
   labels: PropTypes.shape,
-  lastAddedToBag: PropTypes.shape,
 };
 
 AddedToBagViewPointsContainer.defaultProps = {
-  getOrderPointsSummary: {},
+  pointsSummary: {},
   labels: {},
-  lastAddedToBag: {},
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AddedToBagViewPointsContainer);
+export default connect(mapStateToProps)(AddedToBagViewPointsContainer);

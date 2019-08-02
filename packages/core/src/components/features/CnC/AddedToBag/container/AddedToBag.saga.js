@@ -4,7 +4,11 @@ import ADDEDTOBAG_CONSTANTS from '../AddedToBag.constants';
 import fetchData from '../../../../../service/API';
 import { AddToCartError, SetAddedToBagData, openAddedToBag } from './AddedToBag.actions';
 import endpoints from '../../../../../service/endpoint';
+import { getOrderDetails } from '../../CartItemTile/container/CartItemTile.actions';
 
+const checkForError = res => {
+  return res.body && !res.body.error && !res.body.errors && !res.body.errorMessage;
+};
 export function* addToCartEcom({ payload }) {
   try {
     const sku = payload.skuInfo.skuId;
@@ -31,7 +35,7 @@ export function* addToCartEcom({ payload }) {
     const { relURI, method } = endpoints.addProductToCart;
     const baseURI = endpoints.addProductToCart.baseURI || endpoints.global.baseURI;
     const res = yield call(fetchData, baseURI, relURI, params, method);
-    if (res.body && !res.body.error && !res.body.errors) {
+    if (checkForError(res)) {
       yield put(
         SetAddedToBagData({
           ...payload,
@@ -40,6 +44,7 @@ export function* addToCartEcom({ payload }) {
         })
       );
       yield put(openAddedToBag());
+      yield put(getOrderDetails());
     } else {
       yield put(AddToCartError(res.error || res.body.error));
     }
@@ -77,7 +82,7 @@ export function* addItemToCartBopis({ payload }) {
     const { relURI, method } = endpoints.addOrderBopisItem;
     const baseURI = endpoints.addOrderBopisItem.baseURI || endpoints.global.baseURI;
     const res = yield call(fetchData, baseURI, relURI, params, method);
-    if (res.body && !res.body.error && !res.body.errors) {
+    if (checkForError(res)) {
       yield put(
         SetAddedToBagData({
           ...payload,
@@ -85,6 +90,7 @@ export function* addItemToCartBopis({ payload }) {
         })
       );
       yield put(openAddedToBag());
+      yield put(getOrderDetails());
     } else {
       yield put(AddToCartError(res.error || res.body.error));
     }

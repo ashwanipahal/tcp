@@ -19,21 +19,22 @@ const PromotionalArea = ({ className, data, mobile }) => {
     <div className={className}>
       <div className={wrapperClass}>
         <Carousel options={carouselConfig} carouselConfig={{ type: 'dark', arrow: 'small' }}>
-          {data.map(promotion => {
-            const {
-              richText: { text, __typename },
-              link: { url, target },
-            } = promotion;
-            return (
-              <Anchor to={url} target={target}>
-                <RichText
-                  key={__typename}
-                  richTextHtml={text}
-                  dataLocator={getLocator('global_promoareaimg')}
-                />
-              </Anchor>
-            );
-          })}
+          {data &&
+            data.map(promotion => {
+              const {
+                richText: { text, __typename },
+                link: { url, target },
+              } = promotion;
+              return (
+                <Anchor to={url} target={target}>
+                  <RichText
+                    key={__typename}
+                    richTextHtml={text}
+                    dataLocator={getLocator('global_promoareaimg')}
+                  />
+                </Anchor>
+              );
+            })}
         </Carousel>
       </div>
     </div>

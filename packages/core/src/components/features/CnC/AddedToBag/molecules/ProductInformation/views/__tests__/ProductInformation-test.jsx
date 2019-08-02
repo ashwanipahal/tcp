@@ -6,7 +6,7 @@ describe('BossBannerView component', () => {
   it('renders correctly', () => {
     const props = {
       data: {
-        productName: 'abc',
+        productName: 'Boys Basic Skinny Jeans',
         skuInfo: {
           color: {
             family: 'RED',
@@ -17,9 +17,9 @@ describe('BossBannerView component', () => {
         quantity: '1',
       },
       labels: {
-        colorLabel: 'abc',
-        sizeLabel: 'def',
-        qtyLabel: 'xyz',
+        colorLabel: 'Color',
+        sizeLabel: 'Size',
+        qtyLabel: 'Qty',
       },
     };
     const component = shallow(<ProductInformationView {...props} />);

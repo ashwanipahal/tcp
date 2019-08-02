@@ -126,6 +126,7 @@ class CookiesTestView extends React.Component {
       )
       .set('Accept', 'application/json')
       .send(JSON.stringify(payload))
+      .withCredentials()
       .then(res => {
         console.log(res);
         if (res.status === 200) {

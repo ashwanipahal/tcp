@@ -28,6 +28,9 @@ async function fetchData(baseURL, relURL, params = {}, method) {
     if (params.isRest) {
       reqSetting.isRest = params.isRest;
     }
+    if (params.pageName) {
+      reqSetting.pageName = params.pageName;
+    }
   }
   const request = superagent[requestType](requestUrl)
     .set(reqSetting)
