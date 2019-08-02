@@ -81,6 +81,7 @@ exports[`MyRewards should render correctly 1`] = `
         buttonVariation="fixed-width"
         className="shop-now-btn"
         color="white"
+        data-locator="my-rewards-shop-now-btn"
         fill="BLUE"
       />
     </Styled(Col)>

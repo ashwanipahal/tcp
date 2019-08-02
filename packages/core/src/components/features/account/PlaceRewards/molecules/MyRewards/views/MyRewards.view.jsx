@@ -58,7 +58,13 @@ const MyRewards = ({ labels, className }) => {
           offsetLeft={{ large: 4, small: 0, medium: 2 }}
           className="shop-now-btn-wrapper"
         >
-          <Button buttonVariation="fixed-width" fill="BLUE" color="white" className="shop-now-btn">
+          <Button
+            buttonVariation="fixed-width"
+            fill="BLUE"
+            color="white"
+            className="shop-now-btn"
+            data-locator="my-rewards-shop-now-btn"
+          >
             {labels.myPlaceRewards.ACC_LBL_MY_REWARDS_SHOP_NOW}
           </Button>
         </Col>
