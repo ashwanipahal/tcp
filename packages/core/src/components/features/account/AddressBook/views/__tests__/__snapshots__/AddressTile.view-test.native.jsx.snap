@@ -43,6 +43,7 @@ exports[`AddressTile component should renders correctly 1`] = `
         text=""
         to="/#"
         underline={true}
+        variation=""
         visible={false}
       />
     </Styled(View)>
@@ -53,6 +54,7 @@ exports[`AddressTile component should renders correctly 1`] = `
       text=""
       to="/#"
       underline={true}
+      variation=""
       visible={false}
     />
   </Styled(View)>

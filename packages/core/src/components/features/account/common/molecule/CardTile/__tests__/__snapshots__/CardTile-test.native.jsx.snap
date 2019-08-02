@@ -141,6 +141,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
         text=""
         to="/#"
         underline={true}
+        variation=""
         visible={false}
       />
     </Styled(View)>
@@ -152,6 +153,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
       text=""
       to="/#"
       underline={true}
+      variation=""
       visible={false}
     />
   </Styled(View)>
@@ -211,6 +213,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
       text=""
       to="/#"
       underline={true}
+      variation=""
       visible={false}
     />
   </Styled(View)>
@@ -296,6 +299,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
         text=""
         to="/#"
         underline={true}
+        variation=""
         visible={false}
       />
     </Styled(View)>
@@ -307,6 +311,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
       text=""
       to="/#"
       underline={true}
+      variation=""
       visible={false}
     />
   </Styled(View)>
@@ -426,6 +431,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
         text=""
         to="/#"
         underline={true}
+        variation=""
         visible={false}
       />
     </Styled(View)>
@@ -437,6 +443,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
       text=""
       to="/#"
       underline={true}
+      variation=""
       visible={false}
     />
   </Styled(View)>
@@ -496,6 +503,7 @@ exports[`CardTile should render correctly with master card 1`] = `
       text=""
       to="/#"
       underline={true}
+      variation=""
       visible={false}
     />
   </Styled(View)>
@@ -581,6 +589,7 @@ exports[`CardTile should render correctly with master card 1`] = `
         text=""
         to="/#"
         underline={true}
+        variation=""
         visible={false}
       />
     </Styled(View)>
@@ -592,6 +601,7 @@ exports[`CardTile should render correctly with master card 1`] = `
       text=""
       to="/#"
       underline={true}
+      variation=""
       visible={false}
     />
   </Styled(View)>
@@ -711,6 +721,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         text=""
         to="/#"
         underline={true}
+        variation=""
         visible={false}
       />
     </Styled(View)>
@@ -722,6 +733,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       text=""
       to="/#"
       underline={true}
+      variation=""
       visible={false}
     />
   </Styled(View)>
@@ -781,6 +793,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       text=""
       to="/#"
       underline={true}
+      variation=""
       visible={false}
     />
   </Styled(View)>
@@ -858,6 +871,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         text=""
         to="/#"
         underline={true}
+        variation=""
         visible={false}
       />
     </Styled(View)>
@@ -869,6 +883,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       text=""
       to="/#"
       underline={true}
+      variation=""
       visible={false}
     />
   </Styled(View)>
@@ -985,6 +1000,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
       text=""
       to="/#"
       underline={true}
+      variation=""
       visible={false}
     />
   </Styled(View)>
@@ -1044,6 +1060,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
       text=""
       to="/#"
       underline={true}
+      variation=""
       visible={false}
     />
   </Styled(View)>
@@ -1129,6 +1146,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
         text=""
         to="/#"
         underline={true}
+        variation=""
         visible={false}
       />
     </Styled(View)>
@@ -1140,6 +1158,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
       text=""
       to="/#"
       underline={true}
+      variation=""
       visible={false}
     />
   </Styled(View)>

@@ -141,6 +141,7 @@ exports[`LoginForm component should renders correctly 1`] = `
     }
     fontSizeVariation="xlarge"
     text=""
+    variation=""
     visible={false}
   />
   <Styled(LineComp)
