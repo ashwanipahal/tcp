@@ -17,7 +17,6 @@ type Props = {
 const Icon = require('../../../../../assets/carrot-small-rights.png');
 
 const Anchor = ({
-  variation,
   anchorVariation,
   text,
   visible,

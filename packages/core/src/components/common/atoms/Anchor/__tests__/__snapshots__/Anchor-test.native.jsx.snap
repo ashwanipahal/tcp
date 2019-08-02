@@ -15,6 +15,7 @@ exports[`Anchor Native should render correctly 1`] = `
       }
     }
     url="/p/Rainbow--The-Birthday-Girl--Graphic-Tee"
+    variation=""
   >
     click Me
   </Text>
