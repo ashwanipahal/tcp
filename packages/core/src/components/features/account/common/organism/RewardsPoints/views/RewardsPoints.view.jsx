@@ -63,10 +63,14 @@ const MyAccountLayoutView = ({
 
 MyAccountLayoutView.propTypes = {
   className: PropTypes.string,
-  pointsToNextReward: PropTypes.string,
-  currentPoints: PropTypes.string,
-  totalRewards: PropTypes.string,
-  labels: PropTypes.shape({}),
+  pointsToNextReward: PropTypes.number,
+  currentPoints: PropTypes.number,
+  totalRewards: PropTypes.number,
+  labels: PropTypes.shape({
+    ACC_LBL_MY_REWARDS_CURRENT_POINTS: PropTypes.string,
+    ACC_LBL_MY_REWARDS_HEADING: PropTypes.string,
+    ACC_LBL_MY_REWARDS_NEXT_REWARD: PropTypes.string,
+  }),
 };
 
 MyAccountLayoutView.defaultProps = {

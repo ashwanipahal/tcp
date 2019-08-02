@@ -53,9 +53,9 @@ RewardsPointsContainer.propTypes = {
 };
 
 RewardsPointsContainer.defaultProps = {
-  pointsToNextReward: null,
-  currentPoints: null,
-  totalRewards: null,
+  pointsToNextReward: '',
+  currentPoints: '',
+  totalRewards: '',
   labels: {},
 };
 
