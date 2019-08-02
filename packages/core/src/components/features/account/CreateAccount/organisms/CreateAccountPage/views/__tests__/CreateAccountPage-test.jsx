@@ -8,7 +8,7 @@ describe('Create Account Page', () => {
     const tree = shallow(
       <CreateAccounPageVanilla
         createAccountAction={mockedcreateAccountAction}
-        labels={{ lbl_createAccount_hide: 'hide', createAccount: {} }}
+        labels={{ lbl_createAccount_hide: 'hide', registration: {} }}
         className=""
       />
     );
