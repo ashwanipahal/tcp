@@ -54,5 +54,9 @@ const endpoints = {
     method: API_METHODS.GET,
     URI: 'v2/account/getRegisteredUserInfo',
   },
+  logout: {
+    method: 'DELETE',
+    URI: '/api/v2/account/logout',
+  },
 };
 export default endpoints;

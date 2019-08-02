@@ -1,25 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Anchor from '../../../../common/atoms/Anchor';
 
-class LogOutView extends React.Component<Props> {
-  constructor(props: Props) {
-    super(props);
-  }
+class LogOutView extends React.Component {
+  logoutApp = () => {
+    const { triggerLogout } = this.props;
+    triggerLogout();
+  };
 
   render() {
-    const { labels } = this.props;
+    const { className } = this.props;
     return (
       <React.Fragment className={className}>
         <div>
           <Anchor
-            onClick={this.onBackClick}
+            onClick={this.logoutApp}
             className="elem-pb-SM"
             fontSizeVariation="xlarge"
             anchorVariation="secondary"
             to="/account?id=address-book"
             data-locator="addnewaddress-back"
           >
-            {labels.FORGOT_PASSWORD_BACK_LOGIN}
+            logout container
           </Anchor>
         </div>
       </React.Fragment>
@@ -27,9 +29,9 @@ class LogOutView extends React.Component<Props> {
   }
 }
 
-LoginView.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  labels: PropTypes.shape({}).isRequired,
+LogOutView.propTypes = {
+  className: PropTypes.string.isRequired,
+  triggerLogout: PropTypes.string.isRequired,
 };
 
-export default LoginView;
+export default LogOutView;

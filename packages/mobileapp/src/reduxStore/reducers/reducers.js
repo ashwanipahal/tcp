@@ -2,7 +2,7 @@ import { combineReducers } from 'redux';
 import { reducer as reduxFormReducer } from 'redux-form';
 import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
 import LoginPageReducer from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.reducer';
-import LogoutReducer from '@tcp/core/src/components/features/account/Logout/container/LogoutReducer.reducer';
+import LogoutReducer from '@tcp/core/src/components/features/account/Logout/container/LogOut.reducer';
 import ForgotPasswordReducer from '@tcp/core/src/components/features/account/ForgotPassword/container/ForgotPassword.reducer';
 import PaymentReducer from '@tcp/core/src/components/features/account/Payment/container/Payment.reducer';
 import { ProductListingPageReducer } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.reducer';

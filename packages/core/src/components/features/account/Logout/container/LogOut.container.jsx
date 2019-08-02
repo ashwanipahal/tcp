@@ -1,45 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-//import Router from 'next/router'; // eslint-disable-line
-import { logout } from '../container/LOGOUT.actions';
-import labels from './LOGOUT.labels';
-import { logoutState } from './LOGOUT.selectors';
-import LogOutView from '../views/LOGOUT.view';
+import { logout } from './LogOut.actions';
+import labels from './LogOut.labels';
+import LogOutView from '../views/LogOut.view';
 
 class LogOutPageContainer extends React.PureComponent {
-  componentDidUpdate(prevProps) {
-    const { isUserLoggedIn, closeOverlay } = this.props;
-    if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
-      closeOverlay();
-    }
-  }
-
   render() {
-    const { onSubmit } = this.props;
-    return <LogOutView onSubmit={onSubmit} labels={labels} loginErrorMessage={errorMessage} />;
+    const { triggerLogout } = this.props;
+    return <LogOutView triggerLogout={triggerLogout} labels={labels} />;
   }
 }
 
-LoginPageContainer.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
+LogOutPageContainer.propTypes = {
+  triggerLogout: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSubmit: payload => {
-      dispatch(login(payload));
+    triggerLogout: payload => {
+      dispatch(logout(payload));
     },
   };
 };
 
-const mapStateToProps = state => {
-  return {
-    showNotification: getShowNotificationState(state),
-  };
-};
-
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(LogOutPageContainer);

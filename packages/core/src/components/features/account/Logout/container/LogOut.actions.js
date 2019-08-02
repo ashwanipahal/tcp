@@ -1,7 +1,3 @@
-/**
- * These are temporary changes for a dummy login page
- */
-
 import LOGOUT_CONSTANTS from '../LogOut.constants';
 
 export const logout = payload => {
@@ -10,3 +6,5 @@ export const logout = payload => {
     payload,
   };
 };
+
+export default LOGOUT_CONSTANTS;
