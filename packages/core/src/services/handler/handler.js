@@ -69,10 +69,12 @@ export const executeStatefulAPICall = reqObj => {
 };
 
 export const executeUnbxdAPICall = reqObj => {
+  console.log('reqObj', reqObj);
   if (!reqObj.webService) {
     return null;
   }
   const apiConfigObj = getAPIConfig();
+  console.log('executeUnbxdAPICall ');
   return unbxdAPIClient(apiConfigObj, reqObj).catch(errorHandler); // TODO - Make a new Instance and for GRAPHQL as well..
 };
 

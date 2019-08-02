@@ -9,9 +9,11 @@ import { isClient } from '../../../utils';
  * @returns {Object} returns derived request object and request url
  */
 const getRequestParams = (apiConfig, reqObj) => {
-  const { proto, domain } = apiConfig;
-  const tcpApi = `${proto}${domain}${reqObj.webService.URI}`;
+  const { proto, unbxd } = apiConfig;
+  const tcpApi = `${proto}${unbxd}${reqObj.url}?${reqObj.queryString}`;
   const requestUrl = tcpApi; // TODO - configure it for Unbxd
+  console.log('tcpApi ######## ', tcpApi);
+  console.log('requestUrl @@@@@@@@@@ ', requestUrl);
   const reqHeaders = {};
   // TODO - Check if it works in Mobile app as well or else change it to isServer check
   if (apiConfig.cookie && !isClient()) {
@@ -30,6 +32,7 @@ const getRequestParams = (apiConfig, reqObj) => {
  * @returns {Promise} Resolves with promise to consume the unbxd api or reject in case of error
  */
 const unbxdAPIClient = (apiConfig, reqObj) => {
+  console.log('unbxdAPIClient');
   const { requestUrl, reqHeaders } = getRequestParams(apiConfig, reqObj);
   const reqTimeout = API_CONFIG.apiRequestTimeout;
   const requestType = reqObj.webService.method.toLowerCase();
@@ -38,6 +41,7 @@ const unbxdAPIClient = (apiConfig, reqObj) => {
     .accept(API_CONFIG.apiContentType)
     .timeout(reqTimeout);
 
+  console.log('reqObj', reqObj);
   if (reqObj.header) {
     request.set(reqObj.header);
   }
@@ -64,6 +68,7 @@ const unbxdAPIClient = (apiConfig, reqObj) => {
       });
   });
   result.abort = () => request.abort(); // allow callers to cancel the request by calling abort on the returned object.
+  console.log('result', result);
   return result;
 };
 

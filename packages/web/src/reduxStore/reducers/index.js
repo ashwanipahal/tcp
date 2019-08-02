@@ -15,6 +15,7 @@ import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
 import AddressVerificationReducer from '@tcp/core/src/components/features/account/AddressVerification/container/AddressVerification.reducer';
 import CartPage from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import OverlayModalReducer from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.reducer';
+import { ProductListingReducer } from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListing.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -40,6 +41,7 @@ import {
   CART_REDUCER_KEY,
   OVERLAY_MODAL_REDUCER_KEY,
   NAVIGATION_REDUCER_KEY,
+  PRODUCT_LISTING_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
@@ -53,7 +55,8 @@ import SmsSignupReducer from '../../components/common/molecules/SmsSignupModal/c
 // A higher order reducer to filter out actions not matching a certain action name pattern.
 const filteredProductListingPageReducer = createFilteredReducer(
   ProductListingPageReducer,
-  PRODUCTLISTINGPAGE_REDUCER_KEY
+  PRODUCTLISTINGPAGE_REDUCER_KEY,
+  PRODUCT_LISTING_REDUCER_KEY
 );
 
 const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONFIG_REDUCER_KEY);
@@ -82,4 +85,5 @@ export default combineReducers({
   [CART_REDUCER_KEY]: CartReducer,
   [OVERLAY_MODAL_REDUCER_KEY]: OverlayModalReducer,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
+  [PRODUCT_LISTING_REDUCER_KEY]: ProductListingReducer,
 });
