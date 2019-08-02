@@ -58,7 +58,10 @@ const CreditCardModalInfo = ({
           }}
         >
           <BodyCopy data-locator="deletecreditmodalcardicon">
-            <Image src={getIconPath(CardIconMapping[data.description.ccBrand])} />
+            <Image
+              src={getIconPath(CardIconMapping[data.description.ccBrand])}
+              className="deleteCreditModal__card__icon"
+            />
           </BodyCopy>
         </Col>
         <Col
