@@ -1,4 +1,4 @@
-import React from 'react'; //eslint-disable-line
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, BodyCopy } from '../../../../../../common/atoms';
 import withStyles from '../../../../../../common/hoc/withStyles';
@@ -63,17 +63,17 @@ const MyAccountLayoutView = ({
 
 MyAccountLayoutView.propTypes = {
   className: PropTypes.string,
-  pointsToNextReward: PropTypes.number,
-  currentPoints: PropTypes.number,
-  totalRewards: PropTypes.number,
+  pointsToNextReward: PropTypes.string,
+  currentPoints: PropTypes.string,
+  totalRewards: PropTypes.string,
   labels: PropTypes.shape({}),
 };
 
 MyAccountLayoutView.defaultProps = {
   className: '',
-  pointsToNextReward: null,
-  currentPoints: null,
-  totalRewards: null,
+  pointsToNextReward: '',
+  currentPoints: '',
+  totalRewards: '',
   labels: {},
 };
 
