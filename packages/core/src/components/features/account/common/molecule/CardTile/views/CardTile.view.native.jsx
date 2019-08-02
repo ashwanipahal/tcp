@@ -53,6 +53,11 @@ const getCardName = ({ card, labels }) => {
   }
 };
 
+/**
+ * Get the gift card balance
+ * @param {*} key
+ * @param {*} checkbalanceValueInfo
+ */
 const getGiftCardBalance = (key, checkbalanceValueInfo) => {
   return checkbalanceValueInfo && checkbalanceValueInfo.get(key);
 };
@@ -253,8 +258,6 @@ const CardTile = ({
     if (event && event.nativeEvent.data) {
       const value = get(event, 'nativeEvent.data', '');
       change('recaptchaToken', value);
-    } else if (event.nativeEvent.data === 'load') {
-      console.log('this is when load');
     }
   };
   return (
