@@ -18,7 +18,7 @@ exports[`GiftCardModalInfo Component should render correctly 1`] = `
     <Styled(Image)
       className="deleteCardModal__img"
       data-locator="deletegcmodalicon"
-      src="/static/images/gift-card-small.png"
+      src="/static/images/TCP-gift.svg"
     />
     <Styled(BodyStyle)
       bodySize="three"

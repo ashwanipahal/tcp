@@ -9,4 +9,15 @@ export const PlaceHolderView = styled.View`
   text-align: center;
 `;
 
-export default { styles, PlaceHolderView };
+export const StyledText = styled.Text`
+  position: absolute;
+  left: 20;
+  top: 23;
+`;
+
+export const AddedToBagWrapper = styled.View`
+  display: flex;
+  flex: 1;
+`;
+
+export default { styles, StyledText, PlaceHolderView, AddedToBagWrapper };

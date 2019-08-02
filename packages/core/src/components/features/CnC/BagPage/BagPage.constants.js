@@ -1,0 +1,5 @@
+const BAGPAGE_CONSTANTS = {
+  SET_ADDED_TO_BAG: 'SET_ADDED_TO_BAG',
+};
+
+export default BAGPAGE_CONSTANTS;

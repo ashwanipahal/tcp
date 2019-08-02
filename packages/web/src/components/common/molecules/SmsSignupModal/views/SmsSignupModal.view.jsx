@@ -19,7 +19,7 @@ class SmsSignupModal extends React.PureComponent {
     };
   }
 
-  componentDidUpdate() {
+  componentDidUpdate({ subscription: oldSubscription }) {
     const { subscription } = this.props;
     if ((subscription.error || subscription.success) && this.formSubmitPromise) {
       if (subscription.error) {
@@ -28,6 +28,14 @@ class SmsSignupModal extends React.PureComponent {
         this.formSubmitPromise.resolve();
       }
       this.formSubmitPromise = null;
+    }
+
+    if (
+      this.modalContentRef &&
+      subscription.success !== oldSubscription.success &&
+      subscription.success
+    ) {
+      this.modalContentRef.focus();
     }
   }
 
@@ -42,6 +50,10 @@ class SmsSignupModal extends React.PureComponent {
     this.setState({
       validationStarted: true,
     });
+  };
+
+  setModalContentRef = node => {
+    this.modalContentRef = node;
   };
 
   /**
@@ -93,6 +105,7 @@ class SmsSignupModal extends React.PureComponent {
     return (
       <Fragment>
         <Modal
+          contentRef={this.setModalContentRef}
           isOpen={isModalOpen}
           colSet={{ small: 6, medium: 6, large: 8 }}
           className={className}
@@ -101,8 +114,14 @@ class SmsSignupModal extends React.PureComponent {
           noPadding
           widthConfig={{ small: '375px', medium: '458px', large: '851px' }}
           closeIconDataLocator={
-            subscription ? 'thank_you_modal_close_btn' : 'email_signupPhoneNumber_modal_close_btn'
+            subscription.success ? 'thank_you_modal_close_btn' : 'sms_signup_modal_close_btn'
           }
+          contentLabel={`${formViewConfig.signUpForLabel} ${formViewConfig.offerTypeLabel}`}
+          aria={{
+            describedby: subscription.success
+              ? 'sign-up-modal-confirm-view'
+              : 'sign-up-modal-form-intro-view',
+          }}
         >
           {subscription.success ? (
             <Grid>

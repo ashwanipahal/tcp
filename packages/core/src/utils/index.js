@@ -18,4 +18,7 @@ export {
   getSiteId,
   routerPush,
   getBrandName,
+  getViewportInfo,
+  showOverlay,
+  closeOverlay,
 } from './utils';

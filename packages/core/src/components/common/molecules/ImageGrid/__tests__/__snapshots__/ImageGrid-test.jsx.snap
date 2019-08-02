@@ -4,13 +4,7 @@ exports[`Image grid component renders correctly 1`] = `
 <div>
   <Styled(Row)
     className="image-grid"
-    fullBlead={
-      Object {
-        "large": true,
-        "medium": false,
-        "small": false,
-      }
-    }
+    fullBleed={true}
   >
     <Styled(Col)
       className="image-col"
@@ -23,13 +17,12 @@ exports[`Image grid component renders correctly 1`] = `
       }
     >
       <WithTheme(DamImage)
-        className="moduleK_dam-image"
         data-locator="moduleK_image_0"
         imgConfigs={
           Array [
-            "ar_1:1,q_80,w_164",
-            "ar_1:1,q_80,w_162",
-            "ar_1:1,q_80,w_210",
+            "ar_1:1,q_80,w_384",
+            "ar_1:1,q_80,w_300",
+            "ar_1:1,q_80,w_360",
           ]
         }
         imgData={
@@ -55,13 +48,12 @@ exports[`Image grid component renders correctly 1`] = `
       }
     >
       <WithTheme(DamImage)
-        className="moduleK_dam-image"
         data-locator="moduleK_image_1"
         imgConfigs={
           Array [
-            "ar_1:1,q_80,w_164",
-            "ar_1:1,q_80,w_162",
-            "ar_1:1,q_80,w_210",
+            "ar_1:1,q_80,w_384",
+            "ar_1:1,q_80,w_300",
+            "ar_1:1,q_80,w_360",
           ]
         }
         imgData={
@@ -87,13 +79,12 @@ exports[`Image grid component renders correctly 1`] = `
       }
     >
       <WithTheme(DamImage)
-        className="moduleK_dam-image"
         data-locator="moduleK_image_2"
         imgConfigs={
           Array [
-            "ar_1:1,q_80,w_164",
-            "ar_1:1,q_80,w_162",
-            "ar_1:1,q_80,w_210",
+            "ar_1:1,q_80,w_384",
+            "ar_1:1,q_80,w_300",
+            "ar_1:1,q_80,w_360",
           ]
         }
         imgData={
@@ -119,13 +110,12 @@ exports[`Image grid component renders correctly 1`] = `
       }
     >
       <WithTheme(DamImage)
-        className="moduleK_dam-image"
         data-locator="moduleK_image_3"
         imgConfigs={
           Array [
-            "ar_1:1,q_80,w_164",
-            "ar_1:1,q_80,w_162",
-            "ar_1:1,q_80,w_210",
+            "ar_1:1,q_80,w_384",
+            "ar_1:1,q_80,w_300",
+            "ar_1:1,q_80,w_360",
           ]
         }
         imgData={

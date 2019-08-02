@@ -18,7 +18,7 @@ export const LETTER_SPACINGS = {
 
 export const LINE_HEIGHTS = { normal: 'normal', lh115: '1.15', lh107: '1.07' };
 
-export const TEXT_ALIGNS = { left: 'left', center: 'center' };
+export const TEXT_ALIGNS = { left: 'left', center: 'center', right: 'right' };
 
 export const FONT_WEIGHTS = {
   regular: '400',
@@ -29,6 +29,7 @@ export const FONT_WEIGHTS = {
 
 export const FONT_SIZES = {
   fs64: '64px',
+  fs52: '52px',
   fs48: '48px',
   fs42: '42px',
   fs38: '38px',

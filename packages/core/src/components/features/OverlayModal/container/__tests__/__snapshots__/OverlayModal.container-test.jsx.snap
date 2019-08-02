@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OverlayModal Container should render correctly 1`] = `
+<OverlayModal
+  closeOverlay={[Function]}
+  color={null}
+  component={null}
+  openState={false}
+  variation="primary"
+/>
+`;

@@ -45,12 +45,14 @@ class CookiesTestView extends React.Component {
 
     keys.filter(key => {
       if (key.indexOf('WC_') === 0) {
+        const cookieDecoded = decodeURIComponent(values[key]);
+        const cookieEncoded = encodeURIComponent(cookieDecoded);
         payload.cookie.push({
           domain: DOMAIN,
           name: key,
           path: '/',
           secure: false,
-          value: encodeURIComponent(values[key]),
+          value: cookieEncoded,
         });
         /* eslint-disable */
         return true;
@@ -89,12 +91,14 @@ class CookiesTestView extends React.Component {
 
     keys.filter(key => {
       if (key.indexOf('WC_') === 0) {
+        const cookieDecoded = decodeURIComponent(values[key]);
+        const cookieEncoded = encodeURIComponent(cookieDecoded);
         payload.cookie.push({
           domain: DOMAIN,
           name: key,
           path: '/',
           secure: false,
-          value: encodeURIComponent(values[key]),
+          value: cookieEncoded,
         });
         return true;
       } else {
@@ -122,6 +126,7 @@ class CookiesTestView extends React.Component {
       )
       .set('Accept', 'application/json')
       .send(JSON.stringify(payload))
+      .withCredentials()
       .then(res => {
         console.log(res);
         if (res.status === 200) {

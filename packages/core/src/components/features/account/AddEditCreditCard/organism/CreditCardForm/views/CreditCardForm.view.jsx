@@ -25,6 +25,7 @@ export class CreditCardForm extends React.PureComponent {
     isEdit: PropTypes.bool,
     backToPaymentClick: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,
+    invalid: PropTypes.bool.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
     initialValues: PropTypes.shape({}).isRequired,
@@ -43,7 +44,14 @@ export class CreditCardForm extends React.PureComponent {
       title: `${address.firstName} ${address.lastName} ${
         address.primary === 'true' ? '(Default)' : ''
       }`,
-      content: <Address address={address} isDefault={address.primary === 'true'} />,
+      content: (
+        <Address
+          address={address}
+          showCountry={false}
+          showPhone={false}
+          isDefault={address.primary === 'true'}
+        />
+      ),
     }));
 
     addressOptions = addressOptions.push({
@@ -73,6 +81,7 @@ export class CreditCardForm extends React.PureComponent {
       isEdit,
       backToPaymentClick,
       pristine,
+      invalid,
       handleSubmit,
       dispatch,
       initialValues,
@@ -164,7 +173,7 @@ export class CreditCardForm extends React.PureComponent {
           >
             <Button
               fill="BLUE"
-              disabled={!isEdit && pristine}
+              disabled={invalid}
               type="submit"
               buttonVariation="fixed-width"
               data-locator="payment-addcardbtn"

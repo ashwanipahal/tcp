@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-const styles = css`
+export const modalStyles = css`
   div.TCPModal__InnerContent {
     right: 0;
     left: auto;
@@ -26,12 +26,18 @@ const styles = css`
       display: block;
     }
   }
+`;
+const styles = css`
   .added-to-bg-close {
     top: 21px;
   }
   .addedToBagWrapper {
     overflow-y: auto;
     height: calc(100% - 43px);
+  }
+  .continue-shopping {
+    text-align: center;
+    margin: 24px 0;
   }
 `;
 

@@ -35,7 +35,13 @@ exports[`BossBannerView component renders correctly 1`] = `
           tag="span"
           textAlign="center"
         >
-          abc
+          <span
+            dangerouslySetInnerHTML={
+              Object {
+                "__html": "<span className=\\"spanNoRush\\">PICK UP IN STORE AND SAVE AN EXTRA 5%</span>",
+              }
+            }
+          />
         </Styled(BodyCopy)>
       </Styled(Col)>
     </Styled(Row)>
@@ -69,7 +75,7 @@ exports[`BossBannerView component renders correctly 1`] = `
           <span
             dangerouslySetInnerHTML={
               Object {
-                "__html": "<span className=\\"spanNoRush\\">def</span>",
+                "__html": "<span className=\\"spanNoRush\\">Simply choose <b>NO RUSH Pick Up</b> in your bag before checking out.</span>",
               }
             }
           />

@@ -12750,18 +12750,6 @@ react-redux@^6.0.1:
     prop-types "^15.7.2"
     react-is "^16.8.2"
 
-react-redux@^7.0.3:
-  version "7.1.0"
-  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-7.1.0.tgz#72af7cf490a74acdc516ea9c1dd80e25af9ea0b2"
-  integrity sha512-hyu/PoFK3vZgdLTg9ozbt7WF3GgX5+Yn3pZm5/96/o4UueXA+zj08aiSC9Mfj2WtD1bvpIb3C5yvskzZySzzaw==
-  dependencies:
-    "@babel/runtime" "^7.4.5"
-    hoist-non-react-statics "^3.3.0"
-    invariant "^2.2.4"
-    loose-envify "^1.4.0"
-    prop-types "^15.7.2"
-    react-is "^16.8.6"
-
 react-slick@^0.24.0:
   version "0.24.0"
   resolved "https://registry.yarnpkg.com/react-slick/-/react-slick-0.24.0.tgz#1a4e078a82de4e9458255d9ce26aa6f3b17b168b"
@@ -12772,6 +12760,11 @@ react-slick@^0.24.0:
     json2mq "^0.2.0"
     lodash.debounce "^4.0.8"
     resize-observer-polyfill "^1.5.0"
+
+react-ssr-error-boundary@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-ssr-error-boundary/-/react-ssr-error-boundary-1.0.1.tgz#4c52c84fee77662d850b998dbeac59aef696d31d"
+  integrity sha512-KSPBVlGr3ltsTAZGPvQTm+AMD97BvDZXt5wLyxfwVVwN21kNnbXKlhkRTkLT8Oo/bZblodfa2N7RkwJYEhjFLA==
 
 react-test-renderer@16.8.3:
   version "16.8.3"

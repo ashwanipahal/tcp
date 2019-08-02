@@ -19,12 +19,12 @@ import { isBossProduct, isBopisProduct } from '../util/utility.js';
 // import find from 'lodash-es/find';
 // import findIndex from 'lodash-es/findIndex';
 // import sumBy from 'lodash-es/sumBy';
+
 import {
-  extractPrioritizedBadge,
+  getProductAttributes,
   extractAttributeValue,
-  //attributeListMaker,
-  //getCategoryId
-} from '../util/productsParser';
+  extractPrioritizedBadge,
+} from '../../../../../utils/badge.util';
 
 // let previous = null;
 // export function getProductsAbstractor(apiHelper) {
@@ -400,7 +400,8 @@ const getUnbxdId = () => 'unbxdId';
 const isGiftCard = product =>
   !!(
     product &&
-    (product.style_partno.toLowerCase() === 'giftcardbundle' || product.giftcard === '1')
+    ((product.style_partno && product.style_partno.toLowerCase() === 'giftcardbundle') ||
+      product.giftcard === '1')
   );
 
 /**
@@ -975,43 +976,6 @@ const isGiftCard = product =>
 //     throw apiHelper.getFormattedError(err);
 //   });
 // }
-
-const getProductAttributes = () => {
-  const { isUSStore } = apiHelper.configOptions;
-  return isUSStore
-    ? {
-        merchant: 'TCPMerchantTagUSStore',
-        sizes: 'TCPSizeUSStore',
-        swatches: 'TCPSwatchesUSStore',
-        onlineOnly: 'TCPWebOnlyFlagUSStore',
-        clearance: 'TCPProductIndUSStore',
-        inventory: 'TCPInventoryFlagUSStore',
-        glowInTheDark: 'TCPGlowInDarkUSStore',
-        limitedQuantity: 'TCPInventoryMessageUSStore',
-        extendedSize: 'TCPFitMessageUSStore',
-        onModelAltImages: 'TCPMarketingText1USStore',
-        bossProductDisabled: 'TcpBossProductDisabled',
-        bossCategoryDisabled: 'TcpBossCategoryDisabled',
-        videoUrl: 'TCPMarketingText2USStore',
-        matchingCategory: 'TCPProductFlagUSStore',
-        matchingFamily: 'TCPMatchingFamilyUSStore',
-      }
-    : {
-        merchant: 'TCPMerchantTagCanadaStore',
-        sizes: 'TCPSizeCanadaStore',
-        swatches: 'TCPSwatchesCanadaStore',
-        onlineOnly: 'TCPWebOnlyFlagCanadaStore',
-        clearance: 'TCPProductIndCanadaStore',
-        inventory: 'TCPInventoryFlagCanadaStore',
-        glowInTheDark: 'TCPGlowInDarkUCanadaStore',
-        limitedQuantity: 'TCPInventoryMessageCanadaStore',
-        extendedSize: 'TCPFitMessageCanadaStore',
-        onModelAltImages: 'TCPMarketingText1CanadaStore',
-        videoUrl: 'TCPMarketingText2CanadaStore',
-        matchingCategory: 'TCPProductFlagCAStore',
-        matchingFamily: 'TCPMatchingFamilyCAStore',
-      };
-};
 
 const getSize = sizeName => {
   let size = sizeName && sizeName.split('_');
