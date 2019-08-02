@@ -12,7 +12,7 @@ const labels = {
   CREATE_ACC_LBL_SAVE_REWARDS:
     'Save My Place Rewards Credit Card ending in 1234 to my account for future purchases.',
   CREATE_ACC_LBL_TERMS_CONDITIONS:
-    'I agree to the terms & conditions  of the My Place Rewards Program, and I understand I will receive marketing communications from The Children`&apos;`s Place, including email and direct mail. I can withdraw my consent to receive marketing emails at any time. Contact us.',
+    "I agree to the terms & conditions  of the My Place Rewards Program, and I understand I will receive marketing communications from The Children's Place, including email and direct mail. I can withdraw my consent to receive marketing emails at any time. Contact us.",
   CREATE_ACC_LBL_REMEMBER_ME: 'Remember me. Not recommended on shared devices.',
   CREATE_ACC_LBL_CREATE_ACCOUNT: 'Create Account',
   CREATE_ACC_LBL_ALREADY_ACCOUNT: 'Already have an account?',

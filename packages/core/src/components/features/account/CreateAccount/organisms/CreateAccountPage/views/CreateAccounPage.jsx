@@ -5,7 +5,6 @@ import styles from '../styles/CreateAccounPage.style';
 import CreateAccountForm from '../../../molecules/CreateAccountForm';
 import CreateAccountTopSection from '../../../molecules/CreateAccountTopSection';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-// import Image from '../../../../../../common/atoms/Image';
 
 class CreateAccounPage extends React.Component {
   static propTypes = {
@@ -16,6 +15,7 @@ class CreateAccounPage extends React.Component {
     hideShowPwd: PropTypes.bool,
     confirmHideShowPwd: PropTypes.bool,
     error: PropTypes.string,
+    onAlreadyHaveAnAccountClick: PropTypes.func,
   };
 
   static defaultProps = {
@@ -28,6 +28,7 @@ class CreateAccounPage extends React.Component {
     hideShowPwd: false,
     confirmHideShowPwd: false,
     error: {},
+    onAlreadyHaveAnAccountClick: () => {},
   };
 
   constructor(props) {
@@ -48,6 +49,7 @@ class CreateAccounPage extends React.Component {
       hideShowPwd,
       confirmHideShowPwd,
       error,
+      onAlreadyHaveAnAccountClick,
     } = this.props;
     return (
       <div className={className}>
@@ -72,6 +74,7 @@ class CreateAccounPage extends React.Component {
             isIAgreeChecked={isIAgreeChecked}
             hideShowPwd={hideShowPwd}
             confirmHideShowPwd={confirmHideShowPwd}
+            onAlreadyHaveAnAccountClick={onAlreadyHaveAnAccountClick}
           />
         </div>
       </div>
