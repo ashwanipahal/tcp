@@ -29,26 +29,35 @@ const MyAccountLayoutView = (props: Props) => {
           <Col colSize={{ large: 4, medium: 3, small: 2 }}>
             <BodyCopy fontFamily="secondary" fontSize="fs14">
               {`Current Points: `}
-              {currentPoints}
+              <BodyCopy component="span" fontWeight="black" fontFamily="secondary" fontSize="fs14">
+                {currentPoints}
+              </BodyCopy>
             </BodyCopy>
           </Col>
           <Col colSize={{ large: 8, medium: 5, small: 4 }}>
-            <BodyCopy fontFamily="secondary" fontSize="fs14">
+            <BodyCopy component="p" fontFamily="secondary" fontSize="fs14">
               {`My Rewards: `}
-              {totalRewards}
+              <BodyCopy component="span" fontWeight="black" fontFamily="secondary" fontSize="fs14">
+                {`$`}
+                {totalRewards && Math.trunc(totalRewards)}
+              </BodyCopy>
             </BodyCopy>
           </Col>
         </Row>
         <Row>
           <Col colSize={{ large: 12, medium: 8, small: 6 }}>
-            <div className="slider" />
+            <div className="progress-container elem-mt-MED elem-mt-MED elem-mb-SM">
+              <div className="progressbar-rewards" style={{ width: `${currentPoints}%` }} />
+            </div>
           </Col>
         </Row>
         <Row>
           <Col colSize={{ large: 12, medium: 8, small: 6 }}>
             <BodyCopy fontFamily="secondary" fontSize="fs14">
               {`Points to your next reward: `}
-              {pointsToNextReward}
+              <BodyCopy component="span" fontWeight="black" fontFamily="secondary" fontSize="fs14">
+                {pointsToNextReward}
+              </BodyCopy>
             </BodyCopy>
           </Col>
         </Row>

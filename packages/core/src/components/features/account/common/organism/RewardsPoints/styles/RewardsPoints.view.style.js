@@ -1,11 +1,19 @@
 import { css } from 'styled-components';
 
 const RewardsPointsStyles = css`
-  .slider {
-    height: 10px;
-    opacity: 0.2;
-    border-radius: 5px;
-    background-color: #f7971f;
+  .progress-container {
+    height: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    border-radius: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    background-color: rgba(247, 151, 31, 0.2);
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .progressbar-rewards {
+    background-color: ${props => props.theme.colorPalette.orange['800']};
+    width: 0%;
+    height: 100%;
+    position: relative;
   }
 `;
 
