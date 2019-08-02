@@ -2,7 +2,7 @@ import moment from 'moment';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import {
   setValueInAsyncStorage,
-  geValueFromAsyncStorage,
+  getValueFromAsyncStorage,
   getScreenWidth,
 } from '@tcp/core/src/utils/utils.native';
 
@@ -139,7 +139,7 @@ export const updateLastSplashAnimationDate = async () => {
 export const shouldAnimateLogo = async () => {
   const today = moment().format(MOMENT_DATE_FORMAT);
   const { LAST_ANIMATION_DATE, ANIMATION_REPEAT_DAYS } = AppAnimationConfig;
-  const lastAnimationDate = await geValueFromAsyncStorage(LAST_ANIMATION_DATE);
+  const lastAnimationDate = await getValueFromAsyncStorage(LAST_ANIMATION_DATE);
   const isLastAnimationDiffValid =
     lastAnimationDate &&
     today.diff(moment(lastAnimationDate, MOMENT_DATE_FORMAT), 'days') >= ANIMATION_REPEAT_DAYS;

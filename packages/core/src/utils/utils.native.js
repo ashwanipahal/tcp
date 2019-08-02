@@ -249,13 +249,13 @@ export const getAPIConfig = () => {
 };
 
 /**
- * @function geValueFromAsyncStorage
+ * @function getValueFromAsyncStorage
  * This method retrieves value for input key from asyncstorage
  * @param key
  *
  * @returns: value from async storage
  */
-export const geValueFromAsyncStorage = async key => {
+export const getValueFromAsyncStorage = async key => {
   try {
     return await AsyncStorage.getItem(key);
   } catch (error) {
