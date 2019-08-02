@@ -51,6 +51,7 @@ exports[`Create Account Page should render correctly 1`] = `
           "CREATE_ACC_LBL_HIDE": "hide",
         }
       }
+      onAlreadyHaveAnAccountClick={[Function]}
       onSubmit={[Function]}
       persistentSubmitErrors={false}
       pure={true}
