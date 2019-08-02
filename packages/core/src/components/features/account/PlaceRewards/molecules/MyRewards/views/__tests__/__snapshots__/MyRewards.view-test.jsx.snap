@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyRewards should render correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="my-rewards-heading"
+        color="text.primary"
+        component="p"
+        data-locator="my-rewards-heading"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 4,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 0,
+          "medium": 0,
+          "small": 1,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className="no-rewards-msg"
+        color="text.primary"
+        component="p"
+        data-locator="no_rewards_msg"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="bold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        myPlaceRewards.ACC_LBL_MY_REWARDS_NO_REWARDS_MSG
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      className="shop-now-btn-wrapper"
+      colSize={
+        Object {
+          "large": 2,
+          "medium": 4,
+          "small": 6,
+        }
+      }
+      offsetLeft={
+        Object {
+          "large": 4,
+          "medium": 2,
+          "small": 0,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        className="shop-now-btn"
+        color="white"
+        fill="BLUE"
+      >
+        myPlaceRewards.ACC_LBL_MY_REWARDS_SHOP_NOW
+      </Styled(Button)>
+    </Styled(Col)>
+    <Styled(Col)
+      className="anchor-wrapper"
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        data-locator="my-rewards-program-details"
+        fontSizeVariation="small"
+        href="https://www.childrensplace.com/us/content/myplace-rewards-page"
+        noLink={true}
+        target="_blank"
+        underline={true}
+      >
+        myPlaceRewards.ACC_LBL_MY_REWARDS_PROGRAM_DETAILS
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="elem-ml-XXL"
+        data-locator="my-rewards-tnc"
+        fontSizeVariation="small"
+        href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
+        noLink={true}
+        target="_self"
+        underline={true}
+      >
+        common.ACC_LBL_TNC
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;

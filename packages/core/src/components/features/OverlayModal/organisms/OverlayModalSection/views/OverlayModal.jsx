@@ -53,6 +53,7 @@ class OverlayModal extends React.Component {
   componentWillUnmount() {
     this.overlayElementWrapper.style.position = 'static';
     this.overlayElementWrapper.style.pointerEvents = 'auto';
+    /* istanbul ignore else */
     if (this.overlayElement) this.overlayElement.classList.remove('overlay');
     /* istanbul ignore else */
     if (window) {
