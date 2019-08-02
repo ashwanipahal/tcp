@@ -112,12 +112,12 @@ MyRewards.propTypes = {
 
 MyRewards.defaultProps = {
   labels: {
-    common: { ACC_LBL_TNC: 'tnc' },
+    common: { ACC_LBL_TNC: '' },
     myPlaceRewards: {
-      ACC_LBL_MY_REWARDS_PROGRAM_DETAILS: 'program details',
-      ACC_LBL_MY_REWARDS_SHOP_NOW: 'shop now',
-      ACC_LBL_MY_REWARDS_NO_REWARDS_MSG: 'no msg',
-      ACC_LBL_MY_REWARDS_HEADING: 'heading',
+      ACC_LBL_MY_REWARDS_PROGRAM_DETAILS: '',
+      ACC_LBL_MY_REWARDS_SHOP_NOW: '',
+      ACC_LBL_MY_REWARDS_NO_REWARDS_MSG: '',
+      ACC_LBL_MY_REWARDS_HEADING: '',
     },
   },
   className: '',

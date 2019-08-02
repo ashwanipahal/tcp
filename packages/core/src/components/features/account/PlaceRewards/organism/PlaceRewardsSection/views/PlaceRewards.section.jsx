@@ -87,7 +87,7 @@ PlaceRewardsSection.propTypes = {
 };
 
 PlaceRewardsSection.defaultProps = {
-  labels: { myPlaceRewards: { ACC_LBL_PLACE_REWARDS_HEADING: 'heading' } },
+  labels: { myPlaceRewards: { ACC_LBL_PLACE_REWARDS_HEADING: '' } },
   className: '',
 };
 
