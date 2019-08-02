@@ -3,17 +3,14 @@ import PropTypes from 'prop-types';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
-import LabelsUtil from '../../../../../../../utils/labels.util';
 import styles from '../MyRewards.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Button from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 
 const MyRewards = ({ labels, className }) => {
-  const heading = LabelsUtil.replacePlaceholderValues(
-    labels.myPlaceRewards.ACC_LBL_MY_REWARDS_HEADING,
-    [0]
-  );
+  const heading = `${labels.myPlaceRewards.ACC_LBL_MY_REWARDS_HEADING} (0)`;
+
   return (
     <div className={className}>
       <Row fullBleed>
@@ -49,7 +46,7 @@ const MyRewards = ({ labels, className }) => {
             className="no-rewards-msg"
             data-locator="no_rewards_msg"
           >
-            {LabelsUtil.getLabel(labels, 'myPlaceRewards.ACC_LBL_MY_REWARDS_NO_REWARDS_MSG')}
+            {labels.myPlaceRewards.ACC_LBL_MY_REWARDS_NO_REWARDS_MSG}
           </BodyCopy>
         </Col>
         <Col
@@ -62,7 +59,7 @@ const MyRewards = ({ labels, className }) => {
           className="shop-now-btn-wrapper"
         >
           <Button buttonVariation="fixed-width" fill="BLUE" color="white" className="shop-now-btn">
-            {LabelsUtil.getLabel(labels, 'myPlaceRewards.ACC_LBL_MY_REWARDS_SHOP_NOW')}
+            {labels.myPlaceRewards.ACC_LBL_MY_REWARDS_SHOP_NOW}
           </Button>
         </Col>
         <Col
@@ -82,7 +79,7 @@ const MyRewards = ({ labels, className }) => {
             data-locator="my-rewards-program-details"
             target="_blank"
           >
-            {LabelsUtil.getLabel(labels, 'myPlaceRewards.ACC_LBL_MY_REWARDS_PROGRAM_DETAILS')}
+            {labels.myPlaceRewards.ACC_LBL_MY_REWARDS_PROGRAM_DETAILS}
           </Anchor>
           <Anchor
             fontSizeVariation="small"
@@ -94,7 +91,7 @@ const MyRewards = ({ labels, className }) => {
             className="elem-ml-XXL"
             target="_self"
           >
-            {LabelsUtil.getLabel(labels, 'common.ACC_LBL_TNC')}
+            {labels.common.ACC_LBL_TNC}
           </Anchor>
         </Col>
       </Row>

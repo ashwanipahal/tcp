@@ -27,7 +27,9 @@ exports[`MyRewards should render correctly 1`] = `
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
-      />
+      >
+        undefined (0)
+      </Styled(BodyCopy)>
     </Styled(Col)>
     <Styled(Col)
       colSize={
@@ -56,9 +58,7 @@ exports[`MyRewards should render correctly 1`] = `
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
-      >
-        myPlaceRewards.ACC_LBL_MY_REWARDS_NO_REWARDS_MSG
-      </Styled(BodyCopy)>
+      />
     </Styled(Col)>
     <Styled(Col)
       className="shop-now-btn-wrapper"
@@ -82,9 +82,7 @@ exports[`MyRewards should render correctly 1`] = `
         className="shop-now-btn"
         color="white"
         fill="BLUE"
-      >
-        myPlaceRewards.ACC_LBL_MY_REWARDS_SHOP_NOW
-      </Styled(Button)>
+      />
     </Styled(Col)>
     <Styled(Col)
       className="anchor-wrapper"
@@ -104,9 +102,7 @@ exports[`MyRewards should render correctly 1`] = `
         noLink={true}
         target="_blank"
         underline={true}
-      >
-        myPlaceRewards.ACC_LBL_MY_REWARDS_PROGRAM_DETAILS
-      </Styled(Anchor)>
+      />
       <Styled(Anchor)
         anchorVariation="primary"
         className="elem-ml-XXL"
@@ -116,9 +112,7 @@ exports[`MyRewards should render correctly 1`] = `
         noLink={true}
         target="_self"
         underline={true}
-      >
-        common.ACC_LBL_TNC
-      </Styled(Anchor)>
+      />
     </Styled(Col)>
   </Styled(Row)>
 </div>

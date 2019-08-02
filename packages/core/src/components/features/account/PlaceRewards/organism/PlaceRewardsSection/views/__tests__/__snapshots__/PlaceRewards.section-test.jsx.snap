@@ -27,9 +27,7 @@ exports[`MyRewards should render correctly 1`] = `
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
-      >
-        myPlaceRewards.ACC_LBL_PLACE_REWARDS_HEADING
-      </Styled(BodyCopy)>
+      />
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)

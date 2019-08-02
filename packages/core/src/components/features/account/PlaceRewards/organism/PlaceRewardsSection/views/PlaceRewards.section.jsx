@@ -6,7 +6,6 @@ import Col from '../../../../../../common/atoms/Col';
 import styles from '../../../styles/PlaceRewards.section.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import MyRewards from '../../../molecules/MyRewards';
-import LabelsUtil from '../../../../../../../utils/labels.util';
 
 const PlaceRewardsSection = ({ labels, className }) => {
   return (
@@ -27,7 +26,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
             className="place-rewards__heading"
             data-locator="place-rewards-heading"
           >
-            {LabelsUtil.getLabel(labels, 'myPlaceRewards.ACC_LBL_PLACE_REWARDS_HEADING')}
+            {labels.myPlaceRewards.ACC_LBL_PLACE_REWARDS_HEADING}
           </BodyCopy>
         </Col>
       </Row>
