@@ -35,6 +35,10 @@ const styles = css`
     overflow-y: auto;
     height: calc(100% - 43px);
   }
+  .continue-shopping {
+    text-align: center;
+    margin: 24px 0;
+  }
 `;
 
 export default styles;

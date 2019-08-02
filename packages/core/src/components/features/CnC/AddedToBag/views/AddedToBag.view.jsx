@@ -7,6 +7,7 @@ import withStyles from '../../../../common/hoc/withStyles';
 import styles, { modalStyles } from '../styles/AddedToBag.style';
 import ProductInformationView from '../molecules/ProductInformation/views/ProductInformation.views';
 import BossBannerView from '../molecules/BossBanner/views/BossBanner.views';
+import Anchor from '../../../../common/atoms/Anchor';
 
 // @flow
 type Props = {
@@ -16,6 +17,7 @@ type Props = {
   addedToBagData: any,
   labels: any,
   quantity: number,
+  handleContinueShopping: Function,
 };
 
 const AddedToBag = ({
@@ -25,6 +27,7 @@ const AddedToBag = ({
   className,
   labels,
   quantity,
+  handleContinueShopping,
 }: Props) => {
   return (
     <Modal
@@ -47,6 +50,19 @@ const AddedToBag = ({
         <AddedToBagViewPoints labels={labels} className="added-to-bag-points" />
         <AddedToBagActions labels={labels} />
         <BossBannerView labels={labels} />
+        <div className="continue-shopping">
+          <Anchor
+            fontSizeVariation="medium"
+            underline
+            anchorVariation="primary"
+            handleLinkClick={handleContinueShopping}
+            noLink
+            to=""
+            data-locator="addedToBag-continueShopping"
+          >
+            {labels.continueShopping}
+          </Anchor>
+        </div>
       </div>
     </Modal>
   );

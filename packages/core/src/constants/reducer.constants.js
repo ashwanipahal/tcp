@@ -17,12 +17,11 @@ export const PAYMENT_REDUCER_KEY = 'PaymentReducer';
 export const FORGOTPASSWORD_ACTION_PATTERN = '@@ForgotPassword-';
 export const FORGOTPASSWORD_REDUCER_KEY = 'ForgotPasswordReducer';
 export const ADDED_TO_BAG_REDUCER_KEY = 'AddedToBagReducer';
-export const CART_REDUCER_KEY = 'CartReducer';
 export const ADD_GIFT_CARD_REDUCER_KEY = 'AddGiftCardReducer';
 export const PAYMENT_ACTION_PATTERN = '@@payment-';
 export const ADD_GIFT_CARD_ACTION_PATTERN = '@@AddGiftCard-';
 export const LOGINPAGE_ACTION_PATTERN = '@@Login-';
-export const CARTPAGE_REDUCER_KEY = 'CartPage';
+export const CARTPAGE_REDUCER_KEY = 'CartPageReducer';
 export const OVERLAY_MODAL_REDUCER_KEY = 'OverlayModalReducer';
 export const OVERLAY_MODAL_ACTION_PATTERN = '@@Overlay-';
 

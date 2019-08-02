@@ -7,12 +7,12 @@ const HeaderReducer = (state = {}, action) => {
     case HEADER_CONSTANTS.OPEN_NAVIGATION_DRAWER:
       return {
         ...state,
-        navigationDrawer: { open: true },
+        navigationDrawer: { open: action.payload, close: false },
       };
     case HEADER_CONSTANTS.CLOSE_NAVIGATION_DRAWER:
       return {
         ...state,
-        navigationDrawer: { open: false },
+        navigationDrawer: { close: true, open: false },
       };
     default:
       return state;

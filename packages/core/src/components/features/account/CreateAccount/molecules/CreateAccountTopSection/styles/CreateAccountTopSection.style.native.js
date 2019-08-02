@@ -68,4 +68,21 @@ const DescriptionStyle = styled.Text`
   ${getDescriptionStyle}
 `;
 
-export { SectionStyle, HeadingStyle, SubHeadingStyle, DescriptionStyle };
+const CenterAlignWrapper = styled.View`
+  display: flex;
+  justify-content: ${'center'};
+  align-items: center;
+`;
+
+const TextAlignCenter = styled.Text`
+  text-align: center;
+`;
+
+export {
+  SectionStyle,
+  HeadingStyle,
+  SubHeadingStyle,
+  DescriptionStyle,
+  CenterAlignWrapper,
+  TextAlignCenter,
+};

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import AddedToBagActionsContainer from '../AddedToBagActions.container';
+import AddedToBagActionsContainer from '../container/AddedToBagActions.container';
 
 describe('AddedToBagActions container', () => {
   it('should render correctly', () => {
