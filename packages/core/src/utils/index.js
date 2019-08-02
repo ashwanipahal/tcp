@@ -1,7 +1,6 @@
 export {
   default,
   createAPIConfig,
-  getAPIConfig,
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
   isProduction,
@@ -18,4 +17,4 @@ export {
   closeOverlay,
 } from './utils.web';
 
-export { isServer, isClient, isMobileApp, getIconPath, getLocator } from './utils';
+export { isServer, isClient, isMobileApp, getIconPath, getLocator, getAPIConfig } from './utils';

@@ -3,13 +3,9 @@ import Router from 'next/router';
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
 import icons from '../config/icons';
 import { API_CONFIG } from '../services/config';
-import { getStoreRef, resetStoreRef } from './store.utils';
-import { APICONFIG_REDUCER_KEY } from '../constants/reducer.constants';
 import { breakpoints } from '../../styles/themes/TCP/mediaQuery';
-import { isServer } from './utils';
+import { getAPIConfig } from './utils';
 
-// setting the apiConfig subtree of whole state in variable; Do we really need it ?
-let apiConfig = null;
 const MONTH_SHORT_FORMAT = {
   JAN: 'Jan',
   FEB: 'Feb',
@@ -49,24 +45,6 @@ export const createAPIConfig = resLocals => {
     isMobile: false,
     cookie: null,
   };
-};
-
-/**
- * @summary Get the api config if already created or else creates one.
- * @returns {Object} apiConfig - Api config to be utilized for brand/channel/locale config
- */
-export const getAPIConfig = () => {
-  // When apiConfig is null (the very first time) or is an empty object, derive value from store..
-  const validApiConfigObj = !apiConfig || (apiConfig && !Object.keys(apiConfig).length);
-  // This check is to make sure that same instance of apiConfig for different country/brand ssr requests
-  const deriveApiConfigObj = validApiConfigObj || isServer();
-  if (deriveApiConfigObj) {
-    apiConfig = (getStoreRef() && getStoreRef().getState()[APICONFIG_REDUCER_KEY]) || {};
-    if (!isServer()) {
-      resetStoreRef(); // This is to make module variable reduxStore as null
-    }
-  }
-  return apiConfig;
 };
 
 export const importGraphQLClientDynamically = module => {

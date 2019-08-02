@@ -184,29 +184,3 @@ export const cropImageUrl = (url, crop) => {
   }
   return url;
 };
-
-/**
- * @summary Get the api config if already created or else creates one.
- * @returns {Object} apiConfig - Api config to be utilized for brand/channel/locale config
- */
-export const getAPIConfig = () => {
-  return {
-    brandId: 'tcp',
-    brandIdCMS: 'TCP',
-    traceIdCount: 0,
-    proto: 'https',
-    MELISSA_KEY: '63987687',
-    BV_API_KEY: 'e50ab0a9-ac0b-436b-9932-2a74b9486436',
-    storeId: '10151',
-    catalogId: '10551',
-    isUSStore: true,
-    langId: '-1',
-    siteId: 'us',
-    countryKey: '_US',
-    assetHost: 'https://test4.childrensplace.com',
-    domain: '://test4.childrensplace.com/api/',
-    unbxd: '://search.unbxd.io',
-    cookie: null,
-    isMobile: false,
-  };
-};
