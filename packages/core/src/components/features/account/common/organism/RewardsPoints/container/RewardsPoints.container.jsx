@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import RewardsPoints from '../views/RewardsPoints.view';
+import labels from './RewardsPoints.labels';
 import {
   getPointsToNextRewardState,
   getCurrentPointsState,
@@ -30,6 +31,7 @@ export class RewardsPointsContainer extends React.PureComponent {
         pointsToNextReward={pointsToNextReward}
         currentPoints={currentPoints}
         totalRewards={totalRewards}
+        labels={labels}
       />
     );
   }
@@ -47,12 +49,14 @@ RewardsPointsContainer.propTypes = {
   pointsToNextReward: PropTypes.number,
   currentPoints: PropTypes.number,
   totalRewards: PropTypes.number,
+  labels: PropTypes.shape({}),
 };
 
 RewardsPointsContainer.defaultProps = {
   pointsToNextReward: null,
   currentPoints: null,
   totalRewards: null,
+  labels: {},
 };
 
 export default withRouter(connect(mapStateToProps)(RewardsPointsContainer));

@@ -1,34 +1,29 @@
 import React from 'react'; //eslint-disable-line
+import PropTypes from 'prop-types';
 import { Row, Col, BodyCopy } from '../../../../../../common/atoms';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/RewardsPoints.view.style';
-
-// @flow
-// type Props = {
-//   navData: Array<Object>,
-//   mainContent: Function,
-//   active: string,
-//   className: string,
-//   router: object,
-//   labels: object,
-// };
 
 /**
  * @function MyAccountLayoutView The AccountLayout component will provide a list of left
  * navigationLinks and the component associated with it
  * The main component will include this Layout and pass the component to render on the right panel
- * @param {navData} navData The list of links in the left nav as config object
- * @param {mainContent} mainContent The component to be rendered on the right side
  */
-const MyAccountLayoutView = (props: Props) => {
-  const { className, pointsToNextReward, currentPoints, totalRewards } = props;
+
+const MyAccountLayoutView = ({
+  className,
+  pointsToNextReward,
+  currentPoints,
+  totalRewards,
+  labels,
+}) => {
   return (
     <div className={className}>
       <div className="divWidth">
         <Row>
           <Col colSize={{ large: 4, medium: 3, small: 2 }}>
             <BodyCopy fontFamily="secondary" fontSize="fs14">
-              {`Current Points: `}
+              {`${labels.ACC_LBL_MY_REWARDS_CURRENT_POINTS}: `}
               <BodyCopy component="span" fontWeight="black" fontFamily="secondary" fontSize="fs14">
                 {currentPoints}
               </BodyCopy>
@@ -36,7 +31,7 @@ const MyAccountLayoutView = (props: Props) => {
           </Col>
           <Col colSize={{ large: 8, medium: 5, small: 4 }}>
             <BodyCopy component="p" fontFamily="secondary" fontSize="fs14">
-              {`My Rewards: `}
+              {`${labels.ACC_LBL_MY_REWARDS_HEADING}: `}
               <BodyCopy component="span" fontWeight="black" fontFamily="secondary" fontSize="fs14">
                 {`$`}
                 {totalRewards && Math.trunc(totalRewards)}
@@ -54,7 +49,7 @@ const MyAccountLayoutView = (props: Props) => {
         <Row>
           <Col colSize={{ large: 12, medium: 8, small: 6 }}>
             <BodyCopy fontFamily="secondary" fontSize="fs14">
-              {`Points to your next reward: `}
+              {`${labels.ACC_LBL_MY_REWARDS_NEXT_REWARD}: `}
               <BodyCopy component="span" fontWeight="black" fontFamily="secondary" fontSize="fs14">
                 {pointsToNextReward}
               </BodyCopy>
@@ -64,6 +59,22 @@ const MyAccountLayoutView = (props: Props) => {
       </div>
     </div>
   );
+};
+
+MyAccountLayoutView.propTypes = {
+  className: PropTypes.string,
+  pointsToNextReward: PropTypes.number,
+  currentPoints: PropTypes.number,
+  totalRewards: PropTypes.number,
+  labels: PropTypes.shape({}),
+};
+
+MyAccountLayoutView.defaultProps = {
+  className: '',
+  pointsToNextReward: null,
+  currentPoints: null,
+  totalRewards: null,
+  labels: {},
 };
 
 export default withStyles(MyAccountLayoutView, styles);
