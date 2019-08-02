@@ -253,7 +253,7 @@ export const getAPIConfig = () => {
  * This method retrieves value for input key from asyncstorage
  * @param key
  *
- * @returns: lastSplashAnimationDate
+ * @returns: value from async storage
  */
 export const geValueFromAsyncStorage = async key => {
   try {
@@ -266,7 +266,7 @@ export const geValueFromAsyncStorage = async key => {
 
 /**
  * @function setValueInAsyncStorage
- * This method saves last splash animation date in asyncstorage
+ * This method saves the input key and value in asyncstorage
  * @param key: key to be saved
  * @param value: value for key
  *
