@@ -6,6 +6,8 @@ const getColorCode = props => {
     : props.theme.colorPalette[props.color.tint];
 };
 
+const iconSpacing = '15px';
+
 const StyledModal = css`
   position: absolute;
   margin: auto;
@@ -14,17 +16,29 @@ const StyledModal = css`
   right: ${props => (props.variation === 'primary' ? '0' : '')};
   left: ${props => (props.variation === 'secondary' ? '0' : '')};
   z-index: 999;
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    position: fixed;
+    top: 0 !important;
+    height: 100%;
+    width: 100%;
+  }
   .dialog__content {
     background-color: ${props => props.theme.colorPalette.white};
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
     width: 100%;
     overflow-y: auto;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      max-height: none !important;
+      height: 100%;
+    }
   }
   .modal__bar {
+    position: absolute;
     height: 8px;
     width: 100%;
     background-color: ${props =>
       props.color ? getColorCode(props) : props.theme.colorPalette.gray[600]};
+    z-index: 99;
   }
   .modal__triangle {
     width: 0;
@@ -35,6 +49,17 @@ const StyledModal = css`
       ${props => (props.color ? getColorCode(props) : props.theme.colorPalette.gray[600])};
     position: absolute;
     top: -10px;
+    z-index: 99;
+  }
+  .modal__closeIcon {
+    background: transparent url('/static/images/modal-close.svg') no-repeat 0 0;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: ${iconSpacing};
+    top: ${iconSpacing};
+    height: ${iconSpacing};
+    width: ${iconSpacing};
   }
 `;
 

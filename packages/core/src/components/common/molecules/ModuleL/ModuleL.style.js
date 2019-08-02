@@ -30,6 +30,7 @@ export default css`
   }
   .moduleL__tile-text {
     margin: 0 13px;
+    position: relative;
 
     @media ${props => props.theme.mediaQuery.medium} {
       margin: 0 30px;
@@ -54,6 +55,16 @@ export default css`
   }
   .moduleL__tile-link {
     color: ${props => props.theme.colorPalette.gray['900']};
+    position: absolute;
+    bottom: 13px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      bottom: 24px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      bottom: 33px;
+    }
   }
   .slick-prev,
   .slick-next {

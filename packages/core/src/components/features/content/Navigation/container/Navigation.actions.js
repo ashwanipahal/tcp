@@ -7,17 +7,25 @@ export const loadNavigationData = payload => {
   };
 };
 
-export const openL2Panel = (data, order) => {
+export const openL2Panel = (panelData, mainCategory, order) => {
   return {
-    data,
+    panelData,
+    mainCategory,
     order,
     type: NAVIGATION_CONSTANTS.OPEN_L2_PANEL,
   };
 };
 
-export const closeL2Panel = payload => {
+export const openL2Drawer = payload => {
   return {
     payload,
-    type: NAVIGATION_CONSTANTS.CLOSE_L2_PANEL,
+    type: NAVIGATION_CONSTANTS.OPEN_L2_DRAWER,
+  };
+};
+
+export const hideL2Drawer = payload => {
+  return {
+    payload,
+    type: NAVIGATION_CONSTANTS.HIDE_L2_DRAWER,
   };
 };

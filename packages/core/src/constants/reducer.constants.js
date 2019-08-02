@@ -14,13 +14,14 @@ export const LOGINPAGE_REDUCER_KEY = 'LoginPageReducer';
 export const ADDRESSBOOK_REDUCER_KEY = 'AddressBookReducer';
 export const ADDRESSBOOK_ACTION_PATTERN = '@@AddressBook-';
 export const PAYMENT_REDUCER_KEY = 'PaymentReducer';
+export const FORGOTPASSWORD_ACTION_PATTERN = '@@ForgotPassword-';
+export const FORGOTPASSWORD_REDUCER_KEY = 'ForgotPasswordReducer';
 export const ADDED_TO_BAG_REDUCER_KEY = 'AddedToBagReducer';
-export const CART_REDUCER_KEY = 'CartReducer';
 export const ADD_GIFT_CARD_REDUCER_KEY = 'AddGiftCardReducer';
 export const PAYMENT_ACTION_PATTERN = '@@payment-';
 export const ADD_GIFT_CARD_ACTION_PATTERN = '@@AddGiftCard-';
 export const LOGINPAGE_ACTION_PATTERN = '@@Login-';
-export const CARTPAGE_REDUCER_KEY = 'CartPage';
+export const CARTPAGE_REDUCER_KEY = 'CartPageReducer';
 export const OVERLAY_MODAL_REDUCER_KEY = 'OverlayModalReducer';
 export const OVERLAY_MODAL_ACTION_PATTERN = '@@Overlay-';
 
@@ -53,6 +54,7 @@ export const SMS_SIGNUP_REDUCER_KEY = 'SmsSignUp';
 export const REDUCER_ACTION_MAPPING = {
   [APICONFIG_REDUCER_KEY]: APICONFIG_ACTION_PATTERN,
   [LOGINPAGE_REDUCER_KEY]: LOGINPAGE_ACTION_PATTERN,
+  [FORGOTPASSWORD_REDUCER_KEY]: FORGOTPASSWORD_ACTION_PATTERN,
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: PRODUCTLISTINGPAGE_ACTION_PATTERN,
   [ADDRESSBOOK_REDUCER_KEY]: ADDRESSBOOK_ACTION_PATTERN,
   [PAYMENT_REDUCER_KEY]: PAYMENT_ACTION_PATTERN,

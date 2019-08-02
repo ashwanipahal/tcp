@@ -1,1 +1,1 @@
-export { default } from './CreateAccountTopSection.native';
+export { default } from './CreateAccountTopSection';
