@@ -5,6 +5,8 @@ import { awsAppSync as config } from '../../../config';
 import ModuleDQuery from '../queries/moduleD/moduleD.query';
 import ModuleDMock from '../../../abstractors/common/moduleD/mock';
 
+jest.mock('../../../../utils/utils');
+
 if (!process.browser) {
   global.fetch = fetch;
 }
