@@ -144,6 +144,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       }
     }
     fontSizeVariation="xlarge"
+    onPress={[Function]}
     text=""
     visible={false}
   />

@@ -1,15 +1,12 @@
-/* eslint-disable */
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { ForgotPasswordViewVanilla } from '../ForgotPassword.view';
+import { ForgotPasswordViewVanilla } from '../ForgotPassword.view.native';
 
 describe('ForgotPasswordView component', () => {
   it('should renders correctly', () => {
     const props = {
-      labels: {
-        password: {},
-      },
+      labels: {},
       handleSubmit: () => {},
       onSubmit: () => {},
       showNotification: '',

@@ -43,9 +43,17 @@ const styles = {
  * @return {JSX} IconClass : Return jsx icon component
  * @desc This method based on the props generate icon component.
  */
+
 export const LoginForm = props => {
   const { labels, handleSubmit, onSubmit } = props;
   const [showModal, setModalState] = useState(false);
+
+  const showForgotPassword = () => {
+    const { showForgotPasswordForm, resetForm } = props;
+    resetForm();
+    showForgotPasswordForm();
+  };
+
   const openModal = () => {
     setModalState(!showModal);
   };
@@ -99,6 +107,7 @@ export const LoginForm = props => {
         anchorVariation="secondary"
         text={labels.login.lbl_login_forgetPasswordCTA}
         customStyle={styles.forgotPasswordStyle}
+        onPress={showForgotPassword}
       />
       <LineComp marginTop={28} />
       <DescriptionStyle>{labels.login.lbl_login_createAccountHelp}</DescriptionStyle>
@@ -121,7 +130,6 @@ export const LoginForm = props => {
     </View>
   );
 };
-
 LoginForm.propTypes = {
   labels: PropTypes.shape({
     lbl_login_email: PropTypes.string,
@@ -136,6 +144,8 @@ LoginForm.propTypes = {
   handleSubmit: PropTypes.func,
   onSubmit: PropTypes.func,
   loginErrorMessage: PropTypes.string,
+  showForgotPasswordForm: PropTypes.string.isRequired,
+  resetForm: PropTypes.string.isRequired,
 };
 
 LoginForm.defaultProps = {

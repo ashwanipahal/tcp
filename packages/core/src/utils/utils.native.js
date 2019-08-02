@@ -3,6 +3,7 @@ import icons from '../config/icons';
 import locators from '../config/locators';
 import { getStoreRef, resetStoreRef } from './store.utils';
 import { APICONFIG_REDUCER_KEY } from '../constants/reducer.constants';
+import { awsAppSync } from '../services/config';
 
 import config from '../components/common/atoms/Anchor/config.native';
 
@@ -232,10 +233,14 @@ export const getAPIConfig = () => {
       siteId: 'us',
       countryKey: '_US',
       assetHost: 'https://test4.childrensplace.com',
-      domain: '://test4.childrensplace.com/api/',
+      domain: 'https://test4.childrensplace.com/api/',
       unbxd: '://search.unbxd.io',
       cookie: null,
       isMobile: false,
+      graphql_reqion: awsAppSync.aws_appsync_region,
+      graphql_endpoint_url: awsAppSync.aws_appsync_graphqlEndpoint,
+      graphql_auth_type: awsAppSync.aws_appsync_authenticationType,
+      graphql_api_key: awsAppSync.aws_appsync_apiKey,
     };
   } else if (deriveApiConfigObj) {
     apiConfig = (getStoreRef() && getStoreRef().getState()[APICONFIG_REDUCER_KEY]) || {};

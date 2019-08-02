@@ -72,8 +72,8 @@ const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide, promoTextBa
         <Carousel
           options={options}
           carouselConfig={{
-            autoplay: false,
             type: 'light',
+            autoplay: false,
             moduleL: true,
             customArrowLeft: getIconPath('carousel-big-carrot'),
             customArrowRight: getIconPath('carousel-big-carrot'),

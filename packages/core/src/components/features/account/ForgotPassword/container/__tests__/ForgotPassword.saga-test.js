@@ -1,6 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import { ForgotPassword, ForgotPasswordSaga } from '../ForgotPassword.saga';
-import { getResetPasswordSuccess, userNotAvailable } from '../ForgotPassword.actions';
+import { getResetPasswordSuccess, getResetPasswordFail } from '../ForgotPassword.actions';
 import FORGOTPASSWORD_CONSTANTS from '../../ForgotPassword.constants';
 
 describe('ForgotPassword saga', () => {
@@ -37,7 +37,7 @@ describe('ForgotPassword saga', () => {
         },
       };
       const putDescriptor = ForgotPasswordGeneration.throw(error).value;
-      expect(putDescriptor).toEqual(put(userNotAvailable(errorBody)));
+      expect(putDescriptor).toEqual(put(getResetPasswordFail({ state: true })));
     });
 
     it('should dispatch updateCardListonDelete action for success response if body is not present', () => {

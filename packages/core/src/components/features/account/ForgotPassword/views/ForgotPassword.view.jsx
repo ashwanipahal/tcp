@@ -77,11 +77,15 @@ class ForgotPasswordView extends React.Component<Props, State> {
           </Anchor>
         </div>
         <form onSubmit={handleSubmit(this.onFormSubmit)} className={className}>
-          {errorObject && showNotification && (
+          {showNotification && (
             <Notification
               status="error"
               colSize={{ large: 11, medium: 7, small: 6 }}
-              message={labels.password.lbl_forgotPassword_userNotAvailable}
+              message={
+                errorObject
+                  ? labels.password.lbl_forgotPassword_userNotAvailable
+                  : labels.password.lbl_forgotPassword_apiError
+              }
             />
           )}
 
@@ -163,3 +167,4 @@ export default reduxForm({
   enableReinitialize: true,
   ...validateMethod, // a unique identifier for this form
 })(withStyles(ForgotPasswordView, styles));
+export { ForgotPasswordView as ForgotPasswordViewVanilla };

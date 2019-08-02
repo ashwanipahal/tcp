@@ -27,6 +27,7 @@ const labels = {
   lbl_forgotPassword_accountMsg: "Don't have an account? Create one now to start earning points!",
   lbl_forgotPassword_heading:
     'We’ve just sent you instructions to reset your password. Didn’t get your email?Check your spam or click here to contact customer service.',
+  lbl_forgotPassword_apiError: 'something wrong occur',
 };
 
 export default labels;

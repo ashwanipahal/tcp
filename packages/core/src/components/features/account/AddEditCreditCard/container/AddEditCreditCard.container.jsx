@@ -12,7 +12,6 @@ import {
   getAddEditCreditCardError,
 } from './AddEditCreditCard.selectors';
 import constants from './AddEditCreditCard.constants';
-// import creditCardLabels from './AddEditCreditCard.labels';
 import AddEditCreditCardComponent from '../views/AddEditCreditCard.view';
 import { getAddressListState } from '../../AddressBook/container/AddressBook.selectors';
 import { addCreditCard, editCreditCard } from './AddEditCreditCard.actions';
