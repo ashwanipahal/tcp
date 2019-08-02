@@ -1,7 +1,6 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
-import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
 import { SlotA, SlotB, SlotC, SlotD } from '../molecules';
 
 class HomePageView extends React.Component {
@@ -35,4 +34,4 @@ HomePageView.propTypes = {
   navigation: PropTypes.shape({}).isRequired,
 };
 
-export default errorBoundary(HomePageView);
+export default HomePageView;
