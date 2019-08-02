@@ -10,7 +10,6 @@ import {
   getResetEmailResponse,
   toggleSuccessfulEmailSection,
 } from '../../ForgotPassword/container/ForgotPassword.selectors';
-// import Router from 'next/router'; // eslint-disable-line
 import { login, resetLoginInfo } from './LoginPage.actions';
 import {
   closeOverlayModal,
