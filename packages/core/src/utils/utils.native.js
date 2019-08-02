@@ -1,4 +1,5 @@
-import { Dimensions, Linking, AsyncStorage } from 'react-native';
+import { Dimensions, Linking } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import icons from '../config/icons';
 import locators from '../config/locators';

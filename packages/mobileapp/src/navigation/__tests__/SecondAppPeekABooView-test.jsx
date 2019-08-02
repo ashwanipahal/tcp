@@ -1,15 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { SecondAppPeekABooViewVanilla } from '../SecondAppPeekABooView';
-import MockStorage from '../../utils/mocks/MockStorage';
 
 Date.now = jest.fn(() => new Date('2019-08-01'));
-
-const storageCache = {};
-const AsyncStorage = new MockStorage(storageCache);
-
-// Mock Asyncstorage
-jest.setMock('AsyncStorage', AsyncStorage);
 
 // Mock Timers for Animation
 jest.useFakeTimers();

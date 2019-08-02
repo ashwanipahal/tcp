@@ -42,7 +42,7 @@ module.exports = {
     'mock.js',
     '/flow-typed/',
     '/pages/',
-    '/mocks/',
+    '/__mocks__/',
   ],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],
   snapshotSerializers: ['enzyme-to-json/serializer'],
