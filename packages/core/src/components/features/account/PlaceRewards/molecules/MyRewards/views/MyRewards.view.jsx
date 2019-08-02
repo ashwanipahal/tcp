@@ -100,12 +100,20 @@ const MyRewards = ({ labels, className }) => {
 };
 
 MyRewards.propTypes = {
-  labels: PropTypes.shape({}),
+  labels: PropTypes.shape({ common: {}, myPlaceRewards: {} }),
   className: PropTypes.string,
 };
 
 MyRewards.defaultProps = {
-  labels: { common: {}, myPlaceRewards: {} },
+  labels: {
+    common: { ACC_LBL_TNC: 'tnc' },
+    myPlaceRewards: {
+      ACC_LBL_MY_REWARDS_PROGRAM_DETAILS: 'program details',
+      ACC_LBL_MY_REWARDS_SHOP_NOW: 'shop now',
+      ACC_LBL_MY_REWARDS_NO_REWARDS_MSG: 'no msg',
+      ACC_LBL_MY_REWARDS_HEADING: 'heading',
+    },
+  },
   className: '',
 };
 

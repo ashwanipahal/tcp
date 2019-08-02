@@ -82,12 +82,12 @@ const PlaceRewardsSection = ({ labels, className }) => {
 };
 
 PlaceRewardsSection.propTypes = {
-  labels: PropTypes.shape({}),
+  labels: PropTypes.shape({ myPlaceRewards: {} }),
   className: PropTypes.string,
 };
 
 PlaceRewardsSection.defaultProps = {
-  labels: { common: {}, myPlaceRewards: {} },
+  labels: { myPlaceRewards: { ACC_LBL_PLACE_REWARDS_HEADING: 'heading' } },
   className: '',
 };
 

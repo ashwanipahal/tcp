@@ -1,6 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import PlaceRewardsContainer from '../PlaceRewards.container';
+import { getSiteId } from '../../../../../../utils';
+
+jest.mock('../../../../../../utils', () => ({
+  getSiteId: jest.fn(),
+}));
 
 describe('PlaceRewardsContainer', () => {
   it('should render correctly', () => {
@@ -9,6 +14,12 @@ describe('PlaceRewardsContainer', () => {
       myPlaceRewards: {},
     };
     const tree = shallow(<PlaceRewardsContainer labels={labels} />);
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('should not render if site id is ca', () => {
+    getSiteId.mockImplementation(() => 'ca');
+    const tree = shallow(<PlaceRewardsContainer />);
     expect(tree).toMatchSnapshot();
   });
 });

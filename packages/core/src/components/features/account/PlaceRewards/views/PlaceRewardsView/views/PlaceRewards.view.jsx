@@ -11,7 +11,7 @@ PlaceRewardsView.propTypes = {
 };
 
 PlaceRewardsView.defaultProps = {
-  labels: { common: {}, myPlaceRewards: {} },
+  labels: {},
 };
 
 export default PlaceRewardsView;
