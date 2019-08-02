@@ -44,95 +44,92 @@ const styles = {
  * @desc This method based on the props generate icon component.
  */
 
-class LoginForm extends React.PureComponent<Props> {
-  showForgotPasswordForm = e => {
-    e.preventDefault();
-    const { showForgotPasswordForm, resetForm } = this.props;
+export const LoginForm = props => {
+  const { labels, handleSubmit, onSubmit } = props;
+  const [showModal, setModalState] = useState(false);
+
+  const showForgotPassword = () => {
+    const { showForgotPasswordForm, resetForm } = props;
     resetForm();
     showForgotPasswordForm();
   };
 
-  render() {
-    const { labels, handleSubmit, onSubmit } = this.props;
-    const [showModal, setModalState] = useState(false);
-    const openModal = () => {
-      setModalState(!showModal);
-    };
-    return (
-      <View {...this.props}>
+  const openModal = () => {
+    setModalState(!showModal);
+  };
+  return (
+    <View {...props}>
+      <Field
+        label={labels.ACC_LBL_LOGIN_EMAIL}
+        name="emailAddress"
+        id="emailAddress"
+        type="text"
+        component={TextBox}
+        dataLocator="emailAddress"
+      />
+      <Field
+        label={labels.ACC_LBL_LOGIN_PASSWORD}
+        name="password"
+        id="password"
+        type="text"
+        component={TextBox}
+        dataLocator="password"
+        secureTextEntry
+      />
+      <View style={styles.inputCheckBoxStyle}>
         <Field
-          label={labels.ACC_LBL_LOGIN_EMAIL}
-          name="emailAddress"
-          id="emailAddress"
-          type="text"
-          component={TextBox}
-          dataLocator="emailAddress"
+          name="rememberMe"
+          component={InputCheckbox}
+          dataLocator="rememberMe"
+          disabled={false}
+          rightText={labels.ACC_LBL_LOGIN_REMEMBER_ME}
         />
         <Field
-          label={labels.ACC_LBL_LOGIN_PASSWORD}
-          name="password"
-          id="password"
-          type="text"
-          component={TextBox}
-          dataLocator="password"
-          secureTextEntry
+          name="savePlcc"
+          component={InputCheckbox}
+          dataLocator="savePlcc"
+          disabled={false}
+          rightText={labels.ACC_LBL_LOGIN_SAVE_MY_PLACE}
+          marginTop={13}
         />
-        <View style={styles.inputCheckBoxStyle}>
-          <Field
-            name="rememberMe"
-            component={InputCheckbox}
-            dataLocator="rememberMe"
-            disabled={false}
-            rightText={labels.ACC_LBL_LOGIN_REMEMBER_ME}
-          />
-          <Field
-            name="savePlcc"
-            component={InputCheckbox}
-            dataLocator="savePlcc"
-            disabled={false}
-            rightText={labels.ACC_LBL_LOGIN_SAVE_MY_PLACE}
-            marginTop={13}
-          />
-        </View>
-
-        <CustomButton
-          color="#FFFFFF"
-          fill="BLUE"
-          text={labels.ACC_LBL_LOGIN_CTA}
-          buttonVariation="variable-width"
-          customStyle={styles.loginButtonStyle}
-          onPress={handleSubmit(onSubmit)}
-        />
-        <Anchor
-          fontSizeVariation="xlarge"
-          anchorVariation="secondary"
-          text={labels.ACC_LBL_LOGIN_FORGET_PASSWORD_CTA}
-          customStyle={styles.forgotPasswordStyle}
-          onPress={this.showForgotPasswordForm}
-        />
-        <LineComp marginTop={28} />
-        <DescriptionStyle>{labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}</DescriptionStyle>
-        <CustomButton
-          text={labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
-          buttonVariation="variable-width"
-          onPress={() => setModalState(true)}
-          customStyle={styles.createAccountStyle}
-        />
-        {showModal && (
-          <ModalNative isOpen={showModal} onRequestClose={openModal}>
-            <ModalHeading>CREATE ACCOUNT</ModalHeading>
-            <ModalViewWrapper>
-              <SafeAreaView>
-                <CreateAccount />
-              </SafeAreaView>
-            </ModalViewWrapper>
-          </ModalNative>
-        )}
       </View>
-    );
-  }
-}
 
+      <CustomButton
+        color="#FFFFFF"
+        fill="BLUE"
+        text={labels.ACC_LBL_LOGIN_CTA}
+        buttonVariation="variable-width"
+        customStyle={styles.loginButtonStyle}
+        onPress={handleSubmit(onSubmit)}
+      />
+      <Anchor
+        fontSizeVariation="xlarge"
+        anchorVariation="secondary"
+        text={labels.ACC_LBL_LOGIN_FORGET_PASSWORD_CTA}
+        customStyle={styles.forgotPasswordStyle}
+        onPress={showForgotPassword}
+      />
+      <LineComp marginTop={28} />
+      <DescriptionStyle>{labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}</DescriptionStyle>
+      <CustomButton
+        text={labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
+        buttonVariation="variable-width"
+        onPress={() => setModalState(true)}
+        customStyle={styles.createAccountStyle}
+      />
+      {showModal && (
+        <ModalNative isOpen={showModal} onRequestClose={openModal}>
+          <ModalHeading>CREATE ACCOUNT</ModalHeading>
+          <ModalViewWrapper>
+            <SafeAreaView>
+              <CreateAccount />
+            </SafeAreaView>
+          </ModalViewWrapper>
+        </ModalNative>
+      )}
+    </View>
+  );
+};
 LoginForm.propTypes = {
   labels: PropTypes.shape({
     ACC_LBL_LOGIN_EMAIL: PropTypes.string,
@@ -147,6 +144,8 @@ LoginForm.propTypes = {
   handleSubmit: PropTypes.func,
   onSubmit: PropTypes.func,
   loginErrorMessage: PropTypes.string,
+  showForgotPasswordForm: PropTypes.string.isRequired,
+  resetForm: PropTypes.string.isRequired,
 };
 
 LoginForm.defaultProps = {
