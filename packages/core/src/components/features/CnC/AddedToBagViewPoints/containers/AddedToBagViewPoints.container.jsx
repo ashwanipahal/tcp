@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AddedToBagViewPoints from '../views/AddedToBagViewPoints.view';
 import { getCartOrderDetails } from '../../CartItemTile/container/CartItemTile.selectors';
-import { getAddedToBagData } from '../../AddedToBag/container/AddedToBag.selectors';
-import getPointsSummary from '../../Cart/util/utility';
+import {
+  getAddedToBagData,
+  getPointsSummary,
+} from '../../AddedToBag/container/AddedToBag.selectors';
 
 export class AddedToBagViewPointsContainer extends React.Component {
   componentDidMount = () => {};
