@@ -1,5 +1,5 @@
 import React from 'react';
-import { Platform, StatusBar, StyleSheet, View } from 'react-native';
+import { Platform, StatusBar, StyleSheet, View, UIManager } from 'react-native';
 import { Provider } from 'react-redux';
 import { PropTypes } from 'prop-types';
 import ThemeWrapperHOC from '../components/common/hoc/ThemeWrapper.container';
@@ -25,6 +25,11 @@ export class App extends React.PureComponent {
 
   componentWillMount() {
     this.store = initializeStore();
+
+    // Enable Layout animations for android
+    if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
+      UIManager.setLayoutAnimationEnabledExperimental(true);
+    }
   }
 
   _handleLoadingError = error => {

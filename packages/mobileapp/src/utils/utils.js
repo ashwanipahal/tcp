@@ -1,6 +1,10 @@
 import moment from 'moment';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
-import { setValueInAsyncStorage, geValueFromAsyncStorage } from '@tcp/core/src/utils/utils.native';
+import {
+  setValueInAsyncStorage,
+  geValueFromAsyncStorage,
+  getScreenWidth,
+} from '@tcp/core/src/utils/utils.native';
 
 import icons from './icons';
 import { APP_TYPE } from '../components/common/hoc/ThemeWrapper.constants';
@@ -11,9 +15,15 @@ let brandName = APP_TYPE.TCP;
 export const AppAnimationConfig = {
   ANIMATION_REPEAT_DAYS: 30,
   LAST_ANIMATION_DATE: 'LAST_ANIMATION_DATE',
-  PeekABooLogoMaxHeight: 120,
-  PeekABooLogoMinHeight: 50,
+  PeekABooViewMaxHeight: 100,
+  PeekABooViewMinHeight: 0,
+  PeekABooLogoMaxHeight: 80,
+  PeekABooLogoMaxWidth: 100,
   AnimationDelay: 1000,
+  AppSplashMaxWidth: getScreenWidth() / 2,
+  AppSplashMinWidth: 100,
+  AppSplashMinHeight: 60,
+  AppSplashMaxHeight: 100,
 };
 
 /**

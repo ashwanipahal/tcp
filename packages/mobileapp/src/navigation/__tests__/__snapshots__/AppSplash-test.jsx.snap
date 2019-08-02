@@ -8,13 +8,14 @@ exports[`Appsplash component test cases should match snapshot 1`] = `
   zIndex={0}
 >
   <Styled(ImageComp)
+    height={100}
     name="image"
     source={
       Object {
         "testUri": "../../../src/assets/images/tcp/tcpLaunchImage.png",
       }
     }
-    width={650}
+    width={375}
   />
 </View>
 `;

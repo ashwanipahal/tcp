@@ -26,7 +26,8 @@ describe('SecondAppPeekABooView component test cases', () => {
   });
 
   it('should call peek-a-boo animation method', () => {
+    jest.runAllTimers();
     wrapper.instance().peekABooAnimation();
-    expect(wrapper.find('View').props().height).toBe(50);
+    expect(wrapper.find('View').props().height).toBe(0);
   });
 });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, LayoutAnimation } from 'react-native';
+import { View, LayoutAnimation, Platform } from 'react-native';
 import { Image } from '@tcp/core/src/components/common/atoms/index.native';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles.native';
 
@@ -22,61 +22,88 @@ class SecondAppPeekABooView extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      height: AppAnimationConfig.PeekABooLogoMinHeight,
+      height: AppAnimationConfig.PeekABooViewMinHeight,
       animationDelay: AppAnimationConfig.AnimationDelay,
+      imageHeight: AppAnimationConfig.PeekABooLogoMaxHeight - 5,
+      imageWidth: AppAnimationConfig.PeekABooLogoMaxWidth - 10,
     };
+
+    this.peekABooAnimation();
   }
 
-  componentWillMount = () => {
-    // wait for 100 ms to start animation so as to trigger bootstrap call in homepage
-    setTimeout(this.showSplashAnimation, 100);
-  };
-
-  /**
-   * @function showSplashAnimation
-   * This method uses Animated api of react-native to display the after splash animation
-   * Animation is a peek-a-boo effect of second app switch in bottom navigation bar
-   *
-   * @memberof SecondAppPeekABooView
-   */
-  showSplashAnimation = async () => {
-    const animateLogo = await shouldAnimateLogo();
-    if (animateLogo) {
-      const { animationDelay } = this.state;
-      setTimeout(this.peekABooAnimation, animationDelay);
-      if (updateLastSplashAnimationDate) updateLastSplashAnimationDate();
-    }
-  };
+  componentWillUnmount() {
+    // clear timeout used for animation
+    if (this.animationTimeout) clearTimeout(this.animationTimeout);
+  }
 
   /**
    * @function peekABooAnimation
    * This method uses Animated api of react-native to display the after splash animation
    * Animation is a peek-a-boo effect of second app switch in bottom navigation bar
+   * It checks if last animation date is 30 days
+   * If yes - shows the animation
    *
    * @memberof SecondAppPeekABooView
    */
-  peekABooAnimation = () => {
+  peekABooAnimation = async () => {
+    const animateLogo = await shouldAnimateLogo();
+    if (animateLogo) {
+      const { animationDelay } = this.state;
+      this.animationTimeout = setTimeout(this.showAnimation, animationDelay * 2);
+      if (updateLastSplashAnimationDate) updateLastSplashAnimationDate();
+    }
+  };
+
+  /**
+   * @function showAnimation
+   * This method uses Animated api of react-native to display the after splash animation
+   * Animation is a peek-a-boo effect of second app switch in bottom navigation bar
+   *
+   * @memberof SecondAppPeekABooView
+   */
+  showAnimation = () => {
     const { animationDelay } = this.state;
 
+    // increase view height for animation
+    this.changePosition(AppAnimationConfig.PeekABooViewMaxHeight);
+
     setTimeout(() => {
-      this.changePosition(AppAnimationConfig.PeekABooLogoMaxHeight);
+      // Animate image
+      this.changeImagePosition();
+
       setTimeout(() => {
-        this.changePosition(AppAnimationConfig.PeekABooLogoMinHeight);
+        // decrease view height to 0
+        this.changePosition(AppAnimationConfig.PeekABooViewMinHeight);
       }, animationDelay);
     }, animationDelay);
   };
 
   /**
    * @function changePosition
-   * This method is called to update app logo position
+   * This method is called to update view position animatedly
    *
    * @memberof SecondAppPeekABooView
    */
   changePosition = height => {
-    LayoutAnimation.spring();
+    LayoutAnimation.linear();
 
     this.setState({
       height,
+    });
+  };
+
+  /**
+   * @function changeImagePosition
+   * This method is called to update image position animatedly
+   *
+   * @memberof SecondAppPeekABooView
+   */
+  changeImagePosition = () => {
+    LayoutAnimation.spring();
+
+    this.setState({
+      imageWidth: AppAnimationConfig.PeekABooLogoMaxWidth,
+      imageHeight: AppAnimationConfig.PeekABooLogoMaxHeight,
     });
   };
 
@@ -88,11 +115,18 @@ class SecondAppPeekABooView extends React.PureComponent<Props> {
    * @memberof SecondAppPeekABooView
    */
   render() {
-    const { height } = this.state;
+    const { height, imageWidth, imageHeight } = this.state;
+
+    // Shadow not supported in android, so set border for android
+    const borderWidth = Platform.OS === 'android' ? 1 : 0;
     return (
       <View {...this.props} height={height}>
-        <ImageContainer shadowColor={getSecondBrandThemeColor()} name="imageContainer">
-          <Image source={getSecondAppLogo()} width="100px" height="80px" name="image" />
+        <ImageContainer
+          shadowColor={getSecondBrandThemeColor()}
+          name="imageContainer"
+          borderWidth={borderWidth}
+        >
+          <Image source={getSecondAppLogo()} width={imageWidth} height={imageHeight} name="image" />
         </ImageContainer>
       </View>
     );

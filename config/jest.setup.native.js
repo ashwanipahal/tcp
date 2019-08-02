@@ -12,3 +12,7 @@ const AsyncStorage = new MockStorage(storageCache);
 
 // Mock Asyncstorage
 jest.setMock('@react-native-community/async-storage', AsyncStorage);
+
+// Mock Timers for Animation
+jest.useFakeTimers();
+jest.mock('LayoutAnimation');

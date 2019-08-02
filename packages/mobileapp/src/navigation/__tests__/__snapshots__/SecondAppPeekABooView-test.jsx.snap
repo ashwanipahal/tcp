@@ -2,21 +2,22 @@
 
 exports[`SecondAppPeekABooView component test cases should match snapshot 1`] = `
 <View
-  height={50}
+  height={0}
 >
   <Styled(View)
+    borderWidth={0}
     name="imageContainer"
     shadowColor="#f7971f"
   >
     <Styled(ImageComp)
-      height="80px"
+      height={75}
       name="image"
       source={
         Object {
           "testUri": "../../../src/assets/images/gymboree/gymboreePeekABoo.png",
         }
       }
-      width="100px"
+      width={90}
     />
   </Styled(View)>
 </View>

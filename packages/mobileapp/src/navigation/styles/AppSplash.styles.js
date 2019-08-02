@@ -10,6 +10,7 @@ const SplashStyles = css`
   bottom: 0px;
   ${props =>
     `background-color: ${props.theme.colors.WHITE}
+     padding-top: ${props.theme.spacing.LAYOUT_SPACING.SM};
   `};
 `;
 

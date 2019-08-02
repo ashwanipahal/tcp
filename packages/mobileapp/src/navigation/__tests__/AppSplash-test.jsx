@@ -2,9 +2,6 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { AppSplashVanilla } from '../AppSplash';
 
-// Mock Timers for Animation
-jest.useFakeTimers();
-
 describe('Appsplash component test cases', () => {
   let wrapper;
 
@@ -24,5 +21,12 @@ describe('Appsplash component test cases', () => {
   it('should render tcp launch image by default', () => {
     const image = wrapper.find('[name="image"]');
     expect(image.props().source.testUri).toContain('tcpLaunchImage.png');
+  });
+
+  it('should render tcp launch image by default', () => {
+    jest.runAllTimers();
+    wrapper.instance().showSplashAnimation();
+    const view = wrapper.find('View');
+    expect(view.props().opacity).toBe(0);
   });
 });

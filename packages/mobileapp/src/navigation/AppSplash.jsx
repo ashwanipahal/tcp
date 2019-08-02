@@ -1,6 +1,5 @@
 import React from 'react';
 import { View, LayoutAnimation } from 'react-native';
-import { getScreenWidth } from '@tcp/core/src/utils/utils.native';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles.native';
 import { Image } from '@tcp/core/src/components/common/atoms/index.native';
 
@@ -21,14 +20,20 @@ class AppSplash extends React.PureComponent<Props> {
       zIndex: 0,
       animationDelay: AppAnimationConfig.AnimationDelay,
       position: 'center',
-      width: getScreenWidth() - 100,
+      width: AppAnimationConfig.AppSplashMaxWidth,
       opacity: 1,
+      height: AppAnimationConfig.AppSplashMaxHeight,
     };
   }
 
   componentWillMount() {
-    // wait for 100 ms to start animation so as to trigger bootstrap call in homepage
-    setTimeout(this.showSplashAnimation, AppAnimationConfig.AnimationDelay);
+    // wait for 1s to start animation so as to trigger bootstrap call in homepage
+    this.spashAnimation = setTimeout(this.showSplashAnimation, AppAnimationConfig.AnimationDelay);
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.opacityAnimation);
+    clearTimeout(this.spashAnimation);
   }
 
   /**
@@ -40,8 +45,12 @@ class AppSplash extends React.PureComponent<Props> {
    */
   showSplashAnimation = () => {
     const { animationDelay } = this.state;
-    this.changePosition('flex-end', 100, 80);
-    setTimeout(() => {
+    this.changePosition(
+      'flex-end',
+      AppAnimationConfig.AppSplashMinWidth,
+      AppAnimationConfig.AppSplashMinHeight
+    );
+    this.opacityAnimation = setTimeout(() => {
       this.changeOpacity(0, -1);
     }, animationDelay);
   };
@@ -52,12 +61,13 @@ class AppSplash extends React.PureComponent<Props> {
    *
    * @memberof AppSplash
    */
-  changePosition = (position, width) => {
+  changePosition = (position, width, height) => {
     LayoutAnimation.spring();
 
     this.setState({
       position,
       width,
+      height,
     });
   };
 
@@ -82,10 +92,10 @@ class AppSplash extends React.PureComponent<Props> {
    * @memberof AppSplash
    */
   render() {
-    const { zIndex, position, width, opacity } = this.state;
+    const { zIndex, position, width, opacity, height } = this.state;
     return (
       <View {...this.props} justifyContent={position} zIndex={zIndex} opacity={opacity}>
-        <Image source={getAppSplashLogo()} width={width} name="image" />
+        <Image source={getAppSplashLogo()} width={width} height={height} name="image" />
       </View>
     );
   }
