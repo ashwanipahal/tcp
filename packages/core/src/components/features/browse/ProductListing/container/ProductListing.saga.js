@@ -4,9 +4,10 @@ import { setPlpProducts /* , setGiftCardProducts */ } from './ProductListing.act
 import { validateReduxCache } from '../../../../../utils/cache.util';
 import Abstractors from '../../../../../services/abstractors/productListing';
 
-function* fetchPlpProducts({ payload }) {
+function* fetchPlpProducts() {
   try {
-    const plpProducts = yield call(Abstractors.getProducts, payload);
+    const plpProducts = yield call(Abstractors.getProducts, {});
+    console.log('plpProducts', plpProducts);
     yield put(setPlpProducts({ plpProducts }));
   } catch (err) {
     console.log(err);

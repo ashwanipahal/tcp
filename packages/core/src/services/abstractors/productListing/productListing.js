@@ -8,6 +8,7 @@ import endpoints from '../../endpoints';
  */
 const Abstractor = {
   getProducts: () => {
+    console.log('get products');
     const payload = {
       webService: endpoints.getPlpProducts,
       url: '/8eb8cb308b493ec0a6d92bff22ef8df3/qa1-childrensplace-com702771542012808/category',
@@ -22,7 +23,6 @@ const Abstractor = {
     return Abstractor.processData(mock);
   },
   processData: res => {
-    console.log('in process data', res.body.response.products);
     return res.body.response.products;
   },
 };
