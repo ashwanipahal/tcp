@@ -34,7 +34,7 @@ const PaymentView = (props: Props) => {
           <BodyCopy
             fontSize="fs16"
             fontWeight="extrabold"
-            text={labels.paymentGC.ACC_LBL_PAYMENT_HEADING}
+            text={labels.paymentGC.lbl_payment_heading}
           />
         </StyledHeading>
         <UnderlineStyle />

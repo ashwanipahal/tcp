@@ -109,8 +109,8 @@ export class AddressView extends React.PureComponent<Props> {
             colSize={{ large: 12, medium: 8, small: 6 }}
             message={
               showUpdatedNotification === 'success'
-                ? labels.common.ACC_LBL_SUCCESS_MESSAGE
-                : labels.common.ACC_LBL_ERROR_MESSAGE
+                ? labels.common.lbl_common_successMessage
+                : labels.common.lbl_common_errorMessage
             }
           />
         )}
@@ -131,8 +131,8 @@ export class AddressView extends React.PureComponent<Props> {
             title: labels.addressBook.ACC_LBL_DELETE_ADDRESS_TITLE,
             description: selectedAddress,
             buttons: {
-              cancel: labels.common.ACC_LBL_DONT_DELETE,
-              confirm: labels.common.ACC_LBL_YES_DELETE,
+              cancel: labels.common.lbl_common_dontDelete,
+              confirm: labels.common.lbl_common_YesDelete,
             },
           }}
           setDeleteModalMountState={setDeleteModalMountState}

@@ -55,7 +55,7 @@ const GiftCardList = ({
         className="cardList__heading"
         dataLocator="payment-gcAndMerchandiseCards"
       >
-        {labels.paymentGC.ACC_LBL_GC_HEADING}
+        {labels.paymentGC.lbl_payment_gcHeading}
       </Heading>
       {giftCardList.size === 0 && (
         <EmptyCard labels={labels} icon="gift-card" alt="gift card icon" prefix="GC" />
@@ -76,8 +76,8 @@ const GiftCardList = ({
             onClick={onAddGiftCardClick}
           >
             {giftCardList.size === 0
-              ? labels.paymentGC.ACC_LBL_GC_EMPTY_ADD_BTN
-              : labels.paymentGC.ACC_LBL_ADD_BTN}
+              ? labels.paymentGC.lbl_payment_GCEmptyAddBtn
+              : labels.paymentGC.lbl_payment_addBtn}
           </Button>
         </Col>
       </Row>

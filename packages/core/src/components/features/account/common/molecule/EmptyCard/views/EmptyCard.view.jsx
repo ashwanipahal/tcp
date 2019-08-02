@@ -16,8 +16,8 @@ type Props = {
 };
 
 const EmptyCard = ({ labels, className, icon, alt, prefix }: Props) => {
-  const heading = labels.paymentGC[`ACC_LBL_${prefix}_EMPTY_HEADING`];
-  const desc = labels.paymentGC[`ACC_LBL_${prefix}_EMPTY_DESC`];
+  const heading = labels.paymentGC[`lbl_payment_${prefix}EmptyHeading`];
+  const desc = labels.paymentGC[`lbl_payment_${prefix}EmptyDesc`];
   const cardIcon = getIconPath(icon);
   return (
     <div className={className}>

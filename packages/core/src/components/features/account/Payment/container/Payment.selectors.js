@@ -58,3 +58,5 @@ export const getPaymentBannerContentId = state => {
 export const getPaymentBannerRichTextSelector = state => {
   return state.PaymentReducer.get('paymentBannerRichText');
 };
+
+export const getLabels = state => state.Labels.account;

@@ -24,24 +24,24 @@ describe('CardTile utils', () => {
     const card = {
       ccType: 'credit',
     };
-    expect(getCardName({ card, labels })).toEqual(labels.paymentGC.ACC_LBL_DEFAULT_CARD_NAME);
+    expect(getCardName({ card, labels })).toEqual(labels.paymentGC.lbl_payment_defaultCardName);
   });
   it('should call getCardName with GiftCard', () => {
     const card = {
       ccType: 'GiftCard',
     };
-    expect(getCardName({ card, labels })).toEqual(labels.paymentGC.ACC_LBL_GIFT_CARD);
+    expect(getCardName({ card, labels })).toEqual(labels.paymentGC.lbl_payment_giftCard);
   });
   it('should call placecard with GiftCard', () => {
     const card = {
       ccType: 'PLACE CARD',
     };
-    expect(getCardName({ card, labels })).toEqual(labels.paymentGC.ACC_LBL_PLCC_CARD);
+    expect(getCardName({ card, labels })).toEqual(labels.paymentGC.lbl_payment_plccCard);
   });
   it('should call venmo with GiftCard', () => {
     const card = {
       ccType: 'VENMO',
     };
-    expect(getCardName({ card, labels })).toEqual(labels.paymentGC.ACC_LBL_VENMO_ACCOUNT);
+    expect(getCardName({ card, labels })).toEqual(labels.paymentGC.lbl_payment_venmoAccount);
   });
 });
