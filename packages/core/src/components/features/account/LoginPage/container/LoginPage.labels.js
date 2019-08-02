@@ -1,33 +1,31 @@
 const labels = {
-  ACC_LBL_LOGIN_EMAIL: 'Email Address',
-  ACC_LBL_LOGIN_EMAIL_TESTING: 'Email Address TESTING',
-  ACC_LBL_LOGIN_PASSWORD: 'Password',
-  ACC_LBL_LOGIN_CTA: 'LOG IN',
-  ACC_LBL_LOGIN_REMEMBER_ME: 'Remember me. Not recommended on shared devices',
-  ACC_LBL_LOGIN_SAVE_MY_PLACE:
+  lbl_login_email: 'Email Address',
+  lbl_login_emailTesting: 'Email Address TESTING',
+  lbl_login_password: 'Password',
+  lbl_login_loginCTA: 'LOG IN',
+  lbl_login_rememberMe: 'Remember me. Not recommended on shared devices',
+  lbl_login_saveMyPlace:
     'Save My Place Rewards Credit Card ending in 1234 to my account for future purchases.',
-  ACC_LBL_LOGIN_FORGET_PASSWORD_CTA: 'Forgot password?',
-  ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP:
-    "Don't have an account? Create one now to start earning points!",
-  ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA: 'CREATE ACCOUNT',
-  ACC_LBL_LOGIN_HEADING: 'Welcome Back',
-  ACC_LBL_LOGIN_SUB_HEADING: 'Log in to earn points for MY PLACE REWARDS ',
-  ACC_LBL_LOGIN_SUB_DESCRIPTION:
+  lbl_login_forgetPasswordCTA: 'Forgot password?',
+  lbl_login_createAccountHelp: "Don't have an account? Create one now to start earning points!",
+  lbl_login_createAccountCTA: 'CREATE ACCOUNT',
+  lbl_login_heading: 'Welcome Back',
+  lbl_login_subHeading: 'Log in to earn points for MY PLACE REWARDS ',
+  lbl_login_subDescription:
     'Signed up in store? An online account has been created with your email! Click here to reset your password.',
-  ACC_LBL_LOGIN_ERROR:
+  lbl_login_error:
     'Oops! The email or password you’ve entered is incorrect. Password must be at least 8 characters long and have at least 1 uppercase, 1 number and 1 special character.',
-  FORGOT_PASSWORD_USER_NOT_AVAILABLE:
+  lbl_forgotPassword_userNotAvailable:
     "Sorry, we couldn't find an account associated with that email address. Please try again",
-  FORGOT_PASSWORD_CHECK_MAIL: 'Check your email',
-  FORGOT_PASSWORD_BACK_LOGIN: ' Back to Login In',
-  FORGOT_PASSWORD_RESET_PASSWORD: 'Reset Password',
-  FORGOT_PASSWORD_CONTENT_1: 'Forgot your password? No worries!',
-  FORGOT_PASSWORD_CONTENT_2:
+  lbl_forgotPassword_checkMail: 'Check your email',
+  lbl_forgotPassword_backLogin: ' Back to Login In',
+  lbl_forgotPassword_resetPassword: 'Reset Password',
+  lbl_forgotPassword_content1: 'Forgot your password? No worries!',
+  lbl_forgotPassword_content2:
     ' Enter your email address, and we’ll send you instructions to reset your password.',
-  FORGOT_PASSWORD_RETURN_LOGIN: ' Return to Login',
-  FORGOT_PASSWORD_CREATE_ACCOUNT_MSG:
-    "Don't have an account? Create one now to start earning points!",
-  FORGOT_PASSWORD_HEADING:
+  lbl_forgotPassword_returnLogin: ' Return to Login',
+  lbl_forgotPassword_accountMsg: "Don't have an account? Create one now to start earning points!",
+  lbl_forgotPassword_heading:
     'We’ve just sent you instructions to reset your password. Didn’t get your email?Check your spam or click here to contact customer service.',
 };
 

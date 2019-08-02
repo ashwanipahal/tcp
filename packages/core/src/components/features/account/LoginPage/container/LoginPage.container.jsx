@@ -63,7 +63,7 @@ class LoginPageContainer extends React.PureComponent {
       successFullResetEmail,
       labels,
     } = this.props;
-    const errorMessage = loginError ? loginErrorMessage || labels.login.ACC_LBL_LOGIN_ERROR : '';
+    const errorMessage = loginError ? loginErrorMessage || labels.login.lbl_login_error : '';
     const initialValues = {
       rememberMe: true,
       savePlcc: true,

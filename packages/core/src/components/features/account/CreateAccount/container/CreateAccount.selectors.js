@@ -20,5 +20,5 @@ export const getError = state => {
 };
 
 export const getLabels = state => {
-  return state.Labels.account;
+  return state.Labels.global;
 };

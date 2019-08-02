@@ -19,7 +19,7 @@ const LoginTopSection = ({ labels, className }) => {
       </BodyCopy>
       <BodyCopy component="div" className="bordered elem-pt-MED elem-pb-LRG">
         <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary" textAlign="center">
-          {labels.login.ACC_LBL_LOGIN_HEADING}
+          {labels.login.lbl_login_heading}
         </BodyCopy>
         <BodyCopy
           fontWeight="semibold"
@@ -27,10 +27,10 @@ const LoginTopSection = ({ labels, className }) => {
           textAlign="center"
           className="elem-mb-SM"
         >
-          {labels.login.ACC_LBL_LOGIN_SUB_HEADING}
+          {labels.login.lbl_login_subHeading}
         </BodyCopy>
         <BodyCopy fontFamily="secondary" textAlign="center">
-          {labels.login.ACC_LBL_LOGIN_SUB_DESCRIPTION}
+          {labels.login.lbl_login_subDescription}
         </BodyCopy>
       </BodyCopy>
     </BodyCopy>
@@ -39,9 +39,9 @@ const LoginTopSection = ({ labels, className }) => {
 
 LoginTopSection.propTypes = {
   labels: PropTypes.shape({
-    ACC_LBL_LOGIN_HEADING: PropTypes.string,
-    ACC_LBL_LOGIN_SUB_HEADING: PropTypes.string,
-    ACC_LBL_LOGIN_SUB_DESCRIPTION: PropTypes.string,
+    lbl_login_heading: PropTypes.string,
+    lbl_login_subHeading: PropTypes.string,
+    lbl_login_subDescription: PropTypes.string,
   }),
   className: PropTypes.string.isRequired,
 };

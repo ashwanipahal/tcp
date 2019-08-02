@@ -73,7 +73,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
             to="/account?id=address-book"
             data-locator="addnewaddress-back"
           >
-            {labels.login.FORGOT_PASSWORD_BACK_LOGIN}
+            {labels.password.lbl_forgotPassword_backLogin}
           </Anchor>
         </div>
         <form onSubmit={handleSubmit(this.onFormSubmit)} className={className}>
@@ -81,7 +81,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
             <Notification
               status="error"
               colSize={{ large: 11, medium: 7, small: 6 }}
-              message={labels.login.FORGOT_PASSWORD_USER_NOT_AVAILABLE}
+              message={labels.password.lbl_forgotPassword_userNotAvailable}
             />
           )}
 
@@ -94,7 +94,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 fontFamily="secondary"
                 textAlign="center"
               >
-                {labels.login.FORGOT_PASSWORD_CONTENT_1}
+                {labels.password.lbl_forgotPassword_content1}
               </BodyCopy>
               <BodyCopy
                 fontWeight="semibold"
@@ -103,7 +103,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 className="elem-mb-SM"
                 fontSize="fs12"
               >
-                {labels.login.FORGOT_PASSWORD_CONTENT_2}
+                {labels.password.lbl_forgotPassword_content2}
               </BodyCopy>
               <BodyCopy component="div" className="elem-mb-LRG">
                 <Field
@@ -116,7 +116,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 />
               </BodyCopy>
               <Button fill="BLUE" disabled={pristine} type="submit" buttonVariation="fixed-width">
-                {labels.login.FORGOT_PASSWORD_RESET_PASSWORD}
+                {labels.password.lbl_forgotPassword_resetPassword}
               </Button>
             </React.Fragment>
           )}
@@ -129,7 +129,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 fontFamily="secondary"
                 textAlign="center"
               >
-                {labels.login.FORGOT_PASSWORD_CHECK_MAIL}
+                {labels.password.lbl_forgotPassword_checkMail}
               </BodyCopy>
 
               <BodyCopy
@@ -138,7 +138,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 textAlign="center"
                 className="elem-mb-SM"
               >
-                {labels.login.FORGOT_PASSWORD_HEADING}
+                {labels.password.lbl_forgotPassword_heading}
               </BodyCopy>
               <Button
                 fill="BLUE"
@@ -146,7 +146,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 onClick={this.onBackClick}
                 buttonVariation="fixed-width"
               >
-                {labels.login.FORGOT_PASSWORD_RETURN_LOGIN}
+                {labels.password.lbl_forgotPassword_returnLogin}
               </Button>
             </React.Fragment>
           )}

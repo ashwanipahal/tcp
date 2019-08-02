@@ -10,8 +10,8 @@ exports[`Create Account Page should render correctly 1`] = `
     <Styled(CreateAccountTopSection)
       labels={
         Object {
-          "CREATE_ACC_LBL_HIDE": "hide",
           "createAccount": Object {},
+          "lbl_createAccount_hide": "hide",
         }
       }
     />
@@ -49,8 +49,8 @@ exports[`Create Account Page should render correctly 1`] = `
       keepDirtyOnReinitialize={false}
       labels={
         Object {
-          "CREATE_ACC_LBL_HIDE": "hide",
           "createAccount": Object {},
+          "lbl_createAccount_hide": "hide",
         }
       }
       onSubmit={[Function]}

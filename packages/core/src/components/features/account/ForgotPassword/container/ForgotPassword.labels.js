@@ -1,17 +1,16 @@
 // this is temporary file and will be removed once label integration done
 const labelsForgot = {
-  FORGOT_PASSWORD_USER_NOT_AVAILABLE:
+  lbl_forgotPassword_userNotAvailable:
     "Sorry, we couldn't find an account associated with that email address. Please try again",
-  FORGOT_PASSWORD_CHECK_MAIL: 'Check your email',
+  lbl_forgotPassword_checkMail: 'Check your email',
   FORGO_PASSWORD_BACK_LOGIN: ' Back to Login In',
-  FORGOT_PASSWORD_RESET_PASSWORD: 'Reset Password',
-  FORGOT_PASSWORD_CONTENT_1: 'Forgot your password? No worries!',
-  FORGOT_PASSWORD_CONTENT_2:
+  lbl_forgotPassword_resetPassword: 'Reset Password',
+  lbl_forgotPassword_content1: 'Forgot your password? No worries!',
+  lbl_forgotPassword_content2:
     ' Enter your email address, and we’ll send you instructions to reset your password.',
-  FORGOT_PASSWORD_RETURN_LOGIN: ' Return to Login',
-  FORGOT_PASSWORD_CREATE_ACCOUNT_MSG:
-    "Don't have an account? Create one now to start earning points!",
-  FORGOT_PASSWORD_HEADING:
+  lbl_forgotPassword_returnLogin: ' Return to Login',
+  lbl_forgotPassword_accountMsg: "Don't have an account? Create one now to start earning points!",
+  lbl_forgotPassword_heading:
     'We’ve just sent you instructions to reset your password. Didn’t get your email?Check your spam or click here to contact customer service.',
 };
 

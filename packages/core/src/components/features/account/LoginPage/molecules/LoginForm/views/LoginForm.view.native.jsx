@@ -52,7 +52,7 @@ export const LoginForm = props => {
   return (
     <View {...props}>
       <Field
-        label={labels.login.ACC_LBL_LOGIN_EMAIL}
+        label={labels.login.lbl_login_email}
         name="emailAddress"
         id="emailAddress"
         type="text"
@@ -60,7 +60,7 @@ export const LoginForm = props => {
         dataLocator="emailAddress"
       />
       <Field
-        label={labels.login.ACC_LBL_LOGIN_PASSWORD}
+        label={labels.login.lbl_login_password}
         name="password"
         id="password"
         type="text"
@@ -74,14 +74,14 @@ export const LoginForm = props => {
           component={InputCheckbox}
           dataLocator="rememberMe"
           disabled={false}
-          rightText={labels.login.ACC_LBL_LOGIN_REMEMBER_ME}
+          rightText={labels.login.lbl_login_rememberMe}
         />
         <Field
           name="savePlcc"
           component={InputCheckbox}
           dataLocator="savePlcc"
           disabled={false}
-          rightText={labels.login.ACC_LBL_LOGIN_SAVE_MY_PLACE}
+          rightText={labels.login.lbl_login_saveMyPlace}
           marginTop={13}
         />
       </View>
@@ -89,7 +89,7 @@ export const LoginForm = props => {
       <CustomButton
         color="#FFFFFF"
         fill="BLUE"
-        text={labels.login.ACC_LBL_LOGIN_CTA}
+        text={labels.login.lbl_login_loginCTA}
         buttonVariation="variable-width"
         customStyle={styles.loginButtonStyle}
         onPress={handleSubmit(onSubmit)}
@@ -97,13 +97,13 @@ export const LoginForm = props => {
       <Anchor
         fontSizeVariation="xlarge"
         anchorVariation="secondary"
-        text={labels.login.ACC_LBL_LOGIN_FORGET_PASSWORD_CTA}
+        text={labels.login.lbl_login_forgetPasswordCTA}
         customStyle={styles.forgotPasswordStyle}
       />
       <LineComp marginTop={28} />
-      <DescriptionStyle>{labels.login.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}</DescriptionStyle>
+      <DescriptionStyle>{labels.login.lbl_login_createAccountHelp}</DescriptionStyle>
       <CustomButton
-        text={labels.login.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
+        text={labels.login.lbl_login_createAccountCTA}
         buttonVariation="variable-width"
         onPress={() => setModalState(true)}
         customStyle={styles.createAccountStyle}
@@ -124,14 +124,14 @@ export const LoginForm = props => {
 
 LoginForm.propTypes = {
   labels: PropTypes.shape({
-    ACC_LBL_LOGIN_EMAIL: PropTypes.string,
-    ACC_LBL_LOGIN_PASSWORD: PropTypes.string,
-    ACC_LBL_LOGIN_REMEMBER_ME: PropTypes.string,
-    ACC_LBL_LOGIN_SAVE_MY_PLACE: PropTypes.string,
+    lbl_login_email: PropTypes.string,
+    lbl_login_password: PropTypes.string,
+    lbl_login_rememberMe: PropTypes.string,
+    lbl_login_saveMyPlace: PropTypes.string,
     login: PropTypes.string,
-    ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA: PropTypes.string,
-    ACC_LBL_LOGIN_FORGET_PASSWORD_CTA: PropTypes.string,
-    ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP: PropTypes.string,
+    lbl_login_createAccountCTA: PropTypes.string,
+    lbl_login_forgetPasswordCTA: PropTypes.string,
+    lbl_login_createAccountHelp: PropTypes.string,
   }),
   handleSubmit: PropTypes.func,
   onSubmit: PropTypes.func,
@@ -140,15 +140,14 @@ LoginForm.propTypes = {
 
 LoginForm.defaultProps = {
   labels: {
-    ACC_LBL_LOGIN_EMAIL: 'Email Address',
-    ACC_LBL_LOGIN_PASSWORD: 'Password',
-    ACC_LBL_LOGIN_REMEMBER_ME: `Remember me.\nNot recommended on shared devices.`,
-    ACC_LBL_LOGIN_SAVE_MY_PLACE: `Save My Place Rewards Credit Card ending in 1234\nto my account for future purchases.`,
-    ACC_LBL_LOGIN_CTA: 'LOG IN',
-    ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA: 'CREATE ACCOUNT',
-    ACC_LBL_LOGIN_FORGET_PASSWORD_CTA: 'Forgot password?',
-    ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP:
-      "Don't have an account? Create one now to start earning points!",
+    lbl_login_email: 'Email Address',
+    lbl_login_password: 'Password',
+    lbl_login_rememberMe: `Remember me.\nNot recommended on shared devices.`,
+    lbl_login_saveMyPlace: `Save My Place Rewards Credit Card ending in 1234\nto my account for future purchases.`,
+    lbl_login_loginCTA: 'LOG IN',
+    lbl_login_createAccountCTA: 'CREATE ACCOUNT',
+    lbl_login_forgetPasswordCTA: 'Forgot password?',
+    lbl_login_createAccountHelp: "Don't have an account? Create one now to start earning points!",
   },
   handleSubmit: noop,
   onSubmit: noop,

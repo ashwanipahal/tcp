@@ -46,7 +46,7 @@ class LoginForm extends React.PureComponent<Props> {
           <BodyCopy component="div" className="elem-mb-LRG">
             <Field
               id="emailAddress"
-              placeholder={labels.login.ACC_LBL_LOGIN_EMAIL}
+              placeholder={labels.login.lbl_login_email}
               name="emailAddress"
               component={TextBox}
               dataLocator=""
@@ -55,7 +55,7 @@ class LoginForm extends React.PureComponent<Props> {
             />
             <Field
               id="password"
-              placeholder={labels.login.ACC_LBL_LOGIN_PASSWORD}
+              placeholder={labels.login.lbl_login_password}
               name="password"
               component={PasswordField}
               dataLocator=""
@@ -64,13 +64,13 @@ class LoginForm extends React.PureComponent<Props> {
             />
             <BodyCopy component="div">
               <Field name="rememberMe" component={InputCheckbox} dataLocator="" className="">
-                {labels.login.ACC_LBL_LOGIN_REMEMBER_ME}
+                {labels.login.lbl_login_rememberMe}
               </Field>
             </BodyCopy>
             {showSavePlcc && (
               <BodyCopy component="div">
                 <Field name="savePlcc" component={InputCheckbox} dataLocator="">
-                  {labels.login.ACC_LBL_LOGIN_SAVE_MY_PLACE}
+                  {labels.login.lbl_login_saveMyPlace}
                 </Field>
               </BodyCopy>
             )}
@@ -100,7 +100,7 @@ class LoginForm extends React.PureComponent<Props> {
               fullWidth
               className="elem-mb-XS"
             >
-              {labels.login.ACC_LBL_LOGIN_CTA}
+              {labels.login.lbl_login_loginCTA}
             </Button>
             <Anchor
               className="addAddress__anchor__back"
@@ -110,7 +110,7 @@ class LoginForm extends React.PureComponent<Props> {
               data-locator="addnewaddress-back"
               onClick={this.showForgotPasswordForm}
             >
-              {labels.login.ACC_LBL_LOGIN_FORGET_PASSWORD_CTA}
+              {labels.login.lbl_login_forgetPasswordCTA}
             </Anchor>
           </BodyCopy>
         </form>

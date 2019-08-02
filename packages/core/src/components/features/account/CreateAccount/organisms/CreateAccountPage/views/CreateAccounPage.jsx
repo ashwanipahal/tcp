@@ -22,7 +22,7 @@ class CreateAccounPage extends React.Component {
     createAccountAction: () => {},
     className: '',
     labels: {
-      CREATE_ACC_LBL_HIDE: 'hide',
+      lbl_createAccount_hide: 'hide',
     },
     isIAgreeChecked: false,
     hideShowPwd: false,
