@@ -43,7 +43,7 @@ export default css`
   .header-topnav__track-order {
     font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy1}px;
     text-align: right;
-    padding-top: 15px;
+    padding-top: 20px;
     width: 40%;
 
     @media ${props => props.theme.mediaQuery.medium} {
