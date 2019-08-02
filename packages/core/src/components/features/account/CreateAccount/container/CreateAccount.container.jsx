@@ -9,6 +9,7 @@ import {
   getError,
   getLabels,
 } from './CreateAccount.selectors';
+import { openOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
 
 // @flow
 type Props = {
@@ -19,6 +20,7 @@ type Props = {
   confirmHideShowPwd: string,
   error: any,
   labels: object,
+  openOverlay: any,
 };
 
 export const CreateAccountContainer = ({
@@ -29,7 +31,15 @@ export const CreateAccountContainer = ({
   confirmHideShowPwd,
   error,
   labels,
+  openOverlay,
 }: Props) => {
+  const onAlreadyHaveAnAccountClick = e => {
+    e.preventDefault();
+    openOverlay({
+      component: 'login',
+      variation: 'primary',
+    });
+  };
   return (
     <CreateAccountView
       className={className}
@@ -39,6 +49,7 @@ export const CreateAccountContainer = ({
       hideShowPwd={hideShowPwd}
       confirmHideShowPwd={confirmHideShowPwd}
       error={error}
+      onAlreadyHaveAnAccountClick={onAlreadyHaveAnAccountClick}
     />
   );
 };
@@ -57,6 +68,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
   return {
     createAccountAction: payload => {
       dispatch(createAccount(payload));
+    },
+    openOverlay: payload => {
+      dispatch(openOverlayModal(payload));
     },
   };
 };

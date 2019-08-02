@@ -6,10 +6,19 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
     className="undefined header-middle-nav"
   >
     <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    />
+    <Styled(Col)
       className="header-middle-nav-search"
       colSize={
         Object {
-          "large": 7,
+          "large": 4,
           "medium": 8,
           "small": 6,
         }
@@ -33,7 +42,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       className="textRight"
       colSize={
         Object {
-          "large": 5,
+          "large": 4,
           "medium": 8,
           "small": 6,
         }

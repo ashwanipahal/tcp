@@ -53,6 +53,7 @@ exports[`Create Account Page should render correctly 1`] = `
           "registration": Object {},
         }
       }
+      onAlreadyHaveAnAccountClick={[Function]}
       onSubmit={[Function]}
       persistentSubmitErrors={false}
       pure={true}
