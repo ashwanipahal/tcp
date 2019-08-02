@@ -16,7 +16,6 @@ class Dropdown extends React.PureComponent {
       },
     };
     this.dropDown = null;
-    this.closeDropdownIfClickOutside = this.closeDropdownIfClickOutside.bind(this);
   }
 
   componentDidMount() {

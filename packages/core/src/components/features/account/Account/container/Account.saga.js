@@ -10,9 +10,9 @@ export function* getAccountNavigationList() {
   try {
     yield put(showLoader());
     const accountNav = yield call(accountNavigationAbstractor.getData, 'AccountNavigation', {
-      brand: 'TCP',
+      brand: ACCOUNT_CONSTANTS.ACCOUNT_BRAND,
       country: `${siteId}`,
-      channel: 'Desktop',
+      channel: ACCOUNT_CONSTANTS.ACCOUNT_CHANNEL,
     });
     yield put(setAccountNavigationList(accountNav));
   } catch (err) {

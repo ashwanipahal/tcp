@@ -86,7 +86,7 @@ exports[`Dropdown component should renders correctly 1`] = `
   .dropDownSelect {
     position: absolute;
     left: 0;
-    width: 99%;
+    width: calc(100% - 2px);
     z-index: 1;
     overflow: auto;
   }
@@ -222,7 +222,7 @@ exports[`Dropdown component should renders correctly when optional fields are no
   .dropDownSelect {
     position: absolute;
     left: 0;
-    width: 99%;
+    width: calc(100% - 2px);
     z-index: 1;
     overflow: auto;
   }
