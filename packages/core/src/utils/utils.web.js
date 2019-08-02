@@ -5,6 +5,7 @@ import icons from '../config/icons';
 import { API_CONFIG } from '../services/config';
 import { getStoreRef, resetStoreRef } from './store.utils';
 import { APICONFIG_REDUCER_KEY } from '../constants/reducer.constants';
+import { breakpoints } from '../../styles/themes/TCP/mediaQuery';
 import { isServer } from './utils';
 
 // setting the apiConfig subtree of whole state in variable; Do we really need it ?
@@ -188,6 +189,47 @@ export const getCreditCardExpirationOptionMap = () => {
     monthsMap: expMonthOptionsMap,
     yearsMap: expYearOptionsMap,
   };
+};
+
+/**
+ * Calculates browser width and height, and informs the current viewport as per the defined viewport settings
+ */
+export const getViewportInfo = () => {
+  if (!window) return null;
+
+  const width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  const height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  const isMobile = width < parseInt(breakpoints.medium, 10);
+  const isTablet = !isMobile && width < parseInt(breakpoints.large, 10);
+  const isDesktop = !isMobile && !isTablet;
+
+  return {
+    width,
+    height,
+    isMobile,
+    isTablet,
+    isDesktop,
+  };
+};
+
+/**
+ * Show Dark Overlay in background
+ */
+export const showOverlay = () => {
+  const className = 'dark-overlay';
+  if (typeof window !== 'undefined' && document.getElementsByClassName(className)[0]) {
+    document.getElementsByClassName(className)[0].style.display = 'block';
+  }
+};
+
+/**
+ * Remove Dark Overlay from background
+ */
+export const closeOverlay = () => {
+  const className = 'dark-overlay';
+  if (typeof window !== 'undefined' && document.getElementsByClassName(className)[0]) {
+    document.getElementsByClassName(className)[0].style.display = 'none';
+  }
 };
 
 export default {

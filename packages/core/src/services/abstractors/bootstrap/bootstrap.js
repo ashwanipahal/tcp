@@ -114,11 +114,10 @@ const bootstrap = async pages => {
       response[pages] = bootstrapData[page];
     }
     response.modules = await layoutAbstractor.processData(bootstrapData.homepage);
-    response.header = await headerAbstractor.processData(bootstrapData.header);
-    response.footer = await footerAbstractor.processData(bootstrapData.footer);
-    response.labels = await labelsAbstractor.processData(bootstrapData.labels);
+    response.header = headerAbstractor.processData(bootstrapData.header);
+    response.footer = footerAbstractor.processData(bootstrapData.footer);
+    response.labels = labelsAbstractor.processData(bootstrapData.labels);
     response.navigation = navigationAbstractor.processData(bootstrapData.navigation);
-    response.nav = await navigationAbstractor.getMock();
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log(error);

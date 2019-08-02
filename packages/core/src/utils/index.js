@@ -13,6 +13,9 @@ export {
   getSiteId,
   routerPush,
   getCreditCardExpirationOptionMap,
+  getViewportInfo,
+  showOverlay,
+  closeOverlay,
 } from './utils.web';
 
 export { isServer, isClient, isMobileApp, getIconPath, getLocator } from './utils';

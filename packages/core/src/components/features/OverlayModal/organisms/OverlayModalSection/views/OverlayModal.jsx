@@ -53,6 +53,7 @@ class OverlayModal extends React.Component {
   componentWillUnmount() {
     this.overlayElementWrapper.style.position = 'static';
     this.overlayElementWrapper.style.pointerEvents = 'auto';
+    /* istanbul ignore else */
     if (this.overlayElement) this.overlayElement.classList.remove('overlay');
     /* istanbul ignore else */
     if (window) {
@@ -115,8 +116,12 @@ class OverlayModal extends React.Component {
     return (
       <div className={className} id="modalWrapper" color={color} ref={this.setModalRef}>
         <div id="dialogContent" className="dialog__content">
-          <div className="modal__triangle" id="modalTriangle" />
-          <div className="modal__bar" />
+          <button
+            className="modal__closeIcon hide-on-tablet hide-on-desktop"
+            onClick={this.closeModal}
+          />
+          <div className="modal__triangle hide-on-mobile " id="modalTriangle" />
+          <div className="modal__bar hide-on-mobile" />
           <ModalContent className="modal__content" />
         </div>
       </div>
