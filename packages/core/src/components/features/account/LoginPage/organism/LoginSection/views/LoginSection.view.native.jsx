@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { View, Text } from 'react-native';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
@@ -14,7 +14,7 @@ import {
 } from '../../../molecules/LoginForm/LoginForm.style.native';
 
 const colorPallete = createThemeColorPalette();
-class LoginSection extends React.PureComponent<Props> {
+class LoginSection extends PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
@@ -51,7 +51,7 @@ class LoginSection extends React.PureComponent<Props> {
     return (
       <View>
         {!resetPassword && (
-          <React.Fragment>
+          <Fragment>
             <LoginTopSection labels={labels} />
             <LoginForm
               onSubmit={onSubmit}
@@ -62,7 +62,7 @@ class LoginSection extends React.PureComponent<Props> {
               showForgotPasswordForm={this.showForgotPassword}
               resetForm={resetForm}
             />
-          </React.Fragment>
+          </Fragment>
         )}
 
         {resetPassword && (
