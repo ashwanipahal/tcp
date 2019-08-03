@@ -75,6 +75,8 @@ class ModuleK extends React.PureComponent {
               link={headerText[0].link}
               fontSize="fs36"
               fontWeight="black"
+              color="text.primary"
+              fontFamily="primary"
               textAlign="center"
               dataLocator="moduleK_header_text"
               onPress={() => UrlHandler(headerText[0].link.url)}

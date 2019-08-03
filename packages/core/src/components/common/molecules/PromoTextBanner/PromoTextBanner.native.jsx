@@ -11,13 +11,31 @@ type Props = {
 /* bodyCopyStyles is a array of BodyCopy component with key of style1,style2,style3 etc.
     The keys are coming from CMS */
 const bodyCopyStyles = {
-  style1: props => <BodyCopy fontSize="fs36" fontWeight="black" {...props} />,
-  style2: props => <BodyCopy fontSize="fs42" textAlign="center" lineHeight="42px" {...props} />,
+  style1: props => (
+    <BodyCopy
+      color="text.primary"
+      fontFamily="primary"
+      fontSize="fs36"
+      fontWeight="black"
+      {...props}
+    />
+  ),
+  style2: props => (
+    <BodyCopy
+      color="text.primary"
+      fontFamily="primary"
+      fontSize="fs42"
+      textAlign="center"
+      lineHeight="42px"
+      {...props}
+    />
+  ),
   style3: props => (
     <BodyCopy
       fontSize="fs64"
       fontWeight="black"
       color="black"
+      fontFamily="primary"
       lineHeight="64px"
       textAlign="center"
       {...props}

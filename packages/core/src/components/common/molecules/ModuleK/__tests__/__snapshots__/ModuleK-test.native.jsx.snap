@@ -4,7 +4,9 @@ exports[`ModuleK native component Should renders correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
     <LinkText
+      color="text.primary"
       dataLocator="moduleK_header_text"
+      fontFamily="primary"
       fontSize="fs36"
       fontWeight="black"
       link={
