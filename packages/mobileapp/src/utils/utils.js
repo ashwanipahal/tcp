@@ -22,8 +22,8 @@ export const AppAnimationConfig = {
   PeekABooLogoMaxWidth: 100,
   AnimationDelay: 1000,
   AppSplashMaxWidth: getScreenWidth() / 2,
-  AppSplashMinWidth: 100,
-  AppSplashMinHeight: 60,
+  AppSplashMinWidth: 85,
+  AppSplashMinHeight: 75,
   AppSplashMaxHeight: 100,
 };
 
@@ -137,7 +137,7 @@ export const updateLastSplashAnimationDate = async () => {
  * @returns
  */
 export const shouldAnimateLogo = async () => {
-  const today = moment().format(MOMENT_DATE_FORMAT);
+  const today = moment();
   const { LAST_ANIMATION_DATE, ANIMATION_REPEAT_DAYS } = AppAnimationConfig;
   const lastAnimationDate = await getValueFromAsyncStorage(LAST_ANIMATION_DATE);
   const isLastAnimationDiffValid =

@@ -3,12 +3,16 @@
 exports[`Appsplash component test cases should match snapshot 1`] = `
 <View
   appType="tcp"
+  backgroundColor="white"
   justifyContent="center"
   opacity={1}
   zIndex={0}
 >
   <Styled(ImageComp)
+    backgroundColor="white"
+    borderRadius={40}
     height={100}
+    marginLeft={-5}
     name="image"
     source={
       Object {

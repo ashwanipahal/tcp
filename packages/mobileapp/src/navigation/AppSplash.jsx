@@ -23,6 +23,7 @@ class AppSplash extends React.PureComponent<Props> {
       width: AppAnimationConfig.AppSplashMaxWidth,
       opacity: 1,
       height: AppAnimationConfig.AppSplashMaxHeight,
+      background: 'white',
     };
   }
 
@@ -50,8 +51,15 @@ class AppSplash extends React.PureComponent<Props> {
       AppAnimationConfig.AppSplashMinWidth,
       AppAnimationConfig.AppSplashMinHeight
     );
+
     this.opacityAnimation = setTimeout(() => {
-      this.changeOpacity(0, -1);
+      // Vary image size for animation
+      this.changeImageSize(
+        AppAnimationConfig.AppSplashMinWidth - 5,
+        AppAnimationConfig.AppSplashMinHeight - 5
+      );
+
+      this.changeOpacity();
     }, animationDelay);
   };
 
@@ -62,7 +70,7 @@ class AppSplash extends React.PureComponent<Props> {
    * @memberof AppSplash
    */
   changePosition = (position, width, height) => {
-    LayoutAnimation.spring();
+    LayoutAnimation.linear();
 
     this.setState({
       position,
@@ -77,10 +85,31 @@ class AppSplash extends React.PureComponent<Props> {
    *
    * @memberof AppSplash
    */
-  changeOpacity = (opacity, zIndex) => {
+  changeOpacity = () => {
+    setTimeout(() => {
+      // change opacity of view
+      LayoutAnimation.linear();
+
+      this.setState({
+        opacity: 0,
+        zIndex: -1,
+      });
+    }, 100);
+  };
+
+  /**
+   * @function changeImageSize
+   * changes image size animatedly
+   *
+   * @memberof AppSplash
+   */
+  changeImageSize = (width, height) => {
+    LayoutAnimation.spring();
+
     this.setState({
-      opacity,
-      zIndex,
+      background: 'transparent',
+      width,
+      height,
     });
   };
 
@@ -92,10 +121,24 @@ class AppSplash extends React.PureComponent<Props> {
    * @memberof AppSplash
    */
   render() {
-    const { zIndex, position, width, opacity, height } = this.state;
+    const { zIndex, position, width, opacity, height, background } = this.state;
     return (
-      <View {...this.props} justifyContent={position} zIndex={zIndex} opacity={opacity}>
-        <Image source={getAppSplashLogo()} width={width} height={height} name="image" />
+      <View
+        {...this.props}
+        justifyContent={position}
+        zIndex={zIndex}
+        opacity={opacity}
+        backgroundColor={background}
+      >
+        <Image
+          source={getAppSplashLogo()}
+          width={width}
+          height={height}
+          name="image"
+          backgroundColor="white"
+          borderRadius={40}
+          marginLeft={-5}
+        />
       </View>
     );
   }
