@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { UrlHandler, getScreenWidth } from '@tcp/core/src/utils';
 
 import Button from '../../../atoms/Button';
 import LinkText from '../../LinkText';
@@ -11,8 +12,6 @@ import {
   HeaderWrapper,
 } from '../ModuleK.style.native';
 import { ImageGrid, PromoTextBanner, Carousel } from '../..';
-
-import { UrlHandler, getScreenWidth } from '../../../../../utils/utils.native';
 
 const MODULE_HEIGHT = 260;
 const MODULE_WIDTH = getScreenWidth();

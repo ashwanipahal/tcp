@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import * as utils from '@tcp/core/src/utils/utils.native';
+import * as utils from '@tcp/core/src/utils/utils.app';
 
 import mock from '../../../../../services/abstractors/common/moduleK/mock';
 import ModuleK from '../view/ModuleK.native';
