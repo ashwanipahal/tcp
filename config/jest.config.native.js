@@ -23,6 +23,7 @@ module.exports = {
   collectCoverageFrom: [
     '**/core/**/*.native.js',
     '**/core/**/*.native.jsx',
+    '**/core/**/*.app.js',
     '**/mobileapp/**/*.js',
     '**/mobileapp/**/*.jsx',
     '!**/*.style.js',

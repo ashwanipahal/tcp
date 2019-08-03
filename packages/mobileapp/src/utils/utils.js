@@ -4,7 +4,7 @@ import {
   setValueInAsyncStorage,
   getValueFromAsyncStorage,
   getScreenWidth,
-} from '@tcp/core/src/utils/utils.native';
+} from '@tcp/core/src/utils/index.native';
 
 import icons from './icons';
 import { APP_TYPE } from '../components/common/hoc/ThemeWrapper.constants';

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AddedToBagActionsView from '../views/AddedToBagActions';
 import { getLabelsAddToActions } from '../../AddedToBag/container/AddedToBag.selectors';
-import { routerPush } from '../../../../../utils/utils';
+import { routerPush } from '../../../../../utils';
 
 export class AddedToBagContainer extends React.Component<Props> {
   constructor(props) {

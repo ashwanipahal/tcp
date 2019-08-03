@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import { Image } from '../../../atoms';
 import config from '../Config.native';
-import { getLocator } from '../../../../../utils/utils.native';
+import { getLocator } from '../../../../../utils';
 import { Touchable, TouchableView, Icon, Container } from '../Carousel.native.style';
 
 /**
