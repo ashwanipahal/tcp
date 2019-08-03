@@ -10,17 +10,30 @@ class CreateAccounPage extends React.Component {
   static propTypes = {
     createAccountAction: PropTypes.func,
     labels: {},
+    isIAgreeChecked: PropTypes.bool,
   };
 
   static defaultProps = {
     createAccountAction: () => {},
     labels: PropTypes.shape({}),
+    isIAgreeChecked: false,
   };
 
   constructor(props) {
     super(props);
     this.handleSubmitForm = this.handleSubmitForm.bind(this);
+    this.state = { hideShowPwd: false, confirmHideShowPwd: false };
+    this.onPwdHideShowClick = this.onPwdHideShowClick.bind(this);
+    this.onConfirmPwdHideShowClick = this.onConfirmPwdHideShowClick.bind(this);
   }
+
+  onPwdHideShowClick = value => {
+    this.setState({ hideShowPwd: value });
+  };
+
+  onConfirmPwdHideShowClick = value => {
+    this.setState({ confirmHideShowPwd: value });
+  };
 
   handleSubmitForm(payload) {
     const { createAccountAction } = this.props;
@@ -28,12 +41,21 @@ class CreateAccounPage extends React.Component {
   }
 
   render() {
-    const { labels } = this.props;
+    const { labels, isIAgreeChecked } = this.props;
+    const { hideShowPwd, confirmHideShowPwd } = this.state;
     return (
       <ScrollView showsVerticalScrollIndicator={false} {...this.props}>
         <View>
           <CreateAccountTopSection labels={labels} />
-          <CreateAccountForm labels={labels} handleSubmitForm={this.handleSubmitForm} />
+          <CreateAccountForm
+            labels={labels}
+            handleSubmitForm={this.handleSubmitForm}
+            onPwdHideShowClick={this.onPwdHideShowClick}
+            hideShowPwd={hideShowPwd}
+            onConfirmPwdHideShowClick={this.onConfirmPwdHideShowClick}
+            confirmHideShowPwd={confirmHideShowPwd}
+            isIAgreeChecked={isIAgreeChecked}
+          />
         </View>
       </ScrollView>
     );

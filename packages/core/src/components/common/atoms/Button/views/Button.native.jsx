@@ -26,13 +26,22 @@ type Props = {
   customStyle?: Object,
   text?: string,
   url?: string,
+  disableButton?: boolean,
 };
 
 const CustomButton = (props: Props) => {
-  const { text, url, buttonVariation, fullWidth, customStyle, ...otherProps } = props;
+  const {
+    text,
+    url,
+    buttonVariation,
+    fullWidth,
+    customStyle,
+    disableButton,
+    ...otherProps
+  } = props;
   const textValue = text || '';
   return (
-    <TouchableOpacity accessibilityRole="button" style={customStyle}>
+    <TouchableOpacity accessibilityRole="button" style={customStyle} disabled={disableButton}>
       <Text fullWidth={fullWidth} buttonVariation={buttonVariation} {...otherProps}>
         {textValue}
       </Text>
@@ -46,6 +55,7 @@ CustomButton.defaultProps = {
   customStyle: {},
   text: '',
   url: '',
+  disableButton: false,
 };
 
 export default withStyles(CustomButton, style);

@@ -5,7 +5,7 @@ const Styles = css`
 `;
 
 const ParentView = styled.View`
-  padding: 28px;
+  margin: 28px;
 `;
 
 const ButtonWrapper = styled.View`
@@ -16,4 +16,33 @@ const AlreadyAccountWrapper = styled.View`
   padding-top: 16px;
 `;
 
-export { Styles, ParentView, ButtonWrapper, AlreadyAccountWrapper };
+const PasswordWrapper = styled.View`
+  position: relative;
+`;
+
+const HideShowField = styled.View`
+  position: absolute;
+  right: 0;
+  top: 16px;
+`;
+
+const ConfirmPasswordWrapper = styled.View`
+  position: relative;
+`;
+
+const ConfirmHideShowField = styled.View`
+  position: absolute;
+  right: 0;
+  top: 16px;
+`;
+
+export {
+  Styles,
+  ParentView,
+  ButtonWrapper,
+  AlreadyAccountWrapper,
+  PasswordWrapper,
+  HideShowField,
+  ConfirmPasswordWrapper,
+  ConfirmHideShowField,
+};

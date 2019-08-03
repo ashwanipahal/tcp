@@ -14,6 +14,7 @@ class InputCheckBox extends React.Component {
     onClick: PropTypes.func,
     id: PropTypes.string,
     input: PropTypes.shape({}),
+    hideCheckboxIcon: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -22,6 +23,7 @@ class InputCheckBox extends React.Component {
     onClick: () => {},
     id: 'checkbox',
     input: { val: '' },
+    hideCheckboxIcon: false,
   };
 
   constructor(props) {
@@ -60,7 +62,7 @@ class InputCheckBox extends React.Component {
   }
 
   render() {
-    const { input, ...otherProps } = this.props;
+    const { input, hideCheckboxIcon, ...otherProps } = this.props;
     const { value } = input;
     return (
       <StyledCheckBox
@@ -69,7 +71,7 @@ class InputCheckBox extends React.Component {
         {...otherProps}
         value={value}
       >
-        {this.genCheckedIcon()}
+        {!hideCheckboxIcon && this.genCheckedIcon()}
         {this.renderRight()}
       </StyledCheckBox>
     );

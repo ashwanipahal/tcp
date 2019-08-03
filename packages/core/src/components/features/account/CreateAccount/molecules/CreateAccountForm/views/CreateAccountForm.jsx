@@ -239,6 +239,7 @@ const validateMethod = createValidateMethod(
     'confirmEmailAddress',
     'password',
     'confirmPassword',
+    'iAgree',
   ])
 );
 
