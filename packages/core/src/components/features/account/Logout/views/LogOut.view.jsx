@@ -3,26 +3,29 @@ import PropTypes from 'prop-types';
 import Anchor from '../../../../common/atoms/Anchor';
 
 class LogOutView extends React.Component {
-  logoutApp = e => {
+  constructor(props) {
+    super(props);
+    this.logoutApp = this.logoutApp.bind(this);
+  }
+
+  logoutApp(e) {
     e.preventDefault();
     const { triggerLogout } = this.props;
     triggerLogout();
-  };
+  }
 
   render() {
     const { className } = this.props;
     return (
       <React.Fragment className={className}>
-        <div>
-          <Anchor
-            onClick={this.logoutApp}
-            className="elem-pb-SM"
-            fontSizeVariation="xlarge"
-            anchorVariation="secondary"
-          >
-            logout container
-          </Anchor>
-        </div>
+        <Anchor
+          onClick={this.logoutApp}
+          className="elem-pb-SM"
+          fontSizeVariation="xlarge"
+          anchorVariation="secondary"
+        >
+          logout
+        </Anchor>
       </React.Fragment>
     );
   }
@@ -34,3 +37,4 @@ LogOutView.propTypes = {
 };
 
 export default LogOutView;
+export { LogOutView as LogOutViewVanilla };
