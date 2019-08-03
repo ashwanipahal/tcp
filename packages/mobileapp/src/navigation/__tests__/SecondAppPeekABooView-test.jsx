@@ -4,14 +4,13 @@ import { SecondAppPeekABooViewVanilla } from '../SecondAppPeekABooView';
 
 Date.now = jest.fn(() => new Date('2019-08-01'));
 
-// Mock Timers for Animation
-jest.useFakeTimers();
-
 describe('SecondAppPeekABooView component test cases', () => {
   let wrapper;
+  const image = '[name="imageContainer"]';
 
   beforeEach(() => {
     wrapper = shallow(<SecondAppPeekABooViewVanilla />);
+    jest.runAllTimers();
     wrapper.instance().setState({ animationDelay: 0 });
   });
 
@@ -21,13 +20,22 @@ describe('SecondAppPeekABooView component test cases', () => {
 
   it('should render correctly', () => {
     expect(wrapper.find('View').length).toBe(1);
-    expect(wrapper.find('[name="imageContainer"]').length).toBe(1);
+    expect(wrapper.find(image).length).toBe(1);
     expect(wrapper.find('[name="image"]').length).toBe(1);
   });
 
   it('should call peek-a-boo animation method', () => {
-    jest.runAllTimers();
     wrapper.instance().peekABooAnimation();
     expect(wrapper.find('View').props().height).toBe(0);
+  });
+
+  it('should show animation', () => {
+    wrapper.instance().showAnimation();
+    expect(wrapper.find(image).props().children.props.height).toBe(75);
+  });
+
+  it('should change image animation', () => {
+    wrapper.instance().changeImagePosition();
+    expect(wrapper.find(image).props().children.props.height).toBe(80);
   });
 });
