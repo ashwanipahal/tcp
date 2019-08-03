@@ -43,36 +43,26 @@ const renderItem = (item, navigation) => {
     item: { image, link },
   } = item;
   return (
-    <ChildContainer
-      onPress={() => {
-        UrlHandler(link.url);
-      }}
-    >
-      <Image url={image.url} height={127} crop={image.crop_m} />
-      <MessageContainer>
-        <BodyCopyContainer width={width}>
-          <BodyCopy
-            fontSize="fs20"
-            color="black"
-            letterSpacing="ls222"
-            text={image.alt}
-            onPress={() => {
-              UrlHandler(link.url);
-            }}
-          />
-        </BodyCopyContainer>
-        <LinkContainer>
-          <Anchor
-            fontSizeVariation="xlarge"
-            text={link.text}
-            visible={anchorIcon}
-            url={link.url}
-            navigation={navigation}
-            external={link.external}
-          />
-        </LinkContainer>
-      </MessageContainer>
-    </ChildContainer>
+    <Anchor url={link.url} navigation={navigation} external={link.external}>
+      <ChildContainer>
+        <Image url={image.url} height={127} crop={image.crop_m} />
+        <MessageContainer>
+          <BodyCopyContainer width={width}>
+            <BodyCopy fontSize="fs20" color="black" letterSpacing="ls222" text={image.alt} />
+          </BodyCopyContainer>
+          <LinkContainer>
+            <Anchor
+              fontSizeVariation="xlarge"
+              text={link.text}
+              visible={anchorIcon}
+              url={link.url}
+              navigation={navigation}
+              external={link.external}
+            />
+          </LinkContainer>
+        </MessageContainer>
+      </ChildContainer>
+    </Anchor>
   );
 };
 
