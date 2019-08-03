@@ -41,8 +41,8 @@ const styles = css`
   }
   .hide-show {
     position: absolute;
-    right: 20px;
-    width: 42px;
+    right: 0;
+    width: 30px;
   }
   .show-hide-icons {
     top: 28px;

@@ -4,7 +4,7 @@ export default css`
   box-sizing: border-box;
   padding: 14px 0;
   position: relative;
-  text-align: right;
+  text-align: center;
 
   .hamburger-menu {
     cursor: pointer;
