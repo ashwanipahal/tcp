@@ -2,14 +2,13 @@ const express = require('express');
 const next = require('next');
 const helmet = require('helmet');
 const RoutesMap = require('./routes');
-
-const portIndex = process.argv.indexOf('-p') + 1;
-const port = portIndex !== 0 ? process.argv[portIndex] : 3000;
+const { settingHelmetConfig, sites, siteIds, setEnvConfig } = require('./config/server.config');
 
 const dev = process.env.NODE_ENV === 'development';
-const app = next({ dev, dir: './src' });
+setEnvConfig(dev);
+const port = process.env.RWD_WEB_PORT || 3000;
 
-const { settingHelmetConfig, sites, siteIds } = require('./config/server.config');
+const app = next({ dev, dir: './src' });
 
 const server = express();
 
@@ -30,8 +29,8 @@ const setSiteId = (req, res) => {
   res.locals.siteId = siteId;
 };
 
+// TODO - To be picked from env config file when Gym build process is done....
 const setBrandId = (req, res) => {
-  // TODO - To be picked from env config file.
   const { hostname } = req;
   let brandId = 'tcp';
   const reqUrl = hostname.split('.');
@@ -44,6 +43,14 @@ const setBrandId = (req, res) => {
   res.locals.brandId = brandId;
 };
 
+const setHostname = (req, res) => {
+  const { hostname } = req;
+  console.log('------------------------------||----------------------------');
+  console.log(hostname);
+  // TODO --- Remove console from here - This was just added for testing
+  res.locals.hostname = hostname;
+};
+
 app.prepare().then(() => {
   // Looping through the routes and providing the corresponding resolver route
   RoutesMap.forEach(route => {
@@ -54,6 +61,7 @@ app.prepare().then(() => {
     server.get(routePaths, (req, res) => {
       setSiteId(req, res);
       setBrandId(req, res);
+      setHostname(req, res);
       // Handling routes without params
       if (!route.params) return app.render(req, res, route.resolver, req.query);
 

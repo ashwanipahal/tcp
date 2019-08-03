@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
-const getPageStyle = () => {
+const getPageStyle = props => {
+  const { theme } = props;
   return `
-  margin-bottom: 30px;
+  margin-bottom: ${theme.spacing.APP_LAYOUT_SPACING.XS}
   `;
 };
 const ScrollViewStyle = styled.ScrollView`

@@ -6,7 +6,7 @@ export const BodyCopyContainer = styled.View`
   width: ${props => props.width};
 `;
 
-export const ChildContainer = styled.TouchableOpacity`
+export const ChildContainer = styled.View`
   flex-direction: row;
   margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
