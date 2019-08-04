@@ -5,7 +5,14 @@ import { createSelector } from 'reselect';
 
 export const getCartOrderList = state => {
   // needs to do it with get method.
-  return state.CartPage.orderDetails.orderItems;
+  if (
+    state &&
+    state.CartPage &&
+    state.CartPage.orderDetails &&
+    state.CartPage.orderDetails.orderItems
+  ) {
+    return state.CartPage.orderDetails.orderItems;
+  }
 };
 
 export const getEditableProductInfo = state => {

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import DropdownList from '../../DropdownList';
+import ColorSelectList from '../../../../features/CnC/MiniBag/molecules/ColorSelectorList/views/ColorSelectorList.view';
 import BodyCopy from '../../../atoms/BodyCopy';
 import styles from '../styles/CustomSelect.style';
 import withStyles from '../../../hoc/withStyles';
@@ -69,22 +70,41 @@ class CustomSelect extends React.Component<Props> {
     clickHandler(e, value, title);
   };
 
+  getDropDownList = () => {
+    const { options, list } = this.props;
+    const { activeValue } = this.state;
+    let renderedList;
+    if (list === 'colorSelector') {
+      renderedList = (
+        <ColorSelectList
+          optionsMap={options}
+          clickHandler={this.onClickHandler}
+          activeValue={activeValue}
+        />
+      );
+    } else {
+      renderedList = (
+        <DropdownList
+          optionsMap={options}
+          clickHandler={this.onClickHandler}
+          activeValue={activeValue}
+        />
+      );
+    }
+
+    return renderedList;
+  };
+
   render() {
-    const { toggle, activeTitle, activeValue } = this.state;
-    const { className, selectListTitle, options } = this.props;
+    const { toggle, activeTitle } = this.state;
+    const { className, selectListTitle } = this.props;
     return (
       <BodyCopy component="div" className={`${className} custom-select`}>
         <span>{selectListTitle}</span>
         <BodyCopy component="div" onClick={this.toggleHandler} className="customSelectTitle">
           {activeTitle}
         </BodyCopy>
-        {toggle && (
-          <DropdownList
-            optionsMap={options}
-            clickHandler={this.onClickHandler}
-            activeValue={activeValue}
-          />
-        )}
+        {toggle && <BodyCopy>{this.getDropDownList()}</BodyCopy>}
       </BodyCopy>
     );
   }

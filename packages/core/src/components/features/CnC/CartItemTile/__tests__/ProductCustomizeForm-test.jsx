@@ -45,7 +45,7 @@ describe('ProductCustomizeForm Component', () => {
   });
 
   it('ProductCustomizeForm should render correctly', () => {
-    component.find('.CartItemEditableForm').simulate('submit', {
+    component.find('.button-wrapper').simulate('submit', {
       preventDefault: () => {},
     });
     expect(component).toMatchSnapshot();
