@@ -54,5 +54,9 @@ const endpoints = {
     method: API_METHODS.GET,
     URI: 'v2/account/getRegisteredUserInfo',
   },
+  getCouponList: {
+    method: API_METHODS.GET,
+    URI: 'v2/account/getAddressFromBook',
+  },
 };
 export default endpoints;
