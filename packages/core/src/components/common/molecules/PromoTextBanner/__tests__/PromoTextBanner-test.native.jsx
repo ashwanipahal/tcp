@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import mock from '../../../../../services/abstractors/common/moduleK/mock';
-import PromoTextBanner from '../PromoTextBanner.native';
+import PromoTextBanner, { bodyCopyStyles } from '../PromoTextBanner.native';
 
 describe('PromoTextBanner native component', () => {
   it('renders correctly', () => {
@@ -12,5 +12,12 @@ describe('PromoTextBanner native component', () => {
       />
     );
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('renders all style correctly', () => {
+    Object.keys(bodyCopyStyles).forEach(key => {
+      const wrapper = shallow(bodyCopyStyles[key]());
+      expect(wrapper).toMatchSnapshot();
+    });
   });
 });

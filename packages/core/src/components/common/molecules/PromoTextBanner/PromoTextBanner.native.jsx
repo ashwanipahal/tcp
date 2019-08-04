@@ -10,7 +10,7 @@ type Props = {
 
 /* bodyCopyStyles is a array of BodyCopy component with key of style1,style2,style3 etc.
     The keys are coming from CMS */
-const bodyCopyStyles = {
+export const bodyCopyStyles = {
   style1: props => (
     <BodyCopy
       color="text.primary"
