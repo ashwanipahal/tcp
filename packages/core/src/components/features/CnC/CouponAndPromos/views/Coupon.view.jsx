@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AvailableCouponSection from '../organism/AvailableCouponSection';
 
-const CouponView = ({ labels }) => {
-  return <AvailableCouponSection labels={labels} />;
+const CouponView = ({ labels, couponList }) => {
+  return <AvailableCouponSection labels={labels} couponList={couponList} />;
 };
 
 CouponView.propTypes = {
   labels: PropTypes.shape({}).isRequired,
+  couponList: PropTypes.shape([]).isRequired,
 };
 
 export default CouponView;

@@ -6,10 +6,14 @@ import Coupon from '../views/Coupon.view';
 import labels from './Coupon.labels';
 
 export class CouponContainer extends React.Component<Props> {
-  getCouponList = () => {};
+  componentDidMount() {
+    const { getCouponListAction } = this.props;
+    getCouponListAction();
+  }
 
   render() {
-    return <Coupon labels={labels} />;
+    const { couponList } = this.props;
+    return <Coupon labels={labels} couponList={couponList} />;
   }
 }
 

@@ -6,8 +6,19 @@ import Col from '../../../../../../common/atoms/Col';
 import styles from '../styles/AvailableCouponSection';
 
 class AvailableCouponSection extends React.PureComponent<Props> {
+  coupon = ({ card }) => {
+    const { couponDetail } = card;
+    return (
+      couponDetail && (
+        <div>
+          <p>{`${couponDetail.id} ${couponDetail.title}`}</p>
+        </div>
+      )
+    );
+  };
+
   render() {
-    const { labels } = this.props;
+    const { labels, couponList } = this.props;
     return (
       <Row>
         <Col
@@ -17,6 +28,16 @@ class AvailableCouponSection extends React.PureComponent<Props> {
             large: 12,
           }}
         >
+          {couponList.size > 0 && <div>Data</div>}
+          {couponList.map((coupon, index) => {
+            return (
+              <div>
+                {index}
+                {coupon && <p>{`${coupon.title}`}</p>}
+              </div>
+            );
+          })}
+
           {labels.ACC_LBL_LOGIN_EMAIL}
         </Col>
       </Row>

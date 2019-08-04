@@ -107,6 +107,7 @@ export class PaymentView extends React.Component<Props> {
       showUpdatedNotificationOnModal,
       addCreditCard,
     } = this.props;
+    console.log('payment creditCardList', creditCardList);
     return (
       <div className={className}>
         {showNotification && (
