@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import OrderLedgerContainer from '../organisms/OrderLedger';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/BagPage.style';
 import CartItemTile from '../../CartItemTile';
 import Heading from '../../../../common/atoms/Heading';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
+import CheckoutActions from '../molecules/CheckoutActions';
 
 // @flow
 // type Props = {
@@ -32,10 +34,8 @@ const AddedToBag = ({ className }: Props) => {
             <CartItemTile />
           </Col>
           <Col colSize={{ small: 4, medium: 4, large: 4 }} className="right-sec">
-            <section className="row-ele">section 1</section>
-            <section className="row-ele">section 2</section>
-            <section className="row-ele">section 3</section>
-            <section className="row-ele">section 4</section>
+            <OrderLedgerContainer />
+            <CheckoutActions />
           </Col>
         </Row>
       </section>

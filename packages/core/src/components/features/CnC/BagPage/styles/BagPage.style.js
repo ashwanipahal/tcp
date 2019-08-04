@@ -12,6 +12,17 @@ const styles = css`
     margin: 15px 0;
     background: #fff;
   }
+  .order-summary {
+    margin: 16px 0;
+  }
+  .checkout-actions {
+    margin: 0;
+  }
+  .checkout-button {
+    font-weight: 800;
+    margin: 0 0 10px 0;
+    color: red;
+  }
 `;
 
 export default styles;
