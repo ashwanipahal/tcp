@@ -2,396 +2,241 @@
 
 exports[`ProductCustomizeForm Component ProductCustomizeForm should render correctly 1`] = `
 <form
-  className="CartItemEditableForm"
   noValidate={true}
   onSubmit={[Function]}
 >
   <Styled(Row)
-    fullBleed={true}
+    className="edit-form-css"
   >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 2,
-          "medium": 4,
-          "small": 6,
-        }
-      }
-      ignoreGutter={
-        Object {
-          "small": true,
-        }
-      }
+    <div
+      className="select-value-wrapper"
     >
-      <Field
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-ifAKCX",
-              "isStatic": false,
-              "rules": Array [
-                "
+      <div>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-VigVT",
+                "isStatic": true,
+                "rules": Array [
+                  "
   ",
-                "
-  position: relative;
-  display: block;
-  height: 70px;
-
-  .select__input {
-    appearance: none;
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-      no-repeat right 0px bottom 6px;
-    border: 0;
-    border-bottom: 1px solid ",
-                [Function],
-                ";
-    ",
-                [Function],
-                ";
-    border-radius: 0;
-    color: ",
-                [Function],
-                ";
-    font-size: ",
-                [Function],
-                "px;
-    margin: 0;
-    margin-bottom: ",
-                [Function],
-                ";
-    outline: 0;
-    padding: ",
-                [Function],
-                " 0
-      ",
-                [Function],
-                ";
-    width: 100%;
-
-    ",
-                [Function],
-                ";
+                  "
+  width: 87px;
+  & img {
+    width: 10px;
   }
-
-  .select__label {
-    font-size: ",
-                [Function],
-                "px;
-    font-weight: ",
-                [Function],
-                ";
-    padding: 0;
-    position: absolute;
-    top: 0;
-  }
-
-  ",
-                [Function],
-                ";
 ",
-                ";
+                  ";
 ",
-              ],
-            },
-            "displayName": "Styled(SelectBox)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-ifAKCX",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
+                ],
+              },
+              "displayName": "Styled(ColorSelectorDropDown)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-VigVT",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            }
           }
-        }
-        dataLocator="addnewaddress-state"
-        id="color"
-        name="Color"
-        onChange={[Function]}
-        options={Array []}
-        placeholder="Color"
-      />
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 2,
-          "medium": 4,
-          "small": 6,
-        }
-      }
-    >
-      <Field
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-ifAKCX",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  position: relative;
-  display: block;
-  height: 70px;
-
-  .select__input {
-    appearance: none;
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-      no-repeat right 0px bottom 6px;
-    border: 0;
-    border-bottom: 1px solid ",
-                [Function],
-                ";
-    ",
-                [Function],
-                ";
-    border-radius: 0;
-    color: ",
-                [Function],
-                ";
-    font-size: ",
-                [Function],
-                "px;
-    margin: 0;
-    margin-bottom: ",
-                [Function],
-                ";
-    outline: 0;
-    padding: ",
-                [Function],
-                " 0
-      ",
-                [Function],
-                ";
-    width: 100%;
-
-    ",
-                [Function],
-                ";
-  }
-
-  .select__label {
-    font-size: ",
-                [Function],
-                "px;
-    font-weight: ",
-                [Function],
-                ";
-    padding: 0;
-    position: absolute;
-    top: 0;
-  }
-
-  ",
-                [Function],
-                ";
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(SelectBox)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-ifAKCX",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
+          dataLocator="addnewaddress-state"
+          id="color"
+          name="Color"
+          onChange={[Function]}
+          options={
+            Array [
+              Object {
+                "content": <span>
+                  <img
+                    alt=""
+                    src="https://dummyimage.com/600x400/000/fff"
+                  />
+                  Blue
+                </span>,
+                "title": <span>
+                  <img
+                    alt=""
+                    className="selected-color-image"
+                    src="https://dummyimage.com/600x400/000/fff"
+                  />
+                  Blue
+                </span>,
+                "value": "blue",
+              },
+              Object {
+                "content": <span>
+                  <img
+                    alt=""
+                    src="https://dummyimage.com/600x400/000/fff"
+                  />
+                  Red
+                </span>,
+                "title": <span>
+                  <img
+                    alt=""
+                    className="selected-color-image"
+                    src="https://dummyimage.com/600x400/000/fff"
+                  />
+                  Red
+                </span>,
+                "value": "red",
+              },
+              Object {
+                "content": <span>
+                  <img
+                    alt=""
+                    src="https://dummyimage.com/600x400/000/fff"
+                  />
+                  OrangeOrangeOrangeOrange
+                </span>,
+                "title": <span>
+                  <img
+                    alt=""
+                    className="selected-color-image"
+                    src="https://dummyimage.com/600x400/000/fff"
+                  />
+                  OrangeOrangeOrangeOrange
+                </span>,
+                "value": "orange",
+              },
+            ]
           }
-        }
-        dataLocator="addnewaddress-state"
-        id="size"
-        name="Size"
-        onChange={[Function]}
-        options={Array []}
-        placeholder="Size"
-      />
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 2,
-          "medium": 4,
-          "small": 6,
-        }
-      }
-    >
-      <Field
-        component={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [],
-            "componentStyle": ComponentStyle {
-              "componentId": "sc-ifAKCX",
-              "isStatic": false,
-              "rules": Array [
-                "
-  ",
-                "
-  position: relative;
-  display: block;
-  height: 70px;
-
-  .select__input {
-    appearance: none;
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-      no-repeat right 0px bottom 6px;
-    border: 0;
-    border-bottom: 1px solid ",
-                [Function],
-                ";
-    ",
-                [Function],
-                ";
-    border-radius: 0;
-    color: ",
-                [Function],
-                ";
-    font-size: ",
-                [Function],
-                "px;
-    margin: 0;
-    margin-bottom: ",
-                [Function],
-                ";
-    outline: 0;
-    padding: ",
-                [Function],
-                " 0
-      ",
-                [Function],
-                ";
-    width: 100%;
-
-    ",
-                [Function],
-                ";
-  }
-
-  .select__label {
-    font-size: ",
-                [Function],
-                "px;
-    font-weight: ",
-                [Function],
-                ";
-    padding: 0;
-    position: absolute;
-    top: 0;
-  }
-
-  ",
-                [Function],
-                ";
-",
-                ";
-",
-              ],
-            },
-            "displayName": "Styled(SelectBox)",
-            "foldedComponentIds": Array [],
-            "render": [Function],
-            "styledComponentId": "sc-ifAKCX",
-            "target": [Function],
-            "toString": [Function],
-            "warnTooManyClasses": [Function],
-            "withComponent": [Function],
+          placeholder="Color"
+          width={112}
+        />
+      </div>
+      <div>
+        <Field
+          component={[Function]}
+          dataLocator="addnewaddress-state"
+          id="size"
+          name="Size"
+          onChange={[Function]}
+          options={Array []}
+          placeholder="Size"
+          width={39}
+        />
+      </div>
+      <div>
+        <Field
+          component={[Function]}
+          dataLocator="addnewaddress-state"
+          id="quantity"
+          name="quantity"
+          onChange={[Function]}
+          options={
+            Array [
+              Object {
+                "displayName": 1,
+                "id": 2,
+              },
+              Object {
+                "displayName": 2,
+                "id": 3,
+              },
+              Object {
+                "displayName": 3,
+                "id": 4,
+              },
+              Object {
+                "displayName": 4,
+                "id": 5,
+              },
+              Object {
+                "displayName": 5,
+                "id": 6,
+              },
+              Object {
+                "displayName": 6,
+                "id": 7,
+              },
+              Object {
+                "displayName": 7,
+                "id": 8,
+              },
+              Object {
+                "displayName": 8,
+                "id": 9,
+              },
+              Object {
+                "displayName": 9,
+                "id": 10,
+              },
+              Object {
+                "displayName": 10,
+                "id": 11,
+              },
+              Object {
+                "displayName": 11,
+                "id": 12,
+              },
+              Object {
+                "displayName": 12,
+                "id": 13,
+              },
+              Object {
+                "displayName": 13,
+                "id": 14,
+              },
+              Object {
+                "displayName": 14,
+                "id": 15,
+              },
+              Object {
+                "displayName": 15,
+                "id": 16,
+              },
+            ]
           }
-        }
-        dataLocator="addnewaddress-state"
-        id="quantity"
-        name="quantity"
-        onChange={[Function]}
-        options={
-          Array [
-            Object {
-              "displayName": 1,
-              "id": 2,
-            },
-            Object {
-              "displayName": 2,
-              "id": 3,
-            },
-            Object {
-              "displayName": 3,
-              "id": 4,
-            },
-            Object {
-              "displayName": 4,
-              "id": 5,
-            },
-            Object {
-              "displayName": 5,
-              "id": 6,
-            },
-            Object {
-              "displayName": 6,
-              "id": 7,
-            },
-            Object {
-              "displayName": 7,
-              "id": 8,
-            },
-            Object {
-              "displayName": 8,
-              "id": 9,
-            },
-            Object {
-              "displayName": 9,
-              "id": 10,
-            },
-            Object {
-              "displayName": 10,
-              "id": 11,
-            },
-            Object {
-              "displayName": 11,
-              "id": 12,
-            },
-            Object {
-              "displayName": 12,
-              "id": 13,
-            },
-            Object {
-              "displayName": 13,
-              "id": 14,
-            },
-            Object {
-              "displayName": 14,
-              "id": 15,
-            },
-            Object {
-              "displayName": 15,
-              "id": 16,
-            },
-          ]
-        }
-        placeholder="Quantity"
-      />
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 2,
-          "medium": 4,
-          "small": 6,
-        }
-      }
+          placeholder="Qty"
+          width={32}
+        />
+      </div>
+    </div>
+    <div
+      className="button-wrapper"
     >
       <Styled(Button)
+        inheritedStyles={
+          Array [
+            "
+  min-height: unset;
+  text-transform: none;
+  &:hover {
+    background-color: transparent;
+  }
+",
+          ]
+        }
         type="submit"
       >
-        Update
+        <u>
+          Update
+        </u>
       </Styled(Button)>
-      <Styled(Button)>
-        Cancel
+      <Styled(Button)
+        fill="RED"
+        inheritedStyles={
+          Array [
+            "
+  min-height: unset;
+  text-transform: none;
+  &:hover {
+    background-color: transparent;
+  }
+",
+          ]
+        }
+      >
+        <u>
+          Cancel
+        </u>
       </Styled(Button)>
-    </Styled(Col)>
+    </div>
   </Styled(Row)>
 </form>
 `;
