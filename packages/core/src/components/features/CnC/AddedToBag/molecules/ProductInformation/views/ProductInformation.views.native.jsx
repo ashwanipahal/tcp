@@ -12,7 +12,7 @@ import {
   ProductDescription,
 } from '../styles/ProductInformation.style.native';
 
-const ProductInformation = ({ data, labels }) => {
+const ProductInformation = ({ data, labels, quantity }) => {
   return (
     <OuterContainer>
       <ImgWrapper>
@@ -54,7 +54,7 @@ const ProductInformation = ({ data, labels }) => {
             textAlign="center"
             text={`${labels.qtyLabel}: `}
           />
-          <BodyCopy fontSize="fs12" text={data.quantity} />
+          <BodyCopy fontSize="fs12" text={quantity || data.quantity} />
         </ProductDesc>
       </ProductDescription>
     </OuterContainer>
@@ -64,10 +64,12 @@ const ProductInformation = ({ data, labels }) => {
 ProductInformation.propTypes = {
   data: PropTypes.shape,
   labels: PropTypes.shape,
+  quantity: PropTypes.string,
 };
 ProductInformation.defaultProps = {
   data: {},
   labels: {},
+  quantity: '',
 };
 export default withStyles(ProductInformation);
 export { ProductInformation as ProductInformationVanilla };

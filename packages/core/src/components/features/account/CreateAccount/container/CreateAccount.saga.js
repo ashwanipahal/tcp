@@ -3,8 +3,15 @@ import CREATE_ACCOUNT_CONSTANTS from '../CreateAccount.constants';
 import fetchData from '../../../../../service/API';
 import { getUserInfo } from '../../LoginPage/container/LoginPage.actions';
 import endpoints from '../../../../../service/endpoint';
-import { routerPush } from '../../../../../utils/utils';
+import { routerPush } from '../../../../../utils';
 import { closeOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
+import { createAccountErr } from './CreateAccount.actions';
+
+const errorMessage = res => {
+  let errorMessageRecieved = '';
+  errorMessageRecieved = res.body.errors[0].errorMessage;
+  return errorMessageRecieved;
+};
 
 export function* createAccount({ payload }) {
   try {
@@ -39,12 +46,18 @@ export function* createAccount({ payload }) {
     );
     /* istanbul ignore else */
     if (res.body) {
+      if (res.body.errors) {
+        const resErr = errorMessage(res);
+        return yield put(createAccountErr(resErr));
+      }
       yield put(getUserInfo());
       yield put(closeOverlayModal());
-      routerPush('/', '/home');
+      return routerPush('/', '/home');
     }
+    const resErr = errorMessage(res);
+    return yield put(createAccountErr(resErr));
   } catch (err) {
-    yield null;
+    return yield put(createAccountErr(err));
   }
 }
 

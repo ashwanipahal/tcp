@@ -71,16 +71,8 @@ exports[`ModuleK component renders correctly 1`] = `
       }
     >
       <Styled(Styled(LinkText))
-        component="div"
+        component="h2"
         dataLocator="moduleK_header_text"
-        fontSize={
-          Array [
-            "fs36",
-            "fs36",
-            "fs48",
-          ]
-        }
-        fontWeight="black"
         headerText={
           Array [
             Object {
@@ -107,7 +99,59 @@ exports[`ModuleK component renders correctly 1`] = `
             },
           ]
         }
-        lineHeight="lh107"
+        inheritedStyles={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-eNQAEJ",
+              "isStatic": false,
+              "rules": Array [
+                "
+  ",
+                "
+  .link-text {
+    margin-bottom: ",
+                [Function],
+                ";
+    text-align: center;
+
+    @media ",
+                [Function],
+                " {
+      margin-bottom: ",
+                [Function],
+                ";
+    }
+    ",
+                [Function],
+                ";
+  }
+",
+                ";
+",
+                "
+  text-align: center;
+  .link-text {
+    margin-bottom: 0;
+    text-align: center;
+  }
+",
+              ],
+            },
+            "displayName": "Styled(Styled(LinkText))",
+            "foldedComponentIds": Array [
+              "sc-kpOJdX",
+            ],
+            "render": [Function],
+            "styledComponentId": "sc-eNQAEJ",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          }
+        }
+        type="heading"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -144,7 +188,7 @@ exports[`ModuleK component renders correctly 1`] = `
         }
       }
     >
-      <errorBoundaryComponent
+      <Styled(errorBoundaryComponent)
         carouselConfig={
           Object {
             "autoplay": true,
@@ -152,6 +196,42 @@ exports[`ModuleK component renders correctly 1`] = `
             "customArrowRight": "/static/images/right-carousel-carrot.svg",
             "dataLocatorPause": "moduleK_pause_button",
             "dataLocatorPlay": "moduleK_play_button",
+            "inheritedStyles": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-ckVGcZ",
+                "isStatic": true,
+                "rules": Array [
+                  "
+  .slick-arrow {
+    top: 44%;
+  }
+  .slick-next {
+    height: 52px;
+    right: -68px;
+    width: 15px;
+  }
+  .slick-prev {
+    height: 52px;
+    left: -68px;
+    width: 15px;
+  }
+  .slick-dots {
+    bottom: -10px;
+  }
+",
+                ],
+              },
+              "displayName": "Styled(errorBoundaryComponent)",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-ckVGcZ",
+              "target": [Function],
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            },
           }
         }
         options={
@@ -562,7 +642,7 @@ exports[`ModuleK component renders correctly 1`] = `
             </Styled(Button)>
           </Styled(Anchor)>
         </Styled(Col)>
-      </errorBoundaryComponent>
+      </Styled(errorBoundaryComponent)>
     </Styled(Col)>
   </Styled(Row)>
 </StyledComponent>

@@ -42,11 +42,19 @@ class MyDocument extends Document {
             name="viewport"
             content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1"
           />
+          <link href="/static/app.css" rel="stylesheet" />
         </Head>
-        <body className="custom_class">
+        <body
+          /* eslint-disable-next-line react-native/no-inline-styles */
+          style={{
+            position: 'relative',
+            minHeight: '100%',
+          }}
+        >
           <Main />
           <NextScript />
           <StaticScripts />
+          <div className="dark-overlay" />
         </body>
       </Html>
     );
