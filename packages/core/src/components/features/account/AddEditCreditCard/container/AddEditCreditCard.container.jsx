@@ -16,7 +16,7 @@ import AddEditCreditCardComponent from '../views/AddEditCreditCard.view';
 import { getAddressListState } from '../../AddressBook/container/AddressBook.selectors';
 import { addCreditCard, editCreditCard } from './AddEditCreditCard.actions';
 import { setDefaultPaymentSuccess } from '../../Payment/container/Payment.actions';
-import { getCreditCardExpirationOptionMap } from '../../../../../utils/utils';
+import { getCreditCardExpirationOptionMap } from '../../../../../utils';
 
 export class AddEditCreditCard extends React.PureComponent {
   static propTypes = {

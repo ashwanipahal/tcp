@@ -4,7 +4,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import LoginForm from '../../../molecules/LoginForm';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LoginTopSection from '../../../molecules/LoginTopSection';
-import ForgotPasswordView from '../../../../ForgotPassword/views/ForgotPassword.view';
+import ForgotPasswordContainer from '../../../../ForgotPassword/container/ForgotPassword.container';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import Button from '../../../../../../common/atoms/Button';
@@ -32,14 +32,7 @@ class LoginSection extends React.PureComponent<Props> {
       loginErrorMessage,
       initialValues,
       showRecaptcha,
-      loginInfo,
-      getUserInfo,
-      SubmitForgot,
-      showNotification,
-      resetLoginState,
-      successFullResetEmail,
       resetForm,
-      resetForgotPasswordErrorResponse,
       className,
       onCreateAccountClick,
     } = this.props;
@@ -71,17 +64,9 @@ class LoginSection extends React.PureComponent<Props> {
           )}
 
           {resetPassword && (
-            <ForgotPasswordView
-              SubmitForgot={SubmitForgot}
-              loginInfo={loginInfo}
-              getUserInfo={getUserInfo}
-              showNotification={showNotification}
+            <ForgotPasswordContainer
               showForgotPasswordForm={this.showForgotPasswordForm}
-              resetForgotPasswordErrorResponse={resetForgotPasswordErrorResponse}
               labels={labels}
-              resetPassword={resetPassword}
-              resetLoginState={resetLoginState}
-              successFullResetEmail={successFullResetEmail}
             />
           )}
 
