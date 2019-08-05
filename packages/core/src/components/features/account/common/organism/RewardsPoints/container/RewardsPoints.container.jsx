@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router'; //eslint-disable-line
 import RewardsPoints from '../views/RewardsPoints.view';
-import labels from './RewardsPoints.labels';
 import {
   getPointsToNextRewardState,
   getCurrentPointsState,
@@ -24,7 +23,7 @@ export class RewardsPointsContainer extends React.PureComponent {
    * @return   {[Object]} JSX of the component
    */
   render() {
-    const { pointsToNextReward, currentPoints, totalRewards } = this.props;
+    const { pointsToNextReward, currentPoints, totalRewards, labels } = this.props;
 
     return (
       <RewardsPoints
@@ -49,14 +48,24 @@ RewardsPointsContainer.propTypes = {
   pointsToNextReward: PropTypes.number,
   currentPoints: PropTypes.number,
   totalRewards: PropTypes.number,
-  labels: PropTypes.shape({}),
+  labels: PropTypes.shape({
+    ACC_LBL_MY_REWARDS_CURRENT_POINTS: PropTypes.string,
+    ACC_LBL_MY_REWARDS_HEADING: PropTypes.string,
+    ACC_LBL_MY_REWARDS_NEXT_REWARD: PropTypes.string,
+    ACC_LBL_MY_REWARDS_CURRENCY: PropTypes.string,
+  }),
 };
 
 RewardsPointsContainer.defaultProps = {
   pointsToNextReward: '',
   currentPoints: '',
   totalRewards: '',
-  labels: {},
+  labels: {
+    ACC_LBL_MY_REWARDS_CURRENT_POINTS: 'Current Points',
+    ACC_LBL_MY_REWARDS_HEADING: 'My Rewards',
+    ACC_LBL_MY_REWARDS_NEXT_REWARD: 'Points to your next reward',
+    ACC_LBL_MY_REWARDS_CURRENCY: '$',
+  },
 };
 
 export default withRouter(connect(mapStateToProps)(RewardsPointsContainer));
