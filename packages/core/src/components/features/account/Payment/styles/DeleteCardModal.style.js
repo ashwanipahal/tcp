@@ -89,6 +89,11 @@ const deleteCardModalStyle = css`
       text-align: initial;
     }
   }
+  .deleteCreditModal__card__icon {
+    height: 56px;
+    border: 1px solid ${props => props.theme.colorPalette.gray[500]};
+    border-radius: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  }
 `;
 
 export default deleteCardModalStyle;
