@@ -293,7 +293,6 @@ class CardTile extends React.Component<Props> {
 
     const isGiftCardBalanceRequested = this.getIfGiftCardBalanceRequested(card.accountNo);
     const balance = this.getGiftCardBalance(card.accountNo);
-    console.log('card title', card);
     return (
       <div className={className}>
         {showNotificationCaptcha && (

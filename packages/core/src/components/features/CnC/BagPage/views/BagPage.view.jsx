@@ -36,12 +36,11 @@ const AddedToBag = ({ className }: Props) => {
             <section className="row-ele">section 1</section>
             <section className="row-ele">section 2</section>
             <section className="row-ele">section 3</section>
-            <section className="row-ele">
-              <CouponAndPromos />
-            </section>
+            <section className="row-ele">section 4</section>
           </Col>
         </Row>
       </section>
+      <CouponAndPromos />
     </div>
   );
 };

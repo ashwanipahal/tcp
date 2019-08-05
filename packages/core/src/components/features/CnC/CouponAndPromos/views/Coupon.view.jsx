@@ -1,16 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AvailableCouponSection from '../organism/AvailableCouponSection';
+import CouponListSection from '../organism/CouponListSection';
 
-const CouponView = ({ labels, couponList }) => {
+const CouponView = ({ labels, appliedCouponList, availableCouponList }) => {
   return (
-    <AvailableCouponSection labels={labels} couponList={couponList} className="available_coupon" />
+    <React.Fragment>
+      {appliedCouponList && (
+        <CouponListSection
+          labels={labels}
+          couponList={appliedCouponList}
+          className="applied_coupon"
+          heading={labels.APPLIED_REWARDS_HEADING}
+        />
+      )}
+      {availableCouponList && (
+        <CouponListSection
+          labels={labels}
+          couponList={availableCouponList}
+          className="available_coupon"
+          heading={labels.AVAILABLE_REWARDS_HEADING}
+          helpSubHeading="true"
+        />
+      )}
+    </React.Fragment>
   );
 };
 
 CouponView.propTypes = {
   labels: PropTypes.shape({}).isRequired,
-  couponList: PropTypes.shape([]).isRequired,
+  appliedCouponList: PropTypes.shape([]).isRequired,
+  availableCouponList: PropTypes.shape([]).isRequired,
 };
 
 export default CouponView;
