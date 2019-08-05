@@ -1,8 +1,9 @@
 // @flow
 import React from 'react';
 import { FlatList } from 'react-native';
-import { UrlHandler, getScreenWidth } from '../../../../../utils/utils.native';
+import { getLocator, getScreenWidth, UrlHandler } from '../../../../../utils/utils.native';
 import { Image, BodyCopy, Anchor } from '../../../atoms';
+import PromoBanner from '../../PromoBanner/views/PromoBanner.native';
 import LinkText from '../../LinkText';
 import {
   Container,
@@ -17,6 +18,7 @@ type Props = {
   imageGrid: Array<Object>,
   headerText: Array<Object>,
   navigation: Object,
+  promoBanner: Array<Object>,
 };
 
 /**
@@ -41,14 +43,21 @@ const keyExtractor = (_, index) => index.toString();
 const renderItem = (item, navigation) => {
   const {
     item: { image, link },
+    index,
   } = item;
   return (
     <ChildContainer
       onPress={() => {
         UrlHandler(link.url);
       }}
+      data-locator={`${getLocator('moduleL_tiles')}${index + 1}`}
     >
-      <Image url={image.url} height={127} crop={image.crop_m} />
+      <Image
+        url={image.url}
+        height={127}
+        crop={image.crop_m}
+        data-locator={`${getLocator('moduleL_image')}${index + 1}`}
+      />
       <MessageContainer>
         <BodyCopyContainer width={width}>
           <BodyCopy
@@ -59,6 +68,7 @@ const renderItem = (item, navigation) => {
             onPress={() => {
               UrlHandler(link.url);
             }}
+            data-locator={`${getLocator('moduleL_title')}${index + 1}`}
           />
         </BodyCopyContainer>
         <LinkContainer>
@@ -69,6 +79,7 @@ const renderItem = (item, navigation) => {
             url={link.url}
             navigation={navigation}
             external={link.external}
+            data-locator={`${getLocator('moduleL_link')}${index + 1}`}
           />
         </LinkContainer>
       </MessageContainer>
@@ -84,22 +95,28 @@ const renderItem = (item, navigation) => {
  */
 
 const ModuleL = (props: Props) => {
-  const { imageGrid, headerText, navigation } = props;
+  const { headerText, imageGrid, navigation, promoBanner } = props;
   return (
     <Container>
-      <LinkText
-        type="heading"
-        fontFamily="primary"
-        fontSize="fs36"
-        letterSpacing="ls167"
-        textAlign="center"
-        color="text.primary"
-        fontWeight="black"
-        textItems={headerText[0].textItems}
-        onPress={() => {
-          UrlHandler(headerText[0].link.url);
-        }}
-      />
+      {headerText && (
+        <LinkText
+          headerText={headerText}
+          type="heading"
+          fontFamily="primary"
+          fontSize="fs36"
+          letterSpacing="ls167"
+          textAlign="center"
+          color="text.primary"
+          fontWeight="black"
+          data-locator={getLocator('moduleL_header_text')}
+        />
+      )}
+      {promoBanner && (
+        <PromoBanner
+          promoBanner={promoBanner}
+          data-locator={getLocator('moduleL_promobanner_text')}
+        />
+      )}
       <ListContainer>
         <FlatList
           keyExtractor={keyExtractor}

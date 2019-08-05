@@ -7,7 +7,7 @@ import Modal from './Modal';
 import ModuleD from './ModuleD';
 import ModuleH from './ModuleH';
 import ModuleL from './ModuleL';
-import PromoTextBanner from './PromoTextBanner';
+import PromoBanner from './PromoBanner';
 import LinkText from './LinkText';
 import ImageGrid from './ImageGrid';
 
@@ -21,7 +21,7 @@ export {
   ModuleD,
   ModuleH,
   ModuleL,
-  PromoTextBanner,
+  PromoBanner,
   LinkText,
   ImageGrid,
 };

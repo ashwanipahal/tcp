@@ -66,16 +66,26 @@ class SnapCarousel extends React.PureComponent<Props, State> {
    * @param {[Object]} element [Event object of click].
    * @return {node} function returns slider element.
    */
-  getPlayButton() {
+  getPlayButton(carouselConfig) {
     const { autoplay } = this.state;
 
     return autoplay ? (
       <Touchable accessibilityRole="button" onPress={this.pause}>
-        <Image source={pauseIcon} height={playIconHeight} width={playIconWidth} />
+        <Image
+          source={pauseIcon}
+          height={playIconHeight}
+          width={playIconWidth}
+          data-locator={getLocator(carouselConfig.dataLocatorPause)}
+        />
       </Touchable>
     ) : (
       <Touchable accessibilityRole="button" onPress={this.play}>
-        <Image source={playIcon} height={playIconHeight} width={playIconWidth} />
+        <Image
+          source={playIcon}
+          height={playIconHeight}
+          width={playIconWidth}
+          data-locator={getLocator(carouselConfig.dataLocatorPlay)}
+        />
       </Touchable>
     );
   }
@@ -120,7 +130,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
 
   render() {
     const {
-      carouselConfig: { autoplay: defaultAutoplay },
+      carouselConfig,
       data,
       height,
       width,
@@ -181,7 +191,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           vertical={vertical}
           {...defaults}
         />
-        {defaultAutoplay && this.getPlayButton()}
+        {carouselConfig.autoplay && this.getPlayButton(carouselConfig)}
       </View>
     );
   }

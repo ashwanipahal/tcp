@@ -17,7 +17,7 @@ exports[`Image grid component renders correctly 1`] = `
       }
     >
       <WithTheme(DamImage)
-        data-locator="moduleK_image_0"
+        data-locator="moduleK_image__1"
         imgConfigs={
           Array [
             "ar_1:1,q_80,w_384",
@@ -27,12 +27,11 @@ exports[`Image grid component renders correctly 1`] = `
         }
         imgData={
           Object {
-            "alt": "Image Alt text attribute value",
-            "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-            "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-            "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-            "title": "Image Title attribute value",
-            "url": "/static/images/K-210x210-1.jpg",
+            "alt": "dinos",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-1_s0jewf.jpg",
           }
         }
       />
@@ -48,7 +47,7 @@ exports[`Image grid component renders correctly 1`] = `
       }
     >
       <WithTheme(DamImage)
-        data-locator="moduleK_image_1"
+        data-locator="moduleK_image__2"
         imgConfigs={
           Array [
             "ar_1:1,q_80,w_384",
@@ -58,12 +57,11 @@ exports[`Image grid component renders correctly 1`] = `
         }
         imgData={
           Object {
-            "alt": "Image Alt text attribute value",
-            "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-            "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-            "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-            "title": "Image Title attribute value",
-            "url": "/static/images/K-210x210-2.jpg",
+            "alt": "",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-4_com7vo.jpg",
           }
         }
       />
@@ -79,7 +77,7 @@ exports[`Image grid component renders correctly 1`] = `
       }
     >
       <WithTheme(DamImage)
-        data-locator="moduleK_image_2"
+        data-locator="moduleK_image__3"
         imgConfigs={
           Array [
             "ar_1:1,q_80,w_384",
@@ -89,12 +87,11 @@ exports[`Image grid component renders correctly 1`] = `
         }
         imgData={
           Object {
-            "alt": "Image Alt text attribute value",
-            "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-            "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-            "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-            "title": "Image Title attribute value",
-            "url": "/static/images/K-210x210-3.jpg",
+            "alt": "",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-4_com7vo.jpg",
           }
         }
       />
@@ -110,7 +107,7 @@ exports[`Image grid component renders correctly 1`] = `
       }
     >
       <WithTheme(DamImage)
-        data-locator="moduleK_image_3"
+        data-locator="moduleK_image__4"
         imgConfigs={
           Array [
             "ar_1:1,q_80,w_384",
@@ -120,12 +117,11 @@ exports[`Image grid component renders correctly 1`] = `
         }
         imgData={
           Object {
-            "alt": "Image Alt text attribute value",
-            "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-            "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-            "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-            "title": "Image Title attribute value",
-            "url": "/static/images/K-210x210-4.jpg",
+            "alt": "",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
+            "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-4_com7vo.jpg",
           }
         }
       />

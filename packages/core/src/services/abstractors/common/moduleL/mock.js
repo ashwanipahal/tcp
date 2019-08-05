@@ -29,9 +29,9 @@ export default {
           },
         },
       ],
-      promoTextBanner: [
+      promoBanner: [
         {
-          linkClass: {
+          link: {
             url: '/banner/url',
             title: '',
             target: '',

@@ -42,6 +42,8 @@ exports[`ModuleH component renders correctly 1`] = `
     carouselConfig={
       Object {
         "autoplay": true,
+        "dataLocatorPause": "moduleH_pause_button",
+        "dataLocatorPlay": "moduleH_play_button",
       }
     }
     data={
@@ -147,6 +149,7 @@ exports[`ModuleH component renders correctly 1`] = `
   <Styled(View)>
     <Styled(BodyCopy)
       color="white"
+      data-locator="moduleH_cta_links_1"
       fontFamily="secondary"
       fontSize="fs20"
       fontWeight="extrabold"
@@ -166,6 +169,7 @@ exports[`ModuleH component renders correctly 1`] = `
     />
     <Styled(BodyCopy)
       color="white"
+      data-locator="moduleH_cta_links_2"
       fontFamily="secondary"
       fontSize="fs20"
       fontWeight={null}
@@ -185,6 +189,7 @@ exports[`ModuleH component renders correctly 1`] = `
     />
     <Styled(BodyCopy)
       color="white"
+      data-locator="moduleH_cta_links_3"
       fontFamily="secondary"
       fontSize="fs20"
       fontWeight={null}
@@ -204,6 +209,7 @@ exports[`ModuleH component renders correctly 1`] = `
     />
     <Styled(BodyCopy)
       color="white"
+      data-locator="moduleH_cta_links_4"
       fontFamily="secondary"
       fontSize="fs20"
       fontWeight={null}
@@ -223,6 +229,7 @@ exports[`ModuleH component renders correctly 1`] = `
     />
     <Styled(BodyCopy)
       color="white"
+      data-locator="moduleH_cta_links_5"
       fontFamily="secondary"
       fontSize="fs20"
       fontWeight={null}

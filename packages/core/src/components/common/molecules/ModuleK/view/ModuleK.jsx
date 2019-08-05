@@ -1,11 +1,12 @@
 // @flow
 import React from 'react';
 import { Col, Row, Button, BodyCopy, Anchor } from '../../../atoms';
-import { Carousel, PromoTextBanner, LinkText, ImageGrid, style } from '../ModuleK.style';
+import { PromoBanner } from '../..';
+import { Carousel, LinkText, ImageGrid, style } from '../ModuleK.style';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/errorBoundary';
 import config from '../config';
-import { getIconPath } from '../../../../../utils';
+import { getIconPath, getLocator } from '../../../../../utils';
 
 type Props = {
   className: string,
@@ -27,12 +28,8 @@ type State = {
  */
 class ModuleK extends React.PureComponent<Props, State> {
   render() {
-    const {
-      headerText,
-      promoTextBanner: outerPromoTextBanner,
-      masonryGrid,
-      className,
-    } = this.props;
+    const { headerText, masonryGrid, className } = this.props;
+
     const { CAROUSEL_OPTIONS } = config;
     CAROUSEL_OPTIONS.prevArrow = (
       <button type="button" data-locator="moduleK_left_arrow" className="slick-prev" />
@@ -43,44 +40,23 @@ class ModuleK extends React.PureComponent<Props, State> {
     CAROUSEL_OPTIONS.hidePlayPause = masonryGrid.length === 1;
 
     return (
-      <BodyCopy fontFamily="primary" className={className}>
-        <Row className="module-k">
+      <BodyCopy component="div" className={`${className} moduleK`}>
+        <Row>
           <Col
             colSize={{
               small: 6,
               medium: 8,
               large: 12,
             }}
-            className="module-k__header"
+            className="moduleK__header"
           >
             {headerText && (
               <LinkText
                 headerText={headerText}
                 component="h2"
                 type="heading"
-                dataLocator="moduleK_header_text"
+                dataLocator={getLocator('moduleK_header_text')}
                 inheritedStyles={LinkText}
-              />
-            )}
-          </Col>
-          <Col
-            colSize={{
-              small: 6,
-              medium: 8,
-              large: 12,
-            }}
-            offsetRight={{
-              small: 0,
-              medium: 0,
-              large: 0,
-            }}
-            className="module-k__promoBanner"
-          >
-            {outerPromoTextBanner && (
-              <PromoTextBanner
-                promoTextBanner={outerPromoTextBanner}
-                fontSize="fs48"
-                dataLocator="moduleK_promobanner_text"
               />
             )}
           </Col>
@@ -95,34 +71,38 @@ class ModuleK extends React.PureComponent<Props, State> {
               medium: 0,
               large: 2,
             }}
-            className="module-k__carousal"
+            className="moduleK__carousal"
           >
             <Carousel
               options={CAROUSEL_OPTIONS}
               carouselConfig={{
                 autoplay: true,
-                dataLocatorPlay: 'moduleK_play_button',
-                dataLocatorPause: 'moduleK_pause_button',
+                dataLocatorPlay: getLocator('moduleK_play_button'),
+                dataLocatorPause: getLocator('moduleK_pause_button'),
                 customArrowLeft: getIconPath('carousel-big-carrot'),
                 customArrowRight: getIconPath('carousel-big-carrot'),
                 inheritedStyles: Carousel,
               }}
             >
-              {masonryGrid.map(({ promoTextBanner, mediaList, singleCTAButton }, index) => {
+              {masonryGrid.map(({ promoBanner, mediaLinkedList, singleCTAButton }, index) => {
+                const checkPromo = promoBanner && promoBanner.length;
                 return (
                   <React.Fragment>
-                    {promoTextBanner && (
-                      <PromoTextBanner
-                        promoTextBanner={promoTextBanner}
-                        className="module-k__promoBanner"
+                    {promoBanner && (
+                      <PromoBanner
+                        promoBanner={promoBanner}
+                        className="moduleK__promoBanner"
+                        data-locator={`${getLocator('moduleK_promobanner_text')}${index + 1}`}
                         fontSize="fs48"
                       />
                     )}
                     <ImageGrid
-                      mediaList={mediaList}
+                      mediaLinkedList={mediaLinkedList}
                       className="image-grid"
                       colM={2}
-                      dataLocator="moduleK_image_"
+                      dataLocator={`${getLocator('moduleK_image')}${index + 1}`}
+                      dataLocatorSet={`${getLocator('moduleK_image_set')}${index + 1}`}
+                      promo={checkPromo}
                     />
                     <Col
                       colSize={{
@@ -135,10 +115,10 @@ class ModuleK extends React.PureComponent<Props, State> {
                         <Anchor {...singleCTAButton}>
                           <Button
                             buttonVariation="fixed-width"
-                            dataLocator={`moduleK_button_set_${index}`}
+                            dataLocator={`${getLocator('moduleK_button_set')}${index + 1}`}
                             className="carousal-cta"
                           >
-                            {singleCTAButton.text || `Shop Now`}
+                            {singleCTAButton.text}
                           </Button>
                         </Anchor>
                       )}

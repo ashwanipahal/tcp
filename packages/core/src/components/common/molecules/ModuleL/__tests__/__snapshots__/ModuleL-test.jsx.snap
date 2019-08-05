@@ -88,6 +88,7 @@ exports[`ModuleL component renders correctly 1`] = `
         ]
       }
       headingClass="moduleL__header"
+      promo={1}
       textAlign="center"
       type="heading"
     />
@@ -95,10 +96,10 @@ exports[`ModuleL component renders correctly 1`] = `
       className="moduleL__promo-banner"
       data-locator="moduleL_promobanner_text"
       fontSize="fs48"
-      promoTextBanner={
+      promoBanner={
         Array [
           Object {
-            "linkClass": Object {
+            "link": Object {
               "class": "",
               "external": 0,
               "target": "",

@@ -20,14 +20,14 @@ const colSize = { ...config.COL_SIZE_TILE };
  */
 const ModuleLTile = ({ tileData: { image, link, styled }, index }: Props) => {
   return (
-    <Anchor data-locator={`${getLocator('moduleL_tiles')}_${index + 1}`} {...link}>
+    <Anchor data-locator={`${getLocator('moduleL_tiles')}${index + 1}`} {...link}>
       <Row>
         <Col colSize={colSize} className="moduleL__tile">
           <DamImage
             imgData={image}
             imgConfigs={config.IMG_DATA.crops}
             className="moduleL__tile-image"
-            data-locator={`${getLocator('moduleL_image')}_${index + 1}`}
+            data-locator={`${getLocator('moduleL_image')}${index + 1}`}
           />
           <div className="moduleL__tile-text">
             <BodyCopy
@@ -40,14 +40,14 @@ const ModuleLTile = ({ tileData: { image, link, styled }, index }: Props) => {
               lineHeight="lh107"
               textAlign="left"
               color="text.primary"
-              data-locator={`${getLocator('moduleL_title')}_${index + 1}`}
+              data-locator={`${getLocator('moduleL_title')}${index + 1}`}
             >
               {styled.text}
             </BodyCopy>
             <Anchor
               withCaret
               className="moduleL__tile-link"
-              data-locator={`${getLocator('moduleL_link')}_${index + 1}`}
+              data-locator={`${getLocator('moduleL_link')}${index + 1}`}
               {...link}
             >
               {link.text}

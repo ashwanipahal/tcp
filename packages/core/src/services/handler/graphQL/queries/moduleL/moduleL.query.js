@@ -23,13 +23,18 @@ const buildQuery = ({ slot, contentId }) => `
         }
       }
 
-      promoTextBanner {
-        linkClass {
+      promoBanner {
+        link {
           url
           text
           title
           target
           external
+        }
+        image {
+          url
+          alt
+          title
         }
         textItems {
           text
