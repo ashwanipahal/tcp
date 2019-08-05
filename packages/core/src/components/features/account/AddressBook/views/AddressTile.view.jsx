@@ -125,7 +125,7 @@ class AddressBookTile extends React.Component<Props> {
             data-locator="addressbook-deletelink"
             onClick={e => this.onDeleteAddressClick(e)}
           >
-            {labels.common.ACC_LBL_DELETE}
+            {labels.common.lbl_common_delete}
           </Anchor>
         </div>
       </div>

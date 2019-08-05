@@ -20,9 +20,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      >
-        Credit Card
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
@@ -37,7 +35,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
         tag="span"
         textAlign="left"
       >
-        Card ending in 6765
+        undefined6765
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="cardTile__expiry"
@@ -53,7 +51,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
         tag="span"
         textAlign="left"
       >
-        Expires on 10/2025
+        undefined10/2025
       </Styled(BodyCopy)>
       <Address
         address={
@@ -83,9 +81,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
         dataLocator="payment-carddefaultpaymentbadge"
         noMargin={true}
         showCheckmark={true}
-      >
-        DEFAULT PAYMENT
-      </Styled(Badge)>
+      />
       <div
         className="cardTile__img_wrapper elem-mt-XS"
       >
@@ -143,9 +139,7 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      >
-        My Place Rewards Credit Card
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
@@ -160,7 +154,7 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
         tag="span"
         textAlign="left"
       >
-        Card ending in 6765
+        undefined6765
       </Styled(BodyCopy)>
       <Address
         address={
@@ -251,9 +245,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      >
-        Credit Card
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
@@ -268,7 +260,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
         tag="span"
         textAlign="left"
       >
-        Card ending in 6765
+        undefined6765
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="cardTile__expiry"
@@ -284,7 +276,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
         tag="span"
         textAlign="left"
       >
-        Expires on 10/2025
+        undefined10/2025
       </Styled(BodyCopy)>
       <Address
         address={
@@ -375,9 +367,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      >
-        Gift Card Name
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
@@ -392,7 +382,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
         tag="span"
         textAlign="left"
       >
-        Card ending in 6765
+        undefined6765
       </Styled(BodyCopy)>
     </div>
     <div
@@ -574,9 +564,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
           fill="BLUE"
           onClick={[Function]}
           type="submit"
-        >
-           Check Balance
-        </Styled(Button)>
+        />
       </div>
     </form>
   </div>
@@ -616,9 +604,7 @@ exports[`CardTile should render correctly with master card 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      >
-        Credit Card
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
@@ -633,7 +619,7 @@ exports[`CardTile should render correctly with master card 1`] = `
         tag="span"
         textAlign="left"
       >
-        Card ending in 6765
+        undefined6765
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="cardTile__expiry"
@@ -649,7 +635,7 @@ exports[`CardTile should render correctly with master card 1`] = `
         tag="span"
         textAlign="left"
       >
-        Expires on 10/2025
+        undefined10/2025
       </Styled(BodyCopy)>
       <Address
         address={
@@ -751,9 +737,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      >
-        Gift Card Name
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
@@ -768,7 +752,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         tag="span"
         textAlign="left"
       >
-        Card ending in 6765
+        undefined6765
       </Styled(BodyCopy)>
     </div>
     <div
@@ -950,9 +934,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
           fill="BLUE"
           onClick={[Function]}
           type="submit"
-        >
-           Check Balance
-        </Styled(Button)>
+        />
       </div>
     </form>
   </div>
@@ -992,9 +974,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      >
-        My Place Rewards Credit Card
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
@@ -1009,7 +989,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         tag="span"
         textAlign="left"
       >
-        Card ending in 6765
+        undefined6765
       </Styled(BodyCopy)>
       <Address
         address={
@@ -1100,9 +1080,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      >
-        Your Venmo Account
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="cardTile__heading"
         color="text.primary"
@@ -1171,9 +1149,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      >
-        Credit Card
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
@@ -1188,7 +1164,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
         tag="span"
         textAlign="left"
       >
-        Card ending in 6765
+        undefined6765
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className="cardTile__expiry"
@@ -1204,7 +1180,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
         tag="span"
         textAlign="left"
       >
-        Expires on 10/2025
+        undefined10/2025
       </Styled(BodyCopy)>
       <Address
         address={
@@ -1295,9 +1271,7 @@ exports[`CardTile should show loading 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      >
-        Gift Card Name
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
@@ -1312,7 +1286,7 @@ exports[`CardTile should show loading 1`] = `
         tag="span"
         textAlign="left"
       >
-        Card ending in 6765
+        undefined6765
       </Styled(BodyCopy)>
     </div>
     <div
@@ -1495,9 +1469,7 @@ exports[`CardTile should show loading 1`] = `
           lineHeights="lh115"
           tag="span"
           textAlign="left"
-        >
-          LOADING...
-        </Styled(BodyCopy)>
+        />
       </div>
     </form>
   </div>
@@ -1537,9 +1509,7 @@ exports[`CardTile should show remining balance 1`] = `
         lineHeight="normal"
         tag="span"
         textAlign="left"
-      >
-        Gift Card Name
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
@@ -1554,7 +1524,7 @@ exports[`CardTile should show remining balance 1`] = `
         tag="span"
         textAlign="left"
       >
-        Card ending in 6765
+        undefined6765
       </Styled(BodyCopy)>
     </div>
     <div
@@ -1737,9 +1707,7 @@ exports[`CardTile should show remining balance 1`] = `
           lineHeights="lh115"
           tag="span"
           textAlign="left"
-        >
-          Remaining balance
-        </Styled(BodyCopy)>
+        />
         <Styled(BodyCopy)
           className=""
           color="text.primary"
