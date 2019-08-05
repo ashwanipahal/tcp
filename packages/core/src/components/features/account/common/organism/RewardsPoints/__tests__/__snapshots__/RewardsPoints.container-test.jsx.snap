@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rewards Points Container View should render Rewards Points Container Correctly 1`] = `
+<Styled(RewardsPointsView)
+  currentPoints=""
+  labels={
+    Object {
+      "ACC_LBL_MY_REWARDS_CURRENT_POINTS": "Current Points",
+      "ACC_LBL_MY_REWARDS_HEADING": "My Rewards",
+      "ACC_LBL_MY_REWARDS_NEXT_REWARD": "Points to your next reward",
+    }
+  }
+  pointsToNextReward=""
+  totalRewards=""
+/>
+`;
