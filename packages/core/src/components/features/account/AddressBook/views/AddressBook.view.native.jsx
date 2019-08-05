@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import AddEditAddress from '@tcp/core/src/components/features/account/AddEditAddress/views/AddEditAddress.view';
+import AddEditAddressContainer from '@tcp/core/src/components/features/account/AddEditAddress/container/AddEditAddress.container';
+
 import CustomButton from '../../../../common/atoms/Button';
 import ModalNative from '../../../../common/molecules/Modal';
 import CreateAccount from '../../CreateAccount';
@@ -32,7 +33,7 @@ class AddressBook extends React.PureComponent<Props> {
         <ModalNative isOpen={isOpenBool} onRequestClose={this.openModal} heading="Create Account">
           <CreateAccount />
         </ModalNative>
-        <AddEditAddress labels={labels} />
+        <AddEditAddressContainer labels={labels} />
       </View>
     );
   }

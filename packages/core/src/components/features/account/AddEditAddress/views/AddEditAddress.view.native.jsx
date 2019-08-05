@@ -4,7 +4,6 @@ import { Field, reduxForm } from 'redux-form';
 import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import InputCheckbox from '@tcp/core/src/components/common/atoms/InputCheckbox';
-
 import {
   StyledHeading,
   ParentContainer,
@@ -105,7 +104,8 @@ const loadAddressComponent = (labels, labelsToLoad) => {
 };
 
 const AddressBook = (props: Props) => {
-  const { labels } = props;
+  const { labels, handleSubmit, submitAddressFormAction } = props;
+
   const labelsToLoad = [
     'acc_lbl_first_name',
     'acc_lbl_last_name',
@@ -134,6 +134,7 @@ const AddressBook = (props: Props) => {
         <Button
           fill="BLUE"
           type="submit"
+          onPress={handleSubmit(submitAddressFormAction)}
           buttonVariation="variable-width"
           text={labels.acc_lbl_add_address_cta}
           style={AddAddressButton}
@@ -142,6 +143,7 @@ const AddressBook = (props: Props) => {
         <Button
           fill="WHITE"
           type="submit"
+          onPress={handleSubmit(submitAddressFormAction)}
           buttonVariation="variable-width"
           text={labels.acc_lbl_cancel_cta}
           style={CancelButton}
@@ -151,15 +153,9 @@ const AddressBook = (props: Props) => {
   );
 };
 
-export default withStyles(
-  reduxForm({
-    form: FormName, // a unique identifier for this form
-    initialValues: {
-      signup: '',
-    },
-    asyncBlurFields: ['signup'],
-  })(AddressBook),
-  ParentContainer
-);
+export default reduxForm({
+  form: FormName,
+  enableReinitialize: true,
+})(withStyles(AddressBook, ParentContainer));
 
 export { AddressBook as AddressBookVanilla };
