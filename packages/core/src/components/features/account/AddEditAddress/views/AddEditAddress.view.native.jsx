@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, ScrollView, TextInput } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { Field, reduxForm } from 'redux-form';
 import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import Button from '@tcp/core/src/components/common/atoms/Button';
@@ -9,7 +9,6 @@ import {
   StyledHeading,
   ParentContainer,
   UnderlineStyle,
-  UnderlineStyleLight,
   InputField,
   InputFieldHalf,
   EmptyView,
@@ -19,6 +18,7 @@ import {
 } from '@tcp/core/src/components/features/account/AddressBook/styles/AddressBook.style';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles.native';
+import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
 
 const FormName = 'AddressBookForm';
 
@@ -28,25 +28,13 @@ type Props = {
 };
 
 /**
- * This function renders simple input field.
- * @param {string} text as label
- */
-const element = text => (
-  <InputField>
-    <TextInput placeholder={text} />
-    <UnderlineStyleLight />
-  </InputField>
-);
-
-/**
  * This function renders google autosuggest component.
  * @param {string} text from cms
  */
 const googleAutoSuggest = text => {
   return (
     <InputField>
-      <GooglePlacesInput text={text} />
-      <UnderlineStyleLight />
+      <GooglePlacesInput label={text} />
     </InputField>
   );
 };
@@ -80,19 +68,29 @@ const loadAddressInfo = (labels, labelsToLoad) => {
     if (labelElement === 'acc_lbl_state' || labelElement === 'acc_lbl_zip_code')
       return (
         <InputFieldHalf>
-          <TextInput placeholder={text} />
-          <UnderlineStyleLight />
+          <Field
+            label={text}
+            name={labelElement}
+            id={labelElement}
+            type="text"
+            component={TextBox}
+            maxLength={50}
+            dataLocator={labelElement}
+          />
         </InputFieldHalf>
       );
     return (
-      <Field
-        name="signup"
-        id="signup"
-        type="text"
-        component={() => element(text)}
-        maxLength={50}
-        dataLocator="email_address_field"
-      />
+      <InputField>
+        <Field
+          label={text}
+          name={labelElement}
+          id={labelElement}
+          type="text"
+          component={TextBox}
+          maxLength={50}
+          dataLocator={labelElement}
+        />
+      </InputField>
     );
   });
 };

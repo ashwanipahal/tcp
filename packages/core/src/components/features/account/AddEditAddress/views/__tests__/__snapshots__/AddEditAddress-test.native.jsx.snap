@@ -68,78 +68,403 @@ exports[`AddEditAddress Native should render correctly 1`] = `
     </Styled(Text)>
     <Styled(View) />
     <Styled(View)>
-      <Field
-        component={[Function]}
-        dataLocator="email_address_field"
-        id="signup"
-        maxLength={50}
-        name="signup"
-        type="text"
-      />
-      <Field
-        component={[Function]}
-        dataLocator="email_address_field"
-        id="signup"
-        maxLength={50}
-        name="signup"
-        type="text"
-      />
-      <Field
-        component={[Function]}
-        dataLocator="email_address_field"
-        id="signup"
-        maxLength={50}
-        name="signup"
-        type="text"
-      />
-      <Field
-        component={[Function]}
-        dataLocator="email_address_field"
-        id="signup"
-        maxLength={50}
-        name="signup"
-        type="text"
-      />
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="acc_lbl_first_name"
+          id="acc_lbl_first_name"
+          label="First Name"
+          maxLength={50}
+          name="acc_lbl_first_name"
+          type="text"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="acc_lbl_last_name"
+          id="acc_lbl_last_name"
+          label="Last Name"
+          maxLength={50}
+          name="acc_lbl_last_name"
+          type="text"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="acc_lbl_address_line1"
+          id="acc_lbl_address_line1"
+          label="Address Line 1"
+          maxLength={50}
+          name="acc_lbl_address_line1"
+          type="text"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="acc_lbl_address_line2"
+          id="acc_lbl_address_line2"
+          label="Address Line 2 (Optional)"
+          maxLength={50}
+          name="acc_lbl_address_line2"
+          type="text"
+        />
+      </Styled(View)>
       <Styled(View)>
         <GooglePlacesInput
-          text="City"
+          label="City"
         />
-        <Styled(View) />
       </Styled(View)>
       <Styled(View)>
-        <TextInput
-          allowFontScaling={true}
-          placeholder="State"
-          rejectResponderTermination={true}
-          underlineColorAndroid="transparent"
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="acc_lbl_state"
+          id="acc_lbl_state"
+          label="State"
+          maxLength={50}
+          name="acc_lbl_state"
+          type="text"
         />
-        <Styled(View) />
       </Styled(View)>
       <Styled(View)>
-        <TextInput
-          allowFontScaling={true}
-          placeholder="Zip Code"
-          rejectResponderTermination={true}
-          underlineColorAndroid="transparent"
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="acc_lbl_zip_code"
+          id="acc_lbl_zip_code"
+          label="Zip Code"
+          maxLength={50}
+          name="acc_lbl_zip_code"
+          type="text"
         />
-        <Styled(View) />
       </Styled(View)>
-      <Field
-        component={[Function]}
-        dataLocator="email_address_field"
-        id="signup"
-        maxLength={50}
-        name="signup"
-        type="text"
-      />
-      <Field
-        component={[Function]}
-        dataLocator="email_address_field"
-        id="signup"
-        maxLength={50}
-        name="signup"
-        type="text"
-      />
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="acc_lbl_country"
+          id="acc_lbl_country"
+          label="Country"
+          maxLength={50}
+          name="acc_lbl_country"
+          type="text"
+        />
+      </Styled(View)>
+      <Styled(View)>
+        <Field
+          component={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "_foldedDefaultProps": Object {
+                "ariaLabel": "input",
+                "dataLocator": "input-field",
+                "enableSuccessCheck": false,
+                "id": "input",
+                "keyboardType": "default",
+                "label": "input",
+                "meta": Object {
+                  "error": "",
+                  "touched": "",
+                },
+                "secureTextEntry": false,
+                "showErrorIcon": true,
+                "type": "text",
+              },
+              "attrs": Array [],
+              "displayName": "Styled(TextBox)",
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "
+    ",
+                  "
+  ",
+                  [Function],
+                  ";
+",
+                  ";
+  ",
+                ],
+              },
+              "render": [Function],
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          dataLocator="acc_lbl_phone_number"
+          id="acc_lbl_phone_number"
+          label="Phone Number"
+          maxLength={50}
+          name="acc_lbl_phone_number"
+          type="text"
+        />
+      </Styled(View)>
       <Field
         component={[Function]}
         dataLocator="setDefaultAddress"

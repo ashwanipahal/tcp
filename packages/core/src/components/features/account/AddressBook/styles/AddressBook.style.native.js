@@ -52,17 +52,13 @@ const UnderlineStyle = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL};
 `;
 
-const UnderlineStyleLight = styled.View`
-  height: 1px;
-  background-color: ${props => props.theme.colors.FOOTER.DIVIDER};
-`;
-
 const InputField = styled.View`
   height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   width: ${props => props.theme.spacing.LAYOUT_SPACING.XXXL};
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
   padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  z-index: 1;
 `;
 
 const InputFieldHalf = styled.View`
@@ -165,7 +161,6 @@ export {
   AddressLinks,
   AddressLinkLeftMargin,
   LeftMargin,
-  UnderlineStyleLight,
   InputField,
   InputFieldHalf,
   EmptyView,
