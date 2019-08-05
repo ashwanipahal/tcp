@@ -49,8 +49,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             className="l2-nav-category-heading s-display-none"
             color="text.primary"
             component={null}
-            data-locator="l2_col_heading_0"
-            dataLocator=""
+            dataLocator="l2_col_heading_0"
             textAlign="left"
             variant="h6"
           >
@@ -259,8 +258,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             className="l2-nav-category-heading "
             color="text.primary"
             component={null}
-            data-locator="l2_col_heading_1"
-            dataLocator=""
+            dataLocator="l2_col_heading_1"
             textAlign="left"
             variant="h6"
           >
@@ -856,8 +854,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             className="l2-nav-category-heading "
             color="text.primary"
             component={null}
-            data-locator="l2_col_heading_2"
-            dataLocator=""
+            dataLocator="l2_col_heading_2"
             textAlign="left"
             variant="h6"
           >
@@ -996,8 +993,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             className="l2-nav-category-heading"
             color="text.primary"
             component={null}
-            data-locator="l2_col_heading_3"
-            dataLocator=""
+            dataLocator="l2_col_heading_3"
             textAlign="left"
             variant="h6"
           >

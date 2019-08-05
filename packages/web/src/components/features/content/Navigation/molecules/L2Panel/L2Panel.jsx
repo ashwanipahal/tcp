@@ -110,7 +110,7 @@ const L2Panel = props => {
                     <Heading
                       variant="h6"
                       className={`l2-nav-category-heading ${hideOnMobileClass}`}
-                      data-locator={`l2_col_heading_${categoryIndex}`}
+                      dataLocator={`l2_col_heading_${categoryIndex}`}
                     >
                       {category}
                     </Heading>
@@ -144,7 +144,7 @@ const L2Panel = props => {
                           <Heading
                             variant="h6"
                             className="l2-nav-category-heading"
-                            data-locator="l2_col_heading_3"
+                            dataLocator="l2_col_heading_3"
                           >
                             Shop By Size
                           </Heading>
