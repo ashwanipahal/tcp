@@ -17,11 +17,21 @@ const styles = css`
   }
   .checkout-actions {
     margin: 0;
+    width: 100%;
   }
   .checkout-button {
     font-weight: 800;
     margin: 0 0 10px 0;
     color: red;
+  }
+  .right-sec {
+    width: 346px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: 258px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      width: 450px;
+    }
   }
 `;
 

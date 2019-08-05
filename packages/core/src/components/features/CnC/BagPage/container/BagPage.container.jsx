@@ -17,7 +17,8 @@ export class BagPageContainer extends React.Component<Props> {
   closeModal = () => {};
 
   render() {
-    return <BagPage />;
+    const { labels } = this.props;
+    return <BagPage labels={labels} />;
   }
 }
 

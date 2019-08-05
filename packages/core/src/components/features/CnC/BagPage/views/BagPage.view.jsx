@@ -20,7 +20,7 @@ import CheckoutActions from '../molecules/CheckoutActions';
 //   handleContinueShopping: Function,
 // };
 
-const AddedToBag = ({ className }: Props) => {
+const AddedToBag = ({ className, labels }: Props) => {
   return (
     <div className={className}>
       <Heading>Bag page</Heading>
@@ -33,9 +33,9 @@ const AddedToBag = ({ className }: Props) => {
             <section className="row-ele">section 4</section>
             <CartItemTile />
           </Col>
-          <Col colSize={{ small: 4, medium: 4, large: 4 }} className="right-sec">
+          <Col colSize={{ small: 6, medium: 8, large: 12 }} className="right-sec">
             <OrderLedgerContainer />
-            <CheckoutActions />
+            <CheckoutActions labels={labels} />
           </Col>
         </Row>
       </section>

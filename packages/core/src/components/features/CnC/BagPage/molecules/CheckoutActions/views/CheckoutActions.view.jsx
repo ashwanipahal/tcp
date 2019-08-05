@@ -8,10 +8,14 @@ import PayPalButton from '../../../../../../common/atoms/PaypalButton';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/CheckoutActions.style';
 
-const CheckoutActions = () => {
+// @flow
+type Props = {
+  labels: any,
+};
+const CheckoutActions = ({ labels }: Props) => {
   return (
-    <Grid class="checkout-actions">
-      <Row>
+    <Grid>
+      <Row className="checkout-actions">
         <Col className="checkout-button" colSize={{ large: 12, medium: 12, small: 12 }}>
           <Button
             buttonVariation="fixed-width"
@@ -26,7 +30,7 @@ const CheckoutActions = () => {
               fontFamily="secondary"
               fontSize="fs14"
             >
-              {'CHECKOUT'}
+              {labels.checkout}
             </BodyCopy>
           </Button>
         </Col>

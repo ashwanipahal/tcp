@@ -4,9 +4,12 @@ import PropTypes from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
+import ReactToolTip from '@tcp/core/src/components/common/atoms/ReactToolTip';
+import { getIconPath } from '../../../../../../../utils';
+import { Image } from '../../../../../../common/atoms';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import styles from '../styles/orderLedger.style';
+import styles from '../styles/OrderLedger.style';
 
 const OrderLedger = ({
   className,
@@ -21,6 +24,7 @@ const OrderLedger = ({
   giftCardsTotal,
   orderBalanceTotal,
   totalOrderSavings,
+  labels,
 }) => {
   return (
     <React.Fragment>
@@ -35,7 +39,7 @@ const OrderLedger = ({
               fontWeight="bold"
               fontSize="fs16"
             >
-              {`Items (${itemsCount}):`}
+              {`${labels.itemsLabel} (${itemsCount}):`}
             </BodyCopy>
           </Col>
           <Col colSize={{ large: 6, medium: 4, small: 3 }}>
@@ -61,7 +65,7 @@ const OrderLedger = ({
                 fontWeight="bold"
                 fontSize="fs16"
               >
-                {`Coupons:`}
+                {`${labels.couponsLabel}:`}
               </BodyCopy>
             </Col>
             <Col colSize={{ large: 6, medium: 4, small: 3 }}>
@@ -88,7 +92,7 @@ const OrderLedger = ({
                 fontWeight="bold"
                 fontSize="fs16"
               >
-                {`Promotions`}
+                {`${labels.promotionsLabel}`}
               </BodyCopy>
             </Col>
             <Col colSize={{ large: 6, medium: 4, small: 3 }}>
@@ -114,7 +118,7 @@ const OrderLedger = ({
               fontWeight="bold"
               fontSize="fs16"
             >
-              {`Shipping:`}
+              {`${labels.shippingLabel}:`}
             </BodyCopy>
           </Col>
           <Col colSize={{ large: 6, medium: 4, small: 3 }}>
@@ -145,7 +149,7 @@ const OrderLedger = ({
               fontWeight="bold"
               fontSize="fs16"
             >
-              {`Estimated Tax:`}
+              {`${labels.taxLabel}:`}
             </BodyCopy>
           </Col>
           <Col colSize={{ large: 6, medium: 4, small: 3 }}>
@@ -171,7 +175,7 @@ const OrderLedger = ({
                   fontWeight="bold"
                   fontSize="fs16"
                 >
-                  {`Estimated Total:`}
+                  {`${labels.totalLabel}:`}
                 </BodyCopy>
               </Col>
               <Col colSize={{ large: 6, medium: 4, small: 3 }}>
@@ -196,7 +200,7 @@ const OrderLedger = ({
                     fontWeight="bold"
                     fontSize="fs16"
                   >
-                    {`Gift Card(s):`}
+                    {`${labels.giftcardsLabel}:`}
                   </BodyCopy>
                 </Col>
                 <Col colSize={{ large: 6, medium: 4, small: 3 }}>
@@ -224,7 +228,7 @@ const OrderLedger = ({
               fontWeight="black"
               fontSize="fs18"
             >
-              {giftCardsTotal ? 'Balance:' : 'Estimated Total:'}
+              {giftCardsTotal ? `${labels.balanceLabel}:` : `${labels.totalLabel}:`}
             </BodyCopy>
           </Col>
           <Col colSize={{ large: 6, medium: 4, small: 3 }}>
@@ -250,7 +254,10 @@ const OrderLedger = ({
               fontWeight="bold"
               fontSize="fs16"
             >
-              {`Total Savings`}
+              {`${labels.totalSavingsLabel}`}
+              <ReactToolTip id="tool" direction="top" message={labels.tooltipText}>
+                <Image alt="info" className="circle-info-image" src={getIconPath(`info-icon`)} />
+              </ReactToolTip>
             </BodyCopy>
           </Col>
           <Col colSize={{ large: 6, medium: 4, small: 3 }}>
@@ -317,6 +324,7 @@ OrderLedger.propTypes = {
 
   orderBalanceTotal: PropTypes.number,
   totalOrderSavings: PropTypes.number,
+  labels: PropTypes.shape({}),
   /** Flag indicates whether cart savings section will display */
   // isDisplayCartSavings: PropTypes.bool,
   /** Flag indicates whether the current page is Cart */
@@ -334,6 +342,7 @@ OrderLedger.defaultProps = {
   orderBalanceTotal: 0,
   totalOrderSavings: 0,
   subTotal: 0,
+  labels: {},
 };
 export default withStyles(OrderLedger, styles);
 export { OrderLedger as OrderLedgerVanilla };

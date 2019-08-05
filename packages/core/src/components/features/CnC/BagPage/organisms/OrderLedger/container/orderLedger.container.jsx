@@ -2,7 +2,7 @@
 /* eslint-disable */
 import React from 'react';
 import { connect } from 'react-redux';
-import OrderLedger from '../views/orderLedger.view';
+import OrderLedger from '../views/OrderLedger.view';
 import {
   getItemsTotalCount,
   getCouponsTotal,
@@ -13,7 +13,7 @@ import {
   getGrandTotal,
   getGiftCardsTotal,
   getTotalOrderSavings,
-} from './orderLedger.selector';
+} from './OrderLedger.selector';
 
 // @flow
 
@@ -26,7 +26,7 @@ type Props = {
   editableProductInfo: any,
 };
 
-export const orderLedgerContainer = ({
+export const OrderLedgerContainer = ({
   className,
   itemsCount,
   currencySymbol,
@@ -39,6 +39,7 @@ export const orderLedgerContainer = ({
   giftCardsTotal,
   orderBalanceTotal,
   totalOrderSavings,
+  labels,
 }) => (
   <OrderLedger
     className={className}
@@ -53,10 +54,27 @@ export const orderLedgerContainer = ({
     giftCardsTotal={giftCardsTotal}
     orderBalanceTotal={orderBalanceTotal}
     totalOrderSavings={totalOrderSavings}
+    labels={labels}
   />
 );
 
 function mapStateToProps(state) {
+  const {
+    bag: {
+      bagOverview: {
+        lbl_orderledger_items: itemsLabel,
+        lbl_orderledger_coupons: couponsLabel,
+        lbl_orderledger_promotions: promotionsLabel,
+        lbl_orderledger_shipping: shippingLabel,
+        lbl_orderledger_tax: taxLabel,
+        lbl_orderledger_total: totalLabel,
+        lbl_orderledger_giftcards: giftcardsLabel,
+        lbl_orderledger_balance: balanceLabel,
+        lbl_orderledger_totalsavings: totalSavingsLabel,
+        lbl_orderledger_tooltiptext: tooltipText,
+      },
+    },
+  } = state.Labels;
   return {
     className: 'order-summary',
     itemsCount: getItemsTotalCount(state),
@@ -70,7 +88,19 @@ function mapStateToProps(state) {
     orderBalanceTotal: getGrandTotal(state) - getGiftCardsTotal(state),
     totalOrderSavings: getTotalOrderSavings(state),
     currencySymbol: '$',
+    labels: {
+      itemsLabel,
+      couponsLabel,
+      promotionsLabel,
+      shippingLabel,
+      taxLabel,
+      totalLabel,
+      giftcardsLabel,
+      balanceLabel,
+      totalSavingsLabel,
+      tooltipText,
+    },
   };
 }
 
-export default connect(mapStateToProps)(orderLedgerContainer);
+export default connect(mapStateToProps)(OrderLedgerContainer);

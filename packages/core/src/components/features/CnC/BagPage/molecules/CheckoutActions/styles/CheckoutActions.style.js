@@ -1,7 +1,9 @@
 import { css } from 'styled-components';
 
 const checkoutActionsStyle = css`
-  margin: 0px;
+  .checkout-actions {
+    margin: 0px;
+  }
 
   .checkout-button {
     font-weight: 800;
