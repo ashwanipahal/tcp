@@ -1,17 +1,23 @@
-import { css } from 'styled-components/native';
+// styles for app splash and second app peek a boo view
+const styles = {
+  splash: {
+    backgroundColor: 'transparent',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+  imageContainer: {
+    backgroundColor: 'white',
+    borderRadius: 100,
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0,
+    marginLeft: -15,
+    marginTop: -5,
+  },
+};
 
-const SplashStyles = css`
-  position: absolute;
-  align-items: center;
-  justify-content: center;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  ${props =>
-    `background-color: ${props.theme.colors.WHITE}
-     padding-top: ${props.theme.spacing.LAYOUT_SPACING.SM};
-  `};
-`;
-
-export default SplashStyles;
+export default styles;

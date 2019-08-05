@@ -1,25 +1,22 @@
-import styled, { css } from 'styled-components/native';
+// styles for app peek a boo view
+const styles = {
+  imageContainer: {
+    borderRadius: 100,
+    width: 100,
+    height: 100,
+    backgroundColor: 'white',
+    shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.9,
+    position: 'absolute',
+    bottom: -40,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    zIndex: -1,
+  },
+  image: {
+    width: 90,
+    height: 70,
+  },
+};
 
-export const PeekABooContainer = css`
-  position: absolute;
-  align-items: center;
-  z-index: -1;
-  background-color: transparent;
-  ${props =>
-    `bottom: ${props.theme.spacing.LAYOUT_SPACING.XXS};
-  `};
-`;
-
-export const ImageContainer = styled.View`
-  border-radius: 100px;
-  width: 100px;
-  height: 100px;
-  align-items: center;
-  ${props =>
-    `background-color: ${props.theme.colors.WHITE};
-     box-shadow: 0px 0px 9px ${props.shadowColor};
-     border-color: ${props.shadowColor};
-     border-width: ${props.borderWidth};
-     left: -${props.theme.spacing.ELEM_SPACING.XXXS};
-  `};
-`;
+export default styles;

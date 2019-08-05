@@ -1,14 +1,12 @@
 import React from 'react';
-import { View, LayoutAnimation } from 'react-native';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles.native';
-import { Image } from '@tcp/core/src/components/common/atoms/index.native';
+import { Animated, Easing, View } from 'react-native';
+import { getScreenHeight } from '@tcp/core/src/utils';
 
 import { getAppSplashLogo, AppAnimationConfig } from '../utils/utils';
-import SplashStyles from './styles/AppSplash.styles';
+import styles from './styles/AppSplash.styles';
 
 /**
- * After showing app splash screen as initial frame of the app,
- * this class displays app logo animatedly that settles down at bottom center of navigation bar
+ * This class creates a Peek a boo effect animation after showing app splash screen
  *
  * @class AppSplash
  * @extends {React.PureComponent<Props>}
@@ -16,133 +14,137 @@ import SplashStyles from './styles/AppSplash.styles';
 class AppSplash extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
-    this.state = {
-      zIndex: 0,
-      animationDelay: AppAnimationConfig.AnimationDelay,
-      position: 'center',
-      width: AppAnimationConfig.AppSplashMaxWidth,
-      opacity: 1,
-      height: AppAnimationConfig.AppSplashMaxHeight,
-      background: 'white',
-    };
-  }
-
-  componentWillMount() {
-    // wait for 1s to start animation so as to trigger bootstrap call in homepage
-    this.spashAnimation = setTimeout(this.showSplashAnimation, AppAnimationConfig.AnimationDelay);
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.opacityAnimation);
-    clearTimeout(this.spashAnimation);
+    this.transformAnimatedValue = new Animated.Value(0);
+    this.imageTransformAnimatedValue = new Animated.Value(0);
+    this.viewBackgroundAnimatedValue = new Animated.Value(0);
+    setTimeout(this.showSplashAnimation, AppAnimationConfig.AnimationDelay);
   }
 
   /**
-   * @function showSplashAnimation
+   * method: showSplashAnimation
    * This method uses Animated api of react-native to display the after splash animation
-   * Animation is a peek-a-boo effect of second app switch in bottom navigation bar
+   * Animation starts with a elstic effect of default app theme logo
+   * followed by peek-a-boo effect of second app switch in bottom navigation bar
+   * ends with changing opacity of this splash view to 0 and moving it back in view layer
    *
    * @memberof AppSplash
    */
   showSplashAnimation = () => {
-    const { animationDelay } = this.state;
-    this.changePosition(
-      'flex-end',
-      AppAnimationConfig.AppSplashMinWidth,
-      AppAnimationConfig.AppSplashMinHeight
-    );
-
-    this.opacityAnimation = setTimeout(() => {
-      // Vary image size for animation
-      this.changeImageSize(
-        AppAnimationConfig.AppSplashMinWidth - 5,
-        AppAnimationConfig.AppSplashMinHeight - 5
-      );
-
-      this.changeOpacity();
-    }, animationDelay);
-  };
-
-  /**
-   * @function changePosition
-   * This method is called to update app logo position
-   *
-   * @memberof AppSplash
-   */
-  changePosition = (position, width, height) => {
-    LayoutAnimation.linear();
-
-    this.setState({
-      position,
-      width,
-      height,
+    Animated.sequence([
+      Animated.timing(this.transformAnimatedValue, {
+        toValue: 1,
+        duration: AppAnimationConfig.AnimationDelay,
+        easing: Easing.ease,
+      }),
+      Animated.stagger(100, [
+        Animated.timing(this.viewBackgroundAnimatedValue, {
+          toValue: 1,
+          duration: 10,
+          easing: Easing.ease,
+        }),
+        Animated.timing(this.imageTransformAnimatedValue, {
+          toValue: 1,
+          duration: AppAnimationConfig.AnimationDelay,
+          easing: Easing.elastic(4),
+        }),
+      ]),
+    ]).start(() => {
+      const { removeSplash } = this.props;
+      if (removeSplash) removeSplash();
     });
   };
 
   /**
-   * @function changeOpacity
-   * This method is called to update app splash opacity
+   * @function getSplashViewTransform
+   * returns splash view transform
+   * starts with changing y position of view and ends with scaling size of view
    *
    * @memberof AppSplash
    */
-  changeOpacity = () => {
-    setTimeout(() => {
-      // change opacity of view
-      LayoutAnimation.linear();
-
-      this.setState({
-        opacity: 0,
-        zIndex: -1,
-      });
-    }, 100);
-  };
+  getSplashViewTransform = () => [
+    {
+      translateY: this.transformAnimatedValue.interpolate({
+        inputRange: [0, 1],
+        outputRange: [0, getScreenHeight() / 2 - 35],
+      }),
+    },
+    {
+      scaleX: this.transformAnimatedValue.interpolate({
+        inputRange: [0, 1],
+        outputRange: [1, 0.4],
+      }),
+    },
+    {
+      scaleY: this.transformAnimatedValue.interpolate({
+        inputRange: [0, 1],
+        outputRange: [1, 0.4],
+      }),
+    },
+  ];
 
   /**
-   * @function changeImageSize
-   * changes image size animatedly
+   * @function getSplashImageTransform
+   * returns splash image transform
+   * scales size of image
    *
    * @memberof AppSplash
    */
-  changeImageSize = (width, height) => {
-    LayoutAnimation.spring();
-
-    this.setState({
-      background: 'transparent',
-      width,
-      height,
-    });
-  };
+  getSplashImageTransform = () => [
+    {
+      scaleX: this.imageTransformAnimatedValue.interpolate({
+        inputRange: [0, 1],
+        outputRange: [1, 1.1],
+      }),
+    },
+    {
+      scaleY: this.imageTransformAnimatedValue.interpolate({
+        inputRange: [0, 1],
+        outputRange: [1, 1.1],
+      }),
+    },
+  ];
 
   /**
-   * @function render
+   * method: render
    * This method renders AppSplash view on screen
    *
    * @returns view to be rendered
    * @memberof AppSplash
    */
   render() {
-    const { zIndex, position, width, opacity, height, background } = this.state;
+    const { splash, imageContainer } = styles;
     return (
-      <View
-        {...this.props}
-        justifyContent={position}
-        zIndex={zIndex}
-        opacity={opacity}
-        backgroundColor={background}
+      <Animated.View
+        style={[
+          splash,
+          {
+            backgroundColor: this.viewBackgroundAnimatedValue.interpolate({
+              inputRange: [0, 1],
+              outputRange: ['white', 'transparent'],
+            }),
+          },
+        ]}
       >
-        <Image
-          source={getAppSplashLogo()}
-          width={width}
-          height={height}
-          name="image"
-          backgroundColor="white"
-          borderRadius={40}
-          marginLeft={-5}
-        />
-      </View>
+        <Animated.View
+          style={[
+            splash,
+            {
+              transform: this.getSplashViewTransform(),
+            },
+          ]}
+        >
+          <View style={imageContainer}>
+            <Animated.Image
+              source={getAppSplashLogo()}
+              style={{
+                transform: this.getSplashImageTransform(),
+              }}
+            />
+          </View>
+        </Animated.View>
+      </Animated.View>
     );
   }
 }
 
-export default withStyles(AppSplash, SplashStyles);
-export { AppSplash as AppSplashVanilla };
+export default AppSplash;

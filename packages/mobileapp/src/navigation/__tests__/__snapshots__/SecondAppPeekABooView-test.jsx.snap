@@ -1,24 +1,66 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SecondAppPeekABooView component test cases should match snapshot 1`] = `
-<View
-  height={0}
+<AnimatedComponent
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "white",
+        "borderRadius": 100,
+        "bottom": -40,
+        "height": 100,
+        "justifyContent": "flex-start",
+        "position": "absolute",
+        "shadowOffset": Object {
+          "height": 0,
+          "width": 0,
+        },
+        "shadowOpacity": 0.9,
+        "width": 100,
+        "zIndex": -1,
+      },
+      Object {
+        "borderColor": "#f7971f",
+        "borderWidth": 0,
+        "left": 320,
+        "shadowColor": "#f7971f",
+        "transform": Array [
+          Object {
+            "translateX": 0,
+          },
+          Object {
+            "translateY": 0,
+          },
+        ],
+      },
+    ]
+  }
 >
-  <Styled(View)
-    borderWidth={0}
-    name="imageContainer"
-    shadowColor="#f7971f"
-  >
-    <Styled(ImageComp)
-      height={75}
-      name="image"
-      source={
-        Object {
-          "testUri": "../../../src/assets/images/gymboree/gymboreePeekABoo.png",
-        }
+  <AnimatedComponent
+    source={
+      Object {
+        "testUri": "../../../src/assets/images/gymboree/gymboreePeekABoo.png",
       }
-      width={90}
-    />
-  </Styled(View)>
-</View>
+    }
+    style={
+      Array [
+        Object {
+          "height": 70,
+          "width": 90,
+        },
+        Object {
+          "transform": Array [
+            Object {
+              "scaleX": 1,
+            },
+            Object {
+              "scaleY": 1,
+            },
+          ],
+        },
+      ]
+    }
+  />
+</AnimatedComponent>
 `;

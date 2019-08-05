@@ -1,17 +1,16 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { SecondAppPeekABooViewVanilla } from '../SecondAppPeekABooView';
+import { Animated } from 'react-native';
+import SecondAppPeekABooView from '../SecondAppPeekABooView';
 
 Date.now = jest.fn(() => new Date('2019-08-01'));
 
 describe('SecondAppPeekABooView component test cases', () => {
   let wrapper;
-  const image = '[name="imageContainer"]';
 
   beforeEach(() => {
-    wrapper = shallow(<SecondAppPeekABooViewVanilla />);
-    jest.runAllTimers();
-    wrapper.instance().setState({ animationDelay: 0 });
+    wrapper = shallow(<SecondAppPeekABooView />);
+    jest.runOnlyPendingTimers();
   });
 
   it('should match snapshot', () => {
@@ -19,23 +18,17 @@ describe('SecondAppPeekABooView component test cases', () => {
   });
 
   it('should render correctly', () => {
-    expect(wrapper.find('View').length).toBe(1);
-    expect(wrapper.find(image).length).toBe(1);
-    expect(wrapper.find('[name="image"]').length).toBe(1);
+    expect(wrapper.find(Animated.View).length).toBe(1);
+    expect(wrapper.find(Animated.Image).length).toBe(1);
+  });
+
+  it('should render gymboree launch image by default', () => {
+    const image = wrapper.find(Animated.Image);
+    expect(image.props().source.testUri).toContain('gymboreePeekABoo.png');
   });
 
   it('should call peek-a-boo animation method', () => {
-    wrapper.instance().peekABooAnimation();
-    expect(wrapper.find('View').props().height).toBe(0);
-  });
-
-  it('should show animation', () => {
     wrapper.instance().showAnimation();
-    expect(wrapper.find(image).props().children.props.height).toBe(75);
-  });
-
-  it('should change image animation', () => {
-    wrapper.instance().changeImagePosition();
-    expect(wrapper.find(image).props().children.props.height).toBe(80);
+    expect(wrapper.find(Animated.View).props().style[0].width).toBeDefined();
   });
 });

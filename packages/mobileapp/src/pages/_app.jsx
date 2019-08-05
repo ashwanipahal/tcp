@@ -21,6 +21,7 @@ export class App extends React.PureComponent {
   state = {
     // eslint-disable-next-line react/no-unused-state
     isLoadingComplete: false,
+    isSplashVisible: true,
   };
 
   componentWillMount() {
@@ -42,15 +43,20 @@ export class App extends React.PureComponent {
     this.setState({ isLoadingComplete: true });
   };
 
+  removeSplash = () => {
+    this.setState({ isSplashVisible: false });
+  };
+
   render() {
     const { appType } = this.props;
+    const { isSplashVisible } = this.state;
     return (
       <Provider store={this.store}>
         <ThemeWrapperHOC appType={appType}>
           <View style={styles.container}>
             {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
             <AppNavigator />
-            <AppSplash appType={appType} />
+            {isSplashVisible && <AppSplash appType={appType} removeSplash={this.removeSplash} />}
           </View>
         </ThemeWrapperHOC>
       </Provider>

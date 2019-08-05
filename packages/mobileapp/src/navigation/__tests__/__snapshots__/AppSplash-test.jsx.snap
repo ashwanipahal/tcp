@@ -1,25 +1,86 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Appsplash component test cases should match snapshot 1`] = `
-<View
-  appType="tcp"
-  backgroundColor="white"
-  justifyContent="center"
-  opacity={1}
-  zIndex={0}
->
-  <Styled(ImageComp)
-    backgroundColor="white"
-    borderRadius={40}
-    height={100}
-    marginLeft={-5}
-    name="image"
-    source={
+<AnimatedComponent
+  style={
+    Array [
       Object {
-        "testUri": "../../../src/assets/images/tcp/tcpLaunchImage.png",
-      }
+        "alignItems": "center",
+        "backgroundColor": "transparent",
+        "bottom": 0,
+        "justifyContent": "center",
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+      },
+      Object {
+        "backgroundColor": "rgba(255, 255, 255, 1)",
+      },
+    ]
+  }
+>
+  <AnimatedComponent
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "bottom": 0,
+          "justifyContent": "center",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+        Object {
+          "transform": Array [
+            Object {
+              "translateY": 0,
+            },
+            Object {
+              "scaleX": 1,
+            },
+            Object {
+              "scaleY": 1,
+            },
+          ],
+        },
+      ]
     }
-    width={375}
-  />
-</View>
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "white",
+          "borderBottomLeftRadius": 0,
+          "borderBottomRightRadius": 0,
+          "borderRadius": 100,
+          "marginLeft": -15,
+          "marginTop": -5,
+        }
+      }
+    >
+      <AnimatedComponent
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/tcp/tcpLaunchImage.png",
+          }
+        }
+        style={
+          Object {
+            "transform": Array [
+              Object {
+                "scaleX": 1,
+              },
+              Object {
+                "scaleY": 1,
+              },
+            ],
+          }
+        }
+      />
+    </View>
+  </AnimatedComponent>
+</AnimatedComponent>
 `;
