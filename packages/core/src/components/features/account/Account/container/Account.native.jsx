@@ -34,6 +34,10 @@ class Account extends React.PureComponent<Props, State> {
     };
   }
 
+  /**
+   *  @function getComponent takes component and return the component that is required on the drop down click.
+   */
+
   getComponent = component => {
     switch (component) {
       case 'paymentGiftCardsPageMobile':
@@ -45,8 +49,10 @@ class Account extends React.PureComponent<Props, State> {
     }
   };
 
+  /**
+   *  @function handleComponentChange triggered when dropdown clicked
+   */
   handleComponentChange = component => {
-    /** This handling is for temporary purpose, need to remove later once we have all containers */
     const componentName = this.getComponent(component);
     this.setState({
       component: componentName,
