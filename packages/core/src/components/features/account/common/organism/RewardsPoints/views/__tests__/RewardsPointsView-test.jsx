@@ -12,6 +12,7 @@ describe('My Account Layout View', () => {
         ACC_LBL_MY_REWARDS_CURRENT_POINTS: 'Current Points',
         ACC_LBL_MY_REWARDS_HEADING: 'My rewards',
         ACC_LBL_MY_REWARDS_NEXT_REWARD: 'Next Rewards',
+        ACC_LBL_MY_REWARDS_CURRENCY: '$',
       },
     };
     const tree = shallow(<RewardsPointsViewVanilla {...props} />);

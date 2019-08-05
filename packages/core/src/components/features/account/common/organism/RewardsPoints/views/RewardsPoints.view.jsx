@@ -30,7 +30,7 @@ const RewardsPointsView = ({
           <BodyCopy component="p" fontFamily="secondary" fontSize="fs14">
             {`${labels.ACC_LBL_MY_REWARDS_HEADING}: `}
             <BodyCopy component="span" fontWeight="black" fontFamily="secondary" fontSize="fs14">
-              {`$`}
+              {labels.ACC_LBL_MY_REWARDS_CURRENCY}
               {totalRewards && Math.trunc(totalRewards)}
             </BodyCopy>
           </BodyCopy>
@@ -66,6 +66,7 @@ RewardsPointsView.propTypes = {
     ACC_LBL_MY_REWARDS_CURRENT_POINTS: PropTypes.string,
     ACC_LBL_MY_REWARDS_HEADING: PropTypes.string,
     ACC_LBL_MY_REWARDS_NEXT_REWARD: PropTypes.string,
+    ACC_LBL_MY_REWARDS_CURRENCY: PropTypes.string,
   }),
 };
 
