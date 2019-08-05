@@ -75,7 +75,12 @@ RewardsPointsView.defaultProps = {
   pointsToNextReward: '',
   currentPoints: '',
   totalRewards: '',
-  labels: {},
+  labels: {
+    lbl_my_rewards_current_points: '',
+    lbl_my_rewards_heading: '',
+    lbl_my_rewards_next_reward: '',
+    lbl_my_rewards_currency: '',
+  },
 };
 
 export default withStyles(RewardsPointsView, styles);
