@@ -1,22 +1,16 @@
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 
-export const getCouponListData = () => {
+export const applyCouponToCart = ({ coupon_code: couponCode = '' }) => {
   const payload = {
-    webService: endpoints.getCouponList,
-    header: {
-      fromPage: 'Coupon',
+    webService: endpoints.addCoupons,
+    body: {
+      promoCode: couponCode.toUpperCase(),
     },
   };
-  return executeStatefulAPICall(payload).then(res => {
-    if (!res.body) {
-      throw new Error('res body is null');
-      // TODO - Set API Helper to filter if error exists in response
-    }
-    return res.body.contact || [];
-  });
+  return executeStatefulAPICall(payload);
 };
 
 export default {
-  getCouponListData,
+  applyCouponToCart,
 };

@@ -18,7 +18,7 @@ import AccountReducer from '@tcp/core/src/components/features/account/Account/co
 import CartReducer from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import OverlayModalReducer from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.reducer';
 import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
-import CouponsReducer from '@tcp/core/src/components/features/CnC/CouponAndPromos/container/Coupon.reducer';
+import CouponsReducer from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,

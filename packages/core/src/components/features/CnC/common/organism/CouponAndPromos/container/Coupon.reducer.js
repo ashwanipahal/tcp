@@ -1,6 +1,6 @@
 import { fromJS, List } from 'immutable';
 import COUPON_CONSTANTS from '../Coupon.constants';
-import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../utils/cache.util';
+import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../../../utils/cache.util';
 
 const initialState = fromJS({
   isFetching: false,

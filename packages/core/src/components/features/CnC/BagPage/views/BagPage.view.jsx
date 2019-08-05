@@ -6,7 +6,7 @@ import CartItemTile from '../../CartItemTile';
 import Heading from '../../../../common/atoms/Heading';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
-import CouponAndPromos from '../../CouponAndPromos';
+import CouponAndPromos from '../../common/organism/CouponAndPromos';
 
 // @flow
 // type Props = {
