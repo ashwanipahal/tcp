@@ -6,6 +6,7 @@ import Col from '../../../../../../common/atoms/Col';
 import styles from '../../../styles/PlaceRewards.section.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import MyRewards from '../../../molecules/MyRewards';
+import RewardsPoints from '../../../../common/organism/RewardsPoints';
 
 const PlaceRewardsSection = ({ labels, className }) => {
   return (
@@ -40,7 +41,36 @@ const PlaceRewardsSection = ({ labels, className }) => {
             }}
             className="place-rewards-col1"
           >
-            First
+            <Row fullBleed>
+              <Col
+                colSize={{
+                  small: 4,
+                  large: 10,
+                  medium: 6,
+                }}
+              >
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs16"
+                  fontWeight="extrabold"
+                  component="h4"
+                  className="elem-mb-SM elem-ml-SM"
+                >
+                  {labels.myPlaceRewards.lbl_my_rewards_point_balance}
+                </BodyCopy>
+              </Col>
+            </Row>
+            <Row fullBleed className="elem-mb-MED">
+              <Col
+                colSize={{
+                  small: 4,
+                  large: 10,
+                  medium: 6,
+                }}
+              >
+                <RewardsPoints labels={labels.myPlaceRewards} />
+              </Col>
+            </Row>
           </Col>
           <Col
             colSize={{
