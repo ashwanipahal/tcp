@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MyAccountOverview View should render AccountOverview Correctly 1`] = `
+exports[`AccountOverviewTileList component should render correctly 1`] = `
 <Fragment>
   <Styled(FormPageHeading)
     className="margin-none"

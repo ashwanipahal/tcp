@@ -1,17 +1,39 @@
-// @flow
 import React from 'react';
-import AccountOverview from '../views/AccountOverview.view';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import AccountOverviewComponent from '../views/AccountOverview.view';
 
-/**
- * @function AddressBookContainer The AddressBook container is responsible for fetching the user addresses
- * and paint the right panel for addresses
- */
-const AccountOverviewContainer = () => {
+const getAccountOverviewLabels = labels => {
   return (
-    <div>
-      <AccountOverview />
-    </div>
+    (labels && labels.accountOverview) || {
+      lbl_overview_heading: 'ACCOUNT OVERVIEW',
+      lbl_overview_addressBookHeading: 'Address Book',
+      lbl_overview_addressBookCTA: 'VIEW ADDRESS BOOK',
+      lbl_overview_paymentHeading: 'Payment & Gift Cards',
+      lbl_overview_paymentCTA: 'VIEW PAYMENT & GIFT CARDS',
+      lbl_overview_myPlaceRewardsHeading: 'My Place Rewards',
+      lbl_overview_myPlaceRewardsCTA: 'VIEW ALL REWARDS',
+    }
   );
 };
 
-export default AccountOverviewContainer;
+export const AccountOverviewContainer = ({ labels, ...otherProps }) => {
+  const overviewLabels = getAccountOverviewLabels(labels);
+  return <AccountOverviewComponent labels={overviewLabels} {...otherProps} />;
+};
+
+AccountOverviewContainer.propTypes = {
+  labels: PropTypes.shape({
+    accountOverview: PropTypes.shape({}),
+  }),
+};
+
+AccountOverviewContainer.defaultProps = {
+  labels: {
+    accountOverview: {},
+  },
+};
+
+const mapStateToProps = () => ({});
+
+export default connect(mapStateToProps)(AccountOverviewContainer);
