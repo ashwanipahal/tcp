@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
-import styles from '../MyRewards.style';
+import styles from '../styles/MyRewards.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Button from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
@@ -42,7 +42,7 @@ const MyRewards = ({ labels, className }) => {
           <BodyCopy
             fontFamily="secondary"
             fontSize="fs14"
-            fontWeight="bold"
+            fontWeight="regular"
             className="no-rewards-msg"
             data-locator="no_rewards_msg"
           >
@@ -97,7 +97,7 @@ const MyRewards = ({ labels, className }) => {
             className="elem-ml-XXL"
             target="_self"
           >
-            {labels.common.ACC_LBL_TNC}
+            {labels.common.lbl_common_tnc}
           </Anchor>
         </Col>
       </Row>
@@ -112,7 +112,7 @@ MyRewards.propTypes = {
 
 MyRewards.defaultProps = {
   labels: {
-    common: { ACC_LBL_TNC: '' },
+    common: { lbl_common_tnc: '' },
     myPlaceRewards: {
       ACC_LBL_MY_REWARDS_PROGRAM_DETAILS: '',
       ACC_LBL_MY_REWARDS_SHOP_NOW: '',
