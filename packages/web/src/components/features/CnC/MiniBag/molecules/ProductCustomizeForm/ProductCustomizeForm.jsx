@@ -2,11 +2,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import Row from '@tcp/core/src/components/common/atoms/Row';
-import Button from '@tcp/core/src/components/common/atoms/Button';
-import withStyles from '../../../../common/hoc/withStyles';
-import MiniBagSelect from '../../MiniBag/molecules/MiniBagSelectBox/MiniBagSelectBox';
-import ColorSelector from '../../MiniBag/molecules/ColorSelect/views/ColorSelect.view';
+import { Row, Button } from '@tcp/core/src/components/common/atoms';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import MiniBagSelect from '@tcp/web/src/components/features/CnC/MiniBag/molecules/MiniBagSelectBox/MiniBagSelectBox';
+import ColorSelector from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ColorSelect/views/ColorSelect.view';
 import style, { buttonCustomStyles } from './ProductCustomizeForm.style';
 
 // @flow

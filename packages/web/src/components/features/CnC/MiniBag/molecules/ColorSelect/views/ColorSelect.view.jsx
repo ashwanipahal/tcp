@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '../../../../../../common/hoc/withStyles';
-import CustomSelect from '../../../../../../common/molecules/CustomSelect';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import CustomSelect from '@tcp/core/src/components/common/molecules/CustomSelect';
 import styles, { customSelectTile } from '../styles/ColorSelect.style';
 
 const getActiveTitle = (options, value) => {
@@ -31,3 +31,4 @@ ColorSelectorDropDown.propTypes = {
 };
 
 export default withStyles(ColorSelectorDropDown, styles);
+export { ColorSelectorDropDown as ColorSelectorDropDownVanilla };

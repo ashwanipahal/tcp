@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ProductCustomizeForm } from '../organisms/ProductCustomizeForm';
+import { ProductCustomizeForm } from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ProductCustomizeForm/ProductCustomizeForm';
 
 describe('ProductCustomizeForm Component', () => {
   let component;

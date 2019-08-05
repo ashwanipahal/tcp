@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export default styled.div`
+  border-bottom: 2px solid #f3f3f3;
+  margin-bottom: 20px;
   .padding-top-10 {
     padding-top: 10px;
   }
@@ -33,5 +35,8 @@ export default styled.div`
   }
   .padding-top-15 {
     padding-top: 15px;
+  }
+  .padding-bottom-20 {
+    padding-bottom: 20px;
   }
 `;

@@ -1,1 +1,1 @@
-export { default } from '@tcp/core/src/components/features/CnC/MiniBag';
+export { default } from '../../CnC/MiniBag';

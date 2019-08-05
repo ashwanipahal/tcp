@@ -1,6 +1,6 @@
 import React from 'react';
+import { BodyCopy, SelectBox } from '@tcp/core/src/components/common/atoms';
 import selectBoxStyle from './MiniBagSelectBox.style';
-import { BodyCopy, SelectBox } from '../../../../../common/atoms';
 
 const MiniBagSelect = props => {
   return (

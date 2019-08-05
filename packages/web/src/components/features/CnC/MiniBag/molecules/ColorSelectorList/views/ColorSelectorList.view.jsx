@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import styles from '../styles/ColorSelectorList.style';
-import withStyles from '../../../../../../common/hoc/withStyles';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 
 const itemLists = (item, activeValue, clickHandler, index, lastElement) => {
   return (
@@ -29,7 +29,7 @@ const itemLists = (item, activeValue, clickHandler, index, lastElement) => {
   );
 };
 
-const DropdownList = ({ className, optionsMap, clickHandler, activeValue }) => {
+const ColorSelectorList = ({ className, optionsMap, clickHandler, activeValue }) => {
   return (
     <BodyCopy component="div" className={className}>
       <BodyCopy component="div" className="dropdownDivOverFlow">
@@ -43,17 +43,17 @@ const DropdownList = ({ className, optionsMap, clickHandler, activeValue }) => {
   );
 };
 
-DropdownList.propTypes = {
+ColorSelectorList.propTypes = {
   className: PropTypes.string,
   clickHandler: PropTypes.func.isRequired,
   optionsMap: PropTypes.shape({}).isRequired,
   activeValue: PropTypes.string,
 };
 
-DropdownList.defaultProps = {
+ColorSelectorList.defaultProps = {
   activeValue: '',
   className: '',
 };
 
-export default withStyles(DropdownList, styles);
-export { DropdownList as DropdownListVanilla };
+export default withStyles(ColorSelectorList, styles);
+export { ColorSelectorList as ColorSelectorListVanilla };

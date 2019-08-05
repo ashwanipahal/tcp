@@ -1,11 +1,9 @@
 import React from 'react';
-import Row from '@tcp/core/src/components/common/atoms/Row';
-import Col from '@tcp/core/src/components/common/atoms/Col';
-import { Image } from '@tcp/core/src/components/common/atoms';
-import { getIconPath, getLocator } from '@tcp/core/src/utils';
-import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import ProductEditForm from '../../../../CartItemTile/organisms/ProductCustomizeForm';
-import ProductInformationStyle from '../styles/ProductTile.style';
+import PropTypes from 'prop-types';
+import ProductEditForm from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ProductCustomizeForm/ProductCustomizeForm';
+import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
+import { getIconPath, getLocator } from '../../../../../../../utils';
+import ProductInformationStyle from '../styles/CartItemTile.style';
 
 class ProductTile extends React.Component {
   constructor(props) {
@@ -13,40 +11,8 @@ class ProductTile extends React.Component {
     this.state = {
       isEdit: false,
     };
-    this.data = {
-      isGiftCard: false,
-      brand: 'tcp',
-      quantity: 123,
-      skuInfo: {
-        color: {
-          name: 'Black',
-        },
-        fit: 'regular',
-      },
-    };
-    this.labels = {
-      colorLabel: 'Color',
-      sizeLabel: 'Size',
-      qtyLabel: 'Qty',
-    };
 
     this.item = {
-      productInfo: {
-        generalProductId: '1281542',
-        productPartNumber: '3000627_635',
-        skuId: '1282072',
-        itemPartNumber: '00193511013253',
-        variantNo: '3000627001',
-        name: 'Boys Basic Skinny Jeans - Dark Rinse Wash',
-        upc: '00193511013253',
-        size: '4',
-        fit: 'regular',
-        pdpUrl: '/us/p/Boys-Basic-Skinny-Jeans---Dark-Rinse-Wash-3000627-635',
-        color: { name: 'DKRINSEWSH' },
-        isGiftCard: false,
-        colorFitSizeDisplayNames: {},
-        orderType: 'ECOM',
-      },
       itemInfo: {
         quantity: 4,
         itemId: '3001550090',
@@ -69,12 +35,16 @@ class ProductTile extends React.Component {
         storeItemsCount: 0,
         orderItemType: 'ECOM',
       },
+      productInfo: {
+        itemPartNumber: '1234',
+      },
     };
     this.initialValues = { color: { name: 'DKRINSEWSH' }, fit: 'regular', size: '1282072' };
   }
 
   render() {
     const { isEdit } = this.state;
+    const { productDetail, labels } = this.props;
     return (
       <ProductInformationStyle>
         <Row fullBleed className="product">
@@ -85,13 +55,13 @@ class ProductTile extends React.Component {
               src="https://dummyimage.com/600x400/000/fff"
               data-locator="addedtobag-productimage"
             />
-            {!this.data.isGiftCard && (
+            {!productDetail.isGiftItem && (
               <Image
                 alt="Brand"
                 className="brand-image"
                 src={
-                  this.data.brand === 'tcp'
-                    ? getIconPath(`header__brand-tab--${this.data.brand}`)
+                  productDetail.itemBrand === 'tcp'
+                    ? getIconPath(`header__brand-tab--${productDetail.itemBrand}`)
                     : getIconPath('header__brand-tab-gymboree')
                 }
                 data-locator={getLocator('header__brand-tab--tcp')}
@@ -121,7 +91,7 @@ class ProductTile extends React.Component {
                   fontWeight={['extrabold']}
                   dataLocator="addedtobag-productname"
                 >
-                  {'This is product name'}
+                  {productDetail.name}
                 </BodyCopy>
               </Col>
             </Row>
@@ -136,7 +106,7 @@ class ProductTile extends React.Component {
                       fontWeight={['extrabold']}
                       textAlign="left"
                     >
-                      {this.data.isGiftCard === true ? `Design` : `${this.labels.colorLabel}`}
+                      {productDetail.isGiftItem === true ? `${labels.design}` : `${labels.color}`}
                       {':'}
                     </BodyCopy>
                     <BodyCopy
@@ -146,7 +116,7 @@ class ProductTile extends React.Component {
                       className="itemDesc"
                       dataLocator="addedtobag-productcolor"
                     >
-                      {` ${this.data.skuInfo.color.name} | `}
+                      {` ${productDetail.color} | `}
                     </BodyCopy>
                   </div>
 
@@ -157,7 +127,7 @@ class ProductTile extends React.Component {
                       fontSize="fs13"
                       fontWeight={['extrabold']}
                     >
-                      {this.data.isGiftCard === true ? ` Size` : ` ${this.labels.sizeLabel}`}
+                      {`${labels.size}`}
                       {':'}
                     </BodyCopy>
                     <BodyCopy
@@ -167,10 +137,10 @@ class ProductTile extends React.Component {
                       className="itemDesc"
                       dataLocator="addedtobag-productsize"
                     >
-                      {` ${this.data.skuInfo.size}`}
-                      {!this.data.skuInfo.fit || this.data.skuInfo.fit === 'regular'
+                      {` ${productDetail.size}`}
+                      {!productDetail.fit || productDetail.fit === 'regular'
                         ? ' '
-                        : this.data.skuInfo.fit}
+                        : productDetail.fit}
                       {` | `}
                     </BodyCopy>
                   </div>
@@ -182,7 +152,7 @@ class ProductTile extends React.Component {
                       fontSize="fs13"
                       fontWeight={['extrabold']}
                     >
-                      {` ${this.labels.qtyLabel}`}
+                      {` ${labels.qty}`}
                       {':'}
                     </BodyCopy>
                     <BodyCopy
@@ -192,7 +162,7 @@ class ProductTile extends React.Component {
                       className="itemDesc"
                       dataLocator="addedtobag-productqty"
                     >
-                      {` ${this.data.quantity}`}
+                      {` ${productDetail.qty}`}
                     </BodyCopy>
                   </div>
                   <BodyCopy
@@ -224,7 +194,7 @@ class ProductTile extends React.Component {
                   fontSize="fs13"
                   fontWeight={['extrabold']}
                 >
-                  Price:
+                  {`${labels.price}: `}
                 </BodyCopy>
               </Col>
               <Col colSize={{ small: 2, medium: 3, large: 8 }}>
@@ -234,7 +204,7 @@ class ProductTile extends React.Component {
                   fontSize="fs13"
                   fontWeight={['extrabold']}
                 >
-                  $124
+                  {productDetail.price}
                 </BodyCopy>
               </Col>
             </Row>
@@ -256,11 +226,11 @@ class ProductTile extends React.Component {
                   fontSize="fs13"
                   fontWeight={['extrabold']}
                 >
-                  124
+                  {productDetail.myPlacePoints}
                 </BodyCopy>
               </Col>
             </Row>
-            <Row className="padding-top-15" fullBleed>
+            <Row className="padding-top-15 padding-bottom-20" fullBleed>
               <Col className="padding-left-13" colSize={{ small: 4, medium: 6, large: 8 }}>
                 <BodyCopy
                   fontFamily="secondary"
@@ -284,5 +254,10 @@ class ProductTile extends React.Component {
     );
   }
 }
+
+ProductTile.propTypes = {
+  productDetail: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}).isRequired,
+};
 
 export default ProductTile;

@@ -12,7 +12,7 @@ export const customSelectTile = css`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: 12px;
+    font-size: ${props => props.theme.typography.fontSizes.fs12};
     margin-top: 0;
   }
   font-size: 10px;

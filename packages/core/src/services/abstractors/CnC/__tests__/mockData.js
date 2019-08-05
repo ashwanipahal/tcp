@@ -129,6 +129,7 @@ export const orderDetailsResponse = {
           '1301516': {
             Order: '1',
             TCPSize: 'XS (4)',
+            TCPFit: 'regular',
             UPC: '00193511133340',
           },
           '1303613': {
@@ -225,6 +226,7 @@ export const orderDetailsResponse = {
           '1301519': {
             Order: '1',
             TCPSize: 'XS (4)',
+            TCPFit: 'regular',
             UPC: '00193511156004',
           },
           '1303616': {
@@ -558,6 +560,7 @@ export const orderDetailsResponse = {
           '1285036': {
             Order: '5',
             TCPSize: 'XL (14)',
+            TCPFit: 'regular',
             UPC: '00193511095440',
           },
           '1285102': {
@@ -697,6 +700,8 @@ export const response = {
         isGiftCard: false,
         colorFitSizeDisplayNames: {},
         orderType: 'ECOM',
+        itemBrand: 'TCP',
+        fit: 'regular',
       },
       itemInfo: {
         quantity: 5,
@@ -741,6 +746,8 @@ export const response = {
         isGiftCard: false,
         colorFitSizeDisplayNames: {},
         orderType: 'ECOM',
+        itemBrand: 'TCP',
+        fit: 'regular',
       },
       itemInfo: {
         quantity: 7,
@@ -786,6 +793,7 @@ export const response = {
         isGiftCard: false,
         colorFitSizeDisplayNames: {},
         orderType: 'ECOM',
+        itemBrand: 'TCP',
       },
       itemInfo: {
         quantity: 2,
@@ -832,6 +840,8 @@ export const response = {
         isGiftCard: false,
         colorFitSizeDisplayNames: {},
         orderType: 'ECOM',
+        fit: 'regular',
+        itemBrand: 'TCP',
       },
       itemInfo: {
         quantity: 1,

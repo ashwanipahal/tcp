@@ -427,6 +427,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
           colorFitSizeDisplayNames: isGiftCard ? { color: 'Design', size: 'Value' } : EMPTY_OBJECT,
           // added to read type of order for the item
           orderType: item.orderItemType,
+          itemBrand: item.itemBrand,
         },
         itemInfo: {
           quantity: parseInt(item.qty),
