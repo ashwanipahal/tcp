@@ -702,6 +702,7 @@ export const response = {
         orderType: 'ECOM',
         itemBrand: 'TCP',
         fit: 'regular',
+        imagePath: '/wcsstore/GlobalSAS/images/tcp/products/500/3003274_32F6.jpg',
       },
       itemInfo: {
         quantity: 5,
@@ -748,6 +749,7 @@ export const response = {
         orderType: 'ECOM',
         itemBrand: 'TCP',
         fit: 'regular',
+        imagePath: '/wcsstore/GlobalSAS/images/tcp/products/500/3003289_1464.jpg',
       },
       itemInfo: {
         quantity: 7,
@@ -794,6 +796,7 @@ export const response = {
         colorFitSizeDisplayNames: {},
         orderType: 'ECOM',
         itemBrand: 'TCP',
+        imagePath: '/wcsstore/GlobalSAS/images/tcp/products/500/3000627_635.jpg',
       },
       itemInfo: {
         quantity: 2,
@@ -842,6 +845,7 @@ export const response = {
         orderType: 'ECOM',
         fit: 'regular',
         itemBrand: 'TCP',
+        imagePath: '/wcsstore/GlobalSAS/images/tcp/products/500/3002156_10.jpg',
       },
       itemInfo: {
         quantity: 1,

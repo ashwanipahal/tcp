@@ -2,12 +2,7 @@ import { css } from 'styled-components';
 
 const selectBoxCss = css`
   margin-left: 2px;
-  ${props =>
-    props.width
-      ? `
-            width: ${props.width}px;
-          `
-      : `width: inherit`};
+  ${props => (props.width ? `width: ${props.width}px` : `width: auto`)};
   .select__input {
     padding-top: 20px;
     font-family: ${props => props.theme.fonts.secondaryFontFamily};

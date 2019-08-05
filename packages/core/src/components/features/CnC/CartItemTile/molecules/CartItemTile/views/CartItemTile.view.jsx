@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductEditForm from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ProductCustomizeForm/ProductCustomizeForm';
+import endpoints from '../../../../../../../service/endpoint';
 import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
 import { getIconPath, getLocator } from '../../../../../../../utils';
 import ProductInformationStyle from '../styles/CartItemTile.style';
@@ -11,7 +12,6 @@ class ProductTile extends React.Component {
     this.state = {
       isEdit: false,
     };
-
     this.item = {
       itemInfo: {
         quantity: 4,
@@ -39,12 +39,16 @@ class ProductTile extends React.Component {
         itemPartNumber: '1234',
       },
     };
-    this.initialValues = { color: { name: 'DKRINSEWSH' }, fit: 'regular', size: '1282072' };
   }
 
   render() {
     const { isEdit } = this.state;
     const { productDetail, labels } = this.props;
+    const initialValues = {
+      color: { name: productDetail.color },
+      fit: productDetail.fit,
+      size: productDetail.size,
+    };
     return (
       <ProductInformationStyle>
         <Row fullBleed className="product">
@@ -52,7 +56,7 @@ class ProductTile extends React.Component {
             <Image
               alt="Product"
               className="product-image"
-              src="https://dummyimage.com/600x400/000/fff"
+              src={endpoints.global.baseURI + productDetail.imagePath}
               data-locator="addedtobag-productimage"
             />
             {!productDetail.isGiftItem && (
@@ -60,8 +64,8 @@ class ProductTile extends React.Component {
                 alt="Brand"
                 className="brand-image"
                 src={
-                  productDetail.itemBrand === 'tcp'
-                    ? getIconPath(`header__brand-tab--${productDetail.itemBrand}`)
+                  productDetail.itemBrand === 'TCP'
+                    ? getIconPath(`header__brand-tab--tcp`)
                     : getIconPath('header__brand-tab-gymboree')
                 }
                 data-locator={getLocator('header__brand-tab--tcp')}
@@ -120,6 +124,28 @@ class ProductTile extends React.Component {
                     </BodyCopy>
                   </div>
 
+                  {productDetail.fit && (
+                    <div className="itemList padding-left">
+                      <BodyCopy
+                        fontFamily="secondary"
+                        component="span"
+                        fontSize="fs13"
+                        fontWeight={['extrabold']}
+                      >
+                        {`Fit`}
+                        {':'}
+                      </BodyCopy>
+                      <BodyCopy
+                        fontFamily="secondary"
+                        component="span"
+                        fontSize="fs13"
+                        className="itemDesc"
+                        dataLocator="addedtobag-productsize"
+                      >
+                        {` ${productDetail.fit} | `}
+                      </BodyCopy>
+                    </div>
+                  )}
                   <div className="itemList padding-left">
                     <BodyCopy
                       fontFamily="secondary"
@@ -138,10 +164,6 @@ class ProductTile extends React.Component {
                       dataLocator="addedtobag-productsize"
                     >
                       {` ${productDetail.size}`}
-                      {!productDetail.fit || productDetail.fit === 'regular'
-                        ? ' '
-                        : productDetail.fit}
-                      {` | `}
                     </BodyCopy>
                   </div>
 
@@ -183,7 +205,7 @@ class ProductTile extends React.Component {
                 item={this.item}
                 colorFitsSizesMap={undefined}
                 handleSubmit={() => {}}
-                initialValues={this.initialValues}
+                initialValues={initialValues}
               />
             )}
             <Row className="padding-top-10">

@@ -20,7 +20,7 @@ exports[`BossBannerView component renders correctly 1`] = `
         alt="Product"
         className="product-image"
         data-locator="addedtobag-productimage"
-        src="https://dummyimage.com/600x400/000/fff"
+        src="https://test4.childrensplace.comundefined"
       />
     </Styled(Col)>
     <Styled(Col)
@@ -153,6 +153,42 @@ exports[`BossBannerView component renders correctly 1`] = `
             lineHeight="normal"
             textAlign="left"
           >
+            Fit
+            :
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className="itemDesc"
+            color="text.primary"
+            component="span"
+            dataLocator="addedtobag-productsize"
+            fontFamily="secondary"
+            fontSize="fs13"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+             regular | 
+          </Styled(BodyCopy)>
+        </div>
+        <div
+          className="itemList padding-left"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs13"
+            fontWeight={
+              Array [
+                "extrabold",
+              ]
+            }
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
             undefined
             :
           </Styled(BodyCopy)>
@@ -169,8 +205,6 @@ exports[`BossBannerView component renders correctly 1`] = `
             textAlign="left"
           >
              1
-             
-             | 
           </Styled(BodyCopy)>
         </div>
         <div

@@ -10,13 +10,8 @@ const styles = css`
     box-shadow: 0 4px 8px 0 rgba(163, 162, 162, 0.5);
     padding: 7px 20px 20px;
     width: 480px;
-    @media ${props => props.theme.mediaQuery.large} {
-      width: 480px;
-    }
   }
   .Modal_Heading {
-    font-size: 16px;
-    font-family: ${props => props.theme.fonts.secondaryFontFamily};
     font-weight: normal;
     line-height: 43px;
     border: none;
@@ -28,10 +23,6 @@ const styles = css`
   }
   .mini-bg-close {
     top: 21px;
-  }
-  .addedToBagWrapper {
-    overflow-y: auto;
-    height: calc(100% - 43px);
   }
   .edit-button {
     min-height: unset;

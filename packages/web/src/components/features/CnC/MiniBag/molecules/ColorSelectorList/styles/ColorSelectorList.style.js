@@ -29,9 +29,9 @@ const dropDownlist = css`
   .dropdownActiveClass {
     background-color: ${props => props.theme.colors.BLACK};
     position: relative;
-    color: white !important;
+    color: ${props => props.theme.colors.WHITE};
     & span {
-      color: white;
+      color: ${props => props.theme.colors.WHITE};
     }
   }
 

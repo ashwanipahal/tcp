@@ -20,6 +20,26 @@ const ORDER_ITEM_TYPE = {
   ECOM: 'ECOM',
 };
 
+export const imageGenerator = (id, excludeExtension) => {
+  return {
+    colorSwatch: getSwatchImgPath(id, excludeExtension),
+    productImages: getProductImgPath(id, excludeExtension),
+  };
+};
+
+export const getSwatchImgPath = (id, excludeExtension) => {
+  return `/wcsstore/GlobalSAS/images/tcp/products/swatches/${id}${excludeExtension ? '' : '.jpg'}`;
+};
+
+export const getProductImgPath = (id, excludeExtension) => {
+  return {
+    125: `/wcsstore/GlobalSAS/images/tcp/products/125/${id}${excludeExtension ? '' : '.jpg'}`,
+    380: `/wcsstore/GlobalSAS/images/tcp/products/380/${id}${excludeExtension ? '' : '.jpg'}`,
+    500: `/wcsstore/GlobalSAS/images/tcp/products/500/${id}${excludeExtension ? '' : '.jpg'}`,
+    900: `/wcsstore/GlobalSAS/images/tcp/products/900/${id}${excludeExtension ? '' : '.jpg'}`,
+  };
+};
+
 export const removeItem = orderItemId => {
   let orderItems = [];
   if (typeof orderItemId === 'string') {
@@ -374,6 +394,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
 
   for (let item of orderDetailsResponse.orderItems) {
     let sizeAndFit = item.productInfo.itemsAttributes[item.itemCatentryId.toString()];
+    console.log('sizeAndFit>>>>', sizeAndFit);
     //When brierley fails, backend returns -1
     if (item.itemPoints === -1) {
       item.itemPoints = null;
@@ -412,7 +433,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
           itemPartNumber: item.itemPartNumber,
           variantNo: item.variantNo,
           name: sanitizeEntity(item.productInfo.productName),
-          //imagePath: imageGenerator(item.productInfo.productPartNumber).productImages[500],
+          imagePath: imageGenerator(item.productInfo.productPartNumber).productImages[500],
           upc: item.itemPartNumber,
           size: sizeAndFit ? sizeAndFit.TCPSize : item.itemUnitDstPrice, // giftCard Size is its price
           fit: sizeAndFit ? sizeAndFit.TCPFit : null, // no fit for gift cards
