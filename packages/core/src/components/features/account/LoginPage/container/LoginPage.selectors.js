@@ -29,3 +29,18 @@ export const shouldShowRecaptcha = createSelector(
 );
 
 export const getLabels = state => state.Labels.global;
+
+export const getPointsToNextRewardState = createSelector(
+  getLoginState,
+  loginState => loginState && loginState.get('pointsToNextReward')
+);
+
+export const getCurrentPointsState = createSelector(
+  getLoginState,
+  loginState => loginState && loginState.get('currentPoints')
+);
+
+export const getTotalRewardsState = createSelector(
+  getLoginState,
+  loginState => loginState && loginState.get('totalRewards')
+);

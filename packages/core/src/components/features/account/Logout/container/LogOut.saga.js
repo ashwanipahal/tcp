@@ -1,7 +1,7 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import LOGOUT_CONSTANTS from '../LogOut.constants';
 import { resetLoginInfo } from '../../LoginPage/container/LoginPage.actions';
-import { routerPush } from '../../../../../utils';
+import utils from '../../../../../utils';
 import { LogoutApplication } from '../../../../../services/abstractors/account';
 
 export function* logoutSaga() {
@@ -11,13 +11,13 @@ export function* logoutSaga() {
     if (res.statusCode === 200) {
       yield put(resetLoginInfo());
       if (window.location.href.indexOf('account')) {
-        routerPush('/', '/home');
+        utils.routerPush('/', '/home');
       } else {
-        routerPush('/', `/${matchPath}`);
+        utils.routerPush('/', `/${matchPath}`);
       }
     }
   } catch (err) {
-    routerPush('/', '/home');
+    utils.routerPush('/', '/home');
   }
 }
 

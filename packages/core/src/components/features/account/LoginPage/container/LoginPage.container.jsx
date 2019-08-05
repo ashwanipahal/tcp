@@ -86,7 +86,7 @@ LoginPageContainer.propTypes = {
   resetForm: PropTypes.bool.isRequired,
   getUserInfoAction: PropTypes.bool.isRequired,
   openOverlay: PropTypes.func,
-  labels: PropTypes.shape({}),
+  labels: PropTypes.shape({}).isRequired,
   resetLoginState: PropTypes.func,
 };
 
@@ -97,7 +97,6 @@ LoginPageContainer.defaultProps = {
   resetLoginState: () => {},
   closeOverlay: () => {},
   openOverlay: () => {},
-  labels: { login: {} },
 };
 
 const mapDispatchToProps = dispatch => {
