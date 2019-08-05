@@ -3,7 +3,7 @@ import { View } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import { Image } from '../../../atoms';
 import config from '../Config.native';
-import { getLocator } from '../../../../../utils/utils.native';
+import { getLocator } from '../../../../../utils';
 import { Touchable, TouchableView, Icon, Container } from '../Carousel.native.style';
 
 /**
@@ -131,7 +131,13 @@ class SnapCarousel extends React.PureComponent<Props, State> {
       vertical,
     } = this.props;
 
+    if (!data) {
+      return null;
+    }
+
     if (variation === 'show-arrow') {
+      // reduce left and right arrow with from the total with to fix center aline issue
+      const carouselWidth = width - 64;
       return (
         <Container>
           <TouchableView
@@ -144,8 +150,8 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           <Carousel
             data={data}
             renderItem={renderItem}
-            sliderWidth={width}
-            itemWidth={width}
+            sliderWidth={carouselWidth}
+            itemWidth={carouselWidth}
             sliderHeight={height}
             itemHeight={height}
             {...defaults}

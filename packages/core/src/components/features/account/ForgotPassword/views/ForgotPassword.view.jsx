@@ -4,6 +4,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import TextBox from '../../../../common/atoms/TextBox';
 import styles from '../styles/ForgotPassword.style';
 import Anchor from '../../../../common/atoms/Anchor';
+import RichText from '../../../../common/atoms/RichText';
 import Button from '../../../../common/atoms/Button';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import createValidateMethod from '../../../../../utils/formValidation/createValidateMethod';
@@ -128,7 +129,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
           {successFullResetEmail && (
             <React.Fragment>
               <BodyCopy
-                fontSize="fs14"
+                fontSize="fs16"
                 fontWeight="extrabold"
                 fontFamily="secondary"
                 textAlign="center"
@@ -141,8 +142,13 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 fontFamily="secondary"
                 textAlign="center"
                 className="elem-mb-SM"
+                fontSize="fs12"
               >
-                {labels.FORGOT_PASSWORD_HEADING}
+                <RichText
+                  className="heading-link"
+                  richTextHtml={labels.FORGOT_PASSWORD_HEADING}
+                  dataLocator="forgot-password"
+                />
               </BodyCopy>
               <Button
                 fill="BLUE"

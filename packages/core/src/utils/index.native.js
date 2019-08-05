@@ -1,8 +1,20 @@
 export {
-  getAPIConfig,
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
   UrlHandler,
-  isMobileApp,
+  navigateToPage,
+  cropImageUrl,
+  getIconCard,
+  getScreenHeight,
+  getScreenWidth,
+} from './utils.app';
+
+export {
+  isServer,
   isClient,
-} from './utils.native';
+  isMobileApp,
+  getIconPath,
+  getLocator,
+  getAPIConfig,
+  createAPIConfig,
+} from './utils';
