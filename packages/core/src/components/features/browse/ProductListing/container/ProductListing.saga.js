@@ -2,11 +2,12 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import PRODUCTLISTING_CONSTANTS from './ProductListing.constants';
 import { setPlpProducts /* , setGiftCardProducts */ } from './ProductListing.actions';
 import { validateReduxCache } from '../../../../../utils/cache.util';
-import Abstractors from '../../../../../services/abstractors/productListing';
+import Abstractor from '../../../../../services/abstractors/productListing';
 
 function* fetchPlpProducts() {
   try {
-    const plpProducts = yield call(Abstractors.getProducts, {});
+    const instanceProductListing = new Abstractor();
+    const plpProducts = yield call(instanceProductListing.getProducts, {});
     console.log('plpProducts', plpProducts);
     yield put(setPlpProducts({ plpProducts }));
   } catch (err) {
