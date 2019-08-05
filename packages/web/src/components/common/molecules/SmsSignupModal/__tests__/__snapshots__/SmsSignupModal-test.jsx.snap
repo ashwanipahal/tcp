@@ -2,7 +2,7 @@
 
 exports[`SMSSignupModal component renders correctly 1`] = `
 <Fragment>
-  <errorBoundaryComponent
+  <Styled(Modal)
     aria={
       Object {
         "describedby": "sign-up-modal-form-intro-view",
@@ -275,13 +275,13 @@ exports[`SMSSignupModal component renders correctly 1`] = `
         </Styled(Row)>
       </Styled(Grid)>
     </form>
-  </errorBoundaryComponent>
+  </Styled(Modal)>
 </Fragment>
 `;
 
 exports[`SMSSignupModal component renders correctly when button is clicked 1`] = `
 <Fragment>
-  <errorBoundaryComponent
+  <Styled(Modal)
     aria={
       Object {
         "describedby": "sign-up-modal-confirm-view",
@@ -379,13 +379,13 @@ exports[`SMSSignupModal component renders correctly when button is clicked 1`] =
         </Styled(Col)>
       </Styled(Row)>
     </Styled(Grid)>
-  </errorBoundaryComponent>
+  </Styled(Modal)>
 </Fragment>
 `;
 
 exports[`SMSSignupModal component renders correctly when button is clicked 2`] = `
 <Fragment>
-  <errorBoundaryComponent
+  <Styled(Modal)
     aria={
       Object {
         "describedby": "sign-up-modal-form-intro-view",
@@ -658,6 +658,6 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
         </Styled(Row)>
       </Styled(Grid)>
     </form>
-  </errorBoundaryComponent>
+  </Styled(Modal)>
 </Fragment>
 `;
