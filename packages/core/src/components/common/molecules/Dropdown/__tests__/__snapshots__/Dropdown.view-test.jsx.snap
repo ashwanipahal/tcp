@@ -44,7 +44,7 @@ exports[`Dropdown component should renders correctly 1`] = `
 
   .customSelectTitleImg {
     background: url(",
-          "/static/images/down_arrow_icon.png",
+          "/static/images/carrot-small-down.png",
           ") no-repeat right center;
     position: absolute;
     right: ",
@@ -61,7 +61,7 @@ exports[`Dropdown component should renders correctly 1`] = `
 
   .customSelectTitleUpImg {
     background: url(",
-          "/static/images/up_arrow_icon.png",
+          "/static/images/carrot-small-up.png",
           ") no-repeat right center;
     position: absolute;
     right: ",
@@ -86,7 +86,7 @@ exports[`Dropdown component should renders correctly 1`] = `
   .dropDownSelect {
     position: absolute;
     left: 0;
-    width: 100%;
+    width: calc(100% - 2px);
     z-index: 1;
     overflow: auto;
   }
@@ -180,7 +180,7 @@ exports[`Dropdown component should renders correctly when optional fields are no
 
   .customSelectTitleImg {
     background: url(",
-          "/static/images/down_arrow_icon.png",
+          "/static/images/carrot-small-down.png",
           ") no-repeat right center;
     position: absolute;
     right: ",
@@ -197,7 +197,7 @@ exports[`Dropdown component should renders correctly when optional fields are no
 
   .customSelectTitleUpImg {
     background: url(",
-          "/static/images/up_arrow_icon.png",
+          "/static/images/carrot-small-up.png",
           ") no-repeat right center;
     position: absolute;
     right: ",
@@ -222,7 +222,7 @@ exports[`Dropdown component should renders correctly when optional fields are no
   .dropDownSelect {
     position: absolute;
     left: 0;
-    width: 100%;
+    width: calc(100% - 2px);
     z-index: 1;
     overflow: auto;
   }

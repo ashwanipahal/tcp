@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import { UrlHandler } from '../../../../../../../utils/utils.native';
+import { UrlHandler } from '../../../../../../../utils/utils.app';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import {
   StyledBodyCopy,
@@ -14,7 +14,7 @@ import Anchor from '../../../../../../common/atoms/Anchor';
 const buttonStyle = { fontWeight: '400', marginBottom: 48 };
 
 const MyRewards = ({ labels }) => {
-  const heading = `${labels.myPlaceRewards.ACC_LBL_MY_REWARDS_HEADING} (0)`;
+  const heading = `${labels.myPlaceRewards.lbl_my_rewards_heading} (0)`;
 
   return (
     <View>

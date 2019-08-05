@@ -9,7 +9,7 @@ import Button from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 
 const MyRewards = ({ labels, className }) => {
-  const heading = `${labels.myPlaceRewards.ACC_LBL_MY_REWARDS_HEADING} (0)`;
+  const heading = `${labels.myPlaceRewards.lbl_my_rewards_heading} (0)`;
 
   return (
     <div className={className}>
