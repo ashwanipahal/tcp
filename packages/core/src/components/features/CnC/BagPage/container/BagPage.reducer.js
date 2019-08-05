@@ -2,15 +2,16 @@ import { fromJS } from 'immutable';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 
 const initialState = fromJS({
-  itemInfo: {},
-  error: false,
-  isOpenAddedToBag: false,
+  orderDetails: {},
+  errors: false,
 });
 
 const BagPageReducer = (state = initialState, action) => {
   switch (action.type) {
-    case BAGPAGE_CONSTANTS.SET_ADDED_TO_BAG:
-      return state.set('itemInfo', fromJS(action.payload));
+    case BAGPAGE_CONSTANTS.GET_ORDER_DETAILS_COMPLETE:
+      return state.set('orderDetails', fromJS(action.payload));
+    case BAGPAGE_CONSTANTS.SET_BAG_PAGE_ERRORS:
+      return state.set('errors', fromJS(action.payload));
     default:
       // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
       if (state instanceof Object) {
