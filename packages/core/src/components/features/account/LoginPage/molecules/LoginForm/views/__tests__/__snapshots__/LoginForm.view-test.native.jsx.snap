@@ -140,6 +140,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       }
     }
     fontSizeVariation="xlarge"
+    onPress={[Function]}
     text=""
     visible={false}
   />
@@ -158,6 +159,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       }
     }
     fullWidth=""
+    onPress={[Function]}
     text=""
     url=""
   />

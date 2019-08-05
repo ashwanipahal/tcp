@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components/native';
 
-const getPageStyle = () => {
+const getPageStyle = props => {
+  const { theme } = props;
   return `
-  margin-horizontal: ${'30px'}
+   margin: auto  ${theme.spacing.APP_LAYOUT_SPACING.SM};
   justify-content: ${'center'};
 
   `;
@@ -68,4 +69,21 @@ const DescriptionStyle = styled.Text`
   ${getDescriptionStyle}
 `;
 
-export { SectionStyle, HeadingStyle, SubHeadingStyle, DescriptionStyle };
+const CenterAlignWrapper = styled.View`
+  display: flex;
+  justify-content: ${'center'};
+  align-items: center;
+`;
+
+const TextAlignCenter = styled.Text`
+  text-align: center;
+`;
+
+export {
+  SectionStyle,
+  HeadingStyle,
+  SubHeadingStyle,
+  DescriptionStyle,
+  CenterAlignWrapper,
+  TextAlignCenter,
+};

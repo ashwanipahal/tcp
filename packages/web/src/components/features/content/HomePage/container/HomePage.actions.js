@@ -21,4 +21,4 @@ export const getEspots = payload => {
   };
 };
 
-export const initActions = [getHeaderlinks()];
+export const initActions = [];

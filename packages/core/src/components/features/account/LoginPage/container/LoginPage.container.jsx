@@ -1,6 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { resetLoginForgotPasswordState } from '../../ForgotPassword/container/ForgotPassword.actions';
+import {
+  getShowNotificationState,
+  getResetEmailResponse,
+  toggleSuccessfulEmailSection,
+} from '../../ForgotPassword/container/ForgotPassword.selectors';
 import { login, resetLoginInfo } from './LoginPage.actions';
 import {
   closeOverlayModal,
@@ -39,7 +45,15 @@ class LoginPageContainer extends React.PureComponent {
   };
 
   render() {
-    const { onSubmit, loginError, loginErrorMessage, showRecaptcha } = this.props;
+    const {
+      onSubmit,
+      loginError,
+      loginErrorMessage,
+      showRecaptcha,
+      resetForm,
+      getUserInfoAction,
+      resetLoginState,
+    } = this.props;
     const errorMessage = loginError ? loginErrorMessage || labels.ACC_LBL_LOGIN_ERROR : '';
     const initialValues = {
       rememberMe: true,
@@ -52,7 +66,10 @@ class LoginPageContainer extends React.PureComponent {
         loginErrorMessage={errorMessage}
         initialValues={initialValues}
         showRecaptcha={showRecaptcha}
+        resetForm={resetForm}
+        getUserInfo={getUserInfoAction}
         onCreateAccountClick={this.onCreateAccountClick}
+        resetLoginState={resetLoginState}
       />
     );
   }
@@ -61,12 +78,14 @@ class LoginPageContainer extends React.PureComponent {
 LoginPageContainer.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
-  resetLoginState: PropTypes.func,
   closeOverlay: PropTypes.func,
   loginError: PropTypes.bool,
   loginErrorMessage: PropTypes.string,
   showRecaptcha: PropTypes.bool,
+  resetForm: PropTypes.bool.isRequired,
+  getUserInfoAction: PropTypes.bool.isRequired,
   openOverlay: PropTypes.func,
+  resetLoginState: PropTypes.func,
 };
 
 LoginPageContainer.defaultProps = {
@@ -78,10 +97,13 @@ LoginPageContainer.defaultProps = {
   openOverlay: () => {},
 };
 
-function mapDispatchToProps(dispatch) {
+const mapDispatchToProps = dispatch => {
   return {
     onSubmit: payload => {
       dispatch(login(payload));
+    },
+    resetForm: payload => {
+      dispatch(resetLoginForgotPasswordState(payload));
     },
     resetLoginState: () => {
       dispatch(resetLoginInfo());
@@ -93,16 +115,26 @@ function mapDispatchToProps(dispatch) {
       dispatch(openOverlayModal(payload));
     },
   };
-}
+};
 
-function mapStateToProps(state) {
+const mapStateToProps = state => {
   return {
+    showNotification: getShowNotificationState(state),
+    resetForgotPasswordErrorResponse: getResetEmailResponse(state),
+    successFullResetEmail: toggleSuccessfulEmailSection(state),
     isUserLoggedIn: getUserLoggedInState(state),
     loginError: getLoginError(state),
     loginErrorMessage: getLoginErrorMessage(state),
     showRecaptcha: shouldShowRecaptcha(state),
   };
-}
+};
+
+LoginPageContainer.defaultProps = {
+  showRecaptcha: false,
+  loginError: false,
+  loginErrorMessage: '',
+  closeOverlay: () => {},
+};
 
 export default connect(
   mapStateToProps,

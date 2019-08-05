@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { FlatList, TouchableOpacity } from 'react-native';
-import { getScreenWidth, UrlHandler } from '../../../../../utils/utils.native';
+import { getScreenWidth, UrlHandler } from '../../../../../utils/index.native';
 import { Anchor, Button, Image } from '../../../atoms';
 import { ButtonWrapper, Tile, HeadingWrapper, Wrapper } from '../ModuleD.style.native';
 import colors from '../../../../../../styles/themes/TCP/colors';
@@ -14,7 +14,7 @@ type Props = {
   singleCTAButton: Object,
 };
 
-const imageSize = parseInt((getScreenWidth() - 32) / 2, 10);
+const imageSize = parseInt((getScreenWidth() - 48) / 2, 10);
 const keyExtractor = (_, index) => index.toString();
 
 /**

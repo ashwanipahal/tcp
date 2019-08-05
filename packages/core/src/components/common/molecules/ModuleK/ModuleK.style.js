@@ -38,6 +38,7 @@ const StyledPromoTextBanner = styled(PromoTextBanner)`
 const StyledLinkText = styled(LinkText)`
   text-align: center;
   .link-text {
+    margin-bottom: 0;
     text-align: center;
   }
 `;
