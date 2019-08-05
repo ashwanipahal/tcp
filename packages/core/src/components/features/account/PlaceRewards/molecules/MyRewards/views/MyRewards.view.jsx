@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
-import styles from '../MyRewards.style';
+import styles from '../styles/MyRewards.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Button from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 
 const MyRewards = ({ labels, className }) => {
-  const heading = `${labels.myPlaceRewards.ACC_LBL_MY_REWARDS_HEADING} (0)`;
+  const heading = `${labels.myPlaceRewards.lbl_my_rewards_heading} (0)`;
 
   return (
     <div className={className}>
@@ -42,7 +42,7 @@ const MyRewards = ({ labels, className }) => {
           <BodyCopy
             fontFamily="secondary"
             fontSize="fs14"
-            fontWeight="bold"
+            fontWeight="regular"
             className="no-rewards-msg"
             data-locator="no_rewards_msg"
           >
