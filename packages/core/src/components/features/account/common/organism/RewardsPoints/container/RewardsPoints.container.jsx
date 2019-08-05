@@ -61,10 +61,10 @@ RewardsPointsContainer.defaultProps = {
   currentPoints: '',
   totalRewards: '',
   labels: {
-    lbl_my_rewards_current_points: 'Current Points',
-    lbl_my_rewards_heading: 'My Rewards',
-    lbl_my_rewards_next_reward: 'Points to your next reward',
-    lbl_my_rewards_currency: '$',
+    lbl_my_rewards_current_points: '',
+    lbl_my_rewards_heading: '',
+    lbl_my_rewards_next_reward: '',
+    lbl_my_rewards_currency: '',
   },
 };
 
