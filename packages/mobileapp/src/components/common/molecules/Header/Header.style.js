@@ -70,6 +70,8 @@ export const ImageColor = { tintColor: 'gray' };
 
 export const HeaderPromoContainer = styled.View`
   height: 45px;
+  align-items: center;
+  justify-content: center;
   background: ${props => props.theme.colors.PRIMARY.PALEGRAY};
   margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
