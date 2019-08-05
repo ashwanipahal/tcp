@@ -19,6 +19,7 @@ const labels = {
   FORGOT_PASSWORD_USER_NOT_AVAILABLE:
     "Sorry, we couldn't find an account associated with that email address. Please try again",
   FORGOT_PASSWORD_CHECK_MAIL: 'Check your email',
+  FORGOT_PASSWORD_API_ERROR: 'something wrong occur',
   FORGOT_PASSWORD_BACK_LOGIN: ' Back to Login In',
   FORGOT_PASSWORD_RESET_PASSWORD: 'Reset Password',
   FORGOT_PASSWORD_CONTENT_1: 'Forgot your password? No worries!',
@@ -28,7 +29,7 @@ const labels = {
   FORGOT_PASSWORD_CREATE_ACCOUNT_MSG:
     "Don't have an account? Create one now to start earning points!",
   FORGOT_PASSWORD_HEADING:
-    'We’ve just sent you instructions to reset your password. Didn’t get your email?Check your spam or click here to contact customer service.',
+    'We’ve just sent you instructions to reset your password. <br/><br/>Didn’t get your email?Check your spam or <a href="/us/help-center/contact-us/#customer_service">click here</a> to contact customer service.',
 };
 
 export default labels;

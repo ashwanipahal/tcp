@@ -4,6 +4,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import TextBox from '../../../../common/atoms/TextBox';
 import styles from '../styles/ForgotPassword.style';
 import Anchor from '../../../../common/atoms/Anchor';
+import RichText from '../../../../common/atoms/RichText';
 import Button from '../../../../common/atoms/Button';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import createValidateMethod from '../../../../../utils/formValidation/createValidateMethod';
@@ -77,11 +78,15 @@ class ForgotPasswordView extends React.Component<Props, State> {
           </Anchor>
         </div>
         <form onSubmit={handleSubmit(this.onFormSubmit)} className={className}>
-          {errorObject && showNotification && (
+          {showNotification && (
             <Notification
               status="error"
               colSize={{ large: 11, medium: 7, small: 6 }}
-              message={labels.FORGOT_PASSWORD_USER_NOT_AVAILABLE}
+              message={
+                errorObject
+                  ? labels.FORGOT_PASSWORD_USER_NOT_AVAILABLE
+                  : labels.FORGOT_PASSWORD_API_ERROR
+              }
             />
           )}
 
@@ -124,7 +129,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
           {successFullResetEmail && (
             <React.Fragment>
               <BodyCopy
-                fontSize="fs14"
+                fontSize="fs16"
                 fontWeight="extrabold"
                 fontFamily="secondary"
                 textAlign="center"
@@ -137,8 +142,13 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 fontFamily="secondary"
                 textAlign="center"
                 className="elem-mb-SM"
+                fontSize="fs12"
               >
-                {labels.FORGOT_PASSWORD_HEADING}
+                <RichText
+                  className="heading-link"
+                  richTextHtml={labels.FORGOT_PASSWORD_HEADING}
+                  dataLocator="forgot-password"
+                />
               </BodyCopy>
               <Button
                 fill="BLUE"
@@ -163,3 +173,4 @@ export default reduxForm({
   enableReinitialize: true,
   ...validateMethod, // a unique identifier for this form
 })(withStyles(ForgotPasswordView, styles));
+export { ForgotPasswordView as ForgotPasswordViewVanilla };
