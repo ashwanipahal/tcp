@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
-import { getLocator } from '@tcp/core/src/utils/utils.native';
+import { getLocator } from '@tcp/core/src/utils';
 import HeaderPromo from '../HeaderPromo/HeaderPromo';
 import {
   Container,

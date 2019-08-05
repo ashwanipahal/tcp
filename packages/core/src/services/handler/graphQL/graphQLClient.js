@@ -1,6 +1,6 @@
 import AWSAppSync from 'aws-appsync';
 import fetch from 'node-fetch';
-import { getAPIConfig } from '../../../utils';
+import { getAPIConfig } from '../../../utils/utils';
 
 // TODO - use util's isServer Method
 if (!process.browser) {
