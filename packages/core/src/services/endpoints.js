@@ -58,5 +58,9 @@ const endpoints = {
     method: API_METHODS.DELETE,
     URI: '/v2/account/logout',
   },
+  getCouponList: {
+    method: API_METHODS.GET,
+    URI: 'v2/account/getAddressFromBook',
+  },
 };
 export default endpoints;
