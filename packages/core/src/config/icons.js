@@ -35,4 +35,7 @@ export default {
   up_arrow_icon: '/static/images/up_arrow_icon.png',
   active_icon: '/static/images/active_icon.png',
   'carousel-big-carrot': '/static/images/right-carousel-carrot.svg',
+  // TODO - Remove the fav_icon when the vector Icons would be implemented
+  'fav-icon': '/static/images/heart.png',
+  'cart-icon': '/static/images/bag.png',
 };
