@@ -15,6 +15,15 @@ const RewardsPointsStyles = css`
     height: 100%;
     position: relative;
   }
+
+  .table-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .table-item {
+    flex: 1 1 100%;
+  }
 `;
 
 export default RewardsPointsStyles;

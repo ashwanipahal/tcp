@@ -1,8 +1,8 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import { RewardsPointsViewVanilla } from '../RewardsPoints.view';
+import { RewardsPointsSliderVanilla } from '../RewardsPointsSlider.view';
 
-describe('My Account Layout View', () => {
+describe('RewardsPoints Slider View', () => {
   it('should render RewardsPointsViewVanilla Correctly', () => {
     const props = {
       pointsToNextReward: '10',
@@ -15,7 +15,7 @@ describe('My Account Layout View', () => {
         lbl_my_rewards_currency: '$',
       },
     };
-    const tree = shallow(<RewardsPointsViewVanilla {...props} />);
+    const tree = shallow(<RewardsPointsSliderVanilla {...props} />);
     expect(tree).toMatchSnapshot();
   });
 });
