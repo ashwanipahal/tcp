@@ -49,10 +49,10 @@ RewardsPointsContainer.propTypes = {
   currentPoints: PropTypes.number,
   totalRewards: PropTypes.number,
   labels: PropTypes.shape({
-    ACC_LBL_MY_REWARDS_CURRENT_POINTS: PropTypes.string,
-    ACC_LBL_MY_REWARDS_HEADING: PropTypes.string,
-    ACC_LBL_MY_REWARDS_NEXT_REWARD: PropTypes.string,
-    ACC_LBL_MY_REWARDS_CURRENCY: PropTypes.string,
+    lbl_my_rewards_current_points: PropTypes.string,
+    lbl_my_rewards_heading: PropTypes.string,
+    lbl_my_rewards_next_reward: PropTypes.string,
+    lbl_my_rewards_currency: PropTypes.string,
   }),
 };
 
@@ -61,10 +61,10 @@ RewardsPointsContainer.defaultProps = {
   currentPoints: '',
   totalRewards: '',
   labels: {
-    ACC_LBL_MY_REWARDS_CURRENT_POINTS: 'Current Points',
-    ACC_LBL_MY_REWARDS_HEADING: 'My Rewards',
-    ACC_LBL_MY_REWARDS_NEXT_REWARD: 'Points to your next reward',
-    ACC_LBL_MY_REWARDS_CURRENCY: '$',
+    lbl_my_rewards_current_points: 'Current Points',
+    lbl_my_rewards_heading: 'My Rewards',
+    lbl_my_rewards_next_reward: 'Points to your next reward',
+    lbl_my_rewards_currency: '$',
   },
 };
 
