@@ -1,5 +1,5 @@
 const labels = {
-  ACC_LBL_LOGIN_EMAIL: 'Email Address',
+  AVAILABLE_REWARDS_HEADING: 'AVAILABLE REWARDS & OFFERS ',
 };
 
 export default labels;

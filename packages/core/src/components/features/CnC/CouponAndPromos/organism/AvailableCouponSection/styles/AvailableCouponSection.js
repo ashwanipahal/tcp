@@ -1,6 +1,9 @@
 import { css } from 'styled-components';
 
 const styles = css`
+  .available_coupon {
+    background-color: '#f3f3f3';
+  }
   .border {
     border-top: 1px solid;
   }
