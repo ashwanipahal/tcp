@@ -9,7 +9,7 @@ import {
   getGiftCardsTotal,
   getTotalOrderSavings,
   getSubTotal,
-} from '../container/OrderLedger.selector';
+} from '../container/orderLedger.selector';
 
 describe('#OrderLedger Selectors', () => {
   const CartPageState = fromJS({

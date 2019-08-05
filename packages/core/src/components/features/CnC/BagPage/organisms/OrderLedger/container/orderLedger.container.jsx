@@ -1,8 +1,6 @@
-// TODO: Need fix unused/proptypes eslint error
-/* eslint-disable */
 import React from 'react';
 import { connect } from 'react-redux';
-import OrderLedger from '../views/OrderLedger.view';
+import OrderLedger from '../views/orderLedger.view';
 import {
   getItemsTotalCount,
   getCouponsTotal,
@@ -13,17 +11,24 @@ import {
   getGrandTotal,
   getGiftCardsTotal,
   getTotalOrderSavings,
-} from './OrderLedger.selector';
+} from './orderLedger.selector';
 
 // @flow
 
 type Props = {
-  getOrderDetails: void,
-  removeCartItem: void,
-  cartItems: any,
-  updateCartItem: any,
-  getProductSKUInfo: any,
-  editableProductInfo: any,
+  className: string,
+  itemsCount: number,
+  currencySymbol: any,
+  subTotal: number,
+  couponsTotal: number,
+  savingsTotal: number,
+  shippingTotal: number,
+  taxesTotal: number,
+  grandTotal: number,
+  giftCardsTotal: number,
+  orderBalanceTotal: number,
+  totalOrderSavings: number,
+  labels: any,
 };
 
 export const OrderLedgerContainer = ({
@@ -40,7 +45,7 @@ export const OrderLedgerContainer = ({
   orderBalanceTotal,
   totalOrderSavings,
   labels,
-}) => (
+}: Props) => (
   <OrderLedger
     className={className}
     itemsCount={itemsCount}

@@ -9,7 +9,7 @@ import { getIconPath } from '../../../../../../../utils';
 import { Image } from '../../../../../../common/atoms';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import styles from '../styles/OrderLedger.style';
+import styles from '../styles/orderLedger.style';
 
 const OrderLedger = ({
   className,

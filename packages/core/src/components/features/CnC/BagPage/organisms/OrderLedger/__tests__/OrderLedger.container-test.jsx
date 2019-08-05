@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { OrderLedgerContainer } from '../container/OrderLedger.container';
-import OrderLedger from '../views/OrderLedger.view';
+import { OrderLedgerContainer } from '../container/orderLedger.container';
+import OrderLedger from '../views/orderLedger.view';
 
 describe('Order Ledger Container', () => {
   const className = '';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import OrderLedger from '../views/OrderLedger.view';
+import OrderLedger from '../views/orderLedger.view';
 
 describe('OrderLedger Component', () => {
   let component;
