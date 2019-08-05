@@ -123,8 +123,8 @@ class ForgotPasswordView extends React.Component<Props> {
               colSize={{ large: 11, medium: 7, small: 6 }}
               message={
                 errorObject
-                  ? labels.FORGOT_PASSWORD_USER_NOT_AVAILABLE
-                  : labels.FORGOT_PASSWORD_API_ERROR
+                  ? labels.password.lbl_forgotPassword_userNotAvailable
+                  : labels.password.lbl_forgotPassword_apiError
               }
             />
           )}

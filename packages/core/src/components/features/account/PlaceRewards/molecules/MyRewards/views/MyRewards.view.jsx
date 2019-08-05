@@ -97,7 +97,7 @@ const MyRewards = ({ labels, className }) => {
             className="elem-ml-XXL"
             target="_self"
           >
-            {labels.common.ACC_LBL_TNC}
+            {labels.common.lbl_common_tnc}
           </Anchor>
         </Col>
       </Row>
@@ -112,7 +112,7 @@ MyRewards.propTypes = {
 
 MyRewards.defaultProps = {
   labels: {
-    common: { ACC_LBL_TNC: '' },
+    common: { lbl_common_tnc: '' },
     myPlaceRewards: {
       ACC_LBL_MY_REWARDS_PROGRAM_DETAILS: '',
       ACC_LBL_MY_REWARDS_SHOP_NOW: '',
