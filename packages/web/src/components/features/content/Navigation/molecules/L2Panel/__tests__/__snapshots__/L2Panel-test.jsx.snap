@@ -980,7 +980,7 @@ exports[`L2 Panel component renders correctly 1`] = `
         </div>
       </Styled(Col)>
       <Styled(Col)
-        className="l2-nav-category"
+        className="l2-nav-category shop-by-size-category"
         colSize={
           Object {
             "large": 2,
@@ -1246,16 +1246,6 @@ exports[`L2 Panel component renders correctly 1`] = `
           }
         }
       >
-        <Styled(Image)
-          alt="Shop Big & Lil Sis"
-          className="l2-image-banner-image"
-          crop_d=""
-          crop_m=""
-          crop_t=""
-          data-locator="overlay_img_0"
-          title="Shop Big & Lil Sis"
-          url="http://banner.com/image.jpg"
-        />
         <Styled(Anchor)
           className="l2-image-banner-link"
           data-locator="overlay_img_link_0"
@@ -1263,6 +1253,16 @@ exports[`L2 Panel component renders correctly 1`] = `
           title="Shop Big & Lil Sis"
           to="/Shop-Big-Lil-Sis"
         >
+          <Styled(Image)
+            alt="Shop Big & Lil Sis"
+            className="l2-image-banner-image"
+            crop_d=""
+            crop_m=""
+            crop_t=""
+            data-locator="overlay_img_0"
+            title="Shop Big & Lil Sis"
+            url="http://banner.com/image.jpg"
+          />
           <Styled(BodyCopy)
             className="l2-nav-link"
             color="text.primary"
@@ -1278,7 +1278,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="lh107"
-            textAlign="left"
+            textAlign="center"
           >
             <span
               className="nav-bar-l1-item-label"

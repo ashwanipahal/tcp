@@ -133,7 +133,7 @@ const L2Panel = props => {
                   <React.Fragment>
                     {shopBySize && (
                       <Col
-                        className="l2-nav-category"
+                        className="l2-nav-category shop-by-size-category"
                         colSize={{
                           small: 6,
                           medium: 8,
@@ -167,11 +167,6 @@ const L2Panel = props => {
                       >
                         {imageBanner.map(({ image, link }) => (
                           <React.Fragment>
-                            <Image
-                              className="l2-image-banner-image"
-                              data-locator={`overlay_img_${l1Index}`}
-                              {...image}
-                            />
                             <Anchor
                               className="l2-image-banner-link"
                               to={link.url}
@@ -179,12 +174,18 @@ const L2Panel = props => {
                               data-locator={`overlay_img_link_${l1Index}`}
                               target={link.target}
                             >
+                              <Image
+                                className="l2-image-banner-image"
+                                data-locator={`overlay_img_${l1Index}`}
+                                {...image}
+                              />
                               <BodyCopy
                                 className="l2-nav-link"
                                 fontFamily="secondary"
                                 fontSize={['fs13', 'fs13', 'fs14']}
                                 lineHeight="lh107"
                                 color="text.primary"
+                                textAlign="center"
                               >
                                 <span className="nav-bar-l1-item-label">{link.text}</span>
                                 <span className="icon-arrow" />
