@@ -7,11 +7,18 @@ const getCandid = css`
     }
 
     .get-candid-heading-desc {
-      margin-bottom: 10px;
+      margin-bottom: 26px;
     }
   }
+
   .get-candid-button-container {
+    * {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     margin-top: 14px;
+    width: 100%;
   }
 
   .u-margin-right {

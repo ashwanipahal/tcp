@@ -1,10 +1,10 @@
 import React from 'react';
-/* eslint-disable */
 import { PropTypes } from 'prop-types';
 import { requireNamedOnlineModule } from '../../../../../utils/resourceLoader';
-import { Button, Row, Col, BodyCopy, Heading } from '../../../atoms';
+import { Button, Row, Col, BodyCopy } from '../../../atoms';
 import styles from '../styles/GetCandid.style';
 import withStyles from '../../../hoc/withStyles';
+
 class GetCandid extends React.Component {
   static propTypes = {
     /* pageTag is used to get the subset of images */
@@ -25,6 +25,7 @@ class GetCandid extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      // to be moved to a config File(Confirm with Shobhit)
       apiKey: '070167ca-8287-4d41-a9bb-6b3850cae9b1',
       candidSlot: 'tcp-get-candid-image-container',
       icid: {
@@ -35,7 +36,7 @@ class GetCandid extends React.Component {
 
   componentDidMount() {
     const { apiKey, candidSlot } = this.state;
-    const { pageTag } = 'homepage'; // this.props;
+    const { pageTag } = 'homepage';
 
     requireNamedOnlineModule('getCandid').then(() => {
       window.candid.init({
@@ -72,9 +73,11 @@ class GetCandid extends React.Component {
   handleViewGalleryClick = () => {
     const { pageType } = this.props;
     const { icid } = this.state;
-    window.location.href = `${window.location.origin}/us/content/mystyleplace?icid=${
-      icid[pageType]
-    }`;
+    //  Replacing with origin path, because no Gallery page yet
+    window.location.href = `https://www.childrensplace.com/us/content/mystyleplace?icid=hp_s17_button_getcandid_070819_getcandid`;
+    // window.location.href = `${window.location.origin}/us/content/mystyleplace?icid=${
+    //   icid[pageType]
+    // }`;
   };
 
   getDefaultHeading = () => {
@@ -124,11 +127,11 @@ class GetCandid extends React.Component {
               large: 12,
             }}
           >
-            <div id="tcp-get-candid-image-container" />
+            {/* <div id="tcp-get-candid-image-container" /> */}
           </Col>
         </Row>
         <Row centered>
-          <div className="get-candid-button-container displayNone">
+          <div className="get-candid-button-container">
             <Col
               colSize={{
                 small: 6,
@@ -158,4 +161,4 @@ class GetCandid extends React.Component {
 
 export default withStyles(GetCandid, styles);
 export { GetCandid as GetCandidVanilla };
-//export default GetCandid;
+// export default GetCandid;
