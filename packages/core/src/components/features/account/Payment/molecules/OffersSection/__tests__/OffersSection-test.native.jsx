@@ -7,6 +7,8 @@ describe('Offers Component', () => {
     const props = {
       labels: {
         offersMessage: '<p>offers</p>',
+        paymentGC: {},
+        common: {},
       },
       className: 'abc',
     };

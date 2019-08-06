@@ -35,8 +35,8 @@ export const isServer = () => {
   return typeof window === 'undefined' && !isMobileApp();
 };
 
-const getAPIInfoFromEnv = (apiSiteInfo, processEnv, relHostname) => {
-  const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || relHostname;
+const getAPIInfoFromEnv = (apiSiteInfo, processEnv) => {
+  const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
   return {
     traceIdCount: 0,
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
@@ -70,7 +70,7 @@ export const createAPIConfig = resLocals => {
   const apiSiteInfo = API_CONFIG.sitesInfo;
   const processEnv = process.env;
   const relHostname = apiSiteInfo.proto + apiSiteInfo.protoSeparator + hostname;
-  const basicConfig = getAPIInfoFromEnv(apiSiteInfo, processEnv, relHostname);
+  const basicConfig = getAPIInfoFromEnv(apiSiteInfo, processEnv);
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, processEnv, relHostname);
   return {
     ...basicConfig,
@@ -125,6 +125,11 @@ export const getAPIConfig = () => {
   return apiConfig;
 };
 
+export const isCanada = () => {
+  const { siteId } = getAPIConfig();
+  return siteId === API_CONFIG.siteIds.ca;
+};
+
 export default {
   getIconPath,
   getLocator,
@@ -132,4 +137,5 @@ export default {
   isMobileApp,
   isServer,
   getAPIConfig,
+  isCanada,
 };

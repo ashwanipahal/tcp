@@ -3,34 +3,23 @@ import { connect } from 'react-redux';
 import AccountDrawerView from '../views/AccountDrawerView';
 import labels from '../AccountDrawer.labels';
 import { openOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
+import { getUserName } from './AccountDrawer.selector';
 
 // @flow
 type Props = {
   className: string,
-  openOverlay: any,
+  userName: any,
 };
 
-export const AccountDrawerContainer = ({ className, openOverlay }: Props) => {
-  const onAlreadyHaveAnAccountClick = e => {
-    e.preventDefault();
-    openOverlay({
-      component: 'login',
-      variation: 'primary',
-    });
+export const AccountDrawerContainer = ({ className, userName }: Props) => {
+  return <AccountDrawerView className={className} labels={labels} userName={userName} />;
+};
+
+export const mapStateToProps = state => {
+  return {
+    userName: getUserName(state),
   };
-  return (
-    <AccountDrawerView
-      className={className}
-      labels={labels}
-      onAlreadyHaveAnAccountClick={onAlreadyHaveAnAccountClick}
-    />
-  );
 };
-
-// export const mapStateToProps = state => {
-//   return {
-//   };
-// };
 
 export const mapDispatchToProps = (dispatch: ({}) => void) => {
   return {
@@ -41,6 +30,6 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
 };
 
 export default connect(
-  // mapStateToProps,
+  mapStateToProps,
   mapDispatchToProps
 )(AccountDrawerContainer);

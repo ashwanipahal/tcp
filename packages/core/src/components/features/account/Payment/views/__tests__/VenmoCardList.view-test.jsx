@@ -8,6 +8,8 @@ describe('VenmoCardList Component', () => {
     const props = {
       labels: {
         giftCardHeading: 'heading',
+        paymentGC: {},
+        common: {},
       },
       className: 'abc',
       venmoCardList: List(),
@@ -19,6 +21,8 @@ describe('VenmoCardList Component', () => {
     const props = {
       labels: {
         VenmoCardHeading: 'heading',
+        paymentGC: {},
+        common: {},
       },
       className: 'abc',
       venmoCardList: List([

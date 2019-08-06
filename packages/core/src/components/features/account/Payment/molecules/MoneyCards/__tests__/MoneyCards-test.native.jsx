@@ -8,6 +8,8 @@ describe('MoneyCards Component', () => {
     const props = {
       labels: {
         creditCardHeading: 'heading',
+        paymentGC: {},
+        common: {},
       },
       className: 'abc',
       creditCardList: List(),
@@ -19,6 +21,8 @@ describe('MoneyCards Component', () => {
     const props = {
       labels: {
         creditCardHeading: 'heading',
+        paymentGC: {},
+        common: {},
       },
       className: 'abc',
       creditCardList: List([

@@ -10,10 +10,57 @@ class Dropdown extends React.PureComponent {
     super(props);
     this.state = {
       dropDownExpand: false,
-      active: props.active,
-      activeComponent: props.activeComponent || null,
+      navState: {
+        displayName: '',
+        component: props.active || null,
+      },
     };
+    this.dropDown = null;
   }
+
+  componentDidMount() {
+    this.dropDown = document.querySelector('.drop_down');
+    window.addEventListener('click', this.closeDropdownIfClickOutside);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { options } = this.props;
+    const { navState } = this.state;
+    if (options !== prevProps.options) {
+      this.calNavState(options, navState);
+    }
+  }
+
+  componentWillUnmount() {
+    if (window) {
+      window.removeEventListener('click', this.closeDropdownIfClickOutside);
+    }
+  }
+
+  closeDropdownIfClickOutside = e => {
+    const { dropDownExpand } = this.state;
+    if (dropDownExpand && !this.dropDown.contains(e.target)) {
+      this.toggleHandler();
+    }
+  };
+
+  calNavState = (options, navState) => {
+    for (let j = 0; j < options.length; j += 1) {
+      const nav = options[j];
+      if (nav.subSections && nav.subSections.length) {
+        for (let i = 0; i < nav.subSections.length; i += 1) {
+          if (navState.component === nav.subSections[i].component) {
+            this.updateState(nav.subSections[i]);
+            break;
+          }
+        }
+      }
+      if (navState.component === nav.component) {
+        this.updateState(nav);
+        break;
+      }
+    }
+  };
 
   toggleHandler = () => {
     const { dropDownExpand } = this.state;
@@ -22,11 +69,12 @@ class Dropdown extends React.PureComponent {
     });
   };
 
-  onClickHandler = (e, value) => {
-    this.setState({
-      active: value.displayName,
-      activeComponent: value.component,
-    });
+  updateState = nav => {
+    this.setState({ navState: nav });
+  };
+
+  onClickHandler = (e, nav) => {
+    this.updateState(nav);
     this.toggleHandler();
   };
 
@@ -81,10 +129,11 @@ class Dropdown extends React.PureComponent {
   };
 
   render() {
-    const { dropDownExpand, active, activeComponent } = this.state;
+    const { dropDownExpand, navState } = this.state;
     const { className, options } = this.props;
+
     return (
-      <BodyCopy component="div" className={className}>
+      <BodyCopy component="div" className={`${className} drop_down`}>
         <BodyCopy
           component="div"
           onClick={this.toggleHandler}
@@ -98,12 +147,12 @@ class Dropdown extends React.PureComponent {
             component="div"
             className={`${dropDownExpand ? 'customSelectTitleUpImg' : 'customSelectTitleImg'}`}
           />
-          {active}
+          {navState.displayName}
         </BodyCopy>
         {dropDownExpand && (
           <BodyCopy component="div" className="dropdownUpperDiv">
             <ul className="dropdownUlBorder dropDownSelect">
-              {options.map(nav => this.itemLists(nav, activeComponent))}
+              {options.map(nav => this.itemLists(nav, navState.component))}
             </ul>
           </BodyCopy>
         )}
@@ -116,13 +165,11 @@ Dropdown.propTypes = {
   className: PropTypes.string,
   options: PropTypes.shape({}).isRequired,
   active: PropTypes.string,
-  activeComponent: PropTypes.string,
 };
 
 Dropdown.defaultProps = {
   className: '',
   active: '',
-  activeComponent: '',
 };
 
 export default withStyles(Dropdown, styles);

@@ -2,6 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import style from './NavBar.style';
+import SecondAppPeekABooView from '../../../../navigation/SecondAppPeekABooView';
 
 type Props = {
   renderIcon: Function,
@@ -37,49 +38,53 @@ const NavBar = (props: Props) => {
   const { routes, index: activeRouteIndex } = navigation.state;
 
   const StyledView = style.container;
+  const NavContainer = style.navContainer;
 
   return (
-    <StyledView>
-      {routes.map((route, routeIndex) => {
-        const isRouteActive = routeIndex === activeRouteIndex;
-        let label;
-        let StyledTouchableOpacity = style.tabButton;
-        let StyledText = style.textStyle;
+    <NavContainer>
+      <StyledView>
+        {routes.map((route, routeIndex) => {
+          const isRouteActive = routeIndex === activeRouteIndex;
+          let label;
+          let StyledTouchableOpacity = style.tabButton;
+          let StyledText = style.textStyle;
 
-        if (labels) {
-          label = labels[getLabelText({ route })];
-        } else {
-          label = getDefaultLabels(getLabelText({ route }));
-        }
+          if (labels) {
+            label = labels[getLabelText({ route })];
+          } else {
+            label = getDefaultLabels(getLabelText({ route }));
+          }
 
-        if (isRouteActive) {
-          StyledText = style.highlightedTextStyle;
-        }
+          if (isRouteActive) {
+            StyledText = style.highlightedTextStyle;
+          }
 
-        if (!label) {
-          StyledTouchableOpacity = style.logoStyle;
-        }
+          if (!label) {
+            StyledTouchableOpacity = style.logoStyle;
+          }
 
-        return (
-          <StyledTouchableOpacity
-            // eslint-disable-next-line react/no-array-index-key
-            key={`nav-bar_${routeIndex}`}
-            onPress={() => {
-              onTabPress({ route });
-            }}
-            onLongPress={() => {
-              onTabLongPress({ route });
-            }}
-            accessibilityRole="link"
-            accessibilityLabel={label}
-          >
-            {renderIcon({ route, focused: isRouteActive })}
+          return (
+            <StyledTouchableOpacity
+              // eslint-disable-next-line react/no-array-index-key
+              key={`nav-bar_${routeIndex}`}
+              onPress={() => {
+                onTabPress({ route });
+              }}
+              onLongPress={() => {
+                onTabLongPress({ route });
+              }}
+              accessibilityRole="link"
+              accessibilityLabel={label}
+            >
+              {renderIcon({ route, focused: isRouteActive })}
 
-            <StyledText>{label}</StyledText>
-          </StyledTouchableOpacity>
-        );
-      })}
-    </StyledView>
+              <StyledText>{label}</StyledText>
+            </StyledTouchableOpacity>
+          );
+        })}
+      </StyledView>
+      <SecondAppPeekABooView />
+    </NavContainer>
   );
 };
 

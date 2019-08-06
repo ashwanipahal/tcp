@@ -9,10 +9,10 @@ import MyRewardsAndOffers from '../../../molecules/MyRewardsAndOffers';
 import AccountDrawerBottomLinks from '../../../molecules/AccountDrawerBottomLinks';
 
 const AccountDrawerPage = props => {
-  const { className } = props;
+  const { className, userName } = props;
   return (
     <div className={className}>
-      <AccountDrawerHeading />
+      <AccountDrawerHeading userName={userName} />
       <CurrentPointSlider />
       <ExtraPointsTeaser />
       <MyRewardsAndOffers />
@@ -24,11 +24,13 @@ const AccountDrawerPage = props => {
 AccountDrawerPage.propTypes = {
   className: PropTypes.string,
   labels: PropTypes.shape({}),
+  userName: PropTypes.string,
 };
 
 AccountDrawerPage.defaultProps = {
   className: '',
   labels: {},
+  userName: '',
 };
 
 export default withStyles(AccountDrawerPage, styles);

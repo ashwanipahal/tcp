@@ -4,7 +4,7 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/MyRewardsAndOffers.style';
 
 const MyRewardsAndOffers = className => {
-  return <div className={className}>This is MyRewardsAndOffers</div>;
+  return <div className={className}>This is MyRewardsAndOffers Placeholder</div>;
 };
 
 MyRewardsAndOffers.propTypes = {
