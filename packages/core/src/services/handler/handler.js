@@ -51,8 +51,9 @@ export const executeGraphQLQuery = query => {
  * @returns {Promise} Resolves with data or rejects with error object
  */
 export const fetchModuleDataFromGraphQL = async modules => {
-  const query = await QueryBuilder.getQuery(modules);
-  return executeGraphQLQuery(query).catch(errorHandler);
+  QueryBuilder.getQuery(modules)
+    .then(query => executeGraphQLQuery(query))
+    .catch(errorHandler);
 };
 
 /**

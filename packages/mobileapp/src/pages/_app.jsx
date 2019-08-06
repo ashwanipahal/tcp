@@ -2,6 +2,8 @@ import React from 'react';
 import { Platform, StatusBar, StyleSheet, View, UIManager } from 'react-native';
 import { Provider } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import NetInfo from '@react-native-community/netinfo';
+
 import ThemeWrapperHOC from '../components/common/hoc/ThemeWrapper.container';
 import AppNavigator from '../navigation/AppNavigator';
 import AppSplash from '../navigation/AppSplash';
@@ -19,9 +21,9 @@ const styles = StyleSheet.create({
 
 export class App extends React.PureComponent {
   state = {
-    // eslint-disable-next-line react/no-unused-state
-    isLoadingComplete: false,
     isSplashVisible: true,
+    // eslint-disable-next-line react/no-unused-state
+    internetAvailable: false,
   };
 
   componentWillMount() {
@@ -31,20 +33,49 @@ export class App extends React.PureComponent {
     if (Platform.OS === 'android' && UIManager.setLayoutAnimationEnabledExperimental) {
       UIManager.setLayoutAnimationEnabledExperimental(true);
     }
+
+    // Subscribe to net information status
+    this.subscribeNetInfo();
   }
 
-  _handleLoadingError = error => {
-    // eslint-disable-next-line no-console
-    console.warn(error);
-  };
-
-  _handleFinishLoading = () => {
-    // eslint-disable-next-line react/no-unused-state
-    this.setState({ isLoadingComplete: true });
-  };
+  componentWillUnmount() {
+    // unsubscribe net info subscription from app on unmount
+    this.unsubscribeNetInfo();
+  }
 
   removeSplash = () => {
     this.setState({ isSplashVisible: false });
+  };
+
+  /**
+   * @function subscribeNetInfo
+   * This method checks current internet state and adds an event listener for checking if internet is available in future
+   *
+   * @memberof App
+   */
+  subscribeNetInfo = () => {
+    // fetch current connection state
+    NetInfo.fetch().then(connectionState => {
+      this.updateConnectionState(connectionState);
+    });
+
+    // Subscribe to net info
+    this.unsubscribeNetInfo = NetInfo.addEventListener(connectionState => {
+      this.updateConnectionState(connectionState);
+    });
+  };
+
+  /**
+   * @function updateConnectionState
+   * This method stores the connection state from netinfo in state
+   * @param connectionState
+   *
+   * @memberof App
+   */
+  updateConnectionState = connectionState => {
+    const { isConnected } = connectionState;
+    // eslint-disable-next-line react/no-unused-state
+    this.setState({ internetAvailable: isConnected });
   };
 
   render() {
