@@ -57,6 +57,7 @@ export default css`
         display: block;
       }
       .nav-bar-item-sizes-range {
+        cursor: default;
         position: absolute;
         display: block;
         top: 80px;
