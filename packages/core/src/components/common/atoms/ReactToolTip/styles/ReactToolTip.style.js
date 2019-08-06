@@ -1,7 +1,6 @@
 import { css } from 'styled-components';
 
 // need to handle for direction props.
-/* stylelint-disable */
 
 const tooltipStyle = css`
   position: relative;
@@ -12,10 +11,6 @@ const tooltipStyle = css`
     display: table;
     position: absolute;
     z-index: 99;
-    ::after {
-      content: '';
-      position: absolute;
-    }
     bottom: 100%;
     left: 50%;
     padding-bottom: 4px;
@@ -27,6 +22,8 @@ const tooltipStyle = css`
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
+      content: '';
+      position: absolute;
     }
   }
 

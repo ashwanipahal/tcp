@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-indent */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
@@ -165,8 +164,9 @@ const OrderLedger = ({
             </BodyCopy>
           </Col>
         </Row>
-        {giftCardsTotal > 0
-          ? <Row className="estimated-total rowMargin">
+        {giftCardsTotal > 0 ? (
+          <React.Fragment>
+            <Row className="estimated-total rowMargin">
               <Col colSize={{ large: 6, medium: 4, small: 3 }}>
                 <BodyCopy
                   bodySize="one"
@@ -190,34 +190,34 @@ const OrderLedger = ({
                   {`${currencySymbol}${grandTotal.toFixed(2)}`}
                 </BodyCopy>
               </Col>
-            </Row>(
-              <Row className="giftCard-total rowMargin">
-                <Col colSize={{ large: 6, medium: 4, small: 3 }}>
-                  <BodyCopy
-                    bodySize="one"
-                    color="primary"
-                    fontFamily="secondary"
-                    fontWeight="semibold"
-                    fontSize="fs16"
-                  >
-                    {`${labels.giftcardsLabel}:`}
-                  </BodyCopy>
-                </Col>
-                <Col colSize={{ large: 6, medium: 4, small: 3 }}>
-                  <BodyCopy
-                    bodySize="one"
-                    color="primary"
-                    fontFamily="secondary"
-                    fontWeight="semibold"
-                    fontSize="fs16"
-                    textAlign="right"
-                  >
-                    {`-${currencySymbol}${giftCardsTotal.toFixed(2)}`}
-                  </BodyCopy>
-                </Col>
-              </Row>
-            )
-          : null}
+            </Row>
+            <Row className="giftCard-total rowMargin">
+              <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+                <BodyCopy
+                  bodySize="one"
+                  color="primary"
+                  fontFamily="secondary"
+                  fontWeight="semibold"
+                  fontSize="fs16"
+                >
+                  {`${labels.giftcardsLabel}:`}
+                </BodyCopy>
+              </Col>
+              <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+                <BodyCopy
+                  bodySize="one"
+                  color="primary"
+                  fontFamily="secondary"
+                  fontWeight="semibold"
+                  fontSize="fs16"
+                  textAlign="right"
+                >
+                  {`-${currencySymbol}${giftCardsTotal.toFixed(2)}`}
+                </BodyCopy>
+              </Col>
+            </Row>
+          </React.Fragment>
+        ) : null}
         <Row className="balance-total rowMargin">
           <Col colSize={{ large: 6, medium: 4, small: 3 }}>
             <BodyCopy
