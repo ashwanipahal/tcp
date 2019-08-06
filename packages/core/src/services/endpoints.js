@@ -34,6 +34,14 @@ const endpoints = {
     method: API_METHODS.POST,
     URI: 'v2/account/modifyCreditCardDetails',
   },
+  addAddress: {
+    method: API_METHODS.POST,
+    URI: 'v2/account/addAddress',
+  },
+  updateAddress: {
+    method: 'put',
+    URI: 'v2/wallet/updateAddress',
+  },
   updateMultiSelectItemsToRemove: {
     method: 'PUT',
     URI: 'v2/cart/deleteMultipleOrderItems',
