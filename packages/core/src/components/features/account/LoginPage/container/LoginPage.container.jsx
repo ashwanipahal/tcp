@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { resetLoginForgotPasswordState } from '../../ForgotPassword/container/ForgotPassword.actions';
+import {
+  resetPassword,
+  resetLoginForgotPasswordState,
+} from '../../ForgotPassword/container/ForgotPassword.actions';
 import {
   getShowNotificationState,
   getResetEmailResponse,
@@ -54,6 +57,9 @@ class LoginPageContainer extends React.PureComponent {
       getUserInfoAction,
       labels,
       resetLoginState,
+      SubmitForgot,
+      showNotification,
+      successFullResetEmail,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage || labels.login.lbl_login_error : '';
     const initialValues = {
@@ -71,6 +77,9 @@ class LoginPageContainer extends React.PureComponent {
         getUserInfo={getUserInfoAction}
         onCreateAccountClick={this.onCreateAccountClick}
         resetLoginState={resetLoginState}
+        SubmitForgot={SubmitForgot}
+        showNotification={showNotification}
+        successFullResetEmail={successFullResetEmail}
       />
     );
   }
@@ -88,6 +97,9 @@ LoginPageContainer.propTypes = {
   openOverlay: PropTypes.func,
   labels: PropTypes.shape({}).isRequired,
   resetLoginState: PropTypes.func,
+  SubmitForgot: PropTypes.bool.isRequired,
+  showNotification: PropTypes.bool.isRequired,
+  successFullResetEmail: PropTypes.bool.isRequired,
 };
 
 LoginPageContainer.defaultProps = {
@@ -109,6 +121,9 @@ const mapDispatchToProps = dispatch => {
     },
     resetLoginState: () => {
       dispatch(resetLoginInfo());
+    },
+    SubmitForgot: payload => {
+      dispatch(resetPassword(payload));
     },
     closeOverlay: () => {
       dispatch(closeOverlayModal());
