@@ -9,12 +9,14 @@ const executeApiCall = payload => {
     return res || [];
   });
 };
-export const getCardListApi = payload => {
+export const getCardListApi = () => {
   const payloadData = {
     webService: endpoints.getCardList,
-    payload,
+    header: {
+      isRest: true,
+    },
   };
-  executeApiCall(payloadData);
+  return executeApiCall(payloadData);
 };
 
 export const addGiftCardApi = args => {
@@ -22,5 +24,5 @@ export const addGiftCardApi = args => {
     webService: endpoints.addGiftCard,
     payload: args,
   };
-  executeApiCall(payloadArgs);
+  return executeApiCall(payloadArgs);
 };
