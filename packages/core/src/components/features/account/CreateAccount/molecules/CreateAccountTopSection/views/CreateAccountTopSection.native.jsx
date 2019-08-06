@@ -47,17 +47,29 @@ const CreateAccountTopSection = props => {
 
 CreateAccountTopSection.propTypes = {
   labels: PropTypes.shape({
-    heading: PropTypes.string,
-    subHeading: PropTypes.string,
-    description: PropTypes.string,
+    registration: {
+      lbl_createAccount_createA: '',
+      lbl_createAccount_myPlaceRewards: '',
+      lbl_createAccount_earnPoints: '',
+      lbl_createAccount_spendPoint: '',
+      lbl_createAccount_pointReward: '',
+      lbl_createAccount_signedUp: '',
+      lbl_createAccount_onlineAccCreated: '',
+    },
   }),
 };
 
 CreateAccountTopSection.defaultProps = {
   labels: {
-    heading: 'Welcome Back',
-    subHeading: 'Log in to earn points for MY PLACE REWARDS ',
-    description: `Signed up in store?\nAn online account has been created with your email! Click here to reset your password.`,
+    registration: {
+      lbl_createAccount_createA: PropTypes.string,
+      lbl_createAccount_myPlaceRewards: PropTypes.string,
+      lbl_createAccount_earnPoints: PropTypes.string,
+      lbl_createAccount_spendPoint: PropTypes.string,
+      lbl_createAccount_pointReward: PropTypes.string,
+      lbl_createAccount_signedUp: PropTypes.string,
+      lbl_createAccount_onlineAccCreated: PropTypes.string,
+    },
   },
 };
 
