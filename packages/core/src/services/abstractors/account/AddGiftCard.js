@@ -1,14 +1,13 @@
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 
-const executeApiCall = payload => {
-  return executeStatefulAPICall(payload).then(res => {
-    if (!res) {
-      throw new Error('res body is null');
-    }
-    return res || [];
-  });
+const errorHandler = err => {
+  if (err.response && err.response.body && err.response.body.errors) {
+    throw new Error(err.response.body.errors[0].errorMessage);
+  }
+  throw new Error('Your action could not be completed due to system error!!!!');
 };
+
 export const getCardListApi = () => {
   const payloadData = {
     webService: endpoints.getCardList,
@@ -16,13 +15,30 @@ export const getCardListApi = () => {
       isRest: true,
     },
   };
-  return executeApiCall(payloadData);
+  return executeStatefulAPICall(payloadData)
+    .then(res => {
+      return res;
+    })
+    .catch(errorHandler);
 };
 
-export const addGiftCardApi = args => {
+export const addGiftCardApi = payload => {
   const payloadArgs = {
     webService: endpoints.addGiftCard,
-    payload: args,
+    header: {
+      isRest: true,
+    },
+    body: {
+      cc_brand: 'GC',
+      payMethodId: 'GiftCard',
+      account_pin: payload.cardPin,
+      pay_account: payload.giftCardNumber,
+      recapchaResponse: payload.recaptchaToken,
+    },
   };
-  return executeApiCall(payloadArgs);
+  return executeStatefulAPICall(payloadArgs)
+    .then(res => {
+      return res;
+    })
+    .catch(errorHandler);
 };
