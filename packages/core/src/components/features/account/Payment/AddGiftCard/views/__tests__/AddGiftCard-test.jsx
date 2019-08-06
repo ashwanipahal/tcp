@@ -5,7 +5,10 @@ import { AddGiftCardVanilla } from '../AddGiftCard.view';
 describe('Add gift card component', () => {
   it('should render component correctly if add gift is successful', () => {
     const props = {
-      labels: {},
+      labels: {
+        paymentGC: {},
+        common: {},
+      },
       addGiftCardResponse: 'success',
       onAddGiftCardClick: jest.fn(),
     };
@@ -15,7 +18,10 @@ describe('Add gift card component', () => {
 
   it('should render component correctly if add gift is failure', () => {
     const props = {
-      labels: {},
+      labels: {
+        paymentGC: {},
+        common: {},
+      },
       addGiftCardResponse: 'failure',
       onAddGiftCardClick: jest.fn(),
     };

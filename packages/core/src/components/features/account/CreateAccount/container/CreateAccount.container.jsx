@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import CreateAccountView from '../views/CreateAccount.view';
 import { createAccount, resetCreateAccountErr } from './CreateAccount.actions';
-import labels from '../CreateAccount.labels';
 import {
   getIAgree,
   getHideShowPwd,
   getConfirmHideShowPwd,
   getError,
+  getLabels,
 } from './CreateAccount.selectors';
 import { openOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
 
@@ -23,6 +23,7 @@ export class CreateAccountContainer extends React.Component {
     onRequestClose: PropTypes.func,
     isIAgreeChecked: PropTypes.bool,
     resetAccountError: PropTypes.func,
+    labels: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -35,6 +36,7 @@ export class CreateAccountContainer extends React.Component {
     onRequestClose: () => {},
     isIAgreeChecked: false,
     resetAccountError: () => {},
+    labels: {},
   };
 
   componentWillUnmount() {
@@ -60,6 +62,7 @@ export class CreateAccountContainer extends React.Component {
       confirmHideShowPwd,
       error,
       onRequestClose,
+      labels,
     } = this.props;
     return (
       <CreateAccountView
@@ -83,6 +86,7 @@ export const mapStateToProps = state => {
     hideShowPwd: getHideShowPwd(state),
     confirmHideShowPwd: getConfirmHideShowPwd(state),
     error: getError(state),
+    labels: getLabels(state),
   };
 };
 

@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlaceRewardsContainer should render correctly 1`] = `
+<PlaceRewardsView
+  labels={
+    Object {
+      "common": Object {},
+      "myPlaceRewards": Object {},
+    }
+  }
+/>
+`;

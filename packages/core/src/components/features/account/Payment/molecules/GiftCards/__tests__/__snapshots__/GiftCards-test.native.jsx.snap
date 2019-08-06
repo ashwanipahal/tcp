@@ -6,7 +6,9 @@ exports[`GiftCardList Component should render correctly 1`] = `
   giftCardList={Immutable.List []}
   labels={
     Object {
+      "common": Object {},
       "giftCardHeading": "heading",
+      "paymentGC": Object {},
     }
   }
 >
@@ -71,7 +73,9 @@ exports[`GiftCardList Component should render correctly if list is present 1`] =
   }
   labels={
     Object {
+      "common": Object {},
       "giftCardHeading": "heading",
+      "paymentGC": Object {},
     }
   }
 >
@@ -116,7 +120,9 @@ exports[`GiftCardList Component should render correctly if list is present 1`] =
     }
     labels={
       Object {
+        "common": Object {},
         "giftCardHeading": "heading",
+        "paymentGC": Object {},
       }
     }
   />

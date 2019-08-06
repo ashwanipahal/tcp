@@ -35,19 +35,25 @@ const CreateAccountTopSection = props => {
         <LineComp marginTop={28} />
         <LabelsWrapper className="labels-wrapper">
           <TextAlignCenter>
-            {labels.CREATE_ACC_LBL_CREATE_A}
-            {labels.CREATE_ACC_LBL_MY_PLACE_REWARDS}
-            {labels.CREATE_ACC_LBL_EARN_POINTS}
+            {labels.registration.lbl_createAccount_createA}
+            {labels.registration.lbl_createAccount_myPlaceRewards}
+            {labels.registration.lbl_createAccount_earnPoints}
           </TextAlignCenter>
           <PointsWrapper>
-            <TextAlignCenter>{labels.CREATE_ACC_LBL_SPEND_POINT}</TextAlignCenter>
-            <TextAlignCenter>{labels.CREATE_ACC_LBL_POINT_REWARD}</TextAlignCenter>
+            <TextAlignCenter>{labels.registration.lbl_createAccount_spendPoint}</TextAlignCenter>
+            <TextAlignCenter>{labels.registration.lbl_createAccount_pointReward}</TextAlignCenter>
           </PointsWrapper>
           <ResetWrapper>
-            <TextAlignCenter>{labels.CREATE_ACC_LBL_SIGNED_UP}</TextAlignCenter>
-            <TextAlignCenter>{labels.CREATE_ACC_LBL_ONLINE_ACC_CREATED}</TextAlignCenter>
+            <TextAlignCenter>{labels.registration.lbl_createAccount_signedUp}</TextAlignCenter>
+            <TextAlignCenter>
+              {labels.registration.lbl_createAccount_onlineAccCreated}
+            </TextAlignCenter>
             <ViewAlignCenter>
-              <Anchor fontSizeVariation="xlarge" text={labels.CREATE_ACC_LBL_RESET_PWD} underline />
+              <Anchor
+                fontSizeVariation="xlarge"
+                text={labels.registration.lbl_createAccount_resetPassword}
+                underline
+              />
             </ViewAlignCenter>
           </ResetWrapper>
         </LabelsWrapper>
