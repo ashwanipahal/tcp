@@ -126,11 +126,11 @@ export const getAPIConfig = () => {
 };
 
 export const isGymboree = () => {
-  return getAPIConfig().brandId === 'gym';
+  return getAPIConfig().brandId === API_CONFIG.brandIds.gym;
 };
 
 export const isTCP = () => {
-  return getAPIConfig().brandId === 'tcp';
+  return getAPIConfig().brandId === API_CONFIG.brandIds.tcp;
 };
 
 export const getBrand = () => {

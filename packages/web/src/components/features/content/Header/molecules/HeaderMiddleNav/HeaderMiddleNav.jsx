@@ -37,7 +37,6 @@ const HeaderMiddleNav = props => {
     userName,
   } = props;
   const brand = getBrand();
-  console.log(brand);
 
   return (
     <React.Fragment>
