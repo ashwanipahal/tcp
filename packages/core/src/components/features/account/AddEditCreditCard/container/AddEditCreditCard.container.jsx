@@ -12,7 +12,6 @@ import {
   getAddEditCreditCardError,
 } from './AddEditCreditCard.selectors';
 import constants from './AddEditCreditCard.constants';
-import creditCardLabels from './AddEditCreditCard.labels';
 import AddEditCreditCardComponent from '../views/AddEditCreditCard.view';
 import { getAddressListState } from '../../AddressBook/container/AddressBook.selectors';
 import { addCreditCard, editCreditCard } from './AddEditCreditCard.actions';
@@ -185,7 +184,7 @@ export class AddEditCreditCard extends React.PureComponent {
         isPLCCEnabled={isPLCCEnabled}
         isExpirationRequired={isExpirationRequired}
         addressList={addressList}
-        labels={creditCardLabels}
+        labels={labels}
         expMonthOptionsMap={this.creditCardExpirationOptionMap.monthsMap}
         expYearOptionsMap={this.creditCardExpirationOptionMap.yearsMap}
         initialValues={initialValues}

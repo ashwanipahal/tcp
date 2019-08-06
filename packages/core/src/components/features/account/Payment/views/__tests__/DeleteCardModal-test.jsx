@@ -23,7 +23,10 @@ describe('Delete card Modal', () => {
       expire: ' Expire on ',
     },
   };
-  const labels = {};
+  const labels = {
+    paymentGC: {},
+    common: {},
+  };
   it('should render correctly', () => {
     const tree = shallow(<DeleteCardModalVanilla labels={labels} data={data} />);
     expect(tree).toMatchSnapshot();
@@ -60,7 +63,7 @@ describe('Delete card Modal', () => {
       <DeleteCardModalVanilla
         data={data}
         showUpdatedNotificationOnModal
-        labels={{ errorMessage: 'error' }}
+        labels={{ errorMessage: 'error', paymentGC: {}, common: {} }}
       />
     );
     expect(tree.find(Notification)).toHaveLength(1);

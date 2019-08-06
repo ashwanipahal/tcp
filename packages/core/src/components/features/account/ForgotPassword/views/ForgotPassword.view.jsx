@@ -4,6 +4,7 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import TextBox from '../../../../common/atoms/TextBox';
 import styles from '../styles/ForgotPassword.style';
 import Anchor from '../../../../common/atoms/Anchor';
+import RichText from '../../../../common/atoms/RichText';
 import Button from '../../../../common/atoms/Button';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import createValidateMethod from '../../../../../utils/formValidation/createValidateMethod';
@@ -73,7 +74,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
             to="/account?id=address-book"
             data-locator="addnewaddress-back"
           >
-            {labels.FORGOT_PASSWORD_BACK_LOGIN}
+            {labels.password.lbl_forgotPassword_backLogin}
           </Anchor>
         </div>
         <form onSubmit={handleSubmit(this.onFormSubmit)} className={className}>
@@ -83,8 +84,8 @@ class ForgotPasswordView extends React.Component<Props, State> {
               colSize={{ large: 11, medium: 7, small: 6 }}
               message={
                 errorObject
-                  ? labels.FORGOT_PASSWORD_USER_NOT_AVAILABLE
-                  : labels.FORGOT_PASSWORD_API_ERROR
+                  ? labels.password.lbl_forgotPassword_userNotAvailable
+                  : labels.password.lbl_forgotPassword_apiError
               }
             />
           )}
@@ -98,7 +99,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 fontFamily="secondary"
                 textAlign="center"
               >
-                {labels.FORGOT_PASSWORD_CONTENT_1}
+                {labels.password.lbl_forgotPassword_content1}
               </BodyCopy>
               <BodyCopy
                 fontWeight="semibold"
@@ -107,7 +108,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 className="elem-mb-SM"
                 fontSize="fs12"
               >
-                {labels.FORGOT_PASSWORD_CONTENT_2}
+                {labels.password.lbl_forgotPassword_content2}
               </BodyCopy>
               <BodyCopy component="div" className="elem-mb-LRG">
                 <Field
@@ -120,7 +121,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 />
               </BodyCopy>
               <Button fill="BLUE" disabled={pristine} type="submit" buttonVariation="fixed-width">
-                {labels.FORGOT_PASSWORD_RESET_PASSWORD}
+                {labels.password.lbl_forgotPassword_resetPassword}
               </Button>
             </React.Fragment>
           )}
@@ -128,12 +129,12 @@ class ForgotPasswordView extends React.Component<Props, State> {
           {successFullResetEmail && (
             <React.Fragment>
               <BodyCopy
-                fontSize="fs14"
+                fontSize="fs16"
                 fontWeight="extrabold"
                 fontFamily="secondary"
                 textAlign="center"
               >
-                {labels.FORGOT_PASSWORD_CHECK_MAIL}
+                {labels.password.lbl_forgotPassword_checkMail}
               </BodyCopy>
 
               <BodyCopy
@@ -141,8 +142,13 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 fontFamily="secondary"
                 textAlign="center"
                 className="elem-mb-SM"
+                fontSize="fs12"
               >
-                {labels.FORGOT_PASSWORD_HEADING}
+                <RichText
+                  className="heading-link"
+                  richTextHtml={labels.password.lbl_forgotPassword_heading}
+                  dataLocator="forgot-password"
+                />
               </BodyCopy>
               <Button
                 fill="BLUE"
@@ -150,7 +156,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 onClick={this.onBackClick}
                 buttonVariation="fixed-width"
               >
-                {labels.FORGOT_PASSWORD_RETURN_LOGIN}
+                {labels.password.lbl_forgotPassword_returnLogin}
               </Button>
             </React.Fragment>
           )}

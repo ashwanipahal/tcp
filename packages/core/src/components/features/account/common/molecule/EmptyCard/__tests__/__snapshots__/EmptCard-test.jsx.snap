@@ -50,9 +50,7 @@ exports[`EmptyCard Component should render correctly 1`] = `
         lineHeight="lh107"
         tag="p"
         textAlign="left"
-      >
-        Add a gift card and/or merchandise cards!
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="emptyCard__description--desktop"
         color="text.primary"
@@ -64,9 +62,7 @@ exports[`EmptyCard Component should render correctly 1`] = `
         lineHeight="lh115"
         tag="p"
         textAlign="left"
-      >
-        Save up to 5 gift cards and/or merchandise cards to use the next time you shop.
-      </Styled(BodyCopy)>
+      />
     </Styled(Col)>
     <Styled(Col)
       className="emptyCard__description--mobile"
@@ -96,9 +92,7 @@ exports[`EmptyCard Component should render correctly 1`] = `
         lineHeight="lh115"
         tag="p"
         textAlign="left"
-      >
-        Save up to 5 gift cards and/or merchandise cards to use the next time you shop.
-      </Styled(BodyCopy)>
+      />
     </Styled(Col)>
   </Styled(Row)>
 </div>
@@ -154,9 +148,7 @@ exports[`EmptyCard Component should render correctly with credit card 1`] = `
         lineHeight="lh107"
         tag="p"
         textAlign="left"
-      >
-        Add a credit or debit card to check out faster!
-      </Styled(BodyCopy)>
+      />
       <Styled(BodyCopy)
         className="emptyCard__description--desktop"
         color="text.primary"
@@ -168,9 +160,7 @@ exports[`EmptyCard Component should render correctly with credit card 1`] = `
         lineHeight="lh115"
         tag="p"
         textAlign="left"
-      >
-        Securely save your credit card, and/or My Place Rewards Card information so you can check out even faster!
-      </Styled(BodyCopy)>
+      />
     </Styled(Col)>
     <Styled(Col)
       className="emptyCard__description--mobile"
@@ -200,9 +190,7 @@ exports[`EmptyCard Component should render correctly with credit card 1`] = `
         lineHeight="lh115"
         tag="p"
         textAlign="left"
-      >
-        Securely save your credit card, and/or My Place Rewards Card information so you can check out even faster!
-      </Styled(BodyCopy)>
+      />
     </Styled(Col)>
   </Styled(Row)>
 </div>

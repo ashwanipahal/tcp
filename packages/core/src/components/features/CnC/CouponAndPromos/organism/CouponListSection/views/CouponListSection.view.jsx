@@ -66,9 +66,9 @@ class CouponListSection extends React.Component<Props> {
         <Row fullBleed>
           <Col
             colSize={{
-              small: 6,
-              medium: 3,
-              large: 4,
+              small: 12,
+              medium: 12,
+              large: 12,
             }}
           >
             {couponListFilter.map(coupon => {

@@ -17,7 +17,9 @@ exports[`GiftCardList Component should render correctly 1`] = `
     icon="gift-card"
     labels={
       Object {
+        "common": Object {},
         "giftCardHeading": "heading",
+        "paymentGC": Object {},
       }
     }
     prefix="GC"
@@ -109,7 +111,9 @@ exports[`GiftCardList Component should render correctly if list is present 1`] =
     }
     labels={
       Object {
+        "common": Object {},
         "giftCardHeading": "heading",
+        "paymentGC": Object {},
       }
     }
   />

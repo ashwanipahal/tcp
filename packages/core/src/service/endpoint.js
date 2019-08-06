@@ -135,5 +135,9 @@ const endpoints = {
     method: 'post',
     relURI: '/api/v2/wallet/addCustomerRegistration',
   },
+  logout: {
+    method: 'delete',
+    relURI: '/api/v2/account/logout',
+  },
 };
 export default endpoints;
