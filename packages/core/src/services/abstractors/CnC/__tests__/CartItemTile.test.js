@@ -2,6 +2,9 @@ import {
   getOrderDetailsData,
   flatCurrencyToCents,
   getCurrentOrderFormatter,
+  getProductImgPath,
+  getSwatchImgPath,
+  imageGenerator,
   constructCouponStructure,
 } from '../CartItemTile';
 import { response, orderDetailsResponse, couponResponse, couponFormatResponse } from './mockData';
@@ -23,6 +26,32 @@ describe('#getOrderPointSummary', () => {
     expect(result).toEqual(response);
   });
 
+  it('should return getSwatchImgPath=', () => {
+    const resultType = getSwatchImgPath(12, 'extension');
+    expect(resultType).toEqual('/wcsstore/GlobalSAS/images/tcp/products/swatches/12');
+  });
+
+  it('should return getProductImgPath=', () => {
+    const resultType = imageGenerator(12, 'extension');
+    expect(resultType).toEqual({
+      colorSwatch: '/wcsstore/GlobalSAS/images/tcp/products/swatches/12',
+      productImages: {
+        '125': '/wcsstore/GlobalSAS/images/tcp/products/125/12',
+        '380': '/wcsstore/GlobalSAS/images/tcp/products/380/12',
+        '500': '/wcsstore/GlobalSAS/images/tcp/products/500/12',
+        '900': '/wcsstore/GlobalSAS/images/tcp/products/900/12',
+      },
+    });
+  });
+  it('should return getProductImgPath=', () => {
+    const resultType = getProductImgPath(12, 'extension');
+    expect(resultType).toEqual({
+      '125': '/wcsstore/GlobalSAS/images/tcp/products/125/12',
+      '380': '/wcsstore/GlobalSAS/images/tcp/products/380/12',
+      '500': '/wcsstore/GlobalSAS/images/tcp/products/500/12',
+      '900': '/wcsstore/GlobalSAS/images/tcp/products/900/12',
+    });
+  });
   it('should return valid constructCouponStructure', () => {
     const result = constructCouponStructure(couponResponse);
     expect(result).toEqual(couponFormatResponse);
