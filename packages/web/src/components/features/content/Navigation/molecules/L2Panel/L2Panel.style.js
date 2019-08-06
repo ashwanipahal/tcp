@@ -37,7 +37,7 @@ export default css`
   .icon-back {
     position: absolute;
     top: 17px;
-    left: 14px;
+    left: 0;
     background: url('/static/images/carrot-medium-left-gray.svg');
     width: 10px;
     height: 18px;
@@ -46,11 +46,11 @@ export default css`
     padding: 18px 0;
   }
   .sizes-rage-background {
-    background: #f3f3f3;
-    width: 100%;
     min-height: 40px;
     text-align: center;
     position: relative;
+    border-bottom: 1px solid #d8d8d8;
+    margin: 0 14px;
   }
 
   .l2-nav-link {
@@ -168,6 +168,12 @@ export default css`
       span {
         display: inline-block;
       }
+    }
+    .sizes-rage-background {
+      background: #f3f3f3;
+      width: 100%;
+      border-bottom: none;
+      margin: 0;
     }
   }
 `;

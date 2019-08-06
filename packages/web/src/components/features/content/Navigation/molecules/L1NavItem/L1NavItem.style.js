@@ -24,30 +24,34 @@ export default css`
     width: 10px;
     height: 10px;
   }
-  .nav-bar-l1-item-label {
+  .nav-bar-item-label {
     width: 45%;
     cursor: pointer;
     &.highlighted {
       color: ${props => props.theme.colorPalette.secondary.main};
     }
+    &.full-width {
+      width: 96%;
+    }
   }
-  .nav-bar-l1-item-content {
+  .nav-bar-item-content {
     width: 51%;
     color: ${props => props.theme.colorPalette.primary.main};
   }
 
   @media ${props => props.theme.mediaQuery.large} {
+    padding: 0;
     color: ${props => props.theme.colorPalette.text.hint};
     span {
       display: inline;
     }
-    .nav-bar-l1-item-content {
+    .nav-bar-item-content {
       display: none;
     }
     .nav-bar-l1-content {
       cursor: pointer;
       position: relative;
-      padding: 38px 38px 12px 41px;
+      padding: 38px 20px 12px 20px;
     }
     &:hover {
       background: linear-gradient(to bottom, rgba(255, 255, 255, 0.99), #f6f6f6);
@@ -67,6 +71,7 @@ export default css`
         text-align: center;
         font-weight: 600;
         z-index: 11;
+        white-space: nowrap;
       }
     }
   }
