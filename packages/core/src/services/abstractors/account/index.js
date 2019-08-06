@@ -11,3 +11,4 @@ export { getCardListApi, addGiftCardApi } from './AddGiftCard';
 export { defaultShippingAddressApi } from './DefaultShippingAddress';
 export { deleteAddressApi } from './DeleteAddress';
 export { addAddress, updateAddress } from './AddEditAddress';
+export { forgotPassword } from './ForgotPassword';
