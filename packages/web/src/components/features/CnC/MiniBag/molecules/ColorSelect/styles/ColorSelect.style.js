@@ -15,7 +15,7 @@ export const customSelectTile = css`
     font-size: ${props => props.theme.typography.fontSizes.fs12};
     margin-top: 0;
   }
-  font-size: 10px;
+  font-size: ${props => props.theme.typography.fontSizes.fs10};
   font-weight: ${props => props.theme.fonts.fontWeight.bold};
 `;
 
