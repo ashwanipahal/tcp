@@ -68,7 +68,11 @@ const endpoints = {
   },
   logout: {
     method: API_METHODS.DELETE,
-    URI: '/v2/account/logout',
+    URI: 'v2/account/logout',
+  },
+  requestPassword: {
+    method: 'put',
+    URI: 'v2/account/resetPassword',
   },
   addCoupons: {
     method: 'post',
@@ -76,11 +80,11 @@ const endpoints = {
   },
   getGifCardBalance: {
     method: API_METHODS.POST,
-    URI: '/v2/wallet/getGiftCardBalance',
+    URI: 'v2/wallet/getGiftCardBalance',
   },
   deleteCreditCardOnAccount: {
     method: API_METHODS.POST,
-    URI: '/v2/account/deleteCreditCardDetails',
+    URI: 'v2/account/deleteCreditCardDetails',
   },
   setDefaultPayment: {
     method: API_METHODS.POST,
@@ -92,7 +96,7 @@ const endpoints = {
   },
   addGiftCard: {
     method: API_METHODS.POST,
-    URI: '/v2/account/addCreditCardDetails',
+    URI: 'v2/account/addCreditCardDetails',
   },
   setDefaultShippingAddress: {
     method: API_METHODS.PUT,
@@ -100,7 +104,7 @@ const endpoints = {
   },
   deleteAddress: {
     method: API_METHODS.DELETE,
-    URI: '/v2/account/deleteAddressDetails',
+    URI: 'v2/account/deleteAddressDetails',
   },
 };
 export default endpoints;
