@@ -8,40 +8,47 @@ const AccountDrawerBottomLinks = props => {
   const { className, labels } = props;
   return (
     <div className={className}>
-      <div>
-        <Anchor
-          fontSizeVariation="xlarge"
-          anchorVariation="secondary"
-          text={labels.CREATE_ACC_MY_FAV}
-        />
-      </div>
-      <div>
-        <Anchor
-          fontSizeVariation="xlarge"
-          anchorVariation="secondary"
-          text={labels.CREATE_ACC_MY_PLACE_REWARDS_CC}
-        />
-      </div>
-      <div>
-        <Anchor
-          fontSizeVariation="xlarge"
-          anchorVariation="secondary"
-          text={labels.CREATE_ACC_WALLET}
-        />
-      </div>
-      <div>
-        <Anchor
-          fontSizeVariation="xlarge"
-          anchorVariation="secondary"
-          text={labels.CREATE_ACC_ORDERS}
-        />
-      </div>
-      <div>
-        <Anchor
-          fontSizeVariation="xlarge"
-          anchorVariation="secondary"
-          text={labels.CREATE_ACC_SIGN_OUT}
-        />
+      <div className="linksWrapper elem-pl-MED elem-pr-MED">
+        <div className="elem-pt-MED elem-pb-MED bottomLine">
+          <Anchor
+            fontSizeVariation="large"
+            fontFamily="secondary"
+            anchorVariation="primary"
+            text={labels.CREATE_ACC_MY_FAV}
+          />
+        </div>
+        <div className="elem-pt-MED elem-pb-MED bottomLine">
+          <Anchor
+            fontSizeVariation="large"
+            fontFamily="secondary"
+            anchorVariation="primary"
+            text={labels.CREATE_ACC_MY_PLACE_REWARDS_CC}
+          />
+        </div>
+        <div className="elem-pt-MED elem-pb-MED bottomLine">
+          <Anchor
+            fontSizeVariation="large"
+            fontFamily="secondary"
+            anchorVariation="primary"
+            text={labels.CREATE_ACC_WALLET}
+          />
+        </div>
+        <div className="elem-pt-MED elem-pb-MED bottomLine">
+          <Anchor
+            fontSizeVariation="large"
+            fontFamily="secondary"
+            anchorVariation="primary"
+            text={labels.CREATE_ACC_ORDERS}
+          />
+        </div>
+        <div className="elem-pt-MED elem-pb-MED bottomLine">
+          <Anchor
+            fontSizeVariation="large"
+            fontFamily="secondary"
+            anchorVariation="primary"
+            text={labels.CREATE_ACC_SIGN_OUT}
+          />
+        </div>
       </div>
     </div>
   );

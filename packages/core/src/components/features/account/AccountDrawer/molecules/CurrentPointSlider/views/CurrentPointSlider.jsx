@@ -4,7 +4,7 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/CurrentPointSlider.style';
 
 const CurrentPointSlider = className => {
-  return <div className={className}>This is CurrentPointSlider</div>;
+  return <div className={className}>This is CurrentPointSlider Placeholder</div>;
 };
 
 CurrentPointSlider.propTypes = {

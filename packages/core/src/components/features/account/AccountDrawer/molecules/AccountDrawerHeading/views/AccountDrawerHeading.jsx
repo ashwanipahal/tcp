@@ -5,24 +5,28 @@ import styles from '../styles/AccountDrawerHeading.style';
 import Image from '../../../../../../common/atoms/Image';
 import { getIconPath } from '../../../../../../../utils';
 import Anchor from '../../../../../../common/atoms/Anchor';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 
 const AccountDrawerHeading = props => {
-  const { className, labels } = props;
+  const { className, labels, userName } = props;
   return (
-    <div className={className}>
-      <div>
-        <span>
-          <Image src={getIconPath('user-icon')} />
-          <span>{labels.ACC_DRAWER_USER_NAME}</span>
+    <div className={`${className} elem-pl-MED elem-pr-MED elem-pt-LRG elem-pb-LRG`}>
+      <span>
+        <Image src={getIconPath('user-icon')} />
+        <span className="userName">
+          <BodyCopy component="span" fontFamily="primary" fontWeight="semibold" fontSize="fs16">
+            {userName}
+          </BodyCopy>
         </span>
-        <span>
-          <Anchor
-            fontSizeVariation="xlarge"
-            anchorVariation="secondary"
-            text={labels.ACC_DRAWER_VIEW_MY_ACC}
-          />
-        </span>
-      </div>
+      </span>
+      <span className="viewAccAnchor">
+        <Anchor
+          fontSizeVariation="medium"
+          anchorVariation="primary"
+          text={labels.lbl_acc_drawer_view_my_acc}
+          underline
+        />
+      </span>
     </div>
   );
 };
@@ -30,14 +34,16 @@ const AccountDrawerHeading = props => {
 AccountDrawerHeading.propTypes = {
   className: PropTypes.string,
   labels: PropTypes.shape({}),
+  userName: PropTypes.string,
 };
 
 AccountDrawerHeading.defaultProps = {
   className: '',
   labels: {
-    ACC_DRAWER_USER_NAME: 'Test Name',
-    ACC_DRAWER_VIEW_MY_ACC: 'View My Account',
+    lbl_acc_drawer_user_name: 'Test Name',
+    lbl_acc_drawer_view_my_acc: 'View My Account',
   },
+  userName: '',
 };
 
 export default withStyles(AccountDrawerHeading, styles);
