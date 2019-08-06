@@ -2,7 +2,6 @@
 import Router from 'next/router';
 import { ENV_PRODUCTION, ENV_DEVELOPMENT } from '../constants/env.config';
 import icons from '../config/icons';
-import { API_CONFIG } from '../services/config';
 import { breakpoints } from '../../styles/themes/TCP/mediaQuery';
 import { getAPIConfig } from './utils';
 
@@ -19,32 +18,6 @@ const MONTH_SHORT_FORMAT = {
   OCT: 'Oct',
   NOV: 'Nov',
   DEC: 'Dec',
-};
-
-/**
- * @summary Creates the API config object based on the response local variables set by node server
- * @param {Object} resLocals  response object of Node server
- * @returns {Object} generated api config object
-
- */
-export const createAPIConfig = resLocals => {
-  // TODO - Get data from env config - Brand, MellisaKey, BritverifyId, AcquisitionId, Domains, Asset Host, Unbxd Domain;
-  // TODO - use isMobile and cookie as well..
-  // TODO - Keep a fallback in case of any error in state/store reference
-
-  const { siteId, brandId } = resLocals;
-  const isCASite = siteId === API_CONFIG.siteIds.ca;
-  const isGYMSite = brandId === API_CONFIG.brandIds.gym;
-  const countryConfig = isCASite ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
-  const brandConfig = isGYMSite ? API_CONFIG.GYM_CONFIG_OPTIONS : API_CONFIG.TCP_CONFIG_OPTIONS;
-  const basicConfig = API_CONFIG.sitesInfo;
-  return {
-    ...basicConfig,
-    ...countryConfig,
-    ...brandConfig,
-    isMobile: false,
-    cookie: null,
-  };
 };
 
 export const importGraphQLClientDynamically = module => {

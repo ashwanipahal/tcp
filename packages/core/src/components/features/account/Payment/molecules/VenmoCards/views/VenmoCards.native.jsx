@@ -9,7 +9,7 @@ const VenmoCards = props => {
   const { labels, venmoCardList } = props;
   return (
     <View {...props}>
-      <HeadingTextStyle>{labels.ACC_LBL_VENMO_HEADING}</HeadingTextStyle>
+      <HeadingTextStyle>{labels.paymentGC.lbl_payment_venmoHeading}</HeadingTextStyle>
       {venmoCardList.size > 0 &&
         venmoCardList.map(cardItem => <CardTile card={cardItem} labels={labels} />)}
     </View>

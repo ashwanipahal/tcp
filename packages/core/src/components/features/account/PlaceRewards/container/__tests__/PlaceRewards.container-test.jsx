@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import PlaceRewardsContainer from '../PlaceRewards.container';
-import { getSiteId } from '../../../../../../utils';
+import { getSiteId } from '../../../../../../utils/utils.web';
 
-jest.mock('../../../../../../utils', () => ({
+jest.mock('../../../../../../utils/utils.web', () => ({
   getSiteId: jest.fn(),
 }));
 

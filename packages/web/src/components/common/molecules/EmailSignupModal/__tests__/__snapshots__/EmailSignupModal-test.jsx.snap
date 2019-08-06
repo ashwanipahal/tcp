@@ -2,7 +2,7 @@
 
 exports[`EmailSignupModal component renders correctly 1`] = `
 <Fragment>
-  <errorBoundaryComponent
+  <Styled(Modal)
     aria={
       Object {
         "describedby": "sign-up-modal-form-intro-view",
@@ -274,13 +274,13 @@ exports[`EmailSignupModal component renders correctly 1`] = `
         </Styled(Row)>
       </Styled(Grid)>
     </form>
-  </errorBoundaryComponent>
+  </Styled(Modal)>
 </Fragment>
 `;
 
 exports[`EmailSignupModal component renders correctly when button is clicked 1`] = `
 <Fragment>
-  <errorBoundaryComponent
+  <Styled(Modal)
     aria={
       Object {
         "describedby": "sign-up-modal-form-intro-view",
@@ -552,13 +552,13 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
         </Styled(Row)>
       </Styled(Grid)>
     </form>
-  </errorBoundaryComponent>
+  </Styled(Modal)>
 </Fragment>
 `;
 
 exports[`EmailSignupModal component renders correctly when button is clicked 2`] = `
 <Fragment>
-  <errorBoundaryComponent
+  <Styled(Modal)
     aria={
       Object {
         "describedby": "sign-up-modal-form-intro-view",
@@ -830,6 +830,6 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
         </Styled(Row)>
       </Styled(Grid)>
     </form>
-  </errorBoundaryComponent>
+  </Styled(Modal)>
 </Fragment>
 `;

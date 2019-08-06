@@ -1,5 +1,7 @@
 // eslint-disable-next-line import/no-unresolved
 import { Dimensions, Linking } from 'react-native';
+// eslint-disable-next-line import/no-unresolved
+import AsyncStorage from '@react-native-community/async-storage';
 
 import config from '../components/common/atoms/Anchor/config.native';
 
@@ -165,7 +167,7 @@ export const getScreenWidth = () => {
 
 /**
  * @function getScreenHeight function returns screen height.
- * @return {number} function returns width of device viewport.
+ * @return {number} function returns height of device viewport.
  */
 export const getScreenHeight = () => {
   return parseInt(Dimensions.get('screen').height, 10);
@@ -183,4 +185,35 @@ export const cropImageUrl = (url, crop) => {
     return `${urlPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
   }
   return url;
+};
+
+/**
+ * @function getValueFromAsyncStorage
+ * This method retrieves value for input key from asyncstorage
+ * @param key
+ *
+ * @returns: value from async storage
+ */
+export const getValueFromAsyncStorage = async key => {
+  try {
+    return await AsyncStorage.getItem(key);
+  } catch (error) {
+    // Error retrieving data
+    return null;
+  }
+};
+
+/**
+ * @function setValueInAsyncStorage
+ * This method saves the input key and value in asyncstorage
+ * @param key: key to be saved
+ * @param value: value for key
+ *
+ */
+export const setValueInAsyncStorage = async (key, value) => {
+  try {
+    await AsyncStorage.setItem(key, value);
+  } catch (error) {
+    // Error saving data
+  }
 };

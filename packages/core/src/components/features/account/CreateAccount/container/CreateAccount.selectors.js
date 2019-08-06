@@ -18,3 +18,7 @@ export const getConfirmHideShowPwd = state => {
 export const getError = state => {
   return state.CreateAccountReducer.get('error');
 };
+
+export const getLabels = state => {
+  return state.Labels.global;
+};
