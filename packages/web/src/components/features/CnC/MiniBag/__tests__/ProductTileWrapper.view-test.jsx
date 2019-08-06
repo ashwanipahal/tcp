@@ -1,20 +1,10 @@
 import React from 'react';
-import { fromJS, List } from 'immutable';
+import { fromJS } from 'immutable';
 import ProductTile from '@tcp/core/src/components/features/CnC/CartItemTile/molecules/CartItemTile/views/CartItemTile.view';
 import { shallow } from 'enzyme';
-import MiniBagView, { MiniBagVanilla } from '../views/MiniBag.view';
+import { ProductTileWrapperVanilla } from '../views/ProductTileWrapper.view';
 
-describe('MiniBagView component', () => {
-  it('MiniBagView component renders correctly', () => {
-    const props = {
-      className: 'checkout',
-      onRequestClose: jest.fn(),
-      labels: {},
-      orderItems: List([1, 2]),
-    };
-    const component = shallow(<MiniBagView {...props} />);
-    expect(component).toMatchSnapshot();
-  });
+describe('ProductTileWrapper component', () => {
   it('should render ProductTile view section', () => {
     const props = {
       orderItems: fromJS([
@@ -127,7 +117,7 @@ describe('MiniBagView component', () => {
         },
       },
     };
-    const tree = shallow(<MiniBagVanilla {...props} />);
+    const tree = shallow(<ProductTileWrapperVanilla {...props} />);
     expect(tree.find(ProductTile)).toBeTruthy();
   });
 });

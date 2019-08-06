@@ -350,25 +350,7 @@ exports[`BossBannerView component renders correctly 1`] = `
               "small": 4,
             }
           }
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="gray.600"
-            component="span"
-            fontFamily="secondary"
-            fontSize="fs10"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="left"
-          >
-            I will pickup store at union square today
-          </Styled(BodyCopy)>
-        </Styled(Col)>
+        />
         <Styled(Col)
           colSize={
             Object {

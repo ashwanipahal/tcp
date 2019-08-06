@@ -64,6 +64,22 @@ export const getProductBadge = product => {
   return product.getIn(['miscInfo', 'badge', 'defaultBadge']);
 };
 
+export const getProductStore = product => {
+  return product.getIn(['miscInfo', 'store']);
+};
+
+export const getProductOrderItemType = product => {
+  return product.getIn(['miscInfo', 'orderItemType']);
+};
+
+export const getBossStartDate = product => {
+  return product.getIn(['miscInfo', 'bossStartDate']);
+};
+
+export const getBossEndDate = product => {
+  return product.getIn(['miscInfo', 'bossEndDate']);
+};
+
 export const getLabelsCartItemTile = state => {
   const {
     bag: {
@@ -87,6 +103,8 @@ export const getLabelsCartItemTile = state => {
         lbl_cartTile_saveForLater: saveForLater,
         lbl_cartTile_productBrandAlt: productBandAlt,
         lbl_cartTile_productImageAlt: productImageAlt,
+        lbl_cartTile_bopis: bopisLabel,
+        lbl_cartTile_boss: bossLabel,
       },
     },
   } = state.Labels;
@@ -104,6 +122,8 @@ export const getLabelsCartItemTile = state => {
     saveForLater,
     productBandAlt,
     productImageAlt,
+    bopisLabel,
+    bossLabel,
   };
 };
 
@@ -127,6 +147,10 @@ export const getProductDetails = tile => {
     },
     miscInfo: {
       badge: getProductBadge(tile),
+      store: getProductStore(tile),
+      orderItemType: getProductOrderItemType(tile),
+      bossStartDate: getBossStartDate(tile),
+      bossEndDate: getBossEndDate(tile),
     },
   };
 };

@@ -728,6 +728,8 @@ export const response = {
         vendorColorDisplayId: '3003274_32F6',
         storeItemsCount: 0,
         orderItemType: 'ECOM',
+        bossEndDate: null,
+        bossStartDate: null,
       },
     },
     {
@@ -775,6 +777,8 @@ export const response = {
         vendorColorDisplayId: '3003289_1464',
         storeItemsCount: 0,
         orderItemType: 'ECOM',
+        bossEndDate: null,
+        bossStartDate: null,
       },
     },
     {
@@ -822,6 +826,8 @@ export const response = {
         vendorColorDisplayId: '3000627_635',
         storeItemsCount: 0,
         orderItemType: 'ECOM',
+        bossEndDate: null,
+        bossStartDate: null,
       },
     },
     {
@@ -871,6 +877,8 @@ export const response = {
         vendorColorDisplayId: '3002156_10',
         storeItemsCount: 0,
         orderItemType: 'ECOM',
+        bossEndDate: null,
+        bossStartDate: null,
       },
     },
   ],

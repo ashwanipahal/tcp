@@ -495,8 +495,14 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
           //availability: deriveItemAvailability(orderDetailsResponse, item, store),
           vendorColorDisplayId: item.productInfo && item.productInfo.productPartNumber,
           // dates for boss pickup, used getDateInformation utility
-          // bossStartDate: item.orderItemType === ORDER_ITEM_TYPE.BOSS ? getDateInformation(store.shippingAddressDetails.bossMinDate, false) : null,
-          //bossEndDate: item.orderItemType === ORDER_ITEM_TYPE.BOSS ? getDateInformation(store.shippingAddressDetails.bossMaxDate, false) : null,
+          bossStartDate:
+            item.orderItemType === ORDER_ITEM_TYPE.BOSS
+              ? getDateInformation(store.shippingAddressDetails.bossMinDate, false)
+              : null,
+          bossEndDate:
+            item.orderItemType === ORDER_ITEM_TYPE.BOSS
+              ? getDateInformation(store.shippingAddressDetails.bossMaxDate, false)
+              : null,
           // shows number of items from the store
           storeItemsCount: store ? +store.itemsCount : 0,
           orderItemType: item.orderItemType && item.orderItemType.toUpperCase(),

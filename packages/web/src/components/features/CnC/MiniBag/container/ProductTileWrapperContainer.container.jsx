@@ -6,9 +6,9 @@ import {
   getLabelsCartItemTile,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
 import { getOrderDetails } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.actions';
-import MiniBagView from '../views/MiniBag.view';
+import ProductTileWrapper from '../views/ProductTileWrapper.view';
 
-export class MiniBagContainer extends React.Component {
+export class ProductTileWrapperContainer extends React.Component {
   componentDidMount = () => {
     const { initialActions } = this.props;
     initialActions();
@@ -17,7 +17,7 @@ export class MiniBagContainer extends React.Component {
   render() {
     const { orderItems } = this.props;
     if (orderItems && orderItems.size > 0) {
-      return <MiniBagView {...this.props} />;
+      return <ProductTileWrapper {...this.props} />;
     }
     return <div />;
   }
@@ -37,11 +37,11 @@ export const mapDispatchToProps = dispatch => {
   };
 };
 
-MiniBagContainer.defaultProps = {
+ProductTileWrapperContainer.defaultProps = {
   orderItems: [],
 };
 
-MiniBagContainer.propTypes = {
+ProductTileWrapperContainer.propTypes = {
   orderItems: PropTypes.shape({}),
   initialActions: PropTypes.func.isRequired,
 };
@@ -49,4 +49,4 @@ MiniBagContainer.propTypes = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(MiniBagContainer);
+)(ProductTileWrapperContainer);

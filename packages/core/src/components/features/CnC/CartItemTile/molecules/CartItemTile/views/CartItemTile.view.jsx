@@ -4,6 +4,7 @@ import ProductEditForm from '@tcp/web/src/components/features/CnC/MiniBag/molecu
 import endpoints from '../../../../../../../service/endpoint';
 import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
 import { getIconPath, getLocator } from '../../../../../../../utils';
+import getModifiedString from '../../../utils';
 import ProductInformationStyle from '../styles/CartItemTile.style';
 
 class ProductTile extends React.Component {
@@ -232,15 +233,23 @@ class ProductTile extends React.Component {
             </Row>
             <Row className="padding-top-15 padding-bottom-20" fullBleed>
               <Col className="padding-left-13" colSize={{ small: 4, medium: 6, large: 8 }}>
-                <BodyCopy
-                  fontFamily="secondary"
-                  color="gray.600"
-                  component="span"
-                  fontSize="fs10"
-                  fontWeight={['extrabold']}
-                >
-                  I will pickup store at union square today
-                </BodyCopy>
+                {productDetail.miscInfo.store && (
+                  <BodyCopy
+                    fontFamily="secondary"
+                    color="gray.600"
+                    component="span"
+                    fontSize="fs10"
+                    fontWeight={['extrabold']}
+                  >
+                    {getModifiedString(
+                      labels,
+                      productDetail.miscInfo.store,
+                      productDetail.miscInfo.orderItemType,
+                      productDetail.miscInfo.bossStartDate,
+                      productDetail.miscInfo.bossEndDate
+                    )}
+                  </BodyCopy>
+                )}
               </Col>
               <Col colSize={{ small: 1, medium: 1, large: 3 }}>
                 <BodyCopy fontFamily="secondary" fontSize="fs12" component="span">
