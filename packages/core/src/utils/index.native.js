@@ -16,5 +16,6 @@ export {
   getIconPath,
   getLocator,
   getAPIConfig,
+  isCanada,
   createAPIConfig,
 } from './utils';
