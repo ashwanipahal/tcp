@@ -1,31 +1,36 @@
 import React from 'react';
 import { List } from 'immutable';
 import { shallow } from 'enzyme';
-import { MoneyCardsVanilla } from '../views/MoneyCards.native';
+import { CardsVanilla } from '../views/Cards.native';
 
-describe('MoneyCards Component', () => {
+describe('CardList Component', () => {
   it('should render correctly', () => {
     const props = {
       labels: {
-        creditCardHeading: 'heading',
         paymentGC: {},
         common: {},
       },
       className: 'abc',
-      creditCardList: List(),
+      cardList: List(),
+      heading: '',
+      cardImage: '',
+      emptyLabel: '',
+      description: '',
+      emptyBtnLabel: '',
+      addBtnLabel: '',
+      setDefaultPaymentMethod: jest.fn(),
     };
-    const tree = shallow(<MoneyCardsVanilla {...props} />);
+    const tree = shallow(<CardsVanilla {...props} />);
     expect(tree).toMatchSnapshot();
   });
   it('should render correctly if list is present', () => {
     const props = {
       labels: {
-        creditCardHeading: 'heading',
         paymentGC: {},
         common: {},
       },
       className: 'abc',
-      creditCardList: List([
+      cardList: List([
         {
           accountNo: '************1111',
           billingAddressId: 160685,
@@ -50,8 +55,15 @@ describe('MoneyCards Component', () => {
           properties: null,
         },
       ]),
+      heading: '',
+      cardImage: '',
+      emptyLabel: '',
+      description: '',
+      emptyBtnLabel: '',
+      addBtnLabel: '',
+      setDefaultPaymentMethod: jest.fn(),
     };
-    const tree = shallow(<MoneyCardsVanilla {...props} />);
+    const tree = shallow(<CardsVanilla {...props} />);
     expect(tree).toMatchSnapshot();
   });
 });

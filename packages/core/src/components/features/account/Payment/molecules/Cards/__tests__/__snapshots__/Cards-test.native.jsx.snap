@@ -1,26 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GiftCardList Component should render correctly 1`] = `
+exports[`CardList Component should render correctly 1`] = `
 <View
+  addBtnLabel=""
+  cardImage=""
+  cardList={Immutable.List []}
   className="abc"
-  giftCardList={Immutable.List []}
+  description=""
+  emptyBtnLabel=""
+  emptyLabel=""
+  heading=""
   labels={
     Object {
       "common": Object {},
-      "giftCardHeading": "heading",
       "paymentGC": Object {},
     }
   }
+  setDefaultPaymentMethod={[MockFunction]}
 >
   <Styled(Text) />
   <Styled(View)>
     <Styled(View)>
       <Styled(Image)
-        source={
-          Object {
-            "testUri": "../../../src/assets/images/gift-card.png",
-          }
-        }
+        source=""
       />
     </Styled(View)>
     <Styled(Text) />
@@ -41,10 +43,11 @@ exports[`GiftCardList Component should render correctly 1`] = `
 </View>
 `;
 
-exports[`GiftCardList Component should render correctly if list is present 1`] = `
+exports[`CardList Component should render correctly if list is present 1`] = `
 <View
-  className="abc"
-  giftCardList={
+  addBtnLabel=""
+  cardImage=""
+  cardList={
     Immutable.List [
       Object {
         "accountNo": "************1111",
@@ -71,13 +74,18 @@ exports[`GiftCardList Component should render correctly if list is present 1`] =
       },
     ]
   }
+  className="abc"
+  description=""
+  emptyBtnLabel=""
+  emptyLabel=""
+  heading=""
   labels={
     Object {
       "common": Object {},
-      "giftCardHeading": "heading",
       "paymentGC": Object {},
     }
   }
+  setDefaultPaymentMethod={[MockFunction]}
 >
   <Styled(Text) />
   <Styled(View)>
@@ -121,10 +129,10 @@ exports[`GiftCardList Component should render correctly if list is present 1`] =
     labels={
       Object {
         "common": Object {},
-        "giftCardHeading": "heading",
         "paymentGC": Object {},
       }
     }
+    setDefaultPaymentMethod={[MockFunction]}
   />
 </View>
 `;
