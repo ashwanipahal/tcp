@@ -12,7 +12,7 @@ class CouponCard extends React.Component<Props> {
     if (coupon.error !== '') {
       return (
         <div className="couponCard__container_error">
-          <BodyCopy component="p" fontSize="fs10" color="text.primary">
+          <BodyCopy component="p" fontSize="fs10" className="couponCard__container_error_text">
             {coupon.error}
           </BodyCopy>
         </div>

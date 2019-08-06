@@ -3,27 +3,35 @@ import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import CouponListSection from '../../../../common/organisms/CouponListSection';
 import CouponDetailModal from './CouponDetailModal.view';
+import CouponHelpModal from './CouponHelpModal.view';
 import styles from '../styles/Coupon.style';
 
 class CouponView extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      status: false,
+      detailStatus: false,
+      helpStatus: false,
       selectedCoupon: {},
     };
   }
 
   couponDetailClick = coupon => {
     this.setState({
-      status: true,
+      detailStatus: true,
       selectedCoupon: coupon,
+    });
+  };
+
+  helpAnchorClick = () => {
+    this.setState({
+      helpStatus: true,
     });
   };
 
   render() {
     const { labels, appliedCouponList, availableCouponList, className } = this.props;
-    const { status, selectedCoupon } = this.state;
+    const { detailStatus, helpStatus, selectedCoupon } = this.state;
     return (
       <div className={className}>
         {appliedCouponList && (
@@ -43,18 +51,30 @@ class CouponView extends React.PureComponent<Props> {
             heading={labels.AVAILABLE_REWARDS_HEADING}
             helpSubHeading="true"
             couponDetailClick={this.couponDetailClick}
+            helpAnchorClick={this.helpAnchorClick}
           />
         )}
         <CouponDetailModal
           labels={labels}
-          openState={status}
+          openState={detailStatus}
           coupon={selectedCoupon}
           onRequestClose={() => {
             this.setState({
-              status: false,
+              detailStatus: false,
             });
           }}
           applyToBag={() => {}}
+        />
+        <CouponHelpModal
+          labels={labels}
+          openState={helpStatus}
+          coupon={selectedCoupon}
+          onRequestClose={() => {
+            this.setState({
+              helpStatus: false,
+            });
+          }}
+          heading="Help Modal"
         />
       </div>
     );

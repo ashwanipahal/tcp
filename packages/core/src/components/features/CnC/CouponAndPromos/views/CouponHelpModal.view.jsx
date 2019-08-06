@@ -8,12 +8,11 @@ class CouponHelpModal extends React.PureComponent<Props> {
       <Modal
         isOpen={openState}
         onRequestClose={onRequestClose}
-        heading={heading}
         overlayClassName="TCPModal__Overlay"
         className="TCPModal__Content"
         maxWidth="460px"
         minHeight="500px"
-        closeIconDataLocator="addressdeletemodalcrossicon"
+        closeIconDataLocator="helpmodalcrossicon"
       >
         <div>{heading}</div>
       </Modal>

@@ -44,8 +44,17 @@ const styles = css`
     color: ${props => props.theme.colors.WHITE};
     font-size: ${props => props.theme.typography.fontSizes.fs10};
   }
+  .coupon__button_black:hover,
+  .coupon__button_black:focus {
+    background-color: ${props => props.theme.colors.PRIMARY.GRAY};
+    color: ${props => props.theme.colors.WHITE};
+  }
+
   .coupon__button_white {
     font-size: ${props => props.theme.typography.fontSizes.fs10};
+  }
+  .couponCard__container_error_text {
+    color: ${props => props.theme.colors.TEXT.RED};
   }
 `;
 

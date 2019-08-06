@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getCouponList } from './Coupon.actions';
 import {
@@ -28,6 +29,12 @@ export class CouponContainer extends React.Component<Props> {
     );
   }
 }
+
+CouponContainer.propTypes = {
+  labels: PropTypes.shape({}).isRequired,
+  appliedCouponList: PropTypes.shape({}).isRequired,
+  availableCouponList: PropTypes.shape({}).isRequired,
+};
 
 export const mapDispatchToProps = dispatch => {
   return {

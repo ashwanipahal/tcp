@@ -24,6 +24,12 @@ class CouponListSection extends React.Component<Props> {
     event.preventDefault();
   };
 
+  helpAnchorClick = event => {
+    const { helpAnchorClick } = this.props;
+    helpAnchorClick();
+    event.preventDefault();
+  };
+
   render() {
     const {
       labels,
@@ -59,6 +65,7 @@ class CouponListSection extends React.Component<Props> {
                 anchorVariation="primary"
                 fontSize="fs10"
                 data-locator="couponcard-help-applying"
+                onClick={this.helpAnchorClick}
               >
                 {labels.HELP_APPLYING}
               </Anchor>
@@ -93,7 +100,6 @@ class CouponListSection extends React.Component<Props> {
               anchorVariation="primary"
               fontSize="fs10"
               data-locator="couponcard-help-applying"
-              to="/#"
               onClick={this.toggleShow}
             >
               {buttonText}
