@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ProductCustomizeForm } from '../organisms/ProductCustomizeForm';
+import { ProductCustomizeForm } from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ProductCustomizeForm/ProductCustomizeForm';
 
 describe('ProductCustomizeForm Component', () => {
   let component;
@@ -25,6 +25,10 @@ describe('ProductCustomizeForm Component', () => {
         itemPartNumber: '00193511087773',
       },
     },
+    labels: {
+      update: '',
+      cancel: '',
+    },
   };
 
   const state = {
@@ -45,7 +49,7 @@ describe('ProductCustomizeForm Component', () => {
   });
 
   it('ProductCustomizeForm should render correctly', () => {
-    component.find('.CartItemEditableForm').simulate('submit', {
+    component.find('.button-wrapper').simulate('submit', {
       preventDefault: () => {},
     });
     expect(component).toMatchSnapshot();

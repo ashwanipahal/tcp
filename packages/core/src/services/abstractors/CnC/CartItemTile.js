@@ -21,6 +21,25 @@ const ORDER_ITEM_TYPE = {
   ECOM: 'ECOM',
 };
 
+export const imageGenerator = (id, excludeExtension) => {
+  return {
+    colorSwatch: getSwatchImgPath(id, excludeExtension),
+    productImages: getProductImgPath(id, excludeExtension),
+  };
+};
+
+export const getSwatchImgPath = (id, excludeExtension) => {
+  return `/wcsstore/GlobalSAS/images/tcp/products/swatches/${id}${excludeExtension ? '' : '.jpg'}`;
+};
+
+export const getProductImgPath = (id, excludeExtension) => {
+  return {
+    125: `/wcsstore/GlobalSAS/images/tcp/products/125/${id}${excludeExtension ? '' : '.jpg'}`,
+    380: `/wcsstore/GlobalSAS/images/tcp/products/380/${id}${excludeExtension ? '' : '.jpg'}`,
+    500: `/wcsstore/GlobalSAS/images/tcp/products/500/${id}${excludeExtension ? '' : '.jpg'}`,
+    900: `/wcsstore/GlobalSAS/images/tcp/products/900/${id}${excludeExtension ? '' : '.jpg'}`,
+  };
+};
 export const COUPON_STATUS = {
   AVAILABLE: 'available',
   EXPIRING_SOON: 'expiration-limit',
@@ -468,7 +487,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
           itemPartNumber: item.itemPartNumber,
           variantNo: item.variantNo,
           name: sanitizeEntity(item.productInfo.productName),
-          // imagePath: imageGenerator(item.productInfo.productPartNumber).productImages[500],
+          imagePath: imageGenerator(item.productInfo.productPartNumber).productImages[500],
           upc: item.itemPartNumber,
           size: sizeAndFit ? sizeAndFit.TCPSize : item.itemUnitDstPrice, // giftCard Size is its price
           fit: sizeAndFit ? sizeAndFit.TCPFit : null, // no fit for gift cards
@@ -483,6 +502,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
           colorFitSizeDisplayNames: isGiftCard ? { color: 'Design', size: 'Value' } : EMPTY_OBJECT,
           // added to read type of order for the item
           orderType: item.orderItemType,
+          itemBrand: item.itemBrand,
         },
         itemInfo: {
           quantity: parseInt(item.qty),
@@ -530,8 +550,14 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
           // availability: deriveItemAvailability(orderDetailsResponse, item, store),
           vendorColorDisplayId: item.productInfo && item.productInfo.productPartNumber,
           // dates for boss pickup, used getDateInformation utility
-          // bossStartDate: item.orderItemType === ORDER_ITEM_TYPE.BOSS ? getDateInformation(store.shippingAddressDetails.bossMinDate, false) : null,
-          // bossEndDate: item.orderItemType === ORDER_ITEM_TYPE.BOSS ? getDateInformation(store.shippingAddressDetails.bossMaxDate, false) : null,
+          bossStartDate:
+            item.orderItemType === ORDER_ITEM_TYPE.BOSS
+              ? getDateInformation(store.shippingAddressDetails.bossMinDate, false)
+              : null,
+          bossEndDate:
+            item.orderItemType === ORDER_ITEM_TYPE.BOSS
+              ? getDateInformation(store.shippingAddressDetails.bossMaxDate, false)
+              : null,
           // shows number of items from the store
           storeItemsCount: store ? +store.itemsCount : 0,
           orderItemType: item.orderItemType && item.orderItemType.toUpperCase(),
