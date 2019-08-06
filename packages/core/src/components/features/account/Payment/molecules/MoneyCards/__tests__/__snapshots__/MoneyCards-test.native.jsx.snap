@@ -6,7 +6,9 @@ exports[`MoneyCards Component should render correctly 1`] = `
   creditCardList={Immutable.List []}
   labels={
     Object {
+      "common": Object {},
       "creditCardHeading": "heading",
+      "paymentGC": Object {},
     }
   }
 >
@@ -70,7 +72,9 @@ exports[`MoneyCards Component should render correctly if list is present 1`] = `
   }
   labels={
     Object {
+      "common": Object {},
       "creditCardHeading": "heading",
+      "paymentGC": Object {},
     }
   }
 >
@@ -114,7 +118,9 @@ exports[`MoneyCards Component should render correctly if list is present 1`] = `
     }
     labels={
       Object {
+        "common": Object {},
         "creditCardHeading": "heading",
+        "paymentGC": Object {},
       }
     }
   />

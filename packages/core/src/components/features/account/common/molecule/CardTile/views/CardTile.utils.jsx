@@ -16,13 +16,13 @@ const getDataLocatorPrefix = ({ card }) => {
 const getCardName = ({ card, labels }) => {
   switch (card.ccType) {
     case 'GiftCard':
-      return labels.ACC_LBL_GIFT_CARD;
+      return labels.paymentGC.lbl_payment_giftCard;
     case 'PLACE CARD':
-      return labels.ACC_LBL_PLCC_CARD;
+      return labels.paymentGC.lbl_payment_plccCard;
     case 'VENMO':
-      return labels.ACC_LBL_VENMO_ACCOUNT;
+      return labels.paymentGC.lbl_payment_venmoAccount;
     default:
-      return labels.ACC_LBL_DEFAULT_CARD_NAME;
+      return labels.paymentGC.lbl_payment_defaultCardName;
   }
 };
 
@@ -62,7 +62,7 @@ const loading = (isGiftCardBalanceRequested, labels, balance) => {
           className=""
           lineHeights="lh115"
         >
-          {labels.ACC_LBL_LOADING}
+          {labels.paymentGC.lbl_payment_loading}
         </BodyCopy>
       )}
     </React.Fragment>

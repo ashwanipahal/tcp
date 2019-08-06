@@ -34,7 +34,12 @@ exports[`Add gift card component should render component correctly if add gift i
     form="AddGiftCardForm"
     getFormState={[Function]}
     keepDirtyOnReinitialize={false}
-    labels={Object {}}
+    labels={
+      Object {
+        "common": Object {},
+        "paymentGC": Object {},
+      }
+    }
     onAddGiftCardClick={[MockFunction]}
     persistentSubmitErrors={false}
     pure={true}
@@ -85,7 +90,12 @@ exports[`Add gift card component should render component correctly if add gift i
     form="AddGiftCardForm"
     getFormState={[Function]}
     keepDirtyOnReinitialize={false}
-    labels={Object {}}
+    labels={
+      Object {
+        "common": Object {},
+        "paymentGC": Object {},
+      }
+    }
     onAddGiftCardClick={[MockFunction]}
     persistentSubmitErrors={false}
     pure={true}

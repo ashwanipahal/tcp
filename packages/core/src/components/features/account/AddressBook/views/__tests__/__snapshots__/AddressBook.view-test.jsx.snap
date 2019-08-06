@@ -60,27 +60,19 @@ exports[`AddressBook component should renders correctly when addresses are not p
         "small": 6,
       }
     }
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(AddressView)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-jzJRlG",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
+  />
+  <Styled(DeleteAddressModal)
+    data={
+      Object {
+        "buttons": Object {
+          "cancel": undefined,
+          "confirm": undefined,
+        },
+        "description": Object {},
+        "heading": undefined,
+        "title": undefined,
+      }
     }
-<<<<<<< HEAD
-  }
-  forwardedRef={null}
-  labels={Object {}}
-/>
-=======
     labels={
       Object {
         "addressBook": Object {},
@@ -89,86 +81,77 @@ exports[`AddressBook component should renders correctly when addresses are not p
     }
   />
 </div>
->>>>>>> origin/RELEASE-1-RWD
 `;
 
 exports[`AddressBook component should renders correctly when addresses are present 1`] = `
-<StyledComponent
-  addresses={
-    Immutable.List [
+<div>
+  <Styled(Row)
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(HeadingStyle)
+        HeadingLarge="six"
+        className="addressBook__separator"
+        fontFamily="secondaryFontFamily"
+        tag="h4"
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="addressBook__row--marginBottom"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      className="addressBook__addNewCtaContainer"
+      colSize={
+        Object {
+          "large": 10,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(Button)
+        buttonVariation="variable-width"
+        data-locator="addressbook-addnewaddress"
+        fill="BLUE"
+        onClick={[Function]}
+      />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Notification)
+    colSize={
       Object {
-        "addressLine": Array [
-          "addressline 1",
-          "addressline 2",
-        ],
-        "city": "test city",
-        "country": "test country",
-        "firstName": "test",
-        "lastName": "test",
-        "phone1": "1234567890",
-      },
-    ]
-  }
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-jzJRlG",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  .addressBook__separator {
-    border-bottom: 3px solid ",
-          [Function],
-          ";
-    padding-bottom: ",
-          [Function],
-          ";
-    margin-bottom: ",
-          [Function],
-          ";
-  }
-
-  .addressBook__row--marginBottom {
-    margin-bottom: ",
-          [Function],
-          ";
-  }
-
-  .addressBook__addNewCtaContainer {
-    text-align: center;
-  }
-
-  @media ",
-          [Function],
-          " {
-    .addressBook__addNewCtaContainer {
-      text-align: left;
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
     }
-<<<<<<< HEAD
-  }
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(AddressView)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-jzJRlG",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
+  />
+  <Styled(AddressList)
+    addresses={
+      Immutable.List [
+        Object {
+          "addressLine": Array [
+            "addressline 1",
+            "addressline 2",
+          ],
+          "city": "test city",
+          "country": "test country",
+          "firstName": "test",
+          "lastName": "test",
+          "phone1": "1234567890",
+        },
+      ]
     }
-  }
-  forwardedRef={null}
-  labels={Object {}}
-/>
-=======
     labels={
       Object {
         "addressBook": Object {},
@@ -197,5 +180,4 @@ exports[`AddressBook component should renders correctly when addresses are prese
     }
   />
 </div>
->>>>>>> origin/RELEASE-1-RWD
 `;

@@ -1,16 +1,18 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { LoginForm } from '../LoginForm.view.native';
+import { LoginFormVanilla } from '../LoginForm.view.native';
 
 describe('LoginForm component', () => {
   it('should renders correctly', () => {
     const props = {
-      labels: {},
+      labels: {
+        login: {},
+      },
       handleSubmit: () => {},
       onSubmit: () => {},
       loginErrorMessage: '',
     };
-    const component = shallow(<LoginForm {...props} />);
+    const component = shallow(<LoginFormVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

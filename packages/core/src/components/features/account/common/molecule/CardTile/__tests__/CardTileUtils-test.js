@@ -1,5 +1,4 @@
 import { getDataLocatorPrefix, getCardName } from '../views/CardTile.utils';
-import labels from '../../../../Payment/container/Payment.labels';
 
 describe('CardTile utils', () => {
   it('should call getDataLocatorPrefix with default', () => {
@@ -24,24 +23,48 @@ describe('CardTile utils', () => {
     const card = {
       ccType: 'credit',
     };
-    expect(getCardName({ card, labels })).toEqual(labels.ACC_LBL_DEFAULT_CARD_NAME);
+    const labels = {
+      paymentGC: {
+        lbl_payment_defaultCardName: 'Credit Card',
+      },
+      common: {},
+    };
+    expect(getCardName({ card, labels })).toEqual(labels.paymentGC.lbl_payment_defaultCardName);
   });
   it('should call getCardName with GiftCard', () => {
     const card = {
       ccType: 'GiftCard',
     };
-    expect(getCardName({ card, labels })).toEqual(labels.ACC_LBL_GIFT_CARD);
+    const labels = {
+      paymentGC: {
+        lbl_payment_giftCard: 'Gift Card Name',
+      },
+      common: {},
+    };
+    expect(getCardName({ card, labels })).toEqual(labels.paymentGC.lbl_payment_giftCard);
   });
   it('should call placecard with GiftCard', () => {
     const card = {
       ccType: 'PLACE CARD',
     };
-    expect(getCardName({ card, labels })).toEqual(labels.ACC_LBL_PLCC_CARD);
+    const labels = {
+      paymentGC: {
+        lbl_payment_plccCard: 'My Place Rewards Credit Card',
+      },
+      common: {},
+    };
+    expect(getCardName({ card, labels })).toEqual(labels.paymentGC.lbl_payment_plccCard);
   });
   it('should call venmo with GiftCard', () => {
     const card = {
       ccType: 'VENMO',
     };
-    expect(getCardName({ card, labels })).toEqual(labels.ACC_LBL_VENMO_ACCOUNT);
+    const labels = {
+      paymentGC: {
+        lbl_payment_venmoAccount: 'Your Venmo Account',
+      },
+      common: {},
+    };
+    expect(getCardName({ card, labels })).toEqual(labels.paymentGC.lbl_payment_venmoAccount);
   });
 });

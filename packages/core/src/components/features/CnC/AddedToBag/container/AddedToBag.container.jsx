@@ -19,7 +19,8 @@ export class AddedToBagContainer extends React.Component<Props> {
     this.closeModal = this.closeModal.bind(this);
   }
 
-  closeModal() {
+  closeModal(event) {
+    if (event) event.preventDefault();
     const { closeModal } = this.props;
     closeModal();
   }
@@ -33,6 +34,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         addedToBagData={addedToBagData}
         labels={labels}
         quantity={quantity}
+        handleContinueShopping={this.closeModal}
       />
     );
   }
@@ -47,6 +49,8 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
 };
 
 const mapStateToProps = state => {
+  // ----------- commenting usage of labels as we are getting labels values from backend intermittently. ------------
+
   const {
     bag: {
       addedToBag: {
@@ -56,8 +60,6 @@ const mapStateToProps = state => {
         lbl_bossBanner_headingDefault: pickUpText,
         lbl_bossBanner_subHeadingDefault: simplyChooseText,
         lbl_bossBanner_noRush: noRushText,
-        lbl_cta_viewBag: viewBag,
-        lbl_cta_checkout: checkout,
         lbl_info_price: price,
         lbl_info_pointYouCanEarn: pointsYouCanEarn,
         lbl_info_subTotal: bagSubTotal,
@@ -66,6 +68,7 @@ const mapStateToProps = state => {
         lbl_header_addedToBag: addedToBag,
         lbl_info_giftDesign: giftDesign,
         lbl_info_giftValue: giftValue,
+        lbl_footer_continueShopping: continueShopping,
       },
     },
   } = state.Labels;
@@ -80,8 +83,6 @@ const mapStateToProps = state => {
       pickUpText,
       simplyChooseText,
       noRushText,
-      viewBag,
-      checkout,
       price,
       pointsYouCanEarn,
       bagSubTotal,
@@ -90,6 +91,7 @@ const mapStateToProps = state => {
       addedToBag,
       giftDesign,
       giftValue,
+      continueShopping,
     },
   };
 };

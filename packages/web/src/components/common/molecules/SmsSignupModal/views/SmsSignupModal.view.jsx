@@ -114,7 +114,7 @@ class SmsSignupModal extends React.PureComponent {
           noPadding
           widthConfig={{ small: '375px', medium: '458px', large: '851px' }}
           closeIconDataLocator={
-            subscription ? 'thank_you_modal_close_btn' : 'email_signupPhoneNumber_modal_close_btn'
+            subscription.success ? 'thank_you_modal_close_btn' : 'sms_signup_modal_close_btn'
           }
           contentLabel={`${formViewConfig.signUpForLabel} ${formViewConfig.offerTypeLabel}`}
           aria={{

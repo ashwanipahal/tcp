@@ -5,13 +5,17 @@ import { NavBarVanilla as NavBar } from '../NavBar';
 
 describe('NavBar component', () => {
   it('renders correctly', () => {
-    const NavBarComp = shallow(<NavBar nav={mock.data.navigation} />);
+    const NavBarComp = shallow(
+      <NavBar nav={mock.data.navigation} openL2Drawer={() => {}} hideL2Drawer={() => {}} />
+    );
 
     expect(NavBarComp).toMatchSnapshot();
   });
 
   it('DOM loaded perfectly', () => {
-    const NavBarComp = shallow(<NavBar nav={mock.data.navigation} />);
+    const NavBarComp = shallow(
+      <NavBar nav={mock.data.navigation} openL2Drawer={() => {}} hideL2Drawer={() => {}} />
+    );
 
     expect(NavBarComp.find('.nav-bar-l1')).toHaveLength(1);
   });

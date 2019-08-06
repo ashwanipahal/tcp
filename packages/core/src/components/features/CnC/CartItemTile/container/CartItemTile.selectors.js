@@ -5,14 +5,14 @@ import { createSelector } from 'reselect';
 
 export const getCartOrderList = state => {
   // needs to do it with get method.
-  return state.CartPage.orderDetails.orderItems;
+  return state.CartPageReducer.getIn(['orderDetails', 'orderItems']);
 };
 
 export const getEditableProductInfo = state => {
   // needs to do it with get method.
-  return state.CartPage.editableItemData;
+  return state.CartItemTileReducer.get('editableItemData');
 };
 
 export const getCartOrderDetails = state => {
-  return state.CartPage.orderDetails;
+  return state.CartPageReducer.get('orderDetails');
 };

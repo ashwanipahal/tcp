@@ -16,8 +16,5 @@ exports[`Drawer component renders correctly 1`] = `
       Renders correctly
     </div>
   </aside>
-  <div
-    className="tcp-drawer-overlay display-small-none display-medium-none display-large-none"
-  />
 </div>
 `;

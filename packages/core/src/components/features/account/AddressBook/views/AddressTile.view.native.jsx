@@ -73,20 +73,24 @@ class AddressBookTile extends React.Component<Props> {
           <View>
             {address.primary === 'true' && (
               <Badge showCheckmark dataLocator="addressbook-defshippinglabel">
-                {labels.defaultShipping}
+                {labels.addressBook.ACC_LBL_DEFAULT_SHIPPING}
               </Badge>
             )}
             {address.xcont_isDefaultBilling === 'true' && (
               <Badge showCheckmark dataLocator="addressbook-defbillinglabel">
-                {labels.defaultBilling}
+                {labels.addressBook.ACC_LBL_DEFAULT_BILLING}
               </Badge>
             )}
             {address.xcont_isDefaultBilling !== 'true' &&
               address.xcont_isBillingAddress === 'true' && (
-                <Badge dataLocator="addressbook-billinglabel">{labels.billing}</Badge>
+                <Badge dataLocator="addressbook-billinglabel">
+                  {labels.addressBook.ACC_LBL_BILLING}
+                </Badge>
               )}
             {address.primary !== 'true' && address.xcont_isShippingAddress === 'true' && (
-              <Badge dataLocator="addressbook-shippinglabel">{labels.shipping}</Badge>
+              <Badge dataLocator="addressbook-shippinglabel">
+                {labels.addressBook.ACC_LBL_SHIPPING}
+              </Badge>
             )}
           </View>
         </AddressTileContext>
@@ -97,7 +101,7 @@ class AddressBookTile extends React.Component<Props> {
               underline
               to="/#"
               anchorVariation="primary"
-              text={labels.edit}
+              text={labels.common.lbl_common_edit}
             />
           </AddressLinkLeftMargin>
           <Anchor
@@ -105,7 +109,7 @@ class AddressBookTile extends React.Component<Props> {
             underline
             to="/#"
             anchorVariation="primary"
-            text={labels.delete}
+            text={labels.common.lbl_common_delete}
           />
         </AddressLinks>
       </AddressTileWrapper>

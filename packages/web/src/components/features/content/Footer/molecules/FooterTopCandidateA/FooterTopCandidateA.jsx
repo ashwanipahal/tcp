@@ -5,6 +5,7 @@ import { reduxForm } from 'redux-form';
 import { Grid } from '@tcp/core/src/components/common/molecules';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { formatPhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
+import { getLocator } from '@tcp/core/src/utils';
 
 import SocialMediaLinks from '../SocialMediaLinks';
 /* TODO move to component itself */
@@ -180,8 +181,7 @@ class FooterTopCandidateA extends React.PureComponent {
                   <Button
                     id="extole_zone_global_footer"
                     buttonVariation="variable-width"
-                    type="refer_a"
-                    data-locator="refer_a_btn"
+                    data-locator={getLocator('refer_friend')}
                   >
                     {referAFriendButton.text}
                   </Button>

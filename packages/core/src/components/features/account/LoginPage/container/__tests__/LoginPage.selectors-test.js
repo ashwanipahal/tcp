@@ -4,6 +4,7 @@ import {
   getLoginError,
   getLoginErrorMessage,
   shouldShowRecaptcha,
+  getLabels,
 } from '../LoginPage.selectors';
 import { LOGINPAGE_REDUCER_KEY } from '../../../../../../constants/reducer.constants';
 
@@ -59,5 +60,16 @@ describe('#LoginPage selector', () => {
       }),
     };
     expect(shouldShowRecaptcha(initialState)).toEqual(false);
+  });
+
+  it('#getLabels should return labels', () => {
+    const state = {
+      Labels: {
+        global: {},
+      },
+    };
+    const returnedLabels = {};
+
+    expect(getLabels(state)).toMatchObject(returnedLabels);
   });
 });

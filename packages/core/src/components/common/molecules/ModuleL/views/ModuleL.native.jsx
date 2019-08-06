@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { FlatList } from 'react-native';
-import { UrlHandler, getScreenWidth } from '../../../../../utils/utils.native';
+import { UrlHandler, getScreenWidth } from '../../../../../utils/index.native';
 import { Image, BodyCopy, Anchor } from '../../../atoms';
 import LinkText from '../../LinkText';
 import {
@@ -12,6 +12,12 @@ import {
   LinkContainer,
   ListContainer,
 } from '../ModuleL.styles.native';
+
+type Props = {
+  imageGrid: Array<Object>,
+  headerText: Array<Object>,
+  navigation: Object,
+};
 
 /**
  * To enable the anchorIcon.
@@ -32,41 +38,31 @@ const keyExtractor = (_, index) => index.toString();
  * @return {node} function returns module L single element item.
  */
 
-const renderitem = item => {
+const renderItem = (item, navigation) => {
   const {
     item: { image, link },
   } = item;
   return (
-    <ChildContainer
-      onPress={() => {
-        UrlHandler(link.url);
-      }}
-    >
-      <Image url={image.url} height={127} crop={image.crop_m} />
-      <MessageContainer>
-        <BodyCopyContainer width={width}>
-          <BodyCopy
-            fontSize="fs20"
-            color="black"
-            letterSpacing="ls222"
-            text={image.alt}
-            onPress={() => {
-              UrlHandler(link.url);
-            }}
-          />
-        </BodyCopyContainer>
-        <LinkContainer>
-          <Anchor
-            fontSizeVariation="xlarge"
-            text={link.text}
-            visible={anchorIcon}
-            onPress={() => {
-              UrlHandler(link.url);
-            }}
-          />
-        </LinkContainer>
-      </MessageContainer>
-    </ChildContainer>
+    <Anchor url={link.url} navigation={navigation} external={link.external}>
+      <ChildContainer>
+        <Image url={image.url} height={127} crop={image.crop_m} />
+        <MessageContainer>
+          <BodyCopyContainer width={width}>
+            <BodyCopy fontSize="fs20" color="black" letterSpacing="ls222" text={image.alt} />
+          </BodyCopyContainer>
+          <LinkContainer>
+            <Anchor
+              fontSizeVariation="xlarge"
+              text={link.text}
+              visible={anchorIcon}
+              url={link.url}
+              navigation={navigation}
+              external={link.external}
+            />
+          </LinkContainer>
+        </MessageContainer>
+      </ChildContainer>
+    </Anchor>
   );
 };
 
@@ -78,7 +74,7 @@ const renderitem = item => {
  */
 
 const ModuleL = (props: Props) => {
-  const { imageGrid, headerText } = props;
+  const { imageGrid, headerText, navigation } = props;
   return (
     <Container>
       <LinkText
@@ -95,7 +91,11 @@ const ModuleL = (props: Props) => {
         }}
       />
       <ListContainer>
-        <FlatList keyExtractor={keyExtractor} data={imageGrid} renderItem={renderitem} />
+        <FlatList
+          keyExtractor={keyExtractor}
+          data={imageGrid}
+          renderItem={item => renderItem(item, navigation)}
+        />
       </ListContainer>
     </Container>
   );

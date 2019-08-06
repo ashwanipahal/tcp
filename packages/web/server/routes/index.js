@@ -30,8 +30,8 @@ const RoutesMap = [
     withoutCountryCode: true,
   },
   {
-    path: '/cart',
-    resolver: '/cart',
+    path: '/bag',
+    resolver: '/Bag',
   },
   { path: '/cookiesTesting', resolver: '/cookiesTesting' },
 ];

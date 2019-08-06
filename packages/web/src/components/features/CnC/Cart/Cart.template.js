@@ -1,1 +1,1 @@
-export { default } from '@tcp/core/src/components/features/CnC/CartItemTile';
+export { default } from '@tcp/core/src/components/features/CnC/BagPage';
