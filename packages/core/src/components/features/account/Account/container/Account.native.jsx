@@ -44,6 +44,8 @@ class Account extends React.PureComponent<Props, State> {
         return 'paymentGiftCardsPageMobile';
       case 'myPlaceRewardsMobile':
         return 'myPlaceRewardsMobile';
+      case 'accountOverviewMobile':
+        return 'accountOverview';
       default:
         return 'addressBookMobile';
     }
