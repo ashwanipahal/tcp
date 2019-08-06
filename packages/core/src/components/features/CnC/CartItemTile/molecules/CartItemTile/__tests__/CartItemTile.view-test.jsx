@@ -6,13 +6,15 @@ describe('BossBannerView component', () => {
   it('renders correctly', () => {
     const props = {
       productDetail: {
-        name: 'Boys Basic Skinny Jeans',
-        qty: '1',
-        size: '1',
-        price: 123,
-        myPlacePoints: 123,
-        isGiftItem: true,
-        fit: 'regular',
+        itemInfo: {
+          name: 'Boys Basic Skinny Jeans',
+          qty: '1',
+          size: '1',
+          price: 123,
+          myPlacePoints: 123,
+          isGiftItem: true,
+          fit: 'regular',
+        },
       },
       labels: {
         color: 'Color',

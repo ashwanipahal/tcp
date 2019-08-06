@@ -52,6 +52,14 @@ export const getProductImage = product => {
   return product.getIn(['productInfo', 'imagePath']);
 };
 
+export const getProductPartNumber = product => {
+  return product.getIn(['productInfo', 'productPartNumber']);
+};
+
+export const getProductItemPartNumber = product => {
+  return product.getIn(['productInfo', 'itemPartNumber']);
+};
+
 export const getLabelsCartItemTile = state => {
   const {
     bag: {
@@ -75,15 +83,21 @@ export const getLabelsCartItemTile = state => {
 
 export const getProductDetails = tile => {
   return {
-    name: getProductName(tile),
-    isGiftItem: checkForGiftItem(tile),
-    fit: getProductFit(tile),
-    color: getProductColor(tile),
-    size: getProductSize(tile),
-    price: getProductOfferPrice(tile),
-    qty: getProductQty(tile),
-    myPlacePoints: getProductPoints(tile),
-    itemBrand: getProductBrand(tile),
-    imagePath: getProductImage(tile),
+    itemInfo: {
+      name: getProductName(tile),
+      isGiftItem: checkForGiftItem(tile),
+      fit: getProductFit(tile),
+      color: getProductColor(tile),
+      size: getProductSize(tile),
+      price: getProductOfferPrice(tile),
+      qty: getProductQty(tile),
+      myPlacePoints: getProductPoints(tile),
+      itemBrand: getProductBrand(tile),
+      imagePath: getProductImage(tile),
+    },
+    productInfo: {
+      productPartNumber: getProductPartNumber(tile),
+      itemPartNumber: getProductItemPartNumber(tile),
+    },
   };
 };

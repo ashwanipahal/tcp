@@ -99,15 +99,13 @@ exports[`BossBannerView component renders correctly 1`] = `
       <Styled(Row)
         className="padding-top-10"
       >
-        <div
-          className="itemList"
-        >
+        <div>
           <Styled(BodyCopy)
             className={null}
             color="text.primary"
             component="span"
             fontFamily="secondary"
-            fontSize="fs13"
+            fontSize="fs12"
             fontWeight={
               Array [
                 "extrabold",
@@ -126,7 +124,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             component="span"
             dataLocator="addedtobag-productcolor"
             fontFamily="secondary"
-            fontSize="fs13"
+            fontSize="fs12"
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
@@ -136,14 +134,14 @@ exports[`BossBannerView component renders correctly 1`] = `
           </Styled(BodyCopy)>
         </div>
         <div
-          className="itemList padding-left"
+          className="padding-left"
         >
           <Styled(BodyCopy)
             className={null}
             color="text.primary"
             component="span"
             fontFamily="secondary"
-            fontSize="fs13"
+            fontSize="fs12"
             fontWeight={
               Array [
                 "extrabold",
@@ -162,7 +160,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             component="span"
             dataLocator="addedtobag-productsize"
             fontFamily="secondary"
-            fontSize="fs13"
+            fontSize="fs12"
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
@@ -172,14 +170,14 @@ exports[`BossBannerView component renders correctly 1`] = `
           </Styled(BodyCopy)>
         </div>
         <div
-          className="itemList padding-left"
+          className="padding-left"
         >
           <Styled(BodyCopy)
             className={null}
             color="text.primary"
             component="span"
             fontFamily="secondary"
-            fontSize="fs13"
+            fontSize="fs12"
             fontWeight={
               Array [
                 "extrabold",
@@ -198,7 +196,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             component="span"
             dataLocator="addedtobag-productsize"
             fontFamily="secondary"
-            fontSize="fs13"
+            fontSize="fs12"
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
@@ -208,14 +206,14 @@ exports[`BossBannerView component renders correctly 1`] = `
           </Styled(BodyCopy)>
         </div>
         <div
-          className="itemList padding-left"
+          className="padding-left"
         >
           <Styled(BodyCopy)
             className={null}
             color="text.primary"
             component="span"
             fontFamily="secondary"
-            fontSize="fs13"
+            fontSize="fs12"
             fontWeight={
               Array [
                 "extrabold",
@@ -234,7 +232,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             component="span"
             dataLocator="addedtobag-productqty"
             fontFamily="secondary"
-            fontSize="fs13"
+            fontSize="fs12"
             fontWeight="regular"
             letterSpacing="normal"
             lineHeight="normal"
@@ -277,7 +275,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             color="text.primary"
             component="span"
             fontFamily="secondary"
-            fontSize="fs13"
+            fontSize="fs12"
             fontWeight={
               Array [
                 "extrabold",
@@ -304,7 +302,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             color="text.primary"
             component="span"
             fontFamily="secondary"
-            fontSize="fs13"
+            fontSize="fs12"
             fontWeight={
               Array [
                 "extrabold",
@@ -333,7 +331,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             color="text.primary"
             component="span"
             fontFamily="secondary"
-            fontSize="fs13"
+            fontSize="fs12"
             fontWeight={
               Array [
                 "extrabold",
@@ -360,7 +358,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             color="text.primary"
             component="span"
             fontFamily="secondary"
-            fontSize="fs13"
+            fontSize="fs12"
             fontWeight={
               Array [
                 "extrabold",

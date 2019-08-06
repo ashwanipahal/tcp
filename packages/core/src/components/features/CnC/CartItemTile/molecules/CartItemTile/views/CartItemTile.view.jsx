@@ -12,42 +12,15 @@ class ProductTile extends React.Component {
     this.state = {
       isEdit: false,
     };
-    this.item = {
-      itemInfo: {
-        quantity: 4,
-        itemId: '3001550090',
-        itemPoints: 234,
-        listPrice: 78,
-        offerPrice: 78,
-        wasPrice: 19.5,
-        salePrice: 19.5,
-      },
-      miscInfo: {
-        isOnlineOnly: false,
-        isBopisEligible: true,
-        isBossEligible: true,
-        badge: { matchBadge: false, defaultBadge: '' },
-        store: null,
-        storeId: null,
-        storeAddress: null,
-        storePhoneNumber: null,
-        vendorColorDisplayId: '3000627_635',
-        storeItemsCount: 0,
-        orderItemType: 'ECOM',
-      },
-      productInfo: {
-        itemPartNumber: '1234',
-      },
-    };
   }
 
   render() {
     const { isEdit } = this.state;
     const { productDetail, labels } = this.props;
     const initialValues = {
-      color: { name: productDetail.color },
-      fit: productDetail.fit,
-      size: productDetail.size,
+      color: { name: productDetail.itemInfo.color },
+      fit: productDetail.itemInfo.fit,
+      size: productDetail.itemInfo.size,
     };
     return (
       <ProductInformationStyle>
@@ -56,15 +29,15 @@ class ProductTile extends React.Component {
             <Image
               alt="Product"
               className="product-image"
-              src={endpoints.global.baseURI + productDetail.imagePath}
+              src={endpoints.global.baseURI + productDetail.itemInfo.imagePath}
               data-locator="addedtobag-productimage"
             />
-            {!productDetail.isGiftItem && (
+            {!productDetail.itemInfo.isGiftItem && (
               <Image
                 alt="Brand"
                 className="brand-image"
                 src={
-                  productDetail.itemBrand === 'TCP'
+                  productDetail.itemInfo.itemBrand === 'TCP'
                     ? getIconPath(`header__brand-tab--tcp`)
                     : getIconPath('header__brand-tab-gymboree')
                 }
@@ -95,41 +68,43 @@ class ProductTile extends React.Component {
                   fontWeight={['extrabold']}
                   dataLocator="addedtobag-productname"
                 >
-                  {productDetail.name}
+                  {productDetail.itemInfo.name}
                 </BodyCopy>
               </Col>
             </Row>
             {!isEdit ? (
               <React.Fragment>
                 <Row className="padding-top-10">
-                  <div className="itemList">
+                  <div>
                     <BodyCopy
                       fontFamily="secondary"
                       component="span"
-                      fontSize="fs13"
+                      fontSize="fs12"
                       fontWeight={['extrabold']}
                       textAlign="left"
                     >
-                      {productDetail.isGiftItem === true ? `${labels.design}` : `${labels.color}`}
+                      {productDetail.itemInfo.isGiftItem === true
+                        ? `${labels.design}`
+                        : `${labels.color}`}
                       {':'}
                     </BodyCopy>
                     <BodyCopy
                       fontFamily="secondary"
                       component="span"
-                      fontSize="fs13"
+                      fontSize="fs12"
                       className="itemDesc"
                       dataLocator="addedtobag-productcolor"
                     >
-                      {` ${productDetail.color} | `}
+                      {` ${productDetail.itemInfo.color} | `}
                     </BodyCopy>
                   </div>
 
-                  {productDetail.fit && (
-                    <div className="itemList padding-left">
+                  {productDetail.itemInfo.fit && (
+                    <div className="padding-left">
                       <BodyCopy
                         fontFamily="secondary"
                         component="span"
-                        fontSize="fs13"
+                        fontSize="fs12"
                         fontWeight={['extrabold']}
                       >
                         {`Fit`}
@@ -138,19 +113,19 @@ class ProductTile extends React.Component {
                       <BodyCopy
                         fontFamily="secondary"
                         component="span"
-                        fontSize="fs13"
+                        fontSize="fs12"
                         className="itemDesc"
                         dataLocator="addedtobag-productsize"
                       >
-                        {` ${productDetail.fit} | `}
+                        {` ${productDetail.itemInfo.fit} | `}
                       </BodyCopy>
                     </div>
                   )}
-                  <div className="itemList padding-left">
+                  <div className="padding-left">
                     <BodyCopy
                       fontFamily="secondary"
                       component="span"
-                      fontSize="fs13"
+                      fontSize="fs12"
                       fontWeight={['extrabold']}
                     >
                       {`${labels.size}`}
@@ -159,19 +134,19 @@ class ProductTile extends React.Component {
                     <BodyCopy
                       fontFamily="secondary"
                       component="span"
-                      fontSize="fs13"
+                      fontSize="fs12"
                       className="itemDesc"
                       dataLocator="addedtobag-productsize"
                     >
-                      {` ${productDetail.size}`}
+                      {` ${productDetail.itemInfo.size}`}
                     </BodyCopy>
                   </div>
 
-                  <div className="itemList padding-left">
+                  <div className="padding-left">
                     <BodyCopy
                       fontFamily="secondary"
                       component="span"
-                      fontSize="fs13"
+                      fontSize="fs12"
                       fontWeight={['extrabold']}
                     >
                       {` ${labels.qty}`}
@@ -180,11 +155,11 @@ class ProductTile extends React.Component {
                     <BodyCopy
                       fontFamily="secondary"
                       component="span"
-                      fontSize="fs13"
+                      fontSize="fs12"
                       className="itemDesc"
                       dataLocator="addedtobag-productqty"
                     >
-                      {` ${productDetail.qty}`}
+                      {` ${productDetail.itemInfo.qty}`}
                     </BodyCopy>
                   </div>
                   <BodyCopy
@@ -202,7 +177,7 @@ class ProductTile extends React.Component {
               </React.Fragment>
             ) : (
               <ProductEditForm
-                item={this.item}
+                item={productDetail}
                 colorFitsSizesMap={undefined}
                 handleSubmit={() => {}}
                 initialValues={initialValues}
@@ -213,7 +188,7 @@ class ProductTile extends React.Component {
                 <BodyCopy
                   fontFamily="secondary"
                   component="span"
-                  fontSize="fs13"
+                  fontSize="fs12"
                   fontWeight={['extrabold']}
                 >
                   {`${labels.price}: `}
@@ -223,10 +198,10 @@ class ProductTile extends React.Component {
                 <BodyCopy
                   fontFamily="secondary"
                   component="span"
-                  fontSize="fs13"
+                  fontSize="fs12"
                   fontWeight={['extrabold']}
                 >
-                  {productDetail.price}
+                  {productDetail.itemInfo.price}
                 </BodyCopy>
               </Col>
             </Row>
@@ -235,7 +210,7 @@ class ProductTile extends React.Component {
                 <BodyCopy
                   fontFamily="secondary"
                   component="span"
-                  fontSize="fs13"
+                  fontSize="fs12"
                   fontWeight={['extrabold']}
                 >
                   Points:
@@ -245,10 +220,10 @@ class ProductTile extends React.Component {
                 <BodyCopy
                   fontFamily="secondary"
                   component="span"
-                  fontSize="fs13"
+                  fontSize="fs12"
                   fontWeight={['extrabold']}
                 >
-                  {productDetail.myPlacePoints}
+                  {productDetail.itemInfo.myPlacePoints}
                 </BodyCopy>
               </Col>
             </Row>

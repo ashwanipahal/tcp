@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export default styled.div`
-  border-bottom: 2px solid #f3f3f3;
+  border-bottom: 2px solid ${props => props.theme.colorPalette.gray[300]};
   margin-bottom: 20px;
   .padding-top-10 {
     padding-top: 10px;
@@ -20,12 +20,6 @@ export default styled.div`
   }
   .brand-image {
     text-align: center;
-  }
-  .itemList {
-    font-size: 12px;
-  }
-  .itemDesc {
-    font-size: 12px;
   }
   .padding-left {
     margin-left: 5px;
