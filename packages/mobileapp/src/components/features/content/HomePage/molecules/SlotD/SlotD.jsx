@@ -1,12 +1,14 @@
 import React from 'react';
-import { ModuleD, ModuleH, ModuleK, ModuleL } from '@tcp/core/src/components/common/molecules';
+import { ModuleD, ModuleH, ModuleK } from '@tcp/core/src/components/common/molecules';
+import ModuleL from '@tcp/core/src/components/common/molecules/ModuleL';
 
 // @flow
 type Props = {
   name: string,
 };
 
-const SlotB = (props: Props) => {
+const SlotD = (props: Props) => {
+  console.log('SlotD ', props);
   switch (props.name) {
     case 'moduleD':
       return <ModuleD {...props} />;
@@ -21,4 +23,4 @@ const SlotB = (props: Props) => {
   }
 };
 
-export default SlotB;
+export default SlotD;
