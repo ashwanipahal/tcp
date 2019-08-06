@@ -1,7 +1,7 @@
 /* eslint-disable max-lines */
 /* eslint-disable sonarjs/no-duplicate-string */
 import mock from './mock';
-import { executeUnbxdAPICall } from '../../handler';
+import { executeUnbxdAPICall, executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import utils from '../../../utils';
 import {
@@ -15,7 +15,7 @@ import {
 } from './productParser';
 
 const getImgPath = img => {
-  return img;
+  return { img };
 };
 
 const apiHelper = {
@@ -44,11 +44,12 @@ export const FACETS_OPTIONS = {
   lowPriceProducts: '$10 and under',
 };
 
-function getProductByColorId(products, colorDetails) {
+function getProductByColorId(products /* , colorDetails */) {
   /* NOTE: we need to FISH for the product on the page in order to pull its attributes, if its not on page we wont show the swatch
   // If this needs to be changed we can default to somthing but need approval for what
   */
-  return products.find(product => product.prodpartno === colorDetails[0]);
+  // return products.find(product => product.prodpartno === colorDetails[0]);
+  return products;
 }
 
 const isDepartmentPage = (isSearch, breadCrumbs) => {
@@ -457,7 +458,7 @@ const getColorsMap = (
     colors.forEach(color => {
       const colorDetails = color.split('#');
       // the default/selected one is already there
-      const swatchOfAvailableProduct = getProductByColorId(response.products, colorDetails);
+      const swatchOfAvailableProduct = getProductByColorId(response.products /* , colorDetails */);
       if (colorDetails[0] !== product.imagename && swatchOfAvailableProduct !== undefined) {
         colorsMap.push({
           colorProductId: colorDetails[0],
@@ -524,11 +525,11 @@ const getColors = (product, uniqueId, defaultColor) => {
     : convertToColorArray(product.TCPSwatchesCanadaStore, uniqueId, defaultColor);
 };
 
-const getColorSwatch = product => {
-  return apiHelper.configOptions.isUSStore
-    ? product.TCPSwatchesUSStore
-    : product.TCPSwatchesCanadaStore;
-};
+// const getColorSwatch = product => {
+//   return apiHelper.configOptions.isUSStore
+//     ? product.TCPSwatchesUSStore
+//     : product.TCPSwatchesCanadaStore;
+// };
 
 const getChildLength = bucketingSeqConfig => {
   return bucketingSeqConfig.requiredChildren ? bucketingSeqConfig.requiredChildren.length : 0;
@@ -563,17 +564,17 @@ const isBossEligible = (/* isBossProduct, */ bossDisabledFlags, product) => {
   return isBossProduct(bossDisabledFlags) && !isGiftCard(product);
 };
 
-function altImageArray(imagename, altImg) {
-  try {
-    const altImges = JSON.parse(altImg);
-    return altImges[imagename].split(',').filter(img => img);
-  } catch (error) {
-    return [];
-  }
-}
+// function altImageArray(imagename, altImg) {
+//   try {
+//     const altImges = JSON.parse(altImg);
+//     return altImges[imagename].split(',').filter(img => img);
+//   } catch (error) {
+//     return [];
+//   }
+// }
 
 // inner function
-function parseAltImagesForColor(imageBasePath, altImgs) {
+/* function parseAltImagesForColor(imageBasePath, altImgs) {
   try {
     const altImages = altImageArray(imageBasePath, altImgs);
 
@@ -597,19 +598,19 @@ function parseAltImagesForColor(imageBasePath, altImgs) {
   } catch (error) {
     return [];
   }
-}
+} */
 // We seem to be itterating over all colors and added alt images in this location
-const extractExtraImages = (
-  rawColors,
+const extractExtraImages = () =>
+  /* rawColors,
   altImgs,
-  /* getImgPath, */ uniqueId,
+   getImgPath,  uniqueId,
   defaultColor /* , isGiftCard */
-) => {
-  const colorsImageMap = {};
+  {
+    const colorsImageMap = {};
 
-  // backend send the colors in a very weird format
-  try {
-    if (rawColors && rawColors !== '') {
+    // backend send the colors in a very weird format
+    try {
+      /* if (rawColors && rawColors !== '') {
       // DTN-6314 Gift card pdp page broken
       // handle senario if gift card product_name contains '|' character in it.
       let colors = [];
@@ -639,13 +640,13 @@ const extractExtraImages = (
         basicImageUrl: productImages[500],
         extraImages: parseAltImagesForColor(uniqueId, altImgs),
       };
+    } */
+    } catch (error) {
+      // eslint-disable-next-line
+      console.log(error);
     }
-  } catch (error) {
-    // eslint-disable-next-line
-    console.log(error);
-  }
-  return colorsImageMap;
-};
+    return colorsImageMap;
+  };
 
 // response is the constructed one , res is the res.body.response
 const processResponse = (
@@ -667,7 +668,7 @@ const processResponse = (
       const defaultColor = product.auxdescription ? product.auxdescription : product.TCPColor;
       const { uniqueId } = product;
       const colors = getColors(product, uniqueId, defaultColor);
-      const rawColors = getColorSwatch(product);
+      // const rawColors = getColorSwatch(product);
       const isBOPIS = isBopisProduct(isUSStore, product);
       const bossDisabledFlags = {
         bossProductDisabled:
@@ -675,12 +676,11 @@ const processResponse = (
         bossCategoryDisabled:
           extractAttributeValue(product, getProductAttributes().bossCategoryDisabled) || 0,
       };
-      const imagesByColor = extractExtraImages(
-        rawColors,
+      const imagesByColor = extractExtraImages();
+      /* rawColors,
         product.alt_img,
-        /* getImgPath, */ uniqueId,
-        defaultColor
-      );
+        /* getImgPath, uniqueId,
+        defaultColor */
       let colorsMap = [
         {
           colorProductId: uniqueId,
@@ -760,10 +760,9 @@ class ProductsDynamicAbstractor {
     this.handleValidationError = this.handleValidationError.bind(this);
   }
 
-  processUnbxdData = (res, payload) => {
-    console.log('payload', payload);
+  processUnbxdData = res => {
     const breadCrumbs = '';
-    const getFacetSwatchImgPath = '';
+    const getFacetSwatchImgPath = () => {};
     const filtersAndSort = [];
     const shouldApplyUnbxdLogic = false;
     const bucketingSeqConfig = {};
@@ -883,12 +882,12 @@ class ProductsDynamicAbstractor {
   getProducts = () => {
     const payload = {
       webService: endpoints.getPlpProducts,
-      url: '/8eb8cb308b493ec0a6d92bff22ef8df3/qa1-childrensplace-com702771542012808/category',
+      url: '/8870d5f30d9bebafac29a18cd12b801d/childrensplace-com702771523455856/category',
       queryString:
-        'start=0&rows=20&variants=true&variants.count=100&version=V2&facet.multiselect=true&selectedfacet=true&fields=alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant, low_offer_price, high_offer_price, low_list_price, high_list_price&pagetype=boolean&p-id=categoryPathId:%2247503%3E420029%3E420030%22&facet=false&uid=uid-1563870141566-31054',
+        'start=0&rows=20&variants=true&variants.count=0&version=V2&facet.multiselect=true&selectedfacet=true&fields=alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPFitMessageUSSstore,TCPFit,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPSwatchesUSStore,top_rated,TCPSwatchesCanadaStore,product_name,TCPColor,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_fq,categoryPath3,categoryPath3_catMap,categoryPath2_catMap,product_short_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,seo_token,prodpartno,banner,facets,auxdescription,list_of_attributes,numberOfProducts,redirect,searchMetaData,didYouMean,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,TcpBossCategoryDisabled,TcpBossProductDisabled,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore&pagetype=boolean&p-id=categoryPathId:%22484507%3E484508%22&uid=uid-1563946353348-89276',
     };
     return executeUnbxdAPICall(payload)
-      .then(this.processUnbxdData, payload)
+      .then(this.processUnbxdData)
       .catch(this.handleValidationError);
   };
 
@@ -902,6 +901,42 @@ class ProductsDynamicAbstractor {
 
   handleValidationError = e => {
     console.log(e);
+  };
+
+  /**
+   * @function filterOutNoneWishlistItems
+   * @summary This will return item level info with respect to the current user, like if an item is in the users favorits
+   */
+  getProductsUserCustomInfo = (generalProductIdsList, isPDP) => {
+    const payload = {
+      webService: endpoints.getListofDefaultWishlist,
+    };
+
+    return executeStatefulAPICall(payload)
+      .then(res => {
+        if (apiHelper.responseContainsErrors(res)) {
+          console.log(res);
+        }
+
+        const favProductsMap = {};
+        // eslint-disable-next-line
+        for (let product of res.body) {
+          if (isPDP) {
+            favProductsMap[product.productId] = {
+              isInDefaultWishlist: product.isInDefaultWishlist,
+            };
+          } else {
+            favProductsMap[product.productPartNumber] = {
+              isInDefaultWishlist: product.isInDefaultWishlist,
+            };
+          }
+        }
+
+        return favProductsMap;
+      })
+      .catch(err => {
+        throw this.apiHelper.getFormattedError(err);
+      });
   };
 }
 

@@ -68,7 +68,6 @@ const unbxdAPIClient = (apiConfig, reqObj) => {
       });
   });
   result.abort = () => request.abort(); // allow callers to cancel the request by calling abort on the returned object.
-  console.log('result', result);
   return result;
 };
 
