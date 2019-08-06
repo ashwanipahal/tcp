@@ -7,18 +7,18 @@ import withStyles from '../../../hoc/withStyles';
 
 class GetCandid extends React.Component {
   static propTypes = {
-    /* pageTag is used to get the subset of images */
-    pageTag: PropTypes.string,
     /* bool value if default heading needs to be used */
     defaultHeading: PropTypes.bool,
     /* PageType is the page where the getcandid component is being called from */
     pageType: PropTypes.string,
     /* espotId is the espot key if you need a custom heading */
     espotId: PropTypes.string,
+    className: PropTypes.string.isRequired,
   };
 
   static defaultProps = {
-    pageTag: 'homepage',
+    pageType: 'homepage',
+    espotId: '',
     defaultHeading: false,
   };
 
@@ -43,21 +43,19 @@ class GetCandid extends React.Component {
         id: apiKey,
         tag: pageTag,
         containerId: candidSlot,
-        ready: function(e) {
-          if (e && e.data && e.data.data) {
-            if (e.data.data.length > 0) {
-              document
-                .getElementsByClassName('get-candid-button-container')[0]
-                .classList.remove('displayNone');
-              document
-                .getElementsByClassName('get-candid-heading')[0]
-                .classList.remove('displayNone');
-              document.getElementById('get-candid-container').style.borderBottom =
-                '7px solid #f7f7f7';
-            }
+        ready: e => {
+          if (e && e.data && e.data.data && e.data.data.length > 0) {
+            document
+              .getElementsByClassName('get-candid-button-container')[0]
+              .classList.remove('displayNone');
+            document
+              .getElementsByClassName('get-candid-heading')[0]
+              .classList.remove('displayNone');
+            document.getElementById('get-candid-container').style.borderBottom =
+              '7px solid #f7f7f7';
           }
         },
-        empty: function() {
+        empty: () => {
           document.getElementById('get-candid-container').style.display = 'none';
         },
       });
@@ -126,9 +124,7 @@ class GetCandid extends React.Component {
               medium: 8,
               large: 12,
             }}
-          >
-            {/* <div id="tcp-get-candid-image-container" /> */}
-          </Col>
+          />
         </Row>
         <Row centered>
           <div className="get-candid-button-container">
