@@ -25,6 +25,8 @@ class OverlayModal extends React.Component {
     const overlayElement = document.getElementById('overlayComponent');
     this.overlayElementWrapper = overlayElementWrapper;
     this.overlayElement = overlayElement;
+    const [body] = document.getElementsByTagName('body');
+    this.body = body;
     this.handleWindowClick = this.handleWindowClick.bind(this);
   }
 
@@ -36,12 +38,22 @@ class OverlayModal extends React.Component {
     if (window) {
       window.addEventListener('mousedown', this.handleWindowClick);
     }
-    this.getCustomStyles();
+    this.getCustomStyles({ styleModal: true });
+  }
+
+  componentDidUpdate(prevProps) {
+    const { component: nextTargetComponent } = this.props;
+    const { component: prevTargetComponent } = prevProps;
+    if (nextTargetComponent !== prevTargetComponent) {
+      return this.getCustomStyles({ styleModal: false });
+    }
+    return null;
   }
 
   componentWillUnmount() {
     this.overlayElementWrapper.style.position = 'static';
-    this.overlayElementWrapper.style.pointerEvents = 'auto;';
+    this.overlayElementWrapper.style.pointerEvents = 'auto';
+    /* istanbul ignore else */
     if (this.overlayElement) this.overlayElement.classList.remove('overlay');
     /* istanbul ignore else */
     if (window) {
@@ -49,31 +61,34 @@ class OverlayModal extends React.Component {
     }
   }
 
-  getCustomStyles = () => {
+  styleModalTriangle = ({ comp }) => {
+    const compRectBoundingX = comp.getBoundingClientRect().x;
+    const compWidth = comp.getBoundingClientRect().width;
+    const modal = document.getElementById('dialogContent');
+    const modalRectBoundingX = modal && modal.getBoundingClientRect().x;
+    const modalTriangle = document.getElementById('modalTriangle');
+    const modalTrianglePos =
+      modalTriangle && window && modalTriangle.getBoundingClientRect().y + window.scrollY;
+    modal.style.maxHeight = this.body && `${this.body.clientHeight - modalTrianglePos - 20}px`;
+    /* istanbul ignore else */
+    if (compRectBoundingX && compWidth && modalRectBoundingX && modalTriangle) {
+      modalTriangle.style.left = `${compRectBoundingX - modalRectBoundingX + compWidth / 2 - 8}px`;
+    }
+  };
+
+  getCustomStyles = ({ styleModal }) => {
     const { component } = this.props;
     const comp = document.getElementById(component);
     /* istanbul ignore else */
-    if (comp) {
-      const compRectBoundingY = comp.getBoundingClientRect().y;
+    if (comp && window) {
+      const compRectBoundingY = comp.getBoundingClientRect().y + window.scrollY;
       const compHeight = comp.getBoundingClientRect().height;
-      const compRectBoundingX = comp.getBoundingClientRect().x;
-      const compWidth = comp.getBoundingClientRect().width;
-      const modal = document.getElementById('dialogContent');
-      modal.style.maxHeight = window && `${window.innerHeight}px`;
       const modalWrapper = document.getElementById('modalWrapper');
-      const modalTriangle = document.getElementById('modalTriangle');
-      const modalRectBoundingX = modal && modal.getBoundingClientRect().x;
       /* istanbul ignore else */
-      if (compRectBoundingY) {
+      if (styleModal && compRectBoundingY) {
         modalWrapper.style.top = `${compRectBoundingY + compHeight + 12}px`;
       }
-      /* istanbul ignore else */
-      if (compRectBoundingX && compWidth && modalRectBoundingX && modalTriangle) {
-        modalTriangle.style.left = `${compRectBoundingX -
-          modalRectBoundingX +
-          compWidth / 2 -
-          8}px`;
-      }
+      this.styleModalTriangle({ comp });
     }
   };
 
@@ -101,8 +116,12 @@ class OverlayModal extends React.Component {
     return (
       <div className={className} id="modalWrapper" color={color} ref={this.setModalRef}>
         <div id="dialogContent" className="dialog__content">
-          <div className="modal__triangle" id="modalTriangle" />
-          <div className="modal__bar" />
+          <button
+            className="modal__closeIcon hide-on-tablet hide-on-desktop"
+            onClick={this.closeModal}
+          />
+          <div className="modal__triangle hide-on-mobile " id="modalTriangle" />
+          <div className="modal__bar hide-on-mobile" />
           <ModalContent className="modal__content" />
         </div>
       </div>

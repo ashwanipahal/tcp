@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
+<View
+  labels={
+    Object {
+      "login": Object {},
+    }
+  }
+>
+  <Styled(ImageComp)
+    customStyle={
+      Object {
+        "alignSelf": "center",
+      }
+    }
+    height={60}
+    source={
+      Object {
+        "testUri": "../../../../core/src/assets/my-place-rewards.png",
+      }
+    }
+    width={186}
+  />
+  <Styled(LineComp)
+    borderColor={null}
+    borderWidth={0.65}
+    marginBottom={17}
+    marginTop={30}
+  />
+  <Styled(Text) />
+  <Styled(Text) />
+  <Styled(Text) />
+  <Styled(LineComp)
+    borderColor={null}
+    borderWidth={0.65}
+    marginBottom={0}
+    marginTop={25}
+  />
+</View>
+`;

@@ -1,9 +1,24 @@
 import styled, { css } from 'styled-components';
-import { PromoTextBanner, LinkText, ImageGrid } from '..';
-import { getIconPath } from '../../../../utils';
+import { Carousel, PromoTextBanner, LinkText, ImageGrid } from '..';
 
-const darkArrowLarge = getIconPath('carousel-big-carrot');
-
+const StyledCarousal = styled(Carousel)`
+  .slick-arrow {
+    top: 44%;
+  }
+  .slick-next {
+    height: 52px;
+    right: -68px;
+    width: 15px;
+  }
+  .slick-prev {
+    height: 52px;
+    left: -68px;
+    width: 15px;
+  }
+  .slick-dots {
+    bottom: -10px;
+  }
+`;
 const StyledPromoTextBanner = styled(PromoTextBanner)`
   .style2 {
     font-size: ${props => props.theme.typography.fontSizes.fs42};
@@ -23,6 +38,7 @@ const StyledPromoTextBanner = styled(PromoTextBanner)`
 const StyledLinkText = styled(LinkText)`
   text-align: center;
   .link-text {
+    margin-bottom: 0;
     text-align: center;
   }
 `;
@@ -57,29 +73,10 @@ const StyledModuleK = css`
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
   }
-  .module-k__carousal {
-    .slick-arrow {
-      top: 44%;
-    }
-    .slick-next {
-      background-image: url(${darkArrowLarge});
-      height: 52px;
-      right: -68px;
-      width: 15px;
-    }
-    .slick-prev {
-      background-image: url(${darkArrowLarge});
-      height: 52px;
-      left: -68px;
-      width: 15px;
-    }
-    .slick-dots {
-      bottom: -10px;
-    }
-  }
 `;
 
 export {
+  StyledCarousal as Carousel,
   StyledPromoTextBanner as PromoTextBanner,
   StyledLinkText as LinkText,
   StyledImageGrid as ImageGrid,

@@ -61,5 +61,9 @@ const endpoints = {
     method: API_METHODS.GET,
     URI: 'v2/wishlist/getListOfDefaultWishlist',
   },
+  logout: {
+    method: API_METHODS.DELETE,
+    URI: '/v2/account/logout',
+  },
 };
 export default endpoints;

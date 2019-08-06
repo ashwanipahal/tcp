@@ -1,0 +1,171 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginForm component should renders correctly 1`] = `
+<View
+  handleSubmit={[Function]}
+  labels={
+    Object {
+      "login": Object {},
+    }
+  }
+  loginErrorMessage=""
+  onSubmit={[Function]}
+>
+  <Field
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "ariaLabel": "input",
+          "dataLocator": "input-field",
+          "enableSuccessCheck": false,
+          "id": "input",
+          "keyboardType": "default",
+          "label": "input",
+          "meta": Object {
+            "error": "",
+            "touched": "",
+          },
+          "secureTextEntry": false,
+          "showErrorIcon": true,
+          "type": "text",
+        },
+        "attrs": Array [],
+        "displayName": "Styled(TextBox)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+    ",
+            "
+  ",
+            [Function],
+            ";
+",
+            ";
+  ",
+          ],
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
+      }
+    }
+    dataLocator="emailAddress"
+    id="emailAddress"
+    name="emailAddress"
+    type="text"
+  />
+  <Field
+    component={
+      Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "_foldedDefaultProps": Object {
+          "ariaLabel": "input",
+          "dataLocator": "input-field",
+          "enableSuccessCheck": false,
+          "id": "input",
+          "keyboardType": "default",
+          "label": "input",
+          "meta": Object {
+            "error": "",
+            "touched": "",
+          },
+          "secureTextEntry": false,
+          "showErrorIcon": true,
+          "type": "text",
+        },
+        "attrs": Array [],
+        "displayName": "Styled(TextBox)",
+        "inlineStyle": InlineStyle {
+          "rules": Array [
+            "
+    ",
+            "
+  ",
+            [Function],
+            ";
+",
+            ";
+  ",
+          ],
+        },
+        "render": [Function],
+        "styledComponentId": "StyledNativeComponent",
+        "target": [Function],
+        "withComponent": [Function],
+      }
+    }
+    dataLocator="password"
+    id="password"
+    name="password"
+    secureTextEntry={true}
+    type="text"
+  />
+  <View
+    style={
+      Object {
+        "width": "90%",
+      }
+    }
+  >
+    <Field
+      component={[Function]}
+      dataLocator="rememberMe"
+      disabled={false}
+      name="rememberMe"
+    />
+    <Field
+      component={[Function]}
+      dataLocator="savePlcc"
+      disabled={false}
+      marginTop={13}
+      name="savePlcc"
+    />
+  </View>
+  <Styled(CustomButton)
+    buttonVariation="variable-width"
+    color="#FFFFFF"
+    customStyle={
+      Object {
+        "marginTop": 30,
+      }
+    }
+    fill="BLUE"
+    fullWidth=""
+    text=""
+    url=""
+  />
+  <Styled(Anchor)
+    anchorVariation="secondary"
+    customStyle={
+      Object {
+        "marginTop": 10,
+      }
+    }
+    fontSizeVariation="xlarge"
+    onPress={[Function]}
+    text=""
+    visible={false}
+  />
+  <Styled(LineComp)
+    borderColor={null}
+    borderWidth={0.65}
+    marginBottom={0}
+    marginTop={28}
+  />
+  <Styled(Text) />
+  <Styled(CustomButton)
+    buttonVariation="variable-width"
+    customStyle={
+      Object {
+        "marginTop": 30,
+      }
+    }
+    fullWidth=""
+    onPress={[Function]}
+    text=""
+    url=""
+  />
+</View>
+`;

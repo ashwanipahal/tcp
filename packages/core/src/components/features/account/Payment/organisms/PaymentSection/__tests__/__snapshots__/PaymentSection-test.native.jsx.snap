@@ -5,7 +5,9 @@ exports[`Payment View should render correctly 1`] = `
   className=""
   labels={
     Object {
+      "common": Object {},
       "giftCard": "Payment",
+      "paymentGC": Object {},
     }
   }
 >
@@ -110,6 +112,8 @@ exports[`Payment View should render correctly with cardList 1`] = `
   }
   labels={
     Object {
+      "common": Object {},
+      "paymentGC": Object {},
       "paymentHeading": "Payment",
     }
   }
@@ -129,6 +133,8 @@ exports[`Payment View should render correctly with cardList 1`] = `
     <Styled(OffersSection)
       labels={
         Object {
+          "common": Object {},
+          "paymentGC": Object {},
           "paymentHeading": "Payment",
         }
       }
@@ -163,6 +169,8 @@ exports[`Payment View should render correctly with cardList 1`] = `
       }
       labels={
         Object {
+          "common": Object {},
+          "paymentGC": Object {},
           "paymentHeading": "Payment",
         }
       }
@@ -197,6 +205,8 @@ exports[`Payment View should render correctly with cardList 1`] = `
       }
       labels={
         Object {
+          "common": Object {},
+          "paymentGC": Object {},
           "paymentHeading": "Payment",
         }
       }

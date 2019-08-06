@@ -20,7 +20,9 @@ describe('Delete Address Modal', () => {
     },
   };
   it('should render correctly', () => {
-    const tree = shallow(<DeleteAddressModalVanilla data={data} />);
+    const tree = shallow(
+      <DeleteAddressModalVanilla data={data} labels={{ addressBook: {}, common: {} }} />
+    );
     expect(tree).toMatchSnapshot();
     expect(tree.find(Address)).toHaveLength(1);
     expect(tree.find(Button)).toHaveLength(2);
@@ -28,7 +30,11 @@ describe('Delete Address Modal', () => {
   it('should call Cancel Button Correctly', () => {
     const mockedCloseModal = jest.fn();
     const tree = shallow(
-      <DeleteAddressModalVanilla data={data} setDeleteModalMountState={mockedCloseModal} />
+      <DeleteAddressModalVanilla
+        data={data}
+        setDeleteModalMountState={mockedCloseModal}
+        labels={{ addressBook: {}, common: {} }}
+      />
     );
     tree
       .find(Button)
@@ -39,7 +45,11 @@ describe('Delete Address Modal', () => {
   it('should call confirm Button Correctly', () => {
     const mockedOnConfirm = jest.fn();
     const tree = shallow(
-      <DeleteAddressModalVanilla data={data} onDeleteAddress={mockedOnConfirm} />
+      <DeleteAddressModalVanilla
+        data={data}
+        onDeleteAddress={mockedOnConfirm}
+        labels={{ addressBook: {}, common: {} }}
+      />
     );
     tree
       .find(Button)
@@ -52,7 +62,12 @@ describe('Delete Address Modal', () => {
       <DeleteAddressModalVanilla
         data={data}
         showUpdatedNotificationOnModal
-        labels={{ errorMessage: 'error' }}
+        labels={{
+          addressBook: {},
+          common: {
+            lbl_common_errorMessage: 'Your action could not be completed due to a system error',
+          },
+        }}
       />
     );
     expect(tree.find(Notification)).toHaveLength(1);

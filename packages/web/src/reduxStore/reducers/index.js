@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { reducer as reduxFormReducer } from 'redux-form';
 import { ProductListingPageReducer } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.reducer';
 import LoginPageReducer from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.reducer';
+import ForgotPasswordReducer from '@tcp/core/src/components/features/account/ForgotPassword/container/ForgotPassword.reducer';
 import AddressBookReducer from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.reducer';
 import PaymentReducer from '@tcp/core/src/components/features/account/Payment/container/Payment.reducer';
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
@@ -13,9 +14,11 @@ import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
 import AddGiftCardReducer from '@tcp/core/src/components/features/account/Payment/AddGiftCard/container/AddGiftCard.reducer';
 import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
 import AddressVerificationReducer from '@tcp/core/src/components/features/account/AddressVerification/container/AddressVerification.reducer';
-import CartPage from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
+import AccountReducer from '@tcp/core/src/components/features/account/Account/container/Account.reducer';
+import CartReducer from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import OverlayModalReducer from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.reducer';
 import { ProductListingReducer } from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListing.reducer';
+import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -36,18 +39,18 @@ import {
   ADDEDITCREDITCARD_REDUCER_KEY,
   ADD_GIFT_CARD_REDUCER_KEY,
   ADDED_TO_BAG_REDUCER_KEY,
-  // CART_REDUCER_KEY,
+  ACCOUNT_REDUCER_KEY,
   CARTPAGE_REDUCER_KEY,
-  CART_REDUCER_KEY,
+  FORGOTPASSWORD_REDUCER_KEY,
   OVERLAY_MODAL_REDUCER_KEY,
   NAVIGATION_REDUCER_KEY,
   PRODUCT_LISTING_REDUCER_KEY,
+  CREATE_ACCOUNT_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
 import NavigationReducer from '@tcp/core/src/components/features/content/Navigation/container/Navigation.reducer';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
-import CartReducer from '@tcp/core/src/components/features/CnC/Cart/containers/Cart.reducer';
 import HomePageReducer from '../../components/features/content/HomePage/container/HomePage.reducer';
 import EmailSignupReducer from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.reducer';
 import SmsSignupReducer from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.reducer';
@@ -71,6 +74,7 @@ export default combineReducers({
   [HOMEPAGE_REDUCER_KEY]: HomePageReducer,
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
   [LOGINPAGE_REDUCER_KEY]: LoginPageReducer,
+  [FORGOTPASSWORD_REDUCER_KEY]: ForgotPasswordReducer,
   [ADDRESSBOOK_REDUCER_KEY]: AddressBookReducer,
   [ADDRESS_VERIFICATION_REDUCER_KEY]: AddressVerificationReducer,
   [PAYMENT_REDUCER_KEY]: PaymentReducer,
@@ -81,9 +85,10 @@ export default combineReducers({
   [ADDEDITCREDITCARD_REDUCER_KEY]: AddEditCreditCardReducer,
   [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,
   [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,
-  [CARTPAGE_REDUCER_KEY]: CartPage,
-  [CART_REDUCER_KEY]: CartReducer,
+  [ACCOUNT_REDUCER_KEY]: AccountReducer,
+  [CARTPAGE_REDUCER_KEY]: CartReducer,
   [OVERLAY_MODAL_REDUCER_KEY]: OverlayModalReducer,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
   [PRODUCT_LISTING_REDUCER_KEY]: ProductListingReducer,
+  [CREATE_ACCOUNT_REDUCER_KEY]: CreateAccountReducer,
 });

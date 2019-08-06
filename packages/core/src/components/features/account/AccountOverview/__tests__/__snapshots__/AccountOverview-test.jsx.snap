@@ -1,7 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MyAccountOverview View should render AccountOverview Correctly 1`] = `
-<div>
-  This is AccountOverview component
-</div>
+<Fragment>
+  <Styled(FormPageHeading)
+    className="margin-none"
+    heading=""
+  />
+  <Styled(AccountOverviewTileList)
+    labels={
+      Object {
+        "lbl_overview_heading": "",
+      }
+    }
+  />
+</Fragment>
 `;

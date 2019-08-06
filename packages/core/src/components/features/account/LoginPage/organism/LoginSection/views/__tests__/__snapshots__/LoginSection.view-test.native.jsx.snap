@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginSection component should renders correctly 1`] = `
+<StyledNativeComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "_foldedDefaultProps": Object {
+        "loginErrorMessage": "",
+      },
+      "attrs": Array [],
+      "displayName": "Styled(LoginSection)",
+      "inlineStyle": InlineStyle {
+        "rules": Array [
+          "
+    ",
+          "
+  ",
+          [Function],
+          "
+",
+          ";
+  ",
+        ],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  initialValues={Object {}}
+  labels={Object {}}
+  loginErrorMessage=""
+  onSubmit={[Function]}
+/>
+`;

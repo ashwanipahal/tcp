@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { TextBox, Image } from '../../../../../../common/atoms';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy/views/BodyCopy';
-import { getIconPath } from '../../../../../../../utils/utils';
+import { getIconPath } from '../../../../../../../utils';
 import styles from '../styles/CreditCardNumber.style';
 
 const getCardTypeImgUrl = cardType => {

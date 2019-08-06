@@ -3,7 +3,7 @@
 exports[`LoginSection component should renders correctly 1`] = `
 <Styled(Row)>
   <Styled(Col)
-    className="elem-pt-XXL elem-pl-LRG elem-pr-LRG"
+    className="elem-pt-XXL  elem-pl-LRG elem-pr-LRG"
     colSize={
       Object {
         "large": 12,
@@ -13,8 +13,12 @@ exports[`LoginSection component should renders correctly 1`] = `
     }
   >
     <Styled(LoginTopSection)
-      className="elem-mb-LRG elem-pl-MED elem-pr-MED"
-      labels={Object {}}
+      className="elem-mb-LRG"
+      labels={
+        Object {
+          "login": Object {},
+        }
+      }
     />
     <ReduxForm
       className="elem-mb-LRG"
@@ -25,8 +29,13 @@ exports[`LoginSection component should renders correctly 1`] = `
       getFormState={[Function]}
       initialValues={Object {}}
       keepDirtyOnReinitialize={false}
-      labels={Object {}}
+      labels={
+        Object {
+          "login": Object {},
+        }
+      }
       loginErrorMessage=""
+      onCreateAccountClick={[Function]}
       onSubmit={[Function]}
       persistentSubmitErrors={false}
       pure={true}
@@ -34,12 +43,44 @@ exports[`LoginSection component should renders correctly 1`] = `
       shouldError={[Function]}
       shouldValidate={[Function]}
       shouldWarn={[Function]}
+      showForgotPasswordForm={[Function]}
       showRecaptcha={false}
       submitAsSideEffect={false}
       touchOnBlur={true}
       touchOnChange={false}
       updateUnregisteredFields={false}
       validate={[Function]}
+    />
+    <Styled(BodyCopy)
+      className="border elem-pt-MED elem-pb-LRG"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      <Styled(BodyCopy)
+        className="elem-mb-LRG"
+        color="text.primary"
+        component="p"
+        fontFamily="primary"
+        fontSize="fs12"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="center"
+      />
+    </Styled(BodyCopy)>
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="create-acc-cta"
+      data-locator=""
+      fill="BLUE"
+      onClick={[Function]}
+      type="submit"
     />
   </Styled(Col)>
 </Styled(Row)>

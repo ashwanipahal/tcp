@@ -45,7 +45,7 @@ export const AddEditAddress = ({
         data-locator="addnewaddress-back"
         asPath="/account/address-book"
       >
-        Back
+        {labels.common.lbl_common_backLink}
       </Anchor>
       <Heading
         fontFamily="primaryFontFamily"
@@ -54,8 +54,8 @@ export const AddEditAddress = ({
         className="addAddress__separator"
       >
         {isEdit
-          ? labels.acc_lbl_edit_address_form_heading
-          : labels.acc_lbl_add_address_form_heading}
+          ? labels.addressBook.ACC_LBL_EDIT_ADDRESS_FORM_HEADING
+          : labels.addressBook.ACC_LBL_ADD_ADDRESS_FORM_HEADING}
       </Heading>
       <Grid>
         {errorObject && (
@@ -69,8 +69,8 @@ export const AddEditAddress = ({
           onSuccess={submitAddressFormAction}
           heading={
             isEdit
-              ? labels.acc_lbl_verify_your_address_heading_edit
-              : labels.acc_lbl_verify_your_address_heading_add
+              ? labels.addressBook.ACC_LBL_EDIT_ADDRESS
+              : labels.addressBook.ACC_LBL_VERIFY_YOUR_ADDRESS_HEADING_ADD
           }
           labels={labels}
           onError={submitAddressFormAction}

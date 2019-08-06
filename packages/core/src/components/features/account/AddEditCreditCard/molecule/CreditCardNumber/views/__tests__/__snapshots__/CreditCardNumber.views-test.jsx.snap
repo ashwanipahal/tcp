@@ -16,7 +16,7 @@ exports[`CreditCardNumber component should renders correctly when cardType is pr
     maxLength="16"
   />
   <Styled(Image)
-    src="/static/images/visa-small.png"
+    src="/static/images/visa.svg"
   />
 </Styled(BodyCopy)>
 `;

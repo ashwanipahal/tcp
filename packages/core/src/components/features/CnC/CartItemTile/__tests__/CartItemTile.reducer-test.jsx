@@ -33,8 +33,8 @@ describe('AddGiftCard Reducer', () => {
       ...getOrderDetailAction,
     });
 
-    expect(newState.items.length).toEqual(
-      getOrderDetailAction.payload.orderDetails.orderItems.length
+    expect(newState.get('orderDetails').length).toEqual(
+      getOrderDetailAction.payload.orderDetails.length
     );
   });
 
@@ -43,7 +43,7 @@ describe('AddGiftCard Reducer', () => {
       ...getProductSkuInfoSuccess,
     });
 
-    expect(newState.editableItemData.productId).toEqual(
+    expect(newState.get('editableItemData').get('productId')).toEqual(
       getProductSkuInfoSuccess.payload.product.productId
     );
   });

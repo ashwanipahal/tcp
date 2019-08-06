@@ -27,7 +27,7 @@ const OffersSection = (props: Props) => {
           />
         </ImgWrapper>
         <RichTextStyle>
-          <RichText source={{ html: labels.ACC_LBL_OFFERS_MESSAGE_MOBILE }} />
+          <RichText source={{ html: labels.paymentGC.lbl_payment_offersMessageMobile }} />
         </RichTextStyle>
       </WrapperStyle>
     </View>

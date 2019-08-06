@@ -1,6 +1,16 @@
 import styled, { css } from 'styled-components/native';
 
-const SectionStyle = css``;
+const getPageStyle = props => {
+  const { theme } = props;
+  return `
+  margin: auto  ${theme.spacing.APP_LAYOUT_SPACING.SM};
+  justify-content: ${'center'};
+ 
+  `;
+};
+const SectionStyle = css`
+  ${getPageStyle}
+`;
 
 /**
  * @param {Object} props : props for getTextBaseStyle
@@ -14,7 +24,7 @@ const getTextBaseStyle = props => {
   return `
   font-size: ${typography.fontSizes.fs12};
   color: ${colorPalette.text.secondary};
-  font-family: ${typography.fonts.primary};
+  font-family: ${typography.fonts.secondary};
   `;
 };
 const getHeadingStyle = props => {
@@ -23,6 +33,7 @@ const getHeadingStyle = props => {
   return `
   ${getTextBaseStyle};
   font-weight: ${typography.fontWeights.semibold};
+  align-self: ${'center'};
   `;
 };
 
@@ -32,6 +43,7 @@ const getSubHeadingStyle = props => {
   return `
   ${getTextBaseStyle};
   font-size: ${typography.fontSizes.fs13};
+  align-self: ${'center'};
   `;
 };
 
@@ -42,16 +54,20 @@ const getDescriptionStyle = props => {
   ${getTextBaseStyle};
   font-size: ${typography.fontSizes.fs12};
   color: ${colorPalette.text.primary};
+  margin-top: ${'10px'};
+  text-align: ${'center'};
   `;
 };
 
 const HeadingStyle = styled.Text`
   ${getHeadingStyle}
 `;
+
 const SubHeadingStyle = styled.Text`
   ${getSubHeadingStyle}
 `;
 const DescriptionStyle = styled.Text`
   ${getDescriptionStyle}
 `;
+
 export { SectionStyle, HeadingStyle, SubHeadingStyle, DescriptionStyle };

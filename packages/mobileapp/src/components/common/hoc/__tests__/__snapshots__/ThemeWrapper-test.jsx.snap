@@ -64,6 +64,12 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "light": "#93c5ea",
           "main": "#4b9fdd",
         },
+        "red": Object {
+          "100": "#f3d7d7",
+          "200": "#f3d7d7",
+          "300": "#c84747",
+          "500": "#c8102e",
+        },
         "secondary": Object {
           "dark": "#c84747",
           "light": "#f3d7d7",
@@ -269,6 +275,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "semiBold": "600",
         },
         "letterSpacing": Object {
+          "medium": "1px",
           "normal": "normal",
           "wide": "2px",
         },
@@ -349,6 +356,10 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         },
       },
       "spacing": Object {
+        "APP_LAYOUT_SPACING": Object {
+          "SM": "30px",
+          "XS": "20px",
+        },
         "CREDIT_CARD_ICON_WIDTH": "50px",
         "ELEM_SPACING": Object {
           "LRG": "24px",
@@ -393,6 +404,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "fs38": "38px",
           "fs42": "42px",
           "fs48": "48px",
+          "fs52": "52px",
           "fs64": "64px",
         },
         "fontWeights": Object {
@@ -419,9 +431,9 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs42",
-            "fs42",
-            "fs48",
+            "fs36",
+            "fs36",
+            "fs52",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",

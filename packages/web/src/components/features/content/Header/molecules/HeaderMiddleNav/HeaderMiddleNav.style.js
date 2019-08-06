@@ -4,15 +4,18 @@ export default css`
   box-sizing: border-box;
   padding: 14px 0;
   position: relative;
-  text-align: right;
+  text-align: center;
 
   .hamburger-menu {
     cursor: pointer;
     width: 22px;
     height: 22px;
   }
-
+  .leftLink {
+    display: none;
+  }
   .rightLink {
+    display: none;
     border-left: 1px solid ${props => props.theme.colorPalette.gray[500]};
     box-sizing: border-box;
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
@@ -31,6 +34,10 @@ export default css`
     padding-top: 31px;
     .hamburger-menu {
       display: none;
+    }
+    .leftLink,
+    .rightLink {
+      display: block;
     }
   }
 `;
