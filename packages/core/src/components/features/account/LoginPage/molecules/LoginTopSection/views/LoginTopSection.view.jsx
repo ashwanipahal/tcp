@@ -18,10 +18,11 @@ const LoginTopSection = ({ labels, className }) => {
         <ImageComp src={getIconPath('my-place-rewards')} className="logo elem-mb-LRG" />
       </BodyCopy>
       <BodyCopy component="div" className="bordered elem-pt-MED elem-pb-LRG">
-        <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary" textAlign="center">
+        <BodyCopy fontSize="fs14" fontWeight="black" fontFamily="secondary" textAlign="center">
           {labels.login.lbl_login_heading}
         </BodyCopy>
         <BodyCopy
+          fontSize="fs13"
           fontWeight="semibold"
           fontFamily="secondary"
           textAlign="center"
@@ -29,7 +30,7 @@ const LoginTopSection = ({ labels, className }) => {
         >
           {labels.login.lbl_login_subHeading}
         </BodyCopy>
-        <BodyCopy fontFamily="secondary" textAlign="center">
+        <BodyCopy fontFamily="secondary" textAlign="center" fontSize="fs12">
           {labels.login.lbl_login_subDescription}
         </BodyCopy>
       </BodyCopy>
