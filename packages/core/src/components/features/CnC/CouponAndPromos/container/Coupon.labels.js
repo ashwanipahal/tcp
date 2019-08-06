@@ -2,6 +2,11 @@ const labels = {
   AVAILABLE_REWARDS_HEADING: 'AVAILABLE REWARDS & OFFERS ',
   APPLIED_REWARDS_HEADING: 'Applied REWARDS & OFFERS ',
   HELP_APPLYING: 'Help applying Place Cash',
+  APPLY_BUTTON_TEXT: 'APPLY',
+  REMOVE_BUTTON_TEXT: 'REMOVE',
+  DETAILS_BUTTON_TEXT: 'Details',
+  SHOW_MORE_BUTTON_TEXT: 'Show more',
+  LESS_MORE_BUTTON_TEXT: 'Less more',
 };
 
 export default labels;

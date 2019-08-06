@@ -76,7 +76,8 @@ const sampleData = [
     details: null,
     legalText: '',
     isStarted: true,
-    error: '',
+    error:
+      'Coupon is not applicable. Note: If you are applying a My Place Rewards Credit card coupon, coupon will not apply until your card has been entered at checkout.',
     promotionType: 'public',
     expirationDateTimeStamp: '2021-07-20T18:29:00.001Z',
   },
