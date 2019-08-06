@@ -45,7 +45,7 @@ export const AddEditAddress = ({
         data-locator="addnewaddress-back"
         asPath="/account/address-book"
       >
-        {labels.common.ACC_LBL_BACK_LINK_CTA}
+        {labels.common.lbl_common_backLink}
       </Anchor>
       <Heading
         fontFamily="primaryFontFamily"

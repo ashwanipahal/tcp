@@ -65,7 +65,7 @@ describe('Delete Address Modal', () => {
         labels={{
           addressBook: {},
           common: {
-            ACC_LBL_ERROR_MESSAGE: 'Your action could not be completed due to a system error',
+            lbl_common_errorMessage: 'Your action could not be completed due to a system error',
           },
         }}
       />

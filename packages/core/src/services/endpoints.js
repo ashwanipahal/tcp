@@ -26,6 +26,10 @@ const endpoints = {
     method: API_METHODS.GET,
     URI: 'v2/checkout/getOrderDetails',
   },
+  fullDetails: {
+    method: API_METHODS.GET,
+    URI: 'v2/checkout/cart',
+  },
   addCreditCard: {
     method: API_METHODS.POST,
     URI: 'v2/account/addCreditCardDetails',

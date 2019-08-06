@@ -38,7 +38,7 @@ exports[`ModuleH component renders correctly 1`] = `
       />
     </TouchableOpacity>
   </Styled(View)>
-  <SnapCarousel
+  <WithTheme(SnapCarousel)
     carouselConfig={
       Object {
         "autoplay": true,
