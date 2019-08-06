@@ -79,7 +79,7 @@ const LabelsWrapper = styled.View`
   display: flex;
   justify-content: ${'center'};
   align-items: center;
-  padding-top: 17px;
+  padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
 const TextAlignCenter = styled.Text`
@@ -91,7 +91,7 @@ const ViewAlignCenter = styled.View`
 `;
 
 const TopSectionWrapper = styled.View`
-  padding-top: 30px;
+  padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
 `;
 
 const PointsWrapper = styled.View`

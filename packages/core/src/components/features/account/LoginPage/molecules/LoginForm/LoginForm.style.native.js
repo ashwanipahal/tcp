@@ -125,20 +125,18 @@ const FloatWrapper = styled.View`
 `;
 
 const ModalHeading = styled.Text`
-  margin-top: 30px;
-  margin-right: 50px;
-  margin-left: 15px;
-  font-size: 16px;
-  font-weight: 800;
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
 const ModalViewWrapper = styled.View`
-  margin-bottom: 60px;
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
 `;
 
 const LineWrapper = styled.View`
-  padding-left: 14px;
-  padding-right: 14px;
+  padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
 export {

@@ -109,7 +109,11 @@ const CreateAccountForm = props => {
               component={InputCheckbox}
               dataLocator="hide-show-pwd"
               disabled={false}
-              rightText={hideShowPwd ? labels.CREATE_ACC_LBL_HIDE : labels.CREATE_ACC_LBL_SHOW}
+              rightText={
+                hideShowPwd
+                  ? labels.registration.lbl_createAccount_hide
+                  : labels.registration.lbl_createAccount_show
+              }
               onClick={onPwdHideShowClick}
               hideCheckboxIcon
             />
@@ -132,7 +136,9 @@ const CreateAccountForm = props => {
               dataLocator="hide-show-confirm-pwd"
               disabled={false}
               rightText={
-                confirmHideShowPwd ? labels.CREATE_ACC_LBL_HIDE : labels.CREATE_ACC_LBL_SHOW
+                confirmHideShowPwd
+                  ? labels.registration.lbl_createAccount_hide
+                  : labels.registration.lbl_createAccount_show
               }
               onClick={onConfirmPwdHideShowClick}
               hideCheckboxIcon
