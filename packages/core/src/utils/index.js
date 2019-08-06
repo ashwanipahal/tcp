@@ -10,7 +10,6 @@ export {
   buildUrl,
   getSiteId,
   routerPush,
-  isCanada,
   getCreditCardExpirationOptionMap,
   getViewportInfo,
   showOverlay,
@@ -25,4 +24,5 @@ export {
   getLocator,
   getAPIConfig,
   createAPIConfig,
+  isCanada,
 } from './utils';
