@@ -30,7 +30,7 @@ class CouponForm extends React.PureComponent {
             className="coupon_form_heading"
             color="black"
           >
-            Coupon Code
+            {labels.couponCodeHeader}
             <BodyCopy
               fontSize="fs12"
               fontFamily="secondary"
@@ -38,7 +38,7 @@ class CouponForm extends React.PureComponent {
               component="span"
               fontWeight="semibold"
             >
-              Need Help?
+              {labels.couponNeedHelpText}
             </BodyCopy>
           </Heading>
           <form onSubmit={handleSubmit} className="coupon_submit_form">
@@ -90,6 +90,8 @@ CouponForm.defaultProps = {
   labels: {
     placeholderText: 'Enter Coupon Code',
     submitButtonLabel: 'Apply',
+    couponCodeHeader: 'Coupon Code',
+    couponNeedHelpText: 'Need Help?',
   },
   dataLocators: {
     submitButton: 'coupon_submit_btn',

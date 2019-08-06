@@ -17,7 +17,6 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
       textAlign="left"
       variant="h6"
     >
-      Coupon Code
       <Styled(BodyCopy)
         className="coupon_need_help_link"
         color="text.primary"
@@ -28,9 +27,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
-      >
-        Need Help?
-      </Styled(BodyCopy)>
+      />
     </Styled(Heading)>
     <form
       className="coupon_submit_form"
@@ -210,7 +207,6 @@ exports[`CouponForm Component CouponForm should render with error correctly 1`] 
       textAlign="left"
       variant="h6"
     >
-      Coupon Code
       <Styled(BodyCopy)
         className="coupon_need_help_link"
         color="text.primary"
@@ -221,9 +217,7 @@ exports[`CouponForm Component CouponForm should render with error correctly 1`] 
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
-      >
-        Need Help?
-      </Styled(BodyCopy)>
+      />
     </Styled(Heading)>
     <form
       className="coupon_submit_form"

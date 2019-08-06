@@ -8,6 +8,8 @@ export const getCouponsLabels = state => {
       bagOverview: {
         lbl_couponform_placeholder: placeholderText,
         lbl_couponform_submit: submitButtonLabel,
+        lbl_couponform_header: couponCodeHeader,
+        lbl_couponform_help: couponNeedHelpText,
       },
     },
   } = state.Labels;
@@ -15,5 +17,7 @@ export const getCouponsLabels = state => {
   return {
     placeholderText,
     submitButtonLabel,
+    couponNeedHelpText,
+    couponCodeHeader,
   };
 };
