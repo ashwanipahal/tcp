@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { applyCoupon } from './Coupon.actions';
-import getCouponFetchingState from './Coupon.selectors';
+import { getCouponFetchingState, getCouponsLabels } from './Coupon.selectors';
 import Coupon from '../views/Coupon.view';
 
 export const CouponContainer = ({ handleApplyCoupon, isFetching }) => (
@@ -24,6 +24,7 @@ export const mapDispatchToProps = dispatch => ({
 
 const mapStateToProps = state => ({
   isFetching: getCouponFetchingState(state),
+  labels: getCouponsLabels(state),
 });
 
 export default connect(

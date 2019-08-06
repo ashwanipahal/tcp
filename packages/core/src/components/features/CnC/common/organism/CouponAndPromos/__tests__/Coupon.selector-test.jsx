@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import getCouponFetchingState from '../container/Coupon.selectors';
+import { getCouponFetchingState } from '../container/Coupon.selectors';
 
 describe('#Coupon selector', () => {
   const couponState = fromJS({
