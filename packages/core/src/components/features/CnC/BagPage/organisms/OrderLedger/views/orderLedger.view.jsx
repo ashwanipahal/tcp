@@ -327,9 +327,6 @@ OrderLedger.propTypes = {
   labels: PropTypes.shape({}),
   /** Flag indicates whether cart savings section will display */
   // isDisplayCartSavings: PropTypes.bool,
-  /** Flag indicates whether the current page is Cart */
-  // eslint-disable-next-line extra-rules/no-commented-out-code
-  /* isCartPage: PropTypes.bool */
 };
 
 OrderLedger.defaultProps = {

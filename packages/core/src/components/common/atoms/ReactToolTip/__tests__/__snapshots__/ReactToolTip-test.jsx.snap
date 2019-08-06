@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ReactTooltip Component ReactTooltip should render correctly 1`] = `
-<styled.span
+<span
   onMouseLeave={[Function]}
 >
   <span
@@ -9,5 +9,5 @@ exports[`ReactTooltip Component ReactTooltip should render correctly 1`] = `
   >
     <Component />
   </span>
-</styled.span>
+</span>
 `;

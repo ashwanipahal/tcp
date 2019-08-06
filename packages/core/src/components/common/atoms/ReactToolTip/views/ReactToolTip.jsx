@@ -1,10 +1,7 @@
 import * as React from 'react';
 import BodyCopy from '../../BodyCopy';
-import {
-  StyledTooltip,
-  StyledTooltipMessage,
-  StyledTooltipBubble,
-} from '../styles/ReactToolTip.style';
+import withStyles from '../../../hoc/withStyles';
+import styles from '../styles/ReactToolTip.style';
 
 // @flow
 type Props = {
@@ -12,6 +9,7 @@ type Props = {
   children: string,
   direction: string,
   message: string,
+  className: string,
 };
 
 class ReactTooltip extends React.Component<Props> {
@@ -37,19 +35,19 @@ class ReactTooltip extends React.Component<Props> {
    * @function render - Function that renders and retunrs the tooltip component.
    */
   render() {
-    const { id, children, direction, message } = this.props;
+    const { id, children, direction, message, className } = this.props;
     const { displayTooltip } = this.state;
     return (
-      <StyledTooltip onMouseLeave={this.hideTooltip}>
+      <span className={className} onMouseLeave={this.hideTooltip}>
         {displayTooltip && (
-          <StyledTooltipBubble id={id} direction={direction} message={message}>
-            <StyledTooltipMessage>
+          <div className="tooltip-bubble" id={id} direction={direction} message={message}>
+            <div className="tooltip-message">
               <BodyCopy fontSize="fs12">{message}</BodyCopy>
-            </StyledTooltipMessage>
-          </StyledTooltipBubble>
+            </div>
+          </div>
         )}
         <span onMouseEnter={this.showTooltip}>{children}</span>
-      </StyledTooltip>
+      </span>
     );
   }
 }
@@ -57,4 +55,5 @@ class ReactTooltip extends React.Component<Props> {
 /**
  * @exports Tooltip - Default export of the Tooltip component.
  */
-export default ReactTooltip;
+export default withStyles(ReactTooltip, styles);
+export { ReactTooltip as ReactTooltipVanilla };

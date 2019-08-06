@@ -20,9 +20,7 @@ const styles = css`
     width: 100%;
   }
   .checkout-button {
-    font-weight: 800;
     margin: 0 0 10px 0;
-    color: red;
   }
   .right-sec {
     width: 346px;

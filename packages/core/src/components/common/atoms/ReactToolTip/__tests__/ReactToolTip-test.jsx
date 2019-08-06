@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ReactTooltip from '../views/ReactToolTip';
+import { ReactTooltipVanilla } from '../views/ReactToolTip';
 
 describe('ReactTooltip Component', () => {
   let component;
@@ -12,7 +12,7 @@ describe('ReactTooltip Component', () => {
   };
 
   beforeEach(() => {
-    component = shallow(<ReactTooltip {...Props} />);
+    component = shallow(<ReactTooltipVanilla {...Props} />);
   });
 
   it('ReactTooltip should be defined', () => {

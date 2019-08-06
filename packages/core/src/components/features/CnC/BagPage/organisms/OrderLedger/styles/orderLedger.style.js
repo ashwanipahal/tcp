@@ -2,7 +2,7 @@
 import { css } from 'styled-components';
 
 const LedgerStyle = css`
-  background-color: white;
+  background-color: ${props => props.theme.colors.WHITE};
   padding: 23px 1px 32px;
 
   .rowMargin {
@@ -13,7 +13,7 @@ const LedgerStyle = css`
   }
   .tax-total {
     padding-bottom: 7px;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid ${props => props.theme.colors.BLACK};
   }
   .circle-info-image {
     width: 15px;

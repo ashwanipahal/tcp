@@ -6,9 +6,7 @@ const checkoutActionsStyle = css`
   }
 
   .checkout-button {
-    font-weight: 800;
     margin-bottom: 10px;
-    color: red;
   }
 `;
 export default checkoutActionsStyle;

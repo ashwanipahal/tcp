@@ -11,6 +11,7 @@ import {
   getGrandTotal,
   getGiftCardsTotal,
   getTotalOrderSavings,
+  getOrderLedgerLabels,
 } from './orderLedger.selector';
 
 // @flow
@@ -64,22 +65,6 @@ export const OrderLedgerContainer = ({
 );
 
 function mapStateToProps(state) {
-  const {
-    bag: {
-      bagOverview: {
-        lbl_orderledger_items: itemsLabel,
-        lbl_orderledger_coupons: couponsLabel,
-        lbl_orderledger_promotions: promotionsLabel,
-        lbl_orderledger_shipping: shippingLabel,
-        lbl_orderledger_tax: taxLabel,
-        lbl_orderledger_total: totalLabel,
-        lbl_orderledger_giftcards: giftcardsLabel,
-        lbl_orderledger_balance: balanceLabel,
-        lbl_orderledger_totalsavings: totalSavingsLabel,
-        lbl_orderledger_tooltiptext: tooltipText,
-      },
-    },
-  } = state.Labels;
   return {
     className: 'order-summary',
     itemsCount: getItemsTotalCount(state),
@@ -93,18 +78,7 @@ function mapStateToProps(state) {
     orderBalanceTotal: getGrandTotal(state) - getGiftCardsTotal(state),
     totalOrderSavings: getTotalOrderSavings(state),
     currencySymbol: '$',
-    labels: {
-      itemsLabel,
-      couponsLabel,
-      promotionsLabel,
-      shippingLabel,
-      taxLabel,
-      totalLabel,
-      giftcardsLabel,
-      balanceLabel,
-      totalSavingsLabel,
-      tooltipText,
-    },
+    labels: getOrderLedgerLabels(state),
   };
 }
 

@@ -25,3 +25,34 @@ export const getTotalOrderSavings = state => {
 export const getSubTotal = state => {
   return state.CartPageReducer.getIn(['orderDetails', 'subTotal']);
 };
+export const getOrderLedgerLabels = state => {
+  const {
+    bag: {
+      bagOverview: {
+        lbl_orderledger_items: itemsLabel,
+        lbl_orderledger_coupons: couponsLabel,
+        lbl_orderledger_promotions: promotionsLabel,
+        lbl_orderledger_shipping: shippingLabel,
+        lbl_orderledger_tax: taxLabel,
+        lbl_orderledger_total: totalLabel,
+        lbl_orderledger_giftcards: giftcardsLabel,
+        lbl_orderledger_balance: balanceLabel,
+        lbl_orderledger_totalsavings: totalSavingsLabel,
+        lbl_orderledger_tooltiptext: tooltipText,
+      },
+    },
+  } = state.Labels;
+
+  return {
+    itemsLabel,
+    couponsLabel,
+    promotionsLabel,
+    shippingLabel,
+    taxLabel,
+    totalLabel,
+    giftcardsLabel,
+    balanceLabel,
+    totalSavingsLabel,
+    tooltipText,
+  };
+};
