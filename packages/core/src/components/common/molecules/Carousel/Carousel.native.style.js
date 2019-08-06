@@ -30,4 +30,13 @@ export const Container = styled.View`
   align-items: center;
 `;
 
+export const ControlsWrapper = styled.View`
+  flex-direction: row;
+  justify-content: center;
+`;
+
+export const PlayPauseButtonView = styled.View`
+  width: 30px;
+`;
+
 export default { Touchable, TouchableView, Icon, Container };

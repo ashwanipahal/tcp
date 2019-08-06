@@ -2,10 +2,9 @@ export const getCartOrderList = state => {
   // needs to do it with get method.
   return state.CartPageReducer.getIn(['orderDetails', 'orderItems']);
 };
-
 export const getEditableProductInfo = state => {
   // needs to do it with get method.
-  return state.CartPageReducer.get('editableItemData');
+  return state.CartItemTileReducer.get('editableItemData');
 };
 
 export const getCartOrderDetails = state => {

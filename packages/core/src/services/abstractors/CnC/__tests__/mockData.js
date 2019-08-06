@@ -886,3 +886,37 @@ export const response = {
   uiFlags: {},
   cartTotalAfterPLCCDiscount: 286.23,
 };
+
+export const couponResponse = [
+  {
+    couponCode: 'GYMONLY1234',
+    displayOrder: 0,
+    isApplied: false,
+    legalText: '$10 off $50 Gymboree ONLY',
+    offerCode: 'GYMONLY1234',
+    offerDescription: null,
+    offerText: '$10 off $50 Gymboree ONLY',
+    offerType: null,
+    sequence: null,
+    validFrom: '2019-07-31 00:00:00.001',
+    validTo: '9999-12-31 23:59:59.999',
+  },
+];
+
+export const couponFormatResponse = [
+  {
+    details: null,
+    detailsOpen: false,
+    effectiveDate: '7/31/19',
+    error: '',
+    expirationDate: '12/31/99',
+    id: 'GYMONLY1234',
+    isExpiring: false,
+    isStarted: true,
+    legalText: '$10 off $50 Gymboree ONLY',
+    promotionType: 'public',
+    redemptionType: undefined,
+    status: 'available',
+    title: '$10 off $50 Gymboree ONLY',
+  },
+];

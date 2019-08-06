@@ -125,6 +125,11 @@ export const getAPIConfig = () => {
   return apiConfig;
 };
 
+export const isCanada = () => {
+  const { siteId } = getAPIConfig();
+  return siteId === API_CONFIG.siteIds.ca;
+};
+
 export default {
   getIconPath,
   getLocator,
@@ -132,4 +137,5 @@ export default {
   isMobileApp,
   isServer,
   getAPIConfig,
+  isCanada,
 };

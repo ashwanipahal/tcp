@@ -286,7 +286,7 @@ exports[`ModuleK component renders correctly 1`] = `
                     "text": "ALL DINOS",
                   },
                   Object {
-                    "style": "text-black",
+                    "style": "style3",
                     "text": "50% OFF",
                   },
                 ],
@@ -380,7 +380,7 @@ exports[`ModuleK component renders correctly 1`] = `
                     "text": "ALL DINOS",
                   },
                   Object {
-                    "style": "text-black",
+                    "style": "style3",
                     "text": "50% OFF",
                   },
                 ],
@@ -474,7 +474,7 @@ exports[`ModuleK component renders correctly 1`] = `
                     "text": "ALL DINOS",
                   },
                   Object {
-                    "style": "text-black",
+                    "style": "style3",
                     "text": "50% OFF",
                   },
                 ],
@@ -568,7 +568,7 @@ exports[`ModuleK component renders correctly 1`] = `
                     "text": "ALL DINOS",
                   },
                   Object {
-                    "style": "text-black",
+                    "style": "style3",
                     "text": "50% OFF",
                   },
                 ],

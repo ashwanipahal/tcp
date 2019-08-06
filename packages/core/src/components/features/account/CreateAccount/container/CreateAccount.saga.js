@@ -57,7 +57,7 @@ export function* createAccount({ payload }) {
     const resErr = errorMessage(res);
     return yield put(createAccountErr(resErr));
   } catch (err) {
-    return yield put(createAccountErr(err));
+    return yield put(createAccountErr('Internal Server Error'));
   }
 }
 
