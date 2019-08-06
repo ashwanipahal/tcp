@@ -24,11 +24,19 @@ import {
 } from './LoginPage.selectors';
 import LoginView from '../views';
 
+// eslint-disable-next-line
+import { isMobileApp, navigateToNestedRoute } from '../../../../../utils';
+
 class LoginPageContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
     const { isUserLoggedIn, closeOverlay } = this.props;
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
-      closeOverlay();
+      if (isMobileApp()) {
+        const { navigation } = this.props;
+        navigateToNestedRoute(navigation, 'HomeStack', 'home');
+      } else {
+        closeOverlay();
+      }
     }
   }
 
@@ -87,7 +95,8 @@ class LoginPageContainer extends React.PureComponent {
 
 LoginPageContainer.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  isUserLoggedIn: PropTypes.bool.isRequired,
+  resetLoginState: PropTypes.func,
+  isUserLoggedIn: PropTypes.bool,
   closeOverlay: PropTypes.func,
   loginError: PropTypes.bool,
   loginErrorMessage: PropTypes.string,
@@ -95,8 +104,8 @@ LoginPageContainer.propTypes = {
   resetForm: PropTypes.bool.isRequired,
   getUserInfoAction: PropTypes.bool.isRequired,
   openOverlay: PropTypes.func,
+  navigation: PropTypes.shape({}),
   labels: PropTypes.shape({}).isRequired,
-  resetLoginState: PropTypes.func,
   SubmitForgot: PropTypes.bool.isRequired,
   showNotification: PropTypes.bool.isRequired,
   successFullResetEmail: PropTypes.bool.isRequired,
@@ -109,6 +118,8 @@ LoginPageContainer.defaultProps = {
   resetLoginState: () => {},
   closeOverlay: () => {},
   openOverlay: () => {},
+  isUserLoggedIn: false,
+  navigation: {},
 };
 
 const mapDispatchToProps = dispatch => {
