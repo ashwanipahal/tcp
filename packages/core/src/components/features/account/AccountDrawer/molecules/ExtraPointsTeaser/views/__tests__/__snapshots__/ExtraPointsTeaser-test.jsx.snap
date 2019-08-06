@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExtraPointsTeaser should render correctly 1`] = `
+<div
+  className=""
+>
+  <div>
+    Want to Earn Extra Points?
+  </div>
+  <div>
+    Get even closer to your next reward!
+  </div>
+  <div>
+    <Styled(Anchor)
+      anchorVariation="secondary"
+      fontSizeVariation="xlarge"
+      text="Learn More"
+    />
+  </div>
+</div>
+`;

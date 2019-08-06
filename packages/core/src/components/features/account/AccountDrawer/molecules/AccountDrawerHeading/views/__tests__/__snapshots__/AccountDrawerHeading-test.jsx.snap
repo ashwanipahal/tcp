@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccountDrawerHeading should render correctly 1`] = `
+<div
+  className=""
+>
+  <div>
+    <span>
+      <Styled(Image)
+        src="/static/images/user-icon.png"
+      />
+      <span>
+        Test Name
+      </span>
+    </span>
+    <span>
+      <Styled(Anchor)
+        anchorVariation="secondary"
+        fontSizeVariation="xlarge"
+        text="View My Account"
+      />
+    </span>
+  </div>
+</div>
+`;
