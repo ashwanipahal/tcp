@@ -68,6 +68,21 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       >
         Login
       </Styled(Anchor)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        fontSizeVariation="small"
+        handleLinkClick={[Function]}
+        href="#"
+        id="cartIcon"
+        noLink={true}
+      >
+        <Styled(Image)
+          alt="Product"
+          className="product-image"
+          data-locator="addedtobag-bag-icon"
+          src="/static/images/bag.png"
+        />
+      </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
   <Styled(Row)
@@ -95,5 +110,9 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Connect(MiniBagContainer)
+    isOpen={false}
+    toggleMiniBagModal={[Function]}
+  />
 </Fragment>
 `;

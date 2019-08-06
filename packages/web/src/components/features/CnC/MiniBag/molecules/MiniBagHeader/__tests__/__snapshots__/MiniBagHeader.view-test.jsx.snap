@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MiniBagHeader component renders correctly 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-dnqmqq",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .mainWrapper {
+    text-align: center;
+    height: 31px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .subHeaderText {
+    text-decoration: none;
+  }
+  .pointsRewards {
+    color: ",
+          [Function],
+          ";
+  }
+  .cartCount {
+    background: ",
+          [Function],
+          ";
+    color: ",
+          [Function],
+          ";
+    border-radius: 8px;
+    margin: 1px 0px 0px -8px;
+    padding: 2px 6px;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(MiniBagHeader)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-dnqmqq",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  labels={
+    Object {
+      "createAccount": "crerate Acccount",
+      "hi": "hi",
+      "inRewards": "rewards",
+      "logIn": "login",
+      "points": "points",
+    }
+  }
+  totalItems={20}
+/>
+`;

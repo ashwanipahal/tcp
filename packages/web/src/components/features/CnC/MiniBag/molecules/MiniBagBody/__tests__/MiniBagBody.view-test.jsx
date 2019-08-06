@@ -2,9 +2,16 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import MiniBagBody from '../views/MiniBagBody';
 
-describe('BossBannerView component', () => {
+describe('MiniBagBody component', () => {
   it('renders correctly', () => {
-    const component = shallow(<MiniBagBody />);
+    const props = {
+      labels: {
+        viewBag: 'View bag',
+        viewSaveForLater: 'save later',
+        subTotal: 'Subtotal',
+      },
+    };
+    const component = shallow(<MiniBagBody {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

@@ -6,39 +6,43 @@ import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import { Image } from '@tcp/core/src/components/common/atoms';
 import { getIconPath } from '@tcp/core/src/utils';
 
-import MiniBagHeaderStyle from '../styles/MiniBagHeader.style';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import styles from '../styles/MiniBagHeader.style';
 
-const ProductTile = () => {
+// @flow
+
+type Props = {
+  labels: any,
+  totalItems: any,
+  className: string,
+};
+const MiniBagHeader = ({ labels, totalItems, className }: Props) => {
   const data = {
     isLoggedIn: true,
     userName: 'Christine',
     points: 50,
     rewardsPoints: 0,
+    cartCount: 4,
   };
-  const labels = {
-    createAccountLabel: 'Create Account',
-    logInLabel: 'Log In',
-    points: 'Points',
-    inRewards: 'in Rewards',
-  };
+
   return (
-    <MiniBagHeaderStyle>
+    <div className={className}>
       <Row className="mainWrapper">
         <Col className="subHeaderText" colSize={{ small: 4, medium: 6, large: 9 }}>
           {data.isLoggedIn === false ? (
             <BodyCopy component="span" fontSize="fs12" textAlign="left">
               <Anchor fontSizeVariation="small" anchorVariation="primary" noLink to="">
-                {labels.createAccountLabel}
+                {labels.createAccount}
               </Anchor>
               {` | `}
               <Anchor fontSizeVariation="small" anchorVariation="primary" noLink>
-                {labels.logInLabel}
+                {labels.logIn}
               </Anchor>
             </BodyCopy>
           ) : (
             <>
               <BodyCopy component="span" fontSize="fs16" fontWeight="semibold" textAlign="left">
-                {`Hi ${data.userName} `}
+                {`${labels.hi} ${data.userName} `}
               </BodyCopy>
               <BodyCopy
                 className="pointsRewards"
@@ -67,14 +71,15 @@ const ProductTile = () => {
               alt="Product"
               className="product-image"
               src={getIconPath('cart-icon')}
-              data-locator="addedtobag-bag0-icon"
+              data-locator="addedtobag-bag-icon"
             />
+            <BodyCopy className="cartCount" component="span" fontWeight="semibold" fontSize="fs10">
+              {totalItems || 0}
+            </BodyCopy>
           </Anchor>
-          <BodyCopy component="span" fontSize="fs12" textAlign="left" text="2" />
         </Col>
       </Row>
-    </MiniBagHeaderStyle>
+    </div>
   );
 };
-
-export default ProductTile;
+export default withStyles(MiniBagHeader, styles);

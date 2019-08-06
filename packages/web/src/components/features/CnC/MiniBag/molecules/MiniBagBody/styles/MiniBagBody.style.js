@@ -1,9 +1,49 @@
-import styled from 'styled-components';
+import { css } from 'styled-components';
 
-export default styled.div`
+export default css`
   box-sizing: border-box;
   .viewBagAndProduct {
     max-height: 600px;
     overflow-y: auto;
+  }
+  .mainWrapper {
+    text-align: center;
+    background-color: ${props => props.theme.colorPalette.gray['300']};
+    height: 31px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .subHeaderText {
+    text-decoration: underline;
+  }
+  .miniBagFooter {
+    height: 137px;
+    text-align: center;
+    background-color: ${props => props.theme.colorPalette.gray['300']};
+    padding-right: 0;
+    padding-left: 0;
+    border-bottom: ${props => props.theme.colorPalette.gray['600']};
+  }
+  .subTotal {
+    text-align: center;
+    padding: 13px 0 13px 0;
+  }
+  .checkout-button {
+    padding-top: 10px;
+  }
+
+  .checkout {
+    height: 48px;
+    margin-left: 10px;
+    flex: 1;
+
+    background-color: ${props => props.theme.colors.PRIMARY.BLUE};
+    @media ${props => props.theme.mediaQuery.smallMax} {
+      margin-left: 0;
+      width: 220px;
+    }
+  }
+  .payPal-button {
+    width: 220px;
   }
 `;

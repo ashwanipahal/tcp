@@ -5,20 +5,22 @@ import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles, { modalStyles } from '../styles/MiniBag.style';
 import MiniBagHeader from '../molecules/MiniBagHeader/views/MiniBagHeader';
 import MiniBagBody from '../molecules/MiniBagBody/views/MiniBagBody';
-import MiniBagFooter from '../molecules/MiniBagFooter/views/MiniBagFooter';
 
 // @flow
 type Props = {
   onRequestClose: Function,
   className: string,
+  openState: boolean,
+  labels: any,
+  totalItems: any,
 };
 
-const MiniBag = ({ onRequestClose, className }: Props) => {
+const MiniBag = ({ onRequestClose, className, openState, labels, totalItems }: Props) => {
   return (
     <Modal
-      isOpen
+      isOpen={openState}
       onRequestClose={onRequestClose}
-      heading={<MiniBagHeader />}
+      heading={<MiniBagHeader labels={labels} totalItems={totalItems} />}
       overlayClassName="TCPModal__Overlay"
       className={`TCPModal__Content, ${className}`}
       closeIconDataLocator="mini-bag-close"
@@ -29,8 +31,7 @@ const MiniBag = ({ onRequestClose, className }: Props) => {
       data-locator="mini-bag-modal"
       inheritedStyles={modalStyles}
     >
-      <MiniBagBody />
-      <MiniBagFooter />
+      <MiniBagBody labels={labels} />
     </Modal>
   );
 };
