@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { SectionList, Text } from 'react-native';
-import { getScreenWidth } from '@tcp/core/src/utils/utils.native';
+import { getScreenWidth } from '@tcp/core/src/utils';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import ShopBySize from '../../ShopBySize';
 import MenuItem from '../../MenuItems';

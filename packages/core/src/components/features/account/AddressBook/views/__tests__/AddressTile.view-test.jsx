@@ -22,7 +22,7 @@ const labels = {
     ACC_LBL_BILLING: 'BILLING',
   },
   common: {
-    ACC_LBL_MAKE_DEFAULT: 'Make Default',
+    lbl_common_makeDefault: 'Make Default',
   },
 };
 
@@ -129,7 +129,7 @@ describe('AddressTile component', () => {
         .find(Anchor)
         .first()
         .text()
-    ).toBe(labels.common.ACC_LBL_MAKE_DEFAULT);
+    ).toBe(labels.common.lbl_common_makeDefault);
   });
   it('should call delete address click', () => {
     const newAddress = Object.assign({}, address, {

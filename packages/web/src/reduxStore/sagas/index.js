@@ -1,6 +1,8 @@
 import { all } from 'redux-saga/effects';
 import ProductListingPageSaga from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.saga';
 import LoginPageSaga from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.saga';
+import LogOutPageSaga from '@tcp/core/src/components/features/account/Logout/container/LogOut.saga';
+import ForgotPasswordSaga from '@tcp/core/src/components/features/account/ForgotPassword/container/ForgotPassword.saga';
 import AddEditAddressSaga from '@tcp/core/src/components/features/account/AddEditAddress/container/AddEditAddress.saga';
 import AddressBookSaga from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.saga';
 import PaymentSaga from '@tcp/core/src/components/features/account/Payment/container/Payment.saga';
@@ -27,6 +29,8 @@ export default function* rootSaga() {
     HomePageSaga(),
     ProductListingPageSaga(),
     LoginPageSaga(),
+    LogOutPageSaga(),
+    ForgotPasswordSaga(),
     AddEditAddressSaga(),
     AddressBookSaga(),
     DeleteAddressSaga(),

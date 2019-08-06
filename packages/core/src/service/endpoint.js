@@ -58,6 +58,12 @@ const endpoints = {
     method: 'get',
     relURI: '/api/v2/account/getRegisteredUserInfo',
   },
+
+  requestPassword: {
+    method: 'put',
+    relURI: '/api/v2/account/resetPassword',
+  },
+
   getAddressList: {
     method: 'get',
     relURI: '/api/v2/account/getAddressFromBook',
@@ -128,6 +134,10 @@ const endpoints = {
   createAccount: {
     method: 'post',
     relURI: '/api/v2/wallet/addCustomerRegistration',
+  },
+  logout: {
+    method: 'delete',
+    relURI: '/api/v2/account/logout',
   },
 };
 export default endpoints;

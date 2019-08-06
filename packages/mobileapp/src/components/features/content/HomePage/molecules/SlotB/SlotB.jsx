@@ -1,5 +1,5 @@
 import React from 'react';
-import { ModuleD, ModuleH } from '@tcp/core/src/components/common/molecules';
+import { ModuleD, ModuleH, ModuleL } from '@tcp/core/src/components/common/molecules';
 
 // @flow
 type Props = {
@@ -12,6 +12,8 @@ const SlotB = (props: Props) => {
       return <ModuleD {...props} />;
     case 'moduleH':
       return <ModuleH {...props} />;
+    case 'moduleL':
+      return <ModuleL {...props} />;
     default:
       return null;
   }

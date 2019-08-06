@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyPlaceRewardsOverviewTile component should render correctly 1`] = `
+<Styled(AccountOverviewTile)
+  ctaTitle=""
+  title=""
+>
+  <p>
+    Dummy My place rewards content
+  </p>
+  <p>
+    Actual implementation coming soon...
+  </p>
+  <p>
+    This is just to check if all tiles remain with same height
+  </p>
+</Styled(AccountOverviewTile)>
+`;

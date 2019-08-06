@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { FlatList } from 'react-native';
-import { UrlHandler, getScreenWidth } from '../../../../../utils/utils.native';
+import { UrlHandler, getScreenWidth } from '../../../../../utils/index.native';
 import { Image, BodyCopy, Anchor } from '../../../atoms';
 import LinkText from '../../LinkText';
 import {
@@ -43,36 +43,26 @@ const renderItem = (item, navigation) => {
     item: { image, link },
   } = item;
   return (
-    <ChildContainer
-      onPress={() => {
-        UrlHandler(link.url);
-      }}
-    >
-      <Image url={image.url} height={127} crop={image.crop_m} />
-      <MessageContainer>
-        <BodyCopyContainer width={width}>
-          <BodyCopy
-            fontSize="fs20"
-            color="black"
-            letterSpacing="ls222"
-            text={image.alt}
-            onPress={() => {
-              UrlHandler(link.url);
-            }}
-          />
-        </BodyCopyContainer>
-        <LinkContainer>
-          <Anchor
-            fontSizeVariation="xlarge"
-            text={link.text}
-            visible={anchorIcon}
-            url={link.url}
-            navigation={navigation}
-            external={link.external}
-          />
-        </LinkContainer>
-      </MessageContainer>
-    </ChildContainer>
+    <Anchor url={link.url} navigation={navigation} external={link.external}>
+      <ChildContainer>
+        <Image url={image.url} height={127} crop={image.crop_m} />
+        <MessageContainer>
+          <BodyCopyContainer width={width}>
+            <BodyCopy fontSize="fs20" color="black" letterSpacing="ls222" text={image.alt} />
+          </BodyCopyContainer>
+          <LinkContainer>
+            <Anchor
+              fontSizeVariation="xlarge"
+              text={link.text}
+              visible={anchorIcon}
+              url={link.url}
+              navigation={navigation}
+              external={link.external}
+            />
+          </LinkContainer>
+        </MessageContainer>
+      </ChildContainer>
+    </Anchor>
   );
 };
 

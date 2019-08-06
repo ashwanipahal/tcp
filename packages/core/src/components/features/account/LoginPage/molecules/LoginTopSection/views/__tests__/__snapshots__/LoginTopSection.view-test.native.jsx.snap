@@ -2,7 +2,11 @@
 
 exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
 <View
-  labels={Object {}}
+  labels={
+    Object {
+      "login": Object {},
+    }
+  }
 >
   <Styled(ImageComp)
     height={60}

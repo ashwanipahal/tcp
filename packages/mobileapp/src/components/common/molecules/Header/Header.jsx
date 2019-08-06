@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
-import { getLocator } from '@tcp/core/src/utils/utils.native';
+import { getLocator } from '@tcp/core/src/utils';
 import HeaderPromo from '../HeaderPromo/HeaderPromo';
 import {
   Container,
@@ -63,6 +63,18 @@ class Header extends React.PureComponent<Props> {
     });
   };
 
+  renderPromo = () => {
+    const { headerPromo } = this.props;
+    if (headerPromo) {
+      return (
+        <HeaderPromoContainer>
+          <HeaderPromo headerPromo={headerPromo} />
+        </HeaderPromoContainer>
+      );
+    }
+    return null;
+  };
+
   render() {
     const { isDownIcon, cartVal } = this.state;
     let headerLabels = {
@@ -70,8 +82,7 @@ class Header extends React.PureComponent<Props> {
       lbl_header_welcomeMessage: '',
     };
 
-    const { labels, headerPromo } = this.props;
-
+    const { labels } = this.props;
     if (labels) {
       headerLabels = labels;
     }
@@ -130,9 +141,7 @@ class Header extends React.PureComponent<Props> {
             />
           </CartContainer>
         </Container>
-        <HeaderPromoContainer>
-          <HeaderPromo headerPromo={headerPromo} />
-        </HeaderPromoContainer>
+        {this.renderPromo()}
       </SafeAreaViewStyle>
     );
   }

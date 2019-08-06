@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { PropTypes } from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import ImageComp from '../../../../../../common/atoms/Image';
@@ -7,9 +7,8 @@ import ImageComp from '../../../../../../common/atoms/Image';
 import TheMarketPlaceLogo from '../../../../../../../assets/my-place-rewards.png';
 import {
   SectionStyle,
-  // HeadingStyle,
-  // SubHeadingStyle,
-  // DescriptionStyle,
+  CenterAlignWrapper,
+  TextAlignCenter,
 } from '../styles/CreateAccountTopSection.style.native';
 
 /**
@@ -19,35 +18,29 @@ import {
  */
 const CreateAccountTopSection = props => {
   const { labels } = props;
-  const imgStyle = { alignSelf: 'center' };
+  // const imgStyle = { alignSelf: 'center' };
   return (
     <View {...props}>
-      <ImageComp source={TheMarketPlaceLogo} width={186} height={60} customStyle={imgStyle} />
-      <View className="labels-wrapper">
-        <View className="padding-bottom-10">
-          <Text>{labels.CREATE_ACC_LBL_CREATE_A}</Text>
-          <Text>{labels.CREATE_ACC_LBL_MY_PLACE_REWARDS}</Text>
-          <Text>{labels.CREATE_ACC_LBL_EARN_POINTS}</Text>
-        </View>
-        <View className="padding-bottom-10">
-          <Text>{labels.CREATE_ACC_LBL_SPEND_POINT}</Text>
-          <Text>{labels.CREATE_ACC_LBL_POINT_REWARD}</Text>
+      <CenterAlignWrapper>
+        <ImageComp source={TheMarketPlaceLogo} width={186} height={60} />
+      </CenterAlignWrapper>
+      <CenterAlignWrapper className="labels-wrapper">
+        <TextAlignCenter>
+          {labels.registration.lbl_createAccount_createA}
+          {labels.registration.lbl_createAccount_myPlaceRewards}
+          {labels.registration.lbl_createAccount_earnPoints}
+        </TextAlignCenter>
+        <View>
+          <TextAlignCenter>{labels.registration.lbl_createAccount_spendPoint}</TextAlignCenter>
+          <TextAlignCenter>{labels.registration.lbl_createAccount_pointReward}</TextAlignCenter>
         </View>
         <View>
-          <Text>{labels.CREATE_ACC_LBL_SIGNED_UP}</Text>
-          <Text>{labels.CREATE_ACC_LBL_ONLINE_ACC_CREATED}</Text>
-          {/* <View className="reset-pwd">
-            <Anchor className="reset_password" to="" target="">
-              {labels.CREATE_ACC_LBL_RESET_PWD}
-            </Anchor>
-          </View> */}
+          <TextAlignCenter>{labels.registration.lbl_createAccount_signedUp}</TextAlignCenter>
+          <TextAlignCenter>
+            {labels.registration.lbl_createAccount_onlineAccCreated}
+          </TextAlignCenter>
         </View>
-      </View>
-      {/* <LineComp marginTop={30} marginBottom={17} /> */}
-      {/* <HeadingStyle>{labels.heading}</HeadingStyle>
-      <SubHeadingStyle>{labels.subHeading}</SubHeadingStyle>
-      <DescriptionStyle>{labels.description}</DescriptionStyle> */}
-      {/* <LineComp marginTop={25} marginBottom={0} /> */}
+      </CenterAlignWrapper>
     </View>
   );
 };
