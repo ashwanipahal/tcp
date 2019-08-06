@@ -23,7 +23,7 @@ const dropDownlist = css`
 
   .dropdownDivOverFlow {
     overflow-y: scroll;
-    width: max-content;
+    display: table;
   }
 
   .dropdownActiveClass {
