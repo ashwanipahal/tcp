@@ -17,7 +17,10 @@ class AppSplash extends React.PureComponent<Props> {
     this.transformAnimatedValue = new Animated.Value(0);
     this.imageTransformAnimatedValue = new Animated.Value(0);
     this.viewBackgroundAnimatedValue = new Animated.Value(0);
-    setTimeout(this.showSplashAnimation, AppAnimationConfig.AnimationDelay);
+  }
+
+  componentDidMount() {
+    this.showSplashAnimation();
   }
 
   /**
@@ -31,6 +34,7 @@ class AppSplash extends React.PureComponent<Props> {
    */
   showSplashAnimation = () => {
     Animated.sequence([
+      Animated.delay(AppAnimationConfig.AnimationDelay),
       Animated.timing(this.transformAnimatedValue, {
         toValue: 1,
         duration: AppAnimationConfig.AnimationDelay,

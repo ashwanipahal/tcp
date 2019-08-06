@@ -36,7 +36,7 @@ class SecondAppPeekABooView extends React.PureComponent<Props> {
   peekABooAnimation = async () => {
     const animateLogo = await shouldAnimateLogo();
     if (animateLogo) {
-      this.animationTimeout = setTimeout(this.showAnimation, AppAnimationConfig.AnimationDelay * 2);
+      this.showAnimation();
       if (updateLastSplashAnimationDate) updateLastSplashAnimationDate();
     }
   };
@@ -50,6 +50,7 @@ class SecondAppPeekABooView extends React.PureComponent<Props> {
    */
   showAnimation = () => {
     Animated.sequence([
+      Animated.delay(AppAnimationConfig.AnimationDelay * 2),
       Animated.timing(this.transformAnimatedValue, {
         toValue: { x: 0, y: -60 },
         duration: AppAnimationConfig.AnimationDelay,
