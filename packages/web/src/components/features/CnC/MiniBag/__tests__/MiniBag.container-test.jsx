@@ -7,9 +7,7 @@ import MiniBagView from '../views/MiniBag.view';
 describe('Mini Bag Container', () => {
   const orderItems = List([1, 2]);
   it('should render Mini Bag view section', () => {
-    const tree = shallow(
-      <MiniBagContainer getOrderDetailsApi={jest.fn()} orderItems={orderItems} />
-    );
+    const tree = shallow(<MiniBagContainer initialActions={jest.fn()} orderItems={orderItems} />);
     expect(tree.is(MiniBagView)).toBeTruthy();
   });
 });

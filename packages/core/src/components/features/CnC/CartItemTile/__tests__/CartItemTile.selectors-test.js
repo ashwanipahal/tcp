@@ -113,6 +113,15 @@ describe('#CartItemTile selector', () => {
       Labels: {
         bag: {
           addedToBag,
+          bagOverview: {
+            lbl_cartTile_fit: 'Fit',
+            lbl_cartTile_points: 'Points',
+            lbl_cartTile_cancel: 'Cancel',
+            lbl_cartTile_edit: 'Edit',
+            lbl_cartTile_saveForLater: 'Save For Later',
+            lbl_cartTile_productBrandAlt: 'Brand',
+            lbl_cartTile_productImageAlt: 'Product',
+          },
         },
       },
     };
@@ -122,6 +131,13 @@ describe('#CartItemTile selector', () => {
       price: 'Price',
       qty: 'Qty',
       size: 'Size',
+      fit: 'Fit',
+      points: 'Points',
+      cancel: 'Cancel',
+      edit: 'Edit',
+      saveForLater: 'Save For Later',
+      productBandAlt: 'Brand',
+      productImageAlt: 'Product',
     });
   });
 });

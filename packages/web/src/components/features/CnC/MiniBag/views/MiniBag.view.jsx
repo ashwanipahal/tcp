@@ -25,6 +25,7 @@ const MiniBag = props => {
           orderItems.size > 0 &&
           orderItems.map(tile => {
             const productDetail = getProductDetails(tile);
+
             return (
               <ProductTile
                 labels={labels}

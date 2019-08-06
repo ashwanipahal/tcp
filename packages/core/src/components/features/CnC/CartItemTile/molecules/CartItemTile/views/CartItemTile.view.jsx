@@ -27,14 +27,14 @@ class ProductTile extends React.Component {
         <Row fullBleed className="product">
           <Col key="productDetails" colSize={{ small: 2, medium: 2, large: 3 }}>
             <Image
-              alt="Product"
+              alt={labels.productImageAlt}
               className="product-image"
               src={endpoints.global.baseURI + productDetail.itemInfo.imagePath}
               data-locator="addedtobag-productimage"
             />
             {!productDetail.itemInfo.isGiftItem && (
               <Image
-                alt="Brand"
+                alt={labels.productBandAlt}
                 className="brand-image"
                 src={
                   productDetail.itemInfo.itemBrand === 'TCP'
@@ -46,19 +46,21 @@ class ProductTile extends React.Component {
             )}
           </Col>
           <Col key="productDetails" colSize={{ small: 4, medium: 6, large: 9 }}>
-            <Row>
-              <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-                <BodyCopy
-                  fontFamily="secondary"
-                  tag="span"
-                  fontSize="fs10"
-                  fontWeight={['extrabold']}
-                  dataLocator="addedtobag-productname"
-                >
-                  {'Online Exclusive'}
-                </BodyCopy>
-              </Col>
-            </Row>
+            {productDetail.miscInfo.badge && (
+              <Row>
+                <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+                  <BodyCopy
+                    fontFamily="secondary"
+                    tag="span"
+                    fontSize="fs10"
+                    fontWeight={['extrabold']}
+                    dataLocator="addedtobag-productname"
+                  >
+                    {productDetail.miscInfo.badge}
+                  </BodyCopy>
+                </Col>
+              </Row>
+            )}
             <Row>
               <Col className="productImgBrand" colSize={{ small: 6, medium: 8, large: 12 }}>
                 <BodyCopy
@@ -107,7 +109,7 @@ class ProductTile extends React.Component {
                         fontSize="fs12"
                         fontWeight={['extrabold']}
                       >
-                        {`Fit`}
+                        {labels.fit}
                         {':'}
                       </BodyCopy>
                       <BodyCopy
@@ -171,7 +173,7 @@ class ProductTile extends React.Component {
                       this.setState({ isEdit: true });
                     }}
                   >
-                    <u>Edit</u>
+                    <u>{labels.edit}</u>
                   </BodyCopy>
                 </Row>
               </React.Fragment>
@@ -181,6 +183,7 @@ class ProductTile extends React.Component {
                 colorFitsSizesMap={undefined}
                 handleSubmit={() => {}}
                 initialValues={initialValues}
+                labels={labels}
               />
             )}
             <Row className="padding-top-10">
@@ -213,7 +216,7 @@ class ProductTile extends React.Component {
                   fontSize="fs12"
                   fontWeight={['extrabold']}
                 >
-                  Points:
+                  {`${labels.points}:`}
                 </BodyCopy>
               </Col>
               <Col colSize={{ small: 2, medium: 3, large: 8 }}>
@@ -241,7 +244,7 @@ class ProductTile extends React.Component {
               </Col>
               <Col colSize={{ small: 1, medium: 1, large: 3 }}>
                 <BodyCopy fontFamily="secondary" fontSize="fs12" component="span">
-                  <u>Save for later</u>
+                  <u>{labels.saveForLater}</u>
                 </BodyCopy>
               </Col>
             </Row>

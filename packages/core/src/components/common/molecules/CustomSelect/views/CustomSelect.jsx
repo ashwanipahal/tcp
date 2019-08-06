@@ -70,7 +70,7 @@ class CustomSelect extends React.Component<Props> {
   };
 
   getDropDownList = () => {
-    const { options, renderedList: RenderList } = this.props;
+    const { options, renderList: RenderList } = this.props;
     const { activeValue } = this.state;
     return RenderList ? (
       <RenderList

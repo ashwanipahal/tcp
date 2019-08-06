@@ -60,6 +60,10 @@ export const getProductItemPartNumber = product => {
   return product.getIn(['productInfo', 'itemPartNumber']);
 };
 
+export const getProductBadge = product => {
+  return product.getIn(['miscInfo', 'badge', 'defaultBadge']);
+};
+
 export const getLabelsCartItemTile = state => {
   const {
     bag: {
@@ -72,12 +76,34 @@ export const getLabelsCartItemTile = state => {
       },
     },
   } = state.Labels;
+
+  const {
+    bag: {
+      bagOverview: {
+        lbl_cartTile_fit: fit,
+        lbl_cartTile_points: points,
+        lbl_cartTile_cancel: cancel,
+        lbl_cartTile_edit: edit,
+        lbl_cartTile_saveForLater: saveForLater,
+        lbl_cartTile_productBrandAlt: productBandAlt,
+        lbl_cartTile_productImageAlt: productImageAlt,
+      },
+    },
+  } = state.Labels;
+
   return {
     color,
     size,
     qty,
     price,
     design,
+    fit,
+    points,
+    cancel,
+    edit,
+    saveForLater,
+    productBandAlt,
+    productImageAlt,
   };
 };
 
@@ -98,6 +124,9 @@ export const getProductDetails = tile => {
     productInfo: {
       productPartNumber: getProductPartNumber(tile),
       itemPartNumber: getProductItemPartNumber(tile),
+    },
+    miscInfo: {
+      badge: getProductBadge(tile),
     },
   };
 };

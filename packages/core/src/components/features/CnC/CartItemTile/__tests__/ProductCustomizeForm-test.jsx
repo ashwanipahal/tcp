@@ -25,6 +25,10 @@ describe('ProductCustomizeForm Component', () => {
         itemPartNumber: '00193511087773',
       },
     },
+    labels: {
+      update: '',
+      cancel: '',
+    },
   };
 
   const state = {

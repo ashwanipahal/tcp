@@ -15,6 +15,9 @@ describe('BossBannerView component', () => {
           isGiftItem: true,
           fit: 'regular',
         },
+        miscInfo: {
+          badge: '',
+        },
       },
       labels: {
         color: 'Color',

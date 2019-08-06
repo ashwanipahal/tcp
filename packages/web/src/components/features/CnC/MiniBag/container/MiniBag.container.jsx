@@ -10,8 +10,8 @@ import MiniBagView from '../views/MiniBag.view';
 
 export class MiniBagContainer extends React.Component {
   componentDidMount = () => {
-    const { getOrderDetailsApi } = this.props;
-    getOrderDetailsApi();
+    const { initialActions } = this.props;
+    initialActions();
   };
 
   render() {
@@ -31,7 +31,7 @@ const mapStateToProps = state => {
 };
 export const mapDispatchToProps = dispatch => {
   return {
-    getOrderDetailsApi: () => {
+    initialActions: () => {
       dispatch(getOrderDetails());
     },
   };
@@ -43,7 +43,7 @@ MiniBagContainer.defaultProps = {
 
 MiniBagContainer.propTypes = {
   orderItems: PropTypes.shape({}),
-  getOrderDetailsApi: PropTypes.func.isRequired,
+  initialActions: PropTypes.func.isRequired,
 };
 
 export default connect(

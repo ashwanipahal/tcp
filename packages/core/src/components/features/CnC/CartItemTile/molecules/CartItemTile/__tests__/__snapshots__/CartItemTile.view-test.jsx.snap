@@ -17,7 +17,6 @@ exports[`BossBannerView component renders correctly 1`] = `
       key="productDetails"
     >
       <Styled(Image)
-        alt="Product"
         className="product-image"
         data-locator="addedtobag-productimage"
         src="https://test4.childrensplace.comundefined"
@@ -33,37 +32,6 @@ exports[`BossBannerView component renders correctly 1`] = `
       }
       key="productDetails"
     >
-      <Styled(Row)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 12,
-              "medium": 8,
-              "small": 6,
-            }
-          }
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            dataLocator="addedtobag-productname"
-            fontFamily="secondary"
-            fontSize="fs10"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            tag="span"
-            textAlign="left"
-          >
-            Online Exclusive
-          </Styled(BodyCopy)>
-        </Styled(Col)>
-      </Styled(Row)>
       <Styled(Row)>
         <Styled(Col)
           className="productImgBrand"
@@ -151,7 +119,6 @@ exports[`BossBannerView component renders correctly 1`] = `
             lineHeight="normal"
             textAlign="left"
           >
-            Fit
             :
           </Styled(BodyCopy)>
           <Styled(BodyCopy)
@@ -253,9 +220,7 @@ exports[`BossBannerView component renders correctly 1`] = `
           onClick={[Function]}
           textAlign="left"
         >
-          <u>
-            Edit
-          </u>
+          <u />
         </Styled(BodyCopy)>
       </Styled(Row)>
       <Styled(Row)
@@ -341,7 +306,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             lineHeight="normal"
             textAlign="left"
           >
-            Points:
+            undefined:
           </Styled(BodyCopy)>
         </Styled(Col)>
         <Styled(Col)
@@ -424,9 +389,7 @@ exports[`BossBannerView component renders correctly 1`] = `
             lineHeight="normal"
             textAlign="left"
           >
-            <u>
-              Save for later
-            </u>
+            <u />
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>

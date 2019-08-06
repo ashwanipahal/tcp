@@ -394,7 +394,6 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
 
   for (let item of orderDetailsResponse.orderItems) {
     let sizeAndFit = item.productInfo.itemsAttributes[item.itemCatentryId.toString()];
-    console.log('sizeAndFit>>>>', sizeAndFit);
     //When brierley fails, backend returns -1
     if (item.itemPoints === -1) {
       item.itemPoints = null;

@@ -214,9 +214,7 @@ exports[`ProductCustomizeForm Component ProductCustomizeForm should render corre
         }
         type="submit"
       >
-        <u>
-          Update
-        </u>
+        <u />
       </Styled(Button)>
       <Styled(Button)
         fill="RED"
@@ -232,9 +230,7 @@ exports[`ProductCustomizeForm Component ProductCustomizeForm should render corre
           ]
         }
       >
-        <u>
-          Cancel
-        </u>
+        <u />
       </Styled(Button)>
     </div>
   </Styled(Row)>

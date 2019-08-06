@@ -16,6 +16,7 @@ type Props = {
   initialValues: any,
   item: any,
   className: any,
+  labels: any,
 };
 
 export class ProductCustomizeForm extends React.PureComponent<Props> {
@@ -165,7 +166,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
   };
 
   render() {
-    const { colorFitsSizesMap, item } = this.props;
+    const { colorFitsSizesMap, item, labels } = this.props;
     const { selectedColor, selectedFit, selectedSize, selectedQuantity } = this.state;
 
     const colorList = this.getColorOptions(colorFitsSizesMap);
@@ -251,10 +252,10 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
           </div>
           <div className="button-wrapper">
             <Button inheritedStyles={buttonCustomStyles} type="submit">
-              <u>Update</u>
+              <u>{labels.update}</u>
             </Button>
             <Button inheritedStyles={buttonCustomStyles} fill="RED">
-              <u>Cancel</u>
+              <u>{labels.cancel}</u>
             </Button>
           </div>
         </Row>
