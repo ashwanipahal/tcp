@@ -8,8 +8,15 @@ import TheMarketPlaceLogo from '../../../../../../../assets/my-place-rewards.png
 import {
   SectionStyle,
   CenterAlignWrapper,
+  LabelsWrapper,
   TextAlignCenter,
+  ViewAlignCenter,
+  TopSectionWrapper,
+  PointsWrapper,
+  ResetWrapper,
 } from '../styles/CreateAccountTopSection.style.native';
+import LineComp from '../../../../../../common/atoms/Line';
+import Anchor from '../../../../../../common/atoms/Anchor';
 
 /**
  * @param {string} props : props for CustomIcon
@@ -21,26 +28,37 @@ const CreateAccountTopSection = props => {
   // const imgStyle = { alignSelf: 'center' };
   return (
     <View {...props}>
-      <CenterAlignWrapper>
-        <ImageComp source={TheMarketPlaceLogo} width={186} height={60} />
-      </CenterAlignWrapper>
-      <CenterAlignWrapper className="labels-wrapper">
-        <TextAlignCenter>
-          {labels.registration.lbl_createAccount_createA}
-          {labels.registration.lbl_createAccount_myPlaceRewards}
-          {labels.registration.lbl_createAccount_earnPoints}
-        </TextAlignCenter>
-        <View>
-          <TextAlignCenter>{labels.registration.lbl_createAccount_spendPoint}</TextAlignCenter>
-          <TextAlignCenter>{labels.registration.lbl_createAccount_pointReward}</TextAlignCenter>
-        </View>
-        <View>
-          <TextAlignCenter>{labels.registration.lbl_createAccount_signedUp}</TextAlignCenter>
+      <TopSectionWrapper>
+        <CenterAlignWrapper>
+          <ImageComp source={TheMarketPlaceLogo} width={186} height={60} />
+        </CenterAlignWrapper>
+        <LineComp marginTop={28} />
+        <LabelsWrapper className="labels-wrapper">
           <TextAlignCenter>
-            {labels.registration.lbl_createAccount_onlineAccCreated}
+            {labels.registration.lbl_createAccount_createA}
+            {labels.registration.lbl_createAccount_myPlaceRewards}
+            {labels.registration.lbl_createAccount_earnPoints}
           </TextAlignCenter>
-        </View>
-      </CenterAlignWrapper>
+          <PointsWrapper>
+            <TextAlignCenter>{labels.registration.lbl_createAccount_spendPoint}</TextAlignCenter>
+            <TextAlignCenter>{labels.registration.lbl_createAccount_pointReward}</TextAlignCenter>
+          </PointsWrapper>
+          <ResetWrapper>
+            <TextAlignCenter>{labels.registration.lbl_createAccount_signedUp}</TextAlignCenter>
+            <TextAlignCenter>
+              {labels.registration.lbl_createAccount_onlineAccCreated}
+            </TextAlignCenter>
+            <ViewAlignCenter>
+              <Anchor
+                fontSizeVariation="xlarge"
+                text={labels.registration.lbl_createAccount_resetPassword}
+                underline
+              />
+            </ViewAlignCenter>
+          </ResetWrapper>
+        </LabelsWrapper>
+        <LineComp marginTop={28} />
+      </TopSectionWrapper>
     </View>
   );
 };

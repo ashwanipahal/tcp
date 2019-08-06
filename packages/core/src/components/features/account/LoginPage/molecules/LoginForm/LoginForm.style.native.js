@@ -124,6 +124,21 @@ const FloatWrapper = styled.View`
   ${leftAignWrapper}
 `;
 
+const ModalHeading = styled.Text`
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
+const ModalViewWrapper = styled.View`
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+`;
+
+const LineWrapper = styled.View`
+  padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
 export {
   FormStyle,
   DescriptionStyle,
@@ -133,4 +148,7 @@ export {
   HeadingStyle,
   FloatWrapper,
   SubHeadingStyle,
+  ModalHeading,
+  ModalViewWrapper,
+  LineWrapper,
 };
