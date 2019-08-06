@@ -11,7 +11,9 @@ export const TextLiksViewContainer = styled.View`
 `;
 
 export const DivImageContainer = styled.View`
-  padding-left: 10px;
+  margin-top: 10px;
+  margin-left: 25px;
+  margin-bottom: 10px;
   align-items: center;
 `;
 

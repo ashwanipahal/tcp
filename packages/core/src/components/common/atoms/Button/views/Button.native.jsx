@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
+import { UrlHandler, navigateToPage } from '../../../../../utils/utils.native';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../Button.style.native';
 
@@ -29,10 +30,14 @@ type Props = {
 };
 
 const CustomButton = (props: Props) => {
-  const { text, url, buttonVariation, fullWidth, customStyle, ...otherProps } = props;
+  const { text, buttonVariation, fullWidth, customStyle, ...otherProps }: Props = props;
   const textValue = text || '';
+  const { url, external, navigation, onPress } = otherProps;
+  const openUrlInExternalBrowser = onPress || (() => UrlHandler(url));
+  const openUrl = external ? openUrlInExternalBrowser : () => navigateToPage(url, navigation);
+
   return (
-    <TouchableOpacity accessibilityRole="button" style={customStyle}>
+    <TouchableOpacity accessibilityRole="button" style={customStyle} onPress={openUrl}>
       <Text fullWidth={fullWidth} buttonVariation={buttonVariation} {...otherProps}>
         {textValue}
       </Text>

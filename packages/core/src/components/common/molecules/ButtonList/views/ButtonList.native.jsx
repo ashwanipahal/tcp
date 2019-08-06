@@ -18,43 +18,97 @@ type Props = {
   item: Object[],
 };
 
+/**
+ * This is a button style. The two variations of buttons width
+ */
 const buttonWidth = { width: getScreenWidth() / 2 };
 const buttonFullWidth = { width: getScreenWidth() };
 
 const keyExtractor = (_, index) => index.toString();
 
-// eslint-disable-next-line react/prop-types
-const renderItem = ({ item, showFullWidth }) => {
+/**
+ * This can be render stackCTA Button view with equal width  .
+ */
+const renderItem = (item, navigation, showFullWidth) => {
   return (
     <Button
-      buttonVariation="variable-width"
-      text={item.title}
+      buttonVariation="cautionary-button"
+      text={item.text}
+      color="red"
       style={showFullWidth ? buttonFullWidth : buttonWidth}
+      url={item.links}
+      navigation={navigation}
     />
   );
 };
 
-const renderFlatList = updatedCtxButton => {
+/**
+ * This can be renderFull stackCTA Button view with equal width  .
+ */
+const renderFullItem = (item, navigation) => {
+  return (
+    <Button
+      buttonVariation="cautionary-button"
+      text={item.item.text}
+      color="red"
+      style={buttonWidth}
+      url={item.item.links}
+      navigation={navigation}
+    />
+  );
+};
+
+/**
+ * This can be render stackCTA Button view with equal width  .
+ */
+
+const renderFlatList = (updatedCtxButton, navigation) => {
   return (
     <FlatList
       numColumns={2}
       keyExtractor={keyExtractor}
       data={updatedCtxButton}
-      renderItem={renderItem}
+      renderItem={item => renderFullItem(item, navigation)}
     />
   );
 };
 
-// eslint-disable-next-line react/prop-types
-const scrollViewRenderItem = ({ item }) => {
+/**
+ * This can be renderItem of the StackCTA Button view with odd or even concept .
+ */
+const renderOddButtonGrid = (ctxButton, navigation) => {
+  const updatedCtxButton = ctxButton.slice();
+  const item = updatedCtxButton.pop();
+  const showFullWidth = true;
+  return (
+    <Container>
+      {renderFlatList(updatedCtxButton, navigation)}
+      {renderItem(item, navigation, showFullWidth)}
+    </Container>
+  );
+};
+
+/**
+ * This can be renderItem of the scroll Button view .
+ */
+const scrollViewRenderItem = (item, navigation) => {
   return (
     <ScrollViewContainer>
-      <Button buttonVariation="variable-width" text={item.title} />
+      <Button
+        buttonVariation="cautionary-button"
+        color="red"
+        text={item.item.text}
+        url={item.item.links}
+        navigation={navigation}
+      />
     </ScrollViewContainer>
   );
 };
 
-const renderScrollView = ctxButton => {
+/**
+ * This can be render the Scroll ButtonList view .
+ */
+const renderScrollView = (ctxButton, navigation) => {
   const isHorizontalScroll = true;
   const isScrollIndicator = false;
   return (
@@ -63,28 +117,20 @@ const renderScrollView = ctxButton => {
       horizontal={isHorizontalScroll}
       keyExtractor={keyExtractor}
       data={ctxButton}
-      renderItem={scrollViewRenderItem}
+      renderItem={item => scrollViewRenderItem(item, navigation)}
     />
   );
 };
 
-const renderOddButtonGrid = ctxButton => {
-  const updatedCtxButton = ctxButton.slice();
-  const item = updatedCtxButton.pop();
-  return (
-    <Container>
-      {renderFlatList(updatedCtxButton)}
-      {renderItem({ item, showFullWidth: true })}
-    </Container>
-  );
-};
-
+/**
+ * This can be renderItem of the LinkText view .
+ */
 const linkTextViewRenderItem = (item, navigation) => {
   const style = { borderBottomWidth: 3, borderColor: 'white' };
   return (
     <TextLiksViewContainer>
       <Anchor
-        text={item.item.title}
+        text={item.item.text}
         anchorVariation="white"
         fontWeightVariation="large"
         url={item.item.links}
@@ -95,6 +141,9 @@ const linkTextViewRenderItem = (item, navigation) => {
   );
 };
 
+/**
+ * This can be render the LinkText view .
+ */
 const rendeLinkTextView = (ctxButton, navigation) => {
   const isHorizontalScroll = true;
   const isScrollIndicator = false;
@@ -109,30 +158,33 @@ const rendeLinkTextView = (ctxButton, navigation) => {
   );
 };
 
-// eslint-disable-next-line react/prop-types
-const divImageRenderItem = ({ item }) => {
+/**
+ * This can be renderItem of the DivImageCTA view .
+ */
+const divImageRenderItem = (item, navigation) => {
   const style = { borderRadius: 70 / 2 };
+  const bodycopyStyle = { marginTop: 20 };
   return (
-    <DivImageContainer>
-      <Image
-        url="https://res.cloudinary.com/tcp-dam-test/image/upload/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg"
-        height={70}
-        width={70}
-        crop="w_70"
-        style={style}
-      />
-      <BodyCopy
-        fontFamily="secondary"
-        fontSize="fs13"
-        color="extrabold"
-        letterSpacing="black"
-        text={item.title}
-      />
-    </DivImageContainer>
+    <Anchor url={item.item.links} navigation={navigation}>
+      <DivImageContainer>
+        <Image url={item.item.url} height={70} width={70} style={style} />
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs13"
+          color="white"
+          letterSpacing="black"
+          text={item.item.text}
+          style={bodycopyStyle}
+        />
+      </DivImageContainer>
+    </Anchor>
   );
 };
 
-const renderDivImageCTA = ctxButton => {
+/**
+ * This can be render the DivImageCTA view .
+ */
+const renderDivImageCTA = (ctxButton, navigation) => {
   const isHorizontalScroll = true;
   const isScrollIndicator = false;
   return (
@@ -141,40 +193,46 @@ const renderDivImageCTA = ctxButton => {
       horizontal={isHorizontalScroll}
       keyExtractor={keyExtractor}
       data={ctxButton}
-      renderItem={divImageRenderItem}
+      renderItem={item => divImageRenderItem(item, navigation)}
     />
   );
 };
 
-// Main Render Function
+/**
+ * @param {object} props : Props for ButtonList
+ * @desc This is a button component. The two variations of buttons are:
+ * 1. stackedCTAButton: Takes the list of stack button.
+ * 2. scrollCTAButton: Takes the list of horizontal button.
+ * 3. linkList: Takes the list of linktext button .
+ * 4. divImageCTA: Takes the list of combination of image & text .
+ */
+
 const ButtonList = ({ buttonListVariation, navigation, ...otherProps }: Props) => {
   const { ctxButton } = otherProps;
 
-  // This is first Stack-Button Variation
-
-  if (buttonListVariation === 'stackedCTAButton') {
+  if (buttonListVariation === 'stackedCTAList') {
     const isEvenButtonGrid = ctxButton.length % 2 === 0;
     return (
       <Container>
-        {isEvenButtonGrid && renderFlatList(ctxButton)}
-        {!isEvenButtonGrid && renderOddButtonGrid(ctxButton)}
+        {isEvenButtonGrid && renderFlatList(ctxButton, navigation)}
+        {!isEvenButtonGrid && renderOddButtonGrid(ctxButton, navigation)}
       </Container>
     );
   }
 
-  if (buttonListVariation === 'scrollCTAButton') {
-    return <Container>{renderScrollView(ctxButton)}</Container>;
+  if (buttonListVariation === 'scrollCTAList') {
+    return <Container>{renderScrollView(ctxButton, navigation)}</Container>;
   }
 
-  if (buttonListVariation === 'linkList') {
+  if (buttonListVariation === 'linkCTAList') {
     return <Container>{rendeLinkTextView(ctxButton, navigation)}</Container>;
   }
 
-  if (buttonListVariation === 'divImageCTA') {
-    return <Container>{renderDivImageCTA(ctxButton)}</Container>;
+  if (buttonListVariation === 'imageCTAList') {
+    return <Container>{renderDivImageCTA(ctxButton, navigation)}</Container>;
   }
 
-  return <Container> </Container>;
+  return null;
 };
 
 export default ButtonList;
