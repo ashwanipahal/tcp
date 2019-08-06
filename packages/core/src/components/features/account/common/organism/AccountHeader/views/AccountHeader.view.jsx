@@ -21,7 +21,7 @@ export const AccountHeader = ({
         isNotInlineBlock
         className="hide-on-mobile hide-on-tablet"
       >
-        {name}
+        {`${labels.lbl_overview_greeting} ${name}`}
       </Col>
       <Col
         colSize={{

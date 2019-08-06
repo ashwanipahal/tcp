@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import AccountOverview from '../views';
+import AccountHeader from '../views';
 import {
   getUserName,
   getPointsToNextRewardState,
@@ -8,8 +8,8 @@ import {
   getTotalRewardsState,
 } from '../../../../LoginPage/container/LoginPage.selectors';
 
-const AccountOverviewContainer = props => {
-  return <AccountOverview {...props} />;
+const AccountHeaderContainer = props => {
+  return <AccountHeader {...props} />;
 };
 
 const mapStateToProps = state => ({
@@ -19,4 +19,4 @@ const mapStateToProps = state => ({
   totalRewards: getTotalRewardsState(state),
 });
 
-export default connect(mapStateToProps)(AccountOverviewContainer);
+export default connect(mapStateToProps)(AccountHeaderContainer);
