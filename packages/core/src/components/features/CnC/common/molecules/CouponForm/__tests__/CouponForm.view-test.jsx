@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { CouponForm } from '../views/CouponForm.view';
 
-describe.only('CartItem Component', () => {
+describe.only('CouponForm Component', () => {
   let component;
   const props = {
     labels: {
@@ -17,15 +17,19 @@ describe.only('CartItem Component', () => {
     handleSubmit: () => {},
   };
 
-  beforeEach(() => {
+  it('CouponForm should be defined', () => {
     component = shallow(<CouponForm {...props} />);
-  });
-
-  it('CartItem should be defined', () => {
     expect(component).toBeDefined();
   });
 
-  it('CartItem should render correctly', () => {
+  it('CouponForm should render correctly', () => {
+    component = shallow(<CouponForm {...props} />);
+    expect(component).toMatchSnapshot();
+  });
+
+  it('CouponForm should render with error correctly', () => {
+    props.error = { msg: '1234' };
+    component = shallow(<CouponForm {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

@@ -4,9 +4,19 @@ import { hideLoader, showLoader } from './Coupon.actions';
 import { applyCouponToCart } from '../../../../../../../services/abstractors/CnC';
 
 export function* applyCoupon({ payload }) {
-  yield put(showLoader);
-  yield call(applyCouponToCart, payload);
-  yield put(hideLoader);
+  const {
+    formData,
+    formPromise: { resolve, reject },
+  } = payload;
+  try {
+    yield put(showLoader());
+    yield call(applyCouponToCart, formData);
+    yield put(hideLoader());
+    resolve();
+  } catch (e) {
+    yield put(hideLoader());
+    reject(e);
+  }
 }
 
 export function* CouponSaga() {
