@@ -125,11 +125,26 @@ export const getAPIConfig = () => {
   return apiConfig;
 };
 
+export const isGymboree = () => {
+  return getAPIConfig().brandId === 'gym';
+};
+
+export const isTCP = () => {
+  return getAPIConfig().brandId === 'tcp';
+};
+
+export const getBrand = () => {
+  return getAPIConfig().brandId;
+};
+
 export default {
   getIconPath,
   getLocator,
+  getBrand,
   isClient,
   isMobileApp,
   isServer,
   getAPIConfig,
+  isGymboree,
+  isTCP,
 };
