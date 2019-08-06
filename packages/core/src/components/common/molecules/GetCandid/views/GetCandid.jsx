@@ -13,7 +13,8 @@ class GetCandid extends React.Component {
     pageType: PropTypes.string,
     /* espotId is the espot key if you need a custom heading */
     espotId: PropTypes.string,
-    className: PropTypes.string.isRequired,
+    /*calssName is required */
+    className: PropTypes.string,
   };
 
   static defaultProps = {
@@ -25,7 +26,7 @@ class GetCandid extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // to be moved to a config File(Confirm with Shobhit)
+      // to be moved to a config File(Confirmation Pending with Shobhit)
       apiKey: '070167ca-8287-4d41-a9bb-6b3850cae9b1',
       candidSlot: 'tcp-get-candid-image-container',
       icid: {
