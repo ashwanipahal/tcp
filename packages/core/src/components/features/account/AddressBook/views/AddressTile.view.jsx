@@ -78,12 +78,6 @@ class AddressBookTile extends React.Component<Props> {
                 {labels.addressBook.ACC_LBL_DEFAULT_BILLING}
               </Badge>
             )}
-            {address.xcont_isDefaultBilling !== 'true' &&
-              address.xcont_isBillingAddress === 'true' && (
-                <Badge dataLocator="addressbook-billinglabel">
-                  {labels.addressBook.ACC_LBL_BILLING}
-                </Badge>
-              )}
             {address.primary !== 'true' && address.xcont_isShippingAddress === 'true' && (
               <Badge dataLocator="addressbook-shippinglabel">
                 {labels.addressBook.ACC_LBL_SHIPPING}
