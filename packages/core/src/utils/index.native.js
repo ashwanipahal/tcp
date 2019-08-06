@@ -8,6 +8,8 @@ export {
   getScreenHeight,
   getScreenWidth,
   navigateToNestedRoute,
+  getValueFromAsyncStorage,
+  setValueInAsyncStorage,
 } from './utils.app';
 
 export {
@@ -17,5 +19,6 @@ export {
   getIconPath,
   getLocator,
   getAPIConfig,
+  isCanada,
   createAPIConfig,
 } from './utils';
