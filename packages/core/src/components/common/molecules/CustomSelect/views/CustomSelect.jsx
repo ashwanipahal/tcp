@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ColorSelectList from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ColorSelectorList/views/ColorSelectorList.view';
 import DropdownList from '../../DropdownList';
 import BodyCopy from '../../../atoms/BodyCopy';
 import styles from '../styles/CustomSelect.style';
@@ -71,28 +70,21 @@ class CustomSelect extends React.Component<Props> {
   };
 
   getDropDownList = () => {
-    const { options, list } = this.props;
+    const { options, renderedList: RenderList } = this.props;
     const { activeValue } = this.state;
-    let renderedList;
-    if (list === 'colorSelector') {
-      renderedList = (
-        <ColorSelectList
-          optionsMap={options}
-          clickHandler={this.onClickHandler}
-          activeValue={activeValue}
-        />
-      );
-    } else {
-      renderedList = (
-        <DropdownList
-          optionsMap={options}
-          clickHandler={this.onClickHandler}
-          activeValue={activeValue}
-        />
-      );
-    }
-
-    return renderedList;
+    return RenderList ? (
+      <RenderList
+        optionsMap={options}
+        clickHandler={this.onClickHandler}
+        activeValue={activeValue}
+      />
+    ) : (
+      <DropdownList
+        optionsMap={options}
+        clickHandler={this.onClickHandler}
+        activeValue={activeValue}
+      />
+    );
   };
 
   render() {
