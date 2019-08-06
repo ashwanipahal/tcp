@@ -9,7 +9,9 @@ import { isClient } from '../../../utils';
  * @returns {Object} returns derived request object and request url
  */
 const getRequestParams = (apiConfig, reqObj) => {
-  const { proto, unbxd } = apiConfig;
+  const {
+    sitesInfo: { proto, unbxd },
+  } = API_CONFIG;
   const tcpApi = `${proto}${unbxd}${reqObj.url}?${reqObj.queryString}`;
   const requestUrl = tcpApi; // TODO - configure it for Unbxd
   console.log('tcpApi ######## ', tcpApi);
