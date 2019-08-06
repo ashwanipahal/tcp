@@ -1,11 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CouponForm Component CouponForm should render correctly 1`] = `
-<Fragment>
+<div>
   <Styled(ErrorMessage)
     error=""
   />
-  <div>
+  <div
+    className="coupon_form_container"
+  >
     <Styled(Heading)
       className="coupon_form_heading"
       color="black"
@@ -174,7 +176,6 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         dataLocator="coupon_code"
         id="coupon_code"
         name="coupon_code"
-        onKeyPress={[Function]}
         placeholder="Enter Coupon Code"
         type="text"
       />
@@ -189,15 +190,17 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
       </Styled(Button)>
     </form>
   </div>
-</Fragment>
+</div>
 `;
 
 exports[`CouponForm Component CouponForm should render with error correctly 1`] = `
-<Fragment>
+<div>
   <Styled(ErrorMessage)
     error="1234"
   />
-  <div>
+  <div
+    className="coupon_form_container"
+  >
     <Styled(Heading)
       className="coupon_form_heading"
       color="black"
@@ -366,7 +369,6 @@ exports[`CouponForm Component CouponForm should render with error correctly 1`] 
         dataLocator="coupon_code"
         id="coupon_code"
         name="coupon_code"
-        onKeyPress={[Function]}
         placeholder="Enter Coupon Code"
         type="text"
       />
@@ -381,5 +383,5 @@ exports[`CouponForm Component CouponForm should render with error correctly 1`] 
       </Styled(Button)>
     </form>
   </div>
-</Fragment>
+</div>
 `;

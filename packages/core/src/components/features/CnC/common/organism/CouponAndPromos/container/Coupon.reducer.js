@@ -9,7 +9,7 @@ const initialState = fromJS({
 
 const getDefaultState = state => {
   // TODO: currently when initial state is hydrated on browser, List is getting converted to an JS Array
-  if (state instanceof Object) {
+  if (!(state instanceof fromJS)) {
     return fromJS(state);
   }
   return state;

@@ -5,8 +5,11 @@ import CouponReducer from '../container/Coupon.reducer';
 describe('Coupon Reducer', () => {
   const initialState = fromJS({
     isFetching: false,
-    couponList: [],
-    couponsAndOffers: [],
+  });
+
+  it('InitialState', () => {
+    const newState = CouponReducer({ isFetching: false }, {});
+    expect(newState.get('isFetching')).toEqual(false);
   });
 
   it('SHOW_LOADER', () => {

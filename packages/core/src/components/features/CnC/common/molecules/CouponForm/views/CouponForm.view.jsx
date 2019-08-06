@@ -8,15 +8,6 @@ import style from '../styles/CouponForm.style';
 import ErrorMessage from '../../ErrorMessage';
 
 class CouponForm extends React.PureComponent {
-  onSignUpInputKeyPress = e => {
-    const { handleSubmit } = this.props;
-    if (e.keyCode === 13 || e.which === 13) {
-      e.preventDefault();
-      return handleSubmit();
-    }
-    return false;
-  };
-
   render() {
     const {
       labels,
@@ -30,9 +21,9 @@ class CouponForm extends React.PureComponent {
     } = this.props;
 
     return (
-      <>
+      <div className={className}>
         <ErrorMessage error={error && error.msg} />
-        <div className={className}>
+        <div className="coupon_form_container">
           <Heading
             fontFamily="primaryFontFamily"
             variant="h6"
@@ -57,7 +48,6 @@ class CouponForm extends React.PureComponent {
               id={fieldName}
               type="text"
               component={TextBox}
-              onKeyPress={this.onSignUpInputKeyPress}
               dataLocator={dataLocators.inputField}
               className="coupon_code_input"
             />
@@ -72,7 +62,7 @@ class CouponForm extends React.PureComponent {
             </Button>
           </form>
         </div>
-      </>
+      </div>
     );
   }
 }

@@ -25,7 +25,7 @@ export const applyCouponToCart = ({ coupon_code: couponCode = '' }) => {
         errorMessages.errorParameters[1] === placeCash &&
         placeCash,
     };
-    throw new SubmissionError(err.errorMessages || { _error: 'Oops... an error occured' });
+    throw new SubmissionError(error.errorMessages || { _error: 'Oops... an error occured' });
   });
 };
 
