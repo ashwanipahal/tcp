@@ -8,26 +8,11 @@ import { getUserName } from './AccountDrawer.selector';
 // @flow
 type Props = {
   className: string,
-  openOverlay: any,
   userName: any,
 };
 
-export const AccountDrawerContainer = ({ className, openOverlay, userName }: Props) => {
-  const onAlreadyHaveAnAccountClick = e => {
-    e.preventDefault();
-    openOverlay({
-      component: 'login',
-      variation: 'primary',
-    });
-  };
-  return (
-    <AccountDrawerView
-      className={className}
-      labels={labels}
-      onAlreadyHaveAnAccountClick={onAlreadyHaveAnAccountClick}
-      userName={userName}
-    />
-  );
+export const AccountDrawerContainer = ({ className, userName }: Props) => {
+  return <AccountDrawerView className={className} labels={labels} userName={userName} />;
 };
 
 export const mapStateToProps = state => {
