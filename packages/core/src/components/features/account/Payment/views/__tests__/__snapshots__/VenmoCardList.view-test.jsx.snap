@@ -60,6 +60,8 @@ exports[`VenmoCardList Component should render correctly if list is present 1`] 
     labels={
       Object {
         "VenmoCardHeading": "heading",
+        "common": Object {},
+        "paymentGC": Object {},
       }
     }
   />

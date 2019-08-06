@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { FlatList } from 'react-native';
-import { UrlHandler, getScreenWidth } from '../../../../../utils/utils.native';
+import { UrlHandler, getScreenWidth } from '../../../../../utils/index.native';
 import { Image, BodyCopy, Anchor } from '../../../atoms';
 import LinkText from '../../LinkText';
 import {

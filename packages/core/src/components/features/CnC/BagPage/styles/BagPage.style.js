@@ -30,6 +30,8 @@ const styles = css`
     @media ${props => props.theme.mediaQuery.large} {
       width: 450px;
     }
+  .bag-header {
+    margin: 40px 0 20px;
   }
 `;
 

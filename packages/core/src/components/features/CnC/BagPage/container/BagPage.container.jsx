@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import BagPageActions from './BagPage.actions';
 import BagPageSelector from './BagPage.selectors';
 import BagPage from '../views/BagPage.view';
+import BAG_PAGE_ACTIONS from './BagPage.actions';
 
 // @flow
 // type Props = {
@@ -16,6 +16,11 @@ import BagPage from '../views/BagPage.view';
 export class BagPageContainer extends React.Component<Props> {
   closeModal = () => {};
 
+  componentWillMount = () => {
+    const { initialActions } = this.props;
+    initialActions();
+  };
+
   render() {
     const { labels } = this.props;
     return <BagPage labels={labels} />;
@@ -24,8 +29,8 @@ export class BagPageContainer extends React.Component<Props> {
 
 export const mapDispatchToProps = (dispatch: ({}) => void) => {
   return {
-    closeModal: () => {
-      dispatch(BagPageActions.closeAddedToBag());
+    initialActions: () => {
+      dispatch(BAG_PAGE_ACTIONS.getCartData());
     },
   };
 };

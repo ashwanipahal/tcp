@@ -21,7 +21,12 @@ exports[`CreditCardForm component should renders correctly with address dropdown
     className=""
     initialValues={Object {}}
     isEdit={false}
-    labels={Object {}}
+    labels={
+      Object {
+        "common": Object {},
+        "paymentGC": Object {},
+      }
+    }
     onFileAddressKey=""
     onFileAddresskey="12345"
   />
@@ -72,7 +77,7 @@ exports[`CreditCardForm component should renders correctly with address dropdown
               "value": "12345",
             },
             Object {
-              "content": <ForwardRef
+              "content": <ForwardRef(Styled(Button))
                 buttonVariation="variable-width"
                 fill="BLUE"
                 fullWidth={true}
@@ -183,7 +188,12 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
     className=""
     initialValues={Object {}}
     isEdit={false}
-    labels={Object {}}
+    labels={
+      Object {
+        "common": Object {},
+        "paymentGC": Object {},
+      }
+    }
     onFileAddressKey=""
     pristine={true}
   />
@@ -234,7 +244,7 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
               "value": "12345",
             },
             Object {
-              "content": <ForwardRef
+              "content": <ForwardRef(Styled(Button))
                 buttonVariation="variable-width"
                 fill="BLUE"
                 fullWidth={true}

@@ -64,7 +64,7 @@ class DeleteCardModal extends React.Component<Props> {
     const getAccNumbr = `${data.description.accountNo}`.slice(-4);
     const TotalExp = `${data.description.expMonth}/${data.description.expYear}`.replace(/ /g, '');
     const isCreditCard = ccType !== 'GiftCard' && ccType !== 'VENMO';
-    const creditCardHeading = labels.ACC_LBL_MODAL_CREDIT_CARD_HEADING;
+    const creditCardHeading = labels.paymentGC.lbl_payment_modalCCHeading;
     const address = data.description.addressDetails ? data.description.addressDetails : null;
     return (
       <div className={className}>
@@ -142,7 +142,7 @@ class DeleteCardModal extends React.Component<Props> {
           <Notification
             status={showUpdatedNotificationOnModal}
             colSize={{ large: 11, medium: 7, small: 6 }}
-            message={labels.ACC_LBL_ERROR_MSG}
+            message={labels.paymentGC.lbl_payment_errorMsg}
           />
         )}
 

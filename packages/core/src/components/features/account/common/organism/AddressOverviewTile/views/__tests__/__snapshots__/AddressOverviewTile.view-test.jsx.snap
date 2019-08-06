@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddressOverviewTile component should render correctly 1`] = `
+<Styled(AccountOverviewTile)
+  ctaTitle="View Address Book"
+  title="Address Book"
+>
+  <p>
+    Dummy Address book
+  </p>
+</Styled(AccountOverviewTile)>
+`;

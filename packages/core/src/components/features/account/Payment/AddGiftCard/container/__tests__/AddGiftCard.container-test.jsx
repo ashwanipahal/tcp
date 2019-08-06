@@ -2,14 +2,13 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { AddGiftCardContainer, mapDispatchToProps } from '../AddGiftCard.container';
 import AddGiftCardComponent from '../../views/AddGiftCard.view';
-import labels from '../AddGiftCard.labels';
 
 describe('Add Gift Card Container', () => {
   it('should render gift card view section', () => {
     const tree = shallow(
       <AddGiftCardContainer
         onAddGiftCardClick={jest.fn()}
-        labels={labels}
+        labels={{ paymentGC: {}, commmon: {} }}
         addGiftCardResponse={jest.fn()}
         getCardListAction={jest.fn()}
       />
