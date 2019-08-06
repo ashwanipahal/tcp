@@ -34,9 +34,9 @@ const OrderLedger = ({
             <BodyCopy
               bodySize="one"
               color="primary"
-              fontFamily="secondaryFontSemilBoldFamily"
+              fontFamily="secondary"
               textAlign="left"
-              fontWeight="bold"
+              fontWeight="semibold"
               fontSize="fs16"
             >
               {`${labels.itemsLabel} (${itemsCount}):`}
@@ -46,8 +46,8 @@ const OrderLedger = ({
             <BodyCopy
               bodySize="one"
               color="primary"
-              fontFamily="secondaryFontSemilBoldFamily"
-              fontWeight="bold"
+              fontFamily="secondary"
+              fontWeight="semibold"
               fontSize="fs16"
               textAlign="right"
             >
@@ -61,8 +61,8 @@ const OrderLedger = ({
               <BodyCopy
                 bodySize="one"
                 color="primary"
-                fontFamily="secondaryFontFamily"
-                fontWeight="bold"
+                fontFamily="secondary"
+                fontWeight="semibold"
                 fontSize="fs16"
               >
                 {`${labels.couponsLabel}:`}
@@ -72,8 +72,8 @@ const OrderLedger = ({
               <BodyCopy
                 bodySize="one"
                 color="primary"
-                fontFamily="secondaryFontFamily"
-                fontWeight="bold"
+                fontFamily="secondary"
+                fontWeight="semibold"
                 fontSize="fs16"
                 textAlign="right"
               >
@@ -88,8 +88,8 @@ const OrderLedger = ({
               <BodyCopy
                 bodySize="one"
                 color="primary"
-                fontFamily="secondaryFontFamily"
-                fontWeight="bold"
+                fontFamily="secondary"
+                fontWeight="semibold"
                 fontSize="fs16"
               >
                 {`${labels.promotionsLabel}`}
@@ -99,8 +99,8 @@ const OrderLedger = ({
               <BodyCopy
                 bodySize="one"
                 color="primary"
-                fontFamily="secondaryFontFamily"
-                fontWeight="bold"
+                fontFamily="secondary"
+                fontWeight="semibold"
                 fontSize="fs16"
                 textAlign="right"
               >
@@ -114,8 +114,8 @@ const OrderLedger = ({
             <BodyCopy
               bodySize="one"
               color="primary"
-              fontFamily="secondaryFontFamily"
-              fontWeight="bold"
+              fontFamily="secondary"
+              fontWeight="semibold"
               fontSize="fs16"
             >
               {`${labels.shippingLabel}:`}
@@ -125,8 +125,8 @@ const OrderLedger = ({
             <BodyCopy
               bodySize="one"
               color="primary"
-              fontFamily="secondaryFontFamily"
-              fontWeight="bold"
+              fontFamily="secondary"
+              fontWeight="semibold"
               fontSize="fs16"
               textAlign="right"
             >
@@ -145,8 +145,8 @@ const OrderLedger = ({
               bodySize="one"
               tag="span"
               color="primary"
-              fontFamily="secondaryFontFamily"
-              fontWeight="bold"
+              fontFamily="secondary"
+              fontWeight="semibold"
               fontSize="fs16"
             >
               {`${labels.taxLabel}:`}
@@ -156,8 +156,8 @@ const OrderLedger = ({
             <BodyCopy
               bodySize="one"
               color="primary"
-              fontFamily="secondaryFontFamily"
-              fontWeight="bold"
+              fontFamily="secondary"
+              fontWeight="semibold"
               fontSize="fs16"
               textAlign="right"
             >
@@ -171,8 +171,8 @@ const OrderLedger = ({
                 <BodyCopy
                   bodySize="one"
                   color="primary"
-                  fontFamily="secondaryFontFamily"
-                  fontWeight="bold"
+                  fontFamily="secondary"
+                  fontWeight="semibold"
                   fontSize="fs16"
                 >
                   {`${labels.totalLabel}:`}
@@ -182,8 +182,8 @@ const OrderLedger = ({
                 <BodyCopy
                   bodySize="one"
                   color="primary"
-                  fontFamily="secondaryFontFamily"
-                  fontWeight="bold"
+                  fontFamily="secondary"
+                  fontWeight="semibold"
                   fontSize="fs16"
                   textAlign="right"
                 >
@@ -196,8 +196,8 @@ const OrderLedger = ({
                   <BodyCopy
                     bodySize="one"
                     color="primary"
-                    fontFamily="secondaryFontFamily"
-                    fontWeight="bold"
+                    fontFamily="secondary"
+                    fontWeight="semibold"
                     fontSize="fs16"
                   >
                     {`${labels.giftcardsLabel}:`}
@@ -207,8 +207,8 @@ const OrderLedger = ({
                   <BodyCopy
                     bodySize="one"
                     color="primary"
-                    fontFamily="secondaryFontFamily"
-                    fontWeight="bold"
+                    fontFamily="secondary"
+                    fontWeight="semibold"
                     fontSize="fs16"
                     textAlign="right"
                   >
@@ -224,8 +224,8 @@ const OrderLedger = ({
               bodySize="one"
               tag="span"
               color="primary"
-              fontFamily="secondaryFontFamily"
-              fontWeight="black"
+              fontFamily="secondary"
+              fontWeight="extrabold"
               fontSize="fs18"
             >
               {giftCardsTotal ? `${labels.balanceLabel}:` : `${labels.totalLabel}:`}
@@ -236,8 +236,8 @@ const OrderLedger = ({
               bodySize="one"
               tag="span"
               color="primary"
-              fontFamily="secondaryFontFamily"
-              fontWeight="black"
+              fontFamily="secondary"
+              fontWeight="extrabold"
               fontSize="fs18"
               textAlign="right"
             >
@@ -250,8 +250,8 @@ const OrderLedger = ({
             <BodyCopy
               bodySize="one"
               color="primary"
-              fontFamily="secondaryFontFamily"
-              fontWeight="bold"
+              fontFamily="secondary"
+              fontWeight="semibold"
               fontSize="fs16"
             >
               {`${labels.totalSavingsLabel}`}
@@ -264,8 +264,8 @@ const OrderLedger = ({
             <BodyCopy
               bodySize="one"
               color="primary"
-              fontFamily="secondaryFontFamily"
-              fontWeight="bold"
+              fontFamily="secondary"
+              fontWeight="semibold"
               fontSize="fs16"
               textAlign="right"
             >
