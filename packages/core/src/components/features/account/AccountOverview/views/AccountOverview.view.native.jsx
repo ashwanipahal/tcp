@@ -7,28 +7,22 @@ const AccountOverview = ({ labels }) => {
   const viewContainerStyle = { marginTop: 15 };
   return (
     <View style={viewContainerStyle}>
-      <Panel title={labels.lbl_place_rewards || 'My Place Rewards'} />
-      <Panel title="My Wallet" />
-      <Panel title="Earn Extra Points" />
-      <Panel title="Orders" />
-      <Panel title="Profile Information" />
-      <Panel title="Address Book" />
-      <Panel title="Payment & Gift Cards" />
-      <Panel title="My Preferences" />
-      <Panel title="My Place Rewards Credit Card" />
-      <Panel title="My Favorites" />
+      <Panel title={labels.lbl_overview_myPlaceRewardsHeading} />
+      <Panel title={labels.lbl_overview_myWalletHeading} />
+      <Panel title={labels.lbl_overview_earnPointsHeading} />
+      <Panel title={labels.lbl_overview_ordersHeading} />
+      <Panel title={labels.lbl_overview_profileInformationHeading} />
+      <Panel title={labels.lbl_overview_addressBookHeading} />
+      <Panel title={labels.lbl_overview_paymentHeading} />
+      <Panel title={labels.lbl_overview_myPreferencesHeading} />
+      <Panel title={labels.lbl_overview_myPlaceRewardsCardHeading} />
+      <Panel title={labels.lbl_overview_myFavoritesHeading} />
     </View>
   );
 };
 
 AccountOverview.propTypes = {
-  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
-};
-
-AccountOverview.defaultProps = {
-  labels: {
-    lbl_place_rewards: 'My Place Rewards',
-  },
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
 };
 
 export default AccountOverview;
