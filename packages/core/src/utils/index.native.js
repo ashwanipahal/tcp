@@ -7,6 +7,8 @@ export {
   getIconCard,
   getScreenHeight,
   getScreenWidth,
+  getValueFromAsyncStorage,
+  setValueInAsyncStorage,
 } from './utils.app';
 
 export {
