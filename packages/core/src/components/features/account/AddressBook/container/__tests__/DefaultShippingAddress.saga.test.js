@@ -3,13 +3,12 @@ import {
   updateDefaultShippingAddress,
   SetDefaultShippingAddressSaga,
 } from '../DefaultShippingAddress.saga';
-import endpoints from '../../../../../../service/endpoint';
 import {
   setDefaultShippingAddressSuccess,
   setDefaultShippingAddressFailure,
 } from '../DefaultShippingAddress.actions';
-import fetchData from '../../../../../../service/API';
 import ADDRESS_BOOK_CONSTANTS from '../../AddressBook.constants';
+import { defaultShippingAddressApi } from '../../../../../../services/abstractors/account';
 
 describe('Default shipping address saga', () => {
   let gen;
@@ -31,17 +30,7 @@ describe('Default shipping address saga', () => {
       },
     };
 
-    const { relURI, method } = endpoints.setDefaultShippingAddress;
-    const baseURI = endpoints.setDefaultShippingAddress.baseURI || endpoints.global.baseURI;
-
-    const langId = -1;
-    const catalogId = 10551;
-    const storeId = 10151;
-    const nickName = 'foo';
-
-    expect(gen.next().value).toEqual(
-      call(fetchData, baseURI, relURI, { payload, langId, catalogId, storeId, nickName }, method)
-    );
+    expect(gen.next().value).toEqual(call(defaultShippingAddressApi, payload));
     expect(gen.next(res).value).toEqual(put(setDefaultShippingAddressSuccess(res.body)));
     expect(gen.next().done).toBeTruthy();
   });

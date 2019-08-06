@@ -68,11 +68,11 @@ const endpoints = {
   },
   setDefaultPayment: {
     method: API_METHODS.POST,
-    URI: '/v2/account/modifyCreditCardDetails',
+    URI: 'v2/account/modifyCreditCardDetails',
   },
   getCardList: {
     method: API_METHODS.GET,
-    URI: '/v2/account/getCreditCardDetails',
+    URI: 'v2/account/getCreditCardDetails',
   },
   addGiftCard: {
     method: API_METHODS.POST,

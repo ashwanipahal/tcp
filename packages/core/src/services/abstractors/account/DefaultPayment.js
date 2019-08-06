@@ -31,7 +31,10 @@ export const getModifiedPayload = payload => {
 export const setDefaultPaymentApi = payload => {
   const payloadData = {
     webService: endpoints.setDefaultPayment,
-    payload: getModifiedPayload(payload),
+    header: {
+      isRest: true,
+    },
+    body: getModifiedPayload(payload),
   };
 
   return executeStatefulAPICall(payloadData).then(res => {
