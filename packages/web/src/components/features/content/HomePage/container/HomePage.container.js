@@ -13,7 +13,9 @@ const mapStateToProps = state => {
   homepageSlots.forEach(slotItem => {
     newObj[slotItem.name] = state.Modules[slotItem.contentId];
     newObj[slotItem.name].name = slotItem.moduleName;
-    newObj[slotItem.name].imagesPerSlide = state.Modules[slotItem.contentId].imagesPerSlide;
+    newObj[slotItem.name].imagesPerSlide = state.Modules[slotItem.contentId].set.filter(
+      el => el.key === 'imagesPerSlide'
+    );
     return newObj;
   });
   return {

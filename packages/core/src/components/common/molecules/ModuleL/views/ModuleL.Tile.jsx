@@ -20,9 +20,13 @@ const colSize = { ...config.COL_SIZE_TILE };
  */
 const ModuleLTile = ({ tileData: { image, link, styled }, index }: Props) => {
   return (
-    <Anchor data-locator={`${getLocator('moduleL_tiles')}${index + 1}`} {...link}>
+    <Anchor {...link}>
       <Row>
-        <Col colSize={colSize} className="moduleL__tile">
+        <Col
+          colSize={colSize}
+          className="moduleL__tile"
+          data-locator={`${getLocator('moduleL_tiles')}${index + 1}`}
+        >
           <DamImage
             imgData={image}
             imgConfigs={config.IMG_DATA.crops}

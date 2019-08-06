@@ -3,7 +3,10 @@ const buildQuery = ({ slot, contentId }) => `
     contentId
     name
     type
-    imagesPerSlide
+    set {
+      key
+      val
+    }
     composites {
       headerText {
         textItems {
@@ -22,7 +25,6 @@ const buildQuery = ({ slot, contentId }) => `
           external
         }
       }
-
       promoBanner {
         link {
           url

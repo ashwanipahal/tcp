@@ -43,6 +43,8 @@ export default {
   moduleL_image: 'moduleL_image_',
   moduleL_link: 'moduleL_link_',
   moduleL_tiles: 'moduleL_tiles_',
+  moduleL_left_arrow: 'moduleL_left_arrow',
+  moduleL_right_arrow: 'moduleL_right_arrow',
   // Added To Bag
   addedtobag_btnviewbag: 'addedtobag-btnviewbag',
   addedtobag_btnpaypal: 'addedtobag-btnpaypal',

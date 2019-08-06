@@ -37,6 +37,12 @@ const renderTiles = tiles => {
  */
 const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide, promoBanner }: Props) => {
   const options = config.CAROUSEL_OPTIONS;
+  options.prevArrow = (
+    <button type="button" data-locator="moduleL_left_arrow" className="slick-prev" />
+  );
+  options.nextArrow = (
+    <button type="button" data-locator="moduleL_right_arrow" className="slick-prev" />
+  );
   const checkPromo = promoBanner && promoBanner.length;
   if (parseInt(imagesPerSlide, 10) === 4) {
     options.rows = 2;
