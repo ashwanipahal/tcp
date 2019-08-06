@@ -4,7 +4,7 @@ import endpoints from '../../endpoints';
 export const deleteCardApi = payload => {
   const payloadData = {
     webService: endpoints.deleteCreditCardOnAccount,
-    payload: {
+    body: {
       creditCardId: payload.creditCardId.toString(),
       action: 'D',
     },
