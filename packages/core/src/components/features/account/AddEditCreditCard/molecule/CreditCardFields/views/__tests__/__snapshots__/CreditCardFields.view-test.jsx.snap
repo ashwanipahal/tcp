@@ -50,6 +50,12 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     width: ",
                   [Function],
                   ";
+    border: 1px solid ",
+                  [Function],
+                  ";
+    border-radius: ",
+                  [Function],
+                  ";
   }
 ",
                   ";
@@ -126,6 +132,12 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     top: 0;
     right: 0;
     width: ",
+                  [Function],
+                  ";
+    border: 1px solid ",
+                  [Function],
+                  ";
+    border-radius: ",
                   [Function],
                   ";
   }

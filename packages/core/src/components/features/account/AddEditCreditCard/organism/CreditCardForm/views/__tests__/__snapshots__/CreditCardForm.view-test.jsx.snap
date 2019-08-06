@@ -21,7 +21,12 @@ exports[`CreditCardForm component should renders correctly with address dropdown
     className=""
     initialValues={Object {}}
     isEdit={false}
-    labels={Object {}}
+    labels={
+      Object {
+        "common": Object {},
+        "paymentGC": Object {},
+      }
+    }
     onFileAddressKey=""
     onFileAddresskey="12345"
   />
@@ -183,7 +188,12 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
     className=""
     initialValues={Object {}}
     isEdit={false}
-    labels={Object {}}
+    labels={
+      Object {
+        "common": Object {},
+        "paymentGC": Object {},
+      }
+    }
     onFileAddressKey=""
     pristine={true}
   />

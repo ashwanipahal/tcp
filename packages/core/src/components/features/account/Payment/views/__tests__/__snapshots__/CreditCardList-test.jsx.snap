@@ -17,7 +17,9 @@ exports[`CreditCardList Component should render correctly 1`] = `
     icon="credit-card"
     labels={
       Object {
+        "common": Object {},
         "creditCardHeading": "heading",
+        "paymentGC": Object {},
       }
     }
     prefix="CC"
@@ -107,7 +109,9 @@ exports[`CreditCardList Component should render correctly if list is present 1`]
     }
     labels={
       Object {
+        "common": Object {},
         "creditCardHeading": "heading",
+        "paymentGC": Object {},
       }
     }
   />
