@@ -12,6 +12,9 @@ const styles = css`
     margin: 15px 0;
     background: #fff;
   }
+  .bag-header {
+    margin: 40px 0 20px;
+  }
 `;
 
 export default styles;
