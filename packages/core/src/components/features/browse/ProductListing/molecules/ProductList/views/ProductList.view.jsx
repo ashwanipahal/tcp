@@ -1,49 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Col } from '../../../../../../common/atoms';
+import { Button } from '../../../../../../common/atoms';
+import withStyles from '../../../../../../common/hoc/withStyles';
+import ProductListStyle from '../../ProductList.style';
 
-const products = [
-  {
-    name: 'abcd',
-  },
-  {
-    name: 'defg',
-  },
-  {
-    name: 'sdfsdf',
-  },
-  {
-    name: 'asdf',
-  },
-  {
-    name: '345e',
-  },
-  {
-    name: 'eddf',
-  },
-  {
-    name: '4566',
-  },
-];
-const ProductList = ({ className }) => {
+const ProductList = ({ className, products }) => {
   return (
     <div className={className}>
-      {products.map((item, index) => {
-        let ignoreGutterVal = {};
-        if ((index + 1) % 4 === 0) {
-          ignoreGutterVal = { large: true };
-        }
-        if ((index + 1) % 3 === 0) {
-          ignoreGutterVal = { medium: true };
-        }
+      {products.map(item => {
         return (
-          <Col
-            colSize={{ small: 3, medium: 2, large: 3 }}
-            ignoreGutter={ignoreGutterVal}
-            className="product-tile"
-          >
-            {item.name}
-          </Col>
+          <div className="product-tile">
+            <p>
+              Name:
+              {item.productInfo.name}
+            </p>
+            <p>
+              listPrice:
+              {item.productInfo.listPrice}
+            </p>
+            <p>
+              offerPrice:
+              {item.productInfo.offerPrice}
+            </p>
+            <p>
+              ratings:
+              {item.productInfo.ratings}
+            </p>
+            <p>
+              reviewsCount:
+              {item.productInfo.reviewsCount}
+            </p>
+            <Button
+              onClick={() => {}}
+              buttonVariation="fixed-width"
+              fill="BLUE"
+              className="add-to-bag-btn"
+            >
+              Add to bag
+            </Button>
+          </div>
         );
       })}
     </div>
@@ -52,10 +47,12 @@ const ProductList = ({ className }) => {
 
 ProductList.propTypes = {
   className: PropTypes.string,
+  products: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ProductList.defaultProps = {
   className: '',
+  products: [],
 };
 
-export default ProductList;
+export default withStyles(ProductList, ProductListStyle);

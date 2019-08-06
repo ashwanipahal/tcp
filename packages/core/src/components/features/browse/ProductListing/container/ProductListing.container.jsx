@@ -6,19 +6,19 @@ import { getPlpProducts } from './ProductListing.actions';
 
 class ProductListingPageContainer extends React.Component {
   componentDidMount() {
-    console.log('sdfasdfsd');
     const { getProducts } = this.props;
     getProducts();
   }
 
   render() {
-    return <ProductListing />;
+    const { products } = this.props;
+    return <ProductListing products={products} />;
   }
 }
 
 function mapStateToProps(state) {
   return {
-    state,
+    products: state.ProductListing.loadedProducts,
     // products: getExpensivePlpProducts(state),
     // giftCardProducts: giftCardProducts(state),
   };
@@ -36,6 +36,11 @@ function mapDispatchToProps(dispatch) {
 
 ProductListingPageContainer.propTypes = {
   getProducts: PropTypes.func.isRequired,
+  products: PropTypes.arrayOf(PropTypes.shape({})),
+};
+
+ProductListingPageContainer.defaultProps = {
+  products: [],
 };
 
 export default connect(

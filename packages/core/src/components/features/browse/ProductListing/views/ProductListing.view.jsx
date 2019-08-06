@@ -5,7 +5,7 @@ import ProductList from '../molecules/ProductList/views';
 import withStyles from '../../../../common/hoc/withStyles';
 import ProductListingStyle from '../ProductListing.style';
 
-const ProductListView = ({ className }) => {
+const ProductListView = ({ className, products }) => {
   return (
     <div className={className}>
       <Row>
@@ -25,7 +25,7 @@ const ProductListView = ({ className }) => {
             <div className="filter-area">FilterArea</div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <ProductList className={`${className} product-list`} />
+            <ProductList products={products} className={`${className} product-list`} />
           </Col>
         </Col>
       </Row>
@@ -35,10 +35,12 @@ const ProductListView = ({ className }) => {
 
 ProductListView.propTypes = {
   className: PropTypes.string,
+  products: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ProductListView.defaultProps = {
   className: '',
+  products: [],
 };
 
 export default withStyles(ProductListView, ProductListingStyle);
