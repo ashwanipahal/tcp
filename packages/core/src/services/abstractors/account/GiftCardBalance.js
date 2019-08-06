@@ -4,7 +4,7 @@ import endpoints from '../../endpoints';
 export const getGiftCardBalanceApi = payload => {
   const payloadData = {
     webService: endpoints.getGifCardBalance,
-    payload: {
+    body: {
       'recapture-response': payload.formData.recaptchaToken || '',
       creditCardId: payload.card.creditCardId.toString(),
     },
