@@ -22,6 +22,11 @@ describe('InputCheckbox component', () => {
       input: {},
     };
     const component = shallow(<InputCheckboxVanilla {...props}>{sampleText}</InputCheckboxVanilla>);
-    expect(component.find(BodyCopy).text()).toEqual(sampleText);
+    expect(
+      component
+        .find(BodyCopy)
+        .first()
+        .text()
+    ).toEqual(sampleText);
   });
 });

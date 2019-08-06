@@ -1,15 +1,10 @@
-import React, { useState } from 'react';
-import { View, SafeAreaView } from 'react-native';
+import React from 'react';
+import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import { noop } from 'lodash';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import {
-  FormStyle,
-  DescriptionStyle,
-  ModalHeading,
-  ModalViewWrapper,
-} from '../styles/LoginForm.style.native';
+import { FormStyle } from '../styles/LoginForm.style.native';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import CustomButton from '../../../../../../common/atoms/Button';
@@ -17,9 +12,6 @@ import Anchor from '../../../../../../common/atoms/Anchor';
 import LineComp from '../../../../../../common/atoms/Line';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
-
-import ModalNative from '../../../../../../common/molecules/Modal';
-import CreateAccount from '../../../../CreateAccount';
 
 const styles = {
   loginButtonStyle: {
@@ -46,7 +38,6 @@ const styles = {
 
 export const LoginForm = props => {
   const { labels, handleSubmit, onSubmit } = props;
-  const [showModal, setModalState] = useState(false);
 
   const showForgotPassword = () => {
     const { showForgotPasswordForm, resetForm } = props;
@@ -54,9 +45,6 @@ export const LoginForm = props => {
     showForgotPasswordForm();
   };
 
-  const openModal = () => {
-    setModalState(!showModal);
-  };
   return (
     <View {...props}>
       <Field
@@ -110,23 +98,6 @@ export const LoginForm = props => {
         onPress={showForgotPassword}
       />
       <LineComp marginTop={28} />
-      <DescriptionStyle>{labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}</DescriptionStyle>
-      <CustomButton
-        text={labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
-        buttonVariation="variable-width"
-        onPress={() => setModalState(true)}
-        customStyle={styles.createAccountStyle}
-      />
-      {showModal && (
-        <ModalNative isOpen={showModal} onRequestClose={openModal}>
-          <ModalHeading>CREATE ACCOUNT</ModalHeading>
-          <ModalViewWrapper>
-            <SafeAreaView>
-              <CreateAccount />
-            </SafeAreaView>
-          </ModalViewWrapper>
-        </ModalNative>
-      )}
     </View>
   );
 };

@@ -151,19 +151,5 @@ exports[`LoginForm component should renders correctly 1`] = `
     marginBottom={0}
     marginTop={28}
   />
-  <Styled(Text) />
-  <Styled(CustomButton)
-    buttonVariation="variable-width"
-    customStyle={
-      Object {
-        "marginTop": 30,
-      }
-    }
-    disableButton={false}
-    fullWidth=""
-    onPress={[Function]}
-    text=""
-    url=""
-  />
 </View>
 `;

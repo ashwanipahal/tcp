@@ -13,6 +13,7 @@ type Props = {
   disabled: ?boolean,
   input?: any,
   dataLocator?: string,
+  meta?: { touched: any, error: any, warning: any },
 };
 
 const InputCheckbox = ({
@@ -22,32 +23,51 @@ const InputCheckbox = ({
   input,
   disabled,
   dataLocator,
-}: Props): Node => (
-  <label htmlFor={input.name} className={className}>
-    <input
-      {...input}
-      id={input.name}
-      aria-label={ariaLabel}
-      className="CheckBox__input"
-      type="checkbox"
-      data-locator={dataLocator}
-      checked={input.value}
-      disabled={disabled}
-    />
-    <BodyCopy
-      fontSize="fs12"
-      fontFamily="secondary"
-      className={`CheckBox__text ${disabled ? 'disabled' : ''}`}
-    >
-      {children}
-    </BodyCopy>
-  </label>
-);
+  meta,
+}: Props): Node => {
+  const { touched, error } = meta;
+  return (
+    <React.Fragment>
+      <label htmlFor={input.name} className={className}>
+        <input
+          {...input}
+          id={input.name}
+          aria-label={ariaLabel}
+          className="CheckBox__input"
+          type="checkbox"
+          data-locator={dataLocator}
+          checked={input.value}
+          disabled={disabled}
+        />
+        <BodyCopy
+          fontSize="fs12"
+          fontFamily="secondary"
+          className={`CheckBox__text ${disabled ? 'disabled' : ''}`}
+        >
+          {children}
+        </BodyCopy>
+      </label>
+      <BodyCopy
+        className="Checkbox__error"
+        color="error"
+        component="div"
+        fontSize="fs12"
+        fontFamily="secondary"
+        role="alert"
+        aria-live="assertive"
+        data-locator="errorDataLocator"
+      >
+        {touched && error ? error : ''}
+      </BodyCopy>
+    </React.Fragment>
+  );
+};
 
 InputCheckbox.defaultProps = {
   ariaLabel: '',
   dataLocator: '',
   input: {},
+  meta: {},
 };
 
 export default withStyles(InputCheckbox, styles);

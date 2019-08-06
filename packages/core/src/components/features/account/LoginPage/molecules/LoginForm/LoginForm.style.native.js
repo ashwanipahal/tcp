@@ -124,6 +124,23 @@ const FloatWrapper = styled.View`
   ${leftAignWrapper}
 `;
 
+const ModalHeading = styled.Text`
+  margin-top: 30px;
+  margin-right: 50px;
+  margin-left: 15px;
+  font-size: 16px;
+  font-weight: 800;
+`;
+
+const ModalViewWrapper = styled.View`
+  margin-bottom: 60px;
+`;
+
+const LineWrapper = styled.View`
+  padding-left: 14px;
+  padding-right: 14px;
+`;
+
 export {
   FormStyle,
   DescriptionStyle,
@@ -133,4 +150,7 @@ export {
   HeadingStyle,
   FloatWrapper,
   SubHeadingStyle,
+  ModalHeading,
+  ModalViewWrapper,
+  LineWrapper,
 };

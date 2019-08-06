@@ -24,6 +24,8 @@ const HideShowField = styled.View`
   position: absolute;
   right: 0;
   top: 16px;
+  border-bottom-width: 1px;
+  border-bottom-color: black;
 `;
 
 const ConfirmPasswordWrapper = styled.View`
@@ -34,6 +36,8 @@ const ConfirmHideShowField = styled.View`
   position: absolute;
   right: 0;
   top: 16px;
+  border-bottom-width: 1px;
+  border-bottom-color: black;
 `;
 
 export {

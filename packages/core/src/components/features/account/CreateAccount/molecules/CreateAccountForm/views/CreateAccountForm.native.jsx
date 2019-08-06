@@ -23,9 +23,6 @@ import getStandardConfig from '../../../../../../../utils/formValidation/validat
 const onSaveMyPlaceRewards = value => {
   console.log('onSaveMyPlaceRewards: ', value);
 };
-const oniAgree = value => {
-  console.log('oniAgree: ', value);
-};
 const onUseTouchID = value => {
   console.log('onUseTouchID: ', value);
 };
@@ -42,9 +39,8 @@ const CreateAccountForm = props => {
     hideShowPwd,
     onConfirmPwdHideShowClick,
     confirmHideShowPwd,
-    // isIAgreeChecked,
+    onRequestClose,
   } = props;
-  // const hideShowPwd = false;
   return (
     <View {...props}>
       <ParentView>
@@ -101,9 +97,10 @@ const CreateAccountForm = props => {
             label={labels.CREATE_ACC_LBL_PASSWORD}
             name="password"
             id="password"
-            type={hideShowPwd ? 'text' : 'password'}
+            type="text"
             component={TextBox}
             dataLocator="password"
+            secureTextEntry={!hideShowPwd}
           />
 
           <HideShowField>
@@ -123,9 +120,10 @@ const CreateAccountForm = props => {
             label={labels.CREATE_ACC_LBL_CONFIRM_PASSWORD}
             name="confirmPassword"
             id="confirmPassword"
-            type={confirmHideShowPwd ? 'text' : 'password'}
+            type="text"
             component={TextBox}
             dataLocator="confirmPassword"
+            secureTextEntry={!confirmHideShowPwd}
           />
           <ConfirmHideShowField>
             <Field
@@ -158,7 +156,6 @@ const CreateAccountForm = props => {
           disabled={false}
           rightText={labels.CREATE_ACC_LBL_TERMS_CONDITIONS}
           marginTop={13}
-          onClick={oniAgree}
         />
         <Field
           name="useTouchID"
@@ -182,7 +179,6 @@ const CreateAccountForm = props => {
             text={labels.CREATE_ACC_LBL_CREATE_ACCOUNT}
             buttonVariation="variable-width"
             onPress={handleSubmit(handleSubmitForm)}
-            // disableButton={!isIAgreeChecked}
             fill="BLUE"
             color="white"
           />
@@ -192,17 +188,10 @@ const CreateAccountForm = props => {
             fontSizeVariation="xlarge"
             anchorVariation="secondary"
             text={labels.CREATE_ACC_LBL_ALREADY_ACCOUNT}
+            onPress={onRequestClose}
+            underline
           />
         </AlreadyAccountWrapper>
-        <Field
-          name="useFaceID"
-          component={InputCheckbox}
-          dataLocator="useFaceID"
-          disabled={false}
-          rightText={labels.CREATE_ACC_LBL_USE_FACE_ID}
-          marginTop={13}
-          onClick={onUseFaceID}
-        />
       </ParentView>
     </View>
   );
@@ -218,6 +207,7 @@ const validateMethod = createValidateMethod(
     'confirmEmailAddress',
     'password',
     'confirmPassword',
+    'iAgree',
   ])
 );
 
@@ -235,6 +225,7 @@ CreateAccountForm.propTypes = {
   onPwdHideShowClick: PropTypes.func,
   hideShowPwd: PropTypes.bool,
   onConfirmPwdHideShowClick: PropTypes.func,
+  onRequestClose: PropTypes.func,
   confirmHideShowPwd: PropTypes.bool,
 };
 
@@ -256,6 +247,7 @@ CreateAccountForm.defaultProps = {
   onPwdHideShowClick: () => {},
   hideShowPwd: false,
   onConfirmPwdHideShowClick: () => {},
+  onRequestClose: () => {},
   confirmHideShowPwd: false,
 };
 

@@ -6,7 +6,7 @@ const labels = {
   CREATE_ACC_LBL_POINT_REWARD: '100 POINTS = $5 REWARD',
   CREATE_ACC_LBL_SIGNED_UP: 'Signed up in store?',
   CREATE_ACC_LBL_ONLINE_ACC_CREATED: 'An online account has been created with your email!',
-  CREATE_ACC_LBL_RESET_PWD: 'Reset your password.',
+  CREATE_ACC_LBL_RESET_PWD: 'Reset your password',
   CREATE_ACC_LBL_HIDE: 'Hide',
   CREATE_ACC_LBL_SHOW: 'Show',
   CREATE_ACC_LBL_SAVE_REWARDS:

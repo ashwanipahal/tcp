@@ -2,21 +2,26 @@ import React from 'react';
 import { View, ScrollView } from 'react-native';
 import { PropTypes } from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import styles from '../styles/CreateAccounPage.style';
+import { Styles, ErrorWrapper } from '../styles/CreateAccounPage.style.native';
 import CreateAccountForm from '../../../molecules/CreateAccountForm';
 import CreateAccountTopSection from '../../../molecules/CreateAccountTopSection';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 
 class CreateAccounPage extends React.Component {
   static propTypes = {
     createAccountAction: PropTypes.func,
     labels: {},
     isIAgreeChecked: PropTypes.bool,
+    onRequestClose: PropTypes.func,
+    error: PropTypes.string,
   };
 
   static defaultProps = {
     createAccountAction: () => {},
     labels: PropTypes.shape({}),
     isIAgreeChecked: false,
+    onRequestClose: () => {},
+    error: {},
   };
 
   constructor(props) {
@@ -41,12 +46,23 @@ class CreateAccounPage extends React.Component {
   }
 
   render() {
-    const { labels, isIAgreeChecked } = this.props;
+    const { labels, isIAgreeChecked, onRequestClose, error } = this.props;
     const { hideShowPwd, confirmHideShowPwd } = this.state;
     return (
       <ScrollView showsVerticalScrollIndicator={false} {...this.props}>
         <View>
           <CreateAccountTopSection labels={labels} />
+          {error && (
+            <ErrorWrapper>
+              <BodyCopy
+                mobileFontFamily={['secondary']}
+                fontWeight="semibold"
+                fontSize="fs12"
+                color="error"
+                text={error}
+              />
+            </ErrorWrapper>
+          )}
           <CreateAccountForm
             labels={labels}
             handleSubmitForm={this.handleSubmitForm}
@@ -55,6 +71,7 @@ class CreateAccounPage extends React.Component {
             onConfirmPwdHideShowClick={this.onConfirmPwdHideShowClick}
             confirmHideShowPwd={confirmHideShowPwd}
             isIAgreeChecked={isIAgreeChecked}
+            onRequestClose={onRequestClose}
           />
         </View>
       </ScrollView>
@@ -62,5 +79,5 @@ class CreateAccounPage extends React.Component {
   }
 }
 
-export default withStyles(CreateAccounPage, styles);
+export default withStyles(CreateAccounPage, Styles);
 export { CreateAccounPage as CreateAccounPageVanilla };

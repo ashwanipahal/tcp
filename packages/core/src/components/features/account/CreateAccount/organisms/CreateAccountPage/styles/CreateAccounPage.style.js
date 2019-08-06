@@ -68,7 +68,8 @@ const styles = css`
   .already-account {
     text-decoration: underline;
   }
-  .TextBox__error {
+  .TextBox__error,
+  .Checkbox__error {
     font-size: 12px;
     font-weight: bold;
   }
