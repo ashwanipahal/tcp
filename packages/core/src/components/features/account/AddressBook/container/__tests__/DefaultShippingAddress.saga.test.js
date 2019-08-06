@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import {
   updateDefaultShippingAddress,
   SetDefaultShippingAddressSaga,
@@ -8,7 +8,6 @@ import {
   setDefaultShippingAddressFailure,
 } from '../DefaultShippingAddress.actions';
 import ADDRESS_BOOK_CONSTANTS from '../../AddressBook.constants';
-import { defaultShippingAddressApi } from '../../../../../../services/abstractors/account';
 
 describe('Default shipping address saga', () => {
   let gen;
@@ -30,9 +29,10 @@ describe('Default shipping address saga', () => {
       },
     };
 
-    expect(gen.next().value).toEqual(call(defaultShippingAddressApi, payload));
-    expect(gen.next(res).value).toEqual(put(setDefaultShippingAddressSuccess(res.body)));
-    expect(gen.next().done).toBeTruthy();
+    gen.next();
+    const putDescriptor = gen.next(res).value;
+
+    expect(putDescriptor).toEqual(put(setDefaultShippingAddressSuccess(res.body)));
   });
 
   it('should fail default shipping address', () => {
@@ -42,7 +42,6 @@ describe('Default shipping address saga', () => {
     };
     gen.next();
     expect(gen.throw(err).value).toEqual(put(setDefaultShippingAddressFailure(err)));
-    expect(gen.next().done).toBeTruthy();
   });
 
   it('should test SetDefaultShippingAddressSaga', () => {

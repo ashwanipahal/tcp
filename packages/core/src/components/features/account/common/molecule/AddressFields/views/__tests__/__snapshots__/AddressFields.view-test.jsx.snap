@@ -693,8 +693,9 @@ exports[`AddressFields component should render correctly 1`] = `
 
   .select__input {
     appearance: none;
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-      no-repeat right 0px bottom 6px;
+    background: url(",
+                "/static/images/carrot-small-down.png",
+                ") no-repeat right 0px bottom 6px;
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -1271,8 +1272,9 @@ exports[`AddressFields component should render correctly 1`] = `
 
   .select__input {
     appearance: none;
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-      no-repeat right 0px bottom 6px;
+    background: url(",
+                "/static/images/carrot-small-down.png",
+                ") no-repeat right 0px bottom 6px;
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -2322,8 +2324,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
 
   .select__input {
     appearance: none;
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-      no-repeat right 0px bottom 6px;
+    background: url(",
+                "/static/images/carrot-small-down.png",
+                ") no-repeat right 0px bottom 6px;
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -2900,8 +2903,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
 
   .select__input {
     appearance: none;
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-      no-repeat right 0px bottom 6px;
+    background: url(",
+                "/static/images/carrot-small-down.png",
+                ") no-repeat right 0px bottom 6px;
     border: 0;
     border-bottom: 1px solid ",
                 [Function],

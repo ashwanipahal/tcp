@@ -10,3 +10,4 @@ export { deleteCardApi } from './DeleteCard';
 export { getCardListApi, addGiftCardApi } from './AddGiftCard';
 export { defaultShippingAddressApi } from './DefaultShippingAddress';
 export { deleteAddressApi } from './DeleteAddress';
+export { addAddress, updateAddress } from './AddEditAddress';
