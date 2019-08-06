@@ -40,14 +40,16 @@ class CouponListSection extends React.Component<Props> {
     return (
       <div className={className}>
         <div className="couponList__title">
-          <BodyCopy
-            className="couponList__heading"
-            fontWeight="semibold"
-            component="p"
-            fontSize="fs16"
-          >
-            {`${heading} (${couponList.size})`}
-          </BodyCopy>
+          {couponList.size && (
+            <BodyCopy
+              className="couponList__heading"
+              fontWeight="semibold"
+              component="p"
+              fontSize="fs16"
+            >
+              {`${heading} (${couponList.size})`}
+            </BodyCopy>
+          )}
           {helpSubHeading && (
             <div className="couponList__iconContainer">
               <div className="couponList__helpIcon">?</div>

@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import CouponListSection from '../../../../common/organisms/CouponListSection';
 import CouponDetailModal from './CouponDetailModal.view';
+import styles from '../styles/Coupon.style';
 
-class CouponView extends React.Component<Props> {
+class CouponView extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,10 +22,10 @@ class CouponView extends React.Component<Props> {
   };
 
   render() {
-    const { labels, appliedCouponList, availableCouponList } = this.props;
+    const { labels, appliedCouponList, availableCouponList, className } = this.props;
     const { status, selectedCoupon } = this.state;
     return (
-      <React.Fragment>
+      <div className={className}>
         {appliedCouponList && (
           <CouponListSection
             labels={labels}
@@ -44,17 +46,17 @@ class CouponView extends React.Component<Props> {
           />
         )}
         <CouponDetailModal
+          labels={labels}
           openState={status}
-          heading="heading"
-          selectedCoupon={selectedCoupon}
+          coupon={selectedCoupon}
           onRequestClose={() => {
             this.setState({
               status: false,
             });
           }}
-          labels={labels}
+          applyToBag={() => {}}
         />
-      </React.Fragment>
+      </div>
     );
   }
 }
@@ -65,4 +67,4 @@ CouponView.propTypes = {
   availableCouponList: PropTypes.shape([]).isRequired,
 };
 
-export default CouponView;
+export default withStyles(CouponView, styles);
