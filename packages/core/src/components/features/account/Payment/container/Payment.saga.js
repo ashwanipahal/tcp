@@ -16,7 +16,7 @@ import { getCardListApi } from '../../../../../services/abstractors/account';
 export function* getCardList() {
   try {
     yield put(showLoader());
-    const res = yield call(getCardListApi, {});
+    const res = yield call(getCardListApi);
     const isFromAddGiftCard = yield select(getOnAddGiftCardPageState);
     if (res.body) {
       yield put(setCardList(res.body.creditCardListJson || []));
