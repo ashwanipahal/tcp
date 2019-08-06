@@ -9,6 +9,7 @@ exports[`CustomButton should render correctly 1`] = `
 >
   <Text
     buttonVariation="fixed-width"
+    disableButton={false}
     fullWidth=""
     url=""
   />

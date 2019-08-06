@@ -9,7 +9,12 @@ import CreditCardList from '../../../molecules/MoneyCards/views/MoneyCards.nativ
 
 describe('Payment View', () => {
   it('should render correctly', () => {
-    const tree = shallow(<PaymentViewVanilla labels={{ giftCard: 'Payment' }} className="" />);
+    const tree = shallow(
+      <PaymentViewVanilla
+        labels={{ giftCard: 'Payment', paymentGC: {}, common: {} }}
+        className=""
+      />
+    );
     expect(tree).toMatchSnapshot();
     expect(tree.find(BodyCopy)).toHaveLength(1);
   });
@@ -41,7 +46,7 @@ describe('Payment View', () => {
     ]);
     const tree = shallow(
       <PaymentViewVanilla
-        labels={{ paymentHeading: 'Payment' }}
+        labels={{ paymentHeading: 'Payment', paymentGC: {}, common: {} }}
         className=""
         showNotification="success"
         cardList={cardList}

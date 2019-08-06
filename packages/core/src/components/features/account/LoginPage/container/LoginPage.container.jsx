@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import {
-  resetPassword,
-  resetLoginForgotPasswordState,
-} from '../../ForgotPassword/container/ForgotPassword.actions';
+import { resetLoginForgotPasswordState } from '../../ForgotPassword/container/ForgotPassword.actions';
 import {
   getShowNotificationState,
   getResetEmailResponse,
@@ -15,12 +12,12 @@ import {
   closeOverlayModal,
   openOverlayModal,
 } from '../../../OverlayModal/container/OverlayModal.actions';
-import labels from './LoginPage.labels';
 import {
   getUserLoggedInState,
   getLoginError,
   shouldShowRecaptcha,
   getLoginErrorMessage,
+  getLabels,
 } from './LoginPage.selectors';
 import LoginView from '../views';
 
@@ -53,15 +50,12 @@ class LoginPageContainer extends React.PureComponent {
       loginError,
       loginErrorMessage,
       showRecaptcha,
-      resetForgotPasswordErrorResponse,
       resetForm,
-      resetLoginState,
       getUserInfoAction,
-      SubmitForgot,
-      showNotification,
-      successFullResetEmail,
+      labels,
+      resetLoginState,
     } = this.props;
-    const errorMessage = loginError ? loginErrorMessage || labels.ACC_LBL_LOGIN_ERROR : '';
+    const errorMessage = loginError ? loginErrorMessage || labels.login.lbl_login_error : '';
     const initialValues = {
       rememberMe: true,
       savePlcc: true,
@@ -73,14 +67,10 @@ class LoginPageContainer extends React.PureComponent {
         loginErrorMessage={errorMessage}
         initialValues={initialValues}
         showRecaptcha={showRecaptcha}
-        resetLoginState={resetLoginState}
-        resetForgotPasswordErrorResponse={resetForgotPasswordErrorResponse}
         resetForm={resetForm}
-        SubmitForgot={SubmitForgot}
         getUserInfo={getUserInfoAction}
-        showNotification={showNotification}
-        successFullResetEmail={successFullResetEmail}
         onCreateAccountClick={this.onCreateAccountClick}
+        resetLoginState={resetLoginState}
       />
     );
   }
@@ -89,18 +79,15 @@ class LoginPageContainer extends React.PureComponent {
 LoginPageContainer.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
-  resetLoginState: PropTypes.func,
   closeOverlay: PropTypes.func,
   loginError: PropTypes.bool,
   loginErrorMessage: PropTypes.string,
   showRecaptcha: PropTypes.bool,
-  resetForgotPasswordErrorResponse: PropTypes.bool.isRequired,
   resetForm: PropTypes.bool.isRequired,
   getUserInfoAction: PropTypes.bool.isRequired,
-  SubmitForgot: PropTypes.bool.isRequired,
-  showNotification: PropTypes.bool.isRequired,
-  successFullResetEmail: PropTypes.bool.isRequired,
   openOverlay: PropTypes.func,
+  labels: PropTypes.shape({}).isRequired,
+  resetLoginState: PropTypes.func,
 };
 
 LoginPageContainer.defaultProps = {
@@ -117,14 +104,11 @@ const mapDispatchToProps = dispatch => {
     onSubmit: payload => {
       dispatch(login(payload));
     },
-    resetLoginState: () => {
-      dispatch(resetLoginInfo());
-    },
-    SubmitForgot: payload => {
-      dispatch(resetPassword(payload));
-    },
     resetForm: payload => {
       dispatch(resetLoginForgotPasswordState(payload));
+    },
+    resetLoginState: () => {
+      dispatch(resetLoginInfo());
     },
     closeOverlay: () => {
       dispatch(closeOverlayModal());
@@ -144,15 +128,8 @@ const mapStateToProps = state => {
     loginError: getLoginError(state),
     loginErrorMessage: getLoginErrorMessage(state),
     showRecaptcha: shouldShowRecaptcha(state),
+    labels: getLabels(state),
   };
-};
-
-LoginPageContainer.defaultProps = {
-  showRecaptcha: false,
-  loginError: false,
-  loginErrorMessage: '',
-  resetLoginState: () => {},
-  closeOverlay: () => {},
 };
 
 export default connect(

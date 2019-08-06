@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import { UrlHandler, navigateToPage } from '../../../../../utils/utils.native';
+import { UrlHandler, navigateToPage } from '../../../../../utils/utils.app';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../Button.style.native';
 
@@ -27,6 +27,7 @@ type Props = {
   customStyle?: Object,
   text?: string,
   url?: string,
+  disableButton?: boolean,
 };
 
 const CustomButton = (props: Props) => {
@@ -51,6 +52,7 @@ CustomButton.defaultProps = {
   customStyle: {},
   text: '',
   url: '',
+  disableButton: false,
 };
 
 export default withStyles(CustomButton, style);
