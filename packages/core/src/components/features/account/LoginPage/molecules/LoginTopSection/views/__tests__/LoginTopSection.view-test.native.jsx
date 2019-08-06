@@ -5,7 +5,9 @@ import { LoginTopSectionVanilla } from '../LoginTopSection.view.native';
 describe('LoginTopSectionVanilla component', () => {
   it('should renders correctly', () => {
     const props = {
-      labels: {},
+      labels: {
+        login: {},
+      },
     };
     const component = shallow(<LoginTopSectionVanilla {...props} />);
     expect(component).toMatchSnapshot();

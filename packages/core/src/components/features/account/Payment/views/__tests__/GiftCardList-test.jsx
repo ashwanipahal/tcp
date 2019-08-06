@@ -8,6 +8,8 @@ describe('GiftCardList Component', () => {
     const props = {
       labels: {
         giftCardHeading: 'heading',
+        paymentGC: {},
+        common: {},
       },
       className: 'abc',
       giftCardList: List(),
@@ -19,6 +21,8 @@ describe('GiftCardList Component', () => {
     const props = {
       labels: {
         giftCardHeading: 'heading',
+        paymentGC: {},
+        common: {},
       },
       className: 'abc',
       giftCardList: List([
