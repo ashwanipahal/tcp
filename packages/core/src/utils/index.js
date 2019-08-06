@@ -10,6 +10,7 @@ export {
   buildUrl,
   getSiteId,
   routerPush,
+  isCanada,
   getCreditCardExpirationOptionMap,
   getViewportInfo,
   showOverlay,
