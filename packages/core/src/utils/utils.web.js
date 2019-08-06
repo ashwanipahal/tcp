@@ -41,11 +41,6 @@ export const getSiteId = () => {
   return siteId;
 };
 
-export const isCanada = () => {
-  const { siteId } = getAPIConfig();
-  return siteId === API_CONFIG.siteIds.ca;
-};
-
 export const routerPush = (href, as) => {
   const siteId = getSiteId();
   return Router.push(href, `/${siteId}${as}`);
@@ -200,5 +195,4 @@ export default {
   getCreditCardExpirationOptionMap,
   getSiteId,
   routerPush,
-  isCanada,
 };
