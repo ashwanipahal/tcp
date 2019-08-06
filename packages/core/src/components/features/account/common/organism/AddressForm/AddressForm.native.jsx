@@ -175,14 +175,16 @@ export class AddressForm extends React.PureComponent<Props, State> {
             type="tel"
           />
         </InputField>
-        <Field
-          id="primary"
-          name="primary"
-          component={InputCheckbox}
-          dataLocator="addnewaddress-city"
-          disabled={isMakeDefaultDisabled}
-          rightText={labels.acc_lbl_set_default}
-        />
+        <InputField>
+          <Field
+            id="primary"
+            name="primary"
+            component={InputCheckbox}
+            dataLocator="addnewaddress-city"
+            disabled={isMakeDefaultDisabled}
+            rightText={labels.acc_lbl_set_default}
+          />
+        </InputField>
         <CtaView>
           <Button
             fill="BLUE"
