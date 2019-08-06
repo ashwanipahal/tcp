@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { withTheme } from 'styled-components';
 import Carousel, { Pagination } from 'react-native-snap-carousel';
-import { getLocator } from '@tcp/core/src/utils';
+import { getLocator } from '../../../../../utils';
 
 import { Image } from '../../../atoms';
 import config from '../Config.native';
