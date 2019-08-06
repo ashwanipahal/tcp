@@ -100,7 +100,7 @@ const textboxStyles = css`
     flex-direction: row;
   }
   .warning-icon {
-    background: transparent url('/static/images/alert-symbol.svg') no-repeat 0 0;
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 15px;

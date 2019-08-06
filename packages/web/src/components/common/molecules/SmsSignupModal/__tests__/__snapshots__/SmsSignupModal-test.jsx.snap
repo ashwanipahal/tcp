@@ -216,7 +216,7 @@ exports[`SMSSignupModal component renders correctly 1`] = `
     flex-direction: row;
   }
   .warning-icon {
-    background: transparent url('/static/images/alert-symbol.svg') no-repeat 0 0;
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 15px;
@@ -613,7 +613,7 @@ exports[`SMSSignupModal component renders correctly when button is clicked 2`] =
     flex-direction: row;
   }
   .warning-icon {
-    background: transparent url('/static/images/alert-symbol.svg') no-repeat 0 0;
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
     background-size: contain;
     border: none;
     height: 15px;
