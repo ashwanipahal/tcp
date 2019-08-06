@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components/native';
+import styled from 'styled-components/native';
 
 const PanelContainer = styled.View`
   overflow: hidden;
@@ -8,6 +8,7 @@ const PanelContainer = styled.View`
 const TitleContainer = styled.View`
   flex-direction: row;
   height: 50px;
+  align-items: center;
 `;
 
 const TouchableHeader = styled.TouchableHighlight.attrs({
@@ -15,6 +16,7 @@ const TouchableHeader = styled.TouchableHighlight.attrs({
 })`
   flex: 1;
   justify-content: center;
+  height: 50px;
 `;
 
 const PanelBody = styled.View`
@@ -23,9 +25,4 @@ const PanelBody = styled.View`
   padding: 10px;
 `;
 
-const CarrotImage = css`
-  margin-top: 5px;
-  justify-content: center;
-`;
-
-export { PanelContainer, TitleContainer, TouchableHeader, PanelBody, CarrotImage };
+export { PanelContainer, TitleContainer, TouchableHeader, PanelBody };

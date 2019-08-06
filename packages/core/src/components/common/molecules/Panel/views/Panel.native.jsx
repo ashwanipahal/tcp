@@ -1,15 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
-import {
-  PanelContainer,
-  TitleContainer,
-  TouchableHeader,
-  PanelBody,
-  CarrotImage,
-} from '../Panel.style.native';
-import withStyles from '../../../hoc/withStyles.native';
-import ImageComp from '../../../../atoms/Image';
+import { PanelContainer, TitleContainer, TouchableHeader, PanelBody } from '../Panel.style.native';
+import ImageComp from '../../../atoms/Image';
 
 const rightIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-small-right.png');
 const downIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-small-down.png');
@@ -57,12 +50,7 @@ class Panel extends React.Component<Props> {
 }
 
 Panel.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
 };
 
-Panel.defaultProps = {
-  title: '',
-};
-
-export default withStyles(Panel, CarrotImage);
-export { Panel as PanelVanilla };
+export default Panel;

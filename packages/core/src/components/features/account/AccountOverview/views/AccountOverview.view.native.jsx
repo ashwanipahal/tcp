@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 import Panel from '../../../../common/molecules/Panel';
 
 const AccountOverview = ({ labels }) => {
+  const viewContainerStyle = { marginTop: 15 };
   return (
-    <View>
-      <Panel title={labels.lbl_place_rewards} />
+    <View style={viewContainerStyle}>
+      <Panel title={labels.lbl_place_rewards || 'My Place Rewards'} />
       <Panel title="My Wallet" />
       <Panel title="Earn Extra Points" />
       <Panel title="Orders" />
