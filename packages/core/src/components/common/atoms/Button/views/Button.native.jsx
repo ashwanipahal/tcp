@@ -31,14 +31,26 @@ type Props = {
 };
 
 const CustomButton = (props: Props) => {
-  const { text, buttonVariation, fullWidth, customStyle, ...otherProps }: Props = props;
+  const {
+    text,
+    buttonVariation,
+    fullWidth,
+    customStyle,
+    disableButton,
+    ...otherProps
+  }: Props = props;
   const textValue = text || '';
   const { url, external, navigation, onPress } = otherProps;
   const openUrlInExternalBrowser = onPress || (() => UrlHandler(url));
   const openUrl = external ? openUrlInExternalBrowser : () => navigateToPage(url, navigation);
 
   return (
-    <TouchableOpacity accessibilityRole="button" style={customStyle} onPress={openUrl}>
+    <TouchableOpacity
+      accessibilityRole="button"
+      style={customStyle}
+      disabled={disableButton}
+      onPress={openUrl}
+    >
       <Text fullWidth={fullWidth} buttonVariation={buttonVariation} {...otherProps}>
         {textValue}
       </Text>
