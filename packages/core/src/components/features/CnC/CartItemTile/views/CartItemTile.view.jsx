@@ -5,7 +5,6 @@ import React from 'react';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import CartItem from '../organisms/CartItem';
-import OrderLedgerContainer from '../../BagPage/organisms/OrderLedger';
 
 // @flow
 
@@ -49,7 +48,6 @@ class CartItemTile extends React.Component<Props> {
               </Col>
             ))}
         </Row>
-        <OrderLedgerContainer />
       </div>
     );
   }
