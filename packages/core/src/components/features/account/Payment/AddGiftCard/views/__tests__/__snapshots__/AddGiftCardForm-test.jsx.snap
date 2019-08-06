@@ -140,6 +140,20 @@ exports[`Add gift card form component should render component correctly 1`] = `
   ",
                 [Function],
                 ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                 ";
 ",
@@ -296,6 +310,20 @@ exports[`Add gift card form component should render component correctly 1`] = `
   ",
                 [Function],
                 ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                 ";
 ",
@@ -471,6 +499,20 @@ exports[`Add gift card form component should render component correctly 1`] = `
   ",
                 [Function],
                 ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                 ";
 ",
