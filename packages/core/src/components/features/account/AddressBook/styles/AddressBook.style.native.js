@@ -52,38 +52,11 @@ const UnderlineStyle = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL};
 `;
 
-const InputField = styled.View`
-  height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
-  width: ${props => props.theme.spacing.LAYOUT_SPACING.XXXL};
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
-  padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  z-index: 1;
-`;
-
-const InputFieldHalf = styled.View`
-  height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
-  width: ${props => props.theme.spacing.LAYOUT_SPACING.XXL};
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
-  padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
-`;
 const NoAddressWrapper = styled.View`
   display: flex;
   flex-direction: column;
   padding: ${props => props.theme.spacing.ELEM_SPACING.XL} 0
     ${props => props.theme.spacing.ELEM_SPACING.SM};
-`;
-
-const EmptyView = styled.View`
-  height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-`;
-
-const AddressFormView = styled.View`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
 `;
 
 const NoAddressHeading = styled.View`
@@ -129,18 +102,6 @@ const LeftMargin = styled.View`
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
-const AddAddressButton = {
-  color: 'white',
-  fontWeight: 'normal',
-  opacity: 0.5,
-  marginTop: 48,
-};
-
-const CancelButton = {
-  fontWeight: 'normal',
-  opacity: 0.5,
-};
-
 export {
   HeadingTextStyle,
   WrapperStyle,
@@ -161,10 +122,4 @@ export {
   AddressLinks,
   AddressLinkLeftMargin,
   LeftMargin,
-  InputField,
-  InputFieldHalf,
-  EmptyView,
-  AddressFormView,
-  AddAddressButton,
-  CancelButton,
 };

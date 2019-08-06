@@ -2,6 +2,8 @@
 
 exports[`AddEditAddress Native should render correctly 1`] = `
 <View
+  isEdit={false}
+  isMakeDefaultDisabled={false}
   labels={
     Object {
       "acc_label_verify_your_address_AE09": "There may be an issue with your address as entered. Please double check it, or if you believe the address is correct you can continue to the next step.",
@@ -67,446 +69,79 @@ exports[`AddEditAddress Native should render correctly 1`] = `
       />
     </Styled(Text)>
     <Styled(View) />
-    <Styled(View)>
-      <Styled(View)>
-        <Field
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "_foldedDefaultProps": Object {
-                "ariaLabel": "input",
-                "dataLocator": "input-field",
-                "enableSuccessCheck": false,
-                "id": "input",
-                "keyboardType": "default",
-                "label": "input",
-                "meta": Object {
-                  "error": "",
-                  "touched": "",
-                },
-                "secureTextEntry": false,
-                "showErrorIcon": true,
-                "type": "text",
-              },
-              "attrs": Array [],
-              "displayName": "Styled(TextBox)",
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "
-    ",
-                  "
-  ",
-                  [Function],
-                  ";
-",
-                  ";
-  ",
-                ],
-              },
-              "render": [Function],
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          dataLocator="acc_lbl_first_name"
-          id="acc_lbl_first_name"
-          label="First Name"
-          maxLength={50}
-          name="acc_lbl_first_name"
-          type="text"
-        />
-      </Styled(View)>
-      <Styled(View)>
-        <Field
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "_foldedDefaultProps": Object {
-                "ariaLabel": "input",
-                "dataLocator": "input-field",
-                "enableSuccessCheck": false,
-                "id": "input",
-                "keyboardType": "default",
-                "label": "input",
-                "meta": Object {
-                  "error": "",
-                  "touched": "",
-                },
-                "secureTextEntry": false,
-                "showErrorIcon": true,
-                "type": "text",
-              },
-              "attrs": Array [],
-              "displayName": "Styled(TextBox)",
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "
-    ",
-                  "
-  ",
-                  [Function],
-                  ";
-",
-                  ";
-  ",
-                ],
-              },
-              "render": [Function],
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          dataLocator="acc_lbl_last_name"
-          id="acc_lbl_last_name"
-          label="Last Name"
-          maxLength={50}
-          name="acc_lbl_last_name"
-          type="text"
-        />
-      </Styled(View)>
-      <Styled(View)>
-        <Field
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "_foldedDefaultProps": Object {
-                "ariaLabel": "input",
-                "dataLocator": "input-field",
-                "enableSuccessCheck": false,
-                "id": "input",
-                "keyboardType": "default",
-                "label": "input",
-                "meta": Object {
-                  "error": "",
-                  "touched": "",
-                },
-                "secureTextEntry": false,
-                "showErrorIcon": true,
-                "type": "text",
-              },
-              "attrs": Array [],
-              "displayName": "Styled(TextBox)",
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "
-    ",
-                  "
-  ",
-                  [Function],
-                  ";
-",
-                  ";
-  ",
-                ],
-              },
-              "render": [Function],
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          dataLocator="acc_lbl_address_line1"
-          id="acc_lbl_address_line1"
-          label="Address Line 1"
-          maxLength={50}
-          name="acc_lbl_address_line1"
-          type="text"
-        />
-      </Styled(View)>
-      <Styled(View)>
-        <Field
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "_foldedDefaultProps": Object {
-                "ariaLabel": "input",
-                "dataLocator": "input-field",
-                "enableSuccessCheck": false,
-                "id": "input",
-                "keyboardType": "default",
-                "label": "input",
-                "meta": Object {
-                  "error": "",
-                  "touched": "",
-                },
-                "secureTextEntry": false,
-                "showErrorIcon": true,
-                "type": "text",
-              },
-              "attrs": Array [],
-              "displayName": "Styled(TextBox)",
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "
-    ",
-                  "
-  ",
-                  [Function],
-                  ";
-",
-                  ";
-  ",
-                ],
-              },
-              "render": [Function],
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          dataLocator="acc_lbl_address_line2"
-          id="acc_lbl_address_line2"
-          label="Address Line 2 (Optional)"
-          maxLength={50}
-          name="acc_lbl_address_line2"
-          type="text"
-        />
-      </Styled(View)>
-      <Styled(View)>
-        <GooglePlacesInput
-          label="City"
-        />
-      </Styled(View)>
-      <Styled(View)>
-        <Field
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "_foldedDefaultProps": Object {
-                "ariaLabel": "input",
-                "dataLocator": "input-field",
-                "enableSuccessCheck": false,
-                "id": "input",
-                "keyboardType": "default",
-                "label": "input",
-                "meta": Object {
-                  "error": "",
-                  "touched": "",
-                },
-                "secureTextEntry": false,
-                "showErrorIcon": true,
-                "type": "text",
-              },
-              "attrs": Array [],
-              "displayName": "Styled(TextBox)",
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "
-    ",
-                  "
-  ",
-                  [Function],
-                  ";
-",
-                  ";
-  ",
-                ],
-              },
-              "render": [Function],
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          dataLocator="acc_lbl_state"
-          id="acc_lbl_state"
-          label="State"
-          maxLength={50}
-          name="acc_lbl_state"
-          type="text"
-        />
-      </Styled(View)>
-      <Styled(View)>
-        <Field
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "_foldedDefaultProps": Object {
-                "ariaLabel": "input",
-                "dataLocator": "input-field",
-                "enableSuccessCheck": false,
-                "id": "input",
-                "keyboardType": "default",
-                "label": "input",
-                "meta": Object {
-                  "error": "",
-                  "touched": "",
-                },
-                "secureTextEntry": false,
-                "showErrorIcon": true,
-                "type": "text",
-              },
-              "attrs": Array [],
-              "displayName": "Styled(TextBox)",
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "
-    ",
-                  "
-  ",
-                  [Function],
-                  ";
-",
-                  ";
-  ",
-                ],
-              },
-              "render": [Function],
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          dataLocator="acc_lbl_zip_code"
-          id="acc_lbl_zip_code"
-          label="Zip Code"
-          maxLength={50}
-          name="acc_lbl_zip_code"
-          type="text"
-        />
-      </Styled(View)>
-      <Styled(View)>
-        <Field
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "_foldedDefaultProps": Object {
-                "ariaLabel": "input",
-                "dataLocator": "input-field",
-                "enableSuccessCheck": false,
-                "id": "input",
-                "keyboardType": "default",
-                "label": "input",
-                "meta": Object {
-                  "error": "",
-                  "touched": "",
-                },
-                "secureTextEntry": false,
-                "showErrorIcon": true,
-                "type": "text",
-              },
-              "attrs": Array [],
-              "displayName": "Styled(TextBox)",
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "
-    ",
-                  "
-  ",
-                  [Function],
-                  ";
-",
-                  ";
-  ",
-                ],
-              },
-              "render": [Function],
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          dataLocator="acc_lbl_country"
-          id="acc_lbl_country"
-          label="Country"
-          maxLength={50}
-          name="acc_lbl_country"
-          type="text"
-        />
-      </Styled(View)>
-      <Styled(View)>
-        <Field
-          component={
-            Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "_foldedDefaultProps": Object {
-                "ariaLabel": "input",
-                "dataLocator": "input-field",
-                "enableSuccessCheck": false,
-                "id": "input",
-                "keyboardType": "default",
-                "label": "input",
-                "meta": Object {
-                  "error": "",
-                  "touched": "",
-                },
-                "secureTextEntry": false,
-                "showErrorIcon": true,
-                "type": "text",
-              },
-              "attrs": Array [],
-              "displayName": "Styled(TextBox)",
-              "inlineStyle": InlineStyle {
-                "rules": Array [
-                  "
-    ",
-                  "
-  ",
-                  [Function],
-                  ";
-",
-                  ";
-  ",
-                ],
-              },
-              "render": [Function],
-              "styledComponentId": "StyledNativeComponent",
-              "target": [Function],
-              "withComponent": [Function],
-            }
-          }
-          dataLocator="acc_lbl_phone_number"
-          id="acc_lbl_phone_number"
-          label="Phone Number"
-          maxLength={50}
-          name="acc_lbl_phone_number"
-          type="text"
-        />
-      </Styled(View)>
-      <Field
-        component={[Function]}
-        dataLocator="setDefaultAddress"
-        disabled={false}
-        marginTop={13}
-        name="setDefaultAddress"
-        onClick={[Function]}
-        rightText="Set as default shipping address"
-      />
-    </Styled(View)>
-    <Styled(CustomButton)
-      buttonVariation="variable-width"
-      customStyle={Object {}}
-      fill="BLUE"
-      fullWidth=""
-      style={
+    <ReduxForm
+      destroyOnUnmount={true}
+      enableReinitialize={true}
+      forceUnregisterOnUnmount={false}
+      form="AddressForm"
+      getFormState={[Function]}
+      isEdit={false}
+      isMakeDefaultDisabled={false}
+      keepDirtyOnReinitialize={false}
+      labels={
         Object {
-          "color": "white",
-          "fontWeight": "normal",
-          "marginTop": 48,
-          "opacity": 0.5,
+          "acc_label_verify_your_address_AE09": "There may be an issue with your address as entered. Please double check it, or if you believe the address is correct you can continue to the next step.",
+          "acc_label_verify_your_address_AE10": "The house / building number is not valid. Please review and confirm your address.",
+          "acc_label_verify_your_address_AE11": "The house / building number is missing from your address. Please review and confirm your address.",
+          "acc_label_verify_your_address_AE12": "The house / building number is not valid. Please review and confirm your address.",
+          "acc_label_verify_your_address_DEFAULT": "There may be an issue with your address as entered. Please double check it, or select from the below.",
+          "acc_lbl_add_address_cta": "ADD ADDRESS",
+          "acc_lbl_add_address_form_heading": "Add New Shipping Address",
+          "acc_lbl_address_line1": "Address Line 1",
+          "acc_lbl_address_line2": "Address Line 2 (Optional)",
+          "acc_lbl_cancel_cta": "CANCEL",
+          "acc_lbl_city": "City",
+          "acc_lbl_continue_cta": "CONTINUE",
+          "acc_lbl_country": "Country",
+          "acc_lbl_edit_address_cta": "EDIT ADDRESS",
+          "acc_lbl_edit_address_form_heading": "EDIT SHIPPING ADDRESS",
+          "acc_lbl_first_name": "First Name",
+          "acc_lbl_last_name": "Last Name",
+          "acc_lbl_optional_address_line": "Apartment or suite number",
+          "acc_lbl_phone_number": "Phone Number",
+          "acc_lbl_postal_code": "Postal Code",
+          "acc_lbl_province": "Province",
+          "acc_lbl_set_default": "Set as default shipping address",
+          "acc_lbl_state": "State",
+          "acc_lbl_update_address_cta": "UPDATE",
+          "acc_lbl_verify_your_address_header": "Verify Your Address",
+          "acc_lbl_verify_your_address_heading_add": "Add Address",
+          "acc_lbl_verify_your_address_heading_edit": "EDIT ADDRESS",
+          "acc_lbl_we_suggest": "WE SUGGEST",
+          "acc_lbl_you_entered": "YOU ENTERED",
+          "acc_lbl_zip_code": "Zip Code",
+          "addNewAddressCTA": "ADD NEW ADDRESS",
+          "addressBookHeading": "ADDRESS BOOK",
+          "billing": "BILLING",
+          "cancel": "No, Don't Delete",
+          "createAddressBookBenefitMsg": "Add and save up to 5 shipping addresses so you can speed through the checkout process the next time you shop",
+          "createAddressBookMsg": "Create an Address Book to check out faster!",
+          "defaultBilling": "DEFAULT BILLING",
+          "defaultShipping": "DEFAULT SHIPPING",
+          "defaultShippingSuccessFail": "Your action could not be completed due to a system error",
+          "defaultShippingSuccessMessage": "Your account has been updated",
+          "delete": "Delete",
+          "deleteAddressHeading": "DELETE ADDRESS",
+          "deleteAddressTitle": "Are you sure you want to delete this address?",
+          "deleteConfirm": "Yes, Delete",
+          "edit": "Edit",
+          "errorMessage": "Your action could not be completed due to a system error",
+          "makeDefault": "Make Default",
+          "shipping": "SHIPPING",
+          "successMessage": "Your account has been updated",
         }
       }
-      text="ADD ADDRESS"
-      type="submit"
-      url=""
-    />
-    <Styled(View) />
-    <Styled(CustomButton)
-      buttonVariation="variable-width"
-      customStyle={Object {}}
-      fill="WHITE"
-      fullWidth=""
-      style={
-        Object {
-          "fontWeight": "normal",
-          "opacity": 0.5,
-        }
-      }
-      text="CANCEL"
-      type="submit"
-      url=""
+      persistentSubmitErrors={false}
+      pure={true}
+      shouldAsyncValidate={[Function]}
+      shouldError={[Function]}
+      shouldValidate={[Function]}
+      shouldWarn={[Function]}
+      submitAsSideEffect={false}
+      touchOnBlur={true}
+      touchOnChange={false}
+      updateUnregisteredFields={false}
+      validate={[Function]}
     />
   </ScrollViewMock>
 </View>
