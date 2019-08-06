@@ -230,7 +230,6 @@ exports[`LoginForm component should renders correctly 1`] = `
                   "
   display: inline-flex;
   align-items: center;
-  height: 50px;
 
   & .CheckBox__input {
     position: relative;
@@ -602,7 +601,6 @@ exports[`LoginForm component should renders correctly with error 1`] = `
                   "
   display: inline-flex;
   align-items: center;
-  height: 50px;
 
   & .CheckBox__input {
     position: relative;

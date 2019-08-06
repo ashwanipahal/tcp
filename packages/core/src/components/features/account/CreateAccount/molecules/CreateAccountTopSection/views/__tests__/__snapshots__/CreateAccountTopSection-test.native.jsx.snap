@@ -21,40 +21,64 @@ An online account has been created with your email! Click here to reset your pas
   }
 >
   <Styled(View)>
-    <Styled(ImageComp)
-      height={60}
-      source={
-        Object {
-          "testUri": "../../../../core/src/assets/my-place-rewards.png",
+    <Styled(View)>
+      <Styled(ImageComp)
+        height={60}
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/my-place-rewards.png",
+          }
         }
-      }
-      width={186}
+        width={186}
+      />
+    </Styled(View)>
+    <Styled(LineComp)
+      borderColor={null}
+      borderWidth={0.65}
+      marginBottom={0}
+      marginTop={28}
     />
-  </Styled(View)>
-  <Styled(View)
-    className="labels-wrapper"
-  >
-    <Styled(Text)>
-      Create a
-      My Place Rewards
-      account to earn
-    </Styled(Text)>
-    <View>
+    <Styled(View)
+      className="labels-wrapper"
+    >
       <Styled(Text)>
-        points on every purchase
+        Create a
+        My Place Rewards
+        account to earn
       </Styled(Text)>
-      <Styled(Text)>
-        $1 Spent = 1 POINT
-      </Styled(Text)>
-    </View>
-    <View>
-      <Styled(Text)>
-        Signed up in Store?
-      </Styled(Text)>
-      <Styled(Text)>
-        An online account has been created
-      </Styled(Text)>
-    </View>
+      <Styled(View)>
+        <Styled(Text)>
+          points on every purchase
+        </Styled(Text)>
+        <Styled(Text)>
+          $1 Spent = 1 POINT
+        </Styled(Text)>
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(Text)>
+          Signed up in Store?
+        </Styled(Text)>
+        <Styled(Text)>
+          An online account has been created
+        </Styled(Text)>
+        <Styled(View)>
+          <Styled(Anchor)
+            anchorVariation=""
+            customStyle={Object {}}
+            fontSizeVariation="xlarge"
+            text=""
+            underline={true}
+            visible={false}
+          />
+        </Styled(View)>
+      </Styled(View)>
+    </Styled(View)>
+    <Styled(LineComp)
+      borderColor={null}
+      borderWidth={0.65}
+      marginBottom={0}
+      marginTop={28}
+    />
   </Styled(View)>
 </View>
 `;

@@ -12,6 +12,25 @@ const styles = css`
     margin: 15px 0;
     background: #fff;
   }
+  .order-summary {
+    margin: 16px 0;
+  }
+  .checkout-actions {
+    margin: 0;
+    width: 100%;
+  }
+  .checkout-button {
+    margin: 0 0 10px 0;
+  }
+  .right-sec {
+    width: 346px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: 258px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      width: 450px;
+    }
+  }
   .bag-header {
     margin: 40px 0 20px;
   }
