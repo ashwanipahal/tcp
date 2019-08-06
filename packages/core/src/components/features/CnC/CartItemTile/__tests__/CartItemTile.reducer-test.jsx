@@ -1,7 +1,7 @@
 import { fromJS } from 'immutable';
 import { DEFAULT_REDUCER_KEY } from '../../../../../utils/cache.util';
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
-import CartPage from '../container/CartItemTile.reducer';
+import CartItemTile from '../container/CartItemTile.reducer';
 
 describe('AddGiftCard Reducer', () => {
   const initialState = fromJS({
@@ -9,15 +9,6 @@ describe('AddGiftCard Reducer', () => {
     items: [],
     editableItemData: {},
   });
-
-  const getOrderDetailAction = {
-    type: CARTPAGE_CONSTANTS.GET_ORDER_DETAILS_COMPLETE,
-    payload: {
-      orderDetails: {
-        orderItems: [1],
-      },
-    },
-  };
 
   const getProductSkuInfoSuccess = {
     type: CARTPAGE_CONSTANTS.GET_PRODUCT_SKU_INFO_SUCCESS,
@@ -28,18 +19,8 @@ describe('AddGiftCard Reducer', () => {
     },
   };
 
-  it('GET_ORDER_DETAILS_COMPLETE', () => {
-    const newState = CartPage(initialState, {
-      ...getOrderDetailAction,
-    });
-
-    expect(newState.get('orderDetails').length).toEqual(
-      getOrderDetailAction.payload.orderDetails.length
-    );
-  });
-
   it('GET_PRODUCT_SKU_INFO_SUCCESS', () => {
-    const newState = CartPage(initialState, {
+    const newState = CartItemTile(initialState, {
       ...getProductSkuInfoSuccess,
     });
 

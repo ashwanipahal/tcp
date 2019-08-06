@@ -99,7 +99,7 @@ const HeaderMiddleNav = props => {
                 id="createAccount"
                 className="leftLink"
                 onClick={e => onLinkClick({ e, openOverlay })}
-                fontSizeVariation="small"
+                fontSizeVariation="large"
                 anchorVariation="primary"
               >
                 Create Account
@@ -107,9 +107,9 @@ const HeaderMiddleNav = props => {
               <Anchor
                 href="#"
                 id="login"
-                className="rightLink "
+                className="rightLink"
                 onClick={e => onLinkClick({ e, openOverlay })}
-                fontSizeVariation="small"
+                fontSizeVariation="large"
                 anchorVariation="primary"
               >
                 Login

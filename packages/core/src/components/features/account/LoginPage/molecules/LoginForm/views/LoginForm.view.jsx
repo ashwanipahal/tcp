@@ -7,7 +7,6 @@ import Button from '../../../../../../common/atoms/Button';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
-import Notification from '../../../../../../common/molecules/Notification';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import PasswordField from '../../PasswordField';
@@ -32,16 +31,15 @@ class LoginForm extends React.PureComponent<Props> {
       showRecaptcha,
       change,
       showSavePlcc,
+      pristine,
     } = this.props;
     return (
       <div className={className}>
         <form name="LoginForm" onSubmit={handleSubmit} noValidate className={className}>
           {loginErrorMessage && (
-            <Notification
-              status="error"
-              colSize={{ large: 12, medium: 8, small: 6 }}
-              message={loginErrorMessage}
-            />
+            <BodyCopy fontSize="fs12" fontWeight="semibold" color="red.500" className="elem-mb-XL">
+              {loginErrorMessage}
+            </BodyCopy>
           )}
           <BodyCopy component="div" className="elem-mb-LRG">
             <Field
@@ -52,6 +50,7 @@ class LoginForm extends React.PureComponent<Props> {
               dataLocator=""
               showSuccessCheck={false}
               enableSuccessCheck={false}
+              className="elem-mb-SM"
             />
             <Field
               id="password"
@@ -99,6 +98,7 @@ class LoginForm extends React.PureComponent<Props> {
               data-locator=""
               fullWidth
               className="elem-mb-XS"
+              disabled={pristine}
             >
               {labels.login.lbl_login_loginCTA}
             </Button>
@@ -127,6 +127,7 @@ LoginForm.propTypes = {
   showRecaptcha: PropTypes.bool,
   change: PropTypes.func,
   showSavePlcc: PropTypes.bool,
+  pristine: PropTypes.bool,
 };
 
 LoginForm.defaultProps = {
@@ -135,6 +136,7 @@ LoginForm.defaultProps = {
   showRecaptcha: false,
   change: () => {},
   showSavePlcc: false,
+  pristine: false,
 };
 
 const validateMethod = createValidateMethod(
