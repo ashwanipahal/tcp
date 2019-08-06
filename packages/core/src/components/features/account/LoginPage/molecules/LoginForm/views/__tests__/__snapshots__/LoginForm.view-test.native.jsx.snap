@@ -5,13 +5,19 @@ exports[`LoginForm component should renders correctly 1`] = `
   handleSubmit={[Function]}
   labels={
     Object {
+      "handleSubmit": [Function],
       "login": Object {},
+      "loginErrorMessage": "",
+      "onSubmit": [Function],
+      "resetForm": [Function],
+      "showForgotPasswordForm": [Function],
     }
   }
   loginErrorMessage=""
   onSubmit={[Function]}
 >
   <Field
+    autoCapitalize="none"
     component={
       Object {
         "$$typeof": Symbol(react.forward_ref),
