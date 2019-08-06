@@ -2,9 +2,11 @@ import { parseDate, compareDate } from '../parseDate';
 
 describe('parse date test', () => {
   it('should return date object', () => {
-    expect(parseDate('2017-03-16 11:21:49.994').toString()).toEqual(
-      'Thu Mar 16 2017 11:21:49 GMT+0530 (India Standard Time)'
-    );
+    expect(
+      parseDate('2017-03-16')
+        .getFullYear()
+        .toString()
+    ).toEqual('2017');
   });
 
   it('should return true', () => {
