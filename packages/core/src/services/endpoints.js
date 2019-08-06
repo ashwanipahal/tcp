@@ -34,6 +34,14 @@ const endpoints = {
     method: API_METHODS.POST,
     URI: 'v2/account/modifyCreditCardDetails',
   },
+  addAddress: {
+    method: API_METHODS.POST,
+    URI: 'v2/account/addAddress',
+  },
+  updateAddress: {
+    method: 'put',
+    URI: 'v2/wallet/updateAddress',
+  },
   updateMultiSelectItemsToRemove: {
     method: 'PUT',
     URI: 'v2/cart/deleteMultipleOrderItems',
@@ -56,7 +64,39 @@ const endpoints = {
   },
   logout: {
     method: API_METHODS.DELETE,
-    URI: '/v2/account/logout',
+    URI: 'v2/account/logout',
+  },
+  requestPassword: {
+    method: 'put',
+    URI: 'v2/account/resetPassword',
+  },
+  getGifCardBalance: {
+    method: API_METHODS.POST,
+    URI: 'v2/wallet/getGiftCardBalance',
+  },
+  deleteCreditCardOnAccount: {
+    method: API_METHODS.POST,
+    URI: 'v2/account/deleteCreditCardDetails',
+  },
+  setDefaultPayment: {
+    method: API_METHODS.POST,
+    URI: 'v2/account/modifyCreditCardDetails',
+  },
+  getCardList: {
+    method: API_METHODS.GET,
+    URI: 'v2/account/getCreditCardDetails',
+  },
+  addGiftCard: {
+    method: API_METHODS.POST,
+    URI: 'v2/account/addCreditCardDetails',
+  },
+  setDefaultShippingAddress: {
+    method: API_METHODS.PUT,
+    URI: 'v2/wallet/updateAddress',
+  },
+  deleteAddress: {
+    method: API_METHODS.DELETE,
+    URI: 'v2/account/deleteAddressDetails',
   },
 };
 export default endpoints;
