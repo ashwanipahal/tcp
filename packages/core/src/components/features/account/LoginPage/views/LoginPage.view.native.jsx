@@ -6,6 +6,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LoginSection from '../organism/LoginSection';
 import ScrollViewStyle from '../styles/LoginPage.style.native';
+import KeychainExample from './keychain';
 
 const LoginView = ({
   onSubmit,
@@ -37,6 +38,7 @@ const LoginView = ({
         resetForgotPasswordErrorResponse={resetForgotPasswordErrorResponse}
         onCreateAccountClick={onCreateAccountClick}
       />
+      <KeychainExample />
     </ScrollViewStyle>
   );
 };

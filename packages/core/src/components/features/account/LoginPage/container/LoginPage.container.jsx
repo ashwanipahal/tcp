@@ -36,6 +36,13 @@ class LoginPageContainer extends React.PureComponent {
     }
   }
 
+  componentWillUnmount() {
+    const { resetLoginState, loginError } = this.props;
+    if (loginError) {
+      resetLoginState();
+    }
+  }
+
   onCreateAccountClick = () => {
     const { openOverlay } = this.props;
     openOverlay({

@@ -1,4 +1,6 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
+import * as Keychain from 'react-native-keychain';
+import TouchID from 'react-native-touch-id';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
 import { setLoginInfo, getUserInfo } from './LoginPage.actions';
 import fetchData from '../../../../../service/API';
@@ -13,13 +15,35 @@ const notIsLocalHost = siteOrigin => {
 
 export function* loginSaga({ payload }) {
   try {
-    const response = yield call(login, payload);
-    if (response.success) {
-      return yield put(getUserInfo());
+    const userInfo = {
+      emailAddress: payload.emailAddress,
+      password: payload.password,
+      rememberMe: payload.rememberMe,
+      savePlcc: payload.savePlcc,
+    };
+    yield Keychain.setGenericPassword(userInfo.emailAddress, userInfo.password);
+    const touchIdRes = yield call(
+      TouchID.authenticate,
+      `to login with username "${userInfo.emailAddress}"`
+    );
+    if (touchIdRes) {
+      const credentials = yield Keychain.getGenericPassword();
+      if (credentials) {
+        console.log('Credentials successfully loaded for user ' + credentials.emailAddress);
+      }
+      const response = yield call(login, payload);
+      if (response.success) {
+        yield put(getUserInfo());
+      }
     }
-    return yield put(setLoginInfo(response));
+
+    // const credentials = yield Keychain.getGenericPassword();
+    // if (credentials) {
+    //   console.log('Credentials successfully loaded for user ' + credentials.emailAddress);
+    // }
+    // return yield put(setLoginInfo(response));
   } catch (err) {
-    return yield put(
+    yield put(
       setLoginInfo({
         success: false,
       })
