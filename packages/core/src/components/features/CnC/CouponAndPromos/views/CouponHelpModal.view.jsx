@@ -1,7 +1,7 @@
 import React from 'react';
 import Modal from '../../../../common/molecules/Modal';
 
-class CouponDetailModal extends React.PureComponent<Props> {
+class CouponHelpModal extends React.PureComponent<Props> {
   render() {
     const { heading, openState, onRequestClose } = this.props;
     return (
@@ -15,10 +15,10 @@ class CouponDetailModal extends React.PureComponent<Props> {
         minHeight="500px"
         closeIconDataLocator="addressdeletemodalcrossicon"
       >
-        <div>hello</div>
+        <div>{heading}</div>
       </Modal>
     );
   }
 }
 
-export default CouponDetailModal;
+export default CouponHelpModal;

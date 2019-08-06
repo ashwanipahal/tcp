@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import CouponCard from '@tcp/core/src/components/common/molecules/CouponCard';
-import Row from '../../../../../../common/atoms/Row';
-import Col from '../../../../../../common/atoms/Col';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import Anchor from '../../../../../../common/atoms/Anchor';
+import CouponCard from '../../../molecules/CouponCard';
+import Row from '../../../atoms/Row';
+import Col from '../../../atoms/Col';
+import BodyCopy from '../../../atoms/BodyCopy';
+import Anchor from '../../../atoms/Anchor';
 
 import styles from '../styles/CouponListSection.style';
 

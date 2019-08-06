@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CouponListSection from '../organism/CouponListSection';
+import CouponListSection from '../../../../common/organisms/CouponListSection';
 import CouponDetailModal from './CouponDetailModal.view';
 
 class CouponView extends React.Component<Props> {
@@ -8,19 +8,20 @@ class CouponView extends React.Component<Props> {
     super(props);
     this.state = {
       status: false,
+      selectedCoupon: {},
     };
   }
 
-  couponDetailClick = selectedCoupon => {
-    console.log('selectedCoupon', selectedCoupon);
+  couponDetailClick = coupon => {
     this.setState({
       status: true,
+      selectedCoupon: coupon,
     });
   };
 
   render() {
     const { labels, appliedCouponList, availableCouponList } = this.props;
-    const { status } = this.state;
+    const { status, selectedCoupon } = this.state;
     return (
       <React.Fragment>
         {appliedCouponList && (
@@ -44,21 +45,14 @@ class CouponView extends React.Component<Props> {
         )}
         <CouponDetailModal
           openState={status}
-          data={{
-            heading: 'heading',
-            title: 'title1',
-            description: 'address',
-            buttons: {
-              cancel: 'cancle',
-              confirm: 'confim',
-            },
-          }}
-          setDeleteModalMountState={state => {
-            console.log('state', state);
+          heading="heading"
+          selectedCoupon={selectedCoupon}
+          onRequestClose={() => {
+            this.setState({
+              status: false,
+            });
           }}
           labels={labels}
-          onDeleteAddress={() => {}}
-          showUpdatedNotificationOnModal={() => {}}
         />
       </React.Fragment>
     );
