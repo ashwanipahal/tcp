@@ -4,7 +4,10 @@ import { AddGiftCardFormVanilla } from '../AddGiftCardForm';
 
 describe('Add gift card form component', () => {
   const props = {
-    labels: {},
+    labels: {
+      paymentGC: {},
+      common: {},
+    },
     onAddGiftCardClick: jest.fn(),
     handleSubmit: jest.fn(),
     change: jest.fn(),

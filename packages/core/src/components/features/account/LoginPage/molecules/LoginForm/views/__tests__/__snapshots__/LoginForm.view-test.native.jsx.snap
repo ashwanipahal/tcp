@@ -3,7 +3,11 @@
 exports[`LoginForm component should renders correctly 1`] = `
 <View
   handleSubmit={[Function]}
-  labels={Object {}}
+  labels={
+    Object {
+      "login": Object {},
+    }
+  }
   loginErrorMessage=""
   onSubmit={[Function]}
 >

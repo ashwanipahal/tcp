@@ -5,7 +5,9 @@ import { LoginFormFormVanilla } from '../LoginForm.view';
 describe('LoginForm component', () => {
   it('should renders correctly', () => {
     const props = {
-      labels: {},
+      labels: {
+        login: {},
+      },
       handleSubmit: () => {},
       className: 'test-class',
     };
@@ -15,7 +17,9 @@ describe('LoginForm component', () => {
 
   it('should renders correctly with error', () => {
     const props = {
-      labels: {},
+      labels: {
+        login: {},
+      },
       handleSubmit: () => {},
       className: 'test-class',
       loginErrorMessage: 'test errror',

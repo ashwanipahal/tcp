@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyRewards should render correctly 1`] = `
+<View
+  className=""
+>
+  <ScrollViewMock
+    showsVerticalScrollIndicator={false}
+  >
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        fontSize="fs16"
+        fontWeight="extrabold"
+        text=""
+      />
+    </Styled(Text)>
+    <Styled(View) />
+    <Styled(View)>
+      <Text>
+        First
+      </Text>
+    </Styled(View)>
+    <Styled(View)>
+      <Text>
+        Second
+      </Text>
+    </Styled(View)>
+    <Styled(View)>
+      <Text>
+        Third
+      </Text>
+    </Styled(View)>
+    <Styled(View)>
+      <Text>
+        Fourth
+      </Text>
+    </Styled(View)>
+    <MyRewards
+      labels={
+        Object {
+          "common": Object {},
+          "myPlaceRewards": Object {},
+        }
+      }
+    />
+  </ScrollViewMock>
+</View>
+`;

@@ -127,7 +127,9 @@ let CreateAccountForm = ({
                   dataLocator="hide-show-checkbox"
                   enableSuccessCheck={false}
                 >
-                  {hideShowPwd ? labels.CREATE_ACC_LBL_HIDE : labels.CREATE_ACC_LBL_SHOW}
+                  {hideShowPwd
+                    ? labels.registration.lbl_createAccount_hide
+                    : labels.registration.lbl_createAccount_show}
                 </Field>
               </Col>
             </span>
@@ -158,7 +160,9 @@ let CreateAccountForm = ({
                   dataLocator="confirm-hide-show-checkbox"
                   enableSuccessCheck={false}
                 >
-                  {confirmHideShowPwd ? labels.CREATE_ACC_LBL_HIDE : labels.CREATE_ACC_LBL_SHOW}
+                  {confirmHideShowPwd
+                    ? labels.registration.lbl_createAccount_hide
+                    : labels.registration.lbl_createAccount_show}
                 </Field>
               </Col>
             </span>
@@ -172,7 +176,7 @@ let CreateAccountForm = ({
               dataLocator="my-place-checkbox"
               disabled={isMakeDefaultDisabled}
             >
-              {labels.CREATE_ACC_LBL_SAVE_REWARDS}
+              {labels.registration.lbl_createAccount_saveRewards}
             </Field>
           </Col>
           <Col
@@ -186,7 +190,7 @@ let CreateAccountForm = ({
               dataLocator="i-agree-checkbox"
               disabled={isMakeDefaultDisabled}
             >
-              {labels.CREATE_ACC_LBL_TERMS_CONDITIONS}
+              {labels.registration.lbl_createAccount_termsConditions}
             </Field>
           </Col>
           <Col className="elem-pt-XL" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
@@ -196,7 +200,7 @@ let CreateAccountForm = ({
               dataLocator="remember-me-checkbox"
               disabled={isMakeDefaultDisabled}
             >
-              {labels.CREATE_ACC_LBL_REMEMBER_ME}
+              {labels.registration.lbl_createAccount_rememberMe}
             </Field>
           </Col>
           <Col
@@ -211,7 +215,7 @@ let CreateAccountForm = ({
               data-locator="create-account-btn"
               disabled={!isIAgreeChecked}
             >
-              {labels.CREATE_ACC_LBL_CREATE_ACCOUNT}
+              {labels.registration.lbl_createAccount_createAccount}
             </Button>
           </Col>
           <Col
@@ -220,7 +224,7 @@ let CreateAccountForm = ({
             className="already-account align-center"
           >
             <Anchor onClick={onAlreadyHaveAnAccountClick}>
-              {labels.CREATE_ACC_LBL_ALREADY_ACCOUNT}
+              {labels.registration.lbl_createAccount_alreadyAccount}
             </Anchor>
           </Col>
         </Row>

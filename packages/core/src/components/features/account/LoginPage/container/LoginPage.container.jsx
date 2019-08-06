@@ -12,12 +12,12 @@ import {
   closeOverlayModal,
   openOverlayModal,
 } from '../../../OverlayModal/container/OverlayModal.actions';
-import labels from './LoginPage.labels';
 import {
   getUserLoggedInState,
   getLoginError,
   shouldShowRecaptcha,
   getLoginErrorMessage,
+  getLabels,
 } from './LoginPage.selectors';
 import LoginView from '../views';
 
@@ -52,9 +52,10 @@ class LoginPageContainer extends React.PureComponent {
       showRecaptcha,
       resetForm,
       getUserInfoAction,
+      labels,
       resetLoginState,
     } = this.props;
-    const errorMessage = loginError ? loginErrorMessage || labels.ACC_LBL_LOGIN_ERROR : '';
+    const errorMessage = loginError ? loginErrorMessage || labels.login.lbl_login_error : '';
     const initialValues = {
       rememberMe: true,
       savePlcc: true,
@@ -85,6 +86,7 @@ LoginPageContainer.propTypes = {
   resetForm: PropTypes.bool.isRequired,
   getUserInfoAction: PropTypes.bool.isRequired,
   openOverlay: PropTypes.func,
+  labels: PropTypes.shape({}).isRequired,
   resetLoginState: PropTypes.func,
 };
 
@@ -126,14 +128,8 @@ const mapStateToProps = state => {
     loginError: getLoginError(state),
     loginErrorMessage: getLoginErrorMessage(state),
     showRecaptcha: shouldShowRecaptcha(state),
+    labels: getLabels(state),
   };
-};
-
-LoginPageContainer.defaultProps = {
-  showRecaptcha: false,
-  loginError: false,
-  loginErrorMessage: '',
-  closeOverlay: () => {},
 };
 
 export default connect(
