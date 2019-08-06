@@ -22,6 +22,7 @@ exports[`FooterTopCandidateBVanilla component renders correctly 1`] = `
     >
       <Styled(Button)
         customStyle="shadow-button"
+        dataLocator="footer_email_signup_btn"
         onClick={[Function]}
       >
         <Styled(RichText) />

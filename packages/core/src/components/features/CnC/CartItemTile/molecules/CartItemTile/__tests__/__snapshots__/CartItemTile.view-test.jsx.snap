@@ -1,0 +1,381 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BossBannerView component renders correctly 1`] = `
+<styled.div>
+  <Styled(Row)
+    className="product"
+    fullBleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 2,
+        }
+      }
+      key="productDetails"
+    >
+      <Styled(Image)
+        className="product-image"
+        data-locator="addedtobag-productimage"
+        src="https://test4.childrensplace.comundefined"
+      />
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 9,
+          "medium": 6,
+          "small": 4,
+        }
+      }
+      key="productDetails"
+    >
+      <Styled(Row)>
+        <Styled(Col)
+          className="productImgBrand"
+          colSize={
+            Object {
+              "large": 12,
+              "medium": 8,
+              "small": 6,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            dataLocator="addedtobag-productname"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight={
+              Array [
+                "extrabold",
+              ]
+            }
+            letterSpacing="normal"
+            lineHeight="normal"
+            tag="span"
+            textAlign="left"
+          >
+            Boys Basic Skinny Jeans
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+      </Styled(Row)>
+      <Styled(Row)
+        className="padding-top-10"
+      >
+        <div>
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight={
+              Array [
+                "extrabold",
+              ]
+            }
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            Design
+            :
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className="itemDesc"
+            color="text.primary"
+            component="span"
+            dataLocator="addedtobag-productcolor"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+             undefined | 
+          </Styled(BodyCopy)>
+        </div>
+        <div
+          className="padding-left"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight={
+              Array [
+                "extrabold",
+              ]
+            }
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            :
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className="itemDesc"
+            color="text.primary"
+            component="span"
+            dataLocator="addedtobag-productsize"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+             regular | 
+          </Styled(BodyCopy)>
+        </div>
+        <div
+          className="padding-left"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight={
+              Array [
+                "extrabold",
+              ]
+            }
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            undefined
+            :
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className="itemDesc"
+            color="text.primary"
+            component="span"
+            dataLocator="addedtobag-productsize"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+             1
+          </Styled(BodyCopy)>
+        </div>
+        <div
+          className="padding-left"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight={
+              Array [
+                "extrabold",
+              ]
+            }
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+             Qty
+            :
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className="itemDesc"
+            color="text.primary"
+            component="span"
+            dataLocator="addedtobag-productqty"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+             1
+          </Styled(BodyCopy)>
+        </div>
+        <Styled(BodyCopy)
+          className="padding-left-10"
+          color="text.primary"
+          component="div"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          onClick={[Function]}
+          textAlign="left"
+        >
+          <u />
+        </Styled(BodyCopy)>
+      </Styled(Row)>
+      <Styled(Row)
+        className="padding-top-10"
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 3,
+              "small": 2,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight={
+              Array [
+                "extrabold",
+              ]
+            }
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            Price: 
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 8,
+              "medium": 3,
+              "small": 2,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight={
+              Array [
+                "extrabold",
+              ]
+            }
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            123
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+      </Styled(Row)>
+      <Styled(Row)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 4,
+              "medium": 3,
+              "small": 2,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight={
+              Array [
+                "extrabold",
+              ]
+            }
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            undefined:
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 8,
+              "medium": 3,
+              "small": 2,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight={
+              Array [
+                "extrabold",
+              ]
+            }
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            123
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+      </Styled(Row)>
+      <Styled(Row)
+        className="padding-top-15 padding-bottom-20"
+        fullBleed={true}
+      >
+        <Styled(Col)
+          className="padding-left-13"
+          colSize={
+            Object {
+              "large": 8,
+              "medium": 6,
+              "small": 4,
+            }
+          }
+        />
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 3,
+              "medium": 1,
+              "small": 1,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            <u />
+          </Styled(BodyCopy)>
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(Col)>
+  </Styled(Row)>
+</styled.div>
+`;

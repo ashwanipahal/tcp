@@ -2,6 +2,7 @@ import { fromJS } from 'immutable';
 import {
   getAccountNavigationState,
   getAccountNavigationFetchingState,
+  getLabels,
 } from '../container/Account.selectors';
 
 describe('#AccountNavigation selector', () => {
@@ -30,5 +31,14 @@ describe('#AccountNavigation selector', () => {
     expect(getAccountNavigationFetchingState(state)).toEqual(
       accountNavigationState.get('isFetching')
     );
+  });
+
+  it('#getLabels should return all the account labels', () => {
+    const state = {
+      Labels: {
+        account: {},
+      },
+    };
+    expect(getLabels(state)).toMatchObject({});
   });
 });

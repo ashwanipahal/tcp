@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import buttonStyles from '../Button/Button.style';
 
 const AnchorStyles = css`
   font-family: ${props => props.theme.fonts.secondaryFontFamily};
@@ -82,6 +83,14 @@ const AnchorStyles = css`
       ? `
       text-align: center;
     `
+      : ''};
+  ${props => (props.anchorVariation === 'button' ? buttonStyles : '')};
+  ${props =>
+    props.anchorVariation === 'button'
+      ? `
+    box-sizing: border-box;
+    display: inline-block;
+  `
       : ''};
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
