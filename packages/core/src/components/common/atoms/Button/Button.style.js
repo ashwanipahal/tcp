@@ -39,7 +39,7 @@ const ButtonStyles = css`
   &:focus {
     background: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].FOCUS};
   }
-  &:hover {
+  &:hover:not([disabled]) {
     background: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].HOVER};
   }
 
