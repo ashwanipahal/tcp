@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PromoBanner native component renders correctly 1`] = `
+<TouchableOpacity
+  accessibilityRole="link"
+  activeOpacity={0.2}
+  onPress={[Function]}
+>
+  <Styled(Text)
+    style="style1"
+  >
+    alL DINOS
+  </Styled(Text)>
+  <Styled(Text)
+    style="style2"
+  >
+    50% OFF 
+  </Styled(Text)>
+</TouchableOpacity>
+`;

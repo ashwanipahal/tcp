@@ -24,22 +24,22 @@ const PromoTextBanner = (props: Props) => {
     promoBanner: [{ textItems, link }],
     ...otherProps
   } = props;
-  return [
-    textItems.map(({ text, style }, index) => {
-      return (
-        <TouchableOpacity
-          accessibilityRole="link"
-          onPress={() => {
-            UrlHandler(link.url);
-          }}
-        >
+  return (
+    <TouchableOpacity
+      accessibilityRole="link"
+      onPress={() => {
+        UrlHandler(link.url);
+      }}
+    >
+      {textItems.map(({ text, style }, index) => {
+        return (
           <StyledText style={style} {...otherProps}>
             {index ? `${text} ` : text}
           </StyledText>
-        </TouchableOpacity>
-      );
-    }),
-  ];
+        );
+      })}
+    </TouchableOpacity>
+  );
 };
 
 export default PromoTextBanner;
