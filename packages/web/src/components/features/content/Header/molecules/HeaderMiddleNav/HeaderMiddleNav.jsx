@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import { Col, Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import LogOutPageContainer from '@tcp/core/src/components/features/account/Logout/container/LogOut.container';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { identifyBrand } from '@tcp/core/src/utils';
+import { getBrand } from '@tcp/core/src/utils';
 import Navigation from '../../../Navigation';
 import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import config from '../../config';
 import style from './HeaderMiddleNav.style';
-
-const brand = identifyBrand();
 
 /**
  * This function handles opening and closing for Navigation drawer on mobile and tablet viewport
@@ -38,6 +36,7 @@ const HeaderMiddleNav = props => {
     openOverlay,
     userName,
   } = props;
+  const brand = getBrand();
 
   return (
     <React.Fragment>
