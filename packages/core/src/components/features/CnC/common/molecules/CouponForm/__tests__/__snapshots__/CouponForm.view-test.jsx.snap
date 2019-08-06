@@ -1,0 +1,187 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartItem Component CartItem should render correctly 1`] = `
+<div>
+  <Styled(Heading)
+    className="coupon_form_heading"
+    color="black"
+    component={null}
+    dataLocator=""
+    fontFamily="primaryFontFamily"
+    textAlign="left"
+    variant="h6"
+  >
+    Coupon Code
+    <Styled(BodyCopy)
+      className="coupon_need_help_link"
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      Need Help?
+    </Styled(BodyCopy)>
+  </Styled(Heading)>
+  <form
+    className="coupon_submit_form"
+    onSubmit={[Function]}
+  >
+    <Field
+      className="coupon_code_input"
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-gzVnrw",
+            "isStatic": false,
+            "rules": Array [
+              "
+  ",
+              "
+  position: relative;
+  display: block;
+
+  .TextBox__label {
+    font-size: ",
+              [Function],
+              "px;
+    padding: 0;
+    position: absolute;
+    top: ",
+              [Function],
+              ";
+    ",
+              [Function],
+              "
+  }
+
+  .TextBox__input {
+    margin: 0;
+    outline: 0;
+    font-size: ",
+              [Function],
+              "px;
+    color: ",
+              [Function],
+              ";
+    width: 100%;
+    background-position: left top;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0 solid transparent;
+    border-bottom: 1px solid ",
+              [Function],
+              ";
+    padding-bottom: ",
+              [Function],
+              ";
+    margin-bottom: ",
+              [Function],
+              ";
+    padding-top: ",
+              [Function],
+              ";
+
+    ",
+              [Function],
+              "
+
+    ",
+              [Function],
+              ";
+
+    &:focus + .TextBox__label {
+      font-size: ",
+              [Function],
+              "px;
+      font-weight: ",
+              [Function],
+              ";
+      top: 0;
+    }
+  }
+  .success__checkmark {
+    display: none;
+  }
+  &.textbox_validation_success .TextBox__input {
+    border-bottom: 1px solid ",
+              [Function],
+              ";
+  }
+
+  &.textbox_validation_success .success__checkmark {
+    display: block;
+    width: 15px;
+    height: 8px;
+    margin-left: ",
+              [Function],
+              ";
+    transform: rotate(-45deg);
+    transform-origin: left;
+    position: absolute;
+    right: 0;
+    top: 30px;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 3px;
+      height: 100%;
+      background-color: ",
+              [Function],
+              ";
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: ",
+              [Function],
+              ";
+      bottom: 0;
+    }
+  }
+
+  ",
+              [Function],
+              ";
+",
+              ";
+",
+            ],
+          },
+          "displayName": "Styled(TextBox)",
+          "foldedComponentIds": Array [],
+          "render": [Function],
+          "styledComponentId": "sc-gzVnrw",
+          "target": [Function],
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        }
+      }
+      dataLocator="coupon_code"
+      id="coupon_code"
+      name="coupon_code"
+      onKeyPress={[Function]}
+      placeholder="Enter Coupon Code"
+      type="text"
+    />
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="coupon_submit_button"
+      data-locator="coupon_submit_btn"
+      type="submit"
+    >
+      Apply
+    </Styled(Button)>
+  </form>
+</div>
+`;

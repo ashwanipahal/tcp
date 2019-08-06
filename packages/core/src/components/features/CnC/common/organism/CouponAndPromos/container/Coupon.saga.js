@@ -4,9 +4,9 @@ import { hideLoader, showLoader } from './Coupon.actions';
 import { applyCouponToCart } from '../../../../../../../services/abstractors/CnC';
 
 export function* applyCoupon({ payload }) {
-  yield put(showLoader());
+  yield put(showLoader);
   yield call(applyCouponToCart, payload);
-  yield put(hideLoader());
+  yield put(hideLoader);
 }
 
 export function* CouponSaga() {
