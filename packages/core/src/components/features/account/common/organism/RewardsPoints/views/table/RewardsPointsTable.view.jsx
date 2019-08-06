@@ -19,7 +19,12 @@ const RewardsPointsTable = ({
     <div className={className}>
       <BodyCopy component="div" className="table-container">
         <BodyCopy component="div" className="table-item">
-          <BodyCopy fontSize="fs18" textAlign="center">
+          <BodyCopy
+            fontSize="fs20"
+            fontWeight="extrabold"
+            fontFamily="secondary"
+            textAlign="center"
+          >
             {totalRewards}
           </BodyCopy>
           <BodyCopy fontSize="fs14" textAlign="center">
@@ -27,7 +32,12 @@ const RewardsPointsTable = ({
           </BodyCopy>
         </BodyCopy>
         <BodyCopy component="div" className="table-item">
-          <BodyCopy fontSize="fs18" textAlign="center">
+          <BodyCopy
+            textAlign="center"
+            fontSize="fs20"
+            fontWeight="extrabold"
+            fontFamily="secondary"
+          >
             {currentPoints}
           </BodyCopy>
           <BodyCopy fontSize="fs14" textAlign="center">
@@ -35,7 +45,12 @@ const RewardsPointsTable = ({
           </BodyCopy>
         </BodyCopy>
         <BodyCopy component="div" className="table-item">
-          <BodyCopy fontSize="fs18" textAlign="center">
+          <BodyCopy
+            textAlign="center"
+            fontSize="fs20"
+            fontWeight="extrabold"
+            fontFamily="secondary"
+          >
             {pointsToNextReward}
           </BodyCopy>
           <BodyCopy fontSize="fs14" textAlign="center">

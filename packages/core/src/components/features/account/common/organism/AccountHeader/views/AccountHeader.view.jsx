@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col } from '../../../../../../common/atoms';
+import { Row, Col, BodyCopy } from '../../../../../../common/atoms';
 import RewardsPoints from '../../RewardsPoints';
+import RewardsPointsBanner from '../molecule/RewardsPointsBanner';
 
 export const AccountHeader = ({
   labels,
@@ -9,6 +10,7 @@ export const AccountHeader = ({
   pointsToNextRewards,
   currentPoints,
   totalRewards,
+  rewardsPointsBannerContent,
 }) => {
   return (
     <Row fullBleed>
@@ -16,39 +18,37 @@ export const AccountHeader = ({
         colSize={{
           small: 0,
           medium: 0,
-          large: 3,
+          large: 2,
         }}
         isNotInlineBlock
         className="hide-on-mobile hide-on-tablet"
       >
-        {`${labels.lbl_overview_greeting} ${name}`}
+        <BodyCopy fontSize="fs20" fontWeight="extrabold" fontFamily="secondary">
+          {`${labels.lbl_overview_greeting} ${name}`}
+        </BodyCopy>
       </Col>
       <Col
         colSize={{
           small: 0,
           medium: 5,
-          large: 3,
+          large: 5,
         }}
         isNotInlineBlock
         className="hide-on-mobile"
       >
-        placeholder
+        {rewardsPointsBannerContent && <RewardsPointsBanner content={rewardsPointsBannerContent} />}
       </Col>
       <Col
         colSize={{
           small: 6,
           medium: 3,
-          large: 3,
+          large: 5,
         }}
         isNotInlineBlock
       >
         <RewardsPoints
           tableView
-          labels={{
-            lbl_my_rewards_heading: 'My Rewards',
-            lbl_my_rewards_current_points: 'Current Points',
-            lbl_my_rewards_next_reward: 'Points to Next Reward',
-          }}
+          labels={labels}
           pointsToNextRewards={pointsToNextRewards}
           currentPoints={currentPoints}
           totalRewards={totalRewards}
@@ -64,6 +64,7 @@ AccountHeader.propTypes = {
   currentPoints: PropTypes.string,
   totalRewards: PropTypes.string,
   labels: PropTypes.shape({}),
+  rewardsPointsBannerContent: PropTypes.node,
 };
 
 AccountHeader.defaultProps = {
@@ -72,6 +73,7 @@ AccountHeader.defaultProps = {
   currentPoints: '',
   totalRewards: '',
   labels: {},
+  rewardsPointsBannerContent: '',
 };
 
 export default AccountHeader;

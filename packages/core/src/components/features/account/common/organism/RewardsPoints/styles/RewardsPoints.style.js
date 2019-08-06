@@ -23,6 +23,9 @@ const RewardsPointsStyles = css`
 
   .table-item {
     flex: 1 1 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 `;
 

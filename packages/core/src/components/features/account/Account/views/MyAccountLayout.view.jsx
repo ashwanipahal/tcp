@@ -28,7 +28,11 @@ const MyAccountLayoutView = (props: Props) => {
   const { navData, mainContent: MainContent, active, className, router, labels } = props;
   return (
     <div className={className}>
-      <AccountHeader />
+      <Row className="elem-mb-XL">
+        <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+          <AccountHeader labels={labels} />
+        </Col>
+      </Row>
       <Row className="is-hidden-nav">
         <Col colSize={{ large: 12, medium: 4, small: 6 }} offsetLeft={{ medium: 2 }}>
           <Dropdown options={navData} active={active} />
