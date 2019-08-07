@@ -6,13 +6,6 @@ const getLoginState = state => {
   return state[LOGINPAGE_REDUCER_KEY];
 };
 
-export const getUserName = state => {
-  if (state[LOGINPAGE_REDUCER_KEY] && state[LOGINPAGE_REDUCER_KEY].get('isLoggedin')) {
-    return state[LOGINPAGE_REDUCER_KEY].get('firstName');
-  }
-  return '';
-};
-
 export const getUserLoggedInState = createSelector(
   getLoginState,
   loginState => loginState && loginState.get('isLoggedin')
