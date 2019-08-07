@@ -35,7 +35,6 @@ class CouponCard extends React.Component<Props> {
     } else if (couponExpireUpdatedDate >= expireDate) {
       couponExpiring = true;
     }
-    console.log('couponExpiring', currentDate, couponExpireUpdatedDate, expireDate, couponExpiring);
     return couponExpiring;
   };
 

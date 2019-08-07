@@ -116,4 +116,4 @@ CouponListSection.propTypes = {
 };
 
 export default withStyles(CouponListSection, styles);
-export { CouponListSection as LoginSectionVanilla };
+export { CouponListSection as CouponListSectionVanilla };
