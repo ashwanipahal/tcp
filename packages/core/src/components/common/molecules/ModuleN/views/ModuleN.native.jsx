@@ -10,7 +10,7 @@ import { Anchor } from '../../../atoms';
 const datamoduleN = { ...moduleN };
 
 /**
- * @param {object} props : Props for Module N multi list banner.
+ * @param {object} props : Props for Module N multi type of banner list, button list, header text.
  * @desc This is Module N global component. It has capability to display
  * featured content module with 1 backckground color tiles ,links and a CTA Button list.
  * Author can surface teaser content leading to corresponding pages.
