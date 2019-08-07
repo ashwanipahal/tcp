@@ -25,10 +25,11 @@ const RewardsPointsTable = ({
             fontFamily="secondary"
             textAlign="center"
           >
-            {`${labels.lbl_my_rewards_currency}${totalRewards}`}
+            {labels.lbl_common_currency}
+            {totalRewards && Math.trunc(totalRewards)}
           </BodyCopy>
           <BodyCopy fontSize="fs14" textAlign="center">
-            {labels.lbl_my_rewards_heading}
+            {labels.lbl_common_heading}
           </BodyCopy>
         </BodyCopy>
         <BodyCopy component="div" className="table-item">
@@ -41,7 +42,7 @@ const RewardsPointsTable = ({
             {currentPoints}
           </BodyCopy>
           <BodyCopy fontSize="fs14" textAlign="center">
-            {labels.lbl_my_rewards_current_points}
+            {labels.lbl_common_current_points}
           </BodyCopy>
         </BodyCopy>
         <BodyCopy component="div" className="table-item">
@@ -54,7 +55,7 @@ const RewardsPointsTable = ({
             {pointsToNextReward}
           </BodyCopy>
           <BodyCopy fontSize="fs14" textAlign="center">
-            {labels.lbl_my_rewards_next_reward}
+            {labels.lbl_common_next_reward}
           </BodyCopy>
         </BodyCopy>
       </BodyCopy>
@@ -68,10 +69,10 @@ RewardsPointsTable.propTypes = {
   currentPoints: PropTypes.string,
   totalRewards: PropTypes.string,
   labels: PropTypes.shape({
-    lbl_my_rewards_current_points: PropTypes.string,
-    lbl_my_rewards_heading: PropTypes.string,
-    lbl_my_rewards_next_reward: PropTypes.string,
-    lbl_my_rewards_currency: PropTypes.string,
+    lbl_common_current_points: PropTypes.string,
+    lbl_common_heading: PropTypes.string,
+    lbl_common_next_reward: PropTypes.string,
+    lbl_common_currency: PropTypes.string,
   }),
 };
 
@@ -81,10 +82,10 @@ RewardsPointsTable.defaultProps = {
   currentPoints: '',
   totalRewards: '',
   labels: {
-    lbl_my_rewards_current_points: '',
-    lbl_my_rewards_heading: '',
-    lbl_my_rewards_next_reward: '',
-    lbl_my_rewards_currency: '',
+    lbl_common_current_points: '',
+    lbl_common_heading: '',
+    lbl_common_next_reward: '',
+    lbl_common_currency: '',
   },
 };
 
