@@ -11,7 +11,7 @@ import {
 } from '../ButtonList.native';
 
 type Props = {
-  ctxButton: Object[],
+  stackedCTAButtons: Object[],
   navigation: Object,
   buttonListVariation: string,
   navigation: Object,
@@ -132,10 +132,11 @@ const linkTextViewRenderItem = (item, navigation) => {
       <Anchor
         text={item.item.text}
         anchorVariation="white"
-        fontWeightVariation="large"
+        fontSizeVariation="large"
         url={item.item.links}
         navigation={navigation}
         customStyle={style}
+        centered
       />
     </TextLiksViewContainer>
   );
@@ -164,16 +165,19 @@ const rendeLinkTextView = (ctxButton, navigation) => {
 const divImageRenderItem = (item, navigation) => {
   const style = { borderRadius: 70 / 2 };
   const bodycopyStyle = { marginTop: 20 };
+  const {
+    item: { image, link },
+  } = item;
   return (
-    <Anchor url={item.item.links} navigation={navigation}>
+    <Anchor url={link.url} navigation={navigation}>
       <DivImageContainer>
-        <Image url={item.item.url} height={70} width={70} style={style} />
+        <Image url={image.url} height={70} width={70} style={style} />
         <BodyCopy
           fontFamily="secondary"
           fontSize="fs13"
           color="white"
           letterSpacing="black"
-          text={item.item.text}
+          text={link.text}
           style={bodycopyStyle}
         />
       </DivImageContainer>
@@ -200,7 +204,7 @@ const renderDivImageCTA = (ctxButton, navigation) => {
 
 /**
  * @param {object} props : Props for ButtonList
- * @desc This is a button component. The two variations of buttons are:
+ * @desc This is a buttonlist component. The four variations of buttonlist are:
  * 1. stackedCTAButton: Takes the list of stack button.
  * 2. scrollCTAButton: Takes the list of horizontal button.
  * 3. linkList: Takes the list of linktext button .
@@ -208,28 +212,28 @@ const renderDivImageCTA = (ctxButton, navigation) => {
  */
 
 const ButtonList = ({ buttonListVariation, navigation, ...otherProps }: Props) => {
-  const { ctxButton } = otherProps;
+  const { stackedCTAButtons, divImageCTACarousel, linkList } = otherProps;
 
   if (buttonListVariation === 'stackedCTAList') {
-    const isEvenButtonGrid = ctxButton.length % 2 === 0;
+    const isEvenButtonGrid = stackedCTAButtons.length % 2 === 0;
     return (
       <Container>
-        {isEvenButtonGrid && renderFlatList(ctxButton, navigation)}
-        {!isEvenButtonGrid && renderOddButtonGrid(ctxButton, navigation)}
+        {isEvenButtonGrid && renderFlatList(stackedCTAButtons, navigation)}
+        {!isEvenButtonGrid && renderOddButtonGrid(stackedCTAButtons, navigation)}
       </Container>
     );
   }
 
   if (buttonListVariation === 'scrollCTAList') {
-    return <Container>{renderScrollView(ctxButton, navigation)}</Container>;
+    return <Container>{renderScrollView(stackedCTAButtons, navigation)}</Container>;
   }
 
   if (buttonListVariation === 'linkCTAList') {
-    return <Container>{rendeLinkTextView(ctxButton, navigation)}</Container>;
+    return <Container>{rendeLinkTextView(linkList, navigation)}</Container>;
   }
 
   if (buttonListVariation === 'imageCTAList') {
-    return <Container>{renderDivImageCTA(ctxButton, navigation)}</Container>;
+    return <Container>{renderDivImageCTA(divImageCTACarousel, navigation)}</Container>;
   }
 
   return null;

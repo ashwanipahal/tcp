@@ -2,6 +2,7 @@
 
 exports[`HomePageView should render correctly 1`] = `
 <ScrollViewMock>
+  <ModuleN />
   <SlotA
     className="moduleD"
   />

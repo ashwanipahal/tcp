@@ -41,6 +41,20 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
+  style4: props => (
+    <BodyCopy fontSize="fs16" color="white" fontFamily="primary" textAlign="center" {...props} />
+  ),
+  style5: props => (
+    <BodyCopy
+      fontSize="fs64"
+      fontWeight="black"
+      color="white"
+      fontFamily="primary"
+      lineHeight="64px"
+      textAlign="center"
+      {...props}
+    />
+  ),
 };
 
 /**

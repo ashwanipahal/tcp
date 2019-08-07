@@ -1,6 +1,7 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
+import ModuleN from '@tcp/core/src/components/common/molecules/ModuleN';
 import { SlotA, SlotB, SlotC, SlotD } from '../molecules';
 
 class HomePageView extends React.Component {
@@ -15,6 +16,7 @@ class HomePageView extends React.Component {
     return (
       <ScrollView>
         <React.Fragment>
+          <ModuleN navigation={navigation} />
           <SlotA {...slotA} navigation={navigation} />
           <SlotB {...slotB} navigation={navigation} />
           <SlotC {...slotC} navigation={navigation} />
