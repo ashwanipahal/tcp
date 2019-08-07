@@ -4,12 +4,17 @@ import { List } from 'immutable';
 import { PaymentViewVanilla } from '../views/Payment.section.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Offers from '../../../molecules/OffersSection/views/OffersSection.native';
-import GiftCardList from '../../../molecules/GiftCards/views/GiftCards.native';
-import CreditCardList from '../../../molecules/MoneyCards/views/MoneyCards.native';
+import CardList from '../../../molecules/Cards/views/Cards.native';
+// import CreditCardList from '../../../molecules/MoneyCards/views/MoneyCards.native';
 
 describe('Payment View', () => {
   it('should render correctly', () => {
-    const tree = shallow(<PaymentViewVanilla labels={{ giftCard: 'Payment' }} className="" />);
+    const tree = shallow(
+      <PaymentViewVanilla
+        labels={{ giftCard: 'Payment', paymentGC: {}, common: {} }}
+        className=""
+      />
+    );
     expect(tree).toMatchSnapshot();
     expect(tree.find(BodyCopy)).toHaveLength(1);
   });
@@ -41,7 +46,7 @@ describe('Payment View', () => {
     ]);
     const tree = shallow(
       <PaymentViewVanilla
-        labels={{ paymentHeading: 'Payment' }}
+        labels={{ paymentHeading: 'Payment', paymentGC: {}, common: {} }}
         className=""
         showNotification="success"
         cardList={cardList}
@@ -51,7 +56,6 @@ describe('Payment View', () => {
     );
     expect(tree).toMatchSnapshot();
     expect(tree.find(Offers)).toHaveLength(1);
-    expect(tree.find(GiftCardList)).toHaveLength(1);
-    expect(tree.find(CreditCardList)).toHaveLength(1);
+    expect(tree.find(CardList)).toHaveLength(2);
   });
 });

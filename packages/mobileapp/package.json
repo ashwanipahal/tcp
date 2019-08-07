@@ -36,8 +36,10 @@
     "redux-saga": "^1.0.2",
     "reselect": "^4.0.0",
     "styled-components": "^4.2.1",
+    "superagent-jsonp": "^0.2.1",
     "superagent": "^5.0.8",
-    "superagent-jsonp": "^0.2.1"
+    "moment": "^2.24.0",
+    "@react-native-community/async-storage": "^1.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -107,7 +109,11 @@
       "**/redux-form",
       "**/redux-form/**",
       "**/react-native-google-places-autocomplete",
-      "**/react-native-google-places-autocomplete/**"
+      "**/react-native-google-places-autocomplete/**",
+      "**/moment",
+      "**/moment/**",
+      "**/@react-native-community/async-storage",
+      "**/@react-native-community/async-storage/**"
     ]
   }
 }

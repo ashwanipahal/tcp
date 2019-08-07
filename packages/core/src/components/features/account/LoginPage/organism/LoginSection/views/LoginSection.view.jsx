@@ -9,6 +9,7 @@ import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import Button from '../../../../../../common/atoms/Button';
 import styles from './styles/LoginSection.styles';
+import { isCanada } from '../../../../../../../utils';
 
 class LoginSection extends React.PureComponent<Props> {
   constructor(props) {
@@ -16,6 +17,7 @@ class LoginSection extends React.PureComponent<Props> {
     this.state = {
       resetPassword: false,
     };
+    this.isCanada = isCanada();
   }
 
   showForgotPasswordForm = () => {
@@ -48,7 +50,9 @@ class LoginSection extends React.PureComponent<Props> {
           }}
           className="elem-pt-XXL  elem-pl-LRG elem-pr-LRG"
         >
-          {!resetPassword && <LoginTopSection labels={labels} className="elem-mb-LRG" />}
+          {!resetPassword && (
+            <LoginTopSection labels={labels} className="elem-mb-LRG" isCanada={this.isCanada} />
+          )}
           {!resetPassword && (
             <LoginForm
               onSubmit={onSubmit}
@@ -64,12 +68,15 @@ class LoginSection extends React.PureComponent<Props> {
           )}
 
           {resetPassword && (
-            <ForgotPasswordContainer showForgotPasswordForm={this.showForgotPasswordForm} />
+            <ForgotPasswordContainer
+              showForgotPasswordForm={this.showForgotPasswordForm}
+              labels={labels}
+            />
           )}
 
           <BodyCopy component="div" className="border elem-pt-MED elem-pb-LRG">
             <BodyCopy fontSize="fs12" textAlign="center" className="elem-mb-LRG">
-              {labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}
+              {labels.login.lbl_login_createAccountHelp}
             </BodyCopy>
           </BodyCopy>
           <Button
@@ -80,7 +87,7 @@ class LoginSection extends React.PureComponent<Props> {
             data-locator=""
             onClick={onCreateAccountClick}
           >
-            {labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
+            {labels.login.lbl_login_createAccountCTA}
           </Button>
         </Col>
       </Row>

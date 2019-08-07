@@ -12,20 +12,28 @@ import {
   closeOverlayModal,
   openOverlayModal,
 } from '../../../OverlayModal/container/OverlayModal.actions';
-import labels from './LoginPage.labels';
 import {
   getUserLoggedInState,
   getLoginError,
   shouldShowRecaptcha,
   getLoginErrorMessage,
+  getLabels,
 } from './LoginPage.selectors';
 import LoginView from '../views';
+
+// eslint-disable-next-line
+import { isMobileApp, navigateToNestedRoute } from '../../../../../utils';
 
 class LoginPageContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
     const { isUserLoggedIn, closeOverlay } = this.props;
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
-      closeOverlay();
+      if (isMobileApp()) {
+        const { navigation } = this.props;
+        navigateToNestedRoute(navigation, 'HomeStack', 'home');
+      } else {
+        closeOverlay();
+      }
     }
   }
 
@@ -52,9 +60,10 @@ class LoginPageContainer extends React.PureComponent {
       showRecaptcha,
       resetForm,
       getUserInfoAction,
+      labels,
       resetLoginState,
     } = this.props;
-    const errorMessage = loginError ? loginErrorMessage || labels.ACC_LBL_LOGIN_ERROR : '';
+    const errorMessage = loginError ? loginErrorMessage || labels.login.lbl_login_error : '';
     const initialValues = {
       rememberMe: true,
       savePlcc: true,
@@ -77,7 +86,8 @@ class LoginPageContainer extends React.PureComponent {
 
 LoginPageContainer.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  isUserLoggedIn: PropTypes.bool.isRequired,
+  resetLoginState: PropTypes.func,
+  isUserLoggedIn: PropTypes.bool,
   closeOverlay: PropTypes.func,
   loginError: PropTypes.bool,
   loginErrorMessage: PropTypes.string,
@@ -85,7 +95,8 @@ LoginPageContainer.propTypes = {
   resetForm: PropTypes.bool.isRequired,
   getUserInfoAction: PropTypes.bool.isRequired,
   openOverlay: PropTypes.func,
-  resetLoginState: PropTypes.func,
+  navigation: PropTypes.shape({}),
+  labels: PropTypes.shape({}).isRequired,
 };
 
 LoginPageContainer.defaultProps = {
@@ -95,6 +106,8 @@ LoginPageContainer.defaultProps = {
   resetLoginState: () => {},
   closeOverlay: () => {},
   openOverlay: () => {},
+  isUserLoggedIn: false,
+  navigation: {},
 };
 
 const mapDispatchToProps = dispatch => {
@@ -126,14 +139,8 @@ const mapStateToProps = state => {
     loginError: getLoginError(state),
     loginErrorMessage: getLoginErrorMessage(state),
     showRecaptcha: shouldShowRecaptcha(state),
+    labels: getLabels(state),
   };
-};
-
-LoginPageContainer.defaultProps = {
-  showRecaptcha: false,
-  loginError: false,
-  loginErrorMessage: '',
-  closeOverlay: () => {},
 };
 
 export default connect(

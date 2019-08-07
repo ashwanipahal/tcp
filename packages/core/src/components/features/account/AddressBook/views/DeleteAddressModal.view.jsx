@@ -127,7 +127,7 @@ class DeleteAddressModal extends React.Component<Props> {
           <Notification
             status={showUpdatedNotificationOnModal}
             colSize={{ large: 11, medium: 7, small: 6 }}
-            message={labels.common.ACC_LBL_ERROR_MESSAGE}
+            message={labels.common.lbl_common_errorMessage}
           />
         )}
 

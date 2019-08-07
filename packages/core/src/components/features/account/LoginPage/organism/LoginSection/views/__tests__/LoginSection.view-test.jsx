@@ -6,7 +6,9 @@ describe('LoginSection component', () => {
   it('should renders correctly', () => {
     const props = {
       onSubmit: () => {},
-      labels: {},
+      labels: {
+        login: {},
+      },
       initialValues: {},
     };
     const component = shallow(<LoginSectionVanilla {...props} />);
