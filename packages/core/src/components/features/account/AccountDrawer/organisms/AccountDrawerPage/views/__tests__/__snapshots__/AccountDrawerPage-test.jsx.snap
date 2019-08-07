@@ -7,7 +7,7 @@ exports[`AccountDrawerPage should render correctly 1`] = `
   <Styled(AccountDrawerHeading)
     userName=""
   />
-  <Styled(CurrentPointSlider) />
+  <Connect(RewardsPointsContainer) />
   <Styled(ExtraPointsTeaser) />
   <Styled(MyRewardsAndOffers) />
   <Styled(AccountDrawerBottomLinks) />
