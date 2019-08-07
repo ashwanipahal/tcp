@@ -70,15 +70,13 @@ class ModuleK extends React.PureComponent {
         <HeaderWrapper>
           {headerText && (
             <LinkText
-              textItems={headerText[0].textItems}
-              link={headerText[0].link}
+              headerText={headerText}
               fontSize="fs36"
               fontWeight="black"
               color="text.primary"
               fontFamily="primary"
               textAlign="center"
               dataLocator="moduleK_header_text"
-              onPress={() => UrlHandler(headerText[0].link.url)}
             />
           )}
           {outerPromoTextBanner && (

@@ -4,6 +4,7 @@ exports[`LinkText component renders correctly 1`] = `
 <TouchableOpacity
   accessibilityRole="button"
   activeOpacity={0.2}
+  onPress={[Function]}
 >
   <Styled(BodyCopy)
     Component={
@@ -36,33 +37,16 @@ exports[`LinkText component renders correctly 1`] = `
         "withComponent": [Function],
       }
     }
-    headerText={
+    text={
       Array [
-        Object {
-          "icon": Object {
-            "icon": "heart",
-            "placement": "left|middle|right",
-          },
-          "link": Object {
-            "external": 0,
-            "target": "",
-            "title": "",
-            "url": "https://www.childrensplace.com/us/c/girls-new-arrivals",
-          },
-          "textItems": Array [
-            Object {
-              "style": "moduleK__Header",
-              "text": "UNICORNS,",
-            },
-            Object {
-              "style": "moduleK__Header",
-              "text": "DINOS & MORE!",
-            },
-          ],
-        },
+        <Text>
+          UNICORNS,
+        </Text>,
+        <Text>
+           DINOS & MORE!
+        </Text>,
       ]
     }
-    text=""
   />
 </TouchableOpacity>
 `;

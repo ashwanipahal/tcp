@@ -35,24 +35,28 @@ const ModuleN = (props: Props) => {
           letterSpacing="ls271"
           textAlign="center"
           color="white"
-          textItems={headerText[0].textItems}
+          headerText={headerText}
         />
       </Anchor>
       <PromoTextBannerWrapper>
         <PromoTextBanner promoTextBanner={promoTextBanner} />
       </PromoTextBannerWrapper>
 
-      <ButtonList
-        buttonListVariation="stackedCTAList"
-        navigation={navigation}
-        stackedCTAButtons={stackedCTAButtons}
-      />
+      {stackedCTAButtons && (
+        <ButtonList
+          buttonListVariation="stackedCTAList"
+          navigation={navigation}
+          stackedCTAButtons={stackedCTAButtons}
+        />
+      )}
 
-      <ButtonList
-        buttonListVariation="imageCTAList"
-        navigation={navigation}
-        divImageCTACarousel={divImageCTACarousel}
-      />
+      {divImageCTACarousel && (
+        <ButtonList
+          buttonListVariation="imageCTAList"
+          navigation={navigation}
+          divImageCTACarousel={divImageCTACarousel}
+        />
+      )}
 
       <ButtonContainer>
         <ButtonList
@@ -61,9 +65,16 @@ const ModuleN = (props: Props) => {
           stackedCTAButtons={stackedCTAButtons}
         />
       </ButtonContainer>
-      <ButtonContainer>
-        <ButtonList buttonListVariation="linkCTAList" navigation={navigation} linkList={linkList} />
-      </ButtonContainer>
+
+      {linkList && (
+        <ButtonContainer>
+          <ButtonList
+            buttonListVariation="linkCTAList"
+            navigation={navigation}
+            linkList={linkList}
+          />
+        </ButtonContainer>
+      )}
     </Container>
   );
 };

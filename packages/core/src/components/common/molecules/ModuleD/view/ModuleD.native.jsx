@@ -91,10 +91,7 @@ const ModuleD = (props: Props) => {
           textAlign="center"
           color="text.primary"
           fontWeight="extrabold"
-          textItems={headerText[0].textItems}
-          onPress={() => {
-            UrlHandler(headerText[0].link.url);
-          }}
+          headerText={headerText}
         />
       </HeadingWrapper>
 

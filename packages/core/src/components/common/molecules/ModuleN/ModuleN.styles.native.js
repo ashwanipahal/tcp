@@ -2,6 +2,8 @@ import styled from 'styled-components/native';
 
 export const Container = styled.View`
   padding-top: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   background: ${props =>
     props.background === 'red'
       ? props.theme.colorPalette.secondary.main

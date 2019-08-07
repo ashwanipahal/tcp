@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { FlatList } from 'react-native';
-import { UrlHandler, getScreenWidth } from '../../../../../utils/index.native';
+import { getScreenWidth } from '../../../../../utils/index.native';
 import { Image, BodyCopy, Anchor } from '../../../atoms';
 import LinkText from '../../LinkText';
 import {
@@ -85,10 +85,7 @@ const ModuleL = (props: Props) => {
         textAlign="center"
         color="text.primary"
         fontWeight="black"
-        textItems={headerText[0].textItems}
-        onPress={() => {
-          UrlHandler(headerText[0].link.url);
-        }}
+        headerText={headerText}
       />
       <ListContainer>
         <FlatList

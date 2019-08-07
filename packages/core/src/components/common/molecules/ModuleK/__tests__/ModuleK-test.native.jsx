@@ -22,11 +22,6 @@ describe('ModuleK native component', () => {
 
   it('Should verify header text link click', () => {
     const wrapper = shallow(<ModuleK {...moduleKData} />);
-    wrapper
-      .find('[dataLocator="moduleK_header_text"]')
-      .props()
-      .onPress();
-    expect(utils.UrlHandler).toHaveBeenCalledTimes(1);
-    expect(utils.UrlHandler).toHaveBeenCalledWith(moduleKData.headerText[0].link.url);
+    wrapper.find('[dataLocator="moduleK_header_text"]');
   });
 });

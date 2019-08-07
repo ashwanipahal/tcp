@@ -7,17 +7,30 @@ exports[`ModuleLVanilla ModuleL should render correctly 1`] = `
     fontFamily="primary"
     fontSize="fs36"
     fontWeight="black"
-    letterSpacing="ls167"
-    onPress={[Function]}
-    textAlign="center"
-    textItems={
+    headerText={
       Array [
         Object {
-          "style": "style1",
-          "text": "TRENDING NOW",
+          "icon": Object {
+            "icon": "",
+            "placement": "",
+          },
+          "link": Object {
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "https://www.childrensplace.com/us/c/girls-new-arrivals",
+          },
+          "textItems": Array [
+            Object {
+              "style": "style1",
+              "text": "TRENDING NOW",
+            },
+          ],
         },
       ]
     }
+    letterSpacing="ls167"
+    textAlign="center"
     type="heading"
   />
   <Styled(View)>

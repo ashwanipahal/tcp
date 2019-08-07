@@ -9,28 +9,33 @@ exports[`ModuleK native component Should renders correctly 1`] = `
       fontFamily="primary"
       fontSize="fs36"
       fontWeight="black"
-      link={
-        Object {
-          "external": 0,
-          "target": "",
-          "title": "",
-          "url": "https://www.childrensplace.com/us/c/girls-new-arrivals",
-        }
-      }
-      onPress={[Function]}
-      textAlign="center"
-      textItems={
+      headerText={
         Array [
           Object {
-            "style": "moduleK__Header",
-            "text": "UNICORNS,",
-          },
-          Object {
-            "style": "moduleK__Header",
-            "text": "DINOS & MORE!",
+            "icon": Object {
+              "icon": "heart",
+              "placement": "left|middle|right",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "",
+              "title": "",
+              "url": "https://www.childrensplace.com/us/c/girls-new-arrivals",
+            },
+            "textItems": Array [
+              Object {
+                "style": "moduleK__Header",
+                "text": "UNICORNS,",
+              },
+              Object {
+                "style": "moduleK__Header",
+                "text": "DINOS & MORE!",
+              },
+            ],
           },
         ]
       }
+      textAlign="center"
     />
     <PromoTextBanner
       dataLocator="moduleK_outerPromoBanner_text"
