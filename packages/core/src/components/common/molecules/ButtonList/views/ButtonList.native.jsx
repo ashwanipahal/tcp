@@ -212,7 +212,7 @@ const renderDivImageCTA = (ctxButton, navigation) => {
  */
 
 const ButtonList = ({ buttonListVariation, navigation, ...otherProps }: Props) => {
-  const { stackedCTAButtons, divImageCTACarousel, linkList } = otherProps;
+  const { stackedCTAButtons, divImageCTACarousel, linkList, scrollCTAButtons } = otherProps;
 
   if (buttonListVariation === 'stackedCTAList') {
     const isEvenButtonGrid = stackedCTAButtons.length % 2 === 0;
@@ -225,7 +225,7 @@ const ButtonList = ({ buttonListVariation, navigation, ...otherProps }: Props) =
   }
 
   if (buttonListVariation === 'scrollCTAList') {
-    return <Container>{renderScrollView(stackedCTAButtons, navigation)}</Container>;
+    return <Container>{renderScrollView(scrollCTAButtons, navigation)}</Container>;
   }
 
   if (buttonListVariation === 'linkCTAList') {

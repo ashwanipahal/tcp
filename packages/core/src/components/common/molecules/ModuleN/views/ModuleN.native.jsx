@@ -23,6 +23,7 @@ const ModuleN = (props: Props) => {
     promoTextBanner,
     stackedCTAButtons,
     divImageCTACarousel,
+    scrollCTAButtons,
     linkList,
   } = datamoduleN.moduleN.composites;
   return (
@@ -58,14 +59,15 @@ const ModuleN = (props: Props) => {
         />
       )}
 
-      <ButtonContainer>
-        <ButtonList
-          buttonListVariation="scrollCTAList"
-          navigation={navigation}
-          stackedCTAButtons={stackedCTAButtons}
-        />
-      </ButtonContainer>
-
+      {scrollCTAButtons && (
+        <ButtonContainer>
+          <ButtonList
+            buttonListVariation="scrollCTAList"
+            navigation={navigation}
+            scrollCTAButtons={scrollCTAButtons}
+          />
+        </ButtonContainer>
+      )}
       {linkList && (
         <ButtonContainer>
           <ButtonList
