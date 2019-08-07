@@ -114,7 +114,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
                   id="createAccount"
                   className="leftLink"
                   onClick={e => this.onLinkClick({ e, openOverlay })}
-                  fontSizeVariation="small"
+                  fontSizeVariation="large"
                   anchorVariation="primary"
                 >
                   Create Account
@@ -122,9 +122,9 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
                 <Anchor
                   href="#"
                   id="login"
-                  className="rightLink "
+                  className="rightLink"
                   onClick={e => this.onLinkClick({ e, openOverlay })}
-                  fontSizeVariation="small"
+                  fontSizeVariation="large"
                   anchorVariation="primary"
                 >
                   Login
@@ -132,6 +132,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
                 <Anchor
                   href="#"
                   id="cartIcon"
+                  className="rightLink"
                   handleLinkClick={e => this.toggleMiniBagModal({ e, isOpen: true })}
                   fontSizeVariation="small"
                   anchorVariation="primary"
@@ -172,6 +173,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
         <MiniBagContainer
           isOpen={isOpenMiniBagModal}
           toggleMiniBagModal={this.toggleMiniBagModal}
+          userName={userName}
         />
       </React.Fragment>
     );

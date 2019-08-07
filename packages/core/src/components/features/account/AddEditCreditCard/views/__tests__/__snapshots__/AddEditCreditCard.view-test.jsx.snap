@@ -20,7 +20,12 @@ exports[`AddEditCreditCard component should renders correctly 1`] = `
     getFormState={[Function]}
     isEdit={false}
     keepDirtyOnReinitialize={false}
-    labels={Object {}}
+    labels={
+      Object {
+        "common": Object {},
+        "paymentGC": Object {},
+      }
+    }
     persistentSubmitErrors={false}
     pure={true}
     shouldAsyncValidate={[Function]}
@@ -67,7 +72,12 @@ exports[`AddEditCreditCard component should renders correctly with error message
     getFormState={[Function]}
     isEdit={true}
     keepDirtyOnReinitialize={false}
-    labels={Object {}}
+    labels={
+      Object {
+        "common": Object {},
+        "paymentGC": Object {},
+      }
+    }
     persistentSubmitErrors={false}
     pure={true}
     shouldAsyncValidate={[Function]}

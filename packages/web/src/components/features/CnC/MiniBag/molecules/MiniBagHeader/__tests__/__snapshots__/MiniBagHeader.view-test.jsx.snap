@@ -7,7 +7,7 @@ exports[`MiniBagHeader component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-dnqmqq",
+        "componentId": "sc-iwsKbI",
         "isStatic": false,
         "rules": Array [
           "
@@ -46,7 +46,7 @@ exports[`MiniBagHeader component renders correctly 1`] = `
       "displayName": "Styled(MiniBagHeader)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-dnqmqq",
+      "styledComponentId": "sc-iwsKbI",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

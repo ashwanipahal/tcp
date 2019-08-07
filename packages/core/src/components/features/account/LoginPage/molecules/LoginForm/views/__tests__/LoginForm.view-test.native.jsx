@@ -5,7 +5,14 @@ import { LoginFormVanilla } from '../LoginForm.view.native';
 describe('LoginForm component', () => {
   it('should renders correctly', () => {
     const props = {
-      labels: {},
+      labels: {
+        login: {},
+        handleSubmit: () => {},
+        onSubmit: () => {},
+        loginErrorMessage: '',
+        showForgotPasswordForm: () => {},
+        resetForm: () => {},
+      },
       handleSubmit: () => {},
       onSubmit: () => {},
       loginErrorMessage: '',

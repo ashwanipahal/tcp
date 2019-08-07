@@ -2,8 +2,10 @@ import { css } from 'styled-components';
 
 export default css`
   box-sizing: border-box;
+  height: calc(100% - 70px);
+
   .viewBagAndProduct {
-    max-height: 600px;
+    height: calc(100% - 216px);
     overflow-y: auto;
   }
   .mainWrapper {
@@ -23,6 +25,8 @@ export default css`
     padding-right: 0;
     padding-left: 0;
     border-bottom: ${props => props.theme.colorPalette.gray['600']};
+    bottom: 0px;
+    margin-bottom: 0px;
   }
   .subTotal {
     text-align: center;

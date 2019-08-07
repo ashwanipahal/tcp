@@ -12,12 +12,14 @@ export const modalStyles = css`
     @media ${props => props.theme.mediaQuery.large} {
       width: 480px;
     }
+    padding: 0;
   }
   .Modal_Heading {
     font-size: 16px;
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     font-weight: normal;
     border: none;
+    margin-top: 20px;
     margin-bottom: 0;
     padding: 0;
     @media ${props => props.theme.mediaQuery.medium} {

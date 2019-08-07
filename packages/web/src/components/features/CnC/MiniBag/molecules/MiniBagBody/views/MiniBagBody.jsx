@@ -7,7 +7,7 @@ import PayPalButton from '@tcp/core/src/components/common/atoms/PaypalButton';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/MiniBagBody.style';
-import ProductTile from '../../ProductTile/views/ProductTile';
+import ProductTileWrapper from '../../../container/ProductTileWrapperContainer.container';
 
 // @flow
 
@@ -17,7 +17,7 @@ type Props = {
 };
 const MiniBagBody = ({ labels, className }: Props) => {
   const data = {
-    isLoggedIn: true,
+    isLoggedIn: false,
     qty: 5,
     savedforLaterQty: 1,
   };
@@ -66,7 +66,7 @@ const MiniBagBody = ({ labels, className }: Props) => {
             )}
           </Col>
         </Row>
-        <ProductTile />
+        <ProductTileWrapper />
       </BodyCopy>
       <div className="miniBagFooter">
         <BodyCopy tag="span" fontSize="fs14" fontWeight="semibold" className="subTotal">

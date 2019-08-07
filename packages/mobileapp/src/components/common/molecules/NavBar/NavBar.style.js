@@ -9,6 +9,8 @@ const container = styled.View`
   elevation: 2;
   flex-direction: row;
   height: 55px;
+  justify-content: center;
+  background-color: white;
 `;
 
 const logoStyle = styled.TouchableOpacity`
@@ -34,10 +36,17 @@ const highlightedTextStyle = styled(textStyle)`
   color: ${colorPallete.gray[900]};
 `;
 
+const navContainer = styled.View`
+  justify-content: center;
+  background-color: ${colorPallete.white};
+  align-items: center;
+`;
+
 export default {
   container,
   highlightedTextStyle,
   logoStyle,
   tabButton,
   textStyle,
+  navContainer,
 };

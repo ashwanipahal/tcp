@@ -13,14 +13,15 @@ type Props = {
   openState: boolean,
   labels: any,
   totalItems: any,
+  userName: any,
 };
 
-const MiniBag = ({ onRequestClose, className, openState, labels, totalItems }: Props) => {
+const MiniBag = ({ onRequestClose, className, openState, labels, totalItems, userName }: Props) => {
   return (
     <Modal
       isOpen={openState}
       onRequestClose={onRequestClose}
-      heading={<MiniBagHeader labels={labels} totalItems={totalItems} />}
+      heading={<MiniBagHeader labels={labels} totalItems={totalItems} userName={userName} />}
       overlayClassName="TCPModal__Overlay"
       className={`TCPModal__Content, ${className}`}
       closeIconDataLocator="mini-bag-close"

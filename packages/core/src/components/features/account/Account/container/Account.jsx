@@ -96,7 +96,7 @@ Account.propTypes = {
 };
 
 Account.defaultProps = {
-  labels: PropTypes.shape({ addressBook: {}, labels: {} }),
+  labels: PropTypes.shape({ addressBook: {}, labels: {}, paymentGC: {}, common: {} }),
 };
 
 export default withRouter(

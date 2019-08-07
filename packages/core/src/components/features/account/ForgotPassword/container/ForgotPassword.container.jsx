@@ -12,7 +12,6 @@ import {
   closeOverlayModal,
   openOverlayModal,
 } from '../../../OverlayModal/container/OverlayModal.actions';
-import labels from '../../LoginPage/container/LoginPage.labels';
 import {
   getUserLoggedInState,
   getLoginError,
@@ -31,6 +30,7 @@ class ForgotPasswordContainer extends React.PureComponent {
       successFullResetEmail,
       resetLoginState,
       showForgotPasswordForm,
+      labels,
     } = this.props;
     const initialValues = {
       rememberMe: true,
@@ -60,6 +60,7 @@ ForgotPasswordContainer.propTypes = {
   showNotification: PropTypes.bool.isRequired,
   successFullResetEmail: PropTypes.bool.isRequired,
   showForgotPasswordForm: PropTypes.bool.isRequired,
+  labels: PropTypes.shape({}).isRequired,
 };
 
 ForgotPasswordContainer.defaultProps = {

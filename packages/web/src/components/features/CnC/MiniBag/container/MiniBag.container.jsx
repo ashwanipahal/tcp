@@ -9,6 +9,7 @@ type Props = {
   totalItems: any,
   labels: any,
   toggleMiniBagModal: any,
+  userName: any,
 };
 export class MiniBagContainer extends React.Component<Props> {
   constructor(props) {
@@ -23,13 +24,14 @@ export class MiniBagContainer extends React.Component<Props> {
   }
 
   render() {
-    const { labels, totalItems, isOpen } = this.props;
+    const { labels, totalItems, isOpen, userName } = this.props;
     return (
       <MiniBagView
         openState={isOpen}
         onRequestClose={this.closeModal}
         labels={labels}
         totalItems={totalItems}
+        userName={userName}
       />
     );
   }

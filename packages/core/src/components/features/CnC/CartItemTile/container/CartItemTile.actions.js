@@ -4,19 +4,6 @@
 
 import CARTPAGE_CONSTANTS from '../CartItemTile.constants';
 
-export const getOrderDetails = () => {
-  return {
-    type: CARTPAGE_CONSTANTS.GET_ORDER_DETAILS,
-  };
-};
-
-export const getOrderDetailsComplete = (payload?) => {
-  return {
-    type: CARTPAGE_CONSTANTS.GET_ORDER_DETAILS_COMPLETE,
-    payload,
-  };
-};
-
 export const removeCartItem = (payload?) => {
   return {
     type: CARTPAGE_CONSTANTS.REMOVE_CART_ITEM,

@@ -70,7 +70,7 @@ export default {
                 },
                 {
                   text: '50% OFF',
-                  style: 'text-black',
+                  style: 'style3',
                 },
               ],
             },
@@ -135,7 +135,7 @@ export default {
                 },
                 {
                   text: '50% OFF',
-                  style: 'text-black',
+                  style: 'style3',
                 },
               ],
             },
@@ -200,7 +200,7 @@ export default {
                 },
                 {
                   text: '50% OFF',
-                  style: 'text-black',
+                  style: 'style3',
                 },
               ],
             },
@@ -265,7 +265,7 @@ export default {
                 },
                 {
                   text: '50% OFF',
-                  style: 'text-black',
+                  style: 'style3',
                 },
               ],
             },

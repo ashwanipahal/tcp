@@ -15,10 +15,11 @@ type Props = {
   labels: any,
   totalItems: any,
   className: string,
+  userName: any,
 };
-const MiniBagHeader = ({ labels, totalItems, className }: Props) => {
+const MiniBagHeader = ({ labels, totalItems, className, userName }: Props) => {
   const data = {
-    isLoggedIn: true,
+    isLoggedIn: false,
     userName: 'Christine',
     points: 50,
     rewardsPoints: 0,
@@ -42,7 +43,7 @@ const MiniBagHeader = ({ labels, totalItems, className }: Props) => {
           ) : (
             <>
               <BodyCopy component="span" fontSize="fs16" fontWeight="semibold" textAlign="left">
-                {`${labels.hi} ${data.userName} `}
+                {`${labels.hi} ${userName} `}
               </BodyCopy>
               <BodyCopy
                 className="pointsRewards"

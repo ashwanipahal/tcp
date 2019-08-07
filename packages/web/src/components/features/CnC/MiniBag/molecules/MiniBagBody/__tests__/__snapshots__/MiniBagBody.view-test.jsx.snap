@@ -7,15 +7,17 @@ exports[`MiniBagBody component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-iwsKbI",
+        "componentId": "sc-jzJRlG",
         "isStatic": false,
         "rules": Array [
           "
   ",
           "
   box-sizing: border-box;
+  height: calc(100% - 70px);
+
   .viewBagAndProduct {
-    max-height: 600px;
+    height: calc(100% - 216px);
     overflow-y: auto;
   }
   .mainWrapper {
@@ -41,6 +43,8 @@ exports[`MiniBagBody component renders correctly 1`] = `
     border-bottom: ",
           [Function],
           ";
+    bottom: 0px;
+    margin-bottom: 0px;
   }
   .subTotal {
     text-align: center;
@@ -76,7 +80,7 @@ exports[`MiniBagBody component renders correctly 1`] = `
       "displayName": "Styled(MiniBagBody)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-iwsKbI",
+      "styledComponentId": "sc-jzJRlG",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
