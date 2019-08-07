@@ -39,7 +39,7 @@ const L1NavItem = props => {
         fontWeight="semibold"
         color="text.hint"
         lineHeight="lh115"
-        dataLocator={dataLocator}
+        data-locator={dataLocator}
         tabIndex={0}
         {...others}
       >

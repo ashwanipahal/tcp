@@ -10,6 +10,8 @@ type Props = {
   confirmHideShowPwd: string,
   labels: object,
   error: any,
+  onAlreadyHaveAnAccountClick: any,
+  onRequestClose: any,
 };
 
 const CreateAccount = ({
@@ -20,6 +22,8 @@ const CreateAccount = ({
   confirmHideShowPwd,
   labels,
   error,
+  onAlreadyHaveAnAccountClick,
+  onRequestClose,
 }: Props) => {
   return (
     <CreateAccounPage
@@ -30,6 +34,8 @@ const CreateAccount = ({
       hideShowPwd={hideShowPwd}
       confirmHideShowPwd={confirmHideShowPwd}
       error={error}
+      onAlreadyHaveAnAccountClick={onAlreadyHaveAnAccountClick}
+      onRequestClose={onRequestClose}
     />
   );
 };

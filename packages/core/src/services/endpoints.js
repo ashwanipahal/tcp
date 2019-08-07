@@ -26,6 +26,10 @@ const endpoints = {
     method: API_METHODS.GET,
     URI: 'v2/checkout/getOrderDetails',
   },
+  fullDetails: {
+    method: API_METHODS.GET,
+    URI: 'v2/checkout/cart',
+  },
   addCreditCard: {
     method: API_METHODS.POST,
     URI: 'v2/account/addCreditCardDetails',
@@ -53,6 +57,10 @@ const endpoints = {
   getRegisteredUserDetailsInfo: {
     method: API_METHODS.GET,
     URI: 'v2/account/getRegisteredUserInfo',
+  },
+  logout: {
+    method: API_METHODS.DELETE,
+    URI: '/v2/account/logout',
   },
 };
 export default endpoints;

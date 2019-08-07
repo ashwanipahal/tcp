@@ -6,10 +6,19 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
     className="undefined header-middle-nav"
   >
     <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    />
+    <Styled(Col)
       className="header-middle-nav-search"
       colSize={
         Object {
-          "large": 7,
+          "large": 4,
           "medium": 8,
           "small": 6,
         }
@@ -33,7 +42,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       className="textRight"
       colSize={
         Object {
-          "large": 5,
+          "large": 4,
           "medium": 8,
           "small": 6,
         }
@@ -42,7 +51,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         className="leftLink"
-        fontSizeVariation="small"
+        fontSizeVariation="large"
         href="#"
         id="createAccount"
         onClick={[Function]}
@@ -51,8 +60,8 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       </Styled(Anchor)>
       <Styled(Anchor)
         anchorVariation="primary"
-        className="rightLink "
-        fontSizeVariation="small"
+        className="rightLink"
+        fontSizeVariation="large"
         href="#"
         id="login"
         onClick={[Function]}

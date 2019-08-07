@@ -48,6 +48,7 @@ describe('CustomSelect component', () => {
     const component = shallow(
       <CustomSelectVanilla
         options={options}
+        list="colorSelector"
         className="sample-class"
         clickHandler={mockedClickHandler}
       />

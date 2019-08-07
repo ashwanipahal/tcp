@@ -4,7 +4,7 @@ import ADDEDTOBAG_CONSTANTS from '../AddedToBag.constants';
 import fetchData from '../../../../../service/API';
 import { AddToCartError, SetAddedToBagData, openAddedToBag } from './AddedToBag.actions';
 import endpoints from '../../../../../service/endpoint';
-import { getOrderDetails } from '../../CartItemTile/container/CartItemTile.actions';
+import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 
 const checkForError = res => {
   return res.body && !res.body.error && !res.body.errors && !res.body.errorMessage;
@@ -44,7 +44,7 @@ export function* addToCartEcom({ payload }) {
         })
       );
       yield put(openAddedToBag());
-      yield put(getOrderDetails());
+      yield put(BAG_PAGE_ACTIONS.getOrderDetails());
     } else {
       yield put(AddToCartError(res.error || res.body.error));
     }
@@ -90,7 +90,7 @@ export function* addItemToCartBopis({ payload }) {
         })
       );
       yield put(openAddedToBag());
-      yield put(getOrderDetails());
+      yield put(BAG_PAGE_ACTIONS.getOrderDetails());
     } else {
       yield put(AddToCartError(res.error || res.body.error));
     }

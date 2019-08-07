@@ -40,12 +40,13 @@ const dropDownlist = css`
   .dropDownLists {
     padding: ${props => props.theme.spacing.ELEM_SPACING.SM};
     cursor: pointer;
+    border-bottom: 1px solid ${props => props.theme.colorPalette.gray['600']};
   }
 
   .dropDownSelect {
     position: absolute;
     left: 0;
-    width: 100%;
+    width: calc(100% - 2px);
     z-index: 1;
     overflow: auto;
   }
@@ -53,6 +54,10 @@ const dropDownlist = css`
   .dropdownUpperDiv {
     position: relative;
     text-align: center;
+  }
+
+  .dropdownAnchorColor {
+    color: ${props => props.theme.colorPalette.gray['700']};
   }
 
   .dropdownActiveClass {

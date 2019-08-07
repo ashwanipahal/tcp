@@ -3,7 +3,12 @@
 exports[`VenmoCardList Component should render correctly 1`] = `
 <View
   className="abc"
-  labels={Object {}}
+  labels={
+    Object {
+      "common": Object {},
+      "paymentGC": Object {},
+    }
+  }
   venmoCardList={Immutable.List []}
 >
   <Styled(Text) />
@@ -13,7 +18,12 @@ exports[`VenmoCardList Component should render correctly 1`] = `
 exports[`VenmoCardList Component should render correctly if list is present 1`] = `
 <View
   className="abc"
-  labels={Object {}}
+  labels={
+    Object {
+      "common": Object {},
+      "paymentGC": Object {},
+    }
+  }
   venmoCardList={
     Immutable.List [
       Object {
@@ -59,7 +69,12 @@ exports[`VenmoCardList Component should render correctly if list is present 1`] 
     form="CardTileForm"
     getFormState={[Function]}
     keepDirtyOnReinitialize={false}
-    labels={Object {}}
+    labels={
+      Object {
+        "common": Object {},
+        "paymentGC": Object {},
+      }
+    }
     persistentSubmitErrors={false}
     pure={true}
     shouldAsyncValidate={[Function]}

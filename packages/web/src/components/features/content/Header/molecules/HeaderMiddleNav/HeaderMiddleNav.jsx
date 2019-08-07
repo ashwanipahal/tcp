@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
+import LogOutPageContainer from '@tcp/core/src/components/features/account/Logout/container/LogOut.container';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { identifyBrand } from '@tcp/core/src/utils';
 import Navigation from '../../../Navigation';
@@ -42,9 +43,16 @@ const HeaderMiddleNav = props => {
     <React.Fragment>
       <Row className={`${className} header-middle-nav`}>
         <Col
+          colSize={{
+            large: 4,
+            medium: 8,
+            small: 6,
+          }}
+        />
+        <Col
           className="header-middle-nav-search"
           colSize={{
-            large: 7,
+            large: 4,
             medium: 8,
             small: 6,
           }}
@@ -73,14 +81,17 @@ const HeaderMiddleNav = props => {
         </Col>
         <Col
           colSize={{
-            large: 5,
+            large: 4,
             medium: 8,
             small: 6,
           }}
           className="textRight"
         >
           {userName ? (
-            <BodyCopy textAlign="right">{`Hi, ${userName}`}</BodyCopy>
+            <React.Fragment>
+              <BodyCopy textAlign="right">{`Hi, ${userName}`}</BodyCopy>
+              <LogOutPageContainer />
+            </React.Fragment>
           ) : (
             <React.Fragment>
               <Anchor
@@ -88,7 +99,7 @@ const HeaderMiddleNav = props => {
                 id="createAccount"
                 className="leftLink"
                 onClick={e => onLinkClick({ e, openOverlay })}
-                fontSizeVariation="small"
+                fontSizeVariation="large"
                 anchorVariation="primary"
               >
                 Create Account
@@ -96,9 +107,9 @@ const HeaderMiddleNav = props => {
               <Anchor
                 href="#"
                 id="login"
-                className="rightLink "
+                className="rightLink"
                 onClick={e => onLinkClick({ e, openOverlay })}
-                fontSizeVariation="small"
+                fontSizeVariation="large"
                 anchorVariation="primary"
               >
                 Login

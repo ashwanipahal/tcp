@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { getScreenWidth, cropImageUrl } from '@tcp/core/src/utils/utils.native';
+import { getScreenWidth, cropImageUrl } from '@tcp/core/src/utils';
 import { Image, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import {
   L1TouchableOpacity,

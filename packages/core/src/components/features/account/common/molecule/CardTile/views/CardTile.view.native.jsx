@@ -21,7 +21,7 @@ import {
   CardCtaRow,
   RecaptchaContainer,
 } from '../CardTile.style.native';
-import { getIconCard } from '../../../../../../../utils/utils.native';
+import { getIconCard } from '../../../../../../../utils/index.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import CustomButton from '../../../../../../common/atoms/Button';
 import TextBox from '../../../../../../common/atoms/TextBox';
@@ -42,13 +42,13 @@ type Props = {
 const getCardName = ({ card, labels }) => {
   switch (card.ccType) {
     case 'GiftCard':
-      return labels.ACC_LBL_GIFT_CARD;
+      return labels.paymentGC.lbl_payment_giftCard;
     case 'PLACE CARD':
-      return labels.ACC_LBL_PLCC_CARD;
+      return labels.paymentGC.lbl_payment_plccCard;
     case 'VENMO':
-      return labels.ACC_LBL_VENMO_ACCOUNT;
+      return labels.paymentGC.lbl_payment_venmoAccount;
     default:
-      return labels.ACC_LBL_DEFAULT_CARD_NAME;
+      return labels.paymentGC.lbl_payment_defaultCardName;
   }
 };
 
@@ -91,7 +91,7 @@ const getMakeDefaultBadge = ({ card, labels, setDefaultPaymentMethod }: MakeDefa
           mobilefontFamily={['secondary']}
           fontWeight="semibold"
           fontSize="fs10"
-          text={labels.ACC_LBL_DEFAULT_PAYMENT}
+          text={labels.paymentGC.lbl_payment_defaultPayment}
         />
       </BadgeContent>
     </DefaultBadgeWrapper>
@@ -103,7 +103,7 @@ const getMakeDefaultBadge = ({ card, labels, setDefaultPaymentMethod }: MakeDefa
       anchorVariation="primary"
       data-locator="payment-makedefault"
       onPress={e => handleDefaultLinkClick(e, card, setDefaultPaymentMethod)}
-      text={labels.ACC_LBL_MAKE_DEFAULT}
+      text={labels.common.lbl_common_makeDefault}
     />
   );
 };
@@ -135,8 +135,8 @@ type GetCardDetailsProps = {
 };
 
 const getCardDetails = ({ dataLocatorPrefix, card, labels }: GetCardDetailsProps) => {
-  const cardNum = `${labels.ACC_LBL_CARD_NUM}${card.accountNo.slice(-4)}`;
-  const expDate = `${labels.ACC_LBL_EXP_DATE}${card.expMonth.trim()}/${card.expYear}`;
+  const cardNum = `${labels.paymentGC.lbl_payment_cardNum}${card.accountNo.slice(-4)}`;
+  const expDate = `${labels.paymentGC.lbl_payment_expDate}${card.expMonth.trim()}/${card.expYear}`;
   return (
     <View>
       <BodyCopy

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { CardTileVanilla } from '../views/CardTile.view.native';
-import labels from '../../../../Payment/Payment.constants';
+// import labels from '../../../../Payment/Payment.constants';
 
 describe('CardTile', () => {
   const cardList = {
@@ -26,6 +26,12 @@ describe('CardTile', () => {
     expYear: '2025',
     nameOnAccount: '.',
     properties: null,
+  };
+  const labels = {
+    paymentGC: {
+      lbl_payment_giftCard: '',
+    },
+    common: {},
   };
   const placeCard = 'PLACE CARD';
   it('should render correctly with discover card', () => {
@@ -84,8 +90,9 @@ describe('CardTile', () => {
       ccType: 'GiftCard',
       balance: 1,
     });
+    const handleSubmit = jest.fn();
     const tree = shallow(
-      <CardTileVanilla labels={labels} card={giftCard} handleSubmit={jest.fn()} />
+      <CardTileVanilla labels={labels} card={giftCard} handleSubmit={handleSubmit} />
     );
     expect(tree).toMatchSnapshot();
   });
