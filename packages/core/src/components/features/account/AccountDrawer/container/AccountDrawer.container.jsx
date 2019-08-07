@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import AccountDrawerView from '../views/AccountDrawerView';
 import labels from '../AccountDrawer.labels';
 import { openOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
-import { getUserName } from './AccountDrawer.selector';
+import { getUserName } from '../../LoginPage/container/LoginPage.selectors';
 
 export const AccountDrawerContainer = ({ className, userName }) => {
   return <AccountDrawerView className={className} labels={labels} userName={userName} />;

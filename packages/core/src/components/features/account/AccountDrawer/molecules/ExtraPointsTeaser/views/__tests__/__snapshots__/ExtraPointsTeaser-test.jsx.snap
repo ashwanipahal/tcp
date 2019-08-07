@@ -2,10 +2,10 @@
 
 exports[`ExtraPointsTeaser should render correctly 1`] = `
 <div
-  className=""
+  className=" elem-pt-MED elem-pr-XXL elem-pb-LRG elem-pl-XXL"
 >
   <div
-    className="extraPointsWrapper"
+    className="extraPointsWrapper elem-pt-LRG elem-pb-SM"
   >
     <div
       className="earnExtra alignCenter"
@@ -25,7 +25,7 @@ exports[`ExtraPointsTeaser should render correctly 1`] = `
       </Styled(BodyCopy)>
     </div>
     <div
-      className="getCloser alignCenter"
+      className="getCloser alignCenter elem-pt-XS"
     >
       <Styled(BodyCopy)
         className={null}
@@ -42,7 +42,7 @@ exports[`ExtraPointsTeaser should render correctly 1`] = `
       </Styled(BodyCopy)>
     </div>
     <div
-      className="learnMore alignCenter"
+      className="learnMore alignCenter elem-pt-XS"
     >
       <Styled(Anchor)
         anchorVariation="primary"

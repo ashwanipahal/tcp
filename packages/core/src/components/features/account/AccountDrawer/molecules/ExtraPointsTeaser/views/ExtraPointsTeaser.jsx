@@ -8,14 +8,14 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 const ExtraPointsTeaser = props => {
   const { className, labels } = props;
   return (
-    <div className={className}>
-      <div className="extraPointsWrapper">
+    <div className={`${className} elem-pt-MED elem-pr-XXL elem-pb-LRG elem-pl-XXL`}>
+      <div className="extraPointsWrapper elem-pt-LRG elem-pb-SM">
         <div className="earnExtra alignCenter">
           <BodyCopy fontFamily="secondary" fontWeight="extrabold" fontSize="fs14">
             {labels.ACC_DRAWER_EARN_EXTRA}
           </BodyCopy>
         </div>
-        <div className="getCloser alignCenter">
+        <div className="getCloser alignCenter elem-pt-XS">
           <BodyCopy
             fontFamily="secondary"
             fontWeight="extrabold"
@@ -25,7 +25,7 @@ const ExtraPointsTeaser = props => {
             {labels.ACC_DRAWER_GET_CLOSER}
           </BodyCopy>
         </div>
-        <div className="learnMore alignCenter">
+        <div className="learnMore alignCenter elem-pt-XS">
           <Anchor
             fontSizeVariation="medium"
             anchorVariation="primary"
