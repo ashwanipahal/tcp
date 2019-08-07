@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { View } from 'react-native';
 import BodyCopy from '../../BodyCopy';
 import withStyles from '../../../hoc/withStyles';
 
@@ -11,6 +12,7 @@ import {
   StyledErrorWrapper,
   StyledTextBoxWrapper,
   StyledSuccessIcon,
+  HiddenView,
 } from '../TextBox.style.native';
 import Image from '../../Image';
 
@@ -69,7 +71,11 @@ export class TextBox extends React.Component {
     });
   };
 
-  getErrorMsg = ({ touched, error, showErrorIcon }) => {
+  getErrorMsg = () => {
+    const {
+      meta: { touched, error },
+      showErrorIcon,
+    } = this.props;
     if (touched && error) {
       return (
         <StyledErrorWrapper>
@@ -91,7 +97,7 @@ export class TextBox extends React.Component {
     return null;
   };
 
-  render() {
+  renderTextBox = ({ elemValue, isFocused, ...others }) => {
     const {
       id,
       ariaLabel,
@@ -100,18 +106,14 @@ export class TextBox extends React.Component {
       inputRef,
       dataLocator,
       label,
-      meta: { touched, error },
+      meta: { error },
       input,
-      showErrorIcon,
       enableSuccessCheck,
       keyboardType,
       secureTextEntry,
-      ...others
     } = this.props;
-    const { isFocused } = this.state;
-    const elemValue = input.value;
     return (
-      <StyledTextBoxWrapper>
+      <View>
         <StyledLabel isFocused={elemValue || isFocused}>{label}</StyledLabel>
         <StyledTextBox
           {...others}
@@ -139,8 +141,28 @@ export class TextBox extends React.Component {
             <Image source={successIcon} width="15px" height="12px" />
           </StyledSuccessIcon>
         )}
-        {this.getErrorMsg({ touched, error, showErrorIcon })}
-      </StyledTextBoxWrapper>
+      </View>
+    );
+  };
+
+  render() {
+    const { type, input, ...others } = this.props;
+    const { isFocused } = this.state;
+    const elemValue = input.value;
+    return (
+      <View>
+        {type === 'hidden' ? (
+          <View>
+            <HiddenView>{this.renderTextBox({ elemValue, isFocused, others })}</HiddenView>
+            {this.getErrorMsg()}
+          </View>
+        ) : (
+          <View>
+            {this.renderTextBox({ elemValue, isFocused, others })}
+            <StyledTextBoxWrapper>{this.getErrorMsg()}</StyledTextBoxWrapper>
+          </View>
+        )}
+      </View>
     );
   }
 }

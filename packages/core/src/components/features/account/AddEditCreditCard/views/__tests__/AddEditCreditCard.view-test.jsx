@@ -5,7 +5,10 @@ import { AddEditCreditCard } from '../AddEditCreditCard.view';
 describe('AddEditCreditCard component', () => {
   it('should renders correctly', () => {
     const props = {
-      labels: {},
+      labels: {
+        paymentGC: {},
+        common: {},
+      },
     };
     const component = shallow(<AddEditCreditCard {...props} />);
     expect(component).toMatchSnapshot();
@@ -13,7 +16,10 @@ describe('AddEditCreditCard component', () => {
 
   it('should renders correctly with error message', () => {
     const props = {
-      labels: {},
+      labels: {
+        paymentGC: {},
+        common: {},
+      },
       isEdit: true,
       errorMessage: 'There is some error',
     };

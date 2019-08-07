@@ -11,27 +11,36 @@ import styles from '../styles/LoginTopSection.styles';
  * @return {JSX} IconClass : Return jsx icon component
  * @desc This method based on the props generate icon component.
  */
-const LoginTopSection = ({ labels, className }) => {
+const LoginTopSection = ({ labels, className, isCanada }) => {
   return (
     <BodyCopy component="div" textAlign="center" className={className}>
-      <BodyCopy component="div" textAlign="center">
-        <ImageComp src={getIconPath('my-place-rewards')} className="logo elem-mb-LRG" />
-      </BodyCopy>
+      {!isCanada && (
+        <BodyCopy component="div" textAlign="center" className="bordered">
+          <ImageComp
+            src={getIconPath('my-place-rewards')}
+            className="logo elem-mb-LRG"
+            data-locator="login-mprbanner"
+          />
+        </BodyCopy>
+      )}
       <BodyCopy component="div" className="bordered elem-pt-MED elem-pb-LRG">
-        <BodyCopy fontSize="fs14" fontWeight="extrabold" fontFamily="secondary" textAlign="center">
-          {labels.ACC_LBL_LOGIN_HEADING}
+        <BodyCopy fontSize="fs14" fontWeight="black" fontFamily="secondary" textAlign="center">
+          {labels.login.lbl_login_heading}
         </BodyCopy>
         <BodyCopy
           fontWeight="semibold"
+          fontSize="fs13"
           fontFamily="secondary"
           textAlign="center"
           className="elem-mb-SM"
         >
-          {labels.ACC_LBL_LOGIN_SUB_HEADING}
+          {labels.login.lbl_login_subHeading}
         </BodyCopy>
-        <BodyCopy fontFamily="secondary" textAlign="center">
-          {labels.ACC_LBL_LOGIN_SUB_DESCRIPTION}
-        </BodyCopy>
+        {!isCanada && (
+          <BodyCopy fontFamily="secondary" textAlign="center" fontSize="fs12">
+            {labels.login.lbl_login_subDescription}
+          </BodyCopy>
+        )}
       </BodyCopy>
     </BodyCopy>
   );
@@ -39,15 +48,17 @@ const LoginTopSection = ({ labels, className }) => {
 
 LoginTopSection.propTypes = {
   labels: PropTypes.shape({
-    ACC_LBL_LOGIN_HEADING: PropTypes.string,
-    ACC_LBL_LOGIN_SUB_HEADING: PropTypes.string,
-    ACC_LBL_LOGIN_SUB_DESCRIPTION: PropTypes.string,
+    lbl_login_heading: PropTypes.string,
+    lbl_login_subHeading: PropTypes.string,
+    lbl_login_subDescription: PropTypes.string,
   }),
   className: PropTypes.string.isRequired,
+  isCanada: PropTypes.bool,
 };
 
 LoginTopSection.defaultProps = {
   labels: {},
+  isCanada: false,
 };
 
 export default withStyles(LoginTopSection, styles);

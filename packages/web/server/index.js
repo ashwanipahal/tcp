@@ -45,9 +45,6 @@ const setBrandId = (req, res) => {
 
 const setHostname = (req, res) => {
   const { hostname } = req;
-  console.log('------------------------------||----------------------------');
-  console.log(hostname);
-  // TODO --- Remove console from here - This was just added for testing
   res.locals.hostname = hostname;
 };
 

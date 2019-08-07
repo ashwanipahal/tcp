@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccountHeader Component should render correctly 1`] = `
+<Styled(Row)
+  fullBleed={true}
+>
+  <Styled(Col)
+    className="hide-on-mobile hide-on-tablet"
+    colSize={
+      Object {
+        "large": 2,
+        "medium": 0,
+        "small": 0,
+      }
+    }
+    isNotInlineBlock={true}
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="text.primary"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs20"
+      fontWeight="extrabold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      undefined test
+    </Styled(BodyCopy)>
+  </Styled(Col)>
+  <Styled(Col)
+    className="hide-on-mobile"
+    colSize={
+      Object {
+        "large": 5,
+        "medium": 5,
+        "small": 0,
+      }
+    }
+    isNotInlineBlock={true}
+  />
+  <Styled(Col)
+    colSize={
+      Object {
+        "large": 5,
+        "medium": 3,
+        "small": 6,
+      }
+    }
+    isNotInlineBlock={true}
+  >
+    <Connect(RewardsPointsContainer)
+      currentPoints="0"
+      labels={Object {}}
+      pointsToNextRewards="100"
+      tableView={true}
+      totalRewards="0.0"
+    />
+  </Styled(Col)>
+</Styled(Row)>
+`;

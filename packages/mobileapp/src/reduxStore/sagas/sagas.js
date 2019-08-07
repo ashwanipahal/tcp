@@ -9,6 +9,8 @@ import ProductListingPageSaga from '@tcp/core/src/components/features/browse/Pro
 import AddedToBagSaga from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.saga';
 import CreateAccountSaga from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.saga';
 import CartPageSaga from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.saga';
+import GiftCardBalanceSaga from '@tcp/core/src/components/features/account/Payment/container/GetCardBalance.saga';
+import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
 export default function* rootSaga() {
@@ -23,6 +25,8 @@ export default function* rootSaga() {
     ProductListingPageSaga(),
     AddedToBagSaga(),
     CreateAccountSaga(),
+    BagPageSaga(),
     CartPageSaga(),
+    GiftCardBalanceSaga(),
   ]);
 }
