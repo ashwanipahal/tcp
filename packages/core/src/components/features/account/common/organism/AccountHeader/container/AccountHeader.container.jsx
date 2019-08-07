@@ -7,6 +7,7 @@ import {
   getPointsToNextRewardState,
   getCurrentPointsState,
   getTotalRewardsState,
+  isPlccUser,
 } from '../../../../LoginPage/container/LoginPage.selectors';
 import { fetchModuleX } from './AccountHeader.actions';
 import { getRewardsPointsBannerContent } from './AccountHeader.selectors';
@@ -19,8 +20,7 @@ export class AccountHeaderContainer extends React.PureComponent {
   }
 
   componentDidMount() {
-    const { fetchRewardsPointsBannerContent } = this.props;
-    const isPlcc = true;
+    const { fetchRewardsPointsBannerContent, isPlcc } = this.props;
     const contentKey = `overviewRewardsPointsBanner${isPlcc ? 'PLCC' : 'MPR'}`;
     const contentObject = this.labels.referred.find(ref => ref.name === contentKey);
     if (contentObject && contentObject.contentId) {
@@ -46,10 +46,12 @@ AccountHeaderContainer.propTypes = {
   labels: PropTypes.shape({}),
   commonLabels: PropTypes.shape({}),
   fetchRewardsPointsBannerContent: PropTypes.func.isRequired,
+  isPlcc: PropTypes.bool,
 };
 
 AccountHeaderContainer.defaultProps = {
   labels: {},
+  isPlcc: false,
   commonLabels: {},
 };
 
@@ -59,6 +61,7 @@ const mapStateToProps = state => ({
   currentPoints: getCurrentPointsState(state),
   totalRewards: getTotalRewardsState(state),
   rewardsPointsBannerContent: getRewardsPointsBannerContent(state),
+  isPlcc: isPlccUser(state),
 });
 
 const mapDispatchToProps = dispatch => ({
