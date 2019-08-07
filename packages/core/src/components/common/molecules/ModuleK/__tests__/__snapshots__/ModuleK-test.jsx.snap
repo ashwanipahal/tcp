@@ -104,7 +104,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-jKJlTe",
+              "componentId": "sc-ckVGcZ",
               "isStatic": false,
               "rules": Array [
                 "
@@ -141,10 +141,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(LinkText))",
             "foldedComponentIds": Array [
-              "sc-kGXeez",
+              "sc-kgoBCf",
             ],
             "render": [Function],
-            "styledComponentId": "sc-jKJlTe",
+            "styledComponentId": "sc-ckVGcZ",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -196,14 +196,17 @@ exports[`ModuleK component renders correctly 1`] = `
             "customArrowRight": "/static/images/right-carousel-carrot.svg",
             "dataLocatorPause": "moduleK_pause_button",
             "dataLocatorPlay": "moduleK_play_button",
-            "inheritedStyles": Object {
-              "$$typeof": Symbol(react.forward_ref),
-              "attrs": Array [],
-              "componentStyle": ComponentStyle {
-                "componentId": "sc-dxgOiQ",
-                "isStatic": true,
-                "rules": Array [
-                  "
+          }
+        }
+        inheritedStyles={
+          Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-kpOJdX",
+              "isStatic": true,
+              "rules": Array [
+                "
   .slick-arrow {
     top: 44%;
   }
@@ -221,17 +224,16 @@ exports[`ModuleK component renders correctly 1`] = `
     bottom: -10px;
   }
 ",
-                ],
-              },
-              "displayName": "Styled(errorBoundaryComponent)",
-              "foldedComponentIds": Array [],
-              "render": [Function],
-              "styledComponentId": "sc-dxgOiQ",
-              "target": [Function],
-              "toString": [Function],
-              "warnTooManyClasses": [Function],
-              "withComponent": [Function],
+              ],
             },
+            "displayName": "Styled(errorBoundaryComponent)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-kpOJdX",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
           }
         }
         options={

@@ -143,6 +143,20 @@ exports[`AddressFields component should render correctly 1`] = `
   ",
                 [Function],
                 ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                 ";
 ",
@@ -296,6 +310,20 @@ exports[`AddressFields component should render correctly 1`] = `
   ",
                 [Function],
                 ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                 ";
 ",
@@ -483,6 +511,20 @@ exports[`AddressFields component should render correctly 1`] = `
   ",
                 [Function],
                 ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                 ";
 ",
@@ -644,6 +686,20 @@ exports[`AddressFields component should render correctly 1`] = `
   ",
                 [Function],
                 ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                 ";
 ",
@@ -1213,6 +1269,20 @@ exports[`AddressFields component should render correctly 1`] = `
   ",
                 [Function],
                 ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                 ";
 ",
@@ -1487,6 +1557,20 @@ exports[`AddressFields component should render correctly 1`] = `
   ",
                 [Function],
                 ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                 ";
 ",
@@ -1775,6 +1859,20 @@ exports[`AddressFields component should render correctly without phoneNumber and
   ",
                 [Function],
                 ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                 ";
 ",
@@ -1928,6 +2026,20 @@ exports[`AddressFields component should render correctly without phoneNumber and
   ",
                 [Function],
                 ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                 ";
 ",
@@ -2115,6 +2227,20 @@ exports[`AddressFields component should render correctly without phoneNumber and
   ",
                 [Function],
                 ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                 ";
 ",
@@ -2276,6 +2402,20 @@ exports[`AddressFields component should render correctly without phoneNumber and
   ",
                 [Function],
                 ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                 ";
 ",
@@ -2845,6 +2985,20 @@ exports[`AddressFields component should render correctly without phoneNumber and
   ",
                 [Function],
                 ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                 ";
 ",
