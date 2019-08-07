@@ -5,7 +5,8 @@ import AddressOverviewTileComponent from '../../views/AddressOverviewTile.view';
 
 describe('AddressOverviewTile container', () => {
   it('should render AddressOverviewTile component', () => {
-    const component = shallow(<AddressOverviewTile labels={{ accountOverview: {} }} />);
+    const addressList={};
+    const component = shallow(<AddressOverviewTile labels={{ accountOverview: {} }} addressList={addressList} />);
     expect(component.is(AddressOverviewTileComponent)).toBeTruthy();
   });
 });
