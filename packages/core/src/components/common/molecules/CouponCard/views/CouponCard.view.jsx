@@ -5,6 +5,7 @@ import BodyCopy from '../../../atoms/BodyCopy';
 import styles from '../styles/CouponCard.style';
 import Anchor from '../../../atoms/Anchor';
 import Button from '../../../atoms/Button';
+import { COUPON_REDEMPTION_TYPE } from '../../../../../services/abstractors/CnC/CartItemTile';
 
 class CouponCard extends React.Component<Props> {
   ErrorHandle = () => {
@@ -21,14 +22,39 @@ class CouponCard extends React.Component<Props> {
     return null;
   };
 
-  RenderCardHeader = () => {
+  isExpiring = () => {
     const { coupon } = this.props;
-    const headingClass =
-      coupon.status === 'available' ? 'couponCard__header' : 'couponCard__header_two';
+    const currentDate = new Date();
+    const couponExpireUpdatedDate = new Date();
+    const expireDate = new Date(coupon.expirationDateTimeStamp);
+    const numberOfDaysToAdd = 7;
+    couponExpireUpdatedDate.setDate(couponExpireUpdatedDate.getDate() + numberOfDaysToAdd);
+    let couponExpiring = false;
+    if (currentDate > expireDate) {
+      couponExpiring = false;
+    } else if (couponExpireUpdatedDate >= expireDate) {
+      couponExpiring = true;
+    }
+    console.log('couponExpiring', currentDate, couponExpireUpdatedDate, expireDate, couponExpiring);
+    return couponExpiring;
+  };
+
+  RenderCardHeader = (type, headingClass) => {
+    const { labels } = this.props;
     return (
-      <BodyCopy className={headingClass} component="p" fontSize="fs12">
-        Heading
-      </BodyCopy>
+      <div className="couponCard__header">
+        <div className={headingClass}>
+          <BodyCopy className="couponCard__header_text" component="p" fontSize="fs12">
+            {type}
+          </BodyCopy>
+        </div>
+
+        {this.isExpiring() && (
+          <BodyCopy className="couponCard__header_expired" component="p" fontSize="fs12">
+            {labels.EXPIRING_SOON}
+          </BodyCopy>
+        )}
+      </div>
     );
   };
 
@@ -64,6 +90,22 @@ class CouponCard extends React.Component<Props> {
     );
   };
 
+  RenderValidText = coupon => {
+    return (
+      <BodyCopy component="p" fontSize="fs10" fontFamily="secondary">
+        {`Valid ${coupon.effectiveDate} - ${coupon.expirationDate}`}
+      </BodyCopy>
+    );
+  };
+
+  RenderUseByText = coupon => {
+    return (
+      <BodyCopy component="p" fontSize="fs10" fontFamily="secondary">
+        {`Use by ${coupon.expirationDate}`}
+      </BodyCopy>
+    );
+  };
+
   handleDefaultLinkClick = event => {
     const { coupon, couponDetailClick } = this.props;
     couponDetailClick(coupon);
@@ -77,7 +119,17 @@ class CouponCard extends React.Component<Props> {
         <div className="couponCard__container">
           {this.ErrorHandle()}
           <div className="couponCard__container_main">
-            {this.RenderCardHeader()}
+            {coupon.promotionType === COUPON_REDEMPTION_TYPE.PUBLIC &&
+              this.RenderCardHeader(labels.SAVINGS_TEXT, 'couponCard__header_saving')}
+            {coupon.promotionType === COUPON_REDEMPTION_TYPE.PC &&
+              this.RenderCardHeader(labels.PLACE_CASH_TEXT, 'couponCard__header_public')}
+            {coupon.promotionType === COUPON_REDEMPTION_TYPE.PLACECASH &&
+              this.RenderCardHeader(labels.PLACE_CASH_TEXT, 'couponCard__header_public')}
+            {coupon.promotionType === COUPON_REDEMPTION_TYPE.LOYALTY &&
+              this.RenderCardHeader(labels.PLACE_CASH_TEXT, 'couponCard__header_saving')}
+            {coupon.promotionType === COUPON_REDEMPTION_TYPE.REWARDS &&
+              this.RenderCardHeader(labels.REWARDS_TEXT, 'couponCard__header_rewards')}
+
             <div className="couponCard__body">
               <div className="couponCard__row">
                 <div className="couponCard__col">
@@ -90,9 +142,10 @@ class CouponCard extends React.Component<Props> {
                     >
                       {`${coupon.title}`}
                     </BodyCopy>
-                    <BodyCopy component="p" fontSize="fs10" fontFamily="secondary">
-                      {`Valid ${coupon.effectiveDate} - ${coupon.expirationDate}`}
-                    </BodyCopy>
+                    {coupon.promotionType === COUPON_REDEMPTION_TYPE.PUBLIC &&
+                      this.RenderValidText(coupon)}
+                    {coupon.promotionType === COUPON_REDEMPTION_TYPE.REWARDS &&
+                      this.RenderUseByText(coupon)}
                   </BodyCopy>
                   <Anchor
                     data-locator="couponcard-makedefault"

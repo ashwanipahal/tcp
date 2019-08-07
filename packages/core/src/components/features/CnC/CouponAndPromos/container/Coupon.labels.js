@@ -15,6 +15,10 @@ const labels = {
   MODAL_SHORT_DESCRIPTION: 'By participating in the activity, you agree to ',
   TERMS_AND_CONDITIONS: 'terms and conditions',
   PRIVACY_POLICY: 'privacy policy',
+  PLACE_CASH_TEXT: 'PLACE CASH',
+  REWARDS_TEXT: 'REWARDS',
+  SAVINGS_TEXT: 'SAVINGS',
+  EXPIRING_SOON: 'EXPIRING SOON!',
 };
 
 export default labels;

@@ -4,6 +4,10 @@ const styles = css`
   .couponCard__container {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
+  .couponCard__header {
+    display: flex;
+  }
+
   .couponCard__container_error {
     border: solid 0.8px ${props => props.theme.colors.TEXT.RED};
     padding: ${props => props.theme.spacing.ELEM_SPACING.MED};
@@ -15,15 +19,33 @@ const styles = css`
     border-style: dashed;
   }
 
-  .couponCard__header {
-    background: ${props => props.theme.colors.BRAND.BOYS};
-    padding: 5px 0px 5px 15px;
+  .couponCard__header_public {
+    flex: 1;
+    background: ${props => props.theme.colors.PRIMARY.GREEN};
   }
-  .couponCard__header_two {
+  .couponCard__header_saving {
+    flex: 1;
     background: ${props => props.theme.colors.BRAND.GIRLS};
+  }
+
+  .couponCard__header_rewards {
+    flex: 1;
+    background: ${props => props.theme.colors.BRAND.GIRLS};
+  }
+  .couponCard__header_text {
     padding: ${props => props.theme.spacing.ELEM_SPACING.XXS} 0px
       ${props => props.theme.spacing.ELEM_SPACING.XXS}
       ${props => props.theme.spacing.ELEM_SPACING.MED};
+    color: ${props => props.theme.colors.WHITE};
+    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
+  }
+  .couponCard__header_expired {
+    flex: 1;
+    text-align: center;
+    background: ${props => props.theme.colors.TEXT.DARKERGRAY};
+    color: ${props => props.theme.colors.WHITE};
+    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
+    line-height: ${props => props.theme.spacing.ELEM_SPACING.LRG};
   }
   .couponCard__body {
     padding: ${props => props.theme.spacing.ELEM_SPACING.XXS}
