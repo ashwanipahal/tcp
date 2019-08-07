@@ -29,7 +29,6 @@ exports[`AddEditAddress Native should render correctly 1`] = `
       "acc_lbl_province": "Province",
       "acc_lbl_set_default": "Set as default shipping address",
       "acc_lbl_state": "State",
-      "acc_lbl_update_address_cta": "UPDATE",
       "acc_lbl_verify_your_address_header": "Verify Your Address",
       "acc_lbl_verify_your_address_heading_add": "Add Address",
       "acc_lbl_verify_your_address_heading_edit": "EDIT ADDRESS",
@@ -52,11 +51,14 @@ exports[`AddEditAddress Native should render correctly 1`] = `
       "deleteConfirm": "Yes, Delete",
       "edit": "Edit",
       "errorMessage": "Your action could not be completed due to a system error",
+      "lbl_common_updateAddressCTA": "UPDATE",
       "makeDefault": "Make Default",
       "shipping": "SHIPPING",
       "successMessage": "Your account has been updated",
     }
   }
+  submitAddressFormAction={[Function]}
+  verifyAddressAction={[Function]}
 >
   <ScrollViewMock
     showsVerticalScrollIndicator={false}
@@ -103,7 +105,6 @@ exports[`AddEditAddress Native should render correctly 1`] = `
           "acc_lbl_province": "Province",
           "acc_lbl_set_default": "Set as default shipping address",
           "acc_lbl_state": "State",
-          "acc_lbl_update_address_cta": "UPDATE",
           "acc_lbl_verify_your_address_header": "Verify Your Address",
           "acc_lbl_verify_your_address_heading_add": "Add Address",
           "acc_lbl_verify_your_address_heading_edit": "EDIT ADDRESS",
@@ -126,17 +127,20 @@ exports[`AddEditAddress Native should render correctly 1`] = `
           "deleteConfirm": "Yes, Delete",
           "edit": "Edit",
           "errorMessage": "Your action could not be completed due to a system error",
+          "lbl_common_updateAddressCTA": "UPDATE",
           "makeDefault": "Make Default",
           "shipping": "SHIPPING",
           "successMessage": "Your account has been updated",
         }
       }
+      onSubmit={[Function]}
       persistentSubmitErrors={false}
       pure={true}
       shouldAsyncValidate={[Function]}
       shouldError={[Function]}
       shouldValidate={[Function]}
       shouldWarn={[Function]}
+      submitAddressFormAction={[Function]}
       submitAsSideEffect={false}
       touchOnBlur={true}
       touchOnChange={false}

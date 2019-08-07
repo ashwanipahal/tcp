@@ -24,7 +24,7 @@ class AddressBook extends React.PureComponent<Props> {
     const { labels } = this.props;
     return (
       <View>
-        <Text>Address Book</Text>
+        <Text>{labels.addressBookHeading}</Text>
         <CustomButton
           text="Create Account"
           buttonVariation="variable-width"

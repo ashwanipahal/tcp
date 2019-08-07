@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, ScrollView } from 'react-native';
+import PropTypes from 'prop-types';
 import {
   StyledHeading,
   ParentContainer,
@@ -9,16 +10,7 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles.native';
 import AddressFormComponent from '../../common/organism/AddressForm/AddressForm';
 
-// @flow
-type Props = {
-  labels: Object,
-  isEdit?: boolean,
-  isMakeDefaultDisabled?: boolean,
-  submitAddressFormAction: any,
-  verifyAddressAction: any,
-};
-
-const AddressBook = (props: Props) => {
+const AddressBook = props => {
   const {
     labels,
     submitAddressFormAction,
@@ -49,9 +41,19 @@ const AddressBook = (props: Props) => {
   );
 };
 
+AddressBook.propTypes = {
+  labels: PropTypes.shape({}).isRequired,
+  isEdit: PropTypes.bool,
+  isMakeDefaultDisabled: PropTypes.bool,
+  submitAddressFormAction: PropTypes.func,
+  verifyAddressAction: PropTypes.func,
+};
+
 AddressBook.defaultProps = {
   isEdit: false,
   isMakeDefaultDisabled: false,
+  submitAddressFormAction: () => null,
+  verifyAddressAction: () => null,
 };
 
 export default withStyles(AddressBook, ParentContainer);
