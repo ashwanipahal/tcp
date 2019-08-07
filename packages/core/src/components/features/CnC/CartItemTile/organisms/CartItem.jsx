@@ -1,13 +1,13 @@
 import React from 'react';
 // eslint-disable-next-line import/no-named-as-default
-import ProductCustomizeForm from './ProductCustomizeForm';
+import ProductCustomizeForm from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ProductCustomizeForm/ProductCustomizeForm';
 
 // @flow
 
 type Props = {
   updateCartItem: (itemId, skuId, quantity, itemPartNumber, variantNo) => void,
   item: any,
-  deleteCartItem: orderItemId => void,
+  // deleteCartItem: orderItemId => void,
   getProductSKUInfo: productNumber => void,
   editableProductInfo: any,
 };
@@ -53,11 +53,12 @@ class CartItem extends React.Component<Props, State> {
   };
 
   render() {
-    const { item, deleteCartItem, editableProductInfo } = this.props;
+    const { item, editableProductInfo } = this.props;
+    // const { deleteCartItem } = this.props;
     const { isEdit } = this.state;
     return (
       <React.Fragment>
-        <div className="product-title">
+        {/* <div className="product-title">
           <h4>
             <a
               href={item.productInfo.pdpUrl}
@@ -78,9 +79,9 @@ class CartItem extends React.Component<Props, State> {
         <div className="container-price">
           <span className="text-price product-offer-price">
             {item.itemInfo.offerPrice.toFixed(2)}
-          </span>
-          {/* changed copy to match VD */}
-          {item.itemInfo.listPrice !== item.itemInfo.offerPrice && (
+          </span> */}
+        {/* changed copy to match VD */}
+        {/* {item.itemInfo.listPrice !== item.itemInfo.offerPrice && (
             <span className="text-price product-list-price">
               Was
               {item.itemInfo.listPrice.toFixed(2)}
@@ -99,7 +100,7 @@ class CartItem extends React.Component<Props, State> {
             {' '}
             Edit
           </button>
-        </div>
+        </div> */}
         {isEdit && (
           <ProductCustomizeForm
             item={item}

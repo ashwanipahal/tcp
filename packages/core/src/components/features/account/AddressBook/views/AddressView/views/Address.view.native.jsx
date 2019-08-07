@@ -28,43 +28,47 @@ export class AddressView extends React.PureComponent<Props> {
       <View {...this.props}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <StyledHeading>
-            {labels.addressBookHeading && (
-              <BodyCopy fontSize="fs16" fontWeight="extrabold" text={labels.addressBookHeading} />
+            {labels.addressBook.ACC_LBL_ADDRESS_BOOK_HEADING && (
+              <BodyCopy
+                fontSize="fs16"
+                fontWeight="extrabold"
+                text={labels.addressBook.ACC_LBL_ADDRESS_BOOK_HEADING}
+              />
             )}
           </StyledHeading>
           <UnderlineStyle />
           {addresses.size === 0 && (
             <NoAddressWrapper>
               <NoAddressHeading>
-                {labels.createAddressBookMsg && (
+                {labels.addressBook.ACC_LBL_CREATE_ADDRESS_BOOK_MSG && (
                   <BodyCopy
                     fontSize="fs14"
                     fontWeight="semibold"
                     mobilefontFamily={['secondary']}
-                    text={labels.createAddressBookMsg}
+                    text={labels.addressBook.ACC_LBL_CREATE_ADDRESS_BOOK_MSG}
                   />
                 )}
               </NoAddressHeading>
               <NoAddressBody>
-                {labels.createAddressBookBenefitMsg && (
+                {labels.addressBook.ACC_LBL_CREATE_ADDRESS_BOOK_BENEFIT_MSG && (
                   <BodyCopy
                     fontSize="fs13"
                     fontWeight="regular"
                     mobilefontFamily={['secondary']}
-                    text={labels.createAddressBookBenefitMsg}
+                    text={labels.addressBook.ACC_LBL_CREATE_ADDRESS_BOOK_BENEFIT_MSG}
                   />
                 )}
               </NoAddressBody>
             </NoAddressWrapper>
           )}
           <ButtonWrapperStyle>
-            {labels.addNewAddressCTA && (
+            {labels.addressBook.ACC_LBL_ADD_NEW_ADDRESS_CTA && (
               <Button
                 color="white"
                 buttonVariation="variable-width"
                 fill="BLUE"
                 data-locator="addressbook-addnewaddress"
-                text={labels.addNewAddressCTA}
+                text={labels.addressBook.ACC_LBL_ADD_NEW_ADDRESS_CTA}
               />
             )}
           </ButtonWrapperStyle>

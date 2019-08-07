@@ -13,11 +13,8 @@ const address = {
 };
 
 const labels = {
-  defaultShipping: 'DEFAULT SHIPPING',
-  defaultBilling: 'DEFAULT BILLING',
-  shipping: 'SHIPPING',
-  billing: 'BILLING',
-  makeDefault: 'Make Default',
+  addressBook: {},
+  common: {},
 };
 
 describe('AddressTile component', () => {

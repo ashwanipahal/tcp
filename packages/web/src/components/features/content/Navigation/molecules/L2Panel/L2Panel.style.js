@@ -109,6 +109,9 @@ export default css`
       margin-top: 36px;
       margin-bottom: 36px;
     }
+    .l2-nav-category.shop-by-size-category {
+      border-right: 0;
+    }
     .l2-nav-category-header {
       margin-bottom: 24px;
     }

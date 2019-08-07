@@ -55,6 +55,7 @@ const ForgotHeading = props => {
   align-self: center;
   font-size: ${typography.fontSizes.fs16};
   padding:10px 0;
+  text-align: center;
   `;
 };
 
@@ -86,6 +87,7 @@ const getSubHeadingStyle = props => {
   ${getTextBaseStyle};
   font-size: ${typography.fontSizes.fs13};
   align-self: center;
+  padding:10px 0;
   `;
 };
 
@@ -124,6 +126,21 @@ const FloatWrapper = styled.View`
   ${leftAignWrapper}
 `;
 
+const ModalHeading = styled.Text`
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
+const ModalViewWrapper = styled.View`
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+`;
+
+const LineWrapper = styled.View`
+  padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
 export {
   FormStyle,
   DescriptionStyle,
@@ -133,4 +150,7 @@ export {
   HeadingStyle,
   FloatWrapper,
   SubHeadingStyle,
+  ModalHeading,
+  ModalViewWrapper,
+  LineWrapper,
 };

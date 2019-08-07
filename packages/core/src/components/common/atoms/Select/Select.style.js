@@ -12,7 +12,7 @@ const selectStyles = css`
     border: 0;
     border-bottom: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
     ${props =>
-      props.meta.touched && props.meta.error
+      props.meta && props.meta.touched && props.meta.error
         ? `border-bottom: 1px solid ${props.theme.colors.TEXTBOX.ERROR_BORDER};`
         : ''};
     border-radius: 0;

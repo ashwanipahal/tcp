@@ -6,7 +6,10 @@ import { VenmoCardsVanilla } from '../views/VenmoCards.native';
 describe('VenmoCardList Component', () => {
   it('should render correctly', () => {
     const props = {
-      labels: {},
+      labels: {
+        paymentGC: {},
+        common: {},
+      },
       className: 'abc',
       venmoCardList: List(),
     };
@@ -15,7 +18,10 @@ describe('VenmoCardList Component', () => {
   });
   it('should render correctly if list is present', () => {
     const props = {
-      labels: {},
+      labels: {
+        paymentGC: {},
+        common: {},
+      },
       className: 'abc',
       venmoCardList: List([
         {

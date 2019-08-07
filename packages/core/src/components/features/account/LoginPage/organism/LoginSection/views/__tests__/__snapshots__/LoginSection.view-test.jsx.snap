@@ -14,7 +14,12 @@ exports[`LoginSection component should renders correctly 1`] = `
   >
     <Styled(LoginTopSection)
       className="elem-mb-LRG"
-      labels={Object {}}
+      isCanada={false}
+      labels={
+        Object {
+          "login": Object {},
+        }
+      }
     />
     <ReduxForm
       className="elem-mb-LRG"
@@ -25,7 +30,11 @@ exports[`LoginSection component should renders correctly 1`] = `
       getFormState={[Function]}
       initialValues={Object {}}
       keepDirtyOnReinitialize={false}
-      labels={Object {}}
+      labels={
+        Object {
+          "login": Object {},
+        }
+      }
       loginErrorMessage=""
       onCreateAccountClick={[Function]}
       onSubmit={[Function]}

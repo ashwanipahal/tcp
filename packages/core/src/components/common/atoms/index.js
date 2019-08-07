@@ -9,6 +9,7 @@ import Row from './Row';
 import TextBox from './TextBox';
 import Heading from './Heading';
 import BodyCopy from './BodyCopy';
+import SelectBox from './Select';
 
 export {
   Anchor,
@@ -22,4 +23,5 @@ export {
   TextBox,
   Heading,
   BodyCopy,
+  SelectBox,
 };
