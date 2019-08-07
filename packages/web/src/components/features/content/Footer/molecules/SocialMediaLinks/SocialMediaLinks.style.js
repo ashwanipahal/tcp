@@ -33,13 +33,19 @@ export default css`
     }
   }
 
+  @media ${props => props.theme.mediaQuery.large} and ${props => props.theme.mediaQuery.largeMax} {
+    margin: 0 auto;
+    flex-direction: column !important;
+  }
+
   @media ${props => props.theme.mediaQuery.large} {
     flex-direction: column;
     padding: 0 0 5px 0;
     .social-media-label {
       padding: 0 0 5px 0;
       font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy2}px;
-      line-height: 2;
+      line-height: 3;
+      padding-right: 17px;
     }
     .social-media-icon {
       width: 50px;
