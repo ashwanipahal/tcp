@@ -46,6 +46,7 @@ export class PasswordField extends React.PureComponent {
           noLink
           handleLinkClick={this.changeType}
           underline
+          data-locator={type === 'password' ? 'login-showlnk' : 'login-hidelnk'}
         >
           {type === 'password' ? showText : hideText}
         </Anchor>

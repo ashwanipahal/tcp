@@ -1,5 +1,4 @@
 import React from 'react';
-import Router from 'next/router'; //eslint-disable-line
 import { connect } from 'react-redux';
 import { addAddressReq, updateAddressReq } from './AddEditAddress.actions';
 import AddAddressComponent from '../views/AddEditAddress.view';

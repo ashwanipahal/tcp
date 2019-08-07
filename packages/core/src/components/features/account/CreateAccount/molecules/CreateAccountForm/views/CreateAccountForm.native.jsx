@@ -9,6 +9,10 @@ import {
   ParentView,
   ButtonWrapper,
   AlreadyAccountWrapper,
+  PasswordWrapper,
+  HideShowField,
+  ConfirmPasswordWrapper,
+  ConfirmHideShowField,
 } from '../styles/CreateAccountForm.style.native';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import CustomButton from '../../../../../../common/atoms/Button';
@@ -19,9 +23,6 @@ import getStandardConfig from '../../../../../../../utils/formValidation/validat
 const onSaveMyPlaceRewards = value => {
   console.log('onSaveMyPlaceRewards: ', value);
 };
-const onTnC = value => {
-  console.log('onTnC: ', value);
-};
 const onUseTouchID = value => {
   console.log('onUseTouchID: ', value);
 };
@@ -30,7 +31,16 @@ const onUseFaceID = value => {
 };
 
 const CreateAccountForm = props => {
-  const { labels, handleSubmit, handleSubmitForm } = props;
+  const {
+    labels,
+    handleSubmit,
+    handleSubmitForm,
+    onPwdHideShowClick,
+    hideShowPwd,
+    onConfirmPwdHideShowClick,
+    confirmHideShowPwd,
+    onRequestClose,
+  } = props;
   return (
     <View {...props}>
       <ParentView>
@@ -82,22 +92,61 @@ const CreateAccountForm = props => {
           component={TextBox}
           dataLocator="confirmEmailAddress"
         />
-        <Field
-          label={labels.registration.lbl_createAccount_password}
-          name="password"
-          id="password"
-          type="text"
-          component={TextBox}
-          dataLocator="password"
-        />
-        <Field
-          label={labels.registration.lbl_createAccount_confirmPassword}
-          name="confirmPassword"
-          id="confirmPassword"
-          type="text"
-          component={TextBox}
-          dataLocator="confirmPassword"
-        />
+        <PasswordWrapper>
+          <Field
+            label={labels.registration.lbl_createAccount_password}
+            name="password"
+            id="password"
+            type="text"
+            component={TextBox}
+            dataLocator="password"
+            secureTextEntry={!hideShowPwd}
+          />
+
+          <HideShowField>
+            <Field
+              name="hide-show-pwd"
+              component={InputCheckbox}
+              dataLocator="hide-show-pwd"
+              disabled={false}
+              rightText={
+                hideShowPwd
+                  ? labels.registration.lbl_createAccount_hide
+                  : labels.registration.lbl_createAccount_show
+              }
+              onClick={onPwdHideShowClick}
+              hideCheckboxIcon
+            />
+          </HideShowField>
+        </PasswordWrapper>
+        <ConfirmPasswordWrapper>
+          <Field
+            label={labels.registration.lbl_createAccount_confirmPassword}
+            name="confirmPassword"
+            id="confirmPassword"
+            type="text"
+            component={TextBox}
+            dataLocator="confirmPassword"
+            secureTextEntry={!confirmHideShowPwd}
+          />
+          <ConfirmHideShowField>
+            <Field
+              name="hide-show-confirm-pwd"
+              component={InputCheckbox}
+              dataLocator="hide-show-confirm-pwd"
+              disabled={false}
+              rightText={
+                confirmHideShowPwd
+                  ? labels.registration.lbl_createAccount_hide
+                  : labels.registration.lbl_createAccount_show
+              }
+              onClick={onConfirmPwdHideShowClick}
+              hideCheckboxIcon
+            />
+          </ConfirmHideShowField>
+        </ConfirmPasswordWrapper>
+
+        {/* CHECKBOXES */}
         <Field
           name="saveMyPlaceRewards"
           component={InputCheckbox}
@@ -107,13 +156,12 @@ const CreateAccountForm = props => {
           onClick={onSaveMyPlaceRewards}
         />
         <Field
-          name="TnC"
+          name="iAgree"
           component={InputCheckbox}
-          dataLocator="TnC"
+          dataLocator="iAgree"
           disabled={false}
           rightText={labels.registration.lbl_createAccount_termsConditions}
           marginTop={13}
-          onClick={onTnC}
         />
         <Field
           name="useTouchID"
@@ -146,6 +194,8 @@ const CreateAccountForm = props => {
             fontSizeVariation="xlarge"
             anchorVariation="secondary"
             text={labels.registration.lbl_createAccount_alreadyAccount}
+            onPress={onRequestClose}
+            underline
           />
         </AlreadyAccountWrapper>
       </ParentView>
@@ -163,6 +213,7 @@ const validateMethod = createValidateMethod(
     'confirmEmailAddress',
     'password',
     'confirmPassword',
+    'iAgree',
   ])
 );
 
@@ -177,6 +228,11 @@ CreateAccountForm.propTypes = {
   }),
   handleSubmit: PropTypes.func,
   handleSubmitForm: PropTypes.func,
+  onPwdHideShowClick: PropTypes.func,
+  hideShowPwd: PropTypes.bool,
+  onConfirmPwdHideShowClick: PropTypes.func,
+  onRequestClose: PropTypes.func,
+  confirmHideShowPwd: PropTypes.bool,
 };
 
 CreateAccountForm.defaultProps = {
@@ -194,6 +250,11 @@ CreateAccountForm.defaultProps = {
   },
   handleSubmit: () => {},
   handleSubmitForm: () => {},
+  onPwdHideShowClick: () => {},
+  hideShowPwd: false,
+  onConfirmPwdHideShowClick: () => {},
+  onRequestClose: () => {},
+  confirmHideShowPwd: false,
 };
 
 export default reduxForm({

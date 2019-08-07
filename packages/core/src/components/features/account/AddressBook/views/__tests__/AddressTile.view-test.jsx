@@ -19,7 +19,6 @@ const labels = {
     ACC_LBL_DEFAULT_SHIPPING: 'DEFAULT SHIPPING',
     ACC_LBL_DEFAULT_BILLING: 'DEFAULT BILLING',
     ACC_LBL_SHIPPING: 'SHIPPING',
-    ACC_LBL_BILLING: 'BILLING',
   },
   common: {
     lbl_common_makeDefault: 'Make Default',
@@ -98,21 +97,6 @@ describe('AddressTile component', () => {
     const component = shallow(<AddressBookTileVanilla {...props} />);
     expect(component.find(Badge)).toHaveLength(1);
     expect(component.find(Badge).text()).toBe(labels.addressBook.ACC_LBL_DEFAULT_BILLING);
-  });
-
-  it('should renders billing badge if xcont_isBillingAddress is true and address is not default ', () => {
-    const newAddress = Object.assign({}, address, {
-      xcont_isDefaultBilling: 'false',
-      xcont_isBillingAddress: 'true',
-    });
-    const props = {
-      address: newAddress,
-      labels,
-    };
-    const component = shallow(<AddressBookTileVanilla {...props} />);
-    expect(
-      component.findWhere(com => com.is(Badge) && com.text() === labels.addressBook.ACC_LBL_BILLING)
-    ).toHaveLength(1);
   });
 
   it('should renders make default link if address is not primary', () => {

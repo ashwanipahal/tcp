@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HeaderPromo Component HeaderPromo should render correctly 1`] = `
-<SnapCarousel
+<WithTheme(SnapCarousel)
   carouselConfig={
     Object {
       "autoplay": true,
