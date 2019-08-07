@@ -10,6 +10,6 @@ exports[`CurrentPointSlider should render correctly 1`] = `
     }
   }
 >
-  This is CurrentPointSlider
+  This is CurrentPointSlider Placeholder
 </div>
 `;

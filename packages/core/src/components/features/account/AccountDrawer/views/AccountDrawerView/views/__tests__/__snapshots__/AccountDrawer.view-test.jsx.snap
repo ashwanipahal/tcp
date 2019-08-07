@@ -4,5 +4,6 @@ exports[`AccountDrawerView should render correctly 1`] = `
 <Styled(AccountDrawerPage)
   className=""
   labels={Object {}}
+  userName=""
 />
 `;

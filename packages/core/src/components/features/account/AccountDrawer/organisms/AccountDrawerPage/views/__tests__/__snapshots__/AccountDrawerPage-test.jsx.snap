@@ -4,7 +4,9 @@ exports[`AccountDrawerPage should render correctly 1`] = `
 <div
   className=""
 >
-  <Styled(AccountDrawerHeading) />
+  <Styled(AccountDrawerHeading)
+    userName=""
+  />
   <Styled(CurrentPointSlider) />
   <Styled(ExtraPointsTeaser) />
   <Styled(MyRewardsAndOffers) />

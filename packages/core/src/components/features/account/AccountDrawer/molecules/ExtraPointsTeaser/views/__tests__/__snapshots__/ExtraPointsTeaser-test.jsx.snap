@@ -4,18 +4,53 @@ exports[`ExtraPointsTeaser should render correctly 1`] = `
 <div
   className=""
 >
-  <div>
-    Want to Earn Extra Points?
-  </div>
-  <div>
-    Get even closer to your next reward!
-  </div>
-  <div>
-    <Styled(Anchor)
-      anchorVariation="secondary"
-      fontSizeVariation="xlarge"
-      text="Learn More"
-    />
+  <div
+    className="extraPointsWrapper"
+  >
+    <div
+      className="earnExtra alignCenter"
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        Want to Earn Extra Points?
+      </Styled(BodyCopy)>
+    </div>
+    <div
+      className="getCloser alignCenter"
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.secondary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        Get even closer to your next reward!
+      </Styled(BodyCopy)>
+    </div>
+    <div
+      className="learnMore alignCenter"
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        fontSizeVariation="medium"
+        text="Learn More"
+        underline={true}
+      />
+    </div>
   </div>
 </div>
 `;

@@ -2,24 +2,36 @@
 
 exports[`AccountDrawerHeading should render correctly 1`] = `
 <div
-  className=""
+  className=" elem-pl-MED elem-pr-MED elem-pt-LRG elem-pb-LRG"
 >
-  <div>
-    <span>
-      <Styled(Image)
-        src="/static/images/user-icon.png"
+  <span>
+    <Styled(Image)
+      src="/static/images/user-icon.png"
+    />
+    <span
+      className="userName"
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="primary"
+        fontSize="fs16"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
       />
-      <span>
-        Test Name
-      </span>
     </span>
-    <span>
-      <Styled(Anchor)
-        anchorVariation="secondary"
-        fontSizeVariation="xlarge"
-        text="View My Account"
-      />
-    </span>
-  </div>
+  </span>
+  <span
+    className="viewAccAnchor"
+  >
+    <Styled(Anchor)
+      anchorVariation="primary"
+      fontSizeVariation="medium"
+      underline={true}
+    />
+  </span>
 </div>
 `;
