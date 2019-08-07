@@ -204,7 +204,7 @@ const getCtaRow = (
         <CustomButton
           color="white"
           fill="BLUE"
-          text={labels.ACC_LBL_CHECK_BALANCE}
+          text={labels.paymentGC.lbl_payment_checkBalance}
           buttonVariation="variable-width"
           onPress={handleSubmit(formData =>
             handleGetGiftCardBalanceClick(formData, card, onGetBalanceCard)
@@ -220,7 +220,7 @@ const getCtaRow = (
             to="/#"
             anchorVariation="primary"
             data-locator={`payment-${dataLocatorPrefix}editlink`}
-            text={labels.ACC_LBL_EDIT}
+            text={labels.common.lbl_common_edit}
           />
         )}
         <CardCtaLinkMargin />
@@ -230,7 +230,7 @@ const getCtaRow = (
           to="/#"
           anchorVariation="primary"
           data-locator={`payment-${dataLocatorPrefix}deletelink`}
-          text={labels.ACC_LBL_DELETE}
+          text={labels.common.lbl_common_delete}
         />
       </CardCtaLinks>
     </CardCtaRow>
@@ -292,7 +292,7 @@ const CardTile = ({
             mobilefontFamily={['secondary']}
             fontSize="fs14"
             color="gray.900"
-            text={labels.ACC_LBL_REMAINING_BALANCE}
+            text={labels.paymentGC.lbl_payment_remainingBalance}
           />
         </CardCtaRow>
       )}
