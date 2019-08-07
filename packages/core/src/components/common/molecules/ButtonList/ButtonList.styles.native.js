@@ -1,18 +1,21 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
-  align-items: center;
-  justify-content: center;
-`;
+export const Container = styled.View``;
 
 export const ScrollViewContainer = styled.View`
   margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
 `;
 
 export const TextLiksViewContainer = styled.View`
-  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+  align-items: center;
+  padding-left: 16px;
+`;
+
+export const Wrapper = styled.View`
+  width: 100%;
   align-items: center;
   justify-content: center;
+  align-self: center;
 `;
 
 export const DivImageContainer = styled.View`
@@ -22,4 +25,10 @@ export const DivImageContainer = styled.View`
   align-items: center;
 `;
 
-export default { Container, ScrollViewContainer, TextLiksViewContainer, DivImageContainer };
+export default {
+  Container,
+  ScrollViewContainer,
+  TextLiksViewContainer,
+  DivImageContainer,
+  Wrapper,
+};

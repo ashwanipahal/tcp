@@ -4,11 +4,12 @@ import { FlatList } from 'react-native';
 import { getScreenWidth } from '../../../../../utils/utils.app';
 import { Button, Anchor, Image, BodyCopy } from '../../../atoms';
 import {
+  Wrapper,
   Container,
   ScrollViewContainer,
   DivImageContainer,
   TextLiksViewContainer,
-} from '../ButtonList.native';
+} from '../ButtonList.styles.native';
 
 type Props = {
   stackedCTAButtons: Object[],
@@ -52,7 +53,7 @@ const renderFullItem = (item, navigation) => {
       text={item.item.text}
       color="red"
       style={buttonWidth}
-      url={item.item.links}
+      url={item.item.url}
       navigation={navigation}
     />
   );
@@ -98,7 +99,7 @@ const scrollViewRenderItem = (item, navigation) => {
         buttonVariation="cautionary-button"
         color="red"
         text={item.item.text}
-        url={item.item.links}
+        url={item.item.url}
         navigation={navigation}
       />
     </ScrollViewContainer>
@@ -133,7 +134,7 @@ const linkTextViewRenderItem = (item, navigation) => {
         text={item.item.text}
         anchorVariation="white"
         fontSizeVariation="large"
-        url={item.item.links}
+        url={item.item.url}
         navigation={navigation}
         customStyle={style}
         centered
@@ -148,14 +149,17 @@ const linkTextViewRenderItem = (item, navigation) => {
 const rendeLinkTextView = (ctxButton, navigation) => {
   const isHorizontalScroll = true;
   const isScrollIndicator = false;
+
   return (
-    <FlatList
-      showsHorizontalScrollIndicator={isScrollIndicator}
-      horizontal={isHorizontalScroll}
-      keyExtractor={keyExtractor}
-      data={ctxButton}
-      renderItem={item => linkTextViewRenderItem(item, navigation)}
-    />
+    <Wrapper>
+      <FlatList
+        showsHorizontalScrollIndicator={isScrollIndicator}
+        horizontal={isHorizontalScroll}
+        keyExtractor={keyExtractor}
+        data={ctxButton}
+        renderItem={item => linkTextViewRenderItem(item, navigation)}
+      />
+    </Wrapper>
   );
 };
 
