@@ -25,7 +25,7 @@ const RewardsPointsTable = ({
             fontFamily="secondary"
             textAlign="center"
           >
-            {totalRewards}
+            {`${labels.lbl_my_rewards_currency}${totalRewards}`}
           </BodyCopy>
           <BodyCopy fontSize="fs14" textAlign="center">
             {labels.lbl_my_rewards_heading}

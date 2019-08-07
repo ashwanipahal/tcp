@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Row, Col, BodyCopy } from '../../../../../../common/atoms';
 import RewardsPoints from '../../RewardsPoints';
 import RewardsPointsBanner from '../molecule/RewardsPointsBanner';
+import { isCanada } from '../../../../../../../utils';
 
 export const AccountHeader = ({
   labels,
@@ -12,6 +13,7 @@ export const AccountHeader = ({
   totalRewards,
   rewardsPointsBannerContent,
 }) => {
+  const isCA = isCanada();
   return (
     <Row fullBleed>
       <Col
@@ -27,33 +29,39 @@ export const AccountHeader = ({
           {`${labels.lbl_overview_greeting} ${name}`}
         </BodyCopy>
       </Col>
-      <Col
-        colSize={{
-          small: 0,
-          medium: 5,
-          large: 5,
-        }}
-        isNotInlineBlock
-        className="hide-on-mobile"
-      >
-        {rewardsPointsBannerContent && <RewardsPointsBanner content={rewardsPointsBannerContent} />}
-      </Col>
-      <Col
-        colSize={{
-          small: 6,
-          medium: 3,
-          large: 5,
-        }}
-        isNotInlineBlock
-      >
-        <RewardsPoints
-          tableView
-          labels={labels}
-          pointsToNextRewards={pointsToNextRewards}
-          currentPoints={currentPoints}
-          totalRewards={totalRewards}
-        />
-      </Col>
+      {!isCA && (
+        <>
+          <Col
+            colSize={{
+              small: 0,
+              medium: 5,
+              large: 5,
+            }}
+            isNotInlineBlock
+            className="hide-on-mobile"
+          >
+            {rewardsPointsBannerContent && (
+              <RewardsPointsBanner content={rewardsPointsBannerContent} />
+            )}
+          </Col>
+          <Col
+            colSize={{
+              small: 6,
+              medium: 3,
+              large: 5,
+            }}
+            isNotInlineBlock
+          >
+            <RewardsPoints
+              tableView
+              labels={labels}
+              pointsToNextRewards={pointsToNextRewards}
+              currentPoints={currentPoints}
+              totalRewards={totalRewards}
+            />
+          </Col>
+        </>
+      )}
     </Row>
   );
 };
