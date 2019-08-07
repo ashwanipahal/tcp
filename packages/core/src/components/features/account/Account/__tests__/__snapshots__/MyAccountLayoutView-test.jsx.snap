@@ -3,6 +3,21 @@
 exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] = `
 <div>
   <Styled(Row)
+    className="elem-mb-XL"
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Connect(AccountHeaderContainer) />
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
     className="is-hidden-nav"
   >
     <Styled(Col)

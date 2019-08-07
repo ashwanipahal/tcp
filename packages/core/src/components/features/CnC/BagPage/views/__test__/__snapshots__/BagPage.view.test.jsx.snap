@@ -55,7 +55,7 @@ exports[`Bag page Container should render Added to Bag view section 1`] = `
 ",
         ],
       },
-      "displayName": "Styled(AddedToBag)",
+      "displayName": "Styled(BagPageView)",
       "foldedComponentIds": Array [],
       "render": [Function],
       "styledComponentId": "sc-hMqMXs",

@@ -21,19 +21,19 @@ import CheckoutActions from '../molecules/CheckoutActions';
 //   handleContinueShopping: Function,
 // };
 
-const AddedToBag = ({ className, labels }: Props) => {
+const BagPageView = ({ className, labels, totalCount }: Props) => {
   return (
     <div className={className}>
       <Row tagName="header">
         <Col colSize={{ small: 3, medium: 4, large: 6 }} className="left-sec">
           <Heading variant="h6" fontSize="fs16" color="text.primary" className="bag-header">
-            {`${labels.bagHeading} (0)`}
+            {`${labels.bagHeading} (${totalCount})`}
           </Heading>
         </Col>
       </Row>
       <section className="main-sec">
         <Row>
-          <Col colSize={{ small: 4, medium: 4, large: 8 }} className="left-sec">
+          <Col colSize={{ small: 6, medium: 5, large: 8 }} className="left-sec">
             <section className="row-ele">
               <CartItemTile />
             </section>
@@ -51,9 +51,9 @@ const AddedToBag = ({ className, labels }: Props) => {
     </div>
   );
 };
-AddedToBag.propTypes = {
+BagPageView.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-export default withStyles(AddedToBag, styles);
-export { AddedToBag as AddedToBagVanilla };
+export default withStyles(BagPageView, styles);
+export { BagPageView as BagPageViewVanilla };
