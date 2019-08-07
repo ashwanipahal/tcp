@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { Image } from '@tcp/core/src/components/common/atoms';
-import { BrandTabs, PromotionalArea } from '../..';
+import { BrandTabs, CountrySelector, PromotionalArea } from '../..';
 import HeaderTopNavStyle from '../HeaderTopNav.style';
 
 const HeaderTopNav = ({ className, brandTabs, promoMessageWrapper }) => {
@@ -17,11 +17,16 @@ const HeaderTopNav = ({ className, brandTabs, promoMessageWrapper }) => {
           <PromotionalArea mobile={false} data={promoMessageWrapper} />
         </div>
         <div className="header-topnav__track-order">
-          <div>Track Order</div>
-          <div>
-            <Image src="/static/images/" />
-            EN | ES
-          </div>
+          <CountrySelector />
+          <BodyCopy
+            component="div"
+            color="gray.900"
+            className="track-order"
+            fontFamily="secondary"
+            fontSize="fs12"
+          >
+            Track Order
+          </BodyCopy>
         </div>
       </div>
     </div>
