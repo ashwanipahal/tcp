@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Bag page Container should render Added to Bag view section 1`] = `
-<Styled(AddedToBag)
+<Styled(BagPageView)
   labels={Object {}}
 />
 `;
