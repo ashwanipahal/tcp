@@ -46,7 +46,7 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
     predefinedPlacesAlwaysVisible={false}
     query={
       Object {
-        "key": "AIzaSyDuU66iTcoX2TISQsJV7LrZZeOhIGDDlRw",
+        "key": undefined,
         "language": "en",
         "types": "(cities)",
       }
@@ -56,10 +56,10 @@ exports[`AutoCompleteComponent Native should render correctly 1`] = `
     styles={
       Object {
         "description": Object {
-          "fontWeight": "bold",
+          "fontWeight": "700",
         },
         "listView": Object {
-          "backgroundColor": "white",
+          "backgroundColor": "#ffffff",
           "opacity": 1,
           "zIndex": 3,
         },
