@@ -5,7 +5,7 @@ import { GooglePlacesInput } from '../AutoCompleteComponent.native';
 describe('AutoCompleteComponent Native', () => {
   let component;
   beforeEach(() => {
-    component = shallow(<GooglePlacesInput text="test" />);
+    component = shallow(<GooglePlacesInput headerTitle="test" />);
   });
 
   it('should be defined', () => {

@@ -99,7 +99,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
           <Field
             id="addressLine1"
             name="addressLine1"
-            label={labels.acc_lbl_address_line1}
+            headerTitle={labels.acc_lbl_address_line1}
             component={GooglePlacesInput}
             dataLocator="addnewaddress-addressl1"
           />

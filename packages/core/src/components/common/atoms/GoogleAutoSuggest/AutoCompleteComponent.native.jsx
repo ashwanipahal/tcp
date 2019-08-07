@@ -14,14 +14,14 @@ import {
 } from './AutoCompleteComponent.native.style';
 
 export const GooglePlacesInput = props => {
-  const { label } = props;
+  const { headerTitle } = props;
   const [focussed, setFocussed] = useState(false);
   const onFocus = () => {
     setFocussed(true);
   };
   return (
     <Container>
-      {focussed || <StyledLabel>{label}</StyledLabel>}
+      {focussed || <StyledLabel>{headerTitle}</StyledLabel>}
       <GooglePlacesAutocomplete
         placeholder={null}
         suppressDefaultStyles
@@ -65,11 +65,11 @@ export const GooglePlacesInput = props => {
 };
 
 GooglePlacesInput.propTypes = {
-  label: PropTypes.string,
+  headerTitle: PropTypes.string,
 };
 
 GooglePlacesInput.defaultProps = {
-  label: '',
+  headerTitle: '',
 };
 
 export default GooglePlacesInput;

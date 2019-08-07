@@ -2,7 +2,9 @@
 
 exports[`AutoCompleteComponent Native should render correctly 1`] = `
 <Styled(View)>
-  <Styled(Text) />
+  <Styled(Text)>
+    test
+  </Styled(Text)>
   <GooglePlacesAutocomplete
     GooglePlacesSearchQuery={
       Object {
