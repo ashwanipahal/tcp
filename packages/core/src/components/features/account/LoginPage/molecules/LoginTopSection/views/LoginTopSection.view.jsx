@@ -15,8 +15,12 @@ const LoginTopSection = ({ labels, className, isCanada }) => {
   return (
     <BodyCopy component="div" textAlign="center" className={className}>
       {!isCanada && (
-        <BodyCopy component="div" textAlign="center">
-          <ImageComp src={getIconPath('my-place-rewards')} className="logo elem-mb-LRG" />
+        <BodyCopy component="div" textAlign="center" className="bordered">
+          <ImageComp
+            src={getIconPath('my-place-rewards')}
+            className="logo elem-mb-LRG"
+            data-locator="login-mprbanner"
+          />
         </BodyCopy>
       )}
       <BodyCopy component="div" className="bordered elem-pt-MED elem-pb-LRG">
