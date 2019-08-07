@@ -52,9 +52,9 @@ const generateSessionId = apiConfig => {
  * @returns {Object} returns derived request object and request url
  */
 const getRequestParams = (apiConfig, reqObj) => {
-  const { proto, domain, catalogId, storeId, langId, isMobile } = apiConfig;
+  const { domain, catalogId, storeId, langId, isMobile } = apiConfig;
   const deviceType = isMobile ? 'mobile' : 'desktop'; // TODO - Make it general for Mobile, APP, Desktop
-  const requestUrl = `${proto}${domain}${reqObj.webService.URI}`;
+  const requestUrl = `${domain}${reqObj.webService.URI}`;
   const reqHeaders = {
     langId,
     storeId,

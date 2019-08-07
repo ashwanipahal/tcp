@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { SmsSignupModalVanilla } from '../views/SmsSignupModal.view';
 
-describe('EmailSignupModal component', () => {
+describe('SMSSignupModal component', () => {
   it('renders correctly', () => {
     const props = {
       buttonConfig: {},

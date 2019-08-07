@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyRewards should render correctly 1`] = `
+<Styled(PlaceRewardsSection)
+  className=""
+  labels={
+    Object {
+      "common": Object {},
+      "myPlaceRewards": Object {},
+    }
+  }
+/>
+`;

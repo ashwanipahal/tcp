@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { FlatList } from 'react-native';
-import { getLocator, getScreenWidth, UrlHandler } from '../../../../../utils/utils.native';
+import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
 import { Image, BodyCopy, Anchor } from '../../../atoms';
 import PromoBanner from '../../PromoBanner/views/PromoBanner.native';
 import LinkText from '../../LinkText';
@@ -46,44 +46,43 @@ const renderItem = (item, navigation) => {
     index,
   } = item;
   return (
-    <ChildContainer
-      onPress={() => {
-        UrlHandler(link.url);
-      }}
+    <Anchor
+      url={link.url}
+      navigation={navigation}
+      external={link.external}
       data-locator={`${getLocator('moduleL_tiles')}${index + 1}`}
     >
-      <Image
-        url={image.url}
-        height={127}
-        crop={image.crop_m}
-        data-locator={`${getLocator('moduleL_image')}${index + 1}`}
-      />
-      <MessageContainer>
-        <BodyCopyContainer width={width}>
-          <BodyCopy
-            fontSize="fs20"
-            color="black"
-            letterSpacing="ls222"
-            text={image.alt}
-            onPress={() => {
-              UrlHandler(link.url);
-            }}
-            data-locator={`${getLocator('moduleL_title')}${index + 1}`}
-          />
-        </BodyCopyContainer>
-        <LinkContainer>
-          <Anchor
-            fontSizeVariation="xlarge"
-            text={link.text}
-            visible={anchorIcon}
-            url={link.url}
-            navigation={navigation}
-            external={link.external}
-            data-locator={`${getLocator('moduleL_link')}${index + 1}`}
-          />
-        </LinkContainer>
-      </MessageContainer>
-    </ChildContainer>
+      <ChildContainer>
+        <Image
+          url={image.url}
+          height={127}
+          crop={image.crop_m}
+          data-locator={`${getLocator('moduleL_image')}${index + 1}`}
+        />
+        <MessageContainer>
+          <BodyCopyContainer width={width}>
+            <BodyCopy
+              fontSize="fs20"
+              color="black"
+              letterSpacing="ls222"
+              text={image.alt}
+              data-locator={`${getLocator('moduleL_title')}${index + 1}`}
+            />
+          </BodyCopyContainer>
+          <LinkContainer>
+            <Anchor
+              fontSizeVariation="xlarge"
+              text={link.text}
+              visible={anchorIcon}
+              url={link.url}
+              navigation={navigation}
+              external={link.external}
+              data-locator={`${getLocator('moduleL_link')}${index + 1}`}
+            />
+          </LinkContainer>
+        </MessageContainer>
+      </ChildContainer>
+    </Anchor>
   );
 };
 

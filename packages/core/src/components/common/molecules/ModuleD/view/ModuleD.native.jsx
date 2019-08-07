@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { FlatList, TouchableOpacity } from 'react-native';
-import { getLocator, getScreenWidth, UrlHandler } from '../../../../../utils/utils.native';
+import { getLocator, getScreenWidth, UrlHandler } from '../../../../../utils/index.native';
 import { Anchor, Button, Image } from '../../../atoms';
 import PromoBanner from '../../PromoBanner/views/PromoBanner.native';
 import { ButtonWrapper, Tile, Wrapper } from '../ModuleD.style.native';

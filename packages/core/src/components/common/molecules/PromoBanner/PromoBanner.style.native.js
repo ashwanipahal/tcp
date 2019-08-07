@@ -1,21 +1,14 @@
-import styled from 'styled-components/native';
+import styled from 'styled-components';
 
-export const StyledText = styled.Text`
-  font-family: ${props => props.theme.typography.fonts.primary};
-  ${props =>
-    props.style === 'style1'
-      ? `
-      color: ${props.theme.colorPalette.gray['900']};
-      font-size: ${props.theme.typography.fontSizes.fs42};
-    `
-      : `
-      color: ${props.theme.colorPalette.black};
-      font-weight: ${props.theme.typography.fontWeights.black}};
-      font-size: ${props.theme.typography.fontSizes.fs70};
-    `};
+import BodyCopy from '../../atoms/BodyCopy';
+
+const StyledBodyCopy = styled(BodyCopy)`
+  ${({ lineHeight }) => (lineHeight ? `line-height: ${lineHeight}` : '')}
   text-align: center;
 `;
 
+export { StyledBodyCopy as BodyCopy };
+
 export default {
-  StyledText,
+  StyledBodyCopy: BodyCopy,
 };

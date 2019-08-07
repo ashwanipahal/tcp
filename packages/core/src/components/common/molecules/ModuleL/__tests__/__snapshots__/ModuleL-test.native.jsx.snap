@@ -34,7 +34,7 @@ exports[`ModuleLVanilla ModuleL should render correctly 1`] = `
     textAlign="center"
     type="heading"
   />
-  <PromoTextBanner
+  <PromoBanner
     data-locator="moduleL_promobanner_text"
     promoBanner={
       Array [

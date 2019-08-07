@@ -23,6 +23,7 @@ module.exports = {
   collectCoverageFrom: [
     '**/core/**/*.native.js',
     '**/core/**/*.native.jsx',
+    '**/core/**/*.app.js',
     '**/mobileapp/**/*.js',
     '**/mobileapp/**/*.jsx',
     '!**/*.style.js',
@@ -42,6 +43,7 @@ module.exports = {
     'mock.js',
     '/flow-typed/',
     '/pages/',
+    '/__mocks__/',
   ],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],
   snapshotSerializers: ['enzyme-to-json/serializer'],

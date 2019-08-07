@@ -10,13 +10,22 @@ import CreditCardList from '../CreditCardList.view';
 
 describe('Payment View', () => {
   it('should render correctly', () => {
-    const tree = shallow(<PaymentViewVanilla labels={{ giftCard: 'Payment' }} className="" />);
+    const tree = shallow(
+      <PaymentViewVanilla
+        labels={{ giftCard: 'Payment', paymentGC: {}, account: {} }}
+        className=""
+      />
+    );
     expect(tree).toMatchSnapshot();
     expect(tree.find(BodyCopy)).toHaveLength(1);
   });
   it('should render correctly with error', () => {
     const tree = shallow(
-      <PaymentViewVanilla labels={{ giftCard: 'Payment' }} className="" showNotification="error" />
+      <PaymentViewVanilla
+        labels={{ giftCard: 'Payment', paymentGC: {}, account: {} }}
+        className=""
+        showNotification="error"
+      />
     );
     expect(tree).toMatchSnapshot();
     expect(tree.find(Notification)).toHaveLength(1);
@@ -24,7 +33,7 @@ describe('Payment View', () => {
   it('should render correctly with success', () => {
     const tree = shallow(
       <PaymentViewVanilla
-        labels={{ giftCard: 'Payment' }}
+        labels={{ giftCard: 'Payment', paymentGC: {}, account: {} }}
         className=""
         showNotification="success"
       />
@@ -60,7 +69,7 @@ describe('Payment View', () => {
     ]);
     const tree = shallow(
       <PaymentViewVanilla
-        labels={{ paymentHeading: 'Payment' }}
+        labels={{ paymentHeading: 'Payment', paymentGC: {}, account: {} }}
         className=""
         showNotification="success"
         cardList={cardList}

@@ -2,6 +2,7 @@ import gql from 'graphql-tag';
 import QueryBuilder from '../queryBuilder';
 import LayoutQuery from '../layout/layout.query';
 
+jest.mock('../../../../../utils/utils.web');
 jest.mock(`../../../../../utils/utils`);
 
 const testQuery = LayoutQuery.getQuery({

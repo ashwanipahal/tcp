@@ -37,6 +37,7 @@ const FooterTopCandidateB = props => {
             customStyle="shadow-button"
             title={emailSignup.title}
             onClick={openEmailSignUpModal}
+            dataLocator="footer_email_signup_btn"
           >
             <RichText richTextHtml={emailSignup.text} />
           </Button>

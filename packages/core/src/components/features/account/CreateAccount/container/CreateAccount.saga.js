@@ -3,7 +3,7 @@ import CREATE_ACCOUNT_CONSTANTS from '../CreateAccount.constants';
 import fetchData from '../../../../../service/API';
 import { getUserInfo } from '../../LoginPage/container/LoginPage.actions';
 import endpoints from '../../../../../service/endpoint';
-import { routerPush } from '../../../../../utils/utils';
+import { routerPush } from '../../../../../utils';
 import { closeOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
 import { createAccountErr } from './CreateAccount.actions';
 
@@ -57,7 +57,7 @@ export function* createAccount({ payload }) {
     const resErr = errorMessage(res);
     return yield put(createAccountErr(resErr));
   } catch (err) {
-    return yield put(createAccountErr(err));
+    return yield put(createAccountErr('Internal Server Error'));
   }
 }
 
