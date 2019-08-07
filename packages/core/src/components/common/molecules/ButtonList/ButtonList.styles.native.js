@@ -7,15 +7,15 @@ export const ScrollViewContainer = styled.View`
 `;
 
 export const TextLiksViewContainer = styled.View`
-  align-items: center;
   padding-left: 16px;
 `;
 
 export const Wrapper = styled.View`
   width: 100%;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  align-self: center;
+  justify-content: space-between;
+  padding-right: 16px;
 `;
 
 export const DivImageContainer = styled.View`

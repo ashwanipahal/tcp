@@ -16,19 +16,22 @@ type Props = {
   navigation: Object,
   buttonListVariation: string,
   navigation: Object,
-  item: Object[],
+  divImageCTACarousel: Object[],
+  linkList: Object[],
+  scrollCTAButtons: Object[],
 };
 
 /**
- * This is a button style. The two variations of buttons width
+ * These are button styles.
  */
 const buttonWidth = { width: getScreenWidth() / 2 };
 const buttonFullWidth = { width: getScreenWidth() };
 
+// Key extractor for flat list
 const keyExtractor = (_, index) => index.toString();
 
 /**
- * This can be render stackCTA Button view with equal width  .
+ * This function is used to render button either full-width or half
  */
 const renderItem = (item, navigation, showFullWidth) => {
   return (
@@ -44,38 +47,21 @@ const renderItem = (item, navigation, showFullWidth) => {
 };
 
 /**
- * This can be renderFull stackCTA Button view with equal width  .
+ * This function is used to render Even number of Buttons into Grid
  */
-const renderFullItem = (item, navigation) => {
-  return (
-    <Button
-      buttonVariation="cautionary-button"
-      text={item.item.text}
-      color="red"
-      style={buttonWidth}
-      url={item.item.url}
-      navigation={navigation}
-    />
-  );
-};
-
-/**
- * This can be render stackCTA Button view with equal width  .
- */
-
-const renderFlatList = (updatedCtxButton, navigation) => {
+const renderEvenButtonGrid = (updatedCtxButton, navigation) => {
   return (
     <FlatList
       numColumns={2}
       keyExtractor={keyExtractor}
       data={updatedCtxButton}
-      renderItem={item => renderFullItem(item, navigation)}
+      renderItem={({ item }) => renderItem(item, navigation, false)}
     />
   );
 };
 
 /**
- * This can be renderItem of the StackCTA Button view with odd or even concept .
+ * This function is used to render Odd number of Buttons into Grid
  */
 const renderOddButtonGrid = (ctxButton, navigation) => {
   const updatedCtxButton = ctxButton.slice();
@@ -83,14 +69,14 @@ const renderOddButtonGrid = (ctxButton, navigation) => {
   const showFullWidth = true;
   return (
     <Container>
-      {renderFlatList(updatedCtxButton, navigation)}
+      {renderEvenButtonGrid(updatedCtxButton, navigation)}
       {renderItem(item, navigation, showFullWidth)}
     </Container>
   );
 };
 
 /**
- * This can be renderItem of the scroll Button view .
+ * This function is used to render a single button in scroll Button view .
  */
 const scrollViewRenderItem = (item, navigation) => {
   return (
@@ -107,7 +93,7 @@ const scrollViewRenderItem = (item, navigation) => {
 };
 
 /**
- * This can be render the Scroll ButtonList view .
+ * This function is used to generate Scroll ButtonList view .
  */
 const renderScrollView = (ctxButton, navigation) => {
   const isHorizontalScroll = true;
@@ -124,10 +110,10 @@ const renderScrollView = (ctxButton, navigation) => {
 };
 
 /**
- * This can be renderItem of the LinkText view .
+ * This function is used to generate links for LinkText view .
  */
 const linkTextViewRenderItem = (item, navigation) => {
-  const style = { borderBottomWidth: 3, borderColor: 'white' };
+  const style = { borderBottomWidth: 2, borderColor: 'white' };
   return (
     <TextLiksViewContainer>
       <Anchor
@@ -144,9 +130,9 @@ const linkTextViewRenderItem = (item, navigation) => {
 };
 
 /**
- * This can be render the LinkText view .
+ * This function is used to generate LinkText view .
  */
-const rendeLinkTextView = (ctxButton, navigation) => {
+const renderLinkTextView = (ctxButton, navigation) => {
   const isHorizontalScroll = true;
   const isScrollIndicator = false;
 
@@ -164,7 +150,7 @@ const rendeLinkTextView = (ctxButton, navigation) => {
 };
 
 /**
- * This can be renderItem of the DivImageCTA view .
+ * This function is used to generate links for DivImageCTA view .
  */
 const divImageRenderItem = (item, navigation) => {
   const style = { borderRadius: 70 / 2 };
@@ -178,7 +164,7 @@ const divImageRenderItem = (item, navigation) => {
         <Image url={image.url} height={70} width={70} style={style} />
         <BodyCopy
           fontFamily="secondary"
-          fontSize="fs13"
+          fontSize="fs14"
           color="white"
           letterSpacing="black"
           text={link.text}
@@ -190,7 +176,7 @@ const divImageRenderItem = (item, navigation) => {
 };
 
 /**
- * This can be render the DivImageCTA view .
+ * This function is used to generate DivImageCTA view .
  */
 const renderDivImageCTA = (ctxButton, navigation) => {
   const isHorizontalScroll = true;
@@ -215,14 +201,19 @@ const renderDivImageCTA = (ctxButton, navigation) => {
  * 4. divImageCTA: Takes the list of combination of image & text .
  */
 
-const ButtonList = ({ buttonListVariation, navigation, ...otherProps }: Props) => {
-  const { stackedCTAButtons, divImageCTACarousel, linkList, scrollCTAButtons } = otherProps;
-
+const ButtonList = ({
+  buttonListVariation,
+  navigation,
+  stackedCTAButtons,
+  divImageCTACarousel,
+  linkList,
+  scrollCTAButtons,
+}: Props) => {
   if (buttonListVariation === 'stackedCTAList') {
     const isEvenButtonGrid = stackedCTAButtons.length % 2 === 0;
     return (
       <Container>
-        {isEvenButtonGrid && renderFlatList(stackedCTAButtons, navigation)}
+        {isEvenButtonGrid && renderEvenButtonGrid(stackedCTAButtons, navigation)}
         {!isEvenButtonGrid && renderOddButtonGrid(stackedCTAButtons, navigation)}
       </Container>
     );
@@ -233,7 +224,7 @@ const ButtonList = ({ buttonListVariation, navigation, ...otherProps }: Props) =
   }
 
   if (buttonListVariation === 'linkCTAList') {
-    return <Container>{rendeLinkTextView(linkList, navigation)}</Container>;
+    return <Container>{renderLinkTextView(linkList, navigation)}</Container>;
   }
 
   if (buttonListVariation === 'imageCTAList') {
