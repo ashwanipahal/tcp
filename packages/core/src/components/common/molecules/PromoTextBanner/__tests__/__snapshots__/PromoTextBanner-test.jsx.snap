@@ -11,18 +11,6 @@ exports[`Promo Text Banner component renders correctly 1`] = `
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "children": null,
-        "className": null,
-        "color": "text.primary",
-        "component": "p",
-        "fontFamily": "primary",
-        "fontSize": 12,
-        "fontWeight": "regular",
-        "letterSpacing": "normal",
-        "lineHeight": "normal",
-        "textAlign": "left",
-      },
       "attrs": Array [],
       "componentStyle": ComponentStyle {
         "componentId": "sc-bZQynM",
@@ -41,6 +29,18 @@ exports[`Promo Text Banner component renders correctly 1`] = `
           ";
 ",
         ],
+      },
+      "defaultProps": Object {
+        "children": null,
+        "className": null,
+        "color": "text.primary",
+        "component": "p",
+        "fontFamily": "primary",
+        "fontSize": 12,
+        "fontWeight": "regular",
+        "letterSpacing": "normal",
+        "lineHeight": "normal",
+        "textAlign": "left",
       },
       "displayName": "Styled(BodyCopy)",
       "foldedComponentIds": Array [],
@@ -63,7 +63,7 @@ exports[`Promo Text Banner component renders correctly 1`] = `
     ALL DINOS
   </span>
   <span
-    className="promo-text text-black"
+    className="promo-text style3"
   >
      50% OFF
   </span>

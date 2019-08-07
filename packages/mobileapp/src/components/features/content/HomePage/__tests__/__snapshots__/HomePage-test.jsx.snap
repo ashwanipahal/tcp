@@ -9,5 +9,6 @@ exports[`HomePageView should render correctly 1`] = `
     className="moduleH"
   />
   <SlotC />
+  <SlotD />
 </ScrollViewMock>
 `;

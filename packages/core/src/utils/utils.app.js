@@ -1,4 +1,6 @@
 // eslint-disable-next-line import/no-unresolved
+import { NavigationActions } from 'react-navigation';
+// eslint-disable-next-line import/no-unresolved
 import { Dimensions, Linking } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
 import AsyncStorage from '@react-native-community/async-storage';
@@ -155,6 +157,29 @@ export const navigateToPage = (url, navigation) => {
     default:
       return null;
   }
+};
+
+/**
+ * @function: navigateToNestedRoute
+ * This method responsible for navigate between different stacks/routes. Now don’t need to make the same routes entry in the multiple stacks
+ * @param {Object} _navigation - navigation
+ * @param {Object} _stackName - navigation stack
+ * @param {Object} _routeName - route name
+ * @param {Object} params - params
+ */
+export const navigateToNestedRoute = (_navigation, _stackName, _routeName, params) => {
+  return (
+    _navigation &&
+    _navigation.dispatch(
+      NavigationActions.navigate({
+        routeName: _stackName,
+        action: NavigationActions.navigate({
+          routeName: _routeName,
+          params,
+        }),
+      })
+    )
+  );
 };
 
 /**

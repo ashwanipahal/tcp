@@ -1,9 +1,11 @@
 import React from 'react';
-import { Animated, Easing, View } from 'react-native';
+import { Animated, Easing, View, Platform } from 'react-native';
 import { getScreenHeight } from '@tcp/core/src/utils';
 
 import { getAppSplashLogo, AppAnimationConfig } from '../utils/utils';
 import styles from './styles/AppSplash.styles';
+
+const yTranslate = Platform.OS === 'android' ? 70 : 35;
 
 /**
  * This class creates a Peek a boo effect animation after showing app splash screen
@@ -69,7 +71,7 @@ class AppSplash extends React.PureComponent<Props> {
     {
       translateY: this.transformAnimatedValue.interpolate({
         inputRange: [0, 1],
-        outputRange: [0, getScreenHeight() / 2 - 35],
+        outputRange: [0, getScreenHeight() / 2 - yTranslate],
       }),
     },
     {

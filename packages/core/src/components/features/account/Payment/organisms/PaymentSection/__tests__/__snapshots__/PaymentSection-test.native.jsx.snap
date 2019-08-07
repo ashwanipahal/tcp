@@ -139,8 +139,13 @@ exports[`Payment View should render correctly with cardList 1`] = `
         }
       }
     />
-    <Styled(MoneyCards)
-      creditCardList={
+    <Styled(Cards)
+      cardImage={
+        Object {
+          "testUri": "../../../src/assets/images/credit-card.png",
+        }
+      }
+      cardList={
         Immutable.List [
           Object {
             "accountNo": "************1111",
@@ -174,9 +179,15 @@ exports[`Payment View should render correctly with cardList 1`] = `
           "paymentHeading": "Payment",
         }
       }
+      setDefaultPaymentMethod={null}
     />
-    <Styled(GiftCards)
-      giftCardList={
+    <Styled(Cards)
+      cardImage={
+        Object {
+          "testUri": "../../../src/assets/images/gift-card.png",
+        }
+      }
+      cardList={
         Immutable.List [
           Object {
             "accountNo": "************1111",
@@ -210,6 +221,7 @@ exports[`Payment View should render correctly with cardList 1`] = `
           "paymentHeading": "Payment",
         }
       }
+      setDefaultPaymentMethod={null}
     />
   </ScrollViewMock>
 </View>

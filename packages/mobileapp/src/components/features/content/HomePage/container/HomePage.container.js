@@ -7,6 +7,7 @@ const mapStateToProps = state => {
   const homepageSlots = state.Layouts.homepage ? state.Layouts.homepage.slots : '';
   const modules = state.Modules ? state.Modules : '';
   const moduleSlots = {};
+
   if (homepageSlots && Object.keys(modules).length) {
     homepageSlots.forEach(slotItem => {
       moduleSlots[slotItem.name] = modules[slotItem.contentId];
