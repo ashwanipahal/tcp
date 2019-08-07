@@ -22,7 +22,7 @@ const TouchableHeader = styled.TouchableHighlight.attrs({
 const PanelBody = styled.View`
   overflow: hidden;
   flex: 1;
-  padding: 10px;
+  padding: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 export { PanelContainer, TitleContainer, TouchableHeader, PanelBody };
