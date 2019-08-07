@@ -7,11 +7,6 @@ export const getCouponList = payload => {
   };
 };
 
-export const setCouponList = couponList => ({
-  type: COUPON_CONSTANTS.SET_COUPON_LIST,
-  couponList,
-});
-
 export const showLoader = () => ({
   type: COUPON_CONSTANTS.SHOW_LOADER,
 });

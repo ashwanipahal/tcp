@@ -46,7 +46,7 @@ class CouponListSection extends React.Component<Props> {
     return (
       <div className={className}>
         <div className="couponList__title">
-          {couponList.size && (
+          {couponList.size > 0 && (
             <BodyCopy
               className="couponList__heading"
               fontWeight="semibold"
@@ -56,7 +56,7 @@ class CouponListSection extends React.Component<Props> {
               {`${heading} (${couponList.size})`}
             </BodyCopy>
           )}
-          {helpSubHeading && (
+          {helpSubHeading && couponList.size > 0 && (
             <div className="couponList__iconContainer">
               <div className="couponList__helpIcon">?</div>
               <Anchor

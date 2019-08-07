@@ -1,5 +1,6 @@
 import { fromJS, List } from 'immutable';
 import COUPON_CONSTANTS from '../Coupon.constants';
+import BAGPAGE_CONSTANTS from '../../BagPage/BagPage.constants';
 import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../utils/cache.util';
 
 const initialState = fromJS({
@@ -20,10 +21,10 @@ const CouponReducer = (state = initialState, action) => {
   switch (action.type) {
     case COUPON_CONSTANTS.SHOW_LOADER:
       return state.set('isFetching', true);
-    case COUPON_CONSTANTS.SET_COUPON_LIST:
+    case BAGPAGE_CONSTANTS.SET_COUPONS_DATA:
       return state
         .set('isFetching', false)
-        .set('couponsAndOffers', List(action.couponList))
+        .set('couponsAndOffers', List(action.payload))
         .set(DEFAULT_REDUCER_KEY, setCacheTTL(COUPON_CONSTANTS.GET_COUPON_LIST_TTL));
     default:
       return getDefaultState(state);
