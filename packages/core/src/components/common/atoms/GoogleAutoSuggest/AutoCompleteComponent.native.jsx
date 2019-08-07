@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PropTypes } from 'prop-types';
 // eslint-disable-next-line import/no-unresolved
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { getAPIConfig } from '@tcp/core/src/utils';
 import {
   StyledLabel,
   textInput,
@@ -19,6 +20,9 @@ export const GooglePlacesInput = props => {
   const onFocus = () => {
     setFocussed(true);
   };
+  const apiConfigObj = getAPIConfig();
+  // eslint-disable-next-line
+  const { map_api_key } = apiConfigObj;
   return (
     <Container>
       {focussed || <StyledLabel>{headerTitle}</StyledLabel>}
@@ -37,7 +41,7 @@ export const GooglePlacesInput = props => {
         }}
         getDefaultValue={() => ''}
         query={{
-          key: 'AIzaSyDuU66iTcoX2TISQsJV7LrZZeOhIGDDlRw',
+          key: map_api_key,
           language: 'en', // language of the results
           types: '(cities)', // default: 'geocode'
         }}

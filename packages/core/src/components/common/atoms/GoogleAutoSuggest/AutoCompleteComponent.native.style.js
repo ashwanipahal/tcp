@@ -1,4 +1,6 @@
 import styled from 'styled-components/native';
+import colors from '@tcp/core/styles/themes/TCP/colors';
+import Fonts from '@tcp/core/styles/themes/TCP/fonts';
 
 const StyledLabel = styled.Text`
   position: absolute;
@@ -8,7 +10,7 @@ const StyledLabel = styled.Text`
     !props.isFocused
       ? props.theme.typography.fontSizes.fs14
       : props.theme.typography.fontSizes.fs10};
-  color: #1a1a1a;
+  color: ${props => props.theme.colors.PRIMARY.DARK};
   font-weight: ${props =>
     !props.isFocused
       ? props.theme.typography.fontWeights.regular
@@ -24,7 +26,7 @@ const Container = styled.View`
 
 const textInput = {
   borderBottomWidth: 1,
-  borderBottomColor: '#c3c3c3',
+  borderBottomColor: `${colors.FOOTER.DIVIDER}`,
   height: 40,
   paddingTop: 16,
   paddingBottom: 0,
@@ -35,19 +37,19 @@ const textInputContainer = {
 };
 
 const description = {
-  fontWeight: 'bold',
+  fontWeight: `${Fonts.fontWeight.bold}`,
 };
 
 const listView = {
   zIndex: 3,
-  backgroundColor: 'white',
+  backgroundColor: `${colors.WHITE}`,
   opacity: 1,
 };
 
 const separator = {
   padding: 2,
   borderBottomWidth: 1,
-  borderBottomColor: '#c3c3c3',
+  borderBottomColor: `${colors.FOOTER.DIVIDER}`,
 };
 
 const poweredContainer = {
