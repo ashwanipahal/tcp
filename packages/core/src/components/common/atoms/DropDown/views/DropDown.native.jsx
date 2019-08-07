@@ -67,9 +67,17 @@ class DropDown extends React.PureComponent<Props> {
       return item.value === selectedValue;
     });
 
+    let selectedLabelState;
+    if (selectedValue) {
+      if (selectedObject[0]) selectedLabelState = selectedObject[0].label;
+      else selectedLabelState = selectedValue;
+    } else {
+      selectedLabelState = data[0].label;
+    }
+
     this.state = {
       dropDownIsOpen: false,
-      selectedLabelState: selectedValue ? selectedObject[0].label : data[0].label,
+      selectedLabelState,
     };
   }
 
@@ -87,7 +95,14 @@ class DropDown extends React.PureComponent<Props> {
    */
   dropDownLayout = ({ item }) => {
     const { variation, itemStyle } = this.props;
-    const { label } = item;
+    const { displayName, fullName } = item;
+    let { label } = item;
+    if (!label) {
+      if (fullName) label = fullName;
+      else {
+        label = displayName;
+      }
+    }
     return (
       <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)} style={itemStyle}>
         <BodyCopy
@@ -106,12 +121,17 @@ class DropDown extends React.PureComponent<Props> {
    * Handle the drop down item click
    */
   onDropDownItemClick = item => {
-    const { label, value } = item;
+    let { label, value } = item;
+    const { id, displayName, fullName } = item;
+    if (!label) {
+      if (fullName) label = fullName;
+      else label = displayName;
+    }
+    if (!value) value = id;
     this.setState({
       dropDownIsOpen: false,
       selectedLabelState: label,
     });
-
     // pass the callback here with value
     const { onValueChange } = this.props;
     if (onValueChange) onValueChange(value);
