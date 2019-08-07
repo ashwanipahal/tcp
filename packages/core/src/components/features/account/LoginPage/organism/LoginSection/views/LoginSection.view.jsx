@@ -9,6 +9,7 @@ import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import Button from '../../../../../../common/atoms/Button';
 import styles from './styles/LoginSection.styles';
+import { isCanada } from '../../../../../../../utils';
 
 class LoginSection extends React.PureComponent<Props> {
   constructor(props) {
@@ -16,6 +17,7 @@ class LoginSection extends React.PureComponent<Props> {
     this.state = {
       resetPassword: false,
     };
+    this.isCanada = isCanada();
   }
 
   showForgotPasswordForm = () => {
@@ -48,7 +50,9 @@ class LoginSection extends React.PureComponent<Props> {
           }}
           className="elem-pt-XXL  elem-pl-LRG elem-pr-LRG"
         >
-          {!resetPassword && <LoginTopSection labels={labels} className="elem-mb-LRG" />}
+          {!resetPassword && (
+            <LoginTopSection labels={labels} className="elem-mb-LRG" isCanada={this.isCanada} />
+          )}
           {!resetPassword && (
             <LoginForm
               onSubmit={onSubmit}

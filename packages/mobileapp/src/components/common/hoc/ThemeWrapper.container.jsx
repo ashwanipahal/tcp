@@ -7,7 +7,7 @@ import themeGymboree from '@tcp/core/styles/themes/Gymboree';
 import updateAppType from './ThemeWrapper.actions';
 import { APP_TYPE } from './ThemeWrapper.constants';
 import { getAppType } from './ThemeWrapper.selectors';
-
+import { updateBrandName } from '../../../utils/utils';
 /**
  * @param {string} appType : Props for app type
  * @desc The ThemeWrapper works as a bridge for the for the TCP and  GYMBOREE thems.
@@ -18,6 +18,8 @@ export class ThemeWrapper extends React.PureComponent {
     super(props);
     const { appType, updateAppTypeHandler } = props;
     updateAppTypeHandler(appType);
+    // Update brand name in utils
+    updateBrandName(appType);
   }
 
   /**

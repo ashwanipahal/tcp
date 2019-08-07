@@ -63,7 +63,7 @@ exports[`Promo Text Banner component renders correctly 1`] = `
     ALL DINOS
   </span>
   <span
-    className="promo-text text-black"
+    className="promo-text style3"
   >
      50% OFF
   </span>

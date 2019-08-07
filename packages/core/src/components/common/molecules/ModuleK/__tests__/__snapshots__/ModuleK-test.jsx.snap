@@ -104,7 +104,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-jKJlTe",
+              "componentId": "sc-eNQAEJ",
               "isStatic": false,
               "rules": Array [
                 "
@@ -141,10 +141,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(LinkText))",
             "foldedComponentIds": Array [
-              "sc-kGXeez",
+              "sc-kpOJdX",
             ],
             "render": [Function],
-            "styledComponentId": "sc-jKJlTe",
+            "styledComponentId": "sc-eNQAEJ",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -200,7 +200,7 @@ exports[`ModuleK component renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-dxgOiQ",
+                "componentId": "sc-ckVGcZ",
                 "isStatic": true,
                 "rules": Array [
                   "
@@ -226,7 +226,7 @@ exports[`ModuleK component renders correctly 1`] = `
               "displayName": "Styled(errorBoundaryComponent)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-dxgOiQ",
+              "styledComponentId": "sc-ckVGcZ",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -286,7 +286,7 @@ exports[`ModuleK component renders correctly 1`] = `
                     "text": "ALL DINOS",
                   },
                   Object {
-                    "style": "text-black",
+                    "style": "style3",
                     "text": "50% OFF",
                   },
                 ],
@@ -380,7 +380,7 @@ exports[`ModuleK component renders correctly 1`] = `
                     "text": "ALL DINOS",
                   },
                   Object {
-                    "style": "text-black",
+                    "style": "style3",
                     "text": "50% OFF",
                   },
                 ],
@@ -474,7 +474,7 @@ exports[`ModuleK component renders correctly 1`] = `
                     "text": "ALL DINOS",
                   },
                   Object {
-                    "style": "text-black",
+                    "style": "style3",
                     "text": "50% OFF",
                   },
                 ],
@@ -568,7 +568,7 @@ exports[`ModuleK component renders correctly 1`] = `
                     "text": "ALL DINOS",
                   },
                   Object {
-                    "style": "text-black",
+                    "style": "style3",
                     "text": "50% OFF",
                   },
                 ],

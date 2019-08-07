@@ -89,6 +89,9 @@ export const formValidationMessages = {
     required: `Please enter a valid email`,
     email: 'Email format is invalid.',
   },
+  iAgree: {
+    required: 'Please Select',
+  },
 };
 
 export const formValidationRules = {
@@ -203,6 +206,9 @@ export const formValidationRules = {
     email: true,
   },
   legacyPassword: {
+    required: true,
+  },
+  iAgree: {
     required: true,
   },
 };

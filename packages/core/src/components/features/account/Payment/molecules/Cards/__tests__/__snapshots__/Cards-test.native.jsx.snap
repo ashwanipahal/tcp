@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CardList Component should render correctly 1`] = `
+<View
+  addBtnLabel=""
+  cardImage=""
+  cardList={Immutable.List []}
+  className="abc"
+  description=""
+  emptyBtnLabel=""
+  emptyLabel=""
+  heading=""
+  labels={
+    Object {
+      "common": Object {},
+      "paymentGC": Object {},
+    }
+  }
+  setDefaultPaymentMethod={[MockFunction]}
+>
+  <Styled(Text) />
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(Image)
+        source=""
+      />
+    </Styled(View)>
+    <Styled(Text) />
+  </Styled(View)>
+  <Styled(Text) />
+  <Styled(View)>
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      color="white"
+      customStyle={Object {}}
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      text=""
+      url=""
+    />
+  </Styled(View)>
+</View>
+`;
+
+exports[`CardList Component should render correctly if list is present 1`] = `
+<View
+  addBtnLabel=""
+  cardImage=""
+  cardList={
+    Immutable.List [
+      Object {
+        "accountNo": "************1111",
+        "addressDetails": Object {
+          "addressLine1": "111 3rd Ave",
+          "addressLine2": "",
+          "city": "New York",
+          "country": "US",
+          "firstName": "new",
+          "lastName": "address",
+          "phone1": "9878909876",
+          "state": "NY",
+          "zipCode": "10003",
+        },
+        "billingAddressId": 160685,
+        "ccBrand": "Visa",
+        "ccType": "COMPASSVISA",
+        "creditCardId": 73501,
+        "defaultInd": false,
+        "expMonth": "5 ",
+        "expYear": "2024",
+        "nameOnAccount": ".",
+        "properties": null,
+      },
+    ]
+  }
+  className="abc"
+  description=""
+  emptyBtnLabel=""
+  emptyLabel=""
+  heading=""
+  labels={
+    Object {
+      "common": Object {},
+      "paymentGC": Object {},
+    }
+  }
+  setDefaultPaymentMethod={[MockFunction]}
+>
+  <Styled(Text) />
+  <Styled(View)>
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      color="white"
+      customStyle={Object {}}
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      text=""
+      url=""
+    />
+  </Styled(View)>
+  <CardTile
+    card={
+      Object {
+        "accountNo": "************1111",
+        "addressDetails": Object {
+          "addressLine1": "111 3rd Ave",
+          "addressLine2": "",
+          "city": "New York",
+          "country": "US",
+          "firstName": "new",
+          "lastName": "address",
+          "phone1": "9878909876",
+          "state": "NY",
+          "zipCode": "10003",
+        },
+        "billingAddressId": 160685,
+        "ccBrand": "Visa",
+        "ccType": "COMPASSVISA",
+        "creditCardId": 73501,
+        "defaultInd": false,
+        "expMonth": "5 ",
+        "expYear": "2024",
+        "nameOnAccount": ".",
+        "properties": null,
+      }
+    }
+    labels={
+      Object {
+        "common": Object {},
+        "paymentGC": Object {},
+      }
+    }
+    setDefaultPaymentMethod={[MockFunction]}
+  />
+</View>
+`;

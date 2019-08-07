@@ -16,7 +16,6 @@ type Props = {
   isMakeDefaultDisabled: string,
   handleSubmit: string,
   labels: string,
-  isIAgreeChecked: boolean,
   hideShowPwd: boolean,
   confirmHideShowPwd: boolean,
   onAlreadyHaveAnAccountClick: any,
@@ -26,7 +25,6 @@ type Props = {
 let CreateAccountForm = ({
   isMakeDefaultDisabled,
   labels,
-  isIAgreeChecked,
   hideShowPwd,
   confirmHideShowPwd,
   handleSubmit,
@@ -213,7 +211,6 @@ let CreateAccountForm = ({
               fill="BLUE"
               type="submit"
               data-locator="create-account-btn"
-              disabled={!isIAgreeChecked}
             >
               {labels.registration.lbl_createAccount_createAccount}
             </Button>
@@ -243,6 +240,7 @@ const validateMethod = createValidateMethod(
     'confirmEmailAddress',
     'password',
     'confirmPassword',
+    'iAgree',
   ])
 );
 
