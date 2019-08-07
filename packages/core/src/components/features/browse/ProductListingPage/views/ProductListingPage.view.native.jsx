@@ -10,6 +10,7 @@ import { getImgPath } from '../../ProductListingPage/util/utility';
 import ProductListingPageStyle from '../styles/ProductListingPage.style.native';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
 import ProductTile from '../molecules/ProductTile.view.native';
+import OrderLedgerContainer from '../../../CnC/BagPage/organisms/OrderLedger';
 
 export class ProductListView extends React.Component {
   addToBagEcom = (product, quantity, brand, formData) => {
@@ -46,6 +47,7 @@ export class ProductListView extends React.Component {
 
     return (
       <React.Fragment>
+        <OrderLedgerContainer />
         <Text style={{ fontWeight: 'bold', textAlign: 'center', fontSize: 30 }}>PLP-Page</Text>
         <FlatList
           className="product-wrapper"

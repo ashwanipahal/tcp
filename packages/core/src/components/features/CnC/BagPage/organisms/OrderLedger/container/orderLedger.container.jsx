@@ -78,7 +78,7 @@ function mapStateToProps(state) {
     orderBalanceTotal: getGrandTotal(state) - getGiftCardsTotal(state),
     totalOrderSavings: getTotalOrderSavings(state),
     currencySymbol: '$',
-    labels: getOrderLedgerLabels(state),
+    labels: {}, //getOrderLedgerLabels(state),
   };
 }
 
