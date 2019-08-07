@@ -15,6 +15,8 @@ type Props = {
   giftCardList: object,
   cardList: object,
   venmoCardList: object,
+  onGetBalanceCard: Function,
+  checkbalanceValueInfo: any,
 };
 
 const PaymentView = (props: Props) => {
@@ -25,6 +27,8 @@ const PaymentView = (props: Props) => {
     cardList,
     setDefaultPaymentMethod,
     venmoCardList,
+    onGetBalanceCard,
+    checkbalanceValueInfo,
   } = props;
   return (
     <View {...props}>
@@ -64,6 +68,8 @@ const PaymentView = (props: Props) => {
             emptyBtnLabel={labels.paymentGC.lbl_payment_GCEmptyAddBtn}
             addBtnLabel={labels.paymentGC.lbl_payment_addBtn}
             cardList={giftCardList}
+            checkbalanceValueInfo={checkbalanceValueInfo}
+            onGetBalanceCard={onGetBalanceCard}
           />
         )}
       </ScrollView>

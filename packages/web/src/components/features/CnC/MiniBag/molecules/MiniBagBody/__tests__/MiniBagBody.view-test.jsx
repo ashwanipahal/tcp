@@ -47,7 +47,7 @@ describe('MiniBagBody anchor tile render component', () => {
         viewSaveForLater: 'save',
         subTotal: 'total',
       },
-      userName: 'User2',
+      userName: 'User23',
       cartItemCount: 11,
       subTotal: 12,
     };

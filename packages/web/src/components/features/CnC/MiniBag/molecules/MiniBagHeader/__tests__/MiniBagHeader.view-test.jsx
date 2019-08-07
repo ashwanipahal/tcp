@@ -6,7 +6,7 @@ describe('MiniBagHeader component', () => {
   it('renders correctly', () => {
     const props = {
       labels: {
-        viewBag: 'view Bag',
+        viewBag: 'view Bag content',
         viewSaveForLater: 'save for later',
         subTotal: 'total',
         points: 'points',

@@ -104,7 +104,13 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
           >
             {userName ? (
               <React.Fragment>
-                <BodyCopy textAlign="right">{`Hi, ${userName}`}</BodyCopy>
+                <BodyCopy
+                  id="accountDrawer"
+                  textAlign="right"
+                  onClick={e => this.onLinkClick({ e, openOverlay })}
+                >
+                  {`Hi, ${userName}`}
+                </BodyCopy>
                 <LogOutPageContainer />
               </React.Fragment>
             ) : (

@@ -5,6 +5,7 @@ exports[`CardList Component should render correctly 1`] = `
   addBtnLabel=""
   cardImage=""
   cardList={Immutable.List []}
+  checkbalanceValueInfo={null}
   className="abc"
   description=""
   emptyBtnLabel=""
@@ -16,6 +17,7 @@ exports[`CardList Component should render correctly 1`] = `
       "paymentGC": Object {},
     }
   }
+  onGetBalanceCard={null}
   setDefaultPaymentMethod={[MockFunction]}
 >
   <Styled(Text) />
@@ -74,6 +76,7 @@ exports[`CardList Component should render correctly if list is present 1`] = `
       },
     ]
   }
+  checkbalanceValueInfo={null}
   className="abc"
   description=""
   emptyBtnLabel=""
@@ -85,6 +88,7 @@ exports[`CardList Component should render correctly if list is present 1`] = `
       "paymentGC": Object {},
     }
   }
+  onGetBalanceCard={null}
   setDefaultPaymentMethod={[MockFunction]}
 >
   <Styled(Text) />
@@ -100,7 +104,7 @@ exports[`CardList Component should render correctly if list is present 1`] = `
       url=""
     />
   </Styled(View)>
-  <CardTile
+  <ReduxForm
     card={
       Object {
         "accountNo": "************1111",
@@ -126,13 +130,32 @@ exports[`CardList Component should render correctly if list is present 1`] = `
         "properties": null,
       }
     }
+    checkbalanceValueInfo={null}
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="CardTileForm"
+    getFormState={[Function]}
+    keepDirtyOnReinitialize={false}
     labels={
       Object {
         "common": Object {},
         "paymentGC": Object {},
       }
     }
+    onGetBalanceCard={null}
+    persistentSubmitErrors={false}
+    pure={true}
     setDefaultPaymentMethod={[MockFunction]}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    validate={[Function]}
   />
 </View>
 `;

@@ -60,7 +60,7 @@ exports[`MiniBagHeader component renders correctly 1`] = `
       "inRewards": "rewards",
       "points": "points",
       "subTotal": "total",
-      "viewBag": "view Bag",
+      "viewBag": "view Bag content",
       "viewSaveForLater": "save for later",
     }
   }
