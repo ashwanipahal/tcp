@@ -138,15 +138,20 @@ exports[`Footer component HeaderTopNav component renders correctly to match snap
     <div
       className="header-topnav__track-order"
     >
-      <div>
+      <Styled(CountrySelector) />
+      <Styled(BodyCopy)
+        className="track-order"
+        color="gray.900"
+        component="div"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
         Track Order
-      </div>
-      <div>
-        <Styled(Image)
-          src="/static/images/"
-        />
-        EN | ES
-      </div>
+      </Styled(BodyCopy)>
     </div>
   </div>
 </div>
@@ -290,15 +295,20 @@ exports[`Footer component HeaderTopNav component renders correctly with props 1`
     <div
       className="header-topnav__track-order"
     >
-      <div>
+      <Styled(CountrySelector) />
+      <Styled(BodyCopy)
+        className="track-order"
+        color="gray.900"
+        component="div"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
         Track Order
-      </div>
-      <div>
-        <Styled(Image)
-          src="/static/images/"
-        />
-        EN | ES
-      </div>
+      </Styled(BodyCopy)>
     </div>
   </div>
 </div>
