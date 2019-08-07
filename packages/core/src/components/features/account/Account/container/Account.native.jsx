@@ -17,7 +17,7 @@ import { getLabels } from './Account.selectors';
  * NOTE: Which ever new component that gets added for drop down nav, needs an entry in AccountComponentMappingNative file.
  */
 
-class Account extends React.PureComponent<Props, State> {
+export class Account extends React.PureComponent<Props, State> {
   static propTypes = {
     labels: PropTypes.shape({}),
   };
@@ -91,3 +91,4 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(Account);
+export { Account as AccountVanilla };

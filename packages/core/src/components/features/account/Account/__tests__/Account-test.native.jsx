@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import Account from '../container/Account.native';
+import { Account } from '../container/Account.native';
 
 describe('Account View', () => {
   let component;
@@ -15,10 +15,21 @@ describe('Account View', () => {
     expect(component).toBeDefined();
   });
 
+  it('should validate getComponent', () => {
+    component = shallow(<Account {...props} />);
+    expect(component.instance().getComponent('accountOverviewMobile')).toEqual('accountOverview');
+  });
+
   it('should render Account Correctly', () => {
     props = {
-      labels: {},
+      labels: {
+        account: {},
+      },
+      navData: {},
+      mainContent: 'AccountOverview',
+      handleComponentChange: () => {},
     };
+    component = shallow(<Account {...props} />);
     expect(component).toMatchSnapshot();
   });
 });
