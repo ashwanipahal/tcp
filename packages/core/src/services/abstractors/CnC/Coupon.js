@@ -16,8 +16,9 @@ export const applyCouponToCart = ({ coupon_code: couponCode = '' }) => {
     getDynamicCodeErrorMessage(error, couponCode);
     const placeCash = 'PC';
     const { errorMessages } = error;
-    /* eslint-disable */
+    // eslint-disable-next-line
     errorMessages._error = {
+      // eslint-disable-next-line
       msg: errorMessages._error,
       redemptionType:
         errorMessages.errorParameters &&

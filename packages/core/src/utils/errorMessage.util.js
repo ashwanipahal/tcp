@@ -291,12 +291,12 @@ class ServiceError {
 
 function populateErrorPlaceholder(errMsg, error) {
   let errorMsg = errMsg;
-  /* eslint-disable */
+  // eslint-disable-next-line
   const regex = /\$\{([^\}]+)\}/g;
   const matches = errorMsg.match ? errorMsg.match(regex) : null;
   if (matches) {
     matches.forEach(match => {
-      /* eslint-disable */
+      // eslint-disable-next-line
       const key = match.replace(/[\$\{\s\}]/g, '');
       errorMsg = errorMsg.replace(match, error[key] || match);
     });

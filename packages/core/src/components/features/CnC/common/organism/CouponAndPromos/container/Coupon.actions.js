@@ -9,10 +9,8 @@ export const applyCoupon = payload => {
 
 export const showLoader = () => ({
   type: COUPON_CONSTANTS.SHOW_LOADER,
-  payload: true,
 });
 
 export const hideLoader = () => ({
-  type: COUPON_CONSTANTS.SHOW_LOADER,
-  payload: false,
+  type: COUPON_CONSTANTS.HIDE_LOADER,
 });

@@ -4,12 +4,8 @@ export default css`
   margin-top: 15px;
   .coupon_form_container {
     padding: 18px 16px 12px 14px;
-    height: 127px;
     box-sizing: border-box;
     background-color: ${props => props.theme.colors.WHITE};
-    @media ${props => props.theme.mediaQuery.mediumOnly} {
-      height: 193px;
-    }
 
     .coupon_form_heading {
       margin: 0px;
@@ -53,6 +49,10 @@ export default css`
         width: 120px;
         margin-top: 0;
       }
+    }
+
+    .success__checkmark {
+      visibility: hidden;
     }
   }
 `;

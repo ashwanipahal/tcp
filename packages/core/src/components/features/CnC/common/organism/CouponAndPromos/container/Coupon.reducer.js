@@ -18,7 +18,9 @@ const getDefaultState = state => {
 const CouponReducer = (state = initialState, action) => {
   switch (action.type) {
     case COUPON_CONSTANTS.SHOW_LOADER:
-      return state.set('isFetching', action.payload);
+      return state.set('isFetching', true);
+    case COUPON_CONSTANTS.HIDE_LOADER:
+      return state.set('isFetching', false);
     default:
       return getDefaultState(state);
   }
