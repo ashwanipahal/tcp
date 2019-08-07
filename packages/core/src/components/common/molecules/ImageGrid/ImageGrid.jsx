@@ -12,7 +12,7 @@ type Props = {
   colM?: Number,
   className: string,
   dataLocator?: string,
-  dataLocatorSet: string,
+  dataLocatorContainer: string,
 };
 
 /**
@@ -47,7 +47,7 @@ const gridReducer = (accumulator, currentValue, currentIndex, list) => {
  * @param {*} props
  */
 const ImageGrid = (props: Props) => {
-  const { mediaLinkedList, colD, colT, colM, className, dataLocator, dataLocatorSet } = props;
+  const { mediaLinkedList, colD, colT, colM, className, dataLocator, dataLocatorContainer } = props;
 
   const colSize = {
     small: 6 / colM,
@@ -66,12 +66,12 @@ const ImageGrid = (props: Props) => {
   };
 
   return (
-    <div data-locator={dataLocatorSet}>
+    <div data-locator={dataLocatorContainer}>
       {mediaLinkedList.reduce(gridReducer, gridCoordinator).final.map(medList => (
         <Row fullBleed className={className}>
           {medList.map(({ image }, index) => {
             return (
-              <Col colSize={colSize} className="image-col">
+              <Col key={index.toString()} colSize={colSize} className="image-col">
                 <DamImage
                   data-locator={`${dataLocator}_${index + 1}`}
                   imgConfigs={config.IMG_DATA.imgConfig}

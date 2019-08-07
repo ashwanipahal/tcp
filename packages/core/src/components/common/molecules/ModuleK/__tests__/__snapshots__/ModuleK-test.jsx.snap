@@ -275,7 +275,7 @@ exports[`ModuleK component renders correctly 1`] = `
           className="image-grid"
           colM={2}
           dataLocator="moduleK_image_1"
-          dataLocatorSet="moduleK_image_set_1"
+          dataLocatorContainer="moduleK_image_set_1"
           mediaLinkedList={
             Array [
               Object {
@@ -398,7 +398,7 @@ exports[`ModuleK component renders correctly 1`] = `
           className="image-grid"
           colM={2}
           dataLocator="moduleK_image_2"
-          dataLocatorSet="moduleK_image_set_2"
+          dataLocatorContainer="moduleK_image_set_2"
           mediaLinkedList={
             Array [
               Object {

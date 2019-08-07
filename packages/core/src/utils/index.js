@@ -11,7 +11,6 @@ export {
   getSiteId,
   routerPush,
   getCreditCardExpirationOptionMap,
-  navigateToNestedRoute,
   getViewportInfo,
   showOverlay,
   closeOverlay,

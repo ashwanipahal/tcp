@@ -5,7 +5,6 @@ exports[`ModuleK native component Should renders correctly 1`] = `
   <Styled(View)>
     <LinkText
       color="text.primary"
-      data-locator="moduleK_header_text"
       fontFamily="primary"
       fontSize="fs36"
       fontWeight="black"
@@ -32,6 +31,7 @@ exports[`ModuleK native component Should renders correctly 1`] = `
           },
         ]
       }
+      testID="moduleK_header_text"
       textAlign="center"
     />
   </Styled(View)>

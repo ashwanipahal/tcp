@@ -72,7 +72,7 @@ const ModuleD = (props: Props) => {
           promo={checkPromo}
         />
       )}
-      {promoBanner && (
+      {checkPromo && (
         <PromoBanner
           promoBanner={promoBanner}
           className="moduleD__promo-banner"

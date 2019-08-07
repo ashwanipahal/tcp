@@ -31,13 +31,13 @@ class ModuleK extends React.PureComponent {
           {promoBanner && (
             <PromoTextBannerWrapper>
               <PromoBanner
-                dataLocator={`moduleK_promobanner_text_${slideIndex}`}
+                testID={`moduleK_promobanner_text_${slideIndex}`}
                 promoBanner={promoBanner}
               />
             </PromoTextBannerWrapper>
           )}
         </HeaderWrapper>
-        <ImageGrid dataLocator={`moduleK_image_${slideIndex}`} mediaList={mediaLinkedList} />
+        <ImageGrid testID={`moduleK_image_${slideIndex}`} mediaList={mediaLinkedList} />
         {singleCTAButton && (
           <WrapperView width={getScreenWidth()}>
             <Button
@@ -45,7 +45,7 @@ class ModuleK extends React.PureComponent {
               height="42px"
               buttonVariation="variable-width"
               text={singleCTAButton.text || `Shop Now`}
-              dataLocator={`moduleK_button_set_${slideIndex}`}
+              testID={`moduleK_button_set_${slideIndex}`}
               onPress={() => UrlHandler(singleCTAButton.url)}
             />
           </WrapperView>
@@ -71,7 +71,7 @@ class ModuleK extends React.PureComponent {
               color="text.primary"
               fontFamily="primary"
               textAlign="center"
-              data-locator="moduleK_header_text"
+              testID="moduleK_header_text"
             />
           )}
         </HeaderWrapper>

@@ -11,7 +11,7 @@ type Props = {
   link: Object,
   icon?: Object,
   className: string,
-  dataLocator: string,
+  testID: string,
   headingClass: string,
 };
 
@@ -33,7 +33,7 @@ const LinkText = (props: Props) => {
     component,
     headerText: [{ textItems, link }],
     headingClass,
-    dataLocator,
+    testID,
     ...otherProps
   } = props;
   let Component;
@@ -43,7 +43,7 @@ const LinkText = (props: Props) => {
   if (type === 'heading') {
     Component = Heading;
     compProps.variant = component;
-    compProps.dataLocator = dataLocator;
+    compProps.testID = testID;
   } else {
     Component = BodyCopy;
     compProps = {

@@ -183,15 +183,6 @@ export const closeOverlay = () => {
   }
 };
 
-/**
- * TODO: It is mobile specific change and needs to be
- * refactored because it is impacting web also.
- * Since putting this hack for time being.
- */
-export const navigateToNestedRoute = () => {
-  return {};
-};
-
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -204,5 +195,4 @@ export default {
   getCreditCardExpirationOptionMap,
   getSiteId,
   routerPush,
-  navigateToNestedRoute,
 };

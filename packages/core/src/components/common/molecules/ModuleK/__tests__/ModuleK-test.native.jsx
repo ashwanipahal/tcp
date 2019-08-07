@@ -14,6 +14,6 @@ describe('ModuleK native component', () => {
 
   it('Should verify header text link click', () => {
     const wrapper = shallow(<ModuleK {...moduleKData} />);
-    expect(wrapper.find('[data-locator="moduleK_header_text"]')).toHaveLength(1);
+    expect(wrapper.find('[testID="moduleK_header_text"]')).toHaveLength(1);
   });
 });

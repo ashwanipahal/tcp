@@ -126,7 +126,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           source={pauseIcon}
           height={playIconHeight}
           width={playIconWidth}
-          data-locator={getLocator(carouselConfig.dataLocatorPause)}
+          testID={getLocator(carouselConfig.dataLocatorPause)}
         />
       </Touchable>
     ) : (
@@ -135,7 +135,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           source={playIcon}
           height={playIconHeight}
           width={playIconWidth}
-          data-locator={getLocator(carouselConfig.dataLocatorPlay)}
+          testID={getLocator(carouselConfig.dataLocatorPlay)}
         />
       </Touchable>
     );
@@ -214,7 +214,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
         <Container>
           <TouchableView
             accessibilityRole="button"
-            data-locator={getLocator('global_promobanner_right_arrow')}
+            testID={getLocator('global_promobanner_right_arrow')}
             onPress={() => this.manageSlide('next')}
           >
             <Icon source={nextIcon} />
@@ -234,7 +234,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           />
           <TouchableView
             accessibilityRole="button"
-            data-locator={getLocator('global_promobanner_left_arrowRight')}
+            testID={getLocator('global_promobanner_left_arrowRight')}
             onPress={() => this.manageSlide('prev')}
           >
             <Icon source={prevIcon} />

@@ -50,14 +50,14 @@ const renderItem = (item, navigation) => {
       url={link.url}
       navigation={navigation}
       external={link.external}
-      data-locator={`${getLocator('moduleL_tiles')}${index + 1}`}
+      testID={`${getLocator('moduleL_tiles')}${index + 1}`}
     >
       <ChildContainer>
         <Image
           url={image.url}
           height={127}
           crop={image.crop_m}
-          data-locator={`${getLocator('moduleL_image')}${index + 1}`}
+          testID={`${getLocator('moduleL_image')}${index + 1}`}
         />
         <MessageContainer>
           <BodyCopyContainer width={width}>
@@ -66,7 +66,7 @@ const renderItem = (item, navigation) => {
               color="black"
               letterSpacing="ls222"
               text={image.alt}
-              data-locator={`${getLocator('moduleL_title')}${index + 1}`}
+              testID={`${getLocator('moduleL_title')}${index + 1}`}
             />
           </BodyCopyContainer>
           <LinkContainer>
@@ -77,7 +77,7 @@ const renderItem = (item, navigation) => {
               url={link.url}
               navigation={navigation}
               external={link.external}
-              data-locator={`${getLocator('moduleL_link')}${index + 1}`}
+              testID={`${getLocator('moduleL_link')}${index + 1}`}
             />
           </LinkContainer>
         </MessageContainer>
@@ -107,14 +107,11 @@ const ModuleL = (props: Props) => {
           textAlign="center"
           color="text.primary"
           fontWeight="black"
-          data-locator={getLocator('moduleL_header_text')}
+          testID={getLocator('moduleL_header_text')}
         />
       )}
       {promoBanner && (
-        <PromoBanner
-          promoBanner={promoBanner}
-          data-locator={getLocator('moduleL_promobanner_text')}
-        />
+        <PromoBanner promoBanner={promoBanner} testID={getLocator('moduleL_promobanner_text')} />
       )}
       <ListContainer>
         <FlatList

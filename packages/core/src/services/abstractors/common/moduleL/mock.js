@@ -7,6 +7,12 @@ export default {
     contentId: 'f567fa01-4afd-4d82-bbe4-e2734d555d06',
     name: 'moduleL',
     type: 'module',
+    set: [
+      {
+        key: 'imagesPerSlide',
+        val: '4',
+      },
+    ],
     composites: {
       imagesPerSlide: '4',
       headerText: [

@@ -50,7 +50,7 @@ const renderItem = item => {
       <TouchableOpacity accessibilityRole="button" onPress={() => UrlHandler(link.url)}>
         <Image
           alt={image.alt}
-          data-locator={`${getLocator('moduleD_image')}${index + 1}`}
+          testID={`${getLocator('moduleD_image')}${index + 1}`}
           source={{ uri: getUrlWithCrop(image.url) }}
           height={imageSize}
           marginBottom={parseInt(spacing.ELEM_SPACING.XS, 10)}
@@ -59,7 +59,7 @@ const renderItem = item => {
       </TouchableOpacity>
 
       <Anchor
-        data-locator={`${getLocator('moduleD_textlink')}${index + 1}`}
+        testID={`${getLocator('moduleD_textlink')}${index + 1}`}
         fontSizeVariation="large"
         text={link.text}
         visible={anchorEnable}
@@ -98,11 +98,11 @@ const ModuleD = (props: Props) => {
           color="text.primary"
           fontWeight="extrabold"
           type="heading"
-          data-locator={getLocator('moduleD_headerlink')}
+          testID={getLocator('moduleD_headerlink')}
         />
       )}
       {promoBanner && (
-        <PromoBanner promoBanner={promoBanner} data-locator={getLocator('moduleD_promobanner')} />
+        <PromoBanner promoBanner={promoBanner} testID={getLocator('moduleD_promobanner')} />
       )}
 
       <FlatList
@@ -119,7 +119,7 @@ const ModuleD = (props: Props) => {
           buttonVariation="variable-width"
           style={buttonWidth}
           text={singleCTAButton.title}
-          data-locator={getLocator('moduleD_button')}
+          testID={getLocator('moduleD_button')}
           onPress={() => {
             UrlHandler(singleCTAButton.url);
           }}

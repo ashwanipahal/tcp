@@ -4,7 +4,6 @@ exports[`ModuleLVanilla ModuleL should render correctly 1`] = `
 <Styled(View)>
   <LinkText
     color="text.primary"
-    data-locator="moduleL_header_text"
     fontFamily="primary"
     fontSize="fs36"
     fontWeight="black"
@@ -31,11 +30,11 @@ exports[`ModuleLVanilla ModuleL should render correctly 1`] = `
       ]
     }
     letterSpacing="ls167"
+    testID="moduleL_header_text"
     textAlign="center"
     type="heading"
   />
   <PromoBanner
-    data-locator="moduleL_promobanner_text"
     promoBanner={
       Array [
         Object {
@@ -59,6 +58,7 @@ exports[`ModuleLVanilla ModuleL should render correctly 1`] = `
         },
       ]
     }
+    testID="moduleL_promobanner_text"
   />
   <Styled(View)>
     <FlatList
