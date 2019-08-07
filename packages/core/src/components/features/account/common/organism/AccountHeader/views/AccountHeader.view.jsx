@@ -7,6 +7,7 @@ import { isCanada } from '../../../../../../../utils';
 
 export const AccountHeader = ({
   labels,
+  commonLabels,
   name,
   pointsToNextRewards,
   currentPoints,
@@ -54,7 +55,7 @@ export const AccountHeader = ({
           >
             <RewardsPoints
               tableView
-              labels={labels}
+              labels={commonLabels}
               pointsToNextRewards={pointsToNextRewards}
               currentPoints={currentPoints}
               totalRewards={totalRewards}
@@ -72,6 +73,7 @@ AccountHeader.propTypes = {
   currentPoints: PropTypes.string,
   totalRewards: PropTypes.string,
   labels: PropTypes.shape({}),
+  commonLabels: PropTypes.shape({}),
   rewardsPointsBannerContent: PropTypes.node,
 };
 
@@ -81,6 +83,7 @@ AccountHeader.defaultProps = {
   currentPoints: '',
   totalRewards: '',
   labels: {},
+  commonLabels: {},
   rewardsPointsBannerContent: '',
 };
 
