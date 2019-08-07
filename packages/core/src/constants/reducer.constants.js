@@ -58,6 +58,10 @@ export const SMS_SIGNUP_REDUCER_KEY = 'SmsSignUp';
 export const LOGOUT_REDUCER_KEY = 'logoutReducer';
 export const LOGOUT_ACTION_PATTERN = '@@logout-';
 
+// Coupon reducer
+export const COUPON_REDUCER_KEY = 'CouponsAndPromos';
+export const COUPON_ACTION_PATTERN = '@@CouponsAndPromos-';
+
 export const REDUCER_ACTION_MAPPING = {
   [APICONFIG_REDUCER_KEY]: APICONFIG_ACTION_PATTERN,
   [LOGINPAGE_REDUCER_KEY]: LOGINPAGE_ACTION_PATTERN,
