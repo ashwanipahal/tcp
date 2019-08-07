@@ -98,7 +98,7 @@ exports[`MyRewards should render correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         data-locator="my-rewards-program-details"
-        fontSizeVariation="small"
+        fontSizeVariation="medium"
         href="https://www.childrensplace.com/us/content/myplace-rewards-page"
         noLink={true}
         target="_blank"
@@ -108,7 +108,7 @@ exports[`MyRewards should render correctly 1`] = `
         anchorVariation="primary"
         className="elem-ml-XXL"
         data-locator="my-rewards-tnc"
-        fontSizeVariation="small"
+        fontSizeVariation="medium"
         href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"
         noLink={true}
         target="_self"
