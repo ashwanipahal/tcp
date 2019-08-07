@@ -5,7 +5,7 @@ jest.mock('../../../../handler/handler');
 
 it('ModuleA Abstractor | ', () => {
   ModuleAAbstractor.getData('moduleA', {
-    contentId: '73f6a699-79a4-4874-994f-asd234fa34s',
+    contentId: 'f1733fc9-6db0-4042-9844-99980420359f',
     slot: 'moduleA',
   }).then(data => {
     expect(data).toMatchObject(mock);

@@ -1,112 +1,176 @@
-const plpUrl =
-  'https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts';
-const fmt = 'Family Tees';
-const mmt = 'Mom & Me Tees';
 export default {
   moduleA: {
-    contentId: '73f6a699-79a4-4874-994f-asd234fa34s',
+    contentId: 'f1733fc9-6db0-4042-9844-99980420359f',
     name: 'moduleA',
     type: 'module',
     composites: {
-      headerText: [
+      largeCompImageCarousel: [
         {
-          textItems: {
-            text: 'Mini me shop',
-            color: 'color2',
-            style: 'style1',
+          headerText: [
+            {
+              textItems: [
+                {
+                  text: 'Entire site',
+                  style: 'style1',
+                },
+              ],
+              link: {
+                url: '/trending',
+                text: '',
+                title: '',
+                target: '',
+                external: 0,
+              },
+              icon: {
+                icon: '',
+                placement: '',
+              },
+            },
+          ],
+          promoBanner: [
+            {
+              link: {
+                url: '/banner/url',
+                text: '',
+                title: '',
+                target: '',
+                external: 0,
+              },
+              textItems: [
+                {
+                  text: '60%',
+                  style: 'style1',
+                },
+                {
+                  text: 'off',
+                  style: 'style2',
+                },
+                {
+                  text: '50% off',
+                  style: 'style1',
+                },
+                {
+                  text: 'all shoes and other accessories',
+                  style: 'style2',
+                },
+              ],
+            },
+          ],
+          linkedImage: [
+            {
+              image: {
+                url: 'http://image1.sm/url',
+                alt: 'Family Tees Image',
+                title: 'Family Tees title',
+                crop_d: 'c_crop,g_face:center,q_auto:best,w_1024',
+                crop_t: 'c_crop,g_face:center,q_auto:best,w_962',
+                crop_m: 'c_crop,g_face:center,q_auto:best,w_962',
+              },
+              link: {
+                url: '/node/product/<uuid>',
+                text: 'Family Tees',
+                title: 'Family Tees',
+                target: '',
+                external: 0,
+              },
+            },
+          ],
+        },
+      ],
+      ctaItems: [
+        {
+          image: {
+            url: 'http://image.com/girl',
+            alt: 'Girl',
+            title: 'Girl',
+            crop_d: '',
+            crop_t: '',
+            crop_m: '',
           },
-          link: {
-            url: plpUrl,
-            title: '',
+          button: {
+            url: '/girl',
+            text: 'Girl',
+            title: 'Girl',
             target: '',
+            external: 0,
+          },
+        },
+        {
+          image: {
+            url: 'http://image.com/toddler-girl',
+            alt: 'Toddler Girl alt',
+            title: 'Toddler Girl title',
+            crop_d: '',
+            crop_t: '',
+            crop_m: '',
+          },
+          button: {
+            url: '/toddler-girl',
+            text: 'Toddler Girl',
+            title: 'Toddler Girl',
+            target: '',
+            external: 0,
+          },
+        },
+        {
+          image: {
+            url: 'http://image.com/boy',
+            alt: 'Boy',
+            title: 'Boy',
+            crop_d: '',
+            crop_t: '',
+            crop_m: '',
+          },
+          button: {
+            url: '/boy',
+            text: 'Boy',
+            title: 'Boy',
+            target: '',
+            external: 0,
+          },
+        },
+        {
+          image: {
+            url: 'http://image.com/toddler-boy',
+            alt: 'Toddler Boy alt',
+            title: 'Toddler Boy title',
+            crop_d: '',
+            crop_t: '',
+            crop_m: '',
+          },
+          button: {
+            url: '/toddler-boy',
+            text: 'Toddler Boy',
+            title: 'Toddler Boy',
+            target: '',
+            external: 0,
+          },
+        },
+        {
+          image: {
+            url: 'http://image.com/baby',
+            alt: 'Baby',
+            title: 'Baby',
+            crop_d: '',
+            crop_t: '',
+            crop_m: '',
+          },
+          button: {
+            url: '/baby',
+            text: 'Baby',
+            title: 'Baby',
+            target: '',
+            external: 0,
           },
         },
       ],
-      promoBanner: {
-        items: [
-          {
-            link: {
-              url: plpUrl,
-              title: '',
-              target: '',
-              external: 0,
-            },
-            image: {
-              url: '',
-              alt: 'alt 1',
-              title: 'Image link text',
-            },
-          },
-        ],
-      },
-      smallCompImage: [
-        {
-          link: {
-            url: plpUrl,
-            title: fmt,
-            target: '',
-            external: 0,
-          },
-          image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-            title: fmt,
-            alt: fmt,
-          },
-        },
-        {
-          link: {
-            url: plpUrl,
-            text: mmt,
-            title: mmt,
-            target: '',
-            external: 0,
-          },
-          image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg',
-            title: mmt,
-            alt: mmt,
-          },
-        },
-        {
-          link: {
-            url: plpUrl,
-            text: fmt,
-            title: fmt,
-            target: '',
-            external: 0,
-          },
-          image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME4_iuzwmp.jpg',
-            title: fmt,
-            alt: fmt,
-          },
-        },
-        {
-          link: {
-            url: plpUrl,
-            text: mmt,
-            title: mmt,
-            target: '',
-            external: 0,
-          },
-          image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME2_uwtbdd.jpg',
-            title: mmt,
-            alt: mmt,
-          },
-        },
-      ],
-      singleCTAButton: {
-        url: plpUrl,
-        target: '',
-        text: 'SHOP ALL',
-        title: 'SHOP ALL',
-        external: 0,
-      },
     },
+    submodules: {},
+    set: [
+      {
+        key: 'ctaType',
+        val: 'divImageCTACarousel',
+      },
+    ],
   },
 };
