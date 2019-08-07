@@ -13,24 +13,21 @@ import styles from '../styles/MiniBagHeader.style';
 
 type Props = {
   labels: any,
-  totalItems: any,
+  cartItemCount: any,
   className: string,
   userName: any,
 };
-const MiniBagHeader = ({ labels, totalItems, className, userName }: Props) => {
+const MiniBagHeader = ({ labels, cartItemCount, className, userName }: Props) => {
   const data = {
-    isLoggedIn: false,
-    userName: 'Christine',
     points: 50,
     rewardsPoints: 0,
-    cartCount: 4,
   };
 
   return (
     <div className={className}>
       <Row className="mainWrapper">
         <Col className="subHeaderText" colSize={{ small: 4, medium: 6, large: 9 }}>
-          {data.isLoggedIn === false ? (
+          {!userName ? (
             <BodyCopy component="span" fontSize="fs12" textAlign="left">
               <Anchor fontSizeVariation="small" anchorVariation="primary" noLink to="">
                 {labels.createAccount}
@@ -75,7 +72,7 @@ const MiniBagHeader = ({ labels, totalItems, className, userName }: Props) => {
               data-locator="addedtobag-bag-icon"
             />
             <BodyCopy className="cartCount" component="span" fontWeight="semibold" fontSize="fs10">
-              {totalItems || 0}
+              {cartItemCount || 0}
             </BodyCopy>
           </Anchor>
         </Col>

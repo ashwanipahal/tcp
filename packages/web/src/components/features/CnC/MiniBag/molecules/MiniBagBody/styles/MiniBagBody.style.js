@@ -5,7 +5,7 @@ export default css`
   height: calc(100% - 70px);
 
   .viewBagAndProduct {
-    height: calc(100% - 216px);
+    height: calc(100% - 120px);
     overflow-y: auto;
   }
   .mainWrapper {

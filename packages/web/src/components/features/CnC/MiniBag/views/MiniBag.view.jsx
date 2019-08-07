@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
 import styles, { modalStyles } from '../styles/MiniBag.style';
 import MiniBagHeader from '../molecules/MiniBagHeader/views/MiniBagHeader';
 import MiniBagBody from '../molecules/MiniBagBody/views/MiniBagBody';
@@ -12,16 +13,17 @@ type Props = {
   className: string,
   openState: boolean,
   labels: any,
-  totalItems: any,
   userName: any,
+  subTotal: any,
 };
 
-const MiniBag = ({ onRequestClose, className, openState, labels, totalItems, userName }: Props) => {
+const MiniBag = ({ onRequestClose, className, openState, labels, userName, subTotal }: Props) => {
+  const cartItemCount = getCartItemCount();
   return (
     <Modal
       isOpen={openState}
       onRequestClose={onRequestClose}
-      heading={<MiniBagHeader labels={labels} totalItems={totalItems} userName={userName} />}
+      heading={<MiniBagHeader labels={labels} cartItemCount={cartItemCount} userName={userName} />}
       overlayClassName="TCPModal__Overlay"
       className={`TCPModal__Content, ${className}`}
       closeIconDataLocator="mini-bag-close"
@@ -32,7 +34,12 @@ const MiniBag = ({ onRequestClose, className, openState, labels, totalItems, use
       data-locator="mini-bag-modal"
       inheritedStyles={modalStyles}
     >
-      <MiniBagBody labels={labels} />
+      <MiniBagBody
+        labels={labels}
+        cartItemCount={cartItemCount}
+        userName={userName}
+        subTotal={subTotal}
+      />
     </Modal>
   );
 };

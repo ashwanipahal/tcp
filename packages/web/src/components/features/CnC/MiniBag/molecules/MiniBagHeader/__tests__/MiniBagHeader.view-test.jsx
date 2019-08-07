@@ -6,13 +6,15 @@ describe('MiniBagHeader component', () => {
   it('renders correctly', () => {
     const props = {
       labels: {
-        createAccount: 'crerate Acccount',
-        logIn: 'login',
-        hi: 'hi',
+        viewBag: 'view Bag',
+        viewSaveForLater: 'save for later',
+        subTotal: 'total',
         points: 'points',
         inRewards: 'rewards',
       },
-      totalItems: 20,
+      userName: 'User',
+      cartItemCount: '12',
+      subTotal: '122',
     };
     const component = shallow(<MiniBagHeader {...props} />);
     expect(component).toMatchSnapshot();

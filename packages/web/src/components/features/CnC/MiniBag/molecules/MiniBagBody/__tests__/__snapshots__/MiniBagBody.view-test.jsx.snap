@@ -1,7 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MiniBagBody component renders correctly 1`] = `
+exports[`MiniBagBody component renders main component correctly 1`] = `
 <StyledComponent
+  cartItemCount={1}
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
@@ -17,7 +18,7 @@ exports[`MiniBagBody component renders correctly 1`] = `
   height: calc(100% - 70px);
 
   .viewBagAndProduct {
-    height: calc(100% - 216px);
+    height: calc(100% - 120px);
     overflow-y: auto;
   }
   .mainWrapper {
@@ -95,5 +96,7 @@ exports[`MiniBagBody component renders correctly 1`] = `
       "viewSaveForLater": "save later",
     }
   }
+  subTotal={112}
+  userName="Christine"
 />
 `;

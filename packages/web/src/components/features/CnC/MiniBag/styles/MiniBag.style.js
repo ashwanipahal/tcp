@@ -9,13 +9,9 @@ export const modalStyles = css`
     transform: none;
     box-shadow: 0 4px 8px 0 rgba(163, 162, 162, 0.5);
     width: 480px;
-    @media ${props => props.theme.mediaQuery.large} {
-      width: 480px;
-    }
     padding: 0;
   }
   .Modal_Heading {
-    font-size: 16px;
     font-family: ${props => props.theme.fonts.secondaryFontFamily};
     font-weight: normal;
     border: none;

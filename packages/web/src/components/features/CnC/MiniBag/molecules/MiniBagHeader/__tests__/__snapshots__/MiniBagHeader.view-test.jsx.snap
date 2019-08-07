@@ -2,6 +2,7 @@
 
 exports[`MiniBagHeader component renders correctly 1`] = `
 <StyledComponent
+  cartItemCount="12"
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
@@ -56,13 +57,14 @@ exports[`MiniBagHeader component renders correctly 1`] = `
   forwardedRef={null}
   labels={
     Object {
-      "createAccount": "crerate Acccount",
-      "hi": "hi",
       "inRewards": "rewards",
-      "logIn": "login",
       "points": "points",
+      "subTotal": "total",
+      "viewBag": "view Bag",
+      "viewSaveForLater": "save for later",
     }
   }
-  totalItems={20}
+  subTotal="122"
+  userName="User"
 />
 `;

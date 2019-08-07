@@ -14,11 +14,12 @@ import ProductTileWrapper from '../../../container/ProductTileWrapperContainer.c
 type Props = {
   labels: any,
   className: string,
+  userName: any,
+  cartItemCount: any,
+  subTotal: any,
 };
-const MiniBagBody = ({ labels, className }: Props) => {
+const MiniBagBody = ({ labels, className, userName, cartItemCount, subTotal }: Props) => {
   const data = {
-    isLoggedIn: false,
-    qty: 5,
     savedforLaterQty: 1,
   };
 
@@ -27,7 +28,7 @@ const MiniBagBody = ({ labels, className }: Props) => {
       <BodyCopy component="div" className="viewBagAndProduct">
         <Row className="mainWrapper">
           <Col className="subHeaderText" colSize={{ small: 6, medium: 8, large: 12 }}>
-            {data.isLoggedIn === true ? (
+            {userName ? (
               <BodyCopy component="span" fontSize="fs12" textAlign="left">
                 <Anchor
                   fontSizeVariation="small"
@@ -37,7 +38,7 @@ const MiniBagBody = ({ labels, className }: Props) => {
                   to=""
                   data-locator="addressbook-makedefault"
                 >
-                  {`${labels.viewBag}(${data.qty})`}
+                  {`${labels.viewBag}(${cartItemCount})`}
                 </Anchor>
                 {` `}
                 <Anchor
@@ -60,7 +61,7 @@ const MiniBagBody = ({ labels, className }: Props) => {
                   to=""
                   data-locator="addressbook-makedefault"
                 >
-                  {`${labels.viewBag}(${data.qty})`}
+                  {`${labels.viewBag}(${cartItemCount})`}
                 </Anchor>
               </BodyCopy>
             )}
@@ -70,7 +71,7 @@ const MiniBagBody = ({ labels, className }: Props) => {
       </BodyCopy>
       <div className="miniBagFooter">
         <BodyCopy tag="span" fontSize="fs14" fontWeight="semibold" className="subTotal">
-          {`${labels.subTotal}: $${data.subTotal}`}
+          {`${labels.subTotal}: $${subTotal || 0}`}
         </BodyCopy>
         <Row className="checkout-button">
           <PayPalButton className="payPal-button" />

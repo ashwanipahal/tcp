@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { getGrandTotal } from '@tcp/core/src/components/features/CnC/BagPage/organisms/OrderLedger/container/orderLedger.selector';
 import MiniBagView from '../views/MiniBag.view';
 import { getLabelsMiniBag, getTotalItemCount } from './MiniBag.selectors';
 
@@ -10,6 +11,7 @@ type Props = {
   labels: any,
   toggleMiniBagModal: any,
   userName: any,
+  subTotal: any,
 };
 export class MiniBagContainer extends React.Component<Props> {
   constructor(props) {
@@ -24,7 +26,7 @@ export class MiniBagContainer extends React.Component<Props> {
   }
 
   render() {
-    const { labels, totalItems, isOpen, userName } = this.props;
+    const { labels, totalItems, isOpen, userName, subTotal } = this.props;
     return (
       <MiniBagView
         openState={isOpen}
@@ -32,6 +34,7 @@ export class MiniBagContainer extends React.Component<Props> {
         labels={labels}
         totalItems={totalItems}
         userName={userName}
+        subTotal={subTotal}
       />
     );
   }
@@ -40,6 +43,7 @@ const mapStateToProps = state => {
   return {
     labels: getLabelsMiniBag(state),
     totalItems: getTotalItemCount(state),
+    subTotal: getGrandTotal(state),
   };
 };
 export default connect(mapStateToProps)(MiniBagContainer);
