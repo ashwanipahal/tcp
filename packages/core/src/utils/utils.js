@@ -125,6 +125,15 @@ export const getAPIConfig = () => {
   return apiConfig;
 };
 
+export const getCandidConfig = () => {
+  return {
+    CAND_API_KEY: '070167ca-8287-4d41-a9bb-6b3850cae9b1',
+    CAND_SLOT: 'tcp-get-candid-image-container',
+    CAND_PDP: 'pdp_na_na_na_03019_candid',
+    CAND_URL: 'api.getcandid.com',
+  };
+};
+
 export default {
   getIconPath,
   getLocator,
@@ -132,4 +141,5 @@ export default {
   isMobileApp,
   isServer,
   getAPIConfig,
+  getCandidConfig,
 };

@@ -6,16 +6,18 @@ HomePageView.pageInfo = {
   name: 'homepage',
 };
 HomePageView.getInitActions = () => initActions;
-
 const mapStateToProps = state => {
   const homepageSlots = state.Layouts.homepage.slots;
-  const newObj = {};
+  const candidLabels = state.Labels.modules.getCandid;
+  var Obj = {};
+
   homepageSlots.forEach(slotItem => {
-    newObj[slotItem.name] = state.Modules[slotItem.contentId];
-    newObj[slotItem.name].name = slotItem.moduleName;
-    newObj[slotItem.name].imagesPerSlide = state.Modules[slotItem.contentId].imagesPerSlide;
+    Obj[slotItem.name] = state.Modules[slotItem.contentId];
+    Obj[slotItem.name].name = slotItem.moduleName;
+    Obj[slotItem.name].imagesPerSlide = state.Modules[slotItem.contentId].imagesPerSlide;
     return newObj;
   });
+  const newObj = Object.assign(Obj, candidLabels);
   return {
     ...newObj,
   };

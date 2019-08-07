@@ -1,5 +1,9 @@
 import { css } from 'styled-components';
 
+const candidContainer = css`
+  border-bottom: 7px solid #f7f7f7;
+`;
+
 const getCandid = css`
   .get-candid-default-heading {
     .get-candid-main-heading {
@@ -26,4 +30,4 @@ const getCandid = css`
   }
 `;
 
-export default getCandid;
+export { getCandid, candidContainer };

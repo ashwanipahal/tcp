@@ -1,9 +1,11 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import Router from 'next/router';
 import { requireNamedOnlineModule } from '../../../../../utils/resourceLoader';
 import { Button, Row, Col, BodyCopy } from '../../../atoms';
-import styles from '../styles/GetCandid.style';
+import { getCandid as styles, candidContainer } from '../styles/GetCandid.style';
 import withStyles from '../../../hoc/withStyles';
+import { getCandidConfig } from '../../../../../utils';
 
 class GetCandid extends React.Component {
   static propTypes = {
@@ -23,14 +25,15 @@ class GetCandid extends React.Component {
     defaultHeading: false,
   };
 
+  candidConfig = getCandidConfig();
   constructor(props) {
     super(props);
+    console.log('.......candid Props', this.props);
     this.state = {
-      // to be moved to a config File(Confirmation Pending with Shobhit)
-      apiKey: '070167ca-8287-4d41-a9bb-6b3850cae9b1',
-      candidSlot: 'tcp-get-candid-image-container',
+      apiKey: this.candidConfig.CAND_API_KEY,
+      candidSlot: this.candidConfig.CAND_SLOT,
       icid: {
-        pdp: 'pdp_na_na_na_03019_candid',
+        pdp: this.candidConfig.CAND_PDP,
       },
     };
   }
@@ -52,8 +55,7 @@ class GetCandid extends React.Component {
             document
               .getElementsByClassName('get-candid-heading')[0]
               .classList.remove('displayNone');
-            document.getElementById('get-candid-container').style.borderBottom =
-              '7px solid #f7f7f7';
+            document.getElementById('get-candid-container').style = candidContainer;
           }
         },
         empty: () => {
@@ -65,30 +67,30 @@ class GetCandid extends React.Component {
 
   handleUpload = () => {
     if (window.candid) {
-      window.candid.upload('070167ca-8287-4d41-a9bb-6b3850cae9b1', [], 'api.getcandid.com');
+      window.candid.upload(this.candidConfig.CAND_API_KEY, [], this.candidConfig.CAND_URL);
     }
   };
 
   handleViewGalleryClick = () => {
     const { pageType } = this.props;
     const { icid } = this.state;
-    //  Replacing with origin path, because no Gallery page yet
-    window.location.href = `https://www.childrensplace.com/us/content/mystyleplace?icid=hp_s17_button_getcandid_070819_getcandid`;
+    // window.location.href = `https://www.childrensplace.com/us/content/mystyleplace?icid=hp_s17_button_getcandid_070819_getcandid`;
     // window.location.href = `${window.location.origin}/us/content/mystyleplace?icid=${
     //   icid[pageType]
     // }`;
+    Router.push('/gallery');
   };
 
   getDefaultHeading = () => {
     return (
-      <div className="get-candid-default-heading">
+      <div className="get-candid-default-heading test">
         <BodyCopy
           fontWeight="500"
           fontSize={['fs20', 'fs20', 'fs32']}
           textAlign="center"
           className="get-candid-main-heading"
         >
-          #mystylePLACE
+          {this.props.lables.title}
         </BodyCopy>
         <BodyCopy
           fontWeight="500"
@@ -96,7 +98,7 @@ class GetCandid extends React.Component {
           textAlign="center"
           className="get-candid-heading-desc"
         >
-          Show us how you are celebrating every big and small occasion
+          {this.props.lables.titleDescription}
         </BodyCopy>
       </div>
     );
@@ -125,7 +127,9 @@ class GetCandid extends React.Component {
               medium: 8,
               large: 12,
             }}
-          />
+          >
+            <div id="tcp-get-candid-image-container" />
+          </Col>
         </Row>
         <Row centered>
           <div className="get-candid-button-container">
@@ -142,11 +146,11 @@ class GetCandid extends React.Component {
                 type="button"
                 className="u-margin-right"
               >
-                VIEW GALLERY
+                {this.props.lables.BtnGallery}
               </Button>
 
               <Button onClick={this.handleUpload} buttonVariation="variable-width" type="button">
-                ADD YOUR PHOTO
+                {this.props.lables.BtnPhoto}
               </Button>
             </Col>
           </div>
