@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CurrentPointSlider should render correctly 1`] = `
+<div
+  className={
+    Object {
+      "labels": Object {
+        "CREATE_ACC_LBL_HIDE": "hide",
+      },
+    }
+  }
+>
+  This is CurrentPointSlider
+</div>
+`;

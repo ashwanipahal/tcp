@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccountDrawerPage should render correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(AccountDrawerHeading) />
+  <Styled(CurrentPointSlider) />
+  <Styled(ExtraPointsTeaser) />
+  <Styled(MyRewardsAndOffers) />
+  <Styled(AccountDrawerBottomLinks) />
+</div>
+`;

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccountDrawerBottomLinks should render correctly 1`] = `
+<div
+  className=""
+>
+  <div>
+    <Styled(Anchor)
+      anchorVariation="secondary"
+      fontSizeVariation="xlarge"
+      text="My Favorites"
+    />
+  </div>
+  <div>
+    <Styled(Anchor)
+      anchorVariation="secondary"
+      fontSizeVariation="xlarge"
+      text="My Place Rewards Credit Card"
+    />
+  </div>
+  <div>
+    <Styled(Anchor)
+      anchorVariation="secondary"
+      fontSizeVariation="xlarge"
+      text="Wallet"
+    />
+  </div>
+  <div>
+    <Styled(Anchor)
+      anchorVariation="secondary"
+      fontSizeVariation="xlarge"
+      text="Orders"
+    />
+  </div>
+  <div>
+    <Styled(Anchor)
+      anchorVariation="secondary"
+      fontSizeVariation="xlarge"
+      text="Sign Out"
+    />
+  </div>
+</div>
+`;
