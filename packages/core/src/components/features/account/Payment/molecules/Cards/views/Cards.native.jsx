@@ -26,6 +26,8 @@ const Cards = props => {
     emptyBtnLabel,
     addBtnLabel,
     setDefaultPaymentMethod,
+    onGetBalanceCard,
+    checkbalanceValueInfo,
   } = props;
   return (
     <View {...props}>
@@ -55,6 +57,8 @@ const Cards = props => {
             card: cardItem,
             labels,
             setDefaultPaymentMethod,
+            onGetBalanceCard,
+            checkbalanceValueInfo,
           };
           return <CardTile {...cardTileProps} />;
         })}
@@ -72,10 +76,14 @@ Cards.propTypes = {
   emptyBtnLabel: PropTypes.string.isRequired,
   addBtnLabel: PropTypes.string.isRequired,
   setDefaultPaymentMethod: PropTypes.func,
+  onGetBalanceCard: PropTypes.func,
+  checkbalanceValueInfo: PropTypes.func,
 };
 
 Cards.defaultProps = {
   setDefaultPaymentMethod: null,
+  onGetBalanceCard: null,
+  checkbalanceValueInfo: null,
 };
 
 export default withStyles(Cards, ParentContainerStyle);
