@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`My Account Layout View should render RewardsPointsViewVanilla Correctly 1`] = `
+exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correctly 1`] = `
 <div
   className=""
 >

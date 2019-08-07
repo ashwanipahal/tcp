@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Row, Col, BodyCopy } from '../../../../../../common/atoms';
-import withStyles from '../../../../../../common/hoc/withStyles';
-import styles from '../styles/RewardsPoints.view.style';
+import { Row, Col, BodyCopy } from '../../../../../../../common/atoms';
+import withStyles from '../../../../../../../common/hoc/withStyles';
+import styles from '../../styles/RewardsPoints.style';
 
 /**
  * @function RewardsPointsView The RewardsPointsView component will provide slider for account drawer
  */
 
-const RewardsPointsView = ({
+const RewardsPointsSlider = ({
   className,
   pointsToNextReward,
   currentPoints,
@@ -57,7 +57,7 @@ const RewardsPointsView = ({
   );
 };
 
-RewardsPointsView.propTypes = {
+RewardsPointsSlider.propTypes = {
   className: PropTypes.string,
   pointsToNextReward: PropTypes.number,
   currentPoints: PropTypes.number,
@@ -70,7 +70,7 @@ RewardsPointsView.propTypes = {
   }),
 };
 
-RewardsPointsView.defaultProps = {
+RewardsPointsSlider.defaultProps = {
   className: '',
   pointsToNextReward: '',
   currentPoints: '',
@@ -83,5 +83,5 @@ RewardsPointsView.defaultProps = {
   },
 };
 
-export default withStyles(RewardsPointsView, styles);
-export { RewardsPointsView as RewardsPointsViewVanilla };
+export default withStyles(RewardsPointsSlider, styles);
+export { RewardsPointsSlider as RewardsPointsSliderVanilla };
