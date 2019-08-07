@@ -15,6 +15,7 @@ export class AccountHeaderContainer extends React.PureComponent {
   constructor(props) {
     super(props);
     this.labels = this.getOverviewLabels(props.labels);
+    this.commonLabels = this.getCommonLabels(props.labels);
   }
 
   componentDidMount() {
@@ -31,19 +32,25 @@ export class AccountHeaderContainer extends React.PureComponent {
     return (labels && labels.accountOverview) || {};
   };
 
+  getCommonLabels = labels => {
+    return (labels && labels.common) || {};
+  };
+
   render() {
-    const { labels, ...otherProps } = this.props;
-    return <AccountHeader labels={this.labels} {...otherProps} />;
+    const { labels, commonLabels, ...otherProps } = this.props;
+    return <AccountHeader labels={this.labels} commonLabels={this.commonLabels} {...otherProps} />;
   }
 }
 
 AccountHeaderContainer.propTypes = {
   labels: PropTypes.shape({}),
+  commonLabels: PropTypes.shape({}),
   fetchRewardsPointsBannerContent: PropTypes.func.isRequired,
 };
 
 AccountHeaderContainer.defaultProps = {
   labels: {},
+  commonLabels: {},
 };
 
 const mapStateToProps = state => ({
