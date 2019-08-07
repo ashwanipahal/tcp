@@ -38,5 +38,6 @@ export default {
   // TODO - Remove the fav_icon when the vector Icons would be implemented
   'fav-icon': '/static/images/heart.png',
   'cart-icon': '/static/images/bag.png',
+  'alert-triangle': '/static/images/alert-triangle.png',
   'user-icon': '/static/images/user-icon.png',
 };

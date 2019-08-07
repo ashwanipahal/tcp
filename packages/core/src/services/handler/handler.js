@@ -60,12 +60,12 @@ export const fetchModuleDataFromGraphQL = async modules => {
  * @param {Object} reqObj request param with endpoints and payload
  * @returns {Promise} Resolves with unbxd or stateful client based on request object or returns null
  */
-export const executeStatefulAPICall = reqObj => {
+export const executeStatefulAPICall = (reqObj, errHandler) => {
   if (!reqObj.webService) {
     return null;
   }
   const apiConfigObj = getAPIConfig();
-  return new StatefulAPIClient(apiConfigObj, reqObj).catch(errorHandler);
+  return new StatefulAPIClient(apiConfigObj, reqObj).catch(errHandler || errorHandler);
 };
 
 export const executeUnbxdAPICall = reqObj => {
