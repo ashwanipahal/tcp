@@ -22,10 +22,19 @@ const RewardsPointsStyles = css`
   }
 
   .table-item {
+    border-right: 1px solid ${props => props.theme.colorPalette.gray['600']};
     flex: 1 1 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    &:last-child {
+      border: none;
+    }
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      border: none;
+    }
   }
 `;
 

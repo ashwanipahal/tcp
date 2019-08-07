@@ -14,6 +14,11 @@ export const AccountHeader = ({
   rewardsPointsBannerContent,
 }) => {
   const isCA = isCanada();
+
+  if (!name) {
+    return null;
+  }
+
   return (
     <Row fullBleed>
       <Col
@@ -26,7 +31,7 @@ export const AccountHeader = ({
         className="hide-on-mobile hide-on-tablet"
       >
         <BodyCopy fontSize="fs20" fontWeight="extrabold" fontFamily="secondary">
-          {`${labels.lbl_overview_greeting} ${name}`}
+          {`${labels.lbl_overview_greeting} ${name || ''}`}
         </BodyCopy>
       </Col>
       {!isCA && (
