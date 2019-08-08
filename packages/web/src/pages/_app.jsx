@@ -27,14 +27,20 @@ class TCPWebApp extends App {
   componentDidMount() {
     const { router, store } = this.props;
     ReactAxe.runAccessibility();
-    const { em, logonPasswordOld } = router && router.query || {};
-    if(router && em && logonPasswordOld) {
-      store.dispatch(openOverlayModal({component: 'login', componentProps: {
-        queryParams: {
-          em,
-          logonPasswordOld
-        }
-      }}));
+    const { em, logonPasswordOld } = (router && router.query) || {};
+    if (em && logonPasswordOld) {
+      store.dispatch(
+        openOverlayModal({
+          component: 'login',
+          componentProps: {
+            queryParams: {
+              em,
+              logonPasswordOld,
+            },
+            currentForm: 'resetPassword',
+          },
+        })
+      );
     }
   }
 

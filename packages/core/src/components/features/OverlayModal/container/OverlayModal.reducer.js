@@ -17,7 +17,7 @@ const OverlayModalReducer = (state = initialState, action) => {
         .set('component', action.payload.component)
         .set('variation', action.payload.variation)
         .set('color', action.payload.color)
-        .set('componentProps', action.payload.props);
+        .set('componentProps', action.payload.componentProps);
     case OVERLAY_CONSTANTS.CLOSE_OVERLAY:
       return state
         .set('openOverlay', false)

@@ -15,8 +15,8 @@ export class ResetPasswordContainer extends PureComponent {
     labels: PropTypes.shape({}).isRequired,
     queryParams: PropTypes.shape({
       em: PropTypes.string.isRequired,
-      logonPasswordOld: PropTypes.string.isRequired
-    }).isRequired
+      logonPasswordOld: PropTypes.string.isRequired,
+    }).isRequired,
   };
 
   resetPassword = ({ password, confirmPassword }) => {
@@ -24,36 +24,45 @@ export class ResetPasswordContainer extends PureComponent {
     resetPasswordAction({
       newPassword: password,
       logonPasswordVerify: confirmPassword,
-      ...queryParams
+      ...queryParams,
     });
-  }
+  };
 
-  resetState = () => {
+  backHandler = () => {
     const { resetStateAction, backToLoginAction } = this.props;
     resetStateAction();
     backToLoginAction();
-  }
+  };
 
   render() {
     const { success, error, labels } = this.props;
     return (
-      <ResetPasswordComponent success={success} error={error} onSubmit={this.resetPassword} onBack={this.resetState} labels={labels} />
-    )
+      <ResetPasswordComponent
+        success={success}
+        error={error}
+        onSubmit={this.resetPassword}
+        onBack={this.backHandler}
+        labels={labels}
+      />
+    );
   }
 }
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   success: getSuccess(state),
-  error: getError(state)
+  error: getError(state),
 });
 
-const mapDispatchToProps = dispatch => ({
+export const mapDispatchToProps = dispatch => ({
   resetPasswordAction: payload => {
     dispatch(resetPassword(payload));
   },
   resetStateAction: () => {
     dispatch(resetState());
-  }
-})
+  },
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(ResetPasswordContainer)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ResetPasswordContainer);

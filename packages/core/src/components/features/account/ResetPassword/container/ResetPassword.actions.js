@@ -11,7 +11,7 @@ export const resetPasswordSuccess = payload => ({
 });
 
 export const resetPasswordError = payload => ({
-  type: constants.RESET_PASSWORD_SUCCESS,
+  type: constants.RESET_PASSWORD_ERROR,
   payload,
 });
 

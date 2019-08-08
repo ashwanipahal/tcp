@@ -68,21 +68,22 @@ const ImageGrid = (props: Props) => {
 
   return (
     <div>
-      {mediaList.reduce(gridReducer, gridCoordinator).final.map(medList => (
-        <Row fullBleed className={className}>
-          {medList.map((mediaProps, index) => {
-            return (
-              <Col colSize={colSize} className="image-col">
-                <DamImage
-                  data-locator={`${dataLocator}${index}`}
-                  imgConfigs={config.IMG_DATA.imgConfig}
-                  imgData={mediaProps}
-                />
-              </Col>
-            );
-          })}
-        </Row>
-      ))}
+      {mediaList &&
+        mediaList.reduce(gridReducer, gridCoordinator).final.map(medList => (
+          <Row fullBleed className={className}>
+            {medList.map((mediaProps, index) => {
+              return (
+                <Col colSize={colSize} className="image-col">
+                  <DamImage
+                    data-locator={`${dataLocator}${index}`}
+                    imgConfigs={config.IMG_DATA.imgConfig}
+                    imgData={mediaProps}
+                  />
+                </Col>
+              );
+            })}
+          </Row>
+        ))}
     </div>
   );
 };

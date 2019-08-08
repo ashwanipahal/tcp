@@ -5,6 +5,7 @@ import LoginForm from '../../../molecules/LoginForm';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LoginTopSection from '../../../molecules/LoginTopSection';
 import ForgotPasswordContainer from '../../../../ForgotPassword/container/ForgotPassword.container';
+import ResetPassword from '../../../../ResetPassword';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import Button from '../../../../../../common/atoms/Button';
@@ -15,15 +16,20 @@ class LoginSection extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      resetPassword: false,
+      currentForm: props.currentForm || 'login',
     };
     this.isCanada = isCanada();
   }
 
   showForgotPasswordForm = () => {
-    const { resetPassword } = this.state;
     this.setState({
-      resetPassword: !resetPassword,
+      currentForm: 'forgotPassword',
+    });
+  };
+
+  showLoginForm = () => {
+    this.setState({
+      currentForm: 'login',
     });
   };
 
@@ -39,7 +45,7 @@ class LoginSection extends React.PureComponent<Props> {
       onCreateAccountClick,
     } = this.props;
 
-    const { resetPassword } = this.state;
+    const { currentForm } = this.state;
     return (
       <Row className={className}>
         <Col
@@ -50,28 +56,27 @@ class LoginSection extends React.PureComponent<Props> {
           }}
           className="elem-pt-XXL elem-pb-XXL  elem-pl-LRG elem-pr-LRG"
         >
-          {!resetPassword && (
-            <LoginTopSection labels={labels} className="elem-mb-LRG" isCanada={this.isCanada} />
+          {currentForm === 'login' && (
+            <React.Fragment>
+              <LoginTopSection labels={labels} className="elem-mb-LRG" isCanada={this.isCanada} />
+              <LoginForm
+                onSubmit={onSubmit}
+                labels={labels}
+                loginErrorMessage={loginErrorMessage}
+                initialValues={initialValues}
+                showRecaptcha={showRecaptcha}
+                showForgotPasswordForm={this.showForgotPasswordForm}
+                resetForm={resetForm}
+                className="elem-mb-LRG"
+                onCreateAccountClick={onCreateAccountClick}
+              />
+            </React.Fragment>
           )}
-          {!resetPassword && (
-            <LoginForm
-              onSubmit={onSubmit}
-              labels={labels}
-              loginErrorMessage={loginErrorMessage}
-              initialValues={initialValues}
-              showRecaptcha={showRecaptcha}
-              showForgotPasswordForm={this.showForgotPasswordForm}
-              resetForm={resetForm}
-              className="elem-mb-LRG"
-              onCreateAccountClick={onCreateAccountClick}
-            />
+          {currentForm === 'forgotPassword' && (
+            <ForgotPasswordContainer showForgotPasswordForm={this.showLoginForm} labels={labels} />
           )}
-
-          {resetPassword && (
-            <ForgotPasswordContainer
-              showForgotPasswordForm={this.showForgotPasswordForm}
-              labels={labels}
-            />
+          {currentForm === 'resetPassword' && (
+            <ResetPassword backToLoginPage={this.showLoginForm} labels={labels} />
           )}
 
           <BodyCopy component="div" className="border elem-pt-MED elem-pb-LRG">

@@ -2,13 +2,6 @@ import { executeStatefulAPICall } from '../../handler';
 import { getAPIConfig } from '../../../utils';
 import endpoints from '../../endpoints';
 
-const errorHandler = err => {
-  if (err.response && err.response.body && err.response.body.errors) {
-    throw new Error(err.response.body.errors[0].errorMessage);
-  }
-  throw new Error('Your action could not be completed due to system error');
-};
-
 export const resetPassword = ({ newPassword, newPasswordVerify, logonPasswordOld, em }) => {
   const apiConfig = getAPIConfig();
 
@@ -33,19 +26,21 @@ export const resetPassword = ({ newPassword, newPasswordVerify, logonPasswordOld
       fromOrderId: '*',
       toOrderId: '.',
       deleteIfEmpty: '*',
-      'continue': '1',
+      continue: '1',
       createIfEmpty: '1',
       calculationUsageId: '-1',
       updatePrices: '0',
       myAcctMain: '1',
-      isPasswordReset: 'false'
+      isPasswordReset: 'false',
     },
   };
   return executeStatefulAPICall(payload)
     .then(res => {
       return res;
     })
-    .catch(errorHandler);
+    .catch(err => {
+      throw err;
+    });
 };
 
 export default resetPassword;
