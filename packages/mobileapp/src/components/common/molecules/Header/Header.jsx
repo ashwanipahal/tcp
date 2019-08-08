@@ -22,6 +22,7 @@ import {
 type Props = {
   labels: object,
   headerPromo: Array,
+  navigation: object,
 };
 
 /**
@@ -125,7 +126,12 @@ class Header extends React.PureComponent<Props> {
               )}
             </StoreContainer>
           </MessageContainer>
-          <CartContainer>
+          <CartContainer
+            onPress={() => {
+              // eslint-disable-next-line react/destructuring-assignment
+              this.props.navigation.navigate('BagPage');
+            }}
+          >
             <CartIconView
               source={cartIcon}
               data-locator={getLocator('global_headerpanelbagicon')}
