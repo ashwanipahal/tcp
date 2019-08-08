@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { resetLoginForgotPasswordState } from '../../ForgotPassword/container/ForgotPassword.actions';
+import {
+  resetPassword,
+  resetLoginForgotPasswordState,
+} from '../../ForgotPassword/container/ForgotPassword.actions';
 import {
   getShowNotificationState,
   getResetEmailResponse,
   toggleSuccessfulEmailSection,
 } from '../../ForgotPassword/container/ForgotPassword.selectors';
-import { login, resetLoginInfo, loginTouchId } from './LoginPage.actions';
+import { login, resetLoginInfo } from './LoginPage.actions';
 import {
   closeOverlayModal,
   openOverlayModal,
@@ -63,6 +66,9 @@ class LoginPageContainer extends React.PureComponent {
       labels,
       resetLoginState,
       isUserLoggedIn,
+      SubmitForgot,
+      showNotification,
+      successFullResetEmail,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage || labels.login.lbl_login_error : '';
     const initialValues = {
@@ -81,6 +87,9 @@ class LoginPageContainer extends React.PureComponent {
         onCreateAccountClick={this.onCreateAccountClick}
         resetLoginState={resetLoginState}
         isUserLoggedIn={isUserLoggedIn}
+        SubmitForgot={SubmitForgot}
+        showNotification={showNotification}
+        successFullResetEmail={successFullResetEmail}
       />
     );
   }
@@ -99,6 +108,9 @@ LoginPageContainer.propTypes = {
   openOverlay: PropTypes.func,
   navigation: PropTypes.shape({}),
   labels: PropTypes.shape({}).isRequired,
+  SubmitForgot: PropTypes.bool.isRequired,
+  showNotification: PropTypes.bool.isRequired,
+  successFullResetEmail: PropTypes.bool.isRequired,
 };
 
 LoginPageContainer.defaultProps = {
@@ -122,6 +134,9 @@ const mapDispatchToProps = dispatch => {
     },
     resetLoginState: () => {
       dispatch(resetLoginInfo());
+    },
+    SubmitForgot: payload => {
+      dispatch(resetPassword(payload));
     },
     closeOverlay: () => {
       dispatch(closeOverlayModal());

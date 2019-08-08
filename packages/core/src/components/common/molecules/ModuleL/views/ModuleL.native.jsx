@@ -1,8 +1,9 @@
 // @flow
 import React from 'react';
 import { FlatList } from 'react-native';
-import { UrlHandler, getScreenWidth } from '../../../../../utils/index.native';
+import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
 import { Image, BodyCopy, Anchor } from '../../../atoms';
+import PromoBanner from '../../PromoBanner/views/PromoBanner.native';
 import LinkText from '../../LinkText';
 import {
   Container,
@@ -17,6 +18,7 @@ type Props = {
   imageGrid: Array<Object>,
   headerText: Array<Object>,
   navigation: Object,
+  promoBanner: Array<Object>,
 };
 
 /**
@@ -41,14 +43,31 @@ const keyExtractor = (_, index) => index.toString();
 const renderItem = (item, navigation) => {
   const {
     item: { image, link },
+    index,
   } = item;
   return (
-    <Anchor url={link.url} navigation={navigation} external={link.external}>
+    <Anchor
+      url={link.url}
+      navigation={navigation}
+      external={link.external}
+      testID={`${getLocator('moduleL_tiles')}${index + 1}`}
+    >
       <ChildContainer>
-        <Image url={image.url} height={127} crop={image.crop_m} />
+        <Image
+          url={image.url}
+          height={127}
+          crop={image.crop_m}
+          testID={`${getLocator('moduleL_image')}${index + 1}`}
+        />
         <MessageContainer>
           <BodyCopyContainer width={width}>
-            <BodyCopy fontSize="fs20" color="black" letterSpacing="ls222" text={image.alt} />
+            <BodyCopy
+              fontSize="fs20"
+              color="black"
+              letterSpacing="ls222"
+              text={image.alt}
+              testID={`${getLocator('moduleL_title')}${index + 1}`}
+            />
           </BodyCopyContainer>
           <LinkContainer>
             <Anchor
@@ -58,6 +77,7 @@ const renderItem = (item, navigation) => {
               url={link.url}
               navigation={navigation}
               external={link.external}
+              testID={`${getLocator('moduleL_link')}${index + 1}`}
             />
           </LinkContainer>
         </MessageContainer>
@@ -74,22 +94,26 @@ const renderItem = (item, navigation) => {
  */
 
 const ModuleL = (props: Props) => {
-  const { imageGrid, headerText, navigation } = props;
+  const { headerText, imageGrid, navigation, promoBanner } = props;
   return (
     <Container>
-      <LinkText
-        type="heading"
-        fontFamily="primary"
-        fontSize="fs36"
-        letterSpacing="ls167"
-        textAlign="center"
-        color="text.primary"
-        fontWeight="black"
-        textItems={headerText[0].textItems}
-        onPress={() => {
-          UrlHandler(headerText[0].link.url);
-        }}
-      />
+      {headerText && (
+        <LinkText
+          headerText={headerText}
+          navigation={navigation}
+          type="heading"
+          fontFamily="primary"
+          fontSize="fs36"
+          letterSpacing="ls167"
+          textAlign="center"
+          color="text.primary"
+          fontWeight="black"
+          testID={getLocator('moduleL_header_text')}
+        />
+      )}
+      {promoBanner && (
+        <PromoBanner promoBanner={promoBanner} testID={getLocator('moduleL_promobanner_text')} />
+      )}
       <ListContainer>
         <FlatList
           keyExtractor={keyExtractor}

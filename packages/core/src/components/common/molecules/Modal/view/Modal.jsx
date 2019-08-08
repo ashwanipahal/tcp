@@ -40,6 +40,7 @@ class Modal extends React.PureComponent {
       className,
       closeIconDataLocator,
       headingStyle,
+      closeIconLeftAligned,
     } = otherProps;
     const column = colSet || Config.MODAL_COL_DEFAULTS;
     return (
@@ -55,6 +56,7 @@ class Modal extends React.PureComponent {
                       title={title}
                       heading={heading}
                       closeIconDataLocator={closeIconDataLocator}
+                      closeIconLeftAligned={closeIconLeftAligned}
                       headingStyle={headingStyle}
                     />
                     {children}
@@ -69,6 +71,7 @@ class Modal extends React.PureComponent {
                   title={title}
                   heading={heading}
                   closeIconDataLocator={closeIconDataLocator}
+                  closeIconLeftAligned={closeIconLeftAligned}
                   headingStyle={headingStyle}
                 />
                 {children}

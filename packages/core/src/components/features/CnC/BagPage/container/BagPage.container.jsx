@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import BagPageSelector from './BagPage.selectors';
 import BagPage from '../views/BagPage.view';
 import BAG_PAGE_ACTIONS from './BagPage.actions';
-
 // @flow
 // type Props = {
 //   closeModal: Function,
@@ -22,8 +21,8 @@ export class BagPageContainer extends React.Component<Props> {
   };
 
   render() {
-    const { labels } = this.props;
-    return <BagPage labels={labels} />;
+    const { labels, totalCount } = this.props;
+    return <BagPage labels={labels} totalCount={totalCount} />;
   }
 }
 
@@ -38,6 +37,8 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
 const mapStateToProps = state => {
   return {
     labels: BagPageSelector.getBagPageLabels(state),
+    totalCount: BagPageSelector.getTotalItems(state),
+    productsTypes: BagPageSelector.getProductsTypes(state),
   };
 };
 

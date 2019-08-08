@@ -7,13 +7,28 @@ import accountNavigationAbstractor from '../../../../../services/abstractors/acc
 
 export function* getAccountNavigationList() {
   const siteId = utils.getSiteId();
+  let queryParams = '';
+  if (siteId === ACCOUNT_CONSTANTS.ACCOUNT_SITE_US) {
+    queryParams = {
+      brand: ACCOUNT_CONSTANTS.ACCOUNT_BRAND_US,
+      country: ACCOUNT_CONSTANTS.ACCOUNT_COUNTRY_US,
+      channel: ACCOUNT_CONSTANTS.ACCOUNT_CHANNEL_US,
+    };
+  }
+  if (siteId === ACCOUNT_CONSTANTS.ACCOUNT_SITE_CA) {
+    queryParams = {
+      brand: ACCOUNT_CONSTANTS.ACCOUNT_BRAND_CA,
+      country: ACCOUNT_CONSTANTS.ACCOUNT_COUNTRY_CA,
+      channel: ACCOUNT_CONSTANTS.ACCOUNT_CHANNEL_CA,
+    };
+  }
   try {
     yield put(showLoader());
-    const accountNav = yield call(accountNavigationAbstractor.getData, 'AccountNavigation', {
-      brand: ACCOUNT_CONSTANTS.ACCOUNT_BRAND,
-      country: `${siteId}`,
-      channel: ACCOUNT_CONSTANTS.ACCOUNT_CHANNEL,
-    });
+    const accountNav = yield call(
+      accountNavigationAbstractor.getData,
+      'AccountNavigation',
+      queryParams
+    );
     yield put(setAccountNavigationList(accountNav));
   } catch (err) {
     yield null;

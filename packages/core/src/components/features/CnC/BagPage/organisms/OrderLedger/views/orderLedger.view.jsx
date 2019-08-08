@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Row from '@tcp/core/src/components/common/atoms/Row';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
+import { getLocator } from '@tcp/core/src/utils';
 import ReactToolTip from '@tcp/core/src/components/common/atoms/ReactToolTip';
 import { getIconPath } from '../../../../../../../utils';
 import { Image } from '../../../../../../common/atoms';
@@ -10,25 +11,24 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/orderLedger.style';
 
-const OrderLedger = ({
-  className,
-  itemsCount,
-  currencySymbol,
-  subTotal,
-  couponsTotal,
-  savingsTotal,
-  shippingTotal,
-  taxesTotal,
-  grandTotal,
-  giftCardsTotal,
-  orderBalanceTotal,
-  totalOrderSavings,
-  labels,
-}) => {
+const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
+  const {
+    itemsCount,
+    currencySymbol,
+    subTotal,
+    couponsTotal,
+    savingsTotal,
+    shippingTotal,
+    taxesTotal,
+    grandTotal,
+    giftCardsTotal,
+    orderBalanceTotal,
+    totalOrderSavings,
+  } = ledgerSummaryData;
   return (
     <React.Fragment>
-      <Grid className={className}>
-        <Row className="items-total rowMargin">
+      <Grid className={className} data-locator={getLocator('order_ledger_section_label')}>
+        <Row className="items-total rowMargin" data-locator={getLocator('order_ledger_item_label')}>
           <Col colSize={{ large: 6, medium: 4, small: 3 }}>
             <BodyCopy
               bodySize="one"
@@ -55,7 +55,10 @@ const OrderLedger = ({
           </Col>
         </Row>
         {couponsTotal ? (
-          <Row className="coupons-total rowMargin">
+          <Row
+            className="coupons-total rowMargin"
+            data-locator={getLocator('order_ledger_coupons_label')}
+          >
             <Col colSize={{ large: 6, medium: 4, small: 3 }}>
               <BodyCopy
                 bodySize="one"
@@ -82,7 +85,10 @@ const OrderLedger = ({
           </Row>
         ) : null}
         {savingsTotal ? (
-          <Row className="promotions-total rowMargin">
+          <Row
+            className="promotions-total rowMargin"
+            data-locator={getLocator('order_ledger_promotion_label')}
+          >
             <Col colSize={{ large: 6, medium: 4, small: 3 }}>
               <BodyCopy
                 bodySize="one"
@@ -108,7 +114,10 @@ const OrderLedger = ({
             </Col>
           </Row>
         ) : null}
-        <Row className="shipping-total rowMargin">
+        <Row
+          className="shipping-total rowMargin"
+          data-locator={getLocator('order_ledger_shipping_label')}
+        >
           <Col colSize={{ large: 6, medium: 4, small: 3 }}>
             <BodyCopy
               bodySize="one"
@@ -131,14 +140,18 @@ const OrderLedger = ({
             >
               {/* eslint-disable-next-line no-nested-ternary */}
               {shippingTotal !== undefined
-                ? { shippingTotal } > 0
+                ? // eslint-disable-next-line no-constant-condition
+                  { shippingTotal } > 0
                   ? `${currencySymbol}${shippingTotal.toFixed(2)}`
-                  : 'Free'
+                  : labels.free
                 : '-'}
             </BodyCopy>
           </Col>
         </Row>
-        <Row className="tax-total rowMargin">
+        <Row
+          className="tax-total rowMargin"
+          data-locator={getLocator('order_ledger_estimated_tax_label')}
+        >
           <Col colSize={{ large: 6, medium: 4, small: 3 }}>
             <BodyCopy
               bodySize="one"
@@ -166,7 +179,10 @@ const OrderLedger = ({
         </Row>
         {giftCardsTotal > 0 ? (
           <React.Fragment>
-            <Row className="estimated-total rowMargin">
+            <Row
+              className="estimated-total rowMargin"
+              data-locator={getLocator('order_ledger_estimated_total_label')}
+            >
               <Col colSize={{ large: 6, medium: 4, small: 3 }}>
                 <BodyCopy
                   bodySize="one"
@@ -191,7 +207,10 @@ const OrderLedger = ({
                 </BodyCopy>
               </Col>
             </Row>
-            <Row className="giftCard-total rowMargin">
+            <Row
+              className="giftCard-total rowMargin"
+              data-locator={getLocator('order_ledger_gift_card_label')}
+            >
               <Col colSize={{ large: 6, medium: 4, small: 3 }}>
                 <BodyCopy
                   bodySize="one"
@@ -218,7 +237,10 @@ const OrderLedger = ({
             </Row>
           </React.Fragment>
         ) : null}
-        <Row className="balance-total rowMargin">
+        <Row
+          className="balance-total rowMargin"
+          data-locator={getLocator('order_ledger_balance_total_label')}
+        >
           <Col colSize={{ large: 6, medium: 4, small: 3 }}>
             <BodyCopy
               bodySize="one"
@@ -245,7 +267,10 @@ const OrderLedger = ({
             </BodyCopy>
           </Col>
         </Row>
-        <Row className="total-order-savings rowMargin">
+        <Row
+          className="total-order-savings rowMargin"
+          data-locator={getLocator('order_ledger_total_order_savings_label')}
+        >
           <Col colSize={{ large: 6, medium: 4, small: 3 }}>
             <BodyCopy
               bodySize="one"
@@ -281,64 +306,58 @@ const OrderLedger = ({
 OrderLedger.propTypes = {
   className: PropTypes.string.isRequired,
   /** Number of items in the cart. */
-  itemsCount: PropTypes.number.isRequired,
+  ledgerSummaryData: PropTypes.shape({
+    itemsCount: PropTypes.number.isRequired,
 
-  /** Total estimation, before applying taxes */
-  grandTotal: PropTypes.number,
-  /** Flag if the total prop will be receiving an estimated total or a final total */
-  // FIXME: we should have a single "Estimated" flag and reuse it accordanly across all estimated values
-  // isTotalEstimated: PropTypes.bool.isRequired,
+    /** Total estimation, before applying taxes */
+    grandTotal: PropTypes.number,
+    /** Flag if the total prop will be receiving an estimated total or a final total */
+    // FIXME: we should have a single "Estimated" flag and reuse it accordanly across all estimated values
+    // isTotalEstimated: PropTypes.bool.isRequired,
 
-  /** Total savings applied in the cart */
-  savingsTotal: PropTypes.number,
+    /** Total savings applied in the cart */
+    savingsTotal: PropTypes.number,
 
-  /** Subtotal price of the items, before taxes, shipping, etc. */
-  subTotal: PropTypes.number,
-  /**
-   * Total cost of taxes. If it's value is undefined, corresponding line will
-   * only be shown if the isShowUndefinedTax prop is true.
-   */
-  taxesTotal: PropTypes.number,
+    /** Subtotal price of the items, before taxes, shipping, etc. */
+    subTotal: PropTypes.number,
+    /**
+     * Total cost of taxes. If it's value is undefined, corresponding line will
+     * only be shown if the isShowUndefinedTax prop is true.
+     */
+    taxesTotal: PropTypes.number,
 
-  /** Total discount coming from coupons. */
-  couponsTotal: PropTypes.number,
-  /**
-   * Total cost of shipping. If it's value is 0, the 'Free' copy will be
-   * shown. If it's undefined, corresponding line won't be rendered.
-   */
-  shippingTotal: PropTypes.number,
-  /**
-   * Total discount of gift cards applied. If it's value is falsy,
-   * corresponding line won't be rendered.
-   */
-  giftCardsTotal: PropTypes.number,
+    /** Total discount coming from coupons. */
+    couponsTotal: PropTypes.number,
+    /**
+     * Total cost of shipping. If it's value is 0, the 'Free' copy will be
+     * shown. If it's undefined, corresponding line won't be rendered.
+     */
+    shippingTotal: PropTypes.number,
+    /**
+     * Total discount of gift cards applied. If it's value is falsy,
+     * corresponding line won't be rendered.
+     */
+    giftCardsTotal: PropTypes.number,
 
-  /** Flags if the tax line should be rendered even when the taxesTotal prop value is undefined */
-  // isShowUndefinedTax: PropTypes.bool,
-  /** Flag if shipping should be shown in the ledger */
-  // isShowShipping: PropTypes.bool,
-  /** Flags if the order has items for shipping */
-  // isOrderHasShipping: PropTypes.bool.isRequired,
-  /** This is used to display the correct currency symbol */
-  currencySymbol: PropTypes.string.isRequired,
+    /** Flags if the tax line should be rendered even when the taxesTotal prop value is undefined */
+    // isShowUndefinedTax: PropTypes.bool,
+    /** Flag if shipping should be shown in the ledger */
+    // isShowShipping: PropTypes.bool,
+    /** Flags if the order has items for shipping */
+    // isOrderHasShipping: PropTypes.bool.isRequired,
+    /** This is used to display the correct currency symbol */
+    currencySymbol: PropTypes.string.isRequired,
 
-  orderBalanceTotal: PropTypes.number,
-  totalOrderSavings: PropTypes.number,
+    orderBalanceTotal: PropTypes.number,
+    totalOrderSavings: PropTypes.number,
+  }),
   labels: PropTypes.shape({}),
   /** Flag indicates whether cart savings section will display */
   // isDisplayCartSavings: PropTypes.bool,
 };
 
 OrderLedger.defaultProps = {
-  couponsTotal: 0,
-  savingsTotal: 0,
-  shippingTotal: 0,
-  taxesTotal: 0,
-  grandTotal: 0,
-  giftCardsTotal: 0,
-  orderBalanceTotal: 0,
-  totalOrderSavings: 0,
-  subTotal: 0,
+  ledgerSummaryData: {},
   labels: {},
 };
 export default withStyles(OrderLedger, styles);

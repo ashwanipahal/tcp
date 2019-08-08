@@ -95,7 +95,7 @@ class LoginSection extends PureComponent<Props> {
         )}
         <FormStyleView>
           <DescriptionStyle>
-            <Text>HELP</Text>
+            <Text>{labels.login.lbl_login_createAccountHelp}</Text>
           </DescriptionStyle>
           <CustomButton
             color={colorPallete.white}
@@ -103,7 +103,7 @@ class LoginSection extends PureComponent<Props> {
             type="submit"
             buttonVariation="variable-width"
             data-locator=""
-            text="labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA"
+            text={labels.login.lbl_login_createAccountCTA}
             onPress={this.toggleModal}
           />
         </FormStyleView>

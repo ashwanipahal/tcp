@@ -22,23 +22,26 @@ export default {
           },
         },
       ],
-      promoBanner: {
-        items: [
-          {
-            link: {
-              url: plpUrl,
-              title: '',
-              target: '',
-              external: 0,
-            },
-            image: {
-              url: '',
-              alt: 'alt 1',
-              title: 'Image link text',
-            },
+      promoBanner: [
+        {
+          link: {
+            url: 'http://example.com',
+            title: '',
+            target: '',
+            external: 0,
           },
-        ],
-      },
+          textItems: [
+            {
+              text: 'ALL TEES',
+              style: 'style1',
+            },
+            {
+              text: '67% OFF',
+              style: 'style2',
+            },
+          ],
+        },
+      ],
       smallCompImage: [
         {
           link: {
