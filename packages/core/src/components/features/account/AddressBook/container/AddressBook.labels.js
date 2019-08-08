@@ -55,6 +55,7 @@ const labels = {
   acc_lbl_edit_address_cta: 'EDIT ADDRESS',
   acc_lbl_add_address_form_heading: 'Add New Shipping Address',
   acc_lbl_edit_address_form_heading: 'EDIT SHIPPING ADDRESS',
+  acc_lbl_create_account: 'Create Account',
 };
 
 export default labels;

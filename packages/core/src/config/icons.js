@@ -35,4 +35,6 @@ export default {
   up_arrow_icon: '/static/images/carrot-small-up.png',
   active_icon: '/static/images/circle-check.png',
   'carousel-big-carrot': '/static/images/right-carousel-carrot.svg',
+  'alert-triangle': '/static/images/alert-triangle.png',
+  'user-icon': '/static/images/user-icon.png',
 };

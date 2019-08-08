@@ -7,6 +7,11 @@ describe('LoginForm component', () => {
     const props = {
       labels: {
         login: {},
+        handleSubmit: () => {},
+        onSubmit: () => {},
+        loginErrorMessage: '',
+        showForgotPasswordForm: () => {},
+        resetForm: () => {},
       },
       handleSubmit: () => {},
       onSubmit: () => {},

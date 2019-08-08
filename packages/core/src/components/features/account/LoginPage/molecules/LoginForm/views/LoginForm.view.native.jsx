@@ -52,6 +52,7 @@ export const LoginForm = props => {
         name="emailAddress"
         id="emailAddress"
         type="text"
+        autoCapitalize="none"
         component={TextBox}
         dataLocator="emailAddress"
       />
@@ -103,32 +104,36 @@ export const LoginForm = props => {
 };
 LoginForm.propTypes = {
   labels: PropTypes.shape({
-    lbl_login_email: PropTypes.string,
-    lbl_login_password: PropTypes.string,
-    lbl_login_rememberMe: PropTypes.string,
-    lbl_login_saveMyPlace: PropTypes.string,
-    login: PropTypes.string,
-    lbl_login_createAccountCTA: PropTypes.string,
-    lbl_login_forgetPasswordCTA: PropTypes.string,
-    lbl_login_createAccountHelp: PropTypes.string,
+    login: {
+      lbl_login_email: PropTypes.string,
+      lbl_login_password: PropTypes.string,
+      lbl_login_rememberMe: PropTypes.string,
+      lbl_login_saveMyPlace: PropTypes.string,
+      login: PropTypes.string,
+      lbl_login_createAccountCTA: PropTypes.string,
+      lbl_login_forgetPasswordCTA: PropTypes.string,
+      lbl_login_createAccountHelp: PropTypes.string,
+    },
   }),
   handleSubmit: PropTypes.func,
   onSubmit: PropTypes.func,
   loginErrorMessage: PropTypes.string,
-  showForgotPasswordForm: PropTypes.string.isRequired,
-  resetForm: PropTypes.string.isRequired,
+  showForgotPasswordForm: PropTypes.func.isRequired,
+  resetForm: PropTypes.func.isRequired,
 };
 
 LoginForm.defaultProps = {
   labels: {
-    lbl_login_email: 'Email Address',
-    lbl_login_password: 'Password',
-    lbl_login_rememberMe: `Remember me.\nNot recommended on shared devices.`,
-    lbl_login_saveMyPlace: `Save My Place Rewards Credit Card ending in 1234\nto my account for future purchases.`,
-    lbl_login_loginCTA: 'LOG IN',
-    lbl_login_createAccountCTA: 'CREATE ACCOUNT',
-    lbl_login_forgetPasswordCTA: 'Forgot password?',
-    lbl_login_createAccountHelp: "Don't have an account? Create one now to start earning points!",
+    login: {
+      lbl_login_email: 'Email Address',
+      lbl_login_password: 'Password',
+      lbl_login_rememberMe: `Remember me.\nNot recommended on shared devices.`,
+      lbl_login_saveMyPlace: `Save My Place Rewards Credit Card ending in 1234\nto my account for future purchases.`,
+      lbl_login_loginCTA: 'LOG IN',
+      lbl_login_createAccountCTA: 'CREATE ACCOUNT',
+      lbl_login_forgetPasswordCTA: 'Forgot password?',
+      lbl_login_createAccountHelp: "Don't have an account? Create one now to start earning points!",
+    },
   },
   handleSubmit: noop,
   onSubmit: noop,

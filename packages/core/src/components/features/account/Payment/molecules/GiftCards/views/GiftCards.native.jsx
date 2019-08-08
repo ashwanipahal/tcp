@@ -18,13 +18,15 @@ import CardTile from '../../../../common/molecule/CardTile/views/CardTile.view.n
 type Props = {
   labels: string,
   giftCardList: object,
+  onGetBalanceCard: Function,
+  checkbalanceValueInfo: any,
 };
 
 const GiftCards = (props: Props) => {
-  const { labels, giftCardList } = props;
+  const { labels, giftCardList, onGetBalanceCard, checkbalanceValueInfo } = props;
   return (
     <View {...props}>
-      <HeadingTextStyle>{labels.paymentGC.lbl_payment_gcHeading}</HeadingTextStyle>
+      <HeadingTextStyle>{labels.ACC_LBL_GC_HEADING}</HeadingTextStyle>
       {giftCardList.size === 0 && (
         <React.Fragment>
           <WrapperStyle>
@@ -34,27 +36,28 @@ const GiftCards = (props: Props) => {
                 source={require('../../../../../../../../../mobileapp/src/assets/images/gift-card.png')}
               />
             </ImgWrapper>
-            <EmptyCCLabelStyle>{labels.paymentGC.lbl_payment_GCEmptyHeading}</EmptyCCLabelStyle>
+            <EmptyCCLabelStyle>{labels.ACC_LBL_GC_EMPTY_HEADING}</EmptyCCLabelStyle>
           </WrapperStyle>
-          <DescriptionEmptyCCStyle>
-            {labels.paymentGC.lbl_payment_GCEmptyDesc}
-          </DescriptionEmptyCCStyle>
+          <DescriptionEmptyCCStyle>{labels.ACC_LBL_GC_EMPTY_DESC}</DescriptionEmptyCCStyle>
         </React.Fragment>
       )}
       <ButtonWrapperStyle>
         <CustomButton
-          text={
-            giftCardList.size === 0
-              ? labels.paymentGC.lbl_payment_GCEmptyAddBtn
-              : labels.paymentGC.lbl_payment_addBtn
-          }
+          text={giftCardList.size === 0 ? labels.ACC_LBL_GC_EMPTY_ADD_BTN : labels.ACC_LBL_ADD_BTN}
           buttonVariation="variable-width"
           fill="BLUE"
           color="white"
         />
       </ButtonWrapperStyle>
       {giftCardList.size > 0 &&
-        giftCardList.map(cardItem => <CardTile card={cardItem} labels={labels} />)}
+        giftCardList.map(cardItem => (
+          <CardTile
+            card={cardItem}
+            labels={labels}
+            onGetBalanceCard={onGetBalanceCard}
+            checkbalanceValueInfo={checkbalanceValueInfo}
+          />
+        ))}
     </View>
   );
 };

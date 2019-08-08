@@ -48,7 +48,7 @@ class LoginSection extends React.PureComponent<Props> {
             medium: 8,
             large: 12,
           }}
-          className="elem-pt-XXL  elem-pl-LRG elem-pr-LRG"
+          className="elem-pt-XXL elem-pb-XXL  elem-pl-LRG elem-pr-LRG"
         >
           {!resetPassword && (
             <LoginTopSection labels={labels} className="elem-mb-LRG" isCanada={this.isCanada} />
@@ -81,7 +81,7 @@ class LoginSection extends React.PureComponent<Props> {
           </BodyCopy>
           <Button
             className="create-acc-cta"
-            fill="BLUE"
+            fill="WHITE"
             type="submit"
             buttonVariation="fixed-width"
             data-locator=""

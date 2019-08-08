@@ -1,10 +1,10 @@
 import React from 'react';
 import LoginPageContainer from '@tcp/core/src/components/features/account/LoginPage';
 
-const Login = () => {
+const Login = props => {
   return (
     <React.Fragment>
-      <LoginPageContainer />
+      <LoginPageContainer {...props} />
     </React.Fragment>
   );
 };
