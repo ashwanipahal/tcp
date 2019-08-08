@@ -11,7 +11,7 @@ export function* getAccountNavigationList() {
     yield put(showLoader());
     const accountNav = yield call(accountNavigationAbstractor.getData, 'AccountNavigation', {
       brand: ACCOUNT_CONSTANTS.ACCOUNT_BRAND,
-      country: `${siteId}`,
+      country: `USA`,
       channel: ACCOUNT_CONSTANTS.ACCOUNT_CHANNEL,
     });
     yield put(setAccountNavigationList(accountNav));

@@ -7,6 +7,7 @@ import styles from '../styles/PlaceRewards.section.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import MyRewards from '../../../molecules/MyRewards';
 import RewardsPoints from '../../../../common/organism/RewardsPoints';
+import PointsHistory from '../../../../common/organism/PointsHistory'
 
 const PlaceRewardsSection = ({ labels, className }) => {
   return (
@@ -68,7 +69,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
                   medium: 6,
                 }}
               >
-                <RewardsPoints labels={labels.myPlaceRewards} />
+                <RewardsPoints labels={labels.common} />
               </Col>
             </Row>
           </Col>
@@ -80,7 +81,44 @@ const PlaceRewardsSection = ({ labels, className }) => {
             }}
             className="place-rewards-col2"
           >
-            Second
+
+            <Row fullBleed>
+              <Col
+                colSize={{
+                  small: 4,
+                  large: 10,
+                  medium: 6,
+                }}
+              >
+                <BodyCopy
+                  fontFamily="secondary"
+                  fontSize="fs16"
+                  fontWeight="extrabold"
+                  component="h4"
+                  className="elem-mb-SM elem-ml-SM"
+                >
+                  Points History
+                </BodyCopy>
+              </Col>
+            </Row>
+            <Row fullBleed className="elem-mb-MED">
+              <Col
+                colSize={{
+                  small: 4,
+                  large: 10,
+                  medium: 6,
+                }}
+              >
+                <PointsHistory />
+              </Col>
+            </Row>
+
+
+
+
+
+
+
           </Col>
         </Row>
         <Row fullBleed className="place-rewards-sections-row2">
