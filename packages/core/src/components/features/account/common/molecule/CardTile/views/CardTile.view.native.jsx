@@ -213,7 +213,7 @@ const getCtaRow = (
       )}
 
       <CardCtaLinks>
-        {!isVenmo && (
+        {!isVenmo && !isGiftCard && (
           <Anchor
             fontSizeVariation="large"
             underline

@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Account View should render Account Correctly 1`] = `
+<Styled(KeyboardAvoidingView)
+  behavior="padding"
+  enabled={true}
+  keyboardVerticalOffset={82}
+>
+  <Styled(ScrollViewMock)>
+    <Styled(MyAccountLayoutView)
+      handleComponentChange={[Function]}
+      labels={
+        Object {
+          "account": Object {},
+        }
+      }
+      navData={
+        Array [
+          Object {
+            "id": "accountOverview",
+            "label": "ACCOUNT OVERVIEW",
+            "value": "accountOverviewMobile",
+          },
+          Object {
+            "id": "myPlaceRewards",
+            "label": "MY PLACE REWARDS",
+            "value": "myPlaceRewardsMobile",
+          },
+          Object {
+            "id": "myWallet",
+            "label": "MY WALLET",
+            "value": "myWalletPageMobile",
+          },
+          Object {
+            "id": "earnExtraPoints",
+            "label": "EARN EXTRA POINTS",
+            "value": "earnExtraPointsPageMobile",
+          },
+          Object {
+            "id": "profileInformation",
+            "label": "PROFILE INFORMATION",
+            "value": "profileInformationMobile",
+          },
+          Object {
+            "id": "addressBook",
+            "label": "ADDRESS BOOK",
+            "value": "addressBookMobile",
+          },
+          Object {
+            "id": "paymentGiftCards",
+            "label": "PAYMENT & GIFT CARDS",
+            "value": "paymentGiftCardsPageMobile",
+          },
+          Object {
+            "id": "myPreferences",
+            "label": "MY PREFERENCES",
+            "value": "myPreferencePageMobile",
+          },
+          Object {
+            "id": "myPlaceRewardsCC",
+            "label": "MY PLACE REWARDS CREDIT CARD",
+            "value": "myPlaceRewardsCCPageMobile",
+          },
+        ]
+      }
+    />
+  </Styled(ScrollViewMock)>
+</Styled(KeyboardAvoidingView)>
+`;
