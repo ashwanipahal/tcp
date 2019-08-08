@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import mock from '../../../../../services/abstractors/common/moduleN/mock';
 import { ButtonListVanilla } from '../views/ButtonList.native';
+import { Container, ScrollViewContainer } from '../ButtonList.styles.native';
 
 describe('ButtonList', () => {
   let stackedCTAList;
@@ -51,5 +52,13 @@ describe('ButtonList', () => {
     expect(scrollCTAList).toMatchSnapshot();
     expect(linkCTAList).toMatchSnapshot();
     expect(imageCTAList).toMatchSnapshot();
+  });
+
+  it('should render Container', () => {
+    expect(stackedCTAList.find(Container)).toHaveLength(2);
+  });
+
+  it('should render Container', () => {
+    expect(stackedCTAList.find(ScrollViewContainer)).toHaveLength(0);
   });
 });
