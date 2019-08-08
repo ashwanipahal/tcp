@@ -15,11 +15,11 @@ export function* loginSaga({ payload }) {
   try {
     const response = yield call(login, payload);
     if (response.success) {
-      yield put(getUserInfo());
+      return yield put(getUserInfo());
     }
-    yield put(setLoginInfo(response));
+    return yield put(setLoginInfo(response));
   } catch (err) {
-    yield put(
+    return yield put(
       setLoginInfo({
         success: false,
       })
