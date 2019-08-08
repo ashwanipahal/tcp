@@ -2,6 +2,8 @@
 
 exports[`AddressOverviewTile component should render correctly 1`] = `
 <Styled(AccountOverviewTile)
+  ctaLink="/account?id=address-book"
+  ctaPath="/account/address-book"
   ctaTitle="View Address Book"
   title="Address Book"
 >
@@ -193,7 +195,10 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
 `;
 
 exports[`AddressOverviewTile render empty address component should render correctly 1`] = `
-<Styled(AccountOverviewTile)>
+<Styled(AccountOverviewTile)
+  ctaLink="/account?id=address-book"
+  ctaPath="/account/address-book"
+>
   <Styled(BodyCopy)
     className="heading"
     color="text.primary"

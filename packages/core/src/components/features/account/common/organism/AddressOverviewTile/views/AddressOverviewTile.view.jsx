@@ -29,6 +29,8 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
     <AccountOverviewTile
       title={labels.lbl_overview_addressBookHeading}
       ctaTitle={labels.lbl_overview_addressBookCTA}
+      ctaLink="/account?id=address-book"
+      ctaPath="/account/address-book"
     >
       <BodyCopy component="div" className="heading">
         <Row fullBleed>
