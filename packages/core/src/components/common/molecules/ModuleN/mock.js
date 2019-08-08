@@ -18,7 +18,7 @@ export default {
             },
           ],
           link: {
-            url: plpUrl,
+            url: '/p/',
             title: '',
             target: '',
           },

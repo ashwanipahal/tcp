@@ -36,6 +36,7 @@ const ModuleN = (props: Props) => {
           letterSpacing="ls271"
           textAlign="center"
           color="white"
+          navigation={navigation}
           headerText={headerText}
         />
       </Anchor>

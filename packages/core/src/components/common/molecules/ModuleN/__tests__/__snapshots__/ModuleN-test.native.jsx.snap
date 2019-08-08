@@ -20,7 +20,7 @@ exports[`ModuleNVanilla ModuleN should render correctly 1`] = `
             "link": Object {
               "target": "",
               "title": "",
-              "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
+              "url": "/p/",
             },
             "textItems": Array [
               Object {

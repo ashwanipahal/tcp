@@ -16,13 +16,13 @@ export default {
             },
           ],
           link: {
-            url: plpUrl,
+            url: '/p/',
             title: '',
             target: '',
           },
         },
       ],
-      promoTextBanner: [
+      promoBanner: [
         {
           link: {
             url: '/c/',
@@ -77,6 +77,43 @@ export default {
           url: '/c/',
           title: '',
           text: 'BOY',
+          target: '',
+          external: 0,
+        },
+      ],
+      stackedCTAButtons: [
+        {
+          url: '/c/',
+          title: 'girl',
+          text: 'girl',
+          target: '',
+          external: 0,
+        },
+        {
+          url: '/p/',
+          title: 'toddler girl',
+          text: 'toddler girl',
+          target: '',
+          external: 0,
+        },
+        {
+          url: '/p/',
+          title: 'boy',
+          text: 'boy',
+          target: '',
+          external: 0,
+        },
+        {
+          url: '/c/',
+          title: 'toddler boy',
+          text: 'toddler boy',
+          target: '',
+          external: 0,
+        },
+        {
+          url: '/c/',
+          title: 'baby',
+          text: 'baby',
           target: '',
           external: 0,
         },
