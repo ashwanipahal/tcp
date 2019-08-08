@@ -20,7 +20,7 @@ const moduleHHeader = ({ headerText: [{ link, textItems }] }: Props) => (
         <Heading
           key={index.toString()}
           className="moduleH__header"
-          data-locator={getLocator('moduleH_header_text')}
+          data-locator={`${getLocator('moduleH_header_text')}${index + 1}`}
           HeadingLarge="three"
           HeadingcolorSm="primary"
           tag="h2"

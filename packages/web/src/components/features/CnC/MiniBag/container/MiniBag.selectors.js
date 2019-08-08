@@ -14,6 +14,7 @@ export const getLabelsMiniBag = state => {
         lbl_miniBag_viewBag: viewBag,
         lbl_miniBag_ViewSaveForLater: viewSaveForLater,
         lbl_miniBag_subTotal: subTotal,
+        lbl_miniBag_checkout: checkOut,
       },
     },
   } = state.Labels;
@@ -26,5 +27,6 @@ export const getLabelsMiniBag = state => {
     viewBag,
     viewSaveForLater,
     subTotal,
+    checkOut,
   };
 };

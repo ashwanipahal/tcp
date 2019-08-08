@@ -32,6 +32,7 @@ exports[`PromoTextBanner native component renders all style correctly 1`] = `
   ",
           [Function],
           "
+  text-align: center;
 ",
         ],
       },
@@ -77,6 +78,7 @@ exports[`PromoTextBanner native component renders all style correctly 2`] = `
   ",
           [Function],
           "
+  text-align: center;
 ",
         ],
       },
@@ -125,6 +127,7 @@ exports[`PromoTextBanner native component renders all style correctly 3`] = `
   ",
           [Function],
           "
+  text-align: center;
 ",
         ],
       },
@@ -142,14 +145,18 @@ exports[`PromoTextBanner native component renders all style correctly 3`] = `
 `;
 
 exports[`PromoTextBanner native component renders correctly 1`] = `
-Array [
+<TouchableOpacity
+  accessibilityRole="link"
+  activeOpacity={0.2}
+  onPress={[Function]}
+>
+  <style1
+    dataLocator="moduleK_text_"
+    text="alL DINOS"
+  />
   <style2
     dataLocator="moduleK_text_"
-    text="ALL DINOS"
-  />,
-  <style3
-    dataLocator="moduleK_text_"
     text=" 50% OFF"
-  />,
-]
+  />
+</TouchableOpacity>
 `;

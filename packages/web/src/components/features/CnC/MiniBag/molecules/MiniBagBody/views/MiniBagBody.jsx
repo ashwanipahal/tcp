@@ -84,7 +84,7 @@ const MiniBagBody = ({ labels, className, userName, cartItemCount, subTotal }: P
               fontFamily="secondary"
               fontSize="fs14"
             >
-              {`Checkout`}
+              {`${labels.checkOut}`}
             </BodyCopy>
           </Button>
         </Row>

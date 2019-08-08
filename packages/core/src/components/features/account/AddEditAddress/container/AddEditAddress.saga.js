@@ -5,55 +5,11 @@ import {
   setAddressBookNotification,
   clearGetAddressListTTL,
 } from '../../AddressBook/container/AddressBook.actions';
-import fetchData from '../../../../../service/API';
-import endpoints from '../../../../../service/endpoint';
+import { addAddress, updateAddress } from '../../../../../services/abstractors/account';
 
 export function* addAddressGet({ payload }) {
   try {
-    const { relURI, method } = endpoints.addAddress;
-    const baseURI = endpoints.addAddress.baseURI || endpoints.global.baseURI;
-    const addressKey = Date.now().toString();
-    const payloadParam = {
-      contact: [
-        {
-          addressLine: [payload.address1, payload.address2, ''],
-          attributes: [
-            {
-              key: 'addressField3',
-              value: payload.zip,
-            },
-          ],
-          addressType: 'ShippingAndBilling',
-          city: payload.city,
-          country: payload.country,
-          firstName: payload.firstName,
-          lastName: payload.lastName,
-          nickName: addressKey,
-          phone1: payload.phoneNumber,
-          phone1Publish: 'false',
-          primary: payload.primary,
-          state: payload.state,
-          zipCode: payload.zip,
-          xcont_addressField2: payload.isCommercialAddress ? '2' : '1',
-          email1: payload.email,
-          xcont_addressField3: payload.zip,
-          fromPage: '',
-        },
-      ],
-    };
-    const fullRelURI = `${relURI}`;
-    const res = yield call(
-      fetchData,
-      baseURI,
-      fullRelURI,
-      {
-        payload: payloadParam,
-        langId: -1,
-        catalogId: 10551,
-        storeId: 10151,
-      },
-      method
-    );
+    const res = yield call(addAddress, payload);
     if (res) {
       yield put(
         setAddressBookNotification({
@@ -75,45 +31,7 @@ export function* addAddressGet({ payload }) {
 
 export function* updateAddressPut({ payload }) {
   try {
-    const { relURI, method } = endpoints.updateAddress;
-    const baseURI = endpoints.updateAddress.baseURI || endpoints.global.baseURI;
-    const payloadParam = {
-      addressLine: [payload.address1, payload.address2, ''],
-      attributes: [
-        {
-          key: 'addressField3',
-          value: payload.zip,
-        },
-      ],
-      addressType: 'ShippingAndBilling',
-      city: payload.city,
-      country: payload.country,
-      firstName: payload.firstName,
-      lastName: payload.lastName,
-      phone1: payload.phoneNumber,
-      phone1Publish: 'false',
-      primary: payload.primary,
-      state: payload.state,
-      zipCode: payload.zip,
-      xcont_addressField2: payload.isCommercialAddress ? '2' : '1',
-      email1: payload.email,
-      xcont_addressField3: payload.zip,
-      fromPage: '',
-    };
-    const fullRelURI = `${relURI}`;
-    const res = yield call(
-      fetchData,
-      baseURI,
-      fullRelURI,
-      {
-        payload: payloadParam,
-        langId: -1,
-        catalogId: 10551,
-        storeId: 10151,
-        nickName: payload.nickName,
-      },
-      method
-    );
+    const res = yield call(updateAddress, payload);
     if (res) {
       yield put(
         setAddressBookNotification({

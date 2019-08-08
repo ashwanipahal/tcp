@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { Anchor } from '../../../atoms';
 import mock from '../../../../../services/abstractors/common/moduleK/mock';
 import LinkText from '../index';
 
@@ -15,6 +16,6 @@ describe('LinkText component', () => {
   });
 
   it('Module has header', () => {
-    expect(LinkTextComp.find('TouchableOpacity')).toHaveLength(1);
+    expect(LinkTextComp.find(Anchor)).toHaveLength(1);
   });
 });

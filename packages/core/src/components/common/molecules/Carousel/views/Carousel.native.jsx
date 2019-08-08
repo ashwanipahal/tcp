@@ -117,16 +117,26 @@ class SnapCarousel extends React.PureComponent<Props, State> {
    * @param {[Object]} element [Event object of click].
    * @return {node} function returns slider element.
    */
-  getPlayButton() {
+  getPlayButton(carouselConfig) {
     const { autoplay } = this.state;
 
     return autoplay ? (
       <Touchable accessibilityRole="button" onPress={this.pause}>
-        <Image source={pauseIcon} height={playIconHeight} width={playIconWidth} />
+        <Image
+          source={pauseIcon}
+          height={playIconHeight}
+          width={playIconWidth}
+          testID={getLocator(carouselConfig.dataLocatorPause)}
+        />
       </Touchable>
     ) : (
       <Touchable accessibilityRole="button" onPress={this.play}>
-        <Image source={playIcon} height={playIconHeight} width={playIconWidth} />
+        <Image
+          source={playIcon}
+          height={playIconHeight}
+          width={playIconWidth}
+          testID={getLocator(carouselConfig.dataLocatorPlay)}
+        />
       </Touchable>
     );
   }
@@ -181,7 +191,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
 
   render() {
     const {
-      carouselConfig: { autoplay: defaultAutoplay },
+      carouselConfig,
       data,
       height,
       width,
@@ -204,7 +214,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
         <Container>
           <TouchableView
             accessibilityRole="button"
-            data-locator={getLocator('global_promobanner_right_arrow')}
+            testID={getLocator('global_promobanner_right_arrow')}
             onPress={() => this.manageSlide('next')}
           >
             <Icon source={nextIcon} />
@@ -224,7 +234,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           />
           <TouchableView
             accessibilityRole="button"
-            data-locator={getLocator('global_promobanner_left_arrowRight')}
+            testID={getLocator('global_promobanner_left_arrowRight')}
             onPress={() => this.manageSlide('prev')}
           >
             <Icon source={prevIcon} />
@@ -253,7 +263,9 @@ class SnapCarousel extends React.PureComponent<Props, State> {
         />
 
         <ControlsWrapper>
-          {defaultAutoplay && <PlayPauseButtonView>{this.getPlayButton()}</PlayPauseButtonView>}
+          {carouselConfig.autoplay && (
+            <PlayPauseButtonView>{this.getPlayButton(carouselConfig)}</PlayPauseButtonView>
+          )}
           {showDots ? this.getPagination() : null}
         </ControlsWrapper>
       </View>

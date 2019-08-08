@@ -1,11 +1,11 @@
 // @flow
 import React from 'react';
-import { BodyCopy } from '../../atoms';
-import withStyles from '../../hoc/withStyles';
-import PromoBannerStyle from './PromoTextBanner.style';
+import { Anchor, BodyCopy } from '../../../atoms';
+import withStyles from '../../../hoc/withStyles';
+import PromoBannerStyle from '../PromoBanner.style';
 
 type Props = {
-  promoTextBanner: Array<Object>,
+  promoBanner: Array<Object>,
   className: String,
 };
 
@@ -21,16 +21,18 @@ type Props = {
  */
 const PromoBanner = (props: Props) => {
   const {
-    promoTextBanner: [{ textItems }],
+    promoBanner: [{ textItems, link }],
     className,
     ...otherProps
   } = props;
   return (
     <BodyCopy component="div" className={className} {...otherProps}>
       <React.Fragment>
-        {textItems.map(({ text, style }, index) => (
-          <span className={`promo-text ${style}`}>{index ? ` ${text}` : text}</span>
-        ))}
+        <Anchor {...link}>
+          {textItems.map(({ text, style }, index) => (
+            <span className={`promo-text ${style}`}>{index ? ` ${text}` : text}</span>
+          ))}
+        </Anchor>
       </React.Fragment>
     </BodyCopy>
   );

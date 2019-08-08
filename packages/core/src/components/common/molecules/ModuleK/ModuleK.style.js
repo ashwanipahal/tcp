@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Carousel, PromoTextBanner, LinkText, ImageGrid } from '..';
+import { Carousel, LinkText, ImageGrid } from '..';
 
 const StyledCarousal = styled(Carousel)`
   .slick-arrow {
@@ -19,22 +19,6 @@ const StyledCarousal = styled(Carousel)`
     bottom: -10px;
   }
 `;
-const StyledPromoTextBanner = styled(PromoTextBanner)`
-  .style2 {
-    font-size: ${props => props.theme.typography.fontSizes.fs42};
-    @media ${props => props.theme.mediaQuery.medium} {
-      font-size: ${props => props.theme.typography.fontSizes.fs64};
-    }
-  }
-  .style3 {
-    color: ${props => props.theme.colorPalette.black};
-    font-weight: ${props => props.theme.typography.fontWeights.black};
-    font-size: ${props => props.theme.typography.fontSizes.fs64};
-    @media ${props => props.theme.mediaQuery.large} {
-      font-size: ${props => props.theme.typography.fontSizes.fs64};
-    }
-  }
-`;
 const StyledLinkText = styled(LinkText)`
   text-align: center;
   .link-text {
@@ -50,8 +34,8 @@ const StyledImageGrid = styled(ImageGrid)`
 
 const StyledModuleK = css`
   padding: ${props => props.theme.spacing.ELEM_SPACING.XXXL} 0;
-  .module-k__promoBanner,
-  .module-k__header {
+  .moduleK__promoBanner,
+  .moduleK__header {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
   .carousal-cta {
@@ -77,14 +61,12 @@ const StyledModuleK = css`
 
 export {
   StyledCarousal as Carousel,
-  StyledPromoTextBanner as PromoTextBanner,
   StyledLinkText as LinkText,
   StyledImageGrid as ImageGrid,
   StyledModuleK as style,
 };
 
 export default {
-  PromoTextBanner: StyledPromoTextBanner,
   LinkText: StyledLinkText,
   ImageGrid: StyledImageGrid,
   Style: StyledModuleK,

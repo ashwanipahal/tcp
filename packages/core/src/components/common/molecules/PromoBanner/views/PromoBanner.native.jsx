@@ -1,10 +1,12 @@
 // @flow
 import React from 'react';
+import { TouchableOpacity } from 'react-native';
+import { UrlHandler } from '../../../../../utils/index.native';
 
-import { BodyCopy } from './PromoTextBanner.style.native';
+import { BodyCopy } from '../PromoBanner.style.native';
 
 type Props = {
-  promoTextBanner: Array<Object>,
+  promoBanner: Array<Object>,
   bodyCopyStyles: Array<Object>,
 };
 
@@ -54,17 +56,24 @@ export const bodyCopyStyles = {
  * the key provided by CMS
  * @param {*} props
  */
-const PromoTextBanner = (props: Props) => {
+const PromoBanner = (props: Props) => {
   const {
-    promoTextBanner: [{ textItems }],
+    promoBanner: [{ textItems, link }],
     ...otherProps
   } = props;
   return [
-    textItems.map(({ text, style }, index) => {
-      const StyleBodyCopy = bodyCopyStyles[style];
-      return <StyleBodyCopy text={index ? ` ${text}` : text} {...otherProps} />;
-    }),
+    <TouchableOpacity
+      accessibilityRole="link"
+      onPress={() => {
+        UrlHandler(link.url);
+      }}
+    >
+      {textItems.map(({ text, style }, index) => {
+        const StyleBodyCopy = bodyCopyStyles[style];
+        return <StyleBodyCopy text={index ? ` ${text}` : text} {...otherProps} />;
+      })}
+    </TouchableOpacity>,
   ];
 };
 
-export default PromoTextBanner;
+export default PromoBanner;
