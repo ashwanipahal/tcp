@@ -42,7 +42,6 @@ const ModuleN = (props: Props) => {
       <PromoTextBannerWrapper>
         <PromoTextBanner promoTextBanner={promoTextBanner} />
       </PromoTextBannerWrapper>
-
       {stackedCTAButtons && (
         <ButtonList
           buttonListVariation="stackedCTAList"
@@ -50,7 +49,6 @@ const ModuleN = (props: Props) => {
           stackedCTAButtons={stackedCTAButtons}
         />
       )}
-
       {divImageCTACarousel && (
         <ButtonList
           buttonListVariation="imageCTAList"
@@ -58,7 +56,6 @@ const ModuleN = (props: Props) => {
           divImageCTACarousel={divImageCTACarousel}
         />
       )}
-
       {scrollCTAButtons && (
         <ButtonContainer>
           <ButtonList
@@ -68,7 +65,6 @@ const ModuleN = (props: Props) => {
           />
         </ButtonContainer>
       )}
-
       {linkList && (
         <ButtonContainer>
           <ButtonList
