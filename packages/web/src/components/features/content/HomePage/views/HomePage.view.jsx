@@ -1,16 +1,19 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
-import { SlotA, SlotB, SlotC, SlotD } from '../molecules';
+import moduleAAbstractor from '@tcp/core/src/services/abstractors/common/moduleA';
+import { SlotA, SlotB, SlotC, SlotD, SlotE } from '../molecules';
 
 const HomePageView = props => {
-  const { slot_1: slotA, slot_2: slotB, slot_3: slotC, slot_4: slotD } = props;
+  const { slot_1: slotA, slot_2: slotB, slot_3: slotC, slot_4: slotD, slot_5: slotE } = props;
+
   return (
     <Fragment>
       <SlotA {...slotA} />
       <SlotB {...slotB} />
       <SlotC {...slotC} />
       <SlotD {...slotD} />
+      <SlotE name="moduleA" {...moduleAAbstractor.getMock().moduleA.composites} {...slotE} />
     </Fragment>
   );
 };
@@ -40,6 +43,12 @@ HomePageView.propTypes = {
     type: PropTypes.string,
     contentId: PropTypes.string,
   }),
+  slot_5: PropTypes.shape({
+    composites: PropTypes.shape({}),
+    name: PropTypes.string,
+    type: PropTypes.string,
+    contentId: PropTypes.string,
+  }),
 };
 
 HomePageView.defaultProps = {
@@ -47,6 +56,7 @@ HomePageView.defaultProps = {
   slot_2: {},
   slot_3: {},
   slot_4: {},
+  slot_5: {},
 };
 
 export default errorBoundary(HomePageView);

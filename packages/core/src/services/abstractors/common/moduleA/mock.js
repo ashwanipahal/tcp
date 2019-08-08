@@ -1,82 +1,68 @@
+const totalImageSlides = 4;
+const imageSlides = [];
+// eslint-disable-next-line no-plusplus
+for (let i = 1; i <= totalImageSlides; i++) {
+  imageSlides.push({
+    headerText: [
+      {
+        textItems: [{ text: `ENTER SITE ${i}`, style: 'style1' }],
+        link: {
+          url: '/trending',
+          text: '',
+          title: '',
+          target: '',
+          external: 0,
+        },
+        icon: { icon: '', placement: '' },
+      },
+    ],
+    promoBanner: [
+      {
+        link: {
+          url: '/banner/url',
+          text: '',
+          title: '',
+          target: '',
+          external: 0,
+        },
+        textItems: [
+          { text: '60%', style: 'style1' },
+          { text: 'off', style: 'style2' },
+          { text: '50% off', style: 'style1' },
+          { text: 'all shoes and other accessories', style: 'style2' },
+        ],
+      },
+    ],
+    linkedImage: [
+      {
+        image: {
+          url:
+            'https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg',
+          alt: `Family Tees Image ${i}`,
+          title: 'Family Tees title',
+          crop_d: 'c_crop,g_face:center,q_auto:best,w_1410',
+          crop_t: 'c_crop,g_face:center,q_auto:best,w_768',
+          crop_m: 'c_crop,g_face:center,q_auto:best,w_468',
+        },
+        link: {
+          url: '/image/url',
+          text: 'Family Tees',
+          title: 'Family Tees',
+          target: '',
+          external: 0,
+        },
+      },
+    ],
+  });
+}
+
 export default {
   moduleA: {
     contentId: 'f1733fc9-6db0-4042-9844-99980420359f',
     name: 'moduleA',
     type: 'module',
     composites: {
-      largeCompImageCarousel: [
-        {
-          headerText: [
-            {
-              textItems: [
-                {
-                  text: 'Entire site',
-                  style: 'style1',
-                },
-              ],
-              link: {
-                url: '/trending',
-                text: '',
-                title: '',
-                target: '',
-                external: 0,
-              },
-              icon: {
-                icon: '',
-                placement: '',
-              },
-            },
-          ],
-          promoBanner: [
-            {
-              link: {
-                url: '/banner/url',
-                text: '',
-                title: '',
-                target: '',
-                external: 0,
-              },
-              textItems: [
-                {
-                  text: '60%',
-                  style: 'style1',
-                },
-                {
-                  text: 'off',
-                  style: 'style2',
-                },
-                {
-                  text: '50% off',
-                  style: 'style1',
-                },
-                {
-                  text: 'all shoes and other accessories',
-                  style: 'style2',
-                },
-              ],
-            },
-          ],
-          linkedImage: [
-            {
-              image: {
-                url: 'http://image1.sm/url',
-                alt: 'Family Tees Image',
-                title: 'Family Tees title',
-                crop_d: 'c_crop,g_face:center,q_auto:best,w_1024',
-                crop_t: 'c_crop,g_face:center,q_auto:best,w_962',
-                crop_m: 'c_crop,g_face:center,q_auto:best,w_962',
-              },
-              link: {
-                url: '/node/product/<uuid>',
-                text: 'Family Tees',
-                title: 'Family Tees',
-                target: '',
-                external: 0,
-              },
-            },
-          ],
-        },
-      ],
+      largeCompImageCarousel: imageSlides,
       ctaItems: [
         {
           image: {
