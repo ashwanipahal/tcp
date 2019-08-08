@@ -43,6 +43,15 @@ exports[`L3 Panel component renders correctly 1`] = `
     >
       <ul>
         <li>
+          <a
+            className="l2-nav-link"
+            href="/c"
+            role="menuitem"
+          >
+            Shop All
+          </a>
+        </li>
+        <li>
           <Styled(Anchor)
             data-locator="l3_link_0"
             to="/c/"

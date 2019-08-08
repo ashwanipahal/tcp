@@ -36,6 +36,11 @@ const L3Panel = props => {
         </div>
         <Row className="nav-bar-l3-details" tabIndex={0}>
           <ul>
+            <li>
+              <a className="l2-nav-link" href="/c" role="menuitem">
+                Shop All
+              </a>
+            </li>
             {links.map((l3Links, index) => {
               const {
                 categoryContent: { name: l3Name, seoToken },
