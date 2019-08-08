@@ -918,6 +918,6 @@ export const couponFormatResponse = [
     redemptionType: undefined,
     status: 'available',
     title: '$10 off $50 Gymboree ONLY',
-    expirationDateTimeStamp: new Date('9999-12-31T18:29:59.999Z'),
+    expirationDateTimeStamp: '',
   },
 ];
