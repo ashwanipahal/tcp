@@ -1,11 +1,15 @@
 // @flow
 import React from 'react';
 
-import { BodyCopy } from './PromoTextBanner.style.native';
+import { BodyCopy, Container, ContainerView } from './PromoTextBanner.style.native';
 
 type Props = {
   promoTextBanner: Array<Object>,
   bodyCopyStyles: Array<Object>,
+};
+
+type PercentageStyleProps = {
+  text: string,
 };
 
 /* bodyCopyStyles is a array of BodyCopy component with key of style1,style2,style3 etc.
@@ -55,6 +59,7 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
+  style6: props => <PercentageStyle {...props} />,
 };
 
 /**
@@ -79,6 +84,46 @@ const PromoTextBanner = (props: Props) => {
       return <StyleBodyCopy text={index ? ` ${text}` : text} {...otherProps} />;
     }),
   ];
+};
+
+const PercentageStyle = (props: PercentageStyleProps) => {
+  const { text } = props;
+
+  const strArray = text && text.split('%');
+  const bodyCopyStyle = { height: 35 };
+  return (
+    <Container>
+      <BodyCopy
+        fontSize="fs64"
+        fontWeight="black"
+        color="white"
+        fontFamily="primary"
+        textAlign="center"
+        lineHeight="70px"
+        text={strArray && strArray[0]}
+      />
+      <ContainerView>
+        <BodyCopy
+          fontSize="fs42"
+          fontWeight="black"
+          color="white"
+          fontFamily="primary"
+          text="%"
+          lineHeight="42px"
+          style={bodyCopyStyle}
+        />
+        <BodyCopy
+          fontSize="fs20"
+          fontWeight="black"
+          color="white"
+          fontFamily="primary"
+          textAlign="center"
+          lineHeight="20px"
+          text={strArray && strArray[1]}
+        />
+      </ContainerView>
+    </Container>
+  );
 };
 
 export default PromoTextBanner;

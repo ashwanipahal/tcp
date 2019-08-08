@@ -5,6 +5,7 @@ import PromoTextBanner, { bodyCopyStyles } from '../PromoTextBanner.native';
 
 describe('PromoTextBanner native component', () => {
   it('renders correctly', () => {
+    console.log('==========', mock.moduleK.composites.masonryGrid[0].promoTextBanner);
     const wrapper = shallow(
       <PromoTextBanner
         promoTextBanner={mock.moduleK.composites.masonryGrid[0].promoTextBanner}

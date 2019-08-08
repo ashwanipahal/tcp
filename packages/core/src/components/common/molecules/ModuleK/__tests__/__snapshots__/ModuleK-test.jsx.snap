@@ -95,6 +95,14 @@ exports[`ModuleK component renders correctly 1`] = `
                   "style": "moduleK__Header",
                   "text": "DINOS & MORE!",
                 },
+                Object {
+                  "style": "style6",
+                  "text": "50-70%OFF",
+                },
+                Object {
+                  "style": "style4",
+                  "text": "No Exclusions",
+                },
               ],
             },
           ]

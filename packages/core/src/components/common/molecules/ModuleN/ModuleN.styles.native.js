@@ -7,7 +7,6 @@ export const Container = styled.View`
     props.background === 'red' ? '#f53d3d' : props.theme.colorPalette.primary.dark};
 `;
 export const PromoTextBannerWrapper = styled.View`
-  margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
   margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 export const ButtonContainer = styled.View`

@@ -235,6 +235,44 @@ exports[`PromoTextBanner native component renders all style correctly 5`] = `
 />
 `;
 
+exports[`PromoTextBanner native component renders all style correctly 6`] = `
+<Styled(View)>
+  <Styled(Styled(BodyCopy))
+    color="white"
+    fontFamily="primary"
+    fontSize="fs64"
+    fontWeight="black"
+    lineHeight="70px"
+    text=""
+    textAlign="center"
+  />
+  <Styled(View)>
+    <Styled(Styled(BodyCopy))
+      color="white"
+      fontFamily="primary"
+      fontSize="fs42"
+      fontWeight="black"
+      lineHeight="42px"
+      style={
+        Object {
+          "height": 35,
+        }
+      }
+      text="%"
+    />
+    <Styled(Styled(BodyCopy))
+      color="white"
+      fontFamily="primary"
+      fontSize="fs20"
+      fontWeight="black"
+      lineHeight="20px"
+      text=""
+      textAlign="center"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
+
 exports[`PromoTextBanner native component renders correctly 1`] = `
 Array [
   <style2

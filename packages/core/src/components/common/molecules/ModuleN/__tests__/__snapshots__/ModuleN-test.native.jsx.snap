@@ -52,8 +52,8 @@ exports[`ModuleNVanilla ModuleN should render correctly 1`] = `
             },
             "textItems": Array [
               Object {
-                "style": "style5",
-                "text": "50%OFF",
+                "style": "style6",
+                "text": "50-70%OFF",
               },
               Object {
                 "style": "style4",

@@ -36,6 +36,8 @@ const keyExtractor = (_, index) => index.toString();
 const renderItem = (item, navigation, showFullWidth) => {
   return (
     <Button
+      accessibilityRole="button"
+      accessibilityLabel={item.text}
       buttonVariation="cautionary-button"
       text={item.text}
       color="red"
@@ -82,6 +84,8 @@ const scrollViewRenderItem = (item, navigation) => {
   return (
     <ScrollViewContainer>
       <Button
+        accessibilityRole="button"
+        accessibilityLabel={item.item.text}
         buttonVariation="cautionary-button"
         color="red"
         text={item.item.text}
@@ -117,6 +121,8 @@ const linkTextViewRenderItem = (item, navigation) => {
   return (
     <TextLiksViewContainer>
       <Anchor
+        accessibilityRole="link"
+        accessibilityLabel={item.item.text}
         text={item.item.text}
         anchorVariation="white"
         fontSizeVariation="large"
@@ -163,6 +169,8 @@ const divImageRenderItem = (item, navigation) => {
       <DivImageContainer>
         <Image url={image.url} height={60} width={60} style={style} />
         <BodyCopy
+          accessibilityRole="text"
+          accessibilityLabel={link.text}
           fontFamily="secondary"
           fontSize="fs14"
           color="white"

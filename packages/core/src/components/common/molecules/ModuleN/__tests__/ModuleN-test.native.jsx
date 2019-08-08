@@ -4,17 +4,25 @@ import mock from '../../../../../services/abstractors/common/moduleN/mock';
 import { ModuleNVanilla } from '../views/ModuleN.native';
 
 describe('ModuleNVanilla', () => {
-  let component;
+  let componentSingleCTAButton;
+  let divImageCTACarousel;
 
   beforeEach(() => {
-    component = shallow(<ModuleNVanilla {...mock.moduleN.composites.singleCTAButton} />);
+    componentSingleCTAButton = shallow(
+      <ModuleNVanilla {...mock.moduleN.composites.singleCTAButton} />
+    );
+    divImageCTACarousel = shallow(
+      <ModuleNVanilla {...mock.moduleN.composites.divImageCTACarousel} />
+    );
   });
 
   it('ModuleN should be defined', () => {
-    expect(component).toBeDefined();
+    expect(componentSingleCTAButton).toBeDefined();
+    expect(divImageCTACarousel).toBeDefined();
   });
 
   it('ModuleN should render correctly', () => {
-    expect(component).toMatchSnapshot();
+    expect(componentSingleCTAButton).toMatchSnapshot();
+    expect(divImageCTACarousel).toBeDefined();
   });
 });

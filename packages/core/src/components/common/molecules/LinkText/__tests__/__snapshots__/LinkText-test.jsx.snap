@@ -29,6 +29,16 @@ exports[`Promo Text Banner component renders correctly 1`] = `
     >
        DINOS & MORE!
     </span>
+    <span
+      className="style6"
+    >
+       50-70%OFF
+    </span>
+    <span
+      className="style4"
+    >
+       No Exclusions
+    </span>
   </Styled(BodyCopy)>
 </Styled(Anchor)>
 `;
