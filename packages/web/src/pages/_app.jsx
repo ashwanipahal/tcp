@@ -9,6 +9,7 @@ import theme from '@tcp/core/styles/themes/TCP';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
 import { createAPIConfig } from '@tcp/core/src/utils';
+import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import { Header, Footer } from '../components/features/content';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
@@ -24,7 +25,17 @@ class TCPWebApp extends App {
   }
 
   componentDidMount() {
+    const { router, store } = this.props;
     ReactAxe.runAccessibility();
+    const { em, logonPasswordOld } = router && router.query || {};
+    if(router && em && logonPasswordOld) {
+      store.dispatch(openOverlayModal({component: 'login', componentProps: {
+        queryParams: {
+          em,
+          logonPasswordOld
+        }
+      }}));
+    }
   }
 
   componentDidUpdate() {
