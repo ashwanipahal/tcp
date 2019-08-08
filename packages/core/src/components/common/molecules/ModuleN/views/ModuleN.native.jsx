@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import LinkText from '../../LinkText';
-import PromoTextBanner from '../../PromoTextBanner';
+import PromoTextBanner from '../../PromoBanner';
 import ButtonList from '../../ButtonList/views/ButtonList.native';
 import { Container, PromoTextBannerWrapper, ButtonContainer } from '../ModuleN.styles.native';
 import moduleN from '../mock';

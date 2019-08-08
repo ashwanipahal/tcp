@@ -45,6 +45,21 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
     <Styled(BossBanner)
       labels={Object {}}
     />
+    <View
+      className="continue-shopping"
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        customStyle={Object {}}
+        data-locator="addedToBag-continueShopping"
+        fontSizeVariation="medium"
+        noLink={true}
+        text=""
+        to=""
+        underline={true}
+        visible={false}
+      />
+    </View>
   </Styled(View)>
 </ModalNative>
 `;

@@ -1,4 +1,7 @@
 import { css } from 'styled-components';
+import { getIconPath } from '../../../../utils';
+
+const downArrowIcon = getIconPath('down_arrow_icon');
 
 const selectStyles = css`
   position: relative;
@@ -7,8 +10,7 @@ const selectStyles = css`
 
   .select__input {
     appearance: none;
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-      no-repeat right 0px bottom 6px;
+    background: url(${downArrowIcon}) no-repeat right 0px bottom 6px;
     border: 0;
     border-bottom: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
     ${props =>

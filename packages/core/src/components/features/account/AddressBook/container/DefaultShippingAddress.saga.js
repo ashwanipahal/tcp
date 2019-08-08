@@ -4,26 +4,11 @@ import {
   setDefaultShippingAddressSuccess,
   setDefaultShippingAddressFailure,
 } from './DefaultShippingAddress.actions';
-import fetchData from '../../../../../service/API';
-import endpoints from '../../../../../service/endpoint';
+import { defaultShippingAddressApi } from '../../../../../services/abstractors/account';
 
 export function* updateDefaultShippingAddress({ payload }) {
   try {
-    const { relURI, method } = endpoints.setDefaultShippingAddress;
-    const baseURI = endpoints.setDefaultShippingAddress.baseURI || endpoints.global.baseURI;
-    const res = yield call(
-      fetchData,
-      baseURI,
-      relURI,
-      {
-        payload,
-        langId: -1,
-        catalogId: 10551,
-        storeId: 10151,
-        nickName: payload.nickName,
-      },
-      method
-    );
+    const res = yield call(defaultShippingAddressApi, payload);
     yield put(setDefaultShippingAddressSuccess(res.body));
   } catch (err) {
     yield put(setDefaultShippingAddressFailure(err));

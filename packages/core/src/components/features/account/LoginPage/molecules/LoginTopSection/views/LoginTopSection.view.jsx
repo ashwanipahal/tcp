@@ -28,8 +28,8 @@ const LoginTopSection = ({ labels, className, isCanada }) => {
           {labels.login.lbl_login_heading}
         </BodyCopy>
         <BodyCopy
-          fontWeight="semibold"
           fontSize="fs13"
+          fontWeight="semibold"
           fontFamily="secondary"
           textAlign="center"
           className="elem-mb-SM"

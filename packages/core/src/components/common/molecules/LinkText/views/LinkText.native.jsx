@@ -1,14 +1,14 @@
 // @flow
 import React from 'react';
-import { TouchableOpacity, Text } from 'react-native';
-import { Heading, BodyCopy } from '../../../atoms';
-import { UrlHandler } from '../../../../../utils/index.native';
+import { Text } from 'react-native';
+import { Anchor, BodyCopy, Heading } from '../../../atoms';
 
 type Props = {
   type: string,
   headerText: Object[],
   link: Object,
   textItems: Object[],
+  navigation: Object,
 };
 
 /**
@@ -29,6 +29,7 @@ const LinkText = (props: Props) => {
   const {
     type,
     headerText: [{ textItems, link }],
+    navigation,
     ...otherProps
   } = props;
 
@@ -50,14 +51,9 @@ const LinkText = (props: Props) => {
   }
 
   return (
-    <TouchableOpacity
-      accessibilityRole="button"
-      onPress={() => {
-        return link && UrlHandler(link.url);
-      }}
-    >
+    <Anchor url={link.url} navigation={navigation} external={link.external}>
       <Component {...compProps} text={getTextItems(textItems)} />
-    </TouchableOpacity>
+    </Anchor>
   );
 };
 

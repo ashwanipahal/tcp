@@ -3,7 +3,6 @@ const buildQuery = ({ slot, contentId }) => `
     contentId
     name
     type
-
     composites {
       headerText {
         textItems {

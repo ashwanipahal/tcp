@@ -30,8 +30,35 @@ exports[`ModuleLVanilla ModuleL should render correctly 1`] = `
       ]
     }
     letterSpacing="ls167"
+    testID="moduleL_header_text"
     textAlign="center"
     type="heading"
+  />
+  <PromoBanner
+    promoBanner={
+      Array [
+        Object {
+          "link": Object {
+            "class": "",
+            "external": 0,
+            "target": "",
+            "title": "",
+            "url": "/banner/url",
+          },
+          "textItems": Array [
+            Object {
+              "style": "text-black",
+              "text": "60% OFF",
+            },
+            Object {
+              "style": "text-normal",
+              "text": "BUY TODAY",
+            },
+          ],
+        },
+      ]
+    }
+    testID="moduleL_promobanner_text"
   />
   <Styled(View)>
     <FlatList

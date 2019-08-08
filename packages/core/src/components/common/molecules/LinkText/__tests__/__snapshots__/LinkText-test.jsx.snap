@@ -4,8 +4,9 @@ exports[`Promo Text Banner component renders correctly 1`] = `
 <Styled(Anchor)
   external={0}
   target=""
+  text="aaaa"
   title=""
-  url="https://www.childrensplace.com/us/c/girls-new-arrivals"
+  url="http://example.com3367"
 >
   <Styled(BodyCopy)
     className=" link-text"
@@ -20,24 +21,14 @@ exports[`Promo Text Banner component renders correctly 1`] = `
     textAlign="left"
   >
     <span
-      className="moduleK__Header"
+      className="style1"
     >
-      UNICORNS,
+      UNICORNS
     </span>
     <span
-      className="moduleK__Header"
+      className="style2"
     >
-       DINOS & MORE!
-    </span>
-    <span
-      className="style6"
-    >
-       50-70%OFF
-    </span>
-    <span
-      className="style4"
-    >
-       No Exclusions
+       , DINOS & MORE!
     </span>
   </Styled(BodyCopy)>
 </Styled(Anchor)>
