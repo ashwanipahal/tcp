@@ -1,0 +1,158 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DropDown Test should render correctly 1`] = `
+<View
+  style={null}
+>
+  <Styled(View)
+    data={
+      Array [
+        Object {
+          "label": "foo",
+          "value": "foo",
+        },
+      ]
+    }
+    dropDownStyle={null}
+    itemStyle={null}
+    onStartShouldSetResponder={[Function]}
+    onValueChange={[MockFunction]}
+    selectedValue="foo"
+    variation="primary"
+  >
+    <Styled(View)>
+      <Styled(BodyCopy)
+        color="gray.800"
+        fontFamily="secondary"
+        fontSize="fs13"
+        fontWeight="black"
+        text="foo"
+        textAlign="center"
+      />
+    </Styled(View)>
+    <Image
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/carrot-small-down.png",
+        }
+      }
+    />
+  </Styled(View)>
+  <Component
+    hardwareAccelerated={false}
+    transparent={true}
+    visible={false}
+  >
+    <TouchableOpacity
+      accessibilityLabel="Tap to close it"
+      accessibilityRole="none"
+      accessible={true}
+      activeOpacity={1}
+      onPress={[Function]}
+      style={
+        Object {
+          "height": 1334,
+          "left": 0,
+          "width": 0,
+        }
+      }
+    >
+      <Styled(View)
+        style={
+          Object {
+            "top": 0,
+          }
+        }
+      />
+    </TouchableOpacity>
+  </Component>
+</View>
+`;
+
+exports[`DropDown Test should render with dropdown open state 1`] = `
+<View
+  style={null}
+>
+  <Styled(View)
+    data={
+      Array [
+        Object {
+          "label": "foo",
+          "value": "foo",
+        },
+      ]
+    }
+    dropDownStyle={null}
+    itemStyle={null}
+    onStartShouldSetResponder={[Function]}
+    onValueChange={[MockFunction]}
+    selectedValue="foo"
+    variation="primary"
+  >
+    <Styled(View)>
+      <Styled(BodyCopy)
+        color="gray.800"
+        fontFamily="secondary"
+        fontSize="fs13"
+        fontWeight="black"
+        text="foo"
+        textAlign="center"
+      />
+    </Styled(View)>
+    <Image
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/carrot-small-up.png",
+        }
+      }
+    />
+  </Styled(View)>
+  <Component
+    hardwareAccelerated={false}
+    transparent={true}
+    visible={true}
+  >
+    <TouchableOpacity
+      accessibilityLabel="Tap to close it"
+      accessibilityRole="none"
+      accessible={true}
+      activeOpacity={1}
+      onPress={[Function]}
+      style={
+        Object {
+          "height": 1334,
+          "left": 0,
+          "width": 0,
+        }
+      }
+    >
+      <Styled(View)
+        style={
+          Object {
+            "top": 0,
+          }
+        }
+      >
+        <Styled(FlatList)
+          ItemSeparatorComponent={[Function]}
+          data={
+            Array [
+              Object {
+                "label": "foo",
+                "value": "foo",
+              },
+            ]
+          }
+          keyExtractor={[Function]}
+          renderItem={[Function]}
+          style={
+            Object {
+              "height": 667,
+            }
+          }
+        />
+      </Styled(View)>
+    </TouchableOpacity>
+  </Component>
+</View>
+`;
