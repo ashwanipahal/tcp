@@ -138,7 +138,7 @@ exports[`Footer component HeaderTopNav component renders correctly to match snap
     <div
       className="header-topnav__track-order"
     >
-      <Styled(CountrySelector) />
+      <errorBoundaryComponent />
       <Styled(BodyCopy)
         className="track-order"
         color="gray.900"
@@ -295,7 +295,7 @@ exports[`Footer component HeaderTopNav component renders correctly with props 1`
     <div
       className="header-topnav__track-order"
     >
-      <Styled(CountrySelector) />
+      <errorBoundaryComponent />
       <Styled(BodyCopy)
         className="track-order"
         color="gray.900"

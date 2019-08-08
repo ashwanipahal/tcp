@@ -11,12 +11,12 @@ export const awsAppSync = {
   aws_project_region: 'us-east-1',
   aws_appsync_region: 'us-east-1',
   aws_appsync_authenticationType: 'API_KEY',
-  aws_appsync_apiKey: graphQLAPIKey.uat,
+  aws_appsync_apiKey: graphQLAPIKey.int,
   aws_content_delivery_bucket: 'ppync-20190316024210-hostingbucket-windows',
   aws_content_delivery_bucket_region: 'us-east-1',
   aws_content_delivery_url:
     'http://ppync-20190316024210-hostingbucket-windows.s3-website-us-east-1.amazonaws.com',
-  aws_appsync_graphqlEndpoint: endpoints.graphQL.uat,
+  aws_appsync_graphqlEndpoint: endpoints.graphQL.int,
 };
 
 // TODO - to move it in env config file
@@ -45,13 +45,15 @@ export const API_CONFIG = {
     brandIdCMS: 'Gymboree',
   },
   sitesInfo: {
+    port: 8081,
     proto: 'https',
+    protoSeparator: '://',
     langId: '-1',
     MELISSA_KEY: '63987687',
     BV_API_KEY: 'e50ab0a9-ac0b-436b-9932-2a74b9486436',
     traceIdCount: 0,
-    assetHost: 'https://test4.childrensplace.com',
-    domain: '://test4.childrensplace.com/api/',
+    assetHost: '/',
+    domain: '/',
     unbxd: '://search.unbxd.io',
   },
   US_CONFIG_OPTIONS: {

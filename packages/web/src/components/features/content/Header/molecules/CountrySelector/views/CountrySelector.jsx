@@ -2,13 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
+
+import CountrySelectorModal from './CountrySelectorModal';
 import style from '../styles/CountrySelector.styles';
 
 const CountrySelector = ({ className, footer }) => {
   return (
     <div className={`${className} countrySelector`}>
       {footer ? (
-        <BodyCopy component="div" fontSize="fs12" color="gray.800">
+        <BodyCopy
+          className="countrySelector__shipTo"
+          color="gray.800"
+          component="div"
+          fontSize="fs12"
+        >
           Ship to
         </BodyCopy>
       ) : (
@@ -30,6 +38,7 @@ const CountrySelector = ({ className, footer }) => {
           </BodyCopy>
         ))}
       </div>
+      <CountrySelectorModal heading="Ship To" />
     </div>
   );
 };
@@ -43,4 +52,4 @@ CountrySelector.defaultProps = {
   footer: false,
 };
 
-export default withStyles(CountrySelector, style);
+export default errorBoundary(withStyles(CountrySelector, style));
