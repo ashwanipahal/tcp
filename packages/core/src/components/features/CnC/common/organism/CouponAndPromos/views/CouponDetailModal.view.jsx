@@ -121,3 +121,4 @@ class CouponDetailModal extends React.PureComponent<Props> {
 }
 
 export default withStyles(CouponDetailModal, styles);
+export { CouponDetailModal as CouponDetailModalVanilla };

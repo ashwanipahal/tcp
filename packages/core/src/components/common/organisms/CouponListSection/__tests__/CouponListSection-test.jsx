@@ -1,7 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { List } from 'immutable';
-import CouponListSectionVanilla from '../views';
+import { CouponListSectionVanilla } from '../views/CouponListSection.view';
+import Anchor from '../../../atoms/Anchor';
 
 const coupons = [
   {
@@ -119,5 +120,25 @@ describe('CouponList component', () => {
     };
     const component = shallow(<CouponListSectionVanilla {...props} />);
     expect(component).toMatchSnapshot();
+  });
+
+  it('should call detail modal click', () => {
+    const helpAnchorJestClick = jest.fn();
+    const props = {
+      className: 'applied_coupon',
+      couponList: new List(coupons),
+      labels: {},
+      helpSubHeading: 'true',
+      heading: 'Heading',
+      couponDetailClick: () => {},
+      helpAnchorClick: helpAnchorJestClick,
+    };
+    const componentObj = shallow(<CouponListSectionVanilla {...props} />);
+    expect(componentObj.find(Anchor)).toHaveLength(2);
+    componentObj
+      .find(Anchor)
+      .at(0)
+      .simulate('click', { preventDefault: jest.fn() });
+    expect(helpAnchorJestClick).toHaveBeenCalled();
   });
 });

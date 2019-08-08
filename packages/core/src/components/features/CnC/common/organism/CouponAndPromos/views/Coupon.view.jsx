@@ -99,3 +99,4 @@ CouponView.propTypes = {
 };
 
 export default withStyles(CouponView, styles);
+export { CouponView as CouponViewVanilla };

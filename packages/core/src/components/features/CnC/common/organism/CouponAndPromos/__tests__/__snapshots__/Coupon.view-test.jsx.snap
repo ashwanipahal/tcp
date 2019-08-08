@@ -1,87 +1,123 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CartItemTile Component CartItemTile should render correctly 1`] = `
-<StyledComponent
-  cartItems={
-    Array [
+exports[`Coupon component should renders correctly when Coupon are not present 1`] = `
+<div>
+  <ReduxForm
+    destroyOnUnmount={true}
+    enableReinitialize={false}
+    forceUnregisterOnUnmount={false}
+    form="CouponForm"
+    getFormState={[Function]}
+    isFetching={false}
+    keepDirtyOnReinitialize={false}
+    onSubmit={[Function]}
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+  />
+  <Styled(CouponListSection)
+    className="applied_coupon"
+    couponDetailClick={[Function]}
+    couponList={Immutable.List []}
+    heading="Applied"
+    labels={
       Object {
-        "itemInfo": Object {
-          "itemId": "3001545564",
-          "itemPoints": 78,
-          "listPrice": 38.85,
-          "offerPrice": 38.85,
-          "quantity": 3,
-          "salePrice": 12.95,
-          "wasPrice": 12.95,
-        },
-        "miscInfo": Object {
-          "availability": "OK",
-          "badge": "",
-          "bossEndDate": null,
-          "bossStartDate": null,
-          "clearanceItem": false,
-          "isBopisEligible": true,
-          "isBossEligible": true,
-          "isOnlineOnly": false,
-          "orderItemType": "ECOM",
-          "store": null,
-          "storeAddress": null,
-          "storeId": null,
-          "storeItemsCount": 0,
-          "storePhoneNumber": null,
-          "storeTodayOpenRange": null,
-          "storeTomorrowOpenRange": null,
-          "vendorColorDisplayId": "3001569_1301",
-        },
-        "productInfo": Object {
-          "generalProductId": "1234080",
-          "imagePath": "/wcsstore/GlobalSAS/images/tcp/products/500/3001569_1301.jpg",
-          "itemPartNumber": "00193511087773",
-          "name": "Girls Uniform Short Sleeve Ruffle Pique Polo",
-          "pdpUrl": "/us/p/Girls-Uniform-Short-Sleeve-Ruffle-Pique-Polo-3001569-1301",
-          "productPartNumber": "3001569_1301",
-          "size": "L (10/12)",
-          "skuId": "1234475",
-          "upc": "00193511087773",
-          "variantNo": "3001569004",
-        },
-      },
-    ]
-  }
-  editableProductInfo={Object {}}
-  forwardedComponent={
-    Object {
-      "$$typeof": Symbol(react.forward_ref),
-      "attrs": Array [],
-      "componentStyle": ComponentStyle {
-        "componentId": "sc-kgoBCf",
-        "isStatic": false,
-        "rules": Array [
-          "
-  ",
-          "
-  margin-top: ",
-          [Function],
-          ";
-",
-          ";
-",
-        ],
-      },
-      "displayName": "Styled(CouponView)",
-      "foldedComponentIds": Array [],
-      "render": [Function],
-      "styledComponentId": "sc-kgoBCf",
-      "target": [Function],
-      "toString": [Function],
-      "warnTooManyClasses": [Function],
-      "withComponent": [Function],
+        "APPLIED_REWARDS_HEADING": "Applied",
+        "AVAILABLE_REWARDS_HEADING": "Available",
+      }
     }
-  }
-  forwardedRef={null}
-  getOrderDetails={[MockFunction]}
-  getProductSKUInfo={[MockFunction]}
-  removeCartItem={[MockFunction]}
-  updateCartItem={[MockFunction]}
-/>
+  />
+  <Styled(CouponListSection)
+    className="available_coupon"
+    couponDetailClick={[Function]}
+    couponList={Immutable.List []}
+    heading="Available"
+    helpAnchorClick={[Function]}
+    helpSubHeading="true"
+    labels={
+      Object {
+        "APPLIED_REWARDS_HEADING": "Applied",
+        "AVAILABLE_REWARDS_HEADING": "Available",
+      }
+    }
+  />
+  <Styled(CouponDetailModal)
+    applyToBag={[Function]}
+    coupon={Object {}}
+    labels={
+      Object {
+        "APPLIED_REWARDS_HEADING": "Applied",
+        "AVAILABLE_REWARDS_HEADING": "Available",
+      }
+    }
+    onRequestClose={[Function]}
+    openState={false}
+  />
+  <CouponHelpModal
+    coupon={Object {}}
+    heading="Help Modal"
+    labels={
+      Object {
+        "APPLIED_REWARDS_HEADING": "Applied",
+        "AVAILABLE_REWARDS_HEADING": "Available",
+      }
+    }
+    onRequestClose={[Function]}
+    openState={false}
+  />
+</div>
+`;
+
+exports[`Coupon component should renders correctly when Coupon are present 1`] = `
+<div>
+  <ReduxForm
+    destroyOnUnmount={true}
+    enableReinitialize={false}
+    forceUnregisterOnUnmount={false}
+    form="CouponForm"
+    getFormState={[Function]}
+    keepDirtyOnReinitialize={false}
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+  />
+  <Styled(CouponDetailModal)
+    applyToBag={[Function]}
+    coupon={Object {}}
+    labels={
+      Object {
+        "addressBook": Object {},
+        "common": Object {},
+      }
+    }
+    onRequestClose={[Function]}
+    openState={false}
+  />
+  <CouponHelpModal
+    coupon={Object {}}
+    heading="Help Modal"
+    labels={
+      Object {
+        "addressBook": Object {},
+        "common": Object {},
+      }
+    }
+    onRequestClose={[Function]}
+    openState={false}
+  />
+</div>
 `;
