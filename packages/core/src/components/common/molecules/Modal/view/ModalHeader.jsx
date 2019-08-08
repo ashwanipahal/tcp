@@ -8,11 +8,22 @@ type Props = {
   closeFunc: Function,
   closeIconDataLocator: string,
   headingStyle?: any,
+  closeIconLeftAligned: boolean,
 };
-const ModalHeader = ({ closeFunc, heading, closeIconDataLocator, headingStyle }: Props) => {
+const ModalHeader = ({
+  closeFunc,
+  heading,
+  closeIconDataLocator,
+  headingStyle,
+  closeIconLeftAligned,
+}: Props) => {
   return (
     <Fragment>
-      <ModalCloseIcon closeFunc={closeFunc} closeIconDataLocator={closeIconDataLocator} />
+      <ModalCloseIcon
+        closeFunc={closeFunc}
+        closeIconDataLocator={closeIconDataLocator}
+        closeIconLeftAligned={closeIconLeftAligned}
+      />
       {heading && <BodyCopy {...headingStyle}>{heading}</BodyCopy>}
     </Fragment>
   );
