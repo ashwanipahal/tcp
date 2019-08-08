@@ -5,47 +5,10 @@ import { Dimensions, Linking } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
 import AsyncStorage from '@react-native-community/async-storage';
 
-// eslint-disable-next-line import/no-unresolved
-import * as Keychain from 'react-native-keychain';
-// eslint-disable-next-line import/no-unresolved
-import TouchID from 'react-native-touch-id';
-
 import config from '../components/common/atoms/Anchor/config.native';
 
 export const isMobileApp = () => {
   return typeof navigator !== 'undefined' && navigator.product === 'ReactNative';
-};
-
-export const setUserUserPassword = (emailAddress, password) => {
-  return Keychain.setGenericPassword(emailAddress, password);
-};
-
-export const getUserUserPassword = () => {
-  return Keychain.getGenericPassword();
-};
-
-export const resetTouchPassword = () => {
-  return Keychain.resetGenericPassword();
-};
-
-export const touchIDCheck = () => {
-  TouchID.authenticate('to demo this react-native component')
-    .then(success => {
-      return true;
-    })
-    .catch(error => {
-      return false;
-    });
-};
-
-export const isSupportedTouch = () => {
-  return TouchID.isSupported
-    .then(success => {
-      return true;
-    })
-    .catch(error => {
-      return false;
-    });
 };
 
 export const isServer = () => {
