@@ -28,6 +28,15 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
       },
       "colorPalette": Object {
         "black": "#000",
+        "blue": Object {
+          "100": "#dbebf8",
+          "300": "#93c5ea",
+          "50": "#edf5fb",
+          "500": "#4b9fdd",
+          "700": "#3c7fb0",
+          "800": "#254f6e",
+          "900": "#162f42",
+        },
         "error": "#c8102e",
         "gray": Object {
           "300": "#f3f3f3",
@@ -42,10 +51,25 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "400": "#4b742d",
           "500": "#26762c",
         },
+        "orange": Object {
+          "100": "#fdead2",
+          "300": "#fbd5a5",
+          "50": "#fef4e8",
+          "500": "#fac078",
+          "700": "#f8ab4b",
+          "800": "#f7971f",
+          "900": "#c25621",
+        },
         "primary": Object {
           "dark": "#3c7fb0",
           "light": "#93c5ea",
           "main": "#4b9fdd",
+        },
+        "red": Object {
+          "100": "#f3d7d7",
+          "200": "#f3d7d7",
+          "300": "#c84747",
+          "500": "#c8102e",
         },
         "secondary": Object {
           "dark": "#c84747",
@@ -60,6 +84,9 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "secondary": "#575757",
         },
         "white": "#fff",
+        "yellow": Object {
+          "500": "#ffe700",
+        },
       },
       "colors": Object {
         "ACCORDION": Object {
@@ -76,6 +103,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         },
         "BLACK": "#000000",
         "BORDER": Object {
+          "BLUE": "#2e6a91",
           "NORMAL": "#979797",
         },
         "BRAND": Object {
@@ -248,6 +276,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "semiBold": "600",
         },
         "letterSpacing": Object {
+          "medium": "1px",
           "normal": "normal",
           "wide": "2px",
         },
@@ -328,6 +357,10 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         },
       },
       "spacing": Object {
+        "APP_LAYOUT_SPACING": Object {
+          "SM": "30px",
+          "XS": "20px",
+        },
         "CREDIT_CARD_ICON_WIDTH": "50px",
         "ELEM_SPACING": Object {
           "LRG": "24px",
@@ -349,6 +382,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "XS": "24px",
           "XXL": "160px",
           "XXS": "16px",
+          "XXXL": "320px",
         },
         "MODAL_WIDTH": Object {
           "SMALL": "458px",
@@ -372,6 +406,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "fs38": "38px",
           "fs42": "42px",
           "fs48": "48px",
+          "fs52": "52px",
           "fs64": "64px",
         },
         "fontWeights": Object {
@@ -398,9 +433,9 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "h2": Object {
           "fontFamily": "primary",
           "fontSize": Array [
-            "fs42",
-            "fs42",
-            "fs48",
+            "fs36",
+            "fs36",
+            "fs52",
           ],
           "fontWeight": "black",
           "letterSpacing": "normal",
@@ -500,6 +535,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "textAligns": Object {
           "center": "center",
           "left": "left",
+          "right": "right",
         },
       },
       "zindex": Object {

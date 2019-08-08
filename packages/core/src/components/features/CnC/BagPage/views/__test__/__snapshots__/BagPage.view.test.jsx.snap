@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bag page Container should render Added to Bag view section 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-kGXeez",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .main-sec {
+    background: #f3f3f3;
+    padding-bottom: 15px;
+    margin-bottom: 3px;
+  }
+  .row-ele {
+    height: 200px;
+    width: 100%;
+    margin: 15px 0;
+    background: #fff;
+  }
+  .order-summary {
+    margin: 16px 0;
+  }
+  .checkout-actions {
+    margin: 0;
+    width: 100%;
+  }
+  .checkout-button {
+    margin: 0 0 10px 0;
+  }
+  .right-sec {
+    width: 346px;
+    @media ",
+          [Function],
+          " {
+      width: 258px;
+    }
+    @media ",
+          [Function],
+          " {
+      width: 450px;
+    }
+  }
+  .bag-header {
+    margin: 40px 0 20px;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(BagPageView)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-kGXeez",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  initialActions={[MockFunction]}
+  labels={Object {}}
+/>
+`;

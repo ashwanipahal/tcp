@@ -23,7 +23,9 @@ export function* addCreditCardSaga({ payload }) {
       addressEntry = addressList.find(add => add.addressId === onFileAddressKey);
     } else {
       addressEntry = Object.assign({}, address, {
-        phoneNumber: yield select(state => state.LoginPageReducer.loginInfo.phone1),
+        phoneNumber: yield select(
+          state => state.LoginPageReducer && state.LoginPageReducer.get('phone')
+        ),
       });
     }
 
@@ -56,7 +58,7 @@ export function* addCreditCardSaga({ payload }) {
 
 export function* updateCreditCardSaga({ payload }) {
   try {
-    const { address, cardType, onFileAddressKey, isDefault, ...otherPayloadProps } = payload;
+    const { address, cardType, onFileAddressKey, ...otherPayloadProps } = payload;
     const addressList = yield select(getAddressListState);
 
     let addressEntry;
@@ -65,7 +67,9 @@ export function* updateCreditCardSaga({ payload }) {
       addressEntry = addressList.find(add => add.addressId === onFileAddressKey);
     } else {
       addressEntry = Object.assign({}, address, {
-        phoneNumber: yield select(state => state.LoginPageReducer.loginInfo.phone1),
+        phoneNumber: yield select(
+          state => state.LoginPageReducer && state.LoginPageReducer.get('phone')
+        ),
       });
     }
 

@@ -22,6 +22,7 @@ class CookiesTestView extends React.Component {
     this.changeDomain = this.changeDomain.bind(this);
     this.changeRedirectDomain = this.changeRedirectDomain.bind(this);
     this.initCookieTransfer = this.initCookieTransfer.bind(this);
+    this.initCookieTransferWithFetch = this.initCookieTransferWithFetch.bind(this);
     this.formUpdateCookie = this.formUpdateCookie.bind(this);
     this.updateActionUrl = this.updateActionUrl.bind(this);
     this.readCookieNative = this.readCookieNative.bind(this);
@@ -45,12 +46,14 @@ class CookiesTestView extends React.Component {
 
     keys.filter(key => {
       if (key.indexOf('WC_') === 0) {
+        const cookieDecoded = decodeURIComponent(values[key]);
+        const cookieEncoded = encodeURIComponent(cookieDecoded);
         payload.cookie.push({
           domain: DOMAIN,
           name: key,
           path: '/',
           secure: false,
-          value: encodeURIComponent(values[key]),
+          value: cookieEncoded,
         });
         /* eslint-disable */
         return true;
@@ -89,12 +92,14 @@ class CookiesTestView extends React.Component {
 
     keys.filter(key => {
       if (key.indexOf('WC_') === 0) {
+        const cookieDecoded = decodeURIComponent(values[key]);
+        const cookieEncoded = encodeURIComponent(cookieDecoded);
         payload.cookie.push({
           domain: DOMAIN,
           name: key,
           path: '/',
           secure: false,
-          value: encodeURIComponent(values[key]),
+          value: cookieEncoded,
         });
         return true;
       } else {
@@ -122,11 +127,73 @@ class CookiesTestView extends React.Component {
       )
       .set('Accept', 'application/json')
       .send(JSON.stringify(payload))
+      .withCredentials()
       .then(res => {
         console.log(res);
         if (res.status === 200) {
           console.log(`on XHR Success Nagivation`);
         }
+      })
+      .catch(err => {
+        // err.message, err.response
+        console.log(err);
+      });
+  }
+
+  initCookieTransferWithFetch() {
+    let values = this.readCookieNative();
+    let keys = Object.keys(values);
+
+    let payload = {
+      cookie: [
+        {
+          domain: DOMAIN,
+          name: TEMP_CART_ITEM_COUNT,
+          path: '/',
+          secure: false,
+          value: values.cartItemsCount,
+        },
+      ],
+    };
+
+    keys.filter(key => {
+      if (key.indexOf('WC_') === 0) {
+        const cookieDecoded = decodeURIComponent(values[key]);
+        const cookieEncoded = encodeURIComponent(cookieDecoded);
+        payload.cookie.push({
+          domain: DOMAIN,
+          name: key,
+          path: '/',
+          secure: false,
+          value: cookieEncoded,
+        });
+        return true;
+      } else {
+        return false;
+      }
+    });
+
+    this.setState({
+      payload: JSON.stringify(payload),
+    });
+
+    console.log(
+      '== Super Agent used HITTING URL : ',
+      'https://' + this.state.targetDomain + '/api/v2/appconfig/navigateXHR'
+    );
+
+    fetch('https://' + this.state.targetDomain + '/api/v2/appconfig/navigateXHR', {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+        targetDomain: this.state.targetDomain.substr(this.state.targetDomain.split('.')[0].length),
+      },
+      body: JSON.stringify(payload),
+    })
+      .then(response => response.json())
+      .then(res => {
+        console.log(res);
       })
       .catch(err => {
         // err.message, err.response
@@ -163,7 +230,10 @@ class CookiesTestView extends React.Component {
         <input type="text" value={this.state.redirectDomain} onChange={this.changeRedirectDomain} />
         <br />
         <button type="button" onClick={this.initCookieTransfer}>
-          GYMBOREE
+          GYMBOREE with SuperAgent
+        </button>
+        <button type="button" onClick={this.initCookieTransferWithFetch}>
+          GYMBOREE with Fetch
         </button>
         <button type="button" onClick={this.formUpdateCookie}>
           Populate

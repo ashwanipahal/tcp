@@ -50,6 +50,12 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     width: ",
                   [Function],
                   ";
+    border: 1px solid ",
+                  [Function],
+                  ";
+    border-radius: ",
+                  [Function],
+                  ";
   }
 ",
                   ";
@@ -67,10 +73,10 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
             }
           }
           dataLocator="payment-cardtextfield"
+          enableSuccessCheck={false}
           id="cardNumber"
           isPLCCEnabled={true}
           name="cardNumber"
-          showSuccessCheck={false}
         />
       </Styled(Col)>
     </Styled(Row)>
@@ -128,6 +134,12 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
     width: ",
                   [Function],
                   ";
+    border: 1px solid ",
+                  [Function],
+                  ";
+    border-radius: ",
+                  [Function],
+                  ";
   }
 ",
                   ";
@@ -145,10 +157,10 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
             }
           }
           dataLocator="payment-cardtextfield"
+          enableSuccessCheck={false}
           id="cardNumber"
           isPLCCEnabled={true}
           name="cardNumber"
-          showSuccessCheck={false}
         />
       </Styled(Col)>
     </Styled(Row)>
@@ -186,8 +198,9 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
 
   .select__input {
     appearance: none;
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-      no-repeat right 0px bottom 6px;
+    background: url(",
+              "/static/images/carrot-small-down.png",
+              ") no-repeat right 0px bottom 6px;
     border: 0;
     border-bottom: 1px solid ",
               [Function],
@@ -251,9 +264,9 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
         }
       }
       dataLocator="payment-expmonthdd"
+      enableSuccessCheck={false}
       id="expMonth"
       name="expMonth"
-      showSuccessCheck={false}
     />
   </Styled(Col)>
   <Styled(Col)
@@ -284,8 +297,9 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
 
   .select__input {
     appearance: none;
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-      no-repeat right 0px bottom 6px;
+    background: url(",
+              "/static/images/carrot-small-down.png",
+              ") no-repeat right 0px bottom 6px;
     border: 0;
     border-bottom: 1px solid ",
               [Function],
@@ -349,9 +363,9 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
         }
       }
       dataLocator="payment-expyeardd"
+      enableSuccessCheck={false}
       id="expYear"
       name="expYear"
-      showSuccessCheck={false}
     />
   </Styled(Col)>
 </Styled(Row)>

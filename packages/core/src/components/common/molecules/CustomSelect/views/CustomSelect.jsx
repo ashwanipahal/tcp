@@ -14,6 +14,13 @@ class CustomSelect extends React.Component<Props> {
       activeTitle: props.activeTitle || CustomSelectConst.DEFAULT_SELECT,
       activeValue: props.activeValue || null,
     };
+    this.customSelect = null;
+    this.closeDropdownIfClickOutside = this.closeDropdownIfClickOutside.bind(this);
+  }
+
+  componentDidMount() {
+    this.customSelect = document.querySelector('.custom-select');
+    window.addEventListener('click', this.closeDropdownIfClickOutside);
   }
 
   componentDidUpdate(prevProps) {
@@ -22,6 +29,19 @@ class CustomSelect extends React.Component<Props> {
       this.updateState();
     }
   }
+
+  componentWillUnmount() {
+    if (window) {
+      window.removeEventListener('click', this.closeDropdownIfClickOutside);
+    }
+  }
+
+  closeDropdownIfClickOutside = e => {
+    const { toggle } = this.state;
+    if (toggle && !this.customSelect.contains(e.target)) {
+      this.toggleHandler();
+    }
+  };
 
   updateState = () => {
     const { activeValue, activeTitle } = this.props;
@@ -39,6 +59,7 @@ class CustomSelect extends React.Component<Props> {
   };
 
   onClickHandler = (e, value, title) => {
+    e.stopPropagation();
     const { clickHandler } = this.props;
     this.setState({
       activeTitle: title,
@@ -48,22 +69,34 @@ class CustomSelect extends React.Component<Props> {
     clickHandler(e, value, title);
   };
 
+  getDropDownList = () => {
+    const { options, renderList: RenderList } = this.props;
+    const { activeValue } = this.state;
+    return RenderList ? (
+      <RenderList
+        optionsMap={options}
+        clickHandler={this.onClickHandler}
+        activeValue={activeValue}
+      />
+    ) : (
+      <DropdownList
+        optionsMap={options}
+        clickHandler={this.onClickHandler}
+        activeValue={activeValue}
+      />
+    );
+  };
+
   render() {
-    const { toggle, activeTitle, activeValue } = this.state;
-    const { className, selectListTitle, options } = this.props;
+    const { toggle, activeTitle } = this.state;
+    const { className, selectListTitle } = this.props;
     return (
-      <BodyCopy component="div" className={className}>
+      <BodyCopy component="div" className={`${className} custom-select`}>
         <span>{selectListTitle}</span>
         <BodyCopy component="div" onClick={this.toggleHandler} className="customSelectTitle">
           {activeTitle}
         </BodyCopy>
-        {toggle && (
-          <DropdownList
-            optionsMap={options}
-            clickHandler={this.onClickHandler}
-            activeValue={activeValue}
-          />
-        )}
+        {toggle && <BodyCopy>{this.getDropDownList()}</BodyCopy>}
       </BodyCopy>
     );
   }

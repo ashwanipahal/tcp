@@ -45,7 +45,8 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           <BodyCopy
             data-locator="addedtobag-pointsonitem"
             fontFamily="secondary"
-            className="text-value promo-color"
+            className="text-value"
+            color="orange.800"
             fontWeight="extrabold"
           >
             {itemPoints || 0}
@@ -75,7 +76,8 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           <BodyCopy
             data-locator="addedtobag-totalrewardpoints"
             fontFamily="secondary"
-            className="text-value promo-color"
+            className="text-value"
+            color="orange.800"
             fontWeight="extrabold"
           >
             {userPoints || 0}
@@ -92,7 +94,8 @@ const AddedToBagViewPoints = ({ className, pointsSummary, labels }) => {
           <BodyCopy
             data-locator="addedtobag-totalpointsnextreward"
             fontFamily="secondary"
-            className="text-value promo-color"
+            className="text-value"
+            color="orange.800"
             fontWeight="extrabold"
           >
             {pointsToNextReward || 0}

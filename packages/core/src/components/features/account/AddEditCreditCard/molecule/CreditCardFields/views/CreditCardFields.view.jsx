@@ -34,7 +34,7 @@ export const CreditCardFields = ({
           }}
         >
           <Field
-            placeholder={labels.ACC_LBL_CARD_NUMBER}
+            placeholder={labels.paymentGC.lbl_payment_cardNumber}
             name="cardNumber"
             id="cardNumber"
             component={CreditCardNumber}
@@ -43,7 +43,7 @@ export const CreditCardFields = ({
             isPLCCEnabled={isPLCCEnabled}
             cardType={cardType}
             className="field"
-            showSuccessCheck={false}
+            enableSuccessCheck={false}
           />
         </Col>
       </Row>
@@ -61,14 +61,14 @@ export const CreditCardFields = ({
           }}
         >
           <Field
-            placeholder={labels.ACC_LBL_EXP_MONTH}
+            placeholder={labels.paymentGC.lbl_payment_expMonth}
             name="expMonth"
             id="expMonth"
             component={Select}
             dataLocator="payment-expmonthdd"
             options={expMonthOptionsMap}
             className="field"
-            showSuccessCheck={false}
+            enableSuccessCheck={false}
           />
         </Col>
         <Col
@@ -79,14 +79,14 @@ export const CreditCardFields = ({
           }}
         >
           <Field
-            placeholder={labels.ACC_LBL_EXP_YEAR}
+            placeholder={labels.paymentGC.lbl_payment_expYear}
             name="expYear"
             id="expYear"
             component={Select}
             dataLocator="payment-expyeardd"
             options={expYearOptionsMap}
             className="field"
-            showSuccessCheck={false}
+            enableSuccessCheck={false}
           />
         </Col>
       </React.Fragment>
@@ -96,9 +96,9 @@ export const CreditCardFields = ({
 
 CreditCardFields.propTypes = {
   labels: PropTypes.shape({
-    ACC_LBL_CARD_NUMBER: '',
-    ACC_LBL_EXP_MONTH: '',
-    ACC_LBL_EXP_YEAR: '',
+    lbl_payment_cardNumber: '',
+    lbl_payment_expMonth: '',
+    lbl_payment_expYear: '',
   }),
   isExpirationRequired: PropTypes.bool,
   cardTypeImgUrl: PropTypes.string,

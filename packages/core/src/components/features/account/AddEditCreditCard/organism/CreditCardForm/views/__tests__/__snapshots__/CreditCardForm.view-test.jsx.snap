@@ -21,7 +21,12 @@ exports[`CreditCardForm component should renders correctly with address dropdown
     className=""
     initialValues={Object {}}
     isEdit={false}
-    labels={Object {}}
+    labels={
+      Object {
+        "common": Object {},
+        "paymentGC": Object {},
+      }
+    }
     onFileAddressKey=""
     onFileAddresskey="12345"
   />
@@ -65,8 +70,8 @@ exports[`CreditCardForm component should renders correctly with address dropdown
                   }
                 }
                 isDefault={true}
-                showCountry={true}
-                showPhone={true}
+                showCountry={false}
+                showPhone={false}
               />,
               "title": "test test (Default)",
               "value": "12345",
@@ -183,7 +188,12 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
     className=""
     initialValues={Object {}}
     isEdit={false}
-    labels={Object {}}
+    labels={
+      Object {
+        "common": Object {},
+        "paymentGC": Object {},
+      }
+    }
     onFileAddressKey=""
     pristine={true}
   />
@@ -227,8 +237,8 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
                   }
                 }
                 isDefault={true}
-                showCountry={true}
-                showPhone={true}
+                showCountry={false}
+                showPhone={false}
               />,
               "title": "test test (Default)",
               "value": "12345",
@@ -316,7 +326,6 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
       <Styled(Button)
         buttonVariation="fixed-width"
         data-locator="payment-addcardbtn"
-        disabled={true}
         fill="BLUE"
         type="submit"
       />

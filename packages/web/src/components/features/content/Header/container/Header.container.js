@@ -3,6 +3,8 @@ import {
   openNavigationDrawer,
   closeNavigationDrawer,
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
+import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
+import { getUserName } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
 import HeaderView from '../views';
 
 const mapStateToProps = state => {
@@ -12,13 +14,19 @@ const mapStateToProps = state => {
     promoMessageWrapper: Header.promoMessageWrapper,
     headerPromoArea: Header.promoTextBannerCarousel,
     navigationDrawer: Header.navigationDrawer,
+    userName: getUserName(state),
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    openNavigationDrawer: () => dispatch(openNavigationDrawer()),
-    closeNavigationDrawer: () => dispatch(closeNavigationDrawer()),
+    openNavigationDrawer: id => {
+      dispatch(openNavigationDrawer(id));
+    },
+    closeNavigationDrawer: () => {
+      dispatch(closeNavigationDrawer());
+    },
+    openOverlay: component => dispatch(openOverlayModal(component)),
   };
 };
 

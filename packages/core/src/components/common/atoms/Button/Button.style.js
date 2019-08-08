@@ -37,12 +37,11 @@ const ButtonStyles = css`
       padding: 12px 32px;
     `
       : ''};
-
-  &:hover {
-    background: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].HOVER};
-  }
   &:focus {
     background: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].FOCUS};
+  }
+  &:hover:not([disabled]) {
+    background: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].HOVER};
   }
 
   ${props =>

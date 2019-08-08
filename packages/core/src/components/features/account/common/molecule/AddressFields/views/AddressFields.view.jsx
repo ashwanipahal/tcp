@@ -76,25 +76,25 @@ export class AddressFields extends React.PureComponent {
         <Row fullBleed>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
-              placeholder={labels.acc_lbl_first_name}
+              placeholder={labels.addressBook.ACC_LBL_FIRST_NAME}
               name="firstName"
               id="firstName"
               type="text"
               component={TextBox}
               dataLocator="addnewaddress-firstname"
               className="field"
-              showSuccessCheck={false}
+              enableSuccessCheck={false}
             />
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
-              placeholder={labels.acc_lbl_last_name}
+              placeholder={labels.addressBook.ACC_LBL_LAST_NAME}
               name="lastName"
               id="lastName"
               component={TextBox}
               dataLocator="addnewaddress-lastname"
               className="field"
-              showSuccessCheck={false}
+              enableSuccessCheck={false}
             />
           </Col>
         </Row>
@@ -102,25 +102,25 @@ export class AddressFields extends React.PureComponent {
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
               id="addressLine1"
-              placeholder={labels.acc_lbl_address_line1}
+              placeholder={labels.addressBook.ACC_LBL_ADDRESS_LINE1}
               component={AutoCompleteComponent}
               name="addressLine1"
               onPlaceSelected={this.handlePlaceSelected}
               componentRestrictions={Object.assign({}, { country: [country] })}
               dataLocator="addnewaddress-addressl1"
               className="field"
-              showSuccessCheck={false}
+              enableSuccessCheck={false}
             />
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
-              placeholder={labels.acc_lbl_address_line2}
+              placeholder={labels.addressBook.ACC_LBL_ADDRESS_LINE2}
               name="addressLine2"
               id="addressLine2"
               component={TextBox}
               dataLocator="addnewaddress-addressl2"
               className="field"
-              showSuccessCheck={false}
+              enableSuccessCheck={false}
             />
           </Col>
         </Row>
@@ -128,36 +128,44 @@ export class AddressFields extends React.PureComponent {
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
               id="city"
-              placeholder={labels.acc_lbl_city}
+              placeholder={labels.addressBook.ACC_LBL_CITY}
               name="city"
               component={TextBox}
               dataLocator="addnewaddress-city"
               className="field"
-              showSuccessCheck={false}
+              enableSuccessCheck={false}
             />
           </Col>
           <Col colSize={{ small: 3, medium: 2, large: 3 }}>
             <Field
               id="state"
-              placeholder={country === 'CA' ? labels.acc_lbl_province : labels.acc_lbl_state}
+              placeholder={
+                country === 'CA'
+                  ? labels.addressBook.ACC_LBL_PROVINCE
+                  : labels.addressBook.ACC_LBL_STATE
+              }
               name="state"
               component={SelectBox}
               options={country === 'CA' ? CAcountriesStatesTable : UScountriesStatesTable}
               dataLocator="addnewaddress-state"
               className="field"
-              showSuccessCheck={false}
+              enableSuccessCheck={false}
             />
           </Col>
           <Col colSize={{ small: 3, medium: 2, large: 3 }}>
             <Field
-              placeholder={country === 'CA' ? labels.acc_lbl_postal_code : labels.acc_lbl_zip_code}
+              placeholder={
+                country === 'CA'
+                  ? labels.addressBook.ACC_LBL_POSTAL_CODE
+                  : labels.addressBook.ACC_LBL_ZIP_CODE
+              }
               id="zipCode"
               name="zipCode"
               maxLength={country === 'CA' ? 6 : 5}
               component={TextBox}
               dataLocator="addnewaddress-zipcode"
               className="field"
-              showSuccessCheck={false}
+              enableSuccessCheck={false}
             />
           </Col>
         </Row>
@@ -165,27 +173,27 @@ export class AddressFields extends React.PureComponent {
           <Col colSize={{ small: 6, medium: 4, large: 6 }} ignoreGutter={{ small: true }}>
             <Field
               id="country"
-              placeholder={labels.acc_lbl_country}
+              placeholder={labels.addressBook.ACC_LBL_COUNTRY}
               name="country"
               component={SelectBox}
               options={countriesOptionsMap}
               onChange={this.StateCountryChange}
               dataLocator="addnewaddress-country"
               className="field"
-              showSuccessCheck={false}
+              enableSuccessCheck={false}
             />
           </Col>
           {showPhoneNumber && (
             <Col colSize={{ small: 6, medium: 4, large: 6 }}>
               <Field
-                placeholder={labels.acc_lbl_phone_number}
+                placeholder={labels.addressBook.ACC_LBL_PHONE_NUMBER}
                 name="phoneNumber"
                 id="phoneNumber"
                 component={TextBox}
                 dataLocator="addnewaddress-phnumber"
                 type="tel"
                 className="field"
-                showSuccessCheck={false}
+                enableSuccessCheck={false}
               />
             </Col>
           )}
@@ -200,7 +208,7 @@ export class AddressFields extends React.PureComponent {
                 disabled={isMakeDefaultDisabled}
                 className="field"
               >
-                {labels.acc_lbl_set_default}
+                {labels.addressBook.ACC_LBL_SET_DEFAULT}
               </Field>
             </Col>
           </Row>

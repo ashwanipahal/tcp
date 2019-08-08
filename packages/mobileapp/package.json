@@ -23,11 +23,12 @@
     "react-native": "0.59.8",
     "react-native-config": "^0.11.7",
     "react-native-gesture-handler": "^1.3.0",
+    "react-native-google-places-autocomplete": "^1.3.9",
     "react-native-render-html": "^4.1.2",
     "react-native-snap-carousel": "^3.8.0",
     "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^3.11.0",
-    "react-redux": "^7.0.3",
+    "react-redux": "^6.0.1",
     "redux": "^4.0.1",
     "redux-cache": "^0.3.0",
     "redux-form": "^8.2.4",
@@ -36,7 +37,9 @@
     "reselect": "^4.0.0",
     "styled-components": "^4.2.1",
     "superagent-jsonp": "^0.2.1",
-    "superagent": "^5.0.8"
+    "superagent": "^5.0.8",
+    "moment": "^2.24.0",
+    "@react-native-community/async-storage": "^1.6.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -102,7 +105,15 @@
       "**/superagent-jsonp",
       "**/superagent-jsonp/**",
       "**/react-native-vector-icons",
-      "**/react-native-vector-icons/**"
+      "**/react-native-vector-icons/**",
+      "**/redux-form",
+      "**/redux-form/**",
+      "**/react-native-google-places-autocomplete",
+      "**/react-native-google-places-autocomplete/**",
+      "**/moment",
+      "**/moment/**",
+      "**/@react-native-community/async-storage",
+      "**/@react-native-community/async-storage/**"
     ]
   }
 }

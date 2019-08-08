@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Delete Address Modal should render correctly 1`] = `
-<errorBoundaryComponent
+<Styled(Modal)
   className="TCPModal__Content, undefined"
   closeIconDataLocator="addressdeletemodalcrossicon"
   fixedWidth={true}
@@ -62,5 +62,5 @@ exports[`Delete Address Modal should render correctly 1`] = `
       </Styled(Button)>
     </div>
   </div>
-</errorBoundaryComponent>
+</Styled(Modal)>
 `;

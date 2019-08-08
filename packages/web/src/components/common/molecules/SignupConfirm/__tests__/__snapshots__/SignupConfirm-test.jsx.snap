@@ -3,6 +3,7 @@
 exports[`EmailSignupModal component renders correctly 1`] = `
 <div
   className=""
+  id="sign-up-modal-confirm-view"
 >
   <Styled(BodyCopy)
     className="thank-you__label"
@@ -42,6 +43,7 @@ exports[`EmailSignupModal component renders correctly 1`] = `
   />
   <Styled(Image)
     alt="sms-icon"
+    aria-hidden="true"
     className="confirmation-image"
     data-locator="sms_icon"
     src="/static/images/chat.svg"

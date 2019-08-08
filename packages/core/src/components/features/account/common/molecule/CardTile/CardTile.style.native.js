@@ -33,6 +33,8 @@ const CardTileImgWrapper = styled.View`
   width: 90px;
   height: 56px;
   margin-bottom: auto;
+  border: 1px solid ${props => props.theme.colorPalette.gray[500]};
+  border-radius: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 const CardTileImg = styled.Image`
@@ -69,14 +71,27 @@ const CardAddress = styled.View`
   font-size: ${props => props.theme.typography.fontSizes.fs14};
 `;
 
-const CardCtaLinks = styled.View`
+const CardCtaRow = styled.View`
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
-const CardCtaLinkLeftMargin = styled.View`
+const CardCtaLinks = styled.View`
+  flex: 1;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: flex-end;
+`;
+
+const CardCtaLinkMargin = styled.View`
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XS};
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+`;
+
+const RecaptchaContainer = styled.View`
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  height: 89px;
 `;
 
 export {
@@ -91,6 +106,8 @@ export {
   CardTileImg,
   DefaultBadgeWrapper,
   CardAddress,
+  CardCtaRow,
   CardCtaLinks,
-  CardCtaLinkLeftMargin,
+  CardCtaLinkMargin,
+  RecaptchaContainer,
 };

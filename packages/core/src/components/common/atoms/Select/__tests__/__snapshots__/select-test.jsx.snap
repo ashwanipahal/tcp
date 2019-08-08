@@ -53,7 +53,13 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
     data-locator=""
     id="abcd"
     name=""
+    value="first name for user"
   >
+    <option
+      value=""
+    >
+      first name for user
+    </option>
     <option
       id="US"
       key="US"
@@ -69,19 +75,6 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
       Canada
     </option>
   </select>
-  <Styled(BodyCopy)
-    className="select__label"
-    color="text.primary"
-    component="p"
-    fontFamily="secondary"
-    fontSize="fs12"
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="left"
-  >
-    first name for user
-  </Styled(BodyCopy)>
   <Styled(BodyCopy)
     className={null}
     color="error"
@@ -108,6 +101,7 @@ exports[`Selectbox component renders correctly with touched and warning 1`] = `
     data-locator=""
     id="abcd"
     name=""
+    value=""
   >
     <option
       id="US"
@@ -124,16 +118,5 @@ exports[`Selectbox component renders correctly with touched and warning 1`] = `
       Canada
     </option>
   </select>
-  <Styled(BodyCopy)
-    className="select__label"
-    color="text.primary"
-    component="p"
-    fontFamily="secondary"
-    fontSize="fs12"
-    fontWeight="regular"
-    letterSpacing="normal"
-    lineHeight="normal"
-    textAlign="left"
-  />
 </div>
 `;

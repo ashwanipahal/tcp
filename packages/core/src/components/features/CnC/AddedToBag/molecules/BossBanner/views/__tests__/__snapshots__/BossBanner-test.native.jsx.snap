@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BossBanner Component should render correctly 1`] = `
+<Styled(View)>
+  <Styled(Text)>
+    <Styled(BodyCopy)
+      fontSize="fs12"
+      fontWeight={
+        Array [
+          "semibold",
+        ]
+      }
+      text="abc"
+      textAlign="center"
+    />
+  </Styled(Text)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      fontSize="fs10"
+      text="def"
+      textAlign="center"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

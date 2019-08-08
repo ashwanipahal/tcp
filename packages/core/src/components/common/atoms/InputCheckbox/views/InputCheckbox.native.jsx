@@ -14,19 +14,24 @@ class InputCheckBox extends React.Component {
     onClick: PropTypes.func,
     id: PropTypes.string,
     input: PropTypes.shape({}),
+    hideCheckboxIcon: PropTypes.bool,
+    meta: PropTypes.func,
   };
 
   static defaultProps = {
     rightText: 'checkbox',
     isChecked: false,
-    onClick: null,
+    onClick: () => {},
     id: 'checkbox',
     input: { val: '' },
+    hideCheckboxIcon: false,
+    meta: {},
   };
 
   constructor(props) {
     super(props);
-    const { isChecked } = props;
+    const { isChecked, input } = props;
+    input.onChange(isChecked);
     this.state = {
       isChecked,
     };
@@ -34,8 +39,9 @@ class InputCheckBox extends React.Component {
 
   onClick = () => {
     const { isChecked } = this.state;
-    const { onClick, id } = this.props;
+    const { onClick, id, input } = this.props;
     const checkboxState = !isChecked;
+    input.onChange(checkboxState);
     this.setState({
       isChecked: checkboxState,
     });
@@ -58,11 +64,30 @@ class InputCheckBox extends React.Component {
   }
 
   render() {
-    const { input, ...otherProps } = this.props;
+    const { input, hideCheckboxIcon, meta, ...otherProps } = this.props;
+    const { value } = input;
+    const { touched, error } = meta;
+    const isError = touched && error;
     return (
-      <StyledCheckBox onStartShouldSetResponder={this.onClick} {...input} {...otherProps}>
-        {this.genCheckedIcon()}
+      <StyledCheckBox
+        onStartShouldSetResponder={this.onClick}
+        {...input}
+        {...otherProps}
+        value={value}
+      >
+        {!hideCheckboxIcon && this.genCheckedIcon()}
         {this.renderRight()}
+        <BodyCopy
+          className="Checkbox__error"
+          color="error"
+          component="div"
+          fontSize="fs12"
+          fontFamily="secondary"
+          role="alert"
+          aria-live="assertive"
+          data-locator="errorDataLocator"
+          text={isError ? error : ''}
+        />
       </StyledCheckBox>
     );
   }

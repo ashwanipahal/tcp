@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { List } from 'immutable';
 import { AddressBookContainer, mapDispatchToProps } from '../AddressBook.container';
-import AddressBookComponent from '../../views/AddressBook.view';
+import AddressView from '../../views/AddressView';
 
 describe('AddressList container', () => {
   it('should render nothing if addressList prop is not defined', () => {
@@ -11,18 +11,8 @@ describe('AddressList container', () => {
     );
     expect(component.isEmptyRender()).toBeTruthy();
   });
-  it('should render loader', () => {
-    const component = shallow(
-      <AddressBookContainer
-        isFetching
-        getAddressListAction={() => {}}
-        getUserInfoAction={() => {}}
-      />
-    );
-    expect(component.find('p').text()).toBe('Loading...');
-  });
 
-  it('should render AddressBookComponent if addressList prop is of List type', () => {
+  it('should render AddressView if addressList prop is of List type', () => {
     const addressList = List();
     const component = shallow(
       <AddressBookContainer
@@ -31,7 +21,7 @@ describe('AddressList container', () => {
         getUserInfoAction={() => {}}
       />
     );
-    expect(component.is(AddressBookComponent)).toBeTruthy();
+    expect(component.is(AddressView)).toBeTruthy();
   });
 
   it('should call clearAddressBookNotification on unmounting of addressBook container', () => {

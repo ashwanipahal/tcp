@@ -48,12 +48,13 @@ describe('CustomSelect component', () => {
     const component = shallow(
       <CustomSelectVanilla
         options={options}
+        list="colorSelector"
         className="sample-class"
         clickHandler={mockedClickHandler}
       />
     );
     component.setState({ toggle: true });
-    component.instance().onClickHandler();
+    component.instance().onClickHandler({ stopPropagation: () => {} });
     expect(component.state('toggle')).toBe(false);
     expect(mockedClickHandler).toBeCalled();
     expect(component).toMatchSnapshot();

@@ -44,3 +44,19 @@ export const showUpdatedNotificationOnModalState = state => {
 export const checkbalanceValue = state => {
   return state.PaymentReducer.get('giftcardBalance');
 };
+
+export const getPaymentBannerContentId = state => {
+  let paymentBannerContentId;
+  if (state.Labels.account.paymentGC && Array.isArray(state.Labels.account.paymentGC.referred)) {
+    state.Labels.account.paymentGC.referred.forEach(label => {
+      if (label.name === 'paymentGCTopBanner') paymentBannerContentId = label.contentId;
+    });
+  }
+  return paymentBannerContentId;
+};
+
+export const getPaymentBannerRichTextSelector = state => {
+  return state.PaymentReducer.get('paymentBannerRichText');
+};
+
+export const getLabels = state => state.Labels.account;

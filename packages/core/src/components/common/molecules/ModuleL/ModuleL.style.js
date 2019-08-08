@@ -1,7 +1,5 @@
 import { css } from 'styled-components';
-import { getIconPath } from '../../../../utils';
 
-const carouselArrowBig = getIconPath('carousel-big-carrot');
 export default css`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   .moduleL__mobile-web-container {
@@ -31,10 +29,11 @@ export default css`
     max-width: 210px;
   }
   .moduleL__tile-text {
-    margin-left: 13px;
+    margin: 0 13px;
+    position: relative;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      margin-left: 30px;
+      margin: 0 30px;
     }
   }
   .moduleL__tile-title {
@@ -56,22 +55,30 @@ export default css`
   }
   .moduleL__tile-link {
     color: ${props => props.theme.colorPalette.gray['900']};
+    position: absolute;
+    bottom: 13px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      bottom: 24px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      bottom: 33px;
+    }
+  }
+  .slick-prev,
+  .slick-next {
+    background-size: 100%;
+    width: 13px;
+    height: 42px;
   }
   .slick-prev {
     left: -70px;
-    background-image: url(${carouselArrowBig});
-    background-size: auto;
-    width: 42px;
-    height: 42px;
   }
   .slick-next {
     right: -70px;
-    background-image: url(${carouselArrowBig});
-    background-size: auto;
-    width: 42px;
-    height: 42px;
   }
-  .slick-dots li button {
-    pointer-events: none;
+  .slick-dots {
+    bottom: -5px;
   }
 `;

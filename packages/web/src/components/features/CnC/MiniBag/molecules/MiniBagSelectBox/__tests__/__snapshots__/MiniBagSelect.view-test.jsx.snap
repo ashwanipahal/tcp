@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MiniBagSelectBox component MiniBagSelectBox component renders correctly 1`] = `
+<Styled(BodyCopy)
+  className={null}
+  color="text.primary"
+  component="p"
+  fontFamily="secondary"
+  fontSize="fs12"
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <Styled(SelectBox)
+    inheritedStyles={
+      Array [
+        "
+  margin-left: 2px;
+  ",
+        [Function],
+        ";
+  .select__input {
+    padding-top: 20px;
+    font-family: ",
+        [Function],
+        ";
+    font-size: ",
+        [Function],
+        ";
+    margin-bottom: 0;
+  }
+",
+      ]
+    }
+  />
+</Styled(BodyCopy)>
+`;

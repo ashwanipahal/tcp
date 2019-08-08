@@ -15,11 +15,14 @@ const address = {
 };
 
 const labels = {
-  defaultShipping: 'DEFAULT SHIPPING',
-  defaultBilling: 'DEFAULT BILLING',
-  shipping: 'SHIPPING',
-  billing: 'BILLING',
-  makeDefault: 'Make Default',
+  addressBook: {
+    ACC_LBL_DEFAULT_SHIPPING: 'DEFAULT SHIPPING',
+    ACC_LBL_DEFAULT_BILLING: 'DEFAULT BILLING',
+    ACC_LBL_SHIPPING: 'SHIPPING',
+  },
+  common: {
+    lbl_common_makeDefault: 'Make Default',
+  },
 };
 
 describe('AddressTile component', () => {
@@ -38,7 +41,7 @@ describe('AddressTile component', () => {
       labels,
     };
     const component = shallow(<AddressBookTileVanilla {...props} />);
-    expect(component.find(Badge).text()).toBe(labels.defaultShipping);
+    expect(component.find(Badge).text()).toBe(labels.addressBook.ACC_LBL_DEFAULT_SHIPPING);
   });
 
   it('should renders shipping badge if xcont_isShippingAddress is true and address is not primary', () => {
@@ -51,7 +54,7 @@ describe('AddressTile component', () => {
       labels,
     };
     const component = shallow(<AddressBookTileVanilla {...props} />);
-    expect(component.find(Badge).text()).toBe(labels.shipping);
+    expect(component.find(Badge).text()).toBe(labels.addressBook.ACC_LBL_SHIPPING);
   });
 
   it('should render default shipping badge only if xcont_isShippingAddress is true and address is also primary', () => {
@@ -65,7 +68,7 @@ describe('AddressTile component', () => {
     };
     const component = shallow(<AddressBookTileVanilla {...props} />);
     expect(component.find(Badge)).toHaveLength(1);
-    expect(component.find(Badge).text()).toBe(labels.defaultShipping);
+    expect(component.find(Badge).text()).toBe(labels.addressBook.ACC_LBL_DEFAULT_SHIPPING);
   });
 
   it('should renders default Billing badge if xcont_isDefaultBilling is true', () => {
@@ -78,7 +81,7 @@ describe('AddressTile component', () => {
       labels,
     };
     const component = shallow(<AddressBookTileVanilla {...props} />);
-    expect(component.find(Badge).text()).toBe(labels.defaultBilling);
+    expect(component.find(Badge).text()).toBe(labels.addressBook.ACC_LBL_DEFAULT_BILLING);
   });
 
   it('should not render default Billing badge only if xcont_isDefaultBilling is true and xcont_isBillingAddress is also true', () => {
@@ -93,22 +96,7 @@ describe('AddressTile component', () => {
     };
     const component = shallow(<AddressBookTileVanilla {...props} />);
     expect(component.find(Badge)).toHaveLength(1);
-    expect(component.find(Badge).text()).toBe(labels.defaultBilling);
-  });
-
-  it('should renders billing badge if xcont_isBillingAddress is true and address is not default ', () => {
-    const newAddress = Object.assign({}, address, {
-      xcont_isDefaultBilling: 'false',
-      xcont_isBillingAddress: 'true',
-    });
-    const props = {
-      address: newAddress,
-      labels,
-    };
-    const component = shallow(<AddressBookTileVanilla {...props} />);
-    expect(component.findWhere(com => com.is(Badge) && com.text() === labels.billing)).toHaveLength(
-      1
-    );
+    expect(component.find(Badge).text()).toBe(labels.addressBook.ACC_LBL_DEFAULT_BILLING);
   });
 
   it('should renders make default link if address is not primary', () => {
@@ -125,7 +113,7 @@ describe('AddressTile component', () => {
         .find(Anchor)
         .first()
         .text()
-    ).toBe(labels.makeDefault);
+    ).toBe(labels.common.lbl_common_makeDefault);
   });
   it('should call delete address click', () => {
     const newAddress = Object.assign({}, address, {

@@ -159,9 +159,9 @@ exports[`AddressFields component should render correctly 1`] = `
           }
         }
         dataLocator="addnewaddress-firstname"
+        enableSuccessCheck={false}
         id="firstName"
         name="firstName"
-        showSuccessCheck={false}
         type="text"
       />
     </Styled(Col)>
@@ -312,9 +312,9 @@ exports[`AddressFields component should render correctly 1`] = `
           }
         }
         dataLocator="addnewaddress-lastname"
+        enableSuccessCheck={false}
         id="lastName"
         name="lastName"
-        showSuccessCheck={false}
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -346,10 +346,10 @@ exports[`AddressFields component should render correctly 1`] = `
           }
         }
         dataLocator="addnewaddress-addressl1"
+        enableSuccessCheck={false}
         id="addressLine1"
         name="addressLine1"
         onPlaceSelected={[Function]}
-        showSuccessCheck={false}
       />
     </Styled(Col)>
     <Styled(Col)
@@ -499,9 +499,9 @@ exports[`AddressFields component should render correctly 1`] = `
           }
         }
         dataLocator="addnewaddress-addressl2"
+        enableSuccessCheck={false}
         id="addressLine2"
         name="addressLine2"
-        showSuccessCheck={false}
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -660,9 +660,9 @@ exports[`AddressFields component should render correctly 1`] = `
           }
         }
         dataLocator="addnewaddress-city"
+        enableSuccessCheck={false}
         id="city"
         name="city"
-        showSuccessCheck={false}
       />
     </Styled(Col)>
     <Styled(Col)
@@ -693,8 +693,9 @@ exports[`AddressFields component should render correctly 1`] = `
 
   .select__input {
     appearance: none;
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-      no-repeat right 0px bottom 6px;
+    background: url(",
+                "/static/images/carrot-small-down.png",
+                ") no-repeat right 0px bottom 6px;
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -758,6 +759,7 @@ exports[`AddressFields component should render correctly 1`] = `
           }
         }
         dataLocator="addnewaddress-state"
+        enableSuccessCheck={false}
         id="state"
         name="state"
         options={
@@ -1078,7 +1080,6 @@ exports[`AddressFields component should render correctly 1`] = `
             },
           ]
         }
-        showSuccessCheck={false}
       />
     </Styled(Col)>
     <Styled(Col)
@@ -1228,10 +1229,10 @@ exports[`AddressFields component should render correctly 1`] = `
           }
         }
         dataLocator="addnewaddress-zipcode"
+        enableSuccessCheck={false}
         id="zipCode"
         maxLength={5}
         name="zipCode"
-        showSuccessCheck={false}
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -1271,8 +1272,9 @@ exports[`AddressFields component should render correctly 1`] = `
 
   .select__input {
     appearance: none;
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-      no-repeat right 0px bottom 6px;
+    background: url(",
+                "/static/images/carrot-small-down.png",
+                ") no-repeat right 0px bottom 6px;
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -1336,6 +1338,7 @@ exports[`AddressFields component should render correctly 1`] = `
           }
         }
         dataLocator="addnewaddress-country"
+        enableSuccessCheck={false}
         id="country"
         name="country"
         onChange={[Function]}
@@ -1351,7 +1354,6 @@ exports[`AddressFields component should render correctly 1`] = `
             },
           ]
         }
-        showSuccessCheck={false}
       />
     </Styled(Col)>
     <Styled(Col)
@@ -1501,9 +1503,9 @@ exports[`AddressFields component should render correctly 1`] = `
           }
         }
         dataLocator="addnewaddress-phnumber"
+        enableSuccessCheck={false}
         id="phoneNumber"
         name="phoneNumber"
-        showSuccessCheck={false}
         type="tel"
       />
     </Styled(Col)>
@@ -1541,7 +1543,6 @@ exports[`AddressFields component should render correctly 1`] = `
                 "
   display: inline-flex;
   align-items: center;
-  height: 50px;
 
   & .CheckBox__input {
     position: relative;
@@ -1595,6 +1596,10 @@ exports[`AddressFields component should render correctly 1`] = `
     left: 10px;
     top: 5px;
     position: absolute;
+  }
+
+  & .CheckBox__text {
+    width: calc(100% - 25px);
   }
 
   & .disabled {
@@ -1785,9 +1790,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
           }
         }
         dataLocator="addnewaddress-firstname"
+        enableSuccessCheck={false}
         id="firstName"
         name="firstName"
-        showSuccessCheck={false}
         type="text"
       />
     </Styled(Col)>
@@ -1938,9 +1943,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
           }
         }
         dataLocator="addnewaddress-lastname"
+        enableSuccessCheck={false}
         id="lastName"
         name="lastName"
-        showSuccessCheck={false}
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -1972,10 +1977,10 @@ exports[`AddressFields component should render correctly without phoneNumber and
           }
         }
         dataLocator="addnewaddress-addressl1"
+        enableSuccessCheck={false}
         id="addressLine1"
         name="addressLine1"
         onPlaceSelected={[Function]}
-        showSuccessCheck={false}
       />
     </Styled(Col)>
     <Styled(Col)
@@ -2125,9 +2130,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
           }
         }
         dataLocator="addnewaddress-addressl2"
+        enableSuccessCheck={false}
         id="addressLine2"
         name="addressLine2"
-        showSuccessCheck={false}
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -2286,9 +2291,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
           }
         }
         dataLocator="addnewaddress-city"
+        enableSuccessCheck={false}
         id="city"
         name="city"
-        showSuccessCheck={false}
       />
     </Styled(Col)>
     <Styled(Col)
@@ -2319,8 +2324,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
 
   .select__input {
     appearance: none;
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-      no-repeat right 0px bottom 6px;
+    background: url(",
+                "/static/images/carrot-small-down.png",
+                ") no-repeat right 0px bottom 6px;
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -2384,6 +2390,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
           }
         }
         dataLocator="addnewaddress-state"
+        enableSuccessCheck={false}
         id="state"
         name="state"
         options={
@@ -2704,7 +2711,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
             },
           ]
         }
-        showSuccessCheck={false}
       />
     </Styled(Col)>
     <Styled(Col)
@@ -2854,10 +2860,10 @@ exports[`AddressFields component should render correctly without phoneNumber and
           }
         }
         dataLocator="addnewaddress-zipcode"
+        enableSuccessCheck={false}
         id="zipCode"
         maxLength={5}
         name="zipCode"
-        showSuccessCheck={false}
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -2897,8 +2903,9 @@ exports[`AddressFields component should render correctly without phoneNumber and
 
   .select__input {
     appearance: none;
-    background: url(http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png)
-      no-repeat right 0px bottom 6px;
+    background: url(",
+                "/static/images/carrot-small-down.png",
+                ") no-repeat right 0px bottom 6px;
     border: 0;
     border-bottom: 1px solid ",
                 [Function],
@@ -2962,6 +2969,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
           }
         }
         dataLocator="addnewaddress-country"
+        enableSuccessCheck={false}
         id="country"
         name="country"
         onChange={[Function]}
@@ -2977,7 +2985,6 @@ exports[`AddressFields component should render correctly without phoneNumber and
             },
           ]
         }
-        showSuccessCheck={false}
       />
     </Styled(Col)>
   </Styled(Row)>

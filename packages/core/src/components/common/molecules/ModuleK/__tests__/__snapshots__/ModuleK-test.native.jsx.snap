@@ -1,0 +1,322 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleK native component Should renders correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <LinkText
+      color="text.primary"
+      dataLocator="moduleK_header_text"
+      fontFamily="primary"
+      fontSize="fs36"
+      fontWeight="black"
+      link={
+        Object {
+          "external": 0,
+          "target": "",
+          "title": "",
+          "url": "https://www.childrensplace.com/us/c/girls-new-arrivals",
+        }
+      }
+      onPress={[Function]}
+      textAlign="center"
+      textItems={
+        Array [
+          Object {
+            "style": "moduleK__Header",
+            "text": "UNICORNS,",
+          },
+          Object {
+            "style": "moduleK__Header",
+            "text": "DINOS & MORE!",
+          },
+        ]
+      }
+    />
+    <PromoTextBanner
+      dataLocator="moduleK_outerPromoBanner_text"
+      promoTextBanner={Array []}
+    />
+  </Styled(View)>
+  <WithTheme(SnapCarousel)
+    autoplayInterval={2000}
+    carouselConfig={
+      Object {
+        "autoplay": true,
+      }
+    }
+    data={
+      Array [
+        Object {
+          "mediaList": Array [
+            Object {
+              "alt": "Image Alt text attribute value",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "Image Title attribute value",
+              "url": "/static/images/K-210x210-1.jpg",
+            },
+            Object {
+              "alt": "Image Alt text attribute value",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "Image Title attribute value",
+              "url": "/static/images/K-210x210-2.jpg",
+            },
+            Object {
+              "alt": "Image Alt text attribute value",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "Image Title attribute value",
+              "url": "/static/images/K-210x210-3.jpg",
+            },
+            Object {
+              "alt": "Image Alt text attribute value",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "Image Title attribute value",
+              "url": "/static/images/K-210x210-4.jpg",
+            },
+          ],
+          "promoTextBanner": Array [
+            Object {
+              "link": Object {
+                "class": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/banner/url",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "style2",
+                  "text": "ALL DINOS",
+                },
+                Object {
+                  "style": "style3",
+                  "text": "50% OFF",
+                },
+              ],
+            },
+          ],
+          "singleCTAButton": Object {
+            "external": 0,
+            "target": "",
+            "text": "SHOP NOW",
+            "title": "SHOP NOW",
+            "url": "/node/pdp",
+          },
+          "slideIndex": 0,
+        },
+        Object {
+          "mediaList": Array [
+            Object {
+              "alt": "Image Alt text attribute value",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "Image Title attribute value",
+              "url": "/static/images/K-210x210-1.jpg",
+            },
+            Object {
+              "alt": "Image Alt text attribute value",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "Image Title attribute value",
+              "url": "/static/images/K-210x210-2.jpg",
+            },
+            Object {
+              "alt": "Image Alt text attribute value",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "Image Title attribute value",
+              "url": "/static/images/K-210x210-3.jpg",
+            },
+            Object {
+              "alt": "Image Alt text attribute value",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "Image Title attribute value",
+              "url": "/static/images/K-210x210-4.jpg",
+            },
+          ],
+          "promoTextBanner": Array [
+            Object {
+              "link": Object {
+                "class": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/banner/url",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "style2",
+                  "text": "ALL DINOS",
+                },
+                Object {
+                  "style": "style3",
+                  "text": "50% OFF",
+                },
+              ],
+            },
+          ],
+          "singleCTAButton": Object {
+            "external": 0,
+            "target": "",
+            "text": "SHOP NOW",
+            "title": "SHOP NOW",
+            "url": "http://www.google.com",
+          },
+          "slideIndex": 1,
+        },
+        Object {
+          "mediaList": Array [
+            Object {
+              "alt": "Image Alt text attribute value",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "Image Title attribute value",
+              "url": "/static/images/K-210x210-1.jpg",
+            },
+            Object {
+              "alt": "Image Alt text attribute value",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "Image Title attribute value",
+              "url": "/static/images/K-210x210-2.jpg",
+            },
+            Object {
+              "alt": "Image Alt text attribute value",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "Image Title attribute value",
+              "url": "/static/images/K-210x210-3.jpg",
+            },
+            Object {
+              "alt": "Image Alt text attribute value",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "Image Title attribute value",
+              "url": "/static/images/K-210x210-4.jpg",
+            },
+          ],
+          "promoTextBanner": Array [
+            Object {
+              "link": Object {
+                "class": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/banner/url",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "style2",
+                  "text": "ALL DINOS",
+                },
+                Object {
+                  "style": "style3",
+                  "text": "50% OFF",
+                },
+              ],
+            },
+          ],
+          "singleCTAButton": Object {
+            "external": 0,
+            "target": "",
+            "text": "SHOP NOW",
+            "title": "SHOP NOW",
+            "url": "/node/pdp",
+          },
+          "slideIndex": 2,
+        },
+        Object {
+          "mediaList": Array [
+            Object {
+              "alt": "Image Alt text attribute value",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "Image Title attribute value",
+              "url": "/static/images/K-210x210-1.jpg",
+            },
+            Object {
+              "alt": "Image Alt text attribute value",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "Image Title attribute value",
+              "url": "/static/images/K-210x210-2.jpg",
+            },
+            Object {
+              "alt": "Image Alt text attribute value",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "Image Title attribute value",
+              "url": "/static/images/K-210x210-3.jpg",
+            },
+            Object {
+              "alt": "Image Alt text attribute value",
+              "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
+              "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
+              "title": "Image Title attribute value",
+              "url": "/static/images/K-210x210-4.jpg",
+            },
+          ],
+          "promoTextBanner": Array [
+            Object {
+              "link": Object {
+                "class": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/banner/url",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "style2",
+                  "text": "ALL DINOS",
+                },
+                Object {
+                  "style": "style3",
+                  "text": "50% OFF",
+                },
+              ],
+            },
+          ],
+          "singleCTAButton": Object {
+            "external": 0,
+            "target": "",
+            "text": "SHOP NOW",
+            "title": "SHOP NOW",
+            "url": "/node/pdp",
+          },
+          "slideIndex": 3,
+        },
+      ]
+    }
+    defaultAutoplay={true}
+    height={260}
+    renderItem={[Function]}
+    showDots={true}
+    width={750}
+  />
+</Styled(View)>
+`;

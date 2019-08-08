@@ -1,21 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { View } from 'react-native';
 import BodyCopy from '../../BodyCopy';
+import withStyles from '../../../hoc/withStyles';
 
 import {
+  TextBoxStyle,
   StyledTextBox,
   StyledLabel,
   StyledErrorIcon,
   StyledErrorWrapper,
   StyledTextBoxWrapper,
   StyledSuccessIcon,
+  HiddenView,
 } from '../TextBox.style.native';
 import Image from '../../Image';
 
 const errorIcon = require('../../../../../assets/alert-triangle.png');
 const successIcon = require('../../../../../assets/success-icon.png');
 
-class TextBox extends React.Component {
+export class TextBox extends React.Component {
   static propTypes = {
     id: PropTypes.string,
     ariaLabel: PropTypes.string,
@@ -28,10 +32,11 @@ class TextBox extends React.Component {
     maxLength: PropTypes.number.isRequired,
     inputRef: PropTypes.node.isRequired,
     dataLocator: PropTypes.string,
-    showSuccessCheck: PropTypes.bool,
+    enableSuccessCheck: PropTypes.bool,
     label: PropTypes.string,
     keyboardType: PropTypes.string,
     showErrorIcon: PropTypes.bool,
+    secureTextEntry: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -40,10 +45,11 @@ class TextBox extends React.Component {
     type: 'text',
     meta: { touched: '', error: '' },
     dataLocator: 'input-field',
-    showSuccessCheck: false,
+    enableSuccessCheck: false,
     label: 'input',
     keyboardType: 'default',
     showErrorIcon: true,
+    secureTextEntry: false,
   };
 
   constructor(props) {
@@ -65,7 +71,11 @@ class TextBox extends React.Component {
     });
   };
 
-  getErrorMsg = ({ touched, error, showErrorIcon }) => {
+  getErrorMsg = () => {
+    const {
+      meta: { touched, error },
+      showErrorIcon,
+    } = this.props;
     if (touched && error) {
       return (
         <StyledErrorWrapper>
@@ -87,7 +97,7 @@ class TextBox extends React.Component {
     return null;
   };
 
-  render() {
+  renderTextBox = ({ elemValue, isFocused, ...others }) => {
     const {
       id,
       ariaLabel,
@@ -96,18 +106,17 @@ class TextBox extends React.Component {
       inputRef,
       dataLocator,
       label,
-      meta: { touched, error },
+      meta: { error },
       input,
-      showErrorIcon,
-      showSuccessCheck,
+      enableSuccessCheck,
       keyboardType,
+      secureTextEntry,
     } = this.props;
-    const { isFocused } = this.state;
-    const elemValue = input.value;
     return (
-      <StyledTextBoxWrapper>
+      <View>
         <StyledLabel isFocused={elemValue || isFocused}>{label}</StyledLabel>
         <StyledTextBox
+          {...others}
           {...input}
           id={id}
           aria-label={ariaLabel}
@@ -124,17 +133,40 @@ class TextBox extends React.Component {
           keyboardType={keyboardType}
           returnKeyType="next"
           error={error}
-          showSuccessCheck={showSuccessCheck}
+          enableSuccessCheck={enableSuccessCheck}
+          secureTextEntry={secureTextEntry}
         />
-        {showSuccessCheck && (
+        {enableSuccessCheck && (
           <StyledSuccessIcon>
             <Image source={successIcon} width="15px" height="12px" />
           </StyledSuccessIcon>
         )}
-        {this.getErrorMsg({ touched, error, showErrorIcon })}
-      </StyledTextBoxWrapper>
+      </View>
+    );
+  };
+
+  render() {
+    const { type, input, ...others } = this.props;
+    const { isFocused } = this.state;
+    const elemValue = input.value;
+    return (
+      <View>
+        {type === 'hidden' ? (
+          <View>
+            <HiddenView>{this.renderTextBox({ elemValue, isFocused, others })}</HiddenView>
+            {this.getErrorMsg()}
+          </View>
+        ) : (
+          <View>
+            {this.renderTextBox({ elemValue, isFocused, others })}
+            <StyledTextBoxWrapper>{this.getErrorMsg()}</StyledTextBoxWrapper>
+          </View>
+        )}
+      </View>
     );
   }
 }
 
-export default TextBox;
+// export default TextBox;
+export default withStyles(TextBox, TextBoxStyle);
+export { TextBox as TextBoxVanilla };

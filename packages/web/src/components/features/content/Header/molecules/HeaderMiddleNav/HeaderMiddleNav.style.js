@@ -12,6 +12,13 @@ export default css`
     height: 22px;
   }
 
+  .rightLink {
+    border-left: 1px solid ${props => props.theme.colorPalette.gray[500]};
+    box-sizing: border-box;
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
+
   @media ${props => props.theme.mediaQuery.mediumMax} {
     padding: 16px 0;
     text-align: left;

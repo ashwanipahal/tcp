@@ -21,7 +21,12 @@ exports[`AddressBook component should renders correctly when addresses are not p
         tag="h4"
       />
       <Styled(EmptyAddressList)
-        labels={Object {}}
+        labels={
+          Object {
+            "addressBook": Object {},
+            "common": Object {},
+          }
+        }
       />
     </Styled(Col)>
   </Styled(Row)>
@@ -68,7 +73,12 @@ exports[`AddressBook component should renders correctly when addresses are not p
         "title": undefined,
       }
     }
-    labels={Object {}}
+    labels={
+      Object {
+        "addressBook": Object {},
+        "common": Object {},
+      }
+    }
   />
 </div>
 `;
@@ -142,7 +152,12 @@ exports[`AddressBook component should renders correctly when addresses are prese
         },
       ]
     }
-    labels={Object {}}
+    labels={
+      Object {
+        "addressBook": Object {},
+        "common": Object {},
+      }
+    }
     setSelectedAddress={[Function]}
   />
   <Styled(DeleteAddressModal)
@@ -157,7 +172,12 @@ exports[`AddressBook component should renders correctly when addresses are prese
         "title": undefined,
       }
     }
-    labels={Object {}}
+    labels={
+      Object {
+        "addressBook": Object {},
+        "common": Object {},
+      }
+    }
   />
 </div>
 `;

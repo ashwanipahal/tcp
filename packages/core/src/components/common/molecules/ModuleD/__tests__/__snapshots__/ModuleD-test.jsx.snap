@@ -8,7 +8,7 @@ exports[`ModuleD component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-gqjmRU",
+        "componentId": "sc-VigVT",
         "isStatic": false,
         "rules": Array [
           "
@@ -25,7 +25,7 @@ exports[`ModuleD component renders correctly 1`] = `
       "displayName": "Styled(Grid)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-gqjmRU",
+      "styledComponentId": "sc-VigVT",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -34,12 +34,9 @@ exports[`ModuleD component renders correctly 1`] = `
   }
   forwardedRef={null}
 >
-  <LinkText
-    className="moduleD_header"
-    component="div"
+  <Styled(LinkText)
+    component="h2"
     dataLocator="moduleD_headerlink"
-    fontSize="fs48"
-    fontWeight="black"
     headerText={
       Array [
         Object {
@@ -56,8 +53,9 @@ exports[`ModuleD component renders correctly 1`] = `
         },
       ]
     }
-    icon={Object {}}
+    headingClass="moduleD_header"
     textAlign="center"
+    type="heading"
   />
   <Styled(Row)
     centered={true}
@@ -69,7 +67,6 @@ exports[`ModuleD component renders correctly 1`] = `
           "large": 3,
           "medium": 2,
           "small": 3,
-          "xlarge": 3,
         }
       }
       ignoreGutter={Object {}}
@@ -125,7 +122,6 @@ exports[`ModuleD component renders correctly 1`] = `
           "large": 3,
           "medium": 2,
           "small": 3,
-          "xlarge": 3,
         }
       }
       ignoreGutter={
@@ -188,7 +184,6 @@ exports[`ModuleD component renders correctly 1`] = `
           "large": 3,
           "medium": 2,
           "small": 3,
-          "xlarge": 3,
         }
       }
       ignoreGutter={Object {}}
@@ -247,7 +242,6 @@ exports[`ModuleD component renders correctly 1`] = `
           "large": 3,
           "medium": 2,
           "small": 3,
-          "xlarge": 3,
         }
       }
       ignoreGutter={

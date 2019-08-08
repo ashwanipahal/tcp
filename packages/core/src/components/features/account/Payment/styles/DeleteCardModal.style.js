@@ -33,9 +33,10 @@ const deleteCardModalStyle = css`
   }
   .deleteCardModal__btn {
     display: inline-block;
-    font-weight: ${props => props.theme.fonts.fontWeight.normal};
+    font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
     float: none;
     width: 60%;
+    letter-spacing: ${props => props.theme.fonts.letterSpacing.medium};
     @media ${props => props.theme.mediaQuery.medium} {
       float: right;
       width: 40%;
@@ -87,6 +88,11 @@ const deleteCardModalStyle = css`
       padding: 0;
       text-align: initial;
     }
+  }
+  .deleteCreditModal__card__icon {
+    height: 56px;
+    border: 1px solid ${props => props.theme.colorPalette.gray[500]};
+    border-radius: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
 `;
 

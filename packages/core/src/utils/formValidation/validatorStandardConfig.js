@@ -42,6 +42,10 @@ export const formValidationMessages = {
     required: 'Please enter your zip code',
     zipcode: 'Please enter a valid zip code',
   },
+  noCountryZip: {
+    required: 'Please enter your zip code',
+    noCountryZip: 'Please enter a valid zip code',
+  },
   recaptchaToken: {
     required: 'Please check the recaptcha value',
   },
@@ -60,6 +64,34 @@ export const formValidationMessages = {
   },
   giftCardNumber: 'Please enter a valid gift card number',
   cardPin: 'Please enter your gift card pin number',
+
+  Email: {
+    required: `Please enter a valid email`,
+    validEmail: 'Email format is invalid',
+  },
+  emailAddress: {
+    required: `Please enter a valid email`,
+    emailPattern: 'Email format is invalid',
+  },
+  confirmEmailAddress: {
+    required: 'Please confirm your email address',
+    matchEmail: 'Email addresses must match',
+  },
+  password: {
+    required: 'Please enter your password',
+    password: 'Please enter a valid password',
+  },
+  confirmPassword: {
+    required: 'Please enter a valid password',
+    equalTo: 'Passwords must match',
+  },
+  emailAddressNoAsync: {
+    required: `Please enter a valid email`,
+    email: 'Email format is invalid.',
+  },
+  iAgree: {
+    required: 'Please Select',
+  },
 };
 
 export const formValidationRules = {
@@ -106,6 +138,10 @@ export const formValidationRules = {
       linkedFields: ['country'],
     },
   },
+  noCountryZip: {
+    required: true,
+    noCountryZip: true,
+  },
   recaptchaToken: {
     required: true,
   },
@@ -140,6 +176,40 @@ export const formValidationRules = {
     required: true,
     number: true,
     exactLength: 4,
+  },
+  Email: {
+    required: true,
+    validEmail: true,
+  },
+  emailAddress: {
+    required: true,
+    emailPattern: 'isValid',
+  },
+  confirmEmailAddress: {
+    required: true,
+    matchEmail: {
+      linkedFields: ['emailAddress'],
+    },
+  },
+  password: {
+    required: true,
+    password: true,
+  },
+  confirmPassword: {
+    required: true,
+    equalTo: {
+      linkedFields: ['password'],
+    },
+  },
+  emailAddressNoAsync: {
+    required: true,
+    email: true,
+  },
+  legacyPassword: {
+    required: true,
+  },
+  iAgree: {
+    required: true,
   },
 };
 

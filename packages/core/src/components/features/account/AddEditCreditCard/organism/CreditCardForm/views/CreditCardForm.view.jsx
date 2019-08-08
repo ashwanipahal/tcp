@@ -25,6 +25,7 @@ export class CreditCardForm extends React.PureComponent {
     isEdit: PropTypes.bool,
     backToPaymentClick: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,
+    invalid: PropTypes.bool.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
     initialValues: PropTypes.shape({}).isRequired,
@@ -43,15 +44,22 @@ export class CreditCardForm extends React.PureComponent {
       title: `${address.firstName} ${address.lastName} ${
         address.primary === 'true' ? '(Default)' : ''
       }`,
-      content: <Address address={address} isDefault={address.primary === 'true'} />,
+      content: (
+        <Address
+          address={address}
+          showCountry={false}
+          showPhone={false}
+          isDefault={address.primary === 'true'}
+        />
+      ),
     }));
 
     addressOptions = addressOptions.push({
       value: '',
-      title: labels.ACC_LBL_ADD_NEW_ADD_CTA,
+      title: labels.paymentGC.lbl_payment_addNewAddCta,
       content: (
         <Button fullWidth buttonVariation="variable-width" fill="BLUE">
-          {labels.ACC_LBL_ADD_NEW_ADD_CTA}
+          {labels.paymentGC.lbl_payment_addNewAddCta}
         </Button>
       ),
     });
@@ -73,6 +81,7 @@ export class CreditCardForm extends React.PureComponent {
       isEdit,
       backToPaymentClick,
       pristine,
+      invalid,
       handleSubmit,
       dispatch,
       initialValues,
@@ -87,7 +96,7 @@ export class CreditCardForm extends React.PureComponent {
           className="addressDropdownHeading"
           dataLocator="payment-bilingaddresslabel"
         >
-          {labels.ACC_LBL_CC_HEADING}
+          {labels.paymentGC.lbl_payment_billingAddress}
         </Heading>
         {addressList && addressList.size > 0 && (
           <Row fullBleed className="elem-mb-XL">
@@ -100,7 +109,7 @@ export class CreditCardForm extends React.PureComponent {
               className="creditCardForm__addressBook"
             >
               <Field
-                selectListTitle={labels.ACC_LBL_CC_ADDRESS_SELECT}
+                selectListTitle={labels.paymentGC.lbl_payment_ccAdressSelect}
                 name="onFileAddressKey"
                 id="onFileAddressKey"
                 component={AddressDropdown}
@@ -154,7 +163,7 @@ export class CreditCardForm extends React.PureComponent {
               type="button"
               data-locator="payment-cancelbtn"
             >
-              {labels.ACC_LBL_CANCEL_CTA}
+              {labels.common.lbl_common_cancelCTA}
             </Button>
           </Col>
           <Col
@@ -164,12 +173,12 @@ export class CreditCardForm extends React.PureComponent {
           >
             <Button
               fill="BLUE"
-              disabled={!isEdit && pristine}
+              disabled={invalid}
               type="submit"
               buttonVariation="fixed-width"
               data-locator="payment-addcardbtn"
             >
-              {isEdit ? labels.ACC_LBL_UPDATE_CTA : labels.ACC_LBL_ADD_CTA}
+              {isEdit ? labels.common.lbl_common_updateCTA : labels.common.lbl_common_addCTA}
             </Button>
           </Col>
         </Row>

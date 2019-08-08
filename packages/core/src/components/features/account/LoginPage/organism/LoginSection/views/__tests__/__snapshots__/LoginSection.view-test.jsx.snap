@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LoginSection component should renders correctly 1`] = `
+<Styled(Row)>
+  <Styled(Col)
+    className="elem-pt-XXL elem-pb-XXL  elem-pl-LRG elem-pr-LRG"
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <Styled(LoginTopSection)
+      className="elem-mb-LRG"
+      isCanada={false}
+      labels={
+        Object {
+          "login": Object {},
+        }
+      }
+    />
+    <ReduxForm
+      className="elem-mb-LRG"
+      destroyOnUnmount={true}
+      enableReinitialize={true}
+      forceUnregisterOnUnmount={false}
+      form="LoginForm"
+      getFormState={[Function]}
+      initialValues={Object {}}
+      keepDirtyOnReinitialize={false}
+      labels={
+        Object {
+          "login": Object {},
+        }
+      }
+      loginErrorMessage=""
+      onCreateAccountClick={[Function]}
+      onSubmit={[Function]}
+      persistentSubmitErrors={false}
+      pure={true}
+      shouldAsyncValidate={[Function]}
+      shouldError={[Function]}
+      shouldValidate={[Function]}
+      shouldWarn={[Function]}
+      showForgotPasswordForm={[Function]}
+      showRecaptcha={false}
+      submitAsSideEffect={false}
+      touchOnBlur={true}
+      touchOnChange={false}
+      updateUnregisteredFields={false}
+      validate={[Function]}
+    />
+    <Styled(BodyCopy)
+      className="border elem-pt-MED elem-pb-LRG"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      <Styled(BodyCopy)
+        className="elem-mb-LRG"
+        color="text.primary"
+        component="p"
+        fontFamily="primary"
+        fontSize="fs12"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="center"
+      />
+    </Styled(BodyCopy)>
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="create-acc-cta"
+      data-locator=""
+      fill="WHITE"
+      onClick={[Function]}
+      type="submit"
+    />
+  </Styled(Col)>
+</Styled(Row)>
+`;

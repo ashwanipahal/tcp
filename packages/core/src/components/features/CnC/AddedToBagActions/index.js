@@ -1,1 +1,1 @@
-export { default } from './AddedToBagActions.container';
+export { default } from './container/AddedToBagActions.container';
