@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 
 export default css`
+  padding: 10px 15px;
   border-bottom: 2px solid ${props => props.theme.colorPalette.gray[300]};
   margin-bottom: 20px;
   .padding-top-10 {
@@ -40,6 +41,9 @@ export default css`
   }
   .color-size-fit-label {
     display: inline-block;
+  }
+  .responsive-edit-css {
+    padding-top: 2px;
   }
 
   .product-tile-wrapper {
