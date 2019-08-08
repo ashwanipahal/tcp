@@ -100,6 +100,7 @@ const ModuleL = (props: Props) => {
       {headerText && (
         <LinkText
           headerText={headerText}
+          navigation={navigation}
           type="heading"
           fontFamily="primary"
           fontSize="fs36"

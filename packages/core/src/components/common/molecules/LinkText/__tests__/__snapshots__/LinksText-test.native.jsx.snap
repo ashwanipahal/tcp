@@ -1,9 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`LinkText component renders correctly 1`] = `
-<TouchableOpacity
-  accessibilityRole="button"
-  activeOpacity={0.2}
+<Styled(Anchor)
+  anchorVariation=""
+  customStyle={Object {}}
+  external={0}
+  text=""
+  url="http://example.com3367"
+  visible={false}
 >
   <Styled(BodyCopy)
     Component={
@@ -36,7 +40,6 @@ exports[`LinkText component renders correctly 1`] = `
         "withComponent": [Function],
       }
     }
-    onPress={[Function]}
     text={
       Array [
         <Text>
@@ -48,5 +51,5 @@ exports[`LinkText component renders correctly 1`] = `
       ]
     }
   />
-</TouchableOpacity>
+</Styled(Anchor)>
 `;

@@ -14,6 +14,7 @@ type Props = {
   promoBanner: Object[],
   smallCompImage: Object[],
   singleCTAButton: Object,
+  navigation: Object,
 };
 
 const imageSize = parseInt((getScreenWidth() - 48) / 2, 10);
@@ -84,13 +85,14 @@ const renderItem = item => {
  */
 
 const ModuleD = (props: Props) => {
-  const { smallCompImage, headerText, promoBanner, singleCTAButton } = props;
+  const { smallCompImage, headerText, promoBanner, singleCTAButton, navigation } = props;
   const buttonWidth = { width: 225 };
   return (
     <Wrapper>
       {headerText && (
         <LinkText
           headerText={headerText}
+          navigation={navigation}
           fontFamily="primary"
           fontSize="fs36"
           letterSpacing="ls167"

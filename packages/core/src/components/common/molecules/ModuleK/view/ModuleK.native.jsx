@@ -55,7 +55,7 @@ class ModuleK extends React.PureComponent {
   };
 
   render() {
-    const { headerText, masonryGrid, autoplayInterval } = this.props;
+    const { headerText, masonryGrid, autoplayInterval, navigation } = this.props;
     const indexedMasonryGrid = masonryGrid.map((item, i) => {
       return { ...item, slideIndex: i };
     });
@@ -66,6 +66,7 @@ class ModuleK extends React.PureComponent {
           {headerText && (
             <LinkText
               headerText={headerText}
+              navigation={navigation}
               fontSize="fs36"
               fontWeight="black"
               color="text.primary"
@@ -96,12 +97,14 @@ ModuleK.defaultProps = {
   headerText: [],
   masonryGrid: [],
   autoplayInterval: 2,
+  navigation: {},
 };
 
 ModuleK.propTypes = {
   headerText: PropTypes.shape([]),
   masonryGrid: PropTypes.shape([]),
   autoplayInterval: PropTypes.number, // 2 means 2 seconds
+  navigation: PropTypes.shape({}),
 };
 
 export default ModuleK;

@@ -31,6 +31,7 @@ exports[`ModuleK native component Should renders correctly 1`] = `
           },
         ]
       }
+      navigation={Object {}}
       testID="moduleK_header_text"
       textAlign="center"
     />
