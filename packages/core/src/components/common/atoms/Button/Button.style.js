@@ -37,18 +37,33 @@ const ButtonStyles = css`
     `
       : ''};
   ${props =>
-    props.buttonVariation === 'mini-nav'
+    props.buttonVariation === 'category-links-light'
       ? `
       color: ${props.theme.colorPalette.text.primary};
       font-family: ${props.theme.typography.fonts.secondary};
       font-size: ${props.theme.typography.fontSizes.fs14};
       font-weight: ${props.theme.typography.fontWeights.regular};
       border-bottom: 2px solid ${props.theme.colorPalette.primary.main};
-      margin-right: 30px;
+      margin-right: 16px;
 
       @media ${props.theme.mediaQuery.large} {
       font-size: ${props.theme.typography.fontSizes.fs20};
-      font-weight: ${props.theme.typography.fontWeights.black};
+      }
+    `
+      : ''};
+
+  ${props =>
+    props.buttonVariation === 'category-links-dark'
+      ? `
+      color: ${props.theme.colorPalette.white};
+      font-family: ${props.theme.typography.fonts.secondary};
+      font-size: ${props.theme.typography.fontSizes.fs14};
+      font-weight: ${props.theme.typography.fontWeights.regular};
+      border-bottom: 2px solid ${props.theme.colorPalette.text.hint};
+      margin: 0 8px;
+
+      @media ${props.theme.mediaQuery.large} {
+      font-size: ${props.theme.typography.fontSizes.fs20};
       }
     `
       : ''};
@@ -59,6 +74,39 @@ const ButtonStyles = css`
   &:hover:not([disabled]) {
     background: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].HOVER};
   }
+
+  ${props =>
+    props.buttonVariation === 'category-links-light'
+      ? `
+      &:hover:not([disabled]){
+        background: none;
+        font-weight: ${props.theme.typography.fontWeights.black};
+        border-color: ${props.theme.colorPalette.orange[800]};
+      }
+
+      &:hover {
+        background: none;
+        font-weight: ${props.theme.typography.fontWeights.black};
+        border-color: ${props.theme.colorPalette.orange[800]};
+      }
+    `
+      : ''};
+
+  ${props =>
+    props.buttonVariation === 'category-links-dark'
+      ? `
+      &:hover:not([disabled]), &:focus {
+        background: none;
+        font-weight: ${props.theme.typography.fontWeights.black};
+        border-color: ${props.theme.colorPalette.orange[800]};
+      }
+      &:hover, &:focus {
+        background: none;
+        font-weight: ${props.theme.typography.fontWeights.black};
+        border-color: ${props.theme.colorPalette.orange[800]};
+      }
+    `
+      : ''};
 
   ${props =>
     props.fullWidth

@@ -22,13 +22,6 @@ export default css`
     justify-content: center;
   }
 
-  .link-button {
-    font-family: ${props => props.theme.typography.fonts.secondary};
-    font-size: ${props => props.theme.typography.fontSizes.fs14};
-    border-bottom: 2px solid white;
-    padding-bottom: 2px;
-    margin: 0 8px;
-  }
   .scroll-cta-wrapper {
     display: flex;
     flex-wrap: nowrap;
@@ -123,10 +116,6 @@ export default css`
     &.stack-comp-wrapper,
     &.scroll-comp-wrapper {
       justify-content: center;
-    }
-    .link-button {
-      font-size: ${props => props.theme.typography.fontSizes.fs20};
-      font-weight: ${props => props.theme.typography.fontWeights.black};
     }
   }
 

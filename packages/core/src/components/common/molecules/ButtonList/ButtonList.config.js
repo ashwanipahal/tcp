@@ -22,10 +22,10 @@ export default {
     },
   },
   linkCTAList: {
-    className: 'scroll-button',
-    buttonVariation: 'mini-nav',
+    className: 'link-button-wrapper',
     compProps: {
       className: 'link-button',
+      buttonVariation: 'category-links-dark',
     },
   },
 };

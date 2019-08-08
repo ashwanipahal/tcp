@@ -89,6 +89,7 @@ const ButtonList = (props: Props) => {
     compProps = {
       ...linkCTAProps,
       buttonsData,
+      buttonListVariation,
     };
     component = getButtonCTA(compProps);
   }

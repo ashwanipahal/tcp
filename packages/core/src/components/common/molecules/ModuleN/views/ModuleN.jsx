@@ -15,7 +15,7 @@ type Props = {
   linkList: Array,
   divImageCTACarousel: Array,
   headerText: Array,
-  promoTextBanner: Array,
+  promoBanner: Array,
 };
 
 const ModuleN = (props: Props) => {
@@ -25,8 +25,9 @@ const ModuleN = (props: Props) => {
     linkList,
     divImageCTACarousel,
     headerText,
-    promoTextBanner,
+    promoBanner,
   } = props;
+
   return (
     <React.Fragment>
       <div className={`${className} moduleN`}>
@@ -41,9 +42,9 @@ const ModuleN = (props: Props) => {
               className="heading"
             />
           )}
-          {promoTextBanner && (
+          {promoBanner && (
             <PromoBanner
-              promoTextBanner={promoTextBanner}
+              promoBanner={promoBanner}
               className="moduleN__promo-banner"
               color="white"
             />
@@ -61,9 +62,9 @@ const ModuleN = (props: Props) => {
               className="heading"
             />
           )}
-          {promoTextBanner && (
+          {promoBanner && (
             <PromoBanner
-              promoTextBanner={promoTextBanner}
+              promoBanner={promoBanner}
               className="moduleN__promo-banner"
               color="white"
             />
@@ -82,9 +83,9 @@ const ModuleN = (props: Props) => {
               className="heading"
             />
           )}
-          {promoTextBanner && (
+          {promoBanner && (
             <PromoBanner
-              promoTextBanner={promoTextBanner}
+              promoBanner={promoBanner}
               className="moduleN__promo-banner"
               color="white"
             />
@@ -103,9 +104,9 @@ const ModuleN = (props: Props) => {
               className="heading"
             />
           )}
-          {promoTextBanner && (
+          {promoBanner && (
             <PromoBanner
-              promoTextBanner={promoTextBanner}
+              promoBanner={promoBanner}
               className="moduleN__promo-banner"
               color="white"
             />
