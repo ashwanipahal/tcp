@@ -83,7 +83,24 @@ class DropDown extends React.PureComponent<Props> {
         () =>
           this.rowMarker.measure((x, y, width, height, pageX, pageY) => {
             this.rowFrame = { x: pageX, y: height + pageY, width, height };
-            this.setState({ top: height + pageY });
+
+            const windowHeight = getScreenHeight();
+
+            // calculate the list height
+            const { data, itemStyle } = this.props;
+            const calculateHeight = data.length * itemStyle.height;
+
+            // checking bottom space
+            const bottomSpace = windowHeight - this.rowFrame.y - this.rowFrame.height;
+            // check drop down is in bottom or not
+            const showInBottom = bottomSpace >= calculateHeight || bottomSpace >= this.rowFrame.y;
+
+            // if it is not in bottom then taking it y coordinate to set the drop down item position
+            // else subtracting device height and position of drop down y coordinate.
+            const topMargin = {
+              top: showInBottom ? this.rowFrame.y : Math.max(0, this.rowFrame.y - calculateHeight),
+            };
+            this.setState({ top: topMargin.top });
           }),
         500
       );
