@@ -27,6 +27,7 @@ export const getBonusPointsData = () => {
     webService: endpoints.bonusPoints,
   };
   return executeStatefulAPICall(payload).then(res => {
+    /* istanbul ignore else */
     if (!res.body) {
       throw new Error('res body is null');
       // TODO - Set API Helper to filter if error exists in response
