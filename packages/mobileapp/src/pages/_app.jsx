@@ -21,9 +21,6 @@ const styles = StyleSheet.create({
 export class App extends React.PureComponent {
   state = {
     isSplashVisible: true,
-    // Adding state for future use - eslint warning will be removed in future
-    // eslint-disable-next-line react/no-unused-state
-    internetAvailable: false,
   };
 
   componentWillMount() {
