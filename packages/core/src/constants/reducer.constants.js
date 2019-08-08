@@ -54,6 +54,9 @@ export const PRODUCTLISTINGPAGE_ACTION_PATTERN = '@@PLP-';
 export const EMAIL_SIGNUP_REDUCER_KEY = 'EmailSignUp';
 export const SMS_SIGNUP_REDUCER_KEY = 'SmsSignUp';
 
+// Coupon reducer
+export const COUPON_REDUCER_KEY = 'CouponsAndPromos';
+export const COUPON_ACTION_PATTERN = '@@CouponsAndPromos-';
 // logout reducer
 export const LOGOUT_REDUCER_KEY = 'logoutReducer';
 export const LOGOUT_ACTION_PATTERN = '@@logout-';

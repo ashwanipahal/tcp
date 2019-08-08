@@ -8,7 +8,7 @@ let ImageGridComp;
 beforeEach(() => {
   const wrapper = shallow(
     <ImageGrid
-      mediaList={mock.moduleK.composites.masonryGrid[0].mediaList}
+      mediaLinkedList={mock.moduleK.composites.masonryGrid[0].mediaLinkedList}
       className="image-grid"
       colM={2}
       dataLocator="moduleK_image_"

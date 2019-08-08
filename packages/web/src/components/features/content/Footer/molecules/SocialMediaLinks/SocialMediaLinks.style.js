@@ -40,6 +40,7 @@ export default css`
       padding: 0 0 5px 0;
       font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy2}px;
       line-height: 2;
+      padding-right: 17px;
     }
     .social-media-icon {
       width: 50px;
