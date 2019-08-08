@@ -14,7 +14,12 @@ export const getPointsHistoryData = () => {
       throw new Error('res body is null');
       // TODO - Set API Helper to filter if error exists in response
     }
-    return res.body.pointsHistoryList || [];
+
+    let pointsHistory = [];
+    if(res.body.pointsHistoryList[0]){
+      pointsHistory = res.body.pointsHistoryList[0].pointsHistoryData;
+    }
+    return pointsHistory;
   });
 };
 

@@ -39,12 +39,6 @@ export const mapDispatchToProps = dispatch => {
 };
 
 const mapStateToProps = state => {
-
-  console.log("hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh");
-  console.log(state);
-  console.log("jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj");
-
-
   return {
     pointHistory: getPointHistoryState(state),
     labels: getLabels(state),

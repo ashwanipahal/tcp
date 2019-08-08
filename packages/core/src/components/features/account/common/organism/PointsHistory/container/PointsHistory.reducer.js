@@ -19,7 +19,7 @@ const PointsHistoryReducer = (state = initialState, action) => {
   switch (action.type) {
     case REWARDSPOINTS_CONSTANTS.SET_ACCOUNT_NAVIGATION_LIST12:
       return state
-        .set('pointsHistoryData', action)
+        .set('pointsHistoryData', action.payload)
         .set(DEFAULT_REDUCER_KEY, setCacheTTL(REWARDSPOINTS_CONSTANTS.GET_ACCOUNT_NAV_LIST_TTL12));
     default:
       return getDefaultState(state);

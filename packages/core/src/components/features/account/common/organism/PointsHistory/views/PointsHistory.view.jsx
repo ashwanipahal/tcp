@@ -11,7 +11,30 @@ import styles from '../styles/PointsHistory.style';
 const PointsHistory = ({
   className,
   labels,
+  pointHistory,
 }) => {
+
+  const pointdata = pointHistory.forEach((pointHistoryRow)=> (
+    <Row>
+      <Col colSize={{ large: 4, medium: 3, small: 2 }}>
+        <BodyCopy fontFamily="secondary" fontSize="fs14">
+          {pointHistoryRow.transactionDate}
+        </BodyCopy>
+      </Col>
+      <Col colSize={{ large: 4, medium: 3, small: 2 }}>
+        <BodyCopy fontFamily="secondary" fontSize="fs14">
+          {pointHistoryRow.pointTransactionType}
+        </BodyCopy>
+      </Col>
+      <Col colSize={{ large: 4, medium: 2, small: 2 }}>
+        <BodyCopy fontFamily="secondary" fontSize="fs14">
+          {pointHistoryRow.pointsEarned}
+        </BodyCopy>
+      </Col>
+    </Row>
+    ));
+
+
   return (
     <div className={className}>
       <Row>
@@ -31,23 +54,8 @@ const PointsHistory = ({
           </BodyCopy>
         </Col>
       </Row>
-      <Row>
-        <Col colSize={{ large: 4, medium: 3, small: 2 }}>
-          <BodyCopy fontFamily="secondary" fontSize="fs14">
-            10/19/18
-          </BodyCopy>
-        </Col>
-        <Col colSize={{ large: 4, medium: 3, small: 2 }}>
-          <BodyCopy fontFamily="secondary" fontSize="fs14">
-            MPRCC Bonus
-          </BodyCopy>
-        </Col>
-        <Col colSize={{ large: 4, medium: 2, small: 2 }}>
-          <BodyCopy fontFamily="secondary" fontSize="fs14">
-            66
-          </BodyCopy>
-        </Col>
-      </Row>
+
+      {pointdata}
 
       <Row>
         <Col colSize={{ large: 4, medium: 3, small: 2 }}>
@@ -67,6 +75,7 @@ const PointsHistory = ({
 
 PointsHistory.propTypes = {
   className: PropTypes.string,
+  pointHistory: PropTypes.shape({}).isRequired,
   labels: PropTypes.shape({
     lbl_common_current_points: PropTypes.string,
   }),

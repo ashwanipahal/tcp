@@ -9,5 +9,5 @@ export const getPointsHistoryList = () => {
 export const setPointsHistoryList = pointsHistoryData => {
   return ({
   type: REWARDSPOINTS_CONSTANTS.SET_ACCOUNT_NAVIGATION_LIST12,
-  pointsHistoryData,
+  payload: pointsHistoryData,
 })};
