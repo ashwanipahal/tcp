@@ -82,7 +82,11 @@ exports[`Footer component Footer component renders correctly with props 1`] = `
             "small": 6,
           }
         }
-      />
+      >
+        <Styled(CountrySelector)
+          footer={true}
+        />
+      </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
       fullBleed={true}
@@ -190,7 +194,11 @@ exports[`Footer component Footer component renders correctly without props 1`] =
             "small": 6,
           }
         }
-      />
+      >
+        <Styled(CountrySelector)
+          footer={true}
+        />
+      </Styled(Col)>
     </Styled(Row)>
     <Styled(Row)
       fullBleed={true}
