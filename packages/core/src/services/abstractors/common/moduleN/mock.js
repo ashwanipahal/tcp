@@ -118,6 +118,83 @@ export default {
           external: 0,
         },
       ],
+      divImageCTACarousel: [
+        {
+          image: {
+            url:
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v156206en-white-4K2lIP0zc_k-unsplash_avr2bp.jpg',
+            title: '',
+            alt: '',
+          },
+          link: {
+            url: '/p/',
+            title: '',
+            text: 'Girl',
+            target: '_self',
+            external: 0,
+          },
+        },
+        {
+          image: {
+            url:
+              'https://res.cloudinary.com/tcp-dam-test/id/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg',
+            title: '',
+            alt: '',
+          },
+          link: {
+            url: '/c/',
+            title: '',
+            text: 'Boy',
+            target: '_self',
+            external: 0,
+          },
+        },
+        {
+          image: {
+            url:
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/w61640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg',
+            title: '',
+            alt: '',
+          },
+          link: {
+            url: '/c/',
+            title: '',
+            text: 'Toddler Boy',
+            target: '_self',
+            external: 0,
+          },
+        },
+        {
+          image: {
+            url:
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg',
+            title: '',
+            alt: '',
+          },
+          link: {
+            url: '/p/',
+            title: '',
+            text: 'Toddler',
+            target: '_self',
+            external: 0,
+          },
+        },
+        {
+          image: {
+            url:
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg',
+            title: '',
+            alt: '',
+          },
+          link: {
+            url: '/c/',
+            title: '',
+            text: 'Baby',
+            target: '_self',
+            external: 0,
+          },
+        },
+      ],
     },
   },
 };
