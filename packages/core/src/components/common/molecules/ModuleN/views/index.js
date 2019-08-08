@@ -1,1 +1,1 @@
-export { default } from './ModuleN';
+export { default } from './ModuleN.native';
