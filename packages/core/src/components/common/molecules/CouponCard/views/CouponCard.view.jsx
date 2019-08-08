@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import withStyles from '../../../hoc/withStyles';
 import BodyCopy from '../../../atoms/BodyCopy';
 import styles from '../styles/CouponCard.style';
 import Anchor from '../../../atoms/Anchor';
@@ -106,9 +106,9 @@ class CouponCard extends React.Component<Props> {
   };
 
   handleDefaultLinkClick = event => {
+    event.preventDefault();
     const { coupon, couponDetailClick } = this.props;
     couponDetailClick(coupon);
-    event.preventDefault();
   };
 
   render() {

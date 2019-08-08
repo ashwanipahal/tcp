@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import withStyles from '../../../hoc/withStyles';
 import CouponCard from '../../../molecules/CouponCard';
 import Row from '../../../atoms/Row';
 import Col from '../../../atoms/Col';
@@ -18,16 +18,16 @@ class CouponListSection extends React.Component<Props> {
   }
 
   toggleShow = event => {
+    event.preventDefault();
     this.setState(prevState => ({
       showMore: !prevState.showMore,
     }));
-    event.preventDefault();
   };
 
   helpAnchorClick = event => {
+    event.preventDefault();
     const { helpAnchorClick } = this.props;
     helpAnchorClick();
-    event.preventDefault();
   };
 
   render() {
