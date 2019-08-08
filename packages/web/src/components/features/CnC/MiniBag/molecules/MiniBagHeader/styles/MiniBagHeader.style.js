@@ -20,4 +20,7 @@ export default css`
     margin: 1px 0px 0px -8px;
     padding: 2px 6px;
   }
+  .favIcon {
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  }
 `;

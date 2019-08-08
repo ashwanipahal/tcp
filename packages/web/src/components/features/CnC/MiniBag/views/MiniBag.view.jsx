@@ -33,6 +33,7 @@ const MiniBag = ({ onRequestClose, className, openState, labels, userName, subTo
       }}
       data-locator="mini-bag-modal"
       inheritedStyles={modalStyles}
+      closeIconLeftAligned
     >
       <MiniBagBody
         labels={labels}

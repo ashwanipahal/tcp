@@ -55,7 +55,7 @@ const MiniBagHeader = ({ labels, cartItemCount, className, userName }: Props) =>
           )}
         </Col>
         <Col className="subHeaderText" colSize={{ small: 2, medium: 2, large: 3 }}>
-          <Anchor fontSizeVariation="small" anchorVariation="primary" noLink>
+          <Anchor className="favIcon" fontSizeVariation="small" anchorVariation="primary" noLink>
             <Image
               alt="Product"
               className="product-image"
