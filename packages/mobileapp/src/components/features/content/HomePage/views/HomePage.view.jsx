@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
-import ModuleN from '@tcp/core/src/components/common/molecules/ModuleN';
+import ModuleN from '@tcp/core/src/components/common/molecules/ModuleN/views/ModuleN.native';
 import { SlotA, SlotB, SlotC, SlotD } from '../molecules';
 
 class HomePageView extends React.Component {
