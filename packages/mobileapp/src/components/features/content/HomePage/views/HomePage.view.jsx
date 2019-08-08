@@ -1,6 +1,5 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
-import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/BagPage/organisms/OrderLedger';
 import PropTypes from 'prop-types';
 import { SlotA, SlotB, SlotC } from '../molecules';
 
@@ -16,7 +15,6 @@ class HomePageView extends React.Component {
     return (
       <ScrollView>
         <React.Fragment>
-          <OrderLedgerContainer />
           <SlotA {...slotA} navigation={navigation} />
           <SlotB {...slotB} navigation={navigation} />
           <SlotC {...slotC} navigation={navigation} />

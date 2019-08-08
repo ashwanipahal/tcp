@@ -7,13 +7,9 @@ const StyledOrderLedger = styled.View`
 `;
 
 const StyledRowDataContainer = styled.View`
-  flex: 1;
-  flexdirection: row;
+  flex-direction: row;
   margin-bottom: 10px;
+  justify-content: space-between;
 `;
 
-const StyledText = styled.Text`
-  flex: 1;
-`;
-
-export { StyledOrderLedger, StyledRowDataContainer, StyledText };
+export { StyledOrderLedger, StyledRowDataContainer };

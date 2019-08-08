@@ -7,7 +7,7 @@ import CartItemTile from '../../CartItemTile';
 import Heading from '../../../../common/atoms/Heading';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
-import CheckoutActions from '../molecules/CheckoutActions';
+import AddedToBagActions from '../../AddedToBagActions';
 
 // @flow
 // type Props = {
@@ -20,7 +20,8 @@ import CheckoutActions from '../molecules/CheckoutActions';
 //   handleContinueShopping: Function,
 // };
 
-const AddedToBag = ({ className, labels }: Props) => {
+const AddedToBag = ({ className, labels }) => {
+  const showAddTobag = false;
   return (
     <div className={className}>
       <Row tagName="header">
@@ -42,7 +43,7 @@ const AddedToBag = ({ className, labels }: Props) => {
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }} className="right-sec">
             <OrderLedgerContainer />
-            <CheckoutActions labels={labels} />
+            <AddedToBagActions labels={labels} showAddTobag={showAddTobag} />
           </Col>
         </Row>
       </section>
@@ -51,6 +52,7 @@ const AddedToBag = ({ className, labels }: Props) => {
 };
 AddedToBag.propTypes = {
   className: PropTypes.string.isRequired,
+  labels: PropTypes.shape({}).isRequired,
 };
 
 export default withStyles(AddedToBag, styles);

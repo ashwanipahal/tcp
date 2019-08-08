@@ -8,7 +8,6 @@ import {
   getGrandTotal,
   getGiftCardsTotal,
   getTotalOrderSavings,
-  getSubTotal,
 } from '../container/orderLedger.selector';
 
 describe('#OrderLedger Selectors', () => {
@@ -55,8 +54,5 @@ describe('#OrderLedger Selectors', () => {
     expect(getTotalOrderSavings(state)).toEqual(
       CartPageState.getIn(['orderDetails', 'totalOrderSavings'])
     );
-  });
-  it('#getSubTotal should return totalOrderSavings', () => {
-    expect(getSubTotal(state)).toEqual(CartPageState.getIn(['orderDetails', 'subTotal']));
   });
 });
