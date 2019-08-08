@@ -1,14 +1,12 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import {
   updateDefaultShippingAddress,
   SetDefaultShippingAddressSaga,
 } from '../DefaultShippingAddress.saga';
-import endpoints from '../../../../../../service/endpoint';
 import {
   setDefaultShippingAddressSuccess,
   setDefaultShippingAddressFailure,
 } from '../DefaultShippingAddress.actions';
-import fetchData from '../../../../../../service/API';
 import ADDRESS_BOOK_CONSTANTS from '../../AddressBook.constants';
 
 describe('Default shipping address saga', () => {
@@ -31,19 +29,10 @@ describe('Default shipping address saga', () => {
       },
     };
 
-    const { relURI, method } = endpoints.setDefaultShippingAddress;
-    const baseURI = endpoints.setDefaultShippingAddress.baseURI || endpoints.global.baseURI;
+    gen.next();
+    const putDescriptor = gen.next(res).value;
 
-    const langId = -1;
-    const catalogId = 10551;
-    const storeId = 10151;
-    const nickName = 'foo';
-
-    expect(gen.next().value).toEqual(
-      call(fetchData, baseURI, relURI, { payload, langId, catalogId, storeId, nickName }, method)
-    );
-    expect(gen.next(res).value).toEqual(put(setDefaultShippingAddressSuccess(res.body)));
-    expect(gen.next().done).toBeTruthy();
+    expect(putDescriptor).toEqual(put(setDefaultShippingAddressSuccess(res.body)));
   });
 
   it('should fail default shipping address', () => {
@@ -53,7 +42,6 @@ describe('Default shipping address saga', () => {
     };
     gen.next();
     expect(gen.throw(err).value).toEqual(put(setDefaultShippingAddressFailure(err)));
-    expect(gen.next().done).toBeTruthy();
   });
 
   it('should test SetDefaultShippingAddressSaga', () => {

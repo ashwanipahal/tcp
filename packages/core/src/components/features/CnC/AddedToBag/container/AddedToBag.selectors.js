@@ -13,7 +13,7 @@ export const getOrderItems = state => {
   return getCartOrderDetails(state) && getCartOrderDetails(state).get('orderItems');
 };
 
-const filterObject = (arr, searchedValue) => {
+export const filterItemObject = (arr, searchedValue) => {
   const filteredValue = arr.filter(value => {
     return value.getIn(['itemInfo', 'itemId']).toString() === searchedValue.orderItemId.toString();
   });
@@ -25,7 +25,7 @@ export const getQuantityValue = state => {
   const orderItems = getOrderItems(state);
   const lastAddedToBag = getAddedToBagData(state);
   if (orderItems && lastAddedToBag) {
-    const lastAddedItem = filterObject(orderItems, lastAddedToBag);
+    const lastAddedItem = filterItemObject(orderItems, lastAddedToBag);
     quantity = lastAddedItem.getIn(['itemInfo', 'quantity']);
   }
 
@@ -52,7 +52,7 @@ export const getPointsSummary = (getOrderPointsSummary, lastAddedToBag) => {
   const orderItems = getOrderItemsDetails(getOrderPointsSummary);
   let pointsSummary = {};
   if (orderItems) {
-    const lastAddedItem = filterObject(orderItems, lastAddedToBag);
+    const lastAddedItem = filterItemObject(orderItems, lastAddedToBag);
     const obj = {
       pointsToNextReward: getOrderPointsSummary.get('pointsToNextReward'),
       estimatedRewards: getOrderPointsSummary.get('estimatedRewards'),

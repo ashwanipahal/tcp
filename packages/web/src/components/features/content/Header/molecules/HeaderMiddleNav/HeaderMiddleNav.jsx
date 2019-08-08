@@ -65,6 +65,7 @@ const HeaderMiddleNav = props => {
             }
             alt="hamburger menu"
             className="hamburger-menu"
+            tabIndex="0"
             onClick={handleNavigationDrawer(
               openNavigationDrawer,
               closeNavigationDrawer,
@@ -89,7 +90,13 @@ const HeaderMiddleNav = props => {
         >
           {userName ? (
             <React.Fragment>
-              <BodyCopy textAlign="right">{`Hi, ${userName}`}</BodyCopy>
+              <BodyCopy
+                id="accountDrawer"
+                textAlign="right"
+                onClick={e => onLinkClick({ e, openOverlay })}
+              >
+                {`Hi, ${userName}`}
+              </BodyCopy>
               <LogOutPageContainer />
             </React.Fragment>
           ) : (
