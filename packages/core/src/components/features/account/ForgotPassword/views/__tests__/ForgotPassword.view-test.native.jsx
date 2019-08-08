@@ -6,7 +6,9 @@ import { ForgotPasswordViewVanilla } from '../ForgotPassword.view.native';
 describe('ForgotPasswordView component', () => {
   it('should renders correctly', () => {
     const props = {
-      labels: {},
+      labels: {
+        password: {},
+      },
       handleSubmit: () => {},
       onSubmit: () => {},
       showNotification: '',

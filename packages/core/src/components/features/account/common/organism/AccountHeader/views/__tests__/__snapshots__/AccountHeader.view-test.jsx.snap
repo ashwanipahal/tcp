@@ -26,7 +26,7 @@ exports[`AccountHeader Component should render correctly 1`] = `
       lineHeight="normal"
       textAlign="left"
     >
-      undefined 
+      undefined test
     </Styled(BodyCopy)>
   </Styled(Col)>
   <Styled(Col)
@@ -51,11 +51,11 @@ exports[`AccountHeader Component should render correctly 1`] = `
     isNotInlineBlock={true}
   >
     <Connect(RewardsPointsContainer)
-      currentPoints=""
+      currentPoints="0"
       labels={Object {}}
-      pointsToNextRewards=""
+      pointsToNextRewards="100"
       tableView={true}
-      totalRewards=""
+      totalRewards="0.0"
     />
   </Styled(Col)>
 </Styled(Row)>

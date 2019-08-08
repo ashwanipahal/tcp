@@ -1,5 +1,6 @@
 import React from 'react';
 import { createStackNavigator } from 'react-navigation';
+import BagPage from '@tcp/core/src/components/features/CnC/BagPage';
 import Home from '../components/features/content/HomePage';
 import account from '../components/features/account/account';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
@@ -13,6 +14,7 @@ const HomeStack = createStackNavigator(
     account,
     Navigation,
     ProductLanding,
+    BagPage,
   },
   {
     defaultNavigationOptions: {

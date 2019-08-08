@@ -1,19 +1,18 @@
 // @flow
 import React from 'react';
-import DamImage from '@tcp/core/src/components/common/atoms/DamImage';
+import { Col, DamImage, Row } from '../../atoms';
+import withStyles from '../../hoc/withStyles';
+import style from './ImageGrid.style';
 import config from './config';
 
-import withStyles from '../../hoc/withStyles';
-import { Row, Col } from '../../atoms';
-import style from './ImageGrid.style';
-
 type Props = {
-  mediaList: Object[],
+  mediaLinkedList: Object[],
   colD?: Number,
   colT?: Number,
   colM?: Number,
-  className: String,
-  dataLocator?: String,
+  className: string,
+  dataLocator?: string,
+  dataLocatorContainer: string,
 };
 
 /**
@@ -48,7 +47,7 @@ const gridReducer = (accumulator, currentValue, currentIndex, list) => {
  * @param {*} props
  */
 const ImageGrid = (props: Props) => {
-  const { mediaList, colD, colT, colM, className, dataLocator } = props;
+  const { mediaLinkedList, colD, colT, colM, className, dataLocator, dataLocatorContainer } = props;
 
   const colSize = {
     small: 6 / colM,
@@ -67,16 +66,16 @@ const ImageGrid = (props: Props) => {
   };
 
   return (
-    <div>
-      {mediaList.reduce(gridReducer, gridCoordinator).final.map(medList => (
+    <div data-locator={dataLocatorContainer}>
+      {mediaLinkedList.reduce(gridReducer, gridCoordinator).final.map(medList => (
         <Row fullBleed className={className}>
-          {medList.map((mediaProps, index) => {
+          {medList.map(({ image }, index) => {
             return (
-              <Col colSize={colSize} className="image-col">
+              <Col key={index.toString()} colSize={colSize} className="image-col">
                 <DamImage
-                  data-locator={`${dataLocator}${index}`}
+                  data-locator={`${dataLocator}_${index + 1}`}
                   imgConfigs={config.IMG_DATA.imgConfig}
-                  imgData={mediaProps}
+                  imgData={image}
                 />
               </Col>
             );

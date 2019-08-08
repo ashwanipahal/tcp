@@ -13,7 +13,7 @@ const getLineStyle = props => {
   margin-top: ${marginTop};
   margin-bottom: ${marginBottom};
   border-width: ${borderWidth};
-  border-color: ${borderColor || props.theme.colorPalette.blue['700']};
+  border-color: ${borderColor || props.theme.colorPalette.blue[700]};
   `;
 };
 

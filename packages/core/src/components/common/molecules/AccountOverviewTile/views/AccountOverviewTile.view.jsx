@@ -5,7 +5,7 @@ import BodyCopy from '../../../atoms/BodyCopy';
 import Anchor from '../../../atoms/Anchor/views/Anchor';
 import styles from '../styles/AccountOverviewTile.style';
 
-export const AccountOverviewTile = ({ title, ctaTitle, ctaLink, children, className }) => {
+export const AccountOverviewTile = ({ title, ctaTitle, ctaLink, ctaPath, children, className }) => {
   return (
     <BodyCopy component="div" className={className}>
       <BodyCopy component="div" className="container">
@@ -17,6 +17,7 @@ export const AccountOverviewTile = ({ title, ctaTitle, ctaLink, children, classN
         </BodyCopy>
         <Anchor
           to={ctaLink}
+          asPath={ctaPath}
           anchorVariation="button"
           buttonVariation="fixed-width"
           fullWidth
@@ -35,6 +36,7 @@ AccountOverviewTile.propTypes = {
   title: PropTypes.string,
   ctaTitle: PropTypes.string,
   ctaLink: PropTypes.string,
+  ctaPath: PropTypes.string,
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
 };
@@ -43,6 +45,7 @@ AccountOverviewTile.defaultProps = {
   title: '',
   ctaTitle: '',
   ctaLink: '',
+  ctaPath: '',
   className: '',
 };
 

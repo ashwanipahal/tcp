@@ -26,7 +26,7 @@ const generateTheWebViewContent = siteKey => {
                   var onDataErrorCallback = function(error) {  window.postMessage("error"); }
                 </script>
             </head>
-            <body>
+            <body style="padding: 0; margin: 0;">
                 <div style="text-align: left">
                   <div class="g-recaptcha" style="display: inline-block"
                       data-sitekey="
