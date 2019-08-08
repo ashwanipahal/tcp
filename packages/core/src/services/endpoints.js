@@ -66,5 +66,9 @@ const endpoints = {
     method: API_METHODS.DELETE,
     URI: '/v2/account/logout',
   },
+  addCoupons: {
+    method: 'post',
+    URI: 'v2/checkout/coupons',
+  },
 };
 export default endpoints;

@@ -47,6 +47,10 @@ const settingHelmetConfig = (server, helmet) => {
  */
 const setEnvConfig = dev => {
   if (dev) {
+    console.log(
+      '************* Using Env Config File Of ' + ENV_CONFIG_FILE_PATH,
+      '  *************'
+    );
     dotenv.config({
       path: path.resolve(__dirname, `..${path.sep}env${path.sep}${ENV_CONFIG_FILE_PATH}.env`),
     });
