@@ -4,43 +4,6 @@ exports[`ImageGrid native component renders correctly 1`] = `
 <Styled(View)>
   <Styled(View)
     width={346}
-  >
-    <Styled(Styled(ImageComp))
-      alt="Image Alt text attribute value"
-      crop="c_crop,g_face:center,q_auto:best,w_962"
-      data-locator="moduleK_image__0"
-      gutter={18}
-      height={164}
-      url="/static/images/K-210x210-1.jpg"
-      width={164}
-    />
-    <Styled(Styled(ImageComp))
-      alt="Image Alt text attribute value"
-      crop="c_crop,g_face:center,q_auto:best,w_962"
-      data-locator="moduleK_image__1"
-      gutter={18}
-      height={164}
-      url="/static/images/K-210x210-2.jpg"
-      width={164}
-    />
-    <Styled(Styled(ImageComp))
-      alt="Image Alt text attribute value"
-      crop="c_crop,g_face:center,q_auto:best,w_962"
-      data-locator="moduleK_image__2"
-      gutter={18}
-      height={164}
-      url="/static/images/K-210x210-3.jpg"
-      width={164}
-    />
-    <Styled(Styled(ImageComp))
-      alt="Image Alt text attribute value"
-      crop="c_crop,g_face:center,q_auto:best,w_962"
-      data-locator="moduleK_image__3"
-      gutter={18}
-      height={164}
-      url="/static/images/K-210x210-4.jpg"
-      width={164}
-    />
-  </Styled(View)>
+  />
 </Styled(View)>
 `;

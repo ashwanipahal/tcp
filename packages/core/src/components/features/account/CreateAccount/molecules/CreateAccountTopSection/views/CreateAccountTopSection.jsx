@@ -8,6 +8,11 @@ import { getIconPath } from '../../../../../../../utils';
 
 const CreateAccountTopSection = props => {
   const { labels } = props;
+  const showForgotPasswordFormFn = e => {
+    e.preventDefault();
+    const { showForgotPasswordForm } = props;
+    showForgotPasswordForm();
+  };
   return (
     <div>
       <div className="elem-pr-MED elem-pl-MED">
@@ -34,7 +39,7 @@ const CreateAccountTopSection = props => {
             <p>{labels.registration.lbl_createAccount_signedUp}</p>
             <p>{labels.registration.lbl_createAccount_onlineAccCreated}</p>
             <div className="reset-pwd">
-              <Anchor className="reset-password" to="" target="">
+              <Anchor className="reset-password" onClick={showForgotPasswordFormFn}>
                 {labels.registration.lbl_createAccount_resetPassword}
               </Anchor>
             </div>
@@ -46,6 +51,7 @@ const CreateAccountTopSection = props => {
 };
 
 CreateAccountTopSection.propTypes = {
+  showForgotPasswordForm: PropTypes.func,
   labels: PropTypes.shape({
     heading: PropTypes.string,
     subHeading: PropTypes.string,
@@ -54,6 +60,7 @@ CreateAccountTopSection.propTypes = {
 };
 
 CreateAccountTopSection.defaultProps = {
+  showForgotPasswordForm: () => {},
   labels: {
     heading: 'Welcome Back',
     subHeading: 'Log in to earn points for MY PLACE REWARDS ',

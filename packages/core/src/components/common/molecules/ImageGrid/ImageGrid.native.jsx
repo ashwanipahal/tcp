@@ -12,7 +12,7 @@ const ImageGrid = props => {
         {mediaList.map(({ crop_m: cropM, url, alt, title }, index) => {
           return (
             <ImageGridItem
-              data-locator={`${dataLocator}_${index}`}
+              testID={`${dataLocator}_${index}`}
               width={imgWidth}
               height={imgHeight}
               crop={cropM}

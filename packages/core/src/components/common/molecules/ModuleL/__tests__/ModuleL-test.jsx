@@ -2,13 +2,17 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import mock from '../../../../../services/abstractors/common/moduleL/mock';
 import { ModuleLVanilla as ModuleL } from '../views/ModuleL';
-import { Carousel, LinkText, PromoTextBanner } from '../..';
+import { Carousel, LinkText, PromoBanner } from '../..';
 
 describe('ModuleL component', () => {
   let ModuleLComp;
+  const props = {
+    ...mock.moduleL.composites,
+    set: mock.moduleL.set,
+  };
 
   beforeEach(() => {
-    const wrapper = shallow(<ModuleL {...mock.moduleL.composites} />).get(0);
+    const wrapper = shallow(<ModuleL {...props} />).get(0);
     ModuleLComp = shallow(wrapper);
   });
 
@@ -21,7 +25,7 @@ describe('ModuleL component', () => {
   });
 
   it('should render promo text banner', () => {
-    expect(ModuleLComp.find(PromoTextBanner)).toHaveLength(1);
+    expect(ModuleLComp.find(PromoBanner)).toHaveLength(1);
   });
 
   it('should render carousel', () => {

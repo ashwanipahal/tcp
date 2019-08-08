@@ -5,20 +5,18 @@ import AddressOverviewTileComponent from '../views';
 import { getAddressListState } from '../../../../AddressBook/container/AddressBook.selectors';
 import { getAddressList } from '../../../../AddressBook/container/AddressBook.actions';
 
-export class AddressOverviewTile extends React.Component{
+export class AddressOverviewTile extends React.Component {
   componentDidMount() {
     const { addressList } = this.props;
-    if(!addressList){
+    if (!addressList) {
       const { getAddressListAction } = this.props;
       getAddressListAction();
     }
   }
 
-  render(){
+  render() {
     const { addressList, labels } = this.props;
-    return(
-      <AddressOverviewTileComponent addressList={addressList} labels={labels}  />
-    );
+    return <AddressOverviewTileComponent addressList={addressList} labels={labels} />;
   }
 }
 
@@ -28,7 +26,6 @@ const mapStateToProps = state => {
   };
 };
 
-
 export const mapDispatchToProps = dispatch => {
   return {
     getAddressListAction: () => {
@@ -36,7 +33,6 @@ export const mapDispatchToProps = dispatch => {
     },
   };
 };
-
 
 AddressOverviewTile.propTypes = {
   getAddressListAction: PropTypes.func.isRequired,
@@ -49,7 +45,7 @@ AddressOverviewTile.propTypes = {
     lbl_overview_defaultBillingAddress: PropTypes.string,
     lbl_overview_defaultShipingAddress: PropTypes.string,
   }),
-  addressList:PropTypes.shape({}),
+  addressList: PropTypes.shape({}),
 };
 
 AddressOverviewTile.defaultProps = {
@@ -62,9 +58,8 @@ AddressOverviewTile.defaultProps = {
     lbl_overview_defaultBillingAddress: 'Default Billing Address',
     lbl_overview_defaultShipingAddress: 'Default Shiping Address',
   },
-  addressList: {}
+  addressList: {},
 };
-
 
 export default connect(
   mapStateToProps,

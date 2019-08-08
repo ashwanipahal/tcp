@@ -55,6 +55,7 @@ const ForgotHeading = props => {
   align-self: center;
   font-size: ${typography.fontSizes.fs16};
   padding:10px 0;
+  text-align: center;
   `;
 };
 
@@ -86,6 +87,7 @@ const getSubHeadingStyle = props => {
   ${getTextBaseStyle};
   font-size: ${typography.fontSizes.fs13};
   align-self: center;
+  padding:10px 0;
   `;
 };
 

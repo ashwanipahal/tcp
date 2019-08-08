@@ -2,6 +2,7 @@
 
 exports[`ProductListingPage Component ProductListingPage should render correctly 1`] = `
 <Fragment>
+  <Connect(OrderLedgerContainer) />
   <Text
     style={
       Object {

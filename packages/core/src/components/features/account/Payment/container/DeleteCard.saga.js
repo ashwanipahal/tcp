@@ -1,33 +1,15 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import PAYMENT_CONSTANTS from '../Payment.constants';
-import fetchData from '../../../../../service/API';
-import endpoints from '../../../../../service/endpoint';
 import {
   updateCardListonDelete,
   updateCardListonDeleteErr,
   setDeleteModalMountedState,
 } from './Payment.actions';
+import { deleteCardApi } from '../../../../../services/abstractors/account';
 
 export function* deleteCard({ payload }) {
   try {
-    const { relURI, method } = endpoints.deleteCreditCardOnAccount;
-    const baseURI = endpoints.deleteAddress.baseURI || endpoints.global.baseURI;
-    const payloadParam = {
-      creditCardId: payload.creditCardId.toString(),
-      action: 'D',
-    };
-    const res = yield call(
-      fetchData,
-      baseURI,
-      relURI,
-      {
-        payload: payloadParam,
-        langId: -1,
-        catalogId: 10551,
-        storeId: 10151,
-      },
-      method
-    );
+    const res = yield call(deleteCardApi, payload);
     if (res.statusCode === 200) {
       yield put(updateCardListonDelete(res.body || ''));
       yield put(setDeleteModalMountedState({ state: false }));
