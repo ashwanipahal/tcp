@@ -24,6 +24,7 @@ module.exports = {
     '**/core/**/*.native.js',
     '**/core/**/*.native.jsx',
     '**/core/**/*.app.js',
+    '**/core/**/*.app.jsx',
     '**/mobileapp/**/*.js',
     '**/mobileapp/**/*.jsx',
     '!**/*.style.js',
