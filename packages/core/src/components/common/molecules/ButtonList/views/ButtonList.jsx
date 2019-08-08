@@ -21,7 +21,10 @@ const getImageCTA = item => {
             <div>
               <Anchor
                 key={index.toString()}
-                link={link}
+                link={item.link}
+                href={item.url}
+                target={item.target}
+                title={item.title}
                 fontSizeVariation="large"
                 fontWeightVariation="active"
               >
@@ -41,7 +44,13 @@ const getButtonCTA = data => {
 
   return buttonsData.map((item, index) => {
     return (
-      <Anchor href={item.url} target={item.target} className={className}>
+      <Anchor
+        className={className}
+        href={item.url}
+        link={item.link}
+        target={item.target}
+        title={item.title}
+      >
         <Button
           className={`${config[buttonListVariation].className}-class`}
           key={index.toString()}

@@ -22,9 +22,9 @@ export default css`
     justify-content: center;
   }
   .link-button-wrapper-class {
-    border-color: white;
+    border-bottom-color: white;
     &:hover {
-      border-color: white;
+      border-bottom-color: white;
     }
   }
 
