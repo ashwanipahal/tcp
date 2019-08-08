@@ -30,6 +30,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
         data-locator="menu_bar_icon"
         onClick={[Function]}
         src="/static/images/menu.svg"
+        tabIndex="0"
       />
       <Styled(BrandLogo)
         alt="The Children's Place"
