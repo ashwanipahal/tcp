@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   padding-top: 14px;
   margin-top: 22px;
+  margin-bottom: 22px;
   background: ${props =>
     props.background === 'red' ? '#f53d3d' : props.theme.colorPalette.primary.dark};
 `;

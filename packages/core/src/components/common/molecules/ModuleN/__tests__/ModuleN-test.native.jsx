@@ -19,8 +19,6 @@ describe('ModuleNVanilla', () => {
 
     linkList = shallow(<ModuleNVanilla {...mock.moduleN.composites.linkList} />);
 
-    linkList = shallow(<ModuleNVanilla {...mock.moduleN.composites.linkList} />);
-
     scrollCTAButtons = shallow(<ModuleNVanilla {...mock.moduleN.composites.linkList} />);
   });
 

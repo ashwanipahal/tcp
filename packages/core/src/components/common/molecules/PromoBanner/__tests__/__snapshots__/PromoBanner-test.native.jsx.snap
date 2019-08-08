@@ -1,5 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`PromoTextBanner native component ModuleN should render correctly 1`] = `
+<TouchableOpacity
+  accessibilityRole="link"
+  activeOpacity={0.2}
+  onPress={[Function]}
+>
+  <style1
+    text="alL DINOS"
+  />
+  <style2
+    text=" 50% OFF"
+  />
+</TouchableOpacity>
+`;
+
 exports[`PromoTextBanner native component renders all style correctly 1`] = `
 <StyledNativeComponent
   color="text.primary"

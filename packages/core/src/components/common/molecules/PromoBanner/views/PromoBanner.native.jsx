@@ -136,3 +136,4 @@ const PercentageStyle = (props: PercentageStyleProps) => {
 };
 
 export default PromoBanner;
+export { PromoBanner as PromoBannerVanilla };
