@@ -1,8 +1,8 @@
 import React from 'react';
-import withStyles from '../../../../common/hoc/withStyles';
-import CreateAccounPage from '../organisms/CreateAccountPage';
-import ForgotPasswordContainer from '../../ForgotPassword/container/ForgotPassword.container';
-import Styles from './CreateAccount.style';
+import withStyles from '../../../../../../common/hoc/withStyles';
+import CreateAccounPage from '../../../organisms/CreateAccountPage';
+import ForgotPasswordContainer from '../../../../ForgotPassword/container/ForgotPassword.container';
+import Styles from '../styles/CreateAccount.style';
 
 // @flow
 type Props = {
