@@ -10,8 +10,8 @@ import { isClient } from '../../../utils';
  */
 const getRequestParams = (apiConfig, reqObj) => {
   // TODO - There is no proto now - To be corrected with unbxd client work
-  const { proto, domain } = apiConfig;
-  const tcpApi = `${proto}${domain}${reqObj.webService.URI}`;
+  const { proto = 'https', domain = '' } = apiConfig;
+  const tcpApi = `${proto}${reqObj.webService.domain || domain}${reqObj.webService.URI}`;
   const requestUrl = tcpApi; // TODO - configure it for Unbxd
   const reqHeaders = {};
   // TODO - Check if it works in Mobile app as well or else change it to isServer check

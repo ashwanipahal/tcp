@@ -10,5 +10,14 @@ exports[`HomePageView should render correctly 1`] = `
   />
   <SlotC />
   <SlotD />
+  <Styled(CustomButton)
+    buttonVariation="variable-width"
+    customStyle={Object {}}
+    disableButton={false}
+    fullWidth={true}
+    onPress={[Function]}
+    text="PLP Page"
+    url=""
+  />
 </ScrollViewMock>
 `;
