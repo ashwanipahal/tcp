@@ -62,5 +62,9 @@ const endpoints = {
     method: API_METHODS.DELETE,
     URI: '/v2/account/logout',
   },
+  bonusPoints: {
+    method: API_METHODS.GET,
+    URI: 'v2/account/bonusDay',
+  },
 };
 export default endpoints;

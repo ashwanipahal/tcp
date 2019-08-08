@@ -44,3 +44,8 @@ export const getTotalRewardsState = createSelector(
   getLoginState,
   loginState => loginState && loginState.get('totalRewards')
 );
+
+export const getIsPLCCUser = createSelector(
+  getLoginState,
+  loginState => loginState && loginState.get('hasPLCC')
+);
