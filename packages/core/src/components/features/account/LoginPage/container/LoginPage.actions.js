@@ -11,6 +11,13 @@ export const login = payload => {
   };
 };
 
+export const loginTouchId = payload => {
+  return {
+    type: LOGINPAGE_CONSTANTS.LOGIN_TOUCHID,
+    payload,
+  };
+};
+
 export const setLoginInfo = payload => {
   return {
     type: LOGINPAGE_CONSTANTS.SET_LOGIN_INFO,

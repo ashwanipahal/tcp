@@ -1,6 +1,7 @@
 import { all } from 'redux-saga/effects';
 import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
 import LoginPageSaga from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.saga';
+import TouchSaga from '@tcp/core/src/components/features/account/LoginPage/container/LoginTouchID.saga';
 import ForgotPasswordSaga from '@tcp/core/src/components/features/account/ForgotPassword/container/ForgotPassword.saga';
 import PaymentSaga from '@tcp/core/src/components/features/account/Payment/container/Payment.saga';
 import DefaultPaymentSaga from '@tcp/core/src/components/features/account/Payment/container/DefaultPayment.saga';
@@ -17,6 +18,7 @@ export default function* rootSaga() {
     BootstrapSaga(),
     HomePageSaga(),
     LoginPageSaga(),
+    TouchSaga(),
     ForgotPasswordSaga(),
     PaymentSaga(),
     DefaultPaymentSaga(),

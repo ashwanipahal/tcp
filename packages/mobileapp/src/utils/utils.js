@@ -1,4 +1,6 @@
 import moment from 'moment';
+import * as Keychain from 'react-native-keychain';
+import TouchID from 'react-native-touch-id';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import {
   setValueInAsyncStorage,
@@ -22,6 +24,26 @@ export const AppAnimationConfig = {
   PeekABooLogoMaxWidth: 100,
   AnimationDelay: 1000,
   AppSplashMaxWidth: getScreenWidth() / 2,
+};
+
+export const setUserUserPassword = (emailAddress, password) => {
+  return Keychain.setGenericPassword(emailAddress, password);
+};
+
+export const getUserUserPassword = () => {
+  return Keychain.getGenericPassword();
+};
+
+export const resetTouchPassword = () => {
+  return Keychain.resetGenericPassword();
+};
+
+export const touchIDCheck = () => {
+  return TouchID.authenticate;
+};
+
+export const isSupportedTouch = () => {
+  return TouchID.isSupported;
 };
 
 /**

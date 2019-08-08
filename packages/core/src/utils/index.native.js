@@ -10,6 +10,11 @@ export {
   navigateToNestedRoute,
   getValueFromAsyncStorage,
   setValueInAsyncStorage,
+  setUserUserPassword,
+  getUserUserPassword,
+  resetTouchPassword,
+  touchIDCheck,
+  isSupportedTouch,
 } from './utils.app';
 
 export {

@@ -7,7 +7,7 @@ import {
   getResetEmailResponse,
   toggleSuccessfulEmailSection,
 } from '../../ForgotPassword/container/ForgotPassword.selectors';
-import { login, resetLoginInfo } from './LoginPage.actions';
+import { login, resetLoginInfo, loginTouchId } from './LoginPage.actions';
 import {
   closeOverlayModal,
   openOverlayModal,
@@ -44,13 +44,6 @@ class LoginPageContainer extends React.PureComponent {
     }
   }
 
-  componentWillUnmount() {
-    const { resetLoginState, loginError } = this.props;
-    if (loginError) {
-      resetLoginState();
-    }
-  }
-
   onCreateAccountClick = () => {
     const { openOverlay } = this.props;
     openOverlay({
@@ -69,6 +62,7 @@ class LoginPageContainer extends React.PureComponent {
       getUserInfoAction,
       labels,
       resetLoginState,
+      isUserLoggedIn,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage || labels.login.lbl_login_error : '';
     const initialValues = {
@@ -86,6 +80,7 @@ class LoginPageContainer extends React.PureComponent {
         getUserInfo={getUserInfoAction}
         onCreateAccountClick={this.onCreateAccountClick}
         resetLoginState={resetLoginState}
+        isUserLoggedIn={isUserLoggedIn}
       />
     );
   }
