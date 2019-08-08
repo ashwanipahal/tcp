@@ -3,11 +3,11 @@ import * as Keychain from 'react-native-keychain';
 // eslint-disable-next-line import/no-unresolved
 import TouchID from 'react-native-touch-id';
 
-export const setUserUserPassword = (emailAddress, password) => {
+export const setUserLoginDetails = (emailAddress, password) => {
   return Keychain.setGenericPassword(emailAddress, password);
 };
 
-export const getUserUserPassword = () => {
+export const getUserLoginDetails = () => {
   return Keychain.getGenericPassword();
 };
 
@@ -17,14 +17,20 @@ export const resetTouchPassword = () => {
 
 export const touchIDCheck = () => {
   return TouchID.authenticate('Authentication Required')
-    .then(success => {
+    .then(() => {
       return true;
     })
-    .catch(error => {
+    .catch(() => {
       return false;
     });
 };
 
 export const isSupportedTouch = () => {
-  return TouchID.isSupported;
+  return TouchID.isSupported()
+    .then(() => {
+      return true;
+    })
+    .catch(() => {
+      return false;
+    });
 };

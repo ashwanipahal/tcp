@@ -4,56 +4,43 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-// eslint-disable-next-line import/no-unresolved
-import * as Keychain from 'react-native-keychain';
-// eslint-disable-next-line import/no-unresolved
-import TouchID from 'react-native-touch-id';
 import LoginSection from '../organism/LoginSection';
 import ScrollViewStyle from '../styles/LoginPage.style.native';
 import {
-  setUserUserPassword,
-  getUserUserPassword,
+  setUserLoginDetails,
+  getUserLoginDetails,
   resetTouchPassword,
   touchIDCheck,
+  isSupportedTouch,
 } from '../container/loginUtils/keychain.utils.native';
+
 class LoginView extends React.PureComponent {
   componentDidMount() {
     const { onSubmit } = this.props;
-    getUserUserPassword().then(credentials => {
+    getUserLoginDetails().then(credentials => {
       const userDetails = {
         emailAddress: credentials.username,
         password: credentials.password,
       };
       if (credentials) {
         const getTouchIdResult = touchIDCheck();
-        if (getTouchIdResult) {
+        const isTouchEnable = isSupportedTouch();
+        if (getTouchIdResult && isTouchEnable) {
           onSubmit(userDetails);
         }
-        // TouchID.authenticate('Authentication Required')
-        //   .then(success => {
-        //     onSubmit(userDetails);
-        //   })
-        //   .catch(error => {
-        //     return true
-        //   });
       }
     });
   }
 
   onSubmitHandler = formdata => {
     const { onSubmit } = this.props;
-    Keychain.setGenericPassword(formdata.emailAddress, formdata.password);
+    resetTouchPassword();
+    setUserLoginDetails(formdata.emailAddress, formdata.password);
     const getTouchIdResult = touchIDCheck();
-    if (getTouchIdResult) {
+    const isTouchEnable = isSupportedTouch();
+    if (getTouchIdResult && formdata.userTouchId && isTouchEnable) {
       onSubmit(formdata);
     }
-    // TouchID.authenticate('Authentication Required')
-    //   .then(success => {
-    //     onSubmit(formdata);
-    //   })
-    //   .catch(error => {
-    //     return false
-    //   });
   };
 
   render() {
@@ -103,7 +90,6 @@ LoginView.propTypes = {
   resetForm: PropTypes.string.isRequired,
   resetForgotPasswordErrorResponse: PropTypes.string.isRequired,
   onCreateAccountClick: PropTypes.string.isRequired,
-  isUserLoggedIn: PropTypes.string.isRequired,
 };
 
 LoginView.defaultProps = {
