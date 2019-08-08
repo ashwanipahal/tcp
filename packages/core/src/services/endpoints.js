@@ -66,13 +66,13 @@ const endpoints = {
     method: API_METHODS.GET,
     URI: 'v2/account/getRegisteredUserInfo',
   },
+  getCouponList: {
+    method: API_METHODS.GET,
+    URI: 'v2/account/getAddressFromBook',
+  },
   logout: {
     method: API_METHODS.DELETE,
-    URI: 'v2/account/logout',
-  },
-  requestPassword: {
-    method: 'put',
-    URI: 'v2/account/resetPassword',
+    URI: '/v2/account/logout',
   },
   addCoupons: {
     method: 'post',
