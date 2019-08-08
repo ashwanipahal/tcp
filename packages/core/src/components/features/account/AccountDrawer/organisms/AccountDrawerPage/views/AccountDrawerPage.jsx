@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/AccountDrawerPage.style';
 import AccountDrawerHeading from '../../../molecules/AccountDrawerHeading';
-import CurrentPointSlider from '../../../molecules/CurrentPointSlider';
+import RewardsPoints from '../../../../common/organism/RewardsPoints';
 import ExtraPointsTeaser from '../../../molecules/ExtraPointsTeaser';
 import MyRewardsAndOffers from '../../../molecules/MyRewardsAndOffers';
 import AccountDrawerBottomLinks from '../../../molecules/AccountDrawerBottomLinks';
@@ -13,7 +13,7 @@ const AccountDrawerPage = props => {
   return (
     <div className={className}>
       <AccountDrawerHeading userName={userName} />
-      <CurrentPointSlider />
+      <RewardsPoints />
       <ExtraPointsTeaser />
       <MyRewardsAndOffers />
       <AccountDrawerBottomLinks />

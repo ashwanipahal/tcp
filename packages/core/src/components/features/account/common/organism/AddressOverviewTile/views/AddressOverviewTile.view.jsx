@@ -1,27 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Row, Col, BodyCopy} from '../../../../../../common/atoms';
+import { Row, Col, BodyCopy } from '../../../../../../common/atoms';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import Address from '../../../../../../common/molecules/Address';
-import styles from '../container/styles/AddressOverviewTile.style'
+import styles from '../container/styles/AddressOverviewTile.style';
 
 import AccountOverviewTile from '../../../../../../common/molecules/AccountOverviewTile';
 
 export const AddressOverviewTile = ({ labels, addressList }) => {
-const isShippingAddress = [];
-const isBillingAddress = [];
+  const isShippingAddress = [];
+  const isBillingAddress = [];
 
-if(addressList){
-  addressList.map(addr => addr).forEach(item => {
-    if(item.xcont_isShippingAddress === 'true'){
-      isShippingAddress.push(item);
-    }
-    if(item.xcont_isBillingAddress === 'true'){
-      isBillingAddress.push(item);
-    }
-  })
-};
+  if (addressList) {
+    addressList
+      .map(addr => addr)
+      .forEach(item => {
+        if (item.xcont_isShippingAddress === 'true') {
+          isShippingAddress.push(item);
+        }
+        if (item.xcont_isBillingAddress === 'true') {
+          isBillingAddress.push(item);
+        }
+      });
+  }
 
   return (
     <AccountOverviewTile
@@ -37,16 +39,9 @@ if(addressList){
               medium: 7,
             }}
           >
-
-            <BodyCopy
-              component="div"
-              fontSize="fs14"
-              fontWeight="extrabold"
-              fontFamily="secondary"
-            >
+            <BodyCopy component="div" fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
               {labels.lbl_overview_defaultShipingAddress}
             </BodyCopy>
-
           </Col>
           <Col
             colSize={{
@@ -55,37 +50,29 @@ if(addressList){
               medium: 1,
             }}
           >
-            <BodyCopy
-              component="span"
-              fontSize="fs14"
-              fontFamily="secondary"
-            >
-              {isShippingAddress && isShippingAddress.length
-                ? (
-                  <Anchor
-                    fontSizeVariation="medium"
-                    underline
-                    anchorVariation="primary"
-                    to="/account?id=address-book"
-                    asPath="/account/address-book"
-                  >
-                    {labels.lbl_overview_addressBookEdit}
-                  </Anchor>
-                  )
-                  :(
-                    <Anchor
-                      fontSizeVariation="medium"
-                      underline
-                      anchorVariation="primary"
-                      to="/account?id=address-book"
-                      asPath="/account/address-book"
-                    >
-                      {labels.lbl_overview_addressBookAdd}
-                    </Anchor>
-                    )
-              }
+            <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
+              {isShippingAddress && isShippingAddress.length ? (
+                <Anchor
+                  fontSizeVariation="medium"
+                  underline
+                  anchorVariation="primary"
+                  to="/account?id=address-book"
+                  asPath="/account/address-book"
+                >
+                  {labels.lbl_overview_addressBookEdit}
+                </Anchor>
+              ) : (
+                <Anchor
+                  fontSizeVariation="medium"
+                  underline
+                  anchorVariation="primary"
+                  to="/account?id=address-book"
+                  asPath="/account/address-book"
+                >
+                  {labels.lbl_overview_addressBookAdd}
+                </Anchor>
+              )}
             </BodyCopy>
-
           </Col>
         </Row>
         <Row fullBleed className="elem-mb-XL">
@@ -96,17 +83,13 @@ if(addressList){
               medium: 7,
             }}
           >
-            {isShippingAddress && isShippingAddress.length
-              ? <Address address={isShippingAddress[0]} showCountry={false} />
-              : (
-                <BodyCopy
-                  fontSize="fs14"
-                  fontFamily="secondary"
-                >
-                  {labels.lbl_overview_addressNotAdded}
-                </BodyCopy>
-              )
-            }
+            {isShippingAddress && isShippingAddress.length ? (
+              <Address address={isShippingAddress[0]} showCountry={false} />
+            ) : (
+              <BodyCopy fontSize="fs14" fontFamily="secondary">
+                {labels.lbl_overview_addressNotAdded}
+              </BodyCopy>
+            )}
           </Col>
         </Row>
       </BodyCopy>
@@ -120,16 +103,9 @@ if(addressList){
               medium: 7,
             }}
           >
-
-            <BodyCopy
-              component="div"
-              fontSize="fs14"
-              fontWeight="extrabold"
-              fontFamily="secondary"
-            >
+            <BodyCopy component="div" fontSize="fs14" fontWeight="extrabold" fontFamily="secondary">
               {labels.lbl_overview_defaultBillingAddress}
             </BodyCopy>
-
           </Col>
           <Col
             colSize={{
@@ -138,8 +114,7 @@ if(addressList){
               medium: 1,
             }}
           >
-            {isBillingAddress && isBillingAddress.length
-            ? (
+            {isBillingAddress && isBillingAddress.length ? (
               <Anchor
                 fontSizeVariation="medium"
                 underline
@@ -149,19 +124,17 @@ if(addressList){
               >
                 {labels.lbl_overview_addressBookEdit}
               </Anchor>
-              )
-              :(
-                <Anchor
-                  fontSizeVariation="medium"
-                  underline
-                  anchorVariation="primary"
-                  to="/account?id=payment"
-                  asPath="/account/payment"
-                >
-                  {labels.lbl_overview_addressBookAdd}
-                </Anchor>
-                )
-            }
+            ) : (
+              <Anchor
+                fontSizeVariation="medium"
+                underline
+                anchorVariation="primary"
+                to="/account?id=payment"
+                asPath="/account/payment"
+              >
+                {labels.lbl_overview_addressBookAdd}
+              </Anchor>
+            )}
           </Col>
         </Row>
         <Row fullBleed className="elem-mb-XXL">
@@ -172,17 +145,13 @@ if(addressList){
               medium: 7,
             }}
           >
-            {isBillingAddress && isBillingAddress.length
-              ? <Address address={isBillingAddress[0]} showCountry={false} />
-              : (
-                <BodyCopy
-                  fontSize="fs14"
-                  fontFamily="secondary"
-                >
-                  {labels.lbl_overview_addressNotAdded}
-                </BodyCopy>
-              )
-            }
+            {isBillingAddress && isBillingAddress.length ? (
+              <Address address={isBillingAddress[0]} showCountry={false} />
+            ) : (
+              <BodyCopy fontSize="fs14" fontFamily="secondary">
+                {labels.lbl_overview_addressNotAdded}
+              </BodyCopy>
+            )}
           </Col>
         </Row>
       </BodyCopy>
@@ -213,7 +182,7 @@ AddressOverviewTile.defaultProps = {
     lbl_overview_defaultBillingAddress: 'Default Billing Address',
     lbl_overview_defaultShipingAddress: 'Default Shiping Address',
   },
-  addressList:{}
+  addressList: {},
 };
 
 export default withStyles(AddressOverviewTile, styles);

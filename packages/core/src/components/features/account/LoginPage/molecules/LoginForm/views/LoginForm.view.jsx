@@ -47,7 +47,8 @@ class LoginForm extends React.PureComponent<Props> {
               placeholder={labels.login.lbl_login_email}
               name="emailAddress"
               component={TextBox}
-              dataLocator=""
+              dataLocator="login-emailfield"
+              errorDataLocator="login-emailerror"
               showSuccessCheck={false}
               enableSuccessCheck={false}
               className="elem-mb-SM"
@@ -57,18 +58,29 @@ class LoginForm extends React.PureComponent<Props> {
               placeholder={labels.login.lbl_login_password}
               name="password"
               component={PasswordField}
-              dataLocator=""
+              dataLocator="login-passwordfield"
+              errorDataLocator="login-passworderror"
               showSuccessCheck={false}
               enableSuccessCheck={false}
+              className="elem-mb-SM"
             />
             <BodyCopy component="div">
-              <Field name="rememberMe" component={InputCheckbox} dataLocator="" className="">
+              <Field
+                name="rememberMe"
+                component={InputCheckbox}
+                dataLocator="login-remembermecb"
+                className=""
+              >
                 {labels.login.lbl_login_rememberMe}
               </Field>
             </BodyCopy>
             {showSavePlcc && (
               <BodyCopy component="div">
-                <Field name="savePlcc" component={InputCheckbox} dataLocator="">
+                <Field
+                  name="savePlcc"
+                  component={InputCheckbox}
+                  dataLocator="login-savemyplcccardcb"
+                >
                   {labels.login.lbl_login_saveMyPlace}
                 </Field>
               </BodyCopy>
@@ -95,7 +107,7 @@ class LoginForm extends React.PureComponent<Props> {
               fill="BLUE"
               type="submit"
               buttonVariation="fixed-width"
-              data-locator=""
+              dataLocator="login-logincta"
               fullWidth
               className="elem-mb-XS"
               disabled={pristine}
@@ -103,11 +115,9 @@ class LoginForm extends React.PureComponent<Props> {
               {labels.login.lbl_login_loginCTA}
             </Button>
             <Anchor
-              className="addAddress__anchor__back"
               fontSizeVariation="xlarge"
               anchorVariation="secondary"
-              to="/account?id=address-book"
-              data-locator="addnewaddress-back"
+              dataLocator="login-forgotpasswordlnk"
               onClick={this.showForgotPasswordForm}
             >
               {labels.login.lbl_login_forgetPasswordCTA}

@@ -65,6 +65,7 @@ const HeaderMiddleNav = props => {
             }
             alt="hamburger menu"
             className="hamburger-menu"
+            tabIndex="0"
             onClick={handleNavigationDrawer(
               openNavigationDrawer,
               closeNavigationDrawer,
