@@ -55,8 +55,8 @@ module.exports = {
     global: {
       statements: 66,
       branches: 51,
-      functions: 57.5,
-      lines: 66.5,
+      functions: 57,
+      lines: 66,
     },
   },
   snapshotSerializers: ['enzyme-to-json/serializer'],
