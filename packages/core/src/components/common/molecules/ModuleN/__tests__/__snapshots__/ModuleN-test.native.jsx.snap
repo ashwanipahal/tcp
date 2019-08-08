@@ -39,7 +39,7 @@ exports[`ModuleNVanilla ModuleN should render correctly 1`] = `
   </Styled(Anchor)>
   <Styled(View)>
     <PromoBanner
-      promoTextBanner={
+      promoBanner={
         Array [
           Object {
             "link": Object {

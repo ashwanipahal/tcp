@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import LinkText from '../../LinkText';
-import PromoTextBanner from '../../PromoBanner';
+import PromoBanner from '../../PromoBanner';
 import ButtonList from '../../ButtonList/views/ButtonList.native';
 import { Container, PromoTextBannerWrapper, ButtonContainer } from '../ModuleN.styles.native';
 import moduleN from '../mock';
@@ -20,7 +20,7 @@ const ModuleN = (props: Props) => {
   const { navigation } = props;
   const {
     headerText,
-    promoTextBanner,
+    promoBanner,
     stackedCTAButtons,
     divImageCTACarousel,
     scrollCTAButtons,
@@ -40,7 +40,7 @@ const ModuleN = (props: Props) => {
         />
       </Anchor>
       <PromoTextBannerWrapper>
-        <PromoTextBanner promoTextBanner={promoTextBanner} />
+        <PromoBanner promoBanner={promoBanner} />
       </PromoTextBannerWrapper>
       {stackedCTAButtons && (
         <ButtonList

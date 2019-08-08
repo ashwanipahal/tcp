@@ -24,7 +24,7 @@ export default {
           },
         },
       ],
-      promoTextBanner: [
+      promoBanner: [
         {
           link: {
             url: '/c/',
