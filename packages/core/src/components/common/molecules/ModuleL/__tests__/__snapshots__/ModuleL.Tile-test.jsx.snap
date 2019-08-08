@@ -3,7 +3,6 @@
 exports[`ModuleL Header component renders correctly 1`] = `
 <Styled(Anchor)
   class=""
-  data-locator="moduleL_tiles_NaN"
   external={0}
   target=""
   text="Shop Unicorns & Friends"
@@ -20,6 +19,7 @@ exports[`ModuleL Header component renders correctly 1`] = `
           "small": 6,
         }
       }
+      data-locator="moduleL_tiles_NaN"
     >
       <WithTheme(DamImage)
         className="moduleL__tile-image"
