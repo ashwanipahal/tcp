@@ -2,9 +2,11 @@ import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import Panel from '../../../../common/molecules/Panel';
+import PaymentOverviewTile from '../../common/organism/PaymentOverviewTile';
 
 const AccountOverview = ({ labels }) => {
   const viewContainerStyle = { marginTop: 15 };
+
   return (
     <View style={viewContainerStyle}>
       <Panel title={labels.lbl_overview_myPlaceRewardsHeading} />
@@ -13,7 +15,9 @@ const AccountOverview = ({ labels }) => {
       <Panel title={labels.lbl_overview_ordersHeading} />
       <Panel title={labels.lbl_overview_profileInformationHeading} />
       <Panel title={labels.lbl_overview_addressBookHeading} />
-      <Panel title={labels.lbl_overview_paymentHeading} />
+      <Panel title={labels.lbl_overview_paymentHeading}>
+        <PaymentOverviewTile />
+      </Panel>
       <Panel title={labels.lbl_overview_myPreferencesHeading} />
       <Panel title={labels.lbl_overview_myPlaceRewardsCardHeading} />
       <Panel title={labels.lbl_overview_myFavoritesHeading} />

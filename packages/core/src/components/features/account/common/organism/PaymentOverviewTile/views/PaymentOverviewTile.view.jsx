@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import AccountOverviewTile from '../../../../../../common/molecules/AccountOverviewTile';
 
 export const PaymentOverviewTile = ({ labels }) => {
