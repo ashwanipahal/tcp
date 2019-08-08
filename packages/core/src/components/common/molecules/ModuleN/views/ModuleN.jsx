@@ -30,31 +30,88 @@ const ModuleN = (props: Props) => {
   return (
     <React.Fragment>
       <div className={`${className} moduleN`}>
-        {headerText && (
-          <LinkText
-            headerText={headerText}
-            component="h2"
-            type="heading"
-            textAlign="center"
-            color="white"
-          />
-        )}
-        {promoTextBanner && (
-          <PromoTextBanner
-            promoTextBanner={promoTextBanner}
-            className="moduleN__promo-banner"
-            fontSize="fs36"
-            color="white"
-          />
-        )}
+        <div className="heading-wrapper">
+          {headerText && (
+            <LinkText
+              headerText={headerText}
+              component="h3"
+              textAlign="center"
+              type="heading"
+              color="white"
+              className="heading"
+            />
+          )}
+          {promoTextBanner && (
+            <PromoTextBanner
+              promoTextBanner={promoTextBanner}
+              className="moduleN__promo-banner"
+              color="white"
+            />
+          )}
+        </div>
         <ButtonList buttonListVariation="stackedCTAList" buttonsData={stackedCTAButtons} />
-        <br />
+        <div className="heading-wrapper">
+          {headerText && (
+            <LinkText
+              headerText={headerText}
+              component="h3"
+              textAlign="center"
+              type="heading"
+              color="white"
+              className="heading"
+            />
+          )}
+          {promoTextBanner && (
+            <PromoTextBanner
+              promoTextBanner={promoTextBanner}
+              className="moduleN__promo-banner"
+              color="white"
+            />
+          )}
+        </div>
         <ButtonList buttonListVariation="scrollCTAList" buttonsData={stackedCTAButtons} />
-        <br />
+        <div className="separator">.</div>
+        <div className="heading-wrapper">
+          {headerText && (
+            <LinkText
+              headerText={headerText}
+              component="h3"
+              textAlign="center"
+              type="heading"
+              color="white"
+              className="heading"
+            />
+          )}
+          {promoTextBanner && (
+            <PromoTextBanner
+              promoTextBanner={promoTextBanner}
+              className="moduleN__promo-banner"
+              color="white"
+            />
+          )}
+        </div>
         <ButtonList buttonListVariation="imageCTAList" buttonsData={divImageCTACarousel} />
-        <br />
+        <div className="separator">.</div>
+        <div className="heading-wrapper">
+          {headerText && (
+            <LinkText
+              headerText={headerText}
+              component="h3"
+              textAlign="center"
+              type="heading"
+              color="white"
+              className="heading"
+            />
+          )}
+          {promoTextBanner && (
+            <PromoTextBanner
+              promoTextBanner={promoTextBanner}
+              className="moduleN__promo-banner"
+              color="white"
+            />
+          )}
+        </div>
         <ButtonList buttonListVariation="linkCTAList" buttonsData={linkList} />
-        <br />
       </div>
     </React.Fragment>
   );

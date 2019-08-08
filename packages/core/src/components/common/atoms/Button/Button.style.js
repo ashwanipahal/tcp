@@ -36,6 +36,23 @@ const ButtonStyles = css`
       padding: 12px 32px;
     `
       : ''};
+  ${props =>
+    props.buttonVariation === 'mini-nav'
+      ? `
+      color: ${props.theme.colorPalette.text.primary};
+      font-family: ${props.theme.typography.fonts.secondary};
+      font-size: ${props.theme.typography.fontSizes.fs14};
+      font-weight: ${props.theme.typography.fontWeights.regular};
+      border-bottom: 2px solid ${props.theme.colorPalette.primary.main};
+      margin-right: 30px;
+
+      @media ${props.theme.mediaQuery.large} {
+      font-size: ${props.theme.typography.fontSizes.fs20};
+      font-weight: ${props.theme.typography.fontWeights.black};
+      }
+    `
+      : ''};
+
   &:focus {
     background: ${props => props.theme.colors.BUTTON[props.fill || 'WHITE'].FOCUS};
   }

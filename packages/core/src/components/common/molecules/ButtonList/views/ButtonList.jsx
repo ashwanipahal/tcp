@@ -19,7 +19,12 @@ const getImageCTA = item => {
         return (
           <div className="img-wrapper">
             <div>
-              <Anchor key={index.toString()} link={link}>
+              <Anchor
+                key={index.toString()}
+                link={link}
+                fontSizeVariation="large"
+                fontWeightVariation="active"
+              >
                 <DamImage imgData={image} className={className} />
                 <div className="image-comp">{link.text}</div>
               </Anchor>
@@ -31,46 +36,23 @@ const getImageCTA = item => {
   );
 };
 
-const getAnchorCTA = compProps => {
-  const { className, buttonsData, anchorVariation, fontSizeVariation, underlineColor } = compProps;
-  return (
-    <div>
-      {buttonsData.map((item, index) => {
-        return (
-          <Anchor
-            key={index.toString()}
-            className={className}
-            anchorVariation={anchorVariation}
-            fontSizeVariation={fontSizeVariation}
-            underlineColor={underlineColor}
-          >
-            {item.text}
-          </Anchor>
-        );
-      })}
-    </div>
-  );
-};
-
 const getButtonCTA = data => {
   const { className, buttonsData, buttonListVariation, buttonVariation, ...otherProps } = data;
 
-  return (
-    <div component="div" className={config[buttonListVariation].className}>
-      {buttonsData.map((item, index) => {
-        return (
-          <Button
-            key={index.toString()}
-            className={className}
-            buttonVariation={buttonVariation}
-            {...otherProps}
-          >
-            {item.text}
-          </Button>
-        );
-      })}
-    </div>
-  );
+  return buttonsData.map((item, index) => {
+    return (
+      <Anchor href={item.url} target={item.target} className={className}>
+        <Button
+          className={`${config[buttonListVariation].className}-class`}
+          key={index.toString()}
+          buttonVariation={buttonVariation}
+          {...otherProps}
+        >
+          {item.text}
+        </Button>
+      </Anchor>
+    );
+  });
 };
 
 /**
@@ -93,6 +75,7 @@ const ButtonList = (props: Props) => {
   };
 
   if (buttonListVariation === 'stackedCTAList') {
+    compWrapper = 'stack-comp-wrapper';
     compProps = {
       ...stackCTAProps,
       buttonsData,
@@ -102,11 +85,12 @@ const ButtonList = (props: Props) => {
   }
 
   if (buttonListVariation === 'linkCTAList') {
+    compWrapper = 'link-comp-wrapper';
     compProps = {
       ...linkCTAProps,
       buttonsData,
     };
-    component = getAnchorCTA(compProps);
+    component = getButtonCTA(compProps);
   }
 
   if (buttonListVariation === 'scrollCTAList') {
