@@ -158,13 +158,15 @@ exports[`LoginForm component should renders correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        dataLocator=""
+        dataLocator="login-emailfield"
         enableSuccessCheck={false}
+        errorDataLocator="login-emailerror"
         id="emailAddress"
         name="emailAddress"
         showSuccessCheck={false}
       />
       <Field
+        className="elem-mb-SM"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -198,8 +200,9 @@ exports[`LoginForm component should renders correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        dataLocator=""
+        dataLocator="login-passwordfield"
         enableSuccessCheck={false}
+        errorDataLocator="login-passworderror"
         id="password"
         name="password"
         showSuccessCheck={false}
@@ -230,7 +233,6 @@ exports[`LoginForm component should renders correctly 1`] = `
                   "
   display: inline-flex;
   align-items: center;
-  height: 50px;
 
   & .CheckBox__input {
     position: relative;
@@ -310,7 +312,7 @@ exports[`LoginForm component should renders correctly 1`] = `
               "withComponent": [Function],
             }
           }
-          dataLocator=""
+          dataLocator="login-remembermecb"
           name="rememberMe"
         />
       </Styled(BodyCopy)>
@@ -340,7 +342,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       <Styled(Button)
         buttonVariation="fixed-width"
         className="elem-mb-XS"
-        data-locator=""
+        dataLocator="login-logincta"
         disabled={false}
         fill="BLUE"
         fullWidth={true}
@@ -348,11 +350,9 @@ exports[`LoginForm component should renders correctly 1`] = `
       />
       <Styled(Anchor)
         anchorVariation="secondary"
-        className="addAddress__anchor__back"
-        data-locator="addnewaddress-back"
+        dataLocator="login-forgotpasswordlnk"
         fontSizeVariation="xlarge"
         onClick={[Function]}
-        to="/account?id=address-book"
       />
     </Styled(BodyCopy)>
   </form>
@@ -530,13 +530,15 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "withComponent": [Function],
           }
         }
-        dataLocator=""
+        dataLocator="login-emailfield"
         enableSuccessCheck={false}
+        errorDataLocator="login-emailerror"
         id="emailAddress"
         name="emailAddress"
         showSuccessCheck={false}
       />
       <Field
+        className="elem-mb-SM"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -570,8 +572,9 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "withComponent": [Function],
           }
         }
-        dataLocator=""
+        dataLocator="login-passwordfield"
         enableSuccessCheck={false}
+        errorDataLocator="login-passworderror"
         id="password"
         name="password"
         showSuccessCheck={false}
@@ -602,7 +605,6 @@ exports[`LoginForm component should renders correctly with error 1`] = `
                   "
   display: inline-flex;
   align-items: center;
-  height: 50px;
 
   & .CheckBox__input {
     position: relative;
@@ -682,7 +684,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
               "withComponent": [Function],
             }
           }
-          dataLocator=""
+          dataLocator="login-remembermecb"
           name="rememberMe"
         />
       </Styled(BodyCopy)>
@@ -712,7 +714,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       <Styled(Button)
         buttonVariation="fixed-width"
         className="elem-mb-XS"
-        data-locator=""
+        dataLocator="login-logincta"
         disabled={false}
         fill="BLUE"
         fullWidth={true}
@@ -720,11 +722,9 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       />
       <Styled(Anchor)
         anchorVariation="secondary"
-        className="addAddress__anchor__back"
-        data-locator="addnewaddress-back"
+        dataLocator="login-forgotpasswordlnk"
         fontSizeVariation="xlarge"
         onClick={[Function]}
-        to="/account?id=address-book"
       />
     </Styled(BodyCopy)>
   </form>

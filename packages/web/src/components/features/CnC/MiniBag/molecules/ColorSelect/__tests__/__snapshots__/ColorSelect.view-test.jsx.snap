@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorSelectorDropDown component ColorSelectorDropDown component renders correctly 1`] = `
+<StyledComponent
+  className="checkout"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-ifAKCX",
+        "isStatic": true,
+        "rules": Array [
+          "
+  ",
+          "
+  width: 87px;
+  & img {
+    width: 10px;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(ColorSelectorDropDown)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-ifAKCX",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  input=""
+  options={Array []}
+/>
+`;

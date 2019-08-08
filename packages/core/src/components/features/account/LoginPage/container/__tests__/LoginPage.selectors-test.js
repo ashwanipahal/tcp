@@ -5,6 +5,7 @@ import {
   getLoginErrorMessage,
   shouldShowRecaptcha,
   getLabels,
+  isPlccUser,
 } from '../LoginPage.selectors';
 import { LOGINPAGE_REDUCER_KEY } from '../../../../../../constants/reducer.constants';
 
@@ -71,5 +72,21 @@ describe('#LoginPage selector', () => {
     const returnedLabels = {};
 
     expect(getLabels(state)).toMatchObject(returnedLabels);
+  });
+
+  it('#isPlccUser should return true for plcc user', () => {
+    const initialState = {
+      [LOGINPAGE_REDUCER_KEY]: fromJS({
+        x_hasPLCC: 'true',
+      }),
+    };
+    expect(isPlccUser(initialState)).toEqual(true);
+  });
+
+  it('#isPlccUser should return false if x_hasPLCC flag is not present', () => {
+    const initialState = {
+      [LOGINPAGE_REDUCER_KEY]: fromJS({}),
+    };
+    expect(isPlccUser(initialState)).toEqual(false);
   });
 });

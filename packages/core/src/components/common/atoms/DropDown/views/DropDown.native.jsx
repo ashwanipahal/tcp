@@ -67,18 +67,49 @@ class DropDown extends React.PureComponent<Props> {
       return item.value === selectedValue;
     });
 
+    let selectedLabelState;
+    if (selectedValue) {
+      if (selectedObject[0]) selectedLabelState = selectedObject[0].label;
+      else selectedLabelState = selectedValue;
+    } else {
+      selectedLabelState = data[0].label;
+    }
+
     this.state = {
       dropDownIsOpen: false,
-      selectedLabelState: selectedValue ? selectedObject[0].label : data[0].label,
+      selectedLabelState,
+      top: 0,
     };
   }
 
+  componentDidMount() {
+    if (this.rowMarker) setTimeout(() => this.calculateDropDownPosition(), 500);
+  }
+
   /**
-   * Open the drop down
+   * Calculate the dimension and coordinates of drop down
    */
-  openDropDown = () => {
-    this.setState({
-      dropDownIsOpen: true,
+  calculateDropDownPosition = () => {
+    this.rowMarker.measure((x, y, width, height, pageX, pageY) => {
+      this.rowFrame = { x: pageX, y: height + pageY, width, height };
+
+      const windowHeight = getScreenHeight();
+
+      // calculate the list height
+      const { data, itemStyle } = this.props;
+      const calculateHeight = data.length * itemStyle.height;
+
+      // checking bottom space
+      const bottomSpace = windowHeight - this.rowFrame.y - this.rowFrame.height;
+      // check drop down is in bottom or not
+      const showInBottom = bottomSpace >= calculateHeight || bottomSpace >= this.rowFrame.y;
+
+      // if it is not in bottom then taking it y coordinate to set the drop down item position
+      // else subtracting device height and position of drop down y coordinate.
+      const topMargin = {
+        top: showInBottom ? this.rowFrame.y : Math.max(0, this.rowFrame.y - calculateHeight),
+      };
+      this.setState({ top: topMargin.top });
     });
   };
 
@@ -87,7 +118,14 @@ class DropDown extends React.PureComponent<Props> {
    */
   dropDownLayout = ({ item }) => {
     const { variation, itemStyle } = this.props;
-    const { label } = item;
+    const { displayName, fullName } = item;
+    let { label } = item;
+    if (!label) {
+      if (fullName) label = fullName;
+      else {
+        label = displayName;
+      }
+    }
     return (
       <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)} style={itemStyle}>
         <BodyCopy
@@ -103,10 +141,25 @@ class DropDown extends React.PureComponent<Props> {
   };
 
   /**
+   * Open the drop down
+   */
+  openDropDown = () => {
+    this.setState({
+      dropDownIsOpen: true,
+    });
+  };
+
+  /**
    * Handle the drop down item click
    */
   onDropDownItemClick = item => {
-    const { label, value } = item;
+    let { label, value } = item;
+    const { id, displayName, fullName } = item;
+    if (!label) {
+      if (fullName) label = fullName;
+      else label = displayName;
+    }
+    if (!value) value = id;
     this.setState({
       dropDownIsOpen: false,
       selectedLabelState: label,
@@ -126,43 +179,9 @@ class DropDown extends React.PureComponent<Props> {
     });
   };
 
-  /**
-   * Calculate the dimension and coordinates of drop down
-   */
-  findRowDimensions = () => {
-    if (this.rowMarker) {
-      this.rowMarker.measure((x, y, width, height, pageX, pageY) => {
-        this.rowFrame = { x: pageX, y: height + pageY, width, height };
-      });
-    }
-  };
-
-  /**
-   * Calculate the dimension and coordinates of drop down item
-   */
-  findDropDownDimensions = () => {
-    if (this.overlayMarker) {
-      this.overlayMarker.measure((x, y, width, height, pageX) => {
-        const windowHeight = getScreenHeight();
-
-        // checking bottom space
-        const bottomSpace = windowHeight - this.rowFrame.y - this.rowFrame.height;
-        // check drop down is in bottom or not
-        const showInBottom = bottomSpace >= height || bottomSpace >= this.rowFrame.y;
-
-        // if it is not in bottom then taking it y coordinate to set the drop down item position
-        // else subtracting device height and position of drop down y coordinate.
-        const topMargin = {
-          top: showInBottom ? this.rowFrame.y : Math.max(0, this.rowFrame.y - height),
-        };
-        this.dropDownFrame = { x: pageX, y: topMargin.top, width, height };
-      });
-    }
-  };
-
   render() {
     const { data, dropDownStyle } = this.props;
-    const { dropDownIsOpen, selectedLabelState } = this.state;
+    const { dropDownIsOpen, selectedLabelState, top } = this.state;
     return (
       <View style={dropDownStyle}>
         <Row
@@ -171,7 +190,6 @@ class DropDown extends React.PureComponent<Props> {
           ref={ref => {
             this.rowMarker = ref;
           }}
-          onLayout={this.findRowDimensions}
         >
           <HeaderContainer>
             <BodyCopy
@@ -195,14 +213,16 @@ class DropDown extends React.PureComponent<Props> {
             style={{
               width: this.rowFrame.width,
               left: this.rowFrame.x,
-              top: this.dropDownFrame.y,
+              height: getScreenHeight(),
             }}
           >
             <OverLayView
               ref={ref => {
                 this.overlayMarker = ref;
               }}
-              onLayout={this.findDropDownDimensions}
+              style={{
+                top,
+              }}
             >
               {dropDownIsOpen && (
                 <FlatList
@@ -210,6 +230,7 @@ class DropDown extends React.PureComponent<Props> {
                   renderItem={this.dropDownLayout}
                   keyExtractor={item => item.key}
                   ItemSeparatorComponent={() => <Separator />}
+                  style={{ height: getScreenHeight() / 2 }}
                 />
               )}
             </OverLayView>

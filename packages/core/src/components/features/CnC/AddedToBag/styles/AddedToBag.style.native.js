@@ -1,6 +1,11 @@
 import styled, { css } from 'styled-components';
 
-export const styles = css``;
+export const styles = css`
+  .continue-shopping {
+    text-align: center;
+    margin: 24px 0;
+  }
+`;
 
 export const PlaceHolderView = styled.View`
   height: 150px;

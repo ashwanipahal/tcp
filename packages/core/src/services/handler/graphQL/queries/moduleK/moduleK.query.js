@@ -3,40 +3,33 @@ const buildQuery = ({ slot, contentId }) => `
     contentId
     name
     type
-
     composites {
-
       masonryGrid {
-        mediaList {
-          url
-          title
-          alt
-          crop_d
-          crop_t
-          crop_m
-        }
         promoBanner {
-          textItems {
-            text
-          }
-          linkClass {
-            class
-          }
-        }
-        promoTextBanner {
           textItems {
             text
             style
           }
-          linkClass {
-            class
+          link {
+            url
+            title
+            target
+            external
           }
         }
         mediaLinkedList {
           image {
+            url
+            title
             alt
+            crop_d
+            crop_t
+            crop_m
           }
           link {
+            url
+            text
+            title
             target
           }
         }
@@ -61,36 +54,6 @@ const buildQuery = ({ slot, contentId }) => `
           external
           target
         }
-      }
-
-      promoTextBanner {
-        textItems {
-          text
-        }
-        linkClass {
-          class
-        }
-      }
-
-      smallCompImage {
-        link {
-          url
-          title
-          target
-          external
-        }
-        image {
-          url
-          title
-          alt
-        }
-      }
-
-      singleCTAButton {
-        url
-        target
-        title
-        external
       }
     }
   }

@@ -2,6 +2,9 @@ import {
   getOrderDetailsData,
   flatCurrencyToCents,
   getCurrentOrderFormatter,
+  getProductImgPath,
+  getSwatchImgPath,
+  imageGenerator,
   constructCouponStructure,
 } from '../CartItemTile';
 import { response, orderDetailsResponse, couponResponse, couponFormatResponse } from './mockData';
@@ -23,9 +26,38 @@ describe('#getOrderPointSummary', () => {
     expect(result).toEqual(response);
   });
 
+  it('should return getSwatchImgPath=', () => {
+    const resultType = getSwatchImgPath(12, 'extension');
+    expect(resultType).toEqual('/wcsstore/GlobalSAS/images/tcp/products/swatches/12');
+  });
+
+  it('should return getProductImgPath=', () => {
+    const resultType = imageGenerator(12, 'extension');
+    expect(resultType).toEqual({
+      colorSwatch: '/wcsstore/GlobalSAS/images/tcp/products/swatches/12',
+      productImages: {
+        '125': '/wcsstore/GlobalSAS/images/tcp/products/125/12',
+        '380': '/wcsstore/GlobalSAS/images/tcp/products/380/12',
+        '500': '/wcsstore/GlobalSAS/images/tcp/products/500/12',
+        '900': '/wcsstore/GlobalSAS/images/tcp/products/900/12',
+      },
+    });
+  });
+  it('should return getProductImgPath=', () => {
+    const resultType = getProductImgPath(12, 'extension');
+    expect(resultType).toEqual({
+      '125': '/wcsstore/GlobalSAS/images/tcp/products/125/12',
+      '380': '/wcsstore/GlobalSAS/images/tcp/products/380/12',
+      '500': '/wcsstore/GlobalSAS/images/tcp/products/500/12',
+      '900': '/wcsstore/GlobalSAS/images/tcp/products/900/12',
+    });
+  });
   it('should return valid constructCouponStructure', () => {
-    const result = constructCouponStructure(couponResponse);
-    expect(result).toEqual(couponFormatResponse);
+    let result = constructCouponStructure(couponResponse);
+    result = Object.assign({}, result[0], {
+      expirationDateTimeStamp: '',
+    });
+    expect([result]).toEqual(couponFormatResponse);
   });
 
   it('should return valid constructCouponStructure response', () => {
@@ -42,8 +74,11 @@ describe('#getOrderPointSummary', () => {
         redemptionType: 'PLACECASH',
       },
     ];
-    const result = constructCouponStructure(temp);
-    expect(result).toEqual(expected);
+    let result = constructCouponStructure(temp);
+    result = Object.assign({}, result[0], {
+      expirationDateTimeStamp: '',
+    });
+    expect([result]).toEqual(expected);
   });
 
   it('should return valid constructCouponStructure LOYALTY', () => {
@@ -60,9 +95,13 @@ describe('#getOrderPointSummary', () => {
         redemptionType: 'LOYALTY',
       },
     ];
-    const result = constructCouponStructure(temp);
-    expect(result).toEqual(expected);
+    let result = constructCouponStructure(temp);
+    result = Object.assign({}, result[0], {
+      expirationDateTimeStamp: '',
+    });
+    expect([result]).toEqual(expected);
   });
+
   it('should return valid constructCouponStructure isApplied', () => {
     const temp = [
       {
@@ -76,7 +115,10 @@ describe('#getOrderPointSummary', () => {
         status: 'applied',
       },
     ];
-    const result = constructCouponStructure(temp);
-    expect(result).toEqual(expected);
+    let result = constructCouponStructure(temp);
+    result = Object.assign({}, result[0], {
+      expirationDateTimeStamp: '',
+    });
+    expect([result]).toEqual(expected);
   });
 });

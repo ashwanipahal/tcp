@@ -38,6 +38,14 @@ const endpoints = {
     method: API_METHODS.POST,
     URI: 'v2/account/modifyCreditCardDetails',
   },
+  addAddress: {
+    method: API_METHODS.POST,
+    URI: 'v2/account/addAddress',
+  },
+  updateAddress: {
+    method: 'put',
+    URI: 'v2/wallet/updateAddress',
+  },
   updateMultiSelectItemsToRemove: {
     method: 'PUT',
     URI: 'v2/cart/deleteMultipleOrderItems',
@@ -58,6 +66,10 @@ const endpoints = {
     method: API_METHODS.GET,
     URI: 'v2/account/getRegisteredUserInfo',
   },
+  getCouponList: {
+    method: API_METHODS.GET,
+    URI: 'v2/account/getAddressFromBook',
+  },
   logout: {
     method: API_METHODS.DELETE,
     URI: '/v2/account/logout',
@@ -65,6 +77,10 @@ const endpoints = {
   bonusPoints: {
     method: API_METHODS.GET,
     URI: 'v2/account/bonusDay',
+  },
+  addCoupons: {
+    method: 'post',
+    URI: 'v2/checkout/coupons',
   },
 };
 export default endpoints;

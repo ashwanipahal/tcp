@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PlaceRewardsContainer should render correctly 1`] = `
+<AccountDrawerView
+  className=""
+  labels={
+    Object {
+      "lbl_acc_drawer_user_name": "Test Name",
+      "lbl_acc_drawer_view_my_acc": "View My Account",
+    }
+  }
+  userName=""
+/>
+`;

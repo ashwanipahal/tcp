@@ -21,6 +21,8 @@ export const ADD_GIFT_CARD_REDUCER_KEY = 'AddGiftCardReducer';
 export const PAYMENT_ACTION_PATTERN = '@@payment-';
 export const ADD_GIFT_CARD_ACTION_PATTERN = '@@AddGiftCard-';
 export const LOGINPAGE_ACTION_PATTERN = '@@Login-';
+export const ACCOUNTHEADER_ACTION_PATTERN = '@@AccountHeader-';
+export const ACCOUNTHEADER_REDUCER_KEY = 'AccountHeader';
 export const CARTITEMTILE_REDUCER_KEY = 'CartItemTileReducer';
 export const CARTPAGE_REDUCER_KEY = 'CartPageReducer';
 export const OVERLAY_MODAL_REDUCER_KEY = 'OverlayModalReducer';
@@ -54,6 +56,9 @@ export const PRODUCTLISTINGPAGE_ACTION_PATTERN = '@@PLP-';
 export const EMAIL_SIGNUP_REDUCER_KEY = 'EmailSignUp';
 export const SMS_SIGNUP_REDUCER_KEY = 'SmsSignUp';
 
+// Coupon reducer
+export const COUPON_REDUCER_KEY = 'CouponsAndPromos';
+export const COUPON_ACTION_PATTERN = '@@CouponsAndPromos-';
 // logout reducer
 export const LOGOUT_REDUCER_KEY = 'logoutReducer';
 export const LOGOUT_ACTION_PATTERN = '@@logout-';

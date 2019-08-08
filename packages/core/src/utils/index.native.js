@@ -7,6 +7,9 @@ export {
   getIconCard,
   getScreenHeight,
   getScreenWidth,
+  navigateToNestedRoute,
+  getValueFromAsyncStorage,
+  setValueInAsyncStorage,
 } from './utils.app';
 
 export {
