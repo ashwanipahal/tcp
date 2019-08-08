@@ -1,12 +1,14 @@
 const buildQuery = ({ brand, country, channel }) => `
   navigation: mainNavigation(brand: "${brand}", country: "${country}", channel: "${channel}") {
     categoryContent {
+      seoToken
+      isShortImage
+      isUnique
+      productCount
       description
       name
       id
       mainCategory {
-        contentId
-        name
         set {
           key
 					value
@@ -44,13 +46,12 @@ const buildQuery = ({ brand, country, channel }) => `
               }
             }
             textBanner {
-              linkClass {
+              link {
                 url
                 text
                 target
                 title
                 external
-                class
               }
               textItems {
                 style

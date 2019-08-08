@@ -1,6 +1,6 @@
 import icons from '../config/icons';
 import locators from '../config/locators';
-import { API_CONFIG, awsAppSync } from '../services/config';
+import { API_CONFIG, awsAppSync, googleAppConfig } from '../services/config';
 import { getStoreRef, resetStoreRef } from './store.utils';
 import { APICONFIG_REDUCER_KEY } from '../constants/reducer.constants';
 
@@ -111,6 +111,7 @@ export const getAPIConfig = () => {
       unbxd: '://search.unbxd.io',
       cookie: null,
       isMobile: false,
+      map_api_key: googleAppConfig.google_map_api_key,
       graphql_reqion: awsAppSync.aws_appsync_region,
       graphql_endpoint_url: awsAppSync.aws_appsync_graphqlEndpoint,
       graphql_auth_type: awsAppSync.aws_appsync_authenticationType,

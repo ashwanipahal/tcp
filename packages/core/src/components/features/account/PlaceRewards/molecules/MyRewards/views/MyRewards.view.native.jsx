@@ -53,7 +53,7 @@ const MyRewards = ({ labels }) => {
       />
       <StyledAnchorWrapper>
         <Anchor
-          fontSizeVariation="small"
+          fontSizeVariation="medium"
           underline
           onPress={() => {
             UrlHandler('https://www.childrensplace.com/us/content/myplace-rewards-page');
@@ -64,7 +64,7 @@ const MyRewards = ({ labels }) => {
         />
         <AnchorLeftMargin>
           <Anchor
-            fontSizeVariation="small"
+            fontSizeVariation="medium"
             underline
             noLink
             onPress={() => {

@@ -3,6 +3,7 @@
 exports[`Row component renders correctly 1`] = `
 <div
   className="sample-row"
+  otherprops={Object {}}
 >
   ABCD
 </div>

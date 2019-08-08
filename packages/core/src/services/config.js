@@ -7,6 +7,10 @@ const graphQLAPIKey = {
   sandbox: 'da2-4zbdyvv4cbcyhbpanpak25wtai',
 };
 
+export const googleAppConfig = {
+  google_map_api_key: 'AIzaSyDYl5bgJ8yD30bRchcB0hKgZgJR0JqdrO4',
+};
+
 export const awsAppSync = {
   aws_project_region: 'us-east-1',
   aws_appsync_region: 'us-east-1',
@@ -87,4 +91,5 @@ export const API_CONFIG = {
 export default {
   awsAppSync,
   API_CONFIG,
+  googleAppConfig,
 };

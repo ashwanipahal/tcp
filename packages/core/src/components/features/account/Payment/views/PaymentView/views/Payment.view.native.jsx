@@ -9,6 +9,8 @@ type Props = {
   giftCardList: object,
   venmoCardList: object,
   cardList: object,
+  onGetBalanceCard: Function,
+  checkbalanceValueInfo: any,
 };
 
 const PaymentViewContainer = ({
@@ -18,6 +20,8 @@ const PaymentViewContainer = ({
   venmoCardList,
   cardList,
   setDefaultPaymentMethod,
+  onGetBalanceCard,
+  checkbalanceValueInfo,
 }: Props) => {
   return (
     <PaymentSection
@@ -26,6 +30,8 @@ const PaymentViewContainer = ({
       giftCardList={giftCardList}
       venmoCardList={venmoCardList}
       cardList={cardList}
+      onGetBalanceCard={onGetBalanceCard}
+      checkbalanceValueInfo={checkbalanceValueInfo}
       setDefaultPaymentMethod={setDefaultPaymentMethod}
     />
   );

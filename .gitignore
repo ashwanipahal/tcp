@@ -40,3 +40,4 @@ release
 /packages/mobileapp/android/app/bin/
 packages/mobileapp/android/.project
 packages/mobileapp/android/app/.project
+yarn-error.log
