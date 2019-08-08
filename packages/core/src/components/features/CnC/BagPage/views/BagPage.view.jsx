@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ProductTileWrapper from '@tcp/web/src/components/features/CnC/MiniBag';
 import OrderLedgerContainer from '../organisms/OrderLedger';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/BagPage.style';
-import CartItemTile from '../../CartItemTile';
 import Heading from '../../../../common/atoms/Heading';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
@@ -33,12 +33,7 @@ const AddedToBag = ({ className, labels }: Props) => {
       <section className="main-sec">
         <Row>
           <Col colSize={{ small: 4, medium: 4, large: 8 }} className="left-sec">
-            <section className="row-ele">
-              <CartItemTile />
-            </section>
-            <section className="row-ele">section 2</section>
-            <section className="row-ele">section 3</section>
-            <section className="row-ele">section 4</section>
+            <ProductTileWrapper pageView="myBag" />
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }} className="right-sec">
             <OrderLedgerContainer />

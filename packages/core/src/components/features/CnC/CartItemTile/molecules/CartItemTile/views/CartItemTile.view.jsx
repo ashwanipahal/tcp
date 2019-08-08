@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductEditForm from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ProductCustomizeForm/ProductCustomizeForm';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import CartItemRadioButtons from '@tcp/core/src/components/features/CnC/CartItemTile/molecules/CartItemRadioButtons/views/CartItemRadioButtons';
 import endpoints from '../../../../../../../service/endpoint';
 import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
 import { getIconPath, getLocator } from '../../../../../../../utils';
 import getModifiedString from '../../../utils';
-import ProductInformationStyle from '../styles/CartItemTile.style';
+import styles from '../styles/CartItemTile.style';
 
-class ProductTile extends React.Component {
+class CartItemTile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,18 +17,115 @@ class ProductTile extends React.Component {
     };
   }
 
+  getBossBopisDetailsForMiniBag = (productDetail, labels) => {
+    return (
+      <Col className="padding-left-13" colSize={{ small: 4, medium: 6, large: 8 }}>
+        {productDetail.miscInfo.store && (
+          <BodyCopy
+            fontFamily="secondary"
+            color="gray.600"
+            component="span"
+            fontSize="fs10"
+            fontWeight={['extrabold']}
+          >
+            {getModifiedString(
+              labels,
+              productDetail.miscInfo.store,
+              productDetail.miscInfo.orderItemType,
+              productDetail.miscInfo.bossStartDate,
+              productDetail.miscInfo.bossEndDate
+            )}
+          </BodyCopy>
+        )}
+      </Col>
+    );
+  };
+
+  getBadgeDetails = productDetail => {
+    return (
+      <Row className="product-detail-row">
+        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+          <BodyCopy
+            fontFamily="secondary"
+            tag="span"
+            fontSize="fs10"
+            fontWeight={['extrabold']}
+            dataLocator="addedtobag-productname"
+          >
+            {productDetail.miscInfo.badge}
+          </BodyCopy>
+        </Col>
+      </Row>
+    );
+  };
+
+  getColorLabel = (productDetail, labels) => {
+    return productDetail.itemInfo.isGiftItem === true ? `${labels.design} :` : `${labels.color} :`;
+  };
+
+  getPointsColor = pageView => {
+    return pageView !== 'myBag' ? 'gray.900' : 'orange.800';
+  };
+
+  getProductItemUpcNumber = (productDetail, pageView) => {
+    if (pageView === 'myBag') {
+      return (
+        <Row className="product-detail-row">
+          <Col className="productImgBrand" colSize={{ small: 6, medium: 8, large: 12 }}>
+            <BodyCopy
+              fontFamily="secondary"
+              tag="span"
+              fontSize="fs10"
+              dataLocator="addedtobag-productname"
+            >
+              {`Upc: ${productDetail.productInfo.upc}`}
+            </BodyCopy>
+          </Col>
+        </Row>
+      );
+    }
+    return '';
+  };
+
+  getProductPriceList = (productDetail, pageView) => {
+    return (
+      <Col className="value-responsive" colSize={{ small: 2, medium: 3, large: 8 }}>
+        <BodyCopy
+          fontFamily="secondary"
+          component="span"
+          fontSize="fs12"
+          fontWeight={['extrabold']}
+        >
+          {`$${productDetail.itemInfo.price}`}
+        </BodyCopy>
+        {pageView === 'myBag' && (
+          <BodyCopy className="list-price" fontFamily="secondary" component="span" fontSize="fs12">
+            {`$${productDetail.itemInfo.itemPrice}`}
+          </BodyCopy>
+        )}
+      </Col>
+    );
+  };
+
   render() {
     const { isEdit } = this.state;
-    const { productDetail, labels } = this.props;
+    const { productDetail, labels, className, pageView } = this.props;
     const initialValues = {
       color: { name: productDetail.itemInfo.color },
       fit: productDetail.itemInfo.fit,
       size: productDetail.itemInfo.size,
     };
     return (
-      <ProductInformationStyle>
-        <Row fullBleed className="product">
-          <Col key="productDetails" colSize={{ small: 2, medium: 2, large: 3 }}>
+      <div className={className}>
+        <Row
+          fullBleed
+          className={['product', pageView === 'myBag' ? 'product-tile-wrapper' : ''].join(' ')}
+        >
+          <Col
+            key="productDetails"
+            className="align-product-img product-brand-img-wrapper"
+            colSize={{ small: 2, medium: 2, large: 3 }}
+          >
             <Image
               alt={labels.productImageAlt}
               className="product-image"
@@ -46,23 +145,13 @@ class ProductTile extends React.Component {
               />
             )}
           </Col>
-          <Col key="productDetails" colSize={{ small: 4, medium: 6, large: 9 }}>
-            {productDetail.miscInfo.badge && (
-              <Row>
-                <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-                  <BodyCopy
-                    fontFamily="secondary"
-                    tag="span"
-                    fontSize="fs10"
-                    fontWeight={['extrabold']}
-                    dataLocator="addedtobag-productname"
-                  >
-                    {productDetail.miscInfo.badge}
-                  </BodyCopy>
-                </Col>
-              </Row>
-            )}
-            <Row>
+          <Col
+            className="bag-product-detail-wrapper"
+            key="productDetails"
+            colSize={{ small: 4, medium: 6, large: 9 }}
+          >
+            {productDetail.miscInfo.badge && this.getBadgeDetails(productDetail)}
+            <Row className="product-detail-row">
               <Col className="productImgBrand" colSize={{ small: 6, medium: 8, large: 12 }}>
                 <BodyCopy
                   fontFamily="secondary"
@@ -75,103 +164,135 @@ class ProductTile extends React.Component {
                 </BodyCopy>
               </Col>
             </Row>
+            {this.getProductItemUpcNumber(productDetail, pageView)}
             {!isEdit ? (
               <React.Fragment>
-                <Row className="padding-top-10">
+                <Row className="product-detail-row padding-top-10 color-map-size-fit">
                   <div>
+                    <div className="color-size-fit-label">
+                      <BodyCopy
+                        fontFamily="secondary"
+                        component="span"
+                        fontSize="fs12"
+                        fontWeight={['extrabold']}
+                        textAlign="left"
+                      >
+                        {this.getColorLabel(productDetail, labels)}
+                      </BodyCopy>
+                    </div>
                     <BodyCopy
+                      className="padding-left-10"
                       fontFamily="secondary"
                       component="span"
                       fontSize="fs12"
-                      fontWeight={['extrabold']}
-                      textAlign="left"
-                    >
-                      {productDetail.itemInfo.isGiftItem === true
-                        ? `${labels.design}`
-                        : `${labels.color}`}
-                      {':'}
-                    </BodyCopy>
-                    <BodyCopy
-                      fontFamily="secondary"
-                      component="span"
-                      fontSize="fs12"
-                      className="itemDesc"
                       dataLocator="addedtobag-productcolor"
                     >
-                      {` ${productDetail.itemInfo.color} | `}
+                      {`${productDetail.itemInfo.color}`}
+                    </BodyCopy>
+                    <BodyCopy
+                      className="color-fit-size-separator"
+                      fontFamily="secondary"
+                      component="span"
+                      fontSize="fs12"
+                    >
+                      |
                     </BodyCopy>
                   </div>
 
                   {productDetail.itemInfo.fit && (
-                    <div className="padding-left">
+                    <div>
+                      <div className="color-size-fit-label color-fit-size-desktop">
+                        <BodyCopy
+                          fontFamily="secondary"
+                          component="span"
+                          fontSize="fs12"
+                          fontWeight={['extrabold']}
+                        >
+                          {labels.fit}
+                          {':'}
+                        </BodyCopy>
+                      </div>
+                      <BodyCopy
+                        className="padding-left-10"
+                        fontFamily="secondary"
+                        component="span"
+                        fontSize="fs12"
+                        dataLocator="addedtobag-productsize"
+                      >
+                        {`${productDetail.itemInfo.fit}`}
+                      </BodyCopy>
+                      <BodyCopy
+                        className="color-fit-size-separator"
+                        fontFamily="secondary"
+                        component="span"
+                        fontSize="fs12"
+                      >
+                        |
+                      </BodyCopy>
+                    </div>
+                  )}
+                  <div>
+                    <div className="color-size-fit-label color-fit-size-desktop">
                       <BodyCopy
                         fontFamily="secondary"
                         component="span"
                         fontSize="fs12"
                         fontWeight={['extrabold']}
                       >
-                        {labels.fit}
+                        {`${labels.size}`}
                         {':'}
                       </BodyCopy>
+                    </div>
+                    <BodyCopy
+                      className="padding-left-10"
+                      fontFamily="secondary"
+                      component="span"
+                      fontSize="fs12"
+                      dataLocator="addedtobag-productsize"
+                    >
+                      {`${productDetail.itemInfo.size}`}
+                    </BodyCopy>
+                    <BodyCopy
+                      className="color-fit-size-separator"
+                      fontFamily="secondary"
+                      component="span"
+                      fontSize="fs12"
+                    >
+                      |
+                    </BodyCopy>
+                  </div>
+
+                  <div>
+                    <div className="color-size-fit-label color-fit-size-desktop">
                       <BodyCopy
                         fontFamily="secondary"
                         component="span"
                         fontSize="fs12"
-                        className="itemDesc"
-                        dataLocator="addedtobag-productsize"
+                        fontWeight={['extrabold']}
                       >
-                        {` ${productDetail.itemInfo.fit} | `}
+                        {` ${labels.qty}`}
+                        {':'}
                       </BodyCopy>
                     </div>
-                  )}
-                  <div className="padding-left">
                     <BodyCopy
+                      className="padding-left-10"
                       fontFamily="secondary"
                       component="span"
                       fontSize="fs12"
-                      fontWeight={['extrabold']}
-                    >
-                      {`${labels.size}`}
-                      {':'}
-                    </BodyCopy>
-                    <BodyCopy
-                      fontFamily="secondary"
-                      component="span"
-                      fontSize="fs12"
-                      className="itemDesc"
-                      dataLocator="addedtobag-productsize"
-                    >
-                      {` ${productDetail.itemInfo.size}`}
-                    </BodyCopy>
-                  </div>
-
-                  <div className="padding-left">
-                    <BodyCopy
-                      fontFamily="secondary"
-                      component="span"
-                      fontSize="fs12"
-                      fontWeight={['extrabold']}
-                    >
-                      {` ${labels.qty}`}
-                      {':'}
-                    </BodyCopy>
-                    <BodyCopy
-                      fontFamily="secondary"
-                      component="span"
-                      fontSize="fs12"
-                      className="itemDesc"
                       dataLocator="addedtobag-productqty"
                     >
-                      {` ${productDetail.itemInfo.qty}`}
+                      {`${productDetail.itemInfo.qty}`}
                     </BodyCopy>
                   </div>
                   <BodyCopy
                     fontFamily="secondary"
                     fontSize="fs12"
                     component="div"
-                    className="padding-left-10"
+                    className="padding-left-10 responsive-edit-css"
                     onClick={() => {
-                      this.setState({ isEdit: true });
+                      if (pageView !== 'myBag') {
+                        this.setState({ isEdit: true });
+                      }
                     }}
                   >
                     <u>{labels.edit}</u>
@@ -187,8 +308,8 @@ class ProductTile extends React.Component {
                 labels={labels}
               />
             )}
-            <Row className="padding-top-10">
-              <Col colSize={{ large: 4, medium: 3, small: 2 }}>
+            <Row className="product-detail-row label-responsive-wrapper padding-top-10">
+              <Col className="label-responsive" colSize={{ large: 4, medium: 3, small: 2 }}>
                 <BodyCopy
                   fontFamily="secondary"
                   component="span"
@@ -198,19 +319,10 @@ class ProductTile extends React.Component {
                   {`${labels.price}: `}
                 </BodyCopy>
               </Col>
-              <Col colSize={{ small: 2, medium: 3, large: 8 }}>
-                <BodyCopy
-                  fontFamily="secondary"
-                  component="span"
-                  fontSize="fs12"
-                  fontWeight={['extrabold']}
-                >
-                  {productDetail.itemInfo.price}
-                </BodyCopy>
-              </Col>
+              {this.getProductPriceList(productDetail, pageView)}
             </Row>
-            <Row>
-              <Col colSize={{ large: 4, medium: 3, small: 2 }}>
+            <Row className="product-detail-row label-responsive-wrapper">
+              <Col className="label-responsive" colSize={{ large: 4, medium: 3, small: 2 }}>
                 <BodyCopy
                   fontFamily="secondary"
                   component="span"
@@ -220,53 +332,58 @@ class ProductTile extends React.Component {
                   {`${labels.points}:`}
                 </BodyCopy>
               </Col>
-              <Col colSize={{ small: 2, medium: 3, large: 8 }}>
+              <Col className="value-responsive" colSize={{ small: 2, medium: 3, large: 8 }}>
                 <BodyCopy
                   fontFamily="secondary"
                   component="span"
                   fontSize="fs12"
                   fontWeight={['extrabold']}
+                  color={this.getPointsColor(pageView)}
                 >
                   {productDetail.itemInfo.myPlacePoints}
                 </BodyCopy>
               </Col>
             </Row>
             <Row className="padding-top-15 padding-bottom-20" fullBleed>
-              <Col className="padding-left-13" colSize={{ small: 4, medium: 6, large: 8 }}>
-                {productDetail.miscInfo.store && (
-                  <BodyCopy
-                    fontFamily="secondary"
-                    color="gray.600"
-                    component="span"
-                    fontSize="fs10"
-                    fontWeight={['extrabold']}
-                  >
-                    {getModifiedString(
-                      labels,
-                      productDetail.miscInfo.store,
-                      productDetail.miscInfo.orderItemType,
-                      productDetail.miscInfo.bossStartDate,
-                      productDetail.miscInfo.bossEndDate
-                    )}
-                  </BodyCopy>
-                )}
-              </Col>
-              <Col colSize={{ small: 1, medium: 1, large: 3 }}>
+              {pageView !== 'myBag' && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
+              <Col className="save-for-later-label" colSize={{ small: 1, medium: 1, large: 3 }}>
                 <BodyCopy fontFamily="secondary" fontSize="fs12" component="span">
                   <u>{labels.saveForLater}</u>
                 </BodyCopy>
               </Col>
+              {pageView === 'myBag' && (
+                <BodyCopy
+                  className="price-label"
+                  fontFamily="secondary"
+                  component="span"
+                  fontSize="fs16"
+                  fontWeight={['extrabold']}
+                >
+                  {`$${productDetail.itemInfo.price}`}
+                </BodyCopy>
+              )}
             </Row>
           </Col>
         </Row>
-      </ProductInformationStyle>
+        {pageView === 'myBag' && (
+          <Row fullBleed>
+            <CartItemRadioButtons productDetail={productDetail} labels={labels} />
+          </Row>
+        )}
+      </div>
     );
   }
 }
 
-ProductTile.propTypes = {
-  productDetail: PropTypes.shape({}).isRequired,
-  labels: PropTypes.shape({}).isRequired,
+CartItemTile.defaultProps = {
+  pageView: '',
 };
 
-export default ProductTile;
+CartItemTile.propTypes = {
+  productDetail: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  className: PropTypes.string.isRequired,
+  pageView: PropTypes.string,
+};
+
+export default withStyles(CartItemTile, styles);

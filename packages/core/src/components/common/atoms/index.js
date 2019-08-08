@@ -10,6 +10,7 @@ import TextBox from './TextBox';
 import Heading from './Heading';
 import BodyCopy from './BodyCopy';
 import SelectBox from './Select';
+import LabeledRadioButton from './LabeledRadioButton';
 
 export {
   Anchor,
@@ -24,4 +25,5 @@ export {
   Heading,
   BodyCopy,
   SelectBox,
+  LabeledRadioButton,
 };

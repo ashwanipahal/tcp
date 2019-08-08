@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartItemRadioButtons Component LabeledRadioButton should render correctly 1`] = `
+<label
+  className=""
+  htmlFor="_1"
+>
+  <input
+    checked={true}
+    disabled={true}
+    id="_1"
+    type="radio"
+  />
+  <span
+    className="checkmark"
+  />
+</label>
+`;

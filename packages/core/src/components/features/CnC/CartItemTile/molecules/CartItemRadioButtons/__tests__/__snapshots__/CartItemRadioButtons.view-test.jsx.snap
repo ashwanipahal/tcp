@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartItemRadioButtons Component CartItemRadioButtons should render correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(LabeledRadioButton)
+    checked={false}
+    className="select-box-1 common-select-box-css false"
+    name="ship-it-undefined"
+    onChange={[Function]}
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="gray.900"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    />
+  </Styled(LabeledRadioButton)>
+  <Styled(LabeledRadioButton)
+    checked={false}
+    className="normal-select-box common-select-box-css false"
+    name="ship-it-undefined"
+    onChange={[Function]}
+  >
+    <div
+      className="main-content-banner"
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="gray.900"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+      <div
+        className="banner-wrapper"
+      >
+        <div
+          className="triangle-left"
+        />
+        <div
+          className="promo-wrapper"
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="primary"
+            fontSize="fs10"
+            fontWeight="black"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            Extra 5%
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className="off-label"
+            color="text.primary"
+            component="p"
+            fontFamily="primary"
+            fontSize="fs10"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            OFF
+          </Styled(BodyCopy)>
+        </div>
+      </div>
+    </div>
+  </Styled(LabeledRadioButton)>
+  <Styled(LabeledRadioButton)
+    checked={true}
+    className="normal-select-box common-select-box-css selected-method"
+    name="ship-it-undefined"
+    onChange={[Function]}
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="gray.900"
+      component="p"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    />
+  </Styled(LabeledRadioButton)>
+</div>
+`;
