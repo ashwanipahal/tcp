@@ -21,6 +21,12 @@ export default css`
   &.link-comp-wrapper {
     justify-content: center;
   }
+  .link-button-wrapper-class {
+    border-color: white;
+    &:hover {
+      border-color: white;
+    }
+  }
 
   .scroll-cta-wrapper {
     display: flex;
