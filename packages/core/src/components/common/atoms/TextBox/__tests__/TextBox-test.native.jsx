@@ -9,40 +9,45 @@ describe('Textbox component', () => {
     type: 'text',
     meta: { touched: '', error: '' },
     dataLocator: 'input-field',
-    showSuccessCheck: false,
+    enableSuccessCheck: false,
     label: 'input',
     keyboardType: 'default',
     showErrorIcon: true,
     input: { value: 'foo' },
   };
 
+  let component;
+
+  beforeEach(() => {
+    component = shallow(<TextBox {...props} />);
+  });
+
   it('renders correctly', () => {
-    const component = shallow(<TextBox {...props} />);
     expect(component).toMatchSnapshot();
   });
 
-  it('render showSuccessCheck on validation true', () => {
-    props.showSuccessCheck = true;
-    const component = shallow(<TextBox {...props} />);
+  it('renders correctly hidden textbox', () => {
+    component.setProps({ type: 'hidden' });
     expect(component).toMatchSnapshot();
   });
 
-  it('render showSuccessCheck on validation fail', () => {
-    props.meta.touched = 'foo';
-    props.meta.error = 'foo';
-    const component = shallow(<TextBox {...props} />);
+  it('render enableSuccessCheck on validation true', () => {
+    component.setProps({ enableSuccessCheck: true });
+    expect(component).toMatchSnapshot();
+  });
+
+  it('render enableSuccessCheck on validation fail', () => {
+    component.setProps({ meta: { touched: 'foo', error: 'food' } });
     expect(component).toMatchSnapshot();
   });
 
   it('check handleFocus', () => {
-    const component = shallow(<TextBox {...props} />);
     component.setState({ isFocused: false });
     component.instance().handleFocus();
     expect(component.state('isFocused')).toBe(true);
   });
 
   it('check handleBlur', () => {
-    const component = shallow(<TextBox {...props} />);
     component.setState({ isFocused: true });
     component.instance().handleBlur();
     expect(component.state('isFocused')).toBe(false);
