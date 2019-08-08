@@ -79,6 +79,7 @@ export default css`
 
     &.scroll-comp-wrapper {
       flex-wrap: nowrap;
+      padding-right: 15px;
     }
 
     .scroll-cta-wrapper {
@@ -96,6 +97,7 @@ export default css`
 
     &.stack-comp-wrapper {
       flex-wrap: nowrap;
+      padding-right: 15px;
     }
   }
 
