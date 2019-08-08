@@ -21,6 +21,7 @@ import OverlayModalReducer from '@tcp/core/src/components/features/OverlayModal/
 import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
 import CouponsReducer from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.reducer';
 import AccountHeaderReducer from '@tcp/core/src/components/features/account/common/organism/AccountHeader/container/AccountHeader.reducer';
+import ResetPasswordReducer from '@tcp/core/src/components/features/account/ResetPassword/container/ResetPassword.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -50,6 +51,7 @@ import {
   CREATE_ACCOUNT_REDUCER_KEY,
   COUPON_REDUCER_KEY,
   ACCOUNTHEADER_REDUCER_KEY,
+  RESET_PASSWORD_REDUCER_KEY
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
@@ -96,4 +98,5 @@ export default combineReducers({
   [CREATE_ACCOUNT_REDUCER_KEY]: CreateAccountReducer,
   [COUPON_REDUCER_KEY]: CouponsReducer,
   [ACCOUNTHEADER_REDUCER_KEY]: AccountHeaderReducer,
+  [RESET_PASSWORD_REDUCER_KEY]: ResetPasswordReducer
 });
