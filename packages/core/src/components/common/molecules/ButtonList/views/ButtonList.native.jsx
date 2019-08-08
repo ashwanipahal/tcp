@@ -40,7 +40,7 @@ const renderItem = (item, navigation, showFullWidth) => {
       text={item.text}
       color="red"
       style={showFullWidth ? buttonFullWidth : buttonWidth}
-      url={item.links}
+      url={item.url}
       navigation={navigation}
     />
   );
@@ -153,7 +153,7 @@ const renderLinkTextView = (ctxButton, navigation) => {
  * This function is used to generate links for DivImageCTA view .
  */
 const divImageRenderItem = (item, navigation) => {
-  const style = { borderRadius: 70 / 2 };
+  const style = { borderRadius: 60 / 2 };
   const bodycopyStyle = { marginTop: 20 };
   const {
     item: { image, link },
@@ -161,11 +161,12 @@ const divImageRenderItem = (item, navigation) => {
   return (
     <Anchor url={link.url} navigation={navigation}>
       <DivImageContainer>
-        <Image url={image.url} height={70} width={70} style={style} />
+        <Image url={image.url} height={60} width={60} style={style} />
         <BodyCopy
           fontFamily="secondary"
           fontSize="fs14"
           color="white"
+          fontWeight="extrabold"
           letterSpacing="black"
           text={link.text}
           style={bodycopyStyle}

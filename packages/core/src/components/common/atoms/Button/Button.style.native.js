@@ -74,7 +74,7 @@ const style = css`
      };
      font-family: ${props.theme.typography.fonts.secondary};
      font-size: ${props.theme.fonts.fontSize.button.size}px;
-     font-weight: ${props.theme.typography.fontWeights.black};
+     font-weight: ${props.theme.typography.fontWeights.extrabold};
      border: 1px solid ${
        props.color === 'red'
          ? props.theme.colorPalette.secondary.dark

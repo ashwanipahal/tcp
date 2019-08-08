@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonList ButtonList should render correctly 1`] = `
+<Styled(View)>
+  <FlatList
+    disableVirtualization={false}
+    horizontal={true}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={1}
+    onEndReachedThreshold={2}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    showsHorizontalScrollIndicator={false}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</Styled(View)>
+`;

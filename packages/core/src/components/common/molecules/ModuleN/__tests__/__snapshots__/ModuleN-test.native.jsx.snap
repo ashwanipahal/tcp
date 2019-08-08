@@ -53,11 +53,11 @@ exports[`ModuleNVanilla ModuleN should render correctly 1`] = `
             "textItems": Array [
               Object {
                 "style": "style5",
-                "text": "50-60%OFF",
+                "text": "50%OFF",
               },
               Object {
                 "style": "style4",
-                "text": "No EXCLUSIVE",
+                "text": "No Exclusions",
               },
             ],
           },
@@ -65,47 +65,42 @@ exports[`ModuleNVanilla ModuleN should render correctly 1`] = `
       }
     />
   </Styled(View)>
-  <ButtonList
-    buttonListVariation="stackedCTAList"
-    stackedCTAButtons={
-      Array [
-        Object {
-          "external": 0,
-          "target": "",
-          "text": "girl",
-          "title": "girl",
-          "url": "/c/",
-        },
-        Object {
-          "external": 0,
-          "target": "",
-          "text": "toddler girl",
-          "title": "toddler girl",
-          "url": "/p/",
-        },
-        Object {
-          "external": 0,
-          "target": "",
-          "text": "boy",
-          "title": "boy",
-          "url": "/p/",
-        },
-        Object {
-          "external": 0,
-          "target": "",
-          "text": "toddler boy",
-          "title": "toddler boy",
-          "url": "/c/",
-        },
-        Object {
-          "external": 0,
-          "target": "",
-          "text": "baby",
-          "title": "baby",
-          "url": "/c/",
-        },
-      ]
-    }
-  />
+  <Styled(View)>
+    <ButtonList
+      buttonListVariation="linkCTAList"
+      linkList={
+        Array [
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "TODDLER GIRL",
+            "title": "",
+            "url": "/c/",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "GIRL",
+            "title": "",
+            "url": "/c/",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "TODDLER BOY",
+            "title": "",
+            "url": "/c/",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "BOY",
+            "title": "",
+            "url": "/c/",
+          },
+        ]
+      }
+    />
+  </Styled(View)>
 </Styled(View)>
 `;

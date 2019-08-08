@@ -7,7 +7,7 @@ describe('ModuleNVanilla', () => {
   let component;
 
   beforeEach(() => {
-    component = shallow(<ModuleNVanilla {...mock.moduleN.composites} />);
+    component = shallow(<ModuleNVanilla {...mock.moduleN.composites.singleCTAButton} />);
   });
 
   it('ModuleN should be defined', () => {
