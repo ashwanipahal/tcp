@@ -9,18 +9,18 @@ import styles from '../container/styles/AddressOverviewTile.style';
 import AccountOverviewTile from '../../../../../../common/molecules/AccountOverviewTile';
 
 export const AddressOverviewTile = ({ labels, addressList }) => {
-  const isShippingAddress = [];
-  const isBillingAddress = [];
+  const defaultShippingAddress = [];
+  const defaultBillingAddress = [];
 
   if (addressList) {
     addressList
       .map(addr => addr)
       .forEach(item => {
-        if (item.xcont_isShippingAddress === 'true') {
-          isShippingAddress.push(item);
+        if (item.primary === 'true') {
+          defaultShippingAddress.push(item);
         }
-        if (item.xcont_isBillingAddress === 'true') {
-          isBillingAddress.push(item);
+        if (item.xcont_isDefaultBilling === 'true') {
+          defaultBillingAddress.push(item);
         }
       });
   }
@@ -51,13 +51,15 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
             }}
           >
             <BodyCopy component="span" fontSize="fs14" fontFamily="secondary">
-              {isShippingAddress && isShippingAddress.length ? (
+              {defaultShippingAddress && defaultShippingAddress.length ? (
                 <Anchor
                   fontSizeVariation="medium"
                   underline
                   anchorVariation="primary"
-                  to="/account?id=address-book"
-                  asPath="/account/address-book"
+                  to={`/account?id=edit-address&addressId=${defaultShippingAddress[0].addressId}`}
+                  asPath={`/account/address-book/edit-address/${
+                    defaultShippingAddress[0].addressId
+                  }`}
                 >
                   {labels.lbl_overview_addressBookEdit}
                 </Anchor>
@@ -66,8 +68,8 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
                   fontSizeVariation="medium"
                   underline
                   anchorVariation="primary"
-                  to="/account?id=address-book"
-                  asPath="/account/address-book"
+                  to="/account?id=address-book&subSection=add-new-address"
+                  asPath="/account/address-book/add-new-address"
                 >
                   {labels.lbl_overview_addressBookAdd}
                 </Anchor>
@@ -83,8 +85,8 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
               medium: 7,
             }}
           >
-            {isShippingAddress && isShippingAddress.length ? (
-              <Address address={isShippingAddress[0]} showCountry={false} />
+            {defaultShippingAddress && defaultShippingAddress.length ? (
+              <Address address={defaultShippingAddress[0]} showCountry={false} />
             ) : (
               <BodyCopy fontSize="fs14" fontFamily="secondary">
                 {labels.lbl_overview_addressNotAdded}
@@ -114,7 +116,7 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
               medium: 1,
             }}
           >
-            {isBillingAddress && isBillingAddress.length ? (
+            {defaultBillingAddress && defaultBillingAddress.length ? (
               <Anchor
                 fontSizeVariation="medium"
                 underline
@@ -129,8 +131,8 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
                 fontSizeVariation="medium"
                 underline
                 anchorVariation="primary"
-                to="/account?id=payment"
-                asPath="/account/payment"
+                to="/account?id=add-credit-card"
+                asPath="/account/payment/add-credit-card"
               >
                 {labels.lbl_overview_addressBookAdd}
               </Anchor>
@@ -145,8 +147,8 @@ export const AddressOverviewTile = ({ labels, addressList }) => {
               medium: 7,
             }}
           >
-            {isBillingAddress && isBillingAddress.length ? (
-              <Address address={isBillingAddress[0]} showCountry={false} />
+            {defaultBillingAddress && defaultBillingAddress.length ? (
+              <Address address={defaultBillingAddress[0]} showCountry={false} />
             ) : (
               <BodyCopy fontSize="fs14" fontFamily="secondary">
                 {labels.lbl_overview_addressNotAdded}

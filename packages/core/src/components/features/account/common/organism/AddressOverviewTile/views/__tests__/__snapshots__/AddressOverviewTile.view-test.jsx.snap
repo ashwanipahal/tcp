@@ -64,9 +64,9 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
         >
           <Styled(Anchor)
             anchorVariation="primary"
-            asPath="/account/address-book"
+            asPath="/account/address-book/add-new-address"
             fontSizeVariation="medium"
-            to="/account?id=address-book"
+            to="/account?id=address-book&subSection=add-new-address"
             underline={true}
           >
             Add
@@ -151,9 +151,9 @@ exports[`AddressOverviewTile component should render correctly 1`] = `
       >
         <Styled(Anchor)
           anchorVariation="primary"
-          asPath="/account/payment"
+          asPath="/account/payment/add-credit-card"
           fontSizeVariation="medium"
-          to="/account?id=payment"
+          to="/account?id=add-credit-card"
           underline={true}
         >
           Add
@@ -251,9 +251,9 @@ exports[`AddressOverviewTile render empty address component should render correc
         >
           <Styled(Anchor)
             anchorVariation="primary"
-            asPath="/account/address-book"
+            asPath="/account/address-book/add-new-address"
             fontSizeVariation="medium"
-            to="/account?id=address-book"
+            to="/account?id=address-book&subSection=add-new-address"
             underline={true}
           />
         </Styled(BodyCopy)>
@@ -332,9 +332,9 @@ exports[`AddressOverviewTile render empty address component should render correc
       >
         <Styled(Anchor)
           anchorVariation="primary"
-          asPath="/account/payment"
+          asPath="/account/payment/add-credit-card"
           fontSizeVariation="medium"
-          to="/account?id=payment"
+          to="/account?id=add-credit-card"
           underline={true}
         />
       </Styled(Col)>
