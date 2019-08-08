@@ -51,5 +51,13 @@ module.exports = {
     ...ignorePsuedoCodeDir,
   ],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],
+  coverageThreshold: {
+    global: {
+      statements: 66,
+      branches: 51,
+      functions: 57.5,
+      lines: 66.5,
+    },
+  },
   snapshotSerializers: ['enzyme-to-json/serializer'],
 };

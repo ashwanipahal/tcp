@@ -46,5 +46,13 @@ module.exports = {
     '/__mocks__/',
   ],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],
+  coverageThreshold: {
+    global: {
+      statements: 61.5,
+      branches: 43.5,
+      functions: 53.5,
+      lines: 69.5,
+    },
+  },
   snapshotSerializers: ['enzyme-to-json/serializer'],
 };
