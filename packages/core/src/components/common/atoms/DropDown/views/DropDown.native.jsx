@@ -83,7 +83,7 @@ class DropDown extends React.PureComponent<Props> {
   }
 
   componentDidMount() {
-    if (this.rowMarker) setTimeout(() => this.calculateDropDownPosition(), 1000);
+    if (this.rowMarker) setTimeout(() => this.calculateDropDownPosition(), 500);
   }
 
   /**
