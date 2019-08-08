@@ -9,7 +9,7 @@ import ModuleD from './ModuleD';
 import ModuleH from './ModuleH';
 import ModuleL from './ModuleL';
 import ModuleN from './ModuleN';
-import PromoTextBanner from './PromoTextBanner';
+import PromoBanner from './PromoBanner';
 import LinkText from './LinkText';
 import ImageGrid from './ImageGrid';
 
@@ -25,7 +25,7 @@ export {
   ModuleH,
   ModuleL,
   ModuleN,
-  PromoTextBanner,
+  PromoBanner,
   LinkText,
   ImageGrid,
 };

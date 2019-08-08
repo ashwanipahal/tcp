@@ -3,7 +3,7 @@ import React from 'react';
 import { ButtonList } from '../..';
 import style from '../ModuleN.style';
 import LinkText from '../../LinkText';
-import PromoTextBanner from '../../PromoTextBanner';
+import PromoBanner from '../../PromoBanner';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/errorBoundary';
 
@@ -42,7 +42,7 @@ const ModuleN = (props: Props) => {
             />
           )}
           {promoTextBanner && (
-            <PromoTextBanner
+            <PromoBanner
               promoTextBanner={promoTextBanner}
               className="moduleN__promo-banner"
               color="white"
@@ -62,7 +62,7 @@ const ModuleN = (props: Props) => {
             />
           )}
           {promoTextBanner && (
-            <PromoTextBanner
+            <PromoBanner
               promoTextBanner={promoTextBanner}
               className="moduleN__promo-banner"
               color="white"
@@ -83,7 +83,7 @@ const ModuleN = (props: Props) => {
             />
           )}
           {promoTextBanner && (
-            <PromoTextBanner
+            <PromoBanner
               promoTextBanner={promoTextBanner}
               className="moduleN__promo-banner"
               color="white"
@@ -104,7 +104,7 @@ const ModuleN = (props: Props) => {
             />
           )}
           {promoTextBanner && (
-            <PromoTextBanner
+            <PromoBanner
               promoTextBanner={promoTextBanner}
               className="moduleN__promo-banner"
               color="white"

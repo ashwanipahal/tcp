@@ -493,16 +493,6 @@ exports[`CardTile should render correctly with gift card 1`] = `
       url=""
     />
     <Styled(View)>
-      <Styled(Anchor)
-        anchorVariation="primary"
-        customStyle={Object {}}
-        data-locator="payment-giftcardeditlink"
-        fontSizeVariation="large"
-        text=""
-        to="/#"
-        underline={true}
-        visible={false}
-      />
       <Styled(View) />
       <Styled(Anchor)
         anchorVariation="primary"
@@ -693,16 +683,6 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
       url=""
     />
     <Styled(View)>
-      <Styled(Anchor)
-        anchorVariation="primary"
-        customStyle={Object {}}
-        data-locator="payment-giftcardeditlink"
-        fontSizeVariation="large"
-        text=""
-        to="/#"
-        underline={true}
-        visible={false}
-      />
       <Styled(View) />
       <Styled(Anchor)
         anchorVariation="primary"
@@ -1050,16 +1030,6 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       url=""
     />
     <Styled(View)>
-      <Styled(Anchor)
-        anchorVariation="primary"
-        customStyle={Object {}}
-        data-locator="payment-giftcardeditlink"
-        fontSizeVariation="large"
-        text=""
-        to="/#"
-        underline={true}
-        visible={false}
-      />
       <Styled(View) />
       <Styled(Anchor)
         anchorVariation="primary"

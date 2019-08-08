@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Help Coupon Modal should call correctly 1`] = `
+<Styled(Modal)
+  className="TCPModal__Content"
+  closeIconDataLocator="helpmodalcrossicon"
+  isOpen={false}
+  maxWidth="460px"
+  minHeight="500px"
+  onRequestClose={[MockFunction]}
+  overlayClassName="TCPModal__Overlay"
+>
+  <div />
+</Styled(Modal)>
+`;
