@@ -19,8 +19,6 @@ class ProductListingPageContainer extends React.Component {
 function mapStateToProps(state) {
   return {
     products: state.ProductListing.loadedProducts,
-    // products: getExpensivePlpProducts(state),
-    // giftCardProducts: giftCardProducts(state),
   };
 }
 

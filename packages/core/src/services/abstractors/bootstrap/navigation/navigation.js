@@ -31,6 +31,8 @@ const Abstractor = {
       return {
         categoryContent: listItem.categoryContent,
         subCategories,
+        url: 'uniform-shop-girls-clothing-school-uniforms-tops',
+        categoryId: '484507>484508',
       };
     });
   },

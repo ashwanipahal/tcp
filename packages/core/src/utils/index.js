@@ -14,6 +14,7 @@ export {
   getViewportInfo,
   showOverlay,
   closeOverlay,
+  bindAllClassMethodsToThis,
 } from './utils.web';
 
 export {
