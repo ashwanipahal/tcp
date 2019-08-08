@@ -113,7 +113,7 @@ const OrderLedger = ({ ledgerSummaryData, labels }) => {
               shippingTotal !== undefined
                 ? { shippingTotal } > 0
                   ? `${currencySymbol}${shippingTotal.toFixed(2)}`
-                  : 'Free'
+                  : labels.free
                 : '-'
             }
           />

@@ -143,7 +143,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
                 ? // eslint-disable-next-line no-constant-condition
                   { shippingTotal } > 0
                   ? `${currencySymbol}${shippingTotal.toFixed(2)}`
-                  : 'Free'
+                  : labels.free
                 : '-'}
             </BodyCopy>
           </Col>
