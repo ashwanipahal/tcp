@@ -1499,7 +1499,6 @@ class ProductsDynamicAbstractor {
       payload.body[`pagetype`] = 'boolean';
       if (categoryId) {
         payload.body['p-id'] = `categoryPathId:"${categoryId}"`;
-        payload.body['uid'] = 'uid-1563946353348-89276';
       }
     }
 

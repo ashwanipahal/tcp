@@ -1,3 +1,21 @@
+const getIndex = data => {
+  return data && data.some(category => !!category.url) ? data.length : 0;
+};
+
+const getRequiredCategoryData = data => {
+  return {
+    categoryId: data.categoryContent.id,
+    title: data.categoryContent.name,
+    // seoTitle: data.seoTitle,
+    // seoDesc: data.seoDesc,
+    longDescription: data.categoryContent.longDescription,
+    url: data.url,
+    // productCount: data.productCount,
+    // isL1Category: data.isL1Category,
+    // isUnique: data.isUnique,
+  };
+};
+
 export const extractCategory = category => {
   // Extracting category id or path from the URL
   try {
@@ -18,24 +36,24 @@ export const extractCategory = category => {
 };
 
 export const findCategoryIdandName = (data, category) => {
-  const index = this.getIndex(data);
+  const index = getIndex(data);
   let iterator = 0;
   let categoryFound = [];
-  const categoryId = this.extractCategory(category);
+  const categoryId = extractCategory(category);
   while (iterator < index) {
-    const navUrl = this.extractCategory(data[iterator].url);
+    const navUrl = extractCategory(data[iterator].url);
     if (
       data[iterator].categoryId === categoryId ||
       navUrl.toLowerCase() === categoryId.toLowerCase()
     ) {
-      categoryFound.push(this.getRequiredCategoryData(data[iterator]));
-    } else if (data[iterator].menuItems && data[iterator].menuItems.length) {
-      categoryFound = this.findCategoryIdandName(
-        data[iterator].menuItems[0].length ? data[iterator].menuItems[0] : data[iterator].menuItems,
-        category
-      );
+      categoryFound.push(getRequiredCategoryData(data[iterator]));
+    } else if (
+      data[iterator].subCategories.Categories &&
+      data[iterator].subCategories.Categories.length
+    ) {
+      categoryFound = findCategoryIdandName(data[iterator].subCategories.Categories, category);
       if (categoryFound.length) {
-        categoryFound.push(this.getRequiredCategoryData(data[iterator]));
+        categoryFound.push(getRequiredCategoryData(data[iterator]));
       }
     }
     if (categoryFound.length) {

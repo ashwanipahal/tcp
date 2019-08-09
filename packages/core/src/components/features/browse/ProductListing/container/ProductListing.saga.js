@@ -8,15 +8,17 @@ import Abstractor from '../../../../../services/abstractors/productListing';
 import BucketingBL from './ProductListing.bucketing';
 import { extractCategory, findCategoryIdandName } from './ProductListing.util';
 
+// TODO - refactor this function - this is random and dummy
 const matchPath = (url, param) => {
   if (param === '/search' && url.indexOf(param) !== -1) {
     return {
       searchTerm: url,
     };
   }
-  if (param === '/c' && url.indexOf(param)) {
+  if (param === '/c' && url.indexOf(param) !== -1) {
+    const urlWithCat = url.split('/c/')[1];
     return {
-      listingKey: url,
+      listingKey: urlWithCat,
     };
   }
   return url;
@@ -110,24 +112,6 @@ class ProductsOperator {
     return `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/category/color-swatches/${id}.gif`;
   };
 
-  getRequiredCategoryData = data => {
-    return {
-      categoryId: data.categoryId,
-      title: data.title || data.name,
-      seoTitle: data.seoTitle,
-      seoDesc: data.seoDesc,
-      longDescription: data.longDescription,
-      url: data.url,
-      productCount: data.productCount,
-      isL1Category: data.isL1Category,
-      isUnique: data.isUnique,
-    };
-  };
-
-  getIndex = data => {
-    return data && data.some(category => !!category.url) ? data.length : 0;
-  };
-
   getNavAttributes(navTree, categoryId, attribute) {
     const index = navTree ? navTree.length : 0;
     let iterator = 0;
@@ -153,6 +137,37 @@ class ProductsOperator {
     return categoryFound;
   }
 
+  /** @function This function return the L3 items of the requested category id of L2.
+   * @param navTree {Object} The vaigation free of left navigation.
+   * @param targetId {String} The category ID of L2 whose children we need.
+   * @param trgtChildItm {Array} The resultant desired array of all L3.
+   * @return trgtChildItm {Array} The resultant desired array of all L3.
+   */
+
+  shouldBucktSeq(navTree, targetId, trgtChildItm) {
+    const navTreeLength = navTree.length;
+    let newTrgtChildItm = trgtChildItm || [];
+    for (let idx = 0; idx < navTreeLength; idx++) {
+      const currItm = navTree[idx];
+      // Check if the category of the navigation bieng looped on matches with desired L2 category ID.
+      if (currItm.categoryId === targetId) {
+        newTrgtChildItm =
+          currItm.subCategories.Categories &&
+          currItm.subCategories.Categories.length &&
+          currItm.menuItems;
+        return newTrgtChildItm;
+      }
+      if (currItm.menuItems && currItm.menuItems.length) {
+        // If the category ID does not matches up then recursively call the same function to search depe down the tree.
+        newTrgtChildItm = this.shouldBucktSeq(
+          currItm.menuItems[0].length ? currItm.menuItems[0] : currItm.menuItems,
+          targetId,
+          newTrgtChildItm
+        );
+      }
+    }
+    return newTrgtChildItm;
+  }
   // eslint-disable-next-line
   getProductsListingInfo = (
     state,
@@ -172,15 +187,14 @@ class ProductsOperator {
     const match = isSearchPage
       ? matchPath(window.location.pathname, '/search')
       : matchPath(window.location.pathname, '/c');
-    // const categoryKey = isSearchPage ? match.searchTerm : match.listingKey;
-    const categoryKey = 'uniform-shop-girls-clothing-school-uniforms-tops';
+    const categoryKey = isSearchPage ? match.searchTerm : match.listingKey;
     const navigationTree = state.navigationData;
-    const categoryNameList = this.findCategoryIdandName(navigationTree, categoryKey).reverse();
+    const categoryNameList = findCategoryIdandName(navigationTree, categoryKey).reverse();
     const breadCrumb = categoryNameList
       ? categoryNameList.map(crumb => ({
           categoryId: crumb.categoryId,
           displayName: crumb.title,
-          urlPathSuffix: this.extractCategory(crumb.url),
+          urlPathSuffix: extractCategory(crumb.url),
           longDescription: crumb.longDescription,
         }))
       : [];

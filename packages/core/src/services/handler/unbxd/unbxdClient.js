@@ -1,4 +1,5 @@
 import superagent from 'superagent';
+import { readCookie } from '../../../utils/cookie.util';
 import { API_CONFIG } from '../../config';
 import { isClient } from '../../../utils';
 
@@ -46,9 +47,16 @@ const unbxdAPIClient = (apiConfig, reqObj) => {
 
   // make the api call
   if (requestType === 'get') {
+    const unbxdUID = readCookie('unbxd.userId', document && document.cookie);
+    console.log('unbxdUID', unbxdUID);
+    if (isClient() && unbxdUID) {
+      // eslint-disable-next-line
+      reqObj.body.uid = unbxdUID;
+    } else {
+      // eslint-disable-next-line
+      reqObj.body.uid = 'uid-1563946353348-89276';
+    }
     request.query(reqObj.body);
-    // eslint-disable-next-line
-    reqObj.body.uid = 'uid-1563946353348-89276';
     // eslint-disable-next-line no-underscore-dangle
     if (request._query && request._query.length > 0) {
       // eslint-disable-next-line no-underscore-dangle

@@ -11,14 +11,16 @@ class ProductListingPageContainer extends React.Component {
   }
 
   render() {
-    const { products } = this.props;
-    return <ProductListing products={products} />;
+    const { products, currentNavIds, navTree } = this.props;
+    return <ProductListing products={products} currentNavIds={currentNavIds} navTree={navTree} />;
   }
 }
 
 function mapStateToProps(state) {
   return {
     products: state.ProductListing.loadedProducts,
+    currentNavIds: state.ProductListing.currentNavigationIds,
+    navTree: state.Navigation.navigationData,
   };
 }
 
@@ -35,10 +37,14 @@ function mapDispatchToProps(dispatch) {
 ProductListingPageContainer.propTypes = {
   getProducts: PropTypes.func.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({})),
+  currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
+  navTree: PropTypes.shape({}),
 };
 
 ProductListingPageContainer.defaultProps = {
   products: [],
+  currentNavIds: [],
+  navTree: {},
 };
 
 export default connect(

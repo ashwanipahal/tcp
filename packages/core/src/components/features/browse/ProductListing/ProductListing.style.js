@@ -13,6 +13,5 @@ export default css`
   .product-list {
     background: white;
     display: flex;
-    justify-content: space-between;
   }
 `;

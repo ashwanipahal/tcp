@@ -6,6 +6,11 @@ const buildQuery = ({ brand, country, channel }) => `
       isUnique
       productCount
       description
+      catgroupId
+      seoTitle
+      seoMetaDesc
+      seoUrl
+      productNodeCount
       name
       id
       mainCategory {

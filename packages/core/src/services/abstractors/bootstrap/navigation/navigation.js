@@ -22,6 +22,19 @@ const Abstractor = {
         if (!subCategories[subCategory.categoryContent.groupIdentifierName || 'Lorem Ipsum']) {
           subCategories[subCategory.categoryContent.groupIdentifierName || 'Lorem Ipsum'] = [];
         }
+        // eslint-disable-next-line
+        subCategory.url =
+          subCategory.categoryContent.seoUrl ||
+          `/us/${
+            subCategory.categoryContent.seoToken.startsWith('content-')
+              ? subCategory.categoryContent.seoToken.replace(
+                  new RegExp('content-', 'g'),
+                  'content/'
+                )
+              : // eslint-disable-next-line
+                'c/' +
+                (subCategory.categoryContent.seoToken || subCategory.categoryContent.catgroupId)
+          }`;
         subCategories[subCategory.categoryContent.groupIdentifierName || 'Lorem Ipsum'].push(
           subCategory
         );
@@ -31,8 +44,16 @@ const Abstractor = {
       return {
         categoryContent: listItem.categoryContent,
         subCategories,
-        url: 'uniform-shop-girls-clothing-school-uniforms-tops',
-        categoryId: '484507>484508',
+        url:
+          listItem.categoryContent.seoUrl ||
+          `/us/${
+            listItem.categoryContent.seoToken &&
+            listItem.categoryContent.seoToken.startsWith('content-')
+              ? listItem.categoryContent.seoToken.replace(new RegExp('content-', 'g'), 'content/')
+              : // eslint-disable-next-line
+                'c/' + (listItem.categoryContent.seoToken || listItem.categoryContent.catgroupId)
+          }`,
+        categoryId: listItem.categoryContent.catgroupId,
       };
     });
   },
