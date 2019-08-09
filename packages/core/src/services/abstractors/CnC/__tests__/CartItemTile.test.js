@@ -53,8 +53,11 @@ describe('#getOrderPointSummary', () => {
     });
   });
   it('should return valid constructCouponStructure', () => {
-    const result = constructCouponStructure(couponResponse);
-    expect(result).toEqual(couponFormatResponse);
+    let result = constructCouponStructure(couponResponse);
+    result = Object.assign({}, result[0], {
+      expirationDateTimeStamp: '',
+    });
+    expect([result]).toEqual(couponFormatResponse);
   });
 
   it('should return valid constructCouponStructure response', () => {
@@ -71,8 +74,11 @@ describe('#getOrderPointSummary', () => {
         redemptionType: 'PLACECASH',
       },
     ];
-    const result = constructCouponStructure(temp);
-    expect(result).toEqual(expected);
+    let result = constructCouponStructure(temp);
+    result = Object.assign({}, result[0], {
+      expirationDateTimeStamp: '',
+    });
+    expect([result]).toEqual(expected);
   });
 
   it('should return valid constructCouponStructure LOYALTY', () => {
@@ -89,9 +95,13 @@ describe('#getOrderPointSummary', () => {
         redemptionType: 'LOYALTY',
       },
     ];
-    const result = constructCouponStructure(temp);
-    expect(result).toEqual(expected);
+    let result = constructCouponStructure(temp);
+    result = Object.assign({}, result[0], {
+      expirationDateTimeStamp: '',
+    });
+    expect([result]).toEqual(expected);
   });
+
   it('should return valid constructCouponStructure isApplied', () => {
     const temp = [
       {
@@ -105,7 +115,10 @@ describe('#getOrderPointSummary', () => {
         status: 'applied',
       },
     ];
-    const result = constructCouponStructure(temp);
-    expect(result).toEqual(expected);
+    let result = constructCouponStructure(temp);
+    result = Object.assign({}, result[0], {
+      expirationDateTimeStamp: '',
+    });
+    expect([result]).toEqual(expected);
   });
 });

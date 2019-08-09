@@ -24,6 +24,10 @@ const styles = css`
       margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
     }
   }
+
+  .addressTile__name {
+    word-break: break-word;
+  }
 `;
 
 export default styles;

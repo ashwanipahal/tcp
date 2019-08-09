@@ -1,6 +1,6 @@
 const ignorePsuedoCodeDir = [
   '/ProductListingPage/',
-  // '/services/abstractors/CnC/CartItemTile.js',
+  '/services/abstractors/CnC/AddedToBag.js',
   '/plpDeltaSync/',
   '/LoginPage/',
   '/server/',

@@ -7,6 +7,7 @@ exports[`BossBannerView component renders correctly 1`] = `
     fullBleed={true}
   >
     <Styled(Col)
+      className="image-wrapper"
       colSize={
         Object {
           "large": 3,
@@ -209,7 +210,7 @@ exports[`BossBannerView component renders correctly 1`] = `
           </Styled(BodyCopy)>
         </div>
         <Styled(BodyCopy)
-          className="padding-left-10"
+          className="padding-left-10 edit-top-padding"
           color="text.primary"
           component="div"
           fontFamily="secondary"
@@ -345,8 +346,8 @@ exports[`BossBannerView component renders correctly 1`] = `
           className="padding-left-13"
           colSize={
             Object {
-              "large": 8,
-              "medium": 6,
+              "large": 7,
+              "medium": 5,
               "small": 4,
             }
           }
@@ -354,9 +355,9 @@ exports[`BossBannerView component renders correctly 1`] = `
         <Styled(Col)
           colSize={
             Object {
-              "large": 3,
-              "medium": 1,
-              "small": 1,
+              "large": 4,
+              "medium": 3,
+              "small": 2,
             }
           }
         >

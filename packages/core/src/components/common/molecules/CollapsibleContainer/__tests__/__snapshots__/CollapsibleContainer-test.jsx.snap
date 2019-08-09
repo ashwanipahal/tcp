@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CollapsibleContainer should render correctly 1`] = `
+<div
+  className=""
+>
+  <button
+    aria-expanded={false}
+    className="collapsible-header"
+    onClick={[Function]}
+    onKeyPress={[Function]}
+  >
+    <Styled(Image)
+      className="collapsible-icon"
+      src="/static/images/carrot-small-down.png"
+    />
+    <div>
+      <div>
+        hello
+      </div>
+    </div>
+  </button>
+  <div
+    className="item-closed"
+  >
+    <div>
+      body
+    </div>
+  </div>
+</div>
+`;

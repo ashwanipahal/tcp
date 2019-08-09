@@ -29,3 +29,17 @@ export const hideL2Drawer = payload => {
     type: NAVIGATION_CONSTANTS.HIDE_L2_DRAWER,
   };
 };
+
+export const openL3Drawer = payload => {
+  return {
+    payload,
+    type: NAVIGATION_CONSTANTS.OPEN_L3_DRAWER,
+  };
+};
+
+export const hideL3Drawer = payload => {
+  return {
+    payload,
+    type: NAVIGATION_CONSTANTS.HIDE_L3_DRAWER,
+  };
+};
