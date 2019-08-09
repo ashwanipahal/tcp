@@ -53,6 +53,9 @@ export default css`
       position: relative;
       padding: 38px 20px 12px 20px;
     }
+    .nav-bar-item-label {
+      width: 100%;
+    }
     &:hover {
       background: linear-gradient(to bottom, rgba(255, 255, 255, 0.99), #f6f6f6);
       color: ${props => props.theme.colorPalette.text.primary};

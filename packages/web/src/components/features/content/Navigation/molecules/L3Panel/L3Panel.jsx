@@ -4,6 +4,7 @@ import { Anchor, BodyCopy, Row } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import style from './L3Panel.style';
 import Drawer from '../Drawer';
+import mock from './mock';
 
 const L3Panel = props => {
   const { id, hideL3Drawer, name, className, links, open, close } = props;
@@ -37,9 +38,17 @@ const L3Panel = props => {
         <Row className="nav-bar-l3-details" tabIndex={0}>
           <ul>
             <li>
-              <a className="l2-nav-link" href="/c" role="menuitem">
-                Shop All
-              </a>
+              <Anchor to="/c" data-locator="l3_link_shop_all">
+                <BodyCopy
+                  className="l2-nav-link"
+                  fontFamily="secondary"
+                  fontSize={['fs13', 'fs13', 'fs14']}
+                  lineHeight="lh107"
+                  color="text.primary"
+                >
+                  <span className="nav-bar-item-label full-width">{mock.shopAllLabel}</span>
+                </BodyCopy>
+              </Anchor>
             </li>
             {links.map((l3Links, index) => {
               const {

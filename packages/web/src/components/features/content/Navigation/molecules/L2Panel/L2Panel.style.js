@@ -131,6 +131,7 @@ export default css`
       display: flex;
       ul {
         flex-grow: 1;
+        max-width: 50%;
       }
     }
     .l2-nav-link {

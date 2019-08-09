@@ -43,13 +43,34 @@ exports[`L3 Panel component renders correctly 1`] = `
     >
       <ul>
         <li>
-          <a
-            className="l2-nav-link"
-            href="/c"
-            role="menuitem"
+          <Styled(Anchor)
+            data-locator="l3_link_shop_all"
+            to="/c"
           >
-            Shop All
-          </a>
+            <Styled(BodyCopy)
+              className="l2-nav-link"
+              color="text.primary"
+              component="p"
+              fontFamily="secondary"
+              fontSize={
+                Array [
+                  "fs13",
+                  "fs13",
+                  "fs14",
+                ]
+              }
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="lh107"
+              textAlign="left"
+            >
+              <span
+                className="nav-bar-item-label full-width"
+              >
+                Shop All
+              </span>
+            </Styled(BodyCopy)>
+          </Styled(Anchor)>
         </li>
         <li>
           <Styled(Anchor)
