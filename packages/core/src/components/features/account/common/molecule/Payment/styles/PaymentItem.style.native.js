@@ -7,7 +7,7 @@ const PaymentContainer = styled.View`
 
 const PaymentInfoContainer = styled.View`
   flex-direction: row;
-  margin-top: 8px;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 const PaymentInfo = styled.View`
@@ -20,7 +20,7 @@ const TouchableLink = styled.TouchableHighlight.attrs({
   underlayColor: props => props.theme.colors.BUTTON.WHITE.ALT_FOCUS,
 })`
   flex: 0.2;
-  margin-right: 10;
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
 
 const PaymentDetails = {

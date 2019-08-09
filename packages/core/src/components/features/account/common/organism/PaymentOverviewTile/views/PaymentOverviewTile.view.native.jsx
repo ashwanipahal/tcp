@@ -18,8 +18,6 @@ import {
   ButtonWrapperStyle,
 } from '../styles/PaymentOverviewTile.style.native';
 
-// @flow
-
 export class PaymentOverviewTile extends React.PureComponent<Props> {
   static propTypes = {
     getCardListAction: PropTypes.func,
@@ -122,7 +120,7 @@ export class PaymentOverviewTile extends React.PureComponent<Props> {
   }
 }
 
-export const mapDispatchToProps = (dispatch: ({}) => void) => {
+export const mapDispatchToProps = dispatch => {
   return {
     getCardListAction: () => {
       dispatch(getCardList());
