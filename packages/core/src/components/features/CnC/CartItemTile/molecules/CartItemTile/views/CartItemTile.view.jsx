@@ -26,7 +26,11 @@ class ProductTile extends React.Component {
     return (
       <ProductInformationStyle>
         <Row fullBleed className="product">
-          <Col key="productDetails" colSize={{ small: 2, medium: 2, large: 3 }}>
+          <Col
+            key="productDetails"
+            className="image-wrapper"
+            colSize={{ small: 2, medium: 2, large: 3 }}
+          >
             <Image
               alt={labels.productImageAlt}
               className="product-image"
@@ -169,7 +173,7 @@ class ProductTile extends React.Component {
                     fontFamily="secondary"
                     fontSize="fs12"
                     component="div"
-                    className="padding-left-10"
+                    className="padding-left-10 edit-top-padding"
                     onClick={() => {
                       this.setState({ isEdit: true });
                     }}
@@ -232,7 +236,7 @@ class ProductTile extends React.Component {
               </Col>
             </Row>
             <Row className="padding-top-15 padding-bottom-20" fullBleed>
-              <Col className="padding-left-13" colSize={{ small: 4, medium: 6, large: 8 }}>
+              <Col className="padding-left-13" colSize={{ small: 4, medium: 5, large: 7 }}>
                 {productDetail.miscInfo.store && (
                   <BodyCopy
                     fontFamily="secondary"
@@ -251,7 +255,7 @@ class ProductTile extends React.Component {
                   </BodyCopy>
                 )}
               </Col>
-              <Col colSize={{ small: 1, medium: 1, large: 3 }}>
+              <Col colSize={{ small: 2, medium: 3, large: 4 }}>
                 <BodyCopy fontFamily="secondary" fontSize="fs12" component="span">
                   <u>{labels.saveForLater}</u>
                 </BodyCopy>

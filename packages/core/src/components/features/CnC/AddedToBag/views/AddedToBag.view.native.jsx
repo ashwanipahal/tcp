@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { View } from 'react-native';
 import Modal from '../../../../common/molecules/Modal';
 import withStyles from '../../../../common/hoc/withStyles';
 import { styles, StyledText, AddedToBagWrapper } from '../styles/AddedToBag.style.native';
@@ -8,8 +9,17 @@ import ProductInformation from '../molecules/ProductInformation/views/ProductInf
 import BossBanner from '../molecules/BossBanner/views/BossBanner.views.native';
 import AddedToBagViewPoints from '../../AddedToBagViewPoints';
 import AddedToBagActions from '../../AddedToBagActions/views/AddedToBagActions.native';
+import Anchor from '../../../../common/atoms/Anchor';
 
-const AddedToBag = ({ openState, onRequestClose, className, addedToBagData, labels, quantity }) => {
+const AddedToBag = ({
+  openState,
+  onRequestClose,
+  className,
+  addedToBagData,
+  labels,
+  quantity,
+  handleContinueShopping,
+}) => {
   return (
     <Modal
       fixedWidth
@@ -40,6 +50,18 @@ const AddedToBag = ({ openState, onRequestClose, className, addedToBagData, labe
         <AddedToBagViewPoints labels={labels} />
         <AddedToBagActions labels={labels} />
         <BossBanner labels={labels} />
+        <View className="continue-shopping">
+          <Anchor
+            fontSizeVariation="medium"
+            underline
+            anchorVariation="primary"
+            onPress={handleContinueShopping}
+            noLink
+            to=""
+            data-locator="addedToBag-continueShopping"
+            text={labels.continueShopping}
+          />
+        </View>
       </AddedToBagWrapper>
     </Modal>
   );
@@ -52,6 +74,7 @@ AddedToBag.propTypes = {
   addedToBagData: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
   labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])).isRequired,
   quantity: PropTypes.string.isRequired,
+  handleContinueShopping: PropTypes.func.isRequired,
 };
 
 export default withStyles(AddedToBag, styles);

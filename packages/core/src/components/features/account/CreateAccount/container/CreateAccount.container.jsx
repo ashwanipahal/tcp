@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import CreateAccountView from '../views/CreateAccount.view';
+import CreateAccountView from '../views/CreateAccountView';
 import { createAccount, resetCreateAccountErr } from './CreateAccount.actions';
 import {
   getIAgree,

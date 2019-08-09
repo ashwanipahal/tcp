@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`Create Account Page should render correctly 1`] = `
-<Styled(CreateAccounPage)
-  createAccountAction={[MockFunction]}
-/>
-`;
