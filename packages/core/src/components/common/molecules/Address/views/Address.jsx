@@ -92,6 +92,7 @@ const Address = ({
         component="p"
         fontWeight={fontWeight}
         fontFamily="secondary"
+        className="addressTile__name"
         data-locator={dataLocatorPrefix ? `${dataLocatorPrefix}-fullname` : ''}
       >
         {`${address.firstName} ${address.lastName}${isDefault ? ' (Default)' : ''}`}
