@@ -7,7 +7,6 @@ exports[`CartItemRadioButtons Component LabeledRadioButton should render correct
 >
   <input
     checked={true}
-    disabled={true}
     id="_1"
     type="radio"
   />

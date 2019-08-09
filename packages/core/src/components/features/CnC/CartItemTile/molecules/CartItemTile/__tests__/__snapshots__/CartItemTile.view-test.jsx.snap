@@ -13,6 +13,7 @@ exports[`BossBannerView component renders correctly 1`] = `
           "
   ",
           "
+  padding: 10px 15px;
   border-bottom: 2px solid ",
           [Function],
           ";
@@ -55,6 +56,9 @@ exports[`BossBannerView component renders correctly 1`] = `
   .color-size-fit-label {
     display: inline-block;
   }
+  .responsive-edit-css {
+    padding-top: 2px;
+  }
 
   .product-tile-wrapper {
     flex-wrap: nowrap;
@@ -81,86 +85,79 @@ exports[`BossBannerView component renders correctly 1`] = `
         width: 60px;
       }
     }
-    & .bag-product-detail-wrapper {
-      position: relative;
-      @media ",
-          [Function],
-          " {
-        position: static;
-      }
 
-      & .color-size-fit-label {
-        width: 40px;
-        display: inline-block;
-      }
+    .color-size-fit-label {
+      width: 40px;
+      display: inline-block;
+    }
+
+    .bag-product-detail-wrapper {
+      position: relative;
 
       .color-fit-size-separator {
         padding: 0 10px;
       }
 
-      & .label-responsive-wrapper {
+      .label-responsive {
+        width: 40px;
+        margin-right: 0;
+      }
+
+      .value-responsive {
+        flex: 1;
+        padding-left: 10px;
+      }
+      .label-responsive-wrapper {
         padding-top: 0;
         display: flex;
         flex: 1;
-        & .label-responsive {
-          width: 40px;
-          margin-right: 0;
-        }
-        & .value-responsive {
-          flex: 1;
-          padding-left: 10px;
-        }
       }
 
-      & .responsive-edit-css {
+      .responsive-edit-css {
         padding-top: 2px;
-        @media ",
-          [Function],
-          " {
-          position: absolute;
-          bottom: 0;
-          right: 50%;
-        }
       }
+    }
 
-      & .color-map-size-fit {
-        @media ",
+    @media ",
           [Function],
           " {
-          display: block;
-          & .color-fit-size-separator {
-            display: none;
-          }
-        }
+      .price-label {
+        position: absolute;
+        bottom: 0;
+        right: 0;
       }
+      .save-for-later-label {
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+        width: 100%;
+      }
+      .color-map-size-fit {
+        display: block;
+      }
+      .responsive-edit-css {
+        position: absolute;
+        bottom: 0;
+        right: 50%;
+      }
+      .bag-product-detail-wrapper {
+        position: static;
+      }
+      .color-fit-size-separator {
+        display: none;
+      }
+    }
 
-      & .color-fit-size-desktop {
-        @media ",
+    @media ",
           [Function],
           " {
-          width: auto;
-        }
+      .color-fit-size-desktop {
+        width: auto;
       }
-      & .save-for-later-label {
-        @media ",
-          [Function],
-          " {
-          position: absolute;
-          bottom: 0px;
-          left: 0;
-          width: 100%;
-        }
-      }
-      & .price-label {
-        @media ",
-          [Function],
-          " {
-          position: absolute;
-          bottom: 0;
-          right: 0;
-        }
-        margin-left: 170px;
-      }
+    }
+
+    .price-label {
+      margin-left: 170px;
     }
   }
 

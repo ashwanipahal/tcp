@@ -67,74 +67,75 @@ export default css`
         width: 60px;
       }
     }
-    & .bag-product-detail-wrapper {
-      position: relative;
-      @media ${props => props.theme.mediaQuery.mediumMax} {
-        position: static;
-      }
 
-      & .color-size-fit-label {
-        width: 40px;
-        display: inline-block;
-      }
+    .color-size-fit-label {
+      width: 40px;
+      display: inline-block;
+    }
+
+    .bag-product-detail-wrapper {
+      position: relative;
 
       .color-fit-size-separator {
         padding: 0 10px;
       }
 
-      & .label-responsive-wrapper {
+      .label-responsive {
+        width: 40px;
+        margin-right: 0;
+      }
+
+      .value-responsive {
+        flex: 1;
+        padding-left: 10px;
+      }
+      .label-responsive-wrapper {
         padding-top: 0;
         display: flex;
         flex: 1;
-        & .label-responsive {
-          width: 40px;
-          margin-right: 0;
-        }
-        & .value-responsive {
-          flex: 1;
-          padding-left: 10px;
-        }
       }
 
-      & .responsive-edit-css {
+      .responsive-edit-css {
         padding-top: 2px;
-        @media ${props => props.theme.mediaQuery.mediumMax} {
-          position: absolute;
-          bottom: 0;
-          right: 50%;
-        }
       }
+    }
 
-      & .color-map-size-fit {
-        @media ${props => props.theme.mediaQuery.mediumMax} {
-          display: block;
-          & .color-fit-size-separator {
-            display: none;
-          }
-        }
+    @media ${props => props.theme.mediaQuery.mediumMax} {
+      .price-label {
+        position: absolute;
+        bottom: 0;
+        right: 0;
       }
+      .save-for-later-label {
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+        width: 100%;
+      }
+      .color-map-size-fit {
+        display: block;
+      }
+      .responsive-edit-css {
+        position: absolute;
+        bottom: 0;
+        right: 50%;
+      }
+      .bag-product-detail-wrapper {
+        position: static;
+      }
+      .color-fit-size-separator {
+        display: none;
+      }
+    }
 
-      & .color-fit-size-desktop {
-        @media ${props => props.theme.mediaQuery.large} {
-          width: auto;
-        }
+    @media ${props => props.theme.mediaQuery.large} {
+      .color-fit-size-desktop {
+        width: auto;
       }
-      & .save-for-later-label {
-        @media ${props => props.theme.mediaQuery.mediumMax} {
-          position: absolute;
-          bottom: 0px;
-          left: 0;
-          width: 100%;
-        }
-      }
-      & .price-label {
-        @media ${props => props.theme.mediaQuery.mediumMax} {
-          position: absolute;
-          bottom: 0;
-          right: 0;
-        }
-        margin-left: 170px;
-      }
+    }
+
+    .price-label {
+      margin-left: 170px;
     }
   }
 

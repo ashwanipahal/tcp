@@ -10,6 +10,7 @@ type Props = {
   title: string,
   name: string,
   checked: boolean,
+  disabled: boolean,
 };
 
 class LabeledRadioButton extends React.Component<Props> {
@@ -21,12 +22,12 @@ class LabeledRadioButton extends React.Component<Props> {
   }
 
   render() {
-    const { title, className, children, name, checked, ...otherProps } = this.props;
+    const { title, className, children, name, checked, disabled, ...otherProps } = this.props;
     const id = `${name}_${this.labeledRadioButtonCounter}`;
 
     return (
       <label htmlFor={id} className={className}>
-        <input {...otherProps} id={id} type="radio" checked={checked} disabled />
+        <input {...otherProps} id={id} type="radio" checked={checked} disabled={disabled} />
         <span className="checkmark" />
         {children && <div>{children}</div>}
         {title && <span>{title}</span>}

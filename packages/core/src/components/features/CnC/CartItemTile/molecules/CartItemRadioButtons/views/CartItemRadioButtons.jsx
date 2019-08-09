@@ -39,6 +39,7 @@ class CartItemRadioButtons extends React.Component {
           name={radioGroupName}
           onChange={e => this.handleToggle(e, 'BOSS')}
           checked={selectedOrder === 'BOSS'}
+          disabled
         >
           <BodyCopy color="gray.900" fontSize="fs14" fontFamily="secondary">
             {labels.bossPickUp}
@@ -53,6 +54,7 @@ class CartItemRadioButtons extends React.Component {
           name={radioGroupName}
           onChange={e => this.handleToggle(e, 'BOPIS')}
           checked={selectedOrder === 'BOPIS'}
+          disabled
         >
           <div className="main-content-banner">
             <BodyCopy color="gray.900" fontSize="fs14" fontFamily="secondary">
@@ -99,6 +101,7 @@ class CartItemRadioButtons extends React.Component {
           name={radioGroupName}
           onChange={e => this.handleToggle(e, 'ECOM')}
           checked={selectedOrder === 'ECOM'}
+          disabled={false}
         >
           <BodyCopy color="gray.900" fontSize="fs14" fontFamily="secondary">
             {labels.ecomShipping}

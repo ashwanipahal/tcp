@@ -91,6 +91,10 @@ export const getProductItemId = product => {
   return product.getIn(['itemInfo', 'itemId']);
 };
 
+export const getProductItemUnitOfferPrice = product => {
+  return product.getIn(['itemInfo', 'unitOfferPrice']);
+};
+
 export const getLabelsCartItemTile = state => {
   const {
     bag: {
@@ -159,6 +163,7 @@ export const getProductDetails = tile => {
       imagePath: getProductImage(tile),
       itemPrice: getProductItemPrice(tile),
       itemId: getProductItemId(tile),
+      unitOfferPrice: getProductItemUnitOfferPrice(tile),
     },
     productInfo: {
       productPartNumber: getProductPartNumber(tile),

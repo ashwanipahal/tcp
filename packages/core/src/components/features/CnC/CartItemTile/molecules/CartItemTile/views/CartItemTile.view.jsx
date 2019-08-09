@@ -60,7 +60,7 @@ class CartItemTile extends React.Component {
   };
 
   getColorLabel = (productDetail, labels) => {
-    return productDetail.itemInfo.isGiftItem === true ? `${labels.design} :` : `${labels.color} :`;
+    return productDetail.itemInfo.isGiftItem === true ? `${labels.design}:` : `${labels.color}:`;
   };
 
   getPointsColor = pageView => {
@@ -96,9 +96,11 @@ class CartItemTile extends React.Component {
           fontSize="fs12"
           fontWeight={['extrabold']}
         >
-          {`$${productDetail.itemInfo.price}`}
+          {pageView === 'myBag'
+            ? `$${productDetail.itemInfo.unitOfferPrice}`
+            : `$${productDetail.itemInfo.price}`}
         </BodyCopy>
-        {pageView === 'myBag' && (
+        {pageView === 'myBag' && productDetail.itemInfo.itemPrice !== productDetail.itemInfo.price && (
           <BodyCopy className="list-price" fontFamily="secondary" component="span" fontSize="fs12">
             {`$${productDetail.itemInfo.itemPrice}`}
           </BodyCopy>
