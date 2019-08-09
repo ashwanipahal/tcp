@@ -8,6 +8,7 @@ import {
   getCouponsLabels,
   getAppliedCouponListState,
   getAvailableCouponListState,
+  getNeedHelpContent,
 } from './Coupon.selectors';
 import Coupon from '../views/Coupon.view';
 
@@ -19,10 +20,13 @@ export class CouponContainer extends React.PureComponent<Props> {
       handleApplyCoupon,
       appliedCouponList,
       availableCouponList,
+      needHelpRichText,
     } = this.props;
+
+    const updateLabels = { ...labels, NEED_HELP_RICH_TEXT: needHelpRichText };
     return (
       <Coupon
-        labels={labels}
+        labels={updateLabels}
         isFetching={isFetching}
         handleApplyCoupon={handleApplyCoupon}
         appliedCouponList={appliedCouponList}
@@ -52,6 +56,7 @@ const mapStateToProps = state => ({
   labels: getCouponsLabels(state),
   appliedCouponList: getAppliedCouponListState(state),
   availableCouponList: getAvailableCouponListState(state),
+  needHelpRichText: getNeedHelpContent(state),
 });
 
 export default connect(

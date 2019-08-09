@@ -3,6 +3,7 @@ import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import { getOrderDetailsData, getCartData } from '../../../../../services/abstractors/CnC';
 
 import BAG_PAGE_ACTIONS from './BagPage.actions';
+import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
 
 export function* getOrderDetailSaga() {
   try {
@@ -33,9 +34,19 @@ export function* getCartDataSaga(isRecalculateTaxes) {
   }
 }
 
+export function* fetchModuleX({ payload = '' }) {
+  try {
+    const result = yield call(getModuleX, payload);
+    yield put(BAG_PAGE_ACTIONS.setModuleX(result));
+  } catch (err) {
+    yield null;
+  }
+}
+
 export function* BagPageSaga() {
   yield takeLatest(BAGPAGE_CONSTANTS.GET_ORDER_DETAILS, getOrderDetailSaga);
   yield takeLatest(BAGPAGE_CONSTANTS.GET_CART_DATA, getCartDataSaga);
+  yield takeLatest(BAGPAGE_CONSTANTS.FETCH_MODULEX_CONTENT, fetchModuleX);
 }
 
 export default BagPageSaga;

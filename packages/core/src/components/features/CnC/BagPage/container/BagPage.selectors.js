@@ -12,13 +12,14 @@ export const filterProductsBrand = (arr, searchedValue) => {
 const getBagPageLabels = state => {
   const {
     bag: {
-      addedToBag: { lbl_header_addedToBag: addedToBag, lbl_cta_checkout: checkout },
+      addedToBag: { lbl_header_addedToBag: addedToBag, lbl_cta_checkout: checkout, referred },
       bagOverview: { lbl_header_bag: bagHeading },
     },
   } = state.Labels;
   return {
     addedToBag,
     checkout,
+    referred,
     bagHeading,
   };
 };
@@ -45,9 +46,20 @@ const getProductsTypes = state => {
   };
 };
 
+const getNeedHelpContentId = state => {
+  let needhelpContentId;
+  if (state.Labels.bag.addedToBag && Array.isArray(state.Labels.bag.addedToBag.referred)) {
+    state.Labels.bag.addedToBag.referred.forEach(label => {
+      if (label.name === 'NEED_HELP_DATA') needhelpContentId = label.contentId;
+    });
+  }
+  return needhelpContentId;
+};
+
 export default {
   getBagPageLabels,
   getTotalItems,
   getOrderItems,
   getProductsTypes,
+  getNeedHelpContentId,
 };

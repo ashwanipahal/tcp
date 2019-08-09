@@ -70,3 +70,7 @@ export const getAvailableCouponListState = state => {
   const list = state.CouponsAndPromos.get('couponsAndOffers');
   return list.filter(i => i.status === 'available');
 };
+
+export const getNeedHelpContent = state => {
+  return state.CartPageReducer.get('needHelpContent');
+};
