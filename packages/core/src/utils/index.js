@@ -24,5 +24,6 @@ export {
   getLocator,
   getAPIConfig,
   createAPIConfig,
+  getCandidConfig,
   isCanada,
 } from './utils';
