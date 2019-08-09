@@ -2,10 +2,11 @@ import React from 'react';
 import { Platform, StatusBar, StyleSheet, View, UIManager } from 'react-native';
 import { Provider } from 'react-redux';
 import { PropTypes } from 'prop-types';
+import NetworkProvider from '@tcp/core/src/components/common/hoc/NetworkProvider.app';
+
 import ThemeWrapperHOC from '../components/common/hoc/ThemeWrapper.container';
 import AppNavigator from '../navigation/AppNavigator';
 import AppSplash from '../navigation/AppSplash';
-
 import { initializeStore } from '../reduxStore/store/initializeStore';
 import { APP_TYPE } from '../components/common/hoc/ThemeWrapper.constants';
 
@@ -19,8 +20,6 @@ const styles = StyleSheet.create({
 
 export class App extends React.PureComponent {
   state = {
-    // eslint-disable-next-line react/no-unused-state
-    isLoadingComplete: false,
     isSplashVisible: true,
   };
 
@@ -33,16 +32,6 @@ export class App extends React.PureComponent {
     }
   }
 
-  _handleLoadingError = error => {
-    // eslint-disable-next-line no-console
-    console.warn(error);
-  };
-
-  _handleFinishLoading = () => {
-    // eslint-disable-next-line react/no-unused-state
-    this.setState({ isLoadingComplete: true });
-  };
-
   removeSplash = () => {
     this.setState({ isSplashVisible: false });
   };
@@ -52,13 +41,15 @@ export class App extends React.PureComponent {
     const { isSplashVisible } = this.state;
     return (
       <Provider store={this.store}>
-        <ThemeWrapperHOC appType={appType}>
-          <View style={styles.container}>
-            {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-            <AppNavigator />
-            {isSplashVisible && <AppSplash appType={appType} removeSplash={this.removeSplash} />}
-          </View>
-        </ThemeWrapperHOC>
+        <NetworkProvider>
+          <ThemeWrapperHOC appType={appType}>
+            <View style={styles.container}>
+              {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+              <AppNavigator />
+              {isSplashVisible && <AppSplash appType={appType} removeSplash={this.removeSplash} />}
+            </View>
+          </ThemeWrapperHOC>
+        </NetworkProvider>
       </Provider>
     );
   }

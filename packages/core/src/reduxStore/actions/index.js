@@ -36,9 +36,16 @@ export const loadModulesData = payload => {
   };
 };
 
+export const loadUserProfile = () => {
+  return {
+    type: GLOBAL_CONSTANTS.LOAD_USER_DATA,
+  };
+};
+
 export default {
   loadLayoutData,
   loadLabelsData,
   bootstrapData,
   loadModulesData,
+  loadUserProfile,
 };

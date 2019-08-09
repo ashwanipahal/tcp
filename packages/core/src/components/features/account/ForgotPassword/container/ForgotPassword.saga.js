@@ -28,7 +28,7 @@ export function* ForgotPassword(action) {
     let error = {};
     /* istanbul ignore else */
     if (err instanceof Error) {
-      error = err.response.body;
+      error = err.response;
     }
     /* istanbul ignore else */
     if (error && error.errors) {
