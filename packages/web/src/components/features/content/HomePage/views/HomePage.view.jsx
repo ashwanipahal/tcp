@@ -8,11 +8,11 @@ const HomePageView = props => {
   const { slot_1: slotA, slot_2: slotB, slot_3: slotC, slot_4: slotD } = props;
   return (
     <Fragment>
-      <GetCandid lables={props} />
       <SlotA {...slotA} />
       <SlotB {...slotB} />
       <SlotC {...slotC} />
       <SlotD {...slotD} />
+      <GetCandid lables={props} />
     </Fragment>
   );
 };

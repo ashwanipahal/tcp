@@ -11,7 +11,7 @@ exports[`CreateAccountForm should render correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-gZMcBi",
+        "componentId": "sc-gqjmRU",
         "isStatic": true,
         "rules": Array [
           "
@@ -47,7 +47,7 @@ exports[`CreateAccountForm should render correctly 1`] = `
       "displayName": "Styled(ReduxForm)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-gZMcBi",
+      "styledComponentId": "sc-gqjmRU",
       "target": Object {
         "$$typeof": Symbol(react.forward_ref),
         "defaultProps": Object {

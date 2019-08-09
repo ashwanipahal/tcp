@@ -1,39 +1,40 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import Router from 'next/router';
+import Router from 'next/router'; // eslint-disable-line
 import { requireNamedOnlineModule } from '../../../../../utils/resourceLoader';
 import { Button, Row, Col, BodyCopy } from '../../../atoms';
-import { getCandid as styles, candidContainer } from '../styles/GetCandid.style';
+import style from '../styles/GetCandid.style';
 import withStyles from '../../../hoc/withStyles';
-import { getCandidConfig } from '../../../../../utils';
+import { getAPIConfig } from '../../../../../utils';
+import { PDP_PAGE_ID } from '../config';
 
 class GetCandid extends React.Component {
   static propTypes = {
-    /* bool value if default heading needs to be used */
-    defaultHeading: PropTypes.bool,
     /* PageType is the page where the getcandid component is being called from */
+    // eslint-disable-next-line
     pageType: PropTypes.string,
-    /* espotId is the espot key if you need a custom heading */
-    espotId: PropTypes.string,
-    /*calssName is required */
+    /* calssName is required */
     className: PropTypes.string,
+    /* Labels */
+    lables: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   };
 
   static defaultProps = {
     pageType: 'homepage',
-    espotId: '',
-    defaultHeading: false,
+    className: '',
+    lables: {},
   };
 
-  candidConfig = getCandidConfig();
+  candidConfig = getAPIConfig();
+
   constructor(props) {
     super(props);
     console.log('.......candid Props', this.props);
     this.state = {
-      apiKey: this.candidConfig.CAND_API_KEY,
-      candidSlot: this.candidConfig.CAND_SLOT,
+      apiKey: this.candidConfig.CANDID_API_KEY,
+      candidSlot: 'tcp-get-candid-image-container',
       icid: {
-        pdp: this.candidConfig.CAND_PDP,
+        pdp: PDP_PAGE_ID,
       },
     };
   }
@@ -55,7 +56,7 @@ class GetCandid extends React.Component {
             document
               .getElementsByClassName('get-candid-heading')[0]
               .classList.remove('displayNone');
-            document.getElementById('get-candid-container').style = candidContainer;
+            document.getElementById('get-candid-container').style = '7px solid #f7f7f7';
           }
         },
         empty: () => {
@@ -76,12 +77,13 @@ class GetCandid extends React.Component {
     const { icid } = this.state;
     // window.location.href = `https://www.childrensplace.com/us/content/mystyleplace?icid=hp_s17_button_getcandid_070819_getcandid`;
     // window.location.href = `${window.location.origin}/us/content/mystyleplace?icid=${
-    //   icid[pageType]
+    // eslint-disable-line icid[pageType]
     // }`;
-    Router.push('/gallery');
+    Router.push(`/gallery?icid=${icid[pageType]}`);
   };
 
   getDefaultHeading = () => {
+    const { lables } = this.props;
     return (
       <div className="get-candid-default-heading test">
         <BodyCopy
@@ -90,22 +92,23 @@ class GetCandid extends React.Component {
           textAlign="center"
           className="get-candid-main-heading"
         >
-          {this.props.lables.title}
+          {lables.title}
         </BodyCopy>
+
         <BodyCopy
           fontWeight="500"
           fontSize={['fs16', 'fs16', 'fs26']}
           textAlign="center"
           className="get-candid-heading-desc"
         >
-          {this.props.lables.titleDescription}
+          {lables.titleDescription}
         </BodyCopy>
       </div>
     );
   };
 
   render() {
-    const { espotId, defaultHeading, className } = this.props;
+    const { className, lables } = this.props;
     return (
       <section id="get-candid-container" className={className}>
         <Row centered>
@@ -146,11 +149,11 @@ class GetCandid extends React.Component {
                 type="button"
                 className="u-margin-right"
               >
-                {this.props.lables.BtnGallery}
+                {lables.BtnGallery}
               </Button>
 
               <Button onClick={this.handleUpload} buttonVariation="variable-width" type="button">
-                {this.props.lables.BtnPhoto}
+                {lables.BtnPhoto}
               </Button>
             </Col>
           </div>
@@ -160,6 +163,5 @@ class GetCandid extends React.Component {
   }
 }
 
-export default withStyles(GetCandid, styles);
+export default withStyles(GetCandid, style);
 export { GetCandid as GetCandidVanilla };
-// export default GetCandid;

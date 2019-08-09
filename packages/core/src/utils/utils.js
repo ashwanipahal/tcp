@@ -45,6 +45,8 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv) => {
     assetHost: processEnv.RWD_WEB_ASSETHOST || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
+    CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
+    CANDID_API_URL: process.env.RWD_WEB_CANDID_URL,
   };
 };
 
@@ -126,18 +128,6 @@ export const getAPIConfig = () => {
   return apiConfig;
 };
 
-export const getCandidConfig = processEnv => {
-  return {
-    CAND_API_KEY: '070167ca-8287-4d41-a9bb-6b3850cae9b1',
-    CAND_SLOT: 'tcp-get-candid-image-container',
-    CAND_PDP: 'pdp_na_na_na_03019_candid',
-    CAND_URL: 'api.getcandid.com',
-    // CAND_API_KEY: process.env.RWD_WEB_CAND_API_KEY,
-    // CAND_SLOT: process.env.RWD_WEB_CAND_SLOT,
-    // CAND_PDP: process.env.RWD_WEB_CAND_API_KEY,
-    // CAND_URL: process.env.RWD_WEB_CAND_API_KEY,
-  };
-}
 export const isCanada = () => {
   const { siteId } = getAPIConfig();
   return siteId === API_CONFIG.siteIds.ca;
@@ -150,6 +140,5 @@ export default {
   isMobileApp,
   isServer,
   getAPIConfig,
-  getCandidConfig,
   isCanada,
 };
