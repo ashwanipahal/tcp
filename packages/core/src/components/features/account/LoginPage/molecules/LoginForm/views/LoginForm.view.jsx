@@ -71,7 +71,8 @@ class LoginForm extends React.PureComponent<Props> {
                 dataLocator="login-remembermecb"
                 className=""
               >
-                {labels.login.lbl_login_rememberMe}
+                <span className="remember-me-text">{labels.login.lbl_login_rememberMe}</span>
+                <span>{labels.login.lbl_login_rememberMeHelpText}</span>
               </Field>
             </BodyCopy>
             {showSavePlcc && (

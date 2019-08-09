@@ -19,7 +19,7 @@ const AddedToBagActions = ({ labels }) => {
             fontWeight="extrabold"
             fontFamily="secondary"
             fontSize="fs13"
-            text={labels.viewBag.toUpperCase()}
+            text={labels.viewBag && labels.viewBag.toUpperCase()}
           />
         </ViewBagButton>
       </ButtonWrapper>
@@ -30,7 +30,7 @@ const AddedToBagActions = ({ labels }) => {
             fontWeight="extrabold"
             fontFamily="secondary"
             fontSize="fs13"
-            text={labels.checkout.toUpperCase()}
+            text={labels.checkout && labels.checkout.toUpperCase()}
           />
         </CheckoutButton>
       </ButtonWrapper>

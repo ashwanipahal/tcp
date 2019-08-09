@@ -3,7 +3,7 @@ import React from 'react';
 import { FlatList, TouchableOpacity } from 'react-native';
 import { getLocator, getScreenWidth, UrlHandler } from '../../../../../utils/index.native';
 import { Anchor, Button, Image } from '../../../atoms';
-import PromoBanner from '../../PromoBanner/views/PromoBanner.native';
+import PromoBanner from '../../PromoBanner';
 import { ButtonWrapper, Tile, Wrapper } from '../ModuleD.style.native';
 import colors from '../../../../../../styles/themes/TCP/colors';
 import spacing from '../../../../../../styles/themes/TCP/spacing';

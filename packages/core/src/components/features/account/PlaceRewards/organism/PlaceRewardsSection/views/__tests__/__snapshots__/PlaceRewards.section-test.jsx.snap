@@ -76,7 +76,7 @@ exports[`MyRewards should render correctly 1`] = `
           }
         }
       >
-        Third
+        <BonusPointsDaysSection />
       </Styled(Col)>
       <Styled(Col)
         className="place-rewards-col4"

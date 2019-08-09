@@ -60,6 +60,7 @@ class LoginPageContainer extends React.PureComponent {
       getUserInfoAction,
       labels,
       resetLoginState,
+      isUserLoggedIn,
       SubmitForgot,
       showNotification,
       successFullResetEmail,
@@ -82,6 +83,7 @@ class LoginPageContainer extends React.PureComponent {
         getUserInfo={getUserInfoAction}
         onCreateAccountClick={this.onCreateAccountClick}
         resetLoginState={resetLoginState}
+        isUserLoggedIn={isUserLoggedIn}
         SubmitForgot={SubmitForgot}
         showNotification={showNotification}
         successFullResetEmail={successFullResetEmail}

@@ -177,6 +177,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
               component={InputCheckbox}
               dataLocator="addnewaddress-setdefaddress"
               disabled={isMakeDefaultDisabled}
+              className="AddAddressForm__makeDefault"
             >
               {labels.addressBook.ACC_LBL_SET_DEFAULT}
             </Field>

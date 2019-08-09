@@ -321,7 +321,12 @@ exports[`LoginForm component should renders correctly 1`] = `
           }
           dataLocator="login-remembermecb"
           name="rememberMe"
-        />
+        >
+          <span
+            className="remember-me-text"
+          />
+          <span />
+        </Field>
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className={null}
@@ -700,7 +705,12 @@ exports[`LoginForm component should renders correctly with error 1`] = `
           }
           dataLocator="login-remembermecb"
           name="rememberMe"
-        />
+        >
+          <span
+            className="remember-me-text"
+          />
+          <span />
+        </Field>
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className={null}
