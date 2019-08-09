@@ -15,13 +15,6 @@ const styles = css`
   .order-summary {
     margin: 16px 0;
   }
-  .checkout-actions {
-    margin: 0;
-    width: 100%;
-  }
-  .checkout-button {
-    margin: 0 0 10px 0;
-  }
   .right-sec {
     width: 346px;
     @media ${props => props.theme.mediaQuery.medium} {
@@ -31,6 +24,21 @@ const styles = css`
       width: 450px;
     }
   }
+
+  .checkout-button {
+    display: flex;
+    flex: 1;
+    flex-direction: column-reverse;
+    width: 100%;
+    margin: 0;
+  }
+
+  button.checkout {
+    width: 100%;
+    margin: 0 0 10px 0;
+    padding: 16px 0;
+  }
+
   .bag-header {
     margin: 40px 0 20px;
   }

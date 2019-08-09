@@ -4,10 +4,6 @@ export const ButtonWrapper = styled.View`
   align-items: center;
   display: flex;
 `;
-export const HeadingWrapper = styled.TouchableOpacity`
-  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.XS};
-  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
-`;
 
 export const Heading = styled.Text`
   color: ${props => props.theme.colors.PRIMARY.DARK};
@@ -38,5 +34,4 @@ export default {
   Heading,
   Wrapper,
   Tile,
-  HeadingWrapper,
 };

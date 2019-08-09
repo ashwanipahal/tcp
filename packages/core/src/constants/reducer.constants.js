@@ -54,13 +54,12 @@ export const PRODUCTLISTINGPAGE_ACTION_PATTERN = '@@PLP-';
 export const EMAIL_SIGNUP_REDUCER_KEY = 'EmailSignUp';
 export const SMS_SIGNUP_REDUCER_KEY = 'SmsSignUp';
 
-// logout reducer
-export const LOGOUT_REDUCER_KEY = 'logoutReducer';
-export const LOGOUT_ACTION_PATTERN = '@@logout-';
-
 // Coupon reducer
 export const COUPON_REDUCER_KEY = 'CouponsAndPromos';
 export const COUPON_ACTION_PATTERN = '@@CouponsAndPromos-';
+// logout reducer
+export const LOGOUT_REDUCER_KEY = 'logoutReducer';
+export const LOGOUT_ACTION_PATTERN = '@@logout-';
 
 export const RESET_PASSWORD_REDUCER_KEY = 'ResetPassword';
 export const RESET_PASSWORD_ACTION_PATTERN = '@@ResetPassword-';
@@ -75,7 +74,7 @@ export const REDUCER_ACTION_MAPPING = {
   [ADD_GIFT_CARD_REDUCER_KEY]: ADD_GIFT_CARD_ACTION_PATTERN,
   [CREATE_ACCOUNT_REDUCER_KEY]: CREATE_ACCOUNT_ACTION_PATTERN,
   [LOGOUT_REDUCER_KEY]: LOGOUT_ACTION_PATTERN,
-  [RESET_PASSWORD_REDUCER_KEY]: RESET_PASSWORD_ACTION_PATTERN
+  [RESET_PASSWORD_REDUCER_KEY]: RESET_PASSWORD_ACTION_PATTERN,
 };
 
 export const ADDRESS_VERIFICATION_REDUCER_KEY = 'addressVerification';
