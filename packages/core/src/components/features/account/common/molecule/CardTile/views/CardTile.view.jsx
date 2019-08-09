@@ -109,7 +109,7 @@ class CardTile extends React.Component<Props> {
     return (
       <React.Fragment>
         <BodyCopy
-          tag="span"
+          component="span"
           fontSize="fs14"
           fontFamily="secondary"
           fontWeight="bold"
