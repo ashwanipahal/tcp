@@ -1,5 +1,5 @@
 import handler from '../../../handler/handler';
-import { resetPassword } from '../ResetPassword';
+import { resetPassword, errorHandler } from '../ResetPassword';
 
 jest.mock('../../../handler/handler', () => ({
   executeStatefulAPICall: jest.fn(),
@@ -18,5 +18,33 @@ describe('resetPassword abstractor', () => {
       logonPasswordOld: '12345',
       em: '12345',
     }).then(res => expect(res).toBe(response));
+  });
+
+  it('errorHandler should throw genericError if error object is not present', () => {
+    try {
+      errorHandler({
+        response: null,
+      });
+    } catch (err) {
+      expect(err).toBe('genericError');
+    }
+  });
+
+  it('errorHandler should throw errorKey if error object is present', () => {
+    try {
+      errorHandler({
+        response: {
+          body: {
+            errors: [
+              {
+                errorKey: 'errorKey',
+              },
+            ],
+          },
+        },
+      });
+    } catch (err) {
+      expect(err).toBe('errorKey');
+    }
   });
 });

@@ -9,7 +9,7 @@ const getFormattedError = err => {
   return 'genericError';
 };
 
-const errorHandler = err => {
+export const errorHandler = err => {
   throw getFormattedError(err);
 };
 
