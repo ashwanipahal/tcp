@@ -13,3 +13,17 @@ exports[`AccountDrawerPage should render correctly 1`] = `
   <Styled(AccountDrawerBottomLinks) />
 </div>
 `;
+
+exports[`should not render RewardsPoints should renders correctly when addresses are not present 1`] = `
+<div
+  className=""
+>
+  <Styled(AccountDrawerHeading)
+    userName=""
+  />
+  <Connect(RewardsPointsContainer) />
+  <Styled(ExtraPointsTeaser) />
+  <Styled(MyRewardsAndOffers) />
+  <Styled(AccountDrawerBottomLinks) />
+</div>
+`;

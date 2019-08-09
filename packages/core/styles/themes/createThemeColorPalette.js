@@ -27,6 +27,7 @@ function createThemeColorPalette(colors = {}) {
     yellow,
     orange,
     red,
+    blue,
   };
 }
 
