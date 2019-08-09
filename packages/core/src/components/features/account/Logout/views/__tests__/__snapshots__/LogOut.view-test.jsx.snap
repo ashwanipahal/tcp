@@ -5,12 +5,12 @@ exports[`LogOutView Page should render correctly 1`] = `
   className=""
 >
   <Styled(Anchor)
-    anchorVariation="secondary"
+    anchorVariation="primary"
     className="elem-pb-SM"
-    fontSizeVariation="xlarge"
+    fontSizeVariation="large"
     onClick={[Function]}
   >
-    logout
+    hello
   </Styled(Anchor)>
 </Fragment>
 `;

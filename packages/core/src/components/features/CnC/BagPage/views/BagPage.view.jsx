@@ -9,7 +9,6 @@ import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import AddedToBagActions from '../../AddedToBagActions';
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
-import CheckoutActions from '../molecules/CheckoutActions';
 
 // @flow
 // type Props = {
@@ -46,7 +45,6 @@ const BagPageView = ({ className, labels, totalCount }: Props) => {
           <Col colSize={{ small: 6, medium: 3, large: 4 }} className="right-sec">
             <OrderLedgerContainer />
             <AddedToBagActions labels={labels} showAddTobag={showAddTobag} />
-            <CheckoutActions labels={labels} />
             <CouponAndPromos />
           </Col>
         </Row>
