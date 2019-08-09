@@ -1,5 +1,5 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
-import REWARDSPOINTS_CONSTANTS from '../PointsHistory.constants';
+import POINTSHISTORY_CONSTANTS from '../PointsHistory.constants';
 import { validateReduxCache } from '../../../../../../../utils/cache.util';
 import { setPointsHistoryList } from './PointsHistory.actions';
 import { getPointsHistoryData } from '../../../../../../../services/abstractors/account/PointsHistory';
@@ -15,7 +15,7 @@ export function* getPointsHistoryList() {
 
 export function* PointsHistorySaga() {
   const cachedPointsHistoryList = validateReduxCache(getPointsHistoryList);
-  yield takeLatest(REWARDSPOINTS_CONSTANTS.GET_ACCOUNT_NAVIGATION_LIST, cachedPointsHistoryList);
+  yield takeLatest(POINTSHISTORY_CONSTANTS.GET_POINTSHISTORY_LIST, cachedPointsHistoryList);
 }
 
 export default PointsHistorySaga;

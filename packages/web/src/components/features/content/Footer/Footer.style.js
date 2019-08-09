@@ -76,6 +76,10 @@ export default css`
   .footer_top_candidate_a_social_links {
     flex-direction: row;
     align-items: center;
+    @media ${props => props.theme.mediaQuery.largeMax} and ${props => props.theme.mediaQuery.large}{
+      margin: 0 auto;
+      flex-direction: column;
+    }
   }
 
   @media ${props => props.theme.mediaQuery.medium} {

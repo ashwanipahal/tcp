@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { CreateAccountContainer, mapDispatchToProps } from '../CreateAccount.container';
-import CreateAccountView from '../../views/CreateAccount.view';
+import CreateAccountView from '../../views/CreateAccountView';
 
 describe('Payment & Gift Cards', () => {
   it('should render payment view section', () => {

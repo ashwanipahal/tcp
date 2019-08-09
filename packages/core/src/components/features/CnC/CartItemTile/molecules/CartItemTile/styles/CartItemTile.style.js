@@ -1,6 +1,15 @@
 import styled from 'styled-components';
 
 export default styled.div`
+  .product {
+    padding: 10px 15px;
+  }
+  .image-wrapper {
+    text-align: center;
+  }
+  .edit-top-padding {
+    padding-top: 2px;
+  }
   border-bottom: 2px solid ${props => props.theme.colorPalette.gray[300]};
   margin-bottom: 20px;
   .padding-top-10 {

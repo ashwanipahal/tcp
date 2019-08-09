@@ -7,9 +7,11 @@ import styles from '../styles/PlaceRewards.section.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import MyRewards from '../../../molecules/MyRewards';
 import RewardsPoints from '../../../../common/organism/RewardsPoints';
-import PointsHistory from '../../../../common/organism/PointsHistory'
+import PointsHistory from '../../../../common/organism/PointsHistory';
+import { isCanada } from '../../../../../../../utils';
 
 const PlaceRewardsSection = ({ labels, className }) => {
+  const isCA = isCanada();
   return (
     <div className={className}>
       <Row fullBleed>
@@ -33,94 +35,88 @@ const PlaceRewardsSection = ({ labels, className }) => {
         </Col>
       </Row>
       <Row fullBleed>
-        <Row fullBleed className="place-rewards-sections-row1">
-          <Col
-            colSize={{
-              small: 6,
-              large: 6,
-              medium: 4,
-            }}
-            className="place-rewards-col1"
-          >
-            <Row fullBleed>
-              <Col
-                colSize={{
-                  small: 4,
-                  large: 10,
-                  medium: 6,
-                }}
-              >
-                <BodyCopy
-                  fontFamily="secondary"
-                  fontSize="fs16"
-                  fontWeight="extrabold"
-                  component="h4"
-                  className="elem-mb-SM elem-ml-SM"
+        {!isCA && (
+          <Row fullBleed className="place-rewards-sections-row1">
+            <Col
+              colSize={{
+                small: 6,
+                large: 6,
+                medium: 4,
+              }}
+              className="place-rewards-col1"
+            >
+              <Row fullBleed>
+                <Col
+                  colSize={{
+                    small: 4,
+                    large: 10,
+                    medium: 6,
+                  }}
                 >
-                  {labels.myPlaceRewards.lbl_my_rewards_point_balance}
-                </BodyCopy>
-              </Col>
-            </Row>
-            <Row fullBleed className="elem-mb-MED">
-              <Col
-                colSize={{
-                  small: 4,
-                  large: 10,
-                  medium: 6,
-                }}
-              >
-                <RewardsPoints labels={labels.common} />
-              </Col>
-            </Row>
-          </Col>
-          <Col
-            colSize={{
-              small: 6,
-              large: 6,
-              medium: 4,
-            }}
-            className="place-rewards-col2"
-          >
-
-            <Row fullBleed>
-              <Col
-                colSize={{
-                  small: 4,
-                  large: 10,
-                  medium: 6,
-                }}
-              >
-                <BodyCopy
-                  fontFamily="secondary"
-                  fontSize="fs16"
-                  fontWeight="extrabold"
-                  component="h4"
-                  className="elem-mb-SM elem-ml-SM"
+                  <BodyCopy
+                    fontFamily="secondary"
+                    fontSize="fs16"
+                    fontWeight="extrabold"
+                    component="h4"
+                    className="elem-mb-SM elem-ml-SM"
+                  >
+                    {labels.myPlaceRewards.lbl_my_rewards_point_balance}
+                  </BodyCopy>
+                </Col>
+              </Row>
+              <Row fullBleed className="elem-mb-MED">
+                <Col
+                  colSize={{
+                    small: 4,
+                    large: 10,
+                    medium: 6,
+                  }}
                 >
-                  Points History
-                </BodyCopy>
-              </Col>
-            </Row>
-            <Row fullBleed className="elem-mb-MED">
-              <Col
-                colSize={{
-                  small: 4,
-                  large: 10,
-                  medium: 6,
-                }}
-              >
-                <PointsHistory />
-              </Col>
-            </Row>
-
-
-
-
-
-
-
-          </Col>
-        </Row>
+                  <RewardsPoints labels={labels.common} />
+                </Col>
+              </Row>
+            </Col>
+            <Col
+              colSize={{
+                small: 6,
+                large: 6,
+                medium: 4,
+              }}
+              className="place-rewards-col2"
+            >
+              <Row fullBleed>
+                <Col
+                  colSize={{
+                    small: 4,
+                    large: 10,
+                    medium: 6,
+                  }}
+                >
+                  <BodyCopy
+                    fontFamily="secondary"
+                    fontSize="fs16"
+                    fontWeight="extrabold"
+                    component="h4"
+                    className="elem-mb-SM elem-ml-SM"
+                  >
+                    {labels.myPlaceRewards.lbl_my_rewards_points_history}
+                  </BodyCopy>
+                </Col>
+              </Row>
+              <Row fullBleed className="elem-mb-MED">
+                <Col
+                  colSize={{
+                    small: 6,
+                    large: 11,
+                    medium: 8,
+                  }}
+                >
+                  <PointsHistory />
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        )}
         <Row fullBleed className="place-rewards-sections-row2">
           <Col
             colSize={{

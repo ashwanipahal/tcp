@@ -10,28 +10,31 @@ import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { getLocator } from '../../../../../utils';
 
 const AddedToBagActions = props => {
-  const { className, labels, onClickViewBag } = props;
+  const { className, labels, onClickViewBag, showAddTobag } = props;
+
   return (
     <div className={className}>
-      <Row>
-        <Col colSize={{ medium: 8, large: 12, small: 6 }}>
-          <Button
-            onClick={onClickViewBag}
-            data-locator={getLocator('addedtobag_btnviewbag')}
-            className="view-bag"
-          >
-            <BodyCopy
-              component="span"
-              color="white"
-              fontWeight="extrabold"
-              fontFamily="secondary"
-              fontSize="fs14"
+      {showAddTobag && (
+        <Row>
+          <Col colSize={{ medium: 8, large: 12, small: 6 }}>
+            <Button
+              onClick={onClickViewBag}
+              data-locator={getLocator('addedtobag_btnviewbag')}
+              className="view-bag"
             >
-              {labels.viewBag}
-            </BodyCopy>
-          </Button>
-        </Col>
-      </Row>
+              <BodyCopy
+                component="span"
+                color="white"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+                fontSize="fs14"
+              >
+                {labels.viewBag}
+              </BodyCopy>
+            </Button>
+          </Col>
+        </Row>
+      )}
       <Row className="checkout-button">
         <PayPalButton className="payPal-button" />
 
@@ -55,6 +58,10 @@ AddedToBagActions.propTypes = {
   className: PropTypes.string.isRequired,
   onClickViewBag: PropTypes.func.isRequired,
   labels: PropTypes.shape.isRequired,
+  showAddTobag: PropTypes.bool,
+};
+AddedToBagActions.defaultProps = {
+  showAddTobag: true,
 };
 
 export default withStyles(AddedToBagActions, style);

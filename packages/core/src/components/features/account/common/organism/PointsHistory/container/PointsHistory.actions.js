@@ -1,13 +1,14 @@
-import REWARDSPOINTS_CONSTANTS from '../PointsHistory.constants';
+import POINTSHISTORY_CONSTANTS from '../PointsHistory.constants';
 
 export const getPointsHistoryList = () => {
-  return (
-  {
-  type: REWARDSPOINTS_CONSTANTS.GET_ACCOUNT_NAVIGATION_LIST,
-})};
+  return {
+    type: POINTSHISTORY_CONSTANTS.GET_POINTSHISTORY_LIST,
+  };
+};
 
 export const setPointsHistoryList = pointsHistoryData => {
-  return ({
-  type: REWARDSPOINTS_CONSTANTS.SET_ACCOUNT_NAVIGATION_LIST12,
-  payload: pointsHistoryData,
-})};
+  return {
+    type: POINTSHISTORY_CONSTANTS.SET_POINTSHISTORY_LIST,
+    payload: pointsHistoryData,
+  };
+};

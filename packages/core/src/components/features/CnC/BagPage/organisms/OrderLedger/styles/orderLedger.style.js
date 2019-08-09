@@ -1,4 +1,3 @@
-// import styled from 'styled-components';
 import { css } from 'styled-components';
 
 const LedgerStyle = css`

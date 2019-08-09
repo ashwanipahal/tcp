@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MiniBagHeader component renders correctly 1`] = `
+<StyledComponent
+  cartItemCount="12"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-iwsKbI",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .mainWrapper {
+    text-align: center;
+    height: 31px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .subHeaderText {
+    text-decoration: none;
+  }
+  .pointsRewards {
+    color: ",
+          [Function],
+          ";
+  }
+  .cartCount {
+    background: ",
+          [Function],
+          ";
+    color: ",
+          [Function],
+          ";
+    border-radius: 8px;
+    margin: 1px 0px 0px -8px;
+    padding: 2px 6px;
+  }
+  .favIcon {
+    margin-right: ",
+          [Function],
+          ";
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(MiniBagHeader)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-iwsKbI",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  labels={
+    Object {
+      "inRewards": "rewards",
+      "points": "points",
+      "subTotal": "total",
+      "viewBag": "view Bag content",
+      "viewSaveForLater": "save for later",
+    }
+  }
+  subTotal="122"
+  userName="User"
+/>
+`;

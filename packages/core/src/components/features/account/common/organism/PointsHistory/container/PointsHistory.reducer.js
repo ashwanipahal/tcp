@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import REWARDSPOINTS_CONSTANTS from '../PointsHistory.constants';
+import POINTSHISTORY_CONSTANTS from '../PointsHistory.constants';
 import { DEFAULT_REDUCER_KEY, setCacheTTL } from '../../../../../../../utils/cache.util';
 
 const initialState = fromJS({
@@ -17,10 +17,10 @@ const getDefaultState = state => {
 
 const PointsHistoryReducer = (state = initialState, action) => {
   switch (action.type) {
-    case REWARDSPOINTS_CONSTANTS.SET_ACCOUNT_NAVIGATION_LIST12:
+    case POINTSHISTORY_CONSTANTS.SET_POINTSHISTORY_LIST:
       return state
         .set('pointsHistoryData', action.payload)
-        .set(DEFAULT_REDUCER_KEY, setCacheTTL(REWARDSPOINTS_CONSTANTS.GET_ACCOUNT_NAV_LIST_TTL12));
+        .set(DEFAULT_REDUCER_KEY, setCacheTTL(POINTSHISTORY_CONSTANTS.GET_POINTSHISTORY_LIST_TTL));
     default:
       return getDefaultState(state);
   }
