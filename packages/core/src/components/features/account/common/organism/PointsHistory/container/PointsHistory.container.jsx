@@ -8,8 +8,8 @@ import { getPointsHistoryList } from './PointsHistory.actions';
 
 export class PointsHistoryContainer extends React.PureComponent {
   componentDidMount() {
-    const { getAccountNavigationAction } = this.props;
-    getAccountNavigationAction();
+    const { getPointsHistoryAction } = this.props;
+    getPointsHistoryAction();
   }
 
   /**
@@ -26,7 +26,7 @@ export class PointsHistoryContainer extends React.PureComponent {
 
 export const mapDispatchToProps = dispatch => {
   return {
-    getAccountNavigationAction: () => {
+    getPointsHistoryAction: () => {
       dispatch(getPointsHistoryList());
     },
   };
@@ -40,7 +40,7 @@ const mapStateToProps = state => {
 };
 
 PointsHistoryContainer.propTypes = {
-  getAccountNavigationAction: PropTypes.func.isRequired,
+  getPointsHistoryAction: PropTypes.func.isRequired,
   router: PropTypes.shape({}).isRequired,
   labels: PropTypes.shape({
     labels: {},
