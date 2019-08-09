@@ -12,8 +12,8 @@ describe('ResetPassword component', () => {
         lbl_ResetPassword_requirementTips_2: 'requirement tip 2',
         lbl_ResetPassword_requirementTips_3: 'requirement tip 3',
       },
-      success: 'SUCCESS',
-      error: 'ERROR',
+      successMessage: 'SUCCESS',
+      errorMessage: 'ERROR',
       onSubmit: () => {},
       onBack: () => {},
     };

@@ -2,7 +2,18 @@ import { executeStatefulAPICall } from '../../handler';
 import { getAPIConfig } from '../../../utils';
 import endpoints from '../../endpoints';
 
-export const resetPassword = ({ newPassword, newPasswordVerify, logonPasswordOld, em }) => {
+const getFormattedError = err => {
+  if (err.response && err.response.body && err.response.body.errors instanceof Array) {
+    return err.response.body.errors[0].errorKey;
+  }
+  return 'genericError';
+};
+
+const errorHandler = err => {
+  throw getFormattedError(err);
+};
+
+export const resetPassword = ({ newPassword, logonPasswordVerify, logonPasswordOld, em }) => {
   const apiConfig = getAPIConfig();
 
   const payload = {
@@ -12,7 +23,7 @@ export const resetPassword = ({ newPassword, newPasswordVerify, logonPasswordOld
       catalogId: apiConfig.catalogId,
       langId: apiConfig.langId,
       logonPassword: newPassword,
-      logonPasswordVerify: newPasswordVerify,
+      logonPasswordVerify,
       logonPasswordOld: (logonPasswordOld || '').replace(/ /gi, '+'),
       logonId: (em || '').trim(),
       logonIdInput: (em || '').trim(),
@@ -34,13 +45,9 @@ export const resetPassword = ({ newPassword, newPasswordVerify, logonPasswordOld
       isPasswordReset: 'false',
     },
   };
-  return executeStatefulAPICall(payload)
-    .then(res => {
-      return res;
-    })
-    .catch(err => {
-      throw err;
-    });
+  return executeStatefulAPICall(payload, errorHandler).then(() => {
+    return 'successMessage';
+  });
 };
 
 export default resetPassword;

@@ -43,6 +43,7 @@ class LoginSection extends React.PureComponent<Props> {
       resetForm,
       className,
       onCreateAccountClick,
+      queryParams,
     } = this.props;
 
     const { currentForm } = this.state;
@@ -76,7 +77,11 @@ class LoginSection extends React.PureComponent<Props> {
             <ForgotPasswordContainer showForgotPasswordForm={this.showLoginForm} labels={labels} />
           )}
           {currentForm === 'resetPassword' && (
-            <ResetPassword backToLoginPage={this.showLoginForm} labels={labels} />
+            <ResetPassword
+              backToLoginAction={this.showLoginForm}
+              labels={labels.password}
+              queryParams={queryParams}
+            />
           )}
 
           <BodyCopy component="div" className="border elem-pt-MED elem-pb-LRG">
@@ -107,6 +112,7 @@ LoginSection.propTypes = {
   initialValues: PropTypes.shape({}).isRequired,
   showRecaptcha: PropTypes.bool,
   onCreateAccountClick: PropTypes.func,
+  queryParams: PropTypes.shape({}).isRequired,
 };
 
 LoginSection.defaultProps = {

@@ -25,18 +25,13 @@ import {
 import LoginView from '../views';
 
 // eslint-disable-next-line
-import { isMobileApp, navigateToNestedRoute } from '../../../../../utils';
+import { isMobileApp } from '../../../../../utils';
 
 class LoginPageContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
     const { isUserLoggedIn, closeOverlay } = this.props;
-    if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
-      if (isMobileApp()) {
-        const { navigation } = this.props;
-        navigateToNestedRoute(navigation, 'HomeStack', 'home');
-      } else {
-        closeOverlay();
-      }
+    if (!prevProps.isUserLoggedIn && isUserLoggedIn && !isMobileApp()) {
+      closeOverlay();
     }
   }
 
@@ -69,6 +64,7 @@ class LoginPageContainer extends React.PureComponent {
       showNotification,
       successFullResetEmail,
       currentForm,
+      queryParams,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage || labels.login.lbl_login_error : '';
     const initialValues = {
@@ -90,6 +86,7 @@ class LoginPageContainer extends React.PureComponent {
         showNotification={showNotification}
         successFullResetEmail={successFullResetEmail}
         currentForm={currentForm}
+        queryParams={queryParams}
       />
     );
   }
@@ -112,6 +109,7 @@ LoginPageContainer.propTypes = {
   showNotification: PropTypes.bool.isRequired,
   successFullResetEmail: PropTypes.bool.isRequired,
   currentForm: PropTypes.string,
+  queryParams: PropTypes.shape({}),
 };
 
 LoginPageContainer.defaultProps = {
@@ -124,6 +122,7 @@ LoginPageContainer.defaultProps = {
   isUserLoggedIn: false,
   navigation: {},
   currentForm: '',
+  queryParams: {},
 };
 
 const mapDispatchToProps = dispatch => {

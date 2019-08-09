@@ -7,8 +7,8 @@ describe('ResetPasswordForm component', () => {
     const props = {
       labels: {},
       pristine: false,
-      success: '',
-      error: '',
+      successMessage: '',
+      errorMessage: '',
     };
     const component = shallow(<ResetPasswordForm {...props} />);
     expect(component).toMatchSnapshot();
@@ -18,8 +18,8 @@ describe('ResetPasswordForm component', () => {
     const props = {
       labels: {},
       pristine: false,
-      success: 'success message',
-      error: 'error message',
+      successMessage: 'success',
+      errorMessage: 'error',
     };
     const component = shallow(<ResetPasswordForm {...props} />);
     expect(component).toMatchSnapshot();

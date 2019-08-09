@@ -24,9 +24,10 @@ class TCPWebApp extends App {
     };
   }
 
-  componentDidMount() {
+  // this function will check if ResetPassword overlay needs to be displayed on page load
+  // it will check for em and logonPasswordOld
+  checkForResetPassword = () => {
     const { router, store } = this.props;
-    ReactAxe.runAccessibility();
     const { em, logonPasswordOld } = (router && router.query) || {};
     if (em && logonPasswordOld) {
       store.dispatch(
@@ -42,6 +43,11 @@ class TCPWebApp extends App {
         })
       );
     }
+  };
+
+  componentDidMount() {
+    ReactAxe.runAccessibility();
+    this.checkForResetPassword();
   }
 
   componentDidUpdate() {

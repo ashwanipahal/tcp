@@ -7,8 +7,8 @@ import { resetPassword, resetState } from './ResetPassword.actions';
 
 export class ResetPasswordContainer extends PureComponent {
   static propTypes = {
-    success: PropTypes.string.isRequired,
-    error: PropTypes.string.isRequired,
+    successMessage: PropTypes.string.isRequired,
+    errorMessage: PropTypes.string.isRequired,
     resetStateAction: PropTypes.func.isRequired,
     resetPasswordAction: PropTypes.func.isRequired,
     backToLoginAction: PropTypes.func.isRequired,
@@ -35,11 +35,11 @@ export class ResetPasswordContainer extends PureComponent {
   };
 
   render() {
-    const { success, error, labels } = this.props;
+    const { successMessage, errorMessage, labels } = this.props;
     return (
       <ResetPasswordComponent
-        success={success}
-        error={error}
+        successMessage={successMessage}
+        errorMessage={errorMessage}
         onSubmit={this.resetPassword}
         onBack={this.backHandler}
         labels={labels}
@@ -49,8 +49,8 @@ export class ResetPasswordContainer extends PureComponent {
 }
 
 export const mapStateToProps = state => ({
-  success: getSuccess(state),
-  error: getError(state),
+  successMessage: getSuccess(state),
+  errorMessage: getError(state),
 });
 
 export const mapDispatchToProps = dispatch => ({

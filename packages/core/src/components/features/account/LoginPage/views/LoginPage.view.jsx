@@ -16,6 +16,7 @@ const LoginView = ({
   resetForgotPasswordErrorResponse,
   onCreateAccountClick,
   currentForm,
+  queryParams,
 }) => {
   return (
     <LoginSection
@@ -32,6 +33,7 @@ const LoginView = ({
       resetForgotPasswordErrorResponse={resetForgotPasswordErrorResponse}
       onCreateAccountClick={onCreateAccountClick}
       currentForm={currentForm}
+      queryParams={queryParams}
     />
   );
 };
@@ -50,6 +52,7 @@ LoginView.propTypes = {
   successFullResetEmail: PropTypes.bool.isRequired,
   onCreateAccountClick: PropTypes.func,
   currentForm: PropTypes.string.isRequired,
+  queryParams: PropTypes.shape({}).isRequired,
 };
 
 LoginView.defaultProps = {

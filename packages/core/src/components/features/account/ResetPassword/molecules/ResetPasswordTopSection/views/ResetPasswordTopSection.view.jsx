@@ -2,30 +2,38 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../../../common/atoms/Anchor';
+import PasswordRequirement from '../../PasswordRequirement';
 
-const getPasswordRequirementLabels = labels => {
-  return Object.keys(labels).filter(labelKey => /lbl_ResetPassword_requirementTips/.test(labelKey));
-};
-
-export const ResetPasswordTopSection = ({ labels, onBack }) => {
-  const passwordRequirementLabelKeys = getPasswordRequirementLabels(labels);
-
+export const ResetPasswordTopSection = ({ className, labels, onBack }) => {
   return (
-    <BodyCopy>
-      <Anchor
-        onClick={onBack}
-        fontSizeVariation="xlarge"
-        anchorVariation="secondary"
-        data-locator="addnewaddress-back"
-      >
-        {labels.lbl_ResetPassword_backLogin}
-      </Anchor>
-      <BodyCopy component="ul">
-        {passwordRequirementLabelKeys.map(labelKey => (
-          <BodyCopy component="li">{labels[labelKey]}</BodyCopy>
-        ))}
+    <BodyCopy className={className}>
+      <BodyCopy className="elem-mb-LRG">
+        <Anchor
+          onClick={onBack}
+          fontSizeVariation="xlarge"
+          anchorVariation="secondary"
+          data-locator="addnewaddress-back"
+          className="elem-mb-LRG"
+        >
+          {labels.lbl_resetPassword_backLogin}
+        </Anchor>
       </BodyCopy>
-      <BodyCopy>{labels.lbl_ResetPassword_requirementNote}</BodyCopy>
+      <BodyCopy
+        textAlign="center"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="black"
+        className="elem-mb-XS"
+      >
+        {labels.lbl_resetPassword_heading}
+      </BodyCopy>
+      <BodyCopy textAlign="center" fontFamily="secondary" fontSize="fs12" className="elem-mb-MED">
+        {labels.lbl_resetPassword_requirementHeading}
+      </BodyCopy>
+      <PasswordRequirement labels={labels} />
+      <BodyCopy fontFamily="secondary" fontSize="fs10">
+        {labels.lbl_resetPassword_requirementNote}
+      </BodyCopy>
     </BodyCopy>
   );
 };
@@ -33,6 +41,11 @@ export const ResetPasswordTopSection = ({ labels, onBack }) => {
 ResetPasswordTopSection.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   onBack: PropTypes.func.isRequired,
+  className: PropTypes.string,
+};
+
+ResetPasswordTopSection.defaultProps = {
+  className: '',
 };
 
 export default ResetPasswordTopSection;

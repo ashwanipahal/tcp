@@ -5,21 +5,29 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import Button from '../../../../../../common/atoms/Button';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import PasswordField from '../../../../common/molecule/PasswordField';
+import PasswordRequirement from '../../PasswordRequirement';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import styles from '../styles/ResetPasswordForm.style';
 
-export const ResetPasswordForm = ({ labels, pristine, success, error }) => {
+export const ResetPasswordForm = ({
+  className,
+  labels,
+  pristine,
+  successMessage,
+  errorMessage,
+  handleSubmit,
+}) => {
   return (
-    <form noValidate>
-      {success && (
+    <form name="ResetPasswordForm" noValidate onSubmit={handleSubmit} className={className}>
+      {successMessage && (
         <BodyCopy fontSize="fs12" fontWeight="semibold" color="green.500" className="elem-mb-XL">
-          {success}
+          {labels[`lbl_resetPassword_${successMessage}`]}
         </BodyCopy>
       )}
-      {error && (
+      {errorMessage && (
         <BodyCopy fontSize="fs12" fontWeight="semibold" color="red.500" className="elem-mb-XL">
-          {error}
+          {labels[`lbl_resetPassword_${errorMessage}`]}
         </BodyCopy>
       )}
       <Field
@@ -32,6 +40,7 @@ export const ResetPasswordForm = ({ labels, pristine, success, error }) => {
         showSuccessCheck={false}
         enableSuccessCheck={false}
         className="elem-mb-SM"
+        tooltipContent={<PasswordRequirement labels={labels} />}
       />
       <Field
         id="confirmPassword"
@@ -64,8 +73,14 @@ export const ResetPasswordForm = ({ labels, pristine, success, error }) => {
 ResetPasswordForm.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   pristine: PropTypes.bool.isRequired,
-  success: PropTypes.string.isRequired,
-  error: PropTypes.string.isRequired,
+  successMessage: PropTypes.string.isRequired,
+  errorMessage: PropTypes.string.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  className: PropTypes.string,
+};
+
+ResetPasswordForm.defaultProps = {
+  className: '',
 };
 
 const validateMethod = createValidateMethod(getStandardConfig(['password', 'confirmPassword']));

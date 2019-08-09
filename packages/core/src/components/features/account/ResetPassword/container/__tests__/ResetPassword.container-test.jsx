@@ -15,8 +15,8 @@ describe('ResetPassword container', () => {
     resetStateActionSpy = jest.fn();
     resetPasswordActionSpy = jest.fn();
     const props = {
-      success: '',
-      error: '',
+      successMessage: '',
+      errorMessage: '',
       resetStateAction: resetStateActionSpy,
       resetPasswordAction: resetPasswordActionSpy,
       backToLoginAction: () => {},
