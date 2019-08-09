@@ -17,7 +17,7 @@ export const resetPassword = ({ newPassword, logonPasswordVerify, logonPasswordO
   const apiConfig = getAPIConfig();
 
   const payload = {
-    webService: endpoints.resetPassword,
+    webService: endpoints.requestPassword,
     body: {
       storeId: apiConfig.storeId,
       catalogId: apiConfig.catalogId,

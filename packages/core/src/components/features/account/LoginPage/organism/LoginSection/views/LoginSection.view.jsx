@@ -10,26 +10,27 @@ import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import Button from '../../../../../../common/atoms/Button';
 import styles from './styles/LoginSection.styles';
+import constants from '../../../LoginPage.constants';
 import { isCanada } from '../../../../../../../utils';
 
 class LoginSection extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      currentForm: props.currentForm || 'login',
+      currentForm: props.currentForm || constants.PAGE_TYPE.LOGIN,
     };
     this.isCanada = isCanada();
   }
 
   showForgotPasswordForm = () => {
     this.setState({
-      currentForm: 'forgotPassword',
+      currentForm: constants.PAGE_TYPE.FORGOT_PASSWORD,
     });
   };
 
   showLoginForm = () => {
     this.setState({
-      currentForm: 'login',
+      currentForm: constants.PAGE_TYPE.LOGIN,
     });
   };
 
@@ -73,10 +74,10 @@ class LoginSection extends React.PureComponent<Props> {
               />
             </React.Fragment>
           )}
-          {currentForm === 'forgotPassword' && (
+          {currentForm === constants.PAGE_TYPE.FORGOT_PASSWORD && (
             <ForgotPasswordContainer showForgotPasswordForm={this.showLoginForm} labels={labels} />
           )}
-          {currentForm === 'resetPassword' && (
+          {currentForm === constants.PAGE_TYPE.RESET_PASSWORD && (
             <ResetPassword
               backToLoginAction={this.showLoginForm}
               labels={labels.password}
