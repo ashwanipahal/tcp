@@ -712,6 +712,7 @@ export const response = {
         offerPrice: 149.75,
         wasPrice: 29.95,
         salePrice: 29.95,
+        unitOfferPrice: 29.95,
       },
       miscInfo: {
         isOnlineOnly: false,
@@ -761,6 +762,7 @@ export const response = {
         offerPrice: 209.65,
         wasPrice: 29.95,
         salePrice: 29.95,
+        unitOfferPrice: 29.95,
       },
       miscInfo: {
         isOnlineOnly: false,
@@ -810,6 +812,7 @@ export const response = {
         offerPrice: 39,
         wasPrice: 19.5,
         salePrice: 19.5,
+        unitOfferPrice: 19.5,
       },
       miscInfo: {
         isOnlineOnly: false,
@@ -861,6 +864,7 @@ export const response = {
         offerPrice: 10.5,
         wasPrice: 10.5,
         salePrice: 10.5,
+        unitOfferPrice: 10.5,
       },
       miscInfo: {
         isOnlineOnly: true,

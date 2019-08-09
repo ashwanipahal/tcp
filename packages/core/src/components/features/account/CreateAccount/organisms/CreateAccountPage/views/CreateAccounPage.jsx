@@ -79,6 +79,7 @@ class CreateAccounPage extends React.Component {
             onSubmit={this.handleSubmitForm}
             isIAgreeChecked={isIAgreeChecked}
             hideShowPwd={hideShowPwd}
+            initialValues={{ rememberMe: true }}
             confirmHideShowPwd={confirmHideShowPwd}
             onAlreadyHaveAnAccountClick={onAlreadyHaveAnAccountClick}
           />
