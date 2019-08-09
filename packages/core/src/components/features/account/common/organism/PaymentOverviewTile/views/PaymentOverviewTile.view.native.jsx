@@ -48,11 +48,6 @@ export class PaymentOverviewTile extends React.PureComponent<Props> {
     getCardListAction();
   }
 
-  componentWillUnmount() {
-    const { clearPaymentNotification } = this.props;
-    clearPaymentNotification();
-  }
-
   getCreditCardView = card => {
     const { labels } = this.props;
 
