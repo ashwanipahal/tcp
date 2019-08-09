@@ -81,6 +81,43 @@ export default {
           external: 0,
         },
       ],
+      scrollCTAButtons: [
+        {
+          url: '/c/',
+          title: 'girl',
+          text: 'girl',
+          target: '',
+          external: 0,
+        },
+        {
+          url: '/p/',
+          title: 'toddlergirl',
+          text: 'toddlergirl',
+          target: '',
+          external: 0,
+        },
+        {
+          url: '/p/',
+          title: 'boy',
+          text: 'boy',
+          target: '',
+          external: 0,
+        },
+        {
+          url: '/c/',
+          title: 'toddlerboy',
+          text: 'toddlerboy',
+          target: '',
+          external: 0,
+        },
+        {
+          url: '/c/',
+          title: 'baby',
+          text: 'baby',
+          target: '',
+          external: 0,
+        },
+      ],
       stackedCTAButtons: [
         {
           url: '/c/',

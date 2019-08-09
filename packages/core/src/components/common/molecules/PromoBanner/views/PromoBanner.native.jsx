@@ -99,8 +99,8 @@ const PercentageStyle = (props: PercentageStyleProps) => {
   const { text } = props;
 
   const strArray = text && text.split('%');
-  const bodyCopyStyle = { height: 35 };
-  const bodyCopyStyle1 = { height: 57, marginTop: 8 };
+  const bodyCopyStyle = { height: 33 };
+  const bodyCopyStyle1 = { height: 58, marginTop: 8 };
   return (
     <Container>
       <BodyCopy

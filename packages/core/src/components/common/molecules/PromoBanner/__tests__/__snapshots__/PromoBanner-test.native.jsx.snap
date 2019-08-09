@@ -265,7 +265,7 @@ exports[`PromoTextBanner native component renders all style correctly 6`] = `
     lineHeight="64px"
     style={
       Object {
-        "height": 57,
+        "height": 58,
         "marginTop": 8,
       }
     }
@@ -281,7 +281,7 @@ exports[`PromoTextBanner native component renders all style correctly 6`] = `
       lineHeight="42px"
       style={
         Object {
-          "height": 35,
+          "height": 33,
         }
       }
       text="%"

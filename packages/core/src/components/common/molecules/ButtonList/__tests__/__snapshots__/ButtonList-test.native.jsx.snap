@@ -68,3 +68,62 @@ exports[`ButtonList ButtonList should render correctly 1`] = `
   </Styled(View)>
 </Styled(View)>
 `;
+
+exports[`ButtonList ButtonList should render correctly 2`] = `
+<Styled(View)>
+  <FlatList
+    data={
+      Array [
+        Object {
+          "external": 0,
+          "target": "",
+          "text": "girl",
+          "title": "girl",
+          "url": "/c/",
+        },
+        Object {
+          "external": 0,
+          "target": "",
+          "text": "toddlergirl",
+          "title": "toddlergirl",
+          "url": "/p/",
+        },
+        Object {
+          "external": 0,
+          "target": "",
+          "text": "boy",
+          "title": "boy",
+          "url": "/p/",
+        },
+        Object {
+          "external": 0,
+          "target": "",
+          "text": "toddlerboy",
+          "title": "toddlerboy",
+          "url": "/c/",
+        },
+        Object {
+          "external": 0,
+          "target": "",
+          "text": "baby",
+          "title": "baby",
+          "url": "/c/",
+        },
+      ]
+    }
+    disableVirtualization={false}
+    horizontal={true}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={1}
+    onEndReachedThreshold={2}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    showsHorizontalScrollIndicator={false}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
+  />
+</Styled(View)>
+`;

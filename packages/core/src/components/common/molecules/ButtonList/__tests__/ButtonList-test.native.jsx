@@ -6,12 +6,20 @@ import { Container } from '../ButtonList.styles.native';
 
 describe('ButtonList', () => {
   let stackedCTAList;
+  let scrollCTAList;
 
   beforeEach(() => {
     stackedCTAList = shallow(
       <ButtonListVanilla
         buttonListVariation="stackedCTAList"
         stackedCTAButtons={mock.moduleN.composites.stackedCTAButtons}
+      />
+    );
+
+    scrollCTAList = shallow(
+      <ButtonListVanilla
+        buttonListVariation="scrollCTAList"
+        scrollCTAButtons={mock.moduleN.composites.scrollCTAButtons}
       />
     );
   });
@@ -38,5 +46,17 @@ describe('ButtonList', () => {
 
   it('should render CustomButton', () => {
     expect(stackedCTAList.find('FlatList')).toHaveLength(1);
+  });
+
+  it('ButtonList should be defined', () => {
+    expect(scrollCTAList).toBeDefined();
+  });
+
+  it('ButtonList should render correctly', () => {
+    expect(scrollCTAList).toMatchSnapshot();
+  });
+
+  it('should render Container', () => {
+    expect(scrollCTAList.find(Container)).toHaveLength(1);
   });
 });
