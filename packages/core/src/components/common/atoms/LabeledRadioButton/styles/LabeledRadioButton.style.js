@@ -5,7 +5,6 @@ const styles = css`
   position: relative;
   padding-left: 40px;
   cursor: pointer;
-  font-size: 22px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -35,21 +34,17 @@ const styles = css`
     content: '';
     position: absolute;
     display: none;
-  }
-
-  /* Show the indicator (dot/circle) when checked */
-  input:checked ~ .checkmark:after {
-    display: block;
-  }
-
-  /* Style the indicator (dot/circle) */
-  .checkmark:after {
     top: 3px;
     left: 3px;
     width: 10px;
     height: 10px;
     border-radius: 50%;
     background: #000000;
+  }
+
+  /* Show the indicator (dot/circle) when checked */
+  input:checked ~ .checkmark:after {
+    display: block;
   }
 `;
 

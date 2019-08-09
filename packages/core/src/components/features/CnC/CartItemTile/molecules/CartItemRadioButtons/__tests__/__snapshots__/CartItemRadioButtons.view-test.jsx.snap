@@ -7,6 +7,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render corre
   <Styled(LabeledRadioButton)
     checked={false}
     className="select-box-1 common-select-box-css false"
+    data-locator="ItemNoRushRadioButton"
     disabled={true}
     name="ship-it-undefined"
     onChange={[Function]}
@@ -15,6 +16,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render corre
       className={null}
       color="gray.900"
       component="p"
+      dataLocator="cartNoRush"
       fontFamily="secondary"
       fontSize="fs14"
       fontWeight="regular"
@@ -26,6 +28,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render corre
   <Styled(LabeledRadioButton)
     checked={false}
     className="normal-select-box common-select-box-css false"
+    data-locator="ItemPickUpTodayRadioButton"
     disabled={true}
     name="ship-it-undefined"
     onChange={[Function]}
@@ -37,6 +40,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render corre
         className={null}
         color="gray.900"
         component="p"
+        dataLocator="cartPickUpToday"
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="regular"
@@ -64,7 +68,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render corre
             lineHeight="normal"
             textAlign="left"
           >
-            Extra 5%
+            undefined 5%
           </Styled(BodyCopy)>
           <Styled(BodyCopy)
             className="off-label"
@@ -76,9 +80,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render corre
             letterSpacing="normal"
             lineHeight="normal"
             textAlign="left"
-          >
-            OFF
-          </Styled(BodyCopy)>
+          />
         </div>
       </div>
     </div>
@@ -86,6 +88,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render corre
   <Styled(LabeledRadioButton)
     checked={true}
     className="normal-select-box common-select-box-css selected-method"
+    data-locator="ItemShipToHomeRadioButton"
     disabled={false}
     name="ship-it-undefined"
     onChange={[Function]}
@@ -94,6 +97,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render corre
       className={null}
       color="gray.900"
       component="p"
+      dataLocator="cartShipToHome"
       fontFamily="secondary"
       fontSize="fs14"
       fontWeight="regular"

@@ -18,7 +18,8 @@ class LabeledRadioButton extends React.Component<Props> {
 
   constructor(props) {
     super(props);
-    this.labeledRadioButtonCounter = LabeledRadioButton.labeledRadioButtonCounter + 1;
+    LabeledRadioButton.labeledRadioButtonCounter += 1;
+    this.labeledRadioButtonCounter = LabeledRadioButton.labeledRadioButtonCounter;
   }
 
   render() {

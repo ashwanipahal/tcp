@@ -3,11 +3,11 @@
 exports[`CartItemRadioButtons Component LabeledRadioButton should render correctly 1`] = `
 <label
   className=""
-  htmlFor="_1"
+  htmlFor="_2"
 >
   <input
     checked={true}
-    id="_1"
+    id="_2"
     type="radio"
   />
   <span

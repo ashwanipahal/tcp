@@ -14,15 +14,15 @@ const styles = css`
     padding-bottom: 13px;
   }
   .select-box-1 {
-    border-top: 1px solid #9b9b9b;
-    border-bottom: 1px solid #9b9b9b;
+    border-top: 1px solid ${props => props.theme.colors.GRAY};
+    border-bottom: 1px solid ${props => props.theme.colors.GRAY};
   }
   .normal-select-box {
-    border-bottom: 1px solid #9b9b9b;
+    border-bottom: 1px solid ${props => props.theme.colors.GRAY};
   }
   .selected-method {
-    border-left: 1px solid #9b9b9b;
-    border-right: 1px solid #9b9b9b;
+    border-left: 1px solid ${props => props.theme.colors.GRAY};
+    border-right: 1px solid ${props => props.theme.colors.GRAY};
   }
   .main-content-banner {
     display: flex;

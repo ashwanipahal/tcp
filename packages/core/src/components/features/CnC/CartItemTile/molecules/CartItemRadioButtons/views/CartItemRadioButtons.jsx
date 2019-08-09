@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import style from '../styles/CartItemRadioButtons.style';
 import { BodyCopy, LabeledRadioButton } from '../../../../../../common/atoms';
+import { getLocator } from '../../../../../../../utils';
 
 class CartItemRadioButtons extends React.Component {
   constructor(props) {
@@ -40,8 +41,14 @@ class CartItemRadioButtons extends React.Component {
           onChange={e => this.handleToggle(e, 'BOSS')}
           checked={selectedOrder === 'BOSS'}
           disabled
+          data-locator={getLocator('cart_item_no_rush_radio_button')}
         >
-          <BodyCopy color="gray.900" fontSize="fs14" fontFamily="secondary">
+          <BodyCopy
+            dataLocator={getLocator('cart_item_cartNoRush')}
+            color="gray.900"
+            fontSize="fs14"
+            fontFamily="secondary"
+          >
             {labels.bossPickUp}
           </BodyCopy>
         </LabeledRadioButton>
@@ -55,19 +62,25 @@ class CartItemRadioButtons extends React.Component {
           onChange={e => this.handleToggle(e, 'BOPIS')}
           checked={selectedOrder === 'BOPIS'}
           disabled
+          data-locator={getLocator('cart_item_pickup_radio_today_button')}
         >
           <div className="main-content-banner">
-            <BodyCopy color="gray.900" fontSize="fs14" fontFamily="secondary">
+            <BodyCopy
+              dataLocator={getLocator('cart_item_pickup_today')}
+              color="gray.900"
+              fontSize="fs14"
+              fontFamily="secondary"
+            >
               {labels.bopisPickUp}
             </BodyCopy>
             <div className="banner-wrapper">
               <div className="triangle-left" />
               <div className="promo-wrapper">
                 <BodyCopy fontSize="fs10" fontFamily="primary" fontWeight="black">
-                  Extra 5%
+                  {`${labels.extra} 5%`}
                 </BodyCopy>
                 <BodyCopy className="off-label" fontSize="fs10" fontFamily="primary">
-                  OFF
+                  {labels.off}
                 </BodyCopy>
               </div>
             </div>
@@ -102,8 +115,14 @@ class CartItemRadioButtons extends React.Component {
           onChange={e => this.handleToggle(e, 'ECOM')}
           checked={selectedOrder === 'ECOM'}
           disabled={false}
+          data-locator={getLocator('cart_item_ship_to_home_radio_button')}
         >
-          <BodyCopy color="gray.900" fontSize="fs14" fontFamily="secondary">
+          <BodyCopy
+            dataLocator={getLocator('cart_item_ship_to_home')}
+            color="gray.900"
+            fontSize="fs14"
+            fontFamily="secondary"
+          >
             {labels.ecomShipping}
           </BodyCopy>
         </LabeledRadioButton>

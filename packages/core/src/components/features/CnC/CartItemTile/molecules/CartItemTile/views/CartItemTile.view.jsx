@@ -76,7 +76,7 @@ class CartItemTile extends React.Component {
               fontFamily="secondary"
               tag="span"
               fontSize="fs10"
-              dataLocator="addedtobag-productname"
+              dataLocator={getLocator('cart_item_upc')}
             >
               {`Upc: ${productDetail.productInfo.upc}`}
             </BodyCopy>
@@ -94,6 +94,7 @@ class CartItemTile extends React.Component {
           fontFamily="secondary"
           component="span"
           fontSize="fs12"
+          dataLocator={getLocator('cart_item_price')}
           fontWeight={['extrabold']}
         >
           {pageView === 'myBag'
@@ -132,7 +133,7 @@ class CartItemTile extends React.Component {
               alt={labels.productImageAlt}
               className="product-image"
               src={endpoints.global.baseURI + productDetail.itemInfo.imagePath}
-              data-locator="addedtobag-productimage"
+              data-locator={getLocator('cart_item_image')}
             />
             {!productDetail.itemInfo.isGiftItem && (
               <Image
@@ -143,7 +144,7 @@ class CartItemTile extends React.Component {
                     ? getIconPath(`header__brand-tab--tcp`)
                     : getIconPath('header__brand-tab-gymboree')
                 }
-                data-locator={getLocator('header__brand-tab--tcp')}
+                data-locator={getLocator('cart_item_brand_logo')}
               />
             )}
           </Col>
@@ -160,7 +161,7 @@ class CartItemTile extends React.Component {
                   tag="span"
                   fontSize="fs14"
                   fontWeight={['extrabold']}
-                  dataLocator="addedtobag-productname"
+                  dataLocator={getLocator('cart_item_title')}
                 >
                   {productDetail.itemInfo.name}
                 </BodyCopy>
@@ -187,7 +188,7 @@ class CartItemTile extends React.Component {
                       fontFamily="secondary"
                       component="span"
                       fontSize="fs12"
-                      dataLocator="addedtobag-productcolor"
+                      dataLocator={getLocator('cart_item_color')}
                     >
                       {`${productDetail.itemInfo.color}`}
                     </BodyCopy>
@@ -250,7 +251,7 @@ class CartItemTile extends React.Component {
                       fontFamily="secondary"
                       component="span"
                       fontSize="fs12"
-                      dataLocator="addedtobag-productsize"
+                      dataLocator={getLocator('cart_item_size')}
                     >
                       {`${productDetail.itemInfo.size}`}
                     </BodyCopy>
@@ -290,6 +291,7 @@ class CartItemTile extends React.Component {
                     fontFamily="secondary"
                     fontSize="fs12"
                     component="div"
+                    dataLocator={getLocator('cart_item_edit_link')}
                     className="padding-left-10 responsive-edit-css"
                     onClick={() => {
                       if (pageView !== 'myBag') {
@@ -341,6 +343,7 @@ class CartItemTile extends React.Component {
                   fontSize="fs12"
                   fontWeight={['extrabold']}
                   color={this.getPointsColor(pageView)}
+                  dataLocator={getLocator('cart_item_points')}
                 >
                   {productDetail.itemInfo.myPlacePoints}
                 </BodyCopy>
@@ -360,6 +363,7 @@ class CartItemTile extends React.Component {
                   component="span"
                   fontSize="fs16"
                   fontWeight={['extrabold']}
+                  dataLocator={getLocator('cart_item_total_price')}
                 >
                   {`$${productDetail.itemInfo.price}`}
                 </BodyCopy>

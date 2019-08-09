@@ -24,6 +24,7 @@ import CheckoutActions from '../molecules/CheckoutActions';
 
 const BagPageView = ({ className, labels, totalCount }: Props) => {
   const showAddTobag = false;
+  const myBag = 'myBag';
   return (
     <div className={className}>
       <Row tagName="header">
@@ -36,7 +37,7 @@ const BagPageView = ({ className, labels, totalCount }: Props) => {
       <section className="main-sec">
         <Row>
           <Col colSize={{ small: 6, medium: 5, large: 8 }} className="left-sec">
-            <ProductTileWrapper pageView="myBag" />
+            <ProductTileWrapper pageView={myBag} />
           </Col>
           <Col colSize={{ small: 6, medium: 3, large: 4 }} className="right-sec">
             <OrderLedgerContainer />
