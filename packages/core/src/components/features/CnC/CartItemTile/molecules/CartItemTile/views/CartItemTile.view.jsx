@@ -393,3 +393,4 @@ CartItemTile.propTypes = {
 };
 
 export default withStyles(CartItemTile, styles);
+export { CartItemTile as CartItemTileVanilla };
