@@ -1,0 +1,382 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ButtonList component renders correctly 1`] = `
+<div
+  className=" link-comp-wrapper"
+>
+  <Styled(Anchor)
+    className="link-button"
+    href="http://www.childrensplace.com"
+    target=""
+    title="Toddle Girl"
+  >
+    <Styled(Button)
+      buttonVariation="category-links-dark"
+      className="link-button-wrapper-class"
+      key="0"
+    >
+      TODDLER GIRL
+    </Styled(Button)>
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="link-button"
+    href="http://www.childrensplace.com"
+    target=""
+    title="Girl"
+  >
+    <Styled(Button)
+      buttonVariation="category-links-dark"
+      className="link-button-wrapper-class"
+      key="1"
+    >
+      GIRL
+    </Styled(Button)>
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="link-button"
+    href="http://www.childrensplace.com"
+    target=""
+    title="Toddler Boy"
+  >
+    <Styled(Button)
+      buttonVariation="category-links-dark"
+      className="link-button-wrapper-class"
+      key="2"
+    >
+      TODDLER BOY
+    </Styled(Button)>
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="link-button"
+    href="http://www.childrensplace.com"
+    target=""
+    title="Boy"
+  >
+    <Styled(Button)
+      buttonVariation="category-links-dark"
+      className="link-button-wrapper-class"
+      key="3"
+    >
+      BOY
+    </Styled(Button)>
+  </Styled(Anchor)>
+</div>
+`;
+
+exports[`ButtonList component renders correctly for image cta List 1`] = `
+<div
+  className=" scroll-comp-wrapper"
+>
+  <div
+    className="scroll-cta-wrapper div-image-wrapper"
+  >
+    <div
+      className="img-wrapper"
+    >
+      <div>
+        <Styled(Anchor)
+          fontSizeVariation="large"
+          fontWeightVariation="active"
+          key="0"
+        >
+          <WithTheme(DamImage)
+            className="image-cta"
+            imgData={
+              Object {
+                "alt": "Toddler Girl Image",
+                "title": "Toddler Girl",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              }
+            }
+          />
+          <div
+            className="image-comp"
+          >
+            TODDLER GIRL
+          </div>
+        </Styled(Anchor)>
+      </div>
+    </div>
+    <div
+      className="img-wrapper"
+    >
+      <div>
+        <Styled(Anchor)
+          fontSizeVariation="large"
+          fontWeightVariation="active"
+          key="1"
+        >
+          <WithTheme(DamImage)
+            className="image-cta"
+            imgData={
+              Object {
+                "alt": "Girl Image",
+                "title": "Girl",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              }
+            }
+          />
+          <div
+            className="image-comp"
+          >
+            GIRL
+          </div>
+        </Styled(Anchor)>
+      </div>
+    </div>
+    <div
+      className="img-wrapper"
+    >
+      <div>
+        <Styled(Anchor)
+          fontSizeVariation="large"
+          fontWeightVariation="active"
+          key="2"
+        >
+          <WithTheme(DamImage)
+            className="image-cta"
+            imgData={
+              Object {
+                "alt": "Toddler Girl Image",
+                "title": "Toddler Boy Girl",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              }
+            }
+          />
+          <div
+            className="image-comp"
+          >
+            TODDLER BOY
+          </div>
+        </Styled(Anchor)>
+      </div>
+    </div>
+    <div
+      className="img-wrapper"
+    >
+      <div>
+        <Styled(Anchor)
+          fontSizeVariation="large"
+          fontWeightVariation="active"
+          key="3"
+        >
+          <WithTheme(DamImage)
+            className="image-cta"
+            imgData={
+              Object {
+                "alt": "Boy Image",
+                "title": "Boy",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              }
+            }
+          />
+          <div
+            className="image-comp"
+          >
+            BOY
+          </div>
+        </Styled(Anchor)>
+      </div>
+    </div>
+    <div
+      className="img-wrapper"
+    >
+      <div>
+        <Styled(Anchor)
+          fontSizeVariation="large"
+          fontWeightVariation="active"
+          key="4"
+        >
+          <WithTheme(DamImage)
+            className="image-cta"
+            imgData={
+              Object {
+                "alt": "Baby Image",
+                "title": "Baby",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              }
+            }
+          />
+          <div
+            className="image-comp"
+          >
+            BABY
+          </div>
+        </Styled(Anchor)>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
+<div
+  className=" scroll-comp-wrapper"
+>
+  <Styled(Anchor)
+    className="scroll-button"
+    href="https://www.childrensplace.com"
+    target="_blank"
+    title=""
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="scroll-cta-wrapper-class"
+      fill="RED"
+      key="0"
+    >
+      girl
+    </Styled(Button)>
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="scroll-button"
+    href="https://www.childrensplace.com"
+    target=""
+    title=""
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="scroll-cta-wrapper-class"
+      fill="RED"
+      key="1"
+    >
+      toddler girl
+    </Styled(Button)>
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="scroll-button"
+    href="https://www.childrensplace.com"
+    target=""
+    title=""
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="scroll-cta-wrapper-class"
+      fill="RED"
+      key="2"
+    >
+      boy
+    </Styled(Button)>
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="scroll-button"
+    href="https://www.childrensplace.com"
+    target=""
+    title=""
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="scroll-cta-wrapper-class"
+      fill="RED"
+      key="3"
+    >
+      toddler boy
+    </Styled(Button)>
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="scroll-button"
+    href="https://www.childrensplace.com"
+    target=""
+    title=""
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="scroll-cta-wrapper-class"
+      fill="RED"
+      key="4"
+    >
+      baby
+    </Styled(Button)>
+  </Styled(Anchor)>
+</div>
+`;
+
+exports[`ButtonList component renders correctly with props for stacked CTA buttons 1`] = `
+<div
+  className=" stack-comp-wrapper"
+>
+  <Styled(Anchor)
+    className="stacked-button"
+    href="https://www.childrensplace.com"
+    target="_blank"
+    title=""
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      fill="RED"
+      key="0"
+    >
+      girl
+    </Styled(Button)>
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="stacked-button"
+    href="https://www.childrensplace.com"
+    target=""
+    title=""
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      fill="RED"
+      key="1"
+    >
+      toddler girl
+    </Styled(Button)>
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="stacked-button"
+    href="https://www.childrensplace.com"
+    target=""
+    title=""
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      fill="RED"
+      key="2"
+    >
+      boy
+    </Styled(Button)>
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="stacked-button"
+    href="https://www.childrensplace.com"
+    target=""
+    title=""
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      fill="RED"
+      key="3"
+    >
+      toddler boy
+    </Styled(Button)>
+  </Styled(Anchor)>
+  <Styled(Anchor)
+    className="stacked-button"
+    href="https://www.childrensplace.com"
+    target=""
+    title=""
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="stacked-cta-wrapper-class"
+      fill="RED"
+      key="4"
+    >
+      baby
+    </Styled(Button)>
+  </Styled(Anchor)>
+</div>
+`;
+
+exports[`ButtonList component renders correctly without props 1`] = `
+<div
+  className=" "
+>
+  <Component />
+</div>
+`;

@@ -1,0 +1,476 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleL component renders correctly 1`] = `
+<Fragment>
+  <div
+    className="undefined moduleN"
+  >
+    <div
+      className="heading-wrapper"
+    >
+      <Styled(LinkText)
+        className="heading"
+        color="white"
+        component="h3"
+        headerText={
+          Array [
+            Object {
+              "link": Object {
+                "target": "",
+                "title": "",
+                "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
+              },
+              "textItems": Array [
+                Object {
+                  "color": "color2",
+                  "style": "moduleN-heading-wrapper",
+                  "text": "ALL CLEARANCE",
+                },
+              ],
+            },
+          ]
+        }
+        textAlign="center"
+        type="heading"
+      />
+      <Styled(PromoBanner)
+        className="moduleN__promo-banner"
+        color="white"
+        promoBanner={
+          Array [
+            Object {
+              "link": Object {
+                "class": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/c/",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "moduleN-promoBanner-text1",
+                  "text": "60-70",
+                },
+                Object {
+                  "style": "moduleN-promoBanner-text2",
+                  "text": "%",
+                },
+                Object {
+                  "style": "moduleN-promoBanner-text3",
+                  "text": "OFF",
+                },
+                Object {
+                  "style": "moduleN-promoBanner-text4",
+                  "text": "No Exclusions",
+                },
+              ],
+            },
+          ]
+        }
+      />
+    </div>
+    <Styled(ButtonList)
+      buttonListVariation="stackedCTAList"
+      buttonsData={
+        Array [
+          Object {
+            "external": "",
+            "target": "_blank",
+            "text": "girl",
+            "title": "",
+            "url": "https://www.childrensplace.com",
+          },
+          Object {
+            "external": 1,
+            "target": "",
+            "text": "toddler girl",
+            "title": "",
+            "url": "https://www.childrensplace.com",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "boy",
+            "title": "",
+            "url": "https://www.childrensplace.com",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "toddler boy",
+            "title": "",
+            "url": "https://www.childrensplace.com",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "baby",
+            "title": "",
+            "url": "https://www.childrensplace.com",
+          },
+        ]
+      }
+    />
+    <div
+      className="heading-wrapper"
+    >
+      <Styled(LinkText)
+        className="heading"
+        color="white"
+        component="h3"
+        headerText={
+          Array [
+            Object {
+              "link": Object {
+                "target": "",
+                "title": "",
+                "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
+              },
+              "textItems": Array [
+                Object {
+                  "color": "color2",
+                  "style": "moduleN-heading-wrapper",
+                  "text": "ALL CLEARANCE",
+                },
+              ],
+            },
+          ]
+        }
+        textAlign="center"
+        type="heading"
+      />
+      <Styled(PromoBanner)
+        className="moduleN__promo-banner"
+        color="white"
+        promoBanner={
+          Array [
+            Object {
+              "link": Object {
+                "class": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/c/",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "moduleN-promoBanner-text1",
+                  "text": "60-70",
+                },
+                Object {
+                  "style": "moduleN-promoBanner-text2",
+                  "text": "%",
+                },
+                Object {
+                  "style": "moduleN-promoBanner-text3",
+                  "text": "OFF",
+                },
+                Object {
+                  "style": "moduleN-promoBanner-text4",
+                  "text": "No Exclusions",
+                },
+              ],
+            },
+          ]
+        }
+      />
+    </div>
+    <Styled(ButtonList)
+      buttonListVariation="scrollCTAList"
+      buttonsData={
+        Array [
+          Object {
+            "external": "",
+            "target": "_blank",
+            "text": "girl",
+            "title": "",
+            "url": "https://www.childrensplace.com",
+          },
+          Object {
+            "external": 1,
+            "target": "",
+            "text": "toddler girl",
+            "title": "",
+            "url": "https://www.childrensplace.com",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "boy",
+            "title": "",
+            "url": "https://www.childrensplace.com",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "toddler boy",
+            "title": "",
+            "url": "https://www.childrensplace.com",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "baby",
+            "title": "",
+            "url": "https://www.childrensplace.com",
+          },
+        ]
+      }
+    />
+    <div
+      className="separator"
+    >
+      .
+    </div>
+    <div
+      className="heading-wrapper"
+    >
+      <Styled(LinkText)
+        className="heading"
+        color="white"
+        component="h3"
+        headerText={
+          Array [
+            Object {
+              "link": Object {
+                "target": "",
+                "title": "",
+                "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
+              },
+              "textItems": Array [
+                Object {
+                  "color": "color2",
+                  "style": "moduleN-heading-wrapper",
+                  "text": "ALL CLEARANCE",
+                },
+              ],
+            },
+          ]
+        }
+        textAlign="center"
+        type="heading"
+      />
+      <Styled(PromoBanner)
+        className="moduleN__promo-banner"
+        color="white"
+        promoBanner={
+          Array [
+            Object {
+              "link": Object {
+                "class": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/c/",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "moduleN-promoBanner-text1",
+                  "text": "60-70",
+                },
+                Object {
+                  "style": "moduleN-promoBanner-text2",
+                  "text": "%",
+                },
+                Object {
+                  "style": "moduleN-promoBanner-text3",
+                  "text": "OFF",
+                },
+                Object {
+                  "style": "moduleN-promoBanner-text4",
+                  "text": "No Exclusions",
+                },
+              ],
+            },
+          ]
+        }
+      />
+    </div>
+    <Styled(ButtonList)
+      buttonListVariation="imageCTAList"
+      buttonsData={
+        Array [
+          Object {
+            "image": Object {
+              "alt": "Toddler Girl Image",
+              "title": "Toddler Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "",
+              "text": "TODDLER GIRL",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+          },
+          Object {
+            "image": Object {
+              "alt": "Girl Image",
+              "title": "Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "",
+              "text": "GIRL",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+          },
+          Object {
+            "image": Object {
+              "alt": "Toddler Girl Image",
+              "title": "Toddler Boy Girl",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "",
+              "text": "TODDLER BOY",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+          },
+          Object {
+            "image": Object {
+              "alt": "Boy Image",
+              "title": "Boy",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "",
+              "text": "BOY",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+          },
+          Object {
+            "image": Object {
+              "alt": "Baby Image",
+              "title": "Baby",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "",
+              "text": "BABY",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+          },
+        ]
+      }
+    />
+    <div
+      className="separator"
+    >
+      .
+    </div>
+    <div
+      className="heading-wrapper"
+    >
+      <Styled(LinkText)
+        className="heading"
+        color="white"
+        component="h3"
+        headerText={
+          Array [
+            Object {
+              "link": Object {
+                "target": "",
+                "title": "",
+                "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
+              },
+              "textItems": Array [
+                Object {
+                  "color": "color2",
+                  "style": "moduleN-heading-wrapper",
+                  "text": "ALL CLEARANCE",
+                },
+              ],
+            },
+          ]
+        }
+        textAlign="center"
+        type="heading"
+      />
+      <Styled(PromoBanner)
+        className="moduleN__promo-banner"
+        color="white"
+        promoBanner={
+          Array [
+            Object {
+              "link": Object {
+                "class": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/c/",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "moduleN-promoBanner-text1",
+                  "text": "60-70",
+                },
+                Object {
+                  "style": "moduleN-promoBanner-text2",
+                  "text": "%",
+                },
+                Object {
+                  "style": "moduleN-promoBanner-text3",
+                  "text": "OFF",
+                },
+                Object {
+                  "style": "moduleN-promoBanner-text4",
+                  "text": "No Exclusions",
+                },
+              ],
+            },
+          ]
+        }
+      />
+    </div>
+    <Styled(ButtonList)
+      buttonListVariation="linkCTAList"
+      buttonsData={
+        Array [
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "TODDLER GIRL",
+            "title": "Toddle Girl",
+            "url": "http://www.childrensplace.com",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "GIRL",
+            "title": "Girl",
+            "url": "http://www.childrensplace.com",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "TODDLER BOY",
+            "title": "Toddler Boy",
+            "url": "http://www.childrensplace.com",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "BOY",
+            "title": "Boy",
+            "url": "http://www.childrensplace.com",
+          },
+        ]
+      }
+    />
+  </div>
+</Fragment>
+`;
