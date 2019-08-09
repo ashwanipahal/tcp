@@ -60,6 +60,29 @@ const style = css`
      }
    `
       : ''};
+
+  ${props =>
+    props.buttonVariation === 'cautionary-button'
+      ? `
+     width: ${props.width};
+     height: ${props.height};
+     background: ${props.fill || props.theme.colorPalette.white};
+     color: ${
+       props.color === 'red'
+         ? props.theme.colorPalette.secondary.dark
+         : props.theme.colorPalette.primary.dark
+     };
+     font-family: ${props.theme.typography.fonts.secondary};
+     font-size: ${props.theme.fonts.fontSize.button.size}px;
+     font-weight: ${props.theme.typography.fontWeights.extrabold};
+     border: 1px solid ${
+       props.color === 'red'
+         ? props.theme.colorPalette.secondary.dark
+         : props.theme.colorPalette.primary.dark
+     };
+     padding: 12px 32px;
+     `
+      : ''};
 `;
 
 export default style;

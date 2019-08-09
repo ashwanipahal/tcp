@@ -37,6 +37,6 @@ describe('Drawer component', () => {
   it('has description loaded', () => {
     const L1NavItemComp = shallow(<L1NavItem {...data2} />);
 
-    expect(L1NavItemComp.find('.nav-bar-l1-item-label')).toHaveLength(1);
+    expect(L1NavItemComp.find('.nav-bar-item-label')).toHaveLength(1);
   });
 });

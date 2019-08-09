@@ -1,381 +1,209 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BossBannerView component renders correctly 1`] = `
-<styled.div>
-  <Styled(Row)
-    className="product"
-    fullBleed={true}
-  >
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 3,
-          "medium": 2,
-          "small": 2,
-        }
+exports[`CartItemTile common component renders correctly 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-cSHVUG",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  padding: 10px 15px;
+  border-bottom: 2px solid ",
+          [Function],
+          ";
+  margin-bottom: 20px;
+  .padding-top-10 {
+    padding-top: 10px;
+  }
+  .padding-left-10 {
+    padding-left: 10px;
+  }
+  .padding-left-13 {
+    padding-left: 13px;
+  }
+  .product-details {
+    margin-bottom: 5px;
+  }
+  .product-image {
+    text-align: center;
+  }
+  .brand-image {
+    text-align: center;
+  }
+  .edit-button {
+    padding-left: 10px;
+  }
+  .padding-top-15 {
+    padding-top: 15px;
+  }
+  .padding-bottom-20 {
+    padding-bottom: 20px;
+  }
+  .align-product-img {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .color-fit-size-separator {
+    padding: 0 5px;
+  }
+  .color-size-fit-label {
+    display: inline-block;
+  }
+  .responsive-edit-css {
+    padding-top: 2px;
+  }
+
+  .product-tile-wrapper {
+    flex-wrap: nowrap;
+    @media ",
+          [Function],
+          " {
+      position: relative;
+    }
+    & .product-detail-row {
+      margin: 0;
+    }
+    & .list-price {
+      padding-left: 5px;
+    }
+    & .product-brand-img-wrapper {
+      align-items: center;
+      width: 103px;
+      @media ",
+          [Function],
+          " {
+        width: 105px;
       }
-      key="productDetails"
-    >
-      <Styled(Image)
-        className="product-image"
-        data-locator="addedtobag-productimage"
-        src="https://test4.childrensplace.comundefined"
-      />
-    </Styled(Col)>
-    <Styled(Col)
-      colSize={
-        Object {
-          "large": 9,
-          "medium": 6,
-          "small": 4,
-        }
+      & .brand-image {
+        width: 60px;
       }
-      key="productDetails"
-    >
-      <Styled(Row)>
-        <Styled(Col)
-          className="productImgBrand"
-          colSize={
-            Object {
-              "large": 12,
-              "medium": 8,
-              "small": 6,
-            }
-          }
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="p"
-            dataLocator="addedtobag-productname"
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            tag="span"
-            textAlign="left"
-          >
-            Boys Basic Skinny Jeans
-          </Styled(BodyCopy)>
-        </Styled(Col)>
-      </Styled(Row)>
-      <Styled(Row)
-        className="padding-top-10"
-      >
-        <div>
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="span"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="left"
-          >
-            Design
-            :
-          </Styled(BodyCopy)>
-          <Styled(BodyCopy)
-            className="itemDesc"
-            color="text.primary"
-            component="span"
-            dataLocator="addedtobag-productcolor"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="left"
-          >
-             undefined | 
-          </Styled(BodyCopy)>
-        </div>
-        <div
-          className="padding-left"
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="span"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="left"
-          >
-            :
-          </Styled(BodyCopy)>
-          <Styled(BodyCopy)
-            className="itemDesc"
-            color="text.primary"
-            component="span"
-            dataLocator="addedtobag-productsize"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="left"
-          >
-             regular | 
-          </Styled(BodyCopy)>
-        </div>
-        <div
-          className="padding-left"
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="span"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="left"
-          >
-            undefined
-            :
-          </Styled(BodyCopy)>
-          <Styled(BodyCopy)
-            className="itemDesc"
-            color="text.primary"
-            component="span"
-            dataLocator="addedtobag-productsize"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="left"
-          >
-             1
-          </Styled(BodyCopy)>
-        </div>
-        <div
-          className="padding-left"
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="span"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="left"
-          >
-             Qty
-            :
-          </Styled(BodyCopy)>
-          <Styled(BodyCopy)
-            className="itemDesc"
-            color="text.primary"
-            component="span"
-            dataLocator="addedtobag-productqty"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="left"
-          >
-             1
-          </Styled(BodyCopy)>
-        </div>
-        <Styled(BodyCopy)
-          className="padding-left-10"
-          color="text.primary"
-          component="div"
-          fontFamily="secondary"
-          fontSize="fs12"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          onClick={[Function]}
-          textAlign="left"
-        >
-          <u />
-        </Styled(BodyCopy)>
-      </Styled(Row)>
-      <Styled(Row)
-        className="padding-top-10"
-      >
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 4,
-              "medium": 3,
-              "small": 2,
-            }
-          }
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="span"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="left"
-          >
-            Price: 
-          </Styled(BodyCopy)>
-        </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 8,
-              "medium": 3,
-              "small": 2,
-            }
-          }
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="span"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="left"
-          >
-            123
-          </Styled(BodyCopy)>
-        </Styled(Col)>
-      </Styled(Row)>
-      <Styled(Row)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 4,
-              "medium": 3,
-              "small": 2,
-            }
-          }
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="span"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="left"
-          >
-            undefined:
-          </Styled(BodyCopy)>
-        </Styled(Col)>
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 8,
-              "medium": 3,
-              "small": 2,
-            }
-          }
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="span"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight={
-              Array [
-                "extrabold",
-              ]
-            }
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="left"
-          >
-            123
-          </Styled(BodyCopy)>
-        </Styled(Col)>
-      </Styled(Row)>
-      <Styled(Row)
-        className="padding-top-15 padding-bottom-20"
-        fullBleed={true}
-      >
-        <Styled(Col)
-          className="padding-left-13"
-          colSize={
-            Object {
-              "large": 8,
-              "medium": 6,
-              "small": 4,
-            }
-          }
-        />
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 3,
-              "medium": 1,
-              "small": 1,
-            }
-          }
-        >
-          <Styled(BodyCopy)
-            className={null}
-            color="text.primary"
-            component="span"
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="left"
-          >
-            <u />
-          </Styled(BodyCopy)>
-        </Styled(Col)>
-      </Styled(Row)>
-    </Styled(Col)>
-  </Styled(Row)>
-</styled.div>
+    }
+
+    .color-size-fit-label {
+      width: 40px;
+      display: inline-block;
+    }
+
+    .bag-product-detail-wrapper {
+      position: relative;
+
+      .color-fit-size-separator {
+        padding: 0 10px;
+      }
+
+      .label-responsive {
+        width: 40px;
+        margin-right: 0;
+      }
+
+      .value-responsive {
+        flex: 1;
+        padding-left: 10px;
+      }
+      .label-responsive-wrapper {
+        padding-top: 0;
+        display: flex;
+        flex: 1;
+      }
+
+      .responsive-edit-css {
+        padding-top: 2px;
+      }
+    }
+
+    @media ",
+          [Function],
+          " {
+      .price-label {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+      .save-for-later-label {
+        position: absolute;
+        bottom: 0px;
+        left: 0;
+        width: 100%;
+      }
+      .color-map-size-fit {
+        display: block;
+      }
+      .responsive-edit-css {
+        position: absolute;
+        bottom: 0;
+        right: 50%;
+      }
+      .bag-product-detail-wrapper {
+        position: static;
+      }
+      .color-fit-size-separator {
+        display: none;
+      }
+    }
+
+    @media ",
+          [Function],
+          " {
+      .color-fit-size-desktop {
+        width: auto;
+      }
+    }
+
+    .price-label {
+      margin-left: 170px;
+    }
+  }
+
+  ",
+          [Function],
+          ";
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(CartItemTile)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-cSHVUG",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  labels={
+    Object {
+      "color": "Color",
+      "design": "Design",
+      "price": "Price",
+      "qty": "Qty",
+      "sizeL": "Size",
+    }
+  }
+  productDetail={
+    Object {
+      "itemInfo": Object {
+        "fit": "regular",
+        "isGiftItem": true,
+        "myPlacePoints": 123,
+        "name": "Boys Basic Skinny Jeans",
+        "price": 123,
+        "qty": "1",
+        "size": "1",
+      },
+      "miscInfo": Object {
+        "badge": "",
+      },
+    }
+  }
+/>
 `;

@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ProductTileWrapper from '@tcp/web/src/components/features/CnC/MiniBag/container/ProductTileWrapperContainer.container';
 import OrderLedgerContainer from '../organisms/OrderLedger';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/BagPage.style';
-import CartItemTile from '../../CartItemTile';
 import Heading from '../../../../common/atoms/Heading';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import AddedToBagActions from '../../AddedToBagActions';
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
-import CheckoutActions from '../molecules/CheckoutActions';
 
 // @flow
 // type Props = {
@@ -24,6 +23,7 @@ import CheckoutActions from '../molecules/CheckoutActions';
 
 const BagPageView = ({ className, labels, totalCount }: Props) => {
   const showAddTobag = false;
+  const myBag = 'myBag';
   return (
     <div className={className}>
       <Row tagName="header">
@@ -36,17 +36,11 @@ const BagPageView = ({ className, labels, totalCount }: Props) => {
       <section className="main-sec">
         <Row>
           <Col colSize={{ small: 6, medium: 5, large: 8 }} className="left-sec">
-            <section className="row-ele">
-              <CartItemTile />
-            </section>
-            <section className="row-ele">section 2</section>
-            <section className="row-ele">section 3</section>
-            <section className="row-ele">section 4</section>
+            <ProductTileWrapper pageView={myBag} />
           </Col>
           <Col colSize={{ small: 6, medium: 3, large: 4 }} className="right-sec">
             <OrderLedgerContainer />
             <AddedToBagActions labels={labels} showAddTobag={showAddTobag} />
-            <CheckoutActions labels={labels} />
             <CouponAndPromos />
           </Col>
         </Row>

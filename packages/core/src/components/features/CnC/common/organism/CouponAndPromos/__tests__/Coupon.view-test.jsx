@@ -1,70 +1,43 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import CouponView from '../views/Coupon.view';
+import { List } from 'immutable';
+import { CouponViewVanilla } from '../views/Coupon.view';
 
-describe('CartItemTile Component', () => {
-  let component;
-  const Props = {
-    getOrderDetails: jest.fn(),
-    removeCartItem: jest.fn(),
-    cartItems: [
-      {
-        productInfo: {
-          generalProductId: '1234080',
-          productPartNumber: '3001569_1301',
-          skuId: '1234475',
-          itemPartNumber: '00193511087773',
-          variantNo: '3001569004',
-          name: 'Girls Uniform Short Sleeve Ruffle Pique Polo',
-          imagePath: '/wcsstore/GlobalSAS/images/tcp/products/500/3001569_1301.jpg',
-          upc: '00193511087773',
-          size: 'L (10/12)',
-          pdpUrl: '/us/p/Girls-Uniform-Short-Sleeve-Ruffle-Pique-Polo-3001569-1301',
-        },
-        itemInfo: {
-          quantity: 3,
-          itemId: '3001545564',
-          itemPoints: 78,
-          listPrice: 38.85,
-          offerPrice: 38.85,
-          wasPrice: 12.95,
-          salePrice: 12.95,
-        },
-        miscInfo: {
-          clearanceItem: false,
-          isOnlineOnly: false,
-          isBopisEligible: true,
-          isBossEligible: true,
-          badge: '',
-          store: null,
-          storeId: null,
-          storeAddress: null,
-          storePhoneNumber: null,
-          storeTodayOpenRange: null,
-          storeTomorrowOpenRange: null,
-          availability: 'OK',
-          vendorColorDisplayId: '3001569_1301',
-          bossStartDate: null,
-          bossEndDate: null,
-          storeItemsCount: 0,
-          orderItemType: 'ECOM',
-        },
-      },
-    ],
-    updateCartItem: jest.fn(),
-    getProductSKUInfo: jest.fn(),
-    editableProductInfo: {},
-  };
-
-  beforeEach(() => {
-    component = shallow(<CouponView {...Props} />);
+describe('Coupon component', () => {
+  it('should renders correctly when Coupon are not present', () => {
+    const props = {
+      isFetching: false,
+      handleApplyCoupon: () => {},
+      appliedCouponList: new List(),
+      availableCouponList: new List(),
+      labels: { APPLIED_REWARDS_HEADING: 'Applied', AVAILABLE_REWARDS_HEADING: 'Available' },
+    };
+    const component = shallow(<CouponViewVanilla {...props} />);
+    expect(component).toMatchSnapshot();
   });
 
-  it('CartItemTile should be defined', () => {
-    expect(component).toBeDefined();
-  });
-
-  it('CartItemTile should render correctly', () => {
+  it('should renders correctly when Coupon are present', () => {
+    const props = {
+      couponList: new List([
+        {
+          id: 'R5VALIDFS',
+          status: 'available',
+          isExpiring: false,
+          title: 'FREE GROUND SHIPPING',
+          detailsOpen: false,
+          expirationDate: '7/17/20',
+          effectiveDate: '5/9/13',
+          details: null,
+          legalText: '',
+          isStarted: true,
+          error: '',
+          promotionType: 'public',
+          expirationDateTimeStamp: '2020-07-17T18:29:00.001Z',
+        },
+      ]),
+      labels: { addressBook: {}, common: {} },
+    };
+    const component = shallow(<CouponViewVanilla {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

@@ -7,8 +7,9 @@ import withReduxSaga from 'next-redux-saga';
 import GlobalStyle from '@tcp/core/styles/globalStyles';
 import theme from '@tcp/core/styles/themes/TCP';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
-import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
+import { bootstrapData, loadUserProfile } from '@tcp/core/src/reduxStore/actions';
 import { createAPIConfig } from '@tcp/core/src/utils';
+import { getLoginState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
 import { Header, Footer } from '../components/features/content';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
@@ -24,7 +25,9 @@ class TCPWebApp extends App {
   }
 
   componentDidMount() {
+    const { store } = this.props;
     ReactAxe.runAccessibility();
+    if (!getLoginState(store.getState())) store.dispatch(loadUserProfile());
   }
 
   componentDidUpdate() {

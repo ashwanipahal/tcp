@@ -14,3 +14,10 @@ export const showLoader = () => ({
 export const hideLoader = () => ({
   type: COUPON_CONSTANTS.HIDE_LOADER,
 });
+
+export const getCouponList = payload => {
+  return {
+    type: COUPON_CONSTANTS.GET_COUPON_LIST,
+    payload,
+  };
+};
