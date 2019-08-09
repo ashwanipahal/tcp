@@ -5,8 +5,8 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render corre
   className=""
 >
   <Styled(LabeledRadioButton)
-    checked={false}
-    className="select-box-1 common-select-box-css false"
+    checked={true}
+    className="select-box-1 common-select-box-css selected-method"
     data-locator="ItemNoRushRadioButton"
     disabled={true}
     name="ship-it-undefined"
@@ -86,8 +86,8 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render corre
     </div>
   </Styled(LabeledRadioButton)>
   <Styled(LabeledRadioButton)
-    checked={true}
-    className="normal-select-box common-select-box-css selected-method"
+    checked={false}
+    className="normal-select-box common-select-box-css false"
     data-locator="ItemShipToHomeRadioButton"
     disabled={false}
     name="ship-it-undefined"

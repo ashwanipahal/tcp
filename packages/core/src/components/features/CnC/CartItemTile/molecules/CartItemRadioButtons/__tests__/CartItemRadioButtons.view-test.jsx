@@ -6,7 +6,9 @@ describe('CartItemRadioButtons Component', () => {
   let component;
   const props = {
     productDetail: {
-      miscInfo: '',
+      miscInfo: {
+        orderItemType: 'BOSS',
+      },
       itemInfo: '',
     },
     className: '',
@@ -21,5 +23,17 @@ describe('CartItemRadioButtons Component', () => {
   it('CartItemRadioButtons should render correctly', () => {
     component = shallow(<CartItemRadioButtonsVanilla {...props} />);
     expect(component).toMatchSnapshot();
+  });
+
+  it('CartItemRadioButtons should call handle toggle', () => {
+    component = shallow(<CartItemRadioButtonsVanilla {...props} />);
+
+    component.instance().handleToggle('e', 'BOSS');
+    expect(component.state('selectedOrder')).toBe('BOSS');
+  });
+
+  it('CartItemRadioButtons should call default state', () => {
+    component = shallow(<CartItemRadioButtonsVanilla {...props} />);
+    expect(component.state('selectedOrder')).toBe('BOSS');
   });
 });
