@@ -12,7 +12,9 @@ const data = {
   panelData: navData[0].subCategories,
   name: navData[0].categoryContent,
   hideL2Drawer: () => {},
+  hideL3Drawer: () => {},
   className: 'nav-bar-l2',
+  openL3Drawer: () => {},
 };
 
 describe('L2 Panel component', () => {
