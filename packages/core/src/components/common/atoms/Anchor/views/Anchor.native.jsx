@@ -1,3 +1,4 @@
+/* eslint-disable no-var */
 // @flow
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
@@ -23,10 +24,16 @@ const Anchor = ({
   customStyle,
   ...otherProps
 }: Props) => {
-  const { url, external, navigation, onPress } = otherProps;
+  const { url, navigation } = otherProps;
 
-  const openUrlInExternalBrowser = onPress || (() => UrlHandler(url));
-  const openUrl = external ? openUrlInExternalBrowser : () => navigateToPage(url, navigation);
+  const openUrl = () => {
+    const isHttps = url.indexOf('http') || url.indexOf('https') !== true;
+    if (isHttps === true) {
+      UrlHandler(url);
+    } else {
+      navigateToPage(url, navigation);
+    }
+  };
 
   if (children) {
     return (
@@ -41,7 +48,12 @@ const Anchor = ({
     );
   }
   return (
-    <AnchorView accessibilityRole="button" onPress={openUrl} style={customStyle}>
+    <AnchorView
+      accessibilityRole="link"
+      accessibilityLabel={text}
+      onPress={openUrl}
+      style={customStyle}
+    >
       <Text anchorVariation={anchorVariation} {...otherProps}>
         {text}
       </Text>

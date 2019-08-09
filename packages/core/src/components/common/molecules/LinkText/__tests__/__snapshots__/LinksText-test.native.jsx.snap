@@ -4,7 +4,6 @@ exports[`LinkText component renders correctly 1`] = `
 <Styled(Anchor)
   anchorVariation=""
   customStyle={Object {}}
-  external={0}
   text=""
   url="http://example.com3367"
   visible={false}

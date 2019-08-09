@@ -12,7 +12,6 @@ import {
   DivImageCTAContainer,
 } from '../ModuleN.styles.native';
 import moduleN from '../mock';
-import { Anchor } from '../../../atoms';
 
 const datamoduleN = { ...moduleN };
 
@@ -35,18 +34,17 @@ const ModuleN = (props: Props) => {
   } = datamoduleN.moduleN.composites;
   return (
     <Container background="red">
-      <Anchor>
-        <LinkText
-          type="heading"
-          fontFamily="primary"
-          fontSize="fs20"
-          letterSpacing="ls271"
-          textAlign="center"
-          color="white"
-          navigation={navigation}
-          headerText={headerText}
-        />
-      </Anchor>
+      <LinkText
+        accessibilityRole="link"
+        type="heading"
+        fontFamily="primary"
+        fontSize="fs20"
+        letterSpacing="ls271"
+        textAlign="center"
+        color="white"
+        navigation={navigation}
+        headerText={headerText}
+      />
       <PromoTextBannerWrapper>
         <PromoBanner promoBanner={promoBanner} />
       </PromoTextBannerWrapper>

@@ -40,9 +40,15 @@ const CustomButton = (props: Props) => {
     ...otherProps
   }: Props = props;
   const textValue = text || '';
-  const { url, external, navigation, onPress } = otherProps;
-  const openUrlInExternalBrowser = onPress || (() => UrlHandler(url));
-  const openUrl = external ? openUrlInExternalBrowser : () => navigateToPage(url, navigation);
+  const { url, navigation } = otherProps;
+
+  const openUrl = () => {
+    const isHttps = url.indexOf('http') || url.indexOf('https') !== true;
+    if (isHttps === true) {
+      UrlHandler(url);
+    }
+    navigateToPage(url, navigation);
+  };
 
   return (
     <TouchableOpacity

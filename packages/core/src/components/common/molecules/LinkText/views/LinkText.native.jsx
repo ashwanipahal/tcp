@@ -39,19 +39,21 @@ const LinkText = (props: Props) => {
   if (type === 'heading') {
     Component = Heading;
     compProps = {
+      navigation,
       Component,
       ...otherProps,
     };
   } else {
     Component = BodyCopy;
     compProps = {
+      navigation,
       Component,
       ...otherProps,
     };
   }
 
   return (
-    <Anchor url={link.url} navigation={navigation} external={link.external}>
+    <Anchor url={link.url} navigation={navigation}>
       <Component {...compProps} text={getTextItems(textItems)} />
     </Anchor>
   );

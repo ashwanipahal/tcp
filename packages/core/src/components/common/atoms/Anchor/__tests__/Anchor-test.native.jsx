@@ -64,6 +64,6 @@ describe('Anchor Native', () => {
   it('should return navigation to default browser', () => {
     component.setProps({ external: true, onPress: null });
     component.props().onPress();
-    expect(navigate).toHaveBeenCalledTimes(4);
+    expect(navigate).toHaveBeenCalledTimes(5);
   });
 });

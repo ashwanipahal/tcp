@@ -64,9 +64,7 @@ const renderItem = item => {
         fontSizeVariation="large"
         text={link.text}
         visible={anchorEnable}
-        onPress={() => {
-          UrlHandler(link.url);
-        }}
+        url={link.url}
       />
     </Tile>
   );
@@ -120,7 +118,7 @@ const ModuleD = (props: Props) => {
           accessibilityLabel={singleCTAButton.title}
           buttonVariation="variable-width"
           style={buttonWidth}
-          text={singleCTAButton.title}
+          text={singleCTAButton.text}
           testID={getLocator('moduleD_button')}
           onPress={() => {
             UrlHandler(singleCTAButton.url);

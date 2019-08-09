@@ -4,39 +4,33 @@ exports[`ModuleNVanilla ModuleN should render correctly 1`] = `
 <Styled(View)
   background="red"
 >
-  <Styled(Anchor)
-    anchorVariation=""
-    customStyle={Object {}}
-    text=""
-    visible={false}
-  >
-    <LinkText
-      color="white"
-      fontFamily="primary"
-      fontSize="fs20"
-      headerText={
-        Array [
-          Object {
-            "link": Object {
-              "target": "",
-              "title": "",
-              "url": "/p/",
-            },
-            "textItems": Array [
-              Object {
-                "color": "color2",
-                "style": "style1",
-                "text": "ALL CLEARANCE",
-              },
-            ],
+  <LinkText
+    accessibilityRole="link"
+    color="white"
+    fontFamily="primary"
+    fontSize="fs20"
+    headerText={
+      Array [
+        Object {
+          "link": Object {
+            "target": "",
+            "title": "",
+            "url": "/p/",
           },
-        ]
-      }
-      letterSpacing="ls271"
-      textAlign="center"
-      type="heading"
-    />
-  </Styled(Anchor)>
+          "textItems": Array [
+            Object {
+              "color": "color2",
+              "style": "style1",
+              "text": "ALL CLEARANCE",
+            },
+          ],
+        },
+      ]
+    }
+    letterSpacing="ls271"
+    textAlign="center"
+    type="heading"
+  />
   <Styled(View)>
     <PromoBanner
       promoBanner={
@@ -48,7 +42,7 @@ exports[`ModuleNVanilla ModuleN should render correctly 1`] = `
               "target": "",
               "text": "",
               "title": "",
-              "url": "/c/",
+              "url": "/p/",
             },
             "textItems": Array [
               Object {
@@ -75,7 +69,7 @@ exports[`ModuleNVanilla ModuleN should render correctly 1`] = `
             "target": "",
             "text": "girl",
             "title": "girl",
-            "url": "/c/",
+            "url": "https://www.google.com/",
           },
           Object {
             "external": 0,
@@ -96,7 +90,7 @@ exports[`ModuleNVanilla ModuleN should render correctly 1`] = `
             "target": "",
             "text": "toddler boy",
             "title": "toddler boy",
-            "url": "/c/",
+            "url": "https://www.google.com/",
           },
           Object {
             "external": 0,
