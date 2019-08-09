@@ -18,4 +18,12 @@ describe('LinkText component', () => {
   it('Module has header', () => {
     expect(LinkTextComp.find(Anchor)).toHaveLength(1);
   });
+
+  it('Module has render Anchor', () => {
+    expect(LinkTextComp.find('Styled(Anchor)')).toHaveLength(1);
+  });
+
+  it('Module has render BodyCopy', () => {
+    expect(LinkTextComp.find('Styled(BodyCopy)')).toHaveLength(1);
+  });
 });
