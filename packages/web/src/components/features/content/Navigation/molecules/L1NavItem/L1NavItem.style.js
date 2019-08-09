@@ -27,6 +27,9 @@ export default css`
   .nav-bar-item-label {
     width: 45%;
     cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     &.highlighted {
       color: ${props => props.theme.colorPalette.secondary.main};
     }
