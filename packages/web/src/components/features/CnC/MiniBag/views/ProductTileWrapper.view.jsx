@@ -5,11 +5,15 @@ import {
   getProductName,
   getProductDetails,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
+import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
+import RemoveSoldOut from '@tcp/core/src/components/features/CnC/common/molecules/RemoveSoldOut/views/RemoveSoldOut.view';
 
 const ProductTileWrapper = props => {
   const { orderItems, labels } = props;
   return (
     <div className="miniBagWrapper">
+      <ErrorMessage error="There’s a problem with your order." />
+      <RemoveSoldOut />
       {orderItems &&
         orderItems.size > 0 &&
         orderItems.map(tile => {

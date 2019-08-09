@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductEditForm from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ProductCustomizeForm/ProductCustomizeForm';
+import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
 import endpoints from '../../../../../../../service/endpoint';
 import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
+
 import { getIconPath, getLocator } from '../../../../../../../utils';
 import getModifiedString from '../../../utils';
 import ProductInformationStyle from '../styles/CartItemTile.style';
@@ -25,6 +27,8 @@ class ProductTile extends React.Component {
     };
     return (
       <ProductInformationStyle>
+        <ErrorMessage error="This item is unavailable" />
+
         <Row fullBleed className="product">
           <Col
             key="productDetails"
@@ -258,6 +262,9 @@ class ProductTile extends React.Component {
               <Col colSize={{ small: 2, medium: 3, large: 4 }}>
                 <BodyCopy fontFamily="secondary" fontSize="fs12" component="span">
                   <u>{labels.saveForLater}</u>
+                </BodyCopy>
+                <BodyCopy fontFamily="secondary" fontSize="fs12" component="span">
+                  <u>update</u>
                 </BodyCopy>
               </Col>
             </Row>
