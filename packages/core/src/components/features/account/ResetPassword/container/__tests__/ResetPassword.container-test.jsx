@@ -42,7 +42,9 @@ describe('ResetPassword container', () => {
   });
 
   it('backHandler should call resetStateAction', () => {
-    component.instance().backHandler();
+    component.instance().backHandler({
+      preventDefault: () => {},
+    });
     expect(resetStateActionSpy).toBeCalled();
   });
 });

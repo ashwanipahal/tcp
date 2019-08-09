@@ -28,7 +28,8 @@ export class ResetPasswordContainer extends PureComponent {
     });
   };
 
-  backHandler = () => {
+  backHandler = e => {
+    e.preventDefault();
     const { resetStateAction, backToLoginAction } = this.props;
     resetStateAction();
     backToLoginAction();
