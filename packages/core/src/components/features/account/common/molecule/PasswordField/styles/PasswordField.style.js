@@ -8,6 +8,13 @@ const styles = css`
     right: 0;
     top: 12px;
   }
+
+  .tooltip {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 10px;
+  }
 `;
 
 export default styles;

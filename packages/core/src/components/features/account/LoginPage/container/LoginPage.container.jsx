@@ -78,10 +78,11 @@ class LoginPageContainer extends React.PureComponent {
       getUserInfoAction,
       labels,
       resetLoginState,
-      isUserLoggedIn,
       SubmitForgot,
       showNotification,
       successFullResetEmail,
+      currentForm,
+      queryParams,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage || labels.login.lbl_login_error : '';
     const initialValues = {
@@ -99,10 +100,11 @@ class LoginPageContainer extends React.PureComponent {
         getUserInfo={getUserInfoAction}
         onCreateAccountClick={this.onCreateAccountClick}
         resetLoginState={resetLoginState}
-        isUserLoggedIn={isUserLoggedIn}
         SubmitForgot={SubmitForgot}
         showNotification={showNotification}
         successFullResetEmail={successFullResetEmail}
+        currentForm={currentForm}
+        queryParams={queryParams}
       />
     );
   }
@@ -124,6 +126,8 @@ LoginPageContainer.propTypes = {
   SubmitForgot: PropTypes.bool.isRequired,
   showNotification: PropTypes.bool.isRequired,
   successFullResetEmail: PropTypes.bool.isRequired,
+  currentForm: PropTypes.string,
+  queryParams: PropTypes.shape({}),
 };
 
 LoginPageContainer.defaultProps = {
@@ -135,6 +139,8 @@ LoginPageContainer.defaultProps = {
   openOverlay: () => {},
   isUserLoggedIn: false,
   navigation: {},
+  currentForm: '',
+  queryParams: {},
 };
 
 const mapDispatchToProps = dispatch => {
