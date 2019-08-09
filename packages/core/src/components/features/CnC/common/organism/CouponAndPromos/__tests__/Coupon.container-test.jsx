@@ -17,12 +17,10 @@ describe('Coupon Container', () => {
     expect(tree.is(CouponView)).toBeTruthy();
   });
 
-  describe('mapDispatchToProps', () => {
-    it('should return an action handleApplyCoupon which will call dispatch function on execution', () => {
-      const dispatch = jest.fn();
-      const dispatchProps = mapDispatchToProps(dispatch);
-      dispatchProps.handleApplyCoupon();
-      expect(dispatch.mock.calls).toHaveLength(1);
-    });
+  it('should return an action handleApplyCoupon which will call dispatch function on execution', () => {
+    const dispatch = jest.fn();
+    const dispatchProps = mapDispatchToProps(dispatch);
+    dispatchProps.handleApplyCoupon();
+    expect(dispatch.mock.calls).toHaveLength(1);
   });
 });
