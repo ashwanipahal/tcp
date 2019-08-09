@@ -10,6 +10,13 @@ type Props = {
   buttonsData: [],
 };
 
+/**
+ * @desc This method getImageCTA generates button list.
+ * This component uses Anchor and DamImage atoms to render button list
+ * ImageCTAList: Buttons are wrapped inside an anchor which makes image clickable.
+ * The image and a text for that image comes as a button list.
+ */
+
 const getImageCTA = item => {
   const { className, buttonListVariation } = item;
   return (
@@ -39,6 +46,17 @@ const getImageCTA = item => {
   );
 };
 
+/**
+ * @desc This method getButtonCTA generates button list. The three variations of buttonlist are:
+ * This component uses Anchor and Button atoms to render button list
+ * 1. stackedCTAList: Buttons are in the stacked form.
+
+ * 2. scrollCTAList: In the web view, peek appears for the next button to slide.
+ * The user can slide from left to right to see the next buttons.
+
+ * 3. linkCTAList: Category list buttons with bottom border, just like link with underline
+ */
+
 const getButtonCTA = data => {
   const { className, buttonsData, buttonListVariation, buttonVariation, ...otherProps } = data;
 
@@ -65,11 +83,11 @@ const getButtonCTA = data => {
 };
 
 /**
- * This component creates a button list
- * This component uses BodyCopy atom to render button
- * @param {*} props
- * accepts all parameters for BodyCopy atom
+ * @param {object} props : Props for buttonlist
+ * @desc This is a buttonlist component. There are four variations of buttons:
+ * Based on the buttonListVariation, we render 4 different variations of the buttonList.
  */
+
 const ButtonList = (props: Props) => {
   const { buttonsData, buttonListVariation, className } = props;
   const stackCTAProps = config.stackedCTAList.compProps;

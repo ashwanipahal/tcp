@@ -39,12 +39,14 @@ const ButtonStyles = css`
   ${props =>
     props.buttonVariation === 'category-links-light'
       ? `
+      min-height: auto;
       color: ${props.theme.colorPalette.text.primary};
       font-family: ${props.theme.typography.fonts.secondary};
       font-size: ${props.theme.typography.fontSizes.fs14};
       font-weight: ${props.theme.typography.fontWeights.regular};
       border-bottom: 2px solid ${props.theme.colorPalette.primary.main};
       margin-right: 16px;
+      padding-bottom: 3px;
 
       @media ${props.theme.mediaQuery.large} {
       font-size: ${props.theme.typography.fontSizes.fs20};
@@ -55,12 +57,14 @@ const ButtonStyles = css`
   ${props =>
     props.buttonVariation === 'category-links-dark'
       ? `
+      min-height: auto;
       color: ${props.theme.colorPalette.white};
       font-family: ${props.theme.typography.fonts.secondary};
       font-size: ${props.theme.typography.fontSizes.fs14};
       font-weight: ${props.theme.typography.fontWeights.regular};
       border-bottom: 2px solid ${props.theme.colorPalette.text.hint};
       margin: 0 8px;
+      padding-bottom: 3px;
 
       @media ${props.theme.mediaQuery.large} {
       font-size: ${props.theme.typography.fontSizes.fs20};
