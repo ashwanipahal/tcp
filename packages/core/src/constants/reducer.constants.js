@@ -27,6 +27,8 @@ export const CARTITEMTILE_REDUCER_KEY = 'CartItemTileReducer';
 export const CARTPAGE_REDUCER_KEY = 'CartPageReducer';
 export const OVERLAY_MODAL_REDUCER_KEY = 'OverlayModalReducer';
 export const OVERLAY_MODAL_ACTION_PATTERN = '@@Overlay-';
+export const BONUS_POINTS_DAYS = '@@Bonus-';
+export const BONUS_POINTS_DAYS_REDUCER_KEY = 'BonusPointsDaysReducer';
 
 // acconut page reducer
 export const ACCOUNT_REDUCER_KEY = 'AccountReducer';

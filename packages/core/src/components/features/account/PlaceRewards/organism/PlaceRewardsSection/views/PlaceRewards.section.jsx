@@ -6,6 +6,7 @@ import Col from '../../../../../../common/atoms/Col';
 import styles from '../styles/PlaceRewards.section.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import MyRewards from '../../../molecules/MyRewards';
+import BonusPointsDays from '../../../molecules/BonusPointsDays';
 
 const PlaceRewardsSection = ({ labels, className }) => {
   return (
@@ -62,7 +63,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
             }}
             className="place-rewards-col3"
           >
-            Third
+            <BonusPointsDays />
           </Col>
           <Col
             colSize={{
