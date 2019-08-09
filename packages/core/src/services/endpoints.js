@@ -130,5 +130,9 @@ const endpoints = {
     method: API_METHODS.POST,
     URI: 'v2/bopis/createBopisOrder',
   },
+  removeCouponOrPromo: {
+    method: 'POST',
+    URI: 'v2/checkout/removePromotionCode',
+  },
 };
 export default endpoints;

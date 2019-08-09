@@ -113,6 +113,7 @@ describe('#getOrderPointSummary', () => {
       {
         ...couponFormatResponse[0],
         status: 'applied',
+        labelStatus: 'REMOVE',
       },
     ];
     let result = constructCouponStructure(temp);

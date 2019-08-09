@@ -6,11 +6,13 @@ import { hideLoader, showLoader } from '../container/Coupon.actions';
 
 describe('Coupon saga', () => {
   it('should dispatch showLoader action', () => {
-    const payload = { formPromise: {}, formData: {} };
+    const payload = { formPromise: {}, formData: {}, coupon: {} };
     const applyCouponSaga = applyCoupon({ payload });
     expect(applyCouponSaga.next().value).toEqual(put(showLoader()));
-
+    applyCouponSaga.next();
     expect(applyCouponSaga.next().value).toEqual(call(applyCouponToCart, payload.formData));
+    applyCouponSaga.next();
+    applyCouponSaga.next();
     expect(applyCouponSaga.next().value).toEqual(put(hideLoader()));
   });
 
@@ -19,6 +21,7 @@ describe('Coupon saga', () => {
     expect(takeLatestDescriptor.next().value.toString()).toMatch(
       takeLatest(COUPON_ACTION_PATTERN.APPLY_COUPON, applyCoupon).toString()
     );
+    takeLatestDescriptor.next();
     expect(takeLatestDescriptor.next()).toEqual({ done: true, value: undefined });
   });
 });

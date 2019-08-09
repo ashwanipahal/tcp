@@ -38,6 +38,8 @@ class CouponListSection extends React.Component<Props> {
       heading,
       helpSubHeading,
       couponDetailClick,
+      onApply,
+      onRemove,
     } = this.props;
     const { showMore } = this.state;
     const buttonText =
@@ -87,6 +89,8 @@ class CouponListSection extends React.Component<Props> {
                   labels={labels}
                   coupon={coupon}
                   couponDetailClick={couponDetailClick}
+                  onApply={onApply}
+                  onRemove={onRemove}
                 />
               );
             })}

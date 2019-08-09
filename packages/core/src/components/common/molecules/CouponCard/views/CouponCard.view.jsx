@@ -58,33 +58,37 @@ class CouponCard extends React.Component<Props> {
   };
 
   RenderApplyButton = () => {
-    const { labels } = this.props;
+    const { coupon, onApply } = this.props;
     return (
       <Button
-        onClick={() => {}}
+        onClick={() => {
+          onApply(coupon);
+        }}
         className="coupon__button_black"
         buttonVariation="variable-width"
         type="submit"
         data-locator="gift-card-checkbalance-btn"
         fullWidth="true"
       >
-        {labels.APPLY_BUTTON_TEXT}
+        {coupon.labelStatus}
       </Button>
     );
   };
 
   RenderRemoveButton = () => {
-    const { labels } = this.props;
+    const { coupon, onRemove } = this.props;
     return (
       <Button
-        onClick={() => {}}
+        onClick={() => {
+          onRemove(coupon);
+        }}
         className="coupon__button_white"
         buttonVariation="variable-width"
         type="submit"
         data-locator="gift-card-checkbalance-btn"
         fullWidth="true"
       >
-        {labels.REMOVE_BUTTON_TEXT}
+        {coupon.labelStatus}
       </Button>
     );
   };

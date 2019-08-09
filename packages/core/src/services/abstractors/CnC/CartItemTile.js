@@ -48,6 +48,11 @@ export const COUPON_STATUS = {
   PENDING: 'pending',
   REMOVING: 'removing',
 };
+
+export const BUTTON_LABEL_STATUS = {
+  APPLY: 'APPLY',
+  REMOVE: 'REMOVE',
+};
 export const COUPON_REDEMPTION_TYPE = {
   PUBLIC: 'public',
   WALLET: 'wallet',
@@ -164,6 +169,7 @@ export const constructCouponStructure = cpnArray => {
     coupons.push({
       id: itm.offerCode.toUpperCase(),
       status: itm.isApplied ? COUPON_STATUS.APPLIED : COUPON_STATUS.AVAILABLE,
+      labelStatus: itm.isApplied ? BUTTON_LABEL_STATUS.REMOVE : BUTTON_LABEL_STATUS.APPLY,
       isExpiring,
       title: itm.offerText,
       detailsOpen: false,

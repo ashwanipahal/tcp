@@ -22,56 +22,60 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
     touchOnChange={false}
     updateUnregisteredFields={false}
   />
-  <Styled(CouponListSection)
-    className="applied_coupon"
-    couponDetailClick={[Function]}
-    couponList={Immutable.List []}
-    heading="Applied"
-    labels={
-      Object {
-        "APPLIED_REWARDS_HEADING": "Applied",
-        "AVAILABLE_REWARDS_HEADING": "Available",
+  <div
+    className="coupon_list"
+  >
+    <Styled(CouponListSection)
+      className="applied_coupon"
+      couponDetailClick={[Function]}
+      couponList={Immutable.List []}
+      heading="Applied"
+      labels={
+        Object {
+          "APPLIED_REWARDS_HEADING": "Applied",
+          "AVAILABLE_REWARDS_HEADING": "Available",
+        }
       }
-    }
-  />
-  <Styled(CouponListSection)
-    className="available_coupon"
-    couponDetailClick={[Function]}
-    couponList={Immutable.List []}
-    heading="Available"
-    helpAnchorClick={[Function]}
-    helpSubHeading="true"
-    labels={
-      Object {
-        "APPLIED_REWARDS_HEADING": "Applied",
-        "AVAILABLE_REWARDS_HEADING": "Available",
+    />
+    <Styled(CouponListSection)
+      className="available_coupon"
+      couponDetailClick={[Function]}
+      couponList={Immutable.List []}
+      heading="Available"
+      helpAnchorClick={[Function]}
+      helpSubHeading="true"
+      labels={
+        Object {
+          "APPLIED_REWARDS_HEADING": "Applied",
+          "AVAILABLE_REWARDS_HEADING": "Available",
+        }
       }
-    }
-  />
-  <Styled(CouponDetailModal)
-    applyToBag={[Function]}
-    coupon={Object {}}
-    labels={
-      Object {
-        "APPLIED_REWARDS_HEADING": "Applied",
-        "AVAILABLE_REWARDS_HEADING": "Available",
+    />
+    <Styled(CouponDetailModal)
+      applyToBag={[Function]}
+      coupon={Object {}}
+      labels={
+        Object {
+          "APPLIED_REWARDS_HEADING": "Applied",
+          "AVAILABLE_REWARDS_HEADING": "Available",
+        }
       }
-    }
-    onRequestClose={[Function]}
-    openState={false}
-  />
-  <CouponHelpModal
-    coupon={Object {}}
-    heading="Help Modal"
-    labels={
-      Object {
-        "APPLIED_REWARDS_HEADING": "Applied",
-        "AVAILABLE_REWARDS_HEADING": "Available",
+      onRequestClose={[Function]}
+      openState={false}
+    />
+    <CouponHelpModal
+      coupon={Object {}}
+      heading="Help Modal"
+      labels={
+        Object {
+          "APPLIED_REWARDS_HEADING": "Applied",
+          "AVAILABLE_REWARDS_HEADING": "Available",
+        }
       }
-    }
-    onRequestClose={[Function]}
-    openState={false}
-  />
+      onRequestClose={[Function]}
+      openState={false}
+    />
+  </div>
 </div>
 `;
 
@@ -95,29 +99,33 @@ exports[`Coupon component should renders correctly when Coupon are present 1`] =
     touchOnChange={false}
     updateUnregisteredFields={false}
   />
-  <Styled(CouponDetailModal)
-    applyToBag={[Function]}
-    coupon={Object {}}
-    labels={
-      Object {
-        "addressBook": Object {},
-        "common": Object {},
+  <div
+    className="coupon_list"
+  >
+    <Styled(CouponDetailModal)
+      applyToBag={[Function]}
+      coupon={Object {}}
+      labels={
+        Object {
+          "addressBook": Object {},
+          "common": Object {},
+        }
       }
-    }
-    onRequestClose={[Function]}
-    openState={false}
-  />
-  <CouponHelpModal
-    coupon={Object {}}
-    heading="Help Modal"
-    labels={
-      Object {
-        "addressBook": Object {},
-        "common": Object {},
+      onRequestClose={[Function]}
+      openState={false}
+    />
+    <CouponHelpModal
+      coupon={Object {}}
+      heading="Help Modal"
+      labels={
+        Object {
+          "addressBook": Object {},
+          "common": Object {},
+        }
       }
-    }
-    onRequestClose={[Function]}
-    openState={false}
-  />
+      onRequestClose={[Function]}
+      openState={false}
+    />
+  </div>
 </div>
 `;
