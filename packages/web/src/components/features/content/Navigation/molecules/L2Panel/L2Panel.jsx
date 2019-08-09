@@ -128,7 +128,7 @@ const L2Panel = props => {
   return (
     <React.Fragment>
       <div data-locator="overrlay_img" className={`${className} nav-bar-l2-panel`}>
-        <div className="sizes-rage-background">
+        <div className="sizes-range-background">
           <span
             role="button"
             tabIndex={0}

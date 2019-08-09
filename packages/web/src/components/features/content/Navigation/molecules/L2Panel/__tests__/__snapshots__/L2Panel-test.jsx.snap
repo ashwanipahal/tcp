@@ -7,7 +7,7 @@ exports[`L2 Panel component renders correctly 1`] = `
     data-locator="overrlay_img"
   >
     <div
-      className="sizes-rage-background"
+      className="sizes-range-background"
     >
       <span
         className="icon-back"
