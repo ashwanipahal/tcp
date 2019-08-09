@@ -4,6 +4,7 @@ import { ButtonList } from '../..';
 import style from '../ModuleN.style';
 import LinkText from '../../LinkText';
 import PromoBanner from '../../PromoBanner';
+import { getLocator } from '../../../../../utils';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/errorBoundary';
 
@@ -40,6 +41,7 @@ const ModuleN = (props: Props) => {
               type="heading"
               color="white"
               className="heading"
+              data-locator={getLocator('moduleN_header_text')}
             />
           )}
           {promoBanner && (
@@ -47,10 +49,16 @@ const ModuleN = (props: Props) => {
               promoBanner={promoBanner}
               className="moduleN__promo-banner"
               color="white"
+              data-locator={getLocator('moduleN_promobanner_text')}
             />
           )}
         </div>
-        <ButtonList buttonListVariation="stackedCTAList" buttonsData={stackedCTAButtons} />
+        <ButtonList
+          buttonListVariation="stackedCTAList"
+          buttonsData={stackedCTAButtons}
+          dataLocatorDivisionImages={getLocator('moduleN_image')}
+          dataLocatorTextCta={getLocator('moduleN_cta_links')}
+        />
         <div className="heading-wrapper">
           {headerText && (
             <LinkText
@@ -60,6 +68,7 @@ const ModuleN = (props: Props) => {
               type="heading"
               color="white"
               className="heading"
+              data-locator={getLocator('moduleN_header_text')}
             />
           )}
           {promoBanner && (
@@ -67,10 +76,16 @@ const ModuleN = (props: Props) => {
               promoBanner={promoBanner}
               className="moduleN__promo-banner"
               color="white"
+              data-locator={getLocator('moduleN_promobanner_text')}
             />
           )}
         </div>
-        <ButtonList buttonListVariation="scrollCTAList" buttonsData={stackedCTAButtons} />
+        <ButtonList
+          buttonListVariation="scrollCTAList"
+          buttonsData={stackedCTAButtons}
+          dataLocatorDivisionImages={getLocator('moduleN_image')}
+          dataLocatorTextCta={getLocator('moduleN_cta_links')}
+        />
         <div className="separator">.</div>
         <div className="heading-wrapper">
           {headerText && (
@@ -81,6 +96,7 @@ const ModuleN = (props: Props) => {
               type="heading"
               color="white"
               className="heading"
+              data-locator={getLocator('moduleN_header_text')}
             />
           )}
           {promoBanner && (
@@ -88,10 +104,16 @@ const ModuleN = (props: Props) => {
               promoBanner={promoBanner}
               className="moduleN__promo-banner"
               color="white"
+              data-locator={getLocator('moduleN_promobanner_text')}
             />
           )}
         </div>
-        <ButtonList buttonListVariation="imageCTAList" buttonsData={divImageCTACarousel} />
+        <ButtonList
+          buttonListVariation="imageCTAList"
+          buttonsData={divImageCTACarousel}
+          dataLocatorDivisionImages={getLocator('moduleN_image')}
+          dataLocatorTextCta={getLocator('moduleN_cta_links')}
+        />
         <div className="separator">.</div>
         <div className="heading-wrapper">
           {headerText && (
@@ -102,6 +124,7 @@ const ModuleN = (props: Props) => {
               type="heading"
               color="white"
               className="heading"
+              data-locator={getLocator('moduleN_header_text')}
             />
           )}
           {promoBanner && (
@@ -109,10 +132,17 @@ const ModuleN = (props: Props) => {
               promoBanner={promoBanner}
               className="moduleN__promo-banner"
               color="white"
+              data-locator={getLocator('moduleN_promobanner_text')}
             />
           )}
         </div>
-        <ButtonList buttonListVariation="linkCTAList" buttonsData={linkList} />
+
+        <ButtonList
+          buttonListVariation="linkCTAList"
+          buttonsData={linkList}
+          dataLocatorDivisionImages={getLocator('moduleN_image')}
+          dataLocatorTextCta={getLocator('moduleN_cta_links')}
+        />
       </div>
     </React.Fragment>
   );

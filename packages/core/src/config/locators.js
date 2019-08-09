@@ -45,6 +45,14 @@ export default {
   moduleL_tiles: 'moduleL_tiles_',
   moduleL_left_arrow: 'moduleL_left_arrow',
   moduleL_right_arrow: 'moduleL_right_arrow',
+
+  // Module N
+  moduleN_header_text: 'moduleN_header_text',
+  moduleN_promobanner_text: 'moduleN_promobanner_text',
+  moduleN_promobanner_img: 'moduleN_promobanner_img',
+  moduleN_image: 'moduleN_image_',
+  moduleN_cta_links: 'moduleN_cta_links_',
+
   // Added To Bag
   addedtobag_btnviewbag: 'addedtobag-btnviewbag',
   addedtobag_btnpaypal: 'addedtobag-btnpaypal',

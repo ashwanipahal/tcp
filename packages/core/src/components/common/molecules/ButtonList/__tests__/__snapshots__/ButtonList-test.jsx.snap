@@ -13,6 +13,7 @@ exports[`ButtonList component renders correctly 1`] = `
     <Styled(Button)
       buttonVariation="category-links-dark"
       className="link-button-wrapper-class"
+      data-locator="moduleN_cta_links_1"
       key="0"
     >
       TODDLER GIRL
@@ -27,6 +28,7 @@ exports[`ButtonList component renders correctly 1`] = `
     <Styled(Button)
       buttonVariation="category-links-dark"
       className="link-button-wrapper-class"
+      data-locator="moduleN_cta_links_2"
       key="1"
     >
       GIRL
@@ -41,6 +43,7 @@ exports[`ButtonList component renders correctly 1`] = `
     <Styled(Button)
       buttonVariation="category-links-dark"
       className="link-button-wrapper-class"
+      data-locator="moduleN_cta_links_3"
       key="2"
     >
       TODDLER BOY
@@ -55,6 +58,7 @@ exports[`ButtonList component renders correctly 1`] = `
     <Styled(Button)
       buttonVariation="category-links-dark"
       className="link-button-wrapper-class"
+      data-locator="moduleN_cta_links_4"
       key="3"
     >
       BOY
@@ -75,12 +79,14 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
     >
       <div>
         <Styled(Anchor)
+          data-locator="moduleN_cta_links_1"
           fontSizeVariation="large"
           fontWeightVariation="active"
           key="0"
         >
           <WithTheme(DamImage)
             className="image-cta"
+            data-locator="moduleN_image_1"
             imgData={
               Object {
                 "alt": "Toddler Girl Image",
@@ -102,12 +108,14 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
     >
       <div>
         <Styled(Anchor)
+          data-locator="moduleN_cta_links_2"
           fontSizeVariation="large"
           fontWeightVariation="active"
           key="1"
         >
           <WithTheme(DamImage)
             className="image-cta"
+            data-locator="moduleN_image_2"
             imgData={
               Object {
                 "alt": "Girl Image",
@@ -129,12 +137,14 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
     >
       <div>
         <Styled(Anchor)
+          data-locator="moduleN_cta_links_3"
           fontSizeVariation="large"
           fontWeightVariation="active"
           key="2"
         >
           <WithTheme(DamImage)
             className="image-cta"
+            data-locator="moduleN_image_3"
             imgData={
               Object {
                 "alt": "Toddler Girl Image",
@@ -156,12 +166,14 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
     >
       <div>
         <Styled(Anchor)
+          data-locator="moduleN_cta_links_4"
           fontSizeVariation="large"
           fontWeightVariation="active"
           key="3"
         >
           <WithTheme(DamImage)
             className="image-cta"
+            data-locator="moduleN_image_4"
             imgData={
               Object {
                 "alt": "Boy Image",
@@ -183,12 +195,14 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
     >
       <div>
         <Styled(Anchor)
+          data-locator="moduleN_cta_links_5"
           fontSizeVariation="large"
           fontWeightVariation="active"
           key="4"
         >
           <WithTheme(DamImage)
             className="image-cta"
+            data-locator="moduleN_image_5"
             imgData={
               Object {
                 "alt": "Baby Image",
@@ -222,6 +236,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
     <Styled(Button)
       buttonVariation="fixed-width"
       className="scroll-cta-wrapper-class"
+      data-locator="moduleN_cta_links_1"
       fill="RED"
       key="0"
     >
@@ -237,6 +252,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
     <Styled(Button)
       buttonVariation="fixed-width"
       className="scroll-cta-wrapper-class"
+      data-locator="moduleN_cta_links_2"
       fill="RED"
       key="1"
     >
@@ -252,6 +268,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
     <Styled(Button)
       buttonVariation="fixed-width"
       className="scroll-cta-wrapper-class"
+      data-locator="moduleN_cta_links_3"
       fill="RED"
       key="2"
     >
@@ -267,6 +284,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
     <Styled(Button)
       buttonVariation="fixed-width"
       className="scroll-cta-wrapper-class"
+      data-locator="moduleN_cta_links_4"
       fill="RED"
       key="3"
     >
@@ -282,6 +300,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
     <Styled(Button)
       buttonVariation="fixed-width"
       className="scroll-cta-wrapper-class"
+      data-locator="moduleN_cta_links_5"
       fill="RED"
       key="4"
     >
@@ -304,6 +323,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
     <Styled(Button)
       buttonVariation="fixed-width"
       className="stacked-cta-wrapper-class"
+      data-locator="moduleN_cta_links_1"
       fill="RED"
       key="0"
     >
@@ -319,6 +339,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
     <Styled(Button)
       buttonVariation="fixed-width"
       className="stacked-cta-wrapper-class"
+      data-locator="moduleN_cta_links_2"
       fill="RED"
       key="1"
     >
@@ -334,6 +355,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
     <Styled(Button)
       buttonVariation="fixed-width"
       className="stacked-cta-wrapper-class"
+      data-locator="moduleN_cta_links_3"
       fill="RED"
       key="2"
     >
@@ -349,6 +371,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
     <Styled(Button)
       buttonVariation="fixed-width"
       className="stacked-cta-wrapper-class"
+      data-locator="moduleN_cta_links_4"
       fill="RED"
       key="3"
     >
@@ -364,6 +387,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
     <Styled(Button)
       buttonVariation="fixed-width"
       className="stacked-cta-wrapper-class"
+      data-locator="moduleN_cta_links_5"
       fill="RED"
       key="4"
     >

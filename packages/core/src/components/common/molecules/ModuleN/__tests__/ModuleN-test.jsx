@@ -4,7 +4,7 @@ import mock from '../../../../../services/abstractors/common/moduleD/mockN';
 import { ModuleNVanilla as ModuleN } from '../views/ModuleN';
 import { LinkText, PromoBanner } from '../..';
 
-describe('ModuleL component', () => {
+describe('N component', () => {
   let ModuleNComp;
 
   beforeEach(() => {

@@ -16,6 +16,7 @@ describe('ButtonList component', () => {
       <VanillaButtonList
         buttonsData={mock.moduleD.composites.stackedCTAButtons}
         buttonListVariation="stackedCTAList"
+        dataLocatorTextCta="moduleN_cta_links_"
       />
     );
     expect(ButtonListComp.find('.stack-comp-wrapper')).toHaveLength(1);
@@ -27,6 +28,7 @@ describe('ButtonList component', () => {
       <VanillaButtonList
         buttonsData={mock.moduleD.composites.stackedCTAButtons}
         buttonListVariation="scrollCTAList"
+        dataLocatorTextCta="moduleN_cta_links_"
       />
     );
     expect(ButtonListComp.find('.scroll-comp-wrapper')).toHaveLength(1);
@@ -37,6 +39,8 @@ describe('ButtonList component', () => {
       <VanillaButtonList
         buttonsData={mock.moduleD.composites.divImageCTACarousel}
         buttonListVariation="imageCTAList"
+        dataLocatorDivisionImages="moduleN_image_"
+        dataLocatorTextCta="moduleN_cta_links_"
       />
     );
     expect(ButtonListComp.find('.scroll-comp-wrapper')).toHaveLength(1);
@@ -48,6 +52,7 @@ describe('ButtonList component', () => {
       <VanillaButtonList
         buttonsData={mock.moduleD.composites.linkList}
         buttonListVariation="linkCTAList"
+        dataLocatorTextCta="moduleN_cta_links_"
       />
     );
     expect(ButtonListComp.find('.link-comp-wrapper')).toHaveLength(1);

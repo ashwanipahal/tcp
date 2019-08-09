@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ModuleL component renders correctly 1`] = `
+exports[`N component renders correctly 1`] = `
 <Fragment>
   <div
     className="undefined moduleN"
@@ -12,6 +12,7 @@ exports[`ModuleL component renders correctly 1`] = `
         className="heading"
         color="white"
         component="h3"
+        data-locator="moduleN_header_text"
         headerText={
           Array [
             Object {
@@ -36,6 +37,7 @@ exports[`ModuleL component renders correctly 1`] = `
       <Styled(PromoBanner)
         className="moduleN__promo-banner"
         color="white"
+        data-locator="moduleN_promobanner_text"
         promoBanner={
           Array [
             Object {
@@ -111,6 +113,8 @@ exports[`ModuleL component renders correctly 1`] = `
           },
         ]
       }
+      dataLocatorDivisionImages="moduleN_image_"
+      dataLocatorTextCta="moduleN_cta_links_"
     />
     <div
       className="heading-wrapper"
@@ -119,6 +123,7 @@ exports[`ModuleL component renders correctly 1`] = `
         className="heading"
         color="white"
         component="h3"
+        data-locator="moduleN_header_text"
         headerText={
           Array [
             Object {
@@ -143,6 +148,7 @@ exports[`ModuleL component renders correctly 1`] = `
       <Styled(PromoBanner)
         className="moduleN__promo-banner"
         color="white"
+        data-locator="moduleN_promobanner_text"
         promoBanner={
           Array [
             Object {
@@ -218,6 +224,8 @@ exports[`ModuleL component renders correctly 1`] = `
           },
         ]
       }
+      dataLocatorDivisionImages="moduleN_image_"
+      dataLocatorTextCta="moduleN_cta_links_"
     />
     <div
       className="separator"
@@ -231,6 +239,7 @@ exports[`ModuleL component renders correctly 1`] = `
         className="heading"
         color="white"
         component="h3"
+        data-locator="moduleN_header_text"
         headerText={
           Array [
             Object {
@@ -255,6 +264,7 @@ exports[`ModuleL component renders correctly 1`] = `
       <Styled(PromoBanner)
         className="moduleN__promo-banner"
         color="white"
+        data-locator="moduleN_promobanner_text"
         promoBanner={
           Array [
             Object {
@@ -365,6 +375,8 @@ exports[`ModuleL component renders correctly 1`] = `
           },
         ]
       }
+      dataLocatorDivisionImages="moduleN_image_"
+      dataLocatorTextCta="moduleN_cta_links_"
     />
     <div
       className="separator"
@@ -378,6 +390,7 @@ exports[`ModuleL component renders correctly 1`] = `
         className="heading"
         color="white"
         component="h3"
+        data-locator="moduleN_header_text"
         headerText={
           Array [
             Object {
@@ -402,6 +415,7 @@ exports[`ModuleL component renders correctly 1`] = `
       <Styled(PromoBanner)
         className="moduleN__promo-banner"
         color="white"
+        data-locator="moduleN_promobanner_text"
         promoBanner={
           Array [
             Object {
@@ -470,6 +484,8 @@ exports[`ModuleL component renders correctly 1`] = `
           },
         ]
       }
+      dataLocatorDivisionImages="moduleN_image_"
+      dataLocatorTextCta="moduleN_cta_links_"
     />
   </div>
 </Fragment>
