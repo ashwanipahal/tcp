@@ -3,22 +3,17 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import { PRODUCTLISTINGPAGE_CONSTANTS } from '../ProductListingPage.constants';
 import { setPlpProducts, setGiftCardProducts } from './ProductListingPage.actions';
 import fetchData from '../../../../../service/API';
+import {
+  getPlpProducts,
+  getGiftCardProducts,
+} from '../../../../../services/abstractors/CnC/AddedToBag';
 import endpoints from '../../../../../service/endpoint';
 import { validateReduxCache } from '../../../../../utils/cache.util';
 
 function* fetchProducts(action) {
   try {
-    const { baseURI, relURI, method } = endpoints.getPlpProducts;
-    const res = yield call(
-      fetchData,
-      baseURI,
-      relURI,
-      {
-        unbxd: true,
-      },
-      method
-    );
-    yield put(setPlpProducts(res.body.response.products));
+    const products = yield call(getPlpProducts);
+    yield put(setPlpProducts(products));
   } catch (err) {
     console.log('Error in API');
     console.log(err);
@@ -27,17 +22,8 @@ function* fetchProducts(action) {
 
 function* fetchGiftProducts(action) {
   try {
-    const { baseURI, relURI, method } = endpoints.getGiftCardProducts;
-    const res = yield call(
-      fetchData,
-      baseURI,
-      relURI,
-      {
-        unbxd: true,
-      },
-      method
-    );
-    yield put(setGiftCardProducts(res.body.response.products));
+    const products = yield call(getGiftCardProducts);
+    yield put(setGiftCardProducts(products));
   } catch (err) {
     console.log('Error in API');
     console.log(err);

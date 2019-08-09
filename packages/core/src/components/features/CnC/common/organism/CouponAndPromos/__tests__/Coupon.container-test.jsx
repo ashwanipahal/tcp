@@ -1,12 +1,20 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { CouponContainer, mapDispatchToProps } from '../container/Coupon.container';
-import CartItemTile from '../views/Coupon.view';
+import CouponView from '../views/Coupon.view';
 
 describe('Coupon Container', () => {
   it('should render CouponContainer section', () => {
-    const tree = shallow(<CouponContainer isFetching={false} handleApplyCoupon={jest.fn()} />);
-    expect(tree.is(CartItemTile)).toBeTruthy();
+    const tree = shallow(
+      <CouponContainer
+        labels={{}}
+        isFetching={false}
+        handleApplyCoupon={jest.fn()}
+        appliedCouponList={[]}
+        availableCouponList={[]}
+      />
+    );
+    expect(tree.is(CouponView)).toBeTruthy();
   });
 
   describe('mapDispatchToProps', () => {

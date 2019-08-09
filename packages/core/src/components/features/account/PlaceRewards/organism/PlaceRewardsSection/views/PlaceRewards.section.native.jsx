@@ -11,6 +11,7 @@ import {
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import MyRewards from '../../../molecules/MyRewards';
+import RewardsPoints from '../../../../common/organism/RewardsPoints';
 
 const PlaceRewardsSection = ({ labels, className }) => {
   return (
@@ -25,7 +26,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
         </StyledHeading>
         <UnderlineStyle />
         <StyledView>
-          <Text>First</Text>
+          <RewardsPoints />
         </StyledView>
         <StyledView>
           <Text>Second</Text>

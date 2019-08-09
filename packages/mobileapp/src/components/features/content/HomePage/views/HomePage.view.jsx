@@ -1,5 +1,6 @@
 import React from 'react';
 import { ScrollView } from 'react-native';
+import { Button } from '@tcp/core/src/components/common/atoms';
 import PropTypes from 'prop-types';
 import ModuleN from '@tcp/core/src/components/common/molecules/ModuleN/views/ModuleN.native';
 import { SlotA, SlotB, SlotC, SlotD } from '../molecules';
@@ -21,6 +22,12 @@ class HomePageView extends React.Component {
           <SlotB {...slotB} navigation={navigation} />
           <SlotC {...slotC} navigation={navigation} />
           <SlotD {...slotD} navigation={navigation} />
+          <Button
+            fullWidth
+            buttonVariation="variable-width"
+            text="PLP Page"
+            onPress={() => navigation.navigate('ProductListingPageContainer')}
+          />
         </React.Fragment>
       </ScrollView>
     );
