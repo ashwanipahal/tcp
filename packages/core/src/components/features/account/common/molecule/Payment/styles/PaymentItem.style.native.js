@@ -28,7 +28,7 @@ const PaymentDetails = {
 };
 
 const PaymentType = styled.View`
-  height: 90px;
+  height: 80px;
   flex: 1.8;
 `;
 

@@ -7,7 +7,7 @@ import {
   getCardList,
   checkBalance,
 } from '@tcp/core/src/components/features/account/Payment/container/Payment.actions';
-
+import { cardIconMapping } from '@tcp/core/src/components/features/account/common/molecule/CardTile/views/CardTile.utils';
 import { getCardListState } from '@tcp/core/src/components/features/account/Payment/container/Payment.selectors';
 
 import PaymentItem from '../../../molecule/Payment';
@@ -20,26 +20,17 @@ import {
 
 // @flow
 
-const cardIconMapping = {
-  DISC: 'disc-small',
-  MC: 'mc-small',
-  Amex: 'amex-small',
-  Visa: 'visa-small',
-  GC: 'gift-card-small',
-  'PLACE CARD': 'place-card-small',
-  VENMO: 'venmo-blue-acceptance-mark',
-};
-
 export class PaymentOverviewTile extends React.PureComponent<Props> {
   static propTypes = {
     getCardListAction: PropTypes.func,
-    cardList: PropTypes.shape({}),
+    cardList: PropTypes.arrayOf({}),
     labels: PropTypes.shape({}),
+    handleComponentChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
     getCardListAction: () => {},
-    cardList: null,
+    cardList: [],
     labels: {},
   };
 
@@ -48,64 +39,78 @@ export class PaymentOverviewTile extends React.PureComponent<Props> {
     getCardListAction();
   }
 
-  getCreditCardView = card => {
+  getCreditCardView = (card, isAddVariation) => {
     const { labels } = this.props;
-
     const cardTileProps = {
-      title: 'Credit Card',
-      text: `ending in ${card.accountNo.slice(-4)}`,
-      subText: `expires ${card.expMonth.trim()}/${card.expYear}`,
-      labels,
-      variation: 'edit',
-      icon: getIconCard(cardIconMapping.Visa),
+      title: labels.lbl_overview_default_creditCard,
+      text: !isAddVariation
+        ? `${labels.lbl_overview_card_ending} ${card.accountNo.slice(-4)}`
+        : labels.lbl_overview_add_creditCard,
+      subText: !isAddVariation
+        ? `${labels.lbl_overview_expires} ${card.expMonth.trim()}/${card.expYear}`
+        : '',
+      variation: !isAddVariation
+        ? labels.lbl_overview_addressBookEdit
+        : labels.lbl_overview_addressBookAdd,
+      icon: !isAddVariation ? getIconCard(cardIconMapping[card.ccBrand]) : null,
     };
     return <PaymentItem paymentInfo={cardTileProps} />;
   };
 
-  getGiftCardView = card => {
+  getGiftCardView = (card, isAddVariation) => {
     const { labels } = this.props;
     const cardTileProps = {
-      title: 'Gift Card',
-      text: `ending in ${card.accountNo.slice(-4)}`,
-      subText: `Remaining balance`,
-      labels,
-      variation: 'edit',
-      icon: getIconCard(cardIconMapping.GC),
+      title: labels.lbl_overview_giftCard,
+      text: !isAddVariation
+        ? `${labels.lbl_overview_card_ending} ${card.accountNo.slice(-4)}`
+        : labels.lbl_overview_add_giftCard,
+      subText: !isAddVariation ? `${labels.lbl_overview_remaining_balance}:` : '',
+      variation: !isAddVariation
+        ? labels.lbl_overview_addressBookEdit
+        : labels.lbl_overview_addressBookAdd,
+      icon: !isAddVariation ? null : getIconCard(cardIconMapping.GC),
     };
     return <PaymentItem paymentInfo={cardTileProps} />;
   };
+
+  getGiftCardList = cardList =>
+    cardList && cardList.size > 0 && cardList.filter(card => card.ccType === 'GiftCard');
+
+  getCreditCardList = cardList =>
+    cardList &&
+    cardList.size > 0 &&
+    cardList.filter(card => card.ccType !== 'GiftCard' && card.ccType !== 'VENMO');
 
   render() {
-    const { cardList } = this.props;
-    const title = 'Payments & Gift Cards';
-    const buttonCTA = 'VIEW PAYMENT AND GIFT CARDS';
-    const creditCardList =
-      cardList &&
-      cardList.size > 0 &&
-      cardList.filter(card => card.ccType !== 'GiftCard' && card.ccType !== 'VENMO');
-
-    const giftCardList =
-      cardList && cardList.size > 0 && cardList.filter(card => card.ccType === 'GiftCard');
+    const { cardList, labels, handleComponentChange } = this.props;
+    const creditCardList = this.getCreditCardList(cardList);
+    const giftCardList = this.getGiftCardList(cardList);
 
     return (
       <PaymentTileContainer>
-        <BodyCopy fontFamily="secondary" fontSize="fs16" text={title} color="black" />
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize="fs16"
+          text={labels.lbl_overview_paymentHeading}
+          color="black"
+        />
         <UnderlineStyle />
-        {creditCardList &&
-          creditCardList.size > 0 &&
-          creditCardList.map(card => this.getCreditCardView(card))}
+        {creditCardList && creditCardList.size > 0
+          ? creditCardList.map(card => this.getCreditCardView(card, false))
+          : this.getCreditCardView(null, true)}
         <UnderlineStyle />
 
-        {giftCardList &&
-          giftCardList.size > 0 &&
-          giftCardList.map(card => this.getGiftCardView(card))}
+        {giftCardList && giftCardList.size > 0
+          ? giftCardList.map(card => this.getGiftCardView(card, false))
+          : this.getGiftCardView(null, true)}
 
         <ButtonWrapperStyle>
           <CustomButton
-            text={buttonCTA}
+            text={labels.lbl_overview_view_payments}
             buttonVariation="variable-width"
             fill="BLUE"
             color="white"
+            onPress={() => handleComponentChange('paymentGiftCardsPageMobile')}
           />
         </ButtonWrapperStyle>
       </PaymentTileContainer>

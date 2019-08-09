@@ -64,7 +64,7 @@ class PaymentItem extends React.PureComponent<Props> {
             fontFamily="secondary"
             fontSize="fs13"
             fontWeight="regular"
-            text="Edit"
+            text={paymentInfo.variation}
             color="gray.900"
             textDecorationLine="underline"
           />

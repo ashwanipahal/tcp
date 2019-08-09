@@ -8,13 +8,13 @@ const UnderlineStyle = styled.View`
 `;
 
 const PaymentTileContainer = styled.View`
-  border: 1px solid ${props => props.theme.colorPalette.gray[900]};
+  border: 1px solid ${props => props.theme.colorPalette.gray[700]};
   padding: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 const ButtonWrapperStyle = styled.View`
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
 export { UnderlineStyle, PaymentTileContainer, ButtonWrapperStyle };
