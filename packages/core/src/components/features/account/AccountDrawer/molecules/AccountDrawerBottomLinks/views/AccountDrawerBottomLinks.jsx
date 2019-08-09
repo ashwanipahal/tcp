@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import LogOutPageContainer from '../../../../Logout/container/LogOut.container';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/AccountDrawerBottomLinks.style';
 import Anchor from '../../../../../../common/atoms/Anchor';
@@ -42,12 +43,7 @@ const AccountDrawerBottomLinks = props => {
           />
         </div>
         <div className="elem-pt-MED elem-pb-MED bottomLine">
-          <Anchor
-            fontSizeVariation="large"
-            fontFamily="secondary"
-            anchorVariation="primary"
-            text={labels.CREATE_ACC_SIGN_OUT}
-          />
+          <LogOutPageContainer labels={labels} />
         </div>
       </div>
     </div>

@@ -12,15 +12,6 @@ type Props = {
 };
 
 /**
- * @function getTextItems : To get heading text lines
- * @param {*} props
- * accepts textItems as parameters to return as heading node
- */
-const getTextItems = textItems => {
-  return textItems.map(({ text }, index) => <Text>{index ? ` ${text}` : text}</Text>);
-};
-
-/**
  * This component creates a link with styled text
  * Text can be configured to be inside a heading tag to some other element.
  * This component uses BodyCopy atom and Heading atom and differentiates based on type="heading"
@@ -29,6 +20,11 @@ const getTextItems = textItems => {
  * type="bodycopy" if BodyCopy is required
  * accepts all parameters for BodyCopy and Heading atom
  */
+
+const getTextItems = textItems => {
+  return textItems && textItems.map(({ text }, index) => <Text>{index ? ` ${text}` : text}</Text>);
+};
+
 const LinkText = (props: Props) => {
   const {
     type,

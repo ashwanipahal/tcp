@@ -44,6 +44,7 @@ module.exports = {
     '/flow-typed/',
     '/pages/',
     '/__mocks__/',
+    '/features/account/LoginPage/container/loginUtils/keychain.utils.native.js',
   ],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],
   snapshotSerializers: ['enzyme-to-json/serializer'],

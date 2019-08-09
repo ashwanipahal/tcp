@@ -1,11 +1,82 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CreateAccountForm should render correctly 1`] = `
-<Hoc
+<StyledComponent
   destroyOnUnmount={true}
   enableReinitialize={true}
   forceUnregisterOnUnmount={false}
   form="CreateAccountForm"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-gZMcBi",
+        "isStatic": true,
+        "rules": Array [
+          "
+  ",
+          "
+  .remember-me-text {
+    display: block;
+  }
+",
+          ";
+",
+        ],
+      },
+      "defaultProps": Object {
+        "destroyOnUnmount": true,
+        "enableReinitialize": true,
+        "forceUnregisterOnUnmount": false,
+        "form": "CreateAccountForm",
+        "getFormState": [Function],
+        "keepDirtyOnReinitialize": false,
+        "persistentSubmitErrors": false,
+        "pure": true,
+        "shouldAsyncValidate": [Function],
+        "shouldError": [Function],
+        "shouldValidate": [Function],
+        "shouldWarn": [Function],
+        "submitAsSideEffect": false,
+        "touchOnBlur": true,
+        "touchOnChange": false,
+        "updateUnregisteredFields": false,
+        "validate": [Function],
+      },
+      "displayName": "Styled(ReduxForm)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-gZMcBi",
+      "target": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "defaultProps": Object {
+          "destroyOnUnmount": true,
+          "enableReinitialize": true,
+          "forceUnregisterOnUnmount": false,
+          "form": "CreateAccountForm",
+          "getFormState": [Function],
+          "keepDirtyOnReinitialize": false,
+          "persistentSubmitErrors": false,
+          "pure": true,
+          "shouldAsyncValidate": [Function],
+          "shouldError": [Function],
+          "shouldValidate": [Function],
+          "shouldWarn": [Function],
+          "submitAsSideEffect": false,
+          "touchOnBlur": true,
+          "touchOnChange": false,
+          "updateUnregisteredFields": false,
+          "validate": [Function],
+        },
+        "displayName": "ReduxForm",
+        "render": [Function],
+      },
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
   forwardedRef={null}
   getFormState={[Function]}
   keepDirtyOnReinitialize={false}
