@@ -1,1 +1,1 @@
-export { default } from '../components/features/CnC/MiniBag';
+export { default } from '../components/features/browse/ProductListingPage';

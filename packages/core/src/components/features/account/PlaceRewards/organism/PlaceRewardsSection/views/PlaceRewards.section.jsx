@@ -9,6 +9,7 @@ import MyRewards from '../../../molecules/MyRewards';
 import RewardsPoints from '../../../../common/organism/RewardsPoints';
 import PointsHistory from '../../../../common/organism/PointsHistory';
 import { isCanada } from '../../../../../../../utils';
+import BonusPointsDays from '../../../molecules/BonusPointsDays';
 
 const PlaceRewardsSection = ({ labels, className }) => {
   const isCA = isCanada();
@@ -126,7 +127,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
             }}
             className="place-rewards-col3"
           >
-            Third
+            <BonusPointsDays />
           </Col>
           <Col
             colSize={{

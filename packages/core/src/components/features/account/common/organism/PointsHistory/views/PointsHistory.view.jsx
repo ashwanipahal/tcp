@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Row, Col, BodyCopy, Anchor } from '../../../../../../common/atoms';
-import withStyles from '../../../../../../common/hoc/withStyles';
-import styles from '../styles/PointsHistory.style';
 import REWARDSPOINTS_CONSTANTS from '../PointsHistory.constants';
 
 /**
@@ -94,5 +92,4 @@ PointsHistory.defaultProps = {
   },
 };
 
-export default withStyles(PointsHistory, styles);
-export { PointsHistory as PointsHistoryVanilla };
+export default PointsHistory;

@@ -42,12 +42,14 @@ const mapStateToProps = state => {
 PointsHistoryContainer.propTypes = {
   getAccountNavigationAction: PropTypes.func.isRequired,
   router: PropTypes.shape({}).isRequired,
-  labels: PropTypes.shape({}),
+  labels: PropTypes.shape({
+    labels: {},
+  }),
   pointHistory: PropTypes.shape({}),
 };
 
 PointsHistoryContainer.defaultProps = {
-  labels: PropTypes.shape({ addressBook: {}, labels: {}, paymentGC: {}, common: {} }),
+  labels: PropTypes.shape({ labels: {} }),
   pointHistory: PropTypes.shape({}),
 };
 

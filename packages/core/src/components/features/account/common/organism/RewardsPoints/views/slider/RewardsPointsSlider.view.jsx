@@ -18,7 +18,7 @@ const RewardsPointsSlider = ({
   return (
     <div className={className}>
       <Row>
-        <Col colSize={{ large: 4, medium: 3, small: 2 }}>
+        <Col colSize={{ large: 5, medium: 3, small: 2 }}>
           <BodyCopy fontFamily="secondary" fontSize="fs14">
             {`${labels.lbl_common_current_points}: `}
             <BodyCopy component="span" fontWeight="black" fontFamily="secondary" fontSize="fs14">
@@ -26,7 +26,7 @@ const RewardsPointsSlider = ({
             </BodyCopy>
           </BodyCopy>
         </Col>
-        <Col colSize={{ large: 8, medium: 5, small: 4 }}>
+        <Col colSize={{ large: 7, medium: 5, small: 4 }}>
           <BodyCopy component="p" fontFamily="secondary" fontSize="fs14">
             {`${labels.lbl_common_heading}: `}
             <BodyCopy component="span" fontWeight="black" fontFamily="secondary" fontSize="fs14">
