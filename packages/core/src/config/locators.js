@@ -36,6 +36,18 @@ export default {
   moduleK_button_set: 'moduleK_button_set_',
   moduleK_play_button: 'moduleK_play_button',
   moduleK_pause_button: 'moduleK_pause_button',
+
+  // Module A
+  moduleA_header_text: 'moduleA_header_text_',
+  moduleA_promobanner_text: 'moduleA_promobanner_text_',
+  moduleA_promobanner_img: 'moduleA_promobanner_img',
+  moduleA_image: 'moduleA_image_',
+  moduleA_button: 'moduleA_button',
+  moduleA_button_set: 'moduleA_button_set_',
+  moduleA_play_button: 'moduleA_play_button',
+  moduleA_pause_button: 'moduleA_pause_button',
+  moduleA_ribbon_promobanner_text: 'moduleA_ribbon_promobanner_text_',
+
   // Module L
   moduleL_header_text: 'moduleL_header_text',
   moduleL_title: 'moduleL_title_',
@@ -45,6 +57,7 @@ export default {
   moduleL_tiles: 'moduleL_tiles_',
   moduleL_left_arrow: 'moduleL_left_arrow',
   moduleL_right_arrow: 'moduleL_right_arrow',
+
   // Added To Bag
   addedtobag_btnviewbag: 'addedtobag-btnviewbag',
   addedtobag_btnpaypal: 'addedtobag-btnpaypal',

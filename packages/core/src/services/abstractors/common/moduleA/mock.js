@@ -42,7 +42,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
           title: 'Family Tees title',
           crop_d: 'c_crop,g_face:center,q_auto:best,w_1410',
           crop_t: 'c_crop,g_face:center,q_auto:best,w_768',
-          crop_m: 'c_crop,g_face:center,q_auto:best,w_468',
+          crop_m: 'c_crop,g_face:center,q_auto:best,w_375,h_311',
         },
         link: {
           url: '/image/url',
@@ -51,6 +51,15 @@ for (let i = 1; i <= totalImageSlides; i++) {
           target: '',
           external: 0,
         },
+      },
+    ],
+    ribbonBanner: [
+      {
+        position: 'right',
+        textItems: [
+          { text: 'Order By XX/XX', style: 'style10' },
+          { text: 'For Easter Delivery!', style: 'style10' },
+        ],
       },
     ],
   });

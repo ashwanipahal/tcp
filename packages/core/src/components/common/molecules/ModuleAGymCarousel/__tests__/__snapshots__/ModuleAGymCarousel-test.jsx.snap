@@ -1,0 +1,531 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleAGymCarousel component renders correctly 1`] = `
+<div
+  className="undefined "
+>
+  <Styled(errorBoundaryComponent)
+    carouselConfig={
+      Object {
+        "autoplay": true,
+        "customArrowLeft": "/static/images/right-carousel-carrot.svg",
+        "customArrowRight": "/static/images/right-carousel-carrot.svg",
+        "dataLocatorPause": "moduleA_pause_button",
+        "dataLocatorPlay": "moduleA_play_button",
+      }
+    }
+    options={
+      Object {
+        "afterChange": [Function],
+        "arrows": true,
+        "autoplay": true,
+        "autoplaySpeed": 4000,
+        "dots": true,
+        "dotsClass": "slick-dots",
+        "fade": false,
+        "hidePlayPause": false,
+        "nextArrow": <button
+          className="slick-prev"
+          data-locator="moduleA_right_arrow"
+          type="button"
+        />,
+        "prevArrow": <button
+          className="slick-prev"
+          data-locator="moduleA_left_arrow"
+          type="button"
+        />,
+        "responsive": Array [
+          Object {
+            "breakpoint": 1024,
+            "settings": Object {
+              "arrows": false,
+            },
+          },
+        ],
+        "speed": 1000,
+        "swipe": true,
+      }
+    }
+  >
+    <div
+      className="banner-slide"
+      key="Family_Tees_Image_1"
+    >
+      <WithTheme(DamImage)
+        className="moduleA_image_0"
+        imgData={
+          Object {
+            "alt": "Family Tees Image 1",
+            "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
+            "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
+            "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+            "title": "Family Tees title",
+            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+          }
+        }
+      />
+      <div
+        className="banner-content"
+      >
+        <Styled(Styled(LinkText))
+          className="link-text-wrapper"
+          data-locator="moduleA_header_text_0"
+          fontSize={
+            Array [
+              "fs36",
+              "fs52",
+              "fs52",
+            ]
+          }
+          fontWeight="black"
+          headerText={
+            Array [
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/trending",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "ENTER SITE 1",
+                  },
+                ],
+              },
+            ]
+          }
+        />
+        <Styled(PromoBanner)
+          className="moduleA__promoBanner"
+          data-locator="moduleA_promobanner_text_0"
+          fontSize="fs48"
+          promoBanner={
+            Array [
+              Object {
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/banner/url",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "60%",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "off",
+                  },
+                  Object {
+                    "style": "style1",
+                    "text": "50% off",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "all shoes and other accessories",
+                  },
+                ],
+              },
+            ]
+          }
+        />
+      </div>
+      <div
+        className="ribbon-container"
+      >
+        <Styled(PromoBanner)
+          className="moduleA__ribbonBanner"
+          data-locator="moduleA_ribbon_promobanner_text_0"
+          fontSize="fs48"
+          promoBanner={
+            Array [
+              Object {
+                "position": "right",
+                "textItems": Array [
+                  Object {
+                    "style": "style10",
+                    "text": "Order By XX/XX",
+                  },
+                  Object {
+                    "style": "style10",
+                    "text": "For Easter Delivery!",
+                  },
+                ],
+              },
+            ]
+          }
+        />
+      </div>
+    </div>
+    <div
+      className="banner-slide"
+      key="Family_Tees_Image_2"
+    >
+      <WithTheme(DamImage)
+        className="moduleA_image_1"
+        imgData={
+          Object {
+            "alt": "Family Tees Image 2",
+            "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
+            "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
+            "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+            "title": "Family Tees title",
+            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+          }
+        }
+      />
+      <div
+        className="banner-content"
+      >
+        <Styled(Styled(LinkText))
+          className="link-text-wrapper"
+          data-locator="moduleA_header_text_1"
+          fontSize={
+            Array [
+              "fs36",
+              "fs52",
+              "fs52",
+            ]
+          }
+          fontWeight="black"
+          headerText={
+            Array [
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/trending",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "ENTER SITE 2",
+                  },
+                ],
+              },
+            ]
+          }
+        />
+        <Styled(PromoBanner)
+          className="moduleA__promoBanner"
+          data-locator="moduleA_promobanner_text_1"
+          fontSize="fs48"
+          promoBanner={
+            Array [
+              Object {
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/banner/url",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "60%",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "off",
+                  },
+                  Object {
+                    "style": "style1",
+                    "text": "50% off",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "all shoes and other accessories",
+                  },
+                ],
+              },
+            ]
+          }
+        />
+      </div>
+      <div
+        className="ribbon-container"
+      >
+        <Styled(PromoBanner)
+          className="moduleA__ribbonBanner"
+          data-locator="moduleA_ribbon_promobanner_text_1"
+          fontSize="fs48"
+          promoBanner={
+            Array [
+              Object {
+                "position": "right",
+                "textItems": Array [
+                  Object {
+                    "style": "style10",
+                    "text": "Order By XX/XX",
+                  },
+                  Object {
+                    "style": "style10",
+                    "text": "For Easter Delivery!",
+                  },
+                ],
+              },
+            ]
+          }
+        />
+      </div>
+    </div>
+    <div
+      className="banner-slide"
+      key="Family_Tees_Image_3"
+    >
+      <WithTheme(DamImage)
+        className="moduleA_image_2"
+        imgData={
+          Object {
+            "alt": "Family Tees Image 3",
+            "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
+            "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
+            "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+            "title": "Family Tees title",
+            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+          }
+        }
+      />
+      <div
+        className="banner-content"
+      >
+        <Styled(Styled(LinkText))
+          className="link-text-wrapper"
+          data-locator="moduleA_header_text_2"
+          fontSize={
+            Array [
+              "fs36",
+              "fs52",
+              "fs52",
+            ]
+          }
+          fontWeight="black"
+          headerText={
+            Array [
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/trending",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "ENTER SITE 3",
+                  },
+                ],
+              },
+            ]
+          }
+        />
+        <Styled(PromoBanner)
+          className="moduleA__promoBanner"
+          data-locator="moduleA_promobanner_text_2"
+          fontSize="fs48"
+          promoBanner={
+            Array [
+              Object {
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/banner/url",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "60%",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "off",
+                  },
+                  Object {
+                    "style": "style1",
+                    "text": "50% off",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "all shoes and other accessories",
+                  },
+                ],
+              },
+            ]
+          }
+        />
+      </div>
+      <div
+        className="ribbon-container"
+      >
+        <Styled(PromoBanner)
+          className="moduleA__ribbonBanner"
+          data-locator="moduleA_ribbon_promobanner_text_2"
+          fontSize="fs48"
+          promoBanner={
+            Array [
+              Object {
+                "position": "right",
+                "textItems": Array [
+                  Object {
+                    "style": "style10",
+                    "text": "Order By XX/XX",
+                  },
+                  Object {
+                    "style": "style10",
+                    "text": "For Easter Delivery!",
+                  },
+                ],
+              },
+            ]
+          }
+        />
+      </div>
+    </div>
+    <div
+      className="banner-slide"
+      key="Family_Tees_Image_4"
+    >
+      <WithTheme(DamImage)
+        className="moduleA_image_3"
+        imgData={
+          Object {
+            "alt": "Family Tees Image 4",
+            "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
+            "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
+            "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+            "title": "Family Tees title",
+            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+          }
+        }
+      />
+      <div
+        className="banner-content"
+      >
+        <Styled(Styled(LinkText))
+          className="link-text-wrapper"
+          data-locator="moduleA_header_text_3"
+          fontSize={
+            Array [
+              "fs36",
+              "fs52",
+              "fs52",
+            ]
+          }
+          fontWeight="black"
+          headerText={
+            Array [
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/trending",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "ENTER SITE 4",
+                  },
+                ],
+              },
+            ]
+          }
+        />
+        <Styled(PromoBanner)
+          className="moduleA__promoBanner"
+          data-locator="moduleA_promobanner_text_3"
+          fontSize="fs48"
+          promoBanner={
+            Array [
+              Object {
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/banner/url",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "60%",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "off",
+                  },
+                  Object {
+                    "style": "style1",
+                    "text": "50% off",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "all shoes and other accessories",
+                  },
+                ],
+              },
+            ]
+          }
+        />
+      </div>
+      <div
+        className="ribbon-container"
+      >
+        <Styled(PromoBanner)
+          className="moduleA__ribbonBanner"
+          data-locator="moduleA_ribbon_promobanner_text_3"
+          fontSize="fs48"
+          promoBanner={
+            Array [
+              Object {
+                "position": "right",
+                "textItems": Array [
+                  Object {
+                    "style": "style10",
+                    "text": "Order By XX/XX",
+                  },
+                  Object {
+                    "style": "style10",
+                    "text": "For Easter Delivery!",
+                  },
+                ],
+              },
+            ]
+          }
+        />
+      </div>
+    </div>
+  </Styled(errorBoundaryComponent)>
+  <div
+    className="bottom-blue-bar"
+  />
+</div>
+`;

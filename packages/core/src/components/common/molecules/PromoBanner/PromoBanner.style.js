@@ -34,4 +34,11 @@ export default css`
       font-size: 60px;
     }
   }
+
+  .style10 {
+    color: ${props => props.theme.colorPalette.white};
+    font-family: ${props => props.theme.typography.fonts.secondary};
+    font-weight: ${props => props.theme.typography.fontWeights.extrabold};
+    font-size: 14px;
+  }
 `;
