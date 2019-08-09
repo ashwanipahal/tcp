@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import { UrlHandler, navigateToPage } from '../../../../../utils/utils.app';
+import { UrlHandler, navigateToPage, validateExternalUrl } from '../../../../../utils/utils.app';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../Button.style.native';
 
@@ -43,8 +43,7 @@ const CustomButton = (props: Props) => {
   const { url, navigation } = otherProps;
 
   const openUrl = () => {
-    const isHttps = url.indexOf('http') || url.indexOf('https') !== true;
-    if (isHttps === true) {
+    if (validateExternalUrl(url)) {
       UrlHandler(url);
     }
     navigateToPage(url, navigation);

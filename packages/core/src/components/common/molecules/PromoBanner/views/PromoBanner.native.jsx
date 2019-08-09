@@ -80,7 +80,7 @@ const PromoBanner = (props: Props) => {
     ...otherProps
   } = props;
   return [
-    <Anchor accessibilityRole="link" url={link.url}>
+    <Anchor url={link.url}>
       {textItems.map(({ text, style }, index) => {
         const StyleBodyCopy = bodyCopyStyles[style];
         return <StyleBodyCopy text={index ? ` ${text}` : text} {...otherProps} />;

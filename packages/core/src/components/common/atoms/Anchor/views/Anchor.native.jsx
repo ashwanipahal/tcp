@@ -1,8 +1,7 @@
-/* eslint-disable no-var */
 // @flow
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import { UrlHandler, navigateToPage } from '../../../../../utils/index.native';
+import { UrlHandler, navigateToPage, validateExternalUrl } from '../../../../../utils/index.native';
 import withStyles from '../../../hoc/withStyles.native';
 import { AnchorStyles, AnchorView, AnchorIcon } from '../Anchor.style.native';
 
@@ -27,18 +26,16 @@ const Anchor = ({
   const { url, navigation } = otherProps;
 
   const openUrl = () => {
-    const isHttps = url.indexOf('http') || url.indexOf('https') !== true;
-    if (isHttps === true) {
+    if (validateExternalUrl(url)) {
       UrlHandler(url);
-    } else {
-      navigateToPage(url, navigation);
     }
+    navigateToPage(url, navigation);
   };
 
   if (children) {
     return (
       <TouchableOpacity
-        accessibilityRole="button"
+        accessibilityRole="link"
         onPress={openUrl}
         {...otherProps}
         style={customStyle}

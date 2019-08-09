@@ -44,25 +44,25 @@ describe('Anchor Native', () => {
   });
 
   it('should call for plp page', () => {
-    component.setProps({ external: false, url: '/p/test' });
+    component.setProps({ url: '/p/test' });
     component.props().onPress();
     expect(navigate).toHaveBeenCalledTimes(3);
   });
 
   it('should call for shop page', () => {
-    component.setProps({ external: false, url: '/c/test' });
+    component.setProps({ url: '/c/test' });
     component.props().onPress();
     expect(navigate).toHaveBeenCalledTimes(4);
   });
 
   it('should return null', () => {
-    component.setProps({ external: false, url: '/test' });
+    component.setProps({ url: '/test' });
     component.props().onPress();
     expect(navigate).toHaveBeenCalledTimes(4);
   });
 
   it('should return navigation to default browser', () => {
-    component.setProps({ external: true, onPress: null });
+    component.setProps({ onPress: null });
     component.props().onPress();
     expect(navigate).toHaveBeenCalledTimes(5);
   });

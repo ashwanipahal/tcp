@@ -10,6 +10,7 @@ export {
   navigateToNestedRoute,
   getValueFromAsyncStorage,
   setValueInAsyncStorage,
+  validateExternalUrl,
 } from './utils.app';
 
 export {

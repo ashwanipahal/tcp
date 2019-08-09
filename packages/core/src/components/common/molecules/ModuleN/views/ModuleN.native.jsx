@@ -35,7 +35,6 @@ const ModuleN = (props: Props) => {
   return (
     <Container background="red">
       <LinkText
-        accessibilityRole="link"
         type="heading"
         fontFamily="primary"
         fontSize="fs20"
