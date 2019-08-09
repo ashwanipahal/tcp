@@ -88,6 +88,7 @@ exports[`ModuleL component renders correctly 1`] = `
         ]
       }
       headingClass="moduleL__header"
+      promo={1}
       textAlign="center"
       type="heading"
     />
@@ -95,10 +96,10 @@ exports[`ModuleL component renders correctly 1`] = `
       className="moduleL__promo-banner"
       data-locator="moduleL_promobanner_text"
       fontSize="fs48"
-      promoTextBanner={
+      promoBanner={
         Array [
           Object {
-            "linkClass": Object {
+            "link": Object {
               "class": "",
               "external": 0,
               "target": "",
@@ -136,6 +137,16 @@ exports[`ModuleL component renders correctly 1`] = `
           "dots": true,
           "infinite": true,
           "lazyLoad": false,
+          "nextArrow": <button
+            className="slick-prev"
+            data-locator="moduleL_right_arrow"
+            type="button"
+          />,
+          "prevArrow": <button
+            className="slick-prev"
+            data-locator="moduleL_left_arrow"
+            type="button"
+          />,
           "responsive": Array [
             Object {
               "breakpoint": 767,

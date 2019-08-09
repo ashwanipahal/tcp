@@ -2,7 +2,7 @@ import { LOGINPAGE_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants
 import { createSelector } from 'reselect';
 import constants from '../LoginPage.constants';
 
-const getLoginState = state => {
+export const getLoginState = state => {
   return state[LOGINPAGE_REDUCER_KEY];
 };
 

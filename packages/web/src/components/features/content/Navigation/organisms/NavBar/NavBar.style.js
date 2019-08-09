@@ -10,7 +10,8 @@ export default css`
 
   @media ${props => props.theme.mediaQuery.large} {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
     border-bottom: 1px solid ${props => props.theme.colorPalette.text.disabled};
   }
 `;

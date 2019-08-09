@@ -7,8 +7,8 @@ import CartItemTile from '../../CartItemTile';
 import Heading from '../../../../common/atoms/Heading';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
+import AddedToBagActions from '../../AddedToBagActions';
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
-import CheckoutActions from '../molecules/CheckoutActions';
 
 // @flow
 // type Props = {
@@ -22,6 +22,7 @@ import CheckoutActions from '../molecules/CheckoutActions';
 // };
 
 const BagPageView = ({ className, labels, totalCount }: Props) => {
+  const showAddTobag = false;
   return (
     <div className={className}>
       <Row tagName="header">
@@ -43,7 +44,7 @@ const BagPageView = ({ className, labels, totalCount }: Props) => {
           </Col>
           <Col colSize={{ small: 6, medium: 3, large: 4 }} className="right-sec">
             <OrderLedgerContainer />
-            <CheckoutActions labels={labels} />
+            <AddedToBagActions labels={labels} showAddTobag={showAddTobag} />
             <CouponAndPromos />
           </Col>
         </Row>
@@ -53,6 +54,7 @@ const BagPageView = ({ className, labels, totalCount }: Props) => {
 };
 BagPageView.propTypes = {
   className: PropTypes.string.isRequired,
+  labels: PropTypes.shape({}).isRequired,
 };
 
 export default withStyles(BagPageView, styles);
