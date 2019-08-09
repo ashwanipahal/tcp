@@ -85,6 +85,7 @@ const FONT_WEIGHT = {
   medium: '500',
   semiBold: '600',
   bold: '700',
+  extrabold: '800',
   black: '900',
 };
 

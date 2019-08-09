@@ -20,7 +20,7 @@ const Badge = ({ children, className, showCheckmark, dataLocator }: Props): Node
     tag="div"
     color="primary"
     fontFamily="secondaryFontFamily"
-    fontWeight="bold"
+    fontWeight="extrabold"
   >
     {showCheckmark && <span className="badge__checkmark" />}
     <span className="badge__content" data-locator={dataLocator}>

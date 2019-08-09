@@ -6,7 +6,7 @@ exports[`Badge component renders correctly with showCheckmark as false 1`] = `
   className="sample-badge"
   color="primary"
   fontFamily="secondaryFontFamily"
-  fontWeight="bold"
+  fontWeight="extrabold"
   tag="div"
 >
   <span
@@ -23,7 +23,7 @@ exports[`Badge component renders correctly with showCheckmark as true 1`] = `
   className="sample-badge"
   color="primary"
   fontFamily="secondaryFontFamily"
-  fontWeight="bold"
+  fontWeight="extrabold"
   tag="div"
 >
   <span
