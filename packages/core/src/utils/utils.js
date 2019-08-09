@@ -1,6 +1,6 @@
 import icons from '../config/icons';
 import locators from '../config/locators';
-import { API_CONFIG, awsAppSync } from '../services/config';
+import { API_CONFIG, awsAppSync, googleAppConfig } from '../services/config';
 import { getStoreRef, resetStoreRef } from './store.utils';
 import { APICONFIG_REDUCER_KEY } from '../constants/reducer.constants';
 
@@ -72,6 +72,8 @@ export const createAPIConfig = resLocals => {
   const relHostname = apiSiteInfo.proto + apiSiteInfo.protoSeparator + hostname;
   const basicConfig = getAPIInfoFromEnv(apiSiteInfo, processEnv);
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, processEnv, relHostname);
+  // console.log("process Env is ........", processEnv);
+  // const candid = getCandidConfig(processEnv);
   return {
     ...basicConfig,
     ...graphQLConfig,
@@ -111,6 +113,7 @@ export const getAPIConfig = () => {
       unbxd: '://search.unbxd.io',
       cookie: null,
       isMobile: false,
+      map_api_key: googleAppConfig.google_map_api_key,
       graphql_reqion: awsAppSync.aws_appsync_region,
       graphql_endpoint_url: awsAppSync.aws_appsync_graphqlEndpoint,
       graphql_auth_type: awsAppSync.aws_appsync_authenticationType,
@@ -125,13 +128,22 @@ export const getAPIConfig = () => {
   return apiConfig;
 };
 
-export const getCandidConfig = () => {
+export const getCandidConfig = processEnv => {
+  console.log('thisi si iisiisii ',processEnv)
   return {
     CAND_API_KEY: '070167ca-8287-4d41-a9bb-6b3850cae9b1',
     CAND_SLOT: 'tcp-get-candid-image-container',
     CAND_PDP: 'pdp_na_na_na_03019_candid',
     CAND_URL: 'api.getcandid.com',
+    // CAND_API_KEY: process.env.RWD_WEB_CAND_API_KEY,
+    // CAND_SLOT: process.env.RWD_WEB_CAND_SLOT,
+    // CAND_PDP: process.env.RWD_WEB_CAND_API_KEY,
+    // CAND_URL: process.env.RWD_WEB_CAND_API_KEY,
   };
+}
+export const isCanada = () => {
+  const { siteId } = getAPIConfig();
+  return siteId === API_CONFIG.siteIds.ca;
 };
 
 export default {
@@ -142,4 +154,5 @@ export default {
   isServer,
   getAPIConfig,
   getCandidConfig,
+  isCanada,
 };

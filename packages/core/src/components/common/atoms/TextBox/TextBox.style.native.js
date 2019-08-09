@@ -58,6 +58,10 @@ const StyledSuccessIcon = styled.View`
   top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 `;
 
+const HiddenView = styled.View`
+  display: none;
+`;
+
 export {
   TextBoxStyle,
   StyledTextBox,
@@ -66,4 +70,5 @@ export {
   StyledErrorWrapper,
   StyledTextBoxWrapper,
   StyledSuccessIcon,
+  HiddenView,
 };

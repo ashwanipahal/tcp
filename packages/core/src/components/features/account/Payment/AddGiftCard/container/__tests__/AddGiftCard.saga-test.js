@@ -1,10 +1,9 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { addGiftCard, AddGiftCardSaga } from '../AddGiftCard.saga';
-import endpoints from '../../../../../../../service/endpoint';
 import { addGiftCardFailure, addGiftCardSuccess } from '../AddGiftCard.actions';
 import { clearCardListTTL } from '../../../container/Payment.actions';
-import fetchData from '../../../../../../../service/API';
 import ADD_GIFT_CARD_CONSTANTS from '../../AddGiftCard.constants';
+import { addGiftCardApi } from '../../../../../../../services/abstractors/account';
 
 describe('Add Gift Card saga', () => {
   let gen;
@@ -27,17 +26,7 @@ describe('Add Gift Card saga', () => {
       },
     };
 
-    const { relURI, method } = endpoints.addGiftCard;
-    const baseURI = endpoints.addGiftCard.baseURI || endpoints.global.baseURI;
-
-    const langId = -1;
-    const catalogId = 10551;
-    const storeId = 10151;
-    const isrest = true;
-
-    expect(gen.next().value).toEqual(
-      call(fetchData, baseURI, relURI, { payload, langId, catalogId, storeId, isrest }, method)
-    );
+    expect(gen.next().value).toEqual(call(addGiftCardApi, payload));
     expect(gen.next(res).value).toEqual(put(clearCardListTTL()));
     expect(gen.next(res).value).toEqual(put(addGiftCardSuccess()));
     expect(gen.next().done).toBeTruthy();
@@ -48,17 +37,8 @@ describe('Add Gift Card saga', () => {
       statusCode: 400,
       message: 'Object not found',
     };
-    const { relURI, method } = endpoints.addGiftCard;
-    const baseURI = endpoints.addGiftCard.baseURI || endpoints.global.baseURI;
 
-    const langId = -1;
-    const catalogId = 10551;
-    const storeId = 10151;
-    const isrest = true;
-
-    expect(gen.next().value).toEqual(
-      call(fetchData, baseURI, relURI, { payload, langId, catalogId, storeId, isrest }, method)
-    );
+    expect(gen.next().value).toEqual(call(addGiftCardApi, payload));
     expect(gen.next(err).value).toEqual(put(addGiftCardFailure()));
     expect(gen.next().done).toBeTruthy();
   });

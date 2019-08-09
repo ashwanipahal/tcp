@@ -2,27 +2,15 @@
 
 exports[`ModuleK component renders correctly 1`] = `
 <StyledComponent
-  className={null}
+  className="undefined moduleK"
   color="text.primary"
-  component="p"
+  component="div"
   fontFamily="primary"
   fontSize={12}
   fontWeight="regular"
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "children": null,
-        "className": null,
-        "color": "text.primary",
-        "component": "p",
-        "fontFamily": "primary",
-        "fontSize": 12,
-        "fontWeight": "regular",
-        "letterSpacing": "normal",
-        "lineHeight": "normal",
-        "textAlign": "left",
-      },
       "attrs": Array [],
       "componentStyle": ComponentStyle {
         "componentId": "sc-bZQynM",
@@ -42,6 +30,18 @@ exports[`ModuleK component renders correctly 1`] = `
 ",
         ],
       },
+      "defaultProps": Object {
+        "children": null,
+        "className": null,
+        "color": "text.primary",
+        "component": "p",
+        "fontFamily": "primary",
+        "fontSize": 12,
+        "fontWeight": "regular",
+        "letterSpacing": "normal",
+        "lineHeight": "normal",
+        "textAlign": "left",
+      },
       "displayName": "Styled(BodyCopy)",
       "foldedComponentIds": Array [],
       "render": [Function],
@@ -57,11 +57,9 @@ exports[`ModuleK component renders correctly 1`] = `
   lineHeight="normal"
   textAlign="left"
 >
-  <Styled(Row)
-    className="module-k"
-  >
+  <Styled(Row)>
     <Styled(Col)
-      className="module-k__header"
+      className="moduleK__header"
       colSize={
         Object {
           "large": 12,
@@ -76,24 +74,21 @@ exports[`ModuleK component renders correctly 1`] = `
         headerText={
           Array [
             Object {
-              "icon": Object {
-                "icon": "heart",
-                "placement": "left|middle|right",
-              },
               "link": Object {
                 "external": 0,
                 "target": "",
+                "text": "aaaa",
                 "title": "",
-                "url": "https://www.childrensplace.com/us/c/girls-new-arrivals",
+                "url": "http://example.com3367",
               },
               "textItems": Array [
                 Object {
-                  "style": "moduleK__Header",
-                  "text": "UNICORNS,",
+                  "style": "style1",
+                  "text": "UNICORNS",
                 },
                 Object {
-                  "style": "moduleK__Header",
-                  "text": "DINOS & MORE!",
+                  "style": "style2",
+                  "text": ", DINOS & MORE!",
                 },
               ],
             },
@@ -111,17 +106,17 @@ exports[`ModuleK component renders correctly 1`] = `
   ",
                 "
   .link-text {
-    margin-bottom: ",
+    ",
                 [Function],
-                ";
+                "
     text-align: center;
 
     @media ",
                 [Function],
                 " {
-      margin-bottom: ",
+      ",
                 [Function],
-                ";
+                "
     }
     ",
                 [Function],
@@ -141,7 +136,7 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(LinkText))",
             "foldedComponentIds": Array [
-              "sc-kGXeez",
+              "sc-kpOJdX",
             ],
             "render": [Function],
             "styledComponentId": "sc-jKJlTe",
@@ -155,24 +150,7 @@ exports[`ModuleK component renders correctly 1`] = `
       />
     </Styled(Col)>
     <Styled(Col)
-      className="module-k__promoBanner"
-      colSize={
-        Object {
-          "large": 12,
-          "medium": 8,
-          "small": 6,
-        }
-      }
-      offsetRight={
-        Object {
-          "large": 0,
-          "medium": 0,
-          "small": 0,
-        }
-      }
-    />
-    <Styled(Col)
-      className="module-k__carousal"
+      className="moduleK__carousal"
       colSize={
         Object {
           "large": 8,
@@ -200,7 +178,7 @@ exports[`ModuleK component renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-dxgOiQ",
+                "componentId": "sc-ckVGcZ",
                 "isStatic": true,
                 "rules": Array [
                   "
@@ -226,7 +204,7 @@ exports[`ModuleK component renders correctly 1`] = `
               "displayName": "Styled(errorBoundaryComponent)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-dxgOiQ",
+              "styledComponentId": "sc-ckVGcZ",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -266,27 +244,26 @@ exports[`ModuleK component renders correctly 1`] = `
           }
         }
       >
-        <Styled(Styled(PromoBanner))
-          className="module-k__promoBanner"
+        <Styled(PromoBanner)
+          className="moduleK__promoBanner"
+          data-locator="moduleK_promobanner_text_1"
           fontSize="fs48"
-          promoTextBanner={
+          promoBanner={
             Array [
               Object {
                 "link": Object {
-                  "class": "",
                   "external": 0,
                   "target": "",
-                  "text": "",
                   "title": "",
-                  "url": "/banner/url",
+                  "url": "http://example.com235",
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style2",
-                    "text": "ALL DINOS",
+                    "style": "style1",
+                    "text": "alL DINOS",
                   },
                   Object {
-                    "style": "text-black",
+                    "style": "style2",
                     "text": "50% OFF",
                   },
                 ],
@@ -297,43 +274,73 @@ exports[`ModuleK component renders correctly 1`] = `
         <Styled(Styled(ImageGrid))
           className="image-grid"
           colM={2}
-          dataLocator="moduleK_image_"
-          mediaList={
+          dataLocator="moduleK_image_1"
+          dataLocatorContainer="moduleK_image_set_1"
+          mediaLinkedList={
             Array [
               Object {
-                "alt": "Image Alt text attribute value",
-                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-                "title": "Image Title attribute value",
-                "url": "/static/images/K-210x210-1.jpg",
+                "image": Object {
+                  "alt": "dinos",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-1_s0jewf.jpg",
+                },
+                "link": Object {
+                  "target": "",
+                  "text": "link 1",
+                  "title": "",
+                  "url": "http://example.com",
+                },
               },
               Object {
-                "alt": "Image Alt text attribute value",
-                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-                "title": "Image Title attribute value",
-                "url": "/static/images/K-210x210-2.jpg",
+                "image": Object {
+                  "alt": "",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-4_com7vo.jpg",
+                },
+                "link": Object {
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "http://example.com",
+                },
               },
               Object {
-                "alt": "Image Alt text attribute value",
-                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-                "title": "Image Title attribute value",
-                "url": "/static/images/K-210x210-3.jpg",
+                "image": Object {
+                  "alt": "",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-4_com7vo.jpg",
+                },
+                "link": Object {
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "http://example.com",
+                },
               },
               Object {
-                "alt": "Image Alt text attribute value",
-                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-                "title": "Image Title attribute value",
-                "url": "/static/images/K-210x210-4.jpg",
+                "image": Object {
+                  "alt": "",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-4_com7vo.jpg",
+                },
+                "link": Object {
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "http://example.com",
+                },
               },
             ]
           }
+          promo={1}
         />
         <Styled(Col)
           colSize={
@@ -347,134 +354,39 @@ exports[`ModuleK component renders correctly 1`] = `
           <Styled(Anchor)
             external={0}
             target=""
-            text="SHOP NOW"
-            title="SHOP NOW"
-            url="/node/pdp"
-          >
-            <Styled(Button)
-              buttonVariation="fixed-width"
-              className="carousal-cta"
-              dataLocator="moduleK_button_set_0"
-            >
-              SHOP NOW
-            </Styled(Button)>
-          </Styled(Anchor)>
-        </Styled(Col)>
-        <Styled(Styled(PromoBanner))
-          className="module-k__promoBanner"
-          fontSize="fs48"
-          promoTextBanner={
-            Array [
-              Object {
-                "link": Object {
-                  "class": "",
-                  "external": 0,
-                  "target": "",
-                  "text": "",
-                  "title": "",
-                  "url": "/banner/url",
-                },
-                "textItems": Array [
-                  Object {
-                    "style": "style2",
-                    "text": "ALL DINOS",
-                  },
-                  Object {
-                    "style": "text-black",
-                    "text": "50% OFF",
-                  },
-                ],
-              },
-            ]
-          }
-        />
-        <Styled(Styled(ImageGrid))
-          className="image-grid"
-          colM={2}
-          dataLocator="moduleK_image_"
-          mediaList={
-            Array [
-              Object {
-                "alt": "Image Alt text attribute value",
-                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-                "title": "Image Title attribute value",
-                "url": "/static/images/K-210x210-1.jpg",
-              },
-              Object {
-                "alt": "Image Alt text attribute value",
-                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-                "title": "Image Title attribute value",
-                "url": "/static/images/K-210x210-2.jpg",
-              },
-              Object {
-                "alt": "Image Alt text attribute value",
-                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-                "title": "Image Title attribute value",
-                "url": "/static/images/K-210x210-3.jpg",
-              },
-              Object {
-                "alt": "Image Alt text attribute value",
-                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-                "title": "Image Title attribute value",
-                "url": "/static/images/K-210x210-4.jpg",
-              },
-            ]
-          }
-        />
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 3,
-              "medium": 2,
-              "small": 4,
-            }
-          }
-        >
-          <Styled(Anchor)
-            external={0}
-            target=""
-            text="SHOP NOW"
-            title="SHOP NOW"
-            url="http://www.google.com"
+            text="SHOP ALL"
+            title=""
+            url="http://example.com"
           >
             <Styled(Button)
               buttonVariation="fixed-width"
               className="carousal-cta"
               dataLocator="moduleK_button_set_1"
             >
-              SHOP NOW
+              SHOP ALL
             </Styled(Button)>
           </Styled(Anchor)>
         </Styled(Col)>
-        <Styled(Styled(PromoBanner))
-          className="module-k__promoBanner"
+        <Styled(PromoBanner)
+          className="moduleK__promoBanner"
+          data-locator="moduleK_promobanner_text_2"
           fontSize="fs48"
-          promoTextBanner={
+          promoBanner={
             Array [
               Object {
                 "link": Object {
-                  "class": "",
                   "external": 0,
                   "target": "",
-                  "text": "",
                   "title": "",
-                  "url": "/banner/url",
+                  "url": "http://example.com",
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style2",
+                    "style": "style1",
                     "text": "ALL DINOS",
                   },
                   Object {
-                    "style": "text-black",
+                    "style": "style2",
                     "text": "50% OFF",
                   },
                 ],
@@ -485,43 +397,73 @@ exports[`ModuleK component renders correctly 1`] = `
         <Styled(Styled(ImageGrid))
           className="image-grid"
           colM={2}
-          dataLocator="moduleK_image_"
-          mediaList={
+          dataLocator="moduleK_image_2"
+          dataLocatorContainer="moduleK_image_set_2"
+          mediaLinkedList={
             Array [
               Object {
-                "alt": "Image Alt text attribute value",
-                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-                "title": "Image Title attribute value",
-                "url": "/static/images/K-210x210-1.jpg",
+                "image": Object {
+                  "alt": "dinos",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-2_cpjda2.jpg",
+                },
+                "link": Object {
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "http://example.com",
+                },
               },
               Object {
-                "alt": "Image Alt text attribute value",
-                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-                "title": "Image Title attribute value",
-                "url": "/static/images/K-210x210-2.jpg",
+                "image": Object {
+                  "alt": "",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-1_s0jewf.jpg",
+                },
+                "link": Object {
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "http://example.com",
+                },
               },
               Object {
-                "alt": "Image Alt text attribute value",
-                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-                "title": "Image Title attribute value",
-                "url": "/static/images/K-210x210-3.jpg",
+                "image": Object {
+                  "alt": "",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-2_cpjda2.jpg",
+                },
+                "link": Object {
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "http://example.com",
+                },
               },
               Object {
-                "alt": "Image Alt text attribute value",
-                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-                "title": "Image Title attribute value",
-                "url": "/static/images/K-210x210-4.jpg",
+                "image": Object {
+                  "alt": "",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
+                  "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562935881/ecom/assets/content/tcp/us/home/moduleK/K-210x210-3_tlamd0.jpg",
+                },
+                "link": Object {
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "http://example.com",
+                },
               },
             ]
           }
+          promo={1}
         />
         <Styled(Col)
           colSize={
@@ -535,110 +477,16 @@ exports[`ModuleK component renders correctly 1`] = `
           <Styled(Anchor)
             external={0}
             target=""
-            text="SHOP NOW"
-            title="SHOP NOW"
-            url="/node/pdp"
+            text="SHOP ALL"
+            title=""
+            url="http://example.com"
           >
             <Styled(Button)
               buttonVariation="fixed-width"
               className="carousal-cta"
               dataLocator="moduleK_button_set_2"
             >
-              SHOP NOW
-            </Styled(Button)>
-          </Styled(Anchor)>
-        </Styled(Col)>
-        <Styled(Styled(PromoBanner))
-          className="module-k__promoBanner"
-          fontSize="fs48"
-          promoTextBanner={
-            Array [
-              Object {
-                "link": Object {
-                  "class": "",
-                  "external": 0,
-                  "target": "",
-                  "text": "",
-                  "title": "",
-                  "url": "/banner/url",
-                },
-                "textItems": Array [
-                  Object {
-                    "style": "style2",
-                    "text": "ALL DINOS",
-                  },
-                  Object {
-                    "style": "text-black",
-                    "text": "50% OFF",
-                  },
-                ],
-              },
-            ]
-          }
-        />
-        <Styled(Styled(ImageGrid))
-          className="image-grid"
-          colM={2}
-          dataLocator="moduleK_image_"
-          mediaList={
-            Array [
-              Object {
-                "alt": "Image Alt text attribute value",
-                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-                "title": "Image Title attribute value",
-                "url": "/static/images/K-210x210-1.jpg",
-              },
-              Object {
-                "alt": "Image Alt text attribute value",
-                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-                "title": "Image Title attribute value",
-                "url": "/static/images/K-210x210-2.jpg",
-              },
-              Object {
-                "alt": "Image Alt text attribute value",
-                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-                "title": "Image Title attribute value",
-                "url": "/static/images/K-210x210-3.jpg",
-              },
-              Object {
-                "alt": "Image Alt text attribute value",
-                "crop_d": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_m": "c_crop,g_face:center,q_auto:best,w_962",
-                "crop_t": "c_crop,g_face:center,q_auto:best,w_962",
-                "title": "Image Title attribute value",
-                "url": "/static/images/K-210x210-4.jpg",
-              },
-            ]
-          }
-        />
-        <Styled(Col)
-          colSize={
-            Object {
-              "large": 3,
-              "medium": 2,
-              "small": 4,
-            }
-          }
-        >
-          <Styled(Anchor)
-            external={0}
-            target=""
-            text="SHOP NOW"
-            title="SHOP NOW"
-            url="/node/pdp"
-          >
-            <Styled(Button)
-              buttonVariation="fixed-width"
-              className="carousal-cta"
-              dataLocator="moduleK_button_set_3"
-            >
-              SHOP NOW
+              SHOP ALL
             </Styled(Button)>
           </Styled(Anchor)>
         </Styled(Col)>

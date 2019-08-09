@@ -86,8 +86,10 @@ class Dropdown extends React.PureComponent {
         textAlign="center"
         tabIndex={-1}
         onClick={e => this.onClickHandler(e, subSection)}
+        fontWeight="extrabold"
+        fontSize="fs14"
       >
-        <Anchor asPath={subSection.url} to={subSection.href}>
+        <Anchor asPath={subSection.url} className="dropdownAnchorColor" to={subSection.href}>
           <li
             key={subSection.id}
             className={`dropDownLists ${
@@ -110,8 +112,10 @@ class Dropdown extends React.PureComponent {
           textAlign="center"
           onClick={e => this.onClickHandler(e, nav)}
           tabIndex={-1}
+          fontWeight="extrabold"
+          fontSize="fs14"
         >
-          <Anchor asPath={nav.url} to={nav.href}>
+          <Anchor asPath={nav.url} className="dropdownAnchorColor" to={nav.href}>
             <li
               key={nav.id}
               className={`dropDownLists ${
@@ -139,12 +143,14 @@ class Dropdown extends React.PureComponent {
           onClick={this.toggleHandler}
           className="customSelectTitle"
           fontFamily="secondary"
-          fontSize="fs13"
+          fontSize="fs14"
           textAlign="center"
           fontWeight="extrabold"
         >
           <BodyCopy
             component="div"
+            fontFamily="secondary"
+            fontWeight="extrabold"
             className={`${dropDownExpand ? 'customSelectTitleUpImg' : 'customSelectTitleImg'}`}
           />
           {navState.displayName}

@@ -59,6 +59,9 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "800": "#f7971f",
           "900": "#c25621",
         },
+        "pink": Object {
+          "500": "#df4b9a",
+        },
         "primary": Object {
           "dark": "#3c7fb0",
           "light": "#93c5ea",
@@ -381,6 +384,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "XS": "24px",
           "XXL": "160px",
           "XXS": "16px",
+          "XXXL": "320px",
         },
         "MODAL_WIDTH": Object {
           "SMALL": "458px",

@@ -17,4 +17,8 @@ describe('ModuleLVanilla', () => {
   it('ModuleL should render correctly', () => {
     expect(component).toMatchSnapshot();
   });
+
+  it('should render View', () => {
+    expect(component.find('Styled(View)')).toHaveLength(2);
+  });
 });

@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import CreateAccountView from '../views/CreateAccount.view';
-import { createAccount } from './CreateAccount.actions';
+import CreateAccountView from '../views/CreateAccountView';
+import { createAccount, resetCreateAccountErr } from './CreateAccount.actions';
 import {
   getIAgree,
   getHideShowPwd,
@@ -11,48 +12,73 @@ import {
 } from './CreateAccount.selectors';
 import { openOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
 
-// @flow
-type Props = {
-  className: string,
-  createAccountAction: Function,
-  isIAgreeChecked: string,
-  hideShowPwd: string,
-  confirmHideShowPwd: string,
-  error: any,
-  labels: object,
-  openOverlay: any,
-};
+export class CreateAccountContainer extends React.Component {
+  static propTypes = {
+    className: PropTypes.string,
+    createAccountAction: PropTypes.func,
+    hideShowPwd: PropTypes.bool,
+    confirmHideShowPwd: PropTypes.bool,
+    error: PropTypes.string,
+    openOverlay: PropTypes.func,
+    onRequestClose: PropTypes.func,
+    isIAgreeChecked: PropTypes.bool,
+    resetAccountError: PropTypes.func,
+    labels: PropTypes.shape({}),
+  };
 
-export const CreateAccountContainer = ({
-  className,
-  createAccountAction,
-  isIAgreeChecked,
-  hideShowPwd,
-  confirmHideShowPwd,
-  error,
-  labels,
-  openOverlay,
-}: Props) => {
-  const onAlreadyHaveAnAccountClick = e => {
+  static defaultProps = {
+    className: '',
+    createAccountAction: () => {},
+    hideShowPwd: false,
+    confirmHideShowPwd: false,
+    error: {},
+    openOverlay: () => {},
+    onRequestClose: () => {},
+    isIAgreeChecked: false,
+    resetAccountError: () => {},
+    labels: {},
+  };
+
+  componentWillUnmount() {
+    const { resetAccountError } = this.props;
+    resetAccountError();
+  }
+
+  onAlreadyHaveAnAccountClick = e => {
+    const { openOverlay } = this.props;
     e.preventDefault();
     openOverlay({
       component: 'login',
       variation: 'primary',
     });
   };
-  return (
-    <CreateAccountView
-      className={className}
-      createAccountAction={createAccountAction}
-      labels={labels}
-      isIAgreeChecked={isIAgreeChecked}
-      hideShowPwd={hideShowPwd}
-      confirmHideShowPwd={confirmHideShowPwd}
-      error={error}
-      onAlreadyHaveAnAccountClick={onAlreadyHaveAnAccountClick}
-    />
-  );
-};
+
+  render() {
+    const {
+      className,
+      createAccountAction,
+      isIAgreeChecked,
+      hideShowPwd,
+      confirmHideShowPwd,
+      error,
+      onRequestClose,
+      labels,
+    } = this.props;
+    return (
+      <CreateAccountView
+        className={className}
+        createAccountAction={createAccountAction}
+        labels={labels}
+        isIAgreeChecked={isIAgreeChecked}
+        hideShowPwd={hideShowPwd}
+        confirmHideShowPwd={confirmHideShowPwd}
+        error={error}
+        onAlreadyHaveAnAccountClick={this.onAlreadyHaveAnAccountClick}
+        onRequestClose={onRequestClose}
+      />
+    );
+  }
+}
 
 export const mapStateToProps = state => {
   return {
@@ -64,13 +90,16 @@ export const mapStateToProps = state => {
   };
 };
 
-export const mapDispatchToProps = (dispatch: ({}) => void) => {
+export const mapDispatchToProps = dispatch => {
   return {
     createAccountAction: payload => {
       dispatch(createAccount(payload));
     },
     openOverlay: payload => {
       dispatch(openOverlayModal(payload));
+    },
+    resetAccountError: () => {
+      dispatch(resetCreateAccountErr());
     },
   };
 };

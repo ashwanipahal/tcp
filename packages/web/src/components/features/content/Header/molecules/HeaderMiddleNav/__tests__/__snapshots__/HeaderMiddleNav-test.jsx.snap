@@ -51,7 +51,7 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         className="leftLink"
-        fontSizeVariation="small"
+        fontSizeVariation="large"
         href="#"
         id="createAccount"
         onClick={[Function]}
@@ -60,13 +60,29 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       </Styled(Anchor)>
       <Styled(Anchor)
         anchorVariation="primary"
-        className="rightLink "
-        fontSizeVariation="small"
+        className="rightLink"
+        fontSizeVariation="large"
         href="#"
         id="login"
         onClick={[Function]}
       >
         Login
+      </Styled(Anchor)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="rightLink"
+        fontSizeVariation="small"
+        handleLinkClick={[Function]}
+        href="#"
+        id="cartIcon"
+        noLink={true}
+      >
+        <Styled(Image)
+          alt="Product"
+          className="product-image"
+          data-locator="addedtobag-bag-icon"
+          src="/static/images/bag.png"
+        />
       </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>
@@ -95,5 +111,9 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
       />
     </Styled(Col)>
   </Styled(Row)>
+  <Connect(MiniBagContainer)
+    isOpen={false}
+    toggleMiniBagModal={[Function]}
+  />
 </Fragment>
 `;

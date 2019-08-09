@@ -1,5 +1,7 @@
 import { isClient, isMobileApp } from './utils';
 
+export const CART_ITEM_COUNTER = 'cartItemsCount';
+
 /**
  * @summary This is to read cookie from a Mobile App.
  * @returns {null} for now but will eventually resolve with the key of cookie to return the value or null in case key does not match
@@ -58,3 +60,7 @@ export const removeCookie = key => {
     document.cookie = `${key}=;expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
   }
 };
+
+export function getCartItemCount() {
+  return parseInt(readCookie(CART_ITEM_COUNTER) || 0, 10);
+}

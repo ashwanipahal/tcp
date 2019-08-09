@@ -1,6 +1,6 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from 'react-native';
+import { View, Text, SafeAreaView } from 'react-native';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import CustomButton from '../../../../../../common/atoms/Button';
@@ -11,7 +11,14 @@ import {
   FormStyle,
   FormStyleView,
   DescriptionStyle,
+  ModalHeading,
+  ModalViewWrapper,
+  LineWrapper,
 } from '../../../molecules/LoginForm/LoginForm.style.native';
+import ModalNative from '../../../../../../common/molecules/Modal';
+import CreateAccount from '../../../../CreateAccount';
+import LineComp from '../../../../../../common/atoms/Line';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 
 const colorPallete = createThemeColorPalette();
 class LoginSection extends PureComponent<Props> {
@@ -19,8 +26,16 @@ class LoginSection extends PureComponent<Props> {
     super(props);
     this.state = {
       resetPassword: false,
+      showModal: false,
     };
   }
+
+  toggleModal = () => {
+    const { showModal } = this.state;
+    this.setState({
+      showModal: !showModal,
+    });
+  };
 
   showForgotPassword = () => {
     const { resetPassword } = this.state;
@@ -44,10 +59,9 @@ class LoginSection extends PureComponent<Props> {
       successFullResetEmail,
       resetForm,
       resetForgotPasswordErrorResponse,
-      onCreateAccountClick,
     } = this.props;
 
-    const { resetPassword } = this.state;
+    const { resetPassword, showModal } = this.state;
     return (
       <View>
         {!resetPassword && (
@@ -81,7 +95,7 @@ class LoginSection extends PureComponent<Props> {
         )}
         <FormStyleView>
           <DescriptionStyle>
-            <Text>{labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_HELP}</Text>
+            <Text>{labels.login.lbl_login_createAccountHelp}</Text>
           </DescriptionStyle>
           <CustomButton
             color={colorPallete.white}
@@ -89,10 +103,30 @@ class LoginSection extends PureComponent<Props> {
             type="submit"
             buttonVariation="variable-width"
             data-locator=""
-            text={labels.ACC_LBL_LOGIN_CREATE_ACCOUNT_CTA}
-            onClick={onCreateAccountClick}
+            text={labels.login.lbl_login_createAccountCTA}
+            onPress={this.toggleModal}
           />
         </FormStyleView>
+        {showModal && (
+          <ModalNative isOpen={showModal} onRequestClose={this.toggleModal}>
+            <ModalHeading>
+              <BodyCopy
+                mobileFontFamily={['secondary']}
+                fontWeight="extrabold"
+                fontSize="fs16"
+                text="CREATE ACCOUNT"
+              />
+            </ModalHeading>
+            <LineWrapper>
+              <LineComp marginTop={5} borderWidth={2} borderColor="black" />
+            </LineWrapper>
+            <SafeAreaView>
+              <ModalViewWrapper>
+                <CreateAccount onRequestClose={this.toggleModal} />
+              </ModalViewWrapper>
+            </SafeAreaView>
+          </ModalNative>
+        )}
       </View>
     );
   }

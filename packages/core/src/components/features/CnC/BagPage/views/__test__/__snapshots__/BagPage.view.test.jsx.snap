@@ -7,8 +7,8 @@ exports[`Bag page Container should render Added to Bag view section 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-bZQynM",
-        "isStatic": true,
+        "componentId": "sc-iAyFgw",
+        "isStatic": false,
         "rules": Array [
           "
   ",
@@ -24,6 +24,37 @@ exports[`Bag page Container should render Added to Bag view section 1`] = `
     margin: 15px 0;
     background: #fff;
   }
+  .order-summary {
+    margin: 16px 0;
+  }
+  .right-sec {
+    width: 346px;
+    @media ",
+          [Function],
+          " {
+      width: 258px;
+    }
+    @media ",
+          [Function],
+          " {
+      width: 450px;
+    }
+  }
+
+  .checkout-button {
+    display: flex;
+    flex: 1;
+    flex-direction: column-reverse;
+    width: 100%;
+    margin: 0;
+  }
+
+  button.checkout {
+    width: 100%;
+    margin: 0 0 10px 0;
+    padding: 16px 0;
+  }
+
   .bag-header {
     margin: 40px 0 20px;
   }
@@ -32,10 +63,10 @@ exports[`Bag page Container should render Added to Bag view section 1`] = `
 ",
         ],
       },
-      "displayName": "Styled(AddedToBag)",
+      "displayName": "Styled(BagPageView)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-bZQynM",
+      "styledComponentId": "sc-iAyFgw",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

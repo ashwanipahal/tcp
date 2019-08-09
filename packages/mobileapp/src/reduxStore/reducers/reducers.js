@@ -59,6 +59,5 @@ export default combineReducers({
   [CARTITEMTILE_REDUCER_KEY]: CartItemTile,
   [CARTPAGE_REDUCER_KEY]: CartPage,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
-  form: reduxFormReducer,
   [CREATE_ACCOUNT_REDUCER_KEY]: CreateAccountReducer,
 });

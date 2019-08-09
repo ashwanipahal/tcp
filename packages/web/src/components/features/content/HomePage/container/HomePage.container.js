@@ -10,16 +10,17 @@ const mapStateToProps = state => {
   const homepageSlots = state.Layouts.homepage.slots;
   const candidLabels = state.Labels.modules.getCandid;
   var Obj = {};
-
   homepageSlots.forEach(slotItem => {
     Obj[slotItem.name] = state.Modules[slotItem.contentId];
     Obj[slotItem.name].name = slotItem.moduleName;
     Obj[slotItem.name].imagesPerSlide = state.Modules[slotItem.contentId].imagesPerSlide;
-    return newObj;
+    return Obj;
   });
-  const newObj = Object.assign(Obj, candidLabels);
+  for (const [key, value] of Object.entries(candidLabels)) {
+    Obj[key]=value;
+  }
   return {
-    ...newObj,
+    ...Obj,
   };
 };
 

@@ -25,4 +25,5 @@ export {
   getAPIConfig,
   createAPIConfig,
   getCandidConfig,
+  isCanada,
 } from './utils';

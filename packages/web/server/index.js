@@ -2,7 +2,13 @@ const express = require('express');
 const next = require('next');
 const helmet = require('helmet');
 const RoutesMap = require('./routes');
-const { settingHelmetConfig, sites, siteIds, setEnvConfig } = require('./config/server.config');
+const {
+  settingHelmetConfig,
+  sites,
+  siteIds,
+  setEnvConfig,
+  HEALTH_CHECK_PATH,
+} = require('./config/server.config');
 
 const dev = process.env.NODE_ENV === 'development';
 setEnvConfig(dev);
@@ -69,6 +75,12 @@ app.prepare().then(() => {
         return componentParam;
       }, {});
       return app.render(req, res, route.resolver, params);
+    });
+  });
+
+  server.get(HEALTH_CHECK_PATH, (req, res) => {
+    res.send({
+      success: true,
     });
   });
 

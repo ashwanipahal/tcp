@@ -55,7 +55,8 @@ class ModuleH extends React.PureComponent<Props, State> {
             options={CAROUSEL_OPTIONS}
             carouselConfig={{
               autoplay: true,
-              dataLocator: getLocator('moduleH_play_button'),
+              dataLocatorPlay: getLocator('moduleH_play_button'),
+              dataLocatorPause: getLocator('moduleH_pause_button'),
               type: 'light',
             }}
           >
