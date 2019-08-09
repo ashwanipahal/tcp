@@ -3,7 +3,7 @@ import mock from '../mock';
 
 jest.mock('../../../../handler/handler');
 
-it('ModuleN Abstractor | getData', () => {
+it('ModuleN Abstractor  | getData', () => {
   ModuleHAbstractor.getData('moduleN', {
     contentId: 'c755fe7e-5811-4039-ba96-7efc0a2d2d64',
     slot: 'moduleN',
