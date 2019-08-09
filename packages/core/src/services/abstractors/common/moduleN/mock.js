@@ -34,8 +34,8 @@ export default {
           },
           textItems: [
             {
-              text: '50% OFF',
-              style: 'style5',
+              text: '50-70%OFF',
+              style: 'style6',
             },
             {
               text: 'No EXCLUSIVE',
