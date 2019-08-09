@@ -6,63 +6,39 @@ exports[`ButtonList component renders correctly 1`] = `
 >
   <Styled(Anchor)
     className="link-button"
-    href="/p/"
-    target=""
-    title=""
   >
     <Styled(Button)
       buttonVariation="category-links-dark"
       className="link-button-wrapper-class"
       data-locator="moduleN_cta_links_1"
-      key="0"
-    >
-      TODDLER GIRL
-    </Styled(Button)>
+    />
   </Styled(Anchor)>
   <Styled(Anchor)
     className="link-button"
-    href="/p/"
-    target=""
-    title=""
   >
     <Styled(Button)
       buttonVariation="category-links-dark"
       className="link-button-wrapper-class"
       data-locator="moduleN_cta_links_2"
-      key="1"
-    >
-      GIRL
-    </Styled(Button)>
+    />
   </Styled(Anchor)>
   <Styled(Anchor)
     className="link-button"
-    href="/c/"
-    target=""
-    title=""
   >
     <Styled(Button)
       buttonVariation="category-links-dark"
       className="link-button-wrapper-class"
       data-locator="moduleN_cta_links_3"
-      key="2"
-    >
-      TODDLER BOY
-    </Styled(Button)>
+    />
   </Styled(Anchor)>
   <Styled(Anchor)
     className="link-button"
-    href="/c/"
-    target=""
-    title=""
   >
     <Styled(Button)
       buttonVariation="category-links-dark"
       className="link-button-wrapper-class"
       data-locator="moduleN_cta_links_4"
-      key="3"
-    >
-      BOY
-    </Styled(Button)>
+    />
   </Styled(Anchor)>
 </div>
 `;
@@ -97,9 +73,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           />
           <div
             className="image-comp"
-          >
-            Girl
-          </div>
+          />
         </Styled(Anchor)>
       </div>
     </div>
@@ -120,15 +94,13 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
               Object {
                 "alt": "",
                 "title": "",
-                "url": "https://res.cloudinary.com/tcp-dam-test/id/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
               }
             }
           />
           <div
             className="image-comp"
-          >
-            Boy
-          </div>
+          />
         </Styled(Anchor)>
       </div>
     </div>
@@ -155,9 +127,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           />
           <div
             className="image-comp"
-          >
-            Toddler Boy
-          </div>
+          />
         </Styled(Anchor)>
       </div>
     </div>
@@ -184,9 +154,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           />
           <div
             className="image-comp"
-          >
-            Toddler
-          </div>
+          />
         </Styled(Anchor)>
       </div>
     </div>
@@ -213,9 +181,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           />
           <div
             className="image-comp"
-          >
-            Baby
-          </div>
+          />
         </Styled(Anchor)>
       </div>
     </div>
@@ -229,83 +195,53 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
 >
   <Styled(Anchor)
     className="scroll-button"
-    href="/c/"
-    target=""
-    title="girl"
   >
     <Styled(Button)
       buttonVariation="fixed-width"
       className="scroll-cta-wrapper-class"
       data-locator="moduleN_cta_links_1"
       fill="RED"
-      key="0"
-    >
-      girl
-    </Styled(Button)>
+    />
   </Styled(Anchor)>
   <Styled(Anchor)
     className="scroll-button"
-    href="/p/"
-    target=""
-    title="toddler girl"
   >
     <Styled(Button)
       buttonVariation="fixed-width"
       className="scroll-cta-wrapper-class"
       data-locator="moduleN_cta_links_2"
       fill="RED"
-      key="1"
-    >
-      toddler girl
-    </Styled(Button)>
+    />
   </Styled(Anchor)>
   <Styled(Anchor)
     className="scroll-button"
-    href="/p/"
-    target=""
-    title="boy"
   >
     <Styled(Button)
       buttonVariation="fixed-width"
       className="scroll-cta-wrapper-class"
       data-locator="moduleN_cta_links_3"
       fill="RED"
-      key="2"
-    >
-      boy
-    </Styled(Button)>
+    />
   </Styled(Anchor)>
   <Styled(Anchor)
     className="scroll-button"
-    href="/c/"
-    target=""
-    title="toddler boy"
   >
     <Styled(Button)
       buttonVariation="fixed-width"
       className="scroll-cta-wrapper-class"
       data-locator="moduleN_cta_links_4"
       fill="RED"
-      key="3"
-    >
-      toddler boy
-    </Styled(Button)>
+    />
   </Styled(Anchor)>
   <Styled(Anchor)
     className="scroll-button"
-    href="/c/"
-    target=""
-    title="baby"
   >
     <Styled(Button)
       buttonVariation="fixed-width"
       className="scroll-cta-wrapper-class"
       data-locator="moduleN_cta_links_5"
       fill="RED"
-      key="4"
-    >
-      baby
-    </Styled(Button)>
+    />
   </Styled(Anchor)>
 </div>
 `;
@@ -316,83 +252,53 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
 >
   <Styled(Anchor)
     className="stacked-button"
-    href="/c/"
-    target=""
-    title="girl"
   >
     <Styled(Button)
       buttonVariation="fixed-width"
       className="stacked-cta-wrapper-class"
       data-locator="moduleN_cta_links_1"
       fill="RED"
-      key="0"
-    >
-      girl
-    </Styled(Button)>
+    />
   </Styled(Anchor)>
   <Styled(Anchor)
     className="stacked-button"
-    href="/p/"
-    target=""
-    title="toddler girl"
   >
     <Styled(Button)
       buttonVariation="fixed-width"
       className="stacked-cta-wrapper-class"
       data-locator="moduleN_cta_links_2"
       fill="RED"
-      key="1"
-    >
-      toddler girl
-    </Styled(Button)>
+    />
   </Styled(Anchor)>
   <Styled(Anchor)
     className="stacked-button"
-    href="/p/"
-    target=""
-    title="boy"
   >
     <Styled(Button)
       buttonVariation="fixed-width"
       className="stacked-cta-wrapper-class"
       data-locator="moduleN_cta_links_3"
       fill="RED"
-      key="2"
-    >
-      boy
-    </Styled(Button)>
+    />
   </Styled(Anchor)>
   <Styled(Anchor)
     className="stacked-button"
-    href="/c/"
-    target=""
-    title="toddler boy"
   >
     <Styled(Button)
       buttonVariation="fixed-width"
       className="stacked-cta-wrapper-class"
       data-locator="moduleN_cta_links_4"
       fill="RED"
-      key="3"
-    >
-      toddler boy
-    </Styled(Button)>
+    />
   </Styled(Anchor)>
   <Styled(Anchor)
     className="stacked-button"
-    href="/c/"
-    target=""
-    title="baby"
   >
     <Styled(Button)
       buttonVariation="fixed-width"
       className="stacked-cta-wrapper-class"
       data-locator="moduleN_cta_links_5"
       fill="RED"
-      key="4"
-    >
-      baby
-    </Styled(Button)>
+    />
   </Styled(Anchor)>
 </div>
 `;

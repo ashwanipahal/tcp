@@ -19,19 +19,19 @@ type Props = {
 
 const getImageCTA = item => {
   const { className, buttonListVariation, dataLocatorDivisionImages, dataLocatorTextCta } = item;
+
   return (
     <div className={`${config[buttonListVariation].className} div-image-wrapper`}>
       {item.buttonsData.map((data, index) => {
-        const { image, link } = data;
+        const { image, button = {} } = data;
         return (
           <div className="img-wrapper">
             <div>
               <Anchor
                 key={index.toString()}
-                link={item.link}
-                href={item.url}
-                target={item.target}
-                title={item.title}
+                href={button.url}
+                target={button.target}
+                title={button.title}
                 fontSizeVariation="large"
                 fontWeightVariation="active"
                 data-locator={`${dataLocatorTextCta}${index + 1}`}
@@ -41,7 +41,7 @@ const getImageCTA = item => {
                   className={className}
                   data-locator={`${dataLocatorDivisionImages}${index + 1}`}
                 />
-                <div className="image-comp">{link.text}</div>
+                <div className="image-comp">{button.text}</div>
               </Anchor>
             </div>
           </div>
@@ -73,22 +73,23 @@ const getButtonCTA = data => {
   } = data;
 
   return buttonsData.map((item, index) => {
+    const { button = {} } = item;
+    const key = button.title && button.title.replace(/\s/g, '_');
     return (
       <Anchor
+        key={key}
         className={className}
-        href={item.url}
-        link={item.link}
-        target={item.target}
-        title={item.title}
+        href={button.url}
+        target={button.target}
+        title={button.title}
       >
         <Button
           className={`${config[buttonListVariation].className}-class`}
-          key={index.toString()}
           buttonVariation={buttonVariation}
           data-locator={`${dataLocatorTextCta}${index + 1}`}
           {...otherProps}
         >
-          {item.text}
+          {button.text}
         </Button>
       </Anchor>
     );

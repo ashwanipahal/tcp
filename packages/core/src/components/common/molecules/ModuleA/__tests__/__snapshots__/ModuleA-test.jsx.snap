@@ -1,0 +1,919 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleA component should render Gymboree variant correctly 1`] = `
+<ForwardRef
+  className=""
+>
+  <ForwardRef
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <errorBoundaryComponent
+      className=""
+      ctaItems={
+        Array [
+          Object {
+            "button": Object {
+              "external": 0,
+              "target": "",
+              "text": "Girl",
+              "title": "Girl",
+              "url": "/girl",
+            },
+            "image": Object {
+              "alt": "Girl",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Girl",
+              "url": "http://image.com/girl",
+            },
+          },
+          Object {
+            "button": Object {
+              "external": 0,
+              "target": "",
+              "text": "Toddler Girl",
+              "title": "Toddler Girl",
+              "url": "/toddler-girl",
+            },
+            "image": Object {
+              "alt": "Toddler Girl alt",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Toddler Girl title",
+              "url": "http://image.com/toddler-girl",
+            },
+          },
+          Object {
+            "button": Object {
+              "external": 0,
+              "target": "",
+              "text": "Boy",
+              "title": "Boy",
+              "url": "/boy",
+            },
+            "image": Object {
+              "alt": "Boy",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Boy",
+              "url": "http://image.com/boy",
+            },
+          },
+          Object {
+            "button": Object {
+              "external": 0,
+              "target": "",
+              "text": "Toddler Boy",
+              "title": "Toddler Boy",
+              "url": "/toddler-boy",
+            },
+            "image": Object {
+              "alt": "Toddler Boy alt",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Toddler Boy title",
+              "url": "http://image.com/toddler-boy",
+            },
+          },
+          Object {
+            "button": Object {
+              "external": 0,
+              "target": "",
+              "text": "Baby",
+              "title": "Baby",
+              "url": "/baby",
+            },
+            "image": Object {
+              "alt": "Baby",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Baby",
+              "url": "http://image.com/baby",
+            },
+          },
+        ]
+      }
+      largeCompImageCarousel={
+        Array [
+          Object {
+            "headerText": Array [
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/trending",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "ENTER SITE 1",
+                  },
+                ],
+              },
+            ],
+            "linkedImage": Array [
+              Object {
+                "image": Object {
+                  "alt": "Family Tees Image 1",
+                  "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
+                  "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
+                  "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+                  "title": "Family Tees title",
+                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Family Tees",
+                  "title": "Family Tees",
+                  "url": "/image/url",
+                },
+              },
+            ],
+            "promoBanner": Array [
+              Object {
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/banner/url",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "60%",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "off",
+                  },
+                  Object {
+                    "style": "style1",
+                    "text": "50% off",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "all shoes and other accessories",
+                  },
+                ],
+              },
+            ],
+            "ribbonBanner": Array [
+              Object {
+                "position": "right",
+                "textItems": Array [
+                  Object {
+                    "style": "style10",
+                    "text": "Order By XX/XX",
+                  },
+                  Object {
+                    "style": "style10",
+                    "text": "For Easter Delivery!",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "headerText": Array [
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/trending",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "ENTER SITE 2",
+                  },
+                ],
+              },
+            ],
+            "linkedImage": Array [
+              Object {
+                "image": Object {
+                  "alt": "Family Tees Image 2",
+                  "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
+                  "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
+                  "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+                  "title": "Family Tees title",
+                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Family Tees",
+                  "title": "Family Tees",
+                  "url": "/image/url",
+                },
+              },
+            ],
+            "promoBanner": Array [
+              Object {
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/banner/url",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "60%",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "off",
+                  },
+                  Object {
+                    "style": "style1",
+                    "text": "50% off",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "all shoes and other accessories",
+                  },
+                ],
+              },
+            ],
+            "ribbonBanner": Array [
+              Object {
+                "position": "right",
+                "textItems": Array [
+                  Object {
+                    "style": "style10",
+                    "text": "Order By XX/XX",
+                  },
+                  Object {
+                    "style": "style10",
+                    "text": "For Easter Delivery!",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "headerText": Array [
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/trending",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "ENTER SITE 3",
+                  },
+                ],
+              },
+            ],
+            "linkedImage": Array [
+              Object {
+                "image": Object {
+                  "alt": "Family Tees Image 3",
+                  "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
+                  "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
+                  "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+                  "title": "Family Tees title",
+                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Family Tees",
+                  "title": "Family Tees",
+                  "url": "/image/url",
+                },
+              },
+            ],
+            "promoBanner": Array [
+              Object {
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/banner/url",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "60%",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "off",
+                  },
+                  Object {
+                    "style": "style1",
+                    "text": "50% off",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "all shoes and other accessories",
+                  },
+                ],
+              },
+            ],
+            "ribbonBanner": Array [
+              Object {
+                "position": "right",
+                "textItems": Array [
+                  Object {
+                    "style": "style10",
+                    "text": "Order By XX/XX",
+                  },
+                  Object {
+                    "style": "style10",
+                    "text": "For Easter Delivery!",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "headerText": Array [
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/trending",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "ENTER SITE 4",
+                  },
+                ],
+              },
+            ],
+            "linkedImage": Array [
+              Object {
+                "image": Object {
+                  "alt": "Family Tees Image 4",
+                  "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
+                  "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
+                  "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+                  "title": "Family Tees title",
+                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Family Tees",
+                  "title": "Family Tees",
+                  "url": "/image/url",
+                },
+              },
+            ],
+            "promoBanner": Array [
+              Object {
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/banner/url",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "60%",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "off",
+                  },
+                  Object {
+                    "style": "style1",
+                    "text": "50% off",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "all shoes and other accessories",
+                  },
+                ],
+              },
+            ],
+            "ribbonBanner": Array [
+              Object {
+                "position": "right",
+                "textItems": Array [
+                  Object {
+                    "style": "style10",
+                    "text": "Order By XX/XX",
+                  },
+                  Object {
+                    "style": "style10",
+                    "text": "For Easter Delivery!",
+                  },
+                ],
+              },
+            ],
+          },
+        ]
+      }
+      set={Array []}
+      variant="gymboree"
+    />
+  </ForwardRef>
+</ForwardRef>
+`;
+
+exports[`ModuleA component should render TCP or default variant correctly 1`] = `
+<ForwardRef
+  className=""
+>
+  <ForwardRef
+    colSize={
+      Object {
+        "large": 12,
+        "medium": 8,
+        "small": 6,
+      }
+    }
+  >
+    <errorBoundaryComponent
+      className=""
+      ctaItems={
+        Array [
+          Object {
+            "button": Object {
+              "external": 0,
+              "target": "",
+              "text": "Girl",
+              "title": "Girl",
+              "url": "/girl",
+            },
+            "image": Object {
+              "alt": "Girl",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Girl",
+              "url": "http://image.com/girl",
+            },
+          },
+          Object {
+            "button": Object {
+              "external": 0,
+              "target": "",
+              "text": "Toddler Girl",
+              "title": "Toddler Girl",
+              "url": "/toddler-girl",
+            },
+            "image": Object {
+              "alt": "Toddler Girl alt",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Toddler Girl title",
+              "url": "http://image.com/toddler-girl",
+            },
+          },
+          Object {
+            "button": Object {
+              "external": 0,
+              "target": "",
+              "text": "Boy",
+              "title": "Boy",
+              "url": "/boy",
+            },
+            "image": Object {
+              "alt": "Boy",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Boy",
+              "url": "http://image.com/boy",
+            },
+          },
+          Object {
+            "button": Object {
+              "external": 0,
+              "target": "",
+              "text": "Toddler Boy",
+              "title": "Toddler Boy",
+              "url": "/toddler-boy",
+            },
+            "image": Object {
+              "alt": "Toddler Boy alt",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Toddler Boy title",
+              "url": "http://image.com/toddler-boy",
+            },
+          },
+          Object {
+            "button": Object {
+              "external": 0,
+              "target": "",
+              "text": "Baby",
+              "title": "Baby",
+              "url": "/baby",
+            },
+            "image": Object {
+              "alt": "Baby",
+              "crop_d": "",
+              "crop_m": "",
+              "crop_t": "",
+              "title": "Baby",
+              "url": "http://image.com/baby",
+            },
+          },
+        ]
+      }
+      largeCompImageCarousel={
+        Array [
+          Object {
+            "headerText": Array [
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/trending",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "ENTER SITE 1",
+                  },
+                ],
+              },
+            ],
+            "linkedImage": Array [
+              Object {
+                "image": Object {
+                  "alt": "Family Tees Image 1",
+                  "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
+                  "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
+                  "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+                  "title": "Family Tees title",
+                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Family Tees",
+                  "title": "Family Tees",
+                  "url": "/image/url",
+                },
+              },
+            ],
+            "promoBanner": Array [
+              Object {
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/banner/url",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "60%",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "off",
+                  },
+                  Object {
+                    "style": "style1",
+                    "text": "50% off",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "all shoes and other accessories",
+                  },
+                ],
+              },
+            ],
+            "ribbonBanner": Array [
+              Object {
+                "position": "right",
+                "textItems": Array [
+                  Object {
+                    "style": "style10",
+                    "text": "Order By XX/XX",
+                  },
+                  Object {
+                    "style": "style10",
+                    "text": "For Easter Delivery!",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "headerText": Array [
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/trending",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "ENTER SITE 2",
+                  },
+                ],
+              },
+            ],
+            "linkedImage": Array [
+              Object {
+                "image": Object {
+                  "alt": "Family Tees Image 2",
+                  "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
+                  "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
+                  "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+                  "title": "Family Tees title",
+                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Family Tees",
+                  "title": "Family Tees",
+                  "url": "/image/url",
+                },
+              },
+            ],
+            "promoBanner": Array [
+              Object {
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/banner/url",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "60%",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "off",
+                  },
+                  Object {
+                    "style": "style1",
+                    "text": "50% off",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "all shoes and other accessories",
+                  },
+                ],
+              },
+            ],
+            "ribbonBanner": Array [
+              Object {
+                "position": "right",
+                "textItems": Array [
+                  Object {
+                    "style": "style10",
+                    "text": "Order By XX/XX",
+                  },
+                  Object {
+                    "style": "style10",
+                    "text": "For Easter Delivery!",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "headerText": Array [
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/trending",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "ENTER SITE 3",
+                  },
+                ],
+              },
+            ],
+            "linkedImage": Array [
+              Object {
+                "image": Object {
+                  "alt": "Family Tees Image 3",
+                  "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
+                  "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
+                  "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+                  "title": "Family Tees title",
+                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Family Tees",
+                  "title": "Family Tees",
+                  "url": "/image/url",
+                },
+              },
+            ],
+            "promoBanner": Array [
+              Object {
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/banner/url",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "60%",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "off",
+                  },
+                  Object {
+                    "style": "style1",
+                    "text": "50% off",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "all shoes and other accessories",
+                  },
+                ],
+              },
+            ],
+            "ribbonBanner": Array [
+              Object {
+                "position": "right",
+                "textItems": Array [
+                  Object {
+                    "style": "style10",
+                    "text": "Order By XX/XX",
+                  },
+                  Object {
+                    "style": "style10",
+                    "text": "For Easter Delivery!",
+                  },
+                ],
+              },
+            ],
+          },
+          Object {
+            "headerText": Array [
+              Object {
+                "icon": Object {
+                  "icon": "",
+                  "placement": "",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/trending",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "ENTER SITE 4",
+                  },
+                ],
+              },
+            ],
+            "linkedImage": Array [
+              Object {
+                "image": Object {
+                  "alt": "Family Tees Image 4",
+                  "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
+                  "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
+                  "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+                  "title": "Family Tees title",
+                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                },
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "Family Tees",
+                  "title": "Family Tees",
+                  "url": "/image/url",
+                },
+              },
+            ],
+            "promoBanner": Array [
+              Object {
+                "link": Object {
+                  "external": 0,
+                  "target": "",
+                  "text": "",
+                  "title": "",
+                  "url": "/banner/url",
+                },
+                "textItems": Array [
+                  Object {
+                    "style": "style1",
+                    "text": "60%",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "off",
+                  },
+                  Object {
+                    "style": "style1",
+                    "text": "50% off",
+                  },
+                  Object {
+                    "style": "style2",
+                    "text": "all shoes and other accessories",
+                  },
+                ],
+              },
+            ],
+            "ribbonBanner": Array [
+              Object {
+                "position": "right",
+                "textItems": Array [
+                  Object {
+                    "style": "style10",
+                    "text": "Order By XX/XX",
+                  },
+                  Object {
+                    "style": "style10",
+                    "text": "For Easter Delivery!",
+                  },
+                ],
+              },
+            ],
+          },
+        ]
+      }
+      set={Array []}
+      variant="gymboree"
+    />
+  </ForwardRef>
+</ForwardRef>
+`;

@@ -47,6 +47,7 @@ const LinkText = (props: Props) => {
     compProps.variant = component;
     compProps.color = color;
     compProps.dataLocator = dataLocator;
+    compProps.color = color;
   } else {
     Component = BodyCopy;
     compProps = {
