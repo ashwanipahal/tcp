@@ -40,7 +40,7 @@ export class PaymentOverviewTile extends React.PureComponent<Props> {
   }
 
   getCreditCardView = (card, isAddVariation) => {
-    const { labels } = this.props;
+    const { labels, handleComponentChange } = this.props;
     const cardTileProps = {
       title: labels.lbl_overview_default_creditCard,
       text: !isAddVariation
@@ -52,13 +52,15 @@ export class PaymentOverviewTile extends React.PureComponent<Props> {
       variation: !isAddVariation
         ? labels.lbl_overview_addressBookEdit
         : labels.lbl_overview_addressBookAdd,
-      icon: !isAddVariation ? getIconCard(cardIconMapping[card.ccBrand]) : null,
+      icon: !isAddVariation ? getIconCard(cardIconMapping[card.ccBrand]) : '',
     };
-    return <PaymentItem paymentInfo={cardTileProps} />;
+    return (
+      <PaymentItem paymentInfo={cardTileProps} handleComponentChange={handleComponentChange} />
+    );
   };
 
   getGiftCardView = (card, isAddVariation) => {
-    const { labels } = this.props;
+    const { labels, handleComponentChange } = this.props;
     const cardTileProps = {
       title: labels.lbl_overview_giftCard,
       text: !isAddVariation
@@ -68,9 +70,11 @@ export class PaymentOverviewTile extends React.PureComponent<Props> {
       variation: !isAddVariation
         ? labels.lbl_overview_addressBookEdit
         : labels.lbl_overview_addressBookAdd,
-      icon: !isAddVariation ? null : getIconCard(cardIconMapping.GC),
+      icon: !isAddVariation ? getIconCard(cardIconMapping.GC) : '',
     };
-    return <PaymentItem paymentInfo={cardTileProps} />;
+    return (
+      <PaymentItem paymentInfo={cardTileProps} handleComponentChange={handleComponentChange} />
+    );
   };
 
   getGiftCardList = cardList =>

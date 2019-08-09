@@ -13,7 +13,7 @@ import {
 
 class PaymentItem extends React.PureComponent<Props> {
   render() {
-    const { paymentInfo } = this.props;
+    const { paymentInfo, handleComponentChange } = this.props;
     const variation = paymentInfo && paymentInfo.variation && paymentInfo.variation.toLowerCase();
 
     return (
@@ -59,14 +59,16 @@ class PaymentItem extends React.PureComponent<Props> {
             </PaymentInfoContainer>
           )}
         </PaymentType>
-        <TouchableLink>
+        <TouchableLink
+          onPress={() => handleComponentChange('paymentGiftCardsPageMobile')}
+          textDecorationLine="underline"
+        >
           <BodyCopy
             fontFamily="secondary"
             fontSize="fs13"
             fontWeight="regular"
             text={paymentInfo.variation}
             color="gray.900"
-            textDecorationLine="underline"
           />
         </TouchableLink>
       </PaymentContainer>
