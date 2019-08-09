@@ -8,7 +8,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
     <Styled(Col)
       colSize={
         Object {
-          "large": 4,
+          "large": 5,
           "medium": 3,
           "small": 2,
         }
@@ -42,7 +42,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
     <Styled(Col)
       colSize={
         Object {
-          "large": 8,
+          "large": 7,
           "medium": 5,
           "small": 4,
         }

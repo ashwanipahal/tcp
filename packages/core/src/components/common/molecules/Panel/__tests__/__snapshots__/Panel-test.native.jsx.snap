@@ -23,7 +23,7 @@ exports[`Panel component should render correctly 1`] = `
       height={10}
       source={
         Object {
-          "testUri": "../../../src/assets/images/carrot-small-right.png",
+          "testUri": "../../../src/assets/images/carrot-small-right-gray.png",
         }
       }
       width={6}

@@ -177,6 +177,7 @@ export const constructCouponStructure = cpnArray => {
       error: '',
       redemptionType: COUPON_REDEMPTION_TYPE[itm.offerType],
       promotionType: getPromotionType(itm.offerType),
+      expirationDateTimeStamp: endDate,
     });
   });
   return coupons;
