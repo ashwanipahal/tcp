@@ -5,25 +5,32 @@ import LoginForm from '../../../molecules/LoginForm';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import LoginTopSection from '../../../molecules/LoginTopSection';
 import ForgotPasswordContainer from '../../../../ForgotPassword/container/ForgotPassword.container';
+import ResetPassword from '../../../../ResetPassword';
 import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import Button from '../../../../../../common/atoms/Button';
 import styles from './styles/LoginSection.styles';
+import constants from '../../../LoginPage.constants';
 import { isCanada } from '../../../../../../../utils';
 
 class LoginSection extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
-      resetPassword: false,
+      currentForm: props.currentForm || constants.PAGE_TYPE.LOGIN,
     };
     this.isCanada = isCanada();
   }
 
   showForgotPasswordForm = () => {
-    const { resetPassword } = this.state;
     this.setState({
-      resetPassword: !resetPassword,
+      currentForm: constants.PAGE_TYPE.FORGOT_PASSWORD,
+    });
+  };
+
+  showLoginForm = () => {
+    this.setState({
+      currentForm: constants.PAGE_TYPE.LOGIN,
     });
   };
 
@@ -37,9 +44,10 @@ class LoginSection extends React.PureComponent<Props> {
       resetForm,
       className,
       onCreateAccountClick,
+      queryParams,
     } = this.props;
 
-    const { resetPassword } = this.state;
+    const { currentForm } = this.state;
     return (
       <Row className={className}>
         <Col
@@ -50,27 +58,30 @@ class LoginSection extends React.PureComponent<Props> {
           }}
           className="elem-pt-XXL elem-pb-XXL  elem-pl-LRG elem-pr-LRG"
         >
-          {!resetPassword && (
-            <LoginTopSection labels={labels} className="elem-mb-LRG" isCanada={this.isCanada} />
+          {currentForm === 'login' && (
+            <React.Fragment>
+              <LoginTopSection labels={labels} className="elem-mb-LRG" isCanada={this.isCanada} />
+              <LoginForm
+                onSubmit={onSubmit}
+                labels={labels}
+                loginErrorMessage={loginErrorMessage}
+                initialValues={initialValues}
+                showRecaptcha={showRecaptcha}
+                showForgotPasswordForm={this.showForgotPasswordForm}
+                resetForm={resetForm}
+                className="elem-mb-LRG"
+                onCreateAccountClick={onCreateAccountClick}
+              />
+            </React.Fragment>
           )}
-          {!resetPassword && (
-            <LoginForm
-              onSubmit={onSubmit}
-              labels={labels}
-              loginErrorMessage={loginErrorMessage}
-              initialValues={initialValues}
-              showRecaptcha={showRecaptcha}
-              showForgotPasswordForm={this.showForgotPasswordForm}
-              resetForm={resetForm}
-              className="elem-mb-LRG"
-              onCreateAccountClick={onCreateAccountClick}
-            />
+          {currentForm === constants.PAGE_TYPE.FORGOT_PASSWORD && (
+            <ForgotPasswordContainer showForgotPasswordForm={this.showLoginForm} labels={labels} />
           )}
-
-          {resetPassword && (
-            <ForgotPasswordContainer
-              showForgotPasswordForm={this.showForgotPasswordForm}
-              labels={labels}
+          {currentForm === constants.PAGE_TYPE.RESET_PASSWORD && (
+            <ResetPassword
+              backToLoginAction={this.showLoginForm}
+              labels={labels.password}
+              queryParams={queryParams}
             />
           )}
 
@@ -102,6 +113,7 @@ LoginSection.propTypes = {
   initialValues: PropTypes.shape({}).isRequired,
   showRecaptcha: PropTypes.bool,
   onCreateAccountClick: PropTypes.func,
+  queryParams: PropTypes.shape({}).isRequired,
 };
 
 LoginSection.defaultProps = {

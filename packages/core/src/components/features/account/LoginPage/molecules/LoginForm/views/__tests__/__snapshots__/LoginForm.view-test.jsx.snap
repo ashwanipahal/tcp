@@ -172,7 +172,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-EHOje",
+              "componentId": "sc-gzVnrw",
               "isStatic": true,
               "rules": Array [
                 "
@@ -185,6 +185,13 @@ exports[`LoginForm component should renders correctly 1`] = `
     right: 0;
     top: 12px;
   }
+
+  .tooltip {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 10px;
+  }
 ",
                 ";
 ",
@@ -193,7 +200,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-EHOje",
+            "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -549,7 +556,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-EHOje",
+              "componentId": "sc-gzVnrw",
               "isStatic": true,
               "rules": Array [
                 "
@@ -562,6 +569,13 @@ exports[`LoginForm component should renders correctly with error 1`] = `
     right: 0;
     top: 12px;
   }
+
+  .tooltip {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 10px;
+  }
 ",
                 ";
 ",
@@ -570,7 +584,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-EHOje",
+            "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

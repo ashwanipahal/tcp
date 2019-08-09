@@ -9,6 +9,7 @@ const propTypes = {
   className: PropTypes.string,
   ModalContent: PropTypes.node.isRequired,
   color: PropTypes.shape({}),
+  componentProps: PropTypes.shape({}).isRequired,
 };
 
 const defaultProps = {
@@ -112,7 +113,7 @@ class OverlayModal extends React.Component {
   }
 
   render() {
-    const { className, ModalContent, color } = this.props;
+    const { className, ModalContent, color, componentProps } = this.props;
     return (
       <div className={className} id="modalWrapper" color={color} ref={this.setModalRef}>
         <div id="dialogContent" className="dialog__content">
@@ -122,7 +123,7 @@ class OverlayModal extends React.Component {
           />
           <div className="modal__triangle hide-on-mobile " id="modalTriangle" />
           <div className="modal__bar hide-on-mobile" />
-          <ModalContent className="modal__content" />
+          <ModalContent className="modal__content" {...componentProps} />
         </div>
       </div>
     );
