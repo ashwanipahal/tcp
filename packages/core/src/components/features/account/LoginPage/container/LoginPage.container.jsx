@@ -25,13 +25,18 @@ import {
 import LoginView from '../views';
 
 // eslint-disable-next-line
-import { isMobileApp } from '../../../../../utils';
+import { isMobileApp, navigateToNestedRoute } from '../../../../../utils';
 
 class LoginPageContainer extends React.PureComponent {
   componentDidUpdate(prevProps) {
     const { isUserLoggedIn, closeOverlay } = this.props;
-    if (!prevProps.isUserLoggedIn && isUserLoggedIn && !isMobileApp()) {
-      closeOverlay();
+    if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
+      if (isMobileApp()) {
+        const { navigation } = this.props;
+        navigateToNestedRoute(navigation, 'HomeStack', 'home');
+      } else {
+        closeOverlay();
+      }
     }
   }
 
@@ -60,7 +65,6 @@ class LoginPageContainer extends React.PureComponent {
       getUserInfoAction,
       labels,
       resetLoginState,
-      isUserLoggedIn,
       SubmitForgot,
       showNotification,
       successFullResetEmail,
@@ -83,7 +87,6 @@ class LoginPageContainer extends React.PureComponent {
         getUserInfo={getUserInfoAction}
         onCreateAccountClick={this.onCreateAccountClick}
         resetLoginState={resetLoginState}
-        isUserLoggedIn={isUserLoggedIn}
         SubmitForgot={SubmitForgot}
         showNotification={showNotification}
         successFullResetEmail={successFullResetEmail}
