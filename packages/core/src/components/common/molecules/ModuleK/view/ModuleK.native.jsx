@@ -11,7 +11,7 @@ import {
   PromoTextBannerWrapper,
   HeaderWrapper,
 } from '../ModuleK.style.native';
-import { ImageGrid, PromoTextBanner, Carousel } from '../..';
+import { ImageGrid, PromoBanner, Carousel } from '../..';
 
 const MODULE_HEIGHT = 260;
 const MODULE_WIDTH = getScreenWidth();
@@ -23,21 +23,21 @@ class ModuleK extends React.PureComponent {
    * @return {Node} : Returns Image element.
    */
   renderCarouselSlide = ({ item }) => {
-    const { mediaList, slideIndex, promoTextBanner, singleCTAButton } = item;
+    const { mediaLinkedList, slideIndex, promoBanner, singleCTAButton } = item;
 
     return (
       <React.Fragment>
         <HeaderWrapper>
-          {promoTextBanner && (
+          {promoBanner && (
             <PromoTextBannerWrapper>
-              <PromoTextBanner
-                dataLocator={`moduleK_promobanner_text_${slideIndex}`}
-                promoTextBanner={promoTextBanner}
+              <PromoBanner
+                testID={`moduleK_promobanner_text_${slideIndex}`}
+                promoBanner={promoBanner}
               />
             </PromoTextBannerWrapper>
           )}
         </HeaderWrapper>
-        <ImageGrid dataLocator={`moduleK_image_${slideIndex}`} mediaList={mediaList} />
+        <ImageGrid testID={`moduleK_image_${slideIndex}`} mediaList={mediaLinkedList} />
         {singleCTAButton && (
           <WrapperView width={getScreenWidth()}>
             <Button
@@ -45,7 +45,7 @@ class ModuleK extends React.PureComponent {
               height="42px"
               buttonVariation="variable-width"
               text={singleCTAButton.text || `Shop Now`}
-              dataLocator={`moduleK_button_set_${slideIndex}`}
+              testID={`moduleK_button_set_${slideIndex}`}
               onPress={() => UrlHandler(singleCTAButton.url)}
             />
           </WrapperView>
@@ -55,12 +55,7 @@ class ModuleK extends React.PureComponent {
   };
 
   render() {
-    const {
-      headerText,
-      promoTextBanner: outerPromoTextBanner,
-      masonryGrid,
-      autoplayInterval,
-    } = this.props;
+    const { headerText, masonryGrid, autoplayInterval, navigation } = this.props;
     const indexedMasonryGrid = masonryGrid.map((item, i) => {
       return { ...item, slideIndex: i };
     });
@@ -70,21 +65,14 @@ class ModuleK extends React.PureComponent {
         <HeaderWrapper>
           {headerText && (
             <LinkText
-              textItems={headerText[0].textItems}
-              link={headerText[0].link}
+              headerText={headerText}
+              navigation={navigation}
               fontSize="fs36"
               fontWeight="black"
               color="text.primary"
               fontFamily="primary"
               textAlign="center"
-              dataLocator="moduleK_header_text"
-              onPress={() => UrlHandler(headerText[0].link.url)}
-            />
-          )}
-          {outerPromoTextBanner && (
-            <PromoTextBanner
-              dataLocator="moduleK_outerPromoBanner_text"
-              promoTextBanner={outerPromoTextBanner}
+              testID="moduleK_header_text"
             />
           )}
         </HeaderWrapper>
@@ -107,16 +95,16 @@ class ModuleK extends React.PureComponent {
 
 ModuleK.defaultProps = {
   headerText: [],
-  promoTextBanner: [],
   masonryGrid: [],
   autoplayInterval: 2,
+  navigation: {},
 };
 
 ModuleK.propTypes = {
   headerText: PropTypes.shape([]),
-  promoTextBanner: PropTypes.shape([]),
   masonryGrid: PropTypes.shape([]),
   autoplayInterval: PropTypes.number, // 2 means 2 seconds
+  navigation: PropTypes.shape({}),
 };
 
 export default ModuleK;

@@ -58,14 +58,14 @@ class Carousel extends React.PureComponent<Props, State> {
     return autoplay ? (
       <Image
         className="tcp_carousel__play"
-        data-locator={wrapperConfig.dataLocatorPause || wrapperConfig.dataLocator}
+        data-locator={wrapperConfig.dataLocatorPause}
         src={getIconPath('icon-pause')}
         onClick={this.pause}
       />
     ) : (
       <Image
         className="tcp_carousel__play"
-        data-locator={wrapperConfig.dataLocatorPlay || wrapperConfig.dataLocator}
+        data-locator={wrapperConfig.dataLocatorPlay}
         src={getIconPath('icon-play')}
         onClick={this.play}
       />

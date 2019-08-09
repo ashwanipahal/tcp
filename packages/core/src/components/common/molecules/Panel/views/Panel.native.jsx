@@ -4,8 +4,8 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { PanelContainer, TitleContainer, TouchableHeader, PanelBody } from '../Panel.style.native';
 import ImageComp from '../../../atoms/Image';
 
-const rightIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-small-right.png');
-const downIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-small-down.png');
+const rightIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-small-right-gray.png');
+const downIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-small-down-gray.png');
 
 class Panel extends React.Component<Props> {
   constructor(props) {

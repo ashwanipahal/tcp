@@ -5,7 +5,7 @@ import {
   getCartOrderList,
   getLabelsCartItemTile,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
-import { getOrderDetails } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.actions';
+import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
 import ProductTileWrapper from '../views/ProductTileWrapper.view';
 
 export class ProductTileWrapperContainer extends React.Component {
@@ -32,7 +32,7 @@ const mapStateToProps = state => {
 export const mapDispatchToProps = dispatch => {
   return {
     initialActions: () => {
-      dispatch(getOrderDetails());
+      dispatch(BAG_PAGE_ACTIONS.getOrderDetails());
     },
   };
 };

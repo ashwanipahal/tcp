@@ -3,17 +3,41 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { applyCoupon } from './Coupon.actions';
-import { getCouponFetchingState, getCouponsLabels } from './Coupon.selectors';
+import {
+  getCouponFetchingState,
+  getCouponsLabels,
+  getAppliedCouponListState,
+  getAvailableCouponListState,
+} from './Coupon.selectors';
 import Coupon from '../views/Coupon.view';
 
-export const CouponContainer = ({ handleApplyCoupon, isFetching, labels }) => (
-  <Coupon isFetching={isFetching} handleApplyCoupon={handleApplyCoupon} labels={labels} />
-);
+export class CouponContainer extends React.PureComponent<Props> {
+  render() {
+    const {
+      labels,
+      isFetching,
+      handleApplyCoupon,
+      appliedCouponList,
+      availableCouponList,
+    } = this.props;
+    return (
+      <Coupon
+        labels={labels}
+        isFetching={isFetching}
+        handleApplyCoupon={handleApplyCoupon}
+        appliedCouponList={appliedCouponList}
+        availableCouponList={availableCouponList}
+      />
+    );
+  }
+}
 
 CouponContainer.propTypes = {
-  handleApplyCoupon: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired,
   labels: PropTypes.shape.isRequired,
+  handleApplyCoupon: PropTypes.func.isRequired,
+  appliedCouponList: PropTypes.shape({}).isRequired,
+  availableCouponList: PropTypes.shape({}).isRequired,
 };
 
 export const mapDispatchToProps = dispatch => ({
@@ -26,6 +50,8 @@ export const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   isFetching: getCouponFetchingState(state),
   labels: getCouponsLabels(state),
+  appliedCouponList: getAppliedCouponListState(state),
+  availableCouponList: getAvailableCouponListState(state),
 });
 
 export default connect(
