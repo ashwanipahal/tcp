@@ -50,6 +50,16 @@ const style = css`
     height: 100%;
   }
 
+  .tcp_carousel_wrapper {
+    position: relative;
+  }
+
+  .button-list-container.stackedCTAList,
+  .button-list-container.scrollCTAList {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+  }
+
   .tcp_carousel_wrapper .tcp_carousel__play {
     left: 39%;
     bottom: 18px;
@@ -59,16 +69,12 @@ const style = css`
   @media ${props => props.theme.mediaQuery.medium} {
     .tcp_carousel_wrapper .tcp_carousel__play {
       left: 45%;
-      bottom: 18px;
-      z-index: 1;
     }
   }
 
   @media ${props => props.theme.mediaQuery.large} {
     .tcp_carousel_wrapper .tcp_carousel__play {
       left: 47%;
-      bottom: 18px;
-      z-index: 1;
     }
   }
 `;

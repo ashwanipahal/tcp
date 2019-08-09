@@ -1,5 +1,6 @@
 const totalImageSlides = 4;
 const imageSlides = [];
+const ctaTypes = ['stackedCTAList', 'linkCTAList', 'scrollCTAList', 'imageCTAList'];
 // eslint-disable-next-line no-plusplus
 for (let i = 1; i <= totalImageSlides; i++) {
   imageSlides.push({
@@ -164,7 +165,7 @@ export default {
     set: [
       {
         key: 'ctaType',
-        val: 'divImageCTACarousel',
+        val: ctaTypes[1],
       },
     ],
   },

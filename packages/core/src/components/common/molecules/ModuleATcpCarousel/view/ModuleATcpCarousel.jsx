@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Carousel, LinkText, style } from '../ModuleATcpCarousel.style';
 import { DamImage } from '../../../atoms';
-import { PromoBanner } from '../..';
+import { PromoBanner, ButtonList } from '../..';
 import { getIconPath, getLocator } from '../../../../../utils';
 import config from '../ModuleATcpCarousel.config';
 
@@ -13,7 +13,7 @@ import errorBoundary from '../../../hoc/errorBoundary';
 const bigCarrotIcon = 'carousel-big-carrot';
 
 const ModuleATcpCarousel = props => {
-  const { largeCompImageCarousel, className } = props;
+  const { largeCompImageCarousel, ctaItems, ctaType, className } = props;
 
   const { CAROUSEL_OPTIONS } = config;
 
@@ -65,17 +65,24 @@ const ModuleATcpCarousel = props => {
           );
         })}
       </Carousel>
+      <div className={`button-list-container ${ctaType}`}>
+        <ButtonList buttonsData={ctaItems} buttonListVariation={ctaType} />
+      </div>
     </div>
   );
 };
 
 ModuleATcpCarousel.defaultProps = {
   largeCompImageCarousel: [],
+  ctaItems: [],
+  ctaType: 'stackedCTAList',
   className: '',
 };
 
 ModuleATcpCarousel.propTypes = {
   largeCompImageCarousel: PropTypes.shape([]),
+  ctaItems: PropTypes.shape([]),
+  ctaType: PropTypes.oneOf(['stackedCTAList', 'linkCTAList', 'scrollCTAList', 'imageCTAList']),
   className: PropTypes.string,
 };
 

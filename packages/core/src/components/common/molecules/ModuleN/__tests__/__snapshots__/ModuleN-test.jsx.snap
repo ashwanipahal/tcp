@@ -1,0 +1,332 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleL component renders correctly 1`] = `
+<Fragment>
+  <div
+    className="undefined moduleN"
+  >
+    <div
+      className="heading-wrapper"
+    >
+      <Styled(LinkText)
+        className="heading"
+        color="white"
+        component="h3"
+        headerText={
+          Array [
+            Object {
+              "link": Object {
+                "target": "",
+                "title": "",
+                "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
+              },
+              "textItems": Array [
+                Object {
+                  "color": "color2",
+                  "style": "style1",
+                  "text": "ALL CLEARANCE",
+                },
+              ],
+            },
+          ]
+        }
+        textAlign="center"
+        type="heading"
+      />
+    </div>
+    <Styled(ButtonList)
+      buttonListVariation="stackedCTAList"
+      buttonsData={
+        Array [
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "girl",
+            "title": "",
+            "url": "http://example.com",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "toddler girl",
+            "title": "",
+            "url": "http://example.com",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "boy",
+            "title": "",
+            "url": "http://example.com",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "toddler boy",
+            "title": "",
+            "url": "http://example.com",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "baby",
+            "title": "",
+            "url": "http://example.com",
+          },
+        ]
+      }
+    />
+    <div
+      className="heading-wrapper"
+    >
+      <Styled(LinkText)
+        className="heading"
+        color="white"
+        component="h3"
+        headerText={
+          Array [
+            Object {
+              "link": Object {
+                "target": "",
+                "title": "",
+                "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
+              },
+              "textItems": Array [
+                Object {
+                  "color": "color2",
+                  "style": "style1",
+                  "text": "ALL CLEARANCE",
+                },
+              ],
+            },
+          ]
+        }
+        textAlign="center"
+        type="heading"
+      />
+    </div>
+    <Styled(ButtonList)
+      buttonListVariation="scrollCTAList"
+      buttonsData={
+        Array [
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "girl",
+            "title": "",
+            "url": "http://example.com",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "toddler girl",
+            "title": "",
+            "url": "http://example.com",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "boy",
+            "title": "",
+            "url": "http://example.com",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "toddler boy",
+            "title": "",
+            "url": "http://example.com",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "baby",
+            "title": "",
+            "url": "http://example.com",
+          },
+        ]
+      }
+    />
+    <div
+      className="separator"
+    >
+      .
+    </div>
+    <div
+      className="heading-wrapper"
+    >
+      <Styled(LinkText)
+        className="heading"
+        color="white"
+        component="h3"
+        headerText={
+          Array [
+            Object {
+              "link": Object {
+                "target": "",
+                "title": "",
+                "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
+              },
+              "textItems": Array [
+                Object {
+                  "color": "color2",
+                  "style": "style1",
+                  "text": "ALL CLEARANCE",
+                },
+              ],
+            },
+          ]
+        }
+        textAlign="center"
+        type="heading"
+      />
+    </div>
+    <Styled(ButtonList)
+      buttonListVariation="imageCTAList"
+      buttonsData={
+        Array [
+          Object {
+            "image": Object {
+              "alt": "",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "_self",
+              "text": "TODDLER GIRL",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+          },
+          Object {
+            "image": Object {
+              "alt": "",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "_self",
+              "text": "GIRL",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+          },
+          Object {
+            "image": Object {
+              "alt": "",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "_self",
+              "text": "TODDLER BOY",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+          },
+          Object {
+            "image": Object {
+              "alt": "",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "_self",
+              "text": "BOY",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+          },
+          Object {
+            "image": Object {
+              "alt": "",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "_self",
+              "text": "BABY",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+          },
+        ]
+      }
+    />
+    <div
+      className="separator"
+    >
+      .
+    </div>
+    <div
+      className="heading-wrapper"
+    >
+      <Styled(LinkText)
+        className="heading"
+        color="white"
+        component="h3"
+        headerText={
+          Array [
+            Object {
+              "link": Object {
+                "target": "",
+                "title": "",
+                "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
+              },
+              "textItems": Array [
+                Object {
+                  "color": "color2",
+                  "style": "style1",
+                  "text": "ALL CLEARANCE",
+                },
+              ],
+            },
+          ]
+        }
+        textAlign="center"
+        type="heading"
+      />
+    </div>
+    <Styled(ButtonList)
+      buttonListVariation="linkCTAList"
+      buttonsData={
+        Array [
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "TODDLER GIRL",
+            "title": "",
+            "url": "http://exampl.com",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "GIRL",
+            "title": "",
+            "url": "http://exam2le.com",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "TODDLER BOY",
+            "title": "",
+            "url": "http://examweple.com",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "BOY",
+            "title": "",
+            "url": "http://example.com",
+          },
+        ]
+      }
+    />
+  </div>
+</Fragment>
+`;

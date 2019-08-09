@@ -60,10 +60,24 @@ const style = css`
     height: 100%;
   }
 
+  .tcp_carousel_wrapper {
+    position: relative;
+  }
+
   .tcp_carousel_wrapper .tcp_carousel__play {
     left: 30px;
-    bottom: calc(${props => props.theme.spacing.LAYOUT_SPACING.XS} + 64px);
+    bottom: 28px;
     z-index: 1;
+  }
+
+  .button-list-container.stackedCTAList,
+  .button-list-container.scrollCTAList {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+  }
+
+  .button-list-container.linkCTAList {
+    padding-top: 10px;
   }
 
   .bottom-blue-bar {

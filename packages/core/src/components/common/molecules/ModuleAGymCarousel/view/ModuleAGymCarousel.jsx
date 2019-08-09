@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Carousel, LinkText, style } from '../ModuleAGymCarousel.style';
 import { DamImage } from '../../../atoms';
-import { PromoBanner } from '../..';
+import { PromoBanner, ButtonList } from '../..';
 import { getIconPath, getLocator } from '../../../../../utils';
 import config from '../ModuleAGymCarousel.config';
 
@@ -40,10 +40,8 @@ class ModuleAGymCarousel extends React.Component {
   };
 
   render() {
-    const { props, state } = this;
-
-    const { largeCompImageCarousel, className } = props;
-    const { isRibbonLeftAligned } = state;
+    const { largeCompImageCarousel, className, ctaItems, ctaType } = this.props;
+    const { isRibbonLeftAligned } = this.state;
 
     const { CAROUSEL_OPTIONS } = config;
 
@@ -106,7 +104,11 @@ class ModuleAGymCarousel extends React.Component {
             );
           })}
         </Carousel>
-        <div className="bottom-blue-bar" />
+        <div className="bottom-blue-bar">
+          <div className={`button-list-container ${ctaType}`}>
+            <ButtonList buttonsData={ctaItems} buttonListVariation={ctaType} />
+          </div>
+        </div>
       </div>
     );
   }
@@ -114,10 +116,16 @@ class ModuleAGymCarousel extends React.Component {
 
 ModuleAGymCarousel.defaultProps = {
   largeCompImageCarousel: [],
+  ctaType: 'linkCTAList',
+  ctaItems: [],
+  className: '',
 };
 
 ModuleAGymCarousel.propTypes = {
   largeCompImageCarousel: PropTypes.arrayOf(PropTypes.shape({})),
+  ctaType: PropTypes.oneOf(['stackedCTAList', 'linkCTAList', 'scrollCTAList', 'imageCTAList']),
+  ctaItems: PropTypes.shape([]),
+  className: PropTypes.string,
 };
 
 export default errorBoundary(withStyles(ModuleAGymCarousel, style));
