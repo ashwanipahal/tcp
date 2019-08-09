@@ -20,7 +20,7 @@ exports[`BossBannerView component renders correctly 1`] = `
       <Styled(Image)
         className="product-image"
         data-locator="addedtobag-productimage"
-        src="https://test4.childrensplace.comundefined"
+        src="https://test5.childrensplace.comundefined"
       />
     </Styled(Col)>
     <Styled(Col)
