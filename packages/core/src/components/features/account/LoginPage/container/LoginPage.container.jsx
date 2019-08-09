@@ -24,16 +24,29 @@ import {
 } from './LoginPage.selectors';
 import LoginView from '../views';
 
-// eslint-disable-next-line
-import { isMobileApp, navigateToNestedRoute } from '../../../../../utils';
-
 class LoginPageContainer extends React.PureComponent {
+  hasMobileApp;
+
+  hasNavigateToNestedRoute;
+
+  constructor(props) {
+    super(props);
+    import('../../../../../utils')
+      .then(({ isMobileApp, navigateToNestedRoute }) => {
+        this.hasMobileApp = isMobileApp;
+        this.hasNavigateToNestedRoute = navigateToNestedRoute;
+      })
+      .catch(error => {
+        console.log('error: ', error);
+      });
+  }
+
   componentDidUpdate(prevProps) {
     const { isUserLoggedIn, closeOverlay } = this.props;
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
-      if (isMobileApp()) {
+      if (this.hasMobileApp()) {
         const { navigation } = this.props;
-        navigateToNestedRoute(navigation, 'HomeStack', 'home');
+        this.hasNavigateToNestedRoute(navigation, 'HomeStack', 'home');
       } else {
         closeOverlay();
       }
@@ -65,6 +78,7 @@ class LoginPageContainer extends React.PureComponent {
       getUserInfoAction,
       labels,
       resetLoginState,
+      isUserLoggedIn,
       SubmitForgot,
       showNotification,
       successFullResetEmail,
@@ -85,6 +99,7 @@ class LoginPageContainer extends React.PureComponent {
         getUserInfo={getUserInfoAction}
         onCreateAccountClick={this.onCreateAccountClick}
         resetLoginState={resetLoginState}
+        isUserLoggedIn={isUserLoggedIn}
         SubmitForgot={SubmitForgot}
         showNotification={showNotification}
         successFullResetEmail={successFullResetEmail}

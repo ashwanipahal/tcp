@@ -514,6 +514,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
           // Enhancement needed - Backend should return the actual prices and frontend should determine which values to display
           listPrice: flatCurrencyToCents(item.itemPrice),
           offerPrice: flatCurrencyToCents(item.itemDstPrice),
+          unitOfferPrice: flatCurrencyToCents(item.itemUnitDstPrice),
           wasPrice: flatCurrencyToCents(item.productInfo.listPrice),
           salePrice: isCanada
             ? flatCurrencyToCents(item.productInfo.offerPriceCAD)
