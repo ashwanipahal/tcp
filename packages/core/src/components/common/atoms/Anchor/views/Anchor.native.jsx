@@ -15,6 +15,10 @@ type Props = {
 
 const Icon = require('../../../../../assets/carrot-small-rights.png');
 
+/**
+ * @param {object} props : Props for Anchor
+ * @desc This is a Anchor component to manage the internal or external .
+ */
 const Anchor = ({
   anchorVariation,
   text,
