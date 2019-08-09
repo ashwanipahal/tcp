@@ -499,7 +499,9 @@ exports[`CardTile should render correctly with gift card 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                  [Function],
+                  ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -869,7 +871,9 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                  [Function],
+                  ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -1398,7 +1402,9 @@ exports[`CardTile should show loading 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                  [Function],
+                  ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -1636,7 +1642,9 @@ exports[`CardTile should show remining balance 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                  [Function],
+                  ";
     width: 15px;
     height: 8px;
     margin-left: ",
