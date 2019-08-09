@@ -29,7 +29,7 @@ describe('#getModifiedPayload', () => {
       expYear: '2021',
       nameOnAccount: '.',
     };
-    const result = {
+    const result = data => ({
       action: 'U',
       addressId: '',
       billing_address1: 'Asdasd',
@@ -39,7 +39,7 @@ describe('#getModifiedPayload', () => {
       billing_country: 'US',
       billing_firstName: 'Satyavans',
       billing_lastName: 'Dash',
-      billing_nickName: `Billing_10151_${new Date().getTime().toString()}`,
+      billing_nickName: data,
       billing_phone1: '12345678999',
       billing_state: 'AL',
       billing_zipCode: '35038',
@@ -51,8 +51,10 @@ describe('#getModifiedPayload', () => {
       pay_expire_year: '2021',
       redirecturl: 'AjaxLogonForm',
       viewTaskName: 'RedirectView',
-    };
-    expect(getModifiedPayload(payloadArgs)).toMatchObject(result);
+    });
+
+    const testResult = getModifiedPayload(payloadArgs);
+    expect(testResult).toMatchObject(result(testResult.billing_nickName));
   });
 });
 
