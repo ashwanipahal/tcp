@@ -67,39 +67,49 @@ exports[`ModuleNVanilla ModuleN should render correctly 1`] = `
   </Styled(View)>
   <Styled(View)>
     <ButtonList
-      buttonListVariation="linkCTAList"
-      linkList={
+      buttonListVariation="stackedCTAList"
+      stackedCTAButtons={
         Array [
           Object {
             "external": 0,
             "target": "",
-            "text": "TODDLER GIRL",
-            "title": "",
+            "text": "girl",
+            "title": "girl",
             "url": "/c/",
           },
           Object {
             "external": 0,
             "target": "",
-            "text": "GIRL",
-            "title": "",
+            "text": "toddler girl",
+            "title": "toddler girl",
+            "url": "/p/",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "boy",
+            "title": "boy",
+            "url": "/p/",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "toddler boy",
+            "title": "toddler boy",
             "url": "/c/",
           },
           Object {
             "external": 0,
             "target": "",
-            "text": "TODDLER BOY",
-            "title": "",
-            "url": "/c/",
-          },
-          Object {
-            "external": 0,
-            "target": "",
-            "text": "BOY",
-            "title": "",
+            "text": "baby",
+            "title": "baby",
             "url": "/c/",
           },
         ]
       }
+    />
+    <Styled(View)
+      background="red"
     />
   </Styled(View)>
 </Styled(View)>

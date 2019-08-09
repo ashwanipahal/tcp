@@ -3,7 +3,14 @@ import React from 'react';
 import LinkText from '../../LinkText';
 import PromoBanner from '../../PromoBanner';
 import ButtonList from '../../ButtonList/views/ButtonList.native';
-import { Container, PromoTextBannerWrapper, ButtonContainer } from '../ModuleN.styles.native';
+import {
+  Container,
+  PromoTextBannerWrapper,
+  ButtonContainer,
+  Border,
+  ContainerView,
+  DivImageCTAContainer,
+} from '../ModuleN.styles.native';
 import moduleN from '../mock';
 import { Anchor } from '../../../atoms';
 
@@ -44,18 +51,23 @@ const ModuleN = (props: Props) => {
         <PromoBanner promoBanner={promoBanner} />
       </PromoTextBannerWrapper>
       {stackedCTAButtons && (
-        <ButtonList
-          buttonListVariation="stackedCTAList"
-          navigation={navigation}
-          stackedCTAButtons={stackedCTAButtons}
-        />
+        <ContainerView>
+          <ButtonList
+            buttonListVariation="stackedCTAList"
+            navigation={navigation}
+            stackedCTAButtons={stackedCTAButtons}
+          />
+          <Border background="red" />
+        </ContainerView>
       )}
       {divImageCTACarousel && (
-        <ButtonList
-          buttonListVariation="imageCTAList"
-          navigation={navigation}
-          divImageCTACarousel={divImageCTACarousel}
-        />
+        <DivImageCTAContainer>
+          <ButtonList
+            buttonListVariation="imageCTAList"
+            navigation={navigation}
+            divImageCTACarousel={divImageCTACarousel}
+          />
+        </DivImageCTAContainer>
       )}
       {scrollCTAButtons && (
         <ButtonContainer>

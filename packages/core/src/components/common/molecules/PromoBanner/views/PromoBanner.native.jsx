@@ -100,6 +100,7 @@ const PercentageStyle = (props: PercentageStyleProps) => {
 
   const strArray = text && text.split('%');
   const bodyCopyStyle = { height: 35 };
+  const bodyCopyStyle1 = { height: 57, marginTop: 8 };
   return (
     <Container>
       <BodyCopy
@@ -108,7 +109,8 @@ const PercentageStyle = (props: PercentageStyleProps) => {
         color="white"
         fontFamily="primary"
         textAlign="center"
-        lineHeight="70px"
+        lineHeight="64px"
+        style={bodyCopyStyle1}
         text={strArray && strArray[0]}
       />
       <ContainerView>

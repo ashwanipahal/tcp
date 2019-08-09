@@ -262,7 +262,13 @@ exports[`PromoTextBanner native component renders all style correctly 6`] = `
     fontFamily="primary"
     fontSize="fs64"
     fontWeight="black"
-    lineHeight="70px"
+    lineHeight="64px"
+    style={
+      Object {
+        "height": 57,
+        "marginTop": 8,
+      }
+    }
     text=""
     textAlign="center"
   />
