@@ -39,7 +39,7 @@ describe('#getModifiedPayload', () => {
       billing_country: 'US',
       billing_firstName: 'Satyavans',
       billing_lastName: 'Dash',
-      billing_nickName: `Billing_10151_${(new Date().getTime() + 1).toString()}`,
+      billing_nickName: `Billing_10151_${new Date().getTime().toString()}`,
       billing_phone1: '12345678999',
       billing_state: 'AL',
       billing_zipCode: '35038',
