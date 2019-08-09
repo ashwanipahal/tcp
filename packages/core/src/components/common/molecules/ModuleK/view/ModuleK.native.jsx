@@ -107,3 +107,4 @@ ModuleK.propTypes = {
 };
 
 export default ModuleK;
+export { ModuleK as ModuleKVanilla };
