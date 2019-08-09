@@ -1,3 +1,5 @@
+import BONUS_POINTS_DAYS_CONSTANTS from '../BonusPointsDays.constants';
+
 export const getLabels = state => state.Labels.account;
 export const getBonusData = state => state.BonusPointsDaysReducer.get('bonusDaysData');
 export const getIsFetching = state => state.BonusPointsDaysReducer.get('isFetching');
@@ -11,7 +13,8 @@ export const getBonusDetailsContentId = state => {
   ) {
     state.Labels.account.myPlaceRewards.referred.forEach(label => {
       /* istanbul ignore else */
-      if (label.name === 'Bonus Points Days Details') bonusDetailsCID = label.contentId;
+      if (label.name === BONUS_POINTS_DAYS_CONSTANTS.BONUS_DETAILS_REF_LABEL)
+        bonusDetailsCID = label.contentId;
     });
   }
   return bonusDetailsCID;

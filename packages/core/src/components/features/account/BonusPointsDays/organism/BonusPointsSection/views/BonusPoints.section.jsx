@@ -18,16 +18,21 @@ const getButtonText = ({
   isUsed,
 }) => {
   let buttonText = '';
+  let dataLocator = '';
   if (isUsed) {
     buttonText = `${labels.myPlaceRewards.lbl_bonus_points_used_on} ${dateUsed}`;
+    dataLocator = 'usedonbtn';
   } else if (forFutureUse || futureDisabled) {
     buttonText = labels.myPlaceRewards.lbl_bonus_points_future_use;
+    dataLocator = 'availableforfutureusebtn';
   } else if (appliedToBagBonusPointDays) {
     buttonText = labels.common.lbl_common_applied_to_order;
+    dataLocator = 'appliedtoorderbtn';
   } else {
     buttonText = labels.myPlaceRewards.lbl_bonus_points_available_today;
+    dataLocator = 'availabletodaybtn';
   }
-  return buttonText;
+  return { buttonText, dataLocator };
 };
 
 /**
@@ -46,14 +51,13 @@ const createBonusPoints = ({ bonusData, labels }) => {
   } = bonusData;
   const bonusPoints = [];
   const allAvailable = totalBonusPointDays === availableBonusPointDays;
-  let buttonText = '';
 
   for (let i = 1; i <= totalBonusPointDays; i += 1) {
     const isUsed = i <= usedBonusPointDays;
     const futureDisabled = i > usedBonusPointDays + 1;
     const forFutureUse = i > usedBonusPointDays + 1 && allAvailable;
     const dateUsed = isUsed && usedBonusPointDates[i - 1] ? usedBonusPointDates[i - 1] : '';
-    buttonText = getButtonText({
+    const { buttonText, dataLocator } = getButtonText({
       appliedToBagBonusPointDays,
       futureDisabled,
       dateUsed,
@@ -67,6 +71,7 @@ const createBonusPoints = ({ bonusData, labels }) => {
     bonusPoints.push({
       buttonText,
       disabled,
+      dataLocator,
     });
   }
 
@@ -75,13 +80,12 @@ const createBonusPoints = ({ bonusData, labels }) => {
 
 const getHeader = ({ labels }) => {
   return (
-    <div className="elem-mb-SM">
+    <div className="elem-mb-SM" data-locator="bonuspointsdayhdr">
       <BodyCopy
         fontFamily="primary"
         fontSize={['fs16', 'fs13', 'fs18']}
         fontWeight="extrabold"
         component="span"
-        data-locator="bonus_points"
         color="orange.800"
         className="elem-mr-XS"
       >
@@ -92,7 +96,6 @@ const getHeader = ({ labels }) => {
         fontSize={['fs16', 'fs13', 'fs18']}
         fontWeight="extrabold"
         component="span"
-        data-locator="place-rewards-heading"
         className="elem-mr-XS"
         color="primary.main"
       >
@@ -103,7 +106,6 @@ const getHeader = ({ labels }) => {
         fontSize={['fs16', 'fs13', 'fs18']}
         fontWeight="extrabold"
         component="span"
-        data-locator="place-rewards-heading"
         color="pink.500"
       >
         {labels.myPlaceRewards.lbl_place_rewards_day}
@@ -112,31 +114,53 @@ const getHeader = ({ labels }) => {
   );
 };
 
-const getContent = ({ labels, toggleBonusPointsModal, bonusPoints }) => {
+const getContent = ({ labels, toggleBonusPointsModal, bonusPoints, bonusData }) => {
+  let allUsed = false;
+  if (bonusData) {
+    const { totalBonusPointDays, usedBonusPointDays } = bonusData;
+    allUsed = totalBonusPointDays === usedBonusPointDays;
+  }
+
   return (
     <React.Fragment>
-      <BodyCopy
-        fontFamily="secondary"
-        fontSize={['fs14', 'fs10', 'fs16']}
-        fontWeight="extrabold"
-        component="p"
-        data-locator="place-rewards-heading"
-        textAlign="center"
-        className="apply-any-day-msg"
-      >
-        {labels.myPlaceRewards.lbl_bonus_points_apply_any_day}
-      </BodyCopy>
-      <BodyCopy
-        fontFamily="secondary"
-        fontSize={['fs12', 'fs12', 'fs16']}
-        fontWeight="regular"
-        component="p"
-        data-locator="place-rewards-heading"
-        textAlign="center"
-        className="availability-msg"
-      >
-        {labels.myPlaceRewards.lbl_bonus_points_msg}
-      </BodyCopy>
+      {!allUsed ? (
+        <React.Fragment>
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize={['fs14', 'fs10', 'fs16']}
+            fontWeight="extrabold"
+            component="p"
+            data-locator="msgtextinbold"
+            textAlign="center"
+            className="apply-any-day-msg"
+          >
+            {labels.myPlaceRewards.lbl_bonus_points_apply_any_day}
+          </BodyCopy>
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize={['fs12', 'fs12', 'fs16']}
+            fontWeight="regular"
+            component="p"
+            data-locator="infomsg"
+            textAlign="center"
+            className="availability-msg"
+          >
+            {labels.myPlaceRewards.lbl_bonus_points_msg}
+          </BodyCopy>
+        </React.Fragment>
+      ) : (
+        <BodyCopy
+          fontFamily="secondary"
+          fontSize={['fs12', 'fs12', 'fs16']}
+          fontWeight="regular"
+          component="p"
+          data-locator="infomsg"
+          textAlign="center"
+          className="availability-msg"
+        >
+          {labels.myPlaceRewards.lbl_my_rewards_used_all}
+        </BodyCopy>
+      )}
       <Row fullBleed>
         <Col colSize={{ large: 12, medium: 8, small: 6 }}>
           <BonusPointsAvailability
@@ -151,7 +175,7 @@ const getContent = ({ labels, toggleBonusPointsModal, bonusPoints }) => {
         underline
         href="#"
         anchorVariation="primary"
-        data-locator="my-rewards-tnc"
+        data-locator="detailslink"
         className="details-link"
         onClick={e => toggleBonusPointsModal(e)}
       >
@@ -164,7 +188,7 @@ const getContent = ({ labels, toggleBonusPointsModal, bonusPoints }) => {
 const BonusPointsSection = ({ labels, bonusData, className, toggleBonusPointsModal }) => {
   const bonusPoints = bonusData && createBonusPoints({ bonusData, labels });
   const header = getHeader({ labels });
-  const body = getContent({ labels, toggleBonusPointsModal, bonusPoints });
+  const body = getContent({ labels, toggleBonusPointsModal, bonusPoints, bonusData });
   return (
     <div className={className}>
       <Col
@@ -176,7 +200,12 @@ const BonusPointsSection = ({ labels, bonusData, className, toggleBonusPointsMod
         ignoreGutter={{ small: true, medium: true }}
         className="hide-in-large-up"
       >
-        <CollapsibleContainer className={className} header={header} body={body} />
+        <CollapsibleContainer
+          className={className}
+          header={header}
+          body={body}
+          iconLocator="arrowicon"
+        />
       </Col>
       <div className="hide-in-medium-down">
         {header}
@@ -204,6 +233,7 @@ getContent.propTypes = {
   labels: PropTypes.shape({ myPlaceRewards: {} }),
   toggleBonusPointsModal: PropTypes.func,
   bonusPoints: PropTypes.shape([]),
+  bonusData: PropTypes.shape({}),
 };
 
 getContent.defaultProps = {
@@ -213,6 +243,7 @@ getContent.defaultProps = {
   },
   bonusPoints: [],
   toggleBonusPointsModal: () => {},
+  bonusData: {},
 };
 
 getHeader.propTypes = {

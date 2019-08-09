@@ -23,46 +23,48 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
     <Styled(CollapsibleContainer)
       body={
         <React.Fragment>
-          <ForwardRef
-            className="apply-any-day-msg"
-            color="text.primary"
-            component="p"
-            data-locator="place-rewards-heading"
-            fontFamily="secondary"
-            fontSize={
-              Array [
-                "fs14",
-                "fs10",
-                "fs16",
-              ]
-            }
-            fontWeight="extrabold"
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="center"
-          >
-            
-          </ForwardRef>
-          <ForwardRef
-            className="availability-msg"
-            color="text.primary"
-            component="p"
-            data-locator="place-rewards-heading"
-            fontFamily="secondary"
-            fontSize={
-              Array [
-                "fs12",
-                "fs12",
-                "fs16",
-              ]
-            }
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="center"
-          >
-            
-          </ForwardRef>
+          <React.Fragment>
+            <ForwardRef
+              className="apply-any-day-msg"
+              color="text.primary"
+              component="p"
+              data-locator="msgtextinbold"
+              fontFamily="secondary"
+              fontSize={
+                Array [
+                  "fs14",
+                  "fs10",
+                  "fs16",
+                ]
+              }
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="center"
+            >
+              
+            </ForwardRef>
+            <ForwardRef
+              className="availability-msg"
+              color="text.primary"
+              component="p"
+              data-locator="infomsg"
+              fontFamily="secondary"
+              fontSize={
+                Array [
+                  "fs12",
+                  "fs12",
+                  "fs16",
+                ]
+              }
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="center"
+            >
+              
+            </ForwardRef>
+          </React.Fragment>
           <ForwardRef
             fullBleed={true}
           >
@@ -80,6 +82,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
                   Array [
                     Object {
                       "buttonText": undefined,
+                      "dataLocator": "availabletodaybtn",
                       "disabled": false,
                     },
                   ]
@@ -105,7 +108,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           <ForwardRef
             anchorVariation="primary"
             className="details-link"
-            data-locator="my-rewards-tnc"
+            data-locator="detailslink"
             fontSizeVariation="medium"
             href="#"
             onClick={[Function]}
@@ -119,12 +122,12 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
       header={
         <div
           className="elem-mb-SM"
+          data-locator="bonuspointsdayhdr"
         >
           <ForwardRef
             className="elem-mr-XS"
             color="orange.800"
             component="span"
-            data-locator="bonus_points"
             fontFamily="primary"
             fontSize={
               Array [
@@ -144,7 +147,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             className="elem-mr-XS"
             color="primary.main"
             component="span"
-            data-locator="place-rewards-heading"
             fontFamily="primary"
             fontSize={
               Array [
@@ -164,7 +166,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             className={null}
             color="pink.500"
             component="span"
-            data-locator="place-rewards-heading"
             fontFamily="primary"
             fontSize={
               Array [
@@ -182,6 +183,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           </ForwardRef>
         </div>
       }
+      iconLocator="arrowicon"
     />
   </Styled(Col)>
   <div
@@ -189,12 +191,12 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
   >
     <div
       className="elem-mb-SM"
+      data-locator="bonuspointsdayhdr"
     >
       <Styled(BodyCopy)
         className="elem-mr-XS"
         color="orange.800"
         component="span"
-        data-locator="bonus_points"
         fontFamily="primary"
         fontSize={
           Array [
@@ -212,7 +214,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
         className="elem-mr-XS"
         color="primary.main"
         component="span"
-        data-locator="place-rewards-heading"
         fontFamily="primary"
         fontSize={
           Array [
@@ -230,7 +231,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
         className={null}
         color="pink.500"
         component="span"
-        data-locator="place-rewards-heading"
         fontFamily="primary"
         fontSize={
           Array [
@@ -249,7 +249,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
       className="apply-any-day-msg"
       color="text.primary"
       component="p"
-      data-locator="place-rewards-heading"
+      data-locator="msgtextinbold"
       fontFamily="secondary"
       fontSize={
         Array [
@@ -267,7 +267,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
       className="availability-msg"
       color="text.primary"
       component="p"
-      data-locator="place-rewards-heading"
+      data-locator="infomsg"
       fontFamily="secondary"
       fontSize={
         Array [
@@ -298,6 +298,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             Array [
               Object {
                 "buttonText": undefined,
+                "dataLocator": "availabletodaybtn",
                 "disabled": false,
               },
             ]
@@ -323,7 +324,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
     <Styled(Anchor)
       anchorVariation="primary"
       className="details-link"
-      data-locator="my-rewards-tnc"
+      data-locator="detailslink"
       fontSizeVariation="medium"
       href="#"
       onClick={[Function]}
@@ -356,46 +357,48 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
     <Styled(CollapsibleContainer)
       body={
         <React.Fragment>
-          <ForwardRef
-            className="apply-any-day-msg"
-            color="text.primary"
-            component="p"
-            data-locator="place-rewards-heading"
-            fontFamily="secondary"
-            fontSize={
-              Array [
-                "fs14",
-                "fs10",
-                "fs16",
-              ]
-            }
-            fontWeight="extrabold"
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="center"
-          >
-            
-          </ForwardRef>
-          <ForwardRef
-            className="availability-msg"
-            color="text.primary"
-            component="p"
-            data-locator="place-rewards-heading"
-            fontFamily="secondary"
-            fontSize={
-              Array [
-                "fs12",
-                "fs12",
-                "fs16",
-              ]
-            }
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="center"
-          >
-            
-          </ForwardRef>
+          <React.Fragment>
+            <ForwardRef
+              className="apply-any-day-msg"
+              color="text.primary"
+              component="p"
+              data-locator="msgtextinbold"
+              fontFamily="secondary"
+              fontSize={
+                Array [
+                  "fs14",
+                  "fs10",
+                  "fs16",
+                ]
+              }
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="center"
+            >
+              
+            </ForwardRef>
+            <ForwardRef
+              className="availability-msg"
+              color="text.primary"
+              component="p"
+              data-locator="infomsg"
+              fontFamily="secondary"
+              fontSize={
+                Array [
+                  "fs12",
+                  "fs12",
+                  "fs16",
+                ]
+              }
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="center"
+            >
+              
+            </ForwardRef>
+          </React.Fragment>
           <ForwardRef
             fullBleed={true}
           >
@@ -413,14 +416,17 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
                   Array [
                     Object {
                       "buttonText": "undefined ",
+                      "dataLocator": "usedonbtn",
                       "disabled": true,
                     },
                     Object {
                       "buttonText": undefined,
+                      "dataLocator": "appliedtoorderbtn",
                       "disabled": false,
                     },
                     Object {
                       "buttonText": undefined,
+                      "dataLocator": "availableforfutureusebtn",
                       "disabled": true,
                     },
                   ]
@@ -446,7 +452,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           <ForwardRef
             anchorVariation="primary"
             className="details-link"
-            data-locator="my-rewards-tnc"
+            data-locator="detailslink"
             fontSizeVariation="medium"
             href="#"
             onClick={[Function]}
@@ -460,12 +466,12 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
       header={
         <div
           className="elem-mb-SM"
+          data-locator="bonuspointsdayhdr"
         >
           <ForwardRef
             className="elem-mr-XS"
             color="orange.800"
             component="span"
-            data-locator="bonus_points"
             fontFamily="primary"
             fontSize={
               Array [
@@ -485,7 +491,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             className="elem-mr-XS"
             color="primary.main"
             component="span"
-            data-locator="place-rewards-heading"
             fontFamily="primary"
             fontSize={
               Array [
@@ -505,7 +510,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             className={null}
             color="pink.500"
             component="span"
-            data-locator="place-rewards-heading"
             fontFamily="primary"
             fontSize={
               Array [
@@ -523,6 +527,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           </ForwardRef>
         </div>
       }
+      iconLocator="arrowicon"
     />
   </Styled(Col)>
   <div
@@ -530,12 +535,12 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
   >
     <div
       className="elem-mb-SM"
+      data-locator="bonuspointsdayhdr"
     >
       <Styled(BodyCopy)
         className="elem-mr-XS"
         color="orange.800"
         component="span"
-        data-locator="bonus_points"
         fontFamily="primary"
         fontSize={
           Array [
@@ -553,7 +558,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
         className="elem-mr-XS"
         color="primary.main"
         component="span"
-        data-locator="place-rewards-heading"
         fontFamily="primary"
         fontSize={
           Array [
@@ -571,7 +575,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
         className={null}
         color="pink.500"
         component="span"
-        data-locator="place-rewards-heading"
         fontFamily="primary"
         fontSize={
           Array [
@@ -590,7 +593,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
       className="apply-any-day-msg"
       color="text.primary"
       component="p"
-      data-locator="place-rewards-heading"
+      data-locator="msgtextinbold"
       fontFamily="secondary"
       fontSize={
         Array [
@@ -608,7 +611,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
       className="availability-msg"
       color="text.primary"
       component="p"
-      data-locator="place-rewards-heading"
+      data-locator="infomsg"
       fontFamily="secondary"
       fontSize={
         Array [
@@ -639,14 +642,17 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             Array [
               Object {
                 "buttonText": "undefined ",
+                "dataLocator": "usedonbtn",
                 "disabled": true,
               },
               Object {
                 "buttonText": undefined,
+                "dataLocator": "appliedtoorderbtn",
                 "disabled": false,
               },
               Object {
                 "buttonText": undefined,
+                "dataLocator": "availableforfutureusebtn",
                 "disabled": true,
               },
             ]
@@ -672,7 +678,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
     <Styled(Anchor)
       anchorVariation="primary"
       className="details-link"
-      data-locator="my-rewards-tnc"
+      data-locator="detailslink"
       fontSizeVariation="medium"
       href="#"
       onClick={[Function]}
@@ -705,46 +711,48 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
     <Styled(CollapsibleContainer)
       body={
         <React.Fragment>
-          <ForwardRef
-            className="apply-any-day-msg"
-            color="text.primary"
-            component="p"
-            data-locator="place-rewards-heading"
-            fontFamily="secondary"
-            fontSize={
-              Array [
-                "fs14",
-                "fs10",
-                "fs16",
-              ]
-            }
-            fontWeight="extrabold"
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="center"
-          >
-            
-          </ForwardRef>
-          <ForwardRef
-            className="availability-msg"
-            color="text.primary"
-            component="p"
-            data-locator="place-rewards-heading"
-            fontFamily="secondary"
-            fontSize={
-              Array [
-                "fs12",
-                "fs12",
-                "fs16",
-              ]
-            }
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="center"
-          >
-            
-          </ForwardRef>
+          <React.Fragment>
+            <ForwardRef
+              className="apply-any-day-msg"
+              color="text.primary"
+              component="p"
+              data-locator="msgtextinbold"
+              fontFamily="secondary"
+              fontSize={
+                Array [
+                  "fs14",
+                  "fs10",
+                  "fs16",
+                ]
+              }
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="center"
+            >
+              
+            </ForwardRef>
+            <ForwardRef
+              className="availability-msg"
+              color="text.primary"
+              component="p"
+              data-locator="infomsg"
+              fontFamily="secondary"
+              fontSize={
+                Array [
+                  "fs12",
+                  "fs12",
+                  "fs16",
+                ]
+              }
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="center"
+            >
+              
+            </ForwardRef>
+          </React.Fragment>
           <ForwardRef
             fullBleed={true}
           >
@@ -762,14 +770,17 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
                   Array [
                     Object {
                       "buttonText": "undefined ",
+                      "dataLocator": "usedonbtn",
                       "disabled": true,
                     },
                     Object {
                       "buttonText": undefined,
+                      "dataLocator": "availabletodaybtn",
                       "disabled": false,
                     },
                     Object {
                       "buttonText": undefined,
+                      "dataLocator": "availableforfutureusebtn",
                       "disabled": true,
                     },
                   ]
@@ -795,7 +806,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           <ForwardRef
             anchorVariation="primary"
             className="details-link"
-            data-locator="my-rewards-tnc"
+            data-locator="detailslink"
             fontSizeVariation="medium"
             href="#"
             onClick={[Function]}
@@ -809,12 +820,12 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
       header={
         <div
           className="elem-mb-SM"
+          data-locator="bonuspointsdayhdr"
         >
           <ForwardRef
             className="elem-mr-XS"
             color="orange.800"
             component="span"
-            data-locator="bonus_points"
             fontFamily="primary"
             fontSize={
               Array [
@@ -834,7 +845,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             className="elem-mr-XS"
             color="primary.main"
             component="span"
-            data-locator="place-rewards-heading"
             fontFamily="primary"
             fontSize={
               Array [
@@ -854,7 +864,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             className={null}
             color="pink.500"
             component="span"
-            data-locator="place-rewards-heading"
             fontFamily="primary"
             fontSize={
               Array [
@@ -872,6 +881,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           </ForwardRef>
         </div>
       }
+      iconLocator="arrowicon"
     />
   </Styled(Col)>
   <div
@@ -879,12 +889,12 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
   >
     <div
       className="elem-mb-SM"
+      data-locator="bonuspointsdayhdr"
     >
       <Styled(BodyCopy)
         className="elem-mr-XS"
         color="orange.800"
         component="span"
-        data-locator="bonus_points"
         fontFamily="primary"
         fontSize={
           Array [
@@ -902,7 +912,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
         className="elem-mr-XS"
         color="primary.main"
         component="span"
-        data-locator="place-rewards-heading"
         fontFamily="primary"
         fontSize={
           Array [
@@ -920,7 +929,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
         className={null}
         color="pink.500"
         component="span"
-        data-locator="place-rewards-heading"
         fontFamily="primary"
         fontSize={
           Array [
@@ -939,7 +947,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
       className="apply-any-day-msg"
       color="text.primary"
       component="p"
-      data-locator="place-rewards-heading"
+      data-locator="msgtextinbold"
       fontFamily="secondary"
       fontSize={
         Array [
@@ -957,7 +965,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
       className="availability-msg"
       color="text.primary"
       component="p"
-      data-locator="place-rewards-heading"
+      data-locator="infomsg"
       fontFamily="secondary"
       fontSize={
         Array [
@@ -988,14 +996,17 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             Array [
               Object {
                 "buttonText": "undefined ",
+                "dataLocator": "usedonbtn",
                 "disabled": true,
               },
               Object {
                 "buttonText": undefined,
+                "dataLocator": "availabletodaybtn",
                 "disabled": false,
               },
               Object {
                 "buttonText": undefined,
+                "dataLocator": "availableforfutureusebtn",
                 "disabled": true,
               },
             ]
@@ -1021,7 +1032,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
     <Styled(Anchor)
       anchorVariation="primary"
       className="details-link"
-      data-locator="my-rewards-tnc"
+      data-locator="detailslink"
       fontSizeVariation="medium"
       href="#"
       onClick={[Function]}
@@ -1054,46 +1065,48 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
     <Styled(CollapsibleContainer)
       body={
         <React.Fragment>
-          <ForwardRef
-            className="apply-any-day-msg"
-            color="text.primary"
-            component="p"
-            data-locator="place-rewards-heading"
-            fontFamily="secondary"
-            fontSize={
-              Array [
-                "fs14",
-                "fs10",
-                "fs16",
-              ]
-            }
-            fontWeight="extrabold"
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="center"
-          >
-            
-          </ForwardRef>
-          <ForwardRef
-            className="availability-msg"
-            color="text.primary"
-            component="p"
-            data-locator="place-rewards-heading"
-            fontFamily="secondary"
-            fontSize={
-              Array [
-                "fs12",
-                "fs12",
-                "fs16",
-              ]
-            }
-            fontWeight="regular"
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="center"
-          >
-            
-          </ForwardRef>
+          <React.Fragment>
+            <ForwardRef
+              className="apply-any-day-msg"
+              color="text.primary"
+              component="p"
+              data-locator="msgtextinbold"
+              fontFamily="secondary"
+              fontSize={
+                Array [
+                  "fs14",
+                  "fs10",
+                  "fs16",
+                ]
+              }
+              fontWeight="extrabold"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="center"
+            >
+              
+            </ForwardRef>
+            <ForwardRef
+              className="availability-msg"
+              color="text.primary"
+              component="p"
+              data-locator="infomsg"
+              fontFamily="secondary"
+              fontSize={
+                Array [
+                  "fs12",
+                  "fs12",
+                  "fs16",
+                ]
+              }
+              fontWeight="regular"
+              letterSpacing="normal"
+              lineHeight="normal"
+              textAlign="center"
+            >
+              
+            </ForwardRef>
+          </React.Fragment>
           <ForwardRef
             fullBleed={true}
           >
@@ -1111,14 +1124,17 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
                   Array [
                     Object {
                       "buttonText": "undefined 15/7",
+                      "dataLocator": "usedonbtn",
                       "disabled": true,
                     },
                     Object {
                       "buttonText": undefined,
+                      "dataLocator": "availabletodaybtn",
                       "disabled": false,
                     },
                     Object {
                       "buttonText": undefined,
+                      "dataLocator": "availableforfutureusebtn",
                       "disabled": true,
                     },
                   ]
@@ -1144,7 +1160,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           <ForwardRef
             anchorVariation="primary"
             className="details-link"
-            data-locator="my-rewards-tnc"
+            data-locator="detailslink"
             fontSizeVariation="medium"
             href="#"
             onClick={[Function]}
@@ -1158,12 +1174,12 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
       header={
         <div
           className="elem-mb-SM"
+          data-locator="bonuspointsdayhdr"
         >
           <ForwardRef
             className="elem-mr-XS"
             color="orange.800"
             component="span"
-            data-locator="bonus_points"
             fontFamily="primary"
             fontSize={
               Array [
@@ -1183,7 +1199,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             className="elem-mr-XS"
             color="primary.main"
             component="span"
-            data-locator="place-rewards-heading"
             fontFamily="primary"
             fontSize={
               Array [
@@ -1203,7 +1218,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             className={null}
             color="pink.500"
             component="span"
-            data-locator="place-rewards-heading"
             fontFamily="primary"
             fontSize={
               Array [
@@ -1221,6 +1235,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           </ForwardRef>
         </div>
       }
+      iconLocator="arrowicon"
     />
   </Styled(Col)>
   <div
@@ -1228,12 +1243,12 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
   >
     <div
       className="elem-mb-SM"
+      data-locator="bonuspointsdayhdr"
     >
       <Styled(BodyCopy)
         className="elem-mr-XS"
         color="orange.800"
         component="span"
-        data-locator="bonus_points"
         fontFamily="primary"
         fontSize={
           Array [
@@ -1251,7 +1266,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
         className="elem-mr-XS"
         color="primary.main"
         component="span"
-        data-locator="place-rewards-heading"
         fontFamily="primary"
         fontSize={
           Array [
@@ -1269,7 +1283,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
         className={null}
         color="pink.500"
         component="span"
-        data-locator="place-rewards-heading"
         fontFamily="primary"
         fontSize={
           Array [
@@ -1288,7 +1301,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
       className="apply-any-day-msg"
       color="text.primary"
       component="p"
-      data-locator="place-rewards-heading"
+      data-locator="msgtextinbold"
       fontFamily="secondary"
       fontSize={
         Array [
@@ -1306,7 +1319,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
       className="availability-msg"
       color="text.primary"
       component="p"
-      data-locator="place-rewards-heading"
+      data-locator="infomsg"
       fontFamily="secondary"
       fontSize={
         Array [
@@ -1337,14 +1350,17 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             Array [
               Object {
                 "buttonText": "undefined 15/7",
+                "dataLocator": "usedonbtn",
                 "disabled": true,
               },
               Object {
                 "buttonText": undefined,
+                "dataLocator": "availabletodaybtn",
                 "disabled": false,
               },
               Object {
                 "buttonText": undefined,
+                "dataLocator": "availableforfutureusebtn",
                 "disabled": true,
               },
             ]
@@ -1370,7 +1386,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
     <Styled(Anchor)
       anchorVariation="primary"
       className="details-link"
-      data-locator="my-rewards-tnc"
+      data-locator="detailslink"
       fontSizeVariation="medium"
       href="#"
       onClick={[Function]}
@@ -1404,30 +1420,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
       body={
         <React.Fragment>
           <ForwardRef
-            className="apply-any-day-msg"
-            color="text.primary"
-            component="p"
-            data-locator="place-rewards-heading"
-            fontFamily="secondary"
-            fontSize={
-              Array [
-                "fs14",
-                "fs10",
-                "fs16",
-              ]
-            }
-            fontWeight="extrabold"
-            letterSpacing="normal"
-            lineHeight="normal"
-            textAlign="center"
-          >
-            
-          </ForwardRef>
-          <ForwardRef
             className="availability-msg"
             color="text.primary"
             component="p"
-            data-locator="place-rewards-heading"
+            data-locator="infomsg"
             fontFamily="secondary"
             fontSize={
               Array [
@@ -1440,9 +1436,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             letterSpacing="normal"
             lineHeight="normal"
             textAlign="center"
-          >
-            
-          </ForwardRef>
+          />
           <ForwardRef
             fullBleed={true}
           >
@@ -1460,6 +1454,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
                   Array [
                     Object {
                       "buttonText": "undefined ",
+                      "dataLocator": "usedonbtn",
                       "disabled": true,
                     },
                   ]
@@ -1485,7 +1480,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           <ForwardRef
             anchorVariation="primary"
             className="details-link"
-            data-locator="my-rewards-tnc"
+            data-locator="detailslink"
             fontSizeVariation="medium"
             href="#"
             onClick={[Function]}
@@ -1499,12 +1494,12 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
       header={
         <div
           className="elem-mb-SM"
+          data-locator="bonuspointsdayhdr"
         >
           <ForwardRef
             className="elem-mr-XS"
             color="orange.800"
             component="span"
-            data-locator="bonus_points"
             fontFamily="primary"
             fontSize={
               Array [
@@ -1524,7 +1519,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             className="elem-mr-XS"
             color="primary.main"
             component="span"
-            data-locator="place-rewards-heading"
             fontFamily="primary"
             fontSize={
               Array [
@@ -1544,7 +1538,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             className={null}
             color="pink.500"
             component="span"
-            data-locator="place-rewards-heading"
             fontFamily="primary"
             fontSize={
               Array [
@@ -1562,6 +1555,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           </ForwardRef>
         </div>
       }
+      iconLocator="arrowicon"
     />
   </Styled(Col)>
   <div
@@ -1569,12 +1563,12 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
   >
     <div
       className="elem-mb-SM"
+      data-locator="bonuspointsdayhdr"
     >
       <Styled(BodyCopy)
         className="elem-mr-XS"
         color="orange.800"
         component="span"
-        data-locator="bonus_points"
         fontFamily="primary"
         fontSize={
           Array [
@@ -1592,7 +1586,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
         className="elem-mr-XS"
         color="primary.main"
         component="span"
-        data-locator="place-rewards-heading"
         fontFamily="primary"
         fontSize={
           Array [
@@ -1610,7 +1603,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
         className={null}
         color="pink.500"
         component="span"
-        data-locator="place-rewards-heading"
         fontFamily="primary"
         fontSize={
           Array [
@@ -1626,28 +1618,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
       />
     </div>
     <Styled(BodyCopy)
-      className="apply-any-day-msg"
-      color="text.primary"
-      component="p"
-      data-locator="place-rewards-heading"
-      fontFamily="secondary"
-      fontSize={
-        Array [
-          "fs14",
-          "fs10",
-          "fs16",
-        ]
-      }
-      fontWeight="extrabold"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="center"
-    />
-    <Styled(BodyCopy)
       className="availability-msg"
       color="text.primary"
       component="p"
-      data-locator="place-rewards-heading"
+      data-locator="infomsg"
       fontFamily="secondary"
       fontSize={
         Array [
@@ -1678,6 +1652,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             Array [
               Object {
                 "buttonText": "undefined ",
+                "dataLocator": "usedonbtn",
                 "disabled": true,
               },
             ]
@@ -1703,7 +1678,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
     <Styled(Anchor)
       anchorVariation="primary"
       className="details-link"
-      data-locator="my-rewards-tnc"
+      data-locator="detailslink"
       fontSizeVariation="medium"
       href="#"
       onClick={[Function]}

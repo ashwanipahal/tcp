@@ -32,6 +32,7 @@ const BonusPointsAvailability = ({ bonusPoints, className }) => {
                 buttonVariation="fixed-width"
                 color="black"
                 id={index}
+                data-locator={item.dataLocator}
                 className={`availability-btn ${item.disabled ? 'disable-btn' : ''}`}
               >
                 {item.buttonText}
