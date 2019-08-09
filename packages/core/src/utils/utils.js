@@ -72,8 +72,6 @@ export const createAPIConfig = resLocals => {
   const relHostname = apiSiteInfo.proto + apiSiteInfo.protoSeparator + hostname;
   const basicConfig = getAPIInfoFromEnv(apiSiteInfo, processEnv);
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, processEnv, relHostname);
-  // console.log("process Env is ........", processEnv);
-  // const candid = getCandidConfig(processEnv);
   return {
     ...basicConfig,
     ...graphQLConfig,
@@ -129,7 +127,6 @@ export const getAPIConfig = () => {
 };
 
 export const getCandidConfig = processEnv => {
-  console.log('thisi si iisiisii ',processEnv)
   return {
     CAND_API_KEY: '070167ca-8287-4d41-a9bb-6b3850cae9b1',
     CAND_SLOT: 'tcp-get-candid-image-container',
