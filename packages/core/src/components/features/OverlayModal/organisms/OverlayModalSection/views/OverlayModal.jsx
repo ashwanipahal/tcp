@@ -35,8 +35,8 @@ class OverlayModal extends React.Component {
     this.overlayElementWrapper.style.pointerEvents = 'none';
     this.overlayElement.classList.add('overlay');
     /* istanbul ignore else */
-    if (window) {
-      window.addEventListener('mousedown', this.handleWindowClick);
+    if (this.body) {
+      this.body.addEventListener('mousedown', this.handleWindowClick);
     }
     this.getCustomStyles({ styleModal: true });
   }
@@ -56,8 +56,8 @@ class OverlayModal extends React.Component {
     /* istanbul ignore else */
     if (this.overlayElement) this.overlayElement.classList.remove('overlay');
     /* istanbul ignore else */
-    if (window) {
-      window.removeEventListener('mousedown', this.handleWindowClick);
+    if (this.body) {
+      this.body.removeEventListener('mousedown', this.handleWindowClick);
     }
   }
 

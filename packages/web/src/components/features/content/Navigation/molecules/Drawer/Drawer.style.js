@@ -43,10 +43,12 @@ export default css`
     top: ${props => (props.position && props.position.top) || 0};
     left: ${props => (props.position && props.position.left) || 0};
     width: 100%;
+    height: ${props => props.height || `auto`};
   }
   .tcp-drawer-content {
     width: ${props => props.width.small || `100%`};
     background: ${props => props.theme.colorPalette.white};
+    height: ${props => props.height || `auto`};
   }
   .display-small-none {
     display: none;

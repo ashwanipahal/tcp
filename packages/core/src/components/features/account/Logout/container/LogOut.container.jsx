@@ -2,18 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { logout } from './LogOut.actions';
-import labels from './LogOut.labels';
 import LogOutView from '../views/LogOut.view';
 
-export class LogOutPageContainer extends React.PureComponent {
+class LogOutPageContainer extends React.PureComponent {
   render() {
-    const { triggerLogout } = this.props;
+    const { triggerLogout, labels } = this.props;
     return <LogOutView triggerLogout={triggerLogout} labels={labels} />;
   }
 }
 
 LogOutPageContainer.propTypes = {
   triggerLogout: PropTypes.func.isRequired,
+  labels: PropTypes.shape({}).isRequired,
 };
 
 export const mapDispatchToProps = dispatch => {
@@ -28,3 +28,4 @@ export default connect(
   null,
   mapDispatchToProps
 )(LogOutPageContainer);
+export { LogOutPageContainer as LogOutPageContainerVanilla };

@@ -26,6 +26,12 @@ export const AnchorStyles = css`
                   `
       : ''};
   ${props =>
+    props.anchorVariation === 'white'
+      ? `
+                  color: ${props.theme.colors.WHITE};
+                `
+      : ''};
+  ${props =>
     props.fontSizeVariation === 'small'
       ? `
                   font-size: ${props.theme.fonts.fontSize.anchor.small}px;
