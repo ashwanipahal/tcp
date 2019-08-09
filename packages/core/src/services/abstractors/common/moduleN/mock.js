@@ -1,14 +1,9 @@
 const plpUrl =
   'https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts';
-const fmt = 'Family Tees';
-const mmt = 'Mom & Me Tees';
-const divImgUrl =
-  'https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg';
-
 export default {
-  moduleD: {
+  moduleN: {
     contentId: '73f6a699-79a4-4874-994f-ab306dd66dca',
-    name: 'moduleD',
+    name: 'moduleN',
     type: 'module',
     composites: {
       headerText: [
@@ -21,13 +16,13 @@ export default {
             },
           ],
           link: {
-            url: plpUrl,
+            url: '/p/',
             title: '',
             target: '',
           },
         },
       ],
-      promoTextBanner: [
+      promoBanner: [
         {
           link: {
             url: '/c/',
@@ -39,75 +34,14 @@ export default {
           },
           textItems: [
             {
-              text: '50% OFF',
-              style: 'style5',
+              text: '50-70%OFF',
+              style: 'style6',
             },
             {
               text: 'No EXCLUSIVE',
               style: 'style4',
             },
           ],
-        },
-      ],
-      smallCompImage: [
-        {
-          link: {
-            url: plpUrl,
-            title: fmt,
-            target: '',
-            external: 0,
-          },
-          image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
-            title: fmt,
-            alt: fmt,
-          },
-        },
-        {
-          link: {
-            url: plpUrl,
-            text: mmt,
-            title: mmt,
-            target: '',
-            external: 0,
-          },
-          image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME3_vmfhnu.jpg',
-            title: mmt,
-            alt: mmt,
-          },
-        },
-        {
-          link: {
-            url: plpUrl,
-            text: fmt,
-            title: fmt,
-            target: '',
-            external: 0,
-          },
-          image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME4_iuzwmp.jpg',
-            title: fmt,
-            alt: fmt,
-          },
-        },
-        {
-          link: {
-            url: plpUrl,
-            text: mmt,
-            title: mmt,
-            target: '',
-            external: 0,
-          },
-          image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543114/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME2_uwtbdd.jpg',
-            title: mmt,
-            alt: mmt,
-          },
         },
       ],
       singleCTAButton: {
@@ -119,30 +53,104 @@ export default {
       },
       linkList: [
         {
-          url: 'http://exasmple.com',
+          url: '/p/',
           title: '',
           text: 'TODDLER GIRL',
           target: '',
           external: 0,
         },
         {
-          url: 'http://exampqale.com',
+          url: '/p/',
           title: '',
           text: 'GIRL',
           target: '',
           external: 0,
         },
         {
-          url: 'http://examweple.com',
+          url: '/c/',
           title: '',
           text: 'TODDLER BOY',
           target: '',
           external: 0,
         },
         {
-          url: 'http://exadsmple.com',
+          url: '/c/',
           title: '',
           text: 'BOY',
+          target: '',
+          external: 0,
+        },
+      ],
+      scrollCTAButtons: [
+        {
+          url: '/c/',
+          title: 'girl',
+          text: 'girl',
+          target: '',
+          external: 0,
+        },
+        {
+          url: '/p/',
+          title: 'toddlergirl',
+          text: 'toddlergirl',
+          target: '',
+          external: 0,
+        },
+        {
+          url: '/p/',
+          title: 'boy',
+          text: 'boy',
+          target: '',
+          external: 0,
+        },
+        {
+          url: '/c/',
+          title: 'toddlerboy',
+          text: 'toddlerboy',
+          target: '',
+          external: 0,
+        },
+        {
+          url: '/c/',
+          title: 'baby',
+          text: 'baby',
+          target: '',
+          external: 0,
+        },
+      ],
+      stackedCTAButtons: [
+        {
+          url: '/c/',
+          title: 'girl',
+          text: 'girl',
+          target: '',
+          external: 0,
+        },
+        {
+          url: '/p/',
+          title: 'toddler girl',
+          text: 'toddler girl',
+          target: '',
+          external: 0,
+        },
+        {
+          url: '/p/',
+          title: 'boy',
+          text: 'boy',
+          target: '',
+          external: 0,
+        },
+        {
+          url: '/c/',
+          title: 'toddler boy',
+          text: 'toddler boy',
+          target: '',
+          external: 0,
+        },
+        {
+          url: '/c/',
+          title: 'baby',
+          text: 'baby',
           target: '',
           external: 0,
         },
@@ -151,110 +159,77 @@ export default {
         {
           image: {
             url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zsc_k-unsplash_avr2bp.jpg',
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v156206en-white-4K2lIP0zc_k-unsplash_avr2bp.jpg',
             title: '',
             alt: '',
           },
           link: {
-            url: divImgUrl,
+            url: '/p/',
             title: '',
-            text: 'TODDLER GIRL',
+            text: 'Girl',
             target: '_self',
             external: 0,
           },
         },
         {
           image: {
-            url: divImgUrl,
+            url:
+              'https://res.cloudinary.com/tcp-dam-test/id/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg',
             title: '',
             alt: '',
           },
           link: {
-            url: divImgUrl,
+            url: '/c/',
             title: '',
-            text: 'GIRL',
+            text: 'Boy',
             target: '_self',
             external: 0,
           },
         },
         {
           image: {
-            url: divImgUrl,
+            url:
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/w61640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg',
             title: '',
             alt: '',
           },
           link: {
-            url: divImgUrl,
+            url: '/c/',
             title: '',
-            text: 'TODDLER BOY',
+            text: 'Toddler Boy',
             target: '_self',
             external: 0,
           },
         },
         {
           image: {
-            url: divImgUrl,
+            url:
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg',
             title: '',
             alt: '',
           },
           link: {
-            url: divImgUrl,
+            url: '/p/',
             title: '',
-            text: 'BOY',
+            text: 'Toddler',
             target: '_self',
             external: 0,
           },
         },
         {
           image: {
-            url: divImgUrl,
+            url:
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg',
             title: '',
             alt: '',
           },
           link: {
-            url: divImgUrl,
+            url: '/c/',
             title: '',
-            text: 'BABY',
+            text: 'Baby',
             target: '_self',
             external: 0,
           },
-        },
-      ],
-      stackedCTAButtons: [
-        {
-          url: 'http://exdample.com',
-          title: '',
-          text: 'girl',
-          target: '',
-          external: 0,
-        },
-        {
-          url: 'http://exampldde.com',
-          title: '',
-          text: 'toddler girl',
-          target: '',
-          external: 0,
-        },
-        {
-          url: 'http://exsdample.com',
-          title: '',
-          text: 'boy',
-          target: '',
-          external: 0,
-        },
-        {
-          url: 'http://example.com',
-          title: '',
-          text: 'toddler boy',
-          target: '',
-          external: 0,
-        },
-        {
-          url: 'http://example.com',
-          title: '',
-          text: 'baby',
-          target: '',
-          external: 0,
         },
       ],
     },

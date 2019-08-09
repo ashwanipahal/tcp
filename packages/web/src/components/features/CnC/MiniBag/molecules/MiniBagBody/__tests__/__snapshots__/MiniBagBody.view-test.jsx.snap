@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MiniBagBody component renders main component correctly 1`] = `
+<StyledComponent
+  cartItemCount={1}
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-jzJRlG",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  box-sizing: border-box;
+  height: calc(100% - 70px);
+
+  .viewBagAndProduct {
+    height: calc(100% - 120px);
+    overflow-y: auto;
+  }
+  .mainWrapper {
+    text-align: center;
+    background-color: ",
+          [Function],
+          ";
+    height: 31px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .subHeaderText {
+    text-decoration: underline;
+  }
+  .miniBagFooter {
+    height: 137px;
+    text-align: center;
+    background-color: ",
+          [Function],
+          ";
+    padding-right: 0;
+    padding-left: 0;
+    border-bottom: ",
+          [Function],
+          ";
+    bottom: 0px;
+    margin-bottom: 0px;
+  }
+  .subTotal {
+    text-align: center;
+    padding: 13px 0 13px 0;
+  }
+  .checkout-button {
+    padding-top: 10px;
+  }
+
+  .checkout {
+    height: 48px;
+    margin-left: 10px;
+    flex: 1;
+
+    background-color: ",
+          [Function],
+          ";
+    @media ",
+          [Function],
+          " {
+      margin-left: 0;
+      width: 220px;
+    }
+  }
+  .payPal-button {
+    width: 220px;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(MiniBagBody)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-jzJRlG",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  labels={
+    Object {
+      "subTotal": "Subtotal",
+      "viewBag": "View bag",
+      "viewSaveForLater": "save later",
+    }
+  }
+  subTotal={112}
+  userName="Christine"
+/>
+`;

@@ -77,7 +77,7 @@ const MyRewards = ({ labels, className }) => {
           className="anchor-wrapper"
         >
           <Anchor
-            fontSizeVariation="small"
+            fontSizeVariation="medium"
             underline
             noLink
             href="https://www.childrensplace.com/us/content/myplace-rewards-page"
@@ -88,7 +88,7 @@ const MyRewards = ({ labels, className }) => {
             {labels.myPlaceRewards.ACC_LBL_MY_REWARDS_PROGRAM_DETAILS}
           </Anchor>
           <Anchor
-            fontSizeVariation="small"
+            fontSizeVariation="medium"
             underline
             noLink
             href="https://www.childrensplace.com/us/help-center/#termsAndConditionsli"

@@ -18,19 +18,19 @@ const RewardsPointsSlider = ({
   return (
     <div className={className}>
       <Row>
-        <Col colSize={{ large: 4, medium: 3, small: 2 }}>
+        <Col colSize={{ large: 5, medium: 3, small: 2 }}>
           <BodyCopy fontFamily="secondary" fontSize="fs14">
-            {`${labels.lbl_my_rewards_current_points}: `}
+            {`${labels.lbl_common_current_points}: `}
             <BodyCopy component="span" fontWeight="black" fontFamily="secondary" fontSize="fs14">
               {currentPoints}
             </BodyCopy>
           </BodyCopy>
         </Col>
-        <Col colSize={{ large: 8, medium: 5, small: 4 }}>
+        <Col colSize={{ large: 7, medium: 5, small: 4 }}>
           <BodyCopy component="p" fontFamily="secondary" fontSize="fs14">
-            {`${labels.lbl_my_rewards_heading}: `}
+            {`${labels.lbl_common_heading}: `}
             <BodyCopy component="span" fontWeight="black" fontFamily="secondary" fontSize="fs14">
-              {labels.lbl_my_rewards_currency}
+              {labels.lbl_common_currency}
               {totalRewards && Math.trunc(totalRewards)}
             </BodyCopy>
           </BodyCopy>
@@ -46,7 +46,7 @@ const RewardsPointsSlider = ({
       <Row>
         <Col colSize={{ large: 12, medium: 8, small: 6 }}>
           <BodyCopy fontFamily="secondary" fontSize="fs14">
-            {`${labels.lbl_my_rewards_next_reward}: `}
+            {`${labels.lbl_common_next_reward}: `}
             <BodyCopy component="span" fontWeight="black" fontFamily="secondary" fontSize="fs14">
               {pointsToNextReward}
             </BodyCopy>
@@ -63,10 +63,10 @@ RewardsPointsSlider.propTypes = {
   currentPoints: PropTypes.number,
   totalRewards: PropTypes.number,
   labels: PropTypes.shape({
-    lbl_my_rewards_current_points: PropTypes.string,
-    lbl_my_rewards_heading: PropTypes.string,
-    lbl_my_rewards_next_reward: PropTypes.string,
-    lbl_my_rewards_currency: PropTypes.string,
+    lbl_common_current_points: PropTypes.string,
+    lbl_common_heading: PropTypes.string,
+    lbl_common_next_reward: PropTypes.string,
+    lbl_common_currency: PropTypes.string,
   }),
 };
 
@@ -76,10 +76,10 @@ RewardsPointsSlider.defaultProps = {
   currentPoints: '',
   totalRewards: '',
   labels: {
-    lbl_my_rewards_current_points: '',
-    lbl_my_rewards_heading: '',
-    lbl_my_rewards_next_reward: '',
-    lbl_my_rewards_currency: '',
+    lbl_common_current_points: '',
+    lbl_common_heading: '',
+    lbl_common_next_reward: '',
+    lbl_common_currency: '',
   },
 };
 

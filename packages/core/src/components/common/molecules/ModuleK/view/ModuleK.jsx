@@ -88,7 +88,7 @@ class ModuleK extends React.PureComponent<Props, State> {
                 const checkPromo = promoBanner && promoBanner.length;
                 return (
                   <React.Fragment>
-                    {promoBanner && (
+                    {checkPromo && (
                       <PromoBanner
                         promoBanner={promoBanner}
                         className="moduleK__promoBanner"
@@ -101,7 +101,7 @@ class ModuleK extends React.PureComponent<Props, State> {
                       className="image-grid"
                       colM={2}
                       dataLocator={`${getLocator('moduleK_image')}${index + 1}`}
-                      dataLocatorSet={`${getLocator('moduleK_image_set')}${index + 1}`}
+                      dataLocatorContainer={`${getLocator('moduleK_image_set')}${index + 1}`}
                       promo={checkPromo}
                     />
                     <Col

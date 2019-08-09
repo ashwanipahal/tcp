@@ -7,6 +7,7 @@ import {
   getPointsToNextRewardState,
   getCurrentPointsState,
   getTotalRewardsState,
+  isPlccUser,
 } from '../../../../LoginPage/container/LoginPage.selectors';
 import { fetchModuleX } from './AccountHeader.actions';
 import { getRewardsPointsBannerContent } from './AccountHeader.selectors';
@@ -15,11 +16,11 @@ export class AccountHeaderContainer extends React.PureComponent {
   constructor(props) {
     super(props);
     this.labels = this.getOverviewLabels(props.labels);
+    this.commonLabels = this.getCommonLabels(props.labels);
   }
 
   componentDidMount() {
-    const { fetchRewardsPointsBannerContent } = this.props;
-    const isPlcc = true;
+    const { fetchRewardsPointsBannerContent, isPlcc } = this.props;
     const contentKey = `overviewRewardsPointsBanner${isPlcc ? 'PLCC' : 'MPR'}`;
     const contentObject = this.labels.referred.find(ref => ref.name === contentKey);
     if (contentObject && contentObject.contentId) {
@@ -31,19 +32,27 @@ export class AccountHeaderContainer extends React.PureComponent {
     return (labels && labels.accountOverview) || {};
   };
 
+  getCommonLabels = labels => {
+    return (labels && labels.common) || {};
+  };
+
   render() {
-    const { labels, ...otherProps } = this.props;
-    return <AccountHeader labels={this.labels} {...otherProps} />;
+    const { labels, commonLabels, ...otherProps } = this.props;
+    return <AccountHeader labels={this.labels} commonLabels={this.commonLabels} {...otherProps} />;
   }
 }
 
 AccountHeaderContainer.propTypes = {
   labels: PropTypes.shape({}),
+  commonLabels: PropTypes.shape({}),
   fetchRewardsPointsBannerContent: PropTypes.func.isRequired,
+  isPlcc: PropTypes.bool,
 };
 
 AccountHeaderContainer.defaultProps = {
   labels: {},
+  isPlcc: false,
+  commonLabels: {},
 };
 
 const mapStateToProps = state => ({
@@ -52,6 +61,7 @@ const mapStateToProps = state => ({
   currentPoints: getCurrentPointsState(state),
   totalRewards: getTotalRewardsState(state),
   rewardsPointsBannerContent: getRewardsPointsBannerContent(state),
+  isPlcc: isPlccUser(state),
 });
 
 const mapDispatchToProps = dispatch => ({

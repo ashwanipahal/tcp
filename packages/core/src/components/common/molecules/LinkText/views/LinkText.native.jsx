@@ -1,23 +1,14 @@
 // @flow
 import React from 'react';
-import { TouchableOpacity, Text } from 'react-native';
-import { Heading, BodyCopy } from '../../../atoms';
-import { UrlHandler } from '../../../../../utils/index.native';
+import { Text } from 'react-native';
+import { Anchor, BodyCopy, Heading } from '../../../atoms';
 
 type Props = {
   type: string,
   headerText: Object[],
   link: Object,
   textItems: Object[],
-};
-
-/**
- * @function getTextItems : To get heading text lines
- * @param {*} props
- * accepts textItems as parameters to return as heading node
- */
-const getTextItems = textItems => {
-  return textItems.map(({ text }, index) => <Text>{index ? ` ${text}` : text}</Text>);
+  navigation: Object,
 };
 
 /**
@@ -29,10 +20,16 @@ const getTextItems = textItems => {
  * type="bodycopy" if BodyCopy is required
  * accepts all parameters for BodyCopy and Heading atom
  */
+
+const getTextItems = textItems => {
+  return textItems && textItems.map(({ text }, index) => <Text>{index ? ` ${text}` : text}</Text>);
+};
+
 const LinkText = (props: Props) => {
   const {
     type,
     headerText: [{ textItems, link }],
+    navigation,
     ...otherProps
   } = props;
 
@@ -54,15 +51,9 @@ const LinkText = (props: Props) => {
   }
 
   return (
-    <TouchableOpacity accessibilityRole="button">
-      <Component
-        {...compProps}
-        text={getTextItems(textItems)}
-        onPress={() => {
-          UrlHandler(link.url);
-        }}
-      />
-    </TouchableOpacity>
+    <Anchor url={link.url} navigation={navigation} external={link.external}>
+      <Component {...compProps} text={getTextItems(textItems)} />
+    </Anchor>
   );
 };
 

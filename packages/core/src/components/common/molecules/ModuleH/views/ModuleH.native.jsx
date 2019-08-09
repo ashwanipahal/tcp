@@ -77,7 +77,7 @@ class ModuleH extends React.PureComponent<Props, State> {
         key={index.toString()}
         alt={image.alt}
         source={{ uri: this.getUrlWithCrop(image.url) }}
-        data-locator={`${getLocator('moduleH_composite_image')}${index + 1}`}
+        testID={`${getLocator('moduleH_composite_image')}${index + 1}`}
         height={MODULE_HEIGHT}
         width={MODULE_WIDTH}
       />
@@ -109,7 +109,7 @@ class ModuleH extends React.PureComponent<Props, State> {
             UrlHandler(link.url);
           }}
           style={linksData.length < maxLimit ? lessThanSixLinkStyle : linkStyle}
-          data-locator={`${getLocator('moduleH_cta_links')}${index + 1}`}
+          testID={`${getLocator('moduleH_cta_links')}${index + 1}`}
         />
       );
     });
@@ -141,7 +141,7 @@ class ModuleH extends React.PureComponent<Props, State> {
                     color="white"
                     fontWeight="black"
                     text={textLine.text}
-                    data-locator={`${getLocator('moduleH_header_text')}${index + 1}`}
+                    testID={`${getLocator('moduleH_header_text')}${index + 1}`}
                   />
                 </TouchableOpacity>
               ) : (
@@ -153,7 +153,7 @@ class ModuleH extends React.PureComponent<Props, State> {
                   color="white"
                   fontWeight="black"
                   text={textLine.text}
-                  data-locator={`${getLocator('moduleH_header_text')}${index + 1}`}
+                  testID={`${getLocator('moduleH_header_text')}${index + 1}`}
                 />
               );
             })}

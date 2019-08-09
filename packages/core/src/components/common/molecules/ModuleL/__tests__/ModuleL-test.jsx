@@ -6,9 +6,13 @@ import { Carousel, LinkText, PromoBanner } from '../..';
 
 describe('ModuleL component', () => {
   let ModuleLComp;
+  const props = {
+    ...mock.moduleL.composites,
+    set: mock.moduleL.set,
+  };
 
   beforeEach(() => {
-    const wrapper = shallow(<ModuleL {...mock.moduleL.composites} />).get(0);
+    const wrapper = shallow(<ModuleL {...props} />).get(0);
     ModuleLComp = shallow(wrapper);
   });
 

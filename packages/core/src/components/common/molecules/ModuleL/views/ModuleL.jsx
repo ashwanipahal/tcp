@@ -13,7 +13,7 @@ type Props = {
   className: string,
   headerText: Array<Object>,
   imageGrid: Array<Object>,
-  imagesPerSlide: string,
+  set: Array<Object>,
   promoBanner: Array<Object>,
 };
 
@@ -35,7 +35,13 @@ const renderTiles = tiles => {
  * @param {headerText} headerText : Header data object
  * @param {imageGrid} imageGrid : Slides data in array list
  */
-const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide, promoBanner }: Props) => {
+const ModuleL = ({
+  className,
+  headerText,
+  imageGrid,
+  set: [{ val: imagesPerSlide }],
+  promoBanner,
+}: Props) => {
   const options = config.CAROUSEL_OPTIONS;
   options.prevArrow = (
     <button type="button" data-locator="moduleL_left_arrow" className="slick-prev" />
@@ -69,7 +75,7 @@ const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide, promoBanner
             promo={checkPromo}
           />
         )}
-        {promoBanner && (
+        {checkPromo && (
           <PromoBanner
             promoBanner={promoBanner}
             className="moduleL__promo-banner"

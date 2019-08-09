@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { UrlHandler, getScreenWidth } from '@tcp/core/src/utils';
-
 import Button from '../../../atoms/Button';
 import LinkText from '../../LinkText';
 
@@ -31,13 +30,13 @@ class ModuleK extends React.PureComponent {
           {promoBanner && (
             <PromoTextBannerWrapper>
               <PromoBanner
-                dataLocator={`moduleK_promobanner_text_${slideIndex}`}
+                testID={`moduleK_promobanner_text_${slideIndex}`}
                 promoBanner={promoBanner}
               />
             </PromoTextBannerWrapper>
           )}
         </HeaderWrapper>
-        <ImageGrid dataLocator={`moduleK_image_${slideIndex}`} mediaList={mediaLinkedList} />
+        <ImageGrid testID={`moduleK_image_${slideIndex}`} mediaList={mediaLinkedList} />
         {singleCTAButton && (
           <WrapperView width={getScreenWidth()}>
             <Button
@@ -45,7 +44,7 @@ class ModuleK extends React.PureComponent {
               height="42px"
               buttonVariation="variable-width"
               text={singleCTAButton.text || `Shop Now`}
-              dataLocator={`moduleK_button_set_${slideIndex}`}
+              testID={`moduleK_button_set_${slideIndex}`}
               onPress={() => UrlHandler(singleCTAButton.url)}
             />
           </WrapperView>
@@ -55,7 +54,7 @@ class ModuleK extends React.PureComponent {
   };
 
   render() {
-    const { headerText, masonryGrid, autoplayInterval } = this.props;
+    const { headerText, masonryGrid, autoplayInterval, navigation } = this.props;
     const indexedMasonryGrid = masonryGrid.map((item, i) => {
       return { ...item, slideIndex: i };
     });
@@ -66,12 +65,13 @@ class ModuleK extends React.PureComponent {
           {headerText && (
             <LinkText
               headerText={headerText}
+              navigation={navigation}
               fontSize="fs36"
               fontWeight="black"
               color="text.primary"
               fontFamily="primary"
               textAlign="center"
-              data-locator="moduleK_header_text"
+              dataLocator="moduleK_header_text"
             />
           )}
         </HeaderWrapper>
@@ -96,12 +96,15 @@ ModuleK.defaultProps = {
   headerText: [],
   masonryGrid: [],
   autoplayInterval: 2,
+  navigation: {},
 };
 
 ModuleK.propTypes = {
   headerText: PropTypes.shape([]),
   masonryGrid: PropTypes.shape([]),
   autoplayInterval: PropTypes.number, // 2 means 2 seconds
+  navigation: PropTypes.shape({}),
 };
 
 export default ModuleK;
+export { ModuleK as ModuleKVanilla };

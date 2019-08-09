@@ -30,6 +30,7 @@ const Anchor = ({
   target,
   url,
   text,
+  dataLocator,
   ...other
 }) => {
   const siteId = utils.getSiteId();
@@ -43,10 +44,11 @@ const Anchor = ({
     <a
       href={buildUrl(linkUrl)}
       className={className}
-      {...other}
       onClick={handleLinkClick}
       title={title}
       target={target}
+      data-locator={dataLocator}
+      {...other}
     >
       {children}
     </a>
@@ -72,6 +74,7 @@ Anchor.propTypes = {
   target: PropTypes.string,
   url: PropTypes.string,
   text: PropTypes.string,
+  dataLocator: PropTypes.string,
 };
 
 Anchor.defaultProps = {
@@ -84,6 +87,7 @@ Anchor.defaultProps = {
   target: '',
   url: '',
   text: '',
+  dataLocator: '',
 };
 
 export default withStyles(Anchor, styles);

@@ -75,4 +75,15 @@ export default {
   global_promobanner_title_1: 'global_promobanner_title_1',
   global_promobanner_left_arrowRight: 'global_promobanner_left_arrowRight',
   global_promobanner_right_arrow: 'global_promobanner_right_arrow',
+  // Order Ledger
+  order_ledger_section_label: 'orderLedgerBox',
+  order_ledger_item_label: 'orderLedgerItemLbl',
+  order_ledger_coupons_label: 'orderLedgerCouponsLbl',
+  order_ledger_shipping_label: 'orderLedgerShippingLbl',
+  order_ledger_promotion_label: 'orderLedgerPromotionLbl',
+  order_ledger_estimated_tax_label: 'orderLedgerTaxLbl',
+  order_ledger_estimated_total_label: 'orderLedgerTotalLbl',
+  order_ledger_gift_card_label: 'orderLedgerGiftCardLbl',
+  order_ledger_balance_total_label: 'orderLedgerBalanceTotalLbl',
+  order_ledger_total_order_savings_label: 'orderLedgerTotalOrderSavingsLabel',
 };

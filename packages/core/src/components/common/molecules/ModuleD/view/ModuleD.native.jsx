@@ -3,7 +3,7 @@ import React from 'react';
 import { FlatList, TouchableOpacity } from 'react-native';
 import { getLocator, getScreenWidth, UrlHandler } from '../../../../../utils/index.native';
 import { Anchor, Button, Image } from '../../../atoms';
-import PromoBanner from '../../PromoBanner/views/PromoBanner.native';
+import PromoBanner from '../../PromoBanner';
 import { ButtonWrapper, Tile, Wrapper } from '../ModuleD.style.native';
 import colors from '../../../../../../styles/themes/TCP/colors';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
@@ -14,6 +14,7 @@ type Props = {
   promoBanner: Object[],
   smallCompImage: Object[],
   singleCTAButton: Object,
+  navigation: Object,
 };
 
 const imageSize = parseInt((getScreenWidth() - 48) / 2, 10);
@@ -50,7 +51,7 @@ const renderItem = item => {
       <TouchableOpacity accessibilityRole="button" onPress={() => UrlHandler(link.url)}>
         <Image
           alt={image.alt}
-          data-locator={`${getLocator('moduleD_image')}${index + 1}`}
+          testID={`${getLocator('moduleD_image')}${index + 1}`}
           source={{ uri: getUrlWithCrop(image.url) }}
           height={imageSize}
           marginBottom={parseInt(spacing.ELEM_SPACING.XS, 10)}
@@ -59,7 +60,7 @@ const renderItem = item => {
       </TouchableOpacity>
 
       <Anchor
-        data-locator={`${getLocator('moduleD_textlink')}${index + 1}`}
+        testID={`${getLocator('moduleD_textlink')}${index + 1}`}
         fontSizeVariation="large"
         text={link.text}
         visible={anchorEnable}
@@ -84,13 +85,14 @@ const renderItem = item => {
  */
 
 const ModuleD = (props: Props) => {
-  const { smallCompImage, headerText, promoBanner, singleCTAButton } = props;
+  const { smallCompImage, headerText, promoBanner, singleCTAButton, navigation } = props;
   const buttonWidth = { width: 225 };
   return (
     <Wrapper>
       {headerText && (
         <LinkText
           headerText={headerText}
+          navigation={navigation}
           fontFamily="primary"
           fontSize="fs36"
           letterSpacing="ls167"
@@ -98,11 +100,11 @@ const ModuleD = (props: Props) => {
           color="text.primary"
           fontWeight="extrabold"
           type="heading"
-          data-locator={getLocator('moduleD_headerlink')}
+          testID={getLocator('moduleD_headerlink')}
         />
       )}
       {promoBanner && (
-        <PromoBanner promoBanner={promoBanner} data-locator={getLocator('moduleD_promobanner')} />
+        <PromoBanner promoBanner={promoBanner} testID={getLocator('moduleD_promobanner')} />
       )}
 
       <FlatList
@@ -119,7 +121,7 @@ const ModuleD = (props: Props) => {
           buttonVariation="variable-width"
           style={buttonWidth}
           text={singleCTAButton.title}
-          data-locator={getLocator('moduleD_button')}
+          testID={getLocator('moduleD_button')}
           onPress={() => {
             UrlHandler(singleCTAButton.url);
           }}

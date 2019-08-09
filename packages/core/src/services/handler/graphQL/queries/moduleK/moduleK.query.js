@@ -3,10 +3,6 @@ const buildQuery = ({ slot, contentId }) => `
     contentId
     name
     type
-    set {
-      key
-      val
-    }
     composites {
       masonryGrid {
         promoBanner {

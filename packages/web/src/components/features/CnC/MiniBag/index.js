@@ -1,1 +1,1 @@
-export { default } from './container/ProductTileWrapperContainer.container';
+export { default } from './container/MiniBag.container';
