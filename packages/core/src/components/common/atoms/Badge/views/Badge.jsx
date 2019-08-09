@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Node } from 'react';
-import { BodyCopy } from '@tcp/core/styles/themes/TCP/typotheme';
+// eslint-disable-next-line
+import { BodyCopy } from '../../../atoms';
 import withStyles from '../../../hoc/withStyles';
 import styles from '../Badge.style';
 
@@ -16,11 +17,11 @@ type Props = {
 const Badge = ({ children, className, showCheckmark, dataLocator }: Props): Node => (
   <BodyCopy
     className={className}
-    bodySize="one"
-    tag="div"
-    color="primary"
-    fontFamily="secondaryFontFamily"
-    fontWeight="bold"
+    fontSize="fs10"
+    component="div"
+    color="text.primary"
+    fontFamily="secondary"
+    fontWeight="extrabold"
   >
     {showCheckmark && <span className="badge__checkmark" />}
     <span className="badge__content" data-locator={dataLocator}>

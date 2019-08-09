@@ -79,6 +79,22 @@ export const getBossEndDate = product => {
   return product.getIn(['miscInfo', 'bossEndDate']);
 };
 
+export const getProductItemUpcNumber = product => {
+  return product.getIn(['productInfo', 'upc']);
+};
+
+export const getProductItemPrice = product => {
+  return product.getIn(['itemInfo', 'listPrice']);
+};
+
+export const getProductItemId = product => {
+  return product.getIn(['itemInfo', 'itemId']);
+};
+
+export const getProductItemUnitOfferPrice = product => {
+  return product.getIn(['itemInfo', 'unitOfferPrice']);
+};
+
 export const getLabelsCartItemTile = state => {
   const {
     bag: {
@@ -104,6 +120,11 @@ export const getLabelsCartItemTile = state => {
         lbl_cartTile_productImageAlt: productImageAlt,
         lbl_cartTile_bopis: bopisLabel,
         lbl_cartTile_boss: bossLabel,
+        lbl_cartTile_noRushPickup: bossPickUp,
+        lbl_cartTile_pickUpToday: bopisPickUp,
+        lbl_cartTile_shipToHome: ecomShipping,
+        lbl_cartTile_extra: extra,
+        lbl_cartTile_off: off,
       },
     },
   } = state.Labels;
@@ -123,6 +144,11 @@ export const getLabelsCartItemTile = state => {
     productImageAlt,
     bopisLabel,
     bossLabel,
+    bossPickUp,
+    bopisPickUp,
+    ecomShipping,
+    extra,
+    off,
   };
 };
 
@@ -139,10 +165,14 @@ export const getProductDetails = tile => {
       myPlacePoints: getProductPoints(tile),
       itemBrand: getProductBrand(tile),
       imagePath: getProductImage(tile),
+      itemPrice: getProductItemPrice(tile),
+      itemId: getProductItemId(tile),
+      unitOfferPrice: getProductItemUnitOfferPrice(tile),
     },
     productInfo: {
       productPartNumber: getProductPartNumber(tile),
       itemPartNumber: getProductItemPartNumber(tile),
+      upc: getProductItemUpcNumber(tile),
     },
     miscInfo: {
       badge: getProductBadge(tile),

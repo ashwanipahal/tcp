@@ -1,1 +1,1 @@
-export { default } from './views/ButtonList.native';
+export { default } from './views/ButtonList';

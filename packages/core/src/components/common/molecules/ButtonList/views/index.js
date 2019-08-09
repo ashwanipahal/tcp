@@ -1,1 +1,1 @@
-export { default } from './ButtonList.native';
+export { default } from './ButtonList';
