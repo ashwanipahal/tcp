@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { UrlHandler, getScreenWidth } from '@tcp/core/src/utils';
-
 import Button from '../../../atoms/Button';
 import LinkText from '../../LinkText';
 
@@ -72,7 +71,7 @@ class ModuleK extends React.PureComponent {
               color="text.primary"
               fontFamily="primary"
               textAlign="center"
-              testID="moduleK_header_text"
+              dataLocator="moduleK_header_text"
             />
           )}
         </HeaderWrapper>
@@ -108,3 +107,4 @@ ModuleK.propTypes = {
 };
 
 export default ModuleK;
+export { ModuleK as ModuleKVanilla };
