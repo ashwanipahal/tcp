@@ -132,5 +132,9 @@ const endpoints = {
     method: API_METHODS.POST,
     URI: 'v2/bopis/createBopisOrder',
   },
+  requestPassword: {
+    method: 'put',
+    URI: '/v2/account/resetPassword',
+  },
 };
 export default endpoints;
