@@ -9,7 +9,7 @@ describe('ModuleL component', () => {
   let ModuleNComp;
 
   beforeEach(() => {
-    ModuleNComp = shallow(<ModuleN {...mock.moduleD.composites} />);
+    ModuleNComp = shallow(<ModuleN {...mock.moduleN.composites} />);
   });
   it('renders correctly', () => {
     expect(ModuleNComp).toMatchSnapshot();

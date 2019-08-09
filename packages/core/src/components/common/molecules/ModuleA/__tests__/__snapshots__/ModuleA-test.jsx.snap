@@ -452,6 +452,7 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
           },
         ]
       }
+      set={Array []}
       variant="gymboree"
     />
   </ForwardRef>
@@ -910,7 +911,8 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
           },
         ]
       }
-      variant="tcp"
+      set={Array []}
+      variant="gymboree"
     />
   </ForwardRef>
 </ForwardRef>

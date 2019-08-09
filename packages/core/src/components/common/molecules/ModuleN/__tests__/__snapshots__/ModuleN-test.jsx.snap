@@ -18,7 +18,7 @@ exports[`ModuleL component renders correctly 1`] = `
               "link": Object {
                 "target": "",
                 "title": "",
-                "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
+                "url": "/p/",
               },
               "textItems": Array [
                 Object {
@@ -32,6 +32,34 @@ exports[`ModuleL component renders correctly 1`] = `
         }
         textAlign="center"
         type="heading"
+      />
+      <Styled(PromoBanner)
+        className="moduleN__promo-banner"
+        color="white"
+        promoBanner={
+          Array [
+            Object {
+              "link": Object {
+                "class": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/c/",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "style6",
+                  "text": "50-70%OFF",
+                },
+                Object {
+                  "style": "style4",
+                  "text": "No EXCLUSIVE",
+                },
+              ],
+            },
+          ]
+        }
       />
     </div>
     <Styled(ButtonList)
@@ -42,36 +70,36 @@ exports[`ModuleL component renders correctly 1`] = `
             "external": 0,
             "target": "",
             "text": "girl",
-            "title": "",
-            "url": "http://example.com",
+            "title": "girl",
+            "url": "/c/",
           },
           Object {
             "external": 0,
             "target": "",
             "text": "toddler girl",
-            "title": "",
-            "url": "http://example.com",
+            "title": "toddler girl",
+            "url": "/p/",
           },
           Object {
             "external": 0,
             "target": "",
             "text": "boy",
-            "title": "",
-            "url": "http://example.com",
+            "title": "boy",
+            "url": "/p/",
           },
           Object {
             "external": 0,
             "target": "",
             "text": "toddler boy",
-            "title": "",
-            "url": "http://example.com",
+            "title": "toddler boy",
+            "url": "/c/",
           },
           Object {
             "external": 0,
             "target": "",
             "text": "baby",
-            "title": "",
-            "url": "http://example.com",
+            "title": "baby",
+            "url": "/c/",
           },
         ]
       }
@@ -89,7 +117,7 @@ exports[`ModuleL component renders correctly 1`] = `
               "link": Object {
                 "target": "",
                 "title": "",
-                "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
+                "url": "/p/",
               },
               "textItems": Array [
                 Object {
@@ -103,6 +131,34 @@ exports[`ModuleL component renders correctly 1`] = `
         }
         textAlign="center"
         type="heading"
+      />
+      <Styled(PromoBanner)
+        className="moduleN__promo-banner"
+        color="white"
+        promoBanner={
+          Array [
+            Object {
+              "link": Object {
+                "class": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/c/",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "style6",
+                  "text": "50-70%OFF",
+                },
+                Object {
+                  "style": "style4",
+                  "text": "No EXCLUSIVE",
+                },
+              ],
+            },
+          ]
+        }
       />
     </div>
     <Styled(ButtonList)
@@ -113,36 +169,36 @@ exports[`ModuleL component renders correctly 1`] = `
             "external": 0,
             "target": "",
             "text": "girl",
-            "title": "",
-            "url": "http://example.com",
+            "title": "girl",
+            "url": "/c/",
           },
           Object {
             "external": 0,
             "target": "",
             "text": "toddler girl",
-            "title": "",
-            "url": "http://example.com",
+            "title": "toddler girl",
+            "url": "/p/",
           },
           Object {
             "external": 0,
             "target": "",
             "text": "boy",
-            "title": "",
-            "url": "http://example.com",
+            "title": "boy",
+            "url": "/p/",
           },
           Object {
             "external": 0,
             "target": "",
             "text": "toddler boy",
-            "title": "",
-            "url": "http://example.com",
+            "title": "toddler boy",
+            "url": "/c/",
           },
           Object {
             "external": 0,
             "target": "",
             "text": "baby",
-            "title": "",
-            "url": "http://example.com",
+            "title": "baby",
+            "url": "/c/",
           },
         ]
       }
@@ -165,7 +221,7 @@ exports[`ModuleL component renders correctly 1`] = `
               "link": Object {
                 "target": "",
                 "title": "",
-                "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
+                "url": "/p/",
               },
               "textItems": Array [
                 Object {
@@ -180,6 +236,34 @@ exports[`ModuleL component renders correctly 1`] = `
         textAlign="center"
         type="heading"
       />
+      <Styled(PromoBanner)
+        className="moduleN__promo-banner"
+        color="white"
+        promoBanner={
+          Array [
+            Object {
+              "link": Object {
+                "class": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/c/",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "style6",
+                  "text": "50-70%OFF",
+                },
+                Object {
+                  "style": "style4",
+                  "text": "No EXCLUSIVE",
+                },
+              ],
+            },
+          ]
+        }
+      />
     </div>
     <Styled(ButtonList)
       buttonListVariation="imageCTAList"
@@ -189,14 +273,42 @@ exports[`ModuleL component renders correctly 1`] = `
             "image": Object {
               "alt": "",
               "title": "",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v156206en-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
             },
             "link": Object {
               "external": 0,
               "target": "_self",
-              "text": "TODDLER GIRL",
+              "text": "Girl",
               "title": "",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              "url": "/p/",
+            },
+          },
+          Object {
+            "image": Object {
+              "alt": "",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/id/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "_self",
+              "text": "Boy",
+              "title": "",
+              "url": "/c/",
+            },
+          },
+          Object {
+            "image": Object {
+              "alt": "",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w61640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "_self",
+              "text": "Toddler Boy",
+              "title": "",
+              "url": "/c/",
             },
           },
           Object {
@@ -208,9 +320,9 @@ exports[`ModuleL component renders correctly 1`] = `
             "link": Object {
               "external": 0,
               "target": "_self",
-              "text": "GIRL",
+              "text": "Toddler",
               "title": "",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              "url": "/p/",
             },
           },
           Object {
@@ -222,37 +334,9 @@ exports[`ModuleL component renders correctly 1`] = `
             "link": Object {
               "external": 0,
               "target": "_self",
-              "text": "TODDLER BOY",
+              "text": "Baby",
               "title": "",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
-            },
-          },
-          Object {
-            "image": Object {
-              "alt": "",
-              "title": "",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
-            },
-            "link": Object {
-              "external": 0,
-              "target": "_self",
-              "text": "BOY",
-              "title": "",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
-            },
-          },
-          Object {
-            "image": Object {
-              "alt": "",
-              "title": "",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
-            },
-            "link": Object {
-              "external": 0,
-              "target": "_self",
-              "text": "BABY",
-              "title": "",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              "url": "/c/",
             },
           },
         ]
@@ -276,7 +360,7 @@ exports[`ModuleL component renders correctly 1`] = `
               "link": Object {
                 "target": "",
                 "title": "",
-                "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
+                "url": "/p/",
               },
               "textItems": Array [
                 Object {
@@ -290,6 +374,34 @@ exports[`ModuleL component renders correctly 1`] = `
         }
         textAlign="center"
         type="heading"
+      />
+      <Styled(PromoBanner)
+        className="moduleN__promo-banner"
+        color="white"
+        promoBanner={
+          Array [
+            Object {
+              "link": Object {
+                "class": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/c/",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "style6",
+                  "text": "50-70%OFF",
+                },
+                Object {
+                  "style": "style4",
+                  "text": "No EXCLUSIVE",
+                },
+              ],
+            },
+          ]
+        }
       />
     </div>
     <Styled(ButtonList)
@@ -301,28 +413,28 @@ exports[`ModuleL component renders correctly 1`] = `
             "target": "",
             "text": "TODDLER GIRL",
             "title": "",
-            "url": "http://exampl.com",
+            "url": "/p/",
           },
           Object {
             "external": 0,
             "target": "",
             "text": "GIRL",
             "title": "",
-            "url": "http://exam2le.com",
+            "url": "/p/",
           },
           Object {
             "external": 0,
             "target": "",
             "text": "TODDLER BOY",
             "title": "",
-            "url": "http://examweple.com",
+            "url": "/c/",
           },
           Object {
             "external": 0,
             "target": "",
             "text": "BOY",
             "title": "",
-            "url": "http://example.com",
+            "url": "/c/",
           },
         ]
       }

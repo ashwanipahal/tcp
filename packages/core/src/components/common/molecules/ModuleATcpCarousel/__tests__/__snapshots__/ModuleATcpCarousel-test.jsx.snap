@@ -412,10 +412,10 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
     </div>
   </Styled(errorBoundaryComponent)>
   <div
-    className="button-list-container scrollCTAList"
+    className="button-list-container stackedCTAList"
   >
     <Styled(ButtonList)
-      buttonListVariation="scrollCTAList"
+      buttonListVariation="stackedCTAList"
       buttonsData={
         Array [
           Object {

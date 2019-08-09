@@ -13,7 +13,7 @@ const HomePageView = props => {
 
   return (
     <Fragment>
-      <ModuleN {...mock.moduleD.composites} />
+      <ModuleN {...mock.moduleN.composites} />
       <SlotA {...slotA} />
       <SlotB {...slotB} />
       <SlotC {...slotC} />

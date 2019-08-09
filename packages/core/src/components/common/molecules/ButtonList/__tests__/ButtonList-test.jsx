@@ -14,7 +14,7 @@ describe('ButtonList component', () => {
   it('renders correctly with props for stacked CTA buttons', () => {
     ButtonListComp = shallow(
       <VanillaButtonList
-        buttonsData={mock.moduleD.composites.stackedCTAButtons}
+        buttonsData={mock.moduleN.composites.stackedCTAButtons}
         buttonListVariation="stackedCTAList"
       />
     );
@@ -25,7 +25,7 @@ describe('ButtonList component', () => {
   it('renders correctly for scroll cta buttons', () => {
     ButtonListComp = shallow(
       <VanillaButtonList
-        buttonsData={mock.moduleD.composites.stackedCTAButtons}
+        buttonsData={mock.moduleN.composites.stackedCTAButtons}
         buttonListVariation="scrollCTAList"
       />
     );
@@ -35,7 +35,7 @@ describe('ButtonList component', () => {
   it('renders correctly for image cta List', () => {
     ButtonListComp = shallow(
       <VanillaButtonList
-        buttonsData={mock.moduleD.composites.divImageCTACarousel}
+        buttonsData={mock.moduleN.composites.divImageCTACarousel}
         buttonListVariation="imageCTAList"
       />
     );
@@ -46,7 +46,7 @@ describe('ButtonList component', () => {
   it('renders correctly', () => {
     ButtonListComp = shallow(
       <VanillaButtonList
-        buttonsData={mock.moduleD.composites.linkList}
+        buttonsData={mock.moduleN.composites.linkList}
         buttonListVariation="linkCTAList"
       />
     );

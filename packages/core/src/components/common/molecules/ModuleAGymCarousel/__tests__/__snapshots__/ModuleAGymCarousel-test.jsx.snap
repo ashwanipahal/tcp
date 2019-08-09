@@ -2,7 +2,7 @@
 
 exports[`ModuleAGymCarousel component renders correctly 1`] = `
 <div
-  className="undefined "
+  className=" "
 >
   <Styled(errorBoundaryComponent)
     carouselConfig={
@@ -526,6 +526,103 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
   </Styled(errorBoundaryComponent)>
   <div
     className="bottom-blue-bar"
-  />
+  >
+    <div
+      className="button-list-container linkCTAList"
+    >
+      <Styled(ButtonList)
+        buttonListVariation="linkCTAList"
+        buttonsData={
+          Array [
+            Object {
+              "button": Object {
+                "external": 0,
+                "target": "",
+                "text": "Girl",
+                "title": "Girl",
+                "url": "/girl",
+              },
+              "image": Object {
+                "alt": "Girl",
+                "crop_d": "",
+                "crop_m": "",
+                "crop_t": "",
+                "title": "Girl",
+                "url": "http://image.com/girl",
+              },
+            },
+            Object {
+              "button": Object {
+                "external": 0,
+                "target": "",
+                "text": "Toddler Girl",
+                "title": "Toddler Girl",
+                "url": "/toddler-girl",
+              },
+              "image": Object {
+                "alt": "Toddler Girl alt",
+                "crop_d": "",
+                "crop_m": "",
+                "crop_t": "",
+                "title": "Toddler Girl title",
+                "url": "http://image.com/toddler-girl",
+              },
+            },
+            Object {
+              "button": Object {
+                "external": 0,
+                "target": "",
+                "text": "Boy",
+                "title": "Boy",
+                "url": "/boy",
+              },
+              "image": Object {
+                "alt": "Boy",
+                "crop_d": "",
+                "crop_m": "",
+                "crop_t": "",
+                "title": "Boy",
+                "url": "http://image.com/boy",
+              },
+            },
+            Object {
+              "button": Object {
+                "external": 0,
+                "target": "",
+                "text": "Toddler Boy",
+                "title": "Toddler Boy",
+                "url": "/toddler-boy",
+              },
+              "image": Object {
+                "alt": "Toddler Boy alt",
+                "crop_d": "",
+                "crop_m": "",
+                "crop_t": "",
+                "title": "Toddler Boy title",
+                "url": "http://image.com/toddler-boy",
+              },
+            },
+            Object {
+              "button": Object {
+                "external": 0,
+                "target": "",
+                "text": "Baby",
+                "title": "Baby",
+                "url": "/baby",
+              },
+              "image": Object {
+                "alt": "Baby",
+                "crop_d": "",
+                "crop_m": "",
+                "crop_t": "",
+                "title": "Baby",
+                "url": "http://image.com/baby",
+              },
+            },
+          ]
+        }
+      />
+    </div>
+  </div>
 </div>
 `;
