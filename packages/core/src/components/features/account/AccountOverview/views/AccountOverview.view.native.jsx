@@ -16,7 +16,7 @@ const AccountOverview = ({ labels }) => {
       <Panel title={labels.lbl_overview_profileInformationHeading} />
       <Panel title={labels.lbl_overview_addressBookHeading} />
       <Panel title={labels.lbl_overview_paymentHeading}>
-        <PaymentOverviewTile />
+        <PaymentOverviewTile labels={labels} />
       </Panel>
       <Panel title={labels.lbl_overview_myPreferencesHeading} />
       <Panel title={labels.lbl_overview_myPlaceRewardsCardHeading} />

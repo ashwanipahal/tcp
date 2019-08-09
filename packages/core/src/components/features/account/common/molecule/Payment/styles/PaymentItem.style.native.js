@@ -7,20 +7,19 @@ const PaymentContainer = styled.View`
 
 const PaymentInfoContainer = styled.View`
   flex-direction: row;
-  border: 1px solid green;
   margin-top: 8px;
 `;
 
 const PaymentInfo = styled.View`
   flex: 1;
   flex-direction: column;
-  border: 1px solid green;
+  margin-left: 4px;
 `;
 
 const TouchableLink = styled.TouchableHighlight.attrs({
   underlayColor: props => props.theme.colors.BUTTON.WHITE.ALT_FOCUS,
 })`
-  flex: 0.3;
+  flex: 0.2;
   margin-right: 10;
 `;
 
@@ -30,8 +29,7 @@ const PaymentDetails = {
 
 const PaymentType = styled.View`
   height: 90px;
-  border: 1px solid red;
-  flex: 1.7;
+  flex: 1.8;
 `;
 
 export {
