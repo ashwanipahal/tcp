@@ -2,6 +2,9 @@
 
 exports[`BossBannerView component renders correctly 1`] = `
 <styled.div>
+  <Styled(ErrorMessage)
+    error="This item is unavailable"
+  />
   <Styled(Row)
     className="product"
     fullBleed={true}
@@ -373,6 +376,21 @@ exports[`BossBannerView component renders correctly 1`] = `
             textAlign="left"
           >
             <u />
+          </Styled(BodyCopy)>
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="span"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          >
+            <u>
+              update
+            </u>
           </Styled(BodyCopy)>
         </Styled(Col)>
       </Styled(Row)>
