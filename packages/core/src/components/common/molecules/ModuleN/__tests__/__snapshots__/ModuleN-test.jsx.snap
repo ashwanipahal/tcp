@@ -19,12 +19,12 @@ exports[`N component renders correctly 1`] = `
               "link": Object {
                 "target": "",
                 "title": "",
-                "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
+                "url": "/p/",
               },
               "textItems": Array [
                 Object {
                   "color": "color2",
-                  "style": "moduleN-heading-wrapper",
+                  "style": "style1",
                   "text": "ALL CLEARANCE",
                 },
               ],
@@ -51,20 +51,12 @@ exports[`N component renders correctly 1`] = `
               },
               "textItems": Array [
                 Object {
-                  "style": "moduleN-promoBanner-text1",
-                  "text": "60-70",
+                  "style": "style6",
+                  "text": "50-70%OFF",
                 },
                 Object {
-                  "style": "moduleN-promoBanner-text2",
-                  "text": "%",
-                },
-                Object {
-                  "style": "moduleN-promoBanner-text3",
-                  "text": "OFF",
-                },
-                Object {
-                  "style": "moduleN-promoBanner-text4",
-                  "text": "No Exclusions",
+                  "style": "style4",
+                  "text": "No EXCLUSIVE",
                 },
               ],
             },
@@ -77,39 +69,39 @@ exports[`N component renders correctly 1`] = `
       buttonsData={
         Array [
           Object {
-            "external": "",
-            "target": "_blank",
+            "external": 0,
+            "target": "",
             "text": "girl",
-            "title": "",
-            "url": "https://www.childrensplace.com",
+            "title": "girl",
+            "url": "/c/",
           },
           Object {
-            "external": 1,
+            "external": 0,
             "target": "",
             "text": "toddler girl",
-            "title": "",
-            "url": "https://www.childrensplace.com",
+            "title": "toddler girl",
+            "url": "/p/",
           },
           Object {
             "external": 0,
             "target": "",
             "text": "boy",
-            "title": "",
-            "url": "https://www.childrensplace.com",
+            "title": "boy",
+            "url": "/p/",
           },
           Object {
             "external": 0,
             "target": "",
             "text": "toddler boy",
-            "title": "",
-            "url": "https://www.childrensplace.com",
+            "title": "toddler boy",
+            "url": "/c/",
           },
           Object {
             "external": 0,
             "target": "",
             "text": "baby",
-            "title": "",
-            "url": "https://www.childrensplace.com",
+            "title": "baby",
+            "url": "/c/",
           },
         ]
       }
@@ -130,12 +122,12 @@ exports[`N component renders correctly 1`] = `
               "link": Object {
                 "target": "",
                 "title": "",
-                "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
+                "url": "/p/",
               },
               "textItems": Array [
                 Object {
                   "color": "color2",
-                  "style": "moduleN-heading-wrapper",
+                  "style": "style1",
                   "text": "ALL CLEARANCE",
                 },
               ],
@@ -162,20 +154,12 @@ exports[`N component renders correctly 1`] = `
               },
               "textItems": Array [
                 Object {
-                  "style": "moduleN-promoBanner-text1",
-                  "text": "60-70",
+                  "style": "style6",
+                  "text": "50-70%OFF",
                 },
                 Object {
-                  "style": "moduleN-promoBanner-text2",
-                  "text": "%",
-                },
-                Object {
-                  "style": "moduleN-promoBanner-text3",
-                  "text": "OFF",
-                },
-                Object {
-                  "style": "moduleN-promoBanner-text4",
-                  "text": "No Exclusions",
+                  "style": "style4",
+                  "text": "No EXCLUSIVE",
                 },
               ],
             },
@@ -188,39 +172,39 @@ exports[`N component renders correctly 1`] = `
       buttonsData={
         Array [
           Object {
-            "external": "",
-            "target": "_blank",
+            "external": 0,
+            "target": "",
             "text": "girl",
-            "title": "",
-            "url": "https://www.childrensplace.com",
+            "title": "girl",
+            "url": "/c/",
           },
           Object {
-            "external": 1,
+            "external": 0,
             "target": "",
             "text": "toddler girl",
-            "title": "",
-            "url": "https://www.childrensplace.com",
+            "title": "toddler girl",
+            "url": "/p/",
           },
           Object {
             "external": 0,
             "target": "",
             "text": "boy",
-            "title": "",
-            "url": "https://www.childrensplace.com",
+            "title": "boy",
+            "url": "/p/",
           },
           Object {
             "external": 0,
             "target": "",
             "text": "toddler boy",
-            "title": "",
-            "url": "https://www.childrensplace.com",
+            "title": "toddler boy",
+            "url": "/c/",
           },
           Object {
             "external": 0,
             "target": "",
             "text": "baby",
-            "title": "",
-            "url": "https://www.childrensplace.com",
+            "title": "baby",
+            "url": "/c/",
           },
         ]
       }
@@ -246,12 +230,12 @@ exports[`N component renders correctly 1`] = `
               "link": Object {
                 "target": "",
                 "title": "",
-                "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
+                "url": "/p/",
               },
               "textItems": Array [
                 Object {
                   "color": "color2",
-                  "style": "moduleN-heading-wrapper",
+                  "style": "style1",
                   "text": "ALL CLEARANCE",
                 },
               ],
@@ -278,20 +262,12 @@ exports[`N component renders correctly 1`] = `
               },
               "textItems": Array [
                 Object {
-                  "style": "moduleN-promoBanner-text1",
-                  "text": "60-70",
+                  "style": "style6",
+                  "text": "50-70%OFF",
                 },
                 Object {
-                  "style": "moduleN-promoBanner-text2",
-                  "text": "%",
-                },
-                Object {
-                  "style": "moduleN-promoBanner-text3",
-                  "text": "OFF",
-                },
-                Object {
-                  "style": "moduleN-promoBanner-text4",
-                  "text": "No Exclusions",
+                  "style": "style4",
+                  "text": "No EXCLUSIVE",
                 },
               ],
             },
@@ -305,72 +281,72 @@ exports[`N component renders correctly 1`] = `
         Array [
           Object {
             "image": Object {
-              "alt": "Toddler Girl Image",
-              "title": "Toddler Girl",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              "alt": "",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v156206en-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
             },
             "link": Object {
               "external": 0,
-              "target": "",
-              "text": "TODDLER GIRL",
+              "target": "_self",
+              "text": "Girl",
               "title": "",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              "url": "/p/",
             },
           },
           Object {
             "image": Object {
-              "alt": "Girl Image",
-              "title": "Girl",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              "alt": "",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/id/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
             },
             "link": Object {
               "external": 0,
-              "target": "",
-              "text": "GIRL",
+              "target": "_self",
+              "text": "Boy",
               "title": "",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              "url": "/c/",
             },
           },
           Object {
             "image": Object {
-              "alt": "Toddler Girl Image",
-              "title": "Toddler Boy Girl",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              "alt": "",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w61640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
             },
             "link": Object {
               "external": 0,
-              "target": "",
-              "text": "TODDLER BOY",
+              "target": "_self",
+              "text": "Toddler Boy",
               "title": "",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              "url": "/c/",
             },
           },
           Object {
             "image": Object {
-              "alt": "Boy Image",
-              "title": "Boy",
+              "alt": "",
+              "title": "",
               "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
             },
             "link": Object {
               "external": 0,
-              "target": "",
-              "text": "BOY",
+              "target": "_self",
+              "text": "Toddler",
               "title": "",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              "url": "/p/",
             },
           },
           Object {
             "image": Object {
-              "alt": "Baby Image",
-              "title": "Baby",
+              "alt": "",
+              "title": "",
               "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
             },
             "link": Object {
               "external": 0,
-              "target": "",
-              "text": "BABY",
+              "target": "_self",
+              "text": "Baby",
               "title": "",
-              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+              "url": "/c/",
             },
           },
         ]
@@ -397,12 +373,12 @@ exports[`N component renders correctly 1`] = `
               "link": Object {
                 "target": "",
                 "title": "",
-                "url": "https://www.childrensplace.com/us/c/girls-kids-shorts?icid=hp_s3a_imagenbutton_g_050519_shorts",
+                "url": "/p/",
               },
               "textItems": Array [
                 Object {
                   "color": "color2",
-                  "style": "moduleN-heading-wrapper",
+                  "style": "style1",
                   "text": "ALL CLEARANCE",
                 },
               ],
@@ -429,20 +405,12 @@ exports[`N component renders correctly 1`] = `
               },
               "textItems": Array [
                 Object {
-                  "style": "moduleN-promoBanner-text1",
-                  "text": "60-70",
+                  "style": "style6",
+                  "text": "50-70%OFF",
                 },
                 Object {
-                  "style": "moduleN-promoBanner-text2",
-                  "text": "%",
-                },
-                Object {
-                  "style": "moduleN-promoBanner-text3",
-                  "text": "OFF",
-                },
-                Object {
-                  "style": "moduleN-promoBanner-text4",
-                  "text": "No Exclusions",
+                  "style": "style4",
+                  "text": "No EXCLUSIVE",
                 },
               ],
             },
@@ -458,29 +426,29 @@ exports[`N component renders correctly 1`] = `
             "external": 0,
             "target": "",
             "text": "TODDLER GIRL",
-            "title": "Toddle Girl",
-            "url": "http://www.childrensplace.com",
+            "title": "",
+            "url": "/p/",
           },
           Object {
             "external": 0,
             "target": "",
             "text": "GIRL",
-            "title": "Girl",
-            "url": "http://www.childrensplace.com",
+            "title": "",
+            "url": "/p/",
           },
           Object {
             "external": 0,
             "target": "",
             "text": "TODDLER BOY",
-            "title": "Toddler Boy",
-            "url": "http://www.childrensplace.com",
+            "title": "",
+            "url": "/c/",
           },
           Object {
             "external": 0,
             "target": "",
             "text": "BOY",
-            "title": "Boy",
-            "url": "http://www.childrensplace.com",
+            "title": "",
+            "url": "/c/",
           },
         ]
       }

@@ -9,6 +9,10 @@ export default css`
     background-color: white;
   }
 
+  .promo-link {
+    color: white;
+  }
+
   @media ${props => props.theme.mediaQuery.large} {
     .heading-wrapper {
       text-align: center;

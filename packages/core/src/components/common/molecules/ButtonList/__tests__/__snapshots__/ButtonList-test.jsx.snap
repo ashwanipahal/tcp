@@ -6,9 +6,9 @@ exports[`ButtonList component renders correctly 1`] = `
 >
   <Styled(Anchor)
     className="link-button"
-    href="http://www.childrensplace.com"
+    href="/p/"
     target=""
-    title="Toddle Girl"
+    title=""
   >
     <Styled(Button)
       buttonVariation="category-links-dark"
@@ -21,9 +21,9 @@ exports[`ButtonList component renders correctly 1`] = `
   </Styled(Anchor)>
   <Styled(Anchor)
     className="link-button"
-    href="http://www.childrensplace.com"
+    href="/p/"
     target=""
-    title="Girl"
+    title=""
   >
     <Styled(Button)
       buttonVariation="category-links-dark"
@@ -36,9 +36,9 @@ exports[`ButtonList component renders correctly 1`] = `
   </Styled(Anchor)>
   <Styled(Anchor)
     className="link-button"
-    href="http://www.childrensplace.com"
+    href="/c/"
     target=""
-    title="Toddler Boy"
+    title=""
   >
     <Styled(Button)
       buttonVariation="category-links-dark"
@@ -51,9 +51,9 @@ exports[`ButtonList component renders correctly 1`] = `
   </Styled(Anchor)>
   <Styled(Anchor)
     className="link-button"
-    href="http://www.childrensplace.com"
+    href="/c/"
     target=""
-    title="Boy"
+    title=""
   >
     <Styled(Button)
       buttonVariation="category-links-dark"
@@ -89,16 +89,16 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             data-locator="moduleN_image_1"
             imgData={
               Object {
-                "alt": "Toddler Girl Image",
-                "title": "Toddler Girl",
-                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+                "alt": "",
+                "title": "",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v156206en-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
               }
             }
           />
           <div
             className="image-comp"
           >
-            TODDLER GIRL
+            Girl
           </div>
         </Styled(Anchor)>
       </div>
@@ -118,16 +118,16 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             data-locator="moduleN_image_2"
             imgData={
               Object {
-                "alt": "Girl Image",
-                "title": "Girl",
-                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+                "alt": "",
+                "title": "",
+                "url": "https://res.cloudinary.com/tcp-dam-test/id/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
               }
             }
           />
           <div
             className="image-comp"
           >
-            GIRL
+            Boy
           </div>
         </Styled(Anchor)>
       </div>
@@ -147,16 +147,16 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             data-locator="moduleN_image_3"
             imgData={
               Object {
-                "alt": "Toddler Girl Image",
-                "title": "Toddler Boy Girl",
-                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+                "alt": "",
+                "title": "",
+                "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w61640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
               }
             }
           />
           <div
             className="image-comp"
           >
-            TODDLER BOY
+            Toddler Boy
           </div>
         </Styled(Anchor)>
       </div>
@@ -176,8 +176,8 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             data-locator="moduleN_image_4"
             imgData={
               Object {
-                "alt": "Boy Image",
-                "title": "Boy",
+                "alt": "",
+                "title": "",
                 "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
               }
             }
@@ -185,7 +185,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           <div
             className="image-comp"
           >
-            BOY
+            Toddler
           </div>
         </Styled(Anchor)>
       </div>
@@ -205,8 +205,8 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
             data-locator="moduleN_image_5"
             imgData={
               Object {
-                "alt": "Baby Image",
-                "title": "Baby",
+                "alt": "",
+                "title": "",
                 "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
               }
             }
@@ -214,7 +214,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
           <div
             className="image-comp"
           >
-            BABY
+            Baby
           </div>
         </Styled(Anchor)>
       </div>
@@ -229,9 +229,9 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
 >
   <Styled(Anchor)
     className="scroll-button"
-    href="https://www.childrensplace.com"
-    target="_blank"
-    title=""
+    href="/c/"
+    target=""
+    title="girl"
   >
     <Styled(Button)
       buttonVariation="fixed-width"
@@ -245,9 +245,9 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
   </Styled(Anchor)>
   <Styled(Anchor)
     className="scroll-button"
-    href="https://www.childrensplace.com"
+    href="/p/"
     target=""
-    title=""
+    title="toddler girl"
   >
     <Styled(Button)
       buttonVariation="fixed-width"
@@ -261,9 +261,9 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
   </Styled(Anchor)>
   <Styled(Anchor)
     className="scroll-button"
-    href="https://www.childrensplace.com"
+    href="/p/"
     target=""
-    title=""
+    title="boy"
   >
     <Styled(Button)
       buttonVariation="fixed-width"
@@ -277,9 +277,9 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
   </Styled(Anchor)>
   <Styled(Anchor)
     className="scroll-button"
-    href="https://www.childrensplace.com"
+    href="/c/"
     target=""
-    title=""
+    title="toddler boy"
   >
     <Styled(Button)
       buttonVariation="fixed-width"
@@ -293,9 +293,9 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
   </Styled(Anchor)>
   <Styled(Anchor)
     className="scroll-button"
-    href="https://www.childrensplace.com"
+    href="/c/"
     target=""
-    title=""
+    title="baby"
   >
     <Styled(Button)
       buttonVariation="fixed-width"
@@ -316,9 +316,9 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
 >
   <Styled(Anchor)
     className="stacked-button"
-    href="https://www.childrensplace.com"
-    target="_blank"
-    title=""
+    href="/c/"
+    target=""
+    title="girl"
   >
     <Styled(Button)
       buttonVariation="fixed-width"
@@ -332,9 +332,9 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
   </Styled(Anchor)>
   <Styled(Anchor)
     className="stacked-button"
-    href="https://www.childrensplace.com"
+    href="/p/"
     target=""
-    title=""
+    title="toddler girl"
   >
     <Styled(Button)
       buttonVariation="fixed-width"
@@ -348,9 +348,9 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
   </Styled(Anchor)>
   <Styled(Anchor)
     className="stacked-button"
-    href="https://www.childrensplace.com"
+    href="/p/"
     target=""
-    title=""
+    title="boy"
   >
     <Styled(Button)
       buttonVariation="fixed-width"
@@ -364,9 +364,9 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
   </Styled(Anchor)>
   <Styled(Anchor)
     className="stacked-button"
-    href="https://www.childrensplace.com"
+    href="/c/"
     target=""
-    title=""
+    title="toddler boy"
   >
     <Styled(Button)
       buttonVariation="fixed-width"
@@ -380,9 +380,9 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
   </Styled(Anchor)>
   <Styled(Anchor)
     className="stacked-button"
-    href="https://www.childrensplace.com"
+    href="/c/"
     target=""
-    title=""
+    title="baby"
   >
     <Styled(Button)
       buttonVariation="fixed-width"

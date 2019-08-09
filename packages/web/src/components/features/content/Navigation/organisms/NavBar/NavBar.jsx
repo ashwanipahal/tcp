@@ -14,6 +14,9 @@ const NavBar = props => {
     openDrawer,
     closeDrawer,
     hideL2Drawer,
+    openL3Drawer,
+    hideL3Drawer,
+    l3Drawer,
   } = props;
 
   return (
@@ -58,6 +61,9 @@ const NavBar = props => {
                   hideL2Drawer={hideL2Drawer(`l2-drawer-${index.toString()}`)}
                   className="nav-bar-l2"
                   l1Index={index}
+                  openL3Drawer={openL3Drawer}
+                  hideL3Drawer={hideL3Drawer}
+                  l3Drawer={l3Drawer}
                 />
               </Drawer>
             </L1NavItem>
@@ -76,6 +82,9 @@ NavBar.propTypes = {
   hideL2Drawer: PropTypes.func.isRequired,
   openDrawer: PropTypes.string.isRequired,
   closeDrawer: PropTypes.bool.isRequired,
+  openL3Drawer: PropTypes.func.isRequired,
+  hideL3Drawer: PropTypes.func.isRequired,
+  l3Drawer: PropTypes.shape({}).isRequired,
 };
 
 NavBar.defaultProps = {

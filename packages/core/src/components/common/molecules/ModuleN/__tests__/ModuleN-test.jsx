@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import mock from '../../../../../services/abstractors/common/moduleD/mockN';
+import mock from '../../../../../services/abstractors/common/moduleN/mock';
 import { ModuleNVanilla as ModuleN } from '../views/ModuleN';
 import { LinkText, PromoBanner } from '../..';
 
@@ -8,7 +8,7 @@ describe('N component', () => {
   let ModuleNComp;
 
   beforeEach(() => {
-    ModuleNComp = shallow(<ModuleN {...mock.moduleD.composites} />);
+    ModuleNComp = shallow(<ModuleN {...mock.moduleN.composites} />);
   });
   it('renders correctly', () => {
     expect(ModuleNComp).toMatchSnapshot();
