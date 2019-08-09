@@ -29,6 +29,7 @@ class CartItemRadioButtons extends React.Component {
     const radioGroupName = `ship-it-${productDetail.itemInfo.itemId}`;
     const commonSelectBox = 'common-select-box-css';
     const selectedMethod = 'selected-method';
+    const cmsLabel = '5%'; /* value come from cms */
     return (
       <div className={className}>
         <LabeledRadioButton
@@ -77,7 +78,7 @@ class CartItemRadioButtons extends React.Component {
               <div className="triangle-left" />
               <div className="promo-wrapper">
                 <BodyCopy fontSize="fs10" fontFamily="primary" fontWeight="black">
-                  {`${labels.extra} 5%`}
+                  {`${labels.extra} ${cmsLabel}`}
                 </BodyCopy>
                 <BodyCopy className="off-label" fontSize="fs10" fontFamily="primary">
                   {labels.off}

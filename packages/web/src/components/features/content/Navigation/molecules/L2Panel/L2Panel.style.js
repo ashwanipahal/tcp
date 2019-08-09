@@ -37,7 +37,7 @@ export default css`
   .icon-back {
     position: absolute;
     top: 17px;
-    left: 14px;
+    left: 0;
     background: url('/static/images/carrot-medium-left-gray.svg');
     width: 10px;
     height: 18px;
@@ -45,12 +45,12 @@ export default css`
   .l1-label {
     padding: 18px 0;
   }
-  .sizes-rage-background {
-    background: #f3f3f3;
-    width: 100%;
+  .sizes-range-background {
     min-height: 40px;
     text-align: center;
     position: relative;
+    border-bottom: 1px solid ${props => props.theme.colorPalette.gray[500]};
+    margin: 0 14px;
   }
 
   .l2-nav-link {
@@ -131,6 +131,7 @@ export default css`
       display: flex;
       ul {
         flex-grow: 1;
+        max-width: 50%;
       }
     }
     .l2-nav-link {
@@ -168,6 +169,12 @@ export default css`
       span {
         display: inline-block;
       }
+    }
+    .sizes-range-background {
+      background: ${props => props.theme.colorPalette.gray[300]};
+      width: 100%;
+      border-bottom: none;
+      margin: 0;
     }
   }
 `;

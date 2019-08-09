@@ -18,7 +18,7 @@ export const getModifiedPayload = payload => {
     billing_addressField3: payload.addressDetails.zipCode,
     billing_zipCode: payload.addressDetails.zipCode,
     billing_country: payload.addressDetails.country,
-    billing_nickName: `Billing_10151_${new Date().getTime().toString()}`,
+    // billing_nickName: `Billing_10151_${new Date().getTime().toString()}`,
     pay_account: payload.accountNo,
     pay_expire_month: (payload.expMonth || '').toString(), // on PLCC it's null
     payMethodId: PAYMENT_CONSTANTS.CREDIT_CARDS_PAYMETHODID[payload.ccBrand.toUpperCase()],
