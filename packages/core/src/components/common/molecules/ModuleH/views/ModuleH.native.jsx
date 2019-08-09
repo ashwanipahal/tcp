@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
 import { Image, BodyCopy, Heading } from '../../../atoms';
-import { getLocator, getScreenWidth, UrlHandler } from '../../../../../utils/utils.native';
+import { getLocator, getScreenWidth, UrlHandler } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import config from '../config';
 import colors from '../../../../../../styles/themes/colors/common';
@@ -77,7 +77,7 @@ class ModuleH extends React.PureComponent<Props, State> {
         key={index.toString()}
         alt={image.alt}
         source={{ uri: this.getUrlWithCrop(image.url) }}
-        data-locator={`${getLocator('moduleH_composite_image')}_${index + 1}`}
+        testID={`${getLocator('moduleH_composite_image')}${index + 1}`}
         height={MODULE_HEIGHT}
         width={MODULE_WIDTH}
       />
@@ -109,6 +109,7 @@ class ModuleH extends React.PureComponent<Props, State> {
             UrlHandler(link.url);
           }}
           style={linksData.length < maxLimit ? lessThanSixLinkStyle : linkStyle}
+          testID={`${getLocator('moduleH_cta_links')}${index + 1}`}
         />
       );
     });
@@ -140,7 +141,7 @@ class ModuleH extends React.PureComponent<Props, State> {
                     color="white"
                     fontWeight="black"
                     text={textLine.text}
-                    data-locator={`${getLocator('moduleH_header_text')}_${index + 1}`}
+                    testID={`${getLocator('moduleH_header_text')}${index + 1}`}
                   />
                 </TouchableOpacity>
               ) : (
@@ -152,7 +153,7 @@ class ModuleH extends React.PureComponent<Props, State> {
                   color="white"
                   fontWeight="black"
                   text={textLine.text}
-                  data-locator={`${getLocator('moduleH_header_text')}_${index + 1}`}
+                  testID={`${getLocator('moduleH_header_text')}${index + 1}`}
                 />
               );
             })}
@@ -167,6 +168,8 @@ class ModuleH extends React.PureComponent<Props, State> {
             vertical={MODULE_DIRECTION}
             carouselConfig={{
               autoplay: true,
+              dataLocatorPlay: getLocator('moduleH_play_button'),
+              dataLocatorPause: getLocator('moduleH_pause_button'),
             }}
           />
         )}

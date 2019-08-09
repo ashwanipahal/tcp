@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LogOutView Page should render correctly 1`] = `
+<Fragment
+  className=""
+>
+  <Styled(Anchor)
+    anchorVariation="primary"
+    className="elem-pb-SM"
+    fontSizeVariation="large"
+    onClick={[Function]}
+  >
+    hello
+  </Styled(Anchor)>
+</Fragment>
+`;

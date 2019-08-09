@@ -6,7 +6,7 @@ exports[`Drawer component renders correctly 1`] = `
     className="undefined nav-bar-l1-item"
     color="text.hint"
     component="li"
-    dataLocator=""
+    data-locator=""
     fontFamily="secondary"
     fontSize={
       Array [
@@ -18,29 +18,38 @@ exports[`Drawer component renders correctly 1`] = `
     fontWeight="semibold"
     letterSpacing="normal"
     lineHeight="lh115"
+    tabIndex={0}
     textAlign="left"
   >
-    <span
-      className="nav-bar-l1-item-label "
-    />
-    <span
-      className="nav-bar-l1-item-content"
-      data-locator="promo_badge_undefined"
+    <div
+      className="nav-bar-l1-content"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      tabIndex={0}
     >
-      <Styled(PromoBadge)
-        data={
-          Array [
-            Object {
-              "style": "style1",
-              "text": "30% off shoes",
-            },
-          ]
-        }
+      <span
+        className="nav-bar-item-label "
       />
-    </span>
-    <span
-      className="icon-arrow"
-    />
+      <span
+        className="nav-bar-item-content "
+        data-locator="promo_badge_undefined"
+      >
+        <Styled(PromoBadge)
+          data={
+            Array [
+              Object {
+                "style": "style1",
+                "text": "30% off shoes",
+              },
+            ]
+          }
+        />
+      </span>
+      <span
+        className="icon-arrow"
+      />
+    </div>
   </Styled(BodyCopy)>
 </Fragment>
 `;

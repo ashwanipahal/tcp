@@ -1,7 +1,8 @@
-// @flow
 import React from 'react';
 import { View } from 'react-native';
 import BodyCopy from '../../../atoms/BodyCopy';
+
+// @flow
 
 type Props = {
   address: {
@@ -33,7 +34,6 @@ type GetAddressLineProps = {
     country: ?string,
     phone1: ?string,
   },
-  dataLocatorPrefix: ?string,
 };
 
 const getAddressfromDiffLines = ({ address }: GetAddressLineProps) => {
@@ -55,10 +55,10 @@ const getAddressfromDiffLines = ({ address }: GetAddressLineProps) => {
   );
 };
 
-const getAddessLines = ({ address, dataLocatorPrefix }) => {
+const getAddessLines = ({ address }) => {
   return address.addressLine
     .filter(al => al.trim() !== '')
-    .map((addressLine, index) => (
+    .map(addressLine => (
       <BodyCopy
         fontSize="fs16"
         mobilefontFamily={['secondary']}
@@ -75,14 +75,7 @@ const getAddessLines = ({ address, dataLocatorPrefix }) => {
  * @param {object} address address object
  */
 
-const Address = ({
-  address,
-  className,
-  dataLocatorPrefix,
-  fontWeight,
-  showPhone,
-  showCountry,
-}: Props) =>
+const Address = ({ address, dataLocatorPrefix, showPhone, showCountry }: Props) =>
   address && (
     <View>
       <BodyCopy

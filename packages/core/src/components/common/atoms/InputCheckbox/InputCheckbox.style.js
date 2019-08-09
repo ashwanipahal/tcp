@@ -3,7 +3,6 @@ import { css } from 'styled-components';
 const styles = css`
   display: inline-flex;
   align-items: center;
-  height: 50px;
 
   & .CheckBox__input {
     position: relative;

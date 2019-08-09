@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { showOverlay, closeOverlay } from '@tcp/core/src/utils';
 import style from './Drawer.style';
 
 /**
@@ -26,9 +27,19 @@ const showOnViewport = viewport => {
 };
 
 const Drawer = props => {
-  const { children, className, small, medium, large, open } = props;
+  const { children, className, small, medium, large, open, id, close, renderOverlay } = props;
 
-  const classToOpen = open ? 'tcp-drawer__isOpen' : '';
+  let openDrawer = open;
+  if (typeof open === 'string') {
+    openDrawer = open === id;
+  }
+  if (close && renderOverlay) {
+    closeOverlay();
+  }
+  if (openDrawer && renderOverlay) {
+    showOverlay();
+  }
+  const classToOpen = openDrawer ? 'tcp-drawer__isOpen' : '';
   const classToHideOnViewports = hideOnViewport({ small, medium, large });
   const classToShowOnViewports = showOnViewport({ small, medium, large });
 
@@ -39,12 +50,13 @@ const Drawer = props => {
       isDrawerNotRequiredOnAllViewports(small, medium, large) && (
         <div className={`${classToShowOnViewports}`}>{children}</div>
       )}
-      <React.Fragment>
-        <aside className={`tcp-drawer ${classToOpen} ${classToHideOnViewports}`}>
-          <div className="tcp-drawer-content">{children}</div>
-        </aside>
-        <div className={`${open && 'tcp-drawer-overlay'} ${classToHideOnViewports}`} />
-      </React.Fragment>
+      {openDrawer && (
+        <React.Fragment>
+          <aside className={`tcp-drawer ${classToOpen} ${classToHideOnViewports}`}>
+            <div className="tcp-drawer-content">{children}</div>
+          </aside>
+        </React.Fragment>
+      )}
     </div>
   );
 };
@@ -56,12 +68,16 @@ Drawer.propTypes = {
   medium: PropTypes.bool,
   large: PropTypes.bool,
   open: PropTypes.bool.isRequired,
+  id: PropTypes.string.isRequired,
+  close: PropTypes.bool.isRequired,
+  renderOverlay: PropTypes.bool,
 };
 
 Drawer.defaultProps = {
   small: false,
   medium: false,
   large: false,
+  renderOverlay: false,
 };
 
 export { Drawer as DrawerVanilla };

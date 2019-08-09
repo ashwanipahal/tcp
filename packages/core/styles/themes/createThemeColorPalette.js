@@ -5,6 +5,7 @@ import red from './colors/red';
 import common from './colors/common';
 import yellow from './colors/yellow';
 import orange from './colors/orange';
+import pink from './colors/pink';
 
 function createThemeColorPalette(colors = {}) {
   const { primary = { light: blue[300], main: blue[500], dark: blue[700] } } = colors;
@@ -26,6 +27,9 @@ function createThemeColorPalette(colors = {}) {
     gray,
     yellow,
     orange,
+    red,
+    pink,
+    blue,
   };
 }
 

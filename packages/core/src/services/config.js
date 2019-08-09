@@ -7,6 +7,10 @@ const graphQLAPIKey = {
   sandbox: 'da2-4zbdyvv4cbcyhbpanpak25wtai',
 };
 
+export const googleAppConfig = {
+  google_map_api_key: 'AIzaSyDYl5bgJ8yD30bRchcB0hKgZgJR0JqdrO4',
+};
+
 export const awsAppSync = {
   aws_project_region: 'us-east-1',
   aws_appsync_region: 'us-east-1',
@@ -45,13 +49,15 @@ export const API_CONFIG = {
     brandIdCMS: 'Gymboree',
   },
   sitesInfo: {
+    port: 8081,
     proto: 'https',
+    protoSeparator: '://',
     langId: '-1',
     MELISSA_KEY: '63987687',
     BV_API_KEY: 'e50ab0a9-ac0b-436b-9932-2a74b9486436',
     traceIdCount: 0,
-    assetHost: 'https://test4.childrensplace.com',
-    domain: '://test4.childrensplace.com/api/',
+    assetHost: '/',
+    domain: '/',
     unbxd: '://search.unbxd.io',
   },
   US_CONFIG_OPTIONS: {
@@ -85,4 +91,5 @@ export const API_CONFIG = {
 export default {
   awsAppSync,
   API_CONFIG,
+  googleAppConfig,
 };

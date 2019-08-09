@@ -6,6 +6,8 @@ import Address from '../../../../common/molecules/Address';
 import styles from '../styles/AddressTile.style';
 import Badge from '../../../../common/atoms/Badge';
 import utils from '../../../../../utils';
+import Col from '../../../../common/atoms/Col';
+import Row from '../../../../common/atoms/Row';
 
 // @flow
 
@@ -66,45 +68,57 @@ class AddressBookTile extends React.Component<Props> {
     return (
       <div className={className}>
         <div className="addressTile__row--twoCol">
-          <Address address={address} dataLocatorPrefix="addressbook" fontWeight="bold" />
-          <div>
-            {address.primary === 'true' && (
-              <Badge showCheckmark dataLocator="addressbook-defshippinglabel">
-                {labels.addressBook.ACC_LBL_DEFAULT_SHIPPING}
-              </Badge>
-            )}
-            {address.xcont_isDefaultBilling === 'true' && (
-              <Badge showCheckmark dataLocator="addressbook-defbillinglabel">
-                {labels.addressBook.ACC_LBL_DEFAULT_BILLING}
-              </Badge>
-            )}
-            {address.xcont_isDefaultBilling !== 'true' &&
-              address.xcont_isBillingAddress === 'true' && (
-                <Badge dataLocator="addressbook-billinglabel">
-                  {labels.addressBook.ACC_LBL_BILLING}
-                </Badge>
-              )}
-            {address.primary !== 'true' && address.xcont_isShippingAddress === 'true' && (
-              <Badge dataLocator="addressbook-shippinglabel">
-                {labels.addressBook.ACC_LBL_SHIPPING}
-              </Badge>
-            )}
-            {address.primary !== 'true' && (
-              <div className="textRight">
-                <Anchor
-                  fontSizeVariation="small"
-                  underline
-                  anchorVariation="primary"
-                  handleLinkClick={this.handleDefaultLinkClick}
-                  noLink
-                  to=""
-                  data-locator="addressbook-makedefault"
-                >
-                  {labels.common.ACC_LBL_MAKE_DEFAULT}
-                </Anchor>
+          <Row fullBleed>
+            <Col
+              colSize={{
+                small: 3,
+                large: 7,
+                medium: 4,
+              }}
+            >
+              <Address address={address} dataLocatorPrefix="addressbook" fontWeight="bold" />
+            </Col>
+            <Col
+              colSize={{
+                small: 3,
+                large: 5,
+                medium: 4,
+              }}
+            >
+              <div>
+                {address.primary === 'true' && (
+                  <Badge showCheckmark dataLocator="addressbook-defshippinglabel">
+                    {labels.addressBook.ACC_LBL_DEFAULT_SHIPPING}
+                  </Badge>
+                )}
+                {address.xcont_isDefaultBilling === 'true' && (
+                  <Badge showCheckmark dataLocator="addressbook-defbillinglabel">
+                    {labels.addressBook.ACC_LBL_DEFAULT_BILLING}
+                  </Badge>
+                )}
+                {address.primary !== 'true' && address.xcont_isShippingAddress === 'true' && (
+                  <Badge dataLocator="addressbook-shippinglabel">
+                    {labels.addressBook.ACC_LBL_SHIPPING}
+                  </Badge>
+                )}
+                {address.primary !== 'true' && (
+                  <div className="textRight">
+                    <Anchor
+                      fontSizeVariation="small"
+                      underline
+                      anchorVariation="primary"
+                      handleLinkClick={this.handleDefaultLinkClick}
+                      noLink
+                      to=""
+                      data-locator="addressbook-makedefault"
+                    >
+                      {labels.common.lbl_common_makeDefault}
+                    </Anchor>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
+            </Col>
+          </Row>
         </div>
         <div className="addressTile__row">
           <Anchor
@@ -115,7 +129,7 @@ class AddressBookTile extends React.Component<Props> {
             data-locator="addressbook-edit"
             onClick={this.onEditAddressClick}
           >
-            {labels.common.ACC_LBL_EDIT}
+            {labels.common.lbl_common_edit}
           </Anchor>
           <Anchor
             fontSizeVariation="large"
@@ -125,7 +139,7 @@ class AddressBookTile extends React.Component<Props> {
             data-locator="addressbook-deletelink"
             onClick={e => this.onDeleteAddressClick(e)}
           >
-            {labels.common.ACC_LBL_DELETE}
+            {labels.common.lbl_common_delete}
           </Anchor>
         </div>
       </div>

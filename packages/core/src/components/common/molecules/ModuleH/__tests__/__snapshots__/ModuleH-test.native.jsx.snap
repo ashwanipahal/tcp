@@ -11,11 +11,11 @@ exports[`ModuleH component renders correctly 1`] = `
     >
       <Styled(Heading)
         color="white"
-        data-locator="moduleH_header_text_1"
         fontFamily="primary"
         fontSize="fs36"
         fontWeight="black"
         letterSpacing="ls167"
+        testID="moduleH_header_text_1"
         text="New arrivals"
         textAlign="left"
       />
@@ -28,20 +28,22 @@ exports[`ModuleH component renders correctly 1`] = `
     >
       <Styled(Heading)
         color="white"
-        data-locator="moduleH_header_text_2"
         fontFamily="primary"
         fontSize="fs36"
         fontWeight="black"
         letterSpacing="ls167"
+        testID="moduleH_header_text_2"
         text="New adventures"
         textAlign="left"
       />
     </TouchableOpacity>
   </Styled(View)>
-  <SnapCarousel
+  <WithTheme(SnapCarousel)
     carouselConfig={
       Object {
         "autoplay": true,
+        "dataLocatorPause": "moduleH_pause_button",
+        "dataLocatorPlay": "moduleH_play_button",
       }
     }
     data={
@@ -161,6 +163,7 @@ exports[`ModuleH component renders correctly 1`] = `
           "marginTop": 38,
         }
       }
+      testID="moduleH_cta_links_1"
       text="Toddler Girl"
       textAlign="left"
     />
@@ -180,6 +183,7 @@ exports[`ModuleH component renders correctly 1`] = `
           "marginTop": 38,
         }
       }
+      testID="moduleH_cta_links_2"
       text="Girl"
       textAlign="left"
     />
@@ -199,6 +203,7 @@ exports[`ModuleH component renders correctly 1`] = `
           "marginTop": 38,
         }
       }
+      testID="moduleH_cta_links_3"
       text="Toddler boy"
       textAlign="left"
     />
@@ -218,6 +223,7 @@ exports[`ModuleH component renders correctly 1`] = `
           "marginTop": 38,
         }
       }
+      testID="moduleH_cta_links_4"
       text="Boy"
       textAlign="left"
     />
@@ -237,6 +243,7 @@ exports[`ModuleH component renders correctly 1`] = `
           "marginTop": 38,
         }
       }
+      testID="moduleH_cta_links_5"
       text="Baby"
       textAlign="left"
     />

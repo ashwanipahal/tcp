@@ -1,17 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`HomePageView should render correctly 1`] = `
-<HomePageView
-  getBootstrapData={[MockFunction]}
-  slot_1={
-    Object {
-      "className": "moduleD",
-    }
-  }
-  slot_2={
-    Object {
-      "className": "moduleH",
-    }
-  }
-/>
+<ScrollViewMock>
+  <ModuleN />
+  <SlotA
+    className="moduleD"
+  />
+  <SlotB
+    className="moduleH"
+  />
+  <SlotC />
+  <SlotD />
+  <Styled(CustomButton)
+    buttonVariation="variable-width"
+    customStyle={Object {}}
+    disableButton={false}
+    fullWidth={true}
+    onPress={[Function]}
+    text="PLP Page"
+    url=""
+  />
+</ScrollViewMock>
 `;

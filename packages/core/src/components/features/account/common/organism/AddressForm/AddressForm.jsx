@@ -177,6 +177,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
               component={InputCheckbox}
               dataLocator="addnewaddress-setdefaddress"
               disabled={isMakeDefaultDisabled}
+              className="AddAddressForm__makeDefault"
             >
               {labels.addressBook.ACC_LBL_SET_DEFAULT}
             </Field>
@@ -194,7 +195,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
               type="button"
               data-locator="addnewaddress-cancel"
             >
-              {labels.common.ACC_LBL_CANCEL_CTA_CAPS}
+              {labels.common.lbl_common_cancelCTACaps}
             </Button>
           </Col>
           <Col
@@ -210,7 +211,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
               data-locator="addnewaddress-addaddress"
             >
               {isEdit
-                ? labels.common.ACC_LBL_UPDATE_ADDRESS_CTA
+                ? labels.common.lbl_common_updateAddressCTA
                 : labels.addressBook.ACC_LBL_ADD_ADDRESS_CTA}
             </Button>
           </Col>

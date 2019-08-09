@@ -42,7 +42,9 @@ exports[`Header Component Header should render correctly 1`] = `
         />
       </Styled(TouchableOpacity)>
     </Styled(View)>
-    <Styled(TouchableOpacity)>
+    <Styled(TouchableOpacity)
+      onPress={[Function]}
+    >
       <Styled(Image)
         data-locator="global_headerpanelbagicon"
         source={
@@ -67,9 +69,6 @@ exports[`Header Component Header should render correctly 1`] = `
         text={0}
       />
     </Styled(TouchableOpacity)>
-  </Styled(View)>
-  <Styled(View)>
-    <HeaderPromo />
   </Styled(View)>
 </Styled(SafeAreaView)>
 `;

@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Detail Coupon Modal should render correctly 1`] = `
+<Styled(Modal)
+  className="TCPModal__Content"
+  closeIconDataLocator="coupondetailmodalcrossicon"
+  fixedWidth={true}
+  isOpen={false}
+  maxWidth="616px"
+  minHeight="500px"
+  onRequestClose={[Function]}
+  overlayClassName="TCPModal__Overlay"
+>
+  <div>
+    <Styled(BodyStyle)
+      className="couponModal_modalTitle"
+      dataLocator="coupondetailmodalconfirmtext"
+      fontFamily="secondaryFontFamily"
+      fontWeight="bold"
+    >
+      $10 OFF On $80
+    </Styled(BodyStyle)>
+    <Styled(BodyStyle)
+      className="couponModal_modalSubTitle"
+      dataLocator="coupondetailmodalconfirmtext"
+      fontFamily="secondaryFontFamily"
+      fontWeight="bold"
+    >
+      undefined 8/10/19
+    </Styled(BodyStyle)>
+    <div
+      className="couponModal_modalbarcode"
+    >
+      Y00105578
+    </div>
+    <div
+      className="couponModal_btnWrapper"
+    >
+      <Styled(Button)
+        buttonVariation="fixed-width"
+        className="couponModal_applyToBag couponModal_btn"
+        dataLocator="coupondetailmodalyesdeletebtn"
+        fill="BLUE"
+      />
+    </div>
+    <div
+      className="couponModal_print"
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="couponModal_print_anchor"
+        data-locator="couponcard-help-applying"
+        fontSize="fs14"
+        onClick={[Function]}
+        to="/#"
+        underline={true}
+      />
+    </div>
+    <Styled(BodyStyle)
+      className="couponModal_modalLongDesc"
+      dataLocator="coupondetailmodalconfirmtext"
+      fontFamily="secondaryFontFamily"
+    >
+      undefined
+    </Styled(BodyStyle)>
+    <Styled(BodyStyle)
+      className="couponModal_modalLongDesc"
+      dataLocator="coupondetailmodalconfirmtext"
+      fontFamily="secondaryFontFamily"
+    >
+      undefined
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="couponModal_print_anchor"
+        data-locator="couponcard-help-applying"
+        fontSize="fs14"
+        onClick={[Function]}
+        underline={true}
+      >
+        undefined
+      </Styled(Anchor)>
+       and 
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="couponModal_print_anchor"
+        data-locator="couponcard-help-applying"
+        fontSize="fs14"
+        onClick={[Function]}
+        underline={true}
+      >
+        undefined
+      </Styled(Anchor)>
+    </Styled(BodyStyle)>
+  </div>
+</Styled(Modal)>
+`;

@@ -3,7 +3,7 @@ import React from 'react';
 import { Image } from 'react-native';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../Image.style';
-import { cropImageUrl } from '../../../../../utils/utils.native';
+import { cropImageUrl } from '../../../../../utils/index.native';
 
 type Props = {
   source: string,

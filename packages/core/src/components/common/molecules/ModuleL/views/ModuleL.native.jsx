@@ -1,8 +1,9 @@
 // @flow
 import React from 'react';
 import { FlatList } from 'react-native';
-import { UrlHandler, getScreenWidth } from '../../../../../utils/utils.native';
+import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
 import { Image, BodyCopy, Anchor } from '../../../atoms';
+import PromoBanner from '../../PromoBanner';
 import LinkText from '../../LinkText';
 import {
   Container,
@@ -12,6 +13,13 @@ import {
   LinkContainer,
   ListContainer,
 } from '../ModuleL.styles.native';
+
+type Props = {
+  imageGrid: Array<Object>,
+  headerText: Array<Object>,
+  navigation: Object,
+  promoBanner: Array<Object>,
+};
 
 /**
  * To enable the anchorIcon.
@@ -32,41 +40,49 @@ const keyExtractor = (_, index) => index.toString();
  * @return {node} function returns module L single element item.
  */
 
-const renderitem = item => {
+const renderItem = (item, navigation) => {
   const {
     item: { image, link },
+    index,
   } = item;
   return (
-    <ChildContainer
-      onPress={() => {
-        UrlHandler(link.url);
-      }}
+    <Anchor
+      url={link.url}
+      navigation={navigation}
+      external={link.external}
+      testID={`${getLocator('moduleL_tiles')}${index + 1}`}
     >
-      <Image url={image.url} height={127} crop={image.crop_m} />
-      <MessageContainer>
-        <BodyCopyContainer width={width}>
-          <BodyCopy
-            fontSize="fs20"
-            color="black"
-            letterSpacing="ls222"
-            text={image.alt}
-            onPress={() => {
-              UrlHandler(link.url);
-            }}
-          />
-        </BodyCopyContainer>
-        <LinkContainer>
-          <Anchor
-            fontSizeVariation="xlarge"
-            text={link.text}
-            visible={anchorIcon}
-            onPress={() => {
-              UrlHandler(link.url);
-            }}
-          />
-        </LinkContainer>
-      </MessageContainer>
-    </ChildContainer>
+      <ChildContainer>
+        <Image
+          url={image.url}
+          height={127}
+          crop={image.crop_m}
+          testID={`${getLocator('moduleL_image')}${index + 1}`}
+        />
+        <MessageContainer>
+          <BodyCopyContainer width={width}>
+            <BodyCopy
+              fontSize="fs20"
+              color="black"
+              letterSpacing="ls222"
+              text={image.alt}
+              testID={`${getLocator('moduleL_title')}${index + 1}`}
+            />
+          </BodyCopyContainer>
+          <LinkContainer>
+            <Anchor
+              fontSizeVariation="xlarge"
+              text={link.text}
+              visible={anchorIcon}
+              url={link.url}
+              navigation={navigation}
+              external={link.external}
+              testID={`${getLocator('moduleL_link')}${index + 1}`}
+            />
+          </LinkContainer>
+        </MessageContainer>
+      </ChildContainer>
+    </Anchor>
   );
 };
 
@@ -78,24 +94,32 @@ const renderitem = item => {
  */
 
 const ModuleL = (props: Props) => {
-  const { imageGrid, headerText } = props;
+  const { headerText, imageGrid, navigation, promoBanner } = props;
   return (
     <Container>
-      <LinkText
-        type="heading"
-        fontFamily="primary"
-        fontSize="fs36"
-        letterSpacing="ls167"
-        textAlign="center"
-        color="text.primary"
-        fontWeight="black"
-        textItems={headerText[0].textItems}
-        onPress={() => {
-          UrlHandler(headerText[0].link.url);
-        }}
-      />
+      {headerText && (
+        <LinkText
+          headerText={headerText}
+          navigation={navigation}
+          type="heading"
+          fontFamily="primary"
+          fontSize="fs36"
+          letterSpacing="ls167"
+          textAlign="center"
+          color="text.primary"
+          fontWeight="black"
+          testID={getLocator('moduleL_header_text')}
+        />
+      )}
+      {promoBanner && (
+        <PromoBanner promoBanner={promoBanner} testID={getLocator('moduleL_promobanner_text')} />
+      )}
       <ListContainer>
-        <FlatList keyExtractor={keyExtractor} data={imageGrid} renderItem={renderitem} />
+        <FlatList
+          keyExtractor={keyExtractor}
+          data={imageGrid}
+          renderItem={item => renderItem(item, navigation)}
+        />
       </ListContainer>
     </Container>
   );

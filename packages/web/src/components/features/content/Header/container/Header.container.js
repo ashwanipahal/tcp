@@ -4,8 +4,8 @@ import {
   closeNavigationDrawer,
 } from '@tcp/core/src/components/common/organisms/Header/container/Header.actions';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
+import { getUserName } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
 import HeaderView from '../views';
-import { getUserName } from './Header.selectors';
 
 const mapStateToProps = state => {
   const { Header } = state;
@@ -20,8 +20,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    openNavigationDrawer: () => dispatch(openNavigationDrawer()),
-    closeNavigationDrawer: () => dispatch(closeNavigationDrawer()),
+    openNavigationDrawer: id => {
+      dispatch(openNavigationDrawer(id));
+    },
+    closeNavigationDrawer: () => {
+      dispatch(closeNavigationDrawer());
+    },
     openOverlay: component => dispatch(openOverlayModal(component)),
   };
 };

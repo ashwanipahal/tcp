@@ -5,6 +5,7 @@ import MyAccountLeftNav from './MyAccountLeftNav.view';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/MyAccountContainer.style';
 import Dropdown from '../../../../common/molecules/Dropdown';
+import AccountHeader from '../../common/organism/AccountHeader';
 
 // @flow
 type Props = {
@@ -27,14 +28,18 @@ const MyAccountLayoutView = (props: Props) => {
   const { navData, mainContent: MainContent, active, className, router, labels } = props;
   return (
     <div className={className}>
-      <Row className="is-hidden-nav">
-        <Col colSize={{ large: 12, medium: 4, small: 6 }} offsetLeft={{ medium: 2 }}>
-          <Dropdown options={navData} active="Account Overview" activeComponent={active} />
+      <Row className="elem-mb-XL">
+        <Col colSize={{ large: 12, medium: 8, small: 6 }}>
+          <AccountHeader labels={labels} />
         </Col>
       </Row>
-
-      <Row className="is-visible-nav">
-        <Col colSize={{ large: 2, medium: 8, small: 6 }}>
+      <Row className="is-hidden-nav">
+        <Col colSize={{ large: 12, medium: 4, small: 6 }} offsetLeft={{ medium: 2 }}>
+          <Dropdown options={navData} active={active} />
+        </Col>
+      </Row>
+      <Row>
+        <Col colSize={{ large: 2, medium: 8, small: 6 }} className="is-visible-nav">
           <MyAccountLeftNav navData={navData} active={active} />
         </Col>
         <Col colSize={{ large: 10, medium: 8, small: 6 }}>

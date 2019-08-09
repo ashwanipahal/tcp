@@ -10,6 +10,7 @@ import { getImgPath } from '../../ProductListingPage/util/utility';
 import ProductListingPageStyle from '../styles/ProductListingPage.style.native';
 import AddedToBagContainer from '../../../CnC/AddedToBag';
 import ProductTile from '../molecules/ProductTile.view.native';
+import OrderLedgerContainer from '../../../CnC/BagPage/organisms/OrderLedger';
 
 export class ProductListView extends React.Component {
   addToBagEcom = (product, quantity, brand, formData) => {
@@ -40,7 +41,7 @@ export class ProductListView extends React.Component {
     const { className, addToCartEcom, giftCardProducts } = this.props;
     let { data } = this.props;
     let allProducts = [];
-    if (giftCardProducts.length && data.length) {
+    if (giftCardProducts.length || data.length) {
       allProducts = [...data, ...giftCardProducts];
     }
 

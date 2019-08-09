@@ -17,19 +17,26 @@ export const Touchable = styled.TouchableOpacity`
 
 export const TouchableView = styled.TouchableOpacity`
   align-items: center;
+  width: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
 `;
 
 export const Icon = styled.Image`
   width: 6px;
   height: 10px;
-  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
 export const Container = styled.View`
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
+`;
+
+export const ControlsWrapper = styled.View`
+  flex-direction: row;
+  justify-content: center;
+`;
+
+export const PlayPauseButtonView = styled.View`
+  width: 30px;
 `;
 
 export default { Touchable, TouchableView, Icon, Container };

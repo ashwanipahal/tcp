@@ -5,8 +5,6 @@ const buildQuery = ({ brand, country, channel }) => `
       name
       id
       mainCategory {
-        contentId
-        name
         set {
           key
 					value
@@ -44,13 +42,12 @@ const buildQuery = ({ brand, country, channel }) => `
               }
             }
             textBanner {
-              linkClass {
+              link {
                 url
                 text
                 target
                 title
                 external
-                class
               }
               textItems {
                 style
@@ -71,6 +68,8 @@ const buildQuery = ({ brand, country, channel }) => `
     }
     subCategories {
       categoryContent {
+        seoToken
+        groupIdentifierSequence
         isShortImage
         isUnique
         productCount
@@ -87,6 +86,8 @@ const buildQuery = ({ brand, country, channel }) => `
       }
       subCategories {
         categoryContent {
+          seoToken
+          groupIdentifierSequence
           isShortImage
           isUnique
           productCount

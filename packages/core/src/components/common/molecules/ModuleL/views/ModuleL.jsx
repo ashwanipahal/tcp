@@ -3,7 +3,7 @@ import React from 'react';
 import { Col, Row } from '../../../atoms';
 import errorBoundary from '../../../hoc/errorBoundary';
 import withStyles from '../../../hoc/withStyles';
-import { Carousel, LinkText, PromoTextBanner } from '../..';
+import { Carousel, LinkText, PromoBanner } from '../..';
 import { getIconPath, getLocator } from '../../../../../utils';
 import config from '../config';
 import ModuleLTile from './ModuleL.Tile';
@@ -13,8 +13,8 @@ type Props = {
   className: string,
   headerText: Array<Object>,
   imageGrid: Array<Object>,
-  imagesPerSlide: string,
-  promoTextBanner: Array<Object>,
+  set: Array<Object>,
+  promoBanner: Array<Object>,
 };
 
 /**
@@ -35,8 +35,21 @@ const renderTiles = tiles => {
  * @param {headerText} headerText : Header data object
  * @param {imageGrid} imageGrid : Slides data in array list
  */
-const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide, promoTextBanner }: Props) => {
+const ModuleL = ({
+  className,
+  headerText,
+  imageGrid,
+  set: [{ val: imagesPerSlide }],
+  promoBanner,
+}: Props) => {
   const options = config.CAROUSEL_OPTIONS;
+  options.prevArrow = (
+    <button type="button" data-locator="moduleL_left_arrow" className="slick-prev" />
+  );
+  options.nextArrow = (
+    <button type="button" data-locator="moduleL_right_arrow" className="slick-prev" />
+  );
+  const checkPromo = promoBanner && promoBanner.length;
   if (parseInt(imagesPerSlide, 10) === 4) {
     options.rows = 2;
   }
@@ -55,17 +68,16 @@ const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide, promoTextBa
           <LinkText
             headerText={headerText}
             headingClass="moduleL__header"
-            component="div"
-            fontSize={['fs32', 'fs32', 'fs48']}
-            lineHeight="lh107"
-            fontWeight="black"
+            component="h2"
+            type="heading"
             textAlign="center"
-            dataLocator="moduleL_header_text"
+            dataLocator={getLocator('moduleL_header_text')}
+            promo={checkPromo}
           />
         )}
-        {promoTextBanner && (
-          <PromoTextBanner
-            promoTextBanner={promoTextBanner}
+        {checkPromo && (
+          <PromoBanner
+            promoBanner={promoBanner}
             className="moduleL__promo-banner"
             fontSize="fs48"
             data-locator={getLocator('moduleL_promobanner_text')}
@@ -74,8 +86,8 @@ const ModuleL = ({ className, headerText, imageGrid, imagesPerSlide, promoTextBa
         <Carousel
           options={options}
           carouselConfig={{
-            autoplay: false,
             type: 'light',
+            autoplay: false,
             moduleL: true,
             customArrowLeft: getIconPath('carousel-big-carrot'),
             customArrowRight: getIconPath('carousel-big-carrot'),

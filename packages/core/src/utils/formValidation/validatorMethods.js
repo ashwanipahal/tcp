@@ -153,6 +153,7 @@ const validatorMethods = {
   plccEnabled: plccEnabledValidator,
   number: numberValidator,
   exactLength: lengthValidator,
+  validEmail: emailValidator,
   emailPattern: emailValidator,
   noCountryZip: noCountryZipValidator,
   matchEmail: matchEmailValidator,

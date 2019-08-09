@@ -2,23 +2,32 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
+import { getViewportInfo } from '@tcp/core/src/utils';
 import PromoBadge from '../PromoBadge';
 import style from './L1NavItem.style';
 
+/**
+ * This function handles if navigation drawer needs to open on current viewport or now
+ * @param {*} onClick
+ */
+const openNavigationDrawer = onClick => () => {
+  if (!getViewportInfo().isDesktop) {
+    onClick();
+  }
+};
+
 const L1NavItem = props => {
   const {
-    categoryContent: {
-      id,
-      name,
-      description,
-      mainCategory: { promoBadge },
-    },
+    categoryContent: { id, name, description, mainCategory },
     className,
     dataLocator,
     index,
+    children,
+    onClick,
+    ...others
   } = props;
   const classForRedContent = id === '505518' ? `highlighted` : ``;
-
+  const promoBadge = mainCategory && mainCategory.promoBadge;
   return (
     <React.Fragment>
       <BodyCopy
@@ -29,16 +38,27 @@ const L1NavItem = props => {
         fontWeight="semibold"
         color="text.hint"
         lineHeight="lh115"
-        dataLocator={dataLocator}
+        data-locator={dataLocator}
+        tabIndex={0}
+        {...others}
       >
-        <span className={`nav-bar-l1-item-label ${classForRedContent}`}>{name}</span>
-        <span
-          className="nav-bar-l1-item-content"
-          data-locator={description ? `sizesrange_label_${index}` : `promo_badge_${index}`}
+        <div
+          className="nav-bar-l1-content"
+          onClick={openNavigationDrawer(onClick)}
+          onKeyDown={openNavigationDrawer(onClick)}
+          role="button"
+          tabIndex={0}
         >
-          {description || (promoBadge && <PromoBadge data={promoBadge} />) || ``}
-        </span>
-        <span className="icon-arrow" />
+          <span className={`nav-bar-item-label ${classForRedContent}`}>{name}</span>
+          <span
+            className={`nav-bar-item-content ${description ? 'nav-bar-item-sizes-range' : ''}`}
+            data-locator={description ? `sizesrange_label_${index}` : `promo_badge_${index}`}
+          >
+            {description || (promoBadge && <PromoBadge data={promoBadge} />) || ``}
+          </span>
+          <span className="icon-arrow" />
+        </div>
+        {children}
       </BodyCopy>
     </React.Fragment>
   );
@@ -49,6 +69,8 @@ L1NavItem.propTypes = {
   className: PropTypes.string.isRequired,
   dataLocator: PropTypes.string,
   index: PropTypes.number.isRequired,
+  children: PropTypes.element.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 L1NavItem.defaultProps = {

@@ -4,34 +4,75 @@ exports[`Create Account Page should render correctly 1`] = `
 <div
   className=""
 >
-  <ReduxForm
-    className=""
-    confirmHideShowPwd={false}
-    destroyOnUnmount={true}
-    enableReinitialize={true}
-    forceUnregisterOnUnmount={false}
-    form="CreateAccountForm"
-    getFormState={[Function]}
-    hideShowPwd={false}
-    isIAgreeChecked={false}
-    keepDirtyOnReinitialize={false}
-    labels={
-      Object {
-        "CREATE_ACC_LBL_HIDE": "hide",
+  <div
+    className="parent-wrapper"
+  >
+    <Styled(CreateAccountTopSection)
+      labels={
+        Object {
+          "lbl_createAccount_hide": "hide",
+          "registration": Object {},
+        }
       }
-    }
-    onSubmit={[Function]}
-    persistentSubmitErrors={false}
-    pure={true}
-    shouldAsyncValidate={[Function]}
-    shouldError={[Function]}
-    shouldValidate={[Function]}
-    shouldWarn={[Function]}
-    submitAsSideEffect={false}
-    touchOnBlur={true}
-    touchOnChange={false}
-    updateUnregisteredFields={false}
-    validate={[Function]}
-  />
+      showForgotPasswordForm={[Function]}
+    />
+    <div
+      className="elem-pl-LRG elem-pr-LRG elem-pt-LRG"
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="error"
+        component="p"
+        fontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+        fontSize="fs12"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        <Component />
+      </Styled(BodyCopy)>
+    </div>
+    <Styled(ReduxForm)
+      className=""
+      confirmHideShowPwd={false}
+      destroyOnUnmount={true}
+      enableReinitialize={true}
+      forceUnregisterOnUnmount={false}
+      form="CreateAccountForm"
+      getFormState={[Function]}
+      hideShowPwd={false}
+      initialValues={
+        Object {
+          "rememberMe": true,
+        }
+      }
+      isIAgreeChecked={false}
+      keepDirtyOnReinitialize={false}
+      labels={
+        Object {
+          "lbl_createAccount_hide": "hide",
+          "registration": Object {},
+        }
+      }
+      onAlreadyHaveAnAccountClick={[Function]}
+      onSubmit={[Function]}
+      persistentSubmitErrors={false}
+      pure={true}
+      shouldAsyncValidate={[Function]}
+      shouldError={[Function]}
+      shouldValidate={[Function]}
+      shouldWarn={[Function]}
+      submitAsSideEffect={false}
+      touchOnBlur={true}
+      touchOnChange={false}
+      updateUnregisteredFields={false}
+      validate={[Function]}
+    />
+  </div>
 </div>
 `;

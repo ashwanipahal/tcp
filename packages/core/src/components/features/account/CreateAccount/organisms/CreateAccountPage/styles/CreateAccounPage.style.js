@@ -41,8 +41,8 @@ const styles = css`
   }
   .hide-show {
     position: absolute;
-    right: 20px;
-    width: 42px;
+    right: 0;
+    width: 30px;
   }
   .show-hide-icons {
     top: 28px;
@@ -53,6 +53,7 @@ const styles = css`
   .checkbox-hide-show {
     label {
       height: auto;
+      text-decoration: underline;
     }
     input {
       display: none;
@@ -67,7 +68,8 @@ const styles = css`
   .already-account {
     text-decoration: underline;
   }
-  .TextBox__error {
+  .TextBox__error,
+  .Checkbox__error {
     font-size: 12px;
     font-weight: bold;
   }
