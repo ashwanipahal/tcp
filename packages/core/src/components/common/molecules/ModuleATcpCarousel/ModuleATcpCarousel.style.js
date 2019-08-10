@@ -54,6 +54,10 @@ const style = css`
     position: relative;
   }
 
+  .tcp_carousel_wrapper .slick-list {
+    min-height: 350px;
+  }
+
   .button-list-container.stackedCTAList,
   .button-list-container.scrollCTAList {
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};

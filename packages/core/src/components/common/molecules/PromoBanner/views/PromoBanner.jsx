@@ -29,9 +29,27 @@ const PromoBanner = (props: Props) => {
     <BodyCopy component="div" className={className} {...otherProps}>
       <React.Fragment>
         <Anchor {...link}>
-          {textItems.map(({ text, style }, index) => (
-            <span className={`promo-text ${style}`}>{index ? ` ${text}` : text}</span>
-          ))}
+          {textItems.map(({ text, style }, index) => {
+            let promoText;
+
+            /* this need to be fixed once we have 5 items for module A or unlimited textItems creation in CMS */
+            if (style === 'style7' || style === 'style6') {
+              const style7Texts = text.split('%');
+              promoText = (
+                <div className={`promo-text ${style}`}>
+                  <span className={`${style}-0`}>{style7Texts[0] && style7Texts[0].trim()}</span>
+                  <span className={`${style}-1`}>% </span>
+                  <span className={`${style}-2`}>{style7Texts[1] && style7Texts[1].trim()}</span>
+                </div>
+              );
+            } else {
+              promoText = (
+                <span className={`promo-text ${style}`}>{index ? ` ${text}` : text}</span>
+              );
+            }
+
+            return promoText;
+          })}
         </Anchor>
       </React.Fragment>
     </BodyCopy>

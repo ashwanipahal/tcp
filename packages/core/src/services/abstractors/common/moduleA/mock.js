@@ -27,10 +27,9 @@ for (let i = 1; i <= totalImageSlides; i++) {
           external: 0,
         },
         textItems: [
-          { text: '60%', style: 'style1' },
-          { text: 'off', style: 'style2' },
-          { text: '50% off', style: 'style1' },
-          { text: 'all shoes and other accessories', style: 'style2' },
+          { text: '60 % OFF', style: 'style7' },
+          { text: '50% Off', style: 'style8' },
+          { text: 'All Shoes & Select Accessories', style: 'style9' },
         ],
       },
     ],
