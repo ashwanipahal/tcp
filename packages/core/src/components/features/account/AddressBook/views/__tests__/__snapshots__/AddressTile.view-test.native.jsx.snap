@@ -26,7 +26,7 @@ exports[`AddressTile component should renders correctly 1`] = `
       />
     </View>
     <View>
-      <Styled(Badge)
+      <Badge
         dataLocator="addressbook-defshippinglabel"
         showCheckmark={true}
       />
@@ -36,6 +36,7 @@ exports[`AddressTile component should renders correctly 1`] = `
     <Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
+        color="gray.900"
         customStyle={Object {}}
         fontSizeVariation="large"
         text=""
@@ -46,6 +47,7 @@ exports[`AddressTile component should renders correctly 1`] = `
     </Styled(View)>
     <Styled(Anchor)
       anchorVariation="primary"
+      color="gray.900"
       customStyle={Object {}}
       fontSizeVariation="large"
       text=""
