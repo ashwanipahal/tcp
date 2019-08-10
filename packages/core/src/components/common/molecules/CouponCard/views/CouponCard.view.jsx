@@ -22,24 +22,8 @@ class CouponCard extends React.Component<Props> {
     return null;
   };
 
-  isExpiring = () => {
-    const { coupon } = this.props;
-    const currentDate = new Date();
-    const couponExpireUpdatedDate = new Date();
-    const expireDate = new Date(coupon.expirationDateTimeStamp);
-    const numberOfDaysToAdd = 7;
-    couponExpireUpdatedDate.setDate(couponExpireUpdatedDate.getDate() + numberOfDaysToAdd);
-    let couponExpiring = false;
-    if (currentDate > expireDate) {
-      couponExpiring = false;
-    } else if (couponExpireUpdatedDate >= expireDate) {
-      couponExpiring = true;
-    }
-    return couponExpiring;
-  };
-
   RenderCardHeader = (type, headingClass) => {
-    const { labels } = this.props;
+    const { labels, coupon } = this.props;
     return (
       <div className="couponCard__header">
         <div className={headingClass}>
@@ -52,8 +36,7 @@ class CouponCard extends React.Component<Props> {
             {type}
           </BodyCopy>
         </div>
-
-        {this.isExpiring() && (
+        {coupon.isExpiring && (
           <BodyCopy
             data-locator="cartExpiringSoonCoupon"
             className="couponCard__header_expired"
