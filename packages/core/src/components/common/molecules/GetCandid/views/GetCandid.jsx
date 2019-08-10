@@ -8,7 +8,7 @@ import withStyles from '../../../hoc/withStyles';
 import { getAPIConfig } from '../../../../../utils';
 import { PDP_PAGE_ID } from '../config';
 
-class GetCandid extends React.Component {
+class GetCandid extends React.PureComponent {
   static propTypes = {
     /* PageType is the page where the getcandid component is being called from */
     // eslint-disable-next-line
@@ -27,20 +27,10 @@ class GetCandid extends React.Component {
 
   candidConfig = getAPIConfig();
 
-  constructor(props) {
-    super(props);
-    console.log('.......candid Props', this.props);
-    this.state = {
-      apiKey: this.candidConfig.CANDID_API_KEY,
-      candidSlot: 'tcp-get-candid-image-container',
-      icid: {
-        pdp: PDP_PAGE_ID,
-      },
-    };
-  }
-
   componentDidMount() {
-    const { apiKey, candidSlot } = this.state;
+    const candidSlot = 'tcp-get-candid-image-container';
+    const apiKey = this.candidConfig.CANDID_API_KEY;
+
     const { pageTag } = 'homepage';
 
     requireNamedOnlineModule('getCandid').then(() => {
@@ -74,7 +64,7 @@ class GetCandid extends React.Component {
 
   handleViewGalleryClick = () => {
     const { pageType } = this.props;
-    const { icid } = this.state;
+    const icid = PDP_PAGE_ID;
     // window.location.href = `https://www.childrensplace.com/us/content/mystyleplace?icid=hp_s17_button_getcandid_070819_getcandid`;
     // window.location.href = `${window.location.origin}/us/content/mystyleplace?icid=${
     // eslint-disable-line icid[pageType]
@@ -84,6 +74,7 @@ class GetCandid extends React.Component {
 
   getDefaultHeading = () => {
     const { lables } = this.props;
+
     return (
       <div className="get-candid-default-heading test">
         <BodyCopy
@@ -147,7 +138,7 @@ class GetCandid extends React.Component {
                 onClick={this.handleViewGalleryClick}
                 buttonVariation="variable-width"
                 type="button"
-                className="u-margin-right"
+                className="gellary-button-right"
               >
                 {lables.BtnGallery}
               </Button>
