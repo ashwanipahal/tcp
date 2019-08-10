@@ -4,7 +4,7 @@ import { validateReduxCache } from '../../../../../../../utils/cache.util';
 import { setPointsHistoryList } from './PointsHistory.actions';
 import { getPointsHistoryData } from '../../../../../../../services/abstractors/account/PointsHistory';
 
-export function* getPointsHistoryList() {
+export function* getPointsHistoryListSaga() {
   try {
     const pointsHistoryData = yield call(getPointsHistoryData);
     yield put(setPointsHistoryList(pointsHistoryData));
@@ -14,7 +14,7 @@ export function* getPointsHistoryList() {
 }
 
 export function* PointsHistorySaga() {
-  const cachedPointsHistoryList = validateReduxCache(getPointsHistoryList);
+  const cachedPointsHistoryList = validateReduxCache(getPointsHistoryListSaga);
   yield takeLatest(POINTSHISTORY_CONSTANTS.GET_POINTSHISTORY_LIST, cachedPointsHistoryList);
 }
 

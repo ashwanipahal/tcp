@@ -22,32 +22,24 @@ describe('Account Navigation reducer', () => {
           transactionType: "non-transactional",
           pointAwardedDate: "08/08/19",
           pointTransactionType: "Credit"
-        },
-        {
-          pointsEarned: 5,
-          transactionTypeName: "AddMailingAddress",
-          transactionDate: "08/08/19",
-          transactionType: "non-transactional",
-          pointAwardedDate: "08/08/19",
-          pointTransactionType: "Credit"
         }];
 
-    const pointsHistoryData = payload;
+    const initialState = {
+      pointHistoryReducer: fromJS({
+        pointsHistoryData: null,
+      })
+    }
 
-    const initialState = fromJS({
+    const updatedState=  PointsHistoryReducer(initialState, {
+      type: ACCOUNT_CONSTANTS.SET_POINTSHISTORY_LIST,
       payload,
     });
 
+    const expactedState = initialState.pointHistoryReducer.set('pointsHistoryData',{payload});
+
     expect(
-      PointsHistoryReducer(initialState, {
-        type: ACCOUNT_CONSTANTS.SET_POINTSHISTORY_LIST,
-        payload,
-      })
-    ).toEqual(
-      fromJS({
-        pointsHistoryData,
-      })
-    );
+      updatedState
+    ).toEqual(expactedState);
   });
 
 
