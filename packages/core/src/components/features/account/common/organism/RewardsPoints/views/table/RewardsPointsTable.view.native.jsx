@@ -1,7 +1,7 @@
 import React from 'react';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../../../../../../common/atoms/BodyCopy';
-import withStyles from '../../../../../../../common/hoc/withStyles';
 import {
   RewardsOverviewContainer,
   MyRewardsWrapper,
@@ -13,48 +13,82 @@ import {
  * @function RewardsPointsView The RewardsPointsView component will provide slider for account drawer
  */
 
-const RewardsPointsTable = ({
-  className,
-  pointsToNextReward,
-  currentPoints,
-  totalRewards,
-  labels,
-}) => {
-  return (
-    <RewardsOverviewContainer>
-      <MyRewardsWrapper>
-        <BodyCopy
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="regular"
-          text={totalRewards}
-          color="gray.900"
+export class RewardsPointsTable extends React.PureComponent<Props> {
+  render() {
+    const { labels } = this.props;
+    return (
+      <RewardsOverviewContainer>
+        <MyRewardsWrapper>
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="black"
+            text={`${labels.lbl_common_currency} 10`}
+            color="black"
+          />
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            text={labels.lbl_common_heading}
+            color="gray.700"
+            height="50"
+          />
+        </MyRewardsWrapper>
+        <View
+          style={{
+            borderLeftWidth: 1,
+            borderLeftColor: 'black',
+            height: 50,
+            alignSelf: 'center',
+          }}
         />
-      </MyRewardsWrapper>
-      <CurrentPointsWrapper>
-        <BodyCopy
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="regular"
-          text={currentPoints}
-          color="gray.900"
+        <CurrentPointsWrapper>
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="black"
+            text="20"
+            color="black"
+          />
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            text={labels.lbl_common_current_points}
+            color="gray.700"
+          />
+        </CurrentPointsWrapper>
+        <View
+          style={{
+            borderLeftWidth: 1,
+            borderLeftColor: 'black',
+            height: 50,
+            alignSelf: 'center',
+          }}
         />
-      </CurrentPointsWrapper>
-      <NextRewardsWrapper>
-        <BodyCopy
-          fontFamily="secondary"
-          fontSize="fs13"
-          fontWeight="regular"
-          text={pointsToNextReward}
-          color="gray.900"
-        />
-      </NextRewardsWrapper>
-    </RewardsOverviewContainer>
-  );
-};
+        <NextRewardsWrapper>
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="black"
+            text="100"
+            color="black"
+          />
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="regular"
+            text="Points to Next Reward"
+            color="gray.700"
+          />
+        </NextRewardsWrapper>
+      </RewardsOverviewContainer>
+    );
+  }
+}
 
 RewardsPointsTable.propTypes = {
-  className: PropTypes.string,
   pointsToNextReward: PropTypes.string,
   currentPoints: PropTypes.string,
   totalRewards: PropTypes.string,
@@ -67,10 +101,9 @@ RewardsPointsTable.propTypes = {
 };
 
 RewardsPointsTable.defaultProps = {
-  className: '',
-  pointsToNextReward: '',
-  currentPoints: '',
-  totalRewards: '',
+  pointsToNextReward: '10',
+  currentPoints: '90',
+  totalRewards: '100',
   labels: {
     lbl_common_current_points: '',
     lbl_common_heading: '',
