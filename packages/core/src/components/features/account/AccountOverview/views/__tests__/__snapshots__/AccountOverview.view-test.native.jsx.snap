@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccountOverview component should render correctly 1`] = `
+<View
+  style={
+    Object {
+      "marginTop": 15,
+    }
+  }
+>
+  <Panel />
+  <Panel />
+  <Panel />
+  <Panel />
+  <Panel />
+  <Panel>
+    <Connect(AddressOverviewTile)
+      labels={Object {}}
+    />
+  </Panel>
+  <Panel>
+    <Connect(PaymentOverviewTile)
+      labels={Object {}}
+    />
+  </Panel>
+  <Panel />
+  <Panel />
+  <Panel />
+</View>
+`;
