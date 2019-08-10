@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RewardsPointsTable Component should render correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      color="function (props) {return props.theme.colorPalette.black;}"
+      fontFamily="secondary"
+      fontSize="fs18"
+      fontWeight="black"
+      text="undefined0"
+    />
+    <Styled(View)>
+      <Styled(BodyCopy)
+        color="function (props) {return props.theme.colorPalette.gray[900];}"
+        fontFamily="secondary"
+        fontSize="fs13"
+        fontWeight="regular"
+        text=""
+        textAlign="center"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View) />
+  <Styled(View)>
+    <Styled(BodyCopy)
+      color="function (props) {return props.theme.colorPalette.black;}"
+      fontFamily="secondary"
+      fontSize="fs18"
+      fontWeight="black"
+      text={0}
+    />
+    <Styled(View)>
+      <Styled(BodyCopy)
+        color="function (props) {return props.theme.colorPalette.gray[900];}"
+        fontFamily="secondary"
+        fontSize="fs13"
+        fontWeight="regular"
+        text=""
+        textAlign="center"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View) />
+  <Styled(View)>
+    <Styled(BodyCopy)
+      color="function (props) {return props.theme.colorPalette.black;}"
+      fontFamily="secondary"
+      fontSize="fs18"
+      fontWeight="black"
+      text={100}
+    />
+    <Styled(View)>
+      <Styled(BodyCopy)
+        color="function (props) {return props.theme.colorPalette.gray[900];}"
+        fontFamily="secondary"
+        fontSize="fs13"
+        fontWeight="regular"
+        text=""
+        textAlign="center"
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Styled(View)>
+`;
