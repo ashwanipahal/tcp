@@ -2,6 +2,9 @@
 
 exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] = `
 <View
+  className="MyAccountLayoutView"
+  handleComponentChange={[MockFunction]}
+  labels={Object {}}
   mainContent={[MockFunction]}
   navData={
     Array [
@@ -52,12 +55,14 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
       },
     ]
   }
-  selectedComponent="accountOverview"
+  selectedComponent="addressBookMobile"
 >
   <Connect(RewardsPointsContainer)
+    labels={Object {}}
     tableView={true}
   />
   <Styled(MyAccountDropdownNav)
+    handleComponentChange={[MockFunction]}
     navData={
       Array [
         Object {
@@ -108,6 +113,9 @@ exports[`My Account Layout View should render MyAccountLayoutView Correctly 1`] 
       ]
     }
   />
-  <mockConstructor />
+  <mockConstructor
+    handleComponentChange={[MockFunction]}
+    labels={Object {}}
+  />
 </View>
 `;
