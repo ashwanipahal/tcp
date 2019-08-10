@@ -1,7 +1,6 @@
 import { Map, fromJS } from 'immutable';
 import PointsHistoryReducer from '../PointsHistory.reducer';
-import ACCOUNT_CONSTANTS from '../../PointsHistory.constants';
-
+import POINTSHISTORY_CONSTANTS from '../../PointsHistory.constants';
 
 describe('Account Navigation reducer', () => {
   it('should return empty Account Navigation as default state', () => {
@@ -15,34 +14,22 @@ describe('Account Navigation reducer', () => {
 
   it('should handle default Points History', () => {
     const payload = [
-        {
-          pointsEarned: 5,
-          transactionTypeName: "AddBirthDate",
-          transactionDate: "08/08/19",
-          transactionType: "non-transactional",
-          pointAwardedDate: "08/08/19",
-          pointTransactionType: "Credit"
-        }];
-
-    const initialState = {
-      pointHistoryReducer: fromJS({
-        pointsHistoryData: null,
-      })
-    }
-
-    const updatedState=  PointsHistoryReducer(initialState, {
-      type: ACCOUNT_CONSTANTS.SET_POINTSHISTORY_LIST,
+      {
+        pointsEarned: 5,
+        transactionTypeName: 'AddBirthDate',
+        transactionDate: '08/08/19',
+        transactionType: 'non-transactional',
+        pointAwardedDate: '08/08/19',
+        pointTransactionType: 'Credit',
+      },
+    ];
+    const initialState = fromJS({
+      pointsHistoryData: null,
+    });
+    const updatedState = PointsHistoryReducer(initialState, {
+      type: POINTSHISTORY_CONSTANTS.SET_POINTSHISTORY_LIST,
       payload,
     });
-
-    const expactedState = initialState.pointHistoryReducer.set('pointsHistoryData',{payload});
-
-    expect(
-      updatedState
-    ).toEqual(expactedState);
+    expect(updatedState.get('pointsHistoryData')).toEqual(payload);
   });
-
-
-
-
 });
