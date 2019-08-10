@@ -6,7 +6,7 @@ export default class HomeScreen extends React.PureComponent {
   render() {
     return (
       <SafeAreaView>
-        <AccountNative component="addressBookMobile" />
+        <AccountNative component="accountOverview" />
       </SafeAreaView>
     );
   }

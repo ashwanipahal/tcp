@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../../../../../../common/atoms/BodyCopy';
 import {
@@ -7,6 +6,10 @@ import {
   MyRewardsWrapper,
   CurrentPointsWrapper,
   NextRewardsWrapper,
+  TextWrapper,
+  VerticalLine,
+  RewardsTextStyle,
+  RewardsStyle,
 } from '../../styles/RewardsPointsTable.style';
 
 /**
@@ -15,73 +18,28 @@ import {
 
 export class RewardsPointsTable extends React.PureComponent<Props> {
   render() {
-    const { labels } = this.props;
+    const { labels, pointsToNextReward, currentPoints, totalRewards } = this.props;
     return (
       <RewardsOverviewContainer>
         <MyRewardsWrapper>
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight="black"
-            text={`${labels.lbl_common_currency} 10`}
-            color="black"
-          />
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            text={labels.lbl_common_heading}
-            color="gray.700"
-            height="50"
-          />
+          <BodyCopy {...RewardsStyle} text={`${labels.lbl_common_currency}${totalRewards || 0}`} />
+          <TextWrapper>
+            <BodyCopy {...RewardsTextStyle} text={labels.lbl_common_heading} />
+          </TextWrapper>
         </MyRewardsWrapper>
-        <View
-          style={{
-            borderLeftWidth: 1,
-            borderLeftColor: 'black',
-            height: 50,
-            alignSelf: 'center',
-          }}
-        />
+        <VerticalLine />
         <CurrentPointsWrapper>
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight="black"
-            text="20"
-            color="black"
-          />
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            text={labels.lbl_common_current_points}
-            color="gray.700"
-          />
+          <BodyCopy {...RewardsStyle} text={currentPoints || 0} />
+          <TextWrapper>
+            <BodyCopy {...RewardsTextStyle} text={labels.lbl_common_current_points} />
+          </TextWrapper>
         </CurrentPointsWrapper>
-        <View
-          style={{
-            borderLeftWidth: 1,
-            borderLeftColor: 'black',
-            height: 50,
-            alignSelf: 'center',
-          }}
-        />
+        <VerticalLine />
         <NextRewardsWrapper>
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs14"
-            fontWeight="black"
-            text="100"
-            color="black"
-          />
-          <BodyCopy
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="regular"
-            text="Points to Next Reward"
-            color="gray.700"
-          />
+          <BodyCopy {...RewardsStyle} text={pointsToNextReward || 100} />
+          <TextWrapper>
+            <BodyCopy {...RewardsTextStyle} text={labels.lbl_common_next_reward_points} />
+          </TextWrapper>
         </NextRewardsWrapper>
       </RewardsOverviewContainer>
     );
@@ -89,27 +47,17 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
 }
 
 RewardsPointsTable.propTypes = {
-  pointsToNextReward: PropTypes.string,
-  currentPoints: PropTypes.string,
-  totalRewards: PropTypes.string,
-  labels: PropTypes.shape({
-    lbl_common_current_points: PropTypes.string,
-    lbl_common_heading: PropTypes.string,
-    lbl_common_next_reward: PropTypes.string,
-    lbl_common_currency: PropTypes.string,
-  }),
+  pointsToNextReward: PropTypes.number,
+  currentPoints: PropTypes.number,
+  totalRewards: PropTypes.number,
+  labels: PropTypes.shape({}),
 };
 
 RewardsPointsTable.defaultProps = {
-  pointsToNextReward: '10',
-  currentPoints: '90',
-  totalRewards: '100',
-  labels: {
-    lbl_common_current_points: '',
-    lbl_common_heading: '',
-    lbl_common_next_reward: '',
-    lbl_common_currency: '',
-  },
+  pointsToNextReward: 100,
+  currentPoints: 0,
+  totalRewards: 0,
+  labels: {},
 };
 
 export default RewardsPointsTable;
