@@ -40,7 +40,7 @@ const VerticalLine = styled.View`
   border-color: ${props => props.theme.colorPalette.gray[700]};
   height: 45px;
   align-self: flex-start;
-  margin-top: 5px;
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
 const RewardsTextStyle = {

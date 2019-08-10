@@ -13,7 +13,7 @@ import {
 } from '../../styles/RewardsPointsTable.style';
 
 /**
- * @function RewardsPointsView The RewardsPointsView component will provide slider for account drawer
+ * @function RewardsPointsTable The RewardsPointsTable component will provide rewards table listing on the account overview page
  */
 
 export class RewardsPointsTable extends React.PureComponent<Props> {
