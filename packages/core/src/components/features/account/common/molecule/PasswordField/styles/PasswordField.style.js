@@ -3,17 +3,20 @@ import { css } from 'styled-components';
 const styles = css`
   position: relative;
 
-  a {
+  .rightAlignedContent {
     position: absolute;
     right: 0;
-    top: 12px;
-  }
+    top: ${props => (props.tooltipContent ? '0' : '12px')};
+    width: 30px;
 
-  .tooltip {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 10px;
+    a {
+      display: block;
+    }
+
+    .tooltip {
+      width: 10px;
+      height: 10px;
+    }
   }
 `;
 
