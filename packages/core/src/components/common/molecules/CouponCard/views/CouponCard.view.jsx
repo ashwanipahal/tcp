@@ -43,13 +43,23 @@ class CouponCard extends React.Component<Props> {
     return (
       <div className="couponCard__header">
         <div className={headingClass}>
-          <BodyCopy className="couponCard__header_text" component="p" fontSize="fs12">
+          <BodyCopy
+            data-locator="cartTypeofcoupon"
+            className="couponCard__header_text"
+            component="p"
+            fontSize="fs12"
+          >
             {type}
           </BodyCopy>
         </div>
 
         {this.isExpiring() && (
-          <BodyCopy className="couponCard__header_expired" component="p" fontSize="fs12">
+          <BodyCopy
+            data-locator="cartExpiringSoonCoupon"
+            className="couponCard__header_expired"
+            component="p"
+            fontSize="fs12"
+          >
             {labels.EXPIRING_SOON}
           </BodyCopy>
         )}
@@ -67,7 +77,7 @@ class CouponCard extends React.Component<Props> {
         className="coupon__button_black"
         buttonVariation="variable-width"
         type="submit"
-        data-locator="gift-card-checkbalance-btn"
+        data-locator="coupon-cartApplyCta"
         fullWidth="true"
       >
         {coupon.labelStatus}
@@ -85,7 +95,7 @@ class CouponCard extends React.Component<Props> {
         className="coupon__button_white"
         buttonVariation="variable-width"
         type="submit"
-        data-locator="gift-card-checkbalance-btn"
+        data-locator="coupon-cartRemoveCta"
         fullWidth="true"
       >
         {coupon.labelStatus}
@@ -95,7 +105,12 @@ class CouponCard extends React.Component<Props> {
 
   RenderValidText = coupon => {
     return (
-      <BodyCopy component="p" fontSize="fs10" fontFamily="secondary">
+      <BodyCopy
+        component="p"
+        fontSize="fs10"
+        data-locator="coupon-cartValidValidity"
+        fontFamily="secondary"
+      >
         {`Valid ${coupon.effectiveDate} - ${coupon.expirationDate}`}
       </BodyCopy>
     );
@@ -103,7 +118,12 @@ class CouponCard extends React.Component<Props> {
 
   RenderUseByText = coupon => {
     return (
-      <BodyCopy component="p" fontSize="fs10" fontFamily="secondary">
+      <BodyCopy
+        data-locator="coupon-cartUseByValidity"
+        component="p"
+        fontSize="fs10"
+        fontFamily="secondary"
+      >
         {`Use by ${coupon.expirationDate}`}
       </BodyCopy>
     );
@@ -122,17 +142,12 @@ class CouponCard extends React.Component<Props> {
         <div className="couponCard__container">
           {this.ErrorHandle()}
           <div className="couponCard__container_main">
-            {coupon.promotionType === COUPON_REDEMPTION_TYPE.PUBLIC &&
+            {coupon.offerType === COUPON_REDEMPTION_TYPE.SAVING &&
               this.RenderCardHeader(labels.SAVINGS_TEXT, 'couponCard__header_saving')}
-            {coupon.promotionType === COUPON_REDEMPTION_TYPE.PC &&
-              this.RenderCardHeader(labels.PLACE_CASH_TEXT, 'couponCard__header_public')}
-            {coupon.promotionType === COUPON_REDEMPTION_TYPE.PLACECASH &&
-              this.RenderCardHeader(labels.PLACE_CASH_TEXT, 'couponCard__header_public')}
-            {coupon.promotionType === COUPON_REDEMPTION_TYPE.LOYALTY &&
-              this.RenderCardHeader(labels.PLACE_CASH_TEXT, 'couponCard__header_saving')}
-            {coupon.promotionType === COUPON_REDEMPTION_TYPE.REWARDS &&
+            {coupon.offerType === COUPON_REDEMPTION_TYPE.REWARDS &&
               this.RenderCardHeader(labels.REWARDS_TEXT, 'couponCard__header_rewards')}
-
+            {coupon.offerType === COUPON_REDEMPTION_TYPE.PLACECASH &&
+              this.RenderCardHeader(labels.PLACE_CASH_TEXT, 'couponCard__header_pc')}
             <div className="couponCard__body">
               <div className="couponCard__row">
                 <div className="couponCard__col">
@@ -145,13 +160,15 @@ class CouponCard extends React.Component<Props> {
                     >
                       {`${coupon.title}`}
                     </BodyCopy>
-                    {coupon.promotionType === COUPON_REDEMPTION_TYPE.PUBLIC &&
-                      this.RenderValidText(coupon)}
-                    {coupon.promotionType === COUPON_REDEMPTION_TYPE.REWARDS &&
+                    {coupon.offerType === COUPON_REDEMPTION_TYPE.SAVING &&
                       this.RenderUseByText(coupon)}
+                    {coupon.offerType === COUPON_REDEMPTION_TYPE.REWARDS &&
+                      this.RenderUseByText(coupon)}
+                    {coupon.offerType === COUPON_REDEMPTION_TYPE.PLACECASH &&
+                      this.RenderValidText(coupon)}
                   </BodyCopy>
                   <Anchor
-                    data-locator="couponcard-makedefault"
+                    data-locator="coupon_cartDetailsLink"
                     fontSizeVariation="small"
                     underline
                     anchorVariation="primary"

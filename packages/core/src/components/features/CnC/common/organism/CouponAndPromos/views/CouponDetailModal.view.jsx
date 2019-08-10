@@ -17,7 +17,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
   };
 
   renderModal = () => {
-    const { labels, coupon, className, applyToBag } = this.props;
+    const { labels, coupon, className, applyToBag, onRequestClose } = this.props;
     return (
       <div className={className}>
         <BodyCopy
@@ -41,7 +41,10 @@ class CouponDetailModal extends React.PureComponent<Props> {
           <Button
             buttonVariation="fixed-width"
             fill="BLUE"
-            onClick={applyToBag}
+            onClick={() => {
+              onRequestClose();
+              applyToBag(coupon);
+            }}
             className="couponModal_applyToBag couponModal_btn"
             dataLocator="coupondetailmodalyesdeletebtn"
           >

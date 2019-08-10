@@ -57,6 +57,7 @@ export const COUPON_REDEMPTION_TYPE = {
   PUBLIC: 'public',
   WALLET: 'wallet',
   REWARDS: 'rewards',
+  SAVING: 'saving',
   LOYALTY: 'LOYALTY',
   PLACECASH: 'PLACECASH',
   PC: 'PLACECASH',
@@ -85,6 +86,21 @@ const constructDateFormat = date => {
     .getFullYear()
     .toString()
     .substr(-2)}`;
+};
+
+const getCouponType = promotionType => {
+  switch (promotionType) {
+    case 'PC':
+      return COUPON_REDEMPTION_TYPE.PLACECASH;
+    case 'PLACECASH':
+      return COUPON_REDEMPTION_TYPE.PLACECASH;
+    case 'LOYALTY':
+      return COUPON_REDEMPTION_TYPE.REWARDS;
+    case 'OTHERS':
+      return COUPON_REDEMPTION_TYPE.SAVING;
+    default:
+      return COUPON_REDEMPTION_TYPE.SAVING;
+  }
 };
 
 export const removeItem = orderItemId => {
@@ -178,6 +194,7 @@ export const constructCouponStructure = cpnArray => {
       details: itm.offerDescription,
       legalText: itm.legalText,
       isStarted: isPlaceCash ? compareDate(now, startDate) : true,
+      offerType: getCouponType(itm.offerType),
       // imageThumbUrl: getCouponImageThumb(itm.offerType),
       // imageUrl: getCouponImage(itm.offerType),
       error: '',

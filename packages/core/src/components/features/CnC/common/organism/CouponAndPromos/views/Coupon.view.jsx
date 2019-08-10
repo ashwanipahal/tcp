@@ -54,6 +54,7 @@ class CouponView extends React.PureComponent<Props> {
               heading={labels.APPLIED_REWARDS_HEADING}
               couponDetailClick={this.couponDetailClick}
               onRemove={handleRemoveCoupon}
+              dataLocator="coupon-cartAppliedRewards"
             />
           )}
           {availableCouponList && (
@@ -66,6 +67,7 @@ class CouponView extends React.PureComponent<Props> {
               couponDetailClick={this.couponDetailClick}
               helpAnchorClick={this.helpAnchorClick}
               onApply={handleApplyCouponFromList}
+              dataLocator="coupon-cartAvaliableRewards"
             />
           )}
           <CouponDetailModal
@@ -77,7 +79,7 @@ class CouponView extends React.PureComponent<Props> {
                 detailStatus: false,
               });
             }}
-            applyToBag={() => {}}
+            applyToBag={handleApplyCouponFromList}
           />
           <CouponHelpModal
             labels={labels}
