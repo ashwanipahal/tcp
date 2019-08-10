@@ -42,7 +42,7 @@ class CouponView extends React.PureComponent<Props> {
     const { detailStatus, helpStatus, selectedCoupon } = this.state;
     return (
       <div className={className}>
-        <CouponForm onSubmit={handleApplyCoupon} isFetching={isFetching} />
+        <CouponForm onSubmit={handleApplyCoupon} isFetching={isFetching} source="form" />
         {appliedCouponList && (
           <CouponListSection
             labels={labels}
