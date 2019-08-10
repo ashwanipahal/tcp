@@ -48,7 +48,7 @@ describe('#Coupon selector', () => {
         title: '$10off$50 TCP ONLY',
         detailsOpen: false,
         expirationDate: '12/31/99',
-        effectiveDate: '7/31/19',
+        effectiveDate: '8/31/19',
         details: null,
         legalText: '$10off$50 TCP ONLY',
         isStarted: true,

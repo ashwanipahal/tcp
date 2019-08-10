@@ -40,6 +40,7 @@ CouponContainer.propTypes = {
   isFetching: PropTypes.bool.isRequired,
   labels: PropTypes.shape.isRequired,
   handleApplyCoupon: PropTypes.func.isRequired,
+  handleApplyCouponFromList: PropTypes.func.isRequired,
   handleRemoveCoupon: PropTypes.func.isRequired,
   appliedCouponList: PropTypes.shape({}).isRequired,
   availableCouponList: PropTypes.shape({}).isRequired,
@@ -69,7 +70,7 @@ export const mapDispatchToProps = dispatch => ({
   },
 });
 
-const mapStateToProps = state => ({
+export const mapStateToProps = state => ({
   isFetching: getCouponFetchingState(state),
   labels: getCouponsLabels(state),
   appliedCouponList: getAppliedCouponListState(state),

@@ -41,6 +41,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
         className="couponModal_applyToBag couponModal_btn"
         dataLocator="coupondetailmodalyesdeletebtn"
         fill="BLUE"
+        onClick={[Function]}
       />
     </div>
     <div
