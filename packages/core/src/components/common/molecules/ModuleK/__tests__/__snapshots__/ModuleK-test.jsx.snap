@@ -141,6 +141,47 @@ exports[`ModuleK component renders correctly 1`] = `
       margin: 46px 6px 0 0;
     }
   }
+
+  .style11 {
+    color: ",
+                [Function],
+                ";
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: 36px;
+    line-height: 1.05;
+
+    @media ",
+                [Function],
+                " {
+      font-size: 74px;
+    }
+  }
+
+  .style12 {
+    color: ",
+                [Function],
+                ";
+    font-family: ",
+                [Function],
+                ";
+    font-weight: ",
+                [Function],
+                ";
+    font-size: 20px;
+    line-height: 1.05;
+    letter-spacing: 3px;
+
+    @media ",
+                [Function],
+                " {
+      font-size: 52px;
+    }
+  }
 ",
                 ";
 ",

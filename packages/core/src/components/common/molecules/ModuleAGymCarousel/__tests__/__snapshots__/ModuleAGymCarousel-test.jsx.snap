@@ -73,8 +73,8 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
           fontSize={
             Array [
               "fs36",
-              "fs52",
-              "fs52",
+              "fs36",
+              "fs64",
             ]
           }
           fontWeight="black"
@@ -104,8 +104,15 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
         />
         <Styled(PromoBanner)
           className="moduleA__promoBanner"
+          color="white"
           data-locator="moduleA_promobanner_text_0"
-          fontSize="fs48"
+          fontSize={
+            Array [
+              "fs16",
+              "fs16",
+              "fs28",
+            ]
+          }
           promoBanner={
             Array [
               Object {
@@ -118,20 +125,16 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style1",
-                    "text": "60%",
+                    "style": "style7",
+                    "text": "60 % OFF",
                   },
                   Object {
-                    "style": "style2",
-                    "text": "off",
+                    "style": "style8",
+                    "text": "50% Off",
                   },
                   Object {
-                    "style": "style1",
-                    "text": "50% off",
-                  },
-                  Object {
-                    "style": "style2",
-                    "text": "all shoes and other accessories",
+                    "style": "style9",
+                    "text": "All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -192,8 +195,8 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
           fontSize={
             Array [
               "fs36",
-              "fs52",
-              "fs52",
+              "fs36",
+              "fs64",
             ]
           }
           fontWeight="black"
@@ -223,8 +226,15 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
         />
         <Styled(PromoBanner)
           className="moduleA__promoBanner"
+          color="white"
           data-locator="moduleA_promobanner_text_1"
-          fontSize="fs48"
+          fontSize={
+            Array [
+              "fs16",
+              "fs16",
+              "fs28",
+            ]
+          }
           promoBanner={
             Array [
               Object {
@@ -237,20 +247,16 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style1",
-                    "text": "60%",
+                    "style": "style7",
+                    "text": "60 % OFF",
                   },
                   Object {
-                    "style": "style2",
-                    "text": "off",
+                    "style": "style8",
+                    "text": "50% Off",
                   },
                   Object {
-                    "style": "style1",
-                    "text": "50% off",
-                  },
-                  Object {
-                    "style": "style2",
-                    "text": "all shoes and other accessories",
+                    "style": "style9",
+                    "text": "All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -311,8 +317,8 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
           fontSize={
             Array [
               "fs36",
-              "fs52",
-              "fs52",
+              "fs36",
+              "fs64",
             ]
           }
           fontWeight="black"
@@ -342,8 +348,15 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
         />
         <Styled(PromoBanner)
           className="moduleA__promoBanner"
+          color="white"
           data-locator="moduleA_promobanner_text_2"
-          fontSize="fs48"
+          fontSize={
+            Array [
+              "fs16",
+              "fs16",
+              "fs28",
+            ]
+          }
           promoBanner={
             Array [
               Object {
@@ -356,20 +369,16 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style1",
-                    "text": "60%",
+                    "style": "style7",
+                    "text": "60 % OFF",
                   },
                   Object {
-                    "style": "style2",
-                    "text": "off",
+                    "style": "style8",
+                    "text": "50% Off",
                   },
                   Object {
-                    "style": "style1",
-                    "text": "50% off",
-                  },
-                  Object {
-                    "style": "style2",
-                    "text": "all shoes and other accessories",
+                    "style": "style9",
+                    "text": "All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -430,8 +439,8 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
           fontSize={
             Array [
               "fs36",
-              "fs52",
-              "fs52",
+              "fs36",
+              "fs64",
             ]
           }
           fontWeight="black"
@@ -461,8 +470,15 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
         />
         <Styled(PromoBanner)
           className="moduleA__promoBanner"
+          color="white"
           data-locator="moduleA_promobanner_text_3"
-          fontSize="fs48"
+          fontSize={
+            Array [
+              "fs16",
+              "fs16",
+              "fs28",
+            ]
+          }
           promoBanner={
             Array [
               Object {
@@ -475,20 +491,16 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style1",
-                    "text": "60%",
+                    "style": "style7",
+                    "text": "60 % OFF",
                   },
                   Object {
-                    "style": "style2",
-                    "text": "off",
+                    "style": "style8",
+                    "text": "50% Off",
                   },
                   Object {
-                    "style": "style1",
-                    "text": "50% off",
-                  },
-                  Object {
-                    "style": "style2",
-                    "text": "all shoes and other accessories",
+                    "style": "style9",
+                    "text": "All Shoes & Select Accessories",
                   },
                 ],
               },

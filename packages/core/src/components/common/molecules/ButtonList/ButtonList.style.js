@@ -56,6 +56,16 @@ export default css`
   &.scroll-comp-wrapper {
     overflow-x: scroll;
     flex-wrap: nowrap;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: block;
+      scrollbar-width: auto;
+    }
   }
 
   @media ${props => props.theme.mediaQuery.medium} {

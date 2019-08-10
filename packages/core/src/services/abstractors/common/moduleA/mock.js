@@ -1,12 +1,35 @@
 const totalImageSlides = 4;
 const imageSlides = [];
 const ctaTypes = ['stackedCTAList', 'linkCTAList', 'scrollCTAList', 'imageCTAList'];
+
 // eslint-disable-next-line no-plusplus
 for (let i = 1; i <= totalImageSlides; i++) {
+  /*   const gymboreeHeaderTextItems = [
+    {
+      text: 'Spring is Every Wear',
+      style: 'style11',
+    },
+  ];
+
+  const gymboreePromoTextItems = [
+    {
+      text: 'The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!',
+      style: 'style12',
+    },
+  ]; */
+
+  const tcpHeaderTextItems = [{ text: `ENTER SITE ${i}`, style: 'style1' }];
+
+  const tcpPromoTextItems = [
+    { text: '60 % OFF', style: 'style7' },
+    { text: '50% Off', style: 'style8' },
+    { text: 'All Shoes & Select Accessories', style: 'style9' },
+  ];
+
   imageSlides.push({
     headerText: [
       {
-        textItems: [{ text: `ENTER SITE ${i}`, style: 'style1' }],
+        textItems: tcpHeaderTextItems,
         link: {
           url: '/trending',
           text: '',
@@ -26,12 +49,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
           target: '',
           external: 0,
         },
-        textItems: [
-          { text: '60%', style: 'style1' },
-          { text: 'off', style: 'style2' },
-          { text: '50% off', style: 'style1' },
-          { text: 'all shoes and other accessories', style: 'style2' },
-        ],
+        textItems: tcpPromoTextItems,
       },
     ],
     linkedImage: [
@@ -165,7 +183,7 @@ export default {
     set: [
       {
         key: 'ctaType',
-        val: ctaTypes[1],
+        val: ctaTypes[0],
       },
     ],
   },

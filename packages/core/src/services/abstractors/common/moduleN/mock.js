@@ -13,7 +13,7 @@ export default {
             {
               text: 'ALL CLEARANCE',
               color: 'color2',
-              style: 'moduleN-heading-wrapper',
+              style: 'style12',
             },
           ],
           link: {
@@ -35,20 +35,12 @@ export default {
           },
           textItems: [
             {
-              text: '60-70',
-              style: 'moduleN-promoBanner-text1',
-            },
-            {
-              text: '%',
-              style: 'moduleN-promoBanner-text2',
-            },
-            {
-              text: 'OFF',
-              style: 'moduleN-promoBanner-text3',
+              text: '60-70% OFF',
+              style: 'style6',
             },
             {
               text: 'No Exclusions',
-              style: 'moduleN-promoBanner-text4',
+              style: 'style4',
             },
           ],
         },
