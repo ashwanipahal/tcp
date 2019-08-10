@@ -43,14 +43,14 @@ class TCPWebApp extends App {
           },
         })
       );
+    } else if (!getLoginState(store.getState())) {
+      store.dispatch(loadUserProfile());
     }
   };
 
   componentDidMount() {
-    const { store } = this.props;
     ReactAxe.runAccessibility();
     this.checkForResetPassword();
-    if (!getLoginState(store.getState())) store.dispatch(loadUserProfile());
   }
 
   componentDidUpdate() {
