@@ -47,7 +47,7 @@ const ModuleA = props => {
 
 ModuleA.defaultProps = {
   className: '',
-  variant: 'tcp',
+  variant: 'gymb',
   set: [],
 };
 

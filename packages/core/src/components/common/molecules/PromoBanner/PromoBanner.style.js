@@ -247,10 +247,44 @@ export default css`
     }
   }
 
-  .style11 {
+  /* Gymboree Ribbon text */
+  .style10 {
     color: ${props => props.theme.colorPalette.white};
     font-family: ${props => props.theme.typography.fonts.secondary};
     font-weight: ${props => props.theme.typography.fontWeights.extrabold};
     font-size: 14px;
+    display: block;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      font-size: 16px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: 20px;
+    }
+  }
+
+  .style11 {
+    color: ${props => props.theme.colorPalette.white};
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-weight: ${props => props.theme.typography.fontWeights.black};
+    font-size: 36px;
+    line-height: 1.11;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: 74px;
+      line-height: 1.05;
+    }
+  }
+
+  .style12 {
+    color: ${props => props.theme.colorPalette.white};
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-weight: ${props => props.theme.typography.fontWeights.regular};
+    font-size: 16px;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: 28px;
+    }
   }
 `;

@@ -80,7 +80,7 @@ class ModuleAGymCarousel extends React.Component {
                 <div className="banner-content">
                   <LinkText
                     fontWeight="black"
-                    fontSize={['fs36', 'fs52', 'fs52']}
+                    fontSize={['fs36', 'fs36', 'fs64']}
                     headerText={headerText}
                     className="link-text-wrapper"
                     data-locator={`${getLocator('moduleA_header_text')}${i}`}
@@ -89,7 +89,8 @@ class ModuleAGymCarousel extends React.Component {
                     promoBanner={promoBanner}
                     className="moduleA__promoBanner"
                     data-locator={`${getLocator('moduleA_promobanner_text')}${i}`}
-                    fontSize="fs48"
+                    color="white"
+                    fontSize={['fs16', 'fs16', 'fs28']}
                   />
                 </div>
                 <div className="ribbon-container">
