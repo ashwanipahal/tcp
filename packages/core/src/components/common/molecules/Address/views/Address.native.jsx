@@ -101,6 +101,7 @@ const Address = ({
         ? getAddessLines({ address, dataLocatorPrefix, customStyle })
         : getAddressfromDiffLines({ address, dataLocatorPrefix }, { customStyle })}
       <BodyCopy
+        fontSize="fs16"
         mobilefontFamily={['secondary']}
         fontWeight="regular"
         text={`${address.city}, ${address.state} ${address.zipCode}`}
