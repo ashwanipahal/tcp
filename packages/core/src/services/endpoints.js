@@ -74,6 +74,11 @@ const endpoints = {
     method: API_METHODS.DELETE,
     URI: '/v2/account/logout',
   },
+
+  getPointsHistory: {
+    method: API_METHODS.GET,
+    URI: '/v2/wallet/getMyPointHistory',
+  },
   bonusPoints: {
     method: API_METHODS.GET,
     URI: 'v2/account/bonusDay',

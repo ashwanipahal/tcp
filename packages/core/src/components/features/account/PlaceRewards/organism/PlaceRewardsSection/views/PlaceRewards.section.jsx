@@ -6,9 +6,10 @@ import Col from '../../../../../../common/atoms/Col';
 import styles from '../styles/PlaceRewards.section.style';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import MyRewards from '../../../molecules/MyRewards';
-import BonusPointsDays from '../../../molecules/BonusPointsDays';
 import RewardsPoints from '../../../../common/organism/RewardsPoints';
+import PointsHistory from '../../../../common/organism/PointsHistory';
 import { isCanada } from '../../../../../../../utils';
+import BonusPointsDays from '../../../molecules/BonusPointsDays';
 
 const PlaceRewardsSection = ({ labels, className }) => {
   const isCA = isCanada();
@@ -84,7 +85,36 @@ const PlaceRewardsSection = ({ labels, className }) => {
               }}
               className="place-rewards-col2"
             >
-              Second
+              <Row fullBleed>
+                <Col
+                  colSize={{
+                    small: 4,
+                    large: 10,
+                    medium: 6,
+                  }}
+                >
+                  <BodyCopy
+                    fontFamily="secondary"
+                    fontSize="fs16"
+                    fontWeight="extrabold"
+                    component="h4"
+                    className="elem-mb-SM elem-ml-SM"
+                  >
+                    {labels.myPlaceRewards.lbl_my_rewards_points_history}
+                  </BodyCopy>
+                </Col>
+              </Row>
+              <Row fullBleed className="elem-mb-MED">
+                <Col
+                  colSize={{
+                    small: 6,
+                    large: 11,
+                    medium: 8,
+                  }}
+                >
+                  <PointsHistory />
+                </Col>
+              </Row>
             </Col>
           </Row>
         )}

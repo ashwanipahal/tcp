@@ -1,7 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { getComponent, getVariation, getColor, getOpenState, getProps } from './OverlayModal.selectors';
+import {
+  getComponent,
+  getVariation,
+  getColor,
+  getOpenState,
+  getProps,
+} from './OverlayModal.selectors';
 import OverlayModalComponent from '../views/OverlayModal.view';
 import { closeOverlayModal } from './OverlayModal.actions';
 
@@ -23,7 +29,14 @@ const defaultProps = {
   componentProps: {},
 };
 
-export const OverlayModal = ({ component, variation, color, openState, closeOverlay, componentProps }) => {
+export const OverlayModal = ({
+  component,
+  variation,
+  color,
+  openState,
+  closeOverlay,
+  componentProps,
+}) => {
   return (
     <OverlayModalComponent
       component={component}
@@ -42,7 +55,7 @@ const mapStateToProps = state => {
     variation: getVariation(state),
     color: getColor(state),
     openState: getOpenState(state),
-    componentProps: getProps(state)
+    componentProps: getProps(state),
   };
 };
 
