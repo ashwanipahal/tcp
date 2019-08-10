@@ -15,7 +15,7 @@ exports[`AccountOverview component should render correctly 1`] = `
   <Panel />
   <Panel />
   <Panel>
-    <Connect(PaymentOverviewTile)
+    <Connect(PaymentTile)
       labels={Object {}}
     />
   </Panel>

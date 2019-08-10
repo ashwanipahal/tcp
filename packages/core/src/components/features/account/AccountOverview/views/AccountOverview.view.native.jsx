@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import Panel from '../../../../common/molecules/Panel';
-import PaymentOverviewTile from '../../common/organism/PaymentOverviewTile';
+import PaymentTile from '../../common/organism/PaymentTile';
 
 const AccountOverview = ({ labels, handleComponentChange }) => {
   const viewContainerStyle = { marginTop: 15 };
@@ -16,7 +16,7 @@ const AccountOverview = ({ labels, handleComponentChange }) => {
       <Panel title={labels.lbl_overview_profileInformationHeading} />
       <Panel title={labels.lbl_overview_addressBookHeading} />
       <Panel title={labels.lbl_overview_paymentHeading}>
-        <PaymentOverviewTile labels={labels} handleComponentChange={handleComponentChange} />
+        <PaymentTile labels={labels} handleComponentChange={handleComponentChange} />
       </Panel>
       <Panel title={labels.lbl_overview_myPreferencesHeading} />
       <Panel title={labels.lbl_overview_myPlaceRewardsCardHeading} />

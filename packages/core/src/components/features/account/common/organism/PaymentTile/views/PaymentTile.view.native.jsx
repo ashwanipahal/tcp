@@ -1,41 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { getIconCard } from '@tcp/core/src/utils/index.native';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import {
-  getCardList,
-  checkBalance,
-} from '@tcp/core/src/components/features/account/Payment/container/Payment.actions';
 import { cardIconMapping } from '@tcp/core/src/components/features/account/common/molecule/CardTile/views/CardTile.utils';
-import { getCardListState } from '@tcp/core/src/components/features/account/Payment/container/Payment.selectors';
-
 import PaymentItem from '../../../molecule/Payment';
 import CustomButton from '../../../../../../common/atoms/Button';
 import {
   UnderlineStyle,
   PaymentTileContainer,
   ButtonWrapperStyle,
-} from '../styles/PaymentOverviewTile.style.native';
+} from '../styles/PaymentTile.style.native';
 
-export class PaymentOverviewTile extends React.PureComponent<Props> {
+export class PaymentTile extends React.PureComponent<Props> {
   static propTypes = {
-    getCardListAction: PropTypes.func,
     cardList: PropTypes.arrayOf({}),
     labels: PropTypes.shape({}),
     handleComponentChange: PropTypes.func.isRequired,
   };
 
   static defaultProps = {
-    getCardListAction: () => {},
     cardList: [],
     labels: {},
   };
-
-  componentDidMount() {
-    const { getCardListAction } = this.props;
-    getCardListAction();
-  }
 
   getCreditCardView = (card, isAddVariation) => {
     const { labels, handleComponentChange } = this.props;
@@ -120,24 +106,4 @@ export class PaymentOverviewTile extends React.PureComponent<Props> {
   }
 }
 
-export const mapDispatchToProps = dispatch => {
-  return {
-    getCardListAction: () => {
-      dispatch(getCardList());
-    },
-    onGetBalanceCard: payload => {
-      dispatch(checkBalance(payload));
-    },
-  };
-};
-
-const mapStateToProps = state => {
-  return {
-    cardList: getCardListState(state),
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PaymentOverviewTile);
+export default PaymentTile;

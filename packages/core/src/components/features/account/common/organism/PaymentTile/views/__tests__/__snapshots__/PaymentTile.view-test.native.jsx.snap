@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PaymentOverviewTile component should render correctly 1`] = `
+exports[`PaymentTile component should render correctly 1`] = `
 <Styled(View)>
   <Styled(BodyCopy)
     color="black"
