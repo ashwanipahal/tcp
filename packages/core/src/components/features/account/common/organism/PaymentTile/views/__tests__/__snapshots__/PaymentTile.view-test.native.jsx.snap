@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaymentTile component should render correctly 1`] = `
+<Styled(View)>
+  <Styled(BodyCopy)
+    color="black"
+    fontFamily="secondary"
+    fontSize="fs16"
+    text=""
+  />
+  <Styled(View) />
+  <PaymentItem
+    paymentInfo={
+      Object {
+        "icon": "",
+        "subText": "",
+        "text": undefined,
+        "title": undefined,
+        "variation": undefined,
+      }
+    }
+  />
+  <Styled(View) />
+  <PaymentItem
+    paymentInfo={
+      Object {
+        "icon": "",
+        "subText": "",
+        "text": undefined,
+        "title": undefined,
+        "variation": undefined,
+      }
+    }
+  />
+  <Styled(View)>
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      color="white"
+      customStyle={Object {}}
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      onPress={[Function]}
+      text=""
+      url=""
+    />
+  </Styled(View)>
+</Styled(View)>
+`;

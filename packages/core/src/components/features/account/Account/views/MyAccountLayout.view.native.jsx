@@ -26,7 +26,7 @@ const MyAccountLayoutView = (props: Props) => {
   return (
     <View className={className} {...props}>
       <MyAccountDropdownNav navData={navData} handleComponentChange={handleComponentChange} />
-      <MainContent labels={labels} />
+      <MainContent labels={labels} handleComponentChange={handleComponentChange} />
     </View>
   );
 };
