@@ -100,7 +100,7 @@ CouponForm.defaultProps = {
   pristine: false,
   submitting: false,
   error: '',
-  fieldName: 'coupon_code',
+  fieldName: 'couponCode',
   handleSubmit: () => {},
 };
 

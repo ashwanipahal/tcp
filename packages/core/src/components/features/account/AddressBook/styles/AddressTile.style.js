@@ -28,6 +28,14 @@ const styles = css`
   .addressTile__name {
     word-break: break-word;
   }
+
+  .addressbook-shippinglabel {
+    width: 80px;
+    margin-right: 0;
+    margin-left: auto;
+    background-color: ${props => props.theme.colors.PRIMARY.GRAY};
+    border-color: ${props => props.theme.colors.PRIMARY.GRAY};
+  }
 `;
 
 export default styles;
