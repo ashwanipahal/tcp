@@ -38,6 +38,15 @@ const CouponReducer = (state = initialState, action) => {
       return state.set('isFetching', false);
     case COUPON_CONSTANTS.SET_STATUS_COUPON:
       return state.set('couponsAndOffers', List(updateOffer(state, action)));
+    case COUPON_CONSTANTS.SET_ERROR:
+      return state.set(
+        'couponsAndOffers',
+        state.get('couponsAndOffers').map(promo => {
+          return promo.id === action.payload.couponCode
+            ? { ...promo, error: action.payload.msg }
+            : promo;
+        })
+      );
     default:
       return getDefaultState(state);
   }

@@ -1,6 +1,6 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import COUPON_CONSTANTS from '../Coupon.constants';
-import { hideLoader, showLoader, setStatus } from './Coupon.actions';
+import { hideLoader, showLoader, setStatus, setError } from './Coupon.actions';
 import BagPageAction from '../../../../BagPage/container/BagPage.actions';
 import {
   applyCouponToCart,
@@ -8,10 +8,13 @@ import {
 } from '../../../../../../../services/abstractors/CnC';
 import { COUPON_STATUS } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 
+const delay = ms => new Promise(res => setTimeout(res, ms));
+
 export function* applyCoupon({ payload }) {
   const {
     formData,
     formPromise: { resolve, reject },
+    source,
     coupon,
   } = payload;
   if (coupon) {
@@ -25,6 +28,12 @@ export function* applyCoupon({ payload }) {
       yield put(hideLoader());
       resolve();
     } catch (e) {
+      if (source !== 'form') {
+        // eslint-disable-next-line
+        yield put(setError({ msg: e.errors._error.msg, couponCode: formData.couponCode }));
+        yield delay(3000);
+        yield put(setError({ msg: null, couponCode: formData.couponCode }));
+      }
       yield put(setStatus({ promoCode: coupon.id, status: oldStatus }));
       yield put(hideLoader());
       reject(e);
@@ -58,6 +67,10 @@ export function* removeCoupon({ payload }) {
     yield put(hideLoader());
     resolve();
   } catch (e) {
+    // eslint-disable-next-line
+    yield put(setError({ msg: e.errors._error.msg, couponCode: formData.couponCode }));
+    yield delay(3000);
+    yield put(setError({ msg: null, couponCode: formData.couponCode }));
     yield put(hideLoader());
     yield put(setStatus({ promoCode: coupon.id, status: oldStatus }));
     reject(e);

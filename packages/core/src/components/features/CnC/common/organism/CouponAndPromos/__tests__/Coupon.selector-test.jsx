@@ -30,7 +30,7 @@ describe('#Coupon selector', () => {
         id: 'Y00105579',
         status: 'available',
         isExpiring: false,
-        title: '$10 off $50 Gymboree ONLY',
+        title: '$10 off $50 Gymboree only',
         detailsOpen: false,
         expirationDate: '12/31/99',
         effectiveDate: '7/31/19',

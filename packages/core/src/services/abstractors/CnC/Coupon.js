@@ -3,7 +3,7 @@ import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import { getFormattedError, getDynamicCodeErrorMessage } from '../../../utils/errorMessage.util';
 
-export const applyCouponToCart = ({ coupon_code: couponCode = '' }) => {
+export const applyCouponToCart = ({ couponCode = '' }) => {
   const payload = {
     webService: endpoints.addCoupons,
     body: {

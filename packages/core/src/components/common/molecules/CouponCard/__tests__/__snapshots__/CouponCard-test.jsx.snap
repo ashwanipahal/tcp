@@ -5,6 +5,9 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
   <div
     className="couponCard__container"
   >
+    <Styled(ErrorMessage)
+      error=""
+    />
     <div
       className="couponCard__container_main"
     >

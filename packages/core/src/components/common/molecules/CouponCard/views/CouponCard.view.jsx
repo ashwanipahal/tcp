@@ -5,23 +5,11 @@ import BodyCopy from '../../../atoms/BodyCopy';
 import styles from '../styles/CouponCard.style';
 import Anchor from '../../../atoms/Anchor';
 import Button from '../../../atoms/Button';
+import ErrorMessage from '../../../../features/CnC/common/molecules/ErrorMessage';
+
 import { COUPON_REDEMPTION_TYPE } from '../../../../../services/abstractors/CnC/CartItemTile';
 
 class CouponCard extends React.Component<Props> {
-  ErrorHandle = () => {
-    const { coupon } = this.props;
-    if (coupon.error !== '') {
-      return (
-        <div className="couponCard__container_error">
-          <BodyCopy component="p" fontSize="fs10" className="couponCard__container_error_text">
-            {coupon.error}
-          </BodyCopy>
-        </div>
-      );
-    }
-    return null;
-  };
-
   RenderCardHeader = (type, headingClass) => {
     const { labels, coupon } = this.props;
     return (
@@ -123,7 +111,7 @@ class CouponCard extends React.Component<Props> {
     return (
       <div className={className}>
         <div className="couponCard__container">
-          {this.ErrorHandle()}
+          <ErrorMessage error={coupon.error} />
           <div className="couponCard__container_main">
             {coupon.offerType === COUPON_REDEMPTION_TYPE.SAVING &&
               this.RenderCardHeader(labels.SAVINGS_TEXT, 'couponCard__header_saving')}

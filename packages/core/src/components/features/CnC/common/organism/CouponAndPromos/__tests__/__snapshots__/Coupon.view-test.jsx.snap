@@ -17,6 +17,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
     shouldError={[Function]}
     shouldValidate={[Function]}
     shouldWarn={[Function]}
+    source="form"
     submitAsSideEffect={false}
     touchOnBlur={true}
     touchOnChange={false}
@@ -95,6 +96,7 @@ exports[`Coupon component should renders correctly when Coupon are present 1`] =
     shouldError={[Function]}
     shouldValidate={[Function]}
     shouldWarn={[Function]}
+    source="form"
     submitAsSideEffect={false}
     touchOnBlur={true}
     touchOnChange={false}

@@ -47,16 +47,11 @@ CouponContainer.propTypes = {
 };
 
 export const mapDispatchToProps = dispatch => ({
-  handleApplyCoupon: formData => {
-    return new Promise((resolve, reject) => {
-      dispatch(applyCoupon({ formData, formPromise: { resolve, reject } }));
-    });
-  },
   handleApplyCouponFromList: coupon => {
     return new Promise((resolve, reject) => {
       dispatch(
         applyCoupon({
-          formData: { coupon_code: coupon.id },
+          formData: { couponCode: coupon.id },
           formPromise: { resolve, reject },
           coupon,
         })
@@ -68,6 +63,12 @@ export const mapDispatchToProps = dispatch => ({
       dispatch(removeCoupon({ coupon, formPromise: { resolve, reject } }));
     });
   },
+  handleApplyCoupon: (formData, _, props) =>
+    new Promise((resolve, reject) => {
+      dispatch(
+        applyCoupon({ formData, source: props && props.source, formPromise: { resolve, reject } })
+      );
+    }),
 });
 
 export const mapStateToProps = state => ({

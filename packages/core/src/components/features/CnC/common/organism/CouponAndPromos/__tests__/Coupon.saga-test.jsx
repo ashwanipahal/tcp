@@ -6,7 +6,37 @@ import { hideLoader, showLoader } from '../container/Coupon.actions';
 
 describe('Coupon saga', () => {
   it('should dispatch showLoader action', () => {
-    const payload = { formPromise: {}, formData: {}, coupon: {} };
+    const payload = { formPromise: {}, formData: {}, coupon: {}, source: '' };
+    const applyCouponSaga = applyCoupon({ payload });
+    expect(applyCouponSaga.next().value).toEqual(put(showLoader()));
+    applyCouponSaga.next();
+    expect(applyCouponSaga.next().value).toEqual(call(applyCouponToCart, payload.formData));
+    applyCouponSaga.next();
+    applyCouponSaga.next();
+    expect(applyCouponSaga.next().value).toEqual(put(hideLoader()));
+  });
+
+  it('should dispatch showLoader with coupon data ', () => {
+    const payload = {
+      formPromise: {},
+      formData: {},
+      coupon: {
+        id: 'Y00105579',
+        status: 'available',
+        isExpiring: false,
+        title: '$10 off $50 Gymboree ONLY',
+        detailsOpen: false,
+        expirationDate: '12/31/99',
+        effectiveDate: '7/31/19',
+        details: null,
+        legalText: '$10 off $50 Gymboree ONLY',
+        isStarted: true,
+        error: '',
+        promotionType: 'public',
+        expirationDateTimeStamp: '9999-12-31T18:29:5.999Z',
+      },
+      source: '',
+    };
     const applyCouponSaga = applyCoupon({ payload });
     expect(applyCouponSaga.next().value).toEqual(put(showLoader()));
     applyCouponSaga.next();

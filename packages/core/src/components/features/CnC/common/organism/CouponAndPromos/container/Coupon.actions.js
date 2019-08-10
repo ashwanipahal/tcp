@@ -35,3 +35,10 @@ export const setStatus = payload => {
     payload,
   };
 };
+
+export const setError = payload => {
+  return {
+    type: COUPON_CONSTANTS.SET_ERROR,
+    payload,
+  };
+};

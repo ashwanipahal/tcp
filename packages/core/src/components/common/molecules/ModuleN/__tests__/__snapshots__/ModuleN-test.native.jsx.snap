@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleNVanilla ModuleN should render correctly 1`] = `
+<Styled(View)
+  background="red"
+>
+  <Styled(Anchor)
+    anchorVariation=""
+    customStyle={Object {}}
+    text=""
+    visible={false}
+  >
+    <LinkText
+      color="white"
+      fontFamily="primary"
+      fontSize="fs20"
+      headerText={
+        Array [
+          Object {
+            "link": Object {
+              "target": "",
+              "title": "",
+              "url": "/p/",
+            },
+            "textItems": Array [
+              Object {
+                "color": "color2",
+                "style": "style1",
+                "text": "ALL CLEARANCE",
+              },
+            ],
+          },
+        ]
+      }
+      letterSpacing="ls271"
+      textAlign="center"
+      type="heading"
+    />
+  </Styled(Anchor)>
+  <Styled(View)>
+    <PromoBanner
+      promoBanner={
+        Array [
+          Object {
+            "link": Object {
+              "class": "",
+              "external": 0,
+              "target": "",
+              "text": "",
+              "title": "",
+              "url": "/c/",
+            },
+            "textItems": Array [
+              Object {
+                "style": "style6",
+                "text": "50-70%OFF",
+              },
+              Object {
+                "style": "style4",
+                "text": "No Exclusions",
+              },
+            ],
+          },
+        ]
+      }
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <ButtonList
+      buttonListVariation="stackedCTAList"
+      stackedCTAButtons={
+        Array [
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "girl",
+            "title": "girl",
+            "url": "/c/",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "toddler girl",
+            "title": "toddler girl",
+            "url": "/p/",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "boy",
+            "title": "boy",
+            "url": "/p/",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "toddler boy",
+            "title": "toddler boy",
+            "url": "/c/",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "baby",
+            "title": "baby",
+            "url": "/c/",
+          },
+        ]
+      }
+    />
+    <Styled(View)
+      background="red"
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
