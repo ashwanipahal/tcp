@@ -47,7 +47,7 @@ export class Account extends React.PureComponent<Props, State> {
       case 'accountOverviewMobile':
         return 'accountOverview';
       default:
-        return 'accountOverview';
+        return 'addressBookMobile';
     }
   };
 
