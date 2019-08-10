@@ -64,7 +64,7 @@ exports[`LoginSection component should renders correctly 1`] = `
       textAlign="left"
     >
       <Styled(BodyCopy)
-        className="elem-mb-LRG"
+        className={null}
         color="text.primary"
         component="p"
         fontFamily="primary"

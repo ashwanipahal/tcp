@@ -77,7 +77,10 @@ class ForgotPasswordView extends React.Component<Props, State> {
             {labels.password.lbl_forgotPassword_backLogin}
           </Anchor>
         </div>
-        <form onSubmit={handleSubmit(this.onFormSubmit)} className={className}>
+        <form
+          onSubmit={handleSubmit(this.onFormSubmit)}
+          className={`${className} forgot-password-form`}
+        >
           {showNotification && (
             <Notification
               status="error"
@@ -99,7 +102,10 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 fontFamily="secondary"
                 textAlign="center"
               >
-                {labels.password.lbl_forgotPassword_content1}
+                <span className="forgot-password-text">
+                  {labels.password.lbl_forgotPassword_content1}
+                </span>
+                <span>{labels.password.lbl_forgotPassword_content3}</span>
               </BodyCopy>
               <BodyCopy
                 fontWeight="semibold"
@@ -113,7 +119,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
               <BodyCopy component="div" className="elem-mb-LRG">
                 <Field
                   name="Email"
-                  placeholder="Email"
+                  placeholder="Email Address"
                   id="Email"
                   type="text"
                   component={TextBox}
