@@ -1,4 +1,4 @@
-import { API_METHODS } from './api.constants';
+import { API_METHODS, PRODUCTS_URI } from './api.constants';
 
 const endpoints = {
   graphQL: {
@@ -113,6 +113,30 @@ const endpoints = {
   deleteAddress: {
     method: API_METHODS.DELETE,
     URI: 'v2/account/deleteAddressDetails',
+  },
+  getProductDetails: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS,
+    unbxd: true,
+    unbxdCustom: true,
+  },
+  getProductsByOutfits: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS_BY_OUTFITS,
+  },
+  getProductviewbyCategory: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS_VIEW_BY_CATEGORY,
+  },
+  getProductsBySearchTerm: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS_BY_SEARCH,
+    unbxd: true,
+  },
+  getProductInfoById: {
+    method: 'GET',
+    URI: PRODUCTS_URI.PRODUCTS_BY_SEARCH,
+    unbxd: true,
   },
   getPlpProducts: {
     method: 'get',

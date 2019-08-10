@@ -9,12 +9,11 @@ import { isClient } from '../../../utils';
  * @param {Object} reqObj - request param with endpoints and payload
  * @returns {Object} returns derived request object and request url
  */
-const getRequestParams = apiConfig => {
+const getRequestParams = (apiConfig, reqObj) => {
   const {
-    sitesInfo: { proto, unbxd },
-  } = API_CONFIG;
-  const tcpApi = `${proto}${unbxd}/8870d5f30d9bebafac29a18cd12b801d/childrensplace-com702771523455856/category`;
-  const requestUrl = tcpApi; // TODO - configure it for Unbxd
+    webService: { URI },
+  } = reqObj;
+  const requestUrl = `${apiConfig.unbxd}/${apiConfig.unboxKey}/${URI}`;
   const reqHeaders = {};
   // TODO - Check if it works in Mobile app as well or else change it to isServer check
   if (apiConfig.cookie && !isClient()) {
@@ -32,8 +31,8 @@ const getRequestParams = apiConfig => {
  * @param {Object} reqObj - request param with endpoints and payload
  * @returns {Promise} Resolves with promise to consume the unbxd api or reject in case of error
  */
-const unbxdAPIClient = (apiConfig, reqObj) => {
-  const { requestUrl, reqHeaders } = getRequestParams(apiConfig);
+const UnbxdAPIClient = (apiConfig, reqObj) => {
+  const { requestUrl, reqHeaders } = getRequestParams(apiConfig, reqObj);
   const reqTimeout = API_CONFIG.apiRequestTimeout;
   const requestType = reqObj.webService.method.toLowerCase();
   const request = superagent[requestType](requestUrl)
@@ -79,4 +78,4 @@ const unbxdAPIClient = (apiConfig, reqObj) => {
   return result;
 };
 
-export default unbxdAPIClient;
+export default UnbxdAPIClient;

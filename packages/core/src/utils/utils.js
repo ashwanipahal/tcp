@@ -35,8 +35,11 @@ export const isServer = () => {
   return typeof window === 'undefined' && !isMobileApp();
 };
 
-const getAPIInfoFromEnv = (apiSiteInfo, processEnv) => {
+const getAPIInfoFromEnv = (apiSiteInfo, processEnv, isCASite, lang) => {
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
+  const country = isCASite
+    ? API_CONFIG.siteIds.ca.toLocaleUpperCase()
+    : API_CONFIG.siteIds.us.toLocaleUpperCase();
   return {
     traceIdCount: 0,
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
@@ -45,6 +48,9 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv) => {
     assetHost: processEnv.RWD_WEB_ASSETHOST || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
+    unboxKey: `${processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_${lang}`]}/${
+      processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_${lang}`]
+    }`,
   };
 };
 
@@ -62,7 +68,7 @@ export const createAPIConfig = resLocals => {
   // TODO - Get data from env config - Brand, MellisaKey, BritverifyId, AcquisitionId, Domains, Asset Host, Unbxd Domain;
   // TODO - use isMobile and cookie as well..
 
-  const { siteId, brandId, hostname } = resLocals;
+  const { siteId, brandId, hostname, lang = 'EN' } = resLocals;
   const isCASite = siteId === API_CONFIG.siteIds.ca;
   const isGYMSite = brandId === API_CONFIG.brandIds.gym;
   const countryConfig = isCASite ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
@@ -70,7 +76,7 @@ export const createAPIConfig = resLocals => {
   const apiSiteInfo = API_CONFIG.sitesInfo;
   const processEnv = process.env;
   const relHostname = apiSiteInfo.proto + apiSiteInfo.protoSeparator + hostname;
-  const basicConfig = getAPIInfoFromEnv(apiSiteInfo, processEnv);
+  const basicConfig = getAPIInfoFromEnv(apiSiteInfo, processEnv, isCASite, lang);
   const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, processEnv, relHostname);
   return {
     ...basicConfig,
@@ -108,7 +114,8 @@ export const getAPIConfig = () => {
       countryKey: '_US',
       assetHost: 'https://test4.childrensplace.com',
       domain: 'https://test4.childrensplace.com/api/',
-      unbxd: '://search.unbxd.io',
+      unbxd: 'https://search.unbxd.io',
+      unboxKey: '8870d5f30d9bebafac29a18cd12b801d/childrensplace-com702771523455856',
       cookie: null,
       isMobile: false,
       map_api_key: googleAppConfig.google_map_api_key,

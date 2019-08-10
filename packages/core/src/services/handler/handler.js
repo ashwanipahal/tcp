@@ -2,7 +2,7 @@ import { graphQLClient } from '../api.constants';
 import QueryBuilder from './graphQL/queries/queryBuilder';
 import { importGraphQLClientDynamically, getAPIConfig } from '../../utils';
 import StatefulAPIClient from './stateful/statefulClient';
-import unbxdAPIClient from './unbxd/unbxdClient';
+import UnbxdAPIClient from './unbxd/unbxdClient';
 import ExternalAPIClient from './external/externalClient';
 
 /**
@@ -73,7 +73,7 @@ export const executeUnbxdAPICall = reqObj => {
     return null;
   }
   const apiConfigObj = getAPIConfig();
-  return unbxdAPIClient(apiConfigObj, reqObj).catch(errorHandler); // TODO - Make a new Instance and for GRAPHQL as well..
+  return new UnbxdAPIClient(apiConfigObj, reqObj).catch(errorHandler); // TODO - Make a new Instance and for GRAPHQL as well..
 };
 
 export const executeExternalAPICall = reqObj => {

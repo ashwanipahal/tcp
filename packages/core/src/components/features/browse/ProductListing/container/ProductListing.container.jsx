@@ -7,7 +7,7 @@ import { getPlpProducts } from './ProductListing.actions';
 class ProductListingPageContainer extends React.Component {
   componentDidMount() {
     const { getProducts } = this.props;
-    getProducts();
+    getProducts({ URI: 'category' });
   }
 
   render() {
