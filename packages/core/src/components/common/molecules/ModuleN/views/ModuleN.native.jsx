@@ -45,7 +45,7 @@ const ModuleN = (props: Props) => {
         headerText={headerText}
       />
       <PromoTextBannerWrapper>
-        <PromoBanner promoBanner={promoBanner} />
+        <PromoBanner promoBanner={promoBanner} navigation={navigation} />
       </PromoTextBannerWrapper>
       {divImageCTACarousel && (
         <DivImageCTAContainer>

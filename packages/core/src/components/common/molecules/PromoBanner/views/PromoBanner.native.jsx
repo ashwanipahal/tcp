@@ -76,11 +76,12 @@ export const bodyCopyStyles = {
  */
 const PromoBanner = (props: Props) => {
   const {
+    navigation,
     promoBanner: [{ textItems, link }],
     ...otherProps
   } = props;
   return [
-    <Anchor url={link.url}>
+    <Anchor url={link.url} navigation={navigation}>
       {textItems.map(({ text, style }, index) => {
         const StyleBodyCopy = bodyCopyStyles[style];
         return <StyleBodyCopy text={index ? ` ${text}` : text} {...otherProps} />;

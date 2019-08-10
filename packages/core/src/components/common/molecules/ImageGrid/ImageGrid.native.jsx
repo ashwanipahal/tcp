@@ -5,11 +5,10 @@ import { Wrapper, ImageGridContainer, ImageGridItem } from './ImageGrid.style.na
 
 const ImageGrid = props => {
   const { mediaList, imgWidth, column, gutter, imgHeight, dataLocator } = props;
-
   return (
     <Wrapper>
       <ImageGridContainer width={imgWidth * column + gutter}>
-        {mediaList.map(({ crop_m: cropM, url, alt, title }, index) => {
+        {mediaList.map(({ crop_m: cropM, image }, index) => {
           return (
             <ImageGridItem
               testID={`${dataLocator}_${index}`}
@@ -17,8 +16,8 @@ const ImageGrid = props => {
               height={imgHeight}
               crop={cropM}
               gutter={gutter}
-              url={url}
-              alt={alt || title}
+              url={image.url}
+              alt={image.alt || image.title}
             />
           );
         })}

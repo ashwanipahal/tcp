@@ -45,8 +45,9 @@ const CustomButton = (props: Props) => {
   const openUrl = () => {
     if (validateExternalUrl(url)) {
       UrlHandler(url);
+    } else {
+      navigateToPage(url, navigation);
     }
-    navigateToPage(url, navigation);
   };
 
   return (
