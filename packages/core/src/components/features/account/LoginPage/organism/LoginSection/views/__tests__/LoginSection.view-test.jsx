@@ -17,16 +17,16 @@ describe('LoginSection component', () => {
     expect(component).toMatchSnapshot();
   });
 
-  it('should render ForgotPasswordContainer if currentForm state is forgotPassword', () => {
+  it('should render ForgotPasswordContainer if currentForm prop is forgotPassword', () => {
     const props = {
       onSubmit: () => {},
       labels: {
         login: {},
       },
       initialValues: {},
+      currentForm: 'forgotPassword',
     };
     const component = shallow(<LoginSectionVanilla {...props} />);
-    component.instance().showForgotPasswordForm();
     expect(component.find(ForgotPasswordContainer)).toHaveLength(1);
   });
 
