@@ -189,6 +189,7 @@ export default css`
       display: block;
       width: auto;
       text-align: center;
+      line-height: 0.6;
 
       .style7-0,
       .style7-1,
