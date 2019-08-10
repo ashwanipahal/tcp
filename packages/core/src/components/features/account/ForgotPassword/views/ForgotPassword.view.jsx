@@ -119,7 +119,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
               <BodyCopy component="div" className="elem-mb-LRG">
                 <Field
                   name="Email"
-                  placeholder="Email Address"
+                  placeholder={labels.password.lbl_forgotPassword_emailAddress}
                   id="Email"
                   type="text"
                   component={TextBox}
