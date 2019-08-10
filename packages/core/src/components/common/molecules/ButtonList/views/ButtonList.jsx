@@ -106,6 +106,7 @@ const ButtonList = (props: Props) => {
   const {
     buttonsData,
     buttonListVariation,
+    fill,
     className,
     dataLocatorDivisionImages,
     dataLocatorTextCta,
@@ -125,6 +126,7 @@ const ButtonList = (props: Props) => {
     compWrapper = 'stack-comp-wrapper';
     compProps = {
       ...stackCTAProps,
+      fill,
       buttonsData,
       buttonListVariation,
       dataLocatorTextCta,
@@ -148,6 +150,7 @@ const ButtonList = (props: Props) => {
     compProps = {
       ...scrollCTAProps,
       buttonsData,
+      fill,
       buttonListVariation,
       dataLocatorTextCta,
     };
@@ -174,6 +177,7 @@ ButtonList.defaultProps = {
   className: '',
   dataLocatorDivisionImages: '',
   dataLocatorTextCta: '',
+  fill: '',
 };
 
 ButtonList.propTypes = {
@@ -181,6 +185,7 @@ ButtonList.propTypes = {
   className: PropTypes.string,
   dataLocatorDivisionImages: PropTypes.string,
   dataLocatorTextCta: PropTypes.string,
+  fill: PropTypes.string,
 };
 
 export default withStyles(ButtonList, ButtonListStyle);

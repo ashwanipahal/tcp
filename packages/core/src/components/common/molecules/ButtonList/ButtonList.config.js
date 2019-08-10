@@ -4,7 +4,6 @@ export default {
     compProps: {
       className: 'stacked-button',
       buttonVariation: 'fixed-width',
-      fill: 'RED',
     },
   },
   scrollCTAList: {
@@ -12,7 +11,6 @@ export default {
     compProps: {
       className: 'scroll-button',
       buttonVariation: 'fixed-width',
-      fill: 'RED',
     },
   },
   imageCTAList: {

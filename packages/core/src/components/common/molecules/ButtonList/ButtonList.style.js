@@ -59,6 +59,7 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
+    padding-bottom: 20px;
     > div:first-child {
       margin: 0 auto;
     }

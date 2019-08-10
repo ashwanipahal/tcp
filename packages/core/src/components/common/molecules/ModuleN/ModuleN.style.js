@@ -1,12 +1,11 @@
 import { css } from 'styled-components';
 
 export default css`
-  background-color: #f53d3d;
+  ${props => `
+  background-color: ${props.bgColor};
+    `};
   h3.link-text {
     margin: 0;
-  }
-  .separator {
-    background-color: white;
   }
 
   .promo-link {
