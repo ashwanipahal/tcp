@@ -22,9 +22,12 @@ export default css`
   }
 
   .get-candid-button-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+    }
 
     margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
@@ -33,8 +36,6 @@ export default css`
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
       margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     }
-
-    width: 100%;
   }
 
   .gellary-button-right {
