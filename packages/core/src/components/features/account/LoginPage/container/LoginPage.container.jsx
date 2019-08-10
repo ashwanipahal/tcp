@@ -24,16 +24,29 @@ import {
 } from './LoginPage.selectors';
 import LoginView from '../views';
 
-// eslint-disable-next-line
-import { isMobileApp, navigateToNestedRoute } from '../../../../../utils';
-
 class LoginPageContainer extends React.PureComponent {
+  hasMobileApp;
+
+  hasNavigateToNestedRoute;
+
+  constructor(props) {
+    super(props);
+    import('../../../../../utils')
+      .then(({ isMobileApp, navigateToNestedRoute }) => {
+        this.hasMobileApp = isMobileApp;
+        this.hasNavigateToNestedRoute = navigateToNestedRoute;
+      })
+      .catch(error => {
+        console.log('error: ', error);
+      });
+  }
+
   componentDidUpdate(prevProps) {
     const { isUserLoggedIn, closeOverlay } = this.props;
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
-      if (isMobileApp()) {
+      if (this.hasMobileApp()) {
         const { navigation } = this.props;
-        navigateToNestedRoute(navigation, 'HomeStack', 'home');
+        this.hasNavigateToNestedRoute(navigation, 'HomeStack', 'home');
       } else {
         closeOverlay();
       }
@@ -68,6 +81,8 @@ class LoginPageContainer extends React.PureComponent {
       SubmitForgot,
       showNotification,
       successFullResetEmail,
+      currentForm,
+      queryParams,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage || labels.login.lbl_login_error : '';
     const initialValues = {
@@ -88,6 +103,8 @@ class LoginPageContainer extends React.PureComponent {
         SubmitForgot={SubmitForgot}
         showNotification={showNotification}
         successFullResetEmail={successFullResetEmail}
+        currentForm={currentForm}
+        queryParams={queryParams}
       />
     );
   }
@@ -109,6 +126,8 @@ LoginPageContainer.propTypes = {
   SubmitForgot: PropTypes.bool.isRequired,
   showNotification: PropTypes.bool.isRequired,
   successFullResetEmail: PropTypes.bool.isRequired,
+  currentForm: PropTypes.string,
+  queryParams: PropTypes.shape({}),
 };
 
 LoginPageContainer.defaultProps = {
@@ -120,6 +139,8 @@ LoginPageContainer.defaultProps = {
   openOverlay: () => {},
   isUserLoggedIn: false,
   navigation: {},
+  currentForm: '',
+  queryParams: {},
 };
 
 const mapDispatchToProps = dispatch => {

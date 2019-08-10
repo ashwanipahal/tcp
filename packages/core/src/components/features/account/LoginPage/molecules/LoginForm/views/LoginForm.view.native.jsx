@@ -74,6 +74,13 @@ export const LoginForm = props => {
           rightText={labels.login.lbl_login_rememberMe}
         />
         <Field
+          name="userTouchId"
+          component={InputCheckbox}
+          dataLocator="rememberMe"
+          disabled={false}
+          rightText="User Touch ID"
+        />
+        <Field
           name="savePlcc"
           component={InputCheckbox}
           dataLocator="savePlcc"

@@ -1,3 +1,5 @@
+// eslint-disable-next-line import/no-unresolved
+import { NativeModules } from 'react-native';
 import MockStorage from './__mocks__/MockStorage';
 
 const { configure } = require('enzyme');
@@ -16,3 +18,10 @@ jest.setMock('@react-native-community/async-storage', AsyncStorage);
 // Mock Timers for Animation
 jest.useFakeTimers();
 jest.mock('LayoutAnimation');
+
+// Mock NetInfo for react-native modules
+NativeModules.RNCNetInfo = {
+  getCurrentState: jest.fn(() => Promise.resolve()),
+  addListener: jest.fn(),
+  removeListeners: jest.fn(),
+};

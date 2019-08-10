@@ -65,7 +65,7 @@ const textboxStyles = css`
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ${props => (props.input && props.type === 'hidden' ? 'none' : 'block')};
     width: 15px;
     height: 8px;
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXXS};
