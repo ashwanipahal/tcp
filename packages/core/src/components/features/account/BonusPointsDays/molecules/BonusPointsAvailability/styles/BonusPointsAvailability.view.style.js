@@ -8,6 +8,7 @@ const styles = css`
   }
   .availability-btn {
     font-size: ${props => props.theme.typography.fontSizes.fs10};
+    pointer-events: none;
   }
   .disable-btn {
     opacity: 0.5;
