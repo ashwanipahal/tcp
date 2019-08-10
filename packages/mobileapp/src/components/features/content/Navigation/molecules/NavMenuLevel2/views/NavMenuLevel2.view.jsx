@@ -24,9 +24,12 @@ const BackIcon = require('../../../../../../../../../core/src/assets/carrot-larg
  * @param {object} subCategories Details of the L2 menu item that has been clicked
  * @param {object} hasL3 flag that defines if L3 is present for the L2
  */
-const navigateFromL2 = (navigate, subCategories, hasL3) => {
+const navigateFromL2 = (navigate, subCategories, name, hasL3) => {
   if (hasL3) {
-    return navigate('NavMenuLevel3');
+    return navigate('NavMenuLevel3', {
+      navigationObj: subCategories,
+      l2Title: name,
+    });
   }
   return navigate('ProductListingPage');
 };
@@ -59,12 +62,16 @@ const NavMenuLevel2 = props => {
       // return shopBySizeCircle(navigate, item.links);
     }
 
-    if (item.subCategories.length) {
+    if (item.subCategories && item.subCategories.length) {
       hasL3 = true;
       promoBannerMargin = 40;
     }
 
-    if (item.categoryContent.mainCategory && item.categoryContent.mainCategory.promoBadge[0].text) {
+    if (
+      item.categoryContent.mainCategory &&
+      item.categoryContent.mainCategory.promoBadge &&
+      item.categoryContent.mainCategory.promoBadge[0].text
+    ) {
       hasBadge = true;
       maxWidthItem -= 180;
     }
@@ -75,10 +82,15 @@ const NavMenuLevel2 = props => {
       return (
         <ItemView
           accessibilityRole="button"
-          onPress={() => navigateFromL2(navigate, item.subCategories, hasL3)}
+          onPress={() =>
+            navigateFromL2(navigate, item.subCategories, item.categoryContent.name, hasL3)
+          }
         >
           <MenuItem
             navigate={navigate}
+            navigationMethod={() =>
+              navigateFromL2(navigate, item.subCategories, item.categoryContent.name, hasL3)
+            }
             maxWidthItem={maxWidthItem}
             item={item}
             hasBadge={hasBadge}
@@ -91,10 +103,15 @@ const NavMenuLevel2 = props => {
     return (
       <ItemViewWithHeading
         accessibilityRole="button"
-        onPress={() => navigateFromL2(navigate, item.subCategories, hasL3)}
+        onPress={() =>
+          navigateFromL2(navigate, item.subCategories, item.categoryContent.name, hasL3)
+        }
       >
         <MenuItem
           navigate={navigate}
+          navigationMethod={() =>
+            navigateFromL2(navigate, item.subCategories, item.categoryContent.name, hasL3)
+          }
           maxWidthItem={maxWidthItem}
           item={item}
           hasBadge={hasBadge}

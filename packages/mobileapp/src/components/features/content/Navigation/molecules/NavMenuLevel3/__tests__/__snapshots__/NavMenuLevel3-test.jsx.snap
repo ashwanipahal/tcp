@@ -1,31 +1,73 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NavMenuLevel3 should render correctly 1`] = `
-<Styled(View)>
-  <Styled(TouchableOpacity)
-    accessibilityRole="button"
-    onPress={[Function]}
-  >
-    <Styled(Image)
-      source={
+<Fragment>
+  <Styled(View)>
+    <Styled(TouchableOpacity)
+      accessibilityRole="button"
+      onPress={[Function]}
+    >
+      <Styled(Image)
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/carrot-large-left.png",
+          }
+        }
+      />
+    </Styled(TouchableOpacity)>
+    <Styled(BodyCopy)
+      color="text.primary"
+      fontFamily="secondary"
+      fontSize="fs16"
+      style={
         Object {
-          "testUri": "../../../../core/src/assets/carrot-large-left.png",
+          "textTransform": "uppercase",
         }
       }
+      text="test"
+      textAlign="left"
     />
-  </Styled(TouchableOpacity)>
-  <Styled(BodyCopy)
-    color="text.primary"
-    fontFamily="secondary"
-    fontSize="fs16"
-    style={
-      Object {
-        "textTransform": "uppercase",
-      }
+    <Text />
+  </Styled(View)>
+  <SectionList
+    data={Array []}
+    disableVirtualization={false}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    onEndReachedThreshold={2}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    sections={
+      Array [
+        Object {
+          "data": Array [
+            Object {
+              "title": "Lorem",
+            },
+            Object {
+              "title": "Categoriess",
+            },
+          ],
+          "title": undefined,
+        },
+        Object {
+          "data": Array [
+            Object {
+              "title": "Lorem",
+            },
+            Object {
+              "title": "Categoriess",
+            },
+          ],
+          "title": undefined,
+        },
+      ]
     }
-    text="L3"
-    textAlign="center"
+    stickySectionHeadersEnabled={false}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
   />
-  <Text />
-</Styled(View)>
+</Fragment>
 `;
