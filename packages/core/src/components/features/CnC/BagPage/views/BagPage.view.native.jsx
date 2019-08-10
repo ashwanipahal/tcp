@@ -1,13 +1,15 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
 import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/BagPage/organisms/OrderLedger';
+import CartItemTileContainer from '../../CartItemTile/organisms/CartItemTileWrapper/container/CartItemTileWrapper.container';
 
 const BagPage = () => {
   return (
-    <React.Fragment>
+    <View style={{ flex: 1 }}>
       <Text>APP BAG PAGE</Text>
+      <CartItemTileContainer />
       <OrderLedgerContainer />
-    </React.Fragment>
+    </View>
   );
 };
 export default BagPage;

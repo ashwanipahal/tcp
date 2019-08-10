@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ProductTileWrapper from '@tcp/web/src/components/features/CnC/MiniBag/container/ProductTileWrapperContainer.container';
+import CartItemTileWrapper from '../../CartItemTile/organisms/CartItemTileWrapper/container/CartItemTileWrapper.container';
 import OrderLedgerContainer from '../organisms/OrderLedger';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/BagPage.style';
@@ -36,7 +36,7 @@ const BagPageView = ({ className, labels, totalCount }: Props) => {
       <section className="main-sec">
         <Row>
           <Col colSize={{ small: 6, medium: 5, large: 8 }} className="left-sec">
-            <ProductTileWrapper pageView={myBag} />
+            <CartItemTileWrapper pageView={myBag} />
           </Col>
           <Col colSize={{ small: 6, medium: 3, large: 4 }} className="right-sec">
             <OrderLedgerContainer />
