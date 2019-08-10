@@ -8,8 +8,6 @@ import {
   NextRewardsWrapper,
   TextWrapper,
   VerticalLine,
-  RewardsTextStyle,
-  RewardsStyle,
 } from '../../styles/RewardsPointsTable.style';
 
 /**
@@ -22,23 +20,62 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
     return (
       <RewardsOverviewContainer>
         <MyRewardsWrapper>
-          <BodyCopy {...RewardsStyle} text={`${labels.lbl_common_currency}${totalRewards || 0}`} />
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize="fs18"
+            fontWeight="black"
+            color="gray.900"
+            text={`${labels.lbl_common_currency}${totalRewards || 0}`}
+          />
           <TextWrapper>
-            <BodyCopy {...RewardsTextStyle} text={labels.lbl_common_heading} />
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs13"
+              fontWeight="regular"
+              textAlign="center"
+              color="black"
+              text={labels.lbl_common_heading}
+            />
           </TextWrapper>
         </MyRewardsWrapper>
         <VerticalLine />
         <CurrentPointsWrapper>
-          <BodyCopy {...RewardsStyle} text={currentPoints || 0} />
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize="fs18"
+            fontWeight="black"
+            color="gray.900"
+            text={currentPoints || 0}
+          />
           <TextWrapper>
-            <BodyCopy {...RewardsTextStyle} text={labels.lbl_common_current_points} />
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs13"
+              fontWeight="regular"
+              textAlign="center"
+              color="black"
+              text={labels.lbl_common_current_points}
+            />
           </TextWrapper>
         </CurrentPointsWrapper>
         <VerticalLine />
         <NextRewardsWrapper>
-          <BodyCopy {...RewardsStyle} text={pointsToNextReward || 100} />
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize="fs18"
+            fontWeight="black"
+            color="gray.900"
+            text={pointsToNextReward || 100}
+          />
           <TextWrapper>
-            <BodyCopy {...RewardsTextStyle} text={labels.lbl_common_next_reward_points} />
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs13"
+              fontWeight="regular"
+              textAlign="center"
+              color="black"
+              text={labels.lbl_common_next_reward_points}
+            />
           </TextWrapper>
         </NextRewardsWrapper>
       </RewardsOverviewContainer>

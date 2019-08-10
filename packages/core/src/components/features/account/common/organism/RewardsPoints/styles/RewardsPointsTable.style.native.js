@@ -43,21 +43,6 @@ const VerticalLine = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
-const RewardsTextStyle = {
-  fontFamily: 'secondary',
-  fontSize: 'fs13',
-  fontWeight: 'regular',
-  textAlign: 'center',
-  color: `${props => props.theme.colorPalette.gray[900]}`,
-};
-
-const RewardsStyle = {
-  fontFamily: 'secondary',
-  fontSize: 'fs18',
-  fontWeight: 'black',
-  color: `${props => props.theme.colorPalette.black}`,
-};
-
 export {
   RewardsOverviewContainer,
   MyRewardsWrapper,
@@ -65,6 +50,4 @@ export {
   NextRewardsWrapper,
   TextWrapper,
   VerticalLine,
-  RewardsTextStyle,
-  RewardsStyle,
 };
