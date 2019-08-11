@@ -15,16 +15,8 @@ import {
 } from '../container/loginUtils/keychain.utils.native';
 
 class LoginView extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      getLoginState: true,
-    };
-  }
-
   componentDidMount() {
     const { onSubmit } = this.props;
-    const { getLoginState } = this.state;
     getUserLoginDetails().then(credentials => {
       const userDetails = {
         emailAddress: credentials.username,
@@ -34,10 +26,8 @@ class LoginView extends React.PureComponent {
         isSupportedTouch().then(techAvailable => {
           if (techAvailable) {
             touchIDCheck().then(touchIdResp => {
-              if (touchIdResp && getLoginState) {
+              if (touchIdResp) {
                 onSubmit(userDetails);
-              } else {
-                this.setState({ getLoginState: false });
               }
             });
           }
