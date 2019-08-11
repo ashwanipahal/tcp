@@ -15,19 +15,33 @@ import {
 } from '../container/loginUtils/keychain.utils.native';
 
 class LoginView extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.state = {
+      getLoginState: true,
+    };
+  }
+
   componentDidMount() {
     const { onSubmit } = this.props;
+    const { getLoginState } = this.state;
     getUserLoginDetails().then(credentials => {
       const userDetails = {
         emailAddress: credentials.username,
         password: credentials.password,
       };
       if (credentials) {
-        const getTouchIdResult = touchIDCheck();
-        const isTouchEnable = isSupportedTouch();
-        if (getTouchIdResult && isTouchEnable) {
-          onSubmit(userDetails);
-        }
+        isSupportedTouch().then(techAvailable => {
+          if (techAvailable) {
+            touchIDCheck().then(touchIdResp => {
+              if (touchIdResp && getLoginState) {
+                onSubmit(userDetails);
+              } else {
+                this.setState({ getLoginState: false });
+              }
+            });
+          }
+        });
       }
     });
   }
@@ -36,11 +50,13 @@ class LoginView extends React.PureComponent {
     const { onSubmit } = this.props;
     resetTouchPassword();
     setUserLoginDetails(formdata.emailAddress, formdata.password);
-    const getTouchIdResult = touchIDCheck();
-    const isTouchEnable = isSupportedTouch();
-    if (getTouchIdResult && formdata.userTouchId && isTouchEnable) {
-      onSubmit(formdata);
-    }
+    onSubmit(formdata);
+
+    isSupportedTouch().then(touchAvailable => {
+      if (touchAvailable && formdata.userTouchId) {
+        touchIDCheck();
+      }
+    });
   };
 
   render() {
