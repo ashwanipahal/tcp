@@ -30,7 +30,7 @@ export const applyCouponToCart = ({ couponCode = '' }) => {
   });
 };
 
-export const removeCouponOrPromo = ({ coupon_code: couponCode = '' }) => {
+export const removeCouponOrPromo = ({ couponCode = '' }) => {
   const payload = {
     header: {
       promoCode: couponCode.toUpperCase(),

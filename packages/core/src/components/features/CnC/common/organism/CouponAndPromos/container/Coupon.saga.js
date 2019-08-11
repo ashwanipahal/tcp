@@ -36,7 +36,6 @@ export function* applyCoupon({ payload }) {
       }
       yield put(setStatus({ promoCode: coupon.id, status: oldStatus }));
       yield put(hideLoader());
-      reject(e);
     }
   } else {
     try {
@@ -57,13 +56,14 @@ export function* removeCoupon({ payload }) {
     coupon,
     formPromise: { resolve, reject },
   } = payload;
-  const formData = { coupon_code: coupon.id };
+  const formData = { couponCode: coupon.id };
   const oldStatus = coupon && coupon.status;
   try {
     yield put(showLoader());
     yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.REMOVING }));
     yield call(removeCouponOrPromo, formData);
     yield put(BagPageAction.getCartData());
+    yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.REMOVING }));
     yield put(hideLoader());
     resolve();
   } catch (e) {

@@ -70,6 +70,7 @@ describe('#getOrderPointSummary', () => {
     const expected = [
       {
         ...couponFormatResponse[0],
+        offerType: 'PLACECASH',
         promotionType: 'PLACECASH',
         redemptionType: 'PLACECASH',
       },
@@ -91,6 +92,7 @@ describe('#getOrderPointSummary', () => {
     const expected = [
       {
         ...couponFormatResponse[0],
+        offerType: 'rewards',
         promotionType: 'LOYALTY',
         redemptionType: 'LOYALTY',
       },
@@ -112,6 +114,7 @@ describe('#getOrderPointSummary', () => {
     const expected = [
       {
         ...couponFormatResponse[0],
+        offerType: 'saving',
         status: 'applied',
         labelStatus: 'REMOVE',
       },
