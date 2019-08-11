@@ -64,7 +64,7 @@ class Panel extends React.PureComponent<Props> {
             />
           </TextWrapper>
           <ImageWrapper>
-            <ImageComp source={favIcon} width={18} height={15} />
+            <ImageComp source={favIcon} width={20} height={18} />
           </ImageWrapper>
         </FavoritesWrapper>
       </FavoritesContainer>
