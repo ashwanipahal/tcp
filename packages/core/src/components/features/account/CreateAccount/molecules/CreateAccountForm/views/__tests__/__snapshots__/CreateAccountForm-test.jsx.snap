@@ -2,6 +2,10 @@
 
 exports[`CreateAccountForm should render correctly 1`] = `
 <StyledComponent
+  destroyOnUnmount={true}
+  enableReinitialize={true}
+  forceUnregisterOnUnmount={false}
+  form="CreateAccountForm"
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
@@ -20,6 +24,25 @@ exports[`CreateAccountForm should render correctly 1`] = `
           ";
 ",
         ],
+      },
+      "defaultProps": Object {
+        "destroyOnUnmount": true,
+        "enableReinitialize": true,
+        "forceUnregisterOnUnmount": false,
+        "form": "CreateAccountForm",
+        "getFormState": [Function],
+        "keepDirtyOnReinitialize": false,
+        "persistentSubmitErrors": false,
+        "pure": true,
+        "shouldAsyncValidate": [Function],
+        "shouldError": [Function],
+        "shouldValidate": [Function],
+        "shouldWarn": [Function],
+        "submitAsSideEffect": false,
+        "touchOnBlur": true,
+        "touchOnChange": false,
+        "updateUnregisteredFields": false,
+        "validate": [Function],
       },
       "displayName": "Styled(ReduxForm)",
       "foldedComponentIds": Array [],
@@ -55,5 +78,18 @@ exports[`CreateAccountForm should render correctly 1`] = `
     }
   }
   forwardedRef={null}
+  getFormState={[Function]}
+  keepDirtyOnReinitialize={false}
+  persistentSubmitErrors={false}
+  pure={true}
+  shouldAsyncValidate={[Function]}
+  shouldError={[Function]}
+  shouldValidate={[Function]}
+  shouldWarn={[Function]}
+  submitAsSideEffect={false}
+  touchOnBlur={true}
+  touchOnChange={false}
+  updateUnregisteredFields={false}
+  validate={[Function]}
 />
 `;
