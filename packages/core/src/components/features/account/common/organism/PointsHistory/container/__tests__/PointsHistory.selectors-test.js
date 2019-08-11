@@ -1,8 +1,5 @@
 import { fromJS } from 'immutable';
-import {
-  getPointHistoryState,
-  getCommonLabels,
-} from '../PointsHistory.selectors';
+import { getPointHistoryState, getCommonLabels } from '../PointsHistory.selectors';
 
 describe('#pointsHistoryData selector', () => {
   it('#getPointHistoryState should return pointsHistoryDataReduer state', () => {
@@ -14,17 +11,14 @@ describe('#pointsHistoryData selector', () => {
       pointHistoryReducer: pointsHistoryDataState,
     };
 
-    expect(getPointHistoryState(state)).toEqual(
-      pointsHistoryDataState.get('pointsHistoryData')
-    );
+    expect(getPointHistoryState(state)).toEqual(pointsHistoryDataState.get('pointsHistoryData'));
   });
-
 
   it('#getCommonLabels should return all the account labels', () => {
     const state = {
       Labels: {
         account: {
-          common:{}
+          common: {},
         },
       },
     };
