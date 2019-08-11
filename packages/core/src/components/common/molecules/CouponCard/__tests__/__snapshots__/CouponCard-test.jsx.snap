@@ -41,17 +41,6 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
             textAlign="left"
           />
         </div>
-        <Styled(BodyCopy)
-          className="couponCard__header_expired"
-          color="text.primary"
-          component="p"
-          fontFamily="primary"
-          fontSize="fs12"
-          fontWeight="regular"
-          letterSpacing="normal"
-          lineHeight="normal"
-          textAlign="left"
-        />
       </div>
       <div
         className="couponCard__body"

@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyBagPage component should renders correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(BodyCopy)
+    className="large-size-message"
+    color="gray.900"
+    component="p"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    Uh oh! Looks like you don’t have anything in your cart yet!
+  </Styled(BodyCopy)>
+  <div
+    className="element-spacing"
+  >
+    <Styled(Button)
+      className="CTA-button"
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="white"
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="extrabold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        SHOP NOW
+      </Styled(BodyCopy)>
+    </Styled(Button)>
+  </div>
+  <Styled(BodyCopy)
+    className="large-size-message"
+    color="gray.900"
+    component="p"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="extrabold"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    Need some inspiration?
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
+    className="small-spacing"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize={12}
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    Here are some great items to get your cart started!
+  </Styled(BodyCopy)>
+</div>
+`;

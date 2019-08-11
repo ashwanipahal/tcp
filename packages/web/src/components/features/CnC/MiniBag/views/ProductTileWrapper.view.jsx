@@ -5,15 +5,15 @@ import {
   getProductName,
   getProductDetails,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
+import EmptyBag from '@tcp/core/src/components/features/CnC/EmptyBagPage/views/EmptyBagPage.view';
 import productTileCss from '../styles/ProductTileWrapper.style';
 
 const ProductTileWrapper = props => {
-  const { orderItems, labels, pageView } = props;
-  return (
-    <div className="miniBagWrapper">
-      {orderItems &&
-        orderItems.size > 0 &&
-        orderItems.map(tile => {
+  const { orderItems, labels, pageView, isUserLoggedIn } = props;
+  if (orderItems && orderItems.size > 0) {
+    return (
+      <div className="miniBagWrapper">
+        {orderItems.map(tile => {
           const productDetail = getProductDetails(tile);
 
           return (
@@ -26,8 +26,10 @@ const ProductTileWrapper = props => {
             />
           );
         })}
-    </div>
-  );
+      </div>
+    );
+  }
+  return <EmptyBag isUserLoggedIn={isUserLoggedIn} />;
 };
 
 ProductTileWrapper.defaultProps = {
@@ -37,6 +39,7 @@ ProductTileWrapper.defaultProps = {
 ProductTileWrapper.propTypes = {
   orderItems: PropTypes.shape([]).isRequired,
   labels: PropTypes.shape({}).isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
   pageView: PropTypes.string,
 };
 
