@@ -21,3 +21,10 @@ export const getCouponList = payload => {
     payload,
   };
 };
+
+export const setError = payload => {
+  return {
+    type: COUPON_CONSTANTS.SET_ERROR,
+    payload,
+  };
+};

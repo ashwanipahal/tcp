@@ -1,11 +1,12 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import COUPON_CONSTANTS from '../Coupon.constants';
-import { hideLoader, showLoader } from './Coupon.actions';
+import { hideLoader, showLoader, setError } from './Coupon.actions';
 import { applyCouponToCart } from '../../../../../../../services/abstractors/CnC';
 
 export function* applyCoupon({ payload }) {
   const {
     formData,
+    source,
     formPromise: { resolve, reject },
   } = payload;
   try {
@@ -14,6 +15,10 @@ export function* applyCoupon({ payload }) {
     yield put(hideLoader());
     resolve();
   } catch (e) {
+    if (source !== 'form') {
+      // eslint-disable-next-line
+      yield put(setError({ msg: e.errors._error.msg, couponCode: formData.couponCode }));
+    }
     yield put(hideLoader());
     reject(e);
   }

@@ -15,8 +15,14 @@ export class AddressOverviewTile extends React.Component {
   }
 
   render() {
-    const { addressList, labels } = this.props;
-    return <AddressOverviewTileComponent addressList={addressList} labels={labels} />;
+    const { addressList, labels, handleComponentChange } = this.props;
+    return (
+      <AddressOverviewTileComponent
+        addressList={addressList}
+        labels={labels}
+        handleComponentChange={handleComponentChange}
+      />
+    );
   }
 }
 
@@ -46,6 +52,7 @@ AddressOverviewTile.propTypes = {
     lbl_overview_defaultShipingAddress: PropTypes.string,
   }),
   addressList: PropTypes.shape({}),
+  handleComponentChange: PropTypes.func,
 };
 
 AddressOverviewTile.defaultProps = {
@@ -59,6 +66,7 @@ AddressOverviewTile.defaultProps = {
     lbl_overview_defaultShipingAddress: 'Default Shiping Address',
   },
   addressList: {},
+  handleComponentChange: () => {},
 };
 
 export default connect(

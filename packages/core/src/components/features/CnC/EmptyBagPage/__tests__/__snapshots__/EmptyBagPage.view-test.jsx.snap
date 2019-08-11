@@ -8,6 +8,7 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
     className="large-size-message"
     color="gray.900"
     component="p"
+    dataLocator="cartEmptyBagMessage"
     fontFamily="secondary"
     fontSize={12}
     fontWeight="extrabold"
@@ -22,6 +23,7 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
   >
     <Styled(Button)
       className="CTA-button"
+      data-locator="cartRegisteredShopNowButton"
     >
       <Styled(BodyCopy)
         className={null}
@@ -42,6 +44,7 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
     className="large-size-message"
     color="gray.900"
     component="p"
+    dataLocator="cartRecommendationMessage"
     fontFamily="secondary"
     fontSize={12}
     fontWeight="extrabold"
@@ -55,6 +58,7 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
     className="small-spacing"
     color="text.primary"
     component="p"
+    dataLocator="cartRecommendationMessage"
     fontFamily="secondary"
     fontSize={12}
     fontWeight="regular"

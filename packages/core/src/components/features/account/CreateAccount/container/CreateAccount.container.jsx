@@ -53,6 +53,11 @@ export class CreateAccountContainer extends React.Component {
     });
   };
 
+  openModal = params => {
+    const { openOverlay } = this.props;
+    openOverlay(params);
+  };
+
   render() {
     const {
       className,
@@ -75,6 +80,7 @@ export class CreateAccountContainer extends React.Component {
         error={error}
         onAlreadyHaveAnAccountClick={this.onAlreadyHaveAnAccountClick}
         onRequestClose={onRequestClose}
+        openModal={this.openModal}
       />
     );
   }
