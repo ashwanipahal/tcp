@@ -8,7 +8,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-chPdSV",
+        "componentId": "sc-kgoBCf",
         "isStatic": false,
         "rules": Array [
           "
@@ -87,7 +87,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
       "displayName": "Styled(MiniBagBody)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-chPdSV",
+      "styledComponentId": "sc-kgoBCf",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -97,6 +97,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
   forwardedRef={null}
   labels={
     Object {
+      "currencySymbol": "$",
       "subTotal": "Subtotal",
       "viewBag": "View bag",
       "viewSaveForLater": "save later",
