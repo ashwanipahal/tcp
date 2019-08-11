@@ -11,26 +11,47 @@ import Col from '../../../../../../common/atoms/Col';
 import Button from '../../../../../../common/atoms/Button';
 import styles from './styles/LoginSection.styles';
 import constants from '../../../LoginPage.constants';
-import { isCanada } from '../../../../../../../utils';
+import { isCanada, scrollPage } from '../../../../../../../utils';
 
 class LoginSection extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
-    this.state = {
-      currentForm: props.currentForm || constants.PAGE_TYPE.LOGIN,
-    };
     this.isCanada = isCanada();
   }
 
+  componentDidUpdate(prevProps) {
+    const { currentForm } = this.props;
+
+    if (currentForm !== prevProps.currentForm) {
+      scrollPage();
+    }
+  }
+
   showForgotPasswordForm = () => {
-    this.setState({
-      currentForm: constants.PAGE_TYPE.FORGOT_PASSWORD,
+    const { openModal } = this.props;
+    openModal({
+      component: 'login',
+      componentProps: {
+        currentForm: constants.PAGE_TYPE.FORGOT_PASSWORD,
+      },
     });
   };
 
   showLoginForm = () => {
-    this.setState({
-      currentForm: constants.PAGE_TYPE.LOGIN,
+    const { openModal } = this.props;
+    openModal({
+      component: 'login',
+      componentProps: {
+        currentForm: constants.PAGE_TYPE.LOGIN,
+      },
+    });
+  };
+
+  showCreateAccountForm = () => {
+    const { openModal } = this.props;
+    openModal({
+      component: 'createAccount',
+      variation: 'primary',
     });
   };
 
@@ -43,11 +64,10 @@ class LoginSection extends React.PureComponent<Props> {
       showRecaptcha,
       resetForm,
       className,
-      onCreateAccountClick,
       queryParams,
+      currentForm,
     } = this.props;
 
-    const { currentForm } = this.state;
     return (
       <Row className={className}>
         <Col
@@ -58,7 +78,7 @@ class LoginSection extends React.PureComponent<Props> {
           }}
           className="elem-pt-XXL elem-pb-XXL  elem-pl-LRG elem-pr-LRG"
         >
-          {currentForm === 'login' && (
+          {(!currentForm || currentForm === constants.PAGE_TYPE.LOGIN) && (
             <React.Fragment>
               <LoginTopSection labels={labels} className="elem-mb-LRG" isCanada={this.isCanada} />
               <LoginForm
@@ -70,7 +90,7 @@ class LoginSection extends React.PureComponent<Props> {
                 showForgotPasswordForm={this.showForgotPasswordForm}
                 resetForm={resetForm}
                 className="elem-mb-LRG"
-                onCreateAccountClick={onCreateAccountClick}
+                onCreateAccountClick={this.showCreateAccountForm}
               />
             </React.Fragment>
           )}
@@ -96,7 +116,7 @@ class LoginSection extends React.PureComponent<Props> {
             type="submit"
             buttonVariation="fixed-width"
             data-locator=""
-            onClick={onCreateAccountClick}
+            onClick={this.showCreateAccountForm}
           >
             {labels.login.lbl_login_createAccountCTA}
           </Button>
@@ -112,14 +132,16 @@ LoginSection.propTypes = {
   loginErrorMessage: PropTypes.string,
   initialValues: PropTypes.shape({}).isRequired,
   showRecaptcha: PropTypes.bool,
-  onCreateAccountClick: PropTypes.func,
+  openModal: PropTypes.func,
   queryParams: PropTypes.shape({}).isRequired,
+  currentForm: PropTypes.string,
 };
 
 LoginSection.defaultProps = {
   loginErrorMessage: '',
   showRecaptcha: false,
-  onCreateAccountClick: () => {},
+  openModal: () => {},
+  currentForm: constants.PAGE_TYPE.LOGIN,
 };
 
 export default withStyles(LoginSection, styles);

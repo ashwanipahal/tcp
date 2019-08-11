@@ -14,6 +14,7 @@ export {
   getViewportInfo,
   showOverlay,
   closeOverlay,
+  scrollPage,
 } from './utils.web';
 
 export {

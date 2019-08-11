@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/OverlayModal.style';
+import { scrollPage } from '../../../../../../utils';
 
 const propTypes = {
   component: PropTypes.string,
@@ -46,6 +47,7 @@ class OverlayModal extends React.Component {
     const { component: nextTargetComponent } = this.props;
     const { component: prevTargetComponent } = prevProps;
     if (nextTargetComponent !== prevTargetComponent) {
+      scrollPage();
       return this.getCustomStyles({ styleModal: false });
     }
     return null;
