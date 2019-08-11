@@ -5,7 +5,7 @@ export default css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 20px;
+  padding-top: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   .large-size-message {
     font-size: ${props => props.theme.typography.fontSizes.fs22};
   }
@@ -30,7 +30,7 @@ export default css`
   }
 
   .CTA-button {
-    padding: 15px 60px;
+    padding: ${props => props.theme.spacing.ELEM_SPACING.MED} 60px;
     background-color: ${props => props.theme.colors.PRIMARY.DARK};
     &:hover {
       background: ${props => props.theme.colors.PRIMARY.DARK};
