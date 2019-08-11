@@ -16,7 +16,7 @@ const AccountOverview = ({ labels, handleComponentChange }) => {
       <Panel title={labels.lbl_overview_earnPointsHeading} />
       <Panel title={labels.lbl_overview_ordersHeading} />
       <Panel title={labels.lbl_overview_profileInformationHeading} />
-      <Panel title={labels.lbl_overview_addressBookHeading} isLinkVariation={false}>
+      <Panel title={labels.lbl_overview_addressBookHeading}>
         <AddressOverviewTile labels={labels} handleComponentChange={handleComponentChange} />
       </Panel>
       <Panel title={labels.lbl_overview_paymentHeading}>

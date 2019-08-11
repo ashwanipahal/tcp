@@ -42,7 +42,6 @@ exports[`AccountOverview component should render correctly 1`] = `
     handleComponentChange={[Function]}
     isCardApply={false}
     isFavorite={false}
-    isLinkVariation={false}
     isVariationTypeLink={false}
   >
     <Connect(AddressOverviewTile)
