@@ -20,7 +20,7 @@ const favIcon = require('../../../../../../../mobileapp/src/assets/images/filled
 const rightIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-small-right-gray.png');
 const cardIcon = require('../../../../../../../mobileapp/src/assets/images/tcp-cc.png');
 
-class Panel extends React.Component<Props> {
+class Panel extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
@@ -119,7 +119,7 @@ class Panel extends React.Component<Props> {
             <TitleContainer>
               {isCardApply && this.getCreditCardApply(title)}
               {isFavorite && this.getFavoriteOverview(title)}
-              {!isImageLink && this.getHeaderTitle(title)}
+              {!isImageLink && this.getHeaderTitle()}
               <ImageWrapper>
                 <ImageComp customStyle={imgStyle} source={rightIcon} width={7} height={10} />
               </ImageWrapper>

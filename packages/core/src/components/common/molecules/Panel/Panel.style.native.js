@@ -7,7 +7,7 @@ const PanelContainer = styled.View`
 
 const TitleContainer = styled.View`
   flex-direction: row;
-  height: 50px;
+  height: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
   align-items: center;
 `;
 
@@ -16,14 +16,14 @@ const TouchableHeader = styled.TouchableHighlight.attrs({
 })`
   flex: 1;
   justify-content: center;
-  height: 50px;
+  height: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
 `;
 
 const HeaderContainer = styled.TouchableHighlight.attrs({
   underlayColor: props => props.theme.colors.BUTTON.WHITE.ALT_FOCUS,
 })`
   flex: 1;
-  height: 45px;
+  height: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
   justify-content: center;
 `;
 
@@ -40,7 +40,7 @@ const TextWrapper = styled.View`
 `;
 
 const ImageWrapper = styled.View`
-  margin-left: 4px;
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
 const FavoritesWrapper = styled.View`
