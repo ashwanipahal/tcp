@@ -15,7 +15,7 @@ exports[`PaymentItem component should render correctly 1`] = `
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="regular"
-      text=""
+      text="You have not added a credit card yet."
     />
   </Styled(View)>
   <Styled(TouchableHighlight)
