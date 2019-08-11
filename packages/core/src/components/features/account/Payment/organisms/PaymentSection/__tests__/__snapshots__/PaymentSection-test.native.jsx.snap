@@ -182,6 +182,8 @@ exports[`Payment View should render correctly with cardList 1`] = `
       }
       onGetBalanceCard={null}
       setDefaultPaymentMethod={null}
+      setSelectedCard={[Function]}
+      toggleModal={[Function]}
     />
     <Styled(Cards)
       cardImage={
@@ -226,6 +228,8 @@ exports[`Payment View should render correctly with cardList 1`] = `
       }
       onGetBalanceCard={null}
       setDefaultPaymentMethod={null}
+      setSelectedCard={[Function]}
+      toggleModal={[Function]}
     />
   </ScrollViewMock>
 </View>

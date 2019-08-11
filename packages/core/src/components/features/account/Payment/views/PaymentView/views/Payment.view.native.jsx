@@ -11,6 +11,7 @@ type Props = {
   cardList: object,
   onGetBalanceCard: Function,
   checkbalanceValueInfo: any,
+  onDeleteCard: any,
 };
 
 const PaymentViewContainer = ({
@@ -22,6 +23,7 @@ const PaymentViewContainer = ({
   setDefaultPaymentMethod,
   onGetBalanceCard,
   checkbalanceValueInfo,
+  onDeleteCard,
 }: Props) => {
   return (
     <PaymentSection
@@ -33,6 +35,7 @@ const PaymentViewContainer = ({
       onGetBalanceCard={onGetBalanceCard}
       checkbalanceValueInfo={checkbalanceValueInfo}
       setDefaultPaymentMethod={setDefaultPaymentMethod}
+      onDeleteCard={onDeleteCard}
     />
   );
 };
