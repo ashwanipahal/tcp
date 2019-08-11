@@ -14,7 +14,7 @@ const LoginView = ({
   successFullResetEmail,
   resetForm,
   resetForgotPasswordErrorResponse,
-  onCreateAccountClick,
+  openModal,
   currentForm,
   queryParams,
 }) => {
@@ -31,7 +31,7 @@ const LoginView = ({
       successFullResetEmail={successFullResetEmail}
       resetForm={resetForm}
       resetForgotPasswordErrorResponse={resetForgotPasswordErrorResponse}
-      onCreateAccountClick={onCreateAccountClick}
+      openModal={openModal}
       currentForm={currentForm}
       queryParams={queryParams}
     />
@@ -50,7 +50,7 @@ LoginView.propTypes = {
   SubmitForgot: PropTypes.bool.isRequired,
   showNotification: PropTypes.bool.isRequired,
   successFullResetEmail: PropTypes.bool.isRequired,
-  onCreateAccountClick: PropTypes.func,
+  openModal: PropTypes.func,
   currentForm: PropTypes.string.isRequired,
   queryParams: PropTypes.shape({}).isRequired,
 };
@@ -58,7 +58,7 @@ LoginView.propTypes = {
 LoginView.defaultProps = {
   loginErrorMessage: '',
   showRecaptcha: false,
-  onCreateAccountClick: () => {},
+  openModal: () => {},
 };
 
 export default LoginView;
