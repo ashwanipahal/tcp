@@ -1,1 +1,1 @@
-export { default } from './PointsHistory.view'
+export { default } from './PointsHistory.view';
