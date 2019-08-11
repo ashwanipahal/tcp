@@ -1,7 +1,12 @@
 import React from 'react';
 import { Modal, StatusBar, SafeAreaView } from 'react-native';
 import BodyCopy from '../../../atoms/BodyCopy';
-import { StyledCrossImage, ImageWrapper, StyledTouchableOpacity } from '../Modal.style.native';
+import {
+  StyledCrossImage,
+  ImageWrapper,
+  StyledTouchableOpacity,
+  ModalHeadingWrapper,
+} from '../Modal.style.native';
 
 // How To use this react native modal
 // import this component in your file.
@@ -31,22 +36,24 @@ const getCloseIcon = ({ onRequestClose }: CloseIconProps) => {
 };
 
 const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
-  const { heading, onRequestClose, animationType, headingAlign } = otherProps;
+  const { heading, onRequestClose, animationType, headingAlign, headingFontFamily } = otherProps;
   return (
     <SafeAreaView>
       <StatusBar hidden />
       <Modal transparent={false} visible={isOpen} animationType={animationType}>
         {getCloseIcon({ onRequestClose })}
         {heading && (
-          <BodyCopy
-            fontSize="fs16"
-            fontFamily="primary"
-            textAlign={headingAlign}
-            text={heading}
-            className="modalHeading"
-            component="span"
-            color="#000000"
-          />
+          <ModalHeadingWrapper>
+            <BodyCopy
+              fontSize="fs16"
+              mobileFontFamily={headingFontFamily || 'primary'}
+              fontWeight="extrabold"
+              textAlign={headingAlign}
+              text={heading}
+              className="modalHeading"
+              color="#000000"
+            />
+          </ModalHeadingWrapper>
         )}
         {children}
       </Modal>

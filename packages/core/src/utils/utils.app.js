@@ -33,6 +33,18 @@ export const importGraphQLClientDynamically = module => {
   });
 };
 
+export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
+  switch (query) {
+    case 'moduleX':
+      // eslint-disable-next-line global-require
+      resolve(require('../services/handler/graphQL/queries/moduleX'));
+      break;
+    default:
+      reject();
+      break;
+  }
+};
+
 export const importGraphQLQueriesDynamically = query => {
   return new Promise((resolve, reject) => {
     switch (query) {
@@ -73,8 +85,7 @@ export const importGraphQLQueriesDynamically = query => {
         resolve(require('../services/handler/graphQL/queries/moduleL'));
         break;
       default:
-        reject();
-        break;
+        importMoreGraphQLQueries({ query, resolve, reject });
     }
   });
 };

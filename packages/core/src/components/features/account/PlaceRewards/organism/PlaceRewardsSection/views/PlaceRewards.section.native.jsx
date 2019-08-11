@@ -11,6 +11,7 @@ import {
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import MyRewards from '../../../molecules/MyRewards';
+import BonusPointsDays from '../../../molecules/BonusPointsDays';
 
 const PlaceRewardsSection = ({ labels, className }) => {
   return (
@@ -31,7 +32,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
           <Text>Second</Text>
         </StyledView>
         <StyledView>
-          <Text>Third</Text>
+          <BonusPointsDays />
         </StyledView>
         <StyledViewLargeMargin>
           <Text>Fourth</Text>
