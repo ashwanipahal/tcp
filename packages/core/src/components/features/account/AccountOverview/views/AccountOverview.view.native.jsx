@@ -16,7 +16,7 @@ const AccountOverview = ({ labels, handleComponentChange }) => {
       <Panel title={labels.lbl_overview_earnPointsHeading} />
       <Panel title={labels.lbl_overview_ordersHeading} />
       <Panel title={labels.lbl_overview_profileInformationHeading} />
-      <Panel title={labels.lbl_overview_addressBookHeading}>
+      <Panel title={labels.lbl_overview_addressBookHeading} isLinkVariation={false}>
         <AddressOverviewTile labels={labels} handleComponentChange={handleComponentChange} />
       </Panel>
       <Panel title={labels.lbl_overview_paymentHeading}>
@@ -24,13 +24,31 @@ const AccountOverview = ({ labels, handleComponentChange }) => {
       </Panel>
       <Panel title={labels.lbl_overview_myPreferencesHeading} />
       <Panel title={labels.lbl_overview_myPlaceRewardsCardHeading} />
-      <Panel title={labels.lbl_overview_myFavoritesHeading} />
+      <Panel title={labels.lbl_overview_myFavoritesHeading} isFavorite isVariationTypeLink />
 
       <UnderlineStyle />
 
-      <Panel title={labels.lbl_overview_myPreferencesHeading} isLink />
-      <Panel title={labels.lbl_overview_myPlaceRewardsCardHeading} />
-      <Panel title={labels.lbl_overview_myFavoritesHeading} />
+      <Panel
+        title={labels.lbl_overview_apply_today}
+        isVariationTypeLink
+        handleComponentChange={handleComponentChange}
+        isCardApply
+      />
+      <Panel title={labels.lbl_overview_manage_creditCard} isVariationTypeLink />
+
+      <UnderlineStyle />
+
+      <Panel title={labels.lbl_overview_purchase_giftCards} isVariationTypeLink />
+      <Panel title={labels.lbl_overview_refer_friend} isVariationTypeLink />
+
+      <UnderlineStyle />
+
+      <Panel title={labels.lbl_overview_app_settings} isVariationTypeLink />
+      <Panel title={labels.lbl_overview_help} isVariationTypeLink />
+      <Panel title={labels.lbl_overview_messages} isVariationTypeLink />
+      <Panel title={labels.lbl_overview_logout} isVariationTypeLink />
+
+      <UnderlineStyle />
     </View>
   );
 };

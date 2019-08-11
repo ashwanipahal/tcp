@@ -8,29 +8,126 @@ exports[`AccountOverview component should render correctly 1`] = `
     }
   }
 >
-  <Panel />
-  <Panel />
-  <Panel />
-  <Panel />
-  <Panel />
-  <Panel>
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={false}
+    isVariationTypeLink={false}
+  />
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={false}
+    isVariationTypeLink={false}
+  />
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={false}
+    isVariationTypeLink={false}
+  />
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={false}
+    isVariationTypeLink={false}
+  />
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={false}
+    isVariationTypeLink={false}
+  />
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={false}
+    isLinkVariation={false}
+    isVariationTypeLink={false}
+  >
     <Connect(AddressOverviewTile)
       labels={Object {}}
     />
   </Panel>
-  <Panel>
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={false}
+    isVariationTypeLink={false}
+  >
     <Connect(PaymentTile)
       labels={Object {}}
     />
   </Panel>
-  <Panel />
-  <Panel />
-  <Panel />
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={false}
+    isVariationTypeLink={false}
+  />
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={false}
+    isVariationTypeLink={false}
+  />
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={true}
+    isVariationTypeLink={true}
+  />
   <Styled(View) />
   <Panel
-    isLink={true}
+    handleComponentChange={[Function]}
+    isCardApply={true}
+    isFavorite={false}
+    isVariationTypeLink={true}
   />
-  <Panel />
-  <Panel />
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={false}
+    isVariationTypeLink={true}
+  />
+  <Styled(View) />
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={false}
+    isVariationTypeLink={true}
+  />
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={false}
+    isVariationTypeLink={true}
+  />
+  <Styled(View) />
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={false}
+    isVariationTypeLink={true}
+  />
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={false}
+    isVariationTypeLink={true}
+  />
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={false}
+    isVariationTypeLink={true}
+  />
+  <Panel
+    handleComponentChange={[Function]}
+    isCardApply={false}
+    isFavorite={false}
+    isVariationTypeLink={true}
+  />
+  <Styled(View) />
 </View>
 `;
