@@ -16,9 +16,7 @@ exports[`MyRewards should render correctly 1`] = `
     </Styled(Text)>
     <Styled(View) />
     <Styled(View)>
-      <Text>
-        First
-      </Text>
+      <Connect(RewardsPointsContainer) />
     </Styled(View)>
     <Styled(View)>
       <Text>

@@ -47,7 +47,6 @@ export class ProductListView extends React.Component {
 
     return (
       <React.Fragment>
-        <OrderLedgerContainer />
         <Text style={{ fontWeight: 'bold', textAlign: 'center', fontSize: 30 }}>PLP-Page</Text>
         <FlatList
           className="product-wrapper"

@@ -35,7 +35,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-iwsKbI",
+                "componentId": "sc-gZMcBi",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -65,7 +65,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
               "displayName": "Styled(CreditCardNumber)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-iwsKbI",
+              "styledComponentId": "sc-gZMcBi",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -119,7 +119,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-iwsKbI",
+                "componentId": "sc-gZMcBi",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -149,7 +149,7 @@ exports[`CreditCardFields component should renders correctly when isExpirationRe
               "displayName": "Styled(CreditCardNumber)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-iwsKbI",
+              "styledComponentId": "sc-gZMcBi",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],

@@ -123,6 +123,13 @@ exports[`LoginForm component should renders correctly 1`] = `
     />
     <Field
       component={[Function]}
+      dataLocator="rememberMe"
+      disabled={false}
+      name="userTouchId"
+      rightText="User Touch ID"
+    />
+    <Field
+      component={[Function]}
       dataLocator="savePlcc"
       disabled={false}
       marginTop={13}
