@@ -5,7 +5,7 @@ const RewardsOverviewContainer = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  height: 90px;
+  height: ${props => props.theme.spacing.LAYOUT_SPACING.XL};
 `;
 
 const MyRewardsWrapper = styled.View`
