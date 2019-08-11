@@ -15,6 +15,7 @@ export const applyCouponToCart = ({ couponCode = '' }) => {
     const error = getFormattedError(err);
     getDynamicCodeErrorMessage(error, couponCode);
     const placeCash = 'PC';
+    error.errorMessages = error.errorMessages || { _error: 'Oops... an error occured' };
     const { errorMessages } = error;
     // eslint-disable-next-line
     errorMessages._error = {
@@ -26,7 +27,7 @@ export const applyCouponToCart = ({ couponCode = '' }) => {
         errorMessages.errorParameters[1] === placeCash &&
         placeCash,
     };
-    throw new SubmissionError(error.errorMessages || { _error: 'Oops... an error occured' });
+    throw new SubmissionError(error.errorMessages);
   });
 };
 
