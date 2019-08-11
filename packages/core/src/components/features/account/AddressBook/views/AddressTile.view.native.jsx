@@ -67,7 +67,12 @@ class AddressBookTile extends React.Component<Props> {
         <AddressTileContext>
           <View>
             {address && (
-              <Address address={address} dataLocatorPrefix="addressbook" fontWeight="bold" />
+              <Address
+                address={address}
+                dataLocatorPrefix="addressbook"
+                fontWeight="bold"
+                showName
+              />
             )}
           </View>
           <View>

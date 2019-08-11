@@ -36,7 +36,7 @@ type GetAddressLineProps = {
   },
 };
 
-const getAddressfromDiffLines = ({ address }: GetAddressLineProps) => {
+const getAddressfromDiffLines = ({ address }: GetAddressLineProps, { customStyle }) => {
   return (
     <React.Fragment>
       <BodyCopy
@@ -45,6 +45,7 @@ const getAddressfromDiffLines = ({ address }: GetAddressLineProps) => {
         fontWeight="regular"
         text={address.addressLine1}
         color="gray.900"
+        {...customStyle}
       />
       <BodyCopy
         fontSize="fs14"
@@ -52,12 +53,13 @@ const getAddressfromDiffLines = ({ address }: GetAddressLineProps) => {
         fontWeight="regular"
         text={address.addressLine2}
         color="gray.900"
+        {...customStyle}
       />
     </React.Fragment>
   );
 };
 
-const getAddessLines = ({ address }) => {
+const getAddessLines = ({ address, customStyle }) => {
   return address.addressLine
     .filter(al => al.trim() !== '')
     .map(addressLine => (
@@ -67,6 +69,7 @@ const getAddessLines = ({ address }) => {
         fontWeight="regular"
         text={addressLine}
         color="gray.900"
+        {...customStyle}
       />
     ));
 };
@@ -78,25 +81,36 @@ const getAddessLines = ({ address }) => {
  * @param {object} address address object
  */
 
-const Address = ({ address, dataLocatorPrefix, showPhone, showCountry }: Props) =>
+const Address = ({
+  address,
+  dataLocatorPrefix,
+  showPhone,
+  showCountry,
+  customStyle,
+  showName,
+}: Props) =>
   address && (
     <View>
-      <BodyCopy
-        fontSize="fs14"
-        mobilefontFamily={['secondary']}
-        fontWeight="semibold"
-        text={`${address.firstName} ${address.lastName}`}
-        color="gray.900"
-      />
+      {showName && (
+        <BodyCopy
+          fontSize="fs16"
+          mobilefontFamily={['secondary']}
+          fontWeight="semibold"
+          text={`${address.firstName} ${address.lastName}`}
+          color="gray.900"
+          {...customStyle}
+        />
+      )}
       {address.addressLine
-        ? getAddessLines({ address, dataLocatorPrefix })
-        : getAddressfromDiffLines({ address, dataLocatorPrefix })}
+        ? getAddessLines({ address, dataLocatorPrefix, customStyle })
+        : getAddressfromDiffLines({ address, dataLocatorPrefix }, { customStyle })}
       <BodyCopy
         fontSize="fs14"
         mobilefontFamily={['secondary']}
         fontWeight="regular"
         text={`${address.city}, ${address.state} ${address.zipCode}`}
         color="gray.900"
+        {...customStyle}
       />
       {showCountry && address.country && (
         <BodyCopy
@@ -105,6 +119,7 @@ const Address = ({ address, dataLocatorPrefix, showPhone, showCountry }: Props) 
           fontWeight="regular"
           text={address.country}
           color="gray.900"
+          {...customStyle}
         />
       )}
       {showPhone && address.phone1 && (
@@ -114,6 +129,7 @@ const Address = ({ address, dataLocatorPrefix, showPhone, showCountry }: Props) 
           fontWeight="regular"
           text={address.phone1}
           color="gray.900"
+          {...customStyle}
         />
       )}
     </View>
@@ -122,6 +138,7 @@ const Address = ({ address, dataLocatorPrefix, showPhone, showCountry }: Props) 
 Address.defaultProps = {
   showPhone: true,
   showCountry: true,
+  customStyle: {},
 };
 
 export default Address;

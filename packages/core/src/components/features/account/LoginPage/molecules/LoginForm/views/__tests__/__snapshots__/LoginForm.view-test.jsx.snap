@@ -175,24 +175,29 @@ exports[`LoginForm component should renders correctly 1`] = `
             "attrs": Array [],
             "componentStyle": ComponentStyle {
               "componentId": "sc-gzVnrw",
-              "isStatic": true,
+              "isStatic": false,
               "rules": Array [
                 "
   ",
                 "
   position: relative;
 
-  a {
+  .rightAlignedContent {
     position: absolute;
     right: 0;
-    top: 12px;
-  }
+    top: ",
+                [Function],
+                ";
+    width: 30px;
 
-  .tooltip {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 10px;
+    a {
+      display: block;
+    }
+
+    .tooltip {
+      width: 10px;
+      height: 10px;
+    }
   }
 ",
                 ";
@@ -561,24 +566,29 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "attrs": Array [],
             "componentStyle": ComponentStyle {
               "componentId": "sc-gzVnrw",
-              "isStatic": true,
+              "isStatic": false,
               "rules": Array [
                 "
   ",
                 "
   position: relative;
 
-  a {
+  .rightAlignedContent {
     position: absolute;
     right: 0;
-    top: 12px;
-  }
+    top: ",
+                [Function],
+                ";
+    width: 30px;
 
-  .tooltip {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 10px;
+    a {
+      display: block;
+    }
+
+    .tooltip {
+      width: 10px;
+      height: 10px;
+    }
   }
 ",
                 ";

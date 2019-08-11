@@ -19,9 +19,11 @@ exports[`AddressTile component should renders correctly 1`] = `
             "primary": "true",
           }
         }
+        customStyle={Object {}}
         dataLocatorPrefix="addressbook"
         fontWeight="bold"
         showCountry={true}
+        showName={true}
         showPhone={true}
       />
     </View>

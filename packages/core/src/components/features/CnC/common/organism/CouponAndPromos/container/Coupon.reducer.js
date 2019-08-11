@@ -28,6 +28,15 @@ const CouponReducer = (state = initialState, action) => {
         .set(DEFAULT_REDUCER_KEY, setCacheTTL(COUPON_CONSTANTS.GET_COUPON_LIST_TTL));
     case COUPON_CONSTANTS.HIDE_LOADER:
       return state.set('isFetching', false);
+    case COUPON_CONSTANTS.SET_ERROR:
+      return state.set(
+        'couponsAndOffers',
+        state.get('couponsAndOffers').map(promo => {
+          return promo.id === action.payload.couponCode
+            ? { ...promo, error: action.payload.msg }
+            : promo;
+        })
+      );
     default:
       return getDefaultState(state);
   }

@@ -60,12 +60,9 @@ class LoginPageContainer extends React.PureComponent {
     }
   }
 
-  onCreateAccountClick = () => {
+  openModal = params => {
     const { openOverlay } = this.props;
-    openOverlay({
-      component: 'createAccount',
-      variation: 'primary',
-    });
+    openOverlay(params);
   };
 
   render() {
@@ -98,7 +95,7 @@ class LoginPageContainer extends React.PureComponent {
         showRecaptcha={showRecaptcha}
         resetForm={resetForm}
         getUserInfo={getUserInfoAction}
-        onCreateAccountClick={this.onCreateAccountClick}
+        openModal={this.openModal}
         resetLoginState={resetLoginState}
         SubmitForgot={SubmitForgot}
         showNotification={showNotification}
