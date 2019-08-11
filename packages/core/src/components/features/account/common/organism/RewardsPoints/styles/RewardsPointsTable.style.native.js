@@ -30,7 +30,7 @@ const NextRewardsWrapper = styled.View`
 `;
 
 const TextWrapper = styled.View`
-  height: 45px;
+  height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   justify-content: center;
   text-align: center;
 `;
@@ -38,7 +38,7 @@ const TextWrapper = styled.View`
 const VerticalLine = styled.View`
   border-left-width: 1px;
   border-color: ${props => props.theme.colorPalette.gray[700]};
-  height: 45px;
+  height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
   align-self: flex-start;
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
