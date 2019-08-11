@@ -59,6 +59,7 @@ class LoginSection extends PureComponent<Props> {
       successFullResetEmail,
       resetForm,
       resetForgotPasswordErrorResponse,
+      navigation,
     } = this.props;
 
     const { resetPassword, showModal } = this.state;
@@ -122,7 +123,7 @@ class LoginSection extends PureComponent<Props> {
             </LineWrapper>
             <SafeAreaView>
               <ModalViewWrapper>
-                <CreateAccount onRequestClose={this.toggleModal} />
+                <CreateAccount navigation={navigation} onRequestClose={this.toggleModal} />
               </ModalViewWrapper>
             </SafeAreaView>
           </ModalNative>
