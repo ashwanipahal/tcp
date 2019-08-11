@@ -27,11 +27,13 @@ exports[`ModuleNVanilla ModuleN should render correctly 1`] = `
       ]
     }
     letterSpacing="ls271"
+    locator="moduleN_header_text"
     textAlign="center"
     type="heading"
   />
   <Styled(View)>
     <PromoBanner
+      locator="moduleN_promobanner_text"
       promoBanner={
         Array [
           Object {
@@ -61,6 +63,7 @@ exports[`ModuleNVanilla ModuleN should render correctly 1`] = `
   <Styled(View)>
     <ButtonList
       buttonListVariation="stackedCTAList"
+      locator="moduleN_cta_links"
       stackedCTAButtons={
         Array [
           Object {

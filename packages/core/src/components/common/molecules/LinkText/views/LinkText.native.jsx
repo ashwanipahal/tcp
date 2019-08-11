@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import { Text } from 'react-native';
+import { getLocator } from '../../../../../utils/index';
 import { Anchor, BodyCopy, Heading } from '../../../atoms';
 
 type Props = {
@@ -9,6 +10,7 @@ type Props = {
   link: Object,
   textItems: Object[],
   navigation: Object,
+  locator: string,
 };
 
 /**
@@ -27,6 +29,7 @@ const getTextItems = textItems => {
 
 const LinkText = (props: Props) => {
   const {
+    locator,
     type,
     headerText: [{ textItems, link }],
     navigation,
@@ -54,7 +57,7 @@ const LinkText = (props: Props) => {
 
   return (
     <Anchor url={link.url} navigation={navigation}>
-      <Component {...compProps} text={getTextItems(textItems)} />
+      <Component {...compProps} text={getTextItems(textItems)} testID={getLocator(locator)} />
     </Anchor>
   );
 };

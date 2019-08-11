@@ -92,4 +92,8 @@ export default {
   cart_item_ship_to_home_radio_button: 'ItemShipToHomeRadioButton',
   cart_item_ship_to_home: 'cartShipToHome',
   cart_item_cross_button: 'cartItemCrossButton',
+  // moduleN
+  moduleN_header_text: 'moduleN_header_text',
+  moduleN_promobanner_text: 'moduleN_promobanner_text',
+  moduleN_cta_links: 'moduleN_cta_links',
 };

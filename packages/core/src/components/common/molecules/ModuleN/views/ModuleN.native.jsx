@@ -43,9 +43,14 @@ const ModuleN = (props: Props) => {
         color="white"
         navigation={navigation}
         headerText={headerText}
+        locator="moduleN_header_text"
       />
       <PromoTextBannerWrapper>
-        <PromoBanner promoBanner={promoBanner} navigation={navigation} />
+        <PromoBanner
+          promoBanner={promoBanner}
+          navigation={navigation}
+          locator="moduleN_promobanner_text"
+        />
       </PromoTextBannerWrapper>
       {divImageCTACarousel && (
         <DivImageCTAContainer>
@@ -53,6 +58,7 @@ const ModuleN = (props: Props) => {
             buttonListVariation="imageCTAList"
             navigation={navigation}
             divImageCTACarousel={divImageCTACarousel}
+            locator="moduleN_cta_links"
           />
         </DivImageCTAContainer>
       )}
@@ -63,6 +69,7 @@ const ModuleN = (props: Props) => {
             buttonListVariation="stackedCTAList"
             navigation={navigation}
             stackedCTAButtons={stackedCTAButtons}
+            locator="moduleN_cta_links"
           />
           <Border background="red" />
         </ContainerView>
@@ -74,6 +81,7 @@ const ModuleN = (props: Props) => {
             buttonListVariation="scrollCTAList"
             navigation={navigation}
             scrollCTAButtons={scrollCTAButtons}
+            locator="moduleN_cta_links"
           />
         </ButtonContainer>
       )}
@@ -83,6 +91,7 @@ const ModuleN = (props: Props) => {
             buttonListVariation="linkCTAList"
             navigation={navigation}
             linkList={linkList}
+            locator="moduleN_cta_links"
           />
         </ButtonContainer>
       )}
