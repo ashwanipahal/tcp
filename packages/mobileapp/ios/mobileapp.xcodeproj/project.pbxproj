@@ -35,12 +35,12 @@
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		36C9821022E6F96D0002786B /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
 		36C982A122E727F00002786B /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C9829E22E727D50002786B /* libRNVectorIcons.a */; };
+		4E24C76A601247E4B5FDEE36 /* libRNCNetInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F376CC6FC2054681A5A6E13E /* libRNCNetInfo.a */; };
 		6D66792DBE54465ABA2EA17A /* libRNCAsyncStorage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DBE09961D87A420784523FFB /* libRNCAsyncStorage.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8424F1F422DC60160090ECF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424F1F322DC60160090ECF1 /* AppDelegate.swift */; };
 		8424F1F622DC64A90090ECF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424F1F322DC60160090ECF1 /* AppDelegate.swift */; };
-		844B115423001FA400A82DAA /* libRNCNetInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8448576A22F99FEE00C167AD /* libRNCNetInfo.a */; };
-		844B115523001FB200A82DAA /* libRNCNetInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8448576A22F99FEE00C167AD /* libRNCNetInfo.a */; };
+		8448576D22F99FFF00C167AD /* libRNCNetInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8448576A22F99FEE00C167AD /* libRNCNetInfo.a */; };
 		8480855622D9B52500D7D25B /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		8480855722D9B52500D7D25B /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		8480855822D9B52500D7D25B /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
@@ -464,7 +464,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				844B115523001FB200A82DAA /* libRNCNetInfo.a in Frameworks */,
 				36C982A122E727F00002786B /* libRNVectorIcons.a in Frameworks */,
 				ED297163215061F000B7C4FE /* JavaScriptCore.framework in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
@@ -481,6 +480,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				ECA9863B3E004048A680216B /* libRNGestureHandler.a in Frameworks */,
 				6D66792DBE54465ABA2EA17A /* libRNCAsyncStorage.a in Frameworks */,
+				4E24C76A601247E4B5FDEE36 /* libRNCNetInfo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,7 +514,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				844B115423001FA400A82DAA /* libRNCNetInfo.a in Frameworks */,
+				8448576D22F99FFF00C167AD /* libRNCNetInfo.a in Frameworks */,
 				8487904822F3E69A00A0494D /* libRNCAsyncStorage.a in Frameworks */,
 				8480855622D9B52500D7D25B /* JavaScriptCore.framework in Frameworks */,
 				8480855722D9B52500D7D25B /* libRCTBlob.a in Frameworks */,
@@ -1612,7 +1612,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "App Store Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1644,7 +1644,7 @@
 				PRODUCT_NAME = mobileapp;
 				PROVISIONING_PROFILE_SPECIFIER = "Hockey Distribution profile";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -1939,7 +1939,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "TCP Gymboree Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -1976,7 +1976,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "tcp gymboree distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "mobileapp-Bridging-Header.h";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
