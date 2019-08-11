@@ -9,7 +9,7 @@ const coupons = [
     id: 'Y00105575',
     status: 'available',
     isExpiring: true,
-    title: '$10 OFF On $50',
+    title: '$10 OFF on $50',
     detailsOpen: false,
     expirationDate: '8/10/19',
     effectiveDate: '8/6/19',

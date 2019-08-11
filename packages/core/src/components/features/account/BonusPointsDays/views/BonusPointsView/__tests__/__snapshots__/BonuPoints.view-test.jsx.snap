@@ -51,6 +51,7 @@ exports[`BonusPointsViewVanilla should render correctly 1`] = `
     }
     isOpen={true}
     maxWidth="704px"
+    minHeight="550px"
     onRequestClose={[Function]}
     overlayClassName="TCPModal__Overlay"
     showHeading={true}

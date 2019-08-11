@@ -5,21 +5,9 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
   <div
     className="couponCard__container"
   >
-    <div
-      className="couponCard__container_error"
-    >
-      <Styled(BodyCopy)
-        className="couponCard__container_error_text"
-        color="text.primary"
-        component="p"
-        fontFamily="primary"
-        fontSize="fs10"
-        fontWeight="regular"
-        letterSpacing="normal"
-        lineHeight="normal"
-        textAlign="left"
-      />
-    </div>
+    <Styled(ErrorMessage)
+      error=""
+    />
     <div
       className="couponCard__container_main"
     >
@@ -33,6 +21,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
             className="couponCard__header_text"
             color="text.primary"
             component="p"
+            data-locator="available_PublicValidityLbl"
             fontFamily="primary"
             fontSize="fs12"
             fontWeight="regular"
@@ -66,6 +55,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
                 className={null}
                 color="text.primary"
                 component="p"
+                data-locator="coupon_available_couponNameLbl"
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="black"
@@ -79,6 +69,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
                 className={null}
                 color="text.primary"
                 component="p"
+                data-locator="coupon_available_cartUseByValidity"
                 fontFamily="secondary"
                 fontSize="fs10"
                 fontWeight="regular"
@@ -86,12 +77,12 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
                 lineHeight="normal"
                 textAlign="left"
               >
-                Valid 8/6/19 - 8/10/19
+                Use by 8/10/19
               </Styled(BodyCopy)>
             </Styled(BodyCopy)>
             <Styled(Anchor)
               anchorVariation="primary"
-              data-locator="couponcard-makedefault"
+              data-locator="coupon_available_cartDetailsLink"
               fontSize="fs10"
               fontSizeVariation="small"
               onClick={[Function]}
@@ -105,11 +96,13 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
             <Styled(Button)
               buttonVariation="variable-width"
               className="coupon__button_black"
-              data-locator="gift-card-checkbalance-btn"
+              data-locator="coupon_available_apply_cartCta"
               fullWidth="true"
               onClick={[Function]}
               type="submit"
-            />
+            >
+              APPLY
+            </Styled(Button)>
           </div>
         </div>
       </div>
