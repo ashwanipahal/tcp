@@ -27,6 +27,8 @@ export const CARTITEMTILE_REDUCER_KEY = 'CartItemTileReducer';
 export const CARTPAGE_REDUCER_KEY = 'CartPageReducer';
 export const OVERLAY_MODAL_REDUCER_KEY = 'OverlayModalReducer';
 export const OVERLAY_MODAL_ACTION_PATTERN = '@@Overlay-';
+export const BONUS_POINTS_DAYS = '@@Bonus-';
+export const BONUS_POINTS_DAYS_REDUCER_KEY = 'BonusPointsDaysReducer';
 
 // acconut page reducer
 export const ACCOUNT_REDUCER_KEY = 'AccountReducer';
@@ -61,6 +63,13 @@ export const COUPON_ACTION_PATTERN = '@@CouponsAndPromos-';
 export const LOGOUT_REDUCER_KEY = 'logoutReducer';
 export const LOGOUT_ACTION_PATTERN = '@@logout-';
 
+// Ponit History reducer
+export const POINTS_HISTORY_REDUCER_KEY = 'pointHistoryReducer';
+export const POINTS_HISTORY_ACTION_PATTERN = '@@pointHistory-';
+
+export const RESET_PASSWORD_REDUCER_KEY = 'ResetPassword';
+export const RESET_PASSWORD_ACTION_PATTERN = '@@ResetPassword-';
+
 export const REDUCER_ACTION_MAPPING = {
   [APICONFIG_REDUCER_KEY]: APICONFIG_ACTION_PATTERN,
   [LOGINPAGE_REDUCER_KEY]: LOGINPAGE_ACTION_PATTERN,
@@ -71,6 +80,8 @@ export const REDUCER_ACTION_MAPPING = {
   [ADD_GIFT_CARD_REDUCER_KEY]: ADD_GIFT_CARD_ACTION_PATTERN,
   [CREATE_ACCOUNT_REDUCER_KEY]: CREATE_ACCOUNT_ACTION_PATTERN,
   [LOGOUT_REDUCER_KEY]: LOGOUT_ACTION_PATTERN,
+  [POINTS_HISTORY_REDUCER_KEY]: POINTS_HISTORY_ACTION_PATTERN,
+  [RESET_PASSWORD_REDUCER_KEY]: RESET_PASSWORD_ACTION_PATTERN,
 };
 
 export const ADDRESS_VERIFICATION_REDUCER_KEY = 'addressVerification';

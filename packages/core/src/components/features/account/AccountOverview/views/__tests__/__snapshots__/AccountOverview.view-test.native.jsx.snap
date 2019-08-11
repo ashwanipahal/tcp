@@ -13,8 +13,16 @@ exports[`AccountOverview component should render correctly 1`] = `
   <Panel />
   <Panel />
   <Panel />
-  <Panel />
-  <Panel />
+  <Panel>
+    <Connect(AddressOverviewTile)
+      labels={Object {}}
+    />
+  </Panel>
+  <Panel>
+    <Connect(PaymentTile)
+      labels={Object {}}
+    />
+  </Panel>
   <Panel />
   <Panel />
   <Panel />

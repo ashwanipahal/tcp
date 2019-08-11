@@ -50,11 +50,13 @@ const Drawer = props => {
       isDrawerNotRequiredOnAllViewports(small, medium, large) && (
         <div className={`${classToShowOnViewports}`}>{children}</div>
       )}
-      <React.Fragment>
-        <aside className={`tcp-drawer ${classToOpen} ${classToHideOnViewports}`}>
-          <div className="tcp-drawer-content">{children}</div>
-        </aside>
-      </React.Fragment>
+      {openDrawer && (
+        <React.Fragment>
+          <aside className={`tcp-drawer ${classToOpen} ${classToHideOnViewports}`}>
+            <div className="tcp-drawer-content">{children}</div>
+          </aside>
+        </React.Fragment>
+      )}
     </div>
   );
 };

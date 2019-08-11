@@ -5,11 +5,13 @@ exports[`CustomButton should render correctly 1`] = `
   accessibilityRole="button"
   activeOpacity={0.2}
   disabled={false}
+  onPress={[Function]}
   style={Object {}}
 >
   <Text
     buttonVariation="fixed-width"
     fullWidth=""
+    url=""
   />
 </TouchableOpacity>
 `;
