@@ -30,8 +30,6 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
             textAlign="left"
           />
         </div>
-<<<<<<< HEAD
-=======
         <Styled(BodyCopy)
           className="couponCard__header_expired"
           color="text.primary"
@@ -44,7 +42,6 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
           lineHeight="normal"
           textAlign="left"
         />
->>>>>>> 237aaa5066ce54d6ffe80925170fa876981c4aee
       </div>
       <div
         className="couponCard__body"

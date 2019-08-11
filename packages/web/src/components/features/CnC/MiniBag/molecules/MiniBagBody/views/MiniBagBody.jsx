@@ -17,8 +17,16 @@ type Props = {
   userName: any,
   cartItemCount: any,
   subTotal: any,
+  currencySymbol: any,
 };
-const MiniBagBody = ({ labels, className, userName, cartItemCount, subTotal }: Props) => {
+const MiniBagBody = ({
+  labels,
+  className,
+  userName,
+  cartItemCount,
+  subTotal,
+  currencySymbol,
+}: Props) => {
   const data = {
     savedforLaterQty: 1,
   };
@@ -76,7 +84,7 @@ const MiniBagBody = ({ labels, className, userName, cartItemCount, subTotal }: P
       {cartItemCount ? (
         <div className="miniBagFooter">
           <BodyCopy tag="span" fontSize="fs14" fontWeight="semibold" className="subTotal">
-            {`${labels.subTotal}: $${subTotal || 0}`}
+            {`${labels.subTotal}: ${currencySymbol}${subTotal || 0}`}
           </BodyCopy>
           <Row className="checkout-button">
             <PayPalButton className="payPal-button" />
@@ -97,7 +105,7 @@ const MiniBagBody = ({ labels, className, userName, cartItemCount, subTotal }: P
       ) : (
         <div className="miniBagFooter">
           <BodyCopy tag="span" fontSize="fs14" fontWeight="semibold" className="subTotalEmpty">
-            {`${labels.subTotal}: $0.00`}
+            {`${labels.subTotal}: ${currencySymbol}0.00`}
           </BodyCopy>
         </div>
       )}
