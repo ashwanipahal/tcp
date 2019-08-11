@@ -10,13 +10,13 @@ import ErrorMessage from '../../../../features/CnC/common/molecules/ErrorMessage
 import { COUPON_REDEMPTION_TYPE } from '../../../../../services/abstractors/CnC/CartItemTile';
 
 class CouponCard extends React.Component<Props> {
-  RenderCardHeader = (type, headingClass) => {
+  RenderCardHeader = (type, headingClass, dataLocator) => {
     const { labels, coupon } = this.props;
     return (
       <div className="couponCard__header">
         <div className={headingClass}>
           <BodyCopy
-            data-locator="cartTypeofcoupon"
+            data-locator={dataLocator}
             className="couponCard__header_text"
             component="p"
             fontSize="fs12"
@@ -26,7 +26,7 @@ class CouponCard extends React.Component<Props> {
         </div>
         {coupon.isExpiring && (
           <BodyCopy
-            data-locator="cartExpiringSoonCoupon"
+            data-locator={`coupon_${coupon.status}_header_expired`}
             className="couponCard__header_expired"
             component="p"
             fontSize="fs12"
@@ -48,7 +48,7 @@ class CouponCard extends React.Component<Props> {
         className="coupon__button_black"
         buttonVariation="variable-width"
         type="submit"
-        data-locator="coupon-cartApplyCta"
+        data-locator={`coupon_${coupon.status}_apply_cartCta`}
         fullWidth="true"
       >
         {coupon.labelStatus}
@@ -66,7 +66,7 @@ class CouponCard extends React.Component<Props> {
         className="coupon__button_white"
         buttonVariation="variable-width"
         type="submit"
-        data-locator="coupon-cartRemoveCta"
+        data-locator={`coupon_${coupon.status}_remove_cartCta`}
         fullWidth="true"
       >
         {coupon.labelStatus}
@@ -79,7 +79,7 @@ class CouponCard extends React.Component<Props> {
       <BodyCopy
         component="p"
         fontSize="fs10"
-        data-locator="coupon-cartValidValidity"
+        data-locator={`coupon_${coupon.status}_cartValidValidity`}
         fontFamily="secondary"
       >
         {`Valid ${coupon.effectiveDate} - ${coupon.expirationDate}`}
@@ -90,7 +90,7 @@ class CouponCard extends React.Component<Props> {
   RenderUseByText = coupon => {
     return (
       <BodyCopy
-        data-locator="coupon-cartUseByValidity"
+        data-locator={`coupon_${coupon.status}_cartUseByValidity`}
         component="p"
         fontSize="fs10"
         fontFamily="secondary"
@@ -114,11 +114,23 @@ class CouponCard extends React.Component<Props> {
           <ErrorMessage error={coupon.error} />
           <div className="couponCard__container_main">
             {coupon.offerType === COUPON_REDEMPTION_TYPE.SAVING &&
-              this.RenderCardHeader(labels.SAVINGS_TEXT, 'couponCard__header_saving')}
+              this.RenderCardHeader(
+                labels.SAVINGS_TEXT,
+                'couponCard__header_saving',
+                `${coupon.status}_PublicValidityLbl`
+              )}
             {coupon.offerType === COUPON_REDEMPTION_TYPE.REWARDS &&
-              this.RenderCardHeader(labels.REWARDS_TEXT, 'couponCard__header_rewards')}
+              this.RenderCardHeader(
+                labels.REWARDS_TEXT,
+                'couponCard__header_rewards',
+                `${coupon.status}_rewardValidityLbl`
+              )}
             {coupon.offerType === COUPON_REDEMPTION_TYPE.PLACECASH &&
-              this.RenderCardHeader(labels.PLACE_CASH_TEXT, 'couponCard__header_pc')}
+              this.RenderCardHeader(
+                labels.PLACE_CASH_TEXT,
+                'couponCard__header_pc',
+                `${coupon.status}_PlaceCashValidityLbl`
+              )}
             <div className="couponCard__body">
               <div className="couponCard__row">
                 <div className="couponCard__col">
@@ -128,6 +140,7 @@ class CouponCard extends React.Component<Props> {
                       fontSize="fs12"
                       fontWeight="black"
                       fontFamily="secondary"
+                      data-locator={`coupon_${coupon.status}_couponNameLbl`}
                     >
                       {`${coupon.title}`}
                     </BodyCopy>
@@ -139,7 +152,7 @@ class CouponCard extends React.Component<Props> {
                       this.RenderValidText(coupon)}
                   </BodyCopy>
                   <Anchor
-                    data-locator="coupon_cartDetailsLink"
+                    data-locator={`coupon_${coupon.status}_cartDetailsLink`}
                     fontSizeVariation="small"
                     underline
                     anchorVariation="primary"
