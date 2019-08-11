@@ -38,6 +38,9 @@ class CouponListSection extends React.Component<Props> {
       heading,
       helpSubHeading,
       couponDetailClick,
+      onApply,
+      onRemove,
+      dataLocator,
     } = this.props;
     const { showMore } = this.state;
     const buttonText =
@@ -52,6 +55,7 @@ class CouponListSection extends React.Component<Props> {
               fontWeight="semibold"
               component="p"
               fontSize="fs16"
+              data-locator={dataLocator}
             >
               {`${heading} (${couponList.size})`}
             </BodyCopy>
@@ -64,7 +68,7 @@ class CouponListSection extends React.Component<Props> {
                 underline
                 anchorVariation="primary"
                 fontSize="fs10"
-                data-locator="couponcard-help-applying"
+                data-locator="couponcard-helpApplyingPlaceCashlink"
                 onClick={this.helpAnchorClick}
               >
                 {labels.HELP_APPLYING}
@@ -87,6 +91,8 @@ class CouponListSection extends React.Component<Props> {
                   labels={labels}
                   coupon={coupon}
                   couponDetailClick={couponDetailClick}
+                  onApply={onApply}
+                  onRemove={onRemove}
                 />
               );
             })}
@@ -99,7 +105,7 @@ class CouponListSection extends React.Component<Props> {
               underline
               anchorVariation="primary"
               fontSize="fs10"
-              data-locator="couponcard-help-applying"
+              data-locator={showMore === true ? 'cartShowMoreButton' : 'cartShowLessButton'}
               onClick={this.toggleShow}
             >
               {buttonText}

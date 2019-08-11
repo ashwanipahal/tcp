@@ -95,7 +95,7 @@ const AddressLinks = styled.View`
 `;
 
 const AddressLinkLeftMargin = styled.View`
-  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 const LeftMargin = styled.View`

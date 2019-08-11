@@ -1,34 +1,34 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import CreateAccounPage from '../../../organisms/CreateAccountPage';
-import ForgotPasswordContainer from '../../../../ForgotPassword/container/ForgotPassword.container';
 import Styles from '../styles/CreateAccount.style';
 
-// @flow
-type Props = {
-  className: string,
-  createAccountAction: Function,
-  isIAgreeChecked: string,
-  hideShowPwd: string,
-  confirmHideShowPwd: string,
-  labels: object,
-  error: any,
-  onAlreadyHaveAnAccountClick: any,
-  onRequestClose: any,
-};
-
 class CreateAccount extends React.Component<Props> {
-  constructor(props) {
-    super(props);
-    this.state = {
-      resetPassword: false,
-    };
-  }
+  static propTypes = {
+    className: PropTypes.string,
+    createAccountAction: PropTypes.func.isRequired,
+    isIAgreeChecked: PropTypes.bool.isRequired,
+    hideShowPwd: PropTypes.bool.isRequired,
+    confirmHideShowPwd: PropTypes.bool.isRequired,
+    labels: PropTypes.shape({}).isRequired,
+    error: PropTypes.shape({}).isRequired,
+    onAlreadyHaveAnAccountClick: PropTypes.func.isRequired,
+    onRequestClose: PropTypes.func.isRequired,
+    openModal: PropTypes.func.isRequired,
+  };
+
+  static defaultProps = {
+    className: '',
+  };
 
   showForgotPasswordForm = () => {
-    const { resetPassword } = this.state;
-    this.setState({
-      resetPassword: !resetPassword,
+    const { openModal } = this.props;
+    openModal({
+      component: 'login',
+      componentProps: {
+        currentForm: 'forgotPassword',
+      },
     });
   };
 
@@ -44,31 +44,20 @@ class CreateAccount extends React.Component<Props> {
       onAlreadyHaveAnAccountClick,
       onRequestClose,
     } = this.props;
-    const { resetPassword } = this.state;
     return (
       <div className={className}>
-        {!resetPassword && (
-          <CreateAccounPage
-            className={className}
-            createAccountAction={createAccountAction}
-            labels={labels}
-            isIAgreeChecked={isIAgreeChecked}
-            hideShowPwd={hideShowPwd}
-            confirmHideShowPwd={confirmHideShowPwd}
-            error={error}
-            onAlreadyHaveAnAccountClick={onAlreadyHaveAnAccountClick}
-            onRequestClose={onRequestClose}
-            showForgotPasswordForm={this.showForgotPasswordForm}
-          />
-        )}
-        {resetPassword && (
-          <div className="forgotPasswordWrapper">
-            <ForgotPasswordContainer
-              showForgotPasswordForm={this.showForgotPasswordForm}
-              labels={labels}
-            />
-          </div>
-        )}
+        <CreateAccounPage
+          className={className}
+          createAccountAction={createAccountAction}
+          labels={labels}
+          isIAgreeChecked={isIAgreeChecked}
+          hideShowPwd={hideShowPwd}
+          confirmHideShowPwd={confirmHideShowPwd}
+          error={error}
+          onAlreadyHaveAnAccountClick={onAlreadyHaveAnAccountClick}
+          onRequestClose={onRequestClose}
+          showForgotPasswordForm={this.showForgotPasswordForm}
+        />
       </div>
     );
   }

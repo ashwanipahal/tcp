@@ -14,7 +14,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
   <div>
     <Styled(BodyStyle)
       className="couponModal_modalTitle"
-      dataLocator="coupondetailmodalconfirmtext"
+      data-locator="couponDetailModal_applied_NameLbl"
       fontFamily="secondaryFontFamily"
       fontWeight="bold"
     >
@@ -22,7 +22,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
     </Styled(BodyStyle)>
     <Styled(BodyStyle)
       className="couponModal_modalSubTitle"
-      dataLocator="coupondetailmodalconfirmtext"
+      data-locator="couponDetailModal_applied_ValidityDateLbl"
       fontFamily="secondaryFontFamily"
       fontWeight="bold"
     >
@@ -30,6 +30,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
     </Styled(BodyStyle)>
     <div
       className="couponModal_modalbarcode"
+      data-locator="couponDetailModal_applied_BarCode"
     >
       Y00105578
     </div>
@@ -39,8 +40,9 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       <Styled(Button)
         buttonVariation="fixed-width"
         className="couponModal_applyToBag couponModal_btn"
-        dataLocator="coupondetailmodalyesdeletebtn"
+        data-locator="couponDetailModal_applied_AddToBagBtn"
         fill="BLUE"
+        onClick={[Function]}
       />
     </div>
     <div
@@ -49,7 +51,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         className="couponModal_print_anchor"
-        data-locator="couponcard-help-applying"
+        data-locator="couponDetailModal_applied_printAch"
         fontSize="fs14"
         onClick={[Function]}
         to="/#"
@@ -58,21 +60,21 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
     </div>
     <Styled(BodyStyle)
       className="couponModal_modalLongDesc"
-      dataLocator="coupondetailmodalconfirmtext"
+      data-locator="couponDetailModal_applied_LongDesc"
       fontFamily="secondaryFontFamily"
     >
       undefined
     </Styled(BodyStyle)>
     <Styled(BodyStyle)
       className="couponModal_modalLongDesc"
-      dataLocator="coupondetailmodalconfirmtext"
+      data-locator="couponDetailModal_applied_ShortDesc"
       fontFamily="secondaryFontFamily"
     >
       undefined
       <Styled(Anchor)
         anchorVariation="primary"
         className="couponModal_print_anchor"
-        data-locator="couponcard-help-applying"
+        data-locator="couponDetailModal_applied_tAndC"
         fontSize="fs14"
         onClick={[Function]}
         underline={true}
@@ -83,7 +85,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
       <Styled(Anchor)
         anchorVariation="primary"
         className="couponModal_print_anchor"
-        data-locator="couponcard-help-applying"
+        data-locator="couponDetailModal_applied_pp"
         fontSize="fs14"
         onClick={[Function]}
         underline={true}

@@ -916,6 +916,8 @@ export const couponFormatResponse = [
     expirationDate: '12/31/99',
     id: 'GYMONLY1234',
     isExpiring: false,
+    labelStatus: 'APPLY',
+    offerType: 'saving',
     isStarted: true,
     legalText: '$10 off $50 Gymboree ONLY',
     promotionType: 'public',

@@ -16,7 +16,7 @@ export const getPointsHistoryData = () => {
     }
 
     let pointsHistory = [];
-    if(res.body.pointsHistoryList[0]){
+    if (res.body.pointsHistoryList[0]) {
       pointsHistory = res.body.pointsHistoryList[0].pointsHistoryData;
     }
     return pointsHistory;

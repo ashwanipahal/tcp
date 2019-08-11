@@ -15,7 +15,11 @@ export const getLabelsMiniBag = state => {
         lbl_miniBag_ViewSaveForLater: viewSaveForLater,
         lbl_miniBag_subTotal: subTotal,
         lbl_miniBag_checkout: checkOut,
+        lbl_miniBag_yourShoppingBag: yourShoppingBag,
+        lbl_miniBag_dontHaveAccount: dontHaveAccount,
+        lbl_miniBag_createOne: createOne,
       },
+      addedToBag: { lbl_footer_continueShopping: continueShopping },
     },
   } = state.Labels;
   return {
@@ -28,5 +32,9 @@ export const getLabelsMiniBag = state => {
     viewSaveForLater,
     subTotal,
     checkOut,
+    continueShopping,
+    yourShoppingBag,
+    dontHaveAccount,
+    createOne,
   };
 };
