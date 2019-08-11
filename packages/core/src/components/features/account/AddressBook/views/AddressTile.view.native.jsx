@@ -97,6 +97,21 @@ class AddressBookTile extends React.Component<Props> {
                 {labels.addressBook.ACC_LBL_SHIPPING}
               </Badge>
             )}
+            {address.primary !== 'true' && (
+              <View className="textRight">
+                <Anchor
+                  fontSizeVariation="small"
+                  underline
+                  anchorVariation="primary"
+                  handleLinkClick={this.handleDefaultLinkClick}
+                  noLink
+                  to=""
+                  data-locator="addressbook-makedefault"
+                  text={labels.common.lbl_common_makeDefault}
+                  color="gray.900"
+                />
+              </View>
+            )}
           </View>
         </AddressTileContext>
         <AddressLinks>
@@ -107,6 +122,7 @@ class AddressBookTile extends React.Component<Props> {
               to="/#"
               anchorVariation="primary"
               text={labels.common.lbl_common_edit}
+              color="gray.900"
             />
           </AddressLinkLeftMargin>
           <Anchor
@@ -115,6 +131,7 @@ class AddressBookTile extends React.Component<Props> {
             to="/#"
             anchorVariation="primary"
             text={labels.common.lbl_common_delete}
+            color="gray.900"
           />
         </AddressLinks>
       </AddressTileWrapper>

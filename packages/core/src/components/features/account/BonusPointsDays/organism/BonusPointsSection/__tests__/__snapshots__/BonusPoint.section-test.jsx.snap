@@ -24,7 +24,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
       body={
         <React.Fragment>
           <React.Fragment>
-            <ForwardRef
+            <ForwardRef(Styled(BodyCopy))
               className="apply-any-day-msg"
               color="text.primary"
               component="p"
@@ -43,8 +43,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               textAlign="center"
             >
               
-            </ForwardRef>
-            <ForwardRef
+            </ForwardRef(Styled(BodyCopy))>
+            <ForwardRef(Styled(BodyCopy))
               className="availability-msg"
               color="text.primary"
               component="p"
@@ -63,12 +63,12 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               textAlign="center"
             >
               
-            </ForwardRef>
+            </ForwardRef(Styled(BodyCopy))>
           </React.Fragment>
-          <ForwardRef
+          <ForwardRef(Styled(Row))
             fullBleed={true}
           >
-            <ForwardRef
+            <ForwardRef(Styled(Col))
               colSize={
                 Object {
                   "large": 12,
@@ -77,7 +77,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
                 }
               }
             >
-              <ForwardRef
+              <ForwardRef(Styled(BonusPointsAvailability))
                 bonusPoints={
                   Array [
                     Object {
@@ -103,9 +103,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
                   }
                 }
               />
-            </ForwardRef>
-          </ForwardRef>
-          <ForwardRef
+            </ForwardRef(Styled(Col))>
+          </ForwardRef(Styled(Row))>
+          <ForwardRef(Styled(Anchor))
             anchorVariation="primary"
             className="details-link"
             data-locator="detailslink"
@@ -115,7 +115,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             underline={true}
           >
             
-          </ForwardRef>
+          </ForwardRef(Styled(Anchor))>
         </React.Fragment>
       }
       className=""
@@ -124,7 +124,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           className="elem-mb-SM"
           data-locator="bonuspointsdayhdr"
         >
-          <ForwardRef
+          <ForwardRef(Styled(BodyCopy))
             className="elem-mr-XS"
             color="orange.800"
             component="span"
@@ -142,8 +142,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             textAlign="left"
           >
             
-          </ForwardRef>
-          <ForwardRef
+          </ForwardRef(Styled(BodyCopy))>
+          <ForwardRef(Styled(BodyCopy))
             className="elem-mr-XS"
             color="primary.main"
             component="span"
@@ -161,8 +161,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             textAlign="left"
           >
             
-          </ForwardRef>
-          <ForwardRef
+          </ForwardRef(Styled(BodyCopy))>
+          <ForwardRef(Styled(BodyCopy))
             className={null}
             color="pink.500"
             component="span"
@@ -180,7 +180,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             textAlign="left"
           >
             
-          </ForwardRef>
+          </ForwardRef(Styled(BodyCopy))>
         </div>
       }
       iconLocator="arrowicon"
@@ -358,7 +358,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
       body={
         <React.Fragment>
           <React.Fragment>
-            <ForwardRef
+            <ForwardRef(Styled(BodyCopy))
               className="apply-any-day-msg"
               color="text.primary"
               component="p"
@@ -377,8 +377,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               textAlign="center"
             >
               
-            </ForwardRef>
-            <ForwardRef
+            </ForwardRef(Styled(BodyCopy))>
+            <ForwardRef(Styled(BodyCopy))
               className="availability-msg"
               color="text.primary"
               component="p"
@@ -397,12 +397,12 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               textAlign="center"
             >
               
-            </ForwardRef>
+            </ForwardRef(Styled(BodyCopy))>
           </React.Fragment>
-          <ForwardRef
+          <ForwardRef(Styled(Row))
             fullBleed={true}
           >
-            <ForwardRef
+            <ForwardRef(Styled(Col))
               colSize={
                 Object {
                   "large": 12,
@@ -411,7 +411,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
                 }
               }
             >
-              <ForwardRef
+              <ForwardRef(Styled(BonusPointsAvailability))
                 bonusPoints={
                   Array [
                     Object {
@@ -447,9 +447,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
                   }
                 }
               />
-            </ForwardRef>
-          </ForwardRef>
-          <ForwardRef
+            </ForwardRef(Styled(Col))>
+          </ForwardRef(Styled(Row))>
+          <ForwardRef(Styled(Anchor))
             anchorVariation="primary"
             className="details-link"
             data-locator="detailslink"
@@ -459,7 +459,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             underline={true}
           >
             
-          </ForwardRef>
+          </ForwardRef(Styled(Anchor))>
         </React.Fragment>
       }
       className=""
@@ -468,7 +468,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           className="elem-mb-SM"
           data-locator="bonuspointsdayhdr"
         >
-          <ForwardRef
+          <ForwardRef(Styled(BodyCopy))
             className="elem-mr-XS"
             color="orange.800"
             component="span"
@@ -486,8 +486,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             textAlign="left"
           >
             
-          </ForwardRef>
-          <ForwardRef
+          </ForwardRef(Styled(BodyCopy))>
+          <ForwardRef(Styled(BodyCopy))
             className="elem-mr-XS"
             color="primary.main"
             component="span"
@@ -505,8 +505,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             textAlign="left"
           >
             
-          </ForwardRef>
-          <ForwardRef
+          </ForwardRef(Styled(BodyCopy))>
+          <ForwardRef(Styled(BodyCopy))
             className={null}
             color="pink.500"
             component="span"
@@ -524,7 +524,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             textAlign="left"
           >
             
-          </ForwardRef>
+          </ForwardRef(Styled(BodyCopy))>
         </div>
       }
       iconLocator="arrowicon"
@@ -712,7 +712,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
       body={
         <React.Fragment>
           <React.Fragment>
-            <ForwardRef
+            <ForwardRef(Styled(BodyCopy))
               className="apply-any-day-msg"
               color="text.primary"
               component="p"
@@ -731,8 +731,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               textAlign="center"
             >
               
-            </ForwardRef>
-            <ForwardRef
+            </ForwardRef(Styled(BodyCopy))>
+            <ForwardRef(Styled(BodyCopy))
               className="availability-msg"
               color="text.primary"
               component="p"
@@ -751,12 +751,12 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               textAlign="center"
             >
               
-            </ForwardRef>
+            </ForwardRef(Styled(BodyCopy))>
           </React.Fragment>
-          <ForwardRef
+          <ForwardRef(Styled(Row))
             fullBleed={true}
           >
-            <ForwardRef
+            <ForwardRef(Styled(Col))
               colSize={
                 Object {
                   "large": 12,
@@ -765,7 +765,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
                 }
               }
             >
-              <ForwardRef
+              <ForwardRef(Styled(BonusPointsAvailability))
                 bonusPoints={
                   Array [
                     Object {
@@ -801,9 +801,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
                   }
                 }
               />
-            </ForwardRef>
-          </ForwardRef>
-          <ForwardRef
+            </ForwardRef(Styled(Col))>
+          </ForwardRef(Styled(Row))>
+          <ForwardRef(Styled(Anchor))
             anchorVariation="primary"
             className="details-link"
             data-locator="detailslink"
@@ -813,7 +813,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             underline={true}
           >
             
-          </ForwardRef>
+          </ForwardRef(Styled(Anchor))>
         </React.Fragment>
       }
       className=""
@@ -822,7 +822,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           className="elem-mb-SM"
           data-locator="bonuspointsdayhdr"
         >
-          <ForwardRef
+          <ForwardRef(Styled(BodyCopy))
             className="elem-mr-XS"
             color="orange.800"
             component="span"
@@ -840,8 +840,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             textAlign="left"
           >
             
-          </ForwardRef>
-          <ForwardRef
+          </ForwardRef(Styled(BodyCopy))>
+          <ForwardRef(Styled(BodyCopy))
             className="elem-mr-XS"
             color="primary.main"
             component="span"
@@ -859,8 +859,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             textAlign="left"
           >
             
-          </ForwardRef>
-          <ForwardRef
+          </ForwardRef(Styled(BodyCopy))>
+          <ForwardRef(Styled(BodyCopy))
             className={null}
             color="pink.500"
             component="span"
@@ -878,7 +878,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             textAlign="left"
           >
             
-          </ForwardRef>
+          </ForwardRef(Styled(BodyCopy))>
         </div>
       }
       iconLocator="arrowicon"
@@ -1066,7 +1066,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
       body={
         <React.Fragment>
           <React.Fragment>
-            <ForwardRef
+            <ForwardRef(Styled(BodyCopy))
               className="apply-any-day-msg"
               color="text.primary"
               component="p"
@@ -1085,8 +1085,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               textAlign="center"
             >
               
-            </ForwardRef>
-            <ForwardRef
+            </ForwardRef(Styled(BodyCopy))>
+            <ForwardRef(Styled(BodyCopy))
               className="availability-msg"
               color="text.primary"
               component="p"
@@ -1105,12 +1105,12 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               textAlign="center"
             >
               
-            </ForwardRef>
+            </ForwardRef(Styled(BodyCopy))>
           </React.Fragment>
-          <ForwardRef
+          <ForwardRef(Styled(Row))
             fullBleed={true}
           >
-            <ForwardRef
+            <ForwardRef(Styled(Col))
               colSize={
                 Object {
                   "large": 12,
@@ -1119,7 +1119,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
                 }
               }
             >
-              <ForwardRef
+              <ForwardRef(Styled(BonusPointsAvailability))
                 bonusPoints={
                   Array [
                     Object {
@@ -1155,9 +1155,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
                   }
                 }
               />
-            </ForwardRef>
-          </ForwardRef>
-          <ForwardRef
+            </ForwardRef(Styled(Col))>
+          </ForwardRef(Styled(Row))>
+          <ForwardRef(Styled(Anchor))
             anchorVariation="primary"
             className="details-link"
             data-locator="detailslink"
@@ -1167,7 +1167,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             underline={true}
           >
             
-          </ForwardRef>
+          </ForwardRef(Styled(Anchor))>
         </React.Fragment>
       }
       className=""
@@ -1176,7 +1176,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           className="elem-mb-SM"
           data-locator="bonuspointsdayhdr"
         >
-          <ForwardRef
+          <ForwardRef(Styled(BodyCopy))
             className="elem-mr-XS"
             color="orange.800"
             component="span"
@@ -1194,8 +1194,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             textAlign="left"
           >
             
-          </ForwardRef>
-          <ForwardRef
+          </ForwardRef(Styled(BodyCopy))>
+          <ForwardRef(Styled(BodyCopy))
             className="elem-mr-XS"
             color="primary.main"
             component="span"
@@ -1213,8 +1213,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             textAlign="left"
           >
             
-          </ForwardRef>
-          <ForwardRef
+          </ForwardRef(Styled(BodyCopy))>
+          <ForwardRef(Styled(BodyCopy))
             className={null}
             color="pink.500"
             component="span"
@@ -1232,7 +1232,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             textAlign="left"
           >
             
-          </ForwardRef>
+          </ForwardRef(Styled(BodyCopy))>
         </div>
       }
       iconLocator="arrowicon"
@@ -1419,7 +1419,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
     <Styled(CollapsibleContainer)
       body={
         <React.Fragment>
-          <ForwardRef
+          <ForwardRef(Styled(BodyCopy))
             className="availability-msg"
             color="text.primary"
             component="p"
@@ -1437,10 +1437,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             lineHeight="normal"
             textAlign="center"
           />
-          <ForwardRef
+          <ForwardRef(Styled(Row))
             fullBleed={true}
           >
-            <ForwardRef
+            <ForwardRef(Styled(Col))
               colSize={
                 Object {
                   "large": 12,
@@ -1449,7 +1449,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
                 }
               }
             >
-              <ForwardRef
+              <ForwardRef(Styled(BonusPointsAvailability))
                 bonusPoints={
                   Array [
                     Object {
@@ -1475,9 +1475,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
                   }
                 }
               />
-            </ForwardRef>
-          </ForwardRef>
-          <ForwardRef
+            </ForwardRef(Styled(Col))>
+          </ForwardRef(Styled(Row))>
+          <ForwardRef(Styled(Anchor))
             anchorVariation="primary"
             className="details-link"
             data-locator="detailslink"
@@ -1487,7 +1487,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             underline={true}
           >
             
-          </ForwardRef>
+          </ForwardRef(Styled(Anchor))>
         </React.Fragment>
       }
       className=""
@@ -1496,7 +1496,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           className="elem-mb-SM"
           data-locator="bonuspointsdayhdr"
         >
-          <ForwardRef
+          <ForwardRef(Styled(BodyCopy))
             className="elem-mr-XS"
             color="orange.800"
             component="span"
@@ -1514,8 +1514,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             textAlign="left"
           >
             
-          </ForwardRef>
-          <ForwardRef
+          </ForwardRef(Styled(BodyCopy))>
+          <ForwardRef(Styled(BodyCopy))
             className="elem-mr-XS"
             color="primary.main"
             component="span"
@@ -1533,8 +1533,8 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             textAlign="left"
           >
             
-          </ForwardRef>
-          <ForwardRef
+          </ForwardRef(Styled(BodyCopy))>
+          <ForwardRef(Styled(BodyCopy))
             className={null}
             color="pink.500"
             component="span"
@@ -1552,7 +1552,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             textAlign="left"
           >
             
-          </ForwardRef>
+          </ForwardRef(Styled(BodyCopy))>
         </div>
       }
       iconLocator="arrowicon"
