@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ProductTile from '@tcp/core/src/components/features/CnC/CartItemTile/molecules/CartItemTile/views/CartItemTile.view';
+import ProductTile from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.container';
 import {
   getProductName,
   getProductDetails,

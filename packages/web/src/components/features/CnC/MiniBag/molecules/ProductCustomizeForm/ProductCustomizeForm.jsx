@@ -6,6 +6,7 @@ import { Row, Button } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import MiniBagSelect from '@tcp/web/src/components/features/CnC/MiniBag/molecules/MiniBagSelectBox/MiniBagSelectBox';
 import ColorSelector from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ColorSelect/views/ColorSelect.view';
+import endpoints from '@tcp/core/src/service/endpoint';
 import style, { buttonCustomStyles } from './ProductCustomizeForm.style';
 
 // @flow
@@ -17,6 +18,7 @@ type Props = {
   item: any,
   className: any,
   labels: any,
+  formVisiblity: () => void,
 };
 
 export class ProductCustomizeForm extends React.PureComponent<Props> {
@@ -32,71 +34,70 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
 
   componentDidMount() {
     const { initialValues } = this.props;
+    console.log('initialValues', initialValues);
     this.setState({
       selectedColor: initialValues.color,
       selectedFit: initialValues.fit,
       selectedSize: initialValues.size,
+      selectedQuantity: initialValues.qty,
     });
   }
 
-  getSelectedColorData = () => {
-    const colorFitsSizesMap = [{ name: '123', id: '123' }];
-    const colorOptions = [];
-    // eslint-disable-next-line no-unused-expressions
-
-    colorFitsSizesMap.map(colorItem => {
-      colorOptions.push({
-        displayName: colorItem.name,
-        id: colorItem.name,
-      });
-      return '';
-    });
-    return colorOptions;
+  getSelectedColorData = (colorFitsSizesMap, color) => {
+    return (
+      colorFitsSizesMap &&
+      colorFitsSizesMap.filter(colorItem => {
+        if (colorItem.getIn(['color', 'name']) === color.name) {
+          return colorItem;
+        }
+        return '';
+      })
+    );
   };
 
-  getColorOptions = () => {
-    const colorFitsSizesMap = [
-      { name: 'Blue', id: 'blue' },
-      { name: 'Red', id: 'red' },
-      { name: 'OrangeOrangeOrangeOrange', id: 'orange' },
-    ];
+  getColorOptions = colorFitsSizesMap => {
     const colorOptions = [];
     // eslint-disable-next-line no-unused-expressions
-
-    colorFitsSizesMap.map(colorItem => {
-      colorOptions.push({
-        value: colorItem.id,
-        title: (
-          <span>
-            <img
-              alt=""
-              className="selected-color-image"
-              src="https://dummyimage.com/600x400/000/fff"
-            />
-            {colorItem.name}
-          </span>
-        ),
-        content: (
-          <span>
-            <img alt="" src="https://dummyimage.com/600x400/000/fff" />
-            {colorItem.name}
-          </span>
-        ),
+    colorFitsSizesMap &&
+      colorFitsSizesMap.map(colorItem => {
+        colorOptions.push({
+          title: (
+            <span>
+              <img
+                alt=""
+                className="selected-color-image"
+                src={endpoints.global.baseURI + colorItem.getIn(['color', 'imagePath'])}
+              />
+              {colorItem.getIn(['color', 'name'])}
+            </span>
+          ),
+          content: (
+            <span>
+              <img
+                alt=""
+                src={endpoints.global.baseURI + colorItem.getIn(['color', 'imagePath'])}
+              />
+              {colorItem.getIn(['color', 'name'])}
+            </span>
+          ),
+          value: colorItem.getIn(['color', 'name']),
+        });
+        return '';
       });
-      return '';
-    });
     return colorOptions;
   };
 
   getFitOptions = colorItem => {
     const fitOptions = [];
-    colorItem.fits.map(fit => {
-      fitOptions.push({
-        displayName: fit.fitName,
-        id: fit.fitName,
+    // eslint-disable-next-line no-unused-expressions
+    colorItem &&
+      colorItem.fits.map(fit => {
+        fitOptions.push({
+          displayName: fit.get('fitName'),
+          id: fit.get('fitName'),
+        });
+        return '';
       });
-      return '';
-    });
     return fitOptions;
   };
 
@@ -104,23 +105,22 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
     const sizeOptions = [];
     // eslint-disable-next-line no-unused-expressions
     colorItem &&
-      colorItem.fits &&
-      colorItem.fits.map(fit => {
+      colorItem.get('fits').map(fit => {
         if (selectedFit) {
-          if (fit.fitName === selectedFit) {
-            fit.sizes.map(size => {
+          if (fit.get('fitName') === selectedFit) {
+            fit.get('sizes').map(size => {
               return sizeOptions.push({
-                displayName: size.sizeName,
-                id: size.skuId,
+                displayName: size.get('sizeName'),
+                id: size.get('skuId'),
               });
             });
           }
         } else {
           // eslint-disable-next-line sonarjs/no-identical-functions
-          return fit.sizes.map(size => {
+          return fit.get('sizes').map(size => {
             return sizeOptions.push({
-              displayName: size.sizeName,
-              id: size.skuId,
+              displayName: size.get('sizeName'),
+              id: size.get('skuId'),
             });
           });
         }
@@ -131,7 +131,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
 
   colorChange = e => {
     this.setState({
-      selectedColor: { name: e.target.value },
+      selectedColor: { name: e },
     });
   };
 
@@ -166,19 +166,19 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
   };
 
   render() {
-    const { colorFitsSizesMap, item, labels } = this.props;
+    const { colorFitsSizesMap, item, labels, formVisiblity } = this.props;
     const { selectedColor, selectedFit, selectedSize, selectedQuantity } = this.state;
 
     const colorList = this.getColorOptions(colorFitsSizesMap);
     const selectedColorElement = this.getSelectedColorData(colorFitsSizesMap, selectedColor);
-    const hasFits =
-      selectedColorElement && selectedColorElement[0] && selectedColorElement[0].hasFits;
+    // eslint-disable-next-line prefer-destructuring
+    const hasFits = selectedColorElement && selectedColorElement.getIn([0, 'hasFits']);
     const fitList = hasFits && this.getFitOptions(selectedColorElement[0]);
     const sizeList =
       selectedColorElement &&
       (hasFits
-        ? this.getSizeOptions(selectedColorElement[0], selectedFit)
-        : this.getSizeOptions(selectedColorElement[0]));
+        ? this.getSizeOptions(selectedColorElement.get(0), selectedFit)
+        : this.getSizeOptions(selectedColorElement.get(0)));
 
     const { className } = this.props;
     const { handleSubmit } = this.props;
@@ -189,22 +189,14 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
     const { variantNo } = item.productInfo;
 
     return (
-      <form
-        className={className}
-        onSubmit={e => {
-          e.preventDefault();
-          handleSubmit(itemId, skuId, quantity, itemPartNumber, variantNo);
-        }}
-        noValidate
-      >
+      <form className={className} noValidate>
         <Row className="edit-form-css">
           <div className="select-value-wrapper">
-            <div>
+            <div className="color-selector">
               <Field
                 width={112}
                 id="color"
-                name="Color"
-                placeholder="Color"
+                name={selectedColor}
                 component={ColorSelector}
                 options={colorList}
                 onChange={this.colorChange}
@@ -212,12 +204,11 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
               />
             </div>
             {hasFits && (
-              <div>
+              <div className="fit-selector">
                 <Field
-                  width={69}
+                  width={112}
                   id="fit"
                   name="Fit"
-                  placeholder="Fit"
                   component={MiniBagSelect}
                   options={fitList}
                   onChange={this.fitChange}
@@ -225,11 +216,10 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
                 />
               </div>
             )}
-            <div>
+            <div className="size-selector">
               <Field
                 width={39}
                 id="size"
-                placeholder="Size"
                 name="Size"
                 component={MiniBagSelect}
                 options={sizeList}
@@ -237,12 +227,11 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
                 dataLocator="addnewaddress-state"
               />
             </div>
-            <div>
+            <div className="qty-selector">
               <Field
                 width={32}
                 id="quantity"
-                placeholder="Qty"
-                name="quantity"
+                name="Qty"
                 component={MiniBagSelect}
                 options={this.getQuantityList()}
                 onChange={this.quantityChange}
@@ -251,10 +240,23 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
             </div>
           </div>
           <div className="button-wrapper">
-            <Button inheritedStyles={buttonCustomStyles} type="submit">
-              <u>{labels.update}</u>
+            <Button
+              inheritedStyles={buttonCustomStyles}
+              type="submit"
+              onClick={e => {
+                e.preventDefault();
+                handleSubmit(itemId, skuId, quantity, itemPartNumber, variantNo);
+              }}
+            >
+              {/* <u>{labels.update}</u> */}
+              <u>Update</u>
             </Button>
-            <Button inheritedStyles={buttonCustomStyles} fill="RED">
+            <Button
+              inheritedStyles={buttonCustomStyles}
+              onClick={() => {
+                formVisiblity();
+              }}
+            >
               <u>{labels.cancel}</u>
             </Button>
           </div>

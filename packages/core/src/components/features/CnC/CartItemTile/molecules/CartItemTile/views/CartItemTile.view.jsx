@@ -15,16 +15,38 @@ class ProductTile extends React.Component {
     };
   }
 
+  toggleFormVisibility = () => {
+    const { isEdit } = this.state;
+    this.setState({ isEdit: !isEdit });
+  };
+
+  handleEditCartItem = productNumber => {
+    const productNum = productNumber.slice(0, productNumber.indexOf('_'));
+    this.toggleFormVisibility();
+    const { getProductSKUInfo } = this.props;
+    getProductSKUInfo(productNum);
+  };
+
+  handleSubmit = (itemId, skuId, quantity, itemPartNumber, variantNo) => {
+    const { updateCartItem } = this.props;
+    updateCartItem(itemId, skuId, quantity, itemPartNumber, variantNo);
+    this.toggleFormVisibility();
+  };
+
   render() {
     const { isEdit } = this.state;
-    const { productDetail, labels } = this.props;
+    const { productDetail, labels, editableProductInfo, removeCartItem } = this.props;
     const initialValues = {
       color: { name: productDetail.itemInfo.color },
       fit: productDetail.itemInfo.fit,
       size: productDetail.itemInfo.size,
+      qty: productDetail.itemInfo.qty,
     };
     return (
       <ProductInformationStyle>
+        <div className="crossDeleteIcon">
+          <button onClick={() => removeCartItem(productDetail.itemInfo.itemId)}> Delete</button>
+        </div>
         <Row fullBleed className="product">
           <Col
             key="productDetails"
@@ -175,7 +197,7 @@ class ProductTile extends React.Component {
                     component="div"
                     className="padding-left-10 edit-top-padding"
                     onClick={() => {
-                      this.setState({ isEdit: true });
+                      this.handleEditCartItem(productDetail.productInfo.productPartNumber);
                     }}
                   >
                     <u>{labels.edit}</u>
@@ -185,10 +207,11 @@ class ProductTile extends React.Component {
             ) : (
               <ProductEditForm
                 item={productDetail}
-                colorFitsSizesMap={undefined}
-                handleSubmit={() => {}}
+                colorFitsSizesMap={editableProductInfo}
+                handleSubmit={this.handleSubmit}
                 initialValues={initialValues}
                 labels={labels}
+                formVisiblity={this.toggleFormVisibility}
               />
             )}
             <Row className="padding-top-10">
@@ -271,6 +294,10 @@ class ProductTile extends React.Component {
 ProductTile.propTypes = {
   productDetail: PropTypes.shape({}).isRequired,
   labels: PropTypes.shape({}).isRequired,
+  getProductSKUInfo: PropTypes.func.isRequired,
+  updateCartItem: PropTypes.func.isRequired,
+  editableProductInfo: PropTypes.shape({}).isRequired,
+  removeCartItem: PropTypes.func.isRequired,
 };
 
 export default ProductTile;

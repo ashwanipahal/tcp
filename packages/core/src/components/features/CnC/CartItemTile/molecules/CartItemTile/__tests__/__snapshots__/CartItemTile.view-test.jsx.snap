@@ -2,6 +2,15 @@
 
 exports[`BossBannerView component renders correctly 1`] = `
 <styled.div>
+  <div
+    className="crossDeleteIcon"
+  >
+    <button
+      onClick={[Function]}
+    >
+       Delete
+    </button>
+  </div>
   <Styled(Row)
     className="product"
     fullBleed={true}

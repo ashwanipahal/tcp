@@ -4,7 +4,7 @@ export const getCartOrderList = state => {
 };
 export const getEditableProductInfo = state => {
   // needs to do it with get method.
-  return state.CartItemTileReducer.get('editableItemData');
+  return state.CartItemTileReducer.getIn(['editableItemData', 'colorFitsSizesMap']);
 };
 
 export const getCartOrderDetails = state => {
@@ -51,12 +51,20 @@ export const getProductImage = product => {
   return product.getIn(['productInfo', 'imagePath']);
 };
 
+export const getOrderItemId = product => {
+  return product.getIn(['itemInfo', 'itemId']);
+};
+
 export const getProductPartNumber = product => {
   return product.getIn(['productInfo', 'productPartNumber']);
 };
 
 export const getProductItemPartNumber = product => {
   return product.getIn(['productInfo', 'itemPartNumber']);
+};
+
+export const getVariantNumber = product => {
+  return product.getIn(['productInfo', 'variantNo']);
 };
 
 export const getProductBadge = product => {
@@ -139,10 +147,12 @@ export const getProductDetails = tile => {
       myPlacePoints: getProductPoints(tile),
       itemBrand: getProductBrand(tile),
       imagePath: getProductImage(tile),
+      itemId: getOrderItemId(tile),
     },
     productInfo: {
       productPartNumber: getProductPartNumber(tile),
       itemPartNumber: getProductItemPartNumber(tile),
+      variantNo: getVariantNumber(tile),
     },
     miscInfo: {
       badge: getProductBadge(tile),

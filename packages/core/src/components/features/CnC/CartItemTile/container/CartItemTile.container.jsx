@@ -4,7 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import BAG_PAGE_ACTIONS from '../../BagPage/container/BagPage.actions';
 import { removeCartItem, updateCartItem, getProductSKUInfo } from './CartItemTile.actions';
-import CartItemTile from '../views/CartItemTile.view';
+import CartItemTile from '../molecules/CartItemTile/views/CartItemTile.view';
 import { getCartOrderList, getEditableProductInfo } from './CartItemTile.selectors';
 
 // @flow
@@ -19,16 +19,16 @@ type Props = {
 };
 
 export const CartItemTileContainer = ({
-  getOrderDetails,
-  cartItems,
+  labels,
+  productDetail,
   removeCartItem,
   updateCartItem,
   getProductSKUInfo,
   editableProductInfo,
 }) => (
   <CartItemTile
-    getOrderDetails={getOrderDetails}
-    cartItems={cartItems}
+    labels={labels}
+    productDetail={productDetail}
     removeCartItem={removeCartItem}
     updateCartItem={updateCartItem}
     getProductSKUInfo={getProductSKUInfo}
@@ -54,7 +54,6 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
 
 export function mapStateToProps(state) {
   return {
-    cartItems: getCartOrderList(state),
     editableProductInfo: getEditableProductInfo(state),
   };
 }
