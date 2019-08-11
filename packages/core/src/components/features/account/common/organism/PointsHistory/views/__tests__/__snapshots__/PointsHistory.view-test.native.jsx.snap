@@ -3,14 +3,6 @@
 exports[`Points History Slider View should render Points History Correctly 1`] = `
 <Fragment>
   <Styled(View)>
-    <Styled(BodyCopy)
-      fontFamily="secondary"
-      fontSize="fs16"
-      fontWeight="black"
-      text="Point History"
-    />
-  </Styled(View)>
-  <Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
         fontFamily="secondary"
