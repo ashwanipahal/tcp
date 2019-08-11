@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import Panel from '../../../../common/molecules/Panel';
 import PaymentTile from '../../common/organism/PaymentTile';
 import AddressOverviewTile from '../../common/organism/AddressOverviewTile';
+import UnderlineStyle from '../styles/AccountOverview.style.native';
 
 const AccountOverview = ({ labels, handleComponentChange }) => {
   const viewContainerStyle = { marginTop: 15 };
@@ -22,6 +23,12 @@ const AccountOverview = ({ labels, handleComponentChange }) => {
         <PaymentTile labels={labels} handleComponentChange={handleComponentChange} />
       </Panel>
       <Panel title={labels.lbl_overview_myPreferencesHeading} />
+      <Panel title={labels.lbl_overview_myPlaceRewardsCardHeading} />
+      <Panel title={labels.lbl_overview_myFavoritesHeading} />
+
+      <UnderlineStyle />
+
+      <Panel title={labels.lbl_overview_myPreferencesHeading} isLink />
       <Panel title={labels.lbl_overview_myPlaceRewardsCardHeading} />
       <Panel title={labels.lbl_overview_myFavoritesHeading} />
     </View>
