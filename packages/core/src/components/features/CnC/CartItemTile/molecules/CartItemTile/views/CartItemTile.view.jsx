@@ -63,6 +63,10 @@ class CartItemTile extends React.Component {
     return productDetail.itemInfo.isGiftItem === true ? `${labels.design}:` : `${labels.color}:`;
   };
 
+  getSizeLabel = (productDetail, labels) => {
+    return productDetail.itemInfo.isGiftItem === true ? `${labels.value}:` : `${labels.size}:`;
+  };
+
   getPointsColor = pageView => {
     return pageView !== 'myBag' ? 'gray.900' : 'orange.800';
   };
@@ -242,8 +246,7 @@ class CartItemTile extends React.Component {
                         fontSize="fs12"
                         fontWeight={['extrabold']}
                       >
-                        {`${labels.size}`}
-                        {':'}
+                        {this.getSizeLabel(productDetail, labels)}
                       </BodyCopy>
                     </div>
                     <BodyCopy
