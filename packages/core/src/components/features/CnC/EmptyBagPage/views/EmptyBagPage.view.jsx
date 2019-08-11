@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import withStyle from '../../../../common/hoc/withStyles';
 import style from '../styles/EmptyBagPage.style';
 import { BodyCopy, Button } from '../../../../common/atoms';
+import { getLocator } from '../../../../../utils';
 
 const EmptyBagPage = ({ className, isUserLoggedIn }) => {
   return (
@@ -12,6 +13,7 @@ const EmptyBagPage = ({ className, isUserLoggedIn }) => {
         color="gray.900"
         fontWeight="extrabold"
         fontFamily="secondary"
+        dataLocator={getLocator('empty_bag_Msg')}
       >
         {!isUserLoggedIn
           ? 'Do you have items in your cart?'
@@ -19,7 +21,12 @@ const EmptyBagPage = ({ className, isUserLoggedIn }) => {
       </BodyCopy>
 
       <div className="element-spacing">
-        <Button className="CTA-button">
+        <Button
+          data-locator={getLocator(
+            isUserLoggedIn ? 'empty_bag_loginUserCTA' : 'empty_bag_guestUserCTA'
+          )}
+          className="CTA-button"
+        >
           <BodyCopy
             component="span"
             color="white"
@@ -36,10 +43,15 @@ const EmptyBagPage = ({ className, isUserLoggedIn }) => {
         color="gray.900"
         fontWeight="extrabold"
         fontFamily="secondary"
+        dataLocator={getLocator('empty_bag_recommendation_msg')}
       >
         Need some inspiration?
       </BodyCopy>
-      <BodyCopy className="small-spacing" fontFamily="secondary">
+      <BodyCopy
+        dataLocator={getLocator('empty_bag_recommendation_msg')}
+        className="small-spacing"
+        fontFamily="secondary"
+      >
         Here are some great items to get your cart started!
       </BodyCopy>
     </div>
