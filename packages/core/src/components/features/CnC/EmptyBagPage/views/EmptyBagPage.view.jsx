@@ -5,7 +5,7 @@ import style from '../styles/EmptyBagPage.style';
 import { BodyCopy, Button } from '../../../../common/atoms';
 import { getLocator } from '../../../../../utils';
 
-const EmptyBagPage = ({ className, isUserLoggedIn }) => {
+const EmptyBagPage = ({ className, isUserLoggedIn, bagLabels }) => {
   return (
     <div className={className}>
       <BodyCopy
@@ -15,9 +15,7 @@ const EmptyBagPage = ({ className, isUserLoggedIn }) => {
         fontFamily="secondary"
         dataLocator={getLocator('empty_bag_Msg')}
       >
-        {!isUserLoggedIn
-          ? 'Do you have items in your cart?'
-          : 'Uh oh! Looks like you don’t have anything in your cart yet!'}
+        {!isUserLoggedIn ? bagLabels.guestUserMsg : bagLabels.loggedInMsg}
       </BodyCopy>
 
       <div className="element-spacing">
@@ -34,7 +32,7 @@ const EmptyBagPage = ({ className, isUserLoggedIn }) => {
             fontFamily="secondary"
             fontSize="fs14"
           >
-            {!isUserLoggedIn ? 'LOGIN' : 'SHOP NOW'}
+            {!isUserLoggedIn ? bagLabels.login : bagLabels.shopNow}
           </BodyCopy>
         </Button>
       </div>
@@ -45,14 +43,14 @@ const EmptyBagPage = ({ className, isUserLoggedIn }) => {
         fontFamily="secondary"
         dataLocator={getLocator('empty_bag_recommendation_msg')}
       >
-        Need some inspiration?
+        {bagLabels.tagLine}
       </BodyCopy>
       <BodyCopy
         dataLocator={getLocator('empty_bag_recommendation_msg')}
         className="small-spacing"
         fontFamily="secondary"
       >
-        Here are some great items to get your cart started!
+        {bagLabels.helperMsg}
       </BodyCopy>
     </div>
   );
@@ -61,6 +59,7 @@ const EmptyBagPage = ({ className, isUserLoggedIn }) => {
 EmptyBagPage.propTypes = {
   className: PropTypes.string.isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
+  bagLabels: PropTypes.bool.isRequired,
 };
 
 export default withStyle(EmptyBagPage, style);

@@ -15,9 +15,7 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
     letterSpacing="normal"
     lineHeight="normal"
     textAlign="left"
-  >
-    Uh oh! Looks like you don’t have anything in your cart yet!
-  </Styled(BodyCopy)>
+  />
   <div
     className="element-spacing"
   >
@@ -35,9 +33,7 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
         letterSpacing="normal"
         lineHeight="normal"
         textAlign="left"
-      >
-        SHOP NOW
-      </Styled(BodyCopy)>
+      />
     </Styled(Button)>
   </div>
   <Styled(BodyCopy)
@@ -51,9 +47,7 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
     letterSpacing="normal"
     lineHeight="normal"
     textAlign="left"
-  >
-    Need some inspiration?
-  </Styled(BodyCopy)>
+  />
   <Styled(BodyCopy)
     className="small-spacing"
     color="text.primary"
@@ -65,8 +59,6 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
     letterSpacing="normal"
     lineHeight="normal"
     textAlign="left"
-  >
-    Here are some great items to get your cart started!
-  </Styled(BodyCopy)>
+  />
 </div>
 `;

@@ -7,6 +7,7 @@ describe('EmptyBagPage component', () => {
     const props = {
       isUserLoggedIn: true,
       className: '',
+      bagLabels: {},
     };
     const component = shallow(<EmptyBagPageVanilla {...props} />);
     expect(component).toMatchSnapshot();

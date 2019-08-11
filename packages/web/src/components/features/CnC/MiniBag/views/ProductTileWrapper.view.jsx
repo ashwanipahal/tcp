@@ -9,7 +9,7 @@ import EmptyBag from '@tcp/core/src/components/features/CnC/EmptyBagPage/views/E
 import productTileCss from '../styles/ProductTileWrapper.style';
 
 const ProductTileWrapper = props => {
-  const { orderItems, labels, pageView, isUserLoggedIn } = props;
+  const { orderItems, bagLabels, labels, pageView, isUserLoggedIn } = props;
   if (orderItems && orderItems.size > 0) {
     return (
       <div className="miniBagWrapper">
@@ -29,11 +29,12 @@ const ProductTileWrapper = props => {
       </div>
     );
   }
-  return <EmptyBag isUserLoggedIn={isUserLoggedIn} />;
+  return <EmptyBag bagLabels={bagLabels} isUserLoggedIn={isUserLoggedIn} />;
 };
 
 ProductTileWrapper.defaultProps = {
   pageView: '',
+  bagLabels: {},
 };
 
 ProductTileWrapper.propTypes = {
@@ -41,6 +42,7 @@ ProductTileWrapper.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
   pageView: PropTypes.string,
+  bagLabels: PropTypes.shape(),
 };
 
 export default ProductTileWrapper;
