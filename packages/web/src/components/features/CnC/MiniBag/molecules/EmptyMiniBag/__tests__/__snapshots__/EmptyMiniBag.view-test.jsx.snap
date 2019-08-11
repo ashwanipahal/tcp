@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Empty Mini Bag Component should render correctly 1`] = `
+<StyledComponent
+  className="cclassName"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bxivhb",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .createAccountWrapper {
+    margin: 48px 0;
+  }
+  .continue-shopping {
+    text-align: center;
+    margin: 24px 0;
+  }
+  .logIn {
+    &:hover {
+      background: ",
+          [Function],
+          ";
+    }
+    height: 51px;
+    width: 210px;
+    background-color: ",
+          [Function],
+          ";
+  }
+  .accountText {
+    text-align: center;
+  }
+  .createAccount {
+    &:hover {
+      background: ",
+          [Function],
+          ";
+    }
+    background-color: ",
+          [Function],
+          ";
+    height: 51px;
+    width: 210px;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(MiniBagHeader)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bxivhb",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  labels={
+    Object {
+      "continueShopping": "continue Shopping",
+      "createAccount": "create Account",
+      "createOne": "Create one now to start earning points!",
+      "dontHaveAccount": "Dont have an account",
+      "logIn": "log In",
+      "yourShoppingBag": "YOUR SHOPPING BAG IS EMPTY",
+    }
+  }
+  userName="User"
+/>
+`;
+
+exports[`Empty Mini Bag Component should render correctly with labels name 1`] = `
+<StyledComponent
+  className="className2"
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-bxivhb",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .createAccountWrapper {
+    margin: 48px 0;
+  }
+  .continue-shopping {
+    text-align: center;
+    margin: 24px 0;
+  }
+  .logIn {
+    &:hover {
+      background: ",
+          [Function],
+          ";
+    }
+    height: 51px;
+    width: 210px;
+    background-color: ",
+          [Function],
+          ";
+  }
+  .accountText {
+    text-align: center;
+  }
+  .createAccount {
+    &:hover {
+      background: ",
+          [Function],
+          ";
+    }
+    background-color: ",
+          [Function],
+          ";
+    height: 51px;
+    width: 210px;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(MiniBagHeader)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-bxivhb",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  labels={
+    Object {
+      "continueShopping": "continue Shopping",
+      "createAccount": "create Account",
+      "createOne": "Create one now to start earning points!",
+      "dontHaveAccount": "Dont have an account",
+      "logIn": "logged In",
+      "yourShoppingBag": "YOUR SHOPPING BAG IS EMPTY",
+    }
+  }
+  userName="User"
+/>
+`;
