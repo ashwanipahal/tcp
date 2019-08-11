@@ -10,11 +10,11 @@ import AccountDrawerBottomLinks from '../../../molecules/AccountDrawerBottomLink
 import { isCanada } from '../../../../../../../utils';
 
 const AccountDrawerPage = props => {
-  const { className, userName } = props;
+  const { className, userName, closedOverlay } = props;
   const isCA = isCanada();
   return (
     <div className={className}>
-      <AccountDrawerHeading userName={userName} />
+      <AccountDrawerHeading userName={userName} closedOverlay={closedOverlay} />
       {!isCA && (
         <>
           <RewardsPoints />
@@ -31,6 +31,7 @@ AccountDrawerPage.propTypes = {
   className: PropTypes.string,
   labels: PropTypes.shape({}),
   userName: PropTypes.string,
+  closedOverlay: PropTypes.func.isRequired,
 };
 
 AccountDrawerPage.defaultProps = {
