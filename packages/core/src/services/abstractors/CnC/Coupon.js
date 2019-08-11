@@ -3,7 +3,7 @@ import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 import { getFormattedError, getDynamicCodeErrorMessage } from '../../../utils/errorMessage.util';
 
-export const applyCouponToCart = ({ coupon_code: couponCode = '' }) => {
+export const applyCouponToCart = ({ couponCode = '' }) => {
   const payload = {
     webService: endpoints.addCoupons,
     body: {
@@ -30,6 +30,23 @@ export const applyCouponToCart = ({ coupon_code: couponCode = '' }) => {
   });
 };
 
+export const removeCouponOrPromo = ({ couponCode = '' }) => {
+  const payload = {
+    header: {
+      promoCode: couponCode.toUpperCase(),
+    },
+    webService: endpoints.removeCouponOrPromo,
+  };
+  return executeStatefulAPICall(payload).then(res => {
+    const error = getFormattedError(res);
+    if (error) {
+      return new SubmissionError(error.errorMessages || { _error: 'Oops... an error occured' });
+    }
+    return { success: true };
+  });
+};
+
 export default {
   applyCouponToCart,
+  removeCouponOrPromo,
 };

@@ -21,3 +21,24 @@ export const getCouponList = payload => {
     payload,
   };
 };
+
+export const removeCoupon = payload => {
+  return {
+    type: COUPON_CONSTANTS.REMOVE_COUPON,
+    payload,
+  };
+};
+
+export const setStatus = payload => {
+  return {
+    type: COUPON_CONSTANTS.SET_STATUS_COUPON,
+    payload,
+  };
+};
+
+export const setError = payload => {
+  return {
+    type: COUPON_CONSTANTS.SET_ERROR,
+    payload,
+  };
+};

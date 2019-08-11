@@ -28,6 +28,24 @@ const CouponReducer = (state = initialState, action) => {
         .set(DEFAULT_REDUCER_KEY, setCacheTTL(COUPON_CONSTANTS.GET_COUPON_LIST_TTL));
     case COUPON_CONSTANTS.HIDE_LOADER:
       return state.set('isFetching', false);
+    case COUPON_CONSTANTS.SET_STATUS_COUPON:
+      return state.set('isFetching', false).set(
+        'couponsAndOffers',
+        state.get('couponsAndOffers').map(coupon => {
+          if (coupon.id === action.payload.promoCode)
+            return { ...coupon, labelStatus: action.payload.status };
+          return coupon;
+        })
+      );
+    case COUPON_CONSTANTS.SET_ERROR:
+      return state.set('isFetching', false).set(
+        'couponsAndOffers',
+        state.get('couponsAndOffers').map(promo => {
+          return promo.id === action.payload.couponCode
+            ? { ...promo, error: action.payload.msg }
+            : promo;
+        })
+      );
     default:
       return getDefaultState(state);
   }

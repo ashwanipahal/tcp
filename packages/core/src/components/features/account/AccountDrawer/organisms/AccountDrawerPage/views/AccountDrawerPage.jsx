@@ -7,14 +7,20 @@ import RewardsPoints from '../../../../common/organism/RewardsPoints';
 import ExtraPointsTeaser from '../../../molecules/ExtraPointsTeaser';
 import MyRewardsAndOffers from '../../../molecules/MyRewardsAndOffers';
 import AccountDrawerBottomLinks from '../../../molecules/AccountDrawerBottomLinks';
+import { isCanada } from '../../../../../../../utils';
 
 const AccountDrawerPage = props => {
   const { className, userName } = props;
+  const isCA = isCanada();
   return (
     <div className={className}>
       <AccountDrawerHeading userName={userName} />
-      <RewardsPoints />
-      <ExtraPointsTeaser />
+      {!isCA && (
+        <>
+          <RewardsPoints />
+          <ExtraPointsTeaser />
+        </>
+      )}
       <MyRewardsAndOffers />
       <AccountDrawerBottomLinks />
     </div>

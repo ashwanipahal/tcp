@@ -20,6 +20,7 @@ exports[`Anchor component renders correctly 1`] = `
 exports[`Anchor component renders correctly with nolink variation 1`] = `
 <a
   className="sample-anchor-nolink"
+  data-locator=""
   href="/undefined"
   onClick={[Function]}
   target=""

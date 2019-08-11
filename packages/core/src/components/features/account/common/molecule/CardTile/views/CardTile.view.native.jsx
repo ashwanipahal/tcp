@@ -145,7 +145,7 @@ const getCardDetails = ({ dataLocatorPrefix, card, labels }: GetCardDetailsProps
         dataLocator={`payment-${dataLocatorPrefix}endingtext`}
         text={cardNum}
       />
-      {card.ccType !== 'PLACE CARD' && (
+      {card.ccType !== 'PLACE CARD' && card.ccType !== 'GiftCard' && (
         <CardTileExpiry>
           <BodyCopy
             fontSize="fs14"

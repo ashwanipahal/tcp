@@ -4,8 +4,8 @@ import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import { PanelContainer, TitleContainer, TouchableHeader, PanelBody } from '../Panel.style.native';
 import ImageComp from '../../../atoms/Image';
 
-const rightIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-small-right.png');
-const downIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-small-down.png');
+const downIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-small-down-gray.png');
+const upIcon = require('../../../../../../../mobileapp/src/assets/images/carrot-small-up-gray.png');
 
 class Panel extends React.Component<Props> {
   constructor(props) {
@@ -25,9 +25,7 @@ class Panel extends React.Component<Props> {
     const { title, expanded } = this.state;
     const { children } = this.props;
     const imgStyle = { alignSelf: 'center' };
-    const carrotIcon = expanded ? downIcon : rightIcon;
-    const height = expanded ? 6 : 10;
-    const width = expanded ? 10 : 6;
+    const carrotIcon = expanded ? upIcon : downIcon;
 
     return (
       <PanelContainer>
@@ -41,7 +39,7 @@ class Panel extends React.Component<Props> {
               color="gray.900"
             />
           </TouchableHeader>
-          <ImageComp customStyle={imgStyle} source={carrotIcon} width={width} height={height} />
+          <ImageComp customStyle={imgStyle} source={carrotIcon} width={10} height={6} />
         </TitleContainer>
         {expanded && <PanelBody>{children}</PanelBody>}
       </PanelContainer>

@@ -23,7 +23,7 @@ const selectStyles = css`
     margin: 0;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     outline: 0;
-    padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 0
+    padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
       ${props => props.theme.spacing.ELEM_SPACING.XS};
     width: 100%;
 

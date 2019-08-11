@@ -14,3 +14,9 @@
     top: 111px;
   }
 }
+
+@media (min-width: 1024px) {
+  .dark-overlay {
+    display: none !important;
+  }
+}
