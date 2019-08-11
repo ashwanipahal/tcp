@@ -31,7 +31,7 @@ class PaymentItem extends React.PureComponent<Props> {
               fontFamily="secondary"
               fontSize="fs13"
               fontWeight="regular"
-              text={paymentInfo.defaultText}
+              text={paymentInfo.text}
               color="gray.900"
             />
           )}
