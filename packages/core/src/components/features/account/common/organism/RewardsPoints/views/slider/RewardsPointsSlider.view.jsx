@@ -14,6 +14,7 @@ const RewardsPointsSlider = ({
   currentPoints,
   totalRewards,
   labels,
+  plccUser,
 }) => {
   return (
     <div className={className}>
@@ -38,9 +39,16 @@ const RewardsPointsSlider = ({
       </Row>
       <Row>
         <Col colSize={{ large: 12, medium: 8, small: 6 }}>
-          <div className="progress-container elem-mt-MED elem-mt-MED elem-mb-SM">
-            <div className="progressbar-rewards" style={{ width: `${currentPoints}%` }} />
-          </div>
+          {!plccUser && (
+            <div className="progress-container elem-mt-MED elem-mt-MED elem-mb-SM">
+              <div className="progressbar-rewards" style={{ width: `${currentPoints}%` }} />
+            </div>
+          )}
+          {plccUser && (
+            <div className="progress-container_plcc elem-mt-MED elem-mt-MED elem-mb-SM">
+              <div className="progressbar-rewards_plcc" style={{ width: `${currentPoints}%` }} />
+            </div>
+          )}
         </Col>
       </Row>
       <Row>
@@ -62,6 +70,7 @@ RewardsPointsSlider.propTypes = {
   pointsToNextReward: PropTypes.number,
   currentPoints: PropTypes.number,
   totalRewards: PropTypes.number,
+  plccUser: PropTypes.bool,
   labels: PropTypes.shape({
     lbl_common_current_points: PropTypes.string,
     lbl_common_heading: PropTypes.string,
@@ -75,6 +84,7 @@ RewardsPointsSlider.defaultProps = {
   pointsToNextReward: '',
   currentPoints: '',
   totalRewards: '',
+  plccUser: false,
   labels: {
     lbl_common_current_points: '',
     lbl_common_heading: '',
