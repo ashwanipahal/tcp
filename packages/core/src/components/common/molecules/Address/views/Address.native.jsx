@@ -40,17 +40,19 @@ const getAddressfromDiffLines = ({ address }: GetAddressLineProps, { customStyle
   return (
     <React.Fragment>
       <BodyCopy
-        fontSize="fs16"
+        fontSize="fs14"
         mobilefontFamily={['secondary']}
         fontWeight="regular"
         text={address.addressLine1}
+        color="gray.900"
         {...customStyle}
       />
       <BodyCopy
-        fontSize="fs16"
+        fontSize="fs14"
         mobilefontFamily={['secondary']}
         fontWeight="regular"
         text={address.addressLine2}
+        color="gray.900"
         {...customStyle}
       />
     </React.Fragment>
@@ -62,10 +64,11 @@ const getAddessLines = ({ address, customStyle }) => {
     .filter(al => al.trim() !== '')
     .map(addressLine => (
       <BodyCopy
-        fontSize="fs16"
+        fontSize="fs14"
         mobilefontFamily={['secondary']}
         fontWeight="regular"
         text={addressLine}
+        color="gray.900"
         {...customStyle}
       />
     ));
@@ -94,6 +97,7 @@ const Address = ({
           mobilefontFamily={['secondary']}
           fontWeight="semibold"
           text={`${address.firstName} ${address.lastName}`}
+          color="gray.900"
           {...customStyle}
         />
       )}
@@ -101,27 +105,30 @@ const Address = ({
         ? getAddessLines({ address, dataLocatorPrefix, customStyle })
         : getAddressfromDiffLines({ address, dataLocatorPrefix }, { customStyle })}
       <BodyCopy
-        fontSize="fs16"
+        fontSize="fs14"
         mobilefontFamily={['secondary']}
         fontWeight="regular"
         text={`${address.city}, ${address.state} ${address.zipCode}`}
+        color="gray.900"
         {...customStyle}
       />
       {showCountry && address.country && (
         <BodyCopy
-          fontSize="fs16"
+          fontSize="fs14"
           mobilefontFamily={['secondary']}
           fontWeight="regular"
           text={address.country}
+          color="gray.900"
           {...customStyle}
         />
       )}
       {showPhone && address.phone1 && (
         <BodyCopy
-          fontSize="fs16"
+          fontSize="fs14"
           mobilefontFamily={['secondary']}
           fontWeight="regular"
           text={address.phone1}
+          color="gray.900"
           {...customStyle}
         />
       )}
