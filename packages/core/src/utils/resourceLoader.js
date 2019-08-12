@@ -24,6 +24,11 @@ const namedModulesMap = {
     url: 'https://www.paypalobjects.com/api/checkout.js',
     loadPromise: null,
   },
+
+  getCandid: {
+    url: 'https://api.getcandid.com/scripts/widget.js',
+    loadPromise: null,
+  },
 };
 export function requireUrlScript(url) {
   return new Promise((resolve, reject) => {
