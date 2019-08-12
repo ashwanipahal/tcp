@@ -36,6 +36,7 @@ class PaymentItem extends React.Component<Props> {
       handleSubmit,
       onGetBalanceCard,
       card,
+      labels,
     } = this.props;
     const variation = paymentInfo && paymentInfo.variation && paymentInfo.variation.toLowerCase();
     const onMessage = event => {
@@ -121,7 +122,7 @@ class PaymentItem extends React.Component<Props> {
                 <CustomButton
                   color="white"
                   fill="BLUE"
-                  text="Check Balance"
+                  text={labels.lbl_overview_check_balance}
                   buttonVariation="variable-width"
                   width="190px"
                   onPress={handleSubmit(formData =>

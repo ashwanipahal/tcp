@@ -43,6 +43,7 @@ export class PaymentTile extends React.PureComponent<Props> {
         paymentInfo={cardTileProps}
         handleComponentChange={handleComponentChange}
         isGiftCard={false}
+        labels={labels}
       />
     );
   };
@@ -71,6 +72,7 @@ export class PaymentTile extends React.PureComponent<Props> {
         card={card}
         onGetBalanceCard={onGetBalanceCard}
         checkbalanceValueInfo={checkbalanceValueInfo}
+        labels={labels}
       />
     );
   };

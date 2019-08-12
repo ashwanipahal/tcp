@@ -18,6 +18,7 @@ exports[`PaymentTile component should render correctly 1`] = `
     getFormState={[Function]}
     isGiftCard={false}
     keepDirtyOnReinitialize={false}
+    labels={Object {}}
     paymentInfo={
       Object {
         "icon": "",
@@ -49,6 +50,7 @@ exports[`PaymentTile component should render correctly 1`] = `
     getFormState={[Function]}
     isGiftCard={true}
     keepDirtyOnReinitialize={false}
+    labels={Object {}}
     paymentInfo={
       Object {
         "icon": "",

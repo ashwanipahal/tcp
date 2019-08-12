@@ -13,7 +13,7 @@ const PaymentInfoContainer = styled.View`
 const PaymentInfo = styled.View`
   flex: 1;
   flex-direction: column;
-  margin-left: 4px;
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
 const TouchableLink = styled.TouchableHighlight.attrs({
@@ -38,17 +38,18 @@ const PaymentWrapper = styled.View`
 `;
 
 const RecaptchaWrapper = styled.View`
-  height: 170px;
+  height: ${props => props.theme.spacing.LAYOUT_SPACING.XXL};
   flex: 1;
 `;
 
 const RecaptchaContainer = styled.View`
+  height: ${props => props.theme.spacing.LAYOUT_SPACING.XXL};
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
   flex: 1;
 `;
 
 const CheckBalanceContainer = styled.View`
-  height: 40px;
+  height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
 `;
 
 export {
