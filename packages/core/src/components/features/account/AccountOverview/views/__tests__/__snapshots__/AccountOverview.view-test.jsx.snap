@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccountOverviewTileList component should render correctly 1`] = `
+<Fragment>
+  <Styled(FormPageHeading)
+    className="margin-none"
+    heading=""
+  />
+  <Styled(AccountOverviewTileList)
+    labels={
+      Object {
+        "lbl_overview_heading": "",
+      }
+    }
+  />
+</Fragment>
+`;

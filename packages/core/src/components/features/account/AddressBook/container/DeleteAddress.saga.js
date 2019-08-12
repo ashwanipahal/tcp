@@ -1,29 +1,15 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import ADDRESS_BOOK_CONSTANTS from '../AddressBook.constants';
-import fetchData from '../../../../../service/API';
-import endpoints from '../../../../../service/endpoint';
 import {
   updateAddressListOnDelete,
   updateAddressListOnDeleteErr,
   setDeleteModalMountedState,
 } from './AddressBook.actions';
+import { deleteAddressApi } from '../../../../../services/abstractors/account';
 
 export function* deleteAddress({ payload }) {
   try {
-    const { relURI, method } = endpoints.deleteAddress;
-    const baseURI = endpoints.deleteAddress.baseURI || endpoints.global.baseURI;
-    const res = yield call(
-      fetchData,
-      baseURI,
-      relURI,
-      {
-        langId: -1,
-        catalogId: 10551,
-        storeId: 10151,
-        nickName: payload.nickName,
-      },
-      method
-    );
+    const res = yield call(deleteAddressApi, payload);
     if (res.statusCode === 200) {
       yield put(updateAddressListOnDelete(res.body || ''));
       yield put(setDeleteModalMountedState({ state: false }));

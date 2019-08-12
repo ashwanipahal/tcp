@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageGrid native component renders correctly 1`] = `
+<Styled(View)>
+  <Styled(View)
+    width={346}
+  />
+</Styled(View)>
+`;

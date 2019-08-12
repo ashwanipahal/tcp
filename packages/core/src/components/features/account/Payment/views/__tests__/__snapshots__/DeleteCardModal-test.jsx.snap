@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Delete card Modal should render correctly 1`] = `
-<errorBoundaryComponent
+<Styled(Modal)
   className="TCPModal__Content, undefined"
   fixedWidth={true}
   heading="DELETE ADDRESS"
@@ -38,7 +38,12 @@ exports[`Delete card Modal should render correctly 1`] = `
       }
       getAccNumbr="ined"
       isCreditCard={true}
-      labels={Object {}}
+      labels={
+        Object {
+          "common": Object {},
+          "paymentGC": Object {},
+        }
+      }
     />
     <div
       className="deleteCardModal__btnWrapper"
@@ -63,5 +68,5 @@ exports[`Delete card Modal should render correctly 1`] = `
       </Styled(Button)>
     </div>
   </div>
-</errorBoundaryComponent>
+</Styled(Modal)>
 `;

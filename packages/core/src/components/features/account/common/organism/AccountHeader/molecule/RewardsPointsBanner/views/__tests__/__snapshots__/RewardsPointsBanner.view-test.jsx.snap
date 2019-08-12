@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RewardsPointsBanner Component should render correctly 1`] = `
+<Styled(RichText)
+  className=""
+  richTextHtml="<p>test</p>"
+/>
+`;

@@ -6,7 +6,10 @@ import { CreditCardForm } from '../CreditCardForm.view';
 describe('CreditCardForm component', () => {
   it('should renders correctly with address dropdown', () => {
     const props = {
-      labels: {},
+      labels: {
+        paymentGC: {},
+        common: {},
+      },
       addressLabels: {},
       addressList: List([
         {
@@ -25,7 +28,10 @@ describe('CreditCardForm component', () => {
 
   it('should renders correctly with addressForm', () => {
     const props = {
-      labels: {},
+      labels: {
+        paymentGC: {},
+        common: {},
+      },
       addressLabels: {},
       addressList: List([
         {

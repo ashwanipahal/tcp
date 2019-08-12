@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components/native';
 
-const getPageStyle = () => {
+const getPageStyle = props => {
+  const { theme } = props;
   return `
-  margin-horizontal: ${'30px'}
+  margin: auto  ${theme.spacing.APP_LAYOUT_SPACING.SM};
   justify-content: ${'center'};
-
+ 
   `;
 };
 const SectionStyle = css`
@@ -61,6 +62,7 @@ const getDescriptionStyle = props => {
 const HeadingStyle = styled.Text`
   ${getHeadingStyle}
 `;
+
 const SubHeadingStyle = styled.Text`
   ${getSubHeadingStyle}
 `;

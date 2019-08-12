@@ -16,19 +16,19 @@ type Props = {
   isMakeDefaultDisabled: string,
   handleSubmit: string,
   labels: string,
-  isIAgreeChecked: boolean,
   hideShowPwd: boolean,
   confirmHideShowPwd: boolean,
+  onAlreadyHaveAnAccountClick: any,
 };
 
 // eslint-disable-next-line import/no-mutable-exports
 let CreateAccountForm = ({
   isMakeDefaultDisabled,
   labels,
-  isIAgreeChecked,
   hideShowPwd,
   confirmHideShowPwd,
   handleSubmit,
+  onAlreadyHaveAnAccountClick,
 }: Props) => {
   return (
     <div>
@@ -38,50 +38,62 @@ let CreateAccountForm = ({
             <Field
               placeholder="First Name"
               name="firstName"
+              id="firstName"
               component={TextBox}
               dataLocator="first-name-field"
+              enableSuccessCheck={false}
             />
           </Col>
           <Col className="elem-pt-XL" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
               placeholder="Last Name"
               name="lastName"
+              id="lastName"
               component={TextBox}
               dataLocator="last name-field"
+              enableSuccessCheck={false}
             />
           </Col>
           <Col className="elem-pt-XL" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
               placeholder="Phone Number"
               name="phoneNumber"
+              id="phoneNumber"
               type="tel"
               component={TextBox}
               maxLength={50}
               dataLocator="phone-number-field"
+              enableSuccessCheck={false}
             />
           </Col>
           <Col className="elem-pt-XL" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
               placeholder="Zip Code"
               name="noCountryZip"
+              id="noCountryZip"
               component={TextBox}
               dataLocator="zip-code-field"
+              enableSuccessCheck={false}
             />
           </Col>
           <Col className="elem-pt-XL" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
               placeholder="Email Address"
               name="emailAddress"
+              id="emailAddress"
               component={TextBox}
               dataLocator="email-address-field"
+              enableSuccessCheck={false}
             />
           </Col>
           <Col className="elem-pt-XL" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
             <Field
               placeholder="Confirm Email Address"
               name="confirmEmailAddress"
+              id="confirmEmailAddress"
               component={TextBox}
               dataLocator="confirm-email-field"
+              enableSuccessCheck={false}
             />
           </Col>
           <Col
@@ -92,9 +104,11 @@ let CreateAccountForm = ({
             <Field
               placeholder="Password"
               name="password"
+              id="password"
               type={hideShowPwd ? 'text' : 'password'}
               component={TextBox}
               dataLocator="password-field"
+              enableSuccessCheck={false}
             />
             <span className="hide-show show-hide-icons">
               <span className="info-icon-img-wrapper">
@@ -109,8 +123,11 @@ let CreateAccountForm = ({
                   name="hideShowPwd"
                   component={InputCheckbox}
                   dataLocator="hide-show-checkbox"
+                  enableSuccessCheck={false}
                 >
-                  {hideShowPwd ? labels.CREATE_ACC_LBL_HIDE : labels.CREATE_ACC_LBL_SHOW}
+                  {hideShowPwd
+                    ? labels.registration.lbl_createAccount_hide
+                    : labels.registration.lbl_createAccount_show}
                 </Field>
               </Col>
             </span>
@@ -123,9 +140,11 @@ let CreateAccountForm = ({
             <Field
               placeholder="Confirm Password"
               name="confirmPassword"
+              id="confirmPassword"
               type={confirmHideShowPwd ? 'text' : 'password'}
               component={TextBox}
               dataLocator="confirm-Password-field"
+              enableSuccessCheck={false}
             />
             <span className="hide-show confirm-pwd-hide-show">
               <Col
@@ -137,8 +156,11 @@ let CreateAccountForm = ({
                   name="confirmHideShowPwd"
                   component={InputCheckbox}
                   dataLocator="confirm-hide-show-checkbox"
+                  enableSuccessCheck={false}
                 >
-                  {confirmHideShowPwd ? labels.CREATE_ACC_LBL_HIDE : labels.CREATE_ACC_LBL_SHOW}
+                  {confirmHideShowPwd
+                    ? labels.registration.lbl_createAccount_hide
+                    : labels.registration.lbl_createAccount_show}
                 </Field>
               </Col>
             </span>
@@ -152,7 +174,7 @@ let CreateAccountForm = ({
               dataLocator="my-place-checkbox"
               disabled={isMakeDefaultDisabled}
             >
-              {labels.CREATE_ACC_LBL_SAVE_REWARDS}
+              {labels.registration.lbl_createAccount_saveRewards}
             </Field>
           </Col>
           <Col
@@ -166,7 +188,7 @@ let CreateAccountForm = ({
               dataLocator="i-agree-checkbox"
               disabled={isMakeDefaultDisabled}
             >
-              {labels.CREATE_ACC_LBL_TERMS_CONDITIONS}
+              {labels.registration.lbl_createAccount_termsConditions}
             </Field>
           </Col>
           <Col className="elem-pt-XL" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
@@ -176,7 +198,7 @@ let CreateAccountForm = ({
               dataLocator="remember-me-checkbox"
               disabled={isMakeDefaultDisabled}
             >
-              {labels.CREATE_ACC_LBL_REMEMBER_ME}
+              {labels.registration.lbl_createAccount_rememberMe}
             </Field>
           </Col>
           <Col
@@ -189,9 +211,8 @@ let CreateAccountForm = ({
               fill="BLUE"
               type="submit"
               data-locator="create-account-btn"
-              disabled={!isIAgreeChecked}
             >
-              {labels.CREATE_ACC_LBL_CREATE_ACCOUNT}
+              {labels.registration.lbl_createAccount_createAccount}
             </Button>
           </Col>
           <Col
@@ -199,7 +220,9 @@ let CreateAccountForm = ({
             colSize={{ small: 6 }}
             className="already-account align-center"
           >
-            <Anchor>{labels.CREATE_ACC_LBL_ALREADY_ACCOUNT}</Anchor>
+            <Anchor onClick={onAlreadyHaveAnAccountClick}>
+              {labels.registration.lbl_createAccount_alreadyAccount}
+            </Anchor>
           </Col>
         </Row>
       </form>
@@ -217,6 +240,7 @@ const validateMethod = createValidateMethod(
     'confirmEmailAddress',
     'password',
     'confirmPassword',
+    'iAgree',
   ])
 );
 

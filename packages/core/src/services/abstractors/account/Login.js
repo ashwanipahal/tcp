@@ -104,7 +104,7 @@ export const login = ({
     });
 };
 
-export const getProfile = ({ refreshPoints, pageId, source }) => {
+export const getProfile = ({ refreshPoints = true, pageId, source }) => {
   const apiConfig = getAPIConfig();
   const payload = {
     header: {
@@ -146,6 +146,9 @@ export const getProfile = ({ refreshPoints, pageId, source }) => {
           currency: res.body.x_currency,
           addressBook: addressBook.length > 0 ? addressBook : null,
           userBirthday: res.body.x_userBirthday,
+          pointsToNextReward: res.body.x_pointsToNextReward || 100,
+          currentPoints: res.body.x_currentPoints || 0,
+          totalRewards: res.body.x_totalRewards,
         };
       }
     })

@@ -3,11 +3,21 @@
 exports[`LoginForm component should renders correctly 1`] = `
 <View
   handleSubmit={[Function]}
-  labels={Object {}}
+  labels={
+    Object {
+      "handleSubmit": [Function],
+      "login": Object {},
+      "loginErrorMessage": "",
+      "onSubmit": [Function],
+      "resetForm": [Function],
+      "showForgotPasswordForm": [Function],
+    }
+  }
   loginErrorMessage=""
   onSubmit={[Function]}
 >
   <Field
+    autoCapitalize="none"
     component={
       Object {
         "$$typeof": Symbol(react.forward_ref),
@@ -127,6 +137,7 @@ exports[`LoginForm component should renders correctly 1`] = `
         "marginTop": 30,
       }
     }
+    disableButton={false}
     fill="BLUE"
     fullWidth=""
     text=""
@@ -140,6 +151,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       }
     }
     fontSizeVariation="xlarge"
+    onPress={[Function]}
     text=""
     visible={false}
   />
@@ -148,19 +160,6 @@ exports[`LoginForm component should renders correctly 1`] = `
     borderWidth={0.65}
     marginBottom={0}
     marginTop={28}
-  />
-  <Styled(Text) />
-  <Styled(CustomButton)
-    buttonVariation="variable-width"
-    customStyle={
-      Object {
-        "marginTop": 30,
-      }
-    }
-    fullWidth=""
-    onPress={[Function]}
-    text=""
-    url=""
   />
 </View>
 `;

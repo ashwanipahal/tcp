@@ -60,9 +60,11 @@ export class PaymentView extends React.Component<Props> {
     const isVenmo = selectedCard.ccType === 'VENMO';
     let cardHeading = '';
     if (isCreditCard) {
-      cardHeading = labels.ACC_LBL_MODAL_DELETE_CARD;
+      cardHeading = labels.paymentGC.lbl_payment_modalDeleteCard;
     } else {
-      cardHeading = isVenmo ? labels.ACC_LBL_MODAL_VENMO_DELETE : labels.ACC_LBL_MODAL_GC_HEADING;
+      cardHeading = isVenmo
+        ? labels.paymentGC.lbl_payment_modalVenmoDelete
+        : labels.paymentGC.lbl_payment_modalGCHeading;
     }
     return (
       <DeleteCardModal
@@ -70,15 +72,18 @@ export class PaymentView extends React.Component<Props> {
         data={{
           heading: cardHeading,
           subHeading:
-            selectedCard.ccType === 'VENMO' ? labels.ACC_LBL_MODAL_VENMO_DELETE_HEADING : '',
+            selectedCard.ccType === 'VENMO'
+              ? labels.paymentGC.lbl_payment_modalVenmoDeleteHeading
+              : '',
           description: selectedCard,
           buttons: {
-            cancel: labels.ACC_LBL_MODAL_GC_CANCEL,
-            confirm: labels.ACC_LBL_MODAL_GC_CONFIRM,
+            cancel: labels.paymentGC.lbl_payment_modalGCCancel,
+            confirm: labels.paymentGC.lbl_payment_modalGCConfirm,
           },
           cardText: {
-            cardEnd: selectedCard.ccType === 'VENMO' ? '' : labels.ACC_LBL_MODAL_GC_CARDEND,
-            expire: selectedCard.ccType === 'VENMO' ? '' : labels.ACC_LBL_MODAL_GC_EXPIRE,
+            cardEnd:
+              selectedCard.ccType === 'VENMO' ? '' : labels.paymentGC.lbl_payment_modalGCCardEnd,
+            expire: selectedCard.ccType === 'VENMO' ? '' : labels.paymentGC.lbl_payment_gcExpire,
           },
         }}
         labels={labels}
@@ -123,8 +128,8 @@ export class PaymentView extends React.Component<Props> {
                 colSize={{ large: 12, medium: 8, small: 6 }}
                 message={
                   showNotification === 'success'
-                    ? labels.ACC_LBL_SUCCESS_MSG
-                    : labels.ACC_LBL_ERROR_MSG
+                    ? labels.paymentGC.lbl_payment_successMsg
+                    : labels.paymentGC.lbl_payment_errorMsg
                 }
               />
             </Col>
@@ -146,7 +151,7 @@ export class PaymentView extends React.Component<Props> {
               className="payment__heading"
               data-locator="payment-payment&gcheader"
             >
-              {labels.ACC_LBL_PAYMENT_HEADING}
+              {labels.paymentGC.lbl_payment_heading}
             </BodyCopy>
           </Col>
         </Row>

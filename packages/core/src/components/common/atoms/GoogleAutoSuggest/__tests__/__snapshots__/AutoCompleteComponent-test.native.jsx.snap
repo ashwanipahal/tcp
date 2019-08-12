@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AutoCompleteComponent Native should render correctly 1`] = `
+<Styled(View)>
+  <Styled(Text)>
+    test
+  </Styled(Text)>
+  <GooglePlacesAutocomplete
+    GooglePlacesSearchQuery={
+      Object {
+        "rankby": "distance",
+      }
+    }
+    GoogleReverseGeocodingQuery={Object {}}
+    autoFillOnNotFound={false}
+    autoFocus={false}
+    currentLocation={false}
+    currentLocationLabel="Current location"
+    debounce={200}
+    editable={true}
+    enableEmptySections={true}
+    enableHighAccuracyLocation={true}
+    enablePoweredByContainer={true}
+    fetchDetails={true}
+    filterReverseGeocodingByTypes={
+      Array [
+        "locality",
+        "administrative_area_level_3",
+      ]
+    }
+    getDefaultValue={[Function]}
+    isRowScrollable={true}
+    keyboardShouldPersistTaps="always"
+    listViewDisplayed="auto"
+    minLength={2}
+    nearbyPlacesAPI="GooglePlacesSearch"
+    numberOfLines={1}
+    onFail={[Function]}
+    onNotFound={[Function]}
+    onPress={[Function]}
+    onSubmitEditing={[Function]}
+    onTimeout={[Function]}
+    placeholder={null}
+    placeholderTextColor="#A8A8A8"
+    predefinedPlaces={Array []}
+    predefinedPlacesAlwaysVisible={false}
+    query={
+      Object {
+        "key": undefined,
+        "language": "en",
+        "types": "(cities)",
+      }
+    }
+    renderDescription={[Function]}
+    returnKeyType="search"
+    styles={
+      Object {
+        "description": Object {
+          "fontWeight": "700",
+        },
+        "listView": Object {
+          "backgroundColor": "#ffffff",
+          "opacity": 1,
+          "zIndex": 3,
+        },
+        "poweredContainer": Object {
+          "display": "flex",
+          "flexDirection": "row",
+          "justifyContent": "flex-end",
+        },
+        "separator": Object {
+          "borderBottomColor": "#c3c3c3",
+          "borderBottomWidth": 1,
+          "padding": 2,
+        },
+        "textInput": Object {
+          "borderBottomColor": "#c3c3c3",
+          "borderBottomWidth": 1,
+          "height": 40,
+          "paddingBottom": 0,
+          "paddingTop": 16,
+        },
+        "textInputContainer": Object {
+          "width": "100%",
+        },
+      }
+    }
+    suppressDefaultStyles={true}
+    textInputHide={false}
+    textInputProps={
+      Object {
+        "onFocus": [Function],
+      }
+    }
+    timeout={20000}
+    underlineColorAndroid="transparent"
+  />
+</Styled(View)>
+`;

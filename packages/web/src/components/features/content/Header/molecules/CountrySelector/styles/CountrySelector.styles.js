@@ -6,7 +6,7 @@ export default css`
   padding-top: 3px;
 
   ${props =>
-    props.footer
+    props.showInFooter
       ? `
     padding: 34px 0 32px;
     float: left;
@@ -33,6 +33,7 @@ export default css`
     cursor: pointer;
     padding: 0 6px;
     line-height: 20px;
+    text-transform: uppercase;
 
     :first-child {
       padding-left: 0;

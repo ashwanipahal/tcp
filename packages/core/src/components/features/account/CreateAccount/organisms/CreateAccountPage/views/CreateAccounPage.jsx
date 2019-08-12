@@ -5,7 +5,6 @@ import styles from '../styles/CreateAccounPage.style';
 import CreateAccountForm from '../../../molecules/CreateAccountForm';
 import CreateAccountTopSection from '../../../molecules/CreateAccountTopSection';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-// import Image from '../../../../../../common/atoms/Image';
 
 class CreateAccounPage extends React.Component {
   static propTypes = {
@@ -16,18 +15,22 @@ class CreateAccounPage extends React.Component {
     hideShowPwd: PropTypes.bool,
     confirmHideShowPwd: PropTypes.bool,
     error: PropTypes.string,
+    onAlreadyHaveAnAccountClick: PropTypes.func,
+    showForgotPasswordForm: PropTypes.func,
   };
 
   static defaultProps = {
     createAccountAction: () => {},
     className: '',
     labels: {
-      CREATE_ACC_LBL_HIDE: 'hide',
+      lbl_createAccount_hide: 'hide',
     },
     isIAgreeChecked: false,
     hideShowPwd: false,
     confirmHideShowPwd: false,
     error: {},
+    onAlreadyHaveAnAccountClick: () => {},
+    showForgotPasswordForm: () => {},
   };
 
   constructor(props) {
@@ -48,11 +51,16 @@ class CreateAccounPage extends React.Component {
       hideShowPwd,
       confirmHideShowPwd,
       error,
+      onAlreadyHaveAnAccountClick,
+      showForgotPasswordForm,
     } = this.props;
     return (
       <div className={className}>
         <div className="parent-wrapper">
-          <CreateAccountTopSection labels={labels} />
+          <CreateAccountTopSection
+            labels={labels}
+            showForgotPasswordForm={showForgotPasswordForm}
+          />
           {error && (
             <div className="elem-pl-LRG elem-pr-LRG elem-pt-LRG">
               <BodyCopy
@@ -72,6 +80,7 @@ class CreateAccounPage extends React.Component {
             isIAgreeChecked={isIAgreeChecked}
             hideShowPwd={hideShowPwd}
             confirmHideShowPwd={confirmHideShowPwd}
+            onAlreadyHaveAnAccountClick={onAlreadyHaveAnAccountClick}
           />
         </div>
       </div>

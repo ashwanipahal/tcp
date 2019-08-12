@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyRewards should render correctly 1`] = `
+<View>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      data-locator="my-rewards-heading"
+      fontSize="fs16"
+      fontWeight="semibold"
+      mobileFontFamily="secondary"
+      text="undefined (0)"
+    />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      data-locator="no_rewards_msg"
+      fontSize="fs14"
+      fontWeight="regular"
+      mobileFontFamily="secondary"
+      text=""
+    />
+    <Styled(BodyCopy)
+      data-locator="no_rewards_msg"
+      fontSize="fs14"
+      fontWeight="regular"
+      mobileFontFamily="secondary"
+      text=""
+    />
+  </Styled(View)>
+  <Styled(CustomButton)
+    buttonVariation="variable-width"
+    color="white"
+    customStyle={Object {}}
+    data-locator="my-rewards-shop-now-btn"
+    disableButton={false}
+    fill="BLUE"
+    fullWidth=""
+    style={
+      Object {
+        "fontWeight": "400",
+        "marginBottom": 48,
+      }
+    }
+    text=""
+    url=""
+  />
+  <Styled(View)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      customStyle={Object {}}
+      data-locator="my-rewards-program-details"
+      fontSizeVariation="medium"
+      onPress={[Function]}
+      text=""
+      underline={true}
+      visible={false}
+    />
+    <Styled(View)>
+      <Styled(Anchor)
+        anchorVariation="primary"
+        customStyle={Object {}}
+        data-locator="my-rewards-tnc"
+        fontSizeVariation="medium"
+        noLink={true}
+        onPress={[Function]}
+        text=""
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+</View>
+`;

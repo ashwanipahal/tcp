@@ -2,54 +2,110 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
 
 import CountrySelectorModal from './CountrySelectorModal';
 import style from '../styles/CountrySelector.styles';
+import language from '../../../../../../../config/language';
 
-const CountrySelector = ({ className, footer }) => {
-  return (
-    <div className={`${className} countrySelector`}>
-      {footer ? (
-        <BodyCopy
-          className="countrySelector__shipTo"
-          color="gray.800"
-          component="div"
-          fontSize="fs12"
-        >
-          Ship to
-        </BodyCopy>
-      ) : (
-        ''
-      )}
-      <div className="countrySelector__flag-icon">
-        <Image src="/static/images/flags/united-states-of-america.svg" width="20px" height="20px" />
+class CountrySelector extends React.Component {
+  openModal = () => {
+    const { toggleModal } = this.props;
+    toggleModal({ isModalOpen: true });
+    this.getCountryListData();
+  };
+
+  closeModal = () => {
+    const { toggleModal } = this.props;
+    toggleModal({ isModalOpen: false });
+  };
+
+  getCountryListData = () => {
+    const { loadCountryListData } = this.props;
+    loadCountryListData();
+  };
+
+  submitForm = () => {
+    const { handleSubmit } = this.props;
+    handleSubmit();
+    this.closeModal();
+  };
+
+  render() {
+    const { className, countryListData, isModalOpen, labels, showInFooter } = this.props;
+    const {
+      US: { languages },
+    } = language;
+    return (
+      <div className={`${className} countrySelector`}>
+        {showInFooter ? (
+          <React.Fragment>
+            <BodyCopy
+              className="countrySelector__shipTo"
+              color="gray.800"
+              component="div"
+              fontSize="fs12"
+            >
+              {labels.lbl_global_country_selector_header}
+            </BodyCopy>
+            <CountrySelectorModal
+              isModalOpen={isModalOpen}
+              closeModal={this.closeModal}
+              countryListData={countryListData}
+              labels={labels}
+              languages={languages}
+              handleSubmit={this.submitForm}
+            />
+          </React.Fragment>
+        ) : (
+          ''
+        )}
+        <div className="countrySelector__flag-icon">
+          <Image
+            src="/static/images/flags/united-states-of-america.svg"
+            width="20px"
+            height="20px"
+            onClick={this.openModal}
+          />
+        </div>
+        <div>
+          {languages.map(({ code }, index) => (
+            <BodyCopy
+              component="span"
+              fontSize="fs13"
+              className={`${
+                index < 1
+                  ? 'countrySelector__locale--selected'
+                  : 'countrySelector__locale--disabled'
+              } countrySelector__locale`}
+              onClick={this.openModal}
+            >
+              {code}
+            </BodyCopy>
+          ))}
+        </div>
       </div>
-      <div>
-        {['EN', 'ES'].map((locale, index) => (
-          <BodyCopy
-            component="span"
-            fontSize="fs13"
-            className={`${
-              index < 1 ? 'countrySelector__locale--selected' : 'countrySelector__locale--disabled'
-            } countrySelector__locale`}
-          >
-            {locale}
-          </BodyCopy>
-        ))}
-      </div>
-      <CountrySelectorModal heading="Ship To" />
-    </div>
-  );
-};
+    );
+  }
+}
 
 CountrySelector.propTypes = {
   className: PropTypes.string.isRequired,
-  footer: PropTypes.bool,
+  countryListData: PropTypes.arrayOf(PropTypes.shape({})),
+  handleSubmit: PropTypes.func,
+  isModalOpen: PropTypes.bool.isRequired,
+  labels: PropTypes.shape({}).isRequired,
+  loadCountryListData: PropTypes.func,
+  showInFooter: PropTypes.bool,
+  toggleModal: PropTypes.func,
 };
 
 CountrySelector.defaultProps = {
-  footer: false,
+  countryListData: [],
+  showInFooter: false,
+  handleSubmit: () => {},
+  loadCountryListData: () => {},
+  toggleModal: () => {},
 };
 
-export default errorBoundary(withStyles(CountrySelector, style));
+export default withStyles(CountrySelector, style);
+export { CountrySelector as CountrySelectorVanilla };

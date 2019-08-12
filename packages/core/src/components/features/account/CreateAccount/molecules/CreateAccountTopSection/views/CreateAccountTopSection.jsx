@@ -8,6 +8,11 @@ import { getIconPath } from '../../../../../../../utils';
 
 const CreateAccountTopSection = props => {
   const { labels } = props;
+  const showForgotPasswordFormFn = e => {
+    e.preventDefault();
+    const { showForgotPasswordForm } = props;
+    showForgotPasswordForm();
+  };
   return (
     <div>
       <div className="elem-pr-MED elem-pl-MED">
@@ -20,20 +25,22 @@ const CreateAccountTopSection = props => {
       <div className="elem-pr-MED elem-pl-MED">
         <div className="labels-wrapper">
           <div className="elem-pb-XS">
-            <span>{labels.CREATE_ACC_LBL_CREATE_A}</span>
-            <span className="my-place-rewards">{labels.CREATE_ACC_LBL_MY_PLACE_REWARDS}</span>
-            <span>{labels.CREATE_ACC_LBL_EARN_POINTS}</span>
+            <span>{labels.registration.lbl_createAccount_createA}</span>
+            <span className="my-place-rewards">
+              {labels.registration.lbl_createAccount_myPlaceRewards}
+            </span>
+            <span>{labels.registration.lbl_createAccount_earnPoints}</span>
           </div>
           <div className="elem-pb-XS spend-points">
-            <p>{labels.CREATE_ACC_LBL_SPEND_POINT}</p>
-            <p>{labels.CREATE_ACC_LBL_POINT_REWARD}</p>
+            <p>{labels.registration.lbl_createAccount_spendPoint}</p>
+            <p>{labels.registration.lbl_createAccount_pointReward}</p>
           </div>
           <div>
-            <p>{labels.CREATE_ACC_LBL_SIGNED_UP}</p>
-            <p>{labels.CREATE_ACC_LBL_ONLINE_ACC_CREATED}</p>
+            <p>{labels.registration.lbl_createAccount_signedUp}</p>
+            <p>{labels.registration.lbl_createAccount_onlineAccCreated}</p>
             <div className="reset-pwd">
-              <Anchor className="reset-password" to="" target="">
-                {labels.CREATE_ACC_LBL_RESET_PWD}
+              <Anchor className="reset-password" onClick={showForgotPasswordFormFn}>
+                {labels.registration.lbl_createAccount_resetPassword}
               </Anchor>
             </div>
           </div>
@@ -44,6 +51,7 @@ const CreateAccountTopSection = props => {
 };
 
 CreateAccountTopSection.propTypes = {
+  showForgotPasswordForm: PropTypes.func,
   labels: PropTypes.shape({
     heading: PropTypes.string,
     subHeading: PropTypes.string,
@@ -52,6 +60,7 @@ CreateAccountTopSection.propTypes = {
 };
 
 CreateAccountTopSection.defaultProps = {
+  showForgotPasswordForm: () => {},
   labels: {
     heading: 'Welcome Back',
     subHeading: 'Log in to earn points for MY PLACE REWARDS ',

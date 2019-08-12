@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AddedToBagActionsView from '../views/AddedToBagActions';
 import { getLabelsAddToActions } from '../../AddedToBag/container/AddedToBag.selectors';
-import { routerPush } from '../../../../../utils/utils';
+import { routerPush } from '../../../../../utils';
 
 export class AddedToBagContainer extends React.Component<Props> {
   constructor(props) {
@@ -18,7 +18,7 @@ export class AddedToBagContainer extends React.Component<Props> {
   }
 
   render() {
-    const { labels } = this.props;
+    const { labels, showAddTobag } = this.props;
     const onClickViewBag = () => {
       routerPush('/cart', '/bag');
     };
@@ -27,6 +27,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         onClickViewBag={onClickViewBag}
         labels={labels}
         handleContinueShopping={this.handleContinueShopping}
+        showAddTobag={showAddTobag}
       />
     );
   }

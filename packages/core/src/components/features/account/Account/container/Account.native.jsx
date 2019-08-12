@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import MyAccountLayout from '../views/MyAccountLayout.view';
 import AccountComponentNativeMapping from '../AccountComponentMapping';
 import navDataMobile from '../MyAccountRoute.config';
@@ -6,15 +8,7 @@ import {
   StyledKeyboardAvoidingView,
   StyledScrollView,
 } from '../styles/MyAccountContainer.style.native';
-
-// @flow
-type Props = {
-  component: String,
-};
-
-type State = {
-  component: String,
-};
+import { getLabels } from './Account.selectors';
 
 /**
  * @function Account The Account component is the main container for the account section
@@ -23,8 +17,16 @@ type State = {
  * NOTE: Which ever new component that gets added for drop down nav, needs an entry in AccountComponentMappingNative file.
  */
 
-export default class Account extends React.PureComponent<Props, State> {
-  constructor(props: Props) {
+export class Account extends React.PureComponent<Props, State> {
+  static propTypes = {
+    labels: PropTypes.shape({}),
+  };
+
+  static defaultProps = {
+    labels: PropTypes.shape({}),
+  };
+
+  constructor(props) {
     super(props);
     const { component } = this.props;
     this.state = {
@@ -32,14 +34,28 @@ export default class Account extends React.PureComponent<Props, State> {
     };
   }
 
-  handleComponentChange = (component: String) => {
-    /** This handling is for temporary purpose, need to remove later once we have all containers */
-    let componentName = component;
-    if (componentName === 'paymentGiftCardsPageMobile') {
-      componentName = 'paymentGiftCardsPageMobile';
-    } else if (componentName !== 'addressBookMobile') {
-      componentName = 'addressBookMobile';
+  /**
+   *  @function getComponent takes component and return the component that is required on the drop down click.
+   */
+
+  getComponent = component => {
+    switch (component) {
+      case 'paymentGiftCardsPageMobile':
+        return 'paymentGiftCardsPageMobile';
+      case 'myPlaceRewardsMobile':
+        return 'myPlaceRewardsMobile';
+      case 'accountOverviewMobile':
+        return 'accountOverview';
+      default:
+        return 'addressBookMobile';
     }
+  };
+
+  /**
+   *  @function handleComponentChange triggered when dropdown clicked
+   */
+  handleComponentChange = component => {
+    const componentName = this.getComponent(component);
     this.setState({
       component: componentName,
     });
@@ -52,6 +68,7 @@ export default class Account extends React.PureComponent<Props, State> {
    */
   render() {
     const { component } = this.state;
+    const { labels } = this.props;
     return (
       <StyledKeyboardAvoidingView behavior="padding" enabled keyboardVerticalOffset={82}>
         <StyledScrollView>
@@ -59,9 +76,19 @@ export default class Account extends React.PureComponent<Props, State> {
             navData={navDataMobile}
             mainContent={AccountComponentNativeMapping[component]}
             handleComponentChange={this.handleComponentChange}
+            labels={labels}
           />
         </StyledScrollView>
       </StyledKeyboardAvoidingView>
     );
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    labels: getLabels(state),
+  };
+};
+
+export default connect(mapStateToProps)(Account);
+export { Account as AccountVanilla };

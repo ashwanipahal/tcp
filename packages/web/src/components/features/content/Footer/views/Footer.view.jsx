@@ -98,7 +98,7 @@ class Footer extends React.Component {
                 small: 6,
               }}
             >
-              <CountrySelector footer />
+              <CountrySelector showInFooter />
             </Col>
           </Row>
           <Row fullBleed>

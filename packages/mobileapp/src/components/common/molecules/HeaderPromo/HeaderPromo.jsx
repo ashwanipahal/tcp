@@ -1,7 +1,7 @@
 import React from 'react';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import Carousel from '@tcp/core/src/components/common/molecules/Carousel';
-import { getScreenWidth, UrlHandler, getLocator } from '@tcp/core/src/utils/utils.native';
+import { getScreenWidth, UrlHandler, getLocator } from '@tcp/core/src/utils';
 import { MessageContainer, TextStyle1, TextStyle2, TextStyle3 } from './HeaderPromo.style';
 
 /**

@@ -16,22 +16,22 @@ describe('ModuleK component', () => {
   });
 
   it('Module has header', () => {
-    expect(ModuleKComp.find('.module-k__header')).toHaveLength(1);
+    expect(ModuleKComp.find('.moduleK__header')).toHaveLength(1);
   });
 
   it('Module has carousal', () => {
-    expect(ModuleKComp.find('.module-k__carousal')).toHaveLength(1);
+    expect(ModuleKComp.find('.moduleK__carousal')).toHaveLength(1);
   });
 
   it('Module has promo banner', () => {
-    expect(ModuleKComp.find('.module-k__promoBanner')).toHaveLength(5);
+    expect(ModuleKComp.find('.moduleK__promoBanner')).toHaveLength(2);
   });
 
   it('Module has image grid', () => {
-    expect(ModuleKComp.find('.image-grid')).toHaveLength(4);
+    expect(ModuleKComp.find('.image-grid')).toHaveLength(2);
   });
 
   it('Module has carousal cta', () => {
-    expect(ModuleKComp.find('.carousal-cta')).toHaveLength(4);
+    expect(ModuleKComp.find('.carousal-cta')).toHaveLength(2);
   });
 });

@@ -5,7 +5,9 @@ exports[`Offers Component should render correctly 1`] = `
   className="abc"
   labels={
     Object {
+      "common": Object {},
       "offersMessage": "<p>offers</p>",
+      "paymentGC": Object {},
     }
   }
 >
