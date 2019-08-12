@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { withRouter } from 'next/router'; //eslint-disable-line
 import PointsHistory from '../views';
 import { getPointHistoryState, getCommonLabels } from './PointsHistory.selectors';
 import { getPointsHistoryList } from './PointsHistory.actions';
@@ -53,9 +52,7 @@ PointsHistoryContainer.defaultProps = {
   pointHistory: PropTypes.shape({}),
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(PointsHistoryContainer)
-);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PointsHistoryContainer);

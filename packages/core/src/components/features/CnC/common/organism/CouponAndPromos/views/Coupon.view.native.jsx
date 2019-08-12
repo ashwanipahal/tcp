@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import { Text } from 'react-native';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import { styles, WrapperStyle } from '../styles/Coupon.style.native';
+import CouponForm from '../../../molecules/CouponForm';
 import CouponListSection from '../../../../../../common/organisms/CouponListSection';
 
-class CouponView extends React.PureComponent<Props> {
+class CouponView extends React.PureComponent {
   render() {
     const {
       isFetching,
@@ -20,6 +21,7 @@ class CouponView extends React.PureComponent<Props> {
     console.log('availableCouponList', availableCouponList);
     return (
       <WrapperStyle>
+        <CouponForm onSubmit={handleApplyCoupon} source="form" />;
         {availableCouponList && (
           <CouponListSection
             labels={labels}
