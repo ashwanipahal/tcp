@@ -43,14 +43,45 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Montserrat-Black.ttf</string>
-		<string>Montserrat-Bold.ttf</string>
-		<string>Montserrat.ttf</string>
-		<string>Montserrat.ttf</string>
-		<string>Montserrat-SemiBold.ttf</string>
-		<string>Nunito-Black.ttf</string>
-		<string>Nunito.ttf</string>
-		<string>Nunito-SemiBold.ttf</string>
+    <string>FontAwesome.ttf</string>
+    <string>Montserrat-Black.ttf</string>
+    <string>Montserrat-Bold.ttf</string>
+    <string>Montserrat.ttf</string>
+    <string>Montserrat.ttf</string>
+    <string>Montserrat-SemiBold.ttf</string>
+    <string>Nunito-Black.ttf</string>
+    <string>Nunito.ttf</string>
+    <string>Nunito-SemiBold.ttf</string>
+    <string>Mostardesign - Ariana Pro Black italic.otf</string>
+    <string>Mostardesign - Ariana Pro Black.otf</string>
+    <string>Mostardesign - Ariana Pro Bold italic.otf</string>
+    <string>Mostardesign - Ariana Pro Bold.otf</string>
+    <string>Mostardesign - Ariana Pro Book italic.otf</string>
+    <string>Mostardesign - Ariana Pro Book.otf</string>
+    <string>Mostardesign - Ariana Pro Heavy italic.otf</string>
+    <string>Mostardesign - Ariana Pro Heavy.otf</string>
+    <string>Mostardesign - Ariana Pro Light italic.otf</string>
+    <string>Mostardesign - Ariana Pro Light.otf</string>
+    <string>Mostardesign - Ariana Pro Medium italic.otf</string>
+    <string>Mostardesign - Ariana Pro Medium.otf</string>
+    <string>Mostardesign - Ariana Pro Regular italic.otf</string>
+    <string>Mostardesign - Ariana Pro Regular.otf</string>
+    <string>Mostardesign - Ariana Pro Thin italic.otf</string>
+    <string>Mostardesign - Ariana Pro Thin.otf</string>
+    <string>Mostardesign - Ariana Pro UltraLight italic.otf</string>
+    <string>Mostardesign - Ariana Pro UltraLight.otf</string>
+    <string>Nunito-BlackItalic.ttf</string>
+    <string>Nunito-Bold.ttf</string>
+    <string>Nunito-BoldItalic.ttf</string>
+    <string>Nunito-ExtraBold.ttf</string>
+    <string>Nunito-ExtraBoldItalic.ttf</string>
+    <string>Nunito-ExtraLight.ttf</string>
+    <string>Nunito-ExtraLightItalic.ttf</string>
+    <string>Nunito-Italic.ttf</string>
+    <string>Nunito-Light.ttf</string>
+    <string>Nunito-LightItalic.ttf</string>
+    <string>Nunito-Regular.ttf</string>
+    <string>Nunito-SemiBoldItalic.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>GymboreeLaunchScreen</string>

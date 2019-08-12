@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from 'react-navigation';
 import { Text } from 'react-native';
 import NavBarIcon from '../components/common/atoms/NavBarIcon';
-import AnimatedBrandChangeIcon from '../components/common/atoms/AnimatedBrandChangeIcon/AnimatedBrandChangeIcon';
+import AnimatedBrandChangeIcon from '../components/common/atoms/AnimatedBrandChangeIcon/AnimatedBrandChangeIcon.container';
 
 const BrandSwitch = () => <Text>Brand Switching happens here</Text>;
 

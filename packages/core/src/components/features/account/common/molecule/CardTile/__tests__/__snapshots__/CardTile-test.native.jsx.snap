@@ -495,7 +495,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
       disableButton={false}
       fill="BLUE"
       fullWidth=""
-      locator={[Function]}
+      locator=""
       text=""
       url=""
     />
@@ -681,7 +681,7 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
       disableButton={false}
       fill="BLUE"
       fullWidth=""
-      locator={[Function]}
+      locator=""
       text=""
       url=""
     />
@@ -1030,7 +1030,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       disableButton={false}
       fill="BLUE"
       fullWidth=""
-      locator={[Function]}
+      locator=""
       text=""
       url=""
     />

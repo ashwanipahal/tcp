@@ -6,6 +6,7 @@ import { styles, Container } from './AnimatedBrandChangeIcon.style';
 import tcpLogo from '../../../../brand_config/main/config/tcp.png';
 import gymboreeLogo from '../../../../brand_config/gymboree/config/gymboree.png';
 import NavBarIcon from '../NavBarIcon';
+import { APP_TYPE } from '../../hoc/ThemeWrapper.constants';
 
 const { logo, logoHidden, firstIconFinalState, secondIconFinalState, iconInitialState } = styles;
 
@@ -26,9 +27,43 @@ class AnimatedBrandChangeIcon extends PureComponent {
   changePosition = () => {
     LayoutAnimation.easeInEaseOut();
     const { openSwitch } = this.state;
+
     this.setState({
       openSwitch: !openSwitch,
     });
+  };
+
+  /**
+   * @function switchToTCP
+   * This function switches current app type to tcp
+   *
+   * @memberof AnimatedBrandChangeIcon
+   */
+  switchToTCP = () => {
+    this.switchToBrand(APP_TYPE.TCP);
+  };
+
+  /**
+   * @function switchToGymboree
+   * This function switches current app type to tcp
+   *
+   * @memberof AnimatedBrandChangeIcon
+   */
+  switchToGymboree = () => {
+    this.switchToBrand(APP_TYPE.GYMBOREE);
+  };
+
+  /**
+   * @function switchToGymboree
+   * This function switches the app to input brand
+   * @param brand
+   *
+   * @memberof AnimatedBrandChangeIcon
+   */
+  switchToBrand = brand => {
+    const { updateAppTypeHandler } = this.props;
+    if (updateAppTypeHandler) updateAppTypeHandler(brand);
+    this.changePosition();
   };
 
   /**
@@ -52,7 +87,7 @@ class AnimatedBrandChangeIcon extends PureComponent {
         <TouchableOpacity
           accessibilityTraits="none"
           accessibilityComponentType="none"
-          onPress={this.changePosition}
+          onPress={this.switchToTCP}
           style={firstIconStyle}
         >
           {/* first icon for brand 1 */}
@@ -61,7 +96,7 @@ class AnimatedBrandChangeIcon extends PureComponent {
         <TouchableOpacity
           accessibilityTraits="none"
           accessibilityComponentType="none"
-          onPress={this.changePosition}
+          onPress={this.switchToGymboree}
           style={SecondIconStyle}
         >
           {/* second icon for brand 2 which remains hidden in initial state */}
@@ -85,6 +120,7 @@ class AnimatedBrandChangeIcon extends PureComponent {
           accessibilityComponentType="none"
           onPress={this.changePosition}
           style={logo}
+          activeOpacity={1}
         >
           {openSwitch ? (
             <NavBarIcon
@@ -116,6 +152,11 @@ class AnimatedBrandChangeIcon extends PureComponent {
 
 AnimatedBrandChangeIcon.propTypes = {
   children: PropTypes.element.isRequired,
+  updateAppTypeHandler: PropTypes.func,
+};
+
+AnimatedBrandChangeIcon.defaultProps = {
+  updateAppTypeHandler: () => {},
 };
 
 export default AnimatedBrandChangeIcon;

@@ -1,8 +1,11 @@
 // @flow
 import React from 'react';
 import { connect } from 'react-redux';
+import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
+
 import style from './NavBar.style';
 import SecondAppPeekABooView from '../../../../navigation/SecondAppPeekABooView';
+import { THEME_WRAPPER_REDUCER_KEY } from '../../hoc/ThemeWrapper.constants';
 
 type Props = {
   renderIcon: Function,
@@ -11,6 +14,7 @@ type Props = {
   onTabLongPress: Function,
   navigation: Object,
   labels: Object,
+  appType: String,
 };
 
 /**
@@ -32,65 +36,79 @@ const getDefaultLabels = label => {
  * This Component creates custom Bottom Nav Bar for the app
  * @param {*} props Props passed from BottomTabNavigator react native feature
  */
-const NavBar = (props: Props) => {
-  const { renderIcon, getLabelText, onTabPress, onTabLongPress, navigation, labels } = props;
+class NavBar extends React.PureComponent<Props> {
+  componentWillReceiveProps(nextProps) {
+    const { appType: prevAppType } = this.props;
+    const { appType } = nextProps;
 
-  const { routes, index: activeRouteIndex } = navigation.state;
+    if (appType !== prevAppType) {
+      // navigate to home page of home stack when app type is changed
+      const { navigation } = this.props;
+      navigateToNestedRoute(navigation, 'HomeStack', 'home');
+    }
+  }
 
-  const StyledView = style.container;
-  const NavContainer = style.navContainer;
+  render() {
+    const { renderIcon, getLabelText, onTabPress, onTabLongPress, navigation, labels } = this.props;
 
-  return (
-    <NavContainer>
-      <StyledView>
-        {routes.map((route, routeIndex) => {
-          const isRouteActive = routeIndex === activeRouteIndex;
-          let label;
-          let StyledTouchableOpacity = style.tabButton;
-          let StyledText = style.textStyle;
+    const { routes, index: activeRouteIndex } = navigation.state;
 
-          if (labels) {
-            label = labels[getLabelText({ route })];
-          } else {
-            label = getDefaultLabels(getLabelText({ route }));
-          }
+    const StyledView = style.container;
+    const NavContainer = style.navContainer;
 
-          if (isRouteActive) {
-            StyledText = style.highlightedTextStyle;
-          }
+    return (
+      <NavContainer>
+        <StyledView>
+          {routes.map((route, routeIndex) => {
+            const isRouteActive = routeIndex === activeRouteIndex;
+            let label;
+            let StyledTouchableOpacity = style.tabButton;
+            let StyledText = style.textStyle;
 
-          if (!label) {
-            StyledTouchableOpacity = style.logoStyle;
-          }
+            if (labels) {
+              label = labels[getLabelText({ route })];
+            } else {
+              label = getDefaultLabels(getLabelText({ route }));
+            }
 
-          return (
-            <StyledTouchableOpacity
-              // eslint-disable-next-line react/no-array-index-key
-              key={`nav-bar_${routeIndex}`}
-              onPress={() => {
-                onTabPress({ route });
-              }}
-              onLongPress={() => {
-                onTabLongPress({ route });
-              }}
-              accessibilityRole="link"
-              accessibilityLabel={label}
-            >
-              {renderIcon({ route, focused: isRouteActive })}
+            if (isRouteActive) {
+              StyledText = style.highlightedTextStyle;
+            }
 
-              <StyledText>{label}</StyledText>
-            </StyledTouchableOpacity>
-          );
-        })}
-      </StyledView>
-      <SecondAppPeekABooView />
-    </NavContainer>
-  );
-};
+            if (!label) {
+              StyledTouchableOpacity = style.logoStyle;
+            }
+
+            return (
+              <StyledTouchableOpacity
+                // eslint-disable-next-line react/no-array-index-key
+                key={`nav-bar_${routeIndex}`}
+                onPress={() => {
+                  onTabPress({ route });
+                }}
+                onLongPress={() => {
+                  onTabLongPress({ route });
+                }}
+                accessibilityRole="link"
+                accessibilityLabel={label}
+              >
+                {renderIcon({ route, focused: isRouteActive })}
+
+                <StyledText>{label}</StyledText>
+              </StyledTouchableOpacity>
+            );
+          })}
+        </StyledView>
+        <SecondAppPeekABooView />
+      </NavContainer>
+    );
+  }
+}
 
 const mapStateToProps = state => {
   return {
     labels: state.Labels.MobileApp && state.Labels.MobileApp.navigation,
+    appType: state[THEME_WRAPPER_REDUCER_KEY].get('APP_TYPE'),
   };
 };
 

@@ -42,6 +42,67 @@
 		8424F1F622DC64A90090ECF1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8424F1F322DC60160090ECF1 /* AppDelegate.swift */; };
 		844B115423001FA400A82DAA /* libRNCNetInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8448576A22F99FEE00C167AD /* libRNCNetInfo.a */; };
 		844B115523001FB200A82DAA /* libRNCNetInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8448576A22F99FEE00C167AD /* libRNCNetInfo.a */; };
+		844B12FA2301623600A82DAA /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12AD2301623200A82DAA /* Nunito-ExtraBold.ttf */; };
+		844B12FB2301623600A82DAA /* Mostardesign - Ariana Pro Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12DD2301623300A82DAA /* Mostardesign - Ariana Pro Thin.otf */; };
+		844B12FC2301623600A82DAA /* Mostardesign - Ariana Pro Regular italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12DE2301623300A82DAA /* Mostardesign - Ariana Pro Regular italic.otf */; };
+		844B12FD2301623600A82DAA /* Mostardesign - Ariana Pro Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12DF2301623300A82DAA /* Mostardesign - Ariana Pro Black.otf */; };
+		844B12FE2301623600A82DAA /* Mostardesign - Ariana Pro Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E02301623300A82DAA /* Mostardesign - Ariana Pro Medium.otf */; };
+		844B12FF2301623600A82DAA /* Mostardesign - Ariana Pro Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E12301623300A82DAA /* Mostardesign - Ariana Pro Heavy.otf */; };
+		844B13002301623600A82DAA /* Mostardesign - Ariana Pro UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E22301623300A82DAA /* Mostardesign - Ariana Pro UltraLight.otf */; };
+		844B13012301623600A82DAA /* Nunito-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E32301623300A82DAA /* Nunito-SemiBoldItalic.ttf */; };
+		844B13022301623600A82DAA /* Mostardesign - Ariana Pro Book italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E42301623300A82DAA /* Mostardesign - Ariana Pro Book italic.otf */; };
+		844B13032301623600A82DAA /* Nunito-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E52301623300A82DAA /* Nunito-ExtraLight.ttf */; };
+		844B13042301623600A82DAA /* Mostardesign - Ariana Pro UltraLight italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E62301623300A82DAA /* Mostardesign - Ariana Pro UltraLight italic.otf */; };
+		844B13052301623600A82DAA /* Nunito-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E72301623400A82DAA /* Nunito-Italic.ttf */; };
+		844B13062301623600A82DAA /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E82301623400A82DAA /* Nunito-Bold.ttf */; };
+		844B13072301623600A82DAA /* Mostardesign - Ariana Pro Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E92301623400A82DAA /* Mostardesign - Ariana Pro Book.otf */; };
+		844B13082301623600A82DAA /* Mostardesign - Ariana Pro Black italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12EA2301623400A82DAA /* Mostardesign - Ariana Pro Black italic.otf */; };
+		844B13092301623600A82DAA /* Mostardesign - Ariana Pro Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12EB2301623400A82DAA /* Mostardesign - Ariana Pro Regular.otf */; };
+		844B130A2301623600A82DAA /* Nunito-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12EC2301623400A82DAA /* Nunito-BlackItalic.ttf */; };
+		844B130B2301623600A82DAA /* Mostardesign - Ariana Pro Medium italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12ED2301623400A82DAA /* Mostardesign - Ariana Pro Medium italic.otf */; };
+		844B130C2301623600A82DAA /* Mostardesign - Ariana Pro Bold italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12EE2301623500A82DAA /* Mostardesign - Ariana Pro Bold italic.otf */; };
+		844B130D2301623600A82DAA /* Mostardesign - Ariana Pro Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12EF2301623500A82DAA /* Mostardesign - Ariana Pro Light.otf */; };
+		844B130E2301623600A82DAA /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F02301623500A82DAA /* Nunito-Light.ttf */; };
+		844B130F2301623600A82DAA /* Nunito-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F12301623500A82DAA /* Nunito-BoldItalic.ttf */; };
+		844B13102301623600A82DAA /* Mostardesign - Ariana Pro Light italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F22301623500A82DAA /* Mostardesign - Ariana Pro Light italic.otf */; };
+		844B13112301623600A82DAA /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F32301623500A82DAA /* Nunito-Regular.ttf */; };
+		844B13122301623600A82DAA /* Mostardesign - Ariana Pro Heavy italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F42301623600A82DAA /* Mostardesign - Ariana Pro Heavy italic.otf */; };
+		844B13132301623600A82DAA /* Mostardesign - Ariana Pro Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F52301623600A82DAA /* Mostardesign - Ariana Pro Bold.otf */; };
+		844B13142301623600A82DAA /* Nunito-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F62301623600A82DAA /* Nunito-ExtraBoldItalic.ttf */; };
+		844B13152301623600A82DAA /* Nunito-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F72301623600A82DAA /* Nunito-LightItalic.ttf */; };
+		844B13162301623600A82DAA /* Mostardesign - Ariana Pro Thin italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F82301623600A82DAA /* Mostardesign - Ariana Pro Thin italic.otf */; };
+		844B13172301623600A82DAA /* Nunito-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F92301623600A82DAA /* Nunito-ExtraLightItalic.ttf */; };
+		844B131A2301654300A82DAA /* Mostardesign - Ariana Pro Black italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12EA2301623400A82DAA /* Mostardesign - Ariana Pro Black italic.otf */; };
+		844B131B2301654300A82DAA /* Mostardesign - Ariana Pro Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12DF2301623300A82DAA /* Mostardesign - Ariana Pro Black.otf */; };
+		844B131C2301654300A82DAA /* Mostardesign - Ariana Pro Bold italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12EE2301623500A82DAA /* Mostardesign - Ariana Pro Bold italic.otf */; };
+		844B131D2301654300A82DAA /* Mostardesign - Ariana Pro Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F52301623600A82DAA /* Mostardesign - Ariana Pro Bold.otf */; };
+		844B131E2301654300A82DAA /* Mostardesign - Ariana Pro Book italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E42301623300A82DAA /* Mostardesign - Ariana Pro Book italic.otf */; };
+		844B131F2301654300A82DAA /* Mostardesign - Ariana Pro Book.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E92301623400A82DAA /* Mostardesign - Ariana Pro Book.otf */; };
+		844B13202301654300A82DAA /* Mostardesign - Ariana Pro Heavy italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F42301623600A82DAA /* Mostardesign - Ariana Pro Heavy italic.otf */; };
+		844B13212301654300A82DAA /* Mostardesign - Ariana Pro Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E12301623300A82DAA /* Mostardesign - Ariana Pro Heavy.otf */; };
+		844B13222301654300A82DAA /* Mostardesign - Ariana Pro Light italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F22301623500A82DAA /* Mostardesign - Ariana Pro Light italic.otf */; };
+		844B13232301654300A82DAA /* Mostardesign - Ariana Pro Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12EF2301623500A82DAA /* Mostardesign - Ariana Pro Light.otf */; };
+		844B13242301654300A82DAA /* Mostardesign - Ariana Pro Medium italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12ED2301623400A82DAA /* Mostardesign - Ariana Pro Medium italic.otf */; };
+		844B13252301654300A82DAA /* Mostardesign - Ariana Pro Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E02301623300A82DAA /* Mostardesign - Ariana Pro Medium.otf */; };
+		844B13262301654300A82DAA /* Mostardesign - Ariana Pro Regular italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12DE2301623300A82DAA /* Mostardesign - Ariana Pro Regular italic.otf */; };
+		844B13272301654300A82DAA /* Mostardesign - Ariana Pro Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12EB2301623400A82DAA /* Mostardesign - Ariana Pro Regular.otf */; };
+		844B13282301654300A82DAA /* Mostardesign - Ariana Pro Thin italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F82301623600A82DAA /* Mostardesign - Ariana Pro Thin italic.otf */; };
+		844B13292301654300A82DAA /* Mostardesign - Ariana Pro Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12DD2301623300A82DAA /* Mostardesign - Ariana Pro Thin.otf */; };
+		844B132A2301654300A82DAA /* Mostardesign - Ariana Pro UltraLight italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E62301623300A82DAA /* Mostardesign - Ariana Pro UltraLight italic.otf */; };
+		844B132B2301654300A82DAA /* Mostardesign - Ariana Pro UltraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E22301623300A82DAA /* Mostardesign - Ariana Pro UltraLight.otf */; };
+		844B132C2301654300A82DAA /* Nunito-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12EC2301623400A82DAA /* Nunito-BlackItalic.ttf */; };
+		844B132D2301654300A82DAA /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E82301623400A82DAA /* Nunito-Bold.ttf */; };
+		844B132E2301654300A82DAA /* Nunito-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F12301623500A82DAA /* Nunito-BoldItalic.ttf */; };
+		844B132F2301654300A82DAA /* Nunito-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12AD2301623200A82DAA /* Nunito-ExtraBold.ttf */; };
+		844B13302301654300A82DAA /* Nunito-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F62301623600A82DAA /* Nunito-ExtraBoldItalic.ttf */; };
+		844B13312301654300A82DAA /* Nunito-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E52301623300A82DAA /* Nunito-ExtraLight.ttf */; };
+		844B13322301654300A82DAA /* Nunito-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F92301623600A82DAA /* Nunito-ExtraLightItalic.ttf */; };
+		844B13332301654300A82DAA /* Nunito-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E72301623400A82DAA /* Nunito-Italic.ttf */; };
+		844B13342301654300A82DAA /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F02301623500A82DAA /* Nunito-Light.ttf */; };
+		844B13352301654300A82DAA /* Nunito-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F72301623600A82DAA /* Nunito-LightItalic.ttf */; };
+		844B13362301654300A82DAA /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12F32301623500A82DAA /* Nunito-Regular.ttf */; };
+		844B13372301654300A82DAA /* Nunito-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 844B12E32301623300A82DAA /* Nunito-SemiBoldItalic.ttf */; };
+		844B13382301654300A82DAA /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 36C9820F22E6F96D0002786B /* FontAwesome.ttf */; };
 		8480855622D9B52500D7D25B /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ED297162215061F000B7C4FE /* JavaScriptCore.framework */; };
 		8480855722D9B52500D7D25B /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		8480855822D9B52500D7D25B /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
@@ -460,6 +521,36 @@
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8424F1F222DC60160090ECF1 /* mobileapp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "mobileapp-Bridging-Header.h"; sourceTree = "<group>"; };
 		8424F1F322DC60160090ECF1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = mobileapp/AppDelegate.swift; sourceTree = "<group>"; };
+		844B12AD2301623200A82DAA /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
+		844B12DD2301623300A82DAA /* Mostardesign - Ariana Pro Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro Thin.otf"; sourceTree = "<group>"; };
+		844B12DE2301623300A82DAA /* Mostardesign - Ariana Pro Regular italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro Regular italic.otf"; sourceTree = "<group>"; };
+		844B12DF2301623300A82DAA /* Mostardesign - Ariana Pro Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro Black.otf"; sourceTree = "<group>"; };
+		844B12E02301623300A82DAA /* Mostardesign - Ariana Pro Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro Medium.otf"; sourceTree = "<group>"; };
+		844B12E12301623300A82DAA /* Mostardesign - Ariana Pro Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro Heavy.otf"; sourceTree = "<group>"; };
+		844B12E22301623300A82DAA /* Mostardesign - Ariana Pro UltraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro UltraLight.otf"; sourceTree = "<group>"; };
+		844B12E32301623300A82DAA /* Nunito-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		844B12E42301623300A82DAA /* Mostardesign - Ariana Pro Book italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro Book italic.otf"; sourceTree = "<group>"; };
+		844B12E52301623300A82DAA /* Nunito-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraLight.ttf"; sourceTree = "<group>"; };
+		844B12E62301623300A82DAA /* Mostardesign - Ariana Pro UltraLight italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro UltraLight italic.otf"; sourceTree = "<group>"; };
+		844B12E72301623400A82DAA /* Nunito-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Italic.ttf"; sourceTree = "<group>"; };
+		844B12E82301623400A82DAA /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		844B12E92301623400A82DAA /* Mostardesign - Ariana Pro Book.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro Book.otf"; sourceTree = "<group>"; };
+		844B12EA2301623400A82DAA /* Mostardesign - Ariana Pro Black italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro Black italic.otf"; sourceTree = "<group>"; };
+		844B12EB2301623400A82DAA /* Mostardesign - Ariana Pro Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro Regular.otf"; sourceTree = "<group>"; };
+		844B12EC2301623400A82DAA /* Nunito-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-BlackItalic.ttf"; sourceTree = "<group>"; };
+		844B12ED2301623400A82DAA /* Mostardesign - Ariana Pro Medium italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro Medium italic.otf"; sourceTree = "<group>"; };
+		844B12EE2301623500A82DAA /* Mostardesign - Ariana Pro Bold italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro Bold italic.otf"; sourceTree = "<group>"; };
+		844B12EF2301623500A82DAA /* Mostardesign - Ariana Pro Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro Light.otf"; sourceTree = "<group>"; };
+		844B12F02301623500A82DAA /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
+		844B12F12301623500A82DAA /* Nunito-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-BoldItalic.ttf"; sourceTree = "<group>"; };
+		844B12F22301623500A82DAA /* Mostardesign - Ariana Pro Light italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro Light italic.otf"; sourceTree = "<group>"; };
+		844B12F32301623500A82DAA /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		844B12F42301623600A82DAA /* Mostardesign - Ariana Pro Heavy italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro Heavy italic.otf"; sourceTree = "<group>"; };
+		844B12F52301623600A82DAA /* Mostardesign - Ariana Pro Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro Bold.otf"; sourceTree = "<group>"; };
+		844B12F62301623600A82DAA /* Nunito-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		844B12F72301623600A82DAA /* Nunito-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-LightItalic.ttf"; sourceTree = "<group>"; };
+		844B12F82301623600A82DAA /* Mostardesign - Ariana Pro Thin italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mostardesign - Ariana Pro Thin italic.otf"; sourceTree = "<group>"; };
+		844B12F92301623600A82DAA /* Nunito-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		8480854D22D9B4CE00D7D25B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = mobileapp/Base.lproj/GymboreeLaunchScreen.xib; sourceTree = "<group>"; };
 		8480857222D9B52500D7D25B /* gymboree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gymboree.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8480857322D9B52500D7D25B /* gymboree-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "gymboree-Info.plist"; path = "/Users/poosingh10/Desktop/TCP/packages/mobileapp/ios/gymboree-Info.plist"; sourceTree = "<absolute>"; };
@@ -839,6 +930,36 @@
 		D94ECAAD22D70C2600D9D051 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				844B12EA2301623400A82DAA /* Mostardesign - Ariana Pro Black italic.otf */,
+				844B12DF2301623300A82DAA /* Mostardesign - Ariana Pro Black.otf */,
+				844B12EE2301623500A82DAA /* Mostardesign - Ariana Pro Bold italic.otf */,
+				844B12F52301623600A82DAA /* Mostardesign - Ariana Pro Bold.otf */,
+				844B12E42301623300A82DAA /* Mostardesign - Ariana Pro Book italic.otf */,
+				844B12E92301623400A82DAA /* Mostardesign - Ariana Pro Book.otf */,
+				844B12F42301623600A82DAA /* Mostardesign - Ariana Pro Heavy italic.otf */,
+				844B12E12301623300A82DAA /* Mostardesign - Ariana Pro Heavy.otf */,
+				844B12F22301623500A82DAA /* Mostardesign - Ariana Pro Light italic.otf */,
+				844B12EF2301623500A82DAA /* Mostardesign - Ariana Pro Light.otf */,
+				844B12ED2301623400A82DAA /* Mostardesign - Ariana Pro Medium italic.otf */,
+				844B12E02301623300A82DAA /* Mostardesign - Ariana Pro Medium.otf */,
+				844B12DE2301623300A82DAA /* Mostardesign - Ariana Pro Regular italic.otf */,
+				844B12EB2301623400A82DAA /* Mostardesign - Ariana Pro Regular.otf */,
+				844B12F82301623600A82DAA /* Mostardesign - Ariana Pro Thin italic.otf */,
+				844B12DD2301623300A82DAA /* Mostardesign - Ariana Pro Thin.otf */,
+				844B12E62301623300A82DAA /* Mostardesign - Ariana Pro UltraLight italic.otf */,
+				844B12E22301623300A82DAA /* Mostardesign - Ariana Pro UltraLight.otf */,
+				844B12EC2301623400A82DAA /* Nunito-BlackItalic.ttf */,
+				844B12E82301623400A82DAA /* Nunito-Bold.ttf */,
+				844B12F12301623500A82DAA /* Nunito-BoldItalic.ttf */,
+				844B12AD2301623200A82DAA /* Nunito-ExtraBold.ttf */,
+				844B12F62301623600A82DAA /* Nunito-ExtraBoldItalic.ttf */,
+				844B12E52301623300A82DAA /* Nunito-ExtraLight.ttf */,
+				844B12F92301623600A82DAA /* Nunito-ExtraLightItalic.ttf */,
+				844B12E72301623400A82DAA /* Nunito-Italic.ttf */,
+				844B12F02301623500A82DAA /* Nunito-Light.ttf */,
+				844B12F72301623600A82DAA /* Nunito-LightItalic.ttf */,
+				844B12F32301623500A82DAA /* Nunito-Regular.ttf */,
+				844B12E32301623300A82DAA /* Nunito-SemiBoldItalic.ttf */,
 				D94ECAAE22D70C2600D9D051 /* Nunito-SemiBold.ttf */,
 				D94ECAAF22D70C2600D9D051 /* Nunito-Black.ttf */,
 				D94ECAB022D70C2600D9D051 /* Nunito.ttf */,
@@ -1434,15 +1555,45 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				844B13112301623600A82DAA /* Nunito-Regular.ttf in Resources */,
+				844B13012301623600A82DAA /* Nunito-SemiBoldItalic.ttf in Resources */,
+				844B13072301623600A82DAA /* Mostardesign - Ariana Pro Book.otf in Resources */,
+				844B12FB2301623600A82DAA /* Mostardesign - Ariana Pro Thin.otf in Resources */,
+				844B12FD2301623600A82DAA /* Mostardesign - Ariana Pro Black.otf in Resources */,
 				D94ECADE22D70C2600D9D051 /* Montserrat-SemiBold.ttf in Resources */,
+				844B12FF2301623600A82DAA /* Mostardesign - Ariana Pro Heavy.otf in Resources */,
+				844B130F2301623600A82DAA /* Nunito-BoldItalic.ttf in Resources */,
 				D94ECAE022D70C2600D9D051 /* Montserrat-Black.ttf in Resources */,
+				844B13162301623600A82DAA /* Mostardesign - Ariana Pro Thin italic.otf in Resources */,
+				844B13062301623600A82DAA /* Nunito-Bold.ttf in Resources */,
+				844B13102301623600A82DAA /* Mostardesign - Ariana Pro Light italic.otf in Resources */,
 				D94ECADB22D70C2600D9D051 /* Nunito-SemiBold.ttf in Resources */,
+				844B13172301623600A82DAA /* Nunito-ExtraLightItalic.ttf in Resources */,
+				844B130C2301623600A82DAA /* Mostardesign - Ariana Pro Bold italic.otf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				844B12FC2301623600A82DAA /* Mostardesign - Ariana Pro Regular italic.otf in Resources */,
 				D94ECADD22D70C2600D9D051 /* Nunito.ttf in Resources */,
+				844B13042301623600A82DAA /* Mostardesign - Ariana Pro UltraLight italic.otf in Resources */,
+				844B130A2301623600A82DAA /* Nunito-BlackItalic.ttf in Resources */,
+				844B13132301623600A82DAA /* Mostardesign - Ariana Pro Bold.otf in Resources */,
+				844B13002301623600A82DAA /* Mostardesign - Ariana Pro UltraLight.otf in Resources */,
+				844B13032301623600A82DAA /* Nunito-ExtraLight.ttf in Resources */,
 				36C9821022E6F96D0002786B /* FontAwesome.ttf in Resources */,
+				844B13092301623600A82DAA /* Mostardesign - Ariana Pro Regular.otf in Resources */,
 				D94ECADF22D70C2600D9D051 /* Montserrat.ttf in Resources */,
+				844B13022301623600A82DAA /* Mostardesign - Ariana Pro Book italic.otf in Resources */,
+				844B12FA2301623600A82DAA /* Nunito-ExtraBold.ttf in Resources */,
+				844B130D2301623600A82DAA /* Mostardesign - Ariana Pro Light.otf in Resources */,
 				13B07FBD1A68108700A75B9A /* TCPLaunchScreen.xib in Resources */,
+				844B12FE2301623600A82DAA /* Mostardesign - Ariana Pro Medium.otf in Resources */,
+				844B13152301623600A82DAA /* Nunito-LightItalic.ttf in Resources */,
+				844B13052301623600A82DAA /* Nunito-Italic.ttf in Resources */,
+				844B130E2301623600A82DAA /* Nunito-Light.ttf in Resources */,
+				844B130B2301623600A82DAA /* Mostardesign - Ariana Pro Medium italic.otf in Resources */,
+				844B13082301623600A82DAA /* Mostardesign - Ariana Pro Black italic.otf in Resources */,
+				844B13122301623600A82DAA /* Mostardesign - Ariana Pro Heavy italic.otf in Resources */,
 				D94ECADC22D70C2600D9D051 /* Nunito-Black.ttf in Resources */,
+				844B13142301623600A82DAA /* Nunito-ExtraBoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1465,14 +1616,45 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				844B13302301654300A82DAA /* Nunito-ExtraBoldItalic.ttf in Resources */,
+				844B13342301654300A82DAA /* Nunito-Light.ttf in Resources */,
+				844B131F2301654300A82DAA /* Mostardesign - Ariana Pro Book.otf in Resources */,
+				844B132C2301654300A82DAA /* Nunito-BlackItalic.ttf in Resources */,
 				8480856522D9B52500D7D25B /* GymboreeLaunchScreen.xib in Resources */,
+				844B131B2301654300A82DAA /* Mostardesign - Ariana Pro Black.otf in Resources */,
 				8480856622D9B52500D7D25B /* Montserrat-SemiBold.ttf in Resources */,
+				844B131C2301654300A82DAA /* Mostardesign - Ariana Pro Bold italic.otf in Resources */,
+				844B131D2301654300A82DAA /* Mostardesign - Ariana Pro Bold.otf in Resources */,
+				844B13292301654300A82DAA /* Mostardesign - Ariana Pro Thin.otf in Resources */,
 				8480856722D9B52500D7D25B /* Montserrat-Black.ttf in Resources */,
+				844B13202301654300A82DAA /* Mostardesign - Ariana Pro Heavy italic.otf in Resources */,
+				844B13372301654300A82DAA /* Nunito-SemiBoldItalic.ttf in Resources */,
+				844B13232301654300A82DAA /* Mostardesign - Ariana Pro Light.otf in Resources */,
+				844B13382301654300A82DAA /* FontAwesome.ttf in Resources */,
 				8480856822D9B52500D7D25B /* Nunito-SemiBold.ttf in Resources */,
+				844B13362301654300A82DAA /* Nunito-Regular.ttf in Resources */,
+				844B13252301654300A82DAA /* Mostardesign - Ariana Pro Medium.otf in Resources */,
+				844B13212301654300A82DAA /* Mostardesign - Ariana Pro Heavy.otf in Resources */,
+				844B132D2301654300A82DAA /* Nunito-Bold.ttf in Resources */,
+				844B131A2301654300A82DAA /* Mostardesign - Ariana Pro Black italic.otf in Resources */,
+				844B13222301654300A82DAA /* Mostardesign - Ariana Pro Light italic.otf in Resources */,
+				844B132A2301654300A82DAA /* Mostardesign - Ariana Pro UltraLight italic.otf in Resources */,
+				844B13322301654300A82DAA /* Nunito-ExtraLightItalic.ttf in Resources */,
+				844B13242301654300A82DAA /* Mostardesign - Ariana Pro Medium italic.otf in Resources */,
+				844B13352301654300A82DAA /* Nunito-LightItalic.ttf in Resources */,
+				844B132B2301654300A82DAA /* Mostardesign - Ariana Pro UltraLight.otf in Resources */,
 				8480856922D9B52500D7D25B /* Images.xcassets in Resources */,
+				844B13272301654300A82DAA /* Mostardesign - Ariana Pro Regular.otf in Resources */,
+				844B13312301654300A82DAA /* Nunito-ExtraLight.ttf in Resources */,
 				8480856A22D9B52500D7D25B /* Nunito.ttf in Resources */,
+				844B13262301654300A82DAA /* Mostardesign - Ariana Pro Regular italic.otf in Resources */,
+				844B131E2301654300A82DAA /* Mostardesign - Ariana Pro Book italic.otf in Resources */,
 				8480856B22D9B52500D7D25B /* Montserrat.ttf in Resources */,
 				8480856D22D9B52500D7D25B /* Nunito-Black.ttf in Resources */,
+				844B132F2301654300A82DAA /* Nunito-ExtraBold.ttf in Resources */,
+				844B13282301654300A82DAA /* Mostardesign - Ariana Pro Thin italic.otf in Resources */,
+				844B132E2301654300A82DAA /* Nunito-BoldItalic.ttf in Resources */,
+				844B13332301654300A82DAA /* Nunito-Italic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

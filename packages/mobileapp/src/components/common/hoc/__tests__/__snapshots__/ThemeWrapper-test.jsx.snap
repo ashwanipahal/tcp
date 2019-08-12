@@ -55,7 +55,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "300": "#fbd5a5",
           "50": "#fef4e8",
           "500": "#fac078",
-          "700": "#f8ab4b",
+          "700": "#f9b662",
           "800": "#f7971f",
           "900": "#c25621",
         },

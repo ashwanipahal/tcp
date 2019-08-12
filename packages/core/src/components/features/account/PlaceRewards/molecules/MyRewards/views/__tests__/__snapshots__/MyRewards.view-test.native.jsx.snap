@@ -38,7 +38,7 @@ exports[`MyRewards should render correctly 1`] = `
     disableButton={false}
     fill="BLUE"
     fullWidth=""
-    locator={[Function]}
+    locator=""
     style={
       Object {
         "fontWeight": "400",

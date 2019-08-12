@@ -5,7 +5,7 @@ exports[`Animated Brand Change Icon Native should render correctly 1`] = `
   <TouchableOpacity
     accessibilityComponentType="none"
     accessibilityTraits="none"
-    activeOpacity={0.2}
+    activeOpacity={1}
     onPress={[Function]}
     style={
       Object {

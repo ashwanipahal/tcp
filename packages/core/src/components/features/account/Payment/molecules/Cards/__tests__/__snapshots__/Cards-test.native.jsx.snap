@@ -38,7 +38,7 @@ exports[`CardList Component should render correctly 1`] = `
       disableButton={false}
       fill="BLUE"
       fullWidth=""
-      locator={[Function]}
+      locator=""
       text=""
       url=""
     />
@@ -101,7 +101,7 @@ exports[`CardList Component should render correctly if list is present 1`] = `
       disableButton={false}
       fill="BLUE"
       fullWidth=""
-      locator={[Function]}
+      locator=""
       text=""
       url=""
     />
