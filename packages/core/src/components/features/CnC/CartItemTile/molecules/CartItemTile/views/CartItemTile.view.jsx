@@ -102,8 +102,8 @@ class CartItemTile extends React.Component {
           fontWeight={['extrabold']}
         >
           {pageView === 'myBag'
-            ? `$${productDetail.itemInfo.unitOfferPrice}`
-            : `$${productDetail.itemInfo.price}`}
+            ? `$${productDetail.itemInfo.unitOfferPrice.toFixed(2)}`
+            : `$${productDetail.itemInfo.price.toFixed(2)}`}
         </BodyCopy>
         {pageView === 'myBag' && productDetail.itemInfo.itemPrice !== productDetail.itemInfo.price && (
           <BodyCopy
@@ -113,7 +113,7 @@ class CartItemTile extends React.Component {
             component="span"
             fontSize="fs12"
           >
-            {`$${productDetail.itemInfo.itemUnitPrice}`}
+            {`$${productDetail.itemInfo.itemUnitPrice.toFixed(2)}`}
           </BodyCopy>
         )}
       </Col>
@@ -354,7 +354,7 @@ class CartItemTile extends React.Component {
                   fontWeight={['extrabold']}
                   dataLocator={getLocator('cart_item_total_price')}
                 >
-                  {`$${productDetail.itemInfo.price}`}
+                  {`$${productDetail.itemInfo.price.toFixed(2)}`}
                 </BodyCopy>
               )}
             </Row>
