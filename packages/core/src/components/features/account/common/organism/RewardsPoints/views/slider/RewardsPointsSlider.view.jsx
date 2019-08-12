@@ -39,7 +39,11 @@ const RewardsPointsSlider = ({
       </Row>
       <Row>
         <Col colSize={{ large: 12, medium: 8, small: 6 }}>
-          <div className="progress-container elem-mt-MED elem-mt-MED elem-mb-SM">
+          <div
+            className={`progress-container${
+              plccUser ? '_plcc' : ''
+            } elem-mt-MED elem-mt-MED elem-mb-SM`}
+          >
             <div
               className={`progressbar-rewards currentpoint-slider ${
                 plccUser ? 'progressbar-rewards_plcc' : 'progressbar-rewards'
