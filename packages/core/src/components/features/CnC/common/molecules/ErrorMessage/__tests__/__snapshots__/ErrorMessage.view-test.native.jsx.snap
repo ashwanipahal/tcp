@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorMessage Component ErrorMessage should render correctly 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(ImageComp)
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/alert-triangle.png",
+        }
+      }
+      style={
+        Object {
+          "height": 13,
+          "marginBottom": 0,
+          "marginLeft": 0,
+          "marginRight": 13,
+          "marginTop": 3,
+          "width": 13,
+        }
+      }
+    />
+    <Styled(BodyCopy)
+      color="error"
+      fontFamily="secondary"
+      fontSize="fs10"
+      fontWeight="regular"
+      locator=""
+      style={
+        Object {
+          "flex": 1,
+          "flexWrap": "wrap",
+        }
+      }
+      text="This is test error"
+    />
+  </Styled(View)>
+</Fragment>
+`;

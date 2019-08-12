@@ -14,9 +14,30 @@ describe('NavMenuLevel3', () => {
         goBack: () => {
           return 'back';
         },
-        getParam: () => {
-          return '';
+        getParam: param => {
+          const obj = {
+            navigationObj: [
+              {
+                title: 'Lorem',
+              },
+              {
+                title: 'Categoriess',
+              },
+            ],
+            l2Title: 'test',
+          };
+          return obj[param];
         },
+      },
+      item: {
+        subCategories: [
+          {
+            title: 'Lorem',
+          },
+          {
+            title: 'Categoriess',
+          },
+        ],
       },
     };
     const component = shallow(<NavMenuLevel3View {...props} />);

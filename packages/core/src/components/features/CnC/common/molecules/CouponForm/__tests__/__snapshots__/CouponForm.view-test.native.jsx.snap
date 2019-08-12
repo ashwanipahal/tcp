@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CouponForm Component CouponForm should render correctly 1`] = `
+<Styled(View)>
+  <ErrorMessage
+    error=""
+  />
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="semibold"
+        locator=""
+        text="Coupon Code"
+      />
+      <Styled(BodyCopy)
+        component="span"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        locator=""
+        style={
+          Object {
+            "paddingLeft": 12,
+          }
+        }
+        text="Need Help?"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(View)>
+        <Field
+          component={[Function]}
+          dataLocator="coupon_code"
+          id="couponCode"
+          label="Enter Coupon Code"
+          name="couponCode"
+          type="text"
+        />
+      </Styled(View)>
+      <Styled(CustomButton)
+        buttonVariation="variable-width"
+        customStyle={
+          Object {
+            "height": 42,
+            "width": 102,
+          }
+        }
+        data-locator="coupon_submit_btn"
+        disableButton={false}
+        disabled={false}
+        external={true}
+        fill="WHITE"
+        fullWidth=""
+        locator=""
+        onPress={[Function]}
+        style={
+          Object {
+            "fontWeight": "normal",
+            "opacity": 0.5,
+          }
+        }
+        text="Apply"
+        type="submit"
+        url=""
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Styled(View)>
+`;

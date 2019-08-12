@@ -12,27 +12,6 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render corre
     name="ship-it-undefined"
     onChange={[Function]}
   >
-    <Styled(BodyCopy)
-      className={null}
-      color="gray.900"
-      component="p"
-      dataLocator="cartNoRush"
-      fontFamily="secondary"
-      fontSize="fs14"
-      fontWeight="regular"
-      letterSpacing="normal"
-      lineHeight="normal"
-      textAlign="left"
-    />
-  </Styled(LabeledRadioButton)>
-  <Styled(LabeledRadioButton)
-    checked={false}
-    className="normal-select-box common-select-box-css false"
-    data-locator="ItemPickUpTodayRadioButton"
-    disabled={true}
-    name="ship-it-undefined"
-    onChange={[Function]}
-  >
     <div
       className="main-content-banner"
     >
@@ -40,7 +19,7 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render corre
         className={null}
         color="gray.900"
         component="p"
-        dataLocator="cartPickUpToday"
+        dataLocator="cartNoRush"
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="regular"
@@ -84,6 +63,27 @@ exports[`CartItemRadioButtons Component CartItemRadioButtons should render corre
         </div>
       </div>
     </div>
+  </Styled(LabeledRadioButton)>
+  <Styled(LabeledRadioButton)
+    checked={false}
+    className="normal-select-box common-select-box-css false"
+    data-locator="ItemPickUpTodayRadioButton"
+    disabled={true}
+    name="ship-it-undefined"
+    onChange={[Function]}
+  >
+    <Styled(BodyCopy)
+      className={null}
+      color="gray.900"
+      component="p"
+      dataLocator="cartPickUpToday"
+      fontFamily="secondary"
+      fontSize="fs14"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    />
   </Styled(LabeledRadioButton)>
   <Styled(LabeledRadioButton)
     checked={false}

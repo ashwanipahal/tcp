@@ -27,13 +27,7 @@ export const ResetPasswordTopSection = ({ className, labels, onBack }) => {
       >
         {labels.lbl_resetPassword_heading}
       </BodyCopy>
-      <BodyCopy textAlign="center" fontFamily="secondary" fontSize="fs12" className="elem-mb-MED">
-        {labels.lbl_resetPassword_requirementHeading}
-      </BodyCopy>
       <PasswordRequirement labels={labels} />
-      <BodyCopy fontFamily="secondary" fontSize="fs10">
-        {labels.lbl_resetPassword_requirementNote}
-      </BodyCopy>
     </BodyCopy>
   );
 };

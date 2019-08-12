@@ -26,4 +26,5 @@ export {
   getAPIConfig,
   createAPIConfig,
   isCanada,
+  isGymboree,
 } from './utils';
