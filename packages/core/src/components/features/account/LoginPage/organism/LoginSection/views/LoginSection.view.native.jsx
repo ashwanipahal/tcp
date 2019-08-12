@@ -135,13 +135,14 @@ class LoginSection extends PureComponent<Props> {
 
 LoginSection.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  labels: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}),
   loginErrorMessage: PropTypes.string,
   initialValues: PropTypes.shape({}).isRequired,
 };
 
 LoginSection.defaultProps = {
   loginErrorMessage: '',
+  labels: { login: { lbl_login_createAccountCTA: '', lbl_login_createAccountHelp: '' } },
 };
 
 export default withStyles(LoginSection, FormStyle);

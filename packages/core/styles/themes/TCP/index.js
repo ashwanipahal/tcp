@@ -15,6 +15,7 @@ const colorPalette = createThemeColorPalette();
 const typography = createThemeTypography();
 
 const theme = {
+  brand: 'tcp',
   /* add required colors other than default as per theme requirement */
   colorPalette: { ...colorPalette, green, blue },
   /* colors object has been deprecated and, will be removed in the future release.

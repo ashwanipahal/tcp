@@ -5,51 +5,32 @@ import BodyCopy from '../../../atoms/BodyCopy';
 import styles from '../styles/CouponCard.style';
 import Anchor from '../../../atoms/Anchor';
 import Button from '../../../atoms/Button';
+import ErrorMessage from '../../../../features/CnC/common/molecules/ErrorMessage';
+
 import { COUPON_REDEMPTION_TYPE } from '../../../../../services/abstractors/CnC/CartItemTile';
 
 class CouponCard extends React.Component<Props> {
-  ErrorHandle = () => {
-    const { coupon } = this.props;
-    if (coupon.error !== '') {
-      return (
-        <div className="couponCard__container_error">
-          <BodyCopy component="p" fontSize="fs10" className="couponCard__container_error_text">
-            {coupon.error}
-          </BodyCopy>
-        </div>
-      );
-    }
-    return null;
-  };
-
-  isExpiring = () => {
-    const { coupon } = this.props;
-    const currentDate = new Date();
-    const couponExpireUpdatedDate = new Date();
-    const expireDate = new Date(coupon.expirationDateTimeStamp);
-    const numberOfDaysToAdd = 7;
-    couponExpireUpdatedDate.setDate(couponExpireUpdatedDate.getDate() + numberOfDaysToAdd);
-    let couponExpiring = false;
-    if (currentDate > expireDate) {
-      couponExpiring = false;
-    } else if (couponExpireUpdatedDate >= expireDate) {
-      couponExpiring = true;
-    }
-    return couponExpiring;
-  };
-
-  RenderCardHeader = (type, headingClass) => {
-    const { labels } = this.props;
+  RenderCardHeader = (type, headingClass, dataLocator) => {
+    const { labels, coupon } = this.props;
     return (
       <div className="couponCard__header">
         <div className={headingClass}>
-          <BodyCopy className="couponCard__header_text" component="p" fontSize="fs12">
+          <BodyCopy
+            data-locator={dataLocator}
+            className="couponCard__header_text"
+            component="p"
+            fontSize="fs12"
+          >
             {type}
           </BodyCopy>
         </div>
-
-        {this.isExpiring() && (
-          <BodyCopy className="couponCard__header_expired" component="p" fontSize="fs12">
+        {coupon.isExpiring && (
+          <BodyCopy
+            data-locator={`coupon_${coupon.status}_header_expired`}
+            className="couponCard__header_expired"
+            component="p"
+            fontSize="fs12"
+          >
             {labels.EXPIRING_SOON}
           </BodyCopy>
         )}
@@ -58,40 +39,51 @@ class CouponCard extends React.Component<Props> {
   };
 
   RenderApplyButton = () => {
-    const { labels } = this.props;
+    const { coupon, onApply, isFetching } = this.props;
     return (
       <Button
-        onClick={() => {}}
+        onClick={() => {
+          onApply(coupon);
+        }}
         className="coupon__button_black"
         buttonVariation="variable-width"
         type="submit"
-        data-locator="gift-card-checkbalance-btn"
+        data-locator={`coupon_${coupon.status}_apply_cartCta`}
         fullWidth="true"
+        disabled={isFetching}
       >
-        {labels.APPLY_BUTTON_TEXT}
+        {coupon.labelStatus}
       </Button>
     );
   };
 
   RenderRemoveButton = () => {
-    const { labels } = this.props;
+    const { coupon, onRemove } = this.props;
     return (
       <Button
-        onClick={() => {}}
+        onClick={() => {
+          onRemove(coupon);
+        }}
         className="coupon__button_white"
         buttonVariation="variable-width"
         type="submit"
-        data-locator="gift-card-checkbalance-btn"
+        data-locator={`coupon_${coupon.status}_remove_cartCta`}
         fullWidth="true"
       >
-        {labels.REMOVE_BUTTON_TEXT}
+        {coupon.labelStatus}
       </Button>
     );
   };
 
   RenderValidText = coupon => {
     return (
-      <BodyCopy component="p" fontSize="fs10" fontFamily="secondary">
+      <BodyCopy
+        className="couponCard__text_style"
+        component="p"
+        fontSize="fs10"
+        data-locator={`coupon_${coupon.status}_cartValidValidity`}
+        fontFamily="secondary"
+      >
         {`Valid ${coupon.effectiveDate} - ${coupon.expirationDate}`}
       </BodyCopy>
     );
@@ -99,7 +91,13 @@ class CouponCard extends React.Component<Props> {
 
   RenderUseByText = coupon => {
     return (
-      <BodyCopy component="p" fontSize="fs10" fontFamily="secondary">
+      <BodyCopy
+        className="couponCard__text_style"
+        data-locator={`coupon_${coupon.status}_cartUseByValidity`}
+        component="p"
+        fontSize="fs10"
+        fontFamily="secondary"
+      >
         {`Use by ${coupon.expirationDate}`}
       </BodyCopy>
     );
@@ -112,23 +110,33 @@ class CouponCard extends React.Component<Props> {
   };
 
   render() {
-    const { labels, coupon, className } = this.props;
+    const { labels, coupon, className, handleErrorCoupon } = this.props;
+    if (coupon.error) {
+      handleErrorCoupon(coupon);
+    }
     return (
       <div className={className}>
         <div className="couponCard__container">
-          {this.ErrorHandle()}
+          <ErrorMessage error={coupon.error} />
           <div className="couponCard__container_main">
-            {coupon.promotionType === COUPON_REDEMPTION_TYPE.PUBLIC &&
-              this.RenderCardHeader(labels.SAVINGS_TEXT, 'couponCard__header_saving')}
-            {coupon.promotionType === COUPON_REDEMPTION_TYPE.PC &&
-              this.RenderCardHeader(labels.PLACE_CASH_TEXT, 'couponCard__header_public')}
-            {coupon.promotionType === COUPON_REDEMPTION_TYPE.PLACECASH &&
-              this.RenderCardHeader(labels.PLACE_CASH_TEXT, 'couponCard__header_public')}
-            {coupon.promotionType === COUPON_REDEMPTION_TYPE.LOYALTY &&
-              this.RenderCardHeader(labels.PLACE_CASH_TEXT, 'couponCard__header_saving')}
-            {coupon.promotionType === COUPON_REDEMPTION_TYPE.REWARDS &&
-              this.RenderCardHeader(labels.REWARDS_TEXT, 'couponCard__header_rewards')}
-
+            {coupon.offerType === COUPON_REDEMPTION_TYPE.SAVING &&
+              this.RenderCardHeader(
+                labels.SAVINGS_TEXT,
+                'couponCard__header_saving',
+                `${coupon.status}_PublicValidityLbl`
+              )}
+            {coupon.offerType === COUPON_REDEMPTION_TYPE.REWARDS &&
+              this.RenderCardHeader(
+                labels.REWARDS_TEXT,
+                'couponCard__header_rewards',
+                `${coupon.status}_rewardValidityLbl`
+              )}
+            {coupon.offerType === COUPON_REDEMPTION_TYPE.PLACECASH &&
+              this.RenderCardHeader(
+                labels.PLACE_CASH_TEXT,
+                'couponCard__header_pc',
+                `${coupon.status}_PlaceCashValidityLbl`
+              )}
             <div className="couponCard__body">
               <div className="couponCard__row">
                 <div className="couponCard__col">
@@ -138,22 +146,26 @@ class CouponCard extends React.Component<Props> {
                       fontSize="fs12"
                       fontWeight="black"
                       fontFamily="secondary"
+                      data-locator={`coupon_${coupon.status}_couponNameLbl`}
                     >
                       {`${coupon.title}`}
                     </BodyCopy>
-                    {coupon.promotionType === COUPON_REDEMPTION_TYPE.PUBLIC &&
-                      this.RenderValidText(coupon)}
-                    {coupon.promotionType === COUPON_REDEMPTION_TYPE.REWARDS &&
+                    {coupon.offerType === COUPON_REDEMPTION_TYPE.SAVING &&
                       this.RenderUseByText(coupon)}
+                    {coupon.offerType === COUPON_REDEMPTION_TYPE.REWARDS &&
+                      this.RenderUseByText(coupon)}
+                    {coupon.offerType === COUPON_REDEMPTION_TYPE.PLACECASH &&
+                      this.RenderValidText(coupon)}
                   </BodyCopy>
                   <Anchor
-                    data-locator="couponcard-makedefault"
+                    data-locator={`coupon_${coupon.status}_cartDetailsLink`}
                     fontSizeVariation="small"
                     underline
                     anchorVariation="primary"
                     fontSize="fs10"
                     to="/#"
                     onClick={this.handleDefaultLinkClick}
+                    className="cartDetailsLink"
                   >
                     {labels.DETAILS_BUTTON_TEXT}
                   </Anchor>

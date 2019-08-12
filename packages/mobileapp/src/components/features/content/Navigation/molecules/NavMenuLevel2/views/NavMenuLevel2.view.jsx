@@ -24,9 +24,13 @@ const BackIcon = require('../../../../../../../../../core/src/assets/carrot-larg
  * @param {object} subCategories Details of the L2 menu item that has been clicked
  * @param {object} hasL3 flag that defines if L3 is present for the L2
  */
-const navigateFromL2 = (navigate, subCategories, hasL3) => {
+const navigateFromL2 = (navigate, subCategories, name, hasL3, accessibilityLabels) => {
   if (hasL3) {
-    return navigate('NavMenuLevel3');
+    return navigate('NavMenuLevel3', {
+      navigationObj: subCategories,
+      l2Title: name,
+      accessibilityLabels,
+    });
   }
   return navigate('ProductListingPage');
 };
@@ -37,8 +41,9 @@ const navigateFromL2 = (navigate, subCategories, hasL3) => {
  */
 const NavMenuLevel2 = props => {
   const {
-    navigation: { navigate, goBack },
+    navigation: { navigate, goBack, getParam },
   } = props;
+  const accessibilityLabels = getParam('accessibilityLabels');
 
   /**
    * @function renderItem populates the menu item conditionally
@@ -59,15 +64,28 @@ const NavMenuLevel2 = props => {
       // return shopBySizeCircle(navigate, item.links);
     }
 
-    if (item.subCategories.length) {
+    if (item.subCategories && item.subCategories.length) {
       hasL3 = true;
       promoBannerMargin = 40;
     }
 
-    if (item.categoryContent.mainCategory && item.categoryContent.mainCategory.promoBadge[0].text) {
+    if (
+      item.categoryContent.mainCategory &&
+      item.categoryContent.mainCategory.promoBadge &&
+      item.categoryContent.mainCategory.promoBadge[0].text
+    ) {
       hasBadge = true;
       maxWidthItem -= 180;
     }
+
+    const routeHandler = () =>
+      navigateFromL2(
+        navigate,
+        item.subCategories,
+        item.categoryContent.name,
+        hasL3,
+        accessibilityLabels
+      );
 
     // In case of empty group category, using Lorem Ipsum to
     // group these items and rendering it on top of the menu items
@@ -75,10 +93,12 @@ const NavMenuLevel2 = props => {
       return (
         <ItemView
           accessibilityRole="button"
-          onPress={() => navigateFromL2(navigate, item.subCategories, hasL3)}
+          accessibilityLabel={item.categoryContent.name}
+          onPress={routeHandler}
         >
           <MenuItem
             navigate={navigate}
+            route={routeHandler}
             maxWidthItem={maxWidthItem}
             item={item}
             hasBadge={hasBadge}
@@ -91,10 +111,12 @@ const NavMenuLevel2 = props => {
     return (
       <ItemViewWithHeading
         accessibilityRole="button"
-        onPress={() => navigateFromL2(navigate, item.subCategories, hasL3)}
+        accessibilityLabel={item.categoryContent.name}
+        onPress={routeHandler}
       >
         <MenuItem
           navigate={navigate}
+          route={routeHandler}
           maxWidthItem={maxWidthItem}
           item={item}
           hasBadge={hasBadge}
@@ -105,12 +127,8 @@ const NavMenuLevel2 = props => {
     );
   };
 
-  const {
-    navigation: { getParam },
-  } = props;
   const item = getParam('navigationObj');
   const l1Title = getParam('l1Title');
-
   const {
     item: { subCategories },
   } = item;
@@ -140,7 +158,11 @@ const NavMenuLevel2 = props => {
         if (section.title === placeHolderText) {
           return (
             <HeadingContainer>
-              <TouchableOpacityArrow accessibilityRole="button" onPress={() => goBack()}>
+              <TouchableOpacityArrow
+                accessibilityRole="button"
+                accessibilityLabel={accessibilityLabels.back_button}
+                onPress={() => goBack()}
+              >
                 <ArrowBackIcon source={BackIcon} />
               </TouchableOpacityArrow>
               <BodyCopy

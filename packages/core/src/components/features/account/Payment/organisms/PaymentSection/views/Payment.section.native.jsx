@@ -1,52 +1,58 @@
-/* eslint-disable complexity */
 /* eslint-disable global-require */
 import React from 'react';
-import { View, ScrollView, SafeAreaView } from 'react-native';
+import PropTypes from 'prop-types';
+import { View, ScrollView } from 'react-native';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import {
-  ParentContainer,
-  StyledHeading,
-  UnderlineStyle,
-  ModalHeading,
-  ModalViewWrapper,
-  LineWrapper,
-  CardDescription,
-  CardDetailWrapper,
-  CardDetail,
-  ImgWrapper,
-  ImageStyle,
-  ConfirmButtonWrapper,
-  CloseButtonWrapper,
-} from '../PaymentSection.style.native';
+import { ParentContainer, StyledHeading, UnderlineStyle } from '../PaymentSection.style.native';
 import OffersSection from '../../../molecules/OffersSection';
 import Cards from '../../../molecules/Cards';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import VenmoCards from '../../../molecules/VenmoCards';
-import ModalNative from '../../../../../../common/molecules/Modal';
-import LineComp from '../../../../../../common/atoms/Line';
-import CustomButton from '../../../../../../common/atoms/Button';
-
-// @flow
-type Props = {
-  labels: Object,
-  creditCardList: object,
-  setDefaultPaymentMethod: Function,
-  giftCardList: object,
-  cardList: object,
-  venmoCardList: object,
-  onGetBalanceCard: Function,
-  checkbalanceValueInfo: any,
-  onDeleteCard: any,
-};
+import DeleteModal from '../../../molecules/DeleteModal';
 
 class PaymentView extends React.Component<Props> {
+  static propTypes = {
+    labels: PropTypes.shape({}),
+    creditCardList: PropTypes.shape({}),
+    setDefaultPaymentMethod: PropTypes.func,
+    giftCardList: PropTypes.shape({}),
+    cardList: PropTypes.shape({}),
+    venmoCardList: PropTypes.shape({}),
+    onGetBalanceCard: PropTypes.func,
+    checkbalanceValueInfo: PropTypes.shape({}),
+    onDeleteCard: PropTypes.shape({}),
+    setDeleteModalMountState: PropTypes.bool,
+    setDeleteModalMountedState: PropTypes.bool,
+    deleteModalMountedState: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    labels: {},
+    creditCardList: {},
+    setDefaultPaymentMethod: () => {},
+    giftCardList: {},
+    cardList: {},
+    venmoCardList: {},
+    onGetBalanceCard: () => {},
+    checkbalanceValueInfo: {},
+    onDeleteCard: {},
+    setDeleteModalMountState: false,
+    setDeleteModalMountedState: false,
+    deleteModalMountedState: false,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
-      showModal: false,
+      setDeleteModalMountedState: false,
       selectedCard: {},
     };
   }
+
+  componentWillReceiveProps = nextProps => {
+    if (!nextProps.deleteModalMountedState)
+      this.setState({ setDeleteModalMountedState: nextProps.deleteModalMountedState });
+  };
 
   setSelectedCard = card => {
     this.setState({
@@ -54,10 +60,10 @@ class PaymentView extends React.Component<Props> {
     });
   };
 
-  toggleModal = () => {
-    const { showModal } = this.state;
+  setDeleteModalMountState = () => {
+    const { setDeleteModalMountedState } = this.state;
     this.setState({
-      showModal: !showModal,
+      setDeleteModalMountedState: !setDeleteModalMountedState,
     });
   };
 
@@ -68,8 +74,7 @@ class PaymentView extends React.Component<Props> {
   };
 
   onClose = () => {
-    // const { toggleModal } = this.props;
-    this.toggleModal({ state: false });
+    this.setDeleteModalMountState({ setDeleteModalMountedState: false });
   };
 
   render() {
@@ -83,7 +88,7 @@ class PaymentView extends React.Component<Props> {
       onGetBalanceCard,
       checkbalanceValueInfo,
     } = this.props;
-    const { showModal, selectedCard } = this.state;
+    const { setDeleteModalMountedState, selectedCard } = this.state;
     let dto = {};
     if (selectedCard.ccType === 'GiftCard') {
       dto = {
@@ -127,7 +132,7 @@ class PaymentView extends React.Component<Props> {
               addBtnLabel={labels.paymentGC.lbl_payment_addBtn}
               cardList={creditCardList}
               setDefaultPaymentMethod={setDefaultPaymentMethod}
-              toggleModal={this.toggleModal}
+              toggleModal={this.setDeleteModalMountState}
               setSelectedCard={this.setSelectedCard}
             />
           )}
@@ -135,7 +140,7 @@ class PaymentView extends React.Component<Props> {
             <VenmoCards
               labels={labels}
               venmoCardList={venmoCardList}
-              toggleModal={this.toggleModal}
+              toggleModal={this.setDeleteModalMountState}
               setSelectedCard={this.setSelectedCard}
             />
           )}
@@ -151,53 +156,20 @@ class PaymentView extends React.Component<Props> {
               cardList={giftCardList}
               checkbalanceValueInfo={checkbalanceValueInfo}
               onGetBalanceCard={onGetBalanceCard}
-              toggleModal={this.toggleModal}
+              toggleModal={this.setDeleteModalMountState}
               setSelectedCard={this.setSelectedCard}
             />
           )}
-          {showModal && (
-            <ModalNative isOpen={showModal} onRequestClose={this.toggleModal}>
-              <ModalHeading>
-                <BodyCopy
-                  mobileFontFamily={['secondary']}
-                  fontWeight="extrabold"
-                  fontSize="fs16"
-                  text={labels.paymentGC.lbl_payment_modalDeleteCard}
-                />
-              </ModalHeading>
-              <LineWrapper>
-                <LineComp marginTop={5} borderWidth={2} borderColor="black" />
-              </LineWrapper>
-              <SafeAreaView>
-                <ModalViewWrapper>
-                  <CardDescription>{dto.cardDescription}</CardDescription>
-                  <CardDetailWrapper>
-                    <ImgWrapper>
-                      <ImageStyle source={dto.cardImage1} />
-                    </ImgWrapper>
-                    <CardDetail>{dto.cardDetail}</CardDetail>
-                  </CardDetailWrapper>
-                  <ConfirmButtonWrapper>
-                    <CustomButton
-                      text={labels.paymentGC.lbl_payment_modalGCConfirm}
-                      buttonVariation="variable-width"
-                      fill="BLUE"
-                      color="white"
-                      onPress={this.onConfirm}
-                    />
-                  </ConfirmButtonWrapper>
-                  <CloseButtonWrapper>
-                    <CustomButton
-                      text={labels.paymentGC.lbl_payment_modalGCCancel}
-                      buttonVariation="variable-width"
-                      fill="RED"
-                      color="red"
-                      onPress={this.onClose}
-                    />
-                  </CloseButtonWrapper>
-                </ModalViewWrapper>
-              </SafeAreaView>
-            </ModalNative>
+          {setDeleteModalMountedState && (
+            <DeleteModal
+              dto={dto}
+              labels={labels}
+              setSelectedCard={this.setSelectedCard}
+              setDeleteModalMountedState={this.setDeleteModalMountedState}
+              toggleModal={this.setDeleteModalMountState}
+              onConfirm={this.onConfirm}
+              onClose={this.onClose}
+            />
           )}
         </ScrollView>
       </View>

@@ -44,35 +44,14 @@ class CartItemRadioButtons extends React.Component {
           disabled
           data-locator={getLocator('cart_item_no_rush_radio_button')}
         >
-          <BodyCopy
-            dataLocator={getLocator('cart_item_cartNoRush')}
-            color="gray.900"
-            fontSize="fs14"
-            fontFamily="secondary"
-          >
-            {labels.bossPickUp}
-          </BodyCopy>
-        </LabeledRadioButton>
-        <LabeledRadioButton
-          className={[
-            'normal-select-box',
-            commonSelectBox,
-            selectedOrder === 'BOPIS' && selectedMethod,
-          ].join(' ')}
-          name={radioGroupName}
-          onChange={e => this.handleToggle(e, 'BOPIS')}
-          checked={selectedOrder === 'BOPIS'}
-          disabled
-          data-locator={getLocator('cart_item_pickup_radio_today_button')}
-        >
           <div className="main-content-banner">
             <BodyCopy
-              dataLocator={getLocator('cart_item_pickup_today')}
+              dataLocator={getLocator('cart_item_cartNoRush')}
               color="gray.900"
               fontSize="fs14"
               fontFamily="secondary"
             >
-              {labels.bopisPickUp}
+              {labels.bossPickUp}
             </BodyCopy>
             <div className="banner-wrapper">
               <div className="triangle-left" />
@@ -86,6 +65,28 @@ class CartItemRadioButtons extends React.Component {
               </div>
             </div>
           </div>
+        </LabeledRadioButton>
+        <LabeledRadioButton
+          className={[
+            'normal-select-box',
+            commonSelectBox,
+            selectedOrder === 'BOPIS' && selectedMethod,
+          ].join(' ')}
+          name={radioGroupName}
+          onChange={e => this.handleToggle(e, 'BOPIS')}
+          checked={selectedOrder === 'BOPIS'}
+          disabled
+          data-locator={getLocator('cart_item_pickup_radio_today_button')}
+        >
+          <BodyCopy
+            dataLocator={getLocator('cart_item_pickup_today')}
+            color="gray.900"
+            fontSize="fs14"
+            fontFamily="secondary"
+          >
+            {labels.bopisPickUp}
+          </BodyCopy>
+
           {productDetail.miscInfo.store && (
             <BodyCopy
               className="padding-top-10"

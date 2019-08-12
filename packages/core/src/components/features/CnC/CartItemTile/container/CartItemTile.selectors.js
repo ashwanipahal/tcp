@@ -95,6 +95,10 @@ export const getProductItemUnitOfferPrice = product => {
   return product.getIn(['itemInfo', 'unitOfferPrice']);
 };
 
+export const getProductItemUnitPrice = product => {
+  return product.getIn(['itemInfo', 'listUnitPrice']);
+};
+
 export const getLabelsCartItemTile = state => {
   const {
     bag: {
@@ -104,6 +108,7 @@ export const getLabelsCartItemTile = state => {
         lbl_info_Qty: qty,
         lbl_info_price: price,
         lbl_info_giftDesign: design,
+        lbl_info_giftValue: value,
       },
     },
   } = state.Labels;
@@ -135,6 +140,7 @@ export const getLabelsCartItemTile = state => {
     qty,
     price,
     design,
+    value,
     fit,
     points,
     cancel,
@@ -168,6 +174,7 @@ export const getProductDetails = tile => {
       itemPrice: getProductItemPrice(tile),
       itemId: getProductItemId(tile),
       unitOfferPrice: getProductItemUnitOfferPrice(tile),
+      itemUnitPrice: getProductItemUnitPrice(tile),
     },
     productInfo: {
       productPartNumber: getProductPartNumber(tile),

@@ -50,4 +50,10 @@ export default css`
   .payPal-button {
     width: 220px;
   }
+  .subTotalEmpty {
+    text-align: center;
+    padding: 13px 0 13px 0;
+    bottom: 0px;
+    margin-bottom: 0px;
+  }
 `;

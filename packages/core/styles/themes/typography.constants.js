@@ -7,6 +7,8 @@ export const FONTS = {
 };
 
 export const LETTER_SPACINGS = {
+  ls400: '4px',
+  ls317: '3.17px',
   ls271: '2.71px',
   ls257: '2.57px',
   ls222: '2.22px',

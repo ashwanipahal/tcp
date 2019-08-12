@@ -8,6 +8,7 @@ exports[`PaymentItem component should render correctly 1`] = `
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="regular"
+      locator=""
       text="Default Credit Card"
     />
     <Styled(BodyCopy)
@@ -15,7 +16,8 @@ exports[`PaymentItem component should render correctly 1`] = `
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="regular"
-      text=""
+      locator=""
+      text="You have not added a credit card yet."
     />
   </Styled(View)>
   <Styled(TouchableHighlight)
@@ -27,6 +29,7 @@ exports[`PaymentItem component should render correctly 1`] = `
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="regular"
+      locator=""
       text="Add"
     />
   </Styled(TouchableHighlight)>
@@ -41,6 +44,7 @@ exports[`PaymentItem component should render correctly with values 1`] = `
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="regular"
+      locator=""
       text="Default Credit Card"
     />
     <Styled(View)>
@@ -55,6 +59,7 @@ exports[`PaymentItem component should render correctly with values 1`] = `
           fontFamily="secondary"
           fontSize="fs12"
           fontWeight="regular"
+          locator=""
           style={
             Object {
               "flex": 1,
@@ -67,6 +72,7 @@ exports[`PaymentItem component should render correctly with values 1`] = `
           fontFamily="secondary"
           fontSize="fs10"
           fontWeight="regular"
+          locator=""
           style={
             Object {
               "flex": 1,
@@ -86,6 +92,7 @@ exports[`PaymentItem component should render correctly with values 1`] = `
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="regular"
+      locator=""
       text="Edit"
     />
   </Styled(TouchableHighlight)>

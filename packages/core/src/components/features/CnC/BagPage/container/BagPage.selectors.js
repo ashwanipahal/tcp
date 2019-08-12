@@ -13,13 +13,27 @@ const getBagPageLabels = state => {
   const {
     bag: {
       addedToBag: { lbl_header_addedToBag: addedToBag, lbl_cta_checkout: checkout },
-      bagOverview: { lbl_header_bag: bagHeading },
+      bagOverview: {
+        lbl_header_bag: bagHeading,
+        lbl_emptyBag_loggedInMsg: loggedInMsg,
+        lbl_emptyBag_notLoggedInMsg: guestUserMsg,
+        lbl_emptyBag_loginIn: login,
+        lbl_emptyBag_shopNow: shopNow,
+        lbl_emptyBag_inspirationTagLine: tagLine,
+        lbl_emptyBag_helperMsg: helperMsg,
+      },
     },
   } = state.Labels;
   return {
     addedToBag,
     checkout,
     bagHeading,
+    loggedInMsg,
+    login,
+    shopNow,
+    tagLine,
+    guestUserMsg,
+    helperMsg,
   };
 };
 
@@ -45,9 +59,16 @@ const getProductsTypes = state => {
   };
 };
 
+const getNeedHelpContentId = state => {
+  const { referred = [] } = state.Labels.bag.addedToBag;
+  const content = referred.find(label => label.name === 'NEED_HELP_DATA');
+  return content && content.contentId;
+};
+
 export default {
   getBagPageLabels,
   getTotalItems,
   getOrderItems,
   getProductsTypes,
+  getNeedHelpContentId,
 };

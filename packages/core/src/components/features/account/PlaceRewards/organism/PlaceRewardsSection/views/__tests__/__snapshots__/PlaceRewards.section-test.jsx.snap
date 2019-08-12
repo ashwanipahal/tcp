@@ -139,7 +139,7 @@ exports[`MyRewards should render correctly 1`] = `
               }
             }
           >
-            <withRouter(Connect(PointsHistoryContainer)) />
+            <Connect(PointsHistoryContainer) />
           </Styled(Col)>
         </Styled(Row)>
       </Styled(Col)>

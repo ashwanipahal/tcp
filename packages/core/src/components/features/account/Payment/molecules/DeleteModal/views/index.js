@@ -1,1 +1,1 @@
-export { default } from './OffersSection.native';
+export { default } from './DeleteModal.native';
