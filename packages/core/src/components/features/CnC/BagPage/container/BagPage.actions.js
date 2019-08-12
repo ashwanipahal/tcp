@@ -33,10 +33,26 @@ const setBagPageError = (payload?) => {
   };
 };
 
+const fetchModuleX = payload => {
+  return {
+    payload,
+    type: BAGPAGE_CONSTANTS.FETCH_MODULEX_CONTENT,
+  };
+};
+
+const setModuleX = payload => {
+  return {
+    payload,
+    type: BAGPAGE_CONSTANTS.SET_MODULEX_CONTENT,
+  };
+};
+
 export default {
   getOrderDetails,
   getOrderDetailsComplete,
   getCartData,
   setCouponsData,
   setBagPageError,
+  fetchModuleX,
+  setModuleX,
 };
