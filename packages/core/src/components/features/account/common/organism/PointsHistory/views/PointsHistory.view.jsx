@@ -53,7 +53,12 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
               </BodyCopy>
             </Col>
             <Col colSize={{ large: 3, medium: 3, small: 2 }}>
-              <BodyCopy fontFamily="secondary" fontSize="fs12" fontWeight="semibold">
+              <BodyCopy
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="semibold"
+                textAlign="center"
+              >
                 {pointHistoryRow.pointsEarned}
               </BodyCopy>
             </Col>

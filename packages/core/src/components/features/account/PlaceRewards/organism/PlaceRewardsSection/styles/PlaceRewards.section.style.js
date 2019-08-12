@@ -47,6 +47,11 @@ const styles = css`
       border-right: 1px solid ${props => props.theme.colorPalette.gray[500]};
     }
   }
+  .reward-points {
+    .reward-points-section {
+      width: 100%;
+    }
+  }
 `;
 
 export default styles;

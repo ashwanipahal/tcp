@@ -51,6 +51,18 @@ const RewardsPointsStyles = css`
       border: none;
     }
   }
+
+  .current-points {
+    white-space: nowrap;
+  }
+
+  .my-rewards p {
+    margin-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-left: 0;
+    }
+  }
 `;
 
 export default RewardsPointsStyles;

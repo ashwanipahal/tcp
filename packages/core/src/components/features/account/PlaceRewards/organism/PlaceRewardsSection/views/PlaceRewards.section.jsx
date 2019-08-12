@@ -65,13 +65,14 @@ const PlaceRewardsSection = ({ labels, className }) => {
                   </BodyCopy>
                 </Col>
               </Row>
-              <Row fullBleed className="elem-mb-MED">
+              <Row fullBleed className="elem-mb-MED reward-points">
                 <Col
                   colSize={{
                     small: 4,
                     large: 10,
                     medium: 6,
                   }}
+                  className="reward-points-section"
                 >
                   <RewardsPoints labels={labels.common} />
                 </Col>
