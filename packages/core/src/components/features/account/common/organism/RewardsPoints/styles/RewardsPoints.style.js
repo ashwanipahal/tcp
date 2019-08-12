@@ -4,7 +4,7 @@ const RewardsPointsStyles = css`
   .progress-container {
     height: ${props => props.theme.spacing.ELEM_SPACING.SM};
     border-radius: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-    background-color: ${props => props.theme.colorPalette.userTheme.mprLight};
+    background-color: ${props => props.theme.colorPalette.userTheme.mprPrimary};
     width: 100%;
     overflow: hidden;
   }
