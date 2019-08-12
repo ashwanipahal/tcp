@@ -10,7 +10,6 @@ import {
   DivImageContainer,
   TextLiksViewContainer,
 } from '../ButtonList.styles.native';
-import { getLocator } from '../../../../../utils';
 
 type Props = {
   stackedCTAButtons: Object[],
@@ -38,7 +37,7 @@ const keyExtractor = (_, index) => index.toString();
 const renderItem = (item, navigation, showFullWidth, locator) => {
   return (
     <Button
-      testID={getLocator(locator)}
+      locator={locator}
       accessibilityRole="button"
       accessibilityLabel={item.text}
       buttonVariation="cautionary-button"
@@ -87,7 +86,7 @@ const scrollViewRenderItem = (item, navigation, locator) => {
   return (
     <ScrollViewContainer>
       <Button
-        testID={getLocator(locator)}
+        locator={locator}
         accessibilityRole="button"
         accessibilityLabel={item.item.text}
         buttonVariation="cautionary-button"
@@ -125,7 +124,7 @@ const linkTextViewRenderItem = (item, navigation, locator) => {
   return (
     <TextLiksViewContainer>
       <Anchor
-        testID={getLocator(locator)}
+        locator={locator}
         accessibilityRole="link"
         accessibilityLabel={item.item.text}
         text={item.item.text}
@@ -170,7 +169,7 @@ const divImageRenderItem = (item, navigation, locator) => {
     item: { image, link },
   } = item;
   return (
-    <Anchor url={link.url} navigation={navigation} testID={getLocator(locator)}>
+    <Anchor url={link.url} navigation={navigation} locator={locator}>
       <DivImageContainer>
         <Image url={image.url} height={60} width={60} style={style} />
         <BodyCopy

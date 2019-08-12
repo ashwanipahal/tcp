@@ -4,6 +4,7 @@ import { Text, TouchableOpacity } from 'react-native';
 import { UrlHandler, navigateToPage, validateExternalUrl } from '../../../../../utils/index.native';
 import withStyles from '../../../hoc/withStyles.native';
 import { AnchorStyles, AnchorView, AnchorIcon } from '../Anchor.style.native';
+import { getLocator } from '../../../../../utils';
 
 type Props = {
   anchorVariation?: string,
@@ -11,6 +12,7 @@ type Props = {
   visible?: boolean,
   children?: Object,
   customStyle?: Object,
+  locator?: string,
 };
 
 const Icon = require('../../../../../assets/carrot-small-rights.png');
@@ -25,6 +27,7 @@ const Anchor = ({
   visible,
   children,
   customStyle,
+  locator,
   ...otherProps
 }: Props) => {
   const { url, navigation } = otherProps;
@@ -44,6 +47,7 @@ const Anchor = ({
         onPress={openUrl}
         {...otherProps}
         style={customStyle}
+        testID={getLocator(locator)}
       >
         {children}
       </TouchableOpacity>
@@ -55,6 +59,7 @@ const Anchor = ({
       accessibilityLabel={text}
       onPress={openUrl}
       style={customStyle}
+      testID={getLocator(locator)}
     >
       <Text anchorVariation={anchorVariation} {...otherProps}>
         {text}
@@ -69,6 +74,7 @@ Anchor.defaultProps = {
   visible: false,
   children: null,
   customStyle: {},
+  locator: '',
 };
 
 export default withStyles(Anchor, AnchorStyles);

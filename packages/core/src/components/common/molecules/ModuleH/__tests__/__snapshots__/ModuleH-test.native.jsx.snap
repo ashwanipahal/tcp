@@ -7,6 +7,7 @@ exports[`ModuleH component renders correctly 1`] = `
       anchorVariation=""
       customStyle={Object {}}
       key="0"
+      locator=""
       text=""
       url="/toddler"
       visible={false}
@@ -17,6 +18,7 @@ exports[`ModuleH component renders correctly 1`] = `
         fontSize="fs36"
         fontWeight="black"
         letterSpacing="ls167"
+        locator=""
         style={
           Object {
             "height": 38,
@@ -31,6 +33,7 @@ exports[`ModuleH component renders correctly 1`] = `
       anchorVariation=""
       customStyle={Object {}}
       key="1"
+      locator=""
       text=""
       url="/toddler"
       visible={false}
@@ -41,6 +44,7 @@ exports[`ModuleH component renders correctly 1`] = `
         fontSize="fs36"
         fontWeight="black"
         letterSpacing="ls167"
+        locator=""
         style={
           Object {
             "height": 38,
@@ -164,6 +168,7 @@ exports[`ModuleH component renders correctly 1`] = `
     <Styled(Anchor)
       anchorVariation=""
       customStyle={Object {}}
+      locator=""
       text=""
       url="/toddler"
       visible={false}
@@ -175,6 +180,7 @@ exports[`ModuleH component renders correctly 1`] = `
         fontWeight="extrabold"
         key="0"
         letterSpacing="ls167"
+        locator=""
         style={
           Object {
             "color": "#fff",
@@ -191,6 +197,7 @@ exports[`ModuleH component renders correctly 1`] = `
     <Styled(Anchor)
       anchorVariation=""
       customStyle={Object {}}
+      locator=""
       text=""
       url="/girl"
       visible={false}
@@ -202,6 +209,7 @@ exports[`ModuleH component renders correctly 1`] = `
         fontWeight={null}
         key="1"
         letterSpacing="ls167"
+        locator=""
         style={
           Object {
             "color": "#fff",
@@ -218,6 +226,7 @@ exports[`ModuleH component renders correctly 1`] = `
     <Styled(Anchor)
       anchorVariation=""
       customStyle={Object {}}
+      locator=""
       text=""
       url="/toddler-boy"
       visible={false}
@@ -229,6 +238,7 @@ exports[`ModuleH component renders correctly 1`] = `
         fontWeight={null}
         key="2"
         letterSpacing="ls167"
+        locator=""
         style={
           Object {
             "color": "#fff",
@@ -245,6 +255,7 @@ exports[`ModuleH component renders correctly 1`] = `
     <Styled(Anchor)
       anchorVariation=""
       customStyle={Object {}}
+      locator=""
       text=""
       url="/boy"
       visible={false}
@@ -256,6 +267,7 @@ exports[`ModuleH component renders correctly 1`] = `
         fontWeight={null}
         key="3"
         letterSpacing="ls167"
+        locator=""
         style={
           Object {
             "color": "#fff",
@@ -272,6 +284,7 @@ exports[`ModuleH component renders correctly 1`] = `
     <Styled(Anchor)
       anchorVariation=""
       customStyle={Object {}}
+      locator=""
       text=""
       url="/baby"
       visible={false}
@@ -283,6 +296,7 @@ exports[`ModuleH component renders correctly 1`] = `
         fontWeight={null}
         key="4"
         letterSpacing="ls167"
+        locator=""
         style={
           Object {
             "color": "#fff",

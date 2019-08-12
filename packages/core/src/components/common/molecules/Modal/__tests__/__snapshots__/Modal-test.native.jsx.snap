@@ -31,6 +31,7 @@ exports[`Modal Native should render correctly 1`] = `
       component="span"
       fontFamily="primary"
       fontSize="fs16"
+      locator=""
       text="Modal Heading"
     />
   </Component>

@@ -1,9 +1,11 @@
 // @flow
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
+import { string } from 'postcss-selector-parser';
 import { UrlHandler, navigateToPage, validateExternalUrl } from '../../../../../utils/utils.app';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../Button.style.native';
+import { getLocator } from '../../../../../utils';
 
 /**
  * @param {object} props : Props for button
@@ -28,10 +30,12 @@ type Props = {
   text?: string,
   url?: string,
   disableButton?: boolean,
+  locator?: string,
 };
 
 const CustomButton = (props: Props) => {
   const {
+    locator,
     text,
     buttonVariation,
     fullWidth,
@@ -56,6 +60,7 @@ const CustomButton = (props: Props) => {
       style={customStyle}
       disabled={disableButton}
       onPress={openUrl}
+      testID={getLocator(locator)}
     >
       <Text fullWidth={fullWidth} buttonVariation={buttonVariation} {...otherProps}>
         {textValue}
@@ -71,6 +76,7 @@ CustomButton.defaultProps = {
   text: '',
   url: '',
   disableButton: false,
+  locator: string,
 };
 
 export default withStyles(CustomButton, style);

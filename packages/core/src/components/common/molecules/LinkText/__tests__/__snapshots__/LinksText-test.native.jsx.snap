@@ -4,6 +4,7 @@ exports[`LinkText component renders correctly 1`] = `
 <Styled(Anchor)
   anchorVariation=""
   customStyle={Object {}}
+  locator=""
   text=""
   url="http://example.com3367"
   visible={false}
@@ -13,6 +14,7 @@ exports[`LinkText component renders correctly 1`] = `
       Object {
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
+          "locator": "",
           "text": "",
         },
         "attrs": Array [],
@@ -39,6 +41,7 @@ exports[`LinkText component renders correctly 1`] = `
         "withComponent": [Function],
       }
     }
+    locator=""
     text={
       Array [
         <Text>

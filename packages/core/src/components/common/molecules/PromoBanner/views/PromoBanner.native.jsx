@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import { Anchor } from '../../../atoms';
-import { getLocator } from '../../../../../utils/index.native';
 import { BodyCopy, Container, ContainerView } from '../PromoBanner.style.native';
 
 type Props = {
@@ -85,13 +84,7 @@ const PromoBanner = (props: Props) => {
     <Anchor url={link.url} navigation={navigation}>
       {textItems.map(({ text, style }, index) => {
         const StyleBodyCopy = bodyCopyStyles[style];
-        return (
-          <StyleBodyCopy
-            text={index ? ` ${text}` : text}
-            testID={getLocator(locator)}
-            {...otherProps}
-          />
-        );
+        return <StyleBodyCopy text={index ? ` ${text}` : text} locator={locator} {...otherProps} />;
       })}
     </Anchor>,
   ];

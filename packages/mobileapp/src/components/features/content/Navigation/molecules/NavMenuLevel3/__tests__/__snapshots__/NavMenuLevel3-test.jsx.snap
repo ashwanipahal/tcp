@@ -18,6 +18,7 @@ exports[`NavMenuLevel3 should render correctly 1`] = `
     color="text.primary"
     fontFamily="secondary"
     fontSize="fs16"
+    locator=""
     style={
       Object {
         "textTransform": "uppercase",

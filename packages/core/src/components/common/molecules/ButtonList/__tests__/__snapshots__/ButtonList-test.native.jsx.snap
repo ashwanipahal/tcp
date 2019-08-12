@@ -57,6 +57,7 @@ exports[`ButtonList ButtonList should render correctly 1`] = `
       customStyle={Object {}}
       disableButton={false}
       fullWidth=""
+      locator={[Function]}
       style={
         Object {
           "width": 750,

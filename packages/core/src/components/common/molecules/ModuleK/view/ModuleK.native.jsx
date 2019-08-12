@@ -37,7 +37,11 @@ class ModuleK extends React.PureComponent {
             </PromoTextBannerWrapper>
           )}
         </HeaderWrapper>
-        <ImageGrid testID={`moduleK_image_${slideIndex}`} mediaList={mediaLinkedList} />
+        <ImageGrid
+          testID={`moduleK_image_${slideIndex}`}
+          mediaList={mediaLinkedList}
+          navigation={navigation}
+        />
         {singleCTAButton && (
           <WrapperView width={getScreenWidth()}>
             <Button

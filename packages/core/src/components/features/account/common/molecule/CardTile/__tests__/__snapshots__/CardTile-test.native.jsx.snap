@@ -36,6 +36,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
         dataLocator="payment-creditdebitnametitle"
         fontSize="fs16"
         fontWeight="regular"
+        locator=""
         mobilefontFamily={
           Array [
             "secondary",
@@ -49,6 +50,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
         <Styled(BodyCopy)
           fontSize="fs10"
           fontWeight="semibold"
+          locator=""
           mobilefontFamily={
             Array [
               "secondary",
@@ -68,6 +70,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
         dataLocator="payment-creditdebitendingtext"
         fontSize="fs14"
         fontWeight="black"
+        locator=""
         text="undefined6765"
       />
       <Styled(Text)>
@@ -75,6 +78,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
           dataLocator="payment-creditdebitexpiretext"
           fontSize="fs14"
           fontWeight="semibold"
+          locator=""
           text="undefined10/2025"
         />
       </Styled(Text)>
@@ -139,6 +143,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
         customStyle={Object {}}
         data-locator="payment-creditdebiteditlink"
         fontSizeVariation="large"
+        locator=""
         text=""
         to="/#"
         underline={true}
@@ -150,6 +155,7 @@ exports[`CardTile should render correctly with amex card 1`] = `
         customStyle={Object {}}
         data-locator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
+        locator=""
         text=""
         to="/#"
         underline={true}
@@ -196,6 +202,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
         dataLocator="payment-creditdebitnametitle"
         fontSize="fs16"
         fontWeight="regular"
+        locator=""
         mobilefontFamily={
           Array [
             "secondary",
@@ -209,6 +216,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
       customStyle={Object {}}
       data-locator="payment-makedefault"
       fontSizeVariation="small"
+      locator=""
       onPress={[Function]}
       text=""
       to="/#"
@@ -225,6 +233,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
         dataLocator="payment-creditdebitendingtext"
         fontSize="fs14"
         fontWeight="black"
+        locator=""
         text="undefined6765"
       />
       <Styled(Text)>
@@ -232,6 +241,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
           dataLocator="payment-creditdebitexpiretext"
           fontSize="fs14"
           fontWeight="semibold"
+          locator=""
           text="undefined10/2025"
         />
       </Styled(Text)>
@@ -296,6 +306,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
         customStyle={Object {}}
         data-locator="payment-creditdebiteditlink"
         fontSizeVariation="large"
+        locator=""
         text=""
         to="/#"
         underline={true}
@@ -307,6 +318,7 @@ exports[`CardTile should render correctly with discover card 1`] = `
         customStyle={Object {}}
         data-locator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
+        locator=""
         text=""
         to="/#"
         underline={true}
@@ -354,6 +366,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
         dataLocator="payment-giftcardnametitle"
         fontSize="fs16"
         fontWeight="regular"
+        locator=""
         mobilefontFamily={
           Array [
             "secondary",
@@ -372,6 +385,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
         dataLocator="payment-giftcardendingtext"
         fontSize="fs14"
         fontWeight="black"
+        locator=""
         text="undefined6765"
       />
     </View>
@@ -481,6 +495,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
       disableButton={false}
       fill="BLUE"
       fullWidth=""
+      locator={[Function]}
       text=""
       url=""
     />
@@ -491,6 +506,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
         customStyle={Object {}}
         data-locator="payment-giftcarddeletelink"
         fontSizeVariation="large"
+        locator=""
         text=""
         to="/#"
         underline={true}
@@ -537,6 +553,7 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
         dataLocator="payment-giftcardnametitle"
         fontSize="fs16"
         fontWeight="regular"
+        locator=""
         mobilefontFamily={
           Array [
             "secondary",
@@ -555,6 +572,7 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
         dataLocator="payment-giftcardendingtext"
         fontSize="fs14"
         fontWeight="black"
+        locator=""
         text="undefined6765"
       />
     </View>
@@ -663,6 +681,7 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
       disableButton={false}
       fill="BLUE"
       fullWidth=""
+      locator={[Function]}
       text=""
       url=""
     />
@@ -673,6 +692,7 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
         customStyle={Object {}}
         data-locator="payment-giftcarddeletelink"
         fontSizeVariation="large"
+        locator=""
         text=""
         to="/#"
         underline={true}
@@ -719,6 +739,7 @@ exports[`CardTile should render correctly with master card 1`] = `
         dataLocator="payment-creditdebitnametitle"
         fontSize="fs16"
         fontWeight="regular"
+        locator=""
         mobilefontFamily={
           Array [
             "secondary",
@@ -732,6 +753,7 @@ exports[`CardTile should render correctly with master card 1`] = `
       customStyle={Object {}}
       data-locator="payment-makedefault"
       fontSizeVariation="small"
+      locator=""
       onPress={[Function]}
       text=""
       to="/#"
@@ -748,6 +770,7 @@ exports[`CardTile should render correctly with master card 1`] = `
         dataLocator="payment-creditdebitendingtext"
         fontSize="fs14"
         fontWeight="black"
+        locator=""
         text="undefined6765"
       />
       <Styled(Text)>
@@ -755,6 +778,7 @@ exports[`CardTile should render correctly with master card 1`] = `
           dataLocator="payment-creditdebitexpiretext"
           fontSize="fs14"
           fontWeight="semibold"
+          locator=""
           text="undefined10/2025"
         />
       </Styled(Text)>
@@ -819,6 +843,7 @@ exports[`CardTile should render correctly with master card 1`] = `
         customStyle={Object {}}
         data-locator="payment-creditdebiteditlink"
         fontSizeVariation="large"
+        locator=""
         text=""
         to="/#"
         underline={true}
@@ -830,6 +855,7 @@ exports[`CardTile should render correctly with master card 1`] = `
         customStyle={Object {}}
         data-locator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
+        locator=""
         text=""
         to="/#"
         underline={true}
@@ -876,6 +902,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         dataLocator="payment-giftcardnametitle"
         fontSize="fs16"
         fontWeight="regular"
+        locator=""
         mobilefontFamily={
           Array [
             "secondary",
@@ -894,6 +921,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         dataLocator="payment-giftcardendingtext"
         fontSize="fs14"
         fontWeight="black"
+        locator=""
         text="undefined6765"
       />
     </View>
@@ -1002,6 +1030,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       disableButton={false}
       fill="BLUE"
       fullWidth=""
+      locator={[Function]}
       text=""
       url=""
     />
@@ -1012,6 +1041,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         customStyle={Object {}}
         data-locator="payment-giftcarddeletelink"
         fontSizeVariation="large"
+        locator=""
         text=""
         to="/#"
         underline={true}
@@ -1058,6 +1088,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         dataLocator="payment-creditdebitnametitle"
         fontSize="fs16"
         fontWeight="regular"
+        locator=""
         mobilefontFamily={
           Array [
             "secondary",
@@ -1071,6 +1102,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       customStyle={Object {}}
       data-locator="payment-makedefault"
       fontSizeVariation="small"
+      locator=""
       onPress={[Function]}
       text=""
       to="/#"
@@ -1087,6 +1119,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         dataLocator="payment-creditdebitendingtext"
         fontSize="fs14"
         fontWeight="black"
+        locator=""
         text="undefined6765"
       />
     </View>
@@ -1150,6 +1183,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         customStyle={Object {}}
         data-locator="payment-creditdebiteditlink"
         fontSizeVariation="large"
+        locator=""
         text=""
         to="/#"
         underline={true}
@@ -1161,6 +1195,7 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         customStyle={Object {}}
         data-locator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
+        locator=""
         text=""
         to="/#"
         underline={true}
@@ -1209,6 +1244,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
         dataLocator="payment-venmonametitle"
         fontSize="fs16"
         fontWeight="regular"
+        locator=""
         mobilefontFamily={
           Array [
             "secondary",
@@ -1228,6 +1264,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
       <Styled(BodyCopy)
         fontSize="fs14"
         fontWeight="extrabold"
+        locator=""
         text="1234"
       />
     </Styled(Text)>
@@ -1280,6 +1317,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
         customStyle={Object {}}
         data-locator="payment-venmodeletelink"
         fontSizeVariation="large"
+        locator=""
         text=""
         to="/#"
         underline={true}
@@ -1326,6 +1364,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
         dataLocator="payment-creditdebitnametitle"
         fontSize="fs16"
         fontWeight="regular"
+        locator=""
         mobilefontFamily={
           Array [
             "secondary",
@@ -1339,6 +1378,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
       customStyle={Object {}}
       data-locator="payment-makedefault"
       fontSizeVariation="small"
+      locator=""
       onPress={[Function]}
       text=""
       to="/#"
@@ -1355,6 +1395,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
         dataLocator="payment-creditdebitendingtext"
         fontSize="fs14"
         fontWeight="black"
+        locator=""
         text="undefined6765"
       />
       <Styled(Text)>
@@ -1362,6 +1403,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
           dataLocator="payment-creditdebitexpiretext"
           fontSize="fs14"
           fontWeight="semibold"
+          locator=""
           text="undefined10/2025"
         />
       </Styled(Text)>
@@ -1426,6 +1468,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
         customStyle={Object {}}
         data-locator="payment-creditdebiteditlink"
         fontSizeVariation="large"
+        locator=""
         text=""
         to="/#"
         underline={true}
@@ -1437,6 +1480,7 @@ exports[`CardTile should render correctly with visa card 1`] = `
         customStyle={Object {}}
         data-locator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
+        locator=""
         text=""
         to="/#"
         underline={true}

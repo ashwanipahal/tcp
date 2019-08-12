@@ -12,6 +12,7 @@ exports[`Header Component Header should render correctly 1`] = `
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="semibold"
+        locator=""
         text=""
         textAlign="center"
       />
@@ -24,6 +25,7 @@ exports[`Header Component Header should render correctly 1`] = `
           fontFamily="secondary"
           fontSize="fs12"
           fontWeight="regular"
+          locator=""
           text=""
           textAlign="center"
         />
@@ -59,6 +61,7 @@ exports[`Header Component Header should render correctly 1`] = `
         color="white"
         data-locator="obal_headerpanelbagicon"
         fontSize="fs10"
+        locator=""
         style={
           Object {
             "marginTop": 18,

@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import { Text } from 'react-native';
-import { getLocator } from '../../../../../utils/index';
 import { Anchor, BodyCopy, Heading } from '../../../atoms';
 
 type Props = {
@@ -57,7 +56,7 @@ const LinkText = (props: Props) => {
 
   return (
     <Anchor url={link.url} navigation={navigation}>
-      <Component {...compProps} text={getTextItems(textItems)} testID={getLocator(locator)} />
+      <Component {...compProps} text={getTextItems(textItems)} locator={locator} />
     </Anchor>
   );
 };
