@@ -38,13 +38,12 @@ const PaymentWrapper = styled.View`
 `;
 
 const RecaptchaWrapper = styled.View`
-  height: 330px;
+  height: 170px;
   flex: 1;
 `;
 
 const RecaptchaContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  height: 340px;
   flex: 1;
 `;
 

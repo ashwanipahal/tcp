@@ -22,7 +22,7 @@ import CustomButton from '../../../../../../common/atoms/Button';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 
-class PaymentItem extends React.PureComponent<Props> {
+class PaymentItem extends React.Component<Props> {
   handleGetGiftCardBalanceClick = (formData, card, onGetBalanceCard) => {
     onGetBalanceCard({ formData, card });
   };
@@ -113,7 +113,7 @@ class PaymentItem extends React.PureComponent<Props> {
               type="hidden"
               name="recaptchaToken"
               id="recaptchaToken"
-              data-locator="-payment-gift-card-recaptchcb"
+              data-locator="gift-card-recaptchcb"
               className="visibility-recaptcha"
             />
             {isGiftCard && (

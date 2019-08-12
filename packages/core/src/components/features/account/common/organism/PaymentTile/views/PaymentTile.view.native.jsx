@@ -48,13 +48,16 @@ export class PaymentTile extends React.PureComponent<Props> {
   };
 
   getGiftCardView = (card, isAddVariation) => {
-    const { labels, handleComponentChange, onGetBalanceCard } = this.props;
+    const { labels, handleComponentChange, onGetBalanceCard, checkbalanceValueInfo } = this.props;
+    const balance = (card && this.getGiftCardBalance(card.accountNo, checkbalanceValueInfo)) || '';
+
     const cardTileProps = {
       title: labels.lbl_overview_giftCard,
       text: !isAddVariation
         ? `${labels.lbl_overview_card_ending} ${card.accountNo.slice(-4)}`
         : labels.lbl_overview_add_giftCard,
-      subText: !isAddVariation ? `${labels.lbl_overview_remaining_balance}:` : '',
+      subText:
+        !isAddVariation && balance ? `${labels.lbl_overview_remaining_balance}: $${balance}` : '',
       variation: !isAddVariation
         ? labels.lbl_overview_addressBookEdit
         : labels.lbl_overview_addressBookAdd,
@@ -67,8 +70,18 @@ export class PaymentTile extends React.PureComponent<Props> {
         isGiftCard
         card={card}
         onGetBalanceCard={onGetBalanceCard}
+        checkbalanceValueInfo={checkbalanceValueInfo}
       />
     );
+  };
+
+  /**
+   * Get the gift card balance
+   * @param {*} key
+   * @param {*} checkbalanceValueInfo
+   */
+  getGiftCardBalance = (key, checkbalanceValueInfo) => {
+    return checkbalanceValueInfo && checkbalanceValueInfo.get(key);
   };
 
   getGiftCard = cardList => {
