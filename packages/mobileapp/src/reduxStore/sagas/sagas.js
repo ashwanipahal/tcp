@@ -11,6 +11,8 @@ import CreateAccountSaga from '@tcp/core/src/components/features/account/CreateA
 import CartPageSaga from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.saga';
 import GiftCardBalanceSaga from '@tcp/core/src/components/features/account/Payment/container/GetCardBalance.saga';
 import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.saga';
+import PointsHistorySaga from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.saga';
+import CouponSaga from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
 export default function* rootSaga() {
@@ -20,6 +22,7 @@ export default function* rootSaga() {
     LoginPageSaga(),
     ForgotPasswordSaga(),
     PaymentSaga(),
+    CouponSaga(),
     DefaultPaymentSaga(),
     AddressBookSaga(),
     ProductListingPageSaga(),
@@ -28,5 +31,6 @@ export default function* rootSaga() {
     BagPageSaga(),
     CartPageSaga(),
     GiftCardBalanceSaga(),
+    PointsHistorySaga(),
   ]);
 }

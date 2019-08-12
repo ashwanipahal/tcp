@@ -1,5 +1,5 @@
 export const getCouponFetchingState = state => {
-  return state.CouponsAndPromos.get('isFetching');
+  return state.CouponsAndPromos && state.CouponsAndPromos.get('isFetching');
 };
 
 export const getCouponsLabels = state => {
@@ -62,13 +62,13 @@ export const getCouponsLabels = state => {
 };
 
 export const getAppliedCouponListState = state => {
-  const list = state.CouponsAndPromos.get('couponsAndOffers');
-  return list.filter(i => i.status === 'applied');
+  const list = state.CouponsAndPromos && state.CouponsAndPromos.get('couponsAndOffers');
+  return list && list.filter(i => i.status === 'applied');
 };
 
 export const getAvailableCouponListState = state => {
-  const list = state.CouponsAndPromos.get('couponsAndOffers');
-  return list.filter(i => i.status === 'available');
+  const list = state.CouponsAndPromos && state.CouponsAndPromos.get('couponsAndOffers');
+  return list && list.filter(i => i.status === 'available');
 };
 
 export const getNeedHelpContent = state => {

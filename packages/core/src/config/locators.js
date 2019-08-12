@@ -73,4 +73,29 @@ export default {
   order_ledger_gift_card_label: 'orderLedgerGiftCardLbl',
   order_ledger_balance_total_label: 'orderLedgerBalanceTotalLbl',
   order_ledger_total_order_savings_label: 'orderLedgerTotalOrderSavingsLabel',
+
+  // CardTile
+  cart_item_image: 'cartItemImage',
+  cart_item_title: 'cartItemTitle',
+  cart_item_upc: 'cartItemUpc',
+  cart_item_brand_logo: 'cartItemBrandLogo',
+  cart_item_edit_link: 'cartItemEditLink',
+  cart_item_price: 'cartItemPrice',
+  cart_item_points: 'cartItemPoints',
+  cart_item_total_price: 'cartItemTotalPrice',
+  cart_item_color: 'cartItemColor',
+  cart_item_size: 'cartItemSize',
+  cart_item_no_rush_radio_button: 'ItemNoRushRadioButton',
+  cart_item_cartNoRush: 'cartNoRush',
+  cart_item_pickup_radio_today_button: 'ItemPickUpTodayRadioButton',
+  cart_item_pickup_today: 'cartPickUpToday',
+  cart_item_ship_to_home_radio_button: 'ItemShipToHomeRadioButton',
+  cart_item_ship_to_home: 'cartShipToHome',
+  cart_item_cross_button: 'cartItemCrossButton',
+
+  // Empty Bag Locator
+  empty_bag_Msg: 'cartEmptyBagMessage',
+  empty_bag_loginUserCTA: 'cartRegisteredShopNowButton',
+  empty_bag_guestUserCTA: 'cartGuestLoginCta',
+  empty_bag_recommendation_msg: 'cartRecommendationMessage',
 };

@@ -8,7 +8,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-jzJRlG",
+        "componentId": "sc-kgoBCf",
         "isStatic": false,
         "rules": Array [
           "
@@ -73,6 +73,12 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
   .payPal-button {
     width: 220px;
   }
+  .subTotalEmpty {
+    text-align: center;
+    padding: 13px 0 13px 0;
+    bottom: 0px;
+    margin-bottom: 0px;
+  }
 ",
           ";
 ",
@@ -81,7 +87,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
       "displayName": "Styled(MiniBagBody)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-jzJRlG",
+      "styledComponentId": "sc-kgoBCf",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],
@@ -91,6 +97,7 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
   forwardedRef={null}
   labels={
     Object {
+      "currencySymbol": "$",
       "subTotal": "Subtotal",
       "viewBag": "View bag",
       "viewSaveForLater": "save later",

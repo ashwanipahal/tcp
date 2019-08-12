@@ -3,7 +3,7 @@ import React from 'react';
 import { FlatList } from 'react-native';
 import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
 import { Image, BodyCopy, Anchor } from '../../../atoms';
-import PromoBanner from '../../PromoBanner/views/PromoBanner.native';
+import PromoBanner from '../../PromoBanner';
 import LinkText from '../../LinkText';
 import {
   Container,

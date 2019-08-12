@@ -9,7 +9,7 @@ import TextBox from '../../../../../../common/atoms/TextBox';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
-import PasswordField from '../../PasswordField';
+import PasswordField from '../../../../common/molecule/PasswordField';
 // import Anchor from '../../../../../../common/atoms/Anchor';
 import Recaptcha from '../../../../../../common/molecules/recaptcha/recaptcha';
 import styles from '../styles/LoginForm.styles';
@@ -71,7 +71,8 @@ class LoginForm extends React.PureComponent<Props> {
                 dataLocator="login-remembermecb"
                 className=""
               >
-                {labels.login.lbl_login_rememberMe}
+                <span className="remember-me-text">{labels.login.lbl_login_rememberMe}</span>
+                <span>{labels.login.lbl_login_rememberMeHelpText}</span>
               </Field>
             </BodyCopy>
             {showSavePlcc && (

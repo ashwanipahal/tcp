@@ -2,7 +2,6 @@
 import styled from 'styled-components';
 
 const StyledOrderLedger = styled.View`
-  flex: 1;
   padding: 14px;
 `;
 

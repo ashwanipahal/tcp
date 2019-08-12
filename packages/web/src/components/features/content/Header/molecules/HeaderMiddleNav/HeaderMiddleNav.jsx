@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
-import LogOutPageContainer from '@tcp/core/src/components/features/account/Logout/container/LogOut.container';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import MiniBagContainer from '@tcp/web/src/components/features/CnC/MiniBag/container/MiniBag.container';
 import { identifyBrand, getIconPath } from '@tcp/core/src/utils';
@@ -111,7 +110,6 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
                 >
                   {`Hi, ${userName}`}
                 </BodyCopy>
-                <LogOutPageContainer />
               </React.Fragment>
             ) : (
               <React.Fragment>

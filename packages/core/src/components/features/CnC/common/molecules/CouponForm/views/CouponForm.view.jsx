@@ -8,6 +8,12 @@ import style from '../styles/CouponForm.style';
 import ErrorMessage from '../../ErrorMessage';
 
 class CouponForm extends React.PureComponent {
+  renderTextBox = ({ input, ...otherParams }) => {
+    // eslint-disable-next-line
+    input = { ...input, value: input.value.toUpperCase() };
+    return <TextBox input={input} {...otherParams} />;
+  };
+
   render() {
     const {
       labels,
@@ -47,7 +53,7 @@ class CouponForm extends React.PureComponent {
               name={fieldName}
               id={fieldName}
               type="text"
-              component={TextBox}
+              component={this.renderTextBox}
               dataLocator={dataLocators.inputField}
               className="coupon_code_input"
             />
@@ -100,7 +106,7 @@ CouponForm.defaultProps = {
   pristine: false,
   submitting: false,
   error: '',
-  fieldName: 'coupon_code',
+  fieldName: 'couponCode',
   handleSubmit: () => {},
 };
 

@@ -5,6 +5,7 @@ import {
   getCartOrderList,
   getLabelsCartItemTile,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
+import { getUserLoggedInState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
 import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
 import ProductTileWrapper from '../views/ProductTileWrapper.view';
 
@@ -15,11 +16,7 @@ export class ProductTileWrapperContainer extends React.Component {
   };
 
   render() {
-    const { orderItems } = this.props;
-    if (orderItems && orderItems.size > 0) {
-      return <ProductTileWrapper {...this.props} />;
-    }
-    return <div />;
+    return <ProductTileWrapper {...this.props} />;
   }
 }
 
@@ -27,6 +24,7 @@ const mapStateToProps = state => {
   return {
     orderItems: getCartOrderList(state),
     labels: getLabelsCartItemTile(state),
+    isUserLoggedIn: getUserLoggedInState(state),
   };
 };
 export const mapDispatchToProps = dispatch => {
