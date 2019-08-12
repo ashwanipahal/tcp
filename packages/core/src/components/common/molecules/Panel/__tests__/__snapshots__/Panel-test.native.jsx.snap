@@ -11,6 +11,7 @@ exports[`Panel component should render correctly 1`] = `
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="regular"
+        locator=""
         text="Orders"
       />
     </Styled(TouchableHighlight)>

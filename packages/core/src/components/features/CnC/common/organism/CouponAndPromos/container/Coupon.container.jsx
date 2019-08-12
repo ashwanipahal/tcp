@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
-import { applyCoupon, removeCoupon } from './Coupon.actions';
+import { applyCoupon, removeCoupon, setError } from './Coupon.actions';
 import {
   getCouponFetchingState,
   getCouponsLabels,
@@ -23,6 +23,7 @@ export class CouponContainer extends React.PureComponent<Props> {
       appliedCouponList,
       availableCouponList,
       needHelpRichText,
+      handleErrorCoupon,
     } = this.props;
 
     const updateLabels = { ...labels, NEED_HELP_RICH_TEXT: needHelpRichText };
@@ -35,6 +36,7 @@ export class CouponContainer extends React.PureComponent<Props> {
         handleRemoveCoupon={handleRemoveCoupon}
         appliedCouponList={appliedCouponList}
         availableCouponList={availableCouponList}
+        handleErrorCoupon={handleErrorCoupon}
       />
     );
   }
@@ -73,6 +75,11 @@ export const mapDispatchToProps = dispatch => ({
         applyCoupon({ formData, source: props && props.source, formPromise: { resolve, reject } })
       );
     }),
+  handleErrorCoupon: coupon => {
+    setTimeout(() => {
+      dispatch(setError({ msg: null, couponCode: coupon.id }));
+    }, 5000);
+  },
 });
 
 export const mapStateToProps = state => ({

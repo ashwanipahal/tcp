@@ -1,9 +1,10 @@
 // @flow
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import { UrlHandler, navigateToPage } from '../../../../../utils/index.native';
+import { UrlHandler, navigateToPage, validateExternalUrl } from '../../../../../utils/index.native';
 import withStyles from '../../../hoc/withStyles.native';
 import { AnchorStyles, AnchorView, AnchorIcon } from '../Anchor.style.native';
+import { getLocator } from '../../../../../utils';
 
 type Props = {
   anchorVariation?: string,
@@ -11,37 +12,55 @@ type Props = {
   visible?: boolean,
   children?: Object,
   customStyle?: Object,
+  locator?: string,
 };
 
 const Icon = require('../../../../../assets/carrot-small-rights.png');
 
+/**
+ * @param {object} props : Props for Anchor
+ * @desc This is a Anchor component to manage the internal or external .
+ */
 const Anchor = ({
   anchorVariation,
   text,
   visible,
   children,
   customStyle,
+  locator,
   ...otherProps
 }: Props) => {
-  const { url, external, navigation, onPress } = otherProps;
+  const { url, navigation } = otherProps;
 
-  const openUrlInExternalBrowser = onPress || (() => UrlHandler(url));
-  const openUrl = external ? openUrlInExternalBrowser : () => navigateToPage(url, navigation);
+  const openUrl = () => {
+    if (validateExternalUrl(url)) {
+      UrlHandler(url);
+    } else {
+      navigateToPage(url, navigation);
+    }
+  };
 
   if (children) {
     return (
       <TouchableOpacity
-        accessibilityRole="button"
+        accessibilityRole="link"
         onPress={openUrl}
         {...otherProps}
         style={customStyle}
+        testID={getLocator(locator)}
       >
         {children}
       </TouchableOpacity>
     );
   }
   return (
-    <AnchorView accessibilityRole="button" onPress={openUrl} style={customStyle}>
+    <AnchorView
+      accessibilityRole="link"
+      accessibilityLabel={text}
+      onPress={openUrl}
+      style={customStyle}
+      testID={getLocator(locator)}
+    >
       <Text anchorVariation={anchorVariation} {...otherProps}>
         {text}
       </Text>
@@ -55,6 +74,7 @@ Anchor.defaultProps = {
   visible: false,
   children: null,
   customStyle: {},
+  locator: '',
 };
 
 export default withStyles(Anchor, AnchorStyles);

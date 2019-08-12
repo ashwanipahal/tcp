@@ -41,6 +41,7 @@ class CouponView extends React.PureComponent<Props> {
       availableCouponList,
       className,
       handleRemoveCoupon,
+      handleErrorCoupon,
     } = this.props;
     const { detailStatus, helpStatus, selectedCoupon } = this.state;
     return (
@@ -56,6 +57,7 @@ class CouponView extends React.PureComponent<Props> {
           {appliedCouponList && (
             <CouponListSection
               labels={labels}
+              isFetching={isFetching}
               couponList={appliedCouponList}
               className="applied_coupon"
               heading={labels.APPLIED_REWARDS_HEADING}
@@ -67,6 +69,7 @@ class CouponView extends React.PureComponent<Props> {
           {availableCouponList && (
             <CouponListSection
               labels={labels}
+              isFetching={isFetching}
               couponList={availableCouponList}
               className="available_coupon"
               heading={labels.AVAILABLE_REWARDS_HEADING}
@@ -75,6 +78,7 @@ class CouponView extends React.PureComponent<Props> {
               helpAnchorClick={this.toggleNeedHelpModal}
               onApply={handleApplyCouponFromList}
               dataLocator="coupon-cartAvaliableRewards"
+              handleErrorCoupon={handleErrorCoupon}
             />
           )}
           <CouponDetailModal
