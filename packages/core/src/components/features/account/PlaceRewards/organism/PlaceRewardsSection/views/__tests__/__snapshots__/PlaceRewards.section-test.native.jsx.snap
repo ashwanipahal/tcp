@@ -29,9 +29,7 @@ exports[`MyRewards should render correctly 1`] = `
       <Connect(PointsHistoryContainer) />
     </Styled(View)>
     <Styled(View)>
-      <Text>
-        Third
-      </Text>
+      <BonusPointsDaysSection />
     </Styled(View)>
     <Styled(View)>
       <Text>

@@ -1,0 +1,564 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BonusPointsAvailabilityVanilla should render correctly available_today 1`] = `
+<View>
+  <CollapsibleContainer
+    body={
+      <React.Fragment>
+        <React.Fragment>
+          <ForwardRef>
+            <ForwardRef
+              data-locator="msgtextinbold"
+              fontSize="fs14"
+              fontWeight="extrabold"
+              mobileFontFamily="secondary"
+              text=""
+              textAlign="center"
+            />
+          </ForwardRef>
+          <ForwardRef>
+            <ForwardRef
+              data-locator="infomsg"
+              fontSize="fs12"
+              fontWeight="regular"
+              mobileFontFamily="secondary"
+              text=""
+              textAlign="center"
+            />
+          </ForwardRef>
+        </React.Fragment>
+        <BonusPointsAvailability
+          bonusPoints={
+            Array [
+              Object {
+                "buttonText": undefined,
+                "dataLocator": "availabletodaybtn",
+                "disabled": false,
+              },
+            ]
+          }
+          className="availability-msg"
+          labels={
+            Object {
+              "common": Object {
+                "lbl_common_details": "",
+              },
+              "myPlaceRewards": Object {
+                "lbl_bonus_points_apply_any_day": "",
+                "lbl_bonus_points_msg": "",
+                "lbl_place_rewards_bonus": "",
+                "lbl_place_rewards_day": "",
+                "lbl_place_rewards_points": "",
+              },
+            }
+          }
+        />
+        <ForwardRef
+          anchorVariation="primary"
+          className="details-link"
+          customStyle={Object {}}
+          data-locator="detailslink"
+          fontSizeVariation="medium"
+          href="#"
+          onPress={[Function]}
+          text=""
+          underline={true}
+          visible={false}
+        />
+      </React.Fragment>
+    }
+    className=""
+    defaultOpen={false}
+    header={
+      <ForwardRef
+        className="elem-mb-SM"
+        data-locator="bonuspointsdayhdr"
+      >
+        <ForwardRef>
+          <ForwardRef
+            color="orange.800"
+            component="span"
+            fontSize="fs16"
+            fontWeight="extrabold"
+            mobileFontFamily="primary"
+            text=""
+          />
+        </ForwardRef>
+        <ForwardRef>
+          <ForwardRef
+            color="primary.main"
+            component="span"
+            fontSize="fs16"
+            fontWeight="extrabold"
+            mobileFontFamily="primary"
+            text=""
+          />
+        </ForwardRef>
+        <ForwardRef
+          color="pink.500"
+          component="span"
+          fontSize="fs16"
+          fontWeight="extrabold"
+          mobileFontFamily="primary"
+          text=""
+        />
+      </ForwardRef>
+    }
+    iconLocator="arrowicon"
+  />
+</View>
+`;
+
+exports[`BonusPointsAvailabilityVanilla should render correctly with applied to bag bonus point days 1`] = `
+<View>
+  <CollapsibleContainer
+    body={
+      <React.Fragment>
+        <React.Fragment>
+          <ForwardRef>
+            <ForwardRef
+              data-locator="msgtextinbold"
+              fontSize="fs14"
+              fontWeight="extrabold"
+              mobileFontFamily="secondary"
+              text=""
+              textAlign="center"
+            />
+          </ForwardRef>
+          <ForwardRef>
+            <ForwardRef
+              data-locator="infomsg"
+              fontSize="fs12"
+              fontWeight="regular"
+              mobileFontFamily="secondary"
+              text=""
+              textAlign="center"
+            />
+          </ForwardRef>
+        </React.Fragment>
+        <BonusPointsAvailability
+          bonusPoints={
+            Array [
+              Object {
+                "buttonText": "undefined ",
+                "dataLocator": "usedonbtn",
+                "disabled": true,
+              },
+              Object {
+                "buttonText": undefined,
+                "dataLocator": "appliedtoorderbtn",
+                "disabled": false,
+              },
+              Object {
+                "buttonText": undefined,
+                "dataLocator": "availableforfutureusebtn",
+                "disabled": true,
+              },
+            ]
+          }
+          className="availability-msg"
+          labels={
+            Object {
+              "common": Object {
+                "lbl_common_details": "",
+              },
+              "myPlaceRewards": Object {
+                "lbl_bonus_points_apply_any_day": "",
+                "lbl_bonus_points_msg": "",
+                "lbl_place_rewards_bonus": "",
+                "lbl_place_rewards_day": "",
+                "lbl_place_rewards_points": "",
+              },
+            }
+          }
+        />
+        <ForwardRef
+          anchorVariation="primary"
+          className="details-link"
+          customStyle={Object {}}
+          data-locator="detailslink"
+          fontSizeVariation="medium"
+          href="#"
+          onPress={[Function]}
+          text=""
+          underline={true}
+          visible={false}
+        />
+      </React.Fragment>
+    }
+    className=""
+    defaultOpen={false}
+    header={
+      <ForwardRef
+        className="elem-mb-SM"
+        data-locator="bonuspointsdayhdr"
+      >
+        <ForwardRef>
+          <ForwardRef
+            color="orange.800"
+            component="span"
+            fontSize="fs16"
+            fontWeight="extrabold"
+            mobileFontFamily="primary"
+            text=""
+          />
+        </ForwardRef>
+        <ForwardRef>
+          <ForwardRef
+            color="primary.main"
+            component="span"
+            fontSize="fs16"
+            fontWeight="extrabold"
+            mobileFontFamily="primary"
+            text=""
+          />
+        </ForwardRef>
+        <ForwardRef
+          color="pink.500"
+          component="span"
+          fontSize="fs16"
+          fontWeight="extrabold"
+          mobileFontFamily="primary"
+          text=""
+        />
+      </ForwardRef>
+    }
+    iconLocator="arrowicon"
+  />
+</View>
+`;
+
+exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 1`] = `
+<View>
+  <CollapsibleContainer
+    body={
+      <React.Fragment>
+        <React.Fragment>
+          <ForwardRef>
+            <ForwardRef
+              data-locator="msgtextinbold"
+              fontSize="fs14"
+              fontWeight="extrabold"
+              mobileFontFamily="secondary"
+              text=""
+              textAlign="center"
+            />
+          </ForwardRef>
+          <ForwardRef>
+            <ForwardRef
+              data-locator="infomsg"
+              fontSize="fs12"
+              fontWeight="regular"
+              mobileFontFamily="secondary"
+              text=""
+              textAlign="center"
+            />
+          </ForwardRef>
+        </React.Fragment>
+        <BonusPointsAvailability
+          bonusPoints={
+            Array [
+              Object {
+                "buttonText": "undefined ",
+                "dataLocator": "usedonbtn",
+                "disabled": true,
+              },
+              Object {
+                "buttonText": undefined,
+                "dataLocator": "availabletodaybtn",
+                "disabled": false,
+              },
+              Object {
+                "buttonText": undefined,
+                "dataLocator": "availableforfutureusebtn",
+                "disabled": true,
+              },
+            ]
+          }
+          className="availability-msg"
+          labels={
+            Object {
+              "common": Object {
+                "lbl_common_details": "",
+              },
+              "myPlaceRewards": Object {
+                "lbl_bonus_points_apply_any_day": "",
+                "lbl_bonus_points_msg": "",
+                "lbl_place_rewards_bonus": "",
+                "lbl_place_rewards_day": "",
+                "lbl_place_rewards_points": "",
+              },
+            }
+          }
+        />
+        <ForwardRef
+          anchorVariation="primary"
+          className="details-link"
+          customStyle={Object {}}
+          data-locator="detailslink"
+          fontSizeVariation="medium"
+          href="#"
+          onPress={[Function]}
+          text=""
+          underline={true}
+          visible={false}
+        />
+      </React.Fragment>
+    }
+    className=""
+    defaultOpen={false}
+    header={
+      <ForwardRef
+        className="elem-mb-SM"
+        data-locator="bonuspointsdayhdr"
+      >
+        <ForwardRef>
+          <ForwardRef
+            color="orange.800"
+            component="span"
+            fontSize="fs16"
+            fontWeight="extrabold"
+            mobileFontFamily="primary"
+            text=""
+          />
+        </ForwardRef>
+        <ForwardRef>
+          <ForwardRef
+            color="primary.main"
+            component="span"
+            fontSize="fs16"
+            fontWeight="extrabold"
+            mobileFontFamily="primary"
+            text=""
+          />
+        </ForwardRef>
+        <ForwardRef
+          color="pink.500"
+          component="span"
+          fontSize="fs16"
+          fontWeight="extrabold"
+          mobileFontFamily="primary"
+          text=""
+        />
+      </ForwardRef>
+    }
+    iconLocator="arrowicon"
+  />
+</View>
+`;
+
+exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisabled 1`] = `
+<View>
+  <CollapsibleContainer
+    body={
+      <React.Fragment>
+        <React.Fragment>
+          <ForwardRef>
+            <ForwardRef
+              data-locator="msgtextinbold"
+              fontSize="fs14"
+              fontWeight="extrabold"
+              mobileFontFamily="secondary"
+              text=""
+              textAlign="center"
+            />
+          </ForwardRef>
+          <ForwardRef>
+            <ForwardRef
+              data-locator="infomsg"
+              fontSize="fs12"
+              fontWeight="regular"
+              mobileFontFamily="secondary"
+              text=""
+              textAlign="center"
+            />
+          </ForwardRef>
+        </React.Fragment>
+        <BonusPointsAvailability
+          bonusPoints={
+            Array [
+              Object {
+                "buttonText": "undefined 15/7",
+                "dataLocator": "usedonbtn",
+                "disabled": true,
+              },
+              Object {
+                "buttonText": undefined,
+                "dataLocator": "availabletodaybtn",
+                "disabled": false,
+              },
+              Object {
+                "buttonText": undefined,
+                "dataLocator": "availableforfutureusebtn",
+                "disabled": true,
+              },
+            ]
+          }
+          className="availability-msg"
+          labels={
+            Object {
+              "common": Object {
+                "lbl_common_details": "",
+              },
+              "myPlaceRewards": Object {
+                "lbl_bonus_points_apply_any_day": "",
+                "lbl_bonus_points_msg": "",
+                "lbl_place_rewards_bonus": "",
+                "lbl_place_rewards_day": "",
+                "lbl_place_rewards_points": "",
+              },
+            }
+          }
+        />
+        <ForwardRef
+          anchorVariation="primary"
+          className="details-link"
+          customStyle={Object {}}
+          data-locator="detailslink"
+          fontSizeVariation="medium"
+          href="#"
+          onPress={[Function]}
+          text=""
+          underline={true}
+          visible={false}
+        />
+      </React.Fragment>
+    }
+    className=""
+    defaultOpen={false}
+    header={
+      <ForwardRef
+        className="elem-mb-SM"
+        data-locator="bonuspointsdayhdr"
+      >
+        <ForwardRef>
+          <ForwardRef
+            color="orange.800"
+            component="span"
+            fontSize="fs16"
+            fontWeight="extrabold"
+            mobileFontFamily="primary"
+            text=""
+          />
+        </ForwardRef>
+        <ForwardRef>
+          <ForwardRef
+            color="primary.main"
+            component="span"
+            fontSize="fs16"
+            fontWeight="extrabold"
+            mobileFontFamily="primary"
+            text=""
+          />
+        </ForwardRef>
+        <ForwardRef
+          color="pink.500"
+          component="span"
+          fontSize="fs16"
+          fontWeight="extrabold"
+          mobileFontFamily="primary"
+          text=""
+        />
+      </ForwardRef>
+    }
+    iconLocator="arrowicon"
+  />
+</View>
+`;
+
+exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] = `
+<View>
+  <CollapsibleContainer
+    body={
+      <React.Fragment>
+        <ForwardRef>
+          <ForwardRef
+            data-locator="infomsg"
+            fontSize="fs12"
+            fontWeight="regular"
+            mobileFontFamily="secondary"
+            text=""
+            textAlign="center"
+          />
+        </ForwardRef>
+        <BonusPointsAvailability
+          bonusPoints={
+            Array [
+              Object {
+                "buttonText": "undefined ",
+                "dataLocator": "usedonbtn",
+                "disabled": true,
+              },
+            ]
+          }
+          className="availability-msg"
+          labels={
+            Object {
+              "common": Object {
+                "lbl_common_details": "",
+              },
+              "myPlaceRewards": Object {
+                "lbl_bonus_points_apply_any_day": "",
+                "lbl_bonus_points_msg": "",
+                "lbl_place_rewards_bonus": "",
+                "lbl_place_rewards_day": "",
+                "lbl_place_rewards_points": "",
+              },
+            }
+          }
+        />
+        <ForwardRef
+          anchorVariation="primary"
+          className="details-link"
+          customStyle={Object {}}
+          data-locator="detailslink"
+          fontSizeVariation="medium"
+          href="#"
+          onPress={[Function]}
+          text=""
+          underline={true}
+          visible={false}
+        />
+      </React.Fragment>
+    }
+    className=""
+    defaultOpen={false}
+    header={
+      <ForwardRef
+        className="elem-mb-SM"
+        data-locator="bonuspointsdayhdr"
+      >
+        <ForwardRef>
+          <ForwardRef
+            color="orange.800"
+            component="span"
+            fontSize="fs16"
+            fontWeight="extrabold"
+            mobileFontFamily="primary"
+            text=""
+          />
+        </ForwardRef>
+        <ForwardRef>
+          <ForwardRef
+            color="primary.main"
+            component="span"
+            fontSize="fs16"
+            fontWeight="extrabold"
+            mobileFontFamily="primary"
+            text=""
+          />
+        </ForwardRef>
+        <ForwardRef
+          color="pink.500"
+          component="span"
+          fontSize="fs16"
+          fontWeight="extrabold"
+          mobileFontFamily="primary"
+          text=""
+        />
+      </ForwardRef>
+    }
+    iconLocator="arrowicon"
+  />
+</View>
+`;
