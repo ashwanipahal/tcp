@@ -165,7 +165,7 @@ class PaymentView extends React.Component<Props> {
               dto={dto}
               labels={labels}
               setSelectedCard={this.setSelectedCard}
-              setDeleteModalMountedState={this.setDeleteModalMountedState}
+              setDeleteModalMountedState={setDeleteModalMountedState}
               toggleModal={this.setDeleteModalMountState}
               onConfirm={this.onConfirm}
               onClose={this.onClose}

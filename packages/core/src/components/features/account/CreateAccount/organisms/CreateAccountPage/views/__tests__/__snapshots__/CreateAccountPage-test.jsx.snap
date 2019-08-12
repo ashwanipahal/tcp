@@ -68,6 +68,7 @@ exports[`Create Account Page should render correctly 1`] = `
       shouldValidate={[Function]}
       shouldWarn={[Function]}
       submitAsSideEffect={false}
+      tooltipContent={<PasswordRequirement />}
       touchOnBlur={true}
       touchOnChange={false}
       updateUnregisteredFields={false}

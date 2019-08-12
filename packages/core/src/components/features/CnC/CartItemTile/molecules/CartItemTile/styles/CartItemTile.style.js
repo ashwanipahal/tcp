@@ -45,6 +45,9 @@ export default css`
   .responsive-edit-css {
     padding-top: 2px;
   }
+  .imageWrapper {
+    position: relative;
+  }
 
   .product-tile-wrapper {
     flex-wrap: nowrap;
@@ -139,5 +142,15 @@ export default css`
     }
   }
 
+  .soldOutLabel {
+    width: 89px;
+    height: 18px;
+    background-color: ${props => props.theme.colorPalette.red[500]};
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

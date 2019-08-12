@@ -146,7 +146,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
-        textAlign="left"
+        textAlign="center"
       >
         5
       </Styled(BodyCopy)>

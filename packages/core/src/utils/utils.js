@@ -51,6 +51,8 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv, isCASite, lang) => {
     unboxKey: `${processEnv[`RWD_WEB_UNBXD_API_KEY_${country}_${lang}`]}/${
       processEnv[`RWD_WEB_UNBXD_SITE_KEY_${country}_${lang}`]
     }`,
+    CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
+    CANDID_API_URL: process.env.RWD_WEB_CANDID_URL,
   };
 };
 

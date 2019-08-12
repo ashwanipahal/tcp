@@ -39,6 +39,10 @@ const RoutesMap = [
     resolver: '/Bag',
   },
   { path: '/cookiesTesting', resolver: '/cookiesTesting' },
+  {
+    path: '/gallery',
+    resolver: '/gallery',
+  },
 ];
 
 module.exports = RoutesMap;
