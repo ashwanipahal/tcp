@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-export const customStyles = css`
+export default css`
   display: flex;
   flex: 1;
   padding-top: 6px;
@@ -11,13 +11,11 @@ export const customStyles = css`
     width: 13px;
     padding: 3px 13px 0 0;
   }
-  span {
-    font-weight: bold;
-    font-size: 16px;
+  .removeItem {
+    margin: -11px 27px;
   }
-`;
-export default css`
-  margin: 15px 0;
-  background: #fff;
-  padding: 20px;
+  .removeAnchor {
+    margin: 0 2px;
+    background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
+  }
 `;
