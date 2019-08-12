@@ -11,8 +11,6 @@ type Props = {
   stackedCTAButtons: Array,
   linkList: Array,
   className: string,
-  stackedCTAButtons: Array,
-  linkList: Array,
   divImageCTACarousel: Array,
   headerText: Array,
   promoBanner: Array,
