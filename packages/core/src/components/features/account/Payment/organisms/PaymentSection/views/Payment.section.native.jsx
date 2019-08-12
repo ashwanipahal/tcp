@@ -21,6 +21,8 @@ type Props = {
   checkbalanceValueInfo: any,
   onDeleteCard: any,
   setDeleteModalMountState: any,
+  setDeleteModalMountedState: any,
+  deleteModalMountedState: any,
 };
 
 class PaymentView extends React.Component<Props> {
@@ -31,6 +33,11 @@ class PaymentView extends React.Component<Props> {
       selectedCard: {},
     };
   }
+
+  componentWillReceiveProps = nextProps => {
+    if (!nextProps.deleteModalMountedState)
+      this.setState({ setDeleteModalMountedState: nextProps.deleteModalMountedState });
+  };
 
   setSelectedCard = card => {
     this.setState({
@@ -52,8 +59,7 @@ class PaymentView extends React.Component<Props> {
   };
 
   onClose = () => {
-    const { setDeleteModalMountState } = this.props;
-    setDeleteModalMountState({ setDeleteModalMountedState: false });
+    this.setDeleteModalMountState({ setDeleteModalMountedState: false });
   };
 
   render() {

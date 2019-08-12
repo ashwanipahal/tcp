@@ -119,12 +119,6 @@ exports[`LoginForm component should renders correctly 1`] = `
       component={[Function]}
       dataLocator="rememberMe"
       disabled={false}
-      name="rememberMe"
-    />
-    <Field
-      component={[Function]}
-      dataLocator="rememberMe"
-      disabled={false}
       name="userTouchId"
       rightText="User Touch ID"
     />

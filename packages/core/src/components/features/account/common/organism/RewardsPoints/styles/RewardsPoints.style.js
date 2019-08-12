@@ -4,13 +4,28 @@ const RewardsPointsStyles = css`
   .progress-container {
     height: ${props => props.theme.spacing.ELEM_SPACING.SM};
     border-radius: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-    background-color: ${props => props.theme.colorPalette.orange['300']};
+    background-color: ${props => props.theme.colorPalette.userTheme.mprLight};
     width: 100%;
     overflow: hidden;
   }
 
   .progressbar-rewards {
-    background-color: ${props => props.theme.colorPalette.orange['800']};
+    background-color: ${props => props.theme.colorPalette.userTheme.mpr};
+    width: 0%;
+    height: 100%;
+    position: relative;
+  }
+
+  .progress-container_plcc {
+    height: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    border-radius: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    background-color: ${props => props.theme.colorPalette.userTheme.plccLight};
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .progressbar-rewards_plcc {
+    background-color: ${props => props.theme.colorPalette.userTheme.plcc};
     width: 0%;
     height: 100%;
     position: relative;

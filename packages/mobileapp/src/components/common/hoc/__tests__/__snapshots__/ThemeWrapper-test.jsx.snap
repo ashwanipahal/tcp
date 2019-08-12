@@ -85,6 +85,12 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "primary": "#1a1a1a",
           "secondary": "#575757",
         },
+        "userTheme": Object {
+          "mpr": "#f7971f",
+          "mprLight": "#fdead2",
+          "plcc": "#254f6e",
+          "plccLight": "#dbebf8",
+        },
         "white": "#fff",
         "yellow": Object {
           "500": "#ffe700",
