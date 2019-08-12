@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RemoveSoldOut Component ItemAvailability should render correctly 1`] = `
+<Fragment>
+  <div
+    className=""
+  >
+    <Styled(BodyCopy)
+      className="removeItem"
+      color="text.primary"
+      component="span"
+      fontFamily="secondary"
+      fontSize="fs12"
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        className="removeAnchor"
+        data-locator="miniBag-removeItems"
+        fontSizeVariation="medium"
+        noLink={true}
+        to=""
+        underline={true}
+      >
+         undefined 
+      </Styled(Anchor)>
+    </Styled(BodyCopy)>
+  </div>
+</Fragment>
+`;
