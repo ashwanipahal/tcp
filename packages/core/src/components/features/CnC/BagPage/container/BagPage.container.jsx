@@ -28,8 +28,8 @@ export class BagPageContainer extends React.Component<Props> {
   };
 
   render() {
-    const { labels, totalCount } = this.props;
-    return <BagPage labels={labels} totalCount={totalCount} />;
+    const { labels, totalCount, orderItemsCount } = this.props;
+    return <BagPage labels={labels} totalCount={totalCount} orderItemsCount={orderItemsCount} />;
   }
 }
 
