@@ -38,20 +38,18 @@ const PaymentWrapper = styled.View`
 `;
 
 const RecaptchaWrapper = styled.View`
-  min-height: 160px;
+  height: 330px;
   flex: 1;
 `;
 
 const RecaptchaContainer = styled.View`
   margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
-  min-height: 160px;
+  height: 340px;
   flex: 1;
 `;
 
 const CheckBalanceContainer = styled.View`
-  width: 190px;
   height: 40px;
-  flex: 0.5;
 `;
 
 export {

@@ -23,9 +23,20 @@ import createValidateMethod from '../../../../../../../utils/formValidation/crea
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 
 class PaymentItem extends React.PureComponent<Props> {
+  handleGetGiftCardBalanceClick = (formData, card, onGetBalanceCard) => {
+    onGetBalanceCard({ formData, card });
+  };
 
   render() {
-    const { paymentInfo, handleComponentChange, isGiftCard, change } = this.props;
+    const {
+      paymentInfo,
+      handleComponentChange,
+      isGiftCard,
+      change,
+      handleSubmit,
+      onGetBalanceCard,
+      card,
+    } = this.props;
     const variation = paymentInfo && paymentInfo.variation && paymentInfo.variation.toLowerCase();
     const onMessage = event => {
       if (event && event.nativeEvent.data) {
@@ -112,6 +123,10 @@ class PaymentItem extends React.PureComponent<Props> {
                   fill="BLUE"
                   text="Check Balance"
                   buttonVariation="variable-width"
+                  width="190px"
+                  onPress={handleSubmit(formData =>
+                    this.handleGetGiftCardBalanceClick(formData, card, onGetBalanceCard)
+                  )}
                 />
               </CheckBalanceContainer>
             )}

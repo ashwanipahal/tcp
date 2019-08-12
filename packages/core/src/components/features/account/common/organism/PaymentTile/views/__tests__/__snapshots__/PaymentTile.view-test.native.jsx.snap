@@ -10,7 +10,14 @@ exports[`PaymentTile component should render correctly 1`] = `
     text=""
   />
   <Styled(View) />
-  <PaymentItem
+  <ReduxForm
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="PaymentItemForm"
+    getFormState={[Function]}
+    isGiftCard={false}
+    keepDirtyOnReinitialize={false}
     paymentInfo={
       Object {
         "icon": "",
@@ -20,9 +27,28 @@ exports[`PaymentTile component should render correctly 1`] = `
         "variation": undefined,
       }
     }
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    validate={[Function]}
   />
   <Styled(View) />
-  <PaymentItem
+  <ReduxForm
+    card={null}
+    destroyOnUnmount={true}
+    enableReinitialize={true}
+    forceUnregisterOnUnmount={false}
+    form="PaymentItemForm"
+    getFormState={[Function]}
+    isGiftCard={true}
+    keepDirtyOnReinitialize={false}
     paymentInfo={
       Object {
         "icon": "",
@@ -32,6 +58,17 @@ exports[`PaymentTile component should render correctly 1`] = `
         "variation": undefined,
       }
     }
+    persistentSubmitErrors={false}
+    pure={true}
+    shouldAsyncValidate={[Function]}
+    shouldError={[Function]}
+    shouldValidate={[Function]}
+    shouldWarn={[Function]}
+    submitAsSideEffect={false}
+    touchOnBlur={true}
+    touchOnChange={false}
+    updateUnregisteredFields={false}
+    validate={[Function]}
   />
   <Styled(View)>
     <Styled(CustomButton)

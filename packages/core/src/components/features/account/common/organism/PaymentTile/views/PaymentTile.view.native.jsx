@@ -39,12 +39,16 @@ export class PaymentTile extends React.PureComponent<Props> {
       icon: !isAddVariation ? getIconCard(cardIconMapping[card.ccBrand]) : '',
     };
     return (
-      <PaymentItem paymentInfo={cardTileProps} handleComponentChange={handleComponentChange} isGiftCard={false} />
+      <PaymentItem
+        paymentInfo={cardTileProps}
+        handleComponentChange={handleComponentChange}
+        isGiftCard={false}
+      />
     );
   };
 
   getGiftCardView = (card, isAddVariation) => {
-    const { labels, handleComponentChange } = this.props;
+    const { labels, handleComponentChange, onGetBalanceCard } = this.props;
     const cardTileProps = {
       title: labels.lbl_overview_giftCard,
       text: !isAddVariation
@@ -57,7 +61,13 @@ export class PaymentTile extends React.PureComponent<Props> {
       icon: !isAddVariation ? getIconCard(cardIconMapping.GC) : '',
     };
     return (
-      <PaymentItem paymentInfo={cardTileProps} handleComponentChange={handleComponentChange} isGiftCard />
+      <PaymentItem
+        paymentInfo={cardTileProps}
+        handleComponentChange={handleComponentChange}
+        isGiftCard
+        card={card}
+        onGetBalanceCard={onGetBalanceCard}
+      />
     );
   };
 
