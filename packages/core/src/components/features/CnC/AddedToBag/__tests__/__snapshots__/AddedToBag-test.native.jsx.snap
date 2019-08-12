@@ -22,6 +22,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
       color="black"
       fontSize="fs16"
       fontWeight="semibold"
+      locator=""
       mobilefontFamily={
         Array [
           "secondary",
@@ -53,6 +54,7 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
         customStyle={Object {}}
         data-locator="addedToBag-continueShopping"
         fontSizeVariation="medium"
+        locator=""
         noLink={true}
         text=""
         to=""

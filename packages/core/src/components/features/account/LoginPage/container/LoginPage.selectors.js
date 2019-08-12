@@ -33,6 +33,12 @@ export const getUserName = createSelector(
   loginState => loginState && loginState.get('firstName')
 );
 
+export const getUserFullName = createSelector(
+  getLoginState,
+  loginState => {
+    return loginState && ` ${loginState.get('firstName')} ${loginState.get('lastName')}`;
+  }
+);
 export const getLabels = state => state.Labels.global;
 
 export const getPointsToNextRewardState = createSelector(

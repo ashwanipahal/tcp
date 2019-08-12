@@ -15,9 +15,9 @@ const SectionStyle = css`
 const getTextBaseStyle = props => {
   const { theme } = props;
   return `
-    color: ${theme.colorPalette.black};
+    color: ${theme.colorPalette.red[500]};
     border:1px solid ${theme.colorPalette.red[500]};
-    padding:${theme.spacing.ELEM_SPACING.XXS};
+    padding:${theme.spacing.ELEM_SPACING.MED};
     margin: ${theme.spacing.ELEM_SPACING.XS};
     `;
 };

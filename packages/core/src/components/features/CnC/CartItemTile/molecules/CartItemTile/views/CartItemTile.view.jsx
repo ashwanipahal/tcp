@@ -62,6 +62,43 @@ class CartItemTile extends React.Component {
     );
   };
 
+  getItemDetails = (productDetail, labels, pageView) => {
+    return (
+      <Row className="padding-top-15 padding-bottom-20" fullBleed>
+        {pageView !== 'myBag' && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
+        <Col className="save-for-later-label" colSize={{ small: 1, medium: 1, large: 3 }}>
+          {productDetail.miscInfo.availability === 'SOLDOUT' && (
+            <BodyCopy fontFamily="secondary" fontSize="fs12" component="span">
+              <u>Remove</u>
+            </BodyCopy>
+          )}
+          {productDetail.miscInfo.availability === 'UNAVAILABLE' && (
+            <BodyCopy fontFamily="secondary" color="error" fontSize="fs12" component="span">
+              <u>Update</u>
+            </BodyCopy>
+          )}
+          {productDetail.miscInfo.availability === 'OK' && (
+            <BodyCopy fontFamily="secondary" fontSize="fs12" component="span">
+              <u>{labels.saveForLater}</u>
+            </BodyCopy>
+          )}
+        </Col>
+        {pageView === 'myBag' && (
+          <BodyCopy
+            className="price-label"
+            fontFamily="secondary"
+            component="span"
+            fontSize="fs16"
+            fontWeight={['extrabold']}
+            dataLocator={getLocator('cart_item_total_price')}
+          >
+            {`$${productDetail.itemInfo.price.toFixed(2)}`}
+          </BodyCopy>
+        )}
+      </Row>
+    );
+  };
+
   getEntireData = (productDetail, labels, pageView) => {
     return (
       <React.Fragment>
@@ -83,6 +120,7 @@ class CartItemTile extends React.Component {
               fontFamily="secondary"
               component="span"
               fontSize="fs12"
+              color="gray.800"
               dataLocator={getLocator('cart_item_color')}
             >
               {`${productDetail.itemInfo.color}`}
@@ -92,43 +130,12 @@ class CartItemTile extends React.Component {
               fontFamily="secondary"
               component="span"
               fontSize="fs12"
+              color="gray.600"
             >
               |
             </BodyCopy>
           </div>
 
-          {productDetail.itemInfo.fit && (
-            <div>
-              <div className="color-size-fit-label color-fit-size-desktop">
-                <BodyCopy
-                  fontFamily="secondary"
-                  component="span"
-                  fontSize="fs12"
-                  fontWeight={['extrabold']}
-                >
-                  {labels.fit}
-                  {':'}
-                </BodyCopy>
-              </div>
-              <BodyCopy
-                className="padding-left-10"
-                fontFamily="secondary"
-                component="span"
-                fontSize="fs12"
-                dataLocator="addedtobag-productsize"
-              >
-                {`${productDetail.itemInfo.fit}`}
-              </BodyCopy>
-              <BodyCopy
-                className="color-fit-size-separator"
-                fontFamily="secondary"
-                component="span"
-                fontSize="fs12"
-              >
-                |
-              </BodyCopy>
-            </div>
-          )}
           <div>
             <div className="color-size-fit-label color-fit-size-desktop">
               <BodyCopy
@@ -145,15 +152,18 @@ class CartItemTile extends React.Component {
               fontFamily="secondary"
               component="span"
               fontSize="fs12"
+              color="gray.800"
               dataLocator={getLocator('cart_item_size')}
             >
               {`${productDetail.itemInfo.size}`}
+              {this.getProductFit(productDetail)}
             </BodyCopy>
             <BodyCopy
               className="color-fit-size-separator"
               fontFamily="secondary"
               component="span"
               fontSize="fs12"
+              color="gray.600"
             >
               |
             </BodyCopy>
@@ -176,6 +186,7 @@ class CartItemTile extends React.Component {
               fontFamily="secondary"
               component="span"
               fontSize="fs12"
+              color="gray.800"
               dataLocator="addedtobag-productqty"
             >
               {`${productDetail.itemInfo.qty}`}
@@ -223,7 +234,7 @@ class CartItemTile extends React.Component {
               fontSize="fs10"
               dataLocator={getLocator('cart_item_upc')}
             >
-              {`Upc: ${productDetail.productInfo.upc}`}
+              {`UPC: ${productDetail.productInfo.upc}`}
             </BodyCopy>
           </Col>
         </Row>
@@ -243,19 +254,30 @@ class CartItemTile extends React.Component {
           fontWeight={['extrabold']}
         >
           {pageView === 'myBag'
-            ? `$${productDetail.itemInfo.unitOfferPrice}`
-            : `$${productDetail.itemInfo.price}`}
+            ? `$${productDetail.itemInfo.unitOfferPrice.toFixed(2)}`
+            : `$${productDetail.itemInfo.price.toFixed(2)}`}
         </BodyCopy>
         {pageView === 'myBag' && productDetail.itemInfo.itemPrice !== productDetail.itemInfo.price && (
-          <BodyCopy className="list-price" fontFamily="secondary" component="span" fontSize="fs12">
-            {`$${productDetail.itemInfo.itemPrice}`}
+          <BodyCopy
+            color="gray.800"
+            className="list-price"
+            fontFamily="secondary"
+            component="span"
+            fontSize="fs12"
+          >
+            {`$${productDetail.itemInfo.itemUnitPrice.toFixed(2)}`}
           </BodyCopy>
         )}
       </Col>
     );
   };
 
-  // eslint-disable-next-line complexity
+  getProductFit = productDetail => {
+    return !productDetail.itemInfo.fit || productDetail.itemInfo.fit === 'regular'
+      ? ' '
+      : ` ${productDetail.itemInfo.fit}`;
+  };
+
   render() {
     const { isEdit } = this.state;
     const { productDetail, labels, className, pageView } = this.props;
@@ -297,7 +319,7 @@ class CartItemTile extends React.Component {
                   textAlign="center"
                   fontSize="fs12"
                 >
-                  SOLD OUT
+                  {labels.soldOut}
                 </BodyCopy>
               )}
             </div>
@@ -382,38 +404,7 @@ class CartItemTile extends React.Component {
                 </BodyCopy>
               </Col>
             </Row>
-            <Row className="padding-top-15 padding-bottom-20" fullBleed>
-              {pageView !== 'myBag' && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
-              <Col className="save-for-later-label" colSize={{ small: 1, medium: 1, large: 3 }}>
-                {productDetail.miscInfo.availability === 'SOLDOUT' && (
-                  <BodyCopy fontFamily="secondary" fontSize="fs12" component="span">
-                    <u>Remove</u>
-                  </BodyCopy>
-                )}
-                {productDetail.miscInfo.availability === 'UNAVAILABLE' && (
-                  <BodyCopy fontFamily="secondary" color="error" fontSize="fs12" component="span">
-                    <u>Update</u>
-                  </BodyCopy>
-                )}
-                {productDetail.miscInfo.availability === 'OK' && (
-                  <BodyCopy fontFamily="secondary" fontSize="fs12" component="span">
-                    <u>{labels.saveForLater}</u>
-                  </BodyCopy>
-                )}
-              </Col>
-              {pageView === 'myBag' && (
-                <BodyCopy
-                  className="price-label"
-                  fontFamily="secondary"
-                  component="span"
-                  fontSize="fs16"
-                  fontWeight={['extrabold']}
-                  dataLocator={getLocator('cart_item_total_price')}
-                >
-                  {`$${productDetail.itemInfo.price}`}
-                </BodyCopy>
-              )}
-            </Row>
+            {this.getItemDetails(productDetail, labels, pageView)}
           </Col>
         </Row>
         {pageView === 'myBag' && (

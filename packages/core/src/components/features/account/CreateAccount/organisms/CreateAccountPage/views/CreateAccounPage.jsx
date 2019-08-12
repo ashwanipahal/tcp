@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/CreateAccounPage.style';
 import CreateAccountForm from '../../../molecules/CreateAccountForm';
+import PasswordRequirement from '../../../../ResetPassword/molecules/PasswordRequirement';
 import CreateAccountTopSection from '../../../molecules/CreateAccountTopSection';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 
@@ -82,6 +83,7 @@ class CreateAccounPage extends React.Component {
             initialValues={{ rememberMe: true }}
             confirmHideShowPwd={confirmHideShowPwd}
             onAlreadyHaveAnAccountClick={onAlreadyHaveAnAccountClick}
+            tooltipContent={<PasswordRequirement labels={labels.password} />}
           />
         </div>
       </div>

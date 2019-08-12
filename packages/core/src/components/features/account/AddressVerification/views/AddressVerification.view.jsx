@@ -248,6 +248,7 @@ export class AddressVerification extends React.Component<Props> {
           heading={heading}
           fixedWidth
           maxWidth={spacing.MODAL_WIDTH.SMALL}
+          minHeight="675px"
         >
           <div className="addressVerification">
             <BodyCopy

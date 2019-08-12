@@ -12,6 +12,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         fontFamily="secondary"
         fontSize="fs16"
         fontWeight="semibold"
+        locator=""
         text="Coupon Code"
       />
       <Styled(BodyCopy)
@@ -19,6 +20,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         fontFamily="secondary"
         fontSize="fs12"
         fontWeight="semibold"
+        locator=""
         style={
           Object {
             "paddingLeft": 12,
@@ -52,6 +54,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         external={true}
         fill="WHITE"
         fullWidth=""
+        locator=""
         onPress={[Function]}
         style={
           Object {
