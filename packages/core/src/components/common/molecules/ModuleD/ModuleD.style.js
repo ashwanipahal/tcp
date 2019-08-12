@@ -1,10 +1,6 @@
 import { css } from 'styled-components';
 
 export default css`
-  a {
-    color: ${props => props.theme.colors.TEXT.DARKGRAY};
-  }
-
   .moduleD_button {
     margin: 19px auto 32px;
     padding: 12px 0;

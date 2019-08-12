@@ -3,6 +3,8 @@ import buttonStyles from '../Button/Button.style';
 
 const AnchorStyles = css`
   font-family: ${props => props.theme.fonts.secondaryFontFamily};
+  color: inherit;
+
   ${props =>
     props.anchorVariation === 'primary'
       ? `
@@ -25,6 +27,12 @@ const AnchorStyles = css`
     props.anchorVariation === 'grayed'
       ? `
       color: ${props.theme.colors.ANCHOR.GRAYED};
+    `
+      : ''};
+  ${props =>
+    props.anchorVariation === 'white'
+      ? `
+      color: ${props.theme.colors.WHITE};
     `
       : ''};
   ${props =>
