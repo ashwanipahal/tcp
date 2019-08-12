@@ -39,6 +39,8 @@ module.exports = {
     '!**/__mocks__/**',
     '!**/*.native.js',
     '!**/*.native.jsx',
+    '!**/ProductListing/**',
+    '!**/productListing/productListing.js',
   ],
   coveragePathIgnorePatterns: [
     '/node_modules/',

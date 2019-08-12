@@ -10,6 +10,8 @@ export default css`
     padding: 20px 0;
     margin: 5px 0;
   }
+  .bread-crumb,
+  .sidebar,
   .product-list {
     background: white;
     display: flex;

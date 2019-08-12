@@ -35,6 +35,7 @@ export const extractCategory = category => {
   return category;
 };
 
+// eslint-disable-next-line
 export const findCategoryIdandName = (data, category) => {
   const index = getIndex(data);
   let iterator = 0;
@@ -48,10 +49,16 @@ export const findCategoryIdandName = (data, category) => {
     ) {
       categoryFound.push(getRequiredCategoryData(data[iterator]));
     } else if (
+      data[iterator].subCategories &&
       data[iterator].subCategories.Categories &&
       data[iterator].subCategories.Categories.length
     ) {
       categoryFound = findCategoryIdandName(data[iterator].subCategories.Categories, category);
+      if (categoryFound.length) {
+        categoryFound.push(getRequiredCategoryData(data[iterator]));
+      }
+    } else if (data[iterator].subCategories && data[iterator].subCategories.length) {
+      categoryFound = findCategoryIdandName(data[iterator].subCategories, category);
       if (categoryFound.length) {
         categoryFound.push(getRequiredCategoryData(data[iterator]));
       }

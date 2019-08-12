@@ -47,7 +47,6 @@ const UnbxdAPIClient = (apiConfig, reqObj) => {
   // make the api call
   if (requestType === 'get') {
     const unbxdUID = readCookie('unbxd.userId', document && document.cookie);
-    console.log('unbxdUID', unbxdUID);
     if (isClient() && unbxdUID) {
       // eslint-disable-next-line
       reqObj.body.uid = unbxdUID;

@@ -15,18 +15,23 @@ class GlobalNavigationMenuDesktopL2 extends React.Component {
   menuGroupings = () => {
     const { navigationTree } = this.props;
     const groups = [];
-    let tempGroups = [];
     let menuItemCount = 0;
     const maxItemsInGroup = 1;
 
-    if (navigationTree.subCategories && navigationTree.subCategories.Categories) {
-      tempGroups.push({
-        groupName: 'Categories',
-        menuItems: navigationTree.subCategories.Categories,
-      });
+    const subCategoryArr =
+      (navigationTree.subCategories && Object.keys(navigationTree.subCategories)) || [];
+    for (let i = 0; i < subCategoryArr.length; i++) {
+      let tempGroups = [];
+      if (navigationTree.subCategories && navigationTree.subCategories[subCategoryArr[i]]) {
+        tempGroups.push({
+          groupName: subCategoryArr[i],
+          menuItems: navigationTree.subCategories[subCategoryArr[i]],
+        });
+      }
       groups.push(tempGroups);
     }
     return groups;
+
     // Group items that have leve then maxItemsInGroup in the same group
     // for (let index = 0; index < navigationTree.subCategories.Categories.length; index += 1) {
     //   const group = navigationTree.subCategories.Categories[index];
@@ -132,8 +137,8 @@ function L2({ menuItems, activeCategoryIds, isTopNav }) {
 
         return (
           <React.Fragment>
-            {
-              /* item.displayToCustomer && */ <li
+            {item.categoryContent.name && (
+              <li
                 key={item.categoryContent.id}
                 id={`list-item-${item.categoryContent.id}`}
                 role="none"
@@ -143,7 +148,7 @@ function L2({ menuItems, activeCategoryIds, isTopNav }) {
                   <L3 menuItems={item.subCategories} activeCategoryIds={activeCategoryIds} />
                 )}
               </li>
-            }
+            )}
           </React.Fragment>
         );
       })}
@@ -154,17 +159,21 @@ function L2({ menuItems, activeCategoryIds, isTopNav }) {
 function L3({ menuItems, activeCategoryIds }) {
   return (
     <ol className="sub-menu-category sub-menu-category-level-three" role="none">
-      {menuItems.map(({ url, name, categoryId, displayToCustomer }) => {
+      {menuItems.map(({ categoryContent: { name, categoryId, displayToCustomer }, url }) => {
         // let isActive = activeCategoryIds && categoryId === activeCategoryIds[2];
         // let className = cssClassName('sub-menu-category-item navigation-level-three-item ');
 
         return (
           <React.Fragment>
-            {displayToCustomer && (
-              <li key={categoryId} id={`list-item-${categoryId}`} role="none">
+            {
+              /* displayToCustomer && */ <li
+                key={categoryId}
+                id={`list-item-${categoryId}`}
+                role="none"
+              >
                 <a href={url}>{name}</a>
               </li>
-            )}
+            }
           </React.Fragment>
         );
       })}

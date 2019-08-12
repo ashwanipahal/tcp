@@ -16,6 +16,7 @@ const Abstractor = {
     return Abstractor.processData(mock.data.navigation);
   },
   processData: navLinkList => {
+    // eslint-disable-next-line
     return navLinkList.map(listItem => {
       const subCategories = {};
       listItem.subCategories.map(subCategory => {
@@ -38,6 +39,18 @@ const Abstractor = {
         subCategories[subCategory.categoryContent.groupIdentifierName || 'Lorem Ipsum'].push(
           subCategory
         );
+        subCategory.subCategories.map(L3 => {
+          // eslint-disable-next-line
+          L3.url =
+            L3.categoryContent.seoUrl ||
+            `/us/${
+              L3.categoryContent.seoToken.startsWith('content-')
+                ? L3.categoryContent.seoToken.replace(new RegExp('content-', 'g'), 'content/')
+                : // eslint-disable-next-line
+                  'c/' + (L3.categoryContent.seoToken || L3.categoryContent.catgroupId)
+            }`;
+          return L3;
+        });
         return subCategory;
       });
 

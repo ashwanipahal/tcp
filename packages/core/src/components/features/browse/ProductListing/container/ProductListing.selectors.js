@@ -73,7 +73,6 @@ const getOrganizedHeaderNavigationTree = state => {
 export const getNavigationTree = state => {
   // const currentListingIds = state.productListing.breadcrumbs.map(crumb => crumb.pathSuffix);
   const currentListingIds = state.ProductListing.currentNavigationIds;
-  console.log('currentListingIds', currentListingIds);
   const navTree = getOrganizedHeaderNavigationTree(state);
 
   return (

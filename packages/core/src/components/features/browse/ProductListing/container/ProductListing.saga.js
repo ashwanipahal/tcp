@@ -168,6 +168,7 @@ class ProductsOperator {
     }
     return newTrgtChildItm;
   }
+
   // eslint-disable-next-line
   getProductsListingInfo = (
     state,
@@ -199,7 +200,6 @@ class ProductsOperator {
         }))
       : [];
     const currentCatId = breadCrumb.length ? breadCrumb[breadCrumb.length - 1].categoryId : '';
-    console.log('currentCatId', currentCatId);
     const excludeBage = currentCatId
       ? this.getNavAttributes(navigationTree, currentCatId, 'excludeAttribute')
       : '';
@@ -347,7 +347,6 @@ function* fetchPlpProducts() {
     const reqObj = operatorInstance.getProductsListingInfo(stateNav);
     const plpProducts = yield call(instanceProductListing.getProducts, reqObj);
     const plpProductsFormatted = operatorInstance.formatPlpProducts(plpProducts);
-    console.log('plpProductsFormatted ==> ', plpProductsFormatted);
     yield put(setPlpProducts({ ...plpProducts }));
   } catch (err) {
     console.log(err);

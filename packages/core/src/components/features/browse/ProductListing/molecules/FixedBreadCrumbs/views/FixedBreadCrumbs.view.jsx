@@ -30,14 +30,16 @@ const FixedBreadCrumbs = ({ crumbs, separationChar }) => {
   return (
     <div className="breadcrum-container">
       {crumbs.map((crumb, index) => {
-        const { displayName, destinationUrl, ...otherHyperLinkProps } = crumb;
+        const {
+          displayName,
+          destinationUrl,
+          destination,
+          pathSuffix,
+          ...otherHyperLinkProps
+        } = crumb;
 
         // for PLP breadcrumb new field categoryKey is added So, if categoryKey exist then  pathSuffix will be updated by SeoUrl
-        if (
-          otherHyperLinkProps &&
-          otherHyperLinkProps.pathSuffix &&
-          otherHyperLinkProps.categoryKey
-        ) {
+        if (otherHyperLinkProps && otherHyperLinkProps.pathSuffix && otherHyperLinkProps.linkUrl) {
           otherHyperLinkProps.pathSuffix = otherHyperLinkProps.categoryKey;
         }
         const itemClassName =
@@ -49,7 +51,11 @@ const FixedBreadCrumbs = ({ crumbs, separationChar }) => {
                 {displayName}
               </a>
             ) : (
-              <Anchor className={itemClassName} {...otherHyperLinkProps}>
+              <Anchor
+                className={itemClassName}
+                to={`/${destination}/${pathSuffix}`}
+                {...otherHyperLinkProps}
+              >
                 {displayName}
               </Anchor>
             )}
@@ -85,7 +91,7 @@ FixedBreadCrumbs.propTypes = {
       PropTypes.shape({
         displayName: PropTypes.string.isRequired,
         /** A url to link to */
-        destinationUrl: PropTypes.string.isRequire,
+        destinationUrl: PropTypes.string.isRequired,
       }),
     ])
   ).isRequired,
