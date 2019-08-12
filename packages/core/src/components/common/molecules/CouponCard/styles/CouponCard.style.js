@@ -39,6 +39,16 @@ const styles = css`
     color: ${props => props.theme.colors.WHITE};
     font-weight: ${props => props.theme.fonts.fontWeight.semiBold};
   }
+  .couponCard__text_style {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+    font-size: ${props => props.theme.typography.fontSizes.fs10};
+    color: ${props => props.theme.colors.TEXT.DARK};
+  }
+  .cartDetailsLink {
+    position: absolute;
+    font-size: ${props => props.theme.typography.fontSizes.fs10};
+    color: ${props => props.theme.colors.TEXT.DARK};
+  }
   .couponCard__header_expired {
     flex: 1;
     text-align: center;
