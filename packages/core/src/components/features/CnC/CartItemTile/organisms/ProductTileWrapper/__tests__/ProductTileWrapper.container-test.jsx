@@ -1,7 +1,7 @@
 import React from 'react';
 import { List } from 'immutable';
 import { shallow } from 'enzyme';
-import { ProductTileWrapperContainer } from '../container/ProductTileWrapperContainer.container';
+import { ProductTileWrapperContainer } from '../container/ProductTileWrapper.container';
 import ProductTileWrapper from '../views/ProductTileWrapper.view';
 
 describe('ProductTileWrapper Container', () => {
