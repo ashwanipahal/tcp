@@ -13,6 +13,99 @@ import {
 } from './productParser';
 import { PRODUCTS_URI } from '../../api.constants';
 
+// We seem to be itterating over all colors and added alt images in this location
+function extractExtraImages(
+  rawColors,
+  altImgs,
+  getImgPath,
+  uniqueId,
+  defaultColor,
+  isGiftCard,
+  hasShortImage
+) {
+  let colorsImageMap = {};
+
+  // backend send the colors in a very weird format
+  try {
+    if (rawColors && rawColors !== '') {
+      // DTN-6314 Gift card pdp page broken
+      // handle senario if gift card product_name contains '|' character in it.
+      let colors = [];
+      if (isGiftCard) {
+        colors.push(rawColors);
+      } else {
+        colors = rawColors.split('|');
+      }
+      for (let color of colors) {
+        let colorName = color.split('#')[1];
+        let imageBasePath = color.split('#')[0];
+        if (!colorName) {
+          colorName = defaultColor;
+          imageBasePath = uniqueId;
+        }
+        let { productImages } = getImgPath(imageBasePath);
+
+        colorsImageMap[colorName] = {
+          basicImageUrl: productImages[500],
+          extraImages: _parseAltImagesForColor(imageBasePath, hasShortImage),
+        };
+      }
+    } else {
+      let { productImages } = getImgPath(uniqueId);
+      colorsImageMap[defaultColor] = {
+        basicImageUrl: productImages[500],
+        extraImages: _parseAltImagesForColor(uniqueId, hasShortImage),
+      };
+    }
+  } catch (error) {
+    console.log(error);
+  }
+  return colorsImageMap;
+
+  // inner function
+  function _parseAltImagesForColor(imageBasePath, hasShortImage) {
+    try {
+      const altImages = altImageArray(imageBasePath, altImgs);
+      let shortImage = [];
+      let normalImage = [];
+      let availableImages;
+
+      altImages.forEach(image => {
+        if (image.indexOf('-s') < 0) {
+          normalImage.push(image);
+        } else {
+          shortImage.push(image);
+        }
+      });
+
+      if (hasShortImage && shortImage.length) {
+        availableImages = [...shortImage, ...normalImage];
+      } else {
+        availableImages = [imageBasePath, ...normalImage];
+      }
+
+      return availableImages.map(img => {
+        const hasExtension = img.indexOf('.jpg') !== -1; // we currently only support .jpg but we can make this a regex in the future if needed
+        let { productImages } = getImgPath(img, hasExtension);
+
+        // See DTN-155 for image suffex value definitions
+        let isOnModalImage = parseInt(img.split('-')[1]) > 5; // this is assumming a structure of <alpahnumeric>-<numeric><other (optional)>
+
+        return {
+          isOnModalImage,
+          iconSizeImageUrl: productImages[125],
+          listingSizeImageUrl: productImages[380],
+          regularSizeImageUrl: productImages[500],
+          bigSizeImageUrl: productImages[900],
+          superSizeImageUrl: productImages[900],
+        };
+      });
+    } catch (error) {
+      return [];
+    }
+  }
+}
+
 const getImgPath = img => {
   return { img };
 };
@@ -33,6 +126,16 @@ const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = false) => {
     }
   }
 };
+
+function altImageArray(imagename, altImg) {
+  try {
+    let altImges = JSON.parse(altImg);
+    let altArray = altImges[imagename].split(',').filter(img => img);
+    return altArray;
+  } catch (error) {
+    return [];
+  }
+}
 
 export const FACETS_FIELD_KEY = {
   color: 'tcpcolor_ufilter',
@@ -568,193 +671,6 @@ const getIsBopisEligible = (isBOPIS, product) => {
 
 const isBossEligible = (/* isBossProduct, */ bossDisabledFlags, product) => {
   return isBossProduct(bossDisabledFlags) && !isGiftCard(product);
-};
-
-// function altImageArray(imagename, altImg) {
-//   try {
-//     const altImges = JSON.parse(altImg);
-//     return altImges[imagename].split(',').filter(img => img);
-//   } catch (error) {
-//     return [];
-//   }
-// }
-
-// inner function
-/* function parseAltImagesForColor(imageBasePath, altImgs) {
-  try {
-    const altImages = altImageArray(imageBasePath, altImgs);
-
-    return [imageBasePath, ...altImages].map(img => {
-      const hasExtension = img.indexOf('.jpg') !== -1; // we currently only support .jpg but we can make this a regex in the future if needed
-      // eslint-disable-next-line
-      const { productImages } = getImgPath(img, hasExtension);
-
-      // See DTN-155 for image suffex value definitions
-      const isOnModalImage = parseInt(img.split('-')[1], 10) > 5; // this is assumming a structure of <alpahnumeric>-<numeric><other (optional)>
-
-      return {
-        isOnModalImage,
-        iconSizeImageUrl: productImages[125],
-        listingSizeImageUrl: productImages[380],
-        regularSizeImageUrl: productImages[500],
-        bigSizeImageUrl: productImages[900],
-        superSizeImageUrl: productImages[900],
-      };
-    });
-  } catch (error) {
-    return [];
-  }
-} */
-// We seem to be itterating over all colors and added alt images in this location
-const extractExtraImages = () =>
-  /* rawColors,
-  altImgs,
-   getImgPath,  uniqueId,
-  defaultColor /* , isGiftCard */
-  {
-    const colorsImageMap = {};
-
-    // backend send the colors in a very weird format
-    try {
-      /* if (rawColors && rawColors !== '') {
-      // DTN-6314 Gift card pdp page broken
-      // handle senario if gift card product_name contains '|' character in it.
-      let colors = [];
-      if (isGiftCard) {
-        colors.push(rawColors);
-      } else {
-        colors = rawColors.split('|');
-      }
-      // eslint-disable-next-line
-      for (let color of colors) {
-        let colorName = color.split('#')[1];
-        let imageBasePath = color.split('#')[0];
-        if (!colorName) {
-          colorName = defaultColor;
-          imageBasePath = uniqueId;
-        }
-        const { productImages } = getImgPath(imageBasePath);
-
-        colorsImageMap[colorName] = {
-          basicImageUrl: productImages[500],
-          extraImages: parseAltImagesForColor(imageBasePath, altImgs),
-        };
-      }
-    } else {
-      const { productImages } = getImgPath(uniqueId);
-      colorsImageMap[defaultColor] = {
-        basicImageUrl: productImages[500],
-        extraImages: parseAltImagesForColor(uniqueId, altImgs),
-      };
-    } */
-    } catch (error) {
-      // eslint-disable-next-line
-      console.log(error);
-    }
-    return colorsImageMap;
-  };
-
-// response is the constructed one , res is the res.body.response
-const processResponse = (
-  response,
-  res,
-  bucketingSeqConfig,
-  attributesNames,
-  categoryType,
-  excludeBadge,
-  shouldApplyUnbxdLogic
-  // eslint-disable-next-line
-) => {
-  if (response) {
-    const { isUSStore } = apiHelper.configOptions;
-    res.products.forEach(product => {
-      // Make product list transformation
-      // eslint-disable-next-line
-      product.list_of_attributes = attributeListMaker(product.list_of_attributes);
-      const defaultColor = product.auxdescription ? product.auxdescription : product.TCPColor;
-      const { uniqueId } = product;
-      const colors = getColors(product, uniqueId, defaultColor);
-      // const rawColors = getColorSwatch(product);
-      const isBOPIS = isBopisProduct(isUSStore, product);
-      const bossDisabledFlags = {
-        bossProductDisabled:
-          extractAttributeValue(product, getProductAttributes().bossProductDisabled) || 0,
-        bossCategoryDisabled:
-          extractAttributeValue(product, getProductAttributes().bossCategoryDisabled) || 0,
-      };
-      const imagesByColor = extractExtraImages();
-      /* rawColors,
-        product.alt_img,
-        /* getImgPath, uniqueId,
-        defaultColor */
-      let colorsMap = [
-        {
-          colorProductId: uniqueId,
-          imageName: product.imagename,
-          miscInfo: {
-            isClearance: extractAttributeValue(product, attributesNames.clearance),
-            isBopisEligible: getIsBopisEligible(isBOPIS, product),
-            isBossEligible: isBossEligible(/* isBossProduct, */ bossDisabledFlags, product),
-            badge1: extractPrioritizedBadge(product, attributesNames, categoryType, excludeBadge),
-            badge2: extractAttributeValue(product, attributesNames.extendedSize),
-            badge3: extractAttributeValue(product, attributesNames.merchant),
-            videoUrl: extractAttributeValue(product, attributesNames.videoUrl),
-            hasOnModelAltImages: parseBoolean(
-              extractAttributeValue(product, attributesNames.onModelAltImages)
-            ),
-            listPrice: product.min_list_price,
-            offerPrice: product.min_offer_price,
-          },
-          color: {
-            name: defaultColor,
-            imagePath: getImgPath(product.imagename).colorSwatch,
-          },
-        },
-      ];
-
-      colorsMap = getColorsMap(response, {
-        colors,
-        product,
-        isUSStore,
-        attributesNames,
-        categoryType,
-        excludeBadge,
-      });
-
-      let categoryName;
-      const childLength = getChildLength(bucketingSeqConfig);
-      const catMap = getCatMap(product, bucketingSeqConfig);
-      // Check if the current product has a category path attribute which containes the categories it is the part of.
-      if (product.categoryPath3) {
-        for (let idx = 0; idx < childLength; idx += 1) {
-          // DTN-7945: The product can be tagged in two L3's but as now we are triggering mutiple l3 calls in new UNBXD approach
-          // The product will get tagged to the first match it finds in its own categoryPath3_fq. but ideally it should match the
-          // current l3 for which the products are bieng fetched.
-          const requiredL3 = getRequiredL3(shouldApplyUnbxdLogic, bucketingSeqConfig, idx);
-          const temp = product.categoryPath3.find(category => category === requiredL3);
-          if (isCatergoryName(temp, catMap, bucketingSeqConfig)) {
-            categoryName = temp;
-          }
-          // if category name is found then break the loop.
-          if (categoryName) {
-            break;
-          }
-        }
-      }
-
-      response.loadedProducts.push({
-        productInfo: getProductInfo(product, res.headers),
-        miscInfo: {
-          rating: parseFloat(product.TCPBazaarVoiceRating) || 0,
-          // yet again, we need to dig from multiple sources just to get a simple string value
-          categoryName,
-        },
-        colorsMap,
-        imagesByColor,
-      });
-    });
-  }
-  return response;
 };
 
 class ProductsDynamicAbstractor {

@@ -7,43 +7,56 @@
 import React from 'react';
 
 class GlobalNavigationMenuDesktopL2 extends React.Component {
-  /**
-   * @summary For the global Nav we need to group together groups that have a few menu items in the same column
-   */
-  get menuGroupings() {
-    const { menuGroupings } = this.props;
+  constructor() {
+    super();
+    this.menuGroupings = this.menuGroupings.bind(this);
+  }
+
+  menuGroupings = () => {
+    const { navigationTree } = this.props;
     const groups = [];
     let tempGroups = [];
     let menuItemCount = 0;
-    const maxItemsInGroup = 1; // requirments changes last minute to have one group per column
+    const maxItemsInGroup = 1;
 
-    // Group items that have leve then maxItemsInGroup in the same group
-    for (let index = 0; index < menuGroupings.length; index += 1) {
-      const group = menuGroupings[index];
-
-      // if current bucket length plus these new items is less then threshold then bucket them together
-      if (menuItemCount + group.menuItems.length <= maxItemsInGroup) {
-        tempGroups.push(group);
-      } else {
-        // If the new items will push the bucket over the threshold then push current items to group and add new items to bucket
-        if (tempGroups.length) {
-          groups.push(tempGroups);
-        }
-        tempGroups = [];
-        tempGroups.push(group);
-        menuItemCount = 0;
-      }
-
-      menuItemCount += group.menuItems.length;
-    }
-
-    // Push any remaining groups
-    if (tempGroups.length) {
+    if (navigationTree.subCategories && navigationTree.subCategories.Categories) {
+      tempGroups.push({
+        groupName: 'Categories',
+        menuItems: navigationTree.subCategories.Categories,
+      });
       groups.push(tempGroups);
     }
     return groups;
-  }
+    // Group items that have leve then maxItemsInGroup in the same group
+    // for (let index = 0; index < navigationTree.subCategories.Categories.length; index += 1) {
+    //   const group = navigationTree.subCategories.Categories[index];
 
+    //   // if current bucket length plus these new items is less then threshold then bucket them together
+    //   if (menuItemCount + group.length <= maxItemsInGroup) {
+    //     tempGroups.push(group);
+    //   } else {
+    //     // If the new items will push the bucket over the threshold then push current items to group and add new items to bucket
+    //     if (tempGroups.length) {
+    //       groups.push(tempGroups);
+    //     }
+    //     tempGroups = [];
+    //     tempGroups.push(group);
+    //     menuItemCount = 0;
+    //   }
+
+    //   menuItemCount += group.subCategories.Categories.length;
+    // }
+
+    // // Push any remaining groups
+    // if (tempGroups.length) {
+    //   groups.push(tempGroups);
+    // }
+    // return groups;
+  };
+
+  /**
+   * @summary For the global Nav we need to group together groups that have a few menu items in the same column
+   */
   render() {
     const {
       /* primaryContentSlotName, secondaryContentSlotName, */
@@ -52,9 +65,11 @@ class GlobalNavigationMenuDesktopL2 extends React.Component {
       isTopNav,
     } = this.props;
 
-    // if (!this.menuGroupings.length) {
-    //   return null;
-    // }
+    const menuGroupingArr = this.menuGroupings();
+
+    if (!menuGroupingArr.length) {
+      return null;
+    }
 
     return (
       <div
@@ -64,11 +79,11 @@ class GlobalNavigationMenuDesktopL2 extends React.Component {
       >
         <div className="sub-menu" role="menu">
           <div className="sub-menu-inner-container">
-            {this.menuGroupings.map((groups, index) => {
+            {menuGroupingArr.map((groups, index) => {
               return (
                 <NavGroupContainer
-                  key={`column-${groups[0].groupName}`}
-                  isLastGroup={index === this.menuGroupings.length - 1}
+                  key={`column-${groups.groupName}`}
+                  isLastGroup={index === menuGroupingArr.length - 1}
                   {...{ groups, activeCategoryIds, isTopNav }}
                 />
               );
@@ -111,20 +126,24 @@ function L2({ menuItems, activeCategoryIds, isTopNav }) {
   return (
     <ol className="sub-menu-category" role="none">
       {menuItems.map(item => {
-        const isActive = activeCategoryIds && item.categoryId === activeCategoryIds[1];
+        const isActive = activeCategoryIds && item.categoryContent.id === activeCategoryIds[1];
         // let className = cssClassName('sub-menu-category-item ');
         // let activeClassName = cssClassName('navigation-level-two-link ', { 'active': isActive });
 
         return (
           <React.Fragment>
-            {item.displayToCustomer && (
-              <li key={item.categoryId} id={`list-item-${item.categoryId}`} role="none">
-                <a href={item.url}>{item.name}</a>
+            {
+              /* item.displayToCustomer && */ <li
+                key={item.categoryContent.id}
+                id={`list-item-${item.categoryContent.id}`}
+                role="none"
+              >
+                <a href={item.url}>{item.categoryContent.name}</a>
                 {!isTopNav && isActive && (
-                  <L3 menuItems={item.menuItems} activeCategoryIds={activeCategoryIds} />
+                  <L3 menuItems={item.subCategories} activeCategoryIds={activeCategoryIds} />
                 )}
               </li>
-            )}
+            }
           </React.Fragment>
         );
       })}

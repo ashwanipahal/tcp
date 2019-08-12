@@ -53,7 +53,7 @@ const UnbxdAPIClient = (apiConfig, reqObj) => {
       reqObj.body.uid = unbxdUID;
     } else {
       // eslint-disable-next-line
-      reqObj.body.uid = 'uid-1563946353348-89276';
+      // reqObj.body.uid = 'uid-1563946353348-89276';
     }
     request.query(reqObj.body);
     // eslint-disable-next-line no-underscore-dangle
