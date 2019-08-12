@@ -231,7 +231,6 @@ exports[`ModuleK native component Should renders correctly 1`] = `
         },
       ]
     }
-    defaultAutoplay={true}
     height={260}
     renderItem={[Function]}
     showDots={true}
