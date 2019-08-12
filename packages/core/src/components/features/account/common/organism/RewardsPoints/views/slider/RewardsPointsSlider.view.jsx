@@ -39,16 +39,14 @@ const RewardsPointsSlider = ({
       </Row>
       <Row>
         <Col colSize={{ large: 12, medium: 8, small: 6 }}>
-          {!plccUser && (
-            <div className="progress-container elem-mt-MED elem-mt-MED elem-mb-SM">
-              <div className="progressbar-rewards" style={{ width: `${currentPoints}%` }} />
-            </div>
-          )}
-          {plccUser && (
-            <div className="progress-container_plcc elem-mt-MED elem-mt-MED elem-mb-SM">
-              <div className="progressbar-rewards_plcc" style={{ width: `${currentPoints}%` }} />
-            </div>
-          )}
+          <div className="progress-container elem-mt-MED elem-mt-MED elem-mb-SM">
+            <div
+              className={`progressbar-rewards currentpoint-slider ${
+                plccUser ? 'progressbar-rewards_plcc' : 'progressbar-rewards'
+              } `}
+              style={{ width: `${currentPoints}%` }}
+            />
+          </div>
         </Col>
       </Row>
       <Row>
