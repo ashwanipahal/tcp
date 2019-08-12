@@ -40,7 +40,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
       <Styled(Text)
         style={
           Object {
-            "width": "60%",
+            "width": "%",
           }
         }
       />
