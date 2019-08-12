@@ -11,8 +11,9 @@ import scriptLoad from 'little-loader';
 // TODO: load this from a JSON file
 const namedModulesMap = {
   'google.maps': {
-    url:
-      'https://maps.googleapis.com/maps/api/js?v=3.27&client=gme-thechildrensplace&libraries=places,geometry',
+    url: `https://maps.googleapis.com/maps/api/js?v=3.27&key=${
+      process.env.RWD_WEB_GOOGLE_MAPS_API_KEY
+    }&libraries=places,geometry`,
     loadPromise: null,
   },
   recaptcha: {
