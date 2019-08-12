@@ -13,7 +13,7 @@ exports[`PromoTextBanner native component ModuleN should render correctly 1`] = 
     text="alL DINOS"
   />
   <style2
-    text=" 50% OFF"
+    text="50% OFF"
   />
 </Styled(Anchor)>
 `;
@@ -330,7 +330,7 @@ exports[`PromoTextBanner native component renders correctly 1`] = `
   />
   <style2
     dataLocator="moduleK_text_"
-    text=" 50% OFF"
+    text="50% OFF"
   />
 </Styled(Anchor)>
 `;

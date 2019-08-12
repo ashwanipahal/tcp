@@ -90,7 +90,6 @@ class ModuleK extends React.PureComponent {
               autoplay: true,
             }}
             autoplayInterval={autoplayInterval * 1000}
-            defaultAutoplay
             showDots
           />
         )}
