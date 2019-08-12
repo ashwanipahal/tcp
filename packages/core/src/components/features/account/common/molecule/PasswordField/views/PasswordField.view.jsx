@@ -47,7 +47,7 @@ export class PasswordField extends React.PureComponent {
         <TextBox {...otherProps} type={type} />
         <BodyCopy component="div" className="rightAlignedContent" textAlign="center">
           {tooltipContent && (
-            <ReactTooltip message={tooltipContent}>
+            <ReactTooltip message={tooltipContent} aligned="right" minWidth="320px">
               <Image className="tcp_carousel__play tooltip" src={getIconPath('info-icon')} />
             </ReactTooltip>
           )}
