@@ -15,9 +15,18 @@ type Props = {
   labels: any,
   userName: any,
   subTotal: any,
+  currencySymbol: any,
 };
 
-const MiniBag = ({ onRequestClose, className, openState, labels, userName, subTotal }: Props) => {
+const MiniBag = ({
+  onRequestClose,
+  className,
+  openState,
+  labels,
+  userName,
+  subTotal,
+  currencySymbol,
+}: Props) => {
   const cartItemCount = getCartItemCount();
   return (
     <Modal
@@ -40,6 +49,7 @@ const MiniBag = ({ onRequestClose, className, openState, labels, userName, subTo
         cartItemCount={cartItemCount}
         userName={userName}
         subTotal={subTotal}
+        currencySymbol={currencySymbol}
       />
     </Modal>
   );

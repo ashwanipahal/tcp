@@ -108,6 +108,7 @@ describe('#CartItemTile selector', () => {
       lbl_info_Qty: 'Qty',
       lbl_info_price: 'Price',
       lbl_info_giftDesign: 'Design',
+      lbl_info_giftValue: 'Value',
     };
     const productState = {
       Labels: {
@@ -128,6 +129,7 @@ describe('#CartItemTile selector', () => {
     expect(getLabelsCartItemTile(productState)).toEqual({
       color: 'Color',
       design: 'Design',
+      value: 'Value',
       price: 'Price',
       qty: 'Qty',
       size: 'Size',
