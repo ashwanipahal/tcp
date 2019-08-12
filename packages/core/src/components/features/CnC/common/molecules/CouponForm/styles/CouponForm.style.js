@@ -14,6 +14,7 @@ export default css`
     .coupon_need_help_link {
       padding-left: 12px;
       text-decoration: underline;
+      cursor: pointer;
     }
 
     .coupon_submit_form {
@@ -31,7 +32,7 @@ export default css`
       input {
         height: 16px;
         margin-bottom: 0;
-        margin-top: 9px;
+        margin-top: 1px;
       }
     }
 
@@ -39,6 +40,7 @@ export default css`
       height: 42px;
       width: 102px;
       margin-top: 8px;
+      cursor: default;
       @media ${props => props.theme.mediaQuery.mediumOnly} {
         width: 162px;
         align-self: center;

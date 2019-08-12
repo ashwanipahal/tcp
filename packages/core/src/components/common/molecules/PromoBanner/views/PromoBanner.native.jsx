@@ -84,7 +84,7 @@ const PromoBanner = (props: Props) => {
     <Anchor url={link.url} navigation={navigation}>
       {textItems.map(({ text, style }, index) => {
         const StyleBodyCopy = bodyCopyStyles[style];
-        return <StyleBodyCopy text={index ? ` ${text}` : text} locator={locator} {...otherProps} />;
+        return <StyleBodyCopy text={index ? `${text}` : text} locator={locator} {...otherProps} />;
       })}
     </Anchor>,
   ];
