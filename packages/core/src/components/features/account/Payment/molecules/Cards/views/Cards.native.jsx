@@ -14,6 +14,11 @@ import {
   ButtonWrapperStyle,
 } from '../Cards.style.native';
 import CardTile from '../../../../common/molecule/CardTile/views/CardTile.view.native';
+// import ModalNative from '../../../../../../common/molecules/Modal';
+
+const handleAddNewCard = () => {
+  return null;
+};
 
 const Cards = props => {
   const {
@@ -51,6 +56,7 @@ const Cards = props => {
           buttonVariation="variable-width"
           fill="BLUE"
           color="white"
+          onPress={handleAddNewCard}
         />
       </ButtonWrapperStyle>
       {cardList.size > 0 &&
