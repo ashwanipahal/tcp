@@ -11,7 +11,7 @@ exports[`ModuleL Header component renders correctly 1`] = `
 >
   <Styled(Row)>
     <Styled(Col)
-      className="moduleL__tile"
+      className="moduleL__tile moduleL__red"
       colSize={
         Object {
           "large": 12,
@@ -20,11 +20,6 @@ exports[`ModuleL Header component renders correctly 1`] = `
         }
       }
       data-locator="moduleL_tiles_NaN"
-      style={
-        Object {
-          "backgroundColor": "red",
-        }
-      }
     >
       <WithTheme(DamImage)
         className="moduleL__tile-image"

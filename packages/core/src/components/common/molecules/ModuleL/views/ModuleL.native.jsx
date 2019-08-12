@@ -52,7 +52,7 @@ const renderItem = (item, navigation) => {
       external={link.external}
       testID={`${getLocator('moduleL_tiles')}${index + 1}`}
     >
-      <ChildContainer>
+      <ChildContainer bgClass={item.item.class.class}>
         <Image
           url={image.url}
           height={127}

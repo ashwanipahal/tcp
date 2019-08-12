@@ -24,9 +24,8 @@ const ModuleLTile = ({ tileData: { image, link, styled }, index, tileColor }: Pr
     <Anchor {...link}>
       <Row>
         <Col
-          style={{ backgroundColor: tileColor.class }}
           colSize={colSize}
-          className="moduleL__tile"
+          className={`moduleL__tile moduleL__${tileColor.class}`}
           data-locator={`${getLocator('moduleL_tiles')}${index + 1}`}
         >
           <DamImage
