@@ -12,7 +12,7 @@ const HomePageView = props => {
       <SlotB {...slotB} />
       <SlotC {...slotC} />
       <SlotD {...slotD} />
-      <GetCandid lables={props} />
+      <GetCandid />
     </Fragment>
   );
 };

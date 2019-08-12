@@ -1,5 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
 import Router from 'next/router'; // eslint-disable-line
 import { requireNamedOnlineModule } from '../../../../../utils/resourceLoader';
 import { Button, Row, Col, BodyCopy } from '../../../atoms';
@@ -16,13 +17,13 @@ class GetCandid extends React.PureComponent {
     /* calssName is required */
     className: PropTypes.string,
     /* Labels */
-    lables: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
+    labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   };
 
   static defaultProps = {
     pageType: 'homepage',
     className: '',
-    lables: {},
+    labels: {},
   };
 
   candidConfig = getAPIConfig();
@@ -73,7 +74,7 @@ class GetCandid extends React.PureComponent {
   };
 
   getDefaultHeading = () => {
-    const { lables } = this.props;
+    const { labels } = this.props;
 
     return (
       <div className="get-candid-default-heading test">
@@ -83,7 +84,7 @@ class GetCandid extends React.PureComponent {
           textAlign="center"
           className="get-candid-main-heading"
         >
-          {lables.title}
+          {labels.title}
         </BodyCopy>
 
         <BodyCopy
@@ -92,14 +93,14 @@ class GetCandid extends React.PureComponent {
           textAlign="center"
           className="get-candid-heading-desc"
         >
-          {lables.titleDescription}
+          {labels.titleDescription}
         </BodyCopy>
       </div>
     );
   };
 
   render() {
-    const { className, lables } = this.props;
+    const { className, labels } = this.props;
     return (
       <section id="get-candid-container" className={className}>
         <Row centered>
@@ -140,11 +141,11 @@ class GetCandid extends React.PureComponent {
                 type="button"
                 className="gellary-button-right"
               >
-                {lables.BtnGallery}
+                {labels.BtnGallery}
               </Button>
 
               <Button onClick={this.handleUpload} buttonVariation="variable-width" type="button">
-                {lables.BtnPhoto}
+                {labels.BtnPhoto}
               </Button>
             </Col>
           </div>
@@ -154,5 +155,11 @@ class GetCandid extends React.PureComponent {
   }
 }
 
-export default withStyles(GetCandid, style);
+const mapStateToProps = state => {
+  return {
+    labels: state.Labels.modules.getCandid,
+  };
+};
+
+export default connect(mapStateToProps)(withStyles(GetCandid, style));
 export { GetCandid as GetCandidVanilla };
