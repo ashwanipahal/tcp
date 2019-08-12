@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
+import { List } from 'immutable';
 import { applyCoupon, removeCoupon } from './Coupon.actions';
 import {
   getCouponFetchingState,
@@ -22,6 +23,25 @@ export class CouponContainer extends React.PureComponent<Props> {
       appliedCouponList,
       availableCouponList,
     } = this.props;
+    const couponList = List([
+      {
+        id: 'Y00105578',
+        status: 'available',
+        labelStatus: 'APPLY',
+        isExpiring: true,
+        title: '$10 OFF On $50',
+        detailsOpen: false,
+        expirationDate: '8/10/19',
+        effectiveDate: '8/6/19',
+        details: null,
+        legalText: '$10 OFF On $50',
+        isStarted: true,
+        offerType: 'saving',
+        error: '',
+        promotionType: 'public',
+        expirationDateTimeStamp: '2019-08-10T18:29:00.001Z',
+      },
+    ]);
     return (
       <Coupon
         labels={labels}
@@ -30,7 +50,7 @@ export class CouponContainer extends React.PureComponent<Props> {
         handleApplyCouponFromList={handleApplyCouponFromList}
         handleRemoveCoupon={handleRemoveCoupon}
         appliedCouponList={appliedCouponList}
-        availableCouponList={availableCouponList}
+        availableCouponList={couponList}
       />
     );
   }
