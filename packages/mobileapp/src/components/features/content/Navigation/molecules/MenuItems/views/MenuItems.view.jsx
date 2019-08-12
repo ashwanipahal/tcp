@@ -10,15 +10,7 @@ const Icon = require('../../../../../../../../../core/src/assets/carrot-large-ri
  * @function MenuItems populates the menu item
  * @param {object} links shop by size links
  */
-const MenuItems = ({
-  navigate,
-  maxWidthItem,
-  item,
-  hasBadge,
-  promoBannerMargin,
-  hasL3,
-  navigationMethod,
-}) => {
+const MenuItems = ({ navigate, maxWidthItem, item, hasBadge, promoBannerMargin, hasL3, route }) => {
   return (
     <React.Fragment>
       <View maxWidth={maxWidthItem}>
@@ -31,9 +23,7 @@ const MenuItems = ({
           numberOfLines={1}
         />
       </View>
-      <PromoAndArrowContainer
-        onPress={() => navigationMethod(navigate, item.subCategories, item.name, hasL3)}
-      >
+      <PromoAndArrowContainer onPress={() => route(navigate, item.subCategories, item.name, hasL3)}>
         {hasBadge && (
           <PromoContainer marginRight={promoBannerMargin}>
             <BodyCopy
@@ -58,7 +48,7 @@ MenuItems.propTypes = {
   hasL3: PropTypes.bool,
   hasBadge: PropTypes.bool,
   promoBannerMargin: PropTypes.string,
-  navigationMethod: PropTypes.func.isRequired,
+  route: PropTypes.func.isRequired,
 };
 
 MenuItems.defaultProps = {

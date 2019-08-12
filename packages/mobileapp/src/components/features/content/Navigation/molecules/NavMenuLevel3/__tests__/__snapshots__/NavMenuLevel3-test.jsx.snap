@@ -6,6 +6,7 @@ exports[`NavMenuLevel3 should render correctly 1`] = `
     <Styled(TouchableOpacity)
       accessibilityRole="button"
       onPress={[Function]}
+      testID="back_icon_btn"
     >
       <Styled(Image)
         source={
@@ -24,48 +25,33 @@ exports[`NavMenuLevel3 should render correctly 1`] = `
           "textTransform": "uppercase",
         }
       }
+      testID="L3_header_text"
       text="test"
       textAlign="left"
     />
     <Text />
   </Styled(View)>
-  <SectionList
-    data={Array []}
+  <FlatList
+    data={
+      Array [
+        Object {
+          "title": "Lorem",
+        },
+        Object {
+          "title": "Categoriess",
+        },
+      ]
+    }
     disableVirtualization={false}
     horizontal={false}
     initialNumToRender={10}
     keyExtractor={[Function]}
     maxToRenderPerBatch={10}
+    numColumns={1}
     onEndReachedThreshold={2}
+    removeClippedSubviews={false}
     renderItem={[Function]}
     scrollEventThrottle={50}
-    sections={
-      Array [
-        Object {
-          "data": Array [
-            Object {
-              "title": "Lorem",
-            },
-            Object {
-              "title": "Categoriess",
-            },
-          ],
-          "title": undefined,
-        },
-        Object {
-          "data": Array [
-            Object {
-              "title": "Lorem",
-            },
-            Object {
-              "title": "Categoriess",
-            },
-          ],
-          "title": undefined,
-        },
-      ]
-    }
-    stickySectionHeadersEnabled={false}
     updateCellsBatchingPeriod={50}
     windowSize={21}
   />

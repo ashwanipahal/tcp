@@ -24,7 +24,7 @@ describe('MenuItems', () => {
           },
         },
       },
-      navigationMethod: () => {},
+      route: () => {},
       hasBadge: false,
       promoBannerMargin: '',
       hasL3: false,
@@ -49,7 +49,7 @@ describe('MenuItems', () => {
           },
         },
       },
-      navigationMethod: () => {},
+      route: () => {},
       hasBadge: true,
       promoBannerMargin: '',
       hasL3: true,
@@ -74,7 +74,7 @@ describe('MenuItems', () => {
           },
         },
       },
-      navigationMethod: () => {},
+      route: () => {},
       hasBadge: true,
       promoBannerMargin: '',
       hasL3: true,
@@ -91,7 +91,7 @@ describe('MenuItems', () => {
     const props = {
       navigate: () => {},
       maxWidthItem: '',
-      navigationMethod: () => {},
+      route: () => {},
       item: {
         categoryContent: {
           name: 'abcd',

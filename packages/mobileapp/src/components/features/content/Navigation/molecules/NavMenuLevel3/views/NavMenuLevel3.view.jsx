@@ -1,6 +1,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { SectionList, Text } from 'react-native';
+import { FlatList, Text } from 'react-native';
 import { getScreenWidth } from '@tcp/core/src/utils';
 import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import MenuItem from '../../MenuItems';
@@ -15,16 +15,21 @@ const BackIcon = require('../../../../../../../../../core/src/assets/carrot-larg
  * @param {object} item menu item object
  * @param {object} section contains the section title of the menu item
  */
-const renderItem = navigate => sectionProps => {
+const renderItem = navigate => listProps => {
   const maxWidthItem = getScreenWidth() - 60;
 
-  const { item } = sectionProps;
+  const { item, index } = listProps;
 
   return (
-    <ItemViewWithHeading accessibilityRole="button" onPress={() => navigate('ProductListingPage')}>
+    <ItemViewWithHeading
+      accessibilityRole="link"
+      accessibilityLabel={item.categoryContent.name}
+      testID={`L3_text_links_${index}`}
+      onPress={() => navigate('ProductListingPage')}
+    >
       <MenuItem
         navigate={navigate}
-        navigationMethod={() => navigate('ProductListingPage')}
+        route={() => navigate('ProductListingPage')}
         maxWidthItem={maxWidthItem}
         item={item}
         hasBadge={false}
@@ -46,14 +51,17 @@ const NavMenuLevel3 = props => {
 
   const subCategories = getParam('navigationObj');
   const l2Title = getParam('l2Title');
-  const sectionArr = subCategories.map(subcatName => {
-    return { data: subCategories, title: subcatName.name };
-  });
+  const accessibilityLabels = getParam('accessibilityLabels');
 
   return (
     <React.Fragment>
       <HeadingView>
-        <TouchableOpacityArrow accessibilityRole="button" onPress={() => goBack()}>
+        <TouchableOpacityArrow
+          accessibilityRole="button"
+          accessibilityLabel={accessibilityLabels && accessibilityLabels.back_button}
+          testID="back_icon_btn"
+          onPress={() => goBack()}
+        >
           <ArrowBackIcon source={BackIcon} />
         </TouchableOpacityArrow>
         <BodyCopy
@@ -62,16 +70,16 @@ const NavMenuLevel3 = props => {
           textAlign="left"
           text={l2Title}
           color="text.primary"
+          testID="L3_header_text"
           // eslint-disable-next-line react-native/no-inline-styles
           style={{ textTransform: 'uppercase' }}
         />
         <Text />
       </HeadingView>
-      <SectionList
+      <FlatList
         renderItem={renderItem(navigate)}
         keyExtractor={keyExtractor}
-        stickySectionHeadersEnabled={false}
-        sections={sectionArr}
+        data={subCategories}
       />
     </React.Fragment>
   );

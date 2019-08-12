@@ -2,6 +2,7 @@
 
 exports[`NavMenuLevel1 should render component when renderItem is called 1`] = `
 <ForwardRef
+  accessibilityLabel="Girl"
   accessibilityRole="button"
   onPress={[Function]}
 >
@@ -38,6 +39,7 @@ exports[`NavMenuLevel1 should render component when renderItem is called 1`] = `
 
 exports[`NavMenuLevel1 should render component when renderItem is called without nav menu image 1`] = `
 <ForwardRef
+  accessibilityLabel="Girl"
   accessibilityRole="button"
   onPress={[Function]}
 >

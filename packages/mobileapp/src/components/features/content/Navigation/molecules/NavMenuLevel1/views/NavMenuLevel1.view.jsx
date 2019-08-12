@@ -18,7 +18,7 @@ const Icon = require('../../../../../../../../../core/src/assets/carrot-small-ri
  * @param {object} props Props passed from Stack navigator screen
  */
 const NavMenuLevel1 = props => {
-  const { navigationMenuObj } = props;
+  const { navigationMenuObj, accessibilityLabels } = props;
 
   /**
    * @function ShowL2Navigation populates the L2 menu for the L1 link that has been clicked
@@ -32,6 +32,7 @@ const NavMenuLevel1 = props => {
     return navigate('NavMenuLevel2', {
       navigationObj: item,
       l1Title: name,
+      accessibilityLabels,
     });
   };
 
@@ -91,6 +92,7 @@ const NavMenuLevel1 = props => {
       return (
         <L1TouchableOpacityNoImage
           accessibilityRole="button"
+          accessibilityLabel={name}
           onPress={() => ShowL2Navigation(item, name)}
         >
           <BodyCopy
@@ -114,7 +116,11 @@ const NavMenuLevel1 = props => {
     }
 
     return (
-      <L1TouchableOpacity accessibilityRole="button" onPress={() => ShowL2Navigation(item, name)}>
+      <L1TouchableOpacity
+        accessibilityRole="button"
+        accessibilityLabel={name}
+        onPress={() => ShowL2Navigation(item, name)}
+      >
         {categoryImage[0].position &&
           categoryImage[0].position === 'right' &&
           renderTextBlock(name, description)}
@@ -140,7 +146,12 @@ NavMenuLevel1.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
+  accessibilityLabels: PropTypes.shape({}),
   navigationMenuObj: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+};
+
+NavMenuLevel1.defaultProps = {
+  accessibilityLabels: {},
 };
 
 export default NavMenuLevel1;
