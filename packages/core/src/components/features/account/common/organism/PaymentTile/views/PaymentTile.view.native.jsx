@@ -71,18 +71,23 @@ export class PaymentTile extends React.PureComponent<Props> {
     );
   };
 
-  getGiftCardList = cardList =>
-    cardList && cardList.size > 0 && cardList.filter(card => card.ccType === 'GiftCard');
+  getGiftCard = cardList => {
+    const cards =
+      cardList && cardList.size > 0 && cardList.filter(card => card.ccType === 'GiftCard');
+    return cards && cards.size && cards.get(cards.size - 1);
+  };
 
   getCreditCardList = cardList =>
     cardList &&
     cardList.size > 0 &&
-    cardList.filter(card => card.ccType !== 'GiftCard' && card.ccType !== 'VENMO');
+    cardList.filter(
+      card => card.ccType !== 'GiftCard' && card.ccType !== 'VENMO' && card.defaultInd
+    );
 
   render() {
     const { cardList, labels, handleComponentChange } = this.props;
     const creditCardList = this.getCreditCardList(cardList);
-    const giftCardList = this.getGiftCardList(cardList);
+    const giftCard = this.getGiftCard(cardList);
 
     return (
       <PaymentTileContainer>
@@ -98,9 +103,7 @@ export class PaymentTile extends React.PureComponent<Props> {
           : this.getCreditCardView(null, true)}
         <UnderlineStyle />
 
-        {giftCardList && giftCardList.size > 0
-          ? giftCardList.map(card => this.getGiftCardView(card, false))
-          : this.getGiftCardView(null, true)}
+        {giftCard ? this.getGiftCardView(giftCard, false) : this.getGiftCardView(null, true)}
 
         <ButtonWrapperStyle>
           <CustomButton

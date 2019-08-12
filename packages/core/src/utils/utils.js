@@ -45,6 +45,8 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv) => {
     assetHost: processEnv.RWD_WEB_ASSETHOST || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
+    CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
+    CANDID_API_URL: process.env.RWD_WEB_CANDID_URL,
   };
 };
 
