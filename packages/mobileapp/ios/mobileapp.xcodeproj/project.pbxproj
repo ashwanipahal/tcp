@@ -402,21 +402,21 @@
 			remoteGlobalIDString = 358F4ED71D1E81A9004DF814;
 			remoteInfo = RCTBlob;
 		};
-		D95FD314230097ED0041808E /* PBXContainerItemProxy */ = {
+		E6D5E7D023008EA900803213 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7F365846A6144367A24D66B5 /* RNKeychain.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 5D82366F1B0CE05B005A9EF3;
 			remoteInfo = RNKeychain;
 		};
-		D95FD316230097ED0041808E /* PBXContainerItemProxy */ = {
+		E6D5E7D223008EA900803213 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7F365846A6144367A24D66B5 /* RNKeychain.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 6478985F1F38BF9100DA1C12;
 			remoteInfo = "RNKeychain-tvOS";
 		};
-		D95FD319230097ED0041808E /* PBXContainerItemProxy */ = {
+		E6D5E7D523008EA900803213 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BBB52792E31445029C5CAACA /* TouchID.xcodeproj */;
 			proxyType = 2;
@@ -844,19 +844,19 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
-		D95FD30E230097ED0041808E /* Products */ = {
+		E6D5E7CA23008EA800803213 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D95FD315230097ED0041808E /* libRNKeychain.a */,
-				D95FD317230097ED0041808E /* libRNKeychain.a */,
+				E6D5E7D123008EA900803213 /* libRNKeychain.a */,
+				E6D5E7D323008EA900803213 /* libRNKeychain.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D95FD310230097ED0041808E /* Products */ = {
+		E6D5E7CC23008EA800803213 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D95FD31A230097ED0041808E /* libTouchID.a */,
+				E6D5E7D623008EA900803213 /* libTouchID.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1061,7 +1061,7 @@
 					ProjectRef = 6380F65D473B4E6291EDCB04 /* RNGestureHandler.xcodeproj */;
 				},
 				{
-					ProductGroup = D95FD30E230097ED0041808E /* Products */;
+					ProductGroup = E6D5E7CA23008EA800803213 /* Products */;
 					ProjectRef = 7F365846A6144367A24D66B5 /* RNKeychain.xcodeproj */;
 				},
 				{
@@ -1069,7 +1069,7 @@
 					ProjectRef = 36C9829822E727D50002786B /* RNVectorIcons.xcodeproj */;
 				},
 				{
-					ProductGroup = D95FD310230097ED0041808E /* Products */;
+					ProductGroup = E6D5E7CC23008EA800803213 /* Products */;
 					ProjectRef = BBB52792E31445029C5CAACA /* TouchID.xcodeproj */;
 				},
 			);
@@ -1393,25 +1393,25 @@
 			remoteRef = ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D95FD315230097ED0041808E /* libRNKeychain.a */ = {
+		E6D5E7D123008EA900803213 /* libRNKeychain.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRNKeychain.a;
-			remoteRef = D95FD314230097ED0041808E /* PBXContainerItemProxy */;
+			remoteRef = E6D5E7D023008EA900803213 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D95FD317230097ED0041808E /* libRNKeychain.a */ = {
+		E6D5E7D323008EA900803213 /* libRNKeychain.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRNKeychain.a;
-			remoteRef = D95FD316230097ED0041808E /* PBXContainerItemProxy */;
+			remoteRef = E6D5E7D223008EA900803213 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		D95FD31A230097ED0041808E /* libTouchID.a */ = {
+		E6D5E7D623008EA900803213 /* libTouchID.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libTouchID.a;
-			remoteRef = D95FD319230097ED0041808E /* PBXContainerItemProxy */;
+			remoteRef = E6D5E7D523008EA900803213 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
