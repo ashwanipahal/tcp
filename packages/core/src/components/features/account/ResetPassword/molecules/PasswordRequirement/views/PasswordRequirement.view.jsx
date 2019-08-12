@@ -15,7 +15,7 @@ export const PasswordRequirement = ({ labels }) => {
       </BodyCopy>
       <BodyCopy fontFamily="secondary" fontSize="fs12" component="ul" className="elem-mb-MED">
         {passwordRequirementLabelKeys.map(labelKey => (
-          <BodyCopy component="li" textAlign="center">
+          <BodyCopy component="li" textAlign="center" key={labelKey}>
             {labels[labelKey]}
           </BodyCopy>
         ))}
