@@ -10,15 +10,19 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="extrabold"
+      locator=""
       text=""
     />
   </Text>
-  <Styled(TouchableOpacity)>
+  <Styled(TouchableOpacity)
+    onPress={[Function]}
+  >
     <Styled(BodyCopy)
       color="white"
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
+      locator=""
       text=""
       textTransform="uppercase"
     />
@@ -30,6 +34,7 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
       dataLocator="cartRecommendationMessage"
       fontFamily="secondary"
       fontWeight="extrabold"
+      locator=""
       text=""
     />
   </Text>
@@ -38,6 +43,7 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
       className="small-spacing"
       dataLocator="cartRecommendationMessage"
       fontFamily="secondary"
+      locator=""
       text=""
     />
   </Styled(View)>

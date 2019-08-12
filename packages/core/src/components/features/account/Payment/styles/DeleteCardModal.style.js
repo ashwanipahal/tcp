@@ -60,8 +60,17 @@ const deleteCardModalStyle = css`
     justify-content: center;
   }
   .deleteCardModal__img {
-    width: 15%;
+    width: 90px;
+    height: 56px;
     float: left;
+    @media ${props => props.theme.mediaQuery.mediumOnly} {
+      width: 98px;
+      height: 61px;
+    }
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      width: 61px;
+      height: 38px;
+    }
   }
   .deleteCardModal__addressToDelete {
     margin: 0 ${props => props.theme.spacing.LAYOUT_SPACING.XL}

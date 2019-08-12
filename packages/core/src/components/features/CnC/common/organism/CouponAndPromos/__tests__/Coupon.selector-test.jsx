@@ -113,7 +113,7 @@ describe('#Coupon selector', () => {
       submitButtonLabel: undefined,
       couponNeedHelpText: undefined,
       couponCodeHeader: undefined,
-      APPLIED_REWARDS_HEADING: 'Applied REWARDS & OFFERS ',
+      APPLIED_REWARDS_HEADING: 'APPLIED REWARDS & OFFERS ',
       APPLY_BUTTON_TEXT: 'APPLY',
       APPLY_TO_BAG: 'Apply to bag',
       AVAILABLE_REWARDS_HEADING: 'AVAILABLE REWARDS & OFFERS ',

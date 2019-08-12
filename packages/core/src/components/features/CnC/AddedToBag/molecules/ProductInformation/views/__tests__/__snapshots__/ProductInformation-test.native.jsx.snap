@@ -27,6 +27,7 @@ exports[`GiftCardList Component renders correctly 1`] = `
             "semibold",
           ]
         }
+        locator=""
         text="Boys Basic Skinny Jeans"
       />
     </Styled(Text)>
@@ -38,11 +39,13 @@ exports[`GiftCardList Component renders correctly 1`] = `
             "semibold",
           ]
         }
+        locator=""
         text="Color: "
         textAlign="center"
       />
       <Styled(BodyCopy)
         fontSize="fs12"
+        locator=""
         text=""
       />
     </Styled(View)>
@@ -54,15 +57,18 @@ exports[`GiftCardList Component renders correctly 1`] = `
             "semibold",
           ]
         }
+        locator=""
         text="Size: "
         textAlign="center"
       />
       <Styled(BodyCopy)
         fontSize="fs12"
+        locator=""
         text="M "
       />
       <Styled(BodyCopy)
         fontSize="fs12"
+        locator=""
         text="slim"
       />
     </Styled(View)>
@@ -74,11 +80,13 @@ exports[`GiftCardList Component renders correctly 1`] = `
             "semibold",
           ]
         }
+        locator=""
         text="Qty: "
         textAlign="center"
       />
       <Styled(BodyCopy)
         fontSize="fs12"
+        locator=""
         text="1"
       />
     </Styled(View)>

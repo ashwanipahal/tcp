@@ -22,6 +22,7 @@ exports[`EmptyBagPage component should renders correctly 1`] = `
     <Styled(Button)
       className="CTA-button"
       data-locator="cartRegisteredShopNowButton"
+      onClick={[Function]}
     >
       <Styled(BodyCopy)
         className={null}

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Router from 'next/router'; //eslint-disable-line
 import withStyle from '../../../../common/hoc/withStyles';
 import style from '../styles/EmptyBagPage.style';
 import { BodyCopy, Button } from '../../../../common/atoms';
@@ -24,6 +25,10 @@ const EmptyBagPage = ({ className, isUserLoggedIn, bagLabels }) => {
             isUserLoggedIn ? 'empty_bag_loginUserCTA' : 'empty_bag_guestUserCTA'
           )}
           className="CTA-button"
+          onClick={() => {
+            const page = !isUserLoggedIn ? '/us/login' : '/us/home';
+            Router.push(page);
+          }}
         >
           <BodyCopy
             component="span"

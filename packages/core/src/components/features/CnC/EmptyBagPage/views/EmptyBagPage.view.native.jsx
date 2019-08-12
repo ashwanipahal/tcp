@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Text } from 'react-native';
+import { withNavigation } from 'react-navigation';
 import withStyle from '../../../../common/hoc/withStyles';
 import style from '../styles/EmptyBagPage.style';
 import { BodyCopy } from '../../../../common/atoms';
@@ -11,7 +12,8 @@ import {
   StyledSupportMsg,
 } from '../styles/EmptyBagPage.style.native';
 
-const EmptyBagPage = ({ isUserLoggedIn, bagLabels }) => {
+const EmptyBagPage = ({ isUserLoggedIn, bagLabels, ...otherProps }) => {
+  const { navigation } = otherProps;
   return (
     <StyledEmptyBag>
       <Text>
@@ -26,7 +28,11 @@ const EmptyBagPage = ({ isUserLoggedIn, bagLabels }) => {
         />
       </Text>
 
-      <ViewBagButton>
+      <ViewBagButton
+        onPress={() => {
+          navigation.navigate(!isUserLoggedIn ? 'LoginPageContainer' : 'Home');
+        }}
+      >
         <BodyCopy
           textTransform="uppercase"
           color="white"
@@ -64,5 +70,5 @@ EmptyBagPage.propTypes = {
   bagLabels: PropTypes.bool.isRequired,
 };
 
-export default withStyle(EmptyBagPage, style);
+export default withNavigation(withStyle(EmptyBagPage, style));
 export { EmptyBagPage as EmptyBagPageVanilla };

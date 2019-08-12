@@ -13,7 +13,6 @@ const buildQuery = ({ slot, contentId }) => `
           url
           title
           target
-          external
         }
       }
 
@@ -22,7 +21,6 @@ const buildQuery = ({ slot, contentId }) => `
             url
             title
             target
-            external
           }
           image {
             url
