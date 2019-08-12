@@ -37,5 +37,6 @@ const CtaStyle = css`
       display: none;
     }
   }
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 export default CtaStyle;

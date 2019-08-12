@@ -33,6 +33,21 @@ const getDefaultLabels = label => {
 };
 
 /**
+ *
+ * @param {*} props
+ */
+const getTestID = route => {
+  const testIDs = {
+    home: 'HOME',
+    shop: 'shop_icon_btn',
+    account: 'ACCOUNT',
+    wallet: 'WALLET',
+    brand_logo: '',
+  };
+  return testIDs[route];
+};
+
+/**
  * This Component creates custom Bottom Nav Bar for the app
  * @param {*} props Props passed from BottomTabNavigator react native feature
  */
@@ -64,11 +79,12 @@ class NavBar extends React.PureComponent<Props> {
             let label;
             let StyledTouchableOpacity = style.tabButton;
             let StyledText = style.textStyle;
+            const routeId = getLabelText({ route });
 
             if (labels) {
-              label = labels[getLabelText({ route })];
+              label = labels[routeId];
             } else {
-              label = getDefaultLabels(getLabelText({ route }));
+              label = getDefaultLabels(routeId);
             }
 
             if (isRouteActive) {
@@ -90,7 +106,8 @@ class NavBar extends React.PureComponent<Props> {
                   onTabLongPress({ route });
                 }}
                 accessibilityRole="link"
-                accessibilityLabel={label}
+                accessibilityLabel={getTestID(routeId)}
+                testID={getTestID(routeId)}
               >
                 {renderIcon({ route, focused: isRouteActive })}
 

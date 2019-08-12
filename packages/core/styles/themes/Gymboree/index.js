@@ -1,6 +1,5 @@
 import createThemeColorPalette from '../createThemeColorPalette';
 import createThemeTypography from '../createThemeTypography';
-// import colors from '../TCP/colors';
 import green from '../colors/green';
 import blue from '../colors/blue';
 import orange from '../colors/orange';
@@ -27,6 +26,7 @@ const typography = createThemeTypography({
 
 const themeGymboree = {
   colorPalette: { ...colorPalette, green, blue },
+  brand: 'gym',
   /* colors object has been deprecated and, will be removed in the future release.
    Please use colorPalette instead */
   colors,

@@ -156,8 +156,8 @@ exports[`CardTile should render correctly with amex card 1`] = `
         data-locator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -319,8 +319,8 @@ exports[`CardTile should render correctly with discover card 1`] = `
         data-locator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -507,8 +507,8 @@ exports[`CardTile should render correctly with gift card 1`] = `
         data-locator="payment-giftcarddeletelink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -693,8 +693,8 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
         data-locator="payment-giftcarddeletelink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -856,8 +856,8 @@ exports[`CardTile should render correctly with master card 1`] = `
         data-locator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -1042,8 +1042,8 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         data-locator="payment-giftcarddeletelink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -1196,8 +1196,8 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         data-locator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -1318,8 +1318,8 @@ exports[`CardTile should render correctly with venmocard 1`] = `
         data-locator="payment-venmodeletelink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -1481,8 +1481,8 @@ exports[`CardTile should render correctly with visa card 1`] = `
         data-locator="payment-creditdebitdeletelink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />

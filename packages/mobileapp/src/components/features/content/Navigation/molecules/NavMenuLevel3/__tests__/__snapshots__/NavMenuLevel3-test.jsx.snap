@@ -1,32 +1,60 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NavMenuLevel3 should render correctly 1`] = `
-<Styled(View)>
-  <Styled(TouchableOpacity)
-    accessibilityRole="button"
-    onPress={[Function]}
-  >
-    <Styled(Image)
-      source={
+<Fragment>
+  <Styled(View)>
+    <Styled(TouchableOpacity)
+      accessibilityRole="button"
+      onPress={[Function]}
+      testID="back_icon_btn"
+    >
+      <Styled(Image)
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/carrot-large-left.png",
+          }
+        }
+      />
+    </Styled(TouchableOpacity)>
+    <Styled(BodyCopy)
+      color="text.primary"
+      fontFamily="secondary"
+      fontSize="fs16"
+      locator=""
+      style={
         Object {
-          "testUri": "../../../../core/src/assets/carrot-large-left.png",
+          "textTransform": "uppercase",
         }
       }
+      testID="L3_header_text"
+      text="test"
+      textAlign="left"
     />
-  </Styled(TouchableOpacity)>
-  <Styled(BodyCopy)
-    color="text.primary"
-    fontFamily="secondary"
-    fontSize="fs16"
-    locator=""
-    style={
-      Object {
-        "textTransform": "uppercase",
-      }
+    <Text />
+  </Styled(View)>
+  <FlatList
+    data={
+      Array [
+        Object {
+          "title": "Lorem",
+        },
+        Object {
+          "title": "Categoriess",
+        },
+      ]
     }
-    text="L3"
-    textAlign="center"
+    disableVirtualization={false}
+    horizontal={false}
+    initialNumToRender={10}
+    keyExtractor={[Function]}
+    maxToRenderPerBatch={10}
+    numColumns={1}
+    onEndReachedThreshold={2}
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={50}
+    updateCellsBatchingPeriod={50}
+    windowSize={21}
   />
-  <Text />
-</Styled(View)>
+</Fragment>
 `;
