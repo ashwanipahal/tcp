@@ -9,6 +9,8 @@ exports[`VenmoCardList Component should render correctly 1`] = `
       "paymentGC": Object {},
     }
   }
+  setSelectedCard={[Function]}
+  toggleModal={[Function]}
   venmoCardList={Immutable.List []}
 >
   <Styled(Text) />
@@ -24,6 +26,8 @@ exports[`VenmoCardList Component should render correctly if list is present 1`] 
       "paymentGC": Object {},
     }
   }
+  setSelectedCard={[Function]}
+  toggleModal={[Function]}
   venmoCardList={
     Immutable.List [
       Object {
@@ -77,11 +81,13 @@ exports[`VenmoCardList Component should render correctly if list is present 1`] 
     }
     persistentSubmitErrors={false}
     pure={true}
+    setSelectedCard={[Function]}
     shouldAsyncValidate={[Function]}
     shouldError={[Function]}
     shouldValidate={[Function]}
     shouldWarn={[Function]}
     submitAsSideEffect={false}
+    toggleModal={[Function]}
     touchOnBlur={true}
     touchOnChange={false}
     updateUnregisteredFields={false}

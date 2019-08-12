@@ -4,6 +4,7 @@ const styles = css`
   .bonus-details-modal .TCPModal__InnerContent {
     @media ${props => props.theme.mediaQuery.mediumOnly} {
       max-width: 600px;
+      min-height: 608px;
     }
   }
   @media ${props => props.theme.mediaQuery.xlarge} {

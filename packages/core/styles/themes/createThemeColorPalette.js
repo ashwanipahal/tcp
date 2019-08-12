@@ -15,6 +15,9 @@ function createThemeColorPalette(colors = {}) {
   } = colors;
 
   const { white, black } = common;
+  const {
+    userTheme = { plcc: blue[800], plccLight: blue[100], mpr: orange[800], mprLight: orange[100] },
+  } = colors;
 
   return {
     white,
@@ -30,6 +33,7 @@ function createThemeColorPalette(colors = {}) {
     red,
     pink,
     blue,
+    userTheme,
   };
 }
 

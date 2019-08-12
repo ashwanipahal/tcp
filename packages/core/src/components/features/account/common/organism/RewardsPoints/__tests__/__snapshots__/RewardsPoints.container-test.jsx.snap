@@ -11,6 +11,7 @@ exports[`Rewards Points Container View should render Rewards Points Container Co
       "lbl_common_next_reward": "",
     }
   }
+  plccUser={false}
   pointsToNextReward=""
   totalRewards=""
 />

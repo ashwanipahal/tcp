@@ -12,16 +12,18 @@ const tooltipStyle = css`
     position: absolute;
     z-index: 99;
     bottom: 100%;
-    left: 50%;
     padding-bottom: 4px;
-    transform: translateX(-50%);
+    left: ${props => (props.aligned === 'right' ? '100%' : '50%')};
+    transform: ${props => (props.aligned === 'right' ? 'translateX(-100%)' : 'translateX(-50%)')};
+    min-width: ${props => (props.minWidth ? `min-width: ${props.minWidth}` : '100px')};
+
     ::after {
       border-left: 4px solid transparent;
       border-right: 4px solid transparent;
       border-top: 4px solid ${props => props.theme.colors.WHITE};
       bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
+      left: ${props => (props.aligned === 'right' ? '100%' : '50%')};
+      transform: ${props => (props.aligned === 'right' ? 'translateX(-100%)' : 'translateX(-50%)')};
       content: '';
       position: absolute;
     }

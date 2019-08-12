@@ -119,7 +119,8 @@ exports[`LoginForm component should renders correctly 1`] = `
       component={[Function]}
       dataLocator="rememberMe"
       disabled={false}
-      name="rememberMe"
+      name="userTouchId"
+      rightText="User Touch ID"
     />
     <Field
       component={[Function]}
@@ -140,6 +141,7 @@ exports[`LoginForm component should renders correctly 1`] = `
     disableButton={false}
     fill="BLUE"
     fullWidth=""
+    locator=""
     text=""
     url=""
   />
@@ -151,6 +153,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       }
     }
     fontSizeVariation="xlarge"
+    locator=""
     onPress={[Function]}
     text=""
     visible={false}

@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { isGymboree } from '../../../../utils';
 
 const ButtonStyles = css`
   border: none;
@@ -151,6 +152,12 @@ const ButtonStyles = css`
     ${props =>
       props.buttonVariation === 'variable-width' ? 'min-height: 45px; padding: 16px 32px;' : ''};
   }
+  ${() =>
+    isGymboree()
+      ? `
+    border-radius: 25px;
+  `
+      : ``}
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 

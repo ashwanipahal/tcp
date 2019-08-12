@@ -6,6 +6,7 @@ const initialState = fromJS({
   component: null,
   variation: 'primary',
   color: null,
+  componentProps: null,
 });
 
 const OverlayModalReducer = (state = initialState, action) => {
@@ -15,13 +16,15 @@ const OverlayModalReducer = (state = initialState, action) => {
         .set('openOverlay', true)
         .set('component', action.payload.component)
         .set('variation', action.payload.variation)
-        .set('color', action.payload.color);
+        .set('color', action.payload.color)
+        .set('componentProps', action.payload.componentProps);
     case OVERLAY_CONSTANTS.CLOSE_OVERLAY:
       return state
         .set('openOverlay', false)
         .set('component', null)
         .set('variation', 'primary')
-        .set('color', null);
+        .set('color', null)
+        .set('componentProps', null);
     default:
       if (state instanceof Object) {
         return fromJS(state);

@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CollapsibleContainer should render correctly 1`] = `
+<View
+  className=""
+>
+  <Styled(TouchableOpacity)
+    accessibilityRole="button"
+    aria-expanded={false}
+    onPress={[Function]}
+  >
+    <Styled(View)>
+      <Styled(ImageComp)
+        height={6}
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/carrot-small-down.png",
+          }
+        }
+        width={10}
+      />
+    </Styled(View)>
+    <View>
+      <View>
+        <Text>
+          hello
+        </Text>
+      </View>
+    </View>
+  </Styled(TouchableOpacity)>
+</View>
+`;

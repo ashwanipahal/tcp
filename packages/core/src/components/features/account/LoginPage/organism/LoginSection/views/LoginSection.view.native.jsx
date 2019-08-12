@@ -98,8 +98,8 @@ class LoginSection extends PureComponent<Props> {
             <Text>{labels.login.lbl_login_createAccountHelp}</Text>
           </DescriptionStyle>
           <CustomButton
-            color={colorPallete.white}
-            fill="BLUE"
+            color={colorPallete.text.secondary}
+            fill="WHITE"
             type="submit"
             buttonVariation="variable-width"
             data-locator=""
@@ -134,13 +134,14 @@ class LoginSection extends PureComponent<Props> {
 
 LoginSection.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  labels: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}),
   loginErrorMessage: PropTypes.string,
   initialValues: PropTypes.shape({}).isRequired,
 };
 
 LoginSection.defaultProps = {
   loginErrorMessage: '',
+  labels: { login: { lbl_login_createAccountCTA: '', lbl_login_createAccountHelp: '' } },
 };
 
 export default withStyles(LoginSection, FormStyle);

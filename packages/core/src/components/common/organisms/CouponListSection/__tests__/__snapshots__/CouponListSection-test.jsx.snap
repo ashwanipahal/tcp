@@ -48,7 +48,7 @@ exports[`CouponList component should renders applied list 1`] = `
             "legalText": "$10 OFF On $60",
             "promotionType": "public",
             "status": "available",
-            "title": "$10 OFF On $50",
+            "title": "$10 OFF on $50",
           }
         }
         key="Y00105575"
@@ -143,7 +143,7 @@ exports[`CouponList component should renders applied list 1`] = `
   <div>
     <Styled(Anchor)
       anchorVariation="primary"
-      data-locator="couponcard-help-applying"
+      data-locator="cartShowLessButton"
       fontSize="fs10"
       fontSizeVariation="small"
       onClick={[Function]}
@@ -183,7 +183,7 @@ exports[`CouponList component should renders available list 1`] = `
       </div>
       <Styled(Anchor)
         anchorVariation="primary"
-        data-locator="couponcard-help-applying"
+        data-locator="couponcard-helpApplyingPlaceCashlink"
         fontSize="fs10"
         fontSizeVariation="small"
         onClick={[Function]}
@@ -218,7 +218,7 @@ exports[`CouponList component should renders available list 1`] = `
             "legalText": "$10 OFF On $60",
             "promotionType": "public",
             "status": "available",
-            "title": "$10 OFF On $50",
+            "title": "$10 OFF on $50",
           }
         }
         couponDetailClick={[Function]}
@@ -318,7 +318,7 @@ exports[`CouponList component should renders available list 1`] = `
   <div>
     <Styled(Anchor)
       anchorVariation="primary"
-      data-locator="couponcard-help-applying"
+      data-locator="cartShowLessButton"
       fontSize="fs10"
       fontSizeVariation="small"
       onClick={[Function]}

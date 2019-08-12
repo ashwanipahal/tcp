@@ -14,6 +14,7 @@ export {
   getViewportInfo,
   showOverlay,
   closeOverlay,
+  scrollPage,
 } from './utils.web';
 
 export {
@@ -25,4 +26,5 @@ export {
   getAPIConfig,
   createAPIConfig,
   isCanada,
+  isGymboree,
 } from './utils';

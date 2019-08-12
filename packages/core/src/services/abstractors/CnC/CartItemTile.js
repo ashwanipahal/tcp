@@ -48,10 +48,16 @@ export const COUPON_STATUS = {
   PENDING: 'pending',
   REMOVING: 'removing',
 };
+
+export const BUTTON_LABEL_STATUS = {
+  APPLY: 'APPLY',
+  REMOVE: 'REMOVE',
+};
 export const COUPON_REDEMPTION_TYPE = {
   PUBLIC: 'public',
   WALLET: 'wallet',
   REWARDS: 'rewards',
+  SAVING: 'saving',
   LOYALTY: 'LOYALTY',
   PLACECASH: 'PLACECASH',
   PC: 'PLACECASH',
@@ -80,6 +86,21 @@ const constructDateFormat = date => {
     .getFullYear()
     .toString()
     .substr(-2)}`;
+};
+
+const getCouponType = promotionType => {
+  switch (promotionType) {
+    case 'PC':
+      return COUPON_REDEMPTION_TYPE.PLACECASH;
+    case 'PLACECASH':
+      return COUPON_REDEMPTION_TYPE.PLACECASH;
+    case 'LOYALTY':
+      return COUPON_REDEMPTION_TYPE.REWARDS;
+    case 'OTHERS':
+      return COUPON_REDEMPTION_TYPE.SAVING;
+    default:
+      return COUPON_REDEMPTION_TYPE.SAVING;
+  }
 };
 
 export const removeItem = orderItemId => {
@@ -164,6 +185,7 @@ export const constructCouponStructure = cpnArray => {
     coupons.push({
       id: itm.offerCode.toUpperCase(),
       status: itm.isApplied ? COUPON_STATUS.APPLIED : COUPON_STATUS.AVAILABLE,
+      labelStatus: itm.isApplied ? BUTTON_LABEL_STATUS.REMOVE : BUTTON_LABEL_STATUS.APPLY,
       isExpiring,
       title: itm.offerText,
       detailsOpen: false,
@@ -172,6 +194,7 @@ export const constructCouponStructure = cpnArray => {
       details: itm.offerDescription,
       legalText: itm.legalText,
       isStarted: isPlaceCash ? compareDate(now, startDate) : true,
+      offerType: getCouponType(itm.offerType),
       // imageThumbUrl: getCouponImageThumb(itm.offerType),
       // imageUrl: getCouponImage(itm.offerType),
       error: '',
@@ -513,7 +536,9 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
           // Backend returns the same value for both itemPrice and itemDstPrice UNLESS an explicit promotion is applied
           // Enhancement needed - Backend should return the actual prices and frontend should determine which values to display
           listPrice: flatCurrencyToCents(item.itemPrice),
+          listUnitPrice: flatCurrencyToCents(item.itemUnitPrice),
           offerPrice: flatCurrencyToCents(item.itemDstPrice),
+          unitOfferPrice: flatCurrencyToCents(item.itemUnitDstPrice),
           wasPrice: flatCurrencyToCents(item.productInfo.listPrice),
           salePrice: isCanada
             ? flatCurrencyToCents(item.productInfo.offerPriceCAD)
