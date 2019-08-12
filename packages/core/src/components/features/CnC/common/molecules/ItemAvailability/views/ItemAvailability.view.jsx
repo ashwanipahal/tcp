@@ -7,7 +7,7 @@ import style from '../styles/ItemAvailability.style';
 
 class ItemAvailability extends React.PureComponent {
   render() {
-    const { errorMsg, className } = this.props;
+    const { errorMsg, className, chooseDiff } = this.props;
     return (
       <>
         <div className={className}>
@@ -24,13 +24,15 @@ class ItemAvailability extends React.PureComponent {
               </BodyCopy>
             </Col>
           </Row>
-          <Row>
-            <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-              <BodyCopy color="error" fontFamily="secondary" fontSize="fs10">
-                Choose a different color, size, fit or qty.
-              </BodyCopy>
-            </Col>
-          </Row>
+          {chooseDiff && (
+            <Row>
+              <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+                <BodyCopy color="error" fontFamily="secondary" fontSize="fs10">
+                  {chooseDiff}
+                </BodyCopy>
+              </Col>
+            </Row>
+          )}
         </div>
       </>
     );
@@ -40,11 +42,13 @@ class ItemAvailability extends React.PureComponent {
 ItemAvailability.propTypes = {
   errorMsg: PropTypes.string,
   className: PropTypes.string,
+  chooseDiff: PropTypes.string,
 };
 
 ItemAvailability.defaultProps = {
   errorMsg: '',
   className: '',
+  chooseDiff: '',
 };
 
 export default withStyles(ItemAvailability, style);

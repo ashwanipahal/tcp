@@ -59,6 +59,9 @@ exports[`CartItemTile common component renders correctly 1`] = `
   .responsive-edit-css {
     padding-top: 2px;
   }
+  .imageWrapper {
+    position: relative;
+  }
 
   .product-tile-wrapper {
     flex-wrap: nowrap;
@@ -159,21 +162,20 @@ exports[`CartItemTile common component renders correctly 1`] = `
     .price-label {
       margin-left: 170px;
     }
-    .imageWrapper {
-      position: relative;
-    }
-    .soldOutLabel {
-      width: 89px;
-      height: 18px;
-      background-color: red;
-      color: white;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-    }
   }
 
+  .soldOutLabel {
+    width: 89px;
+    height: 18px;
+    background-color: ",
+          [Function],
+          ";
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   ",
           [Function],
           ";

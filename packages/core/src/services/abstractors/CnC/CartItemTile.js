@@ -577,7 +577,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
           // storeTodayOpenRange: store ? todayOpeningTime + ' - ' + todayClosingTime : null,
           // storeTomorrowOpenRange: store ? tomorrowOpeningTime + ' - ' + tomorrowClosingTime : null,
 
-          //availability: deriveItemAvailability(orderDetailsResponse, item, store),
+          availability: deriveItemAvailability(orderDetailsResponse, item, store),
           vendorColorDisplayId: item.productInfo && item.productInfo.productPartNumber,
           // dates for boss pickup, used getDateInformation utility
           bossStartDate:
@@ -716,38 +716,39 @@ export const deriveBossEligiblity = (item, orderDetailsResponse) => {
   );
 };
 
-// export const deriveItemAvailability=(orderDetails, item, store) => {
-//   const isUsOrder = orderDetails.currencyCode === 'USD';
-//   const isCaOrder = orderDetails.currencyCode !== 'USD';
-//   const isStoreBOSSEligible = true
-
-//   if (
-//     (isUsOrder && item.productInfo.articleOOSUS)
-//     || (isCaOrder && item.productInfo.articleOOSCA)
-//   ) {
-//     return AVAILABILITY.SOLDOUT;
-//     // replaced "BOPIS" with a config variable
-//   } else if (
-//     item.orderItemType === config.ORDER_ITEM_TYPE.BOPIS
-//     && item.stLocId && !parseBoolean(orderDetails.bopisIntlField)
-//   ) {
-//     return AVAILABILITY.OK;
-//   } else if (
-//     item.orderItemType === config.ORDER_ITEM_TYPE.BOSS && item.stLocId
-//     && (parseBoolean(orderDetails.bossIntlField) || !isStoreBOSSEligible)
-//   ) {
-//     /**
-//     * Adding new check to return status unavailable
-//     * in case of boss store ineligible or boss international order
-//     */
-//     return AVAILABILITY.UNAVAILABLE;
-//   } else if (item.inventoryAvail > 0) {
-//     // inventory check for BOSS and ECOM
-//     return AVAILABILITY.OK;
-//   } else {
-//     return AVAILABILITY.UNAVAILABLE;
-//   }
-// }
+export const deriveItemAvailability = (orderDetails, item, store) => {
+  const isUsOrder = orderDetails.currencyCode === 'USD';
+  const isCaOrder = orderDetails.currencyCode !== 'USD';
+  const isStoreBOSSEligible = true;
+  console.log(item);
+  if (
+    (isUsOrder && item.productInfo.articleOOSUS) ||
+    (isCaOrder && item.productInfo.articleOOSCA)
+  ) {
+    return AVAILABILITY.SOLDOUT;
+  } else if (
+    item.orderItemType === ORDER_ITEM_TYPE.BOPIS &&
+    item.stLocId &&
+    !parseBoolean(orderDetails.bopisIntlField)
+  ) {
+    return AVAILABILITY.OK;
+  } else if (
+    item.orderItemType === ORDER_ITEM_TYPE.BOSS &&
+    item.stLocId &&
+    (parseBoolean(orderDetails.bossIntlField) || !isStoreBOSSEligible)
+  ) {
+    /**
+     * Adding new check to return status unavailable
+     * in case of boss store ineligible or boss international order
+     */
+    return AVAILABILITY.UNAVAILABLE;
+  } else if (item.inventoryAvail > 0) {
+    // inventory check for BOSS and ECOM
+    return AVAILABILITY.OK;
+  } else {
+    return AVAILABILITY.UNAVAILABLE;
+  }
+};
 export default {
   getOrderDetailsData,
   removeItem,

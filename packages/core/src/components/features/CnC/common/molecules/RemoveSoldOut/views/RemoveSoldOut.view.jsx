@@ -7,12 +7,12 @@ import style from '../styles/RemoveSoldOut.style';
 
 class RemoveSoldOut extends React.PureComponent {
   render() {
-    const { errorMsg, className } = this.props;
+    const { labels, className } = this.props;
     return (
       <>
         <div className={className}>
           <BodyCopy className="removeItem" component="span" fontFamily="secondary" fontSize="fs12">
-            Please
+            {labels.pleaseText}
             <Anchor
               fontSizeVariation="medium"
               underline
@@ -22,10 +22,9 @@ class RemoveSoldOut extends React.PureComponent {
               data-locator="miniBag-removeItems"
               className="removeAnchor"
             >
-              {` remove `}
+              {` ${labels.remove} `}
             </Anchor>
-            the sold out items from your bag before you check out.
-            {errorMsg}
+            {labels.removeSoldOut}
           </BodyCopy>
         </div>
       </>
@@ -34,12 +33,12 @@ class RemoveSoldOut extends React.PureComponent {
 }
 
 RemoveSoldOut.propTypes = {
-  errorMsg: PropTypes.string,
+  labels: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string])),
   className: PropTypes.string,
 };
 
 RemoveSoldOut.defaultProps = {
-  errorMsg: '',
+  labels: '',
   className: '',
 };
 

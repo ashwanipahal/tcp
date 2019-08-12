@@ -8,18 +8,24 @@ import {
 import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
 import RemoveSoldOut from '@tcp/core/src/components/features/CnC/common/molecules/RemoveSoldOut/views/RemoveSoldOut.view';
 import EmptyBag from '@tcp/core/src/components/features/CnC/EmptyBagPage/views/EmptyBagPage.view';
-import productTileCss from '../styles/ProductTileWrapper.style';
+import productTileCss, { customStyles } from '../styles/ProductTileWrapper.style';
 
 const ProductTileWrapper = props => {
+  let isAvailable = false;
   const { orderItems, bagLabels, labels, pageView, isUserLoggedIn } = props;
   if (orderItems && orderItems.size > 0) {
     return (
       <div className="miniBagWrapper">
-        <ErrorMessage error="There’s a problem with your order." />
-        <RemoveSoldOut />
+        {(isAvailable === 'SOLDOUT' || isAvailable === 'UNAVAILABLE') && (
+          <>
+            <ErrorMessage customClass={customStyles} error={labels.problemWithOrder} />
+            <RemoveSoldOut labels={labels} />
+          </>
+        )}
+
         {orderItems.map(tile => {
           const productDetail = getProductDetails(tile);
-
+          isAvailable = productDetail.miscInfo.store;
           return (
             <CartItemTile
               inheritedStyles={pageView === 'myBag' && productTileCss}

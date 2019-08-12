@@ -731,6 +731,7 @@ export const response = {
         orderItemType: 'ECOM',
         bossEndDate: null,
         bossStartDate: null,
+        availability: 'OK',
       },
     },
     {
@@ -781,6 +782,7 @@ export const response = {
         orderItemType: 'ECOM',
         bossEndDate: null,
         bossStartDate: null,
+        availability: 'OK',
       },
     },
     {
@@ -831,6 +833,7 @@ export const response = {
         orderItemType: 'ECOM',
         bossEndDate: null,
         bossStartDate: null,
+        availability: 'OK',
       },
     },
     {
@@ -883,6 +886,7 @@ export const response = {
         orderItemType: 'ECOM',
         bossEndDate: null,
         bossStartDate: null,
+        availability: 'OK',
       },
     },
   ],
