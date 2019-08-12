@@ -11,6 +11,8 @@ import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/
 import CartItemTile from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
 import CartPage from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.reducer';
 import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
+import CouponReducer from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.reducer';
+
 import {
   HEADER_REDUCER_KEY,
   LABEL_REDUCER_KEY,
@@ -28,6 +30,7 @@ import {
   NAVIGATION_REDUCER_KEY,
   FORM_REDUCER_KEY,
   CREATE_ACCOUNT_REDUCER_KEY,
+  COUPON_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -60,4 +63,5 @@ export default combineReducers({
   [CARTPAGE_REDUCER_KEY]: CartPage,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
   [CREATE_ACCOUNT_REDUCER_KEY]: CreateAccountReducer,
+  [COUPON_REDUCER_KEY]: CouponReducer,
 });
