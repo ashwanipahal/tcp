@@ -16,6 +16,8 @@ type Props = {
   updateCartItem: any,
   getProductSKUInfo: any,
   editableProductInfo: any,
+  isEditAllowed: any,
+  toggleEditAllowance: any,
 };
 
 export const CartItemTileContainer = ({
@@ -27,6 +29,8 @@ export const CartItemTileContainer = ({
   editableProductInfo,
   pageView,
   className,
+  isEditAllowed,
+  toggleEditAllowance,
 }) => (
   <CartItemTile
     labels={labels}
@@ -37,6 +41,8 @@ export const CartItemTileContainer = ({
     editableProductInfo={editableProductInfo}
     pageView={pageView}
     className={className}
+    toggleEditAllowance={toggleEditAllowance}
+    isEditAllowed={isEditAllowed}
   />
 );
 export const mapDispatchToProps = (dispatch: ({}) => void) => {

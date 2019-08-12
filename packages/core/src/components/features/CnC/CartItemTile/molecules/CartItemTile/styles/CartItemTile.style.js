@@ -1,10 +1,9 @@
 import { css } from 'styled-components';
 
 export default css`
+  padding: 10px 15px;
   border-bottom: 2px solid ${props => props.theme.colorPalette.gray[300]};
-  margin: 15px 0;
-  padding: 20px;
-  background: #fff;
+  margin-bottom: 20px;
   .padding-top-10 {
     padding-top: 10px;
   }
@@ -45,6 +44,10 @@ export default css`
   }
   .responsive-edit-css {
     padding-top: 2px;
+  }
+
+  .crossDeleteIcon {
+    float: right;
   }
 
   .product-tile-wrapper {

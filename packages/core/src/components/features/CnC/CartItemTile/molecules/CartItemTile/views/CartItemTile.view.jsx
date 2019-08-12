@@ -21,6 +21,12 @@ class CartItemTile extends React.Component {
   toggleFormVisibility = () => {
     const { isEdit } = this.state;
     this.setState({ isEdit: !isEdit });
+    this.toggleEditLinkVisibility();
+  };
+
+  toggleEditLinkVisibility = () => {
+    const { toggleEditAllowance } = this.props;
+    toggleEditAllowance();
   };
 
   handleEditCartItem = productNumber => {
@@ -34,7 +40,7 @@ class CartItemTile extends React.Component {
     const { updateCartItem } = this.props;
     updateCartItem(itemId, skuId, quantity, itemPartNumber, variantNo);
     this.toggleFormVisibility();
-  }
+  };
 
   getBossBopisDetailsForMiniBag = (productDetail, labels) => {
     return (
@@ -147,7 +153,15 @@ class CartItemTile extends React.Component {
 
   render() {
     const { isEdit } = this.state;
-    const { productDetail, labels, editableProductInfo, removeCartItem, className, pageView } = this.props;
+    const {
+      productDetail,
+      labels,
+      editableProductInfo,
+      removeCartItem,
+      className,
+      pageView,
+      isEditAllowed,
+    } = this.props;
     const initialValues = {
       color: { name: productDetail.itemInfo.color },
       fit: productDetail.itemInfo.fit,
@@ -299,20 +313,22 @@ class CartItemTile extends React.Component {
                       {`${productDetail.itemInfo.qty}`}
                     </BodyCopy>
                   </div>
-                  <BodyCopy
-                    fontFamily="secondary"
-                    fontSize="fs12"
-                    component="div"
-                    dataLocator={getLocator('cart_item_edit_link')}
-                    className="padding-left-10 responsive-edit-css"
-                    onClick={() => {
-                      if (pageView !== 'myBag') {
-                      this.handleEditCartItem(productDetail.productInfo.productPartNumber);
-                    }
-                    }}
-                  >
-                    <u>{labels.edit}</u>
-                  </BodyCopy>
+                  {isEditAllowed && (
+                    <BodyCopy
+                      fontFamily="secondary"
+                      fontSize="fs12"
+                      component="div"
+                      dataLocator={getLocator('cart_item_edit_link')}
+                      className="padding-left-10 responsive-edit-css"
+                      onClick={() => {
+                        if (pageView !== 'myBag') {
+                          this.handleEditCartItem(productDetail.productInfo.productPartNumber);
+                        }
+                      }}
+                    >
+                      <u>{labels.edit}</u>
+                    </BodyCopy>
+                  )}
                 </Row>
               </React.Fragment>
             ) : (
@@ -396,6 +412,7 @@ class CartItemTile extends React.Component {
 
 CartItemTile.defaultProps = {
   pageView: '',
+  isEditAllowed: true,
 };
 
 CartItemTile.propTypes = {
@@ -407,6 +424,8 @@ CartItemTile.propTypes = {
   removeCartItem: PropTypes.func.isRequired,
   className: PropTypes.string.isRequired,
   pageView: PropTypes.string,
+  toggleEditAllowance: PropTypes.func.isRequired,
+  isEditAllowed: PropTypes.bool,
 };
 
 export default withStyles(CartItemTile, styles);

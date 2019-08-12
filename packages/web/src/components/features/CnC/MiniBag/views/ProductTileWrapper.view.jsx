@@ -8,29 +8,50 @@ import {
 import EmptyBag from '@tcp/core/src/components/features/CnC/EmptyBagPage/views/EmptyBagPage.view';
 import productTileCss from '../styles/ProductTileWrapper.style';
 
-const ProductTileWrapper = props => {
-  const { orderItems, bagLabels, labels, pageView, isUserLoggedIn } = props;
-  if (orderItems && orderItems.size > 0) {
-    return (
-      <div className="miniBagWrapper">
-        {orderItems.map(tile => {
-          const productDetail = getProductDetails(tile);
-
-          return (
-            <CartItemTile
-              inheritedStyles={pageView === 'myBag' && productTileCss}
-              labels={labels}
-              productDetail={productDetail}
-              key={`${getProductName(tile)}`}
-              pageView={pageView}
-            />
-          );
-        })}
-      </div>
-    );
+class ProductTileWrapper extends React.PureComponent<props> {
+  // eslint-disable-next-line flowtype/no-types-missing-file-annotation
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      isEditAllowed: true,
+    };
   }
-  return <EmptyBag bagLabels={bagLabels} isUserLoggedIn={isUserLoggedIn} />;
-};
+
+  toggleEditAllowance = () => {
+    const { isEditAllowed } = this.state;
+    this.setState({
+      isEditAllowed: !isEditAllowed,
+    });
+  };
+
+  render() {
+    const { orderItems, bagLabels, labels, pageView, isUserLoggedIn } = this.props;
+
+    const { isEditAllowed } = this.state;
+    if (orderItems && orderItems.size > 0) {
+      return (
+        <div className="miniBagWrapper">
+          {orderItems.map(tile => {
+            const productDetail = getProductDetails(tile);
+
+            return (
+              <CartItemTile
+                inheritedStyles={pageView === 'myBag' && productTileCss}
+                labels={labels}
+                productDetail={productDetail}
+                key={`${getProductName(tile)}`}
+                pageView={pageView}
+                toggleEditAllowance={this.toggleEditAllowance}
+                isEditAllowed={isEditAllowed}
+              />
+            );
+          })}
+        </div>
+      );
+    }
+    return <EmptyBag bagLabels={bagLabels} isUserLoggedIn={isUserLoggedIn} />;
+  }
+}
 
 ProductTileWrapper.defaultProps = {
   pageView: '',

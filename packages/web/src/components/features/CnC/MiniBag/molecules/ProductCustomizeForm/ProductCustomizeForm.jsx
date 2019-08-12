@@ -203,6 +203,10 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
     return quantityArray;
   };
 
+  getSizeLabel = (productDetail, labels) => {
+    return productDetail.itemInfo.isGiftItem === true ? `${labels.value}` : `${labels.size}`;
+  };
+
   render() {
     const { colorFitsSizesMap, item, labels, formVisiblity } = this.props;
     const { selectedColor, selectedFit, selectedSize, selectedQuantity } = this.state;
@@ -222,7 +226,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
     const { handleSubmit } = this.props;
     const { itemId } = item.itemInfo;
     const { selectedSkuId } = this.state;
-    const quantity = selectedQuantity || '3';
+    const quantity = selectedQuantity || '1';
     const { itemPartNumber } = item.productInfo;
     const { variantNo } = item.productInfo;
 
@@ -258,7 +262,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
               <Field
                 width={50}
                 id="size"
-                name="Size"
+                name={this.getSizeLabel(item, labels)}
                 component={MiniBagSelect}
                 options={sizeList}
                 onChange={this.sizeChange}
