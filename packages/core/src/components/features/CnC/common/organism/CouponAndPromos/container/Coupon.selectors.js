@@ -1,3 +1,5 @@
+import { COUPON_REDEMPTION_TYPE } from '../../../../../../../services/abstractors/CnC/CartItemTile';
+
 export const getCouponFetchingState = state => {
   return state.CouponsAndPromos && state.CouponsAndPromos.get('isFetching');
 };
@@ -69,4 +71,9 @@ export const getAppliedCouponListState = state => {
 export const getAvailableCouponListState = state => {
   const list = state.CouponsAndPromos && state.CouponsAndPromos.get('couponsAndOffers');
   return list && list.filter(i => i.status === 'available');
+};
+
+export const getAllRewardsCoupons = state => {
+  const list = state.CouponsAndPromos && state.CouponsAndPromos.get('couponsAndOffers');
+  return list && list.filter(i => i.redemptionType === COUPON_REDEMPTION_TYPE.LOYALTY);
 };

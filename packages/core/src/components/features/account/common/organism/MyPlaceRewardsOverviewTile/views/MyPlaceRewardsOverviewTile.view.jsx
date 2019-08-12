@@ -1,33 +1,77 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import AccountOverviewTile from '../../../../../../common/molecules/AccountOverviewTile';
+import CouponList from '../molecules/CouponList';
+import BonusPointsDays from '../../../../BonusPointsDays';
+import Anchor from '../../../../../../common/atoms/Anchor';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy/views/BodyCopy';
+import withStyles from '../../../../../../common/hoc/withStyles';
+import styles from '../styles/MyPlaceRewardsOverviewTile.style';
 
-export const MyPlaceRewardsOverviewTile = ({ labels }) => {
+export const MyPlaceRewardsOverviewTile = ({ className, labels, coupons, isBrierleyEnabled }) => {
+  const rewardCouponsCount = coupons.size;
+  let walletOverviewInfo = '';
+
+  if (rewardCouponsCount) {
+    walletOverviewInfo = labels.lbl_overview_myPlaceRewardsAvailable.replace(/\{0\}/, rewardCouponsCount);
+  } else {
+    walletOverviewInfo = labels.lbl_overview_myPlaceRewardsDesc;
+  }
   return (
     <AccountOverviewTile
+      className={className}
       title={labels.lbl_overview_myPlaceRewardsHeading}
       ctaTitle={labels.lbl_overview_myPlaceRewardsCTA}
     >
-      <p>Dummy My place rewards content</p>
-      <p>Actual implementation coming soon...</p>
-      <p>This is just to check if all tiles remain with same height</p>
+      <section className={`elem-pb-MED ${isBrierleyEnabled ? 'bordered' : ''}`}>
+        <BodyCopy className="elem-mb-LRG" fontSize="fs14" fontWeight="semibold">
+          {walletOverviewInfo}
+        </BodyCopy>
+        <CouponList
+          coupons={coupons}
+          sliceCount={2}
+          labels={labels}
+        />
+        {!rewardCouponsCount &&
+          (
+          <div>
+            <Anchor
+              anchorVariation="button"
+              buttonVariation="variable-width"
+              fullWidth
+              centered
+              fill="WHITE"
+              to='/home'
+            >
+              {labels.lbl_overview_myPlaceRewardsShopNow}
+            </Anchor>
+          </div>
+          )
+        }
+      </section>
+      {isBrierleyEnabled
+        && <BonusPointsDays view="read" labels={labels} />
+      }
     </AccountOverviewTile>
   );
 };
 
 MyPlaceRewardsOverviewTile.propTypes = {
   labels: PropTypes.shape({
-    lbl_overview_myPlaceRewardsHeading: PropTypes.string,
-    lbl_overview_myPlaceRewardsCTA: PropTypes.string,
-  }),
+    lbl_overview_myPlaceRewardsHeading: PropTypes.string.isRequired,
+    lbl_overview_myPlaceRewardsCTA: PropTypes.string.isRequired,
+    lbl_overview_myPlaceRewardsAvailable: PropTypes.string.isRequired,
+    lbl_overview_myPlaceRewardsDesc: PropTypes.string.isRequired,
+    lbl_overview_myPlaceRewardsShopNow: PropTypes.string.isRequired
+  }).isRequired,
+  coupons: PropTypes.shape([]).isRequired,
+  isBrierleyEnabled: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 MyPlaceRewardsOverviewTile.defaultProps = {
-  labels: {
-    lbl_overview_myPlaceRewardsHeading: '',
-    lbl_overview_myPlaceRewardsCTA: '',
-  },
+  isBrierleyEnabled: true,
+  className: ''
 };
 
-export default MyPlaceRewardsOverviewTile;
+export default withStyles(MyPlaceRewardsOverviewTile, styles);

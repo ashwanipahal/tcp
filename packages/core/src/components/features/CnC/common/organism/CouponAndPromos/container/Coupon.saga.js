@@ -1,12 +1,13 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import COUPON_CONSTANTS from '../Coupon.constants';
-import { hideLoader, showLoader, setStatus, setError } from './Coupon.actions';
+import { hideLoader, showLoader, setStatus, setError, setCouponList } from './Coupon.actions';
 import BagPageAction from '../../../../BagPage/container/BagPage.actions';
 import {
   applyCouponToCart,
   removeCouponOrPromo,
 } from '../../../../../../../services/abstractors/CnC';
 import { COUPON_STATUS } from '../../../../../../../services/abstractors/CnC/CartItemTile';
+import { getAllCoupons as getAllCouponsAbstractor } from '../../../../../../../services/abstractors/CnC/Coupon';
 
 const delay = ms => new Promise(res => setTimeout(res, ms));
 
@@ -77,9 +78,19 @@ export function* removeCoupon({ payload }) {
   }
 }
 
+export function* getAllCoupons() {
+  try {
+    const coupons = yield call(getAllCouponsAbstractor);
+    yield put(setCouponList(coupons))
+  } catch (e) {
+    console.log('error :', e);
+  }
+}
+
 export function* CouponSaga() {
   yield takeLatest(COUPON_CONSTANTS.APPLY_COUPON, applyCoupon);
   yield takeLatest(COUPON_CONSTANTS.REMOVE_COUPON, removeCoupon);
+  yield takeLatest(COUPON_CONSTANTS.GET_COUPON_LIST, getAllCoupons);
 }
 
 export default CouponSaga;

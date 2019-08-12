@@ -22,7 +22,7 @@ const CouponReducer = (state = initialState, action) => {
     case COUPON_CONSTANTS.SHOW_LOADER:
       return state.set('isFetching', true);
     case BAGPAGE_CONSTANTS.SET_COUPONS_DATA:
-    case COUPON_CONSTANTS.SET_COUPONS_DATA:
+    case COUPON_CONSTANTS.SET_COUPON_LIST:
       return state
         .set('isFetching', false)
         .set('couponsAndOffers', List(action.payload))
