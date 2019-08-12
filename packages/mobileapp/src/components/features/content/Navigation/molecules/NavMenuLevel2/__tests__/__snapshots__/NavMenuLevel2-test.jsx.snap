@@ -28,6 +28,7 @@ exports[`NavMenuLevel2 should render component when renderItem is called 1`] = `
     }
     maxWidthItem={510}
     promoBannerMargin={40}
+    route={[Function]}
   />
 </ForwardRef>
 `;
@@ -60,6 +61,7 @@ exports[`NavMenuLevel2 should render component when renderItem is with title cat
     }
     maxWidthItem={510}
     promoBannerMargin={40}
+    route={[Function]}
   />
 </ForwardRef>
 `;
