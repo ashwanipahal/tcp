@@ -43,6 +43,9 @@ const getDescriptionStyle = props => {
   color: ${colorPalette.text.primary};
   margin-bottom: ${theme.spacing.APP_LAYOUT_SPACING.XS};
   text-align: center;
+  max-width: 227px;
+  margin-left: auto;
+  margin-right: auto;
   `;
 };
 
@@ -55,6 +58,7 @@ const ForgotHeading = props => {
   align-self: center;
   font-size: ${typography.fontSizes.fs16};
   padding:10px 0;
+  text-align: center;
   `;
 };
 
@@ -66,6 +70,8 @@ const ForgotDescription = props => {
   align-self: center;
   font-size: ${typography.fontSizes.fs12};
   padding:10px 0;
+  max-width: 238px;
+  margin: auto;
   `;
 };
 
@@ -76,6 +82,7 @@ const getHeadingStyle = props => {
   ${getTextBaseStyle};
   font-weight: ${typography.fontWeights.semibold};
   align-self: center;
+  text-transform: capitalize;
   `;
 };
 
@@ -84,8 +91,21 @@ const getSubHeadingStyle = props => {
   const { typography } = theme;
   return `
   ${getTextBaseStyle};
-  font-size: ${typography.fontSizes.fs13};
+  font-size: ${typography.fontSizes.fs12};
   align-self: center;
+  padding:10px 0;
+  `;
+};
+
+const getSubHeadingSectionStyle = props => {
+  const { theme } = props;
+  const { typography } = theme;
+  return `
+  ${getTextBaseStyle};
+  font-size: ${typography.fontSizes.fs12};
+  align-self: center;
+  padding:14px 0 ${props.theme.spacing.LAYOUT_SPACING.XS};
+  text-align: center;
   `;
 };
 
@@ -102,6 +122,10 @@ const HeadingStyle = styled.Text`
 
 const SubHeadingStyle = styled.Text`
   ${getSubHeadingStyle}
+`;
+
+const SubHeadingSectionStyle = styled.Text`
+  ${getSubHeadingSectionStyle}
 `;
 
 const ForgotHeadingStyle = styled.Text`
@@ -124,6 +148,21 @@ const FloatWrapper = styled.View`
   ${leftAignWrapper}
 `;
 
+const ModalHeading = styled.Text`
+  margin-top: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
+  margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
+  margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
+const ModalViewWrapper = styled.View`
+  margin-bottom: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
+`;
+
+const LineWrapper = styled.View`
+  padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
 export {
   FormStyle,
   DescriptionStyle,
@@ -133,4 +172,8 @@ export {
   HeadingStyle,
   FloatWrapper,
   SubHeadingStyle,
+  SubHeadingSectionStyle,
+  ModalHeading,
+  ModalViewWrapper,
+  LineWrapper,
 };

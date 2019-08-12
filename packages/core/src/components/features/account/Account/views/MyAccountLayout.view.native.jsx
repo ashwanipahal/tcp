@@ -1,5 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
+import RewardsPoints from '@tcp/core/src/components/features/account/common/organism/RewardsPoints';
 import MyAccountDropdownNav from './MyAccountDropdownNav.view';
 import ParentContainer from '../styles/MyAccountLayout.style.native';
 import withStyles from '../../../../common/hoc/withStyles';
@@ -25,8 +26,9 @@ const MyAccountLayoutView = (props: Props) => {
   const { navData, mainContent: MainContent, handleComponentChange, className, labels } = props;
   return (
     <View className={className} {...props}>
+      <RewardsPoints tableView labels={labels} />
       <MyAccountDropdownNav navData={navData} handleComponentChange={handleComponentChange} />
-      <MainContent labels={labels} />
+      <MainContent labels={labels} handleComponentChange={handleComponentChange} />
     </View>
   );
 };

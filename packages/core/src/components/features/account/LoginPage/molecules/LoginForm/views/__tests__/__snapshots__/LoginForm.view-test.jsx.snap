@@ -106,7 +106,9 @@ exports[`LoginForm component should renders correctly 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                [Function],
+                ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -172,30 +174,44 @@ exports[`LoginForm component should renders correctly 1`] = `
             "withComponent": [Function],
           }
         }
-        dataLocator=""
+        dataLocator="login-emailfield"
         enableSuccessCheck={false}
+        errorDataLocator="login-emailerror"
         id="emailAddress"
         name="emailAddress"
         showSuccessCheck={false}
       />
       <Field
+        className="elem-mb-SM"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-EHOje",
-              "isStatic": true,
+              "componentId": "sc-gzVnrw",
+              "isStatic": false,
               "rules": Array [
                 "
   ",
                 "
   position: relative;
 
-  a {
+  .rightAlignedContent {
     position: absolute;
     right: 0;
-    top: 12px;
+    top: ",
+                [Function],
+                ";
+    width: 30px;
+
+    a {
+      display: block;
+    }
+
+    .tooltip {
+      width: 10px;
+      height: 10px;
+    }
   }
 ",
                 ";
@@ -205,15 +221,16 @@ exports[`LoginForm component should renders correctly 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-EHOje",
+            "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
         }
-        dataLocator=""
+        dataLocator="login-passwordfield"
         enableSuccessCheck={false}
+        errorDataLocator="login-passworderror"
         id="password"
         name="password"
         showSuccessCheck={false}
@@ -244,7 +261,6 @@ exports[`LoginForm component should renders correctly 1`] = `
                   "
   display: inline-flex;
   align-items: center;
-  height: 50px;
 
   & .CheckBox__input {
     position: relative;
@@ -324,9 +340,14 @@ exports[`LoginForm component should renders correctly 1`] = `
               "withComponent": [Function],
             }
           }
-          dataLocator=""
+          dataLocator="login-remembermecb"
           name="rememberMe"
-        />
+        >
+          <span
+            className="remember-me-text"
+          />
+          <span />
+        </Field>
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className={null}
@@ -354,7 +375,7 @@ exports[`LoginForm component should renders correctly 1`] = `
       <Styled(Button)
         buttonVariation="fixed-width"
         className="elem-mb-XS"
-        data-locator=""
+        dataLocator="login-logincta"
         disabled={false}
         fill="BLUE"
         fullWidth={true}
@@ -362,11 +383,9 @@ exports[`LoginForm component should renders correctly 1`] = `
       />
       <Styled(Anchor)
         anchorVariation="secondary"
-        className="addAddress__anchor__back"
-        data-locator="addnewaddress-back"
+        dataLocator="login-forgotpasswordlnk"
         fontSizeVariation="xlarge"
         onClick={[Function]}
-        to="/account?id=address-book"
       />
     </Styled(BodyCopy)>
   </form>
@@ -492,7 +511,9 @@ exports[`LoginForm component should renders correctly with error 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                [Function],
+                ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -558,30 +579,44 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "withComponent": [Function],
           }
         }
-        dataLocator=""
+        dataLocator="login-emailfield"
         enableSuccessCheck={false}
+        errorDataLocator="login-emailerror"
         id="emailAddress"
         name="emailAddress"
         showSuccessCheck={false}
       />
       <Field
+        className="elem-mb-SM"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-EHOje",
-              "isStatic": true,
+              "componentId": "sc-gzVnrw",
+              "isStatic": false,
               "rules": Array [
                 "
   ",
                 "
   position: relative;
 
-  a {
+  .rightAlignedContent {
     position: absolute;
     right: 0;
-    top: 12px;
+    top: ",
+                [Function],
+                ";
+    width: 30px;
+
+    a {
+      display: block;
+    }
+
+    .tooltip {
+      width: 10px;
+      height: 10px;
+    }
   }
 ",
                 ";
@@ -591,15 +626,16 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-EHOje",
+            "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
             "withComponent": [Function],
           }
         }
-        dataLocator=""
+        dataLocator="login-passwordfield"
         enableSuccessCheck={false}
+        errorDataLocator="login-passworderror"
         id="password"
         name="password"
         showSuccessCheck={false}
@@ -630,7 +666,6 @@ exports[`LoginForm component should renders correctly with error 1`] = `
                   "
   display: inline-flex;
   align-items: center;
-  height: 50px;
 
   & .CheckBox__input {
     position: relative;
@@ -710,9 +745,14 @@ exports[`LoginForm component should renders correctly with error 1`] = `
               "withComponent": [Function],
             }
           }
-          dataLocator=""
+          dataLocator="login-remembermecb"
           name="rememberMe"
-        />
+        >
+          <span
+            className="remember-me-text"
+          />
+          <span />
+        </Field>
       </Styled(BodyCopy)>
       <Styled(BodyCopy)
         className={null}
@@ -740,7 +780,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       <Styled(Button)
         buttonVariation="fixed-width"
         className="elem-mb-XS"
-        data-locator=""
+        dataLocator="login-logincta"
         disabled={false}
         fill="BLUE"
         fullWidth={true}
@@ -748,11 +788,9 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       />
       <Styled(Anchor)
         anchorVariation="secondary"
-        className="addAddress__anchor__back"
-        data-locator="addnewaddress-back"
+        dataLocator="login-forgotpasswordlnk"
         fontSizeVariation="xlarge"
         onClick={[Function]}
-        to="/account?id=address-book"
       />
     </Styled(BodyCopy)>
   </form>

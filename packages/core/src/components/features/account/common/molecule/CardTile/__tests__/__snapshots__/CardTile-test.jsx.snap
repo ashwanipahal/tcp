@@ -24,15 +24,14 @@ exports[`CardTile should render correctly with amex card 1`] = `
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
-        component="p"
+        component="span"
         data-locator="payment-creditdebitendingtext"
         fontFamily="secondary"
         fontSize="fs14"
-        fontWeight="black"
+        fontWeight="bold"
         letterSpacing="normal"
         lineHeight="normal"
         lineHeights="lh107"
-        tag="span"
         textAlign="left"
       >
         undefined6765
@@ -143,15 +142,14 @@ exports[`CardTile should render correctly with delete gift  card 1`] = `
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
-        component="p"
+        component="span"
         data-locator="payment-creditdebitendingtext"
         fontFamily="secondary"
         fontSize="fs14"
-        fontWeight="black"
+        fontWeight="bold"
         letterSpacing="normal"
         lineHeight="normal"
         lineHeights="lh107"
-        tag="span"
         textAlign="left"
       >
         undefined6765
@@ -249,15 +247,14 @@ exports[`CardTile should render correctly with discover card 1`] = `
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
-        component="p"
+        component="span"
         data-locator="payment-creditdebitendingtext"
         fontFamily="secondary"
         fontSize="fs14"
-        fontWeight="black"
+        fontWeight="bold"
         letterSpacing="normal"
         lineHeight="normal"
         lineHeights="lh107"
-        tag="span"
         textAlign="left"
       >
         undefined6765
@@ -371,15 +368,14 @@ exports[`CardTile should render correctly with gift card 1`] = `
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
-        component="p"
+        component="span"
         data-locator="payment-giftcardendingtext"
         fontFamily="secondary"
         fontSize="fs14"
-        fontWeight="black"
+        fontWeight="bold"
         letterSpacing="normal"
         lineHeight="normal"
         lineHeights="lh107"
-        tag="span"
         textAlign="left"
       >
         undefined6765
@@ -421,7 +417,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-iwsKbI",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -499,7 +495,9 @@ exports[`CardTile should render correctly with gift card 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                  [Function],
+                  ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -558,7 +556,7 @@ exports[`CardTile should render correctly with gift card 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-iwsKbI",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -622,15 +620,14 @@ exports[`CardTile should render correctly with master card 1`] = `
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
-        component="p"
+        component="span"
         data-locator="payment-creditdebitendingtext"
         fontFamily="secondary"
         fontSize="fs14"
-        fontWeight="black"
+        fontWeight="bold"
         letterSpacing="normal"
         lineHeight="normal"
         lineHeights="lh107"
-        tag="span"
         textAlign="left"
       >
         undefined6765
@@ -755,15 +752,14 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
-        component="p"
+        component="span"
         data-locator="payment-giftcardendingtext"
         fontFamily="secondary"
         fontSize="fs14"
-        fontWeight="black"
+        fontWeight="bold"
         letterSpacing="normal"
         lineHeight="normal"
         lineHeights="lh107"
-        tag="span"
         textAlign="left"
       >
         undefined6765
@@ -805,7 +801,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-iwsKbI",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -883,7 +879,9 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                  [Function],
+                  ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -942,7 +940,7 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-iwsKbI",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1006,15 +1004,14 @@ exports[`CardTile should render correctly with plcc card 1`] = `
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
-        component="p"
+        component="span"
         data-locator="payment-creditdebitendingtext"
         fontFamily="secondary"
         fontSize="fs14"
-        fontWeight="black"
+        fontWeight="bold"
         letterSpacing="normal"
         lineHeight="normal"
         lineHeights="lh107"
-        tag="span"
         textAlign="left"
       >
         undefined6765
@@ -1181,15 +1178,14 @@ exports[`CardTile should render correctly with visa card 1`] = `
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
-        component="p"
+        component="span"
         data-locator="payment-creditdebitendingtext"
         fontFamily="secondary"
         fontSize="fs14"
-        fontWeight="black"
+        fontWeight="bold"
         letterSpacing="normal"
         lineHeight="normal"
         lineHeights="lh107"
-        tag="span"
         textAlign="left"
       >
         undefined6765
@@ -1303,15 +1299,14 @@ exports[`CardTile should show loading 1`] = `
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
-        component="p"
+        component="span"
         data-locator="payment-giftcardendingtext"
         fontFamily="secondary"
         fontSize="fs14"
-        fontWeight="black"
+        fontWeight="bold"
         letterSpacing="normal"
         lineHeight="normal"
         lineHeights="lh107"
-        tag="span"
         textAlign="left"
       >
         undefined6765
@@ -1348,7 +1343,7 @@ exports[`CardTile should show loading 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-iwsKbI",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1426,7 +1421,9 @@ exports[`CardTile should show loading 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                  [Function],
+                  ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -1485,7 +1482,7 @@ exports[`CardTile should show loading 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-iwsKbI",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],
@@ -1555,15 +1552,14 @@ exports[`CardTile should show remining balance 1`] = `
       <Styled(BodyCopy)
         className="cardTile__number"
         color="text.primary"
-        component="p"
+        component="span"
         data-locator="payment-giftcardendingtext"
         fontFamily="secondary"
         fontSize="fs14"
-        fontWeight="black"
+        fontWeight="bold"
         letterSpacing="normal"
         lineHeight="normal"
         lineHeights="lh107"
-        tag="span"
         textAlign="left"
       >
         undefined6765
@@ -1600,7 +1596,7 @@ exports[`CardTile should show remining balance 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-gzVnrw",
+                "componentId": "sc-iwsKbI",
                 "isStatic": false,
                 "rules": Array [
                   "
@@ -1678,7 +1674,9 @@ exports[`CardTile should show remining balance 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                  [Function],
+                  ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -1737,7 +1735,7 @@ exports[`CardTile should show remining balance 1`] = `
               "displayName": "Styled(TextBox)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-gzVnrw",
+              "styledComponentId": "sc-iwsKbI",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],

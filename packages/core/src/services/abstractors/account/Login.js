@@ -146,9 +146,10 @@ export const getProfile = ({ refreshPoints = true, pageId, source }) => {
           currency: res.body.x_currency,
           addressBook: addressBook.length > 0 ? addressBook : null,
           userBirthday: res.body.x_userBirthday,
-          pointsToNextReward: res.body.x_pointsToNextReward,
-          currentPoints: res.body.x_currentPoints,
+          pointsToNextReward: res.body.x_pointsToNextReward || 100,
+          currentPoints: res.body.x_currentPoints || 0,
           totalRewards: res.body.x_totalRewards,
+          x_hasPLCC: res.body.x_hasPLCC,
         };
       }
     })

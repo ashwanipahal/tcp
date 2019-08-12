@@ -3,7 +3,6 @@ const buildQuery = ({ slot, contentId }) => `
     contentId
     name
     type
-
     composites {
       headerText {
         textItems {
@@ -31,6 +30,10 @@ const buildQuery = ({ slot, contentId }) => `
             alt
             title
           }
+          textItems {
+            text
+            style
+          }
       }
 
       smallCompImage {
@@ -54,6 +57,7 @@ const buildQuery = ({ slot, contentId }) => `
       singleCTAButton {
         url
         target
+        text
         title
         external
       }

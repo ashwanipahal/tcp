@@ -1,5 +1,9 @@
 // eslint-disable-next-line import/no-unresolved
+import { NavigationActions } from 'react-navigation';
+// eslint-disable-next-line import/no-unresolved
 import { Dimensions, Linking } from 'react-native';
+// eslint-disable-next-line import/no-unresolved
+import AsyncStorage from '@react-native-community/async-storage';
 
 import config from '../components/common/atoms/Anchor/config.native';
 
@@ -27,6 +31,18 @@ export const importGraphQLClientDynamically = module => {
         break;
     }
   });
+};
+
+export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
+  switch (query) {
+    case 'moduleX':
+      // eslint-disable-next-line global-require
+      resolve(require('../services/handler/graphQL/queries/moduleX'));
+      break;
+    default:
+      reject();
+      break;
+  }
 };
 
 export const importGraphQLQueriesDynamically = query => {
@@ -69,8 +85,7 @@ export const importGraphQLQueriesDynamically = query => {
         resolve(require('../services/handler/graphQL/queries/moduleL'));
         break;
       default:
-        reject();
-        break;
+        importMoreGraphQLQueries({ query, resolve, reject });
     }
   });
 };
@@ -156,6 +171,29 @@ export const navigateToPage = (url, navigation) => {
 };
 
 /**
+ * @function: navigateToNestedRoute
+ * This method responsible for navigate between different stacks/routes. Now don’t need to make the same routes entry in the multiple stacks
+ * @param {Object} _navigation - navigation
+ * @param {Object} _stackName - navigation stack
+ * @param {Object} _routeName - route name
+ * @param {Object} params - params
+ */
+export const navigateToNestedRoute = (_navigation, _stackName, _routeName, params) => {
+  return (
+    _navigation &&
+    _navigation.dispatch(
+      NavigationActions.navigate({
+        routeName: _stackName,
+        action: NavigationActions.navigate({
+          routeName: _routeName,
+          params,
+        }),
+      })
+    )
+  );
+};
+
+/**
  * @function getScreenWidth function returns screen width.
  * @return {number} function returns width of device vieport.
  */
@@ -165,7 +203,7 @@ export const getScreenWidth = () => {
 
 /**
  * @function getScreenHeight function returns screen height.
- * @return {number} function returns width of device viewport.
+ * @return {number} function returns height of device viewport.
  */
 export const getScreenHeight = () => {
   return parseInt(Dimensions.get('screen').height, 10);
@@ -183,4 +221,35 @@ export const cropImageUrl = (url, crop) => {
     return `${urlPath}/upload/${crop}/${urlData.replace(/^\//, '')}`;
   }
   return url;
+};
+
+/**
+ * @function getValueFromAsyncStorage
+ * This method retrieves value for input key from asyncstorage
+ * @param key
+ *
+ * @returns: value from async storage
+ */
+export const getValueFromAsyncStorage = async key => {
+  try {
+    return await AsyncStorage.getItem(key);
+  } catch (error) {
+    // Error retrieving data
+    return null;
+  }
+};
+
+/**
+ * @function setValueInAsyncStorage
+ * This method saves the input key and value in asyncstorage
+ * @param key: key to be saved
+ * @param value: value for key
+ *
+ */
+export const setValueInAsyncStorage = async (key, value) => {
+  try {
+    await AsyncStorage.setItem(key, value);
+  } catch (error) {
+    // Error saving data
+  }
 };

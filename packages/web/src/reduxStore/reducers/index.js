@@ -15,9 +15,15 @@ import AddGiftCardReducer from '@tcp/core/src/components/features/account/Paymen
 import { createFilteredReducer } from '@tcp/core/src/utils/redux.util';
 import AddressVerificationReducer from '@tcp/core/src/components/features/account/AddressVerification/container/AddressVerification.reducer';
 import AccountReducer from '@tcp/core/src/components/features/account/Account/container/Account.reducer';
-import CartReducer from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
+import CartItemTile from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
+import CartPage from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.reducer';
 import OverlayModalReducer from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.reducer';
 import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
+import BonusPointsDaysReducer from '@tcp/core/src/components/features/account/BonusPointsDays/container/BonusPointsDays.reducer';
+import CouponsReducer from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.reducer';
+import AccountHeaderReducer from '@tcp/core/src/components/features/account/common/organism/AccountHeader/container/AccountHeader.reducer';
+import PointsHistoryReducer from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.reducer';
+import ResetPasswordReducer from '@tcp/core/src/components/features/account/ResetPassword/container/ResetPassword.reducer';
 
 import {
   APICONFIG_REDUCER_KEY,
@@ -39,11 +45,17 @@ import {
   ADD_GIFT_CARD_REDUCER_KEY,
   ADDED_TO_BAG_REDUCER_KEY,
   ACCOUNT_REDUCER_KEY,
+  CARTITEMTILE_REDUCER_KEY,
   CARTPAGE_REDUCER_KEY,
   FORGOTPASSWORD_REDUCER_KEY,
   OVERLAY_MODAL_REDUCER_KEY,
   NAVIGATION_REDUCER_KEY,
   CREATE_ACCOUNT_REDUCER_KEY,
+  BONUS_POINTS_DAYS_REDUCER_KEY,
+  COUPON_REDUCER_KEY,
+  ACCOUNTHEADER_REDUCER_KEY,
+  POINTS_HISTORY_REDUCER_KEY,
+  RESET_PASSWORD_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/container/Footer.reducer';
@@ -83,8 +95,14 @@ export default combineReducers({
   [ADD_GIFT_CARD_REDUCER_KEY]: AddGiftCardReducer,
   [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,
   [ACCOUNT_REDUCER_KEY]: AccountReducer,
-  [CARTPAGE_REDUCER_KEY]: CartReducer,
+  [CARTITEMTILE_REDUCER_KEY]: CartItemTile,
+  [CARTPAGE_REDUCER_KEY]: CartPage,
   [OVERLAY_MODAL_REDUCER_KEY]: OverlayModalReducer,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
   [CREATE_ACCOUNT_REDUCER_KEY]: CreateAccountReducer,
+  [BONUS_POINTS_DAYS_REDUCER_KEY]: BonusPointsDaysReducer,
+  [COUPON_REDUCER_KEY]: CouponsReducer,
+  [ACCOUNTHEADER_REDUCER_KEY]: AccountHeaderReducer,
+  [POINTS_HISTORY_REDUCER_KEY]: PointsHistoryReducer,
+  [RESET_PASSWORD_REDUCER_KEY]: ResetPasswordReducer,
 });

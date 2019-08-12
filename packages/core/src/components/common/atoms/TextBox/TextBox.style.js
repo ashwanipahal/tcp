@@ -33,7 +33,7 @@ const textboxStyles = css`
     border-bottom: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
-    padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 
     ${props =>
       props.meta &&
@@ -65,7 +65,7 @@ const textboxStyles = css`
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ${props => (props.input && props.type === 'hidden' ? 'none' : 'block')};
     width: 15px;
     height: 8px;
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXXS};

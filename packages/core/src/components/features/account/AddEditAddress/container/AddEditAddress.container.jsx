@@ -1,12 +1,11 @@
 import React from 'react';
-import Router from 'next/router'; //eslint-disable-line
 import { connect } from 'react-redux';
 import { addAddressReq, updateAddressReq } from './AddEditAddress.actions';
 import AddAddressComponent from '../views/AddEditAddress.view';
 import { getAddressResponse, getUserEmail, getAddressById } from './AddEditAddress.selectors';
 import { verifyAddress } from '../../AddressVerification/container/AddressVerification.actions';
 import { getAddressListState } from '../../AddressBook/container/AddressBook.selectors';
-import utils from '../../../../../utils';
+import { routerPush, isCanada } from '../../../../../utils';
 
 // @flow
 
@@ -39,7 +38,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     if (!address) {
       return {
         primary: addressList && addressList.size === 0,
-        country: 'US',
+        country: isCanada() ? 'CA' : 'US',
         addressLine2: '',
       };
     }
@@ -93,7 +92,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
   };
 
   backToAddressBookClick = () => {
-    utils.routerPush('/account?id=address-book', '/account/address-book');
+    routerPush('/account?id=address-book', '/account/address-book');
   };
 
   render() {

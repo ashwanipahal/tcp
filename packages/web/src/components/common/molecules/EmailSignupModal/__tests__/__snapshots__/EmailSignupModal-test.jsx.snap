@@ -173,7 +173,9 @@ exports[`EmailSignupModal component renders correctly 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                        [Function],
+                        ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -465,7 +467,9 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                        [Function],
+                        ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -757,7 +761,9 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                        [Function],
+                        ";
     width: 15px;
     height: 8px;
     margin-left: ",

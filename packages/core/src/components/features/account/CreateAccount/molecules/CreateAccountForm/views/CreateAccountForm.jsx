@@ -6,6 +6,8 @@ import Col from '../../../../../../common/atoms/Col';
 import Button from '../../../../../../common/atoms/Button';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import Anchor from '../../../../../../common/atoms/Anchor';
+import withStyles from '../../../../../../common/hoc/withStyles';
+import Styles from '../styles/CreateAccountForm.style';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import { Image } from '../../../../../../common/atoms';
@@ -16,24 +18,24 @@ type Props = {
   isMakeDefaultDisabled: string,
   handleSubmit: string,
   labels: string,
-  isIAgreeChecked: boolean,
   hideShowPwd: boolean,
   confirmHideShowPwd: boolean,
   onAlreadyHaveAnAccountClick: any,
+  className: string,
 };
 
 // eslint-disable-next-line import/no-mutable-exports
 let CreateAccountForm = ({
   isMakeDefaultDisabled,
   labels,
-  isIAgreeChecked,
   hideShowPwd,
   confirmHideShowPwd,
   handleSubmit,
   onAlreadyHaveAnAccountClick,
+  className,
 }: Props) => {
   return (
-    <div>
+    <div className={className}>
       <form onSubmit={handleSubmit}>
         <Row fullBleed className="row-form-wrapper">
           <Col className="elem-pt-XXL" ignoreGutter={{ small: true }} colSize={{ small: 6 }}>
@@ -200,7 +202,10 @@ let CreateAccountForm = ({
               dataLocator="remember-me-checkbox"
               disabled={isMakeDefaultDisabled}
             >
-              {labels.registration.lbl_createAccount_rememberMe}
+              <span className="remember-me-text">
+                {labels.registration.lbl_createAccount_rememberMe}
+              </span>
+              <span>{labels.registration.lbl_createAccount_rememberMeHelpText}</span>
             </Field>
           </Col>
           <Col
@@ -213,7 +218,6 @@ let CreateAccountForm = ({
               fill="BLUE"
               type="submit"
               data-locator="create-account-btn"
-              disabled={!isIAgreeChecked}
             >
               {labels.registration.lbl_createAccount_createAccount}
             </Button>
@@ -243,6 +247,7 @@ const validateMethod = createValidateMethod(
     'confirmEmailAddress',
     'password',
     'confirmPassword',
+    'iAgree',
   ])
 );
 
@@ -252,4 +257,5 @@ CreateAccountForm = reduxForm({
   enableReinitialize: true,
 })(CreateAccountForm);
 
-export default CreateAccountForm;
+export default withStyles(CreateAccountForm, Styles);
+export { CreateAccountForm as CreateAccountFormVanilla };

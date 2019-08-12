@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ProductTileWrapper from '@tcp/web/src/components/features/CnC/MiniBag/container/ProductTileWrapperContainer.container';
+import OrderLedgerContainer from '../organisms/OrderLedger';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles from '../styles/BagPage.style';
-import CartItemTile from '../../CartItemTile';
 import Heading from '../../../../common/atoms/Heading';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
+import AddedToBagActions from '../../AddedToBagActions';
+import CouponAndPromos from '../../common/organism/CouponAndPromos';
 
 // @flow
 // type Props = {
@@ -18,33 +21,37 @@ import Col from '../../../../common/atoms/Col';
 //   handleContinueShopping: Function,
 // };
 
-const AddedToBag = ({ className }: Props) => {
+const BagPageView = ({ className, labels, totalCount }: Props) => {
+  const showAddTobag = false;
+  const myBag = 'myBag';
   return (
     <div className={className}>
-      <Heading>Bag page</Heading>
+      <Row tagName="header">
+        <Col colSize={{ small: 3, medium: 4, large: 6 }} className="left-sec">
+          <Heading variant="h6" fontSize="fs16" color="text.primary" className="bag-header">
+            {`${labels.bagHeading} (${totalCount})`}
+          </Heading>
+        </Col>
+      </Row>
       <section className="main-sec">
         <Row>
-          <Col colSize={{ small: 4, medium: 4, large: 8 }} className="left-sec">
-            <section className="row-ele">section 1</section>
-            <section className="row-ele">section 2</section>
-            <section className="row-ele">section 3</section>
-            <section className="row-ele">section 4</section>
-            <CartItemTile />
+          <Col colSize={{ small: 6, medium: 5, large: 8 }} className="left-sec">
+            <ProductTileWrapper bagLabels={labels} pageView={myBag} />
           </Col>
-          <Col colSize={{ small: 4, medium: 4, large: 4 }} className="right-sec">
-            <section className="row-ele">section 1</section>
-            <section className="row-ele">section 2</section>
-            <section className="row-ele">section 3</section>
-            <section className="row-ele">section 4</section>
+          <Col colSize={{ small: 6, medium: 3, large: 4 }} className="right-sec">
+            <OrderLedgerContainer />
+            <AddedToBagActions labels={labels} showAddTobag={showAddTobag} />
+            <CouponAndPromos />
           </Col>
         </Row>
       </section>
     </div>
   );
 };
-AddedToBag.propTypes = {
+BagPageView.propTypes = {
   className: PropTypes.string.isRequired,
+  labels: PropTypes.shape({}).isRequired,
 };
 
-export default withStyles(AddedToBag, styles);
-export { AddedToBag as AddedToBagVanilla };
+export default withStyles(BagPageView, styles);
+export { BagPageView as BagPageViewVanilla };

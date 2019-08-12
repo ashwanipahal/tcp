@@ -103,7 +103,9 @@ exports[`Add gift card form component should render component correctly 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                [Function],
+                ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -273,7 +275,9 @@ exports[`Add gift card form component should render component correctly 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                [Function],
+                ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -462,7 +466,9 @@ exports[`Add gift card form component should render component correctly 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                [Function],
+                ";
     width: 15px;
     height: 8px;
     margin-left: ",

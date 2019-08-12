@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AccountDrawerHeading should render correctly 1`] = `
+<div
+  className=" elem-pl-MED elem-pr-MED elem-pt-LRG elem-pb-LRG"
+>
+  <span>
+    <Styled(Image)
+      src="/static/images/user-icon.png"
+    />
+    <span
+      className="userName"
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="span"
+        fontFamily="primary"
+        fontSize="fs16"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      />
+    </span>
+  </span>
+  <span
+    className="viewAccAnchor"
+    role="link"
+    tabIndex={-1}
+  >
+    <Styled(Anchor)
+      anchorVariation="primary"
+      asPath="/account"
+      fontSizeVariation="medium"
+      to="/account?id=account-overview"
+      underline={true}
+    />
+  </span>
+</div>
+`;

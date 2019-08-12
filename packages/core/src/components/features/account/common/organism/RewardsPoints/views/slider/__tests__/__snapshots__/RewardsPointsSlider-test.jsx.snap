@@ -1,0 +1,142 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correctly 1`] = `
+<div
+  className=""
+>
+  <Styled(Row)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 5,
+          "medium": 3,
+          "small": 2,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        Current Points: 
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="black"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        />
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 7,
+          "medium": 5,
+          "small": 4,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        My rewards: 
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="black"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          $
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <div
+        className="progress-container elem-mt-MED elem-mt-MED elem-mb-SM"
+      >
+        <div
+          className="progressbar-rewards currentpoint-slider progressbar-rewards "
+          style={
+            Object {
+              "width": "%",
+            }
+          }
+        />
+      </div>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 12,
+          "medium": 8,
+          "small": 6,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="regular"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        Next Rewards: 
+        <Styled(BodyCopy)
+          className={null}
+          color="text.primary"
+          component="span"
+          fontFamily="secondary"
+          fontSize="fs14"
+          fontWeight="black"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          10
+        </Styled(BodyCopy)>
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;

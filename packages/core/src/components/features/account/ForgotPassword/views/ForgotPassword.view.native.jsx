@@ -9,6 +9,7 @@ import {
   FormStyleView,
   HeadingStyle,
   SubHeadingStyle,
+  SubHeadingSectionStyle,
   ForgotHeadingStyle,
   ForgotDescriptionStyle,
   FloatWrapper,
@@ -53,8 +54,10 @@ class ForgotPasswordView extends React.Component<Props> {
     const { email } = this.state;
     return (
       <React.Fragment>
-        <ForgotHeadingStyle>{labels.FORGOT_PASSWORD_CONTENT_1}</ForgotHeadingStyle>
-        <ForgotDescriptionStyle>{labels.FORGOT_PASSWORD_CONTENT_2}</ForgotDescriptionStyle>
+        <ForgotHeadingStyle>{`Forgot your password? \n No worries!`}</ForgotHeadingStyle>
+        <ForgotDescriptionStyle>
+          {labels.password.lbl_forgotPassword_content2}
+        </ForgotDescriptionStyle>
 
         <Field
           label="Email Address"
@@ -67,7 +70,7 @@ class ForgotPasswordView extends React.Component<Props> {
         <CustomButton
           color={colorPallete.white}
           fill="BLUE"
-          text={labels.FORGOT_PASSWORD_RESET_PASSWORD}
+          text={labels.password.lbl_forgotPassword_resetPassword}
           buttonVariation="variable-width"
           customStyle={styles.createAccountStyle}
           onPress={handleSubmit(this.onFormSubmit)}
@@ -81,12 +84,15 @@ class ForgotPasswordView extends React.Component<Props> {
     const { labels } = this.props;
     return (
       <React.Fragment>
-        <HeadingStyle>{labels.FORGOT_PASSWORD_HEADING}</HeadingStyle>
-        <SubHeadingStyle>{labels.FORGOT_PASSWORD_HEADING}</SubHeadingStyle>
+        <HeadingStyle>{labels.password.lbl_forgotPassword_checkMail}</HeadingStyle>
+        <SubHeadingStyle>{labels.password.lbl_forgotPassword_heading}</SubHeadingStyle>
+        <SubHeadingSectionStyle>
+          {labels.password.lbl_forgotPassword_subHeading}
+        </SubHeadingSectionStyle>
         <CustomButton
           color={colorPallete.white}
           fill="BLUE"
-          text={labels.FORGOT_PASSWORD_RETURN_LOGIN}
+          text={labels.password.lbl_forgotPassword_returnLogin}
           buttonVariation="variable-width"
           customStyle={styles.createAccountStyle}
           onPress={this.onBackClick}
@@ -111,7 +117,7 @@ class ForgotPasswordView extends React.Component<Props> {
             <Anchor
               fontSizeVariation="xlarge"
               anchorVariation="secondary"
-              text={labels.FORGOT_PASSWORD_BACK_LOGIN}
+              text={labels.password.lbl_forgotPassword_backLogin}
               customStyle={styles.forgotPasswordStyle}
               onPress={this.onBackClick}
               className="floatLt"

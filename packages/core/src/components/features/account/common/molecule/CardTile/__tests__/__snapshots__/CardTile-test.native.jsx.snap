@@ -60,7 +60,8 @@ exports[`CardTile should render correctly with amex card 1`] = `
     </Styled(View)>
   </Styled(View)>
   <Styled(View)
-    isVenmo={true}
+    isGiftCard={false}
+    isVenmo={false}
   >
     <View>
       <Styled(BodyCopy)
@@ -143,17 +144,18 @@ exports[`CardTile should render correctly with amex card 1`] = `
         underline={true}
         visible={false}
       />
+      <Styled(View) />
+      <Styled(Anchor)
+        anchorVariation="primary"
+        customStyle={Object {}}
+        data-locator="payment-creditdebitdeletelink"
+        fontSizeVariation="large"
+        text=""
+        to="/#"
+        underline={true}
+        visible={false}
+      />
     </Styled(View)>
-    <Styled(Anchor)
-      anchorVariation="primary"
-      customStyle={Object {}}
-      data-locator="payment-creditdebitdeletelink"
-      fontSizeVariation="large"
-      text=""
-      to="/#"
-      underline={true}
-      visible={false}
-    />
   </Styled(View)>
 </Styled(View)>
 `;
@@ -215,7 +217,8 @@ exports[`CardTile should render correctly with discover card 1`] = `
     />
   </Styled(View)>
   <Styled(View)
-    isVenmo={true}
+    isGiftCard={false}
+    isVenmo={false}
   >
     <View>
       <Styled(BodyCopy)
@@ -298,22 +301,207 @@ exports[`CardTile should render correctly with discover card 1`] = `
         underline={true}
         visible={false}
       />
+      <Styled(View) />
+      <Styled(Anchor)
+        anchorVariation="primary"
+        customStyle={Object {}}
+        data-locator="payment-creditdebitdeletelink"
+        fontSizeVariation="large"
+        text=""
+        to="/#"
+        underline={true}
+        visible={false}
+      />
     </Styled(View)>
-    <Styled(Anchor)
-      anchorVariation="primary"
-      customStyle={Object {}}
-      data-locator="payment-creditdebitdeletelink"
-      fontSizeVariation="large"
-      text=""
-      to="/#"
-      underline={true}
-      visible={false}
-    />
   </Styled(View)>
 </Styled(View)>
 `;
 
 exports[`CardTile should render correctly with gift card 1`] = `
+<Styled(View)
+  card={
+    Object {
+      "accountNo": "************6765",
+      "addressDetails": Object {
+        "addressLine1": "Yucca Street",
+        "addressLine2": "Yucca Street",
+        "city": "Los Angeles",
+        "country": "US",
+        "firstName": "six",
+        "lastName": "test",
+        "phone1": "3214567890",
+        "state": "CA",
+        "zipCode": "90028",
+      },
+      "balance": 1,
+      "billingAddressId": 75446663,
+      "ccBrand": "GC",
+      "ccType": "GiftCard",
+      "creditCardId": 8977328,
+      "defaultInd": false,
+      "expMonth": "10",
+      "expYear": "2025",
+      "nameOnAccount": ".",
+      "properties": null,
+    }
+  }
+>
+  <Styled(View)
+    defaultPayment={false}
+  >
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        dataLocator="payment-giftcardnametitle"
+        fontSize="fs16"
+        fontWeight="regular"
+        mobilefontFamily={
+          Array [
+            "secondary",
+          ]
+        }
+        text=""
+      />
+    </Styled(Text)>
+  </Styled(View)>
+  <Styled(View)
+    isGiftCard={true}
+    isVenmo={false}
+  >
+    <View>
+      <Styled(BodyCopy)
+        dataLocator="payment-giftcardendingtext"
+        fontSize="fs14"
+        fontWeight="black"
+        text="undefined6765"
+      />
+    </View>
+    <Styled(View)
+      card={
+        Object {
+          "accountNo": "************6765",
+          "addressDetails": Object {
+            "addressLine1": "Yucca Street",
+            "addressLine2": "Yucca Street",
+            "city": "Los Angeles",
+            "country": "US",
+            "firstName": "six",
+            "lastName": "test",
+            "phone1": "3214567890",
+            "state": "CA",
+            "zipCode": "90028",
+          },
+          "balance": 1,
+          "billingAddressId": 75446663,
+          "ccBrand": "GC",
+          "ccType": "GiftCard",
+          "creditCardId": 8977328,
+          "defaultInd": false,
+          "expMonth": "10",
+          "expYear": "2025",
+          "nameOnAccount": ".",
+          "properties": null,
+        }
+      }
+    >
+      <Styled(Image)
+        alt="GC"
+        className="cardTile__img"
+        data-locator="payment-cardImage"
+        source={
+          Object {
+            "testUri": "../../../../core/src/assets/TCP-gift-small.png",
+          }
+        }
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <View>
+    <Styled(View)>
+      <Recaptcha
+        onMessage={[Function]}
+        siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+        style={Object {}}
+        url="https://www.childrensplace.com"
+      />
+    </Styled(View)>
+    <Field
+      className="visibility-recaptcha"
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      data-locator="gift-card-recaptchcb"
+      id="recaptchaToken"
+      label=""
+      name="recaptchaToken"
+      title=""
+      type="hidden"
+    />
+  </View>
+  <Styled(View)>
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      color="white"
+      customStyle={Object {}}
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      text=""
+      url=""
+    />
+    <Styled(View)>
+      <Styled(View) />
+      <Styled(Anchor)
+        anchorVariation="primary"
+        customStyle={Object {}}
+        data-locator="payment-giftcarddeletelink"
+        fontSizeVariation="large"
+        text=""
+        to="/#"
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`CardTile should render correctly with gift card with balance 1`] = `
 <Styled(View)
   card={
     Object {
@@ -359,7 +547,8 @@ exports[`CardTile should render correctly with gift card 1`] = `
     </Styled(Text)>
   </Styled(View)>
   <Styled(View)
-    isVenmo={true}
+    isGiftCard={true}
+    isVenmo={false}
   >
     <View>
       <Styled(BodyCopy)
@@ -368,14 +557,6 @@ exports[`CardTile should render correctly with gift card 1`] = `
         fontWeight="black"
         text="undefined6765"
       />
-      <Styled(Text)>
-        <Styled(BodyCopy)
-          dataLocator="payment-giftcardexpiretext"
-          fontSize="fs14"
-          fontWeight="semibold"
-          text="undefined10/2025"
-        />
-      </Styled(Text)>
     </View>
     <Styled(View)
       card={
@@ -416,12 +597,81 @@ exports[`CardTile should render correctly with gift card 1`] = `
       />
     </Styled(View)>
   </Styled(View)>
-  <Styled(View)>
+  <View>
     <Styled(View)>
+      <Recaptcha
+        onMessage={[Function]}
+        siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+        style={Object {}}
+        url="https://www.childrensplace.com"
+      />
+    </Styled(View)>
+    <Field
+      className="visibility-recaptcha"
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      data-locator="gift-card-recaptchcb"
+      id="recaptchaToken"
+      label=""
+      name="recaptchaToken"
+      title=""
+      type="hidden"
+    />
+  </View>
+  <Styled(View)>
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      color="white"
+      customStyle={Object {}}
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      text=""
+      url=""
+    />
+    <Styled(View)>
+      <Styled(View) />
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-giftcardeditlink"
+        data-locator="payment-giftcarddeletelink"
         fontSizeVariation="large"
         text=""
         to="/#"
@@ -429,16 +679,6 @@ exports[`CardTile should render correctly with gift card 1`] = `
         visible={false}
       />
     </Styled(View)>
-    <Styled(Anchor)
-      anchorVariation="primary"
-      customStyle={Object {}}
-      data-locator="payment-giftcarddeletelink"
-      fontSizeVariation="large"
-      text=""
-      to="/#"
-      underline={true}
-      visible={false}
-    />
   </Styled(View)>
 </Styled(View)>
 `;
@@ -500,7 +740,8 @@ exports[`CardTile should render correctly with master card 1`] = `
     />
   </Styled(View)>
   <Styled(View)
-    isVenmo={true}
+    isGiftCard={false}
+    isVenmo={false}
   >
     <View>
       <Styled(BodyCopy)
@@ -583,17 +824,18 @@ exports[`CardTile should render correctly with master card 1`] = `
         underline={true}
         visible={false}
       />
+      <Styled(View) />
+      <Styled(Anchor)
+        anchorVariation="primary"
+        customStyle={Object {}}
+        data-locator="payment-creditdebitdeletelink"
+        fontSizeVariation="large"
+        text=""
+        to="/#"
+        underline={true}
+        visible={false}
+      />
     </Styled(View)>
-    <Styled(Anchor)
-      anchorVariation="primary"
-      customStyle={Object {}}
-      data-locator="payment-creditdebitdeletelink"
-      fontSizeVariation="large"
-      text=""
-      to="/#"
-      underline={true}
-      visible={false}
-    />
   </Styled(View)>
 </Styled(View)>
 `;
@@ -644,7 +886,8 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
     </Styled(Text)>
   </Styled(View)>
   <Styled(View)
-    isVenmo={true}
+    isGiftCard={true}
+    isVenmo={false}
   >
     <View>
       <Styled(BodyCopy)
@@ -653,14 +896,6 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         fontWeight="black"
         text="undefined6765"
       />
-      <Styled(Text)>
-        <Styled(BodyCopy)
-          dataLocator="payment-giftcardexpiretext"
-          fontSize="fs14"
-          fontWeight="semibold"
-          text="undefined10/2025"
-        />
-      </Styled(Text)>
     </View>
     <Styled(View)
       card={
@@ -701,12 +936,81 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
       />
     </Styled(View)>
   </Styled(View)>
-  <Styled(View)>
+  <View>
     <Styled(View)>
+      <Recaptcha
+        onMessage={[Function]}
+        siteKey="6LdYiRsTAAAAAHF4Yntsq8mPdWgHaTTFHsk8rax8"
+        style={Object {}}
+        url="https://www.childrensplace.com"
+      />
+    </Styled(View)>
+    <Field
+      className="visibility-recaptcha"
+      component={
+        Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "_foldedDefaultProps": Object {
+            "ariaLabel": "input",
+            "dataLocator": "input-field",
+            "enableSuccessCheck": false,
+            "id": "input",
+            "keyboardType": "default",
+            "label": "input",
+            "meta": Object {
+              "error": "",
+              "touched": "",
+            },
+            "secureTextEntry": false,
+            "showErrorIcon": true,
+            "type": "text",
+          },
+          "attrs": Array [],
+          "displayName": "Styled(TextBox)",
+          "inlineStyle": InlineStyle {
+            "rules": Array [
+              "
+    ",
+              "
+  ",
+              [Function],
+              ";
+",
+              ";
+  ",
+            ],
+          },
+          "render": [Function],
+          "styledComponentId": "StyledNativeComponent",
+          "target": [Function],
+          "withComponent": [Function],
+        }
+      }
+      data-locator="gift-card-recaptchcb"
+      id="recaptchaToken"
+      label=""
+      name="recaptchaToken"
+      title=""
+      type="hidden"
+    />
+  </View>
+  <Styled(View)>
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      color="white"
+      customStyle={Object {}}
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      text=""
+      url=""
+    />
+    <Styled(View)>
+      <Styled(View) />
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
-        data-locator="payment-giftcardeditlink"
+        data-locator="payment-giftcarddeletelink"
         fontSizeVariation="large"
         text=""
         to="/#"
@@ -714,16 +1018,6 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
         visible={false}
       />
     </Styled(View)>
-    <Styled(Anchor)
-      anchorVariation="primary"
-      customStyle={Object {}}
-      data-locator="payment-giftcarddeletelink"
-      fontSizeVariation="large"
-      text=""
-      to="/#"
-      underline={true}
-      visible={false}
-    />
   </Styled(View)>
 </Styled(View)>
 `;
@@ -785,7 +1079,8 @@ exports[`CardTile should render correctly with plcc card 1`] = `
     />
   </Styled(View)>
   <Styled(View)
-    isVenmo={true}
+    isGiftCard={false}
+    isVenmo={false}
   >
     <View>
       <Styled(BodyCopy)
@@ -860,17 +1155,18 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         underline={true}
         visible={false}
       />
+      <Styled(View) />
+      <Styled(Anchor)
+        anchorVariation="primary"
+        customStyle={Object {}}
+        data-locator="payment-creditdebitdeletelink"
+        fontSizeVariation="large"
+        text=""
+        to="/#"
+        underline={true}
+        visible={false}
+      />
     </Styled(View)>
-    <Styled(Anchor)
-      anchorVariation="primary"
-      customStyle={Object {}}
-      data-locator="payment-creditdebitdeletelink"
-      fontSizeVariation="large"
-      text=""
-      to="/#"
-      underline={true}
-      visible={false}
-    />
   </Styled(View)>
 </Styled(View)>
 `;
@@ -923,6 +1219,7 @@ exports[`CardTile should render correctly with venmocard 1`] = `
     </Styled(Text)>
   </Styled(View)>
   <Styled(View)
+    isGiftCard={false}
     isVenmo={true}
   >
     <Styled(Text)
@@ -976,17 +1273,19 @@ exports[`CardTile should render correctly with venmocard 1`] = `
     </Styled(View)>
   </Styled(View)>
   <Styled(View)>
-    <Styled(View) />
-    <Styled(Anchor)
-      anchorVariation="primary"
-      customStyle={Object {}}
-      data-locator="payment-venmodeletelink"
-      fontSizeVariation="large"
-      text=""
-      to="/#"
-      underline={true}
-      visible={false}
-    />
+    <Styled(View)>
+      <Styled(View) />
+      <Styled(Anchor)
+        anchorVariation="primary"
+        customStyle={Object {}}
+        data-locator="payment-venmodeletelink"
+        fontSizeVariation="large"
+        text=""
+        to="/#"
+        underline={true}
+        visible={false}
+      />
+    </Styled(View)>
   </Styled(View)>
 </Styled(View)>
 `;
@@ -1048,7 +1347,8 @@ exports[`CardTile should render correctly with visa card 1`] = `
     />
   </Styled(View)>
   <Styled(View)
-    isVenmo={true}
+    isGiftCard={false}
+    isVenmo={false}
   >
     <View>
       <Styled(BodyCopy)
@@ -1131,17 +1431,18 @@ exports[`CardTile should render correctly with visa card 1`] = `
         underline={true}
         visible={false}
       />
+      <Styled(View) />
+      <Styled(Anchor)
+        anchorVariation="primary"
+        customStyle={Object {}}
+        data-locator="payment-creditdebitdeletelink"
+        fontSizeVariation="large"
+        text=""
+        to="/#"
+        underline={true}
+        visible={false}
+      />
     </Styled(View)>
-    <Styled(Anchor)
-      anchorVariation="primary"
-      customStyle={Object {}}
-      data-locator="payment-creditdebitdeletelink"
-      fontSizeVariation="large"
-      text=""
-      to="/#"
-      underline={true}
-      visible={false}
-    />
   </Styled(View)>
 </Styled(View)>
 `;

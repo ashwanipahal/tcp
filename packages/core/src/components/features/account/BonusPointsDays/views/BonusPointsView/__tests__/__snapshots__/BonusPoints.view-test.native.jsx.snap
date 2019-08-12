@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BonusPointsView should render correctly 1`] = `
+<View
+  className=""
+>
+  <BonusPointsSection
+    bonusData={Object {}}
+    labels={
+      Object {
+        "myPlaceRewards": Object {
+          "lbl_place_rewards_bonus": "bonus",
+          "lbl_place_rewards_points": "points",
+        },
+      }
+    }
+    toggleBonusPointsModal={[Function]}
+  />
+  <ModalNative
+    heading="bonus points DETAILS"
+    headingAlign="left"
+    headingFontFamily="secondary"
+    isOpen={true}
+    onRequestClose={[Function]}
+  >
+    <Styled(View)>
+      <RichText
+        dataLocator="bonus-points-details"
+        domStorageEnabled={false}
+        javaScriptEnabled={false}
+        source={
+          Object {
+            "html": "hello",
+          }
+        }
+        thirdPartyCookiesEnabled={false}
+      />
+    </Styled(View)>
+  </ModalNative>
+</View>
+`;

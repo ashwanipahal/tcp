@@ -8,8 +8,11 @@ import { ProductListingPageReducer } from '@tcp/core/src/components/features/bro
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
-import CartPage from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
+import CartItemTile from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.reducer';
+import CartPage from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.reducer';
+import PointsHistoryReducer from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.reducer';
 import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
+import BonusPointsDaysReducer from '@tcp/core/src/components/features/account/BonusPointsDays/container/BonusPointsDays.reducer';
 import {
   HEADER_REDUCER_KEY,
   LABEL_REDUCER_KEY,
@@ -19,6 +22,7 @@ import {
   PAYMENT_REDUCER_KEY,
   MODULES_REDUCER_KEY,
   CARTPAGE_REDUCER_KEY,
+  CARTITEMTILE_REDUCER_KEY,
   ADD_GIFT_CARD_REDUCER_KEY,
   FORGOTPASSWORD_REDUCER_KEY,
   ADDRESSBOOK_REDUCER_KEY,
@@ -26,6 +30,8 @@ import {
   NAVIGATION_REDUCER_KEY,
   FORM_REDUCER_KEY,
   CREATE_ACCOUNT_REDUCER_KEY,
+  BONUS_POINTS_DAYS_REDUCER_KEY,
+  POINTS_HISTORY_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -54,8 +60,10 @@ export default combineReducers({
   [ADDRESSBOOK_REDUCER_KEY]: AddressBookReducer,
   [ADDED_TO_BAG_REDUCER_KEY]: AddedToBagReducer,
   [FORM_REDUCER_KEY]: reduxFormReducer,
+  [CARTITEMTILE_REDUCER_KEY]: CartItemTile,
   [CARTPAGE_REDUCER_KEY]: CartPage,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
-  form: reduxFormReducer,
   [CREATE_ACCOUNT_REDUCER_KEY]: CreateAccountReducer,
+  [BONUS_POINTS_DAYS_REDUCER_KEY]: BonusPointsDaysReducer,
+  [POINTS_HISTORY_REDUCER_KEY]: PointsHistoryReducer,
 });

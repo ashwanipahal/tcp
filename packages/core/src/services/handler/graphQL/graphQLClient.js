@@ -40,6 +40,8 @@ class AwsAppSyncClient extends AWSAppSync {
    */
   static clientOptions() {
     const apiConfigObj = getAPIConfig();
+    // eslint-disable-next-line no-console
+    console.log('GraphQL Endpoint ------------ ', apiConfigObj.graphql_endpoint_url);
     return {
       url: apiConfigObj.graphql_endpoint_url,
       region: apiConfigObj.graphql_reqion,
@@ -57,16 +59,7 @@ class AwsAppSyncClient extends AWSAppSync {
    * @returns {Promise} Resolves with data or rejects with error object
    */
   executeQuery(query) {
-    return this.hydrated().then(client => {
-      return client.query({ query, fetchPolicy: 'network-only' }).catch(e => {
-        this.errorHandler(e);
-      });
-    });
-  }
-
-  errorHandler(e) {
-    // eslint-disable-next-line no-console
-    console.log(this, e);
+    return this.hydrated().then(client => client.query({ query, fetchPolicy: 'network-only' }));
   }
 }
 

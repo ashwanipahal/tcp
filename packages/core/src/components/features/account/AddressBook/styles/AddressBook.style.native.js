@@ -49,6 +49,7 @@ const StyledHeading = styled.Text`
 const UnderlineStyle = styled.View`
   height: 3px;
   background-color: ${props => props.theme.colorPalette.black};
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL};
 `;
 
 const NoAddressWrapper = styled.View`
@@ -94,12 +95,13 @@ const AddressLinks = styled.View`
 `;
 
 const AddressLinkLeftMargin = styled.View`
-  margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  margin-right: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 const LeftMargin = styled.View`
   margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
 `;
+
 export {
   HeadingTextStyle,
   WrapperStyle,

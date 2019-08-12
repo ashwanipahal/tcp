@@ -16,6 +16,7 @@ class CreateAccounPage extends React.Component {
     confirmHideShowPwd: PropTypes.bool,
     error: PropTypes.string,
     onAlreadyHaveAnAccountClick: PropTypes.func,
+    showForgotPasswordForm: PropTypes.func,
   };
 
   static defaultProps = {
@@ -29,6 +30,7 @@ class CreateAccounPage extends React.Component {
     confirmHideShowPwd: false,
     error: {},
     onAlreadyHaveAnAccountClick: () => {},
+    showForgotPasswordForm: () => {},
   };
 
   constructor(props) {
@@ -50,11 +52,15 @@ class CreateAccounPage extends React.Component {
       confirmHideShowPwd,
       error,
       onAlreadyHaveAnAccountClick,
+      showForgotPasswordForm,
     } = this.props;
     return (
       <div className={className}>
         <div className="parent-wrapper">
-          <CreateAccountTopSection labels={labels} />
+          <CreateAccountTopSection
+            labels={labels}
+            showForgotPasswordForm={showForgotPasswordForm}
+          />
           {error && (
             <div className="elem-pl-LRG elem-pr-LRG elem-pt-LRG">
               <BodyCopy
@@ -73,6 +79,7 @@ class CreateAccounPage extends React.Component {
             onSubmit={this.handleSubmitForm}
             isIAgreeChecked={isIAgreeChecked}
             hideShowPwd={hideShowPwd}
+            initialValues={{ rememberMe: true }}
             confirmHideShowPwd={confirmHideShowPwd}
             onAlreadyHaveAnAccountClick={onAlreadyHaveAnAccountClick}
           />

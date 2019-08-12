@@ -18,7 +18,7 @@ const envIds = {
   uat: 'uat',
   prod: 'prod',
 };
-
+const HEALTH_CHECK_PATH = '/healthcheck';
 const BRAND_CONFIG = brandIds.tcp;
 const ENV_CONFIG = envIds.local;
 const ENV_CONFIG_FILE_PATH = BRAND_CONFIG + '_' + ENV_CONFIG; // Set this to change the env file
@@ -47,6 +47,10 @@ const settingHelmetConfig = (server, helmet) => {
  */
 const setEnvConfig = dev => {
   if (dev) {
+    console.log(
+      '************* Using Env Config File Of ' + ENV_CONFIG_FILE_PATH,
+      '  *************'
+    );
     dotenv.config({
       path: path.resolve(__dirname, `..${path.sep}env${path.sep}${ENV_CONFIG_FILE_PATH}.env`),
     });
@@ -59,4 +63,5 @@ module.exports = {
   brandIds,
   settingHelmetConfig,
   setEnvConfig,
+  HEALTH_CHECK_PATH,
 };

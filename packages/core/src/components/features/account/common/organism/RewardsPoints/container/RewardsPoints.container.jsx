@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { withRouter } from 'next/router'; //eslint-disable-line
-import RewardsPoints from '../views/RewardsPoints.view';
+import RewardsPointsSlider from '../views/slider';
+import RewardsPointsTable from '../views/table';
 import {
   getPointsToNextRewardState,
   getCurrentPointsState,
   getTotalRewardsState,
+  isPlccUser,
 } from '../../../../LoginPage/container/LoginPage.selectors';
 
 /**
@@ -23,24 +24,46 @@ export class RewardsPointsContainer extends React.PureComponent {
    * @return   {[Object]} JSX of the component
    */
   render() {
-    const { pointsToNextReward, currentPoints, totalRewards, labels } = this.props;
+    const {
+      pointsToNextReward,
+      currentPoints,
+      totalRewards,
+      labels,
+      tableView,
+      plccUser,
+    } = this.props;
 
+    if (tableView) {
+      return (
+        <RewardsPointsTable
+          pointsToNextReward={pointsToNextReward}
+          currentPoints={currentPoints}
+          totalRewards={totalRewards}
+          labels={labels}
+        />
+      );
+    }
     return (
-      <RewardsPoints
+      <RewardsPointsSlider
         pointsToNextReward={pointsToNextReward}
         currentPoints={currentPoints}
         totalRewards={totalRewards}
+        plccUser={plccUser}
         labels={labels}
       />
     );
   }
 }
 
+const commonLabels = state => state.Labels.account.common;
+
 const mapStateToProps = state => {
   return {
+    labels: commonLabels(state),
     pointsToNextReward: getPointsToNextRewardState(state),
     currentPoints: getCurrentPointsState(state),
     totalRewards: getTotalRewardsState(state),
+    plccUser: isPlccUser(state),
   };
 };
 
@@ -48,24 +71,28 @@ RewardsPointsContainer.propTypes = {
   pointsToNextReward: PropTypes.number,
   currentPoints: PropTypes.number,
   totalRewards: PropTypes.number,
+  plccUser: PropTypes.bool,
   labels: PropTypes.shape({
-    lbl_my_rewards_current_points: PropTypes.string,
-    lbl_my_rewards_heading: PropTypes.string,
-    lbl_my_rewards_next_reward: PropTypes.string,
-    lbl_my_rewards_currency: PropTypes.string,
+    lbl_common_current_points: PropTypes.string,
+    lbl_common_heading: PropTypes.string,
+    lbl_common_next_reward: PropTypes.string,
+    lbl_common_currency: PropTypes.string,
   }),
+  tableView: PropTypes.bool,
 };
 
 RewardsPointsContainer.defaultProps = {
   pointsToNextReward: '',
   currentPoints: '',
   totalRewards: '',
+  plccUser: false,
   labels: {
-    lbl_my_rewards_current_points: '',
-    lbl_my_rewards_heading: '',
-    lbl_my_rewards_next_reward: '',
-    lbl_my_rewards_currency: '',
+    lbl_common_current_points: '',
+    lbl_common_heading: '',
+    lbl_common_next_reward: '',
+    lbl_common_currency: '',
   },
+  tableView: false,
 };
 
-export default withRouter(connect(mapStateToProps)(RewardsPointsContainer));
+export default connect(mapStateToProps)(RewardsPointsContainer);

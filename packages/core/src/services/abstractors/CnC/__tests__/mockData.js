@@ -129,6 +129,7 @@ export const orderDetailsResponse = {
           '1301516': {
             Order: '1',
             TCPSize: 'XS (4)',
+            TCPFit: 'regular',
             UPC: '00193511133340',
           },
           '1303613': {
@@ -225,6 +226,7 @@ export const orderDetailsResponse = {
           '1301519': {
             Order: '1',
             TCPSize: 'XS (4)',
+            TCPFit: 'regular',
             UPC: '00193511156004',
           },
           '1303616': {
@@ -558,6 +560,7 @@ export const orderDetailsResponse = {
           '1285036': {
             Order: '5',
             TCPSize: 'XL (14)',
+            TCPFit: 'regular',
             UPC: '00193511095440',
           },
           '1285102': {
@@ -697,6 +700,9 @@ export const response = {
         isGiftCard: false,
         colorFitSizeDisplayNames: {},
         orderType: 'ECOM',
+        itemBrand: 'TCP',
+        fit: 'regular',
+        imagePath: '/wcsstore/GlobalSAS/images/tcp/products/500/3003274_32F6.jpg',
       },
       itemInfo: {
         quantity: 5,
@@ -706,6 +712,7 @@ export const response = {
         offerPrice: 149.75,
         wasPrice: 29.95,
         salePrice: 29.95,
+        unitOfferPrice: 29.95,
       },
       miscInfo: {
         isOnlineOnly: false,
@@ -722,6 +729,8 @@ export const response = {
         vendorColorDisplayId: '3003274_32F6',
         storeItemsCount: 0,
         orderItemType: 'ECOM',
+        bossEndDate: null,
+        bossStartDate: null,
       },
     },
     {
@@ -741,6 +750,9 @@ export const response = {
         isGiftCard: false,
         colorFitSizeDisplayNames: {},
         orderType: 'ECOM',
+        itemBrand: 'TCP',
+        fit: 'regular',
+        imagePath: '/wcsstore/GlobalSAS/images/tcp/products/500/3003289_1464.jpg',
       },
       itemInfo: {
         quantity: 7,
@@ -750,6 +762,7 @@ export const response = {
         offerPrice: 209.65,
         wasPrice: 29.95,
         salePrice: 29.95,
+        unitOfferPrice: 29.95,
       },
       miscInfo: {
         isOnlineOnly: false,
@@ -766,6 +779,8 @@ export const response = {
         vendorColorDisplayId: '3003289_1464',
         storeItemsCount: 0,
         orderItemType: 'ECOM',
+        bossEndDate: null,
+        bossStartDate: null,
       },
     },
     {
@@ -786,6 +801,8 @@ export const response = {
         isGiftCard: false,
         colorFitSizeDisplayNames: {},
         orderType: 'ECOM',
+        itemBrand: 'TCP',
+        imagePath: '/wcsstore/GlobalSAS/images/tcp/products/500/3000627_635.jpg',
       },
       itemInfo: {
         quantity: 2,
@@ -795,6 +812,7 @@ export const response = {
         offerPrice: 39,
         wasPrice: 19.5,
         salePrice: 19.5,
+        unitOfferPrice: 19.5,
       },
       miscInfo: {
         isOnlineOnly: false,
@@ -811,6 +829,8 @@ export const response = {
         vendorColorDisplayId: '3000627_635',
         storeItemsCount: 0,
         orderItemType: 'ECOM',
+        bossEndDate: null,
+        bossStartDate: null,
       },
     },
     {
@@ -832,6 +852,9 @@ export const response = {
         isGiftCard: false,
         colorFitSizeDisplayNames: {},
         orderType: 'ECOM',
+        fit: 'regular',
+        itemBrand: 'TCP',
+        imagePath: '/wcsstore/GlobalSAS/images/tcp/products/500/3002156_10.jpg',
       },
       itemInfo: {
         quantity: 1,
@@ -841,6 +864,7 @@ export const response = {
         offerPrice: 10.5,
         wasPrice: 10.5,
         salePrice: 10.5,
+        unitOfferPrice: 10.5,
       },
       miscInfo: {
         isOnlineOnly: true,
@@ -857,6 +881,8 @@ export const response = {
         vendorColorDisplayId: '3002156_10',
         storeItemsCount: 0,
         orderItemType: 'ECOM',
+        bossEndDate: null,
+        bossStartDate: null,
       },
     },
   ],
@@ -864,3 +890,40 @@ export const response = {
   uiFlags: {},
   cartTotalAfterPLCCDiscount: 286.23,
 };
+
+export const couponResponse = [
+  {
+    couponCode: 'GYMONLY1234',
+    displayOrder: 0,
+    isApplied: false,
+    legalText: '$10 off $50 Gymboree ONLY',
+    offerCode: 'GYMONLY1234',
+    offerDescription: null,
+    offerText: '$10 off $50 Gymboree ONLY',
+    offerType: null,
+    sequence: null,
+    validFrom: '2019-07-31 00:00:00.001',
+    validTo: '9999-12-31 23:59:59.999',
+  },
+];
+
+export const couponFormatResponse = [
+  {
+    details: null,
+    detailsOpen: false,
+    effectiveDate: '7/31/19',
+    error: '',
+    expirationDate: '12/31/99',
+    id: 'GYMONLY1234',
+    isExpiring: false,
+    labelStatus: 'APPLY',
+    offerType: 'saving',
+    isStarted: true,
+    legalText: '$10 off $50 Gymboree ONLY',
+    promotionType: 'public',
+    redemptionType: undefined,
+    status: 'available',
+    title: '$10 off $50 Gymboree ONLY',
+    expirationDateTimeStamp: '',
+  },
+];

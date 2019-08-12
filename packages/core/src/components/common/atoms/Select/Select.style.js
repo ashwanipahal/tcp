@@ -14,7 +14,7 @@ const selectStyles = css`
     border: 0;
     border-bottom: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
     ${props =>
-      props.meta.touched && props.meta.error
+      props.meta && props.meta.touched && props.meta.error
         ? `border-bottom: 1px solid ${props.theme.colors.TEXTBOX.ERROR_BORDER};`
         : ''};
     border-radius: 0;
@@ -23,7 +23,7 @@ const selectStyles = css`
     margin: 0;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     outline: 0;
-    padding: ${props => props.theme.spacing.ELEM_SPACING.SM} 0
+    padding: ${props => props.theme.spacing.ELEM_SPACING.LRG} 0
       ${props => props.theme.spacing.ELEM_SPACING.XS};
     width: 100%;
 

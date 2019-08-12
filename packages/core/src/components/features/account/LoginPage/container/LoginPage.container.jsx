@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { resetLoginForgotPasswordState } from '../../ForgotPassword/container/ForgotPassword.actions';
+import {
+  resetPassword,
+  resetLoginForgotPasswordState,
+} from '../../ForgotPassword/container/ForgotPassword.actions';
 import {
   getShowNotificationState,
   getResetEmailResponse,
@@ -22,10 +25,31 @@ import {
 import LoginView from '../views';
 
 class LoginPageContainer extends React.PureComponent {
+  hasMobileApp;
+
+  hasNavigateToNestedRoute;
+
+  constructor(props) {
+    super(props);
+    import('../../../../../utils')
+      .then(({ isMobileApp, navigateToNestedRoute }) => {
+        this.hasMobileApp = isMobileApp;
+        this.hasNavigateToNestedRoute = navigateToNestedRoute;
+      })
+      .catch(error => {
+        console.log('error: ', error);
+      });
+  }
+
   componentDidUpdate(prevProps) {
     const { isUserLoggedIn, closeOverlay } = this.props;
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
-      closeOverlay();
+      if (this.hasMobileApp()) {
+        const { navigation } = this.props;
+        this.hasNavigateToNestedRoute(navigation, 'HomeStack', 'home');
+      } else {
+        closeOverlay();
+      }
     }
   }
 
@@ -36,12 +60,9 @@ class LoginPageContainer extends React.PureComponent {
     }
   }
 
-  onCreateAccountClick = () => {
+  openModal = params => {
     const { openOverlay } = this.props;
-    openOverlay({
-      component: 'createAccount',
-      variation: 'primary',
-    });
+    openOverlay(params);
   };
 
   render() {
@@ -54,6 +75,11 @@ class LoginPageContainer extends React.PureComponent {
       getUserInfoAction,
       labels,
       resetLoginState,
+      SubmitForgot,
+      showNotification,
+      successFullResetEmail,
+      currentForm,
+      queryParams,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage || labels.login.lbl_login_error : '';
     const initialValues = {
@@ -69,8 +95,13 @@ class LoginPageContainer extends React.PureComponent {
         showRecaptcha={showRecaptcha}
         resetForm={resetForm}
         getUserInfo={getUserInfoAction}
-        onCreateAccountClick={this.onCreateAccountClick}
+        openModal={this.openModal}
         resetLoginState={resetLoginState}
+        SubmitForgot={SubmitForgot}
+        showNotification={showNotification}
+        successFullResetEmail={successFullResetEmail}
+        currentForm={currentForm}
+        queryParams={queryParams}
       />
     );
   }
@@ -78,7 +109,8 @@ class LoginPageContainer extends React.PureComponent {
 
 LoginPageContainer.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  isUserLoggedIn: PropTypes.bool.isRequired,
+  resetLoginState: PropTypes.func,
+  isUserLoggedIn: PropTypes.bool,
   closeOverlay: PropTypes.func,
   loginError: PropTypes.bool,
   loginErrorMessage: PropTypes.string,
@@ -86,8 +118,13 @@ LoginPageContainer.propTypes = {
   resetForm: PropTypes.bool.isRequired,
   getUserInfoAction: PropTypes.bool.isRequired,
   openOverlay: PropTypes.func,
+  navigation: PropTypes.shape({}),
   labels: PropTypes.shape({}).isRequired,
-  resetLoginState: PropTypes.func,
+  SubmitForgot: PropTypes.bool.isRequired,
+  showNotification: PropTypes.bool.isRequired,
+  successFullResetEmail: PropTypes.bool.isRequired,
+  currentForm: PropTypes.string,
+  queryParams: PropTypes.shape({}),
 };
 
 LoginPageContainer.defaultProps = {
@@ -97,6 +134,10 @@ LoginPageContainer.defaultProps = {
   resetLoginState: () => {},
   closeOverlay: () => {},
   openOverlay: () => {},
+  isUserLoggedIn: false,
+  navigation: {},
+  currentForm: '',
+  queryParams: {},
 };
 
 const mapDispatchToProps = dispatch => {
@@ -109,6 +150,9 @@ const mapDispatchToProps = dispatch => {
     },
     resetLoginState: () => {
       dispatch(resetLoginInfo());
+    },
+    SubmitForgot: payload => {
+      dispatch(resetPassword(payload));
     },
     closeOverlay: () => {
       dispatch(closeOverlayModal());

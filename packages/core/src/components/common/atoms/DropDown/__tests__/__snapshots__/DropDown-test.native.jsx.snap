@@ -15,7 +15,6 @@ exports[`DropDown Test should render correctly 1`] = `
     }
     dropDownStyle={null}
     itemStyle={null}
-    onLayout={[Function]}
     onStartShouldSetResponder={[Function]}
     onValueChange={[MockFunction]}
     selectedValue="foo"
@@ -52,14 +51,18 @@ exports[`DropDown Test should render correctly 1`] = `
       onPress={[Function]}
       style={
         Object {
+          "height": 1334,
           "left": 0,
-          "top": 0,
           "width": 0,
         }
       }
     >
       <Styled(View)
-        onLayout={[Function]}
+        style={
+          Object {
+            "top": 0,
+          }
+        }
       />
     </TouchableOpacity>
   </Component>
@@ -81,7 +84,6 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
     }
     dropDownStyle={null}
     itemStyle={null}
-    onLayout={[Function]}
     onStartShouldSetResponder={[Function]}
     onValueChange={[MockFunction]}
     selectedValue="foo"
@@ -118,14 +120,18 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
       onPress={[Function]}
       style={
         Object {
+          "height": 1334,
           "left": 0,
-          "top": 0,
           "width": 0,
         }
       }
     >
       <Styled(View)
-        onLayout={[Function]}
+        style={
+          Object {
+            "top": 0,
+          }
+        }
       >
         <Styled(FlatList)
           ItemSeparatorComponent={[Function]}
@@ -139,6 +145,11 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
           }
           keyExtractor={[Function]}
           renderItem={[Function]}
+          style={
+            Object {
+              "height": 667,
+            }
+          }
         />
       </Styled(View)>
     </TouchableOpacity>

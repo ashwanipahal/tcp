@@ -1,6 +1,6 @@
 const ignorePsuedoCodeDir = [
   '/ProductListingPage/',
-  // '/services/abstractors/CnC/CartItemTile.js',
+  '/services/abstractors/CnC/AddedToBag.js',
   '/plpDeltaSync/',
   '/LoginPage/',
   '/server/',
@@ -47,6 +47,8 @@ module.exports = {
     'mock.js',
     '/flow-typed/',
     '/pages/',
+    '/*.app.js',
+    '/*.app.jsx',
     ...ignorePsuedoCodeDir,
   ],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],

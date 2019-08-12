@@ -3,7 +3,7 @@
 exports[`LoginSection component should renders correctly 1`] = `
 <Styled(Row)>
   <Styled(Col)
-    className="elem-pt-XXL  elem-pl-LRG elem-pr-LRG"
+    className="elem-pt-XXL elem-pb-XXL  elem-pl-LRG elem-pr-LRG"
     colSize={
       Object {
         "large": 12,
@@ -14,6 +14,7 @@ exports[`LoginSection component should renders correctly 1`] = `
   >
     <Styled(LoginTopSection)
       className="elem-mb-LRG"
+      isCanada={false}
       labels={
         Object {
           "login": Object {},
@@ -63,7 +64,7 @@ exports[`LoginSection component should renders correctly 1`] = `
       textAlign="left"
     >
       <Styled(BodyCopy)
-        className="elem-mb-LRG"
+        className={null}
         color="text.primary"
         component="p"
         fontFamily="primary"
@@ -78,7 +79,7 @@ exports[`LoginSection component should renders correctly 1`] = `
       buttonVariation="fixed-width"
       className="create-acc-cta"
       data-locator=""
-      fill="BLUE"
+      fill="WHITE"
       onClick={[Function]}
       type="submit"
     />
