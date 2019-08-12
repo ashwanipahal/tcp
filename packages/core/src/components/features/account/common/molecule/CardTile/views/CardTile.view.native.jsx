@@ -81,7 +81,7 @@ class CardTile extends React.Component<Props> {
    * @param {*} checkbalanceValueInfo
    */
   getGiftCardBalance = (key, checkbalanceValueInfo) => {
-    // return checkbalanceValueInfo && this.checkbalanceValueInfo.get(key);
+    return checkbalanceValueInfo && this.checkbalanceValueInfo.get(key);
   };
 
   getDataLocatorPrefix = ({ card }) => {
