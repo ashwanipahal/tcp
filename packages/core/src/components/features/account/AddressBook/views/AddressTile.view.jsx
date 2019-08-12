@@ -97,7 +97,10 @@ class AddressBookTile extends React.Component<Props> {
                   </Badge>
                 )}
                 {address.primary !== 'true' && address.xcont_isShippingAddress === 'true' && (
-                  <Badge dataLocator="addressbook-shippinglabel">
+                  <Badge
+                    dataLocator="addressbook-shippinglabel"
+                    className="addressbook-shippinglabel"
+                  >
                     {labels.addressBook.ACC_LBL_SHIPPING}
                   </Badge>
                 )}

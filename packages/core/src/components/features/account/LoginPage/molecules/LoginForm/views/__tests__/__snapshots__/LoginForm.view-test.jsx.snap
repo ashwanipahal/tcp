@@ -106,7 +106,9 @@ exports[`LoginForm component should renders correctly 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                [Function],
+                ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -172,18 +174,30 @@ exports[`LoginForm component should renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-EHOje",
-              "isStatic": true,
+              "componentId": "sc-gzVnrw",
+              "isStatic": false,
               "rules": Array [
                 "
   ",
                 "
   position: relative;
 
-  a {
+  .rightAlignedContent {
     position: absolute;
     right: 0;
-    top: 12px;
+    top: ",
+                [Function],
+                ";
+    width: 30px;
+
+    a {
+      display: block;
+    }
+
+    .tooltip {
+      width: 10px;
+      height: 10px;
+    }
   }
 ",
                 ";
@@ -193,7 +207,7 @@ exports[`LoginForm component should renders correctly 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-EHOje",
+            "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -483,7 +497,9 @@ exports[`LoginForm component should renders correctly with error 1`] = `
   }
 
   &.textbox_validation_success .success__checkmark {
-    display: block;
+    display: ",
+                [Function],
+                ";
     width: 15px;
     height: 8px;
     margin-left: ",
@@ -549,18 +565,30 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-EHOje",
-              "isStatic": true,
+              "componentId": "sc-gzVnrw",
+              "isStatic": false,
               "rules": Array [
                 "
   ",
                 "
   position: relative;
 
-  a {
+  .rightAlignedContent {
     position: absolute;
     right: 0;
-    top: 12px;
+    top: ",
+                [Function],
+                ";
+    width: 30px;
+
+    a {
+      display: block;
+    }
+
+    .tooltip {
+      width: 10px;
+      height: 10px;
+    }
   }
 ",
                 ";
@@ -570,7 +598,7 @@ exports[`LoginForm component should renders correctly with error 1`] = `
             "displayName": "Styled(PasswordField)",
             "foldedComponentIds": Array [],
             "render": [Function],
-            "styledComponentId": "sc-EHOje",
+            "styledComponentId": "sc-gzVnrw",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],

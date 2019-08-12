@@ -7,22 +7,10 @@ import { PromoAndArrowContainer, PromoContainer, ArrowIcon } from '../MenuItems.
 const Icon = require('../../../../../../../../../core/src/assets/carrot-large-right.png');
 
 /**
- * @function navigateFromL2 populates the L3 menu or PLP page for the L1 link that has been clicked
- * @param {object} subCategories Details of the L2 menu item that has been clicked
- * @param {object} hasL3 flag that defines if L3 is present for the L2
- */
-const navigateFromL2 = (navigate, subCategories, hasL3) => {
-  if (hasL3) {
-    return navigate('NavMenuLevel3');
-  }
-  return navigate('ProductListingPage');
-};
-
-/**
  * @function MenuItems populates the menu item
  * @param {object} links shop by size links
  */
-const MenuItems = ({ navigate, maxWidthItem, item, hasBadge, promoBannerMargin, hasL3 }) => {
+const MenuItems = ({ navigate, maxWidthItem, item, hasBadge, promoBannerMargin, hasL3, route }) => {
   return (
     <React.Fragment>
       <View maxWidth={maxWidthItem}>
@@ -35,7 +23,7 @@ const MenuItems = ({ navigate, maxWidthItem, item, hasBadge, promoBannerMargin, 
           numberOfLines={1}
         />
       </View>
-      <PromoAndArrowContainer onPress={() => navigateFromL2(navigate, item.subCategories, hasL3)}>
+      <PromoAndArrowContainer onPress={() => route(navigate, item.subCategories, item.name, hasL3)}>
         {hasBadge && (
           <PromoContainer marginRight={promoBannerMargin}>
             <BodyCopy
@@ -60,6 +48,7 @@ MenuItems.propTypes = {
   hasL3: PropTypes.bool,
   hasBadge: PropTypes.bool,
   promoBannerMargin: PropTypes.string,
+  route: PropTypes.func.isRequired,
 };
 
 MenuItems.defaultProps = {
