@@ -72,7 +72,7 @@ exports[`RewardsPointsTable Component should render correctly with values 1`] = 
       fontFamily="secondary"
       fontSize="fs18"
       fontWeight="black"
-      text="undefined0"
+      text="0"
     />
     <Styled(View)>
       <Styled(BodyCopy)
