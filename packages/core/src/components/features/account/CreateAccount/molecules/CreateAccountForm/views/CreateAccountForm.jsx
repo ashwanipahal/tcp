@@ -12,6 +12,7 @@ import createValidateMethod from '../../../../../../../utils/formValidation/crea
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import { Image } from '../../../../../../common/atoms';
 import { getIconPath } from '../../../../../../../utils';
+import ReactTooltip from '../../../../../../common/atoms/ReactToolTip';
 
 // @flow
 type Props = {
@@ -22,6 +23,7 @@ type Props = {
   confirmHideShowPwd: boolean,
   onAlreadyHaveAnAccountClick: any,
   className: string,
+  tooltipContent: any,
 };
 
 // eslint-disable-next-line import/no-mutable-exports
@@ -33,6 +35,7 @@ let CreateAccountForm = ({
   handleSubmit,
   onAlreadyHaveAnAccountClick,
   className,
+  tooltipContent,
 }: Props) => {
   return (
     <div className={className}>
@@ -116,7 +119,9 @@ let CreateAccountForm = ({
             />
             <span className="hide-show show-hide-icons">
               <span className="info-icon-img-wrapper">
-                <Image className="tcp_carousel__play" src={getIconPath('info-icon')} />
+                <ReactTooltip message={tooltipContent} aligned="right">
+                  <Image className="tcp_carousel__play tooltip" src={getIconPath('info-icon')} />
+                </ReactTooltip>
               </span>
               <Col
                 className="checkbox-hide-show"
