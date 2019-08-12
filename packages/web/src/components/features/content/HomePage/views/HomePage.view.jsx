@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import errorBoundary from '@tcp/core/src/components/common/hoc/errorBoundary';
 import moduleAAbstractor from '@tcp/core/src/services/abstractors/common/moduleA';
+import GetCandid from '@tcp/core/src/components/common/molecules/GetCandid';
 
 import { SlotA, SlotB, SlotC, SlotD, SlotE } from '../molecules';
 
@@ -16,6 +17,7 @@ const HomePageView = props => {
       <SlotC {...slotC} />
       <SlotD {...slotD} />
       <SlotE name="moduleA" set={moduleAMockData.set} {...moduleAMockData.composites} {...slotE} />
+      <GetCandid />
     </Fragment>
   );
 };

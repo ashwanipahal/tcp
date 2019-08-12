@@ -98,9 +98,7 @@ const ButtonList = (props: Props) => {
 
   let component = Button;
   let compWrapper = '';
-  let compProps = {
-    buttonVariation: 'fixed-width',
-  };
+  let compProps = {};
 
   if (buttonListVariation === 'stackedCTAList') {
     compWrapper = 'stack-comp-wrapper';
