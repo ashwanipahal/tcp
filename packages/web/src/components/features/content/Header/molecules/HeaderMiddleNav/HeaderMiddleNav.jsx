@@ -27,18 +27,19 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
     this.state = {
       isOpenMiniBagModal: false,
       userNameClick: true,
+      triggerLoginCreateAccount: true,
     };
   }
 
-  onLinkClick = ({ e, openOverlay, userNameClick }) => {
+  onLinkClick = ({ e, openOverlay, userNameClick, triggerLoginCreateAccount }) => {
     e.preventDefault();
-    if (userNameClick) {
+    if (userNameClick || triggerLoginCreateAccount) {
       openOverlay({
         component: e.target.id,
         variation: 'primary',
       });
     }
-    this.setState({ userNameClick: !userNameClick });
+    this.setState({ userNameClick: triggerLoginCreateAccount ? userNameClick : !userNameClick });
   };
 
   toggleMiniBagModal = ({ e, isOpen }) => {
@@ -55,7 +56,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
       openOverlay,
       userName,
     } = this.props;
-    const { isOpenMiniBagModal, userNameClick } = this.state;
+    const { isOpenMiniBagModal, userNameClick, triggerLoginCreateAccount } = this.state;
 
     return (
       <React.Fragment>
@@ -122,7 +123,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
                   href="#"
                   id="createAccount"
                   className="leftLink"
-                  onClick={e => this.onLinkClick({ e, openOverlay })}
+                  onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
                   fontSizeVariation="large"
                   anchorVariation="primary"
                 >
@@ -132,7 +133,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
                   href="#"
                   id="login"
                   className="rightLink"
-                  onClick={e => this.onLinkClick({ e, openOverlay })}
+                  onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
                   fontSizeVariation="large"
                   anchorVariation="primary"
                 >
