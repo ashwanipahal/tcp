@@ -28,20 +28,22 @@ export default css`
       justify-content: center;
       width: 100%;
     }
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    margin: 17px auto;
 
     @media ${props => props.theme.mediaQuery.large} {
-      margin-top: ${props => props.theme.spacing.ELEM_SPACING.SM};
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
+      margin: 17px auto;
     }
   }
 
   .gellary-button-right {
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-
+    width: 164px;
     @media ${props => props.theme.mediaQuery.medium} {
+      width: 162px;
       margin-right: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      width: 210px;
     }
   }
 `;

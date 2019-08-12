@@ -137,14 +137,19 @@ class GetCandid extends React.PureComponent {
             >
               <Button
                 onClick={this.handleViewGalleryClick}
-                buttonVariation="variable-width"
+                buttonVariation="fixed-width"
                 type="button"
                 className="gellary-button-right"
               >
                 {labels.BtnGallery}
               </Button>
 
-              <Button onClick={this.handleUpload} buttonVariation="variable-width" type="button">
+              <Button
+                onClick={this.handleUpload}
+                buttonVariation="fixed-width"
+                type="button"
+                className="gellary-button-right"
+              >
                 {labels.BtnPhoto}
               </Button>
             </Col>
