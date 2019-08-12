@@ -11,6 +11,7 @@ exports[`MyRewards should render correctly 1`] = `
       <Styled(BodyCopy)
         fontSize="fs16"
         fontWeight="extrabold"
+        locator=""
         text=""
       />
     </Styled(Text)>
@@ -23,6 +24,7 @@ exports[`MyRewards should render correctly 1`] = `
         <Styled(BodyCopy)
           fontSize="fs16"
           fontWeight="extrabold"
+          locator=""
           text=""
         />
       </Styled(Text)>

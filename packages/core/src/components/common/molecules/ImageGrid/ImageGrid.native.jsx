@@ -1,25 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
+import { Anchor } from '../../atoms';
 import { Wrapper, ImageGridContainer, ImageGridItem } from './ImageGrid.style.native';
 
 const ImageGrid = props => {
-  const { mediaList, imgWidth, column, gutter, imgHeight, dataLocator } = props;
-
+  const { mediaList, imgWidth, column, gutter, imgHeight, dataLocator, navigation } = props;
   return (
     <Wrapper>
       <ImageGridContainer width={imgWidth * column + gutter}>
-        {mediaList.map(({ crop_m: cropM, url, alt, title }, index) => {
+        {mediaList.map(({ crop_m: cropM, image, link }, index) => {
           return (
-            <ImageGridItem
-              testID={`${dataLocator}_${index}`}
-              width={imgWidth}
-              height={imgHeight}
-              crop={cropM}
-              gutter={gutter}
-              url={url}
-              alt={alt || title}
-            />
+            <Anchor url={link.url} navigation={navigation}>
+              <ImageGridItem
+                testID={`${dataLocator}_${index}`}
+                width={imgWidth}
+                height={imgHeight}
+                crop={cropM}
+                gutter={gutter}
+                url={image.url}
+                alt={image.alt || image.title}
+              />
+            </Anchor>
           );
         })}
       </ImageGridContainer>
@@ -34,6 +35,7 @@ ImageGrid.defaultProps = {
   column: 2,
   gutter: 18,
   dataLocator: 'image_grid',
+  navigation: null,
 };
 
 ImageGrid.propTypes = {
@@ -49,6 +51,7 @@ ImageGrid.propTypes = {
   column: PropTypes.number,
   gutter: PropTypes.number,
   dataLocator: PropTypes.string,
+  navigation: PropTypes.shape({}),
 };
 
 export default ImageGrid;

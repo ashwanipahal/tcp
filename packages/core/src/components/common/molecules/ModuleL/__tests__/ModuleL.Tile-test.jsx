@@ -6,9 +6,14 @@ import { DamImage } from '../../../atoms';
 
 describe('ModuleL Header component', () => {
   let ModuleLTileComp;
+  const styledTile = {
+    class: 'red',
+  };
 
   beforeEach(() => {
-    ModuleLTileComp = shallow(<ModuleLTile tileData={mock.moduleL.composites.imageGrid[0]} />);
+    ModuleLTileComp = shallow(
+      <ModuleLTile tileData={mock.moduleL.composites.imageGrid[0]} tileColor={styledTile} />
+    );
   });
 
   it('renders correctly', () => {

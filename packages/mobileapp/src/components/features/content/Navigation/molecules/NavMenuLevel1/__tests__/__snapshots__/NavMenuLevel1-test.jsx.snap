@@ -21,6 +21,7 @@ exports[`NavMenuLevel1 should render component when renderItem is called 1`] = `
       fontFamily="primary"
       fontSize="fs22"
       fontWeight="black"
+      locator=""
       text="GIRL"
       textAlign="center"
     />
@@ -29,6 +30,7 @@ exports[`NavMenuLevel1 should render component when renderItem is called 1`] = `
       fontFamily="secondary"
       fontSize="fs12"
       fontWeight="extrabold"
+      locator=""
       text="Sizes 4-141"
       textAlign="center"
     />
@@ -46,6 +48,7 @@ exports[`NavMenuLevel1 should render component when renderItem is called without
     fontFamily="primary"
     fontSize="fs28"
     fontWeight="black"
+    locator=""
     text="GIRL"
     textAlign="center"
   />

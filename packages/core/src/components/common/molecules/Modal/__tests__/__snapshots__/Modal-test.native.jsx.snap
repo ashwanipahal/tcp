@@ -31,6 +31,7 @@ exports[`Modal Native should render correctly 1`] = `
         color="#000"
         fontSize="fs16"
         fontWeight="extrabold"
+        locator=""
         mobileFontFamily="primary"
         text="Modal Heading"
       />

@@ -15,15 +15,6 @@ const styles = css`
   .order-summary {
     margin: 16px 0;
   }
-  .right-sec {
-    width: 346px;
-    @media ${props => props.theme.mediaQuery.medium} {
-      width: 258px;
-    }
-    @media ${props => props.theme.mediaQuery.large} {
-      width: 450px;
-    }
-  }
 
   .checkout-button {
     display: flex;
