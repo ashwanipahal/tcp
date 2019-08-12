@@ -1,3 +1,5 @@
+import BagPageSelector from '../../../../BagPage/container/BagPage.selectors';
+
 export const getCouponFetchingState = state => {
   return state.CouponsAndPromos && state.CouponsAndPromos.get('isFetching');
 };
@@ -72,5 +74,8 @@ export const getAvailableCouponListState = state => {
 };
 
 export const getNeedHelpContent = state => {
-  return state.CartPageReducer.get('needHelpContent');
+  const needHelpContent = state.CartPageReducer.get('moduleXContent').find(
+    moduleX => moduleX.name === BagPageSelector.getNeedHelpContentId(state)
+  );
+  return needHelpContent && needHelpContent.richText;
 };

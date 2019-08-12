@@ -24,9 +24,10 @@ class CouponView extends React.PureComponent<Props> {
     });
   };
 
-  helpAnchorClick = () => {
+  toggleNeedHelpModal = () => {
+    const { helpStatus } = this.state;
     this.setState({
-      helpStatus: true,
+      helpStatus: !helpStatus,
     });
   };
 
@@ -44,7 +45,13 @@ class CouponView extends React.PureComponent<Props> {
     const { detailStatus, helpStatus, selectedCoupon } = this.state;
     return (
       <div className={className}>
-        <CouponForm onSubmit={handleApplyCoupon} isFetching={isFetching} source="form" />
+        <CouponForm
+          onSubmit={handleApplyCoupon}
+          isFetching={isFetching}
+          source="form"
+          labels={labels}
+          onNeedHelpTextClick={this.toggleNeedHelpModal}
+        />
         <div className="coupon_list">
           {appliedCouponList && (
             <CouponListSection
@@ -65,7 +72,7 @@ class CouponView extends React.PureComponent<Props> {
               heading={labels.AVAILABLE_REWARDS_HEADING}
               helpSubHeading="true"
               couponDetailClick={this.couponDetailClick}
-              helpAnchorClick={this.helpAnchorClick}
+              helpAnchorClick={this.toggleNeedHelpModal}
               onApply={handleApplyCouponFromList}
               dataLocator="coupon-cartAvaliableRewards"
             />

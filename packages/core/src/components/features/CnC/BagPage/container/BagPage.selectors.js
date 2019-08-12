@@ -12,7 +12,7 @@ export const filterProductsBrand = (arr, searchedValue) => {
 const getBagPageLabels = state => {
   const {
     bag: {
-      addedToBag: { lbl_header_addedToBag: addedToBag, lbl_cta_checkout: checkout, referred },
+      addedToBag: { lbl_header_addedToBag: addedToBag, lbl_cta_checkout: checkout },
       bagOverview: {
         lbl_header_bag: bagHeading,
         lbl_emptyBag_loggedInMsg: loggedInMsg,
@@ -27,7 +27,6 @@ const getBagPageLabels = state => {
   return {
     addedToBag,
     checkout,
-    referred,
     bagHeading,
     loggedInMsg,
     login,
@@ -61,13 +60,9 @@ const getProductsTypes = state => {
 };
 
 const getNeedHelpContentId = state => {
-  let needhelpContentId;
-  if (state.Labels.bag.addedToBag && Array.isArray(state.Labels.bag.addedToBag.referred)) {
-    state.Labels.bag.addedToBag.referred.forEach(label => {
-      if (label.name === 'NEED_HELP_DATA') needhelpContentId = label.contentId;
-    });
-  }
-  return needhelpContentId;
+  const { referred = [] } = state.Labels.bag.addedToBag;
+  const content = referred.find(label => label.name === 'NEED_HELP_DATA');
+  return content && content.contentId;
 };
 
 export default {

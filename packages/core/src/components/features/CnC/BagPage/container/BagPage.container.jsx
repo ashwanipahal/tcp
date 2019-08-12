@@ -15,7 +15,7 @@ import BAG_PAGE_ACTIONS from './BagPage.actions';
 export class BagPageContainer extends React.Component<Props> {
   componentDidMount() {
     const { needHelpContentId, fetchNeedHelpContent } = this.props;
-    fetchNeedHelpContent(needHelpContentId);
+    fetchNeedHelpContent([needHelpContentId]);
   }
 
   closeModal = () => {};
@@ -36,8 +36,8 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     initialActions: () => {
       dispatch(BAG_PAGE_ACTIONS.getCartData());
     },
-    fetchNeedHelpContent: contentId => {
-      dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentId));
+    fetchNeedHelpContent: contentIds => {
+      dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
     },
   };
 };

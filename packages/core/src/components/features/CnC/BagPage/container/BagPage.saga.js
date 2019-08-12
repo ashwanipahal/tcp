@@ -1,4 +1,4 @@
-import { call, takeLatest, put } from 'redux-saga/effects';
+import { call, takeLatest, put, all } from 'redux-saga/effects';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
 import { getOrderDetailsData, getCartData } from '../../../../../services/abstractors/CnC';
 
@@ -34,9 +34,10 @@ export function* getCartDataSaga(isRecalculateTaxes) {
   }
 }
 
-export function* fetchModuleX({ payload = '' }) {
+export function* fetchModuleX({ payload = [] }) {
   try {
-    const result = yield call(getModuleX, payload);
+    let result = yield all(payload.map(uuid => call(getModuleX, uuid)));
+    result = result.map((val, index) => ({ ...val, name: payload[index] }));
     yield put(BAG_PAGE_ACTIONS.setModuleX(result));
   } catch (err) {
     yield null;
