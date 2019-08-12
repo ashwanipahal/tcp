@@ -145,5 +145,9 @@ const endpoints = {
     method: 'put',
     URI: '/v2/account/resetPassword',
   },
+  getAllOffers: {
+    method: 'GET',
+    URI: 'v2/wallet/getAllCoupons'
+  },
 };
 export default endpoints;

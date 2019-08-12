@@ -6,6 +6,8 @@ export const MyPlaceRewardsOverviewTile = ({ ...props }) => (
   <MyPlaceRewardsOverviewTileComponent {...props} />
 );
 
-const mapStateToProps = () => ({});
+const mapStateToProps = state => ({
+  coupons: getAllCoupons(state),
+});
 
 export default connect(mapStateToProps)(MyPlaceRewardsOverviewTile);
