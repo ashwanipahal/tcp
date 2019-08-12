@@ -11,6 +11,7 @@ import {
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import MyRewards from '../../../molecules/MyRewards';
+import BonusPointsDays from '../../../molecules/BonusPointsDays';
 import RewardsPoints from '../../../../common/organism/RewardsPoints';
 import PointsHistory from '../../../../common/organism/PointsHistory';
 
@@ -40,7 +41,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
           <PointsHistory />
         </StyledView>
         <StyledView>
-          <Text>Third</Text>
+          <BonusPointsDays />
         </StyledView>
         <StyledViewLargeMargin>
           <Text>Fourth</Text>

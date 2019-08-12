@@ -536,6 +536,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
           // Backend returns the same value for both itemPrice and itemDstPrice UNLESS an explicit promotion is applied
           // Enhancement needed - Backend should return the actual prices and frontend should determine which values to display
           listPrice: flatCurrencyToCents(item.itemPrice),
+          listUnitPrice: flatCurrencyToCents(item.itemUnitPrice),
           offerPrice: flatCurrencyToCents(item.itemDstPrice),
           unitOfferPrice: flatCurrencyToCents(item.itemUnitDstPrice),
           wasPrice: flatCurrencyToCents(item.productInfo.listPrice),

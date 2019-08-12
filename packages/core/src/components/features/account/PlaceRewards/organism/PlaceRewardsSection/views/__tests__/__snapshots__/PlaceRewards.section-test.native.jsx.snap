@@ -11,6 +11,7 @@ exports[`MyRewards should render correctly 1`] = `
       <Styled(BodyCopy)
         fontSize="fs16"
         fontWeight="extrabold"
+        locator=""
         text=""
       />
     </Styled(Text)>
@@ -23,15 +24,14 @@ exports[`MyRewards should render correctly 1`] = `
         <Styled(BodyCopy)
           fontSize="fs16"
           fontWeight="extrabold"
+          locator=""
           text=""
         />
       </Styled(Text)>
       <Connect(PointsHistoryContainer) />
     </Styled(View)>
     <Styled(View)>
-      <Text>
-        Third
-      </Text>
+      <BonusPointsDaysSection />
     </Styled(View)>
     <Styled(View)>
       <Text>

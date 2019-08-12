@@ -19,4 +19,6 @@ export const ImageGridItem = styled(Image)`
   margin-bottom: ${props => props.gutter};
 `;
 
-export default { ImageGridContainer, ImageGridItem, Wrapper };
+export const Touchable = styled.TouchableOpacity``;
+
+export default { ImageGridContainer, ImageGridItem, Wrapper, Touchable };

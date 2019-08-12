@@ -11,7 +11,7 @@ exports[`ModuleL Header component renders correctly 1`] = `
 >
   <Styled(Row)>
     <Styled(Col)
-      className="moduleL__tile"
+      className="moduleL__tile moduleL__red"
       colSize={
         Object {
           "large": 12,

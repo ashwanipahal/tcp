@@ -14,7 +14,6 @@ const buildQuery = ({ slot, contentId }) => `
             url
             title
             target
-            external
           }
         }
         mediaLinkedList {
@@ -38,7 +37,6 @@ const buildQuery = ({ slot, contentId }) => `
           text
           title
           target
-          external
         }
       }
 
@@ -51,7 +49,6 @@ const buildQuery = ({ slot, contentId }) => `
           url
           text
           title
-          external
           target
         }
       }

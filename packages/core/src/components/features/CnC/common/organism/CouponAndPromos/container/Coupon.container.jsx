@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
 import { List } from 'immutable';
-import { applyCoupon, removeCoupon } from './Coupon.actions';
+import { applyCoupon, removeCoupon, setError } from './Coupon.actions';
 import {
   getCouponFetchingState,
   getCouponsLabels,
@@ -22,8 +22,10 @@ export class CouponContainer extends React.PureComponent<Props> {
       handleRemoveCoupon,
       appliedCouponList,
       availableCouponList,
+      handleErrorCoupon,
     } = this.props;
     const couponList = List([
+      ...availableCouponList,
       {
         id: 'Y00105578',
         status: 'available',
@@ -51,6 +53,7 @@ export class CouponContainer extends React.PureComponent<Props> {
         handleRemoveCoupon={handleRemoveCoupon}
         appliedCouponList={appliedCouponList}
         availableCouponList={couponList}
+        handleErrorCoupon={handleErrorCoupon}
       />
     );
   }
@@ -89,6 +92,11 @@ export const mapDispatchToProps = dispatch => ({
         applyCoupon({ formData, source: props && props.source, formPromise: { resolve, reject } })
       );
     }),
+  handleErrorCoupon: coupon => {
+    setTimeout(() => {
+      dispatch(setError({ msg: null, couponCode: coupon.id }));
+    }, 5000);
+  },
 });
 
 export const mapStateToProps = state => ({

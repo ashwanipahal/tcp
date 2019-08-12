@@ -28,6 +28,7 @@ exports[`NavMenuLevel2 should render component when renderItem is called 1`] = `
     }
     maxWidthItem={510}
     promoBannerMargin={40}
+    route={[Function]}
   />
 </ForwardRef>
 `;
@@ -60,6 +61,7 @@ exports[`NavMenuLevel2 should render component when renderItem is with title cat
     }
     maxWidthItem={510}
     promoBannerMargin={40}
+    route={[Function]}
   />
 </ForwardRef>
 `;
@@ -82,6 +84,7 @@ exports[`NavMenuLevel2 should render component when renderSectionHeader is calle
     color="text.primary"
     fontFamily="secondary"
     fontSize="fs16"
+    locator=""
     style={
       Object {
         "textTransform": "uppercase",
@@ -100,6 +103,7 @@ exports[`NavMenuLevel2 should render component when renderSectionHeader is calle
     color="text.primary"
     fontFamily="secondary"
     fontSize="fs16"
+    locator=""
     style={
       Object {
         "textTransform": "uppercase",

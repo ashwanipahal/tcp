@@ -39,7 +39,7 @@ class CouponCard extends React.Component<Props> {
   };
 
   RenderApplyButton = () => {
-    const { coupon, onApply } = this.props;
+    const { coupon, onApply, isFetching } = this.props;
     return (
       <Button
         onClick={() => {
@@ -50,6 +50,7 @@ class CouponCard extends React.Component<Props> {
         type="submit"
         data-locator={`coupon_${coupon.status}_apply_cartCta`}
         fullWidth="true"
+        disabled={isFetching}
       >
         {coupon.labelStatus}
       </Button>
@@ -77,6 +78,7 @@ class CouponCard extends React.Component<Props> {
   RenderValidText = coupon => {
     return (
       <BodyCopy
+        className="couponCard__text_style"
         component="p"
         fontSize="fs10"
         data-locator={`coupon_${coupon.status}_cartValidValidity`}
@@ -90,6 +92,7 @@ class CouponCard extends React.Component<Props> {
   RenderUseByText = coupon => {
     return (
       <BodyCopy
+        className="couponCard__text_style"
         data-locator={`coupon_${coupon.status}_cartUseByValidity`}
         component="p"
         fontSize="fs10"
@@ -107,7 +110,10 @@ class CouponCard extends React.Component<Props> {
   };
 
   render() {
-    const { labels, coupon, className } = this.props;
+    const { labels, coupon, className, handleErrorCoupon } = this.props;
+    if (coupon.error) {
+      handleErrorCoupon(coupon);
+    }
     return (
       <div className={className}>
         <div className="couponCard__container">
@@ -159,6 +165,7 @@ class CouponCard extends React.Component<Props> {
                     fontSize="fs10"
                     to="/#"
                     onClick={this.handleDefaultLinkClick}
+                    className="cartDetailsLink"
                   >
                     {labels.DETAILS_BUTTON_TEXT}
                   </Anchor>
