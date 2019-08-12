@@ -5,6 +5,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
   appType="tcp"
   theme={
     Object {
+      "brand": "tcp",
       "breakpoints": Object {
         "keys": Array [
           "xs",
@@ -502,6 +503,8 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "ls222": "2.22px",
           "ls257": "2.57px",
           "ls271": "2.71px",
+          "ls317": "3.17px",
+          "ls400": "4px",
           "normal": "normal",
         },
         "lineHeights": Object {
