@@ -37,7 +37,7 @@ const StyledModal = css`
     height: 8px;
     width: 100%;
     background-color: ${props =>
-      props.color ? getColorCode(props) : props.theme.colorPalette.gray[600]};
+      props.color ? getColorCode(props) : props.theme.colorPalette.userTheme.mpr};
     z-index: 99;
   }
   .modal__triangle {

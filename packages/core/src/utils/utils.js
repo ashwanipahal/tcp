@@ -131,6 +131,11 @@ export const isCanada = () => {
   return siteId === API_CONFIG.siteIds.ca;
 };
 
+export const isGymboree = () => {
+  const { brandId } = getAPIConfig();
+  return brandId === API_CONFIG.brandIds.gym;
+};
+
 export default {
   getIconPath,
   getLocator,
@@ -139,4 +144,5 @@ export default {
   isServer,
   getAPIConfig,
   isCanada,
+  isGymboree,
 };

@@ -2,6 +2,7 @@
 
 exports[`NavMenuLevel1 should render component when renderItem is called 1`] = `
 <ForwardRef
+  accessibilityLabel="Girl"
   accessibilityRole="button"
   onPress={[Function]}
 >
@@ -21,7 +22,8 @@ exports[`NavMenuLevel1 should render component when renderItem is called 1`] = `
       fontFamily="primary"
       fontSize="fs22"
       fontWeight="black"
-      text="GIRL"
+      locator=""
+      text="Girl"
       textAlign="center"
     />
     <ForwardRef
@@ -29,6 +31,7 @@ exports[`NavMenuLevel1 should render component when renderItem is called 1`] = `
       fontFamily="secondary"
       fontSize="fs12"
       fontWeight="extrabold"
+      locator=""
       text="Sizes 4-141"
       textAlign="center"
     />
@@ -38,6 +41,7 @@ exports[`NavMenuLevel1 should render component when renderItem is called 1`] = `
 
 exports[`NavMenuLevel1 should render component when renderItem is called without nav menu image 1`] = `
 <ForwardRef
+  accessibilityLabel="Girl"
   accessibilityRole="button"
   onPress={[Function]}
 >
@@ -46,11 +50,12 @@ exports[`NavMenuLevel1 should render component when renderItem is called without
     fontFamily="primary"
     fontSize="fs28"
     fontWeight="black"
-    text="GIRL"
+    locator=""
+    text="Girl"
     textAlign="center"
   />
   <ForwardRef
-    alt="GIRL"
+    alt="Girl"
     height={26}
     maxWidth={16}
     position="absolute"

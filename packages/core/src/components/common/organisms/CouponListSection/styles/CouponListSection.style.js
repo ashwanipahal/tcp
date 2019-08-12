@@ -14,6 +14,7 @@ const styles = css`
   }
   .couponList__helpIcon {
     text-align: center;
+    line-height: ${props => props.theme.spacing.ELEM_SPACING.MED};
     font-size: ${props => props.theme.typography.fontSizes.fs10};
     background: ${props => props.theme.colors.PRIMARY.GREEN};
     color: ${props => props.theme.colors.WHITE};

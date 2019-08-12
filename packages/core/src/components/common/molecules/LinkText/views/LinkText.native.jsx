@@ -9,6 +9,7 @@ type Props = {
   link: Object,
   textItems: Object[],
   navigation: Object,
+  locator: string,
 };
 
 /**
@@ -27,6 +28,7 @@ const getTextItems = textItems => {
 
 const LinkText = (props: Props) => {
   const {
+    locator,
     type,
     headerText: [{ textItems, link }],
     navigation,
@@ -39,20 +41,22 @@ const LinkText = (props: Props) => {
   if (type === 'heading') {
     Component = Heading;
     compProps = {
+      navigation,
       Component,
       ...otherProps,
     };
   } else {
     Component = BodyCopy;
     compProps = {
+      navigation,
       Component,
       ...otherProps,
     };
   }
 
   return (
-    <Anchor url={link.url} navigation={navigation} external={link.external}>
-      <Component {...compProps} text={getTextItems(textItems)} />
+    <Anchor url={link.url} navigation={navigation}>
+      <Component {...compProps} text={getTextItems(textItems)} locator={locator} />
     </Anchor>
   );
 };

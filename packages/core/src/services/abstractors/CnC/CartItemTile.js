@@ -20,7 +20,12 @@ const ORDER_ITEM_TYPE = {
   BOPIS: 'BOPIS',
   ECOM: 'ECOM',
 };
-
+const AVAILABILITY = {
+  OK: 'OK',
+  SOLDOUT: 'SOLDOUT',
+  UNAVAILABLE: 'UNAVAILABLE',
+  SUGGESTED: 'SUGGESTED', // REVIEW: we need it to control an state to favorite's item (favorites' page).
+};
 export const imageGenerator = (id, excludeExtension) => {
   return {
     colorSwatch: getSwatchImgPath(id, excludeExtension),
@@ -536,6 +541,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
           // Backend returns the same value for both itemPrice and itemDstPrice UNLESS an explicit promotion is applied
           // Enhancement needed - Backend should return the actual prices and frontend should determine which values to display
           listPrice: flatCurrencyToCents(item.itemPrice),
+          listUnitPrice: flatCurrencyToCents(item.itemUnitPrice),
           offerPrice: flatCurrencyToCents(item.itemDstPrice),
           unitOfferPrice: flatCurrencyToCents(item.itemUnitDstPrice),
           wasPrice: flatCurrencyToCents(item.productInfo.listPrice),
@@ -572,7 +578,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
           // storeTodayOpenRange: store ? todayOpeningTime + ' - ' + todayClosingTime : null,
           // storeTomorrowOpenRange: store ? tomorrowOpeningTime + ' - ' + tomorrowClosingTime : null,
 
-          // availability: deriveItemAvailability(orderDetailsResponse, item, store),
+          availability: deriveItemAvailability(orderDetailsResponse, item, store),
           vendorColorDisplayId: item.productInfo && item.productInfo.productPartNumber,
           // dates for boss pickup, used getDateInformation utility
           bossStartDate:
@@ -711,6 +717,39 @@ export const deriveBossEligiblity = (item, orderDetailsResponse) => {
   );
 };
 
+export const deriveItemAvailability = (orderDetails, item, store) => {
+  const isUsOrder = orderDetails.currencyCode === 'USD';
+  const isCaOrder = orderDetails.currencyCode !== 'USD';
+  const isStoreBOSSEligible = true;
+  console.log(item);
+  if (
+    (isUsOrder && item.productInfo.articleOOSUS) ||
+    (isCaOrder && item.productInfo.articleOOSCA)
+  ) {
+    return AVAILABILITY.SOLDOUT;
+  } else if (
+    item.orderItemType === ORDER_ITEM_TYPE.BOPIS &&
+    item.stLocId &&
+    !parseBoolean(orderDetails.bopisIntlField)
+  ) {
+    return AVAILABILITY.OK;
+  } else if (
+    item.orderItemType === ORDER_ITEM_TYPE.BOSS &&
+    item.stLocId &&
+    (parseBoolean(orderDetails.bossIntlField) || !isStoreBOSSEligible)
+  ) {
+    /**
+     * Adding new check to return status unavailable
+     * in case of boss store ineligible or boss international order
+     */
+    return AVAILABILITY.UNAVAILABLE;
+  } else if (item.inventoryAvail > 0) {
+    // inventory check for BOSS and ECOM
+    return AVAILABILITY.OK;
+  } else {
+    return AVAILABILITY.UNAVAILABLE;
+  }
+};
 export default {
   getOrderDetailsData,
   removeItem,
