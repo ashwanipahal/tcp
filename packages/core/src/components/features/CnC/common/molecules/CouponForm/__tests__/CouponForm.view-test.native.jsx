@@ -8,7 +8,7 @@ describe('CouponForm Component', () => {
     labels: {
       placeholderText: 'Enter Coupon Code',
       submitButtonLabel: 'Apply',
-      couponCodeHeader: 'Coupon Code',
+      couponCodeHeader: 'COUPON CODE',
       couponNeedHelpText: 'Need Help?',
     },
     dataLocators: {
