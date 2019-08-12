@@ -32,6 +32,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
       couponList={Immutable.List []}
       dataLocator="coupon-cartAppliedRewards"
       heading="Applied"
+      isFetching={false}
       labels={
         Object {
           "APPLIED_REWARDS_HEADING": "Applied",
@@ -47,6 +48,7 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
       heading="Available"
       helpAnchorClick={[Function]}
       helpSubHeading="true"
+      isFetching={false}
       labels={
         Object {
           "APPLIED_REWARDS_HEADING": "Applied",
