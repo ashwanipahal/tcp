@@ -26,15 +26,19 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
     super(props);
     this.state = {
       isOpenMiniBagModal: false,
+      userNameClick: true,
     };
   }
 
-  onLinkClick = ({ e, openOverlay }) => {
+  onLinkClick = ({ e, openOverlay, userNameClick }) => {
     e.preventDefault();
-    openOverlay({
-      component: e.target.id,
-      variation: 'primary',
-    });
+    if (userNameClick) {
+      openOverlay({
+        component: e.target.id,
+        variation: 'primary',
+      });
+    }
+    this.setState({ userNameClick: !userNameClick });
   };
 
   toggleMiniBagModal = ({ e, isOpen }) => {
@@ -51,7 +55,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
       openOverlay,
       userName,
     } = this.props;
-    const { isOpenMiniBagModal } = this.state;
+    const { isOpenMiniBagModal, userNameClick } = this.state;
 
     return (
       <React.Fragment>
@@ -106,7 +110,8 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
                 <BodyCopy
                   id="accountDrawer"
                   textAlign="right"
-                  onClick={e => this.onLinkClick({ e, openOverlay })}
+                  className="username"
+                  onClick={e => this.onLinkClick({ e, openOverlay, userNameClick })}
                 >
                   {`Hi, ${userName}`}
                 </BodyCopy>
