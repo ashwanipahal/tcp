@@ -148,16 +148,18 @@ class CardTile extends React.Component<Props> {
           dataLocator={`payment-${dataLocatorPrefix}endingtext`}
           text={cardNum}
         />
-        {card.ccType !== 'PLACE CARD' && (
-          <CardTileExpiry>
-            <BodyCopy
-              fontSize="fs14"
-              fontWeight="semibold"
-              dataLocator={`payment-${dataLocatorPrefix}expiretext`}
-              text={expDate}
-            />
-          </CardTileExpiry>
-        )}
+        {card.ccType !== 'PLACE CARD' &&
+          card.ccType !==
+            'GiftCard'(
+              <CardTileExpiry>
+                <BodyCopy
+                  fontSize="fs14"
+                  fontWeight="semibold"
+                  dataLocator={`payment-${dataLocatorPrefix}expiretext`}
+                  text={expDate}
+                />
+              </CardTileExpiry>
+            )}
       </View>
     );
   };

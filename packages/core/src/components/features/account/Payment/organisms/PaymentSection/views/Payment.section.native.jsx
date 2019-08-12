@@ -1,5 +1,6 @@
 /* eslint-disable global-require */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View, ScrollView } from 'react-native';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import { ParentContainer, StyledHeading, UnderlineStyle } from '../PaymentSection.style.native';
@@ -9,23 +10,37 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import VenmoCards from '../../../molecules/VenmoCards';
 import DeleteModal from '../../../molecules/DeleteModal';
 
-// @flow
-type Props = {
-  labels: Object,
-  creditCardList: object,
-  setDefaultPaymentMethod: Function,
-  giftCardList: object,
-  cardList: object,
-  venmoCardList: object,
-  onGetBalanceCard: Function,
-  checkbalanceValueInfo: any,
-  onDeleteCard: any,
-  setDeleteModalMountState: any,
-  setDeleteModalMountedState: any,
-  deleteModalMountedState: any,
-};
-
 class PaymentView extends React.Component<Props> {
+  static propTypes = {
+    labels: PropTypes.shape({}),
+    creditCardList: PropTypes.shape({}),
+    setDefaultPaymentMethod: PropTypes.func,
+    giftCardList: PropTypes.shape({}),
+    cardList: PropTypes.shape({}),
+    venmoCardList: PropTypes.shape({}),
+    onGetBalanceCard: PropTypes.func,
+    checkbalanceValueInfo: PropTypes.shape({}),
+    onDeleteCard: PropTypes.shape({}),
+    setDeleteModalMountState: PropTypes.bool,
+    setDeleteModalMountedState: PropTypes.bool,
+    deleteModalMountedState: PropTypes.bool,
+  };
+
+  static defaultProps = {
+    labels: {},
+    creditCardList: {},
+    setDefaultPaymentMethod: () => {},
+    giftCardList: {},
+    cardList: {},
+    venmoCardList: {},
+    onGetBalanceCard: () => {},
+    checkbalanceValueInfo: {},
+    onDeleteCard: {},
+    setDeleteModalMountState: false,
+    setDeleteModalMountedState: false,
+    deleteModalMountedState: false,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
