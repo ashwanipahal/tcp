@@ -1,7 +1,6 @@
 // @flow
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import { string } from 'postcss-selector-parser';
 import { UrlHandler, navigateToPage, validateExternalUrl } from '../../../../../utils/utils.app';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../Button.style.native';
@@ -76,7 +75,7 @@ CustomButton.defaultProps = {
   text: '',
   url: '',
   disableButton: false,
-  locator: string,
+  locator: '',
 };
 
 export default withStyles(CustomButton, style);

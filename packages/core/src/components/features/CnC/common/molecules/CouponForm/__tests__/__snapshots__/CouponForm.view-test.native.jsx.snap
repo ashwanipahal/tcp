@@ -54,7 +54,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         external={true}
         fill="WHITE"
         fullWidth=""
-        locator={[Function]}
+        locator=""
         onPress={[Function]}
         style={
           Object {
