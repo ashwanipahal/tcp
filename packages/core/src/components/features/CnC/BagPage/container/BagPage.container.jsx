@@ -15,6 +15,11 @@ import { getCartOrderList } from '../../CartItemTile/container/CartItemTile.sele
 // };
 
 export class BagPageContainer extends React.Component<Props> {
+  componentDidMount() {
+    const { needHelpContentId, fetchNeedHelpContent } = this.props;
+    fetchNeedHelpContent([needHelpContentId]);
+  }
+
   closeModal = () => {};
 
   componentWillMount = () => {
@@ -33,6 +38,9 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     initialActions: () => {
       dispatch(BAG_PAGE_ACTIONS.getCartData());
     },
+    fetchNeedHelpContent: contentIds => {
+      dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
+    },
   };
 };
 
@@ -43,6 +51,7 @@ const mapStateToProps = state => {
     totalCount: BagPageSelector.getTotalItems(state),
     productsTypes: BagPageSelector.getProductsTypes(state),
     orderItemsCount: size,
+    needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
   };
 };
 

@@ -50,7 +50,7 @@ const RewardsPointsSlider = ({ pointsToNextReward, currentPoints, totalRewards, 
         </RewardWrapper>
 
         <ProgressBarWrapper>
-          <ProgressBarRewardWrapper style={{ width: `${60}%` }} />
+          <ProgressBarRewardWrapper style={{ width: `${currentPoints}%` }} />
         </ProgressBarWrapper>
 
         <RewardWrapper>

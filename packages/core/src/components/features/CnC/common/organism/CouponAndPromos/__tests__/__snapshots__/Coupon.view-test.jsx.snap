@@ -10,6 +10,13 @@ exports[`Coupon component should renders correctly when Coupon are not present 1
     getFormState={[Function]}
     isFetching={false}
     keepDirtyOnReinitialize={false}
+    labels={
+      Object {
+        "APPLIED_REWARDS_HEADING": "Applied",
+        "AVAILABLE_REWARDS_HEADING": "Available",
+      }
+    }
+    onNeedHelpTextClick={[Function]}
     onSubmit={[Function]}
     persistentSubmitErrors={false}
     pure={true}
@@ -92,6 +99,13 @@ exports[`Coupon component should renders correctly when Coupon are present 1`] =
     form="CouponForm"
     getFormState={[Function]}
     keepDirtyOnReinitialize={false}
+    labels={
+      Object {
+        "addressBook": Object {},
+        "common": Object {},
+      }
+    }
+    onNeedHelpTextClick={[Function]}
     persistentSubmitErrors={false}
     pure={true}
     shouldAsyncValidate={[Function]}
