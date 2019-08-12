@@ -46,7 +46,8 @@ export class RewardsPointsContainer extends React.PureComponent {
   }
 }
 
-const commonLabels = state => state.Labels.account.common;
+const commonLabels = state =>
+  state.Labels && state.Labels.account ? state.Labels.account.common : '';
 
 const mapStateToProps = state => {
   return {
