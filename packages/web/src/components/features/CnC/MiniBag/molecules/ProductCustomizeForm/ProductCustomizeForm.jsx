@@ -1,4 +1,3 @@
-/* eslint-disable no-plusplus */
 import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
@@ -29,12 +28,12 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
       selectedFit: '',
       selectedSize: '',
       selectedQuantity: '',
+      selectedSkuId: 0,
     };
   }
 
   componentDidMount() {
     const { initialValues } = this.props;
-    console.log('initialValues', initialValues);
     this.setState({
       selectedColor: initialValues.color,
       selectedFit: initialValues.fit,
@@ -42,6 +41,45 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
       selectedQuantity: initialValues.qty,
     });
   }
+
+  getSkuId = () => {
+    const { selectedColor, selectedFit, selectedSize } = this.state;
+    const { colorFitsSizesMap } = this.props;
+    const colorItem = this.getSelectedColorData(colorFitsSizesMap, selectedColor);
+    const hasFits = colorItem.getIn([0, 'hasFits']);
+    let selectedSkuId;
+
+    // eslint-disable-next-line sonarjs/no-all-duplicated-branches
+    if (hasFits) {
+      colorItem.getIn([0, 'fits']).map(fit => {
+        if (fit.get('fitName') === selectedFit) {
+          return fit.get('sizes').map(size => {
+            if (size.get('sizeName') === selectedSize) {
+              // this.setState({
+              //   selectedSkuId : size.get('skuId')})
+              selectedSkuId = size.get('skuId');
+            }
+          });
+        }
+      });
+    } else {
+      colorItem.getIn([0, 'fits']).map(fit => {
+        // eslint-disable-next-line sonarjs/no-identical-functions
+        fit.get('sizes').map(size => {
+          if (size.get('sizeName') === selectedSize) {
+            // eslint-disable-next-line prefer-destructuring
+            // this.setState({
+            //   selectedSkuId : size.get('skuId'),
+            // })
+            selectedSkuId = size.get('skuId');
+          }
+        });
+      });
+    }
+    if (selectedSkuId.length) {
+      return selectedSkuId;
+    }
+  };
 
   getSelectedColorData = (colorFitsSizesMap, color) => {
     return (
@@ -91,7 +129,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
     const fitOptions = [];
     // eslint-disable-next-line no-unused-expressions
     colorItem &&
-      colorItem.fits.map(fit => {
+      colorItem.get('fits').map(fit => {
         fitOptions.push({
           displayName: fit.get('fitName'),
           id: fit.get('fitName'),
@@ -111,7 +149,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
             fit.get('sizes').map(size => {
               return sizeOptions.push({
                 displayName: size.get('sizeName'),
-                id: size.get('skuId'),
+                id: size.get('sizeName'),
               });
             });
           }
@@ -120,7 +158,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
           return fit.get('sizes').map(size => {
             return sizeOptions.push({
               displayName: size.get('sizeName'),
-              id: size.get('skuId'),
+              id: size.get('sizeName'),
             });
           });
         }
@@ -156,10 +194,10 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
   getQuantityList = () => {
     const quantityArray = [];
     for (let i = 0; i < 15; i++) {
-      let num = i;
+      const num = i;
       quantityArray.push({
-        displayName: ++num,
-        id: ++num,
+        displayName: num + 1,
+        id: num + 1,
       });
     }
     return quantityArray;
@@ -173,7 +211,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
     const selectedColorElement = this.getSelectedColorData(colorFitsSizesMap, selectedColor);
     // eslint-disable-next-line prefer-destructuring
     const hasFits = selectedColorElement && selectedColorElement.getIn([0, 'hasFits']);
-    const fitList = hasFits && this.getFitOptions(selectedColorElement[0]);
+    const fitList = hasFits && this.getFitOptions(selectedColorElement.get(0));
     const sizeList =
       selectedColorElement &&
       (hasFits
@@ -183,7 +221,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
     const { className } = this.props;
     const { handleSubmit } = this.props;
     const { itemId } = item.itemInfo;
-    const skuId = selectedSize;
+    const { selectedSkuId } = this.state;
     const quantity = selectedQuantity || '3';
     const { itemPartNumber } = item.productInfo;
     const { variantNo } = item.productInfo;
@@ -194,7 +232,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
           <div className="select-value-wrapper">
             <div className="color-selector">
               <Field
-                width={112}
+                width={87}
                 id="color"
                 name={selectedColor}
                 component={ColorSelector}
@@ -206,7 +244,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
             {hasFits && (
               <div className="fit-selector">
                 <Field
-                  width={112}
+                  width={69}
                   id="fit"
                   name="Fit"
                   component={MiniBagSelect}
@@ -218,7 +256,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
             )}
             <div className="size-selector">
               <Field
-                width={39}
+                width={50}
                 id="size"
                 name="Size"
                 component={MiniBagSelect}
@@ -245,7 +283,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
               type="submit"
               onClick={e => {
                 e.preventDefault();
-                handleSubmit(itemId, skuId, quantity, itemPartNumber, variantNo);
+                handleSubmit(itemId, this.getSkuId(), quantity, itemPartNumber, variantNo);
               }}
             >
               {/* <u>{labels.update}</u> */}

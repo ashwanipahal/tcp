@@ -5,10 +5,10 @@ import selectBoxStyle from './MiniBagSelectBox.style';
 
 const MiniBagSelect = props => {
   // eslint-disable-next-line react/destructuring-assignment
-  const name = props.input;
+  const { name } = props.input;
   return (
     <React.Fragment>
-      <BodyCopy fontSize="fs12" fontFamily="secondary">
+      <BodyCopy fontSize="fs10" fontFamily="secondary" fontWeight="extrabold">
         {/* eslint-disable-next-line react/destructuring-assignment */}
         <span>{`${name}:`}</span>
       </BodyCopy>

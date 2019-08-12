@@ -10,6 +10,9 @@ const styles = css`
   .select-value-wrapper {
     display: flex;
     flex: 1;
+    div {
+      margin-right: 3px;
+    }
   }
   .button-wrapper {
     display: flex;
