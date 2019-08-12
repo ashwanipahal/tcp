@@ -14,6 +14,7 @@ exports[`LinkText component renders correctly 1`] = `
       Object {
         "$$typeof": Symbol(react.forward_ref),
         "_foldedDefaultProps": Object {
+          "accessibilityText": "",
           "locator": "",
           "text": "",
         },
@@ -41,6 +42,7 @@ exports[`LinkText component renders correctly 1`] = `
         "withComponent": [Function],
       }
     }
+    accessibilityText=""
     locator=""
     text={
       Array [

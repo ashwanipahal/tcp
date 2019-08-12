@@ -5,6 +5,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
   <Styled(View)>
     <Styled(TouchableOpacity)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="white"
         fontFamily="secondary"
         fontSize="fs13"
@@ -18,6 +19,7 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
   <Styled(View)>
     <Styled(TouchableOpacity)>
       <Styled(BodyCopy)
+        accessibilityText=""
         color="white"
         fontFamily="secondary"
         fontSize="fs13"

@@ -7,6 +7,7 @@ exports[`Panel component should render correctly 1`] = `
       onPress={[Function]}
     >
       <Styled(BodyCopy)
+        accessibilityText=""
         color="gray.900"
         fontFamily="secondary"
         fontSize="fs13"

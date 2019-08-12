@@ -8,12 +8,18 @@ import { getLocator } from '../../../../../utils/index.native';
 type Props = {
   text?: string,
   locator?: string,
+  accessibilityText?: string,
 };
 
 const BodyCopy = (props: Props) => {
-  const { text, locator, ...otherProps } = props;
+  const { text, locator, accessibilityText, ...otherProps } = props;
   return (
-    <Text {...otherProps} testID={getLocator(locator)}>
+    <Text
+      {...otherProps}
+      testID={getLocator(locator)}
+      accessibilityRole="text"
+      accessibilityLabel={accessibilityText}
+    >
       {text}
     </Text>
   );
@@ -22,6 +28,7 @@ const BodyCopy = (props: Props) => {
 BodyCopy.defaultProps = {
   text: '',
   locator: '',
+  accessibilityText: '',
 };
 
 export default withStyles(BodyCopy, BodyCopyStyles);

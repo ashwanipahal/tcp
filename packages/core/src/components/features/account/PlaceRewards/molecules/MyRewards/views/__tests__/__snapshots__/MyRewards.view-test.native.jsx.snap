@@ -4,6 +4,7 @@ exports[`MyRewards should render correctly 1`] = `
 <View>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       data-locator="my-rewards-heading"
       fontSize="fs16"
       fontWeight="semibold"
@@ -14,6 +15,7 @@ exports[`MyRewards should render correctly 1`] = `
   </Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       data-locator="no_rewards_msg"
       fontSize="fs14"
       fontWeight="regular"
@@ -22,6 +24,7 @@ exports[`MyRewards should render correctly 1`] = `
       text=""
     />
     <Styled(BodyCopy)
+      accessibilityText=""
       data-locator="no_rewards_msg"
       fontSize="fs14"
       fontWeight="regular"

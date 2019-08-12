@@ -4,6 +4,7 @@ exports[`Native Badge component renders correctly with  as false 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="white"
       fontSize="fs10"
       fontWeight="semibold"

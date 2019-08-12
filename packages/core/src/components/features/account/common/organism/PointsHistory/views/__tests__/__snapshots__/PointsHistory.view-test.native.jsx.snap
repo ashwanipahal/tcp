@@ -5,6 +5,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
   <Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         fontFamily="secondary"
         fontSize="fs12"
         fontWeight="semibold"
@@ -14,6 +15,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         fontFamily="secondary"
         fontSize="fs12"
         fontWeight="semibold"
@@ -23,6 +25,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         component="p"
         fontFamily="secondary"
         fontSize="fs12"
@@ -35,6 +38,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
   <Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         fontFamily="secondary"
         fontSize="fs12"
         fontWeight="semibold"
@@ -44,6 +48,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         fontFamily="secondary"
         fontSize="fs12"
         fontWeight="semibold"
@@ -53,6 +58,7 @@ exports[`Points History Slider View should render Points History Correctly 1`] =
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         fontFamily="secondary"
         fontSize="fs12"
         fontWeight="semibold"

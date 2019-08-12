@@ -7,6 +7,7 @@ exports[`Header Component Header should render correctly 1`] = `
   >
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText="0 drop down"
         color="black"
         data-locator="global_headerpanelwelcometext"
         fontFamily="secondary"
@@ -20,6 +21,7 @@ exports[`Header Component Header should render correctly 1`] = `
         onPress={[Function]}
       >
         <Styled(BodyCopy)
+          accessibilityText=""
           color="text.primary"
           data-locator="global_findastoretext"
           fontFamily="secondary"
@@ -44,34 +46,38 @@ exports[`Header Component Header should render correctly 1`] = `
         />
       </Styled(TouchableOpacity)>
     </Styled(View)>
-    <Styled(TouchableOpacity)
-      onPress={[Function]}
-    >
-      <Styled(Image)
-        data-locator="global_headerpanelbagicon"
-        source={
-          Object {
-            "testUri": "../../../src/assets/images/empty-bag.png",
+    <Styled(View)>
+      <Styled(TouchableOpacity)
+        accessibilityRole="button"
+        onPress={[Function]}
+      >
+        <Styled(Image)
+          data-locator="global_headerpanelbagicon"
+          source={
+            Object {
+              "testUri": "../../../src/assets/images/empty-bag.png",
+            }
           }
-        }
-      />
-      <Styled(View) />
-      <Styled(View) />
-      <Styled(BodyCopy)
-        color="white"
-        data-locator="obal_headerpanelbagicon"
-        fontSize="fs10"
-        locator=""
-        style={
-          Object {
-            "marginTop": 18,
-            "paddingRight": 5.6,
-            "position": "absolute",
+        />
+        <Styled(View) />
+        <Styled(View) />
+        <Styled(BodyCopy)
+          accessibilityText="Mini bag with count0"
+          color="white"
+          data-locator="obal_headerpanelbagicon"
+          fontSize="fs10"
+          locator=""
+          style={
+            Object {
+              "marginTop": 18,
+              "paddingRight": 5.6,
+              "position": "absolute",
+            }
           }
-        }
-        text={0}
-      />
-    </Styled(TouchableOpacity)>
+          text={0}
+        />
+      </Styled(TouchableOpacity)>
+    </Styled(View)>
   </Styled(View)>
 </Styled(SafeAreaView)>
 `;

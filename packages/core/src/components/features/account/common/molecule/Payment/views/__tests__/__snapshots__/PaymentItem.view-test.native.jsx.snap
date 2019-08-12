@@ -4,6 +4,7 @@ exports[`PaymentItem component should render correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
       fontFamily="secondary"
       fontSize="fs13"
@@ -12,6 +13,7 @@ exports[`PaymentItem component should render correctly 1`] = `
       text="Default Credit Card"
     />
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
       fontFamily="secondary"
       fontSize="fs13"
@@ -25,6 +27,7 @@ exports[`PaymentItem component should render correctly 1`] = `
     textDecorationLine="underline"
   >
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
       fontFamily="secondary"
       fontSize="fs13"
@@ -40,6 +43,7 @@ exports[`PaymentItem component should render correctly with values 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
       fontFamily="secondary"
       fontSize="fs13"
@@ -55,6 +59,7 @@ exports[`PaymentItem component should render correctly with values 1`] = `
       />
       <Styled(View)>
         <Styled(BodyCopy)
+          accessibilityText=""
           color="gray.900"
           fontFamily="secondary"
           fontSize="fs12"
@@ -68,6 +73,7 @@ exports[`PaymentItem component should render correctly with values 1`] = `
           text="ending in 1111"
         />
         <Styled(BodyCopy)
+          accessibilityText=""
           color="gray.700"
           fontFamily="secondary"
           fontSize="fs10"
@@ -88,6 +94,7 @@ exports[`PaymentItem component should render correctly with values 1`] = `
     textDecorationLine="underline"
   >
     <Styled(BodyCopy)
+      accessibilityText=""
       color="gray.900"
       fontFamily="secondary"
       fontSize="fs13"

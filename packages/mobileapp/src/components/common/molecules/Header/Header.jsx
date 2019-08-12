@@ -16,6 +16,7 @@ import {
   CartIconView,
   ImageColor,
   HeaderPromoContainer,
+  Touchable,
 } from './Header.style';
 
 // @flow
@@ -100,6 +101,7 @@ class Header extends React.PureComponent<Props> {
               fontWeight="semibold"
               text={headerLabels.lbl_header_welcomeMessage}
               data-locator={getLocator('global_headerpanelwelcometext')}
+              accessibilityText={`${cartVal} drop down`}
             />
             <StoreContainer onPress={this.validateIcon}>
               <BodyCopy
@@ -110,6 +112,7 @@ class Header extends React.PureComponent<Props> {
                 fontWeight="regular"
                 text={headerLabels.lbl_header_storeDefaultTitle}
                 data-locator={getLocator('global_findastoretext')}
+                accessibilityText={headerLabels.lbl_header_storeDefaultTitle}
               />
               {isDownIcon ? (
                 <Icon
@@ -126,25 +129,29 @@ class Header extends React.PureComponent<Props> {
               )}
             </StoreContainer>
           </MessageContainer>
-          <CartContainer
-            onPress={() => {
-              // eslint-disable-next-line react/destructuring-assignment
-              this.props.navigation.navigate('BagPage');
-            }}
-          >
-            <CartIconView
-              source={cartIcon}
-              data-locator={getLocator('global_headerpanelbagicon')}
-            />
-            <BackgroundView />
-            <RoundView />
-            <BodyCopy
-              text={cartVal}
-              color="white"
-              style={TextStyle}
-              fontSize="fs10"
-              data-locator={getLocator('global_headerpanelbagitemtext')}
-            />
+          <CartContainer>
+            <Touchable
+              accessibilityRole="button"
+              onPress={() => {
+                // eslint-disable-next-line react/destructuring-assignment
+                this.props.navigation.navigate('BagPage');
+              }}
+            >
+              <CartIconView
+                source={cartIcon}
+                data-locator={getLocator('global_headerpanelbagicon')}
+              />
+              <BackgroundView />
+              <RoundView />
+              <BodyCopy
+                text={cartVal}
+                color="white"
+                style={TextStyle}
+                fontSize="fs10"
+                data-locator={getLocator('global_headerpanelbagitemtext')}
+                accessibilityText={`Mini bag with count${cartVal}`}
+              />
+            </Touchable>
           </CartContainer>
         </Container>
         {this.renderPromo()}

@@ -20,6 +20,7 @@ exports[`PromoTextBanner native component ModuleN should render correctly 1`] = 
 
 exports[`PromoTextBanner native component renders all style correctly 1`] = `
 <StyledNativeComponent
+  accessibilityText=""
   color="text.primary"
   fontFamily="primary"
   fontSize="fs36"
@@ -28,6 +29,7 @@ exports[`PromoTextBanner native component renders all style correctly 1`] = `
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "_foldedDefaultProps": Object {
+        "accessibilityText": "",
         "locator": "",
         "text": "",
       },
@@ -69,6 +71,7 @@ exports[`PromoTextBanner native component renders all style correctly 1`] = `
 
 exports[`PromoTextBanner native component renders all style correctly 2`] = `
 <StyledNativeComponent
+  accessibilityText=""
   color="text.primary"
   fontFamily="primary"
   fontSize="fs42"
@@ -76,6 +79,7 @@ exports[`PromoTextBanner native component renders all style correctly 2`] = `
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "_foldedDefaultProps": Object {
+        "accessibilityText": "",
         "locator": "",
         "text": "",
       },
@@ -119,6 +123,7 @@ exports[`PromoTextBanner native component renders all style correctly 2`] = `
 
 exports[`PromoTextBanner native component renders all style correctly 3`] = `
 <StyledNativeComponent
+  accessibilityText=""
   color="black"
   fontFamily="primary"
   fontSize="fs64"
@@ -127,6 +132,7 @@ exports[`PromoTextBanner native component renders all style correctly 3`] = `
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "_foldedDefaultProps": Object {
+        "accessibilityText": "",
         "locator": "",
         "text": "",
       },
@@ -170,6 +176,7 @@ exports[`PromoTextBanner native component renders all style correctly 3`] = `
 
 exports[`PromoTextBanner native component renders all style correctly 4`] = `
 <StyledNativeComponent
+  accessibilityText=""
   color="white"
   fontFamily="primary"
   fontSize="fs16"
@@ -177,6 +184,7 @@ exports[`PromoTextBanner native component renders all style correctly 4`] = `
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "_foldedDefaultProps": Object {
+        "accessibilityText": "",
         "locator": "",
         "text": "",
       },
@@ -219,6 +227,7 @@ exports[`PromoTextBanner native component renders all style correctly 4`] = `
 
 exports[`PromoTextBanner native component renders all style correctly 5`] = `
 <StyledNativeComponent
+  accessibilityText=""
   color="white"
   fontFamily="primary"
   fontSize="fs64"
@@ -227,6 +236,7 @@ exports[`PromoTextBanner native component renders all style correctly 5`] = `
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "_foldedDefaultProps": Object {
+        "accessibilityText": "",
         "locator": "",
         "text": "",
       },
@@ -271,6 +281,7 @@ exports[`PromoTextBanner native component renders all style correctly 5`] = `
 exports[`PromoTextBanner native component renders all style correctly 6`] = `
 <Styled(View)>
   <Styled(Styled(BodyCopy))
+    accessibilityText=""
     color="white"
     fontFamily="primary"
     fontSize="fs64"
@@ -288,6 +299,7 @@ exports[`PromoTextBanner native component renders all style correctly 6`] = `
   />
   <Styled(View)>
     <Styled(Styled(BodyCopy))
+      accessibilityText=""
       color="white"
       fontFamily="primary"
       fontSize="fs42"
@@ -302,6 +314,7 @@ exports[`PromoTextBanner native component renders all style correctly 6`] = `
       text="%"
     />
     <Styled(Styled(BodyCopy))
+      accessibilityText=""
       color="white"
       fontFamily="primary"
       fontSize="fs20"

@@ -21,6 +21,7 @@ exports[`ErrorMessage Component ErrorMessage should render correctly 1`] = `
       }
     />
     <Styled(BodyCopy)
+      accessibilityText=""
       color="error"
       fontFamily="secondary"
       fontSize="fs10"

@@ -5,6 +5,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
   <Styled(View)>
     <Styled(Text)>
       <Styled(BodyCopy)
+        accessibilityText=""
         fontFamily="secondary"
         fontSize="fs16"
         fontWeight="black"
@@ -14,12 +15,14 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
     </Styled(Text)>
     <Styled(Text)>
       <Styled(BodyCopy)
+        accessibilityText=""
         fontFamily="secondary"
         fontSize="fs14"
         locator=""
         text="Current Points: "
       />
       <Styled(BodyCopy)
+        accessibilityText=""
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="black"
@@ -29,6 +32,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
     </Styled(Text)>
     <Styled(Text)>
       <Styled(BodyCopy)
+        accessibilityText=""
         fontFamily="secondary"
         fontSize="fs14"
         locator=""
@@ -47,12 +51,14 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
     </Styled(View)>
     <Styled(Text)>
       <Styled(BodyCopy)
+        accessibilityText=""
         fontFamily="secondary"
         fontSize="fs14"
         locator=""
         text="Next Rewards: "
       />
       <Styled(BodyCopy)
+        accessibilityText=""
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="black"

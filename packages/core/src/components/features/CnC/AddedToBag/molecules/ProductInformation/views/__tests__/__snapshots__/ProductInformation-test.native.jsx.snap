@@ -21,6 +21,7 @@ exports[`GiftCardList Component renders correctly 1`] = `
   <Styled(View)>
     <Styled(Text)>
       <Styled(BodyCopy)
+        accessibilityText=""
         fontSize="fs12"
         fontWeight={
           Array [
@@ -33,6 +34,7 @@ exports[`GiftCardList Component renders correctly 1`] = `
     </Styled(Text)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         fontSize="fs12"
         fontWeight={
           Array [
@@ -44,6 +46,7 @@ exports[`GiftCardList Component renders correctly 1`] = `
         textAlign="center"
       />
       <Styled(BodyCopy)
+        accessibilityText=""
         fontSize="fs12"
         locator=""
         text=""
@@ -51,6 +54,7 @@ exports[`GiftCardList Component renders correctly 1`] = `
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         fontSize="fs12"
         fontWeight={
           Array [
@@ -62,11 +66,13 @@ exports[`GiftCardList Component renders correctly 1`] = `
         textAlign="center"
       />
       <Styled(BodyCopy)
+        accessibilityText=""
         fontSize="fs12"
         locator=""
         text="M "
       />
       <Styled(BodyCopy)
+        accessibilityText=""
         fontSize="fs12"
         locator=""
         text="slim"
@@ -74,6 +80,7 @@ exports[`GiftCardList Component renders correctly 1`] = `
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
+        accessibilityText=""
         fontSize="fs12"
         fontWeight={
           Array [
@@ -85,6 +92,7 @@ exports[`GiftCardList Component renders correctly 1`] = `
         textAlign="center"
       />
       <Styled(BodyCopy)
+        accessibilityText=""
         fontSize="fs12"
         locator=""
         text="1"

@@ -4,6 +4,7 @@ exports[`BossBanner Component should render correctly 1`] = `
 <Styled(View)>
   <Styled(Text)>
     <Styled(BodyCopy)
+      accessibilityText=""
       fontSize="fs12"
       fontWeight={
         Array [
@@ -17,6 +18,7 @@ exports[`BossBanner Component should render correctly 1`] = `
   </Styled(Text)>
   <Styled(View)>
     <Styled(BodyCopy)
+      accessibilityText=""
       fontSize="fs10"
       locator=""
       text="def"

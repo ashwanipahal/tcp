@@ -91,6 +91,9 @@ class ModuleK extends React.PureComponent {
             }}
             autoplayInterval={autoplayInterval * 1000}
             showDots
+            ref={c => {
+              this.carousel = c;
+            }}
           />
         )}
       </MainWrapper>
