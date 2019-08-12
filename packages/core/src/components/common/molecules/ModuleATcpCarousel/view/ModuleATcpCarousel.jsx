@@ -52,8 +52,8 @@ const ModuleATcpCarousel = props => {
               />
               <div className="banner-content">
                 <LinkText
-                  fontWeight="black"
-                  fontSize={['fs36', 'fs36', 'fs52']}
+                  type="heading"
+                  component="h2"
                   headerText={headerText}
                   className="link-text-wrapper"
                   data-locator={`${getLocator('moduleA_header_text')}${i}`}

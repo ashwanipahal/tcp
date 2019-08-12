@@ -3,6 +3,8 @@ import buttonStyles from '../Button/Button.style';
 
 const AnchorStyles = css`
   font-family: ${props => props.theme.fonts.secondaryFontFamily};
+  color: inherit;
+
   ${props =>
     props.anchorVariation === 'primary'
       ? `

@@ -68,15 +68,8 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
       >
         <Styled(Styled(LinkText))
           className="link-text-wrapper"
+          component="h2"
           data-locator="moduleA_header_text_0"
-          fontSize={
-            Array [
-              "fs36",
-              "fs36",
-              "fs52",
-            ]
-          }
-          fontWeight="black"
           headerText={
             Array [
               Object {
@@ -93,13 +86,14 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style11",
-                    "text": "Spring is Every Wear",
+                    "style": "style1",
+                    "text": "ENTER SITE 1",
                   },
                 ],
               },
             ]
           }
+          type="heading"
         />
         <Styled(PromoBanner)
           className="moduleA__promoBanner"
@@ -117,8 +111,16 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style12",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "style7",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "style8",
+                    "text": "50% Off",
+                  },
+                  Object {
+                    "style": "style9",
+                    "text": "All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -148,15 +150,8 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
       >
         <Styled(Styled(LinkText))
           className="link-text-wrapper"
+          component="h2"
           data-locator="moduleA_header_text_1"
-          fontSize={
-            Array [
-              "fs36",
-              "fs36",
-              "fs52",
-            ]
-          }
-          fontWeight="black"
           headerText={
             Array [
               Object {
@@ -173,13 +168,14 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style11",
-                    "text": "Spring is Every Wear",
+                    "style": "style1",
+                    "text": "ENTER SITE 2",
                   },
                 ],
               },
             ]
           }
+          type="heading"
         />
         <Styled(PromoBanner)
           className="moduleA__promoBanner"
@@ -197,8 +193,16 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style12",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "style7",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "style8",
+                    "text": "50% Off",
+                  },
+                  Object {
+                    "style": "style9",
+                    "text": "All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -228,15 +232,8 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
       >
         <Styled(Styled(LinkText))
           className="link-text-wrapper"
+          component="h2"
           data-locator="moduleA_header_text_2"
-          fontSize={
-            Array [
-              "fs36",
-              "fs36",
-              "fs52",
-            ]
-          }
-          fontWeight="black"
           headerText={
             Array [
               Object {
@@ -253,13 +250,14 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style11",
-                    "text": "Spring is Every Wear",
+                    "style": "style1",
+                    "text": "ENTER SITE 3",
                   },
                 ],
               },
             ]
           }
+          type="heading"
         />
         <Styled(PromoBanner)
           className="moduleA__promoBanner"
@@ -277,8 +275,16 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style12",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "style7",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "style8",
+                    "text": "50% Off",
+                  },
+                  Object {
+                    "style": "style9",
+                    "text": "All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -308,15 +314,8 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
       >
         <Styled(Styled(LinkText))
           className="link-text-wrapper"
+          component="h2"
           data-locator="moduleA_header_text_3"
-          fontSize={
-            Array [
-              "fs36",
-              "fs36",
-              "fs52",
-            ]
-          }
-          fontWeight="black"
           headerText={
             Array [
               Object {
@@ -333,13 +332,14 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style11",
-                    "text": "Spring is Every Wear",
+                    "style": "style1",
+                    "text": "ENTER SITE 4",
                   },
                 ],
               },
             ]
           }
+          type="heading"
         />
         <Styled(PromoBanner)
           className="moduleA__promoBanner"
@@ -357,8 +357,16 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style12",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "style7",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "style8",
+                    "text": "50% Off",
+                  },
+                  Object {
+                    "style": "style9",
+                    "text": "All Shoes & Select Accessories",
                   },
                 ],
               },

@@ -3,13 +3,15 @@ const imageSlides = [];
 const ctaTypes = ['stackedCTAList', 'linkCTAList', 'scrollCTAList', 'imageCTAList'];
 // eslint-disable-next-line no-plusplus
 for (let i = 1; i <= totalImageSlides; i++) {
+  // eslint-disable-next-line no-unused-vars
   const gymboreeHeaderTextItems = [
     {
       text: 'Spring is Every Wear',
-      style: 'style11',
+      style: 'style1',
     },
   ];
 
+  // eslint-disable-next-line no-unused-vars
   const gymboreePromoTextItems = [
     {
       text: 'The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!',
@@ -29,7 +31,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
   imageSlides.push({
     headerText: [
       {
-        textItems: gymboreeHeaderTextItems,
+        textItems: tcpHeaderTextItems,
         link: {
           url: '/trending',
           text: '',
@@ -49,7 +51,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
           target: '',
           external: 0,
         },
-        textItems: gymboreePromoTextItems,
+        textItems: tcpPromoTextItems,
       },
     ],
     linkedImage: [

@@ -129,8 +129,8 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style11",
-                    "text": "Spring is Every Wear",
+                    "style": "style1",
+                    "text": "ENTER SITE 1",
                   },
                 ],
               },
@@ -165,8 +165,16 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style12",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "style7",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "style8",
+                    "text": "50% Off",
+                  },
+                  Object {
+                    "style": "style9",
+                    "text": "All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -203,8 +211,8 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style11",
-                    "text": "Spring is Every Wear",
+                    "style": "style1",
+                    "text": "ENTER SITE 2",
                   },
                 ],
               },
@@ -239,8 +247,16 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style12",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "style7",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "style8",
+                    "text": "50% Off",
+                  },
+                  Object {
+                    "style": "style9",
+                    "text": "All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -277,8 +293,8 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style11",
-                    "text": "Spring is Every Wear",
+                    "style": "style1",
+                    "text": "ENTER SITE 3",
                   },
                 ],
               },
@@ -313,8 +329,16 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style12",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "style7",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "style8",
+                    "text": "50% Off",
+                  },
+                  Object {
+                    "style": "style9",
+                    "text": "All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -351,8 +375,8 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style11",
-                    "text": "Spring is Every Wear",
+                    "style": "style1",
+                    "text": "ENTER SITE 4",
                   },
                 ],
               },
@@ -387,8 +411,16 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style12",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "style7",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "style8",
+                    "text": "50% Off",
+                  },
+                  Object {
+                    "style": "style9",
+                    "text": "All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -547,8 +579,8 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style11",
-                    "text": "Spring is Every Wear",
+                    "style": "style1",
+                    "text": "ENTER SITE 1",
                   },
                 ],
               },
@@ -583,8 +615,16 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style12",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "style7",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "style8",
+                    "text": "50% Off",
+                  },
+                  Object {
+                    "style": "style9",
+                    "text": "All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -621,8 +661,8 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style11",
-                    "text": "Spring is Every Wear",
+                    "style": "style1",
+                    "text": "ENTER SITE 2",
                   },
                 ],
               },
@@ -657,8 +697,16 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style12",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "style7",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "style8",
+                    "text": "50% Off",
+                  },
+                  Object {
+                    "style": "style9",
+                    "text": "All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -695,8 +743,8 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style11",
-                    "text": "Spring is Every Wear",
+                    "style": "style1",
+                    "text": "ENTER SITE 3",
                   },
                 ],
               },
@@ -731,8 +779,16 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style12",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "style7",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "style8",
+                    "text": "50% Off",
+                  },
+                  Object {
+                    "style": "style9",
+                    "text": "All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -769,8 +825,8 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style11",
-                    "text": "Spring is Every Wear",
+                    "style": "style1",
+                    "text": "ENTER SITE 4",
                   },
                 ],
               },
@@ -805,8 +861,16 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style12",
-                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
+                    "style": "style7",
+                    "text": "60 % OFF",
+                  },
+                  Object {
+                    "style": "style8",
+                    "text": "50% Off",
+                  },
+                  Object {
+                    "style": "style9",
+                    "text": "All Shoes & Select Accessories",
                   },
                 ],
               },
