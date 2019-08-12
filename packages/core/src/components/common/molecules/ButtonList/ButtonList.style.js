@@ -68,7 +68,14 @@ export default css`
     }
     .stacked-button {
       width: 100%;
-      margin-left: 15px;
+      margin-left: 9px;
+      :first-child {
+        margin-left: 0;
+      }
+
+      button {
+        width: 141px;
+      }
     }
     .stacked-cta-wrapper {
       display: flex;
@@ -106,8 +113,8 @@ export default css`
     }
 
     &.stack-comp-wrapper {
-      flex-wrap: nowrap;
-      padding-right: 15px;
+      display: table;
+      margin: 0 auto;
     }
   }
 
@@ -120,6 +127,9 @@ export default css`
     .stacked-button {
       flex-grow: 0;
       width: auto;
+      button {
+        width: 210px;
+      }
     }
     .scroll-button {
       width: auto;

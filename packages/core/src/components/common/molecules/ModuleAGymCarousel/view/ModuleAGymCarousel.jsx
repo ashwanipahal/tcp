@@ -76,7 +76,11 @@ class ModuleAGymCarousel extends React.Component {
 
             return (
               <div className="banner-slide" key={linkedImage.image.alt.replace(/\s/g, '_')}>
-                <DamImage className={`moduleA_image_${i}`} imgData={linkedImage.image} />
+                <DamImage
+                  className={`moduleA_image_${i}`}
+                  imgData={linkedImage.image}
+                  imgConfigs={config.IMG_DATA.crops}
+                />
                 <div className="banner-content">
                   <LinkText
                     fontWeight="black"

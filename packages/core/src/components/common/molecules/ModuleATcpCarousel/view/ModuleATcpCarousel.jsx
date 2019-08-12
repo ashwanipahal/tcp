@@ -48,6 +48,7 @@ const ModuleATcpCarousel = props => {
             <div className="banner-slide">
               <DamImage
                 imgData={linkedImage.image}
+                imgConfigs={config.IMG_DATA.crops}
                 data-locator={`${getLocator('moduleA_image')}${i}`}
               />
               <div className="banner-content">
@@ -73,7 +74,6 @@ const ModuleATcpCarousel = props => {
         <ButtonList
           buttonsData={ctaItems}
           buttonListVariation={ctaType}
-          color="white"
           data-locator={getLocator('moduleA_button_set')}
         />
       </div>

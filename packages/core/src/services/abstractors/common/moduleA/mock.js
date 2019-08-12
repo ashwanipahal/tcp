@@ -58,12 +58,12 @@ for (let i = 1; i <= totalImageSlides; i++) {
       {
         image: {
           url:
-            'https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg',
+            'https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565622619/willian-justen-de-vasconcellos-lrPBS8b4G14-unsplash_mumwzc.jpg',
           alt: `Family Tees Image ${i}`,
           title: 'Family Tees title',
-          crop_d: 'c_crop,g_face:center,q_auto:best,h_474,w_1410',
-          crop_t: 'c_crop,g_face:center,q_auto:best,h_406,w_768',
-          crop_m: 'c_crop,g_face:center,q_auto:best,h_311,w_375',
+          crop_d: '',
+          crop_t: '',
+          crop_m: '',
         },
         link: {
           url: '/image/url',

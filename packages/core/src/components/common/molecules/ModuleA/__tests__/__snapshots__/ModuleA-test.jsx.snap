@@ -139,11 +139,11 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               Object {
                 "image": Object {
                   "alt": "Family Tees Image 1",
-                  "crop_d": "c_crop,g_face:center,q_auto:best,h_474,w_1410",
-                  "crop_m": "c_crop,g_face:center,q_auto:best,h_311,w_375",
-                  "crop_t": "c_crop,g_face:center,q_auto:best,h_406,w_768",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
                   "title": "Family Tees title",
-                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565622619/willian-justen-de-vasconcellos-lrPBS8b4G14-unsplash_mumwzc.jpg",
                 },
                 "link": Object {
                   "external": 0,
@@ -221,11 +221,11 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               Object {
                 "image": Object {
                   "alt": "Family Tees Image 2",
-                  "crop_d": "c_crop,g_face:center,q_auto:best,h_474,w_1410",
-                  "crop_m": "c_crop,g_face:center,q_auto:best,h_311,w_375",
-                  "crop_t": "c_crop,g_face:center,q_auto:best,h_406,w_768",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
                   "title": "Family Tees title",
-                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565622619/willian-justen-de-vasconcellos-lrPBS8b4G14-unsplash_mumwzc.jpg",
                 },
                 "link": Object {
                   "external": 0,
@@ -303,11 +303,11 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               Object {
                 "image": Object {
                   "alt": "Family Tees Image 3",
-                  "crop_d": "c_crop,g_face:center,q_auto:best,h_474,w_1410",
-                  "crop_m": "c_crop,g_face:center,q_auto:best,h_311,w_375",
-                  "crop_t": "c_crop,g_face:center,q_auto:best,h_406,w_768",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
                   "title": "Family Tees title",
-                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565622619/willian-justen-de-vasconcellos-lrPBS8b4G14-unsplash_mumwzc.jpg",
                 },
                 "link": Object {
                   "external": 0,
@@ -385,11 +385,11 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               Object {
                 "image": Object {
                   "alt": "Family Tees Image 4",
-                  "crop_d": "c_crop,g_face:center,q_auto:best,h_474,w_1410",
-                  "crop_m": "c_crop,g_face:center,q_auto:best,h_311,w_375",
-                  "crop_t": "c_crop,g_face:center,q_auto:best,h_406,w_768",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
                   "title": "Family Tees title",
-                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565622619/willian-justen-de-vasconcellos-lrPBS8b4G14-unsplash_mumwzc.jpg",
                 },
                 "link": Object {
                   "external": 0,
@@ -589,11 +589,11 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               Object {
                 "image": Object {
                   "alt": "Family Tees Image 1",
-                  "crop_d": "c_crop,g_face:center,q_auto:best,h_474,w_1410",
-                  "crop_m": "c_crop,g_face:center,q_auto:best,h_311,w_375",
-                  "crop_t": "c_crop,g_face:center,q_auto:best,h_406,w_768",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
                   "title": "Family Tees title",
-                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565622619/willian-justen-de-vasconcellos-lrPBS8b4G14-unsplash_mumwzc.jpg",
                 },
                 "link": Object {
                   "external": 0,
@@ -671,11 +671,11 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               Object {
                 "image": Object {
                   "alt": "Family Tees Image 2",
-                  "crop_d": "c_crop,g_face:center,q_auto:best,h_474,w_1410",
-                  "crop_m": "c_crop,g_face:center,q_auto:best,h_311,w_375",
-                  "crop_t": "c_crop,g_face:center,q_auto:best,h_406,w_768",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
                   "title": "Family Tees title",
-                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565622619/willian-justen-de-vasconcellos-lrPBS8b4G14-unsplash_mumwzc.jpg",
                 },
                 "link": Object {
                   "external": 0,
@@ -753,11 +753,11 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               Object {
                 "image": Object {
                   "alt": "Family Tees Image 3",
-                  "crop_d": "c_crop,g_face:center,q_auto:best,h_474,w_1410",
-                  "crop_m": "c_crop,g_face:center,q_auto:best,h_311,w_375",
-                  "crop_t": "c_crop,g_face:center,q_auto:best,h_406,w_768",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
                   "title": "Family Tees title",
-                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565622619/willian-justen-de-vasconcellos-lrPBS8b4G14-unsplash_mumwzc.jpg",
                 },
                 "link": Object {
                   "external": 0,
@@ -835,11 +835,11 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               Object {
                 "image": Object {
                   "alt": "Family Tees Image 4",
-                  "crop_d": "c_crop,g_face:center,q_auto:best,h_474,w_1410",
-                  "crop_m": "c_crop,g_face:center,q_auto:best,h_311,w_375",
-                  "crop_t": "c_crop,g_face:center,q_auto:best,h_406,w_768",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
                   "title": "Family Tees title",
-                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565622619/willian-justen-de-vasconcellos-lrPBS8b4G14-unsplash_mumwzc.jpg",
                 },
                 "link": Object {
                   "external": 0,

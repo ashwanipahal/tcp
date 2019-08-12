@@ -52,14 +52,21 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
     >
       <WithTheme(DamImage)
         data-locator="moduleA_image_0"
+        imgConfigs={
+          Array [
+            "c_fill,g_face:center,q_auto:best,h_311,w_767",
+            "c_fill,g_face:center,q_auto:best,h_406,w_768",
+            "c_fill,g_face:center,q_auto:best,h_474,w_1410",
+          ]
+        }
         imgData={
           Object {
             "alt": "Family Tees Image 1",
-            "crop_d": "c_crop,g_face:center,q_auto:best,h_474,w_1410",
-            "crop_m": "c_crop,g_face:center,q_auto:best,h_311,w_375",
-            "crop_t": "c_crop,g_face:center,q_auto:best,h_406,w_768",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
             "title": "Family Tees title",
-            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565622619/willian-justen-de-vasconcellos-lrPBS8b4G14-unsplash_mumwzc.jpg",
           }
         }
       />
@@ -134,14 +141,21 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
     >
       <WithTheme(DamImage)
         data-locator="moduleA_image_1"
+        imgConfigs={
+          Array [
+            "c_fill,g_face:center,q_auto:best,h_311,w_767",
+            "c_fill,g_face:center,q_auto:best,h_406,w_768",
+            "c_fill,g_face:center,q_auto:best,h_474,w_1410",
+          ]
+        }
         imgData={
           Object {
             "alt": "Family Tees Image 2",
-            "crop_d": "c_crop,g_face:center,q_auto:best,h_474,w_1410",
-            "crop_m": "c_crop,g_face:center,q_auto:best,h_311,w_375",
-            "crop_t": "c_crop,g_face:center,q_auto:best,h_406,w_768",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
             "title": "Family Tees title",
-            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565622619/willian-justen-de-vasconcellos-lrPBS8b4G14-unsplash_mumwzc.jpg",
           }
         }
       />
@@ -216,14 +230,21 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
     >
       <WithTheme(DamImage)
         data-locator="moduleA_image_2"
+        imgConfigs={
+          Array [
+            "c_fill,g_face:center,q_auto:best,h_311,w_767",
+            "c_fill,g_face:center,q_auto:best,h_406,w_768",
+            "c_fill,g_face:center,q_auto:best,h_474,w_1410",
+          ]
+        }
         imgData={
           Object {
             "alt": "Family Tees Image 3",
-            "crop_d": "c_crop,g_face:center,q_auto:best,h_474,w_1410",
-            "crop_m": "c_crop,g_face:center,q_auto:best,h_311,w_375",
-            "crop_t": "c_crop,g_face:center,q_auto:best,h_406,w_768",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
             "title": "Family Tees title",
-            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565622619/willian-justen-de-vasconcellos-lrPBS8b4G14-unsplash_mumwzc.jpg",
           }
         }
       />
@@ -298,14 +319,21 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
     >
       <WithTheme(DamImage)
         data-locator="moduleA_image_3"
+        imgConfigs={
+          Array [
+            "c_fill,g_face:center,q_auto:best,h_311,w_767",
+            "c_fill,g_face:center,q_auto:best,h_406,w_768",
+            "c_fill,g_face:center,q_auto:best,h_474,w_1410",
+          ]
+        }
         imgData={
           Object {
             "alt": "Family Tees Image 4",
-            "crop_d": "c_crop,g_face:center,q_auto:best,h_474,w_1410",
-            "crop_m": "c_crop,g_face:center,q_auto:best,h_311,w_375",
-            "crop_t": "c_crop,g_face:center,q_auto:best,h_406,w_768",
+            "crop_d": "",
+            "crop_m": "",
+            "crop_t": "",
             "title": "Family Tees title",
-            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+            "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565622619/willian-justen-de-vasconcellos-lrPBS8b4G14-unsplash_mumwzc.jpg",
           }
         }
       />
@@ -470,7 +498,6 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
           },
         ]
       }
-      color="white"
       data-locator="moduleA_button_set_"
     />
   </div>
