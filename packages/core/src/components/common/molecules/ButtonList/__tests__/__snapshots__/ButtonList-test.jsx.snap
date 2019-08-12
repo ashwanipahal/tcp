@@ -237,7 +237,6 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
     <Styled(Button)
       buttonVariation="fixed-width"
       className="stacked-cta-wrapper-class"
-      fill="RED"
     />
   </Styled(Anchor)>
   <Styled(Anchor)
@@ -246,7 +245,6 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
     <Styled(Button)
       buttonVariation="fixed-width"
       className="stacked-cta-wrapper-class"
-      fill="RED"
     />
   </Styled(Anchor)>
   <Styled(Anchor)
@@ -255,7 +253,6 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
     <Styled(Button)
       buttonVariation="fixed-width"
       className="stacked-cta-wrapper-class"
-      fill="RED"
     />
   </Styled(Anchor)>
   <Styled(Anchor)
@@ -264,7 +261,6 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
     <Styled(Button)
       buttonVariation="fixed-width"
       className="stacked-cta-wrapper-class"
-      fill="RED"
     />
   </Styled(Anchor)>
   <Styled(Anchor)
@@ -273,7 +269,6 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
     <Styled(Button)
       buttonVariation="fixed-width"
       className="stacked-cta-wrapper-class"
-      fill="RED"
     />
   </Styled(Anchor)>
 </div>

@@ -4,7 +4,6 @@ export default {
     compProps: {
       className: 'stacked-button',
       buttonVariation: 'fixed-width',
-      fill: 'RED',
     },
   },
   scrollCTAList: {

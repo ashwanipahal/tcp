@@ -60,6 +60,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "900": "#c25621",
         },
         "pink": Object {
+          "400": "#f78cc6",
           "500": "#df4b9a",
         },
         "primary": Object {

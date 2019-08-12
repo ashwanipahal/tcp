@@ -10,6 +10,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
         "autoplay": true,
         "customArrowLeft": "/static/images/right-carousel-carrot.svg",
         "customArrowRight": "/static/images/right-carousel-carrot.svg",
+        "dataLocatorCarousel": "carousel_banner",
         "dataLocatorPause": "moduleA_pause_button",
         "dataLocatorPlay": "moduleA_play_button",
       }
@@ -50,12 +51,13 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
       className="banner-slide"
     >
       <WithTheme(DamImage)
+        data-locator="moduleA_image_0"
         imgData={
           Object {
             "alt": "Family Tees Image 1",
-            "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
-            "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
-            "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+            "crop_d": "c_crop,g_face:center,q_auto:best,h_474,w_1410",
+            "crop_m": "c_crop,g_face:center,q_auto:best,h_311,w_375",
+            "crop_t": "c_crop,g_face:center,q_auto:best,h_406,w_768",
             "title": "Family Tees title",
             "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
           }
@@ -70,7 +72,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
           fontSize={
             Array [
               "fs36",
-              "fs52",
+              "fs36",
               "fs52",
             ]
           }
@@ -91,8 +93,8 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style1",
-                    "text": "ENTER SITE 1",
+                    "style": "style11",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -115,20 +117,8 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style1",
-                    "text": "60%",
-                  },
-                  Object {
-                    "style": "style2",
-                    "text": "off",
-                  },
-                  Object {
-                    "style": "style1",
-                    "text": "50% off",
-                  },
-                  Object {
-                    "style": "style2",
-                    "text": "all shoes and other accessories",
+                    "style": "style12",
+                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
                   },
                 ],
               },
@@ -141,12 +131,13 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
       className="banner-slide"
     >
       <WithTheme(DamImage)
+        data-locator="moduleA_image_1"
         imgData={
           Object {
             "alt": "Family Tees Image 2",
-            "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
-            "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
-            "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+            "crop_d": "c_crop,g_face:center,q_auto:best,h_474,w_1410",
+            "crop_m": "c_crop,g_face:center,q_auto:best,h_311,w_375",
+            "crop_t": "c_crop,g_face:center,q_auto:best,h_406,w_768",
             "title": "Family Tees title",
             "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
           }
@@ -161,7 +152,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
           fontSize={
             Array [
               "fs36",
-              "fs52",
+              "fs36",
               "fs52",
             ]
           }
@@ -182,8 +173,8 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style1",
-                    "text": "ENTER SITE 2",
+                    "style": "style11",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -206,20 +197,8 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style1",
-                    "text": "60%",
-                  },
-                  Object {
-                    "style": "style2",
-                    "text": "off",
-                  },
-                  Object {
-                    "style": "style1",
-                    "text": "50% off",
-                  },
-                  Object {
-                    "style": "style2",
-                    "text": "all shoes and other accessories",
+                    "style": "style12",
+                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
                   },
                 ],
               },
@@ -232,12 +211,13 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
       className="banner-slide"
     >
       <WithTheme(DamImage)
+        data-locator="moduleA_image_2"
         imgData={
           Object {
             "alt": "Family Tees Image 3",
-            "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
-            "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
-            "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+            "crop_d": "c_crop,g_face:center,q_auto:best,h_474,w_1410",
+            "crop_m": "c_crop,g_face:center,q_auto:best,h_311,w_375",
+            "crop_t": "c_crop,g_face:center,q_auto:best,h_406,w_768",
             "title": "Family Tees title",
             "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
           }
@@ -252,7 +232,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
           fontSize={
             Array [
               "fs36",
-              "fs52",
+              "fs36",
               "fs52",
             ]
           }
@@ -273,8 +253,8 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style1",
-                    "text": "ENTER SITE 3",
+                    "style": "style11",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -297,20 +277,8 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style1",
-                    "text": "60%",
-                  },
-                  Object {
-                    "style": "style2",
-                    "text": "off",
-                  },
-                  Object {
-                    "style": "style1",
-                    "text": "50% off",
-                  },
-                  Object {
-                    "style": "style2",
-                    "text": "all shoes and other accessories",
+                    "style": "style12",
+                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
                   },
                 ],
               },
@@ -323,12 +291,13 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
       className="banner-slide"
     >
       <WithTheme(DamImage)
+        data-locator="moduleA_image_3"
         imgData={
           Object {
             "alt": "Family Tees Image 4",
-            "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
-            "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
-            "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+            "crop_d": "c_crop,g_face:center,q_auto:best,h_474,w_1410",
+            "crop_m": "c_crop,g_face:center,q_auto:best,h_311,w_375",
+            "crop_t": "c_crop,g_face:center,q_auto:best,h_406,w_768",
             "title": "Family Tees title",
             "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
           }
@@ -343,7 +312,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
           fontSize={
             Array [
               "fs36",
-              "fs52",
+              "fs36",
               "fs52",
             ]
           }
@@ -364,8 +333,8 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style1",
-                    "text": "ENTER SITE 4",
+                    "style": "style11",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -388,20 +357,8 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style1",
-                    "text": "60%",
-                  },
-                  Object {
-                    "style": "style2",
-                    "text": "off",
-                  },
-                  Object {
-                    "style": "style1",
-                    "text": "50% off",
-                  },
-                  Object {
-                    "style": "style2",
-                    "text": "all shoes and other accessories",
+                    "style": "style12",
+                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
                   },
                 ],
               },
@@ -505,6 +462,8 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
           },
         ]
       }
+      color="white"
+      data-locator="moduleA_button_set_"
     />
   </div>
 </div>

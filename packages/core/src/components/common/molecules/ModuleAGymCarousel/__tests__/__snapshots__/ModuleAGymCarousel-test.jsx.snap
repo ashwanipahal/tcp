@@ -56,9 +56,9 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
         imgData={
           Object {
             "alt": "Family Tees Image 1",
-            "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
-            "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
-            "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+            "crop_d": "c_crop,g_face:center,q_auto:best,h_474,w_1410",
+            "crop_m": "c_crop,g_face:center,q_auto:best,h_311,w_375",
+            "crop_t": "c_crop,g_face:center,q_auto:best,h_406,w_768",
             "title": "Family Tees title",
             "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
           }
@@ -73,8 +73,8 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
           fontSize={
             Array [
               "fs36",
-              "fs52",
-              "fs52",
+              "fs36",
+              "fs64",
             ]
           }
           fontWeight="black"
@@ -94,8 +94,8 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style1",
-                    "text": "ENTER SITE 1",
+                    "style": "style11",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -104,8 +104,15 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
         />
         <Styled(PromoBanner)
           className="moduleA__promoBanner"
+          color="white"
           data-locator="moduleA_promobanner_text_0"
-          fontSize="fs48"
+          fontSize={
+            Array [
+              "fs16",
+              "fs16",
+              "fs28",
+            ]
+          }
           promoBanner={
             Array [
               Object {
@@ -118,20 +125,8 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style1",
-                    "text": "60%",
-                  },
-                  Object {
-                    "style": "style2",
-                    "text": "off",
-                  },
-                  Object {
-                    "style": "style1",
-                    "text": "50% off",
-                  },
-                  Object {
-                    "style": "style2",
-                    "text": "all shoes and other accessories",
+                    "style": "style12",
+                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
                   },
                 ],
               },
@@ -175,9 +170,9 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
         imgData={
           Object {
             "alt": "Family Tees Image 2",
-            "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
-            "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
-            "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+            "crop_d": "c_crop,g_face:center,q_auto:best,h_474,w_1410",
+            "crop_m": "c_crop,g_face:center,q_auto:best,h_311,w_375",
+            "crop_t": "c_crop,g_face:center,q_auto:best,h_406,w_768",
             "title": "Family Tees title",
             "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
           }
@@ -192,8 +187,8 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
           fontSize={
             Array [
               "fs36",
-              "fs52",
-              "fs52",
+              "fs36",
+              "fs64",
             ]
           }
           fontWeight="black"
@@ -213,8 +208,8 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style1",
-                    "text": "ENTER SITE 2",
+                    "style": "style11",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -223,8 +218,15 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
         />
         <Styled(PromoBanner)
           className="moduleA__promoBanner"
+          color="white"
           data-locator="moduleA_promobanner_text_1"
-          fontSize="fs48"
+          fontSize={
+            Array [
+              "fs16",
+              "fs16",
+              "fs28",
+            ]
+          }
           promoBanner={
             Array [
               Object {
@@ -237,20 +239,8 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style1",
-                    "text": "60%",
-                  },
-                  Object {
-                    "style": "style2",
-                    "text": "off",
-                  },
-                  Object {
-                    "style": "style1",
-                    "text": "50% off",
-                  },
-                  Object {
-                    "style": "style2",
-                    "text": "all shoes and other accessories",
+                    "style": "style12",
+                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
                   },
                 ],
               },
@@ -294,9 +284,9 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
         imgData={
           Object {
             "alt": "Family Tees Image 3",
-            "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
-            "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
-            "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+            "crop_d": "c_crop,g_face:center,q_auto:best,h_474,w_1410",
+            "crop_m": "c_crop,g_face:center,q_auto:best,h_311,w_375",
+            "crop_t": "c_crop,g_face:center,q_auto:best,h_406,w_768",
             "title": "Family Tees title",
             "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
           }
@@ -311,8 +301,8 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
           fontSize={
             Array [
               "fs36",
-              "fs52",
-              "fs52",
+              "fs36",
+              "fs64",
             ]
           }
           fontWeight="black"
@@ -332,8 +322,8 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style1",
-                    "text": "ENTER SITE 3",
+                    "style": "style11",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -342,8 +332,15 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
         />
         <Styled(PromoBanner)
           className="moduleA__promoBanner"
+          color="white"
           data-locator="moduleA_promobanner_text_2"
-          fontSize="fs48"
+          fontSize={
+            Array [
+              "fs16",
+              "fs16",
+              "fs28",
+            ]
+          }
           promoBanner={
             Array [
               Object {
@@ -356,20 +353,8 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style1",
-                    "text": "60%",
-                  },
-                  Object {
-                    "style": "style2",
-                    "text": "off",
-                  },
-                  Object {
-                    "style": "style1",
-                    "text": "50% off",
-                  },
-                  Object {
-                    "style": "style2",
-                    "text": "all shoes and other accessories",
+                    "style": "style12",
+                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
                   },
                 ],
               },
@@ -413,9 +398,9 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
         imgData={
           Object {
             "alt": "Family Tees Image 4",
-            "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
-            "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
-            "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+            "crop_d": "c_crop,g_face:center,q_auto:best,h_474,w_1410",
+            "crop_m": "c_crop,g_face:center,q_auto:best,h_311,w_375",
+            "crop_t": "c_crop,g_face:center,q_auto:best,h_406,w_768",
             "title": "Family Tees title",
             "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
           }
@@ -430,8 +415,8 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
           fontSize={
             Array [
               "fs36",
-              "fs52",
-              "fs52",
+              "fs36",
+              "fs64",
             ]
           }
           fontWeight="black"
@@ -451,8 +436,8 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style1",
-                    "text": "ENTER SITE 4",
+                    "style": "style11",
+                    "text": "Spring is Every Wear",
                   },
                 ],
               },
@@ -461,8 +446,15 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
         />
         <Styled(PromoBanner)
           className="moduleA__promoBanner"
+          color="white"
           data-locator="moduleA_promobanner_text_3"
-          fontSize="fs48"
+          fontSize={
+            Array [
+              "fs16",
+              "fs16",
+              "fs28",
+            ]
+          }
           promoBanner={
             Array [
               Object {
@@ -475,20 +467,8 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
                 },
                 "textItems": Array [
                   Object {
-                    "style": "style1",
-                    "text": "60%",
-                  },
-                  Object {
-                    "style": "style2",
-                    "text": "off",
-                  },
-                  Object {
-                    "style": "style1",
-                    "text": "50% off",
-                  },
-                  Object {
-                    "style": "style2",
-                    "text": "all shoes and other accessories",
+                    "style": "style12",
+                    "text": "The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!",
                   },
                 ],
               },

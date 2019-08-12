@@ -47,7 +47,8 @@ export default {
   moduleA_play_button: 'moduleA_play_button',
   moduleA_pause_button: 'moduleA_pause_button',
   moduleA_ribbon_promobanner_text: 'moduleA_ribbon_promobanner_text_',
-
+  moduleA_cta_links: 'moduleA_cta_links_',
+  carousel_banner: 'carousel_banner',
   // Module L
   moduleL_header_text: 'moduleL_header_text',
   moduleL_title: 'moduleL_title_',

@@ -12,18 +12,16 @@ const StyledLinkText = styled(LinkText)`
 
 const StyledCarousel = styled(Carousel)`
   .slick-arrow {
-    top: 44%;
+    background-size: 100% 100%;
+    height: 42px;
+    width: 13px;
+    z-index: 1;
   }
   .slick-next {
-    height: 52px;
-    right: 30px;
-    width: 15px;
+    right: 36px;
   }
   .slick-prev {
-    height: 52px;
-    left: 30px;
-    width: 15px;
-    z-index: 1;
+    left: 36px;
   }
   .slick-dots {
     bottom: 26px;
@@ -55,13 +53,17 @@ const style = css`
   }
 
   .tcp_carousel_wrapper .slick-list {
-    min-height: 350px;
+    min-height: 311px;
   }
 
   .button-list-container.stackedCTAList,
   .button-list-container.scrollCTAList {
-    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    margin-top: -2px;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+    }
   }
 
   .tcp_carousel_wrapper .tcp_carousel__play {
@@ -78,7 +80,7 @@ const style = css`
 
   @media ${props => props.theme.mediaQuery.large} {
     .tcp_carousel_wrapper .tcp_carousel__play {
-      left: 47%;
+      left: ${props => (props.largeCompImageCarousel.length > 4 ? '46%' : '47%')};
     }
   }
 `;

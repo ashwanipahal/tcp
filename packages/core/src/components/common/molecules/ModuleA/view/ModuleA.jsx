@@ -27,7 +27,7 @@ const ModuleA = props => {
   const ctaType = ctaTypes[set.val];
 
   return (
-    <Row className={className}>
+    <Row className={`${className} moduleA`} fullBleed={{ small: true, medium: true, large: false }}>
       <Col
         colSize={{
           small: 6,
@@ -47,7 +47,7 @@ const ModuleA = props => {
 
 ModuleA.defaultProps = {
   className: '',
-  variant: 'gymb',
+  variant: 'tcp',
   set: [],
 };
 

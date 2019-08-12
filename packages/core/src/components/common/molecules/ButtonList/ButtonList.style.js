@@ -58,6 +58,10 @@ export default css`
     flex-wrap: nowrap;
   }
 
+  .stacked-cta-wrapper-class {
+    font-size: 13px;
+  }
+
   @media ${props => props.theme.mediaQuery.medium} {
     > div:first-child {
       margin: 0 auto;
@@ -124,6 +128,9 @@ export default css`
     &.stack-comp-wrapper,
     &.scroll-comp-wrapper {
       justify-content: center;
+    }
+    .stacked-cta-wrapper-class {
+      font-size: 14px;
     }
   }
 

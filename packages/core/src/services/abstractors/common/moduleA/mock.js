@@ -1,7 +1,6 @@
 const totalImageSlides = 4;
 const imageSlides = [];
 const ctaTypes = ['stackedCTAList', 'linkCTAList', 'scrollCTAList', 'imageCTAList'];
-
 // eslint-disable-next-line no-plusplus
 for (let i = 1; i <= totalImageSlides; i++) {
   const gymboreeHeaderTextItems = [
@@ -18,8 +17,9 @@ for (let i = 1; i <= totalImageSlides; i++) {
     },
   ];
 
+  // eslint-disable-next-line no-unused-vars
   const tcpHeaderTextItems = [{ text: `ENTER SITE ${i}`, style: 'style1' }];
-
+  // eslint-disable-next-line no-unused-vars
   const tcpPromoTextItems = [
     { text: '60 % OFF', style: 'style7' },
     { text: '50% Off', style: 'style8' },
@@ -59,9 +59,9 @@ for (let i = 1; i <= totalImageSlides; i++) {
             'https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg',
           alt: `Family Tees Image ${i}`,
           title: 'Family Tees title',
-          crop_d: 'c_crop,g_face:center,q_auto:best,w_1410',
-          crop_t: 'c_crop,g_face:center,q_auto:best,w_768',
-          crop_m: 'c_crop,g_face:center,q_auto:best,w_375,h_311',
+          crop_d: 'c_crop,g_face:center,q_auto:best,h_474,w_1410',
+          crop_t: 'c_crop,g_face:center,q_auto:best,h_406,w_768',
+          crop_m: 'c_crop,g_face:center,q_auto:best,h_311,w_375',
         },
         link: {
           url: '/image/url',
@@ -183,7 +183,7 @@ export default {
     set: [
       {
         key: 'ctaType',
-        val: ctaTypes[1],
+        val: ctaTypes[0],
       },
     ],
   },
