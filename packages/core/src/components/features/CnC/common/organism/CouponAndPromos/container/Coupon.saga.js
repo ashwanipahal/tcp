@@ -1,15 +1,16 @@
-import { call, takeLatest, put } from 'redux-saga/effects';
+import { call, takeLatest, put, delay } from 'redux-saga/effects';
 import COUPON_CONSTANTS from '../Coupon.constants';
 import { hideLoader, showLoader, setStatus, setError, setCouponList } from './Coupon.actions';
 import BagPageAction from '../../../../BagPage/container/BagPage.actions';
 import {
   applyCouponToCart,
   removeCouponOrPromo,
+  getAllCoupons as getAllCouponsAbstractor,
 } from '../../../../../../../services/abstractors/CnC';
-import { COUPON_STATUS } from '../../../../../../../services/abstractors/CnC/CartItemTile';
-import { getAllCoupons as getAllCouponsAbstractor } from '../../../../../../../services/abstractors/CnC/Coupon';
-
-const delay = ms => new Promise(res => setTimeout(res, ms));
+import {
+  COUPON_STATUS,
+  BUTTON_LABEL_STATUS,
+} from '../../../../../../../services/abstractors/CnC/CartItemTile';
 
 export function* applyCoupon({ payload }) {
   const {
@@ -19,31 +20,30 @@ export function* applyCoupon({ payload }) {
     coupon,
   } = payload;
   if (coupon) {
-    const oldStatus = coupon && coupon.status;
+    const oldStatus =
+      coupon.status === COUPON_STATUS.AVAILABLE ? BUTTON_LABEL_STATUS.APPLY : coupon.status;
     try {
       yield put(showLoader());
       yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.APPLYING }));
       yield call(applyCouponToCart, formData);
+      yield put(hideLoader());
       yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.APPLIED }));
       yield put(BagPageAction.getCartData());
-      yield put(hideLoader());
       resolve();
     } catch (e) {
+      yield put(setStatus({ promoCode: coupon.id, status: oldStatus }));
+      yield put(hideLoader());
       if (source !== 'form') {
         // eslint-disable-next-line
         yield put(setError({ msg: e.errors._error.msg, couponCode: formData.couponCode }));
-        yield delay(3000);
-        yield put(setError({ msg: null, couponCode: formData.couponCode }));
       }
-      yield put(setStatus({ promoCode: coupon.id, status: oldStatus }));
-      yield put(hideLoader());
     }
   } else {
     try {
       yield put(showLoader());
       yield call(applyCouponToCart, formData);
-      yield put(BagPageAction.getCartData());
       yield put(hideLoader());
+      yield put(BagPageAction.getCartData());
       resolve();
     } catch (e) {
       yield put(hideLoader());
@@ -58,7 +58,8 @@ export function* removeCoupon({ payload }) {
     formPromise: { resolve, reject },
   } = payload;
   const formData = { couponCode: coupon.id };
-  const oldStatus = coupon && coupon.status;
+  const oldStatus =
+    coupon.status === COUPON_STATUS.APPLIED ? BUTTON_LABEL_STATUS.REMOVE : coupon.status;
   try {
     yield put(showLoader());
     yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.REMOVING }));
@@ -68,12 +69,12 @@ export function* removeCoupon({ payload }) {
     yield put(hideLoader());
     resolve();
   } catch (e) {
-    // eslint-disable-next-line
-    yield put(setError({ msg: e.errors._error.msg, couponCode: formData.couponCode }));
-    yield delay(3000);
-    yield put(setError({ msg: null, couponCode: formData.couponCode }));
     yield put(hideLoader());
     yield put(setStatus({ promoCode: coupon.id, status: oldStatus }));
+    // eslint-disable-next-line
+    yield put(setError({ msg: e.errors._error.msg, couponCode: formData.couponCode }));
+    yield delay(5000);
+    yield put(setError({ msg: null, couponCode: formData.couponCode }));
     reject(e);
   }
 }
@@ -81,7 +82,7 @@ export function* removeCoupon({ payload }) {
 export function* getAllCoupons() {
   try {
     const coupons = yield call(getAllCouponsAbstractor);
-    yield put(setCouponList(coupons))
+    yield put(setCouponList(coupons));
   } catch (e) {
     console.log('error :', e);
   }

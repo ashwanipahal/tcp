@@ -8,7 +8,7 @@ import Anchor from '../../../../../../common/atoms/Anchor';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 
 const AccountDrawerHeading = props => {
-  const { className, labels, userName } = props;
+  const { className, labels, userName, closedOverlay } = props;
   return (
     <div className={`${className} elem-pl-MED elem-pr-MED elem-pt-LRG elem-pb-LRG`}>
       <span>
@@ -19,12 +19,20 @@ const AccountDrawerHeading = props => {
           </BodyCopy>
         </span>
       </span>
-      <span className="viewAccAnchor">
+      <span
+        role="link"
+        tabIndex={-1}
+        className="viewAccAnchor"
+        onClick={closedOverlay}
+        onKeyPress={closedOverlay}
+      >
         <Anchor
           fontSizeVariation="medium"
           anchorVariation="primary"
           text={labels.lbl_acc_drawer_view_my_acc}
           underline
+          to="/account?id=account-overview"
+          asPath="/account"
         />
       </span>
     </div>
@@ -35,6 +43,7 @@ AccountDrawerHeading.propTypes = {
   className: PropTypes.string,
   labels: PropTypes.shape({}),
   userName: PropTypes.string,
+  closedOverlay: PropTypes.func.isRequired,
 };
 
 AccountDrawerHeading.defaultProps = {

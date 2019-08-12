@@ -25,7 +25,9 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
             fontSize="fs18"
             fontWeight="black"
             color="gray.900"
-            text={`${labels.lbl_common_currency}${totalRewards || 0}`}
+            text={`${labels.lbl_common_currency ? labels.lbl_common_currency : ''}${Math.round(
+              totalRewards || 0
+            )}`}
           />
           <TextWrapper>
             <BodyCopy
@@ -45,7 +47,7 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
             fontSize="fs18"
             fontWeight="black"
             color="gray.900"
-            text={currentPoints || 0}
+            text={Math.round(currentPoints || 0)}
           />
           <TextWrapper>
             <BodyCopy
@@ -65,7 +67,7 @@ export class RewardsPointsTable extends React.PureComponent<Props> {
             fontSize="fs18"
             fontWeight="black"
             color="gray.900"
-            text={pointsToNextReward || 100}
+            text={Math.round(pointsToNextReward || 100)}
           />
           <TextWrapper>
             <BodyCopy
@@ -94,7 +96,12 @@ RewardsPointsTable.defaultProps = {
   pointsToNextReward: 100,
   currentPoints: 0,
   totalRewards: 0,
-  labels: {},
+  labels: {
+    lbl_common_currency: '',
+    lbl_common_heading: '',
+    lbl_common_current_points: '',
+    lbl_common_next_reward_points: '',
+  },
 };
 
 export default RewardsPointsTable;

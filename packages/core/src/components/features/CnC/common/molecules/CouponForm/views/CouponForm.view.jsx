@@ -8,27 +8,43 @@ import style from '../styles/CouponForm.style';
 import ErrorMessage from '../../ErrorMessage';
 
 class CouponForm extends React.PureComponent {
+  state = { touched: false };
+
   renderTextBox = ({ input, ...otherParams }) => {
     // eslint-disable-next-line
     input = { ...input, value: input.value.toUpperCase() };
     return <TextBox input={input} {...otherParams} />;
   };
 
+  toggleTouched = () => {
+    const { touched } = this.state;
+    this.setState({ touched: !touched });
+  };
+
+  handleSubmit = e => {
+    const { handleSubmit } = this.props;
+    const { touched } = this.state;
+
+    if (touched) {
+      this.toggleTouched();
+    }
+    return handleSubmit(e);
+  };
+
   render() {
     const {
       labels,
-      pristine,
-      submitting,
       dataLocators,
       fieldName,
       className,
-      handleSubmit,
       error,
+      isFetching,
+      onNeedHelpTextClick,
     } = this.props;
-
+    const { touched } = this.state;
     return (
       <div className={className}>
-        <ErrorMessage error={error && error.msg} />
+        {!touched && <ErrorMessage error={error && error.msg} />}
         <div className="coupon_form_container">
           <Heading
             fontFamily="primaryFontFamily"
@@ -43,22 +59,24 @@ class CouponForm extends React.PureComponent {
               className="coupon_need_help_link"
               component="span"
               fontWeight="semibold"
+              onClick={onNeedHelpTextClick}
             >
               {labels.couponNeedHelpText}
             </BodyCopy>
           </Heading>
-          <form onSubmit={handleSubmit} className="coupon_submit_form">
+          <form onSubmit={this.handleSubmit} className="coupon_submit_form">
             <Field
               placeholder={labels.placeholderText}
               name={fieldName}
               id={fieldName}
               type="text"
+              onChange={!touched && this.toggleTouched}
               component={this.renderTextBox}
               dataLocator={dataLocators.inputField}
               className="coupon_code_input"
             />
             <Button
-              disabled={pristine || submitting}
+              disabled={isFetching}
               buttonVariation="fixed-width"
               type="submit"
               data-locator={dataLocators.submitButton}
@@ -87,27 +105,26 @@ CouponForm.propTypes = {
   handleSubmit: PropTypes.func,
   fieldName: PropTypes.string,
   className: PropTypes.string.isRequired,
-  pristine: false,
-  submitting: false,
   error: PropTypes.string,
+  onNeedHelpTextClick: PropTypes.func,
+  isFetching: PropTypes.isRequired,
 };
 
 CouponForm.defaultProps = {
   labels: {
     placeholderText: 'Enter Coupon Code',
     submitButtonLabel: 'Apply',
-    couponCodeHeader: 'Coupon Code',
+    couponCodeHeader: 'COUPON CODE',
     couponNeedHelpText: 'Need Help?',
   },
   dataLocators: {
     submitButton: 'coupon_submit_btn',
     inputField: 'coupon_code',
   },
-  pristine: false,
-  submitting: false,
   error: '',
   fieldName: 'couponCode',
   handleSubmit: () => {},
+  onNeedHelpTextClick: () => {},
 };
 
 export default reduxForm({

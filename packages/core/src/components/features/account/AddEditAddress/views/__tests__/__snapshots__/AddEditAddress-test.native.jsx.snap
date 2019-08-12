@@ -68,6 +68,7 @@ exports[`AddEditAddress Native should render correctly 1`] = `
       <Styled(BodyCopy)
         fontSize="fs16"
         fontWeight="extrabold"
+        locator=""
         text="Add New Shipping Address"
       />
     </Styled(Text)>

@@ -73,10 +73,11 @@ exports[`MyRewards should render correctly 1`] = `
           </Styled(Col)>
         </Styled(Row)>
         <Styled(Row)
-          className="elem-mb-MED"
+          className="elem-mb-MED reward-points"
           fullBleed={true}
         >
           <Styled(Col)
+            className="reward-points-section"
             colSize={
               Object {
                 "large": 10,
@@ -139,7 +140,7 @@ exports[`MyRewards should render correctly 1`] = `
               }
             }
           >
-            <withRouter(Connect(PointsHistoryContainer)) />
+            <Connect(PointsHistoryContainer) />
           </Styled(Col)>
         </Styled(Row)>
       </Styled(Col)>

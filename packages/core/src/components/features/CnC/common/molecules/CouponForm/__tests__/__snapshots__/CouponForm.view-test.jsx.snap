@@ -26,6 +26,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        onClick={[Function]}
         textAlign="left"
       />
     </Styled(Heading)>
@@ -39,6 +40,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         dataLocator="coupon_code"
         id="coupon_code"
         name="coupon_code"
+        onChange={[Function]}
         placeholder="Enter Coupon Code"
         type="text"
       />
@@ -46,7 +48,6 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         buttonVariation="fixed-width"
         className="coupon_submit_button"
         data-locator="coupon_submit_btn"
-        disabled={false}
         type="submit"
       >
         Apply
@@ -82,6 +83,7 @@ exports[`CouponForm Component CouponForm should render with error correctly 1`] 
         fontWeight="semibold"
         letterSpacing="normal"
         lineHeight="normal"
+        onClick={[Function]}
         textAlign="left"
       />
     </Styled(Heading)>
@@ -95,6 +97,7 @@ exports[`CouponForm Component CouponForm should render with error correctly 1`] 
         dataLocator="coupon_code"
         id="coupon_code"
         name="coupon_code"
+        onChange={[Function]}
         placeholder="Enter Coupon Code"
         type="text"
       />
@@ -102,7 +105,6 @@ exports[`CouponForm Component CouponForm should render with error correctly 1`] 
         buttonVariation="fixed-width"
         className="coupon_submit_button"
         data-locator="coupon_submit_btn"
-        disabled={false}
         type="submit"
       >
         Apply

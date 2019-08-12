@@ -15,7 +15,6 @@ export default css`
     font-weight: ${props => props.theme.typography.fontWeights.black};
   }
   .moduleL__tile {
-    background-color: ${props => props.theme.colorPalette.gray['300']};
     display: flex;
     flex-direction: row;
     margin-bottom: 18px;
@@ -24,6 +23,9 @@ export default css`
     @media ${props => props.theme.mediaQuery.medium} {
       margin-bottom: 30px;
     }
+  }
+  .moduleL__color-gray {
+    background-color: ${props => props.theme.colorPalette.gray['300']};
   }
   .moduleL__tile-image {
     max-width: 210px;

@@ -14,11 +14,12 @@ const RewardsPointsSlider = ({
   currentPoints,
   totalRewards,
   labels,
+  plccUser,
 }) => {
   return (
     <div className={className}>
       <Row>
-        <Col colSize={{ large: 5, medium: 3, small: 2 }}>
+        <Col colSize={{ large: 5, medium: 3, small: 2 }} className="current-points">
           <BodyCopy fontFamily="secondary" fontSize="fs14">
             {`${labels.lbl_common_current_points}: `}
             <BodyCopy component="span" fontWeight="black" fontFamily="secondary" fontSize="fs14">
@@ -26,7 +27,7 @@ const RewardsPointsSlider = ({
             </BodyCopy>
           </BodyCopy>
         </Col>
-        <Col colSize={{ large: 7, medium: 5, small: 4 }}>
+        <Col colSize={{ large: 7, medium: 5, small: 4 }} className="my-rewards">
           <BodyCopy component="p" fontFamily="secondary" fontSize="fs14">
             {`${labels.lbl_common_heading}: `}
             <BodyCopy component="span" fontWeight="black" fontFamily="secondary" fontSize="fs14">
@@ -38,8 +39,17 @@ const RewardsPointsSlider = ({
       </Row>
       <Row>
         <Col colSize={{ large: 12, medium: 8, small: 6 }}>
-          <div className="progress-container elem-mt-MED elem-mt-MED elem-mb-SM">
-            <div className="progressbar-rewards" style={{ width: `${currentPoints}%` }} />
+          <div
+            className={`progress-container${
+              plccUser ? '_plcc' : ''
+            } elem-mt-MED elem-mt-MED elem-mb-SM`}
+          >
+            <div
+              className={`progressbar-rewards currentpoint-slider ${
+                plccUser ? 'progressbar-rewards_plcc' : 'progressbar-rewards'
+              } `}
+              style={{ width: `${currentPoints}%` }}
+            />
           </div>
         </Col>
       </Row>
@@ -62,6 +72,7 @@ RewardsPointsSlider.propTypes = {
   pointsToNextReward: PropTypes.number,
   currentPoints: PropTypes.number,
   totalRewards: PropTypes.number,
+  plccUser: PropTypes.bool,
   labels: PropTypes.shape({
     lbl_common_current_points: PropTypes.string,
     lbl_common_heading: PropTypes.string,
@@ -75,6 +86,7 @@ RewardsPointsSlider.defaultProps = {
   pointsToNextReward: '',
   currentPoints: '',
   totalRewards: '',
+  plccUser: false,
   labels: {
     lbl_common_current_points: '',
     lbl_common_heading: '',

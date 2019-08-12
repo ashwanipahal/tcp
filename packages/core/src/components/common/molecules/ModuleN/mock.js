@@ -27,7 +27,7 @@ export default {
       promoBanner: [
         {
           link: {
-            url: '/c/',
+            url: '/p/',
             text: '',
             title: '',
             target: '',
@@ -116,7 +116,7 @@ export default {
       },
       stackedCTAButtons: [
         {
-          url: '/c/',
+          url: 'https://www.google.com/',
           title: 'girl',
           text: 'girl',
           target: '',
@@ -137,7 +137,7 @@ export default {
           external: 0,
         },
         {
-          url: '/c/',
+          url: 'https://www.google.com/',
           title: 'toddler boy',
           text: 'toddler boy',
           target: '',
