@@ -16,6 +16,7 @@ exports[`HomePageView should render correctly 1`] = `
     customStyle={Object {}}
     disableButton={false}
     fullWidth={true}
+    locator={[Function]}
     onPress={[Function]}
     text="PLP Page"
     url=""

@@ -22,7 +22,6 @@ const buildQuery = ({ slot, contentId }) => `
           text
           title
           target
-          external
         }
       }
       promoBanner {
@@ -31,7 +30,6 @@ const buildQuery = ({ slot, contentId }) => `
           text
           title
           target
-          external
         }
         image {
           url
@@ -60,7 +58,6 @@ const buildQuery = ({ slot, contentId }) => `
           text
           title
           target
-          external
         }
       }
     }

@@ -59,6 +59,7 @@ exports[`Textbox component render enableSuccessCheck on validation fail 1`] = `
           color="error"
           fontSize="fs12"
           fontWeight="semibold"
+          locator=""
           mobilefontFamily={
             Array [
               "secondary",

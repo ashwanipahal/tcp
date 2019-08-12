@@ -1,10 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PromoTextBanner native component ModuleN should render correctly 1`] = `
-<TouchableOpacity
-  accessibilityRole="link"
-  activeOpacity={0.2}
-  onPress={[Function]}
+<Styled(Anchor)
+  anchorVariation=""
+  customStyle={Object {}}
+  locator=""
+  text=""
+  url="http://example.com235"
+  visible={false}
 >
   <style1
     text="alL DINOS"
@@ -12,7 +15,7 @@ exports[`PromoTextBanner native component ModuleN should render correctly 1`] = 
   <style2
     text=" 50% OFF"
   />
-</TouchableOpacity>
+</Styled(Anchor)>
 `;
 
 exports[`PromoTextBanner native component renders all style correctly 1`] = `
@@ -25,6 +28,7 @@ exports[`PromoTextBanner native component renders all style correctly 1`] = `
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "_foldedDefaultProps": Object {
+        "locator": "",
         "text": "",
       },
       "attrs": Array [],
@@ -58,6 +62,7 @@ exports[`PromoTextBanner native component renders all style correctly 1`] = `
     }
   }
   forwardedRef={null}
+  locator=""
   text=""
 />
 `;
@@ -71,6 +76,7 @@ exports[`PromoTextBanner native component renders all style correctly 2`] = `
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "_foldedDefaultProps": Object {
+        "locator": "",
         "text": "",
       },
       "attrs": Array [],
@@ -105,6 +111,7 @@ exports[`PromoTextBanner native component renders all style correctly 2`] = `
   }
   forwardedRef={null}
   lineHeight="42px"
+  locator=""
   text=""
   textAlign="center"
 />
@@ -120,6 +127,7 @@ exports[`PromoTextBanner native component renders all style correctly 3`] = `
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "_foldedDefaultProps": Object {
+        "locator": "",
         "text": "",
       },
       "attrs": Array [],
@@ -154,6 +162,7 @@ exports[`PromoTextBanner native component renders all style correctly 3`] = `
   }
   forwardedRef={null}
   lineHeight="64px"
+  locator=""
   text=""
   textAlign="center"
 />
@@ -168,6 +177,7 @@ exports[`PromoTextBanner native component renders all style correctly 4`] = `
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "_foldedDefaultProps": Object {
+        "locator": "",
         "text": "",
       },
       "attrs": Array [],
@@ -201,6 +211,7 @@ exports[`PromoTextBanner native component renders all style correctly 4`] = `
     }
   }
   forwardedRef={null}
+  locator=""
   text=""
   textAlign="center"
 />
@@ -216,6 +227,7 @@ exports[`PromoTextBanner native component renders all style correctly 5`] = `
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "_foldedDefaultProps": Object {
+        "locator": "",
         "text": "",
       },
       "attrs": Array [],
@@ -250,6 +262,7 @@ exports[`PromoTextBanner native component renders all style correctly 5`] = `
   }
   forwardedRef={null}
   lineHeight="64px"
+  locator=""
   text=""
   textAlign="center"
 />
@@ -263,6 +276,7 @@ exports[`PromoTextBanner native component renders all style correctly 6`] = `
     fontSize="fs64"
     fontWeight="black"
     lineHeight="64px"
+    locator=""
     style={
       Object {
         "height": 58,
@@ -279,6 +293,7 @@ exports[`PromoTextBanner native component renders all style correctly 6`] = `
       fontSize="fs42"
       fontWeight="black"
       lineHeight="42px"
+      locator=""
       style={
         Object {
           "height": 33,
@@ -292,6 +307,7 @@ exports[`PromoTextBanner native component renders all style correctly 6`] = `
       fontSize="fs20"
       fontWeight="black"
       lineHeight="20px"
+      locator=""
       text=""
       textAlign="center"
     />
@@ -300,10 +316,13 @@ exports[`PromoTextBanner native component renders all style correctly 6`] = `
 `;
 
 exports[`PromoTextBanner native component renders correctly 1`] = `
-<TouchableOpacity
-  accessibilityRole="link"
-  activeOpacity={0.2}
-  onPress={[Function]}
+<Styled(Anchor)
+  anchorVariation=""
+  customStyle={Object {}}
+  locator=""
+  text=""
+  url="http://example.com235"
+  visible={false}
 >
   <style1
     dataLocator="moduleK_text_"
@@ -313,5 +332,5 @@ exports[`PromoTextBanner native component renders correctly 1`] = `
     dataLocator="moduleK_text_"
     text=" 50% OFF"
   />
-</TouchableOpacity>
+</Styled(Anchor)>
 `;
