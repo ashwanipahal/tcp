@@ -89,6 +89,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "userTheme": Object {
           "mpr": "#f7971f",
           "mprLight": "#fdead2",
+          "mprPrimary": "#fbd5a5",
           "plcc": "#254f6e",
           "plccLight": "#dbebf8",
         },
