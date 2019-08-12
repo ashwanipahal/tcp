@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CartItemTile from '@tcp/core/src/components/features/CnC/CartItemTile/molecules/CartItemTile/views/CartItemTile.view';
+//import CartItemTile from '@tcp/core/src/components/features/CnC/CartItemTile/molecules/CartItemTile/views/CartItemTile.view';
 import {
   getProductName,
   getProductDetails,
@@ -10,26 +10,7 @@ import productTileCss from '../styles/ProductTileWrapper.style';
 
 const ProductTileWrapper = props => {
   const { orderItems, bagLabels, labels, pageView, isUserLoggedIn } = props;
-  if (orderItems && orderItems.size > 0) {
-    return (
-      <div className="miniBagWrapper">
-        {orderItems.map(tile => {
-          const productDetail = getProductDetails(tile);
 
-          return (
-            <CartItemTile
-              inheritedStyles={pageView === 'myBag' && productTileCss}
-              labels={labels}
-              productDetail={productDetail}
-              key={`${getProductName(tile)}`}
-              pageView={pageView}
-            />
-          );
-        })}
-      </div>
-    );
-  }
-  console.log('see');
   return <EmptyBag bagLabels={bagLabels} isUserLoggedIn={isUserLoggedIn} />;
 };
 
