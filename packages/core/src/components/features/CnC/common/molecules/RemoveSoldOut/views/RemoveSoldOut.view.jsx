@@ -22,7 +22,7 @@ class RemoveSoldOut extends React.PureComponent {
               data-locator="miniBag-removeItems"
               className="removeAnchor"
             >
-              {`remove`}
+              {` remove `}
             </Anchor>
             the sold out items from your bag before you check out.
             {errorMsg}

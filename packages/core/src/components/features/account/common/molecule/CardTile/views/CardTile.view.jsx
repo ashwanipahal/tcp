@@ -109,10 +109,10 @@ class CardTile extends React.Component<Props> {
     return (
       <React.Fragment>
         <BodyCopy
-          tag="span"
+          component="span"
           fontSize="fs14"
           fontFamily="secondary"
-          fontWeight="black"
+          fontWeight="bold"
           className="cardTile__number"
           lineHeights="lh107"
           data-locator={`payment-${dataLocatorPrefix}endingtext`}

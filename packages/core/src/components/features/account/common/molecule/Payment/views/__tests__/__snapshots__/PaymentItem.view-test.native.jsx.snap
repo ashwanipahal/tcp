@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PaymentItem component should render correctly 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      color="gray.900"
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="regular"
+      text="Default Credit Card"
+    />
+    <Styled(BodyCopy)
+      color="gray.900"
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="regular"
+      text="You have not added a credit card yet."
+    />
+  </Styled(View)>
+  <Styled(TouchableHighlight)
+    onPress={[Function]}
+    textDecorationLine="underline"
+  >
+    <Styled(BodyCopy)
+      color="gray.900"
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="regular"
+      text="Add"
+    />
+  </Styled(TouchableHighlight)>
+</Styled(View)>
+`;
+
+exports[`PaymentItem component should render correctly with values 1`] = `
+<Styled(View)>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      color="gray.900"
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="regular"
+      text="Default Credit Card"
+    />
+    <Styled(View)>
+      <Styled(ImageComp)
+        height={30}
+        source={4}
+        width={50}
+      />
+      <Styled(View)>
+        <Styled(BodyCopy)
+          color="gray.900"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          style={
+            Object {
+              "flex": 1,
+            }
+          }
+          text="ending in 1111"
+        />
+        <Styled(BodyCopy)
+          color="gray.700"
+          fontFamily="secondary"
+          fontSize="fs10"
+          fontWeight="regular"
+          style={
+            Object {
+              "flex": 1,
+            }
+          }
+          text="expires 1/2021"
+        />
+      </Styled(View)>
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(TouchableHighlight)
+    onPress={[Function]}
+    textDecorationLine="underline"
+  >
+    <Styled(BodyCopy)
+      color="gray.900"
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="regular"
+      text="Edit"
+    />
+  </Styled(TouchableHighlight)>
+</Styled(View)>
+`;

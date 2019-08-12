@@ -16,5 +16,6 @@ export default css`
   }
   .removeAnchor {
     margin: 0 2px;
+    background-color: ${props => props.theme.colors.PRIMARY.PALEGRAY};
   }
 `;

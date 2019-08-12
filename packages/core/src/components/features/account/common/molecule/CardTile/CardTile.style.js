@@ -55,6 +55,7 @@ const styles = css`
   .cardTile__number {
     margin-bottom: ${props =>
       props.card.ccType === 'PLACE CARD' ? props.theme.spacing.ELEM_SPACING.XL : ''};
+    font-weight: ${props => props.theme.fonts.fontWeight.bold};
   }
   .cardTile__expiry {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};

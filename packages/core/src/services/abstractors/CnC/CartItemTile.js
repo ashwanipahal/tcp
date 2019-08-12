@@ -20,7 +20,12 @@ const ORDER_ITEM_TYPE = {
   BOPIS: 'BOPIS',
   ECOM: 'ECOM',
 };
-
+const AVAILABILITY = {
+  OK: 'OK',
+  SOLDOUT: 'SOLDOUT',
+  UNAVAILABLE: 'UNAVAILABLE',
+  SUGGESTED: 'SUGGESTED', // REVIEW: we need it to control an state to favorite's item (favorites' page).
+};
 export const imageGenerator = (id, excludeExtension) => {
   return {
     colorSwatch: getSwatchImgPath(id, excludeExtension),
@@ -48,10 +53,16 @@ export const COUPON_STATUS = {
   PENDING: 'pending',
   REMOVING: 'removing',
 };
+
+export const BUTTON_LABEL_STATUS = {
+  APPLY: 'APPLY',
+  REMOVE: 'REMOVE',
+};
 export const COUPON_REDEMPTION_TYPE = {
   PUBLIC: 'public',
   WALLET: 'wallet',
   REWARDS: 'rewards',
+  SAVING: 'saving',
   LOYALTY: 'LOYALTY',
   PLACECASH: 'PLACECASH',
   PC: 'PLACECASH',
@@ -80,6 +91,21 @@ const constructDateFormat = date => {
     .getFullYear()
     .toString()
     .substr(-2)}`;
+};
+
+const getCouponType = promotionType => {
+  switch (promotionType) {
+    case 'PC':
+      return COUPON_REDEMPTION_TYPE.PLACECASH;
+    case 'PLACECASH':
+      return COUPON_REDEMPTION_TYPE.PLACECASH;
+    case 'LOYALTY':
+      return COUPON_REDEMPTION_TYPE.REWARDS;
+    case 'OTHERS':
+      return COUPON_REDEMPTION_TYPE.SAVING;
+    default:
+      return COUPON_REDEMPTION_TYPE.SAVING;
+  }
 };
 
 export const removeItem = orderItemId => {
@@ -164,6 +190,7 @@ export const constructCouponStructure = cpnArray => {
     coupons.push({
       id: itm.offerCode.toUpperCase(),
       status: itm.isApplied ? COUPON_STATUS.APPLIED : COUPON_STATUS.AVAILABLE,
+      labelStatus: itm.isApplied ? BUTTON_LABEL_STATUS.REMOVE : BUTTON_LABEL_STATUS.APPLY,
       isExpiring,
       title: itm.offerText,
       detailsOpen: false,
@@ -172,6 +199,7 @@ export const constructCouponStructure = cpnArray => {
       details: itm.offerDescription,
       legalText: itm.legalText,
       isStarted: isPlaceCash ? compareDate(now, startDate) : true,
+      offerType: getCouponType(itm.offerType),
       // imageThumbUrl: getCouponImageThumb(itm.offerType),
       // imageUrl: getCouponImage(itm.offerType),
       error: '',
@@ -549,7 +577,7 @@ export const getCurrentOrderFormatter = (orderDetailsResponse, excludeCartItems,
           // storeTodayOpenRange: store ? todayOpeningTime + ' - ' + todayClosingTime : null,
           // storeTomorrowOpenRange: store ? tomorrowOpeningTime + ' - ' + tomorrowClosingTime : null,
 
-          // availability: deriveItemAvailability(orderDetailsResponse, item, store),
+          //availability: deriveItemAvailability(orderDetailsResponse, item, store),
           vendorColorDisplayId: item.productInfo && item.productInfo.productPartNumber,
           // dates for boss pickup, used getDateInformation utility
           bossStartDate:
@@ -688,6 +716,38 @@ export const deriveBossEligiblity = (item, orderDetailsResponse) => {
   );
 };
 
+// export const deriveItemAvailability=(orderDetails, item, store) => {
+//   const isUsOrder = orderDetails.currencyCode === 'USD';
+//   const isCaOrder = orderDetails.currencyCode !== 'USD';
+//   const isStoreBOSSEligible = true
+
+//   if (
+//     (isUsOrder && item.productInfo.articleOOSUS)
+//     || (isCaOrder && item.productInfo.articleOOSCA)
+//   ) {
+//     return AVAILABILITY.SOLDOUT;
+//     // replaced "BOPIS" with a config variable
+//   } else if (
+//     item.orderItemType === config.ORDER_ITEM_TYPE.BOPIS
+//     && item.stLocId && !parseBoolean(orderDetails.bopisIntlField)
+//   ) {
+//     return AVAILABILITY.OK;
+//   } else if (
+//     item.orderItemType === config.ORDER_ITEM_TYPE.BOSS && item.stLocId
+//     && (parseBoolean(orderDetails.bossIntlField) || !isStoreBOSSEligible)
+//   ) {
+//     /**
+//     * Adding new check to return status unavailable
+//     * in case of boss store ineligible or boss international order
+//     */
+//     return AVAILABILITY.UNAVAILABLE;
+//   } else if (item.inventoryAvail > 0) {
+//     // inventory check for BOSS and ECOM
+//     return AVAILABILITY.OK;
+//   } else {
+//     return AVAILABILITY.UNAVAILABLE;
+//   }
+// }
 export default {
   getOrderDetailsData,
   removeItem,

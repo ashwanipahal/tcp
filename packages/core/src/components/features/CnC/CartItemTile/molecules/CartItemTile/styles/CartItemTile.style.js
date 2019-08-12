@@ -137,6 +137,19 @@ export default css`
     .price-label {
       margin-left: 170px;
     }
+    .imageWrapper {
+      position: relative;
+    }
+    .soldOutLabel {
+      width: 89px;
+      height: 18px;
+      background-color: red;
+      color: white;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
   }
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};

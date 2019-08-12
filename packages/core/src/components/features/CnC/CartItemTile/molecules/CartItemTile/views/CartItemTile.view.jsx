@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductEditForm from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ProductCustomizeForm/ProductCustomizeForm';
-import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
+import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability/views/ItemAvailability.view';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import CartItemRadioButtons from '@tcp/core/src/components/features/CnC/CartItemTile/molecules/CartItemRadioButtons/views/CartItemRadioButtons';
 import endpoints from '../../../../../../../service/endpoint';
@@ -66,6 +66,10 @@ class CartItemTile extends React.Component {
     return productDetail.itemInfo.isGiftItem === true ? `${labels.design}:` : `${labels.color}:`;
   };
 
+  getSizeLabel = (productDetail, labels) => {
+    return productDetail.itemInfo.isGiftItem === true ? `${labels.value}:` : `${labels.size}:`;
+  };
+
   getPointsColor = pageView => {
     return pageView !== 'myBag' ? 'gray.900' : 'orange.800';
   };
@@ -123,7 +127,7 @@ class CartItemTile extends React.Component {
     };
     return (
       <div className={className}>
-        <ErrorMessage error="This item is unavailable" />
+        <ItemAvailability errorMsg="This item is unavailable" />
         <Row
           fullBleed
           className={['product', pageView === 'myBag' ? 'product-tile-wrapper' : ''].join(' ')}
@@ -133,12 +137,23 @@ class CartItemTile extends React.Component {
             className="align-product-img product-brand-img-wrapper"
             colSize={{ small: 2, medium: 2, large: 3 }}
           >
-            <Image
-              alt={labels.productImageAlt}
-              className="product-image"
-              src={endpoints.global.baseURI + productDetail.itemInfo.imagePath}
-              data-locator={getLocator('cart_item_image')}
-            />
+            <div className="imageWrapper">
+              <Image
+                alt={labels.productImageAlt}
+                className="product-image"
+                src={endpoints.global.baseURI + productDetail.itemInfo.imagePath}
+                data-locator={getLocator('cart_item_image')}
+              />
+              <BodyCopy
+                className="soldOutLabel"
+                component="span"
+                fontFamily="secondary"
+                textAlign="center"
+                fontSize="fs12"
+              >
+                SOLD OUT
+              </BodyCopy>
+            </div>
             {!productDetail.itemInfo.isGiftItem && (
               <Image
                 alt={labels.productBandAlt}
@@ -246,8 +261,7 @@ class CartItemTile extends React.Component {
                         fontSize="fs12"
                         fontWeight={['extrabold']}
                       >
-                        {`${labels.size}`}
-                        {':'}
+                        {this.getSizeLabel(productDetail, labels)}
                       </BodyCopy>
                     </div>
                     <BodyCopy

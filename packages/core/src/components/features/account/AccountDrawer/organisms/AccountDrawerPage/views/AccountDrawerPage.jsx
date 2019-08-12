@@ -15,8 +15,12 @@ const AccountDrawerPage = props => {
   return (
     <div className={className}>
       <AccountDrawerHeading userName={userName} />
-      {!isCA && <RewardsPoints />}
-      <ExtraPointsTeaser />
+      {!isCA && (
+        <>
+          <RewardsPoints />
+          <ExtraPointsTeaser />
+        </>
+      )}
       <MyRewardsAndOffers />
       <AccountDrawerBottomLinks />
     </div>

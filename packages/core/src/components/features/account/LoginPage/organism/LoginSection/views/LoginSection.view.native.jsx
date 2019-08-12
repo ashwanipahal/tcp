@@ -98,8 +98,8 @@ class LoginSection extends PureComponent<Props> {
             <Text>{labels.login.lbl_login_createAccountHelp}</Text>
           </DescriptionStyle>
           <CustomButton
-            color={colorPallete.white}
-            fill="BLUE"
+            color={colorPallete.text.secondary}
+            fill="WHITE"
             type="submit"
             buttonVariation="variable-width"
             data-locator=""

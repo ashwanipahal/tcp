@@ -54,6 +54,7 @@ class BonusPointsView extends React.Component {
           } DETAILS`}
           fixedWidth
           maxWidth="704px"
+          minHeight="550px"
           showHeading
           inheritedStyles={modalstyles}
         >
