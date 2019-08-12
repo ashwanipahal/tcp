@@ -7,6 +7,7 @@ import config from '../config';
 type Props = {
   tileData: Object,
   index: number,
+  tileColor: Object,
 };
 
 /**
@@ -18,11 +19,12 @@ const colSize = { ...config.COL_SIZE_TILE };
  * @function ModuleLTile This function renders tiles for carousel
  * @param {tileData} tileData Accepts image, link and styled object and index
  */
-const ModuleLTile = ({ tileData: { image, link, styled }, index }: Props) => {
+const ModuleLTile = ({ tileData: { image, link, styled }, index, tileColor }: Props) => {
   return (
     <Anchor {...link}>
       <Row>
         <Col
+          style={{ backgroundColor: tileColor.class }}
           colSize={colSize}
           className="moduleL__tile"
           data-locator={`${getLocator('moduleL_tiles')}${index + 1}`}
