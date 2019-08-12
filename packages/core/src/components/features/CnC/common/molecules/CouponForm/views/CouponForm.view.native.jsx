@@ -3,7 +3,6 @@ import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import { Button, BodyCopy } from '../../../../../../common/atoms';
-// import Modal from '../../../../../../common/molecules/Modal';
 import ErrorMessage from '../../ErrorMessage';
 import {
   InputField,
