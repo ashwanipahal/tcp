@@ -1,42 +1,60 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
+import { Text } from 'react-native';
 import withStyle from '../../../../common/hoc/withStyles';
 import style from '../styles/EmptyBagPage.style';
-import { BodyCopy, Button } from '../../../../common/atoms';
+import { BodyCopy } from '../../../../common/atoms';
 import { getLocator } from '../../../../../utils';
-import { StyledEmptyBag } from '../styles/EmptyBagPage.style.native';
+import {
+  StyledEmptyBag,
+  ViewBagButton,
+  StyledSupportMsg,
+} from '../styles/EmptyBagPage.style.native';
 
 const EmptyBagPage = ({ isUserLoggedIn, bagLabels }) => {
-  console.log('');
   return (
     <StyledEmptyBag>
-      <BodyCopy
-        className="large-size-message"
-        color="gray.900"
-        fontWeight="extrabold"
-        fontFamily="secondary"
-        dataLocator={getLocator('empty_bag_Msg')}
-      >
-        {!isUserLoggedIn ? bagLabels.guestUserMsg : bagLabels.loggedInMsg}
-      </BodyCopy>
+      <Text>
+        <BodyCopy
+          className="large-size-message"
+          color="gray.900"
+          fontWeight="extrabold"
+          fontSize="fs16"
+          fontFamily="secondary"
+          dataLocator={getLocator('empty_bag_Msg')}
+          text={!isUserLoggedIn ? bagLabels.guestUserMsg : bagLabels.loggedInMsg}
+        />
+      </Text>
 
-      <BodyCopy
-        className="large-size-message"
-        color="gray.900"
-        fontWeight="extrabold"
-        fontFamily="secondary"
-        dataLocator={getLocator('empty_bag_recommendation_msg')}
-      >
-        {bagLabels.tagLine}
-      </BodyCopy>
-      <BodyCopy
-        dataLocator={getLocator('empty_bag_recommendation_msg')}
-        className="small-spacing"
-        fontFamily="secondary"
-      >
-        {bagLabels.helperMsg}
-      </BodyCopy>
+      <ViewBagButton>
+        <BodyCopy
+          textTransform="uppercase"
+          color="white"
+          fontWeight="extrabold"
+          fontFamily="secondary"
+          fontSize="fs13"
+          text={!isUserLoggedIn ? bagLabels.login : bagLabels.shopNow}
+        />
+      </ViewBagButton>
+
+      <Text>
+        <BodyCopy
+          className="large-size-message"
+          color="gray.900"
+          fontWeight="extrabold"
+          fontFamily="secondary"
+          dataLocator={getLocator('empty_bag_recommendation_msg')}
+          text={bagLabels.tagLine}
+        />
+      </Text>
+      <StyledSupportMsg>
+        <BodyCopy
+          dataLocator={getLocator('empty_bag_recommendation_msg')}
+          className="small-spacing"
+          fontFamily="secondary"
+          text={bagLabels.helperMsg}
+        />
+      </StyledSupportMsg>
     </StyledEmptyBag>
   );
 };

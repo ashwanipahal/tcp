@@ -29,7 +29,6 @@ const ProductTileWrapper = props => {
       </div>
     );
   }
-  console.log('see');
   return <EmptyBag bagLabels={bagLabels} isUserLoggedIn={isUserLoggedIn} />;
 };
 
