@@ -26,9 +26,6 @@ const PointsHistory = ({ labels, pointHistory }) => {
 
   return (
     <React.Fragment>
-      {/* <PointHistorsWrapper>
-        <BodyCopy text="Point History" fontWeight="black" fontFamily="secondary" fontSize="fs16" />
-      </PointHistorsWrapper> */}
       <PointHistoryView>
         <PointView>
           <BodyCopy
