@@ -2,7 +2,7 @@ import { LOGINPAGE_REDUCER_KEY } from '@tcp/core/src/constants/reducer.constants
 import { createSelector } from 'reselect';
 import constants from '../LoginPage.constants';
 
-const getLoginState = state => {
+export const getLoginState = state => {
   return state[LOGINPAGE_REDUCER_KEY];
 };
 
@@ -33,6 +33,12 @@ export const getUserName = createSelector(
   loginState => loginState && loginState.get('firstName')
 );
 
+export const getUserFullName = createSelector(
+  getLoginState,
+  loginState => {
+    return loginState && ` ${loginState.get('firstName')} ${loginState.get('lastName')}`;
+  }
+);
 export const getLabels = state => state.Labels.global;
 
 export const getPointsToNextRewardState = createSelector(

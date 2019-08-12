@@ -17,9 +17,15 @@ const ImageComp = (props: Props) => {
   const urlVal = url || '';
   const sourceVal = source || '';
   if (sourceVal === '') {
-    return <Image {...otherProps} source={{ uri: cropImageUrl(urlVal, cropVal) }} />;
+    return (
+      <Image
+        {...otherProps}
+        accessibilityRole="image"
+        source={{ uri: cropImageUrl(urlVal, cropVal) }}
+      />
+    );
   }
-  return <Image {...otherProps} source={source} />;
+  return <Image {...otherProps} source={source} accessibilityRole="image" />;
 };
 
 export default withStyles(ImageComp, style);

@@ -11,6 +11,9 @@ const styles = css`
   .cardList__ccAddCta {
     font-weight: ${props => props.theme.typography.fontWeights.semibold};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    @media ${props => props.theme.mediaQuery.large} {
+      width: 330px;
+    }
   }
   .giftcardList__col {
     width: 100%;

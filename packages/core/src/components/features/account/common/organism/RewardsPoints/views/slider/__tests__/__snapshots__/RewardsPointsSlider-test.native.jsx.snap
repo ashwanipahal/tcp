@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correctly 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        fontFamily="secondary"
+        fontSize="fs16"
+        fontWeight="black"
+        locator=""
+        text="Point Balance"
+      />
+    </Styled(Text)>
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        fontFamily="secondary"
+        fontSize="fs14"
+        locator=""
+        text="Current Points: "
+      />
+      <Styled(BodyCopy)
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="black"
+        locator=""
+        text=""
+      />
+    </Styled(Text)>
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        fontFamily="secondary"
+        fontSize="fs14"
+        locator=""
+        text="My rewards: "
+      />
+      $
+    </Styled(Text)>
+    <Styled(View)>
+      <Styled(Text)
+        style={
+          Object {
+            "width": "60%",
+          }
+        }
+      />
+    </Styled(View)>
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        fontFamily="secondary"
+        fontSize="fs14"
+        locator=""
+        text="Next Rewards: "
+      />
+      <Styled(BodyCopy)
+        fontFamily="secondary"
+        fontSize="fs14"
+        fontWeight="black"
+        locator=""
+        text="10"
+      />
+    </Styled(Text)>
+  </Styled(View)>
+</Fragment>
+`;

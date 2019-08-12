@@ -5,6 +5,7 @@ exports[`OverlayModal Container should render correctly 1`] = `
   closeOverlay={[Function]}
   color={null}
   component={null}
+  componentProps={Object {}}
   openState={false}
   variation="primary"
 />

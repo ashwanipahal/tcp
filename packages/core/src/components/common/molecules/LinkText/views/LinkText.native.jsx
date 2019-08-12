@@ -9,15 +9,7 @@ type Props = {
   link: Object,
   textItems: Object[],
   navigation: Object,
-};
-
-/**
- * @function getTextItems : To get heading text lines
- * @param {*} props
- * accepts textItems as parameters to return as heading node
- */
-const getTextItems = textItems => {
-  return textItems.map(({ text }, index) => <Text>{index ? ` ${text}` : text}</Text>);
+  locator: string,
 };
 
 /**
@@ -29,8 +21,14 @@ const getTextItems = textItems => {
  * type="bodycopy" if BodyCopy is required
  * accepts all parameters for BodyCopy and Heading atom
  */
+
+const getTextItems = textItems => {
+  return textItems && textItems.map(({ text }, index) => <Text>{index ? ` ${text}` : text}</Text>);
+};
+
 const LinkText = (props: Props) => {
   const {
+    locator,
     type,
     headerText: [{ textItems, link }],
     navigation,
@@ -43,20 +41,22 @@ const LinkText = (props: Props) => {
   if (type === 'heading') {
     Component = Heading;
     compProps = {
+      navigation,
       Component,
       ...otherProps,
     };
   } else {
     Component = BodyCopy;
     compProps = {
+      navigation,
       Component,
       ...otherProps,
     };
   }
 
   return (
-    <Anchor url={link.url} navigation={navigation} external={link.external}>
-      <Component {...compProps} text={getTextItems(textItems)} />
+    <Anchor url={link.url} navigation={navigation}>
+      <Component {...compProps} text={getTextItems(textItems)} locator={locator} />
     </Anchor>
   );
 };

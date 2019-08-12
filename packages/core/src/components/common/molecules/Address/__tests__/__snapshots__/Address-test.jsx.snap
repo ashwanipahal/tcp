@@ -13,7 +13,7 @@ exports[`Address component should renders correctly 1`] = `
   textAlign="left"
 >
   <Styled(BodyCopy)
-    className={null}
+    className="addressTile__name"
     color="text.primary"
     component="p"
     data-locator=""
@@ -110,7 +110,7 @@ exports[`Address component should renders correctly when optional fields are not
   textAlign="left"
 >
   <Styled(BodyCopy)
-    className={null}
+    className="addressTile__name"
     color="text.primary"
     component="p"
     data-locator=""

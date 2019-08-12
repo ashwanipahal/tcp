@@ -1,7 +1,6 @@
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
-import { Image, BodyCopy, Heading } from '../../../atoms';
-import { getLocator, getScreenWidth, UrlHandler } from '../../../../../utils/index.native';
+import { Image, BodyCopy, Heading, Anchor } from '../../../atoms';
+import { getLocator, getScreenWidth } from '../../../../../utils/index.native';
 import { Carousel } from '../..';
 import config from '../config';
 import colors from '../../../../../../styles/themes/colors/common';
@@ -12,6 +11,7 @@ import { HeaderWrapper, LinksWrapper, Wrapper } from '../ModuleH.style.native';
 type Props = {
   divCTALinks: Array<Object>,
   headerText: Object,
+  navigation: Object,
 };
 
 type State = {
@@ -89,28 +89,27 @@ class ModuleH extends React.PureComponent<Props, State> {
    * @param {[Object]} linksData : Moudle links data.
    * @return {Node} : Returns link element.
    */
-  renderLinks = linksData => {
+  renderLinks = (linksData, navigation) => {
     const { currentIndex } = this.state;
     const { maxLimit } = config.MODULE_H_CTALINKS;
     const lessThanSixLinkStyle = Object.assign({}, linkStyle, { marginTop: 38 });
     return linksData.map((item, index) => {
       const { link, styled } = item;
       return (
-        <BodyCopy
-          key={index.toString()}
-          fontFamily="secondary"
-          fontSize="fs20"
-          letterSpacing="ls167"
-          textAlign="left"
-          color="white"
-          fontWeight={currentIndex === index ? 'extrabold' : null}
-          text={styled.text}
-          onPress={() => {
-            UrlHandler(link.url);
-          }}
-          style={linksData.length < maxLimit ? lessThanSixLinkStyle : linkStyle}
-          testID={`${getLocator('moduleH_cta_links')}${index + 1}`}
-        />
+        <Anchor url={link.url} navigation={navigation}>
+          <BodyCopy
+            key={index.toString()}
+            fontFamily="secondary"
+            fontSize="fs20"
+            letterSpacing="ls167"
+            textAlign="left"
+            color="white"
+            fontWeight={currentIndex === index ? 'extrabold' : null}
+            text={styled.text}
+            style={linksData.length < maxLimit ? lessThanSixLinkStyle : linkStyle}
+            testID={`${getLocator('moduleH_cta_links')}${index + 1}`}
+          />
+        </Anchor>
       );
     });
   };
@@ -120,19 +119,15 @@ class ModuleH extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { divCTALinks, headerText: [{ link, textItems }] = {} } = this.props;
-
+    const { navigation, divCTALinks, headerText: [{ link, textItems }] = {} } = this.props;
+    const headingStyle = { height: 38 };
     return (
       <Wrapper>
         <HeaderWrapper>
           {textItems &&
             textItems.map((textLine, index) => {
               return link ? (
-                <TouchableOpacity
-                  key={index.toString()}
-                  accessibilityRole="link"
-                  onPress={() => UrlHandler(link.url)}
-                >
+                <Anchor key={index.toString()} url={link.url} navigation={navigation}>
                   <Heading
                     fontFamily="primary"
                     fontSize="fs36"
@@ -142,8 +137,9 @@ class ModuleH extends React.PureComponent<Props, State> {
                     fontWeight="black"
                     text={textLine.text}
                     testID={`${getLocator('moduleH_header_text')}${index + 1}`}
+                    style={headingStyle}
                   />
-                </TouchableOpacity>
+                </Anchor>
               ) : (
                 <Heading
                   fontFamily="primary"
@@ -154,6 +150,7 @@ class ModuleH extends React.PureComponent<Props, State> {
                   fontWeight="black"
                   text={textLine.text}
                   testID={`${getLocator('moduleH_header_text')}${index + 1}`}
+                  style={headingStyle}
                 />
               );
             })}
@@ -173,7 +170,9 @@ class ModuleH extends React.PureComponent<Props, State> {
             }}
           />
         )}
-        {divCTALinks ? <LinksWrapper>{this.renderLinks(divCTALinks)}</LinksWrapper> : null}
+        {divCTALinks ? (
+          <LinksWrapper>{this.renderLinks(divCTALinks, navigation)}</LinksWrapper>
+        ) : null}
       </Wrapper>
     );
   }

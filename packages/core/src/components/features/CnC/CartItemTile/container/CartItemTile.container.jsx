@@ -25,6 +25,8 @@ export const CartItemTileContainer = ({
   updateCartItem,
   getProductSKUInfo,
   editableProductInfo,
+  pageView,
+  className,
 }) => (
   <CartItemTile
     labels={labels}
@@ -33,6 +35,8 @@ export const CartItemTileContainer = ({
     updateCartItem={updateCartItem}
     getProductSKUInfo={getProductSKUInfo}
     editableProductInfo={editableProductInfo}
+    pageView={pageView}
+    className={className}
   />
 );
 export const mapDispatchToProps = (dispatch: ({}) => void) => {

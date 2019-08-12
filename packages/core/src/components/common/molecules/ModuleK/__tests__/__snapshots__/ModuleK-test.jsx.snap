@@ -99,7 +99,7 @@ exports[`ModuleK component renders correctly 1`] = `
             "$$typeof": Symbol(react.forward_ref),
             "attrs": Array [],
             "componentStyle": ComponentStyle {
-              "componentId": "sc-jKJlTe",
+              "componentId": "sc-eNQAEJ",
               "isStatic": false,
               "rules": Array [
                 "
@@ -136,10 +136,10 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(LinkText))",
             "foldedComponentIds": Array [
-              "sc-kpOJdX",
+              "sc-dxgOiQ",
             ],
             "render": [Function],
-            "styledComponentId": "sc-jKJlTe",
+            "styledComponentId": "sc-eNQAEJ",
             "target": [Function],
             "toString": [Function],
             "warnTooManyClasses": [Function],
@@ -178,7 +178,7 @@ exports[`ModuleK component renders correctly 1`] = `
               "$$typeof": Symbol(react.forward_ref),
               "attrs": Array [],
               "componentStyle": ComponentStyle {
-                "componentId": "sc-ckVGcZ",
+                "componentId": "sc-jKJlTe",
                 "isStatic": true,
                 "rules": Array [
                   "
@@ -204,7 +204,7 @@ exports[`ModuleK component renders correctly 1`] = `
               "displayName": "Styled(errorBoundaryComponent)",
               "foldedComponentIds": Array [],
               "render": [Function],
-              "styledComponentId": "sc-ckVGcZ",
+              "styledComponentId": "sc-jKJlTe",
               "target": [Function],
               "toString": [Function],
               "warnTooManyClasses": [Function],

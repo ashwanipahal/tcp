@@ -87,6 +87,26 @@ export const getBossEndDate = product => {
   return product.getIn(['miscInfo', 'bossEndDate']);
 };
 
+export const getProductItemUpcNumber = product => {
+  return product.getIn(['productInfo', 'upc']);
+};
+
+export const getProductItemPrice = product => {
+  return product.getIn(['itemInfo', 'listPrice']);
+};
+
+export const getProductItemId = product => {
+  return product.getIn(['itemInfo', 'itemId']);
+};
+
+export const getProductItemUnitOfferPrice = product => {
+  return product.getIn(['itemInfo', 'unitOfferPrice']);
+};
+
+export const getProductItemUnitPrice = product => {
+  return product.getIn(['itemInfo', 'listUnitPrice']);
+};
+
 export const getLabelsCartItemTile = state => {
   const {
     bag: {
@@ -96,6 +116,7 @@ export const getLabelsCartItemTile = state => {
         lbl_info_Qty: qty,
         lbl_info_price: price,
         lbl_info_giftDesign: design,
+        lbl_info_giftValue: value,
       },
     },
   } = state.Labels;
@@ -112,6 +133,11 @@ export const getLabelsCartItemTile = state => {
         lbl_cartTile_productImageAlt: productImageAlt,
         lbl_cartTile_bopis: bopisLabel,
         lbl_cartTile_boss: bossLabel,
+        lbl_cartTile_noRushPickup: bossPickUp,
+        lbl_cartTile_pickUpToday: bopisPickUp,
+        lbl_cartTile_shipToHome: ecomShipping,
+        lbl_cartTile_extra: extra,
+        lbl_cartTile_off: off,
       },
     },
   } = state.Labels;
@@ -122,6 +148,7 @@ export const getLabelsCartItemTile = state => {
     qty,
     price,
     design,
+    value,
     fit,
     points,
     cancel,
@@ -131,6 +158,11 @@ export const getLabelsCartItemTile = state => {
     productImageAlt,
     bopisLabel,
     bossLabel,
+    bossPickUp,
+    bopisPickUp,
+    ecomShipping,
+    extra,
+    off,
   };
 };
 
@@ -148,11 +180,15 @@ export const getProductDetails = tile => {
       itemBrand: getProductBrand(tile),
       imagePath: getProductImage(tile),
       itemId: getOrderItemId(tile),
+      itemPrice: getProductItemPrice(tile),
+      unitOfferPrice: getProductItemUnitOfferPrice(tile),
+      itemUnitPrice: getProductItemUnitPrice(tile),
     },
     productInfo: {
       productPartNumber: getProductPartNumber(tile),
       itemPartNumber: getProductItemPartNumber(tile),
       variantNo: getVariantNumber(tile),
+      upc: getProductItemUpcNumber(tile),
     },
     miscInfo: {
       badge: getProductBadge(tile),

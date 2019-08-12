@@ -15,16 +15,16 @@ class LogOutView extends React.Component {
   }
 
   render() {
-    const { className } = this.props;
+    const { className, labels } = this.props;
     return (
       <React.Fragment className={className}>
         <Anchor
           onClick={this.logoutApp}
           className="elem-pb-SM"
-          fontSizeVariation="xlarge"
-          anchorVariation="secondary"
+          fontSizeVariation="large"
+          anchorVariation="primary"
         >
-          logout
+          {labels.CREATE_ACC_SIGN_OUT}
         </Anchor>
       </React.Fragment>
     );
@@ -34,6 +34,7 @@ class LogOutView extends React.Component {
 LogOutView.propTypes = {
   className: PropTypes.string.isRequired,
   triggerLogout: PropTypes.string.isRequired,
+  labels: PropTypes.shape({}).isRequired,
 };
 
 export default LogOutView;

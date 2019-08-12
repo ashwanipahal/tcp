@@ -7,6 +7,7 @@ exports[`MyRewards should render correctly 1`] = `
       data-locator="my-rewards-heading"
       fontSize="fs16"
       fontWeight="semibold"
+      locator=""
       mobileFontFamily="secondary"
       text="undefined (0)"
     />
@@ -16,6 +17,7 @@ exports[`MyRewards should render correctly 1`] = `
       data-locator="no_rewards_msg"
       fontSize="fs14"
       fontWeight="regular"
+      locator=""
       mobileFontFamily="secondary"
       text=""
     />
@@ -23,6 +25,7 @@ exports[`MyRewards should render correctly 1`] = `
       data-locator="no_rewards_msg"
       fontSize="fs14"
       fontWeight="regular"
+      locator=""
       mobileFontFamily="secondary"
       text=""
     />
@@ -35,6 +38,7 @@ exports[`MyRewards should render correctly 1`] = `
     disableButton={false}
     fill="BLUE"
     fullWidth=""
+    locator={[Function]}
     style={
       Object {
         "fontWeight": "400",
@@ -50,6 +54,7 @@ exports[`MyRewards should render correctly 1`] = `
       customStyle={Object {}}
       data-locator="my-rewards-program-details"
       fontSizeVariation="medium"
+      locator=""
       onPress={[Function]}
       text=""
       underline={true}
@@ -61,6 +66,7 @@ exports[`MyRewards should render correctly 1`] = `
         customStyle={Object {}}
         data-locator="my-rewards-tnc"
         fontSizeVariation="medium"
+        locator=""
         noLink={true}
         onPress={[Function]}
         text=""

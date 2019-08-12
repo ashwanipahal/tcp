@@ -7,22 +7,12 @@ const styles = css`
     margin-bottom: 3px;
   }
   .row-ele {
-    height: 200px;
     width: 100%;
     margin: 15px 0;
     background: #fff;
   }
   .order-summary {
     margin: 16px 0;
-  }
-  .right-sec {
-    width: 346px;
-    @media ${props => props.theme.mediaQuery.medium} {
-      width: 258px;
-    }
-    @media ${props => props.theme.mediaQuery.large} {
-      width: 450px;
-    }
   }
 
   .checkout-button {
@@ -40,7 +30,29 @@ const styles = css`
   }
 
   .bag-header {
-    margin: 40px 0 20px;
+    padding: 40px 0 20px;
+    @media ${props => props.theme.mediaQuery.smallOnly} {
+      text-align: center;
+      border-bottom: 2px solid ${props => props.theme.colorPalette.primary.dark};
+      padding: 13px 0 22px;
+      margin: 0;
+      font-size: 18px;
+      font-weight: 800;
+    }
+  }
+`;
+
+export const addedToBagActionsStyles = css`
+  @media ${props => props.theme.mediaQuery.smallOnly} {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 14px;
+    background: #fff;
+    margin: 0;
+    z-index: 1;
+    box-sizing: border-box;
   }
 `;
 

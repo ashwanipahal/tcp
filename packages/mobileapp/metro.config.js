@@ -30,7 +30,7 @@ module.exports = {
      * app's node_modules directory.
      */
     extraNodeModules,
-    sourceExts: ['jsx', 'js'],
+    sourceExts: ['jsx', 'js', 'ts'],
   },
   watchFolders,
 };

@@ -183,6 +183,12 @@ export const closeOverlay = () => {
   }
 };
 
+export const scrollPage = (x = 0, y = 0) => {
+  if (window) {
+    window.scrollTo(x, y);
+  }
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -195,4 +201,5 @@ export default {
   getCreditCardExpirationOptionMap,
   getSiteId,
   routerPush,
+  scrollPage,
 };

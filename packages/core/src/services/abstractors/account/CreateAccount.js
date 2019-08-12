@@ -34,4 +34,4 @@ export const createAccountApi = payload => {
     });
 };
 
-export default createAccountApi;
+export default { createAccountApi };

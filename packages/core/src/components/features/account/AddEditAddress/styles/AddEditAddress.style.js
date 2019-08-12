@@ -25,6 +25,18 @@ const styles = css`
       text-align: left;
     }
   }
+
+  .AddAddressForm__makeDefault {
+    .CheckBox__input:checked[disabled] {
+      &:before {
+        background: none;
+        border: 1px solid ${props => props.theme.colors.CHECKBOX.BORDER};
+      }
+      &:after {
+        border-color: ${props => props.theme.colors.CHECKBOX.BORDER};
+      }
+    }
+  }
 `;
 
 export default styles;

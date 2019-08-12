@@ -1,13 +1,15 @@
 // @flow
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
-import { UrlHandler } from '../../../../../utils/index.native';
-
-import { BodyCopy } from '../PromoBanner.style.native';
+import { Anchor } from '../../../atoms';
+import { BodyCopy, Container, ContainerView } from '../PromoBanner.style.native';
 
 type Props = {
   promoBanner: Array<Object>,
   bodyCopyStyles: Array<Object>,
+};
+
+type PercentageStyleProps = {
+  text: string,
 };
 
 /* bodyCopyStyles is a array of BodyCopy component with key of style1,style2,style3 etc.
@@ -43,6 +45,21 @@ export const bodyCopyStyles = {
       {...props}
     />
   ),
+  style4: props => (
+    <BodyCopy fontSize="fs16" color="white" fontFamily="primary" textAlign="center" {...props} />
+  ),
+  style5: props => (
+    <BodyCopy
+      fontSize="fs64"
+      fontWeight="black"
+      color="white"
+      fontFamily="primary"
+      lineHeight="64px"
+      textAlign="center"
+      {...props}
+    />
+  ),
+  style6: props => <PercentageStyle {...props} />,
 };
 
 /**
@@ -58,22 +75,62 @@ export const bodyCopyStyles = {
  */
 const PromoBanner = (props: Props) => {
   const {
+    locator,
+    navigation,
     promoBanner: [{ textItems, link }],
     ...otherProps
   } = props;
   return [
-    <TouchableOpacity
-      accessibilityRole="link"
-      onPress={() => {
-        UrlHandler(link.url);
-      }}
-    >
+    <Anchor url={link.url} navigation={navigation}>
       {textItems.map(({ text, style }, index) => {
         const StyleBodyCopy = bodyCopyStyles[style];
-        return <StyleBodyCopy text={index ? ` ${text}` : text} {...otherProps} />;
+        return <StyleBodyCopy text={index ? ` ${text}` : text} locator={locator} {...otherProps} />;
       })}
-    </TouchableOpacity>,
+    </Anchor>,
   ];
 };
 
+const PercentageStyle = (props: PercentageStyleProps) => {
+  const { text } = props;
+
+  const strArray = text && text.split('%');
+  const bodyCopyStyle = { height: 33 };
+  const bodyCopyStyle1 = { height: 58, marginTop: 8 };
+  return (
+    <Container>
+      <BodyCopy
+        fontSize="fs64"
+        fontWeight="black"
+        color="white"
+        fontFamily="primary"
+        textAlign="center"
+        lineHeight="64px"
+        style={bodyCopyStyle1}
+        text={strArray && strArray[0]}
+      />
+      <ContainerView>
+        <BodyCopy
+          fontSize="fs42"
+          fontWeight="black"
+          color="white"
+          fontFamily="primary"
+          text="%"
+          lineHeight="42px"
+          style={bodyCopyStyle}
+        />
+        <BodyCopy
+          fontSize="fs20"
+          fontWeight="black"
+          color="white"
+          fontFamily="primary"
+          textAlign="center"
+          lineHeight="20px"
+          text={strArray && strArray[1]}
+        />
+      </ContainerView>
+    </Container>
+  );
+};
+
 export default PromoBanner;
+export { PromoBanner as PromoBannerVanilla };

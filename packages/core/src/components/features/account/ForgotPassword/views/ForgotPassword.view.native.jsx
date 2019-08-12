@@ -9,6 +9,7 @@ import {
   FormStyleView,
   HeadingStyle,
   SubHeadingStyle,
+  SubHeadingSectionStyle,
   ForgotHeadingStyle,
   ForgotDescriptionStyle,
   FloatWrapper,
@@ -84,10 +85,10 @@ class ForgotPasswordView extends React.Component<Props> {
     return (
       <React.Fragment>
         <HeadingStyle>{labels.password.lbl_forgotPassword_checkMail}</HeadingStyle>
-        <SubHeadingStyle>
-          `We’ve just sent you instructions to reset your password. Didn’t get your email?Check your
-          spam or click here to contact customer service.`
-        </SubHeadingStyle>
+        <SubHeadingStyle>{labels.password.lbl_forgotPassword_heading}</SubHeadingStyle>
+        <SubHeadingSectionStyle>
+          {labels.password.lbl_forgotPassword_subHeading}
+        </SubHeadingSectionStyle>
         <CustomButton
           color={colorPallete.white}
           fill="BLUE"

@@ -1,34 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductListingPage Component ProductListingPage should render correctly 1`] = `
-<Fragment>
-  <Connect(OrderLedgerContainer) />
-  <Text
-    style={
-      Object {
-        "fontSize": 30,
-        "fontWeight": "bold",
-        "textAlign": "center",
-      }
-    }
-  >
-    PLP-Page
-  </Text>
-  <FlatList
-    className="product-wrapper"
-    data={Array []}
-    disableVirtualization={false}
-    horizontal={false}
-    initialNumToRender={10}
-    keyExtractor={[Function]}
-    maxToRenderPerBatch={10}
-    numColumns={2}
-    onEndReachedThreshold={2}
-    removeClippedSubviews={false}
-    renderItem={[Function]}
-    scrollEventThrottle={50}
-    updateCellsBatchingPeriod={50}
-    windowSize={21}
-  />
-</Fragment>
-`;
+exports[`ProductListingPage Component ProductListingPage should render correctly 1`] = `undefined`;
