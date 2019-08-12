@@ -72,10 +72,10 @@ class OverlayModal extends React.Component {
     const modalTriangle = document.getElementById('modalTriangle');
     const modalTrianglePos =
       modalTriangle && window && modalTriangle.getBoundingClientRect().y + window.scrollY;
-    modal.style.maxHeight = this.body && `${this.body.clientHeight - modalTrianglePos - 20}px`;
+    modal.style.maxHeight = this.body && `${this.body.clientHeight - modalTrianglePos - 60}px`;
     /* istanbul ignore else */
     if (compRectBoundingX && compWidth && modalRectBoundingX && modalTriangle) {
-      modalTriangle.style.left = `${compRectBoundingX - modalRectBoundingX + compWidth / 2 - 8}px`;
+      modalTriangle.style.left = `${compRectBoundingX - modalRectBoundingX + compWidth - 20}px`;
     }
   };
 
