@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import theme from '@tcp/core/styles/themes/TCP';
 import Button from '../../../../../../common/atoms/Button';
 import {
   BtnWrapper,
@@ -7,13 +8,16 @@ import {
 } from '../styles/BonusPointsAvailability.view.style.native';
 
 let buttonStyle = {
-  fontWeight: '400',
-  marginBottom: 24,
-  fontSize: 10,
+  fontWeight: theme.typography.fontWeights.regular,
+  marginBottom: theme.spacing.ELEM_SPACING.LRG,
+  fontSize: theme.typography.fontSizes.fs10,
   paddingRight: 5,
   paddingLeft: 5,
   paddingBottom: 5,
 };
+
+const graySecondary = theme.colorPalette.gray.secondary;
+const grayPrimary = theme.colorPalette.gray.primary;
 
 const BonusPointsAvailability = ({ bonusPoints }) => {
   const bonusPointsLength = bonusPoints && bonusPoints.length;
@@ -23,7 +27,7 @@ const BonusPointsAvailability = ({ bonusPoints }) => {
       {bonusPoints &&
         bonusPoints.map((item, index) => {
           buttonStyle = Object.assign({}, buttonStyle, {
-            color: item.disabled ? '#575757' : '#1a1a1a',
+            color: item.disabled ? { graySecondary } : grayPrimary,
             paddingTop: bonusPointsLength === 1 ? 14 : 5,
           });
           return (

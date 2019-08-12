@@ -14,10 +14,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly 1`] = `
       id={0}
       style={
         Object {
-          "color": "#1a1a1a",
-          "fontSize": 10,
+          "color": undefined,
+          "fontSize": "10px",
           "fontWeight": "400",
-          "marginBottom": 24,
+          "marginBottom": "24px",
           "paddingBottom": 5,
           "paddingLeft": 5,
           "paddingRight": 5,
@@ -41,10 +41,12 @@ exports[`BonusPointsAvailabilityVanilla should render correctly 1`] = `
       id={1}
       style={
         Object {
-          "color": "#575757",
-          "fontSize": 10,
+          "color": Object {
+            "graySecondary": undefined,
+          },
+          "fontSize": "10px",
           "fontWeight": "400",
-          "marginBottom": 24,
+          "marginBottom": "24px",
           "paddingBottom": 5,
           "paddingLeft": 5,
           "paddingRight": 5,
@@ -73,10 +75,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with 1 bonus poi
       id={0}
       style={
         Object {
-          "color": "#1a1a1a",
-          "fontSize": 10,
+          "color": undefined,
+          "fontSize": "10px",
           "fontWeight": "400",
-          "marginBottom": 24,
+          "marginBottom": "24px",
           "paddingBottom": 5,
           "paddingLeft": 5,
           "paddingRight": 5,

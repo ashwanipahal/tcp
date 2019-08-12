@@ -1,5 +1,6 @@
 import React from 'react';
 import { Modal, StatusBar, SafeAreaView } from 'react-native';
+import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import BodyCopy from '../../../atoms/BodyCopy';
 import {
   StyledCrossImage,
@@ -35,6 +36,8 @@ const getCloseIcon = ({ onRequestClose }: CloseIconProps) => {
   );
 };
 
+const colorPallete = createThemeColorPalette();
+
 const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
   const { heading, onRequestClose, animationType, headingAlign, headingFontFamily } = otherProps;
   return (
@@ -51,7 +54,7 @@ const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
               textAlign={headingAlign}
               text={heading}
               className="modalHeading"
-              color="#000000"
+              color={colorPallete.black}
             />
           </ModalHeadingWrapper>
         )}

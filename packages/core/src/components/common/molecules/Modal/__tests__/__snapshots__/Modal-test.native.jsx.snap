@@ -28,7 +28,7 @@ exports[`Modal Native should render correctly 1`] = `
     <Styled(View)>
       <Styled(BodyCopy)
         className="modalHeading"
-        color="#000000"
+        color="#000"
         fontSize="fs16"
         fontWeight="extrabold"
         mobileFontFamily="primary"

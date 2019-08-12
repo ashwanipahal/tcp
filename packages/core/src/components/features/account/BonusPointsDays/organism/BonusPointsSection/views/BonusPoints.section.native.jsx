@@ -55,11 +55,14 @@ const createBonusPoints = ({ bonusData, labels }) => {
   const bonusPoints = [];
   const allAvailable = totalBonusPointDays === availableBonusPointDays;
 
-  for (let i = 1; i <= totalBonusPointDays; i += 1) {
-    const isUsed = i <= usedBonusPointDays;
-    const futureDisabled = i > usedBonusPointDays + 1;
-    const forFutureUse = i > usedBonusPointDays + 1 && allAvailable;
-    const dateUsed = isUsed && usedBonusPointDates[i - 1] ? usedBonusPointDates[i - 1] : '';
+  for (let bonusPointIndex = 1; bonusPointIndex <= totalBonusPointDays; bonusPointIndex += 1) {
+    const isUsed = bonusPointIndex <= usedBonusPointDays;
+    const futureDisabled = bonusPointIndex > usedBonusPointDays + 1;
+    const forFutureUse = bonusPointIndex > usedBonusPointDays + 1 && allAvailable;
+    const dateUsed =
+      isUsed && usedBonusPointDates[bonusPointIndex - 1]
+        ? usedBonusPointDates[bonusPointIndex - 1]
+        : '';
     const { buttonText, dataLocator } = getButtonText({
       appliedToBagBonusPointDays,
       futureDisabled,

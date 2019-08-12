@@ -19,7 +19,7 @@ const styles = css`
     border-style: dashed;
   }
 
-  .couponCard__header_public {
+  .couponCard__header_pc {
     flex: 1;
     background: ${props => props.theme.colors.PRIMARY.GREEN};
   }

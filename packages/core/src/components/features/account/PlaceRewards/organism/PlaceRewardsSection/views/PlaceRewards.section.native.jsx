@@ -13,6 +13,7 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import MyRewards from '../../../molecules/MyRewards';
 import BonusPointsDays from '../../../molecules/BonusPointsDays';
 import RewardsPoints from '../../../../common/organism/RewardsPoints';
+import PointsHistory from '../../../../common/organism/PointsHistory';
 
 const PlaceRewardsSection = ({ labels, className }) => {
   return (
@@ -30,7 +31,14 @@ const PlaceRewardsSection = ({ labels, className }) => {
           <RewardsPoints />
         </StyledView>
         <StyledView>
-          <Text>Second</Text>
+          <StyledHeading>
+            <BodyCopy
+              fontSize="fs16"
+              fontWeight="extrabold"
+              text={labels.myPlaceRewards.lbl_my_rewards_points_history}
+            />
+          </StyledHeading>
+          <PointsHistory />
         </StyledView>
         <StyledView>
           <BonusPointsDays />
