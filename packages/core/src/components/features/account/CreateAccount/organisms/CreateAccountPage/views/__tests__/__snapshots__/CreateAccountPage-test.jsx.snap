@@ -37,7 +37,7 @@ exports[`Create Account Page should render correctly 1`] = `
         <Component />
       </Styled(BodyCopy)>
     </div>
-    <ReduxForm
+    <Styled(ReduxForm)
       className=""
       confirmHideShowPwd={false}
       destroyOnUnmount={true}
@@ -46,6 +46,11 @@ exports[`Create Account Page should render correctly 1`] = `
       form="CreateAccountForm"
       getFormState={[Function]}
       hideShowPwd={false}
+      initialValues={
+        Object {
+          "rememberMe": true,
+        }
+      }
       isIAgreeChecked={false}
       keepDirtyOnReinitialize={false}
       labels={

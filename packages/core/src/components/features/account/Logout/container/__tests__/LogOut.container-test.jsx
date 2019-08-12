@@ -1,12 +1,19 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { LogOutPageContainer, mapDispatchToProps } from '../LogOut.container';
-import LogOutView from '../../views/LogOut.view';
+import { LogOutPageContainerVanilla, mapDispatchToProps } from '../LogOut.container';
+import { LogOutViewVanilla } from '../../views/LogOut.view';
 
 describe('Logout container', () => {
   it('should render logout view section', () => {
-    const tree = shallow(<LogOutPageContainer triggerLogout={jest.fn()} />);
-    expect(tree.is(LogOutView)).toBeTruthy();
+    const mocktriggerLogout = jest.fn();
+    const props = {
+      triggerLogout: mocktriggerLogout,
+      labels: {
+        CREATE_ACC_SIGN_OUT: 'hello',
+      },
+    };
+    const tree = shallow(<LogOutPageContainerVanilla {...props} />);
+    expect(tree.is(LogOutViewVanilla)).toBeTruthy();
   });
   describe('#mapDispatchToProps', () => {
     it('should return an action logout which will call dispatch function on execution', () => {

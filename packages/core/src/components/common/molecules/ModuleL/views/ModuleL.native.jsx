@@ -49,7 +49,6 @@ const renderItem = (item, navigation) => {
     <Anchor
       url={link.url}
       navigation={navigation}
-      external={link.external}
       testID={`${getLocator('moduleL_tiles')}${index + 1}`}
     >
       <ChildContainer>
@@ -76,7 +75,6 @@ const renderItem = (item, navigation) => {
               visible={anchorIcon}
               url={link.url}
               navigation={navigation}
-              external={link.external}
               testID={`${getLocator('moduleL_link')}${index + 1}`}
             />
           </LinkContainer>
@@ -112,7 +110,11 @@ const ModuleL = (props: Props) => {
         />
       )}
       {promoBanner && (
-        <PromoBanner promoBanner={promoBanner} testID={getLocator('moduleL_promobanner_text')} />
+        <PromoBanner
+          promoBanner={promoBanner}
+          testID={getLocator('moduleL_promobanner_text')}
+          navigation={navigation}
+        />
       )}
       <ListContainer>
         <FlatList

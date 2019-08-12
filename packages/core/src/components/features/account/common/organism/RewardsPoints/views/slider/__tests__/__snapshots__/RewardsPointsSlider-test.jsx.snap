@@ -90,7 +90,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         className="progress-container elem-mt-MED elem-mt-MED elem-mb-SM"
       >
         <div
-          className="progressbar-rewards"
+          className="progressbar-rewards currentpoint-slider progressbar-rewards "
           style={
             Object {
               "width": "%",

@@ -1,26 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Native Badge component renders correctly with showCheckmark as false 1`] = `
-<Fragment>
-  <Styled(TouchableOpacity)>
-    <Styled(BodyCopy)
-      fontSize="fs10"
-      fontWeight="regular"
-      text="Shipping"
-    />
-  </Styled(TouchableOpacity)>
-</Fragment>
-`;
-
-exports[`Native Badge component renders correctly with showCheckmark as true 1`] = `
-<Fragment>
+exports[`Native Badge component renders correctly with  as false 1`] = `
+<Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
       color="white"
       fontSize="fs10"
-      fontWeight="regular"
+      fontWeight="semibold"
+      locator=""
+      mobilefontFamily={
+        Array [
+          "secondary",
+        ]
+      }
       text="Shipping"
     />
   </Styled(View)>
-</Fragment>
+</Styled(View)>
 `;

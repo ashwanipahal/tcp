@@ -50,11 +50,16 @@ exports[`AccountDrawerBottomLinks should render correctly 1`] = `
     <div
       className="elem-pt-MED elem-pb-MED bottomLine"
     >
-      <Styled(Anchor)
-        anchorVariation="primary"
-        fontFamily="secondary"
-        fontSizeVariation="large"
-        text="Sign Out"
+      <Connect(LogOutPageContainer)
+        labels={
+          Object {
+            "CREATE_ACC_MY_FAV": "My Favorites",
+            "CREATE_ACC_MY_PLACE_REWARDS_CC": "My Place Rewards Credit Card",
+            "CREATE_ACC_ORDERS": "Orders",
+            "CREATE_ACC_SIGN_OUT": "Sign Out",
+            "CREATE_ACC_WALLET": "Wallet",
+          }
+        }
       />
     </div>
   </div>
