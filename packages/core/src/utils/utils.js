@@ -157,6 +157,11 @@ export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = fals
   }
 };
 
+export const isGymboree = () => {
+  const { brandId } = getAPIConfig();
+  return brandId === API_CONFIG.brandIds.gym;
+};
+
 export default {
   getIconPath,
   getLocator,
@@ -166,4 +171,5 @@ export default {
   getAPIConfig,
   isCanada,
   bindAllClassMethodsToThis,
+  isGymboree,
 };

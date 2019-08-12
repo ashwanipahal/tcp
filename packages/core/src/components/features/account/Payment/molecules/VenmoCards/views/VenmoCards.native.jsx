@@ -6,12 +6,19 @@ import { ParentContainerStyle, HeadingTextStyle } from '../VenmoCards.style.nati
 import CardTile from '../../../../common/molecule/CardTile/views/CardTile.view.native';
 
 const VenmoCards = props => {
-  const { labels, venmoCardList } = props;
+  const { labels, venmoCardList, toggleModal, setSelectedCard } = props;
   return (
     <View {...props}>
       <HeadingTextStyle>{labels.paymentGC.lbl_payment_venmoHeading}</HeadingTextStyle>
       {venmoCardList.size > 0 &&
-        venmoCardList.map(cardItem => <CardTile card={cardItem} labels={labels} />)}
+        venmoCardList.map(cardItem => (
+          <CardTile
+            card={cardItem}
+            labels={labels}
+            toggleModal={toggleModal}
+            setSelectedCard={setSelectedCard}
+          />
+        ))}
     </View>
   );
 };
@@ -19,11 +26,15 @@ const VenmoCards = props => {
 VenmoCards.propTypes = {
   labels: PropTypes.string,
   venmoCardList: PropTypes.shape({}),
+  toggleModal: PropTypes.func,
+  setSelectedCard: PropTypes.func,
 };
 
 VenmoCards.defaultProps = {
   labels: null,
   venmoCardList: {},
+  toggleModal: () => {},
+  setSelectedCard: () => {},
 };
 
 export default withStyles(VenmoCards, ParentContainerStyle);

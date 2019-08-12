@@ -202,6 +202,12 @@ export const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = fals
   }
 };
 
+export const scrollPage = (x = 0, y = 0) => {
+  if (window) {
+    window.scrollTo(x, y);
+  }
+};
+
 export default {
   importGraphQLClientDynamically,
   importGraphQLQueriesDynamically,
@@ -215,4 +221,5 @@ export default {
   getSiteId,
   routerPush,
   bindAllClassMethodsToThis,
+  scrollPage,
 };

@@ -78,6 +78,11 @@ const endpoints = {
     method: API_METHODS.DELETE,
     URI: '/v2/account/logout',
   },
+
+  getPointsHistory: {
+    method: API_METHODS.GET,
+    URI: '/v2/wallet/getMyPointHistory',
+  },
   bonusPoints: {
     method: API_METHODS.GET,
     URI: 'v2/account/bonusDay',
@@ -159,6 +164,10 @@ const endpoints = {
   addOrderBopisItem: {
     method: API_METHODS.POST,
     URI: 'v2/bopis/createBopisOrder',
+  },
+  removeCouponOrPromo: {
+    method: 'POST',
+    URI: 'v2/checkout/removePromotionCode',
   },
   requestPassword: {
     method: 'put',

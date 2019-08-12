@@ -15,6 +15,7 @@ export {
   showOverlay,
   closeOverlay,
   bindAllClassMethodsToThis,
+  scrollPage,
 } from './utils.web';
 
 export {
@@ -26,4 +27,5 @@ export {
   getAPIConfig,
   createAPIConfig,
   isCanada,
+  isGymboree,
 } from './utils';

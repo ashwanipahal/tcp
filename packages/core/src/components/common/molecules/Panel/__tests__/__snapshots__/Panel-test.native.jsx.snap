@@ -11,6 +11,7 @@ exports[`Panel component should render correctly 1`] = `
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="regular"
+        locator=""
         text="Orders"
       />
     </Styled(TouchableHighlight)>
@@ -20,13 +21,13 @@ exports[`Panel component should render correctly 1`] = `
           "alignSelf": "center",
         }
       }
-      height={10}
+      height={6}
       source={
         Object {
-          "testUri": "../../../src/assets/images/carrot-small-right-gray.png",
+          "testUri": "../../../src/assets/images/carrot-small-down-gray.png",
         }
       }
-      width={6}
+      width={10}
     />
   </Styled(View)>
 </Styled(View)>

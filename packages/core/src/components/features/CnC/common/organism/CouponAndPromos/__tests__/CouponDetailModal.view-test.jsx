@@ -37,7 +37,7 @@ describe('Detail Coupon Modal', () => {
         id: 'Y00105578',
         status: 'applied',
         isExpiring: true,
-        title: '$20 OFF On $60',
+        title: '$10 OFF On $60',
         detailsOpen: false,
         expirationDate: '8/10/19',
         effectiveDate: '8/6/19',
@@ -48,6 +48,7 @@ describe('Detail Coupon Modal', () => {
         promotionType: 'public',
         expirationDateTimeStamp: '2019-08-10T18:29:00.001Z',
       },
+      onRequestClose: mockedCloseModal,
       applyToBag: mockedCloseModal,
     };
     const tree = shallow(<CouponDetailModalVanilla {...dataTwo} />);

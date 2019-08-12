@@ -66,6 +66,7 @@ An online account has been created with your email! Click here to reset your pas
             anchorVariation=""
             customStyle={Object {}}
             fontSizeVariation="xlarge"
+            locator=""
             text=""
             underline={true}
             visible={false}

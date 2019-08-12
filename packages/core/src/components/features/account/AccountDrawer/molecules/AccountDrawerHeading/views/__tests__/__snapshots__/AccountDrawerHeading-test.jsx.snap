@@ -26,10 +26,14 @@ exports[`AccountDrawerHeading should render correctly 1`] = `
   </span>
   <span
     className="viewAccAnchor"
+    role="link"
+    tabIndex={-1}
   >
     <Styled(Anchor)
       anchorVariation="primary"
+      asPath="/account"
       fontSizeVariation="medium"
+      to="/account?id=account-overview"
       underline={true}
     />
   </span>
