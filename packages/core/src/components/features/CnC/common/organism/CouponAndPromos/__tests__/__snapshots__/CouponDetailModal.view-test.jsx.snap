@@ -15,7 +15,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
     <Styled(BodyStyle)
       className="couponModal_modalTitle"
       data-locator="couponDetailModal_applied_NameLbl"
-      fontFamily="secondaryFontFamily"
+      fontFamily="primary"
       fontWeight="bold"
     >
       $10 OFF On $80
@@ -23,7 +23,7 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
     <Styled(BodyStyle)
       className="couponModal_modalSubTitle"
       data-locator="couponDetailModal_applied_ValidityDateLbl"
-      fontFamily="secondaryFontFamily"
+      fontFamily="secondary"
       fontWeight="bold"
     >
       undefined 8/10/19
@@ -61,21 +61,22 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
     <Styled(BodyStyle)
       className="couponModal_modalLongDesc"
       data-locator="couponDetailModal_applied_LongDesc"
-      fontFamily="secondaryFontFamily"
+      ffontFamily="secondary"
     >
       undefined
     </Styled(BodyStyle)>
     <Styled(BodyStyle)
       className="couponModal_modalLongDesc"
       data-locator="couponDetailModal_applied_ShortDesc"
-      fontFamily="secondaryFontFamily"
+      fontFamily="secondary"
     >
       undefined
       <Styled(Anchor)
         anchorVariation="primary"
         className="couponModal_print_anchor"
         data-locator="couponDetailModal_applied_tAndC"
-        fontSize="fs14"
+        fontFamily="secondary"
+        fontSize="fs12"
         onClick={[Function]}
         underline={true}
       >
@@ -86,7 +87,8 @@ exports[`Detail Coupon Modal should render correctly 1`] = `
         anchorVariation="primary"
         className="couponModal_print_anchor"
         data-locator="couponDetailModal_applied_pp"
-        fontSize="fs14"
+        fontFamily="secondary"
+        fontSize="fs12"
         onClick={[Function]}
         underline={true}
       >

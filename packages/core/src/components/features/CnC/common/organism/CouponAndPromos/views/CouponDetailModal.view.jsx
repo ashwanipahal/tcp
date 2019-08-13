@@ -22,7 +22,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
       <div className={className}>
         <BodyCopy
           fontWeight="bold"
-          fontFamily="secondaryFontFamily"
+          fontFamily="primary"
           className="couponModal_modalTitle"
           data-locator={`couponDetailModal_${coupon.status}_NameLbl`}
         >
@@ -30,7 +30,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
         </BodyCopy>
         <BodyCopy
           fontWeight="bold"
-          fontFamily="secondaryFontFamily"
+          fontFamily="secondary"
           className="couponModal_modalSubTitle"
           data-locator={`couponDetailModal_${coupon.status}_ValidityDateLbl`}
         >
@@ -70,14 +70,14 @@ class CouponDetailModal extends React.PureComponent<Props> {
           </Anchor>
         </div>
         <BodyCopy
-          fontFamily="secondaryFontFamily"
+          ffontFamily="secondary"
           className="couponModal_modalLongDesc"
           data-locator={`couponDetailModal_${coupon.status}_LongDesc`}
         >
           {`${labels.MODAL_LONG_DESCRIPTION}`}
         </BodyCopy>
         <BodyCopy
-          fontFamily="secondaryFontFamily"
+          fontFamily="secondary"
           className="couponModal_modalLongDesc"
           data-locator={`couponDetailModal_${coupon.status}_ShortDesc`}
         >
@@ -85,10 +85,11 @@ class CouponDetailModal extends React.PureComponent<Props> {
           <Anchor
             underline
             anchorVariation="primary"
-            fontSize="fs14"
+            fontSize="fs12"
             data-locator={`couponDetailModal_${coupon.status}_tAndC`}
             onClick={this.tAndCClick}
             className="couponModal_print_anchor"
+            fontFamily="secondary"
           >
             {`${labels.TERMS_AND_CONDITIONS}`}
           </Anchor>
@@ -97,10 +98,11 @@ class CouponDetailModal extends React.PureComponent<Props> {
           <Anchor
             underline
             anchorVariation="primary"
-            fontSize="fs14"
+            fontSize="fs12"
             data-locator={`couponDetailModal_${coupon.status}_pp`}
             onClick={this.tAndCClick}
             className="couponModal_print_anchor"
+            fontFamily="secondary"
           >
             {`${labels.PRIVACY_POLICY}`}
           </Anchor>

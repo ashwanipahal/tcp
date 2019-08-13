@@ -60,7 +60,7 @@ const CouponDetailModalStyle = css`
     text-align: center;
   }
   .couponModal_print_anchor {
-    color: ${props => props.theme.colors.BRAND.PRIMARY};
+    color: ${props => props.theme.colors.ANCHOR.PRIMARY};
   }
   .couponModal_modalLongDesc {
     text-align: left;

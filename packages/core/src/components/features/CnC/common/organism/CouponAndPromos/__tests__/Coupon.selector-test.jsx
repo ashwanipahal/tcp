@@ -126,12 +126,12 @@ describe('#Coupon selector', () => {
       MODAL_SHORT_DESCRIPTION: 'By participating in the activity, you agree to ',
       PLACE_CASH_TEXT: 'PLACE CASH',
       PRINT_ANCHOR_TEXT: 'Print',
-      PRIVACY_POLICY: 'privacy policy',
+      PRIVACY_POLICY: 'Privacy Policy',
       REMOVE_BUTTON_TEXT: 'REMOVE',
       REWARDS_TEXT: 'REWARDS',
       SAVINGS_TEXT: 'SAVINGS',
       SHOW_MORE_BUTTON_TEXT: 'Show more',
-      TERMS_AND_CONDITIONS: 'terms and conditions',
+      TERMS_AND_CONDITIONS: 'Terms & Conditions',
       USE_BY_TEXT: 'Use by',
     });
   });

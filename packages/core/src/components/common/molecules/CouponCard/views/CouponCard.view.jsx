@@ -20,6 +20,7 @@ class CouponCard extends React.Component<Props> {
             className="couponCard__header_text"
             component="p"
             fontSize="fs12"
+            fontFamily="secondary"
           >
             {type}
           </BodyCopy>
@@ -30,6 +31,7 @@ class CouponCard extends React.Component<Props> {
             className="couponCard__header_expired"
             component="p"
             fontSize="fs12"
+            fontFamily="secondary"
           >
             {labels.EXPIRING_SOON}
           </BodyCopy>
