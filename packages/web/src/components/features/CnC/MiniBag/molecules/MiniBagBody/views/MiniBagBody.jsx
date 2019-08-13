@@ -39,7 +39,7 @@ const MiniBagBody = ({
             {userName ? (
               <BodyCopy component="span" fontSize="fs12" textAlign="left">
                 <Anchor
-                  fontSizeVariation="small"
+                  fontSizeVariation="medium"
                   underline
                   anchorVariation="primary"
                   noLink
@@ -50,7 +50,7 @@ const MiniBagBody = ({
                 </Anchor>
                 {` `}
                 <Anchor
-                  fontSizeVariation="small"
+                  fontSizeVariation="medium"
                   underline
                   anchorVariation="primary"
                   noLink
@@ -62,7 +62,7 @@ const MiniBagBody = ({
             ) : (
               <BodyCopy component="span" fontSize="fs12" textAlign="left">
                 <Anchor
-                  fontSizeVariation="small"
+                  fontSizeVariation="medium"
                   underline
                   anchorVariation="primary"
                   noLink

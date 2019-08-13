@@ -20,6 +20,9 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
   .viewBagAndProduct {
     height: calc(100% - 120px);
     overflow-y: auto;
+    border-top: 2px solid ",
+          [Function],
+          ";
   }
   .mainWrapper {
     text-align: center;
@@ -29,9 +32,13 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
     height: 31px;
     padding-right: 0;
     padding-left: 0;
+    margin: 0;
+    width: 100%;
   }
   .subHeaderText {
     text-decoration: underline;
+    vertical-align: middle;
+    line-height: 28px;
   }
   .miniBagFooter {
     height: 137px;
