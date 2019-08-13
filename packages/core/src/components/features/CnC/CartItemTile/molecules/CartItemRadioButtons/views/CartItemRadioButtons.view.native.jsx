@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
-import withStyles from '../../../../../../common/hoc/withStyles';
-import style from '../styles/CartItemRadioButtons.style';
-import { BodyCopy, LabeledRadioButton } from '../../../../../../common/atoms';
-import { getLocator } from '../../../../../../../utils';
+import { LabeledRadioButton } from '../../../../../../common/atoms';
 
 class CartItemRadioButtons extends React.Component {
   constructor(props) {
@@ -27,7 +24,7 @@ class CartItemRadioButtons extends React.Component {
 
   render() {
     const { selectedOrder } = this.state;
-    const { className, labels, productDetail } = this.props;
+    const { labels } = this.props;
 
     return (
       <View>
@@ -62,7 +59,6 @@ CartItemRadioButtons.propTypes = {
     miscInfo: {},
   }).isRequired,
   labels: PropTypes.shape({}).isRequired,
-  className: PropTypes.string.isRequired,
 };
 
 export default CartItemRadioButtons;

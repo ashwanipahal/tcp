@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import endpoints from '../../../../../../../service/endpoint';
