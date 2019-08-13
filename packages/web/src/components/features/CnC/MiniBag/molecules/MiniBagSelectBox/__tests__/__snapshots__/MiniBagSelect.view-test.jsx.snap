@@ -7,14 +7,14 @@ exports[`MiniBagSelectBox component MiniBagSelectBox component renders correctly
     color="text.primary"
     component="p"
     fontFamily="secondary"
-    fontSize="fs12"
-    fontWeight="regular"
+    fontSize="fs10"
+    fontWeight="extrabold"
     letterSpacing="normal"
     lineHeight="normal"
     textAlign="left"
   >
     <span>
-      undefined:
+      :
     </span>
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
@@ -37,7 +37,7 @@ exports[`MiniBagSelectBox component MiniBagSelectBox component renders correctly
           [Function],
           ";
   .select__input {
-    padding: 11px 0 0 7px;
+    padding: 7px 0 7px 7px;
     font-family: ",
           [Function],
           ";
@@ -48,6 +48,11 @@ exports[`MiniBagSelectBox component MiniBagSelectBox component renders correctly
   }
 ",
         ]
+      }
+      input={
+        Object {
+          "name": "",
+        }
       }
     />
   </Styled(BodyCopy)>

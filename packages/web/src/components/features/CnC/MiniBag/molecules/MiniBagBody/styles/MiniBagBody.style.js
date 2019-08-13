@@ -11,10 +11,23 @@ export default css`
   .mainWrapper {
     text-align: center;
     background-color: ${props => props.theme.colorPalette.gray['300']};
-    height: 31px;
+    height: auto;
     padding-right: 0;
     padding-left: 0;
   }
+
+  .deleteMsg {
+    border: solid 2px #26762c;
+    padding: 10px;
+    background: #fff;
+    margin: 12px;
+    .tick-icon-image {
+      position: relative;
+      top: 1px;
+      right: 9px;
+    }
+  }
+
   .subHeaderText {
     text-decoration: underline;
   }

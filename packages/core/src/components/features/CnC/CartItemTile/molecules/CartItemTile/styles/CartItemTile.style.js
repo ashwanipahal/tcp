@@ -48,6 +48,9 @@ export default css`
 
   .crossDeleteIcon {
     float: right;
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
   }
 
   .product-tile-wrapper {

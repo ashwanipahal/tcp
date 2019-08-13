@@ -11,6 +11,11 @@ const dropDownlist = css`
   .dropdownUlBorder {
     border: 2px solid ${props => props.theme.colors.BLACK};
     background-color: ${props => props.theme.colors.WHITE};
+    img {
+      border: solid 0.4px #222222;
+      margin-right: 5px;
+      border-radius: 5px;
+    }
   }
 
   .dropdownliBottomBorder {

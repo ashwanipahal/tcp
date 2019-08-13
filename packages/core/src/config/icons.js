@@ -40,4 +40,5 @@ export default {
   'cart-icon': '/static/images/bag.png',
   'alert-triangle': '/static/images/alert-triangle.png',
   'user-icon': '/static/images/user-icon.png',
+  'close-icon': '/static/images/close.png',
 };

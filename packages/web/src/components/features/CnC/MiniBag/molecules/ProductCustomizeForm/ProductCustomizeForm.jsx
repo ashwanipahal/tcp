@@ -28,7 +28,6 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
       selectedFit: '',
       selectedSize: '',
       selectedQuantity: '',
-      selectedSkuId: 0,
     };
   }
 
@@ -36,9 +35,9 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
     const { initialValues } = this.props;
     this.setState({
       selectedColor: initialValues.color,
-      selectedFit: initialValues.fit,
-      selectedSize: initialValues.size,
-      selectedQuantity: initialValues.qty,
+      selectedFit: initialValues.Fit,
+      selectedSize: initialValues.Size,
+      selectedQuantity: initialValues.Qty,
     });
   }
 
@@ -47,48 +46,23 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
     const { colorFitsSizesMap } = this.props;
     const colorItem = this.getSelectedColorData(colorFitsSizesMap, selectedColor);
     const hasFits = colorItem.getIn([0, 'hasFits']);
-    let selectedSkuId;
-
-    // eslint-disable-next-line sonarjs/no-all-duplicated-branches
+    let fit;
+    let sizeItem;
     if (hasFits) {
-      colorItem.getIn([0, 'fits']).map(fit => {
-        if (fit.get('fitName') === selectedFit) {
-          return fit.get('sizes').map(size => {
-            if (size.get('sizeName') === selectedSize) {
-              // this.setState({
-              //   selectedSkuId : size.get('skuId')})
-              selectedSkuId = size.get('skuId');
-            }
-          });
-        }
-      });
+      fit = colorItem.getIn([0, 'fits']).find(fitItems => fitItems.get('fitName') === selectedFit);
+      sizeItem = fit && fit.get('sizes');
     } else {
-      colorItem.getIn([0, 'fits']).map(fit => {
-        // eslint-disable-next-line sonarjs/no-identical-functions
-        fit.get('sizes').map(size => {
-          if (size.get('sizeName') === selectedSize) {
-            // eslint-disable-next-line prefer-destructuring
-            // this.setState({
-            //   selectedSkuId : size.get('skuId'),
-            // })
-            selectedSkuId = size.get('skuId');
-          }
-        });
-      });
+      fit = colorItem.getIn([0, 'fits']);
+      sizeItem = fit && fit.getIn([0, 'sizes']);
     }
-    if (selectedSkuId.length) {
-      return selectedSkuId;
-    }
+    return sizeItem && sizeItem.find(size => size.get('sizeName') === selectedSize).get('skuId');
   };
 
   getSelectedColorData = (colorFitsSizesMap, color) => {
     return (
       colorFitsSizesMap &&
       colorFitsSizesMap.filter(colorItem => {
-        if (colorItem.getIn(['color', 'name']) === color.name) {
-          return colorItem;
-        }
-        return '';
+        return colorItem.getIn(['color', 'name']) === color.name && colorItem;
       })
     );
   };
@@ -192,15 +166,8 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
   };
 
   getQuantityList = () => {
-    const quantityArray = [];
-    for (let i = 0; i < 15; i++) {
-      const num = i;
-      quantityArray.push({
-        displayName: num + 1,
-        id: num + 1,
-      });
-    }
-    return quantityArray;
+    const quantityArray = new Array(15).fill(1);
+    return quantityArray.map((val, index) => ({ displayName: index + 1, id: index + 1 }));
   };
 
   getSizeLabel = (productDetail, labels) => {
@@ -209,7 +176,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
 
   render() {
     const { colorFitsSizesMap, item, labels, formVisiblity } = this.props;
-    const { selectedColor, selectedFit, selectedSize, selectedQuantity } = this.state;
+    const { selectedColor, selectedFit, selectedQuantity } = this.state;
 
     const colorList = this.getColorOptions(colorFitsSizesMap);
     const selectedColorElement = this.getSelectedColorData(colorFitsSizesMap, selectedColor);
@@ -225,7 +192,6 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
     const { className } = this.props;
     const { handleSubmit } = this.props;
     const { itemId } = item.itemInfo;
-    const { selectedSkuId } = this.state;
     const quantity = selectedQuantity || '1';
     const { itemPartNumber } = item.productInfo;
     const { variantNo } = item.productInfo;

@@ -164,14 +164,19 @@ class CartItemTile extends React.Component {
     } = this.props;
     const initialValues = {
       color: { name: productDetail.itemInfo.color },
-      fit: productDetail.itemInfo.fit,
-      size: productDetail.itemInfo.size,
-      qty: productDetail.itemInfo.qty,
+      Fit: productDetail.itemInfo.fit,
+      Size: productDetail.itemInfo.size,
+      Qty: productDetail.itemInfo.qty,
     };
     return (
       <div className={className}>
         <div className="crossDeleteIcon">
-          <button onClick={() => removeCartItem(productDetail.itemInfo.itemId)}> Delete</button>
+          <Image
+            alt="closeIcon"
+            className="close-icon-image"
+            src={getIconPath('close-icon')}
+            onClick={() => removeCartItem(productDetail.itemInfo.itemId)}
+          />
         </div>
         <Row
           fullBleed
