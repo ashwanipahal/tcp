@@ -122,16 +122,16 @@ describe('#Coupon selector', () => {
       HELP_APPLYING: 'Help applying Place Cash',
       LESS_MORE_BUTTON_TEXT: 'Less more',
       MODAL_LONG_DESCRIPTION:
-        'Lorum ipsum labore et dolore magna aliqua. Sed arcu non odio euismod lacinia. Tortor pretium viverra suspendisse potenti nullam ac tortor. Ris commodo viverra maecenas accumsan lacus vel. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Ipsum faucibus vitae aliquet nec ullamcorper sit amet risus nullams ut etiam sit amet. Semper quis lectus nulla at volutpat diam ut venenatis. Sagittis orci a scelerisque purus semper eget duis. Tincidunt eget nullam non nisi est sit. Lectus quam id leo in vitae turpis massa sed elementum. Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper. Pharetra sit amet aliquam id diam maecenas ultricies mi eget. Quam nulla porttitor massa id neque.',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna nunc, interdum ac neque non, blandit accumsan justo. Phasellus aliquam urna ut nisl faucibus, quis pellentesque nulla vulputate. Phasellus bibendum lobortis orci, condimentum convallis sapien cursus non. Nunc eu bibendum sem. Quisque metus nisl, consectetur quis elit ut, maximus sollicitudin elit. Maecenas congue tempor ante, quis finibus neque bibendum vel.',
       MODAL_SHORT_DESCRIPTION: 'By participating in the activity, you agree to ',
       PLACE_CASH_TEXT: 'PLACE CASH',
       PRINT_ANCHOR_TEXT: 'Print',
-      PRIVACY_POLICY: 'privacy policy',
+      PRIVACY_POLICY: 'Privacy Policy',
       REMOVE_BUTTON_TEXT: 'REMOVE',
       REWARDS_TEXT: 'REWARDS',
       SAVINGS_TEXT: 'SAVINGS',
       SHOW_MORE_BUTTON_TEXT: 'Show more',
-      TERMS_AND_CONDITIONS: 'terms and conditions',
+      TERMS_AND_CONDITIONS: 'Terms & Conditions',
       USE_BY_TEXT: 'Use by',
     });
   });

@@ -26,6 +26,7 @@ class CartItemRadioButtons extends React.Component {
   render() {
     const { selectedOrder } = this.state;
     const { className, labels, productDetail } = this.props;
+    const { bossStartDate, bossEndDate } = productDetail.miscInfo;
     const radioGroupName = `ship-it-${productDetail.itemInfo.itemId}`;
     const commonSelectBox = 'common-select-box-css';
     const selectedMethod = 'selected-method';
@@ -65,6 +66,39 @@ class CartItemRadioButtons extends React.Component {
               </div>
             </div>
           </div>
+          {productDetail.miscInfo.store && selectedOrder === 'BOSS' && (
+            <BodyCopy
+              className="padding-top-10"
+              color="gray.800"
+              fontFamily="secondary"
+              fontSize="fs10"
+            >
+              At
+              <BodyCopy
+                className="padding-horizontal-5"
+                fontWeight="semibold"
+                component="span"
+                fontFamily="secondary"
+                fontSize="fs10"
+              >
+                {productDetail.miscInfo.store}
+              </BodyCopy>
+              by
+              <BodyCopy
+                className="padding-left-5"
+                fontWeight="semibold"
+                component="span"
+                fontFamily="secondary"
+                fontSize="fs10"
+              >
+                {` ${bossStartDate.get('day')}. ${bossStartDate.get('month')} ${bossStartDate.get(
+                  'date'
+                )} - ${bossEndDate.get('day')}. ${bossEndDate.get('month')} ${bossEndDate.get(
+                  'date'
+                )}`}
+              </BodyCopy>
+            </BodyCopy>
+          )}
         </LabeledRadioButton>
         <LabeledRadioButton
           className={[
@@ -87,7 +121,7 @@ class CartItemRadioButtons extends React.Component {
             {labels.bopisPickUp}
           </BodyCopy>
 
-          {productDetail.miscInfo.store && (
+          {productDetail.miscInfo.store && selectedOrder === 'BOPIS' && (
             <BodyCopy
               className="padding-top-10"
               color="gray.800"

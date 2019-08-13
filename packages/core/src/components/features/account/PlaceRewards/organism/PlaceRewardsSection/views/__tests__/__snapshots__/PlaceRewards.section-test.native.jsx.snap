@@ -15,6 +15,10 @@ exports[`MyRewards should render correctly 1`] = `
     </Styled(Text)>
     <Styled(View) />
     <Styled(View)>
+      <Styled(BodyCopy)
+        fontSize="fs16"
+        fontWeight="extrabold"
+      />
       <Connect(RewardsPointsContainer) />
     </Styled(View)>
     <Styled(View)>

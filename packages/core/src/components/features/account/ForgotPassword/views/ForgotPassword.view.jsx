@@ -74,6 +74,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
             to="/account?id=address-book"
             data-locator="addnewaddress-back"
           >
+            <span className="left-arrow"> </span>
             {labels.password.lbl_forgotPassword_backLogin}
           </Anchor>
         </div>
@@ -153,6 +154,12 @@ class ForgotPasswordView extends React.Component<Props, State> {
                 <RichText
                   className="heading-link"
                   richTextHtml={labels.password.lbl_forgotPassword_heading}
+                  dataLocator="forgot-password"
+                />
+
+                <RichText
+                  className="heading-link"
+                  richTextHtml={labels.password.lbl_forgotPassword_subHeading}
                   dataLocator="forgot-password"
                 />
               </BodyCopy>
