@@ -68,6 +68,7 @@ const style = css`
     }
   }
 
+  .button-list-container.imageCTAList,
   .button-list-container.stackedCTAList,
   .button-list-container.scrollCTAList {
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
