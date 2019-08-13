@@ -3,6 +3,12 @@ import { RESET_PASSWORD_REDUCER_KEY } from '../../../../../constants/reducer.con
 
 const getState = state => state[RESET_PASSWORD_REDUCER_KEY];
 
-export const getError = createSelector(getState, state => state && state.get('error'));
+export const getError = createSelector(
+  getState,
+  state => state && state.get('error')
+);
 
-export const getSuccess = createSelector(getState, state => state && state.get('success'));
+export const getSuccess = createSelector(
+  getState,
+  state => state && state.get('success')
+);

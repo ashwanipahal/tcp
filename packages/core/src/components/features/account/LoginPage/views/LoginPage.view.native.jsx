@@ -23,11 +23,15 @@ class LoginView extends React.PureComponent {
         password: credentials.password,
       };
       if (credentials) {
-        const getTouchIdResult = touchIDCheck();
-        const isTouchEnable = isSupportedTouch();
-        if (getTouchIdResult && isTouchEnable) {
-          onSubmit(userDetails);
-        }
+        isSupportedTouch().then(techAvailable => {
+          if (techAvailable) {
+            touchIDCheck().then(touchIdResp => {
+              if (touchIdResp) {
+                onSubmit(userDetails);
+              }
+            });
+          }
+        });
       }
     });
   }
@@ -36,11 +40,13 @@ class LoginView extends React.PureComponent {
     const { onSubmit } = this.props;
     resetTouchPassword();
     setUserLoginDetails(formdata.emailAddress, formdata.password);
-    const getTouchIdResult = touchIDCheck();
-    const isTouchEnable = isSupportedTouch();
-    if (getTouchIdResult && formdata.userTouchId && isTouchEnable) {
-      onSubmit(formdata);
-    }
+    onSubmit(formdata);
+
+    isSupportedTouch().then(touchAvailable => {
+      if (touchAvailable && formdata.userTouchId) {
+        touchIDCheck();
+      }
+    });
   };
 
   render() {
@@ -56,6 +62,7 @@ class LoginView extends React.PureComponent {
       resetForm,
       resetForgotPasswordErrorResponse,
       onCreateAccountClick,
+      navigation,
     } = this.props;
     return (
       <ScrollViewStyle>
@@ -72,6 +79,7 @@ class LoginView extends React.PureComponent {
           resetForm={resetForm}
           resetForgotPasswordErrorResponse={resetForgotPasswordErrorResponse}
           onCreateAccountClick={onCreateAccountClick}
+          navigation={navigation}
         />
       </ScrollViewStyle>
     );
@@ -90,10 +98,12 @@ LoginView.propTypes = {
   resetForm: PropTypes.string.isRequired,
   resetForgotPasswordErrorResponse: PropTypes.string.isRequired,
   onCreateAccountClick: PropTypes.string.isRequired,
+  navigation: PropTypes.shape({}),
 };
 
 LoginView.defaultProps = {
   loginErrorMessage: '',
+  navigation: {},
 };
 
 export default LoginView;

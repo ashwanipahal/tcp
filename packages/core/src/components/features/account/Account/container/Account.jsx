@@ -32,6 +32,13 @@ export class Account extends React.PureComponent {
     getAccountNavigationAction();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const { componentToLoad } = this.state;
+    if (prevState.componentToLoad !== componentToLoad) {
+      utils.scrollPage();
+    }
+  }
+
   static getDerivedStateFromProps(nextProps, prevState) {
     const nextActiveComponent = utils.getObjectValue(
       nextProps.router,

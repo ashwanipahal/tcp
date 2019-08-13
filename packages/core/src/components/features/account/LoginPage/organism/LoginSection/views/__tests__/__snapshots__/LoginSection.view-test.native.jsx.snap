@@ -6,6 +6,12 @@ exports[`LoginSection component should renders correctly 1`] = `
     Object {
       "$$typeof": Symbol(react.forward_ref),
       "_foldedDefaultProps": Object {
+        "labels": Object {
+          "login": Object {
+            "lbl_login_createAccountCTA": "",
+            "lbl_login_createAccountHelp": "",
+          },
+        },
         "loginErrorMessage": "",
       },
       "attrs": Array [],
