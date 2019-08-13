@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyBagPage component should renders correctly 1`] = `
+<Styled(View)>
+  <Text>
+    <Styled(BodyCopy)
+      className="large-size-message"
+      color="gray.900"
+      dataLocator="cartEmptyBagMessage"
+      fontFamily="secondary"
+      fontSize="fs16"
+      fontWeight="extrabold"
+      locator=""
+      text=""
+    />
+  </Text>
+  <Styled(TouchableOpacity)
+    onPress={[Function]}
+  >
+    <Styled(BodyCopy)
+      color="white"
+      fontFamily="secondary"
+      fontSize="fs13"
+      fontWeight="extrabold"
+      locator=""
+      text=""
+      textTransform="uppercase"
+    />
+  </Styled(TouchableOpacity)>
+  <Text>
+    <Styled(BodyCopy)
+      className="large-size-message"
+      color="gray.900"
+      dataLocator="cartRecommendationMessage"
+      fontFamily="secondary"
+      fontWeight="extrabold"
+      locator=""
+      text=""
+    />
+  </Text>
+  <Styled(View)>
+    <Styled(BodyCopy)
+      className="small-spacing"
+      dataLocator="cartRecommendationMessage"
+      fontFamily="secondary"
+      locator=""
+      text=""
+    />
+  </Styled(View)>
+</Styled(View)>
+`;
