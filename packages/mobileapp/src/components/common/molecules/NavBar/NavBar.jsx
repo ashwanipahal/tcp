@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { connect } from 'react-redux';
-import { navigateToNestedRoute, resetNavigationStack } from '@tcp/core/src/utils/utils.app';
+import { navigateToNestedRoute, resetNavigationStack } from '@tcp/core/src/utils';
 
 import style from './NavBar.style';
 import SecondAppPeekABooView from '../../../../navigation/SecondAppPeekABooView';
