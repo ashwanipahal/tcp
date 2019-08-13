@@ -7,7 +7,7 @@ exports[`Help Coupon Modal should call correctly 1`] = `
   fixedWidth={true}
   isOpen={false}
   maxWidth="500px"
-  minHeight="700px"
+  minHeight="90%"
   onRequestClose={[MockFunction]}
   overlayClassName="TCPModal__Overlay"
 >

@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { getViewportInfo } from '@tcp/core/src/utils';
 import {
   openL2Panel,
   openL2Drawer,
@@ -35,9 +36,11 @@ const mapDispatchToProps = dispatch => {
       dispatch(hideL2Drawer(id));
     },
     openL3Drawer: id => e => {
-      e.preventDefault();
-      e.stopPropagation();
-      dispatch(openL3Drawer(id));
+      if (!getViewportInfo().isDesktop) {
+        e.preventDefault();
+        e.stopPropagation();
+        dispatch(openL3Drawer(id));
+      }
     },
     hideL3Drawer: id => () => {
       dispatch(hideL3Drawer(id));

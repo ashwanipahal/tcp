@@ -7,6 +7,7 @@ const ignorePsuedoCodeDir = [
   '/service/',
   '/ProductListing/',
   '/abstractors/productListing/',
+  '/FPO/',
 ];
 
 module.exports = {

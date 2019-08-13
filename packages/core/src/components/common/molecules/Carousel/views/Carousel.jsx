@@ -111,7 +111,7 @@ class Carousel extends React.PureComponent<Props, State> {
     const settings = { ...defaults, ...options };
 
     return (
-      <CarouselStyle
+      <div
         className={`${className} tcp_carousel_wrapper`}
         carouselConfig={carouselConfig}
         data-locator={carouselConfig.dataLocatorCarousel}
@@ -120,7 +120,7 @@ class Carousel extends React.PureComponent<Props, State> {
           {!children ? null : children}
         </Slider>
         {carouselConfig.autoplay && !options.hidePlayPause && this.getPlayButton(carouselConfig)}
-      </CarouselStyle>
+      </div>
     );
   }
 }

@@ -28,30 +28,27 @@ const Abstractor = {
     return Abstractor.processData(mock.data.navigation);
   },
   processData: navLinkList => {
-    // eslint-disable-next-line
     return navLinkList.map(listItem => {
       const subCategories = {};
       listItem.subCategories.map(subCategory => {
-        if (!subCategories[subCategory.categoryContent.groupIdentifierName || 'Lorem Ipsum']) {
-          subCategories[subCategory.categoryContent.groupIdentifierName || 'Lorem Ipsum'] = [];
+        const subCat = subCategory;
+        const category = subCat.categoryContent.groupIdentifierName || 'Lorem Ipsum';
+        if (!subCategories[category]) {
+          subCategories[category] = [];
         }
-        // eslint-disable-next-line
-        subCategory.url = Abstractor.constructUrl(subCategory.categoryContent);
-        subCategories[subCategory.categoryContent.groupIdentifierName || 'Lorem Ipsum'].push(
-          subCategory
-        );
-        subCategory.subCategories.map(L3 => {
-          // eslint-disable-next-line
-          L3.url = Abstractor.constructUrl(L3.categoryContent);
-          return L3;
+        subCat.url = Abstractor.constructUrl(subCategory.categoryContent);
+        subCat.subCategories.map(L3 => {
+          const L3Obj = L3;
+          L3Obj.url = Abstractor.constructUrl(L3.categoryContent);
+          return L3Obj;
         });
+        subCategories[category].push(subCat);
         return subCategory;
       });
 
       return {
         categoryContent: listItem.categoryContent,
         subCategories,
-        // eslint-disable-next-line
         url: Abstractor.constructUrl(listItem.categoryContent),
         categoryId: listItem.categoryContent.catgroupId,
       };

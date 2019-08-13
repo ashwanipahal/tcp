@@ -1,3 +1,12 @@
+import {
+  FONTS,
+  LETTER_SPACINGS,
+  LINE_HEIGHTS,
+  TEXT_ALIGNS,
+  FONT_WEIGHTS,
+  FONT_SIZES,
+} from './typography.constants';
+
 const BASE_HEADING_TYPOGRAPHY = {
   fontFamily: 'primary',
   fontSize: ['fs48', 'fs48', 'fs64'],
@@ -6,7 +15,13 @@ const BASE_HEADING_TYPOGRAPHY = {
   lineHeight: 'normal',
 };
 
-const fonts = {
+const gymboreeTypography = {
+  fonts: FONTS,
+  letterSpacings: LETTER_SPACINGS,
+  lineHeights: LINE_HEIGHTS,
+  textAligns: TEXT_ALIGNS,
+  fontWeights: FONT_WEIGHTS,
+  fontSizes: FONT_SIZES,
   h1: {
     ...BASE_HEADING_TYPOGRAPHY,
     fontSize: ['fs48', 'fs48', 'fs64'],
@@ -23,8 +38,8 @@ const fonts = {
   h4: {
     ...BASE_HEADING_TYPOGRAPHY,
     fontSize: ['fs20', 'fs20', 'fs36'],
-    fontWeight: '500',
-    letterSpacing: ['ls222', 'ls222', 'ls400'],
+    fontWeight: 'regular',
+    letterSpacing: ['ls222', 'ls222', 'ls4'],
   },
   h5: {
     ...BASE_HEADING_TYPOGRAPHY,
@@ -45,9 +60,9 @@ const fonts = {
   },
   listMenu: {
     ...BASE_HEADING_TYPOGRAPHY,
-    fontSize: 'fs14',
+    fontSize: ['fs13', 'fs13', 'fs14'],
     fontFamily: 'secondary',
-    fontWeight: 'semibold',
+    fontWeight: 'normal',
     lineHeight: ['lh115', 'lh115', 'lh107'],
   },
   navMinified: {
@@ -59,4 +74,4 @@ const fonts = {
   },
 };
 
-export default fonts;
+export default gymboreeTypography;

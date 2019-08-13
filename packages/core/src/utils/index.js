@@ -22,10 +22,12 @@ export {
   isServer,
   isClient,
   isMobileApp,
+  isGymboree,
+  isTCP,
+  getBrand,
   getIconPath,
   getLocator,
   getAPIConfig,
   createAPIConfig,
   isCanada,
-  isGymboree,
 } from './utils';

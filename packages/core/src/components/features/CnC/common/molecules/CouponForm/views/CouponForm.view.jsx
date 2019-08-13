@@ -127,8 +127,11 @@ CouponForm.defaultProps = {
   onNeedHelpTextClick: () => {},
 };
 
+const onSubmitSuccess = (result, dispatch, { reset }) => reset();
+
 export default reduxForm({
   form: 'CouponForm',
+  onSubmitSuccess,
 })(withStyles(CouponForm, style));
 
 export { CouponForm };

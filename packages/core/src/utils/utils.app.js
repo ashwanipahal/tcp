@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-unresolved
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 // eslint-disable-next-line import/no-unresolved
 import { Dimensions, Linking } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
@@ -260,4 +260,23 @@ export const validateExternalUrl = url => {
     return true;
   }
   return false;
+};
+
+/**
+ * @function resetNavigationStack
+ * This function resets data from navigation stack
+ *
+ */
+export const resetNavigationStack = navigation => {
+  const { state } = navigation;
+  const { routes, index: activeRouteIndex } = state;
+  navigation.dispatch(
+    StackActions.reset({
+      index: 0,
+      key: null,
+      actions: [
+        NavigationActions.navigate({ routeName: routes[activeRouteIndex].routes[0].routeName }),
+      ],
+    })
+  );
 };

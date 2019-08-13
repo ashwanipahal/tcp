@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ProductTileWrapper from '@tcp/web/src/components/features/CnC/MiniBag/container/ProductTileWrapperContainer.container';
+import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import OrderLedgerContainer from '../organisms/OrderLedger';
 import withStyles from '../../../../common/hoc/withStyles';
 import styles, { addedToBagActionsStyles } from '../styles/BagPage.style';
