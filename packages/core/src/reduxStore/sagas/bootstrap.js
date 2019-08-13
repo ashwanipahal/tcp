@@ -1,6 +1,13 @@
 import { call, put, putResolve, takeLatest } from 'redux-saga/effects';
 import bootstrapAbstractor from '../../services/abstractors/bootstrap';
-import { loadLayoutData, loadLabelsData, loadModulesData, setAPIConfig } from '../actions';
+import xappAbstractor from '../../services/abstractors/bootstrap/xappConfig';
+import {
+  loadLayoutData,
+  loadLabelsData,
+  loadModulesData,
+  setAPIConfig,
+  loadXappConfigData,
+} from '../actions';
 import { loadHeaderData } from '../../components/common/organisms/Header/container/Header.actions';
 import { loadFooterData } from '../../components/common/organisms/Footer/container/Footer.actions';
 import { loadNavigationData } from '../../components/features/content/Navigation/container/Navigation.actions';
@@ -18,6 +25,8 @@ function* bootstrap({ payload: { pageInfo = { name: 'homepage' }, apiConfig } })
     yield put(loadNavigationData(result.navigation));
     yield put(loadFooterData(result.footer));
     yield put(loadModulesData(result.modules));
+    const xappConfig = yield call(xappAbstractor.getData, GLOBAL_CONSTANTS.XAPP_CONFIG_MODULE);
+    yield put(loadXappConfigData(xappConfig));
   } catch (err) {
     // eslint-disable-next-line no-console
     console.log(err);
