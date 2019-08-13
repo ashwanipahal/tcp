@@ -6,6 +6,17 @@ import handler from '../../../handler';
  * Abstractor layer for loading data from API for Navigation
  */
 const Abstractor = {
+  constructUrl: contentObj => {
+    return (
+      contentObj.seoUrl ||
+      `/us/${
+        contentObj.seoToken && contentObj.seoToken.startsWith('content-')
+          ? contentObj.seoToken.replace(new RegExp('content-', 'g'), 'content/')
+          : // eslint-disable-next-line
+            'c/' + (contentObj.seoToken || contentObj.catgroupId)
+      }`
+    );
+  },
   getData: (module, data) => {
     return handler
       .fetchModuleDataFromGraphQL({ name: module, data })
@@ -24,31 +35,13 @@ const Abstractor = {
           subCategories[subCategory.categoryContent.groupIdentifierName || 'Lorem Ipsum'] = [];
         }
         // eslint-disable-next-line
-        subCategory.url =
-          subCategory.categoryContent.seoUrl ||
-          `/us/${
-            subCategory.categoryContent.seoToken.startsWith('content-')
-              ? subCategory.categoryContent.seoToken.replace(
-                  new RegExp('content-', 'g'),
-                  'content/'
-                )
-              : // eslint-disable-next-line
-                'c/' +
-                (subCategory.categoryContent.seoToken || subCategory.categoryContent.catgroupId)
-          }`;
+        subCategory.url = Abstractor.constructUrl(subCategory.categoryContent);
         subCategories[subCategory.categoryContent.groupIdentifierName || 'Lorem Ipsum'].push(
           subCategory
         );
         subCategory.subCategories.map(L3 => {
           // eslint-disable-next-line
-          L3.url =
-            L3.categoryContent.seoUrl ||
-            `/us/${
-              L3.categoryContent.seoToken.startsWith('content-')
-                ? L3.categoryContent.seoToken.replace(new RegExp('content-', 'g'), 'content/')
-                : // eslint-disable-next-line
-                  'c/' + (L3.categoryContent.seoToken || L3.categoryContent.catgroupId)
-            }`;
+          L3.url = Abstractor.constructUrl(L3.categoryContent);
           return L3;
         });
         return subCategory;
@@ -57,15 +50,8 @@ const Abstractor = {
       return {
         categoryContent: listItem.categoryContent,
         subCategories,
-        url:
-          listItem.categoryContent.seoUrl ||
-          `/us/${
-            listItem.categoryContent.seoToken &&
-            listItem.categoryContent.seoToken.startsWith('content-')
-              ? listItem.categoryContent.seoToken.replace(new RegExp('content-', 'g'), 'content/')
-              : // eslint-disable-next-line
-                'c/' + (listItem.categoryContent.seoToken || listItem.categoryContent.catgroupId)
-          }`,
+        // eslint-disable-next-line
+        url: Abstractor.constructUrl(listItem.categoryContent),
         categoryId: listItem.categoryContent.catgroupId,
       };
     });

@@ -2,6 +2,7 @@ const getIndex = data => {
   return data && data.some(category => !!category.url) ? data.length : 0;
 };
 
+// TODO - add the required information from the commented lines
 const getRequiredCategoryData = data => {
   return {
     categoryId: data.categoryContent.id,
@@ -49,6 +50,7 @@ export const findCategoryIdandName = (data, category) => {
     ) {
       categoryFound.push(getRequiredCategoryData(data[iterator]));
     } else if (
+      // TODO - only looking for items in Categories. Should look for all the groups
       data[iterator].subCategories &&
       data[iterator].subCategories.Categories &&
       data[iterator].subCategories.Categories.length
