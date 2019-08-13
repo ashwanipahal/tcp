@@ -28,6 +28,11 @@ const PlaceRewardsSection = ({ labels, className }) => {
         </StyledHeading>
         <UnderlineStyle />
         <StyledView>
+          <BodyCopy
+            fontSize="fs16"
+            fontWeight="extrabold"
+            text={labels.common.lbl_common_point_balance}
+          />
           <RewardsPoints />
         </StyledView>
         <StyledView>

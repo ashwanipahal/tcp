@@ -10,6 +10,7 @@ import RewardsPoints from '../../../../common/organism/RewardsPoints';
 import PointsHistory from '../../../../common/organism/PointsHistory';
 import { isCanada } from '../../../../../../../utils';
 import BonusPointsDays from '../../../molecules/BonusPointsDays';
+import FPO from '../../../../../../common/atoms/FPO';
 
 const PlaceRewardsSection = ({ labels, className }) => {
   const isCA = isCanada();
@@ -100,6 +101,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
                     fontWeight="extrabold"
                     component="h4"
                     className="elem-mb-SM elem-ml-SM"
+                    data-locator="pointshistorylbl"
                   >
                     {labels.myPlaceRewards.lbl_my_rewards_points_history}
                   </BodyCopy>
@@ -138,7 +140,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
             }}
             className="place-rewards-col4"
           >
-            Fourth
+            <FPO />
           </Col>
         </Row>
       </Row>

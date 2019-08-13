@@ -43,14 +43,18 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Montserrat-Black.ttf</string>
-		<string>Montserrat-Bold.ttf</string>
-		<string>Montserrat.ttf</string>
-		<string>Montserrat.ttf</string>
-		<string>Montserrat-SemiBold.ttf</string>
-		<string>Nunito-Black.ttf</string>
-		<string>Nunito.ttf</string>
-		<string>Nunito-SemiBold.ttf</string>
+    <string>FontAwesome.ttf</string>
+    <string>Montserrat-Black.ttf</string>
+    <string>Montserrat.ttf</string>
+    <string>Montserrat-SemiBold.ttf</string>
+    <string>Nunito-Black.ttf</string>
+    <string>Nunito.ttf</string>
+    <string>Nunito-SemiBold.ttf</string>
+    <string>Nunito-Bold.ttf</string>
+    <string>Mostardesign - Ariana Pro Black.otf</string>
+    <string>Mostardesign - Ariana Pro Bold.otf</string>
+    <string>Mostardesign - Ariana Pro Book.otf</string>
+    <string>Mostardesign - Ariana Pro Regular.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>GymboreeLaunchScreen</string>

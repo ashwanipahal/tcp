@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import { Col, Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import MiniBagContainer from '@tcp/web/src/components/features/CnC/MiniBag/container/MiniBag.container';
-import { identifyBrand, getIconPath } from '@tcp/core/src/utils';
+import { getBrand, getIconPath } from '@tcp/core/src/utils';
 import Navigation from '../../../Navigation';
 import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import config from '../../config';
 import style from './HeaderMiddleNav.style';
-
-const brand = identifyBrand();
 
 /**
  * This function handles opening and closing for Navigation drawer on mobile and tablet viewport
@@ -56,6 +54,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
       openOverlay,
       userName,
     } = this.props;
+    const brand = getBrand();
     const { isOpenMiniBagModal, userNameClick, triggerLoginCreateAccount } = this.state;
 
     return (
