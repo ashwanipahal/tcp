@@ -34,6 +34,11 @@ const styles = css`
       font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy1}px;
       text-align: center;
     }
+
+    li:before {
+      content: '-';
+      text-indent: -5px;
+    }
   }
 `;
 
