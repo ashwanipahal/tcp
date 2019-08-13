@@ -10,7 +10,7 @@ const CloseButtonStyle = css`
   position: absolute;
   top: 15px;
   padding: 0px 7px 13px 6px;
-  background-size: 13px;
+  background-size: 13px 13px;
   &.alignRight {
     right: 15px;
   }
