@@ -72,12 +72,12 @@ const endpoints = {
   },
   logout: {
     method: API_METHODS.DELETE,
-    URI: '/v2/account/logout',
+    URI: 'v2/account/logout',
   },
 
   getPointsHistory: {
     method: API_METHODS.GET,
-    URI: '/v2/wallet/getMyPointHistory',
+    URI: 'v2/wallet/getMyPointHistory',
   },
   bonusPoints: {
     method: API_METHODS.GET,
@@ -143,7 +143,7 @@ const endpoints = {
   },
   requestPassword: {
     method: 'put',
-    URI: '/v2/account/resetPassword',
+    URI: 'v2/account/resetPassword',
   },
 };
 export default endpoints;
