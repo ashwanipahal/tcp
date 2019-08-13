@@ -30,8 +30,8 @@ exports[`GiftCardList Component should render correctly 1`] = `
     <Styled(Col)
       colSize={
         Object {
-          "large": 3,
-          "medium": 3,
+          "large": 4,
+          "medium": 4,
           "small": 6,
         }
       }
@@ -66,8 +66,8 @@ exports[`GiftCardList Component should render correctly if list is present 1`] =
     <Styled(Col)
       colSize={
         Object {
-          "large": 3,
-          "medium": 3,
+          "large": 4,
+          "medium": 4,
           "small": 6,
         }
       }

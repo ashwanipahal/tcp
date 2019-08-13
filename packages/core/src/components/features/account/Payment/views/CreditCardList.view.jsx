@@ -54,8 +54,8 @@ const CreditCardList = ({
       <Row fullBleed>
         <Col
           colSize={{
-            large: 3,
-            medium: 3,
+            large: 4,
+            medium: 4,
             small: 6,
           }}
         >
