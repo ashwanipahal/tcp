@@ -23,6 +23,7 @@ const styles = {
     marginTop: 19,
     marginLeft: 45,
     marginRight: 45,
+    marginBottom: 16,
   },
   webViewStyle: {
     height: 90,
