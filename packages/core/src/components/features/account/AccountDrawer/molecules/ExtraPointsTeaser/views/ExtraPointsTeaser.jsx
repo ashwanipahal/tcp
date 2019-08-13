@@ -8,10 +8,6 @@ import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 const ExtraPointsTeaser = props => {
   const { className, plccUser, labels } = props;
 
-  console.log('8888888888888888888888888888888888888888888');
-  console.log(plccUser);
-  console.log('8888888888888888888888888888888888888888888');
-
   return (
     <div className={`${className} elem-pt-MED elem-pr-XXL elem-pb-LRG elem-pl-XXL`}>
       <div className={`extraPointsWrapper${plccUser ? '_plcc' : ''} elem-pt-LRG elem-pb-SM`}>
