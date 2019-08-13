@@ -21,6 +21,7 @@ export {
 export {
   isServer,
   isClient,
+  isTouchClient,
   isMobileApp,
   getIconPath,
   getLocator,

@@ -32,7 +32,7 @@ const userStoreView = {
 
 const routingInfoStoreView = {
   getOriginImgHostSetting: () => {
-    return {};
+    return 'https://www.childrensplace.com/';
   },
 };
 
@@ -90,7 +90,6 @@ class ProductsOperator {
 
   getProductImgPath = (id, excludeExtension) => {
     const imgHostDomain = routingInfoStoreView.getOriginImgHostSetting();
-
     return {
       125: `${imgHostDomain}/wcsstore/GlobalSAS/images/tcp/products/125/${id}${
         excludeExtension ? '' : '.jpg'
@@ -269,14 +268,14 @@ class ProductsOperator {
 
     /* return this.productsAbstractor.getCategoryListingPage(match.params.searchTerm || match.params.listingKey,
         isSearchPage,
-        filtersAndSort, 
-        pageNumber, 
-        this.getImgPath, 
-        categoryId, 
-        breadCrumb, 
-        bucketingSeqConfig, 
-        this.getFacetSwatchImgPath, 
-        isUnbxdSequencing, 
+        filtersAndSort,
+        pageNumber,
+        this.getImgPath,
+        categoryId,
+        breadCrumb,
+        bucketingSeqConfig,
+        this.getFacetSwatchImgPath,
+        isUnbxdSequencing,
         excludeBage,
         startProductCount,
         numberOfProducts,
