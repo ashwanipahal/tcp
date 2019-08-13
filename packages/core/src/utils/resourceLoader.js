@@ -7,13 +7,12 @@
  */
 
 import scriptLoad from 'little-loader';
+import { getAPIConfig } from './utils';
 
 // TODO: load this from a JSON file
 const namedModulesMap = {
   'google.maps': {
-    url: `https://maps.googleapis.com/maps/api/js?v=3.27&key=${
-      process.env.RWD_WEB_GOOGLE_MAPS_API_KEY
-    }&libraries=places,geometry`,
+    url: `https://maps.googleapis.com/maps/api/js?v=3.27&key=#googleApiKey&libraries=places,geometry`,
     loadPromise: null,
   },
   recaptcha: {
@@ -43,6 +42,11 @@ export function requireUrlScript(url) {
 }
 
 export function requireNamedOnlineModule(moduleName) {
+  const apiConfig = getAPIConfig();
+  namedModulesMap['google.maps'].url = namedModulesMap['google.maps'].url.replace(
+    '#googleApiKey',
+    apiConfig.googleApiKey
+  );
   if (!namedModulesMap[moduleName].loadPromise) {
     namedModulesMap[moduleName].loadPromise = requireUrlScript(namedModulesMap[moduleName].url);
   }
