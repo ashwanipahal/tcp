@@ -1,5 +1,12 @@
 const totalImageSlides = 4;
 const imageSlides = [];
+const images = [
+  'https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg',
+  'https://test5.childrensplace.com/image/upload/v1565680148/the-honest-company-fgn7ZRTmaWQ-unsplash_awrysz.jpg',
+  'https://test5.childrensplace.com/image/upload/v1565680148/vishnu-r-nair-Wd-dXc2X37o-unsplash_lljie8.jpg',
+  'https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg',
+  'https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg',
+];
 const ctaTypes = ['stackedCTAList', 'linkCTAList', 'scrollCTAList', 'imageCTAList'];
 // eslint-disable-next-line no-plusplus
 for (let i = 1; i <= totalImageSlides; i++) {
@@ -57,8 +64,7 @@ for (let i = 1; i <= totalImageSlides; i++) {
     linkedImage: [
       {
         image: {
-          url:
-            'https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565622619/willian-justen-de-vasconcellos-lrPBS8b4G14-unsplash_mumwzc.jpg',
+          url: images[i],
           alt: `Family Tees Image ${i}`,
           title: 'Family Tees title',
           crop_d: '',

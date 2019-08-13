@@ -83,6 +83,19 @@ exports[`HeaderMiddleNav component renders correctly 1`] = `
           data-locator="addedtobag-bag-icon"
           src="/static/images/bag.png"
         />
+        <Styled(BodyCopy)
+          className="cartCount"
+          color="text.primary"
+          component="span"
+          fontFamily="primary"
+          fontSize="fs10"
+          fontWeight="semibold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        >
+          0
+        </Styled(BodyCopy)>
       </Styled(Anchor)>
     </Styled(Col)>
   </Styled(Row)>

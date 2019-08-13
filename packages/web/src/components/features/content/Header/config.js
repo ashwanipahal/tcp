@@ -5,7 +5,7 @@ export default {
     imgSrc: '/static/images/tcp-logo.svg',
     title: "The Children's Place",
   },
-  gymboree: {
+  gym: {
     alt: 'Gymboree',
     dataLocator: 'global_Gymboreelink',
     imgSrc: '/static/images/gymboree-logo.svg',

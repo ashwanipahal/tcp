@@ -11,6 +11,7 @@ exports[`Coupon Component Coupon should render correctly 1`] = `
     keepDirtyOnReinitialize={false}
     onNeedHelpTextClick={[Function]}
     onSubmit={[Function]}
+    onSubmitSuccess={[Function]}
     persistentSubmitErrors={false}
     pure={true}
     shouldAsyncValidate={[Function]}

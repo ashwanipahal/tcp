@@ -5,14 +5,8 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly 1`] = `
   ctaTitle=""
   title=""
 >
-  <p>
-    Dummy My place rewards content
-  </p>
-  <p>
-    Actual implementation coming soon...
-  </p>
-  <p>
-    This is just to check if all tiles remain with same height
-  </p>
+  <FPO
+    text=""
+  />
 </Styled(AccountOverviewTile)>
 `;
