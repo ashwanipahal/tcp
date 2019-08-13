@@ -82,7 +82,7 @@ const PromoBanner = (props: Props) => {
   } = props;
   return [
     <ContainerView>
-      {textItems && link && (
+      {textItems && (
         <Anchor url={link.url} navigation={navigation}>
           {textItems.map(({ text, style }, index) => {
             const StyleBodyCopy = bodyCopyStyles[style];

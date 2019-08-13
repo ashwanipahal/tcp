@@ -58,12 +58,6 @@ HomePageView.propTypes = {
     type: PropTypes.string,
     contentId: PropTypes.string,
   }),
-  slot_5: PropTypes.shape({
-    composites: PropTypes.shape({}),
-    name: PropTypes.string,
-    type: PropTypes.string,
-    contentId: PropTypes.string,
-  }),
   navigation: PropTypes.shape({}).isRequired,
   getBootstrapData: PropTypes.func.isRequired,
 };
@@ -73,7 +67,6 @@ HomePageView.defaultProps = {
   slot_2: {},
   slot_3: {},
   slot_4: {},
-  slot_5: {},
 };
 
 export default HomePageView;
