@@ -4,12 +4,14 @@ import { Col, Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/comm
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import MiniBagContainer from '@tcp/web/src/components/features/CnC/MiniBag/container/MiniBag.container';
 import { identifyBrand, getIconPath } from '@tcp/core/src/utils';
+import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
 import Navigation from '../../../Navigation';
 import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import config from '../../config';
 import style from './HeaderMiddleNav.style';
 
 const brand = identifyBrand();
+const cartItemCount = getCartItemCount();
 
 /**
  * This function handles opening and closing for Navigation drawer on mobile and tablet viewport
@@ -139,24 +141,32 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
                 >
                   Login
                 </Anchor>
-                <Anchor
-                  href="#"
-                  id="cartIcon"
-                  className="rightLink"
-                  handleLinkClick={e => this.toggleMiniBagModal({ e, isOpen: true })}
-                  fontSizeVariation="small"
-                  anchorVariation="primary"
-                  noLink
-                >
-                  <Image
-                    alt="Product"
-                    className="product-image"
-                    src={getIconPath('cart-icon')}
-                    data-locator="addedtobag-bag-icon"
-                  />
-                </Anchor>
               </React.Fragment>
             )}
+            <Anchor
+              href="#"
+              id="cartIcon"
+              className="rightLink"
+              handleLinkClick={e => this.toggleMiniBagModal({ e, isOpen: true })}
+              fontSizeVariation="small"
+              anchorVariation="primary"
+              noLink
+            >
+              <Image
+                alt="Product"
+                className="product-image"
+                src={getIconPath('cart-icon')}
+                data-locator="addedtobag-bag-icon"
+              />
+              <BodyCopy
+                className="cartCount"
+                component="span"
+                fontWeight="semibold"
+                fontSize="fs10"
+              >
+                {cartItemCount || 0}
+              </BodyCopy>
+            </Anchor>
           </Col>
         </Row>
         <Row
