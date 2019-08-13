@@ -63,11 +63,10 @@ export class CreateAccountContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { isUserLoggedIn, closeOverlay } = this.props;
+    const { isUserLoggedIn, closeOverlay, onRequestClose } = this.props;
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
       if (this.hasMobileApp()) {
-        const { navigation } = this.props;
-        this.hasNavigateToNestedRoute(navigation, 'HomeStack', 'home');
+        onRequestClose();
       } else {
         closeOverlay();
         routerPush('/', '/home');

@@ -10,7 +10,7 @@ const errorMessage = res => {
   return errorMessageRecieved;
 };
 
-export function* createAccount({ payload }) {
+export function* createsaga({ payload }) {
   try {
     const res = yield call(createAccountApi, payload);
     /* istanbul ignore else */
@@ -29,7 +29,7 @@ export function* createAccount({ payload }) {
 }
 
 export function* CreateAccountSaga() {
-  yield takeLatest(CREATE_ACCOUNT_CONSTANTS.CREATE_AN_ACCOUNT, createAccount);
+  yield takeLatest(CREATE_ACCOUNT_CONSTANTS.CREATE_AN_ACCOUNT, createsaga);
 }
 
 export default CreateAccountSaga;

@@ -56,11 +56,12 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "300": "#fbd5a5",
           "50": "#fef4e8",
           "500": "#fac078",
-          "700": "#f8ab4b",
+          "700": "#f9b662",
           "800": "#f7971f",
           "900": "#c25621",
         },
         "pink": Object {
+          "400": "#f78cc6",
           "500": "#df4b9a",
         },
         "primary": Object {
@@ -89,6 +90,7 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
         "userTheme": Object {
           "mpr": "#f7971f",
           "mprLight": "#fdead2",
+          "mprPrimary": "#fbd5a5",
           "plcc": "#254f6e",
           "plccLight": "#dbebf8",
         },

@@ -22,17 +22,33 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
     <div className={className}>
       <Row fullbleed className="elem-mb-SM elem-mt-SM">
         <Col colSize={{ large: 3, medium: 2, small: 2 }}>
-          <BodyCopy fontFamily="secondary" fontSize="fs12" fontWeight="semibold">
+          <BodyCopy
+            data-locator="pointshistoryorderdatelbl"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="semibold"
+          >
             {labels.lbl_common_order_date}
           </BodyCopy>
         </Col>
         <Col colSize={{ large: 4, medium: 3, small: 2 }}>
-          <BodyCopy fontFamily="secondary" fontSize="fs12" fontWeight="semibold">
+          <BodyCopy
+            data-locator="pointshistorytransactionslbl"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="semibold"
+          >
             {labels.lbl_common_transaction}
           </BodyCopy>
         </Col>
         <Col colSize={{ large: 3, medium: 3, small: 2 }}>
-          <BodyCopy component="p" fontFamily="secondary" fontSize="fs12" fontWeight="semibold">
+          <BodyCopy
+            data-locator="pointshistorypointsearnedlbl"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="semibold"
+          >
             {labels.lbl_common_points_earned}
           </BodyCopy>
         </Col>
@@ -43,17 +59,33 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
         pointHistoryData.map(pointHistoryRow => (
           <Row fullbleed className="elem-mb-SM">
             <Col colSize={{ large: 3, medium: 2, small: 2 }}>
-              <BodyCopy fontFamily="secondary" fontSize="fs12" fontWeight="semibold">
+              <BodyCopy
+                data-locator="pointshistoryorderdate"
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="semibold"
+              >
                 {pointHistoryRow.transactionDate}
               </BodyCopy>
             </Col>
             <Col colSize={{ large: 4, medium: 3, small: 2 }}>
-              <BodyCopy fontFamily="secondary" fontSize="fs12" fontWeight="semibold">
+              <BodyCopy
+                data-locator="pointshistorytransctionmsg"
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="semibold"
+              >
                 {pointHistoryRow.transactionTypeName}
               </BodyCopy>
             </Col>
             <Col colSize={{ large: 3, medium: 3, small: 2 }}>
-              <BodyCopy fontFamily="secondary" fontSize="fs12" fontWeight="semibold">
+              <BodyCopy
+                data-locator="pointshistorypoints"
+                fontFamily="secondary"
+                fontSize="fs12"
+                fontWeight="semibold"
+                textAlign="center"
+              >
                 {pointHistoryRow.pointsEarned}
               </BodyCopy>
             </Col>
@@ -62,7 +94,12 @@ const PointsHistory = ({ className, labels, pointHistory }) => {
 
       <Row fullbleed className="elem-mt-XXL elem-mt-XXS">
         <Col colSize={{ large: 4, medium: 3, small: 2 }}>
-          <Anchor fontSizeVariation="medium" underline anchorVariation="primary">
+          <Anchor
+            data-locator="pointshistorylnk"
+            fontSizeVariation="medium"
+            underline
+            anchorVariation="primary"
+          >
             {labels.lbl_common_points_history}
           </Anchor>
         </Col>

@@ -11,6 +11,9 @@ export default css`
     width: 22px;
     height: 22px;
   }
+  .username {
+    cursor: pointer;
+  }
 
   .rightLink {
     border-left: 1px solid ${props => props.theme.colorPalette.gray[500]};
@@ -28,7 +31,7 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.large} {
-    padding-top: 31px;
+    padding: 31px 0 0;
     .hamburger-menu {
       display: none;
     }

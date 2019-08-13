@@ -13,6 +13,7 @@ type Props = {
   className: string,
   dataLocator: string,
   headingClass: string,
+  color?: string,
 };
 
 /**
@@ -34,6 +35,7 @@ const LinkText = (props: Props) => {
     headerText: [{ textItems, link }],
     headingClass,
     dataLocator,
+    color,
     ...otherProps
   } = props;
   let Component;
@@ -44,6 +46,7 @@ const LinkText = (props: Props) => {
     Component = Heading;
     compProps.variant = component;
     compProps.dataLocator = dataLocator;
+    compProps.color = color;
   } else {
     Component = BodyCopy;
     compProps = {
@@ -65,6 +68,7 @@ const LinkText = (props: Props) => {
 
 LinkText.defaultProps = {
   icon: {},
+  color: '',
 };
 
 export default withStyles(LinkText, LinkTextStyle);

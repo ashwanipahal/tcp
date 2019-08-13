@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 const PaymentContainer = styled.View`
   flex: 1;
-  flex-direction: row;
+  flex-direction: column;
 `;
 
 const PaymentInfoContainer = styled.View`
@@ -13,7 +13,7 @@ const PaymentInfoContainer = styled.View`
 const PaymentInfo = styled.View`
   flex: 1;
   flex-direction: column;
-  margin-left: 4px;
+  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
 const TouchableLink = styled.TouchableHighlight.attrs({
@@ -28,8 +28,28 @@ const PaymentDetails = {
 };
 
 const PaymentType = styled.View`
-  height: 80px;
   flex: 1.8;
+`;
+
+const PaymentWrapper = styled.View`
+  height: 80px;
+  flex: 1;
+  flex-direction: row;
+`;
+
+const RecaptchaWrapper = styled.View`
+  height: ${props => props.theme.spacing.LAYOUT_SPACING.XXL};
+  flex: 1;
+`;
+
+const RecaptchaContainer = styled.View`
+  height: ${props => props.theme.spacing.LAYOUT_SPACING.XXL};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
+  flex: 1;
+`;
+
+const CheckBalanceContainer = styled.View`
+  height: ${props => props.theme.spacing.ELEM_SPACING.XXL};
 `;
 
 export {
@@ -39,4 +59,8 @@ export {
   PaymentInfo,
   PaymentDetails,
   TouchableLink,
+  RecaptchaContainer,
+  RecaptchaWrapper,
+  PaymentWrapper,
+  CheckBalanceContainer,
 };

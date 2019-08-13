@@ -3,13 +3,11 @@ import PropTypes from 'prop-types';
 import { Col, Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import MiniBagContainer from '@tcp/web/src/components/features/CnC/MiniBag/container/MiniBag.container';
-import { identifyBrand, getIconPath } from '@tcp/core/src/utils';
+import { getBrand, getIconPath } from '@tcp/core/src/utils';
 import Navigation from '../../../Navigation';
 import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import config from '../../config';
 import style from './HeaderMiddleNav.style';
-
-const brand = identifyBrand();
 
 /**
  * This function handles opening and closing for Navigation drawer on mobile and tablet viewport
@@ -26,15 +24,20 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
     super(props);
     this.state = {
       isOpenMiniBagModal: false,
+      userNameClick: true,
+      triggerLoginCreateAccount: true,
     };
   }
 
-  onLinkClick = ({ e, openOverlay }) => {
+  onLinkClick = ({ e, openOverlay, userNameClick, triggerLoginCreateAccount }) => {
     e.preventDefault();
-    openOverlay({
-      component: e.target.id,
-      variation: 'primary',
-    });
+    if (userNameClick || triggerLoginCreateAccount) {
+      openOverlay({
+        component: e.target.id,
+        variation: 'primary',
+      });
+    }
+    this.setState({ userNameClick: triggerLoginCreateAccount ? userNameClick : !userNameClick });
   };
 
   toggleMiniBagModal = ({ e, isOpen }) => {
@@ -51,7 +54,8 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
       openOverlay,
       userName,
     } = this.props;
-    const { isOpenMiniBagModal } = this.state;
+    const brand = getBrand();
+    const { isOpenMiniBagModal, userNameClick, triggerLoginCreateAccount } = this.state;
 
     return (
       <React.Fragment>
@@ -106,7 +110,8 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
                 <BodyCopy
                   id="accountDrawer"
                   textAlign="right"
-                  onClick={e => this.onLinkClick({ e, openOverlay })}
+                  className="username"
+                  onClick={e => this.onLinkClick({ e, openOverlay, userNameClick })}
                 >
                   {`Hi, ${userName}`}
                 </BodyCopy>
@@ -117,7 +122,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
                   href="#"
                   id="createAccount"
                   className="leftLink"
-                  onClick={e => this.onLinkClick({ e, openOverlay })}
+                  onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
                   fontSizeVariation="large"
                   anchorVariation="primary"
                 >
@@ -127,7 +132,7 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
                   href="#"
                   id="login"
                   className="rightLink"
-                  onClick={e => this.onLinkClick({ e, openOverlay })}
+                  onClick={e => this.onLinkClick({ e, openOverlay, triggerLoginCreateAccount })}
                   fontSizeVariation="large"
                   anchorVariation="primary"
                 >
