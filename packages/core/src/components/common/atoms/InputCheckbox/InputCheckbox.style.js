@@ -1,19 +1,22 @@
 import { css } from 'styled-components';
 
+const CHECKBOX_SIZE = '25px';
+
 const styles = css`
   display: inline-flex;
-  align-items: center;
+  align-items: ${props => (props.alignCheckbox ? props.alignCheckbox : 'center')};
 
   & .CheckBox__input {
+    flex: 0 0 auto;
     position: relative;
     top: 0;
     appearance: none;
     outline: 0;
     border: 0;
-    height: 25px;
-    width: 25px;
+    height: ${CHECKBOX_SIZE};
+    width: ${CHECKBOX_SIZE};
     margin: 0;
-    margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
   & .CheckBox__input:before {
