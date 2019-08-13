@@ -1638,7 +1638,9 @@ exports[`AddressFields component should render correctly 1`] = `
   ",
                 "
   display: inline-flex;
-  align-items: center;
+  align-items: ",
+                [Function],
+                ";
 
   & .CheckBox__input {
     position: relative;

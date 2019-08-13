@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 const styles = css`
   display: inline-flex;
-  align-items: center;
+  align-items: ${props => (props.alignCheckbox ? props.alignCheckbox : 'center')};
 
   & .CheckBox__input {
     position: relative;
@@ -13,7 +13,7 @@ const styles = css`
     height: 25px;
     width: 25px;
     margin: 0;
-    margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
+    margin-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
 
   & .CheckBox__input:before {
