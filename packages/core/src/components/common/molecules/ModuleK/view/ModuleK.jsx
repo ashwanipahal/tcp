@@ -75,13 +75,13 @@ class ModuleK extends React.PureComponent<Props, State> {
           >
             <Carousel
               options={CAROUSEL_OPTIONS}
+              inheritedStyles={Carousel}
               carouselConfig={{
                 autoplay: true,
                 dataLocatorPlay: getLocator('moduleK_play_button'),
                 dataLocatorPause: getLocator('moduleK_pause_button'),
                 customArrowLeft: getIconPath('carousel-big-carrot'),
                 customArrowRight: getIconPath('carousel-big-carrot'),
-                inheritedStyles: Carousel,
               }}
             >
               {masonryGrid.map(({ promoBanner, mediaLinkedList, singleCTAButton }, index) => {
