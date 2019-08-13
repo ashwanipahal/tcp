@@ -3,7 +3,7 @@
  */
 const config = {
   CAROUSEL_APP_DEFAULTS: {
-    autoplay: false,
+    autoplay: true,
     loop: true,
     autoplayDelay: 1000,
     autoplayInterval: 3000,

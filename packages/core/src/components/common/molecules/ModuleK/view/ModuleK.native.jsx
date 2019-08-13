@@ -90,13 +90,10 @@ class ModuleK extends React.PureComponent {
             height={MODULE_HEIGHT}
             width={MODULE_WIDTH}
             carouselConfig={{
-              autoplay: false,
+              autoplay: true,
             }}
             autoplayInterval={autoplayInterval * 1000}
             showDots
-            ref={c => {
-              this.carousel = c;
-            }}
           />
         )}
       </MainWrapper>

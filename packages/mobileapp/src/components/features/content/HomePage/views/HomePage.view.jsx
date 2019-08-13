@@ -12,13 +12,7 @@ class HomePageView extends React.Component {
   }
 
   render() {
-    const {
-      slot_1: slotA = {},
-      slot_2: slotB = {},
-      slot_3: slotC = {},
-      slot_4: slotD = {},
-      navigation,
-    } = this.props;
+    const { slot_1: slotA, slot_2: slotB, slot_3: slotC, slot_4: slotD, navigation } = this.props;
     return (
       <ScrollView>
         <React.Fragment>
