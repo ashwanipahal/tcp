@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add Gift Card Container should render gift card view section 1`] = `
+<ReduxForm
+  addGiftCardResponse="foo"
+  destroyOnUnmount={true}
+  enableReinitialize={true}
+  forceUnregisterOnUnmount={false}
+  form="AddGiftCardMobileForm"
+  getFormState={[Function]}
+  keepDirtyOnReinitialize={false}
+  labels={Object {}}
+  onAddGiftCardClick={[MockFunction]}
+  persistentSubmitErrors={false}
+  pure={true}
+  shouldAsyncValidate={[Function]}
+  shouldError={[Function]}
+  shouldValidate={[Function]}
+  shouldWarn={[Function]}
+  submitAsSideEffect={false}
+  toggleModal={[MockFunction]}
+  touchOnBlur={true}
+  touchOnChange={false}
+  updateUnregisteredFields={false}
+  validate={[Function]}
+/>
+`;
+
+exports[`Add Gift Card Container should render gift card view section with success response 1`] = `
+<ReduxForm
+  addGiftCardResponse="foo"
+  destroyOnUnmount={true}
+  enableReinitialize={true}
+  forceUnregisterOnUnmount={false}
+  form="AddGiftCardMobileForm"
+  getFormState={[Function]}
+  keepDirtyOnReinitialize={false}
+  labels={Object {}}
+  onAddGiftCardClick={[MockFunction]}
+  persistentSubmitErrors={false}
+  pure={true}
+  shouldAsyncValidate={[Function]}
+  shouldError={[Function]}
+  shouldValidate={[Function]}
+  shouldWarn={[Function]}
+  submitAsSideEffect={false}
+  toggleModal={
+    [MockFunction] {
+      "calls": Array [
+        Array [],
+      ],
+      "results": Array [
+        Object {
+          "type": "return",
+          "value": undefined,
+        },
+      ],
+    }
+  }
+  touchOnBlur={true}
+  touchOnChange={false}
+  updateUnregisteredFields={false}
+  validate={[Function]}
+/>
+`;
