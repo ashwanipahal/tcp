@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import FPO from '../../../../../../common/atoms/FPO';
 
 import AccountOverviewTile from '../../../../../../common/molecules/AccountOverviewTile';
 
@@ -9,7 +10,7 @@ export const PaymentOverviewTile = ({ labels }) => {
       title={labels.lbl_overview_paymentHeading}
       ctaTitle={labels.lbl_overview_paymentCTA}
     >
-      <p>Dummy Credit card content will here...</p>
+      <FPO />
     </AccountOverviewTile>
   );
 };

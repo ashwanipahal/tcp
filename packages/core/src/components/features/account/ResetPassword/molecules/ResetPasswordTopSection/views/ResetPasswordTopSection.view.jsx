@@ -15,6 +15,7 @@ export const ResetPasswordTopSection = ({ className, labels, onBack }) => {
           data-locator="addnewaddress-back"
           className="elem-mb-LRG"
         >
+          <span className="left-arrow"> </span>
           {labels.lbl_resetPassword_backLogin}
         </Anchor>
       </BodyCopy>

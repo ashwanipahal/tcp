@@ -58,9 +58,16 @@ const getImageCTA = item => {
  */
 
 const getButtonCTA = data => {
-  const { className, buttonsData, buttonListVariation, buttonVariation, ...otherProps } = data;
+  const {
+    className,
+    buttonsData,
+    buttonListVariation,
+    buttonVariation,
+    dataLocator,
+    ...otherProps
+  } = data;
 
-  return buttonsData.map(item => {
+  return buttonsData.map((item, index) => {
     const { button = {} } = item;
     const key = button.title && button.title.replace(/\s/g, '_');
     return (
@@ -74,6 +81,7 @@ const getButtonCTA = data => {
         <Button
           className={`${config[buttonListVariation].className}-class`}
           buttonVariation={buttonVariation}
+          dataLocator={`${dataLocator}${index}`}
           {...otherProps}
         >
           {button.text}
@@ -90,7 +98,7 @@ const getButtonCTA = data => {
  */
 
 const ButtonList = (props: Props) => {
-  const { buttonsData, buttonListVariation, className } = props;
+  const { buttonsData, buttonListVariation, className, dataLocator } = props;
   const stackCTAProps = config.stackedCTAList.compProps;
   const linkCTAProps = config.linkCTAList.compProps;
   const scrollCTAProps = config.scrollCTAList.compProps;
@@ -106,6 +114,7 @@ const ButtonList = (props: Props) => {
       ...stackCTAProps,
       buttonsData,
       buttonListVariation,
+      dataLocator,
     };
     component = getButtonCTA(compProps);
   }
@@ -116,6 +125,7 @@ const ButtonList = (props: Props) => {
       ...linkCTAProps,
       buttonsData,
       buttonListVariation,
+      dataLocator,
     };
     component = getButtonCTA(compProps);
   }
@@ -126,6 +136,7 @@ const ButtonList = (props: Props) => {
       ...scrollCTAProps,
       buttonsData,
       buttonListVariation,
+      dataLocator,
     };
     component = getButtonCTA(compProps);
   }
@@ -142,11 +153,13 @@ const ButtonList = (props: Props) => {
 ButtonList.defaultProps = {
   buttonListVariation: 'stackedCTA',
   className: '',
+  dataLocator: '',
 };
 
 ButtonList.propTypes = {
   buttonListVariation: PropTypes.string,
   className: PropTypes.string,
+  dataLocator: PropTypes.string,
 };
 
 export default withStyles(ButtonList, ButtonListStyle);

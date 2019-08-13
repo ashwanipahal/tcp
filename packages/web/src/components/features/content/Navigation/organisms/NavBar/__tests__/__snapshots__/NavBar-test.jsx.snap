@@ -1420,8 +1420,15 @@ exports[`NavBar component renders correctly 1`] = `
       }
     >
       <Styled(Drawer)
+        height="100%"
         id="l2-drawer-0"
         medium={true}
+        position={
+          Object {
+            "left": 0,
+            "top": 0,
+          }
+        }
         small={true}
         width={
           Object {
@@ -4086,8 +4093,15 @@ exports[`NavBar component renders correctly 1`] = `
       }
     >
       <Styled(Drawer)
+        height="100%"
         id="l2-drawer-1"
         medium={true}
+        position={
+          Object {
+            "left": 0,
+            "top": 0,
+          }
+        }
         small={true}
         width={
           Object {
@@ -6366,8 +6380,15 @@ exports[`NavBar component renders correctly 1`] = `
       }
     >
       <Styled(Drawer)
+        height="100%"
         id="l2-drawer-2"
         medium={true}
+        position={
+          Object {
+            "left": 0,
+            "top": 0,
+          }
+        }
         small={true}
         width={
           Object {
@@ -8508,8 +8529,15 @@ exports[`NavBar component renders correctly 1`] = `
       }
     >
       <Styled(Drawer)
+        height="100%"
         id="l2-drawer-3"
         medium={true}
+        position={
+          Object {
+            "left": 0,
+            "top": 0,
+          }
+        }
         small={true}
         width={
           Object {
@@ -10111,8 +10139,15 @@ exports[`NavBar component renders correctly 1`] = `
       }
     >
       <Styled(Drawer)
+        height="100%"
         id="l2-drawer-4"
         medium={true}
+        position={
+          Object {
+            "left": 0,
+            "top": 0,
+          }
+        }
         small={true}
         width={
           Object {
@@ -11236,8 +11271,15 @@ exports[`NavBar component renders correctly 1`] = `
       }
     >
       <Styled(Drawer)
+        height="100%"
         id="l2-drawer-5"
         medium={true}
+        position={
+          Object {
+            "left": 0,
+            "top": 0,
+          }
+        }
         small={true}
         width={
           Object {
@@ -12656,8 +12698,15 @@ exports[`NavBar component renders correctly 1`] = `
       }
     >
       <Styled(Drawer)
+        height="100%"
         id="l2-drawer-6"
         medium={true}
+        position={
+          Object {
+            "left": 0,
+            "top": 0,
+          }
+        }
         small={true}
         width={
           Object {
@@ -13569,8 +13618,15 @@ exports[`NavBar component renders correctly 1`] = `
       }
     >
       <Styled(Drawer)
+        height="100%"
         id="l2-drawer-7"
         medium={true}
+        position={
+          Object {
+            "left": 0,
+            "top": 0,
+          }
+        }
         small={true}
         width={
           Object {
