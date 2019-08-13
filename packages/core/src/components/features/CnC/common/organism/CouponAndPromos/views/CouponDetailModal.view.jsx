@@ -22,7 +22,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
       <div className={className}>
         <BodyCopy
           fontWeight="bold"
-          fontFamily="primary"
+          fontFamily="secondaryFontFamily"
           className="couponModal_modalTitle"
           data-locator={`couponDetailModal_${coupon.status}_NameLbl`}
         >
@@ -30,7 +30,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
         </BodyCopy>
         <BodyCopy
           fontWeight="bold"
-          fontFamily="secondary"
+          fontFamily="secondaryFontFamily"
           className="couponModal_modalSubTitle"
           data-locator={`couponDetailModal_${coupon.status}_ValidityDateLbl`}
         >
@@ -70,26 +70,25 @@ class CouponDetailModal extends React.PureComponent<Props> {
           </Anchor>
         </div>
         <BodyCopy
-          ffontFamily="secondary"
+          fontFamily="secondaryFontFamily"
           className="couponModal_modalLongDesc"
           data-locator={`couponDetailModal_${coupon.status}_LongDesc`}
         >
           {`${labels.MODAL_LONG_DESCRIPTION}`}
         </BodyCopy>
         <BodyCopy
-          fontFamily="secondary"
-          className="couponModal_modalLongDesc"
+          fontFamily="secondaryFontFamily"
+          className="couponModal_modalShortDesc"
           data-locator={`couponDetailModal_${coupon.status}_ShortDesc`}
         >
           {`${labels.MODAL_SHORT_DESCRIPTION}`}
           <Anchor
             underline
             anchorVariation="primary"
-            fontSize="fs12"
+            fontSize="fs14"
             data-locator={`couponDetailModal_${coupon.status}_tAndC`}
             onClick={this.tAndCClick}
-            className="couponModal_print_anchor"
-            fontFamily="secondary"
+            className="couponModal_print_anchortext"
           >
             {`${labels.TERMS_AND_CONDITIONS}`}
           </Anchor>
@@ -98,11 +97,10 @@ class CouponDetailModal extends React.PureComponent<Props> {
           <Anchor
             underline
             anchorVariation="primary"
-            fontSize="fs12"
+            fontSize="fs14"
             data-locator={`couponDetailModal_${coupon.status}_pp`}
             onClick={this.tAndCClick}
-            className="couponModal_print_anchor"
-            fontFamily="secondary"
+            className="couponModal_print_anchortext"
           >
             {`${labels.PRIVACY_POLICY}`}
           </Anchor>
@@ -120,7 +118,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
         overlayClassName="TCPModal__Overlay"
         className="TCPModal__Content"
         maxWidth="616px"
-        minHeight="500px"
+        minHeight="540px"
         fixedWidth
         closeIconDataLocator="coupondetailmodalcrossicon"
       >
