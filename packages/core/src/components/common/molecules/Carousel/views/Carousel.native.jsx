@@ -264,12 +264,14 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           autoplayInterval={autoplayInterval}
         />
 
-        <ControlsWrapper>
-          {carouselConfig.autoplay && (
-            <PlayPauseButtonView>{this.getPlayButton(carouselConfig)}</PlayPauseButtonView>
-          )}
-          {showDots ? this.getPagination() : null}
-        </ControlsWrapper>
+        {data.length > 1 && (
+          <ControlsWrapper>
+            {carouselConfig.autoplay && (
+              <PlayPauseButtonView>{this.getPlayButton(carouselConfig)}</PlayPauseButtonView>
+            )}
+            {showDots ? this.getPagination() : null}
+          </ControlsWrapper>
+        )}
       </View>
     );
   }
