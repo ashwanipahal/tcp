@@ -162,7 +162,7 @@ class GetCandid extends React.PureComponent {
 
 const mapStateToProps = state => {
   return {
-    labels: state.Labels.modules.getCandid,
+    labels: (state.Labels.modules && state.Labels.modules.getCandid) || {},
   };
 };
 

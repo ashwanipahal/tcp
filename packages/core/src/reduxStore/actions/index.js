@@ -8,10 +8,10 @@ export const loadLayoutData = (payload, layoutName) => {
   };
 };
 
-export const loadLabelsData = payload => {
+export const loadGlobalLabelsData = payload => {
   return {
     payload,
-    type: GLOBAL_CONSTANTS.LOAD_LABELS_DATA,
+    type: GLOBAL_CONSTANTS.LOAD_GLOBAL_LABELS_DATA,
   };
 };
 
@@ -44,7 +44,7 @@ export const loadUserProfile = () => {
 
 export default {
   loadLayoutData,
-  loadLabelsData,
+  loadGlobalLabelsData,
   bootstrapData,
   loadModulesData,
   loadUserProfile,

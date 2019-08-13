@@ -142,8 +142,8 @@ export const getLabelsCartItemTile = state => {
         lbl_error_itemSoldOut: itemSoldOut,
         lbl_error_chooseDiff: chooseDiff,
         lbl_error_soldOut: soldOut,
-      },
-    },
+      } = {},
+    } = {},
   } = state.Labels;
 
   return {

@@ -21,8 +21,8 @@ const getBagPageLabels = state => {
         lbl_emptyBag_shopNow: shopNow,
         lbl_emptyBag_inspirationTagLine: tagLine,
         lbl_emptyBag_helperMsg: helperMsg,
-      },
-    },
+      } = {},
+    } = {},
   } = state.Labels;
   return {
     addedToBag,

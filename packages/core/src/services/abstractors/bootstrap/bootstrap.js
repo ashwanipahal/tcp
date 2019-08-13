@@ -99,7 +99,9 @@ const bootstrap = async pages => {
   const apiConfig = typeof getAPIConfig === 'function' ? getAPIConfig() : '';
   const bootstrapParams = {
     pages,
-    labels: {},
+    labels: {
+      category: 'global',
+    },
     brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
     channel: defaultChannel,
     country: (apiConfig && apiConfig.siteIdCMS) || defaultCountry,

@@ -18,9 +18,9 @@ export const getLabelsMiniBag = state => {
         lbl_miniBag_yourShoppingBag: yourShoppingBag,
         lbl_miniBag_dontHaveAccount: dontHaveAccount,
         lbl_miniBag_createOne: createOne,
-      },
-      addedToBag: { lbl_footer_continueShopping: continueShopping },
-    },
+      } = {},
+      addedToBag: { lbl_footer_continueShopping: continueShopping } = {},
+    } = {},
   } = state.Labels;
   return {
     createAccount,
