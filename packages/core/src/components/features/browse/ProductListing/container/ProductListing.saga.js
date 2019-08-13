@@ -1,28 +1,12 @@
 /* eslint-disable */
 import { call, put, takeLatest, select } from 'redux-saga/effects';
-import { isClient } from '@tcp/core/src/utils';
+import { isClient, bindAllClassMethodsToThis } from '../../../../../utils';
 import PRODUCTLISTING_CONSTANTS from './ProductListing.constants';
 import { setPlpProducts } from './ProductListing.actions';
 import { validateReduxCache } from '../../../../../utils/cache.util';
 import Abstractor from '../../../../../services/abstractors/productListing';
 import BucketingBL from './ProductListing.bucketing';
-import { extractCategory, findCategoryIdandName } from './ProductListing.util';
-
-// TODO - refactor this function - this is random and dummy
-const matchPath = (url, param) => {
-  if (param === '/search/' && url.indexOf(param) !== -1) {
-    return {
-      searchTerm: url,
-    };
-  }
-  if (param === '/c/' && url.indexOf(param) !== -1) {
-    const urlWithCat = url.split(param)[1];
-    return {
-      listingKey: urlWithCat,
-    };
-  }
-  return url;
-};
+import { extractCategory, findCategoryIdandName, matchPath } from './ProductListing.util';
 
 // Dummy store value till this user info is available
 const userStoreView = {
@@ -34,25 +18,6 @@ const routingInfoStoreView = {
   getOriginImgHostSetting: () => {
     return {};
   },
-};
-
-const bindAllClassMethodsToThis = (obj, namePrefix = '', isExclude = false) => {
-  const prototype = Object.getPrototypeOf(obj);
-  // eslint-disable-next-line
-  for (let name of Object.getOwnPropertyNames(prototype)) {
-    const descriptor = Object.getOwnPropertyDescriptor(prototype, name);
-    const isGetter = descriptor && typeof descriptor.get === 'function';
-    // eslint-disable-next-line
-    if (isGetter) continue;
-    if (
-      typeof prototype[name] === 'function' && name !== 'constructor' && isExclude
-        ? !name.startsWith(namePrefix)
-        : name.startsWith(namePrefix)
-    ) {
-      // eslint-disable-next-line
-      obj[name] = prototype[name].bind(obj);
-    }
-  }
 };
 class ProductsOperator {
   constructor(store) {
@@ -354,11 +319,8 @@ function* fetchPlpProducts() {
 }
 
 function* ProductListingPageSaga() {
-  // A HOF which prevents calling fetchProducts when data in redux exists (within ttl)
   const cachedFetchProducts = validateReduxCache(fetchPlpProducts);
-  // const cachedFetchGiftProducts = validateReduxCache(fetchGiftProducts);
   yield takeLatest(PRODUCTLISTING_CONSTANTS.FETCH_PRODUCTS, cachedFetchProducts);
-  // yield takeLatest(PRODUCTLISTINGPAGE_CONSTANTS.FETCH_GIFT_CARD_PRODUCTS, cachedFetchGiftProducts);
 }
 
 export default ProductListingPageSaga;

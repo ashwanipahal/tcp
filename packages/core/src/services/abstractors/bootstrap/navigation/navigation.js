@@ -1,6 +1,7 @@
 /* eslint-disable sonarjs/no-duplicate-string */
 import mock from './mock';
 import handler from '../../../handler';
+import utils from '../../../../utils';
 
 /**
  * Abstractor layer for loading data from API for Navigation
@@ -9,7 +10,7 @@ const Abstractor = {
   constructUrl: contentObj => {
     return (
       contentObj.seoUrl ||
-      `/us/${
+      `/${utils.getSiteId()}/${
         contentObj.seoToken && contentObj.seoToken.startsWith('content-')
           ? contentObj.seoToken.replace(new RegExp('content-', 'g'), 'content/')
           : // eslint-disable-next-line

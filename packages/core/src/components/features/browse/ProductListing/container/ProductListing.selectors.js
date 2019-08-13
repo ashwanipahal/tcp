@@ -1,52 +1,12 @@
 /* eslint-disable extra-rules/no-commented-out-code */
 import { PRODUCTLISTINGPAGE_REDUCER_KEY } from '../../../../../constants/reducer.constants';
+import { generateGroups } from './ProductListing.util';
 
 const getReducer = state => state[PRODUCTLISTINGPAGE_REDUCER_KEY];
 
 const getPlpProducts = state => getReducer(state).products;
 
 export const giftCardProducts = state => getReducer(state).giftCardProducts;
-
-// Organized Navigation Tree
-const generateGroups = level1 => {
-  try {
-    let level2Groups = [];
-    const groupings = {};
-
-    // for each L2 parse and place in proper group
-    if (level1.subCategories.Categories) {
-      level1.subCategories.Categories.forEach(L2 => {
-        const groupName = 'Categories';
-        const groupOrder = 1;
-
-        // if new grouping initalize array
-        if (!groupings[groupName]) {
-          groupings[groupName] = {
-            order: groupOrder,
-            menuItems: [],
-          };
-        }
-
-        // Push L2 in this bucket
-        groupings[groupName].menuItems.push(L2);
-      });
-    }
-
-    // Now get all groups and generate array of object, this is not to bad as there are at most 3-4 groups
-    level2Groups = Object.keys(groupings).map(group => ({
-      groupName: group,
-      order: groupings[group].order,
-      menuItems: groupings[group].menuItems,
-    }));
-
-    return level2Groups.sort((prevGroup, curGroup) => {
-      return prevGroup.order - curGroup.order;
-    });
-  } catch (error) {
-    console.error('getHeaderNavigationTree:generateGroups', error);
-    return [];
-  }
-};
 
 const getOrganizedHeaderNavigationTree = state => {
   const unorganizedTree = state.Navigation.navigationData;
@@ -70,6 +30,7 @@ const getOrganizedHeaderNavigationTree = state => {
 
   return organizedNav;
 };
+
 export const getNavigationTree = state => {
   // const currentListingIds = state.productListing.breadcrumbs.map(crumb => crumb.pathSuffix);
   const currentListingIds = state.ProductListing.currentNavigationIds;

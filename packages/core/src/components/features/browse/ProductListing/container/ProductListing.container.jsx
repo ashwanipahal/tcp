@@ -4,9 +4,9 @@ import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
 import { getPlpProducts } from './ProductListing.actions';
 import { getNavigationTree } from './ProductListing.selectors';
-import { extractCategory } from './ProductListing.util';
+import { extractCategory, processBreadCrumbs } from './ProductListing.util';
 
-class ProductListingPageContainer extends React.Component {
+class ProductListingPageContainer extends React.PureComponent {
   componentDidMount() {
     const { getProducts } = this.props;
     getProducts({ URI: 'category' });
@@ -24,17 +24,6 @@ class ProductListingPageContainer extends React.Component {
     );
   }
 }
-
-const processBreadCrumbs = breadCrumbTrail => {
-  if (breadCrumbTrail && breadCrumbTrail.length) {
-    return breadCrumbTrail.map(crumb => ({
-      displayName: crumb.displayName,
-      destination: 'c',
-      pathSuffix: extractCategory(crumb.urlPathSuffix),
-    }));
-  }
-  return [];
-};
 
 function mapStateToProps(state) {
   return {
