@@ -74,6 +74,19 @@ const endpoints = {
     method: API_METHODS.DELETE,
     URI: 'v2/account/logout',
   },
+
+  getPointsHistory: {
+    method: API_METHODS.GET,
+    URI: 'v2/wallet/getMyPointHistory',
+  },
+  bonusPoints: {
+    method: API_METHODS.GET,
+    URI: 'v2/account/bonusDay',
+  },
+  addCoupons: {
+    method: 'post',
+    URI: 'v2/checkout/coupons',
+  },
   requestPassword: {
     method: 'put',
     URI: 'v2/account/resetPassword',
@@ -101,19 +114,6 @@ const endpoints = {
   deleteAddress: {
     method: API_METHODS.DELETE,
     URI: 'v2/account/deleteAddressDetails',
-  },
-
-  getPointsHistory: {
-    method: API_METHODS.GET,
-    URI: '/v2/wallet/getMyPointHistory',
-  },
-  bonusPoints: {
-    method: API_METHODS.GET,
-    URI: 'v2/account/bonusDay',
-  },
-  addCoupons: {
-    method: 'post',
-    URI: 'v2/checkout/coupons',
   },
   deleteCreditCardOnAccount: {
     method: API_METHODS.POST,

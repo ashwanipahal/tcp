@@ -1,12 +1,9 @@
 import { css } from 'styled-components';
 
-const getColorCode = props => {
-  return props.color.code
-    ? props.theme.colorPalette[props.color.tint][props.color.code]
-    : props.theme.colorPalette[props.color.tint];
-};
-
 const iconSpacing = '15px';
+
+const mprplcce = props =>
+  props.plccUser ? props.theme.colorPalette.userTheme.plcc : props.theme.colorPalette.userTheme.mpr;
 
 const StyledModal = css`
   position: absolute;
@@ -36,8 +33,7 @@ const StyledModal = css`
     position: absolute;
     height: 8px;
     width: 100%;
-    background-color: ${props =>
-      props.color ? getColorCode(props) : props.theme.colorPalette.userTheme.mpr};
+    background-color: ${mprplcce};
     z-index: 99;
   }
   .modal__triangle {
@@ -45,8 +41,7 @@ const StyledModal = css`
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-bottom: 10px solid
-      ${props => (props.color ? getColorCode(props) : props.theme.colorPalette.userTheme.mpr)};
+    border-bottom: 10px solid ${mprplcce};
     position: absolute;
     top: -10px;
     z-index: 99;

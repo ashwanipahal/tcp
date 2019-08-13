@@ -62,7 +62,13 @@ exports[`L2 Panel component renders correctly 1`] = `
         <div
           className="l2-nav-category-links"
         >
-          <ul>
+          <ul
+            className={
+              Object {
+                "columnClass": "",
+              }
+            }
+          >
             <li
               data-locator="l2_col_0_link_0"
             >
@@ -276,7 +282,13 @@ exports[`L2 Panel component renders correctly 1`] = `
         <div
           className="l2-nav-category-links"
         >
-          <ul>
+          <ul
+            className={
+              Object {
+                "columnClass": "half-width",
+              }
+            }
+          >
             <li
               data-locator="l2_col_1_link_0"
             >
@@ -939,7 +951,13 @@ exports[`L2 Panel component renders correctly 1`] = `
               />
             </li>
           </ul>
-          <ul>
+          <ul
+            className={
+              Object {
+                "columnClass": "half-width",
+              }
+            }
+          >
             <li
               data-locator="l2_col_1_link_7"
             >
@@ -1864,7 +1882,13 @@ exports[`L2 Panel component renders correctly 1`] = `
         <div
           className="l2-nav-category-links"
         >
-          <ul>
+          <ul
+            className={
+              Object {
+                "columnClass": "",
+              }
+            }
+          >
             <li
               data-locator="l2_col_2_link_0"
             >

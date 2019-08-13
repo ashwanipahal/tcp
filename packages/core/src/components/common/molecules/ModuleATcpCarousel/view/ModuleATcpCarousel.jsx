@@ -57,7 +57,7 @@ const ModuleATcpCarousel = props => {
                   component="h2"
                   headerText={headerText}
                   className="link-text-wrapper"
-                  data-locator={`${getLocator('moduleA_header_text')}${i}`}
+                  dataLocator={`${getLocator('moduleA_header_text')}${i}`}
                 />
                 <PromoBanner
                   promoBanner={promoBanner}

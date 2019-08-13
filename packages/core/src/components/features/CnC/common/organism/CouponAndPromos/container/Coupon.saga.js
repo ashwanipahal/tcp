@@ -19,8 +19,13 @@ export function* applyCoupon({ payload }) {
     coupon,
   } = payload;
   if (coupon) {
-    const oldStatus =
-      coupon.status === COUPON_STATUS.AVAILABLE ? BUTTON_LABEL_STATUS.APPLY : coupon.status;
+    let oldStatus = coupon.status;
+    if (coupon.status === COUPON_STATUS.AVAILABLE) {
+      oldStatus = BUTTON_LABEL_STATUS.APPLY;
+    } else if (coupon.status === COUPON_STATUS.APPLIED) {
+      oldStatus = BUTTON_LABEL_STATUS.REMOVE;
+    }
+
     try {
       yield put(showLoader());
       yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.APPLYING }));
@@ -57,8 +62,12 @@ export function* removeCoupon({ payload }) {
     formPromise: { resolve, reject },
   } = payload;
   const formData = { couponCode: coupon.id };
-  const oldStatus =
-    coupon.status === COUPON_STATUS.APPLIED ? BUTTON_LABEL_STATUS.REMOVE : coupon.status;
+  let oldStatus = coupon.status;
+  if (coupon.status === COUPON_STATUS.AVAILABLE) {
+    oldStatus = BUTTON_LABEL_STATUS.APPLY;
+  } else if (coupon.status === COUPON_STATUS.APPLIED) {
+    oldStatus = BUTTON_LABEL_STATUS.REMOVE;
+  }
   try {
     yield put(showLoader());
     yield put(setStatus({ promoCode: coupon.id, status: COUPON_STATUS.REMOVING }));

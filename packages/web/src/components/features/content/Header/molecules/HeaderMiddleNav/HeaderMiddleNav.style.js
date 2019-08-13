@@ -13,6 +13,8 @@ export default css`
   }
   .username {
     cursor: pointer;
+    float: left;
+    margin-left: 59%;
   }
 
   .rightLink {
@@ -21,7 +23,13 @@ export default css`
     margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
     padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
   }
-
+  .cartCount {
+    background: ${props => props.theme.colorPalette.blue['800']};
+    color: ${props => props.theme.colors.WHITE};
+    border-radius: 8px;
+    margin: 1px 0px 0px -8px;
+    padding: 2px 6px;
+  }
   @media ${props => props.theme.mediaQuery.mediumMax} {
     padding: 16px 0;
     text-align: left;
