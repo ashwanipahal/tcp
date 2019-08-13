@@ -10,7 +10,6 @@ exports[`MenuItems should render correctly 1`] = `
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="regular"
-      locator=""
       numberOfLines={1}
       text="abcd"
     />
@@ -31,7 +30,6 @@ exports[`MenuItems should render correctly with badges and submenu 1`] = `
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="regular"
-      locator=""
       numberOfLines={1}
       text="abcd"
     />
@@ -47,7 +45,6 @@ exports[`MenuItems should render correctly with badges and submenu 1`] = `
         fontFamily="primary"
         fontSize="fs10"
         fontWeight="black"
-        locator=""
         text="promo"
       />
     </Styled(View)>
@@ -73,7 +70,6 @@ exports[`MenuItems should trigger the press event with l3 1`] = `
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="regular"
-      locator=""
       numberOfLines={1}
       text="abcd"
     />
@@ -89,7 +85,6 @@ exports[`MenuItems should trigger the press event with l3 1`] = `
         fontFamily="primary"
         fontSize="fs10"
         fontWeight="black"
-        locator=""
         text="promo"
       />
     </Styled(View)>
@@ -115,7 +110,6 @@ exports[`MenuItems should trigger the press event without l3 1`] = `
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="regular"
-      locator=""
       numberOfLines={1}
       text="abcd"
     />
@@ -131,7 +125,6 @@ exports[`MenuItems should trigger the press event without l3 1`] = `
         fontFamily="primary"
         fontSize="fs10"
         fontWeight="black"
-        locator=""
         text="promo"
       />
     </Styled(View)>

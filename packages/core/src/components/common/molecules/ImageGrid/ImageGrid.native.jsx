@@ -8,21 +8,22 @@ const ImageGrid = props => {
   return (
     <Wrapper>
       <ImageGridContainer width={imgWidth * column + gutter}>
-        {mediaList.map(({ crop_m: cropM, image, link }, index) => {
-          return (
-            <Anchor url={link.url} navigation={navigation}>
-              <ImageGridItem
-                testID={`${dataLocator}_${index}`}
-                width={imgWidth}
-                height={imgHeight}
-                crop={cropM}
-                gutter={gutter}
-                url={image.url}
-                alt={image.alt || image.title}
-              />
-            </Anchor>
-          );
-        })}
+        {mediaList &&
+          mediaList.map(({ crop_m: cropM, image, link }, index) => {
+            return (
+              <Anchor url={link.url} navigation={navigation}>
+                <ImageGridItem
+                  testID={`${dataLocator}_${index}`}
+                  width={imgWidth}
+                  height={imgHeight}
+                  crop={cropM}
+                  gutter={gutter}
+                  url={image.url}
+                  alt={image.alt || image.title}
+                />
+              </Anchor>
+            );
+          })}
       </ImageGridContainer>
     </Wrapper>
   );
