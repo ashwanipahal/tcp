@@ -31,14 +31,12 @@ export const addGiftCardApi = payload => {
     body: {
       cc_brand: 'GC',
       payMethodId: 'GiftCard',
-      account_pin: payload.cardPin,
-      pay_account: payload.giftCardNumber,
+      account_pin: '0546',
+      pay_account: '6006491259499902624',
       recapchaResponse: payload.recaptchaToken,
     },
   };
-  return executeStatefulAPICall(payloadArgs)
-    .then(res => {
-      return res;
-    })
-    .catch(errorHandler);
+  return executeStatefulAPICall(payloadArgs, errorHandler).then(res => {
+    return res;
+  });
 };
