@@ -24,6 +24,17 @@ const styles = css`
   .border.elem-pt-LRG {
     padding-bottom: 27px;
   }
+  .password-required-msg {
+    .reset-password-heading,
+    .reset-password-list {
+      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy2}px;
+      font-weight: ${props => props.theme.fonts.fontWeight.normal};
+    }
+    .reset-password-note {
+      font-size: ${props => props.theme.fonts.fontSize.body.bodytext.copy1}px;
+      text-align: center;
+    }
+  }
 `;
 
 export default styles;
