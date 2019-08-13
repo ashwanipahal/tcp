@@ -5,6 +5,7 @@ const ignorePsuedoCodeDir = [
   '/LoginPage/',
   '/server/',
   '/service/',
+  '/FPO/',
 ];
 
 module.exports = {

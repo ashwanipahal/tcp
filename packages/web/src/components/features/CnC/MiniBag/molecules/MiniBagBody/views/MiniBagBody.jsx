@@ -6,8 +6,8 @@ import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import PayPalButton from '@tcp/core/src/components/common/atoms/PaypalButton';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import ProductTileWrapper from '@tcp/core/src/components/features/CnC/CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import styles from '../styles/MiniBagBody.style';
-import ProductTileWrapper from '../../../container/ProductTileWrapperContainer.container';
 import EmptyMiniBag from '../../EmptyMiniBag/views/EmptyMiniBag';
 // @flow
 
@@ -39,7 +39,7 @@ const MiniBagBody = ({
             {userName ? (
               <BodyCopy component="span" fontSize="fs12" textAlign="left">
                 <Anchor
-                  fontSizeVariation="small"
+                  fontSizeVariation="medium"
                   underline
                   anchorVariation="primary"
                   noLink
@@ -50,7 +50,7 @@ const MiniBagBody = ({
                 </Anchor>
                 {` `}
                 <Anchor
-                  fontSizeVariation="small"
+                  fontSizeVariation="medium"
                   underline
                   anchorVariation="primary"
                   noLink
@@ -62,7 +62,7 @@ const MiniBagBody = ({
             ) : (
               <BodyCopy component="span" fontSize="fs12" textAlign="left">
                 <Anchor
-                  fontSizeVariation="small"
+                  fontSizeVariation="medium"
                   underline
                   anchorVariation="primary"
                   noLink
@@ -84,7 +84,7 @@ const MiniBagBody = ({
       {cartItemCount ? (
         <div className="miniBagFooter">
           <BodyCopy tag="span" fontSize="fs14" fontWeight="semibold" className="subTotal">
-            {`${labels.subTotal}: ${currencySymbol}${subTotal || 0}`}
+            {`${labels.subTotal}: ${currencySymbol}${subTotal.toFixed(2) || 0}`}
           </BodyCopy>
           <Row className="checkout-button">
             <PayPalButton className="payPal-button" />

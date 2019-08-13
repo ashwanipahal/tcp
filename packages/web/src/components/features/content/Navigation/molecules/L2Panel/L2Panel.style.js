@@ -8,7 +8,6 @@ export default css`
   background: white;
   z-index: 10;
 
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
   .shop-by-size-links {
     padding: 10px 14px 10px;
     ul {
@@ -54,6 +53,8 @@ export default css`
   }
 
   .l2-nav-link {
+    display: flex;
+    align-items: center;
     padding: 18px 14px 17px 14px;
     line-height: 1.15;
     &.highlighted {
@@ -95,6 +96,8 @@ export default css`
   @media ${props => props.theme.mediaQuery.large} {
     display: none;
     top: 71px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25);
+
     .s-display-none {
       display: block;
     }
@@ -135,6 +138,7 @@ export default css`
       }
     }
     .l2-nav-link {
+      display: block;
       padding: 13px 0 12px 0;
       line-height: 1.07;
     }

@@ -146,8 +146,10 @@ const NavMenuLevel2 = props => {
   }
 
   const sectionArr = subCatArr.map(subcatName => {
-    return { data: subCategories[subcatName], title: subcatName };
+    return { data: subCategories[subcatName] || [], title: subcatName };
   });
+
+  console.log(sectionArr);
 
   return (
     <SectionList

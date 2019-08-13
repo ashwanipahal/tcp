@@ -5,8 +5,8 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
   ctaTitle=""
   title=""
 >
-  <p>
-    Dummy Credit card content will here...
-  </p>
+  <FPO
+    text=""
+  />
 </Styled(AccountOverviewTile)>
 `;

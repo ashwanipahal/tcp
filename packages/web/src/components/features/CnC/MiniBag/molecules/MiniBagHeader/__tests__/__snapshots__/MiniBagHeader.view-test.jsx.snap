@@ -44,6 +44,18 @@ exports[`MiniBagHeader component renders correctly 1`] = `
           [Function],
           ";
   }
+  .rightLink {
+    border-left: 1px solid ",
+          [Function],
+          ";
+    box-sizing: border-box;
+    margin-left: ",
+          [Function],
+          ";
+    padding-left: ",
+          [Function],
+          ";
+  }
 ",
           ";
 ",

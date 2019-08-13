@@ -20,17 +20,34 @@ const RewardsPointsSlider = ({
     <div className={className}>
       <Row>
         <Col colSize={{ large: 5, medium: 3, small: 2 }} className="current-points">
-          <BodyCopy fontFamily="secondary" fontSize="fs14">
+          <BodyCopy data-locator="slidercurrentpointslbl" fontFamily="secondary" fontSize="fs14">
             {`${labels.lbl_common_current_points}: `}
-            <BodyCopy component="span" fontWeight="black" fontFamily="secondary" fontSize="fs14">
+            <BodyCopy
+              data-locator="slidercurrentpointsvalue"
+              component="span"
+              fontWeight="black"
+              fontFamily="secondary"
+              fontSize="fs14"
+            >
               {currentPoints}
             </BodyCopy>
           </BodyCopy>
         </Col>
         <Col colSize={{ large: 7, medium: 5, small: 4 }} className="my-rewards">
-          <BodyCopy component="p" fontFamily="secondary" fontSize="fs14">
+          <BodyCopy
+            data-locator="slidermyrewardslbl"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+          >
             {`${labels.lbl_common_heading}: `}
-            <BodyCopy component="span" fontWeight="black" fontFamily="secondary" fontSize="fs14">
+            <BodyCopy
+              data-locator="slidermyrewardsvalue"
+              component="span"
+              fontWeight="black"
+              fontFamily="secondary"
+              fontSize="fs14"
+            >
               {labels.lbl_common_currency}
               {totalRewards && Math.trunc(totalRewards)}
             </BodyCopy>
@@ -40,6 +57,7 @@ const RewardsPointsSlider = ({
       <Row>
         <Col colSize={{ large: 12, medium: 8, small: 6 }}>
           <div
+            data-locator="sliderpointsgraph"
             className={`progress-container${
               plccUser ? '_plcc' : ''
             } elem-mt-MED elem-mt-MED elem-mb-SM`}
@@ -55,9 +73,19 @@ const RewardsPointsSlider = ({
       </Row>
       <Row>
         <Col colSize={{ large: 12, medium: 8, small: 6 }}>
-          <BodyCopy fontFamily="secondary" fontSize="fs14">
+          <BodyCopy
+            data-locator="slidernextrewardspointslbl"
+            fontFamily="secondary"
+            fontSize="fs14"
+          >
             {`${labels.lbl_common_next_reward}: `}
-            <BodyCopy component="span" fontWeight="black" fontFamily="secondary" fontSize="fs14">
+            <BodyCopy
+              data-locator="slidernextrewardspointsvalue"
+              component="span"
+              fontWeight="black"
+              fontFamily="secondary"
+              fontSize="fs14"
+            >
               {pointsToNextReward}
             </BodyCopy>
           </BodyCopy>
