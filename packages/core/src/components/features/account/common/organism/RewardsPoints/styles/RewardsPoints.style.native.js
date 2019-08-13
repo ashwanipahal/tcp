@@ -9,7 +9,7 @@ const RewardsPointsView = styled.View`
 
 const currentPointsStyle = () => {
   return `
-  width:120px;
+  width:140px;
   `;
 };
 
