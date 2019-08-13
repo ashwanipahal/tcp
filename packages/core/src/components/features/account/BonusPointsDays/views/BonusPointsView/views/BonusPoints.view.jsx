@@ -49,8 +49,8 @@ class BonusPointsView extends React.Component {
           <BonusPointsReadSection
             labels={labels.myPlaceRewards}
             toggleBonusPointsModal={this.toggleBonusPointsModal}
-            availableBonusPointDays={bonusData && bonusData.availableBonusPointDays}
-            usedBonusPointDays={bonusData && bonusData.usedBonusPointDays}
+            availableBonusPointDays={(bonusData && bonusData.availableBonusPointDays) || null}
+            usedBonusPointDays={(bonusData && bonusData.usedBonusPointDays) || null}
             isPlcc={isPlcc}
           />
         )}

@@ -12,6 +12,9 @@ export const BonusPointsReadSection = ({
   usedBonusPointDays,
   className,
 }) => {
+  if (availableBonusPointDays === null) {
+    return null;
+  }
   const availableDaysArray = Array(availableBonusPointDays).fill('');
   const usedDaysArray = Array(usedBonusPointDays).fill('');
   const message = labels.lbl_bonus_points_daysLeft.replace(/\{0\}/, availableBonusPointDays);

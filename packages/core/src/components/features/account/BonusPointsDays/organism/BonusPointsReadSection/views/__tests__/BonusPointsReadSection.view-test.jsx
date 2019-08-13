@@ -28,4 +28,10 @@ describe('BonusPointsReadSection', () => {
     const tree = shallow(<BonusPointsReadSection {...props} />);
     expect(tree.find('.dot').length).toBe(props.availableBonusPointDays + props.usedBonusPointDays);
   });
+
+  it('should render nothing if availableBonusPointDays is null', () => {
+    const updatedProps = { ...props, ...{ availableBonusPointDays: null } };
+    const tree = shallow(<BonusPointsReadSection {...updatedProps} />);
+    expect(tree.isEmptyRender()).toBeTruthy();
+  });
 });
