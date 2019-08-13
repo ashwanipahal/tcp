@@ -110,7 +110,9 @@ class Panel extends React.PureComponent<Props> {
                 color="gray.900"
               />
             </TouchableHeader>
-            <ImageComp customStyle={imgStyle} source={carrotIcon} width={10} height={6} />
+            <ImageWrapper onPress={() => this.toggleView()}>
+              <ImageComp customStyle={imgStyle} source={carrotIcon} width={10} height={6} />
+            </ImageWrapper>
           </TitleContainer>
         )}
         {expanded && !isVariationTypeLink && <PanelBody>{children}</PanelBody>}
@@ -120,7 +122,7 @@ class Panel extends React.PureComponent<Props> {
               {isCardApply && this.getCreditCardApply(title)}
               {isFavorite && this.getFavoriteOverview(title)}
               {!isImageLink && this.getHeaderTitle()}
-              <ImageWrapper>
+              <ImageWrapper onPress={() => this.toggleView()}>
                 <ImageComp customStyle={imgStyle} source={rightIcon} width={7} height={10} />
               </ImageWrapper>
             </TitleContainer>

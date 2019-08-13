@@ -59,9 +59,16 @@ const getProductsTypes = state => {
   };
 };
 
+const getNeedHelpContentId = state => {
+  const { referred = [] } = state.Labels.bag.addedToBag;
+  const content = referred.find(label => label.name === 'NEED_HELP_DATA');
+  return content && content.contentId;
+};
+
 export default {
   getBagPageLabels,
   getTotalItems,
   getOrderItems,
   getProductsTypes,
+  getNeedHelpContentId,
 };
