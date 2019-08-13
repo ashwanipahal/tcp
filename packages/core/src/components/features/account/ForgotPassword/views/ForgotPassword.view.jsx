@@ -74,6 +74,7 @@ class ForgotPasswordView extends React.Component<Props, State> {
             to="/account?id=address-book"
             data-locator="addnewaddress-back"
           >
+            <span className="left-arrow"> </span>
             {labels.password.lbl_forgotPassword_backLogin}
           </Anchor>
         </div>
