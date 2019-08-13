@@ -4,7 +4,10 @@ import {
   getCardList,
   checkBalance,
 } from '@tcp/core/src/components/features/account/Payment/container/Payment.actions';
-import { getCardListState } from '@tcp/core/src/components/features/account/Payment/container/Payment.selectors';
+import {
+  getCardListState,
+  checkbalanceValue,
+} from '@tcp/core/src/components/features/account/Payment/container/Payment.selectors';
 import PaymentTileComponent from '../views';
 
 export class PaymentTile extends React.Component<Props> {
@@ -32,6 +35,7 @@ export const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => {
   return {
     cardList: getCardListState(state),
+    checkbalanceValueInfo: checkbalanceValue(state),
   };
 };
 
