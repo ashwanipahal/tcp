@@ -100,6 +100,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
                     fontWeight="extrabold"
                     component="h4"
                     className="elem-mb-SM elem-ml-SM"
+                    data-locator="pointshistorylbl"
                   >
                     {labels.myPlaceRewards.lbl_my_rewards_points_history}
                   </BodyCopy>
