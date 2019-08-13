@@ -10,13 +10,13 @@ import { extractCategory, findCategoryIdandName } from './ProductListing.util';
 
 // TODO - refactor this function - this is random and dummy
 const matchPath = (url, param) => {
-  if (param === '/search' && url.indexOf(param) !== -1) {
+  if (param === '/search/' && url.indexOf(param) !== -1) {
     return {
       searchTerm: url,
     };
   }
-  if (param === '/c' && url.indexOf(param) !== -1) {
-    const urlWithCat = url.split('/c/')[1];
+  if (param === '/c/' && url.indexOf(param) !== -1) {
+    const urlWithCat = url.split(param)[1];
     return {
       listingKey: urlWithCat,
     };
@@ -186,8 +186,8 @@ class ProductsOperator {
     // const isSearchPage = routingStoreView.getCurrentPageId(state) === PAGES.search.id;
     const isSearchPage = false;
     const match = isSearchPage
-      ? matchPath(window.location.pathname, '/search')
-      : matchPath(window.location.pathname, '/c');
+      ? matchPath(window.location.pathname, '/search/')
+      : matchPath(window.location.pathname, '/c/');
     const categoryKey = isSearchPage ? match.searchTerm : match.listingKey;
     const navigationTree = state.navigationData;
     const categoryNameList = findCategoryIdandName(navigationTree, categoryKey).reverse();
