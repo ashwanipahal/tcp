@@ -1,8 +1,6 @@
 // @flow
 import React from 'react';
-import { TouchableOpacity } from 'react-native';
-import { UrlHandler } from '../../../../../utils/index.native';
-
+import { Anchor } from '../../../atoms';
 import { BodyCopy, Container, ContainerView } from '../PromoBanner.style.native';
 
 type Props = {
@@ -77,21 +75,18 @@ export const bodyCopyStyles = {
  */
 const PromoBanner = (props: Props) => {
   const {
+    locator,
+    navigation,
     promoBanner: [{ textItems, link }],
     ...otherProps
   } = props;
   return [
-    <TouchableOpacity
-      accessibilityRole="link"
-      onPress={() => {
-        UrlHandler(link.url);
-      }}
-    >
+    <Anchor url={link.url} navigation={navigation}>
       {textItems.map(({ text, style }, index) => {
         const StyleBodyCopy = bodyCopyStyles[style];
-        return <StyleBodyCopy text={index ? ` ${text}` : text} {...otherProps} />;
+        return <StyleBodyCopy text={index ? `${text}` : text} locator={locator} {...otherProps} />;
       })}
-    </TouchableOpacity>,
+    </Anchor>,
   ];
 };
 

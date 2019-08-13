@@ -10,6 +10,7 @@ export const HeadingView = styled.View`
   align-items: center;
   justify-content: space-between;
   padding-right: 50px;
+  width: 100%;
 `;
 
 export const ArrowBackIcon = styled.Image`

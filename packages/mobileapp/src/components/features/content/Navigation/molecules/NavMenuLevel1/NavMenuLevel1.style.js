@@ -1,7 +1,6 @@
 import styled from 'styled-components/native';
 
 export const L1TouchableOpacityNoImage = styled.TouchableOpacity`
-  flex: 1;
   align-items: center;
   flex-direction: row;
   height: 132;
@@ -10,7 +9,6 @@ export const L1TouchableOpacityNoImage = styled.TouchableOpacity`
 `;
 
 export const L1TouchableOpacity = styled.TouchableOpacity`
-  flex: 1;
   align-items: center;
   flex-direction: row;
   height: 132;
@@ -18,7 +16,7 @@ export const L1TouchableOpacity = styled.TouchableOpacity`
 `;
 
 export const L1TextView = styled.View`
-  flex: 1;
+  flex-grow: 1;
   flex-direction: column;
   justify-content: center;
   background-color: ${props => props.theme.colorPalette.gray[300]};

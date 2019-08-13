@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { Col, DamImage, Row } from '../../atoms';
+import { Anchor, Col, DamImage, Row } from '../../atoms';
 import withStyles from '../../hoc/withStyles';
 import style from './ImageGrid.style';
 import config from './config';
@@ -69,14 +69,16 @@ const ImageGrid = (props: Props) => {
     <div data-locator={dataLocatorContainer}>
       {mediaLinkedList.reduce(gridReducer, gridCoordinator).final.map(medList => (
         <Row fullBleed className={className}>
-          {medList.map(({ image }, index) => {
+          {medList.map(({ image, link }, index) => {
             return (
               <Col key={index.toString()} colSize={colSize} className="image-col">
-                <DamImage
-                  data-locator={`${dataLocator}_${index + 1}`}
-                  imgConfigs={config.IMG_DATA.imgConfig}
-                  imgData={image}
-                />
+                <Anchor {...link}>
+                  <DamImage
+                    data-locator={`${dataLocator}_${index + 1}`}
+                    imgConfigs={config.IMG_DATA.imgConfig}
+                    imgData={image}
+                  />
+                </Anchor>
               </Col>
             );
           })}

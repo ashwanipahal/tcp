@@ -253,3 +253,11 @@ export const setValueInAsyncStorage = async (key, value) => {
     // Error saving data
   }
 };
+
+export const validateExternalUrl = url => {
+  const isExternal = url.indexOf('http') || url.indexOf('https') !== true;
+  if (isExternal === true) {
+    return true;
+  }
+  return false;
+};

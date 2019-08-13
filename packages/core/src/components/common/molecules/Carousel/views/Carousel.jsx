@@ -111,7 +111,11 @@ class Carousel extends React.PureComponent<Props, State> {
     const settings = { ...defaults, ...options };
 
     return (
-      <div className={`${className} tcp_carousel_wrapper`} carouselConfig={carouselConfig}>
+      <div
+        className={`${className} tcp_carousel_wrapper`}
+        carouselConfig={carouselConfig}
+        data-locator={carouselConfig.dataLocatorCarousel}
+      >
         <Slider className="tcp_carousel" ref={this.getSlider} {...settings}>
           {!children ? null : children}
         </Slider>

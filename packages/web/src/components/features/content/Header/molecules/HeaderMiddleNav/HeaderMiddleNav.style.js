@@ -11,6 +11,9 @@ export default css`
     width: 22px;
     height: 22px;
   }
+  .username {
+    cursor: pointer;
+  }
 
   .rightLink {
     border-left: 1px solid ${props => props.theme.colorPalette.gray[500]};

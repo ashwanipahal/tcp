@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import ProductTileWrapper from '@tcp/core/src/components/features/CnC/CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import MiniBagBody from '../views/MiniBagBody';
-import ProductTileWrapper from '../../../container/ProductTileWrapperContainer.container';
 import EmptyMiniBag from '../../EmptyMiniBag/views/EmptyMiniBag';
 
 describe('MiniBagBody component', () => {

@@ -33,6 +33,7 @@ class CouponListSection extends React.Component<Props> {
   render() {
     const {
       labels,
+      isFetching,
       couponList,
       className,
       heading,
@@ -41,6 +42,7 @@ class CouponListSection extends React.Component<Props> {
       onApply,
       onRemove,
       dataLocator,
+      handleErrorCoupon,
     } = this.props;
     const { showMore } = this.state;
     const buttonText =
@@ -89,10 +91,12 @@ class CouponListSection extends React.Component<Props> {
                 <CouponCard
                   key={coupon.id}
                   labels={labels}
+                  isFetching={isFetching}
                   coupon={coupon}
                   couponDetailClick={couponDetailClick}
                   onApply={onApply}
                   onRemove={onRemove}
+                  handleErrorCoupon={handleErrorCoupon}
                 />
               );
             })}

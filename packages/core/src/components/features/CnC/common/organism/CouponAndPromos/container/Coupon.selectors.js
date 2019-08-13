@@ -1,3 +1,5 @@
+import BagPageSelector from '../../../../BagPage/container/BagPage.selectors';
+
 export const getCouponFetchingState = state => {
   return state.CouponsAndPromos && state.CouponsAndPromos.get('isFetching');
 };
@@ -11,7 +13,7 @@ export const getCouponsLabels = state => {
         lbl_couponform_header: couponCodeHeader,
         lbl_couponform_help: couponNeedHelpText,
         lbl_couponlist_AVAILABLE_REWARDS: AVAILABLE_REWARDS_HEADING = 'AVAILABLE REWARDS & OFFERS ',
-        lbl_couponlist_APPLIED_REWARDS_HEADING: APPLIED_REWARDS_HEADING = 'Applied REWARDS & OFFERS ',
+        lbl_couponlist_APPLIED_REWARDS_HEADING: APPLIED_REWARDS_HEADING = 'APPLIED REWARDS & OFFERS ',
         lbl_couponlist_HELP_APPLYING: HELP_APPLYING = 'Help applying Place Cash',
         lbl_couponlist_APPLY_BUTTON_TEXT: APPLY_BUTTON_TEXT = 'APPLY',
         lbl_couponlist_REMOVE_BUTTON_TEXT: REMOVE_BUTTON_TEXT = 'REMOVE',
@@ -69,4 +71,11 @@ export const getAppliedCouponListState = state => {
 export const getAvailableCouponListState = state => {
   const list = state.CouponsAndPromos && state.CouponsAndPromos.get('couponsAndOffers');
   return list && list.filter(i => i.status === 'available');
+};
+
+export const getNeedHelpContent = state => {
+  const needHelpContent = state.CartPageReducer.get('moduleXContent').find(
+    moduleX => moduleX.name === BagPageSelector.getNeedHelpContentId(state)
+  );
+  return needHelpContent && needHelpContent.richText;
 };

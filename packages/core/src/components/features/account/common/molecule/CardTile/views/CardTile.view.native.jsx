@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 import { get } from 'lodash';
 import { View, Text } from 'react-native';
@@ -28,304 +29,320 @@ import TextBox from '../../../../../../common/atoms/TextBox';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 
-// @flow
-type Props = {
-  card: object,
-  labels: object,
-  setDefaultPaymentMethod: Function,
-  onGetBalanceCard: Function,
-  checkbalanceValueInfo: any,
-  change: Function,
-  handleSubmit: Function,
-};
+class CardTile extends React.Component<Props> {
+  static propTypes = {
+    card: PropTypes.shape({}),
+    labels: PropTypes.shape({}),
+    setDefaultPaymentMethod: PropTypes.func,
+    onGetBalanceCard: PropTypes.func,
+    change: PropTypes.func,
+    handleSubmit: PropTypes.func,
+    toggleModal: PropTypes.func,
+    setSelectedCard: PropTypes.func,
+  };
 
-const getCardName = ({ card, labels }) => {
-  switch (card.ccType) {
-    case 'GiftCard':
-      return labels.paymentGC.lbl_payment_giftCard;
-    case 'PLACE CARD':
-      return labels.paymentGC.lbl_payment_plccCard;
-    case 'VENMO':
-      return labels.paymentGC.lbl_payment_venmoAccount;
-    default:
-      return labels.paymentGC.lbl_payment_defaultCardName;
-  }
-};
+  static defaultProps = {
+    card: {},
+    labels: {},
+    setDefaultPaymentMethod: () => {},
+    onGetBalanceCard: () => {},
+    change: () => {},
+    handleSubmit: () => {},
+    toggleModal: () => {},
+    setSelectedCard: () => {},
+  };
 
-/**
- * Get the gift card balance
- * @param {*} key
- * @param {*} checkbalanceValueInfo
- */
-const getGiftCardBalance = (key, checkbalanceValueInfo) => {
-  return checkbalanceValueInfo && checkbalanceValueInfo.get(key);
-};
+  cardIconMapping = {
+    DISC: 'disc-small',
+    MC: 'mc-small',
+    Amex: 'amex-small',
+    Visa: 'visa-small',
+    GC: 'gift-card-small',
+    'PLACE CARD': 'place-card-small',
+    VENMO: 'venmo-blue-acceptance-mark',
+  };
 
-const getDataLocatorPrefix = ({ card }) => {
-  switch (card.ccType) {
-    case 'GiftCard':
-      return 'giftcard';
-    case 'VENMO':
-      return 'venmo';
-    default:
-      return 'creditdebit';
-  }
-};
+  getCardName = ({ card, labels }) => {
+    switch (card.ccType) {
+      case 'GiftCard':
+        return labels.paymentGC.lbl_payment_giftCard;
+      case 'PLACE CARD':
+        return labels.paymentGC.lbl_payment_plccCard;
+      case 'VENMO':
+        return labels.paymentGC.lbl_payment_venmoAccount;
+      default:
+        return labels.paymentGC.lbl_payment_defaultCardName;
+    }
+  };
 
-const handleDefaultLinkClick = (e, card, setDefaultPaymentMethod) => {
-  e.preventDefault();
-  setDefaultPaymentMethod(card);
-};
+  /**
+   * Get the gift card balance
+   * @param {*} key
+   * @param {*} checkbalanceValueInfo
+   */
+  getGiftCardBalance = (key, checkbalanceValueInfo) => {
+    return checkbalanceValueInfo && checkbalanceValueInfo.get(key);
+  };
 
-type MakeDefaultProps = {
-  card: object,
-  labels: object,
-  setDefaultPaymentMethod: Function,
-};
+  getDataLocatorPrefix = ({ card }) => {
+    switch (card.ccType) {
+      case 'GiftCard':
+        return 'giftcard';
+      case 'VENMO':
+        return 'venmo';
+      default:
+        return 'creditdebit';
+    }
+  };
 
-const getMakeDefaultBadge = ({ card, labels, setDefaultPaymentMethod }: MakeDefaultProps) => {
-  return card.defaultInd ? (
-    <DefaultBadgeWrapper>
-      <BadgeContent>
-        <BodyCopy
-          mobilefontFamily={['secondary']}
-          fontWeight="semibold"
-          fontSize="fs10"
-          text={labels.paymentGC.lbl_payment_defaultPayment}
-        />
-      </BadgeContent>
-    </DefaultBadgeWrapper>
-  ) : (
-    <Anchor
-      fontSizeVariation="small"
-      underline
-      to="/#"
-      anchorVariation="primary"
-      data-locator="payment-makedefault"
-      onPress={e => handleDefaultLinkClick(e, card, setDefaultPaymentMethod)}
-      text={labels.common.lbl_common_makeDefault}
-    />
-  );
-};
+  handleDefaultLinkClick = (e, card, setDefaultPaymentMethod) => {
+    e.preventDefault();
+    setDefaultPaymentMethod(card);
+  };
 
-const cardIconMapping = {
-  DISC: 'disc-small',
-  MC: 'mc-small',
-  Amex: 'amex-small',
-  Visa: 'visa-small',
-  GC: 'gift-card-small',
-  'PLACE CARD': 'place-card-small',
-  VENMO: 'venmo-blue-acceptance-mark',
-};
-
-const getVenmoUserName = ({ card }) => {
-  return (
-    card.properties && (
-      <VenmoCardTileHeading dataLocator="payment-venmoid">
-        <BodyCopy fontSize="fs14" fontWeight="extrabold" text={card.properties.venmoUserId} />
-      </VenmoCardTileHeading>
-    )
-  );
-};
-
-type GetCardDetailsProps = {
-  dataLocatorPrefix: string,
-  card: object,
-  labels: object,
-};
-
-const getCardDetails = ({ dataLocatorPrefix, card, labels }: GetCardDetailsProps) => {
-  const cardNum = `${labels.paymentGC.lbl_payment_cardNum}${card.accountNo.slice(-4)}`;
-  const expDate = `${labels.paymentGC.lbl_payment_expDate}${card.expMonth.trim()}/${card.expYear}`;
-  return (
-    <View>
-      <BodyCopy
-        fontSize="fs14"
-        fontWeight="black"
-        dataLocator={`payment-${dataLocatorPrefix}endingtext`}
-        text={cardNum}
-      />
-      {card.ccType !== 'PLACE CARD' && card.ccType !== 'GiftCard' && (
-        <CardTileExpiry>
+  getMakeDefaultBadge = ({ card, labels, setDefaultPaymentMethod }) => {
+    return card.defaultInd ? (
+      <DefaultBadgeWrapper>
+        <BadgeContent>
           <BodyCopy
-            fontSize="fs14"
+            mobilefontFamily={['secondary']}
             fontWeight="semibold"
-            dataLocator={`payment-${dataLocatorPrefix}expiretext`}
-            text={expDate}
+            fontSize="fs10"
+            text={labels.paymentGC.lbl_payment_defaultPayment}
           />
-        </CardTileExpiry>
-      )}
-    </View>
-  );
-};
+        </BadgeContent>
+      </DefaultBadgeWrapper>
+    ) : (
+      <Anchor
+        fontSizeVariation="small"
+        underline
+        to="/#"
+        anchorVariation="primary"
+        data-locator="payment-makedefault"
+        onPress={e => this.handleDefaultLinkClick(e, card, setDefaultPaymentMethod)}
+        text={labels.common.lbl_common_makeDefault}
+      />
+    );
+  };
 
-const getAddressDetails = ({ card }) => {
-  const { addressDetails } = card;
-  return (
-    addressDetails && (
-      <CardAddress>
-        <Text>{`${addressDetails.firstName} ${addressDetails.lastName}`}</Text>
-        <Text>{addressDetails.addressLine1}</Text>
-        {addressDetails.addressLine2 ? <Text>{addressDetails.addressLine2}</Text> : null}
-        <Text>{`${addressDetails.city}, ${addressDetails.state} ${addressDetails.zipCode}`}</Text>
-      </CardAddress>
-    )
-  );
-};
+  getVenmoUserName = ({ card }) => {
+    return (
+      card.properties && (
+        <VenmoCardTileHeading dataLocator="payment-venmoid">
+          <BodyCopy fontSize="fs14" fontWeight="extrabold" text={card.properties.venmoUserId} />
+        </VenmoCardTileHeading>
+      )
+    );
+  };
 
-const handleGetGiftCardBalanceClick = (formData, card, onGetBalanceCard) => {
-  onGetBalanceCard({ formData, card });
-};
-
-const getCtaRow = (
-  isGiftCard,
-  isVenmo,
-  balance,
-  labels,
-  dataLocatorPrefix,
-  card,
-  onGetBalanceCard,
-  handleSubmit
-  // eslint-disable-next-line max-params
-) => {
-  return (
-    <CardCtaRow>
-      {isGiftCard && balance && (
+  getCardDetails = ({ dataLocatorPrefix, card, labels }) => {
+    const cardNum = `${labels.paymentGC.lbl_payment_cardNum}${card.accountNo.slice(-4)}`;
+    const expDate = `${labels.paymentGC.lbl_payment_expDate}${card.expMonth.trim()}/${
+      card.expYear
+    }`;
+    return (
+      <View>
         <BodyCopy
-          mobilefontFamily={['secondary']}
-          fontSize="fs28"
-          color="gray.900"
+          fontSize="fs14"
           fontWeight="black"
-          text={`$${balance}`}
+          dataLocator={`payment-${dataLocatorPrefix}endingtext`}
+          text={cardNum}
         />
-      )}
+        {card.ccType !== 'PLACE CARD' && card.ccType !== 'GiftCard' && (
+          <CardTileExpiry>
+            <BodyCopy
+              fontSize="fs14"
+              fontWeight="semibold"
+              dataLocator={`payment-${dataLocatorPrefix}expiretext`}
+              text={expDate}
+            />
+          </CardTileExpiry>
+        )}
+      </View>
+    );
+  };
 
-      {isGiftCard && balance == null && (
-        <CustomButton
-          color="white"
-          fill="BLUE"
-          text={labels.paymentGC.lbl_payment_checkBalance}
-          buttonVariation="variable-width"
-          onPress={handleSubmit(formData =>
-            handleGetGiftCardBalanceClick(formData, card, onGetBalanceCard)
+  getAddressDetails = ({ card }) => {
+    const { addressDetails } = card;
+    return (
+      addressDetails && (
+        <CardAddress>
+          <Text>{`${addressDetails.firstName} ${addressDetails.lastName}`}</Text>
+          <Text>{addressDetails.addressLine1}</Text>
+          {addressDetails.addressLine2 ? <Text>{addressDetails.addressLine2}</Text> : null}
+          <Text>{`${addressDetails.city}, ${addressDetails.state} ${addressDetails.zipCode}`}</Text>
+        </CardAddress>
+      )
+    );
+  };
+
+  handleGetGiftCardBalanceClick = (formData, card, onGetBalanceCard) => {
+    onGetBalanceCard({ formData, card });
+  };
+
+  onDeleteCardClick = e => {
+    e.preventDefault();
+    const { card, toggleModal, setSelectedCard } = this.props;
+    setSelectedCard(card);
+    toggleModal({ state: true });
+  };
+
+  getCtaRow = (
+    isGiftCard,
+    isVenmo,
+    balance,
+    labels,
+    dataLocatorPrefix,
+    card,
+    onGetBalanceCard,
+    handleSubmit
+    // eslint-disable-next-line max-params
+  ) => {
+    return (
+      <CardCtaRow>
+        {isGiftCard && balance && (
+          <BodyCopy
+            mobilefontFamily={['secondary']}
+            fontSize="fs28"
+            color="gray.900"
+            fontWeight="black"
+            text={`$${balance}`}
+          />
+        )}
+
+        {isGiftCard && balance == null && (
+          <CustomButton
+            color="white"
+            fill="BLUE"
+            text={labels.paymentGC.lbl_payment_checkBalance}
+            buttonVariation="variable-width"
+            onPress={handleSubmit(formData =>
+              this.handleGetGiftCardBalanceClick(formData, card, onGetBalanceCard)
+            )}
+          />
+        )}
+
+        <CardCtaLinks>
+          {!isVenmo && !isGiftCard && (
+            <Anchor
+              fontSizeVariation="large"
+              underline
+              to="/#"
+              anchorVariation="primary"
+              data-locator={`payment-${dataLocatorPrefix}editlink`}
+              text={labels.common.lbl_common_edit}
+            />
           )}
-        />
-      )}
-
-      <CardCtaLinks>
-        {!isVenmo && !isGiftCard && (
+          <CardCtaLinkMargin />
           <Anchor
             fontSizeVariation="large"
             underline
-            to="/#"
             anchorVariation="primary"
-            data-locator={`payment-${dataLocatorPrefix}editlink`}
-            text={labels.common.lbl_common_edit}
+            data-locator={`payment-${dataLocatorPrefix}deletelink`}
+            text={labels.common.lbl_common_delete}
+            onPress={e => this.onDeleteCardClick(e)}
           />
-        )}
-        <CardCtaLinkMargin />
-        <Anchor
-          fontSizeVariation="large"
-          underline
-          to="/#"
-          anchorVariation="primary"
-          data-locator={`payment-${dataLocatorPrefix}deletelink`}
-          text={labels.common.lbl_common_delete}
-        />
-      </CardCtaLinks>
-    </CardCtaRow>
-  );
-};
-
-const CardTile = ({
-  card,
-  labels,
-  setDefaultPaymentMethod,
-  checkbalanceValueInfo,
-  onGetBalanceCard,
-  change,
-  handleSubmit,
-}: Props) => {
-  const isCreditCard = card.ccType !== 'GiftCard' && card.ccType !== 'VENMO';
-  const isVenmo = card.ccType === 'VENMO';
-  const isGiftCard = card.ccType === 'GiftCard';
-  const balance = getGiftCardBalance(card.accountNo, checkbalanceValueInfo);
-  const cardName = getCardName({ card, labels });
-  const cardIcon = getIconCard(cardIconMapping[card.ccBrand]);
-  const dataLocatorPrefix = getDataLocatorPrefix({ card });
-  const onMessage = event => {
-    if (event && event.nativeEvent.data) {
-      const value = get(event, 'nativeEvent.data', '');
-      change('recaptchaToken', value);
-    }
+        </CardCtaLinks>
+      </CardCtaRow>
+    );
   };
-  return (
-    <CardTileWrapper card={card}>
-      <CardTileContext defaultPayment={card.defaultInd}>
-        <CardTileHeading>
-          <BodyCopy
-            fontSize="fs16"
-            mobilefontFamily={['secondary']}
-            fontWeight="regular"
-            dataLocator={`payment-${dataLocatorPrefix}nametitle`}
-            text={cardName}
-          />
-        </CardTileHeading>
-        {isCreditCard ? getMakeDefaultBadge({ card, labels, setDefaultPaymentMethod }) : null}
-      </CardTileContext>
-      <CardTileDefaultSection isVenmo={isVenmo} isGiftCard={isGiftCard}>
-        {isVenmo ? getVenmoUserName({ card }) : getCardDetails({ dataLocatorPrefix, card, labels })}
-        <CardTileImgWrapper card={card}>
-          <CardTileImg
-            className="cardTile__img"
-            alt={card.ccBrand}
-            source={cardIcon}
-            data-locator="payment-cardImage"
-          />
-        </CardTileImgWrapper>
-      </CardTileDefaultSection>
-      {isCreditCard ? getAddressDetails({ card }) : null}
 
-      {isGiftCard && balance && (
-        <CardCtaRow>
-          <BodyCopy
-            mobilefontFamily={['secondary']}
-            fontSize="fs14"
-            color="gray.900"
-            text={labels.paymentGC.lbl_payment_remainingBalance}
-          />
-        </CardCtaRow>
-      )}
-      {isGiftCard && (balance === undefined || balance === null) && (
-        <View>
-          <RecaptchaContainer>
-            <Recaptcha onMessage={onMessage} />
-          </RecaptchaContainer>
-          <Field
-            label=""
-            component={TextBox}
-            title=""
-            type="hidden"
-            name="recaptchaToken"
-            id="recaptchaToken"
-            data-locator="gift-card-recaptchcb"
-            className="visibility-recaptcha"
-          />
-        </View>
-      )}
-      {getCtaRow(
-        isGiftCard,
-        isVenmo,
-        balance,
-        labels,
-        dataLocatorPrefix,
-        card,
-        onGetBalanceCard,
-        handleSubmit
-      )}
-    </CardTileWrapper>
-  );
-};
+  render() {
+    const {
+      card,
+      labels,
+      setDefaultPaymentMethod,
+      checkbalanceValueInfo,
+      onGetBalanceCard,
+      change,
+      handleSubmit,
+    } = this.props;
+
+    const isCreditCard = card.ccType !== 'GiftCard' && card.ccType !== 'VENMO';
+    const isVenmo = card.ccType === 'VENMO';
+    const isGiftCard = card.ccType === 'GiftCard';
+    const balance = this.getGiftCardBalance(card.accountNo, checkbalanceValueInfo);
+    const cardName = this.getCardName({ card, labels });
+    const cardIcon = getIconCard(this.cardIconMapping[card.ccBrand]);
+    const dataLocatorPrefix = this.getDataLocatorPrefix({ card });
+    const onMessage = event => {
+      if (event && event.nativeEvent.data) {
+        const value = get(event, 'nativeEvent.data', '');
+        change('recaptchaToken', value);
+      }
+    };
+    return (
+      <CardTileWrapper card={card}>
+        <CardTileContext defaultPayment={card.defaultInd}>
+          <CardTileHeading>
+            <BodyCopy
+              fontSize="fs16"
+              mobilefontFamily={['secondary']}
+              fontWeight="regular"
+              dataLocator={`payment-${dataLocatorPrefix}nametitle`}
+              text={cardName}
+            />
+          </CardTileHeading>
+          {isCreditCard
+            ? this.getMakeDefaultBadge({ card, labels, setDefaultPaymentMethod })
+            : null}
+        </CardTileContext>
+        <CardTileDefaultSection isVenmo={isVenmo} isGiftCard={isGiftCard}>
+          {isVenmo
+            ? this.getVenmoUserName({ card })
+            : this.getCardDetails({ dataLocatorPrefix, card, labels })}
+          <CardTileImgWrapper card={card}>
+            <CardTileImg
+              className="cardTile__img"
+              alt={card.ccBrand}
+              source={cardIcon}
+              data-locator="payment-cardImage"
+            />
+          </CardTileImgWrapper>
+        </CardTileDefaultSection>
+        {isCreditCard ? this.getAddressDetails({ card }) : null}
+
+        {isGiftCard && balance && (
+          <CardCtaRow>
+            <BodyCopy
+              mobilefontFamily={['secondary']}
+              fontSize="fs14"
+              color="gray.900"
+              text={labels.paymentGC.lbl_payment_remainingBalance}
+            />
+          </CardCtaRow>
+        )}
+        {isGiftCard && (balance === undefined || balance === null) && (
+          <View>
+            <RecaptchaContainer>
+              <Recaptcha onMessage={onMessage} />
+            </RecaptchaContainer>
+            <Field
+              label=""
+              component={TextBox}
+              title=""
+              type="hidden"
+              name="recaptchaToken"
+              id="recaptchaToken"
+              data-locator="gift-card-recaptchcb"
+              className="visibility-recaptcha"
+            />
+          </View>
+        )}
+        {this.getCtaRow(
+          isGiftCard,
+          isVenmo,
+          balance,
+          labels,
+          dataLocatorPrefix,
+          card,
+          onGetBalanceCard,
+          handleSubmit
+        )}
+      </CardTileWrapper>
+    );
+  }
+}
 
 const validateMethod = createValidateMethod(getStandardConfig(['recaptchaToken']));
 

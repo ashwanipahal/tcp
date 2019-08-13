@@ -1,93 +1,65 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PaymentItem component should render correctly 1`] = `
-<Styled(View)>
-  <Styled(View)>
-    <Styled(BodyCopy)
-      color="gray.900"
-      fontFamily="secondary"
-      fontSize="fs13"
-      fontWeight="regular"
-      text="Default Credit Card"
-    />
-    <Styled(BodyCopy)
-      color="gray.900"
-      fontFamily="secondary"
-      fontSize="fs13"
-      fontWeight="regular"
-      text="You have not added a credit card yet."
-    />
-  </Styled(View)>
-  <Styled(TouchableHighlight)
-    onPress={[Function]}
-    textDecorationLine="underline"
-  >
-    <Styled(BodyCopy)
-      color="gray.900"
-      fontFamily="secondary"
-      fontSize="fs13"
-      fontWeight="regular"
-      text="Add"
-    />
-  </Styled(TouchableHighlight)>
-</Styled(View)>
+<Hoc
+  destroyOnUnmount={true}
+  enableReinitialize={true}
+  forceUnregisterOnUnmount={false}
+  form="PaymentItemForm"
+  forwardedRef={null}
+  getFormState={[Function]}
+  keepDirtyOnReinitialize={false}
+  paymentInfo={
+    Object {
+      "icon": "",
+      "subText": "",
+      "text": "You have not added a credit card yet.",
+      "title": "Default Credit Card",
+      "variation": "Add",
+    }
+  }
+  persistentSubmitErrors={false}
+  pure={true}
+  shouldAsyncValidate={[Function]}
+  shouldError={[Function]}
+  shouldValidate={[Function]}
+  shouldWarn={[Function]}
+  submitAsSideEffect={false}
+  touchOnBlur={true}
+  touchOnChange={false}
+  updateUnregisteredFields={false}
+  validate={[Function]}
+/>
 `;
 
 exports[`PaymentItem component should render correctly with values 1`] = `
-<Styled(View)>
-  <Styled(View)>
-    <Styled(BodyCopy)
-      color="gray.900"
-      fontFamily="secondary"
-      fontSize="fs13"
-      fontWeight="regular"
-      text="Default Credit Card"
-    />
-    <Styled(View)>
-      <Styled(ImageComp)
-        height={30}
-        source={4}
-        width={50}
-      />
-      <Styled(View)>
-        <Styled(BodyCopy)
-          color="gray.900"
-          fontFamily="secondary"
-          fontSize="fs12"
-          fontWeight="regular"
-          style={
-            Object {
-              "flex": 1,
-            }
-          }
-          text="ending in 1111"
-        />
-        <Styled(BodyCopy)
-          color="gray.700"
-          fontFamily="secondary"
-          fontSize="fs10"
-          fontWeight="regular"
-          style={
-            Object {
-              "flex": 1,
-            }
-          }
-          text="expires 1/2021"
-        />
-      </Styled(View)>
-    </Styled(View)>
-  </Styled(View)>
-  <Styled(TouchableHighlight)
-    onPress={[Function]}
-    textDecorationLine="underline"
-  >
-    <Styled(BodyCopy)
-      color="gray.900"
-      fontFamily="secondary"
-      fontSize="fs13"
-      fontWeight="regular"
-      text="Edit"
-    />
-  </Styled(TouchableHighlight)>
-</Styled(View)>
+<Hoc
+  destroyOnUnmount={true}
+  enableReinitialize={true}
+  forceUnregisterOnUnmount={false}
+  form="PaymentItemForm"
+  forwardedRef={null}
+  getFormState={[Function]}
+  keepDirtyOnReinitialize={false}
+  paymentInfo={
+    Object {
+      "icon": 4,
+      "subText": "expires 1/2021",
+      "text": "ending in 1111",
+      "title": "Default Credit Card",
+      "variation": "Edit",
+    }
+  }
+  persistentSubmitErrors={false}
+  pure={true}
+  shouldAsyncValidate={[Function]}
+  shouldError={[Function]}
+  shouldValidate={[Function]}
+  shouldWarn={[Function]}
+  submitAsSideEffect={false}
+  touchOnBlur={true}
+  touchOnChange={false}
+  updateUnregisteredFields={false}
+  validate={[Function]}
+/>
 `;

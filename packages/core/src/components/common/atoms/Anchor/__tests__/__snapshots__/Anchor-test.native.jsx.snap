@@ -2,7 +2,8 @@
 
 exports[`Anchor Native should render correctly 1`] = `
 <Styled(TouchableOpacity)
-  accessibilityRole="button"
+  accessibilityLabel="click Me"
+  accessibilityRole="link"
   onPress={[Function]}
   style={Object {}}
 >

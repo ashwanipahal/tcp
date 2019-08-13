@@ -12,6 +12,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly 1`] = `
       fullWidth=""
       height="42px"
       id={0}
+      locator=""
       style={
         Object {
           "color": undefined,
@@ -39,6 +40,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly 1`] = `
       fullWidth=""
       height="42px"
       id={1}
+      locator=""
       style={
         Object {
           "color": Object {
@@ -73,6 +75,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with 1 bonus poi
       fullWidth=""
       height="42px"
       id={0}
+      locator=""
       style={
         Object {
           "color": undefined,

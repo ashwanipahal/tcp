@@ -1,0 +1,444 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModuleL component renders correctly 1`] = `
+<Fragment>
+  <div
+    className="undefined moduleN"
+  >
+    <div
+      className="heading-wrapper"
+    >
+      <Styled(LinkText)
+        className="heading"
+        color="white"
+        component="h3"
+        headerText={
+          Array [
+            Object {
+              "link": Object {
+                "target": "",
+                "title": "",
+                "url": "/p/",
+              },
+              "textItems": Array [
+                Object {
+                  "color": "color2",
+                  "style": "style1",
+                  "text": "ALL CLEARANCE",
+                },
+              ],
+            },
+          ]
+        }
+        textAlign="center"
+        type="heading"
+      />
+      <Styled(PromoBanner)
+        className="moduleN__promo-banner"
+        color="white"
+        promoBanner={
+          Array [
+            Object {
+              "link": Object {
+                "class": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/c/",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "style6",
+                  "text": "50-70%OFF",
+                },
+                Object {
+                  "style": "style4",
+                  "text": "No EXCLUSIVE",
+                },
+              ],
+            },
+          ]
+        }
+      />
+    </div>
+    <Styled(ButtonList)
+      buttonListVariation="stackedCTAList"
+      buttonsData={
+        Array [
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "girl",
+            "title": "girl",
+            "url": "/c/",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "toddler girl",
+            "title": "toddler girl",
+            "url": "/p/",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "boy",
+            "title": "boy",
+            "url": "/p/",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "toddler boy",
+            "title": "toddler boy",
+            "url": "/c/",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "baby",
+            "title": "baby",
+            "url": "/c/",
+          },
+        ]
+      }
+    />
+    <div
+      className="heading-wrapper"
+    >
+      <Styled(LinkText)
+        className="heading"
+        color="white"
+        component="h3"
+        headerText={
+          Array [
+            Object {
+              "link": Object {
+                "target": "",
+                "title": "",
+                "url": "/p/",
+              },
+              "textItems": Array [
+                Object {
+                  "color": "color2",
+                  "style": "style1",
+                  "text": "ALL CLEARANCE",
+                },
+              ],
+            },
+          ]
+        }
+        textAlign="center"
+        type="heading"
+      />
+      <Styled(PromoBanner)
+        className="moduleN__promo-banner"
+        color="white"
+        promoBanner={
+          Array [
+            Object {
+              "link": Object {
+                "class": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/c/",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "style6",
+                  "text": "50-70%OFF",
+                },
+                Object {
+                  "style": "style4",
+                  "text": "No EXCLUSIVE",
+                },
+              ],
+            },
+          ]
+        }
+      />
+    </div>
+    <Styled(ButtonList)
+      buttonListVariation="scrollCTAList"
+      buttonsData={
+        Array [
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "girl",
+            "title": "girl",
+            "url": "/c/",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "toddler girl",
+            "title": "toddler girl",
+            "url": "/p/",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "boy",
+            "title": "boy",
+            "url": "/p/",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "toddler boy",
+            "title": "toddler boy",
+            "url": "/c/",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "baby",
+            "title": "baby",
+            "url": "/c/",
+          },
+        ]
+      }
+    />
+    <div
+      className="separator"
+    >
+      .
+    </div>
+    <div
+      className="heading-wrapper"
+    >
+      <Styled(LinkText)
+        className="heading"
+        color="white"
+        component="h3"
+        headerText={
+          Array [
+            Object {
+              "link": Object {
+                "target": "",
+                "title": "",
+                "url": "/p/",
+              },
+              "textItems": Array [
+                Object {
+                  "color": "color2",
+                  "style": "style1",
+                  "text": "ALL CLEARANCE",
+                },
+              ],
+            },
+          ]
+        }
+        textAlign="center"
+        type="heading"
+      />
+      <Styled(PromoBanner)
+        className="moduleN__promo-banner"
+        color="white"
+        promoBanner={
+          Array [
+            Object {
+              "link": Object {
+                "class": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/c/",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "style6",
+                  "text": "50-70%OFF",
+                },
+                Object {
+                  "style": "style4",
+                  "text": "No EXCLUSIVE",
+                },
+              ],
+            },
+          ]
+        }
+      />
+    </div>
+    <Styled(ButtonList)
+      buttonListVariation="imageCTAList"
+      buttonsData={
+        Array [
+          Object {
+            "image": Object {
+              "alt": "",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v156206en-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "_self",
+              "text": "Girl",
+              "title": "",
+              "url": "/p/",
+            },
+          },
+          Object {
+            "image": Object {
+              "alt": "",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "_self",
+              "text": "Boy",
+              "title": "",
+              "url": "/c/",
+            },
+          },
+          Object {
+            "image": Object {
+              "alt": "",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w61640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "_self",
+              "text": "Toddler Boy",
+              "title": "",
+              "url": "/c/",
+            },
+          },
+          Object {
+            "image": Object {
+              "alt": "",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "_self",
+              "text": "Toddler",
+              "title": "",
+              "url": "/p/",
+            },
+          },
+          Object {
+            "image": Object {
+              "alt": "",
+              "title": "",
+              "url": "https://res.cloudinary.com/tcp-dam-test/image/upload/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg",
+            },
+            "link": Object {
+              "external": 0,
+              "target": "_self",
+              "text": "Baby",
+              "title": "",
+              "url": "/c/",
+            },
+          },
+        ]
+      }
+    />
+    <div
+      className="separator"
+    >
+      .
+    </div>
+    <div
+      className="heading-wrapper"
+    >
+      <Styled(LinkText)
+        className="heading"
+        color="white"
+        component="h3"
+        headerText={
+          Array [
+            Object {
+              "link": Object {
+                "target": "",
+                "title": "",
+                "url": "/p/",
+              },
+              "textItems": Array [
+                Object {
+                  "color": "color2",
+                  "style": "style1",
+                  "text": "ALL CLEARANCE",
+                },
+              ],
+            },
+          ]
+        }
+        textAlign="center"
+        type="heading"
+      />
+      <Styled(PromoBanner)
+        className="moduleN__promo-banner"
+        color="white"
+        promoBanner={
+          Array [
+            Object {
+              "link": Object {
+                "class": "",
+                "external": 0,
+                "target": "",
+                "text": "",
+                "title": "",
+                "url": "/c/",
+              },
+              "textItems": Array [
+                Object {
+                  "style": "style6",
+                  "text": "50-70%OFF",
+                },
+                Object {
+                  "style": "style4",
+                  "text": "No EXCLUSIVE",
+                },
+              ],
+            },
+          ]
+        }
+      />
+    </div>
+    <Styled(ButtonList)
+      buttonListVariation="linkCTAList"
+      buttonsData={
+        Array [
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "TODDLER GIRL",
+            "title": "",
+            "url": "/p/",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "GIRL",
+            "title": "",
+            "url": "/p/",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "TODDLER BOY",
+            "title": "",
+            "url": "/c/",
+          },
+          Object {
+            "external": 0,
+            "target": "",
+            "text": "BOY",
+            "title": "",
+            "url": "/c/",
+          },
+        ]
+      }
+    />
+  </div>
+</Fragment>
+`;
