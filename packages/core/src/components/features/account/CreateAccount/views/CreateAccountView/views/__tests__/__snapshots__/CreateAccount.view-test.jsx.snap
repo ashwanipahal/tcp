@@ -8,7 +8,7 @@ exports[`Create Account Page should render correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-kAzzGY",
+        "componentId": "sc-jzJRlG",
         "isStatic": false,
         "rules": Array [
           "
@@ -27,7 +27,7 @@ exports[`Create Account Page should render correctly 1`] = `
       "displayName": "Styled(CreateAccount)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-kAzzGY",
+      "styledComponentId": "sc-jzJRlG",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

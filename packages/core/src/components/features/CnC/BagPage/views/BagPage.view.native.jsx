@@ -1,15 +1,40 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import PropTypes from 'prop-types';
 import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/BagPage/organisms/OrderLedger';
-import CartItemTileContainer from '../../CartItemTile/organisms/CartItemTileWrapper/container/CartItemTileWrapper.container';
+import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
+import CouponAndPromos from '../../common/organism/CouponAndPromos';
+import {
+  WrapperStyle,
+  HeadingViewStyle,
+  MainSection,
+  RowSectionStyle,
+  HeadingTextStyle,
+} from '../styles/BagPage.style.native';
 
-const BagPage = () => {
+const BagPage = ({ labels, totalCount }) => {
   return (
-    <View style={{ flex: 1 }}>
-      <Text>APP BAG PAGE</Text>
-      <CartItemTileContainer />
-      <OrderLedgerContainer />
-    </View>
+    <WrapperStyle>
+      <HeadingViewStyle>
+        <HeadingTextStyle>{`${labels.bagHeading} (${totalCount})`}</HeadingTextStyle>
+      </HeadingViewStyle>
+      <MainSection>
+        <RowSectionStyle>
+          <ProductTileWrapper bagLabels={labels} />
+        </RowSectionStyle>
+        <RowSectionStyle>
+          <OrderLedgerContainer />
+        </RowSectionStyle>
+        <RowSectionStyle>
+          <CouponAndPromos />
+        </RowSectionStyle>
+      </MainSection>
+    </WrapperStyle>
   );
 };
+
+BagPage.propTypes = {
+  labels: PropTypes.shape.isRequired,
+  totalCount: PropTypes.number.isRequired,
+};
+
 export default BagPage;

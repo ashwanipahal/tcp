@@ -1,0 +1,178 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Points History Slider View should render Points History Correctly 1`] = `
+<div
+  className="className"
+>
+  <Styled(Row)
+    className="elem-mb-SM elem-mt-SM"
+    fullbleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 2,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        08/08/19
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 3,
+          "small": 2,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        Credit
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 3,
+          "small": 2,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        5
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="elem-mb-SM"
+    fullbleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 2,
+          "small": 2,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        08/08/19
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 3,
+          "small": 2,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="left"
+      >
+        AddBirthDate
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 3,
+          "medium": 3,
+          "small": 2,
+        }
+      }
+    >
+      <Styled(BodyCopy)
+        className={null}
+        color="text.primary"
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        letterSpacing="normal"
+        lineHeight="normal"
+        textAlign="center"
+      >
+        5
+      </Styled(BodyCopy)>
+    </Styled(Col)>
+  </Styled(Row)>
+  <Styled(Row)
+    className="elem-mt-XXL elem-mt-XXS"
+    fullbleed={true}
+  >
+    <Styled(Col)
+      colSize={
+        Object {
+          "large": 4,
+          "medium": 3,
+          "small": 2,
+        }
+      }
+    >
+      <Styled(Anchor)
+        anchorVariation="primary"
+        fontSizeVariation="medium"
+        underline={true}
+      >
+        Points History
+      </Styled(Anchor)>
+    </Styled(Col)>
+  </Styled(Row)>
+</div>
+`;

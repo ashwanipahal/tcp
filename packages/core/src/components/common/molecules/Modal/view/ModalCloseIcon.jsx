@@ -9,8 +9,8 @@ const CloseButtonStyle = css`
   cursor: pointer;
   position: absolute;
   top: 15px;
-  height: 15px;
-  width: 15px;
+  padding: 0px 7px 13px 6px;
+  background-size: 13px 13px;
   &.alignRight {
     right: 15px;
   }

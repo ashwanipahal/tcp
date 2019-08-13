@@ -67,13 +67,6 @@ export const LoginForm = props => {
       />
       <View style={styles.inputCheckBoxStyle}>
         <Field
-          name="rememberMe"
-          component={InputCheckbox}
-          dataLocator="rememberMe"
-          disabled={false}
-          rightText={labels.login.lbl_login_rememberMe}
-        />
-        <Field
           name="userTouchId"
           component={InputCheckbox}
           dataLocator="rememberMe"

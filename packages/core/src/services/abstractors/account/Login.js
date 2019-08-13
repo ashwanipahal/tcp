@@ -149,6 +149,7 @@ export const getProfile = ({ refreshPoints = true, pageId, source }) => {
           pointsToNextReward: res.body.x_pointsToNextReward || 100,
           currentPoints: res.body.x_currentPoints || 0,
           totalRewards: res.body.x_totalRewards,
+          x_hasPLCC: res.body.x_hasPLCC,
         };
       }
     })

@@ -1,5 +1,5 @@
 import React from 'react';
-import { requireNamedOnlineModule } from '../../atoms/GoogleAutoSuggest/resourceLoader';
+import { requireNamedOnlineModule } from '../../../../utils/resourceLoader';
 
 // @flow
 

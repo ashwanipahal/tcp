@@ -14,22 +14,40 @@ const RewardsPointsSlider = ({
   currentPoints,
   totalRewards,
   labels,
+  plccUser,
 }) => {
   return (
     <div className={className}>
       <Row>
-        <Col colSize={{ large: 5, medium: 3, small: 2 }}>
-          <BodyCopy fontFamily="secondary" fontSize="fs14">
+        <Col colSize={{ large: 5, medium: 3, small: 2 }} className="current-points">
+          <BodyCopy data-locator="slidercurrentpointslbl" fontFamily="secondary" fontSize="fs14">
             {`${labels.lbl_common_current_points}: `}
-            <BodyCopy component="span" fontWeight="black" fontFamily="secondary" fontSize="fs14">
+            <BodyCopy
+              data-locator="slidercurrentpointsvalue"
+              component="span"
+              fontWeight="black"
+              fontFamily="secondary"
+              fontSize="fs14"
+            >
               {currentPoints}
             </BodyCopy>
           </BodyCopy>
         </Col>
-        <Col colSize={{ large: 7, medium: 5, small: 4 }}>
-          <BodyCopy component="p" fontFamily="secondary" fontSize="fs14">
+        <Col colSize={{ large: 7, medium: 5, small: 4 }} className="my-rewards">
+          <BodyCopy
+            data-locator="slidermyrewardslbl"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+          >
             {`${labels.lbl_common_heading}: `}
-            <BodyCopy component="span" fontWeight="black" fontFamily="secondary" fontSize="fs14">
+            <BodyCopy
+              data-locator="slidermyrewardsvalue"
+              component="span"
+              fontWeight="black"
+              fontFamily="secondary"
+              fontSize="fs14"
+            >
               {labels.lbl_common_currency}
               {totalRewards && Math.trunc(totalRewards)}
             </BodyCopy>
@@ -38,16 +56,36 @@ const RewardsPointsSlider = ({
       </Row>
       <Row>
         <Col colSize={{ large: 12, medium: 8, small: 6 }}>
-          <div className="progress-container elem-mt-MED elem-mt-MED elem-mb-SM">
-            <div className="progressbar-rewards" style={{ width: `${currentPoints}%` }} />
+          <div
+            data-locator="sliderpointsgraph"
+            className={`progress-container${
+              plccUser ? '_plcc' : ''
+            } elem-mt-MED elem-mt-MED elem-mb-SM`}
+          >
+            <div
+              className={`progressbar-rewards currentpoint-slider ${
+                plccUser ? 'progressbar-rewards_plcc' : 'progressbar-rewards'
+              } `}
+              style={{ width: `${currentPoints}%` }}
+            />
           </div>
         </Col>
       </Row>
       <Row>
         <Col colSize={{ large: 12, medium: 8, small: 6 }}>
-          <BodyCopy fontFamily="secondary" fontSize="fs14">
+          <BodyCopy
+            data-locator="slidernextrewardspointslbl"
+            fontFamily="secondary"
+            fontSize="fs14"
+          >
             {`${labels.lbl_common_next_reward}: `}
-            <BodyCopy component="span" fontWeight="black" fontFamily="secondary" fontSize="fs14">
+            <BodyCopy
+              data-locator="slidernextrewardspointsvalue"
+              component="span"
+              fontWeight="black"
+              fontFamily="secondary"
+              fontSize="fs14"
+            >
               {pointsToNextReward}
             </BodyCopy>
           </BodyCopy>
@@ -62,6 +100,7 @@ RewardsPointsSlider.propTypes = {
   pointsToNextReward: PropTypes.number,
   currentPoints: PropTypes.number,
   totalRewards: PropTypes.number,
+  plccUser: PropTypes.bool,
   labels: PropTypes.shape({
     lbl_common_current_points: PropTypes.string,
     lbl_common_heading: PropTypes.string,
@@ -75,6 +114,7 @@ RewardsPointsSlider.defaultProps = {
   pointsToNextReward: '',
   currentPoints: '',
   totalRewards: '',
+  plccUser: false,
   labels: {
     lbl_common_current_points: '',
     lbl_common_heading: '',

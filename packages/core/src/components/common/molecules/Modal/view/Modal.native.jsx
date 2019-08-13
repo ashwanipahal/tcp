@@ -1,7 +1,13 @@
 import React from 'react';
 import { Modal, StatusBar, SafeAreaView } from 'react-native';
+import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import BodyCopy from '../../../atoms/BodyCopy';
-import { StyledCrossImage, ImageWrapper, StyledTouchableOpacity } from '../Modal.style.native';
+import {
+  StyledCrossImage,
+  ImageWrapper,
+  StyledTouchableOpacity,
+  ModalHeadingWrapper,
+} from '../Modal.style.native';
 
 // How To use this react native modal
 // import this component in your file.
@@ -18,11 +24,12 @@ const closeIcon = require('../../../../../assets/close.png');
 
 type CloseIconProps = {
   onRequestClose: Function,
+  headerStyle: Object,
 };
 
-const getCloseIcon = ({ onRequestClose }: CloseIconProps) => {
+const getCloseIcon = ({ onRequestClose, headerStyle }: CloseIconProps) => {
   return (
-    <ImageWrapper>
+    <ImageWrapper style={headerStyle}>
       <StyledTouchableOpacity onPress={onRequestClose}>
         <StyledCrossImage source={closeIcon} />
       </StyledTouchableOpacity>
@@ -30,23 +37,34 @@ const getCloseIcon = ({ onRequestClose }: CloseIconProps) => {
   );
 };
 
+const colorPallete = createThemeColorPalette();
+
 const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
-  const { heading, onRequestClose, animationType, headingAlign } = otherProps;
+  const {
+    heading,
+    onRequestClose,
+    animationType,
+    headingAlign,
+    headingFontFamily,
+    headerStyle,
+  } = otherProps;
   return (
     <SafeAreaView>
       <StatusBar hidden />
       <Modal transparent={false} visible={isOpen} animationType={animationType}>
-        {getCloseIcon({ onRequestClose })}
+        {getCloseIcon({ onRequestClose, headerStyle })}
         {heading && (
-          <BodyCopy
-            fontSize="fs16"
-            fontFamily="primary"
-            textAlign={headingAlign}
-            text={heading}
-            className="modalHeading"
-            component="span"
-            color="#000000"
-          />
+          <ModalHeadingWrapper>
+            <BodyCopy
+              fontSize="fs16"
+              mobileFontFamily={headingFontFamily || 'primary'}
+              fontWeight="extrabold"
+              textAlign={headingAlign}
+              text={heading}
+              className="modalHeading"
+              color={colorPallete.black}
+            />
+          </ModalHeadingWrapper>
         )}
         {children}
       </Modal>

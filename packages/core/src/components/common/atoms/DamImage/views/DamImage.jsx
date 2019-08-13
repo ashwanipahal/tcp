@@ -21,7 +21,7 @@ const getImgData = props => {
   } else {
     imgPath = url;
   }
-  imgPath = imgPath.replace(/^\//, '');
+  imgPath = imgPath && imgPath.replace(/^\//, '');
   return { basePath, imgPath, imgConfigs };
 };
 

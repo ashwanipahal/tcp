@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import {
   AddressTileWrapper,
@@ -11,15 +12,6 @@ import withStyles from '../../../../common/hoc/withStyles.native';
 import Badge from '../../../../common/atoms/Badge';
 import Anchor from '../../../../common/atoms/Anchor';
 import Address from '../../../../common/molecules/Address';
-// @flow
-
-type Props = {
-  address: Object,
-  labels: Object,
-  onDefaultShippingAddressClick(address: {}): Object,
-  setSelectedAddress: Function,
-  setDeleteModalMountState: Function,
-};
 
 class AddressBookTile extends React.Component<Props> {
   handleDefaultLinkClick = event => {
@@ -67,7 +59,12 @@ class AddressBookTile extends React.Component<Props> {
         <AddressTileContext>
           <View>
             {address && (
-              <Address address={address} dataLocatorPrefix="addressbook" fontWeight="bold" />
+              <Address
+                address={address}
+                dataLocatorPrefix="addressbook"
+                fontWeight="bold"
+                showName
+              />
             )}
           </View>
           <View>
@@ -92,6 +89,21 @@ class AddressBookTile extends React.Component<Props> {
                 {labels.addressBook.ACC_LBL_SHIPPING}
               </Badge>
             )}
+            {address.primary !== 'true' && (
+              <View className="textRight">
+                <Anchor
+                  fontSizeVariation="small"
+                  underline
+                  anchorVariation="primary"
+                  onPress={this.handleDefaultLinkClick}
+                  noLink
+                  to="/#"
+                  data-locator="addressbook-makedefault"
+                  text={labels.common.lbl_common_makeDefault}
+                  color="gray.900"
+                />
+              </View>
+            )}
           </View>
         </AddressTileContext>
         <AddressLinks>
@@ -102,6 +114,7 @@ class AddressBookTile extends React.Component<Props> {
               to="/#"
               anchorVariation="primary"
               text={labels.common.lbl_common_edit}
+              color="gray.900"
             />
           </AddressLinkLeftMargin>
           <Anchor
@@ -110,12 +123,30 @@ class AddressBookTile extends React.Component<Props> {
             to="/#"
             anchorVariation="primary"
             text={labels.common.lbl_common_delete}
+            color="gray.900"
           />
         </AddressLinks>
       </AddressTileWrapper>
     );
   }
 }
+
+AddressBookTile.propTypes = {
+  address: PropTypes.shape({}).isRequired,
+  labels: PropTypes.shape({}),
+  setSelectedAddress: PropTypes.func.isRequired,
+  setDeleteModalMountState: PropTypes.func.isRequired,
+};
+
+AddressBookTile.defaultProps = {
+  labels: {
+    common: {
+      lbl_common_makeDefault: '',
+      lbl_common_edit: '',
+      lbl_common_delete: '',
+    },
+  },
+};
 
 export default withStyles(AddressBookTile);
 export { AddressBookTile as AddressBookTileVanilla };

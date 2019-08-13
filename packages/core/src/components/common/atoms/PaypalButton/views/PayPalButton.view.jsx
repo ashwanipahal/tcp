@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { requireNamedOnlineModule } from '../../GoogleAutoSuggest/resourceLoader';
+import { requireNamedOnlineModule } from '../../../../../utils/resourceLoader';
 import { getLocator } from '../../../../../utils';
 
 class PayPalButton extends React.Component {

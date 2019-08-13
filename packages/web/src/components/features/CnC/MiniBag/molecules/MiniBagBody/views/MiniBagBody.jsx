@@ -6,9 +6,9 @@ import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
 import PayPalButton from '@tcp/core/src/components/common/atoms/PaypalButton';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import ProductTileWrapper from '@tcp/core/src/components/features/CnC/CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import styles from '../styles/MiniBagBody.style';
-import ProductTileWrapper from '../../../container/ProductTileWrapperContainer.container';
-
+import EmptyMiniBag from '../../EmptyMiniBag/views/EmptyMiniBag';
 // @flow
 
 type Props = {
@@ -17,8 +17,16 @@ type Props = {
   userName: any,
   cartItemCount: any,
   subTotal: any,
+  currencySymbol: any,
 };
-const MiniBagBody = ({ labels, className, userName, cartItemCount, subTotal }: Props) => {
+const MiniBagBody = ({
+  labels,
+  className,
+  userName,
+  cartItemCount,
+  subTotal,
+  currencySymbol,
+}: Props) => {
   const data = {
     savedforLaterQty: 1,
   };
@@ -67,28 +75,40 @@ const MiniBagBody = ({ labels, className, userName, cartItemCount, subTotal }: P
             )}
           </Col>
         </Row>
-        <ProductTileWrapper />
+        {cartItemCount ? (
+          <ProductTileWrapper />
+        ) : (
+          <EmptyMiniBag labels={labels} userName={userName} />
+        )}
       </BodyCopy>
-      <div className="miniBagFooter">
-        <BodyCopy tag="span" fontSize="fs14" fontWeight="semibold" className="subTotal">
-          {`${labels.subTotal}: $${subTotal || 0}`}
-        </BodyCopy>
-        <Row className="checkout-button">
-          <PayPalButton className="payPal-button" />
+      {cartItemCount ? (
+        <div className="miniBagFooter">
+          <BodyCopy tag="span" fontSize="fs14" fontWeight="semibold" className="subTotal">
+            {`${labels.subTotal}: ${currencySymbol}${subTotal || 0}`}
+          </BodyCopy>
+          <Row className="checkout-button">
+            <PayPalButton className="payPal-button" />
 
-          <Button className="checkout">
-            <BodyCopy
-              component="span"
-              color="white"
-              fontWeight="extrabold"
-              fontFamily="secondary"
-              fontSize="fs14"
-            >
-              {`${labels.checkOut}`}
-            </BodyCopy>
-          </Button>
-        </Row>
-      </div>
+            <Button className="checkout">
+              <BodyCopy
+                component="span"
+                color="white"
+                fontWeight="extrabold"
+                fontFamily="secondary"
+                fontSize="fs14"
+              >
+                {`${labels.checkOut}`}
+              </BodyCopy>
+            </Button>
+          </Row>
+        </div>
+      ) : (
+        <div className="miniBagFooter">
+          <BodyCopy tag="span" fontSize="fs14" fontWeight="semibold" className="subTotalEmpty">
+            {`${labels.subTotal}: ${currencySymbol}0.00`}
+          </BodyCopy>
+        </div>
+      )}
     </div>
   );
 };

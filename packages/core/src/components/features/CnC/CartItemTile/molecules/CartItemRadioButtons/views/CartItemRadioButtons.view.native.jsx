@@ -34,11 +34,7 @@ class CartItemRadioButtons extends React.Component {
         <RadioForm>
           <LabeledRadioButton
             obj={{
-              label: (
-                <View>
-                  <Text>{labels.bossPickUp}</Text>
-                </View>
-              ),
+              label: labels.bossPickUp,
               value: 'BOSS',
             }}
             index={0}

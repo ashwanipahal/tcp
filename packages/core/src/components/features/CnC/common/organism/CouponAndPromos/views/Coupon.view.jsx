@@ -24,9 +24,10 @@ class CouponView extends React.PureComponent<Props> {
     });
   };
 
-  helpAnchorClick = () => {
+  toggleNeedHelpModal = () => {
+    const { helpStatus } = this.state;
     this.setState({
-      helpStatus: true,
+      helpStatus: !helpStatus,
     });
   };
 
@@ -35,56 +36,74 @@ class CouponView extends React.PureComponent<Props> {
       isFetching,
       labels,
       handleApplyCoupon,
+      handleApplyCouponFromList,
       appliedCouponList,
       availableCouponList,
       className,
+      handleRemoveCoupon,
+      handleErrorCoupon,
     } = this.props;
     const { detailStatus, helpStatus, selectedCoupon } = this.state;
     return (
       <div className={className}>
-        <CouponForm onSubmit={handleApplyCoupon} isFetching={isFetching} />
-        {appliedCouponList && (
-          <CouponListSection
-            labels={labels}
-            couponList={appliedCouponList}
-            className="applied_coupon"
-            heading={labels.APPLIED_REWARDS_HEADING}
-            couponDetailClick={this.couponDetailClick}
-          />
-        )}
-        {availableCouponList && (
-          <CouponListSection
-            labels={labels}
-            couponList={availableCouponList}
-            className="available_coupon"
-            heading={labels.AVAILABLE_REWARDS_HEADING}
-            helpSubHeading="true"
-            couponDetailClick={this.couponDetailClick}
-            helpAnchorClick={this.helpAnchorClick}
-          />
-        )}
-        <CouponDetailModal
+        <CouponForm
+          onSubmit={handleApplyCoupon}
+          isFetching={isFetching}
+          source="form"
           labels={labels}
-          openState={detailStatus}
-          coupon={selectedCoupon}
-          onRequestClose={() => {
-            this.setState({
-              detailStatus: false,
-            });
-          }}
-          applyToBag={() => {}}
+          onNeedHelpTextClick={this.toggleNeedHelpModal}
         />
-        <CouponHelpModal
-          labels={labels}
-          openState={helpStatus}
-          coupon={selectedCoupon}
-          onRequestClose={() => {
-            this.setState({
-              helpStatus: false,
-            });
-          }}
-          heading="Help Modal"
-        />
+        <div className="coupon_list">
+          {appliedCouponList && (
+            <CouponListSection
+              labels={labels}
+              isFetching={isFetching}
+              couponList={appliedCouponList}
+              className="applied_coupon"
+              heading={labels.APPLIED_REWARDS_HEADING}
+              couponDetailClick={this.couponDetailClick}
+              onRemove={handleRemoveCoupon}
+              dataLocator="coupon-cartAppliedRewards"
+            />
+          )}
+          {availableCouponList && (
+            <CouponListSection
+              labels={labels}
+              isFetching={isFetching}
+              couponList={availableCouponList}
+              className="available_coupon"
+              heading={labels.AVAILABLE_REWARDS_HEADING}
+              helpSubHeading="true"
+              couponDetailClick={this.couponDetailClick}
+              helpAnchorClick={this.toggleNeedHelpModal}
+              onApply={handleApplyCouponFromList}
+              dataLocator="coupon-cartAvaliableRewards"
+              handleErrorCoupon={handleErrorCoupon}
+            />
+          )}
+          <CouponDetailModal
+            labels={labels}
+            openState={detailStatus}
+            coupon={selectedCoupon}
+            onRequestClose={() => {
+              this.setState({
+                detailStatus: false,
+              });
+            }}
+            applyToBag={handleApplyCouponFromList}
+          />
+          <CouponHelpModal
+            labels={labels}
+            openState={helpStatus}
+            coupon={selectedCoupon}
+            onRequestClose={() => {
+              this.setState({
+                helpStatus: false,
+              });
+            }}
+            heading="Help Modal"
+          />
+        </div>
       </div>
     );
   }
@@ -94,6 +113,7 @@ CouponView.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   isFetching: PropTypes.bool.isRequired,
   handleApplyCoupon: PropTypes.func.isRequired,
+  handleRemoveCoupon: PropTypes.func.isRequired,
   appliedCouponList: PropTypes.shape([]).isRequired,
   availableCouponList: PropTypes.shape([]).isRequired,
 };
