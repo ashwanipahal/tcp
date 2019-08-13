@@ -9,7 +9,7 @@ exports[`NavBar component renders correctly 1`] = `
   position={
     Object {
       "left": 0,
-      "top": "156px",
+      "top": "155px",
       "topMedium": "111px",
     }
   }

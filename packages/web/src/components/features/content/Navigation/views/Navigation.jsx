@@ -20,7 +20,7 @@ const Navigation = props => {
         large: '100%',
       }}
       position={{
-        top: '156px',
+        top: '155px',
         left: 0,
         topMedium: '111px',
       }}
