@@ -84,7 +84,7 @@ const MiniBagBody = ({
       {cartItemCount ? (
         <div className="miniBagFooter">
           <BodyCopy tag="span" fontSize="fs14" fontWeight="semibold" className="subTotal">
-            {`${labels.subTotal}: ${currencySymbol}${subTotal || 0}`}
+            {`${labels.subTotal}: ${currencySymbol}${subTotal.toFixed(2) || 0}`}
           </BodyCopy>
           <Row className="checkout-button">
             <PayPalButton className="payPal-button" />
