@@ -47,6 +47,7 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv) => {
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
     CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
     CANDID_API_URL: process.env.RWD_WEB_CANDID_URL,
+    googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
   };
 };
 
