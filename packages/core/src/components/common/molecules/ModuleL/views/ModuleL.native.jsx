@@ -66,6 +66,7 @@ const renderItem = (item, navigation) => {
               letterSpacing="ls222"
               text={image.alt}
               testID={`${getLocator('moduleL_title')}${index + 1}`}
+              accessibilityText={image.alt}
             />
           </BodyCopyContainer>
           <LinkContainer>

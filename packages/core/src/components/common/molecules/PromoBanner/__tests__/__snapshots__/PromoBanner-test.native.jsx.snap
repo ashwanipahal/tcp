@@ -1,21 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PromoTextBanner native component ModuleN should render correctly 1`] = `
-<Styled(Anchor)
-  anchorVariation=""
-  customStyle={Object {}}
-  locator=""
-  text=""
-  url="http://example.com235"
-  visible={false}
->
-  <style1
-    text="alL DINOS"
-  />
-  <style2
-    text="50% OFF"
-  />
-</Styled(Anchor)>
+<Styled(View)>
+  <Styled(Anchor)
+    anchorVariation=""
+    customStyle={Object {}}
+    locator=""
+    text=""
+    url="http://example.com235"
+    visible={false}
+  >
+    <style1
+      accessibilityText="alL DINOS"
+      key="0"
+      text="alL DINOS"
+    />
+    <style2
+      accessibilityText="50% OFF"
+      key="1"
+      text="50% OFF"
+    />
+  </Styled(Anchor)>
+</Styled(View)>
 `;
 
 exports[`PromoTextBanner native component renders all style correctly 1`] = `
@@ -329,21 +335,27 @@ exports[`PromoTextBanner native component renders all style correctly 6`] = `
 `;
 
 exports[`PromoTextBanner native component renders correctly 1`] = `
-<Styled(Anchor)
-  anchorVariation=""
-  customStyle={Object {}}
-  locator=""
-  text=""
-  url="http://example.com235"
-  visible={false}
->
-  <style1
-    dataLocator="moduleK_text_"
-    text="alL DINOS"
-  />
-  <style2
-    dataLocator="moduleK_text_"
-    text="50% OFF"
-  />
-</Styled(Anchor)>
+<Styled(View)>
+  <Styled(Anchor)
+    anchorVariation=""
+    customStyle={Object {}}
+    locator=""
+    text=""
+    url="http://example.com235"
+    visible={false}
+  >
+    <style1
+      accessibilityText="alL DINOS"
+      dataLocator="moduleK_text_"
+      key="0"
+      text="alL DINOS"
+    />
+    <style2
+      accessibilityText="50% OFF"
+      dataLocator="moduleK_text_"
+      key="1"
+      text="50% OFF"
+    />
+  </Styled(Anchor)>
+</Styled(View)>
 `;

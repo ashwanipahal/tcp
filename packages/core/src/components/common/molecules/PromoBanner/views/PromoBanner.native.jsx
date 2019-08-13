@@ -81,12 +81,24 @@ const PromoBanner = (props: Props) => {
     ...otherProps
   } = props;
   return [
-    <Anchor url={link.url} navigation={navigation}>
-      {textItems.map(({ text, style }, index) => {
-        const StyleBodyCopy = bodyCopyStyles[style];
-        return <StyleBodyCopy text={index ? `${text}` : text} locator={locator} {...otherProps} />;
-      })}
-    </Anchor>,
+    <ContainerView>
+      {textItems && link && (
+        <Anchor url={link.url} navigation={navigation}>
+          {textItems.map(({ text, style }, index) => {
+            const StyleBodyCopy = bodyCopyStyles[style];
+            return (
+              <StyleBodyCopy
+                text={index ? `${text}` : text}
+                locator={locator}
+                accessibilityText={index ? `${text}` : text}
+                {...otherProps}
+                key={index.toString()}
+              />
+            );
+          })}
+        </Anchor>
+      )}
+    </ContainerView>,
   ];
 };
 
