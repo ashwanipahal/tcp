@@ -58,6 +58,7 @@ const CreditCardList = ({
             medium: 4,
             small: 6,
           }}
+          className={`${creditCardList.size !== 0 ? 'payment__addBtn__cont' : ''}`}
         >
           <Button
             buttonVariation="fixed-width"
