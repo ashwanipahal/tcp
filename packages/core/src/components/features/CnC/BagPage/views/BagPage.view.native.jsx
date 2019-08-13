@@ -18,9 +18,7 @@ const BagPage = ({ labels, totalCount }) => {
         <HeadingTextStyle>{`${labels.bagHeading} (${totalCount})`}</HeadingTextStyle>
       </HeadingViewStyle>
       <MainSection>
-        <RowSectionStyle>
-          <ProductTileWrapper bagLabels={labels} />
-        </RowSectionStyle>
+        <ProductTileWrapper bagLabels={labels} />
         <RowSectionStyle>
           <OrderLedgerContainer />
         </RowSectionStyle>

@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 
 export const WrapperStyle = styled.View`
-  flex:1
+  flex: 1;
 `;
 
 export const HeadingViewStyle = styled.View`
@@ -24,11 +24,10 @@ export const RowSectionStyle = styled.View`
   width: 100%;
   margin: 15px 0;
   background: #fff;
-  flex:1
 `;
 
 export const MainSection = styled.View`
-  flex:1;
+  flex: 1;
   background: #f3f3f3;
   padding-bottom: 15px;
   margin-bottom: 3px;
