@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import { connect } from 'react-redux';
-import { navigateToNestedRoute } from '@tcp/core/src/utils/utils.app';
+import { navigateToNestedRoute, resetNavigationStack } from '@tcp/core/src/utils';
 
 import style from './NavBar.style';
 import SecondAppPeekABooView from '../../../../navigation/SecondAppPeekABooView';
@@ -60,6 +60,7 @@ class NavBar extends React.PureComponent<Props> {
     if (appType !== prevAppType) {
       // navigate to home page of home stack when app type is changed
       const { navigation } = this.props;
+      resetNavigationStack(navigation);
       navigateToNestedRoute(navigation, 'HomeStack', 'home');
     }
   }
@@ -114,6 +115,8 @@ class NavBar extends React.PureComponent<Props> {
                     if (toggleBrandAction) toggleBrandAction();
                     return;
                   }
+                  // reset current stack and then navigate to second stack
+                  resetNavigationStack(navigation);
                   onTabPress({ route });
                 }}
                 onLongPress={() => {
