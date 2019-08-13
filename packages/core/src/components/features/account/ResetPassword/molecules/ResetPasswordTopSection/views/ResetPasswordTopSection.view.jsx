@@ -28,7 +28,9 @@ export const ResetPasswordTopSection = ({ className, labels, onBack }) => {
       >
         {labels.lbl_resetPassword_heading}
       </BodyCopy>
-      <PasswordRequirement labels={labels} />
+      <BodyCopy component="div" className="password-required-msg">
+        <PasswordRequirement labels={labels} />
+      </BodyCopy>
     </BodyCopy>
   );
 };
