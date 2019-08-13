@@ -72,28 +72,15 @@ const endpoints = {
   },
   logout: {
     method: API_METHODS.DELETE,
-    URI: '/v2/account/logout',
+    URI: 'v2/account/logout',
   },
-
-  getPointsHistory: {
-    method: API_METHODS.GET,
-    URI: '/v2/wallet/getMyPointHistory',
-  },
-  bonusPoints: {
-    method: API_METHODS.GET,
-    URI: 'v2/account/bonusDay',
-  },
-  addCoupons: {
-    method: 'post',
-    URI: 'v2/checkout/coupons',
+  requestPassword: {
+    method: 'put',
+    URI: 'v2/account/resetPassword',
   },
   getGifCardBalance: {
     method: API_METHODS.POST,
     URI: 'v2/wallet/getGiftCardBalance',
-  },
-  deleteCreditCardOnAccount: {
-    method: API_METHODS.POST,
-    URI: 'v2/account/deleteCreditCardDetails',
   },
   setDefaultPayment: {
     method: API_METHODS.POST,
@@ -114,6 +101,23 @@ const endpoints = {
   deleteAddress: {
     method: API_METHODS.DELETE,
     URI: 'v2/account/deleteAddressDetails',
+  },
+
+  getPointsHistory: {
+    method: API_METHODS.GET,
+    URI: '/v2/wallet/getMyPointHistory',
+  },
+  bonusPoints: {
+    method: API_METHODS.GET,
+    URI: 'v2/account/bonusDay',
+  },
+  addCoupons: {
+    method: 'post',
+    URI: 'v2/checkout/coupons',
+  },
+  deleteCreditCardOnAccount: {
+    method: API_METHODS.POST,
+    URI: 'v2/account/deleteCreditCardDetails',
   },
   getPlpProducts: {
     method: 'get',
@@ -140,10 +144,6 @@ const endpoints = {
   removeCouponOrPromo: {
     method: 'POST',
     URI: 'v2/checkout/removePromotionCode',
-  },
-  requestPassword: {
-    method: 'put',
-    URI: '/v2/account/resetPassword',
   },
 };
 export default endpoints;

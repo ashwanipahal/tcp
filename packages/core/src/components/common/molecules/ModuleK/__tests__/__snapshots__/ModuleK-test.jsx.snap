@@ -175,7 +175,7 @@ exports[`ModuleK component renders correctly 1`] = `
             },
             "displayName": "Styled(Styled(LinkText))",
             "foldedComponentIds": Array [
-              "sc-dxgOiQ",
+              "sc-kpOJdX",
             ],
             "render": [Function],
             "styledComponentId": "sc-kEYyzF",
@@ -249,6 +249,14 @@ exports[`ModuleK component renders correctly 1`] = `
               "warnTooManyClasses": [Function],
               "withComponent": [Function],
             },
+            "displayName": "Styled(errorBoundaryComponent)",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-ckVGcZ",
+            "target": [Function],
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
           }
         }
         options={
