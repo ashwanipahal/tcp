@@ -59,7 +59,7 @@
   },
   "rnpm": {
     "assets": [
-      "./packages/mobileapp/src/assets/fonts/"
+      "./assets/fonts/"
     ]
   },
   "workspaces": {

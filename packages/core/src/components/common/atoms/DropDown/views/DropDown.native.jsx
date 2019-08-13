@@ -82,14 +82,15 @@ class DropDown extends React.PureComponent<Props> {
     };
   }
 
-  componentDidMount() {
-    if (this.rowMarker) setTimeout(() => this.calculateDropDownPosition(), 500);
+  componentDidUpdate() {
+    if (this.rowMarker) setTimeout(() => this.calculateDropDownPosition(), 300);
   }
 
   /**
    * Calculate the dimension and coordinates of drop down
    */
   calculateDropDownPosition = () => {
+    if (!this.rowMarker) return;
     this.rowMarker.measure((x, y, width, height, pageX, pageY) => {
       this.rowFrame = { x: pageX, y: height + pageY, width, height };
 

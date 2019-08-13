@@ -11,6 +11,7 @@ export {
   getValueFromAsyncStorage,
   setValueInAsyncStorage,
   validateExternalUrl,
+  resetNavigationStack,
 } from './utils.app';
 
 export {

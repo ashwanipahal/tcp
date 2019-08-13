@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components/native';
 const Style = css``;
 
 const ModalHeading = styled.Text`
-  margin-top: -130px;
+  margin-top: -120px;
   padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
@@ -20,6 +20,8 @@ const LineWrapper = styled.View`
 const CardDescription = styled.Text`
   text-align: center;
   padding-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  padding-right: ${props => props.theme.spacing.ELEM_SPACING.SM};
 `;
 
 const CardDetailWrapper = styled.View`
@@ -43,6 +45,13 @@ const ImageStyle = styled.Image`
   max-height: 100%;
 `;
 
+const CenterAlign = styled.View`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`;
+
 const ConfirmButtonWrapper = styled.View`
   padding-top: ${props => props.theme.spacing.LAYOUT_SPACING.LRG};
 `;
@@ -61,6 +70,7 @@ export {
   CardDetail,
   ImgWrapper,
   ImageStyle,
+  CenterAlign,
   ConfirmButtonWrapper,
   CloseButtonWrapper,
 };

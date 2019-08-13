@@ -22,6 +22,14 @@ export class ThemeWrapper extends React.PureComponent {
     updateBrandName(appType);
   }
 
+  componentWillReceiveProps(nextProps) {
+    const { appType: prevAppType } = this.props;
+    const { appType } = nextProps;
+
+    // update brand name in utils when app type is changed
+    if (appType !== prevAppType) updateBrandName(appType);
+  }
+
   /**
    * @return  {[Object]} JSX of the component. Default tcp theme
    * @desc The getTheme method check current theme type and return theme accordingly

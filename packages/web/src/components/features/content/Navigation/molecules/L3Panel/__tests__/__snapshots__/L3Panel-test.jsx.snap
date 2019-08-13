@@ -8,6 +8,12 @@ exports[`L3 Panel component renders correctly 1`] = `
   large={true}
   medium={true}
   open={true}
+  position={
+    Object {
+      "left": 0,
+      "top": 0,
+    }
+  }
   small={true}
   width={
     Object {

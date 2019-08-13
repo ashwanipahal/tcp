@@ -29,11 +29,15 @@ const MiniBagHeader = ({ labels, cartItemCount, className, userName }: Props) =>
         <Col className="subHeaderText" colSize={{ small: 4, medium: 6, large: 9 }}>
           {!userName ? (
             <BodyCopy component="span" fontSize="fs12" textAlign="left">
-              <Anchor fontSizeVariation="small" anchorVariation="primary" noLink to="">
+              <Anchor fontSizeVariation="large" anchorVariation="primary" noLink to="">
                 {labels.createAccount}
               </Anchor>
-              {` | `}
-              <Anchor fontSizeVariation="small" anchorVariation="primary" noLink>
+              <Anchor
+                className="rightLink"
+                fontSizeVariation="large"
+                anchorVariation="primary"
+                noLink
+              >
                 {labels.logIn}
               </Anchor>
             </BodyCopy>
