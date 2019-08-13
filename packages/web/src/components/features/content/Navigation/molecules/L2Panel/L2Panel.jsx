@@ -67,10 +67,15 @@ const renderL3Panel = (hasSubCategories, index, l3Drawer, hideL3Drawer, name, su
   );
 };
 
-const createLinks = (links, column, categoryIndex, { openL3Drawer, hideL3Drawer, l3Drawer }) => {
+const createLinks = (
+  links,
+  column,
+  categoryIndex,
+  { openL3Drawer, hideL3Drawer, l3Drawer, className }
+) => {
   if (links.length) {
     return (
-      <ul>
+      <ul className={className}>
         {links.map((l2Links, index) => {
           const {
             categoryContent: { id, name, seoToken, mainCategory },
@@ -149,6 +154,10 @@ const L2Panel = props => {
             };
             const firstCol = panelData[category].slice(0, 7);
             const secondCol = panelData[category].slice(7);
+            let columnClass = '';
+            if (firstCol.length && secondCol.length) {
+              columnClass = 'half-width';
+            }
             const hideOnMobileClass = category === 'Lorem Ipsum' ? 's-display-none' : '';
             return (
               <React.Fragment>
@@ -168,11 +177,13 @@ const L2Panel = props => {
                       openL3Drawer,
                       hideL3Drawer,
                       l3Drawer,
+                      className: { columnClass },
                     })}
                     {createLinks(secondCol, 2, categoryIndex, {
                       openL3Drawer,
                       hideL3Drawer,
                       l3Drawer,
+                      className: { columnClass },
                     })}
                   </div>
                 </Col>

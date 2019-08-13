@@ -61,6 +61,7 @@ export default css`
     }
     .nav-bar-item-label {
       width: 100%;
+      display: inline-block;
     }
     &:hover {
       background: linear-gradient(to bottom, rgba(255, 255, 255, 0.99), #f6f6f6);

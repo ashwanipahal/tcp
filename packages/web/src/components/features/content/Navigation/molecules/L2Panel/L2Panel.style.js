@@ -133,8 +133,11 @@ export default css`
     .l2-nav-category-links {
       display: flex;
       ul {
+        width: 100%;
         flex-grow: 1;
-        max-width: 50%;
+      }
+      ul.half-width {
+        width: 50%;
       }
     }
     .l2-nav-link {
