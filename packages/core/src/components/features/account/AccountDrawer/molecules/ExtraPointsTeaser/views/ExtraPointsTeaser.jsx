@@ -6,10 +6,15 @@ import Anchor from '../../../../../../common/atoms/Anchor';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 
 const ExtraPointsTeaser = props => {
-  const { className, labels } = props;
+  const { className, plccUser, labels } = props;
+
+  console.log('8888888888888888888888888888888888888888888');
+  console.log(plccUser);
+  console.log('8888888888888888888888888888888888888888888');
+
   return (
     <div className={`${className} elem-pt-MED elem-pr-XXL elem-pb-LRG elem-pl-XXL`}>
-      <div className="extraPointsWrapper elem-pt-LRG elem-pb-SM">
+      <div className={`extraPointsWrapper${plccUser ? '_plcc' : ''} elem-pt-LRG elem-pb-SM`}>
         <div className="earnExtra alignCenter">
           <BodyCopy fontFamily="secondary" fontWeight="extrabold" fontSize="fs14">
             {labels.ACC_DRAWER_EARN_EXTRA}
@@ -41,6 +46,7 @@ const ExtraPointsTeaser = props => {
 ExtraPointsTeaser.propTypes = {
   className: PropTypes.string,
   labels: PropTypes.shape({}),
+  plccUser: PropTypes.bool,
 };
 
 ExtraPointsTeaser.defaultProps = {
@@ -50,6 +56,7 @@ ExtraPointsTeaser.defaultProps = {
     ACC_DRAWER_GET_CLOSER: 'Get even closer to your next reward!',
     ACC_DRAWER_LEARN_MORE: 'Learn More',
   },
+  plccUser: false,
 };
 
 export default withStyles(ExtraPointsTeaser, styles);
