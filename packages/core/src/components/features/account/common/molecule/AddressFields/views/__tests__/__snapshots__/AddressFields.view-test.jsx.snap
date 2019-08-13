@@ -1643,13 +1643,18 @@ exports[`AddressFields component should render correctly 1`] = `
                 ";
 
   & .CheckBox__input {
+    flex: 0 0 auto;
     position: relative;
     top: 0;
     appearance: none;
     outline: 0;
     border: 0;
-    height: 25px;
-    width: 25px;
+    height: ",
+                "25px",
+                ";
+    width: ",
+                "25px",
+                ";
     margin: 0;
     margin-right: ",
                 [Function],
