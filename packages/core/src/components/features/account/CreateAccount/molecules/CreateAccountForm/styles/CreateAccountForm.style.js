@@ -5,8 +5,6 @@ const Styles = css`
     display: block;
   }
   .tooltip-bubble {
-    min-width: 300px;
-
     li {
       text-align: left;
 
