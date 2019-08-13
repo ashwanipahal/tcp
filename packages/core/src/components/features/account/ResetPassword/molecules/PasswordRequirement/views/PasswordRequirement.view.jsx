@@ -14,7 +14,7 @@ export const PasswordRequirement = ({ labels }) => {
         textAlign="center"
         fontFamily="secondary"
         fontSize="fs14"
-        className="elem-mb-MED reset-password-heding"
+        className="elem-mb-MED reset-password-heading"
         fontWeight="black"
       >
         {labels.lbl_resetPassword_requirementHeading}
