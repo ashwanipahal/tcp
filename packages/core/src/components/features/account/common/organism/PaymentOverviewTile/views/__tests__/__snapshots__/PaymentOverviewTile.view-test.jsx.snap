@@ -4,9 +4,5 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
 <Styled(AccountOverviewTile)
   ctaTitle=""
   title=""
->
-  <FPO
-    text=""
-  />
-</Styled(AccountOverviewTile)>
+/>
 `;
