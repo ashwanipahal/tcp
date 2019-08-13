@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import FPO from '../../../../../../common/atoms/FPO';
 
 import AccountOverviewTile from '../../../../../../common/molecules/AccountOverviewTile';
 
@@ -9,9 +10,7 @@ export const MyPlaceRewardsOverviewTile = ({ labels }) => {
       title={labels.lbl_overview_myPlaceRewardsHeading}
       ctaTitle={labels.lbl_overview_myPlaceRewardsCTA}
     >
-      <p>Dummy My place rewards content</p>
-      <p>Actual implementation coming soon...</p>
-      <p>This is just to check if all tiles remain with same height</p>
+      <FPO />
     </AccountOverviewTile>
   );
 };
