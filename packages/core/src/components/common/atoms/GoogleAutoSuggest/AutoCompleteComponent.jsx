@@ -1,5 +1,5 @@
 import React from 'react';
-import { requireNamedOnlineModule } from './resourceLoader';
+import { requireNamedOnlineModule } from '../../../../utils/resourceLoader';
 import TextBox from '../TextBox'; // this comment prevents linting errors
 
 // @flow

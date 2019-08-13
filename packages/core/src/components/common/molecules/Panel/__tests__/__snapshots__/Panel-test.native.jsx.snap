@@ -16,20 +16,24 @@ exports[`Panel component should render correctly 1`] = `
         text="Orders"
       />
     </Styled(TouchableHighlight)>
-    <Styled(ImageComp)
-      customStyle={
-        Object {
-          "alignSelf": "center",
+    <Styled(TouchableHighlight)
+      onPress={[Function]}
+    >
+      <Styled(ImageComp)
+        customStyle={
+          Object {
+            "alignSelf": "center",
+          }
         }
-      }
-      height={6}
-      source={
-        Object {
-          "testUri": "../../../src/assets/images/carrot-small-down-gray.png",
+        height={6}
+        source={
+          Object {
+            "testUri": "../../../src/assets/images/carrot-small-down-gray.png",
+          }
         }
-      }
-      width={10}
-    />
+        width={10}
+      />
+    </Styled(TouchableHighlight)>
   </Styled(View)>
 </Styled(View)>
 `;

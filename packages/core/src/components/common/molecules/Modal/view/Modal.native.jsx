@@ -24,11 +24,12 @@ const closeIcon = require('../../../../../assets/close.png');
 
 type CloseIconProps = {
   onRequestClose: Function,
+  headerStyle: Object,
 };
 
-const getCloseIcon = ({ onRequestClose }: CloseIconProps) => {
+const getCloseIcon = ({ onRequestClose, headerStyle }: CloseIconProps) => {
   return (
-    <ImageWrapper>
+    <ImageWrapper style={headerStyle}>
       <StyledTouchableOpacity onPress={onRequestClose}>
         <StyledCrossImage source={closeIcon} />
       </StyledTouchableOpacity>
@@ -39,12 +40,19 @@ const getCloseIcon = ({ onRequestClose }: CloseIconProps) => {
 const colorPallete = createThemeColorPalette();
 
 const ModalNative = ({ isOpen, children, ...otherProps }: Props) => {
-  const { heading, onRequestClose, animationType, headingAlign, headingFontFamily } = otherProps;
+  const {
+    heading,
+    onRequestClose,
+    animationType,
+    headingAlign,
+    headingFontFamily,
+    headerStyle,
+  } = otherProps;
   return (
     <SafeAreaView>
       <StatusBar hidden />
       <Modal transparent={false} visible={isOpen} animationType={animationType}>
-        {getCloseIcon({ onRequestClose })}
+        {getCloseIcon({ onRequestClose, headerStyle })}
         {heading && (
           <ModalHeadingWrapper>
             <BodyCopy

@@ -1,6 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import CREATE_ACCOUNT_CONSTANTS from '../../CreateAccount.constants';
-import { CreateAccountSaga, createAccount } from '../CreateAccount.saga';
+import { CreateAccountSaga, createsaga } from '../CreateAccount.saga';
 import { getUserInfo } from '../../../LoginPage/container/LoginPage.actions';
 
 describe('Create Account Saga', () => {
@@ -17,7 +17,7 @@ describe('Create Account Saga', () => {
       zipCode: 21211,
     };
     beforeEach(() => {
-      createAccountGen = createAccount({ payload });
+      createAccountGen = createsaga({ payload });
       createAccountGen.next();
     });
 
@@ -36,7 +36,7 @@ describe('Create Account Saga', () => {
       const generator = CreateAccountSaga();
       const takeLatestDescriptor = generator.next().value;
       expect(takeLatestDescriptor).toEqual(
-        takeLatest(CREATE_ACCOUNT_CONSTANTS.CREATE_AN_ACCOUNT, createAccount)
+        takeLatest(CREATE_ACCOUNT_CONSTANTS.CREATE_AN_ACCOUNT, createsaga)
       );
     });
   });

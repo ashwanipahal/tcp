@@ -4,7 +4,7 @@ const RewardsPointsStyles = css`
   .progress-container {
     height: ${props => props.theme.spacing.ELEM_SPACING.SM};
     border-radius: ${props => props.theme.spacing.ELEM_SPACING.XXS};
-    background-color: ${props => props.theme.colorPalette.userTheme.mprLight};
+    background-color: ${props => props.theme.colorPalette.userTheme.mprPrimary};
     width: 100%;
     overflow: hidden;
   }
@@ -49,6 +49,18 @@ const RewardsPointsStyles = css`
 
     @media ${props => props.theme.mediaQuery.medium} {
       border: none;
+    }
+  }
+
+  .current-points {
+    white-space: nowrap;
+  }
+
+  .my-rewards p {
+    margin-left: ${props => props.theme.spacing.APP_LAYOUT_SPACING.SM};
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      margin-left: 0;
     }
   }
 `;
