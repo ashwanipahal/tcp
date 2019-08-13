@@ -214,6 +214,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
         <Container>
           <TouchableView
             accessibilityRole="button"
+            accessibilityLabel="Previous"
             testID={getLocator('global_promobanner_right_arrow')}
             onPress={() => this.manageSlide('next')}
           >
@@ -234,6 +235,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           />
           <TouchableView
             accessibilityRole="button"
+            accessibilityLabel="next"
             testID={getLocator('global_promobanner_left_arrowRight')}
             onPress={() => this.manageSlide('prev')}
           >

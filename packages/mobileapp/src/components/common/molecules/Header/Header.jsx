@@ -101,7 +101,7 @@ class Header extends React.PureComponent<Props> {
               fontWeight="semibold"
               text={headerLabels.lbl_header_welcomeMessage}
               data-locator={getLocator('global_headerpanelwelcometext')}
-              accessibilityText={`${cartVal} drop down`}
+              accessibilityText={headerLabels.lbl_header_welcomeMessage}
             />
             <StoreContainer onPress={this.validateIcon}>
               <BodyCopy

@@ -7,7 +7,7 @@ exports[`Header Component Header should render correctly 1`] = `
   >
     <Styled(View)>
       <Styled(BodyCopy)
-        accessibilityText="0 drop down"
+        accessibilityText=""
         color="black"
         data-locator="global_headerpanelwelcometext"
         fontFamily="secondary"

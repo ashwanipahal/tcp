@@ -36,7 +36,7 @@ class HeaderPromo extends React.PureComponent<props> {
   renderView = ({ item }) => {
     return (
       <MessageContainer
-        accessibilityRole="button"
+        accessibilityRole="text"
         width={MODULE_WIDTH}
         onPress={() => UrlHandler(item.linkClass.url)}
       >
@@ -48,6 +48,7 @@ class HeaderPromo extends React.PureComponent<props> {
           text={item.textItems[0].text}
           style={manageTextStyles(item.textItems[0].style)}
           data-locator={getLocator('global_promobanner_title_0')}
+          accessibilityText={item.textItems[0].text}
         />
         <BodyCopy
           fontFamily="secondary"
@@ -57,6 +58,7 @@ class HeaderPromo extends React.PureComponent<props> {
           fontWeight="regular"
           text={item.textItems[1].text}
           data-locator={getLocator('global_promobanner_title_1')}
+          accessibilityText={item.textItems[0].text}
         />
       </MessageContainer>
     );
