@@ -498,7 +498,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
           },
         ]
       }
-      data-locator="moduleA_button_set_"
+      dataLocator="moduleA_button_set_"
     />
   </div>
 </div>

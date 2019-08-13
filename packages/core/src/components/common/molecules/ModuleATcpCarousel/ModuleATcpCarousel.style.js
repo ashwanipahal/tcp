@@ -68,12 +68,21 @@ const style = css`
     }
   }
 
+  .button-list-container.imageCTAList,
   .button-list-container.stackedCTAList,
   .button-list-container.scrollCTAList {
-    margin-top: -2px;
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  }
+
+  .button-list-container.stackedCTAList {
+    border-left: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+    border-top: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+    margin-top: 0;
 
     @media ${props => props.theme.mediaQuery.medium} {
+      border-left: 0;
+      border-top: 0;
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
   }
