@@ -54,10 +54,10 @@ module.exports = {
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],
   coverageThreshold: {
     global: {
-      statements: 70,
-      branches: 55.5,
-      functions: 62,
-      lines: 70,
+      statements: 69,
+      branches: 55,
+      functions: 61,
+      lines: 69,
     },
   },
   snapshotSerializers: ['enzyme-to-json/serializer'],
