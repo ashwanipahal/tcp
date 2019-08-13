@@ -15,8 +15,13 @@ import {
   ProductSubDetailLabel,
   ProductListPrice,
   EditButton,
+  ImageBrandStyle,
+  ImageGymBrandStyle,
 } from '../styles/CartItemTile.style.native';
 import { getLocator } from '../../../../../../../utils';
+
+const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
+const tcpImage = require('../../../../../../../assets/tcp-logo.png');
 
 const ProductInformation = props => {
   const { productDetail, labels } = props;
@@ -27,16 +32,25 @@ const ProductInformation = props => {
           data-locator={getLocator('cart_item_image')}
           source={{ uri: endpoints.global.baseURI + productDetail.itemInfo.imagePath }}
         />
-        {!productDetail.itemInfo.isGiftItem && (
-          <ImageStyle
-            data-locator={getLocator('cart_item_brand_logo')}
-            source={{
-              uri: `${endpoints.global.baseURI}/static/images/${productDetail.itemInfo.itemBrand}`,
-            }}
-          />
-        )}
+        {!productDetail.itemInfo.isGiftItem &&
+          (productDetail.itemInfo.isGiftItem === 'TCP' ? (
+            <ImageBrandStyle data-locator={getLocator('cart_item_brand_logo')} source={tcpImage} />
+          ) : (
+            <ImageGymBrandStyle
+              data-locator={getLocator('cart_item_brand_logo')}
+              source={gymboreeImage}
+            />
+          ))}
       </ImgWrapper>
       <ProductDescription>
+        {!!productDetail.miscInfo.badge && (
+          <BodyCopy
+            fontWeight={['semibold']}
+            fontFamily="secondary"
+            fontSize="fs12"
+            text={productDetail.miscInfo.badge}
+          />
+        )}
         <ProductName>
           <BodyCopy
             fontFamily="secondary"
@@ -173,7 +187,7 @@ const ProductInformation = props => {
           </ProductDesc>
         </ProductSubDetails>
       </ProductDescription>
-      <CartItemRadioButtons productDetail={productDetail} labels={labels} />
+      {/* <CartItemRadioButtons productDetail={productDetail} labels={labels} /> */}
     </OuterContainer>
   );
 };

@@ -30,6 +30,19 @@ const ImageStyle = styled.Image`
   width: 100px;
   height: 100px;
 `;
+
+const ImageBrandStyle = styled.Image`
+  margin-top: 10px;
+  width: 62px;
+  height: 22px;
+`;
+
+const ImageGymBrandStyle = styled.Image`
+  margin-top: 10px;
+  width: 60px;
+  height: 15px;
+`;
+
 const ProductSubDetailLabel = styled.View`
   min-width: 25%;
 `;
@@ -52,4 +65,6 @@ export {
   ProductSubDetailLabel,
   ProductListPrice,
   EditButton,
+  ImageBrandStyle,
+  ImageGymBrandStyle,
 };
