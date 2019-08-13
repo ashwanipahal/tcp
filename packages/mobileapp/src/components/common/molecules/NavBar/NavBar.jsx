@@ -15,6 +15,7 @@ type Props = {
   navigation: Object,
   labels: Object,
   appType: String,
+  screenProps: Object,
 };
 
 /**
@@ -64,13 +65,21 @@ class NavBar extends React.PureComponent<Props> {
   }
 
   render() {
-    const { renderIcon, getLabelText, onTabPress, onTabLongPress, navigation, labels } = this.props;
+    const {
+      renderIcon,
+      getLabelText,
+      onTabPress,
+      onTabLongPress,
+      navigation,
+      labels,
+      screenProps,
+    } = this.props;
+    const { toggleBrandAction } = screenProps;
 
     const { routes, index: activeRouteIndex } = navigation.state;
 
     const StyledView = style.container;
     const NavContainer = style.navContainer;
-
     return (
       <NavContainer>
         <StyledView>
@@ -100,6 +109,11 @@ class NavBar extends React.PureComponent<Props> {
                 // eslint-disable-next-line react/no-array-index-key
                 key={`nav-bar_${routeIndex}`}
                 onPress={() => {
+                  if (route.key === 'BrandSwitchStack') {
+                    // show brands switch as an option in view
+                    if (toggleBrandAction) toggleBrandAction();
+                    return;
+                  }
                   onTabPress({ route });
                 }}
                 onLongPress={() => {
@@ -108,6 +122,7 @@ class NavBar extends React.PureComponent<Props> {
                 accessibilityRole="link"
                 accessibilityLabel={getTestID(routeId)}
                 testID={getTestID(routeId)}
+                activeOpacity={1}
               >
                 {renderIcon({ route, focused: isRouteActive })}
 

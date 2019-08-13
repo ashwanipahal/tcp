@@ -1,77 +1,64 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Animated Brand Change Icon Native should render correctly 1`] = `
-<Styled(View)>
+<Styled(TouchableOpacity)
+  accessibilityComponentType="none"
+  accessibilityTraits="none"
+  onPress={[Function]}
+>
   <TouchableOpacity
     accessibilityComponentType="none"
     accessibilityTraits="none"
-    activeOpacity={1}
+    activeOpacity={0.2}
     onPress={[Function]}
     style={
       Object {
-        "borderRadius": 35,
-        "height": 66,
-        "width": 66,
+        "bottom": 90,
+        "right": 20,
       }
     }
-  />
-  <View>
-    <TouchableOpacity
-      accessibilityComponentType="none"
-      accessibilityTraits="none"
-      activeOpacity={0.2}
-      onPress={[Function]}
-      style={
+  >
+    <Styled(ImageComp)
+      source={
         Object {
-          "bottom": 0,
-          "left": 0,
-          "position": "absolute",
+          "testUri": "../../../src/brand_config/main/config/tcp.png",
         }
       }
-    >
-      <Styled(ImageComp)
-        source={
-          Object {
-            "testUri": "../../../src/brand_config/main/config/tcp.png",
-          }
-        }
-        style={
-          Object {
-            "borderRadius": 35,
-            "height": 0,
-            "width": 0,
-          }
-        }
-      />
-    </TouchableOpacity>
-    <TouchableOpacity
-      accessibilityComponentType="none"
-      accessibilityTraits="none"
-      activeOpacity={0.2}
-      onPress={[Function]}
       style={
         Object {
-          "bottom": 0,
-          "left": 0,
-          "position": "absolute",
+          "borderRadius": 35,
+          "height": 66,
+          "width": 66,
         }
       }
-    >
-      <Styled(ImageComp)
-        source={
-          Object {
-            "testUri": "../../../src/brand_config/gymboree/config/gymboree.png",
-          }
+    />
+  </TouchableOpacity>
+  <TouchableOpacity
+    accessibilityComponentType="none"
+    accessibilityTraits="none"
+    activeOpacity={0.2}
+    onPress={[Function]}
+    style={
+      Object {
+        "bottom": 90,
+        "left": 20,
+      }
+    }
+  >
+    <Styled(ImageComp)
+      source={
+        Object {
+          "testUri": "../../../src/brand_config/gymboree/config/gymboree.png",
         }
-        style={
-          Object {
-            "borderRadius": 35,
-            "height": 0,
-            "width": 0,
-          }
+      }
+      style={
+        Object {
+          "borderRadius": 35,
+          "height": 66,
+          "width": 66,
         }
-      />
-    </TouchableOpacity>
-  </View>
-</Styled(View)>
+      }
+    />
+  </TouchableOpacity>
+</Styled(TouchableOpacity)>
 `;
