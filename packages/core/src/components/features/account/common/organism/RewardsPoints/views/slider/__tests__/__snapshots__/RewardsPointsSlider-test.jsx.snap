@@ -19,6 +19,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         className={null}
         color="text.primary"
         component="p"
+        data-locator="slidercurrentpointslbl"
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="regular"
@@ -31,6 +32,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
           className={null}
           color="text.primary"
           component="span"
+          data-locator="slidercurrentpointsvalue"
           fontFamily="secondary"
           fontSize="fs14"
           fontWeight="black"
@@ -54,6 +56,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         className={null}
         color="text.primary"
         component="p"
+        data-locator="slidermyrewardslbl"
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="regular"
@@ -66,6 +69,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
           className={null}
           color="text.primary"
           component="span"
+          data-locator="slidermyrewardsvalue"
           fontFamily="secondary"
           fontSize="fs14"
           fontWeight="black"
@@ -90,9 +94,11 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
     >
       <div
         className="progress-container elem-mt-MED elem-mt-MED elem-mb-SM"
+        data-locator="sliderpointsgraph"
       >
         <div
           className="progressbar-rewards currentpoint-slider progressbar-rewards "
+          data-locator="sliderpointsgraph"
           style={
             Object {
               "width": "%",
@@ -116,6 +122,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         className={null}
         color="text.primary"
         component="p"
+        data-locator="slidernextrewardspointslbl"
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="regular"
@@ -128,6 +135,7 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
           className={null}
           color="text.primary"
           component="span"
+          data-locator="slidernextrewardspointsvalue"
           fontFamily="secondary"
           fontSize="fs14"
           fontWeight="black"
