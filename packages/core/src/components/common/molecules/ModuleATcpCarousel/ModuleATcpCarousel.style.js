@@ -2,8 +2,12 @@ import styled, { css } from 'styled-components';
 import { Carousel, LinkText } from '..';
 
 const StyledLinkText = styled(LinkText)`
-  margin-top: 44px;
+  margin-top: 16px;
   display: inline-block;
+
+  @media ${props => props.theme.mediaQuery.medium} {
+    margin-top: 40px;
+  }
 
   .link-text {
     margin-bottom: 0;
@@ -53,7 +57,15 @@ const style = css`
   }
 
   .tcp_carousel_wrapper .slick-list {
-    min-height: 311px;
+    max-height: 311px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      max-height: 406px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      max-height: 474px;
+    }
   }
 
   .button-list-container.stackedCTAList,
