@@ -70,10 +70,11 @@ const style = css`
 
   .button-list-container.stackedCTAList,
   .button-list-container.scrollCTAList {
-    margin-top: -2px;
+    border-top: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
 
     @media ${props => props.theme.mediaQuery.medium} {
+      border-top: 0;
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
     }
   }
