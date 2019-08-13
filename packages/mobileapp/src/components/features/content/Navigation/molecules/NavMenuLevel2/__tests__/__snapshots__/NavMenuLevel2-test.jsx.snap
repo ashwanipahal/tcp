@@ -129,7 +129,7 @@ exports[`NavMenuLevel2 should render correctly 1`] = `
   sections={
     Array [
       Object {
-        "data": undefined,
+        "data": Array [],
         "title": "Lorem Ipsum",
       },
       Object {

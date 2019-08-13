@@ -1,5 +1,4 @@
 import React from 'react';
-import Router from 'next/router'; // eslint-disable-line
 import { connect } from 'react-redux';
 import {
   getCardList,
@@ -26,6 +25,8 @@ import {
   getPaymentBannerRichTextSelector,
 } from './Payment.selectors';
 import PaymentView from '../views/PaymentView';
+
+import utils from '../../../../../utils';
 
 // @flow
 type Props = {
@@ -63,7 +64,7 @@ export class PaymentContainer extends React.Component<Props> {
   }
 
   addNewCreditCard = () => {
-    Router.push('/account?id=add-credit-card', '/account/payment/add-credit-card');
+    utils.routerPush('/account?id=add-credit-card', '/account/payment/add-credit-card');
   };
 
   render() {

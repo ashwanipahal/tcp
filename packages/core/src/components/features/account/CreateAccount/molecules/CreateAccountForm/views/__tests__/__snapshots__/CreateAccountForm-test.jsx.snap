@@ -11,7 +11,7 @@ exports[`CreateAccountForm should render correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-gqjmRU",
+        "componentId": "sc-VigVT",
         "isStatic": true,
         "rules": Array [
           "
@@ -19,6 +19,16 @@ exports[`CreateAccountForm should render correctly 1`] = `
           "
   .remember-me-text {
     display: block;
+  }
+  .tooltip-bubble {
+    li {
+      text-align: left;
+
+      &:before {
+        content: '-';
+        text-indent: -5px;
+      }
+    }
   }
 ",
           ";
@@ -47,7 +57,7 @@ exports[`CreateAccountForm should render correctly 1`] = `
       "displayName": "Styled(ReduxForm)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-gqjmRU",
+      "styledComponentId": "sc-VigVT",
       "target": Object {
         "$$typeof": Symbol(react.forward_ref),
         "defaultProps": Object {

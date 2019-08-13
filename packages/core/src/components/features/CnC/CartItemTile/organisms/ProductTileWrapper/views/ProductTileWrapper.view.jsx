@@ -5,8 +5,10 @@ import {
   getProductName,
   getProductDetails,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
+import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
+import RemoveSoldOut from '@tcp/core/src/components/features/CnC/common/molecules/RemoveSoldOut/views/RemoveSoldOut.view';
 import EmptyBag from '@tcp/core/src/components/features/CnC/EmptyBagPage/views/EmptyBagPage.view';
-import productTileCss from '../styles/ProductTileWrapper.style';
+import productTileCss, { customStyles } from '../styles/ProductTileWrapper.style';
 
 class ProductTileWrapper extends React.PureComponent<props> {
   // eslint-disable-next-line flowtype/no-types-missing-file-annotation
@@ -26,11 +28,17 @@ class ProductTileWrapper extends React.PureComponent<props> {
 
   render() {
     const { orderItems, bagLabels, labels, pageView, isUserLoggedIn } = this.props;
-
+    const isAvailable = false;
     const { isEditAllowed } = this.state;
     if (orderItems && orderItems.size > 0) {
       return (
         <div className="miniBagWrapper">
+          {(isAvailable === 'SOLDOUT' || isAvailable === 'UNAVAILABLE') && (
+            <>
+              <ErrorMessage customClass={customStyles} error={labels.problemWithOrder} />
+              <RemoveSoldOut labels={labels} />
+            </>
+          )}
           {orderItems.map(tile => {
             const productDetail = getProductDetails(tile);
 

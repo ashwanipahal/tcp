@@ -3,15 +3,7 @@
 exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correctly 1`] = `
 <Fragment>
   <Styled(View)>
-    <Styled(Text)>
-      <Styled(BodyCopy)
-        fontFamily="secondary"
-        fontSize="fs16"
-        fontWeight="black"
-        locator=""
-        text="Point Balance"
-      />
-    </Styled(Text)>
+    <Styled(Text) />
     <Styled(Text)>
       <Styled(BodyCopy)
         fontFamily="secondary"
@@ -34,13 +26,12 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
         locator=""
         text="My rewards: "
       />
-      $
     </Styled(Text)>
     <Styled(View)>
       <Styled(Text)
         style={
           Object {
-            "width": "60%",
+            "width": "%",
           }
         }
       />

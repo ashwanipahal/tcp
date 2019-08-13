@@ -25,12 +25,12 @@ export class CouponForm extends React.PureComponent<Props, State> {
   render() {
     const {
       handleSubmit,
-      pristine,
       labels,
-      submitting,
       fieldName,
       dataLocators,
       error,
+      isFetching,
+      onNeedHelpTextClick,
     } = this.props;
     return (
       <CouponFormContainer>
@@ -45,6 +45,7 @@ export class CouponForm extends React.PureComponent<Props, State> {
               text={labels.couponCodeHeader}
             />
             <BodyCopy
+              onPress={onNeedHelpTextClick}
               style={NeedHelpText}
               fontSize="fs12"
               fontFamily="secondary"
@@ -73,7 +74,7 @@ export class CouponForm extends React.PureComponent<Props, State> {
               customStyle={ApplyButton}
               text={labels.submitButtonLabel}
               style={ApplyButtonText}
-              disabled={pristine || submitting}
+              disabled={isFetching}
               data-locator={dataLocators.submitButton}
             />
           </FlexRow>
@@ -85,10 +86,11 @@ export class CouponForm extends React.PureComponent<Props, State> {
 
 CouponForm.propTypes = {
   labels: PropTypes.shape({
-    placeholderText: PropTypes.string,
-    validationErrorLabel: PropTypes.string,
-    termsTextLabel: PropTypes.string,
-    submitButtonLabel: PropTypes.string,
+    placeholderText: PropTypes.string.isRequired,
+    submitButtonLabel: PropTypes.string.isRequired,
+    couponCodeHeader: PropTypes.string.isRequired,
+    couponNeedHelpText: PropTypes.string.isRequired,
+    couponHelpText: PropTypes.string.isRequired,
   }),
   dataLocators: PropTypes.shape({
     submitButton: PropTypes.string,
@@ -96,31 +98,33 @@ CouponForm.propTypes = {
   }),
   handleSubmit: PropTypes.func,
   fieldName: PropTypes.string,
-  pristine: false,
-  submitting: false,
+  className: PropTypes.string.isRequired,
   error: PropTypes.string,
+  onNeedHelpTextClick: PropTypes.func,
+  isFetching: PropTypes.isRequired,
 };
 
 CouponForm.defaultProps = {
   labels: {
     placeholderText: 'Enter Coupon Code',
     submitButtonLabel: 'Apply',
-    couponCodeHeader: 'Coupon Code',
+    couponCodeHeader: 'COUPON CODE',
     couponNeedHelpText: 'Need Help?',
   },
   dataLocators: {
     submitButton: 'coupon_submit_btn',
     inputField: 'coupon_code',
   },
-  pristine: false,
-  submitting: false,
   error: '',
   fieldName: 'couponCode',
   handleSubmit: () => {},
+  onNeedHelpTextClick: () => {},
 };
 
+const onSubmitSuccess = (result, dispatch, { reset }) => reset();
 export default reduxForm({
   form: 'CouponForm', // a unique identifier for this form
+  onSubmitSuccess,
 })(CouponForm);
 
 export { CouponForm as CouponFormVanilla };

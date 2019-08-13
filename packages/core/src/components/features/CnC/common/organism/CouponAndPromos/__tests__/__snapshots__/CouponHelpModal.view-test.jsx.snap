@@ -4,12 +4,13 @@ exports[`Help Coupon Modal should call correctly 1`] = `
 <Styled(Modal)
   className="TCPModal__Content"
   closeIconDataLocator="helpmodalcrossicon"
+  fixedWidth={true}
   isOpen={false}
-  maxWidth="460px"
-  minHeight="500px"
+  maxWidth="500px"
+  minHeight="90%"
   onRequestClose={[MockFunction]}
   overlayClassName="TCPModal__Overlay"
 >
-  <div />
+  <Styled(RichText) />
 </Styled(Modal)>
 `;

@@ -6,9 +6,10 @@
     "clean": "yarn cleanup && yarn lerna-clean",
     "postinstall-local": "yarn flow:install",
     "clean-install": "yarn clean && yarn",
-    "start": "yarn build:web",
     "start:web": "cross-env NODE_ENV=development yarn workspace @tcp/web start",
-    "build:web": "yarn && cd packages/web && yarn && yarn build && yarn next-start",
+    "build:web:prod": "yarn --production && yarn workspace @tcp/web build && yarn cleanup:mobileapp",
+    "start:web:prod": "yarn workspace @tcp/web start",
+    "cleanup:mobileapp": "rm -rf ./packages/mobileapp",
     "start:mobileapp": "cd packages/mobileapp && yarn start",
     "cleanup": "rm -rf ./node_modules",
     "lerna-clean": "npx lerna clean --y",
@@ -35,21 +36,11 @@
     "lint:app": "yarn eslint:app && yarn stylelint:app"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.4",
-    "@babel/core": "^7.4.5",
-    "@babel/plugin-transform-flow-strip-types": "^7.0.0",
-    "@babel/preset-env": "^7.4.5",
-    "@babel/preset-flow": "^7.0.0",
-    "@babel/preset-react": "^7.0.0",
     "@types/enzyme": "^3.9.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.13",
     "@types/node": "^12.0.4",
     "@types/react": "^16.8.19",
-    "babel-cli": "^6.26.0",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.6",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.2",
     "enzyme-to-json": "^3.3.4",
@@ -90,7 +81,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn test && yarn test:app"
     }
   },
   "lint-staged": {
@@ -124,6 +116,16 @@
     "redux-immutable": "^4.0.0",
     "redux-saga": "^1.0.2",
     "reselect": "^4.0.0",
-    "styled-components": "^4.2.0"
+    "styled-components": "^4.2.0",
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-transform-flow-strip-types": "^7.0.0",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^8.0.6"
   }
 }

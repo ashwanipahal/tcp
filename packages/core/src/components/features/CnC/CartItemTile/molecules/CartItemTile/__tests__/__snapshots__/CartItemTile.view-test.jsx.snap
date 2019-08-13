@@ -7,7 +7,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-cSHVUG",
+        "componentId": "sc-kAzzGY",
         "isStatic": false,
         "rules": Array [
           "
@@ -58,6 +58,9 @@ exports[`CartItemTile common component renders correctly 1`] = `
   }
   .responsive-edit-css {
     padding-top: 2px;
+  }
+  .imageWrapper {
+    position: relative;
   }
 
   .crossDeleteIcon {
@@ -168,6 +171,18 @@ exports[`CartItemTile common component renders correctly 1`] = `
     }
   }
 
+  .soldOutLabel {
+    width: 89px;
+    height: 18px;
+    background-color: ",
+          [Function],
+          ";
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   ",
           [Function],
           ";
@@ -179,7 +194,7 @@ exports[`CartItemTile common component renders correctly 1`] = `
       "displayName": "Styled(CartItemTile)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-cSHVUG",
+      "styledComponentId": "sc-kAzzGY",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

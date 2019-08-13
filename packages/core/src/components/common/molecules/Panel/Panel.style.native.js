@@ -39,8 +39,11 @@ const TextWrapper = styled.View`
   justify-content: center;
 `;
 
-const ImageWrapper = styled.View`
-  margin-left: ${props => props.theme.spacing.ELEM_SPACING.XXS};
+const ImageWrapper = styled.TouchableHighlight.attrs({
+  underlayColor: props => props.theme.colors.BUTTON.WHITE.ALT_FOCUS,
+})`
+  padding: ${props => props.theme.spacing.LAYOUT_SPACING.SM}
+    ${props => props.theme.spacing.ELEM_SPACING.XXS};
 `;
 
 const FavoritesWrapper = styled.View`

@@ -81,7 +81,7 @@ class CardTile extends React.Component<Props> {
    * @param {*} checkbalanceValueInfo
    */
   getGiftCardBalance = (key, checkbalanceValueInfo) => {
-    return checkbalanceValueInfo && this.checkbalanceValueInfo.get(key);
+    return checkbalanceValueInfo && checkbalanceValueInfo.get(key);
   };
 
   getDataLocatorPrefix = ({ card }) => {
@@ -148,18 +148,16 @@ class CardTile extends React.Component<Props> {
           dataLocator={`payment-${dataLocatorPrefix}endingtext`}
           text={cardNum}
         />
-        {card.ccType !== 'PLACE CARD' &&
-          card.ccType !==
-            'GiftCard'(
-              <CardTileExpiry>
-                <BodyCopy
-                  fontSize="fs14"
-                  fontWeight="semibold"
-                  dataLocator={`payment-${dataLocatorPrefix}expiretext`}
-                  text={expDate}
-                />
-              </CardTileExpiry>
-            )}
+        {card.ccType !== 'PLACE CARD' && card.ccType !== 'GiftCard' && (
+          <CardTileExpiry>
+            <BodyCopy
+              fontSize="fs14"
+              fontWeight="semibold"
+              dataLocator={`payment-${dataLocatorPrefix}expiretext`}
+              text={expDate}
+            />
+          </CardTileExpiry>
+        )}
       </View>
     );
   };

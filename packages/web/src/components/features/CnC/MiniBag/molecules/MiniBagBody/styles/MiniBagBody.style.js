@@ -7,6 +7,7 @@ export default css`
   .viewBagAndProduct {
     height: calc(100% - 120px);
     overflow-y: auto;
+    border-top: 2px solid ${props => props.theme.colorPalette.gray[300]};
   }
   .mainWrapper {
     text-align: center;
@@ -14,6 +15,8 @@ export default css`
     height: auto;
     padding-right: 0;
     padding-left: 0;
+    margin: 0;
+    width: 100%;
   }
 
   .deleteMsg {
@@ -30,6 +33,8 @@ export default css`
 
   .subHeaderText {
     text-decoration: underline;
+    vertical-align: middle;
+    line-height: 28px;
   }
   .miniBagFooter {
     height: 137px;

@@ -52,6 +52,11 @@ const NavBar = props => {
                   medium: '314px',
                   large: '100%',
                 }}
+                position={{
+                  top: 0,
+                  left: 0,
+                }}
+                height="100%"
               >
                 <L2Panel
                   categoryLayout={categoryLayout}

@@ -106,7 +106,7 @@ class LoginSection extends React.PureComponent<Props> {
           )}
 
           <BodyCopy component="div" className="border elem-pt-MED elem-pb-LRG">
-            <BodyCopy fontSize="fs12" textAlign="center">
+            <BodyCopy fontFamily="secondary" fontSize="fs12" textAlign="center">
               {labels.login.lbl_login_createAccountHelp}
             </BodyCopy>
           </BodyCopy>

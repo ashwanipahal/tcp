@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { OffersSectionVanilla } from '../views/OffersSection.native';
+import { OffersSectionVanilla } from '../../OffersSection/views/OffersSection.native';
 
 describe('Offers Component', () => {
   it('should render correctly', () => {

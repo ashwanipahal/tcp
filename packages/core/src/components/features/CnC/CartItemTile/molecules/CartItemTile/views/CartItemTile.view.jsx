@@ -1,11 +1,14 @@
+/* eslint-disable complexity */
 /* eslint-disable max-lines */
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductEditForm from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ProductCustomizeForm/ProductCustomizeForm';
+import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability/views/ItemAvailability.view';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import CartItemRadioButtons from '@tcp/core/src/components/features/CnC/CartItemTile/molecules/CartItemRadioButtons/views/CartItemRadioButtons';
 import endpoints from '../../../../../../../service/endpoint';
 import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
+
 import { getIconPath, getLocator } from '../../../../../../../utils';
 import getModifiedString from '../../../utils';
 import styles from '../styles/CartItemTile.style';
@@ -80,6 +83,43 @@ class CartItemTile extends React.Component {
             {productDetail.miscInfo.badge}
           </BodyCopy>
         </Col>
+      </Row>
+    );
+  };
+
+  getItemDetails = (productDetail, labels, pageView) => {
+    return (
+      <Row className="padding-top-15 padding-bottom-20" fullBleed>
+        {pageView !== 'myBag' && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
+        <Col className="save-for-later-label" colSize={{ small: 1, medium: 1, large: 3 }}>
+          {productDetail.miscInfo.availability === 'SOLDOUT' && (
+            <BodyCopy fontFamily="secondary" fontSize="fs12" component="span">
+              <u>Remove</u>
+            </BodyCopy>
+          )}
+          {productDetail.miscInfo.availability === 'UNAVAILABLE' && (
+            <BodyCopy fontFamily="secondary" color="error" fontSize="fs12" component="span">
+              <u>Update</u>
+            </BodyCopy>
+          )}
+          {productDetail.miscInfo.availability === 'OK' && (
+            <BodyCopy fontFamily="secondary" fontSize="fs12" component="span">
+              <u>{labels.saveForLater}</u>
+            </BodyCopy>
+          )}
+        </Col>
+        {pageView === 'myBag' && (
+          <BodyCopy
+            className="price-label"
+            fontFamily="secondary"
+            component="span"
+            fontSize="fs16"
+            fontWeight={['extrabold']}
+            dataLocator={getLocator('cart_item_total_price')}
+          >
+            {`$${productDetail.itemInfo.price.toFixed(2)}`}
+          </BodyCopy>
+        )}
       </Row>
     );
   };
@@ -170,6 +210,12 @@ class CartItemTile extends React.Component {
     };
     return (
       <div className={className}>
+        {productDetail.miscInfo.availability === 'UNAVAILABLE' && (
+          <ItemAvailability errorMsg={labels.itemUnavailable} />
+        )}
+        {productDetail.miscInfo.availability === 'SOLDOUT' && (
+          <ItemAvailability errorMsg={labels.itemSoldOut} chooseDiff={labels.chooseDiff} />
+        )}
         <div className="crossDeleteIcon">
           <Image
             alt="closeIcon"
@@ -187,12 +233,25 @@ class CartItemTile extends React.Component {
             className="align-product-img product-brand-img-wrapper"
             colSize={{ small: 2, medium: 2, large: 3 }}
           >
-            <Image
-              alt={labels.productImageAlt}
-              className="product-image"
-              src={endpoints.global.baseURI + productDetail.itemInfo.imagePath}
-              data-locator={getLocator('cart_item_image')}
-            />
+            <div className="imageWrapper">
+              <Image
+                alt={labels.productImageAlt}
+                className="product-image"
+                src={endpoints.global.baseURI + productDetail.itemInfo.imagePath}
+                data-locator={getLocator('cart_item_image')}
+              />
+              {productDetail.miscInfo.availability === 'SOLDOUT' && (
+                <BodyCopy
+                  className="soldOutLabel"
+                  component="span"
+                  fontFamily="secondary"
+                  textAlign="center"
+                  fontSize="fs12"
+                >
+                  {labels.soldOut}
+                </BodyCopy>
+              )}
+            </div>
             {!productDetail.itemInfo.isGiftItem && (
               <Image
                 alt={labels.productBandAlt}
@@ -383,26 +442,7 @@ class CartItemTile extends React.Component {
                 </BodyCopy>
               </Col>
             </Row>
-            <Row className="padding-top-15 padding-bottom-20" fullBleed>
-              {pageView !== 'myBag' && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
-              <Col className="save-for-later-label" colSize={{ small: 1, medium: 1, large: 3 }}>
-                <BodyCopy fontFamily="secondary" fontSize="fs12" component="span">
-                  <u>{labels.saveForLater}</u>
-                </BodyCopy>
-              </Col>
-              {pageView === 'myBag' && (
-                <BodyCopy
-                  className="price-label"
-                  fontFamily="secondary"
-                  component="span"
-                  fontSize="fs16"
-                  fontWeight={['extrabold']}
-                  dataLocator={getLocator('cart_item_total_price')}
-                >
-                  {`$${productDetail.itemInfo.price.toFixed(2)}`}
-                </BodyCopy>
-              )}
-            </Row>
+            {this.getItemDetails(productDetail, labels, pageView)}
           </Col>
         </Row>
         {pageView === 'myBag' && (

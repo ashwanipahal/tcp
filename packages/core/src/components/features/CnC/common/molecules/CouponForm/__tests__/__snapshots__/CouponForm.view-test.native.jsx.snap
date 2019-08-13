@@ -13,7 +13,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         fontSize="fs16"
         fontWeight="semibold"
         locator=""
-        text="Coupon Code"
+        text="COUPON CODE"
       />
       <Styled(BodyCopy)
         component="span"
@@ -21,6 +21,7 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         fontSize="fs12"
         fontWeight="semibold"
         locator=""
+        onPress={[Function]}
         style={
           Object {
             "paddingLeft": 12,
@@ -50,11 +51,10 @@ exports[`CouponForm Component CouponForm should render correctly 1`] = `
         }
         data-locator="coupon_submit_btn"
         disableButton={false}
-        disabled={false}
         external={true}
         fill="WHITE"
         fullWidth=""
-        locator={[Function]}
+        locator=""
         onPress={[Function]}
         style={
           Object {

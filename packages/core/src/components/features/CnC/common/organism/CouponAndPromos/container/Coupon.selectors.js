@@ -1,3 +1,5 @@
+import BagPageSelector from '../../../../BagPage/container/BagPage.selectors';
+
 export const getCouponFetchingState = state => {
   return state.CouponsAndPromos && state.CouponsAndPromos.get('isFetching');
 };
@@ -11,7 +13,7 @@ export const getCouponsLabels = state => {
         lbl_couponform_header: couponCodeHeader,
         lbl_couponform_help: couponNeedHelpText,
         lbl_couponlist_AVAILABLE_REWARDS: AVAILABLE_REWARDS_HEADING = 'AVAILABLE REWARDS & OFFERS ',
-        lbl_couponlist_APPLIED_REWARDS_HEADING: APPLIED_REWARDS_HEADING = 'Applied REWARDS & OFFERS ',
+        lbl_couponlist_APPLIED_REWARDS_HEADING: APPLIED_REWARDS_HEADING = 'APPLIED REWARDS & OFFERS ',
         lbl_couponlist_HELP_APPLYING: HELP_APPLYING = 'Help applying Place Cash',
         lbl_couponlist_APPLY_BUTTON_TEXT: APPLY_BUTTON_TEXT = 'APPLY',
         lbl_couponlist_REMOVE_BUTTON_TEXT: REMOVE_BUTTON_TEXT = 'REMOVE',
@@ -21,11 +23,11 @@ export const getCouponsLabels = state => {
         lbl_couponlist_APPLY_TO_BAG: APPLY_TO_BAG = 'Apply to bag',
         lbl_couponlist_PRINT_ANCHOR_TEXT: PRINT_ANCHOR_TEXT = 'Print',
         lbl_couponlist_USE_BY_TEXT: USE_BY_TEXT = 'Use by',
-        lbl_couponlist_MODAL_LONG_DESCRIPTION: MODAL_LONG_DESCRIPTION = 'Lorum ipsum labore et dolore magna aliqua. Sed arcu non odio euismod lacinia. Tortor pretium viverra suspendisse potenti nullam ac tortor. Ris commodo viverra maecenas accumsan lacus vel. Odio ut enim blandit volutpat maecenas volutpat blandit aliquam etiam. Ipsum faucibus vitae aliquet nec ullamcorper sit amet risus nullams ut etiam sit amet. Semper quis lectus nulla at volutpat diam ut venenatis. Sagittis orci a scelerisque purus semper eget duis. Tincidunt eget nullam non nisi est sit. Lectus quam id leo in vitae turpis massa sed elementum. Sed lectus vestibulum mattis ullamcorper velit sed ullamcorper. Pharetra sit amet aliquam id diam maecenas ultricies mi eget. Quam nulla porttitor massa id neque.',
+        lbl_couponlist_MODAL_LONG_DESCRIPTION: MODAL_LONG_DESCRIPTION = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna nunc, interdum ac neque non, blandit accumsan justo. Phasellus aliquam urna ut nisl faucibus, quis pellentesque nulla vulputate. Phasellus bibendum lobortis orci, condimentum convallis sapien cursus non. Nunc eu bibendum sem. Quisque metus nisl, consectetur quis elit ut, maximus sollicitudin elit. Maecenas congue tempor ante, quis finibus neque bibendum vel.',
 
         lbl_couponlist_MODAL_SHORT_DESCRIPTION: MODAL_SHORT_DESCRIPTION = 'By participating in the activity, you agree to ',
-        lbl_couponlist_TERMS_AND_CONDITIONS: TERMS_AND_CONDITIONS = 'terms and conditions',
-        lbl_couponlist_PRIVACY_POLICY: PRIVACY_POLICY = 'privacy policy',
+        lbl_couponlist_TERMS_AND_CONDITIONS: TERMS_AND_CONDITIONS = 'Terms & Conditions',
+        lbl_couponlist_PRIVACY_POLICY: PRIVACY_POLICY = 'Privacy Policy',
         lbl_couponlist_PLACE_CASH_TEXT: PLACE_CASH_TEXT = 'PLACE CASH',
         lbl_couponlist_REWARDS_TEXT: REWARDS_TEXT = 'REWARDS',
         lbl_couponlist_SAVINGS_TEXT: SAVINGS_TEXT = 'SAVINGS',
@@ -69,4 +71,11 @@ export const getAppliedCouponListState = state => {
 export const getAvailableCouponListState = state => {
   const list = state.CouponsAndPromos && state.CouponsAndPromos.get('couponsAndOffers');
   return list && list.filter(i => i.status === 'available');
+};
+
+export const getNeedHelpContent = state => {
+  const needHelpContent = state.CartPageReducer.get('moduleXContent').find(
+    moduleX => moduleX.name === BagPageSelector.getNeedHelpContentId(state)
+  );
+  return needHelpContent && needHelpContent.richText;
 };

@@ -87,6 +87,10 @@ export const getBossEndDate = product => {
   return product.getIn(['miscInfo', 'bossEndDate']);
 };
 
+export const getProductAvailability = product => {
+  return product.getIn(['miscInfo', 'availability']);
+};
+
 export const getProductItemUpcNumber = product => {
   return product.getIn(['productInfo', 'upc']);
 };
@@ -138,6 +142,14 @@ export const getLabelsCartItemTile = state => {
         lbl_cartTile_shipToHome: ecomShipping,
         lbl_cartTile_extra: extra,
         lbl_cartTile_off: off,
+        lbl_error_problemWithOrder: problemWithOrder,
+        lbl_error_please: pleaseText,
+        lbl_error_remove: remove,
+        lbl_error_removeSoldOut: removeSoldOut,
+        lbl_error_itemUnavailable: itemUnavailable,
+        lbl_error_itemSoldOut: itemSoldOut,
+        lbl_error_chooseDiff: chooseDiff,
+        lbl_error_soldOut: soldOut,
       },
     },
   } = state.Labels;
@@ -163,6 +175,14 @@ export const getLabelsCartItemTile = state => {
     ecomShipping,
     extra,
     off,
+    problemWithOrder,
+    pleaseText,
+    remove,
+    removeSoldOut,
+    itemUnavailable,
+    itemSoldOut,
+    chooseDiff,
+    soldOut,
   };
 };
 
@@ -196,6 +216,7 @@ export const getProductDetails = tile => {
       orderItemType: getProductOrderItemType(tile),
       bossStartDate: getBossStartDate(tile),
       bossEndDate: getBossEndDate(tile),
+      availability: getProductAvailability(tile),
     },
   };
 };
