@@ -1,5 +1,5 @@
-/* eslint-disable complexity */
 /* eslint-disable max-lines */
+/* eslint-disable complexity */
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductEditForm from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ProductCustomizeForm/ProductCustomizeForm';
