@@ -174,7 +174,7 @@ export default {
         {
           image: {
             url:
-              'https://res.cloudinary.com/tcp-dam-test/id/w_76/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg',
+              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1562061640/ben-white-4K2lIP0zc_k-unsplash_avr2bp.jpg',
             title: '',
             alt: '',
           },

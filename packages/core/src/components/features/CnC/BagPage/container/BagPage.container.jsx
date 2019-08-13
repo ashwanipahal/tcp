@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import BagPageSelector from './BagPage.selectors';
 import BagPage from '../views/BagPage.view';
 import BAG_PAGE_ACTIONS from './BagPage.actions';
+import { getCartOrderList } from '../../CartItemTile/container/CartItemTile.selectors';
+
 // @flow
 // type Props = {
 //   closeModal: Function,
@@ -26,8 +28,8 @@ export class BagPageContainer extends React.Component<Props> {
   };
 
   render() {
-    const { labels, totalCount } = this.props;
-    return <BagPage labels={labels} totalCount={totalCount} />;
+    const { labels, totalCount, orderItemsCount } = this.props;
+    return <BagPage labels={labels} totalCount={totalCount} orderItemsCount={orderItemsCount} />;
   }
 }
 
@@ -43,10 +45,12 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
 };
 
 const mapStateToProps = state => {
+  const { size = 0 } = getCartOrderList(state) || {};
   return {
     labels: BagPageSelector.getBagPageLabels(state),
     totalCount: BagPageSelector.getTotalItems(state),
     productsTypes: BagPageSelector.getProductsTypes(state),
+    orderItemsCount: size,
     needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
   };
 };
