@@ -22,6 +22,10 @@ const L3Panel = props => {
         medium: '314px',
         large: '100%',
       }}
+      position={{
+        top: 0,
+        left: 0,
+      }}
       height="100%"
     >
       <div data-locator="overrlay_img" className={`${className} nav-bar-l3-panel`}>
