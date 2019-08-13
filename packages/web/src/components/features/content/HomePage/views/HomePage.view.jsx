@@ -12,11 +12,11 @@ const HomePageView = props => {
 
   return (
     <Fragment>
+      <SlotE name="moduleA" set={moduleAMockData.set} {...moduleAMockData.composites} {...slotE} />
       <SlotA {...slotA} />
       <SlotB {...slotB} />
       <SlotC {...slotC} />
       <SlotD {...slotD} />
-      <SlotE name="moduleA" set={moduleAMockData.set} {...moduleAMockData.composites} {...slotE} />
       <GetCandid />
     </Fragment>
   );
