@@ -9,7 +9,6 @@ export const getCountryListData = payload => {
 
 export const submitCountrySelection = payload => {
   console.log(payload);
-
   return {
     payload,
     type: COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_SUBMIT_DATA,
@@ -23,8 +22,16 @@ export const toggleCountrySelectorModal = payload => {
   };
 };
 
+export const updateSelectedCountry = payload => {
+  return {
+    payload,
+    type: COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_UPDATE_COUNTRY,
+  };
+};
+
 export default {
   getCountryListData,
   submitCountrySelection,
   toggleCountrySelectorModal,
+  updateSelectedCountry,
 };

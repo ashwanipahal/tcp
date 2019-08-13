@@ -4,6 +4,7 @@ import {
   getCountryListData,
   submitCountrySelection,
   toggleCountrySelectorModal,
+  updateSelectedCountry,
 } from './CountrySelector.actions';
 import CountrySelectorView from '../views';
 
@@ -17,6 +18,9 @@ export const mapDispatchToProps = dispatch => {
     },
     handleSubmit: () => {
       dispatch(submitCountrySelection());
+    },
+    updateCountry: selectedCountry => {
+      dispatch(updateSelectedCountry(selectedCountry));
     },
   };
 };

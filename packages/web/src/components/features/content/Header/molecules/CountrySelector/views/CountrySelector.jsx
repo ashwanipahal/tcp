@@ -30,6 +30,11 @@ class CountrySelector extends React.Component {
     this.closeModal();
   };
 
+  changeCountry = selectedCountry => {
+    const { updateCountry } = this.props;
+    updateCountry(selectedCountry);
+  };
+
   render() {
     const { className, countryListData, isModalOpen, labels, showInFooter } = this.props;
     const {
@@ -54,6 +59,7 @@ class CountrySelector extends React.Component {
               labels={labels}
               languages={languages}
               handleSubmit={this.submitForm}
+              updateCountry={this.changeCountry}
             />
           </React.Fragment>
         ) : (
@@ -97,6 +103,7 @@ CountrySelector.propTypes = {
   loadCountryListData: PropTypes.func,
   showInFooter: PropTypes.bool,
   toggleModal: PropTypes.func,
+  updateCountry: PropTypes.func,
 };
 
 CountrySelector.defaultProps = {
@@ -105,6 +112,7 @@ CountrySelector.defaultProps = {
   handleSubmit: () => {},
   loadCountryListData: () => {},
   toggleModal: () => {},
+  updateCountry: () => {},
 };
 
 export default withStyles(CountrySelector, style);
