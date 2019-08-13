@@ -53,12 +53,15 @@ export const getAllCoupons = () => {
     webService: endpoints.getAllOffers,
   };
   return executeStatefulAPICall(payload).then(res => {
-    return constructCouponStructure(res.body.offers);
+    if (res.body && res.body.offers) {
+      return constructCouponStructure(res.body.offers);
+    }
+    throw new Error('There is some error in fetching all coupons');
   });
 };
 
 export default {
   applyCouponToCart,
   removeCouponOrPromo,
-  getAllCoupons
+  getAllCoupons,
 };

@@ -9,6 +9,7 @@ import {
   getBonusDetailsData,
   getBonusPointsSwitch,
 } from './BonusPointsDays.selectors';
+import { isPlccUser } from '../../LoginPage/container/LoginPage.selectors';
 import BonusPointsView from '../views/BonusPointsView';
 import { isCanada } from '../../../../../utils';
 import constants from '../BonusPointsDays.constants';
@@ -33,7 +34,7 @@ export class BonusPointsDays extends React.Component {
     bonusData: {},
     bonusDetailsData: '',
     isBonusPointsEnabled: false,
-    view: constants.VIEWS.EDIT
+    view: constants.VIEWS.EDIT,
   };
 
   componentDidMount() {
@@ -68,6 +69,7 @@ export const mapStateToProps = state => {
     bonusDetailsContentId: getBonusDetailsContentId(state),
     bonusDetailsData: getBonusDetailsData(state),
     isBonusPointsEnabled: getBonusPointsSwitch(state),
+    isPlcc: isPlccUser(state),
   };
 };
 

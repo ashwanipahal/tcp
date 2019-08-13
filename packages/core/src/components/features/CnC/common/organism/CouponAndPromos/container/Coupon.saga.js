@@ -84,7 +84,7 @@ export function* getAllCoupons() {
     const coupons = yield call(getAllCouponsAbstractor);
     yield put(setCouponList(coupons));
   } catch (e) {
-    console.log('error :', e);
+    console.log('getAllCoupons error', e);
   }
 }
 

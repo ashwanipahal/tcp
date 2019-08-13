@@ -15,6 +15,7 @@ class BonusPointsView extends React.Component {
     bonusDetailsData: PropTypes.string,
     className: PropTypes.string,
     view: PropTypes.string,
+    isPlcc: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -22,7 +23,8 @@ class BonusPointsView extends React.Component {
     bonusData: {},
     bonusDetailsData: '',
     className: '',
-    view: constants.VIEWS.EDIT
+    view: constants.VIEWS.EDIT,
+    isPlcc: false,
   };
 
   constructor(props) {
@@ -39,7 +41,7 @@ class BonusPointsView extends React.Component {
   };
 
   render() {
-    const { labels, bonusData, bonusDetailsData, className, view } = this.props;
+    const { labels, bonusData, bonusDetailsData, className, view, isPlcc } = this.props;
     const { openModalState } = this.state;
     return (
       <React.Fragment>
@@ -49,6 +51,7 @@ class BonusPointsView extends React.Component {
             toggleBonusPointsModal={this.toggleBonusPointsModal}
             availableBonusPointDays={bonusData && bonusData.availableBonusPointDays}
             usedBonusPointDays={bonusData && bonusData.usedBonusPointDays}
+            isPlcc={isPlcc}
           />
         )}
         {view === constants.VIEWS.EDIT && (

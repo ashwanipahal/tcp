@@ -1,8 +1,8 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
-import { applyCoupon, CouponSaga, removeCoupon } from '../container/Coupon.saga';
+import { applyCoupon, CouponSaga, removeCoupon, getAllCoupons } from '../container/Coupon.saga';
 import { applyCouponToCart } from '../../../../../../../services/abstractors/CnC';
 import COUPON_ACTION_PATTERN from '../Coupon.constants';
-import { hideLoader, showLoader } from '../container/Coupon.actions';
+import { hideLoader, showLoader, setCouponList } from '../container/Coupon.actions';
 
 const couponData = {
   id: 'Y00105579',
@@ -77,16 +77,27 @@ describe('Coupon saga', () => {
     expect(takeLatestDescriptor.next().value.toString()).toMatch(
       takeLatest(COUPON_ACTION_PATTERN.APPLY_COUPON, applyCoupon).toString()
     );
-    takeLatestDescriptor.next();
-    expect(takeLatestDescriptor.next()).toEqual({ done: true, value: undefined });
   });
 
   it('should return correct takeLatest removeCoupon effect', () => {
     const takeLatestDescriptor = CouponSaga();
+    takeLatestDescriptor.next();
     expect(takeLatestDescriptor.next().value.toString()).toMatch(
       takeLatest(COUPON_ACTION_PATTERN.REMOVE_COUPON, removeCoupon).toString()
     );
-    takeLatestDescriptor.next();
-    expect(takeLatestDescriptor.next()).toEqual({ done: true, value: undefined });
+  });
+
+  describe('getAllCoupons', () => {
+    let gen;
+
+    beforeEach(() => {
+      gen = getAllCoupons();
+      gen.next();
+    });
+
+    it('should dispatch setCouponList on success', () => {
+      const putDescriptor = gen.next({}).value;
+      expect(putDescriptor).toEqual(put(setCouponList({})));
+    });
   });
 });

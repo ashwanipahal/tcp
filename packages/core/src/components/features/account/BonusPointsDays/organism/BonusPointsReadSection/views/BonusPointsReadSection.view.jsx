@@ -5,7 +5,13 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/BonusPointsReadSection.style';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy/views/BodyCopy';
 
-export const BonusPointsReadSection = ({ toggleBonusPointsModal, labels, availableBonusPointDays, usedBonusPointDays, className }) => {
+export const BonusPointsReadSection = ({
+  toggleBonusPointsModal,
+  labels,
+  availableBonusPointDays,
+  usedBonusPointDays,
+  className,
+}) => {
   const availableDaysArray = Array(availableBonusPointDays).fill('');
   const usedDaysArray = Array(usedBonusPointDays).fill('');
   const message = labels.lbl_bonus_points_daysLeft.replace(/\{0\}/, availableBonusPointDays);
@@ -13,7 +19,9 @@ export const BonusPointsReadSection = ({ toggleBonusPointsModal, labels, availab
   return (
     <BodyCopy component="div" className={`${className} elem-pt-LRG`}>
       <BodyCopy component="div" className="bonusPointDayHeading elem-mb-XS">
-        <BodyCopy fontSize="fs14" fontWeight="semibold">{labels.lbl_bonus_points_bonusPointsDay}</BodyCopy>
+        <BodyCopy fontSize="fs14" fontWeight="semibold">
+          {labels.lbl_bonus_points_bonusPointsDay}
+        </BodyCopy>
         <Anchor
           anchorVariation="primary"
           fontSizeVariation="large"
@@ -25,8 +33,12 @@ export const BonusPointsReadSection = ({ toggleBonusPointsModal, labels, availab
       </BodyCopy>
       <BodyCopy fontSize="fs14" component="div">
         {message}
-        {usedDaysArray.map(() => (<span className="dot filled elem-ml-XS" />))}
-        {availableDaysArray.map(() => (<span className="dot elem-ml-XXS" />))}
+        {usedDaysArray.map(() => (
+          <span className="dot filled elem-ml-XS" />
+        ))}
+        {availableDaysArray.map(() => (
+          <span className="dot elem-ml-XS" />
+        ))}
       </BodyCopy>
     </BodyCopy>
   );
@@ -39,13 +51,13 @@ BonusPointsReadSection.propTypes = {
   labels: PropTypes.shape({
     lbl_bonus_points_daysLeft: PropTypes.string.isRequired,
     lbl_bonus_points_bonusPointsDay: PropTypes.string.isRequired,
-    lbl_bonus_points_detailLink: PropTypes.string.isRequired
+    lbl_bonus_points_detailLink: PropTypes.string.isRequired,
   }).isRequired,
   className: PropTypes.string,
 };
 
 BonusPointsReadSection.defaultProps = {
-  className: ''
+  className: '',
 };
 
 export default withStyles(BonusPointsReadSection, styles);
