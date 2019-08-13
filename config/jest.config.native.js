@@ -48,5 +48,13 @@ module.exports = {
     '/features/account/LoginPage/container/loginUtils/keychain.utils.native.js',
   ],
   coverageReporters: ['json', 'lcov', 'text', 'text-summary'],
+  coverageThreshold: {
+    global: {
+      statements: 62,
+      branches: 43,
+      functions: 52.5,
+      lines: 69,
+    },
+  },
   snapshotSerializers: ['enzyme-to-json/serializer'],
 };
