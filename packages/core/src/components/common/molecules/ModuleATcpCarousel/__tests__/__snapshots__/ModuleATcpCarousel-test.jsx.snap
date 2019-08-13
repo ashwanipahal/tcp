@@ -54,7 +54,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
         data-locator="moduleA_image_0"
         imgConfigs={
           Array [
-            "c_fill,g_face:center,q_auto:best,h_311,w_767",
+            "c_fill,g_face:center,q_auto:best,h_622,w_750",
             "c_fill,g_face:center,q_auto:best,h_406,w_768",
             "c_fill,g_face:center,q_auto:best,h_474,w_1410",
           ]
@@ -76,7 +76,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
         <Styled(Styled(LinkText))
           className="link-text-wrapper"
           component="h2"
-          data-locator="moduleA_header_text_0"
+          dataLocator="moduleA_header_text_0"
           headerText={
             Array [
               Object {
@@ -143,7 +143,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
         data-locator="moduleA_image_1"
         imgConfigs={
           Array [
-            "c_fill,g_face:center,q_auto:best,h_311,w_767",
+            "c_fill,g_face:center,q_auto:best,h_622,w_750",
             "c_fill,g_face:center,q_auto:best,h_406,w_768",
             "c_fill,g_face:center,q_auto:best,h_474,w_1410",
           ]
@@ -165,7 +165,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
         <Styled(Styled(LinkText))
           className="link-text-wrapper"
           component="h2"
-          data-locator="moduleA_header_text_1"
+          dataLocator="moduleA_header_text_1"
           headerText={
             Array [
               Object {
@@ -232,7 +232,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
         data-locator="moduleA_image_2"
         imgConfigs={
           Array [
-            "c_fill,g_face:center,q_auto:best,h_311,w_767",
+            "c_fill,g_face:center,q_auto:best,h_622,w_750",
             "c_fill,g_face:center,q_auto:best,h_406,w_768",
             "c_fill,g_face:center,q_auto:best,h_474,w_1410",
           ]
@@ -254,7 +254,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
         <Styled(Styled(LinkText))
           className="link-text-wrapper"
           component="h2"
-          data-locator="moduleA_header_text_2"
+          dataLocator="moduleA_header_text_2"
           headerText={
             Array [
               Object {
@@ -321,7 +321,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
         data-locator="moduleA_image_3"
         imgConfigs={
           Array [
-            "c_fill,g_face:center,q_auto:best,h_311,w_767",
+            "c_fill,g_face:center,q_auto:best,h_622,w_750",
             "c_fill,g_face:center,q_auto:best,h_406,w_768",
             "c_fill,g_face:center,q_auto:best,h_474,w_1410",
           ]
@@ -343,7 +343,7 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
         <Styled(Styled(LinkText))
           className="link-text-wrapper"
           component="h2"
-          data-locator="moduleA_header_text_3"
+          dataLocator="moduleA_header_text_3"
           headerText={
             Array [
               Object {
