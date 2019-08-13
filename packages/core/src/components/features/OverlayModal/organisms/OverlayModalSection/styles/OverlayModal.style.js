@@ -46,7 +46,7 @@ const StyledModal = css`
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
     border-bottom: 10px solid
-      ${props => (props.color ? getColorCode(props) : props.theme.colorPalette.gray[600])};
+      ${props => (props.color ? getColorCode(props) : props.theme.colorPalette.userTheme.mpr)};
     position: absolute;
     top: -10px;
     z-index: 99;

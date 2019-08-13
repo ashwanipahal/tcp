@@ -107,7 +107,7 @@ export default {
   },
   CHECKBOX: {
     BORDER: '#575757',
-    CHECKED_BORDER: '#2e6a91',
+    CHECKED_BORDER: '#1a1a1a',
     TICK_COLOR: '#fff',
   },
 };

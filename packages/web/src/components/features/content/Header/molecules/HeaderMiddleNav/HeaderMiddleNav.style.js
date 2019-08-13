@@ -39,7 +39,7 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.large} {
-    padding-top: 31px;
+    padding: 31px 0 0;
     .hamburger-menu {
       display: none;
     }

@@ -15,7 +15,6 @@ type Props = {
   stackedCTAButtons: Object[],
   navigation: Object,
   buttonListVariation: string,
-  navigation: Object,
   divImageCTACarousel: Object[],
   linkList: Object[],
   scrollCTAButtons: Object[],
@@ -121,16 +120,21 @@ const renderScrollView = (ctxButton, navigation, locator) => {
  */
 const linkTextViewRenderItem = (item, navigation, locator) => {
   const style = { borderBottomWidth: 2, borderColor: 'white' };
+  const {
+    item: { text, url },
+    index,
+  } = item;
   return (
     <TextLiksViewContainer>
       <Anchor
+        key={index.toString()}
         locator={locator}
         accessibilityRole="link"
-        accessibilityLabel={item.item.text}
-        text={item.item.text}
+        accessibilityLabel={text}
+        text={text}
         anchorVariation="white"
         fontSizeVariation="large"
-        url={item.item.url}
+        url={url}
         navigation={navigation}
         customStyle={style}
         centered
@@ -167,12 +171,14 @@ const divImageRenderItem = (item, navigation, locator) => {
   const bodycopyStyle = { marginTop: 20 };
   const {
     item: { image, link },
+    index,
   } = item;
   return (
     <Anchor url={link.url} navigation={navigation} locator={locator}>
       <DivImageContainer>
         <Image url={image.url} height={60} width={60} style={style} />
         <BodyCopy
+          key={index.toString()}
           accessibilityRole="text"
           accessibilityLabel={link.text}
           fontFamily="secondary"

@@ -1,6 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import * as utils from '@tcp/core/src/utils/utils';
+
 import { HeaderMiddleNavVanilla as HeaderMiddleNav } from '../HeaderMiddleNav';
+
+utils.getBrand = jest.fn().mockReturnValue('tcp');
 
 describe('HeaderMiddleNav component', () => {
   it('renders correctly', () => {

@@ -128,6 +128,15 @@ export const getAPIConfig = () => {
   return apiConfig;
 };
 
+export const getBrand = () => {
+  return getAPIConfig().brandId;
+};
+
+export const isTCP = () => {
+  const { brandId } = getAPIConfig();
+  return brandId === API_CONFIG.brandIds.tcp;
+};
+
 export const isCanada = () => {
   const { siteId } = getAPIConfig();
   return siteId === API_CONFIG.siteIds.ca;
@@ -141,10 +150,12 @@ export const isGymboree = () => {
 export default {
   getIconPath,
   getLocator,
+  getBrand,
   isClient,
   isMobileApp,
   isServer,
   getAPIConfig,
-  isCanada,
   isGymboree,
+  isTCP,
+  isCanada,
 };
