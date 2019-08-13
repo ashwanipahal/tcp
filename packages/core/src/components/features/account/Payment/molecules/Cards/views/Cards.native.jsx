@@ -12,73 +12,110 @@ import {
   EmptyCCLabelStyle,
   DescriptionEmptyCCStyle,
   ButtonWrapperStyle,
+  ModalHeading,
+  ModalViewWrapper,
+  LineWrapper,
 } from '../Cards.style.native';
+import BodyCopy from '../../../../../../common/atoms/BodyCopy';
+import LineComp from '../../../../../../common/atoms/Line';
 import CardTile from '../../../../common/molecule/CardTile/views/CardTile.view.native';
-// import ModalNative from '../../../../../../common/molecules/Modal';
+import ModalNative from '../../../../../../common/molecules/Modal';
+import AddGiftCardContainer from '../../../AddGiftCard/container/AddGiftCard.container.native';
 
-const handleAddNewCard = () => {
-  return null;
-};
+class Cards extends React.Component<Props> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showModal: false,
+    };
+  }
 
-const Cards = props => {
-  const {
-    labels,
-    cardList,
-    heading,
-    cardImage,
-    emptyLabel,
-    description,
-    emptyBtnLabel,
-    addBtnLabel,
-    setDefaultPaymentMethod,
-    onGetBalanceCard,
-    checkbalanceValueInfo,
-    toggleModal,
-    setSelectedCard,
-  } = props;
-  return (
-    <View {...props}>
-      <HeadingTextStyle>{heading}</HeadingTextStyle>
-      {cardList.size === 0 && (
-        <React.Fragment>
-          <WrapperStyle>
-            <ImgWrapper>
-              <ImageStyle source={cardImage} />
-            </ImgWrapper>
-            <EmptyCCLabelStyle>{emptyLabel}</EmptyCCLabelStyle>
-          </WrapperStyle>
-          <DescriptionEmptyCCStyle>{description}</DescriptionEmptyCCStyle>
-        </React.Fragment>
-      )}
-      <ButtonWrapperStyle>
-        <CustomButton
-          text={cardList.size === 0 ? emptyBtnLabel : addBtnLabel}
-          buttonVariation="variable-width"
-          fill="BLUE"
-          color="white"
-          onPress={handleAddNewCard}
-        />
-      </ButtonWrapperStyle>
-      {cardList.size > 0 &&
-        cardList.map(cardItem => {
-          const cardTileProps = {
-            card: cardItem,
-            labels,
-            setDefaultPaymentMethod,
-            onGetBalanceCard,
-            checkbalanceValueInfo,
-          };
-          return (
-            <CardTile
-              toggleModal={toggleModal}
-              setSelectedCard={setSelectedCard}
-              {...cardTileProps}
-            />
-          );
-        })}
-    </View>
-  );
-};
+  toggleModal = () => {
+    const { showModal } = this.state;
+    this.setState({
+      showModal: !showModal,
+    });
+  };
+
+  render() {
+    const {
+      labels,
+      cardList,
+      heading,
+      cardImage,
+      emptyLabel,
+      description,
+      emptyBtnLabel,
+      addBtnLabel,
+      setDefaultPaymentMethod,
+      onGetBalanceCard,
+      checkbalanceValueInfo,
+      setSelectedCard,
+      toggleModal,
+    } = this.props;
+    const { showModal } = this.state;
+    return (
+      <View {...this.props}>
+        <HeadingTextStyle>{heading}</HeadingTextStyle>
+        {cardList.size === 0 && (
+          <React.Fragment>
+            <WrapperStyle>
+              <ImgWrapper>
+                <ImageStyle source={cardImage} />
+              </ImgWrapper>
+              <EmptyCCLabelStyle>{emptyLabel}</EmptyCCLabelStyle>
+            </WrapperStyle>
+            <DescriptionEmptyCCStyle>{description}</DescriptionEmptyCCStyle>
+          </React.Fragment>
+        )}
+        <ButtonWrapperStyle>
+          <CustomButton
+            text={cardList.size === 0 ? emptyBtnLabel : addBtnLabel}
+            buttonVariation="variable-width"
+            fill="BLUE"
+            color="white"
+            onPress={this.toggleModal}
+          />
+        </ButtonWrapperStyle>
+        {cardList.size > 0 &&
+          cardList.map(cardItem => {
+            const cardTileProps = {
+              card: cardItem,
+              labels,
+              setDefaultPaymentMethod,
+              onGetBalanceCard,
+              checkbalanceValueInfo,
+            };
+            return (
+              <CardTile
+                toggleModal={toggleModal}
+                setSelectedCard={setSelectedCard}
+                {...cardTileProps}
+              />
+            );
+          })}
+        {showModal && (
+          <ModalNative isOpen={showModal} onRequestClose={this.toggleModal}>
+            <ModalHeading>
+              <BodyCopy
+                mobileFontFamily={['secondary']}
+                fontWeight="extrabold"
+                fontSize="fs16"
+                text={labels.paymentGC.lbl_payment_addGiftCard}
+              />
+            </ModalHeading>
+            <LineWrapper>
+              <LineComp marginTop={5} borderWidth={1} borderColor="black" />
+            </LineWrapper>
+            <ModalViewWrapper>
+              <AddGiftCardContainer toggleModal={this.toggleModal} labels={labels} />
+            </ModalViewWrapper>
+          </ModalNative>
+        )}
+      </View>
+    );
+  }
+}
 
 Cards.propTypes = {
   labels: PropTypes.shape({}).isRequired,
