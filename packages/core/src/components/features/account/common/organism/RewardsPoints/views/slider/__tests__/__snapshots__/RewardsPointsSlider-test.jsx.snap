@@ -98,7 +98,6 @@ exports[`RewardsPoints Slider View should render RewardsPointsViewVanilla Correc
       >
         <div
           className="progressbar-rewards currentpoint-slider progressbar-rewards "
-          data-locator="sliderpointsgraph"
           style={
             Object {
               "width": "%",

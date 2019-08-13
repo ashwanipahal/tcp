@@ -63,7 +63,6 @@ const RewardsPointsSlider = ({
             } elem-mt-MED elem-mt-MED elem-mb-SM`}
           >
             <div
-              data-locator="sliderpointsgraph"
               className={`progressbar-rewards currentpoint-slider ${
                 plccUser ? 'progressbar-rewards_plcc' : 'progressbar-rewards'
               } `}
