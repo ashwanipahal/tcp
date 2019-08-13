@@ -171,7 +171,9 @@ exports[`MyRewards should render correctly 1`] = `
           }
         }
       >
-        Fourth
+        <FPO
+          text=""
+        />
       </Styled(Col)>
     </Styled(Row)>
   </Styled(Row)>
