@@ -155,6 +155,12 @@ class ForgotPasswordView extends React.Component<Props, State> {
                   richTextHtml={labels.password.lbl_forgotPassword_heading}
                   dataLocator="forgot-password"
                 />
+
+                <RichText
+                  className="heading-link"
+                  richTextHtml={labels.password.lbl_forgotPassword_subHeading}
+                  dataLocator="forgot-password"
+                />
               </BodyCopy>
               <Button
                 fill="BLUE"
