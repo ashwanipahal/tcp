@@ -7,28 +7,23 @@ exports[`Header Component Header should render correctly 1`] = `
   >
     <Styled(View)>
       <Styled(BodyCopy)
-        accessibilityText=""
         color="black"
         data-locator="global_headerpanelwelcometext"
         fontFamily="secondary"
         fontSize="fs14"
         fontWeight="semibold"
-        locator=""
-        text=""
         textAlign="center"
       />
       <Styled(TouchableOpacity)
         onPress={[Function]}
       >
         <Styled(BodyCopy)
-          accessibilityText=""
+          accessibilityText="Drop Down"
           color="text.primary"
           data-locator="global_findastoretext"
           fontFamily="secondary"
           fontSize="fs12"
           fontWeight="regular"
-          locator=""
-          text=""
           textAlign="center"
         />
         <Styled(Image)
@@ -62,11 +57,10 @@ exports[`Header Component Header should render correctly 1`] = `
         <Styled(View) />
         <Styled(View) />
         <Styled(BodyCopy)
-          accessibilityText="Mini bag with count0"
+          accessibilityText="Mini bag with count"
           color="white"
           data-locator="obal_headerpanelbagicon"
           fontSize="fs10"
-          locator=""
           style={
             Object {
               "marginTop": 18,

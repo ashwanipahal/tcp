@@ -21,80 +21,63 @@ exports[`GiftCardList Component renders correctly 1`] = `
   <Styled(View)>
     <Styled(Text)>
       <Styled(BodyCopy)
-        accessibilityText=""
         fontSize="fs12"
         fontWeight={
           Array [
             "semibold",
           ]
         }
-        locator=""
         text="Boys Basic Skinny Jeans"
       />
     </Styled(Text)>
     <Styled(View)>
       <Styled(BodyCopy)
-        accessibilityText=""
         fontSize="fs12"
         fontWeight={
           Array [
             "semibold",
           ]
         }
-        locator=""
         text="Color: "
         textAlign="center"
       />
       <Styled(BodyCopy)
-        accessibilityText=""
         fontSize="fs12"
-        locator=""
-        text=""
       />
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
-        accessibilityText=""
         fontSize="fs12"
         fontWeight={
           Array [
             "semibold",
           ]
         }
-        locator=""
         text="Size: "
         textAlign="center"
       />
       <Styled(BodyCopy)
-        accessibilityText=""
         fontSize="fs12"
-        locator=""
         text="M "
       />
       <Styled(BodyCopy)
-        accessibilityText=""
         fontSize="fs12"
-        locator=""
         text="slim"
       />
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
-        accessibilityText=""
         fontSize="fs12"
         fontWeight={
           Array [
             "semibold",
           ]
         }
-        locator=""
         text="Qty: "
         textAlign="center"
       />
       <Styled(BodyCopy)
-        accessibilityText=""
         fontSize="fs12"
-        locator=""
         text="1"
       />
     </Styled(View)>

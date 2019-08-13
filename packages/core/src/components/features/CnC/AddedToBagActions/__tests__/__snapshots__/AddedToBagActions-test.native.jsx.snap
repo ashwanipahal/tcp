@@ -5,12 +5,10 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
   <Styled(View)>
     <Styled(TouchableOpacity)>
       <Styled(BodyCopy)
-        accessibilityText=""
         color="white"
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="extrabold"
-        locator=""
         text=""
         textTransform="uppercase"
       />
@@ -19,12 +17,10 @@ exports[`AddedToBagActions native component AddedToBagActions native component r
   <Styled(View)>
     <Styled(TouchableOpacity)>
       <Styled(BodyCopy)
-        accessibilityText=""
         color="white"
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="extrabold"
-        locator=""
         text=""
       />
     </Styled(TouchableOpacity)>

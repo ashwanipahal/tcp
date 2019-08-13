@@ -33,32 +33,26 @@ exports[`CardTile should render correctly with amex card 1`] = `
   >
     <Styled(Text)>
       <Styled(BodyCopy)
-        accessibilityText=""
         dataLocator="payment-creditdebitnametitle"
         fontSize="fs16"
         fontWeight="regular"
-        locator=""
         mobilefontFamily={
           Array [
             "secondary",
           ]
         }
-        text=""
       />
     </Styled(Text)>
     <Styled(View)>
       <Styled(Text)>
         <Styled(BodyCopy)
-          accessibilityText=""
           fontSize="fs10"
           fontWeight="semibold"
-          locator=""
           mobilefontFamily={
             Array [
               "secondary",
             ]
           }
-          text=""
         />
       </Styled(Text)>
     </Styled(View)>
@@ -69,20 +63,16 @@ exports[`CardTile should render correctly with amex card 1`] = `
   >
     <View>
       <Styled(BodyCopy)
-        accessibilityText=""
         dataLocator="payment-creditdebitendingtext"
         fontSize="fs14"
         fontWeight="black"
-        locator=""
         text="undefined6765"
       />
       <Styled(Text)>
         <Styled(BodyCopy)
-          accessibilityText=""
           dataLocator="payment-creditdebitexpiretext"
           fontSize="fs14"
           fontWeight="semibold"
-          locator=""
           text="undefined10/2025"
         />
       </Styled(Text)>
@@ -203,17 +193,14 @@ exports[`CardTile should render correctly with discover card 1`] = `
   >
     <Styled(Text)>
       <Styled(BodyCopy)
-        accessibilityText=""
         dataLocator="payment-creditdebitnametitle"
         fontSize="fs16"
         fontWeight="regular"
-        locator=""
         mobilefontFamily={
           Array [
             "secondary",
           ]
         }
-        text=""
       />
     </Styled(Text)>
     <Styled(Anchor)
@@ -235,20 +222,16 @@ exports[`CardTile should render correctly with discover card 1`] = `
   >
     <View>
       <Styled(BodyCopy)
-        accessibilityText=""
         dataLocator="payment-creditdebitendingtext"
         fontSize="fs14"
         fontWeight="black"
-        locator=""
         text="undefined6765"
       />
       <Styled(Text)>
         <Styled(BodyCopy)
-          accessibilityText=""
           dataLocator="payment-creditdebitexpiretext"
           fontSize="fs14"
           fontWeight="semibold"
-          locator=""
           text="undefined10/2025"
         />
       </Styled(Text)>
@@ -370,11 +353,9 @@ exports[`CardTile should render correctly with gift card 1`] = `
   >
     <Styled(Text)>
       <Styled(BodyCopy)
-        accessibilityText=""
         dataLocator="payment-giftcardnametitle"
         fontSize="fs16"
         fontWeight="regular"
-        locator=""
         mobilefontFamily={
           Array [
             "secondary",
@@ -390,11 +371,9 @@ exports[`CardTile should render correctly with gift card 1`] = `
   >
     <View>
       <Styled(BodyCopy)
-        accessibilityText=""
         dataLocator="payment-giftcardendingtext"
         fontSize="fs14"
         fontWeight="black"
-        locator=""
         text="undefined6765"
       />
     </View>
@@ -559,11 +538,9 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
   >
     <Styled(Text)>
       <Styled(BodyCopy)
-        accessibilityText=""
         dataLocator="payment-giftcardnametitle"
         fontSize="fs16"
         fontWeight="regular"
-        locator=""
         mobilefontFamily={
           Array [
             "secondary",
@@ -579,11 +556,9 @@ exports[`CardTile should render correctly with gift card with balance 1`] = `
   >
     <View>
       <Styled(BodyCopy)
-        accessibilityText=""
         dataLocator="payment-giftcardendingtext"
         fontSize="fs14"
         fontWeight="black"
-        locator=""
         text="undefined6765"
       />
     </View>
@@ -747,17 +722,14 @@ exports[`CardTile should render correctly with master card 1`] = `
   >
     <Styled(Text)>
       <Styled(BodyCopy)
-        accessibilityText=""
         dataLocator="payment-creditdebitnametitle"
         fontSize="fs16"
         fontWeight="regular"
-        locator=""
         mobilefontFamily={
           Array [
             "secondary",
           ]
         }
-        text=""
       />
     </Styled(Text)>
     <Styled(Anchor)
@@ -779,20 +751,16 @@ exports[`CardTile should render correctly with master card 1`] = `
   >
     <View>
       <Styled(BodyCopy)
-        accessibilityText=""
         dataLocator="payment-creditdebitendingtext"
         fontSize="fs14"
         fontWeight="black"
-        locator=""
         text="undefined6765"
       />
       <Styled(Text)>
         <Styled(BodyCopy)
-          accessibilityText=""
           dataLocator="payment-creditdebitexpiretext"
           fontSize="fs14"
           fontWeight="semibold"
-          locator=""
           text="undefined10/2025"
         />
       </Styled(Text)>
@@ -913,11 +881,9 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
   >
     <Styled(Text)>
       <Styled(BodyCopy)
-        accessibilityText=""
         dataLocator="payment-giftcardnametitle"
         fontSize="fs16"
         fontWeight="regular"
-        locator=""
         mobilefontFamily={
           Array [
             "secondary",
@@ -933,11 +899,9 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
   >
     <View>
       <Styled(BodyCopy)
-        accessibilityText=""
         dataLocator="payment-giftcardendingtext"
         fontSize="fs14"
         fontWeight="black"
-        locator=""
         text="undefined6765"
       />
     </View>
@@ -1101,17 +1065,14 @@ exports[`CardTile should render correctly with plcc card 1`] = `
   >
     <Styled(Text)>
       <Styled(BodyCopy)
-        accessibilityText=""
         dataLocator="payment-creditdebitnametitle"
         fontSize="fs16"
         fontWeight="regular"
-        locator=""
         mobilefontFamily={
           Array [
             "secondary",
           ]
         }
-        text=""
       />
     </Styled(Text)>
     <Styled(Anchor)
@@ -1133,11 +1094,9 @@ exports[`CardTile should render correctly with plcc card 1`] = `
   >
     <View>
       <Styled(BodyCopy)
-        accessibilityText=""
         dataLocator="payment-creditdebitendingtext"
         fontSize="fs14"
         fontWeight="black"
-        locator=""
         text="undefined6765"
       />
     </View>
@@ -1259,17 +1218,14 @@ exports[`CardTile should render correctly with venmocard 1`] = `
   >
     <Styled(Text)>
       <Styled(BodyCopy)
-        accessibilityText=""
         dataLocator="payment-venmonametitle"
         fontSize="fs16"
         fontWeight="regular"
-        locator=""
         mobilefontFamily={
           Array [
             "secondary",
           ]
         }
-        text=""
       />
     </Styled(Text)>
   </Styled(View)>
@@ -1281,10 +1237,8 @@ exports[`CardTile should render correctly with venmocard 1`] = `
       dataLocator="payment-venmoid"
     >
       <Styled(BodyCopy)
-        accessibilityText=""
         fontSize="fs14"
         fontWeight="extrabold"
-        locator=""
         text="1234"
       />
     </Styled(Text)>
@@ -1381,17 +1335,14 @@ exports[`CardTile should render correctly with visa card 1`] = `
   >
     <Styled(Text)>
       <Styled(BodyCopy)
-        accessibilityText=""
         dataLocator="payment-creditdebitnametitle"
         fontSize="fs16"
         fontWeight="regular"
-        locator=""
         mobilefontFamily={
           Array [
             "secondary",
           ]
         }
-        text=""
       />
     </Styled(Text)>
     <Styled(Anchor)
@@ -1413,20 +1364,16 @@ exports[`CardTile should render correctly with visa card 1`] = `
   >
     <View>
       <Styled(BodyCopy)
-        accessibilityText=""
         dataLocator="payment-creditdebitendingtext"
         fontSize="fs14"
         fontWeight="black"
-        locator=""
         text="undefined6765"
       />
       <Styled(Text)>
         <Styled(BodyCopy)
-          accessibilityText=""
           dataLocator="payment-creditdebitexpiretext"
           fontSize="fs14"
           fontWeight="semibold"
-          locator=""
           text="undefined10/2025"
         />
       </Styled(Text)>

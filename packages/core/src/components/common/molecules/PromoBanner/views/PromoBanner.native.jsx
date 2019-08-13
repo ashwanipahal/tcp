@@ -90,7 +90,6 @@ const PromoBanner = (props: Props) => {
               <StyleBodyCopy
                 text={index ? `${text}` : text}
                 locator={locator}
-                accessibilityText={index ? `${text}` : text}
                 {...otherProps}
                 key={index.toString()}
               />

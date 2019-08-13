@@ -4,91 +4,67 @@ exports[`AddedToBagViewPoints native component renders correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
-      accessibilityText=""
       fontFamily="secondary"
       fontSize="fs13"
-      locator=""
-      text=""
     />
     <Styled(BodyCopy)
-      accessibilityText=""
       fontFamily="secondary"
       fontSize="fs13"
-      locator=""
       text="$12"
     />
   </Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
-      accessibilityText=""
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
-      locator=""
-      text=""
     />
     <Styled(BodyCopy)
-      accessibilityText=""
       color="orange.500"
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
-      locator=""
       text={23}
     />
   </Styled(View)>
   <Styled(View) />
   <Styled(View)>
     <Styled(BodyCopy)
-      accessibilityText=""
       fontFamily="secondary"
       fontSize="fs13"
-      locator=""
       text="123"
     />
     <Styled(BodyCopy)
-      accessibilityText=""
       fontFamily="secondary"
       fontSize="fs13"
-      locator=""
       text="$0"
     />
   </Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
-      accessibilityText=""
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
-      locator=""
-      text=""
     />
     <Styled(BodyCopy)
-      accessibilityText=""
       color="orange.500"
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
-      locator=""
       text={60}
     />
   </Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
-      accessibilityText=""
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
-      locator=""
-      text=""
     />
     <Styled(BodyCopy)
-      accessibilityText=""
       color="orange.500"
       fontFamily="secondary"
       fontSize="fs13"
       fontWeight="extrabold"
-      locator=""
       text={12}
     />
   </Styled(View)>

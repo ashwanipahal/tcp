@@ -4,22 +4,18 @@ exports[`RewardsPointsTable Component should render correctly 1`] = `
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
-      accessibilityText=""
       color="gray.900"
       fontFamily="secondary"
       fontSize="fs18"
       fontWeight="black"
-      locator=""
       text="$0"
     />
     <Styled(View)>
       <Styled(BodyCopy)
-        accessibilityText=""
         color="black"
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="regular"
-        locator=""
         text="My Rewards"
         textAlign="center"
       />
@@ -28,22 +24,18 @@ exports[`RewardsPointsTable Component should render correctly 1`] = `
   <Styled(View) />
   <Styled(View)>
     <Styled(BodyCopy)
-      accessibilityText=""
       color="gray.900"
       fontFamily="secondary"
       fontSize="fs18"
       fontWeight="black"
-      locator=""
       text={10}
     />
     <Styled(View)>
       <Styled(BodyCopy)
-        accessibilityText=""
         color="black"
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="regular"
-        locator=""
         text="Current Points"
         textAlign="center"
       />
@@ -52,22 +44,18 @@ exports[`RewardsPointsTable Component should render correctly 1`] = `
   <Styled(View) />
   <Styled(View)>
     <Styled(BodyCopy)
-      accessibilityText=""
       color="gray.900"
       fontFamily="secondary"
       fontSize="fs18"
       fontWeight="black"
-      locator=""
       text={90}
     />
     <Styled(View)>
       <Styled(BodyCopy)
-        accessibilityText=""
         color="black"
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="regular"
-        locator=""
         text="Points to Next Reward"
         textAlign="center"
       />
@@ -80,23 +68,18 @@ exports[`RewardsPointsTable Component should render correctly with values 1`] = 
 <Styled(View)>
   <Styled(View)>
     <Styled(BodyCopy)
-      accessibilityText=""
       color="gray.900"
       fontFamily="secondary"
       fontSize="fs18"
       fontWeight="black"
-      locator=""
       text="0"
     />
     <Styled(View)>
       <Styled(BodyCopy)
-        accessibilityText=""
         color="black"
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="regular"
-        locator=""
-        text=""
         textAlign="center"
       />
     </Styled(View)>
@@ -104,22 +87,18 @@ exports[`RewardsPointsTable Component should render correctly with values 1`] = 
   <Styled(View) />
   <Styled(View)>
     <Styled(BodyCopy)
-      accessibilityText=""
       color="gray.900"
       fontFamily="secondary"
       fontSize="fs18"
       fontWeight="black"
-      locator=""
       text={10}
     />
     <Styled(View)>
       <Styled(BodyCopy)
-        accessibilityText=""
         color="black"
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="regular"
-        locator=""
         text="Current Points"
         textAlign="center"
       />
@@ -128,22 +107,18 @@ exports[`RewardsPointsTable Component should render correctly with values 1`] = 
   <Styled(View) />
   <Styled(View)>
     <Styled(BodyCopy)
-      accessibilityText=""
       color="gray.900"
       fontFamily="secondary"
       fontSize="fs18"
       fontWeight="black"
-      locator=""
       text={90}
     />
     <Styled(View)>
       <Styled(BodyCopy)
-        accessibilityText=""
         color="black"
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="regular"
-        locator=""
         text="Points to Next Reward"
         textAlign="center"
       />

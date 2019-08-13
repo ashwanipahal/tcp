@@ -11,12 +11,10 @@ exports[`PromoTextBanner native component ModuleN should render correctly 1`] = 
     visible={false}
   >
     <style1
-      accessibilityText="alL DINOS"
       key="0"
       text="alL DINOS"
     />
     <style2
-      accessibilityText="50% OFF"
       key="1"
       text="50% OFF"
     />
@@ -26,7 +24,6 @@ exports[`PromoTextBanner native component ModuleN should render correctly 1`] = 
 
 exports[`PromoTextBanner native component renders all style correctly 1`] = `
 <StyledNativeComponent
-  accessibilityText=""
   color="text.primary"
   fontFamily="primary"
   fontSize="fs36"
@@ -34,11 +31,7 @@ exports[`PromoTextBanner native component renders all style correctly 1`] = `
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "accessibilityText": "",
-        "locator": "",
-        "text": "",
-      },
+      "_foldedDefaultProps": undefined,
       "attrs": Array [],
       "displayName": "Styled(Styled(BodyCopy))",
       "inlineStyle": InlineStyle {
@@ -70,25 +63,18 @@ exports[`PromoTextBanner native component renders all style correctly 1`] = `
     }
   }
   forwardedRef={null}
-  locator=""
-  text=""
 />
 `;
 
 exports[`PromoTextBanner native component renders all style correctly 2`] = `
 <StyledNativeComponent
-  accessibilityText=""
   color="text.primary"
   fontFamily="primary"
   fontSize="fs42"
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "accessibilityText": "",
-        "locator": "",
-        "text": "",
-      },
+      "_foldedDefaultProps": undefined,
       "attrs": Array [],
       "displayName": "Styled(Styled(BodyCopy))",
       "inlineStyle": InlineStyle {
@@ -121,15 +107,12 @@ exports[`PromoTextBanner native component renders all style correctly 2`] = `
   }
   forwardedRef={null}
   lineHeight="42px"
-  locator=""
-  text=""
   textAlign="center"
 />
 `;
 
 exports[`PromoTextBanner native component renders all style correctly 3`] = `
 <StyledNativeComponent
-  accessibilityText=""
   color="black"
   fontFamily="primary"
   fontSize="fs64"
@@ -137,11 +120,7 @@ exports[`PromoTextBanner native component renders all style correctly 3`] = `
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "accessibilityText": "",
-        "locator": "",
-        "text": "",
-      },
+      "_foldedDefaultProps": undefined,
       "attrs": Array [],
       "displayName": "Styled(Styled(BodyCopy))",
       "inlineStyle": InlineStyle {
@@ -174,26 +153,19 @@ exports[`PromoTextBanner native component renders all style correctly 3`] = `
   }
   forwardedRef={null}
   lineHeight="64px"
-  locator=""
-  text=""
   textAlign="center"
 />
 `;
 
 exports[`PromoTextBanner native component renders all style correctly 4`] = `
 <StyledNativeComponent
-  accessibilityText=""
   color="white"
   fontFamily="primary"
   fontSize="fs16"
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "accessibilityText": "",
-        "locator": "",
-        "text": "",
-      },
+      "_foldedDefaultProps": undefined,
       "attrs": Array [],
       "displayName": "Styled(Styled(BodyCopy))",
       "inlineStyle": InlineStyle {
@@ -225,15 +197,12 @@ exports[`PromoTextBanner native component renders all style correctly 4`] = `
     }
   }
   forwardedRef={null}
-  locator=""
-  text=""
   textAlign="center"
 />
 `;
 
 exports[`PromoTextBanner native component renders all style correctly 5`] = `
 <StyledNativeComponent
-  accessibilityText=""
   color="white"
   fontFamily="primary"
   fontSize="fs64"
@@ -241,11 +210,7 @@ exports[`PromoTextBanner native component renders all style correctly 5`] = `
   forwardedComponent={
     Object {
       "$$typeof": Symbol(react.forward_ref),
-      "_foldedDefaultProps": Object {
-        "accessibilityText": "",
-        "locator": "",
-        "text": "",
-      },
+      "_foldedDefaultProps": undefined,
       "attrs": Array [],
       "displayName": "Styled(Styled(BodyCopy))",
       "inlineStyle": InlineStyle {
@@ -278,8 +243,6 @@ exports[`PromoTextBanner native component renders all style correctly 5`] = `
   }
   forwardedRef={null}
   lineHeight="64px"
-  locator=""
-  text=""
   textAlign="center"
 />
 `;
@@ -287,31 +250,26 @@ exports[`PromoTextBanner native component renders all style correctly 5`] = `
 exports[`PromoTextBanner native component renders all style correctly 6`] = `
 <Styled(View)>
   <Styled(Styled(BodyCopy))
-    accessibilityText=""
     color="white"
     fontFamily="primary"
     fontSize="fs64"
     fontWeight="black"
     lineHeight="64px"
-    locator=""
     style={
       Object {
         "height": 58,
         "marginTop": 8,
       }
     }
-    text=""
     textAlign="center"
   />
   <Styled(View)>
     <Styled(Styled(BodyCopy))
-      accessibilityText=""
       color="white"
       fontFamily="primary"
       fontSize="fs42"
       fontWeight="black"
       lineHeight="42px"
-      locator=""
       style={
         Object {
           "height": 33,
@@ -320,14 +278,11 @@ exports[`PromoTextBanner native component renders all style correctly 6`] = `
       text="%"
     />
     <Styled(Styled(BodyCopy))
-      accessibilityText=""
       color="white"
       fontFamily="primary"
       fontSize="fs20"
       fontWeight="black"
       lineHeight="20px"
-      locator=""
-      text=""
       textAlign="center"
     />
   </Styled(View)>
@@ -345,13 +300,11 @@ exports[`PromoTextBanner native component renders correctly 1`] = `
     visible={false}
   >
     <style1
-      accessibilityText="alL DINOS"
       dataLocator="moduleK_text_"
       key="0"
       text="alL DINOS"
     />
     <style2
-      accessibilityText="50% OFF"
       dataLocator="moduleK_text_"
       key="1"
       text="50% OFF"

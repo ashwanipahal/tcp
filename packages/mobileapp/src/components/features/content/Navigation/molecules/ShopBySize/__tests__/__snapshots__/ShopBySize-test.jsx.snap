@@ -7,11 +7,9 @@ exports[`ShopBySize should render correctly 1`] = `
     onPress={[Function]}
   >
     <Styled(BodyCopy)
-      accessibilityText=""
       color="text.primary"
       fontFamily="secondary"
       fontSize="fs18"
-      locator=""
       text="1"
     />
   </Styled(TouchableOpacity)>
@@ -25,11 +23,9 @@ exports[`ShopBySize should render correctly with l3 1`] = `
     onPress={[Function]}
   >
     <Styled(BodyCopy)
-      accessibilityText=""
       color="text.primary"
       fontFamily="secondary"
       fontSize="fs18"
-      locator=""
       text="1"
     />
   </Styled(TouchableOpacity)>
@@ -43,11 +39,9 @@ exports[`ShopBySize should render correctly with no l3 1`] = `
     onPress={[Function]}
   >
     <Styled(BodyCopy)
-      accessibilityText=""
       color="text.primary"
       fontFamily="secondary"
       fontSize="fs18"
-      locator=""
       text="1"
     />
   </Styled(TouchableOpacity)>

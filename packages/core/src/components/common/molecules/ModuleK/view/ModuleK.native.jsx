@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { UrlHandler, getScreenWidth } from '@tcp/core/src/utils';
+import { getScreenWidth } from '@tcp/core/src/utils';
 import Button from '../../../atoms/Button';
 import LinkText from '../../LinkText';
 
@@ -52,7 +52,8 @@ class ModuleK extends React.PureComponent {
               buttonVariation="variable-width"
               text={singleCTAButton.text || `Shop Now`}
               testID={`moduleK_button_set_${slideIndex}`}
-              onPress={() => UrlHandler(singleCTAButton.url)}
+              url={singleCTAButton.url}
+              navigation={navigation}
             />
           </WrapperView>
         )}
@@ -89,7 +90,7 @@ class ModuleK extends React.PureComponent {
             height={MODULE_HEIGHT}
             width={MODULE_WIDTH}
             carouselConfig={{
-              autoplay: true,
+              autoplay: false,
             }}
             autoplayInterval={autoplayInterval * 1000}
             showDots

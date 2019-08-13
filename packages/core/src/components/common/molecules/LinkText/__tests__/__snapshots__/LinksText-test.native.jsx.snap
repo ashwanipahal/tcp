@@ -13,11 +13,7 @@ exports[`LinkText component renders correctly 1`] = `
     Component={
       Object {
         "$$typeof": Symbol(react.forward_ref),
-        "_foldedDefaultProps": Object {
-          "accessibilityText": "",
-          "locator": "",
-          "text": "",
-        },
+        "_foldedDefaultProps": undefined,
         "attrs": Array [],
         "displayName": "Styled(BodyCopy)",
         "inlineStyle": InlineStyle {
@@ -42,8 +38,6 @@ exports[`LinkText component renders correctly 1`] = `
         "withComponent": [Function],
       }
     }
-    accessibilityText=""
-    locator=""
     text={
       Array [
         <Text>

@@ -174,14 +174,12 @@ exports[`ModuleH component renders correctly 1`] = `
       visible={false}
     >
       <Styled(BodyCopy)
-        accessibilityText=""
         color="white"
         fontFamily="secondary"
         fontSize="fs20"
         fontWeight="extrabold"
         key="0"
         letterSpacing="ls167"
-        locator=""
         style={
           Object {
             "color": "#fff",
@@ -204,14 +202,12 @@ exports[`ModuleH component renders correctly 1`] = `
       visible={false}
     >
       <Styled(BodyCopy)
-        accessibilityText=""
         color="white"
         fontFamily="secondary"
         fontSize="fs20"
         fontWeight={null}
         key="1"
         letterSpacing="ls167"
-        locator=""
         style={
           Object {
             "color": "#fff",
@@ -234,14 +230,12 @@ exports[`ModuleH component renders correctly 1`] = `
       visible={false}
     >
       <Styled(BodyCopy)
-        accessibilityText=""
         color="white"
         fontFamily="secondary"
         fontSize="fs20"
         fontWeight={null}
         key="2"
         letterSpacing="ls167"
-        locator=""
         style={
           Object {
             "color": "#fff",
@@ -264,14 +258,12 @@ exports[`ModuleH component renders correctly 1`] = `
       visible={false}
     >
       <Styled(BodyCopy)
-        accessibilityText=""
         color="white"
         fontFamily="secondary"
         fontSize="fs20"
         fontWeight={null}
         key="3"
         letterSpacing="ls167"
-        locator=""
         style={
           Object {
             "color": "#fff",
@@ -294,14 +286,12 @@ exports[`ModuleH component renders correctly 1`] = `
       visible={false}
     >
       <Styled(BodyCopy)
-        accessibilityText=""
         color="white"
         fontFamily="secondary"
         fontSize="fs20"
         fontWeight={null}
         key="4"
         letterSpacing="ls167"
-        locator=""
         style={
           Object {
             "color": "#fff",

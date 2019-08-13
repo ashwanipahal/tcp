@@ -81,11 +81,9 @@ exports[`NavMenuLevel2 should render component when renderSectionHeader is calle
     />
   </ForwardRef>
   <ForwardRef
-    accessibilityText=""
     color="text.primary"
     fontFamily="secondary"
     fontSize="fs16"
-    locator=""
     style={
       Object {
         "textTransform": "uppercase",
@@ -101,11 +99,9 @@ exports[`NavMenuLevel2 should render component when renderSectionHeader is calle
 exports[`NavMenuLevel2 should render component when renderSectionHeader is called with Categories 1`] = `
 <ForwardRef>
   <ForwardRef
-    accessibilityText=""
     color="text.primary"
     fontFamily="secondary"
     fontSize="fs16"
-    locator=""
     style={
       Object {
         "textTransform": "uppercase",

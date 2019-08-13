@@ -18,22 +18,18 @@ exports[`NavMenuLevel1 should render component when renderItem is called 1`] = `
   />
   <ForwardRef>
     <ForwardRef
-      accessibilityText=""
       color="text.primary"
       fontFamily="primary"
       fontSize="fs22"
       fontWeight="black"
-      locator=""
       text="Girl"
       textAlign="center"
     />
     <ForwardRef
-      accessibilityText=""
       color="text.primary"
       fontFamily="secondary"
       fontSize="fs12"
       fontWeight="extrabold"
-      locator=""
       text="Sizes 4-141"
       textAlign="center"
     />
@@ -48,12 +44,10 @@ exports[`NavMenuLevel1 should render component when renderItem is called without
   onPress={[Function]}
 >
   <ForwardRef
-    accessibilityText=""
     color="text.primary"
     fontFamily="primary"
     fontSize="fs28"
     fontWeight="black"
-    locator=""
     text="Girl"
     textAlign="center"
   />

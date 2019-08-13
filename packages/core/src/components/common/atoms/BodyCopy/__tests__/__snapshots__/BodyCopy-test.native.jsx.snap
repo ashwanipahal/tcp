@@ -2,7 +2,7 @@
 
 exports[`HeadingVanilla should render correctly 1`] = `
 <Text
-  accessibilityLabel=""
+  accessibilityLabel=" undefined"
   accessibilityRole="text"
 />
 `;

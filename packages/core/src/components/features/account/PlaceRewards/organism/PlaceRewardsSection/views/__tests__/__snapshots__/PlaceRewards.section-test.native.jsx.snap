@@ -9,11 +9,8 @@ exports[`MyRewards should render correctly 1`] = `
   >
     <Styled(Text)>
       <Styled(BodyCopy)
-        accessibilityText=""
         fontSize="fs16"
         fontWeight="extrabold"
-        locator=""
-        text=""
       />
     </Styled(Text)>
     <Styled(View) />
@@ -23,11 +20,8 @@ exports[`MyRewards should render correctly 1`] = `
     <Styled(View)>
       <Styled(Text)>
         <Styled(BodyCopy)
-          accessibilityText=""
           fontSize="fs16"
           fontWeight="extrabold"
-          locator=""
-          text=""
         />
       </Styled(Text)>
       <Connect(PointsHistoryContainer) />

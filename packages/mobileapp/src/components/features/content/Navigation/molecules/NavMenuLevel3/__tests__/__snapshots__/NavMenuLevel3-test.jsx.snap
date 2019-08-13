@@ -17,11 +17,9 @@ exports[`NavMenuLevel3 should render correctly 1`] = `
       />
     </Styled(TouchableOpacity)>
     <Styled(BodyCopy)
-      accessibilityText=""
       color="text.primary"
       fontFamily="secondary"
       fontSize="fs16"
-      locator=""
       style={
         Object {
           "textTransform": "uppercase",

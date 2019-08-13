@@ -3,12 +3,9 @@
 exports[`PaymentTile component should render correctly 1`] = `
 <Styled(View)>
   <Styled(BodyCopy)
-    accessibilityText=""
     color="black"
     fontFamily="secondary"
     fontSize="fs16"
-    locator=""
-    text=""
   />
   <Styled(View) />
   <ReduxForm

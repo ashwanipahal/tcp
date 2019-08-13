@@ -22,12 +22,10 @@ exports[`DropDown Test should render correctly 1`] = `
   >
     <Styled(View)>
       <Styled(BodyCopy)
-        accessibilityText=""
         color="gray.800"
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="black"
-        locator=""
         text="foo"
         textAlign="center"
       />
@@ -93,12 +91,10 @@ exports[`DropDown Test should render with dropdown open state 1`] = `
   >
     <Styled(View)>
       <Styled(BodyCopy)
-        accessibilityText=""
         color="gray.800"
         fontFamily="secondary"
         fontSize="fs13"
         fontWeight="black"
-        locator=""
         text="foo"
         textAlign="center"
       />

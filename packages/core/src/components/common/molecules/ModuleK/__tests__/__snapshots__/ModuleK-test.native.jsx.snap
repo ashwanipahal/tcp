@@ -40,7 +40,7 @@ exports[`ModuleK native component Should renders correctly 1`] = `
     autoplayInterval={2000}
     carouselConfig={
       Object {
-        "autoplay": true,
+        "autoplay": false,
       }
     }
     data={

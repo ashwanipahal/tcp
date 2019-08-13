@@ -27,12 +27,10 @@ exports[`Modal Native should render correctly 1`] = `
     </Styled(View)>
     <Styled(View)>
       <Styled(BodyCopy)
-        accessibilityText=""
         className="modalHeading"
         color="#000"
         fontSize="fs16"
         fontWeight="extrabold"
-        locator=""
         mobileFontFamily="primary"
         text="Modal Heading"
       />

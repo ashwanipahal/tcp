@@ -101,7 +101,6 @@ class Header extends React.PureComponent<Props> {
               fontWeight="semibold"
               text={headerLabels.lbl_header_welcomeMessage}
               data-locator={getLocator('global_headerpanelwelcometext')}
-              accessibilityText={headerLabels.lbl_header_welcomeMessage}
             />
             <StoreContainer onPress={this.validateIcon}>
               <BodyCopy
@@ -112,7 +111,7 @@ class Header extends React.PureComponent<Props> {
                 fontWeight="regular"
                 text={headerLabels.lbl_header_storeDefaultTitle}
                 data-locator={getLocator('global_findastoretext')}
-                accessibilityText={headerLabels.lbl_header_storeDefaultTitle}
+                accessibilityText="Drop Down"
               />
               {isDownIcon ? (
                 <Icon
@@ -149,7 +148,7 @@ class Header extends React.PureComponent<Props> {
                 style={TextStyle}
                 fontSize="fs10"
                 data-locator={getLocator('global_headerpanelbagitemtext')}
-                accessibilityText={`Mini bag with count${cartVal}`}
+                accessibilityText="Mini bag with count"
               />
             </Touchable>
           </CartContainer>

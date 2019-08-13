@@ -8,11 +8,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
         <React.Fragment>
           <ForwardRef>
             <ForwardRef
-              accessibilityText=""
               data-locator="msgtextinbold"
               fontSize="fs14"
               fontWeight="extrabold"
-              locator=""
               mobileFontFamily="secondary"
               text=""
               textAlign="center"
@@ -20,11 +18,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           </ForwardRef>
           <ForwardRef>
             <ForwardRef
-              accessibilityText=""
               data-locator="infomsg"
               fontSize="fs12"
               fontWeight="regular"
-              locator=""
               mobileFontFamily="secondary"
               text=""
               textAlign="center"
@@ -81,35 +77,29 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
       >
         <ForwardRef>
           <ForwardRef
-            accessibilityText=""
             color="orange.800"
             component="span"
             fontSize="fs16"
             fontWeight="extrabold"
-            locator=""
             mobileFontFamily="primary"
             text=""
           />
         </ForwardRef>
         <ForwardRef>
           <ForwardRef
-            accessibilityText=""
             color="primary.main"
             component="span"
             fontSize="fs16"
             fontWeight="extrabold"
-            locator=""
             mobileFontFamily="primary"
             text=""
           />
         </ForwardRef>
         <ForwardRef
-          accessibilityText=""
           color="pink.500"
           component="span"
           fontSize="fs16"
           fontWeight="extrabold"
-          locator=""
           mobileFontFamily="primary"
           text=""
         />
@@ -128,11 +118,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
         <React.Fragment>
           <ForwardRef>
             <ForwardRef
-              accessibilityText=""
               data-locator="msgtextinbold"
               fontSize="fs14"
               fontWeight="extrabold"
-              locator=""
               mobileFontFamily="secondary"
               text=""
               textAlign="center"
@@ -140,11 +128,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           </ForwardRef>
           <ForwardRef>
             <ForwardRef
-              accessibilityText=""
               data-locator="infomsg"
               fontSize="fs12"
               fontWeight="regular"
-              locator=""
               mobileFontFamily="secondary"
               text=""
               textAlign="center"
@@ -211,35 +197,29 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
       >
         <ForwardRef>
           <ForwardRef
-            accessibilityText=""
             color="orange.800"
             component="span"
             fontSize="fs16"
             fontWeight="extrabold"
-            locator=""
             mobileFontFamily="primary"
             text=""
           />
         </ForwardRef>
         <ForwardRef>
           <ForwardRef
-            accessibilityText=""
             color="primary.main"
             component="span"
             fontSize="fs16"
             fontWeight="extrabold"
-            locator=""
             mobileFontFamily="primary"
             text=""
           />
         </ForwardRef>
         <ForwardRef
-          accessibilityText=""
           color="pink.500"
           component="span"
           fontSize="fs16"
           fontWeight="extrabold"
-          locator=""
           mobileFontFamily="primary"
           text=""
         />
@@ -258,11 +238,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
         <React.Fragment>
           <ForwardRef>
             <ForwardRef
-              accessibilityText=""
               data-locator="msgtextinbold"
               fontSize="fs14"
               fontWeight="extrabold"
-              locator=""
               mobileFontFamily="secondary"
               text=""
               textAlign="center"
@@ -270,11 +248,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           </ForwardRef>
           <ForwardRef>
             <ForwardRef
-              accessibilityText=""
               data-locator="infomsg"
               fontSize="fs12"
               fontWeight="regular"
-              locator=""
               mobileFontFamily="secondary"
               text=""
               textAlign="center"
@@ -341,35 +317,29 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
       >
         <ForwardRef>
           <ForwardRef
-            accessibilityText=""
             color="orange.800"
             component="span"
             fontSize="fs16"
             fontWeight="extrabold"
-            locator=""
             mobileFontFamily="primary"
             text=""
           />
         </ForwardRef>
         <ForwardRef>
           <ForwardRef
-            accessibilityText=""
             color="primary.main"
             component="span"
             fontSize="fs16"
             fontWeight="extrabold"
-            locator=""
             mobileFontFamily="primary"
             text=""
           />
         </ForwardRef>
         <ForwardRef
-          accessibilityText=""
           color="pink.500"
           component="span"
           fontSize="fs16"
           fontWeight="extrabold"
-          locator=""
           mobileFontFamily="primary"
           text=""
         />
@@ -388,11 +358,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
         <React.Fragment>
           <ForwardRef>
             <ForwardRef
-              accessibilityText=""
               data-locator="msgtextinbold"
               fontSize="fs14"
               fontWeight="extrabold"
-              locator=""
               mobileFontFamily="secondary"
               text=""
               textAlign="center"
@@ -400,11 +368,9 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           </ForwardRef>
           <ForwardRef>
             <ForwardRef
-              accessibilityText=""
               data-locator="infomsg"
               fontSize="fs12"
               fontWeight="regular"
-              locator=""
               mobileFontFamily="secondary"
               text=""
               textAlign="center"
@@ -471,35 +437,29 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
       >
         <ForwardRef>
           <ForwardRef
-            accessibilityText=""
             color="orange.800"
             component="span"
             fontSize="fs16"
             fontWeight="extrabold"
-            locator=""
             mobileFontFamily="primary"
             text=""
           />
         </ForwardRef>
         <ForwardRef>
           <ForwardRef
-            accessibilityText=""
             color="primary.main"
             component="span"
             fontSize="fs16"
             fontWeight="extrabold"
-            locator=""
             mobileFontFamily="primary"
             text=""
           />
         </ForwardRef>
         <ForwardRef
-          accessibilityText=""
           color="pink.500"
           component="span"
           fontSize="fs16"
           fontWeight="extrabold"
-          locator=""
           mobileFontFamily="primary"
           text=""
         />
@@ -517,13 +477,10 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
       <React.Fragment>
         <ForwardRef>
           <ForwardRef
-            accessibilityText=""
             data-locator="infomsg"
             fontSize="fs12"
             fontWeight="regular"
-            locator=""
             mobileFontFamily="secondary"
-            text=""
             textAlign="center"
           />
         </ForwardRef>
@@ -577,35 +534,29 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
       >
         <ForwardRef>
           <ForwardRef
-            accessibilityText=""
             color="orange.800"
             component="span"
             fontSize="fs16"
             fontWeight="extrabold"
-            locator=""
             mobileFontFamily="primary"
             text=""
           />
         </ForwardRef>
         <ForwardRef>
           <ForwardRef
-            accessibilityText=""
             color="primary.main"
             component="span"
             fontSize="fs16"
             fontWeight="extrabold"
-            locator=""
             mobileFontFamily="primary"
             text=""
           />
         </ForwardRef>
         <ForwardRef
-          accessibilityText=""
           color="pink.500"
           component="span"
           fontSize="fs16"
           fontWeight="extrabold"
-          locator=""
           mobileFontFamily="primary"
           text=""
         />

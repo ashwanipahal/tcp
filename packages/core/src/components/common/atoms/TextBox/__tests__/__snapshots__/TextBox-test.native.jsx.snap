@@ -56,11 +56,9 @@ exports[`Textbox component render enableSuccessCheck on validation fail 1`] = `
           />
         </Styled(View)>
         <Styled(BodyCopy)
-          accessibilityText=""
           color="error"
           fontSize="fs12"
           fontWeight="semibold"
-          locator=""
           mobilefontFamily={
             Array [
               "secondary",
