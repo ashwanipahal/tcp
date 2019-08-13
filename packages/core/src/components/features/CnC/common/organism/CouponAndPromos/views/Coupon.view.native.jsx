@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text } from 'react-native';
 import withStyles from '../../../../../../common/hoc/withStyles';
-import { styles, WrapperStyle } from '../styles/Coupon.style.native';
+import { styles, WrapperStyle, CouponListContainer } from '../styles/Coupon.style.native';
 import CouponForm from '../../../molecules/CouponForm';
 import CouponListSection from '../../../../../../common/organisms/CouponListSection';
 
@@ -18,23 +17,35 @@ class CouponView extends React.PureComponent {
       className,
       handleRemoveCoupon,
     } = this.props;
-    console.log('availableCouponList', availableCouponList);
     return (
       <WrapperStyle>
-        <CouponForm onSubmit={handleApplyCoupon} source="form" />;
-        {availableCouponList && (
-          <CouponListSection
-            labels={labels}
-            couponList={availableCouponList}
-            className="available_coupon"
-            heading={labels.AVAILABLE_REWARDS_HEADING}
-            helpSubHeading="true"
-            couponDetailClick={this.couponDetailClick}
-            helpAnchorClick={this.helpAnchorClick}
-            onApply={handleApplyCouponFromList}
-            dataLocator="coupon-cartAvaliableRewards"
-          />
-        )}
+        <CouponForm onSubmit={handleApplyCoupon} source="form" />
+        <CouponListContainer>
+          {appliedCouponList && (
+            <CouponListSection
+              labels={labels}
+              couponList={appliedCouponList}
+              className="applied_coupon"
+              heading={labels.APPLIED_REWARDS_HEADING}
+              couponDetailClick={this.couponDetailClick}
+              onRemove={handleRemoveCoupon}
+              dataLocator="coupon-cartAppliedRewards"
+            />
+          )}
+          {availableCouponList && (
+            <CouponListSection
+              labels={labels}
+              couponList={availableCouponList}
+              className="available_coupon"
+              heading={labels.AVAILABLE_REWARDS_HEADING}
+              helpSubHeading="true"
+              couponDetailClick={this.couponDetailClick}
+              helpAnchorClick={this.helpAnchorClick}
+              onApply={handleApplyCouponFromList}
+              dataLocator="coupon-cartAvaliableRewards"
+            />
+          )}
+        </CouponListContainer>
       </WrapperStyle>
     );
   }

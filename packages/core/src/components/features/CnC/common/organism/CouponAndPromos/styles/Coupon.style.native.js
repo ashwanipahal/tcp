@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 const styles = css`
-  margin-bottom: 120px;
+  margin-bottom: 20px;
 `;
 
 const WrapperStyle = styled.View`
@@ -9,4 +9,8 @@ const WrapperStyle = styled.View`
   flex-direction: column;
 `;
 
-export { styles, WrapperStyle };
+const CouponListContainer = styled.View`
+  margin-top: 1px;
+`;
+
+export { styles, WrapperStyle, CouponListContainer };

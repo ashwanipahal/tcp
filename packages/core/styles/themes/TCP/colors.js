@@ -74,6 +74,15 @@ export default {
       ALT_FOCUS: '#e19999',
       TEXT: '#c84747',
     },
+    BLACK: {
+      NORMAL: '#1a1a1a',
+      BORDER: '#1a1a1a',
+      HOVER: '#ffffff',
+      FOCUS: '#ffffff',
+      ALT_HOVER: '#ffffff',
+      ALT_FOCUS: '#ffffff',
+      TEXT: '#ffffff',
+    },
   },
   ANCHOR: {
     PRIMARY: '#1a1a1a',

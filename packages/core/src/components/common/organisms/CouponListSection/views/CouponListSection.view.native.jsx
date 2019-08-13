@@ -4,11 +4,15 @@ import { Text, View } from 'react-native';
 import withStyles from '../../../hoc/withStyles';
 import {
   styles,
+  WrapperStyle,
+  PCContainer,
   TitleContainer,
   CardContainer,
   ModalContainer,
 } from '../styles/CouponListSection.style.native';
 import BodyCopy from '../../../atoms/BodyCopy';
+import Anchor from '../../../atoms/Anchor';
+import CouponCard from '../../../molecules/CouponCard';
 
 export class CouponListSection extends React.Component<Props> {
   constructor(props) {
@@ -34,6 +38,7 @@ export class CouponListSection extends React.Component<Props> {
   render() {
     const {
       labels,
+      isFetching,
       couponList,
       className,
       heading,
@@ -42,29 +47,66 @@ export class CouponListSection extends React.Component<Props> {
       onApply,
       onRemove,
       dataLocator,
+      handleErrorCoupon,
     } = this.props;
     const { showMore } = this.state;
     const buttonText =
       showMore === true ? labels.LESS_MORE_BUTTON_TEXT : labels.SHOW_MORE_BUTTON_TEXT;
     const couponListFilter = showMore === true ? couponList : couponList.slice(0, 5);
     return (
-      <View>
+      <WrapperStyle>
         <TitleContainer>
           {couponList.size > 0 && (
             <BodyCopy
               fontSize="fs16"
-              fontWeight="extrabold"
+              fontWeight="semibold"
+              data-locator=""
               text={`${heading} (${couponList.size})`}
             />
           )}
         </TitleContainer>
+        {this.helpSubHeading && (
+          <PCContainer>
+            <Text>?</Text>
+            <Anchor
+              fontSizeVariation="small"
+              underline
+              anchorVariation="primary"
+              handleLinkClick={this.helpAnchorClick}
+              data-locator=""
+              text={labels.HELP_APPLYING}
+            />
+          </PCContainer>
+        )}
         <CardContainer>
-          <Text>cardlist</Text>
+          {couponListFilter.map(coupon => {
+            return (
+              <CouponCard
+                key={coupon.id}
+                labels={labels}
+                isFetching={isFetching}
+                coupon={coupon}
+                couponDetailClick={couponDetailClick}
+                onApply={onApply}
+                onRemove={onRemove}
+                handleErrorCoupon={handleErrorCoupon}
+              />
+            );
+          })}
         </CardContainer>
         <ModalContainer>
-          <Text>Modal</Text>
+          {this.helpSubHeading && (
+            <Anchor
+              fontSizeVariation="small"
+              underline
+              anchorVariation="primary"
+              handleLinkClick={this.toggleShow}
+              data-locator=""
+              text={buttonText}
+            />
+          )}
         </ModalContainer>
-      </View>
+      </WrapperStyle>
     );
   }
 }

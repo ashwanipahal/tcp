@@ -1,4 +1,5 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/BagPage/organisms/OrderLedger';
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
@@ -12,7 +13,7 @@ import {
 
 const BagPage = ({ labels, totalCount }) => {
   return (
-    <WrapperStyle>
+    <ScrollView>
       <HeadingViewStyle>
         <HeadingTextStyle>{`${labels.bagHeading} (${totalCount})`}</HeadingTextStyle>
       </HeadingViewStyle>
@@ -24,7 +25,7 @@ const BagPage = ({ labels, totalCount }) => {
           <CouponAndPromos />
         </RowSectionStyle>
       </MainSection>
-    </WrapperStyle>
+    </ScrollView>
   );
 };
 

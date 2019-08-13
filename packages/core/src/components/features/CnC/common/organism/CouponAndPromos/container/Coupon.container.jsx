@@ -24,8 +24,47 @@ export class CouponContainer extends React.PureComponent<Props> {
       availableCouponList,
       handleErrorCoupon,
     } = this.props;
-    const couponList = List([
+
+    const appliedCouponListTwo = List([
       ...availableCouponList,
+      {
+        id: 'Y00105578',
+        status: 'applied',
+        labelStatus: 'REMOVE',
+        isExpiring: true,
+        title: '$20 OFF On $50',
+        detailsOpen: false,
+        expirationDate: '8/10/19',
+        effectiveDate: '8/6/19',
+        details: null,
+        legalText: '$10 OFF On $50',
+        isStarted: true,
+        offerType: 'saving',
+        error: '',
+        promotionType: 'public',
+        expirationDateTimeStamp: '2019-08-10T18:29:00.001Z',
+      },
+    ]);
+
+    const availableCouponListTwo = List([
+      ...availableCouponList,
+      {
+        id: 'Y00105578',
+        status: 'available',
+        labelStatus: 'APPLY',
+        isExpiring: true,
+        title: '$20 OFF On $50',
+        detailsOpen: false,
+        expirationDate: '8/10/19',
+        effectiveDate: '8/6/19',
+        details: null,
+        legalText: '$10 OFF On $50',
+        isStarted: true,
+        offerType: 'saving',
+        error: '',
+        promotionType: 'public',
+        expirationDateTimeStamp: '2019-08-10T18:29:00.001Z',
+      },
       {
         id: 'Y00105578',
         status: 'available',
@@ -51,8 +90,8 @@ export class CouponContainer extends React.PureComponent<Props> {
         handleApplyCoupon={handleApplyCoupon}
         handleApplyCouponFromList={handleApplyCouponFromList}
         handleRemoveCoupon={handleRemoveCoupon}
-        appliedCouponList={appliedCouponList}
-        availableCouponList={couponList}
+        appliedCouponList={appliedCouponListTwo}
+        availableCouponList={availableCouponListTwo}
         handleErrorCoupon={handleErrorCoupon}
       />
     );
