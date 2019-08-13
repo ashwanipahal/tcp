@@ -9,7 +9,10 @@ export default css`
     justify-content: space-between;
     padding: 12px;
     margin: 0 0 63px 0;
-    width: calc(33.33% - 24px);
+    width: calc(50% - 24px);
+    @media ${props => props.theme.mediaQuery.medium} {
+      width: calc(33.33% - 24px);
+    }
     @media only screen and (min-width: 1350px) {
       width: calc(25% - 24px);
     }

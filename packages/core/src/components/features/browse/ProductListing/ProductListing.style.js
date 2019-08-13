@@ -2,7 +2,6 @@ import { css } from 'styled-components';
 
 export default css`
   .bread-crumb,
-  .sidebar,
   .promo-area,
   .filter-area,
   .product-list {
@@ -11,9 +10,16 @@ export default css`
     margin: 5px 0;
   }
   .bread-crumb,
-  .sidebar,
   .product-list {
     background: white;
     display: flex;
+  }
+  .sidebar {
+    display: none;
+  }
+  @media ${props => props.theme.mediaQuery.large} {
+    .sidebar {
+      display: flex;
+    }
   }
 `;
