@@ -17,7 +17,9 @@ export default css`
     display: inline-block;
   }
   .nav-bar-l1-content {
+    display: flex;
     padding: 18px 0 17px 0;
+    outline: 0;
   }
   .icon-arrow {
     background: url(${darkArrow}) no-repeat;
@@ -52,12 +54,14 @@ export default css`
       display: none;
     }
     .nav-bar-l1-content {
+      display: block;
       cursor: pointer;
       position: relative;
       padding: 38px 20px 12px 20px;
     }
     .nav-bar-item-label {
       width: 100%;
+      display: inline-block;
     }
     &:hover {
       background: linear-gradient(to bottom, rgba(255, 255, 255, 0.99), #f6f6f6);

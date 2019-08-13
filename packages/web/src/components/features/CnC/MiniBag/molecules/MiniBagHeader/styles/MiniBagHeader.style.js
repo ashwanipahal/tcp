@@ -23,4 +23,10 @@ export default css`
   .favIcon {
     margin-right: ${props => props.theme.spacing.ELEM_SPACING.XS};
   }
+  .rightLink {
+    border-left: 1px solid ${props => props.theme.colorPalette.gray[500]};
+    box-sizing: border-box;
+    margin-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    padding-left: ${props => props.theme.spacing.ELEM_SPACING.SM};
+  }
 `;

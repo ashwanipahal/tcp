@@ -58,6 +58,7 @@ class CouponListSection extends React.Component<Props> {
               component="p"
               fontSize="fs16"
               data-locator={dataLocator}
+              fontFamily="secondary"
             >
               {`${heading} (${couponList.size})`}
             </BodyCopy>
@@ -70,6 +71,7 @@ class CouponListSection extends React.Component<Props> {
                 underline
                 anchorVariation="primary"
                 fontSize="fs10"
+                fontFamily="secondary"
                 data-locator="couponcard-helpApplyingPlaceCashlink"
                 onClick={this.helpAnchorClick}
               >
@@ -111,6 +113,7 @@ class CouponListSection extends React.Component<Props> {
               fontSize="fs10"
               data-locator={showMore === true ? 'cartShowMoreButton' : 'cartShowLessButton'}
               onClick={this.toggleShow}
+              fontFamily="secondary"
             >
               {buttonText}
             </Anchor>
