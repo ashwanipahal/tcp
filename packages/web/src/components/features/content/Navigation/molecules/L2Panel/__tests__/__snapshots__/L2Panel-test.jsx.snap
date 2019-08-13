@@ -66,16 +66,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_0_link_0"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/"
               >
                 <Styled(BodyCopy)
@@ -104,7 +95,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-0"
                 links={
@@ -132,7 +123,6 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_0_link_1"
             >
               <Styled(Anchor)
-                component="div"
                 to="/c/"
               >
                 <Styled(BodyCopy)
@@ -164,7 +154,6 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_0_link_2"
             >
               <Styled(Anchor)
-                component="div"
                 to="/c/"
               >
                 <Styled(BodyCopy)
@@ -196,7 +185,6 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_0_link_3"
             >
               <Styled(Anchor)
-                component="div"
                 to="/c/"
               >
                 <Styled(BodyCopy)
@@ -228,7 +216,6 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_0_link_4"
             >
               <Styled(Anchor)
-                component="div"
                 to="/c/girl-clearance-us"
               >
                 <Styled(BodyCopy)
@@ -293,16 +280,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_0"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girls-clothing-school-uniforms"
               >
                 <Styled(BodyCopy)
@@ -331,7 +309,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-0"
                 links={
@@ -415,7 +393,6 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_1_link_1"
             >
               <Styled(Anchor)
-                component="div"
                 to="/c/"
               >
                 <Styled(BodyCopy)
@@ -446,16 +423,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_2"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girl-t-shirts"
               >
                 <Styled(BodyCopy)
@@ -484,7 +452,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-2"
                 links={
@@ -525,16 +493,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_3"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girls-denim-bottoms"
               >
                 <Styled(BodyCopy)
@@ -563,7 +522,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-3"
                 links={
@@ -632,16 +591,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_4"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girls-dresses"
               >
                 <Styled(BodyCopy)
@@ -670,7 +620,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-4"
                 links={
@@ -697,16 +647,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_5"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girls-tops-girls-shirts"
               >
                 <Styled(BodyCopy)
@@ -735,7 +676,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-5"
                 links={
@@ -832,16 +773,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_6"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girls-bottoms-girls-pants"
               >
                 <Styled(BodyCopy)
@@ -870,7 +802,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-6"
                 links={
@@ -1011,16 +943,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_7"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girls-leggings"
               >
                 <Styled(BodyCopy)
@@ -1049,7 +972,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-0"
                 links={
@@ -1091,7 +1014,6 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_1_link_8"
             >
               <Styled(Anchor)
-                component="div"
                 to="/c/"
               >
                 <Styled(BodyCopy)
@@ -1123,7 +1045,6 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_1_link_9"
             >
               <Styled(Anchor)
-                component="div"
                 to="/c/girls-outerwear-girls-jackets-girls-blazers"
               >
                 <Styled(BodyCopy)
@@ -1155,7 +1076,6 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_1_link_10"
             >
               <Styled(Anchor)
-                component="div"
                 to="/c/"
               >
                 <Styled(BodyCopy)
@@ -1186,16 +1106,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_11"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/active"
               >
                 <Styled(BodyCopy)
@@ -1224,7 +1135,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-4"
                 links={
@@ -1321,16 +1232,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_12"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/"
               >
                 <Styled(BodyCopy)
@@ -1359,7 +1261,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-5"
                 links={
@@ -1400,16 +1302,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_13"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girls-clothing-sleepwear"
               >
                 <Styled(BodyCopy)
@@ -1438,7 +1331,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-6"
                 links={
@@ -1507,16 +1400,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_14"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girl-accessories"
               >
                 <Styled(BodyCopy)
@@ -1545,7 +1429,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-7"
                 links={
@@ -1782,16 +1666,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_15"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girls-shoes"
               >
                 <Styled(BodyCopy)
@@ -1820,7 +1695,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-8"
                 links={
@@ -1994,7 +1869,6 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_2_link_0"
             >
               <Styled(Anchor)
-                component="div"
                 to="/c/"
               >
                 <Styled(BodyCopy)
@@ -2025,16 +1899,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_2_link_1"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girls-outfit"
               >
                 <Styled(BodyCopy)
@@ -2063,7 +1928,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-1"
                 links={
@@ -2091,7 +1956,6 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_2_link_2"
             >
               <Styled(Anchor)
-                component="div"
                 to="/c/content-girls-style-squad-outfits"
               >
                 <Styled(BodyCopy)

@@ -80,15 +80,10 @@ const createLinks = (links, column, categoryIndex, { openL3Drawer, hideL3Drawer,
           const classForRedContent = id === '505519' ? `highlighted` : ``;
           const currentIndex = column > 1 ? index + 7 : index;
           const hasSubCategories = subCategories && subCategories.length > 0;
-          const Wrapper = hasSubCategories ? BodyCopy : Anchor;
 
           return (
             <li data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}>
-              <Wrapper
-                to={`/c/${seoToken}`}
-                component="div"
-                onClick={openL3Drawer(`l3-drawer-${index.toString()}`)}
-              >
+              <Anchor to={`/c/${seoToken}`} onClick={openL3Drawer(`l3-drawer-${index.toString()}`)}>
                 <BodyCopy
                   className="l2-nav-link"
                   fontFamily="secondary"
@@ -100,7 +95,7 @@ const createLinks = (links, column, categoryIndex, { openL3Drawer, hideL3Drawer,
                   {renderPromoBadge(promoBadge, currentIndex)}
                   {renderArrowIcon(hasSubCategories)}
                 </BodyCopy>
-              </Wrapper>
+              </Anchor>
               {renderL3Panel(hasSubCategories, index, l3Drawer, hideL3Drawer, name, subCategories)}
             </li>
           );
