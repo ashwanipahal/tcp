@@ -30,9 +30,9 @@ const MiniBagBody = ({
   subTotal,
   currencySymbol,
 }: Props) => {
-  const data = {
-    savedforLaterQty: 1,
-  };
+  // const data = {
+  //   savedforLaterQty: 1,
+  // };
   const isItemDeleted = false;
   return (
     <div className={className}>
@@ -45,14 +45,13 @@ const MiniBagBody = ({
                   fontSizeVariation="medium"
                   underline
                   anchorVariation="primary"
-                  noLink
-                  to=""
+                  to="/bag"
                   data-locator="addressbook-makedefault"
                 >
                   {`${labels.viewBag}(${cartItemCount})`}
                 </Anchor>
                 {` `}
-                <Anchor
+                {/* <Anchor
                   fontSizeVariation="medium"
                   underline
                   anchorVariation="primary"
@@ -60,7 +59,7 @@ const MiniBagBody = ({
                   data-locator="addressbook-makedefault"
                 >
                   {`${labels.viewSaveForLater}(${data.savedforLaterQty})`}
-                </Anchor>
+                </Anchor> */}
               </BodyCopy>
             ) : (
               <BodyCopy component="span" fontSize="fs12" textAlign="left">

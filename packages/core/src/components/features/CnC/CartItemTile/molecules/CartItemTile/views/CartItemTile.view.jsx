@@ -102,7 +102,8 @@ class CartItemTile extends React.Component {
               <u>Update</u>
             </BodyCopy>
           )}
-          {productDetail.miscInfo.availability === 'OK' && (
+          {// eslint-disable-next-line
+          productDetail.miscInfo.availability === 'OK' && false && (
             <BodyCopy fontFamily="secondary" fontSize="fs12" component="span">
               <u>{labels.saveForLater}</u>
             </BodyCopy>
