@@ -49,7 +49,6 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
       routerPush('/bag', '/bag');
     } else {
       this.setState({ isOpenMiniBagModal: isOpen });
-
       if (!isOpen) {
         cartItemCount = getCartItemCount();
       }
