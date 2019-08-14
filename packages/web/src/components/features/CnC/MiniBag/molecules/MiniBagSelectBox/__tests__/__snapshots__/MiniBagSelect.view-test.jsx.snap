@@ -37,11 +37,14 @@ exports[`MiniBagSelectBox component MiniBagSelectBox component renders correctly
           [Function],
           ";
   .select__input {
-    padding: 7px 0 7px 7px;
+    padding: 7px 0 8px 7px;
     font-family: ",
           [Function],
           ";
     font-size: ",
+          [Function],
+          ";
+    border-bottom: 1px solid ",
           [Function],
           ";
     margin-bottom: 0;

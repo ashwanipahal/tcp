@@ -12,7 +12,7 @@ const styles = css`
     display: flex;
     flex: 1;
     div {
-      margin-right: 3px;
+      margin-right: 2px;
     }
   }
   .button-wrapper {
