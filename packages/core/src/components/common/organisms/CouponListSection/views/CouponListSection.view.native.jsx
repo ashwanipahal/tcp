@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text } from 'react-native';
 import withStyles from '../../../hoc/withStyles';
 import {
   styles,
@@ -9,6 +8,8 @@ import {
   TitleContainer,
   CardContainer,
   ShowMoreContainer,
+  IconContainer,
+  IconTextContainer,
 } from '../styles/CouponListSection.style.native';
 import BodyCopy from '../../../atoms/BodyCopy';
 import Anchor from '../../../atoms/Anchor';
@@ -66,7 +67,9 @@ export class CouponListSection extends React.Component<Props> {
           )}
           {helpSubHeading && (
             <PCContainer>
-              <Text>?</Text>
+              <IconContainer>
+                <IconTextContainer>?</IconTextContainer>
+              </IconContainer>
               <Anchor
                 fontFamily="secondary"
                 fontSizeVariation="small"

@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { View } from 'react-native';
 import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import withStyles from '../../../hoc/withStyles';
 import BodyCopy from '../../../atoms/BodyCopy';
 
 import {
   WrapperStyle,
-  ViewConatiner,
   Container,
   CardSavingHeader,
   CardRewardHeader,
@@ -197,7 +197,7 @@ export class CouponCard extends React.Component<Props> {
       handleErrorCoupon(coupon);
     }
     return (
-      <ViewConatiner>
+      <View>
         <ErrorMessage error={coupon.error} />
         <WrapperStyle>
           <Container>
@@ -220,14 +220,14 @@ export class CouponCard extends React.Component<Props> {
               <CouponRow>
                 <CouponCal>
                   <CouponDesc>{`${coupon.title}`}</CouponDesc>
-                  <ViewConatiner>
+                  <View>
                     {coupon.offerType === COUPON_REDEMPTION_TYPE.SAVING &&
                       this.RenderUseByText(coupon)}
                     {coupon.offerType === COUPON_REDEMPTION_TYPE.REWARDS &&
                       this.RenderUseByText(coupon)}
                     {coupon.offerType === COUPON_REDEMPTION_TYPE.PLACECASH &&
                       this.RenderValidText(coupon)}
-                  </ViewConatiner>
+                  </View>
                   <CouponAnchor>
                     <Anchor
                       fontSizeVariation="small"
@@ -250,7 +250,7 @@ export class CouponCard extends React.Component<Props> {
             </CouponBody>
           </Container>
         </WrapperStyle>
-      </ViewConatiner>
+      </View>
     );
   }
 }

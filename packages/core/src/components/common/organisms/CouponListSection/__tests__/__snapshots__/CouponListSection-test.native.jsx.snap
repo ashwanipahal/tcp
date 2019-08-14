@@ -7,7 +7,6 @@ exports[`CouponList component should renders applied list 1`] = `
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="semibold"
-      locator=""
       text="Heading (6)"
     />
   </Styled(View)>
@@ -130,13 +129,14 @@ exports[`CouponList component should renders available list 1`] = `
       fontFamily="secondary"
       fontSize="fs16"
       fontWeight="semibold"
-      locator=""
       text="Heading (6)"
     />
     <Styled(View)>
-      <Text>
-        ?
-      </Text>
+      <Styled(View)>
+        <Styled(Text)>
+          ?
+        </Styled(Text)>
+      </Styled(View)>
       <Styled(Anchor)
         anchorVariation="primary"
         customStyle={Object {}}
