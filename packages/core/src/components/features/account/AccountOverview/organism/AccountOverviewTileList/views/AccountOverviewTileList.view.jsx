@@ -7,8 +7,10 @@ import PaymentOverviewTile from '../../../../common/organism/PaymentOverviewTile
 import MyPlaceRewardsOverviewTile from '../../../../common/organism/MyPlaceRewardsOverviewTile';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/AccountOverviewTileList.style';
+import { isCanada } from '../../../../../../../utils';
 
 export const AccountOverviewTileList = ({ className, ...otherProps }) => {
+  const isCA = isCanada();
   return (
     <Row fullBleed className={`${className} elem-pt-LRG`}>
       <Col
@@ -37,19 +39,21 @@ export const AccountOverviewTileList = ({ className, ...otherProps }) => {
       >
         <PaymentOverviewTile {...otherProps} />
       </Col>
-      <Col
-        colSize={{
-          small: 6,
-          medium: 4,
-          large: 4,
-        }}
-        ignoreGutter={{
-          small: true,
-        }}
-        className="overviewCol elem-mb-XL"
-      >
-        <MyPlaceRewardsOverviewTile {...otherProps} />
-      </Col>
+      {!isCA && (
+        <Col
+          colSize={{
+            small: 6,
+            medium: 4,
+            large: 4,
+          }}
+          ignoreGutter={{
+            small: true,
+          }}
+          className="overviewCol elem-mb-XL"
+        >
+          <MyPlaceRewardsOverviewTile {...otherProps} />
+        </Col>
+      )}
     </Row>
   );
 };

@@ -4,7 +4,9 @@ import {
   getCouponFetchingState,
   getAppliedCouponListState,
   getAvailableCouponListState,
+  getAllRewardsCoupons,
 } from '../container/Coupon.selectors';
+import { COUPON_REDEMPTION_TYPE } from '../../../../../../../services/abstractors/CnC/CartItemTile';
 
 describe('#Coupon selector', () => {
   const couponState = fromJS({
@@ -25,6 +27,7 @@ describe('#Coupon selector', () => {
         error: '',
         promotionType: 'public',
         expirationDateTimeStamp: '2019-08-10T18:29:00.001Z',
+        redemptionType: COUPON_REDEMPTION_TYPE.LOYALTY,
       },
       {
         id: 'Y00105579',
@@ -40,6 +43,7 @@ describe('#Coupon selector', () => {
         error: '',
         promotionType: 'public',
         expirationDateTimeStamp: '9999-12-31T18:29:5.999Z',
+        redemptionType: COUPON_REDEMPTION_TYPE.LOYALTY,
       },
       {
         id: 'Y00105580',
@@ -97,6 +101,17 @@ describe('#Coupon selector', () => {
     };
     expect(getAvailableCouponListState(state)).toEqual(
       couponState.get('couponsAndOffers').filter(i => i.status === 'available')
+    );
+  });
+
+  it('#getAllRewardsCoupons should return couponsAndOffers rewards coupon', () => {
+    const state = {
+      CouponsAndPromos: couponState,
+    };
+    expect(getAllRewardsCoupons(state)).toEqual(
+      couponState
+        .get('couponsAndOffers')
+        .filter(i => i.redemptionType === COUPON_REDEMPTION_TYPE.LOYALTY)
     );
   });
 
