@@ -8,12 +8,12 @@ import {
   AddressTileContainer,
   ButtonWrapperStyle,
   BodyCopyStyle,
-  TouchableLink,
   AddressTypeContainer,
   LeftContainer,
   RightContainer,
 } from '../styles/AddressOverviewTile.style.native';
 import Address from '../../../../../../common/molecules/Address';
+import Anchor from '../../../../../../common/atoms/Anchor';
 
 export class AddressOverviewTile extends React.PureComponent<Props> {
   static propTypes = {
@@ -65,22 +65,20 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
             />
           </View>
           <View style={RightContainer}>
-            <TouchableLink
+            <Anchor
+              anchorVariation="primary"
+              text={
+                defaultBillingAddress && defaultBillingAddress.length
+                  ? labels.lbl_overview_addressBookEdit
+                  : labels.lbl_overview_addressBookAdd
+              }
               onPress={() => handleComponentChange('addressBookMobile')}
-              textDecorationLine="underline"
-            >
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs13"
-                fontWeight="regular"
-                text={
-                  defaultShippingAddress && defaultShippingAddress.length
-                    ? labels.lbl_overview_addressBookEdit
-                    : labels.lbl_overview_addressBookAdd
-                }
-                color="gray.900"
-              />
-            </TouchableLink>
+              underline
+              fontSizeVariation="large"
+              noLink
+              data-locator="addressbook-overview-edit"
+              color="gray.900"
+            />
           </View>
         </AddressTypeContainer>
         {defaultShippingAddress && defaultShippingAddress.length ? (
@@ -93,7 +91,7 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
         ) : (
           <BodyCopy
             fontSize="fs13"
-            fontFamily="secondary"
+            fontFamily="primary"
             fontWeight="regular"
             text={labels.lbl_overview_addressNotAdded}
           />
@@ -110,22 +108,21 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
             />
           </View>
           <View style={RightContainer}>
-            <TouchableLink
+            <Anchor
+              anchorVariation="primary"
+              text={
+                defaultBillingAddress && defaultBillingAddress.length
+                  ? labels.lbl_overview_addressBookEdit
+                  : labels.lbl_overview_addressBookAdd
+              }
               onPress={() => handleComponentChange('addressBookMobile')}
-              textDecorationLine="underline"
-            >
-              <BodyCopy
-                fontFamily="secondary"
-                fontSize="fs13"
-                fontWeight="regular"
-                text={
-                  defaultBillingAddress && defaultBillingAddress.length
-                    ? labels.lbl_overview_addressBookEdit
-                    : labels.lbl_overview_addressBookAdd
-                }
-                color="gray.900"
-              />
-            </TouchableLink>
+              underline
+              fontSizeVariation="large"
+              noLink
+              data-locator="addressbook-makedefault"
+              color="gray.900"
+              lineHeight="10"
+            />
           </View>
         </AddressTypeContainer>
 
@@ -139,7 +136,7 @@ export class AddressOverviewTile extends React.PureComponent<Props> {
         ) : (
           <BodyCopy
             fontSize="fs13"
-            fontFamily="secondary"
+            fontFamily="primary"
             fontWeight="regular"
             text={labels.lbl_overview_addressNotAdded}
           />
