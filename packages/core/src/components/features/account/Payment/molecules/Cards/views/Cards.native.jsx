@@ -22,7 +22,7 @@ import CardTile from '../../../../common/molecule/CardTile/views/CardTile.view.n
 import ModalNative from '../../../../../../common/molecules/Modal';
 import AddGiftCardContainer from '../../../AddGiftCard/container/AddGiftCard.container.native';
 
-class Cards extends React.Component<Props> {
+class Cards extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
