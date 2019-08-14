@@ -68,17 +68,16 @@ const MiniBagHeader = ({ labels, cartItemCount, className, userName }: Props) =>
             />
           </Anchor>
           {'  '}
-          <Anchor fontSizeVariation="small" anchorVariation="primary" noLink>
-            <Image
-              alt="Product"
-              className="product-image"
-              src={getIconPath('cart-icon')}
-              data-locator="addedtobag-bag-icon"
-            />
-            <BodyCopy className="cartCount" component="span" fontWeight="semibold" fontSize="fs10">
-              {cartItemCount || 0}
-            </BodyCopy>
-          </Anchor>
+
+          <Image
+            alt="Product"
+            className="product-image"
+            src={getIconPath('cart-icon')}
+            data-locator="addedtobag-bag-icon"
+          />
+          <BodyCopy className="cartCount" component="span" fontWeight="semibold" fontSize="fs10">
+            {cartItemCount || 0}
+          </BodyCopy>
         </Col>
       </Row>
     </div>
