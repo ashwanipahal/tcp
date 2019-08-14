@@ -146,8 +146,8 @@ const endpoints = {
     URI: 'v2/checkout/removePromotionCode',
   },
   getAllOffers: {
-    method: 'GET',
-    URI: 'v2/wallet/getAllCoupons'
+    method: API_METHODS.GET,
+    URI: 'v2/wallet/getAllCoupons',
   },
 };
 export default endpoints;

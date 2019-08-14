@@ -44,7 +44,7 @@ class BonusPointsView extends React.Component {
     const { labels, bonusData, bonusDetailsData, className, view, isPlcc } = this.props;
     const { openModalState } = this.state;
     return (
-      <React.Fragment>
+      <>
         {view === constants.VIEWS.READ && (
           <BonusPointsReadSection
             labels={labels.myPlaceRewards}
@@ -79,7 +79,7 @@ class BonusPointsView extends React.Component {
         >
           <RichText richTextHtml={bonusDetailsData} dataLocator="bonus-points-details" />
         </Modal>
-      </React.Fragment>
+      </>
     );
   }
 }

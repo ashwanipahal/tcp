@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { getCouponList } from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.actions';
@@ -6,7 +6,7 @@ import { getAllRewardsCoupons } from '../../../../../CnC/common/organism/CouponA
 import MyPlaceRewardsOverviewTileComponent from '../views';
 import { getBrierleySwitch } from './MyPlaceRewardsOverviewTile.selectors';
 
-export class MyPlaceRewardsOverviewTile extends React.PureComponent {
+export class MyPlaceRewardsOverviewTile extends PureComponent {
   static propTypes = {
     fetchCoupons: PropTypes.func.isRequired,
   };
