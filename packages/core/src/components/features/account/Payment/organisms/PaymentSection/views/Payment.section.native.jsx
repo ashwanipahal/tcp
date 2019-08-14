@@ -9,6 +9,7 @@ import Cards from '../../../molecules/Cards';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import VenmoCards from '../../../molecules/VenmoCards';
 import DeleteModal from '../../../molecules/DeleteModal';
+import { getIconCard } from '../../../../../../../utils/index.native';
 
 class PaymentView extends React.Component<Props> {
   static propTypes = {
@@ -39,6 +40,16 @@ class PaymentView extends React.Component<Props> {
     setDeleteModalMountState: false,
     setDeleteModalMountedState: false,
     deleteModalMountedState: false,
+  };
+
+  cardIconMapping = {
+    DISC: 'disc-small',
+    MC: 'mc-small',
+    Amex: 'amex-small',
+    Visa: 'visa-small',
+    GC: 'gift-card-small',
+    'PLACE CARD': 'place-card-small',
+    VENMO: 'venmo-blue-acceptance-mark',
   };
 
   constructor(props) {
@@ -90,22 +101,23 @@ class PaymentView extends React.Component<Props> {
     } = this.props;
     const { setDeleteModalMountedState, selectedCard } = this.state;
     let dto = {};
+    const cardImg = getIconCard(this.cardIconMapping[selectedCard.ccBrand]);
     if (selectedCard.ccType === 'GiftCard') {
       dto = {
         cardDescription: labels.paymentGC.lbl_payment_modalGCHeading,
-        cardImage1: require('../../../../../../../../../mobileapp/src/assets/images/credit-card.png'),
-        cardDetail: `${labels.paymentGC.lbl_payment_cardNum} ${selectedCard.accountNo}`,
+        cardImage: cardImg,
+        cardDetail: `${labels.paymentGC.lbl_payment_cardNum}${selectedCard.accountNo.slice(-4)}`,
       };
     } else if (selectedCard.ccType === 'VENMO') {
       dto = {
         cardDescription: labels.paymentGC.lbl_payment_modalVenmoDeleteHeading,
-        cardImage1: require('../../../../../../../../../mobileapp/src/assets/images/venmo.png'),
+        cardImage: cardImg,
         cardDetail: selectedCard.properties.venmoUserId,
       };
     } else {
       dto = {
         cardDescription: labels.paymentGC.lbl_payment_modalCCHeading,
-        cardImage1: require('../../../../../../../../../mobileapp/src/assets/images/credit-card.png'),
+        cardImage: cardImg,
         cardDetail: `${labels.paymentGC.lbl_payment_cardNum} ${selectedCard.accountNo}`,
       };
     }

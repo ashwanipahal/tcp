@@ -7,7 +7,6 @@ exports[`MyRewards should render correctly 1`] = `
       data-locator="my-rewards-heading"
       fontSize="fs16"
       fontWeight="semibold"
-      locator=""
       mobileFontFamily="secondary"
       text="undefined (0)"
     />
@@ -17,17 +16,13 @@ exports[`MyRewards should render correctly 1`] = `
       data-locator="no_rewards_msg"
       fontSize="fs14"
       fontWeight="regular"
-      locator=""
       mobileFontFamily="secondary"
-      text=""
     />
     <Styled(BodyCopy)
       data-locator="no_rewards_msg"
       fontSize="fs14"
       fontWeight="regular"
-      locator=""
       mobileFontFamily="secondary"
-      text=""
     />
   </Styled(View)>
   <Styled(CustomButton)

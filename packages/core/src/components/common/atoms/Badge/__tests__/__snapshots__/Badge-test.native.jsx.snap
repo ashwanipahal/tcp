@@ -7,7 +7,6 @@ exports[`Native Badge component renders correctly with  as false 1`] = `
       color="white"
       fontSize="fs10"
       fontWeight="semibold"
-      locator=""
       mobilefontFamily={
         Array [
           "secondary",

@@ -10,7 +10,7 @@ import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import config from '../../config';
 import style from './HeaderMiddleNav.style';
 
-const cartItemCount = getCartItemCount();
+let cartItemCount = getCartItemCount();
 
 /**
  * This function handles opening and closing for Navigation drawer on mobile and tablet viewport
@@ -45,6 +45,9 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
 
   toggleMiniBagModal = ({ e, isOpen }) => {
     e.preventDefault();
+    if (!isOpen) {
+      cartItemCount = getCartItemCount();
+    }
     this.setState({ isOpenMiniBagModal: isOpen });
   };
 
