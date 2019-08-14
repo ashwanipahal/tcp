@@ -2,10 +2,14 @@ import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 
 const errorHandler = err => {
-  if (err.response && err.response.body && err.response.body.errors) {
-    throw new Error(err.response.body.errors[0].errorMessage);
+  let error = {};
+  if (err instanceof Error) {
+    error = err.response.body;
   }
-  throw new Error('Your action could not be completed due to system error!!!!');
+  if (error.errors instanceof Array && error.errors[0].errorMessage) {
+    throw error.errors[0].errorMessage;
+  }
+  throw err;
 };
 
 export const getCardListApi = () => {
@@ -36,9 +40,7 @@ export const addGiftCardApi = payload => {
       recapchaResponse: payload.recaptchaToken,
     },
   };
-  return executeStatefulAPICall(payloadArgs)
-    .then(res => {
-      return res;
-    })
-    .catch(errorHandler);
+  return executeStatefulAPICall(payloadArgs, errorHandler).then(res => {
+    return res;
+  });
 };
