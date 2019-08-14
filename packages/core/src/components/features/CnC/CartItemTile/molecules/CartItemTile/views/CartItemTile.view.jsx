@@ -103,7 +103,7 @@ class CartItemTile extends React.Component {
   getEntireData = (productDetail, labels, pageView) => {
     return (
       <React.Fragment>
-        <Row className="product-detail-row padding-top-10 color-map-size-fit">
+        <div className="product-detail-row product-attributes padding-top-10 color-map-size-fit">
           <div>
             <div className="color-size-fit-label">
               <BodyCopy
@@ -193,12 +193,14 @@ class CartItemTile extends React.Component {
               {`${productDetail.itemInfo.qty}`}
             </BodyCopy>
           </div>
+        </div>
+        <div className="product-detail-row editLinkWrapper padding-top-10 color-map-size-fit">
           <BodyCopy
             fontFamily="secondary"
             fontSize="fs12"
             component="div"
             dataLocator={getLocator('cart_item_edit_link')}
-            className="padding-left-10 responsive-edit-css"
+            className="responsive-edit-css"
             onClick={() => {
               if (pageView !== 'myBag') {
                 this.setState({ isEdit: true });
@@ -207,7 +209,7 @@ class CartItemTile extends React.Component {
           >
             <u>{labels.edit}</u>
           </BodyCopy>
-        </Row>
+        </div>
       </React.Fragment>
     );
   };

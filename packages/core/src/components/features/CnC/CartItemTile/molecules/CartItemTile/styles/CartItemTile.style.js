@@ -59,6 +59,15 @@ export default css`
     margin-top: 8px;
     margin-left: 25%;
   }
+  .product-attributes {
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 75%;
+    margin: 0 13px;
+  }
+  .editLinkWrapper {
+    display: inline-block;
+  }
 
   .product-tile-wrapper {
     flex-wrap: nowrap;
