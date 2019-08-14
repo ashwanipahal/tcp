@@ -23,7 +23,12 @@ type Props = {
  */
 
 const getTextItems = textItems => {
-  return textItems && textItems.map(({ text }, index) => <Text>{index ? ` ${text}` : text}</Text>);
+  return (
+    textItems &&
+    textItems.map(({ text }, index) => (
+      <Text key={index.toString()}>{index ? ` ${text}` : text}</Text>
+    ))
+  );
 };
 
 const LinkText = (props: Props) => {

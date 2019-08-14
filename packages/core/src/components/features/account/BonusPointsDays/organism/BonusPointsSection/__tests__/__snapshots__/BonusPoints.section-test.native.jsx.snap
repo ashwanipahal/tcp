@@ -11,7 +11,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               data-locator="msgtextinbold"
               fontSize="fs14"
               fontWeight="extrabold"
-              locator=""
               mobileFontFamily="secondary"
               text=""
               textAlign="center"
@@ -22,7 +21,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
               data-locator="infomsg"
               fontSize="fs12"
               fontWeight="regular"
-              locator=""
               mobileFontFamily="secondary"
               text=""
               textAlign="center"
@@ -83,7 +81,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             component="span"
             fontSize="fs16"
             fontWeight="extrabold"
-            locator=""
             mobileFontFamily="primary"
             text=""
           />
@@ -94,7 +91,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
             component="span"
             fontSize="fs16"
             fontWeight="extrabold"
-            locator=""
             mobileFontFamily="primary"
             text=""
           />
@@ -104,7 +100,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly available_today 
           component="span"
           fontSize="fs16"
           fontWeight="extrabold"
-          locator=""
           mobileFontFamily="primary"
           text=""
         />
@@ -126,7 +121,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               data-locator="msgtextinbold"
               fontSize="fs14"
               fontWeight="extrabold"
-              locator=""
               mobileFontFamily="secondary"
               text=""
               textAlign="center"
@@ -137,7 +131,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
               data-locator="infomsg"
               fontSize="fs12"
               fontWeight="regular"
-              locator=""
               mobileFontFamily="secondary"
               text=""
               textAlign="center"
@@ -208,7 +201,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             component="span"
             fontSize="fs16"
             fontWeight="extrabold"
-            locator=""
             mobileFontFamily="primary"
             text=""
           />
@@ -219,7 +211,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
             component="span"
             fontSize="fs16"
             fontWeight="extrabold"
-            locator=""
             mobileFontFamily="primary"
             text=""
           />
@@ -229,7 +220,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with applied to 
           component="span"
           fontSize="fs16"
           fontWeight="extrabold"
-          locator=""
           mobileFontFamily="primary"
           text=""
         />
@@ -251,7 +241,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               data-locator="msgtextinbold"
               fontSize="fs14"
               fontWeight="extrabold"
-              locator=""
               mobileFontFamily="secondary"
               text=""
               textAlign="center"
@@ -262,7 +251,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
               data-locator="infomsg"
               fontSize="fs12"
               fontWeight="regular"
-              locator=""
               mobileFontFamily="secondary"
               text=""
               textAlign="center"
@@ -333,7 +321,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             component="span"
             fontSize="fs16"
             fontWeight="extrabold"
-            locator=""
             mobileFontFamily="primary"
             text=""
           />
@@ -344,7 +331,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
             component="span"
             fontSize="fs16"
             fontWeight="extrabold"
-            locator=""
             mobileFontFamily="primary"
             text=""
           />
@@ -354,7 +340,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with future Use 
           component="span"
           fontSize="fs16"
           fontWeight="extrabold"
-          locator=""
           mobileFontFamily="primary"
           text=""
         />
@@ -376,7 +361,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               data-locator="msgtextinbold"
               fontSize="fs14"
               fontWeight="extrabold"
-              locator=""
               mobileFontFamily="secondary"
               text=""
               textAlign="center"
@@ -387,7 +371,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
               data-locator="infomsg"
               fontSize="fs12"
               fontWeight="regular"
-              locator=""
               mobileFontFamily="secondary"
               text=""
               textAlign="center"
@@ -458,7 +441,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             component="span"
             fontSize="fs16"
             fontWeight="extrabold"
-            locator=""
             mobileFontFamily="primary"
             text=""
           />
@@ -469,7 +451,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
             component="span"
             fontSize="fs16"
             fontWeight="extrabold"
-            locator=""
             mobileFontFamily="primary"
             text=""
           />
@@ -479,7 +460,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with futureDisab
           component="span"
           fontSize="fs16"
           fontWeight="extrabold"
-          locator=""
           mobileFontFamily="primary"
           text=""
         />
@@ -500,9 +480,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             data-locator="infomsg"
             fontSize="fs12"
             fontWeight="regular"
-            locator=""
             mobileFontFamily="secondary"
-            text=""
             textAlign="center"
           />
         </ForwardRef>
@@ -560,7 +538,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             component="span"
             fontSize="fs16"
             fontWeight="extrabold"
-            locator=""
             mobileFontFamily="primary"
             text=""
           />
@@ -571,7 +548,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
             component="span"
             fontSize="fs16"
             fontWeight="extrabold"
-            locator=""
             mobileFontFamily="primary"
             text=""
           />
@@ -581,7 +557,6 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with isUsed 1`] 
           component="span"
           fontSize="fs16"
           fontWeight="extrabold"
-          locator=""
           mobileFontFamily="primary"
           text=""
         />
