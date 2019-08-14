@@ -16,13 +16,17 @@ type Props = {
   cartItemCount: any,
   className: string,
   userName: any,
+  currentPoints: any,
+  totalRewards: any,
 };
-const MiniBagHeader = ({ labels, cartItemCount, className, userName }: Props) => {
-  const data = {
-    points: 0,
-    rewardsPoints: 0,
-  };
-
+const MiniBagHeader = ({
+  labels,
+  cartItemCount,
+  className,
+  userName,
+  currentPoints,
+  totalRewards,
+}: Props) => {
   return (
     <div className={className}>
       <Row className="mainWrapper">
@@ -53,7 +57,7 @@ const MiniBagHeader = ({ labels, cartItemCount, className, userName }: Props) =>
                 fontWeight="semibold"
                 textAlign="left"
               >
-                {`(${data.points} ${labels.points}, $${data.rewardsPoints} ${labels.inRewards} )`}
+                {`(${currentPoints} ${labels.points}, $${totalRewards} ${labels.inRewards} )`}
               </BodyCopy>
             </>
           )}
