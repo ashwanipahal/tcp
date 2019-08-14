@@ -4,6 +4,7 @@ import { PropTypes } from 'prop-types';
 import AddGiftCardForm from '../views/AddGiftCardForm.native';
 import { addGiftCardRequest } from './AddGiftCard.actions';
 import { getAddGiftCardResponse, getAddGiftCardError } from './AddGiftCard.selector';
+import { getCardList } from '../../container/Payment.actions';
 
 class AddGiftCardContainer extends React.PureComponent<Props> {
   render() {
@@ -17,6 +18,8 @@ class AddGiftCardContainer extends React.PureComponent<Props> {
 
     if (addGiftCardResponse === 'success') {
       toggleModal();
+      const { getCardListAction } = this.props;
+      getCardListAction();
     }
 
     return (
@@ -34,6 +37,9 @@ export const mapDispatchToProps = dispatch => {
   return {
     onAddGiftCardClick: payload => {
       dispatch(addGiftCardRequest(payload));
+    },
+    getCardListAction: () => {
+      dispatch(getCardList());
     },
   };
 };

@@ -31,8 +31,8 @@ export const addGiftCardApi = payload => {
     body: {
       cc_brand: 'GC',
       payMethodId: 'GiftCard',
-      account_pin: '0546',
-      pay_account: '6006491259499902624',
+      account_pin: payload.cardPin,
+      pay_account: payload.giftCardNumber,
       recapchaResponse: payload.recaptchaToken,
     },
   };
