@@ -9,6 +9,7 @@ describe('Add Gift Card Container', () => {
     getAddGiftCardErr: 'foo',
     labels: {},
     toggleModal: jest.fn(),
+    getCardListAction: jest.fn(),
   };
 
   it('should render gift card view section', () => {
