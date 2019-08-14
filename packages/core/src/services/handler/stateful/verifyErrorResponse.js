@@ -8,12 +8,15 @@ const ERRORS_MAP = require('./errorResponseMapping/index.json');
  * @returns {Array} list of errors
  */
 const getErrorList = response => {
+  const {
+    body: { errorCode, errorKey, errorMessageKey, errorMessage },
+  } = response;
   let errorsList = [
     {
-      errorCode: response.body.errorCode,
-      errorKey: response.body.errorKey,
-      errorMessageKey: response.body.errorMessageKey,
-      errorMessage: response.body.errorMessage,
+      errorCode,
+      errorKey,
+      errorMessageKey,
+      errorMessage,
     },
   ];
 
@@ -21,12 +24,22 @@ const getErrorList = response => {
     errorsList = response.body.errors;
   }
   if (response.body.error && response.body.error.errorCode) {
+    const {
+      body: {
+        error: {
+          errorCode: errorCodeValue,
+          errorKey: errorKeyValue,
+          errorMessageKey: errorMessageKeyValue,
+          errorMessage: errorMessageValue,
+        },
+      },
+    } = response;
     errorsList = [
       {
-        errorCode: response.body.error.errorCode,
-        errorKey: response.body.error.errorKey,
-        errorMessageKey: response.body.error.errorMessageKey,
-        errorMessage: response.body.error.errorMessage,
+        errorCode: errorCodeValue,
+        errorKey: errorKeyValue,
+        errorMessageKey: errorMessageKeyValue,
+        errorMessage: errorMessageValue,
       },
     ];
   }
@@ -91,7 +104,7 @@ export const verifyErrorResponse = response => {
         error
       );
     }
-    errorCode += (errorCode ? ', ' : '') + (errorKey || '');
+    errorCode += `${errorCode ? ', ' : ''}${errorKey || ''}`;
   });
 
   return {
