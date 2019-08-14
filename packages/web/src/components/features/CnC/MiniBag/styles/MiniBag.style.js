@@ -17,6 +17,8 @@ export const modalStyles = css`
     border: none;
     margin-top: 20px;
     margin-bottom: 0;
+    border-bottom: 1px solid ${props => props.theme.colorPalette.gray[500]};
+    height: ${props => props.theme.spacing.LAYOUT_SPACING.MED};
     padding: 0;
     @media ${props => props.theme.mediaQuery.medium} {
       display: block;

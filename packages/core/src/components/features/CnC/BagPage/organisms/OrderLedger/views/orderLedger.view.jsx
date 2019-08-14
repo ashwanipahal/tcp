@@ -267,37 +267,39 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
             </BodyCopy>
           </Col>
         </Row>
-        <Row
-          className="total-order-savings rowMargin"
-          data-locator={getLocator('order_ledger_total_order_savings_label')}
-        >
-          <Col colSize={{ large: 6, medium: 4, small: 3 }}>
-            <BodyCopy
-              bodySize="one"
-              color="primary"
-              fontFamily="secondary"
-              fontWeight="semibold"
-              fontSize="fs16"
-            >
-              {`${labels.totalSavingsLabel}`}
-              <ReactToolTip id="tool" direction="top" message={labels.tooltipText}>
-                <Image alt="info" className="circle-info-image" src={getIconPath(`info-icon`)} />
-              </ReactToolTip>
-            </BodyCopy>
-          </Col>
-          <Col colSize={{ large: 6, medium: 4, small: 3 }}>
-            <BodyCopy
-              bodySize="one"
-              color="primary"
-              fontFamily="secondary"
-              fontWeight="semibold"
-              fontSize="fs16"
-              textAlign="right"
-            >
-              {`${currencySymbol}${totalOrderSavings.toFixed(2)}`}
-            </BodyCopy>
-          </Col>
-        </Row>
+        {totalOrderSavings ? (
+          <Row
+            className="total-order-savings rowMargin"
+            data-locator={getLocator('order_ledger_total_order_savings_label')}
+          >
+            <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+              <BodyCopy
+                bodySize="one"
+                color="primary"
+                fontFamily="secondary"
+                fontWeight="semibold"
+                fontSize="fs16"
+              >
+                {`${labels.totalSavingsLabel}`}
+                <ReactToolTip id="tool" direction="top" message={labels.tooltipText}>
+                  <Image alt="info" className="circle-info-image" src={getIconPath(`info-icon`)} />
+                </ReactToolTip>
+              </BodyCopy>
+            </Col>
+            <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+              <BodyCopy
+                bodySize="one"
+                color="primary"
+                fontFamily="secondary"
+                fontWeight="semibold"
+                fontSize="fs16"
+                textAlign="right"
+              >
+                {`${currencySymbol}${totalOrderSavings.toFixed(2)}`}
+              </BodyCopy>
+            </Col>
+          </Row>
+        ) : null}
       </Grid>
     </React.Fragment>
   );

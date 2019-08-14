@@ -7,6 +7,7 @@ describe('Bag page Container', () => {
   const props = {
     labels: {},
     initialActions: jest.fn(),
+    fetchNeedHelpContent: jest.fn(),
   };
   it('should render Added to Bag view section', () => {
     const tree = shallow(<BagPageContainer {...props} />);

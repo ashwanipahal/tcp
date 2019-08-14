@@ -1,30 +1,30 @@
 import styled, { css } from 'styled-components';
 
-const styles = css`
-  padding: 1px;
-`;
+const styles = css``;
 
 const WrapperStyle = styled.View`
   display: flex;
   flex-direction: column;
-  padding: 1px;
-  background-color: rgba(243, 243, 243, 1);
 `;
 const PCContainer = styled.View`
   flex-direction: row;
+  margin-top: 8px;
 `;
 
 const TitleContainer = styled.View`
-  margin-top: 8px;
+  margin-bottom: 24px;
+  padding: 0px 15px 0px 13px;
 `;
 
 const CardContainer = styled.View`
   width: 100%;
-  margin-top: 25px;
 `;
 
-const ModalContainer = styled.View`
-  padding: 1px;
+const ShowMoreContainer = styled.View`
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0px 15px 0px 13px;
 `;
 
-export { styles, WrapperStyle, PCContainer, TitleContainer, CardContainer, ModalContainer };
+export { styles, WrapperStyle, PCContainer, TitleContainer, CardContainer, ShowMoreContainer };

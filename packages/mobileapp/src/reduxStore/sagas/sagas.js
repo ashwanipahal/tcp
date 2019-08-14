@@ -5,6 +5,7 @@ import ForgotPasswordSaga from '@tcp/core/src/components/features/account/Forgot
 import PaymentSaga from '@tcp/core/src/components/features/account/Payment/container/Payment.saga';
 import DefaultPaymentSaga from '@tcp/core/src/components/features/account/Payment/container/DefaultPayment.saga';
 import AddressBookSaga from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.saga';
+import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
 import ProductListingPageSaga from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.saga';
 import AddedToBagSaga from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.saga';
 import CreateAccountSaga from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.saga';
@@ -25,6 +26,7 @@ export default function* rootSaga() {
     ForgotPasswordSaga(),
     PaymentSaga(),
     DefaultPaymentSaga(),
+    SetDefaultShippingAddressSaga(),
     AddressBookSaga(),
     ProductListingPageSaga(),
     AddedToBagSaga(),

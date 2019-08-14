@@ -95,9 +95,9 @@ class AddressBookTile extends React.Component<Props> {
                   fontSizeVariation="small"
                   underline
                   anchorVariation="primary"
-                  handleLinkClick={this.handleDefaultLinkClick}
+                  onPress={this.handleDefaultLinkClick}
                   noLink
-                  to=""
+                  to="/#"
                   data-locator="addressbook-makedefault"
                   text={labels.common.lbl_common_makeDefault}
                   color="gray.900"

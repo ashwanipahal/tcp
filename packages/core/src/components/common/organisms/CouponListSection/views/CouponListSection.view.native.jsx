@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
 import withStyles from '../../../hoc/withStyles';
 import {
   styles,
@@ -8,7 +8,7 @@ import {
   PCContainer,
   TitleContainer,
   CardContainer,
-  ModalContainer,
+  ShowMoreContainer,
 } from '../styles/CouponListSection.style.native';
 import BodyCopy from '../../../atoms/BodyCopy';
 import Anchor from '../../../atoms/Anchor';
@@ -40,7 +40,6 @@ export class CouponListSection extends React.Component<Props> {
       labels,
       isFetching,
       couponList,
-      className,
       heading,
       helpSubHeading,
       couponDetailClick,
@@ -60,24 +59,27 @@ export class CouponListSection extends React.Component<Props> {
             <BodyCopy
               fontSize="fs16"
               fontWeight="semibold"
-              data-locator=""
+              fontFamily="secondary"
+              data-locator={dataLocator}
               text={`${heading} (${couponList.size})`}
             />
           )}
+          {helpSubHeading && (
+            <PCContainer>
+              <Text>?</Text>
+              <Anchor
+                fontFamily="secondary"
+                fontSizeVariation="small"
+                underline
+                anchorVariation="primary"
+                onPress={this.helpAnchorClick}
+                data-locator=""
+                text={labels.HELP_APPLYING}
+              />
+            </PCContainer>
+          )}
         </TitleContainer>
-        {this.helpSubHeading && (
-          <PCContainer>
-            <Text>?</Text>
-            <Anchor
-              fontSizeVariation="small"
-              underline
-              anchorVariation="primary"
-              handleLinkClick={this.helpAnchorClick}
-              data-locator=""
-              text={labels.HELP_APPLYING}
-            />
-          </PCContainer>
-        )}
+
         <CardContainer>
           {couponListFilter.map(coupon => {
             return (
@@ -94,18 +96,21 @@ export class CouponListSection extends React.Component<Props> {
             );
           })}
         </CardContainer>
-        <ModalContainer>
-          {this.helpSubHeading && (
+        <ShowMoreContainer>
+          {couponList.size >= 5 && helpSubHeading !== undefined && (
             <Anchor
               fontSizeVariation="small"
+              fontFamily="secondary"
               underline
               anchorVariation="primary"
-              handleLinkClick={this.toggleShow}
+              onPress={this.toggleShow}
+              noLink
+              to="/#"
               data-locator=""
               text={buttonText}
             />
           )}
-        </ModalContainer>
+        </ShowMoreContainer>
       </WrapperStyle>
     );
   }
@@ -113,6 +118,13 @@ export class CouponListSection extends React.Component<Props> {
 
 CouponListSection.propTypes = {
   labels: PropTypes.shape({}).isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  heading: PropTypes.string.isRequired,
+  couponList: PropTypes.shape([]).isRequired,
+  couponDetailClick: PropTypes.func.isRequired,
+  onApply: PropTypes.func.isRequired,
+  onRemove: PropTypes.func.isRequired,
+  handleErrorCoupon: PropTypes.func.isRequired,
 };
 
 export default withStyles(CouponListSection, styles);

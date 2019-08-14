@@ -1,16 +1,16 @@
 import styled, { css } from 'styled-components';
 
 const styles = css`
-  margin-bottom: 20px;
+  .coupon_list {
+    margin-top: 0px;
+  }
 `;
 
-const WrapperStyle = styled.View`
-  display: flex;
-  flex-direction: column;
-`;
+const WrapperStyle = styled.View``;
 
 const CouponListContainer = styled.View`
-  margin-top: 1px;
+  background-color: rgba(243, 243, 243, 1);
+  padding: 20px 0px 20px 0px;
 `;
 
 export { styles, WrapperStyle, CouponListContainer };

@@ -1,26 +1,12 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
-const ButtonWrapperStyle = css`
-  &.forgot-password-form {
-    margin: 30px 0;
-
-    .heading-link a {
-      color: ${props => props.theme.colorPalette.black};
-    }
-
-    .forgot-password-text {
-      display: block;
-    }
-
-    .elem-mb-SM {
-      max-width: 241px;
-      margin: 12px auto 25px;
-    }
-  }
+const ViewConatiner = styled.View`
+  background: ${props => props.theme.colors.BRAND.GIRLS};
 `;
 
 const WrapperStyle = styled.View`
   margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+  padding: 0px 15px 0px 13px;
 `;
 
 const Container = styled.View`
@@ -60,6 +46,9 @@ const CouponTitle = styled.View`
 const CouponExpired = styled.View`
   flex: 1;
   background: ${props => props.theme.colors.TEXT.DARKERGRAY};
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const CouponText = styled.Text`
@@ -81,6 +70,8 @@ const CouponBody = styled.View`
 const CouponRow = styled.View`
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
   margin-top: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
   margin-bottom: ${props => props.theme.spacing.APP_LAYOUT_SPACING.XS};
 `;
@@ -98,8 +89,10 @@ const CouponDesc = styled(CouponText)`
 `;
 
 const CouponDuration = styled(CouponText)`
+  margin-top: 4px;
   color: ${props => props.theme.colors.TEXT.DARK};
   font-size: ${props => props.theme.typography.fontSizes.fs10};
+  font-family: ${props => props.theme.typography.fonts.secondary};
 `;
 
 const CouponAnchor = styled.View`
@@ -108,6 +101,7 @@ const CouponAnchor = styled.View`
 
 export {
   WrapperStyle,
+  ViewConatiner,
   Container,
   CardSavingHeader,
   CardRewardHeader,
@@ -123,5 +117,4 @@ export {
   CouponDesc,
   CouponDuration,
   CouponAnchor,
-  ButtonWrapperStyle,
 };

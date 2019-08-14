@@ -1,0 +1,177 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CouponCard Component should renders correctly when addresses are not present 1`] = `
+<Styled(View)>
+  <ErrorMessage
+    error=""
+  />
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(View)>
+          <Styled(View)>
+            <Styled(BodyCopy)
+              color="white"
+              data-locator="available_PublicValidityLbl"
+              fontFamily="secondary"
+              fontSize="fs12"
+              fontWeight="semibold"
+              locator=""
+              text=""
+            />
+          </Styled(View)>
+        </Styled(View)>
+        <Styled(View)>
+          <Styled(BodyCopy)
+            color="white"
+            data-locator="available_PublicValidityLbl"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="semibold"
+            locator=""
+            text=""
+          />
+        </Styled(View)>
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(View)>
+          <Styled(View)>
+            <Styled(Styled(Text))>
+              $10 OFF On $50
+            </Styled(Styled(Text))>
+            <Styled(View)>
+              <Styled(Styled(Text))>
+                <Styled(BodyCopy)
+                  data-locator="coupon_available_cartUseByValidity"
+                  locator=""
+                  text="Use by 8/10/19"
+                />
+              </Styled(Styled(Text))>
+            </Styled(View)>
+            <Styled(View)>
+              <Styled(Anchor)
+                anchorVariation="primary"
+                customStyle={Object {}}
+                data-locator=""
+                fontFamily="secondary"
+                fontSizeVariation="small"
+                locator=""
+                noLink={true}
+                onPress={[Function]}
+                text=""
+                to="/#"
+                underline={true}
+                visible={false}
+              />
+            </Styled(View)>
+          </Styled(View)>
+          <Styled(View)>
+            <Styled(CustomButton)
+              buttonVariation="variable-width"
+              color="#fff"
+              customStyle={Object {}}
+              data-locator=""
+              disableButton={false}
+              fill="BLACK"
+              fullWidth=""
+              locator=""
+              onPress={[Function]}
+              text="APPLY"
+              type="submit"
+              url=""
+            />
+          </Styled(View)>
+        </Styled(View)>
+      </Styled(View)>
+    </Styled(View)>
+  </Styled(View)>
+</Styled(View)>
+`;
+
+exports[`CouponCard Component should renders correctly when error present 1`] = `
+<Styled(View)>
+  <ErrorMessage
+    error="error"
+  />
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(View)>
+        <Styled(View)>
+          <Styled(View)>
+            <Styled(BodyCopy)
+              color="white"
+              data-locator="available_PublicValidityLbl"
+              fontFamily="secondary"
+              fontSize="fs12"
+              fontWeight="semibold"
+              locator=""
+              text=""
+            />
+          </Styled(View)>
+        </Styled(View)>
+        <Styled(View)>
+          <Styled(BodyCopy)
+            color="white"
+            data-locator="available_PublicValidityLbl"
+            fontFamily="secondary"
+            fontSize="fs12"
+            fontWeight="semibold"
+            locator=""
+            text=""
+          />
+        </Styled(View)>
+      </Styled(View)>
+      <Styled(View)>
+        <Styled(View)>
+          <Styled(View)>
+            <Styled(Styled(Text))>
+              $10 OFF On $50
+            </Styled(Styled(Text))>
+            <Styled(View)>
+              <Styled(Styled(Text))>
+                <Styled(BodyCopy)
+                  data-locator="coupon_available_cartUseByValidity"
+                  locator=""
+                  text="Use by 8/10/19"
+                />
+              </Styled(Styled(Text))>
+            </Styled(View)>
+            <Styled(View)>
+              <Styled(Anchor)
+                anchorVariation="primary"
+                customStyle={Object {}}
+                data-locator=""
+                fontFamily="secondary"
+                fontSizeVariation="small"
+                locator=""
+                noLink={true}
+                onPress={[Function]}
+                text=""
+                to="/#"
+                underline={true}
+                visible={false}
+              />
+            </Styled(View)>
+          </Styled(View)>
+          <Styled(View)>
+            <Styled(CustomButton)
+              buttonVariation="variable-width"
+              color="#fff"
+              customStyle={Object {}}
+              data-locator=""
+              disableButton={false}
+              fill="BLACK"
+              fullWidth=""
+              locator=""
+              onPress={[Function]}
+              text="APPLY"
+              type="submit"
+              url=""
+            />
+          </Styled(View)>
+        </Styled(View)>
+      </Styled(View)>
+    </Styled(View)>
+  </Styled(View)>
+</Styled(View)>
+`;
