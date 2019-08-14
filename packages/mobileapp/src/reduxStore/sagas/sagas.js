@@ -25,7 +25,6 @@ export default function* rootSaga() {
     LoginPageSaga(),
     ForgotPasswordSaga(),
     PaymentSaga(),
-    CouponSaga(),
     DefaultPaymentSaga(),
     SetDefaultShippingAddressSaga(),
     AddressBookSaga(),
@@ -36,6 +35,7 @@ export default function* rootSaga() {
     CartPageSaga(),
     BonusPointsSaga(),
     GiftCardBalanceSaga(),
+    CouponSaga(),
     DeleteCardSaga(),
     PointsHistorySaga(),
   ]);

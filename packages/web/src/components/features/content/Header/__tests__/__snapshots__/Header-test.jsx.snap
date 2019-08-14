@@ -1,50 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Header component renders correctly 1`] = `
-<header>
-  <Styled(HeaderTopNav)
-    className="header-topnav"
-  />
-  <Styled(HeaderMiddleNav) />
-  <Styled(HeaderPromo)
-    className="header__promo-area--mobile"
-    dataPromo={
-      Object {
-        "composites": Object {
-          "promoTextBanner": Object {},
-        },
-      }
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-dNLxif",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  margin-bottom: 8px;
+
+  @media ",
+          [Function],
+          " {
+    margin-bottom: 24px;
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(Header)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-dNLxif",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
     }
-    mobileMarkup={true}
-  />
-  <Styled(HeaderPromo)
-    className="header__promo-area--desktop"
-    dataPromo={
-      Object {
-        "composites": Object {
-          "promoTextBanner": Object {},
-        },
-      }
+  }
+  forwardedRef={null}
+  headerPromoArea={
+    Object {
+      "composites": Object {
+        "promoTextBanner": Object {},
+      },
     }
-  />
-  <styled.div
-    className="header-loyalty"
-  >
-    <Styled(Row)>
-      <Styled(Col)
-        className="header-loyalty__promo-loyalty"
-        colSize={
-          Object {
-            "large": 12,
-            "medium": 8,
-            "small": 6,
-          }
-        }
-      >
-        Loyalty Promo banners
-      </Styled(Col)>
-    </Styled(Row)>
-  </styled.div>
-  <Connect(OverlayModal) />
-</header>
+  }
+  headerTopNav={
+    Object {
+      "composites": Object {},
+    }
+  }
+/>
 `;

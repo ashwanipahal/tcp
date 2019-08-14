@@ -4,13 +4,13 @@ import { Col, Row, Image, Anchor, BodyCopy } from '@tcp/core/src/components/comm
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import MiniBagContainer from '@tcp/web/src/components/features/CnC/MiniBag/container/MiniBag.container';
 import { getCartItemCount } from '@tcp/core/src/utils/cookie.util';
-import { getBrand, getIconPath } from '@tcp/core/src/utils';
+import { getBrand, getIconPath, routerPush } from '@tcp/core/src/utils';
 import Navigation from '../../../Navigation';
 import BrandLogo from '../../../../../common/atoms/BrandLogo';
 import config from '../../config';
 import style from './HeaderMiddleNav.style';
 
-const cartItemCount = getCartItemCount();
+let cartItemCount = getCartItemCount();
 
 /**
  * This function handles opening and closing for Navigation drawer on mobile and tablet viewport
@@ -45,7 +45,14 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
 
   toggleMiniBagModal = ({ e, isOpen }) => {
     e.preventDefault();
-    this.setState({ isOpenMiniBagModal: isOpen });
+    if (window.innerWidth <= 1024) {
+      routerPush('/bag', '/bag');
+    } else {
+      this.setState({ isOpenMiniBagModal: isOpen });
+      if (!isOpen) {
+        cartItemCount = getCartItemCount();
+      }
+    }
   };
 
   render() {
@@ -144,10 +151,10 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
               </React.Fragment>
             )}
             <Anchor
-              href="#"
+              to=""
               id="cartIcon"
               className="rightLink"
-              handleLinkClick={e => this.toggleMiniBagModal({ e, isOpen: true })}
+              onClick={e => this.toggleMiniBagModal({ e, isOpen: true })}
               fontSizeVariation="small"
               anchorVariation="primary"
               noLink
