@@ -5,7 +5,7 @@ import { PaymentOverviewTile } from '../PaymentOverviewTile.container';
 import PaymentOverviewTileComponent from '../../views/PaymentOverviewTile.view';
 
 describe('PaymentOverviewTile container', () => {
-  it('should render PaymentOverviewTile component', () => {
+  it('should render PaymentOverviewTile components', () => {
     const obj = new List();
     const component = shallow(
       <PaymentOverviewTile
