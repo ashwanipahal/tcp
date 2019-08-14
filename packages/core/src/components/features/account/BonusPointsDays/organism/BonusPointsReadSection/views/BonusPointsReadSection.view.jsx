@@ -22,7 +22,11 @@ export const BonusPointsReadSection = ({
   return (
     <BodyCopy component="div" className={`${className} elem-pt-LRG`}>
       <BodyCopy component="div" className="bonusPointDayHeading elem-mb-XS">
-        <BodyCopy fontSize="fs14" fontWeight="semibold">
+        <BodyCopy
+          fontSize="fs14"
+          fontWeight="semibold"
+          data-locator="accountoverview-myplacerewatdstile-bonuspointdaytext"
+        >
           {labels.lbl_bonus_points_bonusPointsDay}
         </BodyCopy>
         <Anchor
@@ -30,6 +34,7 @@ export const BonusPointsReadSection = ({
           fontSizeVariation="large"
           underline
           onClick={toggleBonusPointsModal}
+          data-locator="accountoverview-myplacerewatdstile-bonuspointdetaillink"
         >
           {labels.lbl_bonus_points_detailLink}
         </Anchor>
@@ -37,10 +42,16 @@ export const BonusPointsReadSection = ({
       <BodyCopy fontSize="fs14" component="div">
         {message}
         {usedDaysArray.map(() => (
-          <span className="dot filled elem-ml-XS" />
+          <span
+            className="dot filled elem-ml-XS"
+            data-locator="accountoverview-myplacerewatdstile-bonuspointdots"
+          />
         ))}
         {availableDaysArray.map(() => (
-          <span className="dot elem-ml-XS" />
+          <span
+            className="dot elem-ml-XS"
+            data-locator="accountoverview-myplacerewatdstile-bonuspointdots"
+          />
         ))}
       </BodyCopy>
     </BodyCopy>

@@ -11,29 +11,36 @@ import styles from '../styles/MyPlaceRewardsOverviewTile.style';
 export const MyPlaceRewardsOverviewTile = ({ className, labels, coupons, isBrierleyEnabled }) => {
   const rewardCouponsCount = coupons.size;
   let walletOverviewInfo = '';
+  let rewardDataLocator = '';
 
   if (rewardCouponsCount) {
-    walletOverviewInfo = labels.lbl_overview_myPlaceRewardsAvailable.replace(/\{0\}/, rewardCouponsCount);
+    walletOverviewInfo = labels.lbl_overview_myPlaceRewardsAvailable.replace(
+      /\{0\}/,
+      rewardCouponsCount
+    );
+    rewardDataLocator = 'accountoverview-myplacerewatdstile-youhaverewardtext';
   } else {
     walletOverviewInfo = labels.lbl_overview_myPlaceRewardsDesc;
+    rewardDataLocator = 'accountoverview-myplacerewatdstile-startshoptext';
   }
   return (
     <AccountOverviewTile
       className={className}
       title={labels.lbl_overview_myPlaceRewardsHeading}
       ctaTitle={labels.lbl_overview_myPlaceRewardsCTA}
+      dataLocatorPrefix="myrewardstile"
     >
       <section className={`elem-pb-MED ${isBrierleyEnabled ? 'bordered' : ''}`}>
-        <BodyCopy className="elem-mb-LRG" fontSize="fs14" fontWeight="semibold">
+        <BodyCopy
+          className="elem-mb-LRG"
+          fontSize="fs14"
+          fontWeight="semibold"
+          data-locator={rewardDataLocator}
+        >
           {walletOverviewInfo}
         </BodyCopy>
-        <CouponList
-          coupons={coupons}
-          sliceCount={2}
-          labels={labels}
-        />
-        {!rewardCouponsCount &&
-          (
+        <CouponList coupons={coupons} sliceCount={2} labels={labels} />
+        {!rewardCouponsCount && (
           <div>
             <Anchor
               anchorVariation="button"
@@ -41,17 +48,15 @@ export const MyPlaceRewardsOverviewTile = ({ className, labels, coupons, isBrier
               fullWidth
               centered
               fill="WHITE"
-              to='/home'
+              to="/home"
+              data-locator="accountoverview-myplacerewardstile-startshopbtn"
             >
               {labels.lbl_overview_myPlaceRewardsShopNow}
             </Anchor>
           </div>
-          )
-        }
+        )}
       </section>
-      {isBrierleyEnabled
-        && <BonusPointsDays view="read" labels={labels} />
-      }
+      {isBrierleyEnabled && <BonusPointsDays view="read" labels={labels} />}
     </AccountOverviewTile>
   );
 };
@@ -62,7 +67,7 @@ MyPlaceRewardsOverviewTile.propTypes = {
     lbl_overview_myPlaceRewardsCTA: PropTypes.string.isRequired,
     lbl_overview_myPlaceRewardsAvailable: PropTypes.string.isRequired,
     lbl_overview_myPlaceRewardsDesc: PropTypes.string.isRequired,
-    lbl_overview_myPlaceRewardsShopNow: PropTypes.string.isRequired
+    lbl_overview_myPlaceRewardsShopNow: PropTypes.string.isRequired,
   }).isRequired,
   coupons: PropTypes.shape([]).isRequired,
   isBrierleyEnabled: PropTypes.bool,
@@ -71,7 +76,7 @@ MyPlaceRewardsOverviewTile.propTypes = {
 
 MyPlaceRewardsOverviewTile.defaultProps = {
   isBrierleyEnabled: true,
-  className: ''
+  className: '',
 };
 
 export default withStyles(MyPlaceRewardsOverviewTile, styles);

@@ -3,6 +3,7 @@
 exports[`MyPlaceRewardsOverviewTile component should render correctly when coupons are not present 1`] = `
 <Styled(AccountOverviewTile)
   className=""
+  dataLocatorPrefix="myrewardstile"
 >
   <section
     className="elem-pb-MED "
@@ -11,6 +12,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       className="elem-mb-LRG"
       color="text.primary"
       component="p"
+      data-locator="accountoverview-myplacerewatdstile-startshoptext"
       fontFamily="primary"
       fontSize="fs14"
       fontWeight="semibold"
@@ -28,6 +30,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
         anchorVariation="button"
         buttonVariation="variable-width"
         centered={true}
+        data-locator="accountoverview-myplacerewardstile-startshopbtn"
         fill="WHITE"
         fullWidth={true}
         to="/home"
@@ -40,6 +43,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
 exports[`MyPlaceRewardsOverviewTile component should render correctly when coupons are present 1`] = `
 <Styled(AccountOverviewTile)
   className=""
+  dataLocatorPrefix="myrewardstile"
 >
   <section
     className="elem-pb-MED bordered"
@@ -48,6 +52,7 @@ exports[`MyPlaceRewardsOverviewTile component should render correctly when coupo
       className="elem-mb-LRG"
       color="text.primary"
       component="p"
+      data-locator="accountoverview-myplacerewatdstile-youhaverewardtext"
       fontFamily="primary"
       fontSize="fs14"
       fontWeight="semibold"

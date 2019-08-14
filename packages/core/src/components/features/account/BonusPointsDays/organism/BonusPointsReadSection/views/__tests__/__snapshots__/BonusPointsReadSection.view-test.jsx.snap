@@ -27,6 +27,7 @@ exports[`BonusPointsReadSection should render correctly 1`] = `
       className={null}
       color="text.primary"
       component="p"
+      data-locator="accountoverview-myplacerewatdstile-bonuspointdaytext"
       fontFamily="primary"
       fontSize="fs14"
       fontWeight="semibold"
@@ -38,6 +39,7 @@ exports[`BonusPointsReadSection should render correctly 1`] = `
     </Styled(BodyCopy)>
     <Styled(Anchor)
       anchorVariation="primary"
+      data-locator="accountoverview-myplacerewatdstile-bonuspointdetaillink"
       fontSizeVariation="large"
       onClick={[Function]}
       underline={true}
@@ -59,9 +61,11 @@ exports[`BonusPointsReadSection should render correctly 1`] = `
     You have 1 days left
     <span
       className="dot filled elem-ml-XS"
+      data-locator="accountoverview-myplacerewatdstile-bonuspointdots"
     />
     <span
       className="dot elem-ml-XS"
+      data-locator="accountoverview-myplacerewatdstile-bonuspointdots"
     />
   </Styled(BodyCopy)>
 </Styled(BodyCopy)>
