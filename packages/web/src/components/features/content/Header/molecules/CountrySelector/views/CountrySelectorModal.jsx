@@ -10,13 +10,26 @@ class CountrySelectorModal extends React.Component {
   constructor(props) {
     super(props);
     this.handleCountryChange = this.handleCountryChange.bind(this);
+    this.handleLanguageChange = this.handleLanguageChange.bind(this);
+    this.handleCurrencyChange = this.handleCurrencyChange.bind(this);
   }
 
   handleCountryChange = event => {
     const selectedCountry = event.target.value;
     const { updateCountry } = this.props;
-    console.log(selectedCountry);
     updateCountry(selectedCountry);
+  };
+
+  handleLanguageChange = event => {
+    const selectedLanguage = event.target.value;
+    const { updateLanguage } = this.props;
+    updateLanguage(selectedLanguage);
+  };
+
+  handleCurrencyChange = event => {
+    const selectedCurrency = event.target.value;
+    const { updateCurrency } = this.props;
+    updateCurrency(selectedCurrency);
   };
 
   render() {
@@ -64,7 +77,7 @@ class CountrySelectorModal extends React.Component {
             </label>
             <label htmlFor="language">
               <span>{labels.lbl_global_language}</span>
-              <select name="language" id="language">
+              <select name="language" id="language" onChange={this.handleLanguageChange}>
                 {languages.map(({ code, name }) => (
                   <option value={code}>{name}</option>
                 ))}
@@ -72,7 +85,7 @@ class CountrySelectorModal extends React.Component {
             </label>
             <label htmlFor="currency">
               <span>{labels.lbl_global_currency}</span>
-              <select name="currency" id="currency">
+              <select name="currency" id="currency" onChange={this.handleCurrencyChange}>
                 {countryListData.length > 0 &&
                   countryListData.map(({ currency: { code, name } }) => (
                     <option value={code}>{name}</option>
@@ -106,6 +119,8 @@ CountrySelectorModal.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   languages: PropTypes.shape({}).isRequired,
   updateCountry: PropTypes.func.isRequired,
+  updateLanguage: PropTypes.func.isRequired,
+  updateCurrency: PropTypes.func.isRequired,
 };
 
 CountrySelectorModal.defaultPropTypes = {

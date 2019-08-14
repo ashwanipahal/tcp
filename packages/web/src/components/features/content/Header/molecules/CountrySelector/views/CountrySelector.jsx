@@ -35,6 +35,16 @@ class CountrySelector extends React.Component {
     updateCountry(selectedCountry);
   };
 
+  changeLanguage = selectedLanguage => {
+    const { updateLanguage } = this.props;
+    updateLanguage(selectedLanguage);
+  };
+
+  changeCurrency = selectedCurrency => {
+    const { updateCurrency } = this.props;
+    updateCurrency(selectedCurrency);
+  };
+
   render() {
     const { className, countryListData, isModalOpen, labels, showInFooter } = this.props;
     const {
@@ -60,6 +70,8 @@ class CountrySelector extends React.Component {
               languages={languages}
               handleSubmit={this.submitForm}
               updateCountry={this.changeCountry}
+              updateLanguage={this.changeLanguage}
+              updateCurrency={this.changeCurrency}
             />
           </React.Fragment>
         ) : (
@@ -104,6 +116,8 @@ CountrySelector.propTypes = {
   showInFooter: PropTypes.bool,
   toggleModal: PropTypes.func,
   updateCountry: PropTypes.func,
+  updateLanguage: PropTypes.func,
+  updateCurrency: PropTypes.func,
 };
 
 CountrySelector.defaultProps = {
@@ -113,6 +127,8 @@ CountrySelector.defaultProps = {
   loadCountryListData: () => {},
   toggleModal: () => {},
   updateCountry: () => {},
+  updateLanguage: () => {},
+  updateCurrency: () => {},
 };
 
 export default withStyles(CountrySelector, style);

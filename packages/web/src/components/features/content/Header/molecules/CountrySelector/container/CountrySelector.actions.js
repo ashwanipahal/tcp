@@ -8,7 +8,6 @@ export const getCountryListData = payload => {
 };
 
 export const submitCountrySelection = payload => {
-  console.log(payload);
   return {
     payload,
     type: COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_SUBMIT_DATA,
@@ -22,10 +21,27 @@ export const toggleCountrySelectorModal = payload => {
   };
 };
 
-export const updateSelectedCountry = payload => {
+export const updateSelectedCountry = country => {
+  const payload = { country };
   return {
     payload,
     type: COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_UPDATE_COUNTRY,
+  };
+};
+
+export const updateSelectedLanguage = language => {
+  const payload = { language };
+  return {
+    payload,
+    type: COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_UPDATE_LANGUAGE,
+  };
+};
+
+export const updateSelectedCurrency = currency => {
+  const payload = { currency };
+  return {
+    payload,
+    type: COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_UPDATE_CURRENCY,
   };
 };
 
@@ -34,4 +50,6 @@ export default {
   submitCountrySelection,
   toggleCountrySelectorModal,
   updateSelectedCountry,
+  updateSelectedLanguage,
+  updateSelectedCurrency,
 };

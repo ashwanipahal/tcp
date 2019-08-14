@@ -5,6 +5,8 @@ import {
   submitCountrySelection,
   toggleCountrySelectorModal,
   updateSelectedCountry,
+  updateSelectedLanguage,
+  updateSelectedCurrency,
 } from './CountrySelector.actions';
 import CountrySelectorView from '../views';
 
@@ -21,6 +23,12 @@ export const mapDispatchToProps = dispatch => {
     },
     updateCountry: selectedCountry => {
       dispatch(updateSelectedCountry(selectedCountry));
+    },
+    updateLanguage: selectedLanguage => {
+      dispatch(updateSelectedLanguage(selectedLanguage));
+    },
+    updateCurrency: selectedCurrency => {
+      dispatch(updateSelectedCurrency(selectedCurrency));
     },
   };
 };
