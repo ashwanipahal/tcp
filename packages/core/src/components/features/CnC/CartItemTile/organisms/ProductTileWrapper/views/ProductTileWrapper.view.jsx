@@ -15,7 +15,7 @@ const ProductTileWrapper = props => {
   const { orderItems, bagLabels, labels, pageView, isUserLoggedIn } = props;
   if (orderItems && orderItems.size > 0) {
     return (
-      <div className="miniBagWrapper">
+      <>
         {(isAvailable === 'SOLDOUT' || isAvailable === 'UNAVAILABLE') && (
           <>
             <ErrorMessage customClass={customStyles} error={labels.problemWithOrder} />
@@ -36,7 +36,7 @@ const ProductTileWrapper = props => {
             />
           );
         })}
-      </div>
+      </>
     );
   }
   return <EmptyBag bagLabels={bagLabels} isUserLoggedIn={isUserLoggedIn} />;

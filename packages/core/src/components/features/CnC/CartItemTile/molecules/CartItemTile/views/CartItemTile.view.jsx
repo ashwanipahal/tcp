@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ProductEditForm from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ProductCustomizeForm/ProductCustomizeForm';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability/views/ItemAvailability.view';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import CartItemRadioButtons from '@tcp/core/src/components/features/CnC/CartItemTile/molecules/CartItemRadioButtons/views/CartItemRadioButtons';
+import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
 import endpoints from '../../../../../../../service/endpoint';
 import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
 
