@@ -33,4 +33,4 @@ export const MainSection = styled.View`
   margin-bottom: 3px;
 `;
 
-export default { WrapperStyle, HeadingViewStyle, MainSection, RowSectionStyle, HeadingTextStyle };
+export default { HeadingViewStyle, MainSection, RowSectionStyle, HeadingTextStyle };

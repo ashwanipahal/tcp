@@ -14,19 +14,29 @@ export const PasswordRequirement = ({ labels }) => {
         textAlign="center"
         fontFamily="secondary"
         fontSize="fs14"
-        className="elem-mb-MED"
+        className="elem-mb-MED reset-password-heading"
         fontWeight="black"
       >
         {labels.lbl_resetPassword_requirementHeading}
       </BodyCopy>
-      <BodyCopy fontFamily="secondary" fontSize="fs14" component="ul" className="elem-mb-MED">
+      <BodyCopy
+        fontFamily="secondary"
+        fontSize="fs14"
+        component="ul"
+        className="elem-mb-MED reset-password-list"
+      >
         {passwordRequirementLabelKeys.map(labelKey => (
           <BodyCopy component="li" textAlign="center" key={labelKey}>
             {labels[labelKey]}
           </BodyCopy>
         ))}
       </BodyCopy>
-      <BodyCopy fontFamily="secondary" fontSize="fs14" textAlign="left">
+      <BodyCopy
+        fontFamily="secondary"
+        fontSize="fs14"
+        textAlign="left"
+        className="reset-password-note"
+      >
         {labels.lbl_resetPassword_requirementNote}
       </BodyCopy>
     </React.Fragment>
