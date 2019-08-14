@@ -221,6 +221,10 @@ class CartItemTile extends React.Component {
   };
 
   getPointsColor = pageView => {
+    const { isPlcc } = this.props;
+    if (isPlcc && pageView === 'myBag') {
+      return 'blue.800';
+    }
     return pageView !== 'myBag' ? 'gray.900' : 'orange.800';
   };
 
@@ -426,6 +430,7 @@ CartItemTile.propTypes = {
   productDetail: PropTypes.shape({}).isRequired,
   labels: PropTypes.shape({}).isRequired,
   className: PropTypes.string.isRequired,
+  isPlcc: PropTypes.string.isRequired,
   pageView: PropTypes.string,
 };
 
