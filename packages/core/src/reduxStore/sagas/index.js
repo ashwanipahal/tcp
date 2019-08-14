@@ -10,6 +10,7 @@ import CouponSaga from '@tcp/core/src/components/features/CnC/common/organism/Co
 
 import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.saga';
 import BootstrapSaga from './bootstrap';
+import LabelsSaga from './labels';
 
 export {
   ProductListingPageSaga,
@@ -23,6 +24,7 @@ export {
   SetDefaultShippingAddressSaga,
   CouponSaga,
   BootstrapSaga,
+  LabelsSaga,
 };
 
 export default {
@@ -37,4 +39,5 @@ export default {
   SetDefaultShippingAddressSaga,
   CouponSaga,
   BootstrapSaga,
+  LabelsSaga,
 };

@@ -5,7 +5,8 @@ import footerAbstractor from './footer';
 import navigationAbstractor from './navigation';
 import handler from '../../handler';
 import { getAPIConfig } from '../../../utils';
-
+// TODO - GLOBAL-LABEL-CHANGE - STEP 1.1 -  Uncomment this line for only global data
+// import { LABELS } from '../../../reduxStore/constants';
 import { defaultBrand, defaultChannel, defaultCountry } from '../../api.constants';
 
 /**
@@ -100,7 +101,9 @@ const bootstrap = async pages => {
   const bootstrapParams = {
     pages,
     labels: {
-      category: 'global',
+      // TODO - GLOBAL-LABEL-CHANGE - STEP 1.2 -  Uncomment this line for only global data
+      // TODO - Mobile app should also follows the same pattern
+      // category: LABELS.global,
     },
     brand: (apiConfig && apiConfig.brandIdCMS) || defaultBrand,
     channel: defaultChannel,

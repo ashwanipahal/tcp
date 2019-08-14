@@ -18,6 +18,7 @@ import BonusPointsSaga from '@tcp/core/src/components/features/account/BonusPoin
 import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
 import AddressVerificationSaga from '@tcp/core/src/components/features/account/AddressVerification/container/AddressVerification.saga';
 import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
+import LabelsSaga from '@tcp/core/src/reduxStore/sagas/labels';
 import AccountSaga from '@tcp/core/src/components/features/account/Account/container/Account.saga';
 import AccountHeaderSaga from '@tcp/core/src/components/features/account/common/organism/AccountHeader/container/AccountHeader.saga';
 import AddEditCreditCardSaga from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.saga';
@@ -31,6 +32,7 @@ import SmsSignupSaga from '../../components/common/molecules/SmsSignupModal/cont
 
 export default function* rootSaga() {
   yield all([
+    LabelsSaga(),
     BootstrapSaga(),
     HomePageSaga(),
     ProductListingPageSaga(),

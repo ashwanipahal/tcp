@@ -14,6 +14,19 @@ export const loadGlobalLabelsData = payload => {
     type: GLOBAL_CONSTANTS.LOAD_GLOBAL_LABELS_DATA,
   };
 };
+export const setLabelsData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.SET_LABELS_DATA,
+  };
+};
+
+export const loadComponentLabelsData = payload => {
+  return {
+    payload,
+    type: GLOBAL_CONSTANTS.LOAD_COMPONENT_LABELS_DATA,
+  };
+};
 
 export const setAPIConfig = payload => {
   return {
@@ -45,6 +58,8 @@ export const loadUserProfile = () => {
 export default {
   loadLayoutData,
   loadGlobalLabelsData,
+  setLabelsData,
+  loadComponentLabelsData,
   bootstrapData,
   loadModulesData,
   loadUserProfile,

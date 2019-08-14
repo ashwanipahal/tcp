@@ -23,10 +23,10 @@ const mapStateToProps = state => {
   const { Footer } = state;
   const {
     global: {
-      footerDefault: { CONNECT_WITH_US: connectWithUsLabel, REFERENCE_ID: referenceID },
+      footerDefault: { CONNECT_WITH_US: connectWithUsLabel, REFERENCE_ID: referenceID } = {},
       emailSignup: emailSignupLabels,
       smsSignup: smsSignupLabels,
-    },
+    } = {},
   } = state.Labels;
   const { EmailSignUp = {}, SmsSignUp = {} } = state;
 
