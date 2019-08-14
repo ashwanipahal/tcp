@@ -4,5 +4,166 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
 <Styled(AccountOverviewTile)
   ctaTitle=""
   title=""
-/>
+>
+  <div
+    className=""
+  >
+    <Styled(BodyCopy)
+      className="heading"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      <Styled(Row)
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 10,
+              "medium": 7,
+              "small": 5,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="div"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 1,
+              "small": 1,
+            }
+          }
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            fontSizeVariation="medium"
+            underline={true}
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+      <Styled(Row)
+        className="elem-mb-XL"
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 10,
+              "medium": 7,
+              "small": 5,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(BodyCopy)>
+    <Styled(BodyCopy)
+      className="elem-mt-LRG"
+      color="text.primary"
+      component="div"
+      fontFamily="primary"
+      fontSize={12}
+      fontWeight="regular"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    >
+      <Styled(Row)
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 10,
+              "medium": 7,
+              "small": 5,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="div"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="extrabold"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          />
+        </Styled(Col)>
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 2,
+              "medium": 1,
+              "small": 1,
+            }
+          }
+        >
+          <Styled(Anchor)
+            anchorVariation="primary"
+            fontSizeVariation="medium"
+            underline={true}
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+      <Styled(Row)
+        className="elem-mb-XXL"
+        fullBleed={true}
+      >
+        <Styled(Col)
+          colSize={
+            Object {
+              "large": 10,
+              "medium": 7,
+              "small": 5,
+            }
+          }
+        >
+          <Styled(BodyCopy)
+            className={null}
+            color="text.primary"
+            component="p"
+            fontFamily="secondary"
+            fontSize="fs14"
+            fontWeight="regular"
+            letterSpacing="normal"
+            lineHeight="normal"
+            textAlign="left"
+          />
+        </Styled(Col)>
+      </Styled(Row)>
+    </Styled(BodyCopy)>
+  </div>
+</Styled(AccountOverviewTile)>
 `;

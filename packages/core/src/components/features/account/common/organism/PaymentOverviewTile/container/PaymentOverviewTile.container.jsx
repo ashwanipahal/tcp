@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import PaymentOverviewTileComponent from '../views';
 import {
@@ -8,7 +9,29 @@ import {
 } from '../../../../Payment/container/Payment.selectors';
 import { getCardList } from '../../../../Payment/container/Payment.actions';
 
-export class PaymentOverviewTile extends React.Component<Props> {
+export class PaymentOverviewTile extends React.Component {
+  static propTypes = {
+    getCardListAction: PropTypes.func,
+    labels: PropTypes.shape({
+      lbl_overview_paymentHeading: PropTypes.string,
+      lbl_overview_paymentCTA: PropTypes.string,
+    }),
+    creditCardDefault: PropTypes.shape({}),
+    giftCardList: PropTypes.shape({}),
+    venmoCardList: PropTypes.shape({}),
+  };
+
+  static defaultProps = {
+    getCardListAction: () => {},
+    labels: {
+      lbl_overview_paymentHeading: '',
+      lbl_overview_paymentCTA: '',
+    },
+    creditCardDefault: {},
+    giftCardList: {},
+    venmoCardList: {},
+  };
+
   componentDidMount() {
     const { getCardListAction } = this.props;
     getCardListAction();
