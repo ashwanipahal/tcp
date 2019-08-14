@@ -9,7 +9,7 @@ const Loader = props => {
   if (loaderState) {
     return (
       <LoaderLoyalty className="loaderWrapper">
-        <span>{}</span>
+        <span>Loader...</span>
       </LoaderLoyalty>
     );
   }
