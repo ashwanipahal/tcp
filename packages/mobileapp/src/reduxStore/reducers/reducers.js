@@ -12,6 +12,7 @@ import CartItemTile from '@tcp/core/src/components/features/CnC/CartItemTile/con
 import CartPage from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.reducer';
 import PointsHistoryReducer from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.reducer';
 import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
+import CouponReducer from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.reducer';
 import BonusPointsDaysReducer from '@tcp/core/src/components/features/account/BonusPointsDays/container/BonusPointsDays.reducer';
 import {
   HEADER_REDUCER_KEY,
@@ -30,6 +31,7 @@ import {
   NAVIGATION_REDUCER_KEY,
   FORM_REDUCER_KEY,
   CREATE_ACCOUNT_REDUCER_KEY,
+  COUPON_REDUCER_KEY,
   BONUS_POINTS_DAYS_REDUCER_KEY,
   POINTS_HISTORY_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
@@ -64,6 +66,7 @@ export default combineReducers({
   [CARTPAGE_REDUCER_KEY]: CartPage,
   [NAVIGATION_REDUCER_KEY]: NavigationReducer,
   [CREATE_ACCOUNT_REDUCER_KEY]: CreateAccountReducer,
+  [COUPON_REDUCER_KEY]: CouponReducer,
   [BONUS_POINTS_DAYS_REDUCER_KEY]: BonusPointsDaysReducer,
   [POINTS_HISTORY_REDUCER_KEY]: PointsHistoryReducer,
 });
