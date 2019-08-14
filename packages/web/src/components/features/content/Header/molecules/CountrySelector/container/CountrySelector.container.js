@@ -38,6 +38,7 @@ const mapStateToProps = state => {
   return {
     isModalOpen: CountrySelector.isModalOpen,
     countryListData: CountrySelector.countryList,
+    country: CountrySelector.country,
     labels: state.Labels.global.countrySelector,
   };
 };

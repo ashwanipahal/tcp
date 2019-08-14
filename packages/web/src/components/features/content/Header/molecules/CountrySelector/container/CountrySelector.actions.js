@@ -8,6 +8,7 @@ export const getCountryListData = payload => {
 };
 
 export const submitCountrySelection = payload => {
+  console.log(payload);
   return {
     payload,
     type: COUNTRY_SELECTOR_CONSTANTS.COUNTRY_SELECTOR_SUBMIT_DATA,

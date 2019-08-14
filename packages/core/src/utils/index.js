@@ -25,4 +25,5 @@ export {
   getAPIConfig,
   createAPIConfig,
   isCanada,
+  getFlagIconPath,
 } from './utils';

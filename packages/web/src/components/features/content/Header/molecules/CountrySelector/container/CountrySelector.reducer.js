@@ -6,6 +6,8 @@ const initialState = {
   country: '',
   language: '',
   currency: '',
+  oldCountryCode: 'US',
+  oldLanguageCode: 'es',
 };
 
 const CountrySelectorReducer = (state = initialState, action) => {

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BodyCopy, Image } from '@tcp/core/src/components/common/atoms';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
+import { getFlagIconPath } from '@tcp/core/src/utils';
 
 import CountrySelectorModal from './CountrySelectorModal';
 import style from '../styles/CountrySelector.styles';
@@ -46,7 +47,7 @@ class CountrySelector extends React.Component {
   };
 
   render() {
-    const { className, countryListData, isModalOpen, labels, showInFooter } = this.props;
+    const { className, flag, countryListData, isModalOpen, labels, showInFooter } = this.props;
     const {
       US: { languages },
     } = language;
@@ -78,12 +79,7 @@ class CountrySelector extends React.Component {
           ''
         )}
         <div className="countrySelector__flag-icon">
-          <Image
-            src="/static/images/flags/united-states-of-america.svg"
-            width="20px"
-            height="20px"
-            onClick={this.openModal}
-          />
+          <Image src={getFlagIconPath(flag)} width="20px" height="20px" onClick={this.openModal} />
         </div>
         <div>
           {languages.map(({ code }, index) => (
@@ -108,6 +104,7 @@ class CountrySelector extends React.Component {
 
 CountrySelector.propTypes = {
   className: PropTypes.string.isRequired,
+  flag: PropTypes.string.isRequired,
   countryListData: PropTypes.arrayOf(PropTypes.shape({})),
   handleSubmit: PropTypes.func,
   isModalOpen: PropTypes.bool.isRequired,

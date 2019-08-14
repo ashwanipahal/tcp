@@ -1,5 +1,6 @@
 import icons from '../config/icons';
 import locators from '../config/locators';
+import flagIcons from '../config/flagIcons';
 import { API_CONFIG, awsAppSync, googleAppConfig } from '../services/config';
 import { getStoreRef, resetStoreRef } from './store.utils';
 import { APICONFIG_REDUCER_KEY } from '../constants/reducer.constants';
@@ -21,6 +22,14 @@ export const getIconPath = icon => {
  */
 export const getLocator = locator => {
   return locators[locator];
+};
+
+/**
+ * This function returns the path of flag icons in static/images/flag folder
+ * @param {*} icon | String - Country Code Identifier eg. US for USA
+ */
+export const getFlagIconPath = code => {
+  return flagIcons[code];
 };
 
 export const isMobileApp = () => {
@@ -134,6 +143,7 @@ export const isCanada = () => {
 export default {
   getIconPath,
   getLocator,
+  getFlagIconPath,
   isClient,
   isMobileApp,
   isServer,
