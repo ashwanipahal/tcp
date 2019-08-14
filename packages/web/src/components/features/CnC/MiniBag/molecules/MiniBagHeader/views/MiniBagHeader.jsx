@@ -19,7 +19,7 @@ type Props = {
 };
 const MiniBagHeader = ({ labels, cartItemCount, className, userName }: Props) => {
   const data = {
-    points: 50,
+    points: 0,
     rewardsPoints: 0,
   };
 
