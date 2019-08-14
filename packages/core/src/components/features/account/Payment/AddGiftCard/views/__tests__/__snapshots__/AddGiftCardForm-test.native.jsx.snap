@@ -244,6 +244,7 @@ exports[`Add gift card form component render error message 1`] = `
 
 exports[`Add gift card form component should render component correctly 1`] = `
 <ScrollViewMock
+  addGiftCardResponse={null}
   change={[MockFunction]}
   handleSubmit={[Function]}
   labels={

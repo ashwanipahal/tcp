@@ -31,7 +31,7 @@ const styles = {
   },
 };
 
-class AddGiftCardForm extends React.PureComponent<Props> {
+class AddGiftCardForm extends React.PureComponent {
   onMessage = event => {
     const { change } = this.props;
     if (event && event.nativeEvent.data) {
@@ -135,6 +135,8 @@ AddGiftCardForm.propTypes = {
   toggleModal: PropTypes.func,
   onAddGiftCardClick: PropTypes.func,
   labels: PropTypes.shape({}),
+  addGiftCardResponse: PropTypes.string,
+  change: PropTypes.func,
 };
 
 AddGiftCardForm.defaultProps = {
@@ -142,6 +144,8 @@ AddGiftCardForm.defaultProps = {
   toggleModal: () => {},
   onAddGiftCardClick: () => {},
   labels: {},
+  addGiftCardResponse: null,
+  change: () => {},
 };
 
 const validateMethod = createValidateMethod(
