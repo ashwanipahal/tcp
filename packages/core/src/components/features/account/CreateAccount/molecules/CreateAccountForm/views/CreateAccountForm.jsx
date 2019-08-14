@@ -196,6 +196,7 @@ let CreateAccountForm = ({
               component={InputCheckbox}
               dataLocator="i-agree-checkbox"
               disabled={isMakeDefaultDisabled}
+              alignCheckbox="top"
             >
               {labels.registration.lbl_createAccount_termsConditions}
             </Field>

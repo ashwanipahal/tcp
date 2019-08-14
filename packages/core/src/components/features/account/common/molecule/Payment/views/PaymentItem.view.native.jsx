@@ -5,11 +5,15 @@ import { get } from 'lodash';
 import ImageComp from '@tcp/core/src/components/common/atoms/Image';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Recaptcha from '@tcp/core/src/components/common/molecules/recaptcha/recaptcha.native';
+import Anchor from '@tcp/core/src/components/common/atoms/Anchor';
+import CustomButton from '@tcp/core/src/components/common/atoms/Button';
+import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
+import createValidateMethod from '@tcp/core/src/utils/formValidation/createValidateMethod';
+import getStandardConfig from '@tcp/core/src/utils/formValidation/validatorStandardConfig';
 import {
   PaymentContainer,
   PaymentType,
   PaymentInfoContainer,
-  TouchableLink,
   PaymentInfo,
   PaymentDetails,
   RecaptchaContainer,
@@ -17,10 +21,6 @@ import {
   PaymentWrapper,
   CheckBalanceContainer,
 } from '../styles/PaymentItem.style.native';
-import TextBox from '../../../../../../common/atoms/TextBox';
-import CustomButton from '../../../../../../common/atoms/Button';
-import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
-import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 
 class PaymentItem extends React.Component<Props> {
   handleGetGiftCardBalanceClick = (formData, card, onGetBalanceCard) => {
@@ -51,18 +51,17 @@ class PaymentItem extends React.Component<Props> {
           <PaymentType>
             <BodyCopy
               fontFamily="secondary"
-              fontSize="fs13"
+              fontSize="fs14"
               fontWeight="regular"
               text={paymentInfo.title}
               color="gray.900"
             />
             {variation === 'add' && (
               <BodyCopy
-                fontFamily="secondary"
+                fontFamily="primary"
                 fontSize="fs13"
                 fontWeight="regular"
                 text={paymentInfo.text}
-                color="gray.900"
               />
             )}
             {variation === 'edit' && (
@@ -75,7 +74,6 @@ class PaymentItem extends React.Component<Props> {
                     fontSize="fs12"
                     fontWeight="regular"
                     text={paymentInfo.text}
-                    color="gray.900"
                   />
                   <BodyCopy
                     style={PaymentDetails}
@@ -89,18 +87,17 @@ class PaymentItem extends React.Component<Props> {
               </PaymentInfoContainer>
             )}
           </PaymentType>
-          <TouchableLink
+          <Anchor
+            anchorVariation="primary"
+            text={paymentInfo.variation}
             onPress={() => handleComponentChange('paymentGiftCardsPageMobile')}
-            textDecorationLine="underline"
-          >
-            <BodyCopy
-              fontFamily="secondary"
-              fontSize="fs13"
-              fontWeight="regular"
-              text={paymentInfo.variation}
-              color="gray.900"
-            />
-          </TouchableLink>
+            underline
+            fontSizeVariation="large"
+            noLink
+            data-locator="payment-overview-editlink"
+            color="gray.900"
+            lineHeight="10"
+          />
         </PaymentWrapper>
         {isGiftCard && variation === 'edit' && (
           <RecaptchaWrapper>

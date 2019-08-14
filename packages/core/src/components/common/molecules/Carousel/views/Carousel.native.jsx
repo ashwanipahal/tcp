@@ -214,6 +214,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
         <Container>
           <TouchableView
             accessibilityRole="button"
+            accessibilityLabel="Previous"
             testID={getLocator('global_promobanner_right_arrow')}
             onPress={() => this.manageSlide('next')}
           >
@@ -234,6 +235,7 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           />
           <TouchableView
             accessibilityRole="button"
+            accessibilityLabel="next"
             testID={getLocator('global_promobanner_left_arrowRight')}
             onPress={() => this.manageSlide('prev')}
           >
@@ -262,12 +264,14 @@ class SnapCarousel extends React.PureComponent<Props, State> {
           autoplayInterval={autoplayInterval}
         />
 
-        <ControlsWrapper>
-          {carouselConfig.autoplay && (
-            <PlayPauseButtonView>{this.getPlayButton(carouselConfig)}</PlayPauseButtonView>
-          )}
-          {showDots ? this.getPagination() : null}
-        </ControlsWrapper>
+        {data.length > 1 && (
+          <ControlsWrapper>
+            {carouselConfig.autoplay && (
+              <PlayPauseButtonView>{this.getPlayButton(carouselConfig)}</PlayPauseButtonView>
+            )}
+            {showDots ? this.getPagination() : null}
+          </ControlsWrapper>
+        )}
       </View>
     );
   }
