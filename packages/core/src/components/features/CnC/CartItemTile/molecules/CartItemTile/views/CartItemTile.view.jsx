@@ -117,7 +117,7 @@ class CartItemTile extends React.Component {
               </BodyCopy>
             </div>
             <BodyCopy
-              className="padding-left-10"
+              className="padding-left-6"
               fontFamily="secondary"
               component="span"
               fontSize="fs12"
@@ -149,7 +149,7 @@ class CartItemTile extends React.Component {
               </BodyCopy>
             </div>
             <BodyCopy
-              className="padding-left-10"
+              className="padding-left-6"
               fontFamily="secondary"
               component="span"
               fontSize="fs12"
@@ -183,7 +183,7 @@ class CartItemTile extends React.Component {
               </BodyCopy>
             </div>
             <BodyCopy
-              className="padding-left-10"
+              className="padding-left-6"
               fontFamily="secondary"
               component="span"
               fontSize="fs12"
@@ -325,16 +325,18 @@ class CartItemTile extends React.Component {
               )}
             </div>
             {!productDetail.itemInfo.isGiftItem && (
-              <Image
-                alt={labels.productBandAlt}
-                className="brand-image"
-                src={
-                  productDetail.itemInfo.itemBrand === 'TCP'
-                    ? getIconPath(`header__brand-tab--tcp`)
-                    : getIconPath('header__brand-tab-gymboree')
-                }
-                data-locator={getLocator('cart_item_brand_logo')}
-              />
+              <div className="logoWrapper">
+                <Image
+                  alt={labels.productBandAlt}
+                  className="brand-image"
+                  src={
+                    productDetail.itemInfo.itemBrand === 'TCP'
+                      ? getIconPath(`header__brand-tab--tcp`)
+                      : getIconPath('header__brand-tab-gymboree')
+                  }
+                  data-locator={getLocator('cart_item_brand_logo')}
+                />
+              </div>
             )}
           </Col>
           <Col
