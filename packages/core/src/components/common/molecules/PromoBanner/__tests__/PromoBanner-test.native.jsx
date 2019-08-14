@@ -21,7 +21,7 @@ describe('PromoTextBanner native component', () => {
   });
 
   it('should render 1View', () => {
-    expect(component.find('Styled(View)')).toHaveLength(0);
+    expect(component.find('Styled(View)')).toHaveLength(1);
   });
 
   it('should render View', () => {

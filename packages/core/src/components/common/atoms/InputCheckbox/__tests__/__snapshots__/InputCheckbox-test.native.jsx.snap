@@ -23,7 +23,6 @@ exports[`InputCheckbox component should render correctly 1`] = `
   </Styled(View)>
   <Styled(BodyCopy)
     fontSize="fs12"
-    locator=""
     mobileFontFamily="secondary"
     text="checkbox"
   />
@@ -35,7 +34,6 @@ exports[`InputCheckbox component should render correctly 1`] = `
     data-locator="errorDataLocator"
     fontFamily="secondary"
     fontSize="fs12"
-    locator=""
     role="alert"
     text=""
   />
@@ -65,7 +63,6 @@ exports[`InputCheckbox component should render correctly with checked state fals
   </Styled(View)>
   <Styled(BodyCopy)
     fontSize="fs12"
-    locator=""
     mobileFontFamily="secondary"
     text="checkbox"
   />
@@ -77,7 +74,6 @@ exports[`InputCheckbox component should render correctly with checked state fals
     data-locator="errorDataLocator"
     fontFamily="secondary"
     fontSize="fs12"
-    locator=""
     role="alert"
     text=""
   />

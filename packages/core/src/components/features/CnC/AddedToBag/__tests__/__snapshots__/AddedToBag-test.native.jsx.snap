@@ -22,13 +22,11 @@ exports[`AddedToBag Component AddedToBag should render correctly 1`] = `
       color="black"
       fontSize="fs16"
       fontWeight="semibold"
-      locator=""
       mobilefontFamily={
         Array [
           "secondary",
         ]
       }
-      text=""
     />
   </Styled(Text)>
   <Styled(View)>

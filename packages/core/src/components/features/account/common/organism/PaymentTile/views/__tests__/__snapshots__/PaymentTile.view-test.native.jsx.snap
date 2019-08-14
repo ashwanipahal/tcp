@@ -6,8 +6,6 @@ exports[`PaymentTile component should render correctly 1`] = `
     color="black"
     fontFamily="secondary"
     fontSize="fs16"
-    locator=""
-    text=""
   />
   <Styled(View) />
   <ReduxForm

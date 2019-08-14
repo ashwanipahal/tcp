@@ -10,6 +10,7 @@ exports[`ButtonList component renders correctly 1`] = `
     <Styled(Button)
       buttonVariation="category-links-dark"
       className="link-button-wrapper-class"
+      dataLocator="0"
     />
   </Styled(Anchor)>
   <Styled(Anchor)
@@ -18,6 +19,7 @@ exports[`ButtonList component renders correctly 1`] = `
     <Styled(Button)
       buttonVariation="category-links-dark"
       className="link-button-wrapper-class"
+      dataLocator="1"
     />
   </Styled(Anchor)>
   <Styled(Anchor)
@@ -26,6 +28,7 @@ exports[`ButtonList component renders correctly 1`] = `
     <Styled(Button)
       buttonVariation="category-links-dark"
       className="link-button-wrapper-class"
+      dataLocator="2"
     />
   </Styled(Anchor)>
   <Styled(Anchor)
@@ -34,6 +37,7 @@ exports[`ButtonList component renders correctly 1`] = `
     <Styled(Button)
       buttonVariation="category-links-dark"
       className="link-button-wrapper-class"
+      dataLocator="3"
     />
   </Styled(Anchor)>
 </div>
@@ -185,6 +189,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
     <Styled(Button)
       buttonVariation="fixed-width"
       className="scroll-cta-wrapper-class"
+      dataLocator="0"
       fill="RED"
     />
   </Styled(Anchor)>
@@ -194,6 +199,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
     <Styled(Button)
       buttonVariation="fixed-width"
       className="scroll-cta-wrapper-class"
+      dataLocator="1"
       fill="RED"
     />
   </Styled(Anchor)>
@@ -203,6 +209,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
     <Styled(Button)
       buttonVariation="fixed-width"
       className="scroll-cta-wrapper-class"
+      dataLocator="2"
       fill="RED"
     />
   </Styled(Anchor)>
@@ -212,6 +219,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
     <Styled(Button)
       buttonVariation="fixed-width"
       className="scroll-cta-wrapper-class"
+      dataLocator="3"
       fill="RED"
     />
   </Styled(Anchor)>
@@ -221,6 +229,7 @@ exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
     <Styled(Button)
       buttonVariation="fixed-width"
       className="scroll-cta-wrapper-class"
+      dataLocator="4"
       fill="RED"
     />
   </Styled(Anchor)>
@@ -237,6 +246,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
     <Styled(Button)
       buttonVariation="fixed-width"
       className="stacked-cta-wrapper-class"
+      dataLocator="0"
     />
   </Styled(Anchor)>
   <Styled(Anchor)
@@ -245,6 +255,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
     <Styled(Button)
       buttonVariation="fixed-width"
       className="stacked-cta-wrapper-class"
+      dataLocator="1"
     />
   </Styled(Anchor)>
   <Styled(Anchor)
@@ -253,6 +264,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
     <Styled(Button)
       buttonVariation="fixed-width"
       className="stacked-cta-wrapper-class"
+      dataLocator="2"
     />
   </Styled(Anchor)>
   <Styled(Anchor)
@@ -261,6 +273,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
     <Styled(Button)
       buttonVariation="fixed-width"
       className="stacked-cta-wrapper-class"
+      dataLocator="3"
     />
   </Styled(Anchor)>
   <Styled(Anchor)
@@ -269,6 +282,7 @@ exports[`ButtonList component renders correctly with props for stacked CTA butto
     <Styled(Button)
       buttonVariation="fixed-width"
       className="stacked-cta-wrapper-class"
+      dataLocator="4"
     />
   </Styled(Anchor)>
 </div>
