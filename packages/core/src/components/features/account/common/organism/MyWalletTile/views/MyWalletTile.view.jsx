@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AccountOverviewTile from '../../../../../../common/molecules/AccountOverviewTile';
 import CouponList from '../molecules/CouponList';
-import Anchor from '../../../../../../common/atoms/Anchor';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy/views/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/MyWalletTile.style';
@@ -13,10 +12,7 @@ export const MyWalletTile = ({ className, labels, coupons, isBrierleyEnabled }) 
   let rewardDataLocator = '';
 
   if (couponsCount) {
-    walletOverviewInfo = labels.lbl_overview_myPlaceRewardsAvailable.replace(
-      /\{0\}/,
-      couponsCount
-    );
+    walletOverviewInfo = labels.lbl_overview_myPlaceRewardsAvailable.replace(/\{0\}/, couponsCount);
     rewardDataLocator = 'accountoverview-mywallettile-youhaverewardtext';
   } else {
     walletOverviewInfo = labels.lbl_overview_myPlaceRewardsDesc;
@@ -39,11 +35,7 @@ export const MyWalletTile = ({ className, labels, coupons, isBrierleyEnabled }) 
           {walletOverviewInfo}
         </BodyCopy>
         <CouponList coupons={coupons} sliceCount={5} labels={labels} />
-        {!couponsCount && (
-          <div>
-            FEO
-          </div>
-        )}
+        {!couponsCount && <div>FEO</div>}
       </section>
     </AccountOverviewTile>
   );

@@ -80,10 +80,8 @@ export const getAllRewardsCoupons = state => {
 };
 
 export const getAllCoupons = state => {
-  const list = state.CouponsAndPromos && state.CouponsAndPromos.get('couponsAndOffers');
-  return list;
+  return state.CouponsAndPromos && state.CouponsAndPromos.get('couponsAndOffers');
 };
-
 
 export const getNeedHelpContent = state => {
   const needHelpContent = state.CartPageReducer.get('moduleXContent').find(
