@@ -9,6 +9,8 @@ describe('CouponTile Component', () => {
       labels: {
         lbl_overview_myPlaceRewardsCouponType: '',
         lbl_overview_myPlaceRewardsUseBy: '',
+        lbl_overview_couponTypeSaving: '',
+        lbl_overview_couponUseBy: '',
       },
     };
     const tree = shallow(<CouponTile {...props} />);
