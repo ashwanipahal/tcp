@@ -534,6 +534,20 @@ exports[`CardTile should render correctly with gift card 1`] = `
   ",
                   [Function],
                   ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                   ";
 ",
@@ -904,6 +918,20 @@ exports[`CardTile should render correctly with notification  gift card 1`] = `
   ",
                   [Function],
                   ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                   ";
 ",
@@ -1432,6 +1460,20 @@ exports[`CardTile should show loading 1`] = `
   ",
                   [Function],
                   ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                   ";
 ",
@@ -1671,6 +1713,20 @@ exports[`CardTile should show remining balance 1`] = `
   ",
                   [Function],
                   ";
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 ",
                   ";
 ",

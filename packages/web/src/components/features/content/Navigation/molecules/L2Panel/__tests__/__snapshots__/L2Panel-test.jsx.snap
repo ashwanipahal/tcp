@@ -62,20 +62,17 @@ exports[`L2 Panel component renders correctly 1`] = `
         <div
           className="l2-nav-category-links"
         >
-          <ul>
+          <ul
+            className={
+              Object {
+                "columnClass": "",
+              }
+            }
+          >
             <li
               data-locator="l2_col_0_link_0"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/"
               >
                 <Styled(BodyCopy)
@@ -104,7 +101,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-0"
                 links={
@@ -122,7 +119,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 202,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                   ]
                 }
@@ -133,7 +130,6 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_0_link_1"
             >
               <Styled(Anchor)
-                component="div"
                 to="/c/"
               >
                 <Styled(BodyCopy)
@@ -165,7 +161,6 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_0_link_2"
             >
               <Styled(Anchor)
-                component="div"
                 to="/c/"
               >
                 <Styled(BodyCopy)
@@ -197,7 +192,6 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_0_link_3"
             >
               <Styled(Anchor)
-                component="div"
                 to="/c/"
               >
                 <Styled(BodyCopy)
@@ -229,7 +223,6 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_0_link_4"
             >
               <Styled(Anchor)
-                component="div"
                 to="/c/girl-clearance-us"
               >
                 <Styled(BodyCopy)
@@ -290,20 +283,17 @@ exports[`L2 Panel component renders correctly 1`] = `
         <div
           className="l2-nav-category-links"
         >
-          <ul>
+          <ul
+            className={
+              Object {
+                "columnClass": "half-width",
+              }
+            }
+          >
             <li
               data-locator="l2_col_1_link_0"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girls-clothing-school-uniforms"
               >
                 <Styled(BodyCopy)
@@ -332,7 +322,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-0"
                 links={
@@ -350,7 +340,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 41,
                         "seoToken": "girls-clothing-school-uniforms-bottoms",
                       },
-                      "url": "/us/c/girls-clothing-school-uniforms-bottoms",
+                      "url": "/undefined/c/girls-clothing-school-uniforms-bottoms",
                     },
                     Object {
                       "categoryContent": Object {
@@ -365,7 +355,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 24,
                         "seoToken": "girls-clothing-school-uniforms-dresses-and-jumpers",
                       },
-                      "url": "/us/c/girls-clothing-school-uniforms-dresses-and-jumpers",
+                      "url": "/undefined/c/girls-clothing-school-uniforms-dresses-and-jumpers",
                     },
                     Object {
                       "categoryContent": Object {
@@ -380,7 +370,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 1,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                     Object {
                       "categoryContent": Object {
@@ -395,7 +385,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 5,
                         "seoToken": "girls-clothing-school-uniforms-jackets-and-vests",
                       },
-                      "url": "/us/c/girls-clothing-school-uniforms-jackets-and-vests",
+                      "url": "/undefined/c/girls-clothing-school-uniforms-jackets-and-vests",
                     },
                     Object {
                       "categoryContent": Object {
@@ -410,7 +400,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 44,
                         "seoToken": "girls-clothing-school-uniforms-accessories-socks-hair-tights",
                       },
-                      "url": "/us/c/girls-clothing-school-uniforms-accessories-socks-hair-tights",
+                      "url": "/undefined/c/girls-clothing-school-uniforms-accessories-socks-hair-tights",
                     },
                   ]
                 }
@@ -421,7 +411,6 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_1_link_1"
             >
               <Styled(Anchor)
-                component="div"
                 to="/c/"
               >
                 <Styled(BodyCopy)
@@ -452,16 +441,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_2"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girl-t-shirts"
               >
                 <Styled(BodyCopy)
@@ -490,7 +470,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-2"
                 links={
@@ -508,7 +488,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 14,
                         "seoToken": "girls-tops-shirts-graphic-tees",
                       },
-                      "url": "/us/c/girls-tops-shirts-graphic-tees",
+                      "url": "/undefined/c/girls-tops-shirts-graphic-tees",
                     },
                     Object {
                       "categoryContent": Object {
@@ -523,7 +503,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 12,
                         "seoToken": "girls-long-sleeve-t-shirts",
                       },
-                      "url": "/us/c/girls-long-sleeve-t-shirts",
+                      "url": "/undefined/c/girls-long-sleeve-t-shirts",
                     },
                   ]
                 }
@@ -533,16 +513,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_3"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girls-denim-bottoms"
               >
                 <Styled(BodyCopy)
@@ -571,7 +542,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-3"
                 links={
@@ -589,7 +560,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 3,
                         "seoToken": "girls-super-skinny-jeans",
                       },
-                      "url": "/us/c/girls-super-skinny-jeans",
+                      "url": "/undefined/c/girls-super-skinny-jeans",
                     },
                     Object {
                       "categoryContent": Object {
@@ -604,7 +575,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 11,
                         "seoToken": "girls-skinny-jeans",
                       },
-                      "url": "/us/c/girls-skinny-jeans",
+                      "url": "/undefined/c/girls-skinny-jeans",
                     },
                     Object {
                       "categoryContent": Object {
@@ -619,7 +590,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 8,
                         "seoToken": "girls-bootcut-jeans",
                       },
-                      "url": "/us/c/girls-bootcut-jeans",
+                      "url": "/undefined/c/girls-bootcut-jeans",
                     },
                     Object {
                       "categoryContent": Object {
@@ -634,7 +605,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 17,
                         "seoToken": "girls-jeggings",
                       },
-                      "url": "/us/c/girls-jeggings",
+                      "url": "/undefined/c/girls-jeggings",
                     },
                   ]
                 }
@@ -644,16 +615,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_4"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girls-dresses"
               >
                 <Styled(BodyCopy)
@@ -682,7 +644,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-4"
                 links={
@@ -700,7 +662,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 9,
                         "seoToken": "girls-dresses-casual",
                       },
-                      "url": "/us/c/girls-dresses-casual",
+                      "url": "/undefined/c/girls-dresses-casual",
                     },
                   ]
                 }
@@ -710,16 +672,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_5"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girls-tops-girls-shirts"
               >
                 <Styled(BodyCopy)
@@ -748,7 +701,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-5"
                 links={
@@ -766,7 +719,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 17,
                         "seoToken": "girls-tops-shirts-short-sleeve-tops",
                       },
-                      "url": "/us/c/girls-tops-shirts-short-sleeve-tops",
+                      "url": "/undefined/c/girls-tops-shirts-short-sleeve-tops",
                     },
                     Object {
                       "categoryContent": Object {
@@ -781,7 +734,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 1,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                     Object {
                       "categoryContent": Object {
@@ -796,7 +749,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 122,
                         "seoToken": "girls-tops-girls-shirts-long-sleeve-tops",
                       },
-                      "url": "/us/c/girls-tops-girls-shirts-long-sleeve-tops",
+                      "url": "/undefined/c/girls-tops-girls-shirts-long-sleeve-tops",
                     },
                     Object {
                       "categoryContent": Object {
@@ -811,7 +764,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 5,
                         "seoToken": "girls-tops-girls-shirts-sweaters",
                       },
-                      "url": "/us/c/girls-tops-girls-shirts-sweaters",
+                      "url": "/undefined/c/girls-tops-girls-shirts-sweaters",
                     },
                     Object {
                       "categoryContent": Object {
@@ -826,7 +779,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 2,
                         "seoToken": "girls-tops-girls-shirts-active-tops",
                       },
-                      "url": "/us/c/girls-tops-girls-shirts-active-tops",
+                      "url": "/undefined/c/girls-tops-girls-shirts-active-tops",
                     },
                     Object {
                       "categoryContent": Object {
@@ -841,7 +794,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 21,
                         "seoToken": "girls-tops-girls-shirts-tanks-and-camis",
                       },
-                      "url": "/us/c/girls-tops-girls-shirts-tanks-and-camis",
+                      "url": "/undefined/c/girls-tops-girls-shirts-tanks-and-camis",
                     },
                   ]
                 }
@@ -851,16 +804,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_6"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girls-bottoms-girls-pants"
               >
                 <Styled(BodyCopy)
@@ -889,7 +833,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-6"
                 links={
@@ -907,7 +851,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 152,
                         "seoToken": "girls-bottoms-girls-pants-leggings",
                       },
-                      "url": "/us/c/girls-bottoms-girls-pants-leggings",
+                      "url": "/undefined/c/girls-bottoms-girls-pants-leggings",
                     },
                     Object {
                       "categoryContent": Object {
@@ -922,7 +866,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 21,
                         "seoToken": "girls-bottoms-girls-pants-woven-pants",
                       },
-                      "url": "/us/c/girls-bottoms-girls-pants-woven-pants",
+                      "url": "/undefined/c/girls-bottoms-girls-pants-woven-pants",
                     },
                     Object {
                       "categoryContent": Object {
@@ -937,7 +881,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 106,
                         "seoToken": "girls-shorts",
                       },
-                      "url": "/us/c/girls-shorts",
+                      "url": "/undefined/c/girls-shorts",
                     },
                     Object {
                       "categoryContent": Object {
@@ -952,7 +896,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 6,
                         "seoToken": "girls-skirts-skorts",
                       },
-                      "url": "/us/c/girls-skirts-skorts",
+                      "url": "/undefined/c/girls-skirts-skorts",
                     },
                     Object {
                       "categoryContent": Object {
@@ -967,7 +911,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 12,
                         "seoToken": "girls-bottoms-girls-pants-jeggings",
                       },
-                      "url": "/us/c/girls-bottoms-girls-pants-jeggings",
+                      "url": "/undefined/c/girls-bottoms-girls-pants-jeggings",
                     },
                     Object {
                       "categoryContent": Object {
@@ -982,7 +926,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 46,
                         "seoToken": "girls-bottoms-girls-pants-active",
                       },
-                      "url": "/us/c/girls-bottoms-girls-pants-active",
+                      "url": "/undefined/c/girls-bottoms-girls-pants-active",
                     },
                     Object {
                       "categoryContent": Object {
@@ -997,7 +941,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 2,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1012,7 +956,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 40,
                         "seoToken": "denim",
                       },
-                      "url": "/us/c/denim",
+                      "url": "/undefined/c/denim",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1027,7 +971,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 2,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                   ]
                 }
@@ -1035,20 +979,17 @@ exports[`L2 Panel component renders correctly 1`] = `
               />
             </li>
           </ul>
-          <ul>
+          <ul
+            className={
+              Object {
+                "columnClass": "half-width",
+              }
+            }
+          >
             <li
               data-locator="l2_col_1_link_7"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girls-leggings"
               >
                 <Styled(BodyCopy)
@@ -1077,7 +1018,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-0"
                 links={
@@ -1095,7 +1036,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 8,
                         "seoToken": "girls-long-leggings",
                       },
-                      "url": "/us/c/girls-long-leggings",
+                      "url": "/undefined/c/girls-long-leggings",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1110,7 +1051,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 6,
                         "seoToken": "girls-cartwheel-shorts",
                       },
-                      "url": "/us/c/girls-cartwheel-shorts",
+                      "url": "/undefined/c/girls-cartwheel-shorts",
                     },
                   ]
                 }
@@ -1121,7 +1062,6 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_1_link_8"
             >
               <Styled(Anchor)
-                component="div"
                 to="/c/"
               >
                 <Styled(BodyCopy)
@@ -1153,7 +1093,6 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_1_link_9"
             >
               <Styled(Anchor)
-                component="div"
                 to="/c/girls-outerwear-girls-jackets-girls-blazers"
               >
                 <Styled(BodyCopy)
@@ -1185,7 +1124,6 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_1_link_10"
             >
               <Styled(Anchor)
-                component="div"
                 to="/c/"
               >
                 <Styled(BodyCopy)
@@ -1216,16 +1154,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_11"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/active"
               >
                 <Styled(BodyCopy)
@@ -1254,7 +1183,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-4"
                 links={
@@ -1272,7 +1201,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 24,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1287,7 +1216,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 18,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1302,7 +1231,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 19,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1317,7 +1246,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 41,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1332,7 +1261,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 24,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1347,7 +1276,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 3,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                   ]
                 }
@@ -1357,16 +1286,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_12"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/"
               >
                 <Styled(BodyCopy)
@@ -1395,7 +1315,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-5"
                 links={
@@ -1413,7 +1333,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 18,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1428,7 +1348,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 20,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                   ]
                 }
@@ -1438,16 +1358,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_13"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girls-clothing-sleepwear"
               >
                 <Styled(BodyCopy)
@@ -1476,7 +1387,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-6"
                 links={
@@ -1494,7 +1405,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 76,
                         "seoToken": "girls-clothing-sleepwear-pajamas",
                       },
-                      "url": "/us/c/girls-clothing-sleepwear-pajamas",
+                      "url": "/undefined/c/girls-clothing-sleepwear-pajamas",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1509,7 +1420,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 11,
                         "seoToken": "girls-nightgowns",
                       },
-                      "url": "/us/c/girls-nightgowns",
+                      "url": "/undefined/c/girls-nightgowns",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1524,7 +1435,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 1,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1539,7 +1450,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 2,
                         "seoToken": "girls-clothing-sleepwear-robes",
                       },
-                      "url": "/us/c/girls-clothing-sleepwear-robes",
+                      "url": "/undefined/c/girls-clothing-sleepwear-robes",
                     },
                   ]
                 }
@@ -1549,16 +1460,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_14"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girl-accessories"
               >
                 <Styled(BodyCopy)
@@ -1587,7 +1489,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-7"
                 links={
@@ -1605,7 +1507,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 36,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1620,7 +1522,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 18,
                         "seoToken": "girl-accessories-backpacks-and-essentials",
                       },
-                      "url": "/us/c/girl-accessories-backpacks-and-essentials",
+                      "url": "/undefined/c/girl-accessories-backpacks-and-essentials",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1635,7 +1537,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 87,
                         "seoToken": "girl-accessories-socks",
                       },
-                      "url": "/us/c/girl-accessories-socks",
+                      "url": "/undefined/c/girl-accessories-socks",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1650,7 +1552,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 38,
                         "seoToken": "girl-accessories-tights",
                       },
-                      "url": "/us/c/girl-accessories-tights",
+                      "url": "/undefined/c/girl-accessories-tights",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1665,7 +1567,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 46,
                         "seoToken": "girls-accessories-underwear",
                       },
-                      "url": "/us/c/girls-accessories-underwear",
+                      "url": "/undefined/c/girls-accessories-underwear",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1680,7 +1582,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 2,
                         "seoToken": "girl-accessories-belts",
                       },
-                      "url": "/us/c/girl-accessories-belts",
+                      "url": "/undefined/c/girl-accessories-belts",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1695,7 +1597,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 10,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1710,7 +1612,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 73,
                         "seoToken": "girl-accessories-hair",
                       },
-                      "url": "/us/c/girl-accessories-hair",
+                      "url": "/undefined/c/girl-accessories-hair",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1725,7 +1627,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 14,
                         "seoToken": "girl-accessories-hats",
                       },
-                      "url": "/us/c/girl-accessories-hats",
+                      "url": "/undefined/c/girl-accessories-hats",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1740,7 +1642,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 3,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1755,7 +1657,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 1,
                         "seoToken": "girl-accessories-scarves",
                       },
-                      "url": "/us/c/girl-accessories-scarves",
+                      "url": "/undefined/c/girl-accessories-scarves",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1770,7 +1672,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 1,
                         "seoToken": "girl-accessories-bags",
                       },
-                      "url": "/us/c/girl-accessories-bags",
+                      "url": "/undefined/c/girl-accessories-bags",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1785,7 +1687,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 29,
                         "seoToken": "girl-accessories-sunglasses",
                       },
-                      "url": "/us/c/girl-accessories-sunglasses",
+                      "url": "/undefined/c/girl-accessories-sunglasses",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1800,7 +1702,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 3,
                         "seoToken": "girl-accessories-novelty",
                       },
-                      "url": "/us/c/girl-accessories-novelty",
+                      "url": "/undefined/c/girl-accessories-novelty",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1815,7 +1717,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 317,
                         "seoToken": "girl-accessories-necklaces-and-sets",
                       },
-                      "url": "/us/c/girl-accessories-necklaces-and-sets",
+                      "url": "/undefined/c/girl-accessories-necklaces-and-sets",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1830,7 +1732,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 42,
                         "seoToken": "girl-accessories-beauty",
                       },
-                      "url": "/us/c/girl-accessories-beauty",
+                      "url": "/undefined/c/girl-accessories-beauty",
                     },
                   ]
                 }
@@ -1840,16 +1742,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_1_link_15"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girls-shoes"
               >
                 <Styled(BodyCopy)
@@ -1878,7 +1771,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-8"
                 links={
@@ -1896,7 +1789,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 25,
                         "seoToken": "girls-shoes-ballet-flats",
                       },
-                      "url": "/us/c/girls-shoes-ballet-flats",
+                      "url": "/undefined/c/girls-shoes-ballet-flats",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1911,7 +1804,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 31,
                         "seoToken": "girls-shoes-sneakers",
                       },
-                      "url": "/us/c/girls-shoes-sneakers",
+                      "url": "/undefined/c/girls-shoes-sneakers",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1926,7 +1819,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 7,
                         "seoToken": "girls-shoes-boots",
                       },
-                      "url": "/us/c/girls-shoes-boots",
+                      "url": "/undefined/c/girls-shoes-boots",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1941,7 +1834,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 14,
                         "seoToken": "girls-formal-shoes",
                       },
-                      "url": "/us/c/girls-formal-shoes",
+                      "url": "/undefined/c/girls-formal-shoes",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1956,7 +1849,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 2,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1971,7 +1864,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 26,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                     Object {
                       "categoryContent": Object {
@@ -1986,7 +1879,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 2,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                     Object {
                       "categoryContent": Object {
@@ -2001,7 +1894,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 2,
                         "seoToken": "girls-shoes-water-shoes",
                       },
-                      "url": "/us/c/girls-shoes-water-shoes",
+                      "url": "/undefined/c/girls-shoes-water-shoes",
                     },
                     Object {
                       "categoryContent": Object {
@@ -2016,7 +1909,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": 13,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                   ]
                 }
@@ -2056,12 +1949,17 @@ exports[`L2 Panel component renders correctly 1`] = `
         <div
           className="l2-nav-category-links"
         >
-          <ul>
+          <ul
+            className={
+              Object {
+                "columnClass": "",
+              }
+            }
+          >
             <li
               data-locator="l2_col_2_link_0"
             >
               <Styled(Anchor)
-                component="div"
                 to="/c/"
               >
                 <Styled(BodyCopy)
@@ -2092,16 +1990,7 @@ exports[`L2 Panel component renders correctly 1`] = `
             <li
               data-locator="l2_col_2_link_1"
             >
-              <Styled(BodyCopy)
-                className={null}
-                color="text.primary"
-                component="div"
-                fontFamily="primary"
-                fontSize={12}
-                fontWeight="regular"
-                letterSpacing="normal"
-                lineHeight="normal"
-                textAlign="left"
+              <Styled(Anchor)
                 to="/c/girls-outfit"
               >
                 <Styled(BodyCopy)
@@ -2130,7 +2019,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                     className="icon-arrow"
                   />
                 </Styled(BodyCopy)>
-              </Styled(BodyCopy)>
+              </Styled(Anchor)>
               <Styled(L3Panel)
                 id="l3-drawer-1"
                 links={
@@ -2148,7 +2037,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                         "productCount": null,
                         "seoToken": "",
                       },
-                      "url": "/us/c/undefined",
+                      "url": "/undefined/c/undefined",
                     },
                   ]
                 }
@@ -2159,7 +2048,6 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_2_link_2"
             >
               <Styled(Anchor)
-                component="div"
                 to="/c/content-girls-style-squad-outfits"
               >
                 <Styled(BodyCopy)

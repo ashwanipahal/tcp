@@ -7,7 +7,14 @@ import withStyles from '../../../../common/hoc/withStyles';
 import FixedBreadCrumbs from '../molecules/FixedBreadCrumbs/views';
 import ProductListingStyle from '../ProductListing.style';
 
-const ProductListView = ({ className, products, currentNavIds, navTree, breadCrumbs }) => {
+const ProductListView = ({
+  className,
+  products,
+  currentNavIds,
+  navTree,
+  breadCrumbs,
+  ...otherProps
+}) => {
   return (
     <div className={className}>
       <Row>
@@ -34,7 +41,11 @@ const ProductListView = ({ className, products, currentNavIds, navTree, breadCru
             <div className="filter-area">FilterArea</div>
           </Col>
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-            <ProductList products={products} className={`${className} product-list`} />
+            <ProductList
+              products={products}
+              className={`${className} product-list`}
+              {...otherProps}
+            />
           </Col>
         </Col>
       </Row>

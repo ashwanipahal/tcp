@@ -274,6 +274,7 @@ export default class ProductsGridItem extends React.PureComponent {
       siblingProperties,
       isPLPredesign,
       isKeepAliveKillSwitch,
+      loadedProductCount,
     } = this.props;
     const prodNameAltImages = long_product_title || name;
     const { isInDefaultWishlist, selectedColorProductId, error, currentImageIndex } = this.state;
@@ -364,7 +365,7 @@ export default class ProductsGridItem extends React.PureComponent {
           <ProductAltImages
             pdpUrl={this.state.pdpUrl}
             videoUrl={videoUrl}
-            loadedProductCount={this.props.loadedProductCount}
+            loadedProductCount={loadedProductCount}
             imageUrls={imageUrls}
             isMobile={isMobile}
             isShowVideoOnPlp={isShowVideoOnPlp}
@@ -415,7 +416,7 @@ export default class ProductsGridItem extends React.PureComponent {
           <ProductTitle
             name={name}
             pdpUrl={this.state.pdpUrl}
-            loadedProductCount={this.props.loadedProductCount}
+            loadedProductCount={loadedProductCount}
             analyticsData={{
               pId: generalProductId,
               prank: sqnNmb,

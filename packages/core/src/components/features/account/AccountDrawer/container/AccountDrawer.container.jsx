@@ -7,15 +7,16 @@ import {
   openOverlayModal,
   closeOverlayModal,
 } from '../../../OverlayModal/container/OverlayModal.actions';
-import { getUserFullName } from '../../LoginPage/container/LoginPage.selectors';
+import { getUserFullName, isPlccUser } from '../../LoginPage/container/LoginPage.selectors';
 
-export const AccountDrawerContainer = ({ className, userName, closedOverlay }) => {
+export const AccountDrawerContainer = ({ className, plccUser, userName, closedOverlay }) => {
   return (
     <AccountDrawerView
       className={className}
       labels={labels}
       closedOverlay={closedOverlay}
       userName={userName}
+      plccUser={plccUser}
     />
   );
 };
@@ -23,6 +24,7 @@ export const AccountDrawerContainer = ({ className, userName, closedOverlay }) =
 export const mapStateToProps = state => {
   return {
     userName: getUserFullName(state),
+    plccUser: isPlccUser(state),
   };
 };
 
@@ -42,6 +44,7 @@ AccountDrawerContainer.propTypes = {
   labels: PropTypes.shape({}),
   userName: PropTypes.string,
   closedOverlay: PropTypes.func.isRequired,
+  plccUser: PropTypes.bool,
 };
 
 AccountDrawerContainer.defaultProps = {
@@ -54,6 +57,7 @@ AccountDrawerContainer.defaultProps = {
     CREATE_ACC_SIGN_OUT: 'Sign Out',
   },
   userName: '',
+  plccUser: false,
 };
 
 export default connect(

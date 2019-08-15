@@ -73,3 +73,71 @@ export const findCategoryIdandName = (data, category) => {
   }
   return categoryFound;
 };
+
+// TODO - refactor this function - this is random and dummy
+export const matchPath = (url, param) => {
+  if (param === '/search/' && url.indexOf(param) !== -1) {
+    return {
+      searchTerm: url,
+    };
+  }
+  if (param === '/c/' && url.indexOf(param) !== -1) {
+    const urlWithCat = url.split(param)[1];
+    return {
+      listingKey: urlWithCat,
+    };
+  }
+  return url;
+};
+
+export const processBreadCrumbs = breadCrumbTrail => {
+  if (breadCrumbTrail && breadCrumbTrail.length) {
+    return breadCrumbTrail.map(crumb => ({
+      displayName: crumb.displayName,
+      destination: 'c',
+      pathSuffix: extractCategory(crumb.urlPathSuffix),
+    }));
+  }
+  return [];
+};
+
+// Organized Navigation Tree
+export const generateGroups = level1 => {
+  try {
+    let level2Groups = [];
+    const groupings = {};
+
+    // for each L2 parse and place in proper group
+    if (level1.subCategories.Categories) {
+      level1.subCategories.Categories.forEach(L2 => {
+        const groupName = 'Categories';
+        const groupOrder = 1;
+
+        // if new grouping initalize array
+        if (!groupings[groupName]) {
+          groupings[groupName] = {
+            order: groupOrder,
+            menuItems: [],
+          };
+        }
+
+        // Push L2 in this bucket
+        groupings[groupName].menuItems.push(L2);
+      });
+    }
+
+    // Now get all groups and generate array of object, this is not to bad as there are at most 3-4 groups
+    level2Groups = Object.keys(groupings).map(group => ({
+      groupName: group,
+      order: groupings[group].order,
+      menuItems: groupings[group].menuItems,
+    }));
+
+    return level2Groups.sort((prevGroup, curGroup) => {
+      return prevGroup.order - curGroup.order;
+    });
+  } catch (error) {
+    console.error('getHeaderNavigationTree:generateGroups', error);
+    return [];
+  }
+};

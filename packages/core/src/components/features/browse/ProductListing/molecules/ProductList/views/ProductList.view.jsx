@@ -38,6 +38,7 @@ const ProductList = ({
   onQuickBopisOpenClick,
   currencyExchange,
   siblingProperties,
+  loadedProductCount,
 }) => {
   let gridIndex = 0;
   return (
@@ -54,7 +55,7 @@ const ProductList = ({
           <div className="product-tile">
             <ProductsGridItem
               isMobile={isMobileApp()}
-              loadedProductCount={20}
+              loadedProductCount={loadedProductCount}
               key={item.productInfo.generalProductId}
               item={item}
               isGridView
@@ -150,6 +151,7 @@ ProductList.propTypes = {
     promotionalMessage: PropTypes.string,
     promotionalPLCCMessage: PropTypes.string,
   }),
+  loadedProductCount: PropTypes.number.isRequired,
 };
 
 ProductList.defaultProps = {
