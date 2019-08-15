@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View, SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import AddEditCreditCard from '@tcp/core/src/components/features/account/AddEditCreditCard';
 // import theme from '@tcp/core/styles/themes/TCP';
 import withStyles from '../../../../../../common/hoc/withStyles.native';

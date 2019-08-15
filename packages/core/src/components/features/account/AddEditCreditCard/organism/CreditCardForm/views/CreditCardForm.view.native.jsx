@@ -85,7 +85,6 @@ class CreditCardForm extends React.PureComponent {
     return (
       <View>
         <CreditCardFields {...this.props} />
-        <Text> Credit Card Form </Text>
       </View>
     );
   }

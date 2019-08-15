@@ -1,9 +1,16 @@
-import { css } from 'styled-components';
+import styled from 'styled-components';
 
-const styles = css`
-  .field {
-    height: ${props => props.theme.spacing.FORM_FIELD_HEIGHT};
-  }
+const PaymentContainer = styled.View`
+  flex: 1;
 `;
 
-export default styles;
+const CardContainer = styled.View`
+  height: 80px;
+`;
+
+const ExpiryContainer = styled.View`
+  flex: 1;
+  flex-direction: row;
+`;
+
+export { PaymentContainer, CardContainer, ExpiryContainer };
