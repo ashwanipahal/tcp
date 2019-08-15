@@ -12,6 +12,7 @@ type Props = {
   handleComponentChange: Function,
   className: string,
   labels: object,
+  isUserLoggedIn: string,
 };
 
 /**
@@ -23,12 +24,27 @@ type Props = {
  */
 
 const MyAccountLayoutView = (props: Props) => {
-  const { navData, mainContent: MainContent, handleComponentChange, className, labels } = props;
+  const {
+    navData,
+    mainContent: MainContent,
+    handleComponentChange,
+    className,
+    labels,
+    isUserLoggedIn,
+  } = props;
   return (
     <View className={className} {...props}>
-      <RewardsPoints tableView labels={labels} />
-      <MyAccountDropdownNav navData={navData} handleComponentChange={handleComponentChange} />
-      <MainContent labels={labels} handleComponentChange={handleComponentChange} />
+      {isUserLoggedIn && (
+        <React.Fragment>
+          <RewardsPoints tableView labels={labels} />
+          <MyAccountDropdownNav navData={navData} handleComponentChange={handleComponentChange} />
+        </React.Fragment>
+      )}
+      <MainContent
+        isUserLoggedIn={isUserLoggedIn}
+        labels={labels}
+        handleComponentChange={handleComponentChange}
+      />
     </View>
   );
 };

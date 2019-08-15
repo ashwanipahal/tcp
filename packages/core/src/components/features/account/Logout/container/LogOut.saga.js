@@ -11,15 +11,19 @@ export function* logoutSaga() {
     const matchPath = window.location.pathname.split('/')[2];
     if (res.statusCode === 200) {
       yield put(resetLoginInfo());
-      yield put(closeOverlayModal());
-      if (window.location.href.indexOf('account')) {
-        utils.routerPush('/', '/home');
-      } else {
-        utils.routerPush('/', `/${matchPath}`);
+      if (!utils.isMobileApp()) {
+        yield put(closeOverlayModal());
+        if (window.location.href.indexOf('account')) {
+          utils.routerPush('/', '/home');
+        } else {
+          utils.routerPush('/', `/${matchPath}`);
+        }
       }
     }
   } catch (err) {
-    utils.routerPush('/', '/home');
+    if (!utils.isMobileApp()) {
+      utils.routerPush('/', '/home');
+    }
   }
 }
 

@@ -9,6 +9,7 @@ import {
   StyledScrollView,
 } from '../styles/MyAccountContainer.style.native';
 import { getLabels } from './Account.selectors';
+import { getUserLoggedInState } from '../../LoginPage/container/LoginPage.selectors';
 
 /**
  * @function Account The Account component is the main container for the account section
@@ -68,7 +69,7 @@ export class Account extends React.PureComponent<Props, State> {
    */
   render() {
     const { component } = this.state;
-    const { labels } = this.props;
+    const { labels, isUserLoggedIn } = this.props;
     return (
       <StyledKeyboardAvoidingView behavior="padding" enabled keyboardVerticalOffset={82}>
         <StyledScrollView>
@@ -77,6 +78,7 @@ export class Account extends React.PureComponent<Props, State> {
             mainContent={AccountComponentNativeMapping[component]}
             handleComponentChange={this.handleComponentChange}
             labels={labels}
+            isUserLoggedIn={isUserLoggedIn}
           />
         </StyledScrollView>
       </StyledKeyboardAvoidingView>
@@ -87,6 +89,7 @@ export class Account extends React.PureComponent<Props, State> {
 const mapStateToProps = state => {
   return {
     labels: getLabels(state),
+    isUserLoggedIn: getUserLoggedInState(state),
   };
 };
 
