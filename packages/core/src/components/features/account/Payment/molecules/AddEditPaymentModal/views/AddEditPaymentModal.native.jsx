@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View, SafeAreaView } from 'react-native';
+import AddEditCreditCard from '@tcp/core/src/components/features/account/AddEditCreditCard';
 // import theme from '@tcp/core/styles/themes/TCP';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
@@ -17,7 +18,6 @@ export class AddEditPaymentModal extends React.PureComponent<Props> {
   static propTypes = {
     labels: PropTypes.shape({}),
     dto: PropTypes.shape({}),
-    setDeleteModalMountedState: PropTypes.bool,
     toggleModal: PropTypes.shape({}),
     onConfirm: PropTypes.func,
     onClose: PropTypes.func,
@@ -26,14 +26,13 @@ export class AddEditPaymentModal extends React.PureComponent<Props> {
   static defaultProps = {
     labels: {},
     dto: {},
-    setDeleteModalMountedState: false,
     toggleModal: {},
     onConfirm: () => {},
     onClose: () => {},
   };
 
   render() {
-    const { setDeleteModalMountedState, toggleModal } = this.props;
+    const { labels, toggleModal } = this.props;
     return (
       <ModalNative onRequestClose={toggleModal}>
         <ModalHeading>
@@ -41,7 +40,7 @@ export class AddEditPaymentModal extends React.PureComponent<Props> {
             mobileFontFamily={['secondary']}
             fontWeight="extrabold"
             fontSize="fs16"
-            text="Heading"
+            text={labels.paymentGC.lbl_payment_addCCHeading}
           />
         </ModalHeading>
         <LineWrapper>
@@ -55,6 +54,7 @@ export class AddEditPaymentModal extends React.PureComponent<Props> {
               fontSize="fs16"
               text="Content"
             />
+            <AddEditCreditCard labels={labels} isEdit={false} />
           </ModalViewWrapper>
         </SafeAreaView>
       </ModalNative>
