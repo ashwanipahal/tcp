@@ -1,63 +1,42 @@
-import { css } from 'styled-components';
-import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
+import styled from 'styled-components';
 
-const colorPallete = createThemeColorPalette();
-const squareBracketBorderColor = colorPallete.gray[500];
-
-const styles = css`
-  .CreditCardForm__address {
-    display: inline-block;
-    background-image: linear-gradient(${squareBracketBorderColor}, ${squareBracketBorderColor}),
-      linear-gradient(${squareBracketBorderColor}, ${squareBracketBorderColor}),
-      linear-gradient(${squareBracketBorderColor}, ${squareBracketBorderColor}),
-      linear-gradient(${squareBracketBorderColor}, ${squareBracketBorderColor});
-    background-repeat: no-repeat;
-    background-size: ${props => props.theme.spacing.ELEM_SPACING.XS}
-      ${props => props.theme.spacing.ELEM_SPACING.XXXS};
-    background-position: top left, top right, bottom left, bottom right;
-    border: ${props => props.theme.spacing.ELEM_SPACING.XXXS} solid ${squareBracketBorderColor};
-    border-width: 0 ${props => props.theme.spacing.ELEM_SPACING.XXXS};
-    padding: ${props => props.theme.spacing.ELEM_SPACING.XS}
-      ${props => props.theme.spacing.ELEM_SPACING.XXXL}
-      ${props => props.theme.spacing.ELEM_SPACING.XS}
-      ${props => props.theme.spacing.ELEM_SPACING.MED};
-
-    @media ${props => props.theme.mediaQuery.mediumOnly} {
-      display: block;
-    }
-  }
-
-  .creditCardForm__addressBook {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    @media ${props => props.theme.mediaQuery.medium} {
-      align-self: flex-end;
-      margin-bottom: 0;
-    }
-  }
-
-  .CreditCardForm__ctaContainer {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-  }
-
-  .CreditCardForm__submit {
-    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
-    order: 1;
-  }
-
-  .CreditCardForm__cancel {
-    order: 2;
-  }
-
-  @media ${props => props.theme.mediaQuery.medium} {
-    .CreditCardForm__cancel {
-      order: 0;
-    }
-
-    .CreditCardForm__submit {
-      order: 0;
-      margin-bottom: 0;
-    }
-  }
+const CreditCardContainer = styled.View`
+  border: 1px solid gray;
+  flex: 1;
+  flex-direction: column;
 `;
 
-export default styles;
+const CreditCardWrapper = styled.View`
+  border: 1px solid green;
+  height: 150px;
+`;
+
+const AddressWrapper = styled.View`
+  border: 1px solid blue;
+  height: 250px;
+`;
+
+const ActionsWrapper = styled.View`
+  border: 1px solid yellow;
+  align-items: center;
+  height: 150px;
+`;
+
+const AddAddressButton = {
+  color: 'white',
+  fontWeight: 'normal',
+  opacity: 0.5,
+  marginTop: 48,
+  width: 190,
+};
+
+const CancelButton = {
+  fontWeight: 'normal',
+  opacity: 0.5,
+  color: 'black',
+  border: 1,
+  marginTop: 15,
+  width: 190,
+};
+
+export { CreditCardContainer, CreditCardWrapper, AddressWrapper, ActionsWrapper, AddAddressButton, CancelButton };

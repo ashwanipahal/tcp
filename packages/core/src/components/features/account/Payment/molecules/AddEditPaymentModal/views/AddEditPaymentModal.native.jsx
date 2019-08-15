@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SafeAreaView } from 'react-native';
-import AddEditCreditCard from '@tcp/core/src/components/features/account/AddEditCreditCard';
+import AddEditCreditCard from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.container';
 // import theme from '@tcp/core/styles/themes/TCP';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
@@ -40,7 +40,7 @@ export class AddEditPaymentModal extends React.PureComponent<Props> {
             mobileFontFamily={['secondary']}
             fontWeight="extrabold"
             fontSize="fs16"
-            text={labels.paymentGC.lbl_payment_addCCHeading}
+            text="Add Credit or Debit Card"
           />
         </ModalHeading>
         <LineWrapper>
@@ -48,13 +48,7 @@ export class AddEditPaymentModal extends React.PureComponent<Props> {
         </LineWrapper>
         <SafeAreaView>
           <ModalViewWrapper>
-            <BodyCopy
-              mobileFontFamily={['secondary']}
-              fontWeight="extrabold"
-              fontSize="fs16"
-              text="Content"
-            />
-            <AddEditCreditCard labels={labels} isEdit={false} />
+            <AddEditCreditCard labels={labels} isEdit={false} onClose={toggleModal} />
           </ModalViewWrapper>
         </SafeAreaView>
       </ModalNative>

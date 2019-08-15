@@ -1,15 +1,24 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import { reduxForm } from 'redux-form';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import Address from '@tcp/core/src/components/common/molecules/Address';
+import Button from '@tcp/core/src/components/common/atoms/Button';
+import AddressFields from '@tcp/core/src/components/features/account/common/molecule/AddressFields';
+import { Heading } from '@tcp/core/src/components/common/atoms';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
-import Button from '../../../../../../common/atoms/Button';
 import constants from '../../../container/AddEditCreditCard.constants';
 import { CreditCardFields } from '../../../molecule/CreditCardFields/views/CreditCardFields.view.native';
-import AddressFields from '../../../../common/molecule/AddressFields';
-import styles from '../styles/CreditCardForm.style';
+import {
+  CreditCardWrapper,
+  AddressWrapper,
+  ActionsWrapper,
+  AddAddressButton,
+  CancelButton,
+  CreditCardContainer,
+} from '../styles/CreditCardForm.native.style';
 
 class CreditCardForm extends React.PureComponent {
   static propTypes = {
@@ -64,7 +73,7 @@ class CreditCardForm extends React.PureComponent {
   };
 
   getSelectedAddress = (addressList, onFileAddresskey) => {
-    return addressList.find(add => add.addressId === onFileAddresskey);
+    return (addressList && addressList.find(add => add.addressId === onFileAddresskey)) || {};
   };
 
   render() {
@@ -75,17 +84,62 @@ class CreditCardForm extends React.PureComponent {
       addressList,
       onFileAddressKey,
       isEdit,
-      backToPaymentClick,
       pristine,
       invalid,
       handleSubmit,
       dispatch,
       initialValues,
+      onClose,
     } = this.props;
     return (
-      <View>
-        <CreditCardFields {...this.props} />
-      </View>
+      <CreditCardContainer>
+        <CreditCardWrapper>
+          <CreditCardFields {...this.props} />
+        </CreditCardWrapper>
+        <AddressWrapper>
+          <Heading
+            fontFamily="secondary"
+            fontSize="fs14"
+            letterSpacing="ls167"
+            textAlign="left"
+            fontWeight="black"
+            text={labels.paymentGC.lbl_payment_billingAddress}
+          />
+          <BodyCopy
+            fontFamily="secondary"
+            fontSize="fs13"
+            textAlign="left"
+            fontWeight="black"
+            text="Select from Address Book"
+          />
+
+          <Address
+            address={this.getSelectedAddress(addressList, onFileAddressKey)}
+            showCountry={false}
+            showPhone={false}
+            className="CreditCardForm__address"
+            dataLocatorPrefix="payment"
+          />
+        </AddressWrapper>
+        <ActionsWrapper>
+          <Button
+            fill="BLUE"
+            type="submit"
+            disabled={invalid}
+            onPress={() => null}
+            buttonVariation="variable-width"
+            text={isEdit ? labels.common.lbl_common_updateCTA : labels.common.lbl_common_addCTA}
+            style={AddAddressButton}
+          />
+          <Button
+            fill="WHITE"
+            onPress={onClose}
+            buttonVariation="variable-width"
+            text={labels.common.lbl_common_cancelCTA}
+            style={CancelButton}
+          />
+        </ActionsWrapper>
+      </CreditCardContainer>
     );
   }
 }
@@ -98,4 +152,4 @@ const validateMethod = createValidateMethod({
 export default reduxForm({
   form: constants.FORM_NAME, // a unique identifier for this form
   enableReinitialize: true,
-})(withStyles(CreditCardForm, styles));
+})(CreditCardForm);
