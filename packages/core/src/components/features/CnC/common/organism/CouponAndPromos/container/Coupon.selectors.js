@@ -79,6 +79,12 @@ export const getAllRewardsCoupons = state => {
   return list && list.filter(i => i.redemptionType === COUPON_REDEMPTION_TYPE.LOYALTY);
 };
 
+export const getAllCoupons = state => {
+  const list = state.CouponsAndPromos && state.CouponsAndPromos.get('couponsAndOffers');
+  return list;
+};
+
+
 export const getNeedHelpContent = state => {
   const needHelpContent = state.CartPageReducer.get('moduleXContent').find(
     moduleX => moduleX.name === BagPageSelector.getNeedHelpContentId(state)

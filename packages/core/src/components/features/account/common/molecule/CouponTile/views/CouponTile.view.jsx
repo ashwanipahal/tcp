@@ -5,17 +5,39 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/CouponTile.style';
 
 export const CouponTile = ({ className, coupon, labels }) => {
+	
+	let couponClass = '';
+	let couponTextLabel = '';
+	let couponType = '';
+	switch (coupon.offerType) {
+		case 'PC':
+		case 'PLACECASH':
+		  couponClass = 'coupon-placecash';
+		  couponTextLabel = `${labels.lbl_overview_couponTypePlacecash}`;
+		  couponType = 'placecash';
+		  break;
+		case 'LOYALTY':
+		  couponClass = 'coupon-reward';
+		  couponTextLabel = `${labels.lbl_overview_couponTypeReward}`;
+		  couponType = 'reward';
+		  break;
+		default:
+		  couponClass = 'coupon-saving';
+		  couponTextLabel = `${labels.lbl_overview_couponTypeSaving}`;
+		  couponType = 'savings';
+	}	
+	
   return (
     <BodyCopy component="li" className={`${className} elem-mb-SM`}>
       <BodyCopy
         component="div"
-        className="coupon-reward elem-mr-XS"
+        className={`${couponClass} elem-mr-XS`}
         fontSize="fs13"
         fontWeight="black"
         color="white"
         textAlign="center"
       >
-        {labels.lbl_overview_myPlaceRewardsCouponType}
+        {`${couponTextLabel}`}
       </BodyCopy>
       <BodyCopy component="div" className="elem-pt-XS">
         <BodyCopy
@@ -27,9 +49,19 @@ export const CouponTile = ({ className, coupon, labels }) => {
         >
           {coupon.title}
         </BodyCopy>
-        <BodyCopy fontSize="fs10" data-locator="accountoverview-myplacerewatdstile-rewarduseby">
-          {`${labels.lbl_overview_myPlaceRewardsUseBy} ${coupon.expirationDate}`}
+		
+		{(couponType === 'placecash') && (
+          <BodyCopy fontSize="fs10" data-locator="accountoverview-myplacerewatdstile-rewarduseby">
+          {`${labels.lbl_overview_couponValid} ${coupon.effectiveDate} - ${coupon.expirationDate}`}
         </BodyCopy>
+        )}
+		
+		{!(couponType === 'placecash') && (
+          <BodyCopy fontSize="fs10" data-locator="accountoverview-myplacerewatdstile-rewarduseby">
+          {`${labels.lbl_overview_couponUseBy} ${coupon.expirationDate}`}
+        </BodyCopy>
+        )}
+        
       </BodyCopy>
     </BodyCopy>
   );
