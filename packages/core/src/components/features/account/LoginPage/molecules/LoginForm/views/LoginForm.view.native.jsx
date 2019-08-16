@@ -4,7 +4,7 @@ import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import { noop } from 'lodash';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import { FormStyle } from '../styles/LoginForm.style.native';
+import { FormStyle, ShowHideWrapper, HideShowFieldWrapper } from '../styles/LoginForm.style.native';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import InputCheckbox from '../../../../../../common/atoms/InputCheckbox';
 import CustomButton from '../../../../../../common/atoms/Button';
@@ -36,72 +36,104 @@ const styles = {
  * @desc This method based on the props generate icon component.
  */
 
-export const LoginForm = props => {
-  const { labels, handleSubmit, onSubmit } = props;
+class LoginForm extends React.PureComponent<Props> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      type: 'password',
+    };
+  }
 
-  const showForgotPassword = () => {
-    const { showForgotPasswordForm, resetForm } = props;
+  showForgotPassword = () => {
+    const { showForgotPasswordForm, resetForm } = this.props;
     resetForm();
     showForgotPasswordForm();
   };
 
-  return (
-    <View {...props}>
-      <Field
-        label={labels.login.lbl_login_email}
-        name="emailAddress"
-        id="emailAddress"
-        type="text"
-        autoCapitalize="none"
-        component={TextBox}
-        dataLocator="emailAddress"
-      />
-      <Field
-        label={labels.login.lbl_login_password}
-        name="password"
-        id="password"
-        type="text"
-        component={TextBox}
-        dataLocator="password"
-        secureTextEntry
-      />
-      <View style={styles.inputCheckBoxStyle}>
-        <Field
-          name="userTouchId"
-          component={InputCheckbox}
-          dataLocator="rememberMe"
-          disabled={false}
-          rightText="User Touch ID"
-        />
-        <Field
-          name="savePlcc"
-          component={InputCheckbox}
-          dataLocator="savePlcc"
-          disabled={false}
-          rightText={labels.login.lbl_login_saveMyPlace}
-          marginTop={13}
-        />
-      </View>
+  changeType = e => {
+    e.preventDefault();
+    const { type } = this.state;
+    this.setState({
+      type: type === 'password' ? 'text' : 'password',
+    });
+  };
 
-      <CustomButton
-        color="#FFFFFF"
-        fill="BLUE"
-        text={labels.login.lbl_login_loginCTA}
-        buttonVariation="variable-width"
-        customStyle={styles.loginButtonStyle}
-        onPress={handleSubmit(onSubmit)}
-      />
-      <Anchor
-        fontSizeVariation="xlarge"
-        anchorVariation="secondary"
-        text={labels.login.lbl_login_forgetPasswordCTA}
-        customStyle={styles.forgotPasswordStyle}
-        onPress={showForgotPassword}
-      />
-      <LineComp marginTop={28} />
-    </View>
-  );
-};
+  render() {
+    const { labels, handleSubmit, onSubmit } = this.props;
+    const { type } = this.state;
+    return (
+      <View {...this.props}>
+        <Field
+          label={labels.login.lbl_login_email}
+          name="emailAddress"
+          id="emailAddress"
+          type="text"
+          autoCapitalize="none"
+          component={TextBox}
+          dataLocator="emailAddress"
+        />
+        <ShowHideWrapper>
+          <Field
+            label={labels.login.lbl_login_password}
+            name="password"
+            id="password"
+            type={type}
+            component={TextBox}
+            dataLocator="password"
+            secureTextEntry={type === 'password'}
+          />
+          <HideShowFieldWrapper>
+            <Anchor
+              fontSizeVariation="small"
+              fontFamily="secondary"
+              underline
+              anchorVariation="primary"
+              onPress={this.changeType}
+              noLink
+              to="/#"
+              data-locator=""
+              text={type === 'password' ? 'show' : 'hide'}
+            />
+          </HideShowFieldWrapper>
+        </ShowHideWrapper>
+        <View style={styles.inputCheckBoxStyle}>
+          <Field
+            name="userTouchId"
+            component={InputCheckbox}
+            dataLocator="rememberMe"
+            disabled={false}
+            rightText="User Touch ID"
+          />
+          <Field
+            name="savePlcc"
+            component={InputCheckbox}
+            dataLocator="savePlcc"
+            disabled={false}
+            rightText={labels.login.lbl_login_saveMyPlace}
+            marginTop={13}
+          />
+        </View>
+
+        <CustomButton
+          color="#FFFFFF"
+          fill="BLUE"
+          text={labels.login.lbl_login_loginCTA}
+          buttonVariation="variable-width"
+          customStyle={styles.loginButtonStyle}
+          onPress={handleSubmit(onSubmit)}
+        />
+        <Anchor
+          fontSizeVariation="xlarge"
+          anchorVariation="secondary"
+          text={labels.login.lbl_login_forgetPasswordCTA}
+          customStyle={styles.forgotPasswordStyle}
+          onPress={this.showForgotPassword}
+        />
+        <LineComp marginTop={28} />
+      </View>
+    );
+  }
+}
 LoginForm.propTypes = {
   labels: PropTypes.shape({
     login: {
@@ -117,7 +149,6 @@ LoginForm.propTypes = {
   }),
   handleSubmit: PropTypes.func,
   onSubmit: PropTypes.func,
-  loginErrorMessage: PropTypes.string,
   showForgotPasswordForm: PropTypes.func.isRequired,
   resetForm: PropTypes.func.isRequired,
 };
@@ -137,7 +168,6 @@ LoginForm.defaultProps = {
   },
   handleSubmit: noop,
   onSubmit: noop,
-  loginErrorMessage: '',
 };
 
 const validateMethod = createValidateMethod(
