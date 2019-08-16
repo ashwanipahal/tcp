@@ -12,10 +12,10 @@ import productTileCss, { customStyles } from '../styles/ProductTileWrapper.style
 
 const ProductTileWrapper = props => {
   let isAvailable = false;
-  const { orderItems, bagLabels, labels, pageView, isUserLoggedIn } = props;
+  const { orderItems, bagLabels, labels, pageView, isUserLoggedIn, isPlcc } = props;
   if (orderItems && orderItems.size > 0) {
     return (
-      <div className="miniBagWrapper">
+      <>
         {(isAvailable === 'SOLDOUT' || isAvailable === 'UNAVAILABLE') && (
           <>
             <ErrorMessage customClass={customStyles} error={labels.problemWithOrder} />
@@ -33,10 +33,11 @@ const ProductTileWrapper = props => {
               productDetail={productDetail}
               key={`${getProductName(tile)}`}
               pageView={pageView}
+              isPlcc={isPlcc}
             />
           );
         })}
-      </div>
+      </>
     );
   }
   return <EmptyBag bagLabels={bagLabels} isUserLoggedIn={isUserLoggedIn} />;
@@ -51,6 +52,7 @@ ProductTileWrapper.propTypes = {
   orderItems: PropTypes.shape([]).isRequired,
   labels: PropTypes.shape({}).isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
+  isPlcc: PropTypes.bool.isRequired,
   pageView: PropTypes.string,
   bagLabels: PropTypes.shape(),
 };

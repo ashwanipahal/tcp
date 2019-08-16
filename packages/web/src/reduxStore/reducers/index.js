@@ -34,6 +34,7 @@ import {
   LABEL_REDUCER_KEY,
   LAYOUT_REDUCER_KEY,
   HOMEPAGE_REDUCER_KEY,
+  LOADER_REDUCER_KEY,
   LOGINPAGE_REDUCER_KEY,
   PRODUCTLISTINGPAGE_REDUCER_KEY,
   ADDRESSBOOK_REDUCER_KEY,
@@ -64,6 +65,7 @@ import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/cont
 import NavigationReducer from '@tcp/core/src/components/features/content/Navigation/container/Navigation.reducer';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
 import HomePageReducer from '../../components/features/content/HomePage/container/HomePage.reducer';
+import LoaderReducer from '../../components/features/content/Loader/container/Loader.reducer';
 import EmailSignupReducer from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.reducer';
 import SmsSignupReducer from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.reducer';
 
@@ -88,6 +90,7 @@ export default combineReducers({
   [LAYOUT_REDUCER_KEY]: LayoutReducer,
   [MODULES_REDUCER_KEY]: ModulesReducer,
   [HOMEPAGE_REDUCER_KEY]: HomePageReducer,
+  [LOADER_REDUCER_KEY]: LoaderReducer,
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
   [LOGINPAGE_REDUCER_KEY]: LoginPageReducer,
   [FORGOTPASSWORD_REDUCER_KEY]: ForgotPasswordReducer,

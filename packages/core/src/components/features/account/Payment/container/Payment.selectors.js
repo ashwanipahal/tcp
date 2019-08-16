@@ -21,6 +21,15 @@ export const getVenmoCards = createSelector(
   creditCardList => creditCardList && creditCardList.filter(card => card.ccType === 'VENMO')
 );
 
+export const getCreditCardDefault = createSelector(
+  [getCardListState],
+  creditCardList =>
+    creditCardList &&
+    creditCardList.filter(
+      card => card.defaultInd === true && card.ccType !== 'VENMO' && card.ccType !== 'GiftCard'
+    )
+);
+
 export const getCardListFetchingState = state => {
   return state.PaymentReducer.get('isFetching');
 };
