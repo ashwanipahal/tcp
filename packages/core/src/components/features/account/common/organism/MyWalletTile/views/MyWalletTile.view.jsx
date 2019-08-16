@@ -2,40 +2,60 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AccountOverviewTile from '../../../../../../common/molecules/AccountOverviewTile';
 import CouponList from '../molecules/CouponList';
+import Anchor from '../../../../../../common/atoms/Anchor';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy/views/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/MyWalletTile.style';
+import internalEndpoints from '../../../internalEndpoints';
 
-export const MyWalletTile = ({ className, labels, coupons, isBrierleyEnabled }) => {
+export const MyWalletTile = ({ className, labels, coupons }) => {
   const couponsCount = coupons.size;
   let walletOverviewInfo = '';
-  let rewardDataLocator = '';
+  let walletDataLocator = '';
 
   if (couponsCount) {
-    walletOverviewInfo = labels.lbl_overview_myPlaceRewardsAvailable.replace(/\{0\}/, couponsCount);
-    rewardDataLocator = 'accountoverview-mywallettile-youhaverewardtext';
+    walletOverviewInfo = labels.lbl_overview_myWalletOfferAvailable.replace(/\{0\}/, couponsCount);
+    walletDataLocator = 'accountoverview-mywallettile-youhaverewardtext';
   } else {
-    walletOverviewInfo = labels.lbl_overview_myPlaceRewardsDesc;
-    rewardDataLocator = 'accountoverview-mywallettile-startshoptext';
+    walletOverviewInfo = labels.lbl_overview_myWalletNoOfferAvailable;
+    walletDataLocator = 'accountoverview-mywallettile-startshoptext';
   }
   return (
     <AccountOverviewTile
       className={className}
-      title={labels.lbl_overview_myPlaceRewardsHeading}
-      ctaTitle={labels.lbl_overview_myPlaceRewardsCTA}
+      title={labels.lbl_overview_myWalletHeading}
+      ctaTitle={labels.lbl_overview_myWalletCTA}
+      ctaLink={internalEndpoints.myWalletPage}
       dataLocatorPrefix="myrewardstile"
     >
-      <section className={`elem-pb-MED ${isBrierleyEnabled ? 'bordered' : ''}`}>
+      <section className="elem-pb-MED">
         <BodyCopy
           className="elem-mb-LRG"
           fontSize="fs14"
           fontWeight="semibold"
-          data-locator={rewardDataLocator}
+          data-locator={walletDataLocator}
         >
           {walletOverviewInfo}
+          {!couponsCount && labels.lbl_overview_myWalletStartShop}
         </BodyCopy>
+
+        {!couponsCount && (
+          <div>
+            <Anchor
+              anchorVariation="button"
+              buttonVariation="variable-width"
+              fullWidth
+              centered
+              fill="WHITE"
+              to={internalEndpoints.shopNowPage}
+              data-locator="accountoverview-myplacerewardstile-startshopbtn"
+            >
+              {labels.lbl_overview_myWalletShopCTA}
+            </Anchor>
+          </div>
+        )}
+
         <CouponList coupons={coupons} sliceCount={5} labels={labels} />
-        {!couponsCount && <div>FEO</div>}
       </section>
     </AccountOverviewTile>
   );
@@ -43,19 +63,18 @@ export const MyWalletTile = ({ className, labels, coupons, isBrierleyEnabled }) 
 
 MyWalletTile.propTypes = {
   labels: PropTypes.shape({
-    lbl_overview_myPlaceRewardsHeading: PropTypes.string.isRequired,
-    lbl_overview_myPlaceRewardsCTA: PropTypes.string.isRequired,
-    lbl_overview_myPlaceRewardsAvailable: PropTypes.string.isRequired,
-    lbl_overview_myPlaceRewardsDesc: PropTypes.string.isRequired,
-    lbl_overview_myPlaceRewardsShopNow: PropTypes.string.isRequired,
+    lbl_overview_myWalletHeading: PropTypes.string.isRequired,
+    lbl_overview_myWalletCTA: PropTypes.string.isRequired,
+    lbl_overview_myWalletOfferAvailable: PropTypes.string.isRequired,
+    lbl_overview_myWalletNoOfferAvailable: PropTypes.string.isRequired,
+    lbl_overview_myWalletStartShop: PropTypes.string.isRequired,
+    lbl_overview_myWalletShopCTA: PropTypes.string.isRequired,
   }).isRequired,
   coupons: PropTypes.shape([]).isRequired,
-  isBrierleyEnabled: PropTypes.bool,
   className: PropTypes.string,
 };
 
 MyWalletTile.defaultProps = {
-  isBrierleyEnabled: true,
   className: '',
 };
 

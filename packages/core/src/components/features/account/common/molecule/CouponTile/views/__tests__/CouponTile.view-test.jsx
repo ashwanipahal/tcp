@@ -7,8 +7,6 @@ describe('CouponTile Component', () => {
     const props = {
       coupon: {},
       labels: {
-        lbl_overview_myPlaceRewardsCouponType: '',
-        lbl_overview_myPlaceRewardsUseBy: '',
         lbl_overview_couponTypeSaving: '',
         lbl_overview_couponUseBy: '',
       },
