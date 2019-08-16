@@ -26,7 +26,7 @@ export const MyWalletTile = ({ className, labels, coupons }) => {
       title={labels.lbl_overview_myWalletHeading}
       ctaTitle={labels.lbl_overview_myWalletCTA}
       ctaLink={internalEndpoints.myWalletPage}
-      dataLocatorPrefix="myrewardstile"
+      dataLocatorPrefix="mywallettile"
     >
       <section className="elem-pb-MED">
         <BodyCopy
@@ -48,7 +48,7 @@ export const MyWalletTile = ({ className, labels, coupons }) => {
               centered
               fill="WHITE"
               to={internalEndpoints.shopNowPage}
-              data-locator="accountoverview-myplacerewardstile-startshopbtn"
+              data-locator="accountoverview-mywallettile-startshopbtn"
             >
               {labels.lbl_overview_myWalletShopCTA}
             </Anchor>
