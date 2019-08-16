@@ -48,6 +48,7 @@ export const AccountOverviewTileList = ({ className, ...otherProps }) => {
             large: 4,
           }}
           ignoreGutter={{
+            large: true,
             small: true,
           }}
           className="overviewCol elem-mb-XL"

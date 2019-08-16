@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { getCouponList } from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.actions';
 import { getAllCoupons } from '../../../../../CnC/common/organism/CouponAndPromos/container/Coupon.selectors';
 import MyWalletTileComponent from '../views';
-import { getBrierleySwitch } from './MyWalletTile.selectors';
 
 export class MyWalletTile extends PureComponent {
   static propTypes = {
@@ -23,7 +22,6 @@ export class MyWalletTile extends PureComponent {
 
 const mapStateToProps = state => ({
   coupons: getAllCoupons(state),
-  isBrierleyEnabled: getBrierleySwitch(state),
 });
 
 const mapDispatchToProps = dispatch => ({

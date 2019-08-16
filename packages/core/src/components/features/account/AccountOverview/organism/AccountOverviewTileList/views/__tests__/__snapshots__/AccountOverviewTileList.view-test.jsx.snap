@@ -50,6 +50,7 @@ exports[`AccountOverviewTileList component should render correctly 1`] = `
     }
     ignoreGutter={
       Object {
+        "large": true,
         "small": true,
       }
     }
