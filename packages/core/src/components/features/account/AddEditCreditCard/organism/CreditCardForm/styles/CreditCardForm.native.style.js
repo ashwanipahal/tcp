@@ -1,23 +1,19 @@
 import styled from 'styled-components';
 
 const CreditCardContainer = styled.View`
-  border: 1px solid gray;
   flex: 1;
   flex-direction: column;
 `;
 
 const CreditCardWrapper = styled.View`
-  border: 1px solid green;
   height: 150px;
 `;
 
 const AddressWrapper = styled.View`
-  border: 1px solid blue;
   height: 250px;
 `;
 
 const ActionsWrapper = styled.View`
-  border: 1px solid yellow;
   align-items: center;
   height: 150px;
 `;
@@ -39,6 +35,29 @@ const CancelButton = {
   width: 190,
 };
 
+const DefaultAddress = styled.View`
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+`;
+
+const LeftBracket = styled.View`
+  border: 1px solid gray;
+  border-right-width: 0px;
+  margin-right: 10px;
+  height: 100px;
+  width: 10px;
+`;
+
+const RightBracket = styled.View`
+  border: 1px solid gray;
+  border-left-width: 0px;
+  margin-left: 10px;
+  height: 100px;
+  width: 10px;
+`;
+
 const ModalHeading = styled.Text`
   margin-top: 50px;
   padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
@@ -55,7 +74,6 @@ const LineWrapper = styled.View`
   padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
 `;
 
-
 export {
   CreditCardContainer,
   CreditCardWrapper,
@@ -66,4 +84,7 @@ export {
   ModalHeading,
   ModalViewWrapper,
   LineWrapper,
+  DefaultAddress,
+  LeftBracket,
+  RightBracket
 };

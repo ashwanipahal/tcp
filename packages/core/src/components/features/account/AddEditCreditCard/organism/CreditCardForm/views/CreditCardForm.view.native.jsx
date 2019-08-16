@@ -9,6 +9,7 @@ import AddressFields from '@tcp/core/src/components/features/account/common/mole
 import { Heading } from '@tcp/core/src/components/common/atoms';
 import AddEditAddressContainer from '@tcp/core/src/components/features/account/AddEditAddress/container/AddEditAddress.container';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
+import AddressDropdown from '@tcp/core/src/components/features/account/AddEditCreditCard/molecule/AddressDropdown/views/AddressDropdown.view.native';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import constants from '../../../container/AddEditCreditCard.constants';
@@ -21,6 +22,9 @@ import {
   CancelButton,
   CreditCardContainer,
   ModalViewWrapper,
+  DefaultAddress,
+  LeftBracket,
+  RightBracket,
 } from '../styles/CreditCardForm.native.style';
 
 class CreditCardForm extends React.PureComponent<Props, State> {
@@ -47,43 +51,39 @@ class CreditCardForm extends React.PureComponent<Props, State> {
 
   constructor(props) {
     super(props);
+    const { onFileAddresskey } = props;
     this.state = {
       addAddressMount: false,
+      selectedAddress: onFileAddresskey,
     };
   }
 
   getAddressOptions = () => {
     const { addressList, labels } = this.props;
     let addressOptions = addressList.map(address => ({
-      value: address.addressId,
-      title: `${address.firstName} ${address.lastName} ${
+      id: address.addressId,
+      label: `${address.firstName} ${address.lastName} ${
         address.primary === 'true' ? '(Default)' : ''
       }`,
-      content: (
-        <View
-          address={address}
-          showCountry={false}
-          showPhone={false}
-          isDefault={address.primary === 'true'}
-        />
-      ),
+      content: address,
     }));
 
     addressOptions = addressOptions.push({
-      value: '',
-      title: labels.paymentGC.lbl_payment_addNewAddCta,
-      content: (
-        <Button fullWidth buttonVariation="variable-width" fill="BLUE">
-          {labels.paymentGC.lbl_payment_addNewAddCta}
-        </Button>
-      ),
+      id: '',
+      label: labels.paymentGC.lbl_payment_addNewAddCta,
+      content: '',
     });
 
-    return addressOptions;
+    return addressOptions.valueSeq().toArray();
   };
 
-  getSelectedAddress = (addressList, onFileAddresskey) => {
-    return (addressList && addressList.find(add => add.addressId === onFileAddresskey)) || {};
+  getSelectedAddress = (addressList, onFileAddresskey) =>
+    onFileAddresskey
+      ? addressList && addressList.find(add => add.addressId === onFileAddresskey)
+      : addressList && addressList.find(add => add.primary);
+
+  handleComponentChange = item => {
+    this.setState({ selectedAddress: item });
   };
 
   toggleModal = () => {
@@ -108,7 +108,16 @@ class CreditCardForm extends React.PureComponent<Props, State> {
       initialValues,
       onClose,
     } = this.props;
-    const { addAddressMount } = this.state;
+    const { addAddressMount, selectedAddress } = this.state;
+    const dropDownStyle = {
+      height: 30,
+      borderBottomWidth: 1,
+      marginTop: 15,
+    };
+    const itemStyle = {
+      height: 100,
+    };
+    const addressComponentList = this.getAddressOptions();
     return (
       <CreditCardContainer>
         <CreditCardWrapper>
@@ -131,13 +140,30 @@ class CreditCardForm extends React.PureComponent<Props, State> {
             text="Select from Address Book"
           />
 
-          <Address
-            address={this.getSelectedAddress(addressList, onFileAddressKey)}
-            showCountry={false}
-            showPhone={false}
-            className="CreditCardForm__address"
-            dataLocatorPrefix="payment"
-          />
+          {addressComponentList && (
+            <AddressDropdown
+              data={addressComponentList}
+              onValueChange={itemValue => {
+                this.handleComponentChange(itemValue);
+              }}
+              variation="secondary"
+              dropDownStyle={{ ...dropDownStyle }}
+              itemStyle={{ ...itemStyle }}
+              addAddress={this.toggleModal}
+            />
+          )}
+          <DefaultAddress>
+            <LeftBracket />
+            <Address
+              address={this.getSelectedAddress(addressList, selectedAddress)}
+              showCountry={false}
+              showPhone={false}
+              showName
+              className="CreditCardForm__address"
+              dataLocatorPrefix="payment"
+            />
+            <RightBracket />
+          </DefaultAddress>
         </AddressWrapper>
         <ActionsWrapper>
           <Button

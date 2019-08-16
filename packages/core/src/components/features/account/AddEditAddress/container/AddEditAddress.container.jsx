@@ -28,7 +28,6 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
   }
 
   componentDidUpdate() {
-    console.log('test componentDidUpdate');
     const { addressResponse } = this.props;
     const isSuccess = addressResponse && addressResponse.get('addressId');
     if (isSuccess) {
