@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import { reduxForm } from 'redux-form';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
@@ -7,6 +7,8 @@ import Address from '@tcp/core/src/components/common/molecules/Address';
 import Button from '@tcp/core/src/components/common/atoms/Button';
 import AddressFields from '@tcp/core/src/components/features/account/common/molecule/AddressFields';
 import { Heading } from '@tcp/core/src/components/common/atoms';
+import AddEditAddressContainer from '@tcp/core/src/components/features/account/AddEditAddress/container/AddEditAddress.container';
+import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import constants from '../../../container/AddEditCreditCard.constants';
@@ -18,9 +20,10 @@ import {
   AddAddressButton,
   CancelButton,
   CreditCardContainer,
+  ModalViewWrapper,
 } from '../styles/CreditCardForm.native.style';
 
-class CreditCardForm extends React.PureComponent {
+class CreditCardForm extends React.PureComponent<Props, State> {
   static propTypes = {
     className: PropTypes.string,
     labels: PropTypes.shape({}).isRequired,
@@ -41,6 +44,13 @@ class CreditCardForm extends React.PureComponent {
     onFileAddressKey: '',
     isEdit: false,
   };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      addAddressMount: false,
+    };
+  }
 
   getAddressOptions = () => {
     const { addressList, labels } = this.props;
@@ -76,6 +86,13 @@ class CreditCardForm extends React.PureComponent {
     return (addressList && addressList.find(add => add.addressId === onFileAddresskey)) || {};
   };
 
+  toggleModal = () => {
+    const { addAddressMount } = this.state;
+    this.setState({
+      addAddressMount: !addAddressMount,
+    });
+  };
+
   render() {
     const {
       className,
@@ -91,6 +108,7 @@ class CreditCardForm extends React.PureComponent {
       initialValues,
       onClose,
     } = this.props;
+    const { addAddressMount } = this.state;
     return (
       <CreditCardContainer>
         <CreditCardWrapper>
@@ -126,7 +144,7 @@ class CreditCardForm extends React.PureComponent {
             fill="BLUE"
             type="submit"
             disabled={invalid}
-            onPress={() => null}
+            onPress={this.toggleModal}
             buttonVariation="variable-width"
             text={isEdit ? labels.common.lbl_common_updateCTA : labels.common.lbl_common_addCTA}
             style={AddAddressButton}
@@ -139,6 +157,15 @@ class CreditCardForm extends React.PureComponent {
             style={CancelButton}
           />
         </ActionsWrapper>
+        {addAddressMount && (
+          <ModalNative onRequestClose={this.toggleModal}>
+            <SafeAreaView>
+              <ModalViewWrapper>
+                <AddEditAddressContainer labels={addressLabels} onCancel={this.toggleModal} />
+              </ModalViewWrapper>
+            </SafeAreaView>
+          </ModalNative>
+        )}
       </CreditCardContainer>
     );
   }

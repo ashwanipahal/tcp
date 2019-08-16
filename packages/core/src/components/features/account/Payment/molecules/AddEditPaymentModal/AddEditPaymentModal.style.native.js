@@ -1,15 +1,15 @@
-import styled, { css } from 'styled-components/native';
-
-const Style = css``;
+import styled from 'styled-components/native';
 
 const ModalHeading = styled.Text`
-  margin-top: -120px;
   padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  border: 1px solid red;
 `;
 
 const ModalViewWrapper = styled.View`
   padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  height: 600px;
+  border: 1px solid green;
 `;
 
 const LineWrapper = styled.View`
@@ -61,7 +61,6 @@ const CloseButtonWrapper = styled.View`
 `;
 
 export {
-  Style,
   ModalHeading,
   ModalViewWrapper,
   LineWrapper,

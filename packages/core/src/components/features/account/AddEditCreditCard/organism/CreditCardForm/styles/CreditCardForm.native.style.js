@@ -39,4 +39,31 @@ const CancelButton = {
   width: 190,
 };
 
-export { CreditCardContainer, CreditCardWrapper, AddressWrapper, ActionsWrapper, AddAddressButton, CancelButton };
+const ModalHeading = styled.Text`
+  margin-top: 50px;
+  padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
+const ModalViewWrapper = styled.View`
+  padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  height: 800px;
+`;
+
+const LineWrapper = styled.View`
+  padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+  padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
+`;
+
+
+export {
+  CreditCardContainer,
+  CreditCardWrapper,
+  AddressWrapper,
+  ActionsWrapper,
+  AddAddressButton,
+  CancelButton,
+  ModalHeading,
+  ModalViewWrapper,
+  LineWrapper,
+};

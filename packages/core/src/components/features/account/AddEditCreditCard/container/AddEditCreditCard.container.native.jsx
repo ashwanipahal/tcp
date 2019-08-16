@@ -172,6 +172,10 @@ export class AddEditCreditCard extends React.PureComponent {
 
     const isExpirationRequired = this.getExpirationRequiredFlag();
     const { initialValues } = this.state;
+    const addressLabels = Object.keys(labels.addressBook).reduce(
+      (c, k) => ((c[k.toLowerCase()] = labels.addressBook[k]), c),
+      {}
+    );
 
     return (
       <AddEditCreditCardComponent
@@ -186,7 +190,7 @@ export class AddEditCreditCard extends React.PureComponent {
         expMonthOptionsMap={this.creditCardExpirationOptionMap.monthsMap}
         expYearOptionsMap={this.creditCardExpirationOptionMap.yearsMap}
         initialValues={initialValues}
-        addressLabels={labels}
+        addressLabels={addressLabels}
         backToPaymentClick={this.backToPaymentClick}
         onSubmit={this.onCreditCardFormSubmit}
         errorMessage={addEditCreditCardError}

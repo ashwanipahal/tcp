@@ -17,6 +17,7 @@ const AddressBook = props => {
     verifyAddressAction,
     isEdit,
     isMakeDefaultDisabled,
+    onCancel
   } = props;
   return (
     <View {...props}>
@@ -35,6 +36,7 @@ const AddressBook = props => {
           isEdit={isEdit}
           isMakeDefaultDisabled={isMakeDefaultDisabled}
           submitAddressFormAction={submitAddressFormAction}
+          onCancel={onCancel}
         />
       </ScrollView>
     </View>
@@ -47,6 +49,7 @@ AddressBook.propTypes = {
   isMakeDefaultDisabled: PropTypes.bool,
   submitAddressFormAction: PropTypes.func,
   verifyAddressAction: PropTypes.func,
+  onCancel: PropTypes.func,
 };
 
 AddressBook.defaultProps = {
@@ -54,6 +57,7 @@ AddressBook.defaultProps = {
   isMakeDefaultDisabled: false,
   submitAddressFormAction: () => null,
   verifyAddressAction: () => null,
+  onCancel: () => null,
 };
 
 export default withStyles(AddressBook, ParentContainer);
