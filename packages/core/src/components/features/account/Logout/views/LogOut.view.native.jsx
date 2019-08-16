@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Anchor from '../../../../common/atoms/Anchor';
+import BodyCopy from '../../../../common/atoms/BodyCopy';
 
 class LogOutView extends React.Component {
   constructor(props) {
@@ -18,12 +18,13 @@ class LogOutView extends React.Component {
     const { className, labels } = this.props;
     return (
       <React.Fragment className={className}>
-        <Anchor
+        <BodyCopy
           onPress={this.logoutApp}
-          className="elem-pb-SM"
-          fontSizeVariation="large"
-          anchorVariation="primary"
-          text="{labels.CREATE_ACC_SIGN_OUT}"
+          fontFamily="secondary"
+          fontSize="fs13"
+          fontWeight="regular"
+          text={labels.lbl_overview_logout}
+          color="gray.900"
         />
       </React.Fragment>
     );

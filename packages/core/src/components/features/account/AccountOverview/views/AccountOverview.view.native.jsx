@@ -16,20 +16,54 @@ import {
   ModalViewWrapper,
   LineWrapper,
 } from '../../LoginPage/molecules/LoginForm/LoginForm.style.native';
+
+import {
+  LogutWrapper,
+  LoggedinWrapper,
+  LoggedinTextWrapper,
+} from '../../Logout/styles/LoginOut.style.native';
+
 import CreateAccount from '../../CreateAccount';
+import LoginPageContainer from '../../LoginPage';
 
 class AccountOverview extends PureComponent<Props> {
   constructor(props) {
     super(props);
     this.state = {
       showModal: false,
+      getComponentId: {
+        login: '',
+        createAccount: '',
+      },
     };
   }
 
-  toggleModal = () => {
+  renderComponent = ({ navigation, getComponentId, isUserLoggedIn }) => {
+    return (
+      <React.Fragment>
+        {getComponentId.login ? (
+          <LoginPageContainer
+            onRequestClose={this.toggleModal}
+            navigation={navigation}
+            isUserLoggedIn={isUserLoggedIn}
+          />
+        ) : (
+          <CreateAccount navigation={navigation} onRequestClose={this.toggleModal} />
+        )}
+      </React.Fragment>
+    );
+  };
+
+  toggleModal = ({ getComponentId }) => {
     const { showModal } = this.state;
     this.setState({
       showModal: !showModal,
+      getComponentId: getComponentId
+        ? {
+            login: getComponentId.login,
+            createAccount: getComponentId.createAccount,
+          }
+        : '',
     });
   };
 
@@ -37,38 +71,9 @@ class AccountOverview extends PureComponent<Props> {
     const viewContainerStyle = { marginTop: 15 };
     const colorPallete = createThemeColorPalette();
     const { isUserLoggedIn, labels, handleComponentChange, navigation } = this.props;
-    const { showModal } = this.state;
+    const { showModal, getComponentId } = this.state;
     return (
       <View style={viewContainerStyle}>
-        <CustomButton
-          color={colorPallete.text.secondary}
-          fill="WHITE"
-          type="submit"
-          buttonVariation="variable-width"
-          data-locator=""
-          text="CREATE ACCOUNT"
-          onPress={this.toggleModal}
-        />
-        {showModal && (
-          <ModalNative isOpen={showModal} onRequestClose={this.toggleModal}>
-            <ModalHeading>
-              <BodyCopy
-                mobileFontFamily={['secondary']}
-                fontWeight="extrabold"
-                fontSize="fs16"
-                text="CREATE ACCOUNT"
-              />
-            </ModalHeading>
-            <LineWrapper>
-              <LineComp marginTop={5} borderWidth={2} borderColor="black" />
-            </LineWrapper>
-            <SafeAreaView>
-              <ModalViewWrapper>
-                <CreateAccount navigation={navigation} onRequestClose={this.toggleModal} />
-              </ModalViewWrapper>
-            </SafeAreaView>
-          </ModalNative>
-        )}
         {isUserLoggedIn && (
           <React.Fragment>
             <Panel title={labels.lbl_overview_myPlaceRewardsHeading} />
@@ -88,6 +93,82 @@ class AccountOverview extends PureComponent<Props> {
         )}
         {!isUserLoggedIn && (
           <React.Fragment>
+            <LoggedinTextWrapper>
+              <BodyCopy
+                mobileFontFamily={['primary']}
+                fontSize="fs14"
+                textAlign="center"
+                text={labels.lbl_overview_logout_heading_Text_1}
+              />
+              <BodyCopy
+                mobileFontFamily={['primary']}
+                fontSize="fs14"
+                textAlign="center"
+                text={labels.lbl_overview_logout_heading_Text_2}
+              />
+            </LoggedinTextWrapper>
+            <LoggedinWrapper>
+              <CustomButton
+                className="classBtn"
+                color={colorPallete.text.secondary}
+                fill="WHITE"
+                id="createAccount"
+                type="submit"
+                width="150px"
+                buttonVariation="variable-width"
+                data-locator=""
+                text={labels.lbl_overview_join_text}
+                onPress={e =>
+                  this.toggleModal({
+                    e,
+                    getComponentId: { login: false, createAccount: true },
+                  })
+                }
+              />
+
+              <CustomButton
+                color={colorPallete.white}
+                className="classBtn"
+                fill="BLUE"
+                id="login"
+                type="submit"
+                buttonVariation="variable-width"
+                data-locator=""
+                width="150px"
+                text={labels.lbl_overview_login_text}
+                onPress={e =>
+                  this.toggleModal({
+                    e,
+                    getComponentId: { login: true, createAccount: false },
+                  })
+                }
+              />
+            </LoggedinWrapper>
+            {showModal && (
+              <ModalNative isOpen={showModal} onRequestClose={this.toggleModal}>
+                <ModalHeading>
+                  <BodyCopy
+                    mobileFontFamily={['secondary']}
+                    fontWeight="extrabold"
+                    fontSize="fs16"
+                    text={getComponentId.login ? 'LOGIN' : 'CREATE ACCOUNT'}
+                  />
+                </ModalHeading>
+                <LineWrapper>
+                  <LineComp marginTop={5} borderWidth={2} borderColor="black" />
+                </LineWrapper>
+                <SafeAreaView>
+                  <ModalViewWrapper>
+                    {this.renderComponent({
+                      navigation,
+                      getComponentId,
+                      isUserLoggedIn,
+                    })}
+                  </ModalViewWrapper>
+                </SafeAreaView>
+              </ModalNative>
+            )}
+
             <Panel title={labels.lbl_overview_myFavoritesHeading} isFavorite isVariationTypeLink />
 
             <UnderlineStyle />
@@ -113,7 +194,7 @@ class AccountOverview extends PureComponent<Props> {
           </React.Fragment>
         )}
 
-        {isUserLoggedIn && <LogOutPageContainer labels={labels} />}
+        <LogutWrapper>{isUserLoggedIn && <LogOutPageContainer labels={labels} />}</LogutWrapper>
         <UnderlineStyle />
       </View>
     );

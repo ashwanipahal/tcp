@@ -13,6 +13,7 @@ type Props = {
   className: string,
   labels: object,
   isUserLoggedIn: string,
+  navigation: object,
 };
 
 /**
@@ -31,6 +32,7 @@ const MyAccountLayoutView = (props: Props) => {
     className,
     labels,
     isUserLoggedIn,
+    navigation,
   } = props;
   return (
     <View className={className} {...props}>
@@ -44,6 +46,7 @@ const MyAccountLayoutView = (props: Props) => {
         isUserLoggedIn={isUserLoggedIn}
         labels={labels}
         handleComponentChange={handleComponentChange}
+        navigation={navigation}
       />
     </View>
   );
