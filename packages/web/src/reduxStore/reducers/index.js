@@ -8,6 +8,7 @@ import PaymentReducer from '@tcp/core/src/components/features/account/Payment/co
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
 import ApiConfigReducer from '@tcp/core/src/reduxStore/reducers/apiConfig';
+import SessionConfigReducer from '@tcp/core/src/reduxStore/reducers/sessionConfig';
 import AddEditAddressReducer from '@tcp/core/src/components/features/account/AddEditAddress/container/AddEditAddress.reducer';
 import AddEditCreditCardReducer from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -27,6 +28,7 @@ import ResetPasswordReducer from '@tcp/core/src/components/features/account/Rese
 
 import {
   APICONFIG_REDUCER_KEY,
+  SESSIONCONFIG_REDUCER_KEY,
   HEADER_REDUCER_KEY,
   FOOTER_REDUCER_KEY,
   LABEL_REDUCER_KEY,
@@ -72,9 +74,14 @@ const filteredProductListingPageReducer = createFilteredReducer(
 );
 
 const filteredAppConfigReducer = createFilteredReducer(ApiConfigReducer, APICONFIG_REDUCER_KEY);
+const filteredSessionConfigReducer = createFilteredReducer(
+  SessionConfigReducer,
+  SESSIONCONFIG_REDUCER_KEY
+);
 
 export default combineReducers({
   [APICONFIG_REDUCER_KEY]: filteredAppConfigReducer,
+  [SESSIONCONFIG_REDUCER_KEY]: filteredSessionConfigReducer,
   [HEADER_REDUCER_KEY]: HeaderReducer,
   [FOOTER_REDUCER_KEY]: FooterReducer,
   [LABEL_REDUCER_KEY]: LabelReducer,
