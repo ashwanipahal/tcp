@@ -12,7 +12,7 @@ const dropDownlist = css`
     border: 2px solid ${props => props.theme.colors.BLACK};
     background-color: ${props => props.theme.colors.WHITE};
     img {
-      border: solid 0.4px #222222;
+      border: solid 0.4px ${props => props.theme.colors.BLACK};
       margin-right: 5px;
       border-radius: 5px;
     }

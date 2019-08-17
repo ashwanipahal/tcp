@@ -37,9 +37,13 @@ exports[`MiniBagBody component renders main component correctly 1`] = `
   }
 
   .deleteMsg {
-    border: solid 2px #26762c;
+    border: solid 2px ",
+          [Function],
+          ";
     padding: 10px;
-    background: #fff;
+    background: ",
+          [Function],
+          ";
     margin: 12px;
     .tick-icon-image {
       position: relative;

@@ -20,9 +20,9 @@ export default css`
   }
 
   .deleteMsg {
-    border: solid 2px #26762c;
+    border: solid 2px ${props => props.theme.colors.NOTIFICATION.SUCCESS};
     padding: 10px;
-    background: #fff;
+    background: ${props => props.theme.colors.WHITE};
     margin: 12px;
     .tick-icon-image {
       position: relative;

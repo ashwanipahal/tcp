@@ -30,9 +30,6 @@ const MiniBagBody = ({
   subTotal,
   currencySymbol,
 }: Props) => {
-  // const data = {
-  //   savedforLaterQty: 1,
-  // };
   const isItemDeleted = false;
   return (
     <div className={className}>
