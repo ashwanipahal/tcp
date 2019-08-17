@@ -27,8 +27,8 @@ class ProductTileWrapper extends React.PureComponent<props> {
   };
 
   render() {
-    const { orderItems, bagLabels, labels, pageView, isUserLoggedIn } = this.props;
-    const isAvailable = false;
+    const { orderItems, bagLabels, labels, pageView, isUserLoggedIn, isPlcc } = this.props;
+    let isAvailable = false;
     const { isEditAllowed } = this.state;
     if (orderItems && orderItems.size > 0) {
       return (
@@ -41,7 +41,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
           )}
           {orderItems.map(tile => {
             const productDetail = getProductDetails(tile);
-
+            isAvailable = productDetail.miscInfo.store;
             return (
               <CartItemTile
                 inheritedStyles={pageView === 'myBag' && productTileCss}
@@ -51,6 +51,7 @@ class ProductTileWrapper extends React.PureComponent<props> {
                 pageView={pageView}
                 toggleEditAllowance={this.toggleEditAllowance}
                 isEditAllowed={isEditAllowed}
+                isPlcc={isPlcc}
               />
             );
           })}
@@ -70,6 +71,7 @@ ProductTileWrapper.propTypes = {
   orderItems: PropTypes.shape([]).isRequired,
   labels: PropTypes.shape({}).isRequired,
   isUserLoggedIn: PropTypes.bool.isRequired,
+  isPlcc: PropTypes.bool.isRequired,
   pageView: PropTypes.string,
   bagLabels: PropTypes.shape(),
 };

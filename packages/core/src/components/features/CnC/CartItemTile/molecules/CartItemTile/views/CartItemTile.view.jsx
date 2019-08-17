@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import ProductEditForm from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ProductCustomizeForm/ProductCustomizeForm';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability/views/ItemAvailability.view';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import CartItemRadioButtons from '@tcp/core/src/components/features/CnC/CartItemTile/molecules/CartItemRadioButtons/views/CartItemRadioButtons';
+import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
 import endpoints from '../../../../../../../service/endpoint';
 import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
 
@@ -134,6 +134,10 @@ class CartItemTile extends React.Component {
   };
 
   getPointsColor = pageView => {
+    const { isPlcc } = this.props;
+    if (isPlcc && pageView === 'myBag') {
+      return 'blue.800';
+    }
     return pageView !== 'myBag' ? 'gray.900' : 'orange.800';
   };
 
@@ -254,16 +258,18 @@ class CartItemTile extends React.Component {
               )}
             </div>
             {!productDetail.itemInfo.isGiftItem && (
-              <Image
-                alt={labels.productBandAlt}
-                className="brand-image"
-                src={
-                  productDetail.itemInfo.itemBrand === 'TCP'
-                    ? getIconPath(`header__brand-tab--tcp`)
-                    : getIconPath('header__brand-tab-gymboree')
-                }
-                data-locator={getLocator('cart_item_brand_logo')}
-              />
+              <div className="logoWrapper">
+                <Image
+                  alt={labels.productBandAlt}
+                  className="brand-image"
+                  src={
+                    productDetail.itemInfo.itemBrand === 'TCP'
+                      ? getIconPath(`header__brand-tab--tcp`)
+                      : getIconPath('header__brand-tab-gymboree')
+                  }
+                  data-locator={getLocator('cart_item_brand_logo')}
+                />
+              </div>
             )}
           </Col>
           <Col
@@ -469,6 +475,7 @@ CartItemTile.propTypes = {
   editableProductInfo: PropTypes.shape({}).isRequired,
   removeCartItem: PropTypes.func.isRequired,
   className: PropTypes.string.isRequired,
+  isPlcc: PropTypes.string.isRequired,
   pageView: PropTypes.string,
   toggleEditAllowance: PropTypes.func.isRequired,
   isEditAllowed: PropTypes.bool,

@@ -1,21 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`BonusPointsViewVanilla should render correctly 1`] = `
-<div
-  className=""
->
-  <Styled(BonusPointsSection)
-    bonusData={Object {}}
-    labels={
-      Object {
-        "myPlaceRewards": Object {
-          "lbl_place_rewards_bonus": "bonus",
-          "lbl_place_rewards_points": "points",
-        },
+<Fragment>
+  <div
+    className=""
+  >
+    <Styled(BonusPointsSection)
+      bonusData={Object {}}
+      labels={
+        Object {
+          "myPlaceRewards": Object {
+            "lbl_place_rewards_bonus": "bonus",
+            "lbl_place_rewards_points": "points",
+          },
+        }
       }
-    }
-    toggleBonusPointsModal={[Function]}
-  />
+      toggleBonusPointsModal={[Function]}
+    />
+  </div>
   <Styled(Modal)
     className="TCPModal__Content bonus-details-modal"
     fixedWidth={true}
@@ -61,5 +63,5 @@ exports[`BonusPointsViewVanilla should render correctly 1`] = `
       richTextHtml="hello"
     />
   </Styled(Modal)>
-</div>
+</Fragment>
 `;

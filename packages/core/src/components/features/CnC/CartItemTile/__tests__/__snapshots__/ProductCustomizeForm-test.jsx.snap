@@ -85,7 +85,7 @@ exports[`ProductCustomizeForm Component ProductCustomizeForm should render corre
           name="undefined"
           onChange={[Function]}
           options={Array []}
-          width={50}
+          width={69}
         />
       </div>
       <div

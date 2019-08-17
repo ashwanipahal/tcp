@@ -226,7 +226,7 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
             )}
             <div className="size-selector">
               <Field
-                width={50}
+                width={69}
                 id="size"
                 name={this.getSizeLabel(item, labels)}
                 component={MiniBagSelect}

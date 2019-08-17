@@ -12,6 +12,7 @@ import { createAPIConfig } from '@tcp/core/src/utils';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import { getLoginState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
 import { Header, Footer } from '../components/features/content';
+import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 
@@ -95,6 +96,7 @@ class TCPWebApp extends App {
             <GlobalStyle />
             <Grid>
               <Header />
+              <Loader />
               <div id="overlayWrapper">
                 <div id="overlayComponent" />
                 <Component {...pageProps} />

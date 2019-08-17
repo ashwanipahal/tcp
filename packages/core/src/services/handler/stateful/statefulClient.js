@@ -2,6 +2,9 @@ import superagent from 'superagent';
 import { API_CONFIG } from '../../config';
 import { isClient, isMobileApp } from '../../../utils';
 import { readCookie } from '../../../utils/cookie.util';
+import verifyErrorResponseHandler from './verifyErrorResponse';
+import ErrorConstructor from '../../../utils/errorConstructor.util';
+import { API_ERROR_MESSAGE } from './config';
 
 /**
  * @summary this is meant to generate a new UID on each API call
@@ -102,6 +105,10 @@ const StatefulAPIClient = (apiConfig, reqObj) => {
   const result = new Promise((resolve, reject) => {
     request
       .then(response => {
+        const errorObject = verifyErrorResponseHandler(response);
+        if (errorObject.errorCode) {
+          throw new ErrorConstructor({ ...errorObject, errorMsg: API_ERROR_MESSAGE });
+        }
         resolve(response);
       })
       .catch(err => {
