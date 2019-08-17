@@ -13,7 +13,9 @@ describe('#LoginPage selector', () => {
   it('#getUserLoggedInState should return if user is logged in', () => {
     const initialState = {
       [LOGINPAGE_REDUCER_KEY]: fromJS({
-        isLoggedin: true,
+        userInfo: {
+          isLoggedin: true,
+        }
       }),
     };
     expect(getUserLoggedInState(initialState)).toBeTruthy();
@@ -21,7 +23,9 @@ describe('#LoginPage selector', () => {
 
   it('#getUserLoggedInState should return false if user is not logged in', () => {
     const initialState = {
-      [LOGINPAGE_REDUCER_KEY]: fromJS({}),
+      [LOGINPAGE_REDUCER_KEY]: fromJS({
+        userInfo: null
+      }),
     };
     expect(getUserLoggedInState(initialState)).toBeFalsy();
   });
@@ -29,7 +33,9 @@ describe('#LoginPage selector', () => {
   it('#getLoginError should return true if user is successfully logged in', () => {
     const initialState = {
       [LOGINPAGE_REDUCER_KEY]: fromJS({
-        success: true,
+        userInfo: {
+          success: true,
+        }
       }),
     };
     expect(getLoginError(initialState)).toBeFalsy();
@@ -38,7 +44,9 @@ describe('#LoginPage selector', () => {
   it('#getLoginError should return false if user is successfully logged in', () => {
     const initialState = {
       [LOGINPAGE_REDUCER_KEY]: fromJS({
-        success: false,
+        userInfo: {
+          success: false,
+        }
       }),
     };
     expect(getLoginError(initialState)).toBeTruthy();
@@ -47,8 +55,10 @@ describe('#LoginPage selector', () => {
   it('#getLoginErrorMessage should return error message', () => {
     const initialState = {
       [LOGINPAGE_REDUCER_KEY]: fromJS({
-        success: true,
-        errorMessage: 'test',
+        userInfo: {
+          success: true,
+          errorMessage: 'test',
+        }
       }),
     };
     expect(getLoginErrorMessage(initialState)).toEqual('test');
@@ -57,7 +67,9 @@ describe('#LoginPage selector', () => {
   it('#shouldShowRecaptcha should return true or false based on error response', () => {
     const initialState = {
       [LOGINPAGE_REDUCER_KEY]: fromJS({
-        retiresCount: '1',
+        userInfo: {
+          retiresCount: '1',
+        }
       }),
     };
     expect(shouldShowRecaptcha(initialState)).toEqual(false);
@@ -77,7 +89,9 @@ describe('#LoginPage selector', () => {
   it('#isPlccUser should return true for plcc user', () => {
     const initialState = {
       [LOGINPAGE_REDUCER_KEY]: fromJS({
-        isPlcc: 'true',
+        userInfo: {
+          isPlcc: 'true',
+        }
       }),
     };
     expect(isPlccUser(initialState)).toEqual(true);
@@ -85,7 +99,9 @@ describe('#LoginPage selector', () => {
 
   it('#isPlccUser should return false if x_hasPLCC flag is not present', () => {
     const initialState = {
-      [LOGINPAGE_REDUCER_KEY]: fromJS({}),
+      [LOGINPAGE_REDUCER_KEY]: fromJS({
+        userInfo: {}
+      }),
     };
     expect(isPlccUser(initialState)).toEqual(false);
   });

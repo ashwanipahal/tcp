@@ -4,6 +4,7 @@ import { setLoginInfo, getUserInfo } from './LoginPage.actions';
 import fetchData from '../../../../../service/API';
 import { login, getProfile } from '../../../../../services/abstractors/account';
 import endpoints from '../../../../../service/endpoint';
+import { validateReduxCache } from '../../../../../utils/cache.util';
 
 const errorLabel = 'Error in API';
 
@@ -95,8 +96,9 @@ function* getOrderDetailSaga() {
 }
 
 export function* LoginPageSaga() {
+  const cachedUserInfo = validateReduxCache(getUserInfoSaga);
   yield takeLatest(LOGINPAGE_CONSTANTS.LOGIN, loginSaga);
-  yield takeLatest(LOGINPAGE_CONSTANTS.GET_USER_INFO, getUserInfoSaga);
+  yield takeLatest(LOGINPAGE_CONSTANTS.GET_USER_INFO, cachedUserInfo);
   yield takeLatest('GET_ORDER_DETAIL', getOrderDetailSaga);
   yield takeLatest('GET_USER_DETAIL_POC', getUserInfoPOCSaga);
 }

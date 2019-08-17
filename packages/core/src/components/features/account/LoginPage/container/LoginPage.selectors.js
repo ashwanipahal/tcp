@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 import constants from '../LoginPage.constants';
 
 export const getLoginState = state => {
-  return state[LOGINPAGE_REDUCER_KEY];
+  return state[LOGINPAGE_REDUCER_KEY].get('userInfo');
 };
 
 export const getUserLoggedInState = createSelector(
