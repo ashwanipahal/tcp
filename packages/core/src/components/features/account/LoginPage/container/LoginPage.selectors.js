@@ -58,5 +58,5 @@ export const getTotalRewardsState = createSelector(
 
 export const isPlccUser = createSelector(
   getLoginState,
-  loginState => loginState && loginState.get('x_hasPLCC') === 'true'
+  loginState => loginState && loginState.get('isPlcc') === 'true'
 );

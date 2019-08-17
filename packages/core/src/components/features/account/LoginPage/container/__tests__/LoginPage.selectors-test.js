@@ -77,7 +77,7 @@ describe('#LoginPage selector', () => {
   it('#isPlccUser should return true for plcc user', () => {
     const initialState = {
       [LOGINPAGE_REDUCER_KEY]: fromJS({
-        x_hasPLCC: 'true',
+        isPlcc: 'true',
       }),
     };
     expect(isPlccUser(initialState)).toEqual(true);

@@ -16,8 +16,101 @@ export const responseContainsErrors = response => {
   );
 };
 
+export const ADDREESS_TYPE = {
+  SHIPPING: 'Shipping',
+  BILLING: 'Billing',
+  SHIPPINGANDBILLING: 'ShippingAndBilling',
+  MAILING: 'Mailing',
+};
+
 export const parseBoolean = bool => {
   return bool === true || bool === '1' || (bool || '').toUpperCase() === 'TRUE';
+};
+
+/**
+ * This function converts string to an array.
+ * @param {string} string This param receives parse string
+ * @param {string} delimeter This param splits the string using delimeter
+ */
+export const stringToArray = (string, delimeter) => {
+  try {
+    const obj = { ...string };
+    return Object.keys(obj).map(key => obj[key].split(delimeter));
+  } catch (e) {
+    return [];
+  }
+};
+
+export const getDefaultPlccAddress = addressDetails => {
+  const plccAddress = addressDetails ? JSON.parse(addressDetails) : null;
+
+  if (plccAddress) {
+    return {
+      addressId: plccAddress.wicAddressId,
+      address: {
+        firstName: plccAddress.firstName,
+        lastName: plccAddress.lastName,
+
+        addressLine1: plccAddress.addressLine1,
+        addressLine2: plccAddress.addressLine2,
+        city: plccAddress.city,
+        state: plccAddress.state,
+        country: plccAddress.country || 'US',
+        zipCode: plccAddress.zipCode,
+      },
+      phoneNumber: plccAddress.phone1,
+    };
+  }
+
+  return null;
+};
+
+export const getProfileAddress = body => ({
+  addressId: body.addressId,
+  addressKey: body.nickName,
+  type: ADDREESS_TYPE.MAILING,
+  isComplete: !!(body.city && body.state),
+  phoneNumber: body.phone1,
+  address: {
+    addressLine1: body.addressLine && body.addressLine[0],
+    addressLine2: body.addressLine && body.addressLine[1],
+    city: body.city,
+    state: body.state,
+    country: body.country,
+    zipCode: body.zipCode,
+  },
+});
+
+export const getContextAttributes = body => {
+  return (
+    body.contextAttribute &&
+    body.contextAttribute.reduce((obj, item) => {
+      const {
+        attributeName,
+        attributeValue: [
+          {
+            value: [attrValue],
+          },
+        ],
+      } = item;
+
+      // eslint-disable-next-line no-param-reassign
+      obj[attributeName] = attrValue; // Single value since it is an attribute
+      return obj;
+    }, {})
+  );
+};
+
+export const getIfUserLoggedIn = body => {
+  return parseBoolean(body.x_isRegistered) && !parseBoolean(body.x_isRememberedUser);
+};
+
+export const getIfUserRemembered = body => {
+  return parseBoolean(body.x_isRegistered) && parseBoolean(body.x_isRememberedUser);
+};
+
+export const getSurveyAnswers = body => {
+  return body.x_survey ? stringToArray(JSON.parse(body.x_survey), '|') : [];
 };
 
 export const formatAddressBookResponse = arr => {
@@ -129,10 +222,10 @@ export const getProfile = ({ refreshPoints = true, pageId, source }) => {
         throw new Error(res);
       } else {
         const addressBook = formatAddressBookResponse(res.body.contact);
-        const userLoggedIn =
-          parseBoolean(res.body.x_isRegistered) && !parseBoolean(res.body.x_isRememberedUser);
-        const userRemembered =
-          parseBoolean(res.body.x_isRegistered) && parseBoolean(res.body.x_isRememberedUser);
+        const userLoggedIn = getIfUserLoggedIn(res.body);
+        const userRemembered = getIfUserRemembered(res.body);
+        const surveyAnswers = getSurveyAnswers(res.body);
+        const contextAttributes = getContextAttributes(res.body);
 
         return {
           firstName: res.body.firstName,
@@ -142,14 +235,33 @@ export const getProfile = ({ refreshPoints = true, pageId, source }) => {
           email: res.body.email1,
           isLoggedin: userLoggedIn,
           isRemembered: userRemembered,
+          isPlcc: res.body.x_hasPLCC,
+          isExpressEligible: parseBoolean(res.body.x_isExpress),
           country: res.body.x_country,
           currency: res.body.x_currency,
-          addressBook: addressBook.length > 0 ? addressBook : null,
+          airmilesAccountNumber: res.body.x_airMilesAccount,
+          myPlaceNumber: res.body.x_myPlaceAcctNumber,
+          plccCardId: res.body.x_wicPlccId,
+          plccCardNumber: res.body.x_wicPlccCardNo,
+          associateId: res.body.x_associateId,
+          hasPreScreenId: res.body.x_preScreenIdAvailability,
+          isBopisEnabled: parseBoolean(res.body.x_isBOPISEnabled),
+          isBossEnabled: parseBoolean(res.body.x_isBOSSEnabled),
+          isRopisEnabled: parseBoolean(res.body.x_isROPISEnabled),
+          language: (res.body.x_language || '').substr(0, 2),
+          addressBook,
+          surveyAnswers,
           userBirthday: res.body.x_userBirthday,
+          defaultPlccAddress: getDefaultPlccAddress(res.body.x_wicAddressDetails),
+          profileAddress: getProfileAddress(res.body),
           pointsToNextReward: res.body.x_pointsToNextReward || 100,
           currentPoints: res.body.x_currentPoints || 0,
           totalRewards: res.body.x_totalRewards,
-          x_hasPLCC: res.body.x_hasPLCC,
+          nextMonthRewards: res.body.nextMonthRewards || 0,
+          contextAttributes,
+          userProfileState: {
+            profileCompletion: res.body.x_profilePercentageComplete,
+          },
         };
       }
     })
