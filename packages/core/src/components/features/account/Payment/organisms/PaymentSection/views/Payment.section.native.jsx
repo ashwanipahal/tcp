@@ -208,8 +208,6 @@ class PaymentView extends React.Component<Props> {
               labels={labels}
               setSelectedCard={this.setSelectedCard}
               toggleModal={this.setUpdateModalMountState}
-              onConfirm={this.onConfirm}
-              onClose={this.onClose}
             />
           )}
         </ScrollView>

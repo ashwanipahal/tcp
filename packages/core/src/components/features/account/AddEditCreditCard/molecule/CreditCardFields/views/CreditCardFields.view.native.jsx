@@ -2,17 +2,22 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
-import { getCreditCardExpirationOptionMap } from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.utils';
 import TextBox from '../../../../../../common/atoms/TextBox';
 import {
   PaymentContainer,
   CardContainer,
   ExpiryContainer,
 } from '../styles/CreditCardFields.native.style';
-import { white } from 'ansi-colors';
 
 export class CreditCardFields extends React.PureComponent<Props> {
-  handleComponentChange(item) {}
+  constructor(props) {
+    super(props);
+    const { expMonthOptionsMap, expYearOptionsMap } = props;
+    this.state = {
+      selectedYear: expYearOptionsMap[0].labels,
+      selectedMonth: expMonthOptionsMap[0].label,
+    };
+  }
 
   render() {
     const {
@@ -21,10 +26,11 @@ export class CreditCardFields extends React.PureComponent<Props> {
       isExpirationRequired,
       isPLCCEnabled,
       cardType,
+      className,
       expMonthOptionsMap,
       expYearOptionsMap,
-      className,
     } = this.props;
+    const { selectedMonth, selectedYear } = this.state;
     const dropDownStyle = {
       height: 40,
       border: 1,
@@ -39,34 +45,64 @@ export class CreditCardFields extends React.PureComponent<Props> {
       <PaymentContainer>
         <CardContainer>
           <Field
-            label="Card #"
+            label={labels.paymentGC.lbl_payment_cardNumber}
             component={TextBox}
-            title="CreditCardFields"
-            name="recaptchaToken"
-            id="recaptchaToken"
-            data-locator="gift-card-recaptchcb"
-            className="visibility-recaptcha"
+            enableSuccessCheck={false}
+            name="cardNumber"
+            id="cardNumber"
+            dataLocator="addEditCreditCard-cardtextfield"
+            className="field"
           />
         </CardContainer>
         <ExpiryContainer>
-          <DropDown
-            data={getCreditCardExpirationOptionMap().monthsMap}
+          <Field
+            label={labels.paymentGC.lbl_payment_cardNumber}
+            name="expMonth"
+            id="expMonth"
+            component={TextBox}
+            dataLocator="addEditCreditCard-expMonth"
+            className="field"
+            {...dropDownStyle}
+          />
+
+          <Field
+            name="expYear"
+            id="expYear"
+            component={TextBox}
+            dataLocator="addEditCreditCard-expYear"
+            className="field"
+            {...dropDownStyle}
+          />
+          {/*
+          <Field
+            name="expMonth"
+            id="expMonth"
+            component={DropDown}
+            data={expMonthOptionsMap}
+            dataLocator="addEditCreditCard-expMonth1"
             onValueChange={itemValue => {
-              this.handleComponentChange(itemValue);
+              this.setState({ selectedMonth: itemValue });
             }}
             variation="secondary"
+            selectedValue={selectedMonth}
             dropDownStyle={{ ...dropDownStyle }}
             itemStyle={{ ...itemStyle }}
           />
-          <DropDown
-            data={getCreditCardExpirationOptionMap().yearsMap}
-            onValueChange={itemValue => {
-              this.handleComponentChange(itemValue);
-            }}
+
+          <Field
+            name="expYear"
+            id="expYear"
+            component={DropDown}
+            data={expYearOptionsMap}
+            dataLocator="addEditCreditCard-expYear1"
             variation="secondary"
             dropDownStyle={{ ...dropDownStyle }}
             itemStyle={{ ...itemStyle }}
-          />
+            onValueChange={itemValue => {
+              this.setState({ selectedYear: itemValue });
+            }}
+            selectedValue={selectedYear}
+          /> */}
         </ExpiryContainer>
       </PaymentContainer>
     );
@@ -83,8 +119,6 @@ CreditCardFields.propTypes = {
   cardTypeImgUrl: PropTypes.string,
   isPLCCEnabled: PropTypes.bool,
   cardType: PropTypes.string,
-  expMonthOptionsMap: PropTypes.shape([]).isRequired,
-  expYearOptionsMap: PropTypes.shape([]).isRequired,
   className: PropTypes.string,
 };
 

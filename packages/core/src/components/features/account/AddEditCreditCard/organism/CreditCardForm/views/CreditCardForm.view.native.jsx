@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, SafeAreaView } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
-import { reduxForm } from 'redux-form';
+import { reduxForm, Field, FormSection } from 'redux-form';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Address from '@tcp/core/src/components/common/molecules/Address';
 import Button from '@tcp/core/src/components/common/atoms/Button';
@@ -141,15 +141,20 @@ class CreditCardForm extends React.PureComponent<Props, State> {
           />
 
           {addressComponentList && (
-            <AddressDropdown
+            <Field
+              selectListTitle={labels.paymentGC.lbl_payment_ccAdressSelect}
+              name="onFileAddressKey"
+              id="onFileAddressKey"
+              component={AddressDropdown}
+              dataLocator="payment-billingaddressdd"
               data={addressComponentList}
-              onValueChange={itemValue => {
-                this.handleComponentChange(itemValue);
-              }}
               variation="secondary"
               dropDownStyle={{ ...dropDownStyle }}
               itemStyle={{ ...itemStyle }}
               addAddress={this.toggleModal}
+              onValueChange={itemValue => {
+                this.handleComponentChange(itemValue);
+              }}
             />
           )}
           <DefaultAddress>
@@ -168,12 +173,13 @@ class CreditCardForm extends React.PureComponent<Props, State> {
         <ActionsWrapper>
           <Button
             fill="BLUE"
-            type="submit"
             disabled={invalid}
-            onPress={this.toggleModal}
             buttonVariation="variable-width"
             text={isEdit ? labels.common.lbl_common_updateCTA : labels.common.lbl_common_addCTA}
             style={AddAddressButton}
+            onPress={handleSubmit}
+            type="submit"
+            external
           />
           <Button
             fill="WHITE"
@@ -183,15 +189,6 @@ class CreditCardForm extends React.PureComponent<Props, State> {
             style={CancelButton}
           />
         </ActionsWrapper>
-        {addAddressMount && (
-          <ModalNative onRequestClose={this.toggleModal}>
-            <SafeAreaView>
-              <ModalViewWrapper>
-                <AddEditAddressContainer labels={addressLabels} onCancel={this.toggleModal} />
-              </ModalViewWrapper>
-            </SafeAreaView>
-          </ModalNative>
-        )}
       </CreditCardContainer>
     );
   }
@@ -199,10 +196,10 @@ class CreditCardForm extends React.PureComponent<Props, State> {
 
 const validateMethod = createValidateMethod({
   ...getStandardConfig(['cardNumber', 'expMonth', 'expYear']),
-  address: AddressFields.addressValidationConfig,
 });
 
 export default reduxForm({
   form: constants.FORM_NAME, // a unique identifier for this form
   enableReinitialize: true,
+  ...validateMethod,
 })(CreditCardForm);

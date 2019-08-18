@@ -2,14 +2,12 @@ import styled from 'styled-components/native';
 
 const ModalHeading = styled.Text`
   padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
-  border: 1px solid red;
 `;
 
 const ModalViewWrapper = styled.View`
   padding-left: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   padding-right: ${props => props.theme.spacing.LAYOUT_SPACING.XXS};
   height: 600px;
-  border: 1px solid green;
 `;
 
 const LineWrapper = styled.View`

@@ -72,7 +72,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
       if (selectedObject[0]) selectedLabelState = selectedObject[0].label;
       else selectedLabelState = selectedValue;
     } else {
-      selectedLabelState = data[0].label;
+      selectedLabelState = (data && data.length && data[0].label) || '';
     }
 
     this.state = {
