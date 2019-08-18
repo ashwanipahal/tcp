@@ -1,5 +1,4 @@
 /* eslint-disable max-lines */
-/* eslint-disable complexity */
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductEditForm from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ProductCustomizeForm/ProductCustomizeForm';
@@ -196,6 +195,7 @@ class CartItemTile extends React.Component {
       : ` ${productDetail.itemInfo.fit}`;
   };
 
+  // eslint-disable-next-line complexity
   render() {
     const { isEdit } = this.state;
     const {
