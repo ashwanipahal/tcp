@@ -6,6 +6,7 @@ export const MODULES_REDUCER_KEY = 'Modules';
 export const HOMEPAGE_REDUCER_KEY = 'HomePage';
 export const NAVIGATION_REDUCER_KEY = 'Navigation';
 export const FORM_REDUCER_KEY = 'form';
+export const LOADER_REDUCER_KEY = 'PageLoader';
 
 // Don't Add "Reducer" in the Key - it should be LoginPage, not LoginPageReducer
 

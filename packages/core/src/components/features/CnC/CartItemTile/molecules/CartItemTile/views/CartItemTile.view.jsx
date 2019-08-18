@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import ProductEditForm from '@tcp/web/src/components/features/CnC/MiniBag/molecules/ProductCustomizeForm/ProductCustomizeForm';
 import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability/views/ItemAvailability.view';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import CartItemRadioButtons from '@tcp/core/src/components/features/CnC/CartItemTile/molecules/CartItemRadioButtons/views/CartItemRadioButtons';
+import CartItemRadioButtons from '../../CartItemRadioButtons/views/CartItemRadioButtons.view';
 import endpoints from '../../../../../../../service/endpoint';
 import { Image, Row, BodyCopy, Col } from '../../../../../../common/atoms';
 
@@ -103,7 +103,7 @@ class CartItemTile extends React.Component {
   getEntireData = (productDetail, labels, pageView) => {
     return (
       <React.Fragment>
-        <Row className="product-detail-row padding-top-10 color-map-size-fit">
+        <div className="product-detail-row product-attributes padding-top-10 color-map-size-fit">
           <div>
             <div className="color-size-fit-label">
               <BodyCopy
@@ -117,7 +117,7 @@ class CartItemTile extends React.Component {
               </BodyCopy>
             </div>
             <BodyCopy
-              className="padding-left-10"
+              className="padding-left-6"
               fontFamily="secondary"
               component="span"
               fontSize="fs12"
@@ -149,7 +149,7 @@ class CartItemTile extends React.Component {
               </BodyCopy>
             </div>
             <BodyCopy
-              className="padding-left-10"
+              className="padding-left-6"
               fontFamily="secondary"
               component="span"
               fontSize="fs12"
@@ -183,7 +183,7 @@ class CartItemTile extends React.Component {
               </BodyCopy>
             </div>
             <BodyCopy
-              className="padding-left-10"
+              className="padding-left-6"
               fontFamily="secondary"
               component="span"
               fontSize="fs12"
@@ -193,12 +193,14 @@ class CartItemTile extends React.Component {
               {`${productDetail.itemInfo.qty}`}
             </BodyCopy>
           </div>
+        </div>
+        <div className="product-detail-row editLinkWrapper padding-top-10 color-map-size-fit">
           <BodyCopy
             fontFamily="secondary"
             fontSize="fs12"
             component="div"
             dataLocator={getLocator('cart_item_edit_link')}
-            className="padding-left-10 responsive-edit-css"
+            className="responsive-edit-css"
             onClick={() => {
               if (pageView !== 'myBag') {
                 this.setState({ isEdit: true });
@@ -207,7 +209,7 @@ class CartItemTile extends React.Component {
           >
             <u>{labels.edit}</u>
           </BodyCopy>
-        </Row>
+        </div>
       </React.Fragment>
     );
   };
@@ -221,6 +223,10 @@ class CartItemTile extends React.Component {
   };
 
   getPointsColor = pageView => {
+    const { isPlcc } = this.props;
+    if (isPlcc && pageView === 'myBag') {
+      return 'blue.800';
+    }
     return pageView !== 'myBag' ? 'gray.900' : 'orange.800';
   };
 
@@ -325,16 +331,18 @@ class CartItemTile extends React.Component {
               )}
             </div>
             {!productDetail.itemInfo.isGiftItem && (
-              <Image
-                alt={labels.productBandAlt}
-                className="brand-image"
-                src={
-                  productDetail.itemInfo.itemBrand === 'TCP'
-                    ? getIconPath(`header__brand-tab--tcp`)
-                    : getIconPath('header__brand-tab-gymboree')
-                }
-                data-locator={getLocator('cart_item_brand_logo')}
-              />
+              <div className="logoWrapper">
+                <Image
+                  alt={labels.productBandAlt}
+                  className="brand-image"
+                  src={
+                    productDetail.itemInfo.itemBrand === 'TCP'
+                      ? getIconPath(`header__brand-tab--tcp`)
+                      : getIconPath('header__brand-tab-gymboree')
+                  }
+                  data-locator={getLocator('cart_item_brand_logo')}
+                />
+              </div>
             )}
           </Col>
           <Col
@@ -426,6 +434,7 @@ CartItemTile.propTypes = {
   productDetail: PropTypes.shape({}).isRequired,
   labels: PropTypes.shape({}).isRequired,
   className: PropTypes.string.isRequired,
+  isPlcc: PropTypes.string.isRequired,
   pageView: PropTypes.string,
 };
 

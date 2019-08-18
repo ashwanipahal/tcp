@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartItemRadioButtons native Component CartItemRadioButtons native should render correctly 1`] = `
+<View>
+  <RadioForm
+    animation={true}
+    buttonColor="#2196f3"
+    disabled={false}
+    formHorizontal={false}
+    initial={0}
+    labelColor="#000"
+    labelHorizontal={true}
+    radio_props={Array []}
+    selectedButtonColor="#2196f3"
+    selectedLabelColor="#000"
+    wrapStyle={Object {}}
+  >
+    <LabeledRadioButton
+      checked={true}
+      index={0}
+      obj={
+        Object {
+          "label": undefined,
+          "value": "BOSS",
+        }
+      }
+      onPress={[Function]}
+    />
+    <LabeledRadioButton
+      checked={false}
+      obj={
+        Object {
+          "label": "param2",
+          "value": "BOPIS",
+        }
+      }
+      onPress={[Function]}
+    />
+    <LabeledRadioButton
+      checked={false}
+      obj={
+        Object {
+          "label": undefined,
+          "value": "ECOM",
+        }
+      }
+      onPress={[Function]}
+    />
+  </RadioForm>
+</View>
+`;

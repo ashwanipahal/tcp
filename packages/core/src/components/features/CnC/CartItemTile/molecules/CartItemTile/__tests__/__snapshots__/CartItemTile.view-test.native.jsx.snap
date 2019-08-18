@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartItemTile common component renders correctly 1`] = `
+<StyledNativeComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "_foldedDefaultProps": Object {
+        "labels": Object {},
+        "productDetail": Object {},
+      },
+      "attrs": Array [],
+      "displayName": "Styled(ProductInformation)",
+      "inlineStyle": InlineStyle {
+        "rules": Array [
+          "
+    ",
+          ";
+  ",
+        ],
+      },
+      "render": [Function],
+      "styledComponentId": "StyledNativeComponent",
+      "target": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  labels={
+    Object {
+      "color": "Color",
+      "design": "Design",
+      "price": "Price",
+      "qty": "Qty",
+      "sizeL": "Size",
+    }
+  }
+  productDetail={
+    Object {
+      "itemInfo": Object {
+        "fit": "regular",
+        "isGiftItem": true,
+        "myPlacePoints": 123,
+        "name": "Boys Basic Skinny Jeans",
+        "price": 123,
+        "qty": "1",
+        "size": "1",
+      },
+      "miscInfo": Object {
+        "badge": "",
+      },
+    }
+  }
+/>
+`;

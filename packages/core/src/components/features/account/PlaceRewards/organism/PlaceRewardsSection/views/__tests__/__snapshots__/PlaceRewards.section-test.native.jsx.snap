@@ -35,7 +35,7 @@ exports[`MyRewards should render correctly 1`] = `
     </Styled(View)>
     <Styled(View)>
       <Text>
-        Fourth
+        FPO
       </Text>
     </Styled(View)>
     <MyRewards

@@ -5,7 +5,10 @@ import {
   getCartOrderList,
   getLabelsCartItemTile,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
-import { getUserLoggedInState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
+import {
+  getUserLoggedInState,
+  isPlccUser,
+} from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
 import BAG_PAGE_ACTIONS from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.actions';
 import ProductTileWrapper from '../views/ProductTileWrapper.view';
 
@@ -25,6 +28,7 @@ const mapStateToProps = state => {
     orderItems: getCartOrderList(state),
     labels: getLabelsCartItemTile(state),
     isUserLoggedIn: getUserLoggedInState(state),
+    isPlcc: isPlccUser(state),
   };
 };
 export const mapDispatchToProps = dispatch => {
