@@ -6,6 +6,10 @@ export const getLoginState = state => {
   return state[LOGINPAGE_REDUCER_KEY];
 };
 
+export const loginModalOpenState = state => {
+  return state.LoginPageReducer.get('loginModalMountedState');
+};
+
 export const getUserLoggedInState = createSelector(
   getLoginState,
   loginState => loginState && loginState.get('isLoggedin')

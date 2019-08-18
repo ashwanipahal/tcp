@@ -139,7 +139,7 @@ class CardTile extends React.Component<Props> {
   onDeletegiftardClick = e => {
     const { card, setDeleteModalMountState, setSelectedGiftCard } = this.props;
     e.preventDefault();
-    setSelectedGiftCard(card);
+    // setSelectedGiftCard(card);
     setDeleteModalMountState({ state: true });
   };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import FooterNavLinksList from '../../FooterNavLinksList';
 import FooterNavHeader from '../../FooterNavHeader';
 
@@ -10,6 +11,8 @@ const FooterNavLinks = ({
   headerAsImage,
   isSubHeader,
   colNum,
+  loginModalMountedState,
+  setLoginModalMountState,
 }) => {
   return (
     <div className={`${className} container-nav-link`} key={navLinkItems.id} data-index={colNum}>
@@ -21,7 +24,12 @@ const FooterNavLinks = ({
         isSubHeader={isSubHeader}
         colNum={colNum}
       />
-      <FooterNavLinksList listArray={navLinkItems.links} colNum={colNum} />
+      <FooterNavLinksList
+        loginModalMountedState={loginModalMountedState}
+        setLoginModalMountState={setLoginModalMountState}
+        listArray={navLinkItems.links}
+        colNum={colNum}
+      />
     </div>
   );
 };
