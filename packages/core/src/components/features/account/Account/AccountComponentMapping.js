@@ -5,6 +5,7 @@ import Payment from '../Payment/container/Payment.container';
 import AddEditCreditCardContainer from '../AddEditCreditCard/container/AddEditCreditCard.container';
 import AddGiftCardContainer from '../Payment/AddGiftCard/container/AddGiftCard.container'; //eslint-disable-line
 import PlaceRewards from '../PlaceRewards/container/PlaceRewards.container';
+import WalletContainer from '../Wallet/container/Wallet.container';
 
 const AccountComponentMapping = {
   'address-book': AddressBook,
@@ -16,7 +17,7 @@ const AccountComponentMapping = {
   'add-credit-card': AddEditCreditCardContainer,
   'edit-credit-card': AddEditCreditCardContainer,
   'place-rewards': PlaceRewards,
-  wallet: PlaceRewards,
+  wallet: WalletContainer,
 };
 
 export default AccountComponentMapping;
