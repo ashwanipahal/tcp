@@ -16,6 +16,7 @@ const AccountComponentMapping = {
   'add-credit-card': AddEditCreditCardContainer,
   'edit-credit-card': AddEditCreditCardContainer,
   'place-rewards': PlaceRewards,
+  wallet: PlaceRewards,
 };
 
 export default AccountComponentMapping;
