@@ -10,7 +10,7 @@ import PersonalInformation from '../../PersonalInformation/views';
 import ChangePassword from '../../ChangePassword/views';
 import BirthdaySaving from '../../BirthdaySaving/views';
 
-export const ProfileInformation = ({ className, labels }) => {
+const ProfileInformation = ({ className, labels }) => {
   return (
     <div>
       <Row fullBleed className={`${className} elem-pt-LRG`}>
