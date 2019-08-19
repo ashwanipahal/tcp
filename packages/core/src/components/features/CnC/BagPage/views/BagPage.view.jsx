@@ -21,8 +21,7 @@ import CouponAndPromos from '../../common/organism/CouponAndPromos';
 //   handleContinueShopping: Function,
 // };
 
-const BagPageView = ({ className, labels, totalCount, orderItemsCount }: Props) => {
-  const showAddTobag = false;
+const BagPageView = ({ className, labels, totalCount, orderItemsCount, showAddTobag }: Props) => {
   const myBag = 'myBag';
   const isNoNEmptyBag = orderItemsCount > 0;
   return (

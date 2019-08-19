@@ -66,7 +66,7 @@ export class CreateAccountContainer extends React.Component {
     const { isUserLoggedIn, closeOverlay, onRequestClose } = this.props;
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
       if (this.hasMobileApp()) {
-        onRequestClose();
+        onRequestClose({ getComponentId: { login: '', createAccount: '' } });
       } else {
         closeOverlay();
         routerPush('/', '/home');
