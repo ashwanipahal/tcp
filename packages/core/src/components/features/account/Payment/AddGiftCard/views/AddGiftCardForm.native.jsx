@@ -11,9 +11,9 @@ import {
   ErrorWrapper,
   SaveButtonWrapper,
   CancelButtonWrapper,
-  WebViewWrapper,
+  MessageWrapper,
+  MessageTextWrapper,
 } from '../styles/AddGiftCard.style.native';
-import RichText from '../../../../../common/atoms/RichText';
 import createValidateMethod from '../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../utils/formValidation/validatorStandardConfig';
 import BodyCopy from '../../../../../common/atoms/BodyCopy';
@@ -80,15 +80,23 @@ class AddGiftCardForm extends React.PureComponent {
               className="visibility-recaptcha"
             />
           </View>
-          <WebViewWrapper>
-            <RichText
-              source={{
-                html:
-                  "<header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'></header><body style='background-color:#d8d8d8;padding:4px'><div style='font-size:13px;font-weight:bold'>HEADS UP - Don't throw away your gift card!</div><div style='font-size:11px;margin-top:5px'>Adding a gift card is a convienent way to save money in your account on future purchases. However, if you want to use your gift card for an in-store purchase you will need to present the physical card to the cashier.</div></body>",
-              }}
-              dataLocator="git-card-messagetext"
+          <MessageWrapper>
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs14"
+              color="gray.900"
+              text={labels.paymentGC.lbl_payment_giftCardMessageHeading}
             />
-          </WebViewWrapper>
+            <MessageTextWrapper>
+              <BodyCopy
+                fontFamily="secondary"
+                fontSize="fs12"
+                color="black"
+                fontWeight="regular"
+                text={labels.paymentGC.lbl_payment_giftCardMessageDescription}
+              />
+            </MessageTextWrapper>
+          </MessageWrapper>
 
           <SaveButtonWrapper>
             <CustomButton
