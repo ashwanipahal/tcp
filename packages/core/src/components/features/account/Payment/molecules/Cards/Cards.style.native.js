@@ -41,7 +41,7 @@ const ButtonWrapperStyle = styled.View`
 `;
 
 const ModalHeading = styled.Text`
-  margin-top: -${props => props.theme.spacing.LAYOUT_SPACING.SM};
+  margin-top: ${props => props.theme.spacing.ELEM_SPACING.XS};
   margin-right: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
   margin-left: ${props => props.theme.spacing.LAYOUT_SPACING.SM};
 `;
