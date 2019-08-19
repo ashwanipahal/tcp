@@ -13,6 +13,7 @@ import {
 } from './productParser';
 
 import { extractExtraImages, FACETS_FIELD_KEY, FACETS_OPTIONS } from './productListing.utils';
+import { PRODUCTS_PER_LOAD } from '../../../components/features/browse/ProductListing/container/ProductListing.constants';
 
 function getProductByColorId(products /* , colorDetails */) {
   /* NOTE: we need to FISH for the product on the page in order to pull its attributes, if its not on page we wont show the swatch
@@ -786,7 +787,7 @@ class ProductsDynamicAbstractor {
       body: {
         ...facetsPayload,
         ...extraParams,
-        start: start,
+        start: !isNaN(start) ? start : 0,
         rows: row,
         variants: true,
         'variants.count': 0,

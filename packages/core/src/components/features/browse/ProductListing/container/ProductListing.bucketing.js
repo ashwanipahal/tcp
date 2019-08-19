@@ -1,6 +1,6 @@
 // import { routingStoreView } from 'reduxStore/storeViews/routing/routingStoreView.js';
 // import { generalStoreView } from 'reduxStore/storeViews/generalStoreView';
-import { findCategoryIdandName } from './ProductListing.util';
+import { findCategoryIdandName, matchPath } from './ProductListing.util';
 // import { getSessionStorage } from 'util/sessionStorageManagement';
 import productsContants from './ProductListing.constants';
 // import PAGES from '../../../../../constants/pages.constants';
@@ -71,17 +71,19 @@ class BucketingBL {
     const temp = {};
     const bucketingConfigTemp = { ...bucketingConfig };
     // Checking if the current page is SRP or PLP
-    // eslint-disable-next-line
     // temp.isSearchPage = routingStoreView.getCurrentPageId(state) === PAGES.search.id;
-    temp.isSearchPage = false;
     // const match = temp.isSearchPage
     //   ? matchPath(location.pathname, { path: PAGES.search.pathPattern })
     //   : matchPath(location.pathname, { path: PAGES.productListing.pathPattern });
-    const match = { params: { searchTerm: '' } };
-    temp.categoryKey = temp.isSearchPage ? match.params.searchTerm : match.params.listingKey;
+    // temp.categoryKey = temp.isSearchPage ? match.params.searchTerm : match.params.listingKey;
+    temp.isSearchPage = false;
+    const match = temp.isSearchPage
+      ? matchPath(window.location.pathname, '/search/')
+      : matchPath(window.location.pathname, '/c/');
+    temp.categoryKey = temp.isSearchPage ? match.searchTerm : match.listingKey;
     // eslint-disable-next-line
     // temp.navigationTree = generalStoreView.getHeaderNavigationTree(state);
-    temp.navigationTree = {};
+    temp.navigationTree = state.Navigation.navigationData;
     // categoryNameList is an array of the categories. Eg if the click has happened over L2 which is boys -> Denim. Then categoryNameList will
     // be [{category information of boys}, {category information of denim}].
     temp.categoryNameList = findCategoryIdandName(temp.navigationTree, temp.categoryKey).reverse();
@@ -102,7 +104,7 @@ class BucketingBL {
     }
     // const isSearchPage = routingStoreView.getCurrentPageId(state) === PAGES.search.id;
     const isSearchPage = false;
-    const isSearch = match.params.searchTerm || match.params.listingKey;
+    const isSearch = match.searchTerm || match.listingKey;
     const searchTerm = decodeURIComponent(isSearch);
     temp.isOutfitPage = !isSearchPage && searchTerm && searchTerm.indexOf('-outfit') > -1;
     return { ...temp, ...bucketingConfigTemp };
