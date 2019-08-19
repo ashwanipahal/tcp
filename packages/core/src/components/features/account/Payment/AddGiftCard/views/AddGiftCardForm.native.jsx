@@ -6,30 +6,17 @@ import { PropTypes } from 'prop-types';
 import { get } from 'lodash';
 import TextBox from '../../../../../common/atoms/TextBox';
 import CustomButton from '../../../../../common/atoms/Button';
-import { RecaptchaContainer, ErrorWrapper } from '../styles/AddGiftCard.style.native';
+import {
+  RecaptchaContainer,
+  ErrorWrapper,
+  SaveButtonWrapper,
+  CancelButtonWrapper,
+  WebViewWrapper,
+} from '../styles/AddGiftCard.style.native';
 import RichText from '../../../../../common/atoms/RichText';
 import createValidateMethod from '../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../utils/formValidation/validatorStandardConfig';
 import BodyCopy from '../../../../../common/atoms/BodyCopy';
-
-const styles = {
-  saveButtonStyle: {
-    marginTop: 27,
-    marginLeft: 45,
-    marginRight: 45,
-  },
-
-  cancelButtonStyle: {
-    marginTop: 19,
-    marginLeft: 45,
-    marginRight: 45,
-    marginBottom: 16,
-  },
-  webViewStyle: {
-    height: 90,
-    marginTop: 10,
-  },
-};
 
 class AddGiftCardForm extends React.PureComponent {
   onMessage = event => {
@@ -93,37 +80,38 @@ class AddGiftCardForm extends React.PureComponent {
               className="visibility-recaptcha"
             />
           </View>
-          <View style={styles.webViewStyle}>
+          <WebViewWrapper>
             <RichText
-              style={styles.webViewStyle}
               source={{
                 html:
-                  "<body style='background-color:#d8d8d8;padding:10px'><h1>HEADS UP - Don't throw away your gift card!</h1><h2>Adding a gift card is a convienent way to save money in your account on future purchases. However, if you want to use your gift card for an in-store purchase you will need to present the physical card to the cashier.</h2></body>",
+                  "<header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'></header><body style='background-color:#d8d8d8;padding:4px'><div style='font-size:13px;font-weight:bold'>HEADS UP - Don't throw away your gift card!</div><div style='font-size:11px;margin-top:5px'>Adding a gift card is a convienent way to save money in your account on future purchases. However, if you want to use your gift card for an in-store purchase you will need to present the physical card to the cashier.</div></body>",
               }}
               dataLocator="git-card-messagetext"
             />
-          </View>
+          </WebViewWrapper>
 
-          <CustomButton
-            color="white"
-            fill="BLUE"
-            text={labels.paymentGC.lbl_payment_addCard}
-            buttonVariation="variable-width"
-            data-locator="gift-card-addcardbtn"
-            customStyle={styles.saveButtonStyle}
-            onPress={handleSubmit(data => {
-              onAddGiftCardClick(data);
-            })}
-          />
+          <SaveButtonWrapper>
+            <CustomButton
+              color="white"
+              fill="BLUE"
+              text={labels.paymentGC.lbl_payment_addCard}
+              buttonVariation="variable-width"
+              data-locator="gift-card-addcardbtn"
+              onPress={handleSubmit(data => {
+                onAddGiftCardClick(data);
+              })}
+            />
+          </SaveButtonWrapper>
 
-          <CustomButton
-            color="black"
-            text={labels.paymentGC.lbl_payment_cancelCard}
-            data-locator="gift-card-cancelbtn"
-            buttonVariation="variable-width"
-            customStyle={styles.cancelButtonStyle}
-            onPress={toggleModal}
-          />
+          <CancelButtonWrapper>
+            <CustomButton
+              color="black"
+              text={labels.paymentGC.lbl_payment_cancelCard}
+              data-locator="gift-card-cancelbtn"
+              buttonVariation="variable-width"
+              onPress={toggleModal}
+            />
+          </CancelButtonWrapper>
         </View>
       </ScrollView>
     );
