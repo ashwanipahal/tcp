@@ -40,7 +40,9 @@ class HeaderMiddleNav extends React.PureComponent<Props> {
         variation: 'primary',
       });
     }
-    this.setState({ userNameClick: triggerLoginCreateAccount ? userNameClick : !userNameClick });
+    this.setState({
+      userNameClick: triggerLoginCreateAccount && userNameClick ? userNameClick : !userNameClick,
+    });
   };
 
   toggleMiniBagModal = ({ e, isOpen }) => {
