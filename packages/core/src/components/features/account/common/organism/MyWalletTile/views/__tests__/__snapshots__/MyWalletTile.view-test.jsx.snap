@@ -11,6 +11,18 @@ exports[`MyWalletTile component should render correctly when coupons are not pre
     className="elem-pb-MED"
   >
     <Styled(BodyCopy)
+      className="margin-none elem-mb-LRG"
+      color="text.primary"
+      component="p"
+      data-locator="accountoverview-mywallettile-startshoptext"
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    />
+    <Styled(BodyCopy)
       className="elem-mb-LRG"
       color="text.primary"
       component="p"
@@ -54,7 +66,7 @@ exports[`MyWalletTile component should render correctly when coupons are present
     className="elem-pb-MED"
   >
     <Styled(BodyCopy)
-      className="elem-mb-LRG"
+      className=" elem-mb-LRG"
       color="text.primary"
       component="p"
       data-locator="accountoverview-mywallettile-youhaverewardtext"

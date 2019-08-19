@@ -30,13 +30,13 @@ export const CouponTile = ({ className, coupon, labels }) => {
     <BodyCopy component="li" className={`${className} elem-mb-SM`}>
       <BodyCopy
         component="div"
-        className={`${couponClass} elem-mr-XS`}
+        className={`coupon ${couponClass} elem-mr-XS`}
         fontSize="fs13"
         fontWeight="black"
         color="white"
         textAlign="center"
       >
-        {`${couponTextLabel}`}
+        <span>{`${couponTextLabel}`}</span>
       </BodyCopy>
       <BodyCopy component="div" className="elem-pt-XS">
         <BodyCopy

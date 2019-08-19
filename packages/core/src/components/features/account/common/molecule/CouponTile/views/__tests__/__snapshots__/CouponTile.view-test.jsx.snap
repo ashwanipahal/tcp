@@ -13,7 +13,7 @@ exports[`CouponTile Component should render correctly 1`] = `
   textAlign="left"
 >
   <Styled(BodyCopy)
-    className="coupon-saving elem-mr-XS"
+    className="coupon coupon-saving elem-mr-XS"
     color="white"
     component="div"
     fontFamily="primary"
@@ -22,7 +22,9 @@ exports[`CouponTile Component should render correctly 1`] = `
     letterSpacing="normal"
     lineHeight="normal"
     textAlign="center"
-  />
+  >
+    <span />
+  </Styled(BodyCopy)>
   <Styled(BodyCopy)
     className="elem-pt-XS"
     color="text.primary"

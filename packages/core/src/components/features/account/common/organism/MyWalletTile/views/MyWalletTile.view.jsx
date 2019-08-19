@@ -12,33 +12,46 @@ export const MyWalletTile = ({ className, labels, coupons }) => {
   const couponsCount = coupons.size;
   let walletOverviewInfo = '';
   let walletDataLocator = '';
+  let myWalletCTA = '';
 
   if (couponsCount) {
     walletOverviewInfo = labels.lbl_overview_myWalletOfferAvailable.replace(/\{0\}/, couponsCount);
     walletDataLocator = 'accountoverview-mywallettile-youhaverewardtext';
+    myWalletCTA = labels.lbl_overview_walletViewAllCTA;
   } else {
     walletOverviewInfo = labels.lbl_overview_myWalletNoOfferAvailable;
     walletDataLocator = 'accountoverview-mywallettile-startshoptext';
+    myWalletCTA = labels.lbl_overview_viewMyWalletCTA;
   }
   return (
     <AccountOverviewTile
       className={className}
       title={labels.lbl_overview_myWalletHeading}
-      ctaTitle={labels.lbl_overview_myWalletCTA}
+      ctaTitle={myWalletCTA}
       ctaLink={internalEndpoints.myWalletPage.link}
       ctaPath={internalEndpoints.myWalletPage.path}
       dataLocatorPrefix="mywallettile"
     >
       <section className="elem-pb-MED">
         <BodyCopy
-          className="elem-mb-LRG"
+          className={`${!couponsCount ? 'margin-none' : ''} elem-mb-LRG`}
           fontSize="fs14"
           fontWeight="semibold"
           data-locator={walletDataLocator}
         >
           {walletOverviewInfo}
-          {!couponsCount && labels.lbl_overview_myWalletStartShop}
         </BodyCopy>
+
+        {!couponsCount && (
+          <BodyCopy
+            className="elem-mb-LRG"
+            fontSize="fs14"
+            fontWeight="semibold"
+            data-locator={walletDataLocator}
+          >
+            {labels.lbl_overview_myWalletStartShop}
+          </BodyCopy>
+        )}
 
         {!couponsCount && (
           <div>
