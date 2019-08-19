@@ -29,7 +29,13 @@ const BagPageView = ({ className, labels, totalCount, orderItemsCount }: Props) 
     <div className={className}>
       <Row tagName="header">
         <Col colSize={{ small: 3, medium: 4, large: 6 }} className="left-sec">
-          <Heading variant="h6" fontSize="fs16" color="text.primary" className="bag-header">
+          <Heading
+            variant="h6"
+            fontSize="fs16"
+            color="text.primary"
+            className="bag-header"
+            dataLocator="bagHeaderCount"
+          >
             {`${labels.bagHeading} (${totalCount})`}
           </Heading>
         </Col>

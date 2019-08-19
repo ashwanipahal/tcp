@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ItemAvailability from '@tcp/core/src/components/features/CnC/common/molecules/ItemAvailability';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import endpoints from '../../../../../../../service/endpoint';
@@ -16,21 +17,41 @@ import {
   EditButton,
   ImageBrandStyle,
   ImageGymBrandStyle,
+  ImageSoldOutContainer,
+  SoldOutLabel,
 } from '../styles/CartItemTile.style.native';
 import { getLocator } from '../../../../../../../utils';
 
 const gymboreeImage = require('../../../../../../../assets/gymboree-logo.png');
 const tcpImage = require('../../../../../../../assets/tcp-logo.png');
 
+const getItemStatus = (productDetail, labels) => {
+  return <ItemAvailability errorMsg={labels.itemUnavailable} />;
+};
 const ProductInformation = props => {
   const { productDetail, labels } = props;
   return (
     <OuterContainer>
+      <BodyCopy fontSize="fs10" textAlign="center" text={getItemStatus(productDetail, labels)} />
+
       <ImgWrapper>
-        <ImageStyle
-          data-locator={getLocator('cart_item_image')}
-          source={{ uri: endpoints.global.baseURI + productDetail.itemInfo.imagePath }}
-        />
+        <ImageSoldOutContainer>
+          <ImageStyle
+            data-locator={getLocator('cart_item_image')}
+            source={{ uri: endpoints.global.baseURI + productDetail.itemInfo.imagePath }}
+          />
+          {productDetail.miscInfo.availability !== 'SOLDOUT' && (
+            <SoldOutLabel>
+              <BodyCopy
+                fontFamily="secondary"
+                textAlign="center"
+                fontSize="fs12"
+                color="white"
+                text={labels.soldOut}
+              />
+            </SoldOutLabel>
+          )}
+        </ImageSoldOutContainer>
         {!productDetail.itemInfo.isGiftItem &&
           (productDetail.itemInfo.isGiftItem === 'TCP' ? (
             <ImageBrandStyle data-locator={getLocator('cart_item_brand_logo')} source={tcpImage} />
