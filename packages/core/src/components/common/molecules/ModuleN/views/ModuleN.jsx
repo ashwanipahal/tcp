@@ -8,14 +8,9 @@ import { getLocator } from '../../../../../utils';
 import withStyles from '../../../hoc/withStyles';
 import errorBoundary from '../../../hoc/errorBoundary';
 import { Row, Col } from '../../../atoms';
+import config from '../ModuleN.config';
 
-// TODO: keys will be changed once we get the actual data from CMS
-const ctaTypes = {
-  stackedCTAList: 'stackedCTAList',
-  linkCTAList: 'linkCTAList',
-  scrollCTAList: 'scrollCTAList',
-  imageCTAList: 'imageCTAList',
-};
+const { ctaTypes } = config;
 
 const ModuleN = props => {
   const {

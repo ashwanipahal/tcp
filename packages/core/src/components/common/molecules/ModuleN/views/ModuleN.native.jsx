@@ -11,6 +11,7 @@ import {
   ContainerView,
   DivImageCTAContainer,
 } from '../ModuleN.styles.native';
+import config from '../ModuleN.config';
 
 /**
  * @param {object} props : Props for Module N multi type of banner list, button list, header text.
@@ -19,13 +20,7 @@ import {
  * Author can surface teaser content leading to corresponding pages.
  */
 
-// TODO: keys will be changed once we get the actual data from CMS
-const ctaTypes = {
-  stackedCTAList: 'stackedCTAList',
-  linkCTAList: 'linkCTAList',
-  scrollCTAList: 'scrollCTAList',
-  imageCTAList: 'imageCTAList',
-};
+const { ctaTypes } = config;
 
 const ModuleN = (props: Props) => {
   const {
