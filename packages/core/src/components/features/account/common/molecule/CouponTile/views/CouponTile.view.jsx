@@ -15,7 +15,7 @@ export const CouponTile = ({ className, coupon, labels }) => {
       couponTextLabel = `${labels.lbl_overview_couponTypePlacecash}`;
       couponType = 'placecash';
       break;
-    case 'LOYALTY':
+    case 'rewards':
       couponClass = 'coupon-reward';
       couponTextLabel = `${labels.lbl_overview_couponTypeReward}`;
       couponType = 'reward';
