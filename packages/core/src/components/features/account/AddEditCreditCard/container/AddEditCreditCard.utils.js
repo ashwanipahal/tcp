@@ -43,14 +43,17 @@ export const getCreditCardExpirationOptionMap = () => {
 
 export const convertObjectKeysToLowerCase = obj => {
   let key;
-  const keys = Object.keys(obj);
-  let count = keys.length;
+  const keys = (obj && Object.keys(obj)) || [];
+  let count = keys.length - 1;
   const newobj = {};
-  while (count) {
-    key = keys[count];
-    newobj[key.toLowerCase()] = obj[key];
-    count -= 1;
+  if (count > 0) {
+    while (count) {
+      key = keys[count];
+      newobj[key.toLowerCase()] = obj[key];
+      count -= 1;
+    }
   }
+  return newobj;
 };
 
 export default getCreditCardExpirationOptionMap;
