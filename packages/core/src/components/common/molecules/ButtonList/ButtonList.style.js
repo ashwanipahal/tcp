@@ -37,6 +37,7 @@ export default css`
     display: flex;
     flex-wrap: nowrap;
     padding-right: 15px;
+    justify-content: center;
   }
   .scroll-button {
     margin-left: 15px;
@@ -61,6 +62,16 @@ export default css`
   &.scroll-comp-wrapper {
     overflow-x: scroll;
     flex-wrap: nowrap;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: block;
+      scrollbar-width: auto;
+    }
   }
 
   .stacked-cta-wrapper-class {
@@ -68,6 +79,7 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
+    padding-bottom: 20px;
     > div:first-child {
       margin: 0 auto;
     }

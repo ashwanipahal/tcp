@@ -37,4 +37,17 @@ export default css`
       font-size: 74px;
     }
   }
+
+  .style12 {
+    color: ${props => props.theme.colorPalette.white};
+    font-family: ${props => props.theme.typography.fonts.primary};
+    font-weight: ${props => props.theme.typography.fontWeights.regular};
+    font-size: 20px;
+    line-height: 1.05;
+    letter-spacing: 3px;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      font-size: 52px;
+    }
+  }
 `;

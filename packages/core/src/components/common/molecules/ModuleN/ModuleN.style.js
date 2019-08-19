@@ -1,20 +1,34 @@
 import { css } from 'styled-components';
 
 export default css`
-  background-color: #f53d3d;
-  h3.link-text {
-    margin: 0;
-  }
-  .separator {
-    background-color: white;
+  .heading-wrapper {
+    padding-top: 11px;
+    @media ${props => props.theme.mediaQuery.medium} {
+      padding-top: 16px;
+    }
+    @media ${props => props.theme.mediaQuery.large} {
+      text-align: center;
+      padding-top: 0;
+    }
   }
 
-  @media ${props => props.theme.mediaQuery.large} {
-    .heading-wrapper {
-      text-align: center;
+  background-color: ${props => props.bgColor};
+
+  h3.link-text {
+    margin: 0;
+
+    @media ${props => props.theme.mediaQuery.large} {
+      display: inline;
     }
-    .heading,
-    .moduleN__promo-banner {
+  }
+
+  .promo-link {
+    color: white;
+  }
+
+  .heading,
+  .moduleN__promo-banner {
+    @media ${props => props.theme.mediaQuery.large} {
       display: inline-block;
     }
   }

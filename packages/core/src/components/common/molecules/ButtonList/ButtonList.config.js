@@ -11,7 +11,6 @@ export default {
     compProps: {
       className: 'scroll-button',
       buttonVariation: 'fixed-width',
-      fill: 'RED',
     },
   },
   imageCTAList: {
