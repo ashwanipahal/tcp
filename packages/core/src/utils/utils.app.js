@@ -6,6 +6,7 @@ import { Dimensions, Linking } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import config from '../components/common/atoms/Anchor/config.native';
+import { API_CONFIG } from '../services/config';
 
 export const isMobileApp = () => {
   return typeof navigator !== 'undefined' && navigator.product === 'ReactNative';
@@ -279,4 +280,50 @@ export const resetNavigationStack = navigation => {
       ],
     })
   );
+};
+
+const getAPIInfoFromEnv = (apiSiteInfo, envConfig) => {
+  const apiEndpoint = envConfig.RWD_APP_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
+  return {
+    traceIdCount: 0,
+    langId: envConfig.RWD_APP_LANGID || apiSiteInfo.langId,
+    MELISSA_KEY: envConfig.RWD_APP_MELISSA_KEY || apiSiteInfo.MELISSA_KEY,
+    BV_API_KEY: envConfig.RWD_APP_BV_API_KEY || apiSiteInfo.BV_API_KEY,
+    assetHost: envConfig.RWD_APP_ASSETHOST || apiSiteInfo.assetHost,
+    domain: `${apiEndpoint}/${envConfig.RWD_APP_API_IDENTIFIER}/`,
+    unbxd: envConfig.RWD_APP_UNBXD_DOMAIN || apiSiteInfo.unbxd,
+    CANDID_API_KEY: envConfig.RWD_APP_CANDID_API_KEY,
+    CANDID_API_URL: envConfig.RWD_APP_CANDID_URL,
+    googleApiKey: envConfig.RWD_APP_GOOGLE_MAPS_API_KEY,
+  };
+};
+
+const getGraphQLApiFromEnv = (apiSiteInfo, envConfig) => {
+  const graphQlEndpoint = envConfig.RWD_APP_GRAPHQL_API_ENDPOINT;
+  return {
+    graphql_reqion: envConfig.RWD_APP_GRAPHQL_API_REGION,
+    graphql_endpoint_url: `${graphQlEndpoint}/${envConfig.RWD_APP_GRAPHQL_API_IDENTIFIER}`,
+    graphql_auth_type: envConfig.RWD_APP_GRAPHQL_API_AUTH_TYPE,
+    graphql_api_key: envConfig.RWD_APP_GRAPHQL_API_KEY || '',
+  };
+};
+
+export const createAPIConfig = envConfig => {
+  // TODO - use cookie as well..
+  const { RWD_APP_SITE_ID: siteId, RWD_APP_BRANDID: brandId } = envConfig;
+  const isCASite = siteId === API_CONFIG.siteIds.ca;
+  const isGYMSite = brandId === API_CONFIG.brandIds.gym;
+  const countryConfig = isCASite ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
+  const brandConfig = isGYMSite ? API_CONFIG.GYM_CONFIG_OPTIONS : API_CONFIG.TCP_CONFIG_OPTIONS;
+  const apiSiteInfo = API_CONFIG.sitesInfo;
+  const basicConfig = getAPIInfoFromEnv(apiSiteInfo, envConfig);
+  const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, envConfig);
+  return {
+    ...basicConfig,
+    ...graphQLConfig,
+    ...countryConfig,
+    ...brandConfig,
+    isMobile: false,
+    cookie: null,
+  };
 };

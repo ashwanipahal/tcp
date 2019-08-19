@@ -12,6 +12,7 @@ export {
   setValueInAsyncStorage,
   validateExternalUrl,
   resetNavigationStack,
+  createAPIConfig,
 } from './utils.app';
 
 export {
@@ -22,5 +23,4 @@ export {
   getLocator,
   getAPIConfig,
   isCanada,
-  createAPIConfig,
 } from './utils';
