@@ -9,8 +9,10 @@ import {
   getBonusDetailsData,
   getBonusPointsSwitch,
 } from './BonusPointsDays.selectors';
+import { isPlccUser } from '../../LoginPage/container/LoginPage.selectors';
 import BonusPointsView from '../views/BonusPointsView';
 import { isCanada } from '../../../../../utils';
+import constants from '../BonusPointsDays.constants';
 
 export class BonusPointsDays extends React.Component {
   static propTypes = {
@@ -21,6 +23,7 @@ export class BonusPointsDays extends React.Component {
     bonusData: PropTypes.shape({}),
     bonusDetailsData: PropTypes.string,
     isBonusPointsEnabled: PropTypes.bool,
+    view: PropTypes.string,
   };
 
   static defaultProps = {
@@ -31,6 +34,7 @@ export class BonusPointsDays extends React.Component {
     bonusData: {},
     bonusDetailsData: '',
     isBonusPointsEnabled: false,
+    view: constants.VIEWS.EDIT,
   };
 
   componentDidMount() {
@@ -43,7 +47,7 @@ export class BonusPointsDays extends React.Component {
   }
 
   render() {
-    const { labels, bonusData, bonusDetailsData, isBonusPointsEnabled } = this.props;
+    const { labels, bonusData, bonusDetailsData, isBonusPointsEnabled, view } = this.props;
     return (
       !isCanada() &&
       isBonusPointsEnabled && (
@@ -51,6 +55,7 @@ export class BonusPointsDays extends React.Component {
           labels={labels}
           bonusData={bonusData}
           bonusDetailsData={bonusDetailsData}
+          view={view}
         />
       )
     );
@@ -64,6 +69,7 @@ export const mapStateToProps = state => {
     bonusDetailsContentId: getBonusDetailsContentId(state),
     bonusDetailsData: getBonusDetailsData(state),
     isBonusPointsEnabled: getBonusPointsSwitch(state),
+    isPlcc: isPlccUser(state),
   };
 };
 
