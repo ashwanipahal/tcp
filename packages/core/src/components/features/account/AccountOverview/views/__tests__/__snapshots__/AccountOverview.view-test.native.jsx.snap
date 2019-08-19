@@ -8,68 +8,62 @@ exports[`AccountOverview component should render correctly 1`] = `
     }
   }
 >
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={false}
-    isVariationTypeLink={false}
-  />
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={false}
-    isVariationTypeLink={false}
-  />
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={false}
-    isVariationTypeLink={false}
-  />
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={false}
-    isVariationTypeLink={false}
-  />
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={false}
-    isVariationTypeLink={false}
-  />
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={false}
-    isVariationTypeLink={false}
-  >
-    <Connect(AddressOverviewTile)
-      labels={Object {}}
+  <Styled(View)>
+    <Styled(BodyCopy)
+      fontSize="fs14"
+      mobileFontFamily={
+        Array [
+          "primary",
+        ]
+      }
+      textAlign="center"
     />
-  </Panel>
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={false}
-    isVariationTypeLink={false}
-  >
-    <Connect(PaymentTile)
-      labels={Object {}}
+    <Styled(BodyCopy)
+      fontSize="fs14"
+      mobileFontFamily={
+        Array [
+          "primary",
+        ]
+      }
+      textAlign="center"
     />
-  </Panel>
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={false}
-    isVariationTypeLink={false}
-  />
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={false}
-    isVariationTypeLink={false}
-  />
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      className="classBtn"
+      color="#575757"
+      customStyle={Object {}}
+      data-locator=""
+      disableButton={false}
+      fill="WHITE"
+      fullWidth=""
+      id="createAccount"
+      locator=""
+      onPress={[Function]}
+      text=""
+      type="submit"
+      url=""
+      width="150px"
+    />
+    <Styled(CustomButton)
+      buttonVariation="variable-width"
+      className="classBtn"
+      color="#fff"
+      customStyle={Object {}}
+      data-locator=""
+      disableButton={false}
+      fill="BLUE"
+      fullWidth=""
+      id="login"
+      locator=""
+      onPress={[Function]}
+      text=""
+      type="submit"
+      url=""
+      width="150px"
+    />
+  </Styled(View)>
   <Panel
     handleComponentChange={[Function]}
     isCardApply={false}
@@ -121,12 +115,7 @@ exports[`AccountOverview component should render correctly 1`] = `
     isFavorite={false}
     isVariationTypeLink={true}
   />
-  <Panel
-    handleComponentChange={[Function]}
-    isCardApply={false}
-    isFavorite={false}
-    isVariationTypeLink={true}
-  />
+  <Styled(View) />
   <Styled(View) />
 </View>
 `;
