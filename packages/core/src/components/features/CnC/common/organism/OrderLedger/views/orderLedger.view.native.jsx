@@ -212,29 +212,31 @@ const OrderLedger = ({ ledgerSummaryData, labels }) => {
           />
         </Text>
       </StyledRowDataContainer>
-      <StyledRowDataContainer>
-        <Text>
-          <BodyCopy
-            bodySize="one"
-            fontFamily="secondary"
-            textAlign="left"
-            fontWeight="regular"
-            fontSize="fs13"
-            text={`${labels.totalSavingsLabel}`}
-          />
-          <ImageComp source={IconInfoLogo} height={15} width={15} />
-        </Text>
-        <Text>
-          <BodyCopy
-            bodySize="one"
-            fontFamily="secondary"
-            fontWeight="regular"
-            fontSize="fs13"
-            textAlign="right"
-            text={`${currencySymbol}${totalOrderSavings.toFixed(2)}`}
-          />
-        </Text>
-      </StyledRowDataContainer>
+      {totalOrderSavings ? (
+        <StyledRowDataContainer>
+          <Text>
+            <BodyCopy
+              bodySize="one"
+              fontFamily="secondary"
+              textAlign="left"
+              fontWeight="regular"
+              fontSize="fs13"
+              text={`${labels.totalSavingsLabel}`}
+            />
+            <ImageComp source={IconInfoLogo} height={15} width={15} />
+          </Text>
+          <Text>
+            <BodyCopy
+              bodySize="one"
+              fontFamily="secondary"
+              fontWeight="regular"
+              fontSize="fs13"
+              textAlign="right"
+              text={`${currencySymbol}${totalOrderSavings.toFixed(2)}`}
+            />
+          </Text>
+        </StyledRowDataContainer>
+      ) : null}
     </StyledOrderLedger>
   );
 };

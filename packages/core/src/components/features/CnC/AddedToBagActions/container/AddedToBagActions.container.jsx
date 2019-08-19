@@ -1,5 +1,4 @@
 import React from 'react';
-import Router from 'next/router'; //eslint-disable-line
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AddedToBagActionsView from '../views/AddedToBagActions';
