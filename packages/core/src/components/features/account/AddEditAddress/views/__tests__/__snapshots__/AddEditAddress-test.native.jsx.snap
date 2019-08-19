@@ -58,6 +58,8 @@ exports[`AddEditAddress Native should render correctly 1`] = `
       "successMessage": "Your account has been updated",
     }
   }
+  onCancel={[Function]}
+  showHeading={true}
   submitAddressFormAction={[Function]}
   verifyAddressAction={[Function]}
 >
@@ -135,6 +137,7 @@ exports[`AddEditAddress Native should render correctly 1`] = `
           "successMessage": "Your account has been updated",
         }
       }
+      onCancel={[Function]}
       onSubmit={[Function]}
       persistentSubmitErrors={false}
       pure={true}
