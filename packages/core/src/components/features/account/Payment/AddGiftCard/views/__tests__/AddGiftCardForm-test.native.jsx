@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { AddGiftCardFormVanilla } from '../AddGiftCardForm';
+import { AddGiftCardFormVanilla } from '../AddGiftCardForm.native';
 
 describe('Add gift card form component', () => {
   const props = {
