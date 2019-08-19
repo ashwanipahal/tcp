@@ -27,10 +27,6 @@ const MiniBagBody = ({
   subTotal,
   currencySymbol,
 }: Props) => {
-  const data = {
-    savedforLaterQty: 1,
-  };
-
   return (
     <div className={className}>
       <BodyCopy component="div" className="viewBagAndProduct">
@@ -42,14 +38,13 @@ const MiniBagBody = ({
                   fontSizeVariation="medium"
                   underline
                   anchorVariation="primary"
-                  noLink
-                  to=""
+                  to="/bag"
                   data-locator="addressbook-makedefault"
                 >
                   {`${labels.viewBag}(${cartItemCount})`}
                 </Anchor>
                 {` `}
-                <Anchor
+                {/* <Anchor
                   fontSizeVariation="medium"
                   underline
                   anchorVariation="primary"
@@ -57,7 +52,7 @@ const MiniBagBody = ({
                   data-locator="addressbook-makedefault"
                 >
                   {`${labels.viewSaveForLater}(${data.savedforLaterQty})`}
-                </Anchor>
+                </Anchor> */}
               </BodyCopy>
             ) : (
               <BodyCopy component="span" fontSize="fs12" textAlign="left">
@@ -66,7 +61,7 @@ const MiniBagBody = ({
                   underline
                   anchorVariation="primary"
                   noLink
-                  to=""
+                  to="/bag"
                   data-locator="addressbook-makedefault"
                 >
                   {`${labels.viewBag}(${cartItemCount})`}
