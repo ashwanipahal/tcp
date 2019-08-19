@@ -87,7 +87,14 @@ class TCPWebApp extends App {
   }
 
   render() {
-    const { Component, pageProps, store } = this.props;
+    const { Component, pageProps, store, router } = this.props;
+    let isNonCheckoutPage = true;
+    const checkURL = ['pickup', 'shipping', 'billing', 'review'];
+    for (let i = 0; i < checkURL.length; i += 1) {
+      if (router.asPath.indexOf(checkURL[i]) > -1) {
+        isNonCheckoutPage = false;
+      }
+    }
     const theme = getCurrentTheme();
     return (
       <Container>
@@ -100,7 +107,7 @@ class TCPWebApp extends App {
               <div id="overlayWrapper">
                 <div id="overlayComponent" />
                 <Component {...pageProps} />
-                <Footer />
+                {isNonCheckoutPage && <Footer />}
               </div>
             </Grid>
           </Provider>
