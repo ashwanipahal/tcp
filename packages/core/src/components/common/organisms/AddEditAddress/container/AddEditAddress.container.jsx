@@ -122,7 +122,6 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
         initialValues={this.initialValues}
         isEdit={isEdit}
         addressFormLabels={labels.addressFormLabels}
-        verifyAddressLabels={labels.verifyAddressLabels}
         backToAddressBookClick={backToAddressBookClick}
       />
     );

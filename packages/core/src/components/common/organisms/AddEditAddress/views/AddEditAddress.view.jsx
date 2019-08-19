@@ -16,7 +16,6 @@ export const AddEditAddress = ({
   verifyAddressAction,
   submitAddressFormAction,
   addressFormLabels,
-  verifyAddressLabels,
   isMakeDefaultDisabled,
 }) => {
   const errorObject = addressResponse && addressResponse.get('errors');
@@ -33,8 +32,7 @@ export const AddEditAddress = ({
         )}
         <AddressVerification
           onSuccess={submitAddressFormAction}
-          heading={isEdit ? verifyAddressLabels.editAddress : verifyAddressLabels.addAddressHeading}
-          verifyAddressLabels={verifyAddressLabels}
+          heading={isEdit ? addressFormLabels.editAddress : addressFormLabels.addAddressHeading}
           onError={submitAddressFormAction}
         />
         <AddressFormComponent
@@ -60,7 +58,6 @@ AddEditAddress.propTypes = {
   isEdit: PropTypes.bool,
   isMakeDefaultDisabled: PropTypes.bool,
   addressFormLabels: {},
-  verifyAddressLabels: {},
 };
 
 AddEditAddress.defaultProps = {
@@ -72,8 +69,7 @@ AddEditAddress.defaultProps = {
   addressResponse: null,
   isEdit: false,
   isMakeDefaultDisabled: false,
-  addressFormLabels: {},
-  verifyAddressLabels: { editAddress: '', addAddressHeading: '' },
+  addressFormLabels: { editAddress: '', addAddressHeading: '' },
 };
 
 export default withStyles(AddEditAddress, styles);

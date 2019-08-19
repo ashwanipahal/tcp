@@ -40,15 +40,6 @@ export const getAddEditAddressLabels = state => {
     lbl_addEditAddress_addressButton: addAddress,
     lbl_addEditAddress_update: update,
     lbl_addEditAddress_cancel: cancel,
-    lbl_addEditAddress_errorMessageAE09: AE09,
-    lbl_addEditAddress_errorMessageAE10: AE10,
-    lbl_addEditAddress_errorMessageAE11: AE11,
-    lbl_addEditAddress_errorMessageAE12: AE12,
-    lbl_addEditAddress_errorMessageDefault: defaultErrorMsg,
-    lbl_addEditAddress_entered: youEntered,
-    lbl_addEditAddress_suggest: weSuggest,
-    lbl_addEditAddress_verifyHeader: verifyHeader,
-    lbl_addEditAddress_continueCta: continueCta,
   } = state.Labels.global && state.Labels.global.addEditAddress;
   return {
     addressFormLabels: {
@@ -67,20 +58,8 @@ export const getAddEditAddressLabels = state => {
       addAddress,
       update,
       cancel,
-    },
-    verifyAddressLabels: {
-      AE09,
-      AE10,
-      AE11,
-      AE12,
-      defaultErrorMsg,
-      youEntered,
-      weSuggest,
-      verifyHeader,
-      continueCta,
       editAddress,
       addAddressHeading,
-      addressLine2,
     },
   };
 };

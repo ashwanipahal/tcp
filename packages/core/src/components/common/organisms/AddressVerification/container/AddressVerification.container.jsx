@@ -3,6 +3,7 @@ import {
   getUserAddress,
   getSuggestedAddress,
   getVerificationResult,
+  getVerifyAddressLabels,
 } from './AddressVerification.selectors';
 import AddressVerificationComponent from '../views/AddressVerification.view';
 import { resetVerifyAddress } from './AddressVerification.actions';
@@ -12,6 +13,7 @@ export const mapStateToProps = state => {
     userAddress: getUserAddress(state),
     suggestedAddress: getSuggestedAddress(state),
     verificationResult: getVerificationResult(state),
+    labels: getVerifyAddressLabels(state),
   };
 };
 

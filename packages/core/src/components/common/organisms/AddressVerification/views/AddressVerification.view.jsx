@@ -20,7 +20,7 @@ type Props = {
   resetVerifyAddressAction: () => void,
   onSuccess: () => void,
   onError: () => void,
-  verifyAddressLabels: object,
+  labels: object,
 };
 
 export class AddressVerification extends React.Component<Props> {
@@ -77,7 +77,9 @@ export class AddressVerification extends React.Component<Props> {
   };
 
   getMessage = verificationResult => {
-    const { verifyAddressLabels } = this.props;
+    const {
+      labels: { verifyAddressLabels },
+    } = this.props;
     return (
       <BodyCopy
         component="p"
@@ -137,7 +139,9 @@ export class AddressVerification extends React.Component<Props> {
   };
 
   renderUserAddress = (verificationResult, userAddress) => {
-    const { verifyAddressLabels } = this.props;
+    const {
+      labels: { verifyAddressLabels },
+    } = this.props;
     const { selectAddress } = this.state;
     return (
       <div
@@ -174,7 +178,9 @@ export class AddressVerification extends React.Component<Props> {
   };
 
   renderSuggestedAddress = (verificationResult, suggestedAddress) => {
-    const { verifyAddressLabels } = this.props;
+    const {
+      labels: { verifyAddressLabels },
+    } = this.props;
     if (this.showInput) {
       const { selectAddress } = this.state;
       return (
@@ -233,7 +239,7 @@ export class AddressVerification extends React.Component<Props> {
       verificationResult,
       userAddress,
       suggestedAddress,
-      verifyAddressLabels,
+      labels: { verifyAddressLabels },
       heading,
     } = this.props;
     this.updateDisplayFlag(verificationResult, userAddress, suggestedAddress);
