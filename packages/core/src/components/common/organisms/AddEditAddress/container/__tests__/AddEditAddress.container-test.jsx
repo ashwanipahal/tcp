@@ -30,10 +30,18 @@ const formPayload = {
   phoneNumber: '1234567890',
   primary: true,
 };
+const labels = {
+  addressFormLabels: {},
+};
+
 describe('AddEditAddressContainer', () => {
   it('should render correctly', () => {
     const component = shallow(
-      <AddEditAddressContainer submitAddAddressFormAction={() => {}} addressList={List()} />
+      <AddEditAddressContainer
+        submitAddAddressFormAction={() => {}}
+        addressList={List()}
+        labels={labels}
+      />
     );
     expect(component).toMatchSnapshot();
   });
@@ -41,14 +49,22 @@ describe('AddEditAddressContainer', () => {
   describe('should render AddEditAddress component', () => {
     it('with isMakeDefaultDisabled as true if there is no address present', () => {
       const component = shallow(
-        <AddEditAddressContainer submitAddAddressFormAction={() => {}} addressList={List()} />
+        <AddEditAddressContainer
+          submitAddAddressFormAction={() => {}}
+          addressList={List()}
+          labels={labels}
+        />
       );
       expect(component.prop('isMakeDefaultDisabled')).toBeTruthy();
     });
 
     it('with isMakeDefaultDisabled as false if addresses are present', () => {
       const component = shallow(
-        <AddEditAddressContainer submitAddAddressFormAction={() => {}} addressList={List([{}])} />
+        <AddEditAddressContainer
+          submitAddAddressFormAction={() => {}}
+          addressList={List([{}])}
+          labels={labels}
+        />
       );
       expect(component.prop('isMakeDefaultDisabled')).toBeFalsy();
     });
@@ -59,6 +75,7 @@ describe('AddEditAddressContainer', () => {
           submitAddAddressFormAction={() => {}}
           address={address}
           addressList={List([{}])}
+          labels={labels}
         />
       );
       expect(component.prop('isMakeDefaultDisabled')).toBeTruthy();
@@ -71,6 +88,7 @@ describe('AddEditAddressContainer', () => {
           submitAddAddressFormAction={() => {}}
           address={address}
           addressList={addressList}
+          labels={labels}
         />
       );
       expect(component.prop('initialValues')).toStrictEqual(
@@ -81,7 +99,11 @@ describe('AddEditAddressContainer', () => {
     it('with initialValues in add new address mode', () => {
       const addressList = List([address]);
       const component = shallow(
-        <AddEditAddressContainer submitAddAddressFormAction={() => {}} addressList={addressList} />
+        <AddEditAddressContainer
+          submitAddAddressFormAction={() => {}}
+          addressList={addressList}
+          labels={labels}
+        />
       );
       expect(component.prop('initialValues')).toStrictEqual(
         component.instance().getInitialValues(addressList)
@@ -104,6 +126,7 @@ describe('AddEditAddressContainer', () => {
           submitNewAddressFormAction={submitNewAddressFormActionSpy}
           verifyAddressAction={verifyAddressSpy}
           addressList={List()}
+          labels={labels}
         />
       );
       instance = component.instance();
@@ -124,6 +147,7 @@ describe('AddEditAddressContainer', () => {
           verifyAddressAction={verifyAddressSpy}
           addressList={List([address])}
           address={address}
+          labels={labels}
         />
       );
       instance = component.instance();

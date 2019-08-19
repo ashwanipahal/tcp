@@ -10,7 +10,8 @@ describe('AddressBook component', () => {
       submitAddAddressFormAction: () => {},
       userEmail,
       addressList: List(),
-      labels: { addressBook: {}, common: {} },
+      addressFormLabels: {},
+      verifyAddressLabels: {},
     };
     const component = shallow(<AddEditAddress {...props} />);
     expect(component).toMatchSnapshot();
@@ -22,7 +23,8 @@ describe('AddressBook component', () => {
       userEmail,
       addAddressResponse: fromJS({ errors: [{ errorKey: 'error' }] }),
       addressList: List(),
-      labels: { addressBook: {}, common: {} },
+      addressFormLabels: {},
+      verifyAddressLabels: {},
     };
     const component = shallow(<AddEditAddress {...props} />);
     expect(component).toMatchSnapshot();

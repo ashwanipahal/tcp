@@ -1,10 +1,10 @@
 import React from 'react';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import Modal from '../../../../common/molecules/Modal';
-import Button from '../../../../common/atoms/Button';
-import TextBox from '../../../../common/atoms/TextBox';
-import BodyCopy from '../../../../common/atoms/BodyCopy';
-import AddressOption from '../../common/molecule/AddressOption';
+import Modal from '../../../molecules/Modal';
+import Button from '../../../atoms/Button';
+import TextBox from '../../../atoms/TextBox';
+import BodyCopy from '../../../atoms/BodyCopy';
+import AddressOption from '../../../molecules/AddressOption';
 import styles from '../styles/AddressVerification.style';
 import CONSTANTS from '../AddressVerification.constants';
 import spacing from '../../../../../../styles/themes/TCP/spacing';
@@ -20,7 +20,7 @@ type Props = {
   resetVerifyAddressAction: () => void,
   onSuccess: () => void,
   onError: () => void,
-  labels: object,
+  verifyAddressLabels: object,
 };
 
 export class AddressVerification extends React.Component<Props> {
@@ -77,7 +77,7 @@ export class AddressVerification extends React.Component<Props> {
   };
 
   getMessage = verificationResult => {
-    const { labels } = this.props;
+    const { verifyAddressLabels } = this.props;
     return (
       <BodyCopy
         component="p"
@@ -93,7 +93,7 @@ export class AddressVerification extends React.Component<Props> {
         fontFamily="secondary"
         data-locator="verifyaddress-msg"
       >
-        {labels.addressBook[`ACC_LABEL_VERIFY_YOUR_ADDRESS_${verificationResult}`]}
+        {verifyAddressLabels[verificationResult]}
       </BodyCopy>
     );
   };
@@ -137,7 +137,7 @@ export class AddressVerification extends React.Component<Props> {
   };
 
   renderUserAddress = (verificationResult, userAddress) => {
-    const { labels } = this.props;
+    const { verifyAddressLabels } = this.props;
     const { selectAddress } = this.state;
     return (
       <div
@@ -153,7 +153,7 @@ export class AddressVerification extends React.Component<Props> {
           className="elem-mb-SM"
           data-locator="verifyaddress-youenteredlbl"
         >
-          {labels.addressBook.ACC_LBL_YOU_ENTERED}
+          {verifyAddressLabels.youEntered}
         </BodyCopy>
         <div className="elem-mb-XL">
           <AddressOption
@@ -174,7 +174,7 @@ export class AddressVerification extends React.Component<Props> {
   };
 
   renderSuggestedAddress = (verificationResult, suggestedAddress) => {
-    const { labels } = this.props;
+    const { verifyAddressLabels } = this.props;
     if (this.showInput) {
       const { selectAddress } = this.state;
       return (
@@ -187,7 +187,7 @@ export class AddressVerification extends React.Component<Props> {
             className="elem-mb-SM"
             data-locator="verifyaddress-wesuggestlbl"
           >
-            {labels.addressBook.ACC_LBL_WE_SUGGEST}
+            {verifyAddressLabels.weSuggest}
           </BodyCopy>
           <div className="elem-mb-XL">
             <AddressOption
@@ -216,7 +216,7 @@ export class AddressVerification extends React.Component<Props> {
               onChange: this.handleChange,
               name: 'optionalAddressLine',
             }}
-            placeholder={labels.addressBook.ACC_LBL_ADDRESS_LINE2}
+            placeholder={verifyAddressLabels.addressLine2}
             id="optionalAddressLine"
             dataLocator="verifyaddress-addressLine2InPopUp"
           />
@@ -233,7 +233,7 @@ export class AddressVerification extends React.Component<Props> {
       verificationResult,
       userAddress,
       suggestedAddress,
-      labels,
+      verifyAddressLabels,
       heading,
     } = this.props;
     this.updateDisplayFlag(verificationResult, userAddress, suggestedAddress);
@@ -259,7 +259,7 @@ export class AddressVerification extends React.Component<Props> {
               textAlign="center"
               className="elem-mb-MED"
             >
-              {labels.addressBook.ACC_LBL_VERIFY_YOUR_ADDRESS_HEADER}
+              {verifyAddressLabels.verifyHeader}
             </BodyCopy>
             {this.getMessage(verificationResult, suggestedAddress)}
             {this.renderUserAddress(verificationResult, userAddress, suggestedAddress)}
@@ -272,7 +272,7 @@ export class AddressVerification extends React.Component<Props> {
                 onClick={this.onConfirm}
                 data-locator="verifyaddress-continuebtn"
               >
-                {labels.addressBook.ACC_LBL_CONTINUE_CTA}
+                {verifyAddressLabels.continueCta}
               </Button>
               <Button
                 className="addressVerification__cta"
@@ -281,7 +281,7 @@ export class AddressVerification extends React.Component<Props> {
                 fill="RED"
                 data-locator="verifyaddress-editaddressbtn"
               >
-                {labels.addressBook.ACC_LBL_EDIT_ADDRESS}
+                {verifyAddressLabels.editAddress}
               </Button>
             </div>
           </div>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { AddressVerification } from '../AddressVerification.view';
-import Modal from '../../../../../common/molecules/Modal';
-import AddressOption from '../../../common/molecule/AddressOption';
+import Modal from '../../../../molecules/Modal';
+import AddressOption from '../../../../molecules/AddressOption';
 
 const userAddress = {
   firstName: 'test',
@@ -34,7 +34,7 @@ describe('AddressVerification component', () => {
         userAddress,
         suggestedAddress: userAddress,
         verificationResult: '',
-        labels: { addressBook: {}, common: {} },
+        verifyAddressLabels: {},
         onSuccess: onSuccessSpy,
         resetVerifyAddressAction: resetVerifyAddressActionSpy,
       };
@@ -70,7 +70,7 @@ describe('AddressVerification component', () => {
         userAddress,
         suggestedAddress,
         verificationResult: '',
-        labels: { addressBook: {}, common: {} },
+        verifyAddressLabels: {},
         onSuccess: onSuccessSpy,
         resetVerifyAddressAction: resetVerifyAddressActionSpy,
       };
@@ -102,7 +102,7 @@ describe('AddressVerification component', () => {
         userAddress,
         suggestedAddress,
         verificationResult: '',
-        labels: { addressBook: {}, common: {} },
+        verifyAddressLabels: {},
         onSuccess: onSuccessSpy,
         resetVerifyAddressAction: resetVerifyAddressActionSpy,
       };
@@ -133,7 +133,7 @@ describe('AddressVerification component', () => {
         heading,
         userAddress,
         verificationResult: '',
-        labels: { addressBook: {}, common: {} },
+        verifyAddressLabels: {},
         onSuccess: onSuccessSpy,
         resetVerifyAddressAction: resetVerifyAddressActionSpy,
       };

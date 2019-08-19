@@ -1,13 +1,13 @@
 import React from 'react';
 import { Field, reduxForm, change } from 'redux-form';
 import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
-import TextBox from '../../../../../common/atoms/TextBox';
-import DropDown from '../../../../../common/atoms/DropDown/views/DropDown.native';
-import InputCheckbox from '../../../../../common/atoms/InputCheckbox';
-import Button from '../../../../../common/atoms/Button';
-import createValidateMethod from '../../../../../../utils/formValidation/createValidateMethod';
-import getStandardConfig from '../../../../../../utils/formValidation/validatorStandardConfig';
-import { AutoCompleteComponent } from '../../../../../common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
+import TextBox from '../../atoms/TextBox';
+import DropDown from '../../atoms/DropDown/views/DropDown.native';
+import InputCheckbox from '../../atoms/InputCheckbox';
+import Button from '../../atoms/Button';
+import createValidateMethod from '../../../../utils/formValidation/createValidateMethod';
+import getStandardConfig from '../../../../utils/formValidation/validatorStandardConfig';
+import { AutoCompleteComponent } from '../../atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import {
   countriesOptionsMap,
   CAcountriesStatesTable,
@@ -31,7 +31,7 @@ type Props = {
   invalid: any,
   dispatch: any,
   submitAddressFormAction: any,
-  labels: object,
+  addressFormLabels: object,
   isEdit?: boolean,
   isMakeDefaultDisabled?: boolean,
 };
@@ -67,7 +67,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
     const {
       handleSubmit,
       invalid,
-      labels,
+      addressFormLabels,
       isEdit,
       isMakeDefaultDisabled,
       submitAddressFormAction,
@@ -79,7 +79,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
           <Field
             name="firstName"
             id="firstName"
-            label={labels.acc_lbl_first_name}
+            label={addressFormLabels.firstName}
             type="text"
             component={TextBox}
             maxLength={50}
@@ -90,7 +90,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
           <Field
             id="lastName"
             name="lastName"
-            label={labels.acc_lbl_last_name}
+            label={addressFormLabels.lastName}
             component={TextBox}
             dataLocator="addnewaddress-lastname"
           />
@@ -99,7 +99,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
           <Field
             id="addressLine1"
             name="addressLine1"
-            headerTitle={labels.acc_lbl_address_line1}
+            headerTitle={addressFormLabels.addressLine1}
             component={GooglePlacesInput}
             dataLocator="addnewaddress-addressl1"
           />
@@ -109,7 +109,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
           <Field
             id="addressLine2"
             name="addressLine2"
-            label={labels.acc_lbl_address_line2}
+            label={addressFormLabels.addressLine2}
             component={TextBox}
             dataLocator="addnewaddress-addressl2"
           />
@@ -118,7 +118,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
           <Field
             id="city"
             name="city"
-            label={labels.acc_lbl_city}
+            label={addressFormLabels.city}
             component={TextBox}
             dataLocator="addnewaddress-city"
           />
@@ -143,7 +143,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
           <Field
             id="zipCode"
             name="zipCode"
-            label={country === 'CA' ? labels.acc_lbl_postal_code : labels.acc_lbl_zip_code}
+            label={country === 'CA' ? addressFormLabels.postalCode : addressFormLabels.zipCode}
             maxLength={country === 'CA' ? 6 : 5}
             component={TextBox}
             dataLocator="addnewaddress-zipcode"
@@ -169,7 +169,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
           <Field
             id="phoneNumber"
             name="phoneNumber"
-            label={labels.acc_lbl_phone_number}
+            label={addressFormLabels.phoneNumber}
             component={TextBox}
             dataLocator="addnewaddress-phnumber"
             type="tel"
@@ -182,7 +182,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
             component={InputCheckbox}
             dataLocator="addnewaddress-city"
             disabled={isMakeDefaultDisabled}
-            rightText={labels.acc_lbl_set_default}
+            rightText={addressFormLabels.setDefaultMsg}
           />
         </InputField>
         <CtaView>
@@ -192,7 +192,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
             disabled={invalid}
             onPress={handleSubmit(submitAddressFormAction)}
             buttonVariation="variable-width"
-            text={isEdit ? labels.acc_lbl_update_address_cta : labels.acc_lbl_add_address_cta}
+            text={isEdit ? addressFormLabels.update : addressFormLabels.addAddress}
             style={AddAddressButton}
           />
           <EmptyView />
@@ -201,7 +201,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
             type="submit"
             onPress={() => null}
             buttonVariation="variable-width"
-            text={labels.acc_lbl_cancel_cta}
+            text={addressFormLabels.cancel}
             style={CancelButton}
           />
         </CtaView>

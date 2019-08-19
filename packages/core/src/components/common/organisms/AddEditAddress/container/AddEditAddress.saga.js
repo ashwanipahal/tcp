@@ -4,7 +4,7 @@ import { addAddressSuccess, addAddressFail } from './AddEditAddress.actions';
 import {
   setAddressBookNotification,
   clearGetAddressListTTL,
-} from '../../AddressBook/container/AddressBook.actions';
+} from '../../../../features/account/AddressBook/container/AddressBook.actions';
 import { addAddress, updateAddress } from '../../../../../services/abstractors/account';
 
 export function* addAddressGet({ payload }) {
