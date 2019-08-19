@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
-import TextBox from '../../../../../../common/atoms/TextBox';
+import CreditCardNumber from '../../CreditCardNumber';
 import {
   PaymentContainer,
   CardContainer,
@@ -29,6 +29,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
       className,
       expMonthOptionsMap,
       expYearOptionsMap,
+      dto,
     } = this.props;
     const { selectedMonth, selectedYear } = this.state;
     const dropDownStyle = {
@@ -45,35 +46,19 @@ export class CreditCardFields extends React.PureComponent<Props> {
       <PaymentContainer>
         <CardContainer>
           <Field
-            label={labels.paymentGC.lbl_payment_cardNumber}
-            component={TextBox}
-            enableSuccessCheck={false}
+            label={(dto && dto.accountNo) || labels.paymentGC.lbl_payment_cardNumber}
             name="cardNumber"
             id="cardNumber"
-            dataLocator="addEditCreditCard-cardtextfield"
+            component={CreditCardNumber}
+            dataLocator="payment-cardtextfield"
+            cardTypeImgUrl={cardTypeImgUrl}
+            isPLCCEnabled={isPLCCEnabled}
+            cardType={cardType}
             className="field"
+            enableSuccessCheck={false}
           />
         </CardContainer>
         <ExpiryContainer>
-          <Field
-            label={labels.paymentGC.lbl_payment_cardNumber}
-            name="expMonth"
-            id="expMonth"
-            component={TextBox}
-            dataLocator="addEditCreditCard-expMonth"
-            className="field"
-            {...dropDownStyle}
-          />
-
-          <Field
-            name="expYear"
-            id="expYear"
-            component={TextBox}
-            dataLocator="addEditCreditCard-expYear"
-            className="field"
-            {...dropDownStyle}
-          />
-          {/*
           <Field
             name="expMonth"
             id="expMonth"
@@ -102,7 +87,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
               this.setState({ selectedYear: itemValue });
             }}
             selectedValue={selectedYear}
-          /> */}
+          />
         </ExpiryContainer>
       </PaymentContainer>
     );
@@ -120,6 +105,7 @@ CreditCardFields.propTypes = {
   isPLCCEnabled: PropTypes.bool,
   cardType: PropTypes.string,
   className: PropTypes.string,
+  dto: PropTypes.shape({}),
 };
 
 CreditCardFields.defaultProps = {
@@ -129,6 +115,7 @@ CreditCardFields.defaultProps = {
   cardType: '',
   isPLCCEnabled: true,
   className: '',
+  dto: {},
 };
 
 export default CreditCardFields;

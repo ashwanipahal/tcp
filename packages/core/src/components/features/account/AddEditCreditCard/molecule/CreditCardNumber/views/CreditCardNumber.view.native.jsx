@@ -1,10 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
 import PropTypes from 'prop-types';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
-import { TextBox, Image } from '../../../../../../common/atoms';
+import TextBox from '@tcp/core/src/components/common/atoms/TextBox';
+import Image from '@tcp/core/src/components/common/atoms/Image';
 import { getIconPath } from '../../../../../../../utils';
-import styles from '../styles/CreditCardNumber.native.style';
 
 const getCardTypeImgUrl = cardType => {
   return getIconPath(`${(cardType || '').toLowerCase().replace(' ', '-')}-small`);
@@ -13,8 +12,8 @@ const getCardTypeImgUrl = cardType => {
 export const CreditCardNumber = ({ cardType, className, ...otherProps }) => {
   return (
     <View className={className}>
-      <TextBox maxLength="16" {...otherProps} />
-      {cardType && <Image src={getCardTypeImgUrl(cardType)} />}
+      <TextBox {...otherProps} />
+      {cardType && <Image source={getCardTypeImgUrl(cardType)} width="20px" height="15px" />}
     </View>
   );
 };
@@ -24,4 +23,4 @@ CreditCardNumber.propTypes = {
   className: PropTypes.string.isRequired,
 };
 
-export default withStyles(CreditCardNumber, styles);
+export default CreditCardNumber;

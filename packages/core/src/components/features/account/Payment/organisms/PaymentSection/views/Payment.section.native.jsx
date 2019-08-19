@@ -125,6 +125,7 @@ class PaymentView extends React.Component<Props> {
         cardDescription: labels.paymentGC.lbl_payment_modalGCHeading,
         cardImage: cardImg,
         cardDetail: `${labels.paymentGC.lbl_payment_cardNum}${selectedCard.accountNo.slice(-4)}`,
+        accountNo: selectedCard.accountNo,
       };
     } else if (selectedCard.ccType === 'VENMO') {
       dto = {
@@ -137,6 +138,7 @@ class PaymentView extends React.Component<Props> {
         cardDescription: labels.paymentGC.lbl_payment_modalCCHeading,
         cardImage: cardImg,
         cardDetail: `${labels.paymentGC.lbl_payment_cardNum} ${selectedCard.accountNo}`,
+        accountNo: selectedCard.accountNo,
       };
     }
     return (
@@ -208,6 +210,7 @@ class PaymentView extends React.Component<Props> {
               labels={labels}
               setSelectedCard={this.setSelectedCard}
               toggleModal={this.setUpdateModalMountState}
+              setUpdateModalMountedState={setUpdateModalMountedState}
             />
           )}
         </ScrollView>

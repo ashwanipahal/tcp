@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { SafeAreaView } from 'react-native';
+import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
+import LineComp from '@tcp/core/src/components/common/atoms/Line';
+import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
 import AddEditCreditCard from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.container';
 import { ModalHeading, ModalViewWrapper, LineWrapper } from '../AddEditPaymentModal.style.native';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import ModalNative from '../../../../../../common/molecules/Modal';
-import LineComp from '../../../../../../common/atoms/Line';
 
 export class AddEditPaymentModal extends React.PureComponent<Props> {
   static propTypes = {
@@ -21,15 +21,15 @@ export class AddEditPaymentModal extends React.PureComponent<Props> {
   };
 
   render() {
-    const { labels, toggleModal } = this.props;
+    const { labels, toggleModal, setUpdateModalMountedState, dto } = this.props;
     return (
-      <ModalNative onRequestClose={toggleModal}>
+      <ModalNative isOpen={setUpdateModalMountedState} onRequestClose={toggleModal}>
         <ModalHeading>
           <BodyCopy
             mobileFontFamily={['secondary']}
             fontWeight="extrabold"
             fontSize="fs16"
-            text="Add Credit or Debit Card"
+            text={labels.paymentGC.lbl_payment_addCCHeading}
           />
         </ModalHeading>
         <LineWrapper>
@@ -37,7 +37,7 @@ export class AddEditPaymentModal extends React.PureComponent<Props> {
         </LineWrapper>
         <SafeAreaView>
           <ModalViewWrapper>
-            <AddEditCreditCard labels={labels} isEdit={false} onClose={toggleModal} />
+            <AddEditCreditCard labels={labels} isEdit={false} onClose={toggleModal} dto={dto} />
           </ModalViewWrapper>
         </SafeAreaView>
       </ModalNative>

@@ -19,6 +19,7 @@ type Props = {
   address?: object,
   labels: object,
   onCancel: ({}) => void,
+  showHeading: boolean,
 };
 
 export class AddEditAddressContainer extends React.PureComponent<Props> {
@@ -97,7 +98,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
   };
 
   render() {
-    const { addressResponse, addressList, address, labels, onCancel } = this.props;
+    const { addressResponse, addressList, address, labels, onCancel, showHeading } = this.props;
     this.initialValues = this.getInitialValues(addressList, address);
     const addressListSize = addressList && addressList.size;
     const isMakeDefaultDisabled = address ? addressListSize === 1 : addressListSize === 0;
@@ -112,6 +113,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
         isEdit={!!address}
         labels={labels}
         onCancel={onCancel}
+        showHeading={showHeading}
       />
     );
   }

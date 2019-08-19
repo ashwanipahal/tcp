@@ -118,7 +118,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
    * Render drop down item
    */
   dropDownLayout = ({ item }) => {
-    const { itemStyle, addAddress } = this.props;
+    const { itemStyle } = this.props;
     const { label, content } = item;
     return (
       <DropDownItemContainer onPress={() => this.onDropDownItemClick(item)} style={itemStyle}>
@@ -137,7 +137,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
             buttonVariation="variable-width"
             fill="BLUE"
             text={label}
-            onPress={addAddress}
+            onPress={this.openAddressBook}
           />
         )}
       </DropDownItemContainer>
@@ -151,6 +151,17 @@ export class AddressDropdown extends React.PureComponent<Props> {
     this.setState({
       dropDownIsOpen: true,
     });
+  };
+
+  /**
+   * openAddressBook modal
+   */
+  openAddressBook = () => {
+    const { addAddress } = this.props;
+    this.setState({
+      dropDownIsOpen: false,
+    });
+    addAddress();
   };
 
   /**

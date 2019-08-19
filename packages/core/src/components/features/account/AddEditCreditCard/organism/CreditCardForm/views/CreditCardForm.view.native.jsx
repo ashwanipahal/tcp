@@ -1,11 +1,10 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
-import { reduxForm, Field, FormSection } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Address from '@tcp/core/src/components/common/molecules/Address';
 import Button from '@tcp/core/src/components/common/atoms/Button';
-import AddressFields from '@tcp/core/src/components/features/account/common/molecule/AddressFields';
 import { Heading } from '@tcp/core/src/components/common/atoms';
 import AddEditAddressContainer from '@tcp/core/src/components/features/account/AddEditAddress/container/AddEditAddress.container';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
@@ -21,6 +20,7 @@ import {
   AddAddressButton,
   CancelButton,
   CreditCardContainer,
+  ModalHeading,
   ModalViewWrapper,
   DefaultAddress,
   LeftBracket,
@@ -35,18 +35,19 @@ class CreditCardForm extends React.PureComponent<Props, State> {
     addressList: PropTypes.shape({}).isRequired,
     onFileAddressKey: PropTypes.string,
     isEdit: PropTypes.bool,
-    backToPaymentClick: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,
     invalid: PropTypes.bool.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
     initialValues: PropTypes.shape({}).isRequired,
+    dto: PropTypes.shape({}),
   };
 
   static defaultProps = {
     className: '',
     onFileAddressKey: '',
     isEdit: false,
+    dto: PropTypes.shape({}),
   };
 
   constructor(props) {
@@ -165,7 +166,7 @@ class CreditCardForm extends React.PureComponent<Props, State> {
               showPhone={false}
               showName
               className="CreditCardForm__address"
-              dataLocatorPrefix="payment"
+              dataLocatorPrefix="address"
             />
             <RightBracket />
           </DefaultAddress>
@@ -189,6 +190,27 @@ class CreditCardForm extends React.PureComponent<Props, State> {
             style={CancelButton}
           />
         </ActionsWrapper>
+        {addAddressMount && (
+          <ModalNative isOpen={addAddressMount} onRequestClose={this.toggleModal}>
+            <ModalHeading>
+              <BodyCopy
+                mobileFontFamily={['secondary']}
+                fontWeight="extrabold"
+                fontSize="fs16"
+                text={labels.addressBook.ACC_LBL_ADD_NEW_ADDRESS_CTA}
+              />
+            </ModalHeading>
+            <SafeAreaView>
+              <ModalViewWrapper>
+                <AddEditAddressContainer
+                  labels={addressLabels}
+                  onCancel={this.toggleModal}
+                  showHeading={false}
+                />
+              </ModalViewWrapper>
+            </SafeAreaView>
+          </ModalNative>
+        )}
       </CreditCardContainer>
     );
   }
