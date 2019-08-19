@@ -12,6 +12,7 @@ import { createAPIConfig } from '@tcp/core/src/utils';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import { getLoginState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
 import { Header, Footer } from '../components/features/content';
+import CheckoutHeader from '../components/features/content/CheckoutHeader';
 import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
@@ -87,7 +88,14 @@ class TCPWebApp extends App {
   }
 
   render() {
-    const { Component, pageProps, store } = this.props;
+    const { Component, pageProps, store, router } = this.props;
+    let isNonCheckoutPage = true;
+    const checkURL = ['pickup', 'shipping', 'billing', 'review'];
+    for (let i = 0; i < checkURL.length; i += 1) {
+      if (router.asPath.indexOf(checkURL[i]) > -1) {
+        isNonCheckoutPage = false;
+      }
+    }
     const theme = getCurrentTheme();
     return (
       <Container>
@@ -95,7 +103,8 @@ class TCPWebApp extends App {
           <Provider store={store}>
             <GlobalStyle />
             <Grid>
-              <Header />
+              {isNonCheckoutPage && <Header />}
+              {!isNonCheckoutPage && <CheckoutHeader />}
               <Loader />
               <div id="overlayWrapper">
                 <div id="overlayComponent" />
