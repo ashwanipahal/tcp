@@ -3,13 +3,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, ScrollView } from 'react-native';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import { ParentContainer, StyledHeading, UnderlineStyle } from '../PaymentSection.style.native';
+import {
+  ParentContainer,
+  StyledHeading,
+  UnderlineStyle,
+  ModalHeading,
+  ModalViewWrapper,
+  LineWrapper,
+} from '../PaymentSection.style.native';
 import OffersSection from '../../../molecules/OffersSection';
 import Cards from '../../../molecules/Cards';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import VenmoCards from '../../../molecules/VenmoCards';
 import DeleteModal from '../../../molecules/DeleteModal';
 import { getIconCard } from '../../../../../../../utils/index.native';
+import ModalNative from '../../../../../../common/molecules/Modal';
+import AddGiftCardContainer from '../../../AddGiftCard/container/AddGiftCard.container.native';
+import LineComp from '../../../../../../common/atoms/Line';
 
 class PaymentView extends React.Component<Props> {
   static propTypes = {
@@ -57,6 +67,7 @@ class PaymentView extends React.Component<Props> {
     this.state = {
       setDeleteModalMountedState: false,
       selectedCard: {},
+      showGiftCardModal: false,
     };
   }
 
@@ -88,6 +99,13 @@ class PaymentView extends React.Component<Props> {
     this.setDeleteModalMountState({ setDeleteModalMountedState: false });
   };
 
+  toggleGiftCardModal = () => {
+    const { showGiftCardModal } = this.state;
+    this.setState({
+      showGiftCardModal: !showGiftCardModal,
+    });
+  };
+
   render() {
     const {
       labels,
@@ -99,6 +117,7 @@ class PaymentView extends React.Component<Props> {
       onGetBalanceCard,
       checkbalanceValueInfo,
     } = this.props;
+    const { showGiftCardModal } = this.state;
     const { setDeleteModalMountedState, selectedCard } = this.state;
     let dto = {};
     const cardImg = getIconCard(this.cardIconMapping[selectedCard.ccBrand]);
@@ -170,6 +189,7 @@ class PaymentView extends React.Component<Props> {
               onGetBalanceCard={onGetBalanceCard}
               toggleModal={this.setDeleteModalMountState}
               setSelectedCard={this.setSelectedCard}
+              setCardHandler={this.toggleGiftCardModal}
             />
           )}
           {setDeleteModalMountedState && (
@@ -182,6 +202,24 @@ class PaymentView extends React.Component<Props> {
               onConfirm={this.onConfirm}
               onClose={this.onClose}
             />
+          )}
+          {showGiftCardModal && (
+            <ModalNative isOpen={showGiftCardModal} onRequestClose={this.toggleGiftCardModal}>
+              <ModalHeading>
+                <BodyCopy
+                  mobileFontFamily={['secondary']}
+                  fontWeight="extrabold"
+                  fontSize="fs16"
+                  text={labels.paymentGC.lbl_payment_addGiftCard}
+                />
+              </ModalHeading>
+              <LineWrapper>
+                <LineComp marginTop={5} borderWidth={1} borderColor="black" />
+              </LineWrapper>
+              <ModalViewWrapper>
+                <AddGiftCardContainer toggleModal={this.toggleGiftCardModal} labels={labels} />
+              </ModalViewWrapper>
+            </ModalNative>
           )}
         </ScrollView>
       </View>
