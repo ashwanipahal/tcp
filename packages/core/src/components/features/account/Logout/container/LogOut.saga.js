@@ -2,7 +2,7 @@ import { call, takeLatest, put } from 'redux-saga/effects';
 import LOGOUT_CONSTANTS from '../LogOut.constants';
 import { resetUserInfo } from '../../User/container/User.actions';
 import { closeOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
-import utils from '../../../../../utils';
+import { routerPush, isMobileApp } from '../../../../../utils';
 import { LogoutApplication } from '../../../../../services/abstractors/account';
 
 export function* logoutSaga() {
@@ -11,15 +11,19 @@ export function* logoutSaga() {
     const matchPath = window.location.pathname.split('/')[2];
     if (res.statusCode === 200) {
       yield put(resetUserInfo());
-      yield put(closeOverlayModal());
-      if (window.location.href.indexOf('account')) {
-        utils.routerPush('/', '/home');
-      } else {
-        utils.routerPush('/', `/${matchPath}`);
+      if (!isMobileApp()) {
+        yield put(closeOverlayModal());
+        if (window.location.href.indexOf('account')) {
+          routerPush('/', '/home');
+        } else {
+          routerPush('/', `/${matchPath}`);
+        }
       }
     }
   } catch (err) {
-    utils.routerPush('/', '/home');
+    if (!isMobileApp()) {
+      routerPush('/', '/home');
+    }
   }
 }
 
