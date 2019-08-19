@@ -24,7 +24,7 @@ AddGiftCardComponent.propTypes = {
 AddGiftCardComponent.defaultProps = {
   onAddGiftCardClick: () => {},
   getAddGiftCardErr: null,
-  labels: PropTypes.shape({}),
+  labels: {},
   toggleModal: () => {},
 };
 

@@ -23,7 +23,24 @@ import LineComp from '../../../../../../common/atoms/Line';
 
 class PaymentView extends React.Component<Props> {
   static propTypes = {
-    labels: PropTypes.shape({}),
+    labels: {
+      paymentGC: PropTypes.shape({
+        lbl_payment_modalGCHeading: PropTypes.string,
+        lbl_payment_cardNum: PropTypes.string,
+        lbl_payment_modalVenmoDeleteHeading: PropTypes.string,
+        lbl_payment_modalCCHeading: PropTypes.string,
+        lbl_payment_heading: PropTypes.string,
+        lbl_payment_ccHeading: PropTypes.string,
+        lbl_payment_CCEmptyHeading: PropTypes.string,
+        lbl_payment_CCEmptyDesc: PropTypes.string,
+        lbl_payment_ccEmptyAddBtn: PropTypes.string,
+        lbl_payment_addBtn: PropTypes.string,
+        lbl_payment_GCEmptyHeading: PropTypes.string,
+        lbl_payment_GCEmptyDesc: PropTypes.string,
+        lbl_payment_GCEmptyAddBtn: PropTypes.string,
+        lbl_payment_addGiftCard: PropTypes.string,
+      }),
+    },
     creditCardList: PropTypes.shape({}),
     setDefaultPaymentMethod: PropTypes.func,
     giftCardList: PropTypes.shape({}),
@@ -38,7 +55,24 @@ class PaymentView extends React.Component<Props> {
   };
 
   static defaultProps = {
-    labels: {},
+    labels: {
+      paymentGC: {
+        lbl_payment_modalGCHeading: '',
+        lbl_payment_cardNum: '',
+        lbl_payment_modalVenmoDeleteHeading: '',
+        lbl_payment_modalCCHeading: '',
+        lbl_payment_heading: '',
+        lbl_payment_ccHeading: '',
+        lbl_payment_CCEmptyHeading: '',
+        lbl_payment_CCEmptyDesc: '',
+        lbl_payment_ccEmptyAddBtn: '',
+        lbl_payment_addBtn: '',
+        lbl_payment_GCEmptyHeading: '',
+        lbl_payment_GCEmptyDesc: '',
+        lbl_payment_GCEmptyAddBtn: '',
+        lbl_payment_addGiftCard: '',
+      },
+    },
     creditCardList: {},
     setDefaultPaymentMethod: () => {},
     giftCardList: {},

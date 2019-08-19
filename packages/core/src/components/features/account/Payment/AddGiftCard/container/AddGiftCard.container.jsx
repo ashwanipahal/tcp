@@ -30,7 +30,7 @@ class AddGiftCardContainer extends React.Component {
       toggleModal,
     } = this.props;
 
-    if (isMobileApp && addGiftCardResponse === 'success') {
+    if (isMobileApp() && addGiftCardResponse === 'success') {
       toggleModal();
       const { getCardListAction } = this.props;
       getCardListAction();
@@ -86,7 +86,7 @@ AddGiftCardContainer.propTypes = {
 AddGiftCardContainer.defaultProps = {
   onAddGiftCardClick: () => {},
   getAddGiftCardErr: null,
-  labels: PropTypes.shape({}),
+  labels: {},
   addGiftCardResponse: null,
   toggleModal: () => {},
   resetNotificationStateAction: () => {},

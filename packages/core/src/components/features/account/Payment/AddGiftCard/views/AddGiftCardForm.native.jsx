@@ -130,7 +130,16 @@ AddGiftCardForm.propTypes = {
   handleSubmit: PropTypes.func,
   toggleModal: PropTypes.func,
   onAddGiftCardClick: PropTypes.func,
-  labels: PropTypes.shape({}),
+  labels: PropTypes.shape({
+    paymentGC: PropTypes.shape({
+      lbl_payment_giftCardNoPlaceholder: PropTypes.string,
+      lbl_payment_giftCardPinPlaceholder: PropTypes.string,
+      lbl_payment_giftCardMessageHeading: PropTypes.string,
+      lbl_payment_giftCardMessageDescription: PropTypes.string,
+      lbl_payment_addCard: PropTypes.string,
+      lbl_payment_cancelCard: PropTypes.string,
+    }),
+  }),
   addGiftCardResponse: PropTypes.string,
   change: PropTypes.func,
 };
@@ -139,7 +148,16 @@ AddGiftCardForm.defaultProps = {
   handleSubmit: () => {},
   toggleModal: () => {},
   onAddGiftCardClick: () => {},
-  labels: {},
+  labels: {
+    paymentGC: {
+      lbl_payment_giftCardNoPlaceholder: '',
+      lbl_payment_giftCardPinPlaceholder: '',
+      lbl_payment_giftCardMessageHeading: '',
+      lbl_payment_giftCardMessageDescription: '',
+      lbl_payment_addCard: '',
+      lbl_payment_cancelCard: '',
+    },
+  },
   addGiftCardResponse: null,
   change: () => {},
 };
