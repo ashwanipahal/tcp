@@ -18,6 +18,7 @@ exports[`CardList Component should render correctly 1`] = `
     }
   }
   onGetBalanceCard={null}
+  setCardHandler={[Function]}
   setDefaultPaymentMethod={[MockFunction]}
   setSelectedCard={null}
   toggleModal={null}
@@ -93,6 +94,7 @@ exports[`CardList Component should render correctly if list is present 1`] = `
     }
   }
   onGetBalanceCard={null}
+  setCardHandler={[Function]}
   setDefaultPaymentMethod={[MockFunction]}
   setSelectedCard={null}
   toggleModal={null}
