@@ -11,8 +11,7 @@ import EmptyBag from '@tcp/core/src/components/features/CnC/EmptyBagPage/views/E
 import productTileCss, { customStyles } from '../styles/ProductTileWrapper.style';
 
 class ProductTileWrapper extends React.PureComponent<props> {
-  // eslint-disable-next-line flowtype/no-types-missing-file-annotation
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
     this.state = {
       isEditAllowed: true,

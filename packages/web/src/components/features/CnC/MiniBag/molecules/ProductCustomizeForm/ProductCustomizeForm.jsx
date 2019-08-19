@@ -100,17 +100,14 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
   };
 
   getFitOptions = colorItem => {
-    const fitOptions = [];
-    // eslint-disable-next-line no-unused-expressions
-    colorItem &&
-      colorItem.get('fits').map(fit => {
-        fitOptions.push({
+    return (
+      (colorItem &&
+        colorItem.get('fits').map(fit => ({
           displayName: fit.get('fitName'),
           id: fit.get('fitName'),
-        });
-        return '';
-      });
-    return fitOptions;
+        }))) ||
+      []
+    );
   };
 
   getSizeOptions = (colorItem, selectedFit?) => {
