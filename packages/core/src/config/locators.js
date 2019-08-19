@@ -43,11 +43,11 @@ export default {
   moduleA_promobanner_img: 'moduleA_promobanner_img',
   moduleA_image: 'moduleA_image_',
   moduleA_button: 'moduleA_button',
-  moduleA_button_set: 'moduleA_button_set_',
   moduleA_play_button: 'moduleA_play_button',
   moduleA_pause_button: 'moduleA_pause_button',
   moduleA_ribbon_promobanner_text: 'moduleA_ribbon_promobanner_text_',
   moduleA_cta_links: 'moduleA_cta_links_',
+  moduleA_cta_image: 'moduleA_cta_image_',
   carousel_banner: 'carousel_banner',
   // Module L
   moduleL_header_text: 'moduleL_header_text',

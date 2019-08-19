@@ -74,7 +74,8 @@ const ModuleATcpCarousel = props => {
         <ButtonList
           buttonsData={ctaItems}
           buttonListVariation={ctaType}
-          dataLocator={getLocator('moduleA_button_set')}
+          dataLocatorDivisionImages={getLocator('moduleA_cta_image')}
+          dataLocatorTextCta={getLocator('moduleA_cta_links')}
         />
       </div>
     </div>

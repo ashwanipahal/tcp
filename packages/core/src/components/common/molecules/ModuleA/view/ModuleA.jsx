@@ -25,7 +25,7 @@ const ModuleA = props => {
   } = props;
 
   const ctaType = ctaTypes[set.val];
-
+  console.info('====', ctaType);
   return (
     <Row className={`${className} moduleA`} fullBleed={{ small: true, medium: true, large: false }}>
       <Col

@@ -661,6 +661,8 @@ exports[`ModuleAGymCarousel component renders correctly 1`] = `
             },
           ]
         }
+        dataLocatorDivisionImages="moduleA_cta_image_"
+        dataLocatorTextCta="moduleA_cta_links_"
       />
     </div>
   </div>

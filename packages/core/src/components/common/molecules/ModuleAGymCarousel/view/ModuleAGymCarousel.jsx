@@ -111,7 +111,12 @@ class ModuleAGymCarousel extends React.Component {
         </Carousel>
         <div className="bottom-blue-bar">
           <div className={`button-list-container ${ctaType}`}>
-            <ButtonList buttonsData={ctaItems} buttonListVariation={ctaType} />
+            <ButtonList
+              buttonsData={ctaItems}
+              buttonListVariation={ctaType}
+              dataLocatorDivisionImages={getLocator('moduleA_cta_image')}
+              dataLocatorTextCta={getLocator('moduleA_cta_links')}
+            />
           </div>
         </div>
       </div>
