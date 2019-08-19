@@ -25,6 +25,10 @@ const RoutesMap = [
     resolver: '/ProductListingPage',
   },
   {
+    path: '/place-card/application',
+    resolver: '/ApplyCardPage',
+  },
+  {
     path: '/test',
     resolver: '/test',
     withoutCountryCode: true,
