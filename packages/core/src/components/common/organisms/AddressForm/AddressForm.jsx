@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field, reduxForm, change } from 'redux-form';
-import TextBox from '../../../../../common/atoms/TextBox';
-import SelectBox from '../../../../../common/atoms/Select';
-import InputCheckbox from '../../../../../common/atoms/InputCheckbox';
-import Row from '../../../../../common/atoms/Row';
-import Col from '../../../../../common/atoms/Col';
-import Button from '../../../../../common/atoms/Button';
-import createValidateMethod from '../../../../../../utils/formValidation/createValidateMethod';
-import getStandardConfig from '../../../../../../utils/formValidation/validatorStandardConfig';
-import { AutoCompleteComponent } from '../../../../../common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
+import TextBox from '../../atoms/TextBox';
+import SelectBox from '../../atoms/Select';
+import InputCheckbox from '../../atoms/InputCheckbox';
+import Row from '../../atoms/Row';
+import Col from '../../atoms/Col';
+import Button from '../../atoms/Button';
+import createValidateMethod from '../../../../utils/formValidation/createValidateMethod';
+import getStandardConfig from '../../../../utils/formValidation/validatorStandardConfig';
+import { AutoCompleteComponent } from '../../atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import {
   countriesOptionsMap,
   CAcountriesStatesTable,
@@ -23,7 +23,7 @@ export class AddressForm extends React.PureComponent {
     className: PropTypes.string,
     backToAddressBookClick: PropTypes.func.isRequired,
     dispatch: PropTypes.func.isRequired,
-    labels: PropTypes.shape({}).isRequired,
+    addressFormLabels: PropTypes.shape({}).isRequired,
     isEdit: PropTypes.bool,
     isMakeDefaultDisabled: PropTypes.bool.isRequired,
     initialValues: PropTypes.shape({
@@ -65,7 +65,7 @@ export class AddressForm extends React.PureComponent {
       invalid,
       className,
       backToAddressBookClick,
-      labels,
+      addressFormLabels,
       isEdit,
       isMakeDefaultDisabled,
     } = this.props;
@@ -75,7 +75,7 @@ export class AddressForm extends React.PureComponent {
         <Row fullBleed>
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
-              placeholder={labels.addressBook.ACC_LBL_FIRST_NAME}
+              placeholder={addressFormLabels.firstName}
               name="firstName"
               id="firstName"
               type="text"
@@ -85,7 +85,7 @@ export class AddressForm extends React.PureComponent {
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
-              placeholder={labels.addressBook.ACC_LBL_LAST_NAME}
+              placeholder={addressFormLabels.lastName}
               name="lastName"
               id="lastName"
               component={TextBox}
@@ -97,7 +97,7 @@ export class AddressForm extends React.PureComponent {
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
               id="addressLine1"
-              placeholder={labels.addressBook.ACC_LBL_ADDRESS_LINE1}
+              placeholder={addressFormLabels.addressLine1}
               component={AutoCompleteComponent}
               name="addressLine1"
               onPlaceSelected={this.handlePlaceSelected}
@@ -107,7 +107,7 @@ export class AddressForm extends React.PureComponent {
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
-              placeholder={labels.addressBook.ACC_LBL_ADDRESS_LINE2}
+              placeholder={addressFormLabels.addressLine2}
               name="addressLine2"
               id="addressLine2"
               component={TextBox}
@@ -119,7 +119,7 @@ export class AddressForm extends React.PureComponent {
           <Col ignoreGutter={{ small: true }} colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
               id="city"
-              placeholder={labels.addressBook.ACC_LBL_CITY}
+              placeholder={addressFormLabels.city}
               name="city"
               component={TextBox}
               dataLocator="addnewaddress-city"
@@ -129,9 +129,7 @@ export class AddressForm extends React.PureComponent {
             <Field
               id="state"
               placeholder={
-                country === 'CA'
-                  ? labels.addressBook.ACC_LBL_PROVINCE
-                  : labels.addressBook.ACC_LBL_STATE
+                country === 'CA' ? addressFormLabels.province : addressFormLabels.stateLbl
               }
               name="state"
               component={SelectBox}
@@ -142,9 +140,7 @@ export class AddressForm extends React.PureComponent {
           <Col colSize={{ small: 3, medium: 2, large: 3 }}>
             <Field
               placeholder={
-                country === 'CA'
-                  ? labels.addressBook.ACC_LBL_POSTAL_CODE
-                  : labels.addressBook.ACC_LBL_ZIP_CODE
+                country === 'CA' ? addressFormLabels.postalCode : addressFormLabels.zipCode
               }
               id="zipCode"
               name="zipCode"
@@ -158,7 +154,7 @@ export class AddressForm extends React.PureComponent {
           <Col colSize={{ small: 6, medium: 4, large: 6 }} ignoreGutter={{ small: true }}>
             <Field
               id="country"
-              placeholder={labels.addressBook.ACC_LBL_COUNTRY}
+              placeholder={addressFormLabels.country}
               name="country"
               component={SelectBox}
               options={countriesOptionsMap}
@@ -168,7 +164,7 @@ export class AddressForm extends React.PureComponent {
           </Col>
           <Col colSize={{ small: 6, medium: 4, large: 6 }}>
             <Field
-              placeholder={labels.addressBook.ACC_LBL_PHONE_NUMBER}
+              placeholder={addressFormLabels.phoneNumber}
               name="phoneNumber"
               id="phoneNumber"
               component={TextBox}
@@ -186,7 +182,7 @@ export class AddressForm extends React.PureComponent {
               disabled={isMakeDefaultDisabled}
               className="AddAddressForm__makeDefault"
             >
-              {labels.addressBook.ACC_LBL_SET_DEFAULT}
+              {addressFormLabels.setDefaultMsg}
             </Field>
           </Col>
         </Row>
@@ -202,7 +198,7 @@ export class AddressForm extends React.PureComponent {
               type="button"
               data-locator="addnewaddress-cancel"
             >
-              {labels.common.lbl_common_cancelCTACaps}
+              {addressFormLabels.cancel}
             </Button>
           </Col>
           <Col
@@ -217,9 +213,7 @@ export class AddressForm extends React.PureComponent {
               buttonVariation="fixed-width"
               data-locator="addnewaddress-addaddress"
             >
-              {isEdit
-                ? labels.common.lbl_common_updateAddressCTA
-                : labels.addressBook.ACC_LBL_ADD_ADDRESS_CTA}
+              {isEdit ? addressFormLabels.update : addressFormLabels.addAddress}
             </Button>
           </Col>
         </Row>

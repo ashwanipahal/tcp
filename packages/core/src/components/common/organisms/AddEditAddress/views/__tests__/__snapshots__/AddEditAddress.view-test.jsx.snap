@@ -1,31 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AddressBook component should renders correctly when errors are present 1`] = `
-<div>
-  <Styled(Anchor)
-    anchorVariation="secondary"
-    asPath="/account/address-book"
-    className="addAddress__anchor__back"
-    data-locator="addnewaddress-back"
-    fontSizeVariation="xlarge"
-    to="/account?id=address-book"
-  />
-  <Styled(HeadingStyle)
-    HeadingLarge="six"
-    className="addAddress__separator"
-    fontFamily="primaryFontFamily"
-    tag="h4"
-  />
+<div
+  className=""
+>
   <Styled(Grid)>
     <Connect(Styled(AddressVerification))
-      labels={
-        Object {
-          "addressBook": Object {},
-          "common": Object {},
-        }
-      }
+      onError={[Function]}
+      onSuccess={[Function]}
     />
     <ReduxForm
+      addressFormLabels={Object {}}
+      backToAddressBookClick={[Function]}
       destroyOnUnmount={true}
       enableReinitialize={true}
       forceUnregisterOnUnmount={false}
@@ -35,12 +21,7 @@ exports[`AddressBook component should renders correctly when errors are present 
       isEdit={false}
       isMakeDefaultDisabled={false}
       keepDirtyOnReinitialize={false}
-      labels={
-        Object {
-          "addressBook": Object {},
-          "common": Object {},
-        }
-      }
+      onSubmit={[Function]}
       persistentSubmitErrors={false}
       pure={true}
       shouldAsyncValidate={[Function]}
@@ -58,31 +39,17 @@ exports[`AddressBook component should renders correctly when errors are present 
 `;
 
 exports[`AddressBook component should renders correctly without any error 1`] = `
-<div>
-  <Styled(Anchor)
-    anchorVariation="secondary"
-    asPath="/account/address-book"
-    className="addAddress__anchor__back"
-    data-locator="addnewaddress-back"
-    fontSizeVariation="xlarge"
-    to="/account?id=address-book"
-  />
-  <Styled(HeadingStyle)
-    HeadingLarge="six"
-    className="addAddress__separator"
-    fontFamily="primaryFontFamily"
-    tag="h4"
-  />
+<div
+  className=""
+>
   <Styled(Grid)>
     <Connect(Styled(AddressVerification))
-      labels={
-        Object {
-          "addressBook": Object {},
-          "common": Object {},
-        }
-      }
+      onError={[Function]}
+      onSuccess={[Function]}
     />
     <ReduxForm
+      addressFormLabels={Object {}}
+      backToAddressBookClick={[Function]}
       destroyOnUnmount={true}
       enableReinitialize={true}
       forceUnregisterOnUnmount={false}
@@ -92,12 +59,7 @@ exports[`AddressBook component should renders correctly without any error 1`] = 
       isEdit={false}
       isMakeDefaultDisabled={false}
       keepDirtyOnReinitialize={false}
-      labels={
-        Object {
-          "addressBook": Object {},
-          "common": Object {},
-        }
-      }
+      onSubmit={[Function]}
       persistentSubmitErrors={false}
       pure={true}
       shouldAsyncValidate={[Function]}

@@ -2,6 +2,7 @@
 
 exports[`AddEditAddressContainer should render correctly 1`] = `
 <Styled(AddEditAddress)
+  addressFormLabels={Object {}}
   addressResponse={Object {}}
   backToAddressBookClick={[Function]}
   initialValues={
@@ -11,7 +12,6 @@ exports[`AddEditAddressContainer should render correctly 1`] = `
       "primary": true,
     }
   }
-  isEdit={false}
   isMakeDefaultDisabled={true}
   submitAddressFormAction={[Function]}
   verifyAddressAction={[Function]}

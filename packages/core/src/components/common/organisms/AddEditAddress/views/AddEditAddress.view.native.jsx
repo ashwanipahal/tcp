@@ -8,15 +8,15 @@ import {
 } from '@tcp/core/src/components/features/account/AddressBook/styles/AddressBook.style';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles.native';
-import AddressFormComponent from '../../common/organism/AddressForm/AddressForm';
+import AddressFormComponent from '../../AddressForm/AddressForm';
 
 const AddressBook = props => {
   const {
-    labels,
     submitAddressFormAction,
     verifyAddressAction,
     isEdit,
     isMakeDefaultDisabled,
+    addressFormLabels,
   } = props;
   return (
     <View {...props}>
@@ -25,13 +25,13 @@ const AddressBook = props => {
           <BodyCopy
             fontSize="fs16"
             fontWeight="extrabold"
-            text={labels.acc_lbl_add_address_form_heading}
+            text={addressFormLabels.addressHeading}
           />
         </StyledHeading>
         <UnderlineStyle />
         <AddressFormComponent
           onSubmit={verifyAddressAction}
-          labels={labels}
+          addressFormLabels={addressFormLabels}
           isEdit={isEdit}
           isMakeDefaultDisabled={isMakeDefaultDisabled}
           submitAddressFormAction={submitAddressFormAction}
@@ -42,7 +42,7 @@ const AddressBook = props => {
 };
 
 AddressBook.propTypes = {
-  labels: PropTypes.shape({}).isRequired,
+  addressFormLabels: PropTypes.shape({}).isRequired,
   isEdit: PropTypes.bool,
   isMakeDefaultDisabled: PropTypes.bool,
   submitAddressFormAction: PropTypes.func,
