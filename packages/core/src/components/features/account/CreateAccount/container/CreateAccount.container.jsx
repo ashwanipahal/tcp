@@ -11,7 +11,7 @@ import {
   getError,
   getLabels,
 } from './CreateAccount.selectors';
-import { getUserLoggedInState } from '../../LoginPage/container/LoginPage.selectors';
+import { getUserLoggedInState } from '../../User/container/User.selectors';
 import {
   closeOverlayModal,
   openOverlayModal,

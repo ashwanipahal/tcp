@@ -1,10 +1,10 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import LOGINPAGE_CONSTANTS from '../LoginPage.constants';
-import { setLoginInfo, getUserInfo } from './LoginPage.actions';
+import { setLoginInfo } from './LoginPage.actions';
+import { getUserInfo } from '../../User/container/User.actions';
 import fetchData from '../../../../../service/API';
-import { login, getProfile } from '../../../../../services/abstractors/account';
+import { login } from '../../../../../services/abstractors/account';
 import endpoints from '../../../../../service/endpoint';
-import { validateReduxCache } from '../../../../../utils/cache.util';
 
 const errorLabel = 'Error in API';
 
@@ -18,19 +18,6 @@ export function* loginSaga({ payload }) {
     if (response.success) {
       return yield put(getUserInfo());
     }
-    return yield put(setLoginInfo(response));
-  } catch (err) {
-    return yield put(
-      setLoginInfo({
-        success: false,
-      })
-    );
-  }
-}
-
-export function* getUserInfoSaga() {
-  try {
-    const response = yield call(getProfile, {});
     return yield put(setLoginInfo(response));
   } catch (err) {
     return yield put(
@@ -96,9 +83,7 @@ function* getOrderDetailSaga() {
 }
 
 export function* LoginPageSaga() {
-  const cachedUserInfo = validateReduxCache(getUserInfoSaga);
   yield takeLatest(LOGINPAGE_CONSTANTS.LOGIN, loginSaga);
-  yield takeLatest(LOGINPAGE_CONSTANTS.GET_USER_INFO, cachedUserInfo);
   yield takeLatest('GET_ORDER_DETAIL', getOrderDetailSaga);
   yield takeLatest('GET_USER_DETAIL_POC', getUserInfoPOCSaga);
 }

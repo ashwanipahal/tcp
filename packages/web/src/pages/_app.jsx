@@ -7,10 +7,10 @@ import withReduxSaga from 'next-redux-saga';
 import GlobalStyle from '@tcp/core/styles/globalStyles';
 import getCurrentTheme from '@tcp/core/styles/themes';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
-import { bootstrapData, loadUserProfile } from '@tcp/core/src/reduxStore/actions';
+import { bootstrapData } from '@tcp/core/src/reduxStore/actions';
 import { createAPIConfig } from '@tcp/core/src/utils';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
-import { getLoginState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
+import { getUserInfo } from '@tcp/core/src/components/features/account/User/container/User.actions';
 import { Header, Footer } from '../components/features/content';
 import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
@@ -44,8 +44,8 @@ class TCPWebApp extends App {
           },
         })
       );
-    } else if (!getLoginState(store.getState())) {
-      store.dispatch(loadUserProfile());
+    } else {
+      store.dispatch(getUserInfo());
     }
   };
 

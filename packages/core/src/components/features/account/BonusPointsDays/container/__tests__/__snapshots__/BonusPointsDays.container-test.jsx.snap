@@ -6,6 +6,7 @@ exports[`BonusPointsDaysContainer should render correctly 1`] = `
 <Styled(BonusPointsView)
   bonusData={Object {}}
   bonusDetailsData=""
+  isPlcc={false}
   labels={Object {}}
   view="edit"
 />

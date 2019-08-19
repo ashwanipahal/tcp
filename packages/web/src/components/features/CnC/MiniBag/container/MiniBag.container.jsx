@@ -9,7 +9,7 @@ import { getLabelsMiniBag, getTotalItemCount } from './MiniBag.selectors';
 import {
   getCurrentPointsState,
   getTotalRewardsState,
-} from '../../../../../../../core/src/components/features/account/LoginPage/container/LoginPage.selectors';
+} from '../../../../../../../core/src/components/features/account/User/container/User.selectors';
 
 // @flow
 type Props = {
