@@ -1,10 +1,10 @@
 import React from 'react';
+import { ScrollView } from 'react-native';
 import PropTypes from 'prop-types';
 import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/BagPage/organisms/OrderLedger';
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
 import {
-  WrapperStyle,
   HeadingViewStyle,
   MainSection,
   RowSectionStyle,
@@ -13,14 +13,12 @@ import {
 
 const BagPage = ({ labels, totalCount }) => {
   return (
-    <WrapperStyle>
+    <ScrollView>
       <HeadingViewStyle>
         <HeadingTextStyle>{`${labels.bagHeading} (${totalCount})`}</HeadingTextStyle>
       </HeadingViewStyle>
       <MainSection>
-        <RowSectionStyle>
-          <ProductTileWrapper bagLabels={labels} />
-        </RowSectionStyle>
+        <ProductTileWrapper bagLabels={labels} />
         <RowSectionStyle>
           <OrderLedgerContainer />
         </RowSectionStyle>
@@ -28,7 +26,7 @@ const BagPage = ({ labels, totalCount }) => {
           <CouponAndPromos />
         </RowSectionStyle>
       </MainSection>
-    </WrapperStyle>
+    </ScrollView>
   );
 };
 

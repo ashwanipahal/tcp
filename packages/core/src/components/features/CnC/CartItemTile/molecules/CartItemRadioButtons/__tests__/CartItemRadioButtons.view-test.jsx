@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CartItemRadioButtonsVanilla } from '../views/CartItemRadioButtons';
+import { CartItemRadioButtonsVanilla } from '../views/CartItemRadioButtons.view';
 
 describe('CartItemRadioButtons Component', () => {
   let component;

@@ -10,7 +10,6 @@ exports[`BossBanner Component should render correctly 1`] = `
           "semibold",
         ]
       }
-      locator=""
       text="abc"
       textAlign="center"
     />
@@ -18,7 +17,6 @@ exports[`BossBanner Component should render correctly 1`] = `
   <Styled(View)>
     <Styled(BodyCopy)
       fontSize="fs10"
-      locator=""
       text="def"
       textAlign="center"
     />

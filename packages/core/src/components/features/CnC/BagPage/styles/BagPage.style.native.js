@@ -1,6 +1,8 @@
 import styled from 'styled-components/native';
 
-export const WrapperStyle = styled.View``;
+export const WrapperStyle = styled.View`
+  flex: 1;
+`;
 
 export const HeadingViewStyle = styled.View`
   border-bottom-color: ${props => props.theme.colorPalette.primary.dark};
@@ -25,9 +27,10 @@ export const RowSectionStyle = styled.View`
 `;
 
 export const MainSection = styled.View`
+  flex: 1;
   background: #f3f3f3;
   padding-bottom: 15px;
   margin-bottom: 3px;
 `;
 
-export default { WrapperStyle, HeadingViewStyle, MainSection, RowSectionStyle, HeadingTextStyle };
+export default { HeadingViewStyle, MainSection, RowSectionStyle, HeadingTextStyle };

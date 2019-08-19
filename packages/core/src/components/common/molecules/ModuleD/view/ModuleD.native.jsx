@@ -47,7 +47,7 @@ const renderItem = (item, navigation) => {
 
   const anchorEnable = true;
   return (
-    <Tile tileIndex={index}>
+    <Tile tileIndex={index} key={index.toString()}>
       <Anchor url={link.url} navigation={navigation}>
         <Image
           alt={image.alt}

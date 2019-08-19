@@ -123,6 +123,15 @@ exports[`#ThemeWrapper.container should render correctly 1`] = `
           "PRIMARY": "#4b9fdd",
         },
         "BUTTON": Object {
+          "BLACK": Object {
+            "ALT_FOCUS": "#ffffff",
+            "ALT_HOVER": "#ffffff",
+            "BORDER": "#1a1a1a",
+            "FOCUS": "#ffffff",
+            "HOVER": "#ffffff",
+            "NORMAL": "#1a1a1a",
+            "TEXT": "#ffffff",
+          },
           "BLUE": Object {
             "ALT_FOCUS": "#1f4862",
             "ALT_HOVER": "#1f4862",

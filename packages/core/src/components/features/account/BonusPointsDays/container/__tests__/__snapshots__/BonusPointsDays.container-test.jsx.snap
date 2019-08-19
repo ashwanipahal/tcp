@@ -7,5 +7,6 @@ exports[`BonusPointsDaysContainer should render correctly 1`] = `
   bonusData={Object {}}
   bonusDetailsData=""
   labels={Object {}}
+  view="edit"
 />
 `;

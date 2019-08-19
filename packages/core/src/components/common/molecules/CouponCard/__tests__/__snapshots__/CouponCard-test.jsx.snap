@@ -22,7 +22,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
             color="text.primary"
             component="p"
             data-locator="available_PublicValidityLbl"
-            fontFamily="primary"
+            fontFamily="secondary"
             fontSize="fs12"
             fontWeight="regular"
             letterSpacing="normal"
@@ -30,6 +30,18 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
             textAlign="left"
           />
         </div>
+        <Styled(BodyCopy)
+          className="couponCard__header_expired"
+          color="text.primary"
+          component="p"
+          data-locator="coupon_available_header_expired"
+          fontFamily="secondary"
+          fontSize="fs12"
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          textAlign="left"
+        />
       </div>
       <div
         className="couponCard__body"
@@ -66,7 +78,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
                 $10 OFF On $50
               </Styled(BodyCopy)>
               <Styled(BodyCopy)
-                className={null}
+                className="couponCard__text_style"
                 color="text.primary"
                 component="p"
                 data-locator="coupon_available_cartUseByValidity"
@@ -82,6 +94,7 @@ exports[`CouponCard Component CouponCard should render correctly 1`] = `
             </Styled(BodyCopy)>
             <Styled(Anchor)
               anchorVariation="primary"
+              className="cartDetailsLink"
               data-locator="coupon_available_cartDetailsLink"
               fontSize="fs10"
               fontSizeVariation="small"

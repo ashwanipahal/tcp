@@ -1,13 +1,12 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { Col, Row } from '@tcp/core/src/components/common/atoms';
+import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import OverlayModal from '@tcp/core/src/components/features/OverlayModal';
 import { HeaderTopNav, HeaderPromo, HeaderMiddleNav } from '../molecules';
-import headerStyles from '../Header.style';
-
-const { HeaderLoyalty } = headerStyles;
+import style from '../Header.style';
 
 const Header = ({
+  className,
   brandTabs,
   promoMessageWrapper,
   headerPromoArea,
@@ -18,7 +17,7 @@ const Header = ({
   openOverlay,
 }) => {
   return (
-    <header>
+    <header className={className}>
       <HeaderTopNav
         className="header-topnav"
         brandTabs={brandTabs}
@@ -37,26 +36,13 @@ const Header = ({
         dataPromo={headerPromoArea}
       />
       <HeaderPromo className="header__promo-area--desktop" dataPromo={headerPromoArea} />
-      <HeaderLoyalty className="header-loyalty">
-        <Row>
-          <Col
-            className="header-loyalty__promo-loyalty"
-            colSize={{
-              large: 12,
-              medium: 8,
-              small: 6,
-            }}
-          >
-            Loyalty Promo banners
-          </Col>
-        </Row>
-      </HeaderLoyalty>
       <OverlayModal />
     </header>
   );
 };
 
 Header.propTypes = {
+  className: PropTypes.string.isRequired,
   brandTabs: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   promoMessageWrapper: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   headerPromoArea: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -67,4 +53,4 @@ Header.propTypes = {
   openOverlay: PropTypes.func.isRequired,
 };
 
-export default Header;
+export default withStyles(Header, style);

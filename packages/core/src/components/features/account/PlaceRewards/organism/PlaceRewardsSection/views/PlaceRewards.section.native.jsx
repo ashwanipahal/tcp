@@ -49,7 +49,7 @@ const PlaceRewardsSection = ({ labels, className }) => {
           <BonusPointsDays />
         </StyledView>
         <StyledViewLargeMargin>
-          <Text>Fourth</Text>
+          <Text>FPO</Text>
         </StyledViewLargeMargin>
         <MyRewards labels={labels} />
       </ScrollView>
