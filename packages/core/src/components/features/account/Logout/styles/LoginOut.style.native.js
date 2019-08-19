@@ -10,7 +10,7 @@ const logoutButtonStyle = props => {
   `;
 };
 
-const LogutWrapper = styled.View`
+const LogoutWrapper = styled.View`
   ${logoutButtonStyle}
 `;
 
@@ -41,4 +41,4 @@ const LoggedinTextWrapper = styled.View`
   ${logggedInText}
 `;
 
-export { LogutWrapper, LoggedinWrapper, LoggedinTextWrapper };
+export { LogoutWrapper, LoggedinWrapper, LoggedinTextWrapper };

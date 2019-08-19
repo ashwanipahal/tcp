@@ -38,8 +38,9 @@ export class Account extends React.PureComponent<Props, State> {
 
   componentDidUpdate(prevProps) {
     const { isUserLoggedIn, closeOverlay } = this.props;
+    const hasMobile = isMobileApp();
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
-      if (isMobileApp) {
+      if (hasMobile) {
         this.navigattePage();
       } else {
         closeOverlay();

@@ -18,7 +18,7 @@ import {
 } from '../../LoginPage/molecules/LoginForm/LoginForm.style.native';
 
 import {
-  LogutWrapper,
+  LogoutWrapper,
   LoggedinWrapper,
   LoggedinTextWrapper,
 } from '../../Logout/styles/LoginOut.style.native';
@@ -151,7 +151,11 @@ class AccountOverview extends PureComponent<Props> {
                     mobileFontFamily={['secondary']}
                     fontWeight="extrabold"
                     fontSize="fs16"
-                    text={getComponentId.login ? 'LOGIN' : 'CREATE ACCOUNT'}
+                    text={
+                      getComponentId.login
+                        ? `${labels.lbl_overview_login_text}`
+                        : `${labels.lbl_overview_createAccount}`
+                    }
                   />
                 </ModalHeading>
                 <LineWrapper>
@@ -194,7 +198,7 @@ class AccountOverview extends PureComponent<Props> {
           </React.Fragment>
         )}
 
-        <LogutWrapper>{isUserLoggedIn && <LogOutPageContainer labels={labels} />}</LogutWrapper>
+        <LogoutWrapper>{isUserLoggedIn && <LogOutPageContainer labels={labels} />}</LogoutWrapper>
         <UnderlineStyle />
       </View>
     );
