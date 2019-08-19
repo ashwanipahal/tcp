@@ -8,6 +8,21 @@ import { getAddGiftCardResponse, getAddGiftCardError } from './AddGiftCard.selec
 import utils, { isMobileApp } from '../../../../../../utils';
 
 class AddGiftCardContainer extends React.Component {
+  componentDidMount() {
+    const { addGiftCardResponse, toggleModal } = this.props;
+    if (isMobileApp() && addGiftCardResponse === 'success') {
+      toggleModal();
+      const { getCardListAction } = this.props;
+      return getCardListAction();
+    }
+
+    if (addGiftCardResponse === 'success') {
+      return this.goBackToPayment();
+    }
+
+    return null;
+  }
+
   componentWillUnmount() {
     const { getAddGiftCardErr } = this.props;
     if (getAddGiftCardErr) {
@@ -22,24 +37,7 @@ class AddGiftCardContainer extends React.Component {
   };
 
   render() {
-    const {
-      onAddGiftCardClick,
-      addGiftCardResponse,
-      getAddGiftCardErr,
-      labels,
-      toggleModal,
-    } = this.props;
-
-    if (isMobileApp() && addGiftCardResponse === 'success') {
-      toggleModal();
-      const { getCardListAction } = this.props;
-      getCardListAction();
-    }
-
-    if (addGiftCardResponse === 'success') {
-      return this.goBackToPayment();
-    }
-
+    const { onAddGiftCardClick, getAddGiftCardErr, labels, toggleModal } = this.props;
     return (
       <AddGiftCardComponent
         onAddGiftCardClick={onAddGiftCardClick}
