@@ -67,11 +67,6 @@ export default css`
     &::-webkit-scrollbar {
       display: none;
     }
-
-    @media ${props => props.theme.mediaQuery.medium} {
-      display: block;
-      scrollbar-width: auto;
-    }
   }
 
   .stacked-cta-wrapper-class {

@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 
 const returnModule = mod => mod.default;
 
-const SlotE = dynamic({
+const SlotF = dynamic({
   modules: () => ({
     ModuleD: () => import('@tcp/core/src/components/common/molecules/ModuleD').then(returnModule),
     ModuleH: () => import('@tcp/core/src/components/common/molecules/ModuleH').then(returnModule),
@@ -34,12 +34,12 @@ const SlotE = dynamic({
   },
 });
 
-SlotE.defaultProps = {
+SlotF.defaultProps = {
   name: null,
 };
 
-SlotE.propTypes = {
+SlotF.propTypes = {
   name: PropTypes.string,
 };
 
-export default SlotE;
+export default SlotF;

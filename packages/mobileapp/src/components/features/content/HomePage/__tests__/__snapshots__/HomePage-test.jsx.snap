@@ -10,7 +10,7 @@ exports[`HomePageView should render correctly 1`] = `
   />
   <SlotC />
   <SlotD />
-  <SlotD
+  <SlotF
     bgColor="#f53d3d"
     ctaItems={
       Array [

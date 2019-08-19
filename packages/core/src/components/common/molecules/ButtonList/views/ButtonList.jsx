@@ -120,6 +120,8 @@ const ButtonList = (props: Props) => {
   let compWrapper = '';
   let compProps = {};
 
+  console.info('buttonListVariation', buttonListVariation);
+
   if (buttonListVariation === 'stackedCTAList') {
     compWrapper = 'stack-comp-wrapper';
     compProps = {
