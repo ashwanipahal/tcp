@@ -1,6 +1,6 @@
 import mock from './mock';
 import handler from '../../../handler';
-import { getAPIConfig, isMobileApp } from '../../../../utils';
+import { getAPIConfig, isMobileApp, getCacheKeyForRedis } from '../../../../utils';
 import { defaultBrand, defaultChannel, defaultCountry } from '../../../api.constants';
 import { DEFAULT_XAPP_CONFIG_TTL } from '../../../../config/site.config';
 import { getDataFromRedis, setDataInRedis } from '../../../../utils/redis.util';
@@ -27,7 +27,12 @@ const Abstractor = {
       .then(Abstractor.setDataInCache);
   },
   setDataInCache: data => {
-    const { CACHE_EXP_MODIFIER, CACHE_EXP_TIME, CACHE_IDENTIFIER } = DEFAULT_XAPP_CONFIG_TTL;
+    const {
+      CACHE_EXP_MODIFIER,
+      CACHE_EXP_TIME,
+      CACHE_IDENTIFIER: cacheKey,
+    } = DEFAULT_XAPP_CONFIG_TTL;
+    const CACHE_IDENTIFIER = getCacheKeyForRedis(cacheKey);
     if (!isMobileApp()) {
       setDataInRedis({
         data,
@@ -42,7 +47,8 @@ const Abstractor = {
       return null;
     }
     const { CACHE_IDENTIFIER } = DEFAULT_XAPP_CONFIG_TTL;
-    return getDataFromRedis(CACHE_IDENTIFIER);
+    const cacheKey = getCacheKeyForRedis(CACHE_IDENTIFIER);
+    return getDataFromRedis(cacheKey);
   },
   getMock: () => {
     return Abstractor.processData(mock);

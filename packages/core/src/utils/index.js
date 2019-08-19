@@ -29,4 +29,5 @@ export {
   getAPIConfig,
   createAPIConfig,
   isCanada,
+  getCacheKeyForRedis,
 } from './utils';

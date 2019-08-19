@@ -39,15 +39,16 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv) => {
   const apiEndpoint = processEnv.RWD_WEB_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
   return {
     traceIdCount: 0,
+    envId: processEnv.RWD_WEB_ENV_ID,
     langId: processEnv.RWD_WEB_LANGID || apiSiteInfo.langId,
     MELISSA_KEY: processEnv.RWD_WEB_MELISSA_KEY || apiSiteInfo.MELISSA_KEY,
     BV_API_KEY: processEnv.RWD_WEB_BV_API_KEY || apiSiteInfo.BV_API_KEY,
     assetHost: processEnv.RWD_WEB_ASSETHOST || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
-    CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
-    CANDID_API_URL: process.env.RWD_WEB_CANDID_URL,
-    googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
+    CANDID_API_KEY: processEnv.RWD_WEB_CANDID_API_KEY,
+    CANDID_API_URL: processEnv.RWD_WEB_CANDID_URL,
+    googleApiKey: processEnv.RWD_WEB_GOOGLE_MAPS_API_KEY,
   };
 };
 
@@ -97,6 +98,8 @@ export const getAPIConfig = () => {
   if (isMobileApp()) {
     // TODO - need to configure it for mobile app in similar way of Web - Overriding it for now
     apiConfig = {
+      channelId: 'APP',
+      envId: 'DEV',
       brandId: 'tcp',
       brandIdCMS: 'TCP',
       traceIdCount: 0,
@@ -129,6 +132,12 @@ export const getAPIConfig = () => {
   return apiConfig;
 };
 
+export const getCacheKeyForRedis = cacheId => {
+  const { brandId, siteId, channelId = 'WEB', envId } = getAPIConfig();
+  const keySep = '_';
+  return `${envId}${keySep}${brandId}${keySep}${siteId}${keySep}${channelId}${keySep}${cacheId}`;
+};
+
 export const getBrand = () => {
   return getAPIConfig().brandId;
 };
@@ -159,4 +168,5 @@ export default {
   isGymboree,
   isTCP,
   isCanada,
+  getCacheKeyForRedis,
 };
