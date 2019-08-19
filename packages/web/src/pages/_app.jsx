@@ -15,6 +15,7 @@ import { Header, Footer } from '../components/features/content';
 import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
+import APP_CONSTANTS from './App.constants';
 
 class TCPWebApp extends App {
   static async getInitialProps({ Component, ctx }) {
@@ -89,9 +90,10 @@ class TCPWebApp extends App {
   render() {
     const { Component, pageProps, store, router } = this.props;
     let isNonCheckoutPage = true;
-    const checkURL = ['pickup', 'shipping', 'billing', 'review'];
-    for (let i = 0; i < checkURL.length; i += 1) {
-      if (router.asPath.indexOf(checkURL[i]) > -1) {
+    const { PICKUP, SHIPPING, BILLING, REVIEW } = APP_CONSTANTS;
+    const checkoutPageURL = [PICKUP, SHIPPING, BILLING, REVIEW];
+    for (let i = 0; i < checkoutPageURL.length; i += 1) {
+      if (router.asPath.indexOf(checkoutPageURL[i]) > -1) {
         isNonCheckoutPage = false;
       }
     }
