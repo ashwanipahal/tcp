@@ -17,6 +17,8 @@ const LoginView = ({
   openModal,
   currentForm,
   queryParams,
+  setLoginModalMountState,
+  favlink
 }) => {
   return (
     <LoginSection
@@ -34,6 +36,8 @@ const LoginView = ({
       openModal={openModal}
       currentForm={currentForm}
       queryParams={queryParams}
+      setLoginModalMountState={setLoginModalMountState}
+      favlink="favorites"
     />
   );
 };

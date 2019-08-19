@@ -2,6 +2,8 @@ import React from 'react';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import LoginPageContainer from '@tcp/core/src/components/features/account/LoginPage';
+import CreateAccount from '../../CreateAccount';
+
 // @flow
 
 type Props = {
@@ -12,6 +14,14 @@ type Props = {
 };
 
 class OpenLoginModal extends React.Component<Props> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentForm: 'login',
+      component: 'login',
+    };
+  }
+
   onConfirm = () => {
     const { data, onDeleteCard } = this.props;
     const { description } = data;
@@ -23,9 +33,24 @@ class OpenLoginModal extends React.Component<Props> {
     setLoginModalMountState({ state: false });
   };
 
+  openForgotPasswordModal = params => {
+    const { setLoginModalMountState } = this.props;
+    this.setState(
+      {
+        component: params.component,
+        currentForm: params.componentProps
+          ? params.componentProps.currentForm
+          : '',
+      },
+      () => {
+        setLoginModalMountState({ state: true });
+      }
+    );
+  };
+
   render() {
-    const { className, openState } = this.props;
-    debugger;
+    const { className, openState, setLoginModalMountState } = this.props;
+    const { currentForm } = this.state;
     return (
       <Modal
         fixedWidth
@@ -37,7 +62,18 @@ class OpenLoginModal extends React.Component<Props> {
         maxWidth="690px"
         minHeight="340px"
       >
-        <LoginPageContainer />
+        {this.state.component === 'login' ? (
+          <LoginPageContainer
+            favlink="favorites"
+            currentForm={currentForm}
+            setLoginModalMountState={this.openForgotPasswordModal}
+          />
+        ) : (
+          <CreateAccount
+            currentForm={currentForm}
+            setLoginModalMountState={this.openForgotPasswordModal}
+          />
+        )}
       </Modal>
     );
   }

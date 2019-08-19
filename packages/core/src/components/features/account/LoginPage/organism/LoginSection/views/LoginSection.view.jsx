@@ -17,7 +17,11 @@ class LoginSection extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
     this.isCanada = isCanada();
+    this.state = {
+      checkLoginModal: false,
+    };
   }
+  
 
   componentDidUpdate(prevProps) {
     const { currentForm } = this.props;
@@ -29,12 +33,15 @@ class LoginSection extends React.PureComponent<Props> {
 
   showForgotPasswordForm = () => {
     const { openModal } = this.props;
-    openModal({
-      component: 'login',
-      componentProps: {
-        currentForm: constants.PAGE_TYPE.FORGOT_PASSWORD,
-      },
-    });
+    const {checkLoginModal} = this.state;
+      openModal({
+        component: 'login',
+        componentProps: {
+          currentForm: constants.PAGE_TYPE.FORGOT_PASSWORD,
+        },
+      });
+  
+   
   };
 
   showLoginForm = () => {
@@ -66,8 +73,9 @@ class LoginSection extends React.PureComponent<Props> {
       className,
       queryParams,
       currentForm,
+      favlink
     } = this.props;
-
+    const  { checkLoginModal } = this.state;
     return (
       <Row className={className}>
         <Col
@@ -78,7 +86,7 @@ class LoginSection extends React.PureComponent<Props> {
           }}
           className="elem-pt-XXL elem-pb-XXL  elem-pl-LRG elem-pr-LRG"
         >
-          {(!currentForm || currentForm === constants.PAGE_TYPE.LOGIN) && (
+          {(!currentForm || currentForm === constants.PAGE_TYPE.LOGIN)  && (
             <React.Fragment>
               <LoginTopSection labels={labels} className="elem-mb-LRG" isCanada={this.isCanada} />
               <LoginForm
@@ -94,7 +102,7 @@ class LoginSection extends React.PureComponent<Props> {
               />
             </React.Fragment>
           )}
-          {currentForm === constants.PAGE_TYPE.FORGOT_PASSWORD && (
+          {currentForm === constants.PAGE_TYPE.FORGOT_PASSWORD  &&  (
             <ForgotPasswordContainer showForgotPasswordForm={this.showLoginForm} labels={labels} />
           )}
           {currentForm === constants.PAGE_TYPE.RESET_PASSWORD && (

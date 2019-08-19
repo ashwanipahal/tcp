@@ -61,8 +61,12 @@ class LoginPageContainer extends React.PureComponent {
   }
 
   openModal = params => {
-    const { openOverlay } = this.props;
-    openOverlay(params);
+    const { openOverlay, setLoginModalMountState } = this.props;
+    if(setLoginModalMountState) {
+      setLoginModalMountState(params);
+    } else {
+      openOverlay(params);
+    }
   };
 
   render() {
@@ -80,6 +84,8 @@ class LoginPageContainer extends React.PureComponent {
       successFullResetEmail,
       currentForm,
       queryParams,
+      setLoginModalMountState,
+      favlink
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage || labels.login.lbl_login_error : '';
     const initialValues = {
@@ -102,6 +108,8 @@ class LoginPageContainer extends React.PureComponent {
         successFullResetEmail={successFullResetEmail}
         currentForm={currentForm}
         queryParams={queryParams}
+        setLoginModalMountState={setLoginModalMountState}
+        favlink="favorites"
       />
     );
   }
