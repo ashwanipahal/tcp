@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import BonusPointsSection from '../../../organism/BonusPointsSection';
-import Modal from '../../../../../../common/molecules/Modal';
-import RichText from '../../../../../../common/atoms/RichText';
+import Modal from '../../../../../molecules/Modal';
+import RichText from '../../../../../atoms/RichText';
 import RichTextWrapper from '../styles/BonusPoints.view.style.native';
 
 class BonusPointsView extends React.Component {

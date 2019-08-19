@@ -9,7 +9,7 @@ import {
   getBonusDetailsData,
   getBonusPointsSwitch,
 } from './BonusPointsDays.selectors';
-import { isPlccUser } from '../../LoginPage/container/LoginPage.selectors';
+import { isPlccUser } from '../../../../features/account/LoginPage/container/LoginPage.selectors';
 import BonusPointsView from '../views/BonusPointsView';
 import { isCanada } from '../../../../../utils';
 import constants from '../BonusPointsDays.constants';

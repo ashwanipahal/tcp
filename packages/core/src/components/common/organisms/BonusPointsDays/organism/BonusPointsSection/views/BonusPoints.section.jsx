@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import Anchor from '../../../../../../common/atoms/Anchor';
-import Row from '../../../../../../common/atoms/Row';
-import Col from '../../../../../../common/atoms/Col';
-import withStyles from '../../../../../../common/hoc/withStyles';
+import BodyCopy from '../../../../../atoms/BodyCopy';
+import Anchor from '../../../../../atoms/Anchor';
+import Row from '../../../../../atoms/Row';
+import Col from '../../../../../atoms/Col';
+import withStyles from '../../../../../hoc/withStyles';
 import styles from '../styles/BonusPoints.section.style';
 import BonusPointsAvailability from '../../../molecules/BonusPointsAvailability';
-import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
+import CollapsibleContainer from '../../../../../molecules/CollapsibleContainer';
 
 const getButtonText = ({
   appliedToBagBonusPointDays,

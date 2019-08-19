@@ -8,6 +8,7 @@ import Heading from '../../../../common/atoms/Heading';
 import Row from '../../../../common/atoms/Row';
 import Col from '../../../../common/atoms/Col';
 import AddedToBagActions from '../../AddedToBagActions';
+import BonusPointsDays from '../../../../common/organisms/BonusPointsDays';
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
 
 // @flow
@@ -50,6 +51,7 @@ const BagPageView = ({ className, labels, totalCount, orderItemsCount }: Props) 
                 showAddTobag={showAddTobag}
                 inheritedStyles={addedToBagActionsStyles}
               />
+              <BonusPointsDays />
               <CouponAndPromos />
             </Col>
           )}

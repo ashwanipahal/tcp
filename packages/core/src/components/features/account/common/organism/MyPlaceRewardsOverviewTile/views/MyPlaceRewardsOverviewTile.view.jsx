@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AccountOverviewTile from '../../../../../../common/molecules/AccountOverviewTile';
 import CouponList from '../molecules/CouponList';
-import BonusPointsDays from '../../../../BonusPointsDays';
+import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays';
 import Anchor from '../../../../../../common/atoms/Anchor';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy/views/BodyCopy';
 import withStyles from '../../../../../../common/hoc/withStyles';
