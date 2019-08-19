@@ -8,14 +8,9 @@ import errorBoundary from '../../../hoc/errorBoundary';
 
 import ModuleAGymCarousel from '../../ModuleAGymCarousel';
 import ModuleATcpCarousel from '../../ModuleATcpCarousel';
+import config from '../ModuleA.config';
 
-// TODO: keys will be changed once we get the actual data from CMS
-const ctaTypes = {
-  stackedCTAList: 'stackedCTAList',
-  linkCTAList: 'linkCTAList',
-  scrollCTAList: 'scrollCTAList',
-  imageCTAList: 'imageCTAList',
-};
+const { ctaTypes } = config;
 
 const ModuleA = props => {
   const {
@@ -25,7 +20,7 @@ const ModuleA = props => {
   } = props;
 
   const ctaType = ctaTypes[set.val];
-  console.info('====', ctaType);
+
   return (
     <Row className={`${className} moduleA`} fullBleed={{ small: true, medium: true, large: false }}>
       <Col

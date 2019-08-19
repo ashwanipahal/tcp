@@ -7,7 +7,7 @@ const images = [
   'https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg',
   'https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg',
 ];
-const ctaTypes = ['stackedCTAList', 'linkCTAList', 'scrollCTAList', 'imageCTAList'];
+const ctaTypes = ['stackedCTAButtons', 'linkList', 'CTAButtonCarousel', 'divImageCTACarousel'];
 // eslint-disable-next-line no-plusplus
 for (let i = 1; i <= totalImageSlides; i++) {
   // eslint-disable-next-line no-unused-vars
