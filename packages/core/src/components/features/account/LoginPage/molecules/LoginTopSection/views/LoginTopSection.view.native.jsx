@@ -19,7 +19,7 @@ import {
  */
 const LoginTopSection = props => {
   const { labels } = props;
-  const imgStyle = { alignSelf: 'center' };
+  const imgStyle = { alignSelf: 'center', marginTop: 20 };
   return (
     <View {...props}>
       <ImageComp source={TheMarketPlaceLogo} width={186} height={60} style={imgStyle} />

@@ -24,6 +24,7 @@ const styles = {
 
   forgotPasswordStyle: {
     marginTop: 10,
+    textDecorationColor: '#ff0000',
   },
   inputCheckBoxStyle: {
     width: '90%',
@@ -123,6 +124,9 @@ class LoginForm extends React.PureComponent<Props> {
           onPress={handleSubmit(onSubmit)}
         />
         <Anchor
+          style={styles.underline}
+          class="underlink"
+          underlineBlue
           fontSizeVariation="xlarge"
           anchorVariation="secondary"
           text={labels.login.lbl_login_forgetPasswordCTA}

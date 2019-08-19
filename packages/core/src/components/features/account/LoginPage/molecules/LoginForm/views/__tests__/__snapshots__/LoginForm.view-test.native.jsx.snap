@@ -165,15 +165,18 @@ exports[`LoginForm component should renders correctly 1`] = `
   />
   <Styled(Anchor)
     anchorVariation="secondary"
+    class="underlink"
     customStyle={
       Object {
         "marginTop": 10,
+        "textDecorationColor": "#ff0000",
       }
     }
     fontSizeVariation="xlarge"
     locator=""
     onPress={[Function]}
     text=""
+    underlineBlue={true}
     visible={false}
   />
   <Styled(LineComp)
