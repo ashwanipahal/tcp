@@ -32,6 +32,7 @@ exports[`LoginTopSectionVanilla component should renders correctly 1`] = `
   <Styled(Text) />
   <Styled(Text) />
   <Styled(Text) />
+  <Styled(Text) />
   <Styled(LineComp)
     borderColor={null}
     borderWidth={0.65}

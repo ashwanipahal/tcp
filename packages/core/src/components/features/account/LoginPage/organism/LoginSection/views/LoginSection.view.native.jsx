@@ -96,7 +96,8 @@ class LoginSection extends PureComponent<Props> {
         )}
         <FormStyleView>
           <DescriptionStyle>
-            <Text>{labels.login.lbl_login_createAccountHelp}</Text>
+            <Text>{labels.login.lbl_login_createAccountHelp_1}</Text>
+            <Text>{labels.login.lbl_login_createAccountHelp_2}</Text>
           </DescriptionStyle>
           <CustomButton
             color={colorPallete.text.secondary}

@@ -140,13 +140,6 @@ exports[`LoginForm component should renders correctly 1`] = `
       name="userTouchId"
       rightText="User Touch ID"
     />
-    <Field
-      component={[Function]}
-      dataLocator="savePlcc"
-      disabled={false}
-      marginTop={13}
-      name="savePlcc"
-    />
   </View>
   <Styled(CustomButton)
     buttonVariation="variable-width"

@@ -105,14 +105,6 @@ class LoginForm extends React.PureComponent<Props> {
             disabled={false}
             rightText="User Touch ID"
           />
-          <Field
-            name="savePlcc"
-            component={InputCheckbox}
-            dataLocator="savePlcc"
-            disabled={false}
-            rightText={labels.login.lbl_login_saveMyPlace}
-            marginTop={13}
-          />
         </View>
 
         <CustomButton
