@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProfileInformation component should render correctly 1`] = `
+<StyledComponent
+  forwardedComponent={
+    Object {
+      "$$typeof": Symbol(react.forward_ref),
+      "attrs": Array [],
+      "componentStyle": ComponentStyle {
+        "componentId": "sc-EHOje",
+        "isStatic": false,
+        "rules": Array [
+          "
+  ",
+          "
+  .profileInfoCol {
+    display: flex;
+  }
+  .profileInfoSeparator {
+    border: 1px solid ",
+          [Function],
+          ";
+  }
+",
+          ";
+",
+        ],
+      },
+      "displayName": "Styled(ProfileInformation)",
+      "foldedComponentIds": Array [],
+      "render": [Function],
+      "styledComponentId": "sc-EHOje",
+      "target": [Function],
+      "toString": [Function],
+      "warnTooManyClasses": [Function],
+      "withComponent": [Function],
+    }
+  }
+  forwardedRef={null}
+  labels={Object {}}
+/>
+`;
