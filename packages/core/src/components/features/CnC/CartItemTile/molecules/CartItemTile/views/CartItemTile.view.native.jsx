@@ -40,7 +40,7 @@ const ProductInformation = props => {
             data-locator={getLocator('cart_item_image')}
             source={{ uri: endpoints.global.baseURI + productDetail.itemInfo.imagePath }}
           />
-          {productDetail.miscInfo.availability !== 'SOLDOUT' && (
+          {productDetail.miscInfo.availability === 'SOLDOUT' && (
             <SoldOutLabel>
               <BodyCopy
                 fontFamily="secondary"
