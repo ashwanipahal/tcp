@@ -18,7 +18,7 @@ import VenmoCards from '../../../molecules/VenmoCards';
 import DeleteModal from '../../../molecules/DeleteModal';
 import { getIconCard } from '../../../../../../../utils/index.native';
 import ModalNative from '../../../../../../common/molecules/Modal';
-import AddGiftCardContainer from '../../../AddGiftCard/container/AddGiftCard.container.native';
+import AddGiftCardContainer from '../../../AddGiftCard/container/AddGiftCard.container';
 import LineComp from '../../../../../../common/atoms/Line';
 
 class PaymentView extends React.Component<Props> {
