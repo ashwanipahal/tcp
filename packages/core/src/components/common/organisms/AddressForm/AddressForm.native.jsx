@@ -34,6 +34,7 @@ type Props = {
   addressFormLabels: object,
   isEdit?: boolean,
   isMakeDefaultDisabled?: boolean,
+  onCancel: any,
 };
 
 type State = {
@@ -71,6 +72,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
       isEdit,
       isMakeDefaultDisabled,
       submitAddressFormAction,
+      onCancel,
     } = this.props;
     const { country, dropDownItem } = this.state;
     return (
@@ -198,8 +200,7 @@ export class AddressForm extends React.PureComponent<Props, State> {
           <EmptyView />
           <Button
             fill="WHITE"
-            type="submit"
-            onPress={() => null}
+            onPress={onCancel}
             buttonVariation="variable-width"
             text={addressFormLabels.cancel}
             style={CancelButton}

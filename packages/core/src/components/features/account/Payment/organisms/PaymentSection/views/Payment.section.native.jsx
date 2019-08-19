@@ -9,6 +9,7 @@ import Cards from '../../../molecules/Cards';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import VenmoCards from '../../../molecules/VenmoCards';
 import DeleteModal from '../../../molecules/DeleteModal';
+import AddEditPaymentModal from '../../../molecules/AddEditPaymentModal';
 import { getIconCard } from '../../../../../../../utils/index.native';
 
 class PaymentView extends React.Component<Props> {
@@ -23,8 +24,11 @@ class PaymentView extends React.Component<Props> {
     checkbalanceValueInfo: PropTypes.shape({}),
     onDeleteCard: PropTypes.shape({}),
     setDeleteModalMountState: PropTypes.bool,
+    setUpdateModalMountState: PropTypes.bool,
     setDeleteModalMountedState: PropTypes.bool,
+    setUpdateModalMountedState: PropTypes.bool,
     deleteModalMountedState: PropTypes.bool,
+    updateModalMountedState: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -39,7 +43,10 @@ class PaymentView extends React.Component<Props> {
     onDeleteCard: {},
     setDeleteModalMountState: false,
     setDeleteModalMountedState: false,
+    setUpdateModalMountedState: false,
     deleteModalMountedState: false,
+    updateModalMountedState: false,
+    setUpdateModalMountState: false,
   };
 
   cardIconMapping = {
@@ -56,6 +63,7 @@ class PaymentView extends React.Component<Props> {
     super(props);
     this.state = {
       setDeleteModalMountedState: false,
+      setUpdateModalMountedState: false,
       selectedCard: {},
     };
   }
@@ -78,6 +86,13 @@ class PaymentView extends React.Component<Props> {
     });
   };
 
+  setUpdateModalMountState = () => {
+    const { setUpdateModalMountedState } = this.state;
+    this.setState({
+      setUpdateModalMountedState: !setUpdateModalMountedState,
+    });
+  };
+
   onConfirm = () => {
     const { onDeleteCard } = this.props;
     const { selectedCard } = this.state;
@@ -85,7 +100,10 @@ class PaymentView extends React.Component<Props> {
   };
 
   onClose = () => {
-    this.setDeleteModalMountState({ setDeleteModalMountedState: false });
+    this.setDeleteModalMountState({
+      setDeleteModalMountedState: false,
+      setUpdateModalMountedState: false,
+    });
   };
 
   render() {
@@ -98,8 +116,9 @@ class PaymentView extends React.Component<Props> {
       venmoCardList,
       onGetBalanceCard,
       checkbalanceValueInfo,
+      updateCardList,
     } = this.props;
-    const { setDeleteModalMountedState, selectedCard } = this.state;
+    const { setDeleteModalMountedState, setUpdateModalMountedState, selectedCard } = this.state;
     let dto = {};
     const cardImg = getIconCard(this.cardIconMapping[selectedCard.ccBrand]);
     if (selectedCard.ccType === 'GiftCard') {
@@ -107,6 +126,7 @@ class PaymentView extends React.Component<Props> {
         cardDescription: labels.paymentGC.lbl_payment_modalGCHeading,
         cardImage: cardImg,
         cardDetail: `${labels.paymentGC.lbl_payment_cardNum}${selectedCard.accountNo.slice(-4)}`,
+        accountNo: selectedCard.accountNo,
       };
     } else if (selectedCard.ccType === 'VENMO') {
       dto = {
@@ -119,6 +139,7 @@ class PaymentView extends React.Component<Props> {
         cardDescription: labels.paymentGC.lbl_payment_modalCCHeading,
         cardImage: cardImg,
         cardDetail: `${labels.paymentGC.lbl_payment_cardNum} ${selectedCard.accountNo}`,
+        accountNo: selectedCard.accountNo,
       };
     }
     return (
@@ -145,6 +166,7 @@ class PaymentView extends React.Component<Props> {
               cardList={creditCardList}
               setDefaultPaymentMethod={setDefaultPaymentMethod}
               toggleModal={this.setDeleteModalMountState}
+              openUpdateModal={this.setUpdateModalMountState}
               setSelectedCard={this.setSelectedCard}
             />
           )}
@@ -181,6 +203,16 @@ class PaymentView extends React.Component<Props> {
               toggleModal={this.setDeleteModalMountState}
               onConfirm={this.onConfirm}
               onClose={this.onClose}
+            />
+          )}
+          {setUpdateModalMountedState && (
+            <AddEditPaymentModal
+              dto={dto}
+              labels={labels}
+              setSelectedCard={this.setSelectedCard}
+              toggleModal={this.setUpdateModalMountState}
+              setUpdateModalMountedState={setUpdateModalMountedState}
+              updateCardList={updateCardList}
             />
           )}
         </ScrollView>

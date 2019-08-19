@@ -20,6 +20,9 @@ exports[`Payment View should render correctly 1`] = `
   setDefaultPaymentMethod={[Function]}
   setDeleteModalMountState={false}
   setDeleteModalMountedState={false}
+  setUpdateModalMountState={false}
+  setUpdateModalMountedState={false}
+  updateModalMountedState={false}
   venmoCardList={Object {}}
 >
   <ScrollViewMock
@@ -57,6 +60,7 @@ exports[`Payment View should render correctly 1`] = `
         }
       }
       onGetBalanceCard={null}
+      openUpdateModal={[Function]}
       setDefaultPaymentMethod={[Function]}
       setSelectedCard={[Function]}
       toggleModal={[Function]}
@@ -77,6 +81,7 @@ exports[`Payment View should render correctly 1`] = `
         }
       }
       onGetBalanceCard={[Function]}
+      openUpdateModal={null}
       setDefaultPaymentMethod={null}
       setSelectedCard={[Function]}
       toggleModal={[Function]}
@@ -183,7 +188,10 @@ exports[`Payment View should render correctly with cardList 1`] = `
   setDefaultPaymentMethod={[Function]}
   setDeleteModalMountState={false}
   setDeleteModalMountedState={false}
+  setUpdateModalMountState={false}
+  setUpdateModalMountedState={false}
   showNotification="success"
+  updateModalMountedState={false}
   venmoCardList={Object {}}
 >
   <ScrollViewMock
@@ -247,6 +255,7 @@ exports[`Payment View should render correctly with cardList 1`] = `
         }
       }
       onGetBalanceCard={null}
+      openUpdateModal={[Function]}
       setDefaultPaymentMethod={[Function]}
       setSelectedCard={[Function]}
       toggleModal={[Function]}
@@ -293,6 +302,7 @@ exports[`Payment View should render correctly with cardList 1`] = `
         }
       }
       onGetBalanceCard={[Function]}
+      openUpdateModal={null}
       setDefaultPaymentMethod={null}
       setSelectedCard={[Function]}
       toggleModal={[Function]}

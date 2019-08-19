@@ -18,6 +18,7 @@ exports[`CardList Component should render correctly 1`] = `
     }
   }
   onGetBalanceCard={null}
+  openUpdateModal={null}
   setDefaultPaymentMethod={[MockFunction]}
   setSelectedCard={null}
   toggleModal={null}
@@ -41,6 +42,7 @@ exports[`CardList Component should render correctly 1`] = `
       fill="BLUE"
       fullWidth=""
       locator=""
+      onPress={[Function]}
       text=""
       url=""
     />
@@ -92,6 +94,7 @@ exports[`CardList Component should render correctly if list is present 1`] = `
     }
   }
   onGetBalanceCard={null}
+  openUpdateModal={null}
   setDefaultPaymentMethod={[MockFunction]}
   setSelectedCard={null}
   toggleModal={null}
@@ -106,6 +109,7 @@ exports[`CardList Component should render correctly if list is present 1`] = `
       fill="BLUE"
       fullWidth=""
       locator=""
+      onPress={[Function]}
       text=""
       url=""
     />
@@ -150,6 +154,7 @@ exports[`CardList Component should render correctly if list is present 1`] = `
       }
     }
     onGetBalanceCard={null}
+    openUpdateModal={null}
     persistentSubmitErrors={false}
     pure={true}
     setDefaultPaymentMethod={[MockFunction]}
