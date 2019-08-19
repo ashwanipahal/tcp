@@ -2,7 +2,6 @@
 
 exports[`HomePageView should render correctly 1`] = `
 <ScrollViewMock>
-  <ModuleN />
   <SlotA
     className="moduleD"
   />
@@ -11,6 +10,9 @@ exports[`HomePageView should render correctly 1`] = `
   />
   <SlotC />
   <SlotD />
+  <SlotD
+    name="moduleN"
+  />
   <Styled(CustomButton)
     buttonVariation="variable-width"
     customStyle={Object {}}
