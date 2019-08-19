@@ -3,10 +3,25 @@ import { SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
 import CreditCardForm from '../organism/CreditCardForm';
 
-export const AddEditCreditCard = ({ labels, isEdit, errorMessage, onClose, dto, ...otherProps }) => {
+export const AddEditCreditCard = ({
+  labels,
+  isEdit,
+  errorMessage,
+  onClose,
+  dto,
+  updateCardList,
+  ...otherProps
+}) => {
   return (
     <SafeAreaView>
-      <CreditCardForm labels={labels} isEdit={isEdit} onClose={onClose} dto={dto} {...otherProps} />
+      <CreditCardForm
+        labels={labels}
+        isEdit={isEdit}
+        onClose={onClose}
+        dto={dto}
+        updateCardList={updateCardList}
+        {...otherProps}
+      />
     </SafeAreaView>
   );
 };
@@ -17,6 +32,7 @@ AddEditCreditCard.propTypes = {
   isEdit: PropTypes.bool,
   errorMessage: PropTypes.string,
   onClose: PropTypes.func,
+  updateCardList: PropTypes.func,
 };
 
 AddEditCreditCard.defaultProps = {
@@ -24,6 +40,7 @@ AddEditCreditCard.defaultProps = {
   isEdit: false,
   dto: {},
   onClose: () => {},
+  updateCardList: () => {},
 };
 
 export default AddEditCreditCard;

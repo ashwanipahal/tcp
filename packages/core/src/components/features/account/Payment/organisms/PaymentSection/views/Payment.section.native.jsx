@@ -116,6 +116,7 @@ class PaymentView extends React.Component<Props> {
       venmoCardList,
       onGetBalanceCard,
       checkbalanceValueInfo,
+      updateCardList,
     } = this.props;
     const { setDeleteModalMountedState, setUpdateModalMountedState, selectedCard } = this.state;
     let dto = {};
@@ -211,6 +212,7 @@ class PaymentView extends React.Component<Props> {
               setSelectedCard={this.setSelectedCard}
               toggleModal={this.setUpdateModalMountState}
               setUpdateModalMountedState={setUpdateModalMountedState}
+              updateCardList={updateCardList}
             />
           )}
         </ScrollView>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native';
 import PropTypes from 'prop-types';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm, Field, change } from 'redux-form';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import Address from '@tcp/core/src/components/common/molecules/Address';
 import Button from '@tcp/core/src/components/common/atoms/Button';
@@ -84,7 +84,9 @@ class CreditCardForm extends React.PureComponent<Props, State> {
       : addressList && addressList.find(add => add.primary);
 
   handleComponentChange = item => {
+    const { dispatch } = this.props;
     this.setState({ selectedAddress: item });
+    dispatch(change('addEditCreditCard', 'onFileAddressKey', item));
   };
 
   toggleModal = () => {
@@ -105,7 +107,6 @@ class CreditCardForm extends React.PureComponent<Props, State> {
       pristine,
       invalid,
       handleSubmit,
-      dispatch,
       initialValues,
       onClose,
     } = this.props;

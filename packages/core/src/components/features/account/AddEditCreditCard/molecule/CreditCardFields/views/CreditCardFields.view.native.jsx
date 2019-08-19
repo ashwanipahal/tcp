@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field } from 'redux-form';
+import { Field, change } from 'redux-form';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
 import CreditCardNumber from '../../CreditCardNumber';
 import {
@@ -12,11 +12,14 @@ import {
 export class CreditCardFields extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
-    const { expMonthOptionsMap, expYearOptionsMap } = props;
+    const { expMonthOptionsMap, expYearOptionsMap, dispatch } = props;
     this.state = {
-      selectedYear: expYearOptionsMap[0].labels,
+      selectedYear: expYearOptionsMap[1].label,
       selectedMonth: expMonthOptionsMap[0].label,
     };
+    // Setting form value to take initial dropdown values.
+    dispatch(change('addEditCreditCard', 'expYear', expYearOptionsMap[1].id));
+    dispatch(change('addEditCreditCard', 'expMonth', expMonthOptionsMap[0].id));
   }
 
   render() {
@@ -30,6 +33,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
       expMonthOptionsMap,
       expYearOptionsMap,
       dto,
+      dispatch,
     } = this.props;
     const { selectedMonth, selectedYear } = this.state;
     const dropDownStyle = {
@@ -60,13 +64,12 @@ export class CreditCardFields extends React.PureComponent<Props> {
         </CardContainer>
         <ExpiryContainer>
           <Field
-            name="expMonth"
-            id="expMonth"
             component={DropDown}
             data={expMonthOptionsMap}
             dataLocator="addEditCreditCard-expMonth1"
             onValueChange={itemValue => {
               this.setState({ selectedMonth: itemValue });
+              dispatch(change('addEditCreditCard', 'expMonth', itemValue));
             }}
             variation="secondary"
             selectedValue={selectedMonth}
@@ -75,8 +78,6 @@ export class CreditCardFields extends React.PureComponent<Props> {
           />
 
           <Field
-            name="expYear"
-            id="expYear"
             component={DropDown}
             data={expYearOptionsMap}
             dataLocator="addEditCreditCard-expYear1"
@@ -85,6 +86,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
             itemStyle={{ ...itemStyle }}
             onValueChange={itemValue => {
               this.setState({ selectedYear: itemValue });
+              dispatch(change('addEditCreditCard', 'expYear', itemValue));
             }}
             selectedValue={selectedYear}
           />

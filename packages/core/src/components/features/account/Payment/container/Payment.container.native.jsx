@@ -73,6 +73,12 @@ export class PaymentContainer extends React.Component<Props> {
     clearPaymentNotification();
   }
 
+  updateCardList = () => {
+    const { getCardListAction } = this.props;
+    getCardListAction();
+  }
+
+
   render() {
     const {
       showNotification,
@@ -106,6 +112,7 @@ export class PaymentContainer extends React.Component<Props> {
         onGetBalanceCard={onGetBalanceCard}
         checkbalanceValueInfo={checkbalanceValueInfo}
         setDefaultPaymentMethod={setDefaultPaymentMethod}
+        updateCardList={this.updateCardList}
       />
     );
   }

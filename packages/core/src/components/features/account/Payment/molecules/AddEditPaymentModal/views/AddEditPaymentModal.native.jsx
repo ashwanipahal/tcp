@@ -1,10 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { func } from 'prop-types';
 import { SafeAreaView } from 'react-native';
 import BodyCopy from '@tcp/core/src/components/common/atoms/BodyCopy';
 import LineComp from '@tcp/core/src/components/common/atoms/Line';
 import ModalNative from '@tcp/core/src/components/common/molecules/Modal';
-import AddEditCreditCard from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.container';
+import AddEditCreditCard from '@tcp/core/src/components/features/account/AddEditCreditCard/container/AddEditCreditCard.container.native';
 import { ModalHeading, ModalViewWrapper, LineWrapper } from '../AddEditPaymentModal.style.native';
 
 export class AddEditPaymentModal extends React.PureComponent<Props> {
@@ -12,16 +12,18 @@ export class AddEditPaymentModal extends React.PureComponent<Props> {
     labels: PropTypes.shape({}),
     dto: PropTypes.shape({}),
     toggleModal: PropTypes.shape({}),
+    updateCardList: func,
   };
 
   static defaultProps = {
     labels: {},
     dto: {},
     toggleModal: {},
+    updateCardList: {},
   };
 
   render() {
-    const { labels, toggleModal, setUpdateModalMountedState, dto } = this.props;
+    const { labels, toggleModal, setUpdateModalMountedState, dto, updateCardList } = this.props;
     return (
       <ModalNative isOpen={setUpdateModalMountedState} onRequestClose={toggleModal}>
         <ModalHeading>
@@ -37,7 +39,13 @@ export class AddEditPaymentModal extends React.PureComponent<Props> {
         </LineWrapper>
         <SafeAreaView>
           <ModalViewWrapper>
-            <AddEditCreditCard labels={labels} isEdit={false} onClose={toggleModal} dto={dto} />
+            <AddEditCreditCard
+              labels={labels}
+              isEdit={false}
+              onClose={toggleModal}
+              dto={dto}
+              updateCardList={updateCardList}
+            />
           </ModalViewWrapper>
         </SafeAreaView>
       </ModalNative>

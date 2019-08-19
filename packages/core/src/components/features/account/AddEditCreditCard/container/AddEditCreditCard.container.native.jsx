@@ -32,6 +32,7 @@ export class AddEditCreditCard extends React.PureComponent {
     showSuccessNotification: PropTypes.func.isRequired,
     labels: PropTypes.shape({}),
     onClose: PropTypes.func,
+    updateCardList: PropTypes.func,
   };
 
   static defaultProps = {
@@ -44,6 +45,7 @@ export class AddEditCreditCard extends React.PureComponent {
     creditCard: null,
     labels: {},
     onClose: () => {},
+    updateCardList: () => {},
   };
 
   constructor(props) {
@@ -68,11 +70,14 @@ export class AddEditCreditCard extends React.PureComponent {
       showSuccessNotification,
       creditCard,
       addressList,
+      onClose,
+      updateCardList,
     } = this.props;
     const isAddressListUpdated = !prevProps.addressList && addressList;
     if (!prevProps.addEditCreditCardSuccess && addEditCreditCardSuccess) {
       showSuccessNotification();
-      this.backToPaymentClick();
+      updateCardList();
+      onClose();
     }
 
     if (isAddressListUpdated || (!prevProps.creditCard && creditCard)) {
