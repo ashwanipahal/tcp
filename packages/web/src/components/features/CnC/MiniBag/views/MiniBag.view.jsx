@@ -15,15 +15,39 @@ type Props = {
   labels: any,
   userName: any,
   subTotal: any,
+  currencySymbol: any,
+  currentPoints: any,
+  totalRewards: any,
 };
 
-const MiniBag = ({ onRequestClose, className, openState, labels, userName, subTotal }: Props) => {
+const renderMiniBagHeader = (labels, cartItemCount, userName, currentPoints, totalRewards) => {
+  return (
+    <MiniBagHeader
+      labels={labels}
+      cartItemCount={cartItemCount}
+      userName={userName}
+      currentPoints={currentPoints}
+      totalRewards={totalRewards}
+    />
+  );
+};
+const MiniBag = ({
+  onRequestClose,
+  className,
+  openState,
+  labels,
+  userName,
+  subTotal,
+  currencySymbol,
+  currentPoints,
+  totalRewards,
+}: Props) => {
   const cartItemCount = getCartItemCount();
   return (
     <Modal
       isOpen={openState}
       onRequestClose={onRequestClose}
-      heading={<MiniBagHeader labels={labels} cartItemCount={cartItemCount} userName={userName} />}
+      heading={renderMiniBagHeader(labels, cartItemCount, userName, currentPoints, totalRewards)}
       overlayClassName="TCPModal__Overlay"
       className={`TCPModal__Content, ${className}`}
       closeIconDataLocator="mini-bag-close"
@@ -40,6 +64,7 @@ const MiniBag = ({ onRequestClose, className, openState, labels, userName, subTo
         cartItemCount={cartItemCount}
         userName={userName}
         subTotal={subTotal}
+        currencySymbol={currencySymbol}
       />
     </Modal>
   );

@@ -45,6 +45,9 @@ const getAPIInfoFromEnv = (apiSiteInfo, processEnv) => {
     assetHost: processEnv.RWD_WEB_ASSETHOST || apiSiteInfo.assetHost,
     domain: `${apiEndpoint}/${processEnv.RWD_WEB_API_IDENTIFIER}/`,
     unbxd: processEnv.RWD_WEB_UNBXD_DOMAIN || apiSiteInfo.unbxd,
+    CANDID_API_KEY: process.env.RWD_WEB_CANDID_API_KEY,
+    CANDID_API_URL: process.env.RWD_WEB_CANDID_URL,
+    googleApiKey: process.env.RWD_WEB_GOOGLE_MAPS_API_KEY,
   };
 };
 
@@ -126,17 +129,34 @@ export const getAPIConfig = () => {
   return apiConfig;
 };
 
+export const getBrand = () => {
+  return getAPIConfig().brandId;
+};
+
+export const isTCP = () => {
+  const { brandId } = getAPIConfig();
+  return brandId === API_CONFIG.brandIds.tcp;
+};
+
 export const isCanada = () => {
   const { siteId } = getAPIConfig();
   return siteId === API_CONFIG.siteIds.ca;
 };
 
+export const isGymboree = () => {
+  const { brandId } = getAPIConfig();
+  return brandId === API_CONFIG.brandIds.gym;
+};
+
 export default {
   getIconPath,
   getLocator,
+  getBrand,
   isClient,
   isMobileApp,
   isServer,
   getAPIConfig,
+  isGymboree,
+  isTCP,
   isCanada,
 };

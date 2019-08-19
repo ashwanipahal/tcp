@@ -47,7 +47,8 @@ export default {
   moduleA_play_button: 'moduleA_play_button',
   moduleA_pause_button: 'moduleA_pause_button',
   moduleA_ribbon_promobanner_text: 'moduleA_ribbon_promobanner_text_',
-
+  moduleA_cta_links: 'moduleA_cta_links_',
+  carousel_banner: 'carousel_banner',
   // Module L
   moduleL_header_text: 'moduleL_header_text',
   moduleL_title: 'moduleL_title_',
@@ -112,4 +113,10 @@ export default {
   cart_item_ship_to_home_radio_button: 'ItemShipToHomeRadioButton',
   cart_item_ship_to_home: 'cartShipToHome',
   cart_item_cross_button: 'cartItemCrossButton',
+
+  // Empty Bag Locator
+  empty_bag_Msg: 'cartEmptyBagMessage',
+  empty_bag_loginUserCTA: 'cartRegisteredShopNowButton',
+  empty_bag_guestUserCTA: 'cartGuestLoginCta',
+  empty_bag_recommendation_msg: 'cartRecommendationMessage',
 };

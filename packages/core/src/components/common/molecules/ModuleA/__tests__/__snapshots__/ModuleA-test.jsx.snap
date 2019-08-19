@@ -2,7 +2,14 @@
 
 exports[`ModuleA component should render Gymboree variant correctly 1`] = `
 <ForwardRef
-  className=""
+  className=" moduleA"
+  fullBleed={
+    Object {
+      "large": false,
+      "medium": true,
+      "small": true,
+    }
+  }
 >
   <ForwardRef
     colSize={
@@ -132,11 +139,11 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               Object {
                 "image": Object {
                   "alt": "Family Tees Image 1",
-                  "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
-                  "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
-                  "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
                   "title": "Family Tees title",
-                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                  "url": "https://test5.childrensplace.com/image/upload/v1565680148/the-honest-company-fgn7ZRTmaWQ-unsplash_awrysz.jpg",
                 },
                 "link": Object {
                   "external": 0,
@@ -214,11 +221,11 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               Object {
                 "image": Object {
                   "alt": "Family Tees Image 2",
-                  "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
-                  "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
-                  "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
                   "title": "Family Tees title",
-                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                  "url": "https://test5.childrensplace.com/image/upload/v1565680148/vishnu-r-nair-Wd-dXc2X37o-unsplash_lljie8.jpg",
                 },
                 "link": Object {
                   "external": 0,
@@ -296,11 +303,11 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               Object {
                 "image": Object {
                   "alt": "Family Tees Image 3",
-                  "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
-                  "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
-                  "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
                   "title": "Family Tees title",
-                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                  "url": "https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg",
                 },
                 "link": Object {
                   "external": 0,
@@ -378,11 +385,11 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
               Object {
                 "image": Object {
                   "alt": "Family Tees Image 4",
-                  "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
-                  "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
-                  "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
                   "title": "Family Tees title",
-                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                  "url": "https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg",
                 },
                 "link": Object {
                   "external": 0,
@@ -445,7 +452,14 @@ exports[`ModuleA component should render Gymboree variant correctly 1`] = `
 
 exports[`ModuleA component should render TCP or default variant correctly 1`] = `
 <ForwardRef
-  className=""
+  className=" moduleA"
+  fullBleed={
+    Object {
+      "large": false,
+      "medium": true,
+      "small": true,
+    }
+  }
 >
   <ForwardRef
     colSize={
@@ -575,11 +589,11 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               Object {
                 "image": Object {
                   "alt": "Family Tees Image 1",
-                  "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
-                  "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
-                  "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
                   "title": "Family Tees title",
-                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                  "url": "https://test5.childrensplace.com/image/upload/v1565680148/the-honest-company-fgn7ZRTmaWQ-unsplash_awrysz.jpg",
                 },
                 "link": Object {
                   "external": 0,
@@ -657,11 +671,11 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               Object {
                 "image": Object {
                   "alt": "Family Tees Image 2",
-                  "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
-                  "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
-                  "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
                   "title": "Family Tees title",
-                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                  "url": "https://test5.childrensplace.com/image/upload/v1565680148/vishnu-r-nair-Wd-dXc2X37o-unsplash_lljie8.jpg",
                 },
                 "link": Object {
                   "external": 0,
@@ -739,11 +753,11 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               Object {
                 "image": Object {
                   "alt": "Family Tees Image 3",
-                  "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
-                  "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
-                  "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
                   "title": "Family Tees title",
-                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                  "url": "https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg",
                 },
                 "link": Object {
                   "external": 0,
@@ -821,11 +835,11 @@ exports[`ModuleA component should render TCP or default variant correctly 1`] = 
               Object {
                 "image": Object {
                   "alt": "Family Tees Image 4",
-                  "crop_d": "c_crop,g_face:center,q_auto:best,w_1410",
-                  "crop_m": "c_crop,g_face:center,q_auto:best,w_375,h_311",
-                  "crop_t": "c_crop,g_face:center,q_auto:best,w_768",
+                  "crop_d": "",
+                  "crop_m": "",
+                  "crop_t": "",
                   "title": "Family Tees title",
-                  "url": "https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg",
+                  "url": "https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg",
                 },
                 "link": Object {
                   "external": 0,

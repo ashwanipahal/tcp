@@ -13,15 +13,14 @@ class HomePageView extends React.Component {
 
   render() {
     const { slot_1: slotA, slot_2: slotB, slot_3: slotC, slot_4: slotD, navigation } = this.props;
-
     return (
       <ScrollView>
         <React.Fragment>
           <ModuleN navigation={navigation} />
-          <SlotA {...slotA} navigation={navigation} />
-          <SlotB {...slotB} navigation={navigation} />
-          <SlotC {...slotC} navigation={navigation} />
-          <SlotD {...slotD} navigation={navigation} />
+          {slotA && <SlotA {...slotA} navigation={navigation} />}
+          {slotB && <SlotB {...slotB} navigation={navigation} />}
+          {slotC && <SlotC {...slotC} navigation={navigation} />}
+          {slotD && <SlotD {...slotD} navigation={navigation} />}
           <Button
             fullWidth
             buttonVariation="variable-width"
@@ -35,12 +34,39 @@ class HomePageView extends React.Component {
 }
 
 HomePageView.propTypes = {
-  slot_1: PropTypes.shape({}).isRequired,
-  slot_2: PropTypes.shape({}).isRequired,
-  slot_3: PropTypes.shape({}).isRequired,
-  slot_4: PropTypes.shape({}).isRequired,
-  getBootstrapData: PropTypes.func.isRequired,
+  slot_1: PropTypes.shape({
+    composites: PropTypes.shape({}),
+    name: PropTypes.string,
+    type: PropTypes.string,
+    contentId: PropTypes.string,
+  }),
+  slot_2: PropTypes.shape({
+    composites: PropTypes.shape({}),
+    name: PropTypes.string,
+    type: PropTypes.string,
+    contentId: PropTypes.string,
+  }),
+  slot_3: PropTypes.shape({
+    composites: PropTypes.shape({}),
+    name: PropTypes.string,
+    type: PropTypes.string,
+    contentId: PropTypes.string,
+  }),
+  slot_4: PropTypes.shape({
+    composites: PropTypes.shape({}),
+    name: PropTypes.string,
+    type: PropTypes.string,
+    contentId: PropTypes.string,
+  }),
   navigation: PropTypes.shape({}).isRequired,
+  getBootstrapData: PropTypes.func.isRequired,
+};
+
+HomePageView.defaultProps = {
+  slot_1: {},
+  slot_2: {},
+  slot_3: {},
+  slot_4: {},
 };
 
 export default HomePageView;

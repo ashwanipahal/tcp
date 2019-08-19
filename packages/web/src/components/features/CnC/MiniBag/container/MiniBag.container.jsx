@@ -1,8 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { getGrandTotal } from '@tcp/core/src/components/features/CnC/BagPage/organisms/OrderLedger/container/orderLedger.selector';
+import {
+  getGrandTotal,
+  getCurrencySymbol,
+} from '@tcp/core/src/components/features/CnC/BagPage/organisms/OrderLedger/container/orderLedger.selector';
 import MiniBagView from '../views/MiniBag.view';
 import { getLabelsMiniBag, getTotalItemCount } from './MiniBag.selectors';
+import {
+  getCurrentPointsState,
+  getTotalRewardsState,
+} from '../../../../../../../core/src/components/features/account/LoginPage/container/LoginPage.selectors';
 
 // @flow
 type Props = {
@@ -12,6 +19,9 @@ type Props = {
   toggleMiniBagModal: any,
   userName: any,
   subTotal: any,
+  currencySymbol: any,
+  currentPoints: any,
+  totalRewards: any,
 };
 export class MiniBagContainer extends React.Component<Props> {
   constructor(props) {
@@ -26,7 +36,16 @@ export class MiniBagContainer extends React.Component<Props> {
   }
 
   render() {
-    const { labels, totalItems, isOpen, userName, subTotal } = this.props;
+    const {
+      labels,
+      totalItems,
+      isOpen,
+      userName,
+      subTotal,
+      currencySymbol,
+      currentPoints,
+      totalRewards,
+    } = this.props;
     return (
       <MiniBagView
         openState={isOpen}
@@ -35,6 +54,9 @@ export class MiniBagContainer extends React.Component<Props> {
         totalItems={totalItems}
         userName={userName}
         subTotal={subTotal}
+        currencySymbol={currencySymbol}
+        currentPoints={currentPoints}
+        totalRewards={totalRewards}
       />
     );
   }
@@ -44,6 +66,9 @@ const mapStateToProps = state => {
     labels: getLabelsMiniBag(state),
     totalItems: getTotalItemCount(state),
     subTotal: getGrandTotal(state),
+    currencySymbol: getCurrencySymbol(state),
+    currentPoints: getCurrentPointsState(state),
+    totalRewards: getTotalRewardsState(state),
   };
 };
 export default connect(mapStateToProps)(MiniBagContainer);

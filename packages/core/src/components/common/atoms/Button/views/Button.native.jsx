@@ -1,9 +1,11 @@
 // @flow
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import { UrlHandler, navigateToPage } from '../../../../../utils/utils.app';
+
+import { UrlHandler, navigateToPage, validateExternalUrl } from '../../../../../utils/utils.app';
 import withStyles from '../../../hoc/withStyles.native';
 import style from '../Button.style.native';
+import { getLocator } from '../../../../../utils';
 
 /**
  * @param {object} props : Props for button
@@ -28,10 +30,12 @@ type Props = {
   text?: string,
   url?: string,
   disableButton?: boolean,
+  locator?: string,
 };
 
 const CustomButton = (props: Props) => {
   const {
+    locator,
     text,
     buttonVariation,
     fullWidth,
@@ -40,9 +44,15 @@ const CustomButton = (props: Props) => {
     ...otherProps
   }: Props = props;
   const textValue = text || '';
-  const { url, external, navigation, onPress } = otherProps;
-  const openUrlInExternalBrowser = onPress || (() => UrlHandler(url));
-  const openUrl = external ? openUrlInExternalBrowser : () => navigateToPage(url, navigation);
+  const { url, navigation } = otherProps;
+
+  const openUrl = () => {
+    if (validateExternalUrl(url)) {
+      UrlHandler(url);
+    } else {
+      navigateToPage(url, navigation);
+    }
+  };
 
   return (
     <TouchableOpacity
@@ -50,6 +60,7 @@ const CustomButton = (props: Props) => {
       style={customStyle}
       disabled={disableButton}
       onPress={openUrl}
+      testID={getLocator(locator)}
     >
       <Text fullWidth={fullWidth} buttonVariation={buttonVariation} {...otherProps}>
         {textValue}
@@ -65,6 +76,7 @@ CustomButton.defaultProps = {
   text: '',
   url: '',
   disableButton: false,
+  locator: '',
 };
 
 export default withStyles(CustomButton, style);

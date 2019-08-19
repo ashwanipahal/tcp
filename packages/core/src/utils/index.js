@@ -14,12 +14,16 @@ export {
   getViewportInfo,
   showOverlay,
   closeOverlay,
+  scrollPage,
 } from './utils.web';
 
 export {
   isServer,
   isClient,
   isMobileApp,
+  isGymboree,
+  isTCP,
+  getBrand,
   getIconPath,
   getLocator,
   getAPIConfig,

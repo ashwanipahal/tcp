@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-unresolved
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 // eslint-disable-next-line import/no-unresolved
 import { Dimensions, Linking } from 'react-native';
 // eslint-disable-next-line import/no-unresolved
@@ -31,6 +31,18 @@ export const importGraphQLClientDynamically = module => {
         break;
     }
   });
+};
+
+export const importMoreGraphQLQueries = ({ query, resolve, reject }) => {
+  switch (query) {
+    case 'moduleX':
+      // eslint-disable-next-line global-require
+      resolve(require('../services/handler/graphQL/queries/moduleX'));
+      break;
+    default:
+      reject();
+      break;
+  }
 };
 
 export const importGraphQLQueriesDynamically = query => {
@@ -73,8 +85,7 @@ export const importGraphQLQueriesDynamically = query => {
         resolve(require('../services/handler/graphQL/queries/moduleL'));
         break;
       default:
-        reject();
-        break;
+        importMoreGraphQLQueries({ query, resolve, reject });
     }
   });
 };
@@ -241,4 +252,31 @@ export const setValueInAsyncStorage = async (key, value) => {
   } catch (error) {
     // Error saving data
   }
+};
+
+export const validateExternalUrl = url => {
+  const isExternal = url.indexOf('http') || url.indexOf('https') !== true;
+  if (isExternal === true) {
+    return true;
+  }
+  return false;
+};
+
+/**
+ * @function resetNavigationStack
+ * This function resets data from navigation stack
+ *
+ */
+export const resetNavigationStack = navigation => {
+  const { state } = navigation;
+  const { routes, index: activeRouteIndex } = state;
+  navigation.dispatch(
+    StackActions.reset({
+      index: 0,
+      key: null,
+      actions: [
+        NavigationActions.navigate({ routeName: routes[activeRouteIndex].routes[0].routeName }),
+      ],
+    })
+  );
 };

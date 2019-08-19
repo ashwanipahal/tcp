@@ -12,6 +12,10 @@ import styles from '../styles/LoginTopSection.styles';
  * @desc This method based on the props generate icon component.
  */
 const LoginTopSection = ({ labels, className, isCanada }) => {
+  let subDescKeys = [];
+  if (!isCanada) {
+    subDescKeys = Object.keys(labels.login).filter(lbl => /lbl_login_subDescription_/.test(lbl));
+  }
   return (
     <BodyCopy component="div" textAlign="center" className={className}>
       {!isCanada && (
@@ -36,11 +40,12 @@ const LoginTopSection = ({ labels, className, isCanada }) => {
         >
           {labels.login.lbl_login_subHeading}
         </BodyCopy>
-        {!isCanada && (
-          <BodyCopy fontFamily="secondary" textAlign="center" fontSize="fs12">
-            {labels.login.lbl_login_subDescription}
-          </BodyCopy>
-        )}
+        {subDescKeys.length > 0 &&
+          subDescKeys.map(key => (
+            <BodyCopy fontFamily="secondary" textAlign="center" fontSize="fs12">
+              {labels.login[key]}
+            </BodyCopy>
+          ))}
       </BodyCopy>
     </BodyCopy>
   );

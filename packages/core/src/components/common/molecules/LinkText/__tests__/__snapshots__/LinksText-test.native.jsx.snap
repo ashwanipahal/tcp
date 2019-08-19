@@ -4,7 +4,7 @@ exports[`LinkText component renders correctly 1`] = `
 <Styled(Anchor)
   anchorVariation=""
   customStyle={Object {}}
-  external={0}
+  locator=""
   text=""
   url="http://example.com3367"
   visible={false}
@@ -13,9 +13,7 @@ exports[`LinkText component renders correctly 1`] = `
     Component={
       Object {
         "$$typeof": Symbol(react.forward_ref),
-        "_foldedDefaultProps": Object {
-          "text": "",
-        },
+        "_foldedDefaultProps": undefined,
         "attrs": Array [],
         "displayName": "Styled(BodyCopy)",
         "inlineStyle": InlineStyle {

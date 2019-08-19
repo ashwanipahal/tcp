@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Help Coupon Modal should call correctly 1`] = `
+<ModalNative
+  animationType="slide"
+  closeIconDataLocator="added-to-bg-close"
+  fixedWidth={true}
+  headerStyle={
+    Object {
+      "maxHeight": 50,
+    }
+  }
+  isOpen={false}
+  onRequestClose={[MockFunction]}
+  overlayClassName="TCPModal__Overlay"
+>
+  <WebView
+    originWhitelist={
+      Array [
+        "http://*",
+        "https://*",
+      ]
+    }
+    source={
+      Object {
+        "html": undefined,
+      }
+    }
+  />
+</ModalNative>
+`;

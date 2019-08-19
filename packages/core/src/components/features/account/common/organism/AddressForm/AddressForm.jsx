@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field, reduxForm, change } from 'redux-form';
 import TextBox from '../../../../../common/atoms/TextBox';
 import SelectBox from '../../../../../common/atoms/Select';
@@ -14,36 +15,42 @@ import {
   CAcountriesStatesTable,
   UScountriesStatesTable,
 } from './CountriesAndStates.constants';
-// @flow
-type Props = {
-  handleSubmit: any,
-  invalid: any,
-  className: any,
-  backToAddressBookClick: any,
-  dispatch: any,
-  labels: object,
-  isEdit?: boolean,
-  isMakeDefaultDisabled?: boolean,
-};
 
-type State = {
-  country: string,
-};
-export class AddressForm extends React.PureComponent<Props, State> {
-  constructor(props: Props) {
+export class AddressForm extends React.PureComponent {
+  static propTypes = {
+    handleSubmit: PropTypes.func.isRequired,
+    invalid: PropTypes.bool.isRequired,
+    className: PropTypes.string,
+    backToAddressBookClick: PropTypes.func.isRequired,
+    dispatch: PropTypes.func.isRequired,
+    labels: PropTypes.shape({}).isRequired,
+    isEdit: PropTypes.bool,
+    isMakeDefaultDisabled: PropTypes.bool.isRequired,
+    initialValues: PropTypes.shape({
+      country: PropTypes.string,
+    }),
+  };
+
+  static defaultProps = {
+    isEdit: false,
+    initialValues: {},
+    className: '',
+  };
+
+  constructor(props) {
     super(props);
     this.state = {
-      country: 'US',
+      country: props.initialValues.country || 'US',
     };
   }
 
-  StateCountryChange = (e: Object) => {
+  StateCountryChange = e => {
     this.setState({
       country: e.target.value ? e.target.value : '',
     });
   };
 
-  handlePlaceSelected = (place: Object, inputValue: string) => {
+  handlePlaceSelected = (place, inputValue) => {
     const { dispatch } = this.props;
     const address = AutoCompleteComponent.getAddressFromPlace(place, inputValue);
     dispatch(change('AddressForm', 'city', address.city));
@@ -220,11 +227,6 @@ export class AddressForm extends React.PureComponent<Props, State> {
     );
   }
 }
-
-AddressForm.defaultProps = {
-  isEdit: false,
-  isMakeDefaultDisabled: false,
-};
 
 const validateMethod = createValidateMethod(
   getStandardConfig([

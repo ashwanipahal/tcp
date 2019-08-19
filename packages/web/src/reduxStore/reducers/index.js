@@ -22,6 +22,7 @@ import CreateAccountReducer from '@tcp/core/src/components/features/account/Crea
 import BonusPointsDaysReducer from '@tcp/core/src/components/features/account/BonusPointsDays/container/BonusPointsDays.reducer';
 import CouponsReducer from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.reducer';
 import AccountHeaderReducer from '@tcp/core/src/components/features/account/common/organism/AccountHeader/container/AccountHeader.reducer';
+import PointsHistoryReducer from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.reducer';
 import ResetPasswordReducer from '@tcp/core/src/components/features/account/ResetPassword/container/ResetPassword.reducer';
 
 import {
@@ -31,6 +32,7 @@ import {
   LABEL_REDUCER_KEY,
   LAYOUT_REDUCER_KEY,
   HOMEPAGE_REDUCER_KEY,
+  LOADER_REDUCER_KEY,
   LOGINPAGE_REDUCER_KEY,
   PRODUCTLISTINGPAGE_REDUCER_KEY,
   ADDRESSBOOK_REDUCER_KEY,
@@ -53,6 +55,7 @@ import {
   BONUS_POINTS_DAYS_REDUCER_KEY,
   COUPON_REDUCER_KEY,
   ACCOUNTHEADER_REDUCER_KEY,
+  POINTS_HISTORY_REDUCER_KEY,
   RESET_PASSWORD_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
@@ -60,6 +63,7 @@ import FooterReducer from '@tcp/core/src/components/common/organisms/Footer/cont
 import NavigationReducer from '@tcp/core/src/components/features/content/Navigation/container/Navigation.reducer';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
 import HomePageReducer from '../../components/features/content/HomePage/container/HomePage.reducer';
+import LoaderReducer from '../../components/features/content/Loader/container/Loader.reducer';
 import EmailSignupReducer from '../../components/common/molecules/EmailSignupModal/container/EmailSignupModal.reducer';
 import SmsSignupReducer from '../../components/common/molecules/SmsSignupModal/container/SmsSignupModal.reducer';
 
@@ -79,6 +83,7 @@ export default combineReducers({
   [LAYOUT_REDUCER_KEY]: LayoutReducer,
   [MODULES_REDUCER_KEY]: ModulesReducer,
   [HOMEPAGE_REDUCER_KEY]: HomePageReducer,
+  [LOADER_REDUCER_KEY]: LoaderReducer,
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
   [LOGINPAGE_REDUCER_KEY]: LoginPageReducer,
   [FORGOTPASSWORD_REDUCER_KEY]: ForgotPasswordReducer,
@@ -101,5 +106,6 @@ export default combineReducers({
   [BONUS_POINTS_DAYS_REDUCER_KEY]: BonusPointsDaysReducer,
   [COUPON_REDUCER_KEY]: CouponsReducer,
   [ACCOUNTHEADER_REDUCER_KEY]: AccountHeaderReducer,
+  [POINTS_HISTORY_REDUCER_KEY]: PointsHistoryReducer,
   [RESET_PASSWORD_REDUCER_KEY]: ResetPasswordReducer,
 });

@@ -31,6 +31,7 @@ const ModuleATcpCarousel = props => {
         options={CAROUSEL_OPTIONS}
         carouselConfig={{
           autoplay: true,
+          dataLocatorCarousel: getLocator('carousel_banner'),
           dataLocatorPlay: getLocator('moduleA_play_button'),
           dataLocatorPause: getLocator('moduleA_pause_button'),
           customArrowLeft: getIconPath(bigCarrotIcon),
@@ -45,14 +46,18 @@ const ModuleATcpCarousel = props => {
           } = item;
           return (
             <div className="banner-slide">
-              <DamImage imgData={linkedImage.image} />
+              <DamImage
+                imgData={linkedImage.image}
+                imgConfigs={config.IMG_DATA.crops}
+                data-locator={`${getLocator('moduleA_image')}${i}`}
+              />
               <div className="banner-content">
                 <LinkText
-                  fontWeight="black"
-                  fontSize={['fs36', 'fs36', 'fs52']}
+                  type="heading"
+                  component="h2"
                   headerText={headerText}
                   className="link-text-wrapper"
-                  data-locator={`${getLocator('moduleA_header_text')}${i}`}
+                  dataLocator={`${getLocator('moduleA_header_text')}${i}`}
                 />
                 <PromoBanner
                   promoBanner={promoBanner}
@@ -66,7 +71,11 @@ const ModuleATcpCarousel = props => {
         })}
       </Carousel>
       <div className={`button-list-container ${ctaType}`}>
-        <ButtonList buttonsData={ctaItems} buttonListVariation={ctaType} />
+        <ButtonList
+          buttonsData={ctaItems}
+          buttonListVariation={ctaType}
+          dataLocator={getLocator('moduleA_button_set')}
+        />
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ exports[`ButtonList ButtonList should render correctly 1`] = `
             "target": "",
             "text": "girl",
             "title": "girl",
-            "url": "/c/",
+            "url": "https://www.google.com/",
           },
           Object {
             "external": 0,
@@ -32,7 +32,7 @@ exports[`ButtonList ButtonList should render correctly 1`] = `
             "target": "",
             "text": "toddler boy",
             "title": "toddler boy",
-            "url": "/c/",
+            "url": "https://www.google.com/",
           },
         ]
       }
@@ -57,6 +57,7 @@ exports[`ButtonList ButtonList should render correctly 1`] = `
       customStyle={Object {}}
       disableButton={false}
       fullWidth=""
+      locator=""
       style={
         Object {
           "width": 750,
@@ -72,45 +73,6 @@ exports[`ButtonList ButtonList should render correctly 1`] = `
 exports[`ButtonList ButtonList should render correctly 2`] = `
 <Styled(View)>
   <FlatList
-    data={
-      Array [
-        Object {
-          "external": 0,
-          "target": "",
-          "text": "girl",
-          "title": "girl",
-          "url": "/c/",
-        },
-        Object {
-          "external": 0,
-          "target": "",
-          "text": "toddlergirl",
-          "title": "toddlergirl",
-          "url": "/p/",
-        },
-        Object {
-          "external": 0,
-          "target": "",
-          "text": "boy",
-          "title": "boy",
-          "url": "/p/",
-        },
-        Object {
-          "external": 0,
-          "target": "",
-          "text": "toddlerboy",
-          "title": "toddlerboy",
-          "url": "/c/",
-        },
-        Object {
-          "external": 0,
-          "target": "",
-          "text": "baby",
-          "title": "baby",
-          "url": "/c/",
-        },
-      ]
-    }
     disableVirtualization={false}
     horizontal={true}
     initialNumToRender={10}

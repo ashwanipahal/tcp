@@ -33,11 +33,16 @@ class CouponListSection extends React.Component<Props> {
   render() {
     const {
       labels,
+      isFetching,
       couponList,
       className,
       heading,
       helpSubHeading,
       couponDetailClick,
+      onApply,
+      onRemove,
+      dataLocator,
+      handleErrorCoupon,
     } = this.props;
     const { showMore } = this.state;
     const buttonText =
@@ -52,6 +57,8 @@ class CouponListSection extends React.Component<Props> {
               fontWeight="semibold"
               component="p"
               fontSize="fs16"
+              data-locator={dataLocator}
+              fontFamily="secondary"
             >
               {`${heading} (${couponList.size})`}
             </BodyCopy>
@@ -64,7 +71,8 @@ class CouponListSection extends React.Component<Props> {
                 underline
                 anchorVariation="primary"
                 fontSize="fs10"
-                data-locator="couponcard-help-applying"
+                fontFamily="secondary"
+                data-locator="couponcard-helpApplyingPlaceCashlink"
                 onClick={this.helpAnchorClick}
               >
                 {labels.HELP_APPLYING}
@@ -85,8 +93,12 @@ class CouponListSection extends React.Component<Props> {
                 <CouponCard
                   key={coupon.id}
                   labels={labels}
+                  isFetching={isFetching}
                   coupon={coupon}
                   couponDetailClick={couponDetailClick}
+                  onApply={onApply}
+                  onRemove={onRemove}
+                  handleErrorCoupon={handleErrorCoupon}
                 />
               );
             })}
@@ -99,8 +111,9 @@ class CouponListSection extends React.Component<Props> {
               underline
               anchorVariation="primary"
               fontSize="fs10"
-              data-locator="couponcard-help-applying"
+              data-locator={showMore === true ? 'cartShowMoreButton' : 'cartShowLessButton'}
               onClick={this.toggleShow}
+              fontFamily="secondary"
             >
               {buttonText}
             </Anchor>

@@ -33,7 +33,19 @@ const RoutesMap = [
     path: '/bag',
     resolver: '/Bag',
   },
+  {
+    path: '/pickup',
+    resolver: '/Pickup',
+  },
+  {
+    path: '/shipping',
+    resolver: '/Shipping',
+  },
   { path: '/cookiesTesting', resolver: '/cookiesTesting' },
+  {
+    path: '/gallery',
+    resolver: '/gallery',
+  },
 ];
 
 module.exports = RoutesMap;

@@ -5,13 +5,14 @@ import { ThemeProvider } from 'styled-components';
 import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
 import GlobalStyle from '@tcp/core/styles/globalStyles';
-import theme from '@tcp/core/styles/themes/TCP';
+import getCurrentTheme from '@tcp/core/styles/themes';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { bootstrapData, loadUserProfile } from '@tcp/core/src/reduxStore/actions';
 import { createAPIConfig } from '@tcp/core/src/utils';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import { getLoginState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
 import { Header, Footer } from '../components/features/content';
+import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 
@@ -43,14 +44,14 @@ class TCPWebApp extends App {
           },
         })
       );
+    } else if (!getLoginState(store.getState())) {
+      store.dispatch(loadUserProfile());
     }
   };
 
   componentDidMount() {
-    const { store } = this.props;
     ReactAxe.runAccessibility();
     this.checkForResetPassword();
-    if (!getLoginState(store.getState())) store.dispatch(loadUserProfile());
   }
 
   componentDidUpdate() {
@@ -87,6 +88,7 @@ class TCPWebApp extends App {
 
   render() {
     const { Component, pageProps, store } = this.props;
+    const theme = getCurrentTheme();
     return (
       <Container>
         <ThemeProvider theme={theme}>
@@ -94,6 +96,7 @@ class TCPWebApp extends App {
             <GlobalStyle />
             <Grid>
               <Header />
+              <Loader />
               <div id="overlayWrapper">
                 <div id="overlayComponent" />
                 <Component {...pageProps} />

@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Points History Slider View should render Points History Correctly 1`] = `
+<Fragment>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        text="08/08/19"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        text="Credit"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        component="p"
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        text="5"
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        text="08/08/19"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        text="AddBirthDate"
+      />
+    </Styled(View)>
+    <Styled(View)>
+      <Styled(BodyCopy)
+        fontFamily="secondary"
+        fontSize="fs12"
+        fontWeight="semibold"
+        text={5}
+      />
+    </Styled(View)>
+  </Styled(View)>
+  <Styled(View)>
+    <Styled(Anchor)
+      anchorVariation="primary"
+      customStyle={Object {}}
+      fontSizeVariation="medium"
+      locator=""
+      text="Points History"
+      underline={true}
+      visible={false}
+    />
+  </Styled(View)>
+</Fragment>
+`;

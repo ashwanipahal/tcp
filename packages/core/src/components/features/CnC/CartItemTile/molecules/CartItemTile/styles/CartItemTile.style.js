@@ -10,6 +10,9 @@ export default css`
   .padding-left-10 {
     padding-left: 10px;
   }
+  .padding-left-6 {
+    padding-left: 6px;
+  }
   .padding-left-13 {
     padding-left: 13px;
   }
@@ -21,6 +24,7 @@ export default css`
   }
   .brand-image {
     text-align: center;
+    width: 55px;
   }
   .edit-button {
     padding-left: 10px;
@@ -44,6 +48,25 @@ export default css`
   }
   .responsive-edit-css {
     padding-top: 2px;
+  }
+  .imageWrapper {
+    position: relative;
+    width: 100px;
+  }
+  .logoWrapper {
+    position: relative;
+    width: 100px;
+    margin-top: 8px;
+    margin-left: 25%;
+  }
+  .product-attributes {
+    display: inline-flex;
+    flex-wrap: wrap;
+    width: 75%;
+    margin: 0 13px;
+  }
+  .editLinkWrapper {
+    display: inline-block;
   }
 
   .product-tile-wrapper {
@@ -139,5 +162,15 @@ export default css`
     }
   }
 
+  .soldOutLabel {
+    width: 89px;
+    height: 18px;
+    background-color: ${props => props.theme.colorPalette.red[500]};
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;

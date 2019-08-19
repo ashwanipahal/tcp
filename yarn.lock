@@ -2011,10 +2011,10 @@
     xcode "^2.0.0"
     xmldoc "^0.4.0"
 
-"@react-native-community/netinfo@^4.1.3":
-  version "4.1.3"
-  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-4.1.3.tgz#77571619eb90ff59777a85a913fc30acd30b6020"
-  integrity sha512-c9ppXNFpKkXiKFJhik9Lzw62dosm+cAIvHl6OOGXp2D+1GlliIP+nMMtNapdppPoilRc33f4/GosqnL70viH9Q==
+"@react-native-community/netinfo@^3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-3.2.1.tgz#cd073b81a4b978f7f55f1a960a0b56c462813e02"
+  integrity sha512-A2qANOnlRDVe+8kMbKMwy3/0bOlOA2+y8DyWg2Rv2KHICIfin+oxixbG0ewAOLQdLkSEyyumZXRmIVl7VI/KJg==
 
 "@react-navigation/core@~3.4.1":
   version "3.4.2"
@@ -12606,10 +12606,6 @@ react-native-gesture-handler@^1.3.0:
     invariant "^2.2.2"
     prop-types "^15.5.10"
 
-react-native-keychain@3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-keychain/-/react-native-keychain-3.0.0.tgz#29da1dfa43c2581f76bf9420914fd38a1558cf18"
-  integrity sha512-0incABt1+aXsZvG34mDV57KKanSB+iMHmxvWv+N6lgpNLaSoqrCxazjbZdeqD4qJ7Z+Etp5CLf/4v1aI+sNLBw==
 react-native-google-places-autocomplete@^1.3.9:
   version "1.3.9"
   resolved "https://registry.yarnpkg.com/react-native-google-places-autocomplete/-/react-native-google-places-autocomplete-1.3.9.tgz#34c2e8b51df40ecb55ef3ccf57caba4c89ff9b56"
@@ -12618,6 +12614,11 @@ react-native-google-places-autocomplete@^1.3.9:
     lodash.debounce "^4.0.8"
     prop-types "^15.5.10"
     qs "^5.2.0"
+
+react-native-keychain@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-keychain/-/react-native-keychain-3.0.0.tgz#29da1dfa43c2581f76bf9420914fd38a1558cf18"
+  integrity sha512-0incABt1+aXsZvG34mDV57KKanSB+iMHmxvWv+N6lgpNLaSoqrCxazjbZdeqD4qJ7Z+Etp5CLf/4v1aI+sNLBw==
 
 react-native-monorepo-helper@^0.2.6:
   version "0.2.6"
@@ -12649,6 +12650,11 @@ react-native-safe-area-view@^0.14.1:
   version "1.0.0-alpha.22"
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-1.0.0-alpha.22.tgz#7a120377b52aa9bbb94d0b8541a014026be9289b"
   integrity sha512-kSyAt0AeVU6N7ZonfV6dP6iZF8B7Bce+tk3eujXhzBGsLg0VSLnU7uE9VqJF0xdQrHR91ZjGgVMieo/8df9KTA==
+
+react-native-simple-radio-button@2.7.3:
+  version "2.7.3"
+  resolved "https://registry.yarnpkg.com/react-native-simple-radio-button/-/react-native-simple-radio-button-2.7.3.tgz#c7227c0f963d6bbcfa245255d18a5a8b98fde41f"
+  integrity sha512-kiYRarFj7PXzV9fbQwMBiYwS4YnhrR4NZGT68atlFIoNFxZLrt5OMCDqXZqu6R6bUWKLndzPpO/nhXc6/OU1Mg==
 
 react-native-snap-carousel@^3.8.0:
   version "3.8.0"

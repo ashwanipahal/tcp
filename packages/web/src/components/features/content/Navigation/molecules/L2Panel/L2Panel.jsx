@@ -67,10 +67,15 @@ const renderL3Panel = (hasSubCategories, index, l3Drawer, hideL3Drawer, name, su
   );
 };
 
-const createLinks = (links, column, categoryIndex, { openL3Drawer, hideL3Drawer, l3Drawer }) => {
+const createLinks = (
+  links,
+  column,
+  categoryIndex,
+  { openL3Drawer, hideL3Drawer, l3Drawer, className }
+) => {
   if (links.length) {
     return (
-      <ul>
+      <ul className={className}>
         {links.map((l2Links, index) => {
           const {
             categoryContent: { id, name, seoToken, mainCategory },
@@ -80,15 +85,10 @@ const createLinks = (links, column, categoryIndex, { openL3Drawer, hideL3Drawer,
           const classForRedContent = id === '505519' ? `highlighted` : ``;
           const currentIndex = column > 1 ? index + 7 : index;
           const hasSubCategories = subCategories && subCategories.length > 0;
-          const Wrapper = hasSubCategories ? BodyCopy : Anchor;
 
           return (
             <li data-locator={`l2_col_${categoryIndex}_link_${currentIndex}`}>
-              <Wrapper
-                to={`/c/${seoToken}`}
-                component="div"
-                onClick={openL3Drawer(`l3-drawer-${index.toString()}`)}
-              >
+              <Anchor to={`/c/${seoToken}`} onClick={openL3Drawer(`l3-drawer-${index.toString()}`)}>
                 <BodyCopy
                   className="l2-nav-link"
                   fontFamily="secondary"
@@ -100,7 +100,7 @@ const createLinks = (links, column, categoryIndex, { openL3Drawer, hideL3Drawer,
                   {renderPromoBadge(promoBadge, currentIndex)}
                   {renderArrowIcon(hasSubCategories)}
                 </BodyCopy>
-              </Wrapper>
+              </Anchor>
               {renderL3Panel(hasSubCategories, index, l3Drawer, hideL3Drawer, name, subCategories)}
             </li>
           );
@@ -154,6 +154,10 @@ const L2Panel = props => {
             };
             const firstCol = panelData[category].slice(0, 7);
             const secondCol = panelData[category].slice(7);
+            let columnClass = '';
+            if (firstCol.length && secondCol.length) {
+              columnClass = 'half-width';
+            }
             const hideOnMobileClass = category === 'Lorem Ipsum' ? 's-display-none' : '';
             return (
               <React.Fragment>
@@ -173,11 +177,13 @@ const L2Panel = props => {
                       openL3Drawer,
                       hideL3Drawer,
                       l3Drawer,
+                      className: { columnClass },
                     })}
                     {createLinks(secondCol, 2, categoryIndex, {
                       openL3Drawer,
                       hideL3Drawer,
                       l3Drawer,
+                      className: { columnClass },
                     })}
                   </div>
                 </Col>

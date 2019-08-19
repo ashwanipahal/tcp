@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { routerPush } from '../../../../../utils';
 import CreateAccountView from '../views/CreateAccountView';
 import { createAccount, resetCreateAccountErr } from './CreateAccount.actions';
 import {
@@ -10,7 +11,11 @@ import {
   getError,
   getLabels,
 } from './CreateAccount.selectors';
-import { openOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
+import { getUserLoggedInState } from '../../LoginPage/container/LoginPage.selectors';
+import {
+  closeOverlayModal,
+  openOverlayModal,
+} from '../../../OverlayModal/container/OverlayModal.actions';
 
 export class CreateAccountContainer extends React.Component {
   static propTypes = {
@@ -24,6 +29,9 @@ export class CreateAccountContainer extends React.Component {
     isIAgreeChecked: PropTypes.bool,
     resetAccountError: PropTypes.func,
     labels: PropTypes.shape({}),
+    isUserLoggedIn: PropTypes.bool,
+    closeOverlay: PropTypes.func,
+    navigation: PropTypes.shape({}),
   };
 
   static defaultProps = {
@@ -37,7 +45,34 @@ export class CreateAccountContainer extends React.Component {
     isIAgreeChecked: false,
     resetAccountError: () => {},
     labels: {},
+    closeOverlay: () => {},
+    isUserLoggedIn: false,
+    navigation: {},
   };
+
+  constructor(props) {
+    super(props);
+    import('../../../../../utils')
+      .then(({ isMobileApp, navigateToNestedRoute }) => {
+        this.hasMobileApp = isMobileApp;
+        this.hasNavigateToNestedRoute = navigateToNestedRoute;
+      })
+      .catch(error => {
+        console.log('error: ', error);
+      });
+  }
+
+  componentDidUpdate(prevProps) {
+    const { isUserLoggedIn, closeOverlay, onRequestClose } = this.props;
+    if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
+      if (this.hasMobileApp()) {
+        onRequestClose({ getComponentId: { login: '', createAccount: '' } });
+      } else {
+        closeOverlay();
+        routerPush('/', '/home');
+      }
+    }
+  }
 
   componentWillUnmount() {
     const { resetAccountError } = this.props;
@@ -51,6 +86,11 @@ export class CreateAccountContainer extends React.Component {
       component: 'login',
       variation: 'primary',
     });
+  };
+
+  openModal = params => {
+    const { openOverlay } = this.props;
+    openOverlay(params);
   };
 
   render() {
@@ -75,6 +115,7 @@ export class CreateAccountContainer extends React.Component {
         error={error}
         onAlreadyHaveAnAccountClick={this.onAlreadyHaveAnAccountClick}
         onRequestClose={onRequestClose}
+        openModal={this.openModal}
       />
     );
   }
@@ -85,6 +126,7 @@ export const mapStateToProps = state => {
     isIAgreeChecked: getIAgree(state),
     hideShowPwd: getHideShowPwd(state),
     confirmHideShowPwd: getConfirmHideShowPwd(state),
+    isUserLoggedIn: getUserLoggedInState(state),
     error: getError(state),
     labels: getLabels(state),
   };
@@ -94,6 +136,9 @@ export const mapDispatchToProps = dispatch => {
   return {
     createAccountAction: payload => {
       dispatch(createAccount(payload));
+    },
+    closeOverlay: () => {
+      dispatch(closeOverlayModal());
     },
     openOverlay: payload => {
       dispatch(openOverlayModal(payload));

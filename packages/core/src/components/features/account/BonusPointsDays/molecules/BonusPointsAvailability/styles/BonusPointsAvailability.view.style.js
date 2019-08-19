@@ -8,9 +8,12 @@ const styles = css`
   }
   .availability-btn {
     font-size: ${props => props.theme.typography.fontSizes.fs10};
+    pointer-events: none;
+    color: ${props => props.theme.colorPalette.gray[900]};
   }
   .disable-btn {
     opacity: 0.5;
+    color: ${props => props.theme.colorPalette.gray[700]};
   }
   .availability-btn:hover {
     background: ${props => props.theme.colorPalette.white};

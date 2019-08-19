@@ -2,8 +2,12 @@ import styled, { css } from 'styled-components';
 import { Carousel, LinkText } from '..';
 
 const StyledLinkText = styled(LinkText)`
-  margin-top: 44px;
+  margin-top: 16px;
   display: inline-block;
+
+  @media ${props => props.theme.mediaQuery.medium} {
+    margin-top: 40px;
+  }
 
   .link-text {
     margin-bottom: 0;
@@ -12,18 +16,16 @@ const StyledLinkText = styled(LinkText)`
 
 const StyledCarousel = styled(Carousel)`
   .slick-arrow {
-    top: 44%;
+    background-size: 100% 100%;
+    height: 42px;
+    width: 13px;
+    z-index: 1;
   }
   .slick-next {
-    height: 52px;
-    right: 30px;
-    width: 15px;
+    right: 36px;
   }
   .slick-prev {
-    height: 52px;
-    left: 30px;
-    width: 15px;
-    z-index: 1;
+    left: 36px;
   }
   .slick-dots {
     bottom: 26px;
@@ -55,14 +57,33 @@ const style = css`
   }
 
   .tcp_carousel_wrapper .slick-list {
-    min-height: 350px;
+    max-height: 311px;
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      max-height: 406px;
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      max-height: 474px;
+    }
   }
 
+  .button-list-container.imageCTAList,
   .button-list-container.stackedCTAList,
   .button-list-container.scrollCTAList {
+    margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
+  }
+
+  .button-list-container.stackedCTAList {
+    border-left: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+    border-top: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
+    margin-top: 0;
+
     @media ${props => props.theme.mediaQuery.medium} {
+      border-left: 0;
+      border-top: 0;
       margin-top: ${props => props.theme.spacing.ELEM_SPACING.XL};
-      margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
     }
   }
 
@@ -80,7 +101,7 @@ const style = css`
 
   @media ${props => props.theme.mediaQuery.large} {
     .tcp_carousel_wrapper .tcp_carousel__play {
-      left: 47%;
+      left: ${props => (props.largeCompImageCarousel.length > 4 ? '46%' : '47%')};
     }
   }
 `;

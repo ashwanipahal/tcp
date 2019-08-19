@@ -17,14 +17,12 @@ exports[`MyRewards should render correctly 1`] = `
       fontSize="fs14"
       fontWeight="regular"
       mobileFontFamily="secondary"
-      text=""
     />
     <Styled(BodyCopy)
       data-locator="no_rewards_msg"
       fontSize="fs14"
       fontWeight="regular"
       mobileFontFamily="secondary"
-      text=""
     />
   </Styled(View)>
   <Styled(CustomButton)
@@ -35,6 +33,7 @@ exports[`MyRewards should render correctly 1`] = `
     disableButton={false}
     fill="BLUE"
     fullWidth=""
+    locator=""
     style={
       Object {
         "fontWeight": "400",
@@ -50,6 +49,7 @@ exports[`MyRewards should render correctly 1`] = `
       customStyle={Object {}}
       data-locator="my-rewards-program-details"
       fontSizeVariation="medium"
+      locator=""
       onPress={[Function]}
       text=""
       underline={true}
@@ -61,6 +61,7 @@ exports[`MyRewards should render correctly 1`] = `
         customStyle={Object {}}
         data-locator="my-rewards-tnc"
         fontSizeVariation="medium"
+        locator=""
         noLink={true}
         onPress={[Function]}
         text=""

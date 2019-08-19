@@ -17,14 +17,14 @@ class CouponDetailModal extends React.PureComponent<Props> {
   };
 
   renderModal = () => {
-    const { labels, coupon, className, applyToBag } = this.props;
+    const { labels, coupon, className, applyToBag, onRequestClose } = this.props;
     return (
       <div className={className}>
         <BodyCopy
           fontWeight="bold"
           fontFamily="secondaryFontFamily"
           className="couponModal_modalTitle"
-          dataLocator="coupondetailmodalconfirmtext"
+          data-locator={`couponDetailModal_${coupon.status}_NameLbl`}
         >
           {coupon.title}
         </BodyCopy>
@@ -32,18 +32,26 @@ class CouponDetailModal extends React.PureComponent<Props> {
           fontWeight="bold"
           fontFamily="secondaryFontFamily"
           className="couponModal_modalSubTitle"
-          dataLocator="coupondetailmodalconfirmtext"
+          data-locator={`couponDetailModal_${coupon.status}_ValidityDateLbl`}
         >
           {`${labels.USE_BY_TEXT} ${coupon.expirationDate}`}
         </BodyCopy>
-        <div className="couponModal_modalbarcode">{coupon.id}</div>
+        <div
+          className="couponModal_modalbarcode"
+          data-locator={`couponDetailModal_${coupon.status}_BarCode`}
+        >
+          {coupon.id}
+        </div>
         <div className="couponModal_btnWrapper">
           <Button
             buttonVariation="fixed-width"
             fill="BLUE"
-            onClick={applyToBag}
+            onClick={() => {
+              onRequestClose();
+              applyToBag(coupon);
+            }}
             className="couponModal_applyToBag couponModal_btn"
-            dataLocator="coupondetailmodalyesdeletebtn"
+            data-locator={`couponDetailModal_${coupon.status}_AddToBagBtn`}
           >
             {labels.APPLY_TO_BAG}
           </Button>
@@ -53,7 +61,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
             underline
             anchorVariation="primary"
             fontSize="fs14"
-            data-locator="couponcard-help-applying"
+            data-locator={`couponDetailModal_${coupon.status}_printAch`}
             to="/#"
             onClick={this.printClick}
             className="couponModal_print_anchor"
@@ -64,23 +72,23 @@ class CouponDetailModal extends React.PureComponent<Props> {
         <BodyCopy
           fontFamily="secondaryFontFamily"
           className="couponModal_modalLongDesc"
-          dataLocator="coupondetailmodalconfirmtext"
+          data-locator={`couponDetailModal_${coupon.status}_LongDesc`}
         >
           {`${labels.MODAL_LONG_DESCRIPTION}`}
         </BodyCopy>
         <BodyCopy
           fontFamily="secondaryFontFamily"
-          className="couponModal_modalLongDesc"
-          dataLocator="coupondetailmodalconfirmtext"
+          className="couponModal_modalShortDesc"
+          data-locator={`couponDetailModal_${coupon.status}_ShortDesc`}
         >
           {`${labels.MODAL_SHORT_DESCRIPTION}`}
           <Anchor
             underline
             anchorVariation="primary"
             fontSize="fs14"
-            data-locator="couponcard-help-applying"
+            data-locator={`couponDetailModal_${coupon.status}_tAndC`}
             onClick={this.tAndCClick}
-            className="couponModal_print_anchor"
+            className="couponModal_print_anchortext"
           >
             {`${labels.TERMS_AND_CONDITIONS}`}
           </Anchor>
@@ -90,9 +98,9 @@ class CouponDetailModal extends React.PureComponent<Props> {
             underline
             anchorVariation="primary"
             fontSize="fs14"
-            data-locator="couponcard-help-applying"
+            data-locator={`couponDetailModal_${coupon.status}_pp`}
             onClick={this.tAndCClick}
-            className="couponModal_print_anchor"
+            className="couponModal_print_anchortext"
           >
             {`${labels.PRIVACY_POLICY}`}
           </Anchor>
@@ -110,7 +118,7 @@ class CouponDetailModal extends React.PureComponent<Props> {
         overlayClassName="TCPModal__Overlay"
         className="TCPModal__Content"
         maxWidth="616px"
-        minHeight="500px"
+        minHeight="540px"
         fixedWidth
         closeIconDataLocator="coupondetailmodalcrossicon"
       >

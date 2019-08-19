@@ -3,16 +3,28 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AccountDrawerView from '../views/AccountDrawerView';
 import labels from '../AccountDrawer.labels';
-import { openOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
-import { getUserName } from '../../LoginPage/container/LoginPage.selectors';
+import {
+  openOverlayModal,
+  closeOverlayModal,
+} from '../../../OverlayModal/container/OverlayModal.actions';
+import { getUserFullName, isPlccUser } from '../../LoginPage/container/LoginPage.selectors';
 
-export const AccountDrawerContainer = ({ className, userName }) => {
-  return <AccountDrawerView className={className} labels={labels} userName={userName} />;
+export const AccountDrawerContainer = ({ className, plccUser, userName, closedOverlay }) => {
+  return (
+    <AccountDrawerView
+      className={className}
+      labels={labels}
+      closedOverlay={closedOverlay}
+      userName={userName}
+      plccUser={plccUser}
+    />
+  );
 };
 
 export const mapStateToProps = state => {
   return {
-    userName: getUserName(state),
+    userName: getUserFullName(state),
+    plccUser: isPlccUser(state),
   };
 };
 
@@ -21,6 +33,9 @@ export const mapDispatchToProps = dispatch => {
     openOverlay: payload => {
       dispatch(openOverlayModal(payload));
     },
+    closedOverlay: payload => {
+      dispatch(closeOverlayModal(payload));
+    },
   };
 };
 
@@ -28,6 +43,8 @@ AccountDrawerContainer.propTypes = {
   className: PropTypes.string,
   labels: PropTypes.shape({}),
   userName: PropTypes.string,
+  closedOverlay: PropTypes.func.isRequired,
+  plccUser: PropTypes.bool,
 };
 
 AccountDrawerContainer.defaultProps = {
@@ -40,6 +57,7 @@ AccountDrawerContainer.defaultProps = {
     CREATE_ACC_SIGN_OUT: 'Sign Out',
   },
   userName: '',
+  plccUser: false,
 };
 
 export default connect(

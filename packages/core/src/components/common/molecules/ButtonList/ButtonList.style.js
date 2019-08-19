@@ -8,8 +8,13 @@ export default css`
   .stacked-button {
     flex-grow: 1;
     width: 50%;
+
     button {
       width: 100%;
+      border-width: 0 1px 1px 0;
+      @media ${props => props.theme.mediaQuery.medium} {
+        border-width: 1px;
+      }
     }
   }
 
@@ -32,6 +37,7 @@ export default css`
     display: flex;
     flex-wrap: nowrap;
     padding-right: 15px;
+    justify-content: center;
   }
   .scroll-button {
     margin-left: 15px;
@@ -68,6 +74,10 @@ export default css`
     }
   }
 
+  .stacked-cta-wrapper-class {
+    font-size: 13px;
+  }
+
   @media ${props => props.theme.mediaQuery.medium} {
     padding-bottom: 20px;
     > div:first-child {
@@ -75,7 +85,14 @@ export default css`
     }
     .stacked-button {
       width: 100%;
-      margin-left: 15px;
+      margin-left: 9px;
+      :first-child {
+        margin-left: 0;
+      }
+
+      button {
+        width: 141px;
+      }
     }
     .stacked-cta-wrapper {
       display: flex;
@@ -113,8 +130,8 @@ export default css`
     }
 
     &.stack-comp-wrapper {
-      flex-wrap: nowrap;
-      padding-right: 15px;
+      display: table;
+      margin: 0 auto;
     }
   }
 
@@ -127,6 +144,9 @@ export default css`
     .stacked-button {
       flex-grow: 0;
       width: auto;
+      button {
+        width: 210px;
+      }
     }
     .scroll-button {
       width: auto;
@@ -135,6 +155,9 @@ export default css`
     &.stack-comp-wrapper,
     &.scroll-comp-wrapper {
       justify-content: center;
+    }
+    .stacked-cta-wrapper-class {
+      font-size: 14px;
     }
   }
 

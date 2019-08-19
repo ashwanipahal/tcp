@@ -17,4 +17,11 @@ export default {
       },
     ],
   },
+  IMG_DATA: {
+    crops: [
+      'c_fill,g_face:center,q_auto:best,h_622,w_750',
+      'c_fill,g_face:center,q_auto:best,h_406,w_768',
+      'c_fill,g_face:center,q_auto:best,h_474,w_1410',
+    ],
+  },
 };

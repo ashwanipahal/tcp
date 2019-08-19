@@ -33,7 +33,7 @@ const textboxStyles = css`
     border-bottom: 1px solid ${props => props.theme.colors.FOOTER.DIVIDER};
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
     margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.XS};
-    padding-top: ${props => props.theme.spacing.ELEM_SPACING.MED};
+    padding-top: ${props => props.theme.spacing.ELEM_SPACING.LRG};
 
     ${props =>
       props.meta &&
@@ -94,6 +94,20 @@ const textboxStyles = css`
   }
 
   ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
+
+  .TextBox__error {
+    display: flex;
+    flex-direction: row;
+  }
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 15px;
+    width: 15px;
+    margin-right: 4px;
+    margin-top: 2px;
+  }
 `;
 
 export default textboxStyles;

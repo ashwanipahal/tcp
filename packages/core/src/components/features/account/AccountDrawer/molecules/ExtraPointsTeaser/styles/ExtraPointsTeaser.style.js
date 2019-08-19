@@ -8,6 +8,9 @@ const Styles = css`
   .extraPointsWrapper {
     background-color: ${props => props.theme.colorPalette.orange[300]};
   }
+  .extraPointsWrapper_plcc {
+    background-color: ${props => props.theme.colorPalette.userTheme.plccLight};
+  }
 `;
 
 export default Styles;

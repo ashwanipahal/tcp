@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import styles from '../styles/OverlayModal.style';
+import { scrollPage } from '../../../../../../utils';
 
 const propTypes = {
   component: PropTypes.string,
@@ -38,6 +39,7 @@ class OverlayModal extends React.Component {
     /* istanbul ignore else */
     if (this.body) {
       this.body.addEventListener('mousedown', this.handleWindowClick);
+      this.body.classList.add('no-scroll');
     }
     this.getCustomStyles({ styleModal: true });
   }
@@ -46,6 +48,7 @@ class OverlayModal extends React.Component {
     const { component: nextTargetComponent } = this.props;
     const { component: prevTargetComponent } = prevProps;
     if (nextTargetComponent !== prevTargetComponent) {
+      scrollPage();
       return this.getCustomStyles({ styleModal: false });
     }
     return null;
@@ -59,6 +62,7 @@ class OverlayModal extends React.Component {
     /* istanbul ignore else */
     if (this.body) {
       this.body.removeEventListener('mousedown', this.handleWindowClick);
+      this.body.classList.remove('no-scroll');
     }
   }
 
@@ -70,10 +74,10 @@ class OverlayModal extends React.Component {
     const modalTriangle = document.getElementById('modalTriangle');
     const modalTrianglePos =
       modalTriangle && window && modalTriangle.getBoundingClientRect().y + window.scrollY;
-    modal.style.maxHeight = this.body && `${this.body.clientHeight - modalTrianglePos - 20}px`;
+    modal.style.maxHeight = this.body && `${this.body.clientHeight - modalTrianglePos - 60}px`;
     /* istanbul ignore else */
     if (compRectBoundingX && compWidth && modalRectBoundingX && modalTriangle) {
-      modalTriangle.style.left = `${compRectBoundingX - modalRectBoundingX + compWidth / 2 - 8}px`;
+      modalTriangle.style.left = `${compRectBoundingX - modalRectBoundingX + compWidth - 20}px`;
     }
   };
 

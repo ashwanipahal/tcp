@@ -2,7 +2,12 @@
 
 exports[`Payment View should render correctly 1`] = `
 <View
+  cardList={Object {}}
+  checkbalanceValueInfo={Object {}}
   className=""
+  creditCardList={Object {}}
+  deleteModalMountedState={false}
+  giftCardList={Object {}}
   labels={
     Object {
       "common": Object {},
@@ -10,6 +15,12 @@ exports[`Payment View should render correctly 1`] = `
       "paymentGC": Object {},
     }
   }
+  onDeleteCard={Object {}}
+  onGetBalanceCard={[Function]}
+  setDefaultPaymentMethod={[Function]}
+  setDeleteModalMountState={false}
+  setDeleteModalMountedState={false}
+  venmoCardList={Object {}}
 >
   <ScrollViewMock
     showsVerticalScrollIndicator={false}
@@ -18,10 +29,58 @@ exports[`Payment View should render correctly 1`] = `
       <Styled(BodyCopy)
         fontSize="fs16"
         fontWeight="extrabold"
-        text=""
       />
     </Styled(Text)>
     <Styled(View) />
+    <Styled(OffersSection)
+      labels={
+        Object {
+          "common": Object {},
+          "giftCard": "Payment",
+          "paymentGC": Object {},
+        }
+      }
+    />
+    <Styled(Cards)
+      cardImage={
+        Object {
+          "testUri": "../../../src/assets/images/credit-card.png",
+        }
+      }
+      cardList={Object {}}
+      checkbalanceValueInfo={null}
+      labels={
+        Object {
+          "common": Object {},
+          "giftCard": "Payment",
+          "paymentGC": Object {},
+        }
+      }
+      onGetBalanceCard={null}
+      setDefaultPaymentMethod={[Function]}
+      setSelectedCard={[Function]}
+      toggleModal={[Function]}
+    />
+    <Styled(Cards)
+      cardImage={
+        Object {
+          "testUri": "../../../src/assets/images/gift-card.png",
+        }
+      }
+      cardList={Object {}}
+      checkbalanceValueInfo={Object {}}
+      labels={
+        Object {
+          "common": Object {},
+          "giftCard": "Payment",
+          "paymentGC": Object {},
+        }
+      }
+      onGetBalanceCard={[Function]}
+      setDefaultPaymentMethod={null}
+      setSelectedCard={[Function]}
+      toggleModal={[Function]}
+    />
   </ScrollViewMock>
 </View>
 `;
@@ -55,6 +114,7 @@ exports[`Payment View should render correctly with cardList 1`] = `
       },
     ]
   }
+  checkbalanceValueInfo={Object {}}
   className=""
   creditCardList={
     Immutable.List [
@@ -83,6 +143,7 @@ exports[`Payment View should render correctly with cardList 1`] = `
       },
     ]
   }
+  deleteModalMountedState={false}
   giftCardList={
     Immutable.List [
       Object {
@@ -117,7 +178,13 @@ exports[`Payment View should render correctly with cardList 1`] = `
       "paymentHeading": "Payment",
     }
   }
+  onDeleteCard={Object {}}
+  onGetBalanceCard={[Function]}
+  setDefaultPaymentMethod={[Function]}
+  setDeleteModalMountState={false}
+  setDeleteModalMountedState={false}
   showNotification="success"
+  venmoCardList={Object {}}
 >
   <ScrollViewMock
     showsVerticalScrollIndicator={false}
@@ -126,7 +193,6 @@ exports[`Payment View should render correctly with cardList 1`] = `
       <Styled(BodyCopy)
         fontSize="fs16"
         fontWeight="extrabold"
-        text=""
       />
     </Styled(Text)>
     <Styled(View) />
@@ -181,7 +247,9 @@ exports[`Payment View should render correctly with cardList 1`] = `
         }
       }
       onGetBalanceCard={null}
-      setDefaultPaymentMethod={null}
+      setDefaultPaymentMethod={[Function]}
+      setSelectedCard={[Function]}
+      toggleModal={[Function]}
     />
     <Styled(Cards)
       cardImage={
@@ -216,7 +284,7 @@ exports[`Payment View should render correctly with cardList 1`] = `
           },
         ]
       }
-      checkbalanceValueInfo={null}
+      checkbalanceValueInfo={Object {}}
       labels={
         Object {
           "common": Object {},
@@ -224,8 +292,10 @@ exports[`Payment View should render correctly with cardList 1`] = `
           "paymentHeading": "Payment",
         }
       }
-      onGetBalanceCard={null}
+      onGetBalanceCard={[Function]}
       setDefaultPaymentMethod={null}
+      setSelectedCard={[Function]}
+      toggleModal={[Function]}
     />
   </ScrollViewMock>
 </View>

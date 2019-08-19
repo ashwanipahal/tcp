@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 export const ActionsWrapper = styled.View`
   display: flex;
   flex: 1;
+  ${props => (props.inheritedStyles ? props.inheritedStyles : '')};
 `;
 
 export const ButtonWrapper = styled.View`
@@ -28,6 +29,7 @@ export const CheckoutButton = styled.TouchableOpacity`
   height: 42px;
   justify-content: center;
   align-items: center;
+  margin-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 `;
 
 export default {

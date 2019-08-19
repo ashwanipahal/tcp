@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { UrlHandler, getScreenWidth } from '@tcp/core/src/utils';
+import { getScreenWidth } from '@tcp/core/src/utils';
 import Button from '../../../atoms/Button';
 import LinkText from '../../LinkText';
 
@@ -21,7 +21,7 @@ class ModuleK extends React.PureComponent {
    * @param {Object} item : Grid image object which has keys mediaList, promoTextBanner, SingleCTAButton.
    * @return {Node} : Returns Image element.
    */
-  renderCarouselSlide = ({ item }) => {
+  renderCarouselSlide = ({ item }, navigation) => {
     const { mediaLinkedList, slideIndex, promoBanner, singleCTAButton } = item;
 
     return (
@@ -32,11 +32,18 @@ class ModuleK extends React.PureComponent {
               <PromoBanner
                 testID={`moduleK_promobanner_text_${slideIndex}`}
                 promoBanner={promoBanner}
+                navigation={navigation}
               />
             </PromoTextBannerWrapper>
           )}
         </HeaderWrapper>
-        <ImageGrid testID={`moduleK_image_${slideIndex}`} mediaList={mediaLinkedList} />
+        {mediaLinkedList && (
+          <ImageGrid
+            testID={`moduleK_image_${slideIndex}`}
+            mediaList={mediaLinkedList}
+            navigation={navigation}
+          />
+        )}
         {singleCTAButton && (
           <WrapperView width={getScreenWidth()}>
             <Button
@@ -45,7 +52,8 @@ class ModuleK extends React.PureComponent {
               buttonVariation="variable-width"
               text={singleCTAButton.text || `Shop Now`}
               testID={`moduleK_button_set_${slideIndex}`}
-              onPress={() => UrlHandler(singleCTAButton.url)}
+              url={singleCTAButton.url}
+              navigation={navigation}
             />
           </WrapperView>
         )}
@@ -75,18 +83,19 @@ class ModuleK extends React.PureComponent {
             />
           )}
         </HeaderWrapper>
-        <Carousel
-          data={indexedMasonryGrid}
-          renderItem={this.renderCarouselSlide}
-          height={MODULE_HEIGHT}
-          width={MODULE_WIDTH}
-          carouselConfig={{
-            autoplay: true,
-          }}
-          autoplayInterval={autoplayInterval * 1000}
-          defaultAutoplay
-          showDots
-        />
+        {indexedMasonryGrid && (
+          <Carousel
+            data={indexedMasonryGrid}
+            renderItem={item => this.renderCarouselSlide(item, navigation)}
+            height={MODULE_HEIGHT}
+            width={MODULE_WIDTH}
+            carouselConfig={{
+              autoplay: true,
+            }}
+            autoplayInterval={autoplayInterval * 1000}
+            showDots
+          />
+        )}
       </MainWrapper>
     );
   }

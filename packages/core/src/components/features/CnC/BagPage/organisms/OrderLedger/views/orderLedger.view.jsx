@@ -36,7 +36,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
               fontFamily="secondary"
               textAlign="left"
               fontWeight="semibold"
-              fontSize="fs16"
+              fontSize="fs13"
             >
               {`${labels.itemsLabel} (${itemsCount}):`}
             </BodyCopy>
@@ -47,7 +47,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
               color="primary"
               fontFamily="secondary"
               fontWeight="semibold"
-              fontSize="fs16"
+              fontSize="fs13"
               textAlign="right"
             >
               {`${currencySymbol}${subTotal.toFixed(2)}`}
@@ -65,7 +65,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
                 color="primary"
                 fontFamily="secondary"
                 fontWeight="semibold"
-                fontSize="fs16"
+                fontSize="fs13"
               >
                 {`${labels.couponsLabel}:`}
               </BodyCopy>
@@ -76,7 +76,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
                 color="primary"
                 fontFamily="secondary"
                 fontWeight="semibold"
-                fontSize="fs16"
+                fontSize="fs13"
                 textAlign="right"
               >
                 {`-${currencySymbol}${couponsTotal.toFixed(2)}`}
@@ -95,7 +95,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
                 color="primary"
                 fontFamily="secondary"
                 fontWeight="semibold"
-                fontSize="fs16"
+                fontSize="fs13"
               >
                 {`${labels.promotionsLabel}`}
               </BodyCopy>
@@ -106,7 +106,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
                 color="primary"
                 fontFamily="secondary"
                 fontWeight="semibold"
-                fontSize="fs16"
+                fontSize="fs13"
                 textAlign="right"
               >
                 {`-${currencySymbol}${savingsTotal.toFixed(2)}`}
@@ -124,7 +124,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
               color="primary"
               fontFamily="secondary"
               fontWeight="semibold"
-              fontSize="fs16"
+              fontSize="fs13"
             >
               {`${labels.shippingLabel}:`}
             </BodyCopy>
@@ -135,7 +135,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
               color="primary"
               fontFamily="secondary"
               fontWeight="semibold"
-              fontSize="fs16"
+              fontSize="fs13"
               textAlign="right"
             >
               {/* eslint-disable-next-line no-nested-ternary */}
@@ -159,7 +159,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
               color="primary"
               fontFamily="secondary"
               fontWeight="semibold"
-              fontSize="fs16"
+              fontSize="fs13"
             >
               {`${labels.taxLabel}:`}
             </BodyCopy>
@@ -170,7 +170,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
               color="primary"
               fontFamily="secondary"
               fontWeight="semibold"
-              fontSize="fs16"
+              fontSize="fs13"
               textAlign="right"
             >
               {`${currencySymbol}${taxesTotal.toFixed(2)}`}
@@ -189,7 +189,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
                   color="primary"
                   fontFamily="secondary"
                   fontWeight="semibold"
-                  fontSize="fs16"
+                  fontSize="fs13"
                 >
                   {`${labels.totalLabel}:`}
                 </BodyCopy>
@@ -200,7 +200,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
                   color="primary"
                   fontFamily="secondary"
                   fontWeight="semibold"
-                  fontSize="fs16"
+                  fontSize="fs13"
                   textAlign="right"
                 >
                   {`${currencySymbol}${grandTotal.toFixed(2)}`}
@@ -217,7 +217,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
                   color="primary"
                   fontFamily="secondary"
                   fontWeight="semibold"
-                  fontSize="fs16"
+                  fontSize="fs13"
                 >
                   {`${labels.giftcardsLabel}:`}
                 </BodyCopy>
@@ -228,7 +228,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
                   color="primary"
                   fontFamily="secondary"
                   fontWeight="semibold"
-                  fontSize="fs16"
+                  fontSize="fs13"
                   textAlign="right"
                 >
                   {`-${currencySymbol}${giftCardsTotal.toFixed(2)}`}
@@ -248,7 +248,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
               color="primary"
               fontFamily="secondary"
               fontWeight="extrabold"
-              fontSize="fs18"
+              fontSize="fs16"
             >
               {giftCardsTotal ? `${labels.balanceLabel}:` : `${labels.totalLabel}:`}
             </BodyCopy>
@@ -260,44 +260,46 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
               color="primary"
               fontFamily="secondary"
               fontWeight="extrabold"
-              fontSize="fs18"
+              fontSize="fs16"
               textAlign="right"
             >
               {`${currencySymbol}${orderBalanceTotal.toFixed(2)}`}
             </BodyCopy>
           </Col>
         </Row>
-        <Row
-          className="total-order-savings rowMargin"
-          data-locator={getLocator('order_ledger_total_order_savings_label')}
-        >
-          <Col colSize={{ large: 6, medium: 4, small: 3 }}>
-            <BodyCopy
-              bodySize="one"
-              color="primary"
-              fontFamily="secondary"
-              fontWeight="semibold"
-              fontSize="fs16"
-            >
-              {`${labels.totalSavingsLabel}`}
-              <ReactToolTip id="tool" direction="top" message={labels.tooltipText}>
-                <Image alt="info" className="circle-info-image" src={getIconPath(`info-icon`)} />
-              </ReactToolTip>
-            </BodyCopy>
-          </Col>
-          <Col colSize={{ large: 6, medium: 4, small: 3 }}>
-            <BodyCopy
-              bodySize="one"
-              color="primary"
-              fontFamily="secondary"
-              fontWeight="semibold"
-              fontSize="fs16"
-              textAlign="right"
-            >
-              {`${currencySymbol}${totalOrderSavings.toFixed(2)}`}
-            </BodyCopy>
-          </Col>
-        </Row>
+        {totalOrderSavings ? (
+          <Row
+            className="total-order-savings rowMargin"
+            data-locator={getLocator('order_ledger_total_order_savings_label')}
+          >
+            <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+              <BodyCopy
+                bodySize="one"
+                color="primary"
+                fontFamily="secondary"
+                fontWeight="semibold"
+                fontSize="fs13"
+              >
+                {`${labels.totalSavingsLabel}`}
+                <ReactToolTip id="tool" direction="top" message={labels.tooltipText}>
+                  <Image alt="info" className="circle-info-image" src={getIconPath(`info-icon`)} />
+                </ReactToolTip>
+              </BodyCopy>
+            </Col>
+            <Col colSize={{ large: 6, medium: 4, small: 3 }}>
+              <BodyCopy
+                bodySize="one"
+                color="primary"
+                fontFamily="secondary"
+                fontWeight="semibold"
+                fontSize="fs13"
+                textAlign="right"
+              >
+                {`${currencySymbol}${totalOrderSavings.toFixed(2)}`}
+              </BodyCopy>
+            </Col>
+          </Row>
+        ) : null}
       </Grid>
     </React.Fragment>
   );

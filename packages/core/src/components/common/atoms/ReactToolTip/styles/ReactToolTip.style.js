@@ -2,6 +2,9 @@ import { css } from 'styled-components';
 
 // need to handle for direction props.
 
+const transformX100 = 'translateX(-100%)';
+const transformX50 = 'translateX(-50%)';
+
 const tooltipStyle = css`
   position: relative;
   cursor: default;
@@ -12,18 +15,35 @@ const tooltipStyle = css`
     position: absolute;
     z-index: 99;
     bottom: 100%;
-    left: 50%;
-    padding-bottom: 4px;
-    transform: translateX(-50%);
+    padding-bottom: 10px;
+    left: ${props => (props.aligned === 'right' ? '26px' : '50%')};
+    transform: ${props => (props.aligned === 'right' ? transformX100 : transformX50)};
+    min-width: ${props => (props.minWidth ? `${props.minWidth}` : '320px')};
+
     ::after {
-      border-left: 4px solid transparent;
-      border-right: 4px solid transparent;
-      border-top: 4px solid ${props => props.theme.colors.WHITE};
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 10px solid ${props => props.theme.colors.WHITE};
       bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
+      transform: ${props => (props.aligned === 'right' ? transformX100 : transformX50)};
       content: '';
       position: absolute;
+      right: 0;
+    }
+
+    ::before {
+      border-left: 13px solid transparent;
+      border-right: 13px solid transparent;
+      border-top: 11px solid rgba(163, 162, 162, 0.31);
+      transform: ${props => (props.aligned === 'right' ? transformX100 : transformX50)};
+      content: '';
+      position: absolute;
+      right: -8px;
+      bottom: -2px;
+    }
+
+    @media ${props => props.theme.mediaQuery.medium} {
+      left: 36px;
     }
   }
 

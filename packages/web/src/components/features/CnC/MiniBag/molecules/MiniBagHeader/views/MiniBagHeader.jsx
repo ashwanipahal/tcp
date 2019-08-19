@@ -16,24 +16,32 @@ type Props = {
   cartItemCount: any,
   className: string,
   userName: any,
+  currentPoints: any,
+  totalRewards: any,
 };
-const MiniBagHeader = ({ labels, cartItemCount, className, userName }: Props) => {
-  const data = {
-    points: 50,
-    rewardsPoints: 0,
-  };
-
+const MiniBagHeader = ({
+  labels,
+  cartItemCount,
+  className,
+  userName,
+  currentPoints,
+  totalRewards,
+}: Props) => {
   return (
     <div className={className}>
       <Row className="mainWrapper">
         <Col className="subHeaderText" colSize={{ small: 4, medium: 6, large: 9 }}>
           {!userName ? (
             <BodyCopy component="span" fontSize="fs12" textAlign="left">
-              <Anchor fontSizeVariation="small" anchorVariation="primary" noLink to="">
+              <Anchor fontSizeVariation="large" anchorVariation="primary" noLink to="">
                 {labels.createAccount}
               </Anchor>
-              {` | `}
-              <Anchor fontSizeVariation="small" anchorVariation="primary" noLink>
+              <Anchor
+                className="rightLink"
+                fontSizeVariation="large"
+                anchorVariation="primary"
+                noLink
+              >
                 {labels.logIn}
               </Anchor>
             </BodyCopy>
@@ -49,7 +57,7 @@ const MiniBagHeader = ({ labels, cartItemCount, className, userName }: Props) =>
                 fontWeight="semibold"
                 textAlign="left"
               >
-                {`(${data.points} ${labels.points}, $${data.rewardsPoints} ${labels.inRewards} )`}
+                {`(${currentPoints} ${labels.points}, $${totalRewards} ${labels.inRewards} )`}
               </BodyCopy>
             </>
           )}
@@ -64,17 +72,16 @@ const MiniBagHeader = ({ labels, cartItemCount, className, userName }: Props) =>
             />
           </Anchor>
           {'  '}
-          <Anchor fontSizeVariation="small" anchorVariation="primary" noLink>
-            <Image
-              alt="Product"
-              className="product-image"
-              src={getIconPath('cart-icon')}
-              data-locator="addedtobag-bag-icon"
-            />
-            <BodyCopy className="cartCount" component="span" fontWeight="semibold" fontSize="fs10">
-              {cartItemCount || 0}
-            </BodyCopy>
-          </Anchor>
+
+          <Image
+            alt="Product"
+            className="product-image"
+            src={getIconPath('cart-icon')}
+            data-locator="addedtobag-bag-icon"
+          />
+          <BodyCopy className="cartCount" component="span" fontWeight="semibold" fontSize="fs10">
+            {cartItemCount || 0}
+          </BodyCopy>
         </Col>
       </Row>
     </div>

@@ -1,16 +1,23 @@
 const totalImageSlides = 4;
 const imageSlides = [];
+const images = [
+  'https://test5.childrensplace.com/image/upload/v1565680164/sarah-doody-x_XipCfA3Qc-unsplash_e38rjo.jpg',
+  'https://test5.childrensplace.com/image/upload/v1565680148/the-honest-company-fgn7ZRTmaWQ-unsplash_awrysz.jpg',
+  'https://test5.childrensplace.com/image/upload/v1565680148/vishnu-r-nair-Wd-dXc2X37o-unsplash_lljie8.jpg',
+  'https://test5.childrensplace.com/image/upload/v1565680141/alexander-dummer-x4jRmkuDImo-unsplash_ptu9ul.jpg',
+  'https://test5.childrensplace.com/image/upload/v1565680140/christian-fickinger-MDIGo4Ez-0g-unsplash_jkpwgf.jpg',
+];
 const ctaTypes = ['stackedCTAList', 'linkCTAList', 'scrollCTAList', 'imageCTAList'];
-
 // eslint-disable-next-line no-plusplus
 for (let i = 1; i <= totalImageSlides; i++) {
   /*   const gymboreeHeaderTextItems = [
     {
       text: 'Spring is Every Wear',
-      style: 'style11',
+      style: 'style1',
     },
   ];
 
+  // eslint-disable-next-line no-unused-vars
   const gymboreePromoTextItems = [
     {
       text: 'The whole bunch is blooming in purple and pastel pops - just in time for Easter fun!',
@@ -18,8 +25,9 @@ for (let i = 1; i <= totalImageSlides; i++) {
     },
   ]; */
 
+  // eslint-disable-next-line no-unused-vars
   const tcpHeaderTextItems = [{ text: `ENTER SITE ${i}`, style: 'style1' }];
-
+  // eslint-disable-next-line no-unused-vars
   const tcpPromoTextItems = [
     { text: '60 % OFF', style: 'style7' },
     { text: '50% Off', style: 'style8' },
@@ -55,13 +63,12 @@ for (let i = 1; i <= totalImageSlides; i++) {
     linkedImage: [
       {
         image: {
-          url:
-            'https://tcp-dam-test-ressh.cloudinary.com/image/upload/v1565258432/module-a-banner-image-4_utecpx.jpg',
+          url: images[i],
           alt: `Family Tees Image ${i}`,
           title: 'Family Tees title',
-          crop_d: 'c_crop,g_face:center,q_auto:best,w_1410',
-          crop_t: 'c_crop,g_face:center,q_auto:best,w_768',
-          crop_m: 'c_crop,g_face:center,q_auto:best,w_375,h_311',
+          crop_d: '',
+          crop_t: '',
+          crop_m: '',
         },
         link: {
           url: '/image/url',

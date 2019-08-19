@@ -23,6 +23,10 @@ const styles = css`
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
     border-bottom: 1px solid ${props => props.theme.colors.BORDER.NORMAL};
   }
+
+  @media ${props => props.theme.mediaQuery.medium} {
+    min-height: 450px;
+  }
 `;
 
 export default styles;
