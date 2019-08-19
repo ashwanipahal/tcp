@@ -1,10 +1,10 @@
 import React from 'react';
-import { Text } from 'react-native';
+import FPO from '../../../core/src/components/common/atoms/FPO/views/FPO.view.native';
 
 const Login = () => {
   return (
     <React.Fragment>
-      <Text> wallet page </Text>
+      <FPO />
     </React.Fragment>
   );
 };
