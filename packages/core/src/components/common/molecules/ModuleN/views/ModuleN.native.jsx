@@ -11,27 +11,33 @@ import {
   ContainerView,
   DivImageCTAContainer,
 } from '../ModuleN.styles.native';
-import moduleN from '../mock';
-
-const datamoduleN = { ...moduleN };
 
 /**
  * @param {object} props : Props for Module N multi type of banner list, button list, header text.
  * @desc This is Module N global component. It has capability to display
- * featured content module with 1 backckground color tiles ,links and a CTA Button list.
+ * featured content module with 1 background color tiles ,links and a CTA Button list.
  * Author can surface teaser content leading to corresponding pages.
  */
 
+// TODO: keys will be changed once we get the actual data from CMS
+const ctaTypes = {
+  stackedCTAList: 'stackedCTAList',
+  linkCTAList: 'linkCTAList',
+  scrollCTAList: 'scrollCTAList',
+  imageCTAList: 'imageCTAList',
+};
+
 const ModuleN = (props: Props) => {
-  const { navigation } = props;
   const {
+    ctaItems,
     headerText,
+    navigation,
     promoBanner,
-    stackedCTAButtons,
-    divImageCTACarousel,
-    scrollCTAButtons,
-    linkList,
-  } = datamoduleN.moduleN.composites;
+    set: [set = {}],
+  } = props;
+
+  const ctaType = ctaTypes[set.val];
+
   return (
     <Container background="red">
       {headerText && (
@@ -56,45 +62,46 @@ const ModuleN = (props: Props) => {
           />
         )}
       </PromoTextBannerWrapper>
-      {divImageCTACarousel && (
+
+      {ctaType === 'imageCTAList' && (
         <DivImageCTAContainer>
           <ButtonList
-            buttonListVariation="imageCTAList"
+            buttonListVariation={ctaType}
             navigation={navigation}
-            divImageCTACarousel={divImageCTACarousel}
+            buttonsData={ctaItems}
             locator="moduleN_cta_links"
           />
         </DivImageCTAContainer>
       )}
 
-      {stackedCTAButtons && (
+      {ctaType === 'stackedCTAList' && (
         <ContainerView>
           <ButtonList
-            buttonListVariation="stackedCTAList"
+            buttonListVariation={ctaType}
             navigation={navigation}
-            stackedCTAButtons={stackedCTAButtons}
+            buttonsData={ctaItems}
             locator="moduleN_cta_links"
           />
           <Border background="red" />
         </ContainerView>
       )}
 
-      {scrollCTAButtons && (
+      {ctaType === 'scrollCTAList' && (
         <ButtonContainer>
           <ButtonList
-            buttonListVariation="scrollCTAList"
+            buttonListVariation={ctaType}
             navigation={navigation}
-            scrollCTAButtons={scrollCTAButtons}
+            buttonsData={ctaItems}
             locator="moduleN_cta_links"
           />
         </ButtonContainer>
       )}
-      {linkList && (
+      {ctaType === 'linkCTAList' && (
         <ButtonContainer>
           <ButtonList
-            buttonListVariation="linkCTAList"
+            buttonListVariation={ctaType}
             navigation={navigation}
-            linkList={linkList}
+            buttonsData={ctaItems}
             locator="moduleN_cta_links"
           />
         </ButtonContainer>

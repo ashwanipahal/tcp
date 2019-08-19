@@ -30,8 +30,8 @@ class HomePageView extends React.Component {
           {slotD && <SlotD {...slotD} navigation={navigation} />}
           <SlotF
             name="moduleN"
-            set={moduleNMockData.set}
-            {...moduleNMockData.composites}
+            set={moduleNMockData.moduleN.set}
+            {...moduleNMockData.moduleN.composites}
             {...slotF}
             navigation={navigation}
           />

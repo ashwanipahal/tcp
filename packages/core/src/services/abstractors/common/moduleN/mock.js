@@ -142,7 +142,7 @@ export default {
     set: [
       {
         key: 'ctaType',
-        val: ctaTypes[3],
+        val: ctaTypes[0],
       },
     ],
   },
