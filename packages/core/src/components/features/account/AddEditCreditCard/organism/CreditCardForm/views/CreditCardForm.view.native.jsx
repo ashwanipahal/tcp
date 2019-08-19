@@ -52,10 +52,13 @@ class CreditCardForm extends React.PureComponent<Props, State> {
 
   constructor(props) {
     super(props);
-    const { onFileAddresskey } = props;
+    const { expMonthOptionsMap, expYearOptionsMap, onFileAddresskey } = props;
+
     this.state = {
       addAddressMount: false,
       selectedAddress: onFileAddresskey,
+      selectedYear: expYearOptionsMap[1].id,
+      selectedMonth: expMonthOptionsMap[0].id,
     };
   }
 
@@ -89,6 +92,13 @@ class CreditCardForm extends React.PureComponent<Props, State> {
     dispatch(change('addEditCreditCard', 'onFileAddressKey', item));
   };
 
+  updateExpiryDate = (month, year) => {
+    this.setState({
+      selectedYear: year,
+      selectedMonth: month,
+    });
+  };
+
   toggleModal = () => {
     const { addAddressMount } = this.state;
     this.setState({
@@ -96,20 +106,18 @@ class CreditCardForm extends React.PureComponent<Props, State> {
     });
   };
 
+  submitCardInformation = () => {
+    const { selectedYear, selectedMonth } = this.state;
+    const { handleSubmit, dispatch } = this.props;
+
+    // Setting form value to take dropdown values.
+    dispatch(change('addEditCreditCard', 'expYear', selectedYear));
+    dispatch(change('addEditCreditCard', 'expMonth', selectedMonth));
+    handleSubmit();
+  };
+
   render() {
-    const {
-      className,
-      labels,
-      addressLabels,
-      addressList,
-      onFileAddressKey,
-      isEdit,
-      pristine,
-      invalid,
-      handleSubmit,
-      initialValues,
-      onClose,
-    } = this.props;
+    const { labels, addressLabels, addressList, isEdit, invalid, onClose } = this.props;
     const { addAddressMount, selectedAddress } = this.state;
     const dropDownStyle = {
       height: 30,
@@ -123,7 +131,7 @@ class CreditCardForm extends React.PureComponent<Props, State> {
     return (
       <CreditCardContainer>
         <CreditCardWrapper>
-          <CreditCardFields {...this.props} />
+          <CreditCardFields {...this.props} updateExpiryDate={this.updateExpiryDate} />
         </CreditCardWrapper>
         <AddressWrapper>
           <Heading
@@ -179,8 +187,7 @@ class CreditCardForm extends React.PureComponent<Props, State> {
             buttonVariation="variable-width"
             text={isEdit ? labels.common.lbl_common_updateCTA : labels.common.lbl_common_addCTA}
             style={AddAddressButton}
-            onPress={handleSubmit}
-            type="submit"
+            onPress={this.submitCardInformation}
             external
           />
           <Button

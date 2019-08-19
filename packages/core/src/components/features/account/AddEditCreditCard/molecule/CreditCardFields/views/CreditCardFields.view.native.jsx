@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, change } from 'redux-form';
+import { Field } from 'redux-form';
 import DropDown from '@tcp/core/src/components/common/atoms/DropDown/views/DropDown.native';
 import CreditCardNumber from '../../CreditCardNumber';
 import {
@@ -12,28 +12,23 @@ import {
 export class CreditCardFields extends React.PureComponent<Props> {
   constructor(props) {
     super(props);
-    const { expMonthOptionsMap, expYearOptionsMap, dispatch } = props;
+    const { expMonthOptionsMap, expYearOptionsMap } = props;
     this.state = {
       selectedYear: expYearOptionsMap[1].label,
       selectedMonth: expMonthOptionsMap[0].label,
     };
-    // Setting form value to take initial dropdown values.
-    dispatch(change('addEditCreditCard', 'expYear', expYearOptionsMap[1].id));
-    dispatch(change('addEditCreditCard', 'expMonth', expMonthOptionsMap[0].id));
   }
 
   render() {
     const {
       labels,
       cardTypeImgUrl,
-      isExpirationRequired,
       isPLCCEnabled,
       cardType,
-      className,
       expMonthOptionsMap,
       expYearOptionsMap,
       dto,
-      dispatch,
+      updateExpiryDate,
     } = this.props;
     const { selectedMonth, selectedYear } = this.state;
     const dropDownStyle = {
@@ -69,7 +64,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
             dataLocator="addEditCreditCard-expMonth1"
             onValueChange={itemValue => {
               this.setState({ selectedMonth: itemValue });
-              dispatch(change('addEditCreditCard', 'expMonth', itemValue));
+              updateExpiryDate(itemValue, selectedYear);
             }}
             variation="secondary"
             selectedValue={selectedMonth}
@@ -86,7 +81,7 @@ export class CreditCardFields extends React.PureComponent<Props> {
             itemStyle={{ ...itemStyle }}
             onValueChange={itemValue => {
               this.setState({ selectedYear: itemValue });
-              dispatch(change('addEditCreditCard', 'expYear', itemValue));
+              updateExpiryDate(selectedMonth, itemValue);
             }}
             selectedValue={selectedYear}
           />
@@ -102,21 +97,17 @@ CreditCardFields.propTypes = {
     lbl_payment_expMonth: '',
     lbl_payment_expYear: '',
   }),
-  isExpirationRequired: PropTypes.bool,
   cardTypeImgUrl: PropTypes.string,
   isPLCCEnabled: PropTypes.bool,
   cardType: PropTypes.string,
-  className: PropTypes.string,
   dto: PropTypes.shape({}),
 };
 
 CreditCardFields.defaultProps = {
   labels: {},
-  isExpirationRequired: true,
   cardTypeImgUrl: '',
   cardType: '',
   isPLCCEnabled: true,
-  className: '',
   dto: {},
 };
 
