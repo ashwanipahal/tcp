@@ -25,31 +25,10 @@ import {
 import LoginView from '../views';
 
 class LoginPageContainer extends React.PureComponent {
-  hasMobileApp;
-
-  hasNavigateToNestedRoute;
-
-  constructor(props) {
-    super(props);
-    import('../../../../../utils')
-      .then(({ isMobileApp, navigateToNestedRoute }) => {
-        this.hasMobileApp = isMobileApp;
-        this.hasNavigateToNestedRoute = navigateToNestedRoute;
-      })
-      .catch(error => {
-        console.log('error: ', error);
-      });
-  }
-
   componentDidUpdate(prevProps) {
     const { isUserLoggedIn, closeOverlay } = this.props;
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
-      if (this.hasMobileApp()) {
-        const { navigation } = this.props;
-        this.hasNavigateToNestedRoute(navigation, 'HomeStack', 'home');
-      } else {
-        closeOverlay();
-      }
+      closeOverlay();
     }
   }
 
@@ -80,6 +59,7 @@ class LoginPageContainer extends React.PureComponent {
       successFullResetEmail,
       currentForm,
       queryParams,
+      onRequestClose,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage || labels.login.lbl_login_error : '';
     const initialValues = {
@@ -102,6 +82,7 @@ class LoginPageContainer extends React.PureComponent {
         successFullResetEmail={successFullResetEmail}
         currentForm={currentForm}
         queryParams={queryParams}
+        onRequestClose={onRequestClose}
       />
     );
   }
@@ -125,6 +106,7 @@ LoginPageContainer.propTypes = {
   successFullResetEmail: PropTypes.bool.isRequired,
   currentForm: PropTypes.string,
   queryParams: PropTypes.shape({}),
+  onRequestClose: PropTypes.shape({}).isRequired,
 };
 
 LoginPageContainer.defaultProps = {
