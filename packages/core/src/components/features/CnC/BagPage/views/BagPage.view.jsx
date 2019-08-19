@@ -35,7 +35,6 @@ const BagPageView = ({ className, labels, totalCount, orderItemsCount }: Props) 
         </Col>
       </Row>
       <CnCTemplate
-        labels={labels}
         leftSection={() => <ProductTileWrapper bagLabels={labels} pageView={myBag} />}
         showLeftSection={isNoNEmptyBag}
         bagActions={() => (

@@ -15,9 +15,11 @@ class CnCTemplate extends React.PureComponent<Props> {
       bagActions: BagActions,
       showLeftSection,
       className,
+      header: Header,
     } = this.props;
     return (
       <section className={className}>
+        {Header && <Header />}
         <Row>
           <Col
             colSize={{ small: 6, medium: showLeftSection ? 5 : 8, large: showLeftSection ? 8 : 12 }}
@@ -41,12 +43,14 @@ class CnCTemplate extends React.PureComponent<Props> {
 CnCTemplate.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   bagActions: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
+  header: PropTypes.oneOfType([PropTypes.bool, PropTypes.node]),
   leftSection: PropTypes.node.isRequired,
   showLeftSection: PropTypes.bool,
 };
 
 CnCTemplate.defaultProps = {
   bagActions: false,
+  header: false,
   showLeftSection: true,
 };
 
