@@ -76,6 +76,19 @@ exports[`Selectbox component renders correctly with touched and error 1`] = `
     </option>
   </select>
   <Styled(BodyCopy)
+    className="select__label"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  >
+    first name for user
+  </Styled(BodyCopy)>
+  <Styled(BodyCopy)
     className={null}
     color="error"
     component="div"
@@ -118,5 +131,16 @@ exports[`Selectbox component renders correctly with touched and warning 1`] = `
       Canada
     </option>
   </select>
+  <Styled(BodyCopy)
+    className="select__label"
+    color="text.primary"
+    component="p"
+    fontFamily="secondary"
+    fontSize="fs12"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="left"
+  />
 </div>
 `;
