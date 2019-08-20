@@ -1,6 +1,8 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import endpoints from '@tcp/core/src/service/endpoint';
 import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/EmailSmsSignup';
+import { getAPIConfig } from '@tcp/core/src/utils';
+
 import EMAIL_SIGNUP_CONSTANTS from './SmsSignupModal.constants';
 import { smsSignupStatus } from './SmsSignupModal.actions';
 
@@ -9,7 +11,7 @@ export function* subscribeSms({ payload }) {
     const { baseURI, relURI, method } = endpoints.addSmsSignup;
     const params = {
       payload: JSON.stringify({
-        acquisition_id: 'ikhNl0Te', // TODO - change the acquisition id as per env
+        acquisition_id: getAPIConfig().ACQUISITION_ID,
         mobile_phone: {
           mdn: payload.replace(/\D/g, ''),
         },
