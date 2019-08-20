@@ -26,7 +26,7 @@ exports[`ProfileInfoActionTile should render correctly 1`] = `
     />
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className="msg-cont"
+    className="msg-cont elem-pl-SM elem-pr-SM"
     color="text.primary"
     component="div"
     fontFamily="primary"
@@ -54,10 +54,10 @@ exports[`ProfileInfoActionTile should render correctly 1`] = `
       color="text.primary"
       component="p"
       fontFamily="secondary"
-      fontSize={12}
+      fontSize="fs14"
       fontWeight="regular"
       letterSpacing="normal"
-      lineHeight="normal"
+      lineHeight="lh107"
       textAlign="center"
     >
       test
@@ -98,7 +98,7 @@ exports[`ProfileInfoActionTile should render correctly when activityCompletionSt
     />
   </Styled(BodyCopy)>
   <Styled(BodyCopy)
-    className="msg-cont"
+    className="msg-cont elem-pl-SM elem-pr-SM"
     color="text.primary"
     component="div"
     fontFamily="primary"
@@ -126,10 +126,10 @@ exports[`ProfileInfoActionTile should render correctly when activityCompletionSt
       color="text.primary"
       component="p"
       fontFamily="secondary"
-      fontSize={12}
+      fontSize="fs14"
       fontWeight="regular"
       letterSpacing="normal"
-      lineHeight="normal"
+      lineHeight="lh107"
       textAlign="center"
     >
       test

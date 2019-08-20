@@ -47,11 +47,11 @@ export const ProfileInfoActionTile = ({
           className="tile-icon"
         />
       </BodyCopy>
-      <BodyCopy className="msg-cont" component="div">
+      <BodyCopy className="msg-cont elem-pl-SM elem-pr-SM" component="div">
         <BodyCopy textAlign="center" fontFamily="secondary" fontSize="fs16" fontWeight="extrabold">
           {titleToShow}
         </BodyCopy>
-        <BodyCopy textAlign="center" fontFamily="secondary">
+        <BodyCopy textAlign="center" fontFamily="secondary" fontSize="fs14" lineHeight="lh107">
           {activityDescription}
         </BodyCopy>
       </BodyCopy>
