@@ -124,6 +124,19 @@ exports[`FooterMiddleDesktop component renders correctly 1`] = `
       }
     />
   </Styled(Col)>
+  <OpenLoginModal
+    data={
+      Object {
+        "buttons": Object {
+          "cancel": "labels.common.lbl_common_dontDelete",
+          "confirm": "labels.common.lbl_common_YesDelete",
+        },
+        "description": "selectedAddress",
+        "heading": "labels.addressBook.ACC_LBL_DELETE_ADDRESS_HEADING",
+        "title": "labels.addressBook.ACC_LBL_DELETE_ADDRESS_TITLE",
+      }
+    }
+  />
 </Fragment>
 `;
 
@@ -252,5 +265,18 @@ exports[`FooterMiddleDesktop component renders correctly 2`] = `
       }
     />
   </Styled(Col)>
+  <OpenLoginModal
+    data={
+      Object {
+        "buttons": Object {
+          "cancel": "labels.common.lbl_common_dontDelete",
+          "confirm": "labels.common.lbl_common_YesDelete",
+        },
+        "description": "selectedAddress",
+        "heading": "labels.addressBook.ACC_LBL_DELETE_ADDRESS_HEADING",
+        "title": "labels.addressBook.ACC_LBL_DELETE_ADDRESS_TITLE",
+      }
+    }
+  />
 </Fragment>
 `;

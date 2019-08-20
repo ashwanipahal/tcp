@@ -1,4 +1,4 @@
-import { call, takeLatest, put } from 'redux-saga/effects';
+import { call, takeLatest, put, select } from 'redux-saga/effects';
 // import { validateReduxCache } from '../../../../../utils/cache.util';
 import ADDEDTOBAG_CONSTANTS from '../AddedToBag.constants';
 import {
@@ -13,10 +13,17 @@ export function* addToCartEcom({ payload }) {
     const sku = payload.skuInfo.skuId;
     const qty = payload.quantity;
     const { wishlistItemId } = payload;
+    const apiConfigParams = yield select(
+      state =>
+        (state && {
+          catalogId: state.APIConfig.catalogId,
+          storeId: state.APIConfig.storeId,
+          langId: state.APIConfig.langId,
+        }) ||
+        {}
+    ) || {};
     const params = {
-      storeId: 10151,
-      catalogId: 10551,
-      langId: '-1',
+      ...apiConfigParams,
       orderId: '.',
       field2: '0',
       requesttype: 'ajax',

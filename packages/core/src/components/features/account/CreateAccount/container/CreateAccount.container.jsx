@@ -66,7 +66,7 @@ export class CreateAccountContainer extends React.Component {
     const { isUserLoggedIn, closeOverlay, onRequestClose } = this.props;
     if (!prevProps.isUserLoggedIn && isUserLoggedIn) {
       if (this.hasMobileApp()) {
-        onRequestClose();
+        onRequestClose({ getComponentId: { login: '', createAccount: '' } });
       } else {
         closeOverlay();
         routerPush('/', '/home');
@@ -80,11 +80,11 @@ export class CreateAccountContainer extends React.Component {
   }
 
   onAlreadyHaveAnAccountClick = e => {
-    const { openOverlay , setLoginModalMountState } = this.props;
+    const { openOverlay, setLoginModalMountState } = this.props;
     e.preventDefault();
-    if(setLoginModalMountState) {
+    if (setLoginModalMountState) {
       setLoginModalMountState({
-        component: 'login'
+        component: 'login',
       });
     } else {
       openOverlay({
@@ -92,12 +92,11 @@ export class CreateAccountContainer extends React.Component {
         variation: 'primary',
       });
     }
-   
   };
 
   openModal = params => {
-    const { openOverlay , setLoginModalMountState } = this.props;
-    if(setLoginModalMountState) {
+    const { openOverlay, setLoginModalMountState } = this.props;
+    if (setLoginModalMountState) {
       setLoginModalMountState(params);
     } else {
       openOverlay(params);

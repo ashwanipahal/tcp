@@ -3,8 +3,9 @@ import LoginPageReducer from '../LoginPage.reducer';
 import { setLoginInfo, resetLoginInfo } from '../LoginPage.actions';
 
 describe('LoginPage reducer', () => {
-  const initialState = null;
-
+  const initialState = fromJS({
+    loginModalMountedState: false,
+  });
   it('should return default state', () => {
     expect(LoginPageReducer(undefined, {})).toEqual(initialState);
   });
@@ -22,7 +23,9 @@ describe('LoginPage reducer', () => {
       firstName: 'test',
     };
     const state = fromJS(payload);
-    const expectedState = null;
+    const expectedState = fromJS({
+      loginModalMountedState: false,
+    });
     expect(LoginPageReducer(state, resetLoginInfo())).toEqual(expectedState);
   });
 });

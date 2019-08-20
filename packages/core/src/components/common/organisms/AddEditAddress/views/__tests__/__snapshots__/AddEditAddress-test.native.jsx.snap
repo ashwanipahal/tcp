@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddEditAddress Native should render correctly 1`] = `
+<View
+  addressFormLabels={Object {}}
+  isEdit={false}
+  isMakeDefaultDisabled={false}
+  submitAddressFormAction={[Function]}
+  verifyAddressAction={[Function]}
+>
+  <ScrollViewMock
+    showsVerticalScrollIndicator={false}
+  >
+    <Styled(Text)>
+      <Styled(BodyCopy)
+        fontSize="fs16"
+        fontWeight="extrabold"
+      />
+    </Styled(Text)>
+    <Styled(View) />
+    <ReduxForm
+      addressFormLabels={Object {}}
+      destroyOnUnmount={true}
+      enableReinitialize={true}
+      forceUnregisterOnUnmount={false}
+      form="AddressForm"
+      getFormState={[Function]}
+      isEdit={false}
+      isMakeDefaultDisabled={false}
+      keepDirtyOnReinitialize={false}
+      onSubmit={[Function]}
+      persistentSubmitErrors={false}
+      pure={true}
+      shouldAsyncValidate={[Function]}
+      shouldError={[Function]}
+      shouldValidate={[Function]}
+      shouldWarn={[Function]}
+      submitAddressFormAction={[Function]}
+      submitAsSideEffect={false}
+      touchOnBlur={true}
+      touchOnChange={false}
+      updateUnregisteredFields={false}
+      validate={[Function]}
+    />
+  </ScrollViewMock>
+</View>
+`;
