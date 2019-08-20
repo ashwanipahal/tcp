@@ -15,7 +15,7 @@ import DefaultPaymentSaga from '@tcp/core/src/components/features/account/Paymen
 import { AddGiftCardSaga } from '@tcp/core/src/components/features/account/Payment/AddGiftCard/container/AddGiftCard.saga';
 import AddedToBagSaga from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.saga';
 import DeleteAddressSaga from '@tcp/core/src/components/features/account/AddressBook/container/DeleteAddress.saga';
-import BonusPointsSaga from '@tcp/core/src/components/features/account/BonusPointsDays/container/BonusPointsDays.saga';
+import BonusPointsSaga from '@tcp/core/src/components/common/organisms/BonusPointsDays/container/BonusPointsDays.saga';
 import { SetDefaultShippingAddressSaga } from '@tcp/core/src/components/features/account/AddressBook/container/DefaultShippingAddress.saga';
 import AddressVerificationSaga from '@tcp/core/src/components/common/organisms/AddressVerification/container/AddressVerification.saga';
 import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';

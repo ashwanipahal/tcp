@@ -37,6 +37,7 @@ const OrderLedger = ({ className, ledgerSummaryData, labels }) => {
               textAlign="left"
               fontWeight="semibold"
               fontSize="fs13"
+              dataLocator="orderLedgerCount"
             >
               {`${labels.itemsLabel} (${itemsCount}):`}
             </BodyCopy>

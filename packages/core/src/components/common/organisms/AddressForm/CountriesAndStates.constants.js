@@ -4,10 +4,6 @@ const countriesOptionsMap = [
 ];
 const CAcountriesStatesTable = [
   {
-    id: '',
-    displayName: 'Select',
-  },
-  {
     id: `BC`,
     fullName: 'British Columbia',
     displayName: 'BC',
@@ -75,10 +71,6 @@ const CAcountriesStatesTable = [
 ];
 
 const UScountriesStatesTable = [
-  {
-    displayName: 'Select',
-    id: '',
-  },
   {
     fullName: 'Alabama',
     displayName: 'AL',

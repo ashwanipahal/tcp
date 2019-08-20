@@ -32,6 +32,7 @@ export class BagPageContainer extends React.Component<Props> {
       labels,
       totalCount,
       orderItemsCount,
+      navigation,
       handleCartCheckout,
       showConfirmationModal,
       closeCheckoutConfirmationModal,
@@ -46,6 +47,7 @@ export class BagPageContainer extends React.Component<Props> {
         handleCartCheckout={handleCartCheckout}
         showConfirmationModal={showConfirmationModal}
         closeCheckoutConfirmationModal={closeCheckoutConfirmationModal}
+        navigation={navigation}
       />
     );
   }

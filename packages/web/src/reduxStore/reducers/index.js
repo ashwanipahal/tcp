@@ -19,7 +19,7 @@ import CartItemTile from '@tcp/core/src/components/features/CnC/CartItemTile/con
 import CartPage from '@tcp/core/src/components/features/CnC/BagPage/container/BagPage.reducer';
 import OverlayModalReducer from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.reducer';
 import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
-import BonusPointsDaysReducer from '@tcp/core/src/components/features/account/BonusPointsDays/container/BonusPointsDays.reducer';
+import BonusPointsDaysReducer from '@tcp/core/src/components/common/organisms/BonusPointsDays/container/BonusPointsDays.reducer';
 import CouponsReducer from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.reducer';
 import AccountHeaderReducer from '@tcp/core/src/components/features/account/common/organism/AccountHeader/container/AccountHeader.reducer';
 import PointsHistoryReducer from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.reducer';
