@@ -8,21 +8,23 @@ import {
   CheckoutButton,
 } from '../styles/AddedToBagActions.style.native';
 
-const AddedToBagActions = ({ labels }) => {
+const AddedToBagActions = ({ labels, showAddTobag }) => {
   return (
     <ActionsWrapper>
-      <ButtonWrapper>
-        <ViewBagButton>
-          <BodyCopy
-            textTransform="uppercase"
-            color="white"
-            fontWeight="extrabold"
-            fontFamily="secondary"
-            fontSize="fs13"
-            text={labels.viewBag && labels.viewBag.toUpperCase()}
-          />
-        </ViewBagButton>
-      </ButtonWrapper>
+      {showAddTobag && (
+        <ButtonWrapper>
+          <ViewBagButton>
+            <BodyCopy
+              textTransform="uppercase"
+              color="white"
+              fontWeight="extrabold"
+              fontFamily="secondary"
+              fontSize="fs13"
+              text={labels.viewBag && labels.viewBag.toUpperCase()}
+            />
+          </ViewBagButton>
+        </ButtonWrapper>
+      )}
       <ButtonWrapper>
         <CheckoutButton>
           <BodyCopy
@@ -40,6 +42,7 @@ const AddedToBagActions = ({ labels }) => {
 
 AddedToBagActions.propTypes = {
   labels: PropTypes.shape.isRequired,
+  showAddTobag: PropTypes.shape.isRequired,
 };
 
 export default AddedToBagActions;

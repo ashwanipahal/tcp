@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PersonalInformation component should render correctly 1`] = `
+<Styled(AccountOverviewTile)
+  ctaTitle="Edit personal Info"
+  title="Personal Information"
+>
+  <FPO
+    text=""
+  />
+</Styled(AccountOverviewTile)>
+`;
