@@ -48,7 +48,9 @@ LoginTopSection.defaultProps = {
     login: {
       lbl_login_heading: 'Welcome Back',
       lbl_login_subHeading: 'Log in to earn points for MY PLACE REWARDS ',
-      lbl_login_subDescription: `Signed up in store?\nAn online account has been created with your email! Click here to reset your password.`,
+      lbl_login_subDescription_heading_1: 'Signed up in store?\n',
+      lbl_login_subDescription_heading_2:
+        'An online account has been created with your email! Click here to reset your password.',
     },
   },
 };
