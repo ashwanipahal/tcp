@@ -71,34 +71,63 @@ const SEO_CONFIG = {
   },
 };
 
+const getAdditionalMetaTags = (property, content) => ({
+  property,
+  content,
+});
+
+const getMetaSEOTags = ({
+  title,
+  description,
+  canonical,
+  twitter,
+  openGraph,
+  hrefLangs,
+  keywords,
+  robots,
+}) => ({
+  title,
+  description,
+  canonical,
+  twitter,
+  openGraph,
+  hrefLangs,
+  additionalMetaTags: [
+    getAdditionalMetaTags(SEO_CONFIG.robots.property, robots),
+    getAdditionalMetaTags(SEO_CONFIG.keywords.property, keywords),
+    getAdditionalMetaTags(SEO_CONFIG.viewport.property, SEO_CONFIG.viewport.content),
+  ],
+});
+
 const getDefaultSEOTags = () => {
+  // After integration with CMS, this data should ideally be fetched and retrieved from Redux-State
   const { brandId, siteId } = getAPIConfig();
   const brand = brandId.toUpperCase();
   const site = siteId.toUpperCase();
   const { twitter, openGraph, hrefLangs } = SEO_CONFIG[brand];
   const { title, description, canonical } = SEO_CONFIG[brand][site];
-  return {
+  return getMetaSEOTags({
     title,
     description,
     canonical,
     twitter,
     openGraph,
     hrefLangs,
-    additionalMetaTags: [SEO_CONFIG.robots, SEO_CONFIG.viewport, SEO_CONFIG.keywords],
-  };
+    keywords: SEO_CONFIG.keywords.content,
+    robots: SEO_CONFIG.robots.content,
+  });
 };
 
 const getHomeSEOTags = () => {
   return {
-    ...getDefaultSEOTags(),
-    title: 'dummy',
+    ...getDefaultSEOTags(), // call getMetaSEOTags() with values
   };
 };
 
 export const deriveSEOTags = pageId => {
   // Please Note: Convert into switch case if you are adding more cases in this method.
   if (pageId === HOME_PAGE) {
-    return getHomeSEOTags(); // Just a sample
+    return getHomeSEOTags(); // Just a sample - any store specific data should be set in this
   }
   return getDefaultSEOTags();
 };
