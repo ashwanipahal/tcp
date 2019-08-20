@@ -5,6 +5,8 @@ exports[`AddEditAddress Native should render correctly 1`] = `
   addressFormLabels={Object {}}
   isEdit={false}
   isMakeDefaultDisabled={false}
+  onCancel={[Function]}
+  showHeading={true}
   submitAddressFormAction={[Function]}
   verifyAddressAction={[Function]}
 >
@@ -28,6 +30,7 @@ exports[`AddEditAddress Native should render correctly 1`] = `
       isEdit={false}
       isMakeDefaultDisabled={false}
       keepDirtyOnReinitialize={false}
+      onCancel={[Function]}
       onSubmit={[Function]}
       persistentSubmitErrors={false}
       pure={true}
