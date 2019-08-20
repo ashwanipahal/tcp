@@ -1,10 +1,5 @@
 import { fromJS, Map } from 'immutable';
-import {
-  getAddressResponse,
-  getUserEmail,
-  getAddressId,
-  getAddressById,
-} from '../AddEditAddress.selectors';
+import { getAddressResponse, getAddressId, getAddressById } from '../AddEditAddress.selectors';
 
 describe('#AddEditAddress selector', () => {
   it('#getAddressResponse should return addEditAddressReduer state', () => {
@@ -16,16 +11,6 @@ describe('#AddEditAddress selector', () => {
     };
 
     expect(getAddressResponse(state)).toEqual(addressResponse);
-  });
-
-  it('#getUserEmail should return user email', () => {
-    const state = {
-      LoginPageReducer: fromJS({
-        email1: 'user@user.com',
-      }),
-    };
-
-    expect(getUserEmail(state)).toEqual('user@user.com');
   });
 
   it('#getAddressId should return addressId if router is passed in props', () => {
