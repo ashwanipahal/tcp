@@ -118,6 +118,14 @@ class PaymentView extends React.Component<Props> {
       this.setState({ setDeleteModalMountedState: nextProps.deleteModalMountedState });
   };
 
+  getCardExpiryText = (labels, selectedCard) => {
+    return selectedCard && selectedCard.expMonth
+      ? `${labels.paymentGC.lbl_payment_expDate}${selectedCard.expMonth.trim()}/${
+          selectedCard.expYear
+        }`
+      : '';
+  };
+
   setSelectedCard = card => {
     this.setState({
       selectedCard: card,
@@ -189,25 +197,29 @@ class PaymentView extends React.Component<Props> {
     const { showGiftCardModal } = this.state;
     let dto = {};
     const cardImg = getIconCard(this.cardIconMapping[selectedCard.ccBrand]);
+
     if (selectedCard.ccType === 'GiftCard') {
       dto = {
         cardDescription: labels.paymentGC.lbl_payment_modalGCHeading,
         cardImage: cardImg,
-        cardDetail: `${labels.paymentGC.lbl_payment_cardNum}${selectedCard.accountNo.slice(-4)}`,
+        cardDetail: `${labels.paymentGC.lbl_payment_cardNum}`,
         accountNo: selectedCard.accountNo,
+        cardExpiry: this.getCardExpiryText(labels, selectedCard),
       };
     } else if (selectedCard.ccType === 'VENMO') {
       dto = {
         cardDescription: labels.paymentGC.lbl_payment_modalVenmoDeleteHeading,
         cardImage: cardImg,
         cardDetail: selectedCard.properties.venmoUserId,
+        cardExpiry: '',
       };
     } else {
       dto = {
         cardDescription: labels.paymentGC.lbl_payment_modalCCHeading,
         cardImage: cardImg,
-        cardDetail: `${labels.paymentGC.lbl_payment_cardNum} ${selectedCard.accountNo}`,
+        cardDetail: `${labels.paymentGC.lbl_payment_cardNum}`,
         accountNo: selectedCard.accountNo,
+        cardExpiry: this.getCardExpiryText(labels, selectedCard),
       };
     }
     return (
@@ -235,6 +247,7 @@ class PaymentView extends React.Component<Props> {
               setDefaultPaymentMethod={setDefaultPaymentMethod}
               toggleModal={this.setDeleteModalMountState}
               openUpdateModal={this.setUpdateModalMountState} // Update handler to edit card with edit story
+              setSelectedCard={this.setSelectedCard}
               setCardHandler={this.setUpdateModalMountState}
             />
           )}
@@ -272,6 +285,7 @@ class PaymentView extends React.Component<Props> {
               toggleModal={this.setDeleteModalMountState}
               onConfirm={this.onConfirm}
               onClose={this.onClose}
+              addressDetails={selectedCard.addressDetails}
             />
           )}
           {this.getPaymentModal(setUpdateModalMountedState, dto, labels, updateCardList)}

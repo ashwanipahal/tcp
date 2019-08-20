@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, SafeAreaView } from 'react-native';
 import theme from '@tcp/core/styles/themes/TCP';
+import Address from '@tcp/core/src/components/common/molecules/Address';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import {
   Style,
@@ -16,6 +17,8 @@ import {
   CenterAlign,
   ConfirmButtonWrapper,
   CloseButtonWrapper,
+  CardContainer,
+  CardExpiry,
 } from '../DeleteModal.style.native';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
 import ModalNative from '../../../../../../common/molecules/Modal';
@@ -48,14 +51,26 @@ class DeleteModal extends React.PureComponent<Props> {
   };
 
   render() {
-    const { labels, dto, setDeleteModalMountedState, toggleModal, onConfirm, onClose } = this.props;
+    const {
+      labels,
+      dto,
+      setDeleteModalMountedState,
+      toggleModal,
+      onConfirm,
+      onClose,
+      addressDetails,
+    } = this.props;
+    const cardTitle = dto.accountNo
+      ? `${dto.cardDetail} ${dto.accountNo.slice(-4)}`
+      : dto.cardDetail;
+
     return (
       <View>
         <ModalNative isOpen={setDeleteModalMountedState} onRequestClose={toggleModal}>
           <ModalHeading>
             <BodyCopy
               mobileFontFamily={['secondary']}
-              fontWeight="extrabold"
+              fontWeight="semibold"
               fontSize="fs16"
               text={labels.paymentGC.lbl_payment_modalDeleteCard}
             />
@@ -77,7 +92,17 @@ class DeleteModal extends React.PureComponent<Props> {
                 <ImgWrapper>
                   <ImageStyle source={dto.cardImage} />
                 </ImgWrapper>
-                <CardDetail>{dto.cardDetail}</CardDetail>
+                <CardContainer>
+                  <CardDetail>{cardTitle}</CardDetail>
+                  <CardExpiry>{dto.cardExpiry}</CardExpiry>
+                  <Address
+                    showCountry={false}
+                    showPhone={false}
+                    showName
+                    dataLocatorPrefix="address"
+                    address={addressDetails}
+                  />
+                </CardContainer>
               </CardDetailWrapper>
               <CenterAlign>
                 <ConfirmButtonWrapper>
