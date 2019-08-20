@@ -337,7 +337,7 @@ const getGraphQLApiFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
  *
  * @param {*} envConfig
  * @param {*} appTypeSuffix
- * @returns
+ * @returns api config for input app type
  */
 export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
   // TODO - use cookie as well..
@@ -380,7 +380,7 @@ export const createAPIConfig = (envConfig, appType) => {
  * switchAPIConfig
  * This method switches api config on brand switch in app
  *
- * @returns
+ * @returns current app api config
  */
 export const switchAPIConfig = () => {
   // reset singleton instance of graphql client
