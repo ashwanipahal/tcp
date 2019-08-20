@@ -2,7 +2,7 @@ import { css } from 'styled-components';
 
 export default css`
   .body-copy {
-    padding-bottom: 20px;
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.MED};
 
     h1 {
       font-size: ${props => props.theme.typography.fontSizes.fs22};
@@ -40,5 +40,16 @@ export default css`
 
   .read-more-trigger {
     cursor: pointer;
+  }
+
+  @media ${props => props.theme.mediaQuery.medium} {
+    .body-copy {
+      padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
+    }
+  }
+  @media ${props => props.theme.mediaQuery.large} {
+    .body-copy {
+      padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL};
+    }
   }
 `;
