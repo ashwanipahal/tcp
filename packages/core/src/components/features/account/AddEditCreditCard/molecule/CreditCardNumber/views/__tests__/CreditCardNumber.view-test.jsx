@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { CreditCardNumber } from '../CreditCardNumber.views';
+import { CreditCardNumber } from '../CreditCardNumber.view';
 
 describe('CreditCardNumber component', () => {
   it('should renders correctly when cardType is present', () => {
