@@ -76,21 +76,25 @@ export const getDefaultPlccAddress = addressDetails => {
   return null;
 };
 
-export const getProfileAddress = body => ({
-  addressId: body.addressId,
-  addressKey: body.nickName,
-  type: ADDREESS_TYPE.MAILING,
-  isComplete: !!(body.city && body.state),
-  phoneNumber: body.phone1,
-  address: {
-    addressLine1: body.addressLine && body.addressLine[0],
-    addressLine2: body.addressLine && body.addressLine[1],
-    city: body.city,
-    state: body.state,
-    country: body.country,
-    zipCode: body.zipCode,
-  },
-});
+export const getProfileAddress = body => {
+  const { addressId, nickName, city, state, phone1, addressLine, country, zipCode } = body;
+
+  return {
+    addressId,
+    addressKey: nickName,
+    type: ADDREESS_TYPE.MAILING,
+    isComplete: !!(city && state),
+    phoneNumber: phone1,
+    address: {
+      addressLine1: addressLine && addressLine[0],
+      addressLine2: addressLine && addressLine[1],
+      city,
+      state,
+      country,
+      zipCode,
+    },
+  };
+};
 
 export const getContextAttributes = body => {
   return (
