@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
 import { getPlpProducts } from './ProductListing.actions';
 import { getNavigationTree } from './ProductListing.selectors';
-import { extractCategory, processBreadCrumbs } from './ProductListing.util';
+import { processBreadCrumbs } from './ProductListing.util';
 
 class ProductListingPageContainer extends React.PureComponent {
   componentDidMount() {

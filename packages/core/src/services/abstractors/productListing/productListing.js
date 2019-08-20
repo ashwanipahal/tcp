@@ -15,13 +15,12 @@ import {
 import { extractExtraImages, FACETS_FIELD_KEY, FACETS_OPTIONS } from './productListing.utils';
 import { PRODUCTS_PER_LOAD } from '../../../components/features/browse/ProductListing/container/ProductListing.constants';
 
-function getProductByColorId(products /* , colorDetails */) {
+const getProductByColorId = (products, colorDetails) => {
   /* NOTE: we need to FISH for the product on the page in order to pull its attributes, if its not on page we wont show the swatch
   // If this needs to be changed we can default to somthing but need approval for what
   */
-  // return products.find(product => product.prodpartno === colorDetails[0]);
-  return products;
-}
+  return products.find(product => product.prodpartno === colorDetails[0]);
+};
 
 const isUnbxdFacetKey = key =>
   key.toLowerCase() !== FACETS_FIELD_KEY.unbxdDisplayName &&
@@ -60,6 +59,314 @@ function convertToColorArray(colorSwatches, id, color) {
     : colorSwatchFilter(colorSwatches.split('|'), id, color);
 }
 
+const processResponse = (
+  res,
+  isSearch,
+  breadCrumbs,
+  shouldApplyUnbxdLogic,
+  cacheFiltersAndCount
+) => {
+  const scrollPoint = isClient() ? window.sessionStorage.getItem('SCROLL_POINT') : 0;
+  if (scrollPoint) {
+    sessionStorage.setItem('SCROLL_EVENT', 1);
+  }
+
+  if (this.apiHelper.responseContainsErrors(res)) {
+    throw new ServiceResponseError(res);
+  }
+
+  if (res.body.redirect && window) {
+    location.href = res.body.redirect.value;
+  }
+
+  let pendingPromises = [];
+  // flags if we are oin an L1 plp. Such plp's have no products, and only show espots and recommendations.
+  let isDepartment = !isSearch && (!breadCrumbs || breadCrumbs.length === 1);
+  let attributesNames = this.getProductAttributes();
+  let categoryType =
+    breadCrumbs && breadCrumbs.length ? breadCrumbs[breadCrumbs.length - 1].displayName : '';
+  const l1category = breadCrumbs && breadCrumbs.length ? breadCrumbs[0].displayName : '';
+  let filters = {};
+  //Construct facets from the api response
+  const facetsList =
+    res.body.facets &&
+    res.body.facets.text &&
+    res.body.facets.text.list &&
+    res.body.facets.text.list;
+  if (facetsList) {
+    const facets = this.getFacetsAPIData(
+      facetsList,
+      getFacetSwatchImgPath,
+      res.body.response.numberOfProducts,
+      filtersAndSort
+    );
+    const unbxdDisplayName = this.getUnbxdDisplayName(facetsList);
+    filters = {
+      ...facets,
+      unbxdDisplayName: unbxdDisplayName, //Key Value object added for Facets DisplayName and FacetName mapping in UI components
+      l1category: l1category,
+    };
+  }
+
+  //We will get the avaialable l3 list in L2 page call in bucekting scenario.
+  const availableL3List =
+    res.body.facets && res.body.facets.multilevel && res.body.facets.multilevel.bucket;
+  let availableL3InFilter =
+    availableL3List && availableL3List.length && (availableL3List[0].values || []);
+  let totalProductsCount = 0;
+  totalProductsCount = res.body.response.numberOfProducts;
+
+  //This is the scenario when the subsequent L3 calls made in bucekting case. In this scenario we need to send back the filter and count, we cached
+  // from the response of page L2 call.
+  if (shouldApplyUnbxdLogic && bucketingSeqConfig.bucketingRequired) {
+    const temp = this.fetchCachedFilterAndCount();
+    filters = temp.filters;
+    // eslint-disable-next-line
+    temp.filters.l1category = l1category ? l1category : '';
+    totalProductsCount = temp.totalProductsCount;
+  }
+
+  // This is the case when we need to cache the filter and the count of the number of products in L2. This is a bucketing scenario.
+  if (shouldApplyUnbxdLogic && cacheFiltersAndCount) {
+    totalProductsCount = this.cacheFiltersAndCount(filters, availableL3InFilter);
+  }
+
+  // WHY DO WE NEED THIS??
+  let unbxdId = res.headers && res.headers['unbxd-request-id'];
+  this.setUnbxdId(unbxdId);
+
+  let entityCategory;
+  let categoryNameTop = '';
+
+  // Taking the first product in plp to get the categoryID to be sent to adobe
+  if (res.body.response && res.body.response.products.length) {
+    const firstProduct = res.body.response.products[0];
+    const categoryPath =
+      firstProduct.categoryPath2_catMap && firstProduct.categoryPath3_catMap
+        ? [...firstProduct.categoryPath2_catMap, ...firstProduct.categoryPath3_catMap]
+        : firstProduct.categoryPath2_catMap || firstProduct.categoryPath3_catMap;
+    const breadcrumbTopId = breadCrumbs && breadCrumbs.length && breadCrumbs[0].categoryId;
+    entityCategory = this.parseCategoryEntity(categoryPath, breadCrumbs);
+    categoryNameTop = getCategoryId(categoryPath, breadcrumbTopId);
+  }
+
+  let response = {
+    availableL3InFilter,
+    currentListingSearchForText: isSearch ? searchTerm.trim() : '',
+    currentListingSeoKey: searchTerm,
+    currentListingId:
+      breadCrumbs && breadCrumbs.length ? breadCrumbs[breadCrumbs.length - 1].urlPathSuffix : '',
+    currentListingName: categoryType,
+    currentListingDescription:
+      breadCrumbs && breadCrumbs.length ? breadCrumbs[breadCrumbs.length - 1].longDescription : '',
+    currentListingType:
+      breadCrumbs && breadCrumbs.length ? breadCrumbs[breadCrumbs.length - 1].displayName : '', // need to store it because it will be needed to patch the information when getting additional product information
+    isDepartment: isDepartment,
+    // An L2 can be an outfits page, if so we need to store the 3rd party tag associated with this outfits page
+    outfitStyliticsTag: isOutfitPage ? searchTerm : null, // DT-34042: dynamic outfit pages
+    filtersMaps: filters,
+    appliedFiltersIds: this.getAppliedFilters(filters, filtersAndSort),
+    totalProductsCount,
+    productsInCurrCategory: res.body.response.numberOfProducts,
+    unbxdId: unbxdId,
+    appliedSortId: sort,
+    currentNavigationIds: getCurrentNavigationIds(res),
+    breadCrumbTrail: breadCrumbs
+      ? breadCrumbs.map(crumb => ({
+          displayName: crumb.displayName,
+          urlPathSuffix: crumb.urlPathSuffix,
+        }))
+      : [],
+
+    loadedProducts: [],
+    searchResultSuggestions: res.body.didYouMean
+      ? getSearchResultSuggestions(res.body.didYouMean)
+      : null,
+    unbxdBanners:
+      res.body.banner && Array.isArray(res.body.banner.banners) ? res.body.banner.banners : null,
+    entityCategory: entityCategory,
+    categoryNameTop: categoryNameTop,
+  };
+
+  if (res.body.response) {
+    let isUSStore = this.apiHelper.configOptions.isUSStore;
+    res.body.response.products.forEach(product => {
+      // Make product list transformation
+      product.list_of_attributes = attributeListMaker(product.list_of_attributes);
+      let defaultColor = product.auxdescription ? product.auxdescription : product.TCPColor;
+      let { uniqueId } = product;
+      let colors = this.apiHelper.configOptions.isUSStore
+        ? convertToColorArray(product.TCPSwatchesUSStore, uniqueId, defaultColor)
+        : convertToColorArray(product.TCPSwatchesCanadaStore, uniqueId, defaultColor);
+      let rawColors = this.apiHelper.configOptions.isUSStore
+        ? product.TCPSwatchesUSStore
+        : product.TCPSwatchesCanadaStore;
+      let isBOPIS = isBopisProduct(isUSStore, product);
+      const bossDisabledFlags = {
+        bossProductDisabled:
+          extractAttributeValue(product, this.getProductAttributes().bossProductDisabled) || 0,
+        bossCategoryDisabled:
+          extractAttributeValue(product, this.getProductAttributes().bossCategoryDisabled) || 0,
+      };
+      let imagesByColor = extractExtraImages(
+        rawColors,
+        product.alt_img,
+        getImgPath,
+        uniqueId,
+        defaultColor,
+        false,
+        hasShortImage
+      );
+      let colorsMap = [
+        {
+          colorProductId: uniqueId,
+          imageName: product.imagename,
+          miscInfo: {
+            isClearance: extractAttributeValue(product, attributesNames.clearance),
+            isBopisEligible: isBOPIS && !this.isGiftCard(product),
+            isBossEligible: isBossProduct(bossDisabledFlags) && !this.isGiftCard(product),
+            badge1: extractPrioritizedBadge(product, attributesNames, categoryType, excludeBadge),
+            badge2: extractAttributeValue(product, attributesNames.extendedSize),
+            badge3: extractAttributeValue(product, attributesNames.merchant),
+            videoUrl: extractAttributeValue(product, attributesNames.videoUrl),
+            hasOnModelAltImages: parseBoolean(
+              extractAttributeValue(product, attributesNames.onModelAltImages)
+            ),
+            listPrice: product.min_list_price,
+            offerPrice: product.min_offer_price,
+            keepAlive: parseBoolean(extractAttributeValue(product, attributesNames.keepAlive)),
+          },
+          color: {
+            name: defaultColor,
+            imagePath: getImgPath(product.imagename).colorSwatch,
+          },
+        },
+      ];
+
+      if (!!Array.isArray(colors) === true) {
+        colors.forEach(color => {
+          let colorDetails = color.split('#');
+          // the default/selected one is already there
+          const swatchOfAvailableProduct = getProductByColorId(
+            res.body.response.products,
+            colorDetails
+          );
+          if (colorDetails[0] !== product.imagename && swatchOfAvailableProduct !== undefined) {
+            colorsMap.push({
+              colorProductId: colorDetails[0],
+              imageName: colorDetails[0],
+              miscInfo: {
+                isBopisEligible:
+                  isBopisProduct(isUSStore, swatchOfAvailableProduct) && !this.isGiftCard(product),
+                isBossEligible: isBossProduct(bossDisabledFlags) && !this.isGiftCard(product),
+                hasOnModelAltImages: parseBoolean(
+                  extractAttributeValue(swatchOfAvailableProduct, attributesNames.onModelAltImages)
+                ),
+                badge1: extractPrioritizedBadge(
+                  swatchOfAvailableProduct,
+                  attributesNames,
+                  categoryType,
+                  excludeBadge
+                ),
+                badge2: extractAttributeValue(
+                  swatchOfAvailableProduct,
+                  attributesNames.extendedSize
+                ),
+                badge3: extractAttributeValue(swatchOfAvailableProduct, attributesNames.merchant),
+                listPrice:
+                  swatchOfAvailableProduct.min_list_price ===
+                  swatchOfAvailableProduct.min_offer_price
+                    ? swatchOfAvailableProduct.min_offer_price
+                    : swatchOfAvailableProduct.min_list_price ||
+                      {
+                        value: null,
+                      }.value ||
+                      0,
+                offerPrice:
+                  swatchOfAvailableProduct.min_offer_price ||
+                  {
+                    value: null,
+                  }.value ||
+                  0,
+                keepAlive: parseBoolean(
+                  extractAttributeValue(swatchOfAvailableProduct, attributesNames.keepAlive)
+                ),
+              },
+              color: {
+                name: colorDetails[1],
+                imagePath: getImgPath(colorDetails[0]).colorSwatch,
+              },
+            });
+          }
+        });
+      }
+
+      let categoryName;
+      let childLength = bucketingSeqConfig.requiredChildren
+        ? bucketingSeqConfig.requiredChildren.length
+        : 0;
+      let catMap =
+        product.categoryPath3_fq &&
+        this.getCategoryMap(product.categoryPath3_fq, bucketingSeqConfig.desiredl1);
+      // Check if the current product has a category path attribute which containes the categories it is the part of.
+      if (product.categoryPath3) {
+        for (let idx = 0; idx < childLength; idx += 1) {
+          //DTN-7945: The product can be tagged in two L3's but as now we are triggering mutiple l3 calls in new UNBXD approach
+          //The product will get tagged to the first match it finds in its own categoryPath3_fq. but ideally it should match the
+          //current l3 for which the products are bieng fetched.
+          const requiredL3 = shouldApplyUnbxdLogic
+            ? bucketingSeqConfig.desiredL3
+            : bucketingSeqConfig.requiredChildren[idx].name;
+          let temp = product.categoryPath3.find(category => category === requiredL3);
+          if (
+            temp &&
+            catMap[bucketingSeqConfig.desiredL2] &&
+            catMap[bucketingSeqConfig.desiredL2].indexOf(temp) !== -1
+          ) {
+            categoryName = temp;
+          }
+          // if category name is found then break the loop.
+          if (categoryName) {
+            break;
+          }
+        }
+      }
+
+      response.loadedProducts.push({
+        productInfo: {
+          generalProductId: product.prodpartno,
+          name: product.product_name,
+          pdpUrl: `/${this.apiHelper.configOptions.siteId}/p/${product.seo_token || uniqueId}`,
+          shortDescription: product.product_short_description,
+          longDescription: product.product_short_description,
+          // Meeting with Varun for alignment of this value.
+          isGiftCard: this.isGiftCard(product),
+          listPrice:
+            product.min_list_price === product.min_offer_price
+              ? product.min_offer_price
+              : product.min_list_price || { value: null }.value || 0,
+          offerPrice: product.min_offer_price || { value: null }.value || 0,
+          ratings: product.TCPBazaarVoiceRating || 0,
+          reviewsCount:
+            (product.TCPBazaarVoiceReviewCount && parseInt(product.TCPBazaarVoiceReviewCount)) || 0,
+          unbxdId: res.headers && res.headers['unbxd-request-id'],
+          promotionalMessage: product.TCPLoyaltyPromotionTextUSStore || '',
+          promotionalPLCCMessage: product.TCPLoyaltyPLCCPromotionTextUSStore || '',
+          long_product_title: product.long_product_title || '',
+        },
+
+        miscInfo: {
+          rating: parseFloat(product.TCPBazaarVoiceRating) || 0,
+          // yet again, we need to dig from multiple sources just to get a simple string value
+          categoryName: categoryName,
+        },
+        colorsMap: colorsMap,
+        imagesByColor: imagesByColor,
+      });
+    });
+  }
+  return Promise.all(pendingPromises).then(() => response);
+};
 class ProductsDynamicAbstractor {
   constructor() {
     const apiHelper = {
@@ -95,127 +402,11 @@ class ProductsDynamicAbstractor {
   getUnbxdId = () => this.unbxdId;
 
   /**
-   * @function getInventoryAndFavoritsCount
-   * @summary This API will return invetory count for all sizes/fits of a requested color as well as the amount of users who favorited that color
-   * @param {String} colorProductId - This is the Id of the product you want to get, you can get this from the order summary API
-   * @example getInventoryAndFavoritsCount("863272").then((res) => {
-      {
-        favoritesCounter: 3
-        inventory: [
-          {
-            skuId: "866748"
-            inventory: "715"
-          },
-          {
-            skuId: "867958"
-            inventory: "1010"
-          },
-          {
-            skuId: "868343"
-            inventory: "0"
-          }
-        ]
-      }
-  })
-   */
-  getInventoryAndFavoritsCount(colorProductId) {
-    let payload = {
-      header: {
-        productId: colorProductId,
-      },
-      webService: endpoints.getSKUInventoryandProductCounterDetails,
-    };
-
-    return this.apiHelper
-      .webServiceCall(payload)
-      .then(res => {
-        if (this.apiHelper.responseContainsErrors(res)) {
-          throw new ServiceResponseError(res);
-        }
-        let favoritesCounter = res.body.getProductCounter;
-        let inventory = res.body.getAllSKUInventoryByProductId;
-
-        return {
-          inventory:
-            inventory &&
-            inventory[0] &&
-            inventory[0].response.map(item => ({
-              skuId: item.catentryId,
-              inventory: parseInt(item.quantity),
-            })),
-          favoritesCounter:
-            parseInt(favoritesCounter && favoritesCounter[0] && favoritesCounter[0].counter) || 0,
-        };
-      })
-      .catch(err => {
-        throw this.apiHelper.getFormattedError(err);
-      });
-  }
-
-  /**
-   * @function getProductInfoById
-   * @summary This will get product info and all color/sizes for that product
-   */
-  getProductInfoById(productColorId, getImgPath, breadCrumbs, excludeBage) {
-    const productId =
-      productColorId.indexOf('-') > -1
-        ? productColorId.split('-')[0]
-        : productColorId.indexOf('_') > -1
-        ? productColorId.split('_')[0]
-        : productColorId;
-    // eslint-disable-next-line no-param-reassign
-    productColorId =
-      productColorId.indexOf('-') > -1 ? productColorId.replace('-', '_') : productColorId; // As ProductColorId response has always _ rather than hyphen(-)
-    let payload = {
-      body: {
-        variants: true,
-        'variants.count': 100,
-        version: 'V2',
-        rows: 20,
-        pagetype: 'boolean',
-        q: productId,
-        promotion: false,
-        fields:
-          'alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,TCPFit,product_name,TCPColor,top_rated,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,categoryPath2_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,additional_styles,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,v_variant, low_offer_price, high_offer_price, low_list_price, high_list_price,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore',
-      },
-      webService: endpoints.getProductInfoById,
-    };
-
-    if (productId === 'gift') {
-      payload.body.filter = 'giftcard:1';
-      payload.body.sort = 'style_sequence asc';
-    }
-
-    return this.apiHelper
-      .webServiceCall(payload)
-      .then(res => {
-        if (this.apiHelper.responseContainsErrors(res)) {
-          throw new ServiceResponseError(res);
-        }
-        return this.parseProductFromAPI(
-          res.body.response.products,
-          productColorId,
-          false,
-          getImgPath,
-          breadCrumbs,
-          excludeBage
-        );
-      })
-      .catch(err => {
-        if (err && ((err.status >= 400 && err.status <= 404) || err.status === 500) && isClient()) {
-          window.location.href = getErrorPagePath(this.apiHelper._configOptions.siteId);
-        }
-        // throw this.apiHelper.getFormattedError(err);
-        console.log(err);
-      });
-  }
-
-  /**
    * @function filterOutNoneWishlistItems
    * @summary This will return item level info with respect to the current user, like if an item is in the users favorits
    */
   getProductsUserCustomInfo(generalProductIdsList, isPDP) {
-    let payload = {
+    const payload = {
       webService: endpoints.getListofDefaultWishlist,
     };
 
@@ -226,7 +417,7 @@ class ProductsDynamicAbstractor {
           throw new ServiceResponseError(res);
         }
 
-        let favProductsMap = {};
+        const favProductsMap = {};
 
         if (!res.body) {
           return favProductsMap;
@@ -251,205 +442,17 @@ class ProductsDynamicAbstractor {
       });
   }
 
-  /**
-   * @function getSwatchesAndSizes
-   * @summary This API will return a map of all colors and their fits/sizes. You give it a colorId and it will get all other colors that the product has
-   * @param {String} colorProductId - This is the Id of the product you want to get, you can get this from the order summary API.
-   * @return {Array<Object>} This will resolve with an Array of objects each object is a size of a given skuId. each object is a size that hold the quanitty available
-   * @example getSwatchesAndSizes("863272").then((res) => {
-     console.log(res);
-     [
-      {
-        colorProductId: 863272,
-        color: {
-          name: 'blue',
-          imagePath: 'img url'
-        },
-
-        maxAvailable: Number.MAX_VALUE,
-        hasFits: false,
-        fits: [{
-          fitName: undefined  or 'regular' or 'husky',
-          maxAvailable: Number.MAX_VALUE,
-          sizes: [
-                    {
-                      maxAvailable: Number.MAX_VALUE
-                      skuId:"749224"
-                      sizeName:"9-12 M"
-                    },
-                    {
-                      maxAvailable: Number.MAX_VALUE
-                      skuId:"749224"
-                      sizeName:"12-18 M"
-                    }
-             ]
-          }]
-      }
-      ]
-  })
-   */
-  getSwatchesAndSizes(colorProductId, imgGenerator) {
-    let payload = {
-      header: {
-        productId: colorProductId,
-      },
-      webService: endpoints.getSwatchesAndSizeInfo,
-    };
-
-    return this.apiHelper
-      .webServiceCall(payload)
-      .then(res => {
-        if (this.apiHelper.responseContainsErrors(res)) {
-          throw new ServiceResponseError(res);
-        }
-
-        return getRegularItemColorsAndSizes(this.apiHelper, res.body, imgGenerator);
-      })
-      .catch(err => {
-        throw this.apiHelper.getFormattedError(err);
-      });
-  }
-
-  setShipToHome(orderItemId, orderItemType) {
-    let payload = {
-      body: {
-        orderId: '.',
-        orderItem: [
-          {
-            orderItemId: orderItemId,
-          },
-        ],
-        x_storeLocId: '',
-        x_calculationUsage: config.UPDATE_ITEM_IN_CART.X_CALCULATION_USAGE,
-        x_isUpdateDescription: config.UPDATE_ITEM_IN_CART.X_UPDATE_DESCRIPTION,
-        x_orderitemtype: orderItemType,
-        x_updatedItemType: config.ORDER_ITEM_TYPE.ECOM, // target type of Item
-      },
-      webService: endpoints.setShipToHome,
-    };
-
-    return this.apiHelper
-      .webServiceCall(payload)
-      .then(res => {
-        if (this.apiHelper.responseContainsErrors(res)) {
-          throw new ServiceResponseError(res);
-        } else {
-          return { success: true };
-        }
-      })
-      .catch(err => {
-        throw this.apiHelper.getFormattedError(err);
-      });
-  }
-
-  /**
-   * @function addItemToCart
-   * @param {String} sku - The sku of the eleent to add to the cart
-   * @param {Number} quantity - Requested quantity
-   * @param {String} wishlistId - The id of the wishlist to which the product belongs to (if identified)
-   */
-  addItemToCart(sku, quantity, wishlistId) {
-    let payload = {
-      header: {},
-      body: {
-        // comment:62132,
-        'calculationUsage[]': '-7',
-        storeId: this.apiHelper._configOptions.storeId,
-        catalogId: this.apiHelper._configOptions.catalogId,
-        langId: this.apiHelper._configOptions.langId,
-        orderId: '.',
-        field2: '0',
-        requesttype: 'ajax',
-        catEntryId: sku,
-        quantity: quantity.toString(),
-        externalId: wishlistId,
-      },
-      webService: endpoints.addProductToCart,
-    };
-
-    return this.apiHelper
-      .webServiceCall(payload)
-      .then(res => {
-        if (this.apiHelper.responseContainsErrors(res)) {
-          throw new ServiceResponseError(res);
-        }
-        return {
-          orderId: res.body.orderId && res.body.orderId[0],
-          orderItemId: res.body.orderItemId && res.body.orderItemId[0],
-        };
-      })
-      .catch(err => {
-        throw this.apiHelper.getFormattedError(err);
-      });
-  }
-
-  /**
-   * @function getOutfitProdutsDetails
-   * @summary This API is used for outfits. You can pass the URI that will be a list of concated part numbers.
-   * vendorColorProductIdsList is a string of dash ('-') separated porduct id's of the outfits vendor
-   **/
-  getOutfitProdutsDetails(outfitId, vendorColorProductIdsList, getImgPath) {
-    let productPartNumbers = vendorColorProductIdsList.split('-');
-    let payload = {
-      body: {
-        variants: true,
-        'variants.count': 100,
-        version: 'V2',
-        pagetype: 'boolean',
-        id: productPartNumbers.join(','),
-        fields:
-          'alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPFitMessageUSSstore,top_rated,TCPFit,product_name,TCPColor,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_catMap,product_short_description,style_long_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,product_long_description,seo_token,variantCount,prodpartno,variants,v_tcpfit,v_qty,v_tcpsize,style_name,v_item_catentry_id,v_listprice,v_offerprice,v_qty,variantId,auxdescription,list_of_attributes,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,TcpBossCategoryDisabled,TcpBossProductDisabled,categoryPath2_catMap',
-      },
-      webService: endpoints.getProductDetails,
-    };
-
-    return this.apiHelper
-      .webServiceCall(payload)
-      .then(res => {
-        if (this.apiHelper.responseContainsErrors(res)) {
-          throw new ServiceResponseError(res);
-        }
-
-        let orderedProducts = res.body.response.products.sort(
-          (prev, next) => prev.requestedOrder - next.requestedOrder
-        );
-        let outFitProductsArray = [];
-        let outfitProductPromises = orderedProducts
-          .filter(product => !!product)
-          .map((product, index) => {
-            return this.parseProductFromAPI(product, product.uniqueId, true, getImgPath).then(
-              productAndBreadcrumb => {
-                outFitProductsArray[index] = productAndBreadcrumb.product;
-                return product;
-              }
-            );
-          });
-
-        return Promise.all(outfitProductPromises).then(() => {
-          return {
-            outfitId: outfitId,
-            outfitImageUrl: `https://stylitics-ampersand-production.sfo2.cdn.digitaloceanspaces.com/collage_images/outfit_collage_image/${outfitId}/original.png`, // As per our vendor this URL will never change and always contain the images
-            products: outFitProductsArray,
-            unavailableCount: productPartNumbers.length - outFitProductsArray.length,
-          };
-        });
-      })
-      .catch(err => {
-        throw this.apiHelper.getFormattedError(err);
-      });
-  }
-
   isGiftCard = product =>
     !!(
       product &&
       (product.style_partno.toLowerCase() === 'giftcardbundle' || product.giftcard === '1')
     );
 
-  /**
+  /*
    * @function isBOPISProduct
    * @summary This BOPIS logic is to validate if product/color variant is eligible for BOPIS
    * product is a color variant object of a product.
-   **/
+   */
   isBOPISProduct(product) {
     const { isUSStore } = this.apiHelper.configOptions;
     let isOnlineOnly;
@@ -470,7 +473,7 @@ class ProductsDynamicAbstractor {
    * @param {object} filtersAndSort - selected filters and values object
    */
   extractFilters = filtersAndSort => {
-    let filterQuery = {};
+    const filterQuery = {};
     let query = '';
     const facetKeys = Object.keys(filtersAndSort);
     for (let facetKey of facetKeys) {
@@ -498,7 +501,7 @@ class ProductsDynamicAbstractor {
     numberOfProducts,
     filtersAndSort = []
   ) => {
-    let facet = [];
+    const facet = [];
     if (filterMap && filterMap.values) {
       filterMap.values.forEach((val, index, data) => {
         const facetType = filterMap.facetName;
@@ -602,7 +605,7 @@ class ProductsDynamicAbstractor {
 
   // Mapping meta infomation for PDP meta tags, title and description
   getProductMetaInformation(product) {
-    let payload = {
+    const payload = {
       body: {
         version: 'V2',
         fields:
@@ -639,9 +642,9 @@ class ProductsDynamicAbstractor {
    */
   getCategoryMap = (catPath, l1) => {
     const { length } = catPath;
-    let catMap = {};
-    for (let idx = 0; idx < length; idx++) {
-      let temp = catPath[idx].split('>');
+    const catMap = {};
+    for (let idx = 0; idx < length; idx += 1) {
+      const temp = catPath[idx].split('>');
       catMap[temp[1]] = catMap[temp[1]] ? catMap[temp[1]] : [];
       if (temp[0] && l1 && temp[0] === l1) {
         catMap[temp[1]].push(temp[2]);
@@ -650,7 +653,7 @@ class ProductsDynamicAbstractor {
     return catMap;
   };
 
-  //PLP to PDP then again back to PLP, maintainig autoscroll position by managing state with products count
+  // PLP to PDP then again back to PLP, maintainig autoscroll position by managing state with products count
   getSetAPIProductsCount = () => {
     // if totalProducts are greater than PRODUCTS_PER_LOAD limit it to PRODUCTS_PER_LOAD and update sessionStorage for auto scroll
     let unbxdCount = PRODUCTS_PER_LOAD;
@@ -672,10 +675,8 @@ class ProductsDynamicAbstractor {
       sessionStorage.setItem('LOADED_PRODUCT_COUNT', loadedProductCount);
 
       const scrollPoint = window.sessionStorage.getItem('SCROLL_POINT') || 0;
-      if (scrollPoint > 0) {
-        if (totalProducts <= PRODUCTS_PER_LOAD) {
-          sessionStorage.setItem('RESET_SCROLL_CONDITIONS', 1); //Don't auto scroll if items less than standard call
-        }
+      if (scrollPoint > 0 && totalProducts <= PRODUCTS_PER_LOAD) {
+        sessionStorage.setItem('RESET_SCROLL_CONDITIONS', 1); // Don't auto scroll if items less than standard call
       }
     }
     return unbxdCount;
@@ -689,10 +690,10 @@ class ProductsDynamicAbstractor {
    */
   getFacetsAPIData(facets, getFacetSwatchImgPath, numberOfProducts, filtersAndSort) {
     facets.sort(function(a, b) {
-      //Sort facets on position field value
+      // Sort facets on position field value
       return a.position > b.position ? 1 : b.position > a.position ? -1 : 0;
     });
-    let filters = {};
+    const filters = {};
     facets.forEach(facet => {
       filters[facet.facetName] = this.getFacetsMappingFromAPIData(
         facet,
@@ -705,7 +706,7 @@ class ProductsDynamicAbstractor {
   }
 
   getUnbxdDisplayName = facets => {
-    let facetsName = {};
+    const facetsName = {};
     facets.forEach(facet => {
       facetsName[facet.facetName] = facet.displayName;
     });
@@ -771,23 +772,23 @@ class ProductsDynamicAbstractor {
       hasShortImage,
     } = reqObj;
 
-    let searchTerm = decodeURIComponent(seoKeywordOrCategoryIdOrSearchTerm);
-    let { sort = null } = filtersAndSort;
+    const searchTerm = decodeURIComponent(seoKeywordOrCategoryIdOrSearchTerm);
+    const { sort = null } = filtersAndSort;
     const facetsPayload = this.extractFilters(filtersAndSort);
     const isOutfitPage = !isSearch && searchTerm && searchTerm.indexOf('-outfit') > -1;
 
     // We will be sending the rows to getCategoryListingPage function in the bucketing scenario and we need to send that in UNBXD api.
     // Falsy check has not been placed as i need to send row 0 in L2 call in case of bucketing sequence.
-    let row = numberOfProducts !== undefined ? numberOfProducts : this.getSetAPIProductsCount();
+    const row = numberOfProducts !== undefined ? numberOfProducts : this.getSetAPIProductsCount();
     // We will be sending the start to getCategoryListingPage function in the bucketing scenario and we need to send that in UNBXD api.
     // Falsy check has not been placed as i need to send start 0 in L2 call in case of bucketing sequence.
-    let start =
+    const start =
       startProductCount !== undefined ? startProductCount : (pageNumber - 1) * PRODUCTS_PER_LOAD; //In UNBXD start is from zero but seo paging starts with 1
-    let payload = {
+    const payload = {
       body: {
         ...facetsPayload,
         ...extraParams,
-        start: !isNaN(start) ? start : 0,
+        start: !Number.isNaN(start) ? start : 0,
         rows: row,
         variants: true,
         'variants.count': 0,
@@ -795,13 +796,12 @@ class ProductsDynamicAbstractor {
         'facet.multiselect': true,
         selectedfacet: true,
         fields:
-          'alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPFitMessageUSSstore,TCPFit,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPSwatchesUSStore,top_rated,TCPSwatchesCanadaStore,product_name,TCPColor,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_fq,categoryPath3,categoryPath3_catMap,categoryPath2_catMap,product_short_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,seo_token,prodpartno,banner,facets,auxdescription,list_of_attributes,numberOfProducts,redirect,searchMetaData,didYouMean,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,TcpBossCategoryDisabled,TcpBossProductDisabled,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore',
+          'alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPFitMessageUSSstore,TCPFit,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPSwatchesUSStore,top_rated,TCPSwatchesCanadaStore,product_name,TCPColor,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_fq,categoryPath3,categoryPath3_catMap,categoryPath2_catMap,product_short_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,seo_token,prodpartno,banner,facets,auxdescription,list_of_attributes,numberOfProducts,redirect,searchMetaData,didYouMean,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,TcpBossCategoryDisabled,TcpBossProductDisabled,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore,product_type,products,low_offer_price,%20high_offer_price,%20low_list_price,%20high_list_price',
       },
-      webService: endpoints.getProductviewbyCategory,
-      // webService: isSearch ? endpoints.getProductsBySearchTerm : endpoints.getProductviewbyCategory
+      webService: endpoints.getProductviewbyCategory, // TODO - existing code - webService: isSearch ? endpoints.getProductsBySearchTerm : endpoints.getProductviewbyCategory
     };
     if (!isSearch) {
-      payload.body[`pagetype`] = 'boolean';
+      payload.body.pagetype = 'boolean';
       if (categoryId) {
         payload.body['p-id'] = `categoryPathId:"${categoryId}"`;
       }
@@ -809,20 +809,20 @@ class ProductsDynamicAbstractor {
 
     // If the current case is of bucketing scenario then we need to send facet as false in L3 call as we will be getting the same in L2 call.
     if (bucketingSeqConfig.bucketingRequired) {
-      payload.body['facet'] = false;
+      payload.body.facet = false;
     }
     /* Checking if we need to do bucketing or not. Bucketing is done only for those l2 levels that have a further L3. Only in that secnario we send sort
         paramter otherwise sending sort paramter in all other scenarios break the call */
     if (!shouldApplyUnbxdLogic && !isUnbxdSequencing) {
       if (bucketingSeqConfig.bucketingSeq && bucketingSeqConfig.requiredChildren.length) {
-        payload.body['sort'] = bucketingSeqConfig.bucketingSeq;
+        payload.body.sort = bucketingSeqConfig.bucketingSeq;
       }
     } else if (!isSearch && bucketingSeqConfig.bucketingSeq) {
-      payload.body['uc_param'] = bucketingSeqConfig.bucketingSeq;
+      payload.body.uc_param = bucketingSeqConfig.bucketingSeq;
     }
     if (isSearch) {
       /* ----- Input is being encoded while entered this is causing an issue with superagent ---- */
-      payload.body[`q`] = searchTerm || '*';
+      payload.body.q = searchTerm || '*';
     }
     if (sort) payload.body.sort = sort;
 
@@ -833,339 +833,9 @@ class ProductsDynamicAbstractor {
     //     'start=0&rows=20&variants=true&variants.count=0&version=V2&facet.multiselect=true&selectedfacet=true&fields=alt_img,style_partno,giftcard,TCPProductIndUSStore,TCPFitMessageUSSstore,TCPFit,TCPWebOnlyFlagUSStore,TCPWebOnlyFlagCanadaStore,TCPSwatchesUSStore,top_rated,TCPSwatchesCanadaStore,product_name,TCPColor,imagename,productid,uniqueId,favoritedcount,TCPBazaarVoiceReviewCount,categoryPath3_fq,categoryPath3,categoryPath3_catMap,categoryPath2_catMap,product_short_description,min_list_price,min_offer_price,TCPBazaarVoiceRating,seo_token,prodpartno,banner,facets,auxdescription,list_of_attributes,numberOfProducts,redirect,searchMetaData,didYouMean,TCPLoyaltyPromotionTextUSStore,TCPLoyaltyPLCCPromotionTextUSStore,TcpBossCategoryDisabled,TcpBossProductDisabled,long_product_title,TCPOutOfStockFlagUSStore,TCPOutOfStockFlagCanadaStore&pagetype=boolean&p-id=categoryPathId:%22484507%3E484508%22&uid=uid-1563946353348-89276',
     // };
     return executeUnbxdAPICall(payload)
-      .then(res => {
-        const scrollPoint = isClient() ? window.sessionStorage.getItem('SCROLL_POINT') : 0;
-        if (scrollPoint) {
-          sessionStorage.setItem('SCROLL_EVENT', 1);
-        }
-
-        if (this.apiHelper.responseContainsErrors(res)) {
-          throw new ServiceResponseError(res);
-        }
-
-        if (res.body.redirect && window) {
-          location.href = res.body.redirect.value;
-        }
-
-        let pendingPromises = [];
-        // flags if we are oin an L1 plp. Such plp's have no products, and only show espots and recommendations.
-        let isDepartment = !isSearch && (!breadCrumbs || breadCrumbs.length === 1);
-        let attributesNames = this.getProductAttributes();
-        let categoryType =
-          breadCrumbs && breadCrumbs.length ? breadCrumbs[breadCrumbs.length - 1].displayName : '';
-        const l1category = breadCrumbs && breadCrumbs.length ? breadCrumbs[0].displayName : '';
-        let filters = {};
-        //Construct facets from the api response
-        const facetsList =
-          res.body.facets &&
-          res.body.facets.text &&
-          res.body.facets.text.list &&
-          res.body.facets.text.list;
-        if (facetsList) {
-          const facets = this.getFacetsAPIData(
-            facetsList,
-            getFacetSwatchImgPath,
-            res.body.response.numberOfProducts,
-            filtersAndSort
-          );
-          const unbxdDisplayName = this.getUnbxdDisplayName(facetsList);
-          filters = {
-            ...facets,
-            unbxdDisplayName: unbxdDisplayName, //Key Value object added for Facets DisplayName and FacetName mapping in UI components
-            l1category: l1category,
-          };
-        }
-
-        //We will get the avaialable l3 list in L2 page call in bucekting scenario.
-        const availableL3List =
-          res.body.facets && res.body.facets.multilevel && res.body.facets.multilevel.bucket;
-        let availableL3InFilter =
-          availableL3List && availableL3List.length && (availableL3List[0].values || []);
-        let totalProductsCount = 0;
-        totalProductsCount = res.body.response.numberOfProducts;
-
-        //This is the scenario when the subsequent L3 calls made in bucekting case. In this scenario we need to send back the filter and count, we cached
-        // from the response of page L2 call.
-        if (shouldApplyUnbxdLogic && bucketingSeqConfig.bucketingRequired) {
-          const temp = this.fetchCachedFilterAndCount();
-          filters = temp.filters;
-          // eslint-disable-next-line
-          temp.filters.l1category = l1category ? l1category : '';
-          totalProductsCount = temp.totalProductsCount;
-        }
-
-        // This is the case when we need to cache the filter and the count of the number of products in L2. This is a bucketing scenario.
-        if (shouldApplyUnbxdLogic && cacheFiltersAndCount) {
-          totalProductsCount = this.cacheFiltersAndCount(filters, availableL3InFilter);
-        }
-
-        // WHY DO WE NEED THIS??
-        let unbxdId = res.headers && res.headers['unbxd-request-id'];
-        this.setUnbxdId(unbxdId);
-
-        let entityCategory;
-        let categoryNameTop = '';
-
-        // Taking the first product in plp to get the categoryID to be sent to adobe
-        if (res.body.response && res.body.response.products.length) {
-          const firstProduct = res.body.response.products[0];
-          const categoryPath =
-            firstProduct.categoryPath2_catMap && firstProduct.categoryPath3_catMap
-              ? [...firstProduct.categoryPath2_catMap, ...firstProduct.categoryPath3_catMap]
-              : firstProduct.categoryPath2_catMap || firstProduct.categoryPath3_catMap;
-          const breadcrumbTopId = breadCrumbs && breadCrumbs.length && breadCrumbs[0].categoryId;
-          entityCategory = this.parseCategoryEntity(categoryPath, breadCrumbs);
-          categoryNameTop = getCategoryId(categoryPath, breadcrumbTopId);
-        }
-
-        let response = {
-          availableL3InFilter,
-          currentListingSearchForText: isSearch ? searchTerm.trim() : '',
-          currentListingSeoKey: searchTerm,
-          currentListingId:
-            breadCrumbs && breadCrumbs.length
-              ? breadCrumbs[breadCrumbs.length - 1].urlPathSuffix
-              : '',
-          currentListingName: categoryType,
-          currentListingDescription:
-            breadCrumbs && breadCrumbs.length
-              ? breadCrumbs[breadCrumbs.length - 1].longDescription
-              : '',
-          currentListingType:
-            breadCrumbs && breadCrumbs.length
-              ? breadCrumbs[breadCrumbs.length - 1].displayName
-              : '', // need to store it because it will be needed to patch the information when getting additional product information
-          isDepartment: isDepartment,
-          // An L2 can be an outfits page, if so we need to store the 3rd party tag associated with this outfits page
-          outfitStyliticsTag: isOutfitPage ? searchTerm : null, // DT-34042: dynamic outfit pages
-          filtersMaps: filters,
-          appliedFiltersIds: this.getAppliedFilters(filters, filtersAndSort),
-          totalProductsCount,
-          productsInCurrCategory: res.body.response.numberOfProducts,
-          unbxdId: unbxdId,
-          appliedSortId: sort,
-          currentNavigationIds: getCurrentNavigationIds(res),
-          breadCrumbTrail: breadCrumbs
-            ? breadCrumbs.map(crumb => ({
-                displayName: crumb.displayName,
-                urlPathSuffix: crumb.urlPathSuffix,
-              }))
-            : [],
-
-          loadedProducts: [],
-          searchResultSuggestions: res.body.didYouMean
-            ? getSearchResultSuggestions(res.body.didYouMean)
-            : null,
-          unbxdBanners:
-            res.body.banner && Array.isArray(res.body.banner.banners)
-              ? res.body.banner.banners
-              : null,
-          entityCategory: entityCategory,
-          categoryNameTop: categoryNameTop,
-        };
-
-        if (res.body.response) {
-          let isUSStore = this.apiHelper.configOptions.isUSStore;
-          res.body.response.products.forEach(product => {
-            // Make product list transformation
-            product.list_of_attributes = attributeListMaker(product.list_of_attributes);
-            let defaultColor = product.auxdescription ? product.auxdescription : product.TCPColor;
-            let { uniqueId } = product;
-            let colors = this.apiHelper.configOptions.isUSStore
-              ? convertToColorArray(product.TCPSwatchesUSStore, uniqueId, defaultColor)
-              : convertToColorArray(product.TCPSwatchesCanadaStore, uniqueId, defaultColor);
-            let rawColors = this.apiHelper.configOptions.isUSStore
-              ? product.TCPSwatchesUSStore
-              : product.TCPSwatchesCanadaStore;
-            let isBOPIS = isBopisProduct(isUSStore, product);
-            const bossDisabledFlags = {
-              bossProductDisabled:
-                extractAttributeValue(product, this.getProductAttributes().bossProductDisabled) ||
-                0,
-              bossCategoryDisabled:
-                extractAttributeValue(product, this.getProductAttributes().bossCategoryDisabled) ||
-                0,
-            };
-            let imagesByColor = extractExtraImages(
-              rawColors,
-              product.alt_img,
-              getImgPath,
-              uniqueId,
-              defaultColor,
-              false,
-              hasShortImage
-            );
-            let colorsMap = [
-              {
-                colorProductId: uniqueId,
-                imageName: product.imagename,
-                miscInfo: {
-                  isClearance: extractAttributeValue(product, attributesNames.clearance),
-                  isBopisEligible: isBOPIS && !this.isGiftCard(product),
-                  isBossEligible: isBossProduct(bossDisabledFlags) && !this.isGiftCard(product),
-                  badge1: extractPrioritizedBadge(
-                    product,
-                    attributesNames,
-                    categoryType,
-                    excludeBadge
-                  ),
-                  badge2: extractAttributeValue(product, attributesNames.extendedSize),
-                  badge3: extractAttributeValue(product, attributesNames.merchant),
-                  videoUrl: extractAttributeValue(product, attributesNames.videoUrl),
-                  hasOnModelAltImages: parseBoolean(
-                    extractAttributeValue(product, attributesNames.onModelAltImages)
-                  ),
-                  listPrice: product.min_list_price,
-                  offerPrice: product.min_offer_price,
-                  keepAlive: parseBoolean(
-                    extractAttributeValue(product, attributesNames.keepAlive)
-                  ),
-                },
-                color: {
-                  name: defaultColor,
-                  imagePath: getImgPath(product.imagename).colorSwatch,
-                },
-              },
-            ];
-
-            if (!!Array.isArray(colors) === true) {
-              colors.forEach(color => {
-                let colorDetails = color.split('#');
-                // the default/selected one is already there
-                const swatchOfAvailableProduct = getProductByColorId(
-                  res.body.response.products,
-                  colorDetails
-                );
-                if (
-                  colorDetails[0] !== product.imagename &&
-                  swatchOfAvailableProduct !== undefined
-                ) {
-                  colorsMap.push({
-                    colorProductId: colorDetails[0],
-                    imageName: colorDetails[0],
-                    miscInfo: {
-                      isBopisEligible:
-                        isBopisProduct(isUSStore, swatchOfAvailableProduct) &&
-                        !this.isGiftCard(product),
-                      isBossEligible: isBossProduct(bossDisabledFlags) && !this.isGiftCard(product),
-                      hasOnModelAltImages: parseBoolean(
-                        extractAttributeValue(
-                          swatchOfAvailableProduct,
-                          attributesNames.onModelAltImages
-                        )
-                      ),
-                      badge1: extractPrioritizedBadge(
-                        swatchOfAvailableProduct,
-                        attributesNames,
-                        categoryType,
-                        excludeBadge
-                      ),
-                      badge2: extractAttributeValue(
-                        swatchOfAvailableProduct,
-                        attributesNames.extendedSize
-                      ),
-                      badge3: extractAttributeValue(
-                        swatchOfAvailableProduct,
-                        attributesNames.merchant
-                      ),
-                      listPrice:
-                        swatchOfAvailableProduct.min_list_price ===
-                        swatchOfAvailableProduct.min_offer_price
-                          ? swatchOfAvailableProduct.min_offer_price
-                          : swatchOfAvailableProduct.min_list_price ||
-                            {
-                              value: null,
-                            }.value ||
-                            0,
-                      offerPrice:
-                        swatchOfAvailableProduct.min_offer_price ||
-                        {
-                          value: null,
-                        }.value ||
-                        0,
-                      keepAlive: parseBoolean(
-                        extractAttributeValue(swatchOfAvailableProduct, attributesNames.keepAlive)
-                      ),
-                    },
-                    color: {
-                      name: colorDetails[1],
-                      imagePath: getImgPath(colorDetails[0]).colorSwatch,
-                    },
-                  });
-                }
-              });
-            }
-
-            let categoryName;
-            let childLength = bucketingSeqConfig.requiredChildren
-              ? bucketingSeqConfig.requiredChildren.length
-              : 0;
-            let catMap =
-              product.categoryPath3_fq &&
-              this.getCategoryMap(product.categoryPath3_fq, bucketingSeqConfig.desiredl1);
-            // Check if the current product has a category path attribute which containes the categories it is the part of.
-            if (product.categoryPath3) {
-              for (let idx = 0; idx < childLength; idx++) {
-                //DTN-7945: The product can be tagged in two L3's but as now we are triggering mutiple l3 calls in new UNBXD approach
-                //The product will get tagged to the first match it finds in its own categoryPath3_fq. but ideally it should match the
-                //current l3 for which the products are bieng fetched.
-                const requiredL3 = shouldApplyUnbxdLogic
-                  ? bucketingSeqConfig.desiredL3
-                  : bucketingSeqConfig.requiredChildren[idx].name;
-                let temp = product.categoryPath3.find(category => category === requiredL3);
-                if (
-                  temp &&
-                  catMap[bucketingSeqConfig.desiredL2] &&
-                  catMap[bucketingSeqConfig.desiredL2].indexOf(temp) !== -1
-                ) {
-                  categoryName = temp;
-                }
-                // if category name is found then break the loop.
-                if (categoryName) {
-                  break;
-                }
-              }
-            }
-
-            response.loadedProducts.push({
-              productInfo: {
-                generalProductId: product.prodpartno,
-                name: product.product_name,
-                pdpUrl: `/${this.apiHelper.configOptions.siteId}/p/${product.seo_token ||
-                  uniqueId}`,
-                shortDescription: product.product_short_description,
-                longDescription: product.product_short_description,
-                // Meeting with Varun for alignment of this value.
-                isGiftCard: this.isGiftCard(product),
-                listPrice:
-                  product.min_list_price === product.min_offer_price
-                    ? product.min_offer_price
-                    : product.min_list_price || { value: null }.value || 0,
-                offerPrice: product.min_offer_price || { value: null }.value || 0,
-                ratings: product.TCPBazaarVoiceRating || 0,
-                reviewsCount:
-                  (product.TCPBazaarVoiceReviewCount &&
-                    parseInt(product.TCPBazaarVoiceReviewCount)) ||
-                  0,
-                unbxdId: res.headers && res.headers['unbxd-request-id'],
-                promotionalMessage: product.TCPLoyaltyPromotionTextUSStore || '',
-                promotionalPLCCMessage: product.TCPLoyaltyPLCCPromotionTextUSStore || '',
-                long_product_title: product.long_product_title || '',
-              },
-
-              miscInfo: {
-                rating: parseFloat(product.TCPBazaarVoiceRating) || 0,
-                // yet again, we need to dig from multiple sources just to get a simple string value
-                categoryName: categoryName,
-              },
-              colorsMap: colorsMap,
-              imagesByColor: imagesByColor,
-            });
-          });
-        }
-
-        return Promise.all(pendingPromises).then(() => response);
-      })
+      .then(res =>
+        processResponse(res, isSearch, breadCrumbs, shouldApplyUnbxdLogic, cacheFiltersAndCount)
+      )
       .catch(err => {
         if (err && ((err.status >= 400 && err.status <= 404) || err.status === 500) && isClient()) {
           window.location.href = getErrorPagePath(this.apiHelper._configOptions.siteId);
@@ -1950,8 +1620,8 @@ class ProductsDynamicAbstractor {
           throw new ServiceResponseError(res);
         }
 
-        let rawProductArray = res.body;
-        let productMap = {};
+        const rawProductArray = res.body;
+        const productMap = {};
 
         for (let productObject of rawProductArray) {
           let productId = Object.keys(productObject)[0];

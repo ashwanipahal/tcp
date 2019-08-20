@@ -5,6 +5,7 @@
  */
 
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class GlobalNavigationMenuDesktopL2 extends React.Component {
   constructor() {
@@ -15,13 +16,13 @@ class GlobalNavigationMenuDesktopL2 extends React.Component {
   menuGroupings = () => {
     const { navigationTree } = this.props;
     const groups = [];
-    let menuItemCount = 0;
-    const maxItemsInGroup = 1;
+    // let menuItemCount = 0;
+    // const maxItemsInGroup = 1;
 
     const subCategoryArr =
       (navigationTree.subCategories && Object.keys(navigationTree.subCategories)) || [];
-    for (let i = 0; i < subCategoryArr.length; i++) {
-      let tempGroups = [];
+    for (let i = 0; i < subCategoryArr.length; i += 1) {
+      const tempGroups = [];
       if (navigationTree.subCategories && navigationTree.subCategories[subCategoryArr[i]]) {
         tempGroups.push({
           groupName: subCategoryArr[i],
@@ -159,18 +160,14 @@ function L2({ menuItems, activeCategoryIds, isTopNav }) {
 function L3({ menuItems, activeCategoryIds }) {
   return (
     <ol className="sub-menu-category sub-menu-category-level-three" role="none">
-      {menuItems.map(({ categoryContent: { name, categoryId, displayToCustomer }, url }) => {
+      {menuItems.map(({ categoryContent: { name, categoryId }, url }) => {
         // let isActive = activeCategoryIds && categoryId === activeCategoryIds[2];
         // let className = cssClassName('sub-menu-category-item navigation-level-three-item ');
 
         return (
           <React.Fragment>
             {
-              /* displayToCustomer && */ <li
-                key={categoryId}
-                id={`list-item-${categoryId}`}
-                role="none"
-              >
+              <li key={categoryId} id={`list-item-${categoryId}`} role="none">
                 <a href={url}>{name}</a>
               </li>
             }
@@ -180,3 +177,25 @@ function L3({ menuItems, activeCategoryIds }) {
     </ol>
   );
 }
+
+L2.propTypes = {
+  menuItems: PropTypes.arrayOf(PropTypes.shape({})),
+  activeCategoryIds: PropTypes.arrayOf(PropTypes.shape({})),
+  isTopNav: PropTypes.bool,
+};
+
+L2.defaultProps = {
+  menuItems: [],
+  activeCategoryIds: [],
+  isTopNav: false,
+};
+
+L3.propTypes = {
+  menuItems: PropTypes.arrayOf(PropTypes.shape({})),
+  activeCategoryIds: PropTypes.arrayOf(PropTypes.shape({})),
+};
+
+L3.defaultProps = {
+  menuItems: [],
+  activeCategoryIds: [],
+};

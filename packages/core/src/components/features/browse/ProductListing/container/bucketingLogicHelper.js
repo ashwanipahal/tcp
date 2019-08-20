@@ -1,8 +1,9 @@
+/* eslint-disable extra-rules/no-commented-out-code */
 // import { routingStoreView } from 'reduxStore/storeViews/routing/routingStoreView.js';
 // import { generalStoreView } from 'reduxStore/storeViews/generalStoreView';
 import { findCategoryIdandName, matchPath } from './ProductListing.util';
 // import { getSessionStorage } from 'util/sessionStorageManagement';
-import productsContants from './ProductListing.constants';
+import { PRODUCTS_PER_LOAD } from './ProductListing.constants';
 // import PAGES from '../../../../../constants/pages.constants';
 
 class BucketingBL {
@@ -50,7 +51,7 @@ class BucketingBL {
     // the exhausted catehory from the L3left variable so that next time the next category with start 0 is called.
     if (productsLeft <= 0) {
       temp.start = 0;
-      temp.productsToFetchPerLoad = productsContants.PRODUCTS_PER_LOAD;
+      temp.productsToFetchPerLoad = PRODUCTS_PER_LOAD;
       temp.L3Left.splice(0, 1);
     }
     return temp;
@@ -96,7 +97,7 @@ class BucketingBL {
       temp.sortingAvailable = filterAndSortParam.sort;
       // setting the start to 0. We send this in UNBXD call to tell them from which index do we need to fetch the products.
       bucketingConfigTemp.start = 0;
-      bucketingConfigTemp.productsToFetchPerLoad = productsContants.PRODUCTS_PER_LOAD;
+      bucketingConfigTemp.productsToFetchPerLoad = PRODUCTS_PER_LOAD;
       temp.filtersAndSort = filterAndSortParam;
     } else {
       temp.filtersAndSort = callback(location.search);
@@ -120,8 +121,7 @@ class BucketingBL {
 
   fetchL3AndCount = availableL3 => {
     const temp = [];
-    const productsToBeFetched =
-      /* parseInt(getSessionStorage('LOADED_PRODUCT_COUNT'), 10) || */ productsContants.PRODUCTS_PER_LOAD;
+    const productsToBeFetched = /* parseInt(getSessionStorage('LOADED_PRODUCT_COUNT'), 10) || */ PRODUCTS_PER_LOAD;
     let productCountLeft = productsToBeFetched;
     // eslint-disable-next-line
     availableL3.map(item => {

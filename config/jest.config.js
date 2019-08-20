@@ -5,8 +5,6 @@ const ignorePsuedoCodeDir = [
   '/LoginPage/',
   '/server/',
   '/service/',
-  '/ProductListing/',
-  '/abstractors/productListing/',
   '/FPO/',
 ];
 
