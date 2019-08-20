@@ -6,7 +6,7 @@ import {
   getProductDetails,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
 import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
-import RemoveSoldOut from '@tcp/core/src/components/features/CnC/common/molecules/RemoveSoldOut/views/RemoveSoldOut.view';
+import RemoveSoldOut from '@tcp/core/src/components/features/CnC/common/molecules/RemoveSoldOut';
 import EmptyBag from '@tcp/core/src/components/features/CnC/EmptyBagPage/views/EmptyBagPage.view';
 import productTileCss, { customStyles } from '../styles/ProductTileWrapper.style';
 
