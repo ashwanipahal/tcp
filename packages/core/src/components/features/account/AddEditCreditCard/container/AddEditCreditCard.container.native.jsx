@@ -115,7 +115,7 @@ export class AddEditCreditCard extends React.PureComponent {
         expYear: creditCard.expYear.trim(),
         expMonth: creditCard.expMonth.trim(),
         address: {
-          country: 'US',
+          country: constants.COUNTRY_US,
           addressLine2: '',
         },
       };
@@ -141,7 +141,7 @@ export class AddEditCreditCard extends React.PureComponent {
     return {
       onFileAddressKey,
       address: {
-        country: 'US',
+        country: constants.COUNTRY_US,
         addressLine2: '',
       },
     };

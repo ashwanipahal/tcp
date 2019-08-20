@@ -234,8 +234,8 @@ class PaymentView extends React.Component<Props> {
               cardList={creditCardList}
               setDefaultPaymentMethod={setDefaultPaymentMethod}
               toggleModal={this.setDeleteModalMountState}
-              openUpdateModal={this.setUpdateModalMountState}
-              setSelectedCard={this.setSelectedCard}
+              openUpdateModal={this.setUpdateModalMountState} // Update handler to edit card with edit story
+              setCardHandler={this.setUpdateModalMountState}
             />
           )}
           {venmoCardList && venmoCardList.size > 0 && (

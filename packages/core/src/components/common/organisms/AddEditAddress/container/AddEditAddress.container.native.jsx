@@ -11,6 +11,7 @@ import {
 } from './AddEditAddress.selectors';
 import { verifyAddress } from '../../AddressVerification/container/AddressVerification.actions';
 import { getAddressListState } from '../../../../features/account/AddressBook/container/AddressBook.selectors';
+import COUNTRY_US from './AddEditAddress.constants';
 
 export class AddEditAddressContainer extends React.PureComponent<Props> {
   static propTypes = {
@@ -46,7 +47,7 @@ export class AddEditAddressContainer extends React.PureComponent<Props> {
     if (!address) {
       return {
         primary: addressList && addressList.size === 0,
-        country: 'US',
+        country: COUNTRY_US,
         addressLine2: '',
       };
     }

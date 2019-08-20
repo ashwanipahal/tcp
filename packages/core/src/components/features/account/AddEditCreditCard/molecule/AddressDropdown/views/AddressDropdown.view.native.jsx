@@ -83,7 +83,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
   }
 
   componentDidUpdate() {
-    if (this.rowMarker) setTimeout(() => this.calculateDropDownPosition(), 300);
+    this.calculateDropDownPosition();
   }
 
   /**
@@ -200,7 +200,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
   };
 
   render() {
-    const { data, dropDownStyle } = this.props;
+    const { data, dropDownStyle, labels } = this.props;
     const { dropDownIsOpen, selectedLabelState, top } = this.state;
     return (
       <View style={dropDownStyle}>
@@ -226,7 +226,7 @@ export class AddressDropdown extends React.PureComponent<Props> {
         <Modal visible={dropDownIsOpen} transparent>
           <TouchableOpacity
             accessible
-            accessibilityLabel="Tap to close it"
+            accessibilityLabel={labels.common.lbl_common_tapClose}
             accessibilityRole="none"
             onPress={this.closeDropDown}
             activeOpacity={1}

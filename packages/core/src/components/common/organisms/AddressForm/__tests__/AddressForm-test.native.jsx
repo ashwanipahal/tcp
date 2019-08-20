@@ -1,8 +1,6 @@
-/* eslint-disable */
 import React from 'react';
 import { shallow } from 'enzyme';
-
-import AddressForm from '../AddressForm.native';
+import { AddressForm } from '../AddressForm.native';
 
 describe('AddressForm component', () => {
   it('should renders correctly', () => {

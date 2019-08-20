@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, reduxForm, change } from 'redux-form';
+import { PropTypes } from 'prop-types';
 import { GooglePlacesInput } from '@tcp/core/src/components/common/atoms/GoogleAutoSuggest/AutoCompleteComponent';
 import TextBox from '../../atoms/TextBox';
 import DropDown from '../../atoms/DropDown/views/DropDown.native';
@@ -25,23 +26,8 @@ import {
   InputFieldHalf,
 } from './AddressForm.native.style';
 
-// @flow
-type Props = {
-  handleSubmit: any,
-  invalid: any,
-  dispatch: any,
-  submitAddressFormAction: any,
-  addressFormLabels: object,
-  isEdit?: boolean,
-  isMakeDefaultDisabled?: boolean,
-  onCancel: any,
-};
-
-type State = {
-  country: string,
-};
 export class AddressForm extends React.PureComponent<Props, State> {
-  constructor(props: Props) {
+  constructor(props) {
     super(props);
     this.state = {
       country: 'US',
@@ -49,13 +35,13 @@ export class AddressForm extends React.PureComponent<Props, State> {
     };
   }
 
-  StateCountryChange = (e: Object) => {
+  StateCountryChange = e => {
     this.setState({
       country: e.target.value ? e.target.value : '',
     });
   };
 
-  handlePlaceSelected = (place: Object, inputValue: string) => {
+  handlePlaceSelected = (place, inputValue) => {
     const { dispatch } = this.props;
     const address = AutoCompleteComponent.getAddressFromPlace(place, inputValue);
     dispatch(change('AddressForm', 'city', address.city));
@@ -211,9 +197,26 @@ export class AddressForm extends React.PureComponent<Props, State> {
   }
 }
 
+AddressForm.propTypes = {
+  handleSubmit: PropTypes.func,
+  invalid: PropTypes.bool,
+  dispatch: PropTypes.func,
+  submitAddressFormAction: PropTypes.func,
+  addressFormLabels: PropTypes.shape({}),
+  isEdit: PropTypes.bool,
+  isMakeDefaultDisabled: PropTypes.bool,
+  onCancel: PropTypes.func,
+};
+
 AddressForm.defaultProps = {
   isEdit: false,
   isMakeDefaultDisabled: false,
+  invalid: false,
+  handleSubmit: () => {},
+  addressFormLabels: {},
+  dispatch: () => {},
+  onCancel: () => {},
+  submitAddressFormAction: () => {},
 };
 
 const validateMethod = createValidateMethod(

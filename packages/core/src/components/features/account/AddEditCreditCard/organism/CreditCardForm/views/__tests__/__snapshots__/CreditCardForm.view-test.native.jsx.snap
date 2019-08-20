@@ -186,10 +186,36 @@ exports[`CreditCardForm component should renders correctly with address dropdown
           "height": 100,
         }
       }
+      labels={
+        Object {
+          "common": Object {},
+          "paymentGC": Object {},
+        }
+      }
       name="onFileAddressKey"
       onValueChange={[Function]}
       variation="secondary"
     />
+    <Styled(View)>
+      <Styled(View) />
+      <Address
+        address={
+          Object {
+            "addressId": "12345",
+            "firstName": "test",
+            "lastName": "test",
+            "primary": "true",
+          }
+        }
+        className="CreditCardForm__address"
+        customStyle={Object {}}
+        dataLocatorPrefix="address"
+        showCountry={false}
+        showName={true}
+        showPhone={false}
+      />
+      <Styled(View) />
+    </Styled(View)>
   </Styled(View)>
   <Styled(View)>
     <Styled(CustomButton)
@@ -423,10 +449,36 @@ exports[`CreditCardForm component should renders correctly with addressForm 1`] 
           "height": 100,
         }
       }
+      labels={
+        Object {
+          "common": Object {},
+          "paymentGC": Object {},
+        }
+      }
       name="onFileAddressKey"
       onValueChange={[Function]}
       variation="secondary"
     />
+    <Styled(View)>
+      <Styled(View) />
+      <Address
+        address={
+          Object {
+            "addressId": "12345",
+            "firstName": "test",
+            "lastName": "test",
+            "primary": "true",
+          }
+        }
+        className="CreditCardForm__address"
+        customStyle={Object {}}
+        dataLocatorPrefix="address"
+        showCountry={false}
+        showName={true}
+        showPhone={false}
+      />
+      <Styled(View) />
+    </Styled(View)>
   </Styled(View)>
   <Styled(View)>
     <Styled(CustomButton)

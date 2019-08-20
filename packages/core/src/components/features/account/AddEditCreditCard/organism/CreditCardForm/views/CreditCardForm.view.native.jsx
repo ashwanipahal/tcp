@@ -53,7 +53,6 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
     const { expMonthOptionsMap, expYearOptionsMap, onFileAddresskey } = props;
-
     this.state = {
       addAddressMount: false,
       selectedAddress: onFileAddresskey,
@@ -168,9 +167,10 @@ export class CreditCardForm extends React.PureComponent<Props, State> {
               onValueChange={itemValue => {
                 this.handleComponentChange(itemValue);
               }}
+              labels={labels}
             />
           )}
-          {addressList && addressList.length && (
+          {addressComponentList && addressComponentList.length && (
             <DefaultAddress>
               <LeftBracket />
               <Address
