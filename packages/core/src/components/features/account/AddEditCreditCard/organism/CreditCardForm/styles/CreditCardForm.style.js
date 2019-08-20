@@ -5,6 +5,9 @@ const colorPallete = createThemeColorPalette();
 const squareBracketBorderColor = colorPallete.gray[500];
 
 const styles = css`
+  .addressDropdownHeading {
+    margin-top: ${props => props.theme.spacing.ELEM_SPACING.XXXL};
+  }
   .CreditCardForm__address {
     display: inline-block;
     background-image: linear-gradient(${squareBracketBorderColor}, ${squareBracketBorderColor}),
