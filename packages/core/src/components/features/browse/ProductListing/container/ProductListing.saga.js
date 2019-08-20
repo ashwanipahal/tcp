@@ -150,8 +150,8 @@ class ProductsOperator {
     // const isSearchPage = routingStoreView.getCurrentPageId(state) === PAGES.search.id;
     const isSearchPage = false;
     const match = isSearchPage
-      ? matchPath(window.location.pathname, '/search/')
-      : matchPath(window.location.pathname, '/c/');
+      ? matchPath(location || window.location.pathname, '/search/')
+      : matchPath(location || window.location.pathname, '/c/');
     const categoryKey = isSearchPage ? match.searchTerm : match.listingKey;
     const navigationTree = state.navigationData;
     const categoryNameList = findCategoryIdandName(navigationTree, categoryKey).reverse();
@@ -303,12 +303,13 @@ class ProductsOperator {
   }
 }
 
-function* fetchPlpProducts() {
+function* fetchPlpProducts({ payload }) {
   try {
+    const { url } = payload;
     const stateNav = (yield select()).Navigation;
     const instanceProductListing = new Abstractor();
     const operatorInstance = new ProductsOperator();
-    const reqObj = operatorInstance.getProductsListingInfo(stateNav);
+    const reqObj = operatorInstance.getProductsListingInfo(stateNav, null, null, url);
     const plpProducts = yield call(instanceProductListing.getProducts, reqObj);
     const plpProductsFormatted = operatorInstance.formatPlpProducts(plpProducts);
     yield put(setPlpProducts({ ...plpProducts }));
@@ -317,9 +318,9 @@ function* fetchPlpProducts() {
   }
 }
 
-function* ProductListingPageSaga() {
+function* ProductListingSaga() {
   const cachedFetchProducts = validateReduxCache(fetchPlpProducts);
   yield takeLatest(PRODUCTLISTING_CONSTANTS.FETCH_PRODUCTS, cachedFetchProducts);
 }
 
-export default ProductListingPageSaga;
+export default ProductListingSaga;

@@ -12,10 +12,11 @@ import {
   getBreadCrumbTrail,
 } from './ProductListing.selectors';
 
-class ProductListingPageContainer extends React.PureComponent {
+class ProductListingContainer extends React.PureComponent {
   componentDidMount() {
-    const { getProducts } = this.props;
-    getProducts({ URI: 'category' });
+    const { getProducts, navigation } = this.props;
+    const url = navigation && navigation.getParam('url');
+    getProducts({ URI: 'category', url });
   }
 
   render() {
@@ -53,7 +54,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-ProductListingPageContainer.propTypes = {
+ProductListingContainer.propTypes = {
   getProducts: PropTypes.func.isRequired,
   products: PropTypes.arrayOf(PropTypes.shape({})),
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
@@ -61,7 +62,7 @@ ProductListingPageContainer.propTypes = {
   breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
-ProductListingPageContainer.defaultProps = {
+ProductListingContainer.defaultProps = {
   products: [],
   currentNavIds: [],
   navTree: {},
@@ -71,4 +72,4 @@ ProductListingPageContainer.defaultProps = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProductListingPageContainer);
+)(ProductListingContainer);

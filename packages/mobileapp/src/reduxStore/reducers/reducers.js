@@ -5,6 +5,7 @@ import LoginPageReducer from '@tcp/core/src/components/features/account/LoginPag
 import ForgotPasswordReducer from '@tcp/core/src/components/features/account/ForgotPassword/container/ForgotPassword.reducer';
 import PaymentReducer from '@tcp/core/src/components/features/account/Payment/container/Payment.reducer';
 import { ProductListingPageReducer } from '@tcp/core/src/components/features/browse/ProductListingPage/container/ProductListingPage.reducer';
+import ProductListingReducer from '@tcp/core/src/components/features/browse/ProductListing/container/ProductListing.reducer';
 import LabelReducer from '@tcp/core/src/reduxStore/reducers/labels';
 import LayoutReducer from '@tcp/core/src/reduxStore/reducers/layout';
 import AddedToBagReducer from '@tcp/core/src/components/features/CnC/AddedToBag/container/AddedToBag.reducer';
@@ -34,6 +35,7 @@ import {
   COUPON_REDUCER_KEY,
   BONUS_POINTS_DAYS_REDUCER_KEY,
   POINTS_HISTORY_REDUCER_KEY,
+  PRODUCT_LISTING_REDUCER_KEY,
 } from '@tcp/core/src/constants/reducer.constants';
 import HeaderReducer from '@tcp/core/src/components/common/organisms/Header/container/Header.reducer';
 import ModulesReducer from '@tcp/core/src/reduxStore/reducers/modules';
@@ -48,12 +50,18 @@ const filteredProductListingPageReducer = createFilteredReducer(
   PRODUCTLISTINGPAGE_REDUCER_KEY
 );
 
+const filteredProductListingReducer = createFilteredReducer(
+  ProductListingReducer,
+  PRODUCT_LISTING_REDUCER_KEY
+);
+
 export default combineReducers({
   [THEME_WRAPPER_REDUCER_KEY]: ThemeWrapperReducer,
   [HEADER_REDUCER_KEY]: HeaderReducer,
   [LABEL_REDUCER_KEY]: LabelReducer,
   [LAYOUT_REDUCER_KEY]: LayoutReducer,
   [PRODUCTLISTINGPAGE_REDUCER_KEY]: filteredProductListingPageReducer,
+  [PRODUCT_LISTING_REDUCER_KEY]: filteredProductListingReducer,
   [LOGINPAGE_REDUCER_KEY]: LoginPageReducer,
   [FORGOTPASSWORD_REDUCER_KEY]: ForgotPasswordReducer,
   [PAYMENT_REDUCER_KEY]: PaymentReducer,
