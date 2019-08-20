@@ -24,7 +24,9 @@ export function* createsaga({ payload }) {
     const resErr = errorMessage(res);
     return yield put(createAccountErr(resErr));
   } catch (err) {
-    return yield put(createAccountErr('Internal Server Error'));
+    // eslint-disable-next-line no-underscore-dangle
+    const error = (err.errorMessage && err.errorMessage._error) || 'Internal Server Error';
+    return yield put(createAccountErr(error));
   }
 }
 

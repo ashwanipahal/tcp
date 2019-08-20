@@ -12,6 +12,7 @@ import ExternalAPIClient from './external/externalClient';
 const errorHandler = e => {
   // eslint-disable-next-line no-console
   console.log(e);
+  throw e;
 };
 
 /**

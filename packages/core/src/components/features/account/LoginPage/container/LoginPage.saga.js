@@ -22,6 +22,8 @@ export function* loginSaga({ payload }) {
     return yield put(
       setLoginInfo({
         success: false,
+        errorCode: err.errorCode,
+        errorMessage: err.errorMessage,
       })
     );
   }
