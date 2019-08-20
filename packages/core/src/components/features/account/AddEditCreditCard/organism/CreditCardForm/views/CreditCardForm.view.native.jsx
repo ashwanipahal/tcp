@@ -64,13 +64,16 @@ class CreditCardForm extends React.PureComponent<Props, State> {
 
   getAddressOptions = () => {
     const { addressList, labels } = this.props;
-    let addressOptions = addressList.map(address => ({
-      id: address.addressId,
-      label: `${address.firstName} ${address.lastName} ${
-        address.primary === 'true' ? '(Default)' : ''
-      }`,
-      content: address,
-    }));
+    let addressOptions =
+      (addressList &&
+        addressList.map(address => ({
+          id: address.addressId,
+          label: `${address.firstName} ${address.lastName} ${
+            address.primary === 'true' ? '(Default)' : ''
+          }`,
+          content: address,
+        }))) ||
+      [];
 
     addressOptions = addressOptions.push({
       id: '',
@@ -167,18 +170,20 @@ class CreditCardForm extends React.PureComponent<Props, State> {
               }}
             />
           )}
-          <DefaultAddress>
-            <LeftBracket />
-            <Address
-              address={this.getSelectedAddress(addressList, selectedAddress)}
-              showCountry={false}
-              showPhone={false}
-              showName
-              className="CreditCardForm__address"
-              dataLocatorPrefix="address"
-            />
-            <RightBracket />
-          </DefaultAddress>
+          {addressList && addressList.length && (
+            <DefaultAddress>
+              <LeftBracket />
+              <Address
+                address={this.getSelectedAddress(addressList, selectedAddress)}
+                showCountry={false}
+                showPhone={false}
+                showName
+                className="CreditCardForm__address"
+                dataLocatorPrefix="address"
+              />
+              <RightBracket />
+            </DefaultAddress>
+          )}
         </AddressWrapper>
         <ActionsWrapper>
           <Button
