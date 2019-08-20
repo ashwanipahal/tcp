@@ -7,7 +7,7 @@ import {
   setDeleteModalMountedState,
   setAddressBookNotification,
 } from './AddressBook.actions';
-import { getUserInfo } from '../../LoginPage/container/LoginPage.actions';
+import { getUserInfo } from '../../User/container/User.actions';
 import AddressView from '../views/AddressView';
 import {
   getAddressListState,

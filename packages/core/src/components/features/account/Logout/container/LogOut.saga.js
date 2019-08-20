@@ -1,6 +1,6 @@
 import { call, takeLatest, put } from 'redux-saga/effects';
 import LOGOUT_CONSTANTS from '../LogOut.constants';
-import { resetLoginInfo } from '../../LoginPage/container/LoginPage.actions';
+import { resetUserInfo } from '../../User/container/User.actions';
 import { closeOverlayModal } from '../../../OverlayModal/container/OverlayModal.actions';
 import { routerPush, isMobileApp } from '../../../../../utils';
 import { LogoutApplication } from '../../../../../services/abstractors/account';
@@ -10,7 +10,7 @@ export function* logoutSaga() {
     const res = yield call(LogoutApplication);
     const matchPath = window.location.pathname.split('/')[2];
     if (res.statusCode === 200) {
-      yield put(resetLoginInfo());
+      yield put(resetUserInfo());
       if (!isMobileApp()) {
         yield put(closeOverlayModal());
         if (window.location.href.indexOf('account')) {

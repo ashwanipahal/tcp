@@ -9,7 +9,7 @@ import {
   getBonusDetailsData,
   getBonusPointsSwitch,
 } from './BonusPointsDays.selectors';
-import { isPlccUser } from '../../../../features/account/LoginPage/container/LoginPage.selectors';
+import { isPlccUser } from '../../../../features/account/User/container/User.selectors';
 import BonusPointsView from '../views/BonusPointsView';
 import { isCanada } from '../../../../../utils';
 import constants from '../BonusPointsDays.constants';
@@ -24,6 +24,7 @@ export class BonusPointsDays extends React.Component {
     bonusDetailsData: PropTypes.string,
     isBonusPointsEnabled: PropTypes.bool,
     view: PropTypes.string,
+    isPlcc: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -35,6 +36,7 @@ export class BonusPointsDays extends React.Component {
     bonusDetailsData: '',
     isBonusPointsEnabled: false,
     view: constants.VIEWS.EDIT,
+    isPlcc: false,
   };
 
   componentDidMount() {
@@ -47,7 +49,7 @@ export class BonusPointsDays extends React.Component {
   }
 
   render() {
-    const { labels, bonusData, bonusDetailsData, isBonusPointsEnabled, view } = this.props;
+    const { labels, bonusData, bonusDetailsData, isBonusPointsEnabled, view, isPlcc } = this.props;
     return (
       !isCanada() &&
       isBonusPointsEnabled && (
@@ -56,6 +58,7 @@ export class BonusPointsDays extends React.Component {
           bonusData={bonusData}
           bonusDetailsData={bonusDetailsData}
           view={view}
+          isPlcc={isPlcc}
         />
       )
     );

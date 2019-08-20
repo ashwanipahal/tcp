@@ -28,8 +28,9 @@ const Cards = props => {
     setDefaultPaymentMethod,
     onGetBalanceCard,
     checkbalanceValueInfo,
-    toggleModal,
     setSelectedCard,
+    toggleModal,
+    setCardHandler,
   } = props;
   return (
     <View {...props}>
@@ -51,6 +52,7 @@ const Cards = props => {
           buttonVariation="variable-width"
           fill="BLUE"
           color="white"
+          onPress={setCardHandler}
         />
       </ButtonWrapperStyle>
       {cardList.size > 0 &&
@@ -88,6 +90,7 @@ Cards.propTypes = {
   checkbalanceValueInfo: PropTypes.func,
   toggleModal: PropTypes.func,
   setSelectedCard: PropTypes.func,
+  setCardHandler: PropTypes.func,
 };
 
 Cards.defaultProps = {
@@ -96,6 +99,7 @@ Cards.defaultProps = {
   checkbalanceValueInfo: null,
   toggleModal: null,
   setSelectedCard: null,
+  setCardHandler: () => {},
 };
 
 export default withStyles(Cards, ParentContainerStyle);
