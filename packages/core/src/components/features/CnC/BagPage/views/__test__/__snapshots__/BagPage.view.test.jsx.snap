@@ -42,6 +42,7 @@ exports[`Bag page Container should render Added to Bag view section 1`] = `
   }
 
   .bag-header {
+    margin: 0;
     padding: 40px 0 20px;
     @media ",
           [Function],
