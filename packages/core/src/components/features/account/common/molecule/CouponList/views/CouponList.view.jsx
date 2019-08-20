@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CouponTile from '../../../../../molecule/CouponTile';
+import CouponTile from '../../CouponTile';
 
 export const CouponList = ({ coupons, sliceCount, labels }) => {
   return (
