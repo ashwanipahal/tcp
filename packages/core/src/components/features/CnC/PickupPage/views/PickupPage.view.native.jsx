@@ -1,11 +1,8 @@
 import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
-import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger';
 import PropTypes from 'prop-types';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
-import { ButtonWrapper, CheckoutButton } from '../styles/PickupPage.style.native';
-import { navigateToNestedRoute } from '../../../../../utils/utils.app';
-import CouponAndPromos from '../../common/organism/CouponAndPromos';
+import CnCTemplate from '../../common/organism/CnCTemplate';
 
 const PickupPage = ({ navigation }) => {
   return (
@@ -24,27 +21,7 @@ const PickupPage = ({ navigation }) => {
       <View>
         <Text>PickUp Form Container</Text>
       </View>
-      <View>
-        <CouponAndPromos />
-      </View>
-      <View>
-        <OrderLedgerContainer />
-      </View>
-      <ButtonWrapper>
-        <CheckoutButton>
-          <BodyCopy
-            color="white"
-            fontWeight="extrabold"
-            fontFamily="secondary"
-            fontSize="fs13"
-            text="NEXT:SHIPPING"
-            onPress={() => {
-              console.log('ShippingPage to bag clicked');
-              navigateToNestedRoute(navigation, 'HomeStack', 'ShippingPage');
-            }}
-          />
-        </CheckoutButton>
-      </ButtonWrapper>
+      <CnCTemplate navigation={navigation} btnText="NEXT:SHIPPING" routeToPage="ShippingPage" />
     </ScrollView>
   );
 };

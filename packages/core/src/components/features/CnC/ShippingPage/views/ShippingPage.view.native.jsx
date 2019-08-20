@@ -1,11 +1,10 @@
 import React from 'react';
 import { View, Text, ScrollView } from 'react-native';
-import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger';
+import PropTypes from 'prop-types';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
-import { ButtonWrapper, CheckoutButton } from '../styles/ShippingPage.style.native';
-import CouponAndPromos from '../../common/organism/CouponAndPromos';
+import CnCTemplate from '../../common/organism/CnCTemplate';
 
-const ShippingPage = () => {
+const ShippingPage = ({ navigation }) => {
   return (
     <ScrollView>
       <View>
@@ -22,25 +21,12 @@ const ShippingPage = () => {
       <View>
         <Text>Shipping Form Container</Text>
       </View>
-      <View>
-        <CouponAndPromos />
-      </View>
-      <View>
-        <OrderLedgerContainer />
-      </View>
-      <ButtonWrapper>
-        <CheckoutButton>
-          <BodyCopy
-            color="white"
-            fontWeight="extrabold"
-            fontFamily="secondary"
-            fontSize="fs13"
-            text="NEXT:BILLING"
-          />
-        </CheckoutButton>
-      </ButtonWrapper>
+      <CnCTemplate navigation={navigation} btnText="NEXT:BILLING" routeToPage="" />
     </ScrollView>
   );
+};
+ShippingPage.propTypes = {
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 export default ShippingPage;
