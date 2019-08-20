@@ -69,10 +69,10 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
 
   getColorOptions = colorFitsSizesMap => {
     const colorOptions = [];
-    // eslint-disable-next-line no-unused-expressions
-    colorFitsSizesMap &&
+    return (
+      colorFitsSizesMap &&
       colorFitsSizesMap.map(colorItem => {
-        colorOptions.push({
+        return colorOptions.push({
           title: (
             <span>
               <img
@@ -94,9 +94,8 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
           ),
           value: colorItem.getIn(['color', 'name']),
         });
-        return '';
-      });
-    return colorOptions;
+      })
+    );
   };
 
   getFitOptions = colorItem => {
@@ -111,30 +110,24 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
   };
 
   getSizeOptions = (colorItem, selectedFit?) => {
-    const sizeOptions = [];
-    // eslint-disable-next-line no-unused-expressions
-    colorItem &&
-      colorItem.get('fits').map(fit => {
+    let sizeOptions = [];
+    if (colorItem) {
+      colorItem.get('fits').forEach(fit => {
         if (selectedFit) {
           if (fit.get('fitName') === selectedFit) {
-            fit.get('sizes').map(size => {
-              return sizeOptions.push({
-                displayName: size.get('sizeName'),
-                id: size.get('sizeName'),
-              });
-            });
-          }
-        } else {
-          // eslint-disable-next-line sonarjs/no-identical-functions
-          return fit.get('sizes').map(size => {
-            return sizeOptions.push({
+            sizeOptions = fit.get('sizes').map(size => ({
               displayName: size.get('sizeName'),
               id: size.get('sizeName'),
-            });
-          });
+            }));
+          }
+        } else {
+          sizeOptions = fit.get('sizes').map(size => ({
+            displayName: size.get('sizeName'),
+            id: size.get('sizeName'),
+          }));
         }
-        return '';
       });
+    }
     return sizeOptions;
   };
 
@@ -177,7 +170,6 @@ export class ProductCustomizeForm extends React.PureComponent<Props> {
 
     const colorList = this.getColorOptions(colorFitsSizesMap);
     const selectedColorElement = this.getSelectedColorData(colorFitsSizesMap, selectedColor);
-    // eslint-disable-next-line prefer-destructuring
     const hasFits = selectedColorElement && selectedColorElement.getIn([0, 'hasFits']);
     const fitList = hasFits && this.getFitOptions(selectedColorElement.get(0));
     const sizeList =
