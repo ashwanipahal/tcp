@@ -47,13 +47,21 @@ export const getAPIConfig = () => {
 
   if (deriveApiConfigObj) {
     apiConfig = (getStoreRef() && getStoreRef().getState()[APICONFIG_REDUCER_KEY]) || {};
-
     if (!isServer() && !isMobileApp()) {
       resetStoreRef(); // This is to make module variable reduxStore as null
     }
   }
 
   return apiConfig;
+};
+
+/**
+ * @function resetApiConfig
+ * This method resets locally stored api config
+ *
+ */
+export const resetApiConfig = () => {
+  apiConfig = null;
 };
 
 export const getBrand = () => {

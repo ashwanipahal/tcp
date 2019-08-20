@@ -46,6 +46,15 @@ export const executeGraphQLQuery = query => {
 };
 
 /**
+ * @function resetGraphQLClient
+ * This method resets graphql client
+ *
+ */
+export const resetGraphQLClient = () => {
+  loadGraphQLInterface().then(client => client.resetClient());
+};
+
+/**
  * Fetches Queries based on passed module, then executes the query and returns a promise for query execution
  * @param {*} moduleName Module for which query needs to be executed
  * @returns {Promise} Resolves with data or rejects with error object

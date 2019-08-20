@@ -13,6 +13,7 @@ export {
   validateExternalUrl,
   resetNavigationStack,
   createAPIConfig,
+  switchAPIConfig,
 } from './utils.app';
 
 export {
@@ -23,4 +24,5 @@ export {
   getLocator,
   getAPIConfig,
   isCanada,
+  resetApiConfig,
 } from './utils';

@@ -7,6 +7,11 @@ import AsyncStorage from '@react-native-community/async-storage';
 
 import config from '../components/common/atoms/Anchor/config.native';
 import { API_CONFIG } from '../services/config';
+import { resetGraphQLClient } from '../services/handler';
+
+let currentAppAPIConfig = null;
+let tcpAPIConfig = null;
+let gymAPIConfig = null;
 
 export const isMobileApp = () => {
   return typeof navigator !== 'undefined' && navigator.product === 'ReactNative';
@@ -282,42 +287,69 @@ export const resetNavigationStack = navigation => {
   );
 };
 
-const getAPIInfoFromEnv = (apiSiteInfo, envConfig) => {
-  const apiEndpoint = envConfig.RWD_APP_API_DOMAIN || ''; // TO ensure relative URLs for MS APIs
+/**
+ * function getAPIInfoFromEnv
+ *
+ * @param {*} apiSiteInfo
+ * @param {*} envConfig
+ * @param {*} appTypeSuffix
+ * @returns
+ */
+const getAPIInfoFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
+  const apiEndpoint = envConfig[`RWD_APP_API_DOMAIN_${appTypeSuffix}`] || ''; // TO ensure relative URLs for MS APIs
   return {
     traceIdCount: 0,
-    langId: envConfig.RWD_APP_LANGID || apiSiteInfo.langId,
-    MELISSA_KEY: envConfig.RWD_APP_MELISSA_KEY || apiSiteInfo.MELISSA_KEY,
-    BV_API_KEY: envConfig.RWD_APP_BV_API_KEY || apiSiteInfo.BV_API_KEY,
-    assetHost: envConfig.RWD_APP_ASSETHOST || apiSiteInfo.assetHost,
-    domain: `${apiEndpoint}/${envConfig.RWD_APP_API_IDENTIFIER}/`,
-    unbxd: envConfig.RWD_APP_UNBXD_DOMAIN || apiSiteInfo.unbxd,
-    CANDID_API_KEY: envConfig.RWD_APP_CANDID_API_KEY,
-    CANDID_API_URL: envConfig.RWD_APP_CANDID_URL,
-    googleApiKey: envConfig.RWD_APP_GOOGLE_MAPS_API_KEY,
+    langId: envConfig[`RWD_APP_LANGID_${appTypeSuffix}`] || apiSiteInfo.langId,
+    MELISSA_KEY: envConfig[`RWD_APP_MELISSA_KEY_${appTypeSuffix}`] || apiSiteInfo.MELISSA_KEY,
+    BV_API_KEY: envConfig[`RWD_APP_BV_API_KEY_${appTypeSuffix}`] || apiSiteInfo.BV_API_KEY,
+    assetHost: envConfig[`RWD_APP_ASSETHOST_${appTypeSuffix}`] || apiSiteInfo.assetHost,
+    domain: `${apiEndpoint}/${envConfig[`RWD_APP_API_IDENTIFIER_${appTypeSuffix}`]}/`,
+    unbxd: envConfig[`RWD_APP_UNBXD_DOMAIN_${appTypeSuffix}`] || apiSiteInfo.unbxd,
+    CANDID_API_KEY: envConfig[`RWD_APP_CANDID_API_KEY_${appTypeSuffix}`],
+    CANDID_API_URL: envConfig[`RWD_APP_CANDID_URL_${appTypeSuffix}`],
+    googleApiKey: envConfig[`RWD_APP_GOOGLE_MAPS_API_KEY_${appTypeSuffix}`],
   };
 };
 
-const getGraphQLApiFromEnv = (apiSiteInfo, envConfig) => {
-  const graphQlEndpoint = envConfig.RWD_APP_GRAPHQL_API_ENDPOINT;
+/**
+ * getGraphQLApiFromEnv
+ *
+ * @param {*} apiSiteInfo
+ * @param {*} envConfig
+ * @param {*} appTypeSuffix
+ * @returns
+ */
+const getGraphQLApiFromEnv = (apiSiteInfo, envConfig, appTypeSuffix) => {
+  const graphQlEndpoint = envConfig[`RWD_APP_GRAPHQL_API_ENDPOINT_${appTypeSuffix}`];
   return {
-    graphql_reqion: envConfig.RWD_APP_GRAPHQL_API_REGION,
-    graphql_endpoint_url: `${graphQlEndpoint}/${envConfig.RWD_APP_GRAPHQL_API_IDENTIFIER}`,
-    graphql_auth_type: envConfig.RWD_APP_GRAPHQL_API_AUTH_TYPE,
-    graphql_api_key: envConfig.RWD_APP_GRAPHQL_API_KEY || '',
+    graphql_reqion: envConfig[`RWD_APP_GRAPHQL_API_REGION_${appTypeSuffix}`],
+    graphql_endpoint_url: `${graphQlEndpoint}/${
+      envConfig[`RWD_APP_GRAPHQL_API_IDENTIFIER_${appTypeSuffix}`]
+    }`,
+    graphql_auth_type: envConfig[`RWD_APP_GRAPHQL_API_AUTH_TYPE_${appTypeSuffix}`],
+    graphql_api_key: envConfig[`RWD_APP_GRAPHQL_API_KEY_${appTypeSuffix}`] || '',
   };
 };
 
-export const createAPIConfig = envConfig => {
+/**
+ * function createAPIConfigForApp
+ * This method creates and returns api config for input apptype
+ *
+ * @param {*} envConfig
+ * @param {*} appTypeSuffix
+ * @returns
+ */
+export const createAPIConfigForApp = (envConfig, appTypeSuffix) => {
   // TODO - use cookie as well..
-  const { RWD_APP_SITE_ID: siteId, RWD_APP_BRANDID: brandId } = envConfig;
-  const isCASite = siteId === API_CONFIG.siteIds.ca;
-  const isGYMSite = brandId === API_CONFIG.brandIds.gym;
+  const siteIdKey = `RWD_APP_SITE_ID_${appTypeSuffix}`;
+  const brandIdKey = `RWD_APP_BRANDID_${appTypeSuffix}`;
+  const isCASite = envConfig[siteIdKey] === API_CONFIG.siteIds.ca;
+  const isGYMSite = envConfig[brandIdKey] === API_CONFIG.brandIds.gym;
   const countryConfig = isCASite ? API_CONFIG.CA_CONFIG_OPTIONS : API_CONFIG.US_CONFIG_OPTIONS;
   const brandConfig = isGYMSite ? API_CONFIG.GYM_CONFIG_OPTIONS : API_CONFIG.TCP_CONFIG_OPTIONS;
   const apiSiteInfo = API_CONFIG.sitesInfo;
-  const basicConfig = getAPIInfoFromEnv(apiSiteInfo, envConfig);
-  const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, envConfig);
+  const basicConfig = getAPIInfoFromEnv(apiSiteInfo, envConfig, appTypeSuffix);
+  const graphQLConfig = getGraphQLApiFromEnv(apiSiteInfo, envConfig, appTypeSuffix);
   return {
     ...basicConfig,
     ...graphQLConfig,
@@ -326,4 +358,36 @@ export const createAPIConfig = envConfig => {
     isMobile: false,
     cookie: null,
   };
+};
+
+/**
+ * createAPIConfig
+ * This method creates two apiconfig - one for tcp and one for gymboree
+ *
+ * @param {*} envConfig
+ * @param {*} appType
+ * @returns api config for current app type
+ */
+export const createAPIConfig = (envConfig, appType) => {
+  tcpAPIConfig = createAPIConfigForApp(envConfig, 'TCP');
+  gymAPIConfig = createAPIConfigForApp(envConfig, 'GYM');
+  const { RWD_APP_BRANDID_TCP: tcpBrandId } = envConfig;
+  currentAppAPIConfig = appType === tcpBrandId ? tcpAPIConfig : gymAPIConfig;
+  return currentAppAPIConfig;
+};
+
+/**
+ * switchAPIConfig
+ * This method switches api config on brand switch in app
+ *
+ * @returns
+ */
+export const switchAPIConfig = () => {
+  // reset singleton instance of graphql client
+  resetGraphQLClient();
+
+  // return second api config stored in local
+  const apiConfig = currentAppAPIConfig === tcpAPIConfig ? gymAPIConfig : tcpAPIConfig;
+  currentAppAPIConfig = apiConfig;
+  return currentAppAPIConfig;
 };
