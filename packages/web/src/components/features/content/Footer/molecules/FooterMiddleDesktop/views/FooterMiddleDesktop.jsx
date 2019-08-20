@@ -3,7 +3,7 @@ import Col from '@tcp/core/src/components/common/atoms/Col';
 import PropTypes from 'prop-types';
 import FooterNavLinks from '../../FooterNavLinks';
 
-const FooterMiddleDesktop = ({ navLinks, className }) => {
+const FooterMiddleDesktop = ({ navLinks, className, openTrackOrder, isUserLoggedIn }) => {
   let numberOfNavLinkCols = navLinks.length;
 
   const navLinkColumns = [];
@@ -26,12 +26,16 @@ const FooterMiddleDesktop = ({ navLinks, className }) => {
             className={className}
             navLinkItems={{ header: navLinks[i].header, links: navLinks[i].links }}
             colNum={i}
+            isUserLoggedIn={isUserLoggedIn}
+            openTrackOrder={openTrackOrder}
           />
           <FooterNavLinks
             className={className}
             isSubHeader
             navLinkItems={{ header: navLinks[i + 1].header, links: navLinks[i + 1].links }}
             colNum={i + 1}
+            isUserLoggedIn={isUserLoggedIn}
+            openTrackOrder={openTrackOrder}
           />
         </Col>
       );
@@ -49,6 +53,8 @@ const FooterMiddleDesktop = ({ navLinks, className }) => {
             className={className}
             navLinkItems={{ header: navLinks[i].header, links: navLinks[i].links }}
             colNum={i}
+            isUserLoggedIn={isUserLoggedIn}
+            openTrackOrder={openTrackOrder}
           />
         </Col>
       );
@@ -69,6 +75,8 @@ const FooterMiddleDesktop = ({ navLinks, className }) => {
           className={className}
           navLinkItems={{ header: navLinks[0].header, links: navLinks[0].links }}
           colNum={0}
+          isUserLoggedIn={isUserLoggedIn}
+          openTrackOrder={openTrackOrder}
         />
       </Col>
       <Col
@@ -83,6 +91,8 @@ const FooterMiddleDesktop = ({ navLinks, className }) => {
           className={className}
           navLinkItems={{ header: navLinks[1].header, links: navLinks[1].links }}
           colNum={1}
+          isUserLoggedIn={isUserLoggedIn}
+          openTrackOrder={openTrackOrder}
         />
       </Col>
       {numberOfNavLinkCols <= 5 ? (
@@ -105,6 +115,8 @@ const FooterMiddleDesktop = ({ navLinks, className }) => {
 FooterMiddleDesktop.propTypes = {
   navLinks: PropTypes.shape([]).isRequired,
   className: PropTypes.string.isRequired,
+  openTrackOrder: PropTypes.func.isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default FooterMiddleDesktop;

@@ -10,6 +10,8 @@ const FooterNavLinks = ({
   headerAsImage,
   isSubHeader,
   colNum,
+  openTrackOrder,
+  isUserLoggedIn,
 }) => {
   return (
     <div className={`${className} container-nav-link`} key={navLinkItems.id} data-index={colNum}>
@@ -21,7 +23,12 @@ const FooterNavLinks = ({
         isSubHeader={isSubHeader}
         colNum={colNum}
       />
-      <FooterNavLinksList listArray={navLinkItems.links} colNum={colNum} />
+      <FooterNavLinksList
+        listArray={navLinkItems.links}
+        colNum={colNum}
+        isUserLoggedIn={isUserLoggedIn}
+        openTrackOrder={openTrackOrder}
+      />
     </div>
   );
 };
@@ -33,6 +40,8 @@ FooterNavLinks.propTypes = {
   headerAsImage: PropTypes.bool.isRequired,
   isSubHeader: PropTypes.bool.isRequired,
   colNum: PropTypes.number.isRequired,
+  openTrackOrder: PropTypes.func.isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
 };
 
 export default FooterNavLinks;

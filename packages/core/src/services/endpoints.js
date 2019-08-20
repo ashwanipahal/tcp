@@ -149,5 +149,9 @@ const endpoints = {
     method: API_METHODS.GET,
     URI: 'v2/wallet/getAllCoupons',
   },
+  orderLookUp: {
+    method: API_METHODS.GET,
+    URI: 'v2/account/orderLookUp',
+  },
 };
 export default endpoints;

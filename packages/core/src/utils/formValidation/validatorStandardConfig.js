@@ -86,12 +86,14 @@ export const formValidationMessages = {
     equalTo: 'Passwords must match',
   },
   emailAddressNoAsync: {
-    required: `Please enter a valid email`,
-    email: 'Email format is invalid.',
+    required: `Error: Please enter a valid email`,
+    email: 'Error: Email format is invalid.',
+    validEmail: 'Error: Email format is invalid',
   },
   iAgree: {
     required: 'Please Select',
   },
+  orderNumber: 'Error: Please enter a valid order number.',
 };
 
 export const formValidationRules = {
@@ -206,6 +208,9 @@ export const formValidationRules = {
     email: true,
   },
   legacyPassword: {
+    required: true,
+  },
+  orderNumber: {
     required: true,
   },
   iAgree: {

@@ -45,6 +45,8 @@ class Footer extends React.Component {
       getOrderDetailAction,
       emailSignup,
       smsSignup,
+      isUserLoggedIn,
+      openTrackOrder,
     } = props;
     const { showFooterTopCandidateB } = this.state;
 
@@ -61,7 +63,12 @@ class Footer extends React.Component {
           <FooterMiddleMobile className={className} navLinkItems={navLinks} />
         </Row>
         <Row className="footer-middle desktop">
-          <FooterMiddleDesktop className={className} navLinks={navLinks} />
+          <FooterMiddleDesktop
+            className={className}
+            navLinks={navLinks}
+            openTrackOrder={openTrackOrder}
+            isUserLoggedIn={isUserLoggedIn}
+          />
         </Row>
         <div className="footer-bottom">
           <Row className="fullbleed-mobile">
@@ -131,6 +138,8 @@ Footer.propTypes = {
   getUserInfoAction: PropTypes.func.isRequired,
   getOrderDetailAction: PropTypes.func.isRequired,
   openEmailSignUpModal: PropTypes.func,
+  openTrackOrder: PropTypes.func.isRequired,
+  isUserLoggedIn: PropTypes.bool.isRequired,
 };
 
 Footer.defaultProps = {

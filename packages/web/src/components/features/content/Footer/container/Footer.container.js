@@ -13,10 +13,10 @@ import {
   submitSmsSignup,
   clearSmsSignupForm,
 } from '@tcp/web/src/components/common/molecules/SmsSignupModal/container/SmsSignupModal.actions';
-
+import { getUserLoggedInState } from '@tcp/core/src/components/features/account/User/container/User.selectors';
 import emailSignupAbstractor from '@tcp/core/src/services/abstractors/common/EmailSmsSignup';
 import { validatePhoneNumber } from '@tcp/core/src/utils/formValidation/phoneNumber';
-
+import { setTrackOrderModalMountedState } from '@tcp/core/src/components/features/account/TrackOrder/container/TrackOrder.actions';
 import FooterView from '../views';
 
 const mapStateToProps = state => {
@@ -46,6 +46,7 @@ const mapStateToProps = state => {
     referenceID,
     emailSignupLabels,
     smsSignupLabels,
+    isUserLoggedIn: getUserLoggedInState(state),
   };
 };
 
@@ -105,6 +106,7 @@ const mapDispatchToProps = dispatch => {
       }
       return Promise.resolve();
     },
+    openTrackOrder: payload => dispatch(setTrackOrderModalMountedState(payload)),
   };
 };
 
