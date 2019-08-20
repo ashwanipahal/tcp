@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreditCardFields component should renders correctly when isExpirationRequired is true 1`] = `
+<View
+  style={null}
+>
+  <Styled(View)
+    data={Array []}
+    dropDownStyle={null}
+    input={
+      Object {
+        "onChange": [Function],
+        "value": "",
+      }
+    }
+    itemStyle={null}
+    onStartShouldSetResponder={[Function]}
+    onValueChange={null}
+    options={
+      Array [
+        Object {},
+      ]
+    }
+    selectListTitle="Select Address"
+    selectedValue={null}
+    variation="primary"
+  >
+    <Styled(View)>
+      <Styled(BodyCopy)
+        color="gray.800"
+        fontFamily="secondary"
+        fontSize="fs13"
+        fontWeight="black"
+        text=""
+        textAlign="center"
+      />
+    </Styled(View)>
+    <Image
+      source={
+        Object {
+          "testUri": "../../../../core/src/assets/carrot-small-down.png",
+        }
+      }
+    />
+  </Styled(View)>
+  <Component
+    hardwareAccelerated={false}
+    transparent={true}
+    visible={false}
+  >
+    <TouchableOpacity
+      accessibilityLabel="Tap to close it"
+      accessibilityRole="none"
+      accessible={true}
+      activeOpacity={1}
+      onPress={[Function]}
+      style={
+        Object {
+          "height": 1334,
+          "left": 0,
+          "width": 0,
+        }
+      }
+    >
+      <Styled(View)
+        style={
+          Object {
+            "top": 0,
+          }
+        }
+      />
+    </TouchableOpacity>
+  </Component>
+</View>
+`;

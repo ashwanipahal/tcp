@@ -27,7 +27,7 @@ import {
   RightBracket,
 } from '../styles/CreditCardForm.native.style';
 
-class CreditCardForm extends React.PureComponent<Props, State> {
+export class CreditCardForm extends React.PureComponent<Props, State> {
   static propTypes = {
     className: PropTypes.string,
     labels: PropTypes.shape({}).isRequired,
