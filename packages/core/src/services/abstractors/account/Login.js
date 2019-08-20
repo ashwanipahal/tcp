@@ -45,20 +45,31 @@ export const getDefaultPlccAddress = addressDetails => {
   const plccAddress = addressDetails ? JSON.parse(addressDetails) : null;
 
   if (plccAddress) {
+    const {
+      wicAddressId,
+      firstName,
+      lastName,
+      addressLine1,
+      addressLine2,
+      city,
+      state,
+      country,
+      zipCode,
+      phone1,
+    } = plccAddress;
     return {
-      addressId: plccAddress.wicAddressId,
+      addressId: wicAddressId,
       address: {
-        firstName: plccAddress.firstName,
-        lastName: plccAddress.lastName,
-
-        addressLine1: plccAddress.addressLine1,
-        addressLine2: plccAddress.addressLine2,
-        city: plccAddress.city,
-        state: plccAddress.state,
-        country: plccAddress.country || 'US',
-        zipCode: plccAddress.zipCode,
+        firstName,
+        lastName,
+        addressLine1,
+        addressLine2,
+        city,
+        state,
+        country: country || 'US',
+        zipCode,
       },
-      phoneNumber: plccAddress.phone1,
+      phoneNumber: phone1,
     };
   }
 
