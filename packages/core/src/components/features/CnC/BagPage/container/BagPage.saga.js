@@ -1,9 +1,17 @@
-import { call, takeLatest, put, all } from 'redux-saga/effects';
+/* eslint-disable extra-rules/no-commented-out-code */
+import { call, takeLatest, put, all, select } from 'redux-saga/effects';
 import BAGPAGE_CONSTANTS from '../BagPage.constants';
-import { getOrderDetailsData, getCartData } from '../../../../../services/abstractors/CnC';
+import {
+  getOrderDetailsData,
+  getCartData,
+  getUnqualifiedItems,
+} from '../../../../../services/abstractors/CnC';
 
 import BAG_PAGE_ACTIONS from './BagPage.actions';
+import BAG_SELECTORS from './BagPage.selectors';
 import { getModuleX } from '../../../../../services/abstractors/common/moduleX';
+import { routerPush } from '../../../../../utils';
+import { getUserLoggedInState } from '../../../account/User/container/User.selectors';
 
 export function* getOrderDetailSaga() {
   try {
@@ -44,10 +52,58 @@ export function* fetchModuleX({ payload = [] }) {
   }
 }
 
+function* confirmStartCheckout() {
+  // this.store.dispatch(setVenmoData({ error: null })); // Clear Venmo error message
+  // if (cartStoreView.getIsEditingSomeItem(state)) {
+  //   // editing an item, display warning modal
+  //   confirmationsResult = confirmationsResult.then(() =>
+  //     generalOperator.openConfirmationModal(CONFIRM_MODAL_IDS.EDITING, null, null)
+  //   );
+  // }
+  let isOOSModalShown = false;
+  const [OOSCount, unavailableCount] = yield all(
+    [BAG_SELECTORS.getOOSCount, BAG_SELECTORS.getUnqualifiedCount].map(val => select(val))
+  );
+
+  if (OOSCount > 0 || unavailableCount > 0) {
+    // yield put(openCheckoutConfirmationModal());
+    isOOSModalShown = true;
+  }
+  yield isOOSModalShown;
+}
+
+export function* startCartCheckout() {
+  try {
+    // this.store.dispatch(setVenmoPaymentInProgress(false));
+    let res = yield call(getUnqualifiedItems);
+    res = res || [];
+    all(res.map(item => BAG_PAGE_ACTIONS.setItemOOS(item)));
+
+    const recalc = yield call(confirmStartCheckout);
+    const OOSCount = yield select(BAG_SELECTORS.getUnqualifiedCount);
+    if (OOSCount > 0) {
+      // const unqualifiedItemsIds =
+      yield select(BAG_SELECTORS.getUnqualifiedItemsIds);
+      // yield call(removeItem, unqualifiedItemsIds);
+      yield call(getCartDataSaga);
+    }
+    const isLoggedIn = yield select(getUserLoggedInState);
+    if (!isLoggedIn) {
+      // put(openAuthLoginForCheckoutModal());
+    } else {
+      yield call(routerPush, '/checkout', '/checkout', { recalc });
+    }
+  } catch (e) {
+    // error
+  }
+}
+
 export function* BagPageSaga() {
   yield takeLatest(BAGPAGE_CONSTANTS.GET_ORDER_DETAILS, getOrderDetailSaga);
   yield takeLatest(BAGPAGE_CONSTANTS.GET_CART_DATA, getCartDataSaga);
   yield takeLatest(BAGPAGE_CONSTANTS.FETCH_MODULEX_CONTENT, fetchModuleX);
+  yield takeLatest(BAGPAGE_CONSTANTS.FETCH_MODULEX_CONTENT, fetchModuleX);
+  yield takeLatest(BAGPAGE_CONSTANTS.START_BAG_CHECKOUT, startCartCheckout);
 }
 
 export default BagPageSaga;

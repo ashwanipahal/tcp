@@ -12,6 +12,8 @@ const CartPage = (state = initialState, action) => {
   switch (action.type) {
     case CARTPAGE_CONSTANTS.GET_PRODUCT_SKU_INFO_SUCCESS:
       return state.set('editableItemData', fromJS(action.payload.product));
+    case CARTPAGE_CONSTANTS.SET_CART_ITEMS_OOS:
+      return state.set('editableItemData', fromJS(action.payload.product));
 
     default:
       if (state instanceof Object) {

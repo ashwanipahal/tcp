@@ -19,10 +19,35 @@ const getOrderDetailsComplete = (payload?) => {
   };
 };
 
+const startCheckout = () => {
+  return {
+    type: BAGPAGE_CONSTANTS.START_BAG_CHECKOUT,
+  };
+};
+
 const setCouponsData = (payload?) => {
   return {
     type: BAGPAGE_CONSTANTS.SET_COUPONS_DATA,
     payload,
+  };
+};
+
+const setItemOOS = payload => {
+  return {
+    type: BAGPAGE_CONSTANTS.SET_ITEM_OOS,
+    payload,
+  };
+};
+
+const openCheckoutConfirmationModal = () => {
+  return {
+    type: BAGPAGE_CONSTANTS.OPEN_CHECKOUT_CONFIRMATION_MODAL,
+  };
+};
+
+const closeCheckoutConfirmationModal = () => {
+  return {
+    type: BAGPAGE_CONSTANTS.CLOSE_CHECKOUT_CONFIRMATION_MODAL,
   };
 };
 
@@ -55,4 +80,8 @@ export default {
   setBagPageError,
   fetchModuleX,
   setModuleX,
+  startCheckout,
+  closeCheckoutConfirmationModal,
+  openCheckoutConfirmationModal,
+  setItemOOS,
 };

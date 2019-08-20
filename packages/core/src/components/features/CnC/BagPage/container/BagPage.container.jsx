@@ -28,7 +28,14 @@ export class BagPageContainer extends React.Component<Props> {
   };
 
   render() {
-    const { labels, totalCount, orderItemsCount } = this.props;
+    const {
+      labels,
+      totalCount,
+      orderItemsCount,
+      handleCartCheckout,
+      showConfirmationModal,
+      closeCheckoutConfirmationModal,
+    } = this.props;
     const showAddTobag = false;
     return (
       <BagPage
@@ -36,6 +43,9 @@ export class BagPageContainer extends React.Component<Props> {
         totalCount={totalCount}
         orderItemsCount={orderItemsCount}
         showAddTobag={showAddTobag}
+        handleCartCheckout={handleCartCheckout}
+        showConfirmationModal={showConfirmationModal}
+        closeCheckoutConfirmationModal={closeCheckoutConfirmationModal}
       />
     );
   }
@@ -49,6 +59,12 @@ export const mapDispatchToProps = (dispatch: ({}) => void) => {
     fetchNeedHelpContent: contentIds => {
       dispatch(BAG_PAGE_ACTIONS.fetchModuleX(contentIds));
     },
+    handleCartCheckout: () => {
+      dispatch(BAG_PAGE_ACTIONS.startCheckout());
+    },
+    closeCheckoutConfirmationModal: () => {
+      dispatch(BAG_PAGE_ACTIONS.closeCheckoutConfirmationModal());
+    },
   };
 };
 
@@ -60,6 +76,7 @@ const mapStateToProps = state => {
     productsTypes: BagPageSelector.getProductsTypes(state),
     orderItemsCount: size,
     needHelpContentId: BagPageSelector.getNeedHelpContentId(state),
+    showConfirmationModal: BagPageSelector.getConfirmationModalFlag(state),
   };
 };
 

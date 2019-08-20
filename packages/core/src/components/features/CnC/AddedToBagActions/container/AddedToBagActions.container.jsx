@@ -17,13 +17,14 @@ export class AddedToBagContainer extends React.Component<Props> {
   }
 
   render() {
-    const { labels, showAddTobag, inheritedStyles } = this.props;
+    const { labels, showAddTobag, inheritedStyles, handleCartCheckout } = this.props;
     const onClickViewBag = () => {
       routerPush('/cart', '/bag');
     };
     return (
       <AddedToBagActionsView
         onClickViewBag={onClickViewBag}
+        handleCartCheckout={handleCartCheckout}
         labels={labels}
         handleContinueShopping={this.handleContinueShopping}
         showAddTobag={showAddTobag}
