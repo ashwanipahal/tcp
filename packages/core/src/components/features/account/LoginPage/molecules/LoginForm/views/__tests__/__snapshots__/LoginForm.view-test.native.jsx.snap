@@ -138,12 +138,11 @@ exports[`LoginForm component should renders correctly 1`] = `
       dataLocator="rememberMe"
       disabled={false}
       name="userTouchId"
-      rightText="User Touch ID"
     />
   </View>
   <Styled(CustomButton)
     buttonVariation="variable-width"
-    color="#FFFFFF"
+    color="#fff"
     customStyle={
       Object {
         "marginTop": 30,
@@ -162,7 +161,6 @@ exports[`LoginForm component should renders correctly 1`] = `
     customStyle={
       Object {
         "marginTop": 10,
-        "textDecorationColor": "#ff0000",
       }
     }
     fontSizeVariation="xlarge"

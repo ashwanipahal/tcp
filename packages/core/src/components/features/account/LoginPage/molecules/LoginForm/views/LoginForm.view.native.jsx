@@ -3,6 +3,7 @@ import { View } from 'react-native';
 import { reduxForm, Field } from 'redux-form';
 import { PropTypes } from 'prop-types';
 import { noop } from 'lodash';
+import createThemeColorPalette from '@tcp/core/styles/themes/createThemeColorPalette';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
 import { FormStyle, ShowHideWrapper, HideShowFieldWrapper } from '../styles/LoginForm.style.native';
 import TextBox from '../../../../../../common/atoms/TextBox';
@@ -12,6 +13,8 @@ import Anchor from '../../../../../../common/atoms/Anchor';
 import LineComp from '../../../../../../common/atoms/Line';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
+
+const colorPallete = createThemeColorPalette();
 
 const styles = {
   loginButtonStyle: {
@@ -24,8 +27,8 @@ const styles = {
 
   forgotPasswordStyle: {
     marginTop: 10,
-    textDecorationColor: '#ff0000',
   },
+
   inputCheckBoxStyle: {
     width: '90%',
   },
@@ -103,12 +106,12 @@ class LoginForm extends React.PureComponent<Props> {
             component={InputCheckbox}
             dataLocator="rememberMe"
             disabled={false}
-            rightText="User Touch ID"
+            rightText={labels.login.lbl_login_touch_id}
           />
         </View>
 
         <CustomButton
-          color="#FFFFFF"
+          color={colorPallete.white}
           fill="BLUE"
           text={labels.login.lbl_login_loginCTA}
           buttonVariation="variable-width"
