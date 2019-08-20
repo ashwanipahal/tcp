@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import Col from '@tcp/core/src/components/common/atoms/Col';
 import PropTypes from 'prop-types';
-import OpenLoginModal from '@tcp/core/src/components/features/account/LoginPage/views/FavLoginModal';
+import OpenLoginModal from '@tcp/core/src/components/features/account/LoginPage/views/LoginModal';
 import FooterNavLinks from '../../FooterNavLinks';
 
 const FooterMiddleDesktop = ({

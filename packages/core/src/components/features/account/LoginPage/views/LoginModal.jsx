@@ -38,9 +38,7 @@ class OpenLoginModal extends React.Component<Props> {
     this.setState(
       {
         component: params.component,
-        currentForm: params.componentProps
-          ? params.componentProps.currentForm
-          : '',
+        currentForm: params.componentProps ? params.componentProps.currentForm : '',
       },
       () => {
         setLoginModalMountState({ state: true });
@@ -60,7 +58,7 @@ class OpenLoginModal extends React.Component<Props> {
         overlayClassName="TCPModal__Overlay"
         className={`TCPModal__Content, ${className}`}
         maxWidth="690px"
-        minHeight="340px"
+        minHeight="640px"
       >
         {this.state.component === 'login' ? (
           <LoginPageContainer

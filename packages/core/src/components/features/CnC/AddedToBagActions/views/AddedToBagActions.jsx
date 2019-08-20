@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from '../../../../common/atoms/Button';
 import withStyles from '../../../../common/hoc/withStyles';
+import OpenLoginModal from '../../../account/LoginPage/views/LoginModal';
 import style from '../styles/AddedToBagActions.style';
 import PayPalButton from '../../../../common/atoms/PaypalButton';
 import Row from '../../../../common/atoms/Row';
@@ -13,13 +14,18 @@ class AddedToBagActions extends React.Component<Props> {
   loginModalOpenClick = e => {
     const { setLoginModalMountState } = this.props;
     e.preventDefault();
-    if (e.target.href.toLowerCase().indexOf('favorites') > -1) {
-      setLoginModalMountState({ state: true });
-    }
+    setLoginModalMountState({ state: true });
   };
 
   render() {
-    const { className, labels, onClickViewBag, showAddTobag } = this.props;
+    const {
+      className,
+      labels,
+      onClickViewBag,
+      showAddTobag,
+      setLoginModalMountState,
+      loginModalMountedState,
+    } = this.props;
     return (
       <div className={className}>
         {showAddTobag && (
@@ -46,19 +52,35 @@ class AddedToBagActions extends React.Component<Props> {
         <Row className="checkout-button">
           {/* <PayPalButton className="payPal-button" /> */}
 
-          <Button data-locator={getLocator('addedtobag_btncheckout')} className="checkout">
+          <Button
+            data-locator={getLocator('addedtobag_btncheckout')}
+            className="checkout"
+            onClick={e => this.loginModalOpenClick(e)}
+          >
             <BodyCopy
               component="span"
               color="white"
               fontWeight="extrabold"
               fontFamily="secondary"
               fontSize="fs14"
-              onClick={e => this.loginModalOpenClick(e)}
             >
               {labels.checkout}
             </BodyCopy>
           </Button>
         </Row>
+        <OpenLoginModal
+          setLoginModalMountState={setLoginModalMountState}
+          openState={loginModalMountedState}
+          data={{
+            heading: 'labels.addressBook.ACC_LBL_DELETE_ADDRESS_HEADING',
+            title: 'labels.addressBook.ACC_LBL_DELETE_ADDRESS_TITLE',
+            description: 'selectedAddress',
+            buttons: {
+              cancel: 'labels.common.lbl_common_dontDelete',
+              confirm: 'labels.common.lbl_common_YesDelete',
+            },
+          }}
+        />
       </div>
     );
   }

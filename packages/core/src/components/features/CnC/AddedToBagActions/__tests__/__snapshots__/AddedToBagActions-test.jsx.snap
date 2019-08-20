@@ -39,6 +39,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
     <Styled(Button)
       className="checkout"
       data-locator="addedtobag-btncheckout"
+      onClick={[Function]}
     >
       <Styled(BodyCopy)
         className={null}
@@ -49,10 +50,22 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
-        onClick={[Function]}
         textAlign="left"
       />
     </Styled(Button)>
   </Styled(Row)>
+  <OpenLoginModal
+    data={
+      Object {
+        "buttons": Object {
+          "cancel": "labels.common.lbl_common_dontDelete",
+          "confirm": "labels.common.lbl_common_YesDelete",
+        },
+        "description": "selectedAddress",
+        "heading": "labels.addressBook.ACC_LBL_DELETE_ADDRESS_HEADING",
+        "title": "labels.addressBook.ACC_LBL_DELETE_ADDRESS_TITLE",
+      }
+    }
+  />
 </div>
 `;

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import AddedToBagActionsView from '../views/AddedToBagActions';
+import { setLoginModalMountedState } from '../../../account/LoginPage/container/LoginPage.actions';
 import { getLabelsAddToActions } from '../../AddedToBag/container/AddedToBag.selectors';
 import { routerPush } from '../../../../../utils';
 
@@ -17,7 +18,7 @@ export class AddedToBagContainer extends React.Component<Props> {
   }
 
   render() {
-    const { labels, showAddTobag, inheritedStyles } = this.props;
+    const { labels, showAddTobag, inheritedStyles, setLoginModalMountState } = this.props;
     const onClickViewBag = () => {
       routerPush('/cart', '/bag');
     };
@@ -28,6 +29,7 @@ export class AddedToBagContainer extends React.Component<Props> {
         handleContinueShopping={this.handleContinueShopping}
         showAddTobag={showAddTobag}
         inheritedStyles={inheritedStyles}
+        setLoginModalMountState={setLoginModalMountState}
       />
     );
   }
@@ -38,10 +40,21 @@ AddedToBagContainer.propTypes = {
   labels: PropTypes.shape.isRequired,
 };
 
-const mapDispatchToProps = state => {
+const mapDispatchToProps = dispatch => {
+  return {
+    setLoginModalMountState: payload => {
+      dispatch(setLoginModalMountedState(payload));
+    },
+  };
+};
+
+const mapStateToProps = state => {
   return {
     labels: getLabelsAddToActions(state),
   };
 };
 
-export default connect(mapDispatchToProps)(AddedToBagContainer);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddedToBagContainer);

@@ -31,15 +31,6 @@ const LoginTopSection = ({ labels, className, isCanada }) => {
         <BodyCopy fontSize="fs14" fontWeight="black" fontFamily="secondary" textAlign="center">
           {labels.login.lbl_login_heading}
         </BodyCopy>
-        <BodyCopy
-          fontSize="fs13"
-          fontWeight="semibold"
-          fontFamily="secondary"
-          textAlign="center"
-          className="elem-mb-SM"
-        >
-          {labels.login.lbl_login_subHeading}
-        </BodyCopy>
         {subDescKeys.length > 0 &&
           subDescKeys.map(key => (
             <BodyCopy fontFamily="secondary" textAlign="center" fontSize="fs12">
