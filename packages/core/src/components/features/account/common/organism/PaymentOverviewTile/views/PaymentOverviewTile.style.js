@@ -10,6 +10,11 @@ const styles = css`
     flex-direction: column;
     padding-left: 8px;
   }
+  .venmo-tile {
+    @media ${props => props.theme.mediaQuery.medium} {
+      display: none;
+    }
+  }
 `;
 
 export default styles;

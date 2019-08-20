@@ -54,7 +54,9 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
         >
           <Styled(Anchor)
             anchorVariation="primary"
+            asPath="/account/payment"
             fontSizeVariation="medium"
+            to="/account?id=payment"
             underline={true}
           />
         </Styled(Col)>
@@ -132,7 +134,9 @@ exports[`PaymentOverviewTile component should render correctly 1`] = `
         >
           <Styled(Anchor)
             anchorVariation="primary"
+            asPath="/account/payment"
             fontSizeVariation="medium"
+            to="/account?id=payment"
             underline={true}
           />
         </Styled(Col)>
