@@ -12,7 +12,7 @@ import {
   ScrollViewWrapper,
 } from '../styles/BagPage.style.native';
 
-const BagPage = ({ labels, totalCount, showAddTobag }) => {
+const BagPage = ({ labels, totalCount, showAddTobag, navigation }) => {
   return (
     <>
       <ScrollViewWrapper showAddTobag={showAddTobag}>
@@ -29,7 +29,7 @@ const BagPage = ({ labels, totalCount, showAddTobag }) => {
           </RowSectionStyle>
         </MainSection>
       </ScrollViewWrapper>
-      <AddedToBagActions labels={labels} showAddTobag={showAddTobag} />
+      <AddedToBagActions labels={labels} showAddTobag={showAddTobag} navigation={navigation} />
     </>
   );
 };
@@ -38,6 +38,7 @@ BagPage.propTypes = {
   labels: PropTypes.shape.isRequired,
   totalCount: PropTypes.number.isRequired,
   showAddTobag: PropTypes.bool.isRequired,
+  navigation: PropTypes.shape({}).isRequired,
 };
 
 export default BagPage;
