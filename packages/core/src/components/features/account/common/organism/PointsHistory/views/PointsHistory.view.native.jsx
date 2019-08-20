@@ -28,20 +28,10 @@ const PointsHistory = ({ labels, pointHistory }) => {
     <React.Fragment>
       <PointHistoryView>
         <PointView>
-          <BodyCopy
-            text={labels.lbl_common_order_date}
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="semibold"
-          />
+          <BodyCopy text={labels.lbl_common_order_date} fontFamily="secondary" fontSize="fs12" />
         </PointView>
         <PointTransView>
-          <BodyCopy
-            text={labels.lbl_common_transaction}
-            fontFamily="secondary"
-            fontSize="fs12"
-            fontWeight="semibold"
-          />
+          <BodyCopy text={labels.lbl_common_transaction} fontFamily="secondary" fontSize="fs12" />
         </PointTransView>
         <PointView>
           <BodyCopy
@@ -49,7 +39,6 @@ const PointsHistory = ({ labels, pointHistory }) => {
             component="p"
             fontFamily="secondary"
             fontSize="fs12"
-            fontWeight="semibold"
           />
         </PointView>
       </PointHistoryView>
@@ -80,6 +69,7 @@ const PointsHistory = ({ labels, pointHistory }) => {
                 fontFamily="secondary"
                 fontSize="fs12"
                 fontWeight="semibold"
+                textAlign="center"
               />
             </PointView>
           </PointHistoryView>

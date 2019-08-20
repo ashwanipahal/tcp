@@ -4,6 +4,7 @@ import { addCreditCardSuccess, addCreditCardError } from './AddEditCreditCard.ac
 import { addCreditCard, updateCreditCard } from '../../../../../services/abstractors/account';
 import { getCreditDebitCards } from '../../Payment/container/Payment.selectors';
 import { getAddressListState } from '../../AddressBook/container/AddressBook.selectors';
+import { getUserPhoneNumber } from '../../User/container/User.selectors';
 import {
   clearGetAddressListTTL,
   getAddressList,
@@ -23,9 +24,7 @@ export function* addCreditCardSaga({ payload }) {
       addressEntry = addressList.find(add => add.addressId === onFileAddressKey);
     } else {
       addressEntry = Object.assign({}, address, {
-        phoneNumber: yield select(
-          state => state.LoginPageReducer && state.LoginPageReducer.get('phone')
-        ),
+        phoneNumber: yield select(getUserPhoneNumber),
       });
     }
 
@@ -67,9 +66,7 @@ export function* updateCreditCardSaga({ payload }) {
       addressEntry = addressList.find(add => add.addressId === onFileAddressKey);
     } else {
       addressEntry = Object.assign({}, address, {
-        phoneNumber: yield select(
-          state => state.LoginPageReducer && state.LoginPageReducer.get('phone')
-        ),
+        phoneNumber: yield select(getUserPhoneNumber),
       });
     }
 

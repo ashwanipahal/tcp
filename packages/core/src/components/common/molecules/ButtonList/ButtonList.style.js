@@ -27,9 +27,9 @@ export default css`
     justify-content: center;
   }
   .link-button-wrapper-class {
-    border-bottom-color: white;
+    border-bottom-color: ${props => props.theme.colorPalette.white};
     &:hover {
-      border-bottom-color: white;
+      border-bottom-color: ${props => props.theme.colorPalette.white};
     }
   }
 

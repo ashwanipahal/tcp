@@ -83,6 +83,13 @@ exports[`CartItemTile common component renders correctly 1`] = `
     display: inline-block;
   }
 
+  .crossDeleteIcon {
+    float: right;
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+  }
+
   .product-tile-wrapper {
     flex-wrap: nowrap;
     @media ",

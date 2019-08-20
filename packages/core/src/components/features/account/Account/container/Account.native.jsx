@@ -9,7 +9,7 @@ import {
   StyledScrollView,
 } from '../styles/MyAccountContainer.style.native';
 import { getLabels } from './Account.selectors';
-import { getUserLoggedInState } from '../../LoginPage/container/LoginPage.selectors';
+import { getUserLoggedInState } from '../../User/container/User.selectors';
 import { isMobileApp, navigateToNestedRoute } from '../../../../../utils/utils.app';
 
 /**
