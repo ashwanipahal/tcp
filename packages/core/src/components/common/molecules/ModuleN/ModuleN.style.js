@@ -2,13 +2,18 @@ import { css } from 'styled-components';
 
 export default css`
   .heading-wrapper {
-    padding-top: 11px;
+    padding: 10px 0;
+
     @media ${props => props.theme.mediaQuery.medium} {
+      padding: 0;
       padding-top: 16px;
+      padding-bottom: 24px;
     }
     @media ${props => props.theme.mediaQuery.large} {
       text-align: center;
       padding-top: 0;
+      padding-bottom: 0;
+      margin-bottom: 22px;
     }
   }
 
@@ -16,9 +21,11 @@ export default css`
 
   h3.link-text {
     margin: 0;
+    margin-bottom: 5px;
 
     @media ${props => props.theme.mediaQuery.large} {
       display: inline;
+      margin-bottom: 0;
     }
   }
 

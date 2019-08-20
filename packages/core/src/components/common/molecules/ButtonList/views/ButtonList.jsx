@@ -34,12 +34,12 @@ const getImageCTA = item => {
                 title={button.title}
                 fontSizeVariation="large"
                 fontWeightVariation="active"
-                data-locator={`${dataLocatorTextCta}${index + 1}`}
+                data-locator={`${dataLocatorTextCta}${index}`}
               >
                 <DamImage
                   imgData={image}
                   className={className}
-                  data-locator={`${dataLocatorDivisionImages}${index + 1}`}
+                  data-locator={`${dataLocatorDivisionImages}${index}`}
                 />
                 <div className="image-comp">{button.text}</div>
               </Anchor>
@@ -86,7 +86,7 @@ const getButtonCTA = data => {
         <Button
           className={`${config[buttonListVariation].className}-class`}
           buttonVariation={buttonVariation}
-          data-locator={`${dataLocatorTextCta}${index + 1}`}
+          data-locator={`${dataLocatorTextCta}${index}`}
           {...otherProps}
         >
           {button.text}
@@ -121,7 +121,7 @@ const ButtonList = (props: Props) => {
   let compProps = {};
 
   if (buttonListVariation === 'stackedCTAList') {
-    compWrapper = 'stack-comp-wrapper';
+    compWrapper = `stack-comp-wrapper ${buttonsData.length > 5 ? ' wrapped-button-text' : ''}`;
     compProps = {
       ...stackCTAProps,
       fill,

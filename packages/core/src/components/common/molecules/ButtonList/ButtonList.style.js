@@ -11,9 +11,27 @@ export default css`
 
     button {
       width: 100%;
-      border-width: 0 1px 1px 0;
-      @media ${props => props.theme.mediaQuery.medium} {
-        border-width: 1px;
+    }
+  }
+
+  .stacked-button:nth-of-type(even) {
+    button {
+      border-left: 0;
+    }
+    @media ${props => props.theme.mediaQuery.medium} {
+      button {
+        border-left: 1px;
+      }
+    }
+  }
+
+  .stacked-button:nth-of-type(n + 3) {
+    button {
+      border-top: 0;
+    }
+    @media ${props => props.theme.mediaQuery.medium} {
+      button {
+        border-top: 1px;
       }
     }
   }
@@ -57,6 +75,7 @@ export default css`
   .image-comp {
     color: white;
     text-align: center;
+    white-space: nowrap;
   }
 
   &.scroll-comp-wrapper {
@@ -79,7 +98,7 @@ export default css`
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
-    padding-bottom: 20px;
+    padding-bottom: 16px;
     > div:first-child {
       margin: 0 auto;
     }
@@ -92,8 +111,10 @@ export default css`
 
       button {
         width: 141px;
+        white-space: nowrap;
       }
     }
+
     .stacked-cta-wrapper {
       display: flex;
       flex-wrap: nowrap;
@@ -130,12 +151,27 @@ export default css`
     }
 
     &.stack-comp-wrapper {
-      display: table;
-      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: nowrap;
+
+      .stacked-button {
+        width: auto;
+        flex-grow: initial;
+      }
+    }
+
+    .stack-comp-wrapper.wrapped-button-text .stacked-button {
+      margin-left: 16px;
+      button {
+        white-space: normal;
+      }
     }
   }
 
   @media ${props => props.theme.mediaQuery.large} {
+    padding-bottom: 24px;
+
     .stacked-button,
     .scroll-button {
       min-width: 210px;
@@ -155,6 +191,8 @@ export default css`
     &.stack-comp-wrapper,
     &.scroll-comp-wrapper {
       justify-content: center;
+      display: flex;
+      flex-wrap: nowrap;
     }
     .stacked-cta-wrapper-class {
       font-size: 14px;

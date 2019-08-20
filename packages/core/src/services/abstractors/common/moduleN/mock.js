@@ -1,4 +1,6 @@
 const ctaTypes = ['stackedCTAList', 'linkCTAList', 'scrollCTAList', 'imageCTAList'];
+const divImageUrl =
+  'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg';
 
 export default {
   moduleN: {
@@ -84,8 +86,7 @@ export default {
         },
         {
           image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+            url: divImageUrl,
             alt: 'Boy',
             title: 'Boy',
             crop_d: '',
@@ -111,7 +112,7 @@ export default {
             crop_m: '',
           },
           button: {
-            url: '/toddler-boy',
+            url: '/toddler-boy2',
             text: 'Toddler Boy',
             title: 'Tod Boy',
             target: '',
@@ -120,8 +121,7 @@ export default {
         },
         {
           image: {
-            url:
-              'https://res.cloudinary.com/tcp-dam-test/image/upload/v1558543115/ecom/assets/content/tcp/us/home/moduled/US-HP-050519-MINIME1_h9cwcd.jpg',
+            url: divImageUrl,
             alt: 'Baby Alt',
             title: 'Baby title',
             crop_d: '',
@@ -136,13 +136,30 @@ export default {
             external: 0,
           },
         },
+        {
+          image: {
+            url: divImageUrl,
+            alt: 'Baby Alt',
+            title: 'Baby title',
+            crop_d: '',
+            crop_t: '',
+            crop_m: '',
+          },
+          button: {
+            url: '/toddler-boy',
+            text: 'Alt',
+            title: 'Alt',
+            target: '',
+            external: 0,
+          },
+        },
       ],
     },
     submodules: {},
     set: [
       {
         key: 'ctaType',
-        val: ctaTypes[3],
+        val: ctaTypes[0],
       },
     ],
   },
