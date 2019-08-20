@@ -160,7 +160,9 @@ exports[`EmailSignupModal component renders correctly 1`] = `
       font-weight: ",
                         [Function],
                         ";
-      top: 0;
+      top: ",
+                        [Function],
+                        ";
     }
   }
   .success__checkmark {
@@ -216,6 +218,9 @@ exports[`EmailSignupModal component renders correctly 1`] = `
   .TextBox__error {
     display: flex;
     flex-direction: row;
+    padding-bottom: ",
+                        [Function],
+                        ";
   }
   .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
@@ -454,7 +459,9 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
       font-weight: ",
                         [Function],
                         ";
-      top: 0;
+      top: ",
+                        [Function],
+                        ";
     }
   }
   .success__checkmark {
@@ -510,6 +517,9 @@ exports[`EmailSignupModal component renders correctly when button is clicked 1`]
   .TextBox__error {
     display: flex;
     flex-direction: row;
+    padding-bottom: ",
+                        [Function],
+                        ";
   }
   .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
@@ -748,7 +758,9 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
       font-weight: ",
                         [Function],
                         ";
-      top: 0;
+      top: ",
+                        [Function],
+                        ";
     }
   }
   .success__checkmark {
@@ -804,6 +816,9 @@ exports[`EmailSignupModal component renders correctly when button is clicked 2`]
   .TextBox__error {
     display: flex;
     flex-direction: row;
+    padding-bottom: ",
+                        [Function],
+                        ";
   }
   .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;

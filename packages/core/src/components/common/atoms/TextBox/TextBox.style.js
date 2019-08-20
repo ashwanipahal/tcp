@@ -11,7 +11,10 @@ const textboxStyles = css`
         : props.theme.fonts.fontSize.textbox}px;
     padding: 0;
     position: absolute;
-    top: ${props => (props.input && props.input.value ? 0 : props.theme.spacing.ELEM_SPACING.MED)};
+    top: ${props =>
+      props.input && props.input.value
+        ? props.theme.spacing.ELEM_SPACING.XXS
+        : props.theme.spacing.ELEM_SPACING.LRG};
     ${props =>
       props.input &&
       props.input.value &&
@@ -54,7 +57,7 @@ const textboxStyles = css`
     &:focus + .TextBox__label {
       font-size: ${props => props.theme.fonts.fontSize.body.small.primary}px;
       font-weight: ${props => props.theme.fonts.fontWeight.bold};
-      top: 0;
+      top: ${props => props.theme.spacing.ELEM_SPACING.XXS};
     }
   }
   .success__checkmark {
@@ -98,6 +101,7 @@ const textboxStyles = css`
   .TextBox__error {
     display: flex;
     flex-direction: row;
+    padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXS};
   }
   .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
