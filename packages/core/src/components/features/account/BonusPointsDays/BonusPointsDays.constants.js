@@ -11,8 +11,8 @@ const BONUS_POINTS_DAYS_CONSTANTS = {
   BONUS_DETAILS_REF_LABEL: 'Bonus Points Days Details',
   VIEWS: {
     EDIT: 'edit',
-    READ: 'read'
-  }
+    READ: 'read',
+  },
 };
 
 export default BONUS_POINTS_DAYS_CONSTANTS;

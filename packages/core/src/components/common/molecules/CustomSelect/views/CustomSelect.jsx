@@ -92,7 +92,7 @@ class CustomSelect extends React.Component<Props> {
     const { className, selectListTitle } = this.props;
     return (
       <BodyCopy component="div" className={`${className} custom-select`}>
-        <span>{selectListTitle}</span>
+        <span>{`${selectListTitle}:`}</span>
         <BodyCopy component="div" onClick={this.toggleHandler} className="customSelectTitle">
           {activeTitle}
         </BodyCopy>

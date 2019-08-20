@@ -69,6 +69,13 @@ export default css`
     display: inline-block;
   }
 
+  .crossDeleteIcon {
+    float: right;
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+  }
+
   .product-tile-wrapper {
     flex-wrap: nowrap;
     @media ${props => props.theme.mediaQuery.mediumMax} {
