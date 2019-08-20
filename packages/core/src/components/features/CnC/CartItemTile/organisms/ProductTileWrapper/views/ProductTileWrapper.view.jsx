@@ -5,8 +5,8 @@ import {
   getProductName,
   getProductDetails,
 } from '@tcp/core/src/components/features/CnC/CartItemTile/container/CartItemTile.selectors';
+import { BodyCopy } from '@tcp/core/src/components/common/atoms';
 import ErrorMessage from '@tcp/core/src/components/features/CnC/common/molecules/ErrorMessage';
-import RemoveSoldOut from '@tcp/core/src/components/features/CnC/common/molecules/RemoveSoldOut';
 import EmptyBag from '@tcp/core/src/components/features/CnC/EmptyBagPage/views/EmptyBagPage.view';
 import productTileCss, { customStyles } from '../styles/ProductTileWrapper.style';
 
@@ -25,35 +25,66 @@ class ProductTileWrapper extends React.PureComponent<props> {
     });
   };
 
+  getRemoveString = labels => {
+    const subHeading = `<span className="spanNoRush">${labels.removeSoldOut.replace(
+      '#remove#',
+      `<u><Anchor
+      fontSizeVariation="medium"
+      underline
+      anchorVariation="primary"
+      data-locator="addressbook-makedefault"
+    >
+    remove
+    </Anchor></u>`
+    )}</span>`;
+    return (
+      // eslint-disable-next-line react/no-danger
+      <span dangerouslySetInnerHTML={{ __html: subHeading }} />
+    );
+  };
+
   render() {
     const { orderItems, bagLabels, labels, pageView, isUserLoggedIn, isPlcc } = this.props;
-    let isAvailable = false;
+    let isAvailable;
     const { isEditAllowed } = this.state;
     if (orderItems && orderItems.size > 0) {
+      const orderItemsView = orderItems.map(tile => {
+        const productDetail = getProductDetails(tile);
+        if (
+          productDetail.miscInfo.availability === 'SOLDOUT' ||
+          productDetail.miscInfo.availability === 'UNAVAILABLE'
+        ) {
+          isAvailable = true;
+        }
+        return (
+          <CartItemTile
+            inheritedStyles={pageView === 'myBag' && productTileCss}
+            labels={labels}
+            productDetail={productDetail}
+            key={`${getProductName(tile)}`}
+            pageView={pageView}
+            toggleEditAllowance={this.toggleEditAllowance}
+            isEditAllowed={isEditAllowed}
+            isPlcc={isPlcc}
+          />
+        );
+      });
       return (
         <div className="miniBagWrapper">
-          {(isAvailable === 'SOLDOUT' || isAvailable === 'UNAVAILABLE') && (
+          {isAvailable && (
             <>
               <ErrorMessage customClass={customStyles} error={labels.problemWithOrder} />
-              <RemoveSoldOut labels={labels} />
+              <BodyCopy
+                className="removeItem"
+                component="span"
+                fontFamily="secondary"
+                fontSize="fs12"
+              >
+                {this.getRemoveString(labels)}
+              </BodyCopy>
             </>
           )}
-          {orderItems.map(tile => {
-            const productDetail = getProductDetails(tile);
-            isAvailable = productDetail.miscInfo.store;
-            return (
-              <CartItemTile
-                inheritedStyles={pageView === 'myBag' && productTileCss}
-                labels={labels}
-                productDetail={productDetail}
-                key={`${getProductName(tile)}`}
-                pageView={pageView}
-                toggleEditAllowance={this.toggleEditAllowance}
-                isEditAllowed={isEditAllowed}
-                isPlcc={isPlcc}
-              />
-            );
-          })}
+          {orderItemsView}
         </div>
       );
     }

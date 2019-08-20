@@ -31,11 +31,13 @@ class CartItemTile extends React.Component {
     toggleEditAllowance();
   };
 
-  handleEditCartItem = productNumber => {
-    const productNum = productNumber.slice(0, productNumber.indexOf('_'));
-    this.toggleFormVisibility();
-    const { getProductSKUInfo } = this.props;
-    getProductSKUInfo(productNum);
+  handleEditCartItem = (pageView, productNumber) => {
+    if (pageView !== 'myBag') {
+      const productNum = productNumber.slice(0, productNumber.indexOf('_'));
+      this.toggleFormVisibility();
+      const { getProductSKUInfo } = this.props;
+      getProductSKUInfo(productNum);
+    }
   };
 
   handleSubmit = (itemId, skuId, quantity, itemPartNumber, variantNo) => {
@@ -92,12 +94,27 @@ class CartItemTile extends React.Component {
         {pageView !== 'myBag' && this.getBossBopisDetailsForMiniBag(productDetail, labels)}
         <Col className="save-for-later-label" colSize={{ small: 1, medium: 1, large: 3 }}>
           {productDetail.miscInfo.availability === 'SOLDOUT' && (
-            <BodyCopy fontFamily="secondary" fontSize="fs12" component="span">
+            <BodyCopy
+              fontFamily="secondary"
+              fontSize="fs12"
+              color="error"
+              component="span"
+              onClick={() => this.removeCartItem(productDetail.itemInfo.itemId)}
+            >
               <u>Remove</u>
             </BodyCopy>
           )}
           {productDetail.miscInfo.availability === 'UNAVAILABLE' && (
-            <BodyCopy fontFamily="secondary" color="error" fontSize="fs12" component="span">
+            <BodyCopy
+              fontFamily="secondary"
+              color="error"
+              fontSize="fs12"
+              component="span"
+              dataLocator={getLocator('cart_item_unavailable_update')}
+              onClick={() => {
+                this.handleEditCartItem(pageView, productDetail.productInfo.productPartNumber);
+              }}
+            >
               <u>Update</u>
             </BodyCopy>
           )}
@@ -216,10 +233,10 @@ class CartItemTile extends React.Component {
     return (
       <div className={className}>
         {productDetail.miscInfo.availability === 'UNAVAILABLE' && (
-          <ItemAvailability errorMsg={labels.itemUnavailable} />
+          <ItemAvailability errorMsg={labels.itemUnavailable} chooseDiff={labels.chooseDiff} />
         )}
         {productDetail.miscInfo.availability === 'SOLDOUT' && (
-          <ItemAvailability errorMsg={labels.itemSoldOut} chooseDiff={labels.chooseDiff} />
+          <ItemAvailability errorMsg={labels.itemSoldOut} />
         )}
         <div className="crossDeleteIcon">
           <Image
@@ -392,9 +409,10 @@ class CartItemTile extends React.Component {
                       dataLocator={getLocator('cart_item_edit_link')}
                       className="padding-left-10 responsive-edit-css"
                       onClick={() => {
-                        if (pageView !== 'myBag') {
-                          this.handleEditCartItem(productDetail.productInfo.productPartNumber);
-                        }
+                        this.handleEditCartItem(
+                          pageView,
+                          productDetail.productInfo.productPartNumber
+                        );
                       }}
                     >
                       <u>{labels.edit}</u>
