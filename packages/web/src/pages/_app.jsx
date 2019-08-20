@@ -9,14 +9,21 @@ import getCurrentTheme from '@tcp/core/styles/themes';
 import Grid from '@tcp/core/src/components/common/molecules/Grid';
 import { bootstrapData, loadUserProfile } from '@tcp/core/src/reduxStore/actions';
 import { createAPIConfig } from '@tcp/core/src/utils';
+import { deriveSEOTags } from '@tcp/core/src/config/SEOTags.config';
 import { openOverlayModal } from '@tcp/core/src/components/features/OverlayModal/container/OverlayModal.actions';
 import { getLoginState } from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.selectors';
 import { Header, Footer } from '../components/features/content';
+import SEOTags from '../components/common/atoms';
 import Loader from '../components/features/content/Loader';
 import { configureStore } from '../reduxStore';
 import ReactAxe from '../utils/react-axe';
 
 class TCPWebApp extends App {
+  constructor(props) {
+    super(props);
+    this.theme = getCurrentTheme();
+  }
+
   static async getInitialProps({ Component, ctx }) {
     const compProps = TCPWebApp.loadComponentData(Component, ctx, {});
     const pageProps = TCPWebApp.loadGlobalData(Component, ctx, compProps);
@@ -86,16 +93,21 @@ class TCPWebApp extends App {
     return Object.assign(pageProps, compProps);
   }
 
+  getSEOTags = pageId => {
+    const seoConfig = deriveSEOTags(pageId);
+    return <SEOTags seoConfig={seoConfig} />;
+  };
+
   render() {
     const { Component, pageProps, store } = this.props;
-    const theme = getCurrentTheme();
     return (
       <Container>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={this.theme}>
           <Provider store={store}>
             <GlobalStyle />
             <Grid>
               <Header />
+              {this.getSEOTags(Component.pageId)}
               <Loader />
               <div id="overlayWrapper">
                 <div id="overlayComponent" />

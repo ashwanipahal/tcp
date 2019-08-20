@@ -1,6 +1,6 @@
 import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
-import CHECKOUT_PAGE from '../../../constants/pages.constants';
+import { CHECKOUT_PAGE } from '../../../constants/pages.constants';
 
 export const getPointsHistoryData = () => {
   const payload = {

@@ -7,20 +7,21 @@
     "build": "next build ./src"
   },
   "dependencies": {
-    "babel-preset-next": "^1.2.0",
     "@babel/runtime": "^7.4.3",
     "@babel/runtime-corejs2": "^7.4.3",
     "@svgr/webpack": "^4.3.0",
     "@tcp/core": "*",
+    "babel-preset-next": "^1.2.0",
     "express": "^4.17.1",
+    "helmet": "3.18.0",
     "next": "8.0.3",
     "next-redux-saga": "4.0.0",
     "next-redux-wrapper": "^3.0.0-alpha.2",
+    "next-seo": "^2.0.0",
     "next-transpile-modules": "^2.0.0",
     "react": "latest",
-    "react-dom": "latest",
-    "helmet": "3.18.0",
-    "react-axe": "^3.1.0"
+    "react-axe": "^3.1.0",
+    "react-dom": "latest"
   },
   "license": "ISC",
   "devDependencies": {
