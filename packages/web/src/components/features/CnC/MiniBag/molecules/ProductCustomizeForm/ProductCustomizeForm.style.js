@@ -6,10 +6,14 @@ const styles = css`
     display: flex;
     flex: 1;
     height: 45px;
+    width: 100%;
   }
   .select-value-wrapper {
     display: flex;
     flex: 1;
+    div {
+      margin-right: 2px;
+    }
   }
   .button-wrapper {
     display: flex;

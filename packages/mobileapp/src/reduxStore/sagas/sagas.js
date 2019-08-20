@@ -1,6 +1,8 @@
 import { all } from 'redux-saga/effects';
 import BootstrapSaga from '@tcp/core/src/reduxStore/sagas/bootstrap';
 import LoginPageSaga from '@tcp/core/src/components/features/account/LoginPage/container/LoginPage.saga';
+import UserSaga from '@tcp/core/src/components/features/account/User/container/User.saga';
+import LogOutPageSaga from '@tcp/core/src/components/features/account/Logout/container/LogOut.saga';
 import ForgotPasswordSaga from '@tcp/core/src/components/features/account/ForgotPassword/container/ForgotPassword.saga';
 import PaymentSaga from '@tcp/core/src/components/features/account/Payment/container/Payment.saga';
 import DefaultPaymentSaga from '@tcp/core/src/components/features/account/Payment/container/DefaultPayment.saga';
@@ -16,6 +18,7 @@ import BagPageSaga from '@tcp/core/src/components/features/CnC/BagPage/container
 import DeleteCardSaga from '@tcp/core/src/components/features/account/Payment/container/DeleteCard.saga';
 import PointsHistorySaga from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.saga';
 import CouponSaga from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.saga';
+import { AddGiftCardSaga } from '@tcp/core/src/components/features/account/Payment/AddGiftCard/container/AddGiftCard.saga';
 import HomePageSaga from '../../components/features/content/HomePage/container/HomePage.saga';
 
 export default function* rootSaga() {
@@ -23,6 +26,7 @@ export default function* rootSaga() {
     BootstrapSaga(),
     HomePageSaga(),
     LoginPageSaga(),
+    LogOutPageSaga(),
     ForgotPasswordSaga(),
     PaymentSaga(),
     DefaultPaymentSaga(),
@@ -38,5 +42,7 @@ export default function* rootSaga() {
     CouponSaga(),
     DeleteCardSaga(),
     PointsHistorySaga(),
+    UserSaga(),
+    AddGiftCardSaga(),
   ]);
 }
