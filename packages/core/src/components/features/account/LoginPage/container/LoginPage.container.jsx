@@ -66,7 +66,6 @@ class LoginPageContainer extends React.PureComponent {
       currentForm,
       queryParams,
       setLoginModalMountState,
-      favlink,
       onRequestClose,
     } = this.props;
     const errorMessage = loginError ? loginErrorMessage || labels.login.lbl_login_error : '';
@@ -91,7 +90,6 @@ class LoginPageContainer extends React.PureComponent {
         currentForm={currentForm}
         queryParams={queryParams}
         setLoginModalMountState={setLoginModalMountState}
-        favlink="favorites"
         onRequestClose={onRequestClose}
       />
     );
@@ -117,6 +115,7 @@ LoginPageContainer.propTypes = {
   currentForm: PropTypes.string,
   queryParams: PropTypes.shape({}),
   onRequestClose: PropTypes.shape({}).isRequired,
+  setLoginModalMountState: PropTypes.bool.isRequired,
 };
 
 LoginPageContainer.defaultProps = {

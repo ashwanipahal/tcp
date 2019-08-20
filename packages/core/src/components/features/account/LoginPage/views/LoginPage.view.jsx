@@ -18,7 +18,6 @@ const LoginView = ({
   currentForm,
   queryParams,
   setLoginModalMountState,
-  favlink
 }) => {
   return (
     <LoginSection
@@ -37,7 +36,6 @@ const LoginView = ({
       currentForm={currentForm}
       queryParams={queryParams}
       setLoginModalMountState={setLoginModalMountState}
-      favlink="favorites"
     />
   );
 };
@@ -57,6 +55,7 @@ LoginView.propTypes = {
   openModal: PropTypes.func,
   currentForm: PropTypes.string.isRequired,
   queryParams: PropTypes.shape({}).isRequired,
+  setLoginModalMountState: PropTypes.bool.isRequired,
 };
 
 LoginView.defaultProps = {

@@ -1,17 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Modal from '@tcp/core/src/components/common/molecules/Modal';
-import withStyles from '@tcp/core/src/components/common/hoc/withStyles';
 import LoginPageContainer from '@tcp/core/src/components/features/account/LoginPage';
 import CreateAccount from '../../CreateAccount';
-
-// @flow
-
-type Props = {
-  data: Object,
-  className: string,
-  loginModalState: boolean,
-  onDeleteCard: Function,
-};
 
 class OpenLoginModal extends React.Component<Props> {
   constructor(props) {
@@ -47,8 +38,8 @@ class OpenLoginModal extends React.Component<Props> {
   };
 
   render() {
-    const { className, openState, setLoginModalMountState } = this.props;
-    const { currentForm } = this.state;
+    const { className, openState } = this.props;
+    const { currentForm, component } = this.state;
     return (
       <Modal
         fixedWidth
@@ -60,9 +51,8 @@ class OpenLoginModal extends React.Component<Props> {
         maxWidth="690px"
         minHeight="640px"
       >
-        {this.state.component === 'login' ? (
+        {component === 'login' ? (
           <LoginPageContainer
-            favlink="favorites"
             currentForm={currentForm}
             setLoginModalMountState={this.openForgotPasswordModal}
           />
@@ -76,6 +66,11 @@ class OpenLoginModal extends React.Component<Props> {
     );
   }
 }
+
+OpenLoginModal.propTypes = {
+  labels: PropTypes.shape({}).isRequired,
+  setLoginModalMountState: PropTypes.bool.isRequired,
+};
 
 export default OpenLoginModal;
 export { OpenLoginModal as OpenLoginModalVanilla };
