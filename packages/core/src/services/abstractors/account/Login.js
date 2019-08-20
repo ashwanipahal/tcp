@@ -225,7 +225,7 @@ export const getProfile = ({ refreshPoints = true, pageId, source }) => {
     webService: endpoints.getRegisteredUserDetailsInfo,
   };
   if (pageId) {
-    payload.header.pageName = pageId;
+    payload.header.pageName = 'myAccount';
   }
   if (source) {
     payload.header.source = source;
@@ -251,6 +251,7 @@ export const getProfile = ({ refreshPoints = true, pageId, source }) => {
           isLoggedin: userLoggedIn,
           isRemembered: userRemembered,
           isPlcc: res.body.x_hasPLCC,
+          hobbies: res.body.hobbies,
           isExpressEligible: parseBoolean(res.body.x_isExpress),
           country: res.body.x_country,
           currency: res.body.x_currency,
