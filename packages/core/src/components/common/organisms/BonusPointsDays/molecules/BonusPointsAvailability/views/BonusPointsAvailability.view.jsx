@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import withStyles from '../../../../../../common/hoc/withStyles';
+import withStyles from '../../../../../hoc/withStyles';
 import styles from '../styles/BonusPointsAvailability.view.style';
-import Button from '../../../../../../common/atoms/Button';
-import Col from '../../../../../../common/atoms/Col';
-import Row from '../../../../../../common/atoms/Row';
+import Button from '../../../../../atoms/Button';
+import Col from '../../../../../atoms/Col';
+import Row from '../../../../../atoms/Row';
 
 const BonusPointsAvailability = ({ bonusPoints, className }) => {
   return (

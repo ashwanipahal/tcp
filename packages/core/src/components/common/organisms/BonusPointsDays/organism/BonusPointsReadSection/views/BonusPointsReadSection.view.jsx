@@ -1,9 +1,9 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import Anchor from '../../../../../../common/atoms/Anchor';
-import withStyles from '../../../../../../common/hoc/withStyles';
+import Anchor from '../../../../../atoms/Anchor';
+import withStyles from '../../../../../hoc/withStyles';
 import styles from '../styles/BonusPointsReadSection.style';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy/views/BodyCopy';
+import BodyCopy from '../../../../../atoms/BodyCopy/views/BodyCopy';
 
 export const BonusPointsReadSection = ({
   toggleBonusPointsModal,

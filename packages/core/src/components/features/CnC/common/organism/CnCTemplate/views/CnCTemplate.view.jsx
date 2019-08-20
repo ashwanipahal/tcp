@@ -5,6 +5,7 @@ import Row from '../../../../../../common/atoms/Row';
 import Col from '../../../../../../common/atoms/Col';
 import OrderLedgerContainer from '../../OrderLedger';
 import CouponAndPromos from '../../CouponAndPromos';
+import BonusPointsDays from '../../../../../../common/organisms/BonusPointsDays';
 
 import styles from '../styles/CnCTemplate.style';
 
@@ -31,6 +32,7 @@ class CnCTemplate extends React.PureComponent<Props> {
             <Col colSize={{ small: 6, medium: 3, large: 4 }} className="right-sec">
               <OrderLedgerContainer />
               {BagActions && <BagActions />}
+              <BonusPointsDays />
               <CouponAndPromos />
             </Col>
           )}

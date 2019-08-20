@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import theme from '@tcp/core/styles/themes/TCP';
-import Button from '../../../../../../common/atoms/Button';
+import Button from '../../../../../atoms/Button';
 import {
   BtnWrapper,
   MarginRightWrapper,
