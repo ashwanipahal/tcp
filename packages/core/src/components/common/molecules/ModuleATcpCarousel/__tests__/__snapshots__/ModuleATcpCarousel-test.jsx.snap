@@ -119,15 +119,11 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "style7",
-                    "text": "60 % OFF",
+                    "text": "60%OFF",
                   },
                   Object {
-                    "style": "style8",
-                    "text": "50% Off",
-                  },
-                  Object {
-                    "style": "style9",
-                    "text": "All Shoes & Select Accessories",
+                    "style": "style10",
+                    "text": "50% Off - All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -208,15 +204,11 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "style7",
-                    "text": "60 % OFF",
+                    "text": "60%OFF",
                   },
                   Object {
-                    "style": "style8",
-                    "text": "50% Off",
-                  },
-                  Object {
-                    "style": "style9",
-                    "text": "All Shoes & Select Accessories",
+                    "style": "style10",
+                    "text": "50% Off - All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -297,15 +289,11 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "style7",
-                    "text": "60 % OFF",
+                    "text": "60%OFF",
                   },
                   Object {
-                    "style": "style8",
-                    "text": "50% Off",
-                  },
-                  Object {
-                    "style": "style9",
-                    "text": "All Shoes & Select Accessories",
+                    "style": "style10",
+                    "text": "50% Off - All Shoes & Select Accessories",
                   },
                 ],
               },
@@ -386,15 +374,11 @@ exports[`ModuleATcpCarousel component renders correctly 1`] = `
                 "textItems": Array [
                   Object {
                     "style": "style7",
-                    "text": "60 % OFF",
+                    "text": "60%OFF",
                   },
                   Object {
-                    "style": "style8",
-                    "text": "50% Off",
-                  },
-                  Object {
-                    "style": "style9",
-                    "text": "All Shoes & Select Accessories",
+                    "style": "style10",
+                    "text": "50% Off - All Shoes & Select Accessories",
                   },
                 ],
               },

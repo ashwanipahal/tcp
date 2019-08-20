@@ -2,7 +2,7 @@
 
 exports[`HomePageView should render correctly 1`] = `
 <ScrollViewMock>
-  <ModuleN />
+  <ModuleA />
   <SlotA
     className="moduleD"
   />
@@ -21,5 +21,6 @@ exports[`HomePageView should render correctly 1`] = `
     text="PLP Page"
     url=""
   />
+  <ModuleN />
 </ScrollViewMock>
 `;

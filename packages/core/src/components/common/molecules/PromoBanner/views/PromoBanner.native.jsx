@@ -1,7 +1,13 @@
 // @flow
 import React from 'react';
 import { Anchor } from '../../../atoms';
-import { BodyCopy, Container, ContainerView } from '../PromoBanner.style.native';
+import {
+  BodyCopy,
+  Container,
+  ContainerView,
+  Style8ContainerView,
+  PromoText,
+} from '../PromoBanner.style.native';
 
 type Props = {
   promoBanner: Array<Object>,
@@ -60,6 +66,31 @@ export const bodyCopyStyles = {
     />
   ),
   style6: props => <PercentageStyle {...props} />,
+
+  // eslint-disable-next-line sonarjs/no-identical-functions
+  style7: props => <PercentagePinkStyle {...props} />,
+  style8: props => (
+    <BodyCopy
+      fontSize="fs16"
+      fontWeight="black"
+      color="white"
+      fontFamily="primary"
+      textAlign="center"
+      {...props}
+    />
+  ),
+  style9: props => (
+    <BodyCopy
+      fontSize="fs16"
+      fontWeight="black"
+      color="white"
+      fontFamily="primary"
+      lineHeight="64px"
+      textAlign="center"
+      {...props}
+    />
+  ),
+  style10: props => <AllTextInRowStyle {...props} />,
 };
 
 /**
@@ -101,12 +132,17 @@ const PromoBanner = (props: Props) => {
   ];
 };
 
+/**
+ * This function return the Promobanner Percentage Style
+ * Color is 'White' and Split by the '%' key .
+ */
 const PercentageStyle = (props: PercentageStyleProps) => {
   const { text } = props;
 
   const strArray = text && text.split('%');
   const bodyCopyStyle = { height: 33 };
   const bodyCopyStyle1 = { height: 58, marginTop: 8 };
+
   return (
     <Container>
       <BodyCopy
@@ -140,6 +176,83 @@ const PercentageStyle = (props: PercentageStyleProps) => {
         />
       </ContainerView>
     </Container>
+  );
+};
+
+/**
+ * This function return the Promobanner Percentage Style
+ * Color is 'Pink' and Split by the '%' key .
+ */
+const PercentagePinkStyle = (props: PercentageStyleProps) => {
+  const { text } = props;
+
+  const strArray = text && text.split('%');
+  const bodyCopyStyle = { height: 85, fontSize: 99 };
+  const bodyCopyStyle1 = { height: 131, marginTop: 8, fontSize: 153 };
+  const bodyCopyStyle2 = { height: 42 };
+
+  return (
+    <Container>
+      <BodyCopy
+        fontWeight="black"
+        color="pink.400"
+        fontFamily="primary"
+        textAlign="center"
+        lineHeight="155px"
+        style={bodyCopyStyle1}
+        text={strArray && strArray[0]}
+      />
+      <ContainerView>
+        <BodyCopy
+          fontWeight="black"
+          color="pink.400"
+          fontFamily="primary"
+          text="%"
+          lineHeight="99px"
+          style={bodyCopyStyle}
+        />
+        <BodyCopy
+          fontSize="fs42"
+          fontWeight="black"
+          color="pink.400"
+          fontFamily="primary"
+          textAlign="center"
+          lineHeight="42px"
+          text={strArray && strArray[1]}
+          style={bodyCopyStyle2}
+        />
+      </ContainerView>
+    </Container>
+  );
+};
+
+/**
+ * This function return the Promobanner two text Style combination.
+ */
+const AllTextInRowStyle = (props: PercentageStyleProps) => {
+  const { text } = props;
+  const strArray = text && text.split('-');
+  return (
+    <Style8ContainerView>
+      <PromoText>
+        <BodyCopy
+          fontWeight="black"
+          color="black"
+          fontFamily="primary"
+          textAlign="center"
+          lineHeight="16px"
+          text={strArray && strArray[0]}
+        />
+        <BodyCopy
+          fontSize="fs16"
+          color="gray.900"
+          fontFamily="primary"
+          textAlign="left"
+          lineHeight="16px"
+          text={strArray && strArray[1]}
+        />
+      </PromoText>
+    </Style8ContainerView>
   );
 };
 

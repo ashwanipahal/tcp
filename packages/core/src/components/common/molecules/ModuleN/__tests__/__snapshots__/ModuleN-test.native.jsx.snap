@@ -63,7 +63,8 @@ exports[`ModuleNVanilla ModuleN should render correctly 1`] = `
   <Styled(View)>
     <ButtonList
       buttonListVariation="stackedCTAList"
-      locator="moduleN_cta_links"
+      color="red"
+      locator="moduleA_cta_links"
       stackedCTAButtons={
         Array [
           Object {

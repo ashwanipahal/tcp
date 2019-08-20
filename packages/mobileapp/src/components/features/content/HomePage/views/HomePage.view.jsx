@@ -3,6 +3,7 @@ import { ScrollView } from 'react-native';
 import { Button } from '@tcp/core/src/components/common/atoms';
 import PropTypes from 'prop-types';
 import ModuleN from '@tcp/core/src/components/common/molecules/ModuleN/views/ModuleN.native';
+import ModuleA from '@tcp/core/src/components/common/molecules/ModuleA';
 import { SlotA, SlotB, SlotC, SlotD } from '../molecules';
 
 class HomePageView extends React.Component {
@@ -16,7 +17,7 @@ class HomePageView extends React.Component {
     return (
       <ScrollView>
         <React.Fragment>
-          <ModuleN navigation={navigation} />
+          <ModuleA navigation={navigation} />
           {slotA && <SlotA {...slotA} navigation={navigation} />}
           {slotB && <SlotB {...slotB} navigation={navigation} />}
           {slotC && <SlotC {...slotC} navigation={navigation} />}
@@ -27,6 +28,7 @@ class HomePageView extends React.Component {
             text="PLP Page"
             onPress={() => navigation.navigate('ProductListingPageContainer')}
           />
+          <ModuleN navigation={navigation} />
         </React.Fragment>
       </ScrollView>
     );

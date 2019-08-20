@@ -19,6 +19,7 @@ type Props = {
   linkList: Object[],
   scrollCTAButtons: Object[],
   locator: string,
+  color: string,
 };
 
 /**
@@ -33,7 +34,7 @@ const keyExtractor = (_, index) => index.toString();
 /**
  * This function is used to render button either full-width or half
  */
-const renderItem = (item, navigation, showFullWidth, locator) => {
+const renderItem = (item, navigation, showFullWidth, locator, color) => {
   return (
     <Button
       locator={locator}
@@ -41,7 +42,7 @@ const renderItem = (item, navigation, showFullWidth, locator) => {
       accessibilityLabel={item.text}
       buttonVariation="cautionary-button"
       text={item.text}
-      color="red"
+      color={color}
       style={showFullWidth ? buttonFullWidth : buttonWidth}
       url={item.url}
       navigation={navigation}
@@ -52,13 +53,13 @@ const renderItem = (item, navigation, showFullWidth, locator) => {
 /**
  * This function is used to render Even number of Buttons into Grid
  */
-const renderEvenButtonGrid = (updatedCtxButton, navigation, locator) => {
+const renderEvenButtonGrid = (updatedCtxButton, navigation, locator, color) => {
   return (
     <FlatList
       numColumns={2}
       keyExtractor={keyExtractor}
       data={updatedCtxButton}
-      renderItem={({ item }) => renderItem(item, navigation, false, locator)}
+      renderItem={({ item }) => renderItem(item, navigation, false, locator, color)}
     />
   );
 };
@@ -66,14 +67,14 @@ const renderEvenButtonGrid = (updatedCtxButton, navigation, locator) => {
 /**
  * This function is used to render Odd number of Buttons into Grid
  */
-const renderOddButtonGrid = (ctxButton, navigation, locator) => {
+const renderOddButtonGrid = (ctxButton, navigation, locator, color) => {
   const updatedCtxButton = ctxButton.slice();
   const item = updatedCtxButton.pop();
   const showFullWidth = true;
   return (
     <Container>
-      {renderEvenButtonGrid(updatedCtxButton, navigation, locator)}
-      {renderItem(item, navigation, showFullWidth, locator)}
+      {renderEvenButtonGrid(updatedCtxButton, navigation, locator, color)}
+      {renderItem(item, navigation, showFullWidth, locator, color)}
     </Container>
   );
 };
@@ -228,13 +229,14 @@ const ButtonList = ({
   divImageCTACarousel,
   linkList,
   scrollCTAButtons,
+  color,
 }: Props) => {
   if (buttonListVariation === 'stackedCTAList') {
     const isEvenButtonGrid = stackedCTAButtons.length % 2 === 0;
     return (
       <Container>
-        {isEvenButtonGrid && renderEvenButtonGrid(stackedCTAButtons, navigation, locator)}
-        {!isEvenButtonGrid && renderOddButtonGrid(stackedCTAButtons, navigation, locator)}
+        {isEvenButtonGrid && renderEvenButtonGrid(stackedCTAButtons, navigation, locator, color)}
+        {!isEvenButtonGrid && renderOddButtonGrid(stackedCTAButtons, navigation, locator, color)}
       </Container>
     );
   }

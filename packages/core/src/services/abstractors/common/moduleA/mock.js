@@ -30,9 +30,10 @@ for (let i = 1; i <= totalImageSlides; i++) {
   const tcpHeaderTextItems = [{ text: `ENTER SITE ${i}`, style: 'style1' }];
   // eslint-disable-next-line no-unused-vars
   const tcpPromoTextItems = [
-    { text: '60 % OFF', style: 'style7' },
-    { text: '50% Off', style: 'style8' },
-    { text: 'All Shoes & Select Accessories', style: 'style9' },
+    { text: '60%OFF', style: 'style7' },
+    { text: '50% Off - All Shoes & Select Accessories', style: 'style10' },
+    // { text: '50 % Off', style: 'style8' },
+    // { text: 'All Shoes & Select Accessories', style: 'style9' },
   ];
 
   imageSlides.push({

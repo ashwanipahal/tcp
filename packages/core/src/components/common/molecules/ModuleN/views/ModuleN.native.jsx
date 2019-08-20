@@ -63,6 +63,7 @@ const ModuleN = (props: Props) => {
             navigation={navigation}
             divImageCTACarousel={divImageCTACarousel}
             locator="moduleN_cta_links"
+            color="red"
           />
         </DivImageCTAContainer>
       )}
@@ -73,7 +74,8 @@ const ModuleN = (props: Props) => {
             buttonListVariation="stackedCTAList"
             navigation={navigation}
             stackedCTAButtons={stackedCTAButtons}
-            locator="moduleN_cta_links"
+            locator="moduleA_cta_links"
+            color="red"
           />
           <Border background="red" />
         </ContainerView>
