@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
-import BodyCopy from '../../../../../../common/atoms/BodyCopy';
-import Anchor from '../../../../../../common/atoms/Anchor';
+import BodyCopy from '../../../../../atoms/BodyCopy';
+import Anchor from '../../../../../atoms/Anchor';
 import BonusPointsAvailability from '../../../molecules/BonusPointsAvailability';
-import CollapsibleContainer from '../../../../../../common/molecules/CollapsibleContainer';
+import CollapsibleContainer from '../../../../../molecules/CollapsibleContainer';
 import {
   StyledHeader,
   MarginRightWrapper,

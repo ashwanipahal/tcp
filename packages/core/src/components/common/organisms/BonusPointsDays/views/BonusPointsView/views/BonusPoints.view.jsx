@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import BonusPointsSection from '../../../organism/BonusPointsSection';
 import BonusPointsReadSection from '../../../organism/BonusPointsReadSection';
-import Modal from '../../../../../../common/molecules/Modal';
-import RichText from '../../../../../../common/atoms/RichText';
-import withStyles from '../../../../../../common/hoc/withStyles';
+import Modal from '../../../../../molecules/Modal';
+import RichText from '../../../../../atoms/RichText';
+import withStyles from '../../../../../hoc/withStyles';
 import styles, { modalstyles } from '../styles/BonusPoints.view.style';
 import constants from '../../../BonusPointsDays.constants';
 

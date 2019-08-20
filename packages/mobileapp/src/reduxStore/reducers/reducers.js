@@ -13,7 +13,7 @@ import CartPage from '@tcp/core/src/components/features/CnC/BagPage/container/Ba
 import PointsHistoryReducer from '@tcp/core/src/components/features/account/common/organism/PointsHistory/container/PointsHistory.reducer';
 import CreateAccountReducer from '@tcp/core/src/components/features/account/CreateAccount/container/CreateAccount.reducer';
 import CouponReducer from '@tcp/core/src/components/features/CnC/common/organism/CouponAndPromos/container/Coupon.reducer';
-import BonusPointsDaysReducer from '@tcp/core/src/components/features/account/BonusPointsDays/container/BonusPointsDays.reducer';
+import BonusPointsDaysReducer from '@tcp/core/src/components/common/organisms/BonusPointsDays/container/BonusPointsDays.reducer';
 import {
   HEADER_REDUCER_KEY,
   LABEL_REDUCER_KEY,
