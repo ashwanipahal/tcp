@@ -3,7 +3,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, ScrollView } from 'react-native';
 import withStyles from '../../../../../../common/hoc/withStyles.native';
-import { ParentContainer, StyledHeading, UnderlineStyle } from '../PaymentSection.style.native';
+import {
+  ParentContainer,
+  StyledHeading,
+  UnderlineStyle,
+  ModalHeading,
+  ModalViewWrapper,
+  LineWrapper,
+} from '../PaymentSection.style.native';
 import OffersSection from '../../../molecules/OffersSection';
 import Cards from '../../../molecules/Cards';
 import BodyCopy from '../../../../../../common/atoms/BodyCopy';
@@ -11,10 +18,30 @@ import VenmoCards from '../../../molecules/VenmoCards';
 import DeleteModal from '../../../molecules/DeleteModal';
 import AddEditPaymentModal from '../../../molecules/AddEditPaymentModal';
 import { getIconCard } from '../../../../../../../utils/index.native';
+import ModalNative from '../../../../../../common/molecules/Modal';
+import AddGiftCardContainer from '../../../AddGiftCard/container/AddGiftCard.container';
+import LineComp from '../../../../../../common/atoms/Line';
 
 class PaymentView extends React.Component<Props> {
   static propTypes = {
-    labels: PropTypes.shape({}),
+    labels: {
+      paymentGC: PropTypes.shape({
+        lbl_payment_modalGCHeading: PropTypes.string,
+        lbl_payment_cardNum: PropTypes.string,
+        lbl_payment_modalVenmoDeleteHeading: PropTypes.string,
+        lbl_payment_modalCCHeading: PropTypes.string,
+        lbl_payment_heading: PropTypes.string,
+        lbl_payment_ccHeading: PropTypes.string,
+        lbl_payment_CCEmptyHeading: PropTypes.string,
+        lbl_payment_CCEmptyDesc: PropTypes.string,
+        lbl_payment_ccEmptyAddBtn: PropTypes.string,
+        lbl_payment_addBtn: PropTypes.string,
+        lbl_payment_GCEmptyHeading: PropTypes.string,
+        lbl_payment_GCEmptyDesc: PropTypes.string,
+        lbl_payment_GCEmptyAddBtn: PropTypes.string,
+        lbl_payment_addGiftCard: PropTypes.string,
+      }),
+    },
     creditCardList: PropTypes.shape({}),
     setDefaultPaymentMethod: PropTypes.func,
     giftCardList: PropTypes.shape({}),
@@ -32,7 +59,24 @@ class PaymentView extends React.Component<Props> {
   };
 
   static defaultProps = {
-    labels: {},
+    labels: {
+      paymentGC: {
+        lbl_payment_modalGCHeading: '',
+        lbl_payment_cardNum: '',
+        lbl_payment_modalVenmoDeleteHeading: '',
+        lbl_payment_modalCCHeading: '',
+        lbl_payment_heading: '',
+        lbl_payment_ccHeading: '',
+        lbl_payment_CCEmptyHeading: '',
+        lbl_payment_CCEmptyDesc: '',
+        lbl_payment_ccEmptyAddBtn: '',
+        lbl_payment_addBtn: '',
+        lbl_payment_GCEmptyHeading: '',
+        lbl_payment_GCEmptyDesc: '',
+        lbl_payment_GCEmptyAddBtn: '',
+        lbl_payment_addGiftCard: '',
+      },
+    },
     creditCardList: {},
     setDefaultPaymentMethod: () => {},
     giftCardList: {},
@@ -65,6 +109,7 @@ class PaymentView extends React.Component<Props> {
       setDeleteModalMountedState: false,
       setUpdateModalMountedState: false,
       selectedCard: {},
+      showGiftCardModal: false,
     };
   }
 
@@ -106,6 +151,28 @@ class PaymentView extends React.Component<Props> {
     });
   };
 
+  toggleGiftCardModal = () => {
+    const { showGiftCardModal } = this.state;
+    this.setState({
+      showGiftCardModal: !showGiftCardModal,
+    });
+  };
+
+  getPaymentModal = (setUpdateModalMountedState, dto, labels, updateCardList) => {
+    return (
+      setUpdateModalMountedState && (
+        <AddEditPaymentModal
+          dto={dto}
+          labels={labels}
+          setSelectedCard={this.setSelectedCard}
+          toggleModal={this.setUpdateModalMountState}
+          setUpdateModalMountedState={setUpdateModalMountedState}
+          updateCardList={updateCardList}
+        />
+      )
+    );
+  };
+
   render() {
     const {
       labels,
@@ -119,6 +186,7 @@ class PaymentView extends React.Component<Props> {
       updateCardList,
     } = this.props;
     const { setDeleteModalMountedState, setUpdateModalMountedState, selectedCard } = this.state;
+    const { showGiftCardModal } = this.state;
     let dto = {};
     const cardImg = getIconCard(this.cardIconMapping[selectedCard.ccBrand]);
     if (selectedCard.ccType === 'GiftCard') {
@@ -192,6 +260,7 @@ class PaymentView extends React.Component<Props> {
               onGetBalanceCard={onGetBalanceCard}
               toggleModal={this.setDeleteModalMountState}
               setSelectedCard={this.setSelectedCard}
+              setCardHandler={this.toggleGiftCardModal}
             />
           )}
           {setDeleteModalMountedState && (
@@ -205,15 +274,24 @@ class PaymentView extends React.Component<Props> {
               onClose={this.onClose}
             />
           )}
-          {setUpdateModalMountedState && (
-            <AddEditPaymentModal
-              dto={dto}
-              labels={labels}
-              setSelectedCard={this.setSelectedCard}
-              toggleModal={this.setUpdateModalMountState}
-              setUpdateModalMountedState={setUpdateModalMountedState}
-              updateCardList={updateCardList}
-            />
+          {this.getPaymentModal(setUpdateModalMountedState, dto, labels, updateCardList)}
+          {showGiftCardModal && (
+            <ModalNative isOpen={showGiftCardModal} onRequestClose={this.toggleGiftCardModal}>
+              <ModalHeading>
+                <BodyCopy
+                  mobileFontFamily={['secondary']}
+                  fontWeight="extrabold"
+                  fontSize="fs16"
+                  text={labels.paymentGC.lbl_payment_addGiftCard}
+                />
+              </ModalHeading>
+              <LineWrapper>
+                <LineComp marginTop={5} borderWidth={1} borderColor="black" />
+              </LineWrapper>
+              <ModalViewWrapper>
+                <AddGiftCardContainer toggleModal={this.toggleGiftCardModal} labels={labels} />
+              </ModalViewWrapper>
+            </ModalNative>
           )}
         </ScrollView>
       </View>

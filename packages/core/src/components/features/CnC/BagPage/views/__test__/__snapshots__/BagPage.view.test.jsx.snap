@@ -7,7 +7,7 @@ exports[`Bag page Container should render Added to Bag view section 1`] = `
       "$$typeof": Symbol(react.forward_ref),
       "attrs": Array [],
       "componentStyle": ComponentStyle {
-        "componentId": "sc-cMljjf",
+        "componentId": "sc-jlyJG",
         "isStatic": false,
         "rules": Array [
           "
@@ -37,6 +37,7 @@ exports[`Bag page Container should render Added to Bag view section 1`] = `
   }
 
   .bag-header {
+    margin: 0;
     padding: 40px 0 20px;
     @media ",
           [Function],
@@ -59,7 +60,7 @@ exports[`Bag page Container should render Added to Bag view section 1`] = `
       "displayName": "Styled(BagPageView)",
       "foldedComponentIds": Array [],
       "render": [Function],
-      "styledComponentId": "sc-cMljjf",
+      "styledComponentId": "sc-jlyJG",
       "target": [Function],
       "toString": [Function],
       "warnTooManyClasses": [Function],

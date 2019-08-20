@@ -31,6 +31,7 @@ const Cards = props => {
     toggleModal,
     openUpdateModal,
     setSelectedCard,
+    setCardHandler,
   } = props;
   return (
     <View {...props}>
@@ -52,7 +53,7 @@ const Cards = props => {
           buttonVariation="variable-width"
           fill="BLUE"
           color="white"
-          onPress={() => openUpdateModal({ state: true })}
+          onPress={setCardHandler}
         />
       </ButtonWrapperStyle>
       {cardList.size > 0 &&
@@ -92,6 +93,7 @@ Cards.propTypes = {
   toggleModal: PropTypes.func,
   openUpdateModal: PropTypes.func,
   setSelectedCard: PropTypes.func,
+  setCardHandler: PropTypes.func,
 };
 
 Cards.defaultProps = {
@@ -101,6 +103,7 @@ Cards.defaultProps = {
   toggleModal: null,
   openUpdateModal: null,
   setSelectedCard: null,
+  setCardHandler: () => {},
 };
 
 export default withStyles(Cards, ParentContainerStyle);

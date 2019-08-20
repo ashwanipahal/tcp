@@ -58,4 +58,19 @@ describe('Payment View', () => {
     expect(tree.find(Offers)).toHaveLength(1);
     expect(tree.find(CardList)).toHaveLength(2);
   });
+
+  it('should render with showGiftCardModal', () => {
+    const tree = shallow(
+      <PaymentViewVanilla
+        labels={{ paymentHeading: 'Payment', paymentGC: {}, common: {} }}
+        className=""
+        showNotification="success"
+        cardList={{}}
+        creditCardList={{}}
+        giftCardList={{}}
+      />
+    );
+    tree.setState({ showGiftCardModal: true });
+    expect(tree).toMatchSnapshot();
+  });
 });
