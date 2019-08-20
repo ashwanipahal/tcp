@@ -138,8 +138,8 @@ exports[`CardTile should render correctly with amex card 1`] = `
         data-locator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -297,8 +297,8 @@ exports[`CardTile should render correctly with discover card 1`] = `
         data-locator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -826,8 +826,8 @@ exports[`CardTile should render correctly with master card 1`] = `
         data-locator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -1161,8 +1161,8 @@ exports[`CardTile should render correctly with plcc card 1`] = `
         data-locator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
@@ -1439,8 +1439,8 @@ exports[`CardTile should render correctly with visa card 1`] = `
         data-locator="payment-creditdebiteditlink"
         fontSizeVariation="large"
         locator=""
+        onPress={[Function]}
         text=""
-        to="/#"
         underline={true}
         visible={false}
       />
