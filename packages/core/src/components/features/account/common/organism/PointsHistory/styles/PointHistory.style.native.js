@@ -8,11 +8,13 @@ const PointHistoryView = styled.View`
 `;
 
 const PointView = styled.View`
-  width: 28%;
+  width: 35%;
+  padding-bottom: 10px;
 `;
 
 const PointTransView = styled.View`
-  width: 44%;
+  width: 30%;
+  padding-bottom: 10px;
 `;
 
 const pointHistoryAnchorStyle = props => {
