@@ -47,21 +47,16 @@ const getDescriptionStyle = props => {
   `;
 };
 
-const ShowHideWrapperStyle = () => {
-  return `
-  position:relative;
-  `;
-};
+const ShowHideWrapperStyle = () => `position:relative;`;
 
-const HideShowField = props => {
-  return `
+const HideShowField = props =>
+  `
   position: absolute;
   right: 0;
   top: ${props.theme.spacing.ELEM_SPACING.MED};
   border-bottom-width: 1px;
   border-bottom-color: black;
   `;
-};
 
 const DescriptionStyle = styled.Text`
   ${getDescriptionStyle}
