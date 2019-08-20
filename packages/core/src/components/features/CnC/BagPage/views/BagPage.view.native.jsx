@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/BagPage/organisms/OrderLedger';
+import OrderLedgerContainer from '@tcp/core/src/components/features/CnC/common/organism/OrderLedger';
 import ProductTileWrapper from '../../CartItemTile/organisms/ProductTileWrapper/container/ProductTileWrapper.container';
 import CouponAndPromos from '../../common/organism/CouponAndPromos';
 import AddedToBagActions from '../../AddedToBagActions';
