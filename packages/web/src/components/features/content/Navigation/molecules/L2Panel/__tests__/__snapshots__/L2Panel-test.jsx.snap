@@ -43,22 +43,8 @@ exports[`L2 Panel component renders correctly 1`] = `
         }
       >
         <div
-          className="l2-nav-category-header"
-        >
-          <Styled(Heading)
-            className="l2-nav-category-heading s-display-none"
-            color="text.primary"
-            component={null}
-            dataLocator="l2_col_heading_0"
-            textAlign="left"
-            variant="h6"
-          >
-            Lorem Ipsum
-          </Styled(Heading)>
-          <span
-            className="l2-nav-category-divider"
-          />
-        </div>
+          className="l2-nav-category-empty-header"
+        />
         <div
           className="l2-nav-category-links"
         >
@@ -950,14 +936,6 @@ exports[`L2 Panel component renders correctly 1`] = `
                 name="Bottoms"
               />
             </li>
-          </ul>
-          <ul
-            className={
-              Object {
-                "columnClass": "half-width",
-              }
-            }
-          >
             <li
               data-locator="l2_col_1_link_7"
             >
@@ -992,7 +970,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
               <Styled(L3Panel)
-                id="l3-drawer-0"
+                id="l3-drawer-7"
                 links={
                   Array [
                     Object {
@@ -1028,8 +1006,16 @@ exports[`L2 Panel component renders correctly 1`] = `
                 name="Leggings"
               />
             </li>
+          </ul>
+          <ul
+            className={
+              Object {
+                "columnClass": "half-width",
+              }
+            }
+          >
             <li
-              data-locator="l2_col_1_link_8"
+              data-locator="l2_col_1_link_7"
             >
               <Styled(Anchor)
                 to="/c/"
@@ -1060,7 +1046,7 @@ exports[`L2 Panel component renders correctly 1`] = `
               </Styled(Anchor)>
             </li>
             <li
-              data-locator="l2_col_1_link_9"
+              data-locator="l2_col_1_link_8"
             >
               <Styled(Anchor)
                 to="/c/girls-outerwear-girls-jackets-girls-blazers"
@@ -1091,7 +1077,7 @@ exports[`L2 Panel component renders correctly 1`] = `
               </Styled(Anchor)>
             </li>
             <li
-              data-locator="l2_col_1_link_10"
+              data-locator="l2_col_1_link_9"
             >
               <Styled(Anchor)
                 to="/c/"
@@ -1122,7 +1108,7 @@ exports[`L2 Panel component renders correctly 1`] = `
               </Styled(Anchor)>
             </li>
             <li
-              data-locator="l2_col_1_link_11"
+              data-locator="l2_col_1_link_10"
             >
               <Styled(Anchor)
                 to="/c/active"
@@ -1155,7 +1141,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
               <Styled(L3Panel)
-                id="l3-drawer-4"
+                id="l3-drawer-3"
                 links={
                   Array [
                     Object {
@@ -1248,7 +1234,7 @@ exports[`L2 Panel component renders correctly 1`] = `
               />
             </li>
             <li
-              data-locator="l2_col_1_link_12"
+              data-locator="l2_col_1_link_11"
             >
               <Styled(Anchor)
                 to="/c/"
@@ -1281,7 +1267,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
               <Styled(L3Panel)
-                id="l3-drawer-5"
+                id="l3-drawer-4"
                 links={
                   Array [
                     Object {
@@ -1318,7 +1304,7 @@ exports[`L2 Panel component renders correctly 1`] = `
               />
             </li>
             <li
-              data-locator="l2_col_1_link_13"
+              data-locator="l2_col_1_link_12"
             >
               <Styled(Anchor)
                 to="/c/girls-clothing-sleepwear"
@@ -1351,7 +1337,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
               <Styled(L3Panel)
-                id="l3-drawer-6"
+                id="l3-drawer-5"
                 links={
                   Array [
                     Object {
@@ -1416,7 +1402,7 @@ exports[`L2 Panel component renders correctly 1`] = `
               />
             </li>
             <li
-              data-locator="l2_col_1_link_14"
+              data-locator="l2_col_1_link_13"
             >
               <Styled(Anchor)
                 to="/c/girl-accessories"
@@ -1449,7 +1435,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
               <Styled(L3Panel)
-                id="l3-drawer-7"
+                id="l3-drawer-6"
                 links={
                   Array [
                     Object {
@@ -1682,7 +1668,7 @@ exports[`L2 Panel component renders correctly 1`] = `
               />
             </li>
             <li
-              data-locator="l2_col_1_link_15"
+              data-locator="l2_col_1_link_14"
             >
               <Styled(Anchor)
                 to="/c/girls-shoes"
@@ -1715,7 +1701,7 @@ exports[`L2 Panel component renders correctly 1`] = `
                 </Styled(BodyCopy)>
               </Styled(Anchor)>
               <Styled(L3Panel)
-                id="l3-drawer-8"
+                id="l3-drawer-7"
                 links={
                   Array [
                     Object {

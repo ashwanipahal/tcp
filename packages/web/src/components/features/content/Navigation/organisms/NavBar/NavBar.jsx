@@ -60,7 +60,6 @@ const NavBar = props => {
               >
                 <L2Panel
                   categoryLayout={categoryLayout}
-                  order={Object.keys(navL1Item.subCategories)}
                   panelData={navL1Item.subCategories}
                   name={navL1Item.categoryContent.name}
                   hideL2Drawer={hideL2Drawer(`l2-drawer-${index.toString()}`)}

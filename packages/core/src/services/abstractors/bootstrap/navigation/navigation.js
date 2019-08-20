@@ -2,6 +2,8 @@
 import mock from './mock';
 import handler from '../../../handler';
 
+const UNIDENTIFIED_GROUP = 'UNIDENTIFIED_GROUP';
+
 /**
  * Abstractor layer for loading data from API for Navigation
  */
@@ -20,11 +22,18 @@ const Abstractor = {
       const subCategories = {};
       listItem.subCategories.map(subCategory => {
         const subCat = subCategory;
-        const category = subCat.categoryContent.groupIdentifierName || 'Lorem Ipsum';
+        const category = subCat.categoryContent.groupIdentifierName || UNIDENTIFIED_GROUP;
+        const order = subCat.categoryContent.grp_identifier_sequence || 0;
+        const label = subCat.categoryContent.groupIdentifierName || '';
+
         if (!subCategories[category]) {
-          subCategories[category] = [];
+          subCategories[category] = {
+            label,
+            order,
+            items: [],
+          };
         }
-        subCategories[category].push(subCat);
+        subCategories[category].items.push(subCat);
         return subCategory;
       });
 

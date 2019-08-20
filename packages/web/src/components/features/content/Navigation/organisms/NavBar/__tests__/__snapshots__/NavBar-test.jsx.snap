@@ -1488,34 +1488,6 @@ exports[`NavBar component renders correctly 1`] = `
           className="nav-bar-l2"
           l1Index={0}
           name="Girl"
-          order={
-            Array [
-              "0",
-              "1",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6",
-              "7",
-              "8",
-              "9",
-              "10",
-              "11",
-              "12",
-              "13",
-              "14",
-              "15",
-              "16",
-              "17",
-              "18",
-              "19",
-              "20",
-              "21",
-              "22",
-              "23",
-            ]
-          }
           panelData={
             Array [
               Object {
@@ -4160,32 +4132,6 @@ exports[`NavBar component renders correctly 1`] = `
           className="nav-bar-l2"
           l1Index={1}
           name="Toddler Girl"
-          order={
-            Array [
-              "0",
-              "1",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6",
-              "7",
-              "8",
-              "9",
-              "10",
-              "11",
-              "12",
-              "13",
-              "14",
-              "15",
-              "16",
-              "17",
-              "18",
-              "19",
-              "20",
-              "21",
-            ]
-          }
           panelData={
             Array [
               Object {
@@ -6447,30 +6393,6 @@ exports[`NavBar component renders correctly 1`] = `
           className="nav-bar-l2"
           l1Index={2}
           name="Boy"
-          order={
-            Array [
-              "0",
-              "1",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6",
-              "7",
-              "8",
-              "9",
-              "10",
-              "11",
-              "12",
-              "13",
-              "14",
-              "15",
-              "16",
-              "17",
-              "18",
-              "19",
-            ]
-          }
           panelData={
             Array [
               Object {
@@ -8596,28 +8518,6 @@ exports[`NavBar component renders correctly 1`] = `
           className="nav-bar-l2"
           l1Index={3}
           name="Toddler Boy"
-          order={
-            Array [
-              "0",
-              "1",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6",
-              "7",
-              "8",
-              "9",
-              "10",
-              "11",
-              "12",
-              "13",
-              "14",
-              "15",
-              "16",
-              "17",
-            ]
-          }
           panelData={
             Array [
               Object {
@@ -10206,17 +10106,6 @@ exports[`NavBar component renders correctly 1`] = `
           className="nav-bar-l2"
           l1Index={4}
           name="Baby"
-          order={
-            Array [
-              "0",
-              "1",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6",
-            ]
-          }
           panelData={
             Array [
               Object {
@@ -11338,17 +11227,6 @@ exports[`NavBar component renders correctly 1`] = `
           className="nav-bar-l2"
           l1Index={5}
           name="Shoes"
-          order={
-            Array [
-              "0",
-              "1",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6",
-            ]
-          }
           panelData={
             Array [
               Object {
@@ -12765,17 +12643,6 @@ exports[`NavBar component renders correctly 1`] = `
           className="nav-bar-l2"
           l1Index={6}
           name="Accessories"
-          order={
-            Array [
-              "0",
-              "1",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6",
-            ]
-          }
           panelData={
             Array [
               Object {
@@ -13641,17 +13508,6 @@ exports[`NavBar component renders correctly 1`] = `
           className="nav-bar-l2"
           l1Index={7}
           name="Clearance"
-          order={
-            Array [
-              "0",
-              "1",
-              "2",
-              "3",
-              "4",
-              "5",
-              "6",
-            ]
-          }
           panelData={
             Array [
               Object {

@@ -7,6 +7,11 @@ import PromoBadge from '../PromoBadge';
 import L3Panel from '../L3Panel';
 import style from './L2Panel.style';
 
+const UNIDENTIFIED_GROUP = 'UNIDENTIFIED_GROUP';
+const MAX_ITEMS_IN_COL = 8;
+const FOUR_COL = 4;
+const TWO_COL = 2;
+
 const createShopByLinks = (links, column) => {
   return (
     <ul>
@@ -116,7 +121,6 @@ const L2Panel = props => {
     className,
     panelData,
     categoryLayout,
-    order,
     name,
     hideL2Drawer,
     l1Index,
@@ -146,50 +150,59 @@ const L2Panel = props => {
             medium: true,
           }}
         >
-          {order.map((category, categoryIndex) => {
-            const colSize = {
-              small: 6,
-              medium: 8,
-              large: panelData[category].length > 7 ? 4 : 2,
-            };
-            const firstCol = panelData[category].slice(0, 7);
-            const secondCol = panelData[category].slice(7);
-            let columnClass = '';
-            if (firstCol.length && secondCol.length) {
-              columnClass = 'half-width';
-            }
-            const hideOnMobileClass = category === 'Lorem Ipsum' ? 's-display-none' : '';
-            return (
-              <React.Fragment>
-                <Col colSize={colSize} className="l2-nav-category">
-                  <div className="l2-nav-category-header">
-                    <Heading
-                      variant="h6"
-                      className={`l2-nav-category-heading ${hideOnMobileClass}`}
-                      dataLocator={`l2_col_heading_${categoryIndex}`}
-                    >
-                      {category}
-                    </Heading>
-                    <span className="l2-nav-category-divider" />
-                  </div>
-                  <div className="l2-nav-category-links">
-                    {createLinks(firstCol, 1, categoryIndex, {
-                      openL3Drawer,
-                      hideL3Drawer,
-                      l3Drawer,
-                      className: { columnClass },
-                    })}
-                    {createLinks(secondCol, 2, categoryIndex, {
-                      openL3Drawer,
-                      hideL3Drawer,
-                      l3Drawer,
-                      className: { columnClass },
-                    })}
-                  </div>
-                </Col>
-              </React.Fragment>
-            );
-          })}
+          {Object.keys(panelData)
+            .sort((prevGroup, curGroup) => {
+              return prevGroup.order - curGroup.order;
+            })
+            .map((category, categoryIndex) => {
+              const { items, label } = panelData[category];
+              const colSize = {
+                small: 6,
+                medium: 8,
+                large: items.length > MAX_ITEMS_IN_COL ? FOUR_COL : TWO_COL,
+              };
+              const firstCol = items.slice(0, MAX_ITEMS_IN_COL);
+              const secondCol = items.slice(MAX_ITEMS_IN_COL);
+              let columnClass = '';
+              if (firstCol.length && secondCol.length) {
+                columnClass = 'half-width';
+              }
+              const hideOnMobileClass = category === UNIDENTIFIED_GROUP ? 's-display-none' : '';
+              return (
+                <React.Fragment>
+                  <Col colSize={colSize} className="l2-nav-category">
+                    {label ? (
+                      <div className="l2-nav-category-header">
+                        <Heading
+                          variant="h6"
+                          className={`l2-nav-category-heading ${hideOnMobileClass}`}
+                          dataLocator={`l2_col_heading_${categoryIndex}`}
+                        >
+                          {label}
+                        </Heading>
+                        <span className="l2-nav-category-divider" />
+                      </div>
+                    ) : (
+                      <div className="l2-nav-category-empty-header" />
+                    )}
+                    <div className="l2-nav-category-links">
+                      {createLinks(firstCol, 1, categoryIndex, {
+                        openL3Drawer,
+                        hideL3Drawer,
+                        l3Drawer,
+                        className: { columnClass },
+                      })}
+                      {createLinks(secondCol, 2, categoryIndex, {
+                        openL3Drawer,
+                        hideL3Drawer,
+                        l3Drawer,
+                        className: { columnClass },
+                      })}
+                    </div>
+                  </Col>
+                </React.Fragment>
+              );
+            })}
           {categoryLayout &&
             categoryLayout.map(({ columns }) =>
               columns.map(({ imageBanner, shopBySize }) => {
@@ -274,7 +287,6 @@ const L2Panel = props => {
 L2Panel.propTypes = {
   className: PropTypes.string.isRequired,
   panelData: PropTypes.shape([]).isRequired,
-  order: PropTypes.shape([]).isRequired,
   categoryLayout: PropTypes.shape([]),
   name: PropTypes.string.isRequired,
   hideL2Drawer: PropTypes.func.isRequired,

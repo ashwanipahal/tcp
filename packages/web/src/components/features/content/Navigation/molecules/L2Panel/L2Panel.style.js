@@ -118,6 +118,9 @@ export default css`
     .l2-nav-category-header {
       margin-bottom: 24px;
     }
+    .l2-nav-category-empty-header {
+      margin-bottom: 61px;
+    }
     .l2-nav-category-heading {
       padding: 0 0 15px 0;
       background: none;
