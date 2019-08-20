@@ -13,13 +13,14 @@ class ProductListingPageContainer extends React.PureComponent {
   }
 
   render() {
-    const { products, currentNavIds, navTree, breadCrumbs } = this.props;
+    const { products, currentNavIds, navTree, breadCrumbs, longDescription } = this.props;
     return (
       <ProductListing
         products={products}
         currentNavIds={currentNavIds}
         navTree={navTree}
         breadCrumbs={breadCrumbs}
+        longDescription={longDescription}
       />
     );
   }
@@ -31,6 +32,7 @@ function mapStateToProps(state) {
     currentNavIds: state.ProductListing.currentNavigationIds,
     navTree: getNavigationTree(state),
     breadCrumbs: processBreadCrumbs(state.ProductListing.breadCrumbTrail),
+    longDescription: state.ProductListing.currentListingDescription,
   };
 }
 
@@ -50,6 +52,7 @@ ProductListingPageContainer.propTypes = {
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
   navTree: PropTypes.shape({}),
   breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
+  longDescription: PropTypes.arrayOf(PropTypes.shape({})),
 };
 
 ProductListingPageContainer.defaultProps = {
@@ -57,6 +60,7 @@ ProductListingPageContainer.defaultProps = {
   currentNavIds: [],
   navTree: {},
   breadCrumbs: [],
+  longDescription: [],
 };
 
 export default connect(

@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReadMore component Read More component renders correctly with props 1`] = `
+<Styled(BodyCopy)
+  className="read-more-text"
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <input
+    className="read-more-state"
+    id="post-1"
+    type="checkbox"
+  />
+  <Styled(BodyCopy)
+    className="body-copy"
+    color="text.primary"
+    component="div"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "Check out all of our girls school dresses, jumpers and more:",
+      }
+    }
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="center"
+  />
+</Styled(BodyCopy)>
+`;
+
+exports[`ReadMore component renders correctly without props 1`] = `
+<Styled(BodyCopy)
+  className={null}
+  color="text.primary"
+  component="div"
+  fontFamily="primary"
+  fontSize={12}
+  fontWeight="regular"
+  letterSpacing="normal"
+  lineHeight="normal"
+  textAlign="left"
+>
+  <input
+    className="read-more-state"
+    id="post-1"
+    type="checkbox"
+  />
+  <Styled(BodyCopy)
+    className="body-copy"
+    color="text.primary"
+    component="div"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": undefined,
+      }
+    }
+    fontFamily="secondary"
+    fontSize="fs14"
+    fontWeight="regular"
+    letterSpacing="normal"
+    lineHeight="normal"
+    textAlign="center"
+  />
+</Styled(BodyCopy)>
+`;

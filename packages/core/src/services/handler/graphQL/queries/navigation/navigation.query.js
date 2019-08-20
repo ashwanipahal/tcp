@@ -12,6 +12,7 @@ const buildQuery = ({ brand, country, channel }) => `
       seoUrl
       productNodeCount
       name
+      longDescription
       id
       mainCategory {
         set {
@@ -86,6 +87,7 @@ const buildQuery = ({ brand, country, channel }) => `
         groupIdentifier
         groupIdentifierName
         name
+        longDescription
         id
         mainCategory {
           promoBadge {
@@ -104,6 +106,7 @@ const buildQuery = ({ brand, country, channel }) => `
           groupIdentifier
           groupIdentifierName
           name
+          longDescription
           id
         }
       }
