@@ -9,50 +9,60 @@ import Col from '../../../../common/atoms/Col';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import { getLocator } from '../../../../../utils';
 
-const AddedToBagActions = props => {
-  const { className, labels, onClickViewBag, showAddTobag } = props;
+class AddedToBagActions extends React.Component<Props> {
+  loginModalOpenClick = e => {
+    const { setLoginModalMountState } = this.props;
+    e.preventDefault();
+    if (e.target.href.toLowerCase().indexOf('favorites') > -1) {
+      setLoginModalMountState({ state: true });
+    }
+  };
 
-  return (
-    <div className={className}>
-      {showAddTobag && (
-        <Row>
-          <Col colSize={{ medium: 8, large: 12, small: 6 }}>
-            <Button
-              onClick={onClickViewBag}
-              data-locator={getLocator('addedtobag_btnviewbag')}
-              className="view-bag"
-            >
-              <BodyCopy
-                component="span"
-                color="white"
-                fontWeight="extrabold"
-                fontFamily="secondary"
-                fontSize="fs14"
+  render() {
+    const { className, labels, onClickViewBag, showAddTobag } = this.props;
+    return (
+      <div className={className}>
+        {showAddTobag && (
+          <Row>
+            <Col colSize={{ medium: 8, large: 12, small: 6 }}>
+              <Button
+                onClick={onClickViewBag}
+                data-locator={getLocator('addedtobag_btnviewbag')}
+                className="view-bag"
               >
-                {labels.viewBag}
-              </BodyCopy>
-            </Button>
-          </Col>
-        </Row>
-      )}
-      <Row className="checkout-button">
-        <PayPalButton className="payPal-button" />
+                <BodyCopy
+                  component="span"
+                  color="white"
+                  fontWeight="extrabold"
+                  fontFamily="secondary"
+                  fontSize="fs14"
+                >
+                  {labels.viewBag}
+                </BodyCopy>
+              </Button>
+            </Col>
+          </Row>
+        )}
+        <Row className="checkout-button">
+          {/* <PayPalButton className="payPal-button" /> */}
 
-        <Button data-locator={getLocator('addedtobag_btncheckout')} className="checkout">
-          <BodyCopy
-            component="span"
-            color="white"
-            fontWeight="extrabold"
-            fontFamily="secondary"
-            fontSize="fs14"
-          >
-            {labels.checkout}
-          </BodyCopy>
-        </Button>
-      </Row>
-    </div>
-  );
-};
+          <Button data-locator={getLocator('addedtobag_btncheckout')} className="checkout">
+            <BodyCopy
+              component="span"
+              color="white"
+              fontWeight="extrabold"
+              fontFamily="secondary"
+              fontSize="fs14"
+              onClick={e => this.loginModalOpenClick(e)}
+            >
+              {labels.checkout}
+            </BodyCopy>
+          </Button>
+        </Row>
+      </div>
+    );
+  }
+}
 
 AddedToBagActions.propTypes = {
   className: PropTypes.string.isRequired,
