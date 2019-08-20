@@ -3,6 +3,7 @@ import { css } from 'styled-components/native';
 const style = css`
   text-transform: uppercase;
   text-align: center;
+  letter-spacing: 0.93px;
   ${props =>
     props.buttonVariation === 'fixed-width'
       ? `
@@ -15,7 +16,7 @@ const style = css`
    border: 1px solid ${props.theme.colorPalette.black};
    padding: 4px 20px;
    width: 100%;
-   margin : 40px
+   margin : 40px;
  `
       : ''};
 
