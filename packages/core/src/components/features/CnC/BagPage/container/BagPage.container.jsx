@@ -28,7 +28,7 @@ export class BagPageContainer extends React.Component<Props> {
   };
 
   render() {
-    const { labels, totalCount, orderItemsCount } = this.props;
+    const { labels, totalCount, orderItemsCount, navigation } = this.props;
     const showAddTobag = false;
     return (
       <BagPage
@@ -36,6 +36,7 @@ export class BagPageContainer extends React.Component<Props> {
         totalCount={totalCount}
         orderItemsCount={orderItemsCount}
         showAddTobag={showAddTobag}
+        navigation={navigation}
       />
     );
   }
