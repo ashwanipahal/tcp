@@ -10,18 +10,20 @@ import {
   getResetEmailResponse,
   toggleSuccessfulEmailSection,
 } from '../../ForgotPassword/container/ForgotPassword.selectors';
-import { login, resetLoginInfo } from './LoginPage.actions';
+import { login } from './LoginPage.actions';
 import {
   closeOverlayModal,
   openOverlayModal,
 } from '../../../OverlayModal/container/OverlayModal.actions';
 import {
-  getUserLoggedInState,
   getLoginError,
   shouldShowRecaptcha,
   getLoginErrorMessage,
   getLabels,
 } from './LoginPage.selectors';
+import { resetUserInfo } from '../../User/container/User.actions';
+import { getUserLoggedInState } from '../../User/container/User.selectors';
+
 import LoginView from '../views';
 
 class LoginPageContainer extends React.PureComponent {
@@ -139,7 +141,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(resetLoginForgotPasswordState(payload));
     },
     resetLoginState: () => {
-      dispatch(resetLoginInfo());
+      dispatch(resetUserInfo());
     },
     SubmitForgot: payload => {
       dispatch(resetPassword(payload));

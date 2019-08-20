@@ -32,35 +32,4 @@ export const shouldShowRecaptcha = createSelector(
     parseInt(loginState.get('retriesCount') || 0, 10) > constants.FAILED_ATTEMPT_ALLOWED
 );
 
-export const getUserName = createSelector(
-  getLoginState,
-  loginState => loginState && loginState.get('firstName')
-);
-
-export const getUserFullName = createSelector(
-  getLoginState,
-  loginState => {
-    return loginState && ` ${loginState.get('firstName')} ${loginState.get('lastName')}`;
-  }
-);
 export const getLabels = state => state.Labels.global;
-
-export const getPointsToNextRewardState = createSelector(
-  getLoginState,
-  loginState => loginState && loginState.get('pointsToNextReward')
-);
-
-export const getCurrentPointsState = createSelector(
-  getLoginState,
-  loginState => loginState && loginState.get('currentPoints')
-);
-
-export const getTotalRewardsState = createSelector(
-  getLoginState,
-  loginState => loginState && loginState.get('totalRewards')
-);
-
-export const isPlccUser = createSelector(
-  getLoginState,
-  loginState => loginState && loginState.get('x_hasPLCC') === 'true'
-);

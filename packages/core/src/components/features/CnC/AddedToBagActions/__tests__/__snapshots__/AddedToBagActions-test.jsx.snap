@@ -36,21 +36,6 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
   <Styled(Row)
     className="checkout-button"
   >
-    <PayPalButton
-      className="payPal-button"
-      containerId="paypal-button-container"
-      locale="en_US"
-      style={
-        Object {
-          "color": "blue",
-          "height": 48,
-          "label": "paypal",
-          "shape": "rect",
-          "size": "responsive",
-          "tagline": false,
-        }
-      }
-    />
     <Styled(Button)
       className="checkout"
       data-locator="addedtobag-btncheckout"
@@ -64,6 +49,7 @@ exports[`AddedToBagActions component AddedToBagActions component renders correct
         fontWeight="extrabold"
         letterSpacing="normal"
         lineHeight="normal"
+        onClick={[Function]}
         textAlign="left"
       />
     </Styled(Button)>

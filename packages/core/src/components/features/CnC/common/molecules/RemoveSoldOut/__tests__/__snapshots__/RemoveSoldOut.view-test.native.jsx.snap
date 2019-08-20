@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RemoveSoldOut Component RemoveSoldOut should render correctly 1`] = `
+<Styled(Text)>
+  <Styled(BodyCopy)
+    color="error"
+    fontFamily="secondary"
+    fontSize="fs10"
+    fontWeight="regular"
+  />
+</Styled(Text)>
+`;
