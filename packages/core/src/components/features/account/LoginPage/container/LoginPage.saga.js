@@ -20,11 +20,13 @@ export function* loginSaga({ payload }) {
     }
     return yield put(setLoginInfo(response));
   } catch (err) {
+    const { errorCode, errorMessage, errorResponse } = err;
     return yield put(
       setLoginInfo({
         success: false,
-        errorCode: err.errorCode,
-        errorMessage: err.errorMessage,
+        errorCode,
+        errorMessage,
+        ...errorResponse
       })
     );
   }
