@@ -90,7 +90,9 @@ exports[`Add gift card form component should render component correctly 1`] = `
       font-weight: ",
                 [Function],
                 ";
-      top: 0;
+      top: ",
+                [Function],
+                ";
     }
   }
   .success__checkmark {
@@ -146,6 +148,9 @@ exports[`Add gift card form component should render component correctly 1`] = `
   .TextBox__error {
     display: flex;
     flex-direction: row;
+    padding-bottom: ",
+                [Function],
+                ";
   }
   .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
@@ -262,7 +267,9 @@ exports[`Add gift card form component should render component correctly 1`] = `
       font-weight: ",
                 [Function],
                 ";
-      top: 0;
+      top: ",
+                [Function],
+                ";
     }
   }
   .success__checkmark {
@@ -318,6 +325,9 @@ exports[`Add gift card form component should render component correctly 1`] = `
   .TextBox__error {
     display: flex;
     flex-direction: row;
+    padding-bottom: ",
+                [Function],
+                ";
   }
   .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
@@ -453,7 +463,9 @@ exports[`Add gift card form component should render component correctly 1`] = `
       font-weight: ",
                 [Function],
                 ";
-      top: 0;
+      top: ",
+                [Function],
+                ";
     }
   }
   .success__checkmark {
@@ -509,6 +521,9 @@ exports[`Add gift card form component should render component correctly 1`] = `
   .TextBox__error {
     display: flex;
     flex-direction: row;
+    padding-bottom: ",
+                [Function],
+                ";
   }
   .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
@@ -560,8 +575,31 @@ exports[`Add gift card form component should render component correctly 1`] = `
       <div
         className="card__msgWrapper"
       >
-        <Styled(RichText)
+        <Styled(BodyCopy)
+          className="card__msg--bold elem-mb-XS"
+          color="text.primary"
+          component="p"
+          dataLocator="git-card-headertext"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="bold"
+          letterSpacing="normal"
+          lineHeight="normal"
+          tag="p"
+          textAlign="left"
+        />
+        <Styled(BodyCopy)
+          className="card__msg"
+          color="text.primary"
+          component="p"
           dataLocator="git-card-messagetext"
+          fontFamily="primary"
+          fontSize={12}
+          fontWeight="regular"
+          letterSpacing="normal"
+          lineHeight="normal"
+          tag="p"
+          textAlign="left"
         />
       </div>
     </Styled(Col)>

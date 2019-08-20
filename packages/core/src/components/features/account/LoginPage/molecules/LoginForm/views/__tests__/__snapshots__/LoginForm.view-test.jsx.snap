@@ -93,7 +93,9 @@ exports[`LoginForm component should renders correctly 1`] = `
       font-weight: ",
                 [Function],
                 ";
-      top: 0;
+      top: ",
+                [Function],
+                ";
     }
   }
   .success__checkmark {
@@ -149,6 +151,9 @@ exports[`LoginForm component should renders correctly 1`] = `
   .TextBox__error {
     display: flex;
     flex-direction: row;
+    padding-bottom: ",
+                [Function],
+                ";
   }
   .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
@@ -522,7 +527,9 @@ exports[`LoginForm component should renders correctly with error 1`] = `
       font-weight: ",
                 [Function],
                 ";
-      top: 0;
+      top: ",
+                [Function],
+                ";
     }
   }
   .success__checkmark {
@@ -578,6 +585,9 @@ exports[`LoginForm component should renders correctly with error 1`] = `
   .TextBox__error {
     display: flex;
     flex-direction: row;
+    padding-bottom: ",
+                [Function],
+                ";
   }
   .warning-icon {
     background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;

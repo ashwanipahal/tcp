@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MyWalletTile component should render correctly when coupons are not present 1`] = `
+<Styled(AccountOverviewTile)
+  className=""
+  ctaLink="/account?id=wallet"
+  ctaPath="/account/wallet"
+  dataLocatorPrefix="mywallettile"
+>
+  <section
+    className="elem-pb-MED"
+  >
+    <Styled(BodyCopy)
+      className="margin-none elem-mb-LRG"
+      color="text.primary"
+      component="p"
+      data-locator="accountoverview-mywallettile-startshoptext"
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    />
+    <Styled(BodyCopy)
+      className="elem-mb-LRG"
+      color="text.primary"
+      component="p"
+      data-locator="accountoverview-mywallettile-startshoptext"
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    />
+    <div>
+      <Styled(Anchor)
+        anchorVariation="button"
+        asPath="/home"
+        buttonVariation="variable-width"
+        centered={true}
+        data-locator="accountoverview-mywallettile-startshopbtn"
+        fill="WHITE"
+        fullWidth={true}
+        to="/home"
+      />
+    </div>
+    <CouponList
+      coupons={Immutable.List []}
+      labels={Object {}}
+      sliceCount={5}
+    />
+  </section>
+</Styled(AccountOverviewTile)>
+`;
+
+exports[`MyWalletTile component should render correctly when coupons are present 1`] = `
+<Styled(AccountOverviewTile)
+  className=""
+  ctaLink="/account?id=wallet"
+  ctaPath="/account/wallet"
+  dataLocatorPrefix="mywallettile"
+>
+  <section
+    className="elem-pb-MED"
+  >
+    <Styled(BodyCopy)
+      className=" elem-mb-LRG"
+      color="text.primary"
+      component="p"
+      data-locator="accountoverview-mywallettile-youhaverewardtext"
+      fontFamily="primary"
+      fontSize="fs14"
+      fontWeight="semibold"
+      letterSpacing="normal"
+      lineHeight="normal"
+      textAlign="left"
+    />
+    <CouponList
+      coupons={
+        Immutable.List [
+          Object {},
+        ]
+      }
+      labels={
+        Object {
+          "lbl_overview_myWalletOfferAvailable": "",
+        }
+      }
+      sliceCount={5}
+    />
+  </section>
+</Styled(AccountOverviewTile)>
+`;
