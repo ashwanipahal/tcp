@@ -7,7 +7,7 @@ import withStyles from '../../../../../../common/hoc/withStyles';
 import styles from '../styles/ProfileInformation.style';
 import CompleteProfile from '../../CompleteProfile/views';
 import PersonalInformation from '../../PersonalInformation/views';
-import ChangePassword from '../../ChangePassword/views';
+import ChangePasswordInfo from '../../ChangePasswordInfo/views';
 import BirthdaySaving from '../../BirthdaySaving/views';
 
 const ProfileInformation = ({ className, labels }) => {
@@ -63,7 +63,7 @@ const ProfileInformation = ({ className, labels }) => {
           }}
           className="profileInfoCol elem-mb-XL"
         >
-          <ChangePassword labels={labels} />
+          <ChangePasswordInfo labels={labels} />
         </Col>
         <Col
           colSize={{

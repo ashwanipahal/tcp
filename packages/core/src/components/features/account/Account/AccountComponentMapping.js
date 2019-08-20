@@ -6,6 +6,7 @@ import AddEditCreditCardContainer from '../AddEditCreditCard/container/AddEditCr
 import AddGiftCardContainer from '../Payment/AddGiftCard/container/AddGiftCard.container'; //eslint-disable-line
 import PlaceRewards from '../PlaceRewards/container/PlaceRewards.container';
 import MyProfile from '../MyProfile/container/MyProfile.container';
+import ChangePassword from '../ChangePassword';
 
 const AccountComponentMapping = {
   'address-book': AddressBook,
@@ -18,6 +19,7 @@ const AccountComponentMapping = {
   'edit-credit-card': AddEditCreditCardContainer,
   'place-rewards': PlaceRewards,
   profile: MyProfile,
+  'change-password': ChangePassword,
 };
 
 export default AccountComponentMapping;

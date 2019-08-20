@@ -4,6 +4,7 @@ import LoginPageSaga from '@tcp/core/src/components/features/account/LoginPage/c
 import LogOutPageSaga from '@tcp/core/src/components/features/account/Logout/container/LogOut.saga';
 import ForgotPasswordSaga from '@tcp/core/src/components/features/account/ForgotPassword/container/ForgotPassword.saga';
 import ResetPasswordSaga from '@tcp/core/src/components/features/account/ResetPassword/container/ResetPassword.saga';
+import ChangePasswordSaga from '@tcp/core/src/components/features/account/ChangePassword/container/ChangePassword.saga';
 import AddEditAddressSaga from '@tcp/core/src/components/features/account/AddEditAddress/container/AddEditAddress.saga';
 import AddressBookSaga from '@tcp/core/src/components/features/account/AddressBook/container/AddressBook.saga';
 import PaymentSaga from '@tcp/core/src/components/features/account/Payment/container/Payment.saga';
@@ -60,5 +61,6 @@ export default function* rootSaga() {
     AccountHeaderSaga(),
     PointsHistorySaga(),
     ResetPasswordSaga(),
+    ChangePasswordSaga(),
   ]);
 }

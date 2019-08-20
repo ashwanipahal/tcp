@@ -91,6 +91,10 @@ const endpoints = {
     method: 'put',
     URI: 'v2/account/resetPassword',
   },
+  updateProfileInfo: {
+    method: 'put',
+    URI: 'v2/account/updatesAccountDataForRegisteredUser',
+  },
   getGifCardBalance: {
     method: API_METHODS.POST,
     URI: 'v2/wallet/getGiftCardBalance',

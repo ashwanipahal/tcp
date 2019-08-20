@@ -9,10 +9,16 @@ export const AccountOverviewTile = ({ title, ctaTitle, ctaLink, ctaPath, childre
   return (
     <BodyCopy component="div" className={className}>
       <BodyCopy component="div" className="container">
-        <BodyCopy component="h3" fontSize="fs16" fontWeight="semibold" className="heading">
+        <BodyCopy
+          component="h3"
+          fontSize="fs16"
+          fontFamily="secondary"
+          fontWeight="extrabold"
+          className="heading"
+        >
           {title}
         </BodyCopy>
-        <BodyCopy component="div" className="elem-pt-LRG elem-pb-XL content">
+        <BodyCopy component="div" className="elem-pb-XL content">
           {children}
         </BodyCopy>
 

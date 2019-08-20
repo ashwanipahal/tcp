@@ -3,9 +3,9 @@ import { css } from 'styled-components';
 const styles = css`
   padding: ${props => {
     const spacing = props.theme.spacing.ELEM_SPACING;
-    return `${spacing.MED} ${spacing.MED} ${spacing.SM} ${spacing.MED}`;
+    return `0 ${spacing.MED} ${spacing.SM} ${spacing.MED}`;
   }};
-  width: 100%;
+  width: 90%;
 
   .container {
     display: flex;
@@ -23,7 +23,7 @@ const styles = css`
   }
 
   @media ${props => props.theme.mediaQuery.medium} {
-    min-height: 300px;
+    min-height: 250px;
   }
 `;
 
