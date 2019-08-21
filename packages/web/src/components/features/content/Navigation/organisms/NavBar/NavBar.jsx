@@ -17,6 +17,7 @@ const NavBar = props => {
     openL3Drawer,
     hideL3Drawer,
     l3Drawer,
+    removeL1Focus,
   } = props;
 
   return (
@@ -25,11 +26,17 @@ const NavBar = props => {
         {navigationData.map((navL1Item, index) => {
           let categoryLayout = [];
           let sizesRange = [];
+          const settings = {};
           if (navL1Item.categoryContent.mainCategory) {
             const { mainCategory } = navL1Item.categoryContent;
-            const { categoryLayout: catLayout, sizesRange: sizRange } = mainCategory;
+            const { categoryLayout: catLayout, sizesRange: sizRange, set } = mainCategory;
             categoryLayout = catLayout;
             sizesRange = sizRange;
+            if (set) {
+              set.forEach(({ key, value }) => {
+                settings[key] = value;
+              });
+            }
           }
 
           return (
@@ -39,6 +46,8 @@ const NavBar = props => {
               key={`l1menu_link_${index.toString()}`}
               sizesRange={sizesRange}
               onClick={openL2Drawer(`l2-drawer-${index.toString()}`)}
+              showOnlyOnApp={typeof settings.showOnlyOnApp !== 'undefined'}
+              removeL1Focus={removeL1Focus}
               {...navL1Item}
             >
               <Drawer
@@ -89,6 +98,7 @@ NavBar.propTypes = {
   openL3Drawer: PropTypes.func.isRequired,
   hideL3Drawer: PropTypes.func.isRequired,
   l3Drawer: PropTypes.shape({}).isRequired,
+  removeL1Focus: PropTypes.bool.isRequired,
 };
 
 NavBar.defaultProps = {

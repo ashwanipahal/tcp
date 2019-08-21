@@ -26,6 +26,11 @@ const showOnViewport = viewport => {
   } ${viewport.large ? 'display-large-none' : ''}`;
 };
 
+const renderDrawerFooter = (hideNavigationFooter, drawerFooter) => {
+  const Footer = drawerFooter;
+  return !hideNavigationFooter && drawerFooter && <Footer />;
+};
+
 const Drawer = props => {
   const {
     children,
@@ -38,6 +43,7 @@ const Drawer = props => {
     close,
     renderOverlay,
     drawerFooter,
+    hideNavigationFooter,
   } = props;
 
   let openDrawer = open;
@@ -53,7 +59,7 @@ const Drawer = props => {
   const classToOpen = openDrawer ? 'tcp-drawer__isOpen' : '';
   const classToHideOnViewports = hideOnViewport({ small, medium, large });
   const classToShowOnViewports = showOnViewport({ small, medium, large });
-  const Footer = drawerFooter;
+  // const Footer = drawerFooter;
 
   return (
     <div className={className}>
@@ -67,7 +73,7 @@ const Drawer = props => {
           <aside className={`tcp-drawer ${classToOpen} ${classToHideOnViewports}`}>
             <div className="tcp-drawer-content">
               {children}
-              {drawerFooter && <Footer />}
+              {renderDrawerFooter(hideNavigationFooter, drawerFooter)}
             </div>
           </aside>
         </React.Fragment>
@@ -87,6 +93,7 @@ Drawer.propTypes = {
   close: PropTypes.bool.isRequired,
   renderOverlay: PropTypes.bool,
   drawerFooter: PropTypes.element,
+  hideNavigationFooter: PropTypes.bool,
 };
 
 Drawer.defaultProps = {
@@ -95,6 +102,7 @@ Drawer.defaultProps = {
   large: false,
   renderOverlay: false,
   drawerFooter: '',
+  hideNavigationFooter: false,
 };
 
 export { Drawer as DrawerVanilla };

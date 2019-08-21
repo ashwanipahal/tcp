@@ -8,8 +8,7 @@ export default css`
   color: ${props => props.theme.colorPalette.text.primary};
   border-bottom: 3px solid ${props => props.theme.colorPalette.white};
 
-  &:hover,
-  &:focus {
+  &.is-open {
     background: #f3f3f3;
   }
 
@@ -50,7 +49,8 @@ export default css`
     span {
       display: inline;
     }
-    .nav-bar-item-content {
+    .nav-bar-item-content,
+    &.show-on-mobile {
       display: none;
     }
     .nav-bar-l1-content {
@@ -63,7 +63,17 @@ export default css`
       width: 100%;
       display: inline-block;
     }
-    &:hover {
+    &.l1-overlay.is-open {
+      background: #1a1a1a;
+      position: absolute;
+      top: 75px;
+      z-index: 1;
+      opacity: 0.6;
+      width: 200%;
+      left: -50%;
+      height: 200vh;
+    }
+    &.is-open {
       background: linear-gradient(to bottom, rgba(255, 255, 255, 0.99), #f6f6f6);
       color: ${props => props.theme.colorPalette.text.primary};
       border-bottom-color: ${props => props.theme.colorPalette.primary.main};

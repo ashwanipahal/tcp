@@ -23,7 +23,7 @@ const Abstractor = {
       listItem.subCategories.map(subCategory => {
         const subCat = subCategory;
         const category = subCat.categoryContent.groupIdentifierName || UNIDENTIFIED_GROUP;
-        const order = subCat.categoryContent.grp_identifier_sequence || 0;
+        const order = subCat.categoryContent.groupIdentifierSequence || 0;
         const label = subCat.categoryContent.groupIdentifierName || '';
 
         if (!subCategories[category]) {

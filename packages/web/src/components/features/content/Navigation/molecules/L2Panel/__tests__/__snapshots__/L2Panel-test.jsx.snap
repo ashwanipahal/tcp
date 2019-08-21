@@ -59,7 +59,7 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_0_link_0"
             >
               <Styled(Anchor)
-                to="/c/"
+                to="/c/undefined"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -115,7 +115,7 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_0_link_1"
             >
               <Styled(Anchor)
-                to="/c/"
+                to="/c/undefined"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -146,7 +146,7 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_0_link_2"
             >
               <Styled(Anchor)
-                to="/c/"
+                to="/c/undefined"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -177,7 +177,7 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_0_link_3"
             >
               <Styled(Anchor)
-                to="/c/"
+                to="/c/undefined"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -391,7 +391,7 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_1_link_1"
             >
               <Styled(Anchor)
-                to="/c/"
+                to="/c/undefined"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1018,7 +1018,7 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_1_link_7"
             >
               <Styled(Anchor)
-                to="/c/"
+                to="/c/undefined"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1080,7 +1080,7 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_1_link_9"
             >
               <Styled(Anchor)
-                to="/c/"
+                to="/c/undefined"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1237,7 +1237,7 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_1_link_11"
             >
               <Styled(Anchor)
-                to="/c/"
+                to="/c/undefined"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1879,7 +1879,7 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_2_link_0"
             >
               <Styled(Anchor)
-                to="/c/"
+                to="/c/undefined"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
@@ -1966,7 +1966,7 @@ exports[`L2 Panel component renders correctly 1`] = `
               data-locator="l2_col_2_link_2"
             >
               <Styled(Anchor)
-                to="/c/content-girls-style-squad-outfits"
+                to="/content/girls-style-squad-outfits"
               >
                 <Styled(BodyCopy)
                   className="l2-nav-link"
