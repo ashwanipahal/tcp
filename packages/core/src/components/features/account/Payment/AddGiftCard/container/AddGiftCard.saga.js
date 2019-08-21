@@ -13,13 +13,13 @@ export function* addGiftCard({
 }): Saga<void> {
   try {
     const response = yield call(addGiftCardApi, payload);
-    if (response.body) {
+    if (response && response.body) {
       yield put(clearCardListTTL());
       return yield put(addGiftCardSuccess());
     }
     return yield put(addGiftCardFailure());
   } catch (err) {
-    return yield put(addGiftCardFailure(err));
+    return yield put(addGiftCardFailure(err.message));
   }
 }
 

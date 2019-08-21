@@ -2,14 +2,10 @@ import { executeStatefulAPICall } from '../../handler';
 import endpoints from '../../endpoints';
 
 const errorHandler = err => {
-  let error = {};
-  if (err instanceof Error) {
-    error = err.response.body;
+  if (err.response && err.response.body && err.response.body.errors) {
+    throw new Error(err.response.body.errors[0].errorMessage);
   }
-  if (error.errors instanceof Array && error.errors[0].errorMessage) {
-    throw error.errors[0].errorMessage;
-  }
-  throw err;
+  throw new Error('Your action could not be completed due to system error!!!!');
 };
 
 export const getCardListApi = () => {
