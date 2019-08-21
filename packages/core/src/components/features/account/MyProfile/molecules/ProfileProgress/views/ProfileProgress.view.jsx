@@ -36,12 +36,12 @@ export const ProfileProgress = ({ profileCompletion, className }) => {
 };
 
 ProfileProgress.propTypes = {
-  profileCompletion: PropTypes.number,
+  profileCompletion: PropTypes.string,
   className: PropTypes.string,
 };
 
 ProfileProgress.defaultProps = {
-  profileCompletion: 0,
+  profileCompletion: '',
   className: '',
 };
 

@@ -154,7 +154,7 @@ ProfileInformation.propTypes = {
   mailingAddress: PropTypes.shape({}),
   userBirthday: PropTypes.string,
   userSurvey: PropTypes.shape([]),
-  percentageIncrement: PropTypes.string,
+  percentageIncrement: PropTypes.shape({}),
   defaultStore: PropTypes.string,
 };
 
@@ -165,7 +165,7 @@ ProfileInformation.defaultProps = {
   mailingAddress: {},
   userBirthday: '',
   userSurvey: [],
-  percentageIncrement: '',
+  percentageIncrement: {},
   defaultStore: '',
 };
 
