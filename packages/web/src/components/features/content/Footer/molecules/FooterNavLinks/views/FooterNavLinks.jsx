@@ -40,8 +40,13 @@ FooterNavLinks.propTypes = {
   headerAsImage: PropTypes.bool.isRequired,
   isSubHeader: PropTypes.bool.isRequired,
   colNum: PropTypes.number.isRequired,
-  openTrackOrder: PropTypes.func.isRequired,
-  isUserLoggedIn: PropTypes.bool.isRequired,
+  openTrackOrder: PropTypes.func,
+  isUserLoggedIn: PropTypes.bool,
+};
+
+FooterNavLinks.defaultProps = {
+  openTrackOrder: () => null,
+  isUserLoggedIn: false,
 };
 
 export default FooterNavLinks;

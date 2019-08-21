@@ -43,8 +43,13 @@ FooterNavLinksList.propTypes = {
   className: PropTypes.string.isRequired,
   listArray: PropTypes.shape([]).isRequired,
   colNum: PropTypes.number.isRequired,
-  openTrackOrder: PropTypes.func.isRequired,
-  isUserLoggedIn: PropTypes.bool.isRequired,
+  openTrackOrder: PropTypes.func,
+  isUserLoggedIn: PropTypes.bool,
+};
+
+FooterNavLinksList.defaultProps = {
+  openTrackOrder: () => null,
+  isUserLoggedIn: false,
 };
 
 export default withStyles(FooterNavLinksList, styles);

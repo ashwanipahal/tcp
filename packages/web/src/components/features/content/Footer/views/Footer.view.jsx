@@ -60,7 +60,12 @@ class Footer extends React.Component {
         <EmailSignupModal buttonConfig={emailSignup} />
         <SmsSignupModal buttonConfig={smsSignup} />
         <Row className="footer-middle mobile" fullBleed>
-          <FooterMiddleMobile className={className} navLinkItems={navLinks} />
+          <FooterMiddleMobile
+            className={className}
+            navLinkItems={navLinks}
+            openTrackOrder={openTrackOrder}
+            isUserLoggedIn={isUserLoggedIn}
+          />
         </Row>
         <Row className="footer-middle desktop">
           <FooterMiddleDesktop
@@ -138,8 +143,8 @@ Footer.propTypes = {
   getUserInfoAction: PropTypes.func.isRequired,
   getOrderDetailAction: PropTypes.func.isRequired,
   openEmailSignUpModal: PropTypes.func,
-  openTrackOrder: PropTypes.func.isRequired,
-  isUserLoggedIn: PropTypes.bool.isRequired,
+  openTrackOrder: PropTypes.func,
+  isUserLoggedIn: PropTypes.bool,
 };
 
 Footer.defaultProps = {
@@ -148,6 +153,8 @@ Footer.defaultProps = {
   navLinks: [],
   referenceID: '',
   openEmailSignUpModal: () => {},
+  openTrackOrder: () => null,
+  isUserLoggedIn: false,
 };
 
 export default withStyles(Footer, style);

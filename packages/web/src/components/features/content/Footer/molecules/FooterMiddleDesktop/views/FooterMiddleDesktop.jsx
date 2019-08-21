@@ -26,16 +26,12 @@ const FooterMiddleDesktop = ({ navLinks, className, openTrackOrder, isUserLogged
             className={className}
             navLinkItems={{ header: navLinks[i].header, links: navLinks[i].links }}
             colNum={i}
-            isUserLoggedIn={isUserLoggedIn}
-            openTrackOrder={openTrackOrder}
           />
           <FooterNavLinks
             className={className}
             isSubHeader
             navLinkItems={{ header: navLinks[i + 1].header, links: navLinks[i + 1].links }}
             colNum={i + 1}
-            isUserLoggedIn={isUserLoggedIn}
-            openTrackOrder={openTrackOrder}
           />
         </Col>
       );
@@ -75,8 +71,6 @@ const FooterMiddleDesktop = ({ navLinks, className, openTrackOrder, isUserLogged
           className={className}
           navLinkItems={{ header: navLinks[0].header, links: navLinks[0].links }}
           colNum={0}
-          isUserLoggedIn={isUserLoggedIn}
-          openTrackOrder={openTrackOrder}
         />
       </Col>
       <Col
@@ -91,8 +85,6 @@ const FooterMiddleDesktop = ({ navLinks, className, openTrackOrder, isUserLogged
           className={className}
           navLinkItems={{ header: navLinks[1].header, links: navLinks[1].links }}
           colNum={1}
-          isUserLoggedIn={isUserLoggedIn}
-          openTrackOrder={openTrackOrder}
         />
       </Col>
       {numberOfNavLinkCols <= 5 ? (
@@ -115,8 +107,13 @@ const FooterMiddleDesktop = ({ navLinks, className, openTrackOrder, isUserLogged
 FooterMiddleDesktop.propTypes = {
   navLinks: PropTypes.shape([]).isRequired,
   className: PropTypes.string.isRequired,
-  openTrackOrder: PropTypes.func.isRequired,
-  isUserLoggedIn: PropTypes.bool.isRequired,
+  openTrackOrder: PropTypes.func,
+  isUserLoggedIn: PropTypes.bool,
+};
+
+FooterMiddleDesktop.defaultProps = {
+  openTrackOrder: () => null,
+  isUserLoggedIn: false,
 };
 
 export default FooterMiddleDesktop;
