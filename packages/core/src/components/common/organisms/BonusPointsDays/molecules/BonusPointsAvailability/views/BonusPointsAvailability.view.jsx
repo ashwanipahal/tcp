@@ -26,11 +26,11 @@ const BonusPointsAvailability = ({
     bonusPoints && (
       <Row>
         {bonusPoints.map((item, index) => {
-          let btnClass = '';
+          let btnClass = 'bonusPointBtn ';
           if (!enableApplyCta) {
-            btnClass = `availability-btn ${item.disabled ? 'disable-btn' : ''}`;
+            btnClass += `availability-btn ${item.disabled ? 'disable-btn' : ''}`;
           } else {
-            btnClass = 'availability-btn-active';
+            btnClass += 'availability-btn-active';
           }
 
           return (

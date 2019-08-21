@@ -26,7 +26,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly 1`] = `
   >
     <Styled(Button)
       buttonVariation="fixed-width"
-      className="availability-btn "
+      className="bonusPointBtn availability-btn "
       color="black"
       id={0}
       onClick={[Function]}
@@ -58,7 +58,7 @@ exports[`BonusPointsAvailabilityVanilla should render correctly 1`] = `
   >
     <Styled(Button)
       buttonVariation="fixed-width"
-      className="availability-btn disable-btn"
+      className="bonusPointBtn availability-btn disable-btn"
       color="black"
       id={1}
       onClick={[Function]}
@@ -95,12 +95,49 @@ exports[`BonusPointsAvailabilityVanilla should render correctly with 1 bonus poi
   >
     <Styled(Button)
       buttonVariation="fixed-width"
-      className="availability-btn "
+      className="bonusPointBtn availability-btn "
       color="black"
       id={0}
       onClick={[Function]}
     >
       Available For Future Use
+    </Styled(Button)>
+  </Styled(Col)>
+</Styled(Row)>
+`;
+
+exports[`BonusPointsAvailabilityVanilla should render correctly with enableApplyCta true 1`] = `
+<Styled(Row)>
+  <Styled(Col)
+    className=""
+    colSize={
+      Object {
+        "large": 6,
+        "medium": 6,
+        "small": 4,
+      }
+    }
+    offsetLeft={
+      Object {
+        "large": 3,
+        "medium": 1,
+        "small": 1,
+      }
+    }
+    offsetRight={
+      Object {
+        "small": 1,
+      }
+    }
+  >
+    <Styled(Button)
+      buttonVariation="fixed-width"
+      className="bonusPointBtn availability-btn-active"
+      color="black"
+      id={0}
+      onClick={[Function]}
+    >
+      Available For Future
     </Styled(Button)>
   </Styled(Col)>
 </Styled(Row)>
