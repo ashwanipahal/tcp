@@ -24,12 +24,18 @@ export const getLabels = state => {
   return state.Labels.global;
 };
 
-export const getCreateAccountLabels = createSelector(getLabels, labels => labels && labels.registration);
+export const getCreateAccountLabels = createSelector(
+  getLabels,
+  labels => labels && labels.registration
+);
 
-export const getErrorMessage = createSelector([getError, getCreateAccountLabels], (error, labels) => {
-  const errorCode = error && error.get('errorCode');
-  if(errorCode && labels[`lbl_createAccount_${errorCode}`]) {
-    return labels[`lbl_createAccount_error_${errorCode}`];
+export const getErrorMessage = createSelector(
+  [getError, getCreateAccountLabels],
+  (error, labels) => {
+    const errorCode = error && error.get('errorCode');
+    if (errorCode && labels[`lbl_createAccount_error_${errorCode}`]) {
+      return labels[`lbl_createAccount_error_${errorCode}`];
+    }
+    return error ? error.getIn(['errorMessage', '_error']) || labels.lbl_createAccount_error : '';
   }
-  return error ? (error.getIn(['errorMessage', '_error']) || labels.lbl_createAccount_error) : '';
-});
+);
