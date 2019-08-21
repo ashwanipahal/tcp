@@ -44,11 +44,9 @@ const ProductListView = ({
           <Col colSize={{ small: 6, medium: 8, large: 12 }}>
             <ProductList products={products} className={`${className} product-list`} />
           </Col>
-        </Col>
-      </Row>
-      <Row>
-        <Col colSize={{ small: 6, medium: 8, large: 12 }}>
-          <ReadMore description={longDescription} className={`${className} seo-text`} />
+          <Col colSize={{ small: 6, medium: 8, large: 12 }}>
+            <ReadMore description={longDescription} className={`${className} seo-text`} />
+          </Col>
         </Col>
       </Row>
     </div>

@@ -3,10 +3,20 @@ import { css } from 'styled-components';
 export default css`
   .body-copy {
     padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.SM};
+    text-align: left;
+
+    p {
+      margin-bottom: 10px;
+    }
+
+    a {
+      color: ${props => props.theme.colorPalette.gray[900]};
+    }
 
     h1 {
       font-size: ${props => props.theme.typography.fontSizes.fs22};
       font-weight: ${props => props.theme.typography.fontWeights.black};
+      text-align: center;
     }
   }
 
@@ -40,16 +50,5 @@ export default css`
 
   .read-more-trigger {
     cursor: pointer;
-  }
-
-  @media ${props => props.theme.mediaQuery.medium} {
-    .body-copy {
-      padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.LRG};
-    }
-  }
-  @media ${props => props.theme.mediaQuery.large} {
-    .body-copy {
-      padding-bottom: ${props => props.theme.spacing.ELEM_SPACING.XXL};
-    }
   }
 `;
