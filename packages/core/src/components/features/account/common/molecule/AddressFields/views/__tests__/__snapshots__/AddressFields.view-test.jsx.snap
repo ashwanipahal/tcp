@@ -820,6 +820,23 @@ exports[`AddressFields component should render correctly 1`] = `
     top: 0;
   }
 
+  .SelectBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                [Function],
+                ";
+  }
+
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+
   ",
                 [Function],
                 ";
@@ -1413,6 +1430,23 @@ exports[`AddressFields component should render correctly 1`] = `
     padding: 0;
     position: absolute;
     top: 0;
+  }
+
+  .SelectBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                [Function],
+                ";
+  }
+
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
   }
 
   ",
@@ -2574,6 +2608,23 @@ exports[`AddressFields component should render correctly without phoneNumber and
     top: 0;
   }
 
+  .SelectBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                [Function],
+                ";
+  }
+
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
+  }
+
   ",
                 [Function],
                 ";
@@ -3167,6 +3218,23 @@ exports[`AddressFields component should render correctly without phoneNumber and
     padding: 0;
     position: absolute;
     top: 0;
+  }
+
+  .SelectBox__error {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: ",
+                [Function],
+                ";
+  }
+
+  .warning-icon {
+    background: transparent url('/static/images/circle-alert-fill.svg') no-repeat 0 0;
+    background-size: contain;
+    border: none;
+    height: 14px;
+    width: 16px;
+    margin-right: 7px;
   }
 
   ",
