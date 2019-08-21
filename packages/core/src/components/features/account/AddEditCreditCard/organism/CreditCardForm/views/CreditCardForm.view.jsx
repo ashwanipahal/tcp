@@ -87,11 +87,13 @@ export class CreditCardForm extends React.PureComponent {
       dispatch,
       initialValues,
       addressFormLabels,
+      userName,
+      mailingAddress,
     } = this.props;
     const showAddressForm = pristine ? !initialValues.onFileAddressKey : !onFileAddressKey;
     return (
       <form name={constants.FORM_NAME} noValidate onSubmit={handleSubmit} className={className}>
-        <CreditCardFields {...this.props} />
+        {!mailingAddress && <CreditCardFields {...this.props} />}
         <Heading
           component="h3"
           variant="listMenu"
@@ -150,6 +152,8 @@ export class CreditCardForm extends React.PureComponent {
                 formSection="address"
                 dispatch={dispatch}
                 addressFormLabels={addressFormLabels}
+                mailingAddress={mailingAddress}
+                userName={userName}
               />
             </FormSection>
           </div>
@@ -181,7 +185,8 @@ export class CreditCardForm extends React.PureComponent {
               buttonVariation="fixed-width"
               data-locator="payment-addcardbtn"
             >
-              {isEdit ? labels.common.lbl_common_updateCTA : labels.common.lbl_common_addCTA}
+              {!mailingAddress && (isEdit ? labels.common.lbl_common_updateCTA : labels.common.lbl_common_addCTA)}
+              {mailingAddress && labels.common.lbl_common_saveCTA}
             </Button>
           </Col>
         </Row>

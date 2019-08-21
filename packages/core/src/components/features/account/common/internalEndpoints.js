@@ -21,6 +21,10 @@ const internalEndpoints = {
     link: '/account?id=profile',
     path: profilePath,
   },
+  mailingAddressPage: {
+    link: '/account?id=profile&subSection=edit-mailing-address',
+    path: profilePath,
+  },
 };
 
 export default internalEndpoints;
