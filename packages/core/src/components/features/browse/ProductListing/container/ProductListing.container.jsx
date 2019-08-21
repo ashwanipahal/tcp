@@ -4,7 +4,7 @@ import { PropTypes } from 'prop-types';
 import ProductListing from '../views';
 import { getPlpProducts } from './ProductListing.actions';
 import { getNavigationTree } from './ProductListing.selectors';
-import { extractCategory, processBreadCrumbs } from './ProductListing.util';
+import { processBreadCrumbs } from './ProductListing.util';
 
 class ProductListingPageContainer extends React.PureComponent {
   componentDidMount() {
@@ -13,10 +13,11 @@ class ProductListingPageContainer extends React.PureComponent {
   }
 
   render() {
-    const { products, currentNavIds, navTree, breadCrumbs } = this.props;
+    const { products, currentNavIds, navTree, breadCrumbs, filters } = this.props;
     return (
       <ProductListing
         products={products}
+        filters={filters}
         currentNavIds={currentNavIds}
         navTree={navTree}
         breadCrumbs={breadCrumbs}
@@ -28,6 +29,7 @@ class ProductListingPageContainer extends React.PureComponent {
 function mapStateToProps(state) {
   return {
     products: state.ProductListing.loadedProducts,
+    filters: state.ProductListing.filtersMaps,
     currentNavIds: state.ProductListing.currentNavigationIds,
     navTree: getNavigationTree(state),
     breadCrumbs: processBreadCrumbs(state.ProductListing.breadCrumbTrail),
@@ -50,6 +52,7 @@ ProductListingPageContainer.propTypes = {
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
   navTree: PropTypes.shape({}),
   breadCrumbs: PropTypes.arrayOf(PropTypes.shape({})),
+  filters: PropTypes.shape({}),
 };
 
 ProductListingPageContainer.defaultProps = {
@@ -57,6 +60,7 @@ ProductListingPageContainer.defaultProps = {
   currentNavIds: [],
   navTree: {},
   breadCrumbs: [],
+  filters: {},
 };
 
 export default connect(
