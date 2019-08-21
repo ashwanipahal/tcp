@@ -89,7 +89,7 @@ export default css`
       .style6-0,
       .style6-1,
       .style6-2 {
-        font-size: 74px;
+        font-size: 64px;
         line-height: normal;
         position: static;
         vertical-align: middle;
@@ -198,19 +198,6 @@ export default css`
 
     @media ${props => props.theme.mediaQuery.large} {
       font-size: 20px;
-    }
-  }
-
-  .style11 {
-    color: ${props => props.theme.colorPalette.white};
-    font-family: ${props => props.theme.typography.fonts.primary};
-    font-weight: ${props => props.theme.typography.fontWeights.black};
-    font-size: 36px;
-    line-height: 1.11;
-
-    @media ${props => props.theme.mediaQuery.large} {
-      font-size: 74px;
-      line-height: 1.05;
     }
   }
 

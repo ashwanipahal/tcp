@@ -115,13 +115,14 @@ const ButtonList = (props: Props) => {
   const linkCTAProps = config.linkCTAList.compProps;
   const scrollCTAProps = config.scrollCTAList.compProps;
   const imageCTAProps = config.imageCTAList.compProps;
+  const wrappedTextClass = ' wrapped-button-text';
 
   let component = Button;
   let compWrapper = '';
   let compProps = {};
 
   if (buttonListVariation === 'stackedCTAList') {
-    compWrapper = `stack-comp-wrapper ${buttonsData.length > 5 ? ' wrapped-button-text' : ''}`;
+    compWrapper = `stack-comp-wrapper ${buttonsData.length > 5 ? wrappedTextClass : ''}`;
     compProps = {
       ...stackCTAProps,
       fill,
@@ -144,7 +145,9 @@ const ButtonList = (props: Props) => {
   }
 
   if (buttonListVariation === 'scrollCTAList') {
-    compWrapper = 'scroll-comp-wrapper';
+    compWrapper = `scroll-comp-wrapper ${
+      buttonsData.length < 3 ? ' no-scrollable-image-cta' : ''
+    } ${buttonsData.length > 5 ? wrappedTextClass : ''}`;
     compProps = {
       ...scrollCTAProps,
       buttonsData,
@@ -156,7 +159,9 @@ const ButtonList = (props: Props) => {
   }
 
   if (buttonListVariation === 'imageCTAList') {
-    compWrapper = 'scroll-comp-wrapper';
+    compWrapper = `scroll-comp-wrapper ${
+      buttonsData.length < 4 ? ' no-scrollable-image-cta' : ''
+    } ${buttonsData.length > 5 ? wrappedTextClass : ''}`;
     compProps = {
       buttonListVariation,
       dataLocatorDivisionImages,

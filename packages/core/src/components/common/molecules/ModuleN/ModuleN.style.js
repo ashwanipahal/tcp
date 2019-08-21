@@ -5,14 +5,11 @@ export default css`
     padding: 10px 0;
 
     @media ${props => props.theme.mediaQuery.medium} {
-      padding: 0;
-      padding-top: 16px;
-      padding-bottom: 24px;
+      padding: 16px 0;
     }
     @media ${props => props.theme.mediaQuery.large} {
       text-align: center;
-      padding-top: 0;
-      padding-bottom: 0;
+      padding: 0;
       margin-bottom: 22px;
     }
   }

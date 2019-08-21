@@ -99,7 +99,7 @@ exports[`ButtonList component renders correctly 1`] = `
 
 exports[`ButtonList component renders correctly for image cta List 1`] = `
 <div
-  className=" scroll-comp-wrapper"
+  className=" scroll-comp-wrapper   wrapped-button-text"
 >
   <div
     className="scroll-cta-wrapper div-image-wrapper"
@@ -320,7 +320,7 @@ exports[`ButtonList component renders correctly for image cta List 1`] = `
 
 exports[`ButtonList component renders correctly for scroll cta buttons 1`] = `
 <div
-  className=" scroll-comp-wrapper"
+  className=" scroll-comp-wrapper   wrapped-button-text"
 >
   <Styled(Anchor)
     className="scroll-button"

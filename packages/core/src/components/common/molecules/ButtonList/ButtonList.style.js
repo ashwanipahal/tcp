@@ -16,22 +16,22 @@ export default css`
 
   .stacked-button:nth-of-type(even) {
     button {
-      border-left: 0;
+      border-left-width: 0;
     }
     @media ${props => props.theme.mediaQuery.medium} {
       button {
-        border-left: 1px;
+        border-left-width: 1px;
       }
     }
   }
 
   .stacked-button:nth-of-type(n + 3) {
     button {
-      border-top: 0;
+      border-top-width: 0;
     }
     @media ${props => props.theme.mediaQuery.medium} {
       button {
-        border-top: 1px;
+        border-top-width: 1px;
       }
     }
   }
@@ -43,29 +43,46 @@ export default css`
   }
   &.link-comp-wrapper {
     justify-content: center;
+    flex-wrap: nowrap;
   }
   .link-button-wrapper-class {
     border-bottom-color: ${props => props.theme.colorPalette.white};
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+    margin: 0 8px;
     &:hover {
       border-bottom-color: ${props => props.theme.colorPalette.white};
+    }
+
+    @media ${props => props.theme.mediaQuery.large} {
+      margin: 0 16px;
     }
   }
 
   .scroll-cta-wrapper {
     display: flex;
     flex-wrap: nowrap;
-    padding-right: 15px;
-    justify-content: center;
+    padding-top: 6px;
   }
   .scroll-button {
-    margin-left: 15px;
+    margin-left: 9px;
     white-space: nowrap;
   }
+
+  .scroll-button:first-of-type {
+    margin-left: 16px;
+  }
+
   .img-wrapper {
     display: inline-block;
-    margin: 0 18px;
+    margin: 0 19px;
     min-width: 70px;
   }
+
+  .img-wrapper > div {
+    text-align: center;
+  }
+
   .image-cta {
     border-radius: 35px;
     width: 70px;
@@ -75,13 +92,13 @@ export default css`
   .image-comp {
     color: white;
     text-align: center;
-    white-space: nowrap;
   }
 
   &.scroll-comp-wrapper {
     overflow-x: scroll;
     flex-wrap: nowrap;
     scrollbar-width: none;
+    padding-top: 6px;
 
     &::-webkit-scrollbar {
       display: none;
@@ -90,7 +107,16 @@ export default css`
     @media ${props => props.theme.mediaQuery.medium} {
       display: block;
       scrollbar-width: auto;
+      padding-top: 8px;
+
+      .image-comp {
+        white-space: nowrap;
+      }
     }
+  }
+
+  &.scroll-comp-wrapper.no-scrollable-image-cta {
+    justify-content: center;
   }
 
   .stacked-cta-wrapper-class {
@@ -102,6 +128,7 @@ export default css`
     > div:first-child {
       margin: 0 auto;
     }
+
     .stacked-button {
       width: 100%;
       margin-left: 9px;
@@ -110,9 +137,25 @@ export default css`
       }
 
       button {
-        width: 141px;
+        width: 140px;
         white-space: nowrap;
       }
+    }
+
+    .scroll-button {
+      margin-left: 9px;
+      flex-grow: 0;
+      width: 50%;
+      white-space: normal;
+
+      button {
+        width: 140px;
+        white-space: nowrap;
+      }
+    }
+
+    .scroll-button:first-of-type {
+      margin-left: 0;
     }
 
     .stacked-cta-wrapper {
@@ -122,23 +165,16 @@ export default css`
     }
 
     .img-wrapper {
-      max-width: 70px;
-      margin: 0 17px;
-    }
-
-    .scroll-button {
-      flex-grow: 0;
-      width: 50%;
-      white-space: normal;
+      margin: 0 26px;
     }
 
     &.scroll-comp-wrapper {
       flex-wrap: nowrap;
-      padding-right: 15px;
     }
 
     .scroll-cta-wrapper {
       padding-right: 0;
+      padding-top: 8px;
     }
     .scroll-cta-wrapper-class {
       width: 100%;
@@ -150,22 +186,31 @@ export default css`
       height: 100%;
     }
 
+    &.scroll-comp-wrapper,
     &.stack-comp-wrapper {
       display: flex;
       justify-content: center;
       flex-wrap: nowrap;
 
+      .scroll-button,
       .stacked-button {
         width: auto;
         flex-grow: initial;
       }
     }
 
-    .stack-comp-wrapper.wrapped-button-text .stacked-button {
-      margin-left: 16px;
+    &.stack-comp-wrapper.wrapped-button-text .stacked-button,
+    &.scroll-comp-wrapper.wrapped-button-text .scroll-button {
+      margin: 0 8px;
       button {
         white-space: normal;
+        width: 110px;
       }
+    }
+
+    &.scroll-comp-wrapper.wrapped-button-text .img-wrapper .image-comp {
+      white-space: normal;
+      width: 70px;
     }
   }
 
@@ -175,6 +220,7 @@ export default css`
     .stacked-button,
     .scroll-button {
       min-width: 210px;
+      margin: 0 8px;
     }
 
     .stacked-button {
@@ -193,9 +239,17 @@ export default css`
       justify-content: center;
       display: flex;
       flex-wrap: nowrap;
+      padding-top: 0;
     }
     .stacked-cta-wrapper-class {
       font-size: 14px;
+    }
+
+    &.stack-comp-wrapper .stacked-button,
+    &.scroll-comp-wrapper .scroll-button {
+      button {
+        width: 210px;
+      }
     }
   }
 

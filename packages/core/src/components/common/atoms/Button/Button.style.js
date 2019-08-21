@@ -68,7 +68,6 @@ const ButtonStyles = css`
       font-size: ${props.theme.typography.fontSizes.fs14};
       font-weight: ${props.theme.typography.fontWeights.regular};
       border-bottom: 2px solid ${props.theme.colorPalette.text.hint};
-      margin: 0 8px;
       padding-bottom: 3px;
 
       @media ${props.theme.mediaQuery.large} {
