@@ -56,7 +56,7 @@ const ProductListView = ({
 ProductListView.propTypes = {
   className: PropTypes.string,
   products: PropTypes.arrayOf(PropTypes.shape({})),
-  longDescription: PropTypes.arrayOf(PropTypes.shape({})),
+  longDescription: PropTypes.string,
   /* eslint-disable */
   currentNavIds: PropTypes.arrayOf(PropTypes.shape({})),
   navTree: PropTypes.shape({}),

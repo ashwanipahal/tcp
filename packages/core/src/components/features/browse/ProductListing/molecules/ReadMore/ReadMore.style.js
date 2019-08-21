@@ -24,6 +24,9 @@ export default css`
     display: none;
   }
 
+  .read-less {
+    display: none;
+  }
   .read-more-target {
     max-height: 0;
     font-size: 0;
@@ -36,19 +39,18 @@ export default css`
     max-height: 999em;
   }
 
-  .read-more-trigger:before {
+  .read-more-trigger {
     font-size: ${props => props.theme.typography.fontSizes.fs18};
     font-weight: ${props => props.theme.typography.fontWeights.semibold};
-  }
-  .read-more-state ~ .read-more-trigger:before {
-    content: 'Read More+';
-  }
-
-  .read-more-state:checked ~ .read-more-trigger:before {
-    content: 'Read Less-';
-  }
-
-  .read-more-trigger {
     cursor: pointer;
+  }
+
+  .read-more-state:checked ~ .read-more-trigger {
+    .read-more {
+      display: none;
+    }
+    .read-less {
+      display: block;
+    }
   }
 `;

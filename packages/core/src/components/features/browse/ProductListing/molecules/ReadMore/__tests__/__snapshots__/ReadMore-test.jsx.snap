@@ -14,7 +14,7 @@ exports[`ReadMore component Read More component renders correctly with props 1`]
 >
   <input
     className="read-more-state"
-    id="post-1"
+    id="categoryDescription"
     type="checkbox"
   />
   <Styled(BodyCopy)
@@ -50,7 +50,7 @@ exports[`ReadMore component renders correctly without props 1`] = `
 >
   <input
     className="read-more-state"
-    id="post-1"
+    id="categoryDescription"
     type="checkbox"
   />
   <Styled(BodyCopy)

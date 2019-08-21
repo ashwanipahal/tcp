@@ -16,7 +16,7 @@ class ReadMore extends React.Component {
 
     return (
       <BodyCopy component="div" className={className}>
-        <input type="checkbox" className="read-more-state" id="post-1" />
+        <input type="checkbox" className="read-more-state" id="categoryDescription" />
         <BodyCopy
           className="body-copy"
           fontSize="fs14"
@@ -28,7 +28,26 @@ class ReadMore extends React.Component {
           dangerouslySetInnerHTML={{ __html: description }}
         />
         {description && description.includes('read-more-target') && (
-          <label htmlFor="post-1" className="read-more-trigger" />
+          <label htmlFor="categoryDescription" className="read-more-trigger">
+            <BodyCopy
+              className="read-more"
+              component="p"
+              fontFamily="secondary"
+              fontWeight="semibold"
+              textAlign="center"
+            >
+              Read More +
+            </BodyCopy>
+            <BodyCopy
+              className="read-less"
+              component="p"
+              fontFamily="secondary"
+              fontWeight="semibold"
+              textAlign="center"
+            >
+              Read Less -
+            </BodyCopy>
+          </label>
         )}
       </BodyCopy>
     );
