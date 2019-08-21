@@ -28,8 +28,9 @@ const Cards = props => {
     setDefaultPaymentMethod,
     onGetBalanceCard,
     checkbalanceValueInfo,
-    setSelectedCard,
     toggleModal,
+    openUpdateModal,
+    setSelectedCard,
     setCardHandler,
   } = props;
   return (
@@ -67,6 +68,7 @@ const Cards = props => {
           return (
             <CardTile
               toggleModal={toggleModal}
+              openUpdateModal={openUpdateModal}
               setSelectedCard={setSelectedCard}
               {...cardTileProps}
             />
@@ -89,6 +91,7 @@ Cards.propTypes = {
   onGetBalanceCard: PropTypes.func,
   checkbalanceValueInfo: PropTypes.func,
   toggleModal: PropTypes.func,
+  openUpdateModal: PropTypes.func,
   setSelectedCard: PropTypes.func,
   setCardHandler: PropTypes.func,
 };
@@ -98,6 +101,7 @@ Cards.defaultProps = {
   onGetBalanceCard: null,
   checkbalanceValueInfo: null,
   toggleModal: null,
+  openUpdateModal: null,
   setSelectedCard: null,
   setCardHandler: () => {},
 };
