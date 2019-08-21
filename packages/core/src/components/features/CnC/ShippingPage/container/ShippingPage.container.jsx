@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import ShippingPageView from '../views';
 import {
-  getAddressFormLabels,
   getSendOrderUpdate,
   getShippingLabels,
   getSmsSignUpLabels,
 } from './ShippingPage.selectors';
+import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 
 const ShippingPage = ({ addressLabels, isOrderUpdateChecked, shippingLabels, smsSignUpLabels }) => {
   return (
@@ -22,7 +22,7 @@ const ShippingPage = ({ addressLabels, isOrderUpdateChecked, shippingLabels, sms
 
 export const mapStateToProps = state => {
   return {
-    addressLabels: getAddressFormLabels(state),
+    addressLabels: getAddEditAddressLabels(state),
     isOrderUpdateChecked: getSendOrderUpdate(state),
     shippingLabels: getShippingLabels(state),
     smsSignUpLabels: getSmsSignUpLabels(state),

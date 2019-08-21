@@ -10,7 +10,6 @@ import {
   getOnFileAddressKey,
   getAddEditCreditCardSuccess,
   getAddEditCreditCardError,
-  getAddressFormLabels,
 } from './AddEditCreditCard.selectors';
 import constants from './AddEditCreditCard.constants';
 import AddEditCreditCardComponent from '../views/AddEditCreditCard.view';
@@ -18,6 +17,7 @@ import { getAddressListState } from '../../AddressBook/container/AddressBook.sel
 import { addCreditCard, editCreditCard } from './AddEditCreditCard.actions';
 import { setDefaultPaymentSuccess } from '../../Payment/container/Payment.actions';
 import { getCreditCardExpirationOptionMap } from '../../../../../utils';
+import { getAddEditAddressLabels } from '../../../../common/organisms/AddEditAddress/container/AddEditAddress.selectors';
 
 export class AddEditCreditCard extends React.PureComponent {
   static propTypes = {
@@ -211,7 +211,7 @@ const mapStateToProps = (state, ownProps) => {
     isPLCCEnabled: true,
     addEditCreditCardSuccess: getAddEditCreditCardSuccess(state),
     addEditCreditCardError: getAddEditCreditCardError(state),
-    addressLabels: getAddressFormLabels(state),
+    addressLabels: getAddEditAddressLabels(state),
   };
 };
 

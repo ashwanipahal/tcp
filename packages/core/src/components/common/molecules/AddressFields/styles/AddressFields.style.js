@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 const styles = css`
-  .field {
+  .address-field {
     height: ${props =>
       props.variation === 'primary' ? props.theme.spacing.FORM_FIELD_HEIGHT : ''};
   }

@@ -452,7 +452,7 @@ exports[`SMSFormFields should render correctly with isOrderUpdateChecked as true
         <Styled(Anchor)
           anchorVariation="primary"
           fontSizeVariation="small"
-          href="https://www.childrensplace.com/us/help-center/#privacyPolicySectionli"
+          href="#"
           noLink={true}
           noUnderline={true}
           target="_blank"

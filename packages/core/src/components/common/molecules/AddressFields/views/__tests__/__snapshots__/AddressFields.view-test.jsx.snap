@@ -22,7 +22,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -195,7 +195,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -376,12 +376,12 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={[Function]}
         componentRestrictions={
           Object {
             "country": Array [
-              "US",
+              undefined,
             ],
           }
         }
@@ -402,7 +402,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -583,7 +583,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -755,7 +755,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
-        className="field "
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1168,7 +1168,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1350,7 +1350,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
-        className="field "
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1461,7 +1461,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1644,7 +1644,7 @@ exports[`AddressFields component should render correctly 1`] = `
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1775,7 +1775,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -1948,7 +1948,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -2129,12 +2129,12 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={[Function]}
         componentRestrictions={
           Object {
             "country": Array [
-              "US",
+              undefined,
             ],
           }
         }
@@ -2155,7 +2155,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -2336,7 +2336,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -2508,7 +2508,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field "
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -2921,7 +2921,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -3103,7 +3103,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field "
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -3230,7 +3230,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -3403,7 +3403,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -3584,7 +3584,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={[Function]}
         componentRestrictions={
           Object {
@@ -3610,7 +3610,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -3791,7 +3791,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -3963,7 +3963,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field "
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -4376,7 +4376,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -4558,7 +4558,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field "
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -4685,7 +4685,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -4858,7 +4858,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -5039,7 +5039,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={[Function]}
         componentRestrictions={
           Object {
@@ -5065,7 +5065,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -5246,7 +5246,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -5418,7 +5418,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field "
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -5586,7 +5586,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),
@@ -5889,7 +5889,7 @@ exports[`AddressFields component should render correctly without phoneNumber and
       }
     >
       <Field
-        className="field"
+        className="address-field"
         component={
           Object {
             "$$typeof": Symbol(react.forward_ref),

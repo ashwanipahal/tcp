@@ -16,6 +16,8 @@ import {
 } from '../../../organisms/AddressForm/CountriesAndStates.constants';
 import styles from '../styles/AddressFields.style';
 import Anchor from '../../../atoms/Anchor';
+import { getSiteId } from '../../../../../utils/utils.web';
+import { API_CONFIG } from '../../../../../services/config';
 
 export class AddressFields extends React.PureComponent {
   static propTypes = {
@@ -46,7 +48,7 @@ export class AddressFields extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      country: 'US',
+      country: getSiteId() && getSiteId().toUpperCase(),
     };
   }
 
@@ -104,17 +106,18 @@ export class AddressFields extends React.PureComponent {
   renderStateZipCode = () => {
     const { variation, addressFormLabels } = this.props;
     const { country } = this.state;
+    const isCA = country === API_CONFIG.siteIds.ca.toUpperCase();
     return (
       <>
         <Col colSize={{ small: 3, medium: variation === 'primary' ? 2 : 4, large: 3 }}>
           <Field
             id="state"
-            placeholder={country === 'CA' ? addressFormLabels.province : addressFormLabels.stateLbl}
+            placeholder={isCA ? addressFormLabels.province : addressFormLabels.stateLbl}
             name="state"
             component={SelectBox}
-            options={country === 'CA' ? CAcountriesStatesTable : UScountriesStatesTable}
+            options={isCA ? CAcountriesStatesTable : UScountriesStatesTable}
             dataLocator="addnewaddress-state"
-            className="field "
+            className="address-field"
             enableSuccessCheck={false}
           />
         </Col>
@@ -123,15 +126,13 @@ export class AddressFields extends React.PureComponent {
           className={variation === 'secondary' ? 'zip-code' : ''}
         >
           <Field
-            placeholder={
-              country === 'CA' ? addressFormLabels.postalCode : addressFormLabels.zipCode
-            }
+            placeholder={isCA ? addressFormLabels.postalCode : addressFormLabels.zipCode}
             id="zipCode"
             name="zipCode"
-            maxLength={country === 'CA' ? 6 : 5}
+            maxLength={isCA ? 6 : 5}
             component={TextBox}
             dataLocator="addnewaddress-zipcode"
-            className="field"
+            className="address-field"
             enableSuccessCheck={false}
           />
         </Col>
@@ -157,7 +158,7 @@ export class AddressFields extends React.PureComponent {
               onPlaceSelected={this.handlePlaceSelected}
               componentRestrictions={Object.assign({}, { country: [country] })}
               dataLocator="addnewaddress-addressl1"
-              className="field"
+              className="address-field"
               enableSuccessCheck={false}
             />
           </Col>
@@ -168,7 +169,7 @@ export class AddressFields extends React.PureComponent {
               id="addressLine2"
               component={TextBox}
               dataLocator="addnewaddress-addressl2"
-              className="field"
+              className="address-field"
               enableSuccessCheck={false}
             />
           </Col>
@@ -184,7 +185,7 @@ export class AddressFields extends React.PureComponent {
               name="city"
               component={TextBox}
               dataLocator="addnewaddress-city"
-              className="field"
+              className="address-field"
               enableSuccessCheck={false}
             />
           </Col>
@@ -218,7 +219,7 @@ export class AddressFields extends React.PureComponent {
               type="text"
               component={TextBox}
               dataLocator="addnewaddress-firstname"
-              className="field"
+              className="address-field"
               enableSuccessCheck={false}
             />
           </Col>
@@ -229,7 +230,7 @@ export class AddressFields extends React.PureComponent {
               id="lastName"
               component={TextBox}
               dataLocator="addnewaddress-lastname"
-              className="field"
+              className="address-field"
               enableSuccessCheck={false}
             />
           </Col>
@@ -246,7 +247,7 @@ export class AddressFields extends React.PureComponent {
                 options={countriesOptionsMap}
                 onChange={this.StateCountryChange}
                 dataLocator="addnewaddress-country"
-                className="field "
+                className="address-field"
                 enableSuccessCheck={false}
               />
             </Col>
@@ -259,7 +260,7 @@ export class AddressFields extends React.PureComponent {
                   component={TextBox}
                   dataLocator="addnewaddress-phnumber"
                   type="tel"
-                  className="field"
+                  className="address-field"
                   enableSuccessCheck={false}
                 />
               </Col>
@@ -274,7 +275,7 @@ export class AddressFields extends React.PureComponent {
                 component={InputCheckbox}
                 dataLocator="addnewaddress-setdefaddress"
                 disabled={isMakeDefaultDisabled}
-                className="field"
+                className="address-field"
               >
                 {addressFormLabels.setDefaultMsg}
               </Field>
@@ -291,7 +292,7 @@ export class AddressFields extends React.PureComponent {
                 component={TextBox}
                 dataLocator="addnewaddress-phnumber"
                 type="tel"
-                className="field"
+                className="address-field"
                 enableSuccessCheck={false}
               />
             </Col>
