@@ -123,25 +123,6 @@ exports[`ModuleK component renders correctly 1`] = `
                 ";
   }
 
-  .moduleN-heading-wrapper {
-    display: inline-block;
-    margin-top: 14px;
-  }
-  @media ",
-                [Function],
-                " {
-    .moduleN-heading-wrapper {
-      margin-top: 17px;
-    }
-  }
-  @media ",
-                [Function],
-                " {
-    .moduleN-heading-wrapper {
-      margin: 46px 6px 0 0;
-    }
-  }
-
   .style11 {
     color: ",
                 [Function],
