@@ -3,6 +3,7 @@
 exports[`BirthdaySaving component should render correctly 1`] = `
 <Styled(AccountOverviewTile)
   ctaTitle="ADD BIRTHDAY INFO"
+  dataLocator="pi-addbirthdayinfo"
   title="Birthday Savings"
 >
   <Styled(BodyCopy)

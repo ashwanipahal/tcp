@@ -5,7 +5,7 @@ const styles = css`
     const spacing = props.theme.spacing.ELEM_SPACING;
     return `0 ${spacing.MED} ${spacing.SM} ${spacing.MED}`;
   }};
-  width: 90%;
+  width: 80%;
 
   .container {
     display: flex;

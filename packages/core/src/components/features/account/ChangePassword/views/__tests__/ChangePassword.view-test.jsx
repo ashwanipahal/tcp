@@ -1,13 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { ResetPassword } from '../ResetPassword.view';
+import { ChangePassword } from '../ChangePassword.view';
 
-describe('ResetPassword component', () => {
+describe('ChangePassword.view component', () => {
   it('should renders correctly', () => {
     const props = {
       labels: {
-        lbl_ResetPassword_backLogin: 'back to login',
-        lbl_ResetPassword_requirementNote: 'note:',
+        lbl_changePassword_back: 'back to login',
+        lbl_changePassword_heading: 'Password Chanage',
+        lbl_changePassword_password_info: 'Your password must be at least 8 characters long',
         lbl_ResetPassword_requirementTips_1: 'requirement tip 1',
         lbl_ResetPassword_requirementTips_2: 'requirement tip 2',
         lbl_ResetPassword_requirementTips_3: 'requirement tip 3',
@@ -17,7 +18,7 @@ describe('ResetPassword component', () => {
       onSubmit: () => {},
       onBack: () => {},
     };
-    const component = shallow(<ResetPassword {...props} />);
+    const component = shallow(<ChangePassword {...props} />);
     expect(component).toMatchSnapshot();
   });
 });

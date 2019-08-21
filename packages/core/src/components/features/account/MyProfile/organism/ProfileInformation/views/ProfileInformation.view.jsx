@@ -92,14 +92,7 @@ const ProfileInformation = ({ className, labels }) => {
             small: 1,
           }}
         >
-          <Anchor
-            fontSizeVariation="small"
-            underline
-            anchorVariation="primary"
-            fontSize="fs10"
-            to="/#"
-            asPath
-          >
+          <Anchor fontSizeVariation="medium" underline anchorVariation="primary" to="/#" asPath>
             {labels.lbl_profile_program_details}
           </Anchor>
         </Col>
@@ -110,14 +103,7 @@ const ProfileInformation = ({ className, labels }) => {
             small: 2,
           }}
         >
-          <Anchor
-            fontSizeVariation="small"
-            underline
-            anchorVariation="primary"
-            fontSize="fs10"
-            to="/#"
-            asPath
-          >
+          <Anchor fontSizeVariation="medium" underline anchorVariation="primary" to="/#" asPath>
             {labels.lbl_profile_terms_condition}
           </Anchor>
         </Col>

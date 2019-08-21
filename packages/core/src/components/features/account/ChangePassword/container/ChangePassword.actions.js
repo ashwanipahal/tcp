@@ -14,7 +14,3 @@ export const changePasswordError = payload => ({
   type: constants.CHANGE_PASSWORD_ERROR,
   payload,
 });
-
-export const changeState = () => ({
-  type: constants.CHANGE_STATE,
-});

@@ -7,7 +7,7 @@ import Col from '../../../../common/atoms/Col';
 import BodyCopy from '../../../../common/atoms/BodyCopy';
 import Anchor from '../../../../common/atoms/Anchor';
 
-export const ResetPassword = ({ labels, successMessage, errorMessage, onSubmit }) => {
+export const ChangePassword = ({ labels, successMessage, errorMessage, onSubmit }) => {
   return (
     <React.Fragment>
       <BodyCopy className="elem-mb-LRG">
@@ -26,7 +26,7 @@ export const ResetPassword = ({ labels, successMessage, errorMessage, onSubmit }
         heading={labels.lbl_changePassword_heading}
         className="margin-none"
       />
-      <BodyCopy component="div">
+      <BodyCopy component="div" className="elem-pt-XS">
         <Row fullBleed>
           <Col
             colSize={{
@@ -35,7 +35,7 @@ export const ResetPassword = ({ labels, successMessage, errorMessage, onSubmit }
               large: 12,
             }}
           >
-            <BodyCopy fontSize="fs14" fontFamily="secondary">
+            <BodyCopy dataLocator="passwordInstructionTxt" fontSize="fs14" fontFamily="secondary">
               {labels.lbl_changePassword_password_info}
             </BodyCopy>
           </Col>
@@ -51,11 +51,11 @@ export const ResetPassword = ({ labels, successMessage, errorMessage, onSubmit }
   );
 };
 
-ResetPassword.propTypes = {
+ChangePassword.propTypes = {
   labels: PropTypes.shape({}).isRequired,
   successMessage: PropTypes.string.isRequired,
   errorMessage: PropTypes.string.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default ResetPassword;
+export default ChangePassword;

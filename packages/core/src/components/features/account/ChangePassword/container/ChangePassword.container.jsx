@@ -4,22 +4,37 @@ import PropTypes from 'prop-types';
 import utils from '../../../../../utils';
 import { getError, getSuccess, getChangePasswordLabels } from './ChangePassword.selectors';
 import ChangePasswordComponent from '../views';
-import { changePassword, changeState } from './ChangePassword.actions';
+import {
+  changePassword,
+  changePasswordSuccess,
+  changePasswordError,
+} from './ChangePassword.actions';
 
 export class ChangePasswordContainer extends PureComponent {
   static propTypes = {
     successMessage: PropTypes.string.isRequired,
     errorMessage: PropTypes.string.isRequired,
-    changeStateAction: PropTypes.func.isRequired,
     changePasswordAction: PropTypes.func.isRequired,
-    backToLoginAction: PropTypes.func.isRequired,
+    messageSateChangeAction: PropTypes.func.isRequired,
     labels: PropTypes.shape({}).isRequired,
   };
 
-  changePassword = ({ password, oldPassword, confirmPassword }) => {
+  componentDidUpdate() {
+    const { successMessage } = this.props;
+    if (successMessage === 'successMessage') {
+      this.goBackToProfile();
+    }
+  }
+
+  componentWillUnmount() {
+    const { messageSateChangeAction } = this.props;
+    messageSateChangeAction(null);
+  }
+
+  changePassword = ({ password, currentPassword, confirmPassword }) => {
     const { changePasswordAction } = this.props;
     changePasswordAction({
-      currentPassword: oldPassword,
+      currentPassword,
       newPassword: password,
       newPasswordVerify: confirmPassword,
     });
@@ -30,26 +45,13 @@ export class ChangePasswordContainer extends PureComponent {
     return null;
   };
 
-  backHandler = e => {
-    e.preventDefault();
-    const { changeStateAction, backToLoginAction } = this.props;
-    changeStateAction();
-    backToLoginAction();
-  };
-
   render() {
     const { successMessage, errorMessage, labels } = this.props;
-
-    if (successMessage === 'successMessage') {
-      return this.goBackToProfile();
-    }
-
     return (
       <ChangePasswordComponent
         successMessage={successMessage}
         errorMessage={errorMessage}
         onSubmit={this.changePassword}
-        onBack={this.backHandler}
         labels={labels}
       />
     );
@@ -66,8 +68,9 @@ export const mapDispatchToProps = dispatch => ({
   changePasswordAction: payload => {
     dispatch(changePassword(payload));
   },
-  changeStateAction: () => {
-    dispatch(changeState());
+  messageSateChangeAction: payload => {
+    dispatch(changePasswordSuccess(payload));
+    dispatch(changePasswordError(payload));
   },
 });
 

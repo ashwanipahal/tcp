@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { ChangePasswordForm } from '../ChangePasswordForm.view';
 
-describe('ResetPasswordForm component', () => {
+describe('ChangePasswordForm component', () => {
   it('should renders correctly in initial state', () => {
     const props = {
       labels: {},

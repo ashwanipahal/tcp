@@ -11,6 +11,7 @@ const BirthdaySaving = ({ labels }) => {
     <MyProfileTile
       title={labels.lbl_profile_birthday_savings}
       ctaTitle={labels.lbl_profile_add_birthday_info}
+      dataLocator="pi-addbirthdayinfo"
     >
       <BodyCopy component="div">
         <Row fullBleed>

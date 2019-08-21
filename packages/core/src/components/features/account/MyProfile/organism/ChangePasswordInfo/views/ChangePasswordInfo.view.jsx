@@ -13,6 +13,7 @@ const ChangePassword = ({ labels }) => {
       ctaTitle={labels.lbl_profile_change_password}
       ctaPath="/account/profile"
       ctaLink="/account?id=profile&subSection=change-password"
+      dataLocator="pi-changepassword"
     >
       <BodyCopy component="div">
         <Row fullBleed>

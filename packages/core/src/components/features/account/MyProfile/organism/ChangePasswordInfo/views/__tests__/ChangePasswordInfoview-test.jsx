@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ChangePassword from '../ChangePassword.view';
+import ChangePassword from '../ChangePasswordInfo.view';
 
 describe('ChangePassword component', () => {
   it('should render correctly', () => {

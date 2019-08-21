@@ -9,7 +9,7 @@ import Anchor from '../../../../../../common/atoms/Anchor/views/Anchor';
 import Button from '../../../../../../common/atoms/Button';
 import withStyles from '../../../../../../common/hoc/withStyles';
 import PasswordField from '../../../../common/molecule/PasswordField';
-import PasswordRequirement from '../../PasswordRequirement';
+import PasswordRequirement from '../../../../ResetPassword/molecules/PasswordRequirement';
 import createValidateMethod from '../../../../../../../utils/formValidation/createValidateMethod';
 import getStandardConfig from '../../../../../../../utils/formValidation/validatorStandardConfig';
 import styles from '../styles/ChangePasswordForm.style';
@@ -33,55 +33,67 @@ export const ChangePasswordForm = ({
       )}
       {errorMessage && (
         <Notification
+          className="elem-mt-MED"
           status="error"
           colSize={{ large: 12, medium: 8, small: 6 }}
           message={labels[`lbl_changePassword_${errorMessage}`]}
         />
       )}
-      <Field
-        id="oldPassword"
-        placeholder={labels.lbl_changePassword_current_password}
-        name="oldPassword"
-        component={PasswordField}
-        dataLocator="currentPasswordtxtfield"
-        errorDataLocator="changePassword-passworderror"
-        showSuccessCheck={false}
-        enableSuccessCheck={false}
-        className="elem-mb-SM"
-      />
-      <Field
-        id="password"
-        placeholder={labels.lbl_changePassword_new_password}
-        name="password"
-        component={PasswordField}
-        dataLocator="newPasswordtxtfield"
-        errorDataLocator="changePassword-passworderror"
-        showSuccessCheck={false}
-        enableSuccessCheck={false}
-        className="elem-mb-SM"
-        tooltipContent={<PasswordRequirement labels={labels} />}
-      />
-      <Field
-        id="confirmPassword"
-        placeholder={labels.lbl_changePassword_confirm_password}
-        name="confirmPassword"
-        component={PasswordField}
-        dataLocator="confirmPasswordtxtfield"
-        errorDataLocator="changePassword-passworderror"
-        showSuccessCheck={false}
-        enableSuccessCheck={false}
-        className="elem-mb-SM"
-      />
-      <BodyCopy component="div" textAlign="center" className="elem-mb-LRG">
-        <Row>
+      <BodyCopy component="div" className="elem-mt-LRG">
+        <Row fullBleed>
           <Col
             colSize={{
+              large: 5,
+              medium: 4,
+              small: 6,
+            }}
+          >
+            <Field
+              id="currentPassword"
+              placeholder={labels.lbl_changePassword_current_password}
+              name="currentPassword"
+              component={PasswordField}
+              dataLocator="currentPasswordtxtfield"
+              showSuccessCheck={false}
+              enableSuccessCheck={false}
+              className="elem-mb-SM"
+            />
+            <Field
+              id="password"
+              placeholder={labels.lbl_changePassword_new_password}
+              name="password"
+              component={PasswordField}
+              dataLocator="newPasswordtxtfield"
+              showSuccessCheck={false}
+              enableSuccessCheck={false}
+              className="elem-mb-SM"
+              tooltipContent={<PasswordRequirement labels={labels} />}
+            />
+            <Field
+              id="confirmPassword"
+              placeholder={labels.lbl_changePassword_confirm_password}
+              name="confirmPassword"
+              component={PasswordField}
+              dataLocator="confirmPasswordtxtfield"
+              showSuccessCheck={false}
+              enableSuccessCheck={false}
+              className="elem-mb-SM"
+            />
+          </Col>
+        </Row>
+      </BodyCopy>
+      <BodyCopy component="div" textAlign="center" className="elem-mb-LRG elem-mt-LRG">
+        <Row>
+          <Col
+            className="ChangePasswordForm_cancel"
+            colSize={{
               large: 3,
-              medium: 6,
+              medium: 2,
               small: 6,
             }}
             offsetLeft={{
-              large: 2,
+              large: 3,
+              medium: 1,
             }}
           >
             <Anchor to="/account?id=profile" asPath="/account/profile">
@@ -97,9 +109,10 @@ export const ChangePasswordForm = ({
             </Anchor>
           </Col>
           <Col
+            className="ChangePasswordForm_save"
             colSize={{
               large: 3,
-              medium: 6,
+              medium: 2,
               small: 6,
             }}
           >
@@ -135,7 +148,7 @@ ChangePasswordForm.defaultProps = {
 };
 
 const validateMethod = createValidateMethod(
-  getStandardConfig(['oldPassword', 'password', 'confirmPassword'])
+  getStandardConfig(['currentPassword', 'password', 'confirmPassword'])
 );
 
 export default reduxForm({
